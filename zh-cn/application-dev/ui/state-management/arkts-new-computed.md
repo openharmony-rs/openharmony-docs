@@ -56,7 +56,7 @@ get varName(): T {
 | 支持类型           | getter访问器。 |
 | 从父组件初始化     | 禁止。 |
 | 可初始化子组件     | [\@Param](./arkts-new-param.md)。  |
-| 被执行的时机       | \@ComponentV2中的\@Computed会在自定义组件创建的时候初始化，触发\@Computed计算。</br>\@ObservedV2装饰的类中的\@Computed，会在\@ObservedV2装饰的类实例创建后，异步初始化，触发\@Computed计算。</br>在\@Computed中计算的状态变量被改变时，计算属性会重新计算。 |
+| 被执行的时机       | \@ComponentV2中的\@Computed会在自定义组件创建的时候初始化，触发\@Computed计算。</br>\@ObservedV2装饰的类中的\@Computed，会在\@ObservedV2装饰的类实例创建后，异步初始化，触发\@Computed计算。</br>参与\@Computed计算的状态变量被改变时，计算属性会重新计算。 |
 | 是否允许赋值       | @Computed装饰的属性是只读的，不允许赋值，详情见[使用限制](#使用限制)。 |
 
 ## 使用限制
@@ -219,6 +219,52 @@ get varName(): T {
   }
   ```
 
+- @Computed装饰器会缓存装饰函数的计算结果。如果@Computed依赖的状态变量被修改了，缓存的计算结果不会同步更新，@Computed会在下一帧重新计算结果，并更新@Computed绑定的UI组件。如果在修改@Computed依赖的状态变量后同步获取@Computed的值，获取的是修改前@Computed缓存的值。
+
+   <!-- @[Computed_Sync_Access](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedSyncAccess.ets) -->
+   ```ts
+   @Entry
+   @ComponentV2
+   struct Page {
+     @Local count: number = 1;
+
+     // 使用@Computed缓存计算数据
+     @Computed
+     get computedDouble(): number {
+       return this.count * 2;
+     }
+
+     // 使用getter直接计算数据
+     get normalDouble(): number {
+       return this.count * 2;
+     }
+
+     build() {
+       Column() {
+         Text(`count: ${this.count}`)
+           .fontSize(20)
+           .margin(10)
+         Text(`double: ${this.computedDouble}`)
+           .fontSize(20)
+           .margin(10)
+         Button('change count')
+           .width(300)
+           .margin(10)
+           .onClick(() => {
+             this.count = 10;
+             // 同步获取普通getter函数的值，获取的是20
+             console.info('Normal double: ' + this.normalDouble);
+             // 同步获取@Computed的值，获取的是修改前的缓存值2，而非20
+             console.info('Computed double: ' + this.computedDouble);
+           })
+       }
+       .width('100%')
+     }
+   }
+   ```
+
+   ![computed-faq-1](./figures/arkts-computed-faq-1.gif)
+
 ## 使用场景
 ### 当被计算的属性变化时，\@Computed装饰的getter访问器只会被求解一次
 1. 在自定义组件中使用计算属性。
@@ -248,7 +294,7 @@ get varName(): T {
      @Computed
      get fullName() {
        hilog.info(DOMAIN, TAG, BUNDLE + '---------Computed----------');
-       return this.firstName + ' ' + this.lastName + this.age;
+       return this.lastName + ' ' + this.firstName + this.age;
      }
    
      build() {
@@ -347,7 +393,7 @@ get varName(): T {
    ![computed-sync-2](./figures/computed-sync-2.gif)
 
 ### \@Computed装饰的属性可以被\@Monitor监听变化
-如何使用计算属性求解fahrenheit和kelvin。示例如下：
+下面示例展示如何使用计算属性求解fahrenheit和kelvin，并使用\@Monitor监听计算属性的变化：
 - 点击“-”，celsius-- -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 - 点击“+”，celsius++ -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 

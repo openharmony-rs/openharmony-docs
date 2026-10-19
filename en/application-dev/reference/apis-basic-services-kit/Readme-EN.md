@@ -11,16 +11,19 @@
     - [@ohos.account.appAccount (Application Account Management)](js-apis-appAccount.md)
     - [@ohos.account.distributedAccount (Distributed Account Management)](js-apis-distributed-account.md)
     - [@ohos.account.osAccount (System Account Management)](js-apis-osAccount.md)
+    - [@ohos.account.osAccount.authorization (OS Account Authorization Manager)](js-apis-osAccount-authorization.md)
     <!--Del-->
     - [@ohos.account.distributedAccount (Distributed Account Management) (System API)](js-apis-distributed-account-sys.md)
     - [@ohos.account.osAccount (System Account Management) (System API)](js-apis-osAccount-sys.md)
     <!--DelEnd-->
+    - [OS Account Constraints](appendix-osAccount-constraints.md)
+    - [OS Account Privilege List](appendix-osAccount-authorization-privileges.md)
   - Device Management<!--device-management-arkts-->
     - [@ohos.batteryInfo (Battery Information)](js-apis-battery-info.md)
     - [@ohos.busManager.serial (Serial Port Management)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (Device Information)](js-apis-device-info.md)
     - [@ohos.power (System Power Management)](js-apis-power.md)
-    - [@ohos.runningLock (Running Lock)](js-apis-runninglock.md)
+    - [@ohos.runningLock (RunningLock)](js-apis-runninglock.md)
     - [@ohos.thermal (Thermal Management)](js-apis-thermal.md)
     - [@ohos.usbManager (USB Manager)](js-apis-usbManager.md)
     - [@ohos.usbManager.serial (Serial Port Management)](js-apis-serialManager.md)
@@ -61,7 +64,7 @@
   - Process and Thread Communication<!--process-thread-communi-arkts-->
     - [System Common Events](common_event/commonEventManager-definitions.md)
     <!--Del-->
-    - [System Common Events (System API)](common_event/commonEventManager-definitions-sys.md)
+    - [System Common Events (System API)] (common_event/commonEventManager-definitions-sys.md)
     <!--DelEnd-->
     - [@ohos.commonEventManager (Common Event)](js-apis-commonEventManager.md)
     - [@ohos.events.emitter (Emitter)](js-apis-emitter.md)
@@ -107,7 +110,7 @@
     - [@system.request (Upload and Download)](js-apis-system-request.md)
     - [@ohos.screenLock (Screen Lock)](js-apis-screen-lock.md)
     <!--Del-->
-    - [@ohos.commonEvent (Common Event) (System API) (Deprecated)](js-apis-commonEvent-sys.md)
+    - [@ohos.commonEvent (Common Event) (System API)](js-apis-commonEvent-sys.md)
     - [@ohos.usb (USB) (System API)](js-apis-usb-deprecated-sys.md)
     - [@ohos.systemParameter (System Parameter) (System API)](js-apis-system-parameter-sys.md)
     <!--DelEnd-->
@@ -122,6 +125,7 @@
     - [OH_Print](capi-oh-print.md)
     - [Pasteboard](capi-pasteboard.md)
     - [TimeService](capi-timeservice.md)
+    - [UsbManager](capi-usbmanager.md)
   - Header Files<!--basic-services-headerfile-->
     - [deviceinfo.h](capi-deviceinfo-h.md)
     - [ohbattery_info.h](capi-ohbattery-info-h.md)
@@ -134,6 +138,7 @@
     - [ohprint.h](capi-ohprint-h.md)
     - [ohscan.h](capi-ohscan-h.md)
     - [time_service.h](capi-time-service-h.md)
+    - [ohusb_manager.h](capi-ohusb-manager-h.md)
   - Structs<!--basic-services-struct-->
     - [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)
     - [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)
@@ -158,6 +163,11 @@
     - [Scan_ScannerDevice](capi-oh-scan-scan-scannerdevice.md)
     - [Scan_PictureScanProgress](capi-oh-scan-scan-picturescanprogress.md)
     - [Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)
+    - [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md)
+    - [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md)
+    - [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md)
+    - [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md)
+    - [OH_UsbManager_UsbPipe](capi-usbmanager-oh-usbmanager-usbpipe.md)
 - Error Codes<!--basic-services-arkts-errcode-->
   - [USB Error Codes](errorcode-usb.md)
   - [Serial Port Management Error Codes](errorcode-busmanager-serial.md)
@@ -193,3 +203,4 @@
   - [Intelligent Voice Error Codes](errorcode-intelligentVoice.md)
   <!--DelEnd-->
   - [deviceInfo Error Codes](errorcode-device-info.md)
+<!--no_check-->

@@ -2,9 +2,9 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @goumiao; @hangmengxin-->
-<!--Designer: @liumingxiang; @wanyanglan-->
-<!--Tester: @yhl0101; @nobuggers-->
+<!--Owner: @oh_wangxk; @hangmengxin-->
+<!--Designer: @KejiePeng; @wanyanglan-->
+<!--Tester: @LiTongguan2026; @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
 ## B
@@ -46,6 +46,10 @@
 ### Shader；着色器
 
 一种运行程序，主要用于显示图像渲染和处理。其能够控制顶点或像素的处理方式，包括颜色计算、阴影效果等一系列视觉效果。可以针对绘制内容添加不同的着色器效果，从而实现丰富不同的视觉效果。
+
+### Sprite Sheet；精灵图集
+
+将多帧动画小图按行列排列合并到一张大图中的资源形式，通过指定行列数和帧索引定位并显示某一帧，常用于序列帧动画。该方式可减少图片资源数量、降低纹理切换开销，是游戏和图形领域的通用术语。精灵图集也常被称为Atlas，二者通常可互换使用。
 
 ## T
 

@@ -6,7 +6,7 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-EmbeddedComponent组件允许当前页面嵌入同一应用内其他EmbeddedUIExtensionAbility提供的UI内容，这些UI运行在独立进程中，提供更高的安全性和稳定性。
+EmbeddedComponent组件允许当前页面嵌入同一应用内或满足跨应用嵌入权限条件的其他EmbeddedUIExtensionAbility提供的UI内容，这些UI运行在独立进程中，提供更高的安全性和稳定性。
 
 EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面集成，其核心目标是通过模块化设计提升应用的灵活性和用户体验。
 
@@ -16,7 +16,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 - [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)组件
 
-  EmbeddedComponent组件用于在当前页面嵌入本应用内其他EmbeddedUIExtensionAbility提供的UI。它允许开发者将应用的某些功能或界面嵌入另一个界面中，实现更灵活的用户界面设计，适用于需要进程隔离的模块化开发场景。
+  EmbeddedComponent组件用于在当前页面嵌入本应用内或满足跨应用嵌入权限条件的其他应用的EmbeddedUIExtensionAbility提供的UI。它允许开发者将应用的某些功能或界面嵌入另一个界面中，实现更灵活的用户界面设计，适用于需要进程隔离的模块化开发场景。
 
 - [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)组件
 
@@ -58,7 +58,7 @@ API版本26.0.0之前，EmbeddedComponent组件获焦时，其拉起的EmbeddedU
 
 **加载项首页**
 
-加载项首页是EmbeddedComponent组件的宿主页面，负责加载和展示嵌入式UI扩展能力的内容。以下是一个完整的加载项首页实现示例：
+加载项首页是EmbeddedComponent组件的宿主页面，负责加载和展示嵌入式UI扩展能力的内容。以下是一个加载项首页的实现示例：
 
 <!-- @[embedded_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets) -->
 
@@ -104,9 +104,9 @@ export struct Embedded {
 
 在实现加载项首页时，开发者需要注意以下几点：
 
-- 多进程模型检测
+- 多进程权限检测
 
-  在应用启动时，建议检测设备是否已开启多进程模型。如果未开启，应提供明确的错误提示或引导用户开启。
+  在应用启动时，建议检测当前设备是否具备多进程权限（设备范围及约束说明参见[使用约束](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#使用约束)）。如果不具备，应提供明确的错误提示。
 
 - 异常处理
 
@@ -231,11 +231,11 @@ struct Extension {
 
 2. 结果返回
 
-   通过terminateSelfWithResult方法向宿主应用返回结果时，需要指定：
+   通过terminateSelfWithResult方法向宿主应用返回结果时，需要指定必选参数resultCode；want为可选参数（表示返回给宿主应用的结果数据，不传入时默认为undefined）：
 
    - resultCode：结果代码；
 
-   - want：目标意图，指定结果的接收方。
+   - want：返回给宿主应用的结果数据。
 
 3. 页面生命周期
 

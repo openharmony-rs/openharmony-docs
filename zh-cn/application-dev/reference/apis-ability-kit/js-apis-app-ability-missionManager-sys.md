@@ -56,8 +56,8 @@ on(type:'mission', listener: MissionListener): number
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -154,8 +154,8 @@ off(type: 'mission', listenerId: number, callback: AsyncCallback&lt;void&gt;): v
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300002 | The specified mission listener does not exist. |
 
@@ -278,8 +278,8 @@ off(type: 'mission', listenerId: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300002 | The specified mission listener does not exist. |
 
@@ -390,8 +390,8 @@ getMissionInfo(deviceId: string, missionId: number, callback: AsyncCallback&lt;M
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -464,8 +464,8 @@ getMissionInfo(deviceId: string, missionId: number): Promise&lt;MissionInfo&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -516,8 +516,8 @@ getMissionInfos(deviceId: string, numMax: number, callback: AsyncCallback&lt;Arr
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -575,8 +575,8 @@ getMissionInfos(deviceId: string, numMax: number): Promise&lt;Array&lt;MissionIn
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -624,8 +624,8 @@ getMissionSnapShot(deviceId: string, missionId: number, callback: AsyncCallback&
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -681,8 +681,8 @@ getMissionSnapShot(deviceId: string, missionId: number): Promise&lt;MissionSnaps
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -731,8 +731,8 @@ getLowResolutionMissionSnapShot(deviceId: string, missionId: number, callback: A
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -789,8 +789,8 @@ getLowResolutionMissionSnapShot(deviceId: string, missionId: number): Promise\<M
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -840,8 +840,8 @@ lockMission(missionId: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300001 | Mission not found. |
 
@@ -898,8 +898,8 @@ lockMission(missionId: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300001 | Mission not found. |
 
@@ -948,8 +948,8 @@ unlockMission(missionId: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300001 | Mission not found. |
 
@@ -1005,8 +1005,8 @@ unlockMission(missionId: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300001 | Mission not found. |
 
@@ -1056,8 +1056,8 @@ clearMission(missionId: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -1114,8 +1114,8 @@ clearMission(missionId: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -1163,8 +1163,8 @@ clearAllMissions(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -1211,9 +1211,8 @@ clearAllMissions(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
-
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 **示例：**
 
 ```ts
@@ -1257,8 +1256,8 @@ moveMissionToFront(missionId: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 
@@ -1311,8 +1310,8 @@ moveMissionToFront(missionId: number, options: StartOptions, callback: AsyncCall
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 
@@ -1370,8 +1369,8 @@ moveMissionToFront(missionId: number, options?: StartOptions): Promise&lt;void&g
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 
@@ -1421,8 +1420,8 @@ moveMissionsToForeground(missionIds: Array&lt;number&gt;, callback: AsyncCallbac
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1490,8 +1489,8 @@ moveMissionsToForeground(missionIds: Array&lt;number&gt;, topMission: number, ca
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1564,8 +1563,8 @@ moveMissionsToForeground(missionIds: Array&lt;number&gt;, topMission?: number): 
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1627,8 +1626,8 @@ moveMissionsToBackground(missionIds: Array&lt;number&gt;, callback: AsyncCallbac
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1696,8 +1695,8 @@ moveMissionsToBackground(missionIds : Array&lt;number&gt;): Promise&lt;Array&lt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1766,8 +1765,8 @@ on(type:'missionEvent', listener: MissionListener): number
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -1867,8 +1866,8 @@ off(type: 'missionEvent', listenerId: number, callback: AsyncCallback&lt;void&gt
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300002 | The specified missionEvent listener does not exist. |
 
@@ -1956,7 +1955,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-
 ## missionManager.off('missionEvent')<sup>(deprecated)</sup>
 
 off(type: 'missionEvent', listenerId: number): Promise&lt;void&gt;
@@ -1965,7 +1963,7 @@ off(type: 'missionEvent', listenerId: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[missionManager.off('mission')](#missionmanageroffmission)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[missionManager.off('mission')](#missionmanageroffmission-1)替代。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -1992,8 +1990,8 @@ off(type: 'missionEvent', listenerId: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300002 | The specified missionEvent listener does not exist. |
 
@@ -2076,3 +2074,44 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+## MissionInfo<sup>9+</sup>
+
+type MissionInfo = _MissionInfo
+
+表示任务的详细信息。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_MissionInfo](js-apis-inner-application-missionInfo-sys.md) | 表示任务的详细信息。 |
+
+## MissionListener<sup>9+</sup>
+
+type MissionListener = _MissionListener
+
+系统任务状态监听器。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_MissionListener](js-apis-inner-application-missionListener-sys.md) | 系统任务状态监听器。 |
+
+## MissionSnapshot<sup>9+</sup>
+
+type MissionSnapshot = _MissionSnapshot
+
+任务快照信息。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_MissionSnapshot](js-apis-inner-application-missionSnapshot-sys.md) | 任务快照信息。 |

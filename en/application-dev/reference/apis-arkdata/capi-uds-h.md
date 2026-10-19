@@ -5,6 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=15496fed0cae2d3de7549779264807cf5940b7af translatedAt=2026-09-04T03:13:24.950Z pushedAt=2026-09-09T09:11:03.692Z -->
 
 ## Overview
 
@@ -179,7 +180,7 @@ The rules for applying the drag authorization policies are as follows (in descen
 
 - FileUri data: By default, the **READ**, **WRITE**, and **PERSIST** permissions are granted in drag scenarios.
 
-- HTML data: Read permission is granted only for URIs under the **img** tag in HTML text.
+- HTML data: Grants read permission only to the URIs in the img tags of the HTML text.
 
 **Since:** 26.0.0
 

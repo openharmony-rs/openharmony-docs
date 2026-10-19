@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:33:35.089Z pushedAt=2026-08-10T09:59:04.261Z -->
 
-The Crypto framework supports the SM2 ciphertext in ASN.1 format. The SM2 ciphertext consists of C1, C3 (the hash value), and C2 (the encrypted data). For details about the specifications, see [SM2 Ciphertext Format](crypto-asym-encrypt-decrypt-spec.md#sm2-ciphertext-format).
+The currently supported SM2 ciphertext format is the ASN.1 format defined by the national cryptographic standard, where the parameters are arranged in the order of C1C3C2. For details about the parameters, see [SM2](crypto-encryption-decryption.md#sm2) in the asymmetric key encryption and decryption algorithm specifications.
 
 You can convert the SM2 ciphertext into ASN.1 format based on the SM2 parameters specified or obtain SM2 parameters from the SM2 ciphertext in ASN.1 format.
 
@@ -15,16 +16,18 @@ You can convert the SM2 ciphertext into ASN.1 format based on the SM2 parameters
 
 1. Call [OH_CryptoSm2CiphertextSpec_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_create) to create an empty SM2 ciphertext specification object.
 
-2. Call [OH_CryptoSm2CiphertextSpec_SetItem](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_setitem) to set the ciphertext parameters (**C1.x**,** C1.y**, **C2**, and **C3**).
+2. Call [OH_CryptoSm2CiphertextSpec_SetItem](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_setitem) to set the ciphertext parameters (**C1.x**, **C1.y**, **C2**, and **C3**).
 
-3. Call [OH_CryptoSm2CiphertextSpec_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_encode) to generate ciphertext in ASN.1 format. (Currently, only SM3 ciphertext can be converted. During implementation, the hash length of 32 bytes is verified only.)
+3. Call [OH_CryptoSm2CiphertextSpec_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_encode) to generate ciphertext in ASN.1 format. (Currently, only SM3 ciphertext can be converted. During implementation, only whether the hash length is 32 bytes is verified.)
 
 4. Call [OH_CryptoSm2CiphertextSpec_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_destroy) to destroy the SM2 ciphertext specification object.
 
-```C++
+<!-- @[create_asn1_ciphertext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/sm2/CreateASN1Ciphertext.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 
-static OH_Crypto_ErrCode doTestGenCipherTextBySpec()
+OH_Crypto_ErrCode doTestGenCipherTextBySpec()
 {
     // Prepare SM2 ciphertext parameters.
     uint8_t c1x[] = {45, 153, 88, 82, 104, 221, 226, 43, 174, 21, 122, 248, 5, 232, 105, 41, 92, 95, 102, 224,
@@ -92,19 +95,24 @@ static OH_Crypto_ErrCode doTestGenCipherTextBySpec()
 
 3. Call [OH_CryptoSm2CiphertextSpec_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_destroy) to destroy the SM2 ciphertext specification object.
 
-```C++
+<!-- @[obtain_cipher_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/sm2/ObtainCiphertext.cpp) -->
+
+``` C++
+
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 
-static OH_Crypto_ErrCode doTestGetCipherTextSpec()
+OH_Crypto_ErrCode doTestGetCipherTextSpec()
 {
     // Prepare the standard ASN.1 ciphertext.
-    uint8_t cipherTextArray[] = {48, 118, 2, 32, 45, 153, 88, 82, 104, 221, 226, 43, 174, 21, 122, 248, 5, 232, 105,
-                                41, 92, 95, 102, 224, 216, 149, 85, 236, 110, 6, 64, 188, 149, 70, 70, 183, 2, 32, 107,
-                                93, 198, 247, 119, 18, 40, 110, 90, 156, 193, 158, 205, 113, 170, 128, 146, 109, 75, 17,
-                                181, 109, 110, 91, 149, 5, 110, 233, 209, 78, 229, 96, 4, 32, 87, 167, 167, 247, 88, 146,
-                                203, 234, 83, 126, 117, 129, 52, 142, 82, 54, 152, 226, 201, 111, 143, 115, 169, 125, 128,
-                                42, 157, 31, 114, 198, 109, 244, 4, 14, 100, 227, 78, 195, 249, 179, 43, 70, 242, 69, 169,
-                                10, 65, 123};
+    uint8_t cipherTextArray[] = {
+        48, 118, 2, 32, 45, 153, 88, 82, 104, 221, 226, 43, 174, 21, 122, 248, 5, 232, 105,
+        41, 92, 95, 102, 224, 216, 149, 85, 236, 110, 6, 64, 188, 149, 70, 70, 183, 2, 32, 107,
+        93, 198, 247, 119, 18, 40, 110, 90, 156, 193, 158, 205, 113, 170, 128, 146, 109, 75, 17,
+        181, 109, 110, 91, 149, 5, 110, 233, 209, 78, 229, 96, 4, 32, 87, 167, 167, 247, 88, 146,
+        203, 234, 83, 126, 117, 129, 52, 142, 82, 54, 152, 226, 201, 111, 143, 115, 169, 125, 128,
+        42, 157, 31, 114, 198, 109, 244, 4, 14, 100, 227, 78, 195, 249, 179, 43, 70, 242, 69, 169,
+        10, 65, 123
+    };
     Crypto_DataBlob cipherText = {cipherTextArray, sizeof(cipherTextArray)};
 
     // Create an SM2 ciphertext specification object from the ASN.1 ciphertext.
@@ -146,3 +154,5 @@ EXIT:
     return ret;
 }
 ```
+
+  <!--no_check-->

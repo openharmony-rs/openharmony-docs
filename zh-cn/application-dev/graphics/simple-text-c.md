@@ -1,9 +1,9 @@
 # 简单文本绘制与显示（C/C++）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 ## 场景介绍
@@ -11,6 +11,8 @@
 在一个简单的用户界面中，可能只需要展示几行静态文本，例如标签、按钮上的文字、菜单项或状态栏中的提示信息。此时，开发者只需要选择合适的字体、大小和颜色即可完成渲染。
 
 ## 接口说明
+
+简单文本绘制的相关接口如下所示，详细接口说明请参考[drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)。
 
 | 接口定义 | 描述 | 
 | -------- | -------- |

@@ -6,7 +6,7 @@
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
-本模块支持launcher应用（桌面有图标的应用）所需的查询能力，支持[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)、[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息的查询。
+本模块支持launcher应用（桌面有图标的应用）所需的查询能力，支持[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)、[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)信息的查询。
 
 > **说明：**
 >
@@ -246,7 +246,7 @@ try {
 
 getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo\>\>) : void
 
-查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用callback异步回调。
+查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -261,7 +261,7 @@ getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息。否则为错误对象。|
+| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\>\> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)信息。否则为错误对象。|
 
 **错误码：**
 
@@ -302,7 +302,7 @@ try {
 
 getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
-查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用Promise异步回调。
+查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -322,7 +322,7 @@ getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
 | 类型                   | 说明                                            |
 | ---------------------- | ----------------------------------------------- |
-| Promise\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | Promise对象。返回当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。 |
+| Promise\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\>\> | Promise对象。返回当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)。 |
 
 **错误码：**
 
@@ -361,7 +361,7 @@ try {
 
 getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
 
-查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。
+查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。
 
 获取调用方自身的信息时不需要权限。
 
@@ -381,7 +381,7 @@ getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
 
 | 类型                   | 说明                                            |
 | ---------------------- | ----------------------------------------------- |
-| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\> | Array形式返回当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。 |
+| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\> | Array形式返回当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)。 |
 
 **错误码：**
 
@@ -416,7 +416,7 @@ try {
 
 getShortcutInfoSync(bundleName: string, userId: number) : Array\<ShortcutInfo\>
 
-查询指定用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。
+查询指定用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。
 
 获取调用方自身的信息时不需要权限。
 
@@ -437,7 +437,7 @@ getShortcutInfoSync(bundleName: string, userId: number) : Array\<ShortcutInfo\>
 
 | 类型                   | 说明                                            |
 | ---------------------- | ----------------------------------------------- |
-| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\> | Array形式返回指定用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。 |
+| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\> | Array形式返回指定用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)。 |
 
 **错误码：**
 
@@ -473,7 +473,7 @@ try {
 
 startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise\<void\>
 
-拉起指定[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)中的ability。使用Promise异步回调。
+拉起指定[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)中的ability。使用Promise异步回调。
 
 **需要权限：** ohos.permission.START_SHORTCUT
 
@@ -485,7 +485,7 @@ startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise\<void
 
 | 参数名        | 类型   | 必填 | 说明         |
 | ------------ | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 应用的快捷方式信息。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md) | 是   | 应用的快捷方式信息。 |
 | options      | [StartOptions](js-apis-app-ability-startOptions-sys.md)   | 否   | 启动参数选项，用于指定任务切到前台时的窗口模式，设备ID等。 |
 
 **返回值：**
@@ -555,7 +555,7 @@ startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options
 
 | 参数名        | 类型   | 必填 | 说明         |
 | ------------ | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 应用的快捷方式信息。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md) | 是   | 应用的快捷方式信息。 |
 | startReason  | string   | 是   | 快捷方式的启动原因，取值范围：[AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](js-apis-app-ability-abilityConstant.md#常量)，表示桌面快捷方式启动。 |
 | options      | [StartOptions](js-apis-app-ability-startOptions-sys.md)   | 否   | 启动Ability所携带的参数，用于指定目标Ability的窗口模式。 |
 
@@ -613,7 +613,7 @@ try {
 
 getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array\<ShortcutInfo\>
 
-查询当前用户下指定分身应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。
+查询当前用户下指定分身应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)。
 
 调用方获取自己的信息时不需要权限。
 
@@ -634,7 +634,7 @@ getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array\<Shortcut
 
 | 类型                   | 说明                                            |
 | ---------------------- | ----------------------------------------------- |
-| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\> | Array形式返回当前用户下指定分身应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。 |
+| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\> | Array形式返回当前用户下指定分身应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)。 |
 
 **错误码：**
 

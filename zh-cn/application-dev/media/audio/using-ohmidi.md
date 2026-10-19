@@ -26,7 +26,7 @@ OH_MIDI是系统提供的Native MIDI API，从API version 24开始用于在C/C++
 
 ## 系统能力检查
 
-使用MIDI进行开发前，先调用接口[canIUse](../../reference/common/init.md#caniuse)判断当前设备是否支持MIDI能力。当canIUse("SystemCapability.Multimedia.Audio.MIDI")返回值为true时，表示可以使用MIDI能力。
+使用MIDI进行开发前，先调用接口[canIUse](../../reference/common/syscap-ndk-8h.md#caniuse)判断当前设备是否支持MIDI能力。当canIUse("SystemCapability.Multimedia.Audio.MIDI")返回值为true时，表示可以使用MIDI能力。
 
 ## 接口说明
 
@@ -93,7 +93,7 @@ MIDI功能的权限需求根据使用场景不同而有所区别。
 
 系统已定义[OH_MIDICallbacks](../../reference/apis-audio-kit/capi-ohmidi-oh-midicallbacks.md)结构体，开发者需要实现其中的回调函数：
 - onDeviceChange：当MIDI设备连接或断开时由系统自动调用。开发者在此回调中处理设备的接入和移除逻辑。
-- onError：当MIDI服务发生错误时调用。开发者在此回调中处理错误日志记录和异常恢复逻辑,如重新创建客户端。
+- onError：当MIDI服务发生错误时调用。开发者在此回调中处理错误日志记录和异常恢复逻辑，如重新创建客户端。
 
 通过调用[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建MIDI客户端实例，传入回调结构体和用户数据。
 
@@ -560,14 +560,8 @@ static napi_value SendMIDI(napi_env env, napi_callback_info info)
 
     uint32_t eventsWritten = 0;
     OH_MIDIStatusCode status = OH_MIDIDevice_Send(it->second, portIndex, events.data(), eventCount, &eventsWritten);
-    napi_create_object(env, &result);
-    napi_value statusValue;
-    napi_create_int32(env, static_cast<int32_t>(status), &statusValue);
-    napi_set_named_property(env, result, "status", statusValue);
-    napi_value writtenValue;
-    napi_create_uint32(env, eventsWritten, &writtenValue);
-    napi_set_named_property(env, result, "eventsWritten", writtenValue);
-    return result;
+    // ...
+}
 ```
 
 **UMP格式说明**

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -23,7 +23,7 @@ Invoke the API in the **mediaquery** module to set the media query condition and
 Import the **mediaquery** module, as shown below:
 
 
-<!-- @[obtain_mediaquery_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[obtain_mediaquery_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) -->
 
 ``` TypeScript
 import { mediaquery } from '@kit.ArkUI';
@@ -32,31 +32,32 @@ import { mediaquery } from '@kit.ArkUI';
 Use the **matchMediaSync** API to set the media query condition and save the returned listener. The following is the example for listening for landscape events:
 
 
-<!-- @[obtain_mediaquery_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[obtain_mediaquery_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) -->
 
 ``` TypeScript
-listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
+listener: mediaquery.MediaQueryListener =
+  this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
 ```
 
 Register the **onPortrait** callback using the saved listener, and change the page layout or implement service logic in the callback. When the media query condition is matched, the callback is triggered. The sample code is as follows:
 
 
-<!-- @[obtain_mediaquery_Portrait](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[obtain_mediaquery_Portrait](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) -->
 
 ``` TypeScript
-  onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
-    if (mediaQueryResult.matches as boolean) {// If the device is in landscape mode, the page layout is changed accordingly.
-    // ···
-    } else {
-    // ···
-    }
+onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
+  if (mediaQueryResult.matches as boolean) {// If the device is in landscape mode, the page layout is changed accordingly.
+    // ...
+  } else {
+    // ...
   }
+}
 
-// ···
-    this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
-    // ···
-    });
-    // ···
+// ...
+  this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
+    // ...
+  });
+  // ...
 ```
 
 
@@ -103,11 +104,11 @@ You can use logical operators (such as **and**, **or**, **not**, and **only**) t
 
 | Type            | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| and              | The **and** operator is used to combine multiple media features into one media query, in a logical AND operation. The query is valid only when all media features are true. It can also combine media types and media functions. For example, **screen and (device-type: wearable) and (max-height: 600px)** evaluates to **true** when the device type is wearable and the maximum height of the application is 600 pixel units.|
+| and              | The **and** operator is used to combine multiple media features into one media query, in a logical AND operation. The query is valid only when all media features are true. It can also combine media types and media functions. For example, **screen&nbsp;and&nbsp;(device-type:&nbsp;wearable)&nbsp;and&nbsp;(max-height:&nbsp;600px)** evaluates to **true** when the device type is wearable and the maximum height of the application is 600 pixel units.|
 | or               | The **or** operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true. For example, **screen and (max-height: 1000px) or (round-screen: true)** indicates that the query is valid when the maximum height of the application is 1000 pixel units or the device screen is round.|
-| not              | The **not** operator is used to perform a logical negation for a media query. It must be used in conjunction with **screen**. **true** is returned if the query condition is not met. Otherwise, **false** is returned. For example, **not screen and (min-height: 50px) and (max-height: 600px)** evaluates to **true** when the height of the application is less than 50 pixel units or greater than 600 pixel units.|
-| only             | The **only** operator must be used with **screen** to ensure that the styles are only applied when the media query matches. It has the same effect as using **screen** alone. Example: **only screen and (height &lt;= 50) **.|
-| comma (, ) | The **or** operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true. The effect of a comma operator is equivalent to that of the **or** operator. For example, **screen and (min-height: 1000px), (round-screen: true)** indicates that the query is valid when the minimum height of the application is 1000 pixel units or the device screen is round.|
+| not              | The **not** operator is used to perform a logical negation for a media query. It must be used in conjunction with **screen**. **true** is returned if the query condition is not met. Otherwise, **false** is returned. For example, **not&nbsp;screen&nbsp;and&nbsp;(min-height:&nbsp;50px)&nbsp;and&nbsp;(max-height:&nbsp;600px)** evaluates to **true** when the height of the application is less than 50 pixel units or greater than 600 pixel units.|
+| only             | The **only** operator must be used with **screen** to ensure that the styles are only applied when the media query matches. It has the same effect as using **screen** alone. Example: **only&nbsp;screen&nbsp;and&nbsp;(height&nbsp;&lt;=&nbsp;50)&nbsp;**.|
+| comma (,&nbsp;) | The **or** operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true. The effect of a comma operator is equivalent to that of the **or** operator. For example, **screen and (min-height: 1000px), (round-screen: true)** indicates that the query is valid when the minimum height of the application is 1000 pixel units or the device screen is round.|
 
 Media range operators include <=, >=, <, and >. For details, see the following table.
 
@@ -126,8 +127,6 @@ Media range operators include <=, >=, <, and >. For details, see the following t
 The media features include the width and height of the application display area, device resolution, and device width and height. For details, see the following table.
 
   **Table 3** Media features
-
-For width and height comparison, vp and px units are supported. If no unit is specified, the px unit is used by default.
 
 | Type               | Description                                      |
 | ----------------- | ---------------------------------------- |
@@ -151,9 +150,13 @@ For width and height comparison, vp and px units are supported. If no unit is sp
 | round-screen      | Screen type. The value **true** indicates a circular screen, and **false** indicates a non-circular screen.             |
 | dark-mode         | Whether the system is in dark mode. The value can be **true** or **false**.<br> The value **true** means that the system is in dark mode, and **false** means that the system is in light mode.         |
 
->**NOTE**
+> **NOTE**
+> 
+> - When comparing numeric media features such as **height** and **width**, vp and px units are supported. If no unit is specified, the px unit is used by default.
 >
->Of the preceding media features, only height and width are supported on widgets.
+> - When comparing numeric media features such as **height** and **width**, the impact of floating‑point precision loss on conditional evaluations should be taken into account.
+>
+> - Only the **height** and **width** media features are supported in widgets.
 
 ## Example Scenario
 
@@ -161,10 +164,8 @@ The following provides two examples of media query usage.
 
 In this example, media queries are used to apply different content and styles to the page text when the screen is switched between landscape and portrait modes.
 
-Stage model:
-
 <!--deprecated_code_no_check-->
-<!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) --> 
 
 ``` TypeScript
 import { mediaquery } from '@kit.ArkUI';
@@ -177,10 +178,11 @@ struct MediaQueryExample {
   @State color: string = '#DB7093';
   @State text: string = 'Portrait';
   // The query is valid when the device is in landscape mode.
-  listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
+  listener: mediaquery.MediaQueryListener =
+    this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
 
   // The callback is triggered when the query is valid.
-  onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
+  onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
     if (mediaQueryResult.matches as boolean) {// If the device is in landscape mode, the page layout is changed accordingly.
       this.color = '#FFD700';
       this.text = 'Landscape';
@@ -194,7 +196,7 @@ struct MediaQueryExample {
     // Bind to the current application instance.
     // Register the callback.
     this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
-      this.onPortrait(mediaQueryResult);
+      this.onPortrait(mediaQueryResult)
     });
   }
 
@@ -206,62 +208,11 @@ struct MediaQueryExample {
   // Change the landscape/portrait mode of the device in the callback.
   private changeOrientation(isLandscape: boolean) {
     // Obtain the context information of the UIAbility instance.
-    let context:common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // Invoke this API to manually change the landscape/portrait mode of the device.
     window.getLastWindow(context).then((lastWindow) => {
-      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT);
+      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
     });
-  }
-
-  build() {
-    Column({ space: 50 }) {
-      Text(this.text).fontSize(50).fontColor(this.color);
-      Text('Landscape').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
-        .onClick(() => {
-          this.changeOrientation(true);
-        });
-      Text('Portrait').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
-        .onClick(() => {
-          this.changeOrientation(false);
-        });
-    }
-    .width('100%').height('100%')
-  }
-}
-```
-
-FA model:
-
-<!--deprecated_code_no_check-->
-```ts
-import { mediaquery } from '@kit.ArkUI';
-import { featureAbility } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct MediaQueryExample {
-  @State color: string = '#DB7093';
-  @State text: string = 'Portrait';
-  listener:mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // The query is valid when the device is in landscape mode.
-
-  onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) { // The callback is triggered when the query is valid.
-    if (mediaQueryResult.matches as boolean) { // Adjust the text content and font color when the device is in landscape mode.
-      this.color = '#FFD700';
-      this.text = 'Landscape';
-    } else {
-      this.color = '#DB7093';
-      this.text = 'Portrait';
-    }
-  }
-
-  aboutToAppear() {
-    // Bind to the current application instance.
-    this.listener.on('change', (mediaQueryResult:mediaquery.MediaQueryResult) => { this.onPortrait(mediaQueryResult) }); // Register the callback.
-  }
-
-  aboutToDisappear() {
-    // Unbind the callback function registered in the listener.
-    this.listener.off('change');
   }
 
   build() {
@@ -269,13 +220,11 @@ struct MediaQueryExample {
       Text(this.text).fontSize(50).fontColor(this.color)
       Text('Landscape').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
         .onClick(() => {
-          let context = featureAbility.getContext();
-          context.setDisplayOrientation(0); // Invoke this API to manually change the landscape/portrait mode of the device.
+          this.changeOrientation(true);
         })
       Text('Portrait').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
         .onClick(() => {
-          let context = featureAbility.getContext();
-          context.setDisplayOrientation(1); // Invoke this API to manually change the landscape/portrait mode of the device.
+          this.changeOrientation(false);
         })
     }
     .width('100%').height('100%')
@@ -293,41 +242,42 @@ struct MediaQueryExample {
 
 In this example, media queries are used to implement different layouts of the **Flex** component when the screen is switched between landscape and portrait modes. The **Flex** component is in vertical layout mode when the screen is in portrait mode, and in horizontal layout mode when the screen is in landscape mode.
 
-```ts
+<!-- @[obtain_mediaquery_flex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryFlex.ets) -->
+
+``` TypeScript
 import { LengthMetrics, mediaquery, window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
-struct MediaQueryExample {
+struct MediaQueryFlex {
   @State color: string = '#DB7093';
   @State text: string = 'Portrait';
   @State dir: FlexDirection = FlexDirection.Column
-  @State textHeight: string = "30%"
-  @State textWidth: string = "100%"
+  @State textHeight: string = '30%'
+  @State textWidth: string = '100%'
   // The query is valid when the device is in landscape mode.
   listener: mediaquery.MediaQueryListener =
     this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
 
   // The callback is triggered when the query is valid.
   onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
-    if (mediaQueryResult.matches as boolean) { // Adjust the text content and font color when the device is in landscape mode.
+    if (mediaQueryResult.matches as boolean) { // Adjust the text content, font color, layout direction, and size when the device is in landscape mode.
       this.color = '#FFD700';
       this.text = 'Landscape';
       this.dir = FlexDirection.Row;
-      this.textHeight = "100%"
-      this.textWidth = "33%"
+      this.textHeight = '100%'
+      this.textWidth = '33%'
     } else {
       this.color = '#DB7093';
       this.text = 'Portrait';
       this.dir = FlexDirection.Column;
-      this.textHeight = "33%"
-      this.textWidth = "100%"
+      this.textHeight = '33%'
+      this.textWidth = '100%'
     }
   }
 
   aboutToAppear() {
-    // Bind to the current application instance.
     // Register the callback.
     this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
       this.onPortrait(mediaQueryResult)
@@ -377,7 +327,7 @@ struct MediaQueryExample {
           .textAlign(TextAlign.Center)
           .backgroundColor('rgb(240, 250, 255)')
       }.layoutWeight(1)
-      .width("100%")
+      .width('100%')
     }
     .width('100%').height('100%')
   }
@@ -391,3 +341,9 @@ struct MediaQueryExample {
   **Figure 4** Landscape mode 
 
 ![landscape](figures/LandscapeWidthFlex.png)
+
+## Samples
+
+The following sample is provided to help you better understand how to develop the media query:
+
+- [Switching Between Landscape and Portrait Modes (ArkTS) (API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/MediaQuery)

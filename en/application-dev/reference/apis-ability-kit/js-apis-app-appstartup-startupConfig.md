@@ -3,10 +3,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yzkp-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=83eb20b2da17b66d3089c14abb21986b856a3985 translatedAt=2026-09-03T10:45:08.120Z pushedAt=2026-09-05T10:47:30.475Z -->
 
-The module defines the configuration of [AppStartup](../../application-models/app-startup.md).
+This module provides the definition of configuration information for the [application startup framework](../../application-models/app-startup.md), which is used to configure the task timeout and the listener of the startup framework.
 
 > **NOTE**
 >
@@ -28,8 +29,8 @@ Describes the timeout duration and listener of startup tasks in AppStartup. For 
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| timeoutMs | number | No| Yes| Timeout for executing all startup tasks, measured in ms. The default value is 10000 ms.|
-| startupListener | [StartupListener](./js-apis-app-appstartup-startupListener.md) | No| Yes| AppStartup listener, which is called when all the startup tasks are complete.|
+| timeoutMs | number | No | Yes | Timeout duration for executing all startup tasks, in ms. The default value is **10000**. When the timeout expires, the startup framework stops waiting and returns a timeout error through the **startupListener.onCompleted** callback. The timeout does not interrupt the startup tasks being executed, but affects the execution of subsequent tasks. |
+| startupListener | [StartupListener](./js-apis-app-appstartup-startupListener.md) | No | Yes | Listener of the startup framework, which is invoked when all startup tasks are complete. If this parameter is not set, no callback notification is sent. |
 
 **Example**
 

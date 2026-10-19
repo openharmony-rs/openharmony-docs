@@ -6,13 +6,14 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=3186fe26194e8e3bb50c26df22fad33d7d33dcfd translatedAt=2026-09-23T02:18:27.988Z pushedAt=2026-09-24T06:00:14.208Z -->
 
 The **policy** module provides APIs for managing network policies, through which you can control and manage the data volume used.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs provided by this module are system APIs.
+> This page contains only the system APIs of this module. For details about the public APIs, see [@ohos.net.policy (Network Policy Management)](js-apis-net-policy.md).
 
 ## Modules to Import
 
@@ -37,11 +38,13 @@ Sets whether background applications are allowed to access the network. This API
 | Name   | Type                | Mandatory| Description                                                        |
 | --------- | -------------------- | ---- | ------------------------------------------------------------ |
 | isAllowed | boolean              | Yes  | Whether background applications are allowed to use mobile data. The value **true** indicates that background applications are allowed to use mobile data, and the value **false** indicates the opposite.                                    |
-| callback  | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback  | AsyncCallback\<void\> | Yes   | Callback function. On success, **err** is **undefined**. On failure, returns error code and error information. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -82,11 +85,13 @@ Sets whether background applications are allowed to access the network. This API
 
 | Type          | Description                                                             |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -111,7 +116,7 @@ policy.setBackgroundAllowed(true).then(() => {
 
 isBackgroundAllowed(callback: AsyncCallback\<boolean>): void
 
-Checks whether the current application is allowed to access the network in the background. This API uses an asynchronous callback to return the result.
+Obtains whether the current application is allowed to access the network in the background. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -123,11 +128,13 @@ Checks whether the current application is allowed to access the network in the b
 
 | Name  | Type                   | Mandatory| Description                                                            |
 | -------- | ----------------------- | ---- | ---------------------------------------------------------------- |
-| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the result. If the operation is successful, the value **true** is returned, indicating that the application is allowed to access the network when running at the background. If the operation fails, an error message is returned.|
+| callback | AsyncCallback\<boolean> | Yes | Callback invoked to return the result. The value true indicates that the background policy is allowed, and an error code and error information are returned on failure. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -151,7 +158,7 @@ policy.isBackgroundAllowed((error: BusinessError, data: boolean) => {
 
 isBackgroundAllowed(): Promise\<boolean>
 
-Checks whether the current application is allowed to access the network in the background. This API uses a promise to return the result.
+Obtains whether the current application is allowed to access the network in the background. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -163,11 +170,13 @@ Checks whether the current application is allowed to access the network in the b
 
 | Type             | Description                                                                                |
 | ----------------- | ------------------------------------------------------------------------------------ |
-| Promise\<boolean> |  Promise used to return the result. The value **true** indicates that the background policy is allowed, and the value **false** indicates the opposite.|
+| Promise\<boolean> | Promise object. Returns true if the background policy is allowed; returns false otherwise. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -195,7 +204,7 @@ policy
 
 setPolicyByUid(uid: number, policy: NetUidPolicy, callback: AsyncCallback\<void>): void
 
-Sets the metered network access policy for the application specified by a given UID. This API uses an asynchronous callback to return the result.
+Sets the policy for whether the application with the corresponding UID can access the metered network. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -207,13 +216,15 @@ Sets the metered network access policy for the application specified by a given 
 
 | Name  | Type                           | Mandatory| Description                                          |
 | -------- | ------------------------------- | ---- | ---------------------------------------------- |
-| uid      | number                          | Yes  | Unique app ID, which is a positive integer within the int32_t range.                               |
+| uid      | number                          | Yes   | Unique identifier of the app. The value range is a positive integer within the int32_t range.                                |
 | policy   | [NetUidPolicy](#netuidpolicy) | Yes  | Network access policy for the application.                                |
-| callback | AsyncCallback\<void>            | Yes  | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| callback | AsyncCallback\<void>            | Yes   | Callback function. Returns an empty value on success, and returns an error code and error information on failure. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -248,18 +259,20 @@ Sets whether the application with the corresponding UID can access the metering 
 
 | Name| Type                           | Mandatory| Description          |
 | ------ | ------------------------------- | ---- | -------------- |
-| uid    | number                          | Yes  | Unique app ID, which is a positive integer within the int32_t range.|
+| uid    | number                          | Yes   | Unique identifier of the app. The value range is a positive integer within the int32_t range. |
 | policy | [NetUidPolicy](#netuidpolicy) | Yes  | Network access policy for the application.|
 
 **Return value**
 
 | Type          | Description                                                             |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -287,7 +300,7 @@ policy
 
 getPolicyByUid(uid: number, callback: AsyncCallback\<NetUidPolicy>): void
 
-Obtains the network access policy for the application specified by a given UID. This API uses an asynchronous callback to return the result.
+Obtains the network access policy by app UID. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -299,12 +312,14 @@ Obtains the network access policy for the application specified by a given UID. 
 
 | Name  | Type                                           | Mandatory| Description                                                    |
 | -------- | ----------------------------------------------- | ---- | -------------------------------------------------------- |
-| uid      | number                                          | Yes  | Unique app ID, which is a positive integer within the int32_t range.                                          |
-| callback | AsyncCallback\<[NetUidPolicy](#netuidpolicy)> | Yes  | Callback used to return the result. If the operation is successful, the policy result is returned. If the operation fails, an error code is returned.|
+| uid      | number                                          | Yes   | Unique identifier of the app. The value range is a positive integer within the int32_t range.                                           |
+| callback | AsyncCallback\<[NetUidPolicy](#netuidpolicy)> | Yes   | Callback function. Returns the policy result on success, and returns an error code and error information on failure. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -340,17 +355,19 @@ Obtains the network access policy by app UID. This API uses a promise to return 
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| uid    | number | Yes  | Unique app ID, which is a positive integer within the int32_t range.|
+|uid   | number | Yes   | Unique identifier of the app. The value is a positive integer within the range of int32_t. |
 
 **Return value**
 
 | Type                                     | Description                                                     |
 | ----------------------------------------- | --------------------------------------------------------- |
-| Promise\<[NetUidPolicy](#netuidpolicy)> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[NetUidPolicy](#netuidpolicy)> | Promise object used to return the policy retrieval result. Returns an error code and error information on failure. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -378,7 +395,7 @@ policy
 
 getUidsByPolicy(policy: NetUidPolicy, callback: AsyncCallback\<Array\<number>>): void
 
-Obtains all UIDs that match the specified network policy. This API uses an asynchronous callback to return the result.
+Obtains all UIDs that match the policy. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -391,11 +408,13 @@ Obtains all UIDs that match the specified network policy. This API uses an async
 | Name  | Type                           | Mandatory| Description                                                       |
 | -------- | ------------------------------- | ---- | ----------------------------------------------------------- |
 | policy   | [NetUidPolicy](#netuidpolicy) | Yes  | Network policy for the application.                                 |
-| callback | AsyncCallback\<Array\<number>>  | Yes  | Callback used to return the result. If the operation is successful, the UID array of the application is returned. If the operation fails, an error message is returned.|
+| callback | AsyncCallback\<Array\<number>>  | Yes   | Callback function. Returns the application's UID array on success, and returns an error code and error information on failure. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -419,7 +438,7 @@ policy.getUidsByPolicy(11111, (error: BusinessError, data: number[]) => {
 
 getUidsByPolicy(policy: NetUidPolicy): Promise\<Array\<number>>
 
-Obtains all UIDs that match the policy by policy. This API uses a promise to return the result.
+Obtains all UIDs that match the policy. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -431,17 +450,19 @@ Obtains all UIDs that match the policy by policy. This API uses a promise to ret
 
 | Name| Type                           | Mandatory| Description                      |
 | ------ | ------------------------------- | ---- | -------------------------- |
-| policy | [NetUidPolicy](#netuidpolicy) | Yes  | Network policy for the application.|
+| policy | [NetUidPolicy](#netuidpolicy) | Yes | Policy of the application on the metered network. |
 
 **Return value**
 
 | Type                    | Description                                                        |
 | ------------------------ | ------------------------------------------------------------ |
-| Promise\<Array\<number>> | Promise used to return the result. If the operation is successful, the operation result is returned. If the operation fails, an error message is returned.|
+| Promise\<Array\<number>> | Promise object used to return the UID array of the application. Returns an error code and error information on failure. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -485,7 +506,9 @@ Obtains the metering network policy. This API uses an asynchronous callback to r
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -521,11 +544,13 @@ Obtains the metering network policy. This API uses a promise to return the resul
 
 | Type                                                 | Description                         |
 | ----------------------------------------------------- | ----------------------------- |
-| Promise\<Array\<[NetQuotaPolicy](#netquotapolicy)>> | Promise used to return the result.|
+| Promise\<Array\<[NetQuotaPolicy](#netquotapolicy)>> | Promise that returns the set result. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -552,7 +577,7 @@ policy
 
 setNetQuotaPolicies(quotaPolicies: Array\<NetQuotaPolicy>, callback: AsyncCallback\<void>): void
 
-Sets the metering network policy. This API uses an asynchronous callback to return the result.
+Sets the metered network policy. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -565,11 +590,13 @@ Sets the metering network policy. This API uses an asynchronous callback to retu
 | Name       | Type                                       | Mandatory| Description                                          |
 | ------------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | quotaPolicies | Array\<[NetQuotaPolicy](#netquotapolicy)> | Yes  | Defines the quota policy for the specified network.                                  |
-| callback      | AsyncCallback\<void>                        | Yes  | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| callback      | AsyncCallback\<void>                        | Yes   | Callback function. Returns empty on success, and returns the error code and error information on failure. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -610,7 +637,7 @@ policy.setNetQuotaPolicies(netQuotaPolicyList, (error: BusinessError) => {
 
 setNetQuotaPolicies(quotaPolicies: Array\<NetQuotaPolicy>): Promise\<void>
 
-Sets the metering network policy. This API uses a promise to return the result.
+Sets the metered network policy. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -628,11 +655,13 @@ Sets the metering network policy. This API uses a promise to return the result.
 
 | Type          | Description                                                             |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -678,7 +707,7 @@ policy
 
 isUidNetAllowed(uid: number, isMetered: boolean, callback: AsyncCallback\<boolean>): void
 
-Checks whether the application specified by a given UID is allowed to access a metered network. This API uses an asynchronous callback to return the result.
+Checks whether the application specified by a given UID can access a metered or non-metered network. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -690,13 +719,15 @@ Checks whether the application specified by a given UID is allowed to access a m
 
 | Name   | Type                   | Mandatory| Description                                                     |
 | --------- | ----------------------- | ---- | --------------------------------------------------------- |
-| uid       | number                  | Yes  | Unique app ID, which is a positive integer within the int32_t range.                                          |
+|uid      | number                  | Yes   | Unique identifier of the app. The value range is a positive integer within the range of int32_t.                                           |
 | isMetered | boolean                 | Yes  | Whether the network is a metered network. The value **true** indicates that the network is a metered network, and the value **false** indicates the opposite.                                           |
-| callback  | AsyncCallback\<boolean> | Yes  | Callback used to return the result. The value **true** means that the application is allowed to access metered networks, and the value **false** means the opposite.|
+| callback  | AsyncCallback\<boolean> | Yes   | Callback function. Returns **true** to indicate that this uid can access the corresponding metered network. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -720,7 +751,7 @@ policy.isUidNetAllowed(11111, true, (error: BusinessError, data: boolean) => {
 
 isUidNetAllowed(uid: number, isMetered: boolean): Promise\<boolean>
 
-Checks whether the application specified by a given UID is allowed to access a metered network. This API uses a promise to return the result.
+Checks whether the corresponding UID can access the metered or non-metered network. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -732,18 +763,20 @@ Checks whether the application specified by a given UID is allowed to access a m
 
 | Name   | Type   | Mandatory| Description          |
 | --------- | ------- | ---- | -------------- |
-| uid       | number  | Yes  | Unique app ID, which is a positive integer within the int32_t range.|
+|uid      | number  | Yes   | Unique identifier of the app. The value range is a positive integer within the int32_t range. |
 | isMetered | boolean | Yes  | Whether the network is a metered network. The value **true** indicates that the network is a metered network, and the value **false** indicates the opposite.|
 
 **Return value**
 
 | Type             | Description                         |
 | ----------------- | ----------------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the UID can access the metering or non-metering network, and the value **false** indicates the opposite.|
+| Promise\<boolean> | Promise object. Returns **true** if this **uid** can access the metered or non-metered network; returns **false** otherwise. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -783,13 +816,15 @@ Obtains whether the network of the specified iface can be accessed by the corres
 
 | Name  | Type                   | Mandatory| Description                                                        |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| uid      | number                  | Yes  | Unique app ID, which is a positive integer within the int32_t range.                                              |
-| iface    | string                  | Yes  | Name of the target network.                                             |
-| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the result. The value **true** means that the application is allowed to access the specified network, and the value **false** means the opposite.|
+|uid     | number                  | Yes   | Unique identifier of the app. The value range is a positive integer within the int32_t range.                                               |
+|iface   | string                  | Yes   | Name of the corresponding network.                                              |
+| callback | AsyncCallback\<boolean> | Yes   | Callback function. Returning **true** indicates that this uid can access the network corresponding to the iface. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -813,7 +848,7 @@ policy.isUidNetAllowed(11111, 'wlan0', (error: BusinessError, data: boolean) => 
 
 isUidNetAllowed(uid: number, iface: string): Promise\<boolean>
 
-Obtains whether the UID can access the network of the specified iface. This API uses a promise to return the result.
+Obtains whether the network of the specified iface can be accessed by the corresponding UID. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -825,18 +860,20 @@ Obtains whether the UID can access the network of the specified iface. This API 
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| uid    | number | Yes  | Unique app ID, which is a positive integer within the int32_t range.|
+| uid    | number | Yes   | Unique identifier of the app. The value is a positive integer within the range of int32_t. |
 | iface  | string | Yes  | Name of the target network.|
 
 **Return value**
 
 | Type             | Description                                                   |
 | ----------------- | ------------------------------------------------------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** means that the application is allowed to access the specified network, and the value **false** means the opposite.|
+| Promise\<boolean> | Promise object. The value **true** indicates that the corresponding UID can access the network of the specified iface; the value **false** indicates that it cannot. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -864,7 +901,7 @@ policy
 
 setDeviceIdleTrustlist(uids: Array\<number>, isAllowed: boolean, callback: AsyncCallback\<void>): void
 
-Adds applications specified by given UIDs to the device idle allowlist. This API uses an asynchronous callback to return the result.
+Sets whether multiple UIDs are on the trustlist of the sleep firewall. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -876,13 +913,15 @@ Adds applications specified by given UIDs to the device idle allowlist. This API
 
 | Name   | Type                          | Mandatory| Description                                          |
 | --------- | ------------------------------ | ---- | ---------------------------------------------- |
-| uids      | Array\<number>                 | Yes  | Unique ID of the application.                                |
-| isAllowed | boolean                        | Yes  | Whether to add the application to the allowlist. The value **true** means to add the application to the allowlist, and the value **false** means the opposite.                                |
-| callback  | callback: AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| uids      | Array\<number\>                 | Yes   | Unique identifier of the application.                                 |
+| isAllowed | boolean                        | Yes  | Whether to add the application to the trustlist. The value **true** means to add the application to the trustlist, and the value **false** means the opposite.                                |
+| callback  | AsyncCallback\<void\> | Yes   | Callback function. Returns no value on success, and returns an error code and error information on failure. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -905,7 +944,7 @@ policy.setDeviceIdleTrustlist([11111, 22222], true, (error: BusinessError) => {
 
 setDeviceIdleTrustlist(uids: Array\<number>, isAllowed: boolean): Promise\<void>
 
-Sets whether multiple UIDs are in the whitelist of the sleep firewall. This API uses a promise to return the result.
+Sets whether multiple UIDs are on the trustlist of the sleep firewall. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -917,18 +956,20 @@ Sets whether multiple UIDs are in the whitelist of the sleep firewall. This API 
 
 | Name   | Type          | Mandatory| Description          |
 | --------- | -------------- | ---- | -------------- |
-| uids      | Array\<number> | Yes  | Unique ID of the application.|
-| isAllowed | boolean        | Yes  | Whether to add the application to the allowlist. The value **true** means to add the application to the allowlist, and the value **false** means the opposite.|
+| uids      | Array\<number> | Yes   | Unique identifier of the app. |
+| isAllowed | boolean        | Yes  | Whether to add the application to the trustlist. The value **true** means to add the application to the trustlist, and the value **false** means the opposite.|
 
 **Return value**
 
 | Type          | Description                                                             |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -942,9 +983,7 @@ Sets whether multiple UIDs are in the whitelist of the sleep firewall. This API 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .setDeviceIdleTrustlist([11111, 22222], true)
-  .then(() => {
+policy.setDeviceIdleTrustlist([11111, 22222], true).then(() => {
     console.info('setDeviceIdleTrustlist success');
   })
   .catch((error: BusinessError) => {
@@ -956,7 +995,7 @@ policy
 
 getDeviceIdleTrustlist(callback: AsyncCallback\<Array\<number>>): void
 
-Obtains the UID of applications that are on the device idle allowlist. This API uses an asynchronous callback to return the result.
+Obtains the UIDs contained in the sleep mode trustlist. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -972,7 +1011,9 @@ Obtains the UID of applications that are on the device idle allowlist. This API 
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -996,7 +1037,7 @@ policy.getDeviceIdleTrustlist((error: BusinessError, data: number[]) => {
 
 getDeviceIdleTrustlist(): Promise\<Array\<number>>
 
-Obtains the UID of applications that are on the device idle allowlist. This API uses a promise to return the result.
+Obtains the UIDs contained in the sleep mode trustlist. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1008,11 +1049,13 @@ Obtains the UID of applications that are on the device idle allowlist. This API 
 
 | Type                    | Description                         |
 | ------------------------ | ----------------------------- |
-| Promise\<Array\<number>> | Promise used to return the result.|
+| Promise\<Array\<number>> | Promise that returns the set result. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1025,21 +1068,18 @@ Obtains the UID of applications that are on the device idle allowlist. This API 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .getDeviceIdleTrustlist()
-  .then((data: number[]) => {
-    console.info(JSON.stringify(data));
-  })
-  .catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
-  });
+policy.getDeviceIdleTrustlist().then((data: number[]) => {
+  console.info(JSON.stringify(data));
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## policy.getBackgroundPolicyByUid
 
 getBackgroundPolicyByUid(uid: number, callback: AsyncCallback\<NetBackgroundPolicy>): void
 
-Checks whether the specified UID can access the background network. This API uses an asynchronous callback to return the result.
+Obtains whether the specified UID can access the background network. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1051,12 +1091,14 @@ Checks whether the specified UID can access the background network. This API use
 
 | Name  | Type                                                         | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------- | ---- | ------------------------ |
-| uid      | number                                                        | Yes  | Unique app ID, which is a positive integer within the int32_t range.          |
+| uid      | number                                                        | Yes   | Unique identifier of the app. The value is a positive integer within the range of int32_t.           |
 | callback | AsyncCallback\<[NetBackgroundPolicy](#netbackgroundpolicy)> | Yes  | Callback used to return the result.  .|
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1080,7 +1122,7 @@ policy.getBackgroundPolicyByUid(11111, (error: BusinessError, data: policy.NetBa
 
 getBackgroundPolicyByUid(uid: number): Promise\<NetBackgroundPolicy>
 
-Obtains whether the UID can access the network of the background. This API uses a promise to return the result.
+Obtains whether the specified UID can access the background network. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1092,17 +1134,19 @@ Obtains whether the UID can access the network of the background. This API uses 
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| uid    | number | Yes  | Unique app ID, which is a positive integer within the int32_t range.|
+| uid    | number | Yes   | Unique identifier of the app. The value range is a positive integer within the int32_t range. |
 
 **Return value**
 
 | Type                                                   | Description                         |
 | ------------------------------------------------------- | ----------------------------- |
-| Promise\<[NetBackgroundPolicy](#netbackgroundpolicy)> | Promise used to return the result.|
+| Promise\<[NetBackgroundPolicy](#netbackgroundpolicy)> | Promise that returns the set result. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1130,7 +1174,7 @@ policy
 
 resetPolicies(simId: string, callback: AsyncCallback\<void>): void
 
-Restores all the policies (cellular network, background network, firewall, and application-specific network policies) for the specified SIM card. This API uses an asynchronous callback to return the result.
+Resets the cellular network, background network policy, firewall policy, and application-specific policy corresponding to the specified SIM card ID. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1142,12 +1186,14 @@ Restores all the policies (cellular network, background network, firewall, and a
 
 | Name  | Type                | Mandatory| Description                                          |
 | -------- | -------------------- | ---- | ---------------------------------------------- |
-| simId    | string               | Yes  | SIM card ID.                                     |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| simId    | string               | Yes   | SIM card ID.                                      |
+| callback | AsyncCallback\<void\> | Yes   | Callback function. Returns no value on success, and returns an error code and error information on failure. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1170,7 +1216,7 @@ policy.resetPolicies('1', (error: BusinessError) => {
 
 resetPolicies(simId: string): Promise\<void>
 
-Resets the cellular network, background network policy, firewall policy, and app policy corresponding to the SIM card ID. This API uses a promise to return the result.
+Resets the cellular network, background network policy, firewall policy, and application-specific policies corresponding to the SIM card ID. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1182,17 +1228,19 @@ Resets the cellular network, background network policy, firewall policy, and app
 
 | Name| Type  | Mandatory| Description     |
 | ------ | ------ | ---- | --------- |
-| simId  | string | Yes  | SIM card ID.|
+| simId  | string | Yes   | SIM card ID. |
 
 **Return value**
 
 | Type          | Description                                                             |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1233,13 +1281,15 @@ Updates a reminder policy. This API uses an asynchronous callback to return the 
 | Name    | Type                                                | Mandatory| Description                                          |
 | ---------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
 | netType    | [NetBearType](js-apis-net-connection.md#netbeartype) | Yes  | Network type.                                      |
-| simId      | string                                               | Yes  | SIM card ID.                                     |
+| simId      | string                                               | Yes   | SIM card ID.                                      |
 | remindType | [RemindType](#remindtype)                          | Yes  | Enumerates the reminder types.                                      |
-| callback   | AsyncCallback\<void>                                 | Yes  | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| callback   | AsyncCallback\<void>                                 | Yes   | Callback function. Returns on success with no value, and returns an error code and error information on failure. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1281,18 +1331,20 @@ Updates a reminder policy. This API uses a promise to return the result.
 | Name    | Type                                                | Mandatory| Description     |
 | ---------- | ---------------------------------------------------- | ---- | --------- |
 | netType    | [NetBearType](js-apis-net-connection.md#netbeartype) | Yes  | Network type. |
-| simId      | string                                               | Yes  | SIM card ID.|
+| simId      | string                                               | Yes   | SIM card ID. |
 | remindType | [RemindType](#remindtype)                          | Yes  | Enumerates the reminder types. |
 
 **Return value**
 
 | Type          | Description                                                             |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1325,7 +1377,7 @@ policy
 
 setPowerSaveTrustlist(uids: Array\<number>, isAllowed: boolean, callback: AsyncCallback\<void>): void
 
-Sets whether the app with the specified UID is in the whitelist of the power saving firewall. This API uses an asynchronous callback to return the result.
+Sets whether the app with the specified UID is in the trustlist of the power saving firewall. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1337,13 +1389,15 @@ Sets whether the app with the specified UID is in the whitelist of the power sav
 
 | Name   | Type                          | Mandatory| Description                                          |
 | --------- | ------------------------------ | ---- | ---------------------------------------------- |
-| uids      | Array\<number>                 | Yes  | Unique ID of the application.                               |
-| isAllowed | boolean                        | Yes  | Whether to add the application to the allowlist. The value **true** means to add the application to the allowlist, and the value **false** means the opposite.                                |
-| callback  | callback: AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| uids      | Array\<number\>                 | Yes   | Unique identifier of the application.                                |
+| isAllowed | boolean                        | Yes  | Whether to add the application to the trustlist. The value **true** means to add the application to the trustlist, and the value **false** means the opposite.                                |
+| callback  | AsyncCallback\<void\> | Yes   | Callback function. Returns no value on success, and returns an error code and error information on failure. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1366,7 +1420,7 @@ policy.setPowerSaveTrustlist([11111, 22222], true, (error: BusinessError) => {
 
 setPowerSaveTrustlist(uids: Array\<number>, isAllowed: boolean): Promise\<void>
 
-Sets whether the app with the specified UID is in the whitelist of the power saving firewall. This API uses a promise to return the result.
+Sets whether the app with the specified UID is in the trustlist of the power saving firewall. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1378,18 +1432,20 @@ Sets whether the app with the specified UID is in the whitelist of the power sav
 
 | Name   | Type          | Mandatory| Description          |
 | --------- | -------------- | ---- | -------------- |
-| uids      | Array\<number> | Yes  | Unique ID of the application.|
-| isAllowed | boolean        | Yes  | Whether to add the application to the allowlist. The value **true** means to add the application to the allowlist, and the value **false** means the opposite.|
+| uids      | Array\<number> | Yes   | Unique identifier of the app. |
+| isAllowed | boolean        | Yes  | Whether to add the application to the trustlist. The value **true** means to add the application to the trustlist, and the value **false** means the opposite.|
 
 **Return value**
 
 | Type          | Description                                                             |
 | -------------- | ----------------------------------------------------------------- |
-| Promise\<void> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1417,7 +1473,7 @@ policy
 
 getPowerSaveTrustlist(callback: AsyncCallback\<Array\<number>>): void
 
-Obtains the UID array of applications that are on the power saving allowlist. This API uses an asynchronous callback to return the result.
+Obtains the UID array contained in the power save mode trustlist. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1433,7 +1489,9 @@ Obtains the UID array of applications that are on the power saving allowlist. Th
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1457,7 +1515,7 @@ policy.getPowerSaveTrustlist((error: BusinessError, data: number[]) => {
 
 getPowerSaveTrustlist(): Promise\<Array\<number>>
 
-Obtains the UID array of applications that are on the device idle allowlist. This API uses a promise to return the result.
+Obtains the UID array contained in the sleep mode trustlist. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1469,11 +1527,13 @@ Obtains the UID array of applications that are on the device idle allowlist. Thi
 
 | Type                    | Description                         |
 | ------------------------ | ----------------------------- |
-| Promise\<Array\<number>> | Promise used to return the result.|
+| Promise\<Array\<number>> | Promise that returns the set result. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1500,7 +1560,7 @@ policy
 
 setNetworkAccessPolicy(uid: number, policy: NetworkAccessPolicy, isReconfirmed?: boolean): Promise\<void>
 
-Sets whether the application with the specified UID can access the network. This API uses a promise to return the result.
+Sets the policy on whether the application with the specified UID can access the network. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1512,7 +1572,7 @@ Sets whether the application with the specified UID can access the network. This
 
 | Name        | Type                                          | Mandatory| Description                                                                         |
 | ------------- | ---------------------------------------------- | ---- | ---------------------------------------------------------------------------- |
-| uid           | number                                         | Yes  | Unique app ID, which is a positive integer within the int32_t range.                                                               |
+| uid           | number                                         | Yes   | Unique identifier of the app. The value range is a positive integer within the int32_t range.                                                                |
 | policy        | [NetworkAccessPolicy](#networkaccesspolicy12)  | Yes  | Network policy.                                                                     |
 | isReconfirmed | boolean                                        | No  | Whether reconfirmation is required. The value **true** indicates that reconfirmation is not required and no dialog box is displayed. The value **false** indicates that reconfirmation is required and a dialog box is displayed when the application accesses the network. The default value is **false**. |
 
@@ -1520,11 +1580,13 @@ Sets whether the application with the specified UID can access the network. This
 
 | Type          | Description                                                         |
 | -------------- | ------------------------------------------------------------ |
-| Promise\<void> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void> | Promise that returns no value. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1556,7 +1618,7 @@ policy
 
 getNetworkAccessPolicy(uid: number): Promise\<NetworkAccessPolicy>
 
-Obtains whether the application with the specified UID can access the network. This API uses a promise to return the result.
+Obtains the network access policy of the application with the specified UID. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1568,17 +1630,19 @@ Obtains whether the application with the specified UID can access the network. T
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| uid    | number | Yes  | Unique app ID, which is a positive integer within the int32_t range.|
+| uid    | number | Yes   | Unique identifier of the app. The value range is a positive integer within the range of int32_t. |
 
 **Return value**
 
 | Type                                                   | Description                         |
 | ------------------------------------------------------- | ----------------------------- |
-| Promise\<[NetworkAccessPolicy](#networkaccesspolicy12)> | Promise used to return the result.|
+| Promise\<[NetworkAccessPolicy](#networkaccesspolicy12)> | Promise that returns the set result. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1606,7 +1670,7 @@ policy
 
 getNetworkAccessPolicy(): Promise\<UidNetworkAccessPolicy>
 
-Obtains the network access policy of all applications under the current user. This API uses a promise to return the result.
+Obtains the network access policy information of all applications under the current user. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1618,11 +1682,13 @@ Obtains the network access policy of all applications under the current user. Th
 
 | Type                                                         | Description                       |
 | ------------------------------------------------------------- | --------------------------- |
-| Promise\<[UidNetworkAccessPolicy](#uidnetworkaccesspolicy12)> | Promise used to return the result.|
+| Promise\<[UidNetworkAccessPolicy](#uidnetworkaccesspolicy12)> | Promise that returns the set result. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1661,15 +1727,15 @@ policy
   });
 ```
 
-## policy.on
+## policy
 
 Represents the handle to a network policy.
 
 ### on('netUidPolicyChange')
 
-on(type: "netUidPolicyChange", callback: Callback\<NetUidPolicyInfo\>): void
+on(type: 'netUidPolicyChange', callback: Callback\<NetUidPolicyInfo\>): void
 
-Registers the callback when the **policy** changes. This API uses an asynchronous callback to return the result.
+Registers the callback for network policy changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1682,11 +1748,13 @@ Registers the callback when the **policy** changes. This API uses an asynchronou
 | Name  | Type                                                               | Mandatory| Description                                  |
 | -------- | ------------------------------------------------------------------- | ---- | -------------------------------------- |
 | type     | string                                                              | Yes  | Event type.<br/> The value **netUidPolicyChange** indicates a policy change event.                 |
-| callback | Callback\<[NetUidPolicyInfo](#netuidpolicyinfo11)> | Yes  | Callback used to return the result. It is called when the network policy changes.|
+| callback | Callback\<[NetUidPolicyInfo](#netuidpolicyinfo11)> | Yes | Callback invoked when the network policy changes. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1716,9 +1784,9 @@ try {
 
 ### off('netUidPolicyChange')
 
-off(type: "netUidPolicyChange", callback?: Callback\<NetUidPolicyInfo\>): void
+off(type: 'netUidPolicyChange', callback?: Callback\<NetUidPolicyInfo\>): void
 
-Unsubscribes from **policy** changes. This API uses an asynchronous callback to return the result.
+Unsubscribes from network policy changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1731,11 +1799,13 @@ Unsubscribes from **policy** changes. This API uses an asynchronous callback to 
 | Name  | Type                                                               | Mandatory| Description                                  |
 | -------- | ------------------------------------------------------------------- | ---- | -------------------------------------- |
 | type     | string                                                              | Yes  | Event type. The value **netUidPolicyChange** indicates a policy change event.              |
-| callback | Callback\<[NetUidPolicyInfo](#netuidpolicyinfo11)> | No  | Callback used to return the result. It is called when the network policy changes.|
+| callback | Callback\<[NetUidPolicyInfo](#netuidpolicyinfo11)> | No   | Callback for the network policy change event. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1773,9 +1843,9 @@ try {
 
 ### on('netUidRuleChange')
 
-on(type: "netUidRuleChange", callback: Callback\<NetUidRuleInfo\>): void
+on(type: 'netUidRuleChange', callback: Callback\<NetUidRuleInfo\>): void
 
-Registers the callback when the **rule** changes. This API uses an asynchronous callback to return the result.
+Registers the callback for rule changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1788,11 +1858,13 @@ Registers the callback when the **rule** changes. This API uses an asynchronous 
 | Name  | Type                                                         | Mandatory| Description                                  |
 | -------- | ------------------------------------------------------------- | ---- | -------------------------------------- |
 | type     | string                                                        | Yes  | Event type.<br/> The value **netUidRuleChange** indicates a rule change event.                   |
-| callback | Callback\<[NetUidRuleInfo](#netuidruleinfo11)> | Yes  | Callback used to return the result. It is called when the rule changes.|
+| callback | Callback\<[NetUidRuleInfo](#netuidruleinfo11)> | Yes | Callback function. Callback invoked when the registered rule changes. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1822,9 +1894,9 @@ try {
 
 ### off('netUidRuleChange')
 
-off(type: "netUidRuleChange", callback?: Callback\<NetUidRuleInfo\>): void
+off(type: 'netUidRuleChange', callback?: Callback\<NetUidRuleInfo\>): void
 
-Unsubscribes from **rule** changes. This API uses an asynchronous callback to return the result.
+Unregisters the callback for rule changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1837,11 +1909,13 @@ Unsubscribes from **rule** changes. This API uses an asynchronous callback to re
 | Name  | Type                                                         | Mandatory| Description                                  |
 | -------- | ------------------------------------------------------------- | ---- | -------------------------------------- |
 | type     | string                                                        | Yes  | Event type. The value **netUidRuleChange** indicates a rule change event.                   |
-| callback | Callback\<[NetUidRuleInfo](#netuidruleinfo11)> | No  | Callback used to return the result. It is called when the rule changes.|
+| callback | Callback\<[NetUidRuleInfo](#netuidruleinfo11)> | No | Callback function. Callback invoked when the rule changes. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1879,9 +1953,9 @@ try {
 
 ### on('netMeteredIfacesChange')
 
-on(type: "netMeteredIfacesChange", callback: Callback\<Array\<string>>): void
+on(type: 'netMeteredIfacesChange', callback: Callback\<Array\<string>>): void
 
-Registers the callback when the **iface** changes. This API uses an asynchronous callback to return the result.
+Registers the callback for metered iface changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1894,11 +1968,13 @@ Registers the callback when the **iface** changes. This API uses an asynchronous
 | Name  | Type                     | Mandatory| Description                                     |
 | -------- | ------------------------- | ---- | ----------------------------------------- |
 | type     | string                    | Yes  | Event type.<br/> The value **netMeteredIfacesChange** indicates a metered **iface** change event.                |
-| callback | Callback\<Array\<string>> | Yes  | Callback used to return the result. It is called when the registered metered **iface** changes.|
+| callback | Callback\<Array\<string>> | Yes | Callback invoked when the metered iface changes. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1923,9 +1999,9 @@ try {
 
 ### off('netMeteredIfacesChange')
 
-off(type: "netMeteredIfacesChange", callback?: Callback\<Array\<string>>): void
+off(type: 'netMeteredIfacesChange', callback?: Callback\<Array\<string>>): void
 
-Unsubscribes from the changes of the metering interface. This API uses an asynchronous callback to return the result.
+Unregisters the callback for metered iface changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1938,11 +2014,13 @@ Unsubscribes from the changes of the metering interface. This API uses an asynch
 | Name  | Type                     | Mandatory| Description                                     |
 | -------- | ------------------------- | ---- | ----------------------------------------- |
 | type     | string                    | Yes  | Event type. The value **netMeteredIfacesChange** indicates a metered **iface** change event.                |
-| callback | Callback\<Array\<string>> | No  | Callback used to return the result. It is called when the registered metered **iface** changes.|
+| callback | Callback\<Array\<string>> | No | Callback invoked when the metered iface changes. |
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -1975,9 +2053,9 @@ try {
 
 ### on('netQuotaPolicyChange')
 
-on(type: "netQuotaPolicyChange", callback: Callback\<Array\<NetQuotaPolicy>>): void
+on(type: 'netQuotaPolicyChange', callback: Callback\<Array\<NetQuotaPolicy>>): void
 
-Registers the callback for network quota policy changes. This API uses an asynchronous callback to return the result.
+Registers a callback for metered network policy changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1994,7 +2072,9 @@ Registers the callback for network quota policy changes. This API uses an asynch
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -2024,9 +2104,9 @@ try {
 
 ### off('netQuotaPolicyChange')
 
-off(type: "netQuotaPolicyChange", callback?: Callback\<Array\<NetQuotaPolicy>>): void
+off(type: 'netQuotaPolicyChange', callback?: Callback\<Array\<NetQuotaPolicy>>): void
 
-Unsubscribes from the changes of the metering network policy. This API uses an asynchronous callback to return the result.
+Unregisters the callback for metered network policy changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -2043,7 +2123,9 @@ Unsubscribes from the changes of the metering network policy. This API uses an a
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -2076,9 +2158,9 @@ try {
 
 ### on('netBackgroundPolicyChange')
 
-on(type: "netBackgroundPolicyChange", callback: Callback\<boolean>): void
+on(type: 'netBackgroundPolicyChange', callback: Callback\<boolean>): void
 
-Registers the callback for background network policy changes. This API uses an asynchronous callback to return the result.
+Registers a callback for background network policy changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -2095,7 +2177,9 @@ Registers the callback for background network policy changes. This API uses an a
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -2120,9 +2204,9 @@ try {
 
 ### off('netBackgroundPolicyChange')
 
-off(type: "netBackgroundPolicyChange", callback?: Callback\<boolean>): void
+off(type: 'netBackgroundPolicyChange', callback?: Callback\<boolean>): void
 
-Unsubscribes from background network policy changes. This API uses an asynchronous callback to return the result.
+Unregisters the callback for background network policy changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -2139,7 +2223,9 @@ Unsubscribes from background network policy changes. This API uses an asynchrono
 
 **Error codes**
 
-| ID| Error Message                                    |
+For details about the error codes, see [Policy Management Error Codes](errorcode-net-policy.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                     |
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
@@ -2181,9 +2267,9 @@ Enumerates the background network policies.
 | Name                           | Value | Description                                      |
 | ------------------------------- | --- | ------------------------------------------ |
 | NET_BACKGROUND_POLICY_NONE      | 0   | No background network policy is specified. This is the default value.                                  |
-| NET_BACKGROUND_POLICY_ENABLE    | 1   | Background applications are allowed to access a metered network.              |
-| NET_BACKGROUND_POLICY_DISABLE   | 2   | Applications running in the background are not allowed to access a metered network.            |
-| NET_BACKGROUND_POLICY_TRUSTLIST | 3   | Only applications on the allowlist are allowed to access metered networks when they are running in the background.|
+| NET_BACKGROUND_POLICY_ENABLE    | 1   | The application can use the metered network in the background. |
+| NET_BACKGROUND_POLICY_DISABLE   | 2   | The application cannot use the metered network in the background. |
+| NET_BACKGROUND_POLICY_TRUSTLIST | 3   | Only applications on the trustlist are allowed to access metered networks when they are running in the background.|
 
 ## NetQuotaPolicy
 
@@ -2209,8 +2295,8 @@ Defines the network for which the quota policy is set.
 | Name    | Type                                                | Read-Only|Optional| Description                                                                        |
 | -------- | ---------------------------------------------------- | ---- | ------|---------------------------------------------------------------------- |
 | netType  | [NetBearType](js-apis-net-connection.md#netbeartype) | No  |No|Network type.                                                                  |
-| simId    | string                                               | No   |No|Identifier of the SIM card on the metered cellular network.<br>It is not used for Ethernet and Wi-Fi networks.                    |
-| identity | string                                               | No  |No|ID of the SIM card on the metered cellular network.<br>It is used for Ethernet and Wi-Fi networks.<br>It is used together with **iccid**.|
+| simId    | string                                               | No    |No |Identifier value of the SIM card in the metered cellular network.<br>Not used for Ethernet and Wi-Fi networks.                     |
+| identity | string                                               | No   |No |Used together with simId in the metered cellular network.<br>Used independently for Ethernet and Wi-Fi networks.<br>Used to mark the type. |
 
 ## QuotaPolicy
 
@@ -2324,9 +2410,9 @@ Network access policy.
 
 | Name             | Type      | Read-Only| Optional|Description                         |
 | ----------------- | --------- | ---- | ------|----------------------- |
-| allowWiFi         | boolean   | No  |Yes|Whether the application is allowed to access the Wi-Fi network. The value **true** indicates that the application is allowed to access the Wi-Fi network, and the value **false** indicates the opposite.|
+| allowWiFi         | boolean   | No   |Yes |Whether to allow the application to access the Wi-Fi network. The value true means allowed, and false means not allowed. |
 | allowCellular     | boolean   | No |Yes|Whether the application is allowed to access the cellular network. The value **true** indicates that the application is allowed to access the cellular network, and the value **false** indicates the opposite.|
-| alwaysAllowWiFi<sup>18+</sup>    | boolean   | No |Yes|Whether the application is always allowed to access the Wi-Fi network. The value **true** indicates that the application is always allowed to access the Wi-Fi network, and the value **false** indicates the opposite.|
+| alwaysAllowWiFi<sup>18+</sup>    | boolean   | No  |Yes |Whether to allow the application to always access the Wi-Fi network. The value true means allowed, and false means not allowed. |
 | alwaysAllowCellular<sup>18+</sup>  | boolean   | No |Yes|Whether the application is always allowed to access the cellular network. The value **true** indicates that the application is always allowed to access the cellular network, and the value **false** indicates the opposite.|
 
 ## UidNetworkAccessPolicy<sup>12+</sup>

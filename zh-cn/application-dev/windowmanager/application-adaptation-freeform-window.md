@@ -4,7 +4,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @hanxuebing1-->
 <!--Designer: @chengyiyi-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 场景介绍

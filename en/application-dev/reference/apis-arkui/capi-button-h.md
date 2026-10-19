@@ -1,4 +1,5 @@
 # button.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
@@ -39,7 +40,6 @@ enum ArkUI_ButtonType
 ```
 
 **Description**
-
 
 Enumerates the button types.
 

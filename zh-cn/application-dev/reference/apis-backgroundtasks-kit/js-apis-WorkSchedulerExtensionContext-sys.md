@@ -1,4 +1,4 @@
-# WorkSchedulerExtensionContext（系统接口）
+# WorkSchedulerExtensionContext (延迟任务调度回调上下文)(系统接口)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -18,6 +18,14 @@ WorkSchedulerExtensionContext可直接作为WorkSchedulerExtension的上下文�
 > - 本模块接口仅可在Stage模型下使用。
 >
 > - 本模块为系统接口。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口请参见[WorkSchedulerExtensionContext (延迟任务调度回调上下文)(系统接口)](js-apis-WorkSchedulerExtensionContext.md)。
+
+## 导入模块
+
+```ts
+import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';  
+```
 
 ## 使用说明
 
@@ -37,7 +45,7 @@ class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
 
 startServiceExtensionAbility(want: Want): Promise\<void>
 
-启动ServiceExtensionAbility，使用Promise异步回调。
+启动ServiceExtensionAbility，用于在后台任务执行时需要启动关联的Service能力，使用Promise异步回调。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -59,9 +67,9 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -107,7 +115,7 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
 
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
-停止ServiceExtensionAbility，使用Promise异步回调。
+停止ServiceExtensionAbility，用于在后台任务结束或不再需要关联的Service能力，使用Promise异步回调。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -129,9 +137,9 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |

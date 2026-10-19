@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -24,7 +24,6 @@
   **图2** Row容器内子元素排列示意图
 
 ![arrangement-child-elements-row](figures/arrangement-child-elements-row.png)
-
 
 ## 基本概念
 

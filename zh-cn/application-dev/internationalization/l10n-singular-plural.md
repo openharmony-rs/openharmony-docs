@@ -3,7 +3,7 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
@@ -23,7 +23,7 @@
 
 - other：其他情况
 
-例如，在阿拉伯语中，单复规则如下：
+例如，在阿拉伯语中，单复数规则如下：
 
 - zero：0
 

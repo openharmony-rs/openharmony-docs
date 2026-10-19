@@ -1,7 +1,7 @@
 # 全局基础输入事件监听
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -91,14 +91,6 @@ type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptRe
 此类为抽象类，开发者无法自行创建实例。系统会在触发输入事件监听器时自动创建实例，并将实例传递给回调函数。
 
 **起始版本：** 26.0.0
-
-原始输入事件包装器类。
-
-提供统一的接口来访问不同类型的输入事件，确保类型安全和向后兼容性。
-
-此类封装了原始的MouseEvent、TouchEvent或KeyEvent对象，并通过类型安全的方法访问。
-
-此类为抽象类，开发者无法自行创建实例。系统会在触发输入事件监听器时自动创建实例，并将实例传递给回调函数。
 
 > **说明：**
 >

@@ -8,7 +8,7 @@
 
 在开启无障碍模式后，本模块提供无障碍控制操作拦截和无障碍节点获焦/失焦状态监听能力。开发者可通过onAccessibilityFocus监听组件的获焦与失焦状态变化，通过onAccessibilityActionIntercept在无障碍控制操作触发前进行拦截判断，适用于需要在无障碍模式下自定义组件交互逻辑的场景。
 
->**说明：**
+> **说明：**
 >
 > - 本模块首批接口从API version 18开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -32,7 +32,7 @@ onAccessibilityFocus(callback: AccessibilityFocusCallback): T
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| callback | [AccessibilityFocusCallback](#accessibilityfocuscallback) | 是   | 在无障碍模式下，当组件获焦、失焦状态发生变化时，向注册方通知当前状态。入参设置undefined时取消回调注册。 |
+| callback | [AccessibilityFocusCallback](#accessibilityfocuscallback) | 是   | 在无障碍模式下，当组件获焦、失焦状态发生变化时，向注册方通知当前状态。入参设置为undefined时，取消回调注册。 |
 
 **返回值：**
 
@@ -74,7 +74,7 @@ onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback): 
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| callback | [AccessibilityActionInterceptCallback](#accessibilityactioninterceptcallback20) | 是   | 在无障碍模式且组件支持点击的前提下，在无障碍控制操作触发前通知注册方该次无障碍控制操作，由注册方决定是否拦截该操作。未开启无障碍模式或组件不支持点击时，回调均不会触发。<br> 入参设置undefined时取消回调注册。 |
+| callback | [AccessibilityActionInterceptCallback](#accessibilityactioninterceptcallback20) | 是   | 在无障碍模式且组件支持点击的前提下，在无障碍控制操作触发前通知注册方该次无障碍控制操作，由注册方决定是否拦截该操作。未开启无障碍模式或组件不支持点击时，回调均不会触发。<br> 入参设置为undefined时，取消回调注册。 |
 
 **返回值：**
 
@@ -141,7 +141,7 @@ type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => Acc
 
 ### 示例1（设置onAccessibilityActionIntercept拦截点击事件）
 
-该示例演示在无障碍模式下，通过onAccessibilityActionIntercept事件在Toggle组件点击事件触发前进行拦截，并由开发者确认是否放行该点击事件。
+该示例演示在无障碍模式下，通过onAccessibilityActionIntercept事件在Toggle组件点击事件触发前进行拦截，并弹出确认对话框由用户确认是否放行该点击事件。
 
 ```ts
 // xxx.ets
@@ -207,9 +207,9 @@ struct OnAccessibilityFocusExample {
       Column() {
         Text("onAccessibilityFocus doesn't take effect")
         Text('onAccessibilityFocus takes effect')
-        .onAccessibilityFocus((isFocus: boolean) => {
-          console.info(`[testingTag] isFocus current is ${isFocus}`);
-        })
+          .onAccessibilityFocus((isFocus: boolean) => {
+            console.info(`[testingTag] isFocus current is ${isFocus}`);
+          })
       }
       .padding(24)
       .width('100%')

@@ -2,11 +2,15 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=a03d32af9e2912ff154772319bc8120aa7fff612 translatedAt=2026-09-01T12:42:31.642Z -->
 
-Layout constraints refer to constraints on the aspect ratio and display priority of components.
+Constrains the display effect of components through their aspect ratio and display priority. It supports two core features: fixed aspect ratio setting and responsive priority control, which can resolve issues such as component distortion and layout disorder, improving the display quality of the UI.
+
+- **aspectRatio**: applies to components that need to maintain a fixed aspect ratio, such as image display, video players, and card layouts. It resolves the issue of components needing to maintain a specific aspect ratio on different devices and screen orientations, preventing images or videos from being stretched or distorted.
+- **displayPriority**: applies to responsive layout scenarios. When the parent container has insufficient space, low-priority components can be automatically hidden based on their priority. It resolves the issue of controlling component display priority when there is insufficient space in responsive layouts, preventing content overflow or layout disorder.
 
 >  **NOTE**
 >
@@ -19,9 +23,11 @@ aspectRatio(value: number): T
 Sets the aspect ratio of the component, which can be obtained using the following formula: width/height.
 - If only **width** and **aspectRatio** are set, the height is calculated using the following formula: width/aspectRatio.
 - If only **height** and **aspectRatio** are set, the width is calculated using the following formula: height x aspectRatio.
-- If **width**, **height**, and **aspectRatio** are all set, the explicitly set height is ignored, and the effective height is calculated using the following formula: width/aspectRatio.
+- When width, height, and aspectRatio are set at the same time, height is recalculated as width/aspectRatio, and the explicitly set height value does not take effect.
 
-After the **aspectRatio** attribute is set, the component's width and height will be limited by the size of the parent component's content area. The priority of [constraintSize](ts-universal-attributes-size.md#constraintsize) is higher than that of **aspectRatio**.
+Applies to components that need to maintain a fixed aspect ratio, such as image display, video players, and maintaining proportions in responsive layouts.
+
+After the **aspectRatio** attribute is set, the component's width and height are limited by the size of the parent component's content area. The maxWidth/maxHeight of [constraintSize](ts-universal-attributes-size.md#constraintsize) takes precedence over aspectRatio. When the maxWidth/maxHeight constraints set by constraintSize conflict with the aspectRatio calculation result, the component follows the maxWidth/maxHeight constraints of constraintSize first, in which case aspectRatio may not take effect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -33,19 +39,21 @@ After the **aspectRatio** attribute is set, the component's width and height wil
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Aspect ratio of the component.<br>The default value varies by API version.<br>API version 9 and earlier: **1.0**<br>API version 10: none<br>**NOTE**<br>This parameter takes effect only when a valid value greater than 0 is specified.<br>For example, if a **Row** component has only its width set and does not have any child component, then when **aspectRatio** is not set or is set to a negative value, the height of the **Row** component is 0.|
+| value  | number | Yes   | Specifies the aspect ratio of the current component. The value range is (0, +∞).<br>In API version 9 and earlier, the default value is 1.0.<br>Since API version 10, there is no default value.<br>**Note:**<br>Use it when the aspect ratio of the component needs to be maintained (for example, when displaying images, videos, and other content that needs to maintain their ratio).<br>This attribute does not take effect when it is set to an invalid value (less than or equal to 0). Since API version 10, this attribute does not take effect when no value is set.<br>After this attribute is set, the width and height of the component are limited by the size of the parent component's content area, and the maxWidth/maxHeight of constraintSize take precedence over aspectRatio.<br>For example, when Row has only the width set and no child components, if aspectRatio is not set or is a negative value, the height is 0. |
 
 **Return value**
 
 | Type| Description|
 | --- | --- |
-|  T | Current component.|
+|  T  | Current component instance, which supports chained calls. |
 
 ## displayPriority
 
 displayPriority(value: number): T
 
-Sets the display priority for the component in the layout container.
+Sets the display priority of the current component in a Row/Column/Flex (single-line) container. The priority is determined by the integer part of the value, and a larger integer part indicates a higher priority.
+
+Applies to scenarios where child components are dynamically shown or hidden based on the parent container space in responsive layouts. For example, important content is displayed first and secondary content is hidden on different screen sizes.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -57,13 +65,13 @@ Sets the display priority for the component in the layout container.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Display priority of the component in the layout container.<br>Default value: **1**<br>**NOTE**<br>This parameter is only effective in [Row](./ts-container-row.md), [Column](./ts-container-column.md), and [Flex (single-line)](./ts-container-flex.md) container components.<br> The digits after the decimal point are not counted in determining the display priority. That is, numbers in the [x, x + 1) range are considered to represent the same priority. For example, **1.0** and **1.9** represent the same priority.<br>If the **displayPriority** value of all child components is not greater than 1, there is no difference in priority.<br>When the **displayPriority** value of a child component is greater than 1, a larger value indicates higher priority. If the parent container does not have enough space, child components with lower priority are hidden. If child components of a certain priority are hidden, those with an even lower priority are also hidden.|
+| value  | number | Yes   | Sets the display priority of the current component in the layout container. The value range is [0, +∞).<br>Default value: 1<br>**Note:**<br>Takes effect only in the [Row](./ts-container-row.md)/[Column](./ts-container-column.md)/[Flex (single line)](./ts-container-flex.md) container components.<br>Used when the container space is limited and the display order of components needs to be controlled or low-priority components need to be hidden (for example, dynamically displaying content based on the available space in a Flex container). It is recommended to set the priority based on the importance of the component, with a larger value (such as 2-10) for key components and a smaller value (such as 1) for secondary components.<br>The digits after the decimal point do not affect the priority. All values not greater than 1 have the same priority. When the value is greater than 1, the larger the integer part of displayPriority, the higher the priority; values within the same integer range have the same priority. For example, 0.5 and 1.0 have the same priority (both are not greater than 1); 1.5 and 1.9 have the same priority (both have an integer part of 1); 2.0 and 2.9 have the same priority (both have an integer part of 2), and their priority is higher than that of 1.x.<br>If the parent container has insufficient space, child components with lower priority are hidden. If child components at a certain priority level are hidden, all child components with lower priority are also hidden. |
 
 **Return value**
 
 | Type| Description|
 | --- | --- |
-|  T | Current component.|
+|  T | Returns the current component instance, supporting chain calls. |
 
 ## Example
 

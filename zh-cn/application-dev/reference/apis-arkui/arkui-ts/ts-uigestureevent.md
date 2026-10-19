@@ -1,7 +1,7 @@
 # 设置组件绑定的手势
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -59,7 +59,7 @@ addParallelGesture\<T>(gesture: GestureHandler\<T>, mask?: GestureMask): void
 
 removeGestureByTag(tag: string): void
 
-移除该组件上通过modifier绑定的设置为指定标志的手势，适用于组件交互模式切换或业务状态变化时取消某个已标记手势的场景。
+移除该组件上通过modifier绑定且设置了指定标志的手势，适用于组件交互模式切换或业务状态变化时取消某个已标记手势的场景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

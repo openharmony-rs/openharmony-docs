@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @xuxinao-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -59,8 +59,13 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
            // 开发者可以获取到应用终止事件发生的原因
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.reason=${eventInfo.params['reason']}`);
+           // 获取发起终止进程操作的进程ID
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.calling_pid=${eventInfo.params['calling_pid']}`);
+           // 获取发起终止进程操作的进程名称
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.calling_process_name=${eventInfo.params['calling_process_name']}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_running_unique_id=${eventInfo.params['app_running_unique_id']}`);
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.last_exit_detail_info=${JSON.stringify(eventInfo.params['last_exit_detail_info'])}`);
          }
        }
      }
@@ -157,6 +162,9 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    HiAppEvent eventInfo.params.time=1717597063727
    HiAppEvent eventInfo.params.reason="RssThresholdKiller"
    HiAppEvent eventInfo.params.foreground=true
+   HiAppEvent eventInfo.params.calling_pid="638"
+   HiAppEvent eventInfo.params.calling_process_name="appspawn"
    HiAppEvent eventInfo.params.app_running_unique_id=207544
    HiAppEvent eventInfo.params.bundle_version=1000000
+   HiAppEvent eventInfo.params.last_exit_detail_info={"exit_msg":"THREAD_BLOCK_6S","kill_reason":"ThreadBlock6S","pid":"28549","process_name":"com.samples.freezedebug","process_state":"2","pss":"0","rss":"0","timestamp":"1785743803766","uid":"20020204"}
    ```

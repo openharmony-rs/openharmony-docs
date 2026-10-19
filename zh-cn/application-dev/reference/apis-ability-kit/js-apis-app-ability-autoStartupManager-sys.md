@@ -43,7 +43,7 @@ on(type: 'systemAutoStartup', callback: AutoStartupCallback): void
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | type | string | 是    | 固定取值“systemAutoStartup”，表示为系统应用所调用。 |
-| callback  | [AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md)   | 是    | 监听应用组件开机自启动状态变化的回调对象。      |
+| callback | [AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md) | 是 | 监听应用组件开机自启动状态变化的回调对象。 |
 
 **错误码：**
 
@@ -51,8 +51,8 @@ on(type: 'systemAutoStartup', callback: AutoStartupCallback): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000050 | Failed to connect to the system service. |
 
@@ -101,7 +101,7 @@ off(type: 'systemAutoStartup', callback?: AutoStartupCallback): void
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | type | string              | 是    | 固定取值“systemAutoStartup”，表示为系统应用所调用。 |
-| callback | [AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md)   | 否 | 监听应用组件开机自启动状态变化的回调对象。如果不指定该参数，则取消所有已注册的监听。 |
+| callback | [AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md) | 否 | 监听应用组件开机自启动状态变化的回调对象。如果不指定该参数，则取消所有已注册的监听。 |
 
 **错误码：**
 
@@ -109,8 +109,8 @@ off(type: 'systemAutoStartup', callback?: AutoStartupCallback): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000050 | Failed to connect to the system service. |
 
@@ -156,7 +156,7 @@ setApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback\<void\>
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| info | [AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md) | 是    | 要设置的开机自启动应用组件信息。 |
+| info | [AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md) | 是 | 要设置的开机自启动应用组件信息。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当设置应用组件开机自启动成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -165,8 +165,8 @@ setApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback\<void\>
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
@@ -216,7 +216,7 @@ setApplicationAutoStartup(info: AutoStartupInfo): Promise\<void\>
 
 | 参数名 | 类型            | 必填 | 说明                         |
 | ------ | --------------- | ---- | ---------------------------- |
-| info   | [AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md) | 是   | 要设置的开机自启动应用组件信息。 |
+| info | [AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md) | 是 | 要设置的开机自启动应用组件信息。 |
 
 **返回值：**
 
@@ -230,8 +230,8 @@ setApplicationAutoStartup(info: AutoStartupInfo): Promise\<void\>
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
@@ -279,7 +279,7 @@ cancelApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback\<voi
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| info | [AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md)   | 是 | 要取消的开机自启动应用组件信息。 |
+| info | [AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md) | 是 | 要取消的开机自启动应用组件信息。 |
 | callback | AsyncCallback\<void\> | 是    | 回调函数。当取消应用组件开机自启动成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -288,8 +288,8 @@ cancelApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback\<voi
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
@@ -339,7 +339,7 @@ cancelApplicationAutoStartup(info: AutoStartupInfo): Promise\<void\>
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| info | [AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md)   | 是 | 要取消的开机自启动应用组件信息。 |
+| info | [AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md) | 是 | 要取消的开机自启动应用组件信息。 |
 
 **返回值：**
 
@@ -353,8 +353,8 @@ cancelApplicationAutoStartup(info: AutoStartupInfo): Promise\<void\>
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
@@ -387,7 +387,7 @@ try {
 
 queryAllAutoStartupApplications(callback: AsyncCallback\<Array\<AutoStartupInfo\>\>): void
 
-查询自启动应用组件信息。使用callback异步回调。
+查询所有自启动应用组件信息。使用callback异步回调。
 
 **需要权限**：ohos.permission.MANAGE_APP_BOOT
 
@@ -402,7 +402,7 @@ queryAllAutoStartupApplications(callback: AsyncCallback\<Array\<AutoStartupInfo\
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<Array\<[AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md)\>\> | 是    | 回调函数。当查询自启动应用组件信息成功，err为undefined，data为获取到的Array\<[AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md)\>；否则为错误对象。      |
+| callback | AsyncCallback\<Array\<[AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md)\>\> | 是 | 回调函数。当查询所有自启动应用组件信息成功，err为undefined，data为获取到的Array\<[AutoStartupInfo (开机自启应用组件信息)](js-apis-inner-application-autoStartupInfo-sys.md)\>；否则为错误对象。 |
 
 **错误码**：
 
@@ -410,8 +410,8 @@ queryAllAutoStartupApplications(callback: AsyncCallback\<Array\<AutoStartupInfo\
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000050 | Failed to connect to the system service. |
 
@@ -422,7 +422,7 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // 查询自启动应用组件信息
+  // 查询所有自启动应用组件信息
   autoStartupManager.queryAllAutoStartupApplications((err: BusinessError, data: common.AutoStartupInfo[]) => {
     if (err) {
       console.error(`queryAllAutoStartupApplications failed, err code: ${err.code}, err msg: ${err.message}.`);
@@ -441,7 +441,7 @@ try {
 
  queryAllAutoStartupApplications(): Promise\<Array\<AutoStartupInfo\>\>
 
-查询自启动应用组件信息。使用Promise异步回调。
+查询所有自启动应用组件信息。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_APP_BOOT
 
@@ -456,7 +456,7 @@ try {
 
 | 类型                            | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<[AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md)\>\> | Promise对象，返回自启动应用组件信息。 |
+| Promise\<Array\<[AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md)\>\> | Promise对象，返回所有自启动应用组件信息。 |
 
 **错误码**：
 
@@ -464,8 +464,8 @@ try {
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000050 | Failed to connect to the system service. |
 
@@ -476,7 +476,7 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // 查询自启动应用组件信息
+  // 查询所有自启动应用组件信息
   autoStartupManager.queryAllAutoStartupApplications().then((data: common.AutoStartupInfo[]) => {
     console.info(`queryAllAutoStartupApplications success, data: ${JSON.stringify(data)}.`);
   }).catch((err: BusinessError) => {

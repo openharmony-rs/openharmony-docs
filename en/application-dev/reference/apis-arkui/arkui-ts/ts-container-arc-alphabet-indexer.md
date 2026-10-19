@@ -6,7 +6,7 @@
 <!--Designer: @Hu_ZeQi-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=fd10fbb9e5b5e2e1e561a46b9ca4925a29d1a0a3 translatedAt=2026-06-30T12:27:01.371Z pushedAt=2026-07-02T08:59:42.873Z -->
+<!-- md-trans-meta sourceCommit=2916c41b007093b0e96c6acdff4d1a8e5385b9f5 translatedAt=2026-07-30T02:37:18.600Z pushedAt=2026-08-01T06:42:55.888Z -->
 
 The **ArcAlphabetIndexer** is a component arranged in an arc that allows quick location by alphabetical order. It can be bound with container components to quickly locate the container display area based on logical structure, making it suitable for circular screen devices such as watches.
 
@@ -53,7 +53,7 @@ Creates and initializes an **ArcAlphabetIndexer** component.
 
 | Name    | Type    | Mandatory    | Description    |
 | -------- | -------- | -------- | -------- |
-| info     | [ArcAlphabetIndexerInitInfo](#arcalphabetindexerinitinfo) | Yes| Initialization parameters for the **ArcAlphabetIndexer** component.|
+| info | [ArcAlphabetIndexerInitInfo](#arcalphabetindexerinitinfo) | Yes | Initialization parameters of the arc alphabet index bar, including the alphabet index string array and the initial selected item index value. |
 
 ## Attributes
 
@@ -173,7 +173,7 @@ Sets the font style of the selected item, including size, weight, style, and fon
 
 | Name| Type                                    | Mandatory| Description                                                        |
 | ------ | ---------------------------------------- | ---- | ------------------------------------------------------------ |
-| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | Yes  | Font style of the selected item.<br>Default value: {<br>size:'13.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
+| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | Yes   | Text style of the selected item, used to set the display effect of the selected letter in the index bar, including font size, font weight, tilt angle, and font family.<br/>Default value: **{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>}** |
 
 ### popupFont
 
@@ -189,13 +189,13 @@ Sets the font style of the pop-up window.
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| font  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | Yes  | Font style of the pop-up window.<br>Default value:<br>{<br>size:'19.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
+| font  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | Yes   | Font style of the pop-up window, which sets the display effect of the currently selected letter shown in the pop-up window, including font size, font weight, tilt angle, font family, etc.<br/>Default value:<br/>{<br/>size:'19.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>} |
 
 ### font
 
 font(font: Optional&lt;Font&gt;)
 
-Sets the default font style for the arc alphabet indexer.
+Sets the default font style of the arc alphabet index bar, that is, the font style of index items in the unselected state.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -205,7 +205,7 @@ Sets the default font style for the arc alphabet indexer.
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| font   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | Yes  | Default font style of the index items.<br>Default value:<br>{<br>size:'13.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
+| font | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[Font](ts-types.md#font)&gt; | Yes | Default font style of the alphabet index bar, used to set the display effect of all letters on the index bar, including font size, font weight, tilt angle, and font family.<br/>Default value:**<br/>{<br/>size:'13.0fp',<br/> style:FontStyle.Normal,<br/> weight:500,<br/> family:'HarmonyOS Sans'<br/>}** |
 
 ### itemSize
 
@@ -221,7 +221,7 @@ Sets the size of the index item area for the arc alphabet indexer.
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | Yes   | Size of the index item area on the arc alphabet indexer. The index item area is circular, so this value represents the diameter of the circle. Percentage value is not supported.<br/>Default value: 24.0 <br/>Unit: vp |
+| size  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | Yes   | Size of the index item area of the arc index bar (diameter of the circular area). Percentage setting is not supported.<br/>Default value: **24.0**<br/>Unit: vp |
 
 ### selected
 
@@ -293,7 +293,7 @@ Triggered when an index item is selected. The return value is the index of the s
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| handler  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[OnSelectCallback](#onselectcallback)&gt; | Yes   | Callback used to handle the indexer selection event. |
+| handler  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[OnSelectCallback](#onselectcallback)&gt; | Yes   | Callback invoked when an item is selected on the index bar. It is triggered when the user taps or swipes on the index bar to select an item, and returns the index value of the currently selected item. |
 
 ## ArcAlphabetIndexerInitInfo
 
@@ -326,6 +326,8 @@ Defines the callback used in [onSelect](#onselect).
 
 ## Example
 
+### Example 1: Setting Linked Control and Positioning
+
 This example demonstrates how to link an **ArcAlphabetIndexer** component with an **ArcList** component for synchronized control and navigation.
 
 ```ts
@@ -340,7 +342,7 @@ import {
   ArcAlphabetIndexer,
   ArcAlphabetIndexerAttribute
 } from '@kit.ArkUI';
-// Starting from API version 22, you do not need to manually import ArcListAttribute, ArcListItemAttribute, and ArcAlphabetIndexerAttribute. For details, refer to the Modules to Import section of ArcList, ArcListItem, and ArcAlphabetIndexer.
+// This sample code is compatible with API version 21 and earlier, so ArcListAttribute, ArcListItemAttribute, and ArcAlphabetIndexerAttribute are manually imported. Starting from API version 22, these attribute types do not need to be manually imported. For details, see the Modules to Import section of ArcList, ArcListItem, and ArcAlphabetIndexer.
 
 @Entry
 @Component
@@ -403,8 +405,6 @@ struct ArcListAndIndexer {
             .selectedColor(ColorMetrics.resourceColor(0xFFFFFF))
             .selectedBackgroundColor(ColorMetrics.resourceColor(0x1F71FF))
             .color(ColorMetrics.resourceColor(0xFFFFFF))
-            .popupColor(ColorMetrics.resourceColor(0xFFFFFF))
-            .popupBackground(ColorMetrics.resourceColor(0xD8404040))
             .itemSize(LengthMetrics.px(this.itemSize))
             .selectedFont({
               size: '11.0fp',
@@ -420,10 +420,109 @@ struct ArcListAndIndexer {
             })
 
         }.width('100%').height('100%')
+        .backgroundColor(Color.Pink)
       }.width('100%').height('100%')
     }
   }
 }
 ```
 
-![arc_alphabet_indexer_preview](figures/arc_alphabet_indexer_preview.gif)
+![arc-alphabet-indexer-preview1](figures/arc-alphabet-indexer-preview1.gif)
+
+### Example 2: Setting Popup Display
+
+This example uses the [popupColor](#popupcolor) and [popupBackground](#popupbackground) APIs to set the display background color and text color of the pop-up window.
+
+Since API version 18, the **popupColor** and **popupBackground** APIs are supported.
+
+```ts
+// xxx.ets
+import {
+  LengthMetrics,
+  ColorMetrics,
+  ArcList,
+  ArcListItem,
+  ArcListAttribute,
+  ArcListItemAttribute,
+  ArcAlphabetIndexer,
+  ArcAlphabetIndexerAttribute
+} from '@kit.ArkUI';
+// Starting from API version 22, you no longer need to manually import ArcListAttribute, ArcListItemAttribute, or ArcAlphabetIndexerAttribute. For details, see the Modules to Import section of ArcList, ArcListItem, and ArcAlphabetIndexer.
+
+@Entry
+@Component
+struct ArcListAndIndexer {
+  private fullValue: string[] = [
+    '#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+    'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+  ];
+  private arrName : string[] = [
+    '1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20',
+    '21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38',
+    '39','40', '41','42',
+  ];
+
+  private scrollerForList: Scroller = new Scroller();
+  @State indexerIndex: number = 0;
+
+  private watchSize: string = '466px'; // Default watch width and height: 233*233
+  private itemSize: number = 24;  // Default index item size: 24
+
+  build() {
+    Column() {
+      Row() {
+        Stack() {
+          ArcList({ scroller : this.scrollerForList, initialIndex: 0 }) {
+            ForEach(this.arrName, (itemName: string, index: number) => {
+              ArcListItem() {
+                Text(itemName)
+                  .width('90%')
+                  .height('92px')
+                  .fontSize(16)
+                  .textAlign(TextAlign.Center)
+                  .backgroundColor(index % 2 == 0 ? 0xAFEEEE : 0x00FFFF)
+                  .borderRadius(23)
+              }
+            })
+          }
+          .scrollBar(BarState.Off)
+          .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
+            this.indexerIndex = centerIndex;
+          })
+          .borderWidth(1)
+          .width(this.watchSize)
+          .height(this.watchSize)
+          .borderRadius(this.watchSize)
+          .space(LengthMetrics.px(4))
+
+          ArcAlphabetIndexer({ arrayValue: this.fullValue, selected: 0 })
+            .autoCollapse(true)
+            .width(this.watchSize)
+            .height(this.watchSize)
+            .usePopup(true)
+            .selected(this.indexerIndex)
+            .onSelect((index: number) => {
+              this.indexerIndex = index;
+              this.scrollerForList.scrollToIndex(this.indexerIndex);
+            })
+            .selectedColor(ColorMetrics.resourceColor(0xFFFFFF))
+            .selectedBackgroundColor(ColorMetrics.resourceColor(0x1F71FF))
+            .color(ColorMetrics.resourceColor(0xFFFFFF))
+            .popupColor(ColorMetrics.resourceColor(0xFFFFFF))
+            .popupBackground(ColorMetrics.resourceColor(0xD8404040))
+            .popupFont({
+              size: '11.0fp',
+              style: FontStyle.Normal,
+              weight: 500,
+              family: 'HarmonyOS Sans'
+            })
+
+        }.width('100%').height('100%')
+        .backgroundColor(Color.Pink)
+      }.width('100%').height('100%')
+    }
+  }
+}
+```
+
+![arc-alphabet-indexer-preview2](figures/arc-alphabet-indexer-preview2.gif)

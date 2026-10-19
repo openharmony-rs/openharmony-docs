@@ -134,7 +134,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | 是   | SymbolGlyph组件字体粗细。<br>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。传入超出取值范围或不符合间隔要求的值时取默认值。|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | 是   | SymbolGlyph组件字体粗细。<br>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br>**说明：**<br>传入超出取值范围的值时取默认值。传入不符合间隔要求的值时也取默认值（仅支持100整数倍的值）。|
 
 ### fontWeight
 
@@ -270,7 +270,7 @@ minFontScale(scale: Optional\<number | Resource>)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | 是   | SymbolGlyph组件最小的字体缩放倍数。<br>取值范围：[0, 1] <br>设置为0，缩放最小。<br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1时，按值为1处理。异常值默认不生效。   |
+| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | 是   | SymbolGlyph组件最小的字体缩放倍数。<br>取值范围：[0, 1] <br>设置为0，缩放最小。<br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1时，按值为1处理。异常值默认不生效。未设置时，不限制最小缩放倍数。   |
 
 ### maxFontScale<sup>18+</sup>
 
@@ -286,7 +286,7 @@ maxFontScale(scale: Optional\<number | Resource>)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | 是   | SymbolGlyph组件最大的字体缩放倍数。<br>取值范围：[1, +∞)<br>**说明：** <br>设置的值小于1时，按值为1处理。 |
+| scale  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)>  | 是   | SymbolGlyph组件最大的字体缩放倍数。<br>取值范围：[1, +∞)<br>**说明：** <br>设置的值小于1时，按值为1处理。未设置时，不限制最大缩放倍数。 |
 
 ### shaderStyle<sup>20+</sup>
 
@@ -310,7 +310,7 @@ shaderStyle(shader: Array\<ShaderStyle | undefined\> | ShaderStyle)
 
 symbolShadow(shadow: Optional\<ShadowOptions\>)
 
-设置SymbolGlyph组件的阴影效果。未通过该接口设置时，默认阴影效果为{radius：0,color：Color.Black,offsetX：0,offsetY：0}。
+设置SymbolGlyph组件的阴影效果。未通过该接口设置时，默认阴影效果为{radius: 0,color: Color.Black,offsetX: 0,offsetY: 0}。
 
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
@@ -322,7 +322,7 @@ symbolShadow(shadow: Optional\<ShadowOptions\>)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| shadow  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)\>  | 是  | SymbolGlyph组件的阴影效果。<br>单位：[vp](ts-pixel-units.md#基本像素单位)<br>不支持fill、type属性和color中的ColoringStrategy枚举值。|
+| shadow  |[Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)>  | 是  | SymbolGlyph组件的阴影效果。<br>单位：[vp](ts-pixel-units.md#基本像素单位)<br>**说明：** <br>仅支持ShadowOptions中的radius、color、offsetX、offsetY属性，不支持fill、type属性和color中的ColoringStrategy枚举值。|
 
 ## ScaleSymbolEffect<sup>12+</sup>
 
@@ -685,14 +685,14 @@ struct Index {
         }
 
         Column() {
-          Text("Normal")
+          Text('Normal')
           SymbolGlyph($r('sys.symbol.ohos_trash'))
             .fontWeight(FontWeight.Normal)
             .fontSize(96)
         }
 
         Column() {
-          Text("Bold")
+          Text('Bold')
           SymbolGlyph($r('sys.symbol.ohos_trash'))
             .fontWeight(FontWeight.Bold)
             .fontSize(96)
@@ -701,7 +701,7 @@ struct Index {
 
       Row() {
         Column() {
-          Text("单色")
+          Text('单色')
           SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
             .fontSize(96)
             .renderingStrategy(SymbolRenderingStrategy.SINGLE)
@@ -709,7 +709,7 @@ struct Index {
         }
 
         Column() {
-          Text("多色")
+          Text('多色')
           SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
             .fontSize(96)
             .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
@@ -717,7 +717,7 @@ struct Index {
         }
 
         Column() {
-          Text("分层")
+          Text('分层')
           SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
             .fontSize(96)
             .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
@@ -727,21 +727,21 @@ struct Index {
 
       Row() {
         Column() {
-          Text("无动效")
+          Text('无动效')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .effectStrategy(SymbolEffectStrategy.NONE)
         }
 
         Column() {
-          Text("整体缩放动效")
+          Text('整体缩放动效')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .effectStrategy(SymbolEffectStrategy.SCALE)
         }
 
         Column() {
-          Text("层级动效")
+          Text('层级动效')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .effectStrategy(SymbolEffectStrategy.HIERARCHICAL)
@@ -783,7 +783,7 @@ struct Index {
     Column() {
       Row() {
         Column() {
-          Text("可变颜色动效")
+          Text('可变颜色动效')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
@@ -794,7 +794,7 @@ struct Index {
         }
         .margin({ right: 20 })
         Column() {
-          Text("替换动效")
+          Text('替换动效')
           SymbolGlyph(this.replaceFlag ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
             .fontSize(96)
             .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE), this.triggerValueReplace)
@@ -809,7 +809,7 @@ struct Index {
 
       Row() {
         Column() {
-          Text("禁用动效")
+          Text('禁用动效')
           SymbolGlyph(this.replaceFlag1 ? $r('sys.symbol.eye_slash') : $r('sys.symbol.eye'))
             .fontSize(96)
             .renderingStrategy(this.renderMode)
@@ -822,7 +822,7 @@ struct Index {
         }
         .margin({ right: 20 })
         Column() {
-          Text("快速替换动效")
+          Text('快速替换动效')
           SymbolGlyph(this.replaceFlag2 ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
             .fontSize(96)
             .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE, ReplaceEffectType.CROSS_FADE), this.triggerValueReplace2)
@@ -834,7 +834,7 @@ struct Index {
         }
         .margin({ right: 20 })
         Column() {
-          Text("阴影能力")
+          Text('阴影能力')
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)

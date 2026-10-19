@@ -1,4 +1,4 @@
-# ArkUI_CommandPathOption
+# ArkUI_CommandPath
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

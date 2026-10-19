@@ -42,7 +42,7 @@ import { UIServiceExtensionAbility } from '@kit.AbilityKit';
 
 onCreate(want: Want): void
 
-[UIServiceExtensionContext](js-apis-inner-application-uiserviceExtensionContext-sys.md) 生命周期创建回调，执行初始化业务逻辑操作。
+[UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md) 生命周期创建回调，执行初始化业务逻辑操作。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -83,7 +83,7 @@ onRequest(want: Want, startId: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want |  [Want](js-apis-app-ability-want.md) | 是 |  当前[UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md)相关的 [Want](js-apis-app-ability-want.md) 类型信息，包括Ability名称、Bundle名称等。 |
-| startId | number | 是 | 返回浮窗拉起次数。首次拉起初始值返回1，多次之后自动递增。 |
+| startId | number | 是 | 表示浮窗拉起次数。首次拉起初始值为1，多次之后自动递增。 |
 
 **示例：**
 

@@ -4,12 +4,15 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=8ab8316aa6e54b3f5df2f1d8d1125daaa6395ec3 translatedAt=2026-09-03T11:19:47.577Z pushedAt=2026-09-05T10:47:30.598Z -->
 
 The ContinuationResult module describes the device information returned by the continuation management entry.
 
 > **NOTE**
-> The initial APIs of this module have been supported since API version 8 and deprecated since API version 22. You are advised to use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md) instead.
+> The initial APIs of this module are supported since API version 8 and deprecated since API version 22. You are advised to use [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md) instead.
+>
+> The APIs of this module can be used only in the stage model.
 
 ## ContinuationResult<sup>(deprecated)</sup>
 
@@ -17,9 +20,11 @@ Describes the device information returned by the continuation management entry a
 
 > **NOTE**
 > 
-> This API has been deprecated since API version 22. You are advised to use [devicebasicinfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) instead.
+> Deprecated since API version 22. You are advised to use [DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 

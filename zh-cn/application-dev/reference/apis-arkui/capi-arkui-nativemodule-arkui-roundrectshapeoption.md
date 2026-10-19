@@ -1,4 +1,4 @@
-# ArkUI_RoundRectShapeOption
+# ArkUI_RoundRectShape
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

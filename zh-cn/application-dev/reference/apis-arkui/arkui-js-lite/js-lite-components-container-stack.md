@@ -1,8 +1,8 @@
 # stack
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lanshouren-->
-<!--Designer: @lanshouren-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -57,7 +57,7 @@
 
 >  **说明：**
 >
-> 由于绝对定位不支持设置百分比，所以也不支持stack组件的子组件上设置margin。
+> 由于绝对定位不支持设置百分比，所以也不支持在stack组件的子组件上设置margin。
 
 
 ## 示例

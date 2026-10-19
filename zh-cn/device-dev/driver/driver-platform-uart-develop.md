@@ -48,7 +48,7 @@ UART通信之前，收发双方需要约定好一些参数：波特率、数据�
 
 UART模块各分层作用：
 
-- 接口层提供打开UART设备、UART设备读取指定长度数据、UART设备写入指定长度数据、设置UART设备波特率、获取设UART设备波特率、设置UART设备属性、获取UART设备波特率、设置UART设备传输模式、关闭UART设备的接口。
+- 接口层提供打开UART设备、UART设备读取数据、UART设备写入指定长度数据、设置UART设备波特率、获取UART设备波特率、设置UART设备属性、获取UART设备属性、设置UART设备传输模式、关闭UART设备的接口。
 
 - 核心层主要提供UART控制器的创建、移除以及管理的能力，通过钩子函数与适配层交互。
 
@@ -57,6 +57,12 @@ UART模块各分层作用：
 **图 3** UART独立服务模式结构图
 
 ![UART独立服务模式结构图](figures/独立服务模式结构图.png)
+
+### 约束与限制
+
+- UartHostMethod各钩子的实际能力由驱动适配者的实现决定，上层API的语义（如vmin/vtime生效、阻塞/非阻塞切换）依赖适配层正确实现；未实现的能力应返回相应错误码（如HDF_ERR_NOT_SUPPORT）。
+- vmin/vtime仅在阻塞读模式下生效，语义遵循POSIX termios规范；其生效前提（如Linux平台要求tty处于非规范模式）依平台实现而定。
+- 实现SetBaud等属性设置钩子时，不得清除用户已设置的其他属性（含vmin/vtime），仅修改目标属性对应的配置。
 
 ## 开发指导
 
@@ -91,13 +97,13 @@ struct UartHostMethod {
 | -------- | -------- | -------- | -------- | -------- |
 | Init | host：结构体指针，核心层UART控制器 | 无 | HDF_STATUS相关状态 | 初始化Uart设备 |
 | Deinit | host：结构体指针，核心层UART控制器 | 无 | HDF_STATUS相关状态 | 去初始化Uart设备 |
-| Read | host：结构体指针，核心层UART控制器<br>size：uint32_t类型，接收数据大小 | data：uint8_t类型指针，接收的数据 | HDF_STATUS相关状态 | 接收数据RX |
+| Read | host：结构体指针，核心层UART控制器<br>size：uint32_t类型，接收数据大小 | data：uint8_t类型指针，接收的数据 | 非负数表示实际读取到的数据长度，负数表示失败 | 接收数据RX，实际读取长度可小于size（部分读） |
 | Write | host：结构体指针，核心层UART控制器<br>data：uint8_t类型指针，传入数据<br>size：uint32_t类型，发送数据大小 | 无 | HDF_STATUS相关状态 | 发送数据TX |
 | SetBaud | host：结构体指针，核心层UART控制器<br>baudRate：uint32_t类型，波特率传入值 | 无 | HDF_STATUS相关状态 | 设置波特率 |
 | GetBaud | host：结构体指针，核心层UART控制器 | baudRate：uint32_t类型指针，传出的波特率 | HDF_STATUS相关状态 | 获取当前设置的波特率 |
 | GetAttribute | host：结构体指针，核心层UART控制器 | attribute：结构体指针，传出的属性值（见uart_if.h中UartAttribute定义） | HDF_STATUS相关状态 | 获取设备uart相关属性 |
-| SetAttribute | host：结构体指针，核心层UART控制器<br>attribute：结构体指针，属性传入值 | 无 | HDF_STATUS相关状态 | 设置设备UART相关属性 |
-| SetTransMode | host：结构体指针，核心层UART控制器<br>mode：枚举值（见uart_if.h中UartTransMode定义），传输模式 | 无 | HDF_STATUS相关状态 | 设置传输模式 |
+| SetAttribute | host：结构体指针，核心层UART控制器<br>attribute：结构体指针，属性传入值 | 无 | HDF_STATUS相关状态 | 设置设备UART相关属性（含数据位、停止位、校验位、流控、FIFO以及vmin/vtime） |
+| SetTransMode | host：结构体指针，核心层UART控制器<br>mode：枚举值（见uart_if.h中UartTransMode定义），传输模式 | 无 | HDF_STATUS相关状态 | 设置传输模式（阻塞/非阻塞读、DMA使能等） |
 | PollEvent | host：结构体指针，核心层UART控制器<br>filep：void类型指针filep<br>table：void类型指针table | 无 | HDF_STATUS相关状态 | poll轮询机制 |
 
 ### 开发步骤
@@ -432,7 +438,8 @@ UART模块适配HDF框架包含以下四个步骤：
 
         该函数需要在驱动入口结构体中赋值给Release接口，当HDF框架调用Init函数初始化驱动失败时，可以调用Release释放驱动资源，该函数中需包含释放内存和删除控制器等操作。
 
-        > ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**<br>
+        > **说明：**
+        >
         > 所有强制转换获取相应对象的操作前提是在Init函数中具备对应赋值的操作。
 
         ```c

@@ -1,12 +1,12 @@
 # \@Link Decorator: Implementing Two-Way Synchronization Between Parent and Child Components
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:03:55.185Z pushedAt=2026-07-22T08:19:50.438Z -->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-09-21T10:58:12.262Z pushedAt=2026-09-23T07:52:11.594Z -->
+
 
 A variable decorated by [\@Link](../../reference/apis-arkui/arkui-ts/ts-state-management-link.md#link) in a child component establishes two-way data binding with its corresponding data source in the parent component.
 
@@ -22,15 +22,17 @@ Before reading this topic, you are advised to understand the basic usage of [\@S
 
 An \@Link decorated variable in a child component shares the same value with a variable in its parent component.
 
+
 ## Usage Rules
 
 | \@Link Decorator                                            | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Parameters                                                  | N/A                                                          |
 | Synchronization type                                                    | Two-way:<br>The state variable in the parent component can be synchronized with the child component \@Link in a two-way manner. Changes to either will be synchronized to the other.|
-| Allowed variable types                                          |Object, class, string, number, Boolean, enum, and array of these types.<br>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Using Union Types](#using-union-types).<br>For details about the scenarios of supported types, see [Observed Changes](#observed-changes).|
+| Allowed variable types                                          |Object, class, string, number, Boolean, enum, and array of these types.<br>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Using Union Types](#link-using-union-types).<br>For details about the scenarios of supported types, see [Observed Changes](#observed-changes).|
 | Disallowed variable types| Function.     |
 | Initial value for the decorated variable                                          | Local initialization is forbidden.                                        |
+
 
 ## Variable Transfer/Access Rules
 
@@ -44,22 +46,18 @@ An \@Link decorated variable in a child component shares the same value with a v
 
 ![link-initialization](figures/link-initialization.png)
 
+
 ## Observed Changes and Behavior
+
 
 ### Observed Changes
 
 - When the decorated variable is of the Boolean, string, or number type, its value change can be observed. For details, see [Using \@Link with Primitive and Class Types](#using-link-with-primitive-and-class-types).
-
 - When the decorated variable is of the class or Object type, assignment and property assignment changes can be observed, that is, all properties returned by `Object.keys(observedObject)`. For an example, see [Using \@Link with Primitive and Class Types](#using-link-with-primitive-and-class-types). \@Link can only observe changes to the object itself and its first-level properties. It cannot observe changes to nested data (such as nested objects or arrays of objects). For such scenarios, see [Usage Scenarios of \@Observed and \@ObjectLink Decorators](arkts-observed-and-objectlink.md#when-to-use).
-
 - When the decorated variable is of the array type, the addition, deletion, and updates of array items can be observed. For details, see [Using \@Link with Array Types](#using-link-with-array-types).
-
 - When the decorated object is of the Date type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
-
 - When the decorated object is of the Map type, the following changes can be observed: (1) complete Map object reassignment; (2) changes caused by calling **set**, **clear**, or **delete**. For details, see [Decorating Variables of the Map Type](#decorating-variables-of-the-map-type).
-
 - When the decorated object is of the Set type, the following changes can be observed: (1) complete Set object reassignment; (2) changes caused by calling **add**, **clear**, or **delete**. For details, see [Decorating Variables of the Set Type](#decorating-variables-of-the-set-type).
-
 ### Framework Behavior
 
 An \@Link decorated variable shares the lifecycle of its owning component.
@@ -67,22 +65,17 @@ An \@Link decorated variable shares the lifecycle of its owning component.
 To understand the value initialization and update mechanism of the \@Link decorated variable, it is necessary to consider the parent component and the initial render and update process of the child component that owns the \@Link decorated variable (in this example, the \@State decorated variable in the parent component is used).
 
 1. Initial render: The execution of the parent component's **build()** creates an instance of the child component. The initialization process is as follows:
-
    1. An \@State decorated variable of the parent component is specified to initialize the child component's \@Link decorated variable. The child component's \@Link decorated variable value remains synchronized with its source variable, enabling two-way data synchronization.
-
    2. The parent component's \@State wrapper variable instance is passed to the child component through the child's constructor. When the child component's \@Link wrapper instance receives a reference to the parent's \@State variable, it registers itself with that parent \@State variable.
 
 2. Update of the \@Link source: When the state variable in the parent component is updated, the \@Link decorated variable in the related child component is updated. Procedure:
-
    1. As indicated in the initial rendering step, the child component's \@Link wrapper class registers the current **this** pointer with the parent component. When the parent component's \@State variable is changed, all built-in components and state variables (such as the \@Link wrapper instance) that depend on it are traversed and updated.
-
    2. After the \@Link wrapper instance is updated, all built-in components that depend on the \@Link decorated variable in the child component are notified of the update. In this way, the parent component has the state data of the child components synchronized.
 
 3. Update of \@Link: After the \@Link decorated variable in the child component is updated, the following steps are performed (the \@State decorated variable in the parent component is used):
-
    1. After the \@Link decorated variable is updated, the **set** method of the parent component's \@State wrapper instance is called to synchronize the new value back to the parent component.
-
    2. The \@Link in the child component and \@State in the parent component each update their respective dependent UI components through independent dependency traversals, achieving synchronized state while maintaining proper UI consistency.
+
 
 ## Constraints
 
@@ -102,7 +95,9 @@ To understand the value initialization and update mechanism of the \@Link decora
 
     > **NOTE**
     >
-    > Since API version 23, validation for \@Link data source errors has been added, and runtime errors have been changed to compile-time errors. For details, see [Common UI-Related App Crash Issues](../arkts-stability-crash-issues.md).
+    > Starting from API version 23, validation of \@Link data source errors is added, and runtime errors become compile-time errors. For details, see [Common Issues of UI-Related Application Crashes](../arkts-stability-crash-issues.md).
+    >
+    > Starting from API version 26.0.0, if the data source of \@Link is not a state variable, error code [140123](../../reference/apis-arkui/errorcode-stateManagement.md#140123-data-source-of-the-link-decorated-variable-is-not-a-state-variable) is thrown.
 
     **Incorrect Usage**
 
@@ -248,7 +243,9 @@ To understand the value initialization and update mechanism of the \@Link decora
 
    Since API version 23, relevant validation has been added during app compilation. Decorating a **Function** type variable with \@Link triggers an ERROR, and the \@Link decorator should be removed from the **Function** type variable in the code.
 
+
 ## Use Scenarios
+
 
 ### Using \@Link with Primitive and Class Types
 
@@ -349,6 +346,7 @@ struct ShufflingContainer {
 
 ### Using \@Link with Array Types
 
+
 <!-- @[link_array_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingLinkwithArrayTypes.ets) -->  
 
 ``` TypeScript
@@ -404,6 +402,7 @@ struct ArrayTypes {
 }
 ```
 
+
 ![Video-link-UsageScenario-two](figures/Video-link-UsageScenario-two.gif)
 
 The state management framework can observe the addition, deletion, and replacement of array elements. In this example, both \@State and \@Link are of the number[] type. It is not supported to define \@Link as the number type (\@Link item : number) and use each data item in the \@State array to create child components in the parent component. For such scenarios, see [\@Prop](arkts-prop.md) and [\@Observed](./arkts-observed-and-objectlink.md).
@@ -414,7 +413,7 @@ The state management framework can observe the addition, deletion, and replaceme
 >
 > Since API version 11, \@Link supports the Map type.
 
-In this example, the **value** variable is of the Map\<number, string\> type. When the button is clicked, the value of **message** changes, and the UI is re-rendered.
+In the following example, the **value** type is Map\<number, string\>. When the button is clicked, the value of **value** changes, and the view is refreshed accordingly.
 
 <!-- @[link_map_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/DecoratingVariablesMapType.ets) -->  
 
@@ -637,7 +636,7 @@ struct ParentComponent {
 
 Use [\@Watch](./arkts-watch.md) to change local variables during two-way synchronization.
 
-In the following example, a \@State decorated variable **memberMessage** is modified inside the \@Watch callback of \@Link to achieve variable synchronization between parent and child components. However, local modifications to the \@State decorated variable **memberMessage** do not affect the variable in the parent component.
+In the following example, the two-way synchronization mechanism of @Link triggers the @Watch callback, which modifies the @State-decorated variable `memberMessage` local to the child component. Note that the @State-decorated variable `memberMessage` takes effect only within the child component, and modifying it locally does not affect the variable in the parent component.
 
 <!-- @[link_watch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UseWatchToChangeLocalVariables.ets) -->  
 
@@ -697,9 +696,9 @@ struct ChangeVariablesChild {
 
 ![arkts-link-watch](figures/arkts-link-watch.gif)
 
-### Using Union Types
+### \@Link Using Union Types
 
-`@Link` supports union types, `undefined`, and `null`. In the following example, the type of `name` is `string | undefined`. Tapping the button in the parent component `UnionTypes` changes the property or type of `name`, and the `UnionChild` component is refreshed accordingly.
+`@Link` supports union types, `undefined`, and `null`. In the following example, the type of `name` is `string | undefined`. Tapping the button in the parent component `UnionTypes` changes the value or type of `name`, and the `UnionChild` component is refreshed accordingly.
 
 <!-- @[link_union_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/UsingUnionTypes.ets) -->  
 

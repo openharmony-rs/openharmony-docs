@@ -181,11 +181,13 @@ Repeat的[.key()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repea
 
 键值生成示例：
 
-```ts
+<!-- @[repeat_key_generation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatKeyGeneration.ets) -->
+
+``` TypeScript
 @ObservedV2
 class ExampleData {
-  @Trace str: string;
-  num: number;
+  @Trace public str: string;
+  public num: number;
 
   constructor(s: string, n: number) {
     this.str = s;
@@ -195,7 +197,7 @@ class ExampleData {
 
 @Entry
 @ComponentV2
-struct Index {
+struct RepeatKeyGeneration {
   @Local exampleList: Array<ExampleData> = [];
 
   aboutToAppear(): void {
@@ -393,7 +395,7 @@ struct ChildItem {
 
 ## 高级特性
 
-除循环渲染、懒加载、组件复用等能力外，Repeat还提供了数据精准懒加载、拖拽排序、数据前插保持等高级特性，开发者可按需使用。
+除循环渲染、懒加载、组件复用等能力外，Repeat还提供了数据精准懒加载、拖拽排序、数据前插保持、主动清理缓存池等高级特性，开发者可按需使用。
 
 ### 数据精准懒加载
 
@@ -810,6 +812,84 @@ class ItemInfo {
 运行效果：
 
 ![Repeat-animation](figures/repeat-animation.gif)
+
+### 主动清理复用池
+
+Repeat在懒加载模式下具有复用池，从组件树中移除的子组件会被存入缓存池中备用，详见[节点更新/复用能力说明](#节点更新复用能力说明)。
+
+从API version 26.2.0开始，当开发者需要主动释放懒加载模式下复用池中的组件时，可以通过控制器[RepeatController](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatcontroller)实现。
+
+使用方式：创建RepeatController对象，并在创建Repeat组件时通过[RepeatOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatoptions)的controller字段完成绑定；需要清理缓存时，调用控制器上的[clearCache](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#clearcache)方法。
+
+> **说明：**
+>
+> 1. controller仅在Repeat创建时绑定，不支持动态修改。
+> 2. 一个控制器只能控制一个Repeat组件。若将控制器绑定到另一个Repeat，则之前的绑定自动失效，控制器仅控制最后绑定的组件。
+
+**示例代码**
+
+以下示例中，点击Scroll按钮，列表跳转，可使旧节点进入缓存池。点击Clear按钮，可主动清理Repeat缓存池中的组件。
+
+<!-- @[repeat_clearcache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatClearCache.ets) -->
+
+``` TypeScript
+@ComponentV2
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@ComponentV2
+struct ClearCacheDemo {
+  @Local data: Array<number> = [];
+  // 创建RepeatController对象
+  private controller: RepeatController = new RepeatController();
+  private scroller: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.push(i);
+    }
+  }
+
+  build() {
+    Column() {
+      List({ scroller: this.scroller }) {
+        // 通过RepeatOptions的controller字段绑定控制器
+        Repeat<number>(this.data, { controller: this.controller })
+          .each((repeatItem: RepeatItem<number>) => {
+            ListItem() {
+              ChildComponent()
+            }
+          })
+          .virtualScroll()
+      }
+      .cachedCount(5)
+      .height('80%')
+
+      Button('Scroll')
+        .onClick(() => {
+          // 点击按钮触发列表跳转，旧组件进入缓存池
+          this.scroller.scrollToIndex(30);
+        })
+
+      Button('Clear')
+        .onClick(() => {
+          // 主动清理Repeat缓存池中的空闲节点
+          this.controller.clearCache();
+        })
+    }
+  }
+}
+```
 
 ## 常见使用场景
 
@@ -1618,7 +1698,9 @@ struct EntryCompSucc {
 
 示例代码如下：
 
-``` ts
+<!-- @[repeat_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatBuilderPage.ets) -->
+
+``` TypeScript
 import { UIUtils, Binding } from '@kit.ArkUI';
 
 @Entry
@@ -1657,9 +1739,12 @@ struct RepeatBuilderPage {
           .each((ri) => {
             ListItem() {
               Column({ space: 2 }) {
-                this.buildItem1(UIUtils.makeBinding<number>(() => ri.item)) // 使用UIUtils.makeBinding()函数实现@Builder函数中状态变量的刷新。
-                this.buildItem2(ri) // 按引用传递，状态变量的改变会引起@Builder函数内的UI刷新。
-                this.buildItem3(ri.item) // 反例。按值传递，状态变量的改变不会引起@Builder函数内的UI刷新。
+                // 使用UIUtils.makeBinding()函数实现@Builder函数中状态变量的刷新。
+                this.buildItem1(UIUtils.makeBinding<number>(() => ri.item))
+                // 按引用传递，状态变量的改变会引起@Builder函数内的UI刷新。
+                this.buildItem2(ri)
+                // 反例。按值传递，状态变量的改变不会引起@Builder函数内的UI刷新。
+                this.buildItem3(ri.item)
               }
             }.border({ width: 1 })
           }).virtualScroll()
@@ -1679,8 +1764,6 @@ struct RepeatBuilderPage {
   }
 }
 ```
-
-<!-- [repeat_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatBuilderPage.ets) -->
 
 @Builder传参方式依次为makeBinding()、地址传递和值传递，界面展示如下图，进入页面后点击按钮改变数据。在@Builder构造函数中使用值传递传参不会引起函数内的UI刷新。
 

@@ -109,7 +109,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 7. 创建ImagePacker实例，指定编码参数后，将Picture多图对象编码至文件或缓冲区。
 
-   <!-- @[pack_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->    
+   <!-- @[pack_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->  
    
    ``` C++
    // 设置编码参数。
@@ -191,7 +191,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
        size_t argc = 2;
        napi_value args[2] = {nullptr};
        if (napi_get_cb_info(env, info, &argc, args, nullptr, nullptr) != napi_ok) {
-       OH_LOG_ERROR(LOG_APP, "napi_get_cb_info failed!");
+           OH_LOG_ERROR(LOG_APP, "napi_get_cb_info failed!");
            return GetJsResult(env, g_thisPicture->errorCode);
        }
        uint32_t fd = 0;

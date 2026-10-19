@@ -22,7 +22,7 @@ import { buffer } from '@kit.ArkTS';
 
 ## BufferEncoding
 
-type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
+type BufferEncoding = | 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
 
 表示支持的编码格式类型。
 
@@ -58,7 +58,7 @@ alloc(size: number, fill?: string | Buffer | number, encoding?: BufferEncoding):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| size | number | 是 | 指定的Buffer对象长度，单位：字节。取值为正整数，最大值为4294967295。 |
+| size | number | 是 | 指定的Buffer对象长度，单位：字节。取值为正整数，最大值为2^32-1，即4294967295。 |
 | fill | string \| [Buffer](#buffer) \| number | 否 | 填充至新缓冲区的值，默认值：0。 |
 | encoding | [BufferEncoding](#bufferencoding) | 否 | 编码格式（当`fill`参数为string时，才有意义）。默认值：'utf8'。 |
 
@@ -628,7 +628,7 @@ compare(target: Buffer | Uint8Array, targetStart?: number, targetEnd?: number, s
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回比较结果。-1：当前排列在目标前，0：当前与目标相同，1：当前排列在目标后。 |
+| -1&nbsp;\|&nbsp;0&nbsp;\|&nbsp;1 | 返回比较结果。-1：当前排列在目标前，0：当前与目标相同，1：当前排列在目标后。 |
 
 **错误码：**
 

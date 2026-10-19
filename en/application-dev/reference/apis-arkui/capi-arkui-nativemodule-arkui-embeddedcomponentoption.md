@@ -6,7 +6,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-17T02:52:38.782Z pushedAt=2026-07-17T06:38:01.353Z -->
+<!-- md-trans-meta sourceCommit=d15119b1c2395893f33c4ca1213b6796739f0462 translatedAt=2026-08-19T04:17:47.249Z pushedAt=2026-08-19T07:23:20.296Z -->
 
 ```c
 typedef struct ArkUI_EmbeddedComponentOption ArkUI_EmbeddedComponentOption
@@ -20,4 +20,4 @@ Defines the **ArkUI_EmbeddedComponentOption** parameter for **EmbeddedComponent*
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [embedded_component.h](capi-embedded-component-h.md)

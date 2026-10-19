@@ -81,7 +81,7 @@ static JSVM_CallbackStruct param[] = {
 
 static JSVM_CallbackStruct *method = param;
 
-JSVM_PropertyDescriptor descriptor[] = {
+static JSVM_PropertyDescriptor descriptor[] = {
     {"jsonParseNumber", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"jsonParseObject", nullptr, method + 1, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };

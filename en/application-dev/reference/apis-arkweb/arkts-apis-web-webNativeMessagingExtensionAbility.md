@@ -1,12 +1,14 @@
-# @ohos.web.WebNativeMessagingExtensionAbility (Web Native Messaging Extension Ability)
+# @ohos.web.webNativeMessagingExtensionAbility
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @csliutt-private-->
+<!--Designer: @ringking0-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=297099253904002b9622394855cd624fb1a1072a translatedAt=2026-08-03T09:41:35.388Z pushedAt=2026-08-07T10:50:45.359Z -->
 
-WebNativeMessagingExtensionAbility provides the web native messaging capability and is inherited from ExtensionAbility.
+WebNativeMessagingExtensionAbility is a base class for web native message communication extension provided by ArkWeb, inherited from ExtensionAbility. It allows web pages to establish a secure, bidirectional pipe communication channel with system native services through the Native Messaging mechanism. By inheriting this class and implementing its lifecycle callbacks (such as [onConnectNative](#onconnectnative), [onDisconnectNative](#ondisconnectnative), and [onDestroy](#ondestroy)), developers can detect connection establishment when a web page initiates a connection request, obtain the caller identity and bidirectional pipe file descriptors (see [ConnectionInfo](#connectioninfo)), and release resources when the connection is disconnected or the extension is destroyed. This capability is primarily used in scenarios where browser extensions communicate with apps, enabling efficient message passing and data exchange to enhance extension integration and functionality. The app side must manage pipe read/write operations, permission verification, and the Ability lifecycle on its own.
 
 > **NOTE**
 >
@@ -30,13 +32,13 @@ Provides the web native messaging capability and is inherited from ExtensionAbil
 
 | Name| Type| Read-Only| Optional| Description|
 | ------ | ------ | ------ | ------ | ------ |
-| context | [WebNativeMessagingExtensionContext](arkts-apis-web-webNativeMessagingExtensionContext.md) | No| No| Context of web native messaging.|
+| context | [WebNativeMessagingExtensionContext](arkts-apis-web-webNativeMessagingExtensionContext.md) | No | No | Context of the current web native message ExtensionAbility. |
 
 ### onConnectNative
 
 onConnectNative(info: ConnectionInfo): void
 
-Called when a web native messaging connection is established.
+Called when a web native message connection is established. In this callback, you can obtain the connection information for subsequent message communication processing.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -67,7 +69,7 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
 
 onDisconnectNative(info: ConnectionInfo): void
 
-Called when a web native messaging connection is disconnected.
+Called when a web native message connection is disconnected. In this callback, you can release resources related to the connection and complete necessary cleanup.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -97,7 +99,7 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
 
 onDestroy(): void
 
-Called when the WebNativeMessagingExtensionAbility is destroyed.
+Called when the WebNativeMessagingExtensionAbility is destroyed. In this callback, you can release all occupied resources and complete final cleanup operations.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -124,8 +126,8 @@ Represents the information object of the web native messaging connection.
 
 | Name| Type| Read-Only| Optional| Description|
 | ------ | ------ | ------ | ------ | ------ |
-| connectionId | number | No| No| Connection ID.|
-| bundleName | string | No| No| Application bundle name of the caller.|
-| extensionOrigin | string | No| No| Original URL of the caller extension.|
-| fdRead | number | No| No| Pipe file descriptor used to read data.|
-| fdWrite | number | No| No| Pipe file descriptor used to write data.|
+| connectionId | number | No | No | Unique identifier of the connection, used to distinguish and manage different Web native message connections. It can be used to locate a specific connection during logging, status tracking, or resource cleanup. |
+| bundleName | string | No | No | App package name of the caller, used for identity identification and permission verification. It can be used to determine whether to allow the app to establish a connection or perform message interaction. |
+| extensionOrigin | string | No | No | Original URL of the caller extension, used for security control and origin identification. It can be used to determine the legitimacy of the extension or implement domain-based access policies. |
+| fdRead | number | No | No | Pipe file descriptor used for reading data. Messages can be read from the Web side through this file descriptor. |
+| fdWrite | number | No | No | Pipe file descriptor used for writing data. Messages can be sent to the Web side through this file descriptor. |

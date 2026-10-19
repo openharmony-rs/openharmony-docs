@@ -54,7 +54,7 @@
 | [OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args)](#oh_rdbtrans_querysql) | 根据SQL语句查询数据库中的数据。                  |
 | [int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args, OH_Data_Value **result)](#oh_rdbtrans_execute) | 执行包含指定参数的SQL语句。                      |
 | [int OH_RdbTrans_Destroy(OH_Rdb_Transaction *trans)](#oh_rdbtrans_destroy) | 销毁事务对象。                                   |
-| [OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char * const columns[], int len)](#oh_rdbtrans_querywithoutrowcount) | 根据指定的条件查询数据库中的数据，不计算行数。 |
+| [OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *const columns[], int len)](#oh_rdbtrans_querywithoutrowcount) | 根据指定的条件查询数据库中的数据，不计算行数。 |
 | [OH_Cursor *OH_RdbTrans_QuerySqlWithoutRowCount(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args)](#oh_rdbtrans_querysqlwithoutrowcount) | 根据SQL语句查询数据库中的数据，不计算行数。 |
 | [int OH_RdbTrans_BatchInsertWithReturning(OH_Rdb_Transaction *trans, const char *table, const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, OH_RDB_ReturningContext *context)](#oh_rdbtrans_batchinsertwithreturning) | 将批量数据插入目标表，并将变更信息输出到上下文中。 |
 | [int OH_RdbTrans_UpdateWithReturning(OH_Rdb_Transaction *trans, OH_VBucket *row, OH_Predicates *predicates, Rdb_ConflictResolution resolution, OH_RDB_ReturningContext *context)](#oh_rdbtrans_updatewithreturning) | 根据指定条件更新数据库中的数据并输出更改信息到上下文。 |
@@ -100,7 +100,7 @@ OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void)
 
 | 类型                                               | 说明                                                         |
 | -------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md) | 执行成功时返回指向[OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md)实例的指针。否则返回nullptr。<br>使用完成后，必须通过[OH_RdbTrans_DestroyOptions](#oh_rdbtrans_destroyoptions)接口释放内存。 |
+| [OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md) * | 执行成功时返回指向[OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md)实例的指针。否则返回NULL。<br>使用完成后，必须通过[OH_RdbTrans_DestroyOptions](#oh_rdbtrans_destroyoptions)接口释放内存。 |
 
 ### OH_RdbTrans_DestroyOptions()
 
@@ -371,7 +371,7 @@ int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicate
 | -------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans  | 指向[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)实例的指针。 |
 | const [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示[OH_Predicates](capi-rdb-oh-predicates.md)指定的删除条件。   |
-| int64_t *changes                                         | 表示删除成功的次数。                                         |
+| int64_t *changes                                         | 输出参数，表示删除成功的次数。                               |
 
 **返回：**
 
@@ -405,7 +405,7 @@ OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *pre
 
 | 类型                           | 说明                                                         |
 | ------------------------------ | ------------------------------------------------------------ |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回空。 |
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回NULL。 |
 
 ### OH_RdbTrans_QuerySql()
 
@@ -432,7 +432,7 @@ OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, cons
 
 | 类型                           | 说明                                                         |
 | ------------------------------ | ------------------------------------------------------------ |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回空。 |
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回NULL。 |
 
 ### OH_RdbTrans_Execute()
 
@@ -493,7 +493,7 @@ int OH_RdbTrans_Destroy(OH_Rdb_Transaction *trans)
 ### OH_RdbTrans_QueryWithoutRowCount()
 
 ```c
-OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char * const columns[], int len)
+OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *const columns[], int len)
 ```
 
 **描述**
@@ -515,7 +515,7 @@ OH_Cursor *OH_RdbTrans_QueryWithoutRowCount(OH_Rdb_Transaction *trans, const OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回nullptr。 |
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回NULL。 |
 
 ### OH_RdbTrans_QuerySqlWithoutRowCount()
 
@@ -541,7 +541,7 @@ OH_Cursor *OH_RdbTrans_QuerySqlWithoutRowCount(OH_Rdb_Transaction *trans, const 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回nullptr。 |
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | 如果执行成功，则返回指向[OH_Cursor](capi-rdb-oh-cursor.md)实例的指针。如果数据库已关闭或数据库没有响应，则返回NULL。 |
 
 ### OH_RdbTrans_BatchInsertWithReturning()
 

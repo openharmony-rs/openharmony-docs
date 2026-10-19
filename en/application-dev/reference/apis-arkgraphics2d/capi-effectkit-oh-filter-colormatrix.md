@@ -6,23 +6,24 @@
 <!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=cb84f8fe2e38bbeba25c5506a75a0804a063c158 translatedAt=2026-07-16T06:36:06.446Z pushedAt=2026-07-16T07:33:44.965Z -->
+<!-- md-trans-meta sourceCommit=077338037105b9a35e539484d74661768fe3f303 translatedAt=2026-08-24T09:06:37.515Z pushedAt=2026-08-31T11:33:15.573Z -->
 
 ```c
-struct OH_Filter_ColorMatrix {
-    // ...
-};
+struct OH_Filter_ColorMatrix {...}
 ```
 
 ## Overview
 
-Defines a 4x5 matrix used to create a filter effect, with elements of floating-point values.
+Defines a 4x5 matrix used to create a filter effect, with elements of floating-point type.
 
 **Usage scenarios**
 
 - Filter processing in image editing apps (such as vintage, black and white, warm tone, and other effects)
+
 - Real-time filter effects in video apps
+
 - Beautification and color adjustment features in camera apps
+
 - Image processing scenarios that require custom color transformation effects
 
 The color matrix structure is as follows:

@@ -1,7 +1,7 @@
 # Native与ArkTS对象绑定
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -180,7 +180,7 @@
             MyObject* obj = new MyObject(value);
 
             obj->env_ = env;
-            // 通过napi_wrap将ArkTS对象jsThis)与C++对象obj绑定
+            // 通过napi_wrap将ArkTS对象jsThis与C++对象obj绑定
             status = napi_wrap(env,
                                jsThis,
                                reinterpret_cast<void*>(obj),

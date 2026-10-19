@@ -5,8 +5,9 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-02T12:29:53.475Z -->
 
-You can set custom keyboard shortcuts for components, with the flexibility to define multiple shortcuts per component.
+Developers can set custom key combinations for a component. Each component can be configured with multiple key combinations. This is applicable to scenarios where component operations need to be triggered quickly through the keyboard, improving keyboard operation efficiency.
 
 A component will still respond to the set custom shortcuts even if it is not in focus or visible on the active page, as long as it is part of the component tree within a window that has focus.
 
@@ -14,13 +15,15 @@ Better yet, you can set custom events for custom keyboard shortcuts, so that whe
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## keyboardShortcut
 
 keyboardShortcut(value: string | FunctionKey, keys: Array\<ModifierKey>, action?: () => void): T
 
-Sets a keyboard shortcut for the component.
+Sets custom key combinations for a component. The response, binding, and ineffective scenarios of keyboard shortcuts must meet the constraints in [Precautions for Using Keyboard Shortcuts](#precautions-for-using-keyboard-shortcuts) and [System-Defined Keyboard Shortcuts That Cannot Be Bound](#system-defined-keyboard-shortcuts-that-cannot-be-bound).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -30,34 +33,34 @@ Sets a keyboard shortcut for the component.
 
 | Name  | Type                                 | Mandatory  | Description                                    |
 | ----- | ------------------------------------- | ---- | ---------------------------------------- |
-| value | string \| [FunctionKey](ts-appendix-enums.md#functionkey10) | Yes| Character key (which can be entered through the keyboard) or [function key](ts-appendix-enums.md#functionkey10).<br>An empty string means to disable the keyboard shortcut.<br>|
-| keys  | Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)> | Yes| Modifier keys.<br>This parameter can be left empty only when **value** is set to a [function key](ts-appendix-enums.md#functionkey10).<br>|
-| action  | () => void    | No   | Callback for a custom event after the keyboard shortcut is triggered.<br>                              |
+| value | string \| [FunctionKey](ts-appendix-enums.md#functionkey10) | Yes | Single character of the hotkey (a character that can be entered through the keyboard) or [FunctionKey](ts-appendix-enums.md#functionkey10).<br>An empty string means to cancel the keyboard shortcut binding; a component with multiple keyboard shortcuts bound cannot unbind a keyboard shortcut.<br>When value contains multiple characters, the key combination is not bound, and the previously bound key combination remains valid.<br> |
+| keys  | Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)> | Yes | Key combination.<br>The value of keys can be empty only when value is [FunctionKey](ts-appendix-enums.md#functionkey10).<br>When keys contains duplicate modifier keys, the key combination is not bound, and the previously bound key combination remains valid.<br> |
+| action  | () => void    | No    | Callback for the custom event triggered after the key combination shortcut is successfully triggered. If this parameter is not set, the behavior of the key combination shortcut is the same as that of click.<br>                               |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used to support subsequent chained calls. |
 
 ## Precautions for Using Keyboard Shortcuts
 
-Keyboard shortcuts, as system keys, take precedence over the common key event **OnKeyEvent**. For details about the key event triggering logic, see [Key Event Data Flow](../../../ui/arkts-interaction-development-guide-keyboard.md#key-event-data-flow).
+A keyboard shortcut is a response to system keys and takes precedence over the common key event `onKeyEvent`. For details about the logic of key event triggering, see [Key Event Data Flow](../../../ui/arkts-interaction-development-guide-keyboard.md#key-event-data-flow).
 
 | Scenario                                      | Processing Logic                           | Example                                      |
 | ---------------------------------------- | ---------------------------------- | ---------------------------------------- |
-| Components that support the **onClick** event                        | Custom keyboard shortcuts are supported.                          | –                                       |
-| Requirements for custom keyboard shortcuts                                | Modifier keys (**Ctrl**, **Shift**, **Alt**, and combinations) plus a single character or [function key](ts-appendix-enums.md#functionkey10).| Button('button1').keyboardShortcut('a',[ModifierKey.CTRL]) |
-| Multiple components with identical shortcuts                           | Only the shallowest node in the component tree responds.         | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('a',[ModifierKey.CTRL]) |
-| Component focus state                              | Keyboard shortcuts respond when the window has focus, regardless of component focus.                     | –                                       |
-| Single function key shortcuts| Function keys can be used without modifier keys.| Button('button1').keyboardShortcut(FunctionKey.F2,[])                                        |
-| Empty **value** parameter in **keyboardShortcut**| The keyboard shortcut is disabled.<br>Multi-bound shortcuts cannot be unbound.| Button('button1').keyboardShortcut('',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('',[]) |
-| Modifier key (**Ctrl**, **Shift**, or **Alt** defined in **keys** of **keyboardShortcut**) positions| Both left and right modifier keys are recognized.                         | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL, ModifierKey.ALT]) |
-| Character key case sensitivity in the **value** parameter of the **keyboardShortcut** API           | The response is case-insensitive.                         | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('A',[ModifierKey.CTRL]) |
-| Response to keyboard shortcuts                                  | The component responds to a keyboard shortcut when the keys specified by **keys** are pressed and the key specified by **value** triggers a down event. (Long-pressing leads to continuous response.)             | –                                       |
-| Hidden components<br>                              | The component still responds to keyboard shortcuts.                             | –                                       |
-| Disabled components ([enabled](ts-universal-attributes-enable.md#enabled) set to **false**)                             | Disabled components do not respond to keyboard shortcuts.                            | –                                       |
-| 1. Duplicate system shortcuts (including those same as predefined ones)<br>2. Multiple character keys in **value**<br>3. Duplicate modifier keys in **keys**| In these cases, the keyboard shortcut is not added, and the previously added keyboard shortcuts still work.         | Button('button1').keyboardShortcut(FunctionKey.F4,[ModifierKey.ALT])<br>Button('button2').keyboardShortcut('ab',[ModifierKey.CTRL])<br>Button('button3').keyboardShortcut('ab',[ModifierKey.CTRL,ModifierKey.CTRL]) |
+| All components that support the onClick event | Support custom key combinations. | Not supported |
+| Custom key combination requirements | The control keys Ctrl, Shift, Alt and their combinations, plus a single character of the hotkey (a character that can be entered through the keyboard) or [FunctionKey](ts-appendix-enums.md#functionkey10). | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL]) |
+| Multiple different components set with the same key combination | Only the component at the shallowest depth in the node tree responds, and other components do not respond to the keyboard shortcut. | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('a',[ModifierKey.CTRL]) |
+| Regardless of whether the component has focus | As long as the window has focus, the keyboard shortcut responds. | Not supported |
+| Using a single `FunctionKey` to trigger the keyboard shortcut | A single `FunctionKey` without a `ModifierKey` can be bound as a keyboard shortcut. | Button('button1').keyboardShortcut(FunctionKey.F2,[]) |
+| The input parameter `value` of `keyboardShortcut` is empty | Unbinds the keyboard shortcut.<br>A component bound with multiple keyboard shortcuts cannot unbind the keyboard shortcuts. | Button('button1').keyboardShortcut('',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('',[]) |
+| Ctrl, Shift, and Alt in the keys parameter of the keyboardShortcut API | Responds regardless of whether the left or right key is pressed. | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL, ModifierKey.ALT]) |
+| A single character in the value parameter of the keyboardShortcut API | Responds regardless of case. | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('A',[ModifierKey.CTRL]) |
+| Response of the keyboard shortcut | The `keys` key is in the pressed state and the `value` key triggers the down event (a long press responds continuously). | Not supported |
+| Hidden component<br> | Responds to the keyboard shortcut. | Not supported |
+| Component in the non-interactive state ([enabled](ts-universal-attributes-enable.md#enabled) set to false) | Does not respond to the keyboard shortcut. | Not supported |
+| 1. When the key combinations of components (including system predefined keyboard shortcuts) are the same<br>2. When the value parameter of the API has multiple characters<br>3. When the keys parameter of the API has duplicate control keys | In these cases, the key combination is not bound, and the previously bound key combination remains valid. | Button('button1').keyboardShortcut(FunctionKey.F4,[ModifierKey.ALT])<br>Button('button2').keyboardShortcut('ab',[ModifierKey.CTRL])<br>Button('button3').keyboardShortcut('a',[ModifierKey.CTRL,ModifierKey.CTRL]) |
 
 ### System-Defined Keyboard Shortcuts That Cannot Be Bound
 
@@ -81,7 +84,7 @@ The predefined key events and custom key events have priorities. Events with hig
 | Arrow keys, **Shift** + Arrow keys| Universal component| Moves focus in navigation.| System keys|
 | **Tab**, **Shift** + **Tab**| Universal component| Triggers focus navigation or moves focus in navigation.| System keys|
 
-## Example
+## Examples
 
 ### Example 1: Setting Component Keyboard Shortcuts
 
@@ -91,34 +94,34 @@ This example demonstrates how to set up keyboard shortcuts for components. This 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World'
+  @State message: string = 'Hello World';
 
   build() {
     Row() {
       Column({ space: 5 }) {
-        Text(this.message)
-        Button("Test short cut 1").onClick((event: ClickEvent) => {
-          this.message = "I clicked Button 1";
-          console.info("I clicked 1");
+        Text(this.message);
+        Button('Test short cut 1').onClick(() => {
+          this.message = 'I clicked Button 1';
+          console.info('I clicked 1');
         }).keyboardShortcut('.', [ModifierKey.SHIFT, ModifierKey.CTRL, ModifierKey.ALT])
           .onKeyEvent((event: KeyEvent) => {
-            console.info("event.keyCode: " + JSON.stringify(event));
-          })
-        Button("Test short cut 2").onClick((event: ClickEvent) => {
-          this.message = "I clicked Button 2";
-          console.info("I clicked 2");
-        }).keyboardShortcut('1', [ModifierKey.CTRL])
-        Button("Test short cut 3").onClick((event: ClickEvent) => {
-          this.message = "I clicked Button 3";
-          console.info("I clicked 3");
-        }).keyboardShortcut('A', [ModifierKey.SHIFT])
-        Button("Test short cut 4").onClick((event: ClickEvent) => {
-          this.message = "I clicked Button 4";
-          console.info("I clicked 4");
+            console.info('event.keyCode: ' + JSON.stringify(event));
+          });
+        Button('Test short cut 2').onClick(() => {
+          this.message = 'I clicked Button 2';
+          console.info('I clicked 2');
+        }).keyboardShortcut('1', [ModifierKey.CTRL]);
+        Button('Test short cut 3').onClick(() => {
+          this.message = 'I clicked Button 3';
+          console.info('I clicked 3');
+        }).keyboardShortcut('A', [ModifierKey.SHIFT]);
+        Button('Test short cut 4').onClick(() => {
+          this.message = 'I clicked Button 4';
+          console.info('I clicked 4');
         }).keyboardShortcut(FunctionKey.F5, [], () => {
-          this.message = "I clicked Button 4";
-          console.info("I clicked user callback.");
-        }).keyboardShortcut(FunctionKey.F3, [])
+          this.message = 'I clicked Button 4';
+          console.info('I clicked user callback.');
+        }).keyboardShortcut(FunctionKey.F3, []);
       }
       .width('100%')
     }
@@ -137,28 +140,28 @@ This example demonstrates how to bind and unbind keyboard shortcuts.
 @Entry
 @Component
 struct Index {
-  @State message: string = 'disable'
-  @State shortCutEnable: boolean = false
-  @State keyValue: string = ''
+  @State message: string = 'disable';
+  @State shortCutEnable: boolean = false;
+  @State keyValue: string = '';
 
   build() {
     Row() {
       Column({ space: 5 }) {
-        Text('Ctrl+A is ' + this.message)
-        Button("Test short cut").onClick((event: ClickEvent) => {
-          this.message = "I clicked Button";
-          console.info("I clicked");
-        }).keyboardShortcut(this.keyValue, [ModifierKey.CTRL])
-        Button(this.message + 'shortCut').onClick((event: ClickEvent) => {
+        Text('Ctrl+A is ' + this.message);
+        Button('Test short cut').onClick(() => {
+          this.message = 'I clicked Button';
+          console.info('I clicked');
+        }).keyboardShortcut(this.keyValue, [ModifierKey.CTRL]);
+        Button(this.message + 'shortCut').onClick(() => {
           this.shortCutEnable = !this.shortCutEnable;
           this.message = this.shortCutEnable ? 'enable' : 'disable';
           this.keyValue = this.shortCutEnable ? 'a' : '';
-        })
-        Button('multi-shortcut').onClick((event: ClickEvent) => {
-          console.info('Trigger keyboard shortcut success.')
+        });
+        Button('multi-shortcut').onClick(() => {
+          console.info('Trigger keyboard shortcut success.');
         }).keyboardShortcut('q', [ModifierKey.CTRL])
           .keyboardShortcut('w', [ModifierKey.CTRL])
-          .keyboardShortcut('', []) // Unbinding does not work when there are multi-bound shortcuts.
+          .keyboardShortcut('', []); // Does not take effect. A component bound with multiple keyboard shortcuts cannot unbind them.
       }
       .width('100%')
     }

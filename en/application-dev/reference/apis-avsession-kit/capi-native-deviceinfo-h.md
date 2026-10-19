@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=1ec5ce0ca274e1ddb792f42db06ccba41b2ea716 translatedAt=2026-09-01T13:05:36.686Z pushedAt=2026-09-07T10:23:24.502Z -->
 
 ## Overview
 
@@ -58,7 +59,7 @@ Obtains the casting category of the target device.
 | Name| Description|
 | -- | -- |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | Pointer to the device information instance.|
-| [AVSession_AVCastCategory](capi-native-avsession-base-h.md#avsession_avcastcategory) *aVCastCategory | Pointer to the **aVCastCategory** value.|
+| [AVSession_AVCastCategory](capi-native-avsession-base-h.md#avsession_avcastcategory) *aVCastCategory | Output parameter, which is a pointer to the casting category. |
 
 **Return value**
 
@@ -83,7 +84,7 @@ Obtains the device ID of the target device.
 | Name| Description|
 | -- | -- |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | Pointer to the device information instance.|
-| char **deviceId | Pointer to the string of the device ID.|
+| char **deviceId | Output parameter, which is a pointer to the obtained device ID in the form of a string. |
 
 **Return value**
 
@@ -108,7 +109,7 @@ Obtains the name of the target device.
 | Name| Description|
 | -- | -- |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | Pointer to the device information instance.|
-| char **deviceName | Pointer to the string of the device name.|
+| char **deviceName | Output parameter, which is a pointer to the obtained device name in the form of a string. |
 
 **Return value**
 
@@ -133,7 +134,7 @@ Obtains the type of the target device.
 | Name| Description|
 | -- | -- |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | Pointer to the device information instance.|
-| [AVSession_DeviceType](capi-native-avsession-base-h.md#avsession_devicetype) *deviceType | Double pointer to the device type.|
+| [AVSession_DeviceType](capi-native-avsession-base-h.md#avsession_devicetype) *deviceType | Output parameter, which is a pointer to the device type. For details about the enumerated values, see **AVSession_DeviceType**. |
 
 **Return value**
 
@@ -158,10 +159,12 @@ Obtains the protocols supported by the target device.
 | Name| Description|
 | -- | -- |
 | [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md) *deviceInfo | Pointer to the device information instance.|
-| uint32_t *deviceProtocolType | Pointer to the protocol types supported by the device.|
+| uint32_t *deviceProtocolType | Output parameter, which is a pointer to the protocol types supported by the device. The return value is the bit mask combination of the protocol types. |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
 | [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **deviceInfo** parameter is **nullptr**.<br>                                         2. The **deviceProtocolType** parameter is **nullptr**.|
+
+

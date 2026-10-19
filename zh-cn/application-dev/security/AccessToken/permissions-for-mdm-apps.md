@@ -19,7 +19,7 @@ MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)�
 
 ## ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
-允许应用激活设备管理应用。
+允许设备管理应用获取设备信息。
 
 包括读取设备ID、读取设备硬盘序列号，读取OS版本、读取机器名。
 
@@ -31,6 +31,8 @@ MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)�
 
 <!--Del-->
 **是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：10
 
@@ -901,4 +903,57 @@ MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)�
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
+
+## ohos.permission.ENTERPRISE_ENCRYPT_BLOCK_DEVICE
+
+允许MDM应用挂载和卸载加密U盘加密区与交换区。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1
+ 
+## ohos.permission.kernel.ACCESS_DISK_USERDATA
+
+允许设备管理应用读取用户的磁盘扇区。
+
+获取该权限后，应用拥有用户磁盘扇区的读取权限，包括系统盘的userdata分区和数据盘。
+ 
+<!--RP1--><!--RP1End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+ 
+**支持设备**：PC/2in1
+
+**起始版本**：26.2.0
+
+## ohos.permission.ENTERPRISE_EXTERNAL_READ
+
+允许设备管理应用在OOBE阶段拷贝U盘大文件。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.1

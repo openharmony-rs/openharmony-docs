@@ -81,7 +81,7 @@ import { fastbuffer } from '@kit.ArkTS';
 // 创建长度为5的FastBuffer对象，默认填充0
 let buf1 = fastbuffer.alloc(5);
 console.info(buf1.toString());
-// 输出结果：00000
+// 输出结果为空
 // 创建长度为5的FastBuffer对象，填充字符'a'
 let buf2 = fastbuffer.alloc(5, 'a');
 // 创建长度为11的FastBuffer对象，使用base64编码填充
@@ -732,7 +732,7 @@ let buf = fastbuffer.from('buffer');
 // 获取entries迭代器
 let entryIterator = buf.entries();
 // 获取迭代器的第一个元素
-let nextEntry: IteratorResult<Object[]> = entryIterator.next();
+let nextEntry: IteratorResult<[number, number]> = entryIterator.next();
 // 遍历迭代器输出每个[key, value]对
 while (!nextEntry.done) {
   console.info('fastbuffer: ' + nextEntry.value);

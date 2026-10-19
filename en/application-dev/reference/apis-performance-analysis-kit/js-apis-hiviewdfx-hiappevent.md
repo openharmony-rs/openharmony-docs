@@ -1,4 +1,4 @@
-# @ohos.hiviewdfx.hiAppEvent (Application Event Logging)
+# @ohos.hiviewdfx.hiAppEvent (HiAppEvent)
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
@@ -6,6 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=8f89f982c389acb2d627c77f8a9cbd7539e2d605 translatedAt=2026-09-16T11:41:49.271Z pushedAt=2026-09-20T09:01:52.286Z -->
 
 This module provides application logging and event subscription capabilities, including event storage, event subscription, event clearance, and logging configuration. HiAppEvent records the events triggered during application running in [AppEventInfo](#appeventinfo), and classifies the events into system events and application events.
 
@@ -56,9 +57,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 11102001 | Invalid watcher name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11102002 | Invalid filtering event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11102003 | Invalid row value. Possible caused by the row value is less than zero. |
-| 11102004 | Invalid size value. Possible caused by the size value is less than zero. |
-| 11102005 | Invalid timeout value. Possible caused by the timeout value is less than zero. |
+| 11102003 | Invalid row value. Possibly caused by the row value is less than zero. |
+| 11102004 | Invalid size value. Possibly caused by the size value is less than zero. |
+| 11102005 | Invalid timeout value. Possibly caused by the timeout value is less than zero. |
 
 > **NOTE**
 >
@@ -246,7 +247,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101004 | Invalid string length of the event parameter. |
@@ -278,13 +279,13 @@ hiAppEvent.setEventParam(params, "test_domain", "test_event").then(() => {
 setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&lt;void&gt;
 
 Sets event configuration. This method uses a promise to return the result. In the same lifecycle, you can set event configuration by event name.<br>Configuration items vary depending on events. Currently, only the following events are supported:
-- **MAIN_THREAD_JANK** (For details about the parameter configuration, see [Main Thread Jank Event Overview](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-seteventconfig).)
+- **MAIN_THREAD_JANK** (For details about the parameter configuration, see [Parameters of setEventConfig](../../dfx/hiappevent-watcher-mainthreadjank-events.md#parameters-of-seteventconfig))
 - **APP_CRASH** (For details about the parameter configuration, see [Crash Log Configuration Parameters](../../dfx/hiappevent-watcher-crash-events.md#customizing-crash-log-specifications).)
 - **RESOURCE_OVERLIMIT** (For details about the parameter configuration, see [Resource Leak Event Overview](../../dfx/hiappevent-watcher-resourceleak-events.md#customizing-specifications).)
 
  > **NOTE**
  >
- > Since API version 26.0.0, all settings of this API are supported by [configEventPolicy](#hiappeventconfigeventpolicy22). You are advised to use [configEventPolicy](#hiappeventconfigeventpolicy22).
+ > Since API version 26.0.0, all settings of this API are supported by **configEventPolicy**. You are advised to use [configEventPolicy](#hiappeventconfigeventpolicy22).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -497,7 +498,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message           |
 | -------- | ------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11104001 | Invalid size value. Possible caused by the size value is less than or equal to zero. |
+| 11104001 | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **Example**
 
@@ -531,7 +532,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message           |
 | -------- | ------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11104001 | Invalid size value. Possible caused by the size value is less than or equal to zero. |
+| 11104001 | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **Example**
 
@@ -621,7 +622,7 @@ Defines parameters of the event group returned by the subscription. This API can
 
 write(info: AppEventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-Writes events of the **AppEventInfo** type. This API uses an asynchronous callback to return the result. The event object written by calling this API is a custom object. To avoid conflicts with system events, you are not advised to write it to system events (system event name constants defined in [Event](#hiappeventevent)). The events written by this API can be subscribed to through ([addWatcher](#hiappeventaddwatcher)).
+Writes application events. This method stores events of the **AppEventInfo** type and uses a callback as the asynchronous callback. The event object written through this API is a developer-defined object. To avoid conflicts and confusion with system events, writing system events (the system event name constants defined in [Event](#event)) is not recommended. Events written through this API can be subscribed to by an event watcher ([addWatcher](#hiappeventaddwatcher)).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -631,7 +632,7 @@ Writes events of the **AppEventInfo** type. This API uses an asynchronous callba
 
 | Name  | Type                          | Mandatory| Description          |
 | -------- | ------------------------------ | ---- | -------------- |
-| info     | [AppEventInfo](#appeventinfo) | Yes  | Application event object. You are advised to avoid the conflict between the custom event name and the system event name constant defined in [Event](#hiappeventevent).|
+| info     | [AppEventInfo](#appeventinfo) | Yes   | Application event object. The event name defined inside it should avoid conflicting with the system event name constants defined in [Event](#event). |
 | callback | AsyncCallback&lt;void&gt;      | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -641,10 +642,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11101003 | Invalid number of event parameters. Possible caused by the number of parameters is over 32. |
+| 11101003 | Invalid number of event parameters. Possibly caused by the number of parameters is over 32. |
 | 11101004 | Invalid string length of the event parameter. |
 | 11101005 | Invalid event parameter name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101006 | Invalid array length of the event parameter. |
@@ -686,7 +687,7 @@ hiAppEvent.write({
 
 write(info: AppEventInfo): Promise&lt;void&gt;
 
-Writes events of the **AppEventInfo** type. This API uses a promise to return the result. The event object written by calling this API is a custom object. To avoid conflicts with system events, you are not advised to write it to system events (system event name constants defined in [Event](#hiappeventevent)). The events written by this API can be subscribed to through ([addWatcher](#hiappeventaddwatcher)).
+Writes application events. This method stores events of the **AppEventInfo** type and uses a promise as the asynchronous callback. The event object written through this API is a developer-defined object. To avoid conflicts and confusion with system events, writing system events (the system event name constants defined in [Event](#event)) is not recommended. Events written through this API can be processed by an event watcher ([addWatcher](#hiappeventaddwatcher)).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -696,7 +697,7 @@ Writes events of the **AppEventInfo** type. This API uses a promise to return th
 
 | Name| Type                          | Mandatory| Description          |
 | ------ | ------------------------------ | ---- | -------------- |
-| info   | [AppEventInfo](#appeventinfo) | Yes  | Application event object. You are advised to avoid the conflict between the custom event name and the system event name constant defined in [Event](#hiappeventevent).|
+| info | [AppEventInfo](#appeventinfo) | Yes | Application event object. The event name is recommended to avoid conflicts with the system event name constants defined in [Event](#event). |
 
 **Return value**
 
@@ -711,10 +712,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                     |
 | -------- | --------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11100001 | Function disabled. Possible caused by the param disable in ConfigOption is true. |
+| 11100001 | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
 | 11101001 | Invalid event domain. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101002 | Invalid event name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
-| 11101003 | Invalid number of event parameters. Possible caused by the number of parameters is over 32. |
+| 11101003 | Invalid number of event parameters. Possibly caused by the number of parameters is over 32. |
 | 11101004 | Invalid string length of the event parameter. |
 | 11101005 | Invalid event parameter name. Possible causes: 1. Contain invalid characters; 2. Length is invalid. |
 | 11101006 | Invalid array length of the event parameter. |
@@ -903,8 +904,8 @@ Sets a user ID, which is used for association when a [Processor](#processor11) i
 
 | Name    | Type                     | Mandatory| Description          |
 | --------- | ------------------------- | ---- | -------------  |
-| name      | string                    | Yes  | Key of a user ID. The value is string that contains a maximum of 256 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign ($). It must not start with a digit.  |
-| value     | string                    | Yes  | Value of a user ID. It can contain a maximum of 256 characters. If the value is **null** or left empty, the user ID is cleared.|
+| name      | string                    | Yes  | Key of a user ID. The value is a string that contains a maximum of 256 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign ($). It must not start with a digit.  |
+| value | string | Yes | Value of the user ID. The length cannot exceed 256 characters. When the value is null or an empty string, the user ID is cleared. |
 
 **Error codes**
 
@@ -986,8 +987,8 @@ Sets a user property, which is used for association when a [Processor](#processo
 
 | Name    | Type                     | Mandatory| Description          |
 | --------- | ------------------------- | ---- | -------------- |
-| name      | string                    | Yes  | Key of a user property. The value is string that contains a maximum of 256 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign ($). It must not start with a digit. |
-| value     | string                    | Yes  | Value of a user property. It can contain a maximum of 1024 characters. If the value is **null** or left empty, the user property is cleared. |
+| name      | string                    | Yes  | Key of a user property. The value is a string that contains a maximum of 256 characters, including digits (0 to 9), letters (a to z), underscore (_), and dollar sign ($). It must not start with a digit. |
+| value     | string                    | Yes   | Value of the user attribute. The length cannot exceed 1024 characters. When the value is null or an empty string, the user attribute is cleared.  |
 
 **Error codes**
 
@@ -1095,7 +1096,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 11103001 | Invalid max storage quota value. Possible caused by incorrectly formatted. |
+| 11103001 | Invalid max storage quota value. Possibly caused by incorrectly formatted. |
 
 **Example**
 
@@ -1108,7 +1109,7 @@ hiAppEvent.configure(config1);
 
 // Set the maximum size of the file storage directory to 100 MB.
 let config2: hiAppEvent.ConfigOption = {
-  maxStorage: '100M',
+  maxStorage: '100MB',
 };
 hiAppEvent.configure(config2);
 ```
@@ -1125,7 +1126,7 @@ Provides configuration options for application event logging.
 | Name      | Type   | Read Only| Optional| Description                                                        |
 | ---------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | disable    | boolean | No| Yes  | Whether to enable the event logging function. The default value is **false**. If this parameter is set to **true**, the logging function is disabled. Otherwise, the logging function is enabled.|
-| maxStorage | string  | No| Yes  | Quota for the directory that stores event logging files. The default value is **10M**. It is recommended that the quota be less than or equal to 10 MB. Otherwise, the API efficiency may be affected.<br>If the directory size exceeds the specified quota when application event logging is performed, event logging files in the directory will be cleared one by one based on the generation time to ensure that directory size does not exceed the quota.<br>The quota value must meet the following requirements:<br>- The quota value consists of only digits and a unit (including b\|k\|kb\|m\|mb\|g\|gb\|t\|tb, which are case-insensitive).<br>- The quota value must start with a digit. You can determine whether to pass the unit. If the unit is left empty, **b** (that is, byte) is used by default.|
+| maxStorage | string  | No | Yes   | Quota size of the directory for storing event logging data. The default value is "10MB". It is recommended that the quota size not exceed 10MB; an excessively large quota may affect API efficiency.<br>After the directory size exceeds the quota, the next event logging triggers a cleanup operation on the directory: event logging data files are deleted one by one from oldest to newest until the directory size no longer exceeds the quota.<br>The quota value string specification is as follows:<br>- The quota value string consists only of digit characters and size unit characters (the supported unit characters are [b\|k\|kb\|m\|mb\|g\|gb\|t\|tb], case-insensitive).<br>- The quota value string must start with a digit, and may optionally omit the unit character (byte is used by default) or end with a unit character. |
 
 
 ## EventPolicy<sup>22+</sup>
@@ -1163,17 +1164,17 @@ Defines the configuration policy for the main thread jank event.
 | autoStopSampling | boolean | No| Yes| Whether to automatically stop sampling the main thread stack when the main thread jank event ends.<br>The value **true** means to stop sampling when the main thread jank event ends or the number of samplings reaches the specified value.<br>The value **false** means to stop sampling when the number of samplings reaches the specified value.<br>The default value is **false**.|
 
 ## CpuUsageHighPolicy<sup>22+</sup>
- 
+
 Defines the configuration policy for the high CPU usage event.
- 
+
 > **NOTE**
 > 
 > After this API is called, the setting is persisted. If this API is called again and the corresponding parameter is not set, the value used by the system last time is used.
- 
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
- 
+
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
- 
+
 | Name      | Type   | Read Only| Optional| Description    |
 | ---------- | ------- | ---- | ---- | ------------- |
 | foregroundLoadThreshold    | number | No| Yes  | High CPU usage threshold of the application foreground, in percentage. The value range is **[1, 100]**. The default value is **30**. If the value is not within the threshold range, the default value **30** is used.<br>**Note**: It is recommended that the value be less than **30**.|
@@ -1191,9 +1192,10 @@ Defines the crash event configuration policy.
 | Name      | Type   | Read Only| Optional| Description    |
 | ---------- | ------- | ---- | ---- | ------------- |
 | pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for crash events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| extendPcLrPrinting    | boolean | No| Yes  | Whether to print the memory values before and after the PC and LR registers in crash logs.<br>The value **true** means to print the memory values of 248 bytes before and 256 bytes after the PC and LR on 64-bit system, or 124 bytes before and 128 bytes after on 32-bit systems.<br>The value **false** means to print the memory values of 16 bytes before and 232 bytes after the PC and LR on 64-bit system, or 8 bytes before and 116 bytes after on 32-bit systems.<br>The default value is **false**.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| extendPcLrPrinting    | boolean | No| Yes  | Whether to print the memory values before and after the PC and LR registers in crash logs.<br>The value **true** means to print the memory values of 248 bytes before and 256 bytes after the PC and LR on 64-bit systems, or 124 bytes before and 128 bytes after on 32-bit systems.<br>The value **false** means to print the memory values of 16 bytes before and 232 bytes after the PC and LR on 64-bit systems, or 8 bytes before and 116 bytes after on 32-bit systems.<br>The default value is **false**.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 | logFileCutoffSzBytes    | number | No| Yes  | Truncation size for crash logs. The value ranges from 0 to 5242880, in bytes. The default value is 0, indicating that crash logs are not truncated.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 | simplifyVmaPrinting    | boolean | No| Yes  | Whether to print the mapping information of all virtual memory areas (VMAs) in the crash log, that is, the **Maps** field in the crash log.<br>The value **true** means to print only the VMA mapping information of the addresses in the crash log to reduce the log size.<br>The value **false** means to print all VMA mapping information.<br>The default value is **false**.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| collectMinidump    | boolean | No | Yes   | Whether to enable [minidump](../../dfx/performance-analysis-kit-terminology.md#minidump). The default value is **false**. <!--RP5--><br/>**true**: The upper limit of the total size of generated and existing fault log files determined by the **log_over_limit** field in [params](../../dfx/hiappevent-watcher-crash-events.md#params) is adjusted to 35 MB.<br/>**false**: The upper limit of the total size of generated and existing fault log files determined by the **log_over_limit** field is restored to 5 MB. <!--RP5End--><br/>**Note**: This configuration item is persistent. Its value remains unchanged until the application resets it.<br/>**Since**: 26.0.0<br/>**Atomic service API**: Since API version 26.0.0, this API is supported in atomic services. |
 
 ## AppFreezePolicy<sup>24+</sup>
 
@@ -1216,7 +1218,8 @@ Defines the resource leak event configuration policy.
 | Name      | Type   | Read Only| Optional| Description    |
 | ---------- | ------- | ---- | ---- | ------------- |
 | pageSwitchLogEnable    | boolean | No| Yes  | Whether to enable the page switching log for resource leak events.<br>**true**: yes.<br>**false**: no.<br>The default value is **false**.<br>Note: The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| jsHeapLogtype    | string | No| Yes  | Heap snapshot transfer specifications.<br>**event**: No heap snapshot is transferred when an OOM error occurs.<br>**event_rawheap**: The system generates and transfers a heap snapshot when an OOM error occurs.<br>**NOTE**<br>- Only the preceding two values are supported. If other values are passed in, the method fails to be called and takes no effect.<br>- If the parameter value is **event_rawheap**, the heap snapshot file may fail to be generated. This is because the application may exit in advance due to a freeze event triggered by a performance problem.<br>-The enabling behavior of an application takes effect only in its current lifecycle. In the same lifecycle, the enabling status of the last successful call is used. After the application restarts, you need to set the enabling status again.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| **jsHeapLogtype** | string | No | Yes | Specification for passing heap snapshots.<br/>**"event"**: When the application encounters an OOM, no heap snapshot is passed.<br/>**"event_rawheap"**: When the application encounters an OOM, the system generates and passes the heap snapshot.<br/>**Note**:<br/>- Currently only the above two values are accepted. If any other content is passed in, the method call fails and has no effect.<br/>- When the parameter value is **"event_rawheap"**, it cannot be guaranteed that the heap snapshot file is successfully generated. This is because, when generating the heap snapshot, the application may trigger a screen freeze due to performance issues and exit prematurely.<br/>- Each enabling behavior of the application takes effect only in the current lifecycle of the application. Within the same lifecycle, the enabled state of the last successful call prevails. After the application restarts, the enabled state must be set again.<br/>**Since Version**: 26.0.0<br/>**Atomic service API**: Since API version 26.0.0, this API is supported in atomic services. |
+| **useRefinedLogFileName** | boolean | No | Yes | Whether to enable the refined event log file name switch.<br/>**true**: Enables the refined event log file name switch.<br/>**false**: Disables the refined event log file name switch.<br/>Default value: **false**.<br>**Since Version:** 26.0.0<br/>**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services. |
 
 ## AddressSanitizerPolicy<sup>24+</sup>
 
@@ -1303,7 +1306,7 @@ Enumerates event types.
 | BEHAVIOR  | 4    | Behavior event.|
 
 
-## hiAppEvent.domain<sup>11+</sup>
+## domain<sup>11+</sup>
 
 ### Constants
 
@@ -1318,7 +1321,7 @@ Provides domain name constants.
 | OS   | string | Yes| System domain.|
 
 
-## hiAppEvent.event
+## event
 
 ### Constants
 
@@ -1346,7 +1349,7 @@ Provides event name constants, including system event name constants and applica
 | SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | Yes| ArkWeb fling jank event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 23.|
 | appFreezeWarning | string | Yes| Application freeze warning event. This is a system event name constant.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
-## hiAppEvent.param
+## Parameters
 
 ### Constants
 

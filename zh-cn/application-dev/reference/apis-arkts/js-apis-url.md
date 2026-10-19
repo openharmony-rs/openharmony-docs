@@ -6,13 +6,15 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-URL是统一资源定位符，本模块提供了常用的工具函数，实现了解析URL字符串、构造URL对象以及对URL查询参数的解析和操作等功能。<br>
+URL是统一资源定位符，本模块提供了常用的工具函数，实现了解析URL字符串、构造URL对象以及对URL查询参数的解析和操作等功能。此外，URLUtil工具类提供将URLParams对象序列化为字符串（空格百分比编码为%20）的辅助能力。<br>
 
 模块主要包含以下核心类：<br>
 
 - [URL](#url)：用于解析和构造完整URL。 <br>
 
 - [URLParams](#urlparams9)：用于操作URL查询参数。 <br>
+
+- [URLUtil](#urlutil)：用于将URLParams对象序列化为字符串，空格编码为%20。 <br>
 
 - [URLSearchParams](#urlsearchparamsdeprecated)：从API version 9开始废弃，建议使用[URLParams](#urlparams9)替代。 <br>
 
@@ -465,6 +467,65 @@ params.append('fod', '3');
 console.info(params.toString()); // Output 'fod=1&bard=2&fod=3'
 ```
 
+## URLUtil
+
+URLUtil是URL相关的工具类，提供URL查询参数序列化的辅助能力。[URLParams.toString](#tostring9)遵循application/x-www-form-urlencoded规范将空格编码为'+'，在需要将空格编码为%20的场景（如URL参数序列化后再解析、与其他系统对接）下，可以使用URLUtil的序列化能力。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+### toString
+
+static toString(urlParams: URLParams): string
+
+将URLParams对象序列化为查询字符串，其中空格百分比编码为%20（而非'+'）。该接口不会修改入参urlParams及其所属URL对象的状态。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| urlParams | [URLParams](#urlparams9) | 是 | 待序列化的URLParams对象。可通过构造函数创建，也可通过[URL](#url)对象的params属性获取。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| string | 返回序列化后的查询字符串，其中空格百分比编码为%20。当URLParams对象不包含任何键值对时，返回空字符串。 |
+
+**示例：**
+
+```ts
+import { url } from '@kit.ArkTS';
+
+// 序列化URLParams对象，空格编码为%20
+let params = new url.URLParams('detailAddress=a%20b');
+let result = url.URLUtil.toString(params); // Output 'detailAddress=a%20b'
+// 对比URLParams.toString：遵循application/x-www-form-urlencoded规范，空格编码为'+'
+let result1 = params.toString(); // Output 'detailAddress=a+b'
+
+// 序列化时对特殊字符进行百分比编码
+let params1 = new url.URLParams();
+params1.append('k&y', 'v=l');
+let result2 = url.URLUtil.toString(params1); // Output 'k%26y=v%3Dl'
+
+// 通过URL对象的params属性获取URLParams对象并序列化
+let urlObject = url.URL.parseURL('https://www.example.com/path?a=b c');
+let result3 = url.URLUtil.toString(urlObject.params); // Output 'a=b%20c'
+```
+
 ## URL
 
 用于解析、构造、规范化、编码对应的URL字符串。
@@ -485,7 +546,7 @@ console.info(params.toString()); // Output 'fod=1&bard=2&fod=3'
 | port | string | 否 | 否 | 获取和设置URL的端口部分。当port为当前protocol的默认端口时，port将被解析为空字符串。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | protocol | string | 否 | 否 | 获取和设置URL的协议部分。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | search | string | 否 | 否 | 获取和设置URL的序列化查询部分。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | 是 | 否 | 获取URLSearchParams对象，用于访问URL查询参数。<br>- **说明：** 此属性从API version 7开始支持，从API version 9开始废弃。建议使用[URLParams](#urlparams9)替代。 |
+| searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | 是 | 否 | 获取URLSearchParams对象，用于访问URL查询参数。<br>- **说明：** 此属性从API version 7开始支持，从API version 9开始废弃。建议使用params<sup>9+</sup>替代。 |
 | params<sup>9+</sup> | [URLParams](#urlparams9) | 是 | 否 | 获取URLParams对象，用于访问URL查询参数。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | username | string | 否 | 否 | 获取和设置URL的用户名部分。**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 
@@ -493,14 +554,12 @@ console.info(params.toString()); // Output 'fod=1&bard=2&fod=3'
 >
 > 在解析URL字符串时，如果入参中的port内容是当前protocol的默认端口，那么port将被解析为空字符串。默认端口为：
 >
-> | 协议 | 默认端口 |
-> | -------- | -------- |
-> | http: | 80 |
-> | https: | 443 |
-> | ftp: | 21 |
-> | gopher: | 70 |
-> | ws: | 80 |
-> | wss: | 443 |
+> - http:  80
+> - https:  443
+> - ftp:  21
+> - gopher:  70
+> - ws:  80
+> - wss:  443
 
 **示例：**
 
@@ -527,13 +586,13 @@ console.info("toString " + urlObj.toString()); // toString http://testhost/direc
 
 ### constructor<sup>(deprecated)</sup>
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[parseURL<sup>9+</sup>](#parseurl9)替代。
-
 constructor(url: string, base?: string | URL)
 
 URL的构造函数。与[parseURL](#parseurl9)方法功能相同，但parseURL为静态工厂方法，推荐使用parseURL来创建URL对象。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[parseURL<sup>9+</sup>](#parseurl9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -550,7 +609,7 @@ URL的构造函数。与[parseURL](#parseurl9)方法功能相同，但parseURL�
 let baseUrl = 'https://username:password@host:8080';
 let rootPathUrl = new url.URL("/", baseUrl); // Output 'https://username:password@host:8080/';
 let absoluteUrl = new url.URL(baseUrl); // Output 'https://username:password@host:8080/';
-new url.URL('path/path1', b); // Output 'https://username:password@host:8080/path/path1';
+new url.URL('path/path1', absoluteUrl); // Output 'https://username:password@host:8080/path/path1';
 let relativePathUrl = new url.URL('/path/path1', absoluteUrl);  // Output 'https://username:password@host:8080/path/path1'; 
 new url.URL('/path/path1', relativePathUrl); // Output 'https://username:password@host:8080/path/path1';
 new url.URL('/path/path1', rootPathUrl); // Output 'https://username:password@host:8080/path/path1';

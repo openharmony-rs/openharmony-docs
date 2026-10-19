@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9d24e15ef82b33c8322a412e3fad5e8314ad7c4e translatedAt=2026-08-24T08:14:53.386Z pushedAt=2026-08-31T02:50:38.066Z -->
 
-Implements a shadow layer.
+A shadow layer object that adds shadow rendering effects to drawn content such as graphics and text by setting the blur radius, offset, and color.
 
 > **NOTE**
 >
@@ -37,10 +38,10 @@ Creates a **ShadowLayer** object.
 
 | Name    | Type     | Mandatory| Description                                |
 | ---------- | -------- | ---- | ----------------------------------- |
-| blurRadius  | number   | Yes  | Radius of the shadow layer. The value must be a floating point number greater than 0.    |
-| x           | number   | Yes  | Offset on the X axis. The value is a floating point number.       |
-| y           | number   | Yes  | Offset on the Y axis. The value is a floating point number.       |
-| color       | [common2D.Color](js-apis-graphics-common2D.md#color) | Yes  | Color in ARGB format. The value of each color channel is an integer ranging from 0 to 255.|
+| blurRadius  | number   | Yes   | Radius of the shadow, which must be a floating-point number greater than 0. The unit is physical pixel px.     |
+| x           | number   | Yes   | Offset on the x-axis. This parameter is a floating-point number. The unit is physical pixel px.        |
+| y           | number   | Yes   | Offset on the y-axis. This parameter is a floating-point number. The unit is physical pixel px.        |
+| color       | [common2D.Color](js-apis-graphics-common2D.md#color) | Yes   | Color in ARGB format. The value of each color channel is an integer in the range [0, 255]. |
 
 **Returns**
 
@@ -59,12 +60,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
-    const canvas = context.canvas;
     let color : common2D.Color = {alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00};
     let shadowLayer = drawing.ShadowLayer.create(3, -3, 3, color);
   }
@@ -73,7 +73,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## create<sup>18+</sup>
 
-static create(blurRadius: number, x: number, y: number, color: common2D.Color | number): ShadowLayer
+static create(blurRadius: number, x: number, y: number, color: common2D.Color \| number): ShadowLayer
 
 Creates a **ShadowLayer** object.
 
@@ -83,10 +83,10 @@ Creates a **ShadowLayer** object.
 
 | Name    | Type     | Mandatory| Description                                |
 | ---------- | -------- | ---- | ----------------------------------- |
-| blurRadius  | number   | Yes  | Radius of the shadow layer. The value must be a floating point number greater than 0.    |
-| x           | number   | Yes  | Offset on the X axis. The value is a floating point number.       |
-| y           | number   | Yes  | Offset on the Y axis. The value is a floating point number.       |
-| color       | [common2D.Color](js-apis-graphics-common2D.md#color) \| number   | Yes  | Color, represented by an unsigned integer in hexadecimal ARGB format. |
+| blurRadius  | number   | Yes   | Radius of the shadow, which must be a floating-point number greater than 0. The unit is physical pixel px.     |
+| x           | number   | Yes   | Offset on the x-axis. This parameter is a floating-point number. The unit is physical pixel px.        |
+| y           | number   | Yes   | Offset on the y-axis. This parameter is a floating-point number. The unit is physical pixel px.        |
+| color       | [common2D.Color](js-apis-graphics-common2D.md#color) \| number   | Yes   | Color. When the type is common2D.Color, the value of each color channel is an integer in the range [0, 255]. When the type is number, it must be an unsigned integer in hexadecimal ARGB format, with the value range [0, 0xFFFFFFFF].  |
 
 **Returns**
 
@@ -105,12 +105,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
-    const canvas = context.canvas;
     let shadowLayer = drawing.ShadowLayer.create(3, -3, 3, 0xff00ff00);
   }
 }

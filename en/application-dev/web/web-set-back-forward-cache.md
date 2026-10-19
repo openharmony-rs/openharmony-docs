@@ -2,9 +2,10 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-09-21T02:33:27.105Z pushedAt=2026-09-21T14:09:22.173Z -->
 
 The **Web** component provides the function of enabling and configuring the back-forward cache (BFCache), which can significantly improve the speed of returning to the previous web page, especially for users with poor network conditions.
 
@@ -35,13 +36,10 @@ export default class EntryAbility extends UIAbility {
 
 ## Setting the Size and Live Time of Cached pages
 
-By default, BFCache can store only one page, and the page can be stored for 600 seconds. You can call [setBackForwardCacheOptions()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setbackforwardcacheoptions12) to set the BFCache policies for each **Web** instance. The maximum number of pages in the BFCache can be adjusted so that it can hold more pages. In this way, BFCache can provide faster loading speed when users perform forward and backward operations continuously. In addition, you can prolong the duration of each page in the BFCache to improve user experience.
+After BFCache is enabled, only one page can be stored by default, and a page that enters BFCache in the **Web** component can remain alive for 600 seconds by default. You can call [setBackForwardCacheOptions()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setbackforwardcacheoptions12) to set the back-forward cache policy for each **Web** instance. This includes adjusting the maximum number of pages in the cache so that BFCache can hold more pages, providing faster loading when the user performs consecutive back and forward operations. In addition, you can modify the retention time of each page in the cache to extend how long pages stay in BFCache, thereby optimizing the browsing experience.
 
 In the following example, the maximum number of pages that can be cached in the **Web** component is set to **10**, and each page is cached for 300s.
-  
-```ts
-// Index.ets
-```
+
 <!-- @[web_module_page_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry2/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript

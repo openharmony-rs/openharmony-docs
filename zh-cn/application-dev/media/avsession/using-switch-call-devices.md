@@ -1,8 +1,8 @@
 # 使用组件切换通话设备
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -308,7 +308,7 @@
    }
    ```
 
-2. 如果应用要根据出声设备变化而改变自定义样式，必须监听设备切换，然后实时刷新自定义样式（对应默认样式实现步骤4）。
+2. 如果应用要根据发声设备变化而改变自定义样式，必须监听设备切换，然后实时刷新自定义样式（对应默认样式实现步骤4）。
 
    <!-- @[device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SelfAVCastPicker.ets) -->    
    

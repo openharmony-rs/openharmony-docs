@@ -80,7 +80,7 @@
 
 3. 在onFormEvent回调函数的实现中，通过updateForm接口刷新卡片数据。
 
-   <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
+   <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
    
    ``` TypeScript
    // entry/src/main/ets/entryformability/EntryFormAbility.ts
@@ -121,7 +121,7 @@
        };
        let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
        formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
-         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
+         hilog.error(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
        });
      }
    
@@ -132,7 +132,7 @@
    
      onFormEvent(formId: string, message: string): void {
        // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
-       hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+       hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] onFormEvent, formId = ${formId}, message: ${message}`);
        class FormDataClass {
          title: string = 'Title Update.'; // 和卡片布局中对应
          detail: string = 'Description update success.'; // 和卡片布局中对应
@@ -142,7 +142,7 @@
        let formData = new FormDataClass();
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
        formProvider.updateForm(formId, formInfo).then(() => {
-         hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm success.');
        }).catch((error: BusinessError) => {
          hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
        });
@@ -328,7 +328,7 @@
                formProvider.reloadAllForms(context).then((reloadNum: number) => {
                  console.info(`reloadAllForms success, reload number: ${reloadNum}`);
                }).catch((error: BusinessError) => {
-                 console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+                 console.error(`promise error, code: ${error.code}, message: ${error.message}`);
                });
              } catch (error) {
                console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -366,7 +366,7 @@
 <!--Del-->
 ## 卡片使用方主动刷新卡片内容（仅对系统应用开放）
 
-由于定时、定点刷新存在时间限制，卡片使用方可以通过调用[requestForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#requestform)接口向卡片管理服务请求主动触发卡片的刷新。卡片管理服务触发卡片提供方FormExtensionAbility中的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，回调中可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。
+由于定时、定点刷新存在时间限制，卡片使用方可以通过调用[requestForm](../reference/apis-form-kit/js-apis-app-form-formHost-sys.md#formhostrequestform)接口向卡片管理服务请求主动触发卡片的刷新。卡片管理服务触发卡片提供方FormExtensionAbility中的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，回调中可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。
 
    <!-- @[FormUpdate_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormUpdateDemo/entry/src/main/ets/pages/Index.ets) -->
    

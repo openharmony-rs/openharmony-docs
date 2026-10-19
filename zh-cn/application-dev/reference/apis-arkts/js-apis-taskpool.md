@@ -2035,7 +2035,6 @@ onExecutionFailed(callback: CallbackFunctionWithError): void
 ```ts
 import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { HashMap } from '@kit.ArkTS';
 
 @Concurrent
 function hashMapFunc(args: number) {
@@ -2258,7 +2257,7 @@ function testWithArray(args: [number, string]): string {
   return "success";
 }
 
-let task1: taskpool.Task = new taskpool.GenericsTask<[string], string>(printArgs, "this is my first LongTask");
+let task1: taskpool.Task = new taskpool.GenericsTask<[string], string>(printArgs, "this is my first GenericsTask");
 
 let task2: taskpool.Task = new taskpool.GenericsTask<[number, string, number], string>(testWithThreeParams, 100, "test", 100);
 

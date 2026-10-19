@@ -1,4 +1,4 @@
-# @ohos.nearlink.manager (星闪开关能力)(系统接口)
+# @ohos.nearlink.manager (星闪基础管理能力)(系统接口)
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
@@ -7,14 +7,14 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-本模块提供了管理星闪基础能力，包括获取设备信息、订阅状态变化事件等。
+本模块提供了星闪基础管理能力，包括打开/关闭星闪、获取本机MAC地址、设置连接模式等能力。
 
 
 **起始版本：** 26.0.0
 
 > **说明：**
 >
-> 本模块接口为系统接口。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.nearlink.manager (星闪基础管理能力)](js-apis-nearlink-manager.md)。
 
 
 ## 导入模块
@@ -30,6 +30,8 @@ enable(): void
 
 打开星闪。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -42,20 +44,20 @@ enable(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 203 | EDM denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 203 | This function is prohibited by enterprise management policies. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   manager.enable();
@@ -70,6 +72,8 @@ disable(): void
 
 关闭星闪。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -82,19 +86,19 @@ disable(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   manager.disable();
@@ -108,6 +112,8 @@ try {
 getLocalAddress(): string
 
 查询本机MAC地址。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
@@ -127,20 +133,20 @@ getLocalAddress(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = manager.getLocalAddress();
@@ -155,6 +161,8 @@ try {
 factoryReset(): Promise&lt;void&gt;
 
 恢复出厂设置。使用Promise异步回调。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
@@ -174,24 +182,24 @@ factoryReset(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   manager.factoryReset().then(() => {
     console.info('factoryReset success');
-  }).catch ((err: BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
   });
 } catch (err) {
@@ -220,7 +228,9 @@ try {
 
 setConnectionMode(mode: ConnectionMode, duration: number): Promise&lt;void&gt;
 
-设置可发现模式。使用Promise异步回调。
+设置连接模式。使用Promise异步回调。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
@@ -236,8 +246,8 @@ setConnectionMode(mode: ConnectionMode, duration: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| mode | [ConnectionMode](#connectionmode) | 是 | 表示要设置的可发现模式。| 
-| duration | number | 是 | 表示设置模式的持续时间，单位为s，若为0则表示无限制。|
+| mode | [ConnectionMode](#connectionmode) | 是 | 表示要设置的连接模式。| 
+| duration | number | 是 | 表示设置模式的持续时间，单位为s，取值范围为大于等于0的整数，若为0则表示无限制。|
 
 **返回值：**
 
@@ -247,13 +257,13 @@ setConnectionMode(mode: ConnectionMode, duration: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[NearLink错误码](errorcode-nearlink-service.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100040 | Integer out of range. |
 | 36100099 | Operation failed. |
@@ -261,14 +271,14 @@ setConnectionMode(mode: ConnectionMode, duration: number): Promise&lt;void&gt;
 **示例：**
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let mode: number = manager.ConnectionMode.SLE_MODE_CONNECTABLE;
+  let mode: manager.ConnectionMode = manager.ConnectionMode.SLE_MODE_CONNECTABLE;
   let duration: number = 100;
   manager.setConnectionMode(mode, duration).then(() => {
-    console.info('connect success');
-  }).catch ((err: BusinessError) => {
+    console.info('setConnectionMode success');
+  }).catch((err: BusinessError) => {
     console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
   });
 } catch (err) {

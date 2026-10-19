@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-09-02T11:24:27.530Z pushedAt=2026-09-03T02:11:53.977Z -->
 
-**@StorageLink** is used in state management V1 to establish bidirectional data synchronization with the property of a specified key in AppStorage. When the variable decorated with **@StorageLink** changes, the change is synchronized to the property corresponding to the key in AppStorage. When the property corresponding to the key in AppStorage changes, the change is also synchronized back to the variable decorated with **@StorageLink**. It is applicable to scenarios where the global state of AppStorage needs to be shared across pages and abilities and bidirectional data synchronization with AppStorage is required. It can avoid layer-by-layer state data transfer to ensure data consistency.
+**\@StorageLink** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1) to establish bidirectional data synchronization with the property of a specified key in [AppStorage](./ts-state-management.md#appstorage). When the variable decorated with **\@StorageLink** changes, the change is synchronized to the property corresponding to the key in AppStorage. When the property corresponding to the key in AppStorage changes, the change is also synchronized back to the variable decorated with **\@StorageLink**. It is applicable to scenarios where the global state of AppStorage needs to be shared across pages and [abilities](../../apis-ability-kit/js-apis-ability-ability.md) and bidirectional data synchronization with AppStorage is required. It can avoid layer-by-layer state data transfer to ensure data consistency.
 
 For details, see [AppStorage: Storing Application-wide UI State](../../../ui/state-management/arkts-appstorage.md).
 

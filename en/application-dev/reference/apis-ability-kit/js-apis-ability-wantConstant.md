@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=b3bc27a342923ac4fafa55153b55c4f3b627330f translatedAt=2026-09-03T09:30:34.630Z pushedAt=2026-09-05T10:47:30.175Z -->
 
-The module provides the actions, entities, and flags used in Want objects.
+The wantConstant module provides APIs for operating Want constants and describes the meaning of the Flags.
 
 > **NOTE**
 > 
@@ -34,7 +35,7 @@ Enumerates the action constants of the Want object. **action** specifies the ope
 | ACTION_MANAGE_APPLICATIONS_SETTINGS         | ohos.settings.manage.applications        | Action of launching the UI for managing installed applications.                 |
 | ACTION_APPLICATION_DETAILS_SETTINGS         | ohos.settings.application.details        | Action of launching the UI that displays the details of an application.            |
 | ACTION_SET_ALARM                            | ohos.want.action.setAlarm                | Action of launching the UI for setting the alarm clock.                         |
-| ACTION_SHOW_ALARMS                          | ohos.want.action.showAlarms              | Action of launching the UI that displays all alarms.                    |
+| ACTION_SHOW_ALARMS                          | ohos.want.action.showAlarms              | Indicates the action of starting the page function for displaying all alarms.                     |
 | ACTION_SNOOZE_ALARM                         | ohos.want.action.snoozeAlarm             | Action of launching the UI for snoozing an alarm.                      |
 | ACTION_DISMISS_ALARM                        | ohos.want.action.dismissAlarm            | Action of launching the UI for deleting an alarm.                            |
 | ACTION_DISMISS_TIMER                        | ohos.want.action.dismissTimer            | Action of launching the UI for dismissing a timer.                          |

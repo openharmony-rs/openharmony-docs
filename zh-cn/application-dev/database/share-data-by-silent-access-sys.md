@@ -1,9 +1,9 @@
 # 通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
-<!--Tester: @chenwan188; @logic42-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
 
 
@@ -307,7 +307,7 @@
 | ----------------------- | ----------------------------- | ---- |
 | uri                     | 数据使用的URI，是跨应用数据访问的唯一标识。       | 是    |
 | requiredReadPermission  | 标识从该数据代理读取数据时所需要的权限，不配置默认不允许其他APP访问数据。支持权限可参考[权限列表](../security/AccessToken/app-permissions.md)。<br>注意：当前静默访问的权限约束方式与[DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md)的权限约束方式不同，请注意区分，切勿混淆，具体可参考[DataShareExtensionAbility章节](share-data-by-datashareextensionability-sys.md)。 | 否    |
-| requiredWritePermission | 标识从该数据代理修改数据时所需要的权限，不配置默认不允许其他APP访问数据。支持权限可参考[权限列表](../security/AccessToken/app-permissions.md)。<br>注意：当前静默访问的权限约束方式与[DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md)的权限约束方式不同，请注意区分，切勿混淆，具体可参考[DataShareExtensionAbility章节](share-data-by-datashareextensionability-sys.md)。 | 否    |
+| requiredWritePermission | 标识从该数据代理修改数据时所需要的权限，不配置默认不允许其他APP修改数据。支持权限可参考[权限列表](../security/AccessToken/app-permissions.md)。<br>注意：当前静默访问的权限约束方式与[DataShareExtensionAbility](share-data-by-datashareextensionability-sys.md)的权限约束方式不同，请注意区分，切勿混淆，具体可参考[DataShareExtensionAbility章节](share-data-by-datashareextensionability-sys.md)。 | 否    |
 
 **module.json5配置样例：**
 

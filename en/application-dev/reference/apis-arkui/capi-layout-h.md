@@ -1,10 +1,12 @@
 # layout.h
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @l30014443-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=f3c11decfd21fde5edd9d4f0af458b50090e67d7 translatedAt=2026-08-21T04:10:29.310Z pushedAt=2026-08-21T09:05:05.313Z -->
 
 ## Overview
 
@@ -29,7 +31,7 @@ Defines layout-related enumerations and APIs.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md) | ArkUI_AlignmentRuleOption | Defines the alignment rule of the child components in the relative container.|
-| [ArkUI_GuidelineOption](capi-arkui-nativemodule-arkui-guidelineoption.md) | ArkUI_GuidelineOption | Defines the ID, direction, and position of a guideline (a guideline in the **RelativeContainer** component).|
+| [ArkUI_GuidelineOption](capi-arkui-nativemodule-arkui-guidelineoption.md) | ArkUI_GuidelineOption | Defines guideline configuration options, which specify the ID, direction, and position of a guideline (a guideline in the **RelativeContainer** component). |
 | [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md) | ArkUI_BarrierOption | Defines the ID, direction, and referenced component of a barrier.|
 | [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md) | ArkUI_PixelRoundPolicy | Defines a component pixel rounding policy.|
 | [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md) | ArkUI_PositionEdges | Provides position parameters relative to the boundaries of the container's content area.|
@@ -291,7 +293,7 @@ enum ArkUI_HorizontalAlignment
 
 **Description**
 
-Enumerates the alignment mode in the horizontal direction.
+Enumerates the alignment modes in the horizontal direction.
 
 **Since:** 12
 
@@ -454,7 +456,6 @@ Enumerates pixel rounding calculation policies.
 | ARKUI_PIXELROUNDCALCPOLICY_NOFORCEROUND = 0 | No forced rounding calculation.|
 | ARKUI_PIXELROUNDCALCPOLICY_FORCECEIL | Round-up calculation.|
 | ARKUI_PIXELROUNDCALCPOLICY_FORCEFLOOR | Round-down calculation.|
-
 
 ## Function Description
 
@@ -849,7 +850,7 @@ Obtains the referenced components of a barrier.
 | Name| Description|
 | -- | -- |
 | [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to a barrier configuration.|
-| index | Index of the barrier.|
+| int32_t index | Index of the barrier. |
 | int32_t referencedIndex | Index of the referenced component ID.|
 
 **Returns**
@@ -937,7 +938,7 @@ Sets the left alignment mode of a relative layout.
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
 | const char* id | Pointer to the ID of the left-aligned anchor component.|
-| value | Alignment mode relative to the anchor component.|
+| [ArkUI_HorizontalAlignment](#arkui_horizontalalignment) alignment | Alignment mode relative to the anchor component. |
 
 ### OH_ArkUI_AlignmentRuleOption_SetEnd()
 
@@ -957,7 +958,7 @@ Sets the right alignment mode of a relative layout.
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
 | const char* id | Pointer to the ID of the right-aligned anchor component.|
-| value | Alignment mode relative to the anchor component.|
+| [ArkUI_HorizontalAlignment](#arkui_horizontalalignment) alignment | Alignment mode relative to the anchor component. |
 
 ### OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal()
 
@@ -977,7 +978,7 @@ Sets the horizontal center alignment mode of a relative layout.
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
 | const char* id | Pointer to the ID of the horizontally-centered anchor component.|
-| value | Alignment mode relative to the anchor component.|
+| [ArkUI_HorizontalAlignment](#arkui_horizontalalignment) alignment | Alignment mode relative to the anchor component. |
 
 ### OH_ArkUI_AlignmentRuleOption_SetTop()
 
@@ -997,7 +998,7 @@ Sets the top alignment mode of a relative layout.
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
 | const char* id | Pointer to the ID of the top-aligned anchor component.|
-| value | Alignment mode relative to the anchor component.|
+| [ArkUI_VerticalAlignment](#arkui_verticalalignment) alignment | Alignment mode relative to the anchor component. |
 
 ### OH_ArkUI_AlignmentRuleOption_SetBottom()
 
@@ -1017,7 +1018,7 @@ Sets the bottom alignment mode of a relative layout.
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
 | const char* id | Pointer to the ID of the bottom-aligned anchor component.|
-| value | Alignment mode relative to the anchor component.|
+| [ArkUI_VerticalAlignment](#arkui_verticalalignment) alignment | Alignment mode relative to the anchor component. |
 
 ### OH_ArkUI_AlignmentRuleOption_SetCenterVertical()
 
@@ -1037,7 +1038,7 @@ Sets the vertical center alignment mode of a relative layout.
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
 | const char* id | Pointer to the ID of the vertically-centered anchor component.|
-| value | Alignment mode relative to the anchor component.|
+| [ArkUI_VerticalAlignment](#arkui_verticalalignment) alignment | Alignment mode relative to the anchor component. |
 
 ### OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal()
 
@@ -1075,7 +1076,7 @@ Sets the bias value of the component in the vertical direction under the anchor 
 | Name| Description|
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
-| horizontal | Bias value in the vertical direction.|
+| float vertical | Bias value in the vertical direction. |
 
 ### OH_ArkUI_AlignmentRuleOption_GetStartId()
 
@@ -1515,7 +1516,7 @@ Obtains the value of the **PositionEdges** object in the top direction.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Error code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PositionEdges_SetLeft()
 
@@ -1559,7 +1560,7 @@ Obtains the value of the **PositionEdges** object in the left direction.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Error code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PositionEdges_SetBottom()
 
@@ -1603,7 +1604,7 @@ Obtains the value of the **PositionEdges** object in the bottom direction.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Error code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PositionEdges_SetRight()
 
@@ -1647,7 +1648,7 @@ Obtains the value of the **PositionEdges** object in the right direction.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Error code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PixelRoundPolicy_Create()
 
@@ -1727,7 +1728,7 @@ Obtains the top edge pixel rounding policy from the **PixelRoundPolicy** object.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Error code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PixelRoundPolicy_SetStart()
 
@@ -1771,7 +1772,7 @@ Obtains the start edge pixel rounding policy from the **PixelRoundPolicy** objec
 
 | Type| Description|
 | -- | -- |
-| int32_t | Error code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PixelRoundPolicy_SetBottom()
 
@@ -1815,7 +1816,7 @@ Obtains the bottom edge pixel rounding policy from the **PixelRoundPolicy** obje
 
 | Type| Description|
 | -- | -- |
-| int32_t | Error code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PixelRoundPolicy_SetEnd()
 
@@ -1859,4 +1860,4 @@ Obtains the end edge pixel rounding policy from the **PixelRoundPolicy** object.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Error code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|
+| int32_t | Result code.<br>      Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if the operation is successful.<br>      Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) if a parameter error occurs.|

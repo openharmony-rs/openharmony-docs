@@ -25,13 +25,13 @@ ArcButton({
   })
 })
 ```
-  其中，[label](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮文字，[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮类型，[styleMode](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮样式。
+  其中，[label](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮文字，[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮位置，[styleMode](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮样式。
 
   ![top](figures/ArcButtonTop.png)
 
 ## 设置按钮类型
 
-ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮类型。
+ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮位置。
 
 - 下弧形按钮（默认类型）。
 

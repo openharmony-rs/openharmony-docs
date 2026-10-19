@@ -89,7 +89,7 @@
 | --ap-path        | 否         | NA            | 存放[ap文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-arkts-52-V5)的路径。| 仅Stage模型生效。 |
 | --dir-list       | 否         | NA            | 可指定目标文件夹列表，将其打入HAP包内。                      | NA              |
 | --compress-level | 否         | number        | lib库下文件压缩等级，默认值1。可选等级1-9。在应用配置compressNativeLibs参数为true的情况下生效，数值越大压缩率越高、压缩速度越慢。 | NA  |
-| --pkg-context-path      | 否         | NA            | 可指定语境信息表文件路径，文件名必须为pkgContextInfo.json。当app.json5配置文件中bundleType取值不是appPlugin，且module.json5配置文件中requestPermissions取值包含"ohos.permission.kernel.SUPPORT_PLUGIN"时，该参数必填。 | 仅Stage模型生效。              |
+| --pkg-context-path      | 否         | NA            | 可指定语境信息表文件路径，文件名必须为pkgContextInfo.json。<!--Del-->当app.json5配置文件中bundleType取值不是appPlugin，且module.json5配置文件中requestPermissions取值包含"ohos.permission.kernel.SUPPORT_PLUGIN"时，该参数必填。<!--DelEnd--> | 仅Stage模型生效。              |
 | --hnp-path | 否 | NA | 指定native软件包文件路径，将native软件包打入HAP包内。 | NA |
 | --exist-src-path | 否 | NA | 指定增量打包时的源HAP包路径，该路径必须指向一个已存在的、有效的.hap文件。当--lib-path-retain配置为true时，打包工具会直接拷贝源HAP包中的libs目录，不再打包--lib-path指定的libs目录，该特性称为增量打包。当--lib-path-retain配置为false时，正常打包--lib-path指定的libs目录，该参数无效。当libs目录中so文件压缩耗时比较久时，使用增量打包可以提升打包速度。<br/>从API version 22开始支持该参数。 | 仅Stage模型生效。|
 | --lib-path-retain | 否 | boolean | 是否对libs目录做增量打包。为true时表示对libs目录做增量打包，直接拷贝--exist-src-path指向的源HAP中的libs目录，不再打包--lib-path指定的libs目录；为false时表示不做增量打包，打包--lib-path指向的目录。默认值为false。此参数必须与--exist-src-path配套使用，单独设置不生效。<br/>从API version 22开始支持该参数。 | 仅Stage模型生效。|
@@ -126,7 +126,7 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 | --out-path       | 是         | NA            | 目标文件路径，文件名必须以.hsp为后缀。                       |
 | --force          | 否         | boolean       | 当目标文件路径已存在时，控制是否强制执行覆盖。当--out-path目标文件打包前已存在，该参数为true时，覆盖写入；为false时，终止打包过程并报错。当--out-path目标文件打包前不存在，正常打包，该参数无效。默认值为false。 |
 | --compress-level | 否         | number        | lib库下文件压缩等级，默认值1，可选等级1-9。在应用配置compressNativeLibs参数为true的情况下生效，数值越大压缩率越高、压缩速度越慢。 |
-| --pkg-context-path      | 否         | NA            | 可指定语境信息表文件路径，文件名必须为pkgContextInfo.json。当app.json5配置文件中bundleType取值不是appPlugin，且module.json5配置文件中requestPermissions取值包含"ohos.permission.kernel.SUPPORT_PLUGIN"时，该参数必填。 |
+| --pkg-context-path      | 否         | NA            | 可指定语境信息表文件路径，文件名必须为pkgContextInfo.json。<!--Del-->当app.json5配置文件中bundleType取值不是appPlugin，且module.json5配置文件中requestPermissions取值包含"ohos.permission.kernel.SUPPORT_PLUGIN"时，该参数必填。<!--DelEnd--> |
 | --exist-src-path | 否 | NA | 指定增量打包时的源HSP包路径，该路径必须指向一个已存在的、有效的.hsp文件。当--lib-path-retain配置为true时，打包工具会直接拷贝源HSP包中的libs目录，不再打包--lib-path指定的libs目录，该特性称为增量打包。当--lib-path-retain配置为false时，正常打包--lib-path指定的libs目录，该参数无效。当libs目录中so文件压缩耗时比较久时，使用增量打包可以提升打包速度。<br/>从API version 22开始支持该参数。 |
 | --lib-path-retain | 否 | boolean | 是否对libs目录做增量打包。为true时表示对libs目录做增量打包，直接拷贝--exist-src-path指向的源HSP中的libs目录，不再打包--lib-path指定的libs目录；为false时表示不做增量打包，打包--lib-path指向的目录。默认值为false。此参数必须与--exist-src-path配套使用，单独设置不生效。<br/>从API version 22开始支持该参数。|
 | --pkg-sdk-info-path | 否         | NA            | pkgSdkInfo.json（构建产物中依赖的HAR的基本信息，包括模块名和版本）文件路径，文件名必须为pkgSdkInfo.json。<br/>从API version 23开始支持该参数。     |
@@ -186,7 +186,7 @@ java -jar app_packing_tool.jar --mode app [--hap-path <path>] [--hsp-path <path>
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
 | --replace-pack-info    | 否     | boolean          | 打包APP时，是否使用由--pack-info-path参数指定的pack.info文件替换HAP、HSP包中的pack.info文件。如果为true表示替换，false表示不替换，默认值为true。<br/>从API version 22开始支持该参数。 |
 | --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的[重复so文件扫描报告](#扫描重复so文件)，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
-| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`）。<br/>- 打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
+| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
 
 ## 多工程打包指令
 
@@ -232,7 +232,7 @@ java -jar app_packing_tool.jar --mode multiApp [--hap-list <path>] [--hsp-list <
 | --atomic-service-entry-size-limit      | 否         | NA            | 设置元服务entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果entry包是release模式（module.json5文件中type字段值为entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的entry包大小（包含其依赖包的大小）。                       |
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
 | --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的[重复so文件扫描报告](#扫描重复so文件)，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
-| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`）。<br/>- 打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
+| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
 
 ## HQF打包指令
 
@@ -430,7 +430,7 @@ java -jar app_packing_tool.jar --mode fastApp [--hap-path <path>] [--hsp-path <p
 | --atomic-service-entry-size-limit      | 否         | NA            | 设置元服务entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果entry包是release模式（module.json5文件中type字段值为entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的entry包大小（包含其依赖包的大小）。                      |
 | --atomic-service-non-entry-size-limit  | 否         | NA            | 设置元服务非entry包大小（包含其依赖包的大小）限制，仅Stage模型应用且bundleType为atomicService时生效。取值范围为[0,4194304]的整数，取值为0表示不限制大小，单位KB。不设置该参数时默认值为2048KB。如果非entry包是release模式（module.json5文件中type字段值不是entry，且app.json5中debug字段的值为false），该限制作用于打包app时压缩后的非entry包大小（包含其依赖包的大小）。                     |
 | --stat-duplicate       | 否     | boolean       | 打包完成后，是否扫描重复so文件，该参数可用于识别重复so，以减小包大小。取值为true时，执行扫描，扫描完成会在--out-path参数指定的输出文件所在目录下生成`scan_report`目录，其中包含文件名为`scan_result`的[重复so文件扫描报告](#扫描重复so文件)，并在告警中打印`scan_report`目录路径。取值为false时，不执行扫描。默认值为false。<br/>从API version 23开始支持该参数。 |
-| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`）。<br/>- 打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
+| --deduplicate-so       | 否     | boolean       | 用于在打包时对so文件进行去重，从而有效减小App的包体积。<br/>默认值：`false`<br/>取值说明：<br/>`true`：执行so文件去重。去重完成后，将在`--out-path`指定的目录下生成去重报告[so_dedup_report.json](#so去重报告)，并在日志中打印去重结果。<br/>`false`：不执行so文件去重。<br/>去重策略：<br/>- 当App包中不同模块间存在相同的so文件，且这些so会解压到应用根目录时（即`module.json5`中`compressNativeLibs`和`extractNativeLibs`不同时为`false`，且`libIsolation`为`false`），打包工具会根据`deviceTypes`、`deliveryWithInstall`、`distributionFilter`、`requiredDeviceFeatures`等配置进行去重，确保去重后应用在各个可安装设备上的功能保持不变。<br/>**说明**：<br/>- 若应用代码中有直接从原始安装包中读取so文件的操作，开启去重后应用行为将发生变化。此时请勿开启该功能，或修改代码逻辑改为读取解压后的so文件后再开启。<br/>- 开发者若在打包时开启了so去重功能，建议仔细检查去重结果，并在上架前充分验证去重后App包的功能完整性。<br/>从API版本26.0.0开始支持该参数。|
 
 ## 扫描重复so文件
 
@@ -1634,16 +1634,16 @@ Check app plugin failed.
 1. --json-path指定的module.json文件不存在。
 2. --json-path指定的module.json文件不包含module标签。
 3. 检查--pkg-context-path参数失败。
-4. --json-path指定的module.json文件包含非embeddedUI类型的extensionAbilities。
-5. --json-path指定的module.json文件中bundleType是appPlugin时，module.json文件不包含[ohos.permission.kernel.SUPPORT_PLUGIN](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin)权限。
+4. --json-path指定的module.json文件包含非embeddedUI类型的extensionAbilities。<!--Del-->
+5. --json-path指定的module.json文件中bundleType是appPlugin时，module.json文件中包含[ohos.permission.kernel.SUPPORT_PLUGIN](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin)权限。<!--DelEnd-->
 
 **处理步骤**
 
 1. 确认--json-path指定的module.json文件存在。
 2. 确认--json-path指定的module.json文件包含module标签。
 3. 查看报错日志中第一条错误码，确认具体错误信息。
-4. 确认--json-path指定的module.json文件不包含非embeddedUI类型的extensionAbilities。
-5. 确认--json-path指定的module.json文件中bundleType是appPlugin时，module.json文件包含ohos.permission.kernel.SUPPORT_PLUGIN权限。
+4. 确认--json-path指定的module.json文件不包含非embeddedUI类型的extensionAbilities。<!--Del-->
+5. 确认--json-path指定的module.json文件中bundleType是appPlugin时，module.json文件不能包含ohos.permission.kernel.SUPPORT_PLUGIN权限。<!--DelEnd-->
 
 ### 10012054 校验HAR去重属性失败
 **错误信息**

@@ -3,20 +3,17 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:51.664Z pushedAt=2026-06-25T06:57:19.565Z -->
+<!-- md-trans-meta sourceCommit=1275b89181ca8fc1862130ee865235369b412dd3 translatedAt=2026-09-14T01:41:58.183Z pushedAt=2026-09-14T08:01:34.307Z -->
 
 This module uses Bluetooth communication technology to provide device discovery and device offline notification features for applications. The module can:
 
-- Dynamically listen to and discovers Bluetooth devices pre-registered by the applications.
-
-- Leverage the process startup mechanism to automatically start the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) process of the applications when the target devices appear.
-
+- Dynamically listen for and discover Bluetooth devices pre-registered by the apps.
+- Leverage the process startup mechanism to automatically start the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) process of the app when the target device is detected.
 - Use the process destruction mechanism to automatically destroy the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) process of the applications when all the devices go offline.
-
-- Notify the applications of registered devices through the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) API.
+- Call the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) API to notify the app that the registered device is discovered.
 
 > **NOTE**
 > - The initial APIs of this module are supported since API version 23. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -31,12 +28,10 @@ import { partnerAgent } from '@kit.ConnectivityKit';
 
 enableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 
-Enables peripheral interconnection. This API uses a promise to return the result.
+Enables peripheral interconnection. This API uses a promise to return the result. This API is applicable to scenarios where an app needs to provide the peripheral interconnection capability for a bound Bluetooth device.
 
-- This API takes effect only for devices registered by an application using [BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice). After being called, this API will provide the [device interconnection capability](js-apis-fusionConnectivity-partnerAgent.md) for the application.
-
+- This API takes effect only for devices registered by an app using [BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice). After being called, this API will provide the device interconnection capability [partnerAgent](js-apis-fusionConnectivity-partnerAgent.md) for the app.
 - You can call [isDeviceControlEnabled](js-apis-fusionConnectivity-partnerAgent.md#partneragentisdevicecontrolenabled) to check whether the peripheral interconnection feature is enabled. If the feature has been enabled, the repeated calling does not take effect.
-
 - You can call [disableDeviceControl](#partneragentdisabledevicecontrol) to disable the peripheral interconnection feature.
 
 **System API**: This is a system API.
@@ -49,7 +44,7 @@ Enables peripheral interconnection. This API uses a promise to return the result
 
 | **Name**    | **Type**                                    | **Mandatory**  | **Description**                                 |
 | ------- | -------------------------------------- | ---- | ----------------------------------- |
-| deviceAddress | [PartnerDeviceAddress](js-apis-fusionConnectivity-partnerAgent.md#partneragentpartnerdeviceaddress) | Yes   | Address information of the device registered by the application.<br>The application must be configured with the **bluetoothAddress** option of the **PartnerDeviceAddress** type.|
+| deviceAddress | [PartnerDeviceAddress](js-apis-fusionConnectivity-partnerAgent.md#partnerdeviceaddress) | Yes | Address information of the device registered by the app.<br>The app must be configured with the **bluetoothAddress** option of the **PartnerDeviceAddress** type. |
 
 **Return value**
 
@@ -97,13 +92,11 @@ try {
 
 disableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 
-Disables peripheral interconnection. This API uses a promise to return the result.
+Disables peripheral interconnection. This API uses a promise to return the result. This API is applicable to scenarios where an app no longer needs the peripheral interconnection capability.
 
-- This API takes effect only for devices registered by an application using [BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice). After being called, this API will not provide the [device interconnection capability](js-apis-fusionConnectivity-partnerAgent.md) for the application.
-
+- This API takes effect only for devices registered by an app using [BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice). After being called, this API will disable the device interconnection capability [partnerAgent](js-apis-fusionConnectivity-partnerAgent.md) for the app.
 - You can call [isDeviceControlEnabled](js-apis-fusionConnectivity-partnerAgent.md#partneragentisdevicecontrolenabled) to check whether the peripheral interconnection feature is enabled. If the feature has been disabled, the repeated calling does not take effect.
-
-- After the feature is disabled, the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) process registered by the application will not be started when the devices that are registered by other applications using [BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice) are discovered. You can call [enableDeviceControl](#partneragentenabledevicecontrol) to enable the feature again.
+- After the feature is disabled, the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) process registered by the application will not be started when the devices registered by other applications using [BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice) are discovered. You can call [enableDeviceControl](#partneragentenabledevicecontrol) to enable the peripheral interconnection feature again.
 
 **System API**: This is a system API.
 
@@ -115,7 +108,7 @@ Disables peripheral interconnection. This API uses a promise to return the resul
 
 | **Name**    | **Type**                                    | **Mandatory**  | **Description**                                 |
 | ------- | -------------------------------------- | ---- | ----------------------------------- |
-| deviceAddress | [PartnerDeviceAddress](js-apis-fusionConnectivity-partnerAgent.md#partneragentpartnerdeviceaddress) | Yes| Address information of the device registered by the application.<br>The application must be configured with the **bluetoothAddress** option of the **PartnerDeviceAddress** type.|
+| deviceAddress | [PartnerDeviceAddress](js-apis-fusionConnectivity-partnerAgent.md#partnerdeviceaddress) | Yes | The app must be configured with the **bluetoothAddress** option of the **PartnerDeviceAddress** type. |
 
 **Return value**
 

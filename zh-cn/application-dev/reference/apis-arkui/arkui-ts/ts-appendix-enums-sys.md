@@ -1,7 +1,7 @@
 # 枚举说明 (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -13,6 +13,8 @@
 > - 本模块接口仅可在Stage模型下使用。
 
 ## IlluminatedType
+
+定义光照类型，用于指定组件是否可以被光源照亮以及被照亮的类型。
 
 **系统接口：** 此接口为系统接口。
 

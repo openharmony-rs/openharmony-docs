@@ -15,7 +15,7 @@
 ## 开发步骤
 1. 创建动态卡片
 
-    新建一个名为WidgetEventCall的ArkTs动态卡片。
+    新建一个名为WidgetEventCall的ArkTS动态卡片。
 
 2. 页面布局代码实现
 
@@ -90,7 +90,7 @@
     
     在UIAbility中监听call事件，根据监听到的method参数中的方法名称调用对应方法，并通过[rpc.MessageSequence](../reference/apis-ipc-kit/js-apis-rpc.md#messagesequence9)获取参数。UIAbility中监听的方法与步骤2中调用的方法需保持一致。
 
-    <!-- @[widget_event_call_card_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets) --> 
+    <!-- @[widget_event_call_card_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets) -->  
     
     ``` TypeScript
     //src/main/ets/WidgetEventCallEntryAbility/WidgetEventCallEntryAbility.ets
@@ -153,7 +153,7 @@
           this.callee.off('funA');
           this.callee.off('funB');
         } catch (error) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee off. error code: ${error.code}, error message: ${error.message}`);
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to unregister callee off. error code: ${error.code}, error message: ${error.message}`);
         }
       }
     }
@@ -161,7 +161,7 @@
 
 4. 配置后台运行权限
 
-    call事件存在约束限制，卡片提供方应用需要在module.json5下添加后台运行权限([ohos.permission.KEEP_BACKGROUND_RUNNING](../security/AccessToken/permissions-for-all.md#ohospermissionkeep_background_running))。
+    call事件存在约束限制，卡片提供方应用需要在module.json5下添加后台运行权限（[ohos.permission.KEEP_BACKGROUND_RUNNING](../security/AccessToken/permissions-for-all.md#ohospermissionkeep_background_running)）。
 
     <!-- @[module_json5_request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/module.json5) -->
     

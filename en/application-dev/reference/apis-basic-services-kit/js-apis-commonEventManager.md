@@ -2,16 +2,17 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=54656b3da3e41e2ba7f2b57573523f0dbf41c1e3 translatedAt=2026-10-08T09:10:55.351Z pushedAt=2026-10-09T03:03:08.707Z -->
 
 This module provides APIs to publish, subscribe to, and unsubscribe from common events. This module provides a system-level event notification mechanism that allows an app to send notifications to other apps that have subscribed to the event when the system status changes (such as power-on completion, battery level change, and screen on/off) or a custom service event occurs. This mechanism enables transferring information across components and apps.
 
 The key concepts involved in this module are as follows:
-- Unordered common events: common events that CES forwards regardless of whether subscribers receive the events and when they subscribe to the events.
-- Ordered common events: common events that CES forwards based on the subscriber priority. CES preferentially forwards an ordered common event to the subscriber with higher priority, waits until the subscriber receives the event, and then forwards the events to the subscriber with lower priority. Subscribers with the same priority receive common events in a random order.
-- Sticky common events: common events that can be sent to a subscriber before or after they initiate a subscription. Only system apps or services can send sticky common events.
+- [Unordered common events](../../basic-services/common-event/common-event-glossary.md#unordered-common-event): common events that CES forwards regardless of whether subscribers receive the events and when they subscribe to the events.
+- [Ordered common events](../../basic-services/common-event/common-event-glossary.md#ordered-common-event): common events that CES forwards based on the subscriber priority. CES preferentially forwards an ordered common event to the subscriber with higher priority, waits until the subscriber receives the event, and then forwards the events to the subscriber with lower priority. Subscribers with the same priority receive common events in a random order.
+- [Sticky common events](../../basic-services/common-event/common-event-glossary.md#sticky-common-event): common events that can be sent to a subscriber before or after they initiate a subscription.
 
 **APIs used in combination**
 
@@ -47,7 +48,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 ## Support
 
-System common events refer to events released by system services or system apps. Subscribing to these common events requires specific permissions and event values. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).
+[System common events](../../basic-services/common-event/common-event-glossary.md#system-common-event) refer to events released by system services or system apps. Subscribing to these common events requires specific permissions and event values. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).
 
 ## commonEventManager.publish
 
@@ -63,7 +64,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 | Name    | Type                | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| event    | string               | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).|
+| event    | string               | Yes   | Common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the common event is successfully published, **err** is **undefined**; if the event fails to be published, **err** is an error object.|
 
 **Error codes**
@@ -111,7 +112,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 | Name    | Type                  | Mandatory| Description                  |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). |
+| event    | string                 | Yes   | Common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
 | callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. If the common event is successfully published, **err** is **undefined**; if the event fails to be published, **err** is an error object. |
 
@@ -453,7 +454,7 @@ setTimeout(() => {
         console.error(`Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
         return;
       }
-      // If the subscriber is no longer used, set it to null to avoid memory leakage.
+      // If the subscriber is no longer used, set it to null to avoid memory leaks.
       subscriber = null;
       console.info(`Succeeded in unsubscribing.`);
     });
@@ -479,7 +480,7 @@ Subscribes to a common event. This API uses a promise to return the result.
 | Name      | Type                                               | Mandatory| Description                            |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
 | subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | Yes  | Subscriber object.                |
-| callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes  | Callback to be invoked when a common event is subscribed to.|
+| callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes   | Callback used to return the common event data. |
 
 **Return value**
 | Type                                                     | Description            |
@@ -594,3 +595,4 @@ Describes the content and properties of a common event.
 | Type| Description|
 | --- | --- |
 | [_CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md) | Content and properties of a common event.|
+

@@ -169,8 +169,8 @@ getRdbStore支持多线程并发操作。
 | 14800017  | StoreConfig is changed. <br>适用版本：12+ |
 | 14800020  | The secret key is corrupted or lost. <br>适用版本：14+   |
 | 14800021  | SQLite: Generic error. <br>适用版本：12+ |
-| 14800022  | SQLite: Callback routine requested an abort. <br>适用版本：14+   |
-| 14800023  | SQLite: Access permission denied. <br>适用版本：14+    |
+| 14800022  | SQLite: Callback routine requested an abort. <br>适用版本：12+   |
+| 14800023  | SQLite: Access permission denied. <br>适用版本：12+    |
 | 14800027  | SQLite: Attempt to write a readonly database. <br>适用版本：12+ |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. <br>适用版本：12+ |
 | 14800029  | SQLite: The database is full. <br>适用版本：12+ |
@@ -572,7 +572,7 @@ deleteRdbStore(context: Context, config: StoreConfig): Promise\<void>
 | **错误码ID** | **错误信息**             |
 |-----------|---------------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported. <br>适用版本：12+      |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>适用版本：12+      |
 | 14800000  | Inner error.      |
 | 14800010  | Failed to open or delete the database by an invalid database path.   |
 | 14801001  | The operation is supported in the stage model only.   |

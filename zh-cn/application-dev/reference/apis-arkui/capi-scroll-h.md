@@ -156,7 +156,7 @@ enum ArkUI_ScrollBarDisplayMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF = 0 | 不显示。 |
-| ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO = 1 | 按需显示(触摸时显示，2s后消失)。 |
+| ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO = 1 | 按需显示（触摸时显示，2s后消失）。 |
 | ARKUI_SCROLL_BAR_DISPLAY_MODE_ON = 2 | 常驻显示。 |
 
 ### ArkUI_ContentClipMode
@@ -255,7 +255,7 @@ enum ArkUI_ScrollState
 | -- | -- |
 | ARKUI_SCROLL_STATE_IDLE = 0 | 空闲状态。使用控制器提供的方法控制滚动时触发，拖动滚动条滚动时触发。 |
 | ARKUI_SCROLL_STATE_SCROLL = 1 | 滚动状态。使用手指拖动容器滚动时触发。 |
-| ARKUI_SCROLL_STATE_FLING = 2 | 惯性滚动状态。快速划动松手后进行惯性滚动和划动到边缘回弹时触发。 |
+| ARKUI_SCROLL_STATE_FLING = 2 | 惯性滚动状态。快速滑动松手后进行惯性滚动和滑动到边缘回弹时触发。 |
 
 ### ArkUI_ScrollSource
 

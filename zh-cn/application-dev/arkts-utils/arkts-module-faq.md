@@ -67,7 +67,9 @@ export let a = "this is A";
 export function A() {
   return new Animal();
 }
+```
 
+``` typescript
 // B.ets
 import { a } from './A'
 
@@ -92,7 +94,7 @@ ModuleImportStack:
 
 **问题现象**
 
-应用启动时报错：cannot find module 'fileName', which is application Entry Point.
+应用启动时报错：cannot find module 'fileName', which is application Entry Point。
 
 **可能原因**
 

@@ -1,14 +1,16 @@
 # arkweb_net_error_list.h
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-03T09:49:48.201Z pushedAt=2026-08-05T09:59:22.122Z -->
 
 ## Overview
 
-The **arkweb_error_code.h** file declares the error codes of the ArkWeb network protocol stack.
+Declares the ArkWeb network protocol stack error codes. This enumeration defines various error types that may occur in the ArkWeb network protocol stack, covering error scenarios in network connections, SSL/TLS, certificate verification, HTTP/2, QUIC, caching, and other aspects. Developers can use these error codes to quickly identify the cause of network request failures, facilitating troubleshooting and error handling.
 
 **File to include**: <web/arkweb_net_error_list.h>
 
@@ -47,7 +49,7 @@ Enumerates the error codes of the ArkWeb network protocol stack.
 | Enumerated Value| Description|
 | -- | -- |
 | ARKWEB_NET_OK = 0 | The operation is normal.|
-| ARKWEB_ERR_IO_PENDING = -1 | The asynchronous I/O operation is pending. This usually does not mean a fatal error. Typically, this error is generated as a notification to wait for an external notification indicating that the I/O operation is finally completed.|
+| ARKWEB_ERR_IO_PENDING = -1 | An asynchronous IO operation is not yet complete. This usually does not indicate a fatal error. This error is generated as a notification to wait for an external notification indicating that the IO operation has eventually completed. |
 | ARKWEB_ERR_FAILED = -2 | The operation fails.|
 | ARKWEB_ERR_ABORTED = -3 | The operation is aborted (due to user operation).|
 | ARKWEB_ERR_INVALID_ARGUMENT = -4 | The parameter is invalid.|
@@ -75,7 +77,7 @@ Enumerates the error codes of the ArkWeb network protocol stack.
 | ARKWEB_ERR_BLOCKED_BY_RESPONSE = -27 | The request is blocked by response from headers such as X-Frame-Options, Content Security Policy, and Cross Origin Resource Policy.|
 | ARKWEB_ERR_CLEARTEXT_NOT_PERMITTED = -29 | The request is blocked because some or all cleartext requests are not permitted by the system policy.|
 | ARKWEB_ERR_BLOCKED_BY_CSP = -30 | The request is blocked by the Content Security Policy.|
-| ARKWEB_ERR_H2_OR_QUIC_REQUIRED = -31 | The request is blocked because there is no H/2 or QUIC session.|
+| ARKWEB_ERR_H2_OR_QUIC_REQUIRED = -31 | The request was blocked because there is no HTTP/2 or QUIC session. |
 | ARKWEB_ERR_BLOCKED_BY_ORB = -32 | The request is blocked by Cross-Origin Read Blocking (CORB) or ORB.|
 | ARKWEB_ERR_CONNECTION_CLOSED = -100 | The connection is closed, which corresponds to **TCP FIN**.|
 | ARKWEB_ERR_CONNECTION_RESET = -101 | The connection is reset, which corresponds to **TCP RST**.|
@@ -95,7 +97,7 @@ Enumerates the error codes of the ArkWeb network protocol stack.
 | ARKWEB_ERR_PROXY_AUTH_UNSUPPORTED = -115 | The proxy requests authentication for establishing a tunnel, but the method used is not supported.|
 | ARKWEB_ERR_BAD_SSL_CLIENT_AUTH_CERT = -117 | The SSL handshake fails because the client certificate is incorrect or missing.|
 | ARKWEB_ERR_CONNECTION_TIMED_OUT = -118 | The connection times out.|
-| ARKWEB_ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119 | There are too many DNS resolutions to be processed, and one of the requests in the queue is terminated.|
+| ARKWEB_ERR_HOST_RESOLVER_QUEUE_TOO_LARGE = -119 | The DNS resolution queue is full and cannot accept new resolution requests. |
 | ARKWEB_ERR_SOCKS_CONNECTION_FAILED = -120 | The connection between the target host and the SOCKS proxy server failed.|
 | ARKWEB_ERR_SOCKS_CONNECTION_HOST_UNREACHABLE = -121 | The SOCKS proxy server cannot connect to the target host because the target host is unreachable.|
 | ARKWEB_ERR_ALPN_NEGOTIATION_FAILED = -122 | The request of ALPN failed.|
@@ -111,12 +113,12 @@ Enumerates the error codes of the ArkWeb network protocol stack.
 | ARKWEB_ERR_SSL_CLIENT_AUTH_CERT_NO_PRIVATE_KEY = -135 | The SSL client certificate does not have a private key.|
 | ARKWEB_ERR_PROXY_CERTIFICATE_INVALID = -136 | The certificate provided by the HTTPS proxy is invalid.|
 | ARKWEB_ERR_NAME_RESOLUTION_FAILED = -137 | The name (DNS) resolution failed.|
-| ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138 | The access to the network is denied. This error is distinguished from errors that are likely to be caused by firewalls and other errors caused by denied access. For details, see **ERR_ACCESS_DENIED**.|
+| ARKWEB_ERR_NETWORK_ACCESS_DENIED = -138 | Permission to access the network was denied. This is used to distinguish errors likely caused by a firewall from other access-denied errors. See also ARKWEB_ERR_ACCESS_DENIED. |
 | ARKWEB_ERR_TEMPORARILY_THROTTLED = -139 | The request is temporarily throttled to avoid DDoS attacks.|
 | ARKWEB_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140 | The request for creating an SSL tunnel connection through the HTTPS proxy receives a 302 (temporary redirection) response. The response body may contain the description of the failure cause.|
 | ARKWEB_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141 | The **CertificateVerify** data of the SSL client authentication handshake cannot be signed using the private key of the client certificate.|
 | ARKWEB_ERR_MSG_TOO_BIG = -142 | The message is too big to transfer. (For example, the UDP message exceeds the size limit).|
-| ARKWEB_ERR_WS_PROTOCOL_ERROR = -145 | The WebSocket protocol is incorrect. This indicates that the connection is terminating due to a frame format error or other protocol violation.|
+| ARKWEB_ERR_WS_PROTOCOL_ERROR = -145 | WebSocket protocol error. Indicates that the connection is being terminated due to frame format errors or other protocol violations. |
 | ARKWEB_ERR_ADDRESS_IN_USE = -147 | The address is in use.|
 | ARKWEB_ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148 | The operation failed because the SSL handshake is not completed.|
 | ARKWEB_ERR_SSL_BAD_PEER_PUBLIC_KEY = -149 | The public key of the SSL peer is invalid.|
@@ -203,7 +205,7 @@ Enumerates the error codes of the ArkWeb network protocol stack.
 | ARKWEB_ERR_PAC_NOT_IN_DHCP = -348 | The PAC URL configuration cannot be retrieved from DHCP. This may indicate that the retrieving failed, or that the PAC URL is not configured in DHCP.|
 | ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349 | Multiple **Content-Disposition** headers are included in an HTTP response.|
 | ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350 | Multiple **Location** headers are included in an HTTP response.|
-| ARKWEB_ERR_HTTP2_SERVER_REFUSED_STREAM = -351 | The HTTP/2 server rejects the request without processing it and sends a **GOAWAY** frame with the error code **NO_ERROR** and a **Last-Stream-ID** lower than the stream ID of the request.|
+| ARKWEB_ERR_HTTP2_SERVER_REFUSED_STREAM = -351 | The HTTP/2 server refused the request without processing it, and sent a GOAWAY frame with error code NO_ERROR and a Last-Stream-ID lower than the stream ID corresponding to the request. |
 | ARKWEB_ERR_HTTP2_PING_FAILED = -352 | The HTTP/2 server does not respond to the **PING**.|
 | ARKWEB_ERR_CONTENT_LENGTH_MISMATCH = -354 | When the connection is closed, the number of bytes transmitted in the HTTP response body is less than the number of bytes advertised in the **Content-Length** header.|
 | ARKWEB_ERR_INCOMPLETE_CHUNKED_ENCODING = -355 | The HTTP response body is transmitted using chunked encoding, and the terminated zero-length block is not sent when the connection is closed.|
@@ -283,6 +285,6 @@ Enumerates the error codes of the ArkWeb network protocol stack.
 | ARKWEB_ERR_DNS_SEARCH_EMPTY = -805 | The suffix search list rule prevents the resolution of a given host name.|
 | ARKWEB_ERR_DNS_SORT_ERROR = -806 | Addresses are not sorted according to RFC 3484.|
 | ARKWEB_ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808 | The host name of the DNS-over-HTTPS server cannot be resolved.|
-| ARKWEB_ERR_DNS_NAME_HTTPS_ONLY = -809 | DNS has identified that the request is prohibited due to insecure connections (HTTP/WS). The application should handle this error like HTTP redirection, redirecting the connection to secure HTTPS or WSS.|
+| ARKWEB_ERR_DNS_NAME_HTTPS_ONLY = -809 | The DNS-identified request is blocked because of an insecure connection (HTTP/WS). The app should handle this error like an HTTP redirect, redirecting the connection to secure HTTPS or WSS. |
 | ARKWEB_ERR_DNS_REQUEST_CANCELED = -810 | All DNS requests related to this task are canceled.|
 | ARKWEB_ERR_DNS_NO_MATCHING_SUPPORTED_ALPN = -811 | The host name resolution of the HTTPS record is not resolved using the ALPN value of the supported protocol.|

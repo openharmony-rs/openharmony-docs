@@ -2,20 +2,20 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
 本模块提供公共事件的发布、订阅、取消订阅等能力。公共事件是一种系统级的事件通知机制，允许应用在系统状态变化（如开机完成、电量变化、屏幕亮灭等）或业务自定义事件发生时，向订阅了该事件的应用发送通知，实现跨组件、跨应用的信息传递。
 
 本模块涉及的关键概念：
-- 无序公共事件：CES在转发公共事件时，不考虑订阅者是否接收到该事件，也不保证订阅者接收到该事件的顺序与其订阅顺序一致。
-- 有序公共事件：CES在转发公共事件时，根据订阅者设置的优先级等级，优先将公共事件发送给优先级较高的订阅者，等待其成功接收该公共事件之后再将事件发送给优先级较低的订阅者。如果有多个订阅者具有相同的优先级，则他们将随机接收到公共事件。
-- 粘性公共事件：能够让订阅者收到在订阅前已经发送的公共事件就是粘性公共事件。普通的公共事件只能在订阅后发送才能收到，而粘性公共事件的特殊性就是可以先发送后订阅，同时也支持先订阅后发送。发送粘性公共事件必须是系统应用或系统服务。
+- [无序公共事件](../../basic-services/common-event/common-event-glossary.md#unordered-common-event无序公共事件)：CES在转发公共事件时，不考虑订阅者是否接收到该事件，也不保证订阅者接收到该事件的顺序与其订阅顺序一致。
+- [有序公共事件](../../basic-services/common-event/common-event-glossary.md#ordered-common-event有序公共事件)：CES在转发公共事件时，根据订阅者设置的优先级等级，优先将公共事件发送给优先级较高的订阅者，等待其成功接收该公共事件之后再将事件发送给优先级较低的订阅者。如果有多个订阅者具有相同的优先级，则他们将随机接收到公共事件。
+- [粘性公共事件](../../basic-services/common-event/common-event-glossary.md#sticky-common-event粘性公共事件)：能够让订阅者收到在订阅前已经发送的公共事件就是粘性公共事件。普通的公共事件只能在订阅后发送才能收到，而粘性公共事件的特殊性就是可以先发送后订阅，同时也支持先订阅后发送。发送粘性公共事件必须是系统应用或系统服务。
 
 **API 组合使用关系说明：**
 
-本模块的事件通信遵循三条组合调用链：订阅流、发布流与有序事件流。其中订阅流与发布流通过事件名称关联，发布者与订阅者无需感知对方存在。
+本模块的事件通信遵循三条组合调用链：订阅流、发布流与有序事件流。其中订阅流与发布流通过事件名称关联，发布方与订阅者无需感知对方存在。
 
 **订阅流：创建订阅者 → 注册订阅 → 接收事件 → 取消订阅**
 
@@ -47,7 +47,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 ## Support
 
-系统公共事件是指由系统服务或系统应用发布的事件，订阅这些公共事件需要特定的权限，并使用相应的事件值，详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。
+[系统公共事件](../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)是指由系统服务或系统应用发布的事件，订阅这些公共事件需要特定的权限，并使用相应的事件值，详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。
 
 ## commonEventManager.publish
 
@@ -63,7 +63,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 
 | 参数名     | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| event    | string               | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。 |
+| event    | string               | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。字符串长度不超过254字节，超出部分会被截断。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当公共事件发布成功时，err为undefined；发布失败时，err为错误对象。 |
 
 **错误码：**
@@ -111,7 +111,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 
 | 参数名     | 类型                   | 必填 | 说明                   |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。  |
+| event    | string                 | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。字符串长度不超过254字节，超出部分会被截断。 |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | 是   | 表示发布公共事件的属性。 |
 | callback | AsyncCallback\<void>   | 是   | 回调函数。当公共事件发布成功时，err为undefined；发布失败时，err为错误对象。  |
 
@@ -453,7 +453,7 @@ setTimeout(() => {
         console.error(`Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
         return;
       }
-      // subscriber不再使用时需要将其置为null，避免内存泄露
+      // subscriber不再使用时需要将其置为null，避免内存泄漏
       subscriber = null;
       console.info(`Succeeded in unsubscribing.`);
     });
@@ -479,7 +479,7 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 | 参数名       | 类型                                                | 必填 | 说明                             |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
 | subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | 是   | 表示订阅者对象。                 |
-| callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | 是   | 表示接收公共事件数据的回调函数。 |
+| callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | 是   | 回调函数，返回公共事件数据。 |
 
 **返回值：**
 | 类型                                                      | 说明             |

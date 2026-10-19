@@ -14,7 +14,7 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
 
 ## 移植实例
 
-1. “config.json”添加文件系统。 路径：“vendor/MyVendorCompany/MyProduct/config.json”
+1. “config.json”添加安全子系统。 路径：“vendor/MyVendorCompany/MyProduct/config.json”
 
      修改如下：
      
@@ -89,29 +89,26 @@ OpenHarmony提供了mbedtls的开源三方库，路径为“//third_party/mbedtl
 
 | 配置项 | 意义 | 
 | -------- | -------- |
-| disable_huks_binary | 是否编译HUKS源码。<br/>(1)&nbsp;默认值：&nbsp;false，不编译HUKS源码。<br/>(2)&nbsp;其他值：&nbsp;true，编译HUKS源码。 | 
-| disable_authenticate | 是否需要裁剪hichain认证功能。<br/>(1)&nbsp;默认值：&nbsp;true，不裁剪。<br/>(2)&nbsp;其他值：&nbsp;false，裁剪hichain认证功能。 | 
+| disable_authenticate | 是否需要裁剪hichain认证功能。<br/>(1)&nbsp;默认值：&nbsp;true，裁剪hichain认证功能。<br/>(2)&nbsp;其他值：&nbsp;false，不裁剪hichain认证功能。 | 
 | huks_use_lite_storage | 是否采用轻量化存储方案。无文件系统、仅有flash存储的设备，可采用轻量化存储方案。<br/>(1)&nbsp;默认值：&nbsp;true，使用轻量化存储。<br/>(2)&nbsp;其他值：&nbsp;false，不使用轻量化存储。 | 
-| huks_use_hardware_root_key | 是否使用硬件根密钥。设备存在硬件根密钥能力时，需要根据自身能力适配硬件根密钥方案；HUKS提供的RKC方案仅为模拟实现。<br/>(1)&nbsp;默认值：false，默认值，默认无硬件根密钥。<br/>(2)&nbsp;其他值：true，设备具有硬件根密钥相关能力时，应自行适配。 | 
+| huks_use_hardware_root_key | 是否使用硬件根密钥。设备存在硬件根密钥能力时，需要根据自身能力适配硬件根密钥方案；HUKS提供的RKC方案仅为模拟实现。<br/>(1)&nbsp;默认值：false，默认无硬件根密钥。<br/>(2)&nbsp;其他值：true，设备具有硬件根密钥相关能力时，应自行适配。 | 
 | huks_config_file | 是否使用HUKS默认配置文件。<br/>(1)&nbsp;默认值：使用HUKS默认配置文件hks_config.h。<br/>(2)&nbsp;其他文件：产品可在HUKS支持能力集合中自行选择所要支持的特性。 | 
 
 
 > <img src="public_sys-resources/icon-note.gif" alt="说明"/> <b>说明：</b>
 > 在添加安全子系统时，可直接通过配置feature来选择安全子系统特性。
 ```json
- {
+{
    "subsystem": "security",
-   "components": [{
-           "component": "device_auth",
-           "features": []
-       },
-       {
-           "component": "huks",
-           "features": [
-               "disable_huks_binary = false",
-               "disable_authenticate = false"
-           ]
-       }
+   "components": [
+      { "component": "permission_lite", "features":[] },
+      { "component": "device_auth", "features":[] },
+      { "component": "huks", "features":
+      [
+         "huks_config_file = \"hks_config_small.h\"",
+         "huks_uid_trust_list_define = \"{}\""
+      ]
+      }
    ]
 }
 ```

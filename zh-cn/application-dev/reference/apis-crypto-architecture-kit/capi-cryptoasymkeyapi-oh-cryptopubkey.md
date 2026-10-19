@@ -13,7 +13,7 @@ typedef struct OH_CryptoPubKey OH_CryptoPubKey
 
 ## 概述
 
-定义公钥结构体。
+公钥结构体，表示公钥。
 
 **起始版本：** 12
 

@@ -6,7 +6,7 @@
 <!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=cb84f8fe2e38bbeba25c5506a75a0804a063c158 translatedAt=2026-07-16T06:36:35.636Z pushedAt=2026-07-16T07:16:04.916Z -->
+<!-- md-trans-meta sourceCommit=840854f9fe10a258a0038fd37739f3e768710f28 translatedAt=2026-08-24T09:05:37.179Z pushedAt=2026-08-31T11:33:07.768Z -->
 
 ## Overview
 

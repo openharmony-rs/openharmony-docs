@@ -1061,11 +1061,13 @@ import { Want } from '@kit.AbilityKit';
 // volumeId可通过getAllVolumes()接口获取
 let volumeId: string = "";
 let want: Want = {
-  diskName: "MyDisc",
-  burnPath: "/data/storage/el2/base/files/burn_data",
-  isIsoImage: false,
-  burnSpeed: 0,
-  fsType: "ISO9660"
+  parameters: {
+    diskName: "MyDisc",
+    burnPath: "/data/storage/el2/base/files/burn_data",
+    isIsoImage: false,
+    burnSpeed: 0,
+    fsType: "ISO9660"
+  }
 };
 volumeManager.burn(volumeId, want).then(() => {
   console.info("burn successfully.");

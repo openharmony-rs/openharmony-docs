@@ -217,7 +217,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`doTestCreatePkcs12 failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`createX509Cert failed: errCode: ${err.code}, message: ${err.message}`);
   }
   return x509Cert;
 }

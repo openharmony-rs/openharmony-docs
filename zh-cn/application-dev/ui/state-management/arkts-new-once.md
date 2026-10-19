@@ -1,4 +1,4 @@
-# \@Once：初始化同步一次
+# \@Once装饰器：初始化同步一次
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->

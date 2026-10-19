@@ -1,4 +1,4 @@
-# RunningMultiInstanceInfo (系统接口)
+# RunningMultiInstanceInfo (多实例应用运行信息)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -23,7 +23,7 @@
 | 名称                      | 类型   | 只读 | 可选  | 说明       |
 | ------------------------- | ------ | ---- | ---- | --------- |
 | instanceKey | string | 否 | 否  | 多实例应用的唯一实例标识。 |
-| uid | number | 否 | 否  | 表示应用的UID。 |
+| uid | number | 否 | 否  | 应用的UID。 |
 | pids | Array\<number> | 否 | 否  | 应用的进程ID集合。 |
 
 **示例：**
@@ -40,6 +40,8 @@ try {
       console.error(`getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
     });
 } catch (err) {
-  console.error(`getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`getRunningMultiAppInfo error, code: ${code}, message: ${msg}`);
 }
 ```

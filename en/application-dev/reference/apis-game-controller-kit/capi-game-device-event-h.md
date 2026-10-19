@@ -4,7 +4,8 @@
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
+<!--Adviser: @yuwenliang0514-->
+<!-- md-trans-meta sourceCommit=6debdc04d740aa8b2b848a338dee8dc580475ff9 translatedAt=2026-10-08T07:34:38.503Z pushedAt=2026-10-09T03:03:19.699Z -->
 
 ## Overview
 
@@ -47,6 +48,7 @@ Defines APIs for game device events.
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceId(const struct GameDevice_DeviceInfo* deviceInfo, char** deviceId)](#oh_gamedevice_deviceinfo_getdeviceid) | - | Obtains the device ID from the device information.|
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName(const struct GameDevice_DeviceInfo* deviceInfo, char** name)](#oh_gamedevice_deviceinfo_getname) | - | Obtains the device name from the device information.|
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetProduct(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* product)](#oh_gamedevice_deviceinfo_getproduct) | - | Obtains the product information from the device information.|
+| [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVendor(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* vendor)](#oh_gamedevice_deviceinfo_getvendor) | - | Obtains the vendor information from the device information. |
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVersion(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* version)](#oh_gamedevice_deviceinfo_getversion) | - | Obtains the version information from the device information.|
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress(const struct GameDevice_DeviceInfo* deviceInfo, char** physicalAddress)](#oh_gamedevice_deviceinfo_getphysicaladdress) | - | Obtains the physical address from the device information.|
 | [GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType(const struct GameDevice_DeviceInfo* deviceInfo, GameDevice_DeviceType* deviceType)](#oh_gamedevice_deviceinfo_getdevicetype) | - | Obtains the device type from the device information.|
@@ -112,7 +114,7 @@ Defines the callback function used in [OH_GameDevice_RegisterDeviceMonitor](capi
 
 | Name| Description|
 | -- | -- |
-| (const struct GameDevice_DeviceEvent* deviceEvent) | Output parameter. Device status change event [GameDevice_DeviceEvent](capi-gamecontroller-gamedevice-deviceevent.md).|
+| const struct GameDevice_DeviceEvent* deviceEvent | Input parameter, indicating a device status change event [GameDevice_DeviceEvent](capi-gamecontroller-gamedevice-deviceevent.md). |
 
 ### OH_GameDevice_DeviceEvent_GetChangedType()
 
@@ -139,7 +141,7 @@ Obtains the status change type from a device status change event.
 
 | Type| Description|
 | -- | -- |
-| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li><br>     <li>If **deviceEvent** is **null**, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If **deviceEvent** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GameDevice_DeviceEvent_GetDeviceInfo()
 
@@ -166,7 +168,7 @@ Obtains the device information from a device status change event.
 
 | Type| Description|
 | -- | -- |
-| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li><br>     <li>If **deviceEvent** is **null**, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If **deviceEvent** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GameDevice_DestroyDeviceInfo()
 
@@ -192,7 +194,7 @@ Destroys a device information instance.
 
 | Type| Description|
 | -- | -- |
-| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li><br>     <li>If **deviceInfo** is **null**, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If **deviceInfo** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GameDevice_DeviceInfo_GetDeviceId()
 
@@ -219,7 +221,7 @@ Obtains the device ID from the device information.
 
 | Type| Description|
 | -- | -- |
-| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li><br>     <li>If **deviceInfo** or **deviceId** is **null**, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li><br>     <li>If the device memory is insufficient, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If **deviceInfo** or **deviceId** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the device memory is insufficient, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GameDevice_DeviceInfo_GetName()
 
@@ -246,7 +248,7 @@ Obtains the device name from the device information.
 
 | Type| Description|
 | -- | -- |
-| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li><br>     <li>If **deviceInfo** or **name** is **null**, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li><br>     <li>If the device memory is insufficient, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If **deviceInfo** or **name** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the device memory is insufficient, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GameDevice_DeviceInfo_GetProduct()
 
@@ -273,7 +275,34 @@ Obtains the product information from the device information.
 
 | Type| Description|
 | -- | -- |
-| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li><br>     <li>If **deviceInfo** is **null**, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the **deviceInfo** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+
+### OH_GameDevice_DeviceInfo_GetVendor()
+
+```c
+GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVendor(const struct GameDevice_DeviceInfo* deviceInfo, int32_t* vendor)
+```
+
+**Description**
+
+Obtains the vendor information from the device information.
+
+**System capability:** SystemCapability.Game.GameController
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [const struct GameDevice_DeviceInfo](capi-gamecontroller-gamedevice-deviceinfo.md)* deviceInfo | [in] Pointer to the [GameDevice_DeviceInfo](capi-gamecontroller-gamedevice-deviceinfo.md) instance. The pointer cannot be null. |
+| int32_t* vendor | [out] Output parameter, indicating the vendor information. |
+
+**Return value**
+
+| Type | Description |
+| -- | -- |
+| GameController_ErrorCode | <ul><li>[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode): The operation is successful.</li>      <li>[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode): **deviceInfo** or **vendor** is null.</li></ul> |
 
 ### OH_GameDevice_DeviceInfo_GetVersion()
 
@@ -300,7 +329,7 @@ Obtains the version information from the device information.
 
 | Type| Description|
 | -- | -- |
-| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li><br>     <li>If **deviceInfo** is **null**, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the **deviceInfo** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GameDevice_DeviceInfo_GetPhysicalAddress()
 
@@ -327,7 +356,7 @@ Obtains the physical address from the device information.
 
 | Type| Description|
 | -- | -- |
-| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li><br>     <li>If **deviceInfo** or **physicalAddress** is **null**, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li><br>     <li>If the device memory is insufficient, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If **deviceInfo** or **physicalAddress** is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the device memory is insufficient, [GAME_CONTROLLER_NO_MEMORY](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
 
 ### OH_GameDevice_DeviceInfo_GetDeviceType()
 
@@ -354,4 +383,6 @@ Obtains the device type from the device information.
 
 | Type| Description|
 | -- | -- |
-| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li><br>     <li>If **deviceInfo** is **null**, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>     <li>If the **deviceInfo** parameter is null, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+
+

@@ -7,8 +7,6 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-## Overview
-
 **SaveButton** is a system API for the save security control. It applies to scenarios where apps need temporary media library access permissions to save images or videos, such as saving images to albums and exporting media content.
 
 After the **SaveButton** component is integrated into an app, a confirmation dialog will appear when the user taps the component for the first time. If the user allows access, the app obtains temporary authorization to call media library APIs. For related APIs, see [Interface (PhotoAccessHelper)](../../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md). If the user denies access or dismisses the dialog, authorization will not be granted for this operation. No dialog box will appear for subsequent uses.
@@ -88,8 +86,14 @@ Defines options for the save button, including icon, text, and button type.
 
 > **NOTE**
 >
-> - You are advised to specify at least one of **icon** or **text**.
-> - If neither **icon** nor **text** is specified, **SaveButton** is created with default styles as follows: **SaveIconStyle** defaults to **FULL_FILLED**, **SaveDescription** to **DOWNLOAD**, and **ButtonType** to **Capsule**.
+> - You are advised to specify at least one of **icon** or **text**.<br>
+> - If neither **icon** nor **text** is specified, **SaveButton** is created with default styles as follows:
+>
+>     - The default value of **SaveIconStyle** is **FULL_FILLED**.
+>
+>     - The default value of **SaveDescription** is **DOWNLOAD**.
+>
+>     - The default value of **ButtonType** is **Capsule**.
 > - The **icon**, **text**, and **buttonType** parameters do not support dynamic modification.
 
 **Model restriction:** This API can be used only in the stage model.
@@ -432,7 +436,7 @@ struct Index {
         console.info("errCode: " + error?.code);
         console.info("errMessage: " + error?.message);
       } else {
-        console.error(`errCode: ${error.code}, errMessage: ${error.message}`);
+        console.error(`errCode: ${error?.code}, errMessage: ${error?.message}`);
       }
     };
 
@@ -474,6 +478,8 @@ struct Index {
   }
 }
 ```
+
+<!--Del--> <!--DelEnd-->
 
 ## Example 2
 
@@ -547,6 +553,7 @@ struct SetIcon {
   }
 }
 ```
+<!--Del--> <!--DelEnd-->
 
 ## Example 3
 
@@ -609,3 +616,4 @@ struct Index {
   }
 }
 ```
+<!--Del--> <!--DelEnd-->

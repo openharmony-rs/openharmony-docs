@@ -2,7 +2,7 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -45,7 +45,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 #include <hilog/log.h>
 ```
 
-并需要在CMake脚本中链接如下动态库:
+并需要在CMake脚本中链接如下动态库：
 ```C++
 target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 ```

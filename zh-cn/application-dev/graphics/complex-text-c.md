@@ -1,9 +1,9 @@
 # 复杂文本绘制与显示（C/C++）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 在进行文本绘制时，可以通过选择合适的字体、大小和颜色完成简单文本的绘制与显示；此外，还支持通过设置其他丰富的样式、语言、段落等进行复杂文本的绘制。
 
@@ -25,6 +25,8 @@
 在多语言文本使用的场景下，主要通过指定TextStyle文本样式中的**locale**字段来实现，可直接通过locale字段的值优先匹配对应字体，跳过遍历列表匹配字体的过程，从而降低匹配时间和内存使用。
 
 ### 接口说明
+
+多语言文本绘制的相关接口如下所示，详细接口说明请参考[drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)。
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
@@ -89,6 +91,8 @@ OH_Drawing_DestroyTypography(typography);
 
 
 ### 接口说明
+
+多行文本绘制的相关接口如下所示，详细接口说明请参考[drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)。
 
 | 接口定义 | 描述 | 
 | -------- | -------- |

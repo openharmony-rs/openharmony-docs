@@ -2099,7 +2099,7 @@ execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The sql(attach,begin,commit,rollback etc.). |
 | 14800000  | Inner error. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
@@ -2175,7 +2175,7 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
+| 801       | Capability not supported. Possible causes:<br>1. The hardware does not support the capability; 2. The chip does not support the capability;<br>3. A dependent service feature is not supported.<br>4. The sql(attach,begin,commit,rollback etc.). |
 | 14800000     | Inner error.                                                 |
 | 14800011     | The current operation failed because the database is corrupted.                                          |
 | 14800014     | The target instance is already closed.                                              |

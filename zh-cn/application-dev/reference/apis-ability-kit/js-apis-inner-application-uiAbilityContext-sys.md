@@ -1,4 +1,4 @@
-# UIAbilityContext (系统接口)
+# UIAbilityContext (UIAbility上下文)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -35,8 +35,11 @@ startAbilityForResultWithAccount(want: Want, accountId: number, callback: AsyncC
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
-> 当accountId为当前用户时，无需进行权限校验。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+>
+> - 当accountId为当前用户时，无需进行权限校验。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -58,8 +61,8 @@ startAbilityForResultWithAccount(want: Want, accountId: number, callback: AsyncC
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -131,8 +134,11 @@ startAbilityForResultWithAccount(want: Want, accountId: number, options: StartOp
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
-> 当accountId为当前用户时，无需进行权限校验。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+>
+> - 当accountId为当前用户时，无需进行权限校验。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -155,8 +161,8 @@ startAbilityForResultWithAccount(want: Want, accountId: number, options: StartOp
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. <br>适用版本：9 |
@@ -230,8 +236,11 @@ startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartO
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
-> 当accountId为当前用户时，无需进行权限校验。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+>
+> - 当accountId为当前用户时，无需进行权限校验。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -259,8 +268,8 @@ startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartO
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -330,6 +339,10 @@ startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
 启动一个新的ServiceExtensionAbility。使用callback异步回调。
 
+> **说明：**
+>
+> 该接口不支持应用分身。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
@@ -347,8 +360,8 @@ startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -403,6 +416,10 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 
 启动一个新的ServiceExtensionAbility。使用Promise异步回调。
 
+> **说明：**
+>
+> 该接口不支持应用分身。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
@@ -425,8 +442,8 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -483,8 +500,11 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 
 > **说明：**
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)。  
+>
 > 当accountId为当前用户时，无需进行权限校验。
+>
+> 该接口不支持应用分身。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -506,8 +526,8 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -565,8 +585,11 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\
 
 > **说明：**
 > 
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)。
+>
 > 当accountId为当前用户时，无需进行权限校验。
+>
+> 该接口不支持应用分身。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -593,8 +616,8 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -649,6 +672,10 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
 停止指定的ServiceExtensionAbility后台服务。使用callback异步回调。
 
+> **说明：**
+>
+> 该接口不支持停止应用分身的ServiceExtensionAbility。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
@@ -666,8 +693,8 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：10+ |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -718,7 +745,11 @@ export default class EntryAbility extends UIAbility {
 
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
-停止同一应用程序内的服务。使用Promise异步回调。
+停止指定的ServiceExtensionAbility服务。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口不支持停止应用分身的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -742,8 +773,8 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：10+ |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -792,11 +823,12 @@ export default class EntryAbility extends UIAbility {
 
 stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
 
-停止同一应用程序内指定账户的服务。使用callback异步回调。
+停止指定账户的ServiceExtensionAbility服务。使用callback异步回调。
 
 > **说明：**
 > 
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持停止应用分身的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -818,8 +850,8 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: 
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -869,11 +901,12 @@ export default class EntryAbility extends UIAbility {
 
 stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
 
-停止同一应用程序内指定账户的服务。使用Promise异步回调。
+停止指定账户的ServiceExtensionAbility服务。使用Promise异步回调。
 
 > **说明：**
 > 
-> 当accountId为当前用户时，无需进行权限校验。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持停止应用分身的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -900,8 +933,8 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -955,8 +988,9 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
-> 当accountId为当前用户时，无需进行权限校验。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+> - 当accountId为当前用户时，无需进行权限校验。
+> - 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -986,8 +1020,8 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. <br>适用版本：10+ |
@@ -1054,8 +1088,12 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
-> 当accountId为当前用户时，无需进行权限校验。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+>
+> - 当accountId为当前用户时，无需进行权限校验。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
+
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1077,8 +1115,8 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1149,8 +1187,11 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
-> 当accountId为当前用户时，无需进行权限校验。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+>
+> - 当accountId为当前用户时，无需进行权限校验。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1173,8 +1214,8 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. <br>适用版本：9 |
@@ -1248,8 +1289,11 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
-> 当accountId为当前用户时，无需进行权限校验。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+>
+> - 当accountId为当前用户时，无需进行权限校验。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1277,8 +1321,8 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1366,7 +1410,7 @@ setMissionIcon(icon: image.PixelMap, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202 | The application is not system-app, can not use system-api. <br>适用版本：10+ |
+| 202 | Permission verification failed. A non-system application calls a system API. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -1412,7 +1456,7 @@ export default class EntryAbility extends UIAbility {
 
 setMissionIcon(icon: image.PixelMap): Promise\<void>
 
-设置当前UIAbility在任务中显示的图标, 图标大小最大为600M。使用Promise异步回调。
+设置当前UIAbility在任务中显示的图标，图标大小最大为600M。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1436,7 +1480,7 @@ setMissionIcon(icon: image.PixelMap): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202 | The application is not system-app, can not use system-api. <br>适用版本：10+ |
+| 202 | Permission verification failed. A non-system application calls a system API. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
@@ -1492,8 +1536,10 @@ startRecentAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 > - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。
 >
 > - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
-更多的组件启动规则详见[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+更多的组件启动规则详见[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1512,8 +1558,8 @@ startRecentAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
-| 202 | The application is not system-app, can not use system-api. <br>适用版本：14+ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：10+ |
+| 202 | Permission verification failed. A non-system application calls a system API. <br>适用版本：14+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1586,8 +1632,10 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt
 > - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。
 >
 > - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
-更多的组件启动规则详见[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+更多的组件启动规则详见[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1607,8 +1655,8 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
-| 202 | The application is not system-app, can not use system-api. <br>适用版本：14+ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：10+ |
+| 202 | Permission verification failed. A non-system application calls a system API. <br>适用版本：14+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. <br>适用版本：9 |
@@ -1685,8 +1733,10 @@ startRecentAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 > - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。
 >
 > - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
-更多的组件启动规则详见[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+更多的组件启动规则详见[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1711,8 +1761,8 @@ startRecentAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
-| 202 | The application is not system-app, can not use system-api. <br>适用版本：14+ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：10+ |
+| 202 | Permission verification failed. A non-system application calls a system API. <br>适用版本：14+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1786,7 +1836,11 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&
  - 跨用户场景下，Call调用目标UIAbility时，调用方应用需同时申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`与`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`权限。
  - 调用方应用位于后台时，使用该接口启动UIAbility需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。
  - 跨应用场景下，目标UIAbility的exported属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限。
- - 同设备与跨设备场景下，该接口的使用规则存在差异，详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+ - 同设备与跨设备场景下，该接口的使用规则存在差异，详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+
+> **说明：**
+>
+> 该接口支持应用分身，开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用；不传appIndex时拉起主应用；不支持隐式匹配。
 
 **需要权限**：ohos.permission.ABILITY_BACKGROUND_COMMUNICATION 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -1805,7 +1859,7 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[Caller](js-apis-app-ability-uiAbility.md#caller)&gt; | Promise对象，返回要通讯的caller对象。 |
+| Promise&lt;[Caller](js-apis-app-ability-uiAbility.md#caller)&gt; | Promise对象，返回要通信的caller对象。 |
 
 **错误码：**
 
@@ -1813,8 +1867,8 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1885,7 +1939,9 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1904,8 +1960,8 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -1964,7 +2020,9 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1984,8 +2042,8 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -2045,7 +2103,9 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> - 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+>
+> - 该接口支持应用分身。开发者可在Want参数中配置[APP_CLONE_INDEX_KEY](js-apis-app-ability-wantConstant.md#params)显式拉起指定的分身应用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2070,8 +2130,8 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -2138,7 +2198,7 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2162,8 +2222,8 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. <br>适用版本：11 |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：11 |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. <br>适用版本：11 |
 | 16000002 | Incorrect ability type. <br>适用版本：11 |
@@ -2221,7 +2281,7 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。 
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2240,8 +2300,8 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. <br>适用版本：11 |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：11 |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. <br>适用版本：11 |
 | 16000002 | Incorrect ability type. <br>适用版本：11 |
@@ -2298,7 +2358,9 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId: number): Promise
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。
+>
+> 该接口不支持应用分身。
 
 **需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -2327,8 +2389,8 @@ requestModalUIExtensionWithAccount(pickerWant: Want, accountId: number): Promise
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed;2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.4.The logical screen corresponding to the specified accountId is not in the foreground.|
 
 **示例：**
@@ -2382,10 +2444,13 @@ connectAbilityWithAccount(want: Want, accountId: number, options: ConnectOptions
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
+> 组件启动规则详见：[设备内组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-inner-device-sys.md)、[跨设备组件启动规则（仅对系统应用开放）](../../application-models/component-startup-rules-cross-device-sys.md)。  
+>
 > 当accountId为当前用户时，无需进行权限校验。
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[connectServiceExtensionAbilityWithAccount](#connectserviceextensionabilitywithaccount)替代。
+>
+> 该接口不支持应用分身。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2417,8 +2482,8 @@ connectAbilityWithAccount(want: Want, accountId: number, options: ConnectOptions
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |

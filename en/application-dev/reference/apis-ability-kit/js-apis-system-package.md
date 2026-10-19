@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=0a73ec3e12869f1dae0189188ca2718d0739bc5b translatedAt=2026-09-03T12:32:49.762Z pushedAt=2026-09-05T10:47:30.948Z -->
 
 
 > **NOTE**
@@ -24,13 +25,13 @@ import Package from '@system.package';
 
 ## package.hasInstalled<sup>(deprecated)</sup>
 
+hasInstalled(options: CheckPackageHasInstalledOptions): void
+
+Checks whether a specified application exists, or whether an application has been installed.
+
 > **NOTE**
 >
 > This API has been supported since API version 3 and deprecated since API version 9. You are advised to use [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14) instead.
-
-hasInstalled(options: CheckPackageHasInstalledOptions): void
-
-Checks whether an application exists, or whether a native application has been installed.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework
 
@@ -52,10 +53,10 @@ struct MainPage {
     Package.hasInstalled({
       bundleName: 'com.example.bundlename',
       success: (data) => {
-        console.log('package has installed: ' + data);
+        console.info('package has installed: ' + data);
       },
       fail: (msg:string, code) => {
-        console.log('query package fail, code: ' + code + ', data: ' + msg);
+        console.error('query package fail, code: ' + code + ', data: ' + msg);
       },
     });
   }

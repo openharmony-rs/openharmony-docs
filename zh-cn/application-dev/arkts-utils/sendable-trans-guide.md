@@ -50,7 +50,7 @@
      system: appTasks, /* Built-in plugin of Hvigor. It cannot be modified. */
      plugins: [
        turboTransJsonPlugin(hvigor, {
-         ignoreModuleNames: ['TurboTransCore' , 'TurboTransJSON',  'PerformanceBaseline','TurboTransProtobuf'], // 忽略的模块
+         ignoreModuleNames: ['TurboTransCore', 'TurboTransJSON', 'PerformanceBaseline', 'TurboTransProtobuf'], // 忽略的模块
          scanDir: ['src/main/ets'], // 扫描目录
          deserializationMode: 'performance', // 反序列化模式
        }),
@@ -61,7 +61,7 @@
 
 2. 定义可序列化模型。
    
-   通过@Serializable装饰器标记需序列化的类，添加generateSendable: true属性，并利用`@SerialName()`完成属性的定制化配置，其中：
+   通过@Serializable装饰器标记需序列化的类，添加generateSendable属性，并利用`@SerialName()`完成属性的定制化配置，其中：
    
    - `@Serializable({ generateSendable: true })`：表示需要生成与该模型对应的Sendable类型与转换方法。
    - `@SerialName({ name: 'xxx' })`：将类属性与JSON字段名绑定。
@@ -69,7 +69,9 @@
      <!-- @[transferableObject_Layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/layout.ets) --> 
      
      ``` TypeScript
+     // 本文件在工程中的路径：entry/src/main/ets/turbotrans_JSON/layout.ets
      import { Serializable, SerialName } from '@hadss/turbo-trans-core';
+     import { collections } from '@kit.ArkTS';
      // ...
      
      @Serializable({ generateSendable: true})
@@ -91,12 +93,13 @@
 
    使用`TJSON.fromString<Model>(jsonStr, Model)`从JSON字符串反序列化为普通对象，可用`ArkTSUtils.isSendable(obj)`进行校验。工程示例演示了两种输入来源，并在反序列化后继续将普通对象转换为Sendable对象，形成“JSON字符串 -> 普通对象 -> Sendable对象”的前半段链路。
 
-   - testJSON1方法是将普通对象通过`JSON.stringify()`序列化为JSON字符串后，再将JSON字符串反序列化为普通对象，最后再转换为Sendable对象的过程。
-   - testJSON2方法是将手写的JSON字符串反序列化为普通对象，然后再转换为Sendable对象的过程。
+   - testJSON1()方法是将普通对象通过`JSON.stringify()`序列化为JSON字符串后，再将JSON字符串反序列化为普通对象，最后再转换为Sendable对象的过程。
+   - testJSON2()方法是将手写的JSON字符串反序列化为普通对象，然后再转换为Sendable对象的过程。
 
      <!-- @[transferableObject_testJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/test1.ets) --> 
      
      ``` TypeScript
+     // 本文件在工程中的路径：entry/src/main/ets/turbotrans_JSON/test1.ets
      import { TJSON } from '@hadss/turbo-trans-json';
      import { Layout, LayoutS } from 'entry/ets/turbotrans_JSON/layout';
      import type { ITSerializable } from '@hadss/turbo-trans-json';
@@ -108,7 +111,7 @@
        obj.arr = [3, 4];
        let str = JSON.stringify(obj);
        let layoutNormal = TJSON.fromString<Layout>(str, Layout);
-       console.info('111 layout arr: ' + layoutNormal.arr);
+       console.info('testJSON1 layout arr: ' + layoutNormal.arr);
        let layoutSendable = (layoutNormal as object as ITSerializable).toSendable();
        if (ArkTSUtils.isSendable(layoutSendable)) {
          console.info('expect layout from JSON string is Sendable');
@@ -122,7 +125,7 @@
      export function testJSON2(): LayoutS {
        let layoutStr = '{"type":"Text","arr":[3,4]}';
        let layoutNormal = TJSON.fromString<Layout>(layoutStr, Layout);
-       console.info('222 layout arr: ' + layoutNormal.arr);
+       console.info('testJSON2 layout arr: ' + layoutNormal.arr);
        let layoutSendable = (layoutNormal as object as ITSerializable).toSendable();
        if (ArkTSUtils.isSendable(layoutSendable)) {
          console.info('expect layout from simple string is Sendable');
@@ -136,7 +139,7 @@
 
 4. 将普通对象转换为Sendable对象（toSendable）。
 
-   当`generateSendable: true`生效后，构建产物中会生成`toSendable()`，将普通对象转换为Sendable对象。其关键点在于会对普通对象做必要的容器转换，例如把`number[]`转换为`collections.Array<number>`。以下代码为编译时工具自动生成的，文件位于entry/src/generated/ets目录下。
+   当`generateSendable: true`生效后，构建产物中会生成`toSendable()`，将普通对象转换为Sendable对象。其关键点在于会对普通对象做必要的容器转换，例如把`number[]`转换为`collections.Array<number>`。以下代码为编译时工具自动生成的，文件位于entry/src/generated/ets/turbotrans_JSON目录下。
 
    ``` TypeScript
    import { collections } from '@kit.ArkTS';
@@ -152,7 +155,7 @@
    }
    ```
 
-   同时，生成的Sendable类型通常会提供`toOrigin()`，用于在需要继续按普通对象处理、复用原有逻辑或重新序列化时，将Sendable对象还原为普通对象。以下代码为编译时工具自动生成的，文件位于entry/src/generated/ets目录下。
+   同时，生成的Sendable类型通常会提供`toOrigin()`，用于在需要继续按普通对象处理、复用原有逻辑或重新序列化时，将Sendable对象还原为普通对象。以下代码为编译时工具自动生成的，文件位于entry/src/generated/ets/turbotrans_JSON目录下。
 
    ``` TypeScript
    @Sendable
@@ -249,7 +252,7 @@
 
 4. 创建Sendable消息对象并进行编码与解码。
 
-   使用生成类提供的encode/decode完成二进制序列化/反序列化并且解码后得到的消息对象仍可继续作为Sendable对象向后传递。test_pb经过编解码后仍然保留Sendable特性，因此也可以像JSON路径生成的Sendable对象一样，继续作为并发任务的返回值进入UI绑定流程。以下示例中testProtobuf方法先创建test_pb实例，再编码为二进制，最后解码回test_pb并校验其仍为Sendable对象。
+   使用生成类提供的encode()/decode()完成二进制序列化/反序列化并且解码后得到的消息对象仍可继续作为Sendable对象向后传递。test_pb经过编解码后仍然保留Sendable特性，因此也可以像JSON路径生成的Sendable对象一样，继续作为并发任务的返回值进入UI绑定流程。以下示例中testProtobuf()方法先创建test_pb实例，再编码为二进制，最后解码回test_pb并校验其仍为Sendable对象。
 
    ```ts
    import { test_pb } from '../protobuf/test_pb'
@@ -270,7 +273,7 @@
      obj.value_float = 11;
      obj.value_double = 12;
      obj.value_bool = true;
-     obj.value_string = "TestProtobuf_Success";
+     obj.value_string = `TestProtobuf_Success`;
      obj.value_bytes?.fill(13);
    
      if (ArkTSUtils.isSendable(obj)) {
@@ -286,19 +289,20 @@
    
    function testdecode(data: ArrayBuffer | collections.ArrayBuffer) {
      let obj = test_pb.decode(data);
-     console.info("expect value_int32 " + obj?.value_int32 + " = 1");
-     console.info("expect value_double " + obj?.value_double + " = 12");
+     console.info(`expect value_int32 ${obj?.value_int32} = 1`);
+     console.info(`expect value_double ${obj?.value_double} = 12`);
      if (ArkTSUtils.isSendable(obj)) {
        console.info("decode a sendable object");
      }
    }
    
-   export function testProtobuf() {
+   export function testProtobuf(): test_pb {
      let obj = testCreate();
      let buf = testencode(obj);
      if (buf) {
        testdecode(buf);
      }
+     return obj;
    }
    ```
 
@@ -335,9 +339,10 @@ export function observeJSON2(): LayoutS {
 
 ``` TypeScript
 import { testProtobuf } from '../turbotrans_protobuf/test1'
+import { test_pb } from '../protobuf/test_pb'
 
 @Concurrent
-export function observeProtobuf() {
+export function observeProtobuf(): test_pb {
   return testProtobuf();
 }
 ```
@@ -363,7 +368,7 @@ runTests() {
 ``` TypeScript
 runTestsPb() {
   taskpool.execute(observeProtobuf).then((res) => {
-    this.pb = UIUtils.makeObserved(res)
+    this.pb = UIUtils.makeObserved(res as test_pb);
   })
 }
 ```
@@ -387,6 +392,7 @@ import { UIUtils } from '@kit.ArkUI';
 struct Index {
   @Local message: string = 'Hello World';
   // 替换成 pb: test_pb = test_pb.create(); 则用于observeProtobuf返回Sendable对象的场景
+  // @Local pb: test_pb = test_pb.create();
   @Local layout: LayoutS = new LayoutS();
 
   build() {

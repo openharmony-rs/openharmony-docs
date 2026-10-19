@@ -7,12 +7,14 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-union Rdb_KeyData { ... }
+union Rdb_KeyData { ... } *data
 ```
 
 ## 概述
 
 存放变化的具体数据。
+
+**起始版本：** 11
 
 **相关模块：** [RDB](capi-rdb.md)
 

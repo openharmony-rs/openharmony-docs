@@ -6,7 +6,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4431c59b895d1d02940f60be4527223815858a92 translatedAt=2026-07-09T11:49:24.713Z pushedAt=2026-07-10T02:29:54.244Z -->
+<!-- md-trans-meta sourceCommit=b8421fa94775fa4bceb1b522857b705478302935 translatedAt=2026-08-05T01:28:04.169Z pushedAt=2026-08-05T06:51:06.748Z -->
 
 ArkUI NDK provides multiple form components, including [Button](./arkts-common-components-button.md), [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md), [Toggle](./arkts-common-components-switch.md), [Checkbox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md), [CheckboxGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md), and [Radio Button (Radio)](./arkts-common-components-radio-button.md). These components are basic elements for user interaction and can be used to build diverse form UIs.
 
@@ -41,7 +41,7 @@ The [createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenod
      circleBtn->SetMargin(PARAM_20, false);
      column->AddChild(button);
      column->AddChild(circleBtn);
-     // Add the column to the content.
+     // Return Column, which is added to Content by the caller.
      return column;
  }
  ```
@@ -255,7 +255,7 @@ std::shared_ptr<NativeModule::ArkUIBaseNode> CreateCheckboxExample()
     column->AddChild(checkbox2);
     column->AddChild(checkbox3);
 
-    // Add the column to the content.
+    // Return Column, to be added to Content by the caller.
     return column;
 }
 ```

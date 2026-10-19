@@ -133,7 +133,7 @@ this.__messageStr = new ObservedPropertySimplePU('Hello World', this, "messageSt
 
 源码：
 
-<!-- @[import_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample.ets) -->  
+<!-- @[import_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/Sample.ets) -->   
 
 ``` TypeScript
 // Sample.ets
@@ -379,10 +379,10 @@ linkSource
 
 使用@Type和@Trace组合修饰的装饰器属性，可以正常混淆，但混淆后，功能异常。
 
-<!-- @[export_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/SampleChild.ets) -->    
+<!-- @[export_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/SampleChild.ets) -->     
 
 ``` TypeScript
-// Sample.ets
+// SampleChild.ets
 import { Type } from '@kit.ArkUI';
 
 @ObservedV2

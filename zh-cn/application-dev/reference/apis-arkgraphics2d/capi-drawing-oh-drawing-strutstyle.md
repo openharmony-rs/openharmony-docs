@@ -1,12 +1,12 @@
 # OH_Drawing_StrutStyle
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 ```c
-typedef struct OH_Drawing_StrutStyle {...} OH_Drawing_StrutStyle
+typedef struct {...} OH_Drawing_StrutStyle
 ```
 
 ## 概述

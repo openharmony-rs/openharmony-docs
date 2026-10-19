@@ -19,6 +19,7 @@ SharedArrayBuffer内部包含一块Native内存，其JS对象壳被分配在虚�
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Concurrent
 function transferAtomics(arg1: Int32Array) {
@@ -52,8 +53,8 @@ struct CSharedArrayBuffer {
             this.message = 'success';
             console.info(`this res is: ${res}`);
           }).catch((e: BusinessError) => {
-              this.message = 'fail';
-              console.error(`taskpool: execute task: code: ${e.code}, message: ${e.message}`);
+            this.message = 'fail';
+            console.error(`taskpool: execute task: code: ${e.code}, message: ${e.message}`);
           });
           setTimeout(() => {
             Atomics.notify(int32, 0, 1);

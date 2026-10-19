@@ -8,11 +8,9 @@
 
 ## 概述
 
-DevEco Studio编译构建后，会将模块内所有源文件的SourceMap信息打包进一个聚合文件`sourceMaps.map`中。由于该文件未采用标准的[SourceMap v3](https://tc39.es/ecma426/#sec-source-map-format)格式，Chrome DevTools、`source-map`库等标准工具无法直接识别，给开发者还原崩溃堆栈、定位源码带来了困难。
+DevEco Studio编译构建后，会将各模块内所有源文件的SourceMap信息打包进一个聚合SourceMap文件`sourceMaps.map`中。由于该文件未采用标准的[SourceMap v3](https://tc39.es/ecma426/#sec-source-map-format)格式，Chrome DevTools、`source-map`库等标准工具无法直接识别，给开发者还原崩溃堆栈、定位源码带来了困难。
 
-SourceMap Splitter是一款专为此场景设计的命令行工具，可将聚合的`sourceMaps.map`快速拆分为独立的、符合SourceMap v3规范的`.map`文件，并自动按源码目录结构导出，便于使用标准工具链定位问题。该工具零外部运行时依赖，整个工具仅为一个JS文件。
-
-从[SourceMap拆分工具](https://gitcode.com/OpenHarmonyToolkitsPlaza/OpenHarmony-SourceMap-Splitter/releases)下载单文件`split-sourcemaps.js`后即可直接运行。
+SourceMap Splitter是一款专为此场景设计的命令行工具，可将聚合的`sourceMaps.map`快速拆分为独立的、符合SourceMap v3规范的`.map`文件，并自动按源码目录结构导出，便于使用标准工具链定位问题。该工具零外部运行时依赖，从[SourceMap拆分工具](https://gitcode.com/OpenHarmonyToolkitsPlaza/OpenHarmony-SourceMap-Splitter/releases)下载单文件`split-sourcemaps.js`后即可直接运行。
 
 ## 环境要求
 
@@ -57,7 +55,8 @@ node split-sourcemaps.js [--project <path>] [--module <name>] [--output <path>]
 为避免误删用户数据，工具在写入输出目录时遵循以下规则：
 
 - 输出目录不存在时，自动创建。
-- 输出目录存在且为空，或由本工具创建（目录中包含`.split-sourcemaps-manifest`标记文件）时，会先清空再写入，以保证重复运行结果的一致性。
+- 输出目录存在且为空时，直接写入。
+- 输出目录由本工具创建（目录中包含`.split-sourcemaps-manifest`标记文件）时，会先清空再写入，以保证重复运行结果的一致性。
 - 输出目录已存在、非空，且不是由本工具创建时，工具会拒绝清空并报错退出，此时需手动删除该目录，或通过`--output`指定其他目录。
 
 ### 退出码
@@ -67,13 +66,13 @@ node split-sourcemaps.js [--project <path>] [--module <name>] [--output <path>]
 | 退出码 | 说明 |
 | -------- | ----------------- |
 | 0 | 拆分成功。 |
-| 1 | 发生错误，例如参数无效、项目目录或聚合文件不存在、JSON解析失败、输出目录非空且非本工具创建等。 |
+| 1 | 发生错误，例如参数无效、项目目录或聚合SourceMap文件不存在、JSON解析失败、输出目录非空且非本工具创建等。 |
 
 ## 工具使用示例
 
 ### 基本用法
 
-拆分`entry`模块的聚合SourceMap，使用默认输出目录`.split-sourcemaps`。
+拆分`entry`模块的聚合SourceMap文件，使用默认输出目录`.split-sourcemaps`。
 
 ```bash
 node split-sourcemaps.js --project /path/to/project --module entry
@@ -100,11 +99,14 @@ node split-sourcemaps.js
 通过逗号分隔或重复`--module`指定多个模块，两种写法等价，拆分结果会合并到同一输出目录。
 
 ```bash
+# 以下两种写法等价，选择其一即可
+# 写法一：逗号分隔
 node split-sourcemaps.js --project /path/to/project --module entry,feature,library
+# 写法二：重复传入--module
 node split-sourcemaps.js --project /path/to/project --module entry --module feature
 ```
 
-由于`entry`等模块的聚合SourceMap通常包含其所依赖模块的源映射，不同模块之间可能出现指向同一源文件的重复条目。工具会按模块的给定顺序自动去重：首个出现的条目写入，后续指向相同输出路径的条目被跳过。若后续模块存在相同路径但内容不同的条目，工具会在标准错误中打印`WARNING: potential version conflict ...`提示，但不会中断，仍以首个为准。
+由于`entry`等模块的聚合SourceMap文件通常包含其所依赖模块的源映射，不同模块之间可能出现指向同一源文件的重复条目。工具会按模块的给定顺序自动去重：首个出现的条目写入，后续指向相同输出路径的条目被跳过。若后续模块存在相同路径但内容不同的条目，工具会在标准错误中打印`WARNING: potential version conflict ...`提示，但不会中断，仍以首个为准。
 
 此外，若任一指定模块缺少构建产物，工具会在写入任何文件之前一次性列出全部缺失的模块并报错退出，不会破坏已有的输出目录。
 
@@ -116,7 +118,7 @@ node split-sourcemaps.js --project /path/to/project --module entry --module feat
 Split 5/5 sourcemap entries to .split-sourcemaps
 ```
 
-其中`5/5`表示聚合文件共有5个条目，且全部拆分成功。如果部分条目的路径无法解析或存在重复，工具会跳过这些条目并在标准错误中给出提示，此时成功数会小于总数。
+其中`5/5`表示聚合SourceMap文件共有5个条目，且全部拆分成功。如果部分条目的路径无法解析或存在重复，工具会跳过这些条目并在标准错误中给出提示，此时成功数会小于总数。
 
 一次拆分多个模块时，标准输出会额外打印参与拆分的模块列表；若发生跨模块去重，还会打印被去重的条目数：
 
@@ -128,7 +130,7 @@ Deduplicated 2 cross-module path(s) (first module wins).
 
 ### 输出结构示例
 
-假设输入聚合文件`sourceMaps.map`中包含以下5个条目：
+假设输入聚合SourceMap文件`sourceMaps.map`中包含以下5个条目：
 
 ```text
 sourceMaps.map
@@ -141,8 +143,6 @@ sourceMaps.map
 
 拆分后将按模块与源码目录结构生成独立的`.map`文件：
 
-> **输出文件命名规则**：每个条目的输出文件在其原始源文件名的基础上，于原始扩展名后追加`.map`。例如源文件`Index.ts`对应`Index.ts.map`，`Helper.no-sources.ts`对应`Helper.no-sources.ts.map`，即原扩展名保留不变，仅在末尾追加`.map`。
-
 ```text
 .split-sourcemaps/
 ├── entry/
@@ -153,6 +153,8 @@ sourceMaps.map
 └── library/
     └── src/main/ets/components/MainPage.ts.map
 ```
+
+> **输出文件命名规则**：每个条目的输出文件在其原始源文件名的基础上，于原始扩展名后追加`.map`。例如源文件`Index.ts`对应`Index.ts.map`，`Helper.no-sources.ts`对应`Helper.no-sources.ts.map`，即原扩展名保留不变，仅在末尾追加`.map`。
 
 ## 常见问题
 
@@ -179,7 +181,7 @@ sourceMaps.map
 **问题现象**<br>
 工具运行时报错`Invalid module name: ...`。<br>
 **可能原因**<br>
-`--module`参数为`.`、包含`..`、包含路径分隔符（`/`、`\`）或为绝对路径。<br>
+`--module`参数为`.`、包含`..`、包含路径分隔符（`/`、`\`）或为绝对路径。非法示例：`.`、`..`、`my/module`、`/entry`、`C:\entry`。<br>
 **处理措施**<br>
 将`--module`修改为不含路径分隔符的合法模块名，例如`entry`。
 
@@ -192,7 +194,7 @@ sourceMaps.map
 **处理措施**<br>
 手动删除该目录，或通过`--output`指定一个空目录或专门用于存放输出的目录。
 
-### 聚合文件解析失败
+### 聚合SourceMap文件解析失败
 
 **问题现象**<br>
 工具运行时报错`Failed to parse aggregated sourcemap: ...`或`Aggregated sourcemap must be a JSON object ...`。<br>

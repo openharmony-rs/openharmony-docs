@@ -1,7 +1,7 @@
 # Node-API开发规范
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -101,13 +101,13 @@ napi_create_string_utf8(env1, "bar", NAPI_AUTO_LENGTH, &string);
 // 线程2执行，在env2创建object对象，并将上述的string对象设置到object对象中
 napi_status status = napi_create_object(env2, &object);
 if (status != napi_ok) {
-    napi_throw_error(env, ...);
+    napi_throw_error(env2, ...);
     return;
 }
 
 status = napi_set_named_property(env2, object, "foo", string);
 if (status != napi_ok) {
-    napi_throw_error(env, ...);
+    napi_throw_error(env2, ...);
     return;
 }
 ```

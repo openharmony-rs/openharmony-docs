@@ -1,10 +1,11 @@
 # NativeDisplayManager_DisplayColorSpace
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=61ff202ad259a75c2a093f9146121145c100be77 translatedAt=2026-08-27T08:35:17.874Z pushedAt=2026-08-27T11:46:43.487Z -->
 
 ```c
 typedef struct {...} NativeDisplayManager_DisplayColorSpace
@@ -12,7 +13,7 @@ typedef struct {...} NativeDisplayManager_DisplayColorSpace
 
 ## Overview
 
-Describes all the color spaces supported by a display.
+Describes the color spaces supported by a display.
 
 **Since**: 14
 
@@ -27,4 +28,6 @@ Describes all the color spaces supported by a display.
 | Name| Description|
 | -- | -- |
 | uint32_t colorSpaceLength | Number of the color spaces supported by a display.|
-| uint32_t* colorSpaces | Pointer to the color space array supported by a display.|
+| uint32_t* colorSpaces | Pointer to the color space array supported by a display. |
+
+

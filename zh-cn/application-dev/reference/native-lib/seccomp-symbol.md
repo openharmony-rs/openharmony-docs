@@ -86,7 +86,7 @@ Tid:13893, Name:e.myapplication
 | personality | all | 全平台设备|- |
 | execve | all | 全平台设备|- |
 | execveat | all | 全平台设备| -|
-| clone | all | 全平台设备| 仅允许不包含以下命名空间标志的调用：<br>CLONE_NEWNS、<br>CLONE_NEWPID、<br>CLONE_NEWNETCLONE_NEWCGROUP、<br>CLONE_NEWUTS、<br>CLONE_NEWIPC、<br>CLONE_NEWUSER<br>符合条件返回ALLOW，否则返回TRAP。 |
+| clone | all | 全平台设备| 仅允许不包含以下命名空间标志的调用：<br>CLONE_NEWNS、<br>CLONE_NEWPID、<br>CLONE_NEWNET、<br>CLONE_NEWCGROUP、<br>CLONE_NEWUTS、<br>CLONE_NEWIPC、<br>CLONE_NEWUSER<br>符合条件返回ALLOW，否则返回TRAP。 |
 | io_setup | all | 全平台设备 |- |
 | io_destroy | all | 全平台设备 |- |
 | io_submit | all | 全平台设备 |- |

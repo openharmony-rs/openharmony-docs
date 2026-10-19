@@ -6,6 +6,7 @@
 <!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=e927796ba68acb42b31a64400ef3f800e94a271e translatedAt=2026-09-16T10:42:21.981Z pushedAt=2026-09-20T09:01:52.241Z -->
 
 ```c
 typedef struct HiDebug_JsStackFrame {...} HiDebug_JsStackFrame
@@ -13,7 +14,7 @@ typedef struct HiDebug_JsStackFrame {...} HiDebug_JsStackFrame
 
 ## Overview
 
-Defines a struct for the JS stack frame content.
+Defines the content of a JS stack frame. It is used to record frame information of the JS call stack in performance analysis and debugging scenarios, including key information such as code location, function name, and mapped region.
 
 **Since**: 20
 
@@ -34,3 +35,5 @@ Defines a struct for the JS stack frame content.
 | const char* functionName | Name of the function corresponding to the current stack frame.|
 | const char* url | URL of the code file corresponding to the current stack frame. It can be used to find the corresponding code file in the local path or on the remote server.|
 | const char* packageName | Name of the package to which the code corresponding to the current stack frame belongs.|
+
+

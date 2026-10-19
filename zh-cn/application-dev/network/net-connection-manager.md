@@ -8,7 +8,7 @@
 
 ## 简介
 
-网络连接管理提供管理网络的一些基础能力，包括WiFi/蜂窝/Ethernet等多网络连接优先级管理、网络质量评估、订阅默认/指定网络连接状态变化、查询网络连接信息、DNS解析等功能。
+网络连接管理提供管理网络的一些基础能力，包括Wi-Fi/蜂窝/Ethernet等多网络连接优先级管理、网络质量评估、订阅默认/指定网络连接状态变化、查询网络连接信息、DNS解析等功能。
 
 > **说明：**
 >
@@ -20,7 +20,7 @@
 - 网络消费者：数据网络的使用方。例如应用或系统服务。
 - 网络探测：检测网络有效性，避免将网络从可用网络切换到不可用网络。包括绑定网络探测、DNS探测、HTTP探测及HTTPS探测。
 - 网络优选：处理多网络共存时选择最优网络。在网络状态、网络信息及评分发生变化时被触发。
-- 默认网络：系统默认使用的网络。由系统决定，与应用是否指定网络无关，通常为WIFI /蜂窝/以太网/蓝牙其中之一。
+- 默认网络：系统默认使用的网络。由系统决定，与应用是否指定网络无关，通常为Wi-Fi/蜂窝/以太网/蓝牙其中之一。
 - 网络句柄：网络的唯一标识。
 
 ## 场景介绍
@@ -138,11 +138,11 @@
 ## 监控默认网络变化并主动重建网络连接
 
 根据当前网络状态及网络质量情况，默认网络可能会发生变化，如下所示。
-1. 在WiFi弱信号的情况下，默认网络可能会切换到蜂窝网络。
-2. 在蜂窝网络状态差的情况下，默认网络可能会切换到WiFi。
-3. 关闭WiFi后，默认网络可能会切换到蜂窝网络。
-4. 关闭蜂窝网络后，默认网络可能会切换到WiFi。
-5. 在WiFi弱信号的情况下，默认网络可能会切换到其他WiFi(存在跨网情况)。
+1. 在Wi-Fi弱信号的情况下，默认网络可能会切换到蜂窝网络。
+2. 在蜂窝网络状态差的情况下，默认网络可能会切换到Wi-Fi。
+3. 关闭Wi-Fi后，默认网络可能会切换到蜂窝网络。
+4. 关闭蜂窝网络后，默认网络可能会切换到Wi-Fi。
+5. 在Wi-Fi弱信号的情况下，默认网络可能会切换到其他Wi-Fi(存在跨网情况)。
 6. 在蜂窝网络状态差的情况下，默认网络可能会切换到其他蜂窝(存在跨网情况)。
 
 本节旨在介绍监控默认网络的变化后，应用报文能够快速迁移到新默认网络上，具体做法如下。
@@ -287,17 +287,17 @@ function socketTest() {
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    // ···
+    // ...
         let netHandleInfo:connection.NetHandle|null = null;
         // 调用getDefaultNet方法，获取默认的数据网络(NetHandle)
         connection.getDefaultNet().then((data: connection.NetHandle) => {
           if (data.netId == 0) {
-            hilog.info(0x0000, 'testTag', `don't have defaultNet`);
+            hilog.error(0x0000, 'testTag', `don't have defaultNet`);
             // 当前无默认网络时，获取的netHandler的netid为0,属于异常情况，需要额外处理
             return;
           }
           if (data) {
-            // ···
+            // ...
             hilog.info(0x0000, 'testTag', 'getDefaultNet get data: ' + JSON.stringify(data));
             // 获取netHandle对应网络的能力信息。能力信息包含了网络类型、网络具体能力等网络信息
             netHandleInfo = data;
@@ -342,14 +342,13 @@ function socketTest() {
                   }
                 }
               });
+            // 获取netHandle对应的网络的连接信息。需在获取到有效netHandle后调用。
+            connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
+              hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
+            })
           }
         });
-    
-        // 获取netHandle对应的网络的连接信息。
-        connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
-          hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
-        })
-    // ···
+      // ...
     ```
     
 3. 查询所有网络连接信息代码示例
@@ -456,7 +455,7 @@ function socketTest() {
     import { hilog } from '@kit.PerformanceAnalysisKit';
     // ...
           // 使用默认网络解析主机名以获取所有IP地址
-          connection.getAddressesByName('xxxx').then((data: connection.NetAddress[]) => {
+          connection.getAddressesByName('www.example.com').then((data: connection.NetAddress[]) => {
             hilog.info(0x0000, 'testTag', 'Successfully retrieved default network IP address: ' + JSON.stringify(data));
             // ...
           })

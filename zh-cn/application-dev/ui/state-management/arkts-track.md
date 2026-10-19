@@ -179,7 +179,6 @@ struct AddLog {
           .fontWeight(FontWeight.Bold)
           .margin(10)
         Button('change logTrack.str1')
-          .id('str2')
           .width(300)
           .margin(10)
           .onClick(() => {

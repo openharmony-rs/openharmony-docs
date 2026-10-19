@@ -1,12 +1,14 @@
 # Class (PrefetchOptions)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:44:12.760Z pushedAt=2026-08-07T08:11:13.358Z -->
 
-Defines the prefetch behavior of web pages, including whether to ignore **Cache-Control: no-store** in the response header and the minimum interval between two prefetches.
+PrefetchOptions is a configuration class in the ArkWeb framework for customizing web page prefetch behavior. It is set through the prefetch-related API of [prefetchPage](./arkts-apis-webview-WebviewController.md#prefetchpage21), and the customizable settings include whether to ignore Cache-Control: no-store in the response header and the minimum time interval between two prefetches.
 
 > **NOTE**
 >
@@ -22,8 +24,8 @@ Defines the prefetch behavior of web pages, including whether to ignore **Cache-
 
 | Name| Type| Read-Only| Optional| Description|
 |------|------|------|------|------|
-| minTimeBetweenPrefetchesMs<sup>21+</sup> | number | No| No| Minimum interval between two web page prefetches.<br>The interval between two web page prefetches is calculated. If it is less than the specified value, the current prefetch is canceled.<br>The default value is **500**, and the maximum value is **500**.<br>If the value is set to a negative number, the default value **0** is used.<br>Unit: ms.|
-| ignoreCacheControlNoStore<sup>21+</sup> | boolean | No| No| Whether to ignore **Cache-Control: no-store** in the response header.<br>Default value: **false**.<br>The value **true** means to ignore **Cache-Control: no-store** in the response header, and **false** means the opposite.|
+| minTimeBetweenPrefetchesMs<sup>21+</sup> | number | No | No | Sets the minimum time interval between two web page prefetches.<br>During each prefetch, the interval from the last prefetch is calculated. If it is less than the set value, the current prefetch is canceled.<br>Value range: [0, 500].<br>If set to a negative number, the default value 0 is used.<br>Unit: ms |
+| ignoreCacheControlNoStore<sup>21+</sup> | boolean | No | No | Sets whether to ignore Cache-Control: no-store in the response header.<br>If set to true, the header is ignored; if set to false, it is not ignored. |
 
 ## constructor<sup>21+</sup>
 

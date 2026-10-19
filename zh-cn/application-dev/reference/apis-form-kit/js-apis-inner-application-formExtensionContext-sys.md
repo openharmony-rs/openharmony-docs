@@ -307,7 +307,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
-将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空(Promise形式返回结果)。
+将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空（Promise形式返回结果）。
 
 **系统能力：** SystemCapability.Ability.Form
 

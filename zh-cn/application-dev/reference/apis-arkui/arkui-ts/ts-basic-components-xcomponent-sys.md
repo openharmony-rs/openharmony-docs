@@ -46,15 +46,15 @@ enableTransparentLayer(enabled: boolean)
 
 1. 当设置了独立图层的XComponent下方有相交的XComponent时，下方的XComponent也应该设置为独立图层。
 
-   ![透明图层示例](figures/Transparent_Layer_Example.png)
+   ![独立图层示例](figures/Transparent_Layer_Example.png)
 
 2. 在通过本接口设置了独立图层且背景为半透明的XComponent下方摆放UI组件，合成时会出现UI组件显示内容消失的异常。
 
-   ![透明图层显示失败](figures/Transparent_Layer_Failure.png)
+   ![独立图层显示失败](figures/Transparent_Layer_Failure.png)
 
    已开启独立图层的XComponent需要在所有与其相交的UI元素下方。
 
-   ![透明图层正确示例](figures/Transparent_Layer_Correct_Example.png)
+   ![独立图层正确示例](figures/Transparent_Layer_Correct_Example.png)
 
 3. 在布局静态的场景下对带半透明背景XComponent设置独立图层，例如：非页面跳转场景、视频弹幕静止的播放场景。
 
@@ -75,3 +75,38 @@ enableTransparentLayer(enabled: boolean)
   > 仅type为SURFACE时有效。
   >
   > 不支持[ArkUI NDK接口](../../../ui/ndk-build-ui-overview.md)创建的XComponent组件。
+
+**示例：**
+
+以下示例展示了在带半透明背景的XComponent上开启独立图层，以避免半透明区域与下方内容混合时出现渲染异常。
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+
+  build() {
+    RelativeContainer() {
+      Column({ space: 10 }) {
+        Text('Transparent Layer XComponent')
+          .fontSize('24fp')
+          .fontWeight(500)
+        XComponent({ type: XComponentType.SURFACE })
+          .id('XComponentTransparentLayer')
+          .backgroundColor('#80000000') // 半透明背景
+          .enableTransparentLayer(true) // 开启独立图层，避免半透明区域与下方内容混合时出现渲染异常
+      }
+      .margin({
+        top: 12,
+        left: 12,
+        right: 12
+      })
+      .height('25%')
+      .width('90%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+

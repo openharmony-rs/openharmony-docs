@@ -180,7 +180,7 @@ List组件创建时，所有ListItem将会被创建。显示区域内的ListItem
 ### 使用LazyForEach创建ListItem
 List组件创建时，显示区域中的ListItem会被创建与布局。预加载范围内的ListItem在空闲时创建与布局，但是不会被挂载到组件树上。预加载范围外的ListItem则不会被创建。
 
-当List组件滑动时，进入预加载及显示区域的ListItem将被创建与布局，创建ListItem过程中，若ListItem内部包含@Reusable标记的自定义组件，则会优先从缓存池中复用。滑出预加载及显示区域的ListItem将被销毁，其内部若含@Reusable标记的自定义组件，则会被回收并加入缓存池。
+当List组件滑动时，进入预加载及显示区域的ListItem将被创建与布局，创建ListItem过程中，若ListItem内部包含@Reusable标记的[自定义组件](state-management/arkts-create-custom-components.md)，则会优先从缓存池中复用。滑出预加载及显示区域的ListItem将被销毁，其内部若含@Reusable标记的自定义组件，则会被回收并加入缓存池。
 
 **图8** LazyForEach创建ListItem的生命周期
 ![](./figures/list_lazyforeach.png)
@@ -368,7 +368,7 @@ List({ space: 10 }) {
 
 ### 添加分隔线
 
-分隔线用来将界面元素隔开，使单个元素更加容易识别。以系统设置场景为例（如下图所示），列表项左侧为图标（如蓝牙图标），右侧为文字描述且分割线在文字下方。
+分隔线用来将界面元素隔开，使单个元素更加容易识别。以系统设置场景为例（如下图所示），列表项左侧为图标（如蓝牙图标），右侧为文字描述且分隔线在文字下方。
 
   **图13** 设置列表分隔线样式  
 
@@ -416,13 +416,13 @@ export struct CustomListStyle {
 }
 ```
 
-此示例表示从距离列表侧边起始端60vp开始到距离结束端10vp的位置，画一条粗细为1vp的分割线，可以实现图9设置列表分隔线的样式。
+此示例表示从距离列表侧边起始端60vp开始到距离结束端10vp的位置，画一条粗细为1vp的分隔线，可以实现图13设置列表分隔线的样式。
 
 >**说明：**
 >
 >1. 分隔线的宽度会使ListItem之间存在一定间隔，当List设置的内容间距小于分隔线宽度时，ListItem之间的间隔会使用分隔线的宽度。
 >
->2. 当List存在多列时，分割线的startMargin和endMargin作用于每一列上。
+>2. 当List存在多列时，分隔线的startMargin和endMargin作用于每一列上。
 >
 >3. List组件的分隔线画在两个ListItem之间，第一个ListItem上方和最后一个ListItem下方不会绘制分隔线。
 
@@ -675,7 +675,7 @@ export struct StickyHeaderList {
 
 ![list18](figures/list18.gif)
 
-List组件初始化时，可以通过scroller参数绑定一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)对象，进行列表的滚动控制。例如，用户在新闻应用中，点击新闻页面底部的返回顶部按钮时，就可以通过Scroller对象的scrollToIndex方法使列表滚动到指定的列表项索引位置。
+List组件初始化时，可以通过scroller参数绑定一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)对象，进行列表的滚动控制。例如，用户在新闻应用中，点击新闻页面底部的返回顶部按钮时，就可以通过Scroller对象的scrollToIndex()方法使列表滚动到指定的列表项索引位置。
 
 首先，需要创建一个Scroller的对象listScroller。
 
@@ -1143,7 +1143,7 @@ ListItem() {
          if (isSelected) {
            this.selectedItems.push(new ToDo(this.toDoItem.name)); // this.selectedItems为勾选时，记录选中的列表项，可根据实际场景构造
          } else {
-           let index = this.selectedItems.indexOf(new ToDo(this.toDoItem.name));
+           let index = this.selectedItems.findIndex(selectedItem => selectedItem.name === this.toDoItem.name);
            if (index !== -1) {
              this.selectedItems.splice(index, 1); // 取消勾选时，则将此项从selectedItems中删除
            }
@@ -1686,7 +1686,7 @@ List({ space: 10 }) {
 
 ### 记录列表项选择结果
 
-在ListItem上配置[selectable](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selectable8)、[selected](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selected10)和[onSelect](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#onselect8)。selectable用于设置列表项是否允许被选择，selected用于设置列表项当前是否被选中。滑动多选过程中，组件会触发onSelect回调，应用可以在回调中记录每个列表项的最新选择结果。
+在ListItem上配置[selectable](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selectable8)、[selected](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selected10)和[onSelect](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#onselect8)。selectable用于设置列表项是否允许被选择，selected用于设置列表项当前是否被选中。滑动多选过程中，组件会触发onSelect()回调，应用可以在回调中记录每个列表项的最新选择结果。
 <!-- @[Add_list_item_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets) -->
 
 ``` TypeScript

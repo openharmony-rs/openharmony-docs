@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -65,6 +65,10 @@ host是带括号的IPv6字面量、IPv4字面量或由点分隔的一个或多�
 insertDirectRule(schemeFilter?: ProxySchemeFilter): void
 
 插入一条直连规则，指明符合schemeFilter条件的URL将直接连接到服务器。
+
+> **说明：**
+>
+> - 与[insertBypassRule](#insertbypassrule15)和[bypassHostnamesWithoutPeriod](#bypasshostnameswithoutperiod15)均可实现URL直连，区别在于匹配维度：本方法通过schemeFilter按协议类型匹配；insertBypassRule通过bypassRule字符串按URL模式匹配；bypassHostnamesWithoutPeriod无需传参，自动对不含点号的域名直连。可根据需要直连的URL范围选择合适的方法。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

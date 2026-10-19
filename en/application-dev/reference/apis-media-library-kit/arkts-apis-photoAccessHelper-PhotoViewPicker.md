@@ -1,19 +1,17 @@
 # Class (PhotoViewPicker)
-
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @xuchangda-->
 <!--Designer: @guxinggang-->
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:55.030Z pushedAt=2026-06-23T09:25:46.749Z -->
 
-PhotoViewPicker provides APIs for the user to select images and videos. Before using the APIs of PhotoViewPicker, you need to create a PhotoViewPicker instance.
+The **PhotoViewPicker** class is a photo picker object used to start the system gallery selection screen, where users can select one or more media files such as images and videos. Users can customize the media type and quantity limit. This class is applicable to scenarios where images or videos need to be selected from the gallery, such as uploading profile pictures in social apps, uploading product images in e-commerce platforms, and selecting media materials in content creation apps. Before using the APIs of **PhotoViewPicker**, you need to create a **PhotoViewPicker** instance.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - To launch **PhotoViewPicker** repeatedly, you need to destroy the previous **photoViewPicker** through **NavDestination** or when the process is destroyed.
+> - To start PhotoViewPicker again, you need to destroy the previous PhotoViewPicker instance through NavDestination or the process.
 
 ## Modules to Import
 
@@ -25,7 +23,9 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 select(option?: PhotoSelectOptions) : Promise&lt;PhotoSelectResult&gt;
 
-Starts a **photoPicker** page for the user to select one or more images or videos. This API uses a promise to return the result. You can pass in **PhotoSelectOptions** to specify the type and maximum number of the files to select. A **PhotoSelectResult** object is returned.
+Starts a photo picker page for the user to select one or more images or videos. This API uses a promise to return the result.
+
+You can pass in **PhotoSelectOptions** to specify the type and maximum number of the files to select. A **PhotoSelectResult** object is returned.
 
 > **NOTE**
 >
@@ -53,16 +53,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900042      | Unknown error.         |
-| 23800151      |  Scene parameters validate failed, possible causes:1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. Only MOVING_PHOTO_ENABLE and MOVING_PHOTO_DISABLE are supported for configuration;|
+| 23800151      |  Scene parameters validate failed, possible causes: <br>1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. Only MOVING_PHOTO_ENABLED and MOVING_PHOTO_DISABLED are supported for configuration;<br>2. An illegal enumeration value was passed to PhotoSelectOptions.assetCompatibleAbility.<br>Applicable version: 12|
 
 **Example**
 
 ```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function example01(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+async function openBindSheet01() {
   try {
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
     photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
@@ -84,7 +85,9 @@ async function example01(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&gt;) : void
 
-Starts a **photoPicker** page for the user to select one or more images or videos. This API uses an asynchronous callback to return the result. You can pass in **PhotoSelectOptions** to specify the media file type and the maximum number of files to select.
+Starts a photo picker page for the user to select one or more images or videos. This API uses an asynchronous callback to return the result.
+
+Pass in **PhotoSelectOptions**. A **PhotoSelectResult** object is returned through the callback.
 
 > **NOTE**
 >
@@ -98,8 +101,8 @@ Starts a **photoPicker** page for the user to select one or more images or video
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| option | [PhotoSelectOptions](arkts-apis-photoAccessHelper-class.md#photoselectoptions) | Yes  | Options for selecting images or videos.|
-| callback | AsyncCallback&lt;[PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt;      | Yes  | Callback used to return information about the images or videos selected.|
+| option | [PhotoSelectOptions](arkts-apis-photoAccessHelper-class.md#photoselectoptions) | Yes  | Photo picker selection options.|
+| callback | AsyncCallback&lt;[PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt;      | Yes  | Callback used to return the result. When a user successfully selects an image or video using the photo picker, **err** is **undefined**, and **data** is the result set returned by the photo picker.|
 
 **Error codes**
 
@@ -107,16 +110,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900042      | Unknown error.         |
-| 23800151      | Scene parameters validate failed, possible causes:1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. Only MOVING_PHOTO_ENABLE and MOVING_PHOTO_DISABLE are supported for configuration; |
+| 23800151      | Scene parameters validate failed, possible causes: An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. Only MOVING_PHOTO_ENABLED and MOVING_PHOTO_DISABLED are supported for configuration. <br>Applicable version: 12|
 
 **Example**
 
 ```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function example02(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+async function openBindSheet02() {
   try {
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
     photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE;
@@ -140,7 +144,7 @@ async function example02(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 select(callback: AsyncCallback&lt;PhotoSelectResult&gt;) : void
 
-Starts a **photoPicker** page for the user to select one or more images or videos. This API uses an asynchronous callback to return the result.
+Starts a photo picker page for the user to select one or more images or videos. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -154,7 +158,7 @@ Starts a **photoPicker** page for the user to select one or more images or video
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;[PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt;      | Yes  | Callback used to return information about the images or videos selected.|
+| callback | AsyncCallback&lt;[PhotoSelectResult](arkts-apis-photoAccessHelper-class.md#photoselectresult)&gt;      | Yes  | Callback used to return the result. When a user successfully selects an image or video using the photo picker, **err** is **undefined**, and **data** is the result set returned by the photo picker.|
 
 **Error codes**
 
@@ -162,15 +166,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900042      | Unknown error.         |
 
 **Example**
 
 ```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function example03(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+async function openBindSheet03() {
   try {
     let photoPicker = new photoAccessHelper.PhotoViewPicker();
     photoPicker.select((err: BusinessError, photoSelectResult: photoAccessHelper.PhotoSelectResult) => {

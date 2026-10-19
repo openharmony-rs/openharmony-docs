@@ -12,7 +12,7 @@ typedef struct Hid_RelAxesArray {...} Hid_RelAxesArray
 
 ## 概述
 
-相对坐标属性数组，用于存储HID设备支持的相对坐标属性信息。
+相对坐标属性编码数组，用于存储HID设备支持的相对坐标属性信息。
 
 **起始版本：** 11
 

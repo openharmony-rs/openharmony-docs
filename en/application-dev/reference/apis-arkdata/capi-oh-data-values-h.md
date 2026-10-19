@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=92fad92320c327a07cb31c689545113f874871a6 translatedAt=2026-06-26T06:34:42.019Z pushedAt=2026-06-29T02:15:43.549Z -->
+<!-- md-trans-meta sourceCommit=7ef9b5061ca4cac695cf7b193861ba482e2c784a translatedAt=2026-09-04T02:43:28.373Z pushedAt=2026-09-09T09:11:03.640Z -->
 
 ## Overview
 
@@ -33,7 +33,7 @@ Defines APIs and enums related to multiple data values.
 
 | Name                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Data_Values *OH_Values_Create(void)](#oh_values_create)  | Creates an [OH_Data_Values](capi-rdb-oh-data-values.md) instance to store multiple KV pairs.|
+| [OH_Data_Values *OH_Values_Create(void)](#oh_values_create)  | Creates an [OH_Data_Values](capi-rdb-oh-data-values.md) instance for storing multiple data values. |
 | [int OH_Values_Destroy(OH_Data_Values *values)](#oh_values_destroy) | Destroys an [OH_Data_Values](capi-rdb-oh-data-values.md) instance.          |
 | [int OH_Values_Put(OH_Data_Values *values, const OH_Data_Value *val)](#oh_values_put) | Adds data of the **OH_Data_Value** type to an **OH_Data_Values** instance.             |
 | [int OH_Values_PutNull(OH_Data_Values *values)](#oh_values_putnull) | Adds empty data to an **OH_Data_Values** instance.                            |
@@ -71,7 +71,7 @@ OH_Data_Values *OH_Values_Create(void)
 
 **Description**
 
-Creates an [OH_Data_Values](capi-rdb-oh-data-values.md) instance to store multiple KV pairs.
+Creates an [OH_Data_Values](capi-rdb-oh-data-values.md) instance to store multiple data values.
 
 **Since**: 18
 
@@ -79,7 +79,7 @@ Creates an [OH_Data_Values](capi-rdb-oh-data-values.md) instance to store multip
 
 | Type                                    | Description                                                        |
 | ---------------------------------------- | ------------------------------------------------------------ |
-| [OH_Data_Values](capi-rdb-oh-data-values.md) | Returns a pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance created if the operation is successful; returns **nullptr** otherwise.<br>Use [OH_Values_Destroy](capi-oh-data-values-h.md#oh_values_destroy) to release the memory in time.|
+| [OH_Data_Values](capi-rdb-oh-data-values.md) * | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance if the operation is successful; **nullptr** otherwise.<br>After use, you must call [OH_Values_Destroy](#oh_values_destroy) to free the memory. |
 
 ### OH_Values_Destroy()
 
@@ -333,7 +333,7 @@ Adds a float array to an **OH_Data_Values** instance.
 | Name                                          | Description                                                        |
 | ------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
-| const float *val                                 | Pointer to the float array to add.                               |
+| const float *val                                 | Pointer to the float array.                                |
 | size_t length                                    | Length of the float array to add.         |
 
 **Returns**
@@ -660,7 +660,7 @@ Obtains the assets from an **OH_Data_Values** instance.
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
 | [Data_Asset](capi-rdb-data-asset.md) **val           | Double pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the execution fails.|
-| size_t inLen                                     | Size of **val**, which can be obtained using [OH_Values_GetAssetsCount](capi-oh-data-values-h.md#oh_values_getassetscount).|
+| size_t inLen                                     | Size of **val**. It can be obtained through [OH_Values_GetAssetsCount](#oh_values_getassetscount). |
 | size_t *outLen                                   | Pointer to the actual length of the data obtained.                      |
 
 **Returns**
@@ -716,7 +716,7 @@ Obtains the float array from an **OH_Data_Values** instance.
 | [OH_Data_Values](capi-rdb-oh-data-values.md) *values | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
 | float *val                                       | Pointer to the float array obtained.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the execution fails.|
-| size_t inLen                                     | Size of **val**, which can be obtained using [OH_Values_GetFloatVectorCount](capi-oh-data-values-h.md#oh_values_getfloatvectorcount).|
+| size_t inLen                                     | Size of **val**. It can be obtained via [OH_Values_GetFloatVectorCount](#oh_values_getfloatvectorcount). |
 | size_t *outLen                                   | Pointer to the actual length of the data obtained.                      |
 
 **Returns**
@@ -773,7 +773,7 @@ Obtains the unlimited integer from an **OH_Data_Values** instance.
 | int index                                        | Index of the value to check, which starts from 0 in **values**.                      |
 | int *sign                                        | Pointer to the sign notation of the integer obtained. The value **0** indicates a positive integer, and the value **1** indicates a negative integer.        |
 | uint64_t *trueForm                               | Pointer to the integer array obtained.<br>Data memory should be requested.<br>This function is used to fill in data only. Otherwise, the execution fails.|
-| size_t inLen                                     | **trueForm** length, which can be obtained using [OH_Values_GetUnlimitedIntBand](capi-oh-data-values-h.md#oh_values_getunlimitedintband).|
+| size_t inLen                                     | Size of **trueForm**. It can be obtained through [OH_Values_GetUnlimitedIntBand](#oh_values_getunlimitedintband). |
 | size_t *outLen                                   | Pointer to the actual length of the data obtained.                      |
 
 **Returns**
@@ -781,3 +781,4 @@ Obtains the unlimited integer from an **OH_Data_Values** instance.
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
 | int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates invalid parameters are specified.<br>**RDB_E_DATA_TYPE_NULL** indicates the stored data is empty.<br>**RDB_E_TYPE_MISMATCH** indicates the data types do not match.|
+

@@ -1,9 +1,9 @@
 # 自定义文本绘制与显示（ArkTS）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @KejiePeng-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 在复杂的文本排版场景中，当系统提供的标准文本组件无法满足特定的视觉或交互需求时，开发者可以利用ArkGraphics 2D提供的底层文本绘制能力，通过直接控制画布（Canvas）和文本样式，实现对文本外观、布局的精细控制。这种能力适用于需要高度定制化文本渲染效果的场景，例如艺术字体、复杂的富文本编排或特殊的动态文字效果。
@@ -24,7 +24,7 @@
 - 精细化排版管理：如实现艺术排版、动态文字布局等系统标准文本组件难以达到的效果。
 
 ### 接口说明
-文本塑形中常用接口如下表所示，详细接口说明参考[@ohos.graphics.text (文本模块)](../reference/apis-arkgraphics2d/js-apis-graphics-text.md)和[TextBlob](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-TextBlob.md)。
+文本塑形中常用接口如下表所示，详细接口说明参考[@ohos.graphics.text (文本模块)](../reference/apis-arkgraphics2d/js-apis-graphics-text.md)、[TextBlob](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-TextBlob.md)和[drawTextBlob](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#drawtextblob)。
 
 | 接口名 | 描述 | 
 | -------- | -------- |
@@ -42,11 +42,11 @@
 从API version 18开始，支持获取文字塑形结果能力。从API version 20开始，支持获取文字排版方向和文字字形宽度。关键代码如下：
 
 1. 导入依赖的相关模块。
-
-   ```ts
-   import { text } from '@kit.ArkGraphics2D'
-   import { drawing } from '@kit.ArkGraphics2D'
-   import { common2D } from '@kit.ArkGraphics2D'
+   <!-- @[arkts_independent_shaping_text_import_modules](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   
+   ``` TypeScript
+   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+   import { text, drawing, common2D } from '@kit.ArkGraphics2D'
    ```
 
 2. 创建段落样式，并构造段落生成器ParagraphBuilder实例。

@@ -1,4 +1,4 @@
-# AutoFillRequest
+# AutoFillRequest (自动填充请求)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -8,6 +8,8 @@
 <!--Adviser: @HelloCrease-->
 
 本模块提供自动填充与自动保存场景下的页面请求数据，以及自动填充失败时的返回结果。
+
+**起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -29,9 +31,9 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称        | 类型                                                                    | 只读 | 可选 | 说明           |
 | ----------- | ----------------------------------------------------------------------- | ---- | ---- | ------------- |
-| type        | [AutoFillType](js-apis-inner-application-autoFillType.md)               | 否   | 否   | 自动填充类型。 |
-| viewData    | [ViewData](js-apis-inner-application-viewData.md)                       | 否   | 否   | 页面数据。 |
-| triggerType | [AutoFillTriggerType](js-apis-inner-application-autoFillTriggerType.md) | 否   | 是   | 自动填充服务的拉起类型。 |
+| type | [AutoFillType](js-apis-inner-application-autoFillType.md) | 否 | 否 | 自动填充类型。 |
+| viewData | [ViewData](js-apis-inner-application-viewData.md) | 否 | 否 | 页面数据。 |
+| triggerType | [AutoFillTriggerType](js-apis-inner-application-autoFillTriggerType.md) | 否 | 是 | 自动填充服务的拉起类型。 |
 
 ## SaveRequest
 
@@ -47,7 +49,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称     | 类型                                              | 只读 | 可选 | 说明       |
 | -------- | ------------------------------------------------- | ---- | ---- | ---------- |
-| viewData | [ViewData](js-apis-inner-application-viewData.md) | 否   | 否   | 页面数据。 |
+| viewData | [ViewData](js-apis-inner-application-viewData.md) | 否 | 否 | 页面数据。 |
 
 ## FillFailureResult
 

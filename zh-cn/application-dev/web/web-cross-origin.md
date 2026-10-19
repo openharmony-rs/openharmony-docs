@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -115,118 +115,118 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   
   setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风险操作。基于最小权限原则，当前el1，el2放开的路径是固定的，路径列表中的路径应符合以下任一路径格式：
 
-  1.应用文件目录通过[Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
+  1. 应用文件目录通过[Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
 
-  * /data/storage/el2/base/files/example
-  * /data/storage/el2/base/haps/entry/files/example
+     * /data/storage/el2/base/files/example
+     * /data/storage/el2/base/haps/entry/files/example
 
-  2.应用资源目录通过[Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
+  2. 应用资源目录通过[Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
 
-  * /data/storage/el1/bundle/entry/resources/resfile
-  * /data/storage/el1/bundle/entry/resources/resfile/example
+     * /data/storage/el1/bundle/entry/resources/resfile
+     * /data/storage/el1/bundle/entry/resources/resfile/example
 
-  3.从API version 21开始，还包括了应用缓存目录通过[Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
+  3. 从API version 21开始，还包括了应用缓存目录通过[Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
 
-  * /data/storage/el2/base/cache
-  * /data/storage/el2/base/haps/entry/cache/example
-  * 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。
+     * /data/storage/el2/base/cache
+     * /data/storage/el2/base/haps/entry/cache/example
+     * 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。
 
-  4.从API version 21开始，还包括了应用临时目录通过[Context.tempDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
+  4. 从API version 21开始，还包括了应用临时目录通过[Context.tempDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#属性)获取，其子目录示例如下：
 
-  * /data/storage/el2/base/temp
-  * /data/storage/el2/base/haps/entry/temp/example
+     * /data/storage/el2/base/temp
+     * /data/storage/el2/base/haps/entry/temp/example
 
-  当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)规则，具体示例如下。
+     当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)规则，具体示例如下。
 
-  <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->    
-  
-  ``` TypeScript
-  // main/ets/pages/LocCrossOriginResAccSol_two.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: WebviewController = new webview.WebviewController();
-    uiContext: UIContext = this.getUIContext();
-  
-    build() {
-      Row() {
-        Web({ src: '', controller: this.controller })
-          .onControllerAttached(() => {
-            try {
-              // 设置允许可以跨域访问的路径列表
-              this.controller.setPathAllowingUniversalAccess([
-                this.uiContext.getHostContext()!.resourceDir,
-                this.uiContext.getHostContext()!.filesDir + '/example'
-                ]);
-              this.controller.loadUrl('file://' + this.uiContext.getHostContext()!.resourceDir + '/index.html');
-            } catch (error) {
-              console.error(
-                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as   BusinessError).message}`);
-            }
-          })
-          .javaScriptAccess(true)
-          .fileAccess(true)
-          .domStorageAccess(true)
-      }
-    }
-  }
-  ```
-  <!---->
+     <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->    
+     
+     ``` TypeScript
+     // main/ets/pages/LocCrossOriginResAccSol_two.ets
+     import { webview } from '@kit.ArkWeb';
+     import { BusinessError } from '@kit.BasicServicesKit';
+     
+     @Entry
+     @Component
+     struct WebComponent {
+       controller: WebviewController = new webview.WebviewController();
+       uiContext: UIContext = this.getUIContext();
+     
+       build() {
+         Row() {
+           Web({ src: '', controller: this.controller })
+             .onControllerAttached(() => {
+               try {
+                 // 设置允许可以跨域访问的路径列表
+                 this.controller.setPathAllowingUniversalAccess([
+                   this.uiContext.getHostContext()!.resourceDir,
+                   this.uiContext.getHostContext()!.filesDir + '/example'
+                   ]);
+                 this.controller.loadUrl('file://' + this.uiContext.getHostContext()!.resourceDir + '/index.html');
+               } catch (error) {
+                 console.error(
+                   `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as   BusinessError).message}`);
+               }
+             })
+             .javaScriptAccess(true)
+             .fileAccess(true)
+             .domStorageAccess(true)
+         }
+       }
+     }
+     ```
+     <!---->
 
-  ```html
-  <!-- main/resources/resfile/index.html -->
-  <!DOCTYPE html>
-  <html lang="en">
+     ```html
+     <!-- main/resources/resfile/index.html -->
+     <!DOCTYPE html>
+     <html lang="en">
 
-  <head>
-      <meta charset="utf-8">
-      <title>Demo</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,   viewport-fit=cover">
-      <script>
-      function getFile() {
-        var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
-        // 使用file协议通过XMLHttpRequest跨域访问本地js文件。
-        var xmlHttpReq = new XMLHttpRequest();
-        xmlHttpReq.onreadystatechange = function(){
-            console.info("readyState:" + xmlHttpReq.readyState);
-            console.info("status:" + xmlHttpReq.status);
-          if(xmlHttpReq.readyState == 4){
-              if (xmlHttpReq.status == 200) {
-                  // 如果ets侧正确设置路径列表，则此处能正常获取资源
-                  const element = document.getElementById('text');
-                          element.textContent = "load " + file + " success";
-              } else {
-                  // 如果ets侧不设置路径列表，则此处会触发CORS跨域检查错误
-                  const element = document.getElementById('text');
-                          element.textContent = "load " + file + " failed";
-              }
-          }
-        }
-        xmlHttpReq.open("GET", file);
-        xmlHttpReq.send(null);
-      }
-      </script>
-  </head>
+     <head>
+         <meta charset="utf-8">
+         <title>Demo</title>
+         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,   viewport-fit=cover">
+         <script>
+         function getFile() {
+           var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
+           // 使用file协议通过XMLHttpRequest跨域访问本地js文件。
+           var xmlHttpReq = new XMLHttpRequest();
+           xmlHttpReq.onreadystatechange = function(){
+               console.info("readyState:" + xmlHttpReq.readyState);
+               console.info("status:" + xmlHttpReq.status);
+             if(xmlHttpReq.readyState == 4){
+                 if (xmlHttpReq.status == 200) {
+                     // 如果ets侧正确设置路径列表，则此处能正常获取资源
+                     const element = document.getElementById('text');
+                             element.textContent = "load " + file + " success";
+                 } else {
+                     // 如果ets侧不设置路径列表，则此处会触发CORS跨域检查错误
+                     const element = document.getElementById('text');
+                             element.textContent = "load " + file + " failed";
+                 }
+             }
+           }
+           xmlHttpReq.open("GET", file);
+           xmlHttpReq.send(null);
+         }
+         </script>
+     </head>
 
-  <body>
-  <div class="page">
-      <button id="example" onclick="getFile()">loadFile</button>
-  </div>
-  <div id="text"></div>
-  </body>
+     <body>
+     <div class="page">
+         <button id="example" onclick="getFile()">loadFile</button>
+     </div>
+     <div id="text"></div>
+     </body>
 
-  </html>
-  ```
- <!---->
- <!-- @[cors_script](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/resfile/js/script.js) -->    
- 
- ``` JavaScript
- // main/resources/resfile/js/script.js
- const body = document.body;
- const element = document.createElement('div');
- element.textContent = 'success';
- body.appendChild(element);
- ```
+     </html>
+     ```
+     <!---->
+     <!-- @[cors_script](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/resfile/js/script.js) -->    
+     
+     ``` JavaScript
+     // main/resources/resfile/js/script.js
+     const body = document.body;
+     const element = document.createElement('div');
+     element.textContent = 'success';
+     body.appendChild(element);
+     ```

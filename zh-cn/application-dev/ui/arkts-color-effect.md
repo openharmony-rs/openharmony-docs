@@ -1,13 +1,10 @@
 # 色彩
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-
-
-## 色彩
 
 通过颜色渐变接口，可以设置组件的背景颜色渐变效果，实现在两个或多个指定的颜色之间进行平稳的过渡。
 
@@ -137,7 +134,7 @@
             center: [50, 50], // 角度渐变中心点
             start: 0, // 角度渐变的起点
             end: 360, // 角度渐变的终点。
-            repeating: true, // 渐变效果在重复
+            repeating: true, // 渐变效果会重复
             colors: [
               // 当前组件中，按照中心点和渐变的起点和终点值,
               // 角度区域为0-0.125的范围，从颜色断点1的颜色渐变到颜色断点2的颜色,

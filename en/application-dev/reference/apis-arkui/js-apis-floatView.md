@@ -5,6 +5,7 @@
 <!--Designer: @loumou-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=18725a1c910c26a150d1e4b30340bf2eaf450236 translatedAt=2026-09-01T03:15:01.738Z pushedAt=2026-09-01T08:56:40.547Z -->
 
 A float view is a small window that floats on a desktop or an application screen, providing flexible window management capabilities.
 
@@ -374,7 +375,11 @@ Defines a float view controller instance, which is used to start and stop the fl
 
 Before calling the following APIs, you must use [floatView.create()](#floatviewcreate) to create a float view controller instance (that is, **floatViewController**).
 
+**Since**: 26.0.0
+
 **Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
 
 ### setUIContext
 
@@ -624,7 +629,7 @@ let newSize: window.Size = {
 let templateProperty: floatView.TemplateProperty = {
   templateType: floatView.FloatViewTemplateType.HORIZONTAL_BAR,
   size: newSize
-}
+};
 try {
   // Switch the template of the float view and change the window size.
   this.floatViewController?.switchTemplate(templateProperty).then(() => {

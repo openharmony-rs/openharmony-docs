@@ -1,8 +1,8 @@
 # 模块描述
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -10,9 +10,9 @@
 
 该模块提供以下媒体会话相关的常用功能：
 
-- [AVSession](arkts-apis-avsession-AVSession.md): 会话，可用于设置元数据、播放状态信息等操作。
-- [AVSessionController](arkts-apis-avsession-AVSessionController.md): 会话控制器，可用于查看会话ID，向会话发送命令及事件，获取会话元数据、播放状态信息等操作。
-- [AVCastController](arkts-apis-avsession-AVCastController.md): 投播控制器，可用于投播场景下，完成播放控制、远端播放状态监听、远端播放状态信息获取等操作。
+- [AVSession](arkts-apis-avsession-AVSession.md)：会话，可用于设置元数据、播放状态信息等操作。
+- [AVSessionController](arkts-apis-avsession-AVSessionController.md)：会话控制器，可用于查看会话ID，向会话发送命令及事件，获取会话元数据、播放状态信息等操作。
+- [AVCastController](arkts-apis-avsession-AVCastController.md)：投播控制器，可用于投播场景下，完成播放控制、远端播放状态监听、远端播放状态信息获取等操作。
 
 > **说明：**
 >

@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-为组件设置对应的工具栏。toolbar是组件通用属性，可在窗口顶部标题栏相应分栏位置创建由ToolBarItem构成的自定义工具栏，适用于需要在标题栏区域添加自定义操作项（如按钮、滑动条、搜索栏等）的场景。
+为组件设置对应的工具栏。toolbar是组件通用属性，可在窗口顶部标题栏相应分栏位置创建由ToolBarItem构成的自定义工具栏，适用于需要在标题栏区域添加自定义操作项（如按钮、滑动条、搜索框等）的场景。
 
 >  **说明：**
 >
@@ -51,13 +51,13 @@ toolbar(value: CustomBuilder): T
 >
 >  5. 标题栏高度会根据toolbar内的[ToolBarItem](ts-basic-components-toolbaritem.md)组件在有限范围内浮动：
 >     * [ToolBarItem](ts-basic-components-toolbaritem.md)组件与标题栏默认存在4vp的margin（外边距）。
->     * 当[ToolBarItem](ts-basic-components-toolbaritem.md)组件的最大高度小于等于48vp时，标题栏高度会调整为56vp，此设置适用于标题栏、工具栏、搜索栏等通用组件。
+>     * 当[ToolBarItem](ts-basic-components-toolbaritem.md)组件的最大高度小于等于48vp时，标题栏高度会调整为56vp，此设置适用于标题栏、工具栏、搜索框等通用组件。
 >     * 当[ToolBarItem](ts-basic-components-toolbaritem.md)组件的最大高度介于48vp到56vp之间时，标题栏高度会调整为64vp，此设置适用于图标与文字同时呈现的工具栏。
 >     * 当[ToolBarItem](ts-basic-components-toolbaritem.md)组件的最大高度超过56vp时，标题栏高度会调整为72vp。如果[ToolBarItem](ts-basic-components-toolbaritem.md)组件的最大高度超过64vp，则标题栏的高度保持为72vp，超出的区域会发生裁剪。
 
 ## 示例
 
-该示例通过为[Navigation](ts-basic-components-navigation.md)下的[Button](ts-basic-components-button.md)组件绑定toolbar通用属性，为标题栏NavBar分栏开头位置添加包含两个[Button](ts-basic-components-button.md)组件的工具栏项。为[NavDestination](ts-basic-components-navdestination.md)下的[Text](ts-basic-components-text.md)组件绑定toolbar通用属性，为标题栏NavDestination分栏末尾位置添加包含一个滑动条组件和一个搜索栏组件的工具栏项。
+该示例通过为[Navigation](ts-basic-components-navigation.md)下的[Button](ts-basic-components-button.md)组件绑定toolbar通用属性，为标题栏NavBar分栏开头位置添加包含两个[Button](ts-basic-components-button.md)组件的工具栏项。为[NavDestination](ts-basic-components-navdestination.md)下的[Text](ts-basic-components-text.md)组件绑定toolbar通用属性，为标题栏NavDestination分栏末尾位置添加两个工具栏项，分别包含一个滑动条组件和一个搜索框组件。
 
 ```ts
 // xxx.ets
@@ -65,7 +65,7 @@ toolbar(value: CustomBuilder): T
 @Component
 struct ToolbarExample {
   normalIcon: Resource = $r('app.media.startIcon')
-  selectedIcon: Resource = $r("app.media.startIcon")
+  selectedIcon: Resource = $r('app.media.startIcon')
   @State arr: number[] = [1, 2, 3]
   @State current: number = 1
   @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack()

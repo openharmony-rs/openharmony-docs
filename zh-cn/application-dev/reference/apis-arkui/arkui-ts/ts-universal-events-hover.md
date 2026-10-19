@@ -1,7 +1,7 @@
 # 悬浮事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -62,7 +62,7 @@ onHoverMove(event: Callback&lt;HoverEvent&gt;): T
 
 ## HoverEvent<sup>10+</sup>对象说明
 
-继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
+继承于[BaseEvent](ts-universal-events-click.md#baseevent8)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

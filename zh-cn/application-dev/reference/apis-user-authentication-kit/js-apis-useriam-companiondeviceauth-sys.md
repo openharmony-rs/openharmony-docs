@@ -32,11 +32,12 @@
 
 ### 核心接口类型
 
-- **[DeviceKey](#devicekey)**：设备关键信息接口，包含设备ID类型、设备ID和设备用户ID。
-- **[DeviceStatus](#devicestatus)**：设备状态接口，包含设备密钥、设备用户名、设备型号、设备名称、在线状态和支持的服务ID列表。
+- **[DeviceKey](#devicekey)**：设备关键信息接口，包含设备ID类型、设备ID、设备用户ID和设备子身份资料ID。
+- **[DeviceStatus](#devicestatus)**：设备状态接口，包含设备密钥、设备用户名、设备型号、设备名称、在线状态、支持的服务ID列表和设备子身份资料名称。
 - **[TemplateStatus](#templatestatus)**：模板状态接口，包含模板ID、实时数据标识、有效性标识、本地用户ID、添加时间、支持的服务ID列表和设备状态。
 - **[ContinuousAuthParam](#continuousauthparam)**：持续认证参数接口。
 - **[DeviceSelectResult](#deviceselectresult)**：设备选择结果接口。
+- **[PasscodePromptParams](#passcodepromptparams)**：通行码输入请求的参数接口。
 
 ### 核心回调类型
 
@@ -44,6 +45,8 @@
 - **[ContinuousAuthStatusCallback](#continuousauthstatuscallback)**：持续认证状态回调。
 - **[AvailableDeviceStatusCallback](#availabledevicestatuscallback)**：可用设备状态回调。
 - **[DeviceSelectCallback](#deviceselectcallback)**：设备选择回调。
+- **[PasscodeSubmitCallback](#passcodesubmitcallback)**：通行码提交回调。
+- **[PasscodePromptCallback](#passcodepromptcallback)**：通行码请求回调。
 
 ### 核心类
 
@@ -155,7 +158,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 
 ## DeviceKey
 
-设备标识。用于唯一标识一个设备及其用户，包含设备ID类型、设备ID和设备用户ID等信息。
+设备标识。用于唯一标识一个设备及其用户，包含设备ID类型、设备ID、设备用户ID和设备子身份资料ID等信息。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -168,10 +171,11 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 | deviceIdType | number | 否 | 否 | 设备ID类型。用于指定设备业务标识的类型，可在[DeviceIdType](#deviceidtype)基础上自定义扩展，如使用UNIFIED_DEVICE_ID(1)表示统一设备ID，或使用厂商自定义值（≥10000）。 |
 | deviceId | string | 否 | 否 | 设备ID。设备的唯一标识字符串，具体格式由deviceIdType决定。 |
 | deviceUserId | number | 否 | 否 | 设备用户ID。设备上的用户标识，为非负整数，用于区分设备上的不同用户。 |
+| deviceSubProfileId | number | 否 | 是 | 设备子身份资料ID。设备上的子身份资料标识，为非负整数，用于区分同一设备同一用户下的不同子身份资料。<br>**默认值：** -1<br>**起始版本：** 26.0.1 |
 
 ## DeviceStatus
 
-设备状态信息。用于描述伴随设备的当前状态，包括设备业务标识、用户名、型号信息、设备名、在线状态以及支持的业务ID列表等。
+设备状态信息。用于描述伴随设备的当前状态，包括设备业务标识、用户名、型号信息、设备名、在线状态、支持的业务ID列表以及设备子身份资料名称等。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -181,12 +185,13 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------------------- | ------------------------- | ---- | ---- | ---------------------- |
-| deviceKey | [DeviceKey](#devicekey) | 否 | 否 | 设备关键信息。包含设备ID类型、设备ID和设备用户ID，作为设备的唯一标识。 |
+| deviceKey | [DeviceKey](#devicekey) | 否 | 否 | 设备关键信息。包含设备ID类型、设备ID、设备用户ID和设备子身份资料ID，作为设备的唯一标识。 |
 | deviceUserName | string | 否 | 否 | 设备用户名。设备上当前用户的显示名称，用于在设备选择界面展示。 |
 | deviceModelInfo | string | 否 | 否 | 设备模型信息。设备的型号标识，如产品型号、设备类型等信息。 |
 | deviceName | string | 否 | 否 | 设备名。设备的名称或别名，用于在设备列表中展示给用户。 |
 | isOnline | boolean | 否 | 否 | 设备在线状态。true表示设备处于在线状态，可以与主设备通信；false表示设备处于离线状态，无法进行认证交互。 |
 | supportedBusinessIds | number[] | 否 | 否 | 设备支持的业务ID列表。表示该设备支持的业务场景范围，如解锁锁屏、解锁应用锁等。不同设备因认证安全性差异，支持的业务范围不同。 |
+| deviceSubProfileName | string | 否 | 是 | 设备子身份资料名称。对应分布式账号的昵称，作为设备上前台子身份资料的显示名称，用于在设备选择界面展示。<br>**默认值：** ""<br>**起始版本：** 26.0.1 |
 
 ## TemplateStatus
 
@@ -281,6 +286,10 @@ type AvailableDeviceStatusCallback = (deviceStatusList: DeviceStatus[]) => void
 
 状态监听器对象。用于监听或获取模板状态、持续认证状态、可添加设备状态等信息。通过[getStatusMonitor](#companiondeviceauthgetstatusmonitor)获取此对象。
 
+**系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
+
+**系统接口：** 此接口为系统接口。
+
 ### getTemplateStatus
 
 getTemplateStatus(): Promise&lt;TemplateStatus[]&gt;
@@ -325,8 +334,8 @@ statusMonitor.getTemplateStatus()
     console.info(`templateStatus: ${JSON.stringify(templateStatus)}`);
   })
   .catch((error: BusinessError) => {
-    console.error(`error has been captured. Code: ${error.code}, message: ${error.message}`);
-  })
+    console.error(`Failed to get template status. Code: ${error.code}, message: ${error.message}`);
+  });
 ```
 
 ### onTemplateChange
@@ -373,7 +382,7 @@ try {
   statusMonitor.onTemplateChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to subscribe template change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -420,7 +429,7 @@ try {
   statusMonitor.offTemplateChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to unsubscribe template change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -468,7 +477,7 @@ try {
   statusMonitor.onAvailableDeviceChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to subscribe available device change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -515,7 +524,7 @@ try {
   statusMonitor.offAvailableDeviceChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to unsubscribe available device change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -574,7 +583,7 @@ try {
   statusMonitor.onContinuousAuthChange(continuousAuthParam, handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to subscribe continuous auth change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -630,7 +639,7 @@ try {
   statusMonitor.offContinuousAuthChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to unsubscribe continuous auth change. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -697,7 +706,7 @@ try {
   statusMonitor.offContinuousAuthChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
+  console.error(`Failed to get status monitor. Code: ${(error as BusinessError).code}, message: ${message}`);
 }
 ```
 
@@ -713,7 +722,7 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------------- | --------------------------- | ---- | ---- | ------------------------------------------ |
-| deviceKeys | [DeviceKey](#devicekey)[] | 否 | 否 | 设备信息列表。包含用户选择的设备业务标识信息，每个DeviceKey包含设备ID类型、设备ID和设备用户ID。系统会根据这些信息执行后续的添加模板或认证操作。|
+| deviceKeys | [DeviceKey](#devicekey)[] | 否 | 否 | 设备信息列表。包含用户选择的设备业务标识信息，每个DeviceKey包含设备ID类型、设备ID、设备用户ID和设备子身份资料ID。系统会根据这些信息执行后续的添加模板或认证操作。|
 | selectionContext | Uint8Array | 否 | 是 | 设备选择上下文。携带JSON格式的扩展信息（具体字段由业务方自行定义），可用于传递设备选择过程中的额外参数。不提供此字段时默认为空，不携带扩展信息。 |
 
 ## DeviceSelectCallback
@@ -781,6 +790,7 @@ try {
     const otherDeviceId = 'otherDeviceId'; // 用于认证的设备ID
     const addDeviceUserId = 100; // 添加模板设备的用户ID
     const otherDeviceUserId = 100; // 认证设备的用户ID
+    const addDeviceSubProfileId = 100001; // 从API版本26.0.1开始，支持添加模板的设备子身份资料ID
     // 根据选择目的返回对应的设备信息
     if (purpose === companionDeviceAuth.SelectPurpose.SELECT_ADD_DEVICE) {
       // 选择添加模板时，返回添加模板的设备信息
@@ -788,7 +798,8 @@ try {
         deviceKeys: [{
           deviceIdType: companionDeviceAuth.DeviceIdType.UNIFIED_DEVICE_ID,
           deviceId: addDeviceId,
-          deviceUserId: addDeviceUserId
+          deviceUserId: addDeviceUserId,
+          deviceSubProfileId: addDeviceSubProfileId
         }]
       };
     }
@@ -799,10 +810,10 @@ try {
         deviceUserId: otherDeviceUserId
       }]
     };
-  })
+  });
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to register device select callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -840,7 +851,7 @@ try {
   companionDeviceAuth.unregisterDeviceSelectCallback();
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to unregister device select callback. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -896,6 +907,152 @@ companionDeviceAuth.updateEnabledBusinessIds(templateId, [companionDeviceAuth.Bu
     console.info('business scope updated');
   })
   .catch((err: BusinessError) => {
-    console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
-  })
+    console.error(`Failed to update enabled business ids. Code: ${err.code}, message: ${err.message}`);
+  });
+```
+
+## PasscodeSubmitCallback
+
+type PasscodeSubmitCallback = (passcode: Uint8Array) => void
+
+通行码提交回调函数类型。应用通过此回调将用户输入的通行码提交给系统。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ---------- | ---- | ------------------------------------------------------------ |
+| passcode | Uint8Array | 是 | 用户输入的通行码。 |
+
+## PasscodePromptParams
+
+通行码输入请求的参数，用于传递挑战值等上下文信息。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --------- | ---------- | ---- | ---- | ------------------------------------------------------------ |
+| challenge | Uint8Array | 否 | 否 | 请求通行码时由系统下发的挑战值。 |
+
+## PasscodePromptCallback
+
+type PasscodePromptCallback = (submit: PasscodeSubmitCallback, params: PasscodePromptParams) => void
+
+通行码请求回调函数类型。当系统需要用户输入通行码时，会调用此回调，应用需通过submit回调提交用户输入的通行码。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| submit | [PasscodeSubmitCallback](#passcodesubmitcallback) | 是 | 通行码提交回调。应用接收用户输入的通行码后，通过此回调将通行码提交给系统。 |
+| params | [PasscodePromptParams](#passcodepromptparams) | 是 | 通行码输入请求的参数，包含挑战值等信息。 |
+
+## companionDeviceAuth.registerPasscodePromptCallback
+
+registerPasscodePromptCallback(callback: PasscodePromptCallback): void
+
+注册通行码请求回调。系统请求通行码时会调用此回调。若已注册过回调，新的回调将替换原有回调。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [PasscodePromptCallback](#passcodepromptcallback) | 是 | 通行码请求回调函数。系统请求通行码时调用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 32600001 | The system service is not working properly. Please try again later. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  companionDeviceAuth.registerPasscodePromptCallback((submit, params) => {
+    // 弹出输入界面接收用户通行码并通过submit提交。
+    const passcode = new Uint8Array([0, 1, 2, 3]);
+    submit(passcode);
+  });
+} catch (error) {
+  const err = error as BusinessError;
+  console.error(`Failed to register passcode prompt callback. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## companionDeviceAuth.unregisterPasscodePromptCallback
+
+unregisterPasscodePromptCallback(): void
+
+取消注册通行码请求回调。取消后，系统将不再调用应用注册的通行码请求回调。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth
+
+**系统接口：** 此接口为系统接口。
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 32600001 | The system service is not working properly. Please try again later. |
+
+**示例：**
+<!--code_no_check-->
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  companionDeviceAuth.unregisterPasscodePromptCallback();
+} catch (error) {
+  const err = error as BusinessError;
+  console.error(`Failed to unregister passcode prompt callback. Code: ${err.code}, message: ${err.message}`);
+}
 ```

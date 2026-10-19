@@ -6,19 +6,21 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-You can set state-specific styles for components.
+The polymorphic style is used to set the style of a component in different states. It is applicable to scenarios where the component style needs to be dynamically switched based on various interaction states, helping developers manage the component state style in a unified manner.
 
 >  **NOTE**
 >
-> - The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - Since API version 11, you can also dynamically set component attributes through [attributeModifier](./ts-universal-attributes-attribute-modifier.md).
+> - Since API version 11, you can also dynamically set component attributes through [attributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier).
 >
 > - Polymorphic styles only support [universal attributes](ts-component-general-attributes.md). If a polymorphic style does not take effect, the attribute you are modifying might be a private attribute of the component, for example, **fontColor** or [backgroundColor](./ts-universal-attributes-background.md#backgroundcolor18) of the [TextInput](./ts-basic-components-textinput.md) component. In this case, you can use **attributeModifier** to dynamically set these component-specific attributes.
 >
 > - Currently, the implementation of polymorphic styles relies on the refresh mechanism of custom component nodes. Since the builder does not have an independent custom parent node and cannot directly trigger refresh, polymorphic styles cannot be applied directly within the builder. The recommended solution is to encapsulate the polymorphic styles into a custom component and place this component within the @Builder to indirectly achieve the polymorphic style effect. For details about the sample code, see [Example 3: Setting Polymorphic Styles for the Builder Component](#example-3-setting-polymorphic-styles-for-the-builder-component).
->  
+>
 > - Polymorphic styles for the focused state are only applied when [focus activation](../../../ui/arkts-common-events-focus-event.md#basic-concepts) is enabled.
+>
+> - If a component is in multiple states and the same attribute is set in each state, the style that takes effect is determined by the setting sequence. The style that is set later takes effect.
 
 ## stateStyles
 
@@ -50,18 +52,17 @@ Sets the state-specific styles for the component.
 
 ## StateStyles
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| normal | any | No| Yes| Style of the component when being stateless.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| pressed | any | No| Yes| Style of the component in the pressed state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| disabled | any | No| Yes| Style of the component in the disabled state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| focused | any | No| Yes| Style of the component in the focused state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| clicked | any | No| Yes| Style of the component in the clicked state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| selected<sup>10+</sup> | object | No| Yes| Style of the component in the selected state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
+| normal | any | No| Yes| Style of the component when being stateless.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| pressed | any | No| Yes| Style of the component in the pressed state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| disabled | any | No| Yes| Style of the component in the disabled state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| focused | any | No| Yes| Style of the component in the focused state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| clicked | any | No| Yes| Style of the component in the clicked state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| selected<sup>10+</sup> | object | No| Yes| Style of the component in the selected state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model restriction:** This API can be used only in the stage model.|
+| hovered | object | No| Yes| Style of the component in the floating state.<br>**Since:** 26.0.0<br>**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model.|
 
 **Notes about the selected state:**
 
@@ -83,11 +84,13 @@ Sets the state-specific styles for the component.
 
 - When both **clicked** and **pressed** are used on the same component, only the last registered state takes effect.
 
-## Example
+## Examples
 
 ### Example 1: Setting Polymorphic Styles for the Text Component
 
-This example demonstrates the style changes of the **Text** component when its state is pressed or disabled.
+This example shows the style changes of the Text component when the state is set to hovered, pressed, and disabled using [stateStyles](#statestyles).
+
+The hovered attribute is added to [stateStyles](#statestyles) as of API version 26.0.0.
 
 ```ts
 // xxx.ets
@@ -97,12 +100,24 @@ struct StyleExample {
   @State isEnable: boolean = true
 
   @Styles
-  pressedStyles(): void {
-    .backgroundColor("#ED6F21")
+  hoveredStyles(): void {
+    .backgroundColor('#12db70')
     .borderRadius(10)
     .borderStyle(BorderStyle.Dashed)
     .borderWidth(2)
-    .borderColor("#33000000")
+    .borderColor('#33000000')
+    .width(120)
+    .height(30)
+    .opacity(1)
+  }
+
+  @Styles
+  pressedStyles(): void {
+    .backgroundColor('#ED6F21')
+    .borderRadius(10)
+    .borderStyle(BorderStyle.Dashed)
+    .borderWidth(2)
+    .borderColor('#33000000')
     .width(120)
     .height(30)
     .opacity(1)
@@ -110,11 +125,11 @@ struct StyleExample {
 
   @Styles
   disabledStyles(): void {
-    .backgroundColor("#E5E5E5")
+    .backgroundColor('#E5E5E5')
     .borderRadius(10)
     .borderStyle(BorderStyle.Solid)
     .borderWidth(2)
-    .borderColor("#2a4c1919")
+    .borderColor('#2a4c1919')
     .width(90)
     .height(25)
     .opacity(1)
@@ -122,11 +137,11 @@ struct StyleExample {
 
   @Styles
   normalStyles(): void {
-    .backgroundColor("#0A59F7")
+    .backgroundColor('#0A59F7')
     .borderRadius(10)
     .borderStyle(BorderStyle.Solid)
     .borderWidth(2)
-    .borderColor("#33000000")
+    .borderColor('#33000000')
     .width(100)
     .height(25)
     .opacity(1)
@@ -134,7 +149,7 @@ struct StyleExample {
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
-      Text("normal")
+      Text('normal')
         .fontSize(14)
         .fontColor(Color.White)
         .opacity(0.5)
@@ -144,8 +159,25 @@ struct StyleExample {
         })
         .margin({ bottom: 20 })
         .textAlign(TextAlign.Center)
-      Text("pressed")
-        .backgroundColor("#0A59F7")
+      Text('hovered')
+        .backgroundColor('#0A59F7')
+        .borderRadius(20)
+        .borderStyle(BorderStyle.Dotted)
+        .borderWidth(2)
+        .borderColor(Color.Red)
+        .width(100)
+        .height(25)
+        .opacity(1)
+        .fontSize(14)
+        .fontColor(Color.White)
+        // stateStyles: sets the style of the component when the mouse pointer is hovered over the component.
+        .stateStyles({
+          hovered: this.hoveredStyles,
+        })
+        .margin({ bottom: 20 })
+        .textAlign(TextAlign.Center)
+      Text('pressed')
+        .backgroundColor('#0A59F7')
         .borderRadius(20)
         .borderStyle(BorderStyle.Dotted)
         .borderWidth(2)
@@ -161,8 +193,8 @@ struct StyleExample {
         })
         .margin({ bottom: 20 })
         .textAlign(TextAlign.Center)
-      Text(this.isEnable == true ? "effective" : "disabled")
-        .backgroundColor("#0A59F7")
+      Text(this.isEnable ? 'effective' : 'disabled')
+        .backgroundColor('#0A59F7')
         .borderRadius(20)
         .borderStyle(BorderStyle.Solid)
         .borderWidth(2)
@@ -178,10 +210,10 @@ struct StyleExample {
           disabled: this.disabledStyles,
         })
         .textAlign(TextAlign.Center)
-      Text("control disabled")
+      Text('control disabled')
         .onClick(() => {
-          this.isEnable = !this.isEnable
-          console.info(`${this.isEnable}`)
+          this.isEnable = !this.isEnable;
+          console.info(`${this.isEnable}`);
         })
     }
     .width(350).height(300)
@@ -189,7 +221,7 @@ struct StyleExample {
 }
 ```
 
-![polymorphicStyle1](figures/polymorphicStyle1.gif)
+![stateStyles](figures/stateStyles.gif)
 
 ### Example 2: Setting Polymorphic Styles for the Radio Component
 
@@ -200,17 +232,17 @@ This example demonstrates the style changes of the **Radio** component when its 
 @Entry
 @Component
 struct Index {
-  @State value: boolean = false
-  @State value2: boolean = false
+  @State isRadio1Selected: boolean = false
+  @State isRadio2Selected: boolean = false
 
   @Styles
-  normalStyles(): void{
-    .backgroundColor("#E5E5E1")
+  normalStyles(): void {
+    .backgroundColor('#E5E5E1')
   }
 
   @Styles
-  selectStyles(): void{
-    .backgroundColor("#ED6F21")
+  selectStyles(): void {
+    .backgroundColor('#ED6F21')
     .borderWidth(2)
   }
 
@@ -220,13 +252,13 @@ struct Index {
         Text('Radio1')
           .fontSize(25)
         Radio({ value: 'Radio1', group: 'radioGroup1' })
-          .checked(this.value)
+          .checked(this.isRadio1Selected)
           .height(50)
           .width(50)
           .borderWidth(0)
           .borderRadius(30)
           .onClick(() => {
-            this.value = !this.value
+            this.isRadio1Selected = !this.isRadio1Selected;
           })
           .stateStyles({
             normal: this.normalStyles,
@@ -239,7 +271,7 @@ struct Index {
         Text('Radio2')
           .fontSize(25)
         Radio({ value: 'Radio2', group: 'radioGroup2' })
-          .checked($$this.value2)
+          .checked($$this.isRadio2Selected)
           .height(50)
           .width(50)
           .borderWidth(0)
@@ -259,7 +291,7 @@ struct Index {
 
 ### Example 3: Setting Polymorphic Styles for the Builder Component
 
-This example demonstrates the style changes of the **Builder** component when it is in pressed state.
+This example shows the style change of the custom component in @Builder when the state is pressed.
 
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
@@ -296,18 +328,18 @@ struct Index {
 
   build() {
     Column() {
-      Button().margin({ top: 200 }).onClick((event: ClickEvent) => {
+      Button().margin({ top: 200 }).onClick(() => {
         this.getUIContext()
           .getPromptAction()
           .openCustomDialog(this.contentNode)
           .then(() => {
-            console.info('OpenCustomDialog complete.')
+            console.info('OpenCustomDialog complete.');
           })
           .catch((error: BusinessError) => {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
+            let message = error.message;
+            let code = error.code;
             console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
-          })
+          });
       })
     }
     .width('100%')

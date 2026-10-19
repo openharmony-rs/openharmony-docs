@@ -6,7 +6,7 @@
 <!--Designer: @zou_ye-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:19:48.370Z pushedAt=2026-06-30T03:15:35.109Z -->
+<!-- md-trans-meta sourceCommit=fa185f56b7b60de5e67ae14e42106e5629b8c9c8 translatedAt=2026-07-28T06:47:12.900Z pushedAt=2026-07-28T07:06:36.865Z -->
 
 ## When to Use
 
@@ -51,7 +51,7 @@ To use the motion module to obtain the operating hand, you need to request the *
 
 ### Constraints
 
- - If the device does not support the age group detection function, error code 801 is returned.
+ - If the device does not support this function, error code 801 is returned.
 
  - Knuckle operations are not categorized as hand operations.
 
@@ -86,43 +86,49 @@ To use the motion module to obtain the operating hand, you need to request the *
 
 3. Subscribe to operating hand change results.
 
-   <!-- @[motion_subscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[motion_subscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
 
-   ```ts
+   ``` TypeScript
    try {
-      motion.on('operatingHandChanged', callback);
-      console.info("on succeeded");
+     motion.on('operatingHandChanged', callback);
+     console.info('on succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed on and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed on and err code is ' + error.code);
+     // ...
    }
    ```
 
 4. Unsubscribe from operating hand change events.
 
-   <!-- @[motion_unsubscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[motion_unsubscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
 
-   ```ts
+   ``` TypeScript
    try {
-      motion.off('operatingHandChanged');
-      console.info("off succeeded");
+     motion.off('operatingHandChanged');
+     console.info('off succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed off and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed off and err code is ' + error.code);
+     // ...
    }
    ```
 
 5. Obtain the latest operating hand status.
 
-   <!-- @[motion_get_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[motion_get_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
 
-   ```ts
+   ``` TypeScript
    try {
-      let data:motion.OperatingHandStatus = motion.getRecentOperatingHandStatus();
-      console.info('get succeeded' + data);
+     let data:motion.OperatingHandStatus = motion.getRecentOperatingHandStatus();
+     console.info('get succeeded' + data);
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed get and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed get and err code is ' + error.code);
+     // ...
    }
    ```
 
@@ -175,18 +181,18 @@ To use the motion module to obtain the holding hand, you need to request the **o
 
 1. Import the related modules.
 
-   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
 
-   ```ts
+   ``` TypeScript
    import { motion } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. Define a callback to receive the hand holding status change.
 
-   <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
 
-   ```ts
+   ``` TypeScript
    let callback:Callback<motion.HoldingHandStatus> = (data:motion.HoldingHandStatus) => {
      console.info('callback succeeded' + data);
    };
@@ -194,28 +200,32 @@ To use the motion module to obtain the holding hand, you need to request the **o
 
 3. Enable listening for holding hand status changes.
 
-   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
 
-   ```ts
+   ``` TypeScript
    try {
-      motion.on('holdingHandChanged', callback);
-      console.info("on succeeded");
+     motion.on('holdingHandChanged', callback);
+     console.info('on succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed on and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed on and err code is ' + error.code);
+     // ...
    }
    ```
 
 4. Disable listening for holding hand status changes.
 
-   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
 
-   ```ts
+   ``` TypeScript
    try {
-      motion.off('holdingHandChanged');
-      console.info("off succeeded");
+     motion.off('holdingHandChanged');
+     console.info('off succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed off and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed off and err code is ' + error.code);
+     // ...
    }
    ```

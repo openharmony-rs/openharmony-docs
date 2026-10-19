@@ -94,7 +94,7 @@ Cannot start an invisible component.
 
 **处理步骤**
 
-1. [Stage模型](../../application-models/ability-terminology.md#stage模型)下，拉起应用时抛出16000004异常，表示被拉应用调用失败，需要检查被拉应用module.json5的Ability字段的[exported](../../quick-start/module-configuration-file.md#abilities标签)配置是否为true。该配置字段为true，表示可以被其他应用调用；该配置字段为false，表示不可以被其他应用调用。
+1. [Stage模型](../../application-models/ability-terminology.md#stage模型)下，拉起应用时抛出16000004异常，表示无法启动不可见组件，需要检查被拉应用module.json5的Ability字段的[exported](../../quick-start/module-configuration-file.md#abilities标签)配置是否为true。该配置字段为true，表示可以被其他应用调用；该配置字段为false，表示不可以被其他应用调用。
 2. 若应用需要拉起exported为false的ability，请申请ohos.permission.START_INVISIBLE_ABILITY权限（该权限仅系统应用可申请）。
 
 ## 16000005 指定的进程权限校验失败
@@ -315,7 +315,6 @@ No matching ability is found.
 1. 确保隐式启动的参数配置正确，匹配规则详见[显式Want与隐式Want匹配规则](../../application-models/explicit-implicit-want-mappings.md)。
 2. 确保对应的HAP包已安装。
 
-<!--Del-->
 ## 16000020 传入的Context对象不是Ability级别Context
 
 **错误信息**
@@ -333,7 +332,6 @@ The context is not ability context.
 **处理步骤**
 
 使用UIAbilityContext或ExtensionContext对象作为入参，或者使用继承了UIAbilityContext或ExtensionContext类的对象作为入参。
-<!--DelEnd-->
 
 ## 16000021 模块名不存在
 
@@ -348,12 +346,12 @@ The module name does not exist.
 **可能原因**
 
 1. 传入的moduleName参数为空。
-2. HAP包中不存在moduleName对应的模块。
+2. HAP/HSP包中不存在moduleName对应的模块。
 
 **处理步骤**
 
 1. 确保传入的moduleName参数不为空。
-2. 确保传入的moduleName是在HAP包中存在的模块名。
+2. 确保传入的moduleName是在HAP/HSP包中存在的模块名。
 
 ## 16000050 内部错误
 
@@ -369,17 +367,21 @@ Internal error.
 
 1. 启动Ability时传入的[Want](./js-apis-app-ability-want.md#约束限制)数据过大。
 2. 设备解锁前拉起非系统应用。
-3. 隐式拉起时未安装应用市场App。
+3. 调用openAtomicService拉起原子化服务时，安装未完成前用户点击取消，<!--RP1--><!--RP1End-->返回user_cancel错误码，导致安装失败。
 4. 开发者无法处理的系统内部错误。包括但不限于：内部对象为空指针、处理超时、IPC跨进程通信失败、包管理获取应用信息失败、系统服务获取失败、启动的Ability实例已达到上限等。
-
+5. 启动Ability时触发启动频率限制。
+<!--RP2--><!--RP2End-->
 
 
 **处理步骤**
 
 1. 对于启动Ability失败时，可以检查传入的[Want](./js-apis-app-ability-want.md#约束限制)数据是否过大。
 2. 确保在设备解锁前只拉起系统应用，或者延迟拉起非系统应用直到设备解锁。
-3. 确保设备上已安装应用市场App，或者在拉起应用前检查应用市场App是否已安装。
+3. 若因用户取消原子化服务安装导致报错，属于正常用户行为，可引导用户重新调用openAtomicService完成安装。
 4. 对于开发者无法处理的系统内部错误，请尝试重新调用该接口，或者重启设备。
+5. 确保启动Ability时不超过20次/s。
+<!--RP3--><!--RP3End-->
+
 
 ## 16000053 非顶层Ability
 
@@ -565,7 +567,7 @@ The API can be called only when the ability is running in the foreground.
 
 在调用接口前，请确保当前Ability已处于前台运行且界面可见状态。
 
-## 16000066  wukong模式，不允许移动Ability到前台/后台
+## 16000066 wukong模式，不允许移动Ability到前台/后台
 
 **错误信息**
 
@@ -1193,7 +1195,7 @@ Current ability is not in foreground.
 
 **错误信息**
 
-A maximum of four UIAbility instances can be started simultaneously.The current parameter exceeds the maximum number or is less than 1.
+A maximum of four UIAbility instances can be started simultaneously. The current parameter exceeds the maximum number or is less than 1.
 
 **错误描述**
 
@@ -1224,6 +1226,7 @@ startUIAbilities只支持启动UIAbility，如果目标组件为非UIAbility，�
 **处理步骤**
 
 检查Want中传入的组件类型，确保其为UIAbility组件。
+<!--DelEnd-->
 
 ## 16000122 待启动的目标组件被系统管控模块拦截
 
@@ -1297,6 +1300,7 @@ Want中的parameters指定了启动插件UIAbility。
 
 检查Want中的parameters参数，不要将ohos.params.pluginAbility设置为true。
 
+<!--Del-->
 ## 16000126 不支持启动DLP文件
 
 **错误信息**
@@ -1338,7 +1342,7 @@ The UIAbility does not belong to the caller.
 
 **错误信息**
 
-The UIAbility is already exist, can not start again.
+The UIAbility is already exists, can not start again.
 
 **错误描述**
 
@@ -2568,7 +2572,7 @@ Classes decorated with @InsightIntentEntity must implement InsightIntent.IntentE
 
 **处理步骤**
 
-确保类实现InsightIntent.IntentEntity或继承至其他意图实体。
+确保类实现InsightIntent.IntentEntity或继承自其他意图实体。
 
 ## 10110022 @InsightIntentForm装饰器修饰位置错误
 
@@ -2790,6 +2794,62 @@ write系统调用失败。
 **处理步骤**
 
 缓冲区满或对端异常，尝试等待一段时间后重新写入。
+
+## 35600034 设备未处于开发者模式
+
+**错误信息**
+
+The device is not in developer mode.
+
+**错误描述**
+
+设备未处于开发者模式，不允许注册Hook。
+
+**可能原因**
+
+设备未开启开发者模式，调用[registerCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerregisterclihook)或[registerFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerregisterfunctionhook)接口时返回该错误码。
+
+**处理步骤**
+
+1. 进入设备设置，开启开发者模式。
+2. 开发者模式开启后重新调用注册Hook的接口。
+
+## 35600035 Hook已注册
+
+**错误信息**
+
+A hook is already registered; unregister it first.
+
+**错误描述**
+
+已注册了同类型的Hook，无法重复注册，需要先取消原注册Hook。
+
+**可能原因**
+
+同一时间对同一类型的Hook只允许注册一个。如果已有Hook处于注册状态时，再次调用[registerCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerregisterclihook)或[registerFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerregisterfunctionhook)接口，系统会返回该错误码。
+
+**处理步骤**
+
+1. 先调用[unregisterCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerunregisterclihook)或[unregisterFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerunregisterfunctionhook)接口取消已注册的Hook。
+2. 确保前一个Hook成功取消注册后，再次调用相应的注册接口。
+
+## 35600036 Hook未注册
+
+**错误信息**
+
+No hook is registered; nothing to unregister.
+
+**错误描述**
+
+当前未注册任何Hook，无需执行取消注册操作。
+
+**可能原因**
+
+设备未注册Hook时，调用[unregisterCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerunregisterclihook)或[unregisterFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerunregisterfunctionhook)接口会返回该错误码。
+
+**处理步骤**
+
+确认是否已注册Hook，仅在已注册Hook后调用取消注册接口。
 
 ## 35600050 偶发性报错
 

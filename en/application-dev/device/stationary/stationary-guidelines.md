@@ -1,12 +1,12 @@
 # Stationary Development
+
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:20:00.107Z pushedAt=2026-06-30T03:19:35.595Z -->
-
+<!-- md-trans-meta sourceCommit=98fcf984c96ae624f011718507a9cc97af6ee748 translatedAt=2026-07-28T06:47:15.706Z pushedAt=2026-07-28T07:05:21.274Z -->
 
 ## When to Use
 
@@ -21,7 +21,7 @@ For detailed API introduction, refer to [@ohos.stationary (Device Status Awarene
 | still | Absolutely still.|
 | relativeStill | Relatively still.|
 
-## Parameters for Subscribing to Device Status events
+## Parameters for Subscribing to Device Status Events
 
 | Name                            | Value   | Description                                      |
 | ------------------------------ | ---- | ---------------------------------------- |
@@ -33,8 +33,8 @@ For detailed API introduction, refer to [@ohos.stationary (Device Status Awarene
 
 | Name                            | Value   | Description                                      |
 | ------------------------------ | ---- | ---------------------------------------- |
-| ENTER         | 1    | Entering device status.  |
-| EXIT | 2   | Exiting device status.|
+| ENTER         | 1    | Entering status.  |
+| EXIT | 2   | Exiting status. |
 
 ## Available APIs
 
@@ -75,63 +75,60 @@ If the relative stationary and absolute stationary capabilities are required, yo
 
 ## How to Develop
 
-1. Subscribe to the event indicating entering the absolute still state, and the event is reported every 1 second.
+1. Import the modules.
 
-   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) --> 
 
-   <!-- @[stationary_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   ``` TypeScript
    import { stationary } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+   ```
 
+2. Subscribe to the event indicating entering the absolute still state, and the event is reported once per second.
+
+   <!-- @[stationary_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) --> 
+
+   ``` TypeScript
    let reportLatencyNs = 1000000000; // Unit: nanoseconds
    try {
-      stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
-         console.info('data=' + JSON.stringify(data));
-      })
+     stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
+       console.info('data=' + JSON.stringify(data));
+     })
+     // ...
    } catch (error) {
-      let message = (error as BusinessError).message;
-      console.error('stationary on failed:' + message);
+     let message = (error as BusinessError).message;
+     console.error('stationary on failed:' + message);
    }
    ```
 
-2. Obtain the event indicating entering the absolute still state.
+3. Obtain the event indicating entering the absolute still state.
 
-   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[stationary_getStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) --> 
 
-   <!-- @[stationary_getStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
-   import { stationary } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
+   ``` TypeScript
    try {
-      stationary.once('still', (data) => {
-         console.info('data=' + JSON.stringify(data));
-      })
+     stationary.once('still', (data) => {
+       console.info('data=' + JSON.stringify(data));
+     })
+     // ...
    } catch (error) {
-      let message = (error as BusinessError).message;
-      console.error('stationary once failed:' + message);
+     let message = (error as BusinessError).message;
+     console.error('stationary once failed:' + message);
    }
    ```
 
-3. Unsubscribe from the event indicating entering the absolute still state.
+4. Unsubscribe from the event indicating entering the absolute still state.
 
-   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[stationary_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) --> 
 
-   <!-- @[stationary_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
-   import { stationary } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
+   ``` TypeScript
    try {
-      stationary.off('still', stationary.ActivityEvent.ENTER, (data) => {
-         console.info('data=' + JSON.stringify(data));
-      })
+     stationary.off('still', stationary.ActivityEvent.ENTER, (data) => {
+       console.info('data=' + JSON.stringify(data));
+     })
+     // ...
    } catch (error) {
-      let message = (error as BusinessError).message;
-      console.error('stationary off failed:' + message);
+     let message = (error as BusinessError).message;
+     console.error('stationary off failed:' + message);
    }
    ```

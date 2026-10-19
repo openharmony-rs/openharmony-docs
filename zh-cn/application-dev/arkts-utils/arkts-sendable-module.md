@@ -6,14 +6,14 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-共享模块是进程内只会加载一次的模块，使用"use shared"这一指令来标记一个模块是否为共享模块。
+共享模块是进程内只会加载一次的模块，使用'use shared'这一指令来标记一个模块是否为共享模块。
 
 非共享模块在同一线程内只加载一次，而在不同线程中会多次加载，每个线程都会生成新的模块对象。因此，目前只能使用共享模块实现进程单例。
 
 
 ## 约束限制
 
-- "use shared"需要写在ArkTS文件顶层，即写在import语句之后其他语句之前。
+- 'use shared'需要写在ArkTS文件顶层，即写在import语句之后其他语句之前。
 
   共享属性不具备传递性。非共享模块A即使引入了共享模块B，也不会因此变成共享模块。
 
@@ -61,14 +61,34 @@
 
 - 共享模块可以引用其他共享模块或非共享模块，引用和被引用场景没有限制。
 
-- 仅支持使用静态加载、napi_load_module或napi_load_module_with_info加载共享模块。
+- 仅支持使用静态加载、[动态加载](arkts-dynamic-import.md)、[napi_load_module](../reference/native-lib/napi.md#napi_load_module)或[napi_load_module_with_info](../reference/native-lib/napi.md#napi_load_module_with_info)加载共享模块。其中，动态加载从API version 26.2.0开始支持。
+
+  支持静态加载：
 
   ```TypeScript
   // test.ets
-  import { num } from './A'; // 支持静态加载
+  import { num } from './A';
+  ```
 
+  支持动态加载：
+
+  ```TypeScript
+  // test.ets
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import('./A').then((module: ESObject) => {
+    let moduleNum: number = module.num;
+    console.info(`num: ${moduleNum}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to dynamically import module. Code: ${err.code}, message: ${err.message}`);
+  });
+  ```
+
+  不支持作为worker入口加载共享模块，将产生运行时报错：
+
+  ```TypeScript
+  // test.ets
   import { worker } from '@kit.ArkTS';
-  let wk = new worker.ThreadWorker("./A"); // 不支持其他方式加载共享模块, 将产生运行时报错
+  let wk = new worker.ThreadWorker('./A');
   ```
 
   ```TypeScript
@@ -86,10 +106,10 @@
    // 共享模块
    import { ArkTSUtils } from '@kit.ArkTS';
    
-   // 声明当前模块为共享模块，只能导出可Sendable数据
+   // 声明当前模块为共享模块，只能导出Sendable数据
    'use shared'
    
-   // 共享模块，SingletonA全局唯一
+   // 共享模块，singletonA全局唯一
    @Sendable
    class SingletonA {
      private count_: number = 0;
@@ -118,35 +138,17 @@
    import { ArkTSUtils, taskpool } from '@kit.ArkTS';
    import { singletonA } from './sharedModule';
    
-   export { num, str } from './test'; // 正确示例，导出对象合集
-   
-   @Sendable
-   export class A {
-     private count_: number = 0;
-     public lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
-   
-     public async getCount(): Promise<number> {
-       return this.lock_.lockAsync(() => {
-         return this.count_;
-       })
-     }
-   
-     public async increaseCount() {
-       await this.lock_.lockAsync(() => {
-         this.count_++;
-       })
-     }
-   }
+   // ...
    
    @Concurrent
    async function increaseCount() {
      await singletonA.increaseCount();
-     console.info('SharedModule: count is:' + await singletonA.getCount());
+     console.info(`SharedModule: count is: ${await singletonA.getCount()}`);
    }
    
    @Concurrent
    async function printCount() {
-     console.info('SharedModule: count is:' + await singletonA.getCount());
+     console.info(`SharedModule: count is: ${await singletonA.getCount()}`);
    }
    
    @Entry

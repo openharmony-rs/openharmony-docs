@@ -4,7 +4,7 @@
 <!--Owner: @chenkun613227-->
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
 
 > **说明：**
 >
@@ -562,7 +562,7 @@ createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaS
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| url | string | 是   | - 流媒体预下载媒体来源url，支持的流媒体格式：HLS、HTTP-FLV、Dash、Https。<br> - 本地m3u8的fd路径。  |
+| url | string | 是   | - 流媒体预下载媒体来源url，支持的流媒体格式：HLS、HTTP-FLV、Dash、HTTPS。<br> - 本地m3u8的fd路径。  |
 | headers | Record\<string, string> | 否   | 支持流媒体预下载HttpHeader自定义。不传时为网络请求默认的HttpHeader。 |
 
 **返回值：**
@@ -584,7 +584,7 @@ createMediaSourceWithUrl(url: string, headers?: Record\<string, string>): MediaS
 
 ```ts
 let headers: Record<string, string> = {"User-Agent" : "User-Agent-Value"};
-let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx",  headers);
+let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx", headers);
 ```
 
 **示例2：**
@@ -594,7 +594,6 @@ let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx
 import { media } from "@kit.MediaKit";
 
 async function test(context: Context){
-    // this.getUIContext().getHostContext();
     let mgr = context?.resourceManager;
     if (!mgr) {
         return;
@@ -926,7 +925,7 @@ createMediaSourceWithDirectory(path: string): Promise\<MediaSource | undefined>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5411007  | The directory specified by the path parameter does not exist or unaccessed. |
+| 5411007  | The directory specified by the path parameter does not exist or inaccessible. |
 
 **示例：**
 

@@ -1,4 +1,4 @@
-# AutoFillRect
+# AutoFillRect (自动填充矩形区域)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -10,6 +10,12 @@
 用于自动填充的矩形区域。
 
 **起始版本：** 26.0.0
+
+## 导入模块
+
+```ts
+import { autoFillManager } from '@kit.AbilityKit';
+```
 
 ## AutoFillRect
 

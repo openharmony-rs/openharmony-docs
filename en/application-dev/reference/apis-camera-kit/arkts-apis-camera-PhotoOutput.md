@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:26.611Z pushedAt=2026-06-25T06:57:19.546Z -->
+<!-- md-trans-meta sourceCommit=9884c11e07b730764c848043431a12325c5de509 translatedAt=2026-08-20T09:34:50.600Z pushedAt=2026-08-21T02:04:59.873Z -->
 
 PhotoOutput implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
@@ -686,6 +686,8 @@ setMovingPhotoVideoCodecType(codecType: VideoCodecType): void
 
 Sets a video codec type for moving photos.
 
+Before setting the codec type, you can call [getSupportedMovingPhotoVideoCodecTypes](#getsupportedmovingphotovideocodectypes13) to query the video codec types supported by the device.
+
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -1138,7 +1140,7 @@ getPhotoRotation(deviceDegree?: number): ImageRotation
 
 Obtains the photo rotation angle.
 
-- Device' natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
+- Device's natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
 
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural orientation. For example, the rear camera sensor of a bar-type phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural orientation.
 
@@ -1366,7 +1368,7 @@ function setPhotoQualityPrioritization(qualityPrioritization: camera.PhotoQualit
 
 isAutoExtendedGainmapDeliverySupported(): boolean
 
-Checks whether automatic extended gain map delivery is supported.
+Checks whether the delivery of an automatically extended gain map is supported.
 
 **Since:** 26.0.0
 
@@ -1380,7 +1382,7 @@ Checks whether automatic extended gain map delivery is supported.
 
 | Type            | Description                     |
 | -------------- | ----------------------- |
-| boolean | Whether automatic extended gain map delivery is supported. The value **true** indicates it is supported, and the value **false** indicates it is not supported. |
+| boolean | Whether the delivery of an automatically extended gain map is supported. **true** if supported, and **false** otherwise. |
 
 **Example**
 
@@ -1419,7 +1421,7 @@ Enables or disables automatic extended gain map delivery.
 
 | Name      | Type                    | Mandatory | Description                                       |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| enabled  | boolean                | Yes   | Whether to enable automatic extended gain map delivery. The value **true** indicates it is enabled, and the value **false** indicates it is disabled.     |
+| enabled  | boolean                | Yes   | Whether to enable the delivery of an automatically extended gain map. The value **true** indicates it is enabled, and the value **false** indicates it is disabled.     |
 
 **Error codes**
 

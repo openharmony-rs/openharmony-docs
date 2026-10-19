@@ -1,22 +1,25 @@
 # Foreground Effect
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e10e7def4863f4f964c4d0cb425b7650081cb83e translatedAt=2026-09-01T12:36:58.099Z -->
 
-You can set the foreground effect for a component.
+Sets the foreground attributes of a component and applies a blur effect to the foreground content of the component based on the blur radius parameter.
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This feature is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## foregroundEffect
 
 foregroundEffect(options: ForegroundEffectOptions): T
 
-Sets the foreground effect of the component.
+Sets the foreground blur effect of a component. The effect takes effect only within the component scope. When this API is used together with backgroundEffect, blur, or other APIs, the effect beyond the component scope does not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -26,17 +29,17 @@ Sets the foreground effect of the component.
 
 | Name| Type                                                        | Mandatory| Description                                                |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| options | [ForegroundEffectOptions](#foregroundeffectoptions12) | Yes  | Foreground effect settings, including the blur radius.|
+| options | [ForegroundEffectOptions](#foregroundeffectoptions) | Yes | Foreground effect of the component, including the blur radius. The effect takes effect only within the component scope. When used together with APIs such as backgroundEffect and blur, the effect beyond the component scope does not take effect. |
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
-## ForegroundEffectOptions<sup>12+</sup>
+## ForegroundEffectOptions
 
-Describes the foreground effect.
+Foreground effect parameters, used to configure the blur radius of the component foreground and control the blur degree of the foreground content.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -44,11 +47,11 @@ Describes the foreground effect.
 
 | Name       |   Type        |   Read-Only|   Optional|  Description                       |
 | ----         |  ----         |   ---- |   ---- | --------------------------  |
-| radius       | number        |   No  |   No  |   Blur radius. The value range is [0, +∞).<br> This parameter takes effect only within the component scope. When it is used with other APIs, the effect beyond the component scope does not apply.    |
+| radius       | number        |   No   |   No   |   Blur radius. After it is set, the component foreground presents a blur effect. The larger the value, the higher the blur degree. Value range: [0, +∞), where 0 means no blur effect. Negative values are automatically corrected to 0. It takes effect only within the component scope. When used with effect APIs such as backgroundBlur, the effect beyond the component scope does not take effect.     |
 
 ## Example
 
-This example demonstrates how to set the foreground effect using **foregroundEffect**.
+This example demonstrates how to set the foreground attributes through the foregroundEffect API.
 
 ```ts
 // xxx.ets
@@ -57,10 +60,11 @@ This example demonstrates how to set the foreground effect using **foregroundEff
 struct Index {
   build() {
     Row() {
-      // Replace $r("app.media.icon") with the image resource file you use.
+      // Replace $r('app.media.icon') with the image resource file required by the developer.
       Image($r('app.media.icon'))
           .width(100)
           .height(100)
+          // Set the foreground blur effect with a blur radius of 20.
           .foregroundEffect({ radius: 20 })
     }
     .width('100%')

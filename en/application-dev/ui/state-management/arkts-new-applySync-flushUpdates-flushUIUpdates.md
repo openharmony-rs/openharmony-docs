@@ -6,7 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=2fe87adc16af5a903a1eb4a9624e4d36fa962e3d translatedAt=2026-07-25T08:55:59.936Z pushedAt=2026-07-25T09:19:44.342Z -->
+<!-- md-trans-meta sourceCommit=c4eacd7749f17b808b6e998528fa58a7554f7518 translatedAt=2026-09-21T11:05:20.814Z pushedAt=2026-09-23T08:16:40.629Z -->
 
 To synchronize the update of state management V2 and animation effects such as [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto), you can use the [applySync](../../reference/apis-arkui/js-apis-stateManagement.md#applysync22), [flushUpdates](../../reference/apis-arkui/js-apis-stateManagement.md#flushupdates22), or [flushUIUpdates](../../reference/apis-arkui/js-apis-stateManagement.md#flushuiupdates22) API.
 
@@ -16,7 +16,7 @@ To synchronize the update of state management V2 and animation effects such as [
 
 ## Overview
 
-Unlike state management V1, state management V2 does not immediately [mark dirty](./arkts-state-management-glossary.md#mark-dirty) after a state variable is modified. Instead, it throws a Promise microtask, which is processed to mark the custom component dirty only after the current macro task (such as a click event) is completed. For details on the differences, see [Differences Between V1 and V2 State Variable Updates](./arkts-v1-v2-update-difference.md#differences-between-v1-and-v2-state-variable-updates). However, the animateTo animation effect immediately flushes the already-marked-dirty nodes to determine the first frame of the animation. If a V2 state variable is used in the animation and is modified before the animation, the state variable change has not yet been marked dirty when animateTo is called, causing the first frame of the animateTo animation to deviate from expectations. To address this, the applySync, flushUpdates, and flushUIUpdates APIs are introduced to implement synchronous mark dirty for state management V2, ensuring that the animation achieves the expected effect.
+Unlike state management V1, state management V2 does not immediately [mark dirty](./arkts-state-management-glossary.md#mark-dirty) after a state variable is modified. Instead, it schedules a Promise microtask, and this microtask marks the custom component dirty only after the current macro task (such as a click event) has completed. For details on the differences, see [Differences Between V1 and V2 State Variable Updates](./arkts-v1-v2-update-difference.md#differences-between-v1-and-v2-state-variable-updates). However, the animateTo animation immediately flushes the already-marked-dirty nodes to determine the first frame of the animation. If a V2 state variable is used in the animation and is modified before the animation, the state variable change has not yet been marked dirty when animateTo is called, causing the first frame of the animateTo animation to deviate from expectations. To address this, the applySync, flushUpdates, and flushUIUpdates APIs are introduced to implement synchronous refresh for state management V2, ensuring that the animation achieves the expected effect.
 
 To use the **applySync/flushUpdates/flushUIUpdates** API, you need to import the UIUtils tool.
 

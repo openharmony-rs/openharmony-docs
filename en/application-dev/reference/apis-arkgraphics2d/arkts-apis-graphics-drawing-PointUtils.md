@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=420af6019e8cfddc483defe1fc789f2af88ace4e translatedAt=2026-08-24T08:09:02.594Z pushedAt=2026-08-25T06:54:34.024Z -->
 
-Provides tools for processing coordinate points.
+This class is a utility class that provides coordinate point processing, supporting operations such as negating and offsetting coordinate points. It is applicable to graphics drawing scenarios where coordinate point transformation is required.
 
 > **NOTE**
 >

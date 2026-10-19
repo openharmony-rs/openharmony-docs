@@ -5,6 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=de1f2d3e9438dd3132f8a8b2adc4ad8d0495d150 translatedAt=2026-09-22T13:40:06.940Z pushedAt=2026-09-23T10:35:32.912Z -->
 
 ## When to Use
 
@@ -15,17 +16,17 @@ The **NetConnection** module provides the capability of querying common network 
 The following table lists the common NetConnection APIs. For details, see [net_connection.h](../reference/apis-network-kit/capi-net-connection-h.md).
 
 
-| API| **Test Description**|
+| Name | Description|
 | -------- | -------- |
 | OH_NetConn_HasDefaultNet(int32_t \*hasDefaultNet) | Checks whether the default data network is activated and determines whether a network connection is available.|
 | OH_NetConn_GetDefaultNet(NetConn_NetHandle \*netHandle) | Obtains the default active data network.|
 | OH_NetConn_IsDefaultNetMetered(int32_t \*isMetered) | Checks whether the data traffic usage on the current network is metered.|
 | OH_NetConn_GetConnectionProperties(NetConn_NetHandle \*netHandle, NetConn_ConnectionProperties *prop) | Obtains network connection information based on the specified **netHandle**.|
 | OH_NetConn_GetNetCapabilities (NetConn_NetHandle \*netHandle, NetConn_NetCapabilities \*netCapacities) | Obtains network capability information based on the specified **netHandle**.|
-| OH_NetConn_GetDefaultHttpProxy (NetConn_HttpProxy \*httpProxy) | Obtains the default HTTP proxy configuration of the network. If the global proxy is set, the global HTTP proxy configuration is returned. If the application has been bound to the network specified by **netHandle**, the HTTP proxy configuration of this network is returned. In other cases, the HTTP proxy configuration of the default network is returned.|
+| OH_NetConn_GetDefaultHttpProxy (NetConn_HttpProxy \*httpProxy) | Obtains the default proxy configuration information of the network. If a global proxy is set, the global proxy configuration information is returned. If the process is bound to the network corresponding to the specified `netHandle`, the proxy configuration information of the network corresponding to the network handle is returned. In other cases, the proxy configuration information of the default network is returned. |
 | OH_NetConn_GetAddrInfo (char \*host, char \*serv, struct addrinfo \*hint, struct addrinfo \*\*res, int32_t netId) | Obtains the DNS result based on the specified **netId**.|
 | OH_NetConn_FreeDnsResult(struct addrinfo \*res) | Releases the DNS query result.|
-| OH_NetConn_GetAllNets(NetConn_NetHandleList \*netHandleList) | Obtains the list of all connected networks.|
+| OH_NetConn_GetAllNets(NetConn_NetHandleList \*netHandleList) | Obtains the list of all networks in the connected state. |
 | OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver) | Registers a custom DNS resolver.<br>Note: This API is deprecated since API version 13.<br>You are advised to use **OH_NetConn_RegisterDnsResolver** instead.|
 | OHOS_NetConn_UnregisterDnsResolver(void) | Unregisters a custom DNS resolver.<br>Note: This API is deprecated since API version 13.<br>You are advised to use **OH_NetConn_UnregisterDnsResolver** instead.|
 | OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver) | Registers a custom DNS resolver.|
@@ -64,13 +65,14 @@ libnet_connection.so
 #include "napi/native_api.h"
 #include "network/netmanager/net_connection.h"
 #include "network/netmanager/net_connection_type.h"
+#include "hilog/log.h"
 ```
 ### Building the Project
 
 1. Write the code for calling the API in the source file, encapsulate it into a value of the `napi_value` type, and return the value to the Node.js environment.
 
    <!-- @[build_project1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    // Obtain the default network.
    static napi_value GetDefaultNet(napi_env env, napi_callback_info info)
@@ -112,7 +114,7 @@ libnet_connection.so
 2. Initialize and export the `napi_value` objects encapsulated through **NAPI**, and expose the preceding two functions to JavaScript through external function APIs.
 
    <!-- @[build_project2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
@@ -131,7 +133,7 @@ libnet_connection.so
 3. Register the objects successfully initialized in the previous step into the `Node.js` file by using the `napi_module_register` function of `RegisterEntryModule`.
 
    <!-- @[build_project3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    static napi_module demoModule = {
        .nm_version = 1,
@@ -151,7 +153,7 @@ libnet_connection.so
    - The `NetId` function does not accept parameters and returns a numeric value.
 
    <!-- @[defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-   
+
    ``` TypeScript
    export const GetDefaultNet: (code: number) => number;
    export const NetId: () => number;
@@ -159,7 +161,7 @@ libnet_connection.so
 5. Call the encapsulated APIs in the `index.ets` file.
 
    <!-- @[build_project5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets) -->    
-   
+
    ``` TypeScript
    import testNetManager from 'libentry.so';
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -176,30 +178,35 @@ libnet_connection.so
    struct Index {
      @State message: string = ''; // Display log messages.
      // ...
-   
      build() {
-       Column() { // Display logs output by Logger.
-         // ...
-         Text(this.message)
-           .fontSize(16)
-           .fontColor(Color.Black)
-           .margin({ bottom: 10 })
-           .id('test-message') // Set an ID for the test message to facilitate content obtaining.
-   
-         Button($r('app.string.GetDefaultNet'))
-           .onClick(() => {
-             this.GetDefaultNet();
-           })
+       Scroll() {
+         Column() { // Display the logs output by Logger.
+           // ...
+           Text(this.message)
+             .fontSize(16)
+             .fontColor('#333333')
+             .margin({ bottom: 10 })
+             .id('test-message')
+           Button($r('app.string.GetDefaultNet'))
+             .onClick(() => {
+               this.GetDefaultNet();
+             })
              // ...
-   
-         Button($r('app.string.CodeNumber'))
-           .onClick(() => {
-             this.CodeNumber();
-           })
+           Button($r('app.string.CodeNumber'))
+             .onClick(() => {
+               this.CodeNumber();
+             })
              // ...
-       }.width('100%').height('100%').justifyContent(FlexAlign.Center);
+         }
+         .width('100%')
+         .justifyContent(FlexAlign.Start)
+       }
+       .width('100%')
+       .height('100%')
+       .scrollable(ScrollDirection.Vertical)
+       .scrollBar(BarState.Auto)
+       .backgroundColor('#F5F5F5')
      }
-     
      GetDefaultNet() {
        let netId = testNetManager.NetId();
        // ...
@@ -229,8 +236,9 @@ libnet_connection.so
              // ...
              break;
          }
-       // ...
+         // ...
      }
+   
      // ...
    }
    ```

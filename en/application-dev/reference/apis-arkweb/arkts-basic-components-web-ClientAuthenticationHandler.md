@@ -1,12 +1,14 @@
 # Class (ClientAuthenticationHandler)
+
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=5bd67952550947311c46c7276be4f0642b76503e translatedAt=2026-08-07T04:48:46.992Z pushedAt=2026-08-07T08:11:55.148Z -->
 
-Implements a **ClientAuthenticationHandler** object to handle SSL client certificate request events returned by the **Web** component. For details about the sample code, see [onClientAuthenticationRequest](./arkts-basic-components-web-events.md#onclientauthenticationrequest9).
+ClientAuthenticationHandler is a class in the **Web** component that handles SSL client certificate authentication requests. When a server requests a client certificate for TLS mutual authentication, this handler is provided to the app through the `onClientAuthenticationRequest` event callback, allowing the app to select appropriate certificate credentials for response. For sample code, see [onClientAuthenticationRequest](./arkts-basic-components-web-events.md#onclientauthenticationrequest9).
 
 > **NOTE**
 >
@@ -45,9 +47,7 @@ confirm(authUri : string): void
 
 Instructs the **Web** component to use the specified credentials (obtained from the certificate management module).
 
-> **NOTE**
->
-> The **ohos.permission.ACCESS_CERT_MANAGER** permission must be declared.
+**Required permissions:** ohos.permission.ACCESS_CERT_MANAGER
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -58,14 +58,15 @@ Instructs the **Web** component to use the specified credentials (obtained from 
 | authUri | string | Yes   | Key value of the credentials.|
 
 The following table lists the supported certificate signature algorithms and key lengths.
-| Signing Algorithm    | Key Length  | 
+
+| Signing Algorithm     | Key Length   | 
 | ------- | ------ |
-| SSL_SIGN_RSA_PKCS1_SHA256 | 1024 (supported since API version 18), 2048, 3072, and 4096| 
-| SSL_SIGN_RSA_PKCS1_SHA384 | 1024 (supported since API version 18), 2048, 3072, and 4096| 
-| SSL_SIGN_RSA_PKCS1_SHA512 | 1024 (supported since API version 18), 2048, 3072, and 4096| 
-| SSL_SIGN_RSA_PSS_SHA256 | 1024 (supported since API version 18), 2048, 3072, and 4096| 
-| SSL_SIGN_RSA_PSS_SHA384 | 1024 (supported since API version 18), 2048, 3072, and 4096| 
-| SSL_SIGN_RSA_PSS_SHA512 | 1024 (supported since API version 18), 2048, 3072, and 4096| 
+| SSL_SIGN_RSA_PKCS1_SHA256 | 1024 (supported since API version 18), 2048, 3072, and 4096 | 
+| SSL_SIGN_RSA_PKCS1_SHA384 | 1024 (supported since API version 18), 2048, 3072, and 4096 | 
+| SSL_SIGN_RSA_PKCS1_SHA512 | 1024 (supported since API version 18), 2048, 3072, and 4096 | 
+| SSL_SIGN_RSA_PSS_SHA256 | 1024 (supported since API version 18), 2048, 3072, and 4096 | 
+| SSL_SIGN_RSA_PSS_SHA384 | 1024 (supported since API version 18), 2048, 3072, and 4096 | 
+| SSL_SIGN_RSA_PSS_SHA512 | 1024 (supported since API version 18), 2048, 3072, and 4096 | 
 | SSL_SIGN_ECDSA_SECP256R1_SHA256 | 256 | 
 | SSL_SIGN_ECDSA_SECP384R1_SHA384 | 384 | 
 | SSL_SIGN_ECDSA_SECP521R1_SHA512 | 521 | 
@@ -74,7 +75,9 @@ The following table lists the supported certificate signature algorithms and key
 
 confirm(identity: string, credentialTypeOrCertChainFile: CredentialType \| string): void
 
-Instructs the **Web** component to use the specified credential and credential type obtained from the certificate management module.  
+Instructs the **Web** component to use the specified credential and credential type obtained from the certificate management module.
+
+**Required permissions:** ohos.permission.ACCESS_CERT_MANAGER
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -83,7 +86,7 @@ Instructs the **Web** component to use the specified credential and credential t
 | Name    | Type  | Mandatory  | Description   |
 | ------- | ------ | ---- | ------- |
 | identity | string | Yes   | Unique ID of a credential.|
-| credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) \| string | Yes| [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) indicates the credential type. **string** indicates the certificate chain file path.|
+| credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) \| string | Yes | Credential type when the type is CredentialType, or certificate chain file path when the type is string. |
 
 **Error codes**
 
@@ -97,7 +100,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 cancel(): void
 
-Cancels the client certificate request sent by the same host and port server. No additional event will be reported for requests from the same host and port server.
+Instructs the **Web** component to cancel the client certificate request event. For subsequent requests from the same host and port server, this event will not be reported again.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

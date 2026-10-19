@@ -2,9 +2,9 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @goumiao; @hangmengxin-->
-<!--Designer: @liumingxiang; @wanyanglan-->
-<!--Tester: @yhl0101; @nobuggers-->
+<!--Owner: @oh_wangxk; @hangmengxin-->
+<!--Designer: @KejiePeng; @wanyanglan-->
+<!--Tester: @LiTongguan2026; @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
 ArkGraphics 2D（方舟2D图形服务 ）主要提供图形绘制与显示相关的能力。开发者可以基于一套统一的图形接口进行应用开发，使应用开发更简单、高效。

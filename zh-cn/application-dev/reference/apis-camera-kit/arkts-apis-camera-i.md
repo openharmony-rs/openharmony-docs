@@ -26,7 +26,7 @@
 | hostDeviceName<sup>15+</sup>    | string                              | 是   | 否  | 远端设备名称。若当前无远端设备，返回为空。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否  | 远端设备类型。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | lensEquivalentFocalLength<sup>24+</sup> | Array\<number\> | 是 | 是 | 相机镜头等效焦距。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| isLogicalCamera<sup>24+</sup> | boolean | 是 | 是 | 是否为逻辑摄像头（由多个物理相机组成）, true表示是逻辑摄像头，false表示是物理摄像头。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| isLogicalCamera<sup>24+</sup> | boolean | 是 | 是 | 是否为逻辑摄像头（由多个物理相机组成），true表示是逻辑摄像头，false表示是物理摄像头。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | constituentCameraDevices<sup>24+</sup> | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | 是 | 是 | 组成此逻辑相机的物理相机列表。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | lensFocalLength<sup>24+</sup> | number | 是 | 是 | 镜头实际焦距。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | minimumFocusDistance<sup>24+</sup> | number | 是 | 是 | 相机最小对焦距离。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
@@ -271,7 +271,7 @@
 
 实际预览流的宽高指的是相机输出流的分辨率，请参考[profile](arkts-apis-camera-i.md#profile)中的size。
 
-预览流的数据获取请参考[双路预览(ArkTs)](../../media/camera/camera-dual-channel-preview.md)。
+预览流的数据获取请参考[双路预览(ArkTS)](../../media/camera/camera-dual-channel-preview.md)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -286,7 +286,7 @@
 
 ## MetadataObject
 
-相机元能力信息，[CameraInput](arkts-apis-camera-CameraInput.md)相机信息中的数据来源，通过metadataOutput.on('metadataObjectsAvailable')接口获取。
+相机元数据信息，[CameraInput](arkts-apis-camera-CameraInput.md)相机信息中的数据来源，通过metadataOutput.on('metadataObjectsAvailable')接口获取。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 

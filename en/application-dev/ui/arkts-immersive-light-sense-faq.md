@@ -1,4 +1,4 @@
-# Immersive Light Sense FAQs
+# FAQs About Immersive Light Sense
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
@@ -6,7 +6,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b5131ffa3f4f22106397812f0fc5de684b0d3ded translatedAt=2026-07-06T09:05:39.505Z pushedAt=2026-07-06T11:00:21.938Z -->
+<!-- md-trans-meta sourceCommit=0ecc390317140dcc7c4726f5897f445275bf3259 translatedAt=2026-08-01T00:27:40.538Z pushedAt=2026-08-01T04:55:46.667Z -->
 
 This document provides common issues and solutions encountered during the development of immersive light sense. For a complete introduction and development guide to immersive light sense, see [Immersive Light Sense](arkts-immersive-light-sense.md).
 
@@ -112,7 +112,7 @@ When running the application on low‑tier devices, the visual effect of immersi
 
 **Possible Causes**
 
-The effect of immersive system materials automatically adapts based on the device's computing power tier. On high‑ and medium‑tier devices, it affects the [materialFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23) effect and shadow effect. On low‑tier devices, it only affects the background color, border color, border width, and shadow.
+The effect of immersive system material is automatically adapted based on the device's computing power tier. On high and medium computing power devices, it affects the [materialFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23) effect and shadow effect; on low computing power devices, it affects only the background color, border color, border width, and shadow effect. In addition, the material [style](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions) and automatic color inversion [colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions) parameters take effect only on high and medium computing power devices. Setting these two parameters on low computing power devices does not produce any visual difference.
 
 **Solution**
 
@@ -132,7 +132,7 @@ For automatic color inversion to take effect, the following conditions must be m
 
 - The system's immersive light sense intensity configuration affects the inversion trigger threshold. The thinner the material and the stronger the system's immersive light sense setting, the more likely automatic inversion is triggered.
 
-- Automatic inversion only applies to color values set through resource interfaces, including [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontcolor) of the [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) component, [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor) of the [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) component, [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor) of the [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md) component, [fillColor](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#fillcolor) of the [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) component, and others. Hard-coded color values in the code (such as `Color.White` and `'#FFFFFFFF'`) do not trigger automatic inversion.
+- Automatic color inversion takes effect only for color values set through resource interfaces, including the [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontcolor) attribute of the [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) component, the [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor) attribute of the [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) component, the [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor) attribute of the [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md) component, the [fillColor](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#fillcolor) attribute of the [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) component, and the color attributes of components such as TextInput, TextArea, Chip, ChipGroup, SegmentButton, and Swiper. For the complete list of attributes that take effect, see the [colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions) parameter description. Hardcoded color values in the code (such as `Color.White` and `'#FFFFFFFF'`) do not trigger automatic color inversion.
 
 **Solution**
 

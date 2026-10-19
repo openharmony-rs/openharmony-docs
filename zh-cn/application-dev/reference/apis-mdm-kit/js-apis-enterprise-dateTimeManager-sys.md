@@ -1,4 +1,4 @@
-# @ohos.enterprise.dateTimeManager（系统时间管理）(系统接口)
+# @ohos.enterprise.dateTimeManager (系统时间管理)(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->

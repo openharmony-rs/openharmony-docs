@@ -6,14 +6,15 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:34:32.001Z pushedAt=2026-08-10T10:07:34.962Z -->
 
 For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify-overview.md#sm2).
 
 **Signing**
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate a 256-bit key pair (**KeyPair**) using SM2.
-   
-   In addition to the example in this topic, [SM2](crypto-asym-key-generation-conversion-spec.md#sm2) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md) may help you better understand how to generate an SM2 asymmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
+
+   To generate an SM2 asymmetric key pair, refer to the example below, and also see [Asymmetric Key Generation and Conversion Specifications: SM2](crypto-key-generation-conversion.md#sm2) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the reference documents may differ in input parameters from the current example.
 
 2. Call [cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign) with the string parameter **'SM2_256|SM3'** to create a **Sign** instance. The key type is **SM2_256**, and the MD algorithm is **SM3**.
 
@@ -36,7 +37,7 @@ For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify
 - Example (using asynchronous APIs):
 
   <!-- @[use_the_sm2_key_pair_to_sign_and_verify_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_signature_verification/sm2_signature_verification_asynchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -78,11 +79,10 @@ For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify
   }
   ```
 
-
 - Example (using synchronous APIs):
 
   <!-- @[use_the_sm2_key_pair_to_sign_and_verify_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_signature_verification/sm2_signature_verification_synchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -123,3 +123,5 @@ For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify
     }
   }
   ```
+
+    <!--no_check-->

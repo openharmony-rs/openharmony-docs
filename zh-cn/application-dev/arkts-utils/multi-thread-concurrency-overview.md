@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-多线程并发是指在单个程序中同时运行多个线程，通过并行或交替执行任务来提升性能和资源利用率的编程模型。在ArkTS应用开发中，多线程并发适用于多种业务场景，常见的业务场景主要分为以下三类，更详细的使用请参考**应用多线程开发实践案例**。
+多线程并发是指在单个程序中同时运行多个线程，通过并行或交替执行任务来提升性能和资源利用率的编程模型。在ArkTS应用开发中，多线程并发适用于多种业务场景，常见的业务场景主要分为以下三类，更详细的使用请参考[应用多线程开发概述](multithread-develop-overview.md)。
 
 - 业务逻辑包含大量计算或频繁的I/O读写等需要长时间执行的任务，例如图片和视频的编解码、文件的压缩与解压缩、数据库操作等场景。
 
@@ -136,7 +136,7 @@ class ConsumerTest {
   }
 }
 
-export function Main(): void {
+export function main(): void {
   let consumer: ConsumerTest = new ConsumerTest();
   let producer: Producer = new Producer();
   let threadNum: number = 10;
@@ -164,7 +164,7 @@ Actor模型中，不同角色之间并不共享内存，生产者线程和UI线�
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
-import { Main } from './Cale'
+import { main } from './Cale'
 
 // 跨线程并发任务
 @Concurrent
@@ -175,9 +175,9 @@ async function produce(): Promise<number> {
 }
 
 class Consumer {
-  public consume(value: Object) {
+  public consume(value: number) {
     // 添加消费相关逻辑
-    console.info('consuming value: ' + value);
+    console.info(`consuming value: ${value}`);
   }
 }
 
@@ -200,12 +200,11 @@ struct ActorModel {
           for (let index: number = 0; index < 10; index++) {
             // 执行生产异步并发任务
             taskpool.execute(produceTask).then((res: Object) => {
-              consumer.consume(res);
+              consumer.consume(res as number);
               this.message = 'success';
             }).catch((e: Error) => {
-              console.error(e.message);
+              console.error(`produceTask is failed: ${e.message}`);
               this.message = 'failed';
-              console.error('produceTask is failed.');
             })
           }
         })
@@ -233,10 +232,11 @@ struct ActorModel {
         .width('20%')
         .height('20%')
 
+        // 点击按钮调用Cale模块的main函数，演示内存共享模型与Actor模型的区别
         Button() {
           Text('cale start')
-        }.onClick(async () => {
-          Main();
+        }.onClick(() => {
+          main();
           this.message = 'cale success';
         })
         .id('button3')
@@ -262,7 +262,7 @@ ArkTS提供了TaskPool和Worker两种并发能力供开发者选择，各自的�
 
 - 数据传递需支持序列化/反序列化
 
-  并发任务间传递数据时，对象必须是可序列化的（如基本类型、普通对象等），或者可共享的（sendable对象），不可传递函数、循环引用、特殊对象（如Promise、Error）等。已完成（fulfilled或rejected）状态的 Promise可以被传递，因为其结果是可序列化的。
+  并发任务间传递数据时，对象必须是可序列化的（如基本类型、普通对象等），或者可共享的（Sendable对象），不可传递函数、循环引用、特殊对象（如Promise、Error）等。已完成（fulfilled或rejected）状态的 Promise可以被传递，因为其结果是可序列化的。
 
 - 合理控制并发粒度
 

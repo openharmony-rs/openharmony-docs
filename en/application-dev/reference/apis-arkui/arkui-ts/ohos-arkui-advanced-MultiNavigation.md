@@ -1,20 +1,24 @@
 # MultiNavigation
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @fangzhiyuan1-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=08b13ea7d8013cfd7ac8947a97f27df1de5d6b09 translatedAt=2026-07-29T03:05:08.887Z pushedAt=2026-08-04T02:46:56.304Z -->
 
-**MultiNavigation** is a component designed for multi-column display and routing navigation on large-screen devices.
+The **MultiNavigation** component is a component that supports multi-column navigation, providing multi-layer page stack management capabilities. It uses **MultiNavPathStack** to uniformly manage the navigation stacks of different page types such as the home page, detail page, and full-screen page. It supports intelligent routing strategies such as left-to-right stack clearing, making it suitable for complex navigation scenarios on large-screen devices such as tablets and foldables, optimizing the page transition experience and improving user operation efficiency.
 
 > **NOTE**
 >
-> This component is supported since API version 14. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 14. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> Due to the nested stack structure of **MultiNavigation**, calling APIs explicitly stated as unsupported in this document or APIs not listed in the supported API list (such as **getParent**, **setInterception**, and **pushDestination**) may lead to unpredictable issues.
+> - The APIs of this module can be used only in the stage model.
 >
-> In scenarios with deep nesting, **MultiNavigation** may encounter routing animation issues.
+> - Due to the multi-level page stack structure of **MultiNavigation** (the home page, detail page, and full-screen page each maintain their own sub-stacks, which are managed by **MultiNavPathStack**), calling APIs that are explicitly stated as unsupported in this document or APIs not listed in the supported API list (such as [getParent](ts-basic-components-navigation.md#getparent11), [setInterception](ts-basic-components-navigation.md#setinterception12), [pushDestination](ts-basic-components-navigation.md#pushdestination11), etc.) may cause unexpected issues.
+>
+> - In deep nesting scenarios, **MultiNavigation** may experience abnormal routing animation effects.
 
 ## Modules to Import
 
@@ -32,28 +36,38 @@ MultiNavigation({navDestination: NavDestinationBuildFunction, multiStack: MultiN
 
 Creates and initializes a **MultiNavigation** component.
 
-The **MultiNavigation** component follows the default left-to-right stack clearing rule. This means that a click from the home page on the left triggers the loading of the detail page and simultaneously clears all other detail pages on the right, ensuring that only the most recently loaded detail page is displayed on the right. However, if a detail page loading operation is performed again on the right detail page, the system will not perform the stack clearing action. For visual reference, see the [demo of navigation from the home page to the detail page](#example).
+The **MultiNavigation** component follows the default left-to-right stack clearing rule: when a detail page is loaded from the home page, all existing detail pages in the stack are cleared to ensure that only the latest loaded detail page is displayed. However, if a detail page loading operation is performed again on the detail page on the right, the system will not clear the stack. For the effect, see [Example](#example).
 
-**Decorator**: @Component
+> **NOTE**
+>
+> - When a detail page is loaded by tapping from the home page (**HOME_PAGE**): all existing detail pages on the right are popped from the stack, and the new detail page is pushed onto the stack, ensuring that only the latest loaded detail page is displayed on the right.
+>
+> - When a detail page is loaded again by tapping from a detail page (**DETAIL_PAGE**): the stack is not cleared, and the new detail page is pushed directly onto the stack, with the existing detail pages retained.
+>
+> - When a detail page is loaded from a full-screen page (**FULL_PAGE**): the existing detail page stack is not affected, and the new detail page is pushed onto the stack.
+
+**Decorator:** [@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-|   Name  |          Type         | Mandatory| Decorator| Description|
-|:---------:|:----------------------:|------ |:------:|-----------|
-| multiStack | [MultiNavPathStack](#multinavpathstack) |  Yes| @State | Navigation stack.|
-| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | Yes| @BuilderParam | Routing rules for loading the target page.|
-| onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | No| - | Callback invoked when the mode of the **MultiNavigation** component changes.|
-| onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | No| - | Callback invoked when the home page is on the top of the navigation stack.|
+|   Name  |          Type         | Mandatory| Decorator Type| Description|
+|---------|----------------------|------ |------|-----------|
+| multiStack | [MultiNavPathStack](#multinavpathstack) |  Yes | [@State](../../../ui/state-management/arkts-state.md) | Route stack. |
+| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | Yes | [@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Routing rule for loading the target page. |
+| onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | No | - | Callback invoked when the **MultiNavigation** mode changes. Pass in this callback when specific business logic (such as adjusting the page layout or updating the UI state) needs to be executed upon a navigation mode change. If not passed in, the navigation mode change event is not listened for, and no callback is triggered upon a navigation mode change. |
+| onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | No | - | Callback invoked when the home page is at the top of the stack. If not passed in, the home page top-of-stack state change is not listened for. |
 
 ## MultiNavPathStack
 
-Implements a navigation stack of the **MultiNavigation** component. Currently, this stack can be created only by the user and cannot be obtained through callbacks. Do not use events or APIs such as **onReady** of **NavDestination** to obtain the navigation stack and perform stack operations, as this may lead to unpredictable issues.
+The route stack of **MultiNavigation** can only be created by the user and cannot be obtained through callbacks. Do not use events or APIs such as [onReady](ts-basic-components-navdestination.md#onready11) of [NavDestination](ts-basic-components-navdestination.md) to obtain **NavPathStack** and perform stack operations, as this may cause unpredictable issues.
 
 ### constructor
 
 constructor()
+
+Creates a **MultiNavPathStack** route stack instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -75,7 +89,7 @@ Pushes the specified navigation destination page to the navigation stack.
 | :------: | :----------------------------------------------------------: | :--: | ----------------------------------------- |
 |   info   | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) |  Yes | Information about the navigation destination page.               |
 | animated |                           boolean                            |  No | Whether to support the transition animation.<br>Default value: **true**.<br>**true**: The transition animation is supported.<br>**false**: The transition animation is not supported.         |
-|  policy  |               [SplitPolicy](#splitpolicy)                |  No | Policy for the current page being pushed. Default value: **DETAIL_PAGE**.|
+|  policy  |               [SplitPolicy](#splitpolicy)                |  No  | Policy for the current page pushed to the stack.<br/>Default value: **DETAIL_PAGE** |
 
 ### pushPath
 
@@ -92,8 +106,8 @@ Pushes the specified navigation destination page to the navigation stack, with s
 |  Name  |                             Type                            | Mandatory| Description                                      |
 | :-----: | :----------------------------------------------------------: | :--: | ------------------------------------------ |
 |  info   | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) |  Yes | Information about the navigation destination page.                |
-| options | [NavigationOptions](./ts-basic-components-navigation.md#navigationoptions12) |  No | Stack operation settings. Only the **animated** field is supported.|
-| policy  |               [SplitPolicy](#splitpolicy)                |  No | Policy for the current page being pushed. Default value: **DETAIL_PAGE**.   |
+| options | [NavigationOptions](./ts-basic-components-navigation.md#navigationoptions12) | No | Page stack operation options. Only the **animated** field is supported; other fields are ignored. The default animation configuration is used when this parameter is omitted. |
+| policy | [SplitPolicy](#splitpolicy) | No | Policy for the current page pushed to the stack.<br/>Default value: **DETAIL_PAGE** |
 
 ### pushPathByName
 
@@ -109,10 +123,10 @@ Pushes the navigation destination page specified by **name** to the navigation s
 
 |  Name  |             Type             | Mandatory| Description          |
 |:---------------------:|:------------:|:------:| --------------------- |
-|         name          |    string    |   Yes   | Name of the navigation destination page.  |
-|         param         |   Object    |   Yes   | Detailed parameters of the navigation destination page.|
+|         name          |    string    |   Yes    | **NavDestination** page name, which must be consistent with the page name registered in **NavDestinationBuildFunction**.   |
+|         param         |   Object    |   Yes    | Detailed parameters of the **NavDestination** page, used to pass custom data to the target page. For details about the field specifications, see the **NavDestination** documentation. |
 |       animated        |   boolean    |   No   | Whether to support the transition animation.<br>Default value: **true**.<br>**true**: The transition animation is supported.<br>**false**: The transition animation is not supported.|
-|        policy         | [SplitPolicy](#splitpolicy)  |   No   | Policy for the current page being pushed. Default value: **DETAIL_PAGE**.      |
+|        policy         | [SplitPolicy](#splitpolicy)  |   No    | Policy for the current page pushed to the stack.<br/>Default value: **DETAIL_PAGE**       |
 
 ### pushPathByName
 
@@ -128,11 +142,11 @@ Pushes the navigation destination page specified by **name** to the navigation s
 
 |  Name  |             Type               | Mandatory| Description          |
 |:---------:|:-------------------------------------------------------------:|:------:|------|
-|   name    |                            string                             |   Yes   | Name of the navigation destination page.  |
-|   param   |                            Object                             |   Yes   | Detailed parameters of the navigation destination page.|
-|   onPop   | base.[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[PopInfo](ts-basic-components-navigation.md#popinfo11)>  |   No   | Callback used to handle the return result.|
+|   name    |                            string                             |   Yes    | Name of the **NavDestination** page. It must be consistent with the page name registered in **NavDestinationBuildFunction**.   |
+|   param   |                            Object                             |   Yes    | Detailed parameters of the **NavDestination** page, used to pass custom data to the target page. For details about the field specifications, see the **NavDestination** documentation. |
+|   onPop   | base.[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[PopInfo](ts-basic-components-navigation.md#popinfo11)>  |   No    | Callback invoked when the page is popped from the stack to process the return result. If this parameter is omitted, the callback is not triggered. Data can be passed to this callback through the result parameter of the **pop**, **popToName**, and **popToIndex** methods. |
 | animated  |                            boolean                            |   No   | Whether to support the transition animation.<br>Default value: **true**.<br>**true**: The transition animation is supported.<br>**false**: The transition animation is not supported.|
-|  policy   |                          [SplitPolicy](#splitpolicy)                          |   No   | Policy for the current page being pushed. Default value: **DETAIL_PAGE**.      |
+|  policy   |                          [SplitPolicy](#splitpolicy)                          |   No    | Policy for the current page pushed to the stack.<br/>Default value: **DETAIL_PAGE**       |
 
 ### replacePath
 
@@ -166,7 +180,7 @@ Replaces the current top page on the stack with the specified navigation destina
 |  Name  |             Type               | Mandatory| Description          |
 | :-----: | :----------------------------------------------------------: | :--: | ------------------------------------------ |
 |  info   | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) |  Yes | Information about the navigation destination page.                |
-| options | [NavigationOptions](./ts-basic-components-navigation.md#navigationoptions12) |  No | Stack operation settings. Only the **animated** field is supported.|
+| options | [NavigationOptions](./ts-basic-components-navigation.md#navigationoptions12) | No | Page stack operation options. Only the **animated** field is supported. Other fields are ignored. If this parameter is omitted, the default animation configuration is used. |
 
 ### replacePathByName
 
@@ -183,7 +197,7 @@ Replaces the current top page on the stack with the navigation destination page 
 |  Name  |             Type               | Mandatory| Description          |
 |:--------:|:---------:|:------:|----------------------|
 |   name   |  string   |   Yes   | Name of the navigation destination page. |
-|  param   |  Object   |   Yes   | Detailed parameters of the navigation destination page.|
+|  param   |  Object   |   Yes    | **NavDestination** page detailed parameters, used to pass custom data to the target page. For specific field specifications, see the **NavDestination** documentation. |
 | animated |  boolean  |   No   | Whether to support the transition animation.<br>Default value: **true**.<br>**true**: The transition animation is supported.<br>**false**: The transition animation is not supported.  |
 
 ### removeByIndexes
@@ -200,7 +214,7 @@ Removes the navigation destination pages specified by **indexes** from the navig
 
 |  Name  |             Type               | Mandatory| Description          |
 |:--------:|:---------------:|:------:| --------------------- |
-| indexes  | Array<number\>  |   Yes   | Array of indexes of the navigation destination pages to remove.<br>Value range of the number type: [0, +∞).|
+| indexes  | Array<number\>  | Yes    | Array of index values of the **NavDestination** pages to be deleted.<br/>Value range of the number type: [0, +∞). The operation does not take effect if the value is out of range. |
 
 **Return value**
 
@@ -222,7 +236,7 @@ Removes the navigation destination page specified by **name** from the navigatio
 
 |  Name  |             Type               | Mandatory| Description          |
 |:-------:| ------- | ---- | --------------------- |
-|  name   | string  | Yes   | Name of the navigation destination page to be removed.|
+|  name   | string  | Yes    | Name of the **NavDestination** page to be deleted. |
 
 **Return value**
 
@@ -254,7 +268,7 @@ Pops the top element out of the navigation stack.
 
 | Type         | Description                      |
 | ----------- | ------------------------ |
-| [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) \| undefined | Information about the navigation destination page at the top of the stack.|
+| [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) \| undefined | Information about the **NavDestination** page at the top of the stack. If the stack is empty, **undefined** is returned. |
 
 ### pop
 
@@ -274,14 +288,14 @@ Pops the top element out of the navigation stack and invokes the **onPop** callb
 
 |  Name  |             Type               | Mandatory| Description          |
 |:---------:|:-------------------------------:|:------:| -------------------- |
-|  result   |             Object              |   No   | Custom processing result on the page.|
+|  result   |             Object              |   No    | Custom page processing result. The specific content is defined by the developer. It is recommended to include a clear business identifier and processing result data. This result will be passed to the **onPop** callback function set when pushing to the stack. If omitted, no result data is passed. |
 | animated  |             boolean             |   No   | Whether to support the transition animation.<br>Default value: **true**.<br>**true**: The transition animation is supported.<br>**false**: The transition animation is not supported.|
 
 **Return value**
 
 | Type         | Description                      |
 | ----------- | ------------------------ |
-| [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) \| undefined | Information about the navigation destination page at the top of the stack.|
+| [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10) \| undefined | Information about the **NavDestination** page at the top of the stack. If the stack is empty, **undefined** is returned. |
 
 ### popToName
 
@@ -321,7 +335,7 @@ Pops pages until the first navigation destination page that matches **name** fro
 |  Name  |             Type               | Mandatory| Description          |
 |:---------:|:--------:|:------:| ------------------- |
 |   name    |  string  |   Yes   | Name of the navigation destination page.|
-|  result   |  Object  |   Yes   | Custom processing result on the page.|
+|  result   |  Object  |   Yes    |  Custom page processing result. The specific content is defined by the developer. It is recommended to include a clear business identifier and processing result data. This result will be passed to the **onPop** callback function set when the page is pushed onto the stack. |
 | animated  | boolean  |   No   | Whether to support the transition animation.<br>Default value: **true**.<br>**true**: The transition animation is supported.<br>**false**: The transition animation is not supported.|
 
 **Return value**
@@ -334,7 +348,7 @@ Pops pages until the first navigation destination page that matches **name** fro
 
 popToIndex(index: number, animated?: boolean): void
 
-Returns the navigation stack to the page specified by **index**.
+Pops the route stack back to the **NavDestination** page specified by **index**. If **index** is invalid (out of range), no pop operation is performed.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -344,14 +358,14 @@ Returns the navigation stack to the page specified by **index**.
 
 |  Name  |             Type               | Mandatory| Description          |
 |:------------:|:--------:|:------:| ---------------------- |
-|    index     |  number  |   Yes   | Index of the navigation destination page.<br>Value range: [0, +∞).|
+|    index     |  number  |   Yes    | Position index of the **NavDestination** page.<br/>Value range: [0, +∞). The operation does not take effect when the value is out of range. |
 |   animated   | boolean  |   No   | Whether to support the transition animation.<br>Default value: **true**.<br>**true**: The transition animation is supported.<br>**false**: The transition animation is not supported.|
 
 ### popToIndex
 
 popToIndex(index: number, result: Object, animated?: boolean): void
 
-Returns the navigation stack to the page specified by **index** and invokes the **onPop** callback to pass the page processing result.
+Pops the route stack back to the **NavDestination** page specified by **index**, and triggers the **onPop** callback to return the page processing result. If **index** is invalid (out of range), no pop operation is performed.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -362,7 +376,7 @@ Returns the navigation stack to the page specified by **index** and invokes the 
 |  Name  |             Type               | Mandatory| Description          |
 | ----- | ------ | ---- | ---------------------- |
 | index | number | Yes   | Index of the navigation destination page.<br>Value range: [0, +∞). |
-| result | Object | Yes| Custom processing result on the page.|
+| result | Object | Yes | Custom page processing result. The specific content is defined by the developer. It is recommended to include an explicit business identifier and processing result data. |
 | animated | boolean | No   | Whether to support the transition animation.<br>Default value: **true**.<br>**true**: The transition animation is supported.<br>**false**: The transition animation is not supported.|
 
 ### moveToTop
@@ -373,17 +387,19 @@ Moves the first navigation destination page that matches **name** from the botto
 
 > **NOTE**
 >
-> Depending on the type of page found, **MultiNavigation** performs different actions:
+> Depending on the first page found with the specified name, **MultiNavigation** performs different processing:
 > 
-> 1. If the found page is the topmost home page or a full-screen page, no action is taken.
+> 1) If the found page is the topmost home page or full-screen page, no processing is performed.
 > 
-> 2. If the found page is a detail page corresponding to the topmost home page, it is moved to the top.
+> 2) If the found page is a detail page corresponding to the topmost home page, the corresponding detail page is moved to the top of the stack.
 > 
-> 3. If the found page is a non-topmost home page, the home page and all corresponding detail pages are moved to the top, maintaining their relative stack order.
+> 3) If the found page is a non-topmost home page, the home page and all its corresponding detail pages are moved to the top of the stack, with the relative stack relationship of the detail pages unchanged.
 > 
-> 4. If the found page is a non-topmost detail page, the home page and all corresponding detail pages are moved to the top, and the target detail page is moved to the top of the corresponding detail pages.
+> 4) If the found page is a non-topmost detail page, the home page and all its corresponding detail pages are moved to the top of the stack, and the target detail page is moved to the top of all its corresponding detail pages.
 > 
-> 5. If the found page is a non-topmost full-screen page, it is moved to the top.
+> 5) If the found page is a non-topmost full-screen page, the full-screen page is moved to the top of the stack.
+>
+> **Scenario summary:** When the page is already at the top of the stack, no operation is performed. When a detail page is at the top of the stack, only that detail page is moved. When a non-topmost home page or detail page is moved, its associated detail page group is also moved. When a non-topmost full-screen page is moved, only itself is moved.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -410,17 +426,17 @@ Moves the navigation destination page specified by **index** to the top of the n
 
 > **NOTE**
 >
-> Depending on the type of page found, **MultiNavigation** performs different actions:
+> Depending on the page found at the specified index, **MultiNavigation** performs different processing:
 > 
-> 1. If the found page is the topmost home page or a full-screen page, no action is taken.
+> 1) If the specified index points to the topmost home page or full-screen page, no processing is performed.
 > 
-> 2. If the found page is a detail page corresponding to the topmost home page, it is moved to the top.
+> 2) If the specified index points to a detail page corresponding to the topmost home page, the corresponding detail page is moved to the top of the stack.
 > 
-> 3. If the found page is a non-topmost home page, the home page and all corresponding detail pages are moved to the top, maintaining their relative stack order.
+> 3) If the specified index points to a non-topmost home page, the home page and all its corresponding detail pages are moved to the top of the stack, with the relative stack relationship of the detail pages unchanged.
 > 
-> 4. If the found page is a non-topmost detail page, the home page and all corresponding detail pages are moved to the top, and the target detail page is moved to the top of the corresponding detail pages.
+> 4) If the specified index points to a non-topmost detail page, the home page and all its corresponding detail pages are moved to the top of the stack, and the target detail page is moved to the top of all its corresponding detail pages.
 > 
-> 5. If the found page is a non-topmost full-screen page, it is moved to the top.
+> 5) If the specified index points to a non-topmost full-screen page, the full-screen page is moved to the top of the stack.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -430,7 +446,7 @@ Moves the navigation destination page specified by **index** to the top of the n
 
 |  Name  |             Type               | Mandatory| Description          |
 |:---------:|:-------:|:------:| ------------------- |
-|   index    | number  |   Yes   | Index of the navigation destination page.<br>Value range: [0, +∞).|
+|   index    | number  |   Yes    | Position index of the **NavDestination** page.<br/>Value range: [0, +∞). The operation does not take effect if the value is out of range. |
 | animated  | boolean |   No   | Whether to support the transition animation.<br>Default value: **true**.<br>**true**: The transition animation is supported.<br>**false**: The transition animation is not supported.|
 
 ### clear
@@ -467,7 +483,7 @@ Obtains the names of all navigation destination pages in the navigation stack.
 
 |        Type       | Description                        |
 |:----------------:| -------------------------- |
-|  Array<string\>  | Names of all navigation destination pages in the navigation stack.|
+|  Array<string\>  | Returns the names of all **NavDestination** pages in the stack. The array elements are arranged from the bottom to the top of the stack. |
 
 ### getParamByIndex
 
@@ -489,7 +505,7 @@ Obtains the parameter information of the navigation destination page specified b
 
 | Type       | Description                        |
 | --------- | -------------------------- |
-| Object&nbsp;\|&nbsp;undefined | **Object**: parameter information of the matching navigation destination page.<br>**undefined**: returned when an invalid index is provided. |
+| Object&nbsp;\|&nbsp;undefined | **Object**: Returns the parameter information of the corresponding **NavDestination** page. The specific fields are determined by the **param** passed in **pushPath** or **pushPathByName**.<br/>**undefined**: Returns **undefined** when the passed **index** is invalid.  |
 
 ### getParamByName
 
@@ -555,7 +571,11 @@ Obtains the stack size.
 
 disableAnimation(disable: boolean): void
 
-Disables or enables the transition animation in the **MultiNavigation** component.
+Disables (**true**) or enables (**false**) all transition animations in the current **MultiNavigation**. This is suitable for scenarios where page switching performance needs to be improved or custom transition effects need to be implemented.
+
+> **NOTE**
+>
+> This configuration affects the animation effects of the following stack operation methods: **pushPath**, **pushPathByName**, **replacePath**, **replacePathByName**, **pop**, **popToName**, **popToIndex**, **moveToTop**, **moveIndexToTop**, and **clear**. The configuration takes effect immediately and remains effective throughout the lifecycle of **MultiNavigation**. It is recommended to call **disableAnimation(true)** to disable animations before batch stack operations to improve performance, and call **disableAnimation(false)** to restore animations after the operations are complete.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -571,7 +591,7 @@ Disables or enables the transition animation in the **MultiNavigation** componen
 
 switchFullScreenState(isFullScreen?: boolean): boolean
 
-Switches the display mode of the current top detail page in the stack.
+Switches the display mode of the detail page at the top of the current stack. This is suitable for scenarios such as video playback and image browsing that require full-screen display.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -581,7 +601,7 @@ Switches the display mode of the current top detail page in the stack.
 
 |  Name  |             Type               | Mandatory| Description          |
 | :----------: | :-----: | :--: | ----------------------------------------------------- |
-| isFullScreen | boolean |  No | Whether to enable full-screen mode. The default value is **false**. The value **true** means to enable full-screen mode, and **false** means to enable split-screen mode.|
+| isFullScreen | boolean | No | Whether to switch to full-screen mode.<br/>Default value: false<br/>**true**: full-screen mode; **false**: split-screen mode. |
 
 **Return value**
 
@@ -603,8 +623,8 @@ Sets the draggable range for the home page width. If not set, the width defaults
 
 |  Name  |             Type               | Mandatory| Description          |
 |:-------------:|:--------:|:-----:|-------------------|
-| minPercent  | number  |   Yes  | Minimum width percentage of the home page.<br>Value range: [0, 100]|
-| maxPercent  | number  |   Yes  | Maximum width percentage of the home page.<br>Value range: [0, 100]|
+| minPercent  | number  |   Yes   | Minimum main page width percentage.<br/>Value range: [0, 100], and must be less than or equal to **maxPercent**. |
+| maxPercent  | number  |   Yes   | Maximum main page width percentage.<br/>Value range: [0, 100], and must be greater than or equal to **minPercent**. |
 
 ### keepBottomPage
 
@@ -614,8 +634,8 @@ Sets whether to retain the bottom page when the **pop** or **clear** APIs is cal
 
 > **NOTE**
 >
-> **MultiNavigation** treats the home page as a navigation destination page in the stack. By default, calling **pop** or **clear** will also remove the bottom page.
-> If this API is called with **TRUE**, **MultiNavigation** will retain the bottom page when the **pop** or **clear** API is called.
+> **MultiNavigation** also pushes the home page onto the stack as a **NavDestination** page, so calling the **pop** or **clear** API will also pop the bottom page of the stack.
+> When an app calls this API and sets it to **true**, **MultiNavigation** retains the bottom page of the stack when the **pop** and **clear** APIs are called.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -635,10 +655,11 @@ Sets a placeholder page.
 
 > **NOTE**
 >
-> The placeholder page is a special page type. When set, it forms a default split-screen effect with the home page on some large-screen devices, that is, the left side is the home page, and the right side is the placeholder page.
+> The placeholder page is a special page type. After being set by the app, it forms a left-right multi-column layout with the home page by default on large-screen devices that support multi-column display, that is, the home page on the left and the placeholder page on the right.
 > 
-> In scenarios where the application's drawable area is less than 600 vp, or when a foldable screen switches from the expanded state to the folded state, or when a tablet switches from landscape to portrait mode, the placeholder page will be automatically removed, resulting in only the home page being shown.
-> Conversely, when the application's drawable area is greater than or equal to 600 vp, or when a foldable screen switches from the folded state to the expanded state, or when a tablet switches from portrait to landscape mode, the placeholder page will be automatically added to form a split-screen.
+> When the app drawable area is less than 600 vp, a foldable switches from the expanded state to the folded state, or a tablet switches from landscape to portrait orientation, the placeholder page is automatically popped from the stack, and only the home page is displayed.
+> 
+> When the app drawable area is greater than or equal to 600 vp, a foldable switches from the folded state to the expanded state, or a tablet switches from portrait to landscape orientation, the placeholder page is automatically added to form a multi-column layout.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -648,7 +669,7 @@ Sets a placeholder page.
 
 |  Name  |        Type       | Mandatory| Description        |
 |:-------------:|:--------:|:-----:|----------|
-| info  | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10)  |   Yes  | Information about the placeholder page.|
+| info  | [NavPathInfo](./ts-basic-components-navigation.md#navpathinfo10)  |   Yes   | Page information of the placeholder page, used to set the placeholder page. On a large-screen device, the placeholder page and the main page form a left-right column layout. |
 
 ## SplitPolicy
 
@@ -660,9 +681,9 @@ Enumerates the types of pages in **MultiNavigation**.
 
 |       Name       |  Value|  Description          |
 | :---------------: | :-: | :-------------: |
-|     HOME_PAGE     |  0  | Home page. Displayed in full-screen mode. |
-|    DETAIL_PAGE    |  1  | Detail page. Displayed in split-screen mode.|
-|     FULL_PAGE     |  2  | Full-screen page. Displayed in full-screen mode.|
+|     HOME_PAGE     |  0  | Home page type. Displayed in full-screen mode. Used as the navigation start page of an app.  |
+|    DETAIL_PAGE    |  1  | Detail page type. Displayed in split-screen mode. Used for detail pages, forming a left-right split-screen layout with the home page on large-screen devices. |
+|     FULL_PAGE     |  2  | Full-screen page type. Displayed in full-screen mode. Used for pages that require full-screen display, such as video playback and image browsing. |
 
 ## NavDestinationBuildFunction
 
@@ -679,7 +700,7 @@ Represents the function used by the **MultiNavigation** component to load naviga
 | Name| Type| Mandatory| Description|
 | --------------- | ------ |------ |------ |
 |name | string |Yes| ID of the navigation destination page.|
-| param | object | No| Parameters passed when the page is created during navigation.|
+| param | object | No | Parameter passed when creating a page through route navigation. Default: no parameter is passed when not provided. |
 
 ## OnNavigationModeChangeCallback
 
@@ -726,6 +747,7 @@ The [universal events](ts-component-general-events.md) are not supported.
 This example demonstrates the basic usage of **MultiNavigation**.
 
 <!--code_no_check-->
+
 ```typescript
 // pages/Index.ets
 import { MultiNavigation, MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
@@ -769,7 +791,9 @@ struct Index {
   }
 }
 ```
+
 <!--code_no_check-->
+
 ```typescript
 // pages/PageHome1.ets, corresponding to the home page
 import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
@@ -782,7 +806,6 @@ export struct PageHome1 {
   controller: TextInputController = new TextInputController();
   text: string = '';
   param: Object = new Object();
-  lastBackTime: number = 0;
 
   build() {
     if (this.log()) {
@@ -867,6 +890,7 @@ export struct PageHome1 {
                 .margin(20)
                 .onClick(() => {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
+                    // Pop the top element of the route stack.
                     this.pageStack.pop();
                   }
                 })
@@ -897,7 +921,7 @@ export struct PageHome1 {
                 .margin(20)
                 .onClick(() => {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
-                    // Remove pages with indexes 0, 1, 3, and 5 from the stack.
+                    // Delete pages with indexes 0, 1, 3, and 5 in the stack.
                     this.pageStack.removeByIndexes([0,1,3,5]);
                   }
                 })
@@ -989,7 +1013,9 @@ export struct PageHome1 {
   }
 }
 ```
+
 <!--code_no_check-->
+
 ```typescript
 // pages/PageDetail1.ets: detail page
 import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
@@ -1052,7 +1078,7 @@ export struct PageDetail1 {
                 .margin(20)
                 .onClick(() => {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
-                    // Replace the current page with the PageDetail2 page.
+                    // Replace the current page with PageDetail2.
                     this.pageStack.replacePathByName('PageDetail2', 'testParam');
                   }
                 })
@@ -1072,7 +1098,7 @@ export struct PageDetail1 {
                 .margin(20)
                 .onClick(() => {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
-                    // Remove pages with indexes 0, 1, 3, and 5 from the stack.
+                    // Delete the pages at indexes 0, 1, 3, and 5 from the stack.
                     this.pageStack.removeByIndexes([0,1,3,5]);
                   }
                 })
@@ -1223,7 +1249,9 @@ export struct PageDetail1 {
   }
 }
 ```
+
 <!--code_no_check-->
+
 ```typescript
 // pages/PageDetail2.ets: detail page
 import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
@@ -1286,7 +1314,7 @@ export struct PageDetail2 {
                 .margin(20)
                 .onClick(() => {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
-                    // Replace the current page with the PageDetail2 page.
+                    // Replace the current page with PageDetail2.
                     this.pageStack.replacePathByName('PageDetail2', 'testParam');
                   }
                 })
@@ -1394,7 +1422,9 @@ export struct PageDetail2 {
   }
 }
 ```
+
 <!--code_no_check-->
+
 ```typescript
 // pages/PageFull1.ets: page that does not participate in split-screen display and is displayed in full-screen mode by default
 import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
@@ -1477,7 +1507,7 @@ export struct PageFull1 {
                 .margin(20)
                 .onClick(() => {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
-                    // Remove pages with indexes 0, 1, 3, and 5 from the stack.
+                    // Delete the pages at indexes 0, 1, 3, and 5 in the stack.
                     this.pageStack.removeByIndexes([0, 1, 3, 5]);
                   }
                 })
@@ -1534,7 +1564,9 @@ export struct PageFull1 {
   }
 }
 ```
+
 <!--code_no_check-->
+
 ```typescript
 // pages/PagePlaceholder.ets: placeholder page
 import { MultiNavPathStack } from '@kit.ArkUI';
@@ -1546,7 +1578,6 @@ export struct PagePlaceholder {
   @Consume('pageStack') pageStack: MultiNavPathStack;
   controller: TextInputController = new TextInputController();
   text: string = '';
-  lastBackTime: number = 0;
 
   build() {
     if (this.log()) {

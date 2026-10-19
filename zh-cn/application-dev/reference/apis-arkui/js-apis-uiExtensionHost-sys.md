@@ -1,9 +1,9 @@
 # @ohos.uiExtensionHost (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @Pakoo007-->
-<!--Designer: @stupidb-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @JUGaaab-->
+<!--Designer: @CheryHome-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 仅用于在有进程隔离诉求的UIExtensionComponent组件中为提供方应用提供宿主应用的窗口信息和组件本身的信息。
@@ -34,7 +34,7 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| properties          | [UIExtensionHostWindowProxyProperties](#uiextensionhostwindowproxyproperties) |  否  |  否  | UIExtensionComponent组件以及宿主窗口的信息。<br>**约束：** 由于架构约束，不建议在[onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](#onwindowsizechange)回调之后获取。 |
+| properties          | [UIExtensionHostWindowProxyProperties](#uiextensionhostwindowproxyproperties) |  否  |  否  | UIExtensionComponent组件以及宿主应用窗口的信息。<br>**约束：** 由于架构约束，不建议在[onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](#onwindowsizechange)回调之后获取。 |
 
 ### getWindowAvoidArea
 
@@ -267,7 +267,7 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 设置是否隐藏不安全窗口，使用Promise异步回调。
 > **说明：**
 >
-> - 不安全窗口是指可能遮挡[EmbeddedComponent](arkui-ts/ts-container-embedded-component.md)（或[UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md)）组件的窗口，如全局悬浮窗、宿主子窗口和宿主创建的Dialog窗口（不包括系统应用创建的上述类型窗口）。
+> - 不安全窗口是指可能遮挡[EmbeddedComponent](arkui-ts/ts-container-embedded-component.md)或[UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md)组件的窗口，如全局悬浮窗、宿主子窗口和宿主创建的Dialog窗口（不包括系统应用创建的上述类型窗口）。
 > - 当EmbeddedComponent（或UIExtensionComponent）组件用于显示敏感操作提示内容时，可以选择隐藏不安全窗口，保护其不会被遮挡。当EmbeddedComponent（或UIExtensionComponent）组件不显示或销毁时，不安全窗口会重新显示。
 > - 针对PC/2in1设备，当调用hideNonSecureWindows(true)时，不安全窗口中的全局悬浮窗不会被隐藏。
 
@@ -295,10 +295,10 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
+| 202      | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
-| 1300002  | Abnormal state. Possible causes: <br> 1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS". <br> 2. The UIExtension window proxy is abnormal.<br/>适用版本：12+ |
-| 1300003  | This window manager service works abnormally.<br/>适用版本：12+ |
+| 1300002  | Abnormal state. Possible causes: <br> 1. Permission denied. Interface caller does not have permission "ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS". <br> 2. The UIExtension window proxy is abnormal.<br>适用版本：12+ |
+| 1300003  | This window manager service works abnormally.<br>适用版本：12+ |
 
 **示例：**
 
@@ -311,7 +311,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    // 隐藏非安全窗口
+    // 隐藏不安全窗口
     extensionHostWindow.hideNonSecureWindows(true).then(() => {
       console.info(`Succeeded in hiding the non-secure windows.`);
     }).catch((err: BusinessError) => {
@@ -320,7 +320,7 @@ export default class EntryAbility extends UIExtensionAbility {
   }
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    // 取消隐藏非安全窗口
+    // 取消隐藏不安全窗口
     extensionHostWindow.hideNonSecureWindows(false).then(() => {
       console.info(`Succeeded in showing the non-secure windows.`);
     }).catch((err: BusinessError) => {
@@ -335,6 +335,10 @@ export default class EntryAbility extends UIExtensionAbility {
 createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptions): Promise&lt;window.Window&gt;
 
 创建该UIExtensionHostWindowProxy实例下的子窗口，使用Promise异步回调。
+
+当组件（EmbeddedComponent或UIExtensionComponent）的宿主为系统窗口时，创建的子窗称为系统子窗，该系统子窗仅支持[getWindowAvoidArea](arkts-apis-window-Window.md#getwindowavoidarea9)、[on('avoidAreaChange)](arkts-apis-window-Window.md#onavoidareachange9)、[off('avoidAreaChange)](arkts-apis-window-Window.md#offavoidareachange9)、[on('windowSizeChange)](arkts-apis-window-Window.md#onwindowsizechange7)、[off('windowSizeChange)](arkts-apis-window-Window.md#offwindowsizechange7)、[on('windowRectChange)](arkts-apis-window-Window.md#onwindowrectchange12)、[off('windowRectChange)](arkts-apis-window-Window.md#offwindowrectchange12)接口。
+- 在OpenHarmony 7.1之前，宿主窗口为系统窗口时，该接口在Phone设备可正常调用，在其他设备中返回1300002错误码。
+- 从OpenHarmony 7.1开始，宿主窗口为系统窗口时，该接口在Phone、Tablet、PC/2in1和TV设备可正常调用，在其他设备中返回1300002错误码。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -365,7 +369,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | ------- | ------------------------------ |
 | 401 | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and cannot be created again; 4. It is not allowed to create non-secure window when secure extension exists; 5. Subwindow level exceeds the maximum limit. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **示例：**
@@ -386,15 +390,15 @@ export default class EntryAbility extends UIExtensionAbility {
     // 创建子窗口
     extensionHostWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
       .then((subWindow: window.Window) => {
-        subWindow.setUIContent('pages/Index', (err, data) =>{
+        subWindow.setUIContent('pages/Index', (err, data) => {
           if (err && err.code) {
             return;
           }
-          subWindow?.resize(300, 300, (err, data) =>{
+          subWindow?.resize(300, 300, (err, data) => {
             if (err && err.code) {
               return;
             }
-            subWindow?.moveWindowTo(100, 100, (err, data) =>{
+            subWindow?.moveWindowTo(100, 100, (err, data) => {
               if (err && err.code) {
                 return;
               }
@@ -420,6 +424,10 @@ export default class EntryAbility extends UIExtensionAbility {
 createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
 
 创建该UIExtensionHostWindowProxy实例下的子窗口，可通过设置followCreatorLifecycle，决定子窗口是否跟随组件（EmbeddedComponent或UIExtensionComponent）的生命周期，使用Promise异步回调。
+
+当组件（EmbeddedComponent或UIExtensionComponent）的宿主为系统窗口时，创建的子窗称为系统子窗，该系统子窗仅支持[getWindowAvoidArea](arkts-apis-window-Window.md#getwindowavoidarea9)、[on('avoidAreaChange)](arkts-apis-window-Window.md#onavoidareachange9)、[off('avoidAreaChange)](arkts-apis-window-Window.md#offavoidareachange9)、[on('windowSizeChange)](arkts-apis-window-Window.md#onwindowsizechange7)、[off('windowSizeChange)](arkts-apis-window-Window.md#offwindowsizechange7)、[on('windowRectChange)](arkts-apis-window-Window.md#onwindowrectchange12)、[off('windowRectChange)](arkts-apis-window-Window.md#offwindowrectchange12)接口。
+- 在OpenHarmony 7.1之前，宿主窗口为系统窗口时，该接口在Phone设备可正常调用，在其他设备中返回1300002错误码。
+- 从OpenHarmony 7.1开始，宿主窗口为系统窗口时，该接口在Phone、Tablet、PC/2in1和TV设备可正常调用，在其他设备中返回1300002错误码。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -450,7 +458,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and cannot be created again; 4. It is not allowed to create non-secure window when secure extension exists; 5. Subwindow level exceeds the maximum limit. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **示例：**
@@ -471,15 +479,15 @@ export default class EntryAbility extends UIExtensionAbility {
     // 创建子窗口
     extensionHostWindow.createSubWindowWithOptions('subWindowForHost', subWindowConfig, true)
       .then((subWindow: window.Window) => {
-        subWindow.setUIContent('pages/Index', (err, data) =>{
+        subWindow.setUIContent('pages/Index', (err, data) => {
           if (err && err.code) {
             return;
           }
-          subWindow?.resize(300, 300, (err, data) =>{
+          subWindow?.resize(300, 300, (err, data) => {
             if (err && err.code) {
               return;
             }
-            subWindow?.moveWindowTo(100, 100, (err, data) =>{
+            subWindow?.moveWindowTo(100, 100, (err, data) => {
               if (err && err.code) {
                 return;
               }
@@ -584,7 +592,7 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型     | 必填 | 说明                                            |
 | ------ | ------- | --- | ------------------------------------------------ |
-| shouldHide | boolean | 是   | 是否开启截图隐私保护。true表示开启，false表示不开启。 |
+| shouldHide | boolean | 是   | 是否开启截图隐私内容保护。true表示开启，false表示不开启。 |
 
 **返回值：**
 
@@ -634,11 +642,11 @@ export default class EntryAbility extends UIExtensionAbility {
 
 | 名称                         | 类型        | 只读  | 可选    | 说明                             |
 | ------------------------------ | ----------- | --------------- | ----------------- | -------------------------------- |
-| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 是 | 否 |UIExtensionComponent的位置和宽高。 |
+| uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 |UIExtensionComponent的位置和宽高。 |
 
 ## 完整示例
 
-本示例展示文档中所有API在UIExtensionAbility中的基础使用方式，示例应用需采用系统签名，且`bundleName`为"com.example.uiextensiondemo", 被拉起的`UIExtensionAbility`为"ExampleUIExtensionAbility"。
+本示例展示文档中主要API在UIExtensionAbility中的基础使用方式，示例应用需采用系统签名，且`bundleName`为"com.example.uiextensiondemo"， 被拉起的`UIExtensionAbility`为"ExampleUIExtensionAbility"。
 
 - 示例应用中的EntryAbility(UIAbility)加载首页文件：`pages/Index.ets`，其中内容如下：
 
@@ -757,15 +765,15 @@ export default class EntryAbility extends UIExtensionAbility {
         Text(this.message)
           .fontSize(20)
           .fontWeight(FontWeight.Bold)
-        Button("获取组件大小").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
+        Button('获取组件大小').width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let rect = this.extensionHostWindow?.properties.uiExtensionHostWindowProxyRect;
-          console.info(`UIExtensionComponent的宽高和位置信息: ${JSON.stringify(rect)}`);
+          console.info(`EmbeddedComponent position and size info: ${JSON.stringify(rect)}`);
         })
-        Button("获取系统避让区信息").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
+        Button('获取系统避让区信息').width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let avoidArea: window.AvoidArea | undefined = this.extensionHostWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-          console.info(`系统避让区: ${JSON.stringify(avoidArea)}`);
+          console.info(`System avoid area: ${JSON.stringify(avoidArea)}`);
         })
-        Button("创建子窗口").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
+        Button('创建子窗口').width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let subWindowOpts: window.SubWindowOptions = {
             title: 'This is a subwindow',
             decorEnabled: true
@@ -773,15 +781,15 @@ export default class EntryAbility extends UIExtensionAbility {
           this.extensionHostWindow?.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
             .then((subWindow: window.Window) => {
               this.subWindow = subWindow;
-              this.subWindow.loadContent('pages/Index', this.storage, (err, data) =>{
+              this.subWindow.loadContent('pages/Index', this.storage, (err, data) => {
                 if (err && err.code) {
                   return;
                 }
-                this.subWindow?.resize(300, 300, (err, data) =>{
+                this.subWindow?.resize(300, 300, (err, data) => {
                   if (err && err.code) {
                     return;
                   }
-                  this.subWindow?.moveWindowTo(100, 100, (err, data) =>{
+                  this.subWindow?.moveWindowTo(100, 100, (err, data) => {
                     if (err && err.code) {
                       return;
                     }

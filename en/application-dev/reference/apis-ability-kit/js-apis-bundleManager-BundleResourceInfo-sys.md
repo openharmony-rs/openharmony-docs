@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-09-03T11:12:47.917Z pushedAt=2026-09-05T10:47:30.563Z -->
 
 The module provides resource information of an application, such as the icon and label. The information can be obtained by calling [getBundleResourceInfo](js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo).
 

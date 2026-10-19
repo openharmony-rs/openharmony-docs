@@ -1,17 +1,20 @@
 # OH_Drawing_Range
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=505cdcc08414815d97fac7e5929d482f30ac5700 translatedAt=2026-07-25T01:59:20.371Z pushedAt=2026-07-25T03:27:22.773Z -->
+
 ```
 typedef struct OH_Drawing_Range OH_Drawing_Range
 ```
 
 ## Overview
 
-Defines a struct used to receive the start position and end position of a glyph.
+Used to receive the start and end positions of text.
 
 **Since**: 11
 

@@ -1,16 +1,15 @@
 # Constraints on Access Modifiers of Custom Component Member Variables
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @BlYynNe-->
 <!--Designer: @VictorS67-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:01:31.651Z pushedAt=2026-07-22T06:49:44.496Z -->
+<!-- md-trans-meta sourceCommit=843d6fa3247ca83eb1fb22363d3e4b77bc027d58 translatedAt=2026-09-21T10:48:25.577Z pushedAt=2026-09-22T11:47:08.591Z -->
 
-In state management V1, after encapsulating a custom component, callers often struggle to clearly identify which variables need to be passed as the component's input parameters. To address this, if you want to prevent a state variable from being initialized externally, you can use the **private** modifier to restrict external initialization of that variable. External initialization must also comply with the decorator's own rules. For details, see [Constraints](#constraints).
+In state management V1, after encapsulating a custom component, callers often struggle to clearly identify which variables need to be passed as the component's input parameters. To address this, if you do not want a state variable to be initialized externally, you can use the **private** access modifier to restrict external initialization of that variable. External initialization must also comply with the decorator's own rules. For details, see [Constraints](#constraints).
 
-ArkTS validates use of the access modifiers – **private**, **public**, and **protected** – for custom component member variables. Build errors will be reported for any incompliance.
+ArkTS validates the use of the access modifiers **private**, **public**, and **protected** for custom component member variables. When these access modifiers are not used in compliance with the specifications, corresponding warning logs are generated.
 
 Before reading this topic, you are advised to read [State Management Overview](./arkts-state-management-overview.md).
 
@@ -20,7 +19,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
 
 ## Constraints
 
-- The regular variables (which do not involve re-rendering) and variables decorated with [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), [\@Provide](./arkts-provide-and-consume.md), or [\@BuilderParam](./arkts-builderparam.md) can be initialized externally or using local values. If you do not want a variable to be initialized externally, you can modify it with **private**. In this case, any incorrect external initialization attempt will trigger a compilation warning log.
+- The regular member variables (which do not involve re-rendering) and variables decorated with [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), [\@Provide](./arkts-provide-and-consume.md), or [\@BuilderParam](./arkts-builderparam.md) can be initialized externally or using local values. If you do not want a variable to be initialized externally, you can modify it with **private**. In this case, any incorrect external initialization attempt will trigger a compilation warning log.
 
 - Variables decorated with [\@StorageLink](./arkts-appstorage.md#storagelink), [\@StorageProp](./arkts-appstorage.md#storageprop), [\@LocalStorageLink](./arkts-localstorage.md#localstoragelink), [\@LocalStorageProp](./arkts-localstorage.md#localstorageprop), or [\@Consume](./arkts-provide-and-consume.md) cannot be initialized externally. Using **public** to modify these variables conflicts with the decorators' inherent initialization rules and triggers a compilation warning log.
 
@@ -28,14 +27,13 @@ Before reading this topic, you are advised to read [State Management Overview](.
 
 - Because structs do not support inheritance, none of the preceding variables can be declared as **protected**.
 
-- [\@Require](./arkts-require.md) means that a variable decorated with \@Require must be externally initialized. When the \@Require decorator and the **private** access qualifier are simultaneously applied to variables decorated by [\@State](./arkts-state.md)/[\@Prop](./arkts-prop.md)/[\@Provide](./arkts-provide-and-consume.md)/[\@BuilderParam](./arkts-builderparam.md) or to regular member variables (ordinary variables not involved in updates), their meanings are contradictory, and a compile-time warning log will be prompted.
+- [\@Require](./arkts-require.md) means that a variable decorated with \@Require must be externally initialized. When the \@Require decorator and the **private** access modifier are simultaneously applied to variables decorated by [\@State](./arkts-state.md)/[\@Prop](./arkts-prop.md)/[\@Provide](./arkts-provide-and-consume.md)/[\@BuilderParam](./arkts-builderparam.md) or to regular member variables (ordinary variables not involved in updates), their meanings are contradictory, and a compilation warning log is generated.
 
 ## Use Scenarios
 
-1. If a member variable is decorated with both the **private** access modifier and the \@State, \@Prop, \@Provide, or \@BuilderParam decorator, initializing it through the parent component will trigger a warning log.
+1. When a variable decorated by \@State/\@Prop/\@Provide/\@BuilderParam or a regular member variable (an ordinary variable not involved in updates) is modified by the **private** access modifier and is initialized and assigned through the parent component, ArkTS performs validation and generates a warning log.
 
    **Incorrect Usage**
-
     <!-- @[LinkWithPrivate_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LinkWithPrivateErrorCase.ets) -->
 
     ``` TypeScript
@@ -89,7 +87,8 @@ Before reading this topic, you are advised to read [State Management Overview](.
     }
     ```
 
-    The following are some warning log examples:
+
+    The following are some compilation warning log examples:
 
     ```ts
     Property 'stateValue' is private and can not be initialized through the component constructor.
@@ -100,7 +99,6 @@ Before reading this topic, you are advised to read [State Management Overview](.
     ```
 
    **Correct Usage**
-
     <!-- @[LinkWithPrivate_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/linkWithPrivate/LinkWithPrivateCorrectCase.ets) --> 
 
     ``` TypeScript
@@ -150,10 +148,9 @@ Before reading this topic, you are advised to read [State Management Overview](.
     }
     ```
 
-2. If a member variable is decorated with both the **public** access modifier and the \@StorageLink, \@StorageProp, \@LocalStorageLink, \@LocalStorageProp, or \@Consume decorator, a build error is reported.
+2. If a member variable is decorated with both the **public** access modifier and the \@StorageLink, \@StorageProp, \@LocalStorageLink, \@LocalStorageProp, or \@Consume decorator, a warning is reported.
 
    **Incorrect Usage**
-
     <!-- @[PublicWithStorageProp_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropErrorCase.ets) -->
 
     ``` TypeScript
@@ -193,6 +190,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
     }
     ```
 
+
    The following are some warning log examples:
 
     ```ts
@@ -204,7 +202,6 @@ Before reading this topic, you are advised to read [State Management Overview](.
     ```
 
    **Correct Usage**
-
     <!-- @[PublicWithStorageProp_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropCorrectCase.ets) --> 
 
     ``` TypeScript
@@ -243,7 +240,6 @@ Before reading this topic, you are advised to read [State Management Overview](.
 3. If a member variable is decorated with both the **private** access modifier and the \@Link or \@ObjectLink decorator, ArkTS performs a validation check and generates a warning log.
 
    **Incorrect Usage**
-
     <!-- @[PrivateWithLink_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkErrorCase.ets) -->
 
     ``` TypeScript
@@ -291,7 +287,6 @@ Before reading this topic, you are advised to read [State Management Overview](.
     ```
 
    **Correct Usage**
-
     <!-- @[PrivateWithLink_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkCorrectCase.ets) --> 
 
     ``` TypeScript
@@ -333,7 +328,6 @@ Before reading this topic, you are advised to read [State Management Overview](.
 4. If a member variable is decorated with the **protected** access modifier, ArkTS performs a validation check and generates a warning log.
 
    **Incorrect Usage**
-
    <!-- @[ProtectedInStruct_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructErrorCase.ets) -->
 
    ``` TypeScript
@@ -363,6 +357,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
    }
    ```
 
+
    The following are some warning log examples:
 
     ```ts
@@ -370,7 +365,6 @@ Before reading this topic, you are advised to read [State Management Overview](.
     ```
 
    **Correct Usage**
-
     <!-- @[ProtectedInStruct_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructCorrectCase.ets) --> 
 
     ``` TypeScript
@@ -400,10 +394,10 @@ Before reading this topic, you are advised to read [State Management Overview](.
     }
     ```
 
+
 5. If a member variable is decorated with the **private** access modifier, the \@Require decorator, and the \@State, \@Prop, \@Provide, or \@BuilderParam decorator, ArkTS will perform validation and generate warning logs.
 
    **Incorrect Usage**
-
     <!-- @[PrivateWithRequire_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireErrorCase.ets) -->
 
     ``` TypeScript
@@ -433,6 +427,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
     }
     ```
 
+
    The following are some warning log examples:
 
     ```ts
@@ -441,7 +436,6 @@ Before reading this topic, you are advised to read [State Management Overview](.
     ```
 
    **Correct Usage**
-
     <!-- @[PrivateWithRequire_CorrectCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireCorrectCase.ets) --> 
 
     ``` TypeScript

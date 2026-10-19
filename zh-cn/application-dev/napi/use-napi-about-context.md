@@ -1,7 +1,7 @@
 # 使用扩展的Node-API接口在当前线程中创建、切换和销毁上下文环境
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -205,6 +205,7 @@
 |napi_create_strong_reference | 否 |
 |napi_delete_strong_reference | 否 |
 |napi_get_strong_reference_value | 否 |
+|napi_get_global_handle_count | 否 |
 |napi_throw_business_error | 是 |
 
 ## 不支持多运行时上下文环境调用的NAPI接口
@@ -228,7 +229,7 @@
 |napi_delete_strong_sendable_reference | napi_invalid_arg |
 |napi_get_strong_sendable_reference_value | napi_invalid_arg |
 
-### 示例代码
+## 示例代码
 - 模块注册
     ```c++
     // napi_init.cpp
@@ -354,7 +355,7 @@
 - 接口声明
     ```ts
     // index.d.ts
-    export const callFunctionInContext: (func: (func:()=>number)=>{}) => number;
+    export const callFunctionInContext: (func: (func:()=>number)=>number) => number;
     ```
 
 - 编译配置

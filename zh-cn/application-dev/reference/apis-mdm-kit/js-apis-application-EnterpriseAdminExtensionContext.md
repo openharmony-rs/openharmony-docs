@@ -1,10 +1,12 @@
-# EnterpriseAdminExtensionContext（企业设备管理扩展能力上下文环境）
+# EnterpriseAdminExtensionContext (企业设备管理扩展能力上下文环境)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+
+EnterpriseAdminExtensionContext在@ohos.enterprise.common模块中作为类型导出，具体接口定义见本文档。
 
 EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-EnterpriseAdminExtensionAbility.md)的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
@@ -32,7 +34,7 @@ import { common } from '@kit.MDMKit';
 
 startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 
-在[EnterpriseAdminExtensionAbility](js-apis-EnterpriseAdminExtensionAbility.md)组件中直接启动另外一个组件（页面没有弹窗提醒），目前支持[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，[AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)。调用成功后，目标组件将被启动并进入运行状态。使用Promise异步回调。
+在[EnterpriseAdminExtensionAbility](js-apis-EnterpriseAdminExtensionAbility.md)组件中静默启动另外一个组件（无需用户确认即可启动），支持[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，[AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)。调用成功后，目标组件将被启动并进入运行状态。使用Promise异步回调。
 
 > **说明：**
 >
@@ -44,17 +46,17 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 > 
 > 如果被启动的UIAbility有权限保护，需要额外申请对应的权限。
 
-**需要权限**：ohos.permission.ENTERPRISE_START_ABILITIES
+**需要权限：** ohos.permission.ENTERPRISE_START_ABILITIES
 
-**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。设置后系统将以此参数验证调用方的设备管理员身份和权限。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 企业设备管理扩展组件。admin参数需传入当前应用自身的企业设备管理扩展组件信息，Want中必须包含当前应用的企业设备管理扩展能力的abilityName和所在应用的bundleName。设置后系统将以此参数验证调用方的设备管理员身份和权限。 |
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 启动组件的必要信息，Want中必须包含被启动组件的abilityName和所在应用的bundleName。设置后系统将根据bundleName定位目标应用，根据abilityName定位并启动目标组件。 |
 
 **返回值：**
@@ -76,6 +78,7 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
+
 需要在module.json5中配置被启动组件的信息。permissions为可选字段，需根据实际情况进行替换或者不填。
 
 ```json5
@@ -89,9 +92,10 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
     "startWindowIcon": "$media:icon",
     "startWindowBackground": "$color:white",
     "exported": true,
-    "permissions": [
-      "ohos.permission.START_UI_ABILITY"
-    ]
+    // 标识当前Ability组件的权限信息。其他应用访问该Ability时，需要申请相应的权限。
+    // "permissions": [
+    //   "ohos.permission.EXAMPLE_PERMISSION"
+    // ]
   }
 ]
 ```
@@ -100,9 +104,10 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 
 ```json5
 "requestPermissions": [
-  {
-    "name": "ohos.permission.START_UI_ABILITY"
-  },
+  // 启动其他应用的组件时，需申请该组件所标识的权限。
+  // {
+  //   "name": "ohos.permission.EXAMPLE_PERMISSION"
+  // },
   {
     "name": "ohos.permission.ENTERPRISE_START_ABILITIES"
   }
@@ -123,7 +128,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
     // 需根据实际情况进行替换
     let admin: Want = {
       bundleName: 'com.example.myapplication',
-      abilityName: 'EnterpriseAdminAbility',
+      abilityName: 'EnterpriseAdminAbility'
     };
     // 需根据实际情况进行替换
     let want: Want = {
@@ -141,7 +146,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
     // 通过context获取到preferences数据
     let options: preferences.Options = {
       // 需根据实际情况进行替换
-      name: "key",
+      name: "key"
     };
     try {
       let preference = preferences.getPreferencesSync(this.context, options);

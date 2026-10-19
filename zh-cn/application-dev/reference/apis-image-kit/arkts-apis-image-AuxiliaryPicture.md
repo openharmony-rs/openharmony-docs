@@ -325,6 +325,54 @@ async function SetAuxiliaryPictureInfo(auxPictureObj: image.AuxiliaryPicture) {
 }
 ```
 
+## acquirePixelmap
+
+acquirePixelmap(): PixelMap | null
+
+获取辅助图的像素图（PixelMap）。返回的PixelMap与该辅助图共享同一份底层内存，获取过程不发生像素拷贝。
+
+返回的PixelMap生命周期独立于该AuxiliaryPicture对象，使用完成后应调用PixelMap的release方法及时释放。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [PixelMap](arkts-apis-image-PixelMap.md) \| null | 得到的PixelMap对象。当辅助图没有包含PixelMap数据时返回null。 |
+
+**示例：**
+
+```ts
+async function AcquirePixelmap(context: Context) {
+  const resourceMgr = context.resourceManager;
+  // 需要一张含增益图（gainmap）的HDR图片。
+  const rawFile = await resourceMgr.getRawFileContent("picture.jpg");
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer);
+  // 使用createPicture解码。
+  let pictureObj: image.Picture = await imageSource.createPicture();
+  // 获取增益图辅助图。
+  let auxPictureObj: image.AuxiliaryPicture | null =
+    pictureObj.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
+  if (auxPictureObj != null) {
+    let auxPixelmap: image.PixelMap | null = auxPictureObj.acquirePixelmap();
+    if (auxPixelmap != null) {
+      console.info('Succeeded in acquiring pixelmap.');
+      // 使用完毕后单独释放PixelMap。
+      auxPixelmap.release();
+    } else {
+      console.error('Auxiliary picture contains no pixelmap.');
+    }
+  } else {
+    console.error('AuxPictureObj is null.');
+  }
+}
+```
+
 ## release<sup>13+</sup>
 
 release():void

@@ -125,7 +125,7 @@ import { TextMenuController } from '@kit.ArkUI';
 @Component
 struct Index {
   aboutToAppear(): void {
-    // 禁用所有系统服务菜单。
+    // 禁用除复制、剪切、全选、粘贴外的所有系统服务菜单项。
     TextMenuController.disableSystemServiceMenuItems(true);
   }
 

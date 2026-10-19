@@ -5,7 +5,7 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 
 ## 概述
 
@@ -164,7 +164,7 @@ export default function abilityTest() {
     })
 
     /**
-     * 查找类型为'Image'的控件，并进行对其进行双指放大操作
+     * 查找类型为'Image'的控件，并对其进行双指放大操作
      */
     it('componentPinch', TestType.FUNCTION, async () => {
       let driver: Driver = Driver.create();
@@ -283,7 +283,7 @@ export default function abilityTest() {
     })
     /**
      * 基于控件的文本输入，指定以复制粘贴方式注入输入指定文本
-     * 指定以追加方式输入，即在输入文本签不清空原有内容
+     * 指定以追加方式输入，即在输入文本前不清空原有内容
      */
     it('componentInputTextAddition', TestType.FUNCTION, async () => {
       let driver = Driver.create();
@@ -617,7 +617,7 @@ export default function abilityTest() {
 |---------------|---------------------------------|---------------------------------|
 | help          | - |  显示UITest工具能够支持的命令信息。            |
 | screenCap       |[-p] [-d]| 截图。<br>各参数代表的含义请参考[获取截图](#获取截图)。 |
-| dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>| 获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)。|
+| dumpLayout      |[-p] [-e] \<-i \| -a \| -b \| -w \| -m \| -d>| 获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)。|
 | uiRecord        | \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到'/data/local/tmp/record.csv'，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[录制界面操作](#录制界面操作)。|
 | uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入UI模拟操作](#注入ui模拟操作)。|
 | --version | - |获取当前UITest工具版本信息。 |
@@ -628,7 +628,7 @@ export default function abilityTest() {
 | 参数    |   二级参数   |说明       | 
 |---------|---------|------------|
 | -p | \<savePath\> | 指定存储路径和文件名，只支持存放在'/data/local/tmp/'下。默认存储路径：'/data/local/tmp'，文件名：'时间戳 + .png'。|
-| -d | \<displayId\> | 多屏场景下，获取指定ID屏幕下的截图。<br> **说明：** 从API version 20开始支持该命令。|
+| -d | \<displayId\> | 多屏场景下，获取指定ID屏幕下的截图。未指定该参数时，默认获取displayId为0的屏幕下的截图。<br> **说明：** 从API version 20开始支持该命令。|
 
 ```bash
 # 存储路径：/data/local/tmp，文件名：时间戳 + .png。
@@ -644,13 +644,18 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 | -i | - | 不过滤不可见控件，也不做窗口合并。|
 | -a | - | 保存控件的BackgroundColor、Content、FontColor、FontSize、extraAttrs属性数据。<br>**说明** ：默认不保存上述属性数据， **-a和-i不可同时使用。** | 
 | -b | \<bundleName\> | 获取指定包名对应目标窗口的控件树信息。|
-| -w | \<windowId\>  | 获取指定ID目标窗口的控件树信息。<br> **说明：**<br>可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->, 包含应用对应窗口的id。|
+| -w | \<windowId\>  | 获取指定ID目标窗口的控件树信息。<br> **说明：**<br>可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的id。|
 | -m | \<true\|false\> | 指定在获取控件树信息时是否合并窗口信息。true表示合并窗口信息，false表示不合并窗口信息，不设置时默认为true。 |
-| -d | \<displayId\>  | 多屏场景下，获取指定ID屏幕下的控件树。<br> **说明：**<br> 1. 从API version 20开始支持该命令。<br>2. 可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的DisplayId。|
+| -d | \<displayId\>  | 多屏场景下，获取指定ID屏幕下的控件树。未指定该参数时，默认获取displayId为0的屏幕下的控件树。<br> **说明：**<br> 1. 从API version 20开始支持该命令。<br>2. 可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的DisplayId。|
+| -e | \<attributeName\> | 扩展输出指定属性数据，多个属性以英文逗号分隔。取值范围：**uniqueId**、**accessibility**。<br>- **uniqueId**：输出控件的唯一标识属性。<br>- **accessibility**：输出控件的无障碍属性数据。<br> **说明：**<br> 1. 从API version 23开始支持该命令。<br>2. accessibility取值从API version 26.2.0开始支持。|
 
 ```bash
 # 指定存储路径和文件名，存放在/data/local/tmp/下。
 hdc shell uitest dumpLayout -p /data/local/tmp/1.json
+# 获取控件树，并输出无障碍属性数据。
+hdc shell uitest dumpLayout -p /data/local/tmp/1.json -e accessibility
+# 获取控件树，并同时输出唯一标识和无障碍属性数据。
+hdc shell uitest dumpLayout -p /data/local/tmp/1.json -e uniqueId,accessibility
 ```
 
 ### 录制界面操作
@@ -697,12 +702,12 @@ hdc shell uitest uiRecord read
      "LENGTH": "0", // 总体步长
      "MAX_VEL": "40000", // 最大速度
      "VELO": "0.000000", // 离手速度
-     "W1_BOUNDS": "{"bottom":361,"left":37,"right":118,"top":280}", // 起点控件边界
+     "W1_BOUNDS": "{\"bottom\":361,\"left\":37,\"right\":118,\"top\":280}", // 起点控件边界
      "W1_HIER": "ROOT,3,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0", // 起点控件页面层级
      "W1_ID": "", // 起点控件id
      "W1_Text": "", // 起点控件text
      "W1_Type": "Image", // 起点控件类型
-     "W2_BOUNDS": "{"bottom":361,"left":37,"right":118,"top":280}", // 终点控件边界
+     "W2_BOUNDS": "{\"bottom\":361,\"left\":37,\"right\":118,\"top\":280}", // 终点控件边界
      "W2_HIER": "ROOT,3,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0", // 终点控件页面层级
      "W2_ID": "", // 终点控件id
      "W2_Text": "", // 终点控件text

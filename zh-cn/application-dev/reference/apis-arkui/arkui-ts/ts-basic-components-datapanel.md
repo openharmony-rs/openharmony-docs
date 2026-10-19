@@ -51,7 +51,7 @@ DataPanel(options: DataPanelOptions)
 | 名称            | 类型   | 只读 | 可选 | 说明 |
 | ----------------- | -------- | ----- | -------- | -------- |
 | values            | number[]   | 否   | 否  | 数据值列表，数组长度范围[0, 9]，大于9个数据则取前9个数据。若数据值小于0则置为0。 |
-| max               | number     | 否   | 是   |   - max大于0时，表示数据的最大值。<br>- max小于等于0时，max等于values数据值列表各项的和，按比例显示。<br>不传入时默认值：100。|
+| max               | number     | 否   | 是   |   - max大于0时，表示数据的最大值。<br>- max小于等于0时，max等于values数据值列表各项的和，按比例显示。<br>默认值：100。|
 | type<sup>8+</sup> | [DataPanelType](#datapaneltype8枚举说明) | 否 | 是 | 数据面板的类型（不支持动态修改）。<br>可选值：DataPanelType.Line（线性数据面板，适合在有限空间内展示多段数据对比）、DataPanelType.Circle（环形数据面板，适合直观展示数据占比关系）。<br>不传入时默认值为DataPanelType.Circle。|
 
 
@@ -197,7 +197,7 @@ DataPanelShadowOptions继承自[MultiShadowOptions](ts-information-display-commo
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| colors | Array<[ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient](#lineargradient10)> | 否 | 是 | 各数据段投影的颜色。 <br>默认值：与valueColors值相同 <br>**说明：** <br>若设置的投影颜色的个数少于数据段个数时，则显示的投影颜色的个数和设置的投影颜色个数一致。<br>若设置的投影颜色的个数多于数据段个数时，则显示的投影颜色的个数和数据段个数一致。|
+| colors | Array<[ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient](#lineargradient10)> | 否 | 是 | 各数据段投影的颜色。 <br>默认值：与valueColors值相同 <br>**说明：** <br>若设置的投影颜色的个数少于数据段个数时，则显示的投影颜色个数等于设置的投影颜色个数。<br>若设置的投影颜色的个数多于数据段个数时，则显示的投影颜色个数等于数据段个数。|
 
 ## LinearGradient<sup>10+</sup>
 
@@ -385,9 +385,6 @@ struct LinearGradientDataPanelExample {
   @State color4: string = '#20FF0000';
   @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4];
   @State bgColor: string = '#08182431';
-  @State offsetX: number = 15;
-  @State offsetY: number = 15;
-  @State radius: number = 5;
 
   build() {
     Column({ space: 5 }) {

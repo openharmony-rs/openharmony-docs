@@ -5,19 +5,21 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e8a3df3f036267095aa2be3a05bfa4ba7c1727ba translatedAt=2026-09-02T12:27:30.906Z -->
 
-A hover event is triggered when the cursor slides over a component or when a stylus hovers and moves over the screen.
+A hover event is triggered when the cursor slides over a component or when a stylus hovers and moves over the screen. It is used to listen for interaction states such as the mouse or stylus entering or exiting a component and hovering over a component, and is suitable for scenarios such as updating component styles and displaying position information based on the hover state.
 
 >  **NOTE**
 >
 >  - The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
->  - Currently, only an external mouse device, stylus, or touchpad can be used to trigger a hover event.
+>
+>  - Currently, only an external mouse and a touchpad can trigger hover events. Some styluses<!--RP1--><!--RP1End-->do not support hover events, depending on the hardware capability.
 
 ## onHover
 
 onHover(event: (isHover: boolean, event: HoverEvent) => void): T
 
-Triggered when the mouse pointer or stylus enters or leaves the component.
+A hover event is triggered when the mouse or stylus enters or exits a component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -27,13 +29,13 @@ Triggered when the mouse pointer or stylus enters or leaves the component.
 
 | Name             | Type                               | Mandatory| Description                                                        |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event  | (isHover: boolean, event: [HoverEvent](#hoverevent10)) => void  | Yes  | Callback for mouse or stylus hover status.<br>**event**: event bubbling control and coordinates of the hover position; available since API version 11.<br>**isHover**: whether the mouse pointer or stylus is hovering over the component. **true**: The mouse pointer or stylus has entered the component. **false**: The mouse pointer or stylus has left the component.|
+| event  | (isHover: boolean, event: [HoverEvent](#hoverevent10)) => void  | Yes   | Callback function invoked when the mouse or stylus enters or exits the component. isHover indicates whether the mouse or stylus is hovering over the component; the value is true when it enters and false when it leaves. event is a HoverEvent object used to obtain the coordinates of the position where the mouse or stylus hovers, and to set the property for blocking event bubbling. This is supported since API version 11. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## onHoverMove<sup>15+</sup>
 
@@ -43,37 +45,41 @@ Triggered when a stylus hovers over the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name             | Type                               | Mandatory| Description                                                        |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event | Callback<[HoverEvent](#hoverevent10)> | Yes  |Callback that controls event bubbling blocking and obtains the stylus hover position coordinates.        |
+| event | Callback<[HoverEvent](#hoverevent10)> | Yes | Callback invoked when the hover move event is triggered. The callback parameter is a HoverEvent object, which is used to obtain the position coordinates of the stylus hover and can be used to set the event bubbling blocking property. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, which can be used for chained calls. |
 
 ## HoverEvent<sup>10+</sup>
 
-Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
+Inherits from [BaseEvent](ts-universal-events-click.md#baseevent8).
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read Only| Optional| Description|
 | --------------- | ---------- | ----- | ----- | -------------------- |
-| x<sup>15+</sup> |number|No|Yes|X coordinate of the cursor or stylus position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| y<sup>15+</sup> |number|No|Yes|Y coordinate of the cursor or stylus position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the current component.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| windowX<sup>15+</sup> |number|No|Yes|X coordinate of the cursor or stylus position in the coordinate system of the current application window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| windowY<sup>15+</sup> |number|No|Yes|Y coordinate of the cursor or stylus position in the coordinate system of the current application window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| displayX<sup>15+</sup> |number|No|Yes|X coordinate of the cursor or stylus position in the coordinate system of the current screen window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| displayY<sup>15+</sup> |number|No|Yes|Y coordinate of the cursor or stylus position in the coordinate system of the current screen window.<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 15.|
-| stopPropagation | () => void |No|No| Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation.<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
-| globalDisplayX<sup>20+</sup> | number |No|Yes| X coordinate of the cursor or stylus position in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| globalDisplayY<sup>20+</sup> | number |No|Yes| Y coordinate of the cursor or stylus position in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| x<sup>15+</sup> |number|No|Yes|X coordinate of the mouse cursor or stylus position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) relative to the current component.<br>Unit: vp<br>Value range: [0, +∞)<br> **Atomic service API:**  Since API version 15, this API is supported in atomic services.|
+| y<sup>15+</sup> |number|No|Yes|Y coordinate of the mouse cursor or stylus position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) relative to the current component.<br>Unit: vp<br>Value range: [0, +∞)<br> **Atomic service API:**  Since API version 15, this API is supported in atomic services.|
+| windowX<sup>15+</sup> |number|No|Yes|X coordinate of the mouse cursor or stylus position in the coordinate system of the current application window.<br>Unit: vp<br>Value range: [0, +∞)<br> **Atomic service API:**  Since API version 15, this API is supported in atomic services.|
+| windowY<sup>15+</sup> |number|No|Yes|Y coordinate of the mouse cursor or stylus position in the coordinate system of the current application window.<br>Unit: vp<br>Value range: [0, +∞)<br> **Atomic service API:**  Since API version 15, this API is supported in atomic services.|
+| displayX<sup>15+</sup> |number|No|Yes|X coordinate of the mouse cursor or stylus position in the coordinate system of the current application screen.<br>Unit: vp<br>Value range: [0, +∞)<br> **Atomic service API:**  Since API version 15, this API is supported in atomic services.|
+| displayY<sup>15+</sup> |number|No|Yes|Y coordinate of the mouse cursor or stylus position in the coordinate system of the current application screen.<br>Unit: vp<br>Value range: [0, +∞)<br> **Atomic service API:**  Since API version 15, this API is supported in atomic services.|
+| stopPropagation | () => void |No|No| Blocks [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling). After a component has processed a hover event, this method can be used to prevent the event from being passed to the parent component, avoiding duplicate responses to the same event by the parent component. <br> **Atomic service API:**  Since API version 11, this API is supported in atomic services.|
+| globalDisplayX<sup>20+</sup> | number |No|Yes| X coordinate of the mouse cursor or stylus position in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp<br>Value range: (-∞, +∞)<br>**Atomic service API:** Since API version 20, this API is supported in atomic services. |
+| globalDisplayY<sup>20+</sup> | number |No|Yes| Y coordinate of the mouse cursor or stylus position in the [global coordinate system](../../../windowmanager/window-terminology.md#global-coordinate-system).<br>Unit: vp<br>Value range: (-∞, +∞)<br>**Atomic service API:** Since API version 20, this API is supported in atomic services. |
 
 ## Example
 
@@ -119,15 +125,15 @@ Diagrams:
 
 The figure below shows how the button looks in the non-hovered state.
 
- ![nohover](figures/no-hover.png) 
+ ![nohover](figures/no-hover.png)
 
 The figure below shows how the button looks when a stylus hovers on it.
 
- ![penhover](figures/pen-hover.png) 
+ ![penhover](figures/pen-hover.png)
 
 ### Example 2: Using onHoverMove
 
-This example demonstrates how to configure the [onHoverMove](#onhovermove15) event on a button, available since API version 15. When a stylus hovers over the button, the UI displays the current stylus position.
+Since API version 15, this example sets the [onHoverMove](#onhovermove15) event of the button. When a stylus hovers over the button, the UI displays the current hover position of the stylus.
 
 ```ts
 // xxx.ets

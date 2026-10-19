@@ -8,7 +8,7 @@
 
 为了实现序列化类时不丢失属性的复杂类型，开发者可以使用[\@Type](../../reference/apis-arkui/arkui-ts/ts-state-management-type.md#type)装饰器装饰类属性。
 
-\@Type的目的是标记类属性，配合PersistenceV2使用，防止序列化时类丢失。在阅读本文档前，建议提前阅读：[PersistenceV2](./arkts-new-persistencev2.md)。
+\@Type的目的是标记类属性，配合PersistenceV2使用，防止序列化时类型信息丢失。在阅读本文档前，建议提前阅读：[PersistenceV2](./arkts-new-persistencev2.md)。
 
 >**说明：**
 >
@@ -25,7 +25,7 @@
 | \@Type装饰器 | 说明 |
 | ------------------- | ------------------------------------------------------------ |
 | 装饰器参数 | type：类型。 |
-| 可装饰的类型 | Object class以及Array、Date、Map、Set等内嵌类型。 |
+| 可装饰的类型 | Object class以及Array、Date、Map、Set等内置类型。 |
 
 ## 使用限制
 
@@ -61,9 +61,9 @@
 
 2. 不支持collections.Set、collections.Map等类型。
 
-3. 不支持非built-in类型。如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
+3. 不支持非built-in类型。如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer等Native类型，以及[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等ArkTS容器类型。
 
-4. 不支持简单类型。如string、number、boolean等。
+4. 不支持基本类型。如string、number、boolean等。
 
 5. 不支持构造函数含参的类。
 

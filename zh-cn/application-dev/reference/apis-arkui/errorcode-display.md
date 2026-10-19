@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**

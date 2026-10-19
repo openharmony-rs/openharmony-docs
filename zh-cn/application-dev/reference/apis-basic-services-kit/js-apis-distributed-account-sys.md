@@ -34,7 +34,11 @@ getOsAccountDistributedInfoByLocalId(localId: number, callback: AsyncCallback&lt
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或(ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS)
+**需要权限：**
+
+- API版本20+：ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或（ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS）
+
+- API版本10-19：ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **参数：**
 
@@ -47,8 +51,8 @@ getOsAccountDistributedInfoByLocalId(localId: number, callback: AsyncCallback&lt
 
 | 错误码ID | 错误信息|
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300003 | Account not found. |
 
@@ -84,7 +88,11 @@ getOsAccountDistributedInfoByLocalId(localId: number): Promise&lt;DistributedInf
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或(ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS)
+**需要权限：**
+
+- API版本20+：ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或（ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS）
+
+- API版本10-19：ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **参数：**
 
@@ -102,8 +110,8 @@ getOsAccountDistributedInfoByLocalId(localId: number): Promise&lt;DistributedInf
 
 | 错误码ID | 错误信息|
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300003 | Account not found. |
 
@@ -151,13 +159,14 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 
 | 错误码ID | 错误信息|
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid distributedInfo. |
 | 12300003 | Account identified by localId or by distributedInfo not found. |
 | 12300008 | Restricted OS account. |
+| 12300406 | The distributed account information has already been bound to a sub-profile of the target OS account.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -211,13 +220,14 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 
 | 错误码ID | 错误信息|
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid distributedInfo. |
 | 12300003 | Account identified by localId or by distributedInfo not found. |
 | 12300008 | Restricted OS account. |
+| 12300406 | The distributed account information has already been bound to a sub-profile of the target OS account.<br>适用版本：26.0.0+ |
 
 **示例：**
 

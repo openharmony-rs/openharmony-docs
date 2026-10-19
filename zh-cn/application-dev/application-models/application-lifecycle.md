@@ -74,7 +74,7 @@
     
 应用使用`ApplicationContext`的[on('applicationStateChange')](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextonapplicationstatechange10)方法可以监听应用的前后台状态变化，当应用前后台切换时，可以收到相应回调函数的通知，从而执行一些依赖前后台的方法，或者进行应用前后台切换频率等数据统计。
 
-以[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中的使用为例进行说明。
+以[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中的使用为例进行说明。
 
 <!-- @[lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/lifecycleability/LifecycleAbility.ets) -->
 
@@ -113,3 +113,15 @@ export default class LifecycleAbility extends UIAbility {
   }
 }
 ```
+
+## PC/2in1设备的应用模型特征
+
+module.json5文件的[deviceTypes](../quick-start/module-configuration-file.md#devicetypes标签)仅声明支持PC/2in1设备的应用，其UIAbility的生命周期回调触发机制与其他设备存在差异。
+
+  1. 当用户启动一个UIAbility时，系统会依次触发onCreate()、onWindowStageCreate()、onForeground()生命周期回调，完成组件创建、生命周期驱动等流程。
+
+  2. 当用户进行应用间切换时，UIAbility会保持前台状态，系统不会触发onBackground()生命周期回调。
+
+  3. 用户主动退出UIAbility和应用主动退出UIAbility时，系统才会触发onBackground()和onDestroy()生命周期回调，完成组件退出和销毁。
+
+进程的生命周期与UIAbility组件的生命周期密切相关。由于UIAbility运行态长期处于前台状态，故进程长期处于前台状态，仅在进程正常退出过程中短暂处于后台状态。相应地，应用也长期处于前台状态，仅在应用正常退出过程中短暂处于后台状态。

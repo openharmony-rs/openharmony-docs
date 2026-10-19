@@ -1,8 +1,8 @@
-# @ohos.commonEvent (公共事件模块)(系统应用)(已废弃)
+# @ohos.commonEvent (公共事件模块)(系统应用)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -22,7 +22,7 @@ import commonEvent from '@ohos.commonEvent';
 
 ## Support
 
-系统公共事件是指由系统服务或系统应用发布的事件，订阅这些系统公共事件需要相应的权限。发布或订阅这些事件需要使用如下链接中的枚举定义。
+[系统公共事件](../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)是指由系统服务或系统应用发布的事件，订阅这些系统公共事件需要相应的权限。发布或订阅这些事件需要使用如下链接中的枚举定义。
 
 全部系统公共事件枚举定义请参见[系统公共事件定义](./common_event/commonEvent-definitions.md)。
 
@@ -44,9 +44,9 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 
 | 参数名     | 类型                 | 必填 | 说明                               |
 | -------- | -------------------- | ---- | ---------------------------------- |
-| event    | string               | 是   | 表示要发布的公共事件。             |
+| event    | string               | 是   | 表示要发布的公共事件。字符串长度不超过254字节，超出部分会被截断。 |
 | userId   | number               | 是   | 表示指定向该用户ID发布此公共事件。 |
-| callback | AsyncCallback\<void> | 是   | 公共事件发布结果的回调方法。             |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -87,10 +87,10 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 
 | 参数名     | 类型                   | 必填 | 说明                   |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | 是   | 表示要发布的公共事件。  |
+| event    | string                 | 是   | 表示要发布的公共事件。字符串长度不超过254字节，超出部分会被截断。 |
 | userId   | number | 是 | 表示指定向该用户ID发布此公共事件。 |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | 是   | 表示发布公共事件的属性。 |
-| callback | AsyncCallback\<void>   | 是   | 公共事件发布结果的回调方法。  |
+| callback | AsyncCallback\<void>   | 是   | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 

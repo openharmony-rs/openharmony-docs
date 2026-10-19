@@ -6,6 +6,7 @@
 <!--Designer: @h00918518-->
 <!--Tester: @WIFIroam-test-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=11655b69cefb34a4a6c47c3aed59ee25121a8162 translatedAt=2026-09-22T13:42:16.467Z pushedAt=2026-09-23T10:36:06.822Z -->
 
 ## Overview
 
@@ -49,7 +50,7 @@ The following describes the development procedure specific to each application s
 1. Import the **eap** namespace from **@kit.NetworkKit**.
 
    <!-- @[eap_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
-   
+
    ``` TypeScript
    import { eap } from '@kit.NetworkKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -67,7 +68,7 @@ The following describes the development procedure specific to each application s
     The following uses the packet type (that is, eapCode=1 and eapType=25) sent by the server to the client as an example. If other packet types need to be registered, change the value of **eapCode** and then call the [regCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapregcustomeaphandler) API.
 
     <!-- @[eap_case_reply_custom_eapData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
-    
+
     ``` TypeScript
     let netType = 1;
     let eapCode= 1; // eap request
@@ -104,7 +105,7 @@ The following describes the development procedure specific to each application s
 3. To cancel the custom authentication, call [unregCustomEapHandler](../reference/apis-network-kit/js-apis-net-eap.md#eapunregcustomeaphandler).
 
    <!-- @[eap_case_unreg_custom_eapHandler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/AccreditationProcess.ets) -->
-   
+
    ``` TypeScript
    let netType = 1;
    let eapCode= 1; // eap request
@@ -138,7 +139,7 @@ The following describes the development procedure specific to each application s
 2. Import the **eap** namespace from **@kit.NetworkKit**.
 
    <!-- @[eap_case_eth_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
-   
+
    ``` TypeScript
    import { eap } from '@kit.NetworkKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -147,7 +148,7 @@ The following describes the development procedure specific to each application s
 3. If authentication is required for the network management applications, call [startEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eapstartetheap) to initiate the 802.1X authentication process.
 
    <!-- @[eap_case_start_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
-   
+
    ``` TypeScript
    const netId: number = 100;
    // ...
@@ -182,13 +183,13 @@ The following describes the development procedure specific to each application s
 4. If authentication is not required for the network management applications, call [logOffEthEap](../reference/apis-network-kit/js-apis-net-eap.md#eaplogoffetheap) to initiate the 802.1X deauthentication process.
 
    <!-- @[eap_case_log_off_eth_eap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetEap_case/entry/src/main/ets/pages/EthInterface.ets) -->
-   
+
    ``` TypeScript
    const netId: number = 100;
    // ...
      try{
        eap.logOffEthEap(netId);
-       hilog.error(0x0000, 'testTag', 'logOffEthEap success');
+       hilog.info(0x0000, 'testTag', 'logOffEthEap success');
        // ...
      } catch (err) {
        // ...

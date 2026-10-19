@@ -176,24 +176,31 @@ static void EnableInspector(JSVM_Env env) {
 ```
 
 ### 使用 Chrome inspect 页面进行调试
+
 推荐通过Chrome浏览器的 chrome://inspect/#devices 页面进行调试。方法如下：
+
 1. Chrome浏览器中打开 chrome://inspect/#devices，勾选以下内容：
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_1.png"/></div>
+   ![Chrome inspect设备页面](figures/jsvm-debugger-cpuprofiler-heapsnapshot_1.png)
+
 2. 执行端口转发命令：hdc fport [开发者个人计算机侧端口号] [端侧端口号]  
 
    例如：hdc fport tcp:9227 tcp:9226
+
 3. 点击Port forwarding按钮，左侧输入开发者个人计算机侧端口，右侧输入端侧端口号，点击done。如下图所示：
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_2.png"/></div>
+   ![Port forwarding设置](figures/jsvm-debugger-cpuprofiler-heapsnapshot_2.png)
+
 4. 点击Configure按钮，输入开发者个人计算机侧的端口号，如localhost:9227。如下图所示：
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_3.png"/></div>
+   ![Configure设置](figures/jsvm-debugger-cpuprofiler-heapsnapshot_3.png)
+
 5. 稍等片刻，会在target下出现调试的内容，点击inspect即可调试。如下图所示：
 
-   <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_4.png"/></div>
+   ![inspect调试入口](figures/jsvm-debugger-cpuprofiler-heapsnapshot_4.png)
 
 ### 使用 websocket 端口进行调试
+
 除了使用上述Chrome inspect页面和打开 "devtoolsFrontendUrl" 字段url的方法通过网页端 chrome devtools 调试代码之外，如果读者了解如何使用 CDP 协议代替网页端 devtools 功能，也可以通过连接 inspector 提供的 websocket 端口进行调试。
 
 其中连接 websocket 的方法为，根据前面提供的网页端调试步骤，在做完端口映射之后（如映射到 9229 端口），在 chrome 浏览器地址栏输入 "localhost:9229/json"，回车，获取"webSocketDebuggerUrl" 字段所对应的 url，然后使用标准的 websocket 客户端连接这个 url 即可发送 CDP 调试协议进行调试。需要注意的是，当前版本 inspector 提供的websocket 端口仅支持接收 Text Frame, Ping Frame 和 Connection Close Frame，所有其他类型的帧都会被视为错误帧而导致 websocket 连接中断。
@@ -328,10 +335,10 @@ static JSVM_PropertyDescriptor descriptor[] = {
 const char *srcCallNative = R"JS(runScriptWithStatistics();)JS";
 ```
 预计的输出结果：
-```ts
+```txt
 在对应鸿蒙设备内生成三个文件用于后续调优：
 heap-snapshot-begin.heapsnapshot
-heap-snapshot-end.heapsnapshot,
+heap-snapshot-end.heapsnapshot
 cpu-profile.cpuprofile
 文件功能见上文接口使用方法介绍
 ```

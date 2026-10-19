@@ -16,14 +16,14 @@
 ## 导入模块
 
 ```js
-import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
+import { MouseAction, Button, Axis, AxisValue, MouseToolType, MouseEvent } from '@kit.InputKit';
 ```
 
 ## Action
 
 鼠标事件类型。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称        | 值 | 说明                 |
 | ----------- | -------- | -------------------- |
@@ -41,7 +41,7 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 
 鼠标按键。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称      | 值  | 说明    |
 | ------- | ------| ----- |
@@ -58,7 +58,7 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 
 鼠标轴类型。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称                | 值     | 说明    |
 | ----------------- | ------- | ----- |
@@ -71,7 +71,7 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 
 鼠标轴类型和轴的值。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称    | 类型   | 只读   | 可选   | 说明   |
 | ----- | ------ | ---- | ---- | ---- |
@@ -82,7 +82,7 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 
 工具类型。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称      | 值  | 说明    |
 | ------- | ------| ----- |
@@ -95,7 +95,7 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 
 鼠标事件。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
 
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |

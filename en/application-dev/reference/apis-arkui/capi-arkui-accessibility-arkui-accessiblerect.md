@@ -6,7 +6,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e98b791a1f57fab5012a75ce7d9ff0a0466dd410 translatedAt=2026-07-16T10:42:37.823Z pushedAt=2026-07-17T02:36:04.423Z -->
+<!-- md-trans-meta sourceCommit=86516607de4ae31b89a087b4feaa5c2b41c67026 translatedAt=2026-08-19T04:16:10.821Z pushedAt=2026-08-19T06:36:28.282Z -->
 
 ```c
 typedef struct {...} ArkUI_AccessibleRect
@@ -28,7 +28,7 @@ Provides the coordinate position of the rectangular area of a node on a screen. 
 
 | Name| Description|
 | -- | -- |
-| int32_t leftTopX | X-coordinate of the upper left corner.|
-| int32_t leftTopY | Y-coordinate of the upper left corner. |
-| int32_t rightBottomX | X-coordinate of the lower right corner.|
-| int32_t rightBottomY | Y-coordinate of the lower right corner. |
+| int32_t leftTopX | X-coordinate of the upper left corner. Unit: px. |
+| int32_t leftTopY | Y-coordinate of the upper left corner. Unit: px. |
+| int32_t rightBottomX | X-coordinate of the lower right corner. Unit: px. |
+| int32_t rightBottomY | Y-coordinate of the lower right corner. Unit: px. |

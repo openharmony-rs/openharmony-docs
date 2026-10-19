@@ -8,14 +8,14 @@
 
 
 
-本模块提供了共用的一些常量定义。
+本模块提供了星闪通信中连接间隔的枚举值。
 
 
 **起始版本：** 26.0.0
 
 > **说明：**
 >
-> 本模块接口为系统接口。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.nearlink.constant (星闪公共常量定义)](js-apis-nearlink-constant.md)。
 
 
 ## 导入模块
@@ -26,7 +26,7 @@ import { nearlinkConstant } from '@kit.ConnectivityKit';
 
 ## ConnectionInterval
 
-连接间隔的枚举值。
+连接间隔的枚举值。间隔越小，时延越低、吞吐越高但功耗越大；间隔越大功耗越低但时延越高。高速档适用于高吞吐低时延场景，低速档适用于对功耗敏感场景。
 
 **起始版本：** 26.0.0
 
@@ -48,4 +48,3 @@ import { nearlinkConstant } from '@kit.ConnectivityKit';
 | LOW_SPEED_INTERVAL_200 | 7 | 表示连接间隔为200毫秒。 |
 | LOW_SPEED_INTERVAL_300 | 8 | 表示连接间隔为300毫秒。 |
 | LOW_SPEED_INTERVAL_500 | 9 | 表示连接间隔为500毫秒。 |
-

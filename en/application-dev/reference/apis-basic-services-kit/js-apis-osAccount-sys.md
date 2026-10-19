@@ -334,7 +334,7 @@ Checks whether a constraint is enabled for an OS account. This API uses a promis
 | Name    | Type  | Mandatory| Description                               |
 | ---------- | ------ | ---- | ---------------------------------- |
 | localId    | number | Yes  | ID of the target OS account. |
-| constraint | string | Yes  | [Constraint](js-apis-osAccount.md#constraints) to check.|
+| constraint | string | Yes  | [Constraint](appendix-osAccount-constraints.md) to check.|
 
 **Return value**
 
@@ -625,7 +625,7 @@ Sets or removes constraints for an OS account. This API uses an asynchronous cal
 | Name     | Type                     | Mandatory| Description                                            |
 | ----------- | ------------------------- | ---- | ----------------------------------------------- |
 | localId     | number                    | Yes  | ID of the target OS account.              |
-| constraints | Array&lt;string&gt;       | Yes  | [Constraints](js-apis-osAccount.md#constraints) to set or remove.       |
+| constraints | Array&lt;string&gt;       | Yes  | [Constraints](appendix-osAccount-constraints.md) to set or remove.       |
 | enable      | boolean                   | Yes  | Set or remove constraints. The value **true** means to set constraints, and **false** means to remove constraints.                         |
 | callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -682,7 +682,7 @@ Sets or removes constraints for an OS account. This API uses a promise to return
 | Name     | Type               | Mandatory| Description                                        |
 | ----------- | ------------------- | ---- | -------------------------------------------- |
 | localId     | number              | Yes  | ID of the target OS account.          |
-| constraints | Array&lt;string&gt; | Yes  | [Constraints](js-apis-osAccount.md#constraints) to set or remove.   |
+| constraints | Array&lt;string&gt; | Yes  | [Constraints](appendix-osAccount-constraints.md) to set or remove.   |
 | enable      | boolean             | Yes  | Set or remove constraints. The value **true** means to set constraints, and **false** means to remove constraints.                    |
 
 **Return value**
@@ -1052,7 +1052,7 @@ Obtains all the enabled constraints of an OS account. This API uses a promise to
 
 | Type                              | Description                                                      |
 | ---------------------------------- | ---------------------------------------------------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return all the enabled [constraints](js-apis-osAccount.md#constraints) of the OS account.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return all the enabled [constraints](appendix-osAccount-constraints.md) of the OS account.|
 
 **Error codes**
 
@@ -2104,7 +2104,7 @@ Subscribes to one or more constraint change events of the OS account to which th
 
 | Name    | Type                  | Mandatory| Description     |
 | --------  | ---------------------- | ---- | -------- |
-| constraints  | string[] | Yes  | List of [constraints](js-apis-osAccount.md#constraints) to be subscribed to.|
+| constraints  | string[] | Yes  | List of [constraints](appendix-osAccount-constraints.md) to be subscribed to.|
 | callback | Callback&lt;[ConstraintChangeInfo](#constraintchangeinfo23)&gt;  | Yes  | Callback used to listen for the constraint change events.|
 
 
@@ -2547,8 +2547,8 @@ Obtains the constraint source information of an OS account. This API uses an asy
 | Name  | Type                      | Mandatory| Description                                                        |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
 | localId     | number | Yes  |  ID of the target OS account.|
-| constraint     | string | Yes  |  [Constraint](js-apis-osAccount.md#constraints) whose source information is to be obtained.|
-| callback | AsyncCallback&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt;     | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the [constraint](js-apis-osAccount.md#constraints) source information obtained. Otherwise, **err** is an error object.                     |
+| constraint     | string | Yes  |  [Constraint](appendix-osAccount-constraints.md) whose source information is to be obtained.|
+| callback | AsyncCallback&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt;     | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the [constraint](appendix-osAccount-constraints.md) source information obtained. Otherwise, **err** is an error object.                     |
 
 **Error codes**
 
@@ -2599,13 +2599,13 @@ Obtains the constraint source information of an OS account. This API uses a prom
 | Name | Type  | Mandatory| Description        |
 | ------- | ------ | ---- | ------------ |
 | localId     | number | Yes  |  ID of the target OS account.|
-| constraint     | string | Yes  |  [Constraint](js-apis-osAccount.md#constraints) whose source information is to be obtained.|
+| constraint     | string | Yes  |  [Constraint](appendix-osAccount-constraints.md) whose source information is to be obtained.|
 
 **Return value**
 
 | Type                 | Description                                                        |
 | --------------------- | ------------------------------------------------------------ |
-| Promise&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt; | Promise used to return the source information of the specified [constraint](js-apis-osAccount.md#constraints).|
+| Promise&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt; | Promise used to return the source information of the specified [constraint](appendix-osAccount-constraints.md).|
 
 **Error codes**
 
@@ -7587,7 +7587,7 @@ Defines the constraint change information.
 
 | Name     | Type  | Read-Only| Optional| Description      |
 | ----------- | ------ | ---- | ---- | ---------- |
-| constraint | string | No| No| [Constraint](js-apis-osAccount.md#constraints) that has been changed.|
+| constraint | string | No| No| [Constraint](appendix-osAccount-constraints.md) that has been changed.|
 | isEnabled | boolean | No| No| Enabling state of the changed constraint. The default value is **false**.<br>The value **true** indicates that the target constraint is enabled, and **false** indicates the opposite.|
 
 ## CreateOsAccountOptions<sup>12+</sup>

@@ -56,7 +56,7 @@ static JSVM_Value GetVMInfo(JSVM_Env env, JSVM_CallbackInfo info)
     // 调用接口，获取虚拟机的信息
     JSVM_VMInfo result;
     JSVM_CALL(OH_JSVM_GetVMInfo(&result));
-    // 输出VM虚拟机信息
+    // 输出虚拟机信息
     PrintVmInfo(result);
     return nullptr;
 }

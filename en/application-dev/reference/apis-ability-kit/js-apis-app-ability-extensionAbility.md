@@ -1,18 +1,13 @@
 # @ohos.app.ability.ExtensionAbility (ExtensionAbility Base Class)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a914ec5c20531defc3768aa8242b62bbe2d1d08f translatedAt=2026-09-03T10:17:51.380Z pushedAt=2026-09-05T10:47:30.386Z -->
 
-<!--Kit: Ability Kit-->
-<!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
-<!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-
-ExtensionAbility is the base class for scenario-specific ExtensionAbilities. It inherits from [Ability](js-apis-app-ability-ability.md), with no property or method added. You cannot directly inherit from ExtensionAbility. For details about the inheritance relationship of each ability, see [Inheritance Relationship](./js-apis-app-ability-ability.md#ability-inheritance-relationship).
+ExtensionAbility is the base class for scenario-specific extension capabilities. It inherits from [Ability](js-apis-app-ability-ability.md), with no property or method added. You cannot directly inherit from ExtensionAbility. Instead, you should inherit from its concrete subclasses (such as <!--Del-->ServiceExtensionAbility, <!--DelEnd-->FormExtensionAbility, and so on) to implement scenario-specific extension capabilities. For details about the inheritance relationship of various abilities, see [Inheritance Relationship](./js-apis-app-ability-ability.md#ability-inheritance-relationship).
 
 > **NOTE**
 > 

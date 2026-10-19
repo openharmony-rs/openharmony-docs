@@ -2,15 +2,16 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-09-21T01:54:36.763Z pushedAt=2026-09-21T09:02:48.689Z -->
 
 
 The [createWebMessagePorts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebmessageports) API allows you to create message ports to implement communication between the application and frontend page.
 
 
-In the following example, **createWebMessagePorts** is used to create two message ports on the application and [postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage) is used to forward one of the message ports to the frontend page so that the application and frontend page can exchange messages with each other over the port. After the port is used or before the WebView object is destroyed, the [close](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close) API is called to disable the port.
+In the following example, **createWebMessagePorts** is used to create two message ports on the application and [postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage) is used to forward one of the message ports to the frontend page so that the application and frontend page can exchange messages with each other over the port. After the port is used or before the WebView object is destroyed, the [close](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close) API is called to close the port.
 
 
 - Application code:
@@ -87,7 +88,7 @@ In the following example, **createWebMessagePorts** is used to create two messag
             }
           })
 
-        // 5. Close the port. 
+        // 5. Close the port.  
         Button('closePort')
         .onClick(() => {
           try {
@@ -170,7 +171,7 @@ In the following example, **createWebMessagePorts** is used to create two messag
 ## FAQs
 
 ### What should I do if the application cannot receive messages sent by the HTML5 page?
-Check whether the data type is correct. **WebMessage** supports the string and ArrayBuffer types. 
+Check whether the data type is correct. **WebMessage** supports the string and ArrayBuffer types.  
 
 To pass the object type, use the **JSON.stringify** method to convert it to the string type. Example:
 
@@ -186,4 +187,4 @@ To pass the object type, use the **JSON.stringify** method to convert it to the 
 ```
 
 ### Which is executed first, onControllerAttached or javaScriptOnDocumentStart?
-[javaScriptOnDocumentStart](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptondocumentstart11) is executed after [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10).
+[javaScriptOnDocumentStart](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptondocumentstart11) is executed after [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10). 

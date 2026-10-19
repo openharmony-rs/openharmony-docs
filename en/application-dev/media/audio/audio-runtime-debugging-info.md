@@ -1,12 +1,11 @@
 # Using Audio Snapshots for Troubleshooting
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @boxwall-->
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=45526eba67080b876eb51af31a33be43ae26f701 translatedAt=2026-07-13T13:18:50.438Z pushedAt=2026-07-14T13:08:29.562Z -->
+<!-- md-trans-meta sourceCommit=4882f47f6c64101d8a55c7806ce63e17e8122e38 translatedAt=2026-09-18T02:49:05.369Z pushedAt=2026-09-18T09:02:22.697Z -->
 
 Starting from API version 26.0.0, the system provides audio snapshot (Audio Debugging Info) capability, which allows apps to obtain the runtime status of the audio subsystem in the current process. Audio Debugging Info captures a point-in-time snapshot of the audio subsystem, including key information such as audio stream parameters, routing status, volume information, audio focus state, and error records. It helps you inspect the internal state of the audio subsystem without affecting app behavior. You can use the captured snapshot to obtain diagnostic information for troubleshooting issues related to audio rendering, audio capture, audio loopback, and audio sessions, such as silent playback, abnormal volume levels, and audio focus loss.
 
@@ -132,12 +131,14 @@ OH_AudioDebuggingManager_PrintAppInfo(debugManager, -1);
 
 **ArkTS API:**
 
-<!-- @[print_app_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[print_app_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // Print the app snapshot to a file.
 const path = this.context.filesDir + '/audio_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644); // O_WRONLY | O_CREAT
+// READ_WRITE indicates read/write access, CREATE indicates creating the file if it does not exist, and TRUNC indicates clearing the original content when opening.
+const file = fileio.openSync(path,
+  fileio.OpenMode.READ_WRITE | fileio.OpenMode.CREATE | fileio.OpenMode.TRUNC);
 debugManager.printAppInfo(file.fd);
 fileio.closeSync(file);
 
@@ -204,12 +205,13 @@ if (fd >= 0) {
 
 **ArkTS API:**
 
-<!-- @[print_renderer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[print_renderer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // Print the snapshot of the specified renderer instance.
 const path = this.context.filesDir + '/renderer_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
+const file = fileio.openSync(path,
+  fileio.OpenMode.READ_WRITE | fileio.OpenMode.CREATE | fileio.OpenMode.TRUNC);
 debugManager.printRendererInfo(renderer, file.fd);
 fileio.closeSync(file);
 ```
@@ -301,12 +303,13 @@ if (fd >= 0) {
 
 **ArkTS API:**
 
-<!-- @[print_capturer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[print_capturer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // Print the snapshot of the specified capturer instance.
 const path = this.context.filesDir + '/capturer_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
+const file = fileio.openSync(path,
+  fileio.OpenMode.READ_WRITE | fileio.OpenMode.CREATE | fileio.OpenMode.TRUNC);
 debugManager.printCapturerInfo(capturer, file.fd);
 fileio.closeSync(file);
 ```
@@ -365,7 +368,7 @@ The following table lists the information in audio loopback snapshots.
 > **NOTE**
 >
 > For detailed field information, see the output example below.
-> Before calling this method, you need to create an AudioLoopback instance. For details about how to create and use loopback, see [Low-Latency Audio Monitoring](audio-ear-monitor-loopback.md). When the loopback is in the available state (`AVAILABLE_IDLE` or `AVAILABLE_RUNNING`), the complete snapshot information can be queried.
+> Before calling this method, you need to create an AudioLoopback instance. For details about how to create and use loopback, see [Low-Latency Audio Loopback](audio-ear-monitor-loopback.md). When the loopback is in the available state (`AVAILABLE_IDLE` or `AVAILABLE_RUNNING`), the complete snapshot information can be queried.
 
 For API details, refer to [printLoopbackInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printloopbackinfo).
 
@@ -382,7 +385,8 @@ let debugManager = audio.getAudioManager().getDebuggingManager();
 debugManager.printLoopbackInfo(audioLoopback, -1);
 
 // Output to a file.
-let filePath = getContext().filesDir + '/audio_loopback_debug.txt';
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let filePath = context.filesDir + '/audio_loopback_debug.txt';
 let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 debugManager.printLoopbackInfo(audioLoopback, file.fd);
 fs.closeSync(file);
@@ -439,7 +443,7 @@ For API details, see [printSessionInfo](../../reference/apis-audio-kit/arkts-api
 
 **C/C++ APIs:**
 
-<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->  
 
 ``` C++
 #include "ohaudio/native_audio_debugging_manager.h"
@@ -463,7 +467,6 @@ OH_AudioSessionManager *audioSessionManager;
     // fd: file descriptor. Obtain it based on the actual situation.
     // Output to a file.
     OH_AudioDebuggingManager_PrintSessionInfo(audioDebuggingManager, audioSessionManager, fd);
-}
 ```
 
 **ArkTS API:**
@@ -607,23 +610,13 @@ Pipeline [ID: 1]                         // Unique identifier of the pipeline.
 ## Notes
 
 - When calling a print API, if `fd` is less than 0 or not writable, the snapshot information will be output to the running log (hilog) and can be viewed using the log tool.
-
 - It is recommended that you obtain snapshot information when an audio exception occurs (such as no sound, abnormal volume, or focus loss) for fault locating.
-
 - Each print API is a synchronous call. It is recommended that you avoid calling them in audio data callbacks to prevent affecting audio processing performance.
-
 - The snapshot file is saved in the app sandbox directory and can be exported to the local device for viewing using the hdc tool:
-
   ``` bash
   hdc file recv /data/app/el2/100/base/<bundleName>/haps/entry/cache/audio_snapshot.txt ./
   ```
-
 - The complete snapshot information can be queried only when audio loopback is in an available state (`AVAILABLE_IDLE` or `AVAILABLE_RUNNING`).
-
 - Before calling the session snapshot API, an audio session must be created and activated; otherwise, complete snapshot information cannot be obtained.
-
 - When the `pipeline` parameter is NULL, information about all pipelines under the engine is output.
-
 - The specific parameters for node attribute configuration vary by node type. For details, see the description of each node in [OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md).
-
-<!--no_check-->

@@ -1,7 +1,7 @@
 # 使用Node-API接口进行object相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -89,13 +89,13 @@ class Person {
 // 创建类的实例
 const person = new Person('Alice', 30);
 // 传入实例对象，获取该对象的原型
-let applePrototype = testNapi.getPrototype(person);
-// 判断通过testNapi.getPrototype()函数获取到的原型是不是apple的原型
+let personPrototype = testNapi.getPrototype(person);
+// 判断通过testNapi.getPrototype()函数获取到的原型是不是person的原型
 // 在DevEco Studio 4.1及以后的版本中，由于ArkTS没有原型的概念，
 // 因此尝试进行原型赋值或相关操作时，
 // 将会触发错误提示'Prototype assignment is not supported (arkts-no-prototype-assignment)'，
 // 以下代码需在ts文件中执行
-if (applePrototype === Person.prototype) {
+if (personPrototype === Person.prototype) {
   hilog.info(0x0000, 'Node-API', 'get_prototype_success');
 } else {
   hilog.error(0x0000, 'Node-API', 'get_prototype_fail');
@@ -525,7 +525,7 @@ static napi_value SetTypeTagToObject(napi_env env, napi_callback_info info)
     // 给参数（对象）设置类型标签
     napi_status status = napi_type_tag_object(env, args[0], &TagsData[index]);
     if (status != napi_ok) {
-        napi_throw_error(env, "Reconnect error", "napi_type_tag_object failed");
+        napi_throw_error(env, "napi_type_tag_object error", "napi_type_tag_object failed");
         return nullptr;
     }
     // 将bool结果转换为napi_value并返回
@@ -563,6 +563,8 @@ export const setTypeTagToObject: (obj: Object, index: number) => boolean | undef
 
 export const checkObjectTypeTag: (obj: Object, index: number) => boolean; // napi_check_object_type_tag
 ```
+
+ArkTS侧示例代码
 
 <!-- @[ark_napi_type_tag_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) --> 
 
@@ -635,7 +637,8 @@ static napi_value CreateExternal(napi_env env, napi_callback_info info)
     // 返回带有外部数据的对象
     napi_status status = napi_create_external(env, data, finalizeCallback, nullptr, &result);
     if (status != napi_ok) {
-        OH_LOG_ERROR(LOG_APP, " Node-API Failed to create external data");
+        OH_LOG_ERROR(LOG_APP, "Node-API Failed to create external data");
+        free(data);
         return nullptr;
     }
     return result;

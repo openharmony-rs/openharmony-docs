@@ -1,7 +1,7 @@
 # ArkUI框架开发常见问题(JS)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiangyuan6; @yihao-lin-->
+<!--Owner: @xiangyuan6; @zhou-chaobo-->
 <!--Designer: @xiangyuan6; @piggyguy-->
 <!--Tester: @jiaoaozihao; @songyanhong-->
 <!--Adviser: @HelloCrease-->

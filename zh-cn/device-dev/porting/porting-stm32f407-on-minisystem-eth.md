@@ -1,11 +1,11 @@
 # 轻量系统STM32F407芯片移植案例
 
-介绍基于`STM32F407IGT6`芯片在拓维信息[Niobe407](https://gitcode.com/openharmony/device_board_talkweb)开发板上移植OpenHarmony LiteOS-M轻量系统，提供交通、工业领域开发板解决方案。移植架构采用`Board`与`SoC`分离方案，使用`arm gcc`工具链`Newlib C`库，实现了`lwip`、`littlefs`、`hdf`等子系统及组件的适配，开发了配套应用示例代码，支持通过Kconfig图形化配置编译选项。
+介绍基于`STM32F407IGT6`芯片在拓维信息[Niobe407](https://gitcode.com/openharmony/device_board_talkweb/blob/master/niobe407/README_zh.md)开发板上移植OpenHarmony LiteOS-M轻量系统，提供交通、工业领域开发板解决方案。移植架构采用`Board`与`SoC`分离方案，使用`arm gcc`工具链`Newlib C`库，实现了`lwip`、`littlefs`、`HDF`等子系统及组件的适配，开发了配套应用示例代码，支持通过Kconfig图形化配置编译选项。
 
 ## 适配准备 
 
- - 下载[stm32cubemx](https://www.st.com/en/development-tools/stm32cubemx.html)图形工具。
- - 准备ubuntu20.04系统环境，安装[arm-none-eabi-gcc](https://gitcode.com/openharmony/device_board_talkweb/blob/master/niobe407/docs/software/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%9B%BA%E4%BB%B6%E7%BC%96%E8%AF%91.md#%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE)交叉编译工具链。
+- 下载[stm32cubemx](https://www.st.com/en/development-tools/stm32cubemx.html)图形工具。
+- 准备ubuntu20.04系统环境，安装[arm-none-eabi-gcc](https://gitcode.com/openharmony/device_board_talkweb/blob/master/niobe407/docs/software/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%9B%BA%E4%BB%B6%E7%BC%96%E8%AF%91.md#%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE)交叉编译工具链。
 ### 生成可用工程
 
 通过stm32cubemx工具生成`STM32F407IGT6`芯片的Makefile工程，在此给出如下配置建议：
@@ -95,7 +95,7 @@ device
 vendor
 ├── hihope                               --- hihope产品相关目录，可供参考
 ├── hisilicon                            --- hisilicon产品相关目录，可供参考
-├── ohemu                                --- hisilicon产品相关目录，可供参考
+├── ohemu                                --- ohemu产品相关目录，可供参考
 ├── revoview                             --- revoview产品相关目录，可供参考
 └── talkweb                              --- 开发产品样例厂商目录
     └── niobe407                         --- 产品名字：niobe407
@@ -116,7 +116,6 @@ vendor
      "product_name": "niobe407",           // 用于hb set进行选择时，显示的产品名称
      "type": "mini",                       // 构建系统的类型，mini/small/standard
      "version": "7.0",                     // 构建系统的版本，1.0/2.0/3.0/7.0
-     "ohos_version": "OpenHarmony 7.0",    // OpenHarmony系统版本
      "device_company": "talkweb",          // 单板厂商名，用于编译时找到/device/board/talkweb目录
      "device_build_path": "device/board/talkweb/niobe407", // 单板编译路径
      "board": "niobe407",                  // 单板名，用于编译时找到/device/board/talkweb/niobe407目录
@@ -127,14 +126,14 @@ vendor
    }
    ```
 
-2. 在`//device/board/talkweb/niobe407`目录下创建`board`目录，在创建的目录下新增一个`config.gni`文件，用于描述该产品的编译配置信息：
+2. 在`//device/board/talkweb/niobe407/liteos_m`目录下新增一个`config.gni`文件，用于描述该产品的编译配置信息：
 
    ```gni
    # Kernel type, e.g. "linux", "liteos_a", "liteos_m".
    kernel_type = "liteos_m"                --- 内核类型，跟config.json中kernel_type对应
 
    # Kernel version.
-   kernel_version = "3.0.0"                --- 内核版本，跟config.json中kernel_version对应
+   kernel_version = "7.0.0"                --- 内核版本，跟config.json中kernel_version对应
    ```
 
 3. 验证`hb set`配置是否正确，输入`hb set`能够显示如下信息：
@@ -317,9 +316,7 @@ vendor
 
 ### BUILD.gn文件适配
 
-为了快速熟悉gn的编译和适配，建议先阅读 [LiteOS-M内核BUILD.gn编写指南](https://gitee.com/caoruihong/kernel_liteos_m/wikis/LiteOS-M%E5%86%85%E6%A0%B8BUILD.gn%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97)。
-
-**(注意，BUILD.gn文件中不要出现tab字符，所有tab用空格代替)**
+**（注意，BUILD.gn文件中不要出现tab字符，所有tab用空格代替）**
 
 1. 在 `kernel/liteos_m/BUILD.gn` 中，可以看到，通过`deps`指定了`Board`和`SoC`的编译入口：
 
@@ -502,7 +499,7 @@ board_ld_flags  ：链接选项，与Makefile中的LDFLAGS变量对应。
 
 ### 内核子系统适配
 
-在`//vendor/talkweb/niobe407/config.json`文件中添加内核子系统及相关配置,如下所示：
+在`//vendor/talkweb/niobe407/config.json`文件中添加内核子系统及相关配置，如下所示：
 
 ```json
 {
@@ -565,7 +562,7 @@ board_ld_flags  ：链接选项，与Makefile中的LDFLAGS变量对应。
    #define LOSCFG_SYS_HEAP_SIZE (((unsigned long)&__los_heap_addr_end__) - ((unsigned long)&__los_heap_addr_start__))
    ```
 
-   其中，`__los_heap_addr_start__`与`__los_heap_addr_end__`变量在`STM32F407IGTx_FLASH.ld`链接文件中被定义, 将_user_heap_stack花括号内内容修改为：
+   其中，`__los_heap_addr_start__`与`__los_heap_addr_end__`变量在`STM32F407IGTx_FLASH.ld`链接文件中被定义，将_user_heap_stack花括号内内容修改为：
 
    ```ld
    ._user_heap_stack :
@@ -814,7 +811,7 @@ misc {
 
 - PWM HDF HCS配置文件解析
 
-  `device_info.hcs`文件位于`//device/board/talkweb/niobe407/liteos_m/hdf_config/device_info.hcs`，以下示例为使用TIM2、TIM3和TIM7定时器输出PWM信号：
+  `device_info.hcs`文件位于`//device/board/talkweb/niobe407/liteos_m/hdf_config/device_info.hcs`，以下示例为使用TIM2、TIM3和TIM8定时器输出PWM信号：
 
     ```hcs
     device_pwm1 :: device {
@@ -849,7 +846,7 @@ misc {
   `hdf.hcs`文件位于`//device/board/talkweb/niobe407/liteos_m/hdf_config/hdf.hcs`，在此文件中配置TIM定时器具体信息：
 
     ```hcs
-    --- 注意：tim2-tim7、tim12-tim14时钟频率为84M，TIM1、TIM8~TIM11为168M，tim6和tim7不能输出pwm。
+    --- 注意：tim2-tim7、tim12-tim14时钟频率为84MHz，TIM1、TIM8~TIM11为168MHz，tim6和tim7不能输出pwm。
     --- tim1~tim5、tim8有4个channel，tim9、tim12有2个channel，tim10、tim11、tim13、tim14只有1个channel。
     
     pwm_config {
@@ -857,7 +854,7 @@ misc {
             match_attr = "config_pwm1";
             pwmTim = 1;         --- 定时器ID tim2（0:tim1，1:tim2，...，tim6和tim7不可用）
             pwmCh = 3;          --- 对应channel数（0:ch1、1:ch2、2:ch3、3:ch4）
-            prescaler = 4199;   --- 预分频数，例如tim2时钟为84M,(84M/(4199+1))=20khz，则以20khz为基准。
+            prescaler = 4199;   --- 预分频数，例如tim2时钟为84MHz，(84MHz/(4199+1))=20khz，则以20khz为基准。
         }       
         pwm2_config {
             match_attr = "config_pwm2";
@@ -874,9 +871,9 @@ misc {
     }
     ```
 
-`hdf pwm`适配代码请参考：`//drivers/hdf_core/adapter/platform/pwm/pwm_stm32f4xx.c`
+`HDF PWM`适配代码请参考：`//drivers/hdf_core/adapter/platform/pwm/pwm_stm32f4xx.c`
 
-`hdf pwm`使用示例可请参考：`//device/board/talkweb/niobe407/applications/206_hdf_pwm`
+`HDF PWM`使用示例可请参考：`//device/board/talkweb/niobe407/applications/206_hdf_pwm`
 
 ## 子系统适配
 
@@ -1087,7 +1084,7 @@ bool HilogProc_Impl(const HiLogContent *hilogContent, uint32_t len)
     char tempOutStr[LOG_FMT_MAX_LEN];
     tempOutStr[0] = 0,tempOutStr[1] = 0;
     if (LogContentFmt(tempOutStr, sizeof(tempOutStr), hilogContent) > 0) {
-        printf(tempOutStr);
+        printf("%s", tempOutStr);
     }
     return true;
 }
@@ -1138,7 +1135,7 @@ HiviewRegisterHilogProc(HilogProc_Impl);
 }
 ```
 
-`huks`部件适配时，`huks_key_store_path`配置选项用于指定存放秘钥路径,`huks_config_file`为配置头文件名称。
+`huks`部件适配时，`huks_key_store_path`配置选项用于指定存放密钥路径，`huks_config_file`为配置头文件名称。
 
 ### 公共基础库子系统适配
 
@@ -1146,7 +1143,7 @@ HiviewRegisterHilogProc(HilogProc_Impl);
 
 ```json
 {
-      "subsystem": "utils",
+      "subsystem": "commonlibrary",
       "components": [
         {
           "component": "file",
@@ -1170,7 +1167,7 @@ HiviewRegisterHilogProc(HilogProc_Impl);
 
 ### HDF子系统适配
 
-与启动恢复子系统适配类似，我们需要在链接文件`//device/board/talkweb/niobe407/liteos_m/STM32F407IGTx_FLASH.ld`中手动新增如下段:
+与启动恢复子系统适配类似，我们需要在链接文件`//device/board/talkweb/niobe407/liteos_m/STM32F407IGTx_FLASH.ld`中手动新增如下段：
 
 ```ld
 _hdf_drivers_start = .;
@@ -1188,7 +1185,7 @@ _hdf_drivers_end = .;
 #endif
 ```
 
-`devmgr_service_start.h`头文件所在路径为: `//drivers/hdf_core/framework/core/common/include/manager`,为保证编译时能找到该头文件，需要将其加入到include_dirs中：
+`devmgr_service_start.h`头文件所在路径为：`//drivers/hdf_core/framework/core/common/include/manager`，为保证编译时能找到该头文件，需要将其加入到include_dirs中：
 
 ### XTS兼容性测评子系统适配
 
@@ -1216,7 +1213,7 @@ _hdf_drivers_end = .;
     }
 ```
 
-我们可以在xts_acts组件的features数组中指定如下属性:
+我们可以在xts_acts组件的features数组中指定如下属性：
 
 - `config_ohos_xts_acts_utils_lite_kv_store_data_path` 配置挂载文件系统根目录的名字。
 - `enable_ohos_test_xts_acts_use_thirdparty_lwip` 表示如果使用`thirdparty/lwip`目录下的源码编译，则设置为`true`，否则设置为`false`。
@@ -1268,7 +1265,7 @@ hb build -f -b debug --gn-args build_xts=true
 
 ```c
 static const char OHOS_DEVICE_TYPE[] = {"Evaluation Board"};
-static const char OHOS_DISPLAY_VERSION[] = {"OpenHarmony 3.1"};
+static const char OHOS_DISPLAY_VERSION[] = {"OpenHarmony 7.0"};
 static const char OHOS_MANUFACTURE[] = {"Talkweb"};
 static const char OHOS_BRAND[] = {"Talkweb"};
 static const char OHOS_MARKET_NAME[] = {"Niobe"};
@@ -1276,7 +1273,7 @@ static const char OHOS_PRODUCT_SERIES[] = {"Niobe"};
 static const char OHOS_PRODUCT_MODEL[] = {"Niobe407"};
 static const char OHOS_SOFTWARE_MODEL[] = {"1.0.0"};
 static const char OHOS_HARDWARE_MODEL[] = {"2.0.0"};
-static const char OHOS_HARDWARE_PROFILE[] = {"RAM:192K,ROM:1M,ETH:true"};
+static const char OHOS_HARDWARE_PROFILE[] = {"RAM:192KB,ROM:1MB,ETH:true"};
 static const char OHOS_BOOTLOADER_VERSION[] = {"twboot-v2022.03"};
 static const char OHOS_ABI_LIST[] = {"armm4_hard_fpv4-sp-d16-liteos"};
 static const char OHOS_SERIAL[] = {"1234567890"};  // provided by OEM.

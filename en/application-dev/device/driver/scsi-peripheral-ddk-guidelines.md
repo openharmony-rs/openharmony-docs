@@ -1,11 +1,12 @@
 # SCSI Peripheral DDK Development
+
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:14.315Z pushedAt=2026-06-25T06:57:15.673Z -->
+<!-- md-trans-meta sourceCommit=09d00a95d1d887d97b87c4ee8f0a2a7b0621646c translatedAt=2026-08-20T06:24:27.130Z pushedAt=2026-08-20T13:03:29.050Z -->
 
 ## Overview
 
@@ -43,7 +44,7 @@ Before you get started, understand the following concepts:
 
 - **Logical block**
 
-    A logical block is a basic data storage unit. It represents a data area of a fixed size on a device and is usually used for data read and write operations. The size of a logical block may be 512 bytes, 1024 bytes, 2048 bytes, and so on. A specific size depends on a configuration of the device and a design of the file system.
+    A logical block is a basic data storage unit. It represents a data area of a fixed size on a device and is usually used for data read and write operations. The size of a logical block may be 512 bytes, 1024 bytes, 2048 bytes, and so on. The specific size depends on a configuration of the device and a design of the file system.
 
 - **CDB**
 
@@ -78,7 +79,7 @@ Before you get started, make necessary preparations by following instructions in
 | int32_t OH_ScsiPeripheral_Init(void) | Initializes the ScsiPeripheralDDK.|
 | int32_t OH_ScsiPeripheral_Release(void) | Releases the ScsiPeripheralDDK.|
 | int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPeripheral_Device **dev) | Opens the SCSI device specified by **deviceId** and **interfaceIndex**.|
-| int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev) | Disables the SCSI device.|
+| int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev) | Closes the SCSI device.|
 | int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripheral_TestUnitReadyRequest *request, ScsiPeripheral_Response *response) | Checks whether the logical units are ready.|
 | int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_InquiryRequest *request, ScsiPeripheral_InquiryInfo *inquiryInfo, ScsiPeripheral_Response *response) | Queries basic information about the SCSI device.|
 | int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeripheral_ReadCapacityRequest *request, ScsiPeripheral_CapacityInfo *capacityInfo, ScsiPeripheral_Response *response) | Obtains the capacity information about the SCSI device.|
@@ -100,11 +101,13 @@ The following describes how to use the ScsiPeripheralDDK to develop non-standard
 **Adding Dynamic Link Libraries**
 
 Add the following libraries to **CMakeLists.txt**.
+
 ```txt
 libscsi.z.so
 ```
 
 **Including Header Files**
+
 ```c++
 #include <scsi_peripheral/scsi_peripheral_api.h>
 #include <scsi_peripheral/scsi_peripheral_types.h>
@@ -262,12 +265,14 @@ libscsi.z.so
     ret = OH_ScsiPeripheral_Release();
     ```
 
-
 ### Debugging and Verification
 
 Upon completion of driver application development, you can install the application on the OpenHarmony device. The test procedure is as follows:
 
 1. Click the driver application on the device. The application is started on the device.
+
 2. Check whether the application can read the basic information about the SCSI device.
+
 3. Select a SCSI command, enter parameters, and click the **Send** button.
+
 4. (Optional) Set the direction, CDB data, and CDB length, and click the **Send** button to run the corresponding SCSI command.

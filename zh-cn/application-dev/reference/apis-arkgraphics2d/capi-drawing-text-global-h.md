@@ -1,13 +1,13 @@
 # drawing_text_global.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 ## 概述
 
-提供文本全局信息的相关接口，如设置文本渲染高对比度模式、未定义字型的呈现方式等。
+提供文本全局信息的相关接口，如设置文本渲染高对比度模式、未定义字形的呈现方式等。
 
 **引用文件：** <native_drawing/drawing_text_global.h>
 

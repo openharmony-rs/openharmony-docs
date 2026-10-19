@@ -6,7 +6,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=fd10fbb9e5b5e2e1e561a46b9ca4925a29d1a0a3 translatedAt=2026-06-30T12:26:33.742Z pushedAt=2026-07-02T09:00:10.666Z -->
+<!-- md-trans-meta sourceCommit=dac4f2b07a7203d2a3ed445760648d35364b1673 translatedAt=2026-08-21T02:21:54.305Z pushedAt=2026-08-21T07:15:45.052Z -->
 
 **ContainerReader** is a container breakpoint component used to obtain breakpoint information based on container size in dynamic scenarios and perform responsive layout. This component returns the container's size and breakpoint in real time through [two-way binding](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters), enabling you to create and lay out components based on container size.
 
@@ -66,7 +66,7 @@ Defines the configuration options for the **ContainerReader** component, used to
 | ---- | ---- | ---- | ---- | ---- |
 | size | [Size](../js-apis-arkui-graphics.md#size) | No | No | Size of the **ContainerReader** component, used for layout analysis and breakpoint calculation.<br/>Note:<br/>This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters). After binding, when the component size value changes, the bound variable of **size** automatically updates. |
 | widthBreakpoint | [WidthBreakpoint](./ts-appendix-enums.md#widthbreakpoint13) | No | Yes | Width breakpoint of the container, which is the obtained width breakpoint enum value of the **ContainerReader** component.<br/>Note:<br/>This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters). After binding, when the component width breakpoint value changes, the bound variable of **widthBreakpoint** automatically updates. |
-| heightBreakpoint | [HeightBreakpoint](./ts-appendix-enums.md#heightbreakpoint13) | No | Yes | Height breakpoint of the container, which is the height breakpoint enum value of the **ContainerReader** component under different aspect ratio thresholds.<br/>Note<br/>This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters). After binding, when the component height breakpoint value changes, the bound variable of **heightBreakpoint** automatically updates. |
+| heightBreakpoint | [HeightBreakpoint](./ts-appendix-enums.md#heightbreakpoint13) | No | Yes | Height breakpoint of the container, which is the height breakpoint enum value of the **ContainerReader** component under different aspect ratio thresholds.<br/>Note:<br/>This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters). After binding, when the component height breakpoint value changes, the bound variable of **heightBreakpoint** automatically updates. |
 
 ## Attributes
 
@@ -119,19 +119,15 @@ Defines the breakpoint configuration options, which are used to specify threshol
 
 ## Example
 
-### Example 1: Switching Layout Direction Based on ContainerReader Width Breakpoint)
+### Example 1: Switching Layout Direction Based on ContainerReader Width Breakpoint
 
 This example demonstrates how the [ContainerReader](#containerreader-1) component obtains container size and breakpoint information through two-way binding, and switches the layout direction based on the width breakpoint.
 
 The **ContainerReader** component is added since API version 26.0.0.
 
-> **NOTE**
->
-> To use **ContainerReader**, you need to import **ContainerReaderAttribute** at the same time, otherwise it will cause a compilation error.
-
 ```ts
 // xxx.ets
-import { ContainerReader, ContainerReaderAttribute, Size } from '@kit.ArkUI';
+import { ContainerReader, Size } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -189,7 +185,7 @@ struct Index {
 }
 ```
 
-![](figures/containerReader_Demo001.gif)
+<!--Del--> <!--DelEnd-->
 
 ### Example 2: Configuring Custom Breakpoints
 
@@ -197,13 +193,9 @@ This example demonstrates how to customize breakpoint thresholds via [breakpoint
 
 The **ContainerReader** component and the **breakpointConfig** API are added since API version 26.0.0.
 
-> **NOTE**
->
-> To use **ContainerReader**, you need to import **ContainerReaderAttribute** at the same time, otherwise a compilation error will occur.
-
 ```ts
 // xxx.ets
-import { ContainerReader, ContainerReaderAttribute, Size } from '@kit.ArkUI';
+import { ContainerReader, Size } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -268,7 +260,7 @@ struct Index {
 
 Tap the button to change the width of the parent container, which returns different width breakpoint values, thereby adjusting the layout direction.
 
-![](figures/containerReader_Demo002.gif)
+<!--Del--> <!--DelEnd-->
 
 ### Example 3: Dynamically Adjusting the Number of Columns Using the Width Breakpoint
 
@@ -276,13 +268,9 @@ This example demonstrates how to dynamically adjust the number of columns based 
 
 The **ContainerReader** component is added since API version 26.0.0.
 
-> **NOTE**
->
-> To use **ContainerReader**, you need to import **ContainerReaderAttribute** at the same time, otherwise a compilation error will occur.
-
 ```ts
 // xxx.ets
-import { ContainerReader, ContainerReaderAttribute, Size } from '@kit.ArkUI';
+import { ContainerReader, Size } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -357,5 +345,4 @@ struct Index {
 }
 ```
 
-![](figures/containerReader_Demo003.gif)
-<!--no_check-->
+<!--Del--> <!--DelEnd-->
