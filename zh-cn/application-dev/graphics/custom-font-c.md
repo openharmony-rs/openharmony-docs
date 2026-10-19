@@ -138,3 +138,25 @@
 8. 如果需要释放自定义字体，可以使用OH_Drawing_UnregisterFont接口。
 
    <!-- @[custom_font_c_custom_font_text_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
+   
+   ``` C++
+   // 注销对应的自定义字体
+   OH_Drawing_UnregisterFont(fontCollection, fontFamily);
+   OH_Drawing_TypographyCreate* handler1 = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
+   // 在段落生成器中设置文本样式
+   OH_Drawing_TypographyHandlerPushTextStyle(handler1, textStyle);
+   // 在段落生成器中设置文本内容
+   const char* text1 = "hello, 这段文本的自定义字体被注销了";
+   OH_Drawing_TypographyHandlerAddText(handler1, text1);
+   // 通过段落生成器生成段落
+   OH_Drawing_Typography* typography1 = OH_Drawing_CreateTypography(handler1);
+   OH_Drawing_TypographyLayout(typography1, maxWidth);
+   // 将文本绘制到画布(0,300)上
+   OH_Drawing_TypographyPaint(typography1, cCanvas_, 0, 300);
+   // 释放内存
+   OH_Drawing_DestroyTypography(typography1);
+   OH_Drawing_DestroyTypographyHandler(handler1);
+   OH_Drawing_DestroyTypographyStyle(typographyStyle);
+   OH_Drawing_DestroyTextStyle(textStyle);
+   OH_Drawing_DestroyFontCollection(fontCollection);
+   ```
