@@ -263,7 +263,7 @@ The effect is as follows:
 
 You can use a pen or brush to draw a rectangle on the canvas. Use **drawRect()** to draw a rectangle. The API needs to pass four floating points, which indicate the coordinates of the left, top, right, and bottom positions of the rectangle. The four coordinates form a rectangle.
 
-The following is an example of drawing a five-pointed star using a pen and a brush:
+The following is an example of drawing a five-pointed star using a brush:
 
 <!-- @[arkts_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
