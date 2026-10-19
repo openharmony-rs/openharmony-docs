@@ -446,3 +446,4 @@ carAwareness.getAllCapabilityList()
     hilog.error(DOMAIN, TAG, 'Get capability list failed, error code: %{public}d', err.code);
   });
 ```
+<!--no_check-->
