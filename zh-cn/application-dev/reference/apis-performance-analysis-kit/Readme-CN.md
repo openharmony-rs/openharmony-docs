@@ -66,6 +66,7 @@
     - [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)
     - [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md)
     - [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md)
+    - [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md)
     - [HiTraceId](capi-hitrace-hitraceid.md)
 - 错误码<!--performance-analysis-errcode-->
   - [Faultlogger 错误码](errorcode-faultlogger.md)
