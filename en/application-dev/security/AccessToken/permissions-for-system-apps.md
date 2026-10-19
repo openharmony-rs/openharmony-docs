@@ -9646,3 +9646,73 @@ Allows an application to subscribe to automotive cloud mobile service events.
 **Supported devices**: cars
 
 **Since**: 26.0.1
+
+## ohos.permission.vehicle.VEHICLE_POWER
+
+Allows a system application to subscribe to and query the vehicle cabin power status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.NONRDA_SCREEN
+
+Allows a system application to control the on/off state of screens other than the instrument cluster screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CLUSTER_SCREEN
+
+Allows a system application to control the on/off state of the instrument cluster screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.SHUTDOWN
+
+Allows a system application to turn off the vehicle cabin power.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.KEEP_STANDBY
+
+Allows a system application to request keeping the vehicle cabin awake.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1

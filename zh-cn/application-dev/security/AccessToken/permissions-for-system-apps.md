@@ -9701,3 +9701,73 @@
 **支持设备**：Car
 
 **起始版本**：26.0.1
+
+## ohos.permission.vehicle.VEHICLE_POWER
+
+允许系统应用订阅和查询座舱电源状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.NONRDA_SCREEN
+
+允许系统应用控制除仪表外其他屏幕的亮灭。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.CLUSTER_SCREEN
+
+允许系统应用控制仪表屏的亮灭。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.SHUTDOWN
+
+允许系统应用关闭座舱电源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.KEEP_STANDBY
+
+允许系统应用申请座舱保电。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
