@@ -15,5 +15,5 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [cloud_disk_error_code.h](capi-cloud-disk-error-code-h.md) | 提供云盘管理模块的错误码定义。 |
-| [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md) | 云盘管理模块的接口定义。 |
+| [cloud_disk_error_code.h](capi-cloud-disk-error-code-h.md) | 提供云盘管理模块的错误码定义，用于标识云盘管理接口调用过程中的异常情况，帮助开发者定位和处理权限校验失败、参数无效、路径冲突、IPC连接失败等问题。 |
+| [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md) | 云盘管理模块的接口定义，提供云盘同步根路径的注册、激活、监听和查询能力，支持监听文件变更、设置和查询文件同步状态，并提供占位符文件的创建、水合、脱水及回调注册能力，适用于需要在应用内实现云盘文件同步、变更监听和按需下载的场景。 |
