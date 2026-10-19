@@ -9771,3 +9771,31 @@
 **支持设备**：Car
 
 **起始版本**：26.0.1
+
+## ohos.permission.SWB_RW_DEEPLINK
+
+允许应用访问方控应用（SWB）读/写DeepLink的接口。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.SWB_MONITOR
+
+允许应用订阅方控应用（SWB）的按键事件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
