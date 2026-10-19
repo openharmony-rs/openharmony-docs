@@ -1117,14 +1117,14 @@ import { wantAgent, WantAgent, AbilityConstant, UIAbility, Want } from '@kit.Abi
 // 在原子化服务中，请删除WantAgent导入
  
 export default class EntryAbility extends UIAbility {
-  continuousTaskId: number | undefined = -1;
+  continuousTaskId : int | undefined = -1; // 保存长时任务Id
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
       // 请开发者替换为实际被拉起应用的bundleName和abilityName
       wants: [
         {
-          bundleName: 'com.example.myapplication',
-          abilityName: 'EntryAbility'
+          bundleName: "com.huawei.ani.myapplication",
+          abilityName: "EntryAbility"
         }
       ],
       // 设置点击通知后的动作类型
@@ -1134,34 +1134,30 @@ export default class EntryAbility extends UIAbility {
       // 设置点击通知后的动作执行属性
       actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
     };
- 
+
     let progress: backgroundTaskManager.ProgressInfo = {
       title: '通知标题', // 必填
       fileName: '通知内容', // 必填
       progressValue: 20, // 应用更新进度值，自定义
       isMute: false, // 通知进度达到100时是否静音，自定义
     };
- 
+    
     try {
       // 通过wantAgent模块下getWantAgent方法获取WantAgent对象
-      // 在原子化服务中，请使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
       wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
         try {
           // 如果要合并通知，主类型和子类型都必须相同，combinedTaskNotification为true，continuousTaskId必须存在且合法
           // 申请主类型为MODE_DATA_TRANSFER的长时任务
-          let modeList: Array<number> = [backgroundTaskManager.BackgroundTaskMode.MODE_DATA_TRANSFER];
-          let subModeList: Array<number> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_LIVE_VIEW_NOTIFICATION];
-          // 创建长时任务请求对象
+          let modeList: Array<backgroundTaskManager.BackgroundTaskMode> = [backgroundTaskManager.BackgroundTaskMode.MODE_DATA_TRANSFER];
+          let subModeList: Array<backgroundTaskManager.BackgroundTaskSubmode> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_LIVE_VIEW_NOTIFICATION];
           let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
           continuousTaskRequest.backgroundTaskModes =  modeList;
           continuousTaskRequest.backgroundTaskSubmodes = subModeList;
           continuousTaskRequest.wantAgent = wantAgentObj;
-          continuousTaskRequest.combinedTaskNotification = false;
-          continuousTaskRequest.continuousTaskId = this.continuousTaskId;
           continuousTaskRequest.progressInfo = progress;
-          backgroundTaskManager.startContinuousTask(this.context, continuousTaskRequest).then((res: number) => {
+          backgroundTaskManager.startContinuousTask(this.context, continuousTaskRequest).then((res: int) => {
             console.info(`Operation startContinuousTask succeeded. continuousTaskId is ${res}`);
-            this.continuousTaskId = res ?? -1;
+            this.continuousTaskId = res;
           }).catch((error) => {
             console.error(`Operation startContinuousTask failed. code is ${error.code} message is ${error.message}`);
           });
@@ -1172,7 +1168,6 @@ export default class EntryAbility extends UIAbility {
     } catch (error) {
       console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
-  }
 };
 ```
 
