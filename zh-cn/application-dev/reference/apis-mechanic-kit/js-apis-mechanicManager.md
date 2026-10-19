@@ -44,7 +44,7 @@ on(type: 'attachStateChange', callback: Callback\<AttachStateChangeInfo>): void
 **示例：**
 
 ```ts
-// 判断当前设备是否支持对特定设备类型的机械体设备控制
+// 判断当前设备是否支持对特定设备类型的机械体设备控制（isControlSupported()接口API起始版本：26.0.0）
 let isSupported: boolean = mechanicManager.isControlSupported();
 if (!isSupported) {
   console.info('The control function is not supported.');
@@ -89,7 +89,7 @@ off(type: 'attachStateChange', callback?: Callback\<AttachStateChangeInfo>): voi
 **示例：**
 
 ```ts
-// 判断当前设备是否支持对特定设备类型的机械体设备控制
+// 判断当前设备是否支持对特定设备类型的机械体设备控制（isControlSupported()接口API起始版本：26.0.0）
 let isSupported: boolean = mechanicManager.isControlSupported();
 if (!isSupported) {
   console.info('The control function is not supported.');
@@ -131,7 +131,7 @@ getAttachedMechDevices(): MechInfo[]
 **示例：**
 
 ```ts
-// 判断当前设备是否支持对特定设备类型的机械体设备控制
+// 判断当前设备是否支持对特定设备类型的机械体设备控制（isControlSupported()接口API起始版本：26.0.0）
 let isSupported: boolean = mechanicManager.isControlSupported();
 if (!isSupported) {
   console.info('The control function is not supported.');
@@ -170,7 +170,7 @@ setCameraTrackingEnabled(isEnabled: boolean): void
 **示例：**
 
 ```ts
-// 判断当前设备是否支持对特定设备类型的机械体设备控制
+// 判断当前设备是否支持对特定设备类型的机械体设备控制（isControlSupported()接口API起始版本：26.0.0）
 let isSupported: boolean = mechanicManager.isControlSupported();
 if (!isSupported) {
   console.info('The control function is not supported.');
@@ -208,7 +208,7 @@ getCameraTrackingEnabled(): boolean
 **示例：**
 
 ```ts
-// 判断当前设备是否支持对特定设备类型的机械体设备控制
+// 判断当前设备是否支持对特定设备类型的机械体设备控制（isControlSupported()接口API起始版本：26.0.0）
 let isSupported: boolean = mechanicManager.isControlSupported();
 if (!isSupported) {
   console.info('The control function is not supported.');
@@ -246,7 +246,7 @@ on(type: 'trackingStateChange', callback: Callback\<TrackingEventInfo>): void
 **示例：**
 
 ```ts
-// 判断当前设备是否支持对特定设备类型的机械体设备控制
+// 判断当前设备是否支持对特定设备类型的机械体设备控制（isControlSupported()接口API起始版本：26.0.0）
 let isSupported: boolean = mechanicManager.isControlSupported();
 if (!isSupported) {
   console.info('The control function is not supported.');
@@ -289,7 +289,7 @@ off(type: 'trackingStateChange', callback?: Callback\<TrackingEventInfo>): void
 **示例：**
 
 ```ts
-// 判断当前设备是否支持对特定设备类型的机械体设备控制
+// 判断当前设备是否支持对特定设备类型的机械体设备控制（isControlSupported()接口API起始版本：26.0.0）
 let isSupported: boolean = mechanicManager.isControlSupported();
 if (!isSupported) {
   console.info('The control function is not supported.');
@@ -332,7 +332,7 @@ getCameraTrackingLayout(): CameraTrackingLayout
 **示例：**
 
 ```ts
-// 判断当前设备是否支持对特定设备类型的机械体设备控制
+// 判断当前设备是否支持对特定设备类型的机械体设备控制（isControlSupported()接口API起始版本：26.0.0）
 let isSupported: boolean = mechanicManager.isControlSupported();
 if (!isSupported) {
   console.info('The control function is not supported.');
