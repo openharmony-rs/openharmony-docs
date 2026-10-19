@@ -224,7 +224,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 5. 调用OH_AudioCodec_Prepare()，解码器就绪。
 
-   示例工程将OH_AudioCodec_Prepare()封装在Config()函数中调用：Config()函数中先完成Configure()配置，之后再调用OH_AudioCodec_Prepare()使解码器就绪。以下为其中Prepare部分的代码：
+   示例工程将OH_AudioCodec_Prepare()封装在Config()函数中调用：在Config()函数中先完成Configure()配置，之后再调用OH_AudioCodec_Prepare()使解码器就绪。以下为其中Prepare部分的代码：
 
    <!-- @[AudioDecoder::Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_decoder.cpp) -->
    
