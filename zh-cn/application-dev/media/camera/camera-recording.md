@@ -30,7 +30,7 @@
 
    系统提供的media接口可以创建一个录像[AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)实例，通过该实例的[getInputSurface](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#getinputsurface9)方法获取SurfaceId，与录像输出流做关联，处理录像输出流输出的数据。
 
-   <!-- @[camera_video_getVideoSurface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @[camera_video_getVideoSurface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
 
    ```ts
    async function getVideoSurfaceId(aVRecorderConfig: media.AVRecorderConfig): Promise<string | undefined> {  // aVRecorderConfig可参考步骤3.创建录像输出流。
