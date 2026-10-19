@@ -5448,6 +5448,76 @@
 						"end_line":243,
 						"name":"onclick_freeze_Handler",
 						"start_line":239
+					},
+					{
+						"end_line":20,
+						"name":"index_h",
+						"start_line":16
+					},
+					{
+						"end_line":33,
+						"name":"domain_h",
+						"start_line":31
+					},
+					{
+						"end_line":48,
+						"name":"error_observer",
+						"start_line":35
+					},
+					{
+						"end_line":154,
+						"name":"onclick_error_observer",
+						"start_line":141
+					},
+					{
+						"end_line":58,
+						"name":"error_func",
+						"start_line":50
+					},
+					{
+						"end_line":168,
+						"name":"onclick_error_func",
+						"start_line":156
+					},
+					{
+						"end_line":80,
+						"name":"promise_func",
+						"start_line":68
+					},
+					{
+						"end_line":202,
+						"name":"onclick_promise_func",
+						"start_line":186
+					},
+					{
+						"end_line":107,
+						"name":"freeze_call_back",
+						"start_line":103
+					},
+					{
+						"end_line":236,
+						"name":"onclick_freeze_call_back",
+						"start_line":222
+					},
+					{
+						"end_line":66,
+						"name":"loop_observer",
+						"start_line":60
+					},
+					{
+						"end_line":184,
+						"name":"onclick_loop_observer",
+						"start_line":170
+					},
+					{
+						"end_line":101,
+						"name":"unhandled_rejection_observer",
+						"start_line":82
+					},
+					{
+						"end_line":220,
+						"name":"onclick_unhandled_rejection_observer",
+						"start_line":204
 					}
 				]
 			},
@@ -5457,6 +5527,16 @@
 					{
 						"end_line":28,
 						"name":"second_error_handler",
+						"start_line":1
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"first_error_handler",
 						"start_line":1
 					}
 				]
