@@ -1742,7 +1742,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **授权方式**：normal
 
-**授权方式**：系统授权（manual_settings）
+**授权方式**：手动设置授权（manual_settings）
 
 **支持设备**：PC/2in1
 
