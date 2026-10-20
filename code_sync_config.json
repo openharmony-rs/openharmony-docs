@@ -3403,6 +3403,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":23,
+						"name":"declaration_function",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
