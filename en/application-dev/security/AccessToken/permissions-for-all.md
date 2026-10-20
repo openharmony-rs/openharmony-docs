@@ -820,3 +820,17 @@ With this permission, the application can use the user passive recognition capab
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 26.0.1
+
+## ohos.permission.UPDATE_SCOPE_FONT
+
+Allows an application to manage application-level and session-level fonts.
+
+With this permission, the application can use font management APIs to install, uninstall, and query application-level and session-level fonts, and register font service status listener.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.1
