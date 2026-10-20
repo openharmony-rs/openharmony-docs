@@ -6692,6 +6692,20 @@ Allows an application to switch the list of displayable applications on multi-mo
 
 **Valid since**: 26.0.1
 
+## ohos.permission.SKIP_ENTERPRISE_RESIGN_VERIFY
+ 
+Allows an application to skip enterprise re-signing certificate verification.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+ 
+**Since**: 26.0.1
+
 ## ohos.permission.SOFTBUS_MANAGER_RESOURCE
 
 Allows a system application to manage SoftBus resources.
