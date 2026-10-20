@@ -108,6 +108,25 @@
 | USER_ROTATION_LANDSCAPE_INVERTED<sup>12+</sup> | 16   | 调用时临时旋转到反向横屏，之后跟随传感器自动旋转，受控制中心的旋转开关控制，且可旋转方向受系统判定（如在某种设备，可以旋转到竖屏、横屏、反向横屏三个方向，无法旋转到反向竖屏）。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 | FOLLOW_DESKTOP<sup>12+</sup>                   | 17   | 表示跟随桌面的旋转模式，如果桌面可以旋转则可旋转，桌面不可旋转则不可旋转。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 
+## WindowPosition
+
+主窗口可调整到的窗口层级（Z序，ZOrder）枚举。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称        | 值 | 说明                                  |
+| ----------- | ---- | ------------------------------------------------------------ |
+| NOT_TOPMOST | -3   | 取消置顶。取消后，该主窗口不再显示在其他应用窗口之上。<br>若该主窗口当前处于置顶状态，取消时需要[ohos.permission.WINDOW_TOPMOST](../../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost)权限。若是非置顶的窗口设置取消置顶时则不需要该权限，且设置后无任何效果。|
+| TOPMOST     | -2   | 置顶。将主窗口置于其他应用窗口之上以确保不被遮挡，并常驻置顶，直到取消置顶。当多个主窗口同时置顶时，后设置置顶的窗口显示在其他置顶窗口之上。<br>设置该值时需要[ohos.permission.WINDOW_TOPMOST](../../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost)权限。|
+| BOTTOM      | -1   | 将主窗口置于所有应用主窗口的底部。|
+| TOP         | 0    | 将主窗口置于所有应用主窗口的顶部。该调整单次生效，不会常驻置顶。置顶（TOPMOST）的窗口始终位于最上层，因此若已有其他主窗口置顶，设置该参数的主窗口会被置于所有置顶窗口之下。|
+
 ## RectChangeReason<sup>12+</sup>
 
 窗口矩形（窗口位置及窗口大小）变化的原因。
