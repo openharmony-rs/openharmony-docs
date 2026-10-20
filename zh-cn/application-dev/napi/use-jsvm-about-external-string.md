@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API在Native侧Latin1或UTF16编码的字符串内存上直接创建外部JavaScript字符串，并通过copied参数确认创建结果。"
+keywords: [OH_JSVM_CreateExternalStringLatin1, OH_JSVM_CreateExternalStringUtf16, 外部字符串, Latin1, UTF16, ISO-8859-1, UTF16-LE]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口提供Latin1/UTF16格式字符串相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

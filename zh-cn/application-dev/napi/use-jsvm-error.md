@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用JSVM-API创建与抛出Error、TypeError、RangeError等错误对象，检查挂起异常并获取与清除最后的异常及错误信息。"
+keywords: [OH_JSVM_CreateError, OH_JSVM_Throw, OH_JSVM_ThrowError, OH_JSVM_IsError, OH_JSVM_IsExceptionPending, OH_JSVM_GetAndClearLastException, OH_JSVM_GetLastErrorInfo, 错误处理, 异常抛出]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行错误处理开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

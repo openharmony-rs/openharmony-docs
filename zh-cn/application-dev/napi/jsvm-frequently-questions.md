@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "汇总JSVM-API常见问题与解法，覆盖程序崩溃和接口执行失败两类，如返回值未初始化、回调结构体生命周期不当、HandleScope层数不匹配、销毁环境后仍调用接口等典型问题的定位方法。"
+keywords: [JSVM-API, 常见问题, 程序崩溃, 调用栈, JSVM_PENDING_EXCEPTION, HandleScope, OH_JSVM_DestroyEnv, 异常清理, 问题定位]
+doctype: faq
+status: active
+---
+
 # JSVM-API常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
