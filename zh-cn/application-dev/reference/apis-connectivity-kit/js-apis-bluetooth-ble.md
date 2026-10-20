@@ -3473,7 +3473,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let device: ble.GattClientDevice = ble.createGattClientDevice('11:22:33:44:55:66');
 // 订阅连接状态：GATT连接成功后刷新服务信息，并获取刷新后的服务列表
 let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
-    if (state.state == constant.ProfileConnectionState.STATE_CONNECTED) {
+    if (state.state === constant.ProfileConnectionState.STATE_CONNECTED) {
         device.refreshServices().then(() => {
             console.info('Succeeded in refreshing services.');
             device.getServices().then((services: Array<ble.GattService>) => {
