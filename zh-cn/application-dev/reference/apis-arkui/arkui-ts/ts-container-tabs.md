@@ -719,7 +719,7 @@ sidebarSelectedIconColor(value: Optional\<ResourceColor\>)
 
 > **说明：**
 >
-> Tabs的sidebarSelectedIconColor属性、[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性、[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10-1)属性都可以设置侧边页签栏中页签图标的选中态颜色，后两者的优先级高于sidebarSelectedIconColor。
+> 当页签样式为[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)时，其[iconStyle](./ts-container-tabcontent.md#iconstyle12)属性中[TabBarIconStyle](./ts-container-tabcontent.md#tabbariconstyle12对象说明)的selectedColor优先级高于sidebarSelectedIconColor。
 
 **起始版本：** 26.2.0
 
@@ -743,7 +743,7 @@ sidebarSelectedTextColor(value: Optional\<ResourceColor\>)
 
 > **说明：**
 >
-> Tabs的sidebarSelectedTextColor属性、[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性、[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10-1)属性都可以设置侧边页签栏中页签文本的选中态颜色，后两者的优先级高于sidebarSelectedTextColor。
+> 当页签样式为[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)或[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)时（二者作为[tabBar](./ts-container-tabcontent.md#tabbar18)参数互斥使用），其[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性中[LabelStyle](./ts-container-tabcontent.md#labelstyle10对象说明)的selectedColor优先级高于sidebarSelectedTextColor。
 
 **起始版本：** 26.2.0
 
@@ -767,7 +767,7 @@ sidebarUnselectedIconColor(value: Optional\<ResourceColor\>)
 
 > **说明：**
 >
-> Tabs的sidebarUnselectedIconColor属性、[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性、[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10-1)属性都可以设置侧边页签栏中页签图标的非选中态颜色，后两者的优先级高于sidebarUnselectedIconColor。
+> 当页签样式为[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)时，其[iconStyle](./ts-container-tabcontent.md#iconstyle12)属性中[TabBarIconStyle](./ts-container-tabcontent.md#tabbariconstyle12对象说明)的unselectedColor优先级高于sidebarUnselectedIconColor。
 
 **起始版本：** 26.2.0
 
@@ -791,7 +791,7 @@ sidebarUnselectedTextColor(value: Optional\<ResourceColor\>)
 
 > **说明：**
 >
-> Tabs的sidebarUnselectedTextColor属性、[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性、[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)的[labelStyle](./ts-container-tabcontent.md#labelstyle10-1)属性都可以设置侧边页签栏中页签文本的非选中态颜色，后两者的优先级高于sidebarUnselectedTextColor。
+> 当页签样式为[SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9)或[BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9)时（二者作为[tabBar](./ts-container-tabcontent.md#tabbar18)参数互斥使用），其[labelStyle](./ts-container-tabcontent.md#labelstyle10)属性中[LabelStyle](./ts-container-tabcontent.md#labelstyle10对象说明)的unselectedColor优先级高于sidebarUnselectedTextColor。
 
 **起始版本：** 26.2.0
 
@@ -836,7 +836,7 @@ sidebarWidth(value: Optional\<Length\>)
 > **说明：**
 >
 > - sidebarWidth设置异常值或者undefined时，采用默认240vp的宽度。
-> - [barModifier](#tabsoptions15)的width属性，Tabs的[barWidth](#barwidth)属性，Tabs的[sidebarWidth](#sidebarwidth)属性都能控制侧边页签栏的宽度，优先级顺序是后者高于前者。
+> - 优先级生效规则：sidebarWidth属性 > [barWidth](#barwidth)属性 > [barModifier](#tabsoptions15)的width属性。
 
 **起始版本：** 26.2.0
 
@@ -856,7 +856,7 @@ sidebarWidth(value: Optional\<Length\>)
 
 minSidebarWidth(value: Optional\<Length\>)
 
-设置Tabs侧边页签栏在分割线拖拽场景中的最小宽度，不使用该接口设置时不限制最小宽度，此时最小宽度默认为0。通过该接口设置最小宽度后，会影响分割线拖拽范围，具体请参考[minContentWidth](#mincontentwidth)接口说明。
+设置Tabs侧边页签栏在分割线拖拽场景中的最小宽度，不使用该接口设置时不限制最小宽度，此时最小宽度默认为0。分割线拖拽规格详见[sidebarDivider](#sidebardivider)属性说明。
 
 **起始版本：** 26.2.0
 
@@ -876,7 +876,7 @@ minSidebarWidth(value: Optional\<Length\>)
 
 maxSidebarWidth(value: Optional\<Length\>)
 
-设置Tabs侧边页签栏在分割线拖拽场景中的最大宽度，不使用该接口设置时不限制最大宽度，此时最大可达到Tabs容器的宽度。通过该接口设置最大宽度后，会影响分割线拖拽范围，具体请参考[minContentWidth](#mincontentwidth)接口说明。
+设置Tabs侧边页签栏在分割线拖拽场景中的最大宽度，不使用该接口设置时不限制最大宽度，此时最大可达到Tabs容器的宽度。分割线拖拽规格详见[sidebarDivider](#sidebardivider)属性说明。
 
 **起始版本：** 26.2.0
 
@@ -896,15 +896,7 @@ maxSidebarWidth(value: Optional\<Length\>)
 
 minContentWidth(value: Optional\<Length\>)
 
-设置Tabs显示侧边页签栏模式时，在分割线拖拽场景中内容区的最小宽度。不使用该接口设置属性时不限制最小宽度，此时最小宽度默认为0。
-
-> **说明：**
->
-> - 侧边页签栏不显示分割线时，不支持拖拽。
-> - [minSidebarWidth](#minsidebarwidth)，[maxSidebarWidth](#maxsidebarwidth)，minContentWidth属性都不设置时，不支持拖拽。
-> - 侧边页签栏显示分割线时，通过minSidebarWidth，maxSidebarWidth，minContentWidth属性能够控制分割线的拖拽范围。
-> - 当minSidebarWidth >= maxSidebarWidth时属于异常场景，会导致对应属性失效，分割线无法拖拽。
-> - 当[barStyle](#barstyle)属性设置为TabBarStyle.SIDEBAR_ADAPTABLE，并且minSidebarWidth + minContentWidth > Tabs容器宽度时，因为宽度约束无法满足，会显示成TabBarDisplayMode.BOTTOM_TABBAR样式。
+设置Tabs显示侧边页签栏模式时，在分割线拖拽场景中内容区的最小宽度。不使用该接口设置属性时不限制最小宽度，此时最小宽度默认为0。分割线拖拽规格详见[sidebarDivider](#sidebardivider)属性说明。
 
 **起始版本：** 26.2.0
 
@@ -929,7 +921,7 @@ sidebarBackgroundColor(value: Optional\<ResourceColor\>)
 > **说明：**
 >
 > - sidebarBackgroundColor设置undefined时，恢复侧边页签栏默认背景颜色。
-> - [barModifier](#tabsoptions15)的backgroundColor属性，Tabs的[barBackgroundColor](#barbackgroundcolor10)属性，sidebarBackgroundColor属性都能控制侧边页签栏的背景颜色，优先级顺序是后者高于前者。
+> - 优先级生效规则：sidebarBackgroundColor属性 > [barBackgroundColor](#barbackgroundcolor10)属性 > [barModifier](#tabsoptions15)的backgroundColor属性。
 
 **起始版本：** 26.2.0
 
@@ -954,7 +946,7 @@ sidebarBackgroundBlurStyle(value: Optional\<BlurStyle\>)
 > **说明：**
 >
 > - 不使用sidebarBackgroundBlurStyle接口或者sidebarBackgroundBlurStyle设置undefined时，没有模糊效果，相当于设置BlurStyle.NONE。
-> - [barModifier](#tabsoptions15)的backgroundBlurStyle属性，Tabs的[barBackgroundBlurStyle](#barbackgroundblurstyle11)属性，sidebarBackgroundBlurStyle属性都能控制侧边页签栏的模糊样式，优先级顺序是后者高于前者。
+> - 优先级生效规则：sidebarBackgroundBlurStyle属性 > [barBackgroundBlurStyle](#barbackgroundblurstyle11)属性 > [barModifier](#tabsoptions15)的backgroundBlurStyle属性。
 
 **起始版本：** 26.2.0
 
@@ -974,12 +966,29 @@ sidebarBackgroundBlurStyle(value: Optional\<BlurStyle\>)
 
 sidebarDivider(value: Optional\<DividerStyle\>)
 
-设置Tabs侧边页签栏的分割线样式。
+设置Tabs侧边页签栏与内容区之间的分割线样式。
 
 > **说明：**
 >
-> - sidebarDivider设置undefined时，不显示侧边页签栏分割线。
-> - Tabs的[divider](#divider10)属性，sidebarDivider属性都能控制侧边页签栏的分割线样式，优先级顺序是后者高于前者。
+> - sidebarDivider属性的优先级高于Tabs的[divider](#divider10)属性。
+> - 侧边页签栏不显示分割线时，不支持拖拽。
+> - [minSidebarWidth](#minsidebarwidth)，[maxSidebarWidth](#maxsidebarwidth)，[minContentWidth](#mincontentwidth)属性都不设置时，不支持拖拽。
+> - 当minSidebarWidth >= maxSidebarWidth时属于异常场景，分割线无法拖拽。
+> - 当[barStyle](#barstyle)属性设置为TabBarStyle.SIDEBAR_ADAPTABLE，并且minSidebarWidth + minContentWidth > Tabs容器宽度时，因为宽度约束无法满足，会显示成TabBarDisplayMode.BOTTOM_TABBAR样式。
+
+可以拖拽的场景下，分割线的拖拽范围见下表。最大值均需再减去dividerWidth（[DividerStyle](#dividerstyle10对象说明)的strokeWidth，即分割线线宽）。
+
+| 条件（设置有效值） | 分割线的拖拽最小值（分割线与容器起始边界的距离）|
+| ---- | ----------- |
+| 设置minSidebarWidth属性 | minSidebarWidth |
+| 不设置minSidebarWidth属性 | 0 |
+
+| 条件（设置有效值） | 分割线的拖拽最大值（分割线与容器起始边界的距离）|
+| ---- | ----------- |
+| 同时设置maxSidebarWidth和minContentWidth属性 | （Tabs容器宽度 - minContentWidth）和maxSidebarWidth的较小值 |
+| 仅设置maxSidebarWidth属性 | maxSidebarWidth和Tabs容器宽度的较小值 |
+| 仅设置minContentWidth属性 | Tabs容器宽度 - minContentWidth |
+| 未设置maxSidebarWidth和minContentWidth属性 | Tabs容器宽度 |
 
 **起始版本：** 26.2.0
 
@@ -993,7 +1002,7 @@ sidebarDivider(value: Optional\<DividerStyle\>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | -------- | ---- | ---------- |
-| value | Optional<[DividerStyle](#dividerstyle10对象说明)> | 是 | Tabs侧边页签栏的分割线样式。 |
+| value | Optional<[DividerStyle](#dividerstyle10对象说明)> | 是 | Tabs侧边页签栏与内容区之间的分割线样式。<br/>设置undefined时，不显示分割线。 |
 
 ### sidebarDisplayStyle
 
