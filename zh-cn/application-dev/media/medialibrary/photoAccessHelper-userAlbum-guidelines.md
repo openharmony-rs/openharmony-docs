@@ -192,9 +192,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 1. 建立相册检索条件，用于获取用户相册。
 2. 建立图片检索条件，用于获取图片。
 3. 调用PhotoAccessHelper.getAlbums接口获取用户相册资源。
-4. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject)接口获取第一个用户相册。
+4. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个用户相册。
 5. 调用[PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)接口获取图片资源。
-6. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject)接口获取第一张图片。
+6. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片。
 7. 调用MediaAlbumChangeRequest.addAssets接口往用户相册中添加图片。
 8. 调用PhotoAccessHelper.applyChanges接口提交相册变更请求。
 
