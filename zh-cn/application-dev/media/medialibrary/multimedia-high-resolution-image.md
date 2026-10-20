@@ -181,8 +181,8 @@ target_link_libraries(entry PUBLIC libimage_source.so libimage_common.so)
 ```cpp
 #include <cstdlib>
 #include <cstring>
-#include <multimedia/image_framework/image_source_native.h>
-#include <multimedia/image_framework/image_common.h>
+#include <multimedia/image_framework/image/image_source_native.h>
+#include <multimedia/image_framework/image/image_common.h>
 
 /**
  * @brief 通过文件描述符获取图片MIME类型。
