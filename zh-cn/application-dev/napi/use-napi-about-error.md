@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行错误处理开发，包括抛出异常、创建Error对象、类型错误和范围错误等，帮助开发者在Node-API模块中管理和响应ArkTS异常。"
+keywords: [Node-API, 错误处理, 异常, napi_throw, Error, TypeError, RangeError, napi_throw_error, 错误管理]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行错误处理开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

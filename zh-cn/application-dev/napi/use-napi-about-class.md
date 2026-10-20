@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行class相关开发，包括定义类、构造实例、设置原型等操作，支持在Node-API模块中创建和操作ArkTS类对象。"
+keywords: [Node-API, class, 类开发, 构造函数, 原型, 实例化, napi_define_class, 继承]
+doctype: guide
+status: active
+---
+
 # 使用Node-API进行class相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

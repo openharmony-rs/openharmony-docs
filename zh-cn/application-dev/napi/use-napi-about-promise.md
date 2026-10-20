@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口处理异步操作，通过创建和管理Promise对象实现非阻塞异步处理，支持deferred机制控制Promise状态，适用于网络请求和文件读取等异步场景。"
+keywords: [Node-API, Promise, 异步操作, deferred, resolve, reject, napi_create_promise, 非阻塞]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口处理异步操作
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行Buffer相关开发，包括创建、拷贝和外部Buffer操作，适用于I/O、网络传输等二进制数据交互场景。"
+keywords: [Node-API, Buffer, 二进制数据, napi_create_buffer, 外部Buffer, 数据交互, I/O操作]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行buffer相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
