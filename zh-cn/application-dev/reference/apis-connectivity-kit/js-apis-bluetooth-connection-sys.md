@@ -1041,9 +1041,9 @@ try {
 
 getBleMacByBrMac(brMac: string): string
 
-根据已配对的对端设备的真实BR地址，获取该设备的真实BLE地址。
+根据已配对的对端设备的实际BR地址，获取该设备的实际BLE地址。
 
-双模设备会在已配对列表中呈现为BR和BLE两个条目，本接口用于识别并关联这两个条目是否属于同一设备。参数brMac是某个已配对远程设备的真实BR地址，返回值则是同一远程设备的真实BLE地址。
+当双模设备的BR地址与BLE地址不同时，该设备会在已配对列表中呈现为BR和BLE两个条目，本接口用于识别这两个条目是否属于同一设备。参数brMac是某个已配对远程设备的实际BR地址，返回值则是同一远程设备的实际BLE地址。
 
 **起始版本**： 26.2.0
 
@@ -1059,13 +1059,13 @@ getBleMacByBrMac(brMac: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| brMac | string | 是 | 表示已配对的对端设备的真实BR地址，例如"11:22:33:AA:BB:FF"。 |
+| brMac | string | 是 | 表示已配对的对端设备的实际BR地址，例如"11:22:33:AA:BB:FF"。 |
 
 **返回值**：
 
 | 类型 | 说明 |
 | ---- | ---- |
-| string | 表示对端设备的真实BLE地址，例如"11:22:33:AA:BB:FF"。 |
+| string | 表示对端设备的实际BLE地址，例如"11:22:33:AA:BB:FF"。 |
 
 **错误码**：
 
@@ -1087,7 +1087,7 @@ getBleMacByBrMac(brMac: string): string
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let bleMac: string = connection.getBleMacByBrMac('11:22:33:AA:BB:FF'); // 入参为已配对的对端设备的真实BR地址
+    let bleMac: string = connection.getBleMacByBrMac('11:22:33:AA:BB:FF'); // 入参为已配对的对端设备的实际BR地址
     console.info(`Succeeded in getting bleMac, bleMac is ${bleMac}`);
 } catch (error) {
     const err: BusinessError = error as BusinessError;

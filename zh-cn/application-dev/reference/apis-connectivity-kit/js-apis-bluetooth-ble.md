@@ -3436,7 +3436,7 @@ refreshServices(): Promise&lt;void&gt;
 client端刷新已连接server端设备的服务信息。使用Promise异步回调。
 
 - 调用本接口后会清空client端缓存的server端服务信息，并异步重新执行服务发现。刷新请求下发成功后，重新发现将异步进行。可通过[getServices](#getservices)方法获取刷新后的服务列表。
-- 需先调用[connect](#connect)方法，待GATT profile连接成功后方可使用。
+- 需先调用[connect](#connect)方法，待GATT profile连接成功后方可使用；建议已通过[getServices](#getservices)方法获取过服务信息后再调用本接口。
 
 
 **起始版本**： 26.2.0

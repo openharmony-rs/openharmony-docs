@@ -285,7 +285,7 @@ No BLE address is associated with the input BR address.
 
 **处理步骤**
 
-1. 确认输入的是已配对的对端设备的真实BR地址。
+1. 确认输入的是已配对的对端设备的实际BR地址。
 2. 确认该对端设备为支持BLE的双模设备。<!--DelEnd-->
 
 ## 2900099 操作失败
