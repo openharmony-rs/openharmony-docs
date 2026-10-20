@@ -4792,7 +4792,7 @@ struct Index {
 
 setTransPageEnabled(enabled: boolean): void
 
-启用或禁用强制分栏的transPages配置。禁用后，transPages中配置的过渡页面将参与右推左的转场行为，不再固定在右侧。未通过该接口设置时，默认值为true（与静态配置行为一致）。
+启用或禁用强制分栏的transPages配置。禁用后，transPages中配置的过渡页面将参与右推左的转场行为，不再固定在右侧。未通过该接口设置时，默认值为true。
 
 > **说明：**
 >
@@ -4868,7 +4868,7 @@ isTransPageEnabled(): boolean
 
 | 类型    | 说明                                       |
 | ------- | ------------------------------------------ |
-| boolean | transPages配置启用时返回true，禁用时返回false。 |
+| boolean | 返回当前UI实例强制分栏的transPages配置是否启用，transPages配置启用时返回true，禁用时返回false。 |
 
 **示例：**
 
