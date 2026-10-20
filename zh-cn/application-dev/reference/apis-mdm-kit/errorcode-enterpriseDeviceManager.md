@@ -1369,3 +1369,21 @@ The specified timer does not exist or does not belong to the current administrat
 
 1. 检查传入的定时器ID是否正确，定时器ID由[systemManager.createExactTimer](./js-apis-enterprise-systemManager.md#systemmanagercreateexacttimer)接口创建时返回。
 2. 检查传入的定时器ID是否属于当前设备管理应用，设备管理应用只能操作自身创建的定时器。
+
+## 9201055 获取USB设备序列号失败
+
+**错误信息**
+
+Failed to obtain the USB serial number.
+
+**错误描述**
+
+获取指定USB设备序列号失败。
+
+**可能原因**
+
+USB设备未连接或不支持序列号获取。
+
+**处理步骤**
+
+重新拔插USB设备，再尝试获取序列号。
