@@ -275,7 +275,7 @@ No BLE address is associated with the input BR address.
 
 **错误描述**
 
-调用[connection.getBleMacByBrMac](js-apis-bluetooth-connection-sys.md#connectiongetblemacbybrmac)根据已配对的对端设备的BR地址查询BLE地址时，输入的BR地址没有关联的BLE地址。
+调用connection.getBleMacByBrMac根据已配对的对端设备的BR地址查询BLE地址时，输入的BR地址没有关联的BLE地址。
 
 **可能原因**
 
