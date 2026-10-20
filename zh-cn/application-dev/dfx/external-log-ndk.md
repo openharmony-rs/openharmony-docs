@@ -89,7 +89,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
 1. 编辑“napi_init.cpp”文件，定义注册external_log日志管理者相关方法：
 
     <!-- @[RegisterExternalLogMgr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+    
     ``` C++
     // 定义回调函数
     void OnExternalLogCapacityReached(OH_HiAppEvent_ExternalLog* externalLogArr, uint32_t arrLen)
@@ -106,7 +106,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
             }
         }
     }
-
+    
     // 注册external_log日志管理者
     static napi_value RegisterExternalLogMgr(napi_env env, napi_callback_info info)
     {
@@ -116,7 +116,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
         } else {
             OH_LOG_INFO(LogType::LOG_APP, "[ExternalLogMgr_c] RegExternalLogMgr failed, ret %{public}d", ret);
         }
-
+    
         return {};
     }
     ```
