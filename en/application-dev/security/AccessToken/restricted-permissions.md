@@ -1479,6 +1479,48 @@ Allows an application to invoke the smart diagnosis service to obtain data.
 
 **Since**: 26.0.0
 
+## ohos.permission.vehicle.MMA_ENERGYREFILL
+ 
+Allows an in-vehicle application to obtain the current vehicle's energy replenishment status.
+ 
+<!--RP104--><!--RP104End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.0.1
+ 
+## ohos.permission.vehicle.MMA_WEATHER
+ 
+Allows an in-vehicle application to obtain real-time weather information of the vehicle's surroundings.
+ 
+<!--RP105--><!--RP105End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.0.1
+ 
+## ohos.permission.vehicle.MMA_SPATIALACTION
+ 
+Allows an application on the rear display to call spatial gesture APIs to enable contactless interaction for passengers.
+ 
+<!--RP106--><!--RP106End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: cars
+ 
+**Since**: 26.0.1
+
 ## ohos.permission.ACCESS_SE_KEY
 
 Allows an application to generate, use, and delete secure element keys.
