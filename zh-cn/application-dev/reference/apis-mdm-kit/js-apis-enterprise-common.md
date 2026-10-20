@@ -154,6 +154,12 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 | USER_EXTEND_CREDENTIAL  | 1  | 扩展身份认证凭据。                |
 | DEVICE_SECURITY_LEVEL   | 2  | 设备安全等级。              |
 | PRINTER_IP_ADDRESS_POLICY | 3 | 打印机IP地址策略。          |
+| OPTICAL_DISC_DRIVE_BURN | 4 | 光驱刻录。          |
+| EXACT_TIMER | 5 | 精确定时器。          |
+| EXEMPTION_RESOURCE | 6 | 资源豁免。          |
+| X_KEY | 7 | X键。          |
+| SYSTEM_ROLLBACK | 8 | 系统回退。          |
+| SUPER_PRIVACY | 9 | 超级隐私模式。          |
 
 ## common.isFeatureSupported
 
