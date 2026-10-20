@@ -160,7 +160,7 @@ struct CompWithInlineStateStyles {
 }
 ```
 
-Button默认normal态显示蓝色，第一次按下Tab键让Button获焦显示为focus态的浅灰色，点击事件触发后，再次按下Tab键让Button获焦，focus态变为深灰色。
+Button默认normal态显示蓝色，第一次按下Tab键让Button获焦显示为focused态的浅灰色，点击事件触发后，再次按下Tab键让Button获焦，focused态变为深灰色。
 
   **图3** 点击改变获焦态样式  
 
