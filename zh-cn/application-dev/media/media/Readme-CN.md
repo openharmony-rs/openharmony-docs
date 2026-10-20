@@ -1,29 +1,52 @@
-# Media Kit指南配套示例代码汇总
-<!--Kit: Media Kit-->
-<!--Subsystem: Multimedia--> 
-<!--Owner: @chennotfound-->
-<!--Designer: @chennotfound-->
-<!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
+# Media Kit（媒体服务）
 
-| 分类 | Sample名称 | 语言 | 场景介绍 |
-| -------- | -------- | -------- | -------- |
-| 音频播放 | [AVPlayerArkTSAudio](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio) | ArkTS | 使用AVPlayer完整播放一首音乐，演示起播后3s暂停，暂停3s后重新播放的场景。 |
-| 视频播放 | [AVPlayerArkTSVideo](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo) | ArkTS | 使用AVPlayer完整播放一个本地视频，演示端到端播放全流程。 |
-| 播放URL设置 | [AVPlayerArkTSURL](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL) | ArkTS | 使用AVPlayer开发播放功能，演示在不同的场景下（流媒体/本地文件）如何设置播放URL。 |
-| 流媒体播放 | [AVPlayerArkTSStreamingMedia](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSStreamingMedia) | ArkTS | 使用AVPlayer完整播放一个流媒体视频，演示缓冲监听、HLS码率切换、DASH起播策略与轨道切换的效果。 |
-| 视频外挂字幕 | [AVPlayerArkTSSubtitle](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSSubtitle) | ArkTS | 使用AVPlayer设置外挂字幕并播放视频，演示使用addSubtitleFromFd与subtitleUpdate实现监听。 |
-| 短音频播放 | [SoundPoolArkTS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS) | ArkTS | 使用SoundPool低时延播放短音频，演示一次加载多次播放的效果。 |
-| 音视频录制 | [AVRecorder](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVRecorder/AVRecorder) | ArkTS | 使用AVRecorder录制音视频，演示录制状态机全流程。 |
-| 元数据提取 | [AVMetadataExtractorArkTS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS) | ArkTS | 使用AVMetadataExtractor提取音频资源的元数据。 |
-| 视频缩略图 | [AVImageGeneratorArkTS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS) | ArkTS | 使用AVImageGenerator获取视频资源的缩略图。 |
-| 视频转码 | [AVTranscoderArkTS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS) | ArkTS | 使用AVTranscoder视频转码，演示开始-暂停-恢复-完成全流程。 |
-| 异步转码 | [AsyncTranscoder](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder) | ArkTS | 使用worker线程创建异步线程执行AVTranscoder视频转码。 |
-| 音频播放 | [AVPlayerNDKAudio](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKAudio) | C/C++ | 使用AVPlayer完整播放一首音乐，演示NDK接口的音频播放全流程。 |
-| 视频播放 | [AVPlayerNDKVideo](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKVideo) | C/C++ | 使用AVPlayer完整播放一个视频，演示NDK接口的视频播放全流程。 |
-| 流媒体播放 | [AVPlayerNDKStreamingMedia](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia) | C/C++ | 使用AVPlayer播放流媒体，演示NDK接口的流媒体播放全流程。 |
-| 音视频录制 | [AVRecorderNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVRecorder/AVRecorderNDK) | C/C++ | 使用AVRecorder录制音视频，演示录制状态机全流程。 |
-| 屏幕录制 | [ScreenCaptureSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample) | ArkTS 和 C/C++ | 使用AVScreenCapture实现录屏，覆盖录屏写文件、窗口级录屏、矩形区域录制、自定义录屏等场景。 |
-| 元数据提取 | [AVMetadataExtractorNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK) | C/C++ | 使用AVMetadataExtractor提取音频资源的元数据。 |
-| 视频缩略图 | [AVImageGeneratorNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorNDK) | C/C++ | 使用AVImageGenerator获取视频资源的缩略图。 |
-| 视频转码 | [AVTranscoderNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AVTranscoderNDK) | C/C++ | 使用AVTranscoder（C/C++）视频转码，演示开始-暂停-恢复-完成全流程。 |
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
+<!--Tester: @zengxi_3007-->
+<!--Adviser: @zzs911-->
+
+- [Media Kit简介](media-kit-intro.md)
+- [Media Kit指南配套示例代码汇总](media-kit-samples.md)
+- 媒体开发指导(ArkTS)<!--media-kit-dev--arkts-->
+  - 播放<!--media-playback-arkts-->
+    - [使用AVPlayer播放音频(ArkTS)](using-avplayer-for-playback.md)
+    - [使用AVPlayer播放视频(ArkTS)](video-playback.md)
+    - [使用AVPlayer设置播放URL(ArkTS)](playback-url-setting-method.md)
+    - [使用AVPlayer播放流媒体(ArkTS)](streaming-media-playback-development-guide.md)
+    - [使用AVPlayer添加视频外挂字幕(ArkTS)](video-subtitle.md)
+    - [使用SoundPool播放短音频(ArkTS)](using-soundpool-for-playback.md)
+  - 录制<!--media-recording-arkts-->
+    - [使用AVRecorder录制音频（ArkTS）](using-avrecorder-for-recording.md)
+    - [使用AVRecorder录制视频(ArkTS)](video-recording.md)
+    - [使用AVScreenCaptureRecorder录屏写文件(ArkTS)](using-avscreencapture-ArkTs.md)
+  - 媒体信息查询<!--media-info-arkts-->
+    - [使用AVMetadataExtractor提取音视频元数据信息(ArkTS)](avmetadataextractor.md)
+    - [使用AVImageGenerator提取视频指定时间图像(ArkTS)](avimagegenerator.md)
+  - 视频转码<!--media-transcoder-arkts-->
+    - [使用AVTranscoder实现音视频转码(ArkTS)](using-avtranscoder-for-transcodering.md)
+    - [创建异步线程执行AVTranscoder视频转码(ArkTS)](avtranscoder-practice.md)
+    - [转码常见问题](avtranscoder-faq.md)<!--RP2--><!--RP2End-->
+- 媒体开发指导(C/C++)<!--media-kit-dev--c-->
+  - 播放<!--media-playback-c-->
+    - [使用AVPlayer播放音频(C/C++)](using-ndk-avplayer-for-playback.md)
+    - [使用AVPlayer播放视频(C/C++)](using-ndk-avplayer-for-video-playback.md)
+    - [使用AVPlayer播放流媒体(C/C++)](using-ndk-avplayer-for-streaming.md)
+    - [使用LPP播放器播放视频 (C/C++)](using-ndk-lpp-for-playback.md)
+  - 录制<!--media-recording-c-->
+    - [使用AVRecorder录制音频(C/C++)](using-ndk-avrecorder-for-audio-recording.md)
+    - [使用AVRecorder录制视频(C/C++)](using-ndk-avrecorder-for-video-recording.md)
+    - 使用AVScreenCapture录屏取码流(C/C++)<!--using-avscreencapture-for-buffer-->
+      - [AVScreenCapture录屏基础流程](avscreencapture-c-basic-process.md)
+      - [AVScreenCapture录屏自定义场景](avscreencapture-c-custom-scenarios.md)
+      - [录屏常见问题](avscreencapture-faqs.md)
+    - [使用AVScreenCapture录屏写文件(C/C++)](using-avscreencapture-for-file.md)
+    - [使用AVScreenCapture实现窗口级录屏(C/C++)](using-avscreencapture-for-file-with-window.md)<!--RP3--><!--RP3End-->
+    - [屏幕录制支持矩形区域录制](video-supports-rectangular-area-recording.md)
+  - 媒体信息查询<!--media-info-c-->
+    - [使用AVMetadataExtractor获取元数据(C/C++)](using-ndk-avmetadataextractor-for-media.md)
+    - [使用AVImageGenerator获取视频帧(C/C++)](using-ndk-avimagegenerator-for-video.md)
+  - 视频转码<!--media-transcoder-c-->
+    - [使用AVTranscoder实现音视频转码(C/C++)](using-ndk-avtranscoder-for-transcodering.md)<!--RP1--><!--RP1End-->
+- [Media Kit术语](media-glossary.md)
