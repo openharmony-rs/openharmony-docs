@@ -86,7 +86,7 @@
     ```c++
     // 动态加载Vulkan库及基础函数指针
     bool LoadVulkanLibrary() {
-        // 加载 Vulkan 库
+        // 加载Vulkan库
         constexpr char *path = "libvulkan.so";
         dlerror();
         g_libVulkan = dlopen(path, RTLD_NOW | RTLD_LOCAL);
@@ -95,7 +95,7 @@
             return false;
         }
 
-        // 加载基函数指针
+        // 加载基础函数指针
         vkEnumerateInstanceExtensionProperties = reinterpret_cast<PFN_vkEnumerateInstanceExtensionProperties>(
             dlsym(g_libVulkan, "vkEnumerateInstanceExtensionProperties"));
         vkEnumerateInstanceLayerProperties = reinterpret_cast<PFN_vkEnumerateInstanceLayerProperties>(
@@ -447,7 +447,7 @@
             .sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO,
             .pNext = &dedicatedAllocateInfo,
             .allocationSize = nbProps.allocationSize,
-            .memoryTypeIndex = 0 // 在下一步中分配的内存类型
+            .memoryTypeIndex = 0 // 将在下一步中赋值的内存类型索引
         };
 
         mapMemoryTypeToIndex(nbProps.memoryTypeBits, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, &allocInfo.memoryTypeIndex);
