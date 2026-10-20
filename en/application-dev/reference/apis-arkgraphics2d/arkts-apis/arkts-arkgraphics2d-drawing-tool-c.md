@@ -44,7 +44,7 @@ Converts a color value of the **ResourceColor** type to a **common2D.Color** obj
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| resourceColor | ResourceColor | Yes | Color value of the **ResourceColor** type. (All four types of inputs are supported. The following provides 13 example inputs.) The fourth type of [Resource](../../apis-arkui/arkts-apis/arkts-arkui-resource-t.md) supports only the construction method **$r('belonging.type.name')**. Ensure that the resource has been defined in the **main/resources/base/element** directory. (The types **color**, **string**, and **integer** are available for the belonging **app**, whereas only the type **color** is available for the belonging **sys**.) |
+| resourceColor | ResourceColor | Yes | Color value of the **ResourceColor** type. (All four types of inputs are supported. The following provides 13 example inputs.) The fourth type of [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md) supports only the construction method **$r('belonging.type.name')**. Ensure that the resource has been defined in the **main/resources/base/element** directory. (The types **color**, **string**, and **integer** are available for the belonging **app**, whereas only the type **color** is available for the belonging **sys**.) |
 
 **Return value:**
 
@@ -56,7 +56,7 @@ Converts a color value of the **ResourceColor** type to a **common2D.Color** obj
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
 **Examples**
 

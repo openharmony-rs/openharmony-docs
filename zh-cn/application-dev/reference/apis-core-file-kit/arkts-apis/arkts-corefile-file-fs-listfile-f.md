@@ -51,8 +51,6 @@ declare function listFile(
 | 13900042 | Unknown error |
 
 
-<a id="listfile2"></a>
-
 ## listFile
 
 ```TypeScript
@@ -86,8 +84,6 @@ declare function listFile(path: string, callback: AsyncCallback<string[]>): void
 | 13900018 | Not a directory |
 | 13900042 | Unknown error |
 
-
-<a id="listfile3"></a>
 
 ## listFile
 

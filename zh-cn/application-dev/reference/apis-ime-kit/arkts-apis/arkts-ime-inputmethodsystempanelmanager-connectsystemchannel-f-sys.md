@@ -12,7 +12,7 @@ import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 function connectSystemChannel(): Promise<void>
 ```
 
-连接面板和输入法之间的系统通道。
+连接系统通道，用于建立输入法系统面板和系统预置输入法应用之间的通信连接。仅允许系统预置输入法面板调用。<br> <br>含义/功能：建立系统面板与系统预置输入法应用之间的通信通道，为后续的私有命令收发和面板状态同步提供连接基础。<br> <br>使用场景：当系统面板需要与系统预置输入法应用进行私有命令通信或面板状态同步时，必须先调用此接口建立通信通道。<br> <br>使用后效果：连接成功后，系统面板与输入法应用之间的通信通道建立，后续可调用sendPrivateCommand、onSystemPrivateCommand和onSystemPanelStatusChange等接口进行数据通信和状态同步。<br> <br>前提条件：需具有ohos.permission.CONNECT_IME_ABILITY权限，且调用者必须是系统应用和系统预置输入法面板。<br> <br>相关接口间的配合/制约关系：本接口是使用本模块其他通信接口的前提，必须先调用connectSystemChannel建立通道后，才能使用sendPrivateCommand、onSystemPrivateCommand和onSystemPanelStatusChange等接口。
 
 **起始版本：** 26.0.0
 
@@ -30,7 +30,7 @@ function connectSystemChannel(): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 返回的Promise。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。连接成功时resolve，失败时reject并返回BusinessError对象。 |
 
 **错误码：**
 

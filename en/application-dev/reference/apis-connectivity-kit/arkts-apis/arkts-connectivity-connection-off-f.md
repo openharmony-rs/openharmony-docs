@@ -69,7 +69,7 @@ Unsubscribe the event reported when a remote Bluetooth device is discovered.
 
 **Required permissions:** 
 - API version 18 and later: ohos.permission.ACCESS_BLUETOOTH
-- API versions 12 to 17: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC
+- API versions 12 to 17: N/A
 
 **Model restriction:** This API can be used only in the stage model.
 

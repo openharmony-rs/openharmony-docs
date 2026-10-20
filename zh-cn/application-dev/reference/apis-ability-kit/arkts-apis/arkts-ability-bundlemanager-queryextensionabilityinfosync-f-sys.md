@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="queryextensionabilityinfosync1"></a>
-
 ## queryExtensionAbilityInfoSync
 
 ```TypeScript
@@ -109,8 +107,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="queryextensionabilityinfosync2"></a>
-
 ## queryExtensionAbilityInfoSync
 
 ```TypeScript
@@ -145,7 +141,7 @@ function queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string,
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt; | 同步返回Array<[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)>。 |
+| Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt; | 同步返回Array<ExtensionAbilityInfo>。 |
 
 **错误码：**
 
@@ -212,8 +208,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="queryextensionabilityinfosync3"></a>
-
 ## queryExtensionAbilityInfoSync
 
 ```TypeScript
@@ -247,7 +241,7 @@ function queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAb
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt; | 同步返回Array<[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)>。 |
+| Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt; | 同步返回Array<ExtensionAbilityInfo>。 |
 
 **错误码：**
 

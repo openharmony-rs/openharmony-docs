@@ -20,7 +20,7 @@ constructor(value: string | ImageAttachment | CustomSpan, styles?: Array<StyleOp
 
 属性字符串的构造函数。
 
-不支持在[loadContent()](arkts-arkui-window-window-i.md#loadcontent1)之前创建。
+不支持在[loadContent()](arkts-arkui-window-window-i.md#loadcontent)之前创建。
 
 **起始版本：** 12
 
@@ -81,31 +81,31 @@ static fromHtml(html: string): Promise<StyledString>
 
 | 标签名称 | 说明 |  
 | ------------- | ---------------------------- |  
-| \<p\> | 段落，分隔文本段落。 |
-| \<span\> | 行内文本，支持样式设置。API version 17及之前，\<span\>设置的background-color属性转换不生效。 |
-| \<img\> | 插入图片。 |
-| \<strong\> | 加粗文本。 |
-| <br><sup>20+</sup> | 换行。 |
-| \<b\><sup>20+</sup> | 加粗文本。 |
-| \<a\><sup>20+</sup> | 超链接。 |
-| \<i\><sup>20+</sup> | 斜体文本。 |
-| \<em\><sup>20+</sup> | 斜体文本。 |
-| \<s\><sup>20+</sup> | 删除线（中划线）。 |
-| \<u\><sup>20+</sup> | 下划线。 |
-| \<del\><sup>20+</sup> | 删除线（中划线）。 |
-| \<sup\><sup>20+</sup> | 上标文本。 |
-| \<sub\><sup>20+</sup> | 下标文本。 |
-| \<cite\> | 斜体文本。 |
-| \<dfn\> | 斜体文本。 |
-| \<small\> | 缩小字号标签。字号缩放为父容器字号属性的0.8倍，支持嵌套叠加。 |
-| \<h1\> | 一级标题。 |
-| \<h2\> | 二级标题。 |
-| \<h3\> | 三级标题。 |
-| \<h4\> | 四级标题。 |
-| \<h5\> | 五级标题。 |
-| \<h6\> | 六级标题。 |
-| \<ol\> | 有序列表。 |
-| \<ul\> | 无序列表。 |
+| \<p\> | 段落，分隔文本段落。 |  
+| \<span\> | 行内文本，支持样式设置。API version 17及之前，\<span\>设置的background-color属性转换不生效。 |  
+| \<img\> | 插入图片。 |  
+| \<strong\> | 加粗文本。 |  
+| <br><sup>20+</sup> | 换行。 |  
+| \<b\><sup>20+</sup> | 加粗文本。 |  
+| \<a\><sup>20+</sup> | 超链接。 |  
+| \<i\><sup>20+</sup> | 斜体文本。 |  
+| \<em\><sup>20+</sup> | 斜体文本。 |  
+| \<s\><sup>20+</sup> | 删除线（中划线）。 |  
+| \<u\><sup>20+</sup> | 下划线。 |  
+| \<del\><sup>20+</sup> | 删除线（中划线）。 |  
+| \<sup\><sup>20+</sup> | 上标文本。 |  
+| \<sub\><sup>20+</sup> | 下标文本。 |  
+| \<cite\> | 斜体文本。 |  
+| \<dfn\> | 斜体文本。 |  
+| \<small\> | 缩小字号标签。字号缩放为父容器字号属性的0.8倍，支持嵌套叠加。 |  
+| \<h1\> | 一级标题。 |  
+| \<h2\> | 二级标题。 |  
+| \<h3\> | 三级标题。 |  
+| \<h4\> | 四级标题。 |  
+| \<h5\> | 五级标题。 |  
+| \<h6\> | 六级标题。 |  
+| \<ol\> | 有序列表。 |  
+| \<ul\> | 无序列表。 |  
 | \<li\> | 列表项。 |
 
 **起始版本：** 12
@@ -134,7 +134,7 @@ static fromHtml(html: string): Promise<StyledString>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [170001](../errorcode-styled-string.md#170001-转换错误) | Convert Error. |
 
 ## getString
@@ -199,7 +199,7 @@ getStyles(start: number, length: number, styledKey?: StyledStringKey): Array<Spa
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## subStyledString
 
@@ -236,7 +236,7 @@ subStyledString(start: number, length?: number): StyledString
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## toHtml
 
@@ -274,7 +274,7 @@ static toHtml(styledString: StyledString): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## length
 

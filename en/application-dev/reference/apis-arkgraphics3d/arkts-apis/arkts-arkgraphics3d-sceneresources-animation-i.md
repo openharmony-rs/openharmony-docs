@@ -6,8 +6,6 @@ export interface Animation extends SceneResource
 
 Animation resource, which inherits from SceneResource.
 
-@extends SceneResource @interface Animation
-
 **Inheritance/Implementation:** Animation extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **Since:** 12

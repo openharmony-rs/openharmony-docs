@@ -22,8 +22,6 @@ class PhotoViewPicker
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
-<a id="select1"></a>
-
 ## select
 
 ```TypeScript
@@ -35,7 +33,7 @@ select(option?: PhotoSelectOptions): Promise<PhotoSelectResult>
 > **注意：**
 > 
 > 此接口返回的PhotoSelectResult对象中的photoUris具有永久授权，可通过调用接口
-> [photoAccessHelper.getAssets](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets1)
+> [photoAccessHelper.getAssets](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets)
 > 去使用。具体操作请参考[媒体文件URI的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
 
 **起始版本：** 10
@@ -62,9 +60,9 @@ select(option?: PhotoSelectOptions): Promise<PhotoSelectResult>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900042 | Unknown error. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes:<br>1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. Only MOVING_PHOTO_ENABLED and MOVING_PHOTO_DISABLED are supported for configuration; <br>2. An illegal enumeration value was passed to PhotoSelectOptions.assetCompatibleAbility.<br>**适用版本：** 12+ |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes: <br>1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. Only MOVING_PHOTO_ENABLED and MOVING_PHOTO_DISABLED are supported for configuration; <br>2. An illegal enumeration value was passed to PhotoSelectOptions.assetCompatibleAbility.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -90,8 +88,6 @@ async function openBindSheet01() {
 }
 ```
 
-<a id="select2"></a>
-
 ## select
 
 ```TypeScript
@@ -103,7 +99,7 @@ select(option: PhotoSelectOptions, callback: AsyncCallback<PhotoSelectResult>): 
 > **注意：**
 > 
 > 此接口返回的PhotoSelectResult对象中的photoUris具有永久授权，可通过调用接口
-> [photoAccessHelper.getAssets](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets1)
+> [photoAccessHelper.getAssets](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets)
 > 去使用。具体操作请参考[媒体文件URI的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
 
 **起始版本：** 10
@@ -125,9 +121,9 @@ select(option: PhotoSelectOptions, callback: AsyncCallback<PhotoSelectResult>): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900042 | Unknown error. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes:<br>1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. Only MOVING_PHOTO_ENABLED and MOVING_PHOTO_DISABLED are supported for configuration;<br>**适用版本：** 12+ |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes: <br>1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. Only MOVING_PHOTO_ENABLED and MOVING_PHOTO_DISABLED are supported for configuration;<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -155,8 +151,6 @@ async function openBindSheet02() {
 }
 ```
 
-<a id="select3"></a>
-
 ## select
 
 ```TypeScript
@@ -168,7 +162,7 @@ select(callback: AsyncCallback<PhotoSelectResult>): void
 > **注意：**
 > 
 > 此接口返回的PhotoSelectResult对象中的photoUris具有永久授权，可通过调用接口
-> [photoAccessHelper.getAssets](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets1)
+> [photoAccessHelper.getAssets](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets)
 > 去使用。具体操作请参考[媒体文件URI的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
 
 **起始版本：** 10
@@ -189,7 +183,7 @@ select(callback: AsyncCallback<PhotoSelectResult>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900042 | Unknown error |
 
 **示例**

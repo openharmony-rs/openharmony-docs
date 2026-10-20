@@ -272,7 +272,7 @@ Sets the maximum time allowed for sending data to this tag, in ms.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [3100201](../errorcode-nfc.md#3100201-tag-readwrite-error) | The tag running state is abnormal in the service. |
 
@@ -292,8 +292,6 @@ try {
     console.error("tag setTimeout businessError: " + businessError);
 }
 ```
-
-<a id="transmit1"></a>
 
 ## transmit
 
@@ -330,7 +328,7 @@ Sends data to the tag. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [3100201](../errorcode-nfc.md#3100201-tag-readwrite-error) | The tag running state is abnormal in the service. |
 | [3100204](../errorcode-nfc.md#3100204-nfc-chip-io-exception) | The tag I/O operation failed.<br>**Applicable version:** 12 and later |
@@ -369,8 +367,6 @@ function tagSessionDemo() {
 }
 ```
 
-<a id="transmit2"></a>
-
 ## transmit
 
 ```TypeScript
@@ -401,7 +397,7 @@ Sends data to the tag. This API uses an asynchronous callback to return the resu
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [3100201](../errorcode-nfc.md#3100201-tag-readwrite-error) | The tag running state is abnormal in the service. |
 | [3100204](../errorcode-nfc.md#3100204-nfc-chip-io-exception) | The tag I/O operation failed.<br>**Applicable version:** 12 and later |
@@ -690,8 +686,6 @@ import { tag } from '@kit.ConnectivityKit';
 tag.getIsoDep(tagInfo).reset();
 ```
 
-<a id="senddata1"></a>
-
 ## sendData
 
 ```TypeScript
@@ -755,8 +749,6 @@ function tagSessionDemo() {
     });
 }
 ```
-
-<a id="senddata2"></a>
 
 ## sendData
 

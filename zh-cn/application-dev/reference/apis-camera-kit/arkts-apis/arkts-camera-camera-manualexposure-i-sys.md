@@ -4,7 +4,7 @@
 interface ManualExposure extends ManualExposureQuery
 ```
 
-ManualExposure extends [ManualExposureQuery](arkts-camera-camera-manualexposurequery-i.md) Provides APIs to obtain and set the exposure duration.
+ManualExposure继承自[ManualExposureQuery](arkts-camera-camera-manualexposurequery-i.md)。提供了获取和设置曝光时长的方法。
 
 **继承/实现关系：** ManualExposure extends [ManualExposureQuery](arkts-camera-camera-manualexposurequery-i.md)
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 getExposure(): number
 ```
 
-Obtains the manual exposure duration in use.
+获取当前手动曝光时长。
 
 **起始版本：** 11
 
@@ -40,7 +40,7 @@ Obtains the manual exposure duration in use.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | The current exposure value, in units of ms |
+| number | 当前的曝光值，单位为ms。 |
 
 **错误码：**
 
@@ -72,7 +72,7 @@ function getExposure(nightPhotoSession: camera.NightPhotoSession): number | unde
 setExposure(exposure: number): void
 ```
 
-Sets the manual exposure duration. Before using this API, call [getSupportedExposureRange](arkts-camera-camera-manualexposurequery-i-sys.md#getsupportedexposurerange) to obtain the supported manual exposure durations, in ms.
+设置手动曝光时长。使用前，需要先调用[getSupportedExposureRange](arkts-camera-camera-manualexposurequery-i-sys.md#getsupportedexposurerange)获取支持的手动曝光时长，单位为ms。
 
 **起始版本：** 11
 
@@ -86,7 +86,7 @@ Sets the manual exposure duration. Before using this API, call [getSupportedExpo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| exposure | number | 是 | Manual exposure duration, which must be one of the supported durations obtained by running [getSupportedExposureRange](arkts-camera-camera-manualexposurequery-i-sys.md#getsupportedexposurerange). |
+| exposure | number | 是 | 手动曝光时长，必须为[getSupportedExposureRange](arkts-camera-camera-manualexposurequery-i-sys.md#getsupportedexposurerange)返回的支持值之一。 |
 
 **错误码：**
 

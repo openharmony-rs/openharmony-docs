@@ -4,7 +4,7 @@
 
 > **说明：** 
 
-> - 该组件默认设置了[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1)属性的值为true，若需要扩展内容区到组件外显示，需先关闭clip属性。
+> - 该组件默认设置了[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)属性的值为true，若需要扩展内容区到组件外显示，需先关闭clip属性。
 
 ## 子组件
 

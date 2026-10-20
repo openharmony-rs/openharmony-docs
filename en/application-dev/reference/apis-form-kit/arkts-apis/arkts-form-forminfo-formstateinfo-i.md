@@ -6,8 +6,6 @@ interface FormStateInfo
 
 Provides state information about a form.
 
-@typedef FormStateInfo
-
 **Since:** 9
 
 <!--Device-formInfo-interface FormStateInfo--><!--Device-formInfo-interface FormStateInfo-End-->

@@ -6,8 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="createcontroller1"></a>
-
 ## createController
 
 ```TypeScript

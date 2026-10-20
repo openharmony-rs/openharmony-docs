@@ -6,8 +6,6 @@ interface CollectorRule
 
 Provides the conditions of Collector.
 
-@typedef CollectorRule
-
 **Since:** 12
 
 <!--Device-securityGuard-interface CollectorRule--><!--Device-securityGuard-interface CollectorRule-End-->

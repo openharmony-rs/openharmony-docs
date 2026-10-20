@@ -41,9 +41,9 @@ import { PhotoPickerComponent, PickerController, PickerOptions, DataType, BaseIt
 | [PickerError](arkts-medialibrary-file-photopickercomponent-pickererror-c.md) | Describes the function name, error code, and message of the error returned when an error occurs during the use of the **PhotoPickerComponent** component. |
 | [PickerOptions](arkts-medialibrary-file-photopickercomponent-pickeroptions-c.md) | Describes the configuration of a Picker. It inherits from [photoAccessHelper.BaseSelectOptions](arkts-medialibrary-photoaccesshelper-baseselectoptions-c.md). |
 | [PreselectedInfo](arkts-medialibrary-file-photopickercomponent-preselectedinfo-c.md) | Describes the information about the preselected files and their corresponding **PhotoPickerComponent** index. |
-| [RecoveryResult](arkts-medialibrary-file-photopickercomponent-recoveryresult-c.md) | [RecoveryResult](arkts-medialibrary-file-photopickercomponent-recoveryresult-c.md) |
+| [RecoveryResult](arkts-medialibrary-file-photopickercomponent-recoveryresult-c.md) | RecoveryResult |
 | [SingleLineConfig](arkts-medialibrary-file-photopickercomponent-singlelineconfig-c.md) | Represents the single-line display mode. In single-line mode, the component does not provide functions for viewing a larger image. The component does not support callbacks related to large images, and the PickerController does not support APIs related to large images, making API calls ineffective. |
-| [UnselectableItemInfo](arkts-medialibrary-file-photopickercomponent-unselectableiteminfo-c.md) | [UnselectableItemInfo](arkts-medialibrary-file-photopickercomponent-unselectableiteminfo-c.md) |
+| [UnselectableItemInfo](arkts-medialibrary-file-photopickercomponent-unselectableiteminfo-c.md) | UnselectableItemInfo |
 | [UpdatablePickerConfigs](arkts-medialibrary-file-photopickercomponent-updatablepickerconfigs-c.md) | Describes the updatable attributes of the **PhotoPickerComponent**. These attributes are a subset of [PickerOptions](arkts-medialibrary-file-photopickercomponent-pickeroptions-c.md). |
 
 ### Structs

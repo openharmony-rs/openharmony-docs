@@ -45,4 +45,4 @@ Supports querying the execution status of full data download tasks for integrate
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | 13900010 | Try again. |
-| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameter are left unspecified. <br>2.The length of the input parameter exceeds the upper limit. Maximum array length is 20. <br>3.The input parameter contains an invalid bundleName. |
+| 13900020 | Invalid argument. Possible causes: <br>1.Mandatory parameter are left unspecified. <br>2.The length of the input parameter exceeds the upper limit. Maximum array length is 20. <br>3.The input parameter contains an invalid bundleName. |

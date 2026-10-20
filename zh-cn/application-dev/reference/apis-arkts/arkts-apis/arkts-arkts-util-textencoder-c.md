@@ -18,8 +18,6 @@ class TextEncoder
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -41,8 +39,6 @@ constructor()
 ```TypeScript
 let textEncoder = new util.TextEncoder();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -106,8 +102,6 @@ static create(encoding?: string): TextEncoder
 let textEncoder = util.TextEncoder.create("utf-8");
 ```
 
-<a id="encodeinto1"></a>
-
 ## encodeInto
 
 ```TypeScript
@@ -144,8 +138,6 @@ let result = textEncoder.encodeInto("\uD800¥¥");
 console.info("result = " + result);
 // 输出结果: result = 237,160,128,194,165,194,165
 ```
-
-<a id="encodeinto2"></a>
 
 ## encodeInto
 

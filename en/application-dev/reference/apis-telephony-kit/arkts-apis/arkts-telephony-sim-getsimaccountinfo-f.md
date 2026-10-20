@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="getsimaccountinfo1"></a>
-
 ## getSimAccountInfo
 
 ```TypeScript
@@ -36,7 +34,7 @@ Obtains SIM card account information. This API uses an asynchronous callback to 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[IccAccountInfo](arkts-telephony-sim-iccaccountinfo-i.md)&gt; | Yes | Callback used to return the result, which is the account information of the SIM card in the specified slot. |
 
 **Error codes:**
@@ -63,8 +61,6 @@ sim.getSimAccountInfo(0, (err:BusinessError , data: sim.IccAccountInfo) => {
 });
 ```
 
-
-<a id="getsimaccountinfo2"></a>
 
 ## getSimAccountInfo
 
@@ -94,7 +90,7 @@ Obtains SIM card account information. This API uses a promise to return the resu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Return value:**
 

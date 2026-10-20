@@ -48,7 +48,7 @@ the return value of **totalCount** or **onTotalCount** is greater than the data 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the data item to be loaded.<br>Value range: natural numbers |
+| index | number | Yes | Index of the data item to be loaded. <br>Value range: natural numbers |
 
 **Examples**
 
@@ -98,7 +98,7 @@ return value.
 
 | Type | Description |
 | --- | --- |
-| number | Expected total number of data items to be loaded.<br>Value range: natural numbers |
+| number | Expected total number of data items to be loaded. <br>Value range: natural numbers |
 
 ## memoryOptimizationStrategy
 

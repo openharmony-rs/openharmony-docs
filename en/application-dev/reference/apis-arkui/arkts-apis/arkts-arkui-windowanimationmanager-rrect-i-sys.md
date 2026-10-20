@@ -6,8 +6,6 @@ export interface RRect
 
 Round rect.
 
-@interface RRect
-
 **Since:** 9
 
 <!--Device-windowAnimationManager-export interface RRect--><!--Device-windowAnimationManager-export interface RRect-End-->

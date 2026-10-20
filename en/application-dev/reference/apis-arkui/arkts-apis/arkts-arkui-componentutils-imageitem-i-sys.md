@@ -6,8 +6,6 @@ interface ImageItem
 
 Image object with layout information.
 
-@interface ImageItem
-
 **Since:** 23
 
 <!--Device-componentUtils-interface ImageItem--><!--Device-componentUtils-interface ImageItem-End-->

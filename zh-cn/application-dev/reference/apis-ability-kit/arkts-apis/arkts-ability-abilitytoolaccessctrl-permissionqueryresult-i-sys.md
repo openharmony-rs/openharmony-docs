@@ -17,6 +17,7 @@ interface PermissionQueryResult
 ## 导入模块
 
 ```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## needDialog
@@ -47,7 +48,7 @@ permissionResults: PermissionInfo[]
 
 权限结果列表。
 
-**类型：** [PermissionInfo](arkts-ability-abilitytoolaccessctrl-permissioninfo-i-sys.md)[]
+**类型：** [PermissionInfo](arkts-ability-abilitytoolaccessctrl-permissioninfo-i.md)[]
 
 **起始版本：** 26.0.0
 

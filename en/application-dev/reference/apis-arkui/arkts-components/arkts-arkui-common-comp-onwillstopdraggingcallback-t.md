@@ -22,4 +22,4 @@ Defines the callback invoked when the scrollable component is released.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| velocity | number | Yes | Scroll velocity. Positive for scrolling upward, negative for scrolling downward.<br>Unit: vp/s. |
+| velocity | number | Yes | Scroll velocity. Positive for scrolling upward, negative for scrolling downward. <br>Unit: vp/s. |

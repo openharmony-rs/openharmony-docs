@@ -6,8 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="setnetworkinterfacedisabled1"></a>
-
 ## setNetworkInterfaceDisabled
 
 ```TypeScript
@@ -76,8 +74,6 @@ networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true, (err) => {
 
 <!--DelEnd-->
 
-
-<a id="setnetworkinterfacedisabled2"></a>
 
 ## setNetworkInterfaceDisabled
 

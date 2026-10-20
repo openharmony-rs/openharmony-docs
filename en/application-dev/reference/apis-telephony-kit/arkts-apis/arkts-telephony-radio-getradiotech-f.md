@@ -6,8 +6,6 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
-<a id="getradiotech1"></a>
-
 ## getRadioTech
 
 ```TypeScript
@@ -30,7 +28,7 @@ Obtains the RAT used in the CS and PS domains for the SIM card in the specified 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetworkRadioTech](arkts-telephony-radio-networkradiotech-i.md)&gt; | Yes | Callback used to return the result. The CS domain refers to the Circuit Switched domain, and the PS domain refers to the Packet Switched domain.<br>**Since:** 11 |
 
 **Error codes:**
@@ -71,8 +69,6 @@ radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
 ```
 
 
-<a id="getradiotech2"></a>
-
 ## getRadioTech
 
 ```TypeScript
@@ -95,7 +91,7 @@ Obtains the RAT used in the CS and PS domains for the SIM card in the specified 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Return value:**
 

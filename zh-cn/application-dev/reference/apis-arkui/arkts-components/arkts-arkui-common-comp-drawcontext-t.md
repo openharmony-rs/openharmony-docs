@@ -6,8 +6,6 @@ declare type DrawContext = import('../api/arkui/Graphics').DrawContext
 
 DrawContext
 
-@typedef { import('../api/arkui/Graphics').DrawContext } DrawContext
-
 **类型：** import('../api/arkui/Graphics').DrawContext
 
 **起始版本：** 12

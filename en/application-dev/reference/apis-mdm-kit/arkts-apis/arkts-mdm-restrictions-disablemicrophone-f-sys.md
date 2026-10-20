@@ -18,7 +18,7 @@ Enables or disables the microphone.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**Substitutes:** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 

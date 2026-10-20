@@ -2,8 +2,6 @@
 
 Provides methods for intelligent data processing.
 
-@namespace intelligence
-
 **Since:** 15
 
 <!--Device-unnamed-declare namespace intelligence--><!--Device-unnamed-declare namespace intelligence-End-->

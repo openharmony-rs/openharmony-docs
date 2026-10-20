@@ -7,8 +7,6 @@ import { accessibility } from '@kit.AccessibilityKit';
 import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType, UIRect, UIAccessibilityElement } from '@kit.AccessibilityKit';
 ```
 
-<a id="getaccessibilityextensionlist1"></a>
-
 ## getAccessibilityExtensionList
 
 ```TypeScript
@@ -93,8 +91,6 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((dat
 });
 ```
 
-
-<a id="getaccessibilityextensionlist2"></a>
 
 ## getAccessibilityExtensionList
 

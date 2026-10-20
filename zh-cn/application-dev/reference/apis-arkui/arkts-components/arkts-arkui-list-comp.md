@@ -11,7 +11,7 @@ Repeat结合，它的懒加载行为和ForEach一致。
 
 如果可滚动组件嵌套List组件，并且滚动方向相同，List组件又没有设置主轴尺寸时，List组件会全量加载子组件，导致懒加载失效。该场景推荐使用List嵌套[ListItemGroup](arkts-arkui-listitemgroup-comp.md)组件以优化性能。
 
-List的预加载是指除了加载显示区域内可见的子组件外，还支持在空闲时隙提前加载部分显示区域外不可见的子组件。使用预加载可以减少滚动丢帧，提升流畅性。预加载需要结合懒加载才会生效。List支持通过[cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount1)设置预加载的数量。默认会预加载显示区域上下各一屏子组件（最大预加载16行子组件）。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，预加载能力存在差异：
+List的预加载是指除了加载显示区域内可见的子组件外，还支持在空闲时隙提前加载部分显示区域外不可见的子组件。使用预加载可以减少滚动丢帧，提升流畅性。预加载需要结合懒加载才会生效。List支持通过[cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount)设置预加载的数量。默认会预加载显示区域上下各一屏子组件（最大预加载16行子组件）。List和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，预加载能力存在差异：
 
 - 当List和ForEach结合，如果设置了cachedCount，除了会布局显示区域内子组件外，还会在空闲时隙预布局显示区域外cachedCount范围内的子组件。  
 - 当List和LazyForEach结合，如果设置了cachedCount，除了会创建和布局显示区域内子组件外，还会在空闲时隙预创建和预布局显示区域外cachedCount范围内的子组件。  
@@ -80,13 +80,20 @@ List(options?: ListOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [ChainAnimationOptions](arkts-arkui-list-comp-chainanimationoptions-i-sys.md) | 链式联动动效属性集合，用于设置List最大间距、最小间距、动效强度、传导系数、边缘效果、刚度和阻尼。当列表需要精细控制链式联动弹性效果时，可通过调整本对象中的参数实现不同动效手感。 |
 | [CloseSwipeActionOptions](arkts-arkui-list-comp-closeswipeactionoptions-i.md) | 收起[EXPANDED](arkts-arkui-listitem-comp-swipeactionstate-e.md)状态[ListItem](arkts-arkui-listitem-comp.md)回调事件集合，用于设置收起动画完成后回调事件。 |
 | [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) | 定义List组件的系统返回键行为。 |
 | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) | 用于设置List或ListItemGroup组件的分割线样式。 |
 | [ListOptions](arkts-arkui-list-comp-listoptions-i.md) | 用于设置List组件参数。 |
-| [UIListEvent](arkts-arkui-list-comp-uilistevent-i.md) | frameNode中[getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent2)方法的返回值，可用于给List节点设置滚动事件。 |
+| [UIListEvent](arkts-arkui-list-comp-uilistevent-i.md) | frameNode中[getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent)方法的返回值，可用于给List节点设置滚动事件。 |
 | [VisibleListContentInfo](arkts-arkui-list-comp-visiblelistcontentinfo-i.md) | 用于表示List可见内容区子组件的详细信息。 |
+
+<!--Del-->
+### 接口（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ChainAnimationOptions](arkts-arkui-list-comp-chainanimationoptions-i-sys.md) | 链式联动动效属性集合，用于设置List最大间距、最小间距、动效强度、传导系数、边缘效果、刚度和阻尼。当列表需要精细控制链式联动弹性效果时，可通过调整本对象中的参数实现不同动效手感。 |
+<!--DelEnd-->
 
 ### 类型
 
@@ -99,13 +106,20 @@ List(options?: ListOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [ChainEdgeEffect](arkts-arkui-list-comp-chainedgeeffect-e-sys.md) | 设置链式动效的边缘效果，用于决定列表滚动到边缘后继续拖动时列表项间距的变化方式。 |
 | [ListItemAlign](arkts-arkui-list-comp-listitemalign-e.md) | 设置子组件在List交叉轴方向的对齐方式。 |
 | [ListItemGroupArea](arkts-arkui-list-comp-listitemgrouparea-e.md) | 枚举了ListItemGroup各个区域。 |
 | [ScrollSnapAlign](arkts-arkui-list-comp-scrollsnapalign-e.md) | 设置列表项滚动结束对齐效果。 |
 | [ScrollSnapAnimationSpeed](arkts-arkui-list-comp-scrollsnapanimationspeed-e.md) | 设置列表项滚动限位动画速度。 |
 | [ScrollState](arkts-arkui-list-comp-scrollstate-e.md) | 滑动状态枚举。 |
 | [StickyStyle](arkts-arkui-list-comp-stickystyle-e.md) | ListItemGroup吸顶或吸底效果枚举。 |
+
+<!--Del-->
+### 枚举（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ChainEdgeEffect](arkts-arkui-list-comp-chainedgeeffect-e-sys.md) | 设置链式动效的边缘效果，用于决定列表滚动到边缘后继续拖动时列表项间距的变化方式。 |
+<!--DelEnd-->
 
 ## 示例
 

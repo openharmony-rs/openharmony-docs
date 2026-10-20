@@ -6,8 +6,6 @@ declare interface InteropAbilityLifecycleCallback
 
 The interop ability lifecycle callback.
 
-@typedef InteropAbilityLifecycleCallback
-
 **Since:** 23
 
 <!--Device-unnamed-declare interface InteropAbilityLifecycleCallback--><!--Device-unnamed-declare interface InteropAbilityLifecycleCallback-End-->

@@ -39,7 +39,6 @@ function getBundleInstallStatus(bundleName: string): BundleInstallStatus
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied. A non-system application is not allowed to call a system API.<br>**适用版本：** 23 - 26.0.0 |
 
 **示例**
 

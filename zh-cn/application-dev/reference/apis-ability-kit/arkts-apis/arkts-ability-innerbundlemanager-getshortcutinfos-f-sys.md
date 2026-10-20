@@ -6,8 +6,6 @@
 import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
 ```
 
-<a id="getshortcutinfos1"></a>
-
 ## getShortcutInfos
 
 ```TypeScript
@@ -37,8 +35,6 @@ function getShortcutInfos(bundleName: string, callback: AsyncCallback<Array<Shor
 | bundleName | string | 是 | 要查询的应用Bundle名称。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ShortcutInfo](arkts-ability-shortcutinfo-depr-i.md)&gt;&gt; | 是 | 程序启动作为入参的回调函数，返回快捷方式信息。 |
 
-
-<a id="getshortcutinfos2"></a>
 
 ## getShortcutInfos
 

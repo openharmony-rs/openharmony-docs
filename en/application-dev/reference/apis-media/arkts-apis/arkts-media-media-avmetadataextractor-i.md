@@ -4,7 +4,7 @@
 interface AVMetadataExtractor
 ```
 
-AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor3) to create an AVMetadataExtractor instance.
+AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor) to create an AVMetadataExtractor instance.
 
 For details about the demo of obtaining audio or video metadata and video thumbnails, see [Using AVMetadataExtractor to Extract Audio and Video Metadata (ArkTS)](../../../media/media/avmetadataextractor.md).
 
@@ -54,8 +54,6 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 });
 ```
 
-<a id="fetchalbumcover1"></a>
-
 ## fetchAlbumCover
 
 ```TypeScript
@@ -104,8 +102,6 @@ async function test() {
   });
 }
 ```
-
-<a id="fetchalbumcover3"></a>
 
 ## fetchAlbumCover
 
@@ -456,8 +452,6 @@ async function fetchFramesByTimesDemo() {
 }
 ```
 
-<a id="fetchmetadata1"></a>
-
 ## fetchMetadata
 
 ```TypeScript
@@ -504,8 +498,6 @@ async function test() {
   });
 }
 ```
-
-<a id="fetchmetadata3"></a>
 
 ## fetchMetadata
 
@@ -610,8 +602,6 @@ async function test() {
 }
 ```
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -656,8 +646,6 @@ async function test() {
   });
 }
 ```
-
-<a id="release2"></a>
 
 ## release
 
@@ -710,7 +698,7 @@ async function test() {
 setUrlSource(url: string, headers?: Record<string, string>): void
 ```
 
-Sets the data source for a network on-demand resource. Only network metadata ([fetchMetadata](#fetchmetadata1)) and thumbnails ([fetchFrameByTime](#fetchframebytime)) can be obtained. The media resource URL must be set before the retrieval.
+Sets the data source for a network on-demand resource. Only network metadata ([fetchMetadata](#fetchmetadata)) and thumbnails ([fetchFrameByTime](#fetchframebytime)) can be obtained. The media resource URL must be set before the retrieval.
 
 **Since:** 20
 

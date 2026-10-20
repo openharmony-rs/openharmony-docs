@@ -2859,3 +2859,18 @@ Returns the number of bytes in buf
 <!--Device-FastBuffer-length: number--><!--Device-FastBuffer-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
+
+**Examples**
+
+```TypeScript
+import { fastbuffer } from '@kit.ArkTS';
+
+let buf = fastbuffer.from("1236");
+console.info(JSON.stringify(buf.length));
+// Output: 4
+let arrayBuffer = buf.buffer;
+console.info(JSON.stringify(new Uint8Array(arrayBuffer)));
+// Output: {"0":49,"1":50,"2":51,"3":54}
+console.info(JSON.stringify(buf.byteOffset));
+// Output: 0
+```

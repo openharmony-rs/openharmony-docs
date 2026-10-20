@@ -6,8 +6,6 @@ namespace domainName
 
 Provide domain name for query.
 
-@namespace domainName
-
 **Since:** 11
 
 <!--Device-settings-namespace domainName--><!--Device-settings-namespace domainName-End-->

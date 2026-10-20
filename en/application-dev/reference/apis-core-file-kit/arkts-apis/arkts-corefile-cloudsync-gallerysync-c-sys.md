@@ -45,8 +45,6 @@ let gallerySync = new cloudSync.GallerySync()
 
 <!--DelEnd-->
 
-<a id="off1"></a>
-
 ## off
 
 ```TypeScript
@@ -78,7 +76,7 @@ Removes the specified callback from the device-cloud sync progress.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
 <!--Del-->
@@ -97,8 +95,6 @@ gallerySync.off('progress', callback);
 ```
 
 <!--DelEnd-->
-
-<a id="off2"></a>
 
 ## off
 
@@ -130,7 +126,7 @@ Removes all callbacks from the device-cloud sync progress.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
 <!--Del-->
@@ -179,7 +175,7 @@ Registers a listener for the device-cloud sync progress.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
 <!--Del-->
@@ -194,8 +190,6 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 ```
 
 <!--DelEnd-->
-
-<a id="start1"></a>
 
 ## start
 
@@ -253,8 +247,6 @@ gallerySync.start().then(() => {
 
 <!--DelEnd-->
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -285,7 +277,7 @@ Starts device-cloud sync. This API uses an asynchronous callback to return the r
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 22400001 | Cloud status not ready. |
 | 22400002 | Network unavailable. |
 | 22400003 | Low battery level. |
@@ -308,8 +300,6 @@ gallerySync.start((err: BusinessError) => {
 ```
 
 <!--DelEnd-->
-
-<a id="startwithtype1"></a>
 
 ## startWithType
 
@@ -353,8 +343,6 @@ Starts device-cloud sync. This API uses a promise to return the result.
 | 22400002 | Network unavailable. |
 | 22400003 | Low battery level. |
 
-<a id="startwithtype2"></a>
-
 ## startWithType
 
 ```TypeScript
@@ -391,8 +379,6 @@ Starts device-cloud sync. This API uses a callback to return the result.
 | 22400001 | Cloud status not ready. |
 | 22400002 | Network unavailable. |
 | 22400003 | Low battery level. |
-
-<a id="stop1"></a>
 
 ## stop
 
@@ -448,8 +434,6 @@ gallerySync.stop().then(() => {
 
 <!--DelEnd-->
 
-<a id="stop2"></a>
-
 ## stop
 
 ```TypeScript
@@ -485,7 +469,7 @@ Stops device-cloud sync. This API uses an asynchronous callback to return the re
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 <!--Del-->
 **Examples**

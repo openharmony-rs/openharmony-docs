@@ -6,8 +6,6 @@ declare type DialogOptionsBorderColor = ResourceColor | EdgeColors
 
 Defines the allowed data types for specifying the background border color of a dialog box.
 
-@typedef { ResourceColor | EdgeColors } DialogOptionsBorderColor
-
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.

@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getallapplicationinfo1"></a>
-
 ## getAllApplicationInfo
 
 ```TypeScript
@@ -67,8 +65,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getallapplicationinfo2"></a>
 
 ## getAllApplicationInfo
 
@@ -134,8 +130,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="getallapplicationinfo3"></a>
-
 ## getAllApplicationInfo
 
 ```TypeScript
@@ -165,7 +159,7 @@ function getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt;&gt; | Promise对象，返回Array<[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)>。 |
+| Promise&lt;Array&lt;[ApplicationInfo](arkts-ability-bundlemanager-applicationinfo-t.md)&gt;&gt; | Promise对象，返回Array<ApplicationInfo>。 |
 
 **错误码：**
 

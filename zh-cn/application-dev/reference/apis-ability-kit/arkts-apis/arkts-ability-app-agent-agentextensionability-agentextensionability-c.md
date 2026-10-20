@@ -12,8 +12,6 @@ AgentExtensionAbility继承自[ExtensionAbility](arkts-ability-app-ability-exten
 > 
 > 本模块接口不支持在[har](../../../quick-start/har-package.md)包中使用。
 
-@extends ExtensionAbility
-
 **继承/实现关系：** AgentExtensionAbility extends [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)
 
 **起始版本：** 24

@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="setapplicationenabled1"></a>
-
 ## setApplicationEnabled
 
 ```TypeScript
@@ -31,7 +29,7 @@ Enables or disables an application or an application clone. This API uses a prom
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
-| appIndex | number | Yes | Index of the application clone.<br> The value **0** means to enable or disable the main application. A value greater than 0 means to enable or disable the application clone. |
+| appIndex | number | Yes | Index of the application clone. <br> The value **0** means to enable or disable the main application. A value greater than 0 means to enable or disable the application clone. |
 | isEnabled | boolean | Yes | Whether to enable the application. **true** to enable, **false** otherwise. |
 
 **Return value:**
@@ -74,8 +72,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="setapplicationenabled2"></a>
 
 ## setApplicationEnabled
 
@@ -152,8 +148,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="setapplicationenabled3"></a>
-
 ## setApplicationEnabled
 
 ```TypeScript
@@ -215,8 +209,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="setapplicationenabled4"></a>
 
 ## setApplicationEnabled
 

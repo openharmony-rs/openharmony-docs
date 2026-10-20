@@ -18,7 +18,7 @@ Obtains the **Want** parameters for starting an application based on the given b
 
 **Required permissions:** 
 - API version 24 and later: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
-- API versions 10 to 23: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+- API versions 10 to 23: N/A
 
 <!--Device-bundleManager-function getLaunchWantForBundleSync(bundleName: string, userId?: int): Want--><!--Device-bundleManager-function getLaunchWantForBundleSync(bundleName: string, userId?: int): Want-End-->
 
@@ -42,7 +42,6 @@ Obtains the **Want** parameters for starting an application based on the given b
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api.<br>**Applicable version:** 10 - 23 |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle is not found. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user id is not found. |

@@ -12,7 +12,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 function getDevices(): Array<Readonly<USBDevice>>
 ```
 
-获取接入主设备的USB设备列表。调用成功后返回已连接设备的详细信息列表包括设备名称、厂商产品信息等。
+获取接入主机的USB设备列表。调用成功后返回已连接设备的详细信息列表，包括设备名称、厂商产品信息等。
 
 > **说明：** 
 > 

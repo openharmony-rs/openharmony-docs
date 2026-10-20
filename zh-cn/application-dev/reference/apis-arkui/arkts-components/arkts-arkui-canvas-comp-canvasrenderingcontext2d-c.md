@@ -24,8 +24,6 @@ CanvasRenderingContext2D对象与Canvas组件绑定后，可在Canvas组件上�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -94,8 +92,6 @@ struct LengthMetricsUnitDemo {
 }
 ```
 
-<a id="constructor2"></a>
-
 ## constructor
 
 ```TypeScript
@@ -137,7 +133,7 @@ static getContext2DFromDrawingContext(drawingContext: DrawingRenderingContext, o
 
 > **说明：** 
 > 
-> - 从该接口获取的CanvasRenderingContext2D对象不允许作为参数创建[Canvas](arkts-arkui-canvas-comp.md)组件，否则会导致应用崩溃。
+> - 从该接口获取的CanvasRenderingContext2D对象不允许作为参数创建[Canvas](arkts-arkui-canvas-comp.md#canvas)组件，否则会导致应用崩溃。
 > 
 > - 当入参的DrawingRenderingContext对象未绑定Canvas组件时，将返回错误码。
 
@@ -665,7 +661,7 @@ readonly canvas: FrameNode
 readonly height: number
 ```
 
-组件高度。
+**CanvasRenderingContext2D**的组件高度。
 
 默认单位为vp。
 
@@ -689,7 +685,7 @@ readonly height: number
 readonly width: number
 ```
 
-组件宽度。
+**CanvasRenderingContext2D**的组件宽度。
 
 默认单位为vp。
 

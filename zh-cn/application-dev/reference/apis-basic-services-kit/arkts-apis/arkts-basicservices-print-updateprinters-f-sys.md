@@ -6,8 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="updateprinters1"></a>
-
 ## updatePrinters
 
 ```TypeScript
@@ -68,8 +66,6 @@ print.updatePrinters([printerInfo], (error: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="updateprinters2"></a>
 
 ## updatePrinters
 

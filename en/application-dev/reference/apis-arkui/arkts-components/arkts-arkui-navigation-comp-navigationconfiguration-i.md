@@ -20,7 +20,11 @@ clearContentStackOnPrimaryNavigation?: boolean
 
 Whether to clear the content stack when navigation is triggered from the primary side.
 
-In Navigation split mode, when enabled, navigaiton triggered from the primary side clears old NavDestination after the Primary/Home node while preserving all NavDestinations created by the current operation.
+The default value is **false**. The value **true** indicates that the navigation stack clearing capability from left to right is enabled, and the value **false** indicates that the capability is disabled.
+
+**Description of the navigation stack clearing capability from left to right:**
+
+When the navigation page is displayed in split mode, if a user's operation (such as clicking a button on the page) on the home page (**NavBar** or **NavDestination**) triggers the page redirection, the system clears the pages before the first newly created page in the navigation page stack, and only the first newly created page and the pages that follow it are retained.
 
 **Type:** boolean
 

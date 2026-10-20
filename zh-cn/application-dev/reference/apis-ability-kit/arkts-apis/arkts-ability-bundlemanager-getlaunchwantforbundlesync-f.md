@@ -18,7 +18,7 @@ function getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
 
 **需要权限：** 
 - API版本24+：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
-- API版本10-23：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+- API版本10-23：N/A
 
 <!--Device-bundleManager-function getLaunchWantForBundleSync(bundleName: string, userId?: int): Want--><!--Device-bundleManager-function getLaunchWantForBundleSync(bundleName: string, userId?: int): Want-End-->
 
@@ -42,7 +42,6 @@ function getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api.<br>**适用版本：** 10 - 23 |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user id is not found. |

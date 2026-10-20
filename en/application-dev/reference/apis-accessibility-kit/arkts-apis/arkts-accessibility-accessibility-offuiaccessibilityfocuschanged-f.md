@@ -33,4 +33,4 @@ Unsubscribes from accessibility focus change events in the app.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [9300000](../errorcode-accessibility.md#9300000-accessibility-system-service-abnormal) | System abnormality. Possible causes:<br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.The listener or observer is not registered. |
+| [9300000](../errorcode-accessibility.md#9300000-accessibility-system-service-abnormal) | System abnormality. Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.The listener or observer is not registered. |

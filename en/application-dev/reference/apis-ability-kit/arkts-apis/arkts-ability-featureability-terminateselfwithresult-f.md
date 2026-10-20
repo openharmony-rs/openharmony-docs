@@ -6,15 +6,13 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
-<a id="terminateselfwithresult1"></a>
-
 ## terminateSelfWithResult
 
 ```TypeScript
 function terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>): void
 ```
 
-Terminates this ability. This API uses an asynchronous callback to return the result. If the ability is started by calling [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult1), the result is returned to the caller when **terminateSelfWithResult** is called. Otherwise, no result is returned to the caller when **terminateSelfWithResult** is called.
+Terminates this ability. This API uses an asynchronous callback to return the result. If the ability is started by calling [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult), the result is returned to the caller when **terminateSelfWithResult** is called. Otherwise, no result is returned to the caller when **terminateSelfWithResult** is called.
 
 **Since:** 7
 
@@ -70,15 +68,13 @@ featureAbility.terminateSelfWithResult(
 ```
 
 
-<a id="terminateselfwithresult2"></a>
-
 ## terminateSelfWithResult
 
 ```TypeScript
 function terminateSelfWithResult(parameter: AbilityResult): Promise<void>
 ```
 
-Terminates this ability. This API uses a promise to return the result. If the ability is started by calling [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult1), the result is returned to the caller when **terminateSelfWithResult** is called. Otherwise, no result is returned to the caller when **terminateSelfWithResult** is called.
+Terminates this ability. This API uses a promise to return the result. If the ability is started by calling [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult), the result is returned to the caller when **terminateSelfWithResult** is called. Otherwise, no result is returned to the caller when **terminateSelfWithResult** is called.
 
 **Since:** 7
 

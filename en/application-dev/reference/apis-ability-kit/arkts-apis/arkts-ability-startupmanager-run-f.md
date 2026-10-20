@@ -6,8 +6,6 @@
 import { startupManager } from '@kit.AbilityKit';
 ```
 
-<a id="run1"></a>
-
 ## run
 
 ```TypeScript
@@ -19,7 +17,7 @@ Runs startup tasks or loads .so files.
 > **NOTE:** 
 > 
 > This API cannot be used to run startup tasks defined in a feature-type HAP. To run those tasks, use
-> [startupManager.run](#run2)
+> [startupManager.run](#run)
 > .
 
 **Since:** 12
@@ -83,8 +81,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-
-<a id="run2"></a>
 
 ## run
 

@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="setapplicationenabledsync1"></a>
-
 ## setApplicationEnabledSync
 
 ```TypeScript
@@ -63,8 +61,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="setapplicationenabledsync2"></a>
 
 ## setApplicationEnabledSync
 

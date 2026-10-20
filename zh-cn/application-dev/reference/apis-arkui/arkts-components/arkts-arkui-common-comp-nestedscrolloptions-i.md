@@ -6,8 +6,6 @@ declare interface NestedScrollOptions
 
 nestedScroll属性参数对象。
 
-@interface NestedScrollOptions
-
 **起始版本：** 23
 
 <!--Device-unnamed-declare interface NestedScrollOptions--><!--Device-unnamed-declare interface NestedScrollOptions-End-->

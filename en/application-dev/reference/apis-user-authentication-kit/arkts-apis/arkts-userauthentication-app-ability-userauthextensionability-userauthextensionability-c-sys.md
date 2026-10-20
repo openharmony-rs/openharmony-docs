@@ -6,8 +6,6 @@ export default class UserAuthExtensionAbility extends UIExtensionAbility
 
 The class of user authentication extension ability.
 
-@extends UIExtensionAbility
-
 **Inheritance/Implementation:** UserAuthExtensionAbility extends [UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)
 
 **Since:** 10

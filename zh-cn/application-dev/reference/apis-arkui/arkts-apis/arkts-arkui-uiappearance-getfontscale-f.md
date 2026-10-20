@@ -26,10 +26,6 @@ function getFontScale(): number
 
 **起始版本：** 20
 
-**需要权限：** 
-- API版本20+：N/A
-- API版本12-19：ohos.permission.UPDATE_CONFIGURATION
-
 <!--Device-uiAppearance-function getFontScale(): number--><!--Device-uiAppearance-function getFontScale(): number-End-->
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
@@ -44,8 +40,6 @@ function getFontScale(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 12 - 19 |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12 - 19 |
 | [500001](../errorcode-uiappearance.md#500001-内部错误) | Internal error. |
 
 **示例**

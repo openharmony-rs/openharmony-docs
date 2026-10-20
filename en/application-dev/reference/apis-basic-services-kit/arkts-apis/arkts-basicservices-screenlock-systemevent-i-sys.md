@@ -6,8 +6,6 @@ interface SystemEvent
 
 Indicates the system event type and parameter related to the screenlock management service.
 
-@typedef SystemEvent
-
 **Since:** 9
 
 <!--Device-screenLock-interface SystemEvent--><!--Device-screenLock-interface SystemEvent-End-->

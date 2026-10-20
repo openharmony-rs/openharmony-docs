@@ -46,7 +46,7 @@ A ring of the gradient type contains a maximum of nine color segments. If there 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| colors | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient &#124; Array&lt;[ResourceColor &#124; LinearGradient, number]&gt; | Yes | Colors of the gauge, which support segmented color settings.<br>Default value since API version 9: Color.Black <br>Default value since API version 11: <br>If no color is passed or the array is empty, the ring type and colors cannot be determined, and the ring is a gradient ring with the colors "0xFF64BB5C", "0xFFF7CE00", and "0xFFE84026". <br>If a color is passed but the color value is invalid, the color is "0xFFE84026". <br>If the proportion of a color is 0, the color is not displayed in the ring. If the proportions of all colors are 0, the ring is not displayed. <br>Since API version 10, the Array<ResourceColor, number> type is supported. <br>Since API version 11, the LinearGradient and Array<LinearGradient, number> types are supported.<br>**Since:** 11 |
+| colors | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient &#124; Array&lt;[ResourceColor &#124; LinearGradient, number]&gt; | Yes | Colors of the gauge, which support segmented color settings. <br>Default value since API version 9: Color.Black <br>Default value since API version 11: <br>If no color is passed or the array is empty, the ring type and colors cannot be determined, and the ring is a gradient ring with the colors "0xFF64BB5C", "0xFFF7CE00", and "0xFFE84026". <br>If a color is passed but the color value is invalid, the color is "0xFFE84026". <br>If the proportion of a color is 0, the color is not displayed in the ring. If the proportions of all colors are 0, the ring is not displayed. <br>Since API version 10, the Array<ResourceColor, number> type is supported. <br>Since API version 11, the LinearGradient and Array<LinearGradient, number> types are supported.<br>**Since:** 11 |
 
 ## contentModifier
 
@@ -70,7 +70,7 @@ Creates a content modifier.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[GaugeConfiguration](arkts-arkui-gauge-comp-gaugeconfiguration-i.md)&gt; | Yes | Method for customizing the content area on the Gauge component.<br>modifier: content modifier. Developers need to customize a class to implement the ContentModifier interface. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[GaugeConfiguration](arkts-arkui-gauge-comp-gaugeconfiguration-i.md)&gt; | Yes | Method for customizing the content area on the Gauge component. <br>modifier: content modifier. Developers need to customize a class to implement the ContentModifier interface. |
 
 ## description
 
@@ -96,7 +96,7 @@ Sets the description of the gauge.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | Yes | Content description.<br>**Note:** <br>The content in @Builder is customized by the developer. Text or images are recommended. <br>If the width and height of the custom part are in percentage, the reference range is a rectangle of 44.4%*25.4% of the ring diameter (28.6%*28.6% for images), 0 vp from the bottom of the ring, centered horizontally. <br>If set to null, no content is displayed. <br>If not set, whether content is displayed depends on whether the maximum and minimum data values are set. <br>If both or only one of the maximum and minimum values are set, the maximum and minimum values are displayed. <br>If neither the maximum nor the minimum value is set, no content is displayed. <br>The maximum and minimum values are displayed at the bottom of the ring and cannot be moved. If the ring opening angle is set improperly, the text may be obscured by the ring. |
+| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | Yes | Content description. <br>**Note:** <br>The content in @Builder is customized by the developer. Text or images are recommended. <br>If the width and height of the custom part are in percentage, the reference range is a rectangle of 44.4%*25.4% of the ring diameter (28.6%*28.6% for images), 0 vp from the bottom of the ring, centered horizontally. <br>If set to null, no content is displayed. <br>If not set, whether content is displayed depends on whether the maximum and minimum data values are set. <br>If both or only one of the maximum and minimum values are set, the maximum and minimum values are displayed. <br>If neither the maximum nor the minimum value is set, no content is displayed. <br>The maximum and minimum values are displayed at the bottom of the ring and cannot be moved. If the ring opening angle is set improperly, the text may be obscured by the ring. |
 
 ## endAngle
 
@@ -120,7 +120,7 @@ Sets the end angle of the gauge. Ensure an appropriate difference between the st
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| angle | number | Yes | End angle position. 0 degrees is at the 12 o'clock position, with positive angles in the clockwise direction and negative angles in the counterclockwise direction. An angle exceeding 360 degrees is equivalent to the remainder after modulo 360.<br>Default value: 360 <br>Unit: deg (degree) <br>Drawing from the start position to the end position is only in the clockwise direction. <br>If the difference between the start angle and end angle is too small, an abnormal image may be drawn. Use reasonable start and end angles. |
+| angle | number | Yes | End angle position. 0 degrees is at the 12 o'clock position, with positive angles in the clockwise direction and negative angles in the counterclockwise direction. An angle exceeding 360 degrees is equivalent to the remainder after modulo 360. <br>Default value: 360 <br>Unit: deg (degree) <br>Drawing from the start position to the end position is only in the clockwise direction. <br>If the difference between the start angle and end angle is too small, an abnormal image may be drawn. Use reasonable start and end angles. |
 
 ## indicator
 
@@ -146,7 +146,7 @@ Sets the indicator style of the gauge.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [GaugeIndicatorOptions](arkts-arkui-gauge-comp-gaugeindicatoroptions-i.md) | Yes | Pointer style.<br>**NOTE:** <br>If null is set, the pointer is not displayed. |
+| value | [GaugeIndicatorOptions](arkts-arkui-gauge-comp-gaugeindicatoroptions-i.md) | Yes | Pointer style. <br>**NOTE:** <br>If null is set, the pointer is not displayed. |
 
 ## privacySensitive
 
@@ -200,7 +200,7 @@ Sets the start angle position. If the difference between the start angle and the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| angle | number | Yes | Start angle position. The 0 o'clock position is 0 degrees. Clockwise is a positive angle, and counterclockwise is a negative angle. An angle greater than 360 degrees is equivalent to the remainder after dividing by 360 degrees.<br>Default value: 0 <br>Unit: deg <br>The drawing from the start position to the end position is clockwise only. <br>If the difference between the start angle and the end angle is too small, an abnormal image may be drawn. Use reasonable start and end angles. |
+| angle | number | Yes | Start angle position. The 0 o'clock position is 0 degrees. Clockwise is a positive angle, and counterclockwise is a negative angle. An angle greater than 360 degrees is equivalent to the remainder after dividing by 360 degrees. <br>Default value: 0 <br>Unit: deg <br>The drawing from the start position to the end position is clockwise only. <br>If the difference between the start angle and the end angle is too small, an abnormal image may be drawn. Use reasonable start and end angles. |
 
 ## strokeWidth
 
@@ -224,7 +224,7 @@ Sets the stroke width of the gauge.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| length | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Thickness of the ring gauge.<br>Default value: 4 <br>Unit: vp <br>**Note:** <br>If the value is less than or equal to 0, the default value is used. <br>The maximum thickness is the radius of the ring. If the value exceeds the maximum, the maximum value is used. <br>Percentage is not supported. |
+| length | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Thickness of the ring gauge. <br>Default value: 4 <br>Unit: vp <br>**Note:** <br>If the value is less than or equal to 0, the default value is used. <br>The maximum thickness is the radius of the ring. If the value exceeds the maximum, the maximum value is used. <br>Percentage is not supported. |
 
 ## trackShadow
 
@@ -250,7 +250,7 @@ Sets the shadow style of the gauge.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [GaugeShadowOptions](arkts-arkui-gauge-comp-gaugeshadowoptions-i.md) | Yes | Adds a shadow effect. You can specify the blur radius and the offsets along the X-axis and Y-axis.<br>**Note:** <br>The shadow color is the same as the ring color. <br>Set this parameter to null to disable the shadow. |
+| value | [GaugeShadowOptions](arkts-arkui-gauge-comp-gaugeshadowoptions-i.md) | Yes | Adds a shadow effect. You can specify the blur radius and the offsets along the X-axis and Y-axis. <br>**Note:** <br>The shadow color is the same as the ring color. <br>Set this parameter to null to disable the shadow. |
 
 ## value
 
@@ -274,4 +274,4 @@ Sets the value of the gauge.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Data value of the gauge, which can be used to dynamically modify the data value of the gauge.<br>**Note:** <br>If value is not within the range of min and max, min is used as the actual value. <br>Default value: 0 |
+| value | number | Yes | Data value of the gauge, which can be used to dynamically modify the data value of the gauge. <br>**Note:** <br>If value is not within the range of min and max, min is used as the actual value. <br>Default value: 0 |

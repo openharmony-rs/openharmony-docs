@@ -6,8 +6,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="haskeyitem1"></a>
-
 ## hasKeyItem
 
 ```TypeScript
@@ -73,8 +71,6 @@ huks.hasKeyItem(keyAlias, emptyOptions, (error, data) => {
 });
 ```
 
-
-<a id="haskeyitem2"></a>
 
 ## hasKeyItem
 

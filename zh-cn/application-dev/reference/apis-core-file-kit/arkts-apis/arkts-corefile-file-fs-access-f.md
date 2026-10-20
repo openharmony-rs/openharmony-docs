@@ -55,8 +55,6 @@ declare function access(path: string, mode?: AccessModeType): Promise<boolean>
 | 13900042 | Unknown error |
 
 
-<a id="access2"></a>
-
 ## access
 
 ```TypeScript
@@ -98,8 +96,6 @@ declare function access(path: string, callback: AsyncCallback<boolean>): void
 | 13900042 | Unknown error |
 
 
-<a id="access3"></a>
-
 ## access
 
 ```TypeScript
@@ -134,7 +130,7 @@ declare function access(path: string, mode: AccessModeType, flag: AccessFlagType
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13900005 | I/O error |
 | 13900011 | Out of memory |
 | 13900012 | Permission denied |

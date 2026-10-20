@@ -6,8 +6,6 @@ type OnFontWeightScaleUpdatedFn = (fontWeightScale: number) => void
 
 Defines an OnFontWeightScaleUpdatedFn function.
 
-@typedef { function }
-
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.

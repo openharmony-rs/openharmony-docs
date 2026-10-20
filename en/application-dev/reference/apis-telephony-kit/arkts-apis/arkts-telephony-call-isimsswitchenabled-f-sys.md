@@ -6,8 +6,6 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
-<a id="isimsswitchenabled1"></a>
-
 ## isImsSwitchEnabled
 
 ```TypeScript
@@ -28,7 +26,7 @@ Checks whether the IMS service is enabled. This API uses an asynchronous callbac
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2. |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value **true** indicates that the IMS service is enabled, and the value **false** indicates the opposite. The value **true** indicates that the IMS service is enabled, and the value **false** indicates the opposite. |
 
 **Error codes:**
@@ -60,8 +58,6 @@ call.isImsSwitchEnabled(0, (err: BusinessError, data: boolean) => {
 <!--DelEnd-->
 
 
-<a id="isimsswitchenabled2"></a>
-
 ## isImsSwitchEnabled
 
 ```TypeScript
@@ -82,7 +78,7 @@ Checks whether the IMS service is enabled. This API uses a promise to return the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2. |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2. |
 
 **Return value:**
 

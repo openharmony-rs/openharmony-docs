@@ -506,6 +506,22 @@ ThumbnailExtensionAbility：文件缩略图扩展能力，用于为文件提供�
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+## UKEY_AUTH
+
+```TypeScript
+UKEY_AUTH = 40
+```
+
+[UkeyAuthExtensionAbility](../../../reference/apis-device-certificate-kit/js-apis-UkeyAuthExtensionAbility.md):为开发者提供接入自定义UKey认证界面的能力。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ExtensionAbilityType-UKEY_AUTH = 40--><!--Device-ExtensionAbilityType-UKEY_AUTH = 40-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
 ## UNSPECIFIED
 
 ```TypeScript

@@ -88,7 +88,6 @@ Constructor
 | [BaseEvent](arkts-arkui-common-comp-baseevent-i.md) | Basic event type. |
 | [BindOptions](arkts-arkui-common-comp-bindoptions-i.md) | Overlay module options |
 | [BlurOptions](arkts-arkui-common-comp-bluroptions-i.md) | Grayscale blur parameters. |
-| [BlurSnapshotOptions](arkts-arkui-common-comp-blursnapshotoptions-i-sys.md) | Defines the options for blur snapshot optimization. Setting this object enables blur optimization. |
 | [BlurStyleOptions](arkts-arkui-common-comp-blurstyleoptions-i.md) | Defines the options of blurStyle |
 | [BorderImageOption](arkts-arkui-common-comp-borderimageoption-i.md) | Border image option |
 | [BuilderDecoratorConfig](arkts-arkui-common-comp-builderdecoratorconfig-i.md) | Defining BuilderDecoratorConfig interface |
@@ -106,9 +105,6 @@ Constructor
 | [CrownEvent](arkts-arkui-common-comp-crownevent-i.md) | Defines a data structure for the crown event received by a component. It includes the timestamp, angular velocity, rotation angle, crown action, and event propagation disabling. |
 | [CustomPopupOptions](arkts-arkui-common-comp-custompopupoptions-i.md) | Provides information for displaying a custom popup. |
 | [DateRange](arkts-arkui-common-comp-daterange-i.md) | Defines a range of dates. |
-| [DepthColorRGB](arkts-arkui-common-comp-depthcolorrgb-i-sys.md) | RGB color in depth space. |
-| [DepthVector3](arkts-arkui-common-comp-depthvector3-i-sys.md) | 3D vector in depth space. |
-| [DepthVector4](arkts-arkui-common-comp-depthvector4-i-sys.md) | 4D vector in depth space. |
 | [DismissContentCoverAction](arkts-arkui-common-comp-dismisscontentcoveraction-i.md) | Component content cover dismiss |
 | [DismissPopupAction](arkts-arkui-common-comp-dismisspopupaction-i.md) | Provides information about the dismissal of the popup. |
 | [DismissSheetAction](arkts-arkui-common-comp-dismisssheetaction-i.md) | Component sheet dismiss |
@@ -118,7 +114,6 @@ Constructor
 | [DragPreviewOptions](arkts-arkui-common-comp-dragpreviewoptions-i.md) | Preview image processing mode and badge count during dragging. |
 | [DropOptions](arkts-arkui-common-comp-dropoptions-i.md) | Sets parameters for the drop process. |
 | [EdgeEffectOptions](arkts-arkui-common-comp-edgeeffectoptions-i.md) | Implements an object used to configure the [edgeEffect](arkts-arkui-common-comp-scrollablecommonmethod-c.md#edgeeffect) attribute. |
-| [EdgeLightParams](arkts-arkui-common-comp-edgelightparams-i-sys.md) | Defines the parameters of the edge light effect. |
 | [EditModeOptions](arkts-arkui-common-comp-editmodeoptions-i.md) | Sets attributes of the **List** or **Grid** component in edit mode. |
 | [EntryOptions](arkts-arkui-common-comp-entryoptions-i.md) | Page entry configuration options, used to configure parameters such as the route name, state storage, and shared storage when decorating a page with @Entry. |
 | [EventTarget](arkts-arkui-common-comp-eventtarget-i.md) | Defines the type of the **target** parameter in [BaseEvent](arkts-arkui-common-comp-baseevent-i.md). |
@@ -131,7 +126,6 @@ Constructor
 | [GeometryInfo](arkts-arkui-common-comp-geometryinfo-i.md) | Provides layout information of the parent component (a custom component). Inherits from [SizeResult](arkts-arkui-common-comp-sizeresult-i.md). In the **onMeasureSize** and **onPlaceChildren** methods, the **GeometryInfo** object can be obtained through the **selfLayoutInfo** parameter. It contains the border width, margin, and padding information of the parent component, which developers need to consider when calculating the layout of child components. |
 | [GeometryTransitionOptions](arkts-arkui-common-comp-geometrytransitionoptions-i.md) | Defines the options of geometry transition. |
 | [GestureModifier](arkts-arkui-common-comp-gesturemodifier-i.md) | **GestureModifier** is used to encapsulate the logic for dynamically setting component gestures. Developers need to customize a class to implement the **GestureModifier** interface and set or switch the gestures bound to a component in **applyGesture** as required. |
-| [GravityCenterOptions](arkts-arkui-common-comp-gravitycenteroptions-i-sys.md) | Defines the parameters of the center of gravity. |
 | [HistoricalPoint](arkts-arkui-common-comp-historicalpoint-i.md) | Provides historical touch point information. |
 | [HorizontalAlignParam](arkts-arkui-common-comp-horizontalalignparam-i.md) | Defines the horizontal align rule of relative container. |
 | [HoverEvent](arkts-arkui-common-comp-hoverevent-i.md) | Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md). |
@@ -148,7 +142,6 @@ Constructor
 | [KeyframeAnimateParam](arkts-arkui-common-comp-keyframeanimateparam-i.md) | Provides animation configuration options. |
 | [KeyframeState](arkts-arkui-common-comp-keyframestate-i.md) | Provides keyframe configuration options. |
 | [Layoutable](arkts-arkui-common-comp-layoutable-i.md) | Provides layout information of a child component. The **Layoutable** object is created and passed in by the ArkUI framework when **onPlaceChildren** is called. It contains the measurement result and unique identifier of the child component. Developers set the position of the child component through the **layout** method of **Layoutable**, and obtain the margin information of the child component through the **getMargin**, **getPadding**, and **getBorderWidth** methods for precise layout calculation. |
-| [LightSource](arkts-arkui-common-comp-lightsource-i-sys.md) | Each component allows for one light source. |
 | [LinearGradient](arkts-arkui-common-comp-lineargradient-i.md) | Linear Gradient Interface |
 | [LinearGradientBlurOptions](arkts-arkui-common-comp-lineargradientbluroptions-i.md) | Linear Gradient Blur Interface |
 | [LinearGradientOptions](arkts-arkui-common-comp-lineargradientoptions-i.md) | Defines the linear gradient parameters. |
@@ -173,10 +166,8 @@ Constructor
 | [OverlayOptions](arkts-arkui-common-comp-overlayoptions-i.md) |  |
 | [PickerDialogButtonStyle](arkts-arkui-common-comp-pickerdialogbuttonstyle-i.md) | Provide an interface for the button style of picker |
 | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Provide an interface for the text style of picker |
-| [PixelMapMock](arkts-arkui-common-comp-pixelmapmock-i-sys.md) | pixelmap object with release function. |
 | [PixelRoundPolicy](arkts-arkui-common-comp-pixelroundpolicy-i.md) | Rounding strategy for the boundary of the current component. |
 | [PixelStretchEffectOptions](arkts-arkui-common-comp-pixelstretcheffectoptions-i.md) | Describes the pixel stretch effect options. |
-| [PointLightStyle](arkts-arkui-common-comp-pointlightstyle-i-sys.md) | You apply a point light style by setting the light source that emits illumination and the components to be illuminated. |
 | [PopupBorderLinearGradient](arkts-arkui-common-comp-popupborderlineargradient-i.md) | Sets the color and direction of the linear gradient for the outlines. |
 | [PopupCommonOptions](arkts-arkui-common-comp-popupcommonoptions-i.md) | Configures the parameters of a popup. You can use the [getPromptAction()](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) method in [UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) to obtain the [PromptAction](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) object, and then call the attributes of **options** when [openPopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openpopup18) or [updatePopup](../../../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18) is called. |
 | [PopupMaskType](arkts-arkui-common-comp-popupmasktype-i.md) | Sets the color of the mask. |
@@ -200,12 +191,9 @@ Constructor
 | [sharedTransitionOptions](arkts-arkui-common-comp-sharedtransitionoptions-i.md) | Parameters of the shared element transition animation. |
 | [SheetDismiss](arkts-arkui-common-comp-sheetdismiss-i.md) | Component sheet dismiss |
 | [SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md) | Optional attributes of the sheet. Inherits from [BindOptions](arkts-arkui-common-comp-bindoptions-i.md). |
-| [SheetTitleBarBackgroundBlurOptions](arkts-arkui-common-comp-sheettitlebarbackgroundbluroptions-i-sys.md) | Custom options for title bar background blur. All sub-properties are optional; unset properties use system default values. |
 | [SheetTitleOptions](arkts-arkui-common-comp-sheettitleoptions-i.md) | Component sheet title options |
 | [SizeResult](arkts-arkui-common-comp-sizeresult-i.md) | Provides the component size information. |
 | [SmartGestureShortcutOptions](arkts-arkui-common-comp-smartgestureshortcutoptions-i.md) | Smart gesture response behavior configuration object. |
-| [SpatialEffectParams](arkts-arkui-common-comp-spatialeffectparams-i-sys.md) | Spatial effect params. |
-| [SpatialPosition](arkts-arkui-common-comp-spatialposition-i-sys.md) | Spatial corner positions in 3D space. |
 | [SpringBackAction](arkts-arkui-common-comp-springbackaction-i.md) | Defines sheet spring back action |
 | [StateStyles](arkts-arkui-common-comp-statestyles-i.md) | State-specific styles for the component. |
 | [SweepGradientOptions](arkts-arkui-common-comp-sweepgradientoptions-i.md) | Defines the sweep gradient parameters. |
@@ -227,17 +215,37 @@ Constructor
 | [LayoutInfo](arkts-arkui-common-comp-layoutinfo-i.md) | Provides the child component layout information. |
 | [TransitionOptions](arkts-arkui-common-comp-transitionoptions-i.md) | Defines the transition effect by setting parameters in the struct. |
 
+<!--Del-->
+### Interfaces(System API)
+
+| Name | Description |
+| --- | --- |
+| [BlurSnapshotOptions](arkts-arkui-common-comp-blursnapshotoptions-i-sys.md) | Defines the options for blur snapshot optimization. Setting this object enables blur optimization. |
+| [DepthColorRGB](arkts-arkui-common-comp-depthcolorrgb-i-sys.md) | RGB color in depth space. |
+| [DepthVector3](arkts-arkui-common-comp-depthvector3-i-sys.md) | 3D vector in depth space. |
+| [DepthVector4](arkts-arkui-common-comp-depthvector4-i-sys.md) | 4D vector in depth space. |
+| [EdgeLightParams](arkts-arkui-common-comp-edgelightparams-i-sys.md) | Defines the parameters of the edge light effect. |
+| [GravityCenterOptions](arkts-arkui-common-comp-gravitycenteroptions-i-sys.md) | Defines the parameters of the center of gravity. |
+| [LightSource](arkts-arkui-common-comp-lightsource-i-sys.md) | Each component allows for one light source. |
+| [PixelMapMock](arkts-arkui-common-comp-pixelmapmock-i-sys.md) | pixelmap object with release function. |
+| [PointLightStyle](arkts-arkui-common-comp-pointlightstyle-i-sys.md) | You apply a point light style by setting the light source that emits illumination and the components to be illuminated. |
+| [SafeAreaInsetEdgeConfig](arkts-arkui-common-comp-safeareainsetedgeconfig-i-sys.md) | Defines custom content and layout settings for one safe area inset edge. |
+| [SafeAreaInsetOptions](arkts-arkui-common-comp-safeareainsetoptions-i-sys.md) | Defines the complete inset configuration for all four edges of a component. |
+| [SheetTitleBarBackgroundBlurOptions](arkts-arkui-common-comp-sheettitlebarbackgroundbluroptions-i-sys.md) | Custom options for title bar background blur. All sub-properties are optional; unset properties use system default values. |
+| [SpatialEffectParams](arkts-arkui-common-comp-spatialeffectparams-i-sys.md) | Spatial effect params. |
+| [SpatialPosition](arkts-arkui-common-comp-spatialposition-i-sys.md) | Spatial corner positions in 3D space. |
+<!--DelEnd-->
+
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [AccessibilityActionInterceptCallback](arkts-arkui-common-comp-accessibilityactioninterceptcallback-t.md) | Defines the callback type used in accessibility action intercept. The value of action indicates the accessibility action type. |
-| [AccessibilityCallback](arkts-arkui-common-comp-accessibilitycallback-t.md) | Defines the callback type used in accessibility hover events. The value of isHover indicates whether the touch is hovering over the component. The value of event contains information about AccessibilityHoverEvent. |
-| [AccessibilityFocusCallback](arkts-arkui-common-comp-accessibilityfocuscallback-t.md) | Defines the callback type used in accessibility focus. The value of isFocus indicates whether the current component is focused |
-| [AccessibilityTransparentCallback](arkts-arkui-common-comp-accessibilitytransparentcallback-t.md) | Defines the callback type used in accessibility hover transparent event. |
+| [AccessibilityActionInterceptCallback](arkts-arkui-common-comp-accessibilityactioninterceptcallback-t.md) | Defines the callback type used in onAccessibilityActionIntercept. |
+| [AccessibilityCallback](arkts-arkui-common-comp-accessibilitycallback-t.md) | Defines the callback type for accessibility hover events, active in accessibility mode. |
+| [AccessibilityFocusCallback](arkts-arkui-common-comp-accessibilityfocuscallback-t.md) | Defines the callback type used in **onAccessibilityFocus**. |
+| [AccessibilityTransparentCallback](arkts-arkui-common-comp-accessibilitytransparentcallback-t.md) | Provides the callback type for touch events that are not responded to by the accessibility hover event after a screen-reading accessibility application is enabled. |
 | [AnimationRange](arkts-arkui-common-comp-animationrange-t.md) | Sets the relative scale ratio at the start and end of the animation compared to the original preview image. |
 | [AreaChangeCallback](arkts-arkui-common-comp-areachangecallback-t.md) | Callback type for the component area change event. |
-| [Blender](arkts-arkui-common-comp-blender-t-sys.md) | [Blender](arkts-arkui-common-comp-blender-t-sys.md) |
 | [BorderRadiusType](arkts-arkui-common-comp-borderradiustype-t.md) | Enumerates the border corner radius types. |
 | [BuilderCallback](arkts-arkui-common-comp-buildercallback-t.md) | `BuilderCallback` is a type alias of the global `@Builder` function. It serves as the input parameter type of the `mutableBuilder` function and is used to specify the global `@Builder` function to be wrapped. |
 | [BuilderMethodDecorator](arkts-arkui-common-comp-buildermethoddecorator-t.md) | Define Builder Decorator type with config. |
@@ -249,7 +257,7 @@ Constructor
 | [DataLoadParams](arkts-arkui-common-comp-dataloadparams-t.md) | Defines the data loading parameters used during a drop operation. |
 | [DataSyncOptions](arkts-arkui-common-comp-datasyncoptions-t.md) | Defines the input parameter object for **startDataLoading**. |
 | [DragSpringLoadingConfiguration](arkts-arkui-common-comp-dragspringloadingconfiguration-t.md) | Defines the configuration parameters for drag hover detection. |
-| [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) |
+| [DrawContext](arkts-arkui-common-comp-drawcontext-t.md) | DrawContext |
 | [EllipseShape](arkts-arkui-common-comp-ellipseshape-t.md) | Defines the EllipseShape type. |
 | [EnvDecorator](arkts-arkui-common-comp-envdecorator-t.md) | Defines the **EnvDecorator** property decorator type. |
 | [Filter](arkts-arkui-common-comp-filter-t.md) | Represents a filter object. |
@@ -257,7 +265,7 @@ Constructor
 | [GestureCollectInterceptCallback](arkts-arkui-common-comp-gesturecollectinterceptcallback-t.md) | Defines the callback type used in [onGestureCollectIntercept](arkts-arkui-common-comp-commonmethod-c.md#ongesturecollectintercept). |
 | [GestureRecognizerJudgeBeginCallback](arkts-arkui-common-comp-gesturerecognizerjudgebegincallback-t.md) | Represents a custom gesture recognizer judgment callback type. |
 | [HoverCallback](arkts-arkui-common-comp-hovercallback-t.md) | Defines the callback type for hover events. |
-| [ImageModifier](arkts-arkui-common-comp-imagemodifier-t.md) | [ImageModifier](arkts-arkui-common-comp-imagemodifier-t.md) |
+| [ImageModifier](arkts-arkui-common-comp-imagemodifier-t.md) | ImageModifier |
 | [InputEventListener](arkts-arkui-common-comp-inputeventlistener-t.md) | Input event listener callback type. |
 | [IntentionCode](arkts-arkui-common-comp-intentioncode-t.md) | Intention corresponding to the key. |
 | [Matrix4Transit](arkts-arkui-common-comp-matrix4transit-t.md) | Import the Matrix4Transit type object for common method. |
@@ -297,19 +305,27 @@ Constructor
 | [TouchTestDoneCallback](arkts-arkui-common-comp-touchtestdonecallback-t.md) | Defines the callback event type for dynamically specifying whether a gesture recognizer participates in gesture processing. The lifecycle of the parameters in the callback follows the callback itself, and the methods in the parameters can be used only synchronously within the callback. |
 | [TransitionEffects](arkts-arkui-common-comp-transitioneffects-t.md) | Defines all transition effects. |
 | [TransitionFinishCallback](arkts-arkui-common-comp-transitionfinishcallback-t.md) | Represents the type of callback for the end of a component's transition animation. |
-| [UIContext](arkts-arkui-common-comp-uicontext-t.md) | [UIContext](arkts-arkui-common-comp-uicontext-t.md) |
+| [UIContext](arkts-arkui-common-comp-uicontext-t.md) | UIContext |
 | [UnifiedData](arkts-arkui-common-comp-unifieddata-t.md) | Defines drag-related data. |
 | [UniformDataType](arkts-arkui-common-comp-uniformdatatype-t.md) | Defines the uniform data type. |
 | [VisibleAreaChangeCallback](arkts-arkui-common-comp-visibleareachangecallback-t.md) | Represents a callback for visible area changes of the component. |
 | [VisualEffect](arkts-arkui-common-comp-visualeffect-t.md) | Represents a visual effect configuration object. |
 | [window](arkts-arkui-common-comp-window-t.md) | The type for window. |
 
+<!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [Blender](arkts-arkui-common-comp-blender-t-sys.md) | Blender |
+<!--DelEnd-->
+
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [AccessibilityAction](arkts-arkui-common-comp-accessibilityaction-e.md) | Enum for accessibility action type |
-| [AccessibilityActionInterceptResult](arkts-arkui-common-comp-accessibilityactioninterceptresult-e.md) | Enum for the result of accessibility action intercept function |
+| [AccessibilityAction](arkts-arkui-common-comp-accessibilityaction-e.md) | Enumerates types of accessibility control operations triggered by components. |
+| [AccessibilityActionInterceptResult](arkts-arkui-common-comp-accessibilityactioninterceptresult-e.md) | Enumerates possible results for accessibility action interception. |
 | [AccessibilityRoleType](arkts-arkui-common-comp-accessibilityroletype-e.md) | Enumerates the component role types used by screen readers. |
 | [AccessibilitySamePageMode](arkts-arkui-common-comp-accessibilitysamepagemode-e.md) | Enumerates the same-page modes for cross-process embedded components and their host applications. |
 | [AdaptiveColor](arkts-arkui-common-comp-adaptivecolor-e.md) | Enumerates the adaptive color modes used for the background blur effect. |
@@ -322,13 +338,10 @@ Constructor
 | [ChainStyle](arkts-arkui-common-comp-chainstyle-e.md) | Enumerates the chain styles in relative container. |
 | [ContentClipMode](arkts-arkui-common-comp-contentclipmode-e.md) | Enumerates the content clipping modes for the scrollable container. |
 | [DismissReason](arkts-arkui-common-comp-dismissreason-e.md) | Enumerates the reasons for popup dismissal. |
-| [DistortionMode](arkts-arkui-common-comp-distortionmode-e-sys.md) | Enum for distortion animation mode. |
-| [DragAnimationType](arkts-arkui-common-comp-draganimationtype-e-sys.md) | Enumerates drag animation types. |
 | [DragBehavior](arkts-arkui-common-comp-dragbehavior-e.md) | Describes the drag behavior. When [DragResult](arkts-arkui-common-comp-dragresult-e.md) is set to **DROP_ENABLED**, you can define **DragBehavior** as either **COPY** or **MOVE**. When **DragBehavior** is set to **COPY**, a plus sign will be displayed in the badge of the dragged object. When **DragBehavior** is set to **MOVE**, the plus sign will not be displayed. **DragBehavior** is used to indicate the intended way of handling data (either copy or move) without governing the actual data processing. This behavior is reported back to the drag source through **onDragEnd**, enabling the drag initiator to distinguish whether the operation results in a copy or a move of the data. |
-| [DraggingSizeChangeEffect](arkts-arkui-common-comp-draggingsizechangeeffect-e.md) | Enumerates the transition effects for switching between the floating image (set through [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2)) and the drag preview when both are configured on a component. |
+| [DraggingSizeChangeEffect](arkts-arkui-common-comp-draggingsizechangeeffect-e.md) | Enumerates the transition effects for switching between the floating image (set through [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)) and the drag preview when both are configured on a component. |
 | [DragPreviewMode](arkts-arkui-common-comp-dragpreviewmode-e.md) | Sets the display mode of the drag preview. |
 | [DragResult](arkts-arkui-common-comp-dragresult-e.md) | Enumerates the results of drag operations and the drop-enabled states of components. |
-| [EdgeLightMode](arkts-arkui-common-comp-edgelightmode-e-sys.md) | Edge light animation mode enumeration. |
 | [EffectEdge](arkts-arkui-common-comp-effectedge-e.md) | Enumerates the edges where the edge effect is applied. |
 | [EffectType](arkts-arkui-common-comp-effecttype-e.md) | Enum of using the effects template mode. |
 | [FinishCallbackType](arkts-arkui-common-comp-finishcallbacktype-e.md) | Defines the type of the **onFinish** callback. |
@@ -356,17 +369,28 @@ Constructor
 | [SheetKeyboardAvoidMode](arkts-arkui-common-comp-sheetkeyboardavoidmode-e.md) | Define the mode of sheet how to avoid keyboard. |
 | [SheetMode](arkts-arkui-common-comp-sheetmode-e.md) | Define the display mode of the sheet. |
 | [SheetSize](arkts-arkui-common-comp-sheetsize-e.md) | Defines sheet size type. |
-| [SheetTitleBarBackgroundBlur](arkts-arkui-common-comp-sheettitlebarbackgroundblur-e-sys.md) | Enum of title bar background blur styles. |
 | [SheetTitleBarHoverMode](arkts-arkui-common-comp-sheettitlebarhovermode-e.md) | Enum of title bar hover modes. |
 | [SheetType](arkts-arkui-common-comp-sheettype-e.md) | Defines the sheet type. |
 | [SourceTool](arkts-arkui-common-comp-sourcetool-e.md) | Enumerates the tool types corresponding to the input sources. |
 | [SourceType](arkts-arkui-common-comp-sourcetype-e.md) | Defines the device types corresponding to the input sources. |
-| [SpatialPositionMode](arkts-arkui-common-comp-spatialpositionmode-e-sys.md) | Spatial position mode. Indicates the coordinate system used by the corner positions. |
 | [SystemProperties](arkts-arkui-common-comp-systemproperties-e.md) | Defining Environment variable enumeration value. |
 | [ThemeColorMode](arkts-arkui-common-comp-themecolormode-e.md) | Enumerates the color modes. |
 | [TouchTestStrategy](arkts-arkui-common-comp-touchteststrategy-e.md) | Event dispatch strategy. |
 | [TransitionEdge](arkts-arkui-common-comp-transitionedge-e.md) | Enumerates the transition edge types. |
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [DistortionMode](arkts-arkui-common-comp-distortionmode-e-sys.md) | Enum for distortion animation mode. |
+| [DragAnimationType](arkts-arkui-common-comp-draganimationtype-e-sys.md) | Enumerates drag animation types. |
+| [EdgeLightMode](arkts-arkui-common-comp-edgelightmode-e-sys.md) | Edge light animation mode enumeration. |
+| [SafeAreaInsetAlignment](arkts-arkui-common-comp-safeareainsetalignment-e-sys.md) | Enumerates alignment positions for safe area inset content along its attachment edge. The alignment axis is horizontal for the top and bottom edges and vertical for the start and end edges. |
+| [SheetTitleBarBackgroundBlur](arkts-arkui-common-comp-sheettitlebarbackgroundblur-e-sys.md) | Enum of title bar background blur styles. |
+| [SpatialPositionMode](arkts-arkui-common-comp-spatialpositionmode-e-sys.md) | Spatial position mode. Indicates the coordinate system used by the corner positions. |
 | [TransitionHierarchyStrategy](arkts-arkui-common-comp-transitionhierarchystrategy-e-sys.md) | Enumerates the strategies for the hierarchical position movement of **in** / **out** components in the component tree during the shared element transition process. |
+<!--DelEnd-->
 
 ## Examples
 

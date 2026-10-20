@@ -380,7 +380,7 @@ Registers an observer for call status change events. This API uses an asynchrono
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'callStateChange' | Yes | Call status change event. This field has a fixed value of **callStateChange**. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CallStateInfo](arkts-telephony-observer-callstateinfo-i.md)&gt; | Yes | Callback function used to return the result,<br>which is the **CallStateInfo** object. In this object: <br>- Only **state** is accessible to third-party applications. - **number** is only accessible to system applications. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CallStateInfo](arkts-telephony-observer-callstateinfo-i.md)&gt; | Yes | Callback function used to return the result, <br>which is the **CallStateInfo** object. In this object: <br>- Only **state** is accessible to third-party applications. - **number** is only accessible to system applications. |
 
 **Error codes:**
 
@@ -421,7 +421,7 @@ Registers an observer for call status change events. This API uses an asynchrono
 | --- | --- | --- | --- |
 | type | 'callStateChange' | Yes | Call status change event. This field has a fixed value of **callStateChange**. |
 | options | [ObserverOptions](arkts-telephony-observer-observeroptions-i.md) | Yes | Event subscription parameters. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CallStateInfo](arkts-telephony-observer-callstateinfo-i.md)&gt; | Yes | Callback function used to return the call status information object.<br>The application can obtain the **CallStateInfo** object. In this object: <br>- Only **state** is accessible to third-party applications. - **number** is only accessible to system applications. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CallStateInfo](arkts-telephony-observer-callstateinfo-i.md)&gt; | Yes | Callback function used to return the call status information object. <br>The application can obtain the **CallStateInfo** object. In this object: <br>- Only **state** is accessible to third-party applications. - **number** is only accessible to system applications. |
 
 **Error codes:**
 
@@ -464,7 +464,7 @@ Registers an observer for extended call status change events. This API uses an a
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'callStateChangeEx' | Yes | Extended call status change event. This field has a fixed value of **callStateChangeEx**. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[TelCallState](arkts-telephony-observer-telcallstate-t.md)&gt; | Yes | Callback function used to return the call status information object.<br>The application can obtain **TelCallState**. <br> |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[TelCallState](arkts-telephony-observer-telcallstate-t.md)&gt; | Yes | Callback function used to return the call status information object. <br>The application can obtain **TelCallState**. <br> |
 | options | [ObserverOptions](arkts-telephony-observer-observeroptions-i.md) | No | Event subscription parameters. |
 
 **Error codes:**

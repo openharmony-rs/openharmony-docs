@@ -6,8 +6,6 @@ type OnBackupSizeReport = (reportInfo: string) => void
 
 function that returns backup datasize by bundleName.
 
-@typedef {function} OnBackupSizeReport
-
 **Since:** 18
 
 <!--Device-backup-type OnBackupSizeReport = (reportInfo: string) => void--><!--Device-backup-type OnBackupSizeReport = (reportInfo: string) => void-End-->

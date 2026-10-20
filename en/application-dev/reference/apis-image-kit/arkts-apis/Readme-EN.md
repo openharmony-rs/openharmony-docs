@@ -1,6 +1,6 @@
 # ArkTS API<!--arkts-imagekit-->
 
-- [@ohos.multimedia.image](arkts-image-multimedia-image.md)
+- [@ohos.multimedia.image(Image)](arkts-image-multimedia-image.md)
   - [createAuxiliaryPicture](arkts-image-image-createauxiliarypicture-f.md)
   - [createAuxiliaryPictureUsingAllocator](arkts-image-image-createauxiliarypictureusingallocator-f.md)
   - [createEmptyPixelMap](arkts-image-image-createemptypixelmap-f.md)

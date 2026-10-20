@@ -28,7 +28,7 @@ Cancels a session. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 | transactionId | string | Yes | Service ID. |
 | cancelReason | [CancelReason](arkts-telephony-esim-cancelreason-e-sys.md) | Yes | Reason for canceling the session. |
 

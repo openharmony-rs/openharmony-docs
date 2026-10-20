@@ -40,8 +40,7 @@ this.context.startAbility(targetWant);
 <br> <br>  
 > **说明：** <br>
 > <br>
-> `InputMethodExtensionContext`实例通过`InputMethodExtensionAbility`子类的`this.context`属性获取，不可直接创建。`destroy()`通常在<br>
-> `onDestroy`生命周期回调中调用，也可在其他时机主动调用以终止输入法ExtensionAbility。
+> `InputMethodExtensionContext`实例通过`InputMethodExtensionAbility`子类的`this.context`属性获取，不可直接创建。`destroy()`通常在`onDestroy`生命周期回调中调用，也可在其他时机主动调用以终止输入法ExtensionAbility。<br> <br> ## 使用说明<br> <br>在使用InputMethodExtensionContext的功能前，需要通过InputMethodExtensionAbility子类实例获取。<br> <br>```ts <br>import { InputMethodExtensionAbility, InputMethodExtensionContext } from '@kit.IMEKit'; <br>import { Want } from '@kit.AbilityKit'; <br> <br>class InputMethodExtAbility extends InputMethodExtensionAbility {<br> onCreate(want: Want): void {<br> console.info('onCreate, want:' + want.abilityName); <br> } <br>} <br>```
 
 **继承/实现关系：** InputMethodExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 
@@ -56,8 +55,6 @@ this.context.startAbility(targetWant);
 ```TypeScript
 import { InputMethodExtensionContext } from '@kit.IMEKit';
 ```
-
-<a id="destroy1"></a>
 
 ## destroy
 
@@ -104,8 +101,6 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
   }
 }
 ```
-
-<a id="destroy2"></a>
 
 ## destroy
 
@@ -157,7 +152,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 startAbility(want: Want): Promise<void>
 ```
 
-拉起目标应用。使用Promise异步回调。<br> <br>- 含义/功能：从输入法应用启动指定的Ability，使输入法应用能够与其他应用交互。通过Want参数指定目标应用的Ability名称和Bundle名称。<br>- 使用场景：当输入法应用需要拉起其他应用时使用。例如：输入法应用拉起系统设置页面供用户配置输入法、拉起浏览器打开帮助文档等。<br>- 使用后效果：调用成功后，目标Ability被启动并显示在前台。输入法应用自身不会受到影响，继续正常运行。
+拉起目标应用。使用Promise异步回调。<br> <br>- 含义/功能：从输入法应用启动指定的Ability，使输入法应用能够与其他应用交互。通过Want参数指定目标应用的Ability名称和Bundle名称。<br>- 使用场景：当输入法应用需要拉起其他应用时使用。例如：输入法应用拉起系统设置页面供用户配置输入法、拉起浏览器打开帮助文档等。<br>- 使用后效果：调用成功后，目标Ability被启动并显示在前台。输入法应用自身不会受到影响，继续正常运行。<br> <br>want参数使用建议：<br> <br>- 含义/功能：Want类型信息，描述要启动的目标Ability。<br>- 必填属性：`bundleName`（目标应用包名）和`abilityName`（目标Ability名称）为必填项，否则无法定位目标Ability。<br>- 取值范围：Want对象的属性值均为string类型，需与目标应用在module.json5中配置的bundleName和abilityName保持一致。<br>- 注意事项：want中的bundleName和abilityName必须与目标应用的配置严格一致（包括大小写），否则将返回16000001错误（指定的Ability不存在）。开发者可通过查看目标应用的module.json5配置文件或使用AppGallery获取正确的包名和Ability名。
 
 **起始版本：** 12
 

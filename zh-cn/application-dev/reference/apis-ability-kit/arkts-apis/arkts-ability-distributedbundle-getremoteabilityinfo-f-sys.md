@@ -6,8 +6,6 @@
 import { distributedBundle } from '@kit.AbilityKit';
 ```
 
-<a id="getremoteabilityinfo1"></a>
-
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -37,8 +35,6 @@ function getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback<
 | elementName | [ElementName](arkts-ability-elementname-depr-i.md) | 是 | 获得的ElementName信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RemoteAbilityInfo](arkts-ability-remoteabilityinfo-depr-i-sys.md)&gt; | 是 | 程序启动作为入参的回调函数，返回远程基本能力信息。 |
 
-
-<a id="getremoteabilityinfo2"></a>
 
 ## getRemoteAbilityInfo
 

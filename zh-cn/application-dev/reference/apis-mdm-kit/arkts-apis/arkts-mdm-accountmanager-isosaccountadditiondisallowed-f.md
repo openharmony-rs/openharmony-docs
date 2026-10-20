@@ -6,8 +6,6 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-<a id="isosaccountadditiondisallowed1"></a>
-
 ## isOsAccountAdditionDisallowed
 
 ```TypeScript
@@ -69,8 +67,6 @@ try {
 }
 ```
 
-
-<a id="isosaccountadditiondisallowed2"></a>
 
 ## isOsAccountAdditionDisallowed
 

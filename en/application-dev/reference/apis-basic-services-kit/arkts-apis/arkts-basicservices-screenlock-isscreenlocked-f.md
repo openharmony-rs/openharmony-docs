@@ -6,8 +6,6 @@
 import { screenLock } from '@kit.BasicServicesKit';
 ```
 
-<a id="isscreenlocked1"></a>
-
 ## isScreenLocked
 
 ```TypeScript
@@ -104,8 +102,6 @@ export default {
 }
 ```
 
-
-<a id="isscreenlocked2"></a>
 
 ## isScreenLocked
 

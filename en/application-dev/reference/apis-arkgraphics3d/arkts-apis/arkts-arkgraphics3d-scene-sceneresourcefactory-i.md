@@ -6,8 +6,6 @@ export interface SceneResourceFactory extends RenderResourceFactory
 
 Provides APIs for creating resources, such as cameras and light sources, used in 3D scenes. This class inherits from RenderResourceFactory.
 
-@extends RenderResourceFactory @interface SceneResourceFactory
-
 **Inheritance/Implementation:** SceneResourceFactory extends [RenderResourceFactory](arkts-arkgraphics3d-scene-renderresourcefactory-i.md)
 
 **Since:** 12
@@ -15,8 +13,6 @@ Provides APIs for creating resources, such as cameras and light sources, used in
 <!--Device-unnamed-export interface SceneResourceFactory extends RenderResourceFactory--><!--Device-unnamed-export interface SceneResourceFactory extends RenderResourceFactory-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
-
-<a id="createcamera1"></a>
 
 ## createCamera
 
@@ -66,8 +62,6 @@ function createCameraPromise(): Promise<Camera> {
   });
 }
 ```
-
-<a id="createcamera2"></a>
 
 ## createCamera
 

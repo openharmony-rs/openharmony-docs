@@ -38,4 +38,4 @@ Sets the fill color of the **Blank** component. This attribute can be dynamicall
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color to fill the blank.<br>Default value: **Color.Transparent** <br>Invalid values are treated as the default value. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color to fill the blank. <br>Default value: **Color.Transparent** <br>Invalid values are treated as the default value. |

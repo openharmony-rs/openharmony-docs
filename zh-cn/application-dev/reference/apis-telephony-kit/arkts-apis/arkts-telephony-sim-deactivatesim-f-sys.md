@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="deactivatesim1"></a>
-
 ## deactivateSim
 
 ```TypeScript
@@ -60,8 +58,6 @@ sim.deactivateSim(0, (err: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="deactivatesim2"></a>
 
 ## deactivateSim
 

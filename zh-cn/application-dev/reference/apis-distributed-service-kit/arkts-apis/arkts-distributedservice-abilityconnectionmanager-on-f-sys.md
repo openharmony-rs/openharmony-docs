@@ -13,7 +13,7 @@ function on(type: 'receiveImage', sessionId: number,
         callback: Callback<EventCallbackInfo>): void
 ```
 
-注册receiveImage事件的回调监听。
+注册receiveImage事件的回调监听，用于接收图片传输事件的异步通知。需与off('receiveImage')方法配合使用，在不需要接收图片时，应调用off('receiveImage')取消监听以释放资源。
 
 **起始版本：** 18
 
@@ -65,7 +65,7 @@ function on(type: 'collaborateEvent', sessionId: number,
         callback: Callback<CollaborateEventInfo>): void
 ```
 
-注册collaborateEvent事件的回调监听。
+注册collaborateEvent事件的回调监听，使用callback异步回调。该监听需与off('collaborateEvent')成对使用，在不再需要接收事件时及时取消监听以释放资源。
 
 **起始版本：** 18
 
@@ -81,9 +81,9 @@ function on(type: 'collaborateEvent', sessionId: number,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'collaborateEvent' | 是 | 事件注册类型，'collaborateEvent'。 |
-| sessionId | number | 是 | 协同会话ID。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CollaborateEventInfo](arkts-distributedservice-abilityconnectionmanager-collaborateeventinfo-i.md)&gt; | 是 | 错误事件回调函数。 |
+| type | 'collaborateEvent' | 是 | 表示事件回调类型，支持的事件类型为'collaborateEvent'，当协同状态发生变化时触发该事件。 |
+| sessionId | number | 是 | 表示创建的协同会话ID，需先创建协同会话后获取。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CollaborateEventInfo](arkts-distributedservice-abilityconnectionmanager-collaborateeventinfo-i.md)&gt; | 是 | 回调函数，返回协同事件的信息。 |
 
 **错误码：**
 

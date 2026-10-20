@@ -171,7 +171,7 @@ Initializes screen capture and sets screen capture parameters. This API uses a p
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. Return by promise. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. Return by promise. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 

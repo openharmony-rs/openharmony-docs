@@ -1,15 +1,20 @@
 # @ohos.boardInfo
 
-The **boardInfo** module is used to query hardware device information.
+The **boardInfo** module provides board-level hardware information query, including CPU, board, and BIOS information. It is applicable to scenarios such as device identification, asset management, and compatibility check. This information cannot be configured by developers.
 
 > **NOTE:** 
 > 
-> The initial APIs of this module are supported since API version 26. Newly added APIs
+> The initial APIs of this module are supported since API version 26.0.1. Newly added APIs
 > will be marked with a superscript to indicate their earliest API version.
-> The APIs of this module return information about device constants. You are not expected to call these APIs
-> frequently.
+> The APIs of this module will start a temporary process during execution. When the system
+> load is high, blocking risks may occur. To ensure the responsiveness of the application
+> main thread, avoid calling these APIs in the main thread. Hardware information is
+> device-specific and fixed. You can cache it locally after the first retrieval to avoid
+> repeated calls and improve performance.
 
 **Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace boardInfo--><!--Device-unnamed-declare namespace boardInfo-End-->
 

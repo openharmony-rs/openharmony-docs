@@ -42,7 +42,7 @@ function enterKioskMode(context: UIAbilityContext): Promise<void>
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Failed to connect to the system service. |
 | [16000110](../errorcode-ability.md#16000110-当前应用不在kiosk模式的列表内) | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
 | [16000111](../errorcode-ability.md#16000111-已经有应用进入了kiosk模式) | The system is already in Kiosk mode and cannot enter Kiosk mode again. |
-| [16000113](../errorcode-ability.md#16000113-当前ability不在前台) | Current ability is not in foreground. |
+| [16000113](../errorcode-ability.md#16000113-当前ability不在前台) | Current ability is not in foreground.<br>**适用版本：** 20 - 26.0.0 |
 
 **示例**
 

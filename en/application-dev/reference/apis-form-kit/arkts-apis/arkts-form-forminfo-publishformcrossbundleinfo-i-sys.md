@@ -6,8 +6,6 @@ interface PublishFormCrossBundleInfo
 
 PublishFormCrossBundleInfo
 
-@typedef PublishFormCrossBundleInfo
-
 **Since:** 23
 
 <!--Device-formInfo-interface PublishFormCrossBundleInfo--><!--Device-formInfo-interface PublishFormCrossBundleInfo-End-->

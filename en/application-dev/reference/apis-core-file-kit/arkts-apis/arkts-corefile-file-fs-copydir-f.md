@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function copyDir(src: string, dest: string, mode?: number): Promise<void>
 ```
 
-Copies the source directory to the destination path. This API uses a promise to return the result.
+Copies the source directory and its content to the destination path. You can set the conflict handling mode. This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -26,7 +26,7 @@ Copies the source directory to the destination path. This API uses a promise to 
 | --- | --- | --- | --- |
 | src | string | Yes | Application sandbox path of the source directory. |
 | dest | string | Yes | Application sandbox path of the destination directory. |
-| mode | number | No | Copy mode. The default value is **0**.<br>- **0**: Throw an exception if a file conflict occurs.<br> An exception will be thrown if the destination directory contains a directory with the same name as the source directory, and a file with the same name exists in the conflict directory. All the non-conflicting files in the source directory will be moved to the destination directory, and the non-conflicting files in the destination directory will be retained. The data attribute in the error returned provides information about the conflicting files in the Array&lt;[ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md)&gt; format.<br>- **1**: Forcibly overwrite the files with the same name in the destination directory.<br> When the destination directory contains a directory with the same name as the source directory, the files with the same names in the destination directory are overwritten forcibly; the files without conflicts in the destination directory are retained. |
+| mode | number | No | Copy mode. <br>           - <b>0</b>: Throw an exception if a file conflict occurs.   An exception will be thrown if the destination directory contains a directory with the same name as the source directory, and a file with the same name exists in the conflict directory. All the non-conflicting files in the source directory will be copied to the destination directory, and the non-conflicting files in the destination directory will be retained. The data attribute in the error returned provides information about the conflicting files in the Array&lt;[ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md)&gt; format. <br>           - <b>1</b>: Forcibly overwrite the files with the same name in the destination directory.   When the destination directory contains a directory with the same name as the source directory, the files with the same names in the destination directory are overwritten forcibly; the files without conflicts in the destination directory are retained. |
 
 **Return value:**
 
@@ -58,15 +58,13 @@ Copies the source directory to the destination path. This API uses a promise to 
 | 13900044 | Network is unreachable<br>**Applicable version:** 12 and later |
 
 
-<a id="copydir2"></a>
-
 ## copyDir
 
 ```TypeScript
 declare function copyDir(src: string, dest: string, callback: AsyncCallback<void>): void
 ```
 
-Copies the source directory to the destination directory. This API uses an asynchronous callback to return the result.
+Copies the source directory and its content to the destination path. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -80,7 +78,7 @@ Copies the source directory to the destination directory. This API uses an async
 | --- | --- | --- | --- |
 | src | string | Yes | Application sandbox path of the source directory. |
 | dest | string | Yes | Application sandbox path of the destination directory. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the directory is successfully copied, <b>err</b> is <b>undefined</b>; otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 
@@ -105,8 +103,6 @@ Copies the source directory to the destination directory. This API uses an async
 | 13900042 | Unknown error |
 
 
-<a id="copydir3"></a>
-
 ## copyDir
 
 ```TypeScript
@@ -115,7 +111,7 @@ declare function copyDir(src: string, dest: string, callback: AsyncCallback<void
 
 Copies the source directory to the destination path. This API uses an asynchronous callback to return the result.
 
-An exception will be thrown if the destination directory contains a directory with the same name as the source directory and there are files with the same name in the conflicting directory. All the non-conflicting files in the source directory will be moved to the destination directory, and the non-conflicting files in the destination directory will be retained. The data attribute in the error returned provides information about the conflicting files in the Array\&lt;[ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md)&gt; format.
+An exception will be thrown if the destination directory contains a directory with the same name as the source directory and there are files with the same name in the conflicting directory. All the non-conflicting files in the source directory will be copied to the destination directory, and the non-conflicting files in the destination directory will be retained. The <b>data</b> attribute in the error returned provides information about the conflicting files in the Array&lt;[ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md)&gt; format.
 
 **Since:** 10
 
@@ -129,7 +125,7 @@ An exception will be thrown if the destination directory contains a directory wi
 | --- | --- | --- | --- |
 | src | string | Yes | Application sandbox path of the source directory. |
 | dest | string | Yes | Application sandbox path of the destination directory. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void, Array&lt;[ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md)&gt;&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void, Array&lt;[ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md)&gt;&gt; | Yes | Callback invoked when a directory is copied asynchronously. |
 
 **Error codes:**
 
@@ -138,15 +134,13 @@ An exception will be thrown if the destination directory contains a directory wi
 | 13900015 | File exists |
 
 
-<a id="copydir4"></a>
-
 ## copyDir
 
 ```TypeScript
 declare function copyDir(src: string, dest: string, mode: number, callback: AsyncCallback<void>): void
 ```
 
-Copies the source directory to the destination directory. You can set the copy mode. This API uses an asynchronous callback to return the result.
+Copies the source directory and its content to the destination path. You can set the conflict handling mode. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -160,8 +154,8 @@ Copies the source directory to the destination directory. You can set the copy m
 | --- | --- | --- | --- |
 | src | string | Yes | Application sandbox path of the source directory. |
 | dest | string | Yes | Application sandbox path of the destination directory. |
-| mode | number | Yes | Copy mode. The default value is 0.<br>0: Throw an exception if a file conflict occurs. <br>An exception will be thrown if the destination directory contains a directory with <br>the same name as the source directory, and a file with the same name exists in the conflict directory. <br>All the non-conflicting files in the source directory will be moved <br>to the destination directory, and the non-conflicting files in the destination directory will be retained. <br>The data attribute in the error returned provides information about the <br>conflicting files in the Array<ConflictFiles> format. <br>1: Forcibly overwrite the files with the same name in the destination directory. <br>When the destination directory contains a directory with the same name as the source directory, <br>the files with the same names in the destination directory are overwritten forcibly; <br>the files without conflicts in the destination directory are retained. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| mode | number | Yes | Copy mode. <br>           - <b>0</b>: Throw an exception if a file conflict occurs.   An exception will be thrown if the destination directory contains a directory with the same name as the source directory, and a file with the same name exists in the conflict directory. All the non-conflicting files in the source directory will be copied to the destination directory, and the non-conflicting files in the destination directory will be retained. <br>           - <b>1</b>: Forcibly overwrite the   files with the same name in the destination directory. When the destination directory contains a directory with the same name as the source directory, the files with the same names in the destination directory are overwritten forcibly; the files without conflicts in the destination directory are retained. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the directory is successfully copied, <b>err</b> is <b>undefined</b>; otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 
@@ -186,15 +180,13 @@ Copies the source directory to the destination directory. You can set the copy m
 | 13900042 | Unknown error |
 
 
-<a id="copydir5"></a>
-
 ## copyDir
 
 ```TypeScript
 declare function copyDir(src: string, dest: string, mode: number, callback: AsyncCallback<void, Array<ConflictFiles>>): void
 ```
 
-Copies the source directory to the destination path. You can set the copy mode. This API uses an asynchronous callback to return the result.
+Copies the source directory and its content to the destination path. You can set the conflict handling mode. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -208,8 +200,8 @@ Copies the source directory to the destination path. You can set the copy mode. 
 | --- | --- | --- | --- |
 | src | string | Yes | Application sandbox path of the source directory. |
 | dest | string | Yes | Application sandbox path of the destination directory. |
-| mode | number | Yes | Copy mode. The default value is **0**.<br>- **0**: Throw an exception if a file conflict occurs.<br> An exception will be thrown if the destination directory contains a directory with the same name as the source directory, and a file with the same name exists in the conflict directory. All the non-conflicting files in the source directory will be moved to the destination directory, and the non-conflicting files in the destination directory will be retained. The data attribute in the error returned provides information about the conflicting files in the Array&lt;[ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md)&gt; format.<br>- **1**: Forcibly overwrite the files with the same name in the destination directory.<br> When the destination directory contains a directory with the same name as the source directory, the files with the same names in the destination directory are overwritten forcibly; the files without conflicts in the destination directory are retained. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void, Array&lt;[ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md)&gt;&gt; | Yes | Callback used to return the result. |
+| mode | number | Yes | Copy mode. <br>           - <b>0</b>: Throw an exception if a file conflict occurs.   An exception will be thrown if the destination directory contains a directory with the same name as the source directory, and a file with the same name exists in the conflict directory. All the non-conflicting files in the source directory will be copied to the destination directory, and the non-conflicting files in the destination directory will be retained. The data attribute in the error returned provides information about the conflicting files in the Array&lt;[ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md)&gt; format. <br>           - <b>1</b>: Forcibly overwrite the files with the same name in the destination directory.   When the destination directory contains a directory with the same name as the source directory, the files with the same names in the destination directory are overwritten forcibly; the files without conflicts in the destination directory are retained. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void, Array&lt;[ConflictFiles](arkts-corefile-file-fs-conflictfiles-i.md)&gt;&gt; | Yes | Callback used to return the result. If the directory is successfully copied, <b>err</b> is <b>undefined</b>; otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 

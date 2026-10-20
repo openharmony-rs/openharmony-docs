@@ -6,8 +6,6 @@ interface AVCallState
 
 通话状态相关属性。
 
-@interface AVCallState [since 11 - 11]
-
 **起始版本：** 11
 
 <!--Device-avSession-interface AVCallState--><!--Device-avSession-interface AVCallState-End-->

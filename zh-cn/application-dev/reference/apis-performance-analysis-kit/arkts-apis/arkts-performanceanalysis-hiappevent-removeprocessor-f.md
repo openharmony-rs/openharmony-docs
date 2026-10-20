@@ -28,12 +28,6 @@ function removeProcessor(id: number): void
 | --- | --- | --- | --- |
 | id | number | 是 | 上报事件数据处理者ID。值大于0。由调用[addProcessor](arkts-performanceanalysis-hiappevent-addprocessor-f.md)或[addProcessorFromConfig](arkts-performanceanalysis-hiappevent-addprocessorfromconfig-f.md)接口返回值所得。 |
 
-**错误码：**
-
-| 错误码ID | 错误信息 |
-| --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
-
 **示例**
 
 ```TypeScript

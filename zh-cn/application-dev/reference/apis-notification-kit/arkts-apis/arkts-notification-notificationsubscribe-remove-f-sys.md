@@ -6,8 +6,6 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-<a id="remove1"></a>
-
 ## remove
 
 ```TypeScript
@@ -81,8 +79,6 @@ notificationSubscribe.remove(bundle, notificationKey, reason, removeCallback);
 <!--DelEnd-->
 
 
-<a id="remove2"></a>
-
 ## remove
 
 ```TypeScript
@@ -153,8 +149,6 @@ notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
 <!--DelEnd-->
 
 
-<a id="remove3"></a>
-
 ## remove
 
 ```TypeScript
@@ -214,8 +208,6 @@ notificationSubscribe.remove(hashCode, reason, removeCallback);
 <!--DelEnd-->
 
 
-<a id="remove4"></a>
-
 ## remove
 
 ```TypeScript
@@ -273,8 +265,6 @@ notificationSubscribe.remove(hashCodes, reason, removeCallback);
 
 <!--DelEnd-->
 
-
-<a id="remove5"></a>
 
 ## remove
 
@@ -336,8 +326,6 @@ notificationSubscribe.remove(hashCode, reason).then(() => {
 
 <!--DelEnd-->
 
-
-<a id="remove6"></a>
 
 ## remove
 

@@ -4,7 +4,7 @@
 export interface InputWindowInfo
 ```
 
-Describes the window information of the input method keyboard.
+Window information of the input method soft keyboard (system API extended properties).
 
 **Since:** 10
 
@@ -24,7 +24,7 @@ import { inputMethod } from '@kit.IMEKit';
 displayId?: number
 ```
 
-ID of the display where the soft keyboard window is located. <br> <br>**Model restriction**: This parameter can be used only in the stage model.
+ID of the screen where the input method soft keyboard window is located. <br> <br>**Model restriction:** This parameter can be used only in the stage model.
 
 **Type:** number
 
@@ -42,7 +42,7 @@ ID of the display where the soft keyboard window is located. <br> <br>**Model re
 height: number
 ```
 
-Height of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.
+Height of the input method window, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen height.
 
 **Type:** number
 
@@ -58,7 +58,7 @@ Height of the input method keyboard window, in px. The value must be an integer.
 left: number
 ```
 
-Horizontal coordinate of the upper left corner of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.
+Horizontal coordinate of the upper left vertex of the input method window, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen width.
 
 **Type:** number
 
@@ -74,7 +74,7 @@ Horizontal coordinate of the upper left corner of the input method keyboard wind
 name: string
 ```
 
-Name of the input method keyboard window.
+Name of the input method window.
 
 **Type:** string
 
@@ -90,7 +90,7 @@ Name of the input method keyboard window.
 top: number
 ```
 
-Vertical coordinate of the upper left corner of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.
+Vertical coordinate of the upper left vertex of the input method window, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen height.
 
 **Type:** number
 
@@ -106,7 +106,7 @@ Vertical coordinate of the upper left corner of the input method keyboard window
 width: number
 ```
 
-Width of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.
+Width of the input method window, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen width.
 
 **Type:** number
 

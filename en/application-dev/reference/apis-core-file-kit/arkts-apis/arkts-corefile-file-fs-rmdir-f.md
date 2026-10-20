@@ -12,11 +12,11 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function rmdir(path: string): Promise<void>
 ```
 
-Removes a directory and all its subdirectories and files. This API uses a promise to return the result.
+Deletes a directory and all its subdirectories and files. This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
-> This API can be used to remove a single file. However, you are advised to use **unlink()** instead.
+> This API can be used to remove a single file. However, you are advised to use <b>unlink()</b> instead.
 
 **Since:** 9
 
@@ -56,19 +56,17 @@ Removes a directory and all its subdirectories and files. This API uses a promis
 | 13900042 | Unknown error |
 
 
-<a id="rmdir2"></a>
-
 ## rmdir
 
 ```TypeScript
 declare function rmdir(path: string, callback: AsyncCallback<void>): void
 ```
 
-Removes a directory and all its subdirectories and files. This API uses an asynchronous callback to return the result.
+Deletes a directory and all its subdirectories and files. This API uses an asynchronous callback to return the result.
 
 > **NOTE:** 
 > 
-> This API can be used to remove a single file. However, you are advised to use **unlink()** instead.
+> This API can be used to remove a single file. However, you are advised to use <b>unlink()</b> instead.
 
 **Since:** 9
 
@@ -83,7 +81,7 @@ Removes a directory and all its subdirectories and files. This API uses an async
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | path | string | Yes | Application sandbox path of the directory. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the directory is successfully deleted, <b>err</b> is <b>undefined</b>; otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 

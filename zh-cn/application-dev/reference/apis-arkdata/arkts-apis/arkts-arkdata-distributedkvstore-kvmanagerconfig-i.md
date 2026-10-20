@@ -24,7 +24,7 @@ import { distributedKVStore } from '@kit.ArkData';
 bundleName: string
 ```
 
-调用方的包名，不可为空且长度范围为1-256字节。
+调用方的包名，不可为空且长度范围为1-256字节（Byte）。
 
 **类型：** string
 

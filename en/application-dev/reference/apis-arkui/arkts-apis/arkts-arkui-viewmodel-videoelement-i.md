@@ -6,8 +6,6 @@ export interface VideoElement extends Element
 
 The <video> component provides a video player.
 
-@extends Element @interface VideoElement
-
 **Inheritance/Implementation:** VideoElement extends [Element](arkts-arkui-viewmodel-element-i.md)
 
 **Since:** 4

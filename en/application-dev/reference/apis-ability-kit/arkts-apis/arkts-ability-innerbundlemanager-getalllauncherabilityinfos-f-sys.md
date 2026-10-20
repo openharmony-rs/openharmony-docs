@@ -6,8 +6,6 @@
 import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
 ```
 
-<a id="getalllauncherabilityinfos1"></a>
-
 ## getAllLauncherAbilityInfos
 
 ```TypeScript
@@ -43,8 +41,6 @@ Obtains the information about all launcher abilities. This API uses an asynchron
 | userId | number | Yes | User ID. The value must be greater than or equal to 0. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[LauncherAbilityInfo](arkts-ability-launcherabilityinfo-depr-i-sys.md)&gt;&gt; | Yes | Callback used to return an array of the launcher ability information. |
 
-
-<a id="getalllauncherabilityinfos2"></a>
 
 ## getAllLauncherAbilityInfos
 

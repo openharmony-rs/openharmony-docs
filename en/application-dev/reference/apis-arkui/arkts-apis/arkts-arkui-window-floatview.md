@@ -39,6 +39,8 @@ enabling more complex scenarios.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace floatView--><!--Device-unnamed-declare namespace floatView-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

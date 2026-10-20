@@ -6,8 +6,6 @@
 import { router } from '@kit.ArkUI';
 ```
 
-<a id="replaceurl1"></a>
-
 ## replaceUrl
 
 ```TypeScript
@@ -18,7 +16,7 @@ function replaceUrl(options: RouterOptions, callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl1)替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
 > 
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
@@ -26,7 +24,7 @@ function replaceUrl(options: RouterOptions, callback: AsyncCallback<void>): void
 
 **废弃版本：** 18
 
-**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl1)(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -45,7 +43,7 @@ function replaceUrl(options: RouterOptions, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
@@ -75,8 +73,6 @@ router.replaceUrl({
 ```
 
 
-<a id="replaceurl2"></a>
-
 ## replaceUrl
 
 ```TypeScript
@@ -87,7 +83,7 @@ function replaceUrl(options: RouterOptions): Promise<void>
 
 > **说明：** 
 > 
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl2)替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
 > 
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
@@ -95,7 +91,7 @@ function replaceUrl(options: RouterOptions): Promise<void>
 
 **废弃版本：** 18
 
-**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl2)(options: router.RouterOptions)
+**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -119,7 +115,7 @@ function replaceUrl(options: RouterOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
@@ -151,8 +147,6 @@ router.replaceUrl({
 ```
 
 
-<a id="replaceurl3"></a>
-
 ## replaceUrl
 
 ```TypeScript
@@ -163,7 +157,7 @@ function replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCal
 
 > **说明：** 
 > 
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl3)替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
 > 
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
@@ -171,7 +165,7 @@ function replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCal
 
 **废弃版本：** 18
 
-**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl3)(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -191,7 +185,7 @@ function replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
@@ -221,8 +215,6 @@ router.replaceUrl({
 ```
 
 
-<a id="replaceurl4"></a>
-
 ## replaceUrl
 
 ```TypeScript
@@ -233,7 +225,7 @@ function replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>
 
 > **说明：** 
 > 
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl4)替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)替代。replaceUrl需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
 > 
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
@@ -241,7 +233,7 @@ function replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>
 
 **废弃版本：** 18
 
-**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl4)(options: router.RouterOptions, mode: router.RouterMode)
+**替代接口：** [replaceUrl](arkts-arkui-arkui-uicontext-router-c.md#replaceurl)(options: router.RouterOptions, mode: router.RouterMode)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -266,7 +258,7 @@ function replaceUrl(options: RouterOptions, mode: RouterMode): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Failed to get the delegate. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 

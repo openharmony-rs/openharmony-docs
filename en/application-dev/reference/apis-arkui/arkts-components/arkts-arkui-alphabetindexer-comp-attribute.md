@@ -4,7 +4,7 @@
 declare class AlphabetIndexerAttribute extends CommonMethod<AlphabetIndexerAttribute>
 ```
 
-When the [width](arkts-arkui-common-comp-commonmethod-c.md#width1) attribute is set to **"auto"**, the width is adaptive. This means that the width will adjust according to the maximum width of the index items.
+When the [width](arkts-arkui-common-comp-commonmethod-c.md#width) attribute is set to **"auto"**, the width is adaptive. This means that the width will adjust according to the maximum width of the index items.
 
 The default value of the [padding](arkts-arkui-common-comp-commonmethod-c.md#padding) attribute is 4 vp.
 
@@ -42,7 +42,7 @@ Sets the alignment style of the indexer pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [IndexerAlign](arkts-arkui-alphabetindexer-comp-indexeralign-e.md) | Yes | Alignment style of the indexer pop-up window. The pop-up window can be displayed on the right or left of the indexer.<br>Default value: **IndexerAlign.END** |
+| value | [IndexerAlign](arkts-arkui-alphabetindexer-comp-indexeralign-e.md) | Yes | Alignment style of the indexer pop-up window. The pop-up window can be displayed on the right or left of the indexer. <br>Default value: **IndexerAlign.END** |
 | offset | [Length](../arkts-apis/arkts-arkui-length-t.md) | No | Spacing between the pop-up window and the alphabetic index bar. A value greater than or equal to **0** is valid. If this parameter is set to a value less than **0** or is not set, the spacing is the same as **popupPosition**. When this parameter and [popupPosition](#popupposition) are set at the same time, **offset** takes effect in the horizontal direction, and **popupPosition.y** takes effect in the vertical direction.<br>**Since:** 10 |
 
 ## autoCollapse
@@ -75,7 +75,7 @@ When the first index item is not **"#"**: All items ≤ 9: Full display mode (al
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to auto-collapse or expand the indexer bar.<br>Default value: <br>Before API version 12: **false** <br>Since API version 12: **true** <br>**true**: Enable the adaptive collapse behavior. <br>**false**: Disable the adaptive collapse behavior. |
+| value | boolean | Yes | Whether to auto-collapse or expand the indexer bar. <br>Default value: <br>Before API version 12: **false** <br>Since API version 12: **true** <br>**true**: Enable the adaptive collapse behavior. <br>**false**: Disable the adaptive collapse behavior. |
 
 ## color
 
@@ -97,7 +97,7 @@ Sets the text color for unselected items.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Text color of unselected items.<br>Default value: **0x99182431**, displayed as a slightly transparent dark blue. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Text color of unselected items. <br>Default value: **0x99182431**, displayed as a slightly transparent dark blue. |
 
 ## enableHapticFeedback
 
@@ -143,7 +143,7 @@ Sets the text style for unselected items.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Font | Yes | Text style of unselected items.<br>Default value: <br>API version 11 and earlier: <br>{<br>size:'12.0fp', <br> style:FontStyle.Normal, <br> weight:FontWeight.Regular, <br> family:'HarmonyOS Sans'<br>} <br>API version 12 and later: <br>{<br>size:'10.0vp', <br> style:FontStyle.Normal, <br> weight:FontWeight.Medium, <br> family:'HarmonyOS Sans'<br>} |
+| value | Font | Yes | Text style of unselected items. <br>Default value: <br>API version 11 and earlier: <br>{<br>size:'12.0fp', <br> style:FontStyle.Normal, <br> weight:FontWeight.Regular, <br> family:'HarmonyOS Sans'<br>} <br>API version 12 and later: <br>{<br>size:'10.0vp', <br> style:FontStyle.Normal, <br> weight:FontWeight.Medium, <br> family:'HarmonyOS Sans'<br>} |
 
 ## itemBorderRadius
 
@@ -167,7 +167,7 @@ Sets the radius of the index background border corners in the alphabetic index b
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Radius of the index background border corners in the alphabetic index bar.<br>Default value: **8vp** <br>This parameter cannot be set in percentage. If the value specified is less than **0**, **0** is used. <br>The radius of the index background border corners in the alphabetic index bar is automatically adaptive (radius of the index corners + 4 vp). |
+| value | number | Yes | Radius of the index background border corners in the alphabetic index bar. <br>Default value: **8vp** <br>This parameter cannot be set in percentage. If the value specified is less than **0**, **0** is used. <br>The radius of the index background border corners in the alphabetic index bar is automatically adaptive (radius of the index corners + 4 vp). |
 
 ## itemSize
 
@@ -355,7 +355,7 @@ Sets the text style for the primary index item in the pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Font | Yes | Text style of the primary index item in the pop-up window.<br>Default value: <br>{<br>size:'24.0vp', <br> style:FontStyle.Normal, <br> weight:FontWeight.Medium, <br> family:'HarmonyOS Sans'<br>} |
+| value | Font | Yes | Text style of the primary index item in the pop-up window. <br>Default value: <br>{<br>size:'24.0vp', <br> style:FontStyle.Normal, <br> weight:FontWeight.Medium, <br> family:'HarmonyOS Sans'<br>} |
 
 ## popupItemBackgroundColor
 
@@ -403,7 +403,7 @@ Sets the radius of the index border corners in the pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Radius of the index background border corners in the pop-up window.<br>Default value: **24vp**. <br>This parameter cannot be set in percentage. If the value specified is less than **0**, **0** is used. <br>The radius of the index background border corners in the pop-up window is automatically adaptive (radius of the index corners + 4 vp). |
+| value | number | Yes | Radius of the index background border corners in the pop-up window. <br>Default value: **24vp**. <br>This parameter cannot be set in percentage. If the value specified is less than **0**, **0** is used. <br>The radius of the index background border corners in the pop-up window is automatically adaptive (radius of the index corners + 4 vp). |
 
 ## popupItemFont
 
@@ -427,7 +427,7 @@ Sets the text style for the secondary index item in the pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Font | Yes | Text style of the secondary index item in the pop-up window.<br>Default value: <br>{<br>size:24, <br>weight:FontWeight.Medium <br>} |
+| value | Font | Yes | Text style of the secondary index item in the pop-up window. <br>Default value: <br>{<br>size:24, <br>weight:FontWeight.Medium <br>} |
 
 ## popupPosition
 
@@ -473,7 +473,7 @@ Sets the text color for the selected secondary index item in the pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Text color of the selected secondary index items in the pop-up window.<br>Default value: **#FF182431**, which is dark blue. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Text color of the selected secondary index items in the pop-up window. <br>Default value: **#FF182431**, which is dark blue. |
 
 ## popupTitleBackground
 
@@ -497,7 +497,7 @@ Sets the background color for the primary index item in the pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Background color for the primary index item in the pop-up window.<br>Default value: <br>If the pop-up window has only one index: **#00FFFFFF**. <br>If the pop-up window has multiple indexes: **#0c182431**. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Background color for the primary index item in the pop-up window. <br>Default value: <br>If the pop-up window has only one index: **#00FFFFFF**. <br>If the pop-up window has multiple indexes: **#0c182431**. |
 
 ## popupUnselectedColor
 
@@ -521,7 +521,7 @@ Sets the text color for the unselected secondary index items in the pop-up windo
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Text color of the unselected secondary index items in the pop-up window.<br>Default value: **#FF182431**, which is dark blue. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Text color of the unselected secondary index items in the pop-up window. <br>Default value: **#FF182431**, which is dark blue. |
 
 ## selected
 
@@ -567,7 +567,7 @@ Sets the background color of the selected item.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Background color of the selected item.<br>Default value: **0x1A007DFF**, displayed as a semi-transparent blue. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Background color of the selected item. <br>Default value: **0x1A007DFF**, displayed as a semi-transparent blue. |
 
 ## selectedColor
 
@@ -611,7 +611,7 @@ Sets the text style for the selected item.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Font | Yes | Text style of the selected item.<br>Default value: <br>API version 11 and earlier: <br>{<br>size:'12.0fp', <br> style:FontStyle.Normal, <br> weight:FontWeight.Regular, <br> family:'HarmonyOS Sans'<br>} <br>API version 12 and later: <br>{<br>size:'10.0vp', <br> style:FontStyle.Normal, <br> weight:FontWeight.Medium, <br> family:'HarmonyOS Sans'<br>} |
+| value | Font | Yes | Text style of the selected item. <br>Default value: <br>API version 11 and earlier: <br>{<br>size:'12.0fp', <br> style:FontStyle.Normal, <br> weight:FontWeight.Regular, <br> family:'HarmonyOS Sans'<br>} <br>API version 12 and later: <br>{<br>size:'10.0vp', <br> style:FontStyle.Normal, <br> weight:FontWeight.Medium, <br> family:'HarmonyOS Sans'<br>} |
 
 ## usingPopup
 
@@ -633,7 +633,7 @@ Sets whether to display the pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to display the pop-up window.<br>Default value: **false**. <br>**true**: Display the pop-up window. <br>**false**: Do not display the pop-up window. |
+| value | boolean | Yes | Whether to display the pop-up window. <br>Default value: **false**. <br>**true**: Display the pop-up window. <br>**false**: Do not display the pop-up window. |
 
 ## onSelected
 

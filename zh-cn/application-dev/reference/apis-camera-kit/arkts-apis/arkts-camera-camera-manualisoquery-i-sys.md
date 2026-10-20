@@ -4,7 +4,7 @@
 interface ManualIsoQuery
 ```
 
-Provides APIs to check whether a camera device supports manual ISO setting and obtain the ISO range supported by the device.
+提供了查询相机设备是否支持手动ISO设置以及获取设备支持的ISO范围的方法。
 
 **起始版本：** 24
 
@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 getIsoRange(): Array<number>
 ```
 
-Obtains the supported ISO range.
+获取支持的ISO范围。
 
 **起始版本：** 12
 
@@ -38,7 +38,7 @@ Obtains the supported ISO range.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;number&gt; | ISO range. The value range is [50, 100, ..., 6400]. The actual value depends on the bottom-layer capability. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
+| Array&lt;number&gt; | ISO范围。取值范围为[50, 100, ..., 6400]，实际值取决于底层能力。接口调用失败会返回错误码，错误码定义见[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
 **错误码：**
 
@@ -74,7 +74,7 @@ function getIsoRange(professionalPhotoSession: camera.ProfessionalPhotoSession):
 isManualIsoSupported(): boolean
 ```
 
-Checks whether manual ISO setting is supported.
+检测是否支持手动ISO设置。
 
 **起始版本：** 12
 
@@ -88,7 +88,7 @@ Checks whether manual ISO setting is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for the support of manual ISO setting. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
+| boolean | 检测是否支持手动ISO设置的结果。**true**表示支持，**false**表示不支持。接口调用失败会返回错误码，错误码定义见[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
 **错误码：**
 

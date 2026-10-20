@@ -37,7 +37,7 @@ Navigates to the specified indicator. Before using this method, ensure that the 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | index | number | Yes | Index value of the specified indicator.<br>**Note:** <br>If the set value is less than 0 or greater than the maximum indicator index, 0 is used. |
-| useAnimation | boolean | No | Whether to use an animation for when the target index is reached. The value **true** means to use an animation, and **false** means the opposite.<br>Default value: **false**. |
+| useAnimation | boolean | No | Whether to use an animation for when the target index is reached. The value **true** means to use an animation, and **false** means the opposite. <br>Default value: **false**. |
 
 ## constructor
 

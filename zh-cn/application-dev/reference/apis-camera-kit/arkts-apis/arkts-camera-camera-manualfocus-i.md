@@ -4,7 +4,7 @@
 interface ManualFocus extends ManualFocusQuery
 ```
 
-ManualFocus object.
+手动对焦对象。
 
 **继承/实现关系：** ManualFocus extends [ManualFocusQuery](arkts-camera-camera-manualfocusquery-i.md)
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 getFocusDistance(): number
 ```
 
-Gets current focus distance, ranging from 0.0 to 1.0, with 0.0 being shortest distance at which the lens can focus and 1.0 the furthest. The default value is 1.0.
+获取当前对焦距离，取值范围为0.0到1.0，0.0表示镜头可对焦的最近距离，1.0表示最远距离。默认值为1.0。
 
 **起始版本：** 24
 
@@ -40,13 +40,12 @@ Gets current focus distance, ranging from 0.0 to 1.0, with 0.0 being shortest di
 
 | 类型 | 说明 |
 | --- | --- |
-| number | The current focus distance. |
+| number | 当前的对焦距离。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 23 |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed, the inputDevice or the session is abnormal.<br>**适用版本：** 24+ |
 
@@ -56,7 +55,7 @@ Gets current focus distance, ranging from 0.0 to 1.0, with 0.0 being shortest di
 setFocusDistance(distance: number): void
 ```
 
-Sets focus distance. Possible distance values range from 0.0 to 1.0, with 0.0 being shortest distance at which the lens can focus and 1.0 the furthest. The default value is 1.0.
+设置对焦距离。取值范围为0.0到1.0，0.0表示镜头可对焦的最近距离，1.0表示最远距离。默认值为1.0。
 
 **起始版本：** 24
 
@@ -70,13 +69,11 @@ Sets focus distance. Possible distance values range from 0.0 to 1.0, with 0.0 be
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| distance | number | 是 | Focus distance. |
+| distance | number | 是 | 对焦距离。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 23 |
-| [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect.<br>**适用版本：** 12 - 23 |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed, the inputDevice or the session is abnormal.<br>**适用版本：** 24+ |

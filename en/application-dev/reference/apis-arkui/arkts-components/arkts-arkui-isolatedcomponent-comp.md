@@ -10,16 +10,20 @@ Not supported
 
 ## Summary
 
-### Interfaces
+<!--Del-->
+### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
 | [IsolatedOptions](arkts-arkui-isolatedcomponent-comp-isolatedoptions-i-sys.md) | Used to pass construction parameters during **IsolatedComponent** construction. |
+<!--DelEnd-->
 
-### Types
+<!--Del-->
+### Types(System API)
 
 | Name | Description |
 | --- | --- |
 | [ErrorCallback](arkts-arkui-isolatedcomponent-comp-errorcallback-t-sys.md) | Indicates error callback. |
 | [RestrictedWorker](arkts-arkui-isolatedcomponent-comp-restrictedworker-t-sys.md) | Restricted worker that runs the .abc file. |
 | [Want](arkts-arkui-isolatedcomponent-comp-want-t-sys.md) | Indicates want. |
+<!--DelEnd-->

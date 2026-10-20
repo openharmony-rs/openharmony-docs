@@ -22,8 +22,6 @@ export class DateTimeFormat
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -54,8 +52,6 @@ import { intl } from '@kit.LocalizationKit';
 // 使用系统当前区域ID创建DateTimeFormat对象
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

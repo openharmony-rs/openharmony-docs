@@ -40,7 +40,7 @@ alternateSetting: number
 clazz: number
 ```
 
-设备类型。
+接口类型（接口类代码），表示该接口所属的功能类别，取值遵循USB接口描述符规范。
 
 **类型：** number
 

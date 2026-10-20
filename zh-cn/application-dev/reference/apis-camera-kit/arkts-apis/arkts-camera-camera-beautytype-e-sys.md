@@ -4,7 +4,7 @@
 enum BeautyType
 ```
 
-Enumerates the beauty types.
+枚举美颜类型。
 
 **起始版本：** 10
 
@@ -20,7 +20,7 @@ Enumerates the beauty types.
 AUTO = 0
 ```
 
-Automatic.
+自动。
 
 **起始版本：** 10
 
@@ -36,7 +36,7 @@ Automatic.
 EYE_BIG_EYES = 5
 ```
 
-Eye big eyes beauty type.
+大眼美颜类型。
 
 **起始版本：** 22
 
@@ -52,7 +52,7 @@ Eye big eyes beauty type.
 FACE_MAKEUP = 7
 ```
 
-Face makeup beauty type.
+面部妆容美颜类型。
 
 **起始版本：** 22
 
@@ -68,7 +68,7 @@ Face makeup beauty type.
 FACE_SLENDER = 2
 ```
 
-Face slimming.
+瘦脸。
 
 **起始版本：** 10
 
@@ -84,7 +84,7 @@ Face slimming.
 HAIR_HAIRLINE = 6
 ```
 
-Hair hairline beauty type.
+发际线美颜类型。
 
 **起始版本：** 22
 
@@ -100,7 +100,7 @@ Hair hairline beauty type.
 HEAD_SHRINK = 8
 ```
 
-Head shrink beauty type.
+小头美颜类型。
 
 **起始版本：** 22
 
@@ -116,7 +116,7 @@ Head shrink beauty type.
 NOSE_SLENDER = 9
 ```
 
-Nose slender beauty type.
+瘦鼻美颜类型。
 
 **起始版本：** 22
 
@@ -132,7 +132,7 @@ Nose slender beauty type.
 SKIN_SMOOTH = 1
 ```
 
-Skin smoothing.
+磨皮。
 
 **起始版本：** 10
 
@@ -148,7 +148,7 @@ Skin smoothing.
 SKIN_TONE = 3
 ```
 
-Skin tone perfection.
+肤色美化。
 
 **起始版本：** 10
 
@@ -164,7 +164,7 @@ Skin tone perfection.
 SKIN_TONE_BRIGHT = 4
 ```
 
-Skin tone bright beauty type.
+肤色提亮美颜类型。
 
 **起始版本：** 22
 

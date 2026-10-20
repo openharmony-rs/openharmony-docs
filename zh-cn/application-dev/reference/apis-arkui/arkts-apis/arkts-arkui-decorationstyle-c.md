@@ -12,8 +12,6 @@ declare class DecorationStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -37,8 +35,6 @@ constructor(value: DecorationStyleInterface)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [DecorationStyleInterface](arkts-arkui-decorationstyleinterface-i.md) | 是 | 文本装饰线设置项。 |
-
-<a id="constructor2"></a>
 
 ## constructor
 

@@ -31,7 +31,7 @@ function getSmsShortCodeType(slotId: number, destAddr: string): Promise<SmsShort
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | slotId | number | 是 | Indicates the ID of the slot holding the SIM card for sending SMS messages. The value `0` indicates card slot 1, and the value `1` indicates card slot 2. |
-| destAddr | string | 是 | Indicates the destination address of the sending SMS.<br>取值范围:[0,+∞) |
+| destAddr | string | 是 | Indicates the destination address of the sending SMS. <br>取值范围:[0,+∞) |
 
 **返回值：**
 

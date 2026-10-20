@@ -6,8 +6,6 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
-<a id="transformcoordinatesystem1"></a>
-
 ## transformCoordinateSystem
 
 ```TypeScript
@@ -20,8 +18,7 @@ function transformCoordinateSystem(inRotationVector: Array<number>, coordinates:
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用
-> [sensor.transformRotationMatrix]
-> [transformRotationMatrix](arkts-sensorservice-sensor-transformrotationmatrix-f.md)
+> [sensor.transformRotationMatrix](arkts-sensorservice-sensor-transformrotationmatrix-f.md)
 > 替代。
 
 **起始版本：** 8
@@ -61,8 +58,6 @@ sensor.transformCoordinateSystem([1, 0, 0, 0, 1, 0, 0, 0, 1], { x: 2, y: 3 },
 })
 ```
 
-
-<a id="transformcoordinatesystem2"></a>
 
 ## transformCoordinateSystem
 

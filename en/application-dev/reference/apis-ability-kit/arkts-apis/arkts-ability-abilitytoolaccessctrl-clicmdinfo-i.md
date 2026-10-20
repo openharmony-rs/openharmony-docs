@@ -15,6 +15,7 @@ CLI command information.
 ## Modules to Import
 
 ```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## cliCmdName

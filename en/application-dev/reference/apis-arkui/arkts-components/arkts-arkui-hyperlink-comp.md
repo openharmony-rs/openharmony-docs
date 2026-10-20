@@ -35,7 +35,7 @@ Defines the constructor of Hyperlink.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | address | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Web page address that the **Hyperlink** component navigates to. |
-| content | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | No | Text displayed for the hyperlink in the **Hyperlink** component.<br>Default value: **''**. If this parameter is not set and the component has no child components, the **address** parameter value is displayed by default. <br>**NOTE:** <br>If the component has child components, the hyperlink text is not displayed. |
+| content | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | No | Text displayed for the hyperlink in the **Hyperlink** component. <br>Default value: **''**. If this parameter is not set and the component has no child components, the **address** parameter value is displayed by default. <br>**NOTE:** <br>If the component has child components, the hyperlink text is not displayed. |
 
 ## Summary
 

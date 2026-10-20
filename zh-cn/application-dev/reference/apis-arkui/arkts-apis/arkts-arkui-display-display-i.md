@@ -6,7 +6,7 @@ interface Display
 
 屏幕实例。描述Display对象的属性和方法。
 
-下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays1)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md)中的任一方法获取到Display实例，再通过此实例调用对应方法。
+下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md)中的任一方法获取到Display实例，再通过此实例调用对应方法。
 
 **起始版本：** 7
 
@@ -70,8 +70,6 @@ try {
 }
 ```
 
-<a id="getcutoutinfo1"></a>
-
 ## getCutoutInfo
 
 ```TypeScript
@@ -117,8 +115,6 @@ displayClass.getCutoutInfo((err: BusinessError, data: display.CutoutInfo) => {
   console.info(`Succeeded in getting cutoutInfo. Data: ${JSON.stringify(data)}`);
 });
 ```
-
-<a id="getcutoutinfo2"></a>
 
 ## getCutoutInfo
 
@@ -320,7 +316,7 @@ off(type: 'availableAreaChange', callback?: Callback<Rect>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例**
@@ -367,7 +363,7 @@ on(type: 'availableAreaChange', callback: Callback<Rect>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
 **示例**

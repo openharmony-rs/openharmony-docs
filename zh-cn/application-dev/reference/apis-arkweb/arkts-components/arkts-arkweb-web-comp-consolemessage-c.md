@@ -12,8 +12,6 @@ ConsoleMessage是Web组件中封装JavaScript控制台输出信息的对象。�
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="constructor2"></a>
-
 ## constructor
 
 ```TypeScript
@@ -29,8 +27,6 @@ ConsoleMessage的构造函数。
 <!--Device-ConsoleMessage-constructor()--><!--Device-ConsoleMessage-constructor()-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
-
-<a id="constructor1"></a>
 
 ## constructor
 

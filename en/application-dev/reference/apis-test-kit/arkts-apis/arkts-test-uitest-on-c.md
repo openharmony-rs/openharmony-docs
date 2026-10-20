@@ -155,7 +155,7 @@ Specifies the display to which the target component belongs.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| displayId | number | Yes | ID of the display to which the component belongs. The value is an integer greater than or equal to 0. <br>**Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. You can use [getAllDisplays](../../apis-arkui/arkts-apis/arkts-arkui-display-getalldisplays-f.md#getalldisplays1) to obtain all current **display** objects and use them to obtain the corresponding display IDs. |
+| displayId | number | Yes | ID of the display to which the component belongs. The value is an integer greater than or equal to 0. <br>**Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. You can use [getAllDisplays](../../apis-arkui/arkts-apis/arkts-arkui-display-getalldisplays-f.md#getalldisplays) to obtain all current **display** objects and use them to obtain the corresponding display IDs. |
 
 **Return value:**
 
@@ -495,8 +495,6 @@ import { MatchPattern, On, ON } from '@kit.TestKit';
 let on: On = ON.hint('welcome', MatchPattern.EQUALS); // Use the static constructor ON to create an On object with the hint text attribute of the target component specified.
 ```
 
-<a id="id1"></a>
-
 ## id
 
 ```TypeScript
@@ -541,8 +539,6 @@ import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.id('123'); // Use the static constructor ON to create an On object and specify the ID attribute of the target component.
 ```
-
-<a id="id2"></a>
 
 ## id
 
@@ -968,8 +964,6 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.text('123'); // Use the static constructor ON to create an On object and specify the text attribute of the target component.
 ```
 
-<a id="type1"></a>
-
 ## type
 
 ```TypeScript
@@ -1014,8 +1008,6 @@ import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.type('Button'); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
 ```
-
-<a id="type2"></a>
 
 ## type
 

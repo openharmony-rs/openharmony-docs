@@ -21,8 +21,6 @@ The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="barrier1"></a>
-
 ## barrier
 
 ```TypeScript
@@ -46,8 +44,6 @@ Sets the [barriers](../../../ui/arkts-layout-development-relative-layout.md#sett
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | Array&lt;[BarrierStyle](arkts-arkui-relativecontainer-comp-barrierstyle-i.md)&gt; | Yes | Barrier in the **RelativeContainer** container, used to define the ID, direction, and dependent components of the barrier. Child components can use the barrier as an anchor for alignment and positioning. |
-
-<a id="barrier2"></a>
 
 ## barrier
 

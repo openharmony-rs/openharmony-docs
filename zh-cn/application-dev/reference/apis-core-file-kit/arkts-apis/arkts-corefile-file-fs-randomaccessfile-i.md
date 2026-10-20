@@ -133,8 +133,6 @@ ws.close();
 randomAccessFile.close();
 ```
 
-<a id="read1"></a>
-
 ## read
 
 ```TypeScript
@@ -205,8 +203,6 @@ randomAccessFile.read(arrayBuffer, readOption).then((readLength: number) => {
 });
 ```
 
-<a id="read2"></a>
-
 ## read
 
 ```TypeScript
@@ -265,8 +261,6 @@ randomAccessFile.read(arrayBuffer, (err: BusinessError, readLength: number) => {
   fileIo.closeSync(file);
 });
 ```
-
-<a id="read3"></a>
 
 ## read
 
@@ -433,8 +427,6 @@ randomAccessFile.setFilePointer(1);
 randomAccessFile.close();
 ```
 
-<a id="write1"></a>
-
 ## write
 
 ```TypeScript
@@ -508,8 +500,6 @@ randomAccessFile.write(arrayBuffer, writeOption).then((bytesWritten: number) => 
 });
 ```
 
-<a id="write2"></a>
-
 ## write
 
 ```TypeScript
@@ -570,8 +560,6 @@ randomAccessFile.write(arrayBuffer, (err: BusinessError, bytesWritten: number) =
   fileIo.closeSync(file);
 });
 ```
-
-<a id="write3"></a>
 
 ## write
 

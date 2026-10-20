@@ -38,7 +38,7 @@ A positive value moves the content upwards, while a negative value moves it down
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Offset of the text baseline. If the value is set to a percentage, the value is displayed as 0.<br>Unit: fp. <br>The Resource type is supported since API version 20.<br>**Since:** 20 |
+| value | number &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Offset of the text baseline. If the value is set to a percentage, the value is displayed as 0. <br>Unit: fp. <br>The Resource type is supported since API version 20.<br>**Since:** 20 |
 
 ## bindSelectionMenu
 
@@ -49,7 +49,7 @@ bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: 
 
 Sets the custom selection menu. If this API is not used, the default menu type is **TextSpanType.TEXT** and the response type is **TextResponseType.LONG_PRESS**.
 
-The long-press response duration of **bindSelectionMenu** is 600 ms while that of [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1) is 800 ms. When both are bound and their triggering methods are set to long press, **bindSelectionMenu** takes precedence.
+The long-press response duration of **bindSelectionMenu** is 600 ms while that of [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) is 800 ms. When both are bound and their triggering methods are set to long press, **bindSelectionMenu** takes precedence.
 
 When the custom menu is too long, it is recommended that nest a [Scroll](arkts-arkui-scroll-comp.md) component inside to prevent the keyboard from being obscured.
 
@@ -86,7 +86,7 @@ When [copyOption](#copyoption) is set to **CopyOptions.None**, the setting of th
 | spanType | [TextSpanType](arkts-arkui-text-comp-textspantype-e.md) | Yes | Span type of the menu. |
 | content | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | Yes | Content of the menu. |
 | responseType | [TextResponseType](arkts-arkui-text-comp-textresponsetype-e.md) | Yes | Response type of the menu. |
-| options | SelectionMenuOptions | No | Options of the selection menu, which are used to customize the menu behavior. The options include callback configuration items such as menu appearance, disappearance, display, and hiding.<br>Default value: If this parameter is not set, the default selection menu configuration is used. |
+| options | SelectionMenuOptions | No | Options of the selection menu, which are used to customize the menu behavior. The options include callback configuration items such as menu appearance, disappearance, display, and hiding. <br>Default value: If this parameter is not set, the default selection menu configuration is used. |
 
 ## caretColor
 
@@ -140,7 +140,7 @@ Sets whether to enable leading punctuation compression.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable leading punctuation compression.<br>The value **true** indicates to enable leading punctuation compression, and **false** indicates the opposite. The value **undefined** indicates that leading punctuation compression is disabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable leading punctuation compression. <br>The value **true** indicates to enable leading punctuation compression, and **false** indicates the opposite. The value **undefined** indicates that leading punctuation compression is disabled. |
 
 ## contentTransition
 
@@ -275,7 +275,7 @@ Style and color of the text decorative line. If this API is not used, the defaul
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [DecorationStyleInterface](../arkts-apis/arkts-arkui-decorationstyleinterface-i.md) | Yes | Style of the text decorative line.<br>**NOTE:** <br>The **style** parameter cannot be used in widgets.<br>**Since:** 12 |
+| value | [DecorationStyleInterface](../arkts-apis/arkts-arkui-decorationstyleinterface-i.md) | Yes | Style of the text decorative line. <br>**NOTE:** <br>The **style** parameter cannot be used in widgets.<br>**Since:** 12 |
 
 ## draggable
 
@@ -301,7 +301,7 @@ If set to **true**, **draggable** must be used in conjunction with CopyOptions. 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Drag effect of the selected text.<br>**true**: The selected text is draggable. **false**: The selected text is not draggable. |
+| value | boolean | Yes | Drag effect of the selected text. <br>**true**: The selected text is draggable. **false**: The selected text is not draggable. |
 
 ## editMenuOptions
 
@@ -387,7 +387,7 @@ Sets whether to enable automatic spacing between Chinese and Western characters.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise. <br>If the value is **undefined**, automatic spacing between Chinese and Western characters is disabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western characters. <br>**true** to enable, **false** otherwise. <br>If the value is **undefined**, automatic spacing between Chinese and Western characters is disabled. |
 
 ## enableDataDetector
 
@@ -421,7 +421,7 @@ The style of detected entities is as follows: the font color is changed to blue,
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether special text entities can be recognized.<br>The value **true** indicates yes, and **false** indicates no. |
+| enable | boolean | Yes | Whether special text entities can be recognized. <br>The value **true** indicates yes, and **false** indicates no. |
 
 ## enableHapticFeedback
 
@@ -451,7 +451,7 @@ To enable haptic feedback, you must declare the **ohos.permission.VIBRATE** perm
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isEnabled | boolean | Yes | Whether to enable haptic feedback.<br>**true** to enable, **false** otherwise. |
+| isEnabled | boolean | Yes | Whether to enable haptic feedback. <br>**true** to enable, **false** otherwise. |
 
 ## enableSelectedDataDetector
 
@@ -485,7 +485,7 @@ This attribute is invalid in the cross-node selection scenario of [SelectionCont
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean &#124; undefined | Yes | Whether to enable entity recognition for selected text.<br>**true**: Entity recognition is enabled. **false**: Entity recognition is disabled. Default value: **true** <br>A value of **undefined** is treated as the default value. |
+| enable | boolean &#124; undefined | Yes | Whether to enable entity recognition for selected text. <br>**true**: Entity recognition is enabled. **false**: Entity recognition is disabled. Default value: **true** <br>A value of **undefined** is treated as the default value. |
 
 ## fallbackLineSpacing
 
@@ -509,9 +509,7 @@ Adapts the line height to the actual text height for overlapped multi-line text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height adapts to the actual text height.<br>**true**: Line height adapts to the actual text height. **false**: Line height does not adapt to the actual text height. <br>**undefined**: Line height does not adapt to the actual text height. |
-
-<a id="font1"></a>
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height adapts to the actual text height. <br>**true**: Line height adapts to the actual text height. **false**: Line height does not adapt to the actual text height. <br>**undefined**: Line height does not adapt to the actual text height. |
 
 ## font
 
@@ -541,8 +539,6 @@ It is only effective for the **Text** component, not for its child components.
 | --- | --- | --- | --- |
 | value | Font | Yes | Text style. |
 
-<a id="font2"></a>
-
 ## font
 
 ```TypeScript
@@ -570,7 +566,7 @@ It is only effective for the **Text** component, not for its child components.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | fontValue | Font | Yes | Sets the text style. |
-| options | [FontSettingOptions](../arkts-apis/arkts-arkui-fontsettingoptions-i.md) | No | Font settings.<br>Default value: If this parameter is not set, the default font configuration is used. For details, see **FontSettingOptions**. |
+| options | [FontSettingOptions](../arkts-apis/arkts-arkui-fontsettingoptions-i.md) | No | Font settings. <br>Default value: If this parameter is not set, the default font configuration is used. For details, see **FontSettingOptions**. |
 
 ## fontColor
 
@@ -645,7 +641,7 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 > The **Text** component cannot contain both text and the child component **Span** or **ImageSpan**. If both of
 > them exist, only the content in **Span** or **ImageSpan** is displayed.
 > 
-> The typesetting engine rounds down the value of [width](arkts-arkui-common-comp-commonmethod-c.md#width1) to ensure that
+> The typesetting engine rounds down the value of [width](arkts-arkui-common-comp-commonmethod-c.md#width) to ensure that
 > the value is an integer. If the typesetting engine rounds up the value instead, the right side of the text may be
 > clipped.
 > 
@@ -679,7 +675,7 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | Yes | Text feature effect. The format is normal &#124;<feature-tag-value>. The format of <feature- tag-value> is <string> [<integer> &#124; on &#124; off]. Multiple values are separated by commas (,). For example, "ss01"on. |
+| value | string | Yes | Text feature effect. The format is normal &#124; <feature-tag-value>. The format of <feature- tag-value> is <string> [<integer> &#124; on &#124; off]. Multiple values are separated by commas (,). For example, "ss01"on. |
 
 ## fontSize
 
@@ -759,8 +755,6 @@ Sets font variations.
 | --- | --- | --- | --- |
 | fontVariations | Array&lt;[FontVariation](../arkts-apis/arkts-arkui-fontvariation-t.md)&gt; | Yes | Array of font variations, where each member represents a distinct font variation. The **fontVariations** attribute takes precedence over [fontWeight](#fontweight). |
 
-<a id="fontweight1"></a>
-
 ## fontWeight
 
 ```TypeScript
@@ -785,9 +779,7 @@ It is only effective for the **Text** component, not for its child components.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the text.<br>For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings of the number type are supported, for example, **"400"**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**. If the value is too large, truncation may occur in different fonts. If the input value exceeds the value range or does not meet the interval requirements, the default value is used. <br>The Resource type is supported since API version 20.<br>**Since:** 20 |
-
-<a id="fontweight2"></a>
+| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the text. <br>For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings of the number type are supported, for example, **"400"**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**. If the value is too large, truncation may occur in different fonts. If the input value exceeds the value range or does not meet the interval requirements, the default value is used. <br>The Resource type is supported since API version 20.<br>**Since:** 20 |
 
 ## fontWeight
 
@@ -815,8 +807,8 @@ It is only effective for the **Text** component, not for its child components.<!
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| weight | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight.<br>For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings of the number type are supported, for example, **"400"**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**. If the value is too large, truncation may occur in different fonts. <br>If the input value exceeds the value range, the default value is used. If the input value does not meet the interval requirements, and **enableVariableFontWeight** of **fontWeightConfigs** is set to **true**, the input value is used. If **enableVariableFontWeight** is set to **false**, the default value is used. <br>The Resource type is supported since API version 20.<br>**Since:** 20 |
-| options | [FontSettingOptions](../arkts-apis/arkts-arkui-fontsettingoptions-i.md) | No | Font configuration options, which are used to enable the variable font weight adjustment feature. This parameter is required (set **enableVariableFontWeight** to **true**) when the font weight attribute of a variable font needs to be fine-tuned. If this parameter is not passed, the default font configuration is used (variable font weight adjustment is disabled, and only font weights that are multiples of 100 are supported).<br>If **enableVariableFontWeight** is set to **false**, variable font weight adjustment is disabled: If the value of **weight** is a multiple of 100, the font weight is the value of **weight**. If the value of **weight** is not a multiple of 100, the font weight is 400. If **enableVariableFontWeight** is set to **true**, variable font weight adjustment is enabled: The font weight is the value of **weight** when **weight** is set to any integer. |
+| weight | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight. <br>For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font weight. The default value is **400**. For the string type, only strings of the number type are supported, for example, **"400"**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**. If the value is too large, truncation may occur in different fonts. <br>If the input value exceeds the value range, the default value is used. If the input value does not meet the interval requirements, and **enableVariableFontWeight** of **fontWeightConfigs** is set to **true**, the input value is used. If **enableVariableFontWeight** is set to **false**, the default value is used. <br>The Resource type is supported since API version 20.<br>**Since:** 20 |
+| options | [FontSettingOptions](../arkts-apis/arkts-arkui-fontsettingoptions-i.md) | No | Font configuration options, which are used to enable the variable font weight adjustment feature. This parameter is required (set **enableVariableFontWeight** to **true**) when the font weight attribute of a variable font needs to be fine-tuned. If this parameter is not passed, the default font configuration is used (variable font weight adjustment is disabled, and only font weights that are multiples of 100 are supported). <br>If **enableVariableFontWeight** is set to **false**, variable font weight adjustment is disabled: If the value of **weight** is a multiple of 100, the font weight is the value of **weight**. If the value of **weight** is not a multiple of 100, the font weight is 400. If **enableVariableFontWeight** is set to **true**, variable font weight adjustment is enabled: The font weight is the value of **weight** when **weight** is set to any integer. |
 
 ## halfLeading
 
@@ -902,7 +894,7 @@ Sets whether to add spacing to the first and last lines to avoid text truncation
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| include | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing to the first and last lines to avoid text truncation.<br>**true**: Spacing is added to the first and last lines. **false**: Spacing is not added to the first and last lines. <br>**undefined**: Spacing is not added to the first and last lines. |
+| include | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing to the first and last lines to avoid text truncation. <br>**true**: Spacing is added to the first and last lines. **false**: Spacing is not added to the first and last lines. <br>**undefined**: Spacing is not added to the first and last lines. |
 
 ## incrementalUpdatePolicy
 
@@ -928,7 +920,7 @@ This API takes effect only when the text content contains a styled string (**Sty
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| policy | [IncrementalUpdatePolicy](../arkts-apis/arkts-arkui-incrementalupdatepolicy-e.md) &#124; undefined | Yes | Incremental update policy for text rendering.<br>If this parameter is set to **undefined**, the value **IncrementalUpdatePolicy.NONE** is used. |
+| policy | [IncrementalUpdatePolicy](../arkts-apis/arkts-arkui-incrementalupdatepolicy-e.md) &#124; undefined | Yes | Incremental update policy for text rendering. <br>If this parameter is set to **undefined**, the value **IncrementalUpdatePolicy.NONE** is used. |
 
 ## letterSpacing
 
@@ -1031,10 +1023,10 @@ The line height equals the input parameter **value** multiplied by **fontHeight*
 > **NOTE:** 
 > 
 > When **lineHeightMultiple** is set to a valid value and [lineHeight](#lineheight) or
-> [lineSpacing](#linespacing1) is set at the same time, only
+> [lineSpacing](#linespacing) is set at the same time, only
 > **lineHeightMultiple** takes effect. If the value of **lineHeightMultiple** is less than 0, it does not take
 > effect. In this case, use [lineHeight](#lineheight) and
-> [lineSpacing](#linespacing1) to set the line height and line spacing.
+> [lineSpacing](#linespacing) to set the line height and line spacing.
 
 **Since:** 22
 
@@ -1052,9 +1044,7 @@ The line height equals the input parameter **value** multiplied by **fontHeight*
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; undefined | Yes | Line height multiple.<br>Value range: [0, +∞) <br>**NOTE:** <br>- Values less than 0 does not take effect. <br>- Value **0** functions the same as **1**, leaving line height unchanged. <br>- Decimal values are supported. <br>- If the value is **undefined**, the default line height is used. |
-
-<a id="linespacing1"></a>
+| value | number &#124; undefined | Yes | Line height multiple. <br>Value range: [0, +∞) <br>**NOTE:** <br>- Values less than 0 does not take effect. <br>- Value **0** functions the same as **1**, leaving line height unchanged. <br>- Decimal values are supported. <br>- If the value is **undefined**, the default line height is used. |
 
 ## lineSpacing
 
@@ -1080,9 +1070,7 @@ If this parameter and [lineHeightMultiple](#lineheightmultiple) are set at the s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | LengthMetrics | Yes | Line spacing.<br>The value range is [0, +∞). If the value is less than 0, the default value **0** is used. |
-
-<a id="linespacing2"></a>
+| value | LengthMetrics | Yes | Line spacing. <br>The value range is [0, +∞). If the value is less than 0, the default value **0** is used. |
 
 ## lineSpacing
 
@@ -1109,7 +1097,7 @@ If this parameter and [lineHeightMultiple](#lineheightmultiple) are set at the s
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | LengthMetrics | Yes | Line spacing. Values less than or equal to 0 are treated as the default value **0**. |
-| options | [LineSpacingOptions](../arkts-apis/arkts-arkui-linespacingoptions-i.md) | No | Line spacing configuration options.<br>Default value: **{ onlyBetweenLines: false }** |
+| options | [LineSpacingOptions](../arkts-apis/arkts-arkui-linespacingoptions-i.md) | No | Line spacing configuration options. <br>Default value: **{ onlyBetweenLines: false }** |
 
 ## marqueeOptions
 
@@ -1159,7 +1147,7 @@ Sets the maximum font scale factor for text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Maximum font scale factor for text.<br>Value range: [1, +∞) <br>**NOTE:** <br>Values less than 1 are treated as **1**. Other invalid values are ineffective by default. |
+| scale | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Maximum font scale factor for text. <br>Value range: [1, +∞) <br>**NOTE:** <br>Values less than 1 are treated as **1**. Other invalid values are ineffective by default. |
 
 ## maxFontSize
 
@@ -1221,7 +1209,7 @@ If **maxLineHeight** is less than **minLineHeight**, **maxLineHeight** takes eff
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | LengthMetrics &#124; undefined | Yes | Maximum line height of text. Percentage values are not supported.<br>Values less than or equal to 0 are treated as **0**. When the value is set to **0**, the maximum line height is unrestricted. <br>If the value is **undefined**, this parameter does not take effect. |
+| value | LengthMetrics &#124; undefined | Yes | Maximum line height of text. Percentage values are not supported. <br>Values less than or equal to 0 are treated as **0**. When the value is set to **0**, the maximum line height is unrestricted. <br>If the value is **undefined**, this parameter does not take effect. |
 
 ## maxLines
 
@@ -1247,7 +1235,7 @@ By default, text is automatically folded. If this attribute is specified, the te
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Maximum number of lines of the text.<br>**NOTE:** <br>Value range: [0, *INT32_MAX*] <br>If this parameter is set to **0**, no text content is displayed. |
+| value | number | Yes | Maximum number of lines of the text. <br>**NOTE:** <br>Value range: [0, *INT32_MAX*] <br>If this parameter is set to **0**, no text content is displayed. |
 
 ## minFontScale
 
@@ -1271,7 +1259,7 @@ Sets the minimum font scale factor for text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Minimum font scale factor for text.<br>Value range: [0, 1] <br>**NOTE:** <br>Values less than 0 are treated as 0, and values greater than 1 are treated as 1. Other invalid values do not take effect by default. |
+| scale | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Minimum font scale factor for text. <br>Value range: [0, 1] <br>**NOTE:** <br>Values less than 0 are treated as 0, and values greater than 1 are treated as 1. Other invalid values do not take effect by default. |
 
 ## minFontSize
 
@@ -1331,7 +1319,7 @@ Sets the minimum line height of text. If the value is less than or equal to 0, t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | LengthMetrics &#124; undefined | Yes | Minimum line height of text. Percentage values are not supported.<br>Values less than or equal to 0 are treated as **0**. <br>If the value is **undefined**, this parameter does not take effect. |
+| value | LengthMetrics &#124; undefined | Yes | Minimum line height of text. Percentage values are not supported. <br>Values less than or equal to 0 are treated as **0**. <br>If the value is **undefined**, this parameter does not take effect. |
 
 ## minLines
 
@@ -1469,7 +1457,7 @@ Called before the copy operation is performed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;string, boolean&gt; | Yes | The string type indicates the text to be copied.<br>The boolean type indicates whether the text can be copied. The value **true** means yes and **false** means no. |
+| callback | Callback&lt;string, boolean&gt; | Yes | The string type indicates the text to be copied. <br>The boolean type indicates whether the text can be copied. The value **true** means yes and **false** means no. |
 
 ## optimizeTrailingSpace
 
@@ -1485,7 +1473,7 @@ When **Text.optimizeTrailingSpace** is set to **true**:
 * For text containing only spaces, decoration lines, shadows, and background colors follow the space text display.  
 * Leading spaces are not optimized. When text with trailing spaces wraps, trailing spaces on each line are optimized based on component width.
 
-When optimizing pure space text by setting [optimizeTrailingSpace](#optimizetrailingspace) to **true**, you cannot simultaneously set [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), [decoration](#decoration), and [textAlign](#textalign) attributes.
+When optimizing pure space text by setting [optimizeTrailingSpace](#optimizetrailingspace) to **true**, you cannot simultaneously set [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [decoration](#decoration), and [textAlign](#textalign) attributes.
 
 **Since:** 20
 
@@ -1501,7 +1489,7 @@ When optimizing pure space text by setting [optimizeTrailingSpace](#optimizetrai
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| optimize | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to optimize trailing spaces.<br>**true** to optimize, **false** otherwise. <br>If the value is **undefined**, trailing spaces are not optimized. |
+| optimize | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to optimize trailing spaces. <br>**true** to optimize, **false** otherwise. <br>If the value is **undefined**, trailing spaces are not optimized. |
 
 ## orphanCharOptimization
 
@@ -1525,7 +1513,7 @@ Orphan character optimization improves the text layout by handling the orphan ch
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable orphan character optimization for the last line of the paragraph.<br>**true**: Orphan character optimization is enabled. **false**: Orphan character optimization is disabled. <br>When the value is **undefined** or **null**, orphan character optimization is disabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable orphan character optimization for the last line of the paragraph. <br>**true**: Orphan character optimization is enabled. **false**: Orphan character optimization is disabled. <br>When the value is **undefined** or **null**, orphan character optimization is disabled. |
 
 ## privacySensitive
 
@@ -1575,7 +1563,7 @@ Sets whether to enable hanging punctuation at line ends. Hanging punctuation is 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable punctuation hanging at the end of a line.<br>**true**: enable punctuation hanging. **false**: disable punctuation hanging. When the value is **undefined** or **null**, hanging punctuation is disabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable punctuation hanging at the end of a line. <br>**true**: enable punctuation hanging. **false**: disable punctuation hanging. When the value is **undefined** or **null**, hanging punctuation is disabled. |
 
 ## selectedBackgroundColor
 
@@ -1623,7 +1611,7 @@ Sets the drag preview style for selected text.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SelectedDragPreviewStyle](../arkts-apis/arkts-arkui-selecteddragpreviewstyle-i.md) &#124; undefined | Yes | Drag preview style for selected text.<br>If this parameter is set to **undefined**, the drag preview follows the theme: white in light mode and black in dark mode. |
+| value | [SelectedDragPreviewStyle](../arkts-apis/arkts-arkui-selecteddragpreviewstyle-i.md) &#124; undefined | Yes | Drag preview style for selected text. <br>If this parameter is set to **undefined**, the drag preview follows the theme: white in light mode and black in dark mode. |
 
 ## selection
 
@@ -1641,7 +1629,7 @@ If [textOverflow](#textoverflow) is set to **TextOverflow.MARQUEE**, the setting
 
 If the value of **selectionStart** is greater than or equal to that of **selectionEnd**, no text will be selected. The value range is [0, textSize], where **textSize** indicates the maximum number of characters in the text content. If the value is less than 0, the value **0** will be used. If the value is greater than **textSize**, **textSize** will be used.
 
-If the selection range falls within a truncated or invisible area, selection is ignored. When [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) is set to **false**, the text outside the parent component can be selected.
+If the selection range falls within a truncated or invisible area, selection is ignored. When [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) is set to **false**, the text outside the parent component can be selected.
 
 You can obtain the selection range change result through the [onTextSelectionChange](#ontextselectionchange) API.
 
@@ -1659,8 +1647,8 @@ You can obtain the selection range change result through the [onTextSelectionCha
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectionStart | number | Yes | Start position of the selected text.<br>Value range: [0, textSize], where **textSize** indicates the maximum number of characters in the text content. If the value of the input parameter is less than 0, the value **0** is used. If the value of the input parameter is greater than that of **textSize**, the value of **textSize** is used. |
-| selectionEnd | number | Yes | End position of the selected text.<br>Value range: [0, textSize], where **textSize** indicates the maximum number of characters in the text content. If the value of the input parameter is less than 0, the value **0** is used. If the value of the input parameter is greater than that of **textSize**, the value of **textSize** is used. |
+| selectionStart | number | Yes | Start position of the selected text. <br>Value range: [0, textSize], where **textSize** indicates the maximum number of characters in the text content. If the value of the input parameter is less than 0, the value **0** is used. If the value of the input parameter is greater than that of **textSize**, the value of **textSize** is used. |
+| selectionEnd | number | Yes | End position of the selected text. <br>Value range: [0, textSize], where **textSize** indicates the maximum number of characters in the text content. If the value of the input parameter is less than 0, the value **0** is used. If the value of the input parameter is greater than that of **textSize**, the value of **textSize** is used. |
 
 ## shaderStyle
 
@@ -1710,7 +1698,7 @@ Sets the text stroke color.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Stroke color.<br>Default value: font color. Invalid values are treated as the default value. |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Stroke color. <br>Default value: font color. Invalid values are treated as the default value. |
 
 ## strokeJoinStyle
 
@@ -1784,7 +1772,7 @@ Sets the indent of the text tail. If this API is not called, the default indent 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics &#124; Array&lt;LengthMetrics&gt;&gt; | Yes | Tail indentation of each line of text. If a single **LengthMetrics** value is provided, all lines share the same tail indentation. If an array is provided, the *i*th element specifies the tail indentation for the *i*th line. If the number of text lines exceeds the array length, the last element in the array is used for the remaining lines. The value cannot be in percentage.<br>The value must be greater than or equal to 0. If the value is a negative number, the default value is used. |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics &#124; Array&lt;LengthMetrics&gt;&gt; | Yes | Tail indentation of each line of text. If a single **LengthMetrics** value is provided, all lines share the same tail indentation. If an array is provided, the *i*th element specifies the tail indentation for the *i*th line. If the number of text lines exceeds the array length, the last element in the array is used for the remaining lines. The value cannot be in percentage. <br>The value must be greater than or equal to 0. If the value is a negative number, the default value is used. |
 
 ## textAlign
 
@@ -1798,7 +1786,7 @@ When [textOverflow](#textoverflow) is set to **TextOverflow.MARQUEE** and the te
 
 The text takes up the full width of the **Text** component.
 
-The vertical position of the text paragraph can be controlled by the [align](arkts-arkui-common-comp-commonmethod-c.md#align1) attribute, but the horizontal position cannot be controlled by **align** in this component. The specific effects are as follows:
+The vertical position of the text paragraph can be controlled by the [align](arkts-arkui-common-comp-commonmethod-c.md#align) attribute, but the horizontal position cannot be controlled by **align** in this component. The specific effects are as follows:
 
 - **Alignment.TopStart**, **Alignment.Top**, **Alignment.TopEnd**: Content aligns to the top.  
 - **Alignment.Start**, **Alignment.Center**, **Alignment.End**: Content is centered vertically.  
@@ -1876,7 +1864,7 @@ This API takes effect only when the height of the text content exceeds the compo
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| textContentAlign | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[TextContentAlign](../arkts-apis/arkts-arkui-textcontentalign-e.md)&gt; | Yes | Vertical alignment of the text content area within the component.<br>If the value is **undefined** or invalid, alignment defaults to **Center**. |
+| textContentAlign | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[TextContentAlign](../arkts-apis/arkts-arkui-textcontentalign-e.md)&gt; | Yes | Vertical alignment of the text content area within the component. <br>If the value is **undefined** or invalid, alignment defaults to **Center**. |
 
 ## textDirection
 
@@ -1900,7 +1888,7 @@ Specifies the text layout direction. If this attribute is not set, the default t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| direction | [TextDirection](../arkts-apis/arkts-arkui-textdirection-e.md) &#124; undefined | Yes | Text layout direction.<br>If this parameter is set to **undefined**, the text layout direction follows the component layout direction as defined by **TextDirection.DEFAULT**. |
+| direction | [TextDirection](../arkts-apis/arkts-arkui-textdirection-e.md) &#124; undefined | Yes | Text layout direction. <br>If this parameter is set to **undefined**, the text layout direction follows the component layout direction as defined by **TextDirection.DEFAULT**. |
 
 ## textIndent
 
@@ -1950,7 +1938,7 @@ When **TextOverflowOptions** is set to **TextOverflow.MARQUEE**:
 
 - Text scrolls horizontally within a single line.  
 - The [maxLines](#maxlines), [copyOption](#copyoption), and [selection](#selection) attributes do not take effect, and special text entities cannot be recognized (that is, the attributes do not take effect when **enable** in [enableDataDetector](#enabledatadetector) is set to **true**).  
-- The [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) attribute of the **Text** component defaults to **true**.  
+- The [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) attribute of the **Text** component defaults to **true**.  
 - [CustomSpan](../arkts-apis/arkts-arkui-customspan-c.md) is not supported in marquee mode.  
 - Behavior of [textAlign](#textalign): If the text does not scroll, **textAlign** applies; if  
 the text scrolls, **textAlign** is ignored.  
@@ -2060,7 +2048,7 @@ Sets the vertical alignment of the text. If this API is not called, the default 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| textVerticalAlign | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[TextVerticalAlign](../arkts-apis/arkts-arkui-textverticalalign-e.md)&gt; | Yes | Vertical alignment of the text.<br>Default value: **TextVerticalAlign.BASELINE** <br>If this parameter is set to **undefined**, the text is aligned with the baseline, which is equivalent to **TextVerticalAlign.BASELINE**. |
+| textVerticalAlign | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[TextVerticalAlign](../arkts-apis/arkts-arkui-textverticalalign-e.md)&gt; | Yes | Vertical alignment of the text. <br>Default value: **TextVerticalAlign.BASELINE** <br>If this parameter is set to **undefined**, the text is aligned with the baseline, which is equivalent to **TextVerticalAlign.BASELINE**. |
 
 ## wordBreak
 

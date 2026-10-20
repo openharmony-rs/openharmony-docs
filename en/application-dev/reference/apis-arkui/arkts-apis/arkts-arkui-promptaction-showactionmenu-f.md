@@ -6,8 +6,6 @@
 import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
-<a id="showactionmenu1"></a>
-
 ## showActionMenu
 
 ```TypeScript
@@ -47,7 +45,7 @@ Creates and displays an action menu. This API uses an asynchronous callback to r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 
 **Examples**
@@ -181,8 +179,6 @@ struct Index {
 ```
 
 
-<a id="showactionmenu2"></a>
-
 ## showActionMenu
 
 ```TypeScript
@@ -227,7 +223,7 @@ Creates and displays an action menu in the given settings. This API uses a promi
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 
 **Examples**

@@ -24,14 +24,11 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 mode?: number
 ```
 
-[Option](../../../reference/apis-core-file-kit/js-apis-file-fs.md#openmode) for creating the writeable stream. You must specify one of the following options.
-
-- **OpenMode.READ_ONLY(0o0)**: read-only, which is the default value.  
+[Option](arkts-corefile-fileio-openmode-n.md) for creating the writeable stream. You must specify one of the following options. By default, the write-only mode is used.  
+- **OpenMode.READ_ONLY(0o0)**: read-only.  
 - **OpenMode.WRITE_ONLY(0o1)**: write-only.  
-- **OpenMode.READ_WRITE(0o2)**: read/write.
-
-You can also specify the following options, separated by a bitwise OR operator (|). By default, no additional options are given.
-
+- **OpenMode.READ_WRITE(0o2)**: read/write.  
+You can also specify the following options, separated by a bitwise OR operator (|). By default, no additional options are given.  
 - **OpenMode.CREATE(0o100)**: If the file does not exist, create it.  
 - **OpenMode.TRUNC(0o1000)**: If the file exists and is opened in write mode, truncate the file length to 0.  
 - **OpenMode.APPEND(0o2000)**: Open the file in append mode. New data will be added to the end of the file.  

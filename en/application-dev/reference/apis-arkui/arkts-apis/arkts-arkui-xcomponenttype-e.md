@@ -92,7 +92,7 @@ This API is supported since API version 12 and deprecated since API version 20. 
 
 **Deprecated since:** 20
 
-**Substitutes:** [ContentSlot](../arkts-components/arkts-arkui-contentslot-comp.md)
+**Substitutes:** [ContentSlot](../arkts-components/arkts-arkui-contentslot-comp.md#contentslot)
 
 **Model restriction:** This API can be used only in the stage model.
 

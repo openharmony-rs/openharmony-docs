@@ -4,7 +4,7 @@
 interface AudioRenderer
 ```
 
-音频渲染。在使用AudioRenderer的接口之前，需先通过[audio.createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer1)获取AudioRenderer实例。
+音频渲染。在使用AudioRenderer的接口之前，需先通过[audio.createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer)获取AudioRenderer实例。
 
 **起始版本：** 8
 
@@ -17,8 +17,6 @@ interface AudioRenderer
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 ```
-
-<a id="drain1"></a>
 
 ## drain
 
@@ -53,8 +51,6 @@ audioRenderer.drain((err: BusinessError) => {
   }
 });
 ```
-
-<a id="drain2"></a>
 
 ## drain
 
@@ -126,8 +122,6 @@ audioRenderer.flush().then(() => {
 });
 ```
 
-<a id="getaudioeffectmode1"></a>
-
 ## getAudioEffectMode
 
 ```TypeScript
@@ -162,8 +156,6 @@ audioRenderer.getAudioEffectMode((err: BusinessError, effectMode: audio.AudioEff
 });
 ```
 
-<a id="getaudioeffectmode2"></a>
-
 ## getAudioEffectMode
 
 ```TypeScript
@@ -196,8 +188,6 @@ audioRenderer.getAudioEffectMode().then((effectMode: audio.AudioEffectMode) => {
 });
 ```
 
-<a id="getaudiostreamid1"></a>
-
 ## getAudioStreamId
 
 ```TypeScript
@@ -227,8 +217,6 @@ audioRenderer.getAudioStreamId((err: BusinessError, streamId: number) => {
   console.info(`Renderer GetStreamId: ${streamId}`);
 });
 ```
-
-<a id="getaudiostreamid2"></a>
 
 ## getAudioStreamId
 
@@ -296,8 +284,6 @@ try {
 }
 ```
 
-<a id="getaudiotime1"></a>
-
 ## getAudioTime
 
 ```TypeScript
@@ -327,8 +313,6 @@ audioRenderer.getAudioTime((err: BusinessError, timestamp: number) => {
   console.info(`Current timestamp: ${timestamp}`);
 });
 ```
-
-<a id="getaudiotime2"></a>
 
 ## getAudioTime
 
@@ -488,8 +472,6 @@ try {
 }
 ```
 
-<a id="getbuffersize1"></a>
-
 ## getBufferSize
 
 ```TypeScript
@@ -526,8 +508,6 @@ audioRenderer.getBufferSize((err: BusinessError, data: number) => {
   }
 });
 ```
-
-<a id="getbuffersize2"></a>
 
 ## getBufferSize
 
@@ -600,8 +580,6 @@ try {
 }
 ```
 
-<a id="getcurrentoutputdevices1"></a>
-
 ## getCurrentOutputDevices
 
 ```TypeScript
@@ -644,8 +622,6 @@ audioRenderer.getCurrentOutputDevices((err: BusinessError, deviceInfo: audio.Aud
   }
 });
 ```
-
-<a id="getcurrentoutputdevices2"></a>
 
 ## getCurrentOutputDevices
 
@@ -815,8 +791,6 @@ getLoudnessGain(): number
 let loudnessGain = audioRenderer.getLoudnessGain();
 ```
 
-<a id="getmaxstreamvolume1"></a>
-
 ## getMaxStreamVolume
 
 ```TypeScript
@@ -850,8 +824,6 @@ audioRenderer.getMaxStreamVolume((err: BusinessError, maxVolume: number) => {
   }
 });
 ```
-
-<a id="getmaxstreamvolume2"></a>
 
 ## getMaxStreamVolume
 
@@ -919,8 +891,6 @@ try {
 }
 ```
 
-<a id="getminstreamvolume1"></a>
-
 ## getMinStreamVolume
 
 ```TypeScript
@@ -954,8 +924,6 @@ audioRenderer.getMinStreamVolume((err: BusinessError, minVolume: number) => {
   }
 });
 ```
-
-<a id="getminstreamvolume2"></a>
 
 ## getMinStreamVolume
 
@@ -1023,8 +991,6 @@ try {
 }
 ```
 
-<a id="getrendererinfo1"></a>
-
 ## getRendererInfo
 
 ```TypeScript
@@ -1058,8 +1024,6 @@ audioRenderer.getRendererInfo((err: BusinessError, audioRendererInfo: audio.Audi
   }
 });
 ```
-
-<a id="getrendererinfo2"></a>
 
 ## getRendererInfo
 
@@ -1179,8 +1143,6 @@ getSpeed(): number
 let speed = audioRenderer.getSpeed();
 ```
 
-<a id="getstreaminfo1"></a>
-
 ## getStreamInfo
 
 ```TypeScript
@@ -1214,8 +1176,6 @@ audioRenderer.getStreamInfo((err: BusinessError, streamInfo: audio.AudioStreamIn
   console.info(`Renderer encoding type: ${streamInfo.encodingType}`);
 });
 ```
-
-<a id="getstreaminfo2"></a>
 
 ## getStreamInfo
 
@@ -1290,8 +1250,6 @@ try {
 }
 ```
 
-<a id="getunderflowcount1"></a>
-
 ## getUnderflowCount
 
 ```TypeScript
@@ -1325,8 +1283,6 @@ audioRenderer.getUnderflowCount((err: BusinessError, underflowCount: number) => 
   }
 });
 ```
-
-<a id="getunderflowcount2"></a>
 
 ## getUnderflowCount
 
@@ -2120,8 +2076,6 @@ audioRenderer.start().then(() => {
 });
 ```
 
-<a id="pause1"></a>
-
 ## pause
 
 ```TypeScript
@@ -2156,8 +2110,6 @@ audioRenderer.pause((err: BusinessError) => {
 });
 ```
 
-<a id="pause2"></a>
-
 ## pause
 
 ```TypeScript
@@ -2189,8 +2141,6 @@ audioRenderer.pause().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
-
-<a id="release1"></a>
 
 ## release
 
@@ -2226,8 +2176,6 @@ audioRenderer.release((err: BusinessError) => {
 });
 ```
 
-<a id="release2"></a>
-
 ## release
 
 ```TypeScript
@@ -2259,8 +2207,6 @@ audioRenderer.release().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
-
-<a id="setaudioeffectmode1"></a>
 
 ## setAudioEffectMode
 
@@ -2303,8 +2249,6 @@ audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT, (err: Bus
   }
 });
 ```
-
-<a id="setaudioeffectmode2"></a>
 
 ## setAudioEffectMode
 
@@ -2456,7 +2400,7 @@ setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: num
 > **说明：** 
 > 
 > 当音频渲染器在运行状态时调用此接口后，必须重新调用接口
-> [start](#start1)使其生效。
+> [start](#start)使其生效。
 
 **起始版本：** 24
 
@@ -2489,8 +2433,6 @@ let strategy: audio.AudioSessionStrategy = {
 let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
 audioRenderer.setIndependentAudioSessionStrategy(strategy, behavior);
 ```
-
-<a id="setinterruptmode1"></a>
 
 ## setInterruptMode
 
@@ -2527,8 +2469,6 @@ audioRenderer.setInterruptMode(mode, (err: BusinessError) => {
   console.info('setInterruptMode Success!');
 });
 ```
-
-<a id="setinterruptmode2"></a>
 
 ## setInterruptMode
 
@@ -2719,8 +2659,6 @@ setSpeed(speed: number): void
 audioRenderer.setSpeed(1.5);
 ```
 
-<a id="setvolume1"></a>
-
 ## setVolume
 
 ```TypeScript
@@ -2755,8 +2693,6 @@ audioRenderer.setVolume(0.5, (err: BusinessError) => {
   console.info('setVolume Success!');
 });
 ```
-
-<a id="setvolume2"></a>
 
 ## setVolume
 
@@ -2834,8 +2770,6 @@ audioRenderer.setVolumeWithRamp(volume, duration);
 console.info(`setVolumeWithRamp: ${volume}`);
 ```
 
-<a id="start1"></a>
-
 ## start
 
 ```TypeScript
@@ -2870,8 +2804,6 @@ audioRenderer.start((err: BusinessError) => {
 });
 ```
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -2903,8 +2835,6 @@ audioRenderer.start().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
-
-<a id="stop1"></a>
 
 ## stop
 
@@ -2940,8 +2870,6 @@ audioRenderer.stop((err: BusinessError) => {
 });
 ```
 
-<a id="stop2"></a>
-
 ## stop
 
 ```TypeScript
@@ -2973,8 +2901,6 @@ audioRenderer.stop().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
-
-<a id="getrenderrate1"></a>
 
 ## getRenderRate
 
@@ -3013,8 +2939,6 @@ audioRenderer.getRenderRate((err: BusinessError, renderRate: audio.AudioRenderer
   console.info(`getRenderRate: ${renderRate}`);
 });
 ```
-
-<a id="getrenderrate2"></a>
 
 ## getRenderRate
 
@@ -3098,8 +3022,6 @@ try {
 }
 ```
 
-<a id="setrenderrate1"></a>
-
 ## setRenderRate
 
 ```TypeScript
@@ -3142,8 +3064,6 @@ audioRenderer.setRenderRate(audio.AudioRendererRate.RENDER_RATE_NORMAL, (err: Bu
   }
 });
 ```
-
-<a id="setrenderrate2"></a>
 
 ## setRenderRate
 
@@ -3190,8 +3110,6 @@ audioRenderer.setRenderRate(audio.AudioRendererRate.RENDER_RATE_NORMAL).then(() 
   console.error(`ERROR: ${err}`);
 });
 ```
-
-<a id="write1"></a>
 
 ## write
 
@@ -3268,8 +3186,6 @@ audioRenderer.getBufferSize().then((data: number)=> {
     console.error(`AudioFrameworkRenderLog: getBufferSize: ERROR: ${err}`);
 });
 ```
-
-<a id="write2"></a>
 
 ## write
 

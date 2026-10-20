@@ -1,7 +1,5 @@
 # getEvent
 
-<a id="getevent1"></a>
-
 ## getEvent
 
 ```TypeScript
@@ -37,8 +35,6 @@ Obtains the **UIScrollEvent** object held by the **Scroll** node, which is used 
 
 See Scroll Event Example.
 
-
-<a id="getevent2"></a>
 
 ## getEvent
 
@@ -76,8 +72,6 @@ Obtains the **UIListEvent** object held by the **List** node, which is used to s
 See Scroll Event Example.
 
 
-<a id="getevent3"></a>
-
 ## getEvent
 
 ```TypeScript
@@ -113,8 +107,6 @@ Obtains the **UIWaterFlowEvent** object held by the [WaterFlow](arkts-arkui-type
 
 See Scroll Event Example.
 
-
-<a id="getevent4"></a>
 
 ## getEvent
 

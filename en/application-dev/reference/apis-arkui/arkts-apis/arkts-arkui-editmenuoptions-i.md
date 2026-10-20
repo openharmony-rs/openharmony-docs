@@ -34,7 +34,7 @@ Triggered when the menu is being created. Menu data can be configured within thi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| menuItems | Array&lt;[TextMenuItem](arkts-arkui-textmenuitem-i.md)&gt; | Yes | Menu items to be displayed.<br>**Note:** <br>Modifications to the name, icon, and shortcut key hint of the default menu items do not take effect. |
+| menuItems | Array&lt;[TextMenuItem](arkts-arkui-textmenuitem-i.md)&gt; | Yes | Menu items to be displayed. <br>**Note:** <br>Modifications to the name, icon, and shortcut key hint of the default menu items do not take effect. |
 
 **Return value:**
 
@@ -64,14 +64,14 @@ Triggered when a menu item is tapped, used to handle the tap behavior of the men
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| menuItem | [TextMenuItem](arkts-arkui-textmenuitem-i.md) | Yes | Menu item.<br>**Note:** <br>Since API version 23, for a first-level menu item that supports an expandable second-level menu, such as auto-fill, only the system default logic is executed, and user-defined logic is not executed. |
+| menuItem | [TextMenuItem](arkts-arkui-textmenuitem-i.md) | Yes | Menu item. <br>**Note:** <br>Since API version 23, for a first-level menu item that supports an expandable second-level menu, such as auto-fill, only the system default logic is executed, and user-defined logic is not executed. |
 | range | [TextRange](arkts-arkui-textrange-i.md) | Yes | Selected text. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Execution logic of the menu item.<br>The value **true** indicates that the system default logic is intercepted and only the custom logic is executed. <br>The value **false** indicates that the custom logic is executed first, followed by the system logic. |
+| boolean | Execution logic of the menu item. <br>The value **true** indicates that the system default logic is intercepted and only the custom logic is executed. <br>The value **false** indicates that the custom logic is executed first, followed by the system logic. |
 
 ## onPrepareMenu
 

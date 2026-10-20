@@ -6,8 +6,6 @@ export interface Effect extends SceneResource
 
 Effect resource, which inherits from SceneResource. It is obtained from the createEffect API.
 
-@extends SceneResource @interface Effect
-
 **Inheritance/Implementation:** Effect extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **Since:** 21
@@ -36,7 +34,7 @@ Obtains the value of the specified effect property.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| propertyName | string | Yes | Name of a specified effect property. Currently, the following strings are supported: -'exposure': exposure level of an image. -'vibrance': natural saturation of an image. |
+| propertyName | string | Yes | Name of a specified effect property. Currently, the following strings are supported: <br>-'exposure': exposure level of an image. <br>-'vibrance': natural saturation of an image. |
 
 **Return value:**
 
@@ -84,8 +82,8 @@ Sets the value of a specified effect property.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| propertyName | string | Yes | Name of a specified effect property. Currently, the following strings are supported: -'exposure': exposure level of an image. -'vibrance': natural saturation of an image. |
-| value | Object &#124; undefined | Yes | Value of the effect property to set. -'exposure': The value is of the number type. The recommended value range is [-5, 5]. A larger value indicates a brighter image. -'vibrance': The value is of the number type. The recommended value range is [-1, 1]. A larger value indicates more vivid image colors. |
+| propertyName | string | Yes | Name of a specified effect property. Currently, the following strings are supported: <br>-'exposure': exposure level of an image. <br>-'vibrance': natural saturation of an image. |
+| value | Object &#124; undefined | Yes | Value of the effect property to set. <br>-'exposure': The value is of the number type. The recommended value range is [-5, 5]. A larger value indicates a brighter image. <br>-'vibrance': The value is of the number type. The recommended value range is [-1, 1]. A larger value indicates more vivid image colors. |
 
 **Return value:**
 

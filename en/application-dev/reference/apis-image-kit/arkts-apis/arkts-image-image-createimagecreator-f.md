@@ -6,8 +6,6 @@
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="createimagecreator1"></a>
-
 ## createImageCreator
 
 ```TypeScript
@@ -47,8 +45,6 @@ Creates an ImageCreator instance by specifying the image width, height, format, 
 let creator: image.ImageCreator = image.createImageCreator(8192, 8192, image.ImageFormat.JPEG, 8);
 ```
 
-
-<a id="createimagecreator2"></a>
 
 ## createImageCreator
 

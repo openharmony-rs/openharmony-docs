@@ -21,6 +21,7 @@ import { formBindingData } from '@kit.FormKit';
 | Name | Description |
 | --- | --- |
 | [createFormBindingData](arkts-form-formbindingdata-createformbindingdata-f.md#createformbindingdata) | Creates a **FormBindingData** object. |
+| [createFormBindingDataEx](arkts-form-formbindingdata-createformbindingdataex-f.md#createformbindingdataex) | Creates a **FormBindingData** object. |
 
 ### Interfaces
 

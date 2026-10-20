@@ -6,8 +6,6 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
-<a id="isradioon1"></a>
-
 ## isRadioOn
 
 ```TypeScript
@@ -30,8 +28,8 @@ Checks whether the radio service is enabled on the SIM card in the specified slo
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result.<br>- **true**: The radio service is enabled. <br>- **false**: The radio service is disabled. |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. <br>- **true**: The radio service is enabled. <br>- **false**: The radio service is disabled. |
 
 **Error codes:**
 
@@ -60,8 +58,6 @@ radio.isRadioOn(slotId, (err: BusinessError, data: boolean) => {
 ```
 
 
-<a id="isradioon2"></a>
-
 ## isRadioOn
 
 ```TypeScript
@@ -84,13 +80,13 @@ Checks whether the radio service is enabled on the SIM card in the specified slo
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | No | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2. <br>If the slot ID is not specified, this API is defaulted to check whether the radio service is enabled on the primary SIM card. |
+| slotId | number | No | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2. <br>If the slot ID is not specified, this API is defaulted to check whether the radio service is enabled on the primary SIM card. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result.<br>- **true**: The radio service is enabled. <br>- **false**: The radio service is disabled. |
+| Promise&lt;boolean&gt; | Promise used to return the result. <br>- **true**: The radio service is enabled. <br>- **false**: The radio service is disabled. |
 
 **Error codes:**
 
@@ -117,8 +113,6 @@ radio.isRadioOn(slotId).then((data: boolean) => {
 ```
 
 
-<a id="isradioon3"></a>
-
 ## isRadioOn
 
 ```TypeScript
@@ -141,7 +135,7 @@ Checks whether the radio service is enabled on the primary SIM card. This API us
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result.<br>- **true**: The radio service is enabled. <br>- **false**: The radio service is disabled. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. <br>- **true**: The radio service is enabled. <br>- **false**: The radio service is disabled. |
 
 **Error codes:**
 

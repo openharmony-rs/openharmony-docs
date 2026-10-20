@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 readonly iso?: number
 ```
 
-ISO value.
+ISO感光度值。
 
 **类型：** number
 

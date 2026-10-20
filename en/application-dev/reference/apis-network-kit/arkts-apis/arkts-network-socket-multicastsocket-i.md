@@ -20,8 +20,6 @@ Defines a **MulticastSocket** connection. Before calling MulticastSocket APIs, y
 import { socket } from '@kit.NetworkKit';
 ```
 
-<a id="addmembership1"></a>
-
 ## addMembership
 
 ```TypeScript
@@ -49,7 +47,7 @@ Adds a member to a multicast group. This API uses an asynchronous callback to re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| multicastAddress | [NetAddress](arkts-network-socket-p.md) | Yes | Destination address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
+| multicastAddress | [NetAddress](arkts-network-socket-netaddress-t.md) | Yes | Destination address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation fails, an error message is returned. |
 
 **Error codes:**
@@ -81,8 +79,6 @@ multicast.addMembership(addr, (err: Object) => {
 })
 ```
 
-<a id="addmembership2"></a>
-
 ## addMembership
 
 ```TypeScript
@@ -110,7 +106,7 @@ Adds a member to a multicast group. This API uses a promise to return the result
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| multicastAddress | [NetAddress](arkts-network-socket-p.md) | Yes | Destination address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
+| multicastAddress | [NetAddress](arkts-network-socket-netaddress-t.md) | Yes | Destination address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
 
 **Return value:**
 
@@ -144,8 +140,6 @@ multicast.addMembership(addr).then(() => {
 });
 ```
 
-<a id="dropmembership1"></a>
-
 ## dropMembership
 
 ```TypeScript
@@ -159,7 +153,7 @@ Drops a member from a multicast group. This API uses an asynchronous callback to
 > The IP addresses used for multicast belong to a specific range, for example, 224.0.0.0 to 239.255.255.255.
 > 
 > You can drop only a member that has been added to a multicast group by using
-> [addMembership](#addmembership1).
+> [addMembership](#addmembership).
 
 **Since:** 11
 
@@ -173,7 +167,7 @@ Drops a member from a multicast group. This API uses an asynchronous callback to
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| multicastAddress | [NetAddress](arkts-network-socket-p.md) | Yes | Destination address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
+| multicastAddress | [NetAddress](arkts-network-socket-netaddress-t.md) | Yes | Destination address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation fails, an error message is returned. |
 
 **Error codes:**
@@ -204,8 +198,6 @@ multicast.dropMembership(addr, (err: Object) => {
 })
 ```
 
-<a id="dropmembership2"></a>
-
 ## dropMembership
 
 ```TypeScript
@@ -219,7 +211,7 @@ Drops a member from a multicast group. This API uses a promise to return the res
 > The IP addresses used for multicast belong to a specific range, for example, 224.0.0.0 to 239.255.255.255.
 > 
 > You can drop only a member that has been added to a multicast group by using
-> [addMembership](#addmembership1).
+> [addMembership](#addmembership).
 
 **Since:** 11
 
@@ -233,7 +225,7 @@ Drops a member from a multicast group. This API uses a promise to return the res
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| multicastAddress | [NetAddress](arkts-network-socket-p.md) | Yes | Destination address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
+| multicastAddress | [NetAddress](arkts-network-socket-netaddress-t.md) | Yes | Destination address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
 
 **Return value:**
 
@@ -267,8 +259,6 @@ multicast.dropMembership(addr).then(() => {
 });
 ```
 
-<a id="getloopbackmode1"></a>
-
 ## getLoopbackMode
 
 ```TypeScript
@@ -285,7 +275,7 @@ Obtains the loopback mode flag for multicast communication. This API uses an asy
 > When the loopback mode is disabled, the host does not receive the multicast packets sent by itself.
 > 
 > This API is effective only after
-> [addMembership](#addmembership1)
+> [addMembership](#addmembership)
 > is called.
 
 **Since:** 11
@@ -322,8 +312,6 @@ multicast.getLoopbackMode((err: Object, value: Boolean) => {
 })
 ```
 
-<a id="getloopbackmode2"></a>
-
 ## getLoopbackMode
 
 ```TypeScript
@@ -340,7 +328,7 @@ Obtains the loopback mode flag for multicast communication. This API uses a prom
 > When the loopback mode is disabled, the host does not receive the multicast packets sent by itself.
 > 
 > This API is effective only after
-> [addMembership](#addmembership1)
+> [addMembership](#addmembership)
 > is called.
 
 **Since:** 11
@@ -375,8 +363,6 @@ multicast.getLoopbackMode().then((value: Boolean) => {
 });
 ```
 
-<a id="getmulticastttl1"></a>
-
 ## getMulticastTTL
 
 ```TypeScript
@@ -395,7 +381,7 @@ Obtains the TTL for multicast packets. This API uses an asynchronous callback to
 > sender. If the TTL is set to a large value, multicast packets can be transmitted over a longer distance.
 > 
 > This API is effective only after
-> [addMembership](#addmembership1)
+> [addMembership](#addmembership)
 > is called.
 
 **Since:** 11
@@ -432,8 +418,6 @@ multicast.getMulticastTTL((err: Object, value: Number) => {
 })
 ```
 
-<a id="getmulticastttl2"></a>
-
 ## getMulticastTTL
 
 ```TypeScript
@@ -452,7 +436,7 @@ Obtains the TTL for multicast packets. This API uses a promise to return the res
 > sender. If the TTL is set to a large value, multicast packets can be transmitted over a longer distance.
 > 
 > This API is effective only after
-> [addMembership](#addmembership1)
+> [addMembership](#addmembership)
 > is called.
 
 **Since:** 11
@@ -497,11 +481,11 @@ Obtains the file descriptor of the MulticastSocket. This API uses a promise to r
 
 > **NOTE:** 
 > 
-> - This API can be called only after [bind](arkts-network-socket-udpsocket-i.md#bind1) is successfully called.
+> - This API can be called only after [bind](arkts-network-socket-udpsocket-i.md#bind) is successfully called.
 > 
 > - This API returns **-1** in abnormal cases such as bind exceptions or socket closed (for example, after close is called).
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close1) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 23
 
@@ -549,8 +533,6 @@ multicast.bind(bindAddr)
 });
 ```
 
-<a id="setloopbackmode1"></a>
-
 ## setLoopbackMode
 
 ```TypeScript
@@ -567,7 +549,7 @@ Sets the loopback mode flag for multicast communication. This API uses an asynch
 > value **false** indicates the opposite.
 > 
 > This API is effective only after
-> [addMembership](#addmembership1)
+> [addMembership](#addmembership)
 > is called.
 
 **Since:** 11
@@ -605,8 +587,6 @@ multicast.setLoopbackMode(false, (err: Object) => {
 })
 ```
 
-<a id="setloopbackmode2"></a>
-
 ## setLoopbackMode
 
 ```TypeScript
@@ -623,7 +603,7 @@ Sets the loopback mode flag for multicast communication. This API uses a promise
 > value **false** indicates the opposite.
 > 
 > This API is effective only after
-> [addMembership](#addmembership1)
+> [addMembership](#addmembership)
 > is called.
 
 **Since:** 11
@@ -664,8 +644,6 @@ multicast.setLoopbackMode(false).then(() => {
 });
 ```
 
-<a id="setmulticastttl1"></a>
-
 ## setMulticastTTL
 
 ```TypeScript
@@ -684,7 +662,7 @@ Sets the time to live (TTL) for multicast packets. This API uses an asynchronous
 > sender. If the TTL is set to a large value, multicast packets can be transmitted over a longer distance.
 > 
 > This API is effective only after
-> [addMembership](#addmembership1)
+> [addMembership](#addmembership)
 > is called.
 
 **Since:** 11
@@ -724,8 +702,6 @@ multicast.setMulticastTTL(ttl, (err: Object) => {
 })
 ```
 
-<a id="setmulticastttl2"></a>
-
 ## setMulticastTTL
 
 ```TypeScript
@@ -744,7 +720,7 @@ Sets the TTL for multicast packets. This API uses a promise to return the result
 > sender. If the TTL is set to a large value, multicast packets can be transmitted over a longer distance.
 > 
 > This API is effective only after
-> [addMembership](#addmembership1)
+> [addMembership](#addmembership)
 > is called.
 
 **Since:** 11
@@ -800,7 +776,7 @@ Sets whether the multicast socket supports address reuse. This API is called in 
 > 
 > To bind an occupied port, ensure that the address reuse capability is enabled for the party that occupies the
 > port. In addition, the service needs to call this API before calling
-> [bind](arkts-network-socket-udpsocket-i.md#bind1) to enable the address
+> [bind](arkts-network-socket-udpsocket-i.md#bind) to enable the address
 > reuse capability.
 
 **Since:** 26.0.0

@@ -6,8 +6,6 @@ declare interface Header
 
 Web组件返回的请求/响应头对象。适用于需要读取或修改HTTP头的场景，提升网络请求处理的灵活性和可控性。
 
-@interface Header [since 8 - 11]
-
 **起始版本：** 8
 
 <!--Device-unnamed-declare interface Header--><!--Device-unnamed-declare interface Header-End-->

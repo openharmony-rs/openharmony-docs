@@ -489,7 +489,7 @@ Sets the default time zone for the current app, the value will be used on the ap
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| zoneID | string | Yes | Time zone ID that set default for app. for example, "Asia/Shanghai".<br> Time zone ID supported by the system |
+| zoneID | string | Yes | Time zone ID that set default for app. for example, "Asia/Shanghai". <br> Time zone ID supported by the system |
 
 **Error codes:**
 

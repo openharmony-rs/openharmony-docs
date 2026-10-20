@@ -42,7 +42,7 @@ Sets whether to use the adaptive collapse mode. When there are too many index it
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the adaptive collapse behavior for the indexer.<br>Default value: **true**. <br>**true**: Enable the adaptive collapse behavior. <br>**false**: Disable the adaptive collapse behavior. |
+| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the adaptive collapse behavior for the indexer. <br>Default value: **true**. <br>**true**: Enable the adaptive collapse behavior. <br>**false**: Disable the adaptive collapse behavior. |
 
 ## color
 
@@ -64,7 +64,7 @@ Sets the text color of the index items in the normal state.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Text color.<br>Default value: **0xFFFFFF**, displayed as white |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Text color. <br>Default value: **0xFFFFFF**, displayed as white |
 
 ## font
 
@@ -152,7 +152,7 @@ Sets the background color of the pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Background color of the pop-up window.<br>Default value: **0xD8404040**, displayed as dark gray with slight transparency |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Background color of the pop-up window. <br>Default value: **0xD8404040**, displayed as dark gray with slight transparency |
 
 ## popupBackgroundBlurStyle
 
@@ -201,7 +201,7 @@ Sets the text color for the pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Text color of the pop-up window.<br>Default value: **0xFFFFFF**, displayed as white |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Text color of the pop-up window. <br>Default value: **0xFFFFFF**, displayed as white |
 
 ## popupFont
 
@@ -223,7 +223,7 @@ Sets the font style of the pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| font | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | Yes | Font style of the pop-up window, which sets the display effect of the currently selected letter shown in the pop-up window, including font size, font weight, tilt angle, font family, etc.<br/>Default value:<br>{<br>size:'19.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
+| font | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | Yes | Font style of the pop-up window, which sets the display effect of the currently selected letter shown in the pop-up window, including font size, font weight, tilt angle, font family, etc.<br/ >Default value:<br>{<br>size:'19.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
 
 ## selected
 
@@ -267,7 +267,7 @@ Sets the background color of the selected item.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Background color of the selected item.<br>Default value: **0x1F71FF**, displayed as dark blue |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Background color of the selected item. <br>Default value: **0x1F71FF**, displayed as dark blue |
 
 ## selectedColor
 
@@ -289,7 +289,7 @@ Sets the text color of the selected item.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Text color of the selected item.<br>Default value: **0xFFFFFF**, displayed as white |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Text color of the selected item. <br>Default value: **0xFFFFFF**, displayed as white |
 
 ## selectedFont
 
@@ -333,4 +333,4 @@ Sets whether to display the pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to display the pop-up window.<br>**true**: yes; **false**: no <br>Default value: **false** |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to display the pop-up window. <br>**true**: yes; **false**: no <br>Default value: **false** |

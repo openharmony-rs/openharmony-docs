@@ -4,7 +4,7 @@
 interface DepthFusion extends DepthFusionQuery
 ```
 
-Depth fusion class. It inherits from [DepthFusionQuery](arkts-camera-camera-depthfusionquery-i-sys.md).
+深度融合类。继承自 [DepthFusionQuery](arkts-camera-camera-depthfusionquery-i-sys.md)。
 
 **继承/实现关系：** DepthFusion extends [DepthFusionQuery](arkts-camera-camera-depthfusionquery-i-sys.md)
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 enableDepthFusion(enabled: boolean): void
 ```
 
-Enables depth fusion.
+启用深度融合。
 
 **起始版本：** 14
 
@@ -42,7 +42,7 @@ Enables depth fusion.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | Whether to enable depth fusion. **true** to enable, **false** otherwise. |
+| enabled | boolean | 是 | 是否启用深度融合。**true** 表示启用，**false** 表示不启用 |
 
 **错误码：**
 
@@ -79,7 +79,7 @@ function enableDepthFusion(DepthFusion: camera.DepthFusion): void {
 isDepthFusionEnabled(): boolean
 ```
 
-Checks whether depth fusion is enabled.
+查询是否已启用深度融合。
 
 **起始版本：** 14
 
@@ -93,7 +93,7 @@ Checks whether depth fusion is enabled.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for whether depth fusion is enabled. **true** if enabled, **false** otherwise. |
+| boolean | 查询是否已启用深度融合的结果。**true** 表示已启用，**false** 表示未启用。 |
 
 **错误码：**
 

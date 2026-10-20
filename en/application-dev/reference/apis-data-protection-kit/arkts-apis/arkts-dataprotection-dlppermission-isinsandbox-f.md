@@ -6,8 +6,6 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
-<a id="isinsandbox1"></a>
-
 ## isInSandbox
 
 ```TypeScript
@@ -50,8 +48,6 @@ dlpPermission.isInSandbox().then((isInSandbox) => { // Check whether the applica
 });
 ```
 
-
-<a id="isinsandbox2"></a>
 
 ## isInSandbox
 

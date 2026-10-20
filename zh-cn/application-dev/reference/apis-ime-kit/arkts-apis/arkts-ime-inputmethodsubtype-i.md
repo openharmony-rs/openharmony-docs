@@ -11,7 +11,8 @@ export default interface InputMethodSubtype
 
 | Interface | 说明 |  
 |---|---|  
-| InputMethodSubtype | 输入法子类型属性接口，描述输入法的一种具体语言或模式形态。必填属性包括：`name`（所属应用包名）、`id`（子类型ID）、`locale`（区域）、`language`（语言）；可选属性包括：`label`（标签）、`labelId`（标签资源号）、`mode`（大写/小写模式）、`icon`（图标）、`iconId`（图标ID）、`extra`（额外信息）。 | <br> <br>本模块为纯数据定义模块，`InputMethodSubtype`作为子类型描述数据需与其他模块的API组合使用。典型组合场景为：在`@ohos.inputMethod`模块中，通过`InputMethodSetting`查询和切换子类型；在`@ohos.inputMethodEngine`模块中，通过`InputMethodAbility`监听子类型切换事件。<br> <br>  
+| InputMethodSubtype | 输入法子类型属性接口，描述输入法的一种具体语言或模式形态。必填属性包括：`name`（所属应用包名）、`id`（子类型ID）、`locale`（区域）、`language`（语言）；可选属性包括：`label`（标签）、`labelId`（标签资源号）、`mode`（大写/小写模式）、`icon`（图标）、`iconId`（图标ID）、`extra`（额外信息）。 | <br> <br>本模块为纯数据定义模块，`InputMethodSubtype`作为子类型描述数据需与其他模块的API组合使用。典型组合场景为：在`@ohos.inputMethod`模块中，通过`InputMethodSetting`查询和切换子类型；在`@ohos.inputMethodEngine`模块中，通过`InputMethodAbility`监听子类型切换事件。<br> <br>```javascript <br>// 以下为阐述调用逻辑的伪代码<br> <br>// 1. 查询输入法子类型列表（@ohos.inputMethod模块组合）<br>let setting = inputMethod.getSetting(); <br>let subtypes = setting.listInputMethodSubtype(inputMethodProperty); <br> <br>// 2. 切换到指定子类型<br>inputMethod.switchCurrentInputMethodSubtype(targetSubtype); <br>``` <br> <br>
+
 > **说明：** <br>
 > <br>
 > `InputMethodSubtype`对象由系统框架创建和返回，开发者通过其他模块的查询接口获取，不可自行构造。
@@ -50,7 +51,7 @@ extra?: object
 readonly icon?: string
 ```
 
-输入法子类型的图标，可以通过iconId查询获取。
+输入法子类型的图标。规格限制：当前不可通过该参数获取或显示子类型图标。
 
 **类型：** string
 

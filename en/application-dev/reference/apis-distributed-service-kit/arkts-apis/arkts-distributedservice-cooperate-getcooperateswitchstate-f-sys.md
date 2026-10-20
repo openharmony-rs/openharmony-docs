@@ -6,8 +6,6 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
-<a id="getcooperateswitchstate1"></a>
-
 ## getCooperateSwitchState
 
 ```TypeScript
@@ -39,7 +37,7 @@ Obtains the screen hopping status of the target device. This API uses an asynchr
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 <!--Del-->
 **Examples**
@@ -63,8 +61,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getcooperateswitchstate2"></a>
 
 ## getCooperateSwitchState
 
@@ -102,7 +98,7 @@ Obtains the screen hopping status of the target device. This API uses a promise 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 <!--Del-->
 **Examples**

@@ -24,7 +24,7 @@ import { inputMethod } from '@kit.IMEKit';
 requestKeyboardReason?: RequestKeyboardReason
 ```
 
-Reason for requesting the keyboard.
+Reason for requesting keyboard input.
 
 **Type:** [RequestKeyboardReason](arkts-ime-inputmethod-requestkeyboardreason-e.md)
 
@@ -44,7 +44,7 @@ Reason for requesting the keyboard.
 showKeyboard?: boolean
 ```
 
-Whether to start the input method keyboard after the self-drawing component is attached to the input method. <br> <br>- **true** means to start the input method keyboard. <br>- **false** means not to start the input method keyboard.
+Whether to show the input method keyboard after the input method is bound successfully. <br> <br>- true: Show the keyboard. <br>- false: Do not show the keyboard.
 
 **Type:** boolean
 

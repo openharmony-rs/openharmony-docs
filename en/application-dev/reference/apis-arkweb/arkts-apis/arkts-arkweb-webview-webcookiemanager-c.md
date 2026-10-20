@@ -24,8 +24,6 @@ When browsing web pages in Privacy Mode, data such as cookies and caches are not
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="clearallcookies1"></a>
-
 ## clearAllCookies
 
 ```TypeScript
@@ -84,15 +82,13 @@ struct WebComponent {
 }
 ```
 
-<a id="clearallcookies2"></a>
-
 ## clearAllCookies
 
 ```TypeScript
 static clearAllCookies(callback: AsyncCallback<void>): void
 ```
 
-Clears all cookies, including session cookies and persistent cookies. This API uses an asynchronous callback to return the result. To clear only session cookies, use [clearSessionCookie](#clearsessioncookie2).
+Clears all cookies, including session cookies and persistent cookies. This API uses an asynchronous callback to return the result. To clear only session cookies, use [clearSessionCookie](#clearsessioncookie).
 
 **Since:** 11
 
@@ -112,7 +108,7 @@ Clears all cookies, including session cookies and persistent cookies. This API u
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 **Examples**
 
@@ -166,7 +162,7 @@ Clears all cookies, including session cookies and persistent cookies. To clear o
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| incognito | boolean | No | Whether to clear all cookies in incognito mode. The value **true** means to clear all cookies in incognito mode, and **false** means the opposite.<br>The default value is **false**. <br>If **undefined** or **null** is passed, cookies are not cleared. |
+| incognito | boolean | No | Whether to clear all cookies in incognito mode. The value **true** means to clear all cookies in incognito mode, and **false** means the opposite. <br>The default value is **false**. <br>If **undefined** or **null** is passed, cookies are not cleared. |
 
 **Examples**
 
@@ -190,8 +186,6 @@ struct WebComponent {
   }
 }
 ```
-
-<a id="clearsessioncookie1"></a>
 
 ## clearSessionCookie
 
@@ -255,8 +249,6 @@ struct WebComponent {
 }
 ```
 
-<a id="clearsessioncookie2"></a>
-
 ## clearSessionCookie
 
 ```TypeScript
@@ -283,7 +275,7 @@ Clears all session cookies. This API uses an asynchronous callback to return the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 **Examples**
 
@@ -356,8 +348,6 @@ struct WebComponent {
 }
 ```
 
-<a id="configcookie1"></a>
-
 ## configCookie
 
 ```TypeScript
@@ -370,7 +360,7 @@ Sets a single cookie value for a specified URL. This API uses a promise to retur
 > 
 > - In configCookie, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync2) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -407,9 +397,9 @@ Sets a single cookie value for a specified URL. This API uses a promise to retur
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. No valid cookie found for the specified URL. |
-| [17100005](../errorcode-webview.md#17100005-invalid-cookie-value) | The provided cookie value is invalid. It must follow the format specified<br>in RFC 6265. |
+| [17100005](../errorcode-webview.md#17100005-invalid-cookie-value) | The provided cookie value is invalid. It must follow the format specified <br>in RFC 6265. |
 
 **Examples**
 
@@ -445,8 +435,6 @@ struct WebComponent {
 }
 ```
 
-<a id="configcookie2"></a>
-
 ## configCookie
 
 ```TypeScript
@@ -459,7 +447,7 @@ Sets a single cookie value for a specified URL. This API uses a promise to retur
 > 
 > - In configCookie, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync2) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -494,9 +482,9 @@ Sets a single cookie value for a specified URL. This API uses a promise to retur
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. No valid cookie found for the specified URL. |
-| [17100005](../errorcode-webview.md#17100005-invalid-cookie-value) | The provided cookie value is invalid. It must follow the format specified<br>in RFC 6265. |
+| [17100005](../errorcode-webview.md#17100005-invalid-cookie-value) | The provided cookie value is invalid. It must follow the format specified <br>in RFC 6265. |
 
 **Examples**
 
@@ -532,8 +520,6 @@ struct WebComponent {
 }
 ```
 
-<a id="configcookie3"></a>
-
 ## configCookie
 
 ```TypeScript
@@ -546,7 +532,7 @@ Sets a single cookie value for a specified URL. This API uses an asynchronous ca
 > 
 > - In configCookie, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync2) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -578,9 +564,9 @@ Sets a single cookie value for a specified URL. This API uses an asynchronous ca
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. No valid cookie found for the specified URL. |
-| [17100005](../errorcode-webview.md#17100005-invalid-cookie-value) | The provided cookie value is invalid. It must follow the format specified<br>in RFC 6265. |
+| [17100005](../errorcode-webview.md#17100005-invalid-cookie-value) | The provided cookie value is invalid. It must follow the format specified <br>in RFC 6265. |
 
 **Examples**
 
@@ -614,8 +600,6 @@ struct WebComponent {
 }
 ```
 
-<a id="configcookiesync1"></a>
-
 ## configCookieSync
 
 ```TypeScript
@@ -628,7 +612,7 @@ Sets a cookie for the specified URL.
 > 
 > - In configCookieSync, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync2) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -654,15 +638,15 @@ Sets a cookie for the specified URL.
 | --- | --- | --- | --- |
 | url | string | Yes | URL of the cookie to set. A complete URL is recommended. |
 | value | string | Yes | Cookie value to set. |
-| incognito | boolean | No | Whether to set the cookies in incognito mode. The value **true** means to set the cookies in incognito mode, and **false** means the opposite.<br>The default value is **false**. <br>If **undefined** or **null** is passed, error code **401** will be thrown. |
+| incognito | boolean | No | Whether to set the cookies in incognito mode. The value **true** means to set the cookies in incognito mode, and **false** means the opposite. <br>The default value is **false**. <br>If **undefined** or **null** is passed, error code **401** will be thrown. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. No valid cookie found for the specified URL. |
-| [17100005](../errorcode-webview.md#17100005-invalid-cookie-value) | The provided cookie value is invalid. It must follow the format specified<br>in RFC 6265. |
+| [17100005](../errorcode-webview.md#17100005-invalid-cookie-value) | The provided cookie value is invalid. It must follow the format specified <br>in RFC 6265. |
 
 **Examples**
 
@@ -693,8 +677,6 @@ struct WebComponent {
 }
 ```
 
-<a id="configcookiesync2"></a>
-
 ## configCookieSync
 
 ```TypeScript
@@ -707,7 +689,7 @@ Sets a single cookie value for a specified URL.
 > 
 > - In configCookieSync, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync2) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -736,9 +718,9 @@ Sets a single cookie value for a specified URL.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. No valid cookie found for the specified URL. |
-| [17100005](../errorcode-webview.md#17100005-invalid-cookie-value) | The provided cookie value is invalid. It must follow the format specified<br>in RFC 6265. |
+| [17100005](../errorcode-webview.md#17100005-invalid-cookie-value) | The provided cookie value is invalid. It must follow the format specified <br>in RFC 6265. |
 
 **Examples**
 
@@ -789,7 +771,7 @@ Checks whether cookies exist.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| incognito | boolean | No | Whether to check for cookies in incognito mode. The value **true** means to check for cookies in incognito mode, and **false** means the opposite.<br>The default value is **false**. <br>If **undefined** or **null** is passed, **undefined** is returned.<br>**Since:** 11 |
+| incognito | boolean | No | Whether to check for cookies in incognito mode. The value **true** means to check for cookies in incognito mode, and **false** means the opposite. <br>The default value is **false**. <br>If **undefined** or **null** is passed, **undefined** is returned.<br>**Since:** 11 |
 
 **Return value:**
 
@@ -888,8 +870,6 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookie1"></a>
-
 ## fetchCookie
 
 ```TypeScript
@@ -922,7 +902,7 @@ Obtains the cookie value of a specified URL. This API uses a promise to return t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. No valid cookie found for the specified URL. |
 
 **Examples**
@@ -959,8 +939,6 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookie2"></a>
-
 ## fetchCookie
 
 ```TypeScript
@@ -992,7 +970,7 @@ Obtains the cookie value of a specified URL. This API uses a promise to return t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. No valid cookie found for the specified URL. |
 
 **Examples**
@@ -1029,8 +1007,6 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookie3"></a>
-
 ## fetchCookie
 
 ```TypeScript
@@ -1052,8 +1028,8 @@ Obtains the cookies corresponding to a specified URL. The parameter incognito sp
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | url | string | Yes | URL of the cookie to obtain. A complete URL is recommended. |
-| incognito | boolean | Yes | Whether to obtain the in-memory cookies of the Web component in Privacy Mode. The value **true** indicates Privacy Mode, and **false** indicates Non-Privacy Mode.<br>Passing **undefined** or **null** throws error code 401. |
-| includePartitionedCookies | boolean | Yes | Whether to allow obtaining first-party partitioned cookies. The value **true** indicates that first-party partitioned cookies are allowed, and **false** indicates that they are not allowed.<br>Passing **undefined** or **null** throws error code 401. |
+| incognito | boolean | Yes | Whether to obtain the in-memory cookies of the Web component in Privacy Mode. The value **true** indicates Privacy Mode, and **false** indicates Non-Privacy Mode. <br>Passing **undefined** or **null** throws error code 401. |
+| includePartitionedCookies | boolean | Yes | Whether to allow obtaining first-party partitioned cookies. The value **true** indicates that first-party partitioned cookies are allowed, and **false** indicates that they are not allowed. <br>Passing **undefined** or **null** throws error code 401. |
 
 **Return value:**
 
@@ -1101,8 +1077,6 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookie4"></a>
-
 ## fetchCookie
 
 ```TypeScript
@@ -1130,7 +1104,7 @@ Obtains the cookie value of a specified URL. This API uses an asynchronous callb
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. No valid cookie found for the specified URL. |
 
 **Examples**
@@ -1169,8 +1143,6 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookiesync1"></a>
-
 ## fetchCookieSync
 
 ```TypeScript
@@ -1200,7 +1172,7 @@ Obtains the cookie value of the specified URL.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | url | string | Yes | URL for which the cookie is to be obtained. A complete URL is recommended. |
-| incognito | boolean | No | Whether to obtain the cookie in incognito mode. The value **true** means to obtain the cookie in incognito mode, and **false** means the opposite.<br>The default value is **false**. <br>If **undefined** or **null** is passed, error code **401** will be thrown. |
+| incognito | boolean | No | Whether to obtain the cookie in incognito mode. The value **true** means to obtain the cookie in incognito mode, and **false** means the opposite. <br>The default value is **false**. <br>If **undefined** or **null** is passed, error code **401** will be thrown. |
 
 **Return value:**
 
@@ -1212,7 +1184,7 @@ Obtains the cookie value of the specified URL.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. No valid cookie found for the specified URL. |
 
 **Examples**
@@ -1244,8 +1216,6 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookiesync2"></a>
-
 ## fetchCookieSync
 
 ```TypeScript
@@ -1275,8 +1245,8 @@ Obtains the cookies corresponding to a specified URL. The optional parameter inc
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | url | string | Yes | URL of the cookie to obtain. A complete URL is recommended. |
-| incognito | boolean | No | Whether to obtain the in-memory cookies of the Web component in Privacy Mode. The value **true** indicates Privacy Mode, and **false** indicates Non-Privacy Mode.<br>Default value: **false**. <br>Passing **undefined** or **null** throws error code 401. |
-| includePartitionedCookies | boolean | No | Whether to allow obtaining first-party partitioned cookies. The value **true** indicates that first-party partitioned cookies are allowed, and **false** indicates that they are not allowed.<br>Default value: **false**. <br>Passing **undefined** or **null** throws error code 401. |
+| incognito | boolean | No | Whether to obtain the in-memory cookies of the Web component in Privacy Mode. The value **true** indicates Privacy Mode, and **false** indicates Non-Privacy Mode. <br>Default value: **false**. <br>Passing **undefined** or **null** throws error code 401. |
+| includePartitionedCookies | boolean | No | Whether to allow obtaining first-party partitioned cookies. The value **true** indicates that first-party partitioned cookies are allowed, and **false** indicates that they are not allowed. <br>Default value: **false**. <br>Passing **undefined** or **null** throws error code 401. |
 
 **Return value:**
 
@@ -1339,7 +1309,7 @@ Checks whether the **WebCookieManager** instance has the permission to send and 
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the **WebCookieManager** instance has the permission to send and receive cookies.<br>The value **true** indicates that the **WebCookieManager** instance has the permission to send and receive cookies, and **false** indicates the opposite. <br>Default value: **true**. |
+| boolean | Whether the **WebCookieManager** instance has the permission to send and receive cookies. <br>The value **true** indicates that the **WebCookieManager** instance has the permission to send and receive cookies, and **false** indicates the opposite. <br>Default value: **true**. |
 
 **Examples**
 
@@ -1385,7 +1355,7 @@ Checks whether the **WebCookieManager** instance has the permission to send and 
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the **WebCookieManager** instance has the permission to send and receive third-party cookies.<br>The value **true** indicates that the **WebCookieManager** instance has the permission to send and receive third-party cookies, and **false** indicates the opposite. <br>The default value is **false**. |
+| boolean | Whether the **WebCookieManager** instance has the permission to send and receive third-party cookies. <br>The value **true** indicates that the **WebCookieManager** instance has the permission to send and receive third-party cookies, and **false** indicates the opposite. <br>The default value is **false**. |
 
 **Examples**
 
@@ -1437,7 +1407,7 @@ Sets whether the **WebCookieManager** instance has the permission to send and re
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 
@@ -1487,13 +1457,13 @@ Sets whether the **WebCookieManager** instance has the permission to send and re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accept | boolean | Yes | Whether to allow sending and receiving third-party cookies.<br>The value **true** means allowed, and **false** means not allowed. |
+| accept | boolean | Yes | Whether to allow sending and receiving third-party cookies. <br>The value **true** means allowed, and **false** means not allowed. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 
@@ -1522,8 +1492,6 @@ struct WebComponent {
   }
 }
 ```
-
-<a id="savecookieasync1"></a>
 
 ## saveCookieAsync
 
@@ -1555,7 +1523,7 @@ Saves all cookies that can be obtained through fetchCookie and need to be persis
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 
@@ -1591,8 +1559,6 @@ struct WebComponent {
 }
 ```
 
-<a id="savecookieasync2"></a>
-
 ## saveCookieAsync
 
 ```TypeScript
@@ -1623,7 +1589,7 @@ Asynchronously saves all cookies (that can be obtained through **fetchCookie** a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 
@@ -1875,7 +1841,7 @@ Obtains the cookie value of the specified URL.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. No valid cookie found for the specified URL. |
 
 **Examples**
@@ -1936,9 +1902,9 @@ Sets a cookie for the specified URL.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. No valid cookie found for the specified URL. |
-| [17100005](../errorcode-webview.md#17100005-invalid-cookie-value) | The provided cookie value is invalid. It must follow the format specified<br>in RFC 6265. |
+| [17100005](../errorcode-webview.md#17100005-invalid-cookie-value) | The provided cookie value is invalid. It must follow the format specified <br>in RFC 6265. |
 
 **Examples**
 

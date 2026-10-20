@@ -4,7 +4,7 @@
 interface SketchStatusData
 ```
 
-Defines the PiP status data.
+定义画中画状态数据。
 
 **起始版本：** 11
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 centerPointOffset: Point
 ```
 
-Offset of PiP.
+画中画偏移。
 
 **类型：** [Point](arkts-camera-camera-point-i.md)
 
@@ -44,7 +44,7 @@ Offset of PiP.
 sketchRatio: number
 ```
 
-Zoom ratio of PiP.
+画中画变焦比。
 
 **类型：** number
 
@@ -62,7 +62,7 @@ Zoom ratio of PiP.
 status: number
 ```
 
-Status of PiP. The options are 0 (stopped), 1 (started), 2 (stopping), and 3 (starting).
+画中画状态。取值为0（已停止）、1（已开始）、2（正在停止）、3（正在开始）。
 
 **类型：** number
 

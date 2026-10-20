@@ -6,8 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="ispointervisible1"></a>
-
 ## isPointerVisible
 
 ```TypeScript
@@ -65,8 +63,6 @@ struct Index {
 }
 ```
 
-
-<a id="ispointervisible2"></a>
 
 ## isPointerVisible
 

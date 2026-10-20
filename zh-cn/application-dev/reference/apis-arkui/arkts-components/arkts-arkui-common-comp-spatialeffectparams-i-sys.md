@@ -14,8 +14,6 @@ declare interface SpatialEffectParams
 > 
 > - 本模块为系统接口。
 
-@interface SpatialEffectParams
-
 **起始版本：** 26.0.0
 
 <!--Device-unnamed-declare interface SpatialEffectParams--><!--Device-unnamed-declare interface SpatialEffectParams-End-->

@@ -36,7 +36,7 @@ constructor(name: string, param: unknown, onPop?: import('../api/@ohos.base').Ca
 | --- | --- | --- | --- |
 | name | string | 是 | NavDestination页面名称。该名称匹配开发者设置的路由表中的name，包括以下两种：<br>1. 自定义路由表，开发者通过[navDestination](arkts-arkui-navigation-comp-attribute.md#navdestination)方法传递。<br>2. 系统路由表，通过routerMap中的name设置，可参考[示例2](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例2使用导航控制器方法)。 |
 | param | unknown | 是 | 开发者设置的NavDestination页面详细参数，unknown可以是用户自定义的类型。 |
-| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 否 | NavDestination页面触发[pop](arkts-arkui-navigation-comp-navpathstack-c.md#pop2)、[popToName](arkts-arkui-navigation-comp-navpathstack-c.md#poptoname2)、[popToIndex](arkts-arkui-navigation-comp-navpathstack-c.md#poptoindex2)时返回的回调。仅[pop](arkts-arkui-navigation-comp-navpathstack-c.md#pop2)、[popToName](arkts-arkui-navigation-comp-navpathstack-c.md#poptoname2)、[popToIndex](arkts-arkui-navigation-comp-navpathstack-c.md#poptoindex2)中设置result参数后触发。<br>**适用版本：** 11 |
+| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 否 | NavDestination页面触发[pop](arkts-arkui-navigation-comp-navpathstack-c.md#pop)、[popToName](arkts-arkui-navigation-comp-navpathstack-c.md#poptoname)、[popToIndex](arkts-arkui-navigation-comp-navpathstack-c.md#poptoindex)时返回的回调。仅[pop](arkts-arkui-navigation-comp-navpathstack-c.md#pop)、[popToName](arkts-arkui-navigation-comp-navpathstack-c.md#poptoname)、[popToIndex](arkts-arkui-navigation-comp-navpathstack-c.md#poptoindex)中设置result参数后触发。<br>**适用版本：** 11 |
 | isEntry | boolean | 否 | 标记NavDestination是否为入口页面。<br>true：NavDestination是入口页面；false：NavDestination不是入口页面。<br/ >默认值：false <br>标记清理时机：1. 在当前navDestination页面触发一次全局返回事件。2. 应用退至后台。<br>**说明：** <br>入口NavDestination不响应应用内的全局 back事件，直接触发应用间的全局back事件。<br>**适用版本：** 12 |
 
 ## isEntry
@@ -118,7 +118,7 @@ NavDestination页面唯一标识符，该id由系统默认生成且全局唯一�
 onPop?: import('../api/@ohos.base').Callback<PopInfo>
 ```
 
-NavDestination页面触发[pop](arkts-arkui-navigation-comp-navpathstack-c.md#pop2)、[popToName](arkts-arkui-navigation-comp-navpathstack-c.md#poptoname2)、[popToIndex](arkts-arkui-navigation-comp-navpathstack-c.md#poptoindex2)时返回的回调。仅[pop](arkts-arkui-navigation-comp-navpathstack-c.md#pop2)、[popToName](arkts-arkui-navigation-comp-navpathstack-c.md#poptoname2)、[popToIndex](arkts-arkui-navigation-comp-navpathstack-c.md#poptoindex2)中设置result参数后触发。
+NavDestination页面触发[pop](arkts-arkui-navigation-comp-navpathstack-c.md#pop)、[popToName](arkts-arkui-navigation-comp-navpathstack-c.md#poptoname)、[popToIndex](arkts-arkui-navigation-comp-navpathstack-c.md#poptoindex)时返回的回调。仅[pop](arkts-arkui-navigation-comp-navpathstack-c.md#pop)、[popToName](arkts-arkui-navigation-comp-navpathstack-c.md#poptoname)、[popToIndex](arkts-arkui-navigation-comp-navpathstack-c.md#poptoindex)中设置result参数后触发。
 
 **类型：** import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt;
 

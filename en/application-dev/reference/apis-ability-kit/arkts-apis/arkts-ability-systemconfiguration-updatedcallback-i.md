@@ -6,8 +6,6 @@ interface UpdatedCallback
 
 System configuration updated callback.
 
-@typedef UpdatedCallback
-
 **Since:** 24
 
 <!--Device-systemConfiguration-interface UpdatedCallback--><!--Device-systemConfiguration-interface UpdatedCallback-End-->

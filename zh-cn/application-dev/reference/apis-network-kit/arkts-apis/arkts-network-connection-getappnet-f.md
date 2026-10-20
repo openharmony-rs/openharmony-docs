@@ -6,8 +6,6 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
-<a id="getappnet1"></a>
-
 ## getAppNet
 
 ```TypeScript
@@ -51,8 +49,6 @@ connection.getAppNet((error: BusinessError, data: connection.NetHandle) => {
 })
 ```
 
-
-<a id="getappnet2"></a>
 
 ## getAppNet
 

@@ -40,7 +40,7 @@ function decodeImage(encodedImage: image.PixelMap): Promise<string>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [32100001](../errorcode-metadataBinding.md#32100001-文件创建失败) | Internal handling failed. |
-| [32100003](../errorcode-metadataBinding.md#32100003-解码程序执行失败) | Decode process fail. Possible causes:<br>1. Image is not an encoded Image. <br>2. Image destroyed, decoding failed. |
+| [32100003](../errorcode-metadataBinding.md#32100003-解码程序执行失败) | Decode process fail. Possible causes: <br>1. Image is not an encoded Image. <br>2. Image destroyed, decoding failed. |
 
 <!--Del-->
 **示例**

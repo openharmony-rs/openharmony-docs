@@ -6,7 +6,7 @@ interface Display
 
 屏幕实例。描述Display对象的属性和方法。
 
-下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays1)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md)中的任一方法获取到Display实例，再通过此实例调用对应方法。
+下列API示例中都需先使用[getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays)、[getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md)中的任一方法获取到Display实例，再通过此实例调用对应方法。
 
 **起始版本：** 7
 
@@ -19,8 +19,6 @@ interface Display
 ```TypeScript
 import { display } from '@kit.ArkUI';
 ```
-
-<a id="hasimmersivewindow1"></a>
 
 ## hasImmersiveWindow
 
@@ -75,8 +73,6 @@ displayClass.hasImmersiveWindow((err: BusinessError, data: boolean) => {
 ```
 
 <!--DelEnd-->
-
-<a id="hasimmersivewindow2"></a>
 
 ## hasImmersiveWindow
 

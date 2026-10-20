@@ -35,8 +35,8 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 | [offPickupChange](arkts-multimodalawareness-motion-offpickupchange-f-sys.md#offpickupchange) | 取消订阅拾起传感器事件。 |
 | [offRotateChange](arkts-multimodalawareness-motion-offrotatechange-f-sys.md#offrotatechange) | 取消订阅旋转传感器事件。 |
 | [offSmartRotateChange](arkts-multimodalawareness-motion-offsmartrotatechange-f-sys.md#offsmartrotatechange) | 取消订阅智能旋转传感器事件。 |
-| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange1) | 订阅悬停手势事件，并立即开始5秒检测。 |
-| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange2) | 订阅悬停手势事件，并立即开始检测。 |
+| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange) | 订阅悬停手势事件，并立即开始5秒检测。 |
+| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange) | 订阅悬停手势事件，并立即开始检测。 |
 | [onPickupChange](arkts-multimodalawareness-motion-onpickupchange-f-sys.md#onpickupchange) | 订阅拾起传感器事件。 |
 | [onRotateChange](arkts-multimodalawareness-motion-onrotatechange-f-sys.md#onrotatechange) | 订阅旋转传感器事件。 |
 | [onSmartRotateChange](arkts-multimodalawareness-motion-onsmartrotatechange-f-sys.md#onsmartrotatechange) | 订阅智能旋转传感器事件。 |

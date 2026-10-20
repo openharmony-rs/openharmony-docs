@@ -4,7 +4,7 @@
 interface InputMethodProperty
 ```
 
-Describes the input method application attributes.
+Describes the input method application properties.
 
 **Since:** 8
 
@@ -24,7 +24,7 @@ import { inputMethod } from '@kit.IMEKit';
 readonly enabledState?: EnabledState
 ```
 
-Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter of an API for switching or querying, you do not need to set this field. You can use name and ID to uniquely specify an input method extension. <br>- When **InputMethodProperty** is used as the return value of an API for querying (for example, [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md)), this field indicates whether the input method is enabled.
+Optional. <br> <br>- When **InputMethodProperty** is used as an input parameter of APIs such as switch and query, you may omit this field, and an input method extension can be uniquely specified by **name** and **id**. <br>- When **InputMethodProperty** is used as the return value of a query API (such as [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md)), this field indicates the enabled state of the input method.
 
 **Type:** [EnabledState](arkts-ime-inputmethod-enabledstate-e.md)
 
@@ -40,7 +40,7 @@ Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter
 extra?: object
 ```
 
-Extra information about the input method. This parameter is reserved and currently has no specific meaning. <br> <br>- API version 10 and later: optional <br>- API version 9: mandatory
+Input method extension information. <br> <br>- Since API version 10: optional <br>- API version 9: mandatory
 
 **Type:** object
 
@@ -56,7 +56,7 @@ Extra information about the input method. This parameter is reserved and current
 readonly icon?: string
 ```
 
-Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter of an API for switching or querying, you do not need to set this field. You can use name and ID to uniquely specify an input method extension. <br>- When **InputMethodProperty** is used as the return value of an API for querying (for example, [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md)), this field indicates the input method icon data, which can be obtained through icon ID.
+Optional. <br> <br>- When **InputMethodProperty** is used as an input parameter of APIs such as switch and query, you may omit this field, and an input method extension can be uniquely specified by **name** and **id**. <br>- When **InputMethodProperty** is used as the return value of a query API (such as [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md)), this field indicates the input method icon data, which can be obtained by querying **iconId**.
 
 **Type:** string
 
@@ -72,7 +72,7 @@ Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter
 readonly iconId?: number
 ```
 
-Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter of an API for switching or querying, you do not need to set this field. You can use name and ID to uniquely specify an input method extension. <br>- When **InputMethodProperty** is used as the return value of an API for querying (for example, [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md)), this field indicates the resource ID of the **icon** field.
+Optional. <br> <br>- When **InputMethodProperty** is used as an input parameter of APIs such as switch and query, you may omit this field, and an input method extension can be uniquely specified by **name** and **id**. <br>- When **InputMethodProperty** is used as the return value of a query API (such as [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md)), this field indicates the resource ID of the **icon** field.
 
 **Type:** number
 
@@ -88,7 +88,7 @@ Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter
 readonly id: string
 ```
 
-Mandatory. Unique identifier of an input method extension in an app. **id** and **name** form a globally unique identifier of the input method extension.
+Mandatory. Unique identifier of the input method extension within the application. Together with name, it forms the globally unique identifier of the input method extension.
 
 **Type:** string
 
@@ -104,7 +104,7 @@ Mandatory. Unique identifier of an input method extension in an app. **id** and 
 readonly label?: string
 ```
 
-Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter of an API for switching or querying, you do not need to set this field. You can use name and ID to uniquely specify an input method extension. <br>- When **InputMethodProperty** is used as the return value of an API for querying (for example, [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md)), this field indicates the name of the input method extension displayed externally. Use the label configured for the InputMethodExtensionAbility. If no label is configured, the label of the application entry ability is automatically used. If no label is configured for the application entry ability, the label configured in **AppScope** is automatically used.
+Optional. <br> <br>- When **InputMethodProperty** is used as an input parameter of APIs such as switch and query, you may omit this field, and an input method extension can be uniquely specified by **name** and **id**. <br>- When **InputMethodProperty** is used as the return value of a query API (such as [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md)), this field indicates the display name of the input method extension. The label configured in **InputMethodExtensionAbility** is used first; if it is not configured, the label of the application entry ability is automatically used; if the application entry ability does not configure a label, the label configured in the application **AppScope** is automatically used.
 
 **Type:** string
 
@@ -120,7 +120,7 @@ Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter
 readonly labelId?: number
 ```
 
-Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter of an API for switching or querying, you do not need to set this field. You can use name and ID to uniquely specify an input method extension. <br>- When **InputMethodProperty** is used as the return value of an API for querying (for example, [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md)), this field indicates the resource ID of the **label** field.
+Optional. <br> <br>- When **InputMethodProperty** is used as an input parameter of APIs such as switch and query, you may omit this field, and an input method extension can be uniquely specified by **name** and **id**. <br>- When **InputMethodProperty** is used as the return value of a query API (such as [getCurrentInputMethod](arkts-ime-inputmethod-getcurrentinputmethod-f.md)), this field indicates the resource ID of the **label** field.
 
 **Type:** number
 
@@ -136,7 +136,7 @@ Optional. <br> <br>- When **InputMethodProperty** is used as the input parameter
 readonly name: string
 ```
 
-Mandatory. Name of the input method package.
+Mandatory. Input method package name.
 
 **Type:** string
 
@@ -152,7 +152,7 @@ Mandatory. Name of the input method package.
 readonly methodId: string
 ```
 
-Unique ID of the input method. Mandatory.
+Unique identifier of the input method. Mandatory. <br> <br>Note: This API is supported since API version 8 and deprecated since API version 9. Use **id** instead.
 
 **Type:** string
 
@@ -172,7 +172,7 @@ Unique ID of the input method. Mandatory.
 readonly packageName: string
 ```
 
-Name of the input method package. Mandatory.
+Input method package name. Mandatory. <br> <br>Note: This API is supported since API version 8 and deprecated since API version 9. Use **name** instead.
 
 **Type:** string
 

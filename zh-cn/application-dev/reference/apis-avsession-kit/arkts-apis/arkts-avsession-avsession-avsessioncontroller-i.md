@@ -10,8 +10,6 @@ AVSessionController控制器可查看会话ID，并可完成对会话发送命�
 > 
 > - 本Interface首批接口从API version 10开始支持。
 
-@interface AVSessionController [since 10 - 11]
-
 **起始版本：** 10
 
 <!--Device-avSession-interface AVSessionController--><!--Device-avSession-interface AVSessionController-End-->
@@ -23,8 +21,6 @@ AVSessionController控制器可查看会话ID，并可完成对会话发送命�
 ```TypeScript
 import { avSession } from '@kit.AVSessionKit';
 ```
-
-<a id="destroy1"></a>
 
 ## destroy
 
@@ -65,8 +61,6 @@ avcontroller.destroy((err: BusinessError) => {
 });
 ```
 
-<a id="destroy2"></a>
-
 ## destroy
 
 ```TypeScript
@@ -103,8 +97,6 @@ avcontroller.destroy().then(() => {
   console.info('Succeeded in destroying.');
 });
 ```
-
-<a id="getavcallstate1"></a>
 
 ## getAVCallState
 
@@ -146,8 +138,6 @@ avcontroller.getAVCallState((err: BusinessError, callstate: avSession.AVCallStat
 });
 ```
 
-<a id="getavcallstate2"></a>
-
 ## getAVCallState
 
 ```TypeScript
@@ -183,8 +173,6 @@ avcontroller.getAVCallState().then((callstate: avSession.AVCallState) => {
   console.info(`Succeeded in getting AV call state: ${callstate.state}`);
 });
 ```
-
-<a id="getavmetadata1"></a>
 
 ## getAVMetadata
 
@@ -225,8 +213,6 @@ avcontroller.getAVMetadata((err: BusinessError, metadata: avSession.AVMetadata) 
   console.info(`Succeeded in getting AV metadata, assetId: ${metadata.assetId}`);
 });
 ```
-
-<a id="getavmetadata2"></a>
 
 ## getAVMetadata
 
@@ -302,8 +288,6 @@ getAVMetadataSync(): AVMetadata
 let metaData: avSession.AVMetadata = avcontroller.getAVMetadataSync();
 ```
 
-<a id="getavplaybackstate1"></a>
-
 ## getAVPlaybackState
 
 ```TypeScript
@@ -343,8 +327,6 @@ avcontroller.getAVPlaybackState((err: BusinessError, state: avSession.AVPlayback
   console.info('Succeeded in getting AV playback state.');
 });
 ```
-
-<a id="getavplaybackstate2"></a>
 
 ## getAVPlaybackState
 
@@ -420,8 +402,6 @@ getAVPlaybackStateSync(): AVPlaybackState
 let playbackState: avSession.AVPlaybackState = avcontroller.getAVPlaybackStateSync();
 ```
 
-<a id="getavqueueitems1"></a>
-
 ## getAVQueueItems
 
 ```TypeScript
@@ -461,8 +441,6 @@ avcontroller.getAVQueueItems((err: BusinessError, items: avSession.AVQueueItem[]
   console.info(`Succeeded in getting AV queue items, length: ${items.length}`);
 });
 ```
-
-<a id="getavqueueitems2"></a>
 
 ## getAVQueueItems
 
@@ -538,8 +516,6 @@ getAVQueueItemsSync(): Array<AVQueueItem>
 let currentQueueItems: Array<avSession.AVQueueItem> = avcontroller.getAVQueueItemsSync();
 ```
 
-<a id="getavqueuetitle1"></a>
-
 ## getAVQueueTitle
 
 ```TypeScript
@@ -579,8 +555,6 @@ avcontroller.getAVQueueTitle((err: BusinessError, title: string) => {
   console.info(`Succeeded in getting AV queue title: ${title}`);
 });
 ```
-
-<a id="getavqueuetitle2"></a>
 
 ## getAVQueueTitle
 
@@ -656,8 +630,6 @@ getAVQueueTitleSync(): string
 let currentQueueTitle: string = avcontroller.getAVQueueTitleSync();
 ```
 
-<a id="getcallmetadata1"></a>
-
 ## getCallMetadata
 
 ```TypeScript
@@ -697,8 +669,6 @@ avcontroller.getCallMetadata((err: BusinessError, calldata: avSession.CallMetada
   console.info(`Succeeded in getting call metadata, name: ${calldata.name}`);
 });
 ```
-
-<a id="getcallmetadata2"></a>
 
 ## getCallMetadata
 
@@ -774,8 +744,6 @@ getDesktopLyricState(): Promise<DesktopLyricState>
 avcontroller.getDesktopLyricState();
 ```
 
-<a id="getextras1"></a>
-
 ## getExtras
 
 ```TypeScript
@@ -820,8 +788,6 @@ avcontroller.getExtras((err: BusinessError, extras) => {
   console.info(`Succeeded in getting extras: ${extras}`);
 });
 ```
-
-<a id="getextras3"></a>
 
 ## getExtras
 
@@ -956,8 +922,6 @@ if (controller !== undefined) {
 }
 ```
 
-<a id="getlaunchability1"></a>
-
 ## getLaunchAbility
 
 ```TypeScript
@@ -976,7 +940,7 @@ getLaunchAbility(callback: AsyncCallback<WantAgent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-t.md)&gt; | 是 | 回调函数。返回在[setLaunchAbility](arkts-avsession-avsession-avsession-i.md#setlaunchability2)保存的对象，包括应用的相关属性信息，如bundleName，abilityName，deviceId等。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-t.md)&gt; | 是 | 回调函数。返回在[setLaunchAbility](arkts-avsession-avsession-avsession-i.md#setlaunchability)保存的对象，包括应用的相关属性信息，如bundleName，abilityName，deviceId等。 |
 
 **错误码：**
 
@@ -1000,8 +964,6 @@ avcontroller.getLaunchAbility((err: BusinessError, agent: WantAgent) => {
 });
 ```
 
-<a id="getlaunchability2"></a>
-
 ## getLaunchAbility
 
 ```TypeScript
@@ -1022,7 +984,7 @@ getLaunchAbility(): Promise<WantAgent>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-t.md)&gt; | Promise对象，返回在[setLaunchAbility](arkts-avsession-avsession-avsession-i.md#setlaunchability2)保存的对象，包括应用的相关属性信息，如bundleName，abilityName，deviceId等。 |
+| Promise&lt;[WantAgent](../../apis-ability-kit/arkts-apis/arkts-ability-wantagent-t.md)&gt; | Promise对象，返回在[setLaunchAbility](arkts-avsession-avsession-avsession-i.md#setlaunchability)保存的对象，包括应用的相关属性信息，如bundleName，abilityName，deviceId等。 |
 
 **错误码：**
 
@@ -1081,8 +1043,6 @@ avcontroller.getMediaCenterControlType().then((types: avSession.AVMediaCenterCon
 });
 ```
 
-<a id="getoutputdevice1"></a>
-
 ## getOutputDevice
 
 ```TypeScript
@@ -1121,8 +1081,6 @@ avcontroller.getOutputDevice((err: BusinessError, deviceInfo: avSession.OutputDe
   console.info('Succeeded in getting output device.');
 });
 ```
-
-<a id="getoutputdevice2"></a>
 
 ## getOutputDevice
 
@@ -1313,8 +1271,6 @@ avcontroller.getSupportedPlaySpeeds().then((speeds: number[]) => {
 });
 ```
 
-<a id="getvalidcommands1"></a>
-
 ## getValidCommands
 
 ```TypeScript
@@ -1354,8 +1310,6 @@ avcontroller.getValidCommands((err: BusinessError, validCommands: avSession.AVCo
   console.info(`Succeeded in getting valid commands, size: ${validCommands.length}`);
 });
 ```
-
-<a id="getvalidcommands2"></a>
 
 ## getValidCommands
 
@@ -1431,8 +1385,6 @@ getValidCommandsSync(): Array<AVControlCommandType>
 let validCommands: Array<avSession.AVControlCommandType> = avcontroller.getValidCommandsSync();
 ```
 
-<a id="isactive1"></a>
-
 ## isActive
 
 ```TypeScript
@@ -1472,8 +1424,6 @@ avcontroller.isActive((err: BusinessError, isActive: boolean) => {
   console.info(`Succeeded in checking active state: ${isActive}`);
 });
 ```
-
-<a id="isactive2"></a>
 
 ## isActive
 
@@ -3112,8 +3062,6 @@ avcontroller.onSupportedPlaySpeedsChange((speeds: number[]) => {
 });
 ```
 
-<a id="sendavkeyevent1"></a>
-
 ## sendAVKeyEvent
 
 ```TypeScript
@@ -3162,8 +3110,6 @@ avcontroller.sendAVKeyEvent(event, (err: BusinessError) => {
   console.info('Succeeded in sending AV key event.');
 });
 ```
-
-<a id="sendavkeyevent2"></a>
 
 ## sendAVKeyEvent
 
@@ -3217,8 +3163,6 @@ avcontroller.sendAVKeyEvent(event).then(() => {
 });
 ```
 
-<a id="sendcommoncommand1"></a>
-
 ## sendCommonCommand
 
 ```TypeScript
@@ -3267,8 +3211,6 @@ avcontroller.sendCommonCommand(commandName, {command : "This is my command"}, (e
   console.info('Succeeded in sending common command.');
 })
 ```
-
-<a id="sendcommoncommand3"></a>
 
 ## sendCommonCommand
 
@@ -3322,8 +3264,6 @@ avcontroller.sendCommonCommand(commandName, {command : "This is my command"}).th
 });
 ```
 
-<a id="sendcontrolcommand1"></a>
-
 ## sendControlCommand
 
 ```TypeScript
@@ -3375,8 +3315,6 @@ avcontroller.sendControlCommand(avCommand, (err: BusinessError) => {
   console.info('Succeeded in sending control command.');
 });
 ```
-
-<a id="sendcontrolcommand2"></a>
 
 ## sendControlCommand
 
@@ -3598,8 +3536,6 @@ setDesktopLyricVisible(visible: boolean): Promise<void>
 avcontroller.setDesktopLyricVisible(true);
 ```
 
-<a id="skiptoqueueitem1"></a>
-
 ## skipToQueueItem
 
 ```TypeScript
@@ -3642,8 +3578,6 @@ avcontroller.skipToQueueItem(queueItemId, (err: BusinessError) => {
   console.info('Succeeded in skipping to queue item.');
 });
 ```
-
-<a id="skiptoqueueitem2"></a>
 
 ## skipToQueueItem
 

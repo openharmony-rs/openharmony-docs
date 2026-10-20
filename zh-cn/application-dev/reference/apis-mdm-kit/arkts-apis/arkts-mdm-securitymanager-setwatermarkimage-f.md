@@ -6,8 +6,6 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
-<a id="setwatermarkimage1"></a>
-
 ## setWatermarkImage
 
 ```TypeScript
@@ -73,8 +71,6 @@ try {
 }
 ```
 
-
-<a id="setwatermarkimage2"></a>
 
 ## setWatermarkImage
 

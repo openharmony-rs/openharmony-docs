@@ -70,6 +70,26 @@ Image style information. Pass this parameter when you need to customize the imag
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## imageTag
+
+```TypeScript
+imageTag?: string
+```
+
+Image text tag.
+
+**Type:** string
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-RichEditorImageSpanOptions-imageTag?: string--><!--Device-RichEditorImageSpanOptions-imageTag?: string-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## offset
 
 ```TypeScript

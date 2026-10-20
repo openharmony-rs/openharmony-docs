@@ -12,7 +12,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 function resetUsbDevice(pipe: USBDevicePipe): boolean
 ```
 
-重置USB设备。适用于USB设备出现通信异常需要恢复的场景，如设备固件升级后需要重新初始化、设备状态异常需要恢复、调试过程中需要重置设备状态等。调用成功后设备将被重置为初始状态，此前设置的配置和接口设置将被清除，设备需要重新初始化。
+重置USB设备。适用于USB设备出现通信异常需要恢复的场景，如设备固件升级后需要重新初始化、设备状态异常需要恢复、调试过程中需要重置设备状态等。调用成功后系统会将设备重置为初始状态，并清除此前设置的配置和接口设置，设备需要重新初始化。
 
 > **说明：** 
 > 
@@ -46,10 +46,10 @@ function resetUsbDevice(pipe: USBDevicePipe): boolean
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [14400001](../errorcode-usb.md#14400001-usb设备访问权限被拒绝) | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
+| [14400004](../errorcode-usb.md#14400004-服务异常) | Service exception. Possible causes: 1. No accessory is plugged in. |
 | [14400008](../errorcode-usb.md#14400008-没有设备连接已断开) | No such device(it may have been disconnected). |
-| [14400010](../errorcode-usb.md#14400010-无法识别的错误) | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
-| [14400013](../errorcode-usb.md#14400013-参数合法性检查失败) | The USBDevicePipe validity check failed. Possible causes:<br>1.The input parameters fail the validation check.  <br>2.The call chain used to obtain the input parameters is not reasonable. |
-| [14400004](../errorcode-usb.md#14400004-服务异常) |  |
+| [14400010](../errorcode-usb.md#14400010-无法识别的错误) | Other USB error. Possible causes:  <br>1.Unrecognized discard error code. |
+| [14400013](../errorcode-usb.md#14400013-参数合法性检查失败) | The USBDevicePipe validity check failed. Possible causes:  <br>1.The input parameters fail the validation check.  <br>2.The call chain used to obtain the input parameters is not reasonable. |
 
 **示例**
 

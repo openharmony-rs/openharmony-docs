@@ -6,8 +6,6 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="getvalidreminders1"></a>
-
 ## getValidReminders
 
 ```TypeScript
@@ -70,8 +68,6 @@ reminderAgentManager.getValidReminders((err: BusinessError, reminders: Array<rem
 });
 ```
 
-
-<a id="getvalidreminders2"></a>
 
 ## getValidReminders
 

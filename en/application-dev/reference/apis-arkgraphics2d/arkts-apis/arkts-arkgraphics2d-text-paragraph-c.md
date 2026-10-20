@@ -555,8 +555,6 @@ Obtains the height of a given line.
 let lineHeight = paragraph.getLineHeight(0);
 ```
 
-<a id="getlinemetrics1"></a>
-
 ## getLineMetrics
 
 ```TypeScript
@@ -584,8 +582,6 @@ Obtains an array of line measurement information.
 ```TypeScript
 let arrLineMetric =  paragraph.getLineMetrics();
 ```
-
-<a id="getlinemetrics2"></a>
 
 ## getLineMetrics
 
@@ -1092,12 +1088,12 @@ The returned range depends on the specific truncation of the paragraph (for exam
 
 | Scenario| Description|  
 |---|---|  
-| Text is not truncated.| The range includes all typeset text.|
-| Only maxLines truncation is set (no ellipsis).| the text from the first line to the end of the maxLines line.|
-| EllipsisMode.END| The range is the text before the ellipsis.|
-| EllipsisMode.START| The value is the text after the ellipsis.|
-| EllipsisMode.MIDDLE| the text range before and after the ellipsis is returned.|
-| EllipsisMode.MULTILINE_START| the text range before and after the ellipsis is returned.|
+| Text is not truncated.| The range includes all typeset text.|  
+| Only maxLines truncation is set (no ellipsis).| the text from the first line to the end of the maxLines line.|  
+| EllipsisMode.END| The range is the text before the ellipsis.|  
+| EllipsisMode.START| The value is the text after the ellipsis.|  
+| EllipsisMode.MIDDLE| the text range before and after the ellipsis is returned.|  
+| EllipsisMode.MULTILINE_START| the text range before and after the ellipsis is returned.|  
 | EllipsisMode.MULTILINE_MIDDLE| the text range before and after the ellipsis is returned.|
 
 **Since:** 26.0.0

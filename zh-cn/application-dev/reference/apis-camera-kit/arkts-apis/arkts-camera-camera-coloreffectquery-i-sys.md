@@ -4,7 +4,7 @@
 interface ColorEffectQuery
 ```
 
-Provides the API to obtain the color effects supported.
+提供获取支持的色彩效果的接口。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 getSupportedColorEffects(): Array<ColorEffectType>
 ```
 
-Obtains the supported color effects.
+获取支持的色彩效果。
 
 **起始版本：** 11
 
@@ -40,7 +40,7 @@ Obtains the supported color effects.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[ColorEffectType](arkts-camera-camera-coloreffecttype-e-sys.md)&gt; | Array of color effects supported. |
+| Array&lt;[ColorEffectType](arkts-camera-camera-coloreffecttype-e-sys.md)&gt; | 支持的色彩效果数组。 |
 
 **错误码：**
 

@@ -6,8 +6,6 @@
 import { appRecovery } from '@kit.AbilityKit';
 ```
 
-<a id="saveappstate1"></a>
-
 ## saveAppState
 
 ```TypeScript
@@ -52,8 +50,6 @@ try {
 }
 ```
 
-
-<a id="saveappstate2"></a>
 
 ## saveAppState
 

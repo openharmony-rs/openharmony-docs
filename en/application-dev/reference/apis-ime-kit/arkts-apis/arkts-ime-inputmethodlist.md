@@ -1,19 +1,60 @@
 # @ohos.inputMethodList(Input Method List)
 
-The **inputMethodList** module is oriented to system applications and input method applications.
- It provides APIs for implementing an input method list. This list displays the default input method subtypes and
- third-party input methods. Users can use this list to switch from the default input method to another input method.
+The **@ohos.inputMethodList** module is a UI control module oriented to system apps and input method apps. It
+ provides an input method list dialog component.
  <br>
- <br> > **NOTE**
+ <br>This module is a declarative UI component module. It provides the `InputMethodListDialog`
+ custom dialog component, which is used to display the default input method subtypes and the list of
+ third-party input method apps. It optionally provides an entry for switching input method modes
+ (such as one-handed mode and full-screen mode).
+ <br>
+ <br>Through the dialog component provided by this module, users can view all input methods installed in the current
+ system in the input method list and switch from the default input method to another input method. For preset system
+ input methods, mode options (such as one-handed mode and full-screen mode) can also be displayed in the list for
+ users to switch the display mode of the input method keyboard.
+ <br>
+ <br>This module is used when a system app or an input method app needs to provide an entry for
+ input method switching. Typical scenarios include the input method management page in the system settings app,
+ the settings interface of an input method app, or other system-level interfaces that require users to select and
+ switch input methods. This component can be called only by system apps and input method apps. The `patternOptions`
+ parameter is supported only by preset system input methods.
+ <br>
+ <br>The relationship between this module and other modules in the input method framework is as follows:
+ <br>
+ <br>- [@ohos.inputMethod](arkts-ime-inputmethod.md): Targeted at general foreground apps. Provides input
+ method control and management capabilities (such as showing/hiding the soft keyboard and switching input methods).
+ It can switch input methods through the `switchInputMethod` API, and is suitable for scenarios that do not require
+ an interactive selection interface.
+ <br>- [@ohos.inputMethodEngine](arkts-ime-inputmethodengine.md):
+ Targeted at input method apps. Provides input method server capabilities such as creating soft keyboard windows and
+ inserting/deleting characters.
+ <br>- **@ohos.inputMethodList** (this module): Targeted at system apps and input method apps.
+ Provides a visualized input method list dialog component, and is suitable for scenarios that require
+ an interactive selection interface.
+ <br>
+ <br> > NOTE
  <br> >
- <br> > This component is supported since API version 11.
- Updates will be marked with a superscript to indicate their earliest API version.
+ <br> > This component is supported since API version 11. New APIs in later versions are marked with a superscript to
+ <br> > indicate their initial version.
+ <br> > This module contains the following key components and interfaces:
+ <br>
+ | Interface/Struct | Description |
+ |---|---|
+ | InputMethodListDialog | Input method list dialog component, declared using the `@CustomDialog` decorator.
+ Displays the input method list and an optional mode switching entry, which is the core UI component of this module.
+ A `CustomDialogController` must be passed in to control the opening and closing of the dialog,
+ and `PatternOptions` can be optionally passed in to configure the mode switching feature. |
+ | PatternOptions | Input method mode option configuration interface, which defines the resource array of
+ mode options, the index of the mode selected by default, and the mode switching callback.
+ Only preset system input methods support passing in this parameter. |
+ | Pattern | Icon definition interface for a single input method mode,
+ containing two resource properties: the default icon and the selected-state icon. |
+ <br>
+ <br>Using `InputMethodListDialog` requires the combination of multiple APIs: create a `CustomDialogController` >
+ configure `PatternOptions` (optional) > build `InputMethodListDialog` in the builder of `CustomDialogController` >
+ open the dialog through `CustomDialogController.open()`.
  <br>
  <br>
-
-## Child Components
-
-<br><br>Not supported<br><br>
 
 ## Attributes
 
@@ -21,58 +62,7 @@ The **inputMethodList** module is oriented to system applications and input meth
 
 ## Events
 
-<br><br>The [universal events](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md) are not supported.<br><br>## Example<br><br>```ts
- <br>import { Pattern, PatternOptions } from '@kit.IMEKit';
- <br>
- <br>@Entry
- <br>// Configure the component.
- <br>@Component
- <br>struct SettingsItem {
- <br> @State defaultPattern: number = 1;
- <br> private oneHandAction: PatternOptions = {
- <br> defaultSelected: this.defaultPattern,
- <br> patterns: [ // Icons in patterns can be used only after the corresponding icon resources have been added to
- the resource directory of the project.
- <br> {
- <br> icon: $r('app.media.hand_icon'), // Icon resource for the input method mode option, for example,
- the icon for the one-handed mode.
- <br> selectedIcon: $r('app.media.hand_icon_selected') // Icon resource for the input method mode option in
- the selected state, for example, the icon for the one-handed mode in the selected state.
- <br> },
- <br> {
- <br> icon: $r('app.media.hand_icon1'),
- <br> selectedIcon: $r('app.media.hand_icon_selected1')
- <br> },
- <br> {
- <br> icon: $r('app.media.hand_icon2'),
- <br> selectedIcon: $r('app.media.hand_icon_selected2'),
- <br> }],
- <br> action:(index: number)=&gt;{
- <br> console.info(`pattern is changed, current is ${index}`);
- <br> this.defaultPattern = index;
- <br> }
- <br> };
- <br> private listController: CustomDialogController = new CustomDialogController({
- <br> builder: InputMethodListDialog({ patternOptions: this.oneHandAction }),
- <br> customStyle: true,
- <br> maskColor: '#00000000'
- <br> });
- <br>
- <br> build() {
- <br> Column() {
- <br> Flex({ direction: FlexDirection.Column,
- <br> alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
- <br> Text("Input Method List").fontSize(20)
- <br> }
- <br> }
- <br> .width("13%")
- <br> .id('bindInputMethod')
- <br> .onClick((event?: ClickEvent) =&gt; {
- <br> this.listController.open();
- <br> })
- <br> }
- <br>}
- <br>```
+<br><br>The [universal events](../../apis-arkui/arkts-components/arkts-arkui-common-comp.md) are not supported.
 
 ## Modules to Import
 
@@ -86,14 +76,14 @@ import { InputMethodListDialog, PatternOptions, Pattern } from '@kit.IMEKit';
 
 | Name | Description |
 | --- | --- |
-| [InputMethodListDialog](arkts-ime-inputmethodlist-inputmethodlistdialog-s.md) | InputMethodListDialog({controller: CustomDialogController, patternOptions?: PatternOptions})<br> <br>Implements a dialog box showing the input method list. |
+| [InputMethodListDialog](arkts-ime-inputmethodlist-inputmethodlistdialog-s.md) | InputMethodListDialog({controller: CustomDialogController, patternOptions?: PatternOptions}) <br> <br>Represents the input method list dialog component. It displays the list of input method apps installed in the current system in the form of a dialog, allowing users to switch between input methods. For the default input method, it also provides an entry for switching keyboard modes (such as one-handed mode and full-screen mode). <br> <br>Usage scenarios: This component is used when a system app or an input method app needs to provide users with a visualized input method selection and switching feature. For example, in the system settings app, users are allowed to select different input methods, or in an input method app, users are allowed to switch to another input method or switch the keyboard mode of the current input method. <br> <br>Use effect: After this component is invoked, an input method list dialog is displayed. After the user selects an input method in the dialog, the system switches to the specified input method. If the user selects a mode option of the default input method, the system displays the keyboard layout in the specified mode. <br> <br>Differences between similar APIs and selection principles: Compared with the [inputMethod.switchInputMethod](arkts-ime-inputmethod-switchinputmethod-f.md) API, this component provides a visualized input method selection interface, which is suitable for scenarios that require an interactive selection interface. The **switchInputMethod** API is suitable for scenarios where the input method is switched programmatically without requiring manual selection by the user. <br> <br>Usage restrictions: This component can be called only by system apps and input method apps. The **patternOptions** parameter is supported only by preset input methods. <br> <br>NOTE <br> <br>- Preconditions: Create a [CustomDialogController](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller-c.md) instance and associate it with **InputMethodListDialog**, and then open the dialog through the **open()** method of the **controller**. <br>- This component does not support universal attributes and universal events. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [Pattern](arkts-ime-inputmethodlist-pattern-i.md) |  |
-| [PatternOptions](arkts-ime-inputmethodlist-patternoptions-i.md) |  |
+| [Pattern](arkts-ime-inputmethodlist-pattern-i.md) | Represents the definition of the icon resources for input method mode options, used to configure the visual representation of keyboard modes in the dialog. Available only to the current input method (that is, the preset system input method). |
+| [PatternOptions](arkts-ime-inputmethodlist-patternoptions-i.md) | Represents the configuration of input method mode options, used to define the switching options for keyboard modes. |
 
 ## Examples
 

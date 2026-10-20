@@ -8,11 +8,9 @@ The **MultiNavigation** component is a component that supports multi-column navi
 
 > **NOTE:** 
 > 
-> - Due to the multi-level page stack structure of **MultiNavigation** (the home page, detail page, and full-screen page each maintain their own sub-stacks, which are managed by **MultiNavPathStack**), calling APIs that are explicitly stated as unsupported in this document or APIs not listed in the supported API list (such as [getParent](../arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md#getparent), [setInterception](../arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md#setinterception),[pushDestination](../arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md#pushdestination1), etc.) may cause unexpected issues.
+> - Due to the multi-level page stack structure of **MultiNavigation** (the home page, detail page, and full-screen page each maintain their own sub-stacks, which are managed by **MultiNavPathStack**), calling APIs that are explicitly stated as unsupported in this document or APIs not listed in the supported API list (such as [getParent](../arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md#getparent), [setInterception](../arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md#setinterception),[pushDestination](../arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md#pushdestination), etc.) may cause unexpected issues.
 > 
 > - In deep nesting scenarios, **MultiNavigation** may experience abnormal routing animation effects.
-
-@struct { MultiNavigation }
 
 **Since:** 14
 

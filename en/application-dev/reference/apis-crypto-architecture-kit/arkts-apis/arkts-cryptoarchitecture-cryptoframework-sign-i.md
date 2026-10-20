@@ -66,7 +66,7 @@ Obtains signing specifications. Currently, only RSA is supported.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
@@ -84,8 +84,6 @@ function testGetSignSpec() {
   signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
 }
 ```
-
-<a id="init1"></a>
 
 ## init
 
@@ -118,13 +116,11 @@ Initializes the **Sign** object using a private key. This API uses an asynchrono
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. Incorrect key type.<br>**Applicable version:** 26.0.0 and later |
-
-<a id="init2"></a>
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Incorrect key type.<br>**Applicable version:** 26.0.0 and later |
 
 ## init
 
@@ -164,11 +160,11 @@ Initializes the **Sign** object using a private key. This API uses a promise to 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. Incorrect key type.<br>**Applicable version:** 26.0.0 and later |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Incorrect key type.<br>**Applicable version:** 26.0.0 and later |
 
 ## initSync
 
@@ -202,13 +198,11 @@ Initializes the **Sign** instance with a private key. This API returns the resul
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. Incorrect key type.<br>**Applicable version:** 26.0.0 and later |
-
-<a id="setsignspec1"></a>
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Incorrect key type.<br>**Applicable version:** 26.0.0 and later |
 
 ## setSignSpec
 
@@ -241,7 +235,7 @@ Sets signing specifications. You can use this API to set signing parameters that
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
@@ -267,8 +261,6 @@ function testSetSignSpec() {
   signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
 }
 ```
-
-<a id="setsignspec2"></a>
 
 ## setSignSpec
 
@@ -301,7 +293,7 @@ Sets the specified parameter for the Sign instance.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters.<br>**Applicable version:** 26.0.0 and later |
@@ -320,8 +312,6 @@ function testSetSignSpec() {
   signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
 }
 ```
-
-<a id="setsignspec3"></a>
 
 ## setSignSpec
 
@@ -372,8 +362,6 @@ function testSetSignSpec() {
 }
 ```
 
-<a id="sign1"></a>
-
 ## sign
 
 ```TypeScript
@@ -403,13 +391,11 @@ Signs the data, including data added via the update interface. This API uses an 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed.<br>**Applicable version:** 26.0.0 and later |
-
-<a id="sign2"></a>
 
 ## sign
 
@@ -440,13 +426,11 @@ Signs data. This API uses an asynchronous callback to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed.<br>**Applicable version:** 26.0.0 and later |
-
-<a id="sign3"></a>
 
 ## sign
 
@@ -482,13 +466,11 @@ Signs the data, including data added via the update interface. This API uses a p
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 | [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed.<br>**Applicable version:** 26.0.0 and later |
-
-<a id="sign4"></a>
 
 ## sign
 
@@ -524,7 +506,7 @@ Signs data. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
@@ -564,7 +546,7 @@ Signs the data. This API returns the result synchronously.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
@@ -762,8 +744,6 @@ function signBySync() {
 }
 ```
 
-<a id="update1"></a>
-
 ## update
 
 ```TypeScript
@@ -813,13 +793,11 @@ Updates data to be signed. This API uses an asynchronous callback to return the 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 | [17620004](../errorcode-crypto-framework.md#17620004-invalid-function-call) | Invalid function call.<br>**Applicable version:** 26.0.0 and later |
-
-<a id="update2"></a>
 
 ## update
 
@@ -834,7 +812,7 @@ Updates data to be signed. This API uses a promise to return the result.
 > **NOTE:** 
 > 
 > You can call **update** multiple times or do not use **update** (call
-> [sign](#sign2) after
+> [sign](#sign) after
 > [init](#init)), depending on the
 > data volume.
 > 
@@ -876,7 +854,7 @@ Updates data to be signed. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
@@ -932,7 +910,7 @@ Updates data to be signed. This API returns the result synchronously.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |

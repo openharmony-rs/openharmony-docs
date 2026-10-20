@@ -6,8 +6,6 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
-<a id="setnroptionmode1"></a>
-
 ## setNROptionMode
 
 ```TypeScript
@@ -65,8 +63,6 @@ radio.setNROptionMode(slotId, mode, (err: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="setnroptionmode2"></a>
 
 ## setNROptionMode
 

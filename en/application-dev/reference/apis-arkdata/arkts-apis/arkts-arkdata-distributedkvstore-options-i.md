@@ -128,7 +128,7 @@ SystemCapability.DistributedDataManager.KVStore.Core
 rootDir?: string
 ```
 
-Specifies the root directory relative to the database
+Database file storage path. If it is not set, the default path (context.databaseDir) is used. It cannot be an empty string. When creating or deleting a database, the directory must have the access permission and exist. This parameter is not verified when the database is closed.
 
 **Type:** string
 

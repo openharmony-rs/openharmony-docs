@@ -6,8 +6,6 @@ declare namespace Profiler
 
 inspector的性能分析（Profiler）工具。
 
-@namespace Profiler
-
 **起始版本：** 8
 
 <!--Device-unnamed-declare namespace Profiler--><!--Device-unnamed-declare namespace Profiler-End-->

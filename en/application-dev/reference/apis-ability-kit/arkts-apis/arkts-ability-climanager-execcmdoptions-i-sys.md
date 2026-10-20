@@ -82,6 +82,26 @@ Indicates whether the command is executed as a shell command.
 
 **System API:** This is a system API.
 
+## taskId
+
+```TypeScript
+taskId?: string
+```
+
+Indicates the task ID for task attribution. The value must be the task ID specified in [startTask](arkts-ability-taskmanager-starttask-f-sys.md).
+
+**Type:** string
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecCmdOptions-taskId?: string--><!--Device-ExecCmdOptions-taskId?: string-End-->
+
+**System capability:** SystemCapability.Ability.AgentRuntime.Core
+
+**System API:** This is a system API.
+
 ## toolCallId
 
 ```TypeScript

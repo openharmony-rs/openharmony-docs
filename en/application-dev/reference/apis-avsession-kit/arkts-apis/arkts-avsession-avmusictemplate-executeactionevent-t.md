@@ -6,8 +6,6 @@ type ExecuteActionEvent = (actionType: string, params: string) => Promise<string
 
 The execute action event.
 
-@typedef { function } ExecuteActionEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

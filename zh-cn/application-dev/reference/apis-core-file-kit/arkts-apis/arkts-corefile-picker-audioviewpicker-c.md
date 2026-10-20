@@ -18,8 +18,6 @@ class AudioViewPicker
 import { picker } from '@kit.CoreFileKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -42,8 +40,6 @@ constructor()
 let audioPicker = new picker.AudioViewPicker(); // 不推荐使用无参构造，会出现概率性拉起失败问题
 ```
 
-<a id="constructor2"></a>
-
 ## constructor
 
 ```TypeScript
@@ -64,7 +60,7 @@ constructor(context: Context)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用上下文（仅支持UIAbilityContext）。Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md)。 |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用上下文（仅支持UIAbilityContext）。Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md)。 |
 
 **示例**
 
@@ -93,8 +89,6 @@ struct Index {
   }
 }
 ```
-
-<a id="save1"></a>
 
 ## save
 
@@ -147,8 +141,6 @@ async function example16(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
-<a id="save2"></a>
-
 ## save
 
 ```TypeScript
@@ -195,8 +187,6 @@ async function example17(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
-<a id="save3"></a>
-
 ## save
 
 ```TypeScript
@@ -239,8 +229,6 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
   }
 }
 ```
-
-<a id="select1"></a>
 
 ## select
 
@@ -292,8 +280,6 @@ async function example13(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
-<a id="select2"></a>
-
 ## select
 
 ```TypeScript
@@ -338,8 +324,6 @@ async function example14(context: common.UIAbilityContext) { // 需确保 contex
   }
 }
 ```
-
-<a id="select3"></a>
 
 ## select
 

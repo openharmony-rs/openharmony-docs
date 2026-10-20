@@ -6,8 +6,6 @@ export interface Location
 
 Provides information about geographic locations
 
-@interface Location
-
 **Since:** 7
 
 **Deprecated since:** 9

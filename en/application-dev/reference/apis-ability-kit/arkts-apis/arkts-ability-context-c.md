@@ -175,8 +175,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getgroupdir1"></a>
-
 ## getGroupDir
 
 ```TypeScript
@@ -231,8 +229,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="getgroupdir2"></a>
 
 ## getGroupDir
 
@@ -340,8 +336,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="createmodulecontext1"></a>
-
 ## createModuleContext
 
 ```TypeScript
@@ -354,7 +348,7 @@ Creates the context based on the module name.
 > 
 > - Only the context of other modules in the current application and the context of the intra-application HSP can be obtained. The context of other applications cannot be obtained.
 > 
-> - This API has been supported since API version 9 and deprecated since API version 12. You are advised to use [application.createModuleContext](arkts-ability-application-createmodulecontext-f.md#createmodulecontext1)instead. Otherwise, resource acquisition may fail.
+> - This API has been supported since API version 9 and deprecated since API version 12. You are advised to use [application.createModuleContext](arkts-ability-application-createmodulecontext-f.md#createmodulecontext)instead. Otherwise, resource acquisition may fail.
 > 
 > - Creating a module context involves resource querying and initialization, which can be time-consuming. In scenarios where application fluidity is critical, avoid frequently or repeatedly calling the
 > **createModuleContext** API to create multiple context instances, as this may negatively impact user experience.

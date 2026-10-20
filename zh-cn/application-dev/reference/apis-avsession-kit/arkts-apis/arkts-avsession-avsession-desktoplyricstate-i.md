@@ -6,8 +6,6 @@ interface DesktopLyricState
 
 桌面歌词状态。
 
-@typedef DesktopLyricState
-
 **起始版本：** 23
 
 <!--Device-avSession-interface DesktopLyricState--><!--Device-avSession-interface DesktopLyricState-End-->

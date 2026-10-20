@@ -28,4 +28,22 @@ This callback function is implemented by applications to handle resource open re
 
 | Type | Description |
 | --- | --- |
-| number | Handle for the current resource open request. A value greater than 0 means the request is successful, whereas a value less than or equal to 0 means it fails.<br> - The handle for the request object is unique. |
+| number | Handle for the current resource open request. A value greater than 0 means the request is successful, whereas a value less than or equal to 0 means it fails. <br> - The handle for the request object is unique. |
+
+**Examples**
+
+```TypeScript
+import { HashMap } from '@kit.ArkTS';
+import { media } from '@kit.MediaKit';
+
+let uuid: number = 1;
+let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
+
+let sourceOpenCallback: media.SourceOpenCallback = (request: media.MediaSourceLoadingRequest) => {
+  console.info(`Opening resource: ${request.url}`);
+  // Open the resource and return a unique handle, ensuring the mapping between the UUID and request.
+  uuid += 1;
+  requests.set(uuid, request);
+  return uuid;
+};
+```

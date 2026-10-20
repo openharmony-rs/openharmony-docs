@@ -6,8 +6,6 @@
 import { deviceManager } from '@kit.DriverDevelopmentKit';
 ```
 
-<a id="binddevicedriver1"></a>
-
 ## bindDeviceDriver
 
 ```TypeScript
@@ -67,8 +65,6 @@ try {
 }
 ```
 
-
-<a id="binddevicedriver2"></a>
 
 ## bindDeviceDriver
 

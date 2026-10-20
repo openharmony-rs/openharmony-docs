@@ -6,8 +6,6 @@
 import { browser } from '@kit.MDMKit';
 ```
 
-<a id="getpoliciessync1"></a>
-
 ## getPoliciesSync
 
 ```TypeScript
@@ -67,8 +65,6 @@ try {
 }
 ```
 
-
-<a id="getpoliciessync2"></a>
 
 ## getPoliciesSync
 

@@ -45,8 +45,6 @@ Changes all array elements from `start` to `end` index to a static `value` and r
 | start | number | No |  |
 | end | number | No |  |
 
-<a id="find1"></a>
-
 ## find
 
 ```TypeScript
@@ -63,8 +61,6 @@ Returns the value of the first element in the array where predicate is true, and
 | --- | --- | --- | --- |
 | predicate | (this: void, value: T, index: number, obj: T[]) =&gt; value is S | Yes |  |
 | thisArg | any | No |  |
-
-<a id="find2"></a>
 
 ## find
 

@@ -18,8 +18,6 @@ class SequenceRunner
 import { taskpool } from '@kit.ArkTS';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -47,8 +45,6 @@ SequenceRunner的构造函数，用于创建一个**SequenceRunner**实例。
 ```TypeScript
 let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

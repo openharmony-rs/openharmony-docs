@@ -29,8 +29,8 @@ import { socket } from '@kit.NetworkKit';
 | [constructMulticastSocketInstance](arkts-network-socket-constructmulticastsocketinstance-f.md#constructmulticastsocketinstance) | 创建一个MulticastSocket对象。 |
 | [constructTCPSocketInstance](arkts-network-socket-constructtcpsocketinstance-f.md#constructtcpsocketinstance) | 创建一个TCPSocket对象。 |
 | [constructTCPSocketServerInstance](arkts-network-socket-constructtcpsocketserverinstance-f.md#constructtcpsocketserverinstance) | 创建一个TCPSocketServer对象。 |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance1) | 创建并返回一个TLSSocket对象。 |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance2) | 将TCPSocket升级为TLSSocket，创建并返回一个TLSSocket对象。 |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance) | 创建并返回一个TLSSocket对象。 |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance) | 将TCPSocket升级为TLSSocket，创建并返回一个TLSSocket对象。 |
 | [constructTLSSocketServerInstance](arkts-network-socket-constructtlssocketserverinstance-f.md#constructtlssocketserverinstance) | 创建并返回一个TLSSocketServer对象。 |
 | [constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md#constructudpsocketinstance) | 创建一个UDPSocket对象。 |
 
@@ -70,6 +70,7 @@ import { socket } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
+| [NetAddress](arkts-network-socket-netaddress-t.md) | 定义网络地址。 |
 | [X509CertRawData](arkts-network-socket-x509certrawdata-t.md) | 存储证书的数据。 |
 
 ### 枚举
@@ -78,9 +79,3 @@ import { socket } from '@kit.NetworkKit';
 | --- | --- |
 | [Protocol](arkts-network-socket-protocol-e.md) | TLS通信的协议版本。 |
 | [ProxyTypes](arkts-network-socket-proxytypes-e.md) | Socket代理类型。 |
-
-### 属性
-
-| 名称 | 说明 |
-| --- | --- |
-| [NetAddress](arkts-network-socket-p.md#netaddress) | 定义网络地址。 |

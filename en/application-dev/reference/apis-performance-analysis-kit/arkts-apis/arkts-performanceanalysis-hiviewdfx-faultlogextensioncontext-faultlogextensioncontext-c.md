@@ -12,8 +12,6 @@ This module provides APIs for accessing resources of a specific [FaultLogExtensi
 > 
 > - The APIs of this module can be used only in the stage model.
 
-@extends ExtensionContext
-
 **Inheritance/Implementation:** FaultLogExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 
 **Since:** 21

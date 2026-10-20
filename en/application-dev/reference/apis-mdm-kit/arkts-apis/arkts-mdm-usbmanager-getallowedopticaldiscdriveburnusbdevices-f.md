@@ -9,10 +9,10 @@ import { usbManager } from '@kit.MDMKit';
 ## getAllowedOpticalDiscDriveBurnUsbDevices
 
 ```TypeScript
-function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPolicy): Array<UsbDevice>
+function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPolicy): Promise<Array<UsbDevice>>
 ```
 
-Obtain the list of USB devices that support CD/DVD burning.
+Obtain the list of USB devices that support CD/DVD burning.This API uses a promise to return the result.
 
 **Since:** 26.0.1
 
@@ -20,7 +20,7 @@ Obtain the list of USB devices that support CD/DVD burning.
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-usbManager-function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPolicy): Array<UsbDevice>--><!--Device-usbManager-function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPolicy): Array<UsbDevice>-End-->
+<!--Device-usbManager-function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPolicy): Promise<Array<UsbDevice>>--><!--Device-usbManager-function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPolicy): Promise<Array<UsbDevice>>-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -28,13 +28,13 @@ Obtain the list of USB devices that support CD/DVD burning.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| queryPolicy | [common.QueryPolicy](arkts-mdm-common-querypolicy-e.md) | No | queryPolicy indicates the policy of query.<br>Default value: common.QueryPolicy.SELF. |
+| queryPolicy | [common.QueryPolicy](arkts-mdm-common-querypolicy-e.md) | No | queryPolicy indicates the policy of query. <br>Default value: common.QueryPolicy.SELF. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[UsbDevice](arkts-mdm-usbmanager-usbdevice-i.md)&gt; | Array of allowed USB devices. |
+| Promise&lt;Array&lt;[UsbDevice](arkts-mdm-usbmanager-usbdevice-i.md)&gt;&gt; | Promise used to return Array<UsbDevice>.The array of allowed USB devices. |
 
 **Error codes:**
 

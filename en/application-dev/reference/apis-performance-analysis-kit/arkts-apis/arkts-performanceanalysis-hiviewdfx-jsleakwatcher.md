@@ -23,8 +23,8 @@ import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
 | [check](arkts-performanceanalysis-jsleakwatcher-check-f.md#check) | Obtains the list of objects that are leaked and registered using **jsLeakWatcher.watch()**. Objects that are not reclaimed after GC is triggered are marked as leaked. |
 | [dump](arkts-performanceanalysis-jsleakwatcher-dump-f.md#dump) | Dumps the list of leaked objects and VM memory snapshot. |
 | [enable](arkts-performanceanalysis-jsleakwatcher-enable-f.md#enable) | Enables the detection for ArkTS object leaks. This function is disabled by default. |
-| [enableLeakWatcher](arkts-performanceanalysis-jsleakwatcher-enableleakwatcher-f.md#enableleakwatcher1) | Enables the ArkTS object leak detection. |
-| [enableLeakWatcher](arkts-performanceanalysis-jsleakwatcher-enableleakwatcher-f.md#enableleakwatcher2) | Enables the ArkTS object leak detection. |
+| [enableLeakWatcher](arkts-performanceanalysis-jsleakwatcher-enableleakwatcher-f.md#enableleakwatcher) | Enables the ArkTS object leak detection. |
+| [enableLeakWatcher](arkts-performanceanalysis-jsleakwatcher-enableleakwatcher-f.md#enableleakwatcher) | Enables the ArkTS object leak detection. |
 | [watch](arkts-performanceanalysis-jsleakwatcher-watch-f.md#watch) | Registers the object to be checked. |
 
 ### Interfaces

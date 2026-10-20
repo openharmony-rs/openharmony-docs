@@ -73,3 +73,28 @@ launchElement?: ElementName
 <!--Device-AbilityStageContext-launchElement?: ElementName--><!--Device-AbilityStageContext-launchElement?: ElementName-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**示例**
+
+```TypeScript
+import { AbilityStage } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    // 获取AbilityStageContext上下文
+    let abilityStageContext = this.context;
+    // 获取当前模块名
+    let name = abilityStageContext.currentHapModuleInfo.name;
+    // 获取当前模块语言
+    let language = abilityStageContext.config.language;
+    // 获取创建AbilityStage时的ElementName
+    let elementName = abilityStageContext.launchElement;
+    if (elementName) {
+      hilog.info(0x0000, 'testTag', 'bundleName: %{public}s', elementName.bundleName);
+      hilog.info(0x0000, 'testTag', 'moduleName: %{public}s', elementName.moduleName);
+      hilog.info(0x0000, 'testTag', 'abilityName: %{public}s', elementName.abilityName);
+    }
+  }
+}
+```

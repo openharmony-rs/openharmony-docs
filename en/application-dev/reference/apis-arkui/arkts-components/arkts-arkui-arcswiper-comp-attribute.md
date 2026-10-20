@@ -88,7 +88,7 @@ Sets whether to disable the swipe-to-switch feature of the component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| disabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to disable the swipe-to-switch feature of the component. The value **true** means to disable the feature, and **false** means the opposite.<br>Default value: **false** |
+| disabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to disable the swipe-to-switch feature of the component. The value **true** means to disable the feature, and **false** means the opposite. <br>Default value: **false** |
 
 ## disableTransitionAnimation
 
@@ -176,7 +176,7 @@ Sets the index of the child component currently displayed in the container. If t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Index of the child component currently displayed in the container.<br>If **index** is set to **undefined**, the value **0** is used. |
+| index | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Index of the child component currently displayed in the container. <br>If **index** is set to **undefined**, the value **0** is used. |
 
 ## indicator
 
@@ -198,7 +198,7 @@ Sets the style of the arc dot navigation indicator.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ArcDotIndicator](arkts-arkui-arcswiper-comp-arcdotindicator-c.md) &#124; boolean&gt; | Yes | Style of the arc dot navigation indicator.<br> - **ArcDotIndicator**: properties and behavior of the arc dot navigation indicator. <br> - **boolean**: whether to enable the arc dot navigation indicator. **true** to enable, **false** otherwise. <br> Default value: **true** <br> Default type: **ArcDotIndicator** |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ArcDotIndicator](arkts-arkui-arcswiper-comp-arcdotindicator-c.md) &#124; boolean&gt; | Yes | Style of the arc dot navigation indicator. <br> - **ArcDotIndicator**: properties and behavior of the arc dot navigation indicator. <br> - **boolean**: whether to enable the arc dot navigation indicator. **true** to enable, **false** otherwise. <br> Default value: **true** <br> Default type: **ArcDotIndicator** |
 
 ## onAnimationEnd
 
@@ -312,4 +312,4 @@ Sets whether vertical swiping is used.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isVertical | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether vertical swiping is used.<br>The value **true** means vertical swiping, and **false** means horizontal swiping. <br>Default value: **false** |
+| isVertical | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether vertical swiping is used. <br>The value **true** means vertical swiping, and **false** means horizontal swiping. <br>Default value: **false** |

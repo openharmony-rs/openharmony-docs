@@ -36,6 +36,26 @@ data: Object
 
 **系统能力：** SystemCapability.Ability.Form
 
+## isSupportMoreImages
+
+```TypeScript
+isSupportMoreImages?: boolean
+```
+
+是否支持更多图片数据，在卡片数据使用共享内存时，当设置值为false时，最多支持正常显示的图片是20张，当设置为true时，最多支持正常显示的图片是30张。更多图片有数据总量超过10M的风险，导致卡片数据更新失败。默认值：false。
+
+**类型：** boolean
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-FormBindingData-isSupportMoreImages?: boolean--><!--Device-FormBindingData-isSupportMoreImages?: boolean-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
 ## proxies
 
 ```TypeScript

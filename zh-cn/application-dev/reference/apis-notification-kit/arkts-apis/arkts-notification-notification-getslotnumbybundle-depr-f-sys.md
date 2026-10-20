@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getslotnumbybundle1"></a>
-
 ## getSlotNumByBundle
 
 ```TypeScript
@@ -36,8 +34,28 @@ function getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback<number
 | bundle | BundleOption | 是 | 指定应用的包信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 获取通知通道数量回调函数。 |
 
+<!--Del-->
+**示例**
 
-<a id="getslotnumbybundle2"></a>
+```TypeScript
+import Base from '@ohos.base';
+import NotificationManager from '@ohos.notificationManager';
+
+let getSlotNumByBundleCallback = (err: Base.BusinessError, data: number) => {
+  if (err) {
+    console.error("getSlotNumByBundle failed " + JSON.stringify(err));
+  } else {
+    console.info("getSlotNumByBundle success");
+  }
+}
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+Notification.getSlotNumByBundle(bundle, getSlotNumByBundleCallback);
+```
+
+<!--DelEnd-->
+
 
 ## getSlotNumByBundle
 
@@ -72,3 +90,22 @@ function getSlotNumByBundle(bundle: BundleOption): Promise<number>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;number&gt; | 以Promise形式返回获取指定应用的通知通道数量。 |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+import NotificationManager from '@ohos.notificationManager';
+
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+Notification.getSlotNumByBundle(bundle).then((data: number) => {
+  console.info("getSlotNumByBundle success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`getSlotNumByBundle failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

@@ -4,7 +4,7 @@
 export enum ExtendAction
 ```
 
-Describes the type of the extended edit action on the text box.
+Enumerates the types of extended edit actions on the edit box.
 
 **Since:** 10
 
@@ -18,7 +18,7 @@ Describes the type of the extended edit action on the text box.
 COPY = 4
 ```
 
-Copy.
+Copy. <br> <br>Usage scenarios: used when the input method requests to copy the selected text, copying the selected text to the clipboard.
 
 **Since:** 10
 
@@ -32,7 +32,7 @@ Copy.
 CUT = 3
 ```
 
-Cut.
+Cut. <br> <br>Usage scenarios: used when the input method requests to cut the selected text, copying the selected text to the clipboard and deleting the original text.
 
 **Since:** 10
 
@@ -46,7 +46,7 @@ Cut.
 PASTE = 5
 ```
 
-Paste.
+Paste. <br> <br>Usage scenarios: used when the input method requests to paste the clipboard content.
 
 **Since:** 10
 
@@ -60,7 +60,7 @@ Paste.
 SELECT_ALL = 0
 ```
 
-Select all.
+Select all. <br> <br>Usage scenarios: used when the input method requests to select all text in the edit box.
 
 **Since:** 10
 

@@ -18,8 +18,6 @@ Stream from which data can be read. A readable stream is used to read data from 
 import { stream } from '@kit.ArkTS';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -41,8 +39,6 @@ A constructor used to create a **Readable** object.
 ```TypeScript
 let readableStream = new stream.Readable();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

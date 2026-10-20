@@ -24,14 +24,11 @@ import { baseProfile } from '@kit.ConnectivityKit';
 getConnectedDevices(): Array<string>
 ```
 
-Obtains the connected devices list of profile. On API 26.0.0 and above, if the application has ohos.permission.GET_BLUETOOTH_PEERS_MAC, the type of the peer device address is real. Otherwise, the type of the peer device address is virtual.
+Obtains the connected devices list of profile.
 
 **Since:** 10
 
-**Required permissions:** 
-- API version 26 and later: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API version 25: N/A
-- API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -165,14 +162,11 @@ Unsubscribe the event reported when the profile connection state changes .
 on(type: 'connectionStateChange', callback: Callback<StateChangeParam>): void
 ```
 
-Subscribe the event reported when the profile connection state changes . On API 26.0.0 and above, if the application has ohos.permission.GET_BLUETOOTH_PEERS_MAC, the type of the peer device address is real. Otherwise, the type of the peer device address is virtual.
+Subscribe the event reported when the profile connection state changes .
 
 **Since:** 10
 
-**Required permissions:** 
-- API version 26 and later: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API version 25: N/A
-- API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
 

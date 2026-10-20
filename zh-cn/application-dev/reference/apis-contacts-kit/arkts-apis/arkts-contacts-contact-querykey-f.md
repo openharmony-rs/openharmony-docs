@@ -6,8 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="querykey1"></a>
-
 ## queryKey
 
 ```TypeScript
@@ -20,7 +18,7 @@ function queryKey(id: number, callback: AsyncCallback<string>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryKey](#querykey2)(context: Context, id: number, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [queryKey](#querykey)(context: Context, id: number, callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -50,8 +48,6 @@ contact.queryKey(1, (err: BusinessError, data) => {
 });
 ```
 
-
-<a id="querykey2"></a>
 
 ## queryKey
 
@@ -107,8 +103,6 @@ contact.queryKey(context, 1, (err: BusinessError, data) => {
 ```
 
 
-<a id="querykey3"></a>
-
 ## queryKey
 
 ```TypeScript
@@ -121,7 +115,7 @@ function queryKey(id: number, holder: Holder, callback: AsyncCallback<string>): 
 
 **废弃版本：** 10
 
-**替代接口：** [queryKey](#querykey4)(context: Context, id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [queryKey](#querykey)(context: Context, id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -156,8 +150,6 @@ contact.queryKey(1, {
 });
 ```
 
-
-<a id="querykey4"></a>
 
 ## queryKey
 
@@ -218,8 +210,6 @@ contact.queryKey(context, 1, {
 ```
 
 
-<a id="querykey5"></a>
-
 ## queryKey
 
 ```TypeScript
@@ -232,7 +222,7 @@ function queryKey(id: number, holder?: Holder): Promise<string>
 
 **废弃版本：** 10
 
-**替代接口：** [queryKey](#querykey6)(context: Context, id: number, holder?: Holder)
+**替代接口：** [queryKey](#querykey)(context: Context, id: number, holder?: Holder)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -268,8 +258,6 @@ promise.then((data) => {
 });
 ```
 
-
-<a id="querykey6"></a>
 
 ## queryKey
 

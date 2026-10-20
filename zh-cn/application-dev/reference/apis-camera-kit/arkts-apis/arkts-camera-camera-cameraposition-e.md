@@ -68,7 +68,7 @@ CAMERA_POSITION_FOLD_INNER = 3
 
 折叠态相机。
 
-从API version 11开始支持，从API version 12开始废弃。
+从API版本11开始支持，从API版本12开始废弃。
 
 **起始版本：** 11
 

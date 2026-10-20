@@ -6,8 +6,6 @@ export interface WindowAnimationController
 
 Window animation controller.
 
-@interface WindowAnimationController
-
 **Since:** 9
 
 <!--Device-windowAnimationManager-export interface WindowAnimationController--><!--Device-windowAnimationManager-export interface WindowAnimationController-End-->

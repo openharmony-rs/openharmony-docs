@@ -6,8 +6,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="importkey1"></a>
-
 ## importKey
 
 ```TypeScript
@@ -19,14 +17,14 @@ function importKey(keyAlias: string, options: HuksOptions, callback: AsyncCallba
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.importKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-importkeyitem-f.md#importkeyitem1)
+> [huks.importKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-importkeyitem-f.md#importkeyitem)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [importKeyItem](arkts-universalkeystore-huks-importkeyitem-f.md#importkeyitem1)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [importKeyItem](arkts-universalkeystore-huks-importkeyitem-f.md#importkeyitem)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-huks-function importKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function importKey(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -89,8 +87,6 @@ huks.importKey(keyAlias, options, (err, data) => {
 ```
 
 
-<a id="importkey2"></a>
-
 ## importKey
 
 ```TypeScript
@@ -102,13 +98,13 @@ function importKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.importKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-importkeyitem-f.md#importkeyitem2)替代。
+> [huks.importKeyItem<sup>9+</sup>](arkts-universalkeystore-huks-importkeyitem-f.md#importkeyitem)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [importKeyItem](arkts-universalkeystore-huks-importkeyitem-f.md#importkeyitem2)(keyAlias: string, options: HuksOptions)
+**替代接口：** [importKeyItem](arkts-universalkeystore-huks-importkeyitem-f.md#importkeyitem)(keyAlias: string, options: HuksOptions)
 
 <!--Device-huks-function importKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function importKey(keyAlias: string, options: HuksOptions): Promise<HuksResult>-End-->
 

@@ -33,8 +33,8 @@ This API decrypts DLP files into plaintext files, which is applicable to exporti
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| dlpFd | number | Yes | FD of the DLP file to be decrypted. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **dlpFd** is less than 0, n error log is generated, and the function stops running. If the value of **dlpFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
-| plaintextFd | number | Yes | FD of the decrypted file. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **plaintextFd** is less than 0, an error log is generated, and the function stops running. If the value of **plaintextFd** is greater than 2<sup>31</sup>, the excess part will be truncated. |
+| dlpFd | number | Yes | FD of the DLP file to be decrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **dlpFd** is less than 0, n error log is generated, and the function stops running. If the value of **dlpFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
+| plaintextFd | number | Yes | FD of the decrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **plaintextFd** is less than 0, an error log is generated, and the function stops running. If the value of **plaintextFd** is greater than 2<sup>31</sup>, the excess part will be truncated. |
 
 **Return value:**
 
@@ -47,7 +47,6 @@ This API decrypts DLP files into plaintext files, which is applicable to exporti
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs.<br>**Applicable version:** 20 |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-encryption-and-decryption-error) | Credential service busy due to too many tasks or duplicate tasks. |

@@ -6,8 +6,6 @@ interface ImageStyle
 
 Style types supported by AI image generation models, like Graffiti, Watercolor.
 
-@interface ImageStyle
-
 **Since:** 23
 
 <!--Device-imageGeneration-interface ImageStyle--><!--Device-imageGeneration-interface ImageStyle-End-->

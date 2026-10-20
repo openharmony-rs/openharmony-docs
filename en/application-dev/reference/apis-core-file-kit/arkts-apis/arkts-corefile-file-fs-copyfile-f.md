@@ -28,7 +28,7 @@ Copies a file. This API uses a promise to return the result.
 | --- | --- | --- | --- |
 | src | string &#124; number | Yes | Path or FD of the file to copy. |
 | dest | string &#124; number | Yes | Destination path of the file or FD of the file created. |
-| mode | number | No | Whether to overwrite the file with the same name in the destination directory. The default value is **0**, which is the only value supported.<br>**0**: overwrite the file with the same name and truncate the part that is not overwritten. |
+| mode | number | No | Option for overwriting the destination file. The default value is <b>0</b>, which is the only value supported. <br><b>0</b>: Overwrite the file with the same name completely and truncate the part that is not overwritten. |
 
 **Return value:**
 
@@ -60,8 +60,6 @@ Copies a file. This API uses a promise to return the result.
 | 13900044 | Network is unreachable<br>**Applicable version:** 12 and later |
 
 
-<a id="copyfile2"></a>
-
 ## copyFile
 
 ```TypeScript
@@ -84,7 +82,7 @@ Copies a file. This API overwrites the file with the same name in the destinatio
 | --- | --- | --- | --- |
 | src | string &#124; number | Yes | Path or FD of the file to copy. |
 | dest | string &#124; number | Yes | Destination path of the file or FD of the file created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback invoked immediately after the file is copied. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback invoked when a file is copied asynchronously. |
 
 **Error codes:**
 
@@ -108,8 +106,6 @@ Copies a file. This API overwrites the file with the same name in the destinatio
 | 13900038 | Value too large for defined data type |
 | 13900042 | Unknown error |
 
-
-<a id="copyfile3"></a>
 
 ## copyFile
 

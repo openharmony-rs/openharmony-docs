@@ -6,8 +6,6 @@
 import { vibrator } from '@kit.SensorServiceKit';
 ```
 
-<a id="startvibration1"></a>
-
 ## startVibration
 
 ```TypeScript
@@ -40,9 +38,9 @@ Starts vibration based on a specified effect and attribute. This API uses an asy
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device<br> capabilities. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission <br> required to call the API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device <br> capabilities. |
 | [14600101](../errorcode-vibrator.md#14600101-device-operation-failed) | Device operation failed. |
 
 **Examples**
@@ -169,8 +167,6 @@ try {
 ```
 
 
-<a id="startvibration2"></a>
-
 ## startVibration
 
 ```TypeScript
@@ -208,9 +204,9 @@ Starts vibration based on a specified effect and attribute. This API uses a prom
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device<br> capabilities. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission <br> required to call the API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device <br> capabilities. |
 | [14600101](../errorcode-vibrator.md#14600101-device-operation-failed) | Device operation failed. |
 
 **Examples**

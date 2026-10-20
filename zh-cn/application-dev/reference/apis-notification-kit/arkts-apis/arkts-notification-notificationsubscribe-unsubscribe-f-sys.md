@@ -6,8 +6,6 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-<a id="unsubscribe1"></a>
-
 ## unsubscribe
 
 ```TypeScript
@@ -70,8 +68,6 @@ notificationSubscribe.unsubscribe(subscriber, unsubscribeCallback);
 
 <!--DelEnd-->
 
-
-<a id="unsubscribe2"></a>
 
 ## unsubscribe
 

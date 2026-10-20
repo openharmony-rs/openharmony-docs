@@ -4,7 +4,7 @@
 interface DeferredVideoEnhancementInfo
 ```
 
-Deferred video enhancement info.
+延迟视频增强信息。
 
 **起始版本：** 13
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 readonly isDeferredVideoEnhancementAvailable: boolean
 ```
 
-Check whether deferred video enhancement available.
+判断是否支持延迟视频增强。
 
 **类型：** boolean
 
@@ -44,7 +44,7 @@ Check whether deferred video enhancement available.
 readonly videoId?: string
 ```
 
-Video identifier.
+视频标识符。
 
 **类型：** string
 

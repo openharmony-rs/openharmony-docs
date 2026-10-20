@@ -4,7 +4,11 @@
 export class MediaQuery
 ```
 
-class MediaQuery
+提供根据不同媒体类型定义不同的样式。
+
+> **说明：** 
+> 
+> - 以下API需先使用UIContext中的[getMediaQuery()](arkts-arkui-arkui-uicontext-uicontext-c.md#getmediaquery)方法获取MediaQuery实例，再通过此实例调用对应方法。
 
 **起始版本：** 10
 

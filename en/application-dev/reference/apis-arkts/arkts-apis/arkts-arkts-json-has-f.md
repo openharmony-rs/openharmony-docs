@@ -34,3 +34,15 @@ Checks whether an ArkTS object contains a key. This API can be used for related 
 | Type | Description |
 | --- | --- |
 | boolean | Return true if the key is in the object, otherwise return false. |
+
+**Examples**
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+
+const jsonText = '{"name": "John", "age": 30, "city": "ChongQing"}';
+let inputObj = JSON.parse(jsonText);
+let result = JSON.has(inputObj, "name");
+console.info("result = " + result);
+// Output: result = true
+```

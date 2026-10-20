@@ -24,8 +24,6 @@ You can create an entity encapsulation component in either of the following ways
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -111,8 +109,6 @@ struct Index {
   }
 }
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -200,8 +196,6 @@ struct Index {
   }
 }
 ```
-
-<a id="constructor3"></a>
 
 ## constructor
 
@@ -410,7 +404,7 @@ Sets whether the current **ComponentContent** object inherits the freeze policy 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether the **ComponentContent** object inherits the freeze policy from its parent component's custom components.<br>**true**: Inherits the freeze policy from its parent component's custom components. **false**: Does not inherit the freeze policy from its parent component's custom components. <br>**Note:**  The value **true** takes effect only when the parent component is a custom component, **BuilderNode**, **ComponentContent**, **ReactiveBuilderNode**, or **ReactiveComponentContent**. |
+| enabled | boolean | Yes | Whether the **ComponentContent** object inherits the freeze policy from its parent component's custom components. <br>**true**: Inherits the freeze policy from its parent component's custom components. **false**: Does not inherit the freeze policy from its parent component's custom components. <br>**Note:**  The value **true** takes effect only when the parent component is a custom component, **BuilderNode**, **ComponentContent**, **ReactiveBuilderNode**, or **ReactiveComponentContent**. |
 
 **Examples**
 

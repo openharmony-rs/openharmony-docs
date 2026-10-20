@@ -56,11 +56,11 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber1) | Creates a subscriber. This API uses an asynchronous callback to return the result. |
-| [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber2) | Creates a subscriber. This API uses a promise to return the result. |
+| [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber) | Creates a subscriber. This API uses an asynchronous callback to return the result. |
+| [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber) | Creates a subscriber. This API uses a promise to return the result. |
 | [createSubscriberSync](arkts-basicservices-commoneventmanager-createsubscribersync-f.md#createsubscribersync) | Creates a subscriber synchronously. |
-| [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish1) | Publishes a common event. This API uses an asynchronous callback to return the result. |
-| [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish2) | Publishes a common event. This API uses an asynchronous callback to return the result. |
+| [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish) | Publishes a common event. This API uses an asynchronous callback to return the result. |
+| [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish) | Publishes a common event. This API uses an asynchronous callback to return the result. |
 | [subscribe](arkts-basicservices-commoneventmanager-subscribe-f.md#subscribe) | Subscribes to a common event. This API uses an asynchronous callback to return the result. |
 | [subscribeToEvent](arkts-basicservices-commoneventmanager-subscribetoevent-f.md#subscribetoevent) | Subscribes to a common event. This API uses a promise to return the result, indicating subscription success or failure. |
 | [unsubscribe](arkts-basicservices-commoneventmanager-unsubscribe-f.md#unsubscribe) | Unsubscribes from a common event. This API uses an asynchronous callback to return the result. |
@@ -70,13 +70,13 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [publishAsUser](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser1) | Publishes a common event to a specified user. This API uses an asynchronous callback to return the result. |
-| [publishAsUser](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser2) | Publishes a common event to a specified user and specifies the information to be published. This API uses an asynchronous callback to return the result. |
-| [removeStickyCommonEvent](arkts-basicservices-commoneventmanager-removestickycommonevent-f-sys.md#removestickycommonevent1) | Removes a sticky common event. This API uses an asynchronous callback to return the result. |
-| [removeStickyCommonEvent](arkts-basicservices-commoneventmanager-removestickycommonevent-f-sys.md#removestickycommonevent2) | Removes a sticky common event that has been published. This API uses a promise to return the result. |
-| [setStaticSubscriberState](arkts-basicservices-commoneventmanager-setstaticsubscriberstate-f-sys.md#setstaticsubscriberstate1) | Enables or disables static subscription for an app. This API uses an asynchronous callback to return the result. |
-| [setStaticSubscriberState](arkts-basicservices-commoneventmanager-setstaticsubscriberstate-f-sys.md#setstaticsubscriberstate2) | Enables or disables static subscription for an app. This API uses a promise to return the result. |
-| [setStaticSubscriberState](arkts-basicservices-commoneventmanager-setstaticsubscriberstate-f-sys.md#setstaticsubscriberstate3) | Enables or disables static subscription to a common event for the current app. This API uses a promise to return the result. |
+| [publishAsUser](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser) | Publishes a common event to a specified user. This API uses an asynchronous callback to return the result. |
+| [publishAsUser](arkts-basicservices-commoneventmanager-publishasuser-f-sys.md#publishasuser) | Publishes a common event to a specified user and specifies the information to be published. This API uses an asynchronous callback to return the result. |
+| [removeStickyCommonEvent](arkts-basicservices-commoneventmanager-removestickycommonevent-f-sys.md#removestickycommonevent) | Removes a sticky common event. This API uses an asynchronous callback to return the result. |
+| [removeStickyCommonEvent](arkts-basicservices-commoneventmanager-removestickycommonevent-f-sys.md#removestickycommonevent) | Removes a sticky common event that has been published. This API uses a promise to return the result. |
+| [setStaticSubscriberState](arkts-basicservices-commoneventmanager-setstaticsubscriberstate-f-sys.md#setstaticsubscriberstate) | Enables or disables static subscription for an app. This API uses an asynchronous callback to return the result. |
+| [setStaticSubscriberState](arkts-basicservices-commoneventmanager-setstaticsubscriberstate-f-sys.md#setstaticsubscriberstate) | Enables or disables static subscription for an app. This API uses a promise to return the result. |
+| [setStaticSubscriberState](arkts-basicservices-commoneventmanager-setstaticsubscriberstate-f-sys.md#setstaticsubscriberstate) | Enables or disables static subscription to a common event for the current app. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Types

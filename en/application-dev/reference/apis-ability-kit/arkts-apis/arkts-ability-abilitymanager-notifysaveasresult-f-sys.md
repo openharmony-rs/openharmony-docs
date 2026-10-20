@@ -6,8 +6,6 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
-<a id="notifysaveasresult1"></a>
-
 ## notifySaveAsResult
 
 ```TypeScript
@@ -45,8 +43,6 @@ Used by the [Data Loss Prevention (DLP)](../../apis-data-protection-kit/arkts-ap
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
-
-<a id="notifysaveasresult2"></a>
 
 ## notifySaveAsResult
 

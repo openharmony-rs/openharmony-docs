@@ -670,6 +670,22 @@ SUDO = 4
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+## SUPER_PRIVACY
+
+```TypeScript
+SUPER_PRIVACY = 53
+```
+
+超级隐私模式。禁用后无法打开超级隐私模式。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FeatureForDevice-SUPER_PRIVACY = 53--><!--Device-FeatureForDevice-SUPER_PRIVACY = 53-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## SYSTEM_ROLLBACK
 
 ```TypeScript

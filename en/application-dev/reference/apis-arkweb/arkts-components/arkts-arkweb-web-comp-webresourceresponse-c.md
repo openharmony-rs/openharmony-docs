@@ -368,7 +368,7 @@ Sets whether the resource response data is ready.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| IsReady | boolean | Yes | Whether the resource response data is ready.<br>The value **true** indicates that the resource response data is ready, and **false** indicates the opposite. <br>If the data is provided asynchronously, this parameter must be explicitly set to **false**. If this parameter is set to an invalid value, for example, **null** or **undefined**, or is not set, the data is considered ready. |
+| IsReady | boolean | Yes | Whether the resource response data is ready. <br>The value **true** indicates that the resource response data is ready, and **false** indicates the opposite. <br>If the data is provided asynchronously, this parameter must be explicitly set to **false**. If this parameter is set to an invalid value, for example, **null** or **undefined**, or is not set, the data is considered ready. |
 
 ## setResponseMimeType
 

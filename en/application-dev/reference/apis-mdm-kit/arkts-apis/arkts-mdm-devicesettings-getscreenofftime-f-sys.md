@@ -6,8 +6,6 @@
 import { deviceSettings } from '@kit.MDMKit';
 ```
 
-<a id="getscreenofftime1"></a>
-
 ## getScreenOffTime
 
 ```TypeScript
@@ -73,8 +71,6 @@ deviceSettings.getScreenOffTime(wantTemp, (err, result) => {
 
 <!--DelEnd-->
 
-
-<a id="getscreenofftime2"></a>
 
 ## getScreenOffTime
 

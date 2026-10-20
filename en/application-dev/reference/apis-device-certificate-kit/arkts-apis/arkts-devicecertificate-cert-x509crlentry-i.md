@@ -18,8 +18,6 @@ Provides APIs for operating on a revoked certificate entry in a CRL.
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
-<a id="getcertissuer1"></a>
-
 ## getCertIssuer
 
 ```TypeScript
@@ -52,10 +50,57 @@ Obtains the issuer name of the revoked certificate.
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported. |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+let crlData = '-----BEGIN X509 CRL-----\n' +
+  'MIHzMF4CAQMwDQYJKoZIhvcNAQEEBQAwFTETMBEGA1UEAxMKQ1JMIGlzc3VlchcN\n' +
+  'MTcwODA3MTExOTU1WhcNMzIxMjE0MDA1MzIwWjAVMBMCAgPoFw0zMjEyMTQwMDUz\n' +
+  'MjBaMA0GCSqGSIb3DQEBBAUAA4GBACEPHhlaCTWA42ykeaOyR0SGQIHIOUR3gcDH\n' +
+  'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
+  '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
+  'eavsH0Q3\n' +
+  '-----END X509 CRL-----\n';
+
+let encodingBlob: cert.EncodingBlob = {
+  data: stringToUint8Array(crlData),
+  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+  encodingFormat: cert.EncodingFormat.FORMAT_PEM
+};
+
+cert.createX509Crl(encodingBlob, (err, x509Crl) => {
+  if (err) {
+    console.error(`createX509Crl failed, errCode: ${err.code}, errMsg: ${err.message}`);
+  } else {
+    console.info('create x509 crl result: success.');
+
+    try {
+      let serialNumber = 1000;
+      let crlEntry = x509Crl.getRevokedCert(serialNumber);
+      let issuer = crlEntry.getCertIssuer();
+      console.info('issuer = ' + issuer.data);
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`getRevokedCert or getCertIssuer failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    }
+  }
+});
+```
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -104,8 +149,6 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 });
 ```
 
-<a id="getcertissuer2"></a>
-
 ## getCertIssuer
 
 ```TypeScript
@@ -140,8 +183,8 @@ Obtains the issuer name of the revoked certificate based on the encoding type.
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported. |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
-| [19020003](../errorcode-cert.md#19020003-parameter-check-failure) | Parameter check failed. Possible causes:<br>1. The value of encodingType is not in the EncodingType enumeration range. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020003](../errorcode-cert.md#19020003-parameter-check-failure) | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
@@ -221,7 +264,7 @@ Obtains the distinguished name (DN) of the issuer of the revoked certificate.
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
@@ -267,8 +310,6 @@ async function certGetCertIssuerX500DistinguishedName() {
 }
 ```
 
-<a id="getencoded1"></a>
-
 ## getEncoded
 
 ```TypeScript
@@ -295,12 +336,64 @@ Obtains the serialized data of this revoked certificate entry. This API uses an 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+let crlData = '-----BEGIN X509 CRL-----\n' +
+  'MIHzMF4CAQMwDQYJKoZIhvcNAQEEBQAwFTETMBEGA1UEAxMKQ1JMIGlzc3VlchcN\n' +
+  'MTcwODA3MTExOTU1WhcNMzIxMjE0MDA1MzIwWjAVMBMCAgPoFw0zMjEyMTQwMDUz\n' +
+  'MjBaMA0GCSqGSIb3DQEBBAUAA4GBACEPHhlaCTWA42ykeaOyR0SGQIHIOUR3gcDH\n' +
+  'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
+  '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
+  'eavsH0Q3\n' +
+  '-----END X509 CRL-----\n';
+
+let encodingBlob: cert.EncodingBlob = {
+  data: stringToUint8Array(crlData),
+  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+  encodingFormat: cert.EncodingFormat.FORMAT_PEM
+};
+
+cert.createX509Crl(encodingBlob, (err, x509Crl) => {
+  if (err) {
+    console.error(`createX509Crl failed, errCode: ${err.code}, errMsg: ${err.message}`);
+  } else {
+    console.info('create x509 crl result: success.');
+
+    try {
+      let serialNumber = 1000;
+      let crlEntry = x509Crl.getRevokedCert(serialNumber);
+      crlEntry.getEncoded((error, _data) => {
+        if (error) {
+          console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
+        } else {
+          console.info('getEncoded result: success.');
+        }
+      });
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    }
+  }
+});
+```
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -354,8 +447,6 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 });
 ```
 
-<a id="getencoded2"></a>
-
 ## getEncoded
 
 ```TypeScript
@@ -382,12 +473,62 @@ Obtains the serialized data of this revoked certificate entry. This API uses a p
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+let crlData = '-----BEGIN X509 CRL-----\n' +
+  'MIHzMF4CAQMwDQYJKoZIhvcNAQEEBQAwFTETMBEGA1UEAxMKQ1JMIGlzc3VlchcN\n' +
+  'MTcwODA3MTExOTU1WhcNMzIxMjE0MDA1MzIwWjAVMBMCAgPoFw0zMjEyMTQwMDUz\n' +
+  'MjBaMA0GCSqGSIb3DQEBBAUAA4GBACEPHhlaCTWA42ykeaOyR0SGQIHIOUR3gcDH\n' +
+  'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
+  '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
+  'eavsH0Q3\n' +
+  '-----END X509 CRL-----\n';
+
+let encodingBlob: cert.EncodingBlob = {
+  data: stringToUint8Array(crlData),
+  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+  encodingFormat: cert.EncodingFormat.FORMAT_PEM
+};
+
+cert.createX509Crl(encodingBlob, (err, x509Crl) => {
+  if (err) {
+    console.error(`createX509Crl failed, errCode: ${err.code}, errMsg: ${err.message}`);
+  } else {
+    console.info('create x509 crl result: success.');
+
+    try {
+      let serialNumber = 1000;
+      let crlEntry = x509Crl.getRevokedCert(serialNumber);
+      crlEntry.getEncoded().then(_result => {
+        console.info('getEncoded result: success.');
+      }).catch((error: BusinessError) => {
+        console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
+      });
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    }
+  }
+});
+```
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -466,7 +607,7 @@ Obtains the CRL entry extensions in DER format.
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
@@ -548,7 +689,7 @@ Obtains the CRL entry extension object.
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
@@ -688,10 +829,57 @@ Obtains the certificate's revocation date.
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
+
+```TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+let crlData = '-----BEGIN X509 CRL-----\n' +
+  'MIHzMF4CAQMwDQYJKoZIhvcNAQEEBQAwFTETMBEGA1UEAxMKQ1JMIGlzc3VlchcN\n' +
+  'MTcwODA3MTExOTU1WhcNMzIxMjE0MDA1MzIwWjAVMBMCAgPoFw0zMjEyMTQwMDUz\n' +
+  'MjBaMA0GCSqGSIb3DQEBBAUAA4GBACEPHhlaCTWA42ykeaOyR0SGQIHIOUR3gcDH\n' +
+  'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
+  '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
+  'eavsH0Q3\n' +
+  '-----END X509 CRL-----\n';
+
+let encodingBlob: cert.EncodingBlob = {
+  data: stringToUint8Array(crlData),
+  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+  encodingFormat: cert.EncodingFormat.FORMAT_PEM
+};
+
+cert.createX509Crl(encodingBlob, (err, x509Crl) => {
+  if (err) {
+    console.error(`createX509Crl failed, errCode: ${err.code}, errMsg: ${err.message}`);
+  } else {
+    console.info('create x509 crl result: success.');
+
+    try {
+      let serialNumber = 1000;
+      let crlEntry = x509Crl.getRevokedCert(serialNumber);
+      let date = crlEntry.getRevocationDate();
+      console.info('date = ' + date);
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`getRevokedCert or getRevocationDate failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    }
+  }
+});
+```
 
 ```TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
@@ -767,7 +955,7 @@ Obtains the serial number of this revoked certificate.
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
@@ -846,7 +1034,7 @@ Checks whether this CRL entry has extensions.
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
@@ -925,7 +1113,7 @@ Obtains the hash value of the data in DER format.
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
@@ -998,7 +1186,7 @@ Converts the object data into a string.
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**

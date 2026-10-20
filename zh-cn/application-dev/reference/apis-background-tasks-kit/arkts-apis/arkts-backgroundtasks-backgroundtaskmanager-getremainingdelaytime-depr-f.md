@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getremainingdelaytime1"></a>
-
 ## getRemainingDelayTime
 
 ```TypeScript
@@ -48,8 +46,6 @@ backgroundTaskManager.getRemainingDelayTime(delayInfo.requestId, (err: BusinessE
 });
 ```
 
-
-<a id="getremainingdelaytime2"></a>
 
 ## getRemainingDelayTime
 

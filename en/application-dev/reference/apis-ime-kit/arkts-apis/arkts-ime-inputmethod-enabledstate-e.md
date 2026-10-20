@@ -18,7 +18,7 @@ Indicates whether the input method is enabled.
 BASIC_MODE
 ```
 
-Basic mode.
+Basic mode. <br> <br>Usage scenarios: The input method is enabled but in basic mode, providing only basic input capabilities and not supporting advanced features (such as custom communication).
 
 **Since:** 15
 
@@ -32,7 +32,7 @@ Basic mode.
 DISABLED = 0
 ```
 
-Disabled.
+Not enabled. <br> <br>Usage scenarios: The input method is disabled and cannot be used as the current input method.
 
 **Since:** 15
 
@@ -46,7 +46,7 @@ Disabled.
 FULL_EXPERIENCE_MODE
 ```
 
-Full experience mode.
+Full experience mode. <br> <br>Usage scenarios: The input method is enabled and in full experience mode, supporting all features (including custom communication and text preview).
 
 **Since:** 15
 

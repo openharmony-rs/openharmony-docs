@@ -97,9 +97,9 @@ Photo mode:
 
 | SDR/HDR Photo Capture | CameraFormat| ColorSpace|  
 |--------------------|------------| ------------|  
-| SDR(Default) | [CAMERA_FORMAT_YUV_420_SP](arkts-camera-camera-cameraformat-e.md) | SRGB |
-| HDR P3 | [CAMERA_FORMAT_YUV_420_SP](arkts-camera-camera-cameraformat-e.md) | DISPLAY_P3 |
-| HDR BT.2020 | CAMERA_FORMAT_YCRCB_P010,<br>CAMERA_FORMAT_YCBCR_P010 | [BT2020_HLG](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md) |
+| SDR(Default) | CAMERA_FORMAT_YUV_420_SP | SRGB |  
+| HDR P3 | CAMERA_FORMAT_YUV_420_SP | DISPLAY_P3 |  
+| HDR BT.2020 | CAMERA_FORMAT_YCRCB_P010,<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG |
 
 In video recording mode, if SDR or HDR VIVID is enabled, the camera format and color space must be configured according to the relationships specified in the table below. Configurations that do not match the table will cause issues such as preview exceptions.
 
@@ -107,8 +107,8 @@ Recording mode:
 
 | SDR/HDR Photo Capture | CameraFormat | ColorSpace |  
 |--------------------|--------------------------|------------------|  
-| SDR(Default) | [CAMERA_FORMAT_YUV_420_SP](arkts-camera-camera-cameraformat-e.md) | [BT709_LIMIT](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md) |
-| HDR_VIVID | [CAMERA_FORMAT_YCRCB_P010](arkts-camera-camera-cameraformat-e.md) | BT2020_HLG_LIMIT,<br>BT2020_HLG |
+| SDR(Default) | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT |  
+| HDR_VIVID | CAMERA_FORMAT_YCRCB_P010 | BT2020_HLG_LIMIT,<br>BT2020_HLG |
 
 **Since:** 12
 

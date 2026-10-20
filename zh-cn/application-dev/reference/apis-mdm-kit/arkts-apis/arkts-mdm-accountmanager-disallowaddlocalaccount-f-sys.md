@@ -6,8 +6,6 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-<a id="disallowaddlocalaccount1"></a>
-
 ## disallowAddLocalAccount
 
 ```TypeScript
@@ -74,8 +72,6 @@ accountManager.disallowAddLocalAccount(wantTemp, true, (err) => {
 
 <!--DelEnd-->
 
-
-<a id="disallowaddlocalaccount2"></a>
 
 ## disallowAddLocalAccount
 

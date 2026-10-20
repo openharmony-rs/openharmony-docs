@@ -6,8 +6,6 @@ export interface Vec3
 
 A three-dimensional vector used to represent a point, a direction, or a vector transformation in 3D space. It consists of three components: x, y, and z.
 
-@typedef Vec3
-
 **Since:** 12
 
 <!--Device-unnamed-export interface Vec3--><!--Device-unnamed-export interface Vec3-End-->

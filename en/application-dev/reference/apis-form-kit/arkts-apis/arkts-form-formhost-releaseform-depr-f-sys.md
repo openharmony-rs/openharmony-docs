@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="releaseform1"></a>
-
 ## releaseForm
 
 ```TypeScript
@@ -54,8 +52,6 @@ formHost.releaseForm(formId, (error: Base.BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="releaseform2"></a>
 
 ## releaseForm
 
@@ -105,8 +101,6 @@ formHost.releaseForm(formId, true, (error: Base.BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="releaseform3"></a>
 
 ## releaseForm
 

@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getallbundleinfo1"></a>
-
 ## getAllBundleInfo
 
 ```TypeScript
@@ -67,8 +65,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getallbundleinfo2"></a>
 
 ## getAllBundleInfo
 
@@ -133,8 +129,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="getallbundleinfo3"></a>
-
 ## getAllBundleInfo
 
 ```TypeScript
@@ -164,7 +158,7 @@ function getAllBundleInfo(bundleFlags: number, userId?: number): Promise<Array<B
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)&gt;&gt; | Promise对象。返回Array<[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)>。 |
+| Promise&lt;Array&lt;[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)&gt;&gt; | Promise对象。返回Array<BundleInfo>。 |
 
 **错误码：**
 

@@ -48,9 +48,7 @@ This attribute cannot be used together with the [overlay](arkts-arkui-common-com
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable the AI analysis function for the component. When enabled, the component content must support subject recognition, text recognition, or object search.<br>When set to **true**, the component can perform AI analysis; when set to **false**, the component cannot perform AI analysis. <br>Abnormal values **null** and **undefined** are processed as **false**. <br>Default value: **false** |
-
-<a id="onready1"></a>
+| enable | boolean | Yes | Whether to enable the AI analysis function for the component. When enabled, the component content must support subject recognition, text recognition, or object search. <br>When set to **true**, the component can perform AI analysis; when set to **false**, the component cannot perform AI analysis. <br>Abnormal values **null** and **undefined** are processed as **false**. <br>Default value: **false** |
 
 ## onReady
 
@@ -79,8 +77,6 @@ When this event is triggered, the canvas is cleared. The width and height of the
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | Yes | Callback event triggered when the **Canvas** component initialization is complete or when its size changes. |
-
-<a id="onready2"></a>
 
 ## onReady
 

@@ -173,7 +173,7 @@ getParamByIndex(index: number): unknown | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| unknown &#124; undefined | **unknown**: parameter information of the corresponding navigation destination page. **unknown** can represent a user-defined type.<br>**undefined**: an invalid index is provided. |
+| unknown &#124; undefined | **unknown**: parameter information of the corresponding navigation destination page. **unknown** can represent a user-defined type. <br>**undefined**: an invalid index is provided. |
 
 ## getParamByName
 
@@ -311,8 +311,6 @@ moveToTop(name: string, animated?: boolean): number
 | --- | --- |
 | number | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的当前索引，否则返回-1。 |
 
-<a id="pop1"></a>
-
 ## pop
 
 ```TypeScript
@@ -361,9 +359,7 @@ pop(animated?: boolean): NavPathInfo | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) &#124; undefined | **NavPathInfo**: information about the navigation destination page at the top of the stack.<br>**undefined**: the routing stack is empty. |
-
-<a id="pop2"></a>
+| [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) &#124; undefined | **NavPathInfo**: information about the navigation destination page at the top of the stack. <br>**undefined**: the routing stack is empty. |
 
 ## pop
 
@@ -414,9 +410,7 @@ pop(result: Object, animated?: boolean): NavPathInfo | undefined
 
 | 类型 | 说明 |
 | --- | --- |
-| [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) &#124; undefined | **NavPathInfo**: information about the navigation destination page at the top of the stack.<br>**undefined**: the routing stack is empty. |
-
-<a id="poptoindex1"></a>
+| [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) &#124; undefined | **NavPathInfo**: information about the navigation destination page at the top of the stack. <br>**undefined**: the routing stack is empty. |
 
 ## popToIndex
 
@@ -443,8 +437,6 @@ popToIndex(index: number, animated?: boolean): void
 | index | number | 是 | NavDestination页面的位置索引。索引值从0开始。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true<br>**适用版本：** 11 |
 
-<a id="poptoindex2"></a>
-
 ## popToIndex
 
 ```TypeScript
@@ -470,8 +462,6 @@ popToIndex(index: number, result: Object, animated?: boolean): void
 | index | number | 是 | NavDestination页面的位置索引。索引值从0开始。 |
 | result | Object | 是 | 页面自定义处理结果。不支持boolean类型。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true |
-
-<a id="poptoname1"></a>
 
 ## popToName
 
@@ -504,8 +494,6 @@ popToName(name: string, animated?: boolean): number
 | --- | --- |
 | number | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。 |
 
-<a id="poptoname2"></a>
-
 ## popToName
 
 ```TypeScript
@@ -537,8 +525,6 @@ popToName(name: string, result: Object, animated?: boolean): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。 |
-
-<a id="pushdestination1"></a>
 
 ## pushDestination
 
@@ -580,8 +566,6 @@ pushDestination(info: NavPathInfo, animated?: boolean): Promise<void>
 | [100005](../errorcode-router.md#100005-navigation跳转时未注册builder函数) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
 
-<a id="pushdestination2"></a>
-
 ## pushDestination
 
 ```TypeScript
@@ -621,8 +605,6 @@ pushDestination(info: NavPathInfo, options?: NavigationOptions): Promise<void>
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100005](../errorcode-router.md#100005-navigation跳转时未注册builder函数) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
-
-<a id="pushdestinationbyname1"></a>
 
 ## pushDestinationByName
 
@@ -665,8 +647,6 @@ pushDestinationByName(name: string, param: Object, animated?: boolean): Promise<
 | [100005](../errorcode-router.md#100005-navigation跳转时未注册builder函数) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
 
-<a id="pushdestinationbyname2"></a>
-
 ## pushDestinationByName
 
 ```TypeScript
@@ -691,7 +671,7 @@ pushDestinationByName(name: string, param: Object, onPop: import('../api/@ohos.b
 | --- | --- | --- | --- |
 | name | string | 是 | NavDestination页面名称。 |
 | param | Object | 是 | 开发者设置的NavDestination页面详细参数。 |
-| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时处理返回结果。仅[pop](#pop2)、[popToName](#poptoname2)、[popToIndex](#poptoindex2)中设置result参数后触发。 |
+| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时处理返回结果。仅[pop](#pop)、[popToName](#poptoname)、[popToIndex](#poptoindex)中设置result参数后触发。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true |
 
 **返回值：**
@@ -708,8 +688,6 @@ pushDestinationByName(name: string, param: Object, onPop: import('../api/@ohos.b
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100005](../errorcode-router.md#100005-navigation跳转时未注册builder函数) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
-
-<a id="pushpath1"></a>
 
 ## pushPath
 
@@ -736,8 +714,6 @@ pushPath(info: NavPathInfo, animated?: boolean): void
 | info | [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>传入参数非法时，按true处理。<br>**适用版本：** 11 |
 
-<a id="pushpath2"></a>
-
 ## pushPath
 
 ```TypeScript
@@ -762,8 +738,6 @@ pushPath(info: NavPathInfo, options?: NavigationOptions): void
 | --- | --- | --- | --- |
 | info | [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
 | options | [NavigationOptions](arkts-arkui-navigation-comp-navigationoptions-i.md) | 否 | 路由栈操作选项。 |
-
-<a id="pushpathbyname1"></a>
 
 ## pushPathByName
 
@@ -791,8 +765,6 @@ pushPathByName(name: string, param: unknown, animated?: boolean): void
 | param | unknown | 是 | 开发者设置的NavDestination页面详细参数，unknown可以是用户自定义的类型。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true<br>**适用版本：** 11 |
 
-<a id="pushpathbyname2"></a>
-
 ## pushPathByName
 
 ```TypeScript
@@ -817,7 +789,7 @@ pushPathByName(name: string, param: Object, onPop: import('../api/@ohos.base').C
 | --- | --- | --- | --- |
 | name | string | 是 | NavDestination页面名称。 |
 | param | Object | 是 | 开发者设置的NavDestination页面详细参数。 |
-| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时触发该回调处理返回结果。仅[pop](#pop2)、[popToName](#poptoname2)、[popToIndex](#poptoindex2)中设置result参数后触发。 |
+| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时触发该回调处理返回结果。仅[pop](#pop)、[popToName](#poptoname)、[popToIndex](#poptoindex)中设置result参数后触发。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true |
 
 ## removeByIndexes
@@ -950,8 +922,6 @@ replaceDestination(info: NavPathInfo, options?: NavigationOptions): Promise<void
 | [100005](../errorcode-router.md#100005-navigation跳转时未注册builder函数) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
 
-<a id="replacepath1"></a>
-
 ## replacePath
 
 ```TypeScript
@@ -976,8 +946,6 @@ replacePath(info: NavPathInfo, animated?: boolean): void
 | --- | --- | --- | --- |
 | info | [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | 新栈顶页面参数信息。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true |
-
-<a id="replacepath2"></a>
 
 ## replacePath
 
@@ -1109,4 +1077,4 @@ size(): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | Stack size.<br>Value range: [0, +∞) |
+| number | Stack size. <br>Value range: [0, +∞) |

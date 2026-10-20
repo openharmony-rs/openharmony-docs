@@ -20,8 +20,10 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 
 | 名称 | 说明 |
 | --- | --- |
+| [disableUserGrantedByBundle](arkts-notification-notificationextensionsubscription-disableusergrantedbybundle-f.md#disableusergrantedbybundle) | 关闭本应用中“已获取的本机通知”列表中指定应用的开关状态。使用promise异步回调。 |
 | [getSubscribeInfo](arkts-notification-notificationextensionsubscription-getsubscribeinfo-f.md#getsubscribeinfo) | 获取当前应用的通知扩展订阅信息。使用Promise异步回调。 |
-| [getUserGrantedEnabledBundles](arkts-notification-notificationextensionsubscription-getusergrantedenabledbundles-f.md#getusergrantedenabledbundles2) | 获取本应用中“已获取的本机通知”通知开关开启的应用列表。使用Promise异步回调。 |
+| [getUserGrantedBundleIcon](arkts-notification-notificationextensionsubscription-getusergrantedbundleicon-f.md#getusergrantedbundleicon) | 查询本应用中“已获取的本机通知”列表中开关状态为开的应用图标。使用Promise异步回调。 |
+| [getUserGrantedEnabledBundles](arkts-notification-notificationextensionsubscription-getusergrantedenabledbundles-f.md#getusergrantedenabledbundles) | 获取本应用中“已获取的本机通知”通知开关开启的应用列表。使用Promise异步回调。 |
 | [isUserGranted](arkts-notification-notificationextensionsubscription-isusergranted-f.md#isusergranted) | 查询“允许获取本机通知”的开关状态。使用Promise异步回调。 |
 | [openSubscriptionSettings](arkts-notification-notificationextensionsubscription-opensubscriptionsettings-f.md#opensubscriptionsettings) | 打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调。 |
 | [openSubscriptionSettingsWithResult](arkts-notification-notificationextensionsubscription-opensubscriptionsettingswithresult-f.md#opensubscriptionsettingswithresult) | 打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权的结果。 |
@@ -34,7 +36,7 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 | 名称 | 说明 |
 | --- | --- |
 | [getAllSubscriptionBundles](arkts-notification-notificationextensionsubscription-getallsubscriptionbundles-f-sys.md#getallsubscriptionbundles) | 获取所有具有ohos.permission.SUBSCRIBE_NOTIFICATION权限并且实现了[NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md)的应用列表。使用Promise异步回调。 |
-| [getUserGrantedEnabledBundles](arkts-notification-notificationextensionsubscription-getusergrantedenabledbundles-f-sys.md#getusergrantedenabledbundles1) | 获取指定应用中“已获取的本机通知”通知开关开启的应用列表。使用Promise异步回调。 |
+| [getUserGrantedEnabledBundles](arkts-notification-notificationextensionsubscription-getusergrantedenabledbundles-f-sys.md#getusergrantedenabledbundles) | 获取指定应用中“已获取的本机通知”通知开关开启的应用列表。使用Promise异步回调。 |
 | [getUserGrantedState](arkts-notification-notificationextensionsubscription-getusergrantedstate-f-sys.md#getusergrantedstate) | 查询指定应用的“允许获取本机通知”的开关状态。使用Promise异步回调。 |
 | [setUserGrantedBundleState](arkts-notification-notificationextensionsubscription-setusergrantedbundlestate-f-sys.md#setusergrantedbundlestate) | 设置指定应用中“已获取的本机通知”的应用通知开关状态。使用Promise异步回调。 |
 | [setUserGrantedState](arkts-notification-notificationextensionsubscription-setusergrantedstate-f-sys.md#setusergrantedstate) | 设置指定应用的“允许获取本机通知”的开关状态。使用Promise异步回调。 |

@@ -6,8 +6,6 @@ declare type PromptActionCommonState = import('../api/@ohos.promptAction').promp
 
 Import the CommonState type from promptAction.
 
-@typedef { import('../api/@ohos.promptAction').promptAction.CommonState } PromptActionCommonState
-
 **Type:** import('../api/@ohos.promptAction').promptAction.CommonState
 
 **Since:** 20

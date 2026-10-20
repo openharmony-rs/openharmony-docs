@@ -20,8 +20,6 @@ VPN 连接对象。在调用 VpnConnection 的方法前，需要先通过[vpn.cr
 import { vpn } from '@kit.NetworkKit';
 ```
 
-<a id="destroy1"></a>
-
 ## destroy
 
 ```TypeScript
@@ -83,8 +81,6 @@ struct Index {
 ```
 
 <!--DelEnd-->
-
-<a id="destroy2"></a>
 
 ## destroy
 
@@ -149,8 +145,6 @@ struct Index {
 ```
 
 <!--DelEnd-->
-
-<a id="protect1"></a>
 
 ## protect
 
@@ -234,8 +228,6 @@ struct Index {
 ```
 
 <!--DelEnd-->
-
-<a id="protect2"></a>
 
 ## protect
 
@@ -327,8 +319,6 @@ struct Index {
 
 <!--DelEnd-->
 
-<a id="setup1"></a>
-
 ## setUp
 
 ```TypeScript
@@ -409,8 +399,6 @@ struct Index {
 ```
 
 <!--DelEnd-->
-
-<a id="setup2"></a>
 
 ## setUp
 

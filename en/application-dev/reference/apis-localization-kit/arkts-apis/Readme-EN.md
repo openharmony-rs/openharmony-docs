@@ -21,6 +21,7 @@
 - [@ohos.i18n(Internationalization)](arkts-localization-i18n.md)
   - [getCalendar](arkts-localization-i18n-getcalendar-f.md)
   - [getChineseCalendar](arkts-localization-i18n-getchinesecalendar-f.md)
+  - [getCurrency](arkts-localization-i18n-getcurrency-f.md)
   - [getInstance](arkts-localization-i18n-getinstance-f.md)
   - [getLineInstance](arkts-localization-i18n-getlineinstance-f.md)
   - [getSimpleDateTimeFormatByPattern](arkts-localization-i18n-getsimpledatetimeformatbypattern-f.md)
@@ -43,6 +44,7 @@
   - [BreakIterator](arkts-localization-i18n-breakiterator-c.md)
   - [Calendar](arkts-localization-i18n-calendar-c.md)
   - [ChineseCalendar](arkts-localization-i18n-chinesecalendar-c.md)
+  - [Currency](arkts-localization-i18n-currency-c.md)
   - [EntityRecognizer](arkts-localization-i18n-entityrecognizer-c.md)
   - [HolidayManager](arkts-localization-i18n-holidaymanager-c.md)
   - [I18NUtil](arkts-localization-i18n-i18nutil-c.md)
@@ -89,6 +91,7 @@
   - [TimeZoneCityItem(system api)](arkts-localization-i18n-timezonecityitem-i-sys.md)<!--DelEnd-->
   - [UnitInfo](arkts-localization-i18n-unitinfo-i.md)
   - [Util](arkts-localization-i18n-util-i.md)
+  - [BilingualIndexMode](arkts-localization-i18n-bilingualindexmode-e.md)
   - [NormalizerMode](arkts-localization-i18n-normalizermode-e.md)
   <!--Del-->
   - [SuggestionType(system api)](arkts-localization-i18n-suggestiontype-e-sys.md)<!--DelEnd-->

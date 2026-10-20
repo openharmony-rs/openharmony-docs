@@ -34,7 +34,7 @@ Returns the indentation distance for a text paragraph.
 
 | Type | Description |
 | --- | --- |
-| [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | Indentation of the text paragraph. Percentage is not supported.<br>Default value: **0** <br> |
+| [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | Indentation of the text paragraph. Percentage is not supported. <br>Default value: **0** <br> |
 
 ## onDraw
 
@@ -58,5 +58,5 @@ Draws a custom pattern. This API is triggered once for each line of text in a pa
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | DrawContext | Yes | Graphics drawing context.<br>The canvas method of **DrawContext** obtains the canvas of the component, and drawing does not exceed the component bounds. |
+| context | DrawContext | Yes | Graphics drawing context. <br>The canvas method of **DrawContext** obtains the canvas of the component, and drawing does not exceed the component bounds. |
 | drawInfo | [LeadingMarginSpanDrawInfo](arkts-arkui-leadingmarginspandrawinfo-i.md) | Yes | Custom drawing information. |

@@ -6,8 +6,6 @@ export interface ColorFringeSettings
 
 Describes the settings for color fringing. It is unavailable when RenderingPipelineType is set to FORWARD_LIGHTWEIGHT.
 
-@typedef ColorFringeSettings
-
 **Since:** 22
 
 <!--Device-unnamed-export interface ColorFringeSettings--><!--Device-unnamed-export interface ColorFringeSettings-End-->

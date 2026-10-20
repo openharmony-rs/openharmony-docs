@@ -26,10 +26,6 @@ Obtains the current font size scale factor. This scale is the ratio of the font 
 
 **Since:** 20
 
-**Required permissions:** 
-- API version 20 and later: N/A
-- API versions 12 to 19: ohos.permission.UPDATE_CONFIGURATION
-
 <!--Device-uiAppearance-function getFontScale(): number--><!--Device-uiAppearance-function getFontScale(): number-End-->
 
 **System capability:** SystemCapability.ArkUI.UiAppearance
@@ -44,8 +40,6 @@ Obtains the current font size scale factor. This scale is the ratio of the font 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 12 - 19 |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 - 19 |
 | [500001](../errorcode-uiappearance.md#500001-internal-error) | Internal error. |
 
 **Examples**

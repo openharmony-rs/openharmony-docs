@@ -36,8 +36,6 @@ declare function opendir(path: string): Promise<Dir>
 | Promise&lt;[Dir](arkts-corefile-fileio-dir-depr-i.md)&gt; | Promise对象。返回Dir对象。 |
 
 
-<a id="opendir2"></a>
-
 ## opendir
 
 ```TypeScript

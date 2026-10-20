@@ -6,8 +6,6 @@ type QueryCustomContentEvent = (queryType: CustomType[]) => Promise<CustomElemen
 
 The query custom content event.
 
-@typedef { function } QueryCustomContentEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

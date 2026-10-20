@@ -15,6 +15,10 @@ LightWeightMap可用于存储具有关联关系的key-value键值对，其中key
  >
  > - 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
+规格限制：当LightWeightMap存入的key为number类型且值大于INT32_MAX（2147483647）或小于INT32_MIN（-2147483648）时，
+ 针对LightWeightMap的操作，其结果可能与预期不一致。这是因为，当key为number类型且值超出INT32范围时，存储结构会发生改变，
+ 进而导致hash值和映射结果发生变化。
+
 
 
 ## 导入模块

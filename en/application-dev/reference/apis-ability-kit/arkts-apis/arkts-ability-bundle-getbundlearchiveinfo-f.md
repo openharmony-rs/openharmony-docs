@@ -6,8 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getbundlearchiveinfo1"></a>
-
 ## getBundleArchiveInfo
 
 ```TypeScript
@@ -49,8 +47,6 @@ bundle.getBundleArchiveInfo(hapFilePath, bundleFlags, (err, data) => {
 })
 ```
 
-
-<a id="getbundlearchiveinfo2"></a>
 
 ## getBundleArchiveInfo
 

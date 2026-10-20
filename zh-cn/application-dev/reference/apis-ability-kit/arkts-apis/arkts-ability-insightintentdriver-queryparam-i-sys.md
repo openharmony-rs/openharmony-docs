@@ -6,8 +6,6 @@ interface QueryParam
 
 意图实体查询参数，用于筛选设备上符合条件的意图实体。
 
-@typedef QueryParam
-
 **起始版本：** 26.0.0
 
 <!--Device-insightIntentDriver-interface QueryParam--><!--Device-insightIntentDriver-interface QueryParam-End-->

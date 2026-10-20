@@ -15,7 +15,7 @@ Defines the customizable attributes of a segment button component.
 ## Modules to Import
 
 ```TypeScript
-import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray, TabSegmentButtonOptions, TabSegmentButtonConstructionOptions, CapsuleSegmentButtonOptions, CapsuleSegmentButtonConstructionOptions, SegmentButtonTextItem, SegmentButtonIconItem, SegmentButtonIconTextItem, DimensionNoPercentage, CommonSegmentButtonOptions, ItemRestriction, SegmentButtonItemTuple, SegmentButtonItemArray, SegmentButtonItemOptionsConstructorOptions, SegmentButtonItemOptions, BorderRadiusMode } from '@kit.ArkUI';
+import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray, TabSegmentButtonOptions, TabSegmentButtonConstructionOptions, CapsuleSegmentButtonOptions, CapsuleSegmentButtonConstructionOptions, SegmentButtonTextItem, SegmentButtonIconItem, SegmentButtonIconTextItem, DimensionNoPercentage, CommonSegmentButtonOptions, SegmentButtonInteractionMode, ItemRestriction, SegmentButtonItemTuple, SegmentButtonItemArray, SegmentButtonItemOptionsConstructorOptions, SegmentButtonItemOptions, BorderRadiusMode } from '@kit.ArkUI';
 ```
 
 ## backgroundBlurStyle
@@ -315,6 +315,28 @@ The `imageSize` attribute takes effect only for icon buttons and icon + text but
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-CommonSegmentButtonOptions-imageSize?: SizeOptions--><!--Device-CommonSegmentButtonOptions-imageSize?: SizeOptions-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## interactionMode
+
+```TypeScript
+interactionMode?: SegmentButtonInteractionMode
+```
+
+Sets the drag interaction mode of the segmented button.
+
+If omitted, following drag is used with system material, and normal drag is used without it. Explicit normal drag without system material and explicit following drag with system material preserve the original behavior. Following drag without system material does not add material deformation or light effects. Normal drag with system material only changes drag positioning and selection updates. Material appearance, background scaling, slight displacement, selected-item deformation, and configured light effects are retained. If omitted, undefined or invalid, the default mode is used. This property has no effect in multi-select mode.
+
+**Type:** [SegmentButtonInteractionMode](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttoninteractionmode-e.md)
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-CommonSegmentButtonOptions-interactionMode?: SegmentButtonInteractionMode--><!--Device-CommonSegmentButtonOptions-interactionMode?: SegmentButtonInteractionMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

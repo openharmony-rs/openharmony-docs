@@ -6,8 +6,6 @@ interface AudioSessionStrategy
 
 音频会话策略。
 
-@typedef AudioSessionStrategy [since 12 - 24]
-
 **起始版本：** 12
 
 <!--Device-audio-interface AudioSessionStrategy--><!--Device-audio-interface AudioSessionStrategy-End-->

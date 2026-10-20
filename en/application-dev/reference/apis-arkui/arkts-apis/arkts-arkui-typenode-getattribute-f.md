@@ -1,7 +1,5 @@
 # getAttribute
 
-<a id="getattribute1"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -75,8 +73,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute2"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -148,8 +144,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="getattribute3"></a>
 
 ## getAttribute
 
@@ -223,8 +217,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute4"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -296,8 +288,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="getattribute5"></a>
 
 ## getAttribute
 
@@ -371,8 +361,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute6"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -408,8 +396,6 @@ Obtains the attributes of a **Swiper** node. If the node is not created using Ar
 
 See the example for createNode('Swiper')12+.
 
-
-<a id="getattribute7"></a>
 
 ## getAttribute
 
@@ -482,8 +468,6 @@ struct Sample {
 ```
 
 
-<a id="getattribute8"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -519,8 +503,6 @@ Obtains the attributes of a **Scroll** node. If the node is not created using Ar
 
 See the example for createNode('Scroll').
 
-
-<a id="getattribute9"></a>
 
 ## getAttribute
 
@@ -594,8 +576,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute10"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -664,8 +644,6 @@ struct Sample {
 }
 ```
 
-
-<a id="getattribute11"></a>
 
 ## getAttribute
 
@@ -745,8 +723,6 @@ struct Sample {
 ```
 
 
-<a id="getattribute12"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -783,8 +759,6 @@ Obtains the attributes of a **List** node. If the node is not created using ArkT
 See the example for createNode('List').
 
 
-<a id="getattribute13"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -820,8 +794,6 @@ Obtains the attributes of a **ListItem** node. If the node is not created using 
 
 See the example for createNode('List').
 
-
-<a id="getattribute14"></a>
 
 ## getAttribute
 
@@ -891,8 +863,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="getattribute15"></a>
 
 ## getAttribute
 
@@ -969,8 +939,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute16"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -1009,8 +977,6 @@ typeNode.getAttribute(node, 'ListItemGroup');
 ```
 
 
-<a id="getattribute17"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -1047,8 +1013,6 @@ Obtains the attributes of a **WaterFlow** node. If the node is not created using
 See the example for createNode('WaterFlow').
 
 
-<a id="getattribute18"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -1084,8 +1048,6 @@ Obtains the attributes of a **FlowItem** node. If the node is not created using 
 
 See the example for createNode('WaterFlow').
 
-
-<a id="getattribute19"></a>
 
 ## getAttribute
 
@@ -1124,8 +1086,6 @@ Obtain the attributes of an **XComponent** node. If the node is not created usin
 typeNode.getAttribute(node, 'XComponent');
 ```
 
-
-<a id="getattribute20"></a>
 
 ## getAttribute
 
@@ -1204,8 +1164,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute21"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -1282,8 +1240,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute22"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -1354,8 +1310,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="getattribute23"></a>
 
 ## getAttribute
 
@@ -1428,8 +1382,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute24"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -1499,8 +1451,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="getattribute25"></a>
-
 ## getAttribute
 
 ```TypeScript
@@ -1536,8 +1486,6 @@ Obtains the attributes of a **Grid** node. If the node is not created using ArkT
 
 See the example for createNode('Grid').
 
-
-<a id="getattribute26"></a>
 
 ## getAttribute
 

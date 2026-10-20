@@ -38,8 +38,6 @@ Constructor used to create a pinch gesture handler instance.
 | --- | --- | --- | --- |
 | options | [PinchGestureHandlerOptions](arkts-arkui-tapgesture-comp-pinchgesturehandleroptions-i.md) | No | Configuration parameters of the pinch gesture handler. Pass this parameter when you need to customize the minimum finger count for triggering a pinch, the minimum recognition distance, or the finger count check. If this parameter is not passed, the default configuration of the pinch gesture handler is used, for example, the trigger finger count is 2, the minimum recognition distance is 5 vp, and the finger count on the touch screen is not checked by default. |
 
-<a id="onactioncancel1"></a>
-
 ## onActionCancel
 
 ```TypeScript
@@ -70,15 +68,13 @@ Sets the callback for pinch gesture cancellation. This callback is triggered whe
 | --- | --- |
 | [PinchGestureHandler](arkts-arkui-tapgesture-comp-pinchgesturehandler-c.md) | Pinch gesture handler object. |
 
-<a id="onactioncancel2"></a>
-
 ## onActionCancel
 
 ```TypeScript
 onActionCancel(event: Callback<GestureEvent>): PinchGestureHandler
 ```
 
-Sets the callback for pinch gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful recognition. Compared with [onActionCancel](#onactioncancel1), this API returns gesture event information.
+Sets the callback for pinch gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful recognition. Compared with [onActionCancel](#onactioncancel), this API returns gesture event information.
 
 **Since:** 18
 

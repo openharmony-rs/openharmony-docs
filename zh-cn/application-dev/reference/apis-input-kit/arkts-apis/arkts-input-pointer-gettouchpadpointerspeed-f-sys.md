@@ -6,8 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="gettouchpadpointerspeed1"></a>
-
 ## getTouchpadPointerSpeed
 
 ```TypeScript
@@ -71,8 +69,6 @@ struct Index {
 
 <!--DelEnd-->
 
-
-<a id="gettouchpadpointerspeed2"></a>
 
 ## getTouchpadPointerSpeed
 

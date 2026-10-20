@@ -33,7 +33,7 @@ No permission is required for obtaining the caller's own information.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
-| userId | number | Yes | User ID on the device.<br>The value should be an integer. |
+| userId | number | Yes | User ID on the device. <br>The value should be an integer. |
 
 **Return value:**
 

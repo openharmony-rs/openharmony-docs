@@ -8,9 +8,9 @@ export enum ImmersiveMode
 
 | 名称 | 值 | 说明 |  
 | ------------ | -- | ------------------ |  
-| NONE_IMMERSIVE | 0 | 不使用沉浸模式。 |
-| IMMERSIVE | 1 | 沉浸模式，由输入法应用确定沉浸模式类型。 |
-| LIGHT_IMMERSIVE | 2 | 浅色沉浸模式。 |
+| NONE_IMMERSIVE | 0 | 不使用沉浸模式。 |  
+| IMMERSIVE | 1 | 沉浸模式，由输入法应用确定沉浸模式类型。 |  
+| LIGHT_IMMERSIVE | 2 | 浅色沉浸模式。 |  
 | DARK_IMMERSIVE | 3 | 深色沉浸模式。 |
 
 **起始版本：** 15

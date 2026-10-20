@@ -6,8 +6,6 @@ export type ToolInfo = _ToolInfo
 
 用于描述系统命令行工具（CLI）的基本信息。
 
-@typedef { _ToolInfo }
-
 **类型：** _ToolInfo
 
 **起始版本：** 26.0.0

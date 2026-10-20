@@ -22,8 +22,6 @@ export class PluralRules
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -52,8 +50,6 @@ import { intl } from '@kit.LocalizationKit';
 // 使用系统区域创建PluralRules对象
 let pluralRules = new intl.PluralRules();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

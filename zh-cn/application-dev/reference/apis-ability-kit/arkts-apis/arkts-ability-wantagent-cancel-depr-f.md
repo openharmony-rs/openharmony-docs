@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="cancel1"></a>
-
 ## cancel
 
 ```TypeScript
@@ -88,8 +86,6 @@ wantAgent.getWantAgent({
 }, getWantAgentCallback);
 ```
 
-
-<a id="cancel2"></a>
 
 ## cancel
 

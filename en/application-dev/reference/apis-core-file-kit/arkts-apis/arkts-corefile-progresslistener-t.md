@@ -4,7 +4,7 @@
 type ProgressListener = (progress: Progress) => void
 ```
 
-Listener used to observe the copy progress.
+Defines the listener used to observe the copy progress.
 
 **Since:** 11
 
@@ -16,7 +16,7 @@ Listener used to observe the copy progress.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| progress | [Progress](arkts-corefile-file-fs-progress-i.md) | Yes | indicates the progress data of copyFile |
+| progress | [Progress](arkts-corefile-file-fs-progress-i.md) | Yes | Listener used to observe the copy progress. |
 
 **Examples**
 

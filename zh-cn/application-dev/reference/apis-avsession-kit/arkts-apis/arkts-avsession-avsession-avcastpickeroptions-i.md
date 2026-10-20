@@ -6,8 +6,6 @@ interface AVCastPickerOptions
 
 拉起的投播组件包含的配置属性。
 
-@typedef AVCastPickerOptions
-
 **起始版本：** 14
 
 <!--Device-avSession-interface AVCastPickerOptions--><!--Device-avSession-interface AVCastPickerOptions-End-->

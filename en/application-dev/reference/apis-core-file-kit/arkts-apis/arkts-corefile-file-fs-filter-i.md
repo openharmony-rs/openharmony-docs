@@ -42,9 +42,7 @@ Locate files that fuzzy match the specified file names, which are of the OR rela
 excludeMedia?: boolean
 ```
 
-Whether to exclude the files already in **Media**.
-
-The value **true** means to exclude the files already in **Media**; the value **false** means not to exclude the files already in **Media**.
+Whether to exclude the files already in <b>Media</b>. <b>true</b>: Exclude the files already in <b>Media</b>. <b>false</b>: Do not exclude the files already in <b>Media</b>. This parameter is reserved.
 
 **Type:** boolean
 

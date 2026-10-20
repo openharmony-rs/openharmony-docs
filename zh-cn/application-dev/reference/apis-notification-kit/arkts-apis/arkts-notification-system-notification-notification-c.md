@@ -45,3 +45,21 @@ static show(options?: ShowNotificationOptions): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [ShowNotificationOptions](arkts-notification-system-notification-shownotificationoptions-i.md) | 否 | 通知标题。 |
+
+**示例**
+
+```TypeScript
+let notificationObj: notification = {
+  show() {
+    notification.show({
+      contentTitle: 'title info',
+      contentText: 'text',
+      clickAction: {
+        bundleName: 'com.example.testapp',
+        abilityName: 'notificationDemo',
+        uri: '/path/to/notification'
+      }
+    });
+  }
+}
+```

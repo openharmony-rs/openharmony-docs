@@ -38,7 +38,7 @@ Calculates the interpolation value along the curve at the specified normalized t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fraction | number | Yes | Current normalized time.<br>Value range: [0, 1]. <br>**NOTE:** <br>A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**. <br>For spring animation curves created by **springMotion**, **responsiveSpringMotion**, and **interpolatingSpring**, the time cannot be normalized. In this case, this parameter is meaningless, and no valid interpolation can be obtained using the **interpolate** function. |
+| fraction | number | Yes | Current normalized time. <br>Value range: [0, 1]. <br>**NOTE:** <br>A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**. <br>For spring animation curves created by **springMotion**, **responsiveSpringMotion**, and **interpolatingSpring**, the time cannot be normalized. In this case, this parameter is meaningless, and no valid interpolation can be obtained using the **interpolate** function. |
 
 **Return value:**
 

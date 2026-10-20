@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="createvideorecorder1"></a>
-
 ## createVideoRecorder
 
 ```TypeScript
@@ -55,8 +53,6 @@ media.createVideoRecorder((error: BusinessError, video: media.VideoRecorder) => 
 
 <!--DelEnd-->
 
-
-<a id="createvideorecorder3"></a>
 
 ## createVideoRecorder
 

@@ -6,8 +6,6 @@
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="createpremultipliedpixelmap1"></a>
-
 ## createPremultipliedPixelMap
 
 ```TypeScript
@@ -72,8 +70,6 @@ function createPremultipliedPixelMap() {
 }
 ```
 
-
-<a id="createpremultipliedpixelmap2"></a>
 
 ## createPremultipliedPixelMap
 

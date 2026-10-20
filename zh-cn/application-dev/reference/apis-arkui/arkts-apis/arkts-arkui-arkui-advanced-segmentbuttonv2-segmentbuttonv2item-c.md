@@ -17,7 +17,7 @@ export declare class SegmentButtonV2Item
 ## 导入模块
 
 ```TypeScript
-import { SegmentButtonV2ItemOptions, OnSelectedIndexChange, OnSelectedIndexesChange, SegmentButtonV2Item, SegmentButtonV2Items, TabSegmentButtonV2, CapsuleSegmentButtonV2, MultiCapsuleSegmentButtonV2 } from '@kit.ArkUI';
+import { SegmentButtonV2ItemOptions, OnSelectedIndexChange, OnSelectedIndexesChange, SegmentButtonV2Item, SegmentButtonV2Items, TabSegmentButtonV2, CapsuleSegmentButtonV2, SegmentButtonV2InteractionMode, MultiCapsuleSegmentButtonV2 } from '@kit.ArkUI';
 ```
 
 ## constructor
@@ -50,7 +50,7 @@ constructor(options: SegmentButtonV2ItemOptions)
 accessibilityDescription?: ResourceStr
 ```
 
-分段按钮选项无障碍说明[accessibilityDescription](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription1)。
+分段按钮选项无障碍说明[accessibilityDescription](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription)。
 
 默认值：""
 
@@ -102,7 +102,7 @@ accessibilityLevel?: string
 accessibilityText?: ResourceStr
 ```
 
-分段按钮选项的无障碍文本[accessibilityText](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext1)。
+分段按钮选项的无障碍文本[accessibilityText](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)。
 
 默认值：""
 

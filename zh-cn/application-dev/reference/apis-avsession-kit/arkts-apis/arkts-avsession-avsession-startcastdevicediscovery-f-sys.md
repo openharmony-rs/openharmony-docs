@@ -6,8 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="startcastdevicediscovery1"></a>
-
 ## startCastDeviceDiscovery
 
 ```TypeScript
@@ -47,8 +45,6 @@ avSession.startCastDeviceDiscovery(() => {
 
 <!--DelEnd-->
 
-
-<a id="startcastdevicediscovery2"></a>
 
 ## startCastDeviceDiscovery
 
@@ -93,8 +89,6 @@ avSession.startCastDeviceDiscovery(filter, () => {
 <!--DelEnd-->
 
 
-<a id="startcastdevicediscovery3"></a>
-
 ## startCastDeviceDiscovery
 
 ```TypeScript
@@ -116,7 +110,7 @@ function startCastDeviceDiscovery(filter?: number, drmSchemes?: Array<string>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | filter | number | 否 | 进行设备发现的过滤条件，由ProtocolType组合而成。<br>**适用版本：** 12 |
-| drmSchemes | Array&lt;string&gt; | 否 | 进行支持DRM资源播放的设备发现的过滤条件，由DRM uuid组合而成。<br>从API version 12开始支持该可选参数。<br>**适用版本：** 12 |
+| drmSchemes | Array&lt;string&gt; | 否 | 进行支持DRM资源播放的设备发现的过滤条件，由DRM uuid组合而成。 <br>从API version 12开始支持该可选参数。<br>**适用版本：** 12 |
 
 **返回值：**
 

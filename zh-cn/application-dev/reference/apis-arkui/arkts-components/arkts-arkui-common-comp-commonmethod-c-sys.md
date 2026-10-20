@@ -18,7 +18,7 @@ CommonMethod.
 advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 ```
 
-将当前组件的内容（包含子节点内容）与下方画布（可能为离屏画布）已有内容进行混合。不能与[blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode1)接口同时使用，同时设置时仅advancedBlendMode效果生效。
+将当前组件的内容（包含子节点内容）与下方画布（可能为离屏画布）已有内容进行混合。不能与[blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode)接口同时使用，同时设置时仅advancedBlendMode效果生效。
 
 **起始版本：** 13
 
@@ -107,7 +107,7 @@ edgeLight(params: EdgeLightParams | undefined): T
 excludeFromRenderGroup(exclude: boolean | undefined): T
 ```
 
-设置当前组件和其子组件是否从祖先组件的节点组中剔除。需搭配祖先组件设置节点组[renderGroup](arkts-arkui-common-comp-commonmethod-c.md#rendergroup2)属性使用，单独使用无效果。
+设置当前组件和其子组件是否从祖先组件的节点组中剔除。需搭配祖先组件设置节点组[renderGroup](arkts-arkui-common-comp-commonmethod-c.md#rendergroup)属性使用，单独使用无效果。
 
 从节点组剔除后，当前组件和子组件不再影响祖先组件的离屏画布，不会引起节点组的缓存失效，从而达到复用节点组缓存的目的。如果当前组件的显示区域只占节点组绘制内容显示区域的一部分，且当前组件及子组件的显示效果频繁更新，设置excludeFromRenderGroup属性有助于绘制性能优化。
 
@@ -116,10 +116,10 @@ excludeFromRenderGroup(exclude: boolean | undefined): T
 > **说明：** 
 > 
 > 设置excludeFromRenderGroup为true的组件及其子组件的绘制内容不能超过该组件本身的边界范围，否则会出现显示内容被裁剪的问题。例如当子组件通过
-> [translate](arkts-arkui-common-comp-commonmethod-c.md#translate1)或
-> [scale](arkts-arkui-common-comp-commonmethod-c.md#scale1)等属性导致子组件超出当前组件范围，或当前组件上有
-> [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1)、
-> [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect1)等属性导致当前组件的绘制内容超出组件
+> [translate](arkts-arkui-common-comp-commonmethod-c.md#translate)或
+> [scale](arkts-arkui-common-comp-commonmethod-c.md#scale)等属性导致子组件超出当前组件范围，或当前组件上有
+> [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow)、
+> [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect)等属性导致当前组件的绘制内容超出组件
 > 边界时，可能出现显示内容被裁剪的问题。此类场景不应设置excludeFromRenderGroup属性为true。
 
 **起始版本：** 22
@@ -143,6 +143,38 @@ excludeFromRenderGroup(exclude: boolean | undefined): T
 | 类型 | 说明 |
 | --- | --- |
 | T | 返回当前组件，用于链式调用。 |
+
+## safeAreaInset
+
+```TypeScript
+safeAreaInset(options?: SafeAreaInsetOptions): T
+```
+
+在组件的一个或多个边缘放置自定义内容，并按其实际占用为主体内容留出组件级安全区域。适用于边缘工具栏、操作区或占位内容。再次调用时整体替换四边配置，未提供的边不保留旧内容。内容从宿主普通 `padding` 的内边界附着；同宿主同物理边的有效安全区取已有 `safeAreaPadding`与边缘内容占用的较大值，不将两者相加。跨祖先和系统安全区沿用既有累计规则。计算组件在垂直于附着边方向上的自适应尺寸时，会计入有效安全区。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CommonMethod-safeAreaInset(options?: SafeAreaInsetOptions): T--><!--Device-CommonMethod-safeAreaInset(options?: SafeAreaInsetOptions): T-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| options | [SafeAreaInsetOptions](arkts-arkui-common-comp-safeareainsetoptions-i-sys.md) | 否 | 四边完整配置。默认值：`undefined`，重置四边。传入 `null`、非对象或没有有效边的对象时也重置四边。单边结构或 `content` 非法、构建结果为空时只清除该边；`spacing` 非法时回退为 `0vp`，`alignment` 非法时回退为 `SafeAreaInsetAlignment.CENTER`，两者均不清除该边的有效内容。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| T | 当前组件。 |
 
 ## spatialEffect
 
@@ -184,8 +216,6 @@ spatialEffect(params: SpatialEffectParams | undefined): T
 | --- | --- |
 | T |  |
 
-<a id="useunioneffect1"></a>
-
 ## useUnionEffect
 
 ```TypeScript
@@ -217,8 +247,6 @@ useUnionEffect(value: boolean | undefined): T
 | 类型 | 说明 |
 | --- | --- |
 | T | 返回当前组件，用于链式调用。 |
-
-<a id="useunioneffect2"></a>
 
 ## useUnionEffect
 

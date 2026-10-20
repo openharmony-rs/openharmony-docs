@@ -9,8 +9,6 @@ interface ArrayConstructor
 ```TypeScript
 ```
 
-<a id="call1"></a>
-
 ## [[Call]]
 
 ```TypeScript
@@ -22,8 +20,6 @@ interface ArrayConstructor
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | arrayLength | number | No |  |
-
-<a id="call2"></a>
 
 ## [[Call]]
 
@@ -37,8 +33,6 @@ interface ArrayConstructor
 | --- | --- | --- | --- |
 | arrayLength | number | Yes |  |
 
-<a id="call3"></a>
-
 ## [[Call]]
 
 ```TypeScript
@@ -50,8 +44,6 @@ interface ArrayConstructor
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | items | T[] | Yes |  |
-
-<a id="construct1"></a>
 
 ## [[Construct]]
 
@@ -65,8 +57,6 @@ new(arrayLength?: number): any[]
 | --- | --- | --- | --- |
 | arrayLength | number | No |  |
 
-<a id="construct2"></a>
-
 ## [[Construct]]
 
 ```TypeScript
@@ -78,8 +68,6 @@ new <T>(arrayLength: number): T[]
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | arrayLength | number | Yes |  |
-
-<a id="construct3"></a>
 
 ## [[Construct]]
 

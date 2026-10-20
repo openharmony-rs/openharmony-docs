@@ -6,8 +6,6 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
-<a id="setnetworkcapability1"></a>
-
 ## setNetworkCapability
 
 ```TypeScript
@@ -68,8 +66,6 @@ radio.setNetworkCapability(slotId, type, state, (err: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="setnetworkcapability2"></a>
 
 ## setNetworkCapability
 

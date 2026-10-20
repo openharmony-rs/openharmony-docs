@@ -4,6 +4,8 @@
 
 **起始版本：** 13
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace certificateManagerDialog--><!--Device-unnamed-declare namespace certificateManagerDialog-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
@@ -21,8 +23,8 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | 名称 | 说明 |
 | --- | --- |
 | [openAuthDialogForUkeyProvider](arkts-devicecertificate-certificatemanagerdialog-openauthdialogforukeyprovider-f.md#openauthdialogforukeyprovider) | 打开USB Key凭证的Ukey认证对话框。该接口仅Ukey驱动应用调用。实现支付、证书更新等场景下的自定义对话框功能。Ukey认证对话框需要Ukey驱动应用实现。该接口使用promise返回结果。 |
-| [openAuthorizeDialog](arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog1) | 打开证书管理对话框的证书凭据授权页面。在弹出的页面中，用户可以为应用授权使用证书凭据。调用成功后，应用可通过接口返回的授权证书凭据uri进行签名、验签和查询详情操作。使用Promise异步回调。 |
-| [openAuthorizeDialog](arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog2) | 打开证书管理对话框的证书凭据授权页面。在弹出的页面中，用户可以为应用授权使用证书凭据。调用成功后，应用可通过接口返回的授权证书凭据uri进行签名、验签和查询详情操作。可授权的证书类型包括应用证书凭据、用户证书凭据和USB Key证书凭据。使用Promise异步回调。 |
+| [openAuthorizeDialog](arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog) | 打开证书管理对话框的证书凭据授权页面。在弹出的页面中，用户可以为应用授权使用证书凭据。调用成功后，应用可通过接口返回的授权证书凭据uri进行签名、验签和查询详情操作。使用Promise异步回调。 |
+| [openAuthorizeDialog](arkts-devicecertificate-certificatemanagerdialog-openauthorizedialog-f.md#openauthorizedialog) | 打开证书管理对话框的证书凭据授权页面。在弹出的页面中，用户可以为应用授权使用证书凭据。调用成功后，应用可通过接口返回的授权证书凭据uri进行签名、验签和查询详情操作。可授权的证书类型包括应用证书凭据、用户证书凭据和USB Key证书凭据。使用Promise异步回调。 |
 | [openCertificateDetailDialog](arkts-devicecertificate-certificatemanagerdialog-opencertificatedetaildialog-f.md#opencertificatedetaildialog) | 打开证书管理对话框显示证书的详情。调用成功后，将显示证书的基本信息、有效期、颁发者、使用者等详细信息。使用Promise异步回调。 |
 | [openCertificateManagerDialog](arkts-devicecertificate-certificatemanagerdialog-opencertificatemanagerdialog-f.md#opencertificatemanagerdialog) | 打开证书管理对话框，显示相应的页面。调用成功后，用户可以在弹出的对话框中对证书进行查看、安装、卸载等操作。使用Promise异步回调。 |
 | [openInstallCertificateDialog](arkts-devicecertificate-certificatemanagerdialog-openinstallcertificatedialog-f.md#openinstallcertificatedialog) | 打开证书管理安装证书对话框。证书安装成功后，返回证书的唯一标识符。应用可以使用该标识符来使用证书。使用Promise异步回调。 |

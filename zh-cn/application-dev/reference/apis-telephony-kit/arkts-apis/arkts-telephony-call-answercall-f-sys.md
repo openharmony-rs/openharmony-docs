@@ -6,8 +6,6 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
-<a id="answercall1"></a>
-
 ## answerCall
 
 ```TypeScript
@@ -62,8 +60,6 @@ call.answerCall(1, (err: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="answercall2"></a>
 
 ## answerCall
 
@@ -123,8 +119,6 @@ call.answerCall(1).then(() => {
 <!--DelEnd-->
 
 
-<a id="answercall4"></a>
-
 ## answerCall
 
 ```TypeScript
@@ -183,8 +177,6 @@ call.answerCall(0, 1).then(() => {
 
 <!--DelEnd-->
 
-
-<a id="answercall5"></a>
 
 ## answerCall
 

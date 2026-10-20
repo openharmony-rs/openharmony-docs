@@ -46,7 +46,7 @@ Adds a data record to this **UnifiedRecord** object.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 
@@ -69,8 +69,6 @@ let hyperlink: uniformDataStruct.Hyperlink = {
 let link = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 unifiedData.addRecord(link);
 ```
-
-<a id="constructor1"></a>
 
 ## constructor
 
@@ -100,7 +98,7 @@ Defines a constructor used to create a **UnifiedData** object with a data record
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 
@@ -114,8 +112,6 @@ let plainText : uniformDataStruct.PlainText = {
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -284,7 +280,7 @@ For file types, if the type set of **UnifiedData** includes **general.jpeg**, ca
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 

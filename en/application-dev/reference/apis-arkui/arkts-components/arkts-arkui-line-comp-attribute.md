@@ -38,7 +38,7 @@ Sets the coordinates of the line end point (relative to the origin at the upper 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;any&gt; | Yes | End point coordinate of the line (relative to the upper left corner of the **Line** component drawing area), in vp. The array format is [x coordinate, y coordinate]. The array length must be 2, and the elements must be of the Length type.<br>Default value: **[0, 0]** <br>Abnormal values **undefined** and **null** are processed as the default value. |
+| value | Array&lt;any&gt; | Yes | End point coordinate of the line (relative to the upper left corner of the **Line** component drawing area), in vp. The array format is [x coordinate, y coordinate]. The array length must be 2, and the elements must be of the Length type. <br>Default value: **[0, 0]** <br>Abnormal values **undefined** and **null** are processed as the default value. |
 
 ## startPoint
 
@@ -64,4 +64,4 @@ Sets the coordinates of the line start point (relative to the origin at the uppe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;any&gt; | Yes | Coordinates of the start point of the line (relative to the upper left corner of the Line component's drawing area), in vp. The array format is [x-coordinate, y-coordinate]. The array length must be 2, and the elements must be of the Length type.<br>Default value: **[0, 0]** <br>The abnormal values **undefined** and **null** are processed as the default value. |
+| value | Array&lt;any&gt; | Yes | Coordinates of the start point of the line (relative to the upper left corner of the Line component's drawing area), in vp. The array format is [x-coordinate, y-coordinate]. The array length must be 2, and the elements must be of the Length type. <br>Default value: **[0, 0]** <br>The abnormal values **undefined** and **null** are processed as the default value. |

@@ -4,7 +4,7 @@
 interface EffectSuggestion
 ```
 
-EffectSuggestion object.
+效果建议对象。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 enableEffectSuggestion(enabled: boolean): void
 ```
 
-Enable effect suggestion for session.
+为会话启用效果建议。
 
 **起始版本：** 12
 
@@ -40,7 +40,7 @@ Enable effect suggestion for session.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | enable effect suggestion for session if TRUE.. |
+| enabled | boolean | 是 | 为 TRUE 时为会话启用效果建议。 |
 
 **错误码：**
 
@@ -56,7 +56,7 @@ Enable effect suggestion for session.
 getSupportedEffectSuggestionTypes(): Array<EffectSuggestionType>
 ```
 
-Gets supported effect suggestion types.
+获取支持的效果建议类型。
 
 **起始版本：** 12
 
@@ -70,7 +70,7 @@ Gets supported effect suggestion types.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[EffectSuggestionType](arkts-camera-camera-effectsuggestiontype-e-sys.md)&gt; | The array of the effect suggestion types. |
+| Array&lt;[EffectSuggestionType](arkts-camera-camera-effectsuggestiontype-e-sys.md)&gt; | 效果建议类型数组。 |
 
 **错误码：**
 
@@ -85,7 +85,7 @@ Gets supported effect suggestion types.
 isEffectSuggestionSupported(): boolean
 ```
 
-Checks whether effect suggestion is supported.
+查询是否支持效果建议。
 
 **起始版本：** 12
 
@@ -99,7 +99,7 @@ Checks whether effect suggestion is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Is the effect suggestion supported. |
+| boolean | 是否支持效果建议。 |
 
 **错误码：**
 
@@ -114,7 +114,7 @@ Checks whether effect suggestion is supported.
 setEffectSuggestionStatus(status: Array<EffectSuggestionStatus>): void
 ```
 
-Set the range of effect suggestion type and enable status. The application should fully set all data when it starts up.
+设置效果建议类型的范围和启用状态。应用启动时应完整设置所有数据。
 
 **起始版本：** 12
 
@@ -128,7 +128,7 @@ Set the range of effect suggestion type and enable status. The application shoul
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| status | Array&lt;[EffectSuggestionStatus](arkts-camera-camera-effectsuggestionstatus-c-sys.md)&gt; | 是 | The array of the effect suggestion status. |
+| status | Array&lt;[EffectSuggestionStatus](arkts-camera-camera-effectsuggestionstatus-c-sys.md)&gt; | 是 | 效果建议状态数组。 |
 
 **错误码：**
 
@@ -144,7 +144,7 @@ Set the range of effect suggestion type and enable status. The application shoul
 updateEffectSuggestion(type: EffectSuggestionType, enabled: boolean): void
 ```
 
-Update the enable status of the effect suggestion type.
+更新效果建议类型的启用状态。
 
 **起始版本：** 12
 
@@ -158,8 +158,8 @@ Update the enable status of the effect suggestion type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [EffectSuggestionType](arkts-camera-camera-effectsuggestiontype-e-sys.md) | 是 | The type of effect suggestion. |
-| enabled | boolean | 是 | The status of effect suggestion type. |
+| type | [EffectSuggestionType](arkts-camera-camera-effectsuggestiontype-e-sys.md) | 是 | 效果建议类型。 |
+| enabled | boolean | 是 | 效果建议类型的启用状态。 |
 
 **错误码：**
 

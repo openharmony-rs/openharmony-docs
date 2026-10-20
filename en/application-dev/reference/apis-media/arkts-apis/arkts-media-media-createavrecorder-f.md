@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="createavrecorder1"></a>
-
 ## createAVRecorder
 
 ```TypeScript
@@ -55,8 +53,6 @@ media.createAVRecorder((error: BusinessError, recorder: media.AVRecorder) => {
 });
 ```
 
-
-<a id="createavrecorder3"></a>
 
 ## createAVRecorder
 

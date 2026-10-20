@@ -478,3 +478,16 @@ Number of elements in a HashSet.
 <!--Device-HashSet-length: number--><!--Device-HashSet-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
+
+**Examples**
+
+```TypeScript
+let hashSet = new HashSet<number>();
+hashSet.add(1);
+hashSet.add(2);
+hashSet.add(3);
+hashSet.add(4);
+hashSet.add(5);
+let res = hashSet.length;
+console.info("length:", res);  // length: 5
+```

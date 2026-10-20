@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="setbadgenumber1"></a>
-
 ## setBadgeNumber
 
 ```TypeScript
@@ -24,7 +22,7 @@ function setBadgeNumber(badgeNumber: number, callback: AsyncCallback<void>): voi
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md#getactivenotificationcount1) 获取当前应用的通知数量。
+**参见：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md#getactivenotificationcount) 获取当前应用的通知数量。
 
 **参数：**
 
@@ -61,8 +59,6 @@ notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 ```
 
 
-<a id="setbadgenumber2"></a>
-
 ## setBadgeNumber
 
 ```TypeScript
@@ -79,7 +75,7 @@ function setBadgeNumber(badgeNumber: number): Promise<void>
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md#getactivenotificationcount1) 获取当前应用的通知数量。
+**参见：** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md#getactivenotificationcount) 获取当前应用的通知数量。
 
 **参数：**
 

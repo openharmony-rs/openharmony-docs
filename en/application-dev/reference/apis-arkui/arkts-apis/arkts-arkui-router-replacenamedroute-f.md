@@ -6,8 +6,6 @@
 import { router } from '@kit.ArkUI';
 ```
 
-<a id="replacenamedroute1"></a>
-
 ## replaceNamedRoute
 
 ```TypeScript
@@ -24,7 +22,7 @@ Replaces the current page with the specified named route page and destroys the c
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute1)(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -39,13 +37,13 @@ Replaces the current page with the specified named route page and destroys the c
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | Yes | Description of the new page. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the page replacement result.<br>When the page replacement is successful, the value of **error** is **undefined**. When the page replacement fails, the value of **error** is the error object returned by the system. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the page replacement result. <br>When the page replacement is successful, the value of **error** is **undefined**. When the page replacement fails, the value of **error** is the error object returned by the system. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |
 
@@ -75,8 +73,6 @@ router.replaceNamedRoute({
 ```
 
 
-<a id="replacenamedroute2"></a>
-
 ## replaceNamedRoute
 
 ```TypeScript
@@ -93,7 +89,7 @@ Replaces the current page with the specified named route page and destroys the c
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute2)(options: router.NamedRouterOptions)
+**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)(options: router.NamedRouterOptions)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -119,7 +115,7 @@ Replaces the current page with the specified named route page and destroys the c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |
 
@@ -151,8 +147,6 @@ router.replaceNamedRoute({
 ```
 
 
-<a id="replacenamedroute3"></a>
-
 ## replaceNamedRoute
 
 ```TypeScript
@@ -169,7 +163,7 @@ Replaces the current page with the specified named route page and destroys the c
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute3)(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -185,13 +179,13 @@ Replaces the current page with the specified named route page and destroys the c
 | --- | --- | --- | --- |
 | options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | Yes | Description of the new page. |
 | mode | [RouterMode](arkts-arkui-router-routermode-e.md) | Yes | Mode used for replacing the page. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the page replacement result.<br>When the page replacement is successful, the value of **error** is **undefined**. When the page replacement fails, the value of **error** is the error object returned by the system. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the page replacement result. <br>When the page replacement is successful, the value of **error** is **undefined**. When the page replacement fails, the value of **error** is the error object returned by the system. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |
 
@@ -221,8 +215,6 @@ router.replaceNamedRoute({
 ```
 
 
-<a id="replacenamedroute4"></a>
-
 ## replaceNamedRoute
 
 ```TypeScript
@@ -239,7 +231,7 @@ Replaces the current page with the specified named route page and destroys the c
 
 **Deprecated since:** 18
 
-**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute4)(options: router.NamedRouterOptions, mode: router.RouterMode)
+**Substitutes:** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)(options: router.NamedRouterOptions, mode: router.RouterMode)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -266,7 +258,7 @@ Replaces the current page with the specified named route page and destroys the c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Failed to get the delegate. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |
 

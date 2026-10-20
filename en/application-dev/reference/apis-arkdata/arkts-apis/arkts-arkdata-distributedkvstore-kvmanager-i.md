@@ -18,15 +18,13 @@ Provides an instance to obtain information about a distributed KV store. Before 
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="closekvstore1"></a>
-
 ## closeKVStore
 
 ```TypeScript
 closeKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): void
 ```
 
-Closes a distributed KV store. This API uses an asynchronous callback to return the result.
+Closes a distributed KV store. This API uses an asynchronous callback to return the result. This method is used together with the **getKVStore()** method. After the database is used, you can call this method to close it.
 
 **Since:** 9
 
@@ -40,15 +38,15 @@ Closes a distributed KV store. This API uses an asynchronous callback to return 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appId | string | Yes | Bundle name of the application. The value cannot be empty or exceed 256 bytes. |
-| storeId | string | Yes | Unique identifier of the KV store to close. The KV store ID allows only letters, digits, and underscores (_), and cannot exceed [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
+| appId | string | Yes | Bundle name of the application. Must not be empty, with a length range of 1-256 bytes. |
+| storeId | string | Yes | Unique identifier of the KV store to close. The KV store ID allows only letters, digits, and underscores (_), and its length ranges from 1 to [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 **Examples**
 
@@ -92,15 +90,13 @@ try {
 }
 ```
 
-<a id="closekvstore2"></a>
-
 ## closeKVStore
 
 ```TypeScript
 closeKVStore(appId: string, storeId: string, kvConfig?: Options): Promise<void>
 ```
 
-Closes a distributed KV store. This API uses a promise to return the result.
+Closes a distributed KV store. If the **kvConfig** parameter is used, the distributed KV store in the specified path is closed. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -114,9 +110,9 @@ Closes a distributed KV store. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appId | string | Yes | Bundle name of the application. The value cannot be empty or exceed 256 bytes. |
-| storeId | string | Yes | Unique identifier of the KV store to close. The KV store ID allows only letters, digits, and underscores (_), and cannot exceed [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
-| kvConfig | [Options](arkts-arkdata-distributedkvstore-options-i.md) | No | Indicates the `Options` object used for close the KVStore database.<br>**Since:** 24 |
+| appId | string | Yes | Bundle name of the application. Must not be empty, with a length range of 1 to 256 bytes. |
+| storeId | string | Yes | Unique identifier of the KV store to close. The KV store ID allows only letters, digits, and underscores (_), and its length ranges from 1 to [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
+| kvConfig | [Options](arkts-arkdata-distributedkvstore-options-i.md) | No | Configuration information of the KV store to close. Defaults to null.<br>**Since:** 24 |
 
 **Return value:**
 
@@ -128,7 +124,7 @@ Closes a distributed KV store. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 **Examples**
 
@@ -171,8 +167,6 @@ try {
 }
 ```
 
-<a id="deletekvstore1"></a>
-
 ## deleteKVStore
 
 ```TypeScript
@@ -193,15 +187,15 @@ Deletes a distributed KV store. This API uses an asynchronous callback to return
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appId | string | Yes | Bundle name of the application. The value cannot be empty or exceed 256 bytes. |
-| storeId | string | Yes | Unique identifier of the KV store to delete. The KV store ID allows only letters, digits, and underscores (_), and cannot exceed [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
+| appId | string | Yes | Bundle name of the application. Must not be empty, with a length range of 1-256 bytes. |
+| storeId | string | Yes | Unique identifier of the KV store to delete. The KV store ID allows only letters, digits, and underscores (_), and its length ranges from 1 to [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 
 **Examples**
@@ -247,15 +241,13 @@ try {
 }
 ```
 
-<a id="deletekvstore2"></a>
-
 ## deleteKVStore
 
 ```TypeScript
 deleteKVStore(appId: string, storeId: string, kvConfig?: Options): Promise<void>
 ```
 
-Deletes a distributed KV store. This API uses a promise to return the result.
+Deletes a distributed KV store. If the **kvConfig** parameter is used, the distributed KV store in the specified path is deleted. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -269,9 +261,9 @@ Deletes a distributed KV store. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appId | string | Yes | Bundle name of the application. The value cannot be empty or exceed 256 bytes. |
-| storeId | string | Yes | Unique identifier of the KV store to delete. The KV store ID allows only letters, digits, and underscores (_), and cannot exceed [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
-| kvConfig | [Options](arkts-arkdata-distributedkvstore-options-i.md) | No | Indicates the `Options` object used for delete the KVStore database.<br>**Since:** 24 |
+| appId | string | Yes | Bundle name of the application. Must not be empty, and the length range is 1-256 bytes. |
+| storeId | string | Yes | Unique identifier of the KV store to delete. The KV store ID allows only letters, digits, and underscores (_), and its length ranges from 1 to [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
+| kvConfig | [Options](arkts-arkdata-distributedkvstore-options-i.md) | No | Configuration information of the KV store to delete. Defaults to null.<br>**Since:** 24 |
 
 **Return value:**
 
@@ -283,7 +275,7 @@ Deletes a distributed KV store. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 
 **Examples**
@@ -327,15 +319,13 @@ try {
 }
 ```
 
-<a id="getallkvstoreid1"></a>
-
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 ```
 
-Obtains the IDs of all distributed KV stores that are created by getKVStore and have not been deleted by [deleteKVStore](#deletekvstore1). This API uses an asynchronous callback to return the result.
+Obtains the IDs of all distributed KV stores that are created by getKVStore and have not been deleted by [deleteKVStore](#deletekvstore). This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -349,14 +339,14 @@ Obtains the IDs of all distributed KV stores that are created by getKVStore and 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appId | string | Yes | Bundle name of the application. The value cannot be empty or exceed 256 bytes. |
+| appId | string | Yes | Bundle name of the application. It must not be empty and its length range is 1 to 256 bytes. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string[]&gt; | Yes | Callback used to return the IDs of all the distributed KV stores created. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 **Examples**
 
@@ -379,15 +369,13 @@ try {
 }
 ```
 
-<a id="getallkvstoreid2"></a>
-
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string): Promise<string[]>
 ```
 
-Obtains the IDs of all distributed KV stores that are created by getKVStore and have not been deleted by [deleteKVStore](#deletekvstore1). This API uses a promise to return the result.
+Obtains the IDs of all distributed KV stores that are created by getKVStore and have not been deleted by [deleteKVStore](#deletekvstore). This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -401,7 +389,7 @@ Obtains the IDs of all distributed KV stores that are created by getKVStore and 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appId | string | Yes | Bundle name of the application. The value cannot be empty or exceed 256 bytes. |
+| appId | string | Yes | Bundle name of the application. It must not be empty and its length ranges from 1 to 256 bytes. |
 
 **Return value:**
 
@@ -413,7 +401,7 @@ Obtains the IDs of all distributed KV stores that are created by getKVStore and 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 **Examples**
 
@@ -435,15 +423,13 @@ try {
 }
 ```
 
-<a id="getkvstore1"></a>
-
 ## getKVStore
 
 ```TypeScript
 getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>): void
 ```
 
-Creates and obtains a distributed KV store based on the specified **options** and **storeId**. This API uses an asynchronous callback to return the result.
+Creates and obtains a distributed KV store based on the specified **options** and **storeId**. This API uses an asynchronous callback to return the result. After using the obtained database, call [closeKVStore](#closekvstore) to close the database and release resources.
 
 > **NOTE:** 
 > 
@@ -465,7 +451,7 @@ Creates and obtains a distributed KV store based on the specified **options** an
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| storeId | string | Yes | Unique identifier of the KV store. The KV store ID allows only letters, digits, and underscores (_), and cannot exceed [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
+| storeId | string | Yes | Unique identifier of the KV store. The KV store ID allows only letters, digits, and underscores (_), and its length ranges from 1 to [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
 | options | [Options](arkts-arkdata-distributedkvstore-options-i.md) | Yes | Configuration of the KV store to create. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;T&gt; | Yes | Callback used to return the **SingleKVStore** or **DeviceKVStore** instance created. |
 
@@ -473,7 +459,7 @@ Creates and obtains a distributed KV store based on the specified **options** an
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100002](../errorcode-distributedKVStore.md#15100002-parameter-configuration-changes) | Open existed database with changed options. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 
@@ -510,15 +496,13 @@ try {
 }
 ```
 
-<a id="getkvstore2"></a>
-
 ## getKVStore
 
 ```TypeScript
 getKVStore<T>(storeId: string, options: Options): Promise<T>
 ```
 
-Creates and obtains a distributed KV store based on the specified **options** and **storeId**. This API uses a promise to return the result.
+Creates and obtains a distributed KV store based on the specified **options** and **storeId**. This API uses a promise to return the result. After using the obtained database, call [closeKVStore](#closekvstore) to close the database and release resources.
 
 > **NOTE:** 
 > 
@@ -540,7 +524,7 @@ Creates and obtains a distributed KV store based on the specified **options** an
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| storeId | string | Yes | Unique identifier of the KV store. The KV store ID allows only letters, digits, and underscores (_), and cannot exceed [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
+| storeId | string | Yes | Unique identifier of the KV store. The KV store ID allows only letters, digits, and underscores (_), and its length ranges from 1 to [MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md) in length. |
 | options | [Options](arkts-arkdata-distributedkvstore-options-i.md) | Yes | Configuration of the KV store to create. |
 
 **Return value:**
@@ -553,7 +537,7 @@ Creates and obtains a distributed KV store based on the specified **options** an
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100002](../errorcode-distributedKVStore.md#15100002-parameter-configuration-changes) | Open existed database with changed options. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 
@@ -592,7 +576,7 @@ try {
 off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void
 ```
 
-Unsubscribes from the termination (death) of the distributed data service. The **deathCallback** parameter must be a callback registered for subscribing to the termination of the distributed data service. Otherwise, the unsubscription will fail.
+Unsubscribes from the service termination event. You must call on('distributedDataServiceDie') to subscribe before calling off to unsubscribe. The deathCallback in the parameter must be the one that has been subscribed; otherwise, the unsubscription fails.
 
 **Since:** 9
 
@@ -604,14 +588,14 @@ Unsubscribes from the termination (death) of the distributed data service. The *
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | 'distributedDataServiceDie' | Yes | Event type. The value is **distributedDataServiceDie**, which indicates the termination of the distributed data service. |
-| deathCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the **distributedDataServiceDie** event. |
+| event | 'distributedDataServiceDie' | Yes | Name of the event to unsubscribe from. The value is fixed to'distributedDataServiceDie', which indicates the service termination event. |
+| deathCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | Callback function. If this parameter is not specified, this API unregisters all callbacks for the **distributedDataServiceDie** event. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -636,7 +620,7 @@ try {
 on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void
 ```
 
-Subscribes to the termination (death) of the distributed data service. If the service is terminated, you need to register the callbacks for data change notifications and cross-device sync completion notifications again. In addition, an error will be returned for a sync operation.
+Subscribes to the service termination event. If the service is terminated, you need to call on('dataChange') and on('syncComplete') again to register the callbacks for data change notifications and cross-device sync completion notifications. In addition, an error will be returned for a sync operation. After calling on to subscribe to the event, you must call off('distributedDataServiceDie') to cancel the subscription when it is no longer needed.
 
 **Since:** 9
 
@@ -648,14 +632,14 @@ Subscribes to the termination (death) of the distributed data service. If the se
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | 'distributedDataServiceDie' | Yes | Event type. The value is **distributedDataServiceDie**, which indicates the termination of the distributed data service. |
+| event | 'distributedDataServiceDie' | Yes | Name of the event to subscribe to. The value is fixed to **distributedDataServiceDie**, indicating the service termination event. |
 | deathCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the subscription is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 

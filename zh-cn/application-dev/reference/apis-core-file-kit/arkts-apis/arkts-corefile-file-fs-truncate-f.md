@@ -57,8 +57,6 @@ declare function truncate(file: string | number, len?: number): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="truncate2"></a>
-
 ## truncate
 
 ```TypeScript
@@ -103,8 +101,6 @@ declare function truncate(file: string | number, callback: AsyncCallback<void>):
 | 13900033 | Too many symbolic links encountered |
 | 13900042 | Unknown error |
 
-
-<a id="truncate3"></a>
 
 ## truncate
 

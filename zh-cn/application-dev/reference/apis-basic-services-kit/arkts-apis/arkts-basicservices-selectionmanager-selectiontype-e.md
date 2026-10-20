@@ -8,8 +8,8 @@ enum SelectionType
 
 | 名称 | 值 | 说明 |  
 | ------------ | -- | ------------------ |  
-| MOUSE_MOVE | 1 | 鼠标或触控板滑动划词。 |
-| DOUBLE_CLICK | 2 | 鼠标或触控板双击划词。 |
+| MOUSE_MOVE | 1 | 鼠标或触控板滑动划词。 |  
+| DOUBLE_CLICK | 2 | 鼠标或触控板双击划词。 |  
 | TRIPLE_CLICK | 3 | 鼠标或触控板三击划词。 |
 
 **起始版本：** 24

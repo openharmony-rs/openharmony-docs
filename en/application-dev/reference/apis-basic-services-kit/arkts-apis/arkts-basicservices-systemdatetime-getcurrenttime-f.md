@@ -6,8 +6,6 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="getcurrenttime1"></a>
-
 ## getCurrentTime
 
 ```TypeScript
@@ -37,7 +35,7 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Incorrect parameter types. |
 
 **Examples**
 
@@ -58,8 +56,6 @@ try {
 }
 ```
 
-
-<a id="getcurrenttime2"></a>
 
 ## getCurrentTime
 
@@ -89,7 +85,7 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Incorrect parameter types. |
 
 **Examples**
 
@@ -110,8 +106,6 @@ try {
 }
 ```
 
-
-<a id="getcurrenttime3"></a>
 
 ## getCurrentTime
 
@@ -147,7 +141,7 @@ Obtains the time elapsed since the Unix epoch. This API uses a promise to return
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Incorrect parameter types. |
 
 **Examples**
 

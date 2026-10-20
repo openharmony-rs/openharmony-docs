@@ -6,8 +6,6 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
-<a id="getdlppermissioninfo1"></a>
-
 ## getDLPPermissionInfo
 
 ```TypeScript
@@ -57,8 +55,6 @@ dlpPermission.isInSandbox().then(async (inSandbox) => { // Check whether the app
 });
 ```
 
-
-<a id="getdlppermissioninfo2"></a>
 
 ## getDLPPermissionInfo
 

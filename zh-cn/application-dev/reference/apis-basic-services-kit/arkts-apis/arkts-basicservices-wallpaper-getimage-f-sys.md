@@ -6,8 +6,6 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
-<a id="getimage1"></a>
-
 ## getImage
 
 ```TypeScript
@@ -59,8 +57,6 @@ wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErr
 
 <!--DelEnd-->
 
-
-<a id="getimage2"></a>
 
 ## getImage
 

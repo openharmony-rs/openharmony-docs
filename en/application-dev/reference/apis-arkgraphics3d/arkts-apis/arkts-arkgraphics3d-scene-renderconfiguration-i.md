@@ -6,8 +6,6 @@ export interface RenderConfiguration
 
 Describes the rendering configuration.
 
-@interface RenderConfiguration
-
 **Since:** 23
 
 <!--Device-unnamed-export interface RenderConfiguration--><!--Device-unnamed-export interface RenderConfiguration-End-->

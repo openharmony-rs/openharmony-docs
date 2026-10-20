@@ -6,8 +6,6 @@ export interface AgentAppInfo
 
 Application-related information for the agent.
 
-@typedef AgentAppInfo
-
 **Since:** 24
 
 <!--Device-unnamed-export interface AgentAppInfo--><!--Device-unnamed-export interface AgentAppInfo-End-->

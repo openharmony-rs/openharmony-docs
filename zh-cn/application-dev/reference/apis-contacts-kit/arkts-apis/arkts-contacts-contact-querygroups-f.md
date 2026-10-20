@@ -6,8 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="querygroups1"></a>
-
 ## queryGroups
 
 ```TypeScript
@@ -20,7 +18,7 @@ function queryGroups(callback: AsyncCallback<Array<Group>>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryGroups](#querygroups2)(context: Context, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
+**替代接口：** [queryGroups](#querygroups)(context: Context, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -49,8 +47,6 @@ contact.queryGroups((err: BusinessError, data) => {
 });
 ```
 
-
-<a id="querygroups2"></a>
 
 ## queryGroups
 
@@ -105,8 +101,6 @@ contact.queryGroups(context, (err: BusinessError, data) => {
 ```
 
 
-<a id="querygroups3"></a>
-
 ## queryGroups
 
 ```TypeScript
@@ -119,7 +113,7 @@ function queryGroups(holder: Holder, callback: AsyncCallback<Array<Group>>): voi
 
 **废弃版本：** 10
 
-**替代接口：** [queryGroups](#querygroups4)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
+**替代接口：** [queryGroups](#querygroups)(context: Context, holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -153,8 +147,6 @@ contact.queryGroups({
 });
 ```
 
-
-<a id="querygroups4"></a>
 
 ## queryGroups
 
@@ -214,8 +206,6 @@ contact.queryGroups(context, {
 ```
 
 
-<a id="querygroups5"></a>
-
 ## queryGroups
 
 ```TypeScript
@@ -228,7 +218,7 @@ function queryGroups(holder?: Holder): Promise<Array<Group>>
 
 **废弃版本：** 10
 
-**替代接口：** [queryGroups](#querygroups6)(context: Context, holder?: Holder)
+**替代接口：** [queryGroups](#querygroups)(context: Context, holder?: Holder)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -263,8 +253,6 @@ promise.then((data) => {
 });
 ```
 
-
-<a id="querygroups6"></a>
 
 ## queryGroups
 

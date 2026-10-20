@@ -6,8 +6,6 @@
 import { businessAbilityRouter } from '@kit.AbilityKit';
 ```
 
-<a id="querybusinessabilityinfo1"></a>
-
 ## queryBusinessAbilityInfo
 
 ```TypeScript
@@ -69,8 +67,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="querybusinessabilityinfo2"></a>
 
 ## queryBusinessAbilityInfo
 

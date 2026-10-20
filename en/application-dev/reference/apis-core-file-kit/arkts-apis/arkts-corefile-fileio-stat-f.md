@@ -36,8 +36,6 @@ Obtains file information. This API uses a promise to return the result.
 | Promise&lt;[Stat](arkts-corefile-fileio-stat-depr-i.md)&gt; | Promise that returns the file information obtained. |
 
 
-<a id="stat2"></a>
-
 ## stat
 
 ```TypeScript

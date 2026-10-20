@@ -39,7 +39,7 @@ close(): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid argument. Possible causes:         1. Parameter count exceeds the limit; 2. The current object is invalid. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
@@ -120,8 +120,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getallobjects1"></a>
-
 ## getAllObjects
 
 ```TypeScript
@@ -148,8 +146,8 @@ getAllObjects(callback: AsyncCallback<Array<T>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
@@ -175,8 +173,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   });
 }
 ```
-
-<a id="getallobjects2"></a>
 
 ## getAllObjects
 
@@ -204,8 +200,8 @@ getAllObjects(): Promise<Array<T>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
@@ -253,8 +249,8 @@ getCount(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
+| 13900020 | Invalid parameter. Possible causes: <br>The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
 
 **示例**
 
@@ -275,8 +271,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('fetchCount = ', fetchCount);
 }
 ```
-
-<a id="getfirstobject1"></a>
 
 ## getFirstObject
 
@@ -304,8 +298,8 @@ getFirstObject(callback: AsyncCallback<T>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
@@ -331,8 +325,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   });
 }
 ```
-
-<a id="getfirstobject2"></a>
 
 ## getFirstObject
 
@@ -360,8 +352,8 @@ getFirstObject(): Promise<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
@@ -438,8 +430,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getlastobject1"></a>
-
 ## getLastObject
 
 ```TypeScript
@@ -466,8 +456,8 @@ getLastObject(callback: AsyncCallback<T>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | 1.Parameter count exceeds the limit;<br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
+| 13900020 | 1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
@@ -493,8 +483,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   });
 }
 ```
-
-<a id="getlastobject2"></a>
 
 ## getLastObject
 
@@ -522,8 +510,8 @@ getLastObject(): Promise<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
@@ -544,8 +532,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('photoAsset displayName: ', photoAsset.displayName);
 }
 ```
-
-<a id="getnextobject1"></a>
 
 ## getNextObject
 
@@ -575,8 +561,8 @@ getNextObject(callback: AsyncCallback<T>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
@@ -606,8 +592,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getnextobject2"></a>
-
 ## getNextObject
 
 ```TypeScript
@@ -636,8 +620,8 @@ getNextObject(): Promise<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
@@ -661,8 +645,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
-
-<a id="getobjectbyposition1"></a>
 
 ## getObjectByPosition
 
@@ -691,8 +673,8 @@ getObjectByPosition(index: number, callback: AsyncCallback<T>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
@@ -718,8 +700,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   });
 }
 ```
-
-<a id="getobjectbyposition2"></a>
 
 ## getObjectByPosition
 
@@ -753,8 +733,8 @@ getObjectByPosition(index: number): Promise<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
@@ -814,7 +794,7 @@ getObjectsByIndexSet(indexSet: number[]): Promise<T[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. Possible causes:<br>1.The index is out of range, must be within [0, count); <br>2.The FetchResType is not supported, must be a valid FetchResType enum value. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Invalid parameter. Possible causes: <br>1.The index is out of range, must be within [0, count); <br>2.The FetchResType is not supported, must be a valid FetchResType enum value. |
 
 **示例**
 
@@ -872,9 +852,8 @@ getRangeObjects(index: number, offset: number): Promise<T[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. A non-system application calls a system API.<br>**适用版本：** 21 - 22 |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails.<br>Possible causes: index or offset validity check failed. |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs.<br>Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. <br>Possible causes: index or offset validity check failed. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. You are advised to retry and check the logs. <br>Possible causes: <br>1. The database is corrupted. <br>2. The file system is abnormal. |
 
 **示例**
 
@@ -936,8 +915,8 @@ isAfterLast(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
+| 13900020 | Invalid parameter. Possible causes: <br>The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
 
 **示例**
 

@@ -30,7 +30,7 @@ Obtains the provision configuration file information of all applications based i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| userId | number | Yes | User ID on the device.<br>The value should be an integer. |
+| userId | number | Yes | User ID on the device. <br>The value should be an integer. |
 
 **Return value:**
 

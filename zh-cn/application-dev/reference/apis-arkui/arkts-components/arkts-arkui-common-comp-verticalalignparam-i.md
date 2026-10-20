@@ -6,8 +6,6 @@ declare interface VerticalAlignParam
 
 定义相对容器的垂直对齐规则。
 
-@interface VerticalAlignParam
-
 **起始版本：** 23
 
 <!--Device-unnamed-declare interface VerticalAlignParam--><!--Device-unnamed-declare interface VerticalAlignParam-End-->

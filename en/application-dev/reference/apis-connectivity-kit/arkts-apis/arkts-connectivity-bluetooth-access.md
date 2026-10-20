@@ -39,8 +39,8 @@ import { access } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [factoryReset](arkts-connectivity-access-factoryreset-f-sys.md#factoryreset1) | Restoring bluetooth settings. |
-| [factoryReset](arkts-connectivity-access-factoryreset-f-sys.md#factoryreset2) | Restoring bluetooth settings. |
+| [factoryReset](arkts-connectivity-access-factoryreset-f-sys.md#factoryreset) | Restoring bluetooth settings. |
+| [factoryReset](arkts-connectivity-access-factoryreset-f-sys.md#factoryreset) | Restoring bluetooth settings. |
 | [getLocalAddress](arkts-connectivity-access-getlocaladdress-f-sys.md#getlocaladdress) | Obtaining the MAC address of the local device. |
 | [notifyDialogResult](arkts-connectivity-access-notifydialogresult-f-sys.md#notifydialogresult) | Notify bluetooth the result of bluetooth dialog. |
 | [restrictBluetooth](arkts-connectivity-access-restrictbluetooth-f-sys.md#restrictbluetooth) | Restrict Bluetooth BR/EDR ability on a device. |

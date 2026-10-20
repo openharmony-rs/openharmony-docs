@@ -305,6 +305,7 @@
   - [SegmentButtonItemArray](arkts-arkui-segmentbuttonitemarray-t.md)
   - [SegmentButtonItemTuple](arkts-arkui-segmentbuttonitemtuple-t.md)
   - [BorderRadiusMode](arkts-arkui-arkui-advanced-segmentbutton-borderradiusmode-e.md)
+  - [SegmentButtonInteractionMode](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttoninteractionmode-e.md)
 - [@ohos.arkui.advanced.SegmentButtonV2](arkts-arkui-arkui-advanced-segmentbuttonv2.md)
   - [SegmentButtonV2Item](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2item-c.md)
   - [SegmentButtonV2Items](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2items-c.md)
@@ -314,6 +315,7 @@
   - [SegmentButtonV2ItemOptions](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2itemoptions-i.md)
   - [OnSelectedIndexChange](arkts-arkui-onselectedindexchange-t.md)
   - [OnSelectedIndexesChange](arkts-arkui-onselectedindexeschange-t.md)
+  - [SegmentButtonV2InteractionMode](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2interactionmode-e.md)
 - [@ohos.arkui.advanced.SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu.md)
   - [SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md)
   - [EditorEventInfo](arkts-arkui-arkui-advanced-selectionmenu-editoreventinfo-i.md)
@@ -988,7 +990,11 @@
   <!--Del-->
   - [off（系统接口）](arkts-arkui-screen-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [offDisconnectWithInfo（系统接口）](arkts-arkui-screen-offdisconnectwithinfo-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [on（系统接口）](arkts-arkui-screen-on-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onDisconnectWithInfo（系统接口）](arkts-arkui-screen-ondisconnectwithinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [resizeVirtualScreen（系统接口）](arkts-arkui-screen-resizevirtualscreen-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1017,6 +1023,8 @@
   - [Rect（系统接口）](arkts-arkui-screen-rect-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [Screen（系统接口）](arkts-arkui-screen-screen-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ScreenDisconnectInfo（系统接口）](arkts-arkui-screen-screendisconnectinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ScreenModeInfo（系统接口）](arkts-arkui-screen-screenmodeinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1224,6 +1232,7 @@
     <!--Del-->
     - [WindowMode（系统接口）](arkts-arkui-window-windowmode-e-sys.md)<!--DelEnd-->
     - [WindowPosition](arkts-arkui-window-windowposition-e.md)
+    - [WindowPostureMode](arkts-arkui-window-windowposturemode-e.md)
     - [WindowStageEventType](arkts-arkui-window-windowstageeventtype-e.md)
     - [WindowStageLifecycleEventType](arkts-arkui-window-windowstagelifecycleeventtype-e.md)
     - [WindowStatusType](arkts-arkui-window-windowstatustype-e.md)

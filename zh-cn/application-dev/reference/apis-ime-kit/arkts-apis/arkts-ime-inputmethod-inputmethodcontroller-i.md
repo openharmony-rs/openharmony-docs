@@ -4,7 +4,7 @@
 interface InputMethodController
 ```
 
-下列API示例中都需使用[getController](arkts-ime-inputmethod-getcontroller-f.md)获取到InputMethodController实例，再通过实例调用对应方法。<br> <br>InputMethodController是输入法客户端控制器，面向前台应用提供与输入法交互的核心能力。通过`inputMethod.getController()`获取实例后，可进行以下操作：<br> <br>- 绑定管理：通过[attach](#attach1)建立与输入法的绑定，通过[detach](#detach1)解除绑定。attach和detach必须配对使用。<br>- 键盘控制：通过[showTextInput](#showtextinput1)拉起软键盘进入编辑状态，通过[hideTextInput](#hidetextinput1)隐藏软键盘退出编辑状态。showTextInput和hideTextInput必须配对使用。<br>- 编辑框状态同步：通过[updateCursor](#updatecursor1)、[changeSelection](#changeselection)、[updateAttribute](#updateattribute1)等接口向输入法同步光标、选区、属性等编辑框状态信息。<br>- 事件订阅：通过on('insertText')、on('deleteLeft')等接口订阅输入法应用发送的文本操作事件。<br> <br>典型调用序列：`getController()` → `attach()` → `showTextInput()`/`hideTextInput()` → `detach()` <br> <br>  
+下列API示例中都需使用[getController](arkts-ime-inputmethod-getcontroller-f.md)获取到InputMethodController实例，再通过实例调用对应方法。<br> <br>InputMethodController是输入法客户端控制器，面向前台应用提供与输入法交互的核心能力。通过`inputMethod.getController()`获取实例后，可进行以下操作：<br> <br>- 绑定管理：通过[attach](#attach)建立与输入法的绑定，通过[detach](#detach)解除绑定。attach和detach必须配对使用。<br>- 键盘控制：通过[showTextInput](#showtextinput)拉起软键盘进入编辑状态，通过[hideTextInput](#hidetextinput)隐藏软键盘退出编辑状态。showTextInput和hideTextInput必须配对使用。<br>- 编辑框状态同步：通过[updateCursor](#updatecursor)、[changeSelection](#changeselection)、[updateAttribute](#updateattribute)等接口向输入法同步光标、选区、属性等编辑框状态信息。<br>- 事件订阅：通过on('insertText')、on('deleteLeft')等接口订阅输入法应用发送的文本操作事件。<br> <br>典型调用序列：`getController()` → `attach()` → `showTextInput()`/`hideTextInput()` → `detach()` <br> <br>  
 > **说明：** <br>
 > <br>
 > attach和detach必须配对使用，showTextInput和hideTextInput必须配对使用，否则可能导致资源泄漏或状态不一致。
@@ -21,8 +21,6 @@ interface InputMethodController
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="attach1"></a>
-
 ## attach
 
 ```TypeScript
@@ -35,7 +33,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig, callback: AsyncCallback<vo
 > 需要先调用此接口，完成自绘控件与输入法的绑定，才能使用以下功能：显示/隐藏键盘、更新光标信息、更改编辑框选中范围、保存配置信息、监听处理由输入法应用发送的信息或命令等。<br>
 > <br>
 > 当自绘控件所在窗口通过<br>
-> [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable2) <br>
+> [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable) <br>
 > 设置为不可获焦窗口时，系统将无法保证自绘输入控件与输入法正常交互。若开发者希望在不可获焦窗口中绘制输入框，建议参考<br>
 > [不可获焦窗口中输入框与输入法交互指南](../../../inputmethod/use-inputmethod-in-not-focusable-window.md)。
 
@@ -80,8 +78,6 @@ inputMethod.getController().attach(true, textConfig, (err: BusinessError) => {
 });
 ```
 
-<a id="attach2"></a>
-
 ## attach
 
 ```TypeScript
@@ -94,7 +90,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig): Promise<void>
 > 需要先调用此接口，完成自绘控件与输入法的绑定，才能使用以下功能：显示/隐藏键盘、更新光标信息、更改编辑框选中范围、保存配置信息、监听处理由输入法应用发送的信息或命令等。<br>
 > <br>
 > 当自绘控件所在窗口通过<br>
-> [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable2) <br>
+> [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable) <br>
 > 设置为不可获焦窗口时，系统将无法保证自绘输入控件与输入法正常交互。若开发者希望在不可获焦窗口中绘制输入框，建议参考<br>
 > [不可获焦窗口中输入框与输入法交互指南](../../../inputmethod/use-inputmethod-in-not-focusable-window.md)。
 
@@ -142,8 +138,6 @@ inputMethod.getController().attach(true, textConfig).then(() => {
 });
 ```
 
-<a id="attach3"></a>
-
 ## attach
 
 ```TypeScript
@@ -156,7 +150,7 @@ attach(showKeyboard: boolean, textConfig: TextConfig, requestKeyboardReason: Req
 > 需要先调用此接口，完成自绘控件与输入法的绑定，才能使用以下功能：显示/隐藏键盘、更新光标信息、更改编辑框选中范围、保存配置信息、监听处理由输入法应用发送的信息或命令等。<br>
 > <br>
 > 当自绘控件所在窗口通过<br>
-> [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable2) <br>
+> [setWindowFocusable](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#setwindowfocusable) <br>
 > 设置为不可获焦窗口时，系统将无法保证自绘输入控件与输入法正常交互。若开发者希望在不可获焦窗口中绘制输入框，建议参考<br>
 > [不可获焦窗口中输入框与输入法交互指南](../../../inputmethod/use-inputmethod-in-not-focusable-window.md)。
 
@@ -267,8 +261,6 @@ inputMethod.getController().attachWithUIContext(uiContext, textConfig, attachOpt
 });
 ```
 
-<a id="changeselection1"></a>
-
 ## changeSelection
 
 ```TypeScript
@@ -317,8 +309,6 @@ inputMethod.getController().changeSelection('text', 0, 5, (err: BusinessError) =
   console.info('Succeeded in changing selection.');
 });
 ```
-
-<a id="changeselection2"></a>
 
 ## changeSelection
 
@@ -372,8 +362,6 @@ inputMethod.getController().changeSelection('test', 0, 5).then(() => {
 });
 ```
 
-<a id="detach1"></a>
-
 ## detach
 
 ```TypeScript
@@ -414,8 +402,6 @@ inputMethod.getController().detach((err: BusinessError) => {
   console.info('Succeeded in detaching inputMethod.');
 });
 ```
-
-<a id="detach2"></a>
 
 ## detach
 
@@ -499,8 +485,6 @@ inputMethod.getController().discardTypingText().then(() => {
 });
 ```
 
-<a id="hidesoftkeyboard1"></a>
-
 ## hideSoftKeyboard
 
 ```TypeScript
@@ -548,8 +532,6 @@ inputMethod.getController().hideSoftKeyboard((err: BusinessError) => {
 })
 ```
 
-<a id="hidesoftkeyboard2"></a>
-
 ## hideSoftKeyboard
 
 ```TypeScript
@@ -595,21 +577,19 @@ inputMethod.getController().hideSoftKeyboard().then(() => {
 });
 ```
 
-<a id="hidetextinput1"></a>
-
 ## hideTextInput
 
 ```TypeScript
 hideTextInput(callback: AsyncCallback<void>): void
 ```
 
-退出文本编辑状态。使用callback异步回调。<br> <br>含义/功能：隐藏软键盘，使编辑框退出文本编辑状态。<br> <br>使用场景：自绘控件不再需要输入时调用，如用户点击了编辑框外的区域、切换到其他页面等。<br> <br>使用后效果：软键盘被隐藏，编辑框退出编辑状态。调用此接口不会解除与输入法的绑定，再次调用showTextInput可重新进入编辑状态。<br> <br>前提条件/前置操作：需先调用[attach](#attach1)完成绑定，且已调用showTextInput进入编辑状态。<br> <br>相关接口间的配合/制约关系：hideTextInput与showTextInput必须配对使用。hideTextInput后如需再次输入，必须先调用showTextInput重新进入编辑状态，不能直接调用其他编辑操作。<br> <br>相似接口差异点及选取原则：<br> <br>- hideTextInput：面向自绘控件，退出编辑状态但不解除绑定，可再次showTextInput重新进入。适用于自绘控件需要暂时隐藏键盘的场景。<br>- hideSoftKeyboard：面向系统应用，需权限ohos.permission.CONNECT_IME_ABILITY。仅隐藏键盘，不改变编辑状态。<br>- 选取原则：自绘控件优先使用hideTextInput；系统应用且有特殊需求时使用hideSoftKeyboard。<br> <br>  
+退出文本编辑状态。使用callback异步回调。<br> <br>含义/功能：隐藏软键盘，使编辑框退出文本编辑状态。<br> <br>使用场景：自绘控件不再需要输入时调用，如用户点击了编辑框外的区域、切换到其他页面等。<br> <br>使用后效果：软键盘被隐藏，编辑框退出编辑状态。调用此接口不会解除与输入法的绑定，再次调用showTextInput可重新进入编辑状态。<br> <br>前提条件/前置操作：需先调用[attach](#attach)完成绑定，且已调用showTextInput进入编辑状态。<br> <br>相关接口间的配合/制约关系：hideTextInput与showTextInput必须配对使用。hideTextInput后如需再次输入，必须先调用showTextInput重新进入编辑状态，不能直接调用其他编辑操作。<br> <br>相似接口差异点及选取原则：<br> <br>- hideTextInput：面向自绘控件，退出编辑状态但不解除绑定，可再次showTextInput重新进入。适用于自绘控件需要暂时隐藏键盘的场景。<br>- hideSoftKeyboard：面向系统应用，需权限ohos.permission.CONNECT_IME_ABILITY。仅隐藏键盘，不改变编辑状态。<br>- 选取原则：自绘控件优先使用hideTextInput；系统应用且有特殊需求时使用hideSoftKeyboard。<br> <br>  
 > **说明：** <br>
 > <br>
 > 调用接口时，若软键盘处于显示状态，调用接口后软键盘会被隐藏。<br>
 > <br>
 > 调用该接口不会解除与输入法的绑定，再次调用<br>
-> [showTextInput](#showtextinput1)时，可重新进入文本编<br>
+> [showTextInput](#showtextinput)时，可重新进入文本编<br>
 > 辑状态。
 
 **起始版本：** 10
@@ -646,8 +626,6 @@ inputMethod.getController().hideTextInput((err: BusinessError) => {
 });
 ```
 
-<a id="hidetextinput2"></a>
-
 ## hideTextInput
 
 ```TypeScript
@@ -660,7 +638,7 @@ hideTextInput(): Promise<void>
 > 调用接口时，若软键盘处于显示状态，调用接口后软键盘会被隐藏。<br>
 > <br>
 > 调用该接口不会解除与输入法的绑定，再次调用<br>
-> [showTextInput](#showtextinput1)时，可重新进入文本编<br>
+> [showTextInput](#showtextinput)时，可重新进入文本编<br>
 > 辑状态。
 
 **起始版本：** 10
@@ -1664,7 +1642,7 @@ on(type: 'setPreviewText', callback: SetPreviewTextCallback): void
 > **说明：** <br>
 > <br>
 > 使用预览文本功能，需在调用<br>
-> [attach](#attach1) <br>
+> [attach](#attach) <br>
 > 前订阅此事件，并和<br>
 > [on('finishTextPreview')](#onfinishtextpreview) <br>
 > 一起订阅。
@@ -1722,7 +1700,7 @@ on(type: 'finishTextPreview', callback: Callback<void>): void
 > **说明：** <br>
 > <br>
 > 使用预览文本功能，需在调用<br>
-> [attach](#attach1) <br>
+> [attach](#attach) <br>
 > 前订阅此事件，并和<br>
 > [on('setPreviewText')](#onsetpreviewtext) <br>
 > 一起订阅。
@@ -1796,7 +1774,7 @@ recvMessage(msgHandler?: MessageHandler): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| msgHandler | [MessageHandler](arkts-ime-inputmethod-messagehandler-i.md) | 否 | 该对象通过[onMessage](arkts-ime-inputmethod-messagehandler-i.md#onmessage2)接收来自输入法应用所发送的自定义通信数据，并通过[onTerminated](arkts-ime-inputmethod-messagehandler-i.md#onterminated)接收终止此对象订阅的消息。<br>若不填写此参数，则取消全局已注册的[MessageHandler](arkts-ime-inputmethod-messagehandler-i.md)对象，同时触发其[onTerminated](arkts-ime-inputmethod-messagehandler-i.md#onterminated)回调函数。 |
+| msgHandler | [MessageHandler](arkts-ime-inputmethod-messagehandler-i.md) | 否 | 该对象通过[onMessage](arkts-ime-inputmethod-messagehandler-i.md#onmessage)接收来自输入法应用所发送的自定义通信数据，并通过[onTerminated](arkts-ime-inputmethod-messagehandler-i.md#onterminated)接收终止此对象订阅的消息。<br>若不填写此参数，则取消全局已注册的[MessageHandler](arkts-ime-inputmethod-messagehandler-i.md)对象，同时触发其[onTerminated](arkts-ime-inputmethod-messagehandler-i.md#onterminated)回调函数。 |
 
 **错误码：**
 
@@ -1880,8 +1858,6 @@ inputMethod.getController().sendMessage(msgId, msgParam).then(() => {
 });
 ```
 
-<a id="setcallingwindow1"></a>
-
 ## setCallingWindow
 
 ```TypeScript
@@ -1931,8 +1907,6 @@ inputMethod.getController().setCallingWindow(windowId, (err: BusinessError) => {
   console.info('Succeeded in setting callingWindow.');
 });
 ```
-
-<a id="setcallingwindow2"></a>
 
 ## setCallingWindow
 
@@ -1985,8 +1959,6 @@ inputMethod.getController().setCallingWindow(windowId).then(() => {
 });
 ```
 
-<a id="showsoftkeyboard1"></a>
-
 ## showSoftKeyboard
 
 ```TypeScript
@@ -2034,8 +2006,6 @@ inputMethod.getController().showSoftKeyboard((err: BusinessError) => {
 });
 ```
 
-<a id="showsoftkeyboard2"></a>
-
 ## showSoftKeyboard
 
 ```TypeScript
@@ -2081,15 +2051,13 @@ inputMethod.getController().showSoftKeyboard().then(() => {
 });
 ```
 
-<a id="showtextinput1"></a>
-
 ## showTextInput
 
 ```TypeScript
 showTextInput(callback: AsyncCallback<void>): void
 ```
 
-进入文本编辑状态。使用callback异步回调。<br> <br>含义/功能：拉起软键盘，使编辑框进入文本编辑状态。<br> <br>使用场景：自绘控件绑定输入法后，需要显示软键盘开始文本输入时调用。<br> <br>使用后效果：软键盘弹出，编辑框进入可输入的文本编辑状态。<br> <br>前提条件/前置操作：需先调用[attach](#attach1)完成绑定，否则会报12800009错误。<br> <br>相关接口间的配合/制约关系：showTextInput与hideTextInput必须配对使用。调用hideTextInput退出编辑状态后，需再次调用showTextInput才能重新进入编辑状态。<br> <br>相似接口差异点及选取原则：<br> <br>- showTextInput：面向自绘控件，需先attach绑定后调用。适用于自绘控件场景，是标准的键盘显示方式。<br>- showSoftKeyboard：面向系统应用，需权限ohos.permission.CONNECT_IME_ABILITY。适用于系统应用需要强制显示键盘的场景。<br>- 选取原则：自绘控件优先使用showTextInput；系统应用且有特殊需求时使用showSoftKeyboard。<br> <br>  
+进入文本编辑状态。使用callback异步回调。<br> <br>含义/功能：拉起软键盘，使编辑框进入文本编辑状态。<br> <br>使用场景：自绘控件绑定输入法后，需要显示软键盘开始文本输入时调用。<br> <br>使用后效果：软键盘弹出，编辑框进入可输入的文本编辑状态。<br> <br>前提条件/前置操作：需先调用[attach](#attach)完成绑定，否则会报12800009错误。<br> <br>相关接口间的配合/制约关系：showTextInput与hideTextInput必须配对使用。调用hideTextInput退出编辑状态后，需再次调用showTextInput才能重新进入编辑状态。<br> <br>相似接口差异点及选取原则：<br> <br>- showTextInput：面向自绘控件，需先attach绑定后调用。适用于自绘控件场景，是标准的键盘显示方式。<br>- showSoftKeyboard：面向系统应用，需权限ohos.permission.CONNECT_IME_ABILITY。适用于系统应用需要强制显示键盘的场景。<br>- 选取原则：自绘控件优先使用showTextInput；系统应用且有特殊需求时使用showSoftKeyboard。<br> <br>  
 > **说明：** <br>
 > <br>
 > 编辑框与输入法绑定成功后，可调用该接口拉起软键盘，进入文本编辑状态。
@@ -2127,8 +2095,6 @@ inputMethod.getController().showTextInput((err: BusinessError) => {
   console.info('Succeeded in showing the inputMethod.');
 });
 ```
-
-<a id="showtextinput2"></a>
 
 ## showTextInput
 
@@ -2172,8 +2138,6 @@ inputMethod.getController().showTextInput().then(() => {
   console.error(`Failed to showTextInput, code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="showtextinput3"></a>
 
 ## showTextInput
 
@@ -2226,8 +2190,6 @@ inputMethod.getController().showTextInput(requestKeyboardReason).then(() => {
 });
 ```
 
-<a id="stopinputsession1"></a>
-
 ## stopInputSession
 
 ```TypeScript
@@ -2276,8 +2238,6 @@ inputMethod.getController().stopInputSession((err: BusinessError, result: boolea
 });
 ```
 
-<a id="stopinputsession2"></a>
-
 ## stopInputSession
 
 ```TypeScript
@@ -2324,8 +2284,6 @@ inputMethod.getController().stopInputSession().then((result: boolean) => {
 });
 ```
 
-<a id="updateattribute1"></a>
-
 ## updateAttribute
 
 ```TypeScript
@@ -2370,8 +2328,6 @@ inputMethod.getController().updateAttribute(inputAttribute, (err: BusinessError)
   console.info('Succeeded in updating attribute.');
 });
 ```
-
-<a id="updateattribute2"></a>
 
 ## updateAttribute
 
@@ -2423,8 +2379,6 @@ inputMethod.getController().updateAttribute(inputAttribute).then(() => {
   console.error(`Failed to updateAttribute, code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="updatecursor1"></a>
 
 ## updateCursor
 
@@ -2478,8 +2432,6 @@ inputMethod.getController().updateCursor(cursorInfo, (err: BusinessError) => {
   console.info('Succeeded in updating cursorInfo.');
 });
 ```
-
-<a id="updatecursor2"></a>
 
 ## updateCursor
 
@@ -2537,8 +2489,6 @@ inputMethod.getController().updateCursor(cursorInfo).then(() => {
 });
 ```
 
-<a id="stopinput1"></a>
-
 ## stopInput
 
 ```TypeScript
@@ -2583,8 +2533,6 @@ inputMethod.getController().stopInput((err: BusinessError, result: boolean) => {
   }
 });
 ```
-
-<a id="stopinput2"></a>
 
 ## stopInput
 

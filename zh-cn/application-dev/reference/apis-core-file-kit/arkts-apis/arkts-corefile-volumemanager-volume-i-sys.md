@@ -56,6 +56,26 @@ diskId: string
 
 **系统接口：** 此接口为系统接口。
 
+## extraInfo
+
+```TypeScript
+extraInfo?: string
+```
+
+卷设备的扩展信息。
+
+**类型：** string
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Volume-extraInfo?: string--><!--Device-Volume-extraInfo?: string-End-->
+
+**系统能力：** SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口：** 此接口为系统接口。
+
 ## fsType
 
 ```TypeScript
@@ -89,6 +109,26 @@ id: string
 **起始版本：** 9
 
 <!--Device-Volume-id: string--><!--Device-Volume-id: string-End-->
+
+**系统能力：** SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口：** 此接口为系统接口。
+
+## partitionNum
+
+```TypeScript
+partitionNum?: number
+```
+
+分区号。
+
+**类型：** number
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Volume-partitionNum?: int--><!--Device-Volume-partitionNum?: int-End-->
 
 **系统能力：** SystemCapability.FileManagement.StorageService.Volume
 

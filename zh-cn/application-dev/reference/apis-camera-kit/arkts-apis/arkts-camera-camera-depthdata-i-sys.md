@@ -4,7 +4,7 @@
 interface DepthData
 ```
 
-Describes a depth data object.
+描述深度数据对象。
 
 **起始版本：** 13
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 release(): Promise<void>
 ```
 
-Releases depth data output resources. This API uses a promise to return the result.
+释放深度数据输出资源。此接口使用 Promise 返回结果。
 
 **起始版本：** 13
 
@@ -40,7 +40,7 @@ Releases depth data output resources. This API uses a promise to return the resu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | 不返回值的 Promise。 |
 
 **错误码：**
 
@@ -65,7 +65,7 @@ async function releaseDepthData(depthData: camera.DepthData): Promise<void> {
 readonly dataAccuracy: DepthDataAccuracy
 ```
 
-Accuracy of the depth data, which can be either relative accuracy or absolute accuracy.
+深度数据的精度，可以是相对精度或绝对精度。
 
 **类型：** [DepthDataAccuracy](arkts-camera-camera-depthdataaccuracy-e-sys.md)
 
@@ -83,7 +83,7 @@ Accuracy of the depth data, which can be either relative accuracy or absolute ac
 readonly depthMap: image.PixelMap
 ```
 
-Depth map.
+深度图。
 
 **类型：** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 
@@ -101,7 +101,7 @@ Depth map.
 readonly format: CameraFormat
 ```
 
-Camera output format.
+相机输出格式。
 
 **类型：** [CameraFormat](arkts-camera-camera-cameraformat-e.md)
 
@@ -119,7 +119,7 @@ Camera output format.
 readonly qualityLevel: DepthDataQualityLevel
 ```
 
-Quality level of the depth map.
+深度图的质量等级。
 
 **类型：** [DepthDataQualityLevel](arkts-camera-camera-depthdataqualitylevel-e-sys.md)
 

@@ -60,7 +60,7 @@ ID of the screen where the window is located. By default, the ID of the main scr
 drawableRect: Rect
 ```
 
-Size of the rectangle that can be drawn in the window. The upper boundary and left boundary are calculated relative to the top-left vertex of the window. In the stage model, this property should be obtained after [loadContent()](arkts-arkui-window-window-i.md#loadcontent1) or [setUIContent()](arkts-arkui-window-window-i.md#setuicontent1) is called to load the page content.
+Size of the rectangle that can be drawn in the window. The upper boundary and left boundary are calculated relative to the top-left vertex of the window. In the stage model, this property should be obtained after [loadContent()](arkts-arkui-window-window-i.md#loadcontent) or [setUIContent()](arkts-arkui-window-window-i.md#setuicontent) is called to load the page content.
 
 **Type:** [Rect](arkts-arkui-window-rect-i.md)
 
@@ -188,7 +188,7 @@ In other cases, the return value is **false**.
 isPrivacyMode: boolean
 ```
 
-Whether the window is in privacy mode. **true** if the window is in privacy mode, **false** otherwise. You can call [setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode2) to set the privacy mode of the window.
+Whether the window is in privacy mode. **true** if the window is in privacy mode, **false** otherwise. You can call [setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode) to set the privacy mode of the window.
 
 **Type:** boolean
 

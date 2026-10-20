@@ -6,8 +6,6 @@ export type Permissions = string
 
 Indicates permissions.
 
-@typedef { string }
-
 **Type:** string
 
 **Since:** 11

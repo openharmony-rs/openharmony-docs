@@ -6,15 +6,13 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="getsysteminputmethodconfigability2"></a>
-
 ## getSystemInputMethodConfigAbility
 
 ```TypeScript
 function getSystemInputMethodConfigAbility(userId?: number): ElementName
 ```
 
-Get the system input method config ability of a specified user.
+Obtains ability information for the system input method configuration page of a specified user. Used to launch the system input method configuration page.
 
 **Since:** 26.0.0
 
@@ -30,13 +28,13 @@ Get the system input method config ability of a specified user.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| userId | number | No | the user ID. If not provided: If the caller is not a user 0 application, the value defaults to the caller's user ID. If the caller is a user 0 application, the value defaults to the foreground user ID of the main screen. |
+| userId | number | No | User ID. The value is the ID of a valid user. If this parameter is not provided: <br> - If the caller is not an application of user 0, the value defaults to the caller's user ID. <br> - If the caller is an application of user 0, the value defaults to the foreground user ID of the home screen. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [ElementName](../../apis-ability-kit/arkts-apis/arkts-ability-elementname-i.md) | the information of system input method config ability. |
+| [ElementName](../../apis-ability-kit/arkts-apis/arkts-ability-elementname-i.md) | Element name of the input method configuration page ability. |
 
 **Error codes:**
 

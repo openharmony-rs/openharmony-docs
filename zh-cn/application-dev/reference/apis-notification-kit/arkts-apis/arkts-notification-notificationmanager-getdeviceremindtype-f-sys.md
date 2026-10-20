@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="getdeviceremindtype1"></a>
-
 ## getDeviceRemindType
 
 ```TypeScript
@@ -64,8 +62,6 @@ notificationManager.getDeviceRemindType(getDeviceRemindTypeCallback);
 
 <!--DelEnd-->
 
-
-<a id="getdeviceremindtype2"></a>
 
 ## getDeviceRemindType
 

@@ -6,8 +6,6 @@ declare interface LoadCommittedDetails
 
 Provides detailed information about the web page that has been submitted for redirection, including whether it is the main document, the navigation type, and more. It is suitable for scenarios where monitoring page navigation behavior is required, improving navigation state management accuracy and user experience.
 
-@interface LoadCommittedDetails [since 11 - 11]
-
 **Since:** 11
 
 <!--Device-unnamed-declare interface LoadCommittedDetails--><!--Device-unnamed-declare interface LoadCommittedDetails-End-->

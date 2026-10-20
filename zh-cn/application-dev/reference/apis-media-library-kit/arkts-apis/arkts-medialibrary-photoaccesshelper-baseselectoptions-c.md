@@ -4,7 +4,7 @@
 export class BaseSelectOptions
 ```
 
-图库选择选项基类。
+图库选择选项基类，用于配置图片选择器的各项参数，适用于社交分享、媒体管理、头像选择等需要选择图片或视频的场景。
 
 **起始版本：** 12
 
@@ -104,8 +104,6 @@ combinedMediaTypeFilter?: Array<string>
 当应用配置的过滤条件string不满足上述规格时，过滤结果为空。
 
 配置该参数时，仅取数组前三个参数进行处理，MIMEType、mimeTypeFilter参数自动失效。
-
-**原子化服务API：** 从API version 20开始支持在原子化服务中使用。
 
 **类型：** Array&lt;string&gt;
 

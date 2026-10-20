@@ -44,7 +44,7 @@ getCertList(): Array<X509Cert>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
@@ -167,7 +167,7 @@ hashCode(): Uint8Array
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
 **示例**
@@ -299,7 +299,7 @@ toString(): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
 **示例**
@@ -404,8 +404,6 @@ async function certChainToString() {
 }
 ```
 
-<a id="validate1"></a>
-
 ## validate
 
 ```TypeScript
@@ -438,9 +436,9 @@ validate(param: CertChainValidationParameters): Promise<CertChainValidationResul
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 | [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | The certificate signature verification failed. |
 | [19030003](../errorcode-cert.md#19030003-证书尚未生效) | The certificate has not taken effect. |
@@ -565,8 +563,6 @@ async function validate() {
 validate();
 ```
 
-<a id="validate2"></a>
-
 ## validate
 
 ```TypeScript
@@ -594,9 +590,9 @@ validate(param: CertChainValidationParameters, callback: AsyncCallback<CertChain
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 | [19030002](../errorcode-cert.md#19030002-证书签名验证错误) | The certificate signature verification failed. |
 | [19030003](../errorcode-cert.md#19030003-证书尚未生效) | The certificate has not taken effect. |

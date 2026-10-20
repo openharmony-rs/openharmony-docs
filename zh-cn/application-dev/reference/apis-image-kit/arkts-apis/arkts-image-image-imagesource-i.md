@@ -10,7 +10,7 @@ ImageSource类，用于获取图片相关信息。
 
 ImageSource的所有方法均不支持并发调用。
 
-由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](#release1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **起始版本：** 6
 
@@ -190,8 +190,6 @@ async function CreatePictures(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="createpixelmap1"></a>
-
 ## createPixelMap
 
 ```TypeScript
@@ -246,8 +244,6 @@ async function CreatePixelMap(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="createpixelmap3"></a>
-
 ## createPixelMap
 
 ```TypeScript
@@ -297,8 +293,6 @@ async function CreatePixelMap(imageSourceObj : image.ImageSource) {
   })
 }
 ```
-
-<a id="createpixelmap5"></a>
 
 ## createPixelMap
 
@@ -361,8 +355,6 @@ async function CreatePixelMap(imageSourceObj : image.ImageSource) {
   })
 }
 ```
-
-<a id="createpixelmaplist1"></a>
 
 ## createPixelMapList
 
@@ -442,8 +434,6 @@ async function CreatePixelMapList(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="createpixelmaplist2"></a>
-
 ## createPixelMapList
 
 ```TypeScript
@@ -509,8 +499,6 @@ async function CreatePixelMapList(imageSourceObj : image.ImageSource) {
   })
 }
 ```
-
-<a id="createpixelmaplist3"></a>
 
 ## createPixelMapList
 
@@ -975,8 +963,6 @@ async function CreateThumbnailSync(imageSource: image.ImageSource): Promise<imag
 }
 ```
 
-<a id="getdelaytimelist1"></a>
-
 ## getDelayTimeList
 
 ```TypeScript
@@ -1023,8 +1009,6 @@ async function GetDelayTimeList(imageSourceObj : image.ImageSource) {
   })
 }
 ```
-
-<a id="getdelaytimelist2"></a>
 
 ## getDelayTimeList
 
@@ -1118,8 +1102,6 @@ async function GetDisposalTypeList(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getframecount1"></a>
-
 ## getFrameCount
 
 ```TypeScript
@@ -1167,8 +1149,6 @@ async function GetFrameCount(imageSourceObj : image.ImageSource) {
   })
 }
 ```
-
-<a id="getframecount2"></a>
 
 ## getFrameCount
 
@@ -1220,8 +1200,6 @@ async function GetFrameCount(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageinfo1"></a>
-
 ## getImageInfo
 
 ```TypeScript
@@ -1263,8 +1241,6 @@ async function GetImageInfo(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageinfo3"></a>
-
 ## getImageInfo
 
 ```TypeScript
@@ -1304,8 +1280,6 @@ async function GetImageInfo(imageSourceObj : image.ImageSource) {
   })
 }
 ```
-
-<a id="getimageinfo5"></a>
 
 ## getImageInfo
 
@@ -1460,8 +1434,6 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageproperty1"></a>
-
 ## getImageProperty
 
 ```TypeScript
@@ -1524,8 +1496,6 @@ async function GetImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageproperty2"></a>
-
 ## getImageProperty
 
 ```TypeScript
@@ -1539,14 +1509,14 @@ getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 11废弃，建议使用
-> [getImageProperty](#getimageproperty1)代
+> [getImageProperty](#getimageproperty)代
 > 替。
 
 **起始版本：** 7
 
 **废弃版本：** 11
 
-**替代接口：** [getImageProperty](#getimageproperty1)(key: PropertyKey, options?: ImagePropertyOptions)
+**替代接口：** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>--><!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>-End-->
 
@@ -1580,8 +1550,6 @@ async function GetImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageproperty3"></a>
-
 ## getImageProperty
 
 ```TypeScript
@@ -1595,14 +1563,14 @@ getImageProperty(key: string, callback: AsyncCallback<string>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 11废弃，建议使用
-> [getImageProperty](#getimageproperty1)代
+> [getImageProperty](#getimageproperty)代
 > 替。
 
 **起始版本：** 7
 
 **废弃版本：** 11
 
-**替代接口：** [getImageProperty](#getimageproperty1)(key: PropertyKey, options?: ImagePropertyOptions)
+**替代接口：** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void-End-->
 
@@ -1631,8 +1599,6 @@ async function GetImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageproperty4"></a>
-
 ## getImageProperty
 
 ```TypeScript
@@ -1646,14 +1612,14 @@ getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncC
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 11废弃，建议使用
-> [getImageProperty](#getimageproperty1)代
+> [getImageProperty](#getimageproperty)代
 > 替。
 
 **起始版本：** 7
 
 **废弃版本：** 11
 
-**替代接口：** [getImageProperty](#getimageproperty1)(key: PropertyKey, options?: ImagePropertyOptions)
+**替代接口：** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void-End-->
 
@@ -1877,8 +1843,6 @@ async function ModifyImagePropertiesEnhanced(imageSourceObj : image.ImageSource)
 }
 ```
 
-<a id="modifyimageproperty1"></a>
-
 ## modifyImageProperty
 
 ```TypeScript
@@ -1942,8 +1906,6 @@ async function ModifyImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="modifyimageproperty2"></a>
-
 ## modifyImageProperty
 
 ```TypeScript
@@ -1958,7 +1920,7 @@ modifyImageProperty(key: string, value: string): Promise<void>
 > 
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 > 
-> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty1)代替。
+> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty)代替。
 > 
 > - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
@@ -1966,7 +1928,7 @@ modifyImageProperty(key: string, value: string): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** [modifyImageProperty](#modifyimageproperty1)(key: PropertyKey, value: string)
+**替代接口：** [modifyImageProperty](#modifyimageproperty)(key: PropertyKey, value: string)
 
 <!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>--><!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>-End-->
 
@@ -2003,8 +1965,6 @@ async function ModifyImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="modifyimageproperty3"></a>
-
 ## modifyImageProperty
 
 ```TypeScript
@@ -2019,7 +1979,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): 
 > 
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 > 
-> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty1)代替。
+> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty)代替。
 > 
 > - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
@@ -2027,7 +1987,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): 
 
 **废弃版本：** 11
 
-**替代接口：** [modifyImageProperty](#modifyimageproperty1)(key: PropertyKey, value: string)
+**替代接口：** [modifyImageProperty](#modifyimageproperty)(key: PropertyKey, value: string)
 
 <!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -2232,8 +2192,6 @@ async function ReadImageMetadataByType(imageSource : image.ImageSource, type: im
 }
 ```
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -2274,8 +2232,6 @@ async function Release(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="release2"></a>
-
 ## release
 
 ```TypeScript
@@ -2313,8 +2269,6 @@ async function Release(imageSourceObj : image.ImageSource) {
   })
 }
 ```
-
-<a id="updatedata1"></a>
 
 ## updateData
 
@@ -2362,8 +2316,6 @@ async function UpdateDatay(imageSourceObj : image.ImageSource) {
   }
 }
 ```
-
-<a id="updatedata2"></a>
 
 ## updateData
 

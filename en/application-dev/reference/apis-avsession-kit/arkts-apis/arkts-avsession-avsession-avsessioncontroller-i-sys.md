@@ -6,8 +6,6 @@ interface AVSessionController
 
 Session controller,used to control media playback and get media information
 
-@interface AVSessionController [since 10 - 11]
-
 **Since:** 10
 
 <!--Device-avSession-interface AVSessionController--><!--Device-avSession-interface AVSessionController-End-->

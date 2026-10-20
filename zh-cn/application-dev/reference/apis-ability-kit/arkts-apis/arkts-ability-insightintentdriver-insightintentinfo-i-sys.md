@@ -305,6 +305,26 @@ readonly parameters: Record<string, Object>
 
 **系统接口：** 此接口为系统接口。
 
+## permissions
+
+```TypeScript
+readonly permissions?: string[]
+```
+
+表示该意图所需的权限。
+
+**类型：** string[]
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-InsightIntentInfo-readonly permissions?: string[]--><!--Device-InsightIntentInfo-readonly permissions?: string[]-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## result
 
 ```TypeScript

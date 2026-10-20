@@ -40,7 +40,7 @@ Checks whether this **TextMenuItemId** object is the same as another **TextMenuI
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether two TextMenuItemId values are equal.<br>The value **true** indicates that they are equal, and **false** indicates that they are not equal. |
+| boolean | Whether two TextMenuItemId values are equal. <br>The value **true** indicates that they are equal, and **false** indicates that they are not equal. |
 
 ## of
 

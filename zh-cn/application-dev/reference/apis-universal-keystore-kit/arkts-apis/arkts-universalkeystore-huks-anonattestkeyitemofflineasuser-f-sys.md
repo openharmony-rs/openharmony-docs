@@ -39,7 +39,7 @@ function anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| userId | number | 是 | 用户ID<br>取值范围为全体整数。 |
+| userId | number | 是 | 用户ID <br>取值范围为全体整数。 |
 | keyAlias | string | 是 | 密钥的别名。 |
 | params | [HuksParam](arkts-universalkeystore-huks-huksparam-i.md)[] | 是 | 表示密钥证明操作的选项。 |
 

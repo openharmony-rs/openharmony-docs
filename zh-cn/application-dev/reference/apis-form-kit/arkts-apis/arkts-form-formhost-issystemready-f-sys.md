@@ -6,8 +6,6 @@
 import { formHost } from '@kit.FormKit';
 ```
 
-<a id="issystemready1"></a>
-
 ## isSystemReady
 
 ```TypeScript
@@ -57,8 +55,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="issystemready2"></a>
 
 ## isSystemReady
 

@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="getdefaultvoicesimid1"></a>
-
 ## getDefaultVoiceSimId
 
 ```TypeScript
@@ -26,7 +24,7 @@ Obtains the default slot ID of the SIM card that provides voice services. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result.<br>The return value is bound to the SIM card and increases from 1. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. <br>The return value is bound to the SIM card and increases from 1. |
 
 **Error codes:**
 
@@ -52,8 +50,6 @@ sim.getDefaultVoiceSimId((err: BusinessError, data: number) => {
 ```
 
 
-<a id="getdefaultvoicesimid2"></a>
-
 ## getDefaultVoiceSimId
 
 ```TypeScript
@@ -72,7 +68,7 @@ Obtains the default slot ID of the SIM card that provides voice services. This A
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the result.<br>The return value is bound to the SIM card and increases from 1. |
+| Promise&lt;number&gt; | Promise used to return the result. <br>The return value is bound to the SIM card and increases from 1. |
 
 **Error codes:**
 

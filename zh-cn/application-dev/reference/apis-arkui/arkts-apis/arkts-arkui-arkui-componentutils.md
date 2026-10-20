@@ -4,6 +4,8 @@
 
 **起始版本：** 10
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace componentUtils--><!--Device-unnamed-declare namespace componentUtils-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

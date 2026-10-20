@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="disabledynamicicon1"></a>
-
 ## disableDynamicIcon
 
 ```TypeScript
@@ -72,8 +70,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="disabledynamicicon2"></a>
 
 ## disableDynamicIcon
 

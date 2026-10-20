@@ -28,8 +28,6 @@ grayscaleFactor?: [number, number, number]
 
 将RGB颜色转换为灰度值。灰度转换公式的权重可随当前色域自动调整，不同色域下使用不同的权重计算方式；适用于sRGB等标准色域场景。当需要根据特定色域或视觉效果自定义灰度转换权重时传入此参数。三个分量均无边界限制。默认值为标准灰度权重[0.299, 0.587, 0.114]。
 
-@property { ?[double, double, double] }
-
 **类型：** [number, number, number]
 
 **默认值：** [0.299, 0.587, 0.114]
@@ -51,8 +49,6 @@ hdrBrightnessRatio: number
 ```
 
 HDR的提亮倍数。取值范围为[1.0, 设备当前支持最大提亮倍数]。设置小于1.0的值时，按值为1.0处理；当值等于1.0时，为组件原本亮度；设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default
-
-@property { double }
 
 **类型：** number
 

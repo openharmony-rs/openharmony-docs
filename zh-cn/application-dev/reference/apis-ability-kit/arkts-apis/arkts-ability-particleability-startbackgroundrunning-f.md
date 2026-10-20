@@ -6,8 +6,6 @@
 import { particleAbility } from '@kit.AbilityKit';
 ```
 
-<a id="startbackgroundrunning1"></a>
-
 ## startBackgroundRunning
 
 ```TypeScript
@@ -82,8 +80,6 @@ wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj) => {
 });
 ```
 
-
-<a id="startbackgroundrunning2"></a>
 
 ## startBackgroundRunning
 

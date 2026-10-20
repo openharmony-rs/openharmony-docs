@@ -18,8 +18,6 @@ Provides APIs for locating certificates or CRLs in a **CertCRLCollection** objec
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
-<a id="selectcerts1"></a>
-
 ## selectCerts
 
 ```TypeScript
@@ -52,7 +50,7 @@ Selects certificates that match the specified parameters. This API uses a promis
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
@@ -121,8 +119,6 @@ async function selectCerts() {
 }
 ```
 
-<a id="selectcerts2"></a>
-
 ## selectCerts
 
 ```TypeScript
@@ -150,7 +146,7 @@ Selects certificates that match the specified parameters. This API uses an async
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
@@ -219,8 +215,6 @@ async function selectCerts() {
 }
 ```
 
-<a id="selectcrls1"></a>
-
 ## selectCRLs
 
 ```TypeScript
@@ -253,7 +247,7 @@ Selects CRLs that match the specified parameters. This API uses a promise to ret
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
@@ -356,8 +350,6 @@ async function selectCRLs() {
 }
 ```
 
-<a id="selectcrls2"></a>
-
 ## selectCRLs
 
 ```TypeScript
@@ -385,7 +377,7 @@ Selects CRLs that match the specified parameters. This API uses an asynchronous 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 

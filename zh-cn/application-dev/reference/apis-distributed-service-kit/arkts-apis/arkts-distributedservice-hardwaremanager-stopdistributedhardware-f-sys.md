@@ -12,7 +12,7 @@ import { hardwareManager } from '@kit.DistributedServiceKit';
 function stopDistributedHardware(description: HardwareDescriptor): Promise<void>
 ```
 
-停止被控端分布式硬件业务。使用promise异步回调。
+停止被控端分布式硬件业务。被控端对应的分布式硬件业务停止。使用promise异步回调。停止后无法通过resumeDistributedHardware恢复业务，需要重新启动分布式硬件服务，不能再调用pauseDistributedHardware或resumeDistributedHardware。调用此方法前需确保分布式硬件已启动。使用场景：当应用退出或不再需要分布式硬件功能时；当用户主动关闭分布式硬件服务时；当设备断开连接需要释放分布式硬件资源时。
 
 **起始版本：** 11
 
@@ -28,13 +28,13 @@ function stopDistributedHardware(description: HardwareDescriptor): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| description | [HardwareDescriptor](arkts-distributedservice-hardwaremanager-hardwaredescriptor-i-sys.md) | 是 | 硬件描述信息。 |
+| description | [HardwareDescriptor](arkts-distributedservice-hardwaremanager-hardwaredescriptor-i-sys.md) | 是 | 硬件描述信息，用于指定要操作的分布式硬件类型和源端设备。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，异步操作成功时无返回结果，失败时返回错误码和错误信息。 |
 
 **错误码：**
 

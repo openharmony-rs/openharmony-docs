@@ -6,8 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="stopdiscoverprinter1"></a>
-
 ## stopDiscoverPrinter
 
 ```TypeScript
@@ -20,7 +18,7 @@ Stops discovering printers. This API uses an asynchronous callback to return the
 
 **Required permissions:** 
 - API version 20 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
-- API versions 10 to 19: ohos.permission.MANAGE_PRINT_JOB
+- API versions 10 to 19: N/A
 
 <!--Device-print-function stopDiscoverPrinter(callback: AsyncCallback<void>): void--><!--Device-print-function stopDiscoverPrinter(callback: AsyncCallback<void>): void-End-->
 
@@ -37,7 +35,6 @@ Stops discovering printers. This API uses an asynchronous callback to return the
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application<br>**Applicable version:** 10 - 19 |
 
 **Examples**
 
@@ -55,8 +52,6 @@ print.stopDiscoverPrinter((error: BusinessError) => {
 ```
 
 
-<a id="stopdiscoverprinter2"></a>
-
 ## stopDiscoverPrinter
 
 ```TypeScript
@@ -69,7 +64,7 @@ Stops discovering printers. This API uses a promise to return the result.
 
 **Required permissions:** 
 - API version 20 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
-- API versions 10 to 19: ohos.permission.MANAGE_PRINT_JOB
+- API versions 10 to 19: N/A
 
 <!--Device-print-function stopDiscoverPrinter(): Promise<void>--><!--Device-print-function stopDiscoverPrinter(): Promise<void>-End-->
 
@@ -86,7 +81,6 @@ Stops discovering printers. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application<br>**Applicable version:** 10 - 19 |
 
 **Examples**
 

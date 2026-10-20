@@ -4,7 +4,7 @@
 interface ManualExposure extends ManualExposureQuery
 ```
 
-ManualExposure extends [ManualExposureQuery](arkts-camera-camera-manualexposurequery-i.md) Provides APIs to obtain and set the exposure duration.
+ManualExposure继承自[ManualExposureQuery](arkts-camera-camera-manualexposurequery-i.md)。提供了获取和设置曝光时长的方法。
 
 **继承/实现关系：** ManualExposure extends [ManualExposureQuery](arkts-camera-camera-manualexposurequery-i.md)
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 getExposureDuration(): number
 ```
 
-Gets current exposure value.
+获取当前曝光值。
 
 **起始版本：** 24
 
@@ -40,7 +40,7 @@ Gets current exposure value.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | The current exposure value, in units of microsecond |
+| number | 当前的曝光值，单位为微秒。 |
 
 **错误码：**
 
@@ -55,7 +55,7 @@ Gets current exposure value.
 setExposureDuration(exposureDuration: number): void
 ```
 
-Sets Exposure duration value, units: microseconds.This control is only effective if ExposureMode is set to EXPOSURE_MODE_MANUAL.
+设置曝光时长值，单位：微秒。此设置仅在曝光模式设置为EXPOSURE_MODE_MANUAL时生效。
 
 **起始版本：** 24
 
@@ -69,7 +69,7 @@ Sets Exposure duration value, units: microseconds.This control is only effective
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| exposureDuration | number | 是 | Exposure duration value |
+| exposureDuration | number | 是 | 曝光时长值。 |
 
 **错误码：**
 

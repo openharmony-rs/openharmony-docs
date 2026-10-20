@@ -6,8 +6,6 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
 The report execute action event.
 
-@typedef { function } ReportExecuteActionEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

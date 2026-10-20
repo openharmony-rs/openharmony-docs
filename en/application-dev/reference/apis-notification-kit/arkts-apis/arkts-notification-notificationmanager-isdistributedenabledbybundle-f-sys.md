@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="isdistributedenabledbybundle1"></a>
-
 ## isDistributedEnabledByBundle
 
 ```TypeScript
@@ -20,7 +18,7 @@ Checks whether distributed notification is enabled for a specified application. 
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [isDistributedEnabledByBundle](#isdistributedenabledbybundle3)(bundle: BundleOption, deviceType: string)
+**Substitutes:** [isDistributedEnabledByBundle](#isdistributedenabledbybundle)(bundle: BundleOption, deviceType: string)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -73,8 +71,6 @@ notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByB
 <!--DelEnd-->
 
 
-<a id="isdistributedenabledbybundle2"></a>
-
 ## isDistributedEnabledByBundle
 
 ```TypeScript
@@ -87,7 +83,7 @@ Checks whether distributed notification is enabled for a specified application. 
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [isDistributedEnabledByBundle](#isdistributedenabledbybundle3)(bundle: BundleOption, deviceType: string)
+**Substitutes:** [isDistributedEnabledByBundle](#isdistributedenabledbybundle)(bundle: BundleOption, deviceType: string)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -141,8 +137,6 @@ notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) =>
 
 <!--DelEnd-->
 
-
-<a id="isdistributedenabledbybundle3"></a>
 
 ## isDistributedEnabledByBundle
 

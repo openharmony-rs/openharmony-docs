@@ -6,8 +6,6 @@ declare namespace settings
 
 This module provides settings data access abilities.
 
-@namespace settings
-
 **Since:** 18
 
 <!--Device-unnamed-declare namespace settings--><!--Device-unnamed-declare namespace settings-End-->
@@ -41,11 +39,11 @@ import { settings } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue3) | Get value from settingsdata |
-| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue4) | Get value from settingsdata |
-| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue5) | Get value from settingsdata [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
-| [getValueSync](arkts-basicservices-settings-getvaluesync-f.md#getvaluesync2) | Get value from settingsdata(synchronous method) |
-| [getValueSync](arkts-basicservices-settings-getvaluesync-f.md#getvaluesync3) | Get value from settingsdata(synchronous method). [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
+| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue) | Get value from settingsdata |
+| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue) | Get value from settingsdata |
+| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue) | Get value from settingsdata [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
+| [getValueSync](arkts-basicservices-settings-getvaluesync-f.md#getvaluesync) | Get value from settingsdata(synchronous method) |
+| [getValueSync](arkts-basicservices-settings-getvaluesync-f.md#getvaluesync) | Get value from settingsdata(synchronous method). [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
 | [isDoubleClickAppForSelf](arkts-basicservices-settings-isdoubleclickappforself-f.md#isdoubleclickappforself) | 1. Checks whether the application started by double-pressing the Down key is the application itself. 2. This API is triggered to check whether double-pressing the Down key starts the application itself. |
 | [openAboutDeviceSettingsPage](arkts-basicservices-settings-openaboutdevicesettingspage-f.md#openaboutdevicesettingspage) | Open the about device settings page. |
 | [openAppDetailSettingsPage](arkts-basicservices-settings-openappdetailsettingspage-f.md#openappdetailsettingspage) | Open the app detail settings page. |
@@ -60,29 +58,29 @@ import { settings } from '@kit.BasicServicesKit';
 | [openScreenRefreshRateSettingsPage](arkts-basicservices-settings-openscreenrefreshratesettingspage-f.md#openscreenrefreshratesettingspage) | Open the screen refresh rate settings page. |
 | [openSoundSettingsPage](arkts-basicservices-settings-opensoundsettingspage-f.md#opensoundsettingspage) | Open the sound settings page. |
 | [registerKeyObserver](arkts-basicservices-settings-registerkeyobserver-f.md#registerkeyobserver) | Monitor registration key(synchronous method) [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
-| [setValue](arkts-basicservices-settings-setvalue-f.md#setvalue3) | Set settingsdata value. |
-| [setValue](arkts-basicservices-settings-setvalue-f.md#setvalue4) | Set settingsdata value. |
-| [setValue](arkts-basicservices-settings-setvalue-f.md#setvalue5) | Set settingsdata value. [DEVICE_SHARED, USER_PROPERTY] domain need ohos.permission.MANAGE_SETTINGS permission. [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
-| [setValueSync](arkts-basicservices-settings-setvaluesync-f.md#setvaluesync2) | Set settingsdata value(synchronous method) |
-| [setValueSync](arkts-basicservices-settings-setvaluesync-f.md#setvaluesync3) | Set settingsdata value(synchronous method). [DEVICE_SHARED, USER_PROPERTY] domain need ohos.permission.MANAGE_SETTINGS permission. [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
+| [setValue](arkts-basicservices-settings-setvalue-f.md#setvalue) | Set settingsdata value. |
+| [setValue](arkts-basicservices-settings-setvalue-f.md#setvalue) | Set settingsdata value. |
+| [setValue](arkts-basicservices-settings-setvalue-f.md#setvalue) | Set settingsdata value. [DEVICE_SHARED, USER_PROPERTY] domain need ohos.permission.MANAGE_SETTINGS permission. [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
+| [setValueSync](arkts-basicservices-settings-setvaluesync-f.md#setvaluesync) | Set settingsdata value(synchronous method) |
+| [setValueSync](arkts-basicservices-settings-setvaluesync-f.md#setvaluesync) | Set settingsdata value(synchronous method). [DEVICE_SHARED, USER_PROPERTY] domain need ohos.permission.MANAGE_SETTINGS permission. [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
 | [unregisterKeyObserver](arkts-basicservices-settings-unregisterkeyobserver-f.md#unregisterkeyobserver) | Monitor unregister key(synchronous method) [USER_SECURE] domain need ohos.permission.MANAGE_SECURE_SETTINGS permission. |
-| [canShowFloating](arkts-basicservices-settings-canshowfloating-f.md#canshowfloating1) | Checks whether a specified application can show as a floating window. |
-| [canShowFloating](arkts-basicservices-settings-canshowfloating-f.md#canshowfloating2) | Checks whether a specified application can show as a floating window. |
-| [enableAirplaneMode](arkts-basicservices-settings-enableairplanemode-f.md#enableairplanemode1) | Enables or disables airplane mode. |
-| [enableAirplaneMode](arkts-basicservices-settings-enableairplanemode-f.md#enableairplanemode2) | Enables or disables airplane mode. |
-| [getURI](arkts-basicservices-settings-geturi-f.md#geturi1) | Constructs a URI for a specific name-value pair for monitoring data of the ability that uses the Data template. |
-| [getURI](arkts-basicservices-settings-geturi-f.md#geturi2) | Constructs a URI for a specific name-value pair for monitoring data of the ability that uses the Data template. |
+| [canShowFloating](arkts-basicservices-settings-canshowfloating-f.md#canshowfloating) | Checks whether a specified application can show as a floating window. |
+| [canShowFloating](arkts-basicservices-settings-canshowfloating-f.md#canshowfloating) | Checks whether a specified application can show as a floating window. |
+| [enableAirplaneMode](arkts-basicservices-settings-enableairplanemode-f.md#enableairplanemode) | Enables or disables airplane mode. |
+| [enableAirplaneMode](arkts-basicservices-settings-enableairplanemode-f.md#enableairplanemode) | Enables or disables airplane mode. |
+| [getURI](arkts-basicservices-settings-geturi-f.md#geturi) | Constructs a URI for a specific name-value pair for monitoring data of the ability that uses the Data template. |
+| [getURI](arkts-basicservices-settings-geturi-f.md#geturi) | Constructs a URI for a specific name-value pair for monitoring data of the ability that uses the Data template. |
 | [getUriSync](arkts-basicservices-settings-geturisync-f.md#geturisync) | Get settingsdata uri (synchronous method) |
-| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue1) | Obtains the value of a specified character string in the database. |
-| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue2) | Obtains the value of a specified character string in the database. |
-| [getValueSync](arkts-basicservices-settings-getvaluesync-f.md#getvaluesync1) | Get value from settingsdata(synchronous method) |
-| [setValueSync](arkts-basicservices-settings-setvaluesync-f.md#setvaluesync1) | Set settingsdata value(synchronous method) |
+| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue) | Obtains the value of a specified character string in the database. |
+| [getValue](arkts-basicservices-settings-getvalue-f.md#getvalue) | Obtains the value of a specified character string in the database. |
+| [getValueSync](arkts-basicservices-settings-getvaluesync-f.md#getvaluesync) | Get value from settingsdata(synchronous method) |
+| [setValueSync](arkts-basicservices-settings-setvaluesync-f.md#setvaluesync) | Set settingsdata value(synchronous method) |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [setValue](arkts-basicservices-settings-setvalue-f-sys.md#setvalue1) | Saves a character string name and its value to the database. |
-| [setValue](arkts-basicservices-settings-setvalue-f-sys.md#setvalue2) | Saves a character string name and its value to the database. |
+| [setValue](arkts-basicservices-settings-setvalue-f-sys.md#setvalue) | Saves a character string name and its value to the database. |
+| [setValue](arkts-basicservices-settings-setvalue-f-sys.md#setvalue) | Saves a character string name and its value to the database. |
 <!--DelEnd-->

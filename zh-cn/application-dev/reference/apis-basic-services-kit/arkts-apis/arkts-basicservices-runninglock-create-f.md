@@ -6,8 +6,6 @@
 import { runningLock } from '@kit.BasicServicesKit';
 ```
 
-<a id="create1"></a>
-
 ## create
 
 ```TypeScript
@@ -51,8 +49,6 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 });
 ```
 
-
-<a id="create2"></a>
 
 ## create
 

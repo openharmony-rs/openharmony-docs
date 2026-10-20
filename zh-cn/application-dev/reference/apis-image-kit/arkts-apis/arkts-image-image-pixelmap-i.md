@@ -29,8 +29,6 @@ interface PixelMap
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="applycolorspace1"></a>
-
 ## applyColorSpace
 
 ```TypeScript
@@ -84,8 +82,6 @@ function applyColorSpace(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="applycolorspace2"></a>
 
 ## applyColorSpace
 
@@ -933,8 +929,6 @@ function convertPixelFormat(pixelMap: image.PixelMap) {
 }
 ```
 
-<a id="createalphapixelmap1"></a>
-
 ## createAlphaPixelmap
 
 ```TypeScript
@@ -978,8 +972,6 @@ function createAlphaPixelmap(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="createalphapixelmap2"></a>
 
 ## createAlphaPixelmap
 
@@ -1326,8 +1318,6 @@ function createScaledPixelMapSync(pixelMap: image.PixelMap) {
 }
 ```
 
-<a id="crop1"></a>
-
 ## crop
 
 ```TypeScript
@@ -1373,8 +1363,6 @@ function crop(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="crop2"></a>
 
 ## crop
 
@@ -1589,8 +1577,6 @@ function extractAlphaPixelMapSync(pixelMap: image.PixelMap) {
 }
 ```
 
-<a id="flip1"></a>
-
 ## flip
 
 ```TypeScript
@@ -1638,8 +1624,6 @@ function flip(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="flip2"></a>
 
 ## flip
 
@@ -1852,8 +1836,6 @@ function getDensity(pixelMap: image.PixelMap) {
 }
 ```
 
-<a id="getimageinfo1"></a>
-
 ## getImageInfo
 
 ```TypeScript
@@ -1891,8 +1873,6 @@ function getImageInfo(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="getimageinfo2"></a>
 
 ## getImageInfo
 
@@ -2229,8 +2209,6 @@ async function marshal() {
 }
 ```
 
-<a id="opacity1"></a>
-
 ## opacity
 
 ```TypeScript
@@ -2277,8 +2255,6 @@ function opacity(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="opacity2"></a>
 
 ## opacity
 
@@ -2495,8 +2471,6 @@ function readAllPixelsToBufferSync(pixelMap: image.PixelMap) {
 }
 ```
 
-<a id="readpixels1"></a>
-
 ## readPixels
 
 ```TypeScript
@@ -2571,8 +2545,6 @@ function readPixelsYUV(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="readpixels2"></a>
 
 ## readPixels
 
@@ -2900,8 +2872,6 @@ function readPixelsToAreaSyncYUV(pixelMap: image.PixelMap) {
 }
 ```
 
-<a id="readpixelstobuffer1"></a>
-
 ## readPixelsToBuffer
 
 ```TypeScript
@@ -2950,8 +2920,6 @@ function readPixelsToBuffer(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="readpixelstobuffer2"></a>
 
 ## readPixelsToBuffer
 
@@ -3051,8 +3019,6 @@ function readPixelsToBufferSync(pixelMap: image.PixelMap) {
 }
 ```
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -3101,8 +3067,6 @@ function release(pixelMap: image.PixelMap) {
 }
 ```
 
-<a id="release2"></a>
-
 ## release
 
 ```TypeScript
@@ -3148,8 +3112,6 @@ function release(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="rotate1"></a>
 
 ## rotate
 
@@ -3199,8 +3161,6 @@ function rotate(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="rotate2"></a>
 
 ## rotate
 
@@ -3307,8 +3267,6 @@ function rotateSync(pixelMap: image.PixelMap) {
 }
 ```
 
-<a id="scale1"></a>
-
 ## scale
 
 ```TypeScript
@@ -3357,8 +3315,6 @@ function scale(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="scale2"></a>
 
 ## scale
 
@@ -3411,8 +3367,6 @@ function scale(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="scale3"></a>
 
 ## scale
 
@@ -3474,8 +3428,6 @@ function scaleSync(pixelMap: image.PixelMap) {
 }
 ```
 
-<a id="scalesync1"></a>
-
 ## scaleSync
 
 ```TypeScript
@@ -3528,8 +3480,6 @@ function scaleSync(pixelMap: image.PixelMap) {
   }
 }
 ```
-
-<a id="scalesync2"></a>
 
 ## scaleSync
 
@@ -3994,8 +3944,6 @@ async function toSdr(context: Context) {
 }
 ```
 
-<a id="translate1"></a>
-
 ## translate
 
 ```TypeScript
@@ -4044,8 +3992,6 @@ function translate(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="translate2"></a>
 
 ## translate
 
@@ -4377,8 +4323,6 @@ function writeAllPixelsFromBufferSync(pixelMap: image.PixelMap) {
 }
 ```
 
-<a id="writebuffertopixels1"></a>
-
 ## writeBufferToPixels
 
 ```TypeScript
@@ -4431,8 +4375,6 @@ function writeBufferToPixels(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="writebuffertopixels2"></a>
 
 ## writeBufferToPixels
 
@@ -4538,8 +4480,6 @@ function writeBufferToPixelsSync(pixelMap: image.PixelMap) {
 }
 ```
 
-<a id="writepixels1"></a>
-
 ## writePixels
 
 ```TypeScript
@@ -4620,8 +4560,6 @@ function writePixelsYUV(pixelMap: image.PixelMap) {
   });
 }
 ```
-
-<a id="writepixels2"></a>
 
 ## writePixels
 

@@ -6,8 +6,6 @@ declare class BackupExtensionContext extends ExtensionContext
 
 The context of an ability or an application. It allows access to application-specific resources. Can only be obtained through the ability.
 
-@extends ExtensionContext
-
 **Inheritance/Implementation:** BackupExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 
 **Since:** 12

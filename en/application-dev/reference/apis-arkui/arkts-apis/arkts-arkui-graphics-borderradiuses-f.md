@@ -22,7 +22,7 @@ Generates a **borderRadiuses** object with the specified radius for all border c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| all | number | Yes | Radius of the border corners.<br>Unit: vp <br>Value range: [0, +∞) <br>A negative value is treated as the default value. |
+| all | number | Yes | Radius of the border corners. <br>Unit: vp <br>Value range: [0, +∞) <br>A negative value is treated as the default value. |
 
 **Return value:**
 

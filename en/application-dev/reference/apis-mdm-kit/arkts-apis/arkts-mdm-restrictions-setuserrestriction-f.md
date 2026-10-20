@@ -6,8 +6,6 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
-<a id="setuserrestriction1"></a>
-
 ## setUserRestriction
 
 ```TypeScript
@@ -20,7 +18,7 @@ Sets restrictions on user behaviors.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setUserRestriction](#setuserrestriction2)(admin: Want, settingsItem: SettingsForDevice, restricted: boolean)
+**Substitutes:** [setUserRestriction](#setuserrestriction)(admin: Want, settingsItem: SettingsForDevice, restricted: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 
@@ -35,7 +33,7 @@ Sets restrictions on user behaviors.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
-| settingsItem | string | Yes | Behavior name. Only the following values are supported. If other values are passed, an error will be reported.<br>- **setApn**: APN configuration, currently supported only on smartphones and tablets. <br>- **powerLongPress**: capability to open the power menu by long-pressing the power button. Currently, only smartphones and tablets are supported. <br>- **setEthernetIp**: Ethernet IP address configuration, currently supported only on PCs/2-in-1 devices. <br>- **setDeviceName**: device name configuration, currently supported only on PCs/2-in-1 devices, smartphones, and tablets. When it is disabled, the device name cannot be modified in the following settings: **About**, **Bluetooth**, and **More connectivity options**   > **NearLink** on PCs/2-in-1 devices, and **About**, **Bluetooth**, and **Personal hotspot** on smartphones and tablets. <br>- **setBiometricsAndScreenLock**: screen lock password configuration, currently supported only on PCs/2-in- 1 devices, smartphones, and tablets. |
+| settingsItem | string | Yes | Behavior name. Only the following values are supported. If other values are passed, an error will be reported. <br>- **setApn**: APN configuration, currently supported only on smartphones and tablets. <br>- **powerLongPress**: capability to open the power menu by long-pressing the power button. Currently, only smartphones and tablets are supported. <br>- **setEthernetIp**: Ethernet IP address configuration, currently supported only on PCs/2-in-1 devices. <br>- **setDeviceName**: device name configuration, currently supported only on PCs/2-in-1 devices, smartphones, and tablets. When it is disabled, the device name cannot be modified in the following settings: **About**, **Bluetooth**, and **More connectivity options**   > **NearLink** on PCs/2-in-1 devices, and **About**, **Bluetooth**, and **Personal hotspot** on smartphones and tablets. <br>- **setBiometricsAndScreenLock**: screen lock password configuration, currently supported only on PCs/2-in- 1 devices, smartphones, and tablets. |
 | restricted | boolean | Yes | Whether to disable the action. The value **true** means to disable the action, and **false** means the opposite. |
 
 **Error codes:**
@@ -67,8 +65,6 @@ try {
 }
 ```
 
-
-<a id="setuserrestriction2"></a>
 
 ## setUserRestriction
 

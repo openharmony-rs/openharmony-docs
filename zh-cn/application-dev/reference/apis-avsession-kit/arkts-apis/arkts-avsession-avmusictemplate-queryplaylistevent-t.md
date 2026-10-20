@@ -6,8 +6,6 @@ type QueryPlaylistEvent = (pageIndex: number, sort: Sort) => Promise<PageMediaEn
 
 播放列表查询事件。使用Promise异步回调。
 
-@typedef { function } QueryPlaylistEvent
-
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。

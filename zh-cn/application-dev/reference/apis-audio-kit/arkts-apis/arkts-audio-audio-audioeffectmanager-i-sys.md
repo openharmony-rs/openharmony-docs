@@ -6,8 +6,6 @@ interface AudioEffectManager
 
 音频效果管理，支持查询和设置系统音效模式、管理音频分离效果。适用于需要定制音频播放效果、实现人声分离、管理设备音效的场景。在使用AudioEffectManager的接口前，需要使用[getEffectManager](arkts-audio-audio-audiomanager-i-sys.md#geteffectmanager)获取AudioEffectManager实例。
 
-@typedef AudioEffectManager
-
 **起始版本：** 18
 
 <!--Device-audio-interface AudioEffectManager--><!--Device-audio-interface AudioEffectManager-End-->
@@ -70,6 +68,66 @@ try {
 ```
 
 <!--DelEnd-->
+
+## getAudioSeparationEffectAvailableStatus
+
+```TypeScript
+getAudioSeparationEffectAvailableStatus(): AudioSeparationEffectAvailableStatus
+```
+
+获取音频分离效果的可用状态。播控应用可根据此状态决定是否显示音频分离开关按钮。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioEffectManager-getAudioSeparationEffectAvailableStatus(): AudioSeparationEffectAvailableStatus--><!--Device-AudioEffectManager-getAudioSeparationEffectAvailableStatus(): AudioSeparationEffectAvailableStatus-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [AudioSeparationEffectAvailableStatus](arkts-audio-audio-audioseparationeffectavailablestatus-i-sys.md) | 返回音频分离效果的可用状态。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 调用方不是系统应用程序。 |
+
+## getAudioSeparationEffectEnabled
+
+```TypeScript
+getAudioSeparationEffectEnabled(): boolean
+```
+
+获取音频分离效果启用状态。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioEffectManager-getAudioSeparationEffectEnabled(): boolean--><!--Device-AudioEffectManager-getAudioSeparationEffectEnabled(): boolean-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 返回是否启用音频分离效果。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 调用方不是系统应用程序。 |
 
 ## getSupportedAudioEffectProperty
 
@@ -166,6 +224,36 @@ console.info(`Audio separation effect is supported: ${isSupported}`);
 
 <!--DelEnd-->
 
+## offAudioSeparationEffectAvailableStatusChange
+
+```TypeScript
+offAudioSeparationEffectAvailableStatusChange(callback?: Callback<AudioSeparationEffectAvailableStatus>): void
+```
+
+取消订阅音频分离效果状态变化事件。取消后，系统将不再触发回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioEffectManager-offAudioSeparationEffectAvailableStatusChange(callback?: Callback<AudioSeparationEffectAvailableStatus>): void--><!--Device-AudioEffectManager-offAudioSeparationEffectAvailableStatusChange(callback?: Callback<AudioSeparationEffectAvailableStatus>): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSeparationEffectAvailableStatus](arkts-audio-audio-audioseparationeffectavailablestatus-i-sys.md)&gt; | 否 | 待取消的回调。<br>如果不传callback参数，则取消所有订阅的回调。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 调用方不是系统应用程序。 |
+
 ## offAudioSeparationEffectEnabledChange
 
 ```TypeScript
@@ -207,6 +295,36 @@ audioEffectManager.offAudioSeparationEffectEnabledChange();
 ```
 
 <!--DelEnd-->
+
+## onAudioSeparationEffectAvailableStatusChange
+
+```TypeScript
+onAudioSeparationEffectAvailableStatusChange(callback: Callback<AudioSeparationEffectAvailableStatus>): void
+```
+
+订阅音频分离效果可用状态变化事件。当系统识别当前场景不是音频分离的目标场景时，将通过此回调通知播控应用。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioEffectManager-onAudioSeparationEffectAvailableStatusChange(callback: Callback<AudioSeparationEffectAvailableStatus>): void--><!--Device-AudioEffectManager-onAudioSeparationEffectAvailableStatusChange(callback: Callback<AudioSeparationEffectAvailableStatus>): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSeparationEffectAvailableStatus](arkts-audio-audio-audioseparationeffectavailablestatus-i-sys.md)&gt; | 是 | Callback function, which is used to return the changed availablity status. |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 调用方不是系统应用程序。 |
 
 ## onAudioSeparationEffectEnabledChange
 

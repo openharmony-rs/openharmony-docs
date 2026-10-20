@@ -28,7 +28,7 @@ flag?: PanelFlag
 
 **类型：** [PanelFlag](arkts-ime-inputmethod-panel-panelflag-e.md)
 
-**默认值：** FLG_FIXED
+**默认值：** FLAG_FIXED
 
 **起始版本：** 11
 

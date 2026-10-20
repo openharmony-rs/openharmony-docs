@@ -30,7 +30,7 @@ Callback when the call forwarding status is updated. This callback is invoked wh
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>The value should be an integer. <br>- **0**: card slot 1. <br>- **1**: card slot 2. |
+| slotId | number | Yes | Card slot ID. <br>The value should be an integer. <br>- **0**: card slot 1. <br>- **1**: card slot 2. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value **true** indicates calltransfer enabled, and **false** indicates calltransfer disabled. |
 
 **Error codes:**

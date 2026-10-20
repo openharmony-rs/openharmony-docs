@@ -6,8 +6,6 @@ export interface RaycastParameters
 
 Describes the configuration parameters for raycasting, defining the behavior of raycasting.
 
-@interface RaycastParameters
-
 **Since:** 20
 
 <!--Device-unnamed-export interface RaycastParameters--><!--Device-unnamed-export interface RaycastParameters-End-->

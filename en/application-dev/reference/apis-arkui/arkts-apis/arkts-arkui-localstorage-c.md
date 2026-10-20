@@ -588,7 +588,7 @@ If **propName** does not exist, this API creates it with the value of **newValue
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns **true** if the property corresponding to **propName** exists and its value is updated to the value of **newValue**, or if **propName** is created with the value of **newValue**.<br>Before API version 12, **false** is returned when the value of **newValue** is **null** or **undefined**. |
+| boolean | Returns **true** if the property corresponding to **propName** exists and its value is updated to the value of **newValue**, or if **propName** is created with the value of **newValue**. <br>Before API version 12, **false** is returned when the value of **newValue** is **null** or **undefined**. |
 
 **Examples**
 

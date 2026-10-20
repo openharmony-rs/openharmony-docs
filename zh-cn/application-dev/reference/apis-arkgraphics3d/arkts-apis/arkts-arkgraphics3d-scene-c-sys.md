@@ -12,8 +12,6 @@ export declare class Scene
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-<a id="load2"></a>
-
 ## load
 
 ```TypeScript

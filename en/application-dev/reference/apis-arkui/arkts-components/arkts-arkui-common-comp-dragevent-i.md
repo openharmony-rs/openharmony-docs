@@ -185,7 +185,7 @@ Obtains the x-coordinate of the drag point relative to the upper left corner of 
 
 | Type | Description |
 | --- | --- |
-| number | X-coordinate of the drag point relative to the upper left corner of the global screen.<br>Unit: vp. Value range: (-∞, +∞) |
+| number | X-coordinate of the drag point relative to the upper left corner of the global screen. <br>Unit: vp. Value range: (-∞, +∞) |
 
 ## getGlobalDisplayY
 
@@ -209,7 +209,7 @@ Obtains the y-coordinate of the drag point relative to the upper left corner of 
 
 | Type | Description |
 | --- | --- |
-| number | Y-coordinate of the drag point relative to the upper left corner of the global screen.<br>Unit: vp. Value range: (-∞, +∞) |
+| number | Y-coordinate of the drag point relative to the upper left corner of the global screen. <br>Unit: vp. Value range: (-∞, +∞) |
 
 ## getModifierKeyState
 
@@ -596,7 +596,7 @@ Obtains the x-coordinate of the drag point relative to the upper left corner of 
 
 | Type | Description |
 | --- | --- |
-| number | X-coordinate of the drag point relative to the upper left corner of the window.<br>Unit: vp. |
+| number | X-coordinate of the drag point relative to the upper left corner of the window. <br>Unit: vp. |
 
 ## getY
 
@@ -622,7 +622,7 @@ Obtains the y-coordinate of the drag point relative to the upper left corner of 
 
 | Type | Description |
 | --- | --- |
-| number | Y-coordinate of the drag point relative to the upper left corner of the window.<br>Unit: vp. |
+| number | Y-coordinate of the drag point relative to the upper left corner of the window. <br>Unit: vp. |
 
 ## autoHideComponentUniqueIds
 

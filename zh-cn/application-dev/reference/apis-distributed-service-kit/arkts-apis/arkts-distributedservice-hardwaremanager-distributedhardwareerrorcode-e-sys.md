@@ -20,7 +20,7 @@ enum DistributedHardwareErrorCode
 ERR_CODE_DEVICE_NOT_CONNECTED = 24200102
 ```
 
-表示源端设备未连接。
+表示指定的源端设备未建立连接。
 
 **起始版本：** 11
 
@@ -36,7 +36,7 @@ ERR_CODE_DEVICE_NOT_CONNECTED = 24200102
 ERR_CODE_DISTRIBUTED_HARDWARE_NOT_STARTED = 24200101
 ```
 
-表示分布式硬件未启动。
+表示指定的分布式硬件服务未启动。
 
 **起始版本：** 11
 

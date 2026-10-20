@@ -6,8 +6,6 @@ export declare class LazyWaterFlowLayoutAttribute<T> extends CommonMethod<T>
 
 定义懒加载瀑布流布局属性。
 
-@extends CommonMethod<T>
-
 **继承/实现关系：** LazyWaterFlowLayoutAttribute extends CommonMethod&lt;T&gt;
 
 **起始版本：** 26.0.0

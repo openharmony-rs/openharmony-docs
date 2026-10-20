@@ -37,8 +37,6 @@ declare function mkdir(path: string, mode?: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="mkdir2"></a>
-
 ## mkdir
 
 ```TypeScript
@@ -64,8 +62,6 @@ declare function mkdir(path: string, callback: AsyncCallback<void>): void
 | path | string | 是 | 待创建目录的应用沙箱路径。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步创建目录操作完成之后的回调。 |
 
-
-<a id="mkdir3"></a>
 
 ## mkdir
 

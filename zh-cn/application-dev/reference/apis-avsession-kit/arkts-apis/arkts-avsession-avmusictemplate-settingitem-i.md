@@ -6,8 +6,6 @@ interface SettingItem
 
 设置项的定义。
 
-@interface SettingItem
-
 **起始版本：** 23
 
 <!--Device-avMusicTemplate-interface SettingItem--><!--Device-avMusicTemplate-interface SettingItem-End-->

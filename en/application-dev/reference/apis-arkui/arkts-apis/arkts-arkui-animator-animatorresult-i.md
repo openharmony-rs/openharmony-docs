@@ -198,8 +198,6 @@ See ArkTS-based Declarative Development Paradigm.
 animator.play();
 ```
 
-<a id="reset1"></a>
-
 ## reset
 
 ```TypeScript
@@ -226,7 +224,7 @@ Resets the animation parameters of this animator.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | The specified page is not found or the object property list is not obtained. |
 
 **Examples**
@@ -268,15 +266,13 @@ struct AnimatorTest {
 }
 ```
 
-<a id="reset2"></a>
-
 ## reset
 
 ```TypeScript
 reset(options: AnimatorOptions | SimpleAnimatorOptions): void
 ```
 
-Resets the animation parameters of this animator. Compared with [reset](#reset1), this API accepts parameters of the [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md) type.
+Resets the animation parameters of this animator. Compared with [reset](#reset), this API accepts parameters of the [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md) type.
 
 **Since:** 18
 
@@ -298,7 +294,7 @@ Resets the animation parameters of this animator. Compared with [reset](#reset1)
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | The specified page is not found or the object property list is not obtained. |
 
 **Examples**

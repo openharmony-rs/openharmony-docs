@@ -29,7 +29,7 @@ Stops listening for events of the **TLSSocketServer** object and releases the po
 > **NOTE:** 
 > 
 > This API does not close existing connections. To close the connection, call the
-> [close](arkts-network-socket-tcpsocketconnection-i.md#close1) API of
+> [close](arkts-network-socket-tcpsocketconnection-i.md#close) API of
 > [TLSSocketConnection](arkts-network-socket-tlssocketconnection-i.md).
 
 **Since:** 20
@@ -91,8 +91,6 @@ tlsServer.listen(tlsConnectOptions).then(() => {
   console.error("listen failed: " + err.code);
 });
 ```
-
-<a id="getcertificate1"></a>
 
 ## getCertificate
 
@@ -208,8 +206,6 @@ tlsServer.getCertificate().then((data: socket.X509CertRawData) => {
   console.error("failed" + err);
 });
 ```
-
-<a id="getcertificate2"></a>
 
 ## getCertificate
 
@@ -347,7 +343,7 @@ Obtains the local socket address of a **TLSSocketServer** connection. This API u
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | Promise used to return the result. |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Promise used to return the result. |
 
 **Error codes:**
 
@@ -370,8 +366,6 @@ tlsServer.getLocalAddress().then((localAddress: socket.NetAddress) => {
   console.error("Get failed, error: " + JSON.stringify(err));
 })
 ```
-
-<a id="getprotocol1"></a>
 
 ## getProtocol
 
@@ -445,8 +439,6 @@ tlsServer.getProtocol((err: BusinessError, data: string) => {
   }
 });
 ```
-
-<a id="getprotocol2"></a>
 
 ## getProtocol
 
@@ -592,8 +584,6 @@ tlsServer.listen(tlsConnectOptions).then(() => {
 });
 ```
 
-<a id="getstate1"></a>
-
 ## getState
 
 ```TypeScript
@@ -666,8 +656,6 @@ tlsServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
 });
 ```
 
-<a id="getstate2"></a>
-
 ## getState
 
 ```TypeScript
@@ -736,8 +724,6 @@ tlsServer.getState().then(() => {
   console.error('getState fail');
 });
 ```
-
-<a id="listen1"></a>
 
 ## listen
 
@@ -814,8 +800,6 @@ tlsServer.listen(tlsConnectOptions, (err: BusinessError) => {
   console.error("listen callback error" + err);
 });
 ```
-
-<a id="listen2"></a>
 
 ## listen
 
@@ -1180,8 +1164,6 @@ tlsServer.on('error', (err: BusinessError) => {
 });
 ```
 
-<a id="setextraoptions1"></a>
-
 ## setExtraOptions
 
 ```TypeScript
@@ -1270,8 +1252,6 @@ tlsServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
   console.info('setExtraOptions success');
 });
 ```
-
-<a id="setextraoptions2"></a>
 
 ## setExtraOptions
 

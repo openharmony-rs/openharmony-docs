@@ -35,4 +35,4 @@ Uninitializes the active tag resources.
 
 | Type | Description |
 | --- | --- |
-| boolean | **true**: The uninstallation is successful.<br>**false**: The uninstallation fails. |
+| boolean | **true**: The uninstallation is successful. <br>**false**: The uninstallation fails. |

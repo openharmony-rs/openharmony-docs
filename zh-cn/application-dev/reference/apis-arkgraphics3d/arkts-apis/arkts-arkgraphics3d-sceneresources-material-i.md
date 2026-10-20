@@ -6,8 +6,6 @@ export interface Material extends SceneResource
 
 材质类型，继承自SceneResource。
 
-@extends SceneResource @interface Material
-
 **继承/实现关系：** Material extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **起始版本：** 12

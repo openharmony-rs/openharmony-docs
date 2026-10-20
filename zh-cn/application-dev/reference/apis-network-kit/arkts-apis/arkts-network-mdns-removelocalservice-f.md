@@ -6,8 +6,6 @@
 import { mdns } from '@kit.NetworkKit';
 ```
 
-<a id="removelocalservice1"></a>
-
 ## removeLocalService
 
 ```TypeScript
@@ -76,8 +74,6 @@ mdns.removeLocalService(context, localServiceInfo, (error: BusinessError, data: 
 });
 ```
 
-
-<a id="removelocalservice2"></a>
 
 ## removeLocalService
 

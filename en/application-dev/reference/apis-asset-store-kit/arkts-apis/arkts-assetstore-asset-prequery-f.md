@@ -32,7 +32,7 @@ Performs preprocessing for the asset query. This API is used when user authentic
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise used to return a challenge value.<br>**Note:**  The challenge value is used for subsequent user authentication. |
+| Promise&lt;Uint8Array&gt; | Promise used to return a challenge value. <br>**Note:**  The challenge value is used for subsequent user authentication. |
 
 **Error codes:**
 

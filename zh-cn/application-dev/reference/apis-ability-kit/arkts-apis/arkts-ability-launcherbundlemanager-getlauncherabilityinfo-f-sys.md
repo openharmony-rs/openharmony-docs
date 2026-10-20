@@ -6,8 +6,6 @@
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getlauncherabilityinfo1"></a>
-
 ## getLauncherAbilityInfo
 
 ```TypeScript
@@ -70,8 +68,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getlauncherabilityinfo2"></a>
 
 ## getLauncherAbilityInfo
 

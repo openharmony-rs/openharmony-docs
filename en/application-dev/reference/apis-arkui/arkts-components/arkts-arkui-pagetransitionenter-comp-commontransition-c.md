@@ -4,7 +4,7 @@
 declare class CommonTransition<T>
 ```
 
-Defines the common transition animation for page transitions, which is inherited and used by [PageTransitionEnter](arkts-arkui-pagetransitionenter-comp.md) and [PageTransitionExit](arkts-arkui-pagetransitionenter-comp-con.md#pagetransitionexit). It must be configured in the **pageTransition()** function. Both **slide** and **translate** involve position movement: **slide** is suitable for scenarios that require sliding in and out along a preset direction (left/right/up /down/**START**\/**END)** and is simple to use; **translate** is suitable for scenarios that require a custom translation distance and offers higher flexibility. When **slide** and **translate** are set simultaneously, **slide** takes effect by default. **scale** and **opacity** set the scale and opacity effects respectively, and can be combined with the effects above.
+Defines the common transition animation for page transitions, which is inherited and used by [PageTransitionEnter](arkts-arkui-pagetransitionenter-comp.md#pagetransitionenter) and [PageTransitionExit](arkts-arkui-pagetransitionenter-comp-con.md#pagetransitionexit). It must be configured in the **pageTransition()** function. Both **slide** and **translate** involve position movement: **slide** is suitable for scenarios that require sliding in and out along a preset direction (left/right/up /down/**START**\/**END)** and is simple to use; **translate** is suitable for scenarios that require a custom translation distance and offers higher flexibility. When **slide** and **translate** are set simultaneously, **slide** takes effect by default. **scale** and **opacity** set the scale and opacity effects respectively, and can be combined with the effects above.
 
 **Since:** 7
 
@@ -48,7 +48,7 @@ Sets the starting opacity value for entrance or the ending opacity value for exi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Start opacity value of the entrance animation or the end opacity value of the exit animation.<br>Value range: [0, 1] |
+| value | number | Yes | Start opacity value of the entrance animation or the end opacity value of the exit animation. <br>Value range: [0, 1] |
 
 **Return value:**
 
@@ -76,7 +76,7 @@ Sets the scaling effect for page transitions.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ScaleOptions](arkts-arkui-common-comp-scaleoptions-i.md) | Yes | Scale effect during page transition, which is the value at the start point when entering and at the end point when exiting.<br>- **x**: horizontal scale multiple (or scale ratio). <br>- **y**: vertical scale multiple (or scale ratio). <br>- **z**: depth scale multiple (or scale ratio). <br>- **centerX** and **centerY**: scale center point. The default values of **centerX** and **centerY** are **"50%"**, that is, the center point of the page is used as the scale center point by default. <br>- A center point of (0, 0) represents the upper left corner of the page.<br>**Since:** 18 |
+| value | [ScaleOptions](arkts-arkui-common-comp-scaleoptions-i.md) | Yes | Scale effect during page transition, which is the value at the start point when entering and at the end point when exiting. <br>- **x**: horizontal scale multiple (or scale ratio). <br>- **y**: vertical scale multiple (or scale ratio). <br>- **z**: depth scale multiple (or scale ratio). <br>- **centerX** and **centerY**: scale center point. The default values of **centerX** and **centerY** are **"50%"**, that is, the center point of the page is used as the scale center point by default. <br>- A center point of (0, 0) represents the upper left corner of the page.<br>**Since:** 18 |
 
 **Return value:**
 
@@ -132,7 +132,7 @@ Sets the translation effect for page transitions.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [TranslateOptions](arkts-arkui-common-comp-translateoptions-i.md) | Yes | Translation effect during page transition, which is the value at the start point when entering and at the end point when exiting. When set simultaneously with **slide**, **slide** takes effect by default.<br>- **x**: horizontal translation distance. <br>- **y**: vertical translation distance. <br>- **z**: z-axis translation distance.<br>**Since:** 18 |
+| value | [TranslateOptions](arkts-arkui-common-comp-translateoptions-i.md) | Yes | Translation effect during page transition, which is the value at the start point when entering and at the end point when exiting. When set simultaneously with **slide**, **slide** takes effect by default. <br>- **x**: horizontal translation distance. <br>- **y**: vertical translation distance. <br>- **z**: z-axis translation distance.<br>**Since:** 18 |
 
 **Return value:**
 

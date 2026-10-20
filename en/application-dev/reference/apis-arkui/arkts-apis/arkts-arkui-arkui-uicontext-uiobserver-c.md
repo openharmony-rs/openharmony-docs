@@ -1119,8 +1119,6 @@ Removes the listener callback registered using the **onRouterPageSizeChange** AP
 
 See the example for the [onRouterPageSizeChange](#onrouterpagesizechange) API.
 
-<a id="offswipercontentupdate1"></a>
-
 ## offSwiperContentUpdate
 
 ```TypeScript
@@ -1148,8 +1146,6 @@ Unregister the listener for content switching events of the **Swiper** component
 **Examples**
 
 See the example for the [onSwiperContentUpdate](#onswipercontentupdate) API.
-
-<a id="offswipercontentupdate2"></a>
 
 ## offSwiperContentUpdate
 
@@ -1202,9 +1198,9 @@ Subscribes to status changes of this **NavDestination** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'navDestinationUpdate' | Yes | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates the state change event<br>of the **NavDestination** component. |
+| type | 'navDestinationUpdate' | Yes | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates the state change event <br>of the **NavDestination** component. |
 | options | { navigationId: ResourceStr } | Yes | ID of the target **NavDestination** component. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | Yes | Callback used to return the current<br>state of the **NavDestination** component. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | Yes | Callback used to return the current <br>state of the **NavDestination** component. |
 
 **Examples**
 
@@ -1284,8 +1280,8 @@ Subscribes to status changes of this **NavDestination** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'navDestinationUpdate' | Yes | Event type. The value is fixed at **'navDestinationUpdate'**,<br>which indicates the state change event of the **NavDestination** component. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | Yes | Callback used to return the current state of<br>the **NavDestination** component. |
+| type | 'navDestinationUpdate' | Yes | Event type. The value is fixed at **'navDestinationUpdate'**, <br>which indicates the state change event of the **NavDestination** component. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | Yes | Callback used to return the current state of <br>the **NavDestination** component. |
 
 **Examples**
 
@@ -1589,7 +1585,7 @@ Unsubscribes to state changes of the page in the router.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'routerPageUpdate' | Yes | Event type.<br>The value is fixed at 'routerPageUpdate', which indicates the state change event of the page in the router. |
+| type | 'routerPageUpdate' | Yes | Event type. <br>The value is fixed at 'routerPageUpdate', which indicates the state change event of the page in the router. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.RouterPageInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | Yes | Callback to be unregistered. |
 
 **Examples**
@@ -2897,7 +2893,7 @@ Registers a callback to be invoked when the rendering state of a specific node c
 
 Be mindful of node quantity limitations. For performance reasons, registering too many nodes within a single UI instance will throw an exception.
 
-Typically, a **RENDER_OUT** notification is received when a component moves off-screen. However, in certain scenarios, a **RENDER_OUT** notification might not be triggered even if a component has moved off-screen. For example, components with caching capabilities like Swiper will not trigger **RENDER_OUT** notifications even when the **isShown** parameter in the [cachedCount](../arkts-components/arkts-arkui-swiper-comp-attribute.md#cachedcount2) attribute is set to **true**.
+Typically, a **RENDER_OUT** notification is received when a component moves off-screen. However, in certain scenarios, a **RENDER_OUT** notification might not be triggered even if a component has moved off-screen. For example, components with caching capabilities like Swiper will not trigger **RENDER_OUT** notifications even when the **isShown** parameter in the [cachedCount](../arkts-components/arkts-arkui-swiper-comp-attribute.md#cachedcount) attribute is set to **true**.
 
 **Since:** 20
 
@@ -3430,8 +3426,6 @@ struct QueryRouterPageSize {
 }
 ```
 
-<a id="onswipercontentupdate1"></a>
-
 ## onSwiperContentUpdate
 
 ```TypeScript
@@ -3507,8 +3501,6 @@ struct SwiperExample {
   }
 }
 ```
-
-<a id="onswipercontentupdate2"></a>
 
 ## onSwiperContentUpdate
 

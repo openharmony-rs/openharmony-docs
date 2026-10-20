@@ -9,8 +9,8 @@ T and S in this topic represent the types as described below.
 
 | Type | Description |
  | ---- | -------------------------------------- |
-| T | Class, number, boolean, string, and arrays of these types.|
-| S | number, boolean, string. |
+ | T | Class, number, boolean, string, and arrays of these types.|
+ | S | number, boolean, string. |
 
 
 

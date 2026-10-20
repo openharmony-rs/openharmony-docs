@@ -46,3 +46,78 @@ Marquee的动态帧率场景类型。用于指定Marquee组件的动态帧率场
 <!--Device-MarqueeDynamicSyncScene-readonly type: MarqueeDynamicSyncSceneType--><!--Device-MarqueeDynamicSyncScene-readonly type: MarqueeDynamicSyncSceneType-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例**
+
+```TypeScript
+import { MarqueeDynamicSyncSceneType, MarqueeDynamicSyncScene } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MarqueeExample {
+  @State start: boolean = false;
+  @State src: string = '';
+  @State marqueeText: string = 'Running Marquee';
+  private fromStart: boolean = true;
+  private step: number = 10;
+  private loop: number = Number.POSITIVE_INFINITY;
+  controller: TextClockController = new TextClockController();
+  convertToTime(value: number): string {
+    let date = new Date(Number(value + '000'));
+    let hours = date.getHours().toString().padStart(2, '0');
+    let minutes = date.getMinutes().toString().padStart(2, '0');
+    let seconds = date.getSeconds().toString().padStart(2, '0');
+    return hours + ':' + minutes + ':' + seconds;
+  }
+  @State frameRateRange: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30 };
+  private scenes: MarqueeDynamicSyncScene[] = [];
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Marquee({
+        start: this.start,
+        step: this.step,
+        loop: this.loop,
+        fromStart: this.fromStart,
+        src: this.marqueeText + this.src
+      })
+        .marqueeUpdateStrategy(MarqueeUpdateStrategy.PRESERVE_POSITION)
+        .width(300)
+        .height(80)
+        .fontColor('#FFFFFF')
+        .fontSize(48)
+        .fontWeight(700)
+        .backgroundColor('#182431')
+        .margin({ bottom: 40 })
+        .id('dynamicMarquee')
+        .onAppear(()=>{
+          this.scenes = this.getUIContext().requireDynamicSyncScene('dynamicMarquee') as MarqueeDynamicSyncScene[];
+        })
+      Button('Start')
+        .onClick(() => {
+          this.start = true;
+          this.controller.start();
+          this.scenes.forEach((scene: MarqueeDynamicSyncScene) => {
+            if (scene.type === MarqueeDynamicSyncSceneType.ANIMATION) {
+              scene.setFrameRateRange(this.frameRateRange);
+            }
+          });
+        })
+        .width(120)
+        .height(40)
+        .fontSize(16)
+        .fontWeight(500)
+        .backgroundColor('#007DFF')
+      TextClock({ timeZoneOffset: -8, controller: this.controller })
+        .format('hms')
+        .onDateChange((value: number) => {
+          this.src = this.convertToTime(value);
+        })
+        .margin(20)
+        .fontSize(30)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```

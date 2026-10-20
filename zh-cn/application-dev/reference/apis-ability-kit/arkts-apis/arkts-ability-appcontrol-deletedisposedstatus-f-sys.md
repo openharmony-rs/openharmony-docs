@@ -6,8 +6,6 @@
 import { appControl } from '@kit.AbilityKit';
 ```
 
-<a id="deletedisposedstatus1"></a>
-
 ## deleteDisposedStatus
 
 ```TypeScript
@@ -67,8 +65,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="deletedisposedstatus2"></a>
 
 ## deleteDisposedStatus
 

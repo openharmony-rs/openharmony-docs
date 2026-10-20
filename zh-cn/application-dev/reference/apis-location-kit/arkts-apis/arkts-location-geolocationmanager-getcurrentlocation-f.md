@@ -6,8 +6,6 @@
 import { geoLocationManager } from '@kit.LocationKit';
 ```
 
-<a id="getcurrentlocation1"></a>
-
 ## getCurrentLocation
 
 ```TypeScript
@@ -93,8 +91,6 @@ try {
 ```
 
 
-<a id="getcurrentlocation2"></a>
-
 ## getCurrentLocation
 
 ```TypeScript
@@ -152,8 +148,6 @@ try {
 }
 ```
 
-
-<a id="getcurrentlocation3"></a>
 
 ## getCurrentLocation
 

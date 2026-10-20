@@ -6,8 +6,6 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
-<a id="unmount1"></a>
-
 ## unmount
 
 ```TypeScript
@@ -39,7 +37,7 @@ function unmount(volumeId: string, callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600002 | Not supported filesystem. |
 | 13600004 | Failed to unmount. |
@@ -47,8 +45,24 @@ function unmount(volumeId: string, callback: AsyncCallback<void>): void
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
+**示例**
 
-<a id="unmount2"></a>
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// volumeId可通过getAllVolumes()接口获取
+let volumeId: string = "";
+volumeManager.unmount(volumeId, (error: BusinessError) => {
+  if (error) {
+    console.error(`unmount failed, code is: ${error.code}, message is: ${error.message}`);
+    return;
+  }
+  // 卸载指定卷设备成功后的回调
+});
+```
+
+<!--DelEnd-->
+
 
 ## unmount
 
@@ -86,10 +100,26 @@ function unmount(volumeId: string): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600002 | Not supported filesystem. |
 | 13600004 | Failed to unmount. |
 | 13600005 | Incorrect volume state. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// volumeId可通过getAllVolumes()接口获取
+let volumeId: string = "";
+volumeManager.unmount(volumeId).then(() => {
+  // 卸载指定卷设备成功后的回调
+}).catch((error: BusinessError) => {
+  console.error(`Failed to unmount. Code: ${error.code}, message: ${error.message}`);
+});
+```
+
+<!--DelEnd-->

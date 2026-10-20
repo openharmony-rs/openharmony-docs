@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="displaybadge1"></a>
-
 ## displayBadge
 
 ```TypeScript
@@ -37,8 +35,27 @@ function displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCall
 | enable | boolean | 是 | 使能状态。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设定角标使能回调函数。 |
 
+<!--Del-->
+**示例**
 
-<a id="displaybadge2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let displayBadgeCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("displayBadge failed " + JSON.stringify(err));
+  } else {
+    console.info("displayBadge success");
+  }
+}
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+Notification.displayBadge(bundle, false, displayBadgeCallback);
+```
+
+<!--DelEnd-->
+
 
 ## displayBadge
 
@@ -74,3 +91,21 @@ function displayBadge(bundle: BundleOption, enable: boolean): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+Notification.displayBadge(bundle, false).then(() => {
+  console.info("displayBadge success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`displayBadge failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

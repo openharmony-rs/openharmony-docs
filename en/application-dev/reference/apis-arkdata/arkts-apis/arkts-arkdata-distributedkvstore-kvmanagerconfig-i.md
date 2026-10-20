@@ -24,7 +24,7 @@ import { distributedKVStore } from '@kit.ArkData';
 bundleName: string
 ```
 
-Bundle name.
+Bundle name of the caller. Must not be empty, with a length range of 1 to 256 bytes.
 
 **Type:** string
 

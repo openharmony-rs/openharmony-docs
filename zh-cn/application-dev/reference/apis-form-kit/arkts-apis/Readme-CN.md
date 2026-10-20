@@ -12,6 +12,7 @@
   - [updateFormCrossBundle（系统接口）](arkts-form-formagent-updateformcrossbundle-f-sys.md)<!--DelEnd-->
 - [@ohos.app.form.formBindingData（卡片数据绑定-FormBindingData）](arkts-form-app-form-formbindingdata.md)
   - [createFormBindingData](arkts-form-formbindingdata-createformbindingdata-f.md)
+  - [createFormBindingDataEx](arkts-form-formbindingdata-createformbindingdataex-f.md)
   - [FormBindingData](arkts-form-formbindingdata-formbindingdata-i.md)
   - [ProxyData](arkts-form-formbindingdata-proxydata-i.md)
 - [@ohos.app.form.FormEditExtensionAbility（卡片编辑扩展能力-FormEditExtensionAbility）](arkts-form-app-form-formeditextensionability.md)

@@ -27,8 +27,6 @@ MultiNavigation是一个支持分栏导航的组件，提供多层页面栈管�
 
 不可以包含子组件。
 
-@struct { MultiNavigation }
-
 ## 导入模块
 
 ```TypeScript

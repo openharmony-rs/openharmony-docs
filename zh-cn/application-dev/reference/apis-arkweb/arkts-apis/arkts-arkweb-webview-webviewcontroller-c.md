@@ -176,7 +176,7 @@ accessStep(step: number): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -235,7 +235,7 @@ static addIntelligentTrackingPreventionBypassingList(hostList: Array<string>): v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 
 **示例**
@@ -367,7 +367,7 @@ backOrForward(step: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -636,7 +636,7 @@ static clearHostIP(hostName: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例**
 
@@ -1160,8 +1160,6 @@ struct WebComponent {
 </html>
 ```
 
-<a id="createpdf1"></a>
-
 ## createPdf
 
 ```TypeScript
@@ -1249,8 +1247,6 @@ struct Index {
   }
 }
 ```
-
-<a id="createpdf2"></a>
 
 ## createPdf
 
@@ -1373,7 +1369,7 @@ createWebMessagePorts(isExtentionType?: boolean): Array<WebMessagePort>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed.<br>**适用版本：** 10+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed.<br>**适用版本：** 10+ |
 
 **示例**
 
@@ -1409,7 +1405,7 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -1441,8 +1437,6 @@ struct WebComponent {
 }
 ```
 
-<a id="customizeschemes1"></a>
-
 ## customizeSchemes
 
 ```TypeScript
@@ -1469,7 +1463,7 @@ static customizeSchemes(schemes: Array<WebCustomScheme>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100020](../errorcode-webview.md#17100020-注册自定义协议失败) | Failed to register custom schemes.<br>**适用版本：** 12+ |
 
 **示例**
@@ -1509,8 +1503,6 @@ struct WebComponent {
   }
 }
 ```
-
-<a id="customizeschemes2"></a>
 
 ## customizeSchemes
 
@@ -1600,7 +1592,7 @@ deleteJavaScriptRegister(name: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100008](../errorcode-webview.md#17100008-删除不存在的javascriptproxy) | Failed to delete JavaScriptProxy because it does not exist. |
 
@@ -1716,7 +1708,7 @@ enableAdsBlock(enable: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Parameter string is too long. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Parameter string is too long. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 
@@ -1880,7 +1872,7 @@ enableIntelligentTrackingPrevention(enable: boolean): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 
 **示例**
@@ -1992,7 +1984,7 @@ enableSafeBrowsing(enable: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 **示例**
 
@@ -2381,8 +2373,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getcertificate1"></a>
-
 ## getCertificate
 
 ```TypeScript
@@ -2550,8 +2540,6 @@ struct Index {
 }
 ```
 
-<a id="getcertificate2"></a>
-
 ## getCertificate
 
 ```TypeScript
@@ -2578,7 +2566,7 @@ getCertificate(callback: AsyncCallback<Array<cert.X509Cert>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a web component. |
 
 **示例**
@@ -4265,8 +4253,6 @@ struct WebComponent {
 }
 ```
 
-<a id="hasimage1"></a>
-
 ## hasImage
 
 ```TypeScript
@@ -4328,8 +4314,6 @@ struct WebComponent {
 }
 ```
 
-<a id="hasimage2"></a>
-
 ## hasImage
 
 ```TypeScript
@@ -4356,7 +4340,7 @@ hasImage(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -5184,7 +5168,7 @@ data数据必须使用base64编码或将内容中的任何#字符编码为%23。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>**适用版本：** 9 - 10 |
 
@@ -5381,7 +5365,7 @@ loadUrl(url: string | Resource, headers?: Array<WebHeader>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid. |
 | [17100003](../errorcode-webview.md#17100003-resource路径错误) | Invalid resource path or file type. |
@@ -6014,7 +5998,7 @@ pageDown(bottom: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -6106,7 +6090,7 @@ pageUp(top: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -6353,7 +6337,7 @@ postMessage(name: string, ports: Array<WebMessagePort>, uri: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -6521,7 +6505,7 @@ postUrl(url: string, postData: ArrayBuffer): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100002](../errorcode-webview.md#17100002-url格式错误) | URL error. The webpage corresponding to the URL is invalid. |
 
@@ -6819,8 +6803,6 @@ struct Index {
 }
 ```
 
-<a id="prefetchpage1"></a>
-
 ## prefetchPage
 
 ```TypeScript
@@ -6894,8 +6876,6 @@ struct WebComponent {
   }
 }
 ```
-
-<a id="prefetchpage2"></a>
 
 ## prefetchPage
 
@@ -7081,8 +7061,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="refresh1"></a>
-
 ## refresh
 
 ```TypeScript
@@ -7132,8 +7110,6 @@ struct WebComponent {
   }
 }
 ```
-
-<a id="refresh2"></a>
 
 ## refresh
 
@@ -7238,7 +7214,7 @@ registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -7410,7 +7386,7 @@ static removeAllCache(clearRom: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 **示例**
 
@@ -7470,7 +7446,7 @@ removeCache(clearRom: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -7527,7 +7503,7 @@ static removeIntelligentTrackingPreventionBypassingList(hostList: Array<string>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 
 **示例**
@@ -7637,7 +7613,7 @@ restoreWebState(state: Uint8Array) : void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -7971,8 +7947,6 @@ struct WebComponent {
 </html>
 ```
 
-<a id="runjavascript1"></a>
-
 ## runJavaScript
 
 ```TypeScript
@@ -8017,7 +7991,7 @@ runJavaScript(script: string): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100003](../errorcode-webview.md#17100003-resource路径错误) | Calling a JS method that returns an empty ArrayBuffer via runJavaScript. |
 
@@ -8079,8 +8053,6 @@ struct WebComponent {
 </html>
 ```
 
-<a id="runjavascript2"></a>
-
 ## runJavaScript
 
 ```TypeScript
@@ -8120,7 +8092,7 @@ runJavaScript(script: string, callback: AsyncCallback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100003](../errorcode-webview.md#17100003-resource路径错误) | Calling a JS method that returns an empty ArrayBuffer via runJavaScript. |
 
@@ -8188,8 +8160,6 @@ struct WebComponent {
 </html>
 ```
 
-<a id="runjavascriptext1"></a>
-
 ## runJavaScriptExt
 
 ```TypeScript
@@ -8226,7 +8196,7 @@ runJavaScriptExt(script: string | ArrayBuffer): Promise<JsMessageExt>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -8414,8 +8384,6 @@ function test() {
 </html>
 ```
 
-<a id="runjavascriptext2"></a>
-
 ## runJavaScriptExt
 
 ```TypeScript
@@ -8447,7 +8415,7 @@ runJavaScriptExt(script: string | ArrayBuffer, callback: AsyncCallback<JsMessage
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -8676,7 +8644,7 @@ scrollBy(deltaX: number, deltaY: number, duration?: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -8770,7 +8738,7 @@ scrollByWithResult(deltaX: number, deltaY: number): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -8854,7 +8822,7 @@ scrollTo(x: number, y: number, duration?: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -8943,7 +8911,7 @@ searchAllAsync(searchString: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -9019,7 +8987,7 @@ searchNext(forward: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -9261,7 +9229,7 @@ setAudioMuted(mute: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -9639,7 +9607,7 @@ static setConnectionTimeout(timeout: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例**
 
@@ -9712,7 +9680,7 @@ setCustomUserAgent(userAgent: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -9802,8 +9770,6 @@ struct WebComponent {
 }
 ```
 
-<a id="seterrorpageenabled1"></a>
-
 ## setErrorPageEnabled
 
 ```TypeScript
@@ -9855,8 +9821,6 @@ struct WebComponent {
 }
 ```
 
-<a id="seterrorpageenabled2"></a>
-
 ## setErrorPageEnabled
 
 ```TypeScript
@@ -9871,7 +9835,7 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 > 
 > - 当enable设置为false时，无论includeSubframe取何值，mainframe和subframe的错误页功能均不启用。
 > 
-> - 当includeSubframe设置为false时，本接口行为与[setErrorPageEnabled](#seterrorpageenabled1)一致，即仅启用mainframe错误页功能，不启用subframe错误页功能。
+> - 当includeSubframe设置为false时，本接口行为与[setErrorPageEnabled](#seterrorpageenabled)一致，即仅启用mainframe错误页功能，不启用subframe错误页功能。
 > 
 > - 可通过[errorPageEvent.request.isMainFrame()](../arkts-components/arkts-arkweb-web-comp-webresourcerequest-c.md#ismainframe)判断错误来源是mainframe还是subframe，以便在onOverrideErrorPage回调中分别设置对应的自定义错误页。26.0.0
 
@@ -9971,7 +9935,7 @@ static setHostIP(hostName: string, address: string, aliveTime: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例**
 
@@ -10004,7 +9968,7 @@ static setHttpDns(secureDnsMode: SecureDnsMode, secureDnsConfig: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例**
 
@@ -10055,7 +10019,7 @@ setNetworkAvailable(enable: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -10159,7 +10123,7 @@ setPathAllowingUniversalAccess放开目录的跨域访问限制是一个高风�
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Parameter string is too long. <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Parameter string is too long. <br>3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -10280,7 +10244,7 @@ setPrintBackground(enable: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -10336,7 +10300,7 @@ static setRenderProcessMode(mode: RenderProcessMode): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 **示例**
 
@@ -10393,7 +10357,7 @@ setScrollable(enable: boolean, type?: ScrollType): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -10705,8 +10669,6 @@ struct WebComponent {
 }
 ```
 
-<a id="seturltrustlist1"></a>
-
 ## setUrlTrustList
 
 ```TypeScript
@@ -10733,7 +10695,7 @@ setUrlTrustList(urlTrustList: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Parameter string is too long. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Parameter string is too long. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -10799,8 +10761,6 @@ struct WebComponent {
   }
 }
 ```
-
-<a id="seturltrustlist2"></a>
 
 ## setUrlTrustList
 
@@ -11113,8 +11073,6 @@ setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
 
 完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled)。
 
-<a id="setwebdebuggingaccess1"></a>
-
 ## setWebDebuggingAccess
 
 ```TypeScript
@@ -11143,7 +11101,7 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例**
 
@@ -11173,8 +11131,6 @@ struct WebComponent {
 }
 ```
 
-<a id="setwebdebuggingaccess2"></a>
-
 ## setWebDebuggingAccess
 
 ```TypeScript
@@ -11183,7 +11139,7 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
 
 设置是否启用无线网页调试功能，默认不开启。
 
-* 当没有指定端口port时，该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess1)接口，ArkWeb会启动一个本地domain socket监听。  
+* 当没有指定端口port时，该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口，ArkWeb会启动一个本地domain socket监听。  
 * 当指定了端口port时，ArkWeb会启动一个tcp socket监听。这时可以无线调试网页。详情请参考[无线调试](../../../web/web-debugging-with-devtools.md#无线调试)。
 
 由于小于1024的端口号作为熟知或系统端口，在操作系统上需要特权才能开启，因此port的取值必须大于1024，否则该接口会抛出异常。
@@ -11201,7 +11157,7 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | webDebuggingAccess | boolean | 是 | 设置是否启用网页调试功能。<br>true表示开启网页调试功能，false表示关闭网页调试功能。 |
-| port | number | 是 | 指定DevTools服务的tcp端口号。如果没有指定port，那么该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess1)接口。<br>取值范围: (1024, 65535]<br>如果port的值在区间[0, 1024]内，则会抛出BusinessError异常，错误码为17100023。 |
+| port | number | 是 | 指定DevTools服务的tcp端口号。如果没有指定port，那么该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口。<br>取值范围: (1024, 65535]<br>如果port的值在区间[0, 1024]内，则会抛出BusinessError异常，错误码为17100023。 |
 
 **错误码：**
 
@@ -11419,7 +11375,7 @@ slideScroll(vx: number, vy: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 
 **示例**
@@ -11823,8 +11779,6 @@ stopMicrophone(): void
 
 完整示例代码参考[resumeMicrophone](#resumemicrophone)。
 
-<a id="storewebarchive1"></a>
-
 ## storeWebArchive
 
 ```TypeScript
@@ -11858,7 +11812,7 @@ storeWebArchive(baseName: string, autoName: boolean): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100003](../errorcode-webview.md#17100003-resource路径错误) | Invalid resource path or file type. |
 
@@ -11898,8 +11852,6 @@ struct WebComponent {
 }
 ```
 
-<a id="storewebarchive2"></a>
-
 ## storeWebArchive
 
 ```TypeScript
@@ -11928,7 +11880,7 @@ storeWebArchive(baseName: string, autoName: boolean, callback: AsyncCallback<str
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100003](../errorcode-webview.md#17100003-resource路径错误) | Invalid resource path or file type. |
 
@@ -12046,7 +11998,7 @@ static trimMemoryByPressureLevel(level: PressureLevel): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Parameter string is too long. <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Parameter string is too long. <br>3.Parameter verification failed. |
 
 **示例**
 
@@ -12285,7 +12237,7 @@ zoom(factor: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. |
 | [17100004](../errorcode-webview.md#17100004-功能开关未打开) | Function not enabled. |
 

@@ -22,8 +22,6 @@ interface AVSession
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="activate1"></a>
-
 ## activate
 
 ```TypeScript
@@ -65,8 +63,6 @@ currentAVSession.activate((err: BusinessError) => {
 });
 ```
 
-<a id="activate2"></a>
-
 ## activate
 
 ```TypeScript
@@ -103,8 +99,6 @@ currentAVSession.activate().then(() => {
   console.info('Succeeded in activating.');
 });
 ```
-
-<a id="deactivate1"></a>
 
 ## deactivate
 
@@ -149,8 +143,6 @@ currentAVSession.deactivate((err: BusinessError) => {
 });
 ```
 
-<a id="deactivate2"></a>
-
 ## deactivate
 
 ```TypeScript
@@ -187,8 +179,6 @@ currentAVSession.deactivate().then(() => {
   console.info('Succeeded in deactivating.');
 });
 ```
-
-<a id="destroy1"></a>
 
 ## destroy
 
@@ -231,8 +221,6 @@ currentAVSession.destroy((err: BusinessError) => {
 });
 ```
 
-<a id="destroy2"></a>
-
 ## destroy
 
 ```TypeScript
@@ -269,8 +257,6 @@ currentAVSession.destroy().then(() => {
   console.info('Succeeded in destroying.');
 });
 ```
-
-<a id="dispatchsessionevent1"></a>
 
 ## dispatchSessionEvent
 
@@ -318,8 +304,6 @@ currentAVSession.dispatchSessionEvent(eventName, {lyric : "This is lyric"}, (err
   console.info('Succeeded in dispatching session event.');
 });
 ```
-
-<a id="dispatchsessionevent3"></a>
 
 ## dispatchSessionEvent
 
@@ -455,8 +439,6 @@ currentAVSession.getAllCastDisplays().then((data: Array< avSession.CastDisplayIn
     });
 ```
 
-<a id="getavcastcontroller1"></a>
-
 ## getAVCastController
 
 ```TypeScript
@@ -500,8 +482,6 @@ currentAVSession.getAVCastController((err: BusinessError, avcontroller: avSessio
 });
 ```
 
-<a id="getavcastcontroller3"></a>
-
 ## getAVCastController
 
 ```TypeScript
@@ -541,8 +521,6 @@ currentAVSession.getAVCastController().then((avcontroller: avSession.AVCastContr
 });
 ```
 
-<a id="getcontroller1"></a>
-
 ## getController
 
 ```TypeScript
@@ -581,8 +559,6 @@ currentAVSession.getController((err: BusinessError, avcontroller: avSession.AVSe
   console.info(`Succeeded in getting controller, sessionid: ${avcontroller.sessionId}`);
 });
 ```
-
-<a id="getcontroller2"></a>
 
 ## getController
 
@@ -663,8 +639,6 @@ if (currentAVSession !== undefined) {
 }
 ```
 
-<a id="getoutputdevice1"></a>
-
 ## getOutputDevice
 
 ```TypeScript
@@ -705,8 +679,6 @@ currentAVSession.getOutputDevice((err: BusinessError, outputDeviceInfo: avSessio
   console.info(`Succeeded in getting output device, devices length: ${outputDeviceInfo.devices.length}`);
 });
 ```
-
-<a id="getoutputdevice2"></a>
 
 ## getOutputDevice
 
@@ -3195,8 +3167,6 @@ currentAVSession.sendCustomData({customData : "This is custom data"}).then(() =>
 });
 ```
 
-<a id="setavcallstate1"></a>
-
 ## setAVCallState
 
 ```TypeScript
@@ -3244,8 +3214,6 @@ currentAVSession.setAVCallState(avcalldata, (err: BusinessError) => {
 });
 ```
 
-<a id="setavcallstate2"></a>
-
 ## setAVCallState
 
 ```TypeScript
@@ -3291,8 +3259,6 @@ currentAVSession.setAVCallState(calldata).then(() => {
   console.info('Succeeded in setting AVCallState.');
 });
 ```
-
-<a id="setavmetadata1"></a>
 
 ## setAVMetadata
 
@@ -3357,8 +3323,6 @@ currentAVSession.setAVMetadata(metadata, (err: BusinessError) => {
   console.info('Succeeded in setting AVMetadata.');
 });
 ```
-
-<a id="setavmetadata2"></a>
 
 ## setAVMetadata
 
@@ -3425,8 +3389,6 @@ currentAVSession.setAVMetadata(metadata).then(() => {
 });
 ```
 
-<a id="setavplaybackstate1"></a>
-
 ## setAVPlaybackState
 
 ```TypeScript
@@ -3477,8 +3439,6 @@ currentAVSession.setAVPlaybackState(playbackState, (err: BusinessError) => {
   console.info('Succeeded in setting AVPlaybackState.');
 });
 ```
-
-<a id="setavplaybackstate2"></a>
 
 ## setAVPlaybackState
 
@@ -3531,8 +3491,6 @@ currentAVSession.setAVPlaybackState(playbackState).then(() => {
   console.info('Succeeded in setting AVPlaybackState.');
 });
 ```
-
-<a id="setavqueueitems1"></a>
 
 ## setAVQueueItems
 
@@ -3607,8 +3565,6 @@ currentAVSession.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
   console.info('Succeeded in setting AVQueueItems.');
 });
 ```
-
-<a id="setavqueueitems2"></a>
 
 ## setAVQueueItems
 
@@ -3686,8 +3642,6 @@ currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
 });
 ```
 
-<a id="setavqueuetitle1"></a>
-
 ## setAVQueueTitle
 
 ```TypeScript
@@ -3731,8 +3685,6 @@ currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
   console.info('Succeeded in setting AVQueueTitle.');
 });
 ```
-
-<a id="setavqueuetitle2"></a>
 
 ## setAVQueueTitle
 
@@ -3825,8 +3777,6 @@ try {
 }
 ```
 
-<a id="setcallmetadata1"></a>
-
 ## setCallMetadata
 
 ```TypeScript
@@ -3900,8 +3850,6 @@ class CallManager {
   }
 }
 ```
-
-<a id="setcallmetadata2"></a>
 
 ## setCallMetadata
 
@@ -4074,8 +4022,6 @@ currentAVSession.setDesktopLyricVisible(true).then(() => {
 });
 ```
 
-<a id="setextras1"></a>
-
 ## setExtras
 
 ```TypeScript
@@ -4120,8 +4066,6 @@ currentAVSession.setExtras({extras : "This is custom media packet"}, (err: Busin
   console.info('Succeeded in setting extras.');
 })
 ```
-
-<a id="setextras3"></a>
 
 ## setExtras
 
@@ -4168,8 +4112,6 @@ currentAVSession.setExtras({extras : "This is custom media packet"}).then(() => 
   console.info('Succeeded in setting extras.');
 });
 ```
-
-<a id="setlaunchability1"></a>
 
 ## setLaunchAbility
 
@@ -4246,8 +4188,6 @@ wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
   });
 });
 ```
-
-<a id="setlaunchability2"></a>
 
 ## setLaunchAbility
 
@@ -4483,8 +4423,6 @@ try {
 }
 ```
 
-<a id="stopcasting1"></a>
-
 ## stopCasting
 
 ```TypeScript
@@ -4518,8 +4456,6 @@ currentAVSession.stopCasting(() => {
   console.info('Succeeded in stopping casting.');
 });
 ```
-
-<a id="stopcasting2"></a>
 
 ## stopCasting
 

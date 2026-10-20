@@ -2,8 +2,6 @@
 
 Window animation manager.
 
-@namespace windowAnimationManager
-
 **Since:** 9
 
 <!--Device-unnamed-declare namespace windowAnimationManager--><!--Device-unnamed-declare namespace windowAnimationManager-End-->
@@ -25,8 +23,8 @@ import { windowAnimationManager } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [minimizeWindowWithAnimation](arkts-arkui-windowanimationmanager-minimizewindowwithanimation-f-sys.md#minimizewindowwithanimation1) | Minimize the window target with animation. |
-| [minimizeWindowWithAnimation](arkts-arkui-windowanimationmanager-minimizewindowwithanimation-f-sys.md#minimizewindowwithanimation2) | Minimize the window target with animation. |
+| [minimizeWindowWithAnimation](arkts-arkui-windowanimationmanager-minimizewindowwithanimation-f-sys.md#minimizewindowwithanimation) | Minimize the window target with animation. |
+| [minimizeWindowWithAnimation](arkts-arkui-windowanimationmanager-minimizewindowwithanimation-f-sys.md#minimizewindowwithanimation) | Minimize the window target with animation. |
 | [setController](arkts-arkui-windowanimationmanager-setcontroller-f-sys.md#setcontroller) | Set the window animation controller. |
 <!--DelEnd-->
 

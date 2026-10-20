@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="setbadgenumber1"></a>
-
 ## setBadgeNumber
 
 ```TypeScript
@@ -26,7 +24,7 @@ This API can be properly called on devices other than wearables. If it is called
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md#getactivenotificationcount1) obtains the number of active notifications of this application.
+**See also:** [getActiveNotificationCount](arkts-notification-notificationmanager-getactivenotificationcount-f.md#getactivenotificationcount) obtains the number of active notifications of this application.
 
 **Parameters:**
 
@@ -62,8 +60,6 @@ let badgeNumber: number = 10;
 notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 ```
 
-
-<a id="setbadgenumber2"></a>
 
 ## setBadgeNumber
 

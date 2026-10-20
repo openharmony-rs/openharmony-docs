@@ -4,7 +4,7 @@
 interface Beauty extends BeautyQuery
 ```
 
-Beauty extends [BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md) Provides APIs to obtain and set the beauty effect.
+Beauty继承[BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md)提供获取和设置美颜效果的接口。
 
 **继承/实现关系：** Beauty extends [BeautyQuery](arkts-camera-camera-beautyquery-i-sys.md)
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 getBeauty(type: BeautyType): number
 ```
 
-Obtains the level of the beauty type in use.
+获取当前使用的美颜类型等级。
 
 **起始版本：** 11
 
@@ -42,13 +42,13 @@ Obtains the level of the beauty type in use.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [BeautyType](arkts-camera-camera-beautytype-e-sys.md) | 是 | Beauty type. |
+| type | [BeautyType](arkts-camera-camera-beautytype-e-sys.md) | 是 | 美颜类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | the beauty effect in use. |
+| number | 当前使用的美颜效果等级。 |
 
 **错误码：**
 
@@ -85,7 +85,7 @@ function getBeauty(portraitPhotoSession: camera.PortraitPhotoSession): number {
 setBeauty(type: BeautyType, value: number): void
 ```
 
-Sets a beauty type and its level. Beauty mode is turned off only when all the [beauty types](arkts-camera-camera-beautytype-e-sys.md) obtained through [getSupportedBeautyTypes](arkts-camera-camera-beautyquery-i-sys.md#getsupportedbeautytypes) are disabled.
+设置美颜类型及其等级。只有当通过 [getSupportedBeautyTypes](arkts-camera-camera-beautyquery-i-sys.md#getsupportedbeautytypes)获取的所有[美颜类型](arkts-camera-camera-beautytype-e-sys.md)均被关闭时，美颜模式才会关闭。
 
 **起始版本：** 11
 
@@ -99,8 +99,8 @@ Sets a beauty type and its level. Beauty mode is turned off only when all the [b
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [BeautyType](arkts-camera-camera-beautytype-e-sys.md) | 是 | Beauty type. |
-| value | number | 是 | Beauty level, which is obtained through [getSupportedBeautyRange](arkts-camera-camera-beautyquery-i-sys.md#getsupportedbeautyrange). |
+| type | [BeautyType](arkts-camera-camera-beautytype-e-sys.md) | 是 | 美颜类型。 |
+| value | number | 是 | 美颜等级，通过 [getSupportedBeautyRange](arkts-camera-camera-beautyquery-i-sys.md#getsupportedbeautyrange) 获取。 |
 
 **错误码：**
 
@@ -134,7 +134,7 @@ function setBeauty(portraitPhotoSession: camera.PortraitPhotoSession): void {
 setPortraitThemeType(type: PortraitThemeType): void
 ```
 
-Sets a portrait theme type for a camera device.
+为相机设备设置人像主题类型。
 
 **起始版本：** 14
 
@@ -148,7 +148,7 @@ Sets a portrait theme type for a camera device.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [PortraitThemeType](arkts-camera-camera-portraitthemetype-e-sys.md) | 是 | The type of portrait theme. |
+| type | [PortraitThemeType](arkts-camera-camera-portraitthemetype-e-sys.md) | 是 | 人像主题类型。 |
 
 **错误码：**
 

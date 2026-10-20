@@ -6,8 +6,6 @@ export interface Sampler
 
 采样器接口，用于定义纹理贴图采样时的过滤方式。
 
-@interface { Sampler }
-
 **起始版本：** 20
 
 <!--Device-unnamed-export interface Sampler--><!--Device-unnamed-export interface Sampler-End-->

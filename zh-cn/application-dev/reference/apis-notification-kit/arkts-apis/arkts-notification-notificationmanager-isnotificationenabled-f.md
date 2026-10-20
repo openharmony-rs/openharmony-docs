@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="isnotificationenabled3"></a>
-
 ## isNotificationEnabled
 
 ```TypeScript
@@ -19,10 +17,6 @@ function isNotificationEnabled(callback: AsyncCallback<boolean>): void
 用于在发布通知前检查当前应用是否被允许发送通知，避免在通知授权关闭时发布导致失败。
 
 **起始版本：** 11
-
-**需要权限：** 
-- API版本11+：N/A
-- API版本9-10：ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function isNotificationEnabled(callback: AsyncCallback<boolean>): void--><!--Device-notificationManager-function isNotificationEnabled(callback: AsyncCallback<boolean>): void-End-->
 
@@ -38,8 +32,6 @@ function isNotificationEnabled(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 9 - 10 |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface.<br>**适用版本：** 9 - 10 |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
@@ -64,8 +56,6 @@ notificationManager.isNotificationEnabled(isNotificationEnabledCallback);
 ```
 
 
-<a id="isnotificationenabled4"></a>
-
 ## isNotificationEnabled
 
 ```TypeScript
@@ -77,10 +67,6 @@ function isNotificationEnabled(): Promise<boolean>
 用于在发布通知前检查当前应用是否被允许发送通知，避免在通知使能关闭时发布导致失败。
 
 **起始版本：** 11
-
-**需要权限：** 
-- API版本11+：N/A
-- API版本9-10：ohos.permission.NOTIFICATION_CONTROLLER
 
 <!--Device-notificationManager-function isNotificationEnabled(): Promise<boolean>--><!--Device-notificationManager-function isNotificationEnabled(): Promise<boolean>-End-->
 
@@ -96,8 +82,6 @@ function isNotificationEnabled(): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 9 - 10 |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface.<br>**适用版本：** 9 - 10 |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |

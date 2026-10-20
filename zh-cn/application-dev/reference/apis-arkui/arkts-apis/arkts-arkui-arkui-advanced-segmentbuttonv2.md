@@ -7,7 +7,7 @@
 ## 导入模块
 
 ```TypeScript
-import { SegmentButtonV2ItemOptions, OnSelectedIndexChange, OnSelectedIndexesChange, SegmentButtonV2Item, SegmentButtonV2Items, TabSegmentButtonV2, CapsuleSegmentButtonV2, MultiCapsuleSegmentButtonV2 } from '@kit.ArkUI';
+import { SegmentButtonV2ItemOptions, OnSelectedIndexChange, OnSelectedIndexesChange, SegmentButtonV2Item, SegmentButtonV2Items, TabSegmentButtonV2, CapsuleSegmentButtonV2, SegmentButtonV2InteractionMode, MultiCapsuleSegmentButtonV2 } from '@kit.ArkUI';
 ```
 
 ## 汇总
@@ -39,6 +39,12 @@ import { SegmentButtonV2ItemOptions, OnSelectedIndexChange, OnSelectedIndexesCha
 | --- | --- |
 | [OnSelectedIndexChange](arkts-arkui-onselectedindexchange-t.md) | 单选分段按钮选中项变更时调用的回调函数类型。 |
 | [OnSelectedIndexesChange](arkts-arkui-onselectedindexeschange-t.md) | 多选分段按钮选中项变更时调用的回调函数类型。 |
+
+### 枚举
+
+| 名称 | 说明 |
+| --- | --- |
+| [SegmentButtonV2InteractionMode](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2interactionmode-e.md) | 定义分段按钮的拖拽交互模式。 |
 
 ## 示例
 

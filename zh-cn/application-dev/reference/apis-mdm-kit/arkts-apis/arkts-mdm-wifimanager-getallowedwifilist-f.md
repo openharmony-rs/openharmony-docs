@@ -6,8 +6,6 @@
 import { wifiManager } from '@kit.MDMKit';
 ```
 
-<a id="getallowedwifilist1"></a>
-
 ## getAllowedWifiList
 
 ```TypeScript
@@ -65,8 +63,6 @@ try {
 }
 ```
 
-
-<a id="getallowedwifilist2"></a>
 
 ## getAllowedWifiList
 

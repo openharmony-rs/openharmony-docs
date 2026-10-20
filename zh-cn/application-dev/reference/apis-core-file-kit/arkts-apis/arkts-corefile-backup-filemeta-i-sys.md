@@ -6,8 +6,6 @@ interface FileMeta
 
 文件的元数据，包含应用名称及文件URI，在与备份服务进行IPC时使用。
 
-@interface FileMeta
-
 **起始版本：** 10
 
 <!--Device-backup-interface FileMeta--><!--Device-backup-interface FileMeta-End-->

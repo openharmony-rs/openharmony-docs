@@ -7,8 +7,6 @@ import { shortKey } from '@kit.InputKit';
 import { FingerprintEvent } from '@kit.InputKit';
 ```
 
-<a id="setkeydownduration1"></a>
-
 ## setKeyDownDuration
 
 ```TypeScript
@@ -74,8 +72,6 @@ struct Index {
 
 <!--DelEnd-->
 
-
-<a id="setkeydownduration2"></a>
 
 ## setKeyDownDuration
 

@@ -6,8 +6,6 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
-<a id="notifydatachange1"></a>
-
 ## notifyDataChange
 
 ```TypeScript
@@ -43,7 +41,7 @@ Notifies the device-cloud service that the cloud data of a specific application 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 <!--Del-->
 **Examples**
@@ -62,8 +60,6 @@ cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
 
 <!--DelEnd-->
 
-
-<a id="notifydatachange2"></a>
 
 ## notifyDataChange
 
@@ -95,7 +91,7 @@ Notifies the device-cloud service that the cloud data of a specific application 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 <!--Del-->
 **Examples**
@@ -116,8 +112,6 @@ cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) =>
 
 <!--DelEnd-->
 
-
-<a id="notifydatachange3"></a>
 
 ## notifyDataChange
 
@@ -156,7 +150,7 @@ Notifies the device-cloud service of the cloud data change information of a spec
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 
 <!--Del-->
@@ -176,8 +170,6 @@ cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
 
 <!--DelEnd-->
 
-
-<a id="notifydatachange4"></a>
 
 ## notifyDataChange
 
@@ -211,7 +203,7 @@ Notifies the device-cloud service of the cloud data change information of a spec
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 
 <!--Del-->

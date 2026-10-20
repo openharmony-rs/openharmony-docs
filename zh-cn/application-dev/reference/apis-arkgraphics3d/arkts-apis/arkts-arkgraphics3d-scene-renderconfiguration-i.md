@@ -6,8 +6,6 @@ export interface RenderConfiguration
 
 渲染配置接口。
 
-@interface RenderConfiguration
-
 **起始版本：** 23
 
 <!--Device-unnamed-export interface RenderConfiguration--><!--Device-unnamed-export interface RenderConfiguration-End-->

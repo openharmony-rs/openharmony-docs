@@ -40,7 +40,7 @@ readonly MAX_BATCH_SIZE: number
 readonly MAX_KEY_LENGTH: number
 ```
 
-值为1024，表示数据库中Key允许的最大长度，单位字节。
+值为1024，表示数据库中Key允许的最大长度，单位：字节（Byte）。
 
 **类型：** number
 
@@ -56,7 +56,7 @@ readonly MAX_KEY_LENGTH: number
 readonly MAX_KEY_LENGTH_DEVICE: number
 ```
 
-值为896，表示设备协同数据库中Key允许的最大长度，单位字节。
+值为896，表示设备协同数据库中Key允许的最大长度，单位：字节（Byte）。
 
 **类型：** number
 
@@ -72,7 +72,7 @@ readonly MAX_KEY_LENGTH_DEVICE: number
 readonly MAX_QUERY_LENGTH: number
 ```
 
-值为512000，表示最大查询长度，单位字节。
+值为512000，表示最大查询长度，单位：字节（Byte）。
 
 **类型：** number
 
@@ -88,7 +88,7 @@ readonly MAX_QUERY_LENGTH: number
 readonly MAX_STORE_ID_LENGTH: number
 ```
 
-值为128，表示数据库标识符允许的最大长度，单位字节。
+值为128，表示数据库标识符允许的最大长度，单位：字节（Byte）。
 
 **类型：** number
 
@@ -104,7 +104,7 @@ readonly MAX_STORE_ID_LENGTH: number
 readonly MAX_VALUE_LENGTH: number
 ```
 
-值为4194303，表示数据库中Value允许的最大长度，单位字节。
+值为4194303，表示数据库中Value允许的最大长度，单位：字节（Byte）。
 
 **类型：** number
 

@@ -57,15 +57,13 @@ Creates a symbolic link based on a file path. This API uses a promise to return 
 | 13900042 | Unknown error |
 
 
-<a id="symlink2"></a>
-
 ## symlink
 
 ```TypeScript
 declare function symlink(target: string, srcPath: string, callback: AsyncCallback<void>): void
 ```
 
-Creates a symbolic link based on the file path. This API uses an asynchronous callback to return the result.
+Creates a symbolic link based on a file path. This API uses an asynchronous callback to return the result.
 
 > **NOTE:** 
 > 
@@ -83,7 +81,7 @@ Creates a symbolic link based on the file path. This API uses an asynchronous ca
 | --- | --- | --- | --- |
 | target | string | Yes | Application sandbox path of the target file. |
 | srcPath | string | Yes | Application sandbox path of the symbolic link. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the symbolic link is successfully created, <b>err</b> is <b>undefined</b>; otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 

@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="isbadgedisplayed1"></a>
-
 ## isBadgeDisplayed
 
 ```TypeScript
@@ -36,8 +34,27 @@ function isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback<boolean>
 | bundle | BundleOption | 是 | 指定应用的包信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 获取角标使能状态回调函数。 |
 
+<!--Del-->
+**示例**
 
-<a id="isbadgedisplayed2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let isBadgeDisplayedCallback = (err: Base.BusinessError, data: boolean) => {
+  if (err) {
+    console.error("isBadgeDisplayed failed " + JSON.stringify(err));
+  } else {
+    console.info("isBadgeDisplayed success");
+  }
+}
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+Notification.isBadgeDisplayed(bundle, isBadgeDisplayedCallback);
+```
+
+<!--DelEnd-->
+
 
 ## isBadgeDisplayed
 
@@ -72,3 +89,21 @@ function isBadgeDisplayed(bundle: BundleOption): Promise<boolean>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;boolean&gt; | 以Promise形式返回获取指定应用的角标使能状态。 |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+Notification.isBadgeDisplayed(bundle).then((data) => {
+  console.info("isBadgeDisplayed success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`isBadgeDisplayed failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

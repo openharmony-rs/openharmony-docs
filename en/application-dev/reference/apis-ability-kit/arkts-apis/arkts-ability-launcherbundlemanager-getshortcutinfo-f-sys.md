@@ -6,8 +6,6 @@
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getshortcutinfo1"></a>
-
 ## getShortcutInfo
 
 ```TypeScript
@@ -71,8 +69,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getshortcutinfo2"></a>
 
 ## getShortcutInfo
 

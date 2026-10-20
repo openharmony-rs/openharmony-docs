@@ -23,40 +23,42 @@ import { screen } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [createVirtualScreen](arkts-arkui-screen-createvirtualscreen-f-sys.md#createvirtualscreen1) | Creates a virtual screen. This API uses an asynchronous callback to return the result. |
-| [createVirtualScreen](arkts-arkui-screen-createvirtualscreen-f-sys.md#createvirtualscreen2) | Creates a virtual screen. This API uses a promise to return the result. |
-| [destroyVirtualScreen](arkts-arkui-screen-destroyvirtualscreen-f-sys.md#destroyvirtualscreen1) | Destroys a virtual screen. This API uses an asynchronous callback to return the result. |
-| [destroyVirtualScreen](arkts-arkui-screen-destroyvirtualscreen-f-sys.md#destroyvirtualscreen2) | Destroys a virtual screen. This API uses a promise to return the result. |
-| [getAllScreens](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens1) | Obtains all screens. This API uses an asynchronous callback to return the result. |
-| [getAllScreens](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens2) | Obtains all screens. This API uses an asynchronous callback to return the result. |
-| [getAllScreens](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens3) | Obtains all screens. This API uses a promise to return the result. |
-| [getAllScreens](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens4) | Obtains all screens. This API uses a promise to return the result. |
-| [isScreenRotationLocked](arkts-arkui-screen-isscreenrotationlocked-f-sys.md#isscreenrotationlocked1) | Checks whether auto rotate is locked. This API uses an asynchronous callback to return the result. |
-| [isScreenRotationLocked](arkts-arkui-screen-isscreenrotationlocked-f-sys.md#isscreenrotationlocked2) | Checks whether auto rotate is locked. This API uses a promise to return the result. |
-| [makeMirror](arkts-arkui-screen-makemirror-f-sys.md#makemirror1) | Sets the screen to mirror mode. This API uses an asynchronous callback to return the result. |
-| [makeMirror](arkts-arkui-screen-makemirror-f-sys.md#makemirror2) | Sets the screen to mirror mode. This API uses a promise to return the result. |
+| [createVirtualScreen](arkts-arkui-screen-createvirtualscreen-f-sys.md#createvirtualscreen) | Creates a virtual screen. This API uses an asynchronous callback to return the result. |
+| [createVirtualScreen](arkts-arkui-screen-createvirtualscreen-f-sys.md#createvirtualscreen) | Creates a virtual screen. This API uses a promise to return the result. |
+| [destroyVirtualScreen](arkts-arkui-screen-destroyvirtualscreen-f-sys.md#destroyvirtualscreen) | Destroys a virtual screen. This API uses an asynchronous callback to return the result. |
+| [destroyVirtualScreen](arkts-arkui-screen-destroyvirtualscreen-f-sys.md#destroyvirtualscreen) | Destroys a virtual screen. This API uses a promise to return the result. |
+| [getAllScreens](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens) | Obtains all screens. This API uses an asynchronous callback to return the result. |
+| [getAllScreens](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens) | Obtains all screens. This API uses an asynchronous callback to return the result. |
+| [getAllScreens](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens) | Obtains all screens. This API uses a promise to return the result. |
+| [getAllScreens](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens) | Obtains all screens. This API uses a promise to return the result. |
+| [isScreenRotationLocked](arkts-arkui-screen-isscreenrotationlocked-f-sys.md#isscreenrotationlocked) | Checks whether auto rotate is locked. This API uses an asynchronous callback to return the result. |
+| [isScreenRotationLocked](arkts-arkui-screen-isscreenrotationlocked-f-sys.md#isscreenrotationlocked) | Checks whether auto rotate is locked. This API uses a promise to return the result. |
+| [makeMirror](arkts-arkui-screen-makemirror-f-sys.md#makemirror) | Sets the screen to mirror mode. This API uses an asynchronous callback to return the result. |
+| [makeMirror](arkts-arkui-screen-makemirror-f-sys.md#makemirror) | Sets the screen to mirror mode. This API uses a promise to return the result. |
 | [makeMirrorWithRegion](arkts-arkui-screen-makemirrorwithregion-f-sys.md#makemirrorwithregion) | Sets a rectangle on the screen to mirror mode. This API uses a promise to return the result. After this API is called, you are advised not to rotate or fold the screen further. Otherwise, the mirrored content may be abnormal. |
 | [makeUnique](arkts-arkui-screen-makeunique-f-sys.md#makeunique) | Sets the screen to independent display mode. This API uses a promise to return the result. |
-| [off](arkts-arkui-screen-off-f-sys.md#off1) | Unsubscribes from events related to the screen state. |
-| [off](arkts-arkui-screen-off-f-sys.md#off2) | Unsubscribes from events related to the screen state. |
-| [off](arkts-arkui-screen-off-f-sys.md#off3) | Unsubscribes from events related to the screen state. |
-| [on](arkts-arkui-screen-on-f-sys.md#on1) | Subscribes to events related to the screen state. |
-| [on](arkts-arkui-screen-on-f-sys.md#on2) | Subscribes to events related to the screen state. |
-| [on](arkts-arkui-screen-on-f-sys.md#on3) | Subscribes to events related to the screen state. |
+| [off](arkts-arkui-screen-off-f-sys.md#off) | Unsubscribes from events related to the screen state. |
+| [off](arkts-arkui-screen-off-f-sys.md#off) | Unsubscribes from events related to the screen state. |
+| [off](arkts-arkui-screen-off-f-sys.md#off) | Unsubscribes from events related to the screen state. |
+| [offDisconnectWithInfo](arkts-arkui-screen-offdisconnectwithinfo-f-sys.md#offdisconnectwithinfo) | Unsubscribes from screen disconnect events. |
+| [on](arkts-arkui-screen-on-f-sys.md#on) | Subscribes to events related to the screen state. |
+| [on](arkts-arkui-screen-on-f-sys.md#on) | Subscribes to events related to the screen state. |
+| [on](arkts-arkui-screen-on-f-sys.md#on) | Subscribes to events related to the screen state. |
+| [onDisconnectWithInfo](arkts-arkui-screen-ondisconnectwithinfo-f-sys.md#ondisconnectwithinfo) | Subscribes to screen disconnect events, When a screen is disconnected, the callback is invoked to return the disconnection information. |
 | [resizeVirtualScreen](arkts-arkui-screen-resizevirtualscreen-f-sys.md#resizevirtualscreen) | Resizes the virtual screen. This API uses a promise to return the result. |
 | [setMultiScreenMode](arkts-arkui-screen-setmultiscreenmode-f-sys.md#setmultiscreenmode) | Sets the display mode (mirror or extend) of the secondary screen. This API uses a promise to return the result. If both **primaryScreenId** and **secondaryScreenId** are set to **0**, the content is displayed only on the secondary screen. |
 | [setMultiScreenRelativePosition](arkts-arkui-screen-setmultiscreenrelativeposition-f-sys.md#setmultiscreenrelativeposition) | Sets the positions of the primary and secondary screens in extend mode. This API uses a promise to return the result. |
 | [setScreenPrivacyMaskImage](arkts-arkui-screen-setscreenprivacymaskimage-f-sys.md#setscreenprivacymaskimage) | Sets a privacy mask image for the screen. This API uses a promise to return the result. |
-| [setScreenRotationLocked](arkts-arkui-screen-setscreenrotationlocked-f-sys.md#setscreenrotationlocked1) | Sets whether to lock auto rotate. This API uses an asynchronous callback to return the result. |
-| [setScreenRotationLocked](arkts-arkui-screen-setscreenrotationlocked-f-sys.md#setscreenrotationlocked2) | Sets whether to lock auto rotate. This API uses a promise to return the result. |
-| [setVirtualScreenSurface](arkts-arkui-screen-setvirtualscreensurface-f-sys.md#setvirtualscreensurface1) | Sets a surface for a virtual screen. This API uses an asynchronous callback to return the result. |
-| [setVirtualScreenSurface](arkts-arkui-screen-setvirtualscreensurface-f-sys.md#setvirtualscreensurface2) | Sets a surface for a virtual screen. This API uses a promise to return the result. |
-| [stopMirror](arkts-arkui-screen-stopmirror-f-sys.md#stopmirror1) | Stops mirror mode. This API uses an asynchronous callback to return the result. |
-| [stopMirror](arkts-arkui-screen-stopmirror-f-sys.md#stopmirror2) | Stops mirror mode. This API uses a promise to return the result. |
-| [makeExpand](arkts-arkui-screen-makeexpand-f-sys.md#makeexpand1) | Sets the screen to extended mode. This API uses an asynchronous callback to return the result. |
-| [makeExpand](arkts-arkui-screen-makeexpand-f-sys.md#makeexpand2) | Sets the screen to extended mode. This API uses a promise to return the result. |
-| [stopExpand](arkts-arkui-screen-stopexpand-f-sys.md#stopexpand1) | Stops extended mode. This API uses an asynchronous callback to return the result. |
-| [stopExpand](arkts-arkui-screen-stopexpand-f-sys.md#stopexpand2) | Stops extended mode. This API uses a promise to return the result. |
+| [setScreenRotationLocked](arkts-arkui-screen-setscreenrotationlocked-f-sys.md#setscreenrotationlocked) | Sets whether to lock auto rotate. This API uses an asynchronous callback to return the result. |
+| [setScreenRotationLocked](arkts-arkui-screen-setscreenrotationlocked-f-sys.md#setscreenrotationlocked) | Sets whether to lock auto rotate. This API uses a promise to return the result. |
+| [setVirtualScreenSurface](arkts-arkui-screen-setvirtualscreensurface-f-sys.md#setvirtualscreensurface) | Sets a surface for a virtual screen. This API uses an asynchronous callback to return the result. |
+| [setVirtualScreenSurface](arkts-arkui-screen-setvirtualscreensurface-f-sys.md#setvirtualscreensurface) | Sets a surface for a virtual screen. This API uses a promise to return the result. |
+| [stopMirror](arkts-arkui-screen-stopmirror-f-sys.md#stopmirror) | Stops mirror mode. This API uses an asynchronous callback to return the result. |
+| [stopMirror](arkts-arkui-screen-stopmirror-f-sys.md#stopmirror) | Stops mirror mode. This API uses a promise to return the result. |
+| [makeExpand](arkts-arkui-screen-makeexpand-f-sys.md#makeexpand) | Sets the screen to extended mode. This API uses an asynchronous callback to return the result. |
+| [makeExpand](arkts-arkui-screen-makeexpand-f-sys.md#makeexpand) | Sets the screen to extended mode. This API uses a promise to return the result. |
+| [stopExpand](arkts-arkui-screen-stopexpand-f-sys.md#stopexpand) | Stops extended mode. This API uses an asynchronous callback to return the result. |
+| [stopExpand](arkts-arkui-screen-stopexpand-f-sys.md#stopexpand) | Stops extended mode. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 <!--Del-->
@@ -69,6 +71,7 @@ import { screen } from '@kit.ArkUI';
 | [OrientationOptions](arkts-arkui-screen-orientationoptions-i-sys.md) | The parameters for setting orientation |
 | [Rect](arkts-arkui-screen-rect-i-sys.md) | Describes the rectangle information. |
 | [Screen](arkts-arkui-screen-screen-i-sys.md) | Defines the [physical screen](../../../displaymanager/display-terminology.md#physical-screen) instance. |
+| [ScreenDisconnectInfo](arkts-arkui-screen-screendisconnectinfo-i-sys.md) | Defines the screen disconnect information. |
 | [ScreenModeInfo](arkts-arkui-screen-screenmodeinfo-i-sys.md) | Defines the screen mode information. |
 | [VirtualScreenOption](arkts-arkui-screen-virtualscreenoption-i-sys.md) | Defines virtual screen parameters. |
 <!--DelEnd-->

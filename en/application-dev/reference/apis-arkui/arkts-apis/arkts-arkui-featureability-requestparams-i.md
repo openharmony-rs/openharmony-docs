@@ -4,8 +4,6 @@
 export interface RequestParams
 ```
 
-@typedef RequestParams
-
 **Since:** 5
 
 **Deprecated since:** 8

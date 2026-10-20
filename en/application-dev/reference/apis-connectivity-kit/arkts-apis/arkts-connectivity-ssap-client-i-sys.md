@@ -142,7 +142,7 @@ Unsubscribes from event notification events. This API uses an asynchronous callb
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[Event](arkts-connectivity-ssap-event-i-sys.md)&gt; | No | Callback used to return the **Event** object of the service.<br>If this parameter is specified, the current callback is unregistered. If this parameter is not set, all callbacks corresponding to the type are unsubscribed. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[Event](arkts-connectivity-ssap-event-i-sys.md)&gt; | No | Callback used to return the **Event** object of the service. <br>If this parameter is specified, the current callback is unregistered. If this parameter is not set, all callbacks corresponding to the type are unsubscribed. |
 
 ## onEventNotify
 

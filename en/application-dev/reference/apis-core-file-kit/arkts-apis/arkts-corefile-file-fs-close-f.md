@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function close(file: number | File): Promise<void>
 ```
 
-Closes a file or directory. This API uses a promise to return the result.
+Closes a file or directory. After the file or directory is closed, the FD becomes invalid and cannot be used for read/write operations. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ Closes a file or directory. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| file | number &#124; [File](arkts-corefile-file-fs-file-i.md) | Yes | **File** object or FD of the file to close. Once closed, the **File** object or FD cannot be used for read or write operations. |
+| file | number &#124; [File](arkts-corefile-file-fs-file-i.md) | Yes | File object or open file descriptor fd that has been opened. After the function is disabled, the <b>File</b> object or FD cannot be used for read and write operations. If the file object or file descriptor is still used, an error may occur or the operation may fail. |
 
 **Return value:**
 
@@ -46,15 +46,13 @@ Closes a file or directory. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
-<a id="close2"></a>
-
 ## close
 
 ```TypeScript
 declare function close(file: number | File, callback: AsyncCallback<void>): void
 ```
 
-Closes a file or directory. This API uses an asynchronous callback to return the result.
+Closes a file or directory. After the file or directory is closed, the FD becomes invalid and cannot be used for read/write operations. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -68,8 +66,8 @@ Closes a file or directory. This API uses an asynchronous callback to return the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| file | number &#124; [File](arkts-corefile-file-fs-file-i.md) | Yes | **File** object or FD of the file to close. Once closed, the **File** object or FD cannot be used for read or write operations. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| file | number &#124; [File](arkts-corefile-file-fs-file-i.md) | Yes | File object or open file descriptor fd that has been opened. After the function is disabled, the <b>File</b> object or FD cannot be used for read and write operations. If the file object or file descriptor is still used, an error may occur or the operation may fail. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. When the file or directory is successfully closed asynchronously, <b>err</b> is <b>undefined</b>; otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 

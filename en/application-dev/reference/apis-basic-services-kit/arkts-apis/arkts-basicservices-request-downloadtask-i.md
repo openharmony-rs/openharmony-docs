@@ -4,7 +4,7 @@
 interface DownloadTask
 ```
 
-Implements file downloads. Before using any APIs of this class, you must obtain a **DownloadTask** object, from a promise through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile2) or from a callback through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile1).
+Implements file downloads. Before using any APIs of this class, you must obtain a **DownloadTask** object, from a promise through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile) or from a callback through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile).
 
 **Since:** 6
 
@@ -17,8 +17,6 @@ Implements file downloads. Before using any APIs of this class, you must obtain 
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
 ```
-
-<a id="delete1"></a>
 
 ## delete
 
@@ -80,8 +78,6 @@ try {
 }
 ```
 
-<a id="delete2"></a>
-
 ## delete
 
 ```TypeScript
@@ -138,8 +134,6 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-<a id="gettaskinfo1"></a>
 
 ## getTaskInfo
 
@@ -201,8 +195,6 @@ try {
 }
 ```
 
-<a id="gettaskinfo2"></a>
-
 ## getTaskInfo
 
 ```TypeScript
@@ -260,8 +252,6 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-<a id="gettaskmimetype1"></a>
 
 ## getTaskMimeType
 
@@ -322,8 +312,6 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-<a id="gettaskmimetype2"></a>
 
 ## getTaskMimeType
 
@@ -408,7 +396,7 @@ Unsubscribes from download progress events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
 
 **Examples**
 
@@ -467,7 +455,7 @@ Unsubscribes from download events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
 
 **Examples**
 
@@ -552,7 +540,7 @@ Unsubscribes from download failure events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
 
 **Examples**
 
@@ -616,7 +604,7 @@ Subscribes to download progress events. This API uses an asynchronous callback t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
 
 **Examples**
 
@@ -667,7 +655,7 @@ Subscribes to download events. This API uses an asynchronous callback to return 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
 
 **Examples**
 
@@ -728,7 +716,7 @@ Subscribes to download failure events. This API uses an asynchronous callback to
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**Applicable version:** 12 and later |
 
 **Examples**
 
@@ -753,8 +741,6 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-<a id="restore1"></a>
 
 ## restore
 
@@ -816,8 +802,6 @@ try {
 }
 ```
 
-<a id="restore2"></a>
-
 ## restore
 
 ```TypeScript
@@ -875,8 +859,6 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-<a id="suspend1"></a>
 
 ## suspend
 
@@ -938,8 +920,6 @@ try {
 }
 ```
 
-<a id="suspend2"></a>
-
 ## suspend
 
 ```TypeScript
@@ -998,8 +978,6 @@ try {
 }
 ```
 
-<a id="pause1"></a>
-
 ## pause
 
 ```TypeScript
@@ -1012,7 +990,7 @@ Pauses this download task. This API uses an asynchronous callback to return the 
 
 **Deprecated since:** 9
 
-**Substitutes:** [suspend](#suspend1)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [suspend](#suspend)(callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1043,8 +1021,6 @@ downloadTask.pause((err: BusinessError) => {
   console.info('Succeeded in pausing the download task.');
 });
 ```
-
-<a id="pause2"></a>
 
 ## pause
 
@@ -1088,8 +1064,6 @@ downloadTask.pause().then(() => {
 });
 ```
 
-<a id="query1"></a>
-
 ## query
 
 ```TypeScript
@@ -1102,7 +1076,7 @@ Queries this download task. This API uses an asynchronous callback to return the
 
 **Deprecated since:** 9
 
-**Substitutes:** [getTaskInfo](#gettaskinfo1)(callback: AsyncCallback&lt;DownloadInfo&gt;)
+**Substitutes:** [getTaskInfo](#gettaskinfo)(callback: AsyncCallback&lt;DownloadInfo&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1133,8 +1107,6 @@ downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo)=>{
   }
 });
 ```
-
-<a id="query2"></a>
 
 ## query
 
@@ -1178,8 +1150,6 @@ downloadTask.query().then((downloadInfo) => {
 });
 ```
 
-<a id="querymimetype1"></a>
-
 ## queryMimeType
 
 ```TypeScript
@@ -1192,7 +1162,7 @@ Queries the MIME type of this download task. This API uses an asynchronous callb
 
 **Deprecated since:** 9
 
-**Substitutes:** [getTaskMimeType](#gettaskmimetype1)(callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getTaskMimeType](#gettaskmimetype)(callback: AsyncCallback&lt;string&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1223,8 +1193,6 @@ downloadTask.queryMimeType((err: BusinessError, data: string)=>{
   }
 });
 ```
-
-<a id="querymimetype2"></a>
 
 ## queryMimeType
 
@@ -1268,8 +1236,6 @@ downloadTask.queryMimeType().then((data: string) => {
 });
 ```
 
-<a id="remove1"></a>
-
 ## remove
 
 ```TypeScript
@@ -1282,7 +1248,7 @@ Deletes the download task. This API uses an asynchronous callback to return the 
 
 **Deprecated since:** 9
 
-**Substitutes:** [delete](arkts-basicservices-request-uploadtask-i.md#delete1)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [delete](arkts-basicservices-request-uploadtask-i.md#delete)(callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1313,8 +1279,6 @@ downloadTask.remove((err, result)=>{
   console.info('Succeeded in removing the download task.');
 });
 ```
-
-<a id="remove2"></a>
 
 ## remove
 
@@ -1358,8 +1322,6 @@ downloadTask.remove().then((result) => {
 });
 ```
 
-<a id="resume1"></a>
-
 ## resume
 
 ```TypeScript
@@ -1372,7 +1334,7 @@ Restores the download task. This API uses an asynchronous callback to return the
 
 **Deprecated since:** 9
 
-**Substitutes:** [restore](#restore1)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [restore](#restore)(callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1403,8 +1365,6 @@ downloadTask.resume((err: BusinessError) => {
   console.info('Succeeded in resuming the download task.');
 });
 ```
-
-<a id="resume2"></a>
 
 ## resume
 

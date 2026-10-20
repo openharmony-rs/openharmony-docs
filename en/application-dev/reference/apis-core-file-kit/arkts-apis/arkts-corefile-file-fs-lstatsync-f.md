@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function lstatSync(path: string): Stat
 ```
 
-Obtains information about a symbolic link that is used to refer to a file or directory. This API returns the result synchronously.
+Obtains information about a symbolic link that is used to refer to a file or directory synchronously. The attributes of the symbolic link are returned, instead of the attributes of the target file.
 
 **Since:** 9
 
@@ -24,13 +24,13 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| path | string | Yes | Application sandbox path or URI of the file.<br>**Note:**  URIs can be passed since API version 22. |
+| path | string | Yes | Application sandbox path or URI of the file. <br>**Note:**  URIs can be passed since API version 22. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [Stat](arkts-corefile-file-fs-stat-i.md) | File information obtained. |
+| [Stat](arkts-corefile-file-fs-stat-i.md) | Detailed file information. |
 
 **Error codes:**
 

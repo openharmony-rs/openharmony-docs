@@ -29,13 +29,13 @@ Obtains device information.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | Enterprise device management extension component, which is used to specify the target application that has the device management capability. The **Want** object must contain **abilityName** (extended ability name) and **bundleName** (application bundle name) parameters. |
-| label | string | Yes | Device information label that can be obtained.<br>- **deviceName**: device name. <br>- **deviceSerial**: device serial number. <br>- **simInfo**: SIM card information. |
+| label | string | Yes | Device information label that can be obtained. <br>- **deviceName**: device name. <br>- **deviceSerial**: device serial number. <br>- **simInfo**: SIM card information. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| string | Device information obtained.<br>If **label** is **simInfo**, the return value is the SIM card information in a JSON string. For example, [{"slotId": 0, "MEID": "", "IMSI": "", "ICCID": "", "IMEI": "", "NUMBER": ""}, {"slotId": 1, "MEID": "", "IMSI": "", "ICCID": "", "IMEI": "", "NUMBER": ""}], where **slotId:0** indicates card slot 1, and **slotId:1** indicates card slot 2. **NUMBER** indicates the phone number and is supported since API version 23. The value is in the E.164 international standard format (for example, +8612345678901) that contains the country code. |
+| string | Device information obtained. <br>If **label** is **simInfo**, the return value is the SIM card information in a JSON string. For example, [{"slotId": 0, "MEID": "", "IMSI": "", "ICCID": "", "IMEI": "", "NUMBER": ""}, {"slotId": 1, "MEID": "", "IMSI": "", "ICCID": "", "IMEI": "", "NUMBER": ""}], where **slotId:0** indicates card slot 1, and **slotId:1** indicates card slot 2. **NUMBER** indicates the phone number and is supported since API version 23. The value is in the E.164 international standard format (for example, +8612345678901) that contains the country code. |
 
 **Error codes:**
 

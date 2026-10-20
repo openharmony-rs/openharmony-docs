@@ -6,8 +6,6 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="switchcurrentinputmethodandsubtype1"></a>
-
 ## switchCurrentInputMethodAndSubtype
 
 ```TypeScript
@@ -18,11 +16,7 @@ function switchCurrentInputMethodAndSubtype(
   ): void
 ```
 
-Switches to a specified subtype of a specified input method. This API uses an asynchronous callback to return the result. <br> <br>  
-> **NOTE:** <br>
-> <br>
-> - In API versions 9 and 10, this API can only be called by system applications granted the **ohos.permission.CONNECT_IME_ABILITY** permission. <br><br>
-> - Since API version 11, this API can only be called by the current input method application.
+Switches to a specified subtype of a specified input method. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -40,7 +34,7 @@ Switches to a specified subtype of a specified input method. This API uses an as
 | --- | --- | --- | --- |
 | inputMethodProperty | [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | Yes | Target input method. |
 | inputMethodSubtype | [InputMethodSubtype](arkts-ime-inputmethodsubtype-i.md) | Yes | Target input method subtype. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true**. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback function. When the input method subtype is switched successfully, **err** is **undefined** and data is **true**; otherwise, it is an error object. |
 
 **Error codes:**
 
@@ -73,8 +67,6 @@ inputMethod.switchCurrentInputMethodAndSubtype(currentIme, imSubType, (err: Busi
 ```
 
 
-<a id="switchcurrentinputmethodandsubtype2"></a>
-
 ## switchCurrentInputMethodAndSubtype
 
 ```TypeScript
@@ -84,11 +76,7 @@ function switchCurrentInputMethodAndSubtype(
   ): Promise<boolean>
 ```
 
-Switches to a specified subtype of a specified input method. This API uses a promise to return the result. <br> <br>  
-> **NOTE:** <br>
-> <br>
-> - In API versions 9 and 10, this API can only be called by system applications granted the **ohos.permission.CONNECT_IME_ABILITY** permission. <br><br>
-> - Since API version 11, this API can only be called by the current input method application.
+Switches to a specified subtype of a specified input method. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -111,7 +99,7 @@ Switches to a specified subtype of a specified input method. This API uses a pro
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means that the switching is successful, and **false** means the opposite. |
+| Promise&lt;boolean&gt; | Promise object. When resolved, **true** is returned if switching to the specified subtype of the specified input method succeeds, and **false** is returned if switching to the specified subtype of the specified input method fails; when rejected, an error object is returned, indicating that an error occurred while switching to the specified subtype of the specified input method. |
 
 **Error codes:**
 

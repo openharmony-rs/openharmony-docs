@@ -4,8 +4,6 @@
 export interface GetStorageOptions
 ```
 
-@typedef GetStorageOptions
-
 **Since:** 3
 
 **Deprecated since:** 6

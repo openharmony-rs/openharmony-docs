@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getmissionsnapshot1"></a>
-
 ## getMissionSnapShot
 
 ```TypeScript
@@ -62,8 +60,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getmissionsnapshot2"></a>
 
 ## getMissionSnapShot
 

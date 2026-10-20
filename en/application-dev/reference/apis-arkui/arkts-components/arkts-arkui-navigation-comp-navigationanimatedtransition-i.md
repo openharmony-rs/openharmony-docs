@@ -20,8 +20,6 @@ onTransitionEnd?: (success: boolean) => void
 
 Callback invoked when the transition is complete.
 
-**success**: whether the transition is successful.
-
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
@@ -36,7 +34,7 @@ Callback invoked when the transition is complete.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| success | boolean | Yes |  |
+| success | boolean | Yes | whether the transition is successful. |
 
 ## transition
 
@@ -45,8 +43,6 @@ transition: (transitionProxy: NavigationTransitionProxy) => void
 ```
 
 Callback for executing the custom transition animation.
-
-**transitionProxy**: proxy for the custom transition animation.
 
 **Since:** 11
 
@@ -62,7 +58,7 @@ Callback for executing the custom transition animation.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| transitionProxy | [NavigationTransitionProxy](arkts-arkui-navigation-comp-navigationtransitionproxy-i.md) | Yes |  |
+| transitionProxy | [NavigationTransitionProxy](arkts-arkui-navigation-comp-navigationtransitionproxy-i.md) | Yes | proxy for the custom transition animation. |
 
 ## isInteractive
 

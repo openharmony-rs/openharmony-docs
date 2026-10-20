@@ -20,15 +20,13 @@ Provides APIs for querying data in a device KV store and performing cross-device
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="getresultset9"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-Obtains the KVStoreResultSet object matching the local device ID and specified predicate object.
+Obtains a **KVStoreResultSet** object that matches the specified **Predicates** object for this device. This API uses an asynchronous callback to return the result. After obtaining the result set, call [closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset) to close the result set in a timely manner to release resources.
 
 **Since:** 9
 
@@ -44,14 +42,14 @@ Obtains the KVStoreResultSet object matching the local device ID and specified p
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Indicates the datasharePredicates. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Yes | {KVStoreResultSet}: the `KVStoreResultSet` object matching the local device ID and specified `dataSharePredicates.DataSharePredicates` object. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filter criteria, which cannot be null. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Yes | Callback used to return the **KVStoreResultSet** object obtained. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -390,15 +388,13 @@ try {
 
 <!--DelEnd-->
 
-<a id="getresultset10"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVStoreResultSet>
 ```
 
-Obtains the KVStoreResultSet object matching the local device ID and specified predicate object.
+Obtains a **KVStoreResultSet** object that matches the specified **Predicates** object for this device. This API uses a promise to return the result. After obtaining the result set, call [closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset) to close the result set in a timely manner to release resources.
 
 **Since:** 9
 
@@ -414,19 +410,19 @@ Obtains the KVStoreResultSet object matching the local device ID and specified p
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Indicates the datasharePredicates. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filter criteria, which cannot be null. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | {KVStoreResultSet}: the `KVStoreResultSet` object matching the local device ID and specified `dataSharePredicates.DataSharePredicates` object. |
+| Promise&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Promise used to the **KVStoreResultSet** object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -765,15 +761,21 @@ try {
 
 <!--DelEnd-->
 
-<a id="getresultset11"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-Obtains the KVStoreResultSet object matching a specified Device ID and Predicate object.
+Obtains the **KVStoreResultSet** object that matches the specified **Predicates** object on a specified device. This method uses an asynchronous callback to return the result. After obtaining the result set, call [closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset) to close the result set in a timely manner to release resources.
+
+> **NOTE:** 
+> 
+> **deviceId** can be obtained by
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
+> .
+> 
+> For details about how to obtain **deviceId**, see [sync()](arkts-arkdata-distributedkvstore-syncmode-e.md).
 
 **Since:** 9
 
@@ -789,15 +791,15 @@ Obtains the KVStoreResultSet object matching a specified Device ID and Predicate
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | Indicates the ID of the device to which the results belong. |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Indicates the dataSharePredicates. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Yes | {KVStoreResultSet}: the `KVStoreResultSet` object matching the specified deviceId and `dataSharePredicates.DataSharePredicates` object. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filter criteria, which cannot be null. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Yes | Callback used to return the **KVStoreResultSet** object obtained. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -1136,15 +1138,21 @@ try {
 
 <!--DelEnd-->
 
-<a id="getresultset12"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates): Promise<KVStoreResultSet>
 ```
 
-Obtains the KVStoreResultSet object matching a specified Device ID and Predicate object.
+Obtains the **KVStoreResultSet** object that matches the specified **Predicates** object on a specified device. This method uses a promise to return the result. After obtaining the result set, call [closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset) to close the result set in a timely manner to release resources.
+
+> **NOTE:** 
+> 
+> **deviceId** can be obtained by
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
+> .
+> 
+> For details about how to obtain **deviceId**, see [sync()](arkts-arkdata-distributedkvstore-syncmode-e.md).
 
 **Since:** 9
 
@@ -1160,20 +1168,20 @@ Obtains the KVStoreResultSet object matching a specified Device ID and Predicate
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | Indicates the ID of the device to which the results belong. |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Indicates the dataSharePredicates. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filter criteria, which cannot be null. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | {KVStoreResultSet}: the `KVStoreResultSet` object matching the specified deviceId and `dataSharePredicates.DataSharePredicates` object. |
+| Promise&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Promise used to the **KVStoreResultSet** object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |

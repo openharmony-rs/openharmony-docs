@@ -132,7 +132,7 @@ Cancels an entry based on the challenge value.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid challenge. |
 
@@ -263,7 +263,7 @@ Deletes user credentials.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid credentialId. |
 | [12300101](../errorcode-account.md#12300101-incorrect-credential) | The token is invalid. |
@@ -324,7 +324,7 @@ Deletes a user with an authentication token. This API uses an asynchronous callb
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300101](../errorcode-account.md#12300101-incorrect-credential) | The token is invalid. |
 
@@ -350,8 +350,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getauthinfo1"></a>
 
 ## getAuthInfo
 
@@ -408,8 +406,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getauthinfo2"></a>
 
 ## getAuthInfo
 
@@ -469,8 +465,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getauthinfo3"></a>
 
 ## getAuthInfo
 
@@ -532,8 +526,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getauthinfo4"></a>
 
 ## getAuthInfo
 
@@ -801,8 +793,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="opensession1"></a>
-
 ## openSession
 
 ```TypeScript
@@ -833,7 +823,7 @@ Opens a session to obtain the challenge value. This API uses an asynchronous cal
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 
 <!--Del-->
@@ -858,8 +848,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="opensession2"></a>
 
 ## openSession
 

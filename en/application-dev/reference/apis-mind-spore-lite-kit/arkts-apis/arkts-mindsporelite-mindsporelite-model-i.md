@@ -225,8 +225,6 @@ globalContext.getApplicationContext()
   });
 ```
 
-<a id="predict1"></a>
-
 ## predict
 
 ```TypeScript
@@ -296,8 +294,6 @@ globalContext.getApplicationContext()
     console.error(`Failed to read input data. File name: ${inputName}, Error code: ${error.code}, Error message: ${error.message}`);
   });
 ```
-
-<a id="predict2"></a>
 
 ## predict
 

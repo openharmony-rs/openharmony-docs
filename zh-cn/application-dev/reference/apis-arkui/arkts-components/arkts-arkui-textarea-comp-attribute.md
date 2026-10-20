@@ -316,9 +316,9 @@ editMenuOptions(editMenu: EditMenuOptions)
 ellipsisMode(mode: Optional<EllipsisMode>)
 ```
 
-设置省略位置。ellipsisMode属性需要配合[textOverflow](#textoverflow)设置为TextOverflow.Ellipsis以及[maxLines](#maxlines1)使用，单独设置ellipsisMode属性不生效。未通过该接口设置时，默认省略位置为EllipsisMode.END。
+设置省略位置。ellipsisMode属性需要配合[textOverflow](#textoverflow)设置为TextOverflow.Ellipsis以及[maxLines](#maxlines)使用，单独设置ellipsisMode属性不生效。未通过该接口设置时，默认省略位置为EllipsisMode.END。
 
-EllipsisMode.START和EllipsisMode.CENTER仅在[maxLines](#maxlines1)设置为1生效。
+EllipsisMode.START和EllipsisMode.CENTER仅在[maxLines](#maxlines)设置为1生效。
 
 **起始版本：** 18
 
@@ -334,7 +334,7 @@ EllipsisMode.START和EllipsisMode.CENTER仅在[maxLines](#maxlines1)设置为1�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[EllipsisMode](../arkts-apis/arkts-arkui-ellipsismode-e.md)&gt; | 是 | 省略位置。需配合[textOverflow](#textoverflow)设置为TextOverflow.Ellipsis以及[maxLines](#maxlines1)使用，单独设置不生效。<br>EllipsisMode.START和EllipsisMode.CENTER仅在maxLines设置为1时生效。 |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[EllipsisMode](../arkts-apis/arkts-arkui-ellipsismode-e.md)&gt; | 是 | 省略位置。需配合[textOverflow](#textoverflow)设置为TextOverflow.Ellipsis以及[maxLines](#maxlines)使用，单独设置不生效。<br>EllipsisMode.START和EllipsisMode.CENTER仅在maxLines设置为1时生效。 |
 
 ## enableAutoFill
 
@@ -628,7 +628,7 @@ fontFeature(value: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | string | 是 | 文字特性效果，用于设置文字的特殊显示效果，如数字等宽等。格式为：normal &#124;<feature-tag-value>。 |
+| value | string | 是 | 文字特性效果，用于设置文字的特殊显示效果，如数字等宽等。格式为：normal &#124; <feature-tag-value>。 |
 
 ## fontSize
 
@@ -728,7 +728,7 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 
 设置文本自适应高度的方式。未通过该接口设置时，默认文本自适应高度的方式为TextHeightAdaptivePolicy.MAX_LINES_FIRST。
 
-当设置为TextHeightAdaptivePolicy.MAX_LINES_FIRST时，优先使用[maxLines](#maxlines1)属性来调整文本高度。如果使用maxLines属性的布局大小超过了布局约束，则尝试在[minFontSize](#minfontsize)和[maxFontSize](#maxfontsize)的范围内缩小字体以显示更多文本。
+当设置为TextHeightAdaptivePolicy.MAX_LINES_FIRST时，优先使用[maxLines](#maxlines)属性来调整文本高度。如果使用maxLines属性的布局大小超过了布局约束，则尝试在[minFontSize](#minfontsize)和[maxFontSize](#maxfontsize)的范围内缩小字体以显示更多文本。
 
 组件设置为内联输入风格时，编辑态与非编辑态的字体大小可能不一致。
 
@@ -932,8 +932,6 @@ lineHeight(value: number | string | Resource)
 | --- | --- | --- | --- |
 | value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 文本的行高。需要显式指定[像素单位](arkts-arkui-common-comp.md)，如'10px'，也可设置百分比字符串，如'100%'。<br>**说明：** 不指定像素单位时，默认单位fp，如'10'，等同于10。 |
 
-<a id="linespacing1"></a>
-
 ## lineSpacing
 
 ```TypeScript
@@ -957,8 +955,6 @@ lineSpacing(value: LengthMetrics)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | LengthMetrics | 是 | 文本的行间距。 |
-
-<a id="linespacing2"></a>
 
 ## lineSpacing
 
@@ -1017,7 +1013,7 @@ maxFontSize(value: number | string | Resource)
 
 设置文本最大显示字号。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
-需配合[minFontSize](#minfontsize)以及[maxLines](#maxlines1)或布局大小限制使用，单独设置不生效。
+需配合[minFontSize](#minfontsize)以及[maxLines](#maxlines)或布局大小限制使用，单独设置不生效。
 
 自适应字号生效时，fontSize设置不生效。
 
@@ -1063,8 +1059,6 @@ maxLength(value: number)
 | --- | --- | --- | --- |
 | value | number | 是 | 文本的最大输入字符数。<br>取值范围：[0, UINT32_MAX]。当value&lt;0时，不设限制。 |
 
-<a id="maxlines1"></a>
-
 ## maxLines
 
 ```TypeScript
@@ -1102,8 +1096,6 @@ maxLines(value: number)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 内联输入风格编辑态时文本可显示的最大行数。<br>配置textOverflow时超出截断；未配置textOverflow时，内联模式获焦状态下文本可滚动显示，非获焦状态下不生效；非内联模式按行截断。<br>取值范围：(0, UINT32_MAX]。传入0或负数时，按照默认值处理。 |
-
-<a id="maxlines2"></a>
 
 ## maxLines
 
@@ -1176,7 +1168,7 @@ minFontSize(value: number | string | Resource)
 
 设置文本最小显示字号。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
-需配合[maxFontSize](#maxfontsize)以及[maxLines](#maxlines1)或布局大小限制使用，单独设置不生效。
+需配合[maxFontSize](#maxfontsize)以及[maxLines](#maxlines)或布局大小限制使用，单独设置不生效。
 
 自适应字号生效时，fontSize设置不生效。
 
@@ -1460,8 +1452,6 @@ onPaste(callback: (value: string, event: PasteEvent) => void)
 | --- | --- | --- | --- |
 | callback | (value: string, event: PasteEvent) =&gt; void | 是 | Called when using the Clipboard menu. |
 
-<a id="onsubmit1"></a>
-
 ## onSubmit
 
 ```TypeScript
@@ -1485,8 +1475,6 @@ onSubmit(callback: (enterKey: EnterKeyType) => void)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | (enterKey: EnterKeyType) =&gt; void | 是 | callback of the listened event. |
-
-<a id="onsubmit2"></a>
 
 ## onSubmit
 
@@ -2127,7 +2115,7 @@ textAlign(value: TextAlign)
 
 支持TextAlign.Start、TextAlign.Center和TextAlign.End。从API version 11开始，新增TextAlign.JUSTIFY选项。
 
-可通过[align](arkts-arkui-common-comp-commonmethod-c.md#align1)属性控制文本段落在垂直方向上的位置，此组件中不可通过align属性控制文本段落在水平方向上的位置。
+可通过[align](arkts-arkui-common-comp-commonmethod-c.md#align)属性控制文本段落在垂直方向上的位置，此组件中不可通过align属性控制文本段落在水平方向上的位置。
 
 - Alignment.TopStart、Alignment.Top、Alignment.TopEnd：内容顶部对齐。  
 - Alignment.Start、Alignment.Center、Alignment.End：内容垂直居中。  
@@ -2205,11 +2193,11 @@ textOverflow(value: TextOverflow)
 
 设置文本超长时的显示方式。未通过该接口设置时，默认文本超长时的显示方式为TextOverflow.Clip。
 
-内联模式，主动配置textOverflow才会生效按[maxLines](#maxlines1)截断效果，不配置时，默认不截断。
+内联模式，主动配置textOverflow才会生效按[maxLines](#maxlines)截断效果，不配置时，默认不截断。
 
 文本截断是按字截断。例如，英文以单词为最小单位进行截断，若需要以字母为单位进行截断，wordBreak属性可设置为WordBreak.BREAK_ALL。
 
-当textOverflow设置为TextOverflow.None、TextOverflow.Clip、TextOverflow.Ellipsis时，需配合[maxLines](#maxlines1)使用，单独设置不生效。设置TextOverflow.None与TextOverflow.Clip效果一样。
+当textOverflow设置为TextOverflow.None、TextOverflow.Clip、TextOverflow.Ellipsis时，需配合[maxLines](#maxlines)使用，单独设置不生效。设置TextOverflow.None与TextOverflow.Clip效果一样。
 
 > **说明：** 
 > 

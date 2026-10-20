@@ -4,7 +4,7 @@
 interface ImageReceiver
 ```
 
-The **ImageReceiver** class provides APIs to obtain the surface ID of a component, read the latest image, read the next image, and release the ImageReceiver instance. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createpreviewoutput1). Before calling any APIs in ImageReceiver, you must use [image.createImageReceiver](arkts-image-image-createimagereceiver-f.md) to create an ImageReceiver instance. Since API version 23, you are advised to use [image.createImageReceiver](arkts-image-image-createimagereceiver-f.md) to create an **ImageReceiver** instance based on the passed [ImageReceiverOptions](arkts-image-image-imagereceiveroptions-i.md). Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call [release](#release1) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+The **ImageReceiver** class provides APIs to obtain the surface ID of a component, read the latest image, read the next image, and release the ImageReceiver instance. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createpreviewoutput). Before calling any APIs in ImageReceiver, you must use [image.createImageReceiver](arkts-image-image-createimagereceiver-f.md) to create an ImageReceiver instance. Since API version 23, you are advised to use [image.createImageReceiver](arkts-image-image-createimagereceiver-f.md) to create an **ImageReceiver** instance based on the passed [ImageReceiverOptions](arkts-image-image-imagereceiveroptions-i.md). Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call [release](#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 9
 
@@ -17,8 +17,6 @@ The **ImageReceiver** class provides APIs to obtain the surface ID of a componen
 ```TypeScript
 import { image } from '@kit.ImageKit';
 ```
-
-<a id="getreceivingsurfaceid1"></a>
 
 ## getReceivingSurfaceId
 
@@ -55,8 +53,6 @@ async function GetReceivingSurfaceId(receiver : image.ImageReceiver) {
   });
 }
 ```
-
-<a id="getreceivingsurfaceid2"></a>
 
 ## getReceivingSurfaceId
 
@@ -162,8 +158,6 @@ async function On(receiver : image.ImageReceiver) {
 }
 ```
 
-<a id="readlatestimage1"></a>
-
 ## readLatestImage
 
 ```TypeScript
@@ -177,7 +171,7 @@ Reads the latest image from the ImageReceiver instance. This API uses an asynchr
 > This API can be called to receive data only after the
 > [on](#onimagearrival) callback is triggered.
 > When the [Image](arkts-image-image-image-i.md) object returned by this API is no longer needed, call
-> [release](arkts-image-image-image-i.md#release1) to release the
+> [release](arkts-image-image-image-i.md#release) to release the
 > object. New data can be received only after the release.
 
 **Since:** 9
@@ -220,8 +214,6 @@ async function ReadLatestImage(receiver : image.ImageReceiver) {
 }
 ```
 
-<a id="readlatestimage2"></a>
-
 ## readLatestImage
 
 ```TypeScript
@@ -235,7 +227,7 @@ Reads the latest image from the ImageReceiver instance. This API uses a promise 
 > This API can be called to receive data only after the
 > [on](#onimagearrival) callback is triggered.
 > When the [Image](arkts-image-image-image-i.md) object returned by this API is no longer needed, call
-> [release](arkts-image-image-image-i.md#release1) to release the
+> [release](arkts-image-image-image-i.md#release) to release the
 > object. New data can be received only after the release.
 
 **Since:** 9
@@ -276,8 +268,6 @@ async function ReadLatestImage(receiver : image.ImageReceiver) {
 }
 ```
 
-<a id="readnextimage1"></a>
-
 ## readNextImage
 
 ```TypeScript
@@ -291,7 +281,7 @@ Reads the next image from the ImageReceiver instance. This API uses an asynchron
 > This API can be called to receive data only after the
 > [on](#onimagearrival) callback is triggered.
 > When the [Image](arkts-image-image-image-i.md) object returned by this API is no longer needed, call
-> [release](arkts-image-image-image-i.md#release1) to release the
+> [release](arkts-image-image-image-i.md#release) to release the
 > object. New data can be received only after the release.
 
 **Since:** 9
@@ -334,8 +324,6 @@ async function ReadNextImage(receiver : image.ImageReceiver) {
 }
 ```
 
-<a id="readnextimage2"></a>
-
 ## readNextImage
 
 ```TypeScript
@@ -349,7 +337,7 @@ Reads the next image from the ImageReceiver instance. This API uses a promise to
 > This API can be called to receive data only after the
 > [on](#onimagearrival) callback is triggered.
 > When the [Image](arkts-image-image-image-i.md) object returned by this API is no longer needed, call
-> [release](arkts-image-image-image-i.md#release1) to release the
+> [release](arkts-image-image-image-i.md#release) to release the
 > object. New data can be received only after the release.
 
 **Since:** 9
@@ -390,8 +378,6 @@ async function ReadNextImage(receiver : image.ImageReceiver) {
 }
 ```
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -431,8 +417,6 @@ async function Release(receiver : image.ImageReceiver) {
   })
 }
 ```
-
-<a id="release2"></a>
 
 ## release
 
@@ -494,13 +478,13 @@ Only visible ASCII characters are supported. Spaces, newlines, tabs, and other c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| name | string | Yes | Memory name to set.<br>The maximum length is 256. |
+| name | string | Yes | Memory name to set. <br>The maximum length is 256. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [7900201](../errorcode-image.md#7900201-invalid-parameter) | Invalid parameter. Possible causes:<ol><li>Name is empty.</li> <li>Name contains no visible characters after filtering.</li> <li>The length of name exceeds 256 bytes.</li> <li>Ensure the name parameter contains visible ASCII characters.</li></ol> |
+| [7900201](../errorcode-image.md#7900201-invalid-parameter) | Invalid parameter. Possible causes: <ol><li>Name is empty.</li> <li>Name contains no visible characters after filtering.</li> <li>The length of name exceeds 256 bytes.</li> <li>Ensure the name parameter contains visible ASCII characters.</li></ol> |
 
 ## capacity
 

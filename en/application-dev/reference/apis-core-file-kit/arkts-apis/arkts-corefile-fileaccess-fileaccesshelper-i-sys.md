@@ -22,8 +22,6 @@ Provides a **FileAccessHelper** object.
 import { fileAccess } from '@kit.CoreFileKit';
 ```
 
-<a id="access1"></a>
-
 ## access
 
 ```TypeScript
@@ -127,8 +125,6 @@ async function accessFunc() {
 
 <!--DelEnd-->
 
-<a id="access2"></a>
-
 ## access
 
 ```TypeScript
@@ -228,8 +224,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="copy1"></a>
 
 ## copy
 
@@ -340,8 +334,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="copy2"></a>
-
 ## copy
 
 ```TypeScript
@@ -411,8 +403,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="copy3"></a>
 
 ## copy
 
@@ -484,8 +474,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="copyfile1"></a>
 
 ## copyFile
 
@@ -584,8 +572,6 @@ async function copyFunc01() {
 
 <!--DelEnd-->
 
-<a id="copyfile2"></a>
-
 ## copyFile
 
 ```TypeScript
@@ -676,8 +662,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="createfile1"></a>
 
 ## createFile
 
@@ -785,8 +769,6 @@ async function createFile() {
 
 <!--DelEnd-->
 
-<a id="createfile2"></a>
-
 ## createFile
 
 ```TypeScript
@@ -884,8 +866,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="delete1"></a>
 
 ## delete
 
@@ -987,8 +967,6 @@ async function deleteFile01() {
 
 <!--DelEnd-->
 
-<a id="delete2"></a>
-
 ## delete
 
 ```TypeScript
@@ -1085,8 +1063,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getfileinfofromrelativepath1"></a>
-
 ## getFileInfoFromRelativePath
 
 ```TypeScript
@@ -1145,8 +1121,6 @@ async function getRelativePath() {
 
 <!--DelEnd-->
 
-<a id="getfileinfofromrelativepath2"></a>
-
 ## getFileInfoFromRelativePath
 
 ```TypeScript
@@ -1203,8 +1177,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getfileinfofromuri1"></a>
 
 ## getFileInfoFromUri
 
@@ -1265,8 +1237,6 @@ async function getUri() {
 
 <!--DelEnd-->
 
-<a id="getfileinfofromuri2"></a>
-
 ## getFileInfoFromUri
 
 ```TypeScript
@@ -1324,8 +1294,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getroots1"></a>
 
 ## getRoots
 
@@ -1426,8 +1394,6 @@ async function getRoots() {
 
 <!--DelEnd-->
 
-<a id="getroots2"></a>
-
 ## getRoots
 
 ```TypeScript
@@ -1527,8 +1493,6 @@ async function getRoots() {
 ```
 
 <!--DelEnd-->
-
-<a id="mkdir1"></a>
 
 ## mkDir
 
@@ -1636,8 +1600,6 @@ async function createDirectory() {
 
 <!--DelEnd-->
 
-<a id="mkdir2"></a>
-
 ## mkDir
 
 ```TypeScript
@@ -1735,8 +1697,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="move1"></a>
 
 ## move
 
@@ -1839,8 +1799,6 @@ async function moveFile01() {
 
 <!--DelEnd-->
 
-<a id="move2"></a>
-
 ## move
 
 ```TypeScript
@@ -1939,8 +1897,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="movefile1"></a>
-
 ## moveFile
 
 ```TypeScript
@@ -2036,8 +1992,6 @@ async function moveFile01() {
 
 <!--DelEnd-->
 
-<a id="movefile2"></a>
-
 ## moveFile
 
 ```TypeScript
@@ -2129,8 +2083,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="moveitem1"></a>
 
 ## moveItem
 
@@ -2270,8 +2222,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="moveitem2"></a>
-
 ## moveItem
 
 ```TypeScript
@@ -2370,8 +2320,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="moveitem3"></a>
 
 ## moveItem
 
@@ -2473,8 +2421,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="openfile1"></a>
-
 ## openFile
 
 ```TypeScript
@@ -2574,8 +2520,6 @@ async function openFile01() {
 
 <!--DelEnd-->
 
-<a id="openfile2"></a>
-
 ## openFile
 
 ```TypeScript
@@ -2673,8 +2617,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="query1"></a>
-
 ## query
 
 ```TypeScript
@@ -2734,8 +2676,6 @@ async function getQuery01() {
 ```
 
 <!--DelEnd-->
-
-<a id="query2"></a>
 
 ## query
 
@@ -2832,8 +2772,6 @@ Registers a callback to listen for a URI. URIs and callbacks can be in many-to-m
 | Error Code ID | Error Message |
 | --- | --- |
 | 14300002 | Invalid uri |
-
-<a id="rename1"></a>
 
 ## rename
 
@@ -2934,8 +2872,6 @@ async function renameFile01() {
 ```
 
 <!--DelEnd-->
-
-<a id="rename2"></a>
 
 ## rename
 

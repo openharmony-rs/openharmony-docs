@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function utimes(path: string, mtime: number): void
 ```
 
-Changes the time when the file was last modified.
+Last modification time of a file.
 
 **Since:** 11
 

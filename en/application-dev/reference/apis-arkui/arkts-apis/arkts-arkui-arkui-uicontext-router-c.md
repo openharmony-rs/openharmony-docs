@@ -27,8 +27,6 @@ import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
 import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
 ```
 
-<a id="back1"></a>
-
 ## back
 
 ```TypeScript
@@ -64,8 +62,6 @@ let router: Router = uiContext.getRouter();
 router.back({url:'pages/detail'});
 ```
 
-<a id="back2"></a>
-
 ## back
 
 ```TypeScript
@@ -88,7 +84,7 @@ Returns to the specified page.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the target page to navigate to.<br>Value range: [0, +∞). |
+| index | number | Yes | Index of the target page to navigate to. <br>Value range: [0, +∞). |
 | params | Object | No | Parameters carried when returning to the page. |
 
 **Examples**
@@ -290,7 +286,7 @@ Obtains the status information about a page by its index.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the target page.<br>Value range: [1, +∞). |
+| index | number | Yes | Index of the target page. <br>Value range: [1, +∞). |
 
 **Return value:**
 
@@ -393,8 +389,6 @@ let router: Router = uiContext.getRouter();
 router.hideAlertBeforeBackPage();
 ```
 
-<a id="pushnamedroute1"></a>
-
 ## pushNamedRoute
 
 ```TypeScript
@@ -424,7 +418,7 @@ Navigates to a page using the named route. This API uses an asynchronous callbac
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100003](../errorcode-router.md#100003-too-many-pages-are-pushed-into-the-page-stack) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |
@@ -476,8 +470,6 @@ struct Index {
 }
 ```
 
-<a id="pushnamedroute2"></a>
-
 ## pushNamedRoute
 
 ```TypeScript
@@ -512,7 +504,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100003](../errorcode-router.md#100003-too-many-pages-are-pushed-into-the-page-stack) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |
@@ -563,15 +555,13 @@ struct Index {
 }
 ```
 
-<a id="pushnamedroute3"></a>
-
 ## pushNamedRoute
 
 ```TypeScript
 pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Navigates to a page using the named route. This API uses an asynchronous callback to return the result. Compared with [pushNamedRoute](#pushnamedroute1), this API supports the **mode** parameter, which enables you to set the routing mode.
+Navigates to a page using the named route. This API uses an asynchronous callback to return the result. Compared with [pushNamedRoute](#pushnamedroute), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -595,7 +585,7 @@ Navigates to a page using the named route. This API uses an asynchronous callbac
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100003](../errorcode-router.md#100003-too-many-pages-are-pushed-into-the-page-stack) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |
@@ -654,15 +644,13 @@ struct Index {
 }
 ```
 
-<a id="pushnamedroute4"></a>
-
 ## pushNamedRoute
 
 ```TypeScript
 pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-Navigates to a page using the named route. This API uses a promise to return the result. Compared with [pushNamedRoute](#pushnamedroute2), this API supports the **mode** parameter, which enables you to set the routing mode.
+Navigates to a page using the named route. This API uses a promise to return the result. Compared with [pushNamedRoute](#pushnamedroute), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -691,7 +679,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100003](../errorcode-router.md#100003-too-many-pages-are-pushed-into-the-page-stack) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |
@@ -747,8 +735,6 @@ struct Index {
 }
 ```
 
-<a id="pushurl1"></a>
-
 ## pushUrl
 
 ```TypeScript
@@ -778,7 +764,7 @@ Navigates to a specified page in the application. This API uses an asynchronous 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100002](../errorcode-router.md#100002-incorrect-uri-during-page-redirection) | Uri error. The URI of the page to redirect is incorrect or does not exist |
 | [100003](../errorcode-router.md#100003-too-many-pages-are-pushed-into-the-page-stack) | Page stack error. Too many pages are pushed. |
@@ -831,8 +817,6 @@ struct Index {
 }
 ```
 
-<a id="pushurl2"></a>
-
 ## pushUrl
 
 ```TypeScript
@@ -867,7 +851,7 @@ Navigates to a specified page in the application. This API uses a promise to ret
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100002](../errorcode-router.md#100002-incorrect-uri-during-page-redirection) | Uri error. The URI of the page to redirect is incorrect or does not exist |
 | [100003](../errorcode-router.md#100003-too-many-pages-are-pushed-into-the-page-stack) | Page stack error. Too many pages are pushed. |
@@ -982,15 +966,13 @@ struct Second {
 }
 ```
 
-<a id="pushurl3"></a>
-
 ## pushUrl
 
 ```TypeScript
 pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Navigates to a specified page in the application. This API uses an asynchronous callback to return the result. Compared with [pushUrl](#pushurl1), this API supports the **mode** parameter, which enables you to set the routing mode.
+Navigates to a specified page in the application. This API uses an asynchronous callback to return the result. Compared with [pushUrl](#pushurl), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1014,7 +996,7 @@ Navigates to a specified page in the application. This API uses an asynchronous 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100002](../errorcode-router.md#100002-incorrect-uri-during-page-redirection) | Uri error. The URI of the page to redirect is incorrect or does not exist |
 | [100003](../errorcode-router.md#100003-too-many-pages-are-pushed-into-the-page-stack) | Page stack error. Too many pages are pushed. |
@@ -1073,15 +1055,13 @@ struct Index {
 }
 ```
 
-<a id="pushurl4"></a>
-
 ## pushUrl
 
 ```TypeScript
 pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-Navigates to a specified page in the application. This API uses a promise to return the result. Compared with [pushUrl](#pushurl2), this API supports the **mode** parameter, which enables you to set the routing mode.
+Navigates to a specified page in the application. This API uses a promise to return the result. Compared with [pushUrl](#pushurl), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1110,7 +1090,7 @@ Navigates to a specified page in the application. This API uses a promise to ret
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100002](../errorcode-router.md#100002-incorrect-uri-during-page-redirection) | Uri error. The URI of the page to redirect is incorrect or does not exist |
 | [100003](../errorcode-router.md#100003-too-many-pages-are-pushed-into-the-page-stack) | Page stack error. Too many pages are pushed. |
@@ -1168,8 +1148,6 @@ struct Index {
 }
 ```
 
-<a id="replacenamedroute1"></a>
-
 ## replaceNamedRoute
 
 ```TypeScript
@@ -1199,7 +1177,7 @@ Replaces the current page with another one using the named route and destroys th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |
 
@@ -1246,8 +1224,6 @@ struct Index {
   }
 }
 ```
-
-<a id="replacenamedroute2"></a>
 
 ## replaceNamedRoute
 
@@ -1330,15 +1306,13 @@ struct Index {
 }
 ```
 
-<a id="replacenamedroute3"></a>
-
 ## replaceNamedRoute
 
 ```TypeScript
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceNamedRoute](#replacenamedroute1), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another one using the named route and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceNamedRoute](#replacenamedroute), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1417,15 +1391,13 @@ struct Index {
 }
 ```
 
-<a id="replacenamedroute4"></a>
-
 ## replaceNamedRoute
 
 ```TypeScript
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result. Compared with [replaceNamedRoute](#replacenamedroute2), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another one using the named route and destroys the current page. This API uses a promise to return the result. Compared with [replaceNamedRoute](#replacenamedroute), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1454,7 +1426,7 @@ Replaces the current page with another one using the named route and destroys th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Failed to get the delegate. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |
 
@@ -1507,8 +1479,6 @@ struct Index {
 }
 ```
 
-<a id="replaceurl1"></a>
-
 ## replaceUrl
 
 ```TypeScript
@@ -1538,7 +1508,7 @@ Replaces the current page with another one in the application and destroys the c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-incorrect-uri-during-page-replacement) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
@@ -1586,8 +1556,6 @@ struct Index {
 }
 ```
 
-<a id="replaceurl2"></a>
-
 ## replaceUrl
 
 ```TypeScript
@@ -1622,7 +1590,7 @@ Replaces the current page with another one in the application and destroys the c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-incorrect-uri-during-page-replacement) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
@@ -1669,15 +1637,13 @@ struct Index {
 }
 ```
 
-<a id="replaceurl3"></a>
-
 ## replaceUrl
 
 ```TypeScript
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback<void>): void
 ```
 
-Replaces the current page with another one in the application and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceUrl](#replaceurl1), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another one in the application and destroys the current page. This API uses an asynchronous callback to return the result. Compared with [replaceUrl](#replaceurl), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1701,7 +1667,7 @@ Replaces the current page with another one in the application and destroys the c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-incorrect-uri-during-page-replacement) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
@@ -1756,15 +1722,13 @@ struct Index {
 }
 ```
 
-<a id="replaceurl4"></a>
-
 ## replaceUrl
 
 ```TypeScript
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-Replaces the current page with another one in the application and destroys the current page. This API uses a promise to return the result. Compared with [replaceUrl](#replaceurl2), this API supports the **mode** parameter, which enables you to set the routing mode.
+Replaces the current page with another one in the application and destroys the current page. This API uses a promise to return the result. Compared with [replaceUrl](#replaceurl), this API supports the **mode** parameter, which enables you to set the routing mode.
 
 **Since:** 10
 
@@ -1793,7 +1757,7 @@ Replaces the current page with another one in the application and destroys the c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Failed to get the delegate. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-incorrect-uri-during-page-replacement) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
@@ -1874,7 +1838,7 @@ Enables the display of a confirm dialog box before returning to the previous pag
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 
 **Examples**

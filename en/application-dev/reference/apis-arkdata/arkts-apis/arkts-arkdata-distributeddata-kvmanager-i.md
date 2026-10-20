@@ -4,7 +4,7 @@
 interface KVManager
 ```
 
-Creates a **KVManager** object to obtain KV store information. Before calling any method in **KVManager**, you must use [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager1) to create a **KVManager** object.
+Creates a **KVManager** object to obtain KV store information. Before calling any method in **KVManager**, you must use [createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager) to create a **KVManager** object.
 
 **Since:** 7
 
@@ -20,8 +20,6 @@ Creates a **KVManager** object to obtain KV store information. Before calling an
 
 ```TypeScript
 ```
-
-<a id="closekvstore1"></a>
 
 ## closeKVStore
 
@@ -76,8 +74,6 @@ try {
     console.error('closeKVStore e ' + e);
 }
 ```
-
-<a id="closekvstore2"></a>
 
 ## closeKVStore
 
@@ -142,8 +138,6 @@ try {
 }
 ```
 
-<a id="deletekvstore1"></a>
-
 ## deleteKVStore
 
 ```TypeScript
@@ -196,8 +190,6 @@ try {
     console.error('DeleteKVStore e ' + e);
 }
 ```
-
-<a id="deletekvstore2"></a>
 
 ## deleteKVStore
 
@@ -261,15 +253,13 @@ try {
 }
 ```
 
-<a id="getallkvstoreid1"></a>
-
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 ```
 
-Obtains the IDs of all KV stores that are created by getKVStore() and have not been deleted by [deleteKVStore()](#deletekvstore1). This API uses an asynchronous callback to return the result.
+Obtains the IDs of all KV stores that are created by getKVStore() and have not been deleted by [deleteKVStore()](#deletekvstore). This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -302,15 +292,13 @@ try {
 }
 ```
 
-<a id="getallkvstoreid2"></a>
-
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string): Promise<string[]>
 ```
 
-Obtains the IDs of all KV stores that are created by getKVStore() and have not been deleted by [deleteKVStore()](#deletekvstore1). This API uses a promise to return the result.
+Obtains the IDs of all KV stores that are created by getKVStore() and have not been deleted by [deleteKVStore()](#deletekvstore). This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -350,8 +338,6 @@ try {
     console.error('getAllKVStoreId e ' + e);
 }
 ```
-
-<a id="getkvstore1"></a>
 
 ## getKVStore
 
@@ -408,8 +394,6 @@ try {
     console.error("An unexpected error occurred. Error:" + e);
 }
 ```
-
-<a id="getkvstore2"></a>
 
 ## getKVStore
 

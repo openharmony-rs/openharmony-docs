@@ -2,9 +2,9 @@
 
 agentManager模块提供Agent管理能力，支持AgentExtensionAbility的连接、断开连接等操作，支持LOW_CODE类型Agent的生命周期管理，支持AgentExtensionAbility与ServiceExtensionAbility的连接管理，同时提供获取设备上的AgentCard信息。
 
-@namespace agentManager
-
 **起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace agentManager--><!--Device-unnamed-declare namespace agentManager-End-->
 

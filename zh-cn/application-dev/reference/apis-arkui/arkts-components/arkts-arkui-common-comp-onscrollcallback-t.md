@@ -6,8 +6,6 @@ declare type OnScrollCallback = (scrollOffset: number, scrollState: ScrollState)
 
 滚动组件滑动时触发的回调。
 
-@typedef { function } OnScrollCallback
-
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。

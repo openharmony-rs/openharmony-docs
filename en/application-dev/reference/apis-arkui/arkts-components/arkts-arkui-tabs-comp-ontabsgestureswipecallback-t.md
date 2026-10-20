@@ -20,5 +20,5 @@ Defines the callback triggered on a frame-by-frame basis when the page is turned
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the currently displayed element, starting from 0.<br>Value range: [0, total number of tabs - 1] |
+| index | number | Yes | Index of the currently displayed element, starting from 0. <br>Value range: [0, total number of tabs - 1] |
 | extraInfo | [TabsAnimationEvent](arkts-arkui-tabs-comp-tabsanimationevent-i.md) | Yes | Animation-related information, which returns only the offset of the currently displayed element relative to the start position of **Tabs** along the main axis. |

@@ -6,8 +6,6 @@ interface ModelResult
 
 Provides the ModelResult type.
 
-@typedef ModelResult
-
 **Since:** 12
 
 <!--Device-securityGuard-interface ModelResult--><!--Device-securityGuard-interface ModelResult-End-->

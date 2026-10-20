@@ -6,8 +6,6 @@ export declare interface ProgressButtonV2ColorOptions
 
 Declare Color options interface of the ProgressButtonV2.
 
-@interface ProgressButtonV2ColorOptions
-
 **Since:** 18
 
 <!--Device-unnamed-export declare interface ProgressButtonV2ColorOptions--><!--Device-unnamed-export declare interface ProgressButtonV2ColorOptions-End-->

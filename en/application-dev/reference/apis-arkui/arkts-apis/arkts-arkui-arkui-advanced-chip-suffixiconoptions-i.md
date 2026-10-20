@@ -82,8 +82,6 @@ Supported values:
 
 **"no-hide-descendants"**: The component and all its child components cannot be recognized by accessibility services.
 
-Default value: **"auto"**.
-
 When the value is undefined, the default value is used.
 
 **Type:** string

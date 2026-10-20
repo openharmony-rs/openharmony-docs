@@ -26,12 +26,14 @@ Called when the remote window interface is used.
 
 ## Summary
 
-### Interfaces
+<!--Del-->
+### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
 | [RRect](arkts-arkui-remotewindow-comp-rrect-i-sys.md) | Round rect. |
 | [WindowAnimationTarget](arkts-arkui-remotewindow-comp-windowanimationtarget-i-sys.md) | Window animation target. |
+<!--DelEnd-->
 
 <!--Del-->
 ## Examples

@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="unsubscribe1"></a>
-
 ## unsubscribe
 
 ```TypeScript
@@ -36,8 +34,31 @@ Unsubscribes from a notification. This API uses an asynchronous callback to retu
 | subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | Yes | Notification subscriber. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
+**Examples**
 
-<a id="unsubscribe2"></a>
+```TypeScript
+import Base from '@ohos.base';
+import NotificationSubscribe from '@ohos.notificationSubscribe';
+
+let unsubscribeCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("unsubscribe failed " + JSON.stringify(err));
+  } else {
+    console.info("unsubscribe success");
+  }
+}
+let onDisconnectCallback = () => {
+  console.info("subscribe disconnect");
+}
+let subscriber: NotificationSubscribe.NotificationSubscriber = {
+  onDisconnect: onDisconnectCallback
+};
+Notification.unsubscribe(subscriber, unsubscribeCallback);
+```
+
+<!--DelEnd-->
+
 
 ## unsubscribe
 
@@ -72,3 +93,25 @@ Unsubscribes from a notification. This API uses a promise to return the result.
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+import NotificationSubscribe from '@ohos.notificationSubscribe';
+
+function onDisconnectCallback() {
+  console.info("subscribe disconnect");
+}
+let subscriber: NotificationSubscribe.NotificationSubscriber = {
+  onDisconnect: onDisconnectCallback
+};
+Notification.unsubscribe(subscriber).then(() => {
+  console.info("unsubscribe success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`unsubscribe failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

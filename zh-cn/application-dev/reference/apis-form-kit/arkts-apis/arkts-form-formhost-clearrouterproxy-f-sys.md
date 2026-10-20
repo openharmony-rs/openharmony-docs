@@ -6,8 +6,6 @@
 import { formHost } from '@kit.FormKit';
 ```
 
-<a id="clearrouterproxy1"></a>
-
 ## clearRouterProxy
 
 ```TypeScript
@@ -66,8 +64,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="clearrouterproxy2"></a>
 
 ## clearRouterProxy
 

@@ -6,8 +6,6 @@
 import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
-<a id="getcurrentgroup1"></a>
-
 ## getCurrentGroup
 
 ```TypeScript
@@ -58,8 +56,6 @@ import { wifiManager } from '@kit.ConnectivityKit';
   });
 ```
 
-
-<a id="getcurrentgroup2"></a>
 
 ## getCurrentGroup
 

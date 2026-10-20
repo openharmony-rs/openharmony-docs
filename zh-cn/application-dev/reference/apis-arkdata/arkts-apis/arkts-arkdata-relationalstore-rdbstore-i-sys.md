@@ -8,7 +8,7 @@ interface RdbStore
 
 在使用以下API前，请先通过[getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md)方法获取RdbStore实例，并使用该实例调用对应接口方法。
 
-在此基础上，建议优先使用[execute](arkts-arkdata-relationalstore-rdbstore-i.md#execute1)方法完成数据库表结构和初始数据的初始化，以确保相关接口调用的前置条件已满足。
+在此基础上，建议优先使用[execute](arkts-arkdata-relationalstore-rdbstore-i.md#execute)方法完成数据库表结构和初始数据的初始化，以确保相关接口调用的前置条件已满足。
 
 **起始版本：** 9
 
@@ -65,8 +65,6 @@ cleanDeviceDirtyData(table: string, cursor?: number): Promise<void>
 | [14800021](../errorcode-data-rdb.md#14800021-sqlite通用错误) | SQLite: Generic error. |
 | [14800024](../errorcode-data-rdb.md#14800024-sqlite数据库文件已锁定) | SQLite: The database file is locked. |
 | 14800043 | The database does not support this scenario. Possible causes: 1. The database type is not support;2. The table type is not supported;         3. This is a read-only database. |
-
-<a id="cloudsync5"></a>
 
 ## cloudSync
 
@@ -179,8 +177,6 @@ if (store != undefined) {
 
 <!--DelEnd-->
 
-<a id="cloudsync6"></a>
-
 ## cloudSync
 
 ```TypeScript
@@ -234,8 +230,6 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback<Progress
 
 <!--DelEnd-->
 
-<a id="delete3"></a>
-
 ## delete
 
 ```TypeScript
@@ -266,7 +260,7 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates, callb
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
@@ -321,8 +315,6 @@ if (store != undefined) {
 
 <!--DelEnd-->
 
-<a id="delete4"></a>
-
 ## delete
 
 ```TypeScript
@@ -358,7 +350,7 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates): Prom
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
@@ -445,8 +437,6 @@ lockCloudContainer(): Promise<number>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
-<a id="query4"></a>
-
 ## query
 
 ```TypeScript
@@ -477,7 +467,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, callba
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -574,8 +564,6 @@ if (store != undefined) {
 ```
 
 <!--DelEnd-->
-
-<a id="query5"></a>
 
 ## query
 
@@ -613,7 +601,7 @@ query(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -710,8 +698,6 @@ if (store != undefined) {
 ```
 
 <!--DelEnd-->
-
-<a id="query6"></a>
 
 ## query
 
@@ -753,7 +739,7 @@ query(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -850,8 +836,6 @@ if (store != undefined) {
 ```
 
 <!--DelEnd-->
-
-<a id="querysharingresource1"></a>
 
 ## querySharingResource
 
@@ -907,8 +891,6 @@ querySharingResource(predicates: RdbPredicates, columns?: Array<string>): Promis
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
 
-<a id="querysharingresource2"></a>
-
 ## querySharingResource
 
 ```TypeScript
@@ -956,8 +938,6 @@ querySharingResource(predicates: RdbPredicates, callback: AsyncCallback<ResultSe
 | [14800032](../errorcode-data-rdb.md#14800032-sqlite由于违反约束而中止) | SQLite: Abort due to constraint violation.<br>**适用版本：** 12+ |
 | [14800033](../errorcode-data-rdb.md#14800033-sqlite数据类型不匹配) | SQLite: Data type mismatch.<br>**适用版本：** 12+ |
 | [14800034](../errorcode-data-rdb.md#14800034-sqlite库使用不正确) | SQLite: Library used incorrectly.<br>**适用版本：** 12+ |
-
-<a id="querysharingresource3"></a>
 
 ## querySharingResource
 
@@ -1046,8 +1026,6 @@ requestFullDataDonation(tables: Array<string>): Promise<void>
 | [14800001](../errorcode-data-rdb.md#14800001-无效的参数) | Invalid arguments. Parameter out of range or empty table list. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
 | 14800043 | The database does not support this scenario. |
-
-<a id="restore3"></a>
 
 ## restore
 
@@ -1180,7 +1158,7 @@ retainDeviceData(retainDevices?: Record<string, Array<string>>): Promise<void>
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
 | [14800021](../errorcode-data-rdb.md#14800021-sqlite通用错误) | SQLite: Generic error. |
 | [14800024](../errorcode-data-rdb.md#14800024-sqlite数据库文件已锁定) | SQLite: The database file is locked. |
-| 14800042 | The database does not exist. Possible causes: 1. The database is deleted;<br>2. The database is not created. |
+| 14800042 | The database does not exist. Possible causes: 1. The database is deleted; <br>2. The database is not created. |
 | 14800043 | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported;         3. This is a read-only database. |
 
 ## unlockCloudContainer
@@ -1211,8 +1189,6 @@ unlockCloudContainer(): Promise<void>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
-<a id="update5"></a>
-
 ## update
 
 ```TypeScript
@@ -1224,7 +1200,7 @@ update(
     ): void
 ```
 
-根据DataSharePredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+根据DataSharePredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **起始版本：** 9
 
@@ -1249,7 +1225,7 @@ update(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
@@ -1432,15 +1408,13 @@ if (store != undefined) {
 
 <!--DelEnd-->
 
-<a id="update6"></a>
-
 ## update
 
 ```TypeScript
 update(table: string, values: ValuesBucket, predicates: dataSharePredicates.DataSharePredicates): Promise<number>
 ```
 
-根据DataSharePredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+根据DataSharePredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **起始版本：** 9
 
@@ -1470,7 +1444,7 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |

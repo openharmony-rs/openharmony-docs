@@ -49,7 +49,7 @@ function on(type: 'connect', callback: Callback<VpnConnectState>): void
 function on(type: 'connectMulti', callback: Callback<MultiVpnConnectState>): void
 ```
 
-订阅VPN连接状态变化事件。
+订阅vpn连接状态变化。
 
 **起始版本：** 20
 

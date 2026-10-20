@@ -59,8 +59,6 @@ try {
 }
 ```
 
-<a id="create1"></a>
-
 ## create
 
 ```TypeScript
@@ -112,8 +110,6 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
-
-<a id="create2"></a>
 
 ## create
 

@@ -6,8 +6,6 @@ interface PublishFormResult
 
 The result of publish form.
 
-@typedef PublishFormResult
-
 **Since:** 12
 
 <!--Device-formInfo-interface PublishFormResult--><!--Device-formInfo-interface PublishFormResult-End-->

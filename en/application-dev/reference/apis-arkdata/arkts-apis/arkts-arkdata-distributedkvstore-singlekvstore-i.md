@@ -18,15 +18,13 @@ Provides APIs for data management in a single KV store, such as adding data, del
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="backup1"></a>
-
 ## backup
 
 ```TypeScript
 backup(file: string, callback: AsyncCallback<void>): void
 ```
 
-Backs up a distributed KV store. This API uses an asynchronous callback to return the result.
+Backs up a database with a specified name to the default path (**context.databaseDir**). This API uses an asynchronous callback to return the result. To back up the database to a custom path, use the [backupEx](#backupex) API.
 
 **Since:** 9
 
@@ -40,14 +38,14 @@ Backs up a distributed KV store. This API uses an asynchronous callback to retur
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| file | string | Yes | Name of the KV store. The value cannot be empty or exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| file | string | Yes | Name of the database to back up. The value cannot be empty and cannot contain slashes (/). There is no length limit. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
 **Examples**
@@ -70,15 +68,13 @@ try {
 }
 ```
 
-<a id="backup2"></a>
-
 ## backup
 
 ```TypeScript
 backup(file: string): Promise<void>
 ```
 
-Backs up an RDB store. This API uses a promise to return the result.
+Backs up a database with a specified name to the default path (**context.databaseDir**). This API uses a promise to return the result. To back up the database to a custom path, use the [backupEx](#backupex) API.
 
 **Since:** 9
 
@@ -92,7 +88,7 @@ Backs up an RDB store. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| file | string | Yes | Name of the KV store. The value cannot be empty or exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| file | string | Yes | Name of the database to back up. The value cannot be empty and cannot contain slashes (/). There is no length limit. |
 
 **Return value:**
 
@@ -104,7 +100,7 @@ Backs up an RDB store. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
 **Examples**
@@ -131,7 +127,7 @@ try {
 backupEx(backupConfig: BackupConfig): Promise<void>
 ```
 
-Backs up a database by specifying `BackupConfig`.
+Backs up a database with a specified name and path. This API uses a promise to return the result.
 
 **Since:** 24
 
@@ -145,7 +141,7 @@ Backs up a database by specifying `BackupConfig`.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| backupConfig | [BackupConfig](arkts-arkdata-distributedkvstore-backupconfig-i.md) | Yes | Indicates the `BackupConfig` object for backup database. |
+| backupConfig | [BackupConfig](arkts-arkdata-distributedkvstore-backupconfig-i.md) | Yes | Information about the database to back up, including the name and path. |
 
 **Return value:**
 
@@ -181,15 +177,13 @@ try {
 }
 ```
 
-<a id="closeresultset1"></a>
-
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KVStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](#getresultset2). This API uses an asynchronous callback to return the result.
+Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](#getresultset). This API uses an asynchronous callback to return the result. After the result set is closed, the result set object cannot be used anymore, and related database resources are released.
 
 **Since:** 9
 
@@ -210,7 +204,7 @@ Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -242,15 +236,13 @@ try {
 }
 ```
 
-<a id="closeresultset2"></a>
-
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KVStoreResultSet): Promise<void>
 ```
 
-Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](#getresultset2). This API uses a promise to return the result.
+Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](#getresultset). This API uses a promise to return the result. After the result set is closed, the result set object cannot be used anymore, and related database resources are released.
 
 **Since:** 9
 
@@ -276,7 +268,7 @@ Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -305,15 +297,13 @@ try {
 }
 ```
 
-<a id="commit1"></a>
-
 ## commit
 
 ```TypeScript
 commit(callback: AsyncCallback<void>): void
 ```
 
-Commits the transaction in this single KV store. This API uses an asynchronous callback to return the result.
+Commits the transaction in this single KV store. This API uses an asynchronous callback to return the result. You need to call startTransaction to start a transaction before calling this API to commit the transaction. After the transaction is successfully committed, all data changes during the transaction will take effect permanently and be written into the database.
 
 **Since:** 9
 
@@ -354,15 +344,13 @@ try {
 }
 ```
 
-<a id="commit2"></a>
-
 ## commit
 
 ```TypeScript
 commit(): Promise<void>
 ```
 
-Commits the transaction in this single KV store. This API uses a promise to return the result.
+Commits the transaction in this single KV store. This API uses a promise to return the result. You need to call startTransaction to start a transaction before calling this API to commit the transaction. After the transaction is successfully committed, all data changes during the transaction will take effect permanently and be written into the database.
 
 **Since:** 9
 
@@ -401,15 +389,13 @@ try {
 }
 ```
 
-<a id="delete1"></a>
-
 ## delete
 
 ```TypeScript
 delete(key: string, callback: AsyncCallback<void>): void
 ```
 
-Deletes a KV pair from this KV store. This API uses an asynchronous callback to return the result.
+Deletes a KV pair from this KV store. This API uses an asynchronous callback to return the result. If the deletion is successful, the specified key-value pair will be permanently deleted and cannot be queried using the **get** method. If the data change notification has been subscribed to, the change notification callback will be triggered.
 
 **Since:** 9
 
@@ -423,14 +409,14 @@ Deletes a KV pair from this KV store. This API uses an asynchronous callback to 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Key of the KV pair to delete. It cannot be empty, and the length cannot exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| key | string | Yes | Key of the data to delete. The value cannot be empty and its length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
@@ -465,15 +451,13 @@ try {
 }
 ```
 
-<a id="delete2"></a>
-
 ## delete
 
 ```TypeScript
 delete(key: string): Promise<void>
 ```
 
-Deletes a KV pair from this KV store. This API uses a promise to return the result.
+Deletes a KV pair from this KV store. This API uses a promise to return the result. If the deletion is successful, the specified key-value pair will be permanently deleted and cannot be queried using the **get** method. If the data change notification has been subscribed to, the change notification callback will be triggered.
 
 **Since:** 9
 
@@ -487,7 +471,7 @@ Deletes a KV pair from this KV store. This API uses a promise to return the resu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Key of the KV pair to delete. It cannot be empty, and the length cannot exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| key | string | Yes | Key of the data to delete. The value cannot be empty and its length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
 
 **Return value:**
 
@@ -499,7 +483,7 @@ Deletes a KV pair from this KV store. This API uses a promise to return the resu
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
@@ -530,15 +514,13 @@ try {
 }
 ```
 
-<a id="deletebackup1"></a>
-
 ## deleteBackup
 
 ```TypeScript
 deleteBackup(files: Array<string>, callback: AsyncCallback<Array<[string, number]>>): void
 ```
 
-Deletes a backup file. This API uses an asynchronous callback to return the result.
+Deletes a backup file from the default path (**context.databaseDir**) based on the specified name. This API uses an asynchronous callback to return the result. After a backup file is deleted, the data in the backup file cannot be restored using the **restore** API. To delete a backup file from a custom path, use the [deleteBackupEx](#deletebackupex) API.
 
 **Since:** 9
 
@@ -552,14 +534,14 @@ Deletes a backup file. This API uses an asynchronous callback to return the resu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| files | Array&lt;string&gt; | Yes | Name of the backup file to delete. The value cannot be empty or exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| files | Array&lt;string&gt; | Yes | Name of the backup file to delete. The value cannot be empty and cannot contain slashes (/). There is no length limit. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | Yes | Callback used to return the name of the backup file deleted and the operation result. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 **Examples**
 
@@ -581,15 +563,13 @@ try {
 }
 ```
 
-<a id="deletebackup2"></a>
-
 ## deleteBackup
 
 ```TypeScript
 deleteBackup(files: Array<string>): Promise<Array<[string, number]>>
 ```
 
-Deletes a backup file. This API uses a promise to return the result.
+Deletes a backup file from the default path (**context.databaseDir**) based on the specified name. This API uses a promise to return the result. After a backup file is deleted, the data in the backup file cannot be restored using the **restore** API. To delete a backup file from a custom path, use the [deleteBackupEx](#deletebackupex) API.
 
 **Since:** 9
 
@@ -603,7 +583,7 @@ Deletes a backup file. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| files | Array&lt;string&gt; | Yes | Name of the backup file to delete. The value cannot be empty or exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| files | Array&lt;string&gt; | Yes | Name of the backup file to delete. The value cannot be empty and cannot contain slashes (/). There is no length limit. |
 
 **Return value:**
 
@@ -615,7 +595,7 @@ Deletes a backup file. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 **Examples**
 
@@ -641,7 +621,7 @@ try {
 deleteBackupEx(backupConfig: BackupConfig): Promise<void>
 ```
 
-Delete database backup file by specifying `BackupConfig`.
+Deletes a backup file based on the specified name and path. This API uses a promise to return the result.
 
 **Since:** 24
 
@@ -655,7 +635,7 @@ Delete database backup file by specifying `BackupConfig`.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| backupConfig | [BackupConfig](arkts-arkdata-distributedkvstore-backupconfig-i.md) | Yes | Indicates the `BackupConfig` object for delete backup file. |
+| backupConfig | [BackupConfig](arkts-arkdata-distributedkvstore-backupconfig-i.md) | Yes | Information about the database to back up, including the name and path. |
 
 **Return value:**
 
@@ -690,15 +670,13 @@ try {
 }
 ```
 
-<a id="deletebatch1"></a>
-
 ## deleteBatch
 
 ```TypeScript
 deleteBatch(keys: string[], callback: AsyncCallback<void>): void
 ```
 
-Batch deletes KV pairs from this single KV store. This API uses an asynchronous callback to return the result.
+Batch deletes KV pairs from this single KV store. This API uses an asynchronous callback to return the result. If the deletion is successful, the specified key-value pair will be permanently deleted and cannot be queried using the **get** method. If the data change notification has been subscribed to, the change notification callback will be triggered.
 
 **Since:** 9
 
@@ -712,14 +690,14 @@ Batch deletes KV pairs from this single KV store. This API uses an asynchronous 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keys | string[] | Yes | KV pairs to delete. This parameter cannot be empty. |
+| keys | string[] | Yes | List of keys to delete in batches. The value cannot be empty. The length of each element in the array ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
@@ -767,15 +745,13 @@ try {
 }
 ```
 
-<a id="deletebatch2"></a>
-
 ## deleteBatch
 
 ```TypeScript
 deleteBatch(keys: string[]): Promise<void>
 ```
 
-Batch deletes KV pairs from this single KV store. This API uses a promise to return the result.
+Batch deletes KV pairs from this single KV store. This API uses a promise to return the result. If the deletion is successful, the specified key-value pair will be permanently deleted and cannot be queried using the **get** method. If the data change notification has been subscribed to, the change notification callback will be triggered.
 
 **Since:** 9
 
@@ -789,7 +765,7 @@ Batch deletes KV pairs from this single KV store. This API uses a promise to ret
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keys | string[] | Yes | KV pairs to delete. This parameter cannot be empty. |
+| keys | string[] | Yes | List of keys to delete in batches. The value cannot be empty. The length of each element in the array ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
 
 **Return value:**
 
@@ -801,7 +777,7 @@ Batch deletes KV pairs from this single KV store. This API uses a promise to ret
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
@@ -845,15 +821,13 @@ try {
 }
 ```
 
-<a id="enablesync1"></a>
-
 ## enableSync
 
 ```TypeScript
 enableSync(enabled: boolean, callback: AsyncCallback<void>): void
 ```
 
-Sets cross-device data sync, which can be enabled or disabled. This API uses an asynchronous callback to return the result.
+Sets cross-device data sync, which can be enabled or disabled. This API uses an asynchronous callback to return the result. After cross-device data sync is enabled, data in the database can be automatically synced across devices. After it is disabled, data will not be automatically synced. You need to manually call the **sync** API to trigger data sync.
 
 **Since:** 9
 
@@ -874,7 +848,7 @@ Sets cross-device data sync, which can be enabled or disabled. This API uses an 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -895,15 +869,13 @@ try {
 }
 ```
 
-<a id="enablesync2"></a>
-
 ## enableSync
 
 ```TypeScript
 enableSync(enabled: boolean): Promise<void>
 ```
 
-Sets cross-device data sync, which can be enabled or disabled. This API uses a promise to return the result.
+Sets cross-device data sync, which can be enabled or disabled. This API uses a promise to return the result. After cross-device data sync is enabled, data in the database can be automatically synced across devices. After it is disabled, data will not be automatically synced. You need to manually call the **sync** API to trigger data sync.
 
 **Since:** 9
 
@@ -929,7 +901,7 @@ Sets cross-device data sync, which can be enabled or disabled. This API uses a p
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -947,8 +919,6 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="get1"></a>
 
 ## get
 
@@ -970,14 +940,14 @@ Obtains the value of the specified key. This API uses an asynchronous callback t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Key of the value to obtain. It cannot be empty, and the length cannot exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean &#124; string &#124; number &#124; Uint8Array&gt; | Yes | Callback used to return the value obtained. |
+| key | string | Yes | Key of the data to obtain. The value cannot be empty and its length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean &#124; string &#124; number &#124; Uint8Array&gt; | Yes | Callback used to return the obtained value. The value type depends on the data type when the value is stored. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -1037,8 +1007,6 @@ try {
   console.error(`Failed to get. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="get2"></a>
 
 ## get
 
@@ -1060,19 +1028,19 @@ Obtains the value of the specified key. This API uses a promise to return the re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Key of the value to obtain. It cannot be empty, and the length cannot exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| key | string | Yes | Key of the data to obtain. The value cannot be empty and its length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean &#124; string &#124; number &#124; Uint8Array&gt; | Promise used to return the value obtained. |
+| Promise&lt;boolean &#124; string &#124; number &#124; Uint8Array&gt; | Promise used to return the value corresponding to the specified key. The value type depends on the data type when the value is stored. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -1133,8 +1101,6 @@ try {
 }
 ```
 
-<a id="getentries1"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -1155,14 +1121,14 @@ Obtains all KV pairs that match the specified key prefix. This API uses an async
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keyPrefix | string | Yes | Key prefix to match. It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
+| keyPrefix | string | Yes | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Entry](arkts-arkdata-distributedkvstore-entry-i.md)[]&gt; | Yes | Callback used to return the KV pairs that match the specified prefix. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
@@ -1209,8 +1175,6 @@ try {
 }
 ```
 
-<a id="getentries2"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -1231,7 +1195,7 @@ Obtains all KV pairs that match the specified key prefix. This API uses a promis
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keyPrefix | string | Yes | Key prefix to match. It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
+| keyPrefix | string | Yes | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
 
 **Return value:**
 
@@ -1243,7 +1207,7 @@ Obtains all KV pairs that match the specified key prefix. This API uses a promis
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
@@ -1286,8 +1250,6 @@ try {
 }
 ```
 
-<a id="getentries3"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -1308,14 +1270,14 @@ Obtains the KV pairs that match the specified **Query** object. This API uses an
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| query | [Query](arkts-arkdata-distributedkvstore-query-c.md) | Yes | Key prefix to match. |
+| query | [Query](arkts-arkdata-distributedkvstore-query-c.md) | Yes | **Query** object to match. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Entry](arkts-arkdata-distributedkvstore-entry-i.md)[]&gt; | Yes | Callback used to return the KV pairs that match the specified **Query** object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
@@ -1365,8 +1327,6 @@ try {
 }
 ```
 
-<a id="getentries4"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -1399,7 +1359,7 @@ Obtains the KV pairs that match the specified **Query** object. This API uses a 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
@@ -1444,15 +1404,13 @@ try {
 }
 ```
 
-<a id="getresultset1"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-Obtains a result set with the specified prefix from this single KV store. This API uses an asynchronous callback to return the result.
+Obtains a result set with the specified prefix from this single KV store. This API uses an asynchronous callback to return the result. After using the obtained result set, call [closeResultSet](#closeresultset) to close the result set and release resources.
 
 **Since:** 9
 
@@ -1466,14 +1424,14 @@ Obtains a result set with the specified prefix from this single KV store. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keyPrefix | string | Yes | Key prefix to match. It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
+| keyPrefix | string | Yes | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Yes | Callback used to return the result set with the specified prefix. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
@@ -1529,15 +1487,13 @@ try {
 }
 ```
 
-<a id="getresultset2"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(keyPrefix: string): Promise<KVStoreResultSet>
 ```
 
-Obtains a result set with the specified prefix from this single KV store. This API uses a promise to return the result.
+Obtains a result set with the specified prefix from this single KV store. This API uses a promise to return the result. After using the obtained result set, call [closeResultSet](#closeresultset) to close the result set and release resources.
 
 **Since:** 9
 
@@ -1551,7 +1507,7 @@ Obtains a result set with the specified prefix from this single KV store. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keyPrefix | string | Yes | Key prefix to match. It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
+| keyPrefix | string | Yes | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
 
 **Return value:**
 
@@ -1563,7 +1519,7 @@ Obtains a result set with the specified prefix from this single KV store. This A
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
@@ -1611,15 +1567,13 @@ try {
 }
 ```
 
-<a id="getresultset3"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(query: Query, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-Obtains a **KVStoreResultSet** object that matches the specified **Query** object. This API uses an asynchronous callback to return the result.
+Obtains a **KVStoreResultSet** object that matches the specified **Query** object. This API uses an asynchronous callback to return the result. After using the obtained result set, call [closeResultSet](#closeresultset) to close the result set and release resources.
 
 **Since:** 9
 
@@ -1640,7 +1594,7 @@ Obtains a **KVStoreResultSet** object that matches the specified **Query** objec
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
@@ -1688,15 +1642,13 @@ try {
 }
 ```
 
-<a id="getresultset4"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(query: Query): Promise<KVStoreResultSet>
 ```
 
-Obtains a **KVStoreResultSet** object that matches the specified **Query** object. This API uses a promise to return the result.
+Obtains a **KVStoreResultSet** object that matches the specified **Query** object. This API uses a promise to return the result. After using the obtained result set, call [closeResultSet](#closeresultset) to close the result set and release resources.
 
 **Since:** 9
 
@@ -1722,7 +1674,7 @@ Obtains a **KVStoreResultSet** object that matches the specified **Query** objec
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
@@ -1763,8 +1715,6 @@ try {
 }
 ```
 
-<a id="getresultsize1"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -1792,7 +1742,7 @@ Obtains the number of results that match the specified **Query** object. This AP
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -1839,8 +1789,6 @@ try {
 }
 ```
 
-<a id="getresultsize2"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -1873,7 +1821,7 @@ Obtains the number of results that match the specified **Query** object. This AP
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -1913,8 +1861,6 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="getsecuritylevel1"></a>
 
 ## getSecurityLevel
 
@@ -1963,8 +1909,6 @@ try {
 }
 ```
 
-<a id="getsecuritylevel2"></a>
-
 ## getSecurityLevel
 
 ```TypeScript
@@ -2010,15 +1954,13 @@ try {
 }
 ```
 
-<a id="off1"></a>
-
 ## off
 
 ```TypeScript
 off(event: 'dataChange', listener?: Callback<ChangeNotification>): void
 ```
 
-Unsubscribes from data changes.
+Unsubscribes from data changes. You must call on('dataChange') to subscribe to data changes before calling off to cancel subscription.
 
 **Since:** 9
 
@@ -2037,7 +1979,7 @@ Unsubscribes from data changes.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
 **Examples**
@@ -2074,15 +2016,13 @@ class KvstoreModel {
 }
 ```
 
-<a id="off2"></a>
-
 ## off
 
 ```TypeScript
 off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void
 ```
 
-Unsubscribes from the cross-device data sync completion events.
+Unsubscribes from the cross-device data sync completion events. You must call on('syncComplete') to subscribe to the events before calling off to cancel subscription.
 
 **Since:** 9
 
@@ -2095,13 +2035,13 @@ Unsubscribes from the cross-device data sync completion events.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | event | 'syncComplete' | Yes | Event type. The value is **syncComplete**, which indicates a sync completion event. |
-| syncCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | No | Callback to unregister. If this parameter is not set, all callbacks used to listen for the data sync completion event are unregistered. When multiple ArkTS instances (obtained through the getKVStore API) of the same database all register the callback used to listen for the sync completion event, if all these callbacks are unregistered by one of the ArkTS instances, then the callbacks of the others are also unregistered. |
+| syncCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | No | Callback to unregister. If this parameter is not set, all callbacks used to listen for the data sync completion event are unregistered. Note that if multiple ArkTS instances (obtained through the getKVStore API) of the same database all register the callback used to listen for the sync completion event, and one of the instances calls **off('syncComplete')** without passing the **syncCallback** parameter (that is, all callbacks of this instance are unregistered), then the callbacks of the other instances are also unregistered. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -2137,15 +2077,13 @@ class KvstoreModel {
 }
 ```
 
-<a id="on1"></a>
-
 ## on
 
 ```TypeScript
 on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void
 ```
 
-Subscribes to data changes of the specified type.
+Subscribes to data changes of the specified type. After calling on to subscribe to data changes, call off('dataChange') to cancel the subscription when it is no longer needed.
 
 **Since:** 9
 
@@ -2165,7 +2103,7 @@ Subscribes to data changes of the specified type.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
@@ -2184,15 +2122,13 @@ try {
 }
 ```
 
-<a id="on2"></a>
-
 ## on
 
 ```TypeScript
 on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void
 ```
 
-Subscribes to the cross-device data sync completion events.
+Subscribes to the cross-device data sync completion events. After calling on to subscribe to the events, call off('syncComplete') to unsubscribe from the events when they are no longer needed.
 
 **Since:** 9
 
@@ -2211,7 +2147,7 @@ Subscribes to the cross-device data sync completion events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -2236,15 +2172,13 @@ try {
 }
 ```
 
-<a id="put1"></a>
-
 ## put
 
 ```TypeScript
 put(key: string, value: Uint8Array | string | number | boolean, callback: AsyncCallback<void>): void
 ```
 
-Adds a KV pair of the specified type to this KV store. This API uses an asynchronous callback to return the result.
+Adds a KV pair of the specified type to this KV store. This API uses an asynchronous callback to return the result. If the key already exists, the corresponding value will be updated. If you have subscribed to data change notifications, the change notification callback will be triggered.
 
 **Since:** 9
 
@@ -2258,15 +2192,15 @@ Adds a KV pair of the specified type to this KV store. This API uses an asynchro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Key of the KV pair to add. It cannot be empty, and the length cannot exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
-| value | Uint8Array &#124; string &#124; number &#124; boolean | Yes | Value of the KV pair to add. The value type can be Uint 8Array, long , double, string, or boolean. A value of the Uint8Array or string type cannot exceed [MAX_VALUE_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| key | string | Yes | Key of the data to add. The value cannot be empty and its length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| value | Uint8Array &#124; string &#124; number &#124; boolean | Yes | Value of the data to add. The value type can be Uint 8Array, long , double, string, or boolean. The length range of the Uint8Array and string is 0- [MAX_VALUE_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
@@ -2309,15 +2243,13 @@ try {
 }
 ```
 
-<a id="put2"></a>
-
 ## put
 
 ```TypeScript
 put(key: string, value: Uint8Array | string | number | boolean): Promise<void>
 ```
 
-Adds a KV pair of the specified type to this KV store. This API uses a promise to return the result.
+Adds a KV pair of the specified type to this KV store. This API uses a promise to return the result. If the key already exists, the corresponding value will be updated. If you have subscribed to data change notifications, the change notification callback will be triggered.
 
 **Since:** 9
 
@@ -2331,8 +2263,8 @@ Adds a KV pair of the specified type to this KV store. This API uses a promise t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Key of the KV pair to add. It cannot be empty, and the length cannot exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
-| value | Uint8Array &#124; string &#124; number &#124; boolean | Yes | Value of the KV pair to add. The value type can be Uint 8Array, long , double, string, or boolean. A value of the Uint8Array or string type cannot exceed [MAX_VALUE_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| key | string | Yes | Key of the data to add. The value cannot be empty and its length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| value | Uint8Array &#124; string &#124; number &#124; boolean | Yes | Value of the data to add. The value type can be Uint 8Array, long , double, string, or boolean. The length range of the Uint8Array and string is 0- [MAX_VALUE_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
 
 **Return value:**
 
@@ -2344,7 +2276,7 @@ Adds a KV pair of the specified type to this KV store. This API uses a promise t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
@@ -2353,15 +2285,13 @@ Adds a KV pair of the specified type to this KV store. This API uses a promise t
 
 See [put](#put)
 
-<a id="putbatch1"></a>
-
 ## putBatch
 
 ```TypeScript
 putBatch(entries: Entry[], callback: AsyncCallback<void>): void
 ```
 
-Batch inserts KV pairs to this single KV store. This API uses an asynchronous callback to return the result.
+Batch inserts KV pairs to this single KV store. This API uses an asynchronous callback to return the result. If the key already exists, the corresponding value will be updated. If you have subscribed to data change notifications, the change notification callback will be triggered.
 
 **Since:** 9
 
@@ -2375,14 +2305,14 @@ Batch inserts KV pairs to this single KV store. This API uses an asynchronous ca
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| entries | [Entry](arkts-arkdata-distributedkvstore-entry-i.md)[] | Yes | KV pairs to insert, which cannot exceed 512 MB. |
+| entries | [Entry](arkts-arkdata-distributedkvstore-entry-i.md)[] | Yes | KV pairs to insert, which An **entries** object supports up to 512 MB of data. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
@@ -2430,15 +2360,13 @@ try {
 }
 ```
 
-<a id="putbatch2"></a>
-
 ## putBatch
 
 ```TypeScript
 putBatch(entries: Entry[]): Promise<void>
 ```
 
-Batch inserts KV pairs to this single KV store. This API uses a promise to return the result.
+Batch inserts KV pairs to this single KV store. This API uses a promise to return the result. If the key already exists, the corresponding value will be updated. If you have subscribed to data change notifications, the change notification callback will be triggered.
 
 **Since:** 9
 
@@ -2452,7 +2380,7 @@ Batch inserts KV pairs to this single KV store. This API uses a promise to retur
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| entries | [Entry](arkts-arkdata-distributedkvstore-entry-i.md)[] | Yes | KV pairs to insert, which cannot exceed 512 MB. |
+| entries | [Entry](arkts-arkdata-distributedkvstore-entry-i.md)[] | Yes | KV pairs to insert, which An **entries** object supports up to 512 MB of data. |
 
 **Return value:**
 
@@ -2464,7 +2392,7 @@ Batch inserts KV pairs to this single KV store. This API uses a promise to retur
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
@@ -2513,7 +2441,13 @@ try {
 rekey(): Promise<void>
 ```
 
-Update the key used to encrypt the database.
+Updates the encryption key of a database. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> The **rekey** operation is valid only for databases for which encryption is enabled during creation. That is,
+> the **encrypt** parameter in **Options** must be set to **true**. If this API is called for a non-encrypted
+> database, an error will be returned.
 
 **Since:** 26.0.0
 
@@ -2527,7 +2461,7 @@ Update the key used to encrypt the database.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
@@ -2551,15 +2485,13 @@ try {
 }
 ```
 
-<a id="removedevicedata1"></a>
-
 ## removeDeviceData
 
 ```TypeScript
 removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void
 ```
 
-Deletes data of a device. This API uses an asynchronous callback to return the result.
+Deletes data of a device. This API uses an asynchronous callback to return the result. After the data is deleted, all data of the device will be permanently removed from the local database and cannot be queried using methods such as **get**.
 
 > **NOTE:** 
 > 
@@ -2583,14 +2515,14 @@ Deletes data of a device. This API uses an asynchronous callback to return the r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | Network ID of the target device. |
+| deviceId | string | Yes | Network ID of the device whose data is to be deleted. This parameter cannot be left empty. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
 **Examples**
@@ -2633,15 +2565,13 @@ try {
 }
 ```
 
-<a id="removedevicedata2"></a>
-
 ## removeDeviceData
 
 ```TypeScript
 removeDeviceData(deviceId: string): Promise<void>
 ```
 
-Deletes data of a device. This API uses a promise to return the result.
+Deletes data of a device. This API uses a promise to return the result. After the data is deleted, all data of the device will be permanently removed from the local database and cannot be queried using methods such as **get**.
 
 > **NOTE:** 
 > 
@@ -2665,7 +2595,7 @@ Deletes data of a device. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | Network ID of the target device. |
+| deviceId | string | Yes | Network ID of the device whose data is to be deleted. This parameter cannot be left empty. |
 
 **Return value:**
 
@@ -2677,7 +2607,7 @@ Deletes data of a device. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
 **Examples**
@@ -2710,15 +2640,13 @@ try {
 }
 ```
 
-<a id="restore1"></a>
-
 ## restore
 
 ```TypeScript
 restore(file: string, callback: AsyncCallback<void>): void
 ```
 
-Restores a distributed KV store from a database file. This API uses an asynchronous callback to return the result.
+Restores a database from a specified backup file in the default database path (**context.databaseDir**). This API uses an asynchronous callback to return the result. If the restoration is successful, the data in the current database will be replaced by the data in the backup file, and the original data that is not backed up will be lost. To restore the database from a custom path, use the [restoreEx](#restoreex) API.
 
 **Since:** 9
 
@@ -2732,14 +2660,14 @@ Restores a distributed KV store from a database file. This API uses an asynchron
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| file | string | Yes | Name of the database file. The value cannot be empty or exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| file | string | Yes | Name of the database file. The value cannot be empty and cannot contain slashes (/). There is no length limit. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
 **Examples**
@@ -2762,15 +2690,13 @@ try {
 }
 ```
 
-<a id="restore2"></a>
-
 ## restore
 
 ```TypeScript
 restore(file: string): Promise<void>
 ```
 
-Restores a distributed KV store from a database file. This API uses a promise to return the result.
+Restores a database from a specified backup file in the default database path (**context.databaseDir**). This API uses a promise to return the result. If the restoration is successful, the data in the current database will be replaced by the data in the backup file, and the original data that is not backed up will be lost. To restore the database from a custom path, use the [restoreEx](#restoreex) API.
 
 **Since:** 9
 
@@ -2784,7 +2710,7 @@ Restores a distributed KV store from a database file. This API uses a promise to
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| file | string | Yes | Name of the database file. The value cannot be empty or exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| file | string | Yes | Name of the database file. The value cannot be empty and cannot contain slashes (/). There is no length limit. |
 
 **Return value:**
 
@@ -2796,7 +2722,7 @@ Restores a distributed KV store from a database file. This API uses a promise to
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
 **Examples**
@@ -2823,7 +2749,7 @@ try {
 restoreEx(backupConfig: BackupConfig): Promise<void>
 ```
 
-Restores a database by specifying `BackupConfig`.
+Restores a database from a backup file with the specified path and name. This API uses a promise to return the result. If the restoration is successful, the data in the current database will be replaced by that in the backup file, and the original data that is not backed up will be lost.
 
 **Since:** 24
 
@@ -2837,7 +2763,7 @@ Restores a database by specifying `BackupConfig`.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| backupConfig | [BackupConfig](arkts-arkdata-distributedkvstore-backupconfig-i.md) | Yes | Indicates the `BackupConfig` object for restore database. |
+| backupConfig | [BackupConfig](arkts-arkdata-distributedkvstore-backupconfig-i.md) | Yes | Information about the database to back up, including the name and path. |
 
 **Return value:**
 
@@ -2873,15 +2799,13 @@ try {
 }
 ```
 
-<a id="rollback1"></a>
-
 ## rollback
 
 ```TypeScript
 rollback(callback: AsyncCallback<void>): void
 ```
 
-Rolls back the transaction in this single KV store. This API uses an asynchronous callback to return the result.
+Rolls back the transaction in this single KV store. This API uses an asynchronous callback to return the result. You need to call startTransaction to start a transaction before calling this API to roll back the transaction. After the transaction is successfully rolled back, all data changes during the transaction will be discarded and will not be written into the database.
 
 **Since:** 9
 
@@ -2922,15 +2846,13 @@ try {
 }
 ```
 
-<a id="rollback2"></a>
-
 ## rollback
 
 ```TypeScript
 rollback(): Promise<void>
 ```
 
-Rolls back the transaction in this single KV store. This API uses a promise to return the result.
+Rolls back the transaction in this single KV store. This API uses a promise to return the result. You need to call startTransaction to start a transaction before calling this API to roll back the transaction. After the transaction is successfully rolled back, all data changes during the transaction will be discarded and will not be written into the database.
 
 **Since:** 9
 
@@ -2969,8 +2891,6 @@ try {
 }
 ```
 
-<a id="setsyncparam1"></a>
-
 ## setSyncParam
 
 ```TypeScript
@@ -3003,7 +2923,7 @@ Sets the default delay for cross-device data sync. This API uses an asynchronous
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -3024,8 +2944,6 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="setsyncparam2"></a>
 
 ## setSyncParam
 
@@ -3064,7 +2982,7 @@ Sets the default delay for cross-device data sync. This API uses a promise to re
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -3084,15 +3002,13 @@ try {
 }
 ```
 
-<a id="setsyncrange1"></a>
-
 ## setSyncRange
 
 ```TypeScript
 setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: AsyncCallback<void>): void
 ```
 
-Sets the data sync range. This API uses an asynchronous callback to return the result.
+Sets the data sync range. This API uses an asynchronous callback to return the result. You can set the sync tags for the local and remote devices to determine which devices can perform data sync. Data can be synced only when the tags of the local device overlap with those of the remote device.
 
 **Since:** 9
 
@@ -3106,15 +3022,15 @@ Sets the data sync range. This API uses an asynchronous callback to return the r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| localLabels | string[] | Yes | Sync labels set for the local device. |
-| remoteSupportLabels | string[] | Yes | Sync labels set for remote devices. |
+| localLabels | string[] | Yes | Sync labels set for the local devices, which are used to identify the range of local devices that can be synced. |
+| remoteSupportLabels | string[] | Yes | Sync labels set for the remote devices that expect to sync data, which are used to identify the range of remote devices that are allowed to sync data. Data can be synced between devices only when the **remoteSupportLabels** of the local device overlap with the **localLabels** of the remote device. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -3137,15 +3053,13 @@ try {
 }
 ```
 
-<a id="setsyncrange2"></a>
-
 ## setSyncRange
 
 ```TypeScript
 setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise<void>
 ```
 
-Sets the data sync range. This API uses a promise to return the result.
+Sets the data sync range. This API uses a promise to return the result. You can set the sync tags for the local and remote devices to determine which devices can perform data sync. Data can be synced only when the tags of the local device overlap with those of the remote device.
 
 **Since:** 9
 
@@ -3159,8 +3073,8 @@ Sets the data sync range. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| localLabels | string[] | Yes | Sync labels set for the local device. |
-| remoteSupportLabels | string[] | Yes | Sync labels set for remote devices. |
+| localLabels | string[] | Yes | Sync labels set for the local devices, which are used to identify the range of local devices that can be synced. |
+| remoteSupportLabels | string[] | Yes | Sync labels set for the remote devices that expect to sync data, which are used to identify the range of remote devices that are allowed to sync data. Data can be synced between devices only when the **remoteSupportLabels** of the local device overlap with the **localLabels** of the remote device. |
 
 **Return value:**
 
@@ -3172,7 +3086,7 @@ Sets the data sync range. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -3193,15 +3107,13 @@ try {
 }
 ```
 
-<a id="starttransaction1"></a>
-
 ## startTransaction
 
 ```TypeScript
 startTransaction(callback: AsyncCallback<void>): void
 ```
 
-Starts the transaction in this single KV store. This API uses an asynchronous callback to return the result.
+Starts the transaction in this single KV store. This API uses an asynchronous callback to return the result. After a transaction is started, subsequent database operations are included in this transaction until commit or rollback is called.
 
 **Since:** 9
 
@@ -3274,15 +3186,13 @@ try {
 }
 ```
 
-<a id="starttransaction2"></a>
-
 ## startTransaction
 
 ```TypeScript
 startTransaction(): Promise<void>
 ```
 
-Starts the transaction in this single KV store. This API uses a promise to return the result.
+Starts the transaction in this single KV store. This API uses a promise to return the result. After a transaction is started, subsequent database operations are included in this transaction until commit or rollback is called.
 
 **Since:** 9
 
@@ -3325,15 +3235,13 @@ try {
 }
 ```
 
-<a id="sync1"></a>
-
 ## sync
 
 ```TypeScript
 sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 ```
 
-Starts cross-device data sync manually. For details about the sync modes of KV stores, see [Cross-Device Synchronization of KV Stores](../../../database/data-sync-of-kv-store.md).
+Starts cross-device data sync manually. The sync result can be obtained by subscribing to the **on('syncComplete')** event. For details about the sync modes of KV stores, see [Cross-Device Synchronization of KV Stores](../../../database/data-sync-of-kv-store.md).
 
 > **NOTE:** 
 > 
@@ -3365,7 +3273,7 @@ Starts cross-device data sync manually. For details about the sync modes of KV s
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 
@@ -3424,15 +3332,13 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="sync2"></a>
-
 ## sync
 
 ```TypeScript
 sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: number): void
 ```
 
-Starts cross-device data sync manually. This API returns the result synchronously. For details about the sync modes of KV stores, see [Cross-Device Synchronization of KV Stores](../../../database/data-sync-of-kv-store.md).
+Starts cross-device data sync manually. Data can be filtered by query conditions. The sync result can be obtained by subscribing to the **on('syncComplete')** event. For details about the sync modes of KV stores, see [Cross-Device Synchronization of KV Stores](../../../database/data-sync-of-kv-store.md).
 
 > **NOTE:** 
 > 
@@ -3465,7 +3371,7 @@ Starts cross-device data sync manually. This API returns the result synchronousl
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 

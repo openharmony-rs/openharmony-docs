@@ -6,8 +6,6 @@
 import { runningLock } from '@kit.BasicServicesKit';
 ```
 
-<a id="isrunninglocktypesupported1"></a>
-
 ## isRunningLockTypeSupported
 
 ```TypeScript
@@ -45,8 +43,6 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
 });
 ```
 
-
-<a id="isrunninglocktypesupported2"></a>
 
 ## isRunningLockTypeSupported
 

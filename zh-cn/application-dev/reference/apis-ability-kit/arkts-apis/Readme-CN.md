@@ -70,8 +70,7 @@
     - [SwitchType](arkts-ability-abilityaccessctrl-switchtype-e.md)
   - [Context](arkts-ability-context-t.md)
   - [PermissionRequestResult](arkts-ability-permissionrequestresult-t.md)
-<!--Del-->
-- [@ohos.abilityToolAccessCtrl（This module provides the capabilities of tools access control）](arkts-ability-abilitytoolaccessctrl.md)<!--DelEnd-->
+- [@ohos.abilityToolAccessCtrl（This module provides the capabilities of tools access control）](arkts-ability-abilitytoolaccessctrl.md)
   <!--Del-->
   - [generateControlledDevicePackage（系统接口）](arkts-ability-abilitytoolaccessctrl-generatecontrolleddevicepackage-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -82,6 +81,7 @@
   - [grantToolPermissionsByUser（系统接口）](arkts-ability-abilitytoolaccessctrl-granttoolpermissionsbyuser-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [requestToolPermissions（系统接口）](arkts-ability-abilitytoolaccessctrl-requesttoolpermissions-f-sys.md)<!--DelEnd-->
+  - [requestToolTicket](arkts-ability-abilitytoolaccessctrl-requesttoolticket-f.md)
   <!--Del-->
   - [updateRemoteGrantStatus（系统接口）](arkts-ability-abilitytoolaccessctrl-updateremotegrantstatus-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -90,10 +90,10 @@
   - [verifyControllerDevicePackage（系统接口）](arkts-ability-abilitytoolaccessctrl-verifycontrollerdevicepackage-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [AuthStatusInfo（系统接口）](arkts-ability-abilitytoolaccessctrl-authstatusinfo-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [CliCmdInfo（系统接口）](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i-sys.md)<!--DelEnd-->
+  - [CliCmdInfo](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i.md)
   <!--Del-->
   - [OperationInfo（系统接口）](arkts-ability-abilitytoolaccessctrl-operationinfo-i-sys.md)<!--DelEnd-->
+  - [PermissionInfo](arkts-ability-abilitytoolaccessctrl-permissioninfo-i.md)
   <!--Del-->
   - [PermissionInfo（系统接口）](arkts-ability-abilitytoolaccessctrl-permissioninfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -112,6 +112,8 @@
   - [RemoteUserAuthResults（系统接口）](arkts-ability-abilitytoolaccessctrl-remoteuserauthresults-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [TicketInfo（系统接口）](arkts-ability-abilitytoolaccessctrl-ticketinfo-i-sys.md)<!--DelEnd-->
+  - [TicketOpions](arkts-ability-abilitytoolaccessctrl-ticketopions-i.md)
+  - [TicketQueryResult](arkts-ability-abilitytoolaccessctrl-ticketqueryresult-i.md)
   <!--Del-->
   - [UserAuthResult（系统接口）](arkts-ability-abilitytoolaccessctrl-userauthresult-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -275,6 +277,8 @@
   - [setKeepAliveForBundle（系统接口）](arkts-ability-appmanager-setkeepaliveforbundle-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [terminateMission（系统接口）](arkts-ability-appmanager-terminatemission-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getProcessRunningInfos（系统接口）](arkts-ability-appmanager-getprocessrunninginfos-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [AppStateFilter（系统接口）](arkts-ability-appmanager-appstatefilter-i-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -531,6 +535,7 @@
   - [FileEntity](arkts-ability-insightintent-fileentity-i.md)
   <!--Del-->
   - [FileEntity（系统接口）](arkts-ability-insightintent-fileentity-i-sys.md)<!--DelEnd-->
+  - [InsightIntentExecutionInfo](arkts-ability-insightintent-insightintentexecutioninfo-i.md)
   - [IntentEntity](arkts-ability-insightintent-intententity-i.md)
   - [IntentResult](arkts-ability-insightintent-intentresult-i.md)
   <!--Del-->
@@ -1185,6 +1190,8 @@
   - [getAllLauncherAbilityResourceInfo（系统接口）](arkts-ability-bundleresourcemanager-getalllauncherabilityresourceinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getAllUninstalledBundleResourceInfo（系统接口）](arkts-ability-bundleresourcemanager-getalluninstalledbundleresourceinfo-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getBundleResourceArchiveInfo（系统接口）](arkts-ability-bundleresourcemanager-getbundleresourcearchiveinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getBundleResourceInfo（系统接口）](arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->

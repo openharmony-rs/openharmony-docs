@@ -6,8 +6,6 @@
 import { systemTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="settime1"></a>
-
 ## setTime
 
 ```TypeScript
@@ -62,8 +60,6 @@ try {
 }
 ```
 
-
-<a id="settime2"></a>
 
 ## setTime
 

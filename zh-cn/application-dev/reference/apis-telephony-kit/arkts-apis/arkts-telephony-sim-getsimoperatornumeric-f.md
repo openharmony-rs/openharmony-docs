@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="getsimoperatornumeric1"></a>
-
 ## getSimOperatorNumeric
 
 ```TypeScript
@@ -55,8 +53,6 @@ sim.getSimOperatorNumeric(0, (err: BusinessError, data: string) => {
 });
 ```
 
-
-<a id="getsimoperatornumeric2"></a>
 
 ## getSimOperatorNumeric
 

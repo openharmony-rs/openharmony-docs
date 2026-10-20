@@ -30,9 +30,9 @@ Check preferences conflicts.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerId | string | Yes | Indicates the printer ID.<br>Added printer ID in the system. |
-| changedType | string | Yes | Indicates the field name that was modified on the printing interface.<br>Field names set in the print preview or preferences interface. |
-| preferences | [PrinterPreferences](arkts-basicservices-print-printerpreferences-i.md) | Yes | Indicates the selected value on the printing interface.<br>The selected value on the printinginterface. |
+| printerId | string | Yes | Indicates the printer ID. <br>Added printer ID in the system. |
+| changedType | string | Yes | Indicates the field name that was modified on the printing interface. <br>Field names set in the print preview or preferences interface. |
+| preferences | [PrinterPreferences](arkts-basicservices-print-printerpreferences-i.md) | Yes | Indicates the selected value on the printing interface. <br>The selected value on the printinginterface. |
 
 **Return value:**
 

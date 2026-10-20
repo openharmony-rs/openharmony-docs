@@ -38,7 +38,7 @@ Sets the buffer queue count for the XComponent. Only takes effect for XComponent
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| count | number | Yes | Buffer queue count. The value ranges from 2 to 5.<br>Default value: **5**. |
+| count | number | Yes | Buffer queue count. The value ranges from 2 to 5. <br>Default value: **5**. |
 
 ## enableAnalyzer
 
@@ -92,8 +92,6 @@ Sets whether to enable the secure surface to protect the content rendered within
 | --- | --- | --- | --- |
 | isSecure | boolean | Yes | Whether to enable the privacy layer mode.<br>true: enables the privacy layer mode; false: disables the privacy layer mode.<br>Default value: false |
 
-<a id="hdrbrightness1"></a>
-
 ## hdrBrightness
 
 ```TypeScript
@@ -117,8 +115,6 @@ Sets the brightness of HDR video playback for the component.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | brightness | number | Yes | Brightness of the HDR video.<br>Default value: **1.0**<br>Value range: [0.0, 1.0]. Values less than 0.0 are treated as 0.0, values greater than 1.0 are treated as 1.0, and other abnormal values are treated as 1.0.<br>0.0 indicates that the video is displayed at SDR brightness, and 1.0 indicates that the video is displayed at the highest HDR brightness currently allowed. |
-
-<a id="hdrbrightness2"></a>
 
 ## hdrBrightness
 

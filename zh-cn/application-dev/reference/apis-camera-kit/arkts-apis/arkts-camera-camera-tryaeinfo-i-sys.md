@@ -4,7 +4,7 @@
 interface TryAEInfo
 ```
 
-Describes the Try AE parameters. Try AE indicates that the hardware reports the status based on the ambient illumination change during time-lapse photographing.
+描述 Try AE 参数。Try AE 表示硬件在延时拍摄过程中根据环境光照变化上报状态。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 readonly captureInterval?: number
 ```
 
-Timelapse capture interval.
+延时拍摄间隔。
 
 **类型：** number
 
@@ -44,7 +44,7 @@ Timelapse capture interval.
 readonly isTryAEDone: boolean
 ```
 
-Determine whether try AE is done.
+判断 Try AE 是否已完成。
 
 **类型：** boolean
 
@@ -62,7 +62,7 @@ Determine whether try AE is done.
 readonly isTryAEHintNeeded?: boolean
 ```
 
-Determine whether AE hint is needed.
+判断是否需要 AE 提示。
 
 **类型：** boolean
 
@@ -80,7 +80,7 @@ Determine whether AE hint is needed.
 readonly previewType?: TimeLapsePreviewType
 ```
 
-Timelapse preview type.
+延时摄影预览类型。
 
 **类型：** [TimeLapsePreviewType](arkts-camera-camera-timelapsepreviewtype-e-sys.md)
 

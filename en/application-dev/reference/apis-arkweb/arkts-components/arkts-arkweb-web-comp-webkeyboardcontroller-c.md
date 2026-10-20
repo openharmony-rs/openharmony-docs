@@ -60,7 +60,7 @@ Deletes a specified length of characters after the cursor.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| length | number | Yes | Number of characters to delete after the cursor.<br>Value range: [-2147483648, 2147483647]. If the parameter value is greater than the character length, all characters after the cursor are deleted by default. If the parameter value is negative, no deletion is performed. |
+| length | number | Yes | Number of characters to delete after the cursor. <br>Value range: [-2147483648, 2147483647]. If the parameter value is greater than the character length, all characters after the cursor are deleted by default. If the parameter value is negative, no deletion is performed. |
 
 ## deleteForward
 
@@ -80,7 +80,7 @@ Deletes a specified length of characters before the cursor.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| length | number | Yes | Deletes a specified length of characters before the cursor.<br>Value range: [-2147483648, 2147483647]. When the parameter value is greater than the character length, all characters before the cursor are deleted by default. When the parameter value is negative, no deletion is performed. |
+| length | number | Yes | Deletes a specified length of characters before the cursor. <br>Value range: [-2147483648, 2147483647]. When the parameter value is greater than the character length, all characters before the cursor are deleted by default. When the parameter value is negative, no deletion is performed. |
 
 ## insertText
 

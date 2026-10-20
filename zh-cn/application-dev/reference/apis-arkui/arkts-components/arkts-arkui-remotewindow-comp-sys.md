@@ -30,12 +30,14 @@ RemoteWindow(target: WindowAnimationTarget)
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [RRect](arkts-arkui-remotewindow-comp-rrect-i-sys.md) | 圆角矩形。 |
 | [WindowAnimationTarget](arkts-arkui-remotewindow-comp-windowanimationtarget-i-sys.md) | 目标窗口，用来远程控制实现动画。 |
+<!--DelEnd-->
 
 <!--Del-->
 ## 示例

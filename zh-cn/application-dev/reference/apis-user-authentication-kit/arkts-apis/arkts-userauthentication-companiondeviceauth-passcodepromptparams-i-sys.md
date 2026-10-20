@@ -6,8 +6,6 @@ interface PasscodePromptParams
 
 提示输入辅助设备密码时框架携带的选项。
 
-@interface PasscodePromptParams
-
 **起始版本：** 26.0.1
 
 <!--Device-companionDeviceAuth-interface PasscodePromptParams--><!--Device-companionDeviceAuth-interface PasscodePromptParams-End-->

@@ -6,8 +6,6 @@ interface Compilation extends OperResult
 
 The definition of compilation.
 
-@extends OperResult @interface Compilation
-
 **Inheritance/Implementation:** Compilation extends [OperResult](arkts-avsession-avmusictemplate-operresult-i.md)
 
 **Since:** 23

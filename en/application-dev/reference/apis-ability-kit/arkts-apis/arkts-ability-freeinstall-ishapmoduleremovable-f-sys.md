@@ -6,8 +6,6 @@
 import { freeInstall } from '@kit.AbilityKit';
 ```
 
-<a id="ishapmoduleremovable1"></a>
-
 ## isHapModuleRemovable
 
 ```TypeScript
@@ -45,8 +43,6 @@ Checks whether a module can be removed. This API uses an asynchronous callback t
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name is not found. |
 | [17700002](../errorcode-bundle.md#17700002-module-name-does-not-exist) | The specified module name is not found. |
 
-
-<a id="ishapmoduleremovable2"></a>
 
 ## isHapModuleRemovable
 

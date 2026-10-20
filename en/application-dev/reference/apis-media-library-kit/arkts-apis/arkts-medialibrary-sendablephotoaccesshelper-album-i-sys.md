@@ -85,3 +85,83 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 ```
 
 <!--DelEnd-->
+
+## cloudId
+
+```TypeScript
+readonly cloudId?: string
+```
+
+CloudId of album.
+
+**Type:** string
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Album-readonly cloudId?: string--><!--Device-Album-readonly cloudId?: string-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## shareAlbumOwner
+
+```TypeScript
+readonly shareAlbumOwner?: string
+```
+
+The owner of share album.
+
+**Type:** string
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Album-readonly shareAlbumOwner?: string--><!--Device-Album-readonly shareAlbumOwner?: string-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## shareRiskStatus
+
+```TypeScript
+readonly shareRiskStatus?: ShareAlbumRiskStatus
+```
+
+Risk status of share album.
+
+**Type:** [ShareAlbumRiskStatus](arkts-medialibrary-sendablephotoaccesshelper-sharealbumriskstatus-e-sys.md)
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Album-readonly shareRiskStatus?: ShareAlbumRiskStatus--><!--Device-Album-readonly shareRiskStatus?: ShareAlbumRiskStatus-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## shareRiskType
+
+```TypeScript
+readonly shareRiskType?: string
+```
+
+Risk type of share album.
+
+**Type:** string
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Album-readonly shareRiskType?: string--><!--Device-Album-readonly shareRiskType?: string-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.

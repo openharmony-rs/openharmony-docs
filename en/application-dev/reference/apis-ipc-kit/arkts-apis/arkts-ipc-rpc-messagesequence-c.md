@@ -515,7 +515,7 @@ pairs.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| typeCode | [TypeCode](arkts-ipc-rpc-typecode-e.md) | Yes | TypedArray type of the ArrayBuffer data.<br>The underlying read mode is determined based on the enum value of **TypeCode** passed by the service. |
+| typeCode | [TypeCode](arkts-ipc-rpc-typecode-e.md) | Yes | TypedArray type of the ArrayBuffer data. <br>The underlying read mode is determined based on the enum value of **TypeCode** passed by the service. |
 
 **Return value:**
 
@@ -676,8 +676,6 @@ try {
 }
 ```
 
-<a id="readbooleanarray1"></a>
-
 ## readBooleanArray
 
 ```TypeScript
@@ -724,8 +722,6 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
-
-<a id="readbooleanarray2"></a>
 
 ## readBooleanArray
 
@@ -823,8 +819,6 @@ try {
 }
 ```
 
-<a id="readbytearray1"></a>
-
 ## readByteArray
 
 ```TypeScript
@@ -873,8 +867,6 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
-
-<a id="readbytearray2"></a>
 
 ## readByteArray
 
@@ -968,8 +960,6 @@ try {
 }
 ```
 
-<a id="readchararray1"></a>
-
 ## readCharArray
 
 ```TypeScript
@@ -1016,8 +1006,6 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
-
-<a id="readchararray2"></a>
 
 ## readCharArray
 
@@ -1115,8 +1103,6 @@ try {
 }
 ```
 
-<a id="readdoublearray1"></a>
-
 ## readDoubleArray
 
 ```TypeScript
@@ -1163,8 +1149,6 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
-
-<a id="readdoublearray2"></a>
 
 ## readDoubleArray
 
@@ -1420,8 +1404,6 @@ try {
 }
 ```
 
-<a id="readfloatarray1"></a>
-
 ## readFloatArray
 
 ```TypeScript
@@ -1468,8 +1450,6 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
-
-<a id="readfloatarray2"></a>
 
 ## readFloatArray
 
@@ -1567,8 +1547,6 @@ try {
 }
 ```
 
-<a id="readintarray1"></a>
-
 ## readIntArray
 
 ```TypeScript
@@ -1618,8 +1596,6 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
-
-<a id="readintarray2"></a>
 
 ## readIntArray
 
@@ -1764,8 +1740,6 @@ try {
 }
 ```
 
-<a id="readlongarray1"></a>
-
 ## readLongArray
 
 ```TypeScript
@@ -1812,8 +1786,6 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
-
-<a id="readlongarray2"></a>
 
 ## readLongArray
 
@@ -2129,8 +2101,6 @@ try {
 }
 ```
 
-<a id="readremoteobjectarray1"></a>
-
 ## readRemoteObjectArray
 
 ```TypeScript
@@ -2192,8 +2162,6 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
-
-<a id="readremoteobjectarray2"></a>
 
 ## readRemoteObjectArray
 
@@ -2300,8 +2268,6 @@ try {
 }
 ```
 
-<a id="readshortarray1"></a>
-
 ## readShortArray
 
 ```TypeScript
@@ -2348,8 +2314,6 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
-
-<a id="readshortarray2"></a>
 
 ## readShortArray
 
@@ -2446,8 +2410,6 @@ try {
 }
 ```
 
-<a id="readstringarray1"></a>
-
 ## readStringArray
 
 ```TypeScript
@@ -2498,8 +2460,6 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
-
-<a id="readstringarray2"></a>
 
 ## readStringArray
 
@@ -2800,7 +2760,7 @@ Writes data of the ArrayBuffer type to this **MessageSequence** object.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | buf | ArrayBuffer | Yes | ArrayBuffer data to be written. The data is formatted and written based on the TypedArray type specified by **typeCode**. |
-| typeCode | [TypeCode](arkts-ipc-rpc-typecode-e.md) | Yes | TypedArray type of the ArrayBuffer data.<br>The underlying write mode is determined based on the enum value of **TypeCode** passed by the service. |
+| typeCode | [TypeCode](arkts-ipc-rpc-typecode-e.md) | Yes | TypedArray type of the ArrayBuffer data. <br>The underlying write mode is determined based on the enum value of **TypeCode** passed by the service. |
 
 **Error codes:**
 
@@ -2953,7 +2913,7 @@ writeBooleanArray(booleanArray: boolean[]): void
 
 Writes a Boolean array to this **MessageSequence** object.
 
-- This method and the [readBooleanArray](#readbooleanarray1) method  
+- This method and the [readBooleanArray](#readbooleanarray) method  
 must be used in pairs.  
 - The length of the array to be read must match the length of the array that was written.
 
@@ -3071,7 +3031,7 @@ in pairs.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array. 5.The type of the element in the array is incorrect. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.The parameter is an empty array; 2.The number of parameters is incorrect; 3.The parameter type does not match; 4.The element does not exist in the array; 5.The type of the element in the array is incorrect. |
 | [1900009](../errorcode-rpc.md#1900009-failed-to-write-data-to-messagesequence) | Failed to write data to the message sequence. |
 
 **Examples**
@@ -4007,7 +3967,7 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): void
 
 Writes an **IRemoteObject** array to this **MessageSequence** object. This method is applicable to scenarios where multiple remote objects need to be passed, such as registering multiple service proxies in batches, passing multiple callback APIs, and managing multiple service endpoints.
 
-- This method and the [readRemoteObjectArray](#readremoteobjectarray1) method must be used in pairs.  
+- This method and the [readRemoteObjectArray](#readremoteobjectarray) method must be used in pairs.  
 - The length of the array to be read must match the length of the array that was written.
 
 **Since:** 9
@@ -4218,7 +4178,7 @@ writeStringArray(stringArray: string[]): void
 
 Writes a string array to this **MessageSequence** object.
 
-- This method and the [readStringArray](#readstringarray1) method must  
+- This method and the [readStringArray](#readstringarray) method must  
 be used in pairs.  
 - The length of the array to be read must match the length of the array that was written.
 

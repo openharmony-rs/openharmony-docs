@@ -24,9 +24,9 @@ import { camera } from '@kit.CameraKit';
 createCameraInputWithTokenId(camera: CameraDevice, tokenId: number): CameraInput
 ```
 
-Creates a CameraInput instance by camera and calling token.
+通过相机和调用方 token 创建 CameraInput 实例。
 
-Before using this interface, first through the getSupportedCameras interface to query the current list of camera devices supported by the device, the developer needs to be based on specific scenarios to choose the camera device that meets the needs of the developer, and then use this interface to create a CameraInput instance.
+使用此接口前，需先通过 getSupportedCameras 接口查询当前设备支持的相机设备列表，开发者需根据具体场景选择满足需求的相机设备，然后使用此接口创建 CameraInput 实例。
 
 **起始版本：** 24
 
@@ -44,14 +44,14 @@ Before using this interface, first through the getSupportedCameras interface to 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| camera | [CameraDevice](arkts-camera-camera-cameradevice-i.md) | 是 | Camera device used to create the instance. |
-| tokenId | number | 是 | The calling token id. |
+| camera | [CameraDevice](arkts-camera-camera-cameradevice-i.md) | 是 | 用于创建实例的相机设备。 |
+| tokenId | number | 是 | 调用方 token id。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [CameraInput](arkts-camera-camera-camerainput-i.md) | Returns a CameraInput instance. Failure of an interface call returns the corresponding error code, which is of type CameraErrorCode. |
+| [CameraInput](arkts-camera-camera-camerainput-i.md) | 返回 CameraInput 实例。接口调用失败时返回对应的错误码，类型为CameraErrorCode。 |
 
 **错误码：**
 
@@ -68,7 +68,7 @@ Before using this interface, first through the getSupportedCameras interface to 
 createControlCenterSession(): ControlCenterSession
 ```
 
-Create a ControlCenterSession instance.
+创建ControlCenterSession实例。
 
 **起始版本：** 20
 
@@ -84,7 +84,7 @@ Create a ControlCenterSession instance.
 
 | 类型 | 说明 |
 | --- | --- |
-| [ControlCenterSession](arkts-camera-camera-controlcentersession-i-sys.md) | the ControlCenterSession instance. |
+| [ControlCenterSession](arkts-camera-camera-controlcentersession-i-sys.md) | ControlCenterSession 实例。 |
 
 **错误码：**
 
@@ -99,7 +99,7 @@ Create a ControlCenterSession instance.
 createDepthDataOutput(profile: DepthProfile): DepthDataOutput
 ```
 
-Creates a DepthDataOutput instance. This API returns the result synchronously.
+创建DepthDataOutput实例。此接口同步返回结果。
 
 **起始版本：** 13
 
@@ -113,13 +113,13 @@ Creates a DepthDataOutput instance. This API returns the result synchronously.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| profile | [DepthProfile](arkts-camera-camera-depthprofile-i-sys.md) | 是 | Supported preview profile, which is obtained through  [getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability2). |
+| profile | [DepthProfile](arkts-camera-camera-depthprofile-i-sys.md) | 是 | 支持的预览profile，通过[getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability) 获取。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [DepthDataOutput](arkts-camera-camera-depthdataoutput-i-sys.md) | DepthDataOutput instance. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
+| [DepthDataOutput](arkts-camera-camera-depthdataoutput-i-sys.md) | DepthDataOutput 实例。如果操作失败，返回[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) 中定义的错误码。 |
 
 **错误码：**
 
@@ -156,7 +156,7 @@ function createDepthDataOutput(cameraOutputCapability: camera.CameraOutputCapabi
 isCameraMuteSupported(): boolean
 ```
 
-Checks whether the camera device can be muted.
+查询相机设备是否支持静音。
 
 **起始版本：** 10
 
@@ -170,7 +170,7 @@ Checks whether the camera device can be muted.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for whether the camera device can be muted. **true** if it can be muted, **false** otherwise. |
+| boolean | 查询相机设备是否可以静音的结果。**true** 表示可以静音，**false** 表示不可以。 |
 
 **错误码：**
 
@@ -196,7 +196,7 @@ function isCameraMuteSupported(cameraManager: camera.CameraManager): boolean {
 isControlCenterActive(): boolean
 ```
 
-Check if the control center active.
+查询控制中心是否处于活跃状态。
 
 **起始版本：** 20
 
@@ -210,7 +210,7 @@ Check if the control center active.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | this value that specifies whether the control center active. |
+| boolean | 表示控制中心是否处于活跃状态的值。 |
 
 **错误码：**
 
@@ -224,7 +224,7 @@ Check if the control center active.
 isPrelaunchSupported(camera: CameraDevice): boolean
 ```
 
-Checks whether a camera device supports prelaunch.
+查询相机设备是否支持预启动。
 
 **起始版本：** 10
 
@@ -238,13 +238,13 @@ Checks whether a camera device supports prelaunch.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| camera | [CameraDevice](arkts-camera-camera-cameradevice-i.md) | 是 | Camera device. |
+| camera | [CameraDevice](arkts-camera-camera-cameradevice-i.md) | 是 | 相机设备。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for the support of prelaunch. **true** if supported, **false** otherwise. |
+| boolean | 查询是否支持预启动的结果。**true** 表示支持，**false** 表示不支持 |
 
 **错误码：**
 
@@ -280,7 +280,7 @@ function isPreLaunchSupported(context: common.BaseContext): boolean {
 muteCameraPersistent(mute: boolean, type: PolicyType): void
 ```
 
-Mutes the camera device permanently.
+永久静音相机设备。
 
 **起始版本：** 12
 
@@ -296,8 +296,8 @@ Mutes the camera device permanently.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mute | boolean | 是 | Mutes or unmutes the camera device. **true** to mute, **false** otherwise. |
-| type | [PolicyType](arkts-camera-camera-policytype-e-sys.md) | 是 | Policy type. For details about the available options, see [PolicyType](arkts-camera-camera-policytype-e-sys.md). |
+| mute | boolean | 是 | 静音或取消静音相机设备。**true** 表示静音，**false** 表示取消静音。 |
+| type | [PolicyType](arkts-camera-camera-policytype-e-sys.md) | 是 | 策略类型。可用选项详情请参见[PolicyType](arkts-camera-camera-policytype-e-sys.md)。 |
 
 **错误码：**
 
@@ -325,7 +325,7 @@ function muteCameraPersistent(cameraManager: camera.CameraManager): void {
 off(type: 'cameraMute', callback?: AsyncCallback<boolean>): void
 ```
 
-Unsubscribes from camera mute status events.
+取消订阅相机静音状态事件。
 
 **起始版本：** 10
 
@@ -339,8 +339,8 @@ Unsubscribes from camera mute status events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'cameraMute' | 是 | Event type. The value is fixed at **'cameraMute'**, indicating the camera mute status. The event can be listened for when a CameraManager instance is obtained. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 否 | Callback used to return the camera mute status. **true** if muted, **false** otherwise. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('cameraMute')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'cameraMute' | 是 | 事件类型。值固定为 **'cameraMute'**，表示相机静音状态。获取 CameraManager 实例后即可监听此事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 否 | 用于返回相机静音状态的回调。**true** 表示已静音，**false** 表示未静音。此参数为可选参数。如果指定此参数，将取消订阅指定回调的 **on('cameraMute')** 事件。（回调对象不能是匿名函数。） |
 
 **错误码：**
 
@@ -371,7 +371,7 @@ function unregisterCameraMute(cameraManager: camera.CameraManager): void {
 off(type: 'controlCenterStatusChange', callback?: AsyncCallback<boolean>): void
 ```
 
-Unsubscribes control center status change event callback.
+取消订阅控制中心状态变更事件回调。
 
 **起始版本：** 20
 
@@ -385,8 +385,8 @@ Unsubscribes control center status change event callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'controlCenterStatusChange' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 否 | Callback used to get the control center status change. |
+| type | 'controlCenterStatusChange' | 是 | 事件类型。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 否 | 用于获取控制中心状态变更的回调。 |
 
 **错误码：**
 
@@ -430,7 +430,7 @@ offCameraSharedStatus(callback?: Callback<CameraSharedStatusInfo>): void
 on(type: 'cameraMute', callback: AsyncCallback<boolean>): void
 ```
 
-Subscribes to camera mute status events. This API uses an asynchronous callback to return the result.
+订阅相机静音状态事件。此接口使用异步回调返回结果。
 
 **起始版本：** 10
 
@@ -444,8 +444,8 @@ Subscribes to camera mute status events. This API uses an asynchronous callback 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'cameraMute' | 是 | Event type. The value is fixed at **'cameraMute'**, indicating the camera mute status. The event can be listened for when a CameraManager instance is obtained. This event is triggered and the status is returned when the camera device is muted or unmuted. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | Callback used to return the camera mute status. **true** if muted, **false** otherwise. |
+| type | 'cameraMute' | 是 | 事件类型。值固定为 **'cameraMute'**，表示相机静音状态。获取 CameraManager 实例后即可监听此事件。当相机设备被静音或取消静音时，将触发此事件并返回状态。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 用于返回相机静音状态的回调。**true** 表示已静音，**false** 表示未静音。 |
 
 **错误码：**
 
@@ -481,7 +481,7 @@ function registerCameraMute(cameraManager: camera.CameraManager): void {
 on(type: 'controlCenterStatusChange', callback: AsyncCallback<boolean>): void
 ```
 
-Subscribes control center status change event callback.
+订阅控制中心状态变更事件回调。
 
 **起始版本：** 20
 
@@ -495,8 +495,8 @@ Subscribes control center status change event callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'controlCenterStatusChange' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | Callback used to get the control center status change. |
+| type | 'controlCenterStatusChange' | 是 | 事件类型。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 用于获取控制中心状态变更的回调。 |
 
 **错误码：**
 
@@ -540,7 +540,7 @@ onCameraSharedStatus(callback: Callback<CameraSharedStatusInfo>): void
 prelaunch(): void
 ```
 
-Prelaunches the camera device. This API is called when a user clicks the system camera icon to start the camera application.
+预启动相机设备。当用户点击系统相机图标启动相机应用时调用此接口。
 
 **起始版本：** 10
 
@@ -583,7 +583,7 @@ function preLaunch(context: common.BaseContext): void {
 preSwitchCamera(cameraId: string): void
 ```
 
-Pre-switches a camera device to speed up its startup.
+预切换相机设备以加速其启动。
 
 **起始版本：** 11
 
@@ -597,7 +597,7 @@ Pre-switches a camera device to speed up its startup.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cameraId | string | 是 | Camera ID. |
+| cameraId | string | 是 | 相机 ID。 |
 
 **错误码：**
 
@@ -633,7 +633,7 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 setPrelaunchConfig(prelaunchConfig: PrelaunchConfig): void
 ```
 
-Sets prelaunch configuration. Before the setting, call [isPrelaunchSupported](#isprelaunchsupported) to check whether the camera device supports prelaunch.
+设置预启动配置。设置前，请先调用 [isPrelaunchSupported](#isprelaunchsupported) 查询相机设备是否支持预启动。
 
 **起始版本：** 10
 
@@ -649,7 +649,7 @@ Sets prelaunch configuration. Before the setting, call [isPrelaunchSupported](#i
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| prelaunchConfig | [PrelaunchConfig](arkts-camera-camera-prelaunchconfig-i-sys.md) | 是 | Prelaunch configuration. |
+| prelaunchConfig | [PrelaunchConfig](arkts-camera-camera-prelaunchconfig-i-sys.md) | 是 | 预启动配置。 |
 
 **错误码：**
 
@@ -692,7 +692,7 @@ function setPrelaunchConfig(context: common.BaseContext): void {
 muteCamera(mute: boolean): void
 ```
 
-Mutes or unmutes the camera device.
+静音或取消静音相机设备。
 
 **起始版本：** 10
 
@@ -710,7 +710,7 @@ Mutes or unmutes the camera device.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mute | boolean | 是 | Mutes or unmutes the camera device. **true** to mute, **false** otherwise. |
+| mute | boolean | 是 | 静音或取消静音相机设备。**true** 表示静音，**false** 表示取消静音。 |
 
 <!--Del-->
 **示例**

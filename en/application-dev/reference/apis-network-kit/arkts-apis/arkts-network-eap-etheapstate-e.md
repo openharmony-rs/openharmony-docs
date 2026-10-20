@@ -6,7 +6,7 @@ enum EthEapState
 
 Enumerates the 802.1X EAP authentication states.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 <!--Device-eap-enum EthEapState--><!--Device-eap-enum EthEapState-End-->
 
@@ -20,7 +20,7 @@ STATE_AUTHENTICATED = 2
 
 Authenticated: authentication succeeded.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -36,7 +36,7 @@ STATE_AUTHENTICATING = 1
 
 Authenticating: 802.1X authentication is in progress.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -52,7 +52,7 @@ STATE_FAILED = 3
 
 Failed: maximum retry count reached.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -68,7 +68,7 @@ STATE_IDLE = 0
 
 Idle: no authentication has been initiated.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -84,7 +84,7 @@ STATE_RETRYING = 4
 
 Retrying: waiting before the next retry attempt.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -6,8 +6,6 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
-<a id="startdevicemanager1"></a>
-
 ## startDeviceManager
 
 ```TypeScript
@@ -50,8 +48,6 @@ continuationManager.startDeviceManager(token, (err) => {
 });
 ```
 
-
-<a id="startdevicemanager2"></a>
 
 ## startDeviceManager
 
@@ -101,8 +97,6 @@ continuationManager.startDeviceManager(
 });
 ```
 
-
-<a id="startdevicemanager3"></a>
 
 ## startDeviceManager
 

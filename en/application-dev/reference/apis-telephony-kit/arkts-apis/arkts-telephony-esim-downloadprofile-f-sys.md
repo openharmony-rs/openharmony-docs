@@ -29,7 +29,7 @@ Downloads a profile. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 | portIndex | number | Yes | Port index of the slot. |
 | profile | [DownloadableProfile](arkts-telephony-esim-downloadableprofile-i.md) | Yes | Downloadable profile. |
 | configuration | [DownloadConfiguration](arkts-telephony-esim-downloadconfiguration-i-sys.md) | Yes | Download configuration. |

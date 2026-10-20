@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="issupportdonotdisturbmode1"></a>
-
 ## isSupportDoNotDisturbMode
 
 ```TypeScript
@@ -65,8 +63,6 @@ notificationManager.isSupportDoNotDisturbMode(isSupportDoNotDisturbModeCallback)
 
 <!--DelEnd-->
 
-
-<a id="issupportdonotdisturbmode2"></a>
 
 ## isSupportDoNotDisturbMode
 

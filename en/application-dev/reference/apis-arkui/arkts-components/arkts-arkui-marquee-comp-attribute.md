@@ -132,7 +132,7 @@ Sets the font weight of the text. If the value is set too large, the text may be
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | Yes | Font weight of the text.<br>For the number type, the value ranges from 100 to 900, at an interval of 100. The default value is 400. A larger value indicates a bolder font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. If the value is set too large, the font may be truncated in different fonts. <br>If a value beyond the value range is passed, the default value is used. If a value that does not meet the interval requirement is passed, the passed value is used when enableVariableFontWeight of fontWeightConfigs is set to true; otherwise, the default value is used. |
+| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | Yes | Font weight of the text. <br>For the number type, the value ranges from 100 to 900, at an interval of 100. The default value is 400. A larger value indicates a bolder font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. If the value is set too large, the font may be truncated in different fonts. <br>If a value beyond the value range is passed, the default value is used. If a value that does not meet the interval requirement is passed, the passed value is used when enableVariableFontWeight of fontWeightConfigs is set to true; otherwise, the default value is used. |
 
 ## marqueeUpdateStrategy
 
@@ -263,4 +263,4 @@ When the marquee stops, it restarts the loop from the beginning. This does not i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | Callback&lt;void&gt; &#124; undefined | Yes | Triggered when the marquee finishes scrolling or stops.<br>When set to undefined, the callback is not executed. |
+| event | Callback&lt;void&gt; &#124; undefined | Yes | Triggered when the marquee finishes scrolling or stops. <br>When set to undefined, the callback is not executed. |

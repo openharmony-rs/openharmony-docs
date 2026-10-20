@@ -111,3 +111,48 @@ uid: number
 <!--Device-AppStateData-uid: int--><!--Device-AppStateData-uid: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**示例**
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let applicationStateObserver: appManager.ApplicationStateObserver = {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+    console.info(`appStateData.bundleName: ${appStateData.bundleName}`);
+    console.info(`appStateData.uid: ${appStateData.uid}`);
+    console.info(`appStateData.state: ${appStateData.state}`);
+    console.info(`appStateData.isSplitScreenMode: ${appStateData.isSplitScreenMode}`);
+    console.info(`appStateData.isFloatingWindowMode: ${appStateData.isFloatingWindowMode}`);
+  },
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+  },
+  onProcessCreated(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+  },
+  onProcessDied(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+  },
+  onProcessStateChanged(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+  },
+  onAppStarted(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+  },
+  onAppStopped(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+  }
+};
+
+try {
+  const observerId = appManager.on('applicationState', applicationStateObserver);
+  console.info(`[appManager] observerId: ${observerId}`);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error code: ${code}, error msg: ${message}`);
+}
+```

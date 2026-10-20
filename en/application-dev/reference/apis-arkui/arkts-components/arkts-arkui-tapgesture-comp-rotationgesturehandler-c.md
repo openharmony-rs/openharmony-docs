@@ -38,8 +38,6 @@ Constructor used to create a rotation gesture handler instance.
 | --- | --- | --- | --- |
 | options | [RotationGestureHandlerOptions](arkts-arkui-tapgesture-comp-rotationgesturehandleroptions-i.md) | No | Rotation gesture handler configuration options. Pass this parameter when you need to customize the minimum number of fingers to trigger rotation, the minimum angle change to trigger the rotation gesture, or the finger count check. If this parameter is not passed, the default configuration of the rotation gesture handler is used, for example, two fingers to trigger, a minimum angle change of 1deg, and no check on the number of fingers touching the screen by default. |
 
-<a id="onactioncancel1"></a>
-
 ## onActionCancel
 
 ```TypeScript
@@ -70,15 +68,13 @@ Sets the callback for rotation gesture cancellation. This callback is triggered 
 | --- | --- |
 | [RotationGestureHandler](arkts-arkui-tapgesture-comp-rotationgesturehandler-c.md) | Rotation gesture handler object. |
 
-<a id="onactioncancel2"></a>
-
 ## onActionCancel
 
 ```TypeScript
 onActionCancel(event: Callback<GestureEvent>): RotationGestureHandler
 ```
 
-Sets the callback for rotation gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful recognition. Compared with [onActionCancel](#onactioncancel1), this API returns gesture event information.
+Sets the callback for rotation gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful recognition. Compared with [onActionCancel](#onactioncancel), this API returns gesture event information.
 
 **Since:** 18
 

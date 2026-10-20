@@ -6,8 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getlaunchwantforbundle1"></a>
-
 ## getLaunchWantForBundle
 
 ```TypeScript
@@ -49,8 +47,6 @@ bundle.getLaunchWantForBundle(bundleName, (err, data) => {
 })
 ```
 
-
-<a id="getlaunchwantforbundle2"></a>
 
 ## getLaunchWantForBundle
 

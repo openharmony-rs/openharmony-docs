@@ -44,7 +44,7 @@ Unregisters a listener for the user authorization result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;boolean&gt; | No | Listener callback used to return the user authorization result.<br>If this parameter is passed, the specified listener is unregistered. If no parameter is passed, all registered listeners are unregistered. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | No | Listener callback used to return the user authorization result. <br>If this parameter is passed, the specified listener is unregistered. If no parameter is passed, all registered listeners are unregistered. |
 
 **Examples**
 
@@ -90,7 +90,7 @@ Registers a listener for the user authorization result. The authorization result
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;boolean&gt; | Yes | Callback used to return the user authorization result. The value **true** indicates that the user agrees to the authorization, and the value **false** indicates the opposite. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | Yes | Callback used to return the user authorization result. The value **true** indicates that the user agrees to the authorization, and the value **false** indicates the opposite. |
 
 **Examples**
 

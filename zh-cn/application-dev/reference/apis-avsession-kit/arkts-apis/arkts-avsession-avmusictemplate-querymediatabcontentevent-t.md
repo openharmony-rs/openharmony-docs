@@ -6,8 +6,6 @@ type QueryMediaTabContentEvent = (tabId: string) => Promise<MediaTabContent>
 
 媒体标签页内容查询事件。使用Promise异步回调。
 
-@typedef { function } QueryMediaTabContentEvent
-
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。

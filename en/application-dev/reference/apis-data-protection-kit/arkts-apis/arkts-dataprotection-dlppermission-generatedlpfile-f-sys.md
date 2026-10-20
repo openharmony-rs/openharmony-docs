@@ -6,8 +6,6 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
-<a id="generatedlpfile1"></a>
-
 ## generateDLPFile
 
 ```TypeScript
@@ -32,8 +30,8 @@ After calling **generateDLPFile** to return a **DLPFile** object, the system mus
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| plaintextFd | number | Yes | FD of the plaintext file to be encrypted. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **plaintextFd** is less than 0, an error log is generated, and the function stops running. If the value of **plaintextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
-| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **ciphertextFd** is less than 0, an error log is generated, and the function stops running. If the value of **ciphertextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
+| plaintextFd | number | Yes | FD of the plaintext file to be encrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **plaintextFd** is less than 0, an error log is generated, and the function stops running. If the value of **plaintextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
+| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **ciphertextFd** is less than 0, an error log is generated, and the function stops running. If the value of **ciphertextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
 | property | [DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md) | Yes | Authorization information, which includes the authorized user list, owner account, and contact account information. |
 
 **Return value:**
@@ -100,8 +98,6 @@ ExampleFunction();
 <!--DelEnd-->
 
 
-<a id="generatedlpfile2"></a>
-
 ## generateDLPFile
 
 ```TypeScript
@@ -126,8 +122,8 @@ After calling **generateDLPFile()** to return a **DLPFile** object, the system m
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| plaintextFd | number | Yes | FD of the plaintext file to be encrypted. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **plaintextFd** is less than 0, an error log is generated, and the function stops running. If the value of **plaintextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
-| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **ciphertextFd** is less than 0, an error log is generated, and the function stops running. If the value of **ciphertextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
+| plaintextFd | number | Yes | FD of the plaintext file to be encrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **plaintextFd** is less than 0, an error log is generated, and the function stops running. If the value of **plaintextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
+| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **ciphertextFd** is less than 0, an error log is generated, and the function stops running. If the value of **ciphertextFd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
 | property | [DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md) | Yes | Authorization information, which includes the authorized user list, owner account, and contact account information. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DLPFile](arkts-dataprotection-dlppermission-dlpfile-i-sys.md)&gt; | Yes | Callback used to return the result. If the DLP file generation is successful, **err** is **undefined**, and **data** is the DLP file information obtained. Otherwise, **err** is an error object. |
 

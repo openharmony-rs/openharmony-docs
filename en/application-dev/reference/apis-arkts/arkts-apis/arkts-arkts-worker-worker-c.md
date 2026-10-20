@@ -267,8 +267,6 @@ The onmessage attribute of the worker specifies the event handler when the worke
 | --- | --- | --- | --- |
 | event | [MessageEvent](arkts-arkts-worker-messageevent-i.md) | Yes |  |
 
-<a id="postmessage1"></a>
-
 ## postMessage
 
 ```TypeScript
@@ -305,8 +303,6 @@ const workerInstance = new worker.Worker("entry/ets/workers/worker.ets");
 let buffer = new ArrayBuffer(8);
 workerInstance.postMessage(buffer, [buffer]);
 ```
-
-<a id="postmessage2"></a>
 
 ## postMessage
 

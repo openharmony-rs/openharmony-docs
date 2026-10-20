@@ -6,8 +6,6 @@ type QueryCompilationEvent = (compilationId: string, pageIndex: number) => Promi
 
 The query compilation event.
 
-@typedef { function } QueryCompilationEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

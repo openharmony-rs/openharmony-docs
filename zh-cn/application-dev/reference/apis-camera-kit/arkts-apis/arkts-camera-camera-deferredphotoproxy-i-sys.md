@@ -4,7 +4,7 @@
 interface DeferredPhotoProxy
 ```
 
-A class object that functions as a thumbnail proxy.
+作为缩略图代理的类对象。
 
 **起始版本：** 11
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 getThumbnail(): Promise<image.PixelMap>
 ```
 
-Obtains the PixelMap of a thumbnail. This API uses a promise to return the result.
+获取缩略图的 PixelMap。此接口使用 Promise 返回结果。
 
 **起始版本：** 11
 
@@ -40,7 +40,7 @@ Obtains the PixelMap of a thumbnail. This API uses a promise to return the resul
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | PixelMap of the thumbnail. |
+| Promise&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 缩略图的 PixelMap。 |
 
 **错误码：**
 
@@ -69,7 +69,7 @@ function getThumbnail(proxyObj: camera.DeferredPhotoProxy): void {
 release(): Promise<void>
 ```
 
-Releases depth data output resources. This API uses a promise to return the result.
+释放深度数据输出资源。此接口使用Promise返回结果。
 
 **起始版本：** 11
 
@@ -83,7 +83,7 @@ Releases depth data output resources. This API uses a promise to return the resu
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | 不返回值的 Promise。 |
 
 **错误码：**
 

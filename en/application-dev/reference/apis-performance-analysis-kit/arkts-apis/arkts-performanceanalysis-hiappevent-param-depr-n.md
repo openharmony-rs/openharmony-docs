@@ -8,8 +8,8 @@ Provides constants that define the names of all predefined event parameters.
 
 | Name | Type | Readable| Writable| Description |  
 | ------------------------------- | ------ | ---- | ---- | ------------------ |  
-| USER_ID | string | Yes | No | Custom user ID. |
-| DISTRIBUTED_SERVICE_NAME | string | Yes | No | Distributed service name. |
+| USER_ID | string | Yes | No | Custom user ID. |  
+| DISTRIBUTED_SERVICE_NAME | string | Yes | No | Distributed service name. |  
 | DISTRIBUTED_SERVICE_INSTANCE_ID | string | Yes | No | Distributed service instance ID.|
 
 **Since:** 7

@@ -6,21 +6,19 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="querycontactsbyemail1"></a>
-
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(email: string, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified email. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key.
+Queries a contact based on the specified email. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact) to query the contact based on the specified key.
 
 **Since:** 7
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContactsByEmail](#querycontactsbyemail2)(context: Context, email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContactsByEmail](#querycontactsbyemail)(context: Context, email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -51,15 +49,13 @@ contact.queryContactsByEmail('xxx@email.com', (err: BusinessError, data) => {
 ```
 
 
-<a id="querycontactsbyemail2"></a>
-
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(context: Context, email: string, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified email. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key.
+Queries a contact based on the specified email. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact) to query the contact based on the specified key.
 
 **Since:** 10
 
@@ -107,21 +103,19 @@ contact.queryContactsByEmail(context, 'xxx@email.com', (err: BusinessError, data
 ```
 
 
-<a id="querycontactsbyemail3"></a>
-
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified email and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key.
+Queries a contact based on the specified email and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact) to query the contact based on the specified key.
 
 **Since:** 7
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContactsByEmail](#querycontactsbyemail4)(context: Context, email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContactsByEmail](#querycontactsbyemail)(context: Context, email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -157,8 +151,6 @@ contact.queryContactsByEmail('xxx@email.com', {
 ```
 
 
-<a id="querycontactsbyemail4"></a>
-
 ## queryContactsByEmail
 
 ```TypeScript
@@ -166,7 +158,7 @@ function queryContactsByEmail(context: Context, email: string, holder: Holder,
     callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified email and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key.
+Queries a contact based on the specified email and holder. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact) to query the contact based on the specified key.
 
 **Since:** 10
 
@@ -219,21 +211,19 @@ contact.queryContactsByEmail(context, 'xxx@email.com', {
 ```
 
 
-<a id="querycontactsbyemail5"></a>
-
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified email and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key.
+Queries a contact based on the specified email and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact) to query the contact based on the specified key.
 
 **Since:** 7
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContactsByEmail](#querycontactsbyemail6)(context: Context, email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContactsByEmail](#querycontactsbyemail)(context: Context, email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -267,8 +257,6 @@ contact.queryContactsByEmail('xxx@email.com', {
 ```
 
 
-<a id="querycontactsbyemail6"></a>
-
 ## queryContactsByEmail
 
 ```TypeScript
@@ -276,7 +264,7 @@ function queryContactsByEmail(context: Context, email: string, attrs: ContactAtt
     callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified email and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key.
+Queries a contact based on the specified email and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact) to query the contact based on the specified key.
 
 **Since:** 10
 
@@ -327,21 +315,19 @@ contact.queryContactsByEmail(context, 'xxx@email.com', {
 ```
 
 
-<a id="querycontactsbyemail7"></a>
-
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified email, holder, and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key.
+Queries a contact based on the specified email, holder, and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact) to query the contact based on the specified key.
 
 **Since:** 7
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContactsByEmail](#querycontactsbyemail8)(context: Context, email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**Substitutes:** [queryContactsByEmail](#querycontactsbyemail)(context: Context, email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -380,15 +366,13 @@ contact.queryContactsByEmail('xxx@email.com', {
 ```
 
 
-<a id="querycontactsbyemail8"></a>
-
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(context: Context, email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback<Array<Contact>>): void
 ```
 
-Queries a contact based on the specified email, holder, and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key.
+Queries a contact based on the specified email, holder, and attributes. This API uses an asynchronous callback to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact) to query the contact based on the specified key.
 
 **Since:** 10
 
@@ -444,21 +428,19 @@ contact.queryContactsByEmail(context, 'xxx@email.com', {
 ```
 
 
-<a id="querycontactsbyemail9"></a>
-
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes): Promise<Array<Contact>>
 ```
 
-Queries a contact based on the specified email, holder, and attributes. This API uses a promise to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key.
+Queries a contact based on the specified email, holder, and attributes. This API uses a promise to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact) to query the contact based on the specified key.
 
 **Since:** 7
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryContactsByEmail](#querycontactsbyemail10)(context: Context, email: string, holder?: Holder, attrs?: ContactAttributes)
+**Substitutes:** [queryContactsByEmail](#querycontactsbyemail)(context: Context, email: string, holder?: Holder, attrs?: ContactAttributes)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -498,15 +480,13 @@ promise.then((data) => {
 ```
 
 
-<a id="querycontactsbyemail10"></a>
-
 ## queryContactsByEmail
 
 ```TypeScript
 function queryContactsByEmail(context: Context, email: string, holder?: Holder, attrs?: ContactAttributes): Promise<Array<Contact>>
 ```
 
-Queries a contact based on the specified email, holder, and attributes. This API uses a promise to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact8) to query the contact based on the specified key.
+Queries a contact based on the specified email, holder, and attributes. This API uses a promise to return the result. The return result of this API includes only the **id**, **key**, and **Emails** attributes. If you want to query all information about a contact, you are advised to call [queryContact](arkts-contacts-contact-querycontact-f.md#querycontact) to query the contact based on the specified key.
 
 **Since:** 10
 

@@ -10,11 +10,11 @@ For more usage scenarios and complete examples of lazy loading layouts, see [Cre
 
 > **NOTE:** 
 > 
-> - The height of the **LazyVGridLayout** component adapts to content by default. It is not recommended to set attributes that fix or constrain the vertical dimension of the component, as doing so may cause display exceptions or prevent normal scrolling. The attributes involved include [height](arkts-arkui-common-comp-commonmethod-c.md#height1),
+> - The height of the **LazyVGridLayout** component adapts to content by default. It is not recommended to set attributes that fix or constrain the vertical dimension of the component, as doing so may cause display exceptions or prevent normal scrolling. The attributes involved include [height](arkts-arkui-common-comp-commonmethod-c.md#height),
 > **height** in [size](arkts-arkui-common-comp-commonmethod-c.md#size), **minHeight**\/**maxHeight** in
 > [constraintSize](arkts-arkui-common-comp-commonmethod-c.md#constraintsize), [aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio),
 > [layoutWeight](arkts-arkui-common-comp-commonmethod-c.md#layoutweight), and scenarios where
-> [height](arkts-arkui-common-comp-commonmethod-c.md#height2) takes a [LayoutPolicy](arkts-arkui-common-comp-layoutpolicy-c.md)
+> [height](arkts-arkui-common-comp-commonmethod-c.md#height) takes a [LayoutPolicy](arkts-arkui-common-comp-layoutpolicy-c.md)
 > value.
 > 
 > - When the parent component sets the main axis dimension, **LazyVGridLayout** performs lazy loading based on the visible area of the parent component. When the parent component does not set the main axis dimension,
@@ -27,7 +27,7 @@ For more usage scenarios and complete examples of lazy loading layouts, see [Cre
 > component under a **WaterFlow** component with the layout direction set to **FlexDirection.ColumnReverse** will
 > cause display exceptions.
 > 
-> 2. Under the **List** component, the layout direction of **List** must be vertical (that is, the [listDirection](arkts-arkui-list-comp-attribute.md#listdirection) attribute is set to **Axis.Vertical**). Using this component in a non-vertical **List** will cause the app to crash. When **List** has any one or more of the [lanes](arkts-arkui-list-comp-attribute.md#lanes1),[chainAnimation](arkts-arkui-list-comp-attribute.md#chainanimation), or [scrollSnapAlign](arkts-arkui-list-comp-attribute.md#scrollsnapalign)attributes set, the lazy loading feature of this component becomes ineffective.
+> 2. Under the **List** component, the layout direction of **List** must be vertical (that is, the [listDirection](arkts-arkui-list-comp-attribute.md#listdirection) attribute is set to **Axis.Vertical**). Using this component in a non-vertical **List** will cause the app to crash. When **List** has any one or more of the [lanes](arkts-arkui-list-comp-attribute.md#lanes),[chainAnimation](arkts-arkui-list-comp-attribute.md#chainanimation), or [scrollSnapAlign](arkts-arkui-list-comp-attribute.md#scrollsnapalign)attributes set, the lazy loading feature of this component becomes ineffective.
 > 
 > 3. Under the **Scroll** component, the layout direction of **Scroll** must be vertical (that is, the [scrollable](arkts-arkui-scroll-comp-attribute.md#scrollable) attribute is set to **ScrollDirection.Vertical**). Using this component in a non-vertical **Scroll** will cause the app to crash.
 > 

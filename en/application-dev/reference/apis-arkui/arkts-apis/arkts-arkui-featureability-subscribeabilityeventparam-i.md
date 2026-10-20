@@ -4,8 +4,6 @@
 export interface SubscribeAbilityEventParam
 ```
 
-@typedef SubscribeAbilityEventParam
-
 **Since:** 5
 
 **Deprecated since:** 8

@@ -6,8 +6,6 @@ namespace network
 
 Provides methods for setting network information, including the data roaming status, HTTP proxy configurations, and preferred networks.
 
-@namespace network
-
 **Since:** 7
 
 <!--Device-settings-namespace network--><!--Device-settings-namespace network-End-->

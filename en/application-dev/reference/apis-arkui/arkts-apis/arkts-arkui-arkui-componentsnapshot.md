@@ -8,13 +8,15 @@ For typical use cases (for example, long screenshots) and best practices of comp
 
 > **NOTE:** 
 > 
-> - In scenarios where XComponent is used to, for example, display video or camera streams,obtain images through [createPixelMapFromSurface](../../apis-image-kit/arkts-apis/arkts-image-image-createpixelmapfromsurface-f.md#createpixelmapfromsurface1),instead of through an API in this module.
+> - In scenarios where XComponent is used to, for example, display video or camera streams,obtain images through [createPixelMapFromSurface](../../apis-image-kit/arkts-apis/arkts-image-image-createpixelmapfromsurface-f.md#createpixelmapfromsurface),instead of through an API in this module.
 > 
-> - If the content of a component does not fill the entire area allocated for it, any remaining space in the snapshot will be rendered as transparent pixels. In addition, if the component uses image effects or other effect-related attributes, the resulting snapshot may not be as expected. To address these potential issues, check whether the component's transparent content area needs to be filled, or use the window screenshot API [snapshot](arkts-arkui-window-window-i.md#snapshot1) instead.
+> - If the content of a component does not fill the entire area allocated for it, any remaining space in the snapshot will be rendered as transparent pixels. In addition, if the component uses image effects or other effect-related attributes, the resulting snapshot may not be as expected. To address these potential issues, check whether the component's transparent content area needs to be filled, or use the window screenshot API [snapshot](arkts-arkui-window-window-i.md#snapshot) instead.
 > 
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 
 **Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace componentSnapshot--><!--Device-unnamed-declare namespace componentSnapshot-End-->
 
@@ -33,10 +35,10 @@ import { componentSnapshot } from '@kit.ArkUI';
 | Name | Description |
 | --- | --- |
 | [getSync](arkts-arkui-componentsnapshot-getsync-f.md#getsync) | Obtains the snapshot of a component that has been loaded based on the provided component ID. This API synchronously waits for the snapshot to complete and returns a [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) object. |
-| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md#createfrombuilder1) | Renders a custom component in the application background and outputs its snapshot. This API uses an asynchronous callback to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback. |
-| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md#createfrombuilder2) | Renders a custom component in the application background and outputs its snapshot. This API uses a promise to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the promise. |
-| [get](arkts-arkui-componentsnapshot-get-f.md#get1) | Obtains the snapshot of a component that has been loaded based on the provided component ID. This API uses an asynchronous callback to return the result. |
-| [get](arkts-arkui-componentsnapshot-get-f.md#get2) | Obtains the snapshot of a component that has been loaded based on the provided component ID. This API uses a promise to return the result. |
+| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md#createfrombuilder) | Renders a custom component in the application background and outputs its snapshot. This API uses an asynchronous callback to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the callback. |
+| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md#createfrombuilder) | Renders a custom component in the application background and outputs its snapshot. This API uses a promise to return the result. The coordinates and size of the offscreen component's drawing area can be obtained through the promise. |
+| [get](arkts-arkui-componentsnapshot-get-f.md#get) | Obtains the snapshot of a component that has been loaded based on the provided component ID. This API uses an asynchronous callback to return the result. |
+| [get](arkts-arkui-componentsnapshot-get-f.md#get) | Obtains the snapshot of a component that has been loaded based on the provided component ID. This API uses a promise to return the result. |
 
 ### Interfaces
 

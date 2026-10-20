@@ -6,8 +6,6 @@ declare interface PixelMapMock
 
 带有release函数的像素图对象。
 
-@interface PixelMapMock
-
 **起始版本：** 7
 
 <!--Device-unnamed-declare interface PixelMapMock--><!--Device-unnamed-declare interface PixelMapMock-End-->

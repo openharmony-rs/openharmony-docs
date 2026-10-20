@@ -6,8 +6,6 @@
 import { particleAbility } from '@kit.AbilityKit';
 ```
 
-<a id="startability1"></a>
-
 ## startAbility
 
 ```TypeScript
@@ -64,8 +62,6 @@ particleAbility.startAbility(
 );
 ```
 
-
-<a id="startability2"></a>
 
 ## startAbility
 

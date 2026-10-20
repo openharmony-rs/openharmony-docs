@@ -394,8 +394,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="disconnectserviceextensionability1"></a>
-
 ## disconnectServiceExtensionAbility
 
 ```TypeScript
@@ -462,8 +460,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="disconnectserviceextensionability2"></a>
 
 ## disconnectServiceExtensionAbility
 
@@ -861,11 +857,11 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<Abilit
 
 Opens an atomic service in an independent window. This API uses a promise to return the result. It can be called only on the main thread. After an atomic service is started, the following situations may occur:
 
-- Normally, the atomic service can call [terminateSelfWithResult](#terminateselfwithresult1) to terminate itself. The result is returned to the caller.  
+- Normally, the atomic service can call [terminateSelfWithResult](#terminateselfwithresult) to terminate itself. The result is returned to the caller.  
 - If an exception occurs, for example, the atomic service is killed, an exception result, in which **resultCode**  
 is **-1**, is returned to the caller.  
 - If the atomic service is started multiple times by different applications calling this API, when the atomic  
-service calls [terminateSelfWithResult](#terminateselfwithresult1) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
+service calls [terminateSelfWithResult](#terminateselfwithresult) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
 
 > **NOTE:** 
 > 
@@ -955,7 +951,7 @@ Starts a UIAbility by using <!--RP2-->[App Linking](../../../application-models/
 - The **actions** field must contain **ohos.want.action.viewData**.  
 - The **entities** field must contain **entity.system.browsable**.  
 - The **uris** field must contain elements whose **scheme** is **https** and **domainVerify** is **true**.  
-If you want to obtain the result after the started UIAbility is terminated, set the **callback** parameter. For details about how to use this parameter, see [startAbilityForResult](#startabilityforresult1). If an input parameter is invalid, for example, a mandatory parameter is not set or the URL set in **link** is not in the standard format, an exception is thrown. If the parameter verification is successful but an error occurs when starting the target UIAbility, the error information is returned through promise.
+If you want to obtain the result after the started UIAbility is terminated, set the **callback** parameter. For details about how to use this parameter, see [startAbilityForResult](#startabilityforresult). If an input parameter is invalid, for example, a mandatory parameter is not set or the URL set in **link** is not in the standard format, an exception is thrown. If the parameter verification is successful but an error occurs when starting the target UIAbility, the error information is returned through promise.
 
 > **NOTE:** 
 > 
@@ -1126,8 +1122,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="requestdialogservice1"></a>
-
 ## requestDialogService
 
 ```TypeScript
@@ -1211,8 +1205,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="requestdialogservice2"></a>
 
 ## requestDialogService
 
@@ -1522,8 +1514,6 @@ export default class DelegatorAbility extends UIAbility {
 }
 ```
 
-<a id="setabilityinstanceinfo1"></a>
-
 ## setAbilityInstanceInfo
 
 ```TypeScript
@@ -1605,8 +1595,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="setabilityinstanceinfo2"></a>
 
 ## setAbilityInstanceInfo
 
@@ -1713,8 +1701,6 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
-<a id="setmissioncontinuestate1"></a>
-
 ## setMissionContinueState
 
 ```TypeScript
@@ -1773,8 +1759,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setmissioncontinuestate2"></a>
-
 ## setMissionContinueState
 
 ```TypeScript
@@ -1830,8 +1814,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setmissionlabel1"></a>
-
 ## setMissionLabel
 
 ```TypeScript
@@ -1883,8 +1865,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="setmissionlabel2"></a>
 
 ## setMissionLabel
 
@@ -1954,7 +1934,7 @@ Sets the icon for this UIAbility, which is displayed in the application window, 
 > **NOTE:** 
 > 
 > There is no priority relationship among the **setMissionWindowIcon**<!--Del-->,
-> [setMissionIcon](arkts-ability-uiabilitycontext-c-sys.md#setmissionicon1)
+> [setMissionIcon](arkts-ability-uiabilitycontext-c-sys.md#setmissionicon)
 > ,<!--DelEnd--> and
 > [setAbilityInstanceInfo](#setabilityinstanceinfo). The icon
 > set by the last called API takes effect. If these APIs are called sequentially, the icon set by the last call
@@ -2253,8 +2233,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="startability1"></a>
-
 ## startAbility
 
 ```TypeScript
@@ -2350,8 +2328,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="startability2"></a>
 
 ## startAbility
 
@@ -2457,8 +2433,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="startability3"></a>
 
 ## startAbility
 
@@ -2769,8 +2743,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="startabilitybytype1"></a>
-
 ## startAbilityByType
 
 ```TypeScript
@@ -2840,8 +2812,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="startabilitybytype3"></a>
 
 ## startAbilityByType
 
@@ -2917,8 +2887,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="startabilityforresult1"></a>
-
 ## startAbilityForResult
 
 ```TypeScript
@@ -2927,11 +2895,11 @@ startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. It can be called only on the main thread. The following situations may be possible for a started UIAbility:
 
-- Normally, you can call [terminateSelfWithResult](#terminateselfwithresult1) to terminate the UIAbility and return the result to the caller.  
+- Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.  
 - If an exception occurs, for example, the UIAbility is killed, an exception result, in which **resultCode** is **-  
 1**, is returned to the caller.  
 - If the UIAbility is in [singleton mode](../../../application-models/uiability-launch-type.md#singleton) and this  
-UIAbility is started multiple times by different applications calling this API, when the UIAbility calls [terminateSelfWithResult](#terminateselfwithresult1) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
+UIAbility is started multiple times by different applications calling this API, when the UIAbility calls [terminateSelfWithResult](#terminateselfwithresult) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
 
 > **NOTE:** 
 > 
@@ -3022,8 +2990,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="startabilityforresult2"></a>
-
 ## startAbilityForResult
 
 ```TypeScript
@@ -3032,11 +2998,11 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. It can be called only on the main thread. The following situations may be possible for a started UIAbility:
 
-- Normally, you can call [terminateSelfWithResult](#terminateselfwithresult1) to terminate the UIAbility and return the result to the caller.  
+- Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.  
 - If an exception occurs, for example, the UIAbility is killed, an exception result, in which **resultCode** is **-  
 1**, is returned to the caller.  
 - If the UIAbility is in [singleton mode](../../../application-models/uiability-launch-type.md#singleton) and this  
-UIAbility is started multiple times by different applications calling this API, when the UIAbility calls [terminateSelfWithResult](#terminateselfwithresult1) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
+UIAbility is started multiple times by different applications calling this API, when the UIAbility calls [terminateSelfWithResult](#terminateselfwithresult) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
 
 > **NOTE:** 
 > 
@@ -3131,8 +3097,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="startabilityforresult3"></a>
-
 ## startAbilityForResult
 
 ```TypeScript
@@ -3141,11 +3105,11 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. It can be called only on the main thread. The following situations may be possible for a started UIAbility:
 
-- Normally, you can call [terminateSelfWithResult](#terminateselfwithresult1) to terminate the UIAbility and return the result to the caller.  
+- Normally, you can call [terminateSelfWithResult](#terminateselfwithresult) to terminate the UIAbility and return the result to the caller.  
 - If an exception occurs, for example, the UIAbility is killed, an exception result, in which **resultCode** is **-  
 1**, is returned to the caller.  
 - If the UIAbility is in [singleton mode](../../../application-models/uiability-launch-type.md#singleton) and this  
-UIAbility is started multiple times by different applications calling this API, when the UIAbility calls [terminateSelfWithResult](#terminateselfwithresult1) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
+UIAbility is started multiple times by different applications calling this API, when the UIAbility calls [terminateSelfWithResult](#terminateselfwithresult) to terminate itself, it will only return the normal result to the last caller. All other callers will receive an exception result with **resultCode** set to **-1**.
 
 > **NOTE:** 
 > 
@@ -3732,8 +3696,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="terminateself1"></a>
-
 ## terminateSelf
 
 ```TypeScript
@@ -3822,8 +3784,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="terminateself2"></a>
-
 ## terminateSelf
 
 ```TypeScript
@@ -3911,15 +3871,13 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="terminateselfwithresult1"></a>
-
 ## terminateSelfWithResult
 
 ```TypeScript
 terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>): void
 ```
 
-Terminates this UIAbility. This API uses an asynchronous callback to return the result. It can be called only on the main thread. The result is returned to the caller when **terminateSelfWithResult** is called to terminate the UIAbility that is started by calling [startAbilityForResult](#startabilityforresult1).
+Terminates this UIAbility. This API uses an asynchronous callback to return the result. It can be called only on the main thread. The result is returned to the caller when **terminateSelfWithResult** is called to terminate the UIAbility that is started by calling [startAbilityForResult](#startabilityforresult).
 
 > **NOTE:** 
 > 
@@ -3995,15 +3953,13 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="terminateselfwithresult2"></a>
-
 ## terminateSelfWithResult
 
 ```TypeScript
 terminateSelfWithResult(parameter: AbilityResult): Promise<void>
 ```
 
-Terminates this UIAbility. This API uses a promise to return the result. It can be called only on the main thread. The result is returned to the caller when **terminateSelfWithResult** is called to terminate the UIAbility that is started by calling [startAbilityForResult](#startabilityforresult1).
+Terminates this UIAbility. This API uses a promise to return the result. It can be called only on the main thread. The result is returned to the caller when **terminateSelfWithResult** is called to terminate the UIAbility that is started by calling [startAbilityForResult](#startabilityforresult).
 
 > **NOTE:** 
 > 
@@ -4090,7 +4046,7 @@ export default class EntryAbility extends UIAbility {
 backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string): Promise<void>
 ```
 
-Returns the startup result to the caller of [startAbilityForResult](#startabilityforresult1) or [openLink](#openlink). Different from [terminateSelfWithResult](#terminateselfwithresult1), this API does not destroy the current UIAbility when it returns the result. This API uses a promise to return the result.
+Returns the startup result to the caller of [startAbilityForResult](#startabilityforresult) or [openLink](#openlink). Different from [terminateSelfWithResult](#terminateselfwithresult), this API does not destroy the current UIAbility when it returns the result. This API uses a promise to return the result.
 
 **Since:** 12
 
@@ -4111,7 +4067,7 @@ Returns the startup result to the caller of [startAbilityForResult](#startabilit
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | abilityResult | [AbilityResult](arkts-ability-abilityresult-i.md) | Yes | Result returned to the caller. |
-| requestCode | string | Yes | Request code generated by the system when the target UIAbility is started using [startAbilityForResult](#startabilityforresult1) or [openLink](#openlink). The value can be obtained from the [CALLER_REQUEST_CODE](arkts-ability-app-ability-wantconstant.md) field in **want**. |
+| requestCode | string | Yes | Request code generated by the system when the target UIAbility is started using [startAbilityForResult](#startabilityforresult) or [openLink](#openlink). The value can be obtained from the [CALLER_REQUEST_CODE](arkts-ability-app-ability-wantconstant.md) field in **want**. |
 
 **Return value:**
 

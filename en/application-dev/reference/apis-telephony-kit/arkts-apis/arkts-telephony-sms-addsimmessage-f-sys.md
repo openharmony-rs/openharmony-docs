@@ -6,8 +6,6 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
-<a id="addsimmessage1"></a>
-
 ## addSimMessage
 
 ```TypeScript
@@ -65,8 +63,6 @@ sms.addSimMessage(simMessageOptions, (err: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="addsimmessage2"></a>
 
 ## addSimMessage
 

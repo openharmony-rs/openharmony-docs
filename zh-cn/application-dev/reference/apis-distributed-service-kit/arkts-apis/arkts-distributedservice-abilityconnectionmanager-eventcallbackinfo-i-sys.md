@@ -24,7 +24,7 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 image?: image.PixelMap
 ```
 
-接收的图片。
+接收的图片。不传入该参数时表示未接收到图片或图片信息不可用。
 
 **类型：** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 

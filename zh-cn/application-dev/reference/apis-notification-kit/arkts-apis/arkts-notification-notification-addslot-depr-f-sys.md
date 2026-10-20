@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="addslot1"></a>
-
 ## addSlot
 
 ```TypeScript
@@ -36,8 +34,30 @@ function addSlot(slot: NotificationSlot, callback: AsyncCallback<void>): void
 | slot | [NotificationSlot](arkts-notification-notificationslot-i.md) | 是 | 要创建的通知渠道对象。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定通道的回调方法。 |
 
+<!--Del-->
+**示例**
 
-<a id="addslot2"></a>
+```TypeScript
+import NotificationManager from '@ohos.notificationManager';
+import Base from '@ohos.base';
+
+// addslot回调
+let addSlotCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("addSlot failed " + JSON.stringify(err));
+  } else {
+    console.info("addSlot success");
+  }
+}
+// 通知slot对象
+let notificationSlot: NotificationManager.NotificationSlot = {
+  type: Notification.SlotType.SOCIAL_COMMUNICATION
+};
+Notification.addSlot(notificationSlot, addSlotCallback);
+```
+
+<!--DelEnd-->
+
 
 ## addSlot
 
@@ -72,3 +92,23 @@ function addSlot(slot: NotificationSlot): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import NotificationManager from '@ohos.notificationManager';
+import Base from '@ohos.base';
+
+// 通知slot对象
+let notificationSlot: NotificationManager.NotificationSlot = {
+    type: Notification.SlotType.SOCIAL_COMMUNICATION
+};
+Notification.addSlot(notificationSlot).then(() => {
+  console.info("addSlot success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`addSlot failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

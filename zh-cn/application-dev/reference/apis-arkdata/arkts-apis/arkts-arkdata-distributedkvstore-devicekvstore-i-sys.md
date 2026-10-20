@@ -26,15 +26,13 @@ interface DeviceKVStore extends SingleKVStore
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="getresultset9"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-获取与指定Predicates对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，需要及时调用closeResultSet方法关闭结果集以释放资源。
+获取与本设备指定Predicates对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，需要及时调用closeResultSet方法关闭结果集以释放资源。
 
 **起始版本：** 9
 
@@ -51,13 +49,13 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 是 | 指示筛选条件，不允许为null。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | 是 | Promise对象。返回KVStoreResultSet对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | 是 | 回调函数，获取与指定Predicates对象匹配的KVStoreResultSet对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
@@ -396,15 +394,13 @@ try {
 
 <!--DelEnd-->
 
-<a id="getresultset10"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVStoreResultSet>
 ```
 
-获取与指定Predicates对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，需要及时调用closeResultSet方法关闭结果集以释放资源。
+获取与本设备指定Predicates对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，需要及时调用closeResultSet方法关闭结果集以释放资源。
 
 **起始版本：** 9
 
@@ -432,7 +428,7 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVSto
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
@@ -771,15 +767,22 @@ try {
 
 <!--DelEnd-->
 
-<a id="getresultset11"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-获取与本设备指定Predicates对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，需要及时调用closeResultSet方法关闭结果集以释放资源。
+获取指定设备上与指定Predicates对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，需要及时调用closeResultSet方法关闭结果集以释放资源。
+
+> **说明：** 
+> 
+> 其中deviceId通过调用
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
+> 方法得到。
+> 
+> deviceId具体获取方式请参考
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 
@@ -795,7 +798,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | string | 是 | Indicates the ID of the device to which the results belong. |
+| deviceId | string | 是 | 设备的networkId，标识要查询其数据的设备，不能为空。 |
 | predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 是 | 指示筛选条件，不允许为null。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | 是 | 回调函数，获取与指定Predicates对象匹配的KVStoreResultSet对象。 |
 
@@ -803,7 +806,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
@@ -1142,15 +1145,22 @@ try {
 
 <!--DelEnd-->
 
-<a id="getresultset12"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates): Promise<KVStoreResultSet>
 ```
 
-获取与本设备指定Predicates对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，需要及时调用closeResultSet方法关闭结果集以释放资源。
+获取指定设备上与指定Predicates对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，需要及时调用closeResultSet方法关闭结果集以释放资源。
+
+> **说明：** 
+> 
+> 其中deviceId通过调用
+> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
+> 方法得到。
+> 
+> deviceId具体获取方式请参考
+> [sync接口示例](arkts-arkdata-distributedkvstore-singlekvstore-i.md#sync)。
 
 **起始版本：** 9
 
@@ -1166,7 +1176,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceId | string | 是 | Indicates the ID of the device to which the results belong. |
+| deviceId | string | 是 | 设备的networkId，标识要查询其数据的设备，不能为空。 |
 | predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | 是 | 指示筛选条件，不允许为null。 |
 
 **返回值：**
@@ -1179,7 +1189,7 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |

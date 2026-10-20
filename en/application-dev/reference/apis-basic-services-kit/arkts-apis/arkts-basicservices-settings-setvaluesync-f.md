@@ -6,8 +6,6 @@
 import { settings } from '@kit.BasicServicesKit';
 ```
 
-<a id="setvaluesync1"></a>
-
 ## setValueSync
 
 ```TypeScript
@@ -56,8 +54,6 @@ let ret:string = settings.setValueSync(helper, settings.display.SCREEN_BRIGHTNES
 ```
 
 
-<a id="setvaluesync2"></a>
-
 ## setValueSync
 
 ```TypeScript
@@ -102,8 +98,6 @@ const context: Context = this.getUIContext().getHostContext() as common.UIAbilit
 let ret = settings.setValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100');
 ```
 
-
-<a id="setvaluesync3"></a>
 
 ## setValueSync
 

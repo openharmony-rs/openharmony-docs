@@ -14,8 +14,8 @@ function connectDevice(device: USBDevice): Readonly<USBDevicePipe>
 
 根据getDevices()返回的设备信息打开USB设备，调用成功后建立设备连接通道，可以进行后续的数据传输和设备控制操作。使用完后需要调用[usbManager.closePipe](arkts-basicservices-usbmanager-closepipe-f.md)关闭设备连接通道。如果USB服务异常，会返回`undefined`，注意需要对接口返回值做判空处理。
 
-1. 调用[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md)获取设备信息以及USBDevice;
-2. 调用[usbManager.requestRight](arkts-basicservices-usbmanager-requestright-f.md)请求使用该设备的权限。
+1. 调用[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md)获取设备列表。
+2. 调用[usbManager.requestRight](arkts-basicservices-usbmanager-requestright-f.md)获取设备访问权限。
 
 **起始版本：** 9
 
@@ -39,7 +39,7 @@ function connectDevice(device: USBDevice): Readonly<USBDevicePipe>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:  <br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 | [14400001](../errorcode-usb.md#14400001-usb设备访问权限被拒绝) | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | [14400004](../errorcode-usb.md#14400004-服务异常) |  |

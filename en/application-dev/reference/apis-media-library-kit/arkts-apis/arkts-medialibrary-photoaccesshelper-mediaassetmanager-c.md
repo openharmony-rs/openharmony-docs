@@ -52,8 +52,8 @@ Cancels a request for the asset, the callback of which has not been triggered ye
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.User file service initialization failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please check if the context is valid and retry; <br>2.The requestId parameter is invalid, please check if it is a valid non-empty string returned by a prior request. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.User file service initialization failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please check if the context is valid and retry; <br>2.The requestId parameter is invalid, please check if it is a valid non-empty string returned by a prior request. |
 
 **Examples**
 
@@ -96,8 +96,8 @@ Loads a moving photo in the application sandbox. This API uses a promise to retu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | AbilityContext or UIExtensionContext instance. |
-| imageFileUri | string | Yes | URI of the image file of the moving photo in the application sandbox.<br>Example: **'file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg'**. |
-| videoFileUri | string | Yes | URI of the video file of the moving photo in the application sandbox.<br>Example: **'file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4'**. |
+| imageFileUri | string | Yes | URI of the image file of the moving photo in the application sandbox. <br>Example: **'file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg'**. |
+| videoFileUri | string | Yes | URI of the video file of the moving photo in the application sandbox. <br>Example: **'file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4'**. |
 
 **Return value:**
 
@@ -109,8 +109,8 @@ Loads a moving photo in the application sandbox. This API uses a promise to retu
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.User file client initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.User file client initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry. |
 
 **Examples**
 
@@ -167,7 +167,7 @@ Requests an image quickly. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 14000011 | Internal system error |
 
 **Examples**
@@ -241,8 +241,8 @@ Requests an image. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object; <br>2.User file service initialization failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: (1)Memory insufficient; (2)IPC timeout. Please retry. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object; <br>2.User file service initialization failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: (1)Memory insufficient; (2)IPC timeout. Please retry. |
 
 **Examples**
 
@@ -323,8 +323,8 @@ Requests image data. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object; <br>2.User file service initialization failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: (1)Memory insufficient; (2)IPC timeout. Please retry. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Parameter types or count are invalid, please check if asset is PhotoAsset, requestOptions is RequestOptions, dataHandler is a valid MediaAssetDataHandler object; <br>2.User file service initialization failed, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: (1)Memory insufficient; (2)IPC timeout. Please retry. |
 
 **Examples**
 
@@ -409,9 +409,9 @@ Requests a moving photo object, which can be used to request the asset data of t
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability;         2. The chip does not support the capability;         3. A dependent service feature is not supported.<br>**Applicable version:** 18 and later |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter parsing failed, please check the number and types of parameters; <br>2.User file service initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: (1)Memory insufficient; (2)IPC timeout. Please retry. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Parameter parsing failed, please check the number and types of parameters; <br>2.User file service initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please check if the context is valid and retry; <br>3.Failed to initialize the dataHandler callback, possible causes: (1)Memory insufficient; (2)IPC timeout. Please retry. |
 
 **Examples**
 
@@ -485,7 +485,7 @@ Requests a video and saves it to the specified sandbox directory. This API uses 
 | asset | [PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md) | Yes | Image to request. |
 | requestOptions | [RequestOptions](arkts-medialibrary-photoaccesshelper-requestoptions-i.md) | Yes | Options for requesting the video asset. |
 | fileUri | string | Yes | URI of the sandbox directory, to which the requested video asset is to be saved. Example: **'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.mp4'**. |
-| dataHandler | [MediaAssetDataHandler](arkts-medialibrary-photoaccesshelper-mediaassetdatahandler-i.md)&lt;boolean&gt; | Yes | Media asset handler. When the requested video is written to the specified directory, a callback is triggered.<br>If the video is successfully written, **true** is returned. Otherwise, **false** is returned. |
+| dataHandler | [MediaAssetDataHandler](arkts-medialibrary-photoaccesshelper-mediaassetdatahandler-i.md)&lt;boolean&gt; | Yes | Media asset handler. When the requested video is written to the specified directory, a callback is triggered. <br>If the video is successfully written, **true** is returned. Otherwise, **false** is returned. |
 
 **Return value:**
 
@@ -498,9 +498,9 @@ Requests a video and saves it to the specified sandbox directory. This API uses 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability;         2. The chip does not support the capability;         3. A dependent service feature is not supported.<br>**Applicable version:** 15 and later |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Parameter parsing failed, please check the number and types of parameters; <br>2.The dataHandler parameter must be a valid object; <br>3.User file service initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please check if the context is valid and retry; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Parameter parsing failed, please check the number and types of parameters; <br>2.The dataHandler parameter must be a valid object; <br>3.User file service initialization failed, possible causes: (1)Database exception; (2)IPC timeout. Please check if the context is valid and retry; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **Examples**
 

@@ -6,8 +6,6 @@ export declare interface InputEvent
 
 输入事件。
 
-@interface InputEvent [since 9 - 11]
-
 **起始版本：** 9
 
 <!--Device-unnamed-export declare interface InputEvent--><!--Device-unnamed-export declare interface InputEvent-End-->

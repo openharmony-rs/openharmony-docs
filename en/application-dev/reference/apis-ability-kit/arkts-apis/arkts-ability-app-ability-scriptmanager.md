@@ -10,9 +10,9 @@ This module provides the capability to manage and organize script information, a
 > [ArkTSScriptInfo](arkts-ability-scriptmanager-arktsscriptinfo-i.md), which is used to receive the script context information passed
 > by the system. Developers can add custom parameters after the first parameter.
 
-@namespace scriptManager
-
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace scriptManager--><!--Device-unnamed-declare namespace scriptManager-End-->
 

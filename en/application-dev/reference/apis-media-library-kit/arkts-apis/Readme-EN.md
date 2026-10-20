@@ -427,4 +427,6 @@
   <!--Del-->
   - [PositionType(system api)](arkts-medialibrary-sendablephotoaccesshelper-positiontype-e-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [ShareAlbumRiskStatus(system api)](arkts-medialibrary-sendablephotoaccesshelper-sharealbumriskstatus-e-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [ThumbnailVisibility(system api)](arkts-medialibrary-sendablephotoaccesshelper-thumbnailvisibility-e-sys.md)<!--DelEnd-->

@@ -279,6 +279,30 @@ getSourceUrl(): string
 | --- | --- |
 | string | 如果选中的元素有src属性，返回src的URL。返回URL的最大上限为2MB，超出上限时返回空字符串。 |
 
+## getTextFragmentGeneratedLink
+
+```TypeScript
+getTextFragmentGeneratedLink(): string
+```
+
+获取指向当前网页高亮文本的Text Fragment链接URL。返回的URL包含符合W3C Text Fragments规范的**#:~:text=**片段。
+
+建议在**onContextMenuShow**事件回调中使用此接口。调用此接口前，建议先调用shouldOfferLinkToText()检查当前选中文本是否支持链接生成。若选中文本不支持链接生成，返回空字符串。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebContextMenuParam-getTextFragmentGeneratedLink(): string--><!--Device-WebContextMenuParam-getTextFragmentGeneratedLink(): string-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| string | 包含**#:~:text=**片段、符合W3C Text Fragments规范的Text Fragment链接URL。若当前选中文本不支持链接生成，返回空字符串。 |
+
 ## getUnfilteredLinkUrl
 
 ```TypeScript
@@ -322,6 +346,54 @@ isEditable(): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 网页元素可编辑返回true，否则返回false。 |
+
+## isOverTextFragment
+
+```TypeScript
+isOverTextFragment(): boolean
+```
+
+检查当前网页是否存在Text Fragment高亮。使用此接口判断是否应显示"移除高亮"和"重新分享链接"菜单项。
+
+建议在**onContextMenuShow**事件回调中使用此接口。结果与Chromium的**GetExistingSelectors**行为一致。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebContextMenuParam-isOverTextFragment(): boolean--><!--Device-WebContextMenuParam-isOverTextFragment(): boolean-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | **true**表示当前页面存在Text Fragment高亮；**false**表示不存在。 |
+
+## shouldOfferLinkToText
+
+```TypeScript
+shouldOfferLinkToText(): boolean
+```
+
+检查当前选中的文本是否可用于生成Text Fragment链接。Text Fragment链接是包含**#:~:text=**片段的URL，用于在打开链接时滚动到并高亮特定文本段落。
+
+建议在**onContextMenuShow**事件回调中使用此接口，以决定是否显示"复制指向高亮的链接"菜单项。结果与Chromium的**ShouldOfferLinkToText**行为一致。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebContextMenuParam-shouldOfferLinkToText(): boolean--><!--Device-WebContextMenuParam-shouldOfferLinkToText(): boolean-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | **true**表示当前选中文本可用于生成Text Fragment链接；**false**表示不可用。 |
 
 ## x
 

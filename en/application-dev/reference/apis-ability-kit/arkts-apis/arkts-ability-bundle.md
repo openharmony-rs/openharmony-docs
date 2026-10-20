@@ -29,59 +29,59 @@ import { bundle } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [getAbilityIcon](arkts-ability-bundle-getabilityicon-f.md#getabilityicon1) | Obtains the [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) of the icon corresponding to a given bundle name and ability name. This API uses an asynchronous callback to return the result. |
-| [getAbilityIcon](arkts-ability-bundle-getabilityicon-f.md#getabilityicon2) | Obtains the [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) of the icon corresponding to a given bundle name and ability name. This API uses a promise to return the result. |
-| [getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo1) | Obtains the ability information based on a given bundle name and ability name. This API uses an asynchronous callback to return the result. |
-| [getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo2) | Obtains the ability information based on a given bundle name and ability name. This API uses a promise to return the result. |
-| [getAbilityLabel](arkts-ability-bundle-getabilitylabel-f.md#getabilitylabel1) | Obtains the application name based on a given bundle name and ability name. This API uses an asynchronous callback to return the result. |
-| [getAbilityLabel](arkts-ability-bundle-getabilitylabel-f.md#getabilitylabel2) | Obtains the application name based on a given bundle name and ability name. This API uses a promise to return the result. |
-| [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md#getallapplicationinfo1) | Obtains the information about all applications. This API uses an asynchronous callback to return the result. |
-| [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md#getallapplicationinfo2) | Obtains the information about all applications of the current user. This API uses an asynchronous callback to return the result. |
-| [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md#getallapplicationinfo3) | Obtains the information about all applications of the specified user. This API uses a promise to return the result. |
-| [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md#getallbundleinfo1) | Obtains the information of all bundles of the specified user. This API uses an asynchronous callback to return the result. |
-| [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md#getallbundleinfo2) | Obtains the information of all bundles of the current user. This API uses an asynchronous callback to return the result. |
-| [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md#getallbundleinfo3) | Obtains the information of all bundles of the specified user. This API uses a promise to return the result. |
-| [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo1) | Obtains the application information of the specified user based on a given bundle name. This API uses an asynchronous callback to return the result. |
-| [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo2) | Obtains the application information based on a given bundle name. This API uses an asynchronous callback to return the result. |
-| [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo3) | Obtains the application information based on a given bundle name. This API uses a promise to return the result. |
-| [getBundleArchiveInfo](arkts-ability-bundle-getbundlearchiveinfo-f.md#getbundlearchiveinfo1) | Obtains information about the bundles contained in a HAP file. This API uses an asynchronous callback to return the result. |
-| [getBundleArchiveInfo](arkts-ability-bundle-getbundlearchiveinfo-f.md#getbundlearchiveinfo2) | Obtains information about the bundles contained in a HAP file. This API uses a promise to return the result. |
-| [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo1) | Obtains the bundle information based on a given bundle name and bundle options. This API uses an asynchronous callback to return the result. |
-| [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo2) | Obtains the bundle information based on a given bundle name. This API uses an asynchronous callback to return the result. |
-| [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo3) | Obtains the bundle information based on a given bundle name. This API uses a promise to return the result. |
-| [getLaunchWantForBundle](arkts-ability-bundle-getlaunchwantforbundle-f.md#getlaunchwantforbundle1) | Obtains the Want object that launches the specified application. This API uses an asynchronous callback to return the result. |
-| [getLaunchWantForBundle](arkts-ability-bundle-getlaunchwantforbundle-f.md#getlaunchwantforbundle2) | Obtains the Want object that launches the specified application. This API uses a promise to return the result. |
-| [getNameForUid](arkts-ability-bundle-getnameforuid-f.md#getnameforuid1) | Obtains bundle name by the given uid. |
-| [getNameForUid](arkts-ability-bundle-getnameforuid-f.md#getnameforuid2) | Obtains the bundle name based on a UID. This API uses a promise to return the result. |
-| [isAbilityEnabled](arkts-ability-bundle-isabilityenabled-f.md#isabilityenabled1) | Checks whether the ability that matches a given AbilityInfo object is enabled. This API uses an asynchronous callback to return the result. |
-| [isAbilityEnabled](arkts-ability-bundle-isabilityenabled-f.md#isabilityenabled2) | Checks whether the ability that matches a given AbilityInfo object is enabled. This API uses a promise to return the result. |
-| [isApplicationEnabled](arkts-ability-bundle-isapplicationenabled-f.md#isapplicationenabled1) | Checks whether an application is enabled based on a given bundle name. This API uses an asynchronous callback to return the result. |
-| [isApplicationEnabled](arkts-ability-bundle-isapplicationenabled-f.md#isapplicationenabled2) | Checks whether an application is enabled based on a given bundle name. This API uses a promise to return the result. |
-| [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md#queryabilitybywant1) | Obtains the ability information of the specified user based on given Want. This API uses an asynchronous callback to return the result. |
-| [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md#queryabilitybywant2) | Obtains the ability information based on given Want. This API uses an asynchronous callback to return the result. |
-| [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md#queryabilitybywant3) | Obtains the ability information based on given Want. This API uses a promise to return the result. |
+| [getAbilityIcon](arkts-ability-bundle-getabilityicon-f.md#getabilityicon) | Obtains the [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) of the icon corresponding to a given bundle name and ability name. This API uses an asynchronous callback to return the result. |
+| [getAbilityIcon](arkts-ability-bundle-getabilityicon-f.md#getabilityicon) | Obtains the [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) of the icon corresponding to a given bundle name and ability name. This API uses a promise to return the result. |
+| [getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo) | Obtains the ability information based on a given bundle name and ability name. This API uses an asynchronous callback to return the result. |
+| [getAbilityInfo](arkts-ability-bundle-getabilityinfo-f.md#getabilityinfo) | Obtains the ability information based on a given bundle name and ability name. This API uses a promise to return the result. |
+| [getAbilityLabel](arkts-ability-bundle-getabilitylabel-f.md#getabilitylabel) | Obtains the application name based on a given bundle name and ability name. This API uses an asynchronous callback to return the result. |
+| [getAbilityLabel](arkts-ability-bundle-getabilitylabel-f.md#getabilitylabel) | Obtains the application name based on a given bundle name and ability name. This API uses a promise to return the result. |
+| [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md#getallapplicationinfo) | Obtains the information about all applications. This API uses an asynchronous callback to return the result. |
+| [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md#getallapplicationinfo) | Obtains the information about all applications of the current user. This API uses an asynchronous callback to return the result. |
+| [getAllApplicationInfo](arkts-ability-bundle-getallapplicationinfo-f.md#getallapplicationinfo) | Obtains the information about all applications of the specified user. This API uses a promise to return the result. |
+| [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md#getallbundleinfo) | Obtains the information of all bundles of the specified user. This API uses an asynchronous callback to return the result. |
+| [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md#getallbundleinfo) | Obtains the information of all bundles of the current user. This API uses an asynchronous callback to return the result. |
+| [getAllBundleInfo](arkts-ability-bundle-getallbundleinfo-f.md#getallbundleinfo) | Obtains the information of all bundles of the specified user. This API uses a promise to return the result. |
+| [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo) | Obtains the application information of the specified user based on a given bundle name. This API uses an asynchronous callback to return the result. |
+| [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo) | Obtains the application information based on a given bundle name. This API uses an asynchronous callback to return the result. |
+| [getApplicationInfo](arkts-ability-bundle-getapplicationinfo-f.md#getapplicationinfo) | Obtains the application information based on a given bundle name. This API uses a promise to return the result. |
+| [getBundleArchiveInfo](arkts-ability-bundle-getbundlearchiveinfo-f.md#getbundlearchiveinfo) | Obtains information about the bundles contained in a HAP file. This API uses an asynchronous callback to return the result. |
+| [getBundleArchiveInfo](arkts-ability-bundle-getbundlearchiveinfo-f.md#getbundlearchiveinfo) | Obtains information about the bundles contained in a HAP file. This API uses a promise to return the result. |
+| [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo) | Obtains the bundle information based on a given bundle name and bundle options. This API uses an asynchronous callback to return the result. |
+| [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo) | Obtains the bundle information based on a given bundle name. This API uses an asynchronous callback to return the result. |
+| [getBundleInfo](arkts-ability-bundle-getbundleinfo-f.md#getbundleinfo) | Obtains the bundle information based on a given bundle name. This API uses a promise to return the result. |
+| [getLaunchWantForBundle](arkts-ability-bundle-getlaunchwantforbundle-f.md#getlaunchwantforbundle) | Obtains the Want object that launches the specified application. This API uses an asynchronous callback to return the result. |
+| [getLaunchWantForBundle](arkts-ability-bundle-getlaunchwantforbundle-f.md#getlaunchwantforbundle) | Obtains the Want object that launches the specified application. This API uses a promise to return the result. |
+| [getNameForUid](arkts-ability-bundle-getnameforuid-f.md#getnameforuid) | Obtains bundle name by the given uid. |
+| [getNameForUid](arkts-ability-bundle-getnameforuid-f.md#getnameforuid) | Obtains the bundle name based on a UID. This API uses a promise to return the result. |
+| [isAbilityEnabled](arkts-ability-bundle-isabilityenabled-f.md#isabilityenabled) | Checks whether the ability that matches a given AbilityInfo object is enabled. This API uses an asynchronous callback to return the result. |
+| [isAbilityEnabled](arkts-ability-bundle-isabilityenabled-f.md#isabilityenabled) | Checks whether the ability that matches a given AbilityInfo object is enabled. This API uses a promise to return the result. |
+| [isApplicationEnabled](arkts-ability-bundle-isapplicationenabled-f.md#isapplicationenabled) | Checks whether an application is enabled based on a given bundle name. This API uses an asynchronous callback to return the result. |
+| [isApplicationEnabled](arkts-ability-bundle-isapplicationenabled-f.md#isapplicationenabled) | Checks whether an application is enabled based on a given bundle name. This API uses a promise to return the result. |
+| [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md#queryabilitybywant) | Obtains the ability information of the specified user based on given Want. This API uses an asynchronous callback to return the result. |
+| [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md#queryabilitybywant) | Obtains the ability information based on given Want. This API uses an asynchronous callback to return the result. |
+| [queryAbilityByWant](arkts-ability-bundle-queryabilitybywant-f.md#queryabilitybywant) | Obtains the ability information based on given Want. This API uses a promise to return the result. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [cleanBundleCacheFiles](arkts-ability-bundle-cleanbundlecachefiles-f-sys.md#cleanbundlecachefiles1) | Clears the cache data of an application. This API uses an asynchronous callback to return the result. |
-| [cleanBundleCacheFiles](arkts-ability-bundle-cleanbundlecachefiles-f-sys.md#cleanbundlecachefiles2) | Clears the cache data of an application. This API uses a promise to return the result. |
-| [getApplicationInfos](arkts-ability-bundle-getapplicationinfos-f-sys.md#getapplicationinfos1) | Obtains information about all installed apps for a specified user. This API uses an asynchronous callback to return the result. |
-| [getApplicationInfos](arkts-ability-bundle-getapplicationinfos-f-sys.md#getapplicationinfos2) | Obtains information about installed apps for the user to which the caller belongs. This API uses an asynchronous callback to return the result. |
-| [getApplicationInfos](arkts-ability-bundle-getapplicationinfos-f-sys.md#getapplicationinfos3) | Obtains information about all installed apps for a specified user. This API uses a promise to return the result. |
-| [getBundleInfos](arkts-ability-bundle-getbundleinfos-f-sys.md#getbundleinfos1) | Obtains all BundleInfo for a specified user in the system. This API uses an asynchronous callback to return the result. |
-| [getBundleInfos](arkts-ability-bundle-getbundleinfos-f-sys.md#getbundleinfos2) | Obtains all BundleInfo for the current user. This API uses an asynchronous callback to return the result. |
-| [getBundleInfos](arkts-ability-bundle-getbundleinfos-f-sys.md#getbundleinfos3) | Obtains all BundleInfo for a specified user. This API uses a promise to return the result. |
-| [getBundleInstaller](arkts-ability-bundle-getbundleinstaller-f-sys.md#getbundleinstaller1) | Obtains the installation package. This API uses an asynchronous callback to return the result. |
-| [getBundleInstaller](arkts-ability-bundle-getbundleinstaller-f-sys.md#getbundleinstaller2) | Obtains the installation package. This API uses a promise to return the result. |
-| [getPermissionDef](arkts-ability-bundle-getpermissiondef-f-sys.md#getpermissiondef1) | Obtains the permission details by permission name. This API uses an asynchronous callback to return the result. |
-| [getPermissionDef](arkts-ability-bundle-getpermissiondef-f-sys.md#getpermissiondef2) | Obtains the permission details by permission name. This API uses a promise to return the result. |
-| [setAbilityEnabled](arkts-ability-bundle-setabilityenabled-f-sys.md#setabilityenabled1) | Sets whether to enable an ability. This API uses an asynchronous callback to return the result. |
-| [setAbilityEnabled](arkts-ability-bundle-setabilityenabled-f-sys.md#setabilityenabled2) | Sets whether to enable an ability. This API uses a promise to return the result. |
-| [setApplicationEnabled](arkts-ability-bundle-setapplicationenabled-f-sys.md#setapplicationenabled1) | Sets whether to enable an application. This API uses an asynchronous callback to return the result. |
-| [setApplicationEnabled](arkts-ability-bundle-setapplicationenabled-f-sys.md#setapplicationenabled2) | Sets whether to enable an application. This API uses a promise to return the result. |
+| [cleanBundleCacheFiles](arkts-ability-bundle-cleanbundlecachefiles-f-sys.md#cleanbundlecachefiles) | Clears the cache data of an application. This API uses an asynchronous callback to return the result. |
+| [cleanBundleCacheFiles](arkts-ability-bundle-cleanbundlecachefiles-f-sys.md#cleanbundlecachefiles) | Clears the cache data of an application. This API uses a promise to return the result. |
+| [getApplicationInfos](arkts-ability-bundle-getapplicationinfos-f-sys.md#getapplicationinfos) | Obtains information about all installed apps for a specified user. This API uses an asynchronous callback to return the result. |
+| [getApplicationInfos](arkts-ability-bundle-getapplicationinfos-f-sys.md#getapplicationinfos) | Obtains information about installed apps for the user to which the caller belongs. This API uses an asynchronous callback to return the result. |
+| [getApplicationInfos](arkts-ability-bundle-getapplicationinfos-f-sys.md#getapplicationinfos) | Obtains information about all installed apps for a specified user. This API uses a promise to return the result. |
+| [getBundleInfos](arkts-ability-bundle-getbundleinfos-f-sys.md#getbundleinfos) | Obtains all BundleInfo for a specified user in the system. This API uses an asynchronous callback to return the result. |
+| [getBundleInfos](arkts-ability-bundle-getbundleinfos-f-sys.md#getbundleinfos) | Obtains all BundleInfo for the current user. This API uses an asynchronous callback to return the result. |
+| [getBundleInfos](arkts-ability-bundle-getbundleinfos-f-sys.md#getbundleinfos) | Obtains all BundleInfo for a specified user. This API uses a promise to return the result. |
+| [getBundleInstaller](arkts-ability-bundle-getbundleinstaller-f-sys.md#getbundleinstaller) | Obtains the installation package. This API uses an asynchronous callback to return the result. |
+| [getBundleInstaller](arkts-ability-bundle-getbundleinstaller-f-sys.md#getbundleinstaller) | Obtains the installation package. This API uses a promise to return the result. |
+| [getPermissionDef](arkts-ability-bundle-getpermissiondef-f-sys.md#getpermissiondef) | Obtains the permission details by permission name. This API uses an asynchronous callback to return the result. |
+| [getPermissionDef](arkts-ability-bundle-getpermissiondef-f-sys.md#getpermissiondef) | Obtains the permission details by permission name. This API uses a promise to return the result. |
+| [setAbilityEnabled](arkts-ability-bundle-setabilityenabled-f-sys.md#setabilityenabled) | Sets whether to enable an ability. This API uses an asynchronous callback to return the result. |
+| [setAbilityEnabled](arkts-ability-bundle-setabilityenabled-f-sys.md#setabilityenabled) | Sets whether to enable an ability. This API uses a promise to return the result. |
+| [setApplicationEnabled](arkts-ability-bundle-setapplicationenabled-f-sys.md#setapplicationenabled) | Sets whether to enable an application. This API uses an asynchronous callback to return the result. |
+| [setApplicationEnabled](arkts-ability-bundle-setapplicationenabled-f-sys.md#setapplicationenabled) | Sets whether to enable an application. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Interfaces

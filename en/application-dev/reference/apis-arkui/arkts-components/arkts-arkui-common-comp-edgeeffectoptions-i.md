@@ -6,8 +6,6 @@ declare interface EdgeEffectOptions
 
 Implements an object used to configure the [edgeEffect](arkts-arkui-common-comp-scrollablecommonmethod-c.md#edgeeffect) attribute.
 
-@interface EdgeEffectOptions
-
 **Since:** 12
 
 <!--Device-unnamed-declare interface EdgeEffectOptions--><!--Device-unnamed-declare interface EdgeEffectOptions-End-->

@@ -4,7 +4,7 @@
 interface BeautyQuery
 ```
 
-Provides APIs to obtain and set the beauty effect.
+提供获取和设置美颜效果的接口。
 
 **起始版本：** 12
 
@@ -26,14 +26,14 @@ import { camera } from '@kit.CameraKit';
 getSupportedBeautyRange(type: BeautyType): Array<number>
 ```
 
-Obtains the levels that can be set a beauty type. The beauty levels vary according to the device type. The following table is only an example.
+获取某个美颜类型可设置的等级。不同设备支持的美颜等级不同，下表仅为示例。
 
-| Input Parameter | Example Return Value | Return Value Description |  
+| 输入参数 | 示例返回值 | 返回值描述 |  
 | ----------------| ---- | ---------|  
-| AUTO | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] |Beauty levels supported when **type** is set to **AUTO**. The value **0** * means that beauty mode is disabled, and other positive values mean the corresponding automatic beauty levels. |
-| SKIN_SMOOTH | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value * **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels. |
-| FACE_SLENDER | [0, 1, 2, 3, 4, 5] | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that * the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels. |
-| SKIN_TONE | [-1, 16242611] | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively. |
+| AUTO | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | **type** 为 **AUTO** 时支持的美颜等级。值 **0** 表示关闭美颜模式，其他正整数值表示对应的自动美颜等级。 |  
+| SKIN_SMOOTH | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | **type** 为 **SKIN_SMOOTH** 时支持的美颜等级。值 **0** 表示关闭磨皮功能，其他正整数值表示对应的磨皮等级。 |  
+| FACE_SLENDER | [0, 1, 2, 3, 4, 5] | **type** 为 **FACE_SLENDER** 时支持的美颜等级。值 **0** 表示关闭瘦脸功能，其他正整数值表示对应的瘦脸等级。 |  
+| SKIN_TONE | [-1, 16242611] | **type** 为 **SKIN_TONE** 时支持的美颜等级。值**-1**表示关闭肤色美化功能。其他非负值表示以RGB表示的肤色美化等级，<br>例如 16242611，其十六进制为 0xF7D7B3，其中 F7、D7、B3 分别表示 R 通道、G 通道、B 通道的值。 |
 
 **起始版本：** 11
 
@@ -47,13 +47,13 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [BeautyType](arkts-camera-camera-beautytype-e-sys.md) | 是 | Beauty type. |
+| type | [BeautyType](arkts-camera-camera-beautytype-e-sys.md) | 是 | 美颜类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;number&gt; | Array of levels supported. |
+| Array&lt;number&gt; | 支持的等级数组。 |
 
 **错误码：**
 
@@ -84,7 +84,7 @@ function getSupportedBeautyRange(portraitPhotoSession: camera.PortraitPhotoSessi
 getSupportedBeautyTypes(): Array<BeautyType>
 ```
 
-Obtains the supported beauty types.
+获取支持的美颜类型。
 
 **起始版本：** 11
 
@@ -98,7 +98,7 @@ Obtains the supported beauty types.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[BeautyType](arkts-camera-camera-beautytype-e-sys.md)&gt; | Array of beauty types supported. |
+| Array&lt;[BeautyType](arkts-camera-camera-beautytype-e-sys.md)&gt; | 支持的美颜类型数组。 |
 
 **错误码：**
 
@@ -125,7 +125,7 @@ function getSupportedBeautyTypes(portraitPhotoSession: camera.PortraitPhotoSessi
 getSupportedPortraitThemeTypes(): Array<PortraitThemeType>
 ```
 
-Gets supported portrait theme type.
+获取支持的人像主题类型。
 
 **起始版本：** 14
 
@@ -139,7 +139,7 @@ Gets supported portrait theme type.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[PortraitThemeType](arkts-camera-camera-portraitthemetype-e-sys.md)&gt; | Lists of portrait theme types |
+| Array&lt;[PortraitThemeType](arkts-camera-camera-portraitthemetype-e-sys.md)&gt; | 人像主题类型列表。 |
 
 **错误码：**
 
@@ -154,7 +154,7 @@ Gets supported portrait theme type.
 isPortraitThemeSupported(): boolean
 ```
 
-Checks whether portrait theme is supported.
+查询是否支持人像主题。
 
 **起始版本：** 14
 
@@ -168,7 +168,7 @@ Checks whether portrait theme is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Is portrait theme supported. |
+| boolean | 是否支持人像主题。 |
 
 **错误码：**
 

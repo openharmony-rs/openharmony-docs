@@ -48,26 +48,32 @@ Construct the UIExtensionComponent.<br> Called when the UIExtensionComponent is 
 
 ## Summary
 
-### Interfaces
+<!--Del-->
+### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
 | [TerminationInfo](arkts-arkui-uiextensioncomponent-comp-terminationinfo-i-sys.md) | Triggered when the started UIExtensionAbility exits properly by calling **terminateSelfWithResult** or **terminateSelf**. |
 | [UIExtensionOptions](arkts-arkui-uiextensioncomponent-comp-uiextensionoptions-i-sys.md) | Used to pass optional construction parameters when the **UIExtensionComponent** is constructed. |
 | [UIExtensionProxy](arkts-arkui-uiextensioncomponent-comp-uiextensionproxy-i-sys.md) | Used for the component user to send data to the launched Ability and to subscribe to and unsubscribe from the registration events of the extension Ability after a connection is successfully established between the two parties. |
+<!--DelEnd-->
 
-### Types
+<!--Del-->
+### Types(System API)
 
 | Name | Description |
 | --- | --- |
 | [ReceiveCallback](arkts-arkui-uiextensioncomponent-comp-receivecallback-t-sys.md) | Triggered to encapsulate the data sent by the started ability. |
+<!--DelEnd-->
 
-### Enums
+<!--Del-->
+### Enums(System API)
 
 | Name | Description |
 | --- | --- |
 | [DpiFollowStrategy](arkts-arkui-uiextensioncomponent-comp-dpifollowstrategy-e-sys.md) | Enumeration of different types of DpiFollowStrategy. |
 | [WindowModeFollowStrategy](arkts-arkui-uiextensioncomponent-comp-windowmodefollowstrategy-e-sys.md) | Enumerates the following strategies of the window mode. |
+<!--DelEnd-->
 
 <!--Del-->
 ## Examples

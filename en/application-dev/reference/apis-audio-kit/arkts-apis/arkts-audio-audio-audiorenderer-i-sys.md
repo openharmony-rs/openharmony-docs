@@ -6,7 +6,7 @@ interface AudioRenderer
 
 This interface provides APIs for audio rendering.
 
-Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer1) to create an AudioRenderer instance.
+Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer) to create an AudioRenderer instance.
 
 > **NOTE:** 
 > 
@@ -68,8 +68,6 @@ async function getTarget(){
 ```
 
 <!--DelEnd-->
-
-<a id="settarget1"></a>
 
 ## setTarget
 
@@ -134,8 +132,6 @@ audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE
 ```
 
 <!--DelEnd-->
-
-<a id="settarget2"></a>
 
 ## setTarget
 

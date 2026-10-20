@@ -9,7 +9,6 @@ class Uint32Array
 > **说明：** 
 > 
 > - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
-> **装饰器**：\@Sendable
 
 **起始版本：** 12
 
@@ -88,8 +87,6 @@ at(index: number): number | undefined
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The at method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -111,8 +108,6 @@ constructor()
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint32Array's constructor cannot be directly invoked. |
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -142,8 +137,6 @@ constructor(length: number)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint32Array's constructor cannot be directly invoked. |
 
-<a id="constructor3"></a>
-
 ## constructor
 
 ```TypeScript
@@ -172,8 +165,6 @@ constructor(elements: Iterable<number>)
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint32Array's constructor cannot be directly invoked. |
 
-<a id="constructor4"></a>
-
 ## constructor
 
 ```TypeScript
@@ -201,8 +192,6 @@ constructor(array: ArrayLike<number> | ArrayBuffer)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The Uint32Array's constructor cannot be directly invoked. |
-
-<a id="constructor5"></a>
 
 ## constructor
 
@@ -506,8 +495,6 @@ forEach(callbackFn: TypedArrayForEachCallback<number, Uint32Array>): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The forEach method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="from1"></a>
-
 ## from
 
 ```TypeScript
@@ -535,8 +522,6 @@ static from(arrayLike: ArrayLike<number>): Uint32Array
 | 类型 | 说明 |
 | --- | --- |
 | Uint32Array | 新创建的ArkTS Uint32Array对象。 |
-
-<a id="from2"></a>
 
 ## from
 
@@ -566,8 +551,6 @@ static from<T>(arrayLike: ArrayLike<T>, mapFn: TypedArrayFromMapFn<T, number>): 
 | 类型 | 说明 |
 | --- | --- |
 | Uint32Array | 新创建的ArkTS Uint32Array对象。 |
-
-<a id="from3"></a>
 
 ## from
 
@@ -833,8 +816,6 @@ static of(...items: number[]): Uint32Array
 | --- | --- |
 | Uint32Array | 新的ArkTS Uint32Array实例。 |
 
-<a id="reduce1"></a>
-
 ## reduce
 
 ```TypeScript
@@ -869,8 +850,6 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint32Array>): numbe
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
-
-<a id="reduce2"></a>
 
 ## reduce
 
@@ -908,8 +887,6 @@ reduce(callbackFn: TypedArrayReduceCallback<number, number, Uint32Array>, initia
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduce3"></a>
-
 ## reduce
 
 ```TypeScript
@@ -946,8 +923,6 @@ reduce<U>(callbackFn: TypedArrayReduceCallback<U, number, Uint32Array>, initialV
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="reduceright1"></a>
-
 ## reduceRight
 
 ```TypeScript
@@ -983,8 +958,6 @@ reduceRight<U = number>(callbackFn: TypedArrayReduceCallback<U, number, Uint32Ar
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
-
-<a id="reduceright2"></a>
 
 ## reduceRight
 

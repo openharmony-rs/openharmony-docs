@@ -6,8 +6,6 @@
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
-<a id="off1"></a>
-
 ## off
 
 ```TypeScript
@@ -16,7 +14,7 @@ function off(eventId: number): void
 
 取消事件ID为eventId的所有订阅。
 
-使用该接口取消某个事件订阅后，已通过[emit](arkts-basicservices-emitter-emit-f.md#emit1)接口发布但尚未被执行的事件将被取消。
+使用该接口取消某个事件订阅后，已通过[emit](arkts-basicservices-emitter-emit-f.md#emit)接口发布但尚未被执行的事件将被取消。
 
 **起始版本：** 7
 
@@ -39,8 +37,6 @@ function off(eventId: number): void
 emitter.off(1);
 ```
 
-
-<a id="off2"></a>
 
 ## off
 
@@ -73,8 +69,12 @@ function off(eventId: string): void
 emitter.off('eventId1');
 ```
 
+```TypeScript
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
-<a id="off3"></a>
+emitter1.off('eventId');
+```
+
 
 ## off
 
@@ -82,9 +82,9 @@ emitter.off('eventId1');
 function off(eventId: number, callback: Callback<EventData>): void
 ```
 
-取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on1)或[once](arkts-basicservices-emitter-once-f.md#once1)接口订阅callback时，该接口才生效。
+取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on)或[once](arkts-basicservices-emitter-once-f.md#once)接口订阅callback时，该接口才生效。
 
-使用该接口取消某个事件订阅后，已通过[emit](arkts-basicservices-emitter-emit-f.md#emit1)接口发布但尚未被执行的事件将被取消。
+使用该接口取消某个事件订阅后，已通过[emit](arkts-basicservices-emitter-emit-f.md#emit)接口发布但尚未被执行的事件将被取消。
 
 **起始版本：** 10
 
@@ -115,15 +115,13 @@ emitter.off(1, callback);
 ```
 
 
-<a id="off4"></a>
-
 ## off
 
 ```TypeScript
 function off(eventId: string, callback: Callback<EventData>): void
 ```
 
-取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on2)或[once](arkts-basicservices-emitter-once-f.md#once2)接口订阅callback时，该接口才生效。
+取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on)或[once](arkts-basicservices-emitter-once-f.md#once)接口订阅callback时，该接口才生效。
 
 使用该接口取消某个事件订阅后，已通过[emit](arkts-basicservices-emitter-emit-f.md)接口发布但尚未被执行的事件将被取消。
 
@@ -155,8 +153,18 @@ let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
 emitter.off('eventId1', callback);
 ```
 
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
 
-<a id="off5"></a>
+let emitter1: emitter.Emitter = new emitter.Emitter();
+
+let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
+  console.info(`eventData: ${JSON.stringify(eventData)}`);
+};
+
+emitter1.off('eventId', callback);
+```
+
 
 ## off
 
@@ -164,7 +172,7 @@ emitter.off('eventId1', callback);
 function off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 ```
 
-取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on3)或[once](arkts-basicservices-emitter-once-f.md#once3)接口订阅callback时，该接口才生效。
+取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on)或[once](arkts-basicservices-emitter-once-f.md#once)接口订阅callback时，该接口才生效。
 
 使用该接口取消某个事件订阅后，已通过[emit](arkts-basicservices-emitter-emit-f.md)接口发布但尚未被执行的事件将被取消。
 
@@ -208,4 +216,30 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
 // 取消eventId为"eventId1"的事件回调处理函数，callback对象应使用订阅时的对象
 // 如果该回调处理函数没有被订阅，则不做任何处理
 emitter.off('eventId1', callback);
+```
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+@Sendable
+class Sample {
+  constructor() {
+    this.count = 100;
+  }
+  printCount() {
+    console.info('Print count : ' + this.count);
+  }
+  count: number;
+}
+
+let emitter1: emitter.Emitter = new emitter.Emitter();
+
+let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.GenericEventData<Sample>): void => {
+  console.info(`eventData: ${JSON.stringify(eventData?.data)}`);
+  if (eventData?.data instanceof Sample) {
+    eventData?.data?.printCount();
+  }
+};
+
+emitter1.off('eventId', callback);
 ```

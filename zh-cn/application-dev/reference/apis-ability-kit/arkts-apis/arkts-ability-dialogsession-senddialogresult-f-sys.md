@@ -6,8 +6,6 @@
 import { dialogSession } from '@kit.AbilityKit';
 ```
 
-<a id="senddialogresult1"></a>
-
 ## sendDialogResult
 
 ```TypeScript
@@ -50,8 +48,6 @@ function sendDialogResult(dialogSessionId: string, targetWant: Want, isAllowed: 
 | [16000006](../errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-
-<a id="senddialogresult2"></a>
 
 ## sendDialogResult
 

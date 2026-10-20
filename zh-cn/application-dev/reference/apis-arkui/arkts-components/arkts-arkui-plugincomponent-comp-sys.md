@@ -30,16 +30,20 @@ PluginComponent(options: PluginComponentOptions)
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [PluginComponentOptions](arkts-arkui-plugincomponent-comp-plugincomponentoptions-i-sys.md) | 定义用于构造插件组件的选项。 |
 | [PluginComponentTemplate](arkts-arkui-plugincomponent-comp-plugincomponenttemplate-i-sys.md) | 定义插件组件模板信息，用于与提供方定义的组件绑定。 |
 | [PluginErrorData](arkts-arkui-plugincomponent-comp-pluginerrordata-i-sys.md) | 发生错误时提供的数据。 |
+<!--DelEnd-->
 
-### 类型
+<!--Del-->
+### 类型（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [PluginErrorCallback](arkts-arkui-plugincomponent-comp-pluginerrorcallback-t-sys.md) | 发生错误时触发事件回调。 |
+<!--DelEnd-->

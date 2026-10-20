@@ -6,8 +6,6 @@ interface WatermarkConfiguration
 
 Set configuration of a watermark. The position starts at top left corner.
 
-@typedef WatermarkConfiguration
-
 **Since:** 26.0.0
 
 <!--Device-media-interface WatermarkConfiguration--><!--Device-media-interface WatermarkConfiguration-End-->

@@ -6,8 +6,6 @@ interface DialogButtonInfo
 
 The definition of dialog button information.
 
-@interface DialogButtonInfo
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-interface DialogButtonInfo--><!--Device-avMusicTemplate-interface DialogButtonInfo-End-->

@@ -5,7 +5,7 @@ export type ImeChangeWithUserIdCallback =
       (inputMethodProperty: InputMethodProperty, inputMethodSubtype: InputMethodSubtype, userId: number) => void
 ```
 
-The callback of the inputmethod change event which carries the user ID whose inputmethod is changed.
+Callback for input method change events, carrying the user ID where the input method change occurs.
 
 **Since:** 26.0.0
 
@@ -21,6 +21,6 @@ The callback of the inputmethod change event which carries the user ID whose inp
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| inputMethodProperty | [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | Yes | the property of current inputmethod. |
-| inputMethodSubtype | [InputMethodSubtype](arkts-ime-inputmethodsubtype-i.md) | Yes | the subtype of current inputmethod. |
-| userId | number | Yes | the user ID whose inputmethod is changed. |
+| inputMethodProperty | [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | Yes | Property of the current input method. |
+| inputMethodSubtype | [InputMethodSubtype](arkts-ime-inputmethodsubtype-i.md) | Yes | Subtype of the current input method. |
+| userId | number | Yes | ID of the user whose input method changes. |

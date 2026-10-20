@@ -18,8 +18,6 @@ An image effect class used to add a specified effect to the effect chain through
 import { effectKit } from '@kit.ArkGraphics2D';
 ```
 
-<a id="blur1"></a>
-
 ## blur
 
 ```TypeScript
@@ -119,8 +117,6 @@ struct Index {
   }
 }
 ```
-
-<a id="blur2"></a>
 
 ## blur
 
@@ -315,8 +311,6 @@ struct Index {
 }
 ```
 
-<a id="geteffectpixelmap1"></a>
-
 ## getEffectPixelMap
 
 ```TypeScript
@@ -374,8 +368,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
   }
 });
 ```
-
-<a id="geteffectpixelmap2"></a>
 
 ## getEffectPixelMap
 
@@ -734,7 +726,7 @@ Obtains image.PixelMap of the source image to which the effect chain has been ad
 
 | Type | Description |
 | --- | --- |
-| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | [image.PixelMap of the source image with the effect chain applied.](../../apis-image-kit/arkts-apis/arkts-image-multimedia-image.md) |
+| [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | image.PixelMap of the source image with the effect chain applied. |
 
 **Examples**
 

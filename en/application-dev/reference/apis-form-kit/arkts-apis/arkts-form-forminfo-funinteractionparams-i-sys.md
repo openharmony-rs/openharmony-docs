@@ -6,8 +6,6 @@ interface FunInteractionParams
 
 The fun interaction form params.
 
-@typedef { FunInteractionParams }
-
 **Since:** 20
 
 <!--Device-formInfo-interface FunInteractionParams--><!--Device-formInfo-interface FunInteractionParams-End-->

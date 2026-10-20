@@ -6,8 +6,6 @@ interface GeneratorDialogOptions
 
 Parameters used to open the ImageGeneratorDialog.
 
-@interface GeneratorDialogOptions
-
 **Since:** 23
 
 <!--Device-imageGeneration-interface GeneratorDialogOptions--><!--Device-imageGeneration-interface GeneratorDialogOptions-End-->

@@ -18,7 +18,7 @@ Updates the information of a printer in the system. This API uses a promise to r
 
 **Required permissions:** 
 - API version 24 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
-- API versions 18 to 23: ohos.permission.MANAGE_PRINT_JOB
+- API versions 18 to 23: N/A
 
 <!--Device-print-function updatePrinterInformation(printerInformation: PrinterInformation): Promise<void>--><!--Device-print-function updatePrinterInformation(printerInformation: PrinterInformation): Promise<void>-End-->
 
@@ -41,7 +41,6 @@ Updates the information of a printer in the system. This API uses a promise to r
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application<br>**Applicable version:** 18 - 23 |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Examples**

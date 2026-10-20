@@ -6,8 +6,6 @@ interface WifiP2pGroupInfo
 
 P2P group information.
 
-@typedef WifiP2pGroupInfo
-
 **Since:** 9
 
 <!--Device-wifiManager-interface WifiP2pGroupInfo--><!--Device-wifiManager-interface WifiP2pGroupInfo-End-->

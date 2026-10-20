@@ -6,8 +6,6 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
-<a id="addpermissionusedrecord1"></a>
-
 ## addPermissionUsedRecord
 
 ```TypeScript
@@ -44,9 +42,9 @@ The permission usage record includes the application identity of the caller, the
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | tokenID | number | Yes | Identity identifier of the target application. It can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to be recorded. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
-| successCount | number | Yes | Number of successful accesses. Passing an invalid value returns error code 12100001.<br>The value should be an integer. Value constraint: The value must be a non-negative integer. |
-| failCount | number | Yes | Number of failed accesses. Passing an invalid value returns error code 12100001.<br>The value should be an integer. Value constraint: The value must be a non-negative integer. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to be recorded. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
+| successCount | number | Yes | Number of successful accesses. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: The value must be a non-negative integer. |
+| failCount | number | Yes | Number of failed accesses. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: The value must be a non-negative integer. |
 | options | [AddPermissionUsedRecordOptions](arkts-ability-privacymanager-addpermissionusedrecordoptions-i-sys.md) | No | Optional parameter for adding a permission usage record, used to specify the sensitive permission usage type and extension identity. Pass this parameter when you need to distinguish the permission access method (such as access via Picker or security control) or identify the caller's extension identity.<br>**Since:** 12 |
 
 **Return value:**
@@ -98,8 +96,6 @@ privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1,
 <!--DelEnd-->
 
 
-<a id="addpermissionusedrecord2"></a>
-
 ## addPermissionUsedRecord
 
 ```TypeScript
@@ -135,9 +131,9 @@ The permission usage record is controlled by the toggle status set by [setPermis
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | tokenID | number | Yes | Identity identifier of the target application. It can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to be recorded. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
-| successCount | number | Yes | Number of successful accesses. Passing an invalid value returns error code 12100001.<br>The value should be an integer. Value constraint: The value must be a non-negative integer. |
-| failCount | number | Yes | Number of failed accesses. Passing an invalid value returns error code 12100001.<br>The value should be an integer. Value constraint: The value must be a non-negative integer. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to be recorded. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
+| successCount | number | Yes | Number of successful accesses. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: The value must be a non-negative integer. |
+| failCount | number | Yes | Number of failed accesses. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: The value must be a non-negative integer. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**

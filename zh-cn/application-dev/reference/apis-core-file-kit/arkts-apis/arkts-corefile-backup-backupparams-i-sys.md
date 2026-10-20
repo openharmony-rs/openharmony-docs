@@ -6,8 +6,6 @@ interface BackupParams
 
 为备份恢复提供可选配置参数。
 
-@interface BackupParams
-
 **起始版本：** 12
 
 <!--Device-backup-interface BackupParams--><!--Device-backup-interface BackupParams-End-->

@@ -6,8 +6,6 @@
 import { connectedTag } from '@kit.ConnectivityKit';
 ```
 
-<a id="write1"></a>
-
 ## write
 
 ```TypeScript
@@ -59,8 +57,6 @@ connectedTag.write(rawData).then(() => {
 });
 ```
 
-
-<a id="write2"></a>
 
 ## write
 

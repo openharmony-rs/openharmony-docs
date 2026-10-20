@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="removegroupbybundle1"></a>
-
 ## removeGroupByBundle
 
 ```TypeScript
@@ -37,8 +35,28 @@ Removes notifications under a notification group of a specified application. Thi
 | groupName | string | Yes | Name of the notification group. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
+**Examples**
 
-<a id="removegroupbybundle2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let removeGroupByBundleCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("removeGroupByBundle failed " + JSON.stringify(err));
+  } else {
+    console.info("removeGroupByBundle success");
+  }
+}
+
+let bundleOption: Notification.BundleOption = {bundle: "Bundle"};
+let groupName: string = "GroupName";
+
+Notification.removeGroupByBundle(bundleOption, groupName, removeGroupByBundleCallback);
+```
+
+<!--DelEnd-->
+
 
 ## removeGroupByBundle
 
@@ -74,3 +92,20 @@ Removes notifications under a notification group of a specified application. Thi
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | the promise returned by the function. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let bundleOption: Notification.BundleOption = {bundle: "Bundle"};
+let groupName: string = "GroupName";
+Notification.removeGroupByBundle(bundleOption, groupName).then(() => {
+  console.info("removeGroupByBundle success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`removeGroupByBundle failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

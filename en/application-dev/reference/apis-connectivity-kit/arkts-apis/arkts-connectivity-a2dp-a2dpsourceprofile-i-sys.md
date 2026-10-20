@@ -57,8 +57,6 @@ Initiate an A2DP connection to a remote device.
 | 2900004 | Profile not supported. |
 | 2900099 | Operation failed. |
 
-<a id="disableabsolutevolume1"></a>
-
 ## disableAbsoluteVolume
 
 ```TypeScript
@@ -100,8 +98,6 @@ Turn off the absolute volume switch.
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
-
-<a id="disableabsolutevolume2"></a>
 
 ## disableAbsoluteVolume
 
@@ -163,7 +159,7 @@ Restriction devices to play music within `duration` milliseconds of connection.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | deviceId | string | Yes | Indicates device ID. For example, "11:22:33:AA:BB:FF". |
-| duration | number | Yes | Restricted duration<milliseconds>. Valid range is from 3000ms to 20000ms. |
+| duration | number | Yes | Restricted duration <milliseconds>. Valid range is from 3000ms to 20000ms. |
 
 **Return value:**
 
@@ -220,8 +216,6 @@ Disconnect the A2DP connection with the remote device.
 | 2900004 | Profile not supported. |
 | 2900099 | Operation failed. |
 
-<a id="enableabsolutevolume1"></a>
-
 ## enableAbsoluteVolume
 
 ```TypeScript
@@ -263,8 +257,6 @@ Turn on the absolute volume switch.
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
-
-<a id="enableabsolutevolume2"></a>
 
 ## enableAbsoluteVolume
 
@@ -373,7 +365,7 @@ Obtains the duration for which automatic playback is disabled.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Returns the duration<milliseconds>; If returns { @code -1 } means allow devices automatic play music when connected. |
+| Promise&lt;number&gt; | Returns the duration <milliseconds>; If returns { @code -1 } means allow devices automatic play music when connected. |
 
 **Error codes:**
 
@@ -471,8 +463,6 @@ Get the full codec capabilities negotiated between the active device and the loc
 | 2900099 | Operation failed. |
 | 2902008 | Current device is not an active device. |
 
-<a id="isabsolutevolumeenabled1"></a>
-
 ## isAbsoluteVolumeEnabled
 
 ```TypeScript
@@ -515,8 +505,6 @@ Checks whether the absolute volume is enabled.
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
 
-<a id="isabsolutevolumeenabled2"></a>
-
 ## isAbsoluteVolumeEnabled
 
 ```TypeScript
@@ -553,8 +541,6 @@ Checks whether the absolute volume is enabled.
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
-
-<a id="isabsolutevolumesupported1"></a>
 
 ## isAbsoluteVolumeSupported
 
@@ -597,8 +583,6 @@ Checks whether the device supports absolute volume.
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
-
-<a id="isabsolutevolumesupported2"></a>
 
 ## isAbsoluteVolumeSupported
 

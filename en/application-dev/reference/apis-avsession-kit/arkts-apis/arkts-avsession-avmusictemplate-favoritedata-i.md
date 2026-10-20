@@ -6,8 +6,6 @@ interface FavoriteData
 
 The definition of Favorite/Subscribe.
 
-@interface FavoriteData
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-interface FavoriteData--><!--Device-avMusicTemplate-interface FavoriteData-End-->

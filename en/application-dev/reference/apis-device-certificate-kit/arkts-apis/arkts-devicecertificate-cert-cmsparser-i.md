@@ -57,8 +57,8 @@ Decrypts the CMS message of the **ENVELOPED_DATA** content type. This API uses a
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
-| [19020003](../errorcode-cert.md#19020003-parameter-check-failure) | Parameter check failed. Possible causes:<br>1. The private key is invalid or not supported; <br>2. The recipient certificate is invalid or not supported. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020003](../errorcode-cert.md#19020003-parameter-check-failure) | Parameter check failed. Possible causes: <br>1. The private key is invalid or not supported; <br>2. The recipient certificate is invalid or not supported. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
@@ -178,8 +178,8 @@ Obtains the certificate from CMS message of the **SIGNED_DATA** type by passing 
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
-| [19020003](../errorcode-cert.md#19020003-parameter-check-failure) | Parameter check failed. Possible causes:<br>1. The value of type is invalid or not supported. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020003](../errorcode-cert.md#19020003-parameter-check-failure) | Parameter check failed. Possible causes: <br>1. The value of type is invalid or not supported. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
@@ -326,7 +326,7 @@ Obtains the content data from CMS message of the **SIGNED_DATA** type. This API 
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
@@ -471,7 +471,7 @@ Obtains the CMS content type.
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
@@ -629,8 +629,8 @@ Set the CMS message data. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
-| [19020003](../errorcode-cert.md#19020003-parameter-check-failure) | Parameter check failed. Possible causes:<br>1. The length of the data is zero or too large; <br>2. The type of the cmsFormat is invalid or not supported. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020003](../errorcode-cert.md#19020003-parameter-check-failure) | Parameter check failed. Possible causes: <br>1. The length of the data is zero or too large; <br>2. The type of the cmsFormat is invalid or not supported. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
@@ -780,8 +780,8 @@ Verifies the CMS message of the **SIGNED_DATA** content type. This API uses a pr
 | Error Code ID | Error Message |
 | --- | --- |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
-| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
-| [19020003](../errorcode-cert.md#19020003-parameter-check-failure) | Parameter check failed. Possible causes:<br>1. The trustCerts of config is empty; <br>2. The length of the contentData of config is zero or too large; <br>3. The contentDataFormat of config is invalid or not supported. |
+| [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes: <br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
+| [19020003](../errorcode-cert.md#19020003-parameter-check-failure) | Parameter check failed. Possible causes: <br>1. The trustCerts of config is empty; <br>2. The length of the contentData of config is zero or too large; <br>3. The contentDataFormat of config is invalid or not supported. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 | [19030003](../errorcode-cert.md#19030003-certificate-has-not-taken-effect) | The certificate has not taken effect. |
 | [19030004](../errorcode-cert.md#19030004-certificate-expired) | The certificate has expired. |

@@ -26,8 +26,6 @@ readonly changed: number
 
 Number of affected rows.
 
-@readonly
-
 **Type:** number
 
 **Since:** 23
@@ -45,8 +43,6 @@ readonly resultSet: LiteResultSet
 ```
 
 Result set of the affected data. Defaults to 1,024 rows of data, with a maximum supported limit of 32,766 rows supported; excess rows will be discarded.
-
-@readonly
 
 **Type:** [LiteResultSet](arkts-arkdata-relationalstore-literesultset-c.md)
 

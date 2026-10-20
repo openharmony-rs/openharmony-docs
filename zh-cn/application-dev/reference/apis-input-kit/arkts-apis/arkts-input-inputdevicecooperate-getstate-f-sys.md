@@ -6,8 +6,6 @@
 import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
-<a id="getstate1"></a>
-
 ## getState
 
 ```TypeScript
@@ -76,8 +74,6 @@ struct Index {
 
 <!--DelEnd-->
 
-
-<a id="getstate2"></a>
 
 ## getState
 

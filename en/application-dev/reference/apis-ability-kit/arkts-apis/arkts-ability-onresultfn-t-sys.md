@@ -6,8 +6,6 @@ type OnResultFn = (parameter: AbilityResult) => void
 
 Defines a onResult function.
 
-@typedef { function } OnResultFn
-
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.

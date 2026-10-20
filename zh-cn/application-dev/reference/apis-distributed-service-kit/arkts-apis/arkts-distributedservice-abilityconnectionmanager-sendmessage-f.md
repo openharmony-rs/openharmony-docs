@@ -26,7 +26,7 @@ function sendMessage(sessionId: number, msg: string): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sessionId | number | 是 | 协同会话ID。 |
+| sessionId | number | 是 | 协同会话ID，由createAbilityConnectionSession接口返回。。 |
 | msg | string | 是 | 文本信息内容（内容最大限制为1KB）。超出长度限制时返回错误码401。 |
 
 **返回值：**

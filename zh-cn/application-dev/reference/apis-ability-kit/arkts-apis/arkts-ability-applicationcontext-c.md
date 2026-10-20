@@ -18,8 +18,6 @@ ApplicationContext作为应用上下文，继承自[Context](arkts-ability-conte
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-<a id="clearupapplicationdata1"></a>
-
 ## clearUpApplicationData
 
 ```TypeScript
@@ -71,8 +69,6 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
-<a id="clearupapplicationdata2"></a>
-
 ## clearUpApplicationData
 
 ```TypeScript
@@ -100,7 +96,7 @@ clearUpApplicationData(callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | AsyncCallback&lt;void&gt; | 是 | Callback used to return the result. If the application data is cleared up,<[code](arkts-ability-triggerinfo-i.md)>error</code> is <code>undefined</code>; otherwise, <code>error</code> is an error object. |
+| callback | AsyncCallback&lt;void&gt; | 是 | Callback used to return the result. If the application data is cleared up, <code>error</code> is <code>undefined</code>; otherwise, <code>error</code> is an error object. |
 
 **错误码：**
 
@@ -442,8 +438,6 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-<a id="getrunningprocessinformation1"></a>
-
 ## getRunningProcessInformation
 
 ```TypeScript
@@ -495,8 +489,6 @@ export default class MyAbility extends UIAbility {
   }
 }
 ```
-
-<a id="getrunningprocessinformation2"></a>
 
 ## getRunningProcessInformation
 
@@ -617,7 +609,7 @@ export default class EntryAbility extends UIAbility {
 getUIAbilityChildProcessInfos(): Promise<Array<ChildProcessInformation>>
 ```
 
-获取当前应用的UIAbility子进程信息。使用Promise异步回调。返回通过[startSelfUIAbilityInChildProcess](arkts-ability-uiabilitycontext-c.md#startselfuiabilityinchildprocess)接口启动的进程，以及通过[startAbility](arkts-ability-uiabilitycontext-c.md#startability3)接口启动且[StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)参数中[processMode](arkts-ability-contextconstant-processmode-e.md)设置为NEW_PROCESS_ATTACH_TO_PARENT模式启动的子进程。无子进程时返回空数组。
+获取当前应用的UIAbility子进程信息。使用Promise异步回调。返回通过[startSelfUIAbilityInChildProcess](arkts-ability-uiabilitycontext-c.md#startselfuiabilityinchildprocess)接口启动的进程，以及通过[startAbility](arkts-ability-uiabilitycontext-c.md#startability)接口启动且[StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md)参数中[processMode](arkts-ability-contextconstant-processmode-e.md)设置为NEW_PROCESS_ATTACH_TO_PARENT模式启动的子进程。无子进程时返回空数组。
 
 **起始版本：** 26.0.1
 
@@ -662,8 +654,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="killallprocesses1"></a>
 
 ## killAllProcesses
 
@@ -714,8 +704,6 @@ export default class MyAbility extends UIAbility {
   }
 }
 ```
-
-<a id="killallprocesses2"></a>
 
 ## killAllProcesses
 
@@ -774,8 +762,6 @@ export default class MyAbility extends UIAbility {
   }
 }
 ```
-
-<a id="killallprocesses3"></a>
 
 ## killAllProcesses
 

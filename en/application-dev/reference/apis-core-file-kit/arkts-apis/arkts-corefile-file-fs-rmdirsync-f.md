@@ -16,7 +16,7 @@ Removes a directory and all its subdirectories and files synchronously.
 
 > **NOTE:** 
 > 
-> This API can be used to remove a single file. However, you are advised to use **unlinkSync** instead.
+> This API can be used to remove a single file. However, you are advised to use <b>unlinkSync()</b> instead.
 
 **Since:** 9
 

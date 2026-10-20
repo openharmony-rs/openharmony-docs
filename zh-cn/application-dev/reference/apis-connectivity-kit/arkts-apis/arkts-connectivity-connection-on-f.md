@@ -78,7 +78,7 @@ function on(type: 'discoveryResult', callback: Callback<Array<DiscoveryResult>>)
 - API版本26+：ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
 - API版本25：N/A
 - API版本18-24：ohos.permission.ACCESS_BLUETOOTH
-- API版本12-17：ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC
+- API版本12-17：N/A
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

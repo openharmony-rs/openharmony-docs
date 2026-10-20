@@ -12,6 +12,24 @@ Enumerates the album types.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+## SHARE
+
+```TypeScript
+SHARE = 8192
+```
+
+Share album.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AlbumType-SHARE = 8192--><!--Device-AlbumType-SHARE = 8192-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
 ## SMART
 
 ```TypeScript

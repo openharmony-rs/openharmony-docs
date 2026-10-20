@@ -31,7 +31,7 @@ Sets the running mode of the device administrator application.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
-| mode | [RunningMode](arkts-mdm-adminmanager-runningmode-e-sys.md) | Yes | Running mode.<br>The value **DEFAULT** means the application runs under the default user (user after the first device power- on). The value **MULTI_USER** means the application runs under multiple users at the same time. |
+| mode | [RunningMode](arkts-mdm-adminmanager-runningmode-e-sys.md) | Yes | Running mode. <br>The value **DEFAULT** means the application runs under the default user (user after the first device power- on). The value **MULTI_USER** means the application runs under multiple users at the same time. |
 
 **Error codes:**
 

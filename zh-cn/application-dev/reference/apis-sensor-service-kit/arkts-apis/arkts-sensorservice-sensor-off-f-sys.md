@@ -6,9 +6,7 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
-<a id="off1"></a>
-
-## off
+## off('SensorId.COLOR')
 
 ```TypeScript
 function off(type: SensorId.COLOR, callback?: Callback<ColorResponse>): void
@@ -35,8 +33,8 @@ function off(type: SensorId.COLOR, callback?: Callback<ColorResponse>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br><br>**适用版本：** 11+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. <br><br>**适用版本：** 11+ |
 
 <!--Del-->
 **示例**
@@ -69,9 +67,7 @@ try {
 <!--DelEnd-->
 
 
-<a id="off2"></a>
-
-## off
+## off('SensorId.COLOR')
 
 ```TypeScript
 function off(type: SensorId.COLOR, sensorInfoParam?: SensorInfoParam, callback?: Callback<ColorResponse>): void
@@ -91,7 +87,7 @@ function off(type: SensorId.COLOR, sensorInfoParam?: SensorInfoParam, callback?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [SensorId.COLOR](arkts-sensorservice-sensor-sensorid-e-sys.md) | 是 | [传感器类型，该值固定为SensorId.COLOR](arkts-sensorservice-sensor-sensorid-e-sys.md) |
+| type | [SensorId.COLOR](arkts-sensorservice-sensor-sensorid-e-sys.md) | 是 | 传感器类型，该值固定为SensorId.COLOR |
 | sensorInfoParam | [SensorInfoParam](arkts-sensorservice-sensor-sensorinfoparam-i.md) | 否 | 传感器传入设置参数，可指定deviceId和sensorIndex。默认值：deviceId为-1（本地设备），sensorIndex为0（默认传感器）。不传入时默认取消本地设备上的回调。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ColorResponse](arkts-sensorservice-sensor-colorresponse-i-sys.md)&gt; | 否 | 回调函数，需要取消订阅的回调函数，若无此参数，则取消订阅指定设备上当前类型的所有回调函数。 |
 
@@ -100,7 +96,7 @@ function off(type: SensorId.COLOR, sensorInfoParam?: SensorInfoParam, callback?:
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 <!--Del-->
 **示例**
@@ -164,9 +160,7 @@ function sensorUnsubscribe(): Ret {
 <!--DelEnd-->
 
 
-<a id="off3"></a>
-
-## off
+## off('SensorId.SAR')
 
 ```TypeScript
 function off(type: SensorId.SAR, callback?: Callback<SarResponse>): void
@@ -193,8 +187,8 @@ function off(type: SensorId.SAR, callback?: Callback<SarResponse>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br><br>**适用版本：** 11+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. <br><br>**适用版本：** 11+ |
 
 <!--Del-->
 **示例**
@@ -227,9 +221,7 @@ try {
 <!--DelEnd-->
 
 
-<a id="off4"></a>
-
-## off
+## off('SensorId.SAR')
 
 ```TypeScript
 function off(type: SensorId.SAR, sensorInfoParam?: SensorInfoParam, callback?: Callback<SarResponse>): void
@@ -258,7 +250,7 @@ function off(type: SensorId.SAR, sensorInfoParam?: SensorInfoParam, callback?: C
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [14500101](../errorcode-sensor.md#14500101-传感器服务异常) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 <!--Del-->
 **示例**

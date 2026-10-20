@@ -8,7 +8,7 @@ interface CaptureSession
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -32,7 +32,7 @@ import { camera } from '@kit.CameraKit';
 getBeauty(type: BeautyType): number
 ```
 
-Obtains the level of the beauty type in use.
+获取当前使用的美颜类型等级。
 
 **起始版本：** 10
 
@@ -50,13 +50,13 @@ Obtains the level of the beauty type in use.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [BeautyType](arkts-camera-camera-beautytype-e-sys.md) | 是 | Beauty type. |
+| type | [BeautyType](arkts-camera-camera-beautytype-e-sys.md) | 是 | 美颜类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | the beauty effect in use. |
+| number | 当前使用的美颜效果等级。 |
 
 **错误码：**
 
@@ -92,14 +92,14 @@ function getBeauty(captureSession: camera.CaptureSession): number {
 getSupportedBeautyRange(type: BeautyType): Array<number>
 ```
 
-Obtains the levels that can be set a beauty type. The beauty levels vary according to the device type. The following table is only an example.
+获取某个美颜类型可设置的等级。不同设备支持的美颜等级不同，下表仅为示例。
 
-| Input Parameter | Example Return Value | Return Value Description |  
+| 输入参数 | 示例返回值 | 返回值描述 |  
 | ----------------| ---- | ---------|  
-| AUTO | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] |Beauty levels supported when **type** is set to **AUTO**. The value **0** means that beauty mode is disabled, and other positive values mean the corresponding automatic beauty levels. |
-| SKIN_SMOOTH | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels. |
-| FACE_SLENDER | [0, 1, 2, 3, 4, 5] | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels. |
-| SKIN_TONE | [-1, 16242611] | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively. |
+| AUTO | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | **type** 为 **AUTO** 时支持的美颜等级。值 **0** 表示关闭美颜模式，其他正整数值表示对应的自动美颜等级。 |  
+| SKIN_SMOOTH | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] | **type** 为 **SKIN_SMOOTH** 时支持的美颜等级。值 **0** 表示关闭磨皮功能，其他正整数值表示对应的磨皮等级。 |  
+| FACE_SLENDER | [0, 1, 2, 3, 4, 5] | **type** 为 **FACE_SLENDER** 时支持的美颜等级。值 **0** 表示关闭瘦脸功能，其他正整数值表示对应的瘦脸等级。 |  
+| SKIN_TONE | [-1, 16242611] | **type** 为 **SKIN_TONE** 时支持的美颜等级。值 **-1** 表示关闭肤色美化功能。其他非负值表示以 RGB 表示的肤色美化等级，<br>例如 16242611，其十六进制为 0xF7D7B3，其中 F7、D7、B3 分别表示 R 通道、G 通道、B 通道的值。 |
 
 **起始版本：** 10
 
@@ -117,13 +117,13 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [BeautyType](arkts-camera-camera-beautytype-e-sys.md) | 是 | Beauty type. |
+| type | [BeautyType](arkts-camera-camera-beautytype-e-sys.md) | 是 | 美颜类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;number&gt; | Array of levels supported. |
+| Array&lt;number&gt; | 支持的等级数组。 |
 
 **错误码：**
 
@@ -153,7 +153,7 @@ function getSupportedBeautyRange(captureSession: camera.CaptureSession): Array<n
 getSupportedBeautyTypes(): Array<BeautyType>
 ```
 
-Obtains the supported beauty types.
+获取支持的美颜类型。
 
 **起始版本：** 10
 
@@ -171,7 +171,7 @@ Obtains the supported beauty types.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[BeautyType](arkts-camera-camera-beautytype-e-sys.md)&gt; | Array of beauty types supported. |
+| Array&lt;[BeautyType](arkts-camera-camera-beautytype-e-sys.md)&gt; | 支持的美颜类型数组。 |
 
 **错误码：**
 
@@ -197,7 +197,7 @@ function getSupportedBeautyTypes(captureSession: camera.CaptureSession): Array<c
 setBeauty(type: BeautyType, value: number): void
 ```
 
-Sets a beauty type and its level. Beauty mode is turned off only when all the [beauty types](arkts-camera-camera-beautytype-e-sys.md) obtained through [getSupportedBeautyTypes](#getsupportedbeautytypes) are disabled.
+设置美颜类型及其等级。只有当通过[getSupportedBeautyTypes](#getsupportedbeautytypes) 获取的所有[美颜类型](arkts-camera-camera-beautytype-e-sys.md) 均被关闭时，美颜模式才会关闭。
 
 **起始版本：** 10
 
@@ -215,8 +215,8 @@ Sets a beauty type and its level. Beauty mode is turned off only when all the [b
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [BeautyType](arkts-camera-camera-beautytype-e-sys.md) | 是 | Beauty type. |
-| value | number | 是 | Beauty level, which is obtained through [getSupportedBeautyRange](#getsupportedbeautyrange). |
+| type | [BeautyType](arkts-camera-camera-beautytype-e-sys.md) | 是 | 美颜类型。 |
+| value | number | 是 | 美颜等级，通过[getSupportedBeautyRange](#getsupportedbeautyrange) 获取。 |
 
 **错误码：**
 

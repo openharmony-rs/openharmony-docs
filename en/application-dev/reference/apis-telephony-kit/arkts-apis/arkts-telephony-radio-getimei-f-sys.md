@@ -6,8 +6,6 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
-<a id="getimei1"></a>
-
 ## getIMEI
 
 ```TypeScript
@@ -63,8 +61,6 @@ radio.getIMEI(slotId, (err: BusinessError, data: string) => {
 
 <!--DelEnd-->
 
-
-<a id="getimei2"></a>
 
 ## getIMEI
 
@@ -124,8 +120,6 @@ radio.getIMEI(slotId).then((data: string) => {
 
 <!--DelEnd-->
 
-
-<a id="getimei3"></a>
 
 ## getIMEI
 

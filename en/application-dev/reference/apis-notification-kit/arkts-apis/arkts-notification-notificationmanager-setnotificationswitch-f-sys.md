@@ -31,7 +31,7 @@ Sets the notification switch state. This API uses a promise to return the result
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | switchName | string | Yes | Name of the notification switch. The value can be **DEAL** (aggregated switch for transaction notifications) or **LOGISTICS** (aggregated switch for logistics notifications). |
-| switchState | boolean | Yes | Whether to enable the notification switch.<br> - **true**: enable. <br> - **false**: disable. |
+| switchState | boolean | Yes | Whether to enable the notification switch. <br> - **true**: enable. <br> - **false**: disable. |
 | userId | number | Yes | User ID. |
 
 **Return value:**

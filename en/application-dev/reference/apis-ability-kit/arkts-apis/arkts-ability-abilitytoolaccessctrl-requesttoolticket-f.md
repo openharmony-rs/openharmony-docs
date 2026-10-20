@@ -3,6 +3,7 @@
 ## Modules to Import
 
 ```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## requestToolTicket
@@ -41,7 +42,7 @@ Obtain the execution authentication ticket for CLI tools. This function retrieve
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denial. The interface caller does not have permission "ohos.permission.EXEC_PUBLIC_CLI_TOOL". |
-| [24010000](../errorcode-abilityToolAccessCtrl-sys.md#24010000-invalid-parameter) | Invalid parameter. TicketExpireTime exceeds 24h, etc. |
+| [24010000](../errorcode-abilityToolAccessCtrl-sys.md#24010000-invalid-parameter) | Invalid parameter. TicketExpireTime exceeds 60s, etc. |
 | [24010001](../errorcode-abilityToolAccessCtrl-sys.md#24010001-system-service-abnormal) | Service is abnormal. Possible cause: IPC failed. |
 | [24010002](../errorcode-abilityToolAccessCtrl-sys.md#24010002-internal-service-error) | Common internal error. Possible cause: dependent service unavailable, resource access failure, etc. |
 | [24010006](../errorcode-abilityToolAccessCtrl-sys.md#24010006-operation-not-allowed-while-the-device-is-locked) | The requested operation is not allowed to be executed while the device is locked. |

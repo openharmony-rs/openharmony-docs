@@ -4,7 +4,7 @@
 type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeetingControlGroup | VideoLiveControlGroup
 ```
 
-Describes the optional component groups of the PiP controller. An application can configure whether to display these optional components. This API must match [PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md) when being used. Otherwise, the [create](arkts-arkui-pipwindow-create-f.md#create1) API returns error code 401.
+Describes the optional component groups of the PiP controller. An application can configure whether to display these optional components. This API must match [PiPTemplateType](arkts-arkui-pipwindow-piptemplatetype-e.md) when being used. Otherwise, the [create](arkts-arkui-pipwindow-create-f.md#create) API returns error code 401.
 
 **Since:** 12
 

@@ -32,7 +32,7 @@ Check whether the device supports the [openCertificateDetailDialog](arkts-device
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [29700001](../errorcode-certManagerDialog.md#29700001-internal-error) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
+| [29700001](../errorcode-certManagerDialog.md#29700001-internal-error) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 
 **Examples**
 

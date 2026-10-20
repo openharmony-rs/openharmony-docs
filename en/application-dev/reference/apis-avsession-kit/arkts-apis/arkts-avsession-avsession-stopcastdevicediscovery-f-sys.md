@@ -6,8 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="stopcastdevicediscovery1"></a>
-
 ## stopCastDeviceDiscovery
 
 ```TypeScript
@@ -47,8 +45,6 @@ avSession.stopCastDeviceDiscovery(() => {
 
 <!--DelEnd-->
 
-
-<a id="stopcastdevicediscovery2"></a>
 
 ## stopCastDeviceDiscovery
 

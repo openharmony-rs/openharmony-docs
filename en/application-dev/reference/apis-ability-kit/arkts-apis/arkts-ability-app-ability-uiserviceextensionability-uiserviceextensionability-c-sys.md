@@ -225,7 +225,7 @@ class UIServiceExt extends UIServiceExtensionAbility {
 onRequest(want: Want, startId: number): void
 ```
 
-Called to request to start a [UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md). If the UIServiceExtensionAbility is started by calling [startAbility](arkts-ability-uiabilitycontext-c.md#startability1) or [startUIServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability), this callback will be invoked after [onCreate](#oncreate). The value of **startId** is incremented for each UIServiceExtensionAbility that is started.
+Called to request to start a [UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md). If the UIServiceExtensionAbility is started by calling [startAbility](arkts-ability-uiabilitycontext-c.md#startability) or [startUIServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability), this callback will be invoked after [onCreate](#oncreate). The value of **startId** is incremented for each UIServiceExtensionAbility that is started.
 
 **Since:** 14
 

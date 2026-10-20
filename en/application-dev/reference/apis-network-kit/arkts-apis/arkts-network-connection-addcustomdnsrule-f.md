@@ -6,8 +6,6 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
-<a id="addcustomdnsrule1"></a>
-
 ## addCustomDnsRule
 
 ```TypeScript
@@ -65,8 +63,6 @@ connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"], (error: Busin
 })
 ```
 
-
-<a id="addcustomdnsrule2"></a>
 
 ## addCustomDnsRule
 

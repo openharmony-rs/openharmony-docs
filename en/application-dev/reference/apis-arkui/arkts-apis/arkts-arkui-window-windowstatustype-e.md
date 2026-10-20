@@ -38,7 +38,7 @@ The application is displayed in full screen.
 
 In [freeform window](../../../windowmanager/window-terminology.md#freeform-window) state, the window occupies the entire screen with no dock, title bar, or status bar displayed by default.
 
-You can use [maximize()](arkts-arkui-window-window-i.md#maximize1) and [setTitleAndDockHoverShown()](arkts-arkui-window-window-i.md#settitleanddockhovershown) to configure whether to display the title bar and dock upon hovering over the hot zone.
+You can use [maximize()](arkts-arkui-window-window-i.md#maximize) and [setTitleAndDockHoverShown()](arkts-arkui-window-window-i.md#settitleanddockhovershown) to configure whether to display the title bar and dock upon hovering over the hot zone.
 
 The last call takes precedence when both the **maximize()** and **setTitleAndDockHoverShown()** APIs are called.
 

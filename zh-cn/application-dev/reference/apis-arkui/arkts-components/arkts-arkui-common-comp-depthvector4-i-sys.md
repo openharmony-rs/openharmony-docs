@@ -14,8 +14,6 @@ declare interface DepthVector4
 > 
 > - 本模块为系统接口。
 
-@interface DepthVector4
-
 **起始版本：** 26.0.0
 
 <!--Device-unnamed-declare interface DepthVector4--><!--Device-unnamed-declare interface DepthVector4-End-->

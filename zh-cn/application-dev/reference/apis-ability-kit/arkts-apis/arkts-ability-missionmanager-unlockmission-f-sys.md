@@ -6,8 +6,6 @@
 import { missionManager } from '@kit.AbilityKit';
 ```
 
-<a id="unlockmission1"></a>
-
 ## unlockMission
 
 ```TypeScript
@@ -68,8 +66,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="unlockmission2"></a>
 
 ## unlockMission
 

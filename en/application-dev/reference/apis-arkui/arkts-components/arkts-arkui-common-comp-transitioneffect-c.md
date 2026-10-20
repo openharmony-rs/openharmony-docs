@@ -39,7 +39,7 @@ Animation settings.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [AnimateParam](arkts-arkui-common-comp-animateparam-i.md) | Yes | Animation parameters.<br>The **onFinish** callback in **AnimateParam** does not work here. <br>If **combine** is used for combining transition effects, the animation settings of a transition effect are applicable to the one following it. |
+| value | [AnimateParam](arkts-arkui-common-comp-animateparam-i.md) | Yes | Animation parameters. <br>The **onFinish** callback in **AnimateParam** does not work here. <br>If **combine** is used for combining transition effects, the animation settings of a transition effect are applicable to the one following it. |
 
 **Return value:**
 
@@ -74,8 +74,8 @@ Sets the asymmetric transition effect.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appear | [TransitionEffect](arkts-arkui-common-comp-transitioneffect-c.md) | Yes | Transition effect for appearance.<br>If the **asymmetric** function is not used for **TransitionEffect**, the transition effect takes effect for both appearance and disappearance of the component. |
-| disappear | [TransitionEffect](arkts-arkui-common-comp-transitioneffect-c.md) | Yes | Transition effect for disappearance.<br>If the **asymmetric** function is not used for **TransitionEffect**, the transition effect takes effect for both appearance and disappearance of the component. |
+| appear | [TransitionEffect](arkts-arkui-common-comp-transitioneffect-c.md) | Yes | Transition effect for appearance. <br>If the **asymmetric** function is not used for **TransitionEffect**, the transition effect takes effect for both appearance and disappearance of the component. |
+| disappear | [TransitionEffect](arkts-arkui-common-comp-transitioneffect-c.md) | Yes | Transition effect for disappearance. <br>If the **asymmetric** function is not used for **TransitionEffect**, the transition effect takes effect for both appearance and disappearance of the component. |
 
 **Return value:**
 
@@ -198,7 +198,7 @@ Sets the opacity for component transition.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| alpha | number | Yes | Opacity of the component during transition, which is the value of the start point of insertion and the end point of deletion.<br>Value range: [0, 1]. <br>**NOTE:** <br>If the value specified is less than 0, the value **0** is used. If the value specified is greater than 1, the value **1** is used. |
+| alpha | number | Yes | Opacity of the component during transition, which is the value of the start point of insertion and the end point of deletion. <br>Value range: [0, 1]. <br>**NOTE:** <br>If the value specified is less than 0, the value **0** is used. If the value specified is greater than 1, the value **1** is used. |
 
 **Return value:**
 
@@ -230,7 +230,7 @@ Sets the rotation effect for component transitions.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [RotateOptions](arkts-arkui-common-comp-rotateoptions-i.md) | Yes | Rotation effect for component transitions, specifying the start point of insertion and the end point of deletion.<br>- **x**: X-component of the rotation vector. <br>- **y**: Y-component of the rotation vector. <br>- **z**: Z-component of the rotation vector. <br>- **centerX** and **centerY**: rotation center point. The default values are both **"50%"**, indicating the center point of the page. <br>- If the center point is (0, 0), it refers to the upper left corner of the component. <br>- **centerZ**: z-axis anchor point, that is, the z-component of the 3D rotation center point. The default value is **0**. <br>- **perspective**: viewing distance. It is not supported for use in transition animations. |
+| options | [RotateOptions](arkts-arkui-common-comp-rotateoptions-i.md) | Yes | Rotation effect for component transitions, specifying the start point of insertion and the end point of deletion. <br>- **x**: X-component of the rotation vector. <br>- **y**: Y-component of the rotation vector. <br>- **z**: Z-component of the rotation vector. <br>- **centerX** and **centerY**: rotation center point. The default values are both **"50%"**, indicating the center point of the page. <br>- If the center point is (0, 0), it refers to the upper left corner of the component. <br>- **centerZ**: z-axis anchor point, that is, the z-component of the 3D rotation center point. The default value is **0**. <br>- **perspective**: viewing distance. It is not supported for use in transition animations. |
 
 **Return value:**
 
@@ -262,7 +262,7 @@ Sets the scaling effect for component transitions.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ScaleOptions](arkts-arkui-common-comp-scaleoptions-i.md) | Yes | Scaling effect for component transitions, specifying the start point of insertion and the end point of deletion. The scale value set here is multiplied by the component's **scale** attribute. For example, if the component's scale is 0.8 and the transition scale is set to 0.5, the component entry animation starts from a scale of 0.4.<br>- **x**: scale factor along the x-axis. <br>- **y**: scale factor along the y-axis. <br>-z: currently invalid in two-dimensional display. <br>- **centerX** and **centerY**: scale center point. The default values are both **"50%"**, indicating the center point of the page. <br>- If the center point is (0, 0), it refers to the upper left corner of the component. <br>**NOTE:** <br>If **centerX** or **centerY** is set to an invalid string (for example, **"illegalString"**), the default value **"0"** is used. |
+| options | [ScaleOptions](arkts-arkui-common-comp-scaleoptions-i.md) | Yes | Scaling effect for component transitions, specifying the start point of insertion and the end point of deletion. The scale value set here is multiplied by the component's **scale** attribute. For example, if the component's scale is 0.8 and the transition scale is set to 0.5, the component entry animation starts from a scale of 0.4. <br>- **x**: scale factor along the x-axis. <br>- **y**: scale factor along the y-axis. <br>-z: currently invalid in two-dimensional display. <br>- **centerX** and **centerY**: scale center point. The default values are both **"50%"**, indicating the center point of the page. <br>- If the center point is (0, 0), it refers to the upper left corner of the component. <br>**NOTE:** <br>If **centerX** or **centerY** is set to an invalid string (for example, **"illegalString"**), the default value **"0"** is used. |
 
 **Return value:**
 
@@ -294,7 +294,7 @@ Sets the translation effect for component transitions.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [TranslateOptions](arkts-arkui-common-comp-translateoptions-i.md) | Yes | Translation effect for component transitions, specifying the start point of insertion and the end point of deletion.<br>-**x**: distance to translate along the x-axis. <br>-**y**: distance to translate along the y-axis. <br>-**z**: distance to translate along the z-axis. |
+| options | [TranslateOptions](arkts-arkui-common-comp-translateoptions-i.md) | Yes | Translation effect for component transitions, specifying the start point of insertion and the end point of deletion. <br>-**x**: distance to translate along the x-axis. <br>-**y**: distance to translate along the y-axis. <br>-**z**: distance to translate along the z-axis. |
 
 **Return value:**
 

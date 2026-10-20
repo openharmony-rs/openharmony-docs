@@ -16,8 +16,6 @@ In addition to the [universal events](arkts-arkui-common-comp.md), the following
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="autoplay1"></a>
-
 ## autoPlay
 
 ```TypeScript
@@ -42,9 +40,7 @@ When [loop](#loop) is set to **false**, auto play stops when the last page is re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to enable automatic playback for child components.<br>**true**: yes; **false**: no <br>If an invalid value is passed, the value **false** is used. |
-
-<a id="autoplay2"></a>
+| value | boolean | Yes | Whether to enable automatic playback for child components. <br>**true**: yes; **false**: no <br>If an invalid value is passed, the value **false** is used. |
 
 ## autoPlay
 
@@ -72,10 +68,8 @@ If [loop](#loop) is set to **false**, automatic playback stops at the last page 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| autoPlay | boolean | Yes | Whether to enable automatic playback for child components.<br>**true**: yes; **false**: no <br>If an invalid value is passed, the value **false** is used. |
-| options | [AutoPlayOptions](arkts-arkui-swiper-comp-autoplayoptions-i.md) | Yes | Whether child components stop automatic playback when the screen is pressed by fingers, a mouse device, or other input devices. If **stopWhenTouched** is set to **true**, automatic playback resumes after any finger lifts in multi-touch scenarios.<br>Default value: **{ stopWhenTouched: true }**. |
-
-<a id="cachedcount1"></a>
+| autoPlay | boolean | Yes | Whether to enable automatic playback for child components. <br>**true**: yes; **false**: no <br>If an invalid value is passed, the value **false** is used. |
+| options | [AutoPlayOptions](arkts-arkui-swiper-comp-autoplayoptions-i.md) | Yes | Whether child components stop automatic playback when the screen is pressed by fingers, a mouse device, or other input devices. If **stopWhenTouched** is set to **true**, automatic playback resumes after any finger lifts in multi-touch scenarios. <br>Default value: **{ stopWhenTouched: true }**. |
 
 ## cachedCount
 
@@ -107,9 +101,7 @@ Sets the number of child components to be preloaded. Based on the current page, 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Number of child components to be preloaded (cached).<br>Default value: **1** <br>Value range: [0, +∞). If a value less than 0 is set, the default value is used. |
-
-<a id="cachedcount2"></a>
+| value | number | Yes | Number of child components to be preloaded (cached). <br>Default value: **1** <br>Value range: [0, +∞). If a value less than 0 is set, the default value is used. |
 
 ## cachedCount
 
@@ -141,10 +133,8 @@ Sets the number of child components to be cached.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| count | number | Yes | Number of child components to be preloaded (cached).<br>Default value: **1** <br>Value range: [0, +∞). If a value less than 0 is set, the default value is used. |
-| isShown | boolean | Yes | Whether the cached nodes within the range are rendered without being added to the render tree.<br>**true**: yes; **false**: no <br>If an invalid value is passed, the value **false** is used. |
-
-<a id="cachedcount3"></a>
+| count | number | Yes | Number of child components to be preloaded (cached). <br>Default value: **1** <br>Value range: [0, +∞). If a value less than 0 is set, the default value is used. |
+| isShown | boolean | Yes | Whether the cached nodes within the range are rendered without being added to the render tree. <br>**true**: yes; **false**: no <br>If an invalid value is passed, the value **false** is used. |
 
 ## cachedCount
 
@@ -156,7 +146,7 @@ Sets the number of child components to be preloaded and configuration options.
 
 > **NOTE:** 
 > 
-> - When **independent** in options is set to **true**, the number of preloaded child components is calculated based on the value of **count**, which is decoupled from the **swipeByGroup** calculation of [displayCount](#displaycount2).For example, if the value of **count** in **cachedCount** is **1**, the previous and next child components of the current child node are preloaded.
+> - When **independent** in options is set to **true**, the number of preloaded child components is calculated based on the value of **count**, which is decoupled from the **swipeByGroup** calculation of [displayCount](#displaycount).For example, if the value of **count** in **cachedCount** is **1**, the previous and next child components of the current child node are preloaded.
 > 
 > - If **swipeByGroup** of **displayCount** is set to **true** and **independent** of **options** is set to
 > **false** (default value), the number of child components to be preloaded is calculated by group. For example, if
@@ -261,7 +251,7 @@ Sets whether to disable the component swipe switching feature. This is applicabl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to disable the swipe feature. The value **true** means to disable the feature, and **false** means the opposite.<br>Default value: **false**. |
+| value | boolean | Yes | Whether to disable the swipe feature. The value **true** means to disable the feature, and **false** means the opposite. <br>Default value: **false**. |
 
 ## displayArrow
 
@@ -290,10 +280,8 @@ Sets the arrow style of the navigation indicator.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ArrowStyle](arkts-arkui-swiper-comp-arrowstyle-i.md) &#124; boolean | Yes | Arrow and background to set. In cases of exceptions, the default values in the **ArrowStyle** object are used. The value **true** means to show the arrow and background in the default styles, and **false** means to hide the arrow and background.<br>Default value: **false**. |
-| isHoverShow | boolean | No | Whether to show the arrow on mouse hover.<br>Default value: **false**. <br>**NOTE:** <br>1. **false**: The arrow is always displayed. <br>2. **true**: The arrow is displayed. <br>With navigation indicators, the arrow is displayed when the mouse pointer hovers over the indicators or arrow areas. <br>Without navigation indicators, the arrow is displayed when the mouse pointer hovers over the **Swiper** display area. <br>3. When the arrow is displayed, clicking the arrow turns pages. |
-
-<a id="displaycount1"></a>
+| value | [ArrowStyle](arkts-arkui-swiper-comp-arrowstyle-i.md) &#124; boolean | Yes | Arrow and background to set. In cases of exceptions, the default values in the **ArrowStyle** object are used. The value **true** means to show the arrow and background in the default styles, and **false** means to hide the arrow and background. <br>Default value: **false**. |
+| isHoverShow | boolean | No | Whether to show the arrow on mouse hover. <br>Default value: **false**. <br>**NOTE:** <br>1. **false**: The arrow is always displayed. <br>2. **true**: The arrow is displayed. <br>With navigation indicators, the arrow is displayed when the mouse pointer hovers over the indicators or arrow areas. <br>Without navigation indicators, the arrow is displayed when the mouse pointer hovers over the **Swiper** display area. <br>3. When the arrow is displayed, clicking the arrow turns pages. |
 
 ## displayCount
 
@@ -329,10 +317,10 @@ Sets the number of elements to display per page.
 
 | ------------------------------------------ | ------------ | --------------- | ------------------------------------------------------------ | ---------------------------------------- |  
 | Yes | Yes | **loop** set to **true** | Equals the number of groups (calculated by dividing the total number of child elements by the number of visible child elements, with rounding up if there is a remainder).| Not effective when **displayCount** is set to **'auto'**.|  
-| Yes | Yes | **loop** set to **false**| Equals the number of groups (calculated by dividing the total number of child elements by the number of visible child elements, with rounding up if there is a remainder).| Not effective when **displayCount** is set to **'auto'**.|
-| Yes | No | **loop** set to **true** | Equals the actual number of page turns available (that is, the total number of child elements).| —— |
-| Yes | No | **loop** set to **false**| Equals the actual number of page turns available (calculated as total number of child elements minus the number of visible child elements, plus 1).| Not effective when **displayCount** is set to **'auto'**.|
-| No (while the total number of child elements is greater than 0) | —— | —— | 1 | Not effective when **displayCount** is set to **'auto'**.|
+| Yes | Yes | **loop** set to **false**| Equals the number of groups (calculated by dividing the total number of child elements by the number of visible child elements, with rounding up if there is a remainder).| Not effective when **displayCount** is set to **'auto'**.|  
+| Yes | No | **loop** set to **true** | Equals the actual number of page turns available (that is, the total number of child elements).| —— |  
+| Yes | No | **loop** set to **false**| Equals the actual number of page turns available (calculated as total number of child elements minus the number of visible child elements, plus 1).| Not effective when **displayCount** is set to **'auto'**.|  
+| No (while the total number of child elements is greater than 0) | —— | —— | 1 | Not effective when **displayCount** is set to **'auto'**.|  
 | No (while the total number of child elements is 0)| —— | —— | 0| —— |
 
 **Since:** 8
@@ -349,10 +337,8 @@ Sets the number of elements to display per page.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [SwiperAutoFill](arkts-arkui-swiper-comp-swiperautofill-i.md) | Yes | Number of elements to display per page.<br> Default value: **1** <br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used.<br>**Since:** 10 |
+| value | number &#124; string &#124; [SwiperAutoFill](arkts-arkui-swiper-comp-swiperautofill-i.md) | Yes | Number of elements to display per page. <br> Default value: **1** <br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used.<br>**Since:** 10 |
 | swipeByGroup | boolean | No | Whether to turn pages by group. If set to **true**, pages are turned by group, and the number of child elements in each group is the value of **displayCount**. If set to **false**, the default page turning behavior is used, that is, pages are turned by child element.<br>Default value: **false** <br><br>**Since:** 11 |
-
-<a id="displaycount2"></a>
 
 ## displayCount
 
@@ -370,7 +356,7 @@ Sets the number of elements to display per page.
 
 **ItemFillPolicy** type: Child elements' main-axis width adapts to the **Swiper** component's main-axis width. The number of displayed elements is determined based on the breakpoint type corresponding to the **Swiper** component's width. For example, if the breakpoint type is set to **ItemFillPolicy.BREAKPOINT_DEFAULT**, one column is displayed when the component width falls within the sm or smaller breakpoint range, two columns are displayed for the md breakpoint range, and three columns are displayed for the lg or a larger breakpoint range.
 
-For details about the parameter, see [displayCount](#displaycount1).
+For details about the parameter, see [displayCount](#displaycount).
 
 **Since:** 22
 
@@ -389,7 +375,7 @@ For details about the parameter, see [displayCount](#displaycount1).
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number &#124; string &#124; [SwiperAutoFill](arkts-arkui-swiper-comp-swiperautofill-i.md) &#124; [ItemFillPolicy](../arkts-apis/arkts-arkui-itemfillpolicy-i.md) | Yes | Number of child components displayed in the viewport.<br>Default value: **1**<br>Value range: (0, +∞). If the value is set to less than or equal to 0, it is processed as 1. |
-| swipeByGroup | boolean | No | Whether to turn pages by group. The value **true** means to turn pages by group, and **false** means to turn pages by child element. When turning pages by group is used, the number of child elements per group is the value of **displayCount**.<br> Default value: **false**. |
+| swipeByGroup | boolean | No | Whether to turn pages by group. The value **true** means to turn pages by group, and **false** means to turn pages by child element. When turning pages by group is used, the number of child elements per group is the value of **displayCount**. <br> Default value: **false**. |
 
 ## displayMode
 
@@ -397,7 +383,7 @@ For details about the parameter, see [displayCount](#displaycount1).
 displayMode(value: SwiperDisplayMode)
 ```
 
-Sets the mode in which elements are displayed along the main axis. This API takes effect only when [displayCount](#displaycount1) is not set.
+Sets the mode in which elements are displayed along the main axis. This API takes effect only when [displayCount](#displaycount) is not set.
 
 **Since:** 7
 
@@ -413,7 +399,7 @@ Sets the mode in which elements are displayed along the main axis. This API take
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SwiperDisplayMode](arkts-arkui-swiper-comp-swiperdisplaymode-e.md) | Yes | Mode in which elements are displayed along the main axis.<br>Default value: **SwiperDisplayMode.STRETCH** |
+| value | [SwiperDisplayMode](arkts-arkui-swiper-comp-swiperdisplaymode-e.md) | Yes | Mode in which elements are displayed along the main axis. <br>Default value: **SwiperDisplayMode.STRETCH** |
 
 ## duration
 
@@ -439,7 +425,7 @@ The default curve for the animation is [interpolatingSpring](../arkts-apis/arkts
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Animation duration for switching between child components.<br>Default value: **400**<br/ >Unit: ms<br>Value range: [0, +∞). If a value less than 0 is set, the default value is used. |
+| value | number | Yes | Animation duration for switching between child components.<br>Default value: **400** <br>Unit: ms<br>Value range: [0, +∞). If a value less than 0 is set, the default value is used. |
 
 ## effectMode
 
@@ -447,7 +433,7 @@ The default curve for the animation is [interpolatingSpring](../arkts-apis/arkts
 effectMode(value: EdgeEffect)
 ```
 
-Edge sliding effect. This parameter takes effect only when [loop](#loop) is set to **false** or all child nodes are displayed on one screen in the **Swiper** viewport. When the [SwiperController.changeIndex()](arkts-arkui-swiper-comp-swipercontroller-c.md#changeindex1), [SwiperController.showNext()](arkts-arkui-swiper-comp-swipercontroller-c.md#shownext), or [SwiperController.showPrevious()](arkts-arkui-swiper-comp-swipercontroller-c.md#showprevious) API is called to go to the first or last page, the rebound effect does not take effect.
+Edge sliding effect. This parameter takes effect only when [loop](#loop) is set to **false** or all child nodes are displayed on one screen in the **Swiper** viewport. When the [SwiperController.changeIndex()](arkts-arkui-swiper-comp-swipercontroller-c.md#changeindex), [SwiperController.showNext()](arkts-arkui-swiper-comp-swipercontroller-c.md#shownext), or [SwiperController.showPrevious()](arkts-arkui-swiper-comp-swipercontroller-c.md#showprevious) API is called to go to the first or last page, the rebound effect does not take effect.
 
 **Since:** 8
 
@@ -463,7 +449,7 @@ Edge sliding effect. This parameter takes effect only when [loop](#loop) is set 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | Yes | Effect used when the component is at one of the edges.<br>Default value: **EdgeEffect.Spring** |
+| value | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | Yes | Effect used when the component is at one of the edges. <br>Default value: **EdgeEffect.Spring** |
 
 ## index
 
@@ -489,9 +475,7 @@ Since API version 10, this attribute supports two-way binding through [$$](../..
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Index of the child component currently displayed in the container.<br>Default value: **0** <br>**NOTE:** <br>If the value specified is less than 0 or greater than the maximum page index, the value **0** is used. |
-
-<a id="indicator1"></a>
+| value | number | Yes | Index of the child component currently displayed in the container. <br>Default value: **0** <br>**NOTE:** <br>If the value specified is less than 0 or greater than the maximum page index, the value **0** is used. |
 
 ## indicator
 
@@ -515,9 +499,7 @@ Sets the style of the navigation indicator.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [DotIndicator](arkts-arkui-swiper-comp-dotindicator-c.md) &#124; [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) &#124; boolean | Yes | Style of the navigation indicator.<br> - **DotIndicator**: dot-style indicator. <br> - **DigitIndicator**: digit-style indicator. <br> - **boolean**: whether to enable the navigation indicator. **true** to enable, **false** otherwise. <br>Default value: **true**. <br>Default type: **DotIndicator**<br>**Since:** 10 |
-
-<a id="indicator2"></a>
+| value | [DotIndicator](arkts-arkui-swiper-comp-dotindicator-c.md) &#124; [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) &#124; boolean | Yes | Style of the navigation indicator. <br> - **DotIndicator**: dot-style indicator. <br> - **DigitIndicator**: digit-style indicator. <br> - **boolean**: whether to enable the navigation indicator. **true** to enable, **false** otherwise. <br>Default value: **true**. <br>Default type: **DotIndicator**<br>**Since:** 10 |
 
 ## indicator
 
@@ -549,7 +531,7 @@ Sets the navigation indicator for the component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| indicator | [IndicatorComponentController](arkts-arkui-indicatorcomponent-comp-indicatorcomponentcontroller-c.md) &#124; [DotIndicator](arkts-arkui-swiper-comp-dotindicator-c.md) &#124; [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) &#124; boolean | Yes | Style of the navigation indicator.<br>- **IndicatorComponentController**: separate navigation indicator controller. This controller can be bound to an external navigation indicator, but the external and internal indicators cannot coexist. <br> - **DotIndicator**: dot-style indicator. <br> - **DigitIndicator**: digit-style indicator. <br> - **boolean**: whether to enable the navigation indicator. **true** to enable, **false** otherwise. <br>Default value: **true**. <br>Default type: **DotIndicator** |
+| indicator | [IndicatorComponentController](arkts-arkui-indicatorcomponent-comp-indicatorcomponentcontroller-c.md) &#124; [DotIndicator](arkts-arkui-swiper-comp-dotindicator-c.md) &#124; [DigitIndicator](arkts-arkui-swiper-comp-digitindicator-c.md) &#124; boolean | Yes | Style of the navigation indicator. <br>- **IndicatorComponentController**: separate navigation indicator controller. This controller can be bound to an external navigation indicator, but the external and internal indicators cannot coexist. <br> - **DotIndicator**: dot-style indicator. <br> - **DigitIndicator**: digit-style indicator. <br> - **boolean**: whether to enable the navigation indicator. **true** to enable, **false** otherwise. <br>Default value: **true**. <br>Default type: **DotIndicator** |
 
 ## indicatorInteractive
 
@@ -573,7 +555,7 @@ Sets whether the navigation dot is interactive. This is applicable to scenarios 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether the navigation indicator is interactive.<br>The value **true** means that the navigation indicator is interactive, and **false** means the opposite. <br>If the input parameter is invalid, the value **true** is used. |
+| value | boolean | Yes | Whether the navigation indicator is interactive. <br>The value **true** means that the navigation indicator is interactive, and **false** means the opposite. <br>If the input parameter is invalid, the value **true** is used. |
 
 ## interval
 
@@ -623,7 +605,7 @@ If the type is number, the default unit is vp. If the type is string, the pixel 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string | Yes | Space between child components.<br>Default value: **0** <br>Value range: [0, +∞). Values less than 0 or exceeding the **Swiper** component width are treated as the default value. |
+| value | number &#124; string | Yes | Space between child components. <br>Default value: **0** <br>Value range: [0, +∞). Values less than 0 or exceeding the **Swiper** component width are treated as the default value. |
 
 ## loop
 
@@ -638,7 +620,7 @@ Sets whether to enable looping. In the **LazyForEach** lazy loop loading mode, i
 > In a loop scenario, when the **prevMargin**\/**nextMargin** attributes are set, linear traversal of child
 > components by the screen reader triggers an infinite loop of "focus-scroll-expose new child node". In this
 > scenario, you are advised to set **loop** to **false** or use
-> [accessibilityGroup](arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup2)
+> [accessibilityGroup](arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup)
 > to disable accessibility services for child components.
 
 **Since:** 7
@@ -655,7 +637,7 @@ Sets whether to enable looping. In the **LazyForEach** lazy loop loading mode, i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to enable loop playback.<br>**true**: yes; **false**: no <br>If the input parameter is invalid, the value **true** is used. |
+| value | boolean | Yes | Whether to enable loop playback. <br>**true**: yes; **false**: no <br>If the input parameter is invalid, the value **true** is used. |
 
 ## maintainVisibleContentPosition
 
@@ -665,7 +647,7 @@ maintainVisibleContentPosition(enabled: boolean)
 
 Sets whether to maintain the visible content position when data is inserted or deleted above or ahead of the viewport. This applies to **Swiper** components using a single [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) as the child node, where the data source is modified using **LazyForEach** API such as [onDataAdd](arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondataadd) or [onDataDelete](arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondatadelete). In other scenarios, the position of the visible content changes when data is inserted or deleted above or before the display area.
 
-When **swipeByGroup** in [displayCount](#displaycount1) is set to **true**, the visible content position remains unchanged only if the amount of data inserted or deleted above or before the display area is a multiple of the group size. Otherwise, the visible content position may change during group recalculation.
+When **swipeByGroup** in [displayCount](#displaycount) is set to **true**, the visible content position remains unchanged only if the amount of data inserted or deleted above or before the display area is a multiple of the group size. Otherwise, the visible content position may change during group recalculation.
 
 **Since:** 20
 
@@ -683,7 +665,7 @@ When **swipeByGroup** in [displayCount](#displaycount1) is set to **true**, the 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to maintain the visible content position when data is inserted or deleted above or ahead of the viewport.<br>Default value: **false**. <br>**false**: The visible content position will change when data is inserted or deleted. **true**: The visible content position remains unchanged when data is inserted or deleted. Animations stop if the data source is modified during an animation due to target index changes. |
+| enabled | boolean | Yes | Whether to maintain the visible content position when data is inserted or deleted above or ahead of the viewport. <br>Default value: **false**. <br>**false**: The visible content position will change when data is inserted or deleted. **true**: The visible content position remains unchanged when data is inserted or deleted. Animations stop if the data source is modified during an animation due to target index changes. |
 
 ## nestedScroll
 
@@ -715,7 +697,7 @@ Sets the nested scroll mode between the **Swiper** component and its parent comp
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SwiperNestedScrollMode](arkts-arkui-swiper-comp-swipernestedscrollmode-e.md) | Yes | Nested scrolling mode of the **Swiper** component and its parent container.<br>If an invalid value is passed, the value **SwiperNestedScrollMode.SELF_ONLY** is used. |
+| value | [SwiperNestedScrollMode](arkts-arkui-swiper-comp-swipernestedscrollmode-e.md) | Yes | Nested scrolling mode of the **Swiper** component and its parent container. <br>If an invalid value is passed, the value **SwiperNestedScrollMode.SELF_ONLY** is used. |
 
 ## nextMargin
 
@@ -1039,7 +1021,7 @@ Sets the mode for flipping pages using the mouse wheel. If this API is not used,
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PageFlipMode](../arkts-apis/arkts-arkui-pageflipmode-e.md)&gt; | Yes | Mode for flipping pages using the mouse wheel.<br>If the value is **undefined**, the value **PageFlipMode.CONTINUOUS** is used. |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PageFlipMode](../arkts-apis/arkts-arkui-pageflipmode-e.md)&gt; | Yes | Mode for flipping pages using the mouse wheel. <br>If the value is **undefined**, the value **PageFlipMode.CONTINUOUS** is used. |
 
 ## prevMargin
 
@@ -1074,7 +1056,7 @@ When using the **nextMargin**\/**prevMargin** API, do not set the [constraintSiz
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Front margin. Percentage is not supported.<br>Default value: 0<br>For details about the unit, see [Length](../arkts-apis/arkts-arkui-length-t.md). |
-| ignoreBlank | boolean | No | Whether to hide the leading margin for the first page in non-loop scenarios.<br> **true**: Hide the leading margin, in which case, the left edge of the first page is aligned with that of the **Swiper** component's viewable area. <br>**false**: Show the leading margin, in which case, the first page has a **prevMargin**-specified gap from the **Swiper** component's left edge. <br>Default value: **false**. <br>**NOTE:** <br>On the first page, the values of **prevMargin** and **nextMargin** are added to create a right margin that allows the next page to be displayed partially.<br>**Since:** 12 |
+| ignoreBlank | boolean | No | Whether to hide the leading margin for the first page in non-loop scenarios. <br> **true**: Hide the leading margin, in which case, the left edge of the first page is aligned with that of the **Swiper** component's viewable area. <br>**false**: Show the leading margin, in which case, the first page has a **prevMargin**-specified gap from the **Swiper** component's left edge. <br>Default value: **false**. <br>**NOTE:** <br>On the first page, the values of **prevMargin** and **nextMargin** are added to create a right margin that allows the next page to be displayed partially.<br>**Since:** 12 |
 
 ## vertical
 
@@ -1098,7 +1080,7 @@ Sets whether vertical swiping is used.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether vertical swiping is used. The value **true** means vertical swiping, and **false** means horizontal swiping.<br>Default value: **false**. |
+| value | boolean | Yes | Whether vertical swiping is used. The value **true** means vertical swiping, and **false** means horizontal swiping. <br>Default value: **false**. |
 
 ## indicatorStyle
 
@@ -1111,14 +1093,14 @@ Sets the style of the navigation indicator.
 > **NOTE:** 
 > 
 > Supported from API version 8 and deprecated since API version 10. You are advised to use
-> [indicator(value: DotIndicator | DigitIndicator | boolean)](#indicator1)
+> [indicator(value: DotIndicator | DigitIndicator | boolean)](#indicator)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 10
 
-**Substitutes:** [indicator](#indicator1)(value: DotIndicator | DigitIndicator | boolean)
+**Substitutes:** [indicator](#indicator)(value: DotIndicator | DigitIndicator | boolean)
 
 <!--Device-SwiperAttribute-indicatorStyle(value?: IndicatorStyle): SwiperAttribute--><!--Device-SwiperAttribute-indicatorStyle(value?: IndicatorStyle): SwiperAttribute-End-->
 

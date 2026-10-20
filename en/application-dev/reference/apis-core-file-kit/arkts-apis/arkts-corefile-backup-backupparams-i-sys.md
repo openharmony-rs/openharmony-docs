@@ -6,8 +6,6 @@ interface BackupParams
 
 Provides configuration parameters for backup and restore.
 
-@interface BackupParams
-
 **Since:** 12
 
 <!--Device-backup-interface BackupParams--><!--Device-backup-interface BackupParams-End-->

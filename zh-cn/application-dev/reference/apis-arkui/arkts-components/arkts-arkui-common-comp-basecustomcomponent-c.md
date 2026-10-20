@@ -269,6 +269,12 @@ onMeasureSize?(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constr
 
 ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的节点信息和尺寸范围通过onMeasureSize传递给该开发者。不允许在onMeasureSize函数中改变状态变量。
 
+> **说明：** 
+> 
+> - 使用自定义布局方法时，推荐同时实现onMeasureSize和onPlaceChildren方法，否则可能出现布局异常。
+> - 自定义布局内不支持使用懒加载（包含Repeat和LazyForEach）。
+> - 父容器（自定义组件）上设置的尺寸信息，除aspectRatio之外，优先级小于onMeasureSize设置的尺寸信息。
+
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -283,7 +289,7 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的节点
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| selfLayoutInfo | [GeometryInfo](arkts-arkui-common-comp-geometryinfo-i.md) | 是 | 计算自定义组件大小后的自身布局信息。<br>**说明：** <br>第一次布局时以自身设置的属性为准。 |
+| selfLayoutInfo | [GeometryInfo](arkts-arkui-common-comp-geometryinfo-i.md) | 是 | 计算自定义组件大小后的自身布局信息。 <br>**说明：** <br>第一次布局时以自身设置的属性为准。 |
 | children | Array&lt;[Measurable](arkts-arkui-common-comp-measurable-i.md)&gt; | 是 | 计算子组件大小后的子组件布局信息。<br>**说明：** <br>如果没有设置子组件的布局信息，子组件会维持上一次的布局信息，当子组件从来没有设置过尺寸时，尺寸默认为0。 |
 | constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 自定义组件的布局约束信息。 |
 
@@ -424,8 +430,6 @@ pageTransition函数用于定义页面入场和页面退场的转场动效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="querynavdestinationinfo1"></a>
-
 ## queryNavDestinationInfo
 
 ```TypeScript
@@ -449,8 +453,6 @@ queryNavDestinationInfo(): NavDestinationInfo | undefined
 | 类型 | 说明 |
 | --- | --- |
 | [NavDestinationInfo](arkts-arkui-common-comp-navdestinationinfo-t.md) &#124; undefined | **NavDestinationInfo** instance obtained. |
-
-<a id="querynavdestinationinfo2"></a>
 
 ## queryNavDestinationInfo
 

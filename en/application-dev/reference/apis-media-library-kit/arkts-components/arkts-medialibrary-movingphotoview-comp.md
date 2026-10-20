@@ -38,9 +38,11 @@ Set the options.
 | --- | --- |
 | [MovingPhotoViewEventCallback](arkts-medialibrary-movingphotoview-comp-movingphotovieweventcallback-t.md) | function that moving photo view media events callback. |
 
-### Enums
+<!--Del-->
+### Enums(System API)
 
 | Name | Description |
 | --- | --- |
 | [DynamicRangeMode](arkts-medialibrary-movingphotoview-comp-dynamicrangemode-e-sys.md) | Dynamic range mode of moving photo. |
 | [PixelMapFormat](arkts-medialibrary-movingphotoview-comp-pixelmapformat-e-sys.md) | Enumerates pixel map formats. |
+<!--DelEnd-->

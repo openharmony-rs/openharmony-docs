@@ -14,8 +14,6 @@ This component is implemented based on [state management V2](../../../ui/state-m
 > 
 > - If the **DialogV2** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **DialogV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **DialogV2** component.
 
-@struct { CustomContentDialogV2 }
-
 **Since:** 18
 
 **Decorator:** @ComponentV2

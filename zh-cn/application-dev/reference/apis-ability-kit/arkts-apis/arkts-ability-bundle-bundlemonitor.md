@@ -2,8 +2,6 @@
 
 本模块提供监听应用安装，卸载，更新的能力。
 
-@namespace bundleMonitor
-
 **起始版本：** 9
 
 <!--Device-unnamed-declare namespace bundleMonitor--><!--Device-unnamed-declare namespace bundleMonitor-End-->

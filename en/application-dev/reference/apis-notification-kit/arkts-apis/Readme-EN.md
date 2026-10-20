@@ -5,9 +5,11 @@
 - [@ohos.application.NotificationSubscriberExtensionContext](arkts-notification-application-notificationsubscriberextensioncontext.md)
   - [NotificationSubscriberExtensionContext](arkts-notification-application-notificationsubscriberextensioncontext-notificationsubscriberextensioncontext-c.md)
 - [@ohos.notificationExtensionSubscription](arkts-notification-notificationextensionsubscription.md)
+  - [disableUserGrantedByBundle](arkts-notification-notificationextensionsubscription-disableusergrantedbybundle-f.md)
   <!--Del-->
   - [getAllSubscriptionBundles(system api)](arkts-notification-notificationextensionsubscription-getallsubscriptionbundles-f-sys.md)<!--DelEnd-->
   - [getSubscribeInfo](arkts-notification-notificationextensionsubscription-getsubscribeinfo-f.md)
+  - [getUserGrantedBundleIcon](arkts-notification-notificationextensionsubscription-getusergrantedbundleicon-f.md)
   - [getUserGrantedEnabledBundles](arkts-notification-notificationextensionsubscription-getusergrantedenabledbundles-f.md)
   <!--Del-->
   - [getUserGrantedEnabledBundles(system api)](arkts-notification-notificationextensionsubscription-getusergrantedenabledbundles-f-sys.md)<!--DelEnd-->

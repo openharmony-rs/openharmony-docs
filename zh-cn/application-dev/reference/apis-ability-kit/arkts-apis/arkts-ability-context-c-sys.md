@@ -202,8 +202,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="createmodulecontext2"></a>
-
 ## createModuleContext
 
 ```TypeScript

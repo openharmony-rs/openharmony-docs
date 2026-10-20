@@ -71,4 +71,4 @@ When a list item has [polymorphic styles](arkts-arkui-common-comp.md) applied, t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) &#124; null | Yes | Style of the divider for the list items.<br> Default value: **null**<br>**Since:** 18 |
+| value | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) &#124; null | Yes | Style of the divider for the list items. <br> Default value: **null**<br>**Since:** 18 |

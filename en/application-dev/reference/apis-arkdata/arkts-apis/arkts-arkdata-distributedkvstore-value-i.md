@@ -42,7 +42,7 @@ Type of the value.
 value: Uint8Array | string | number | boolean
 ```
 
-Value of the KV pair.
+Value in a key-value pair. The length of the Uint8Array and string types ranges from 0 to [MAX_VALUE_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). The value range of the number and boolean types is determined by their own types.
 
 **Type:** Uint8Array &#124; string &#124; number &#124; boolean
 

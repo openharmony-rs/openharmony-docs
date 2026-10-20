@@ -4,7 +4,7 @@
 interface UploadTask
 ```
 
-上传任务，使用下列方法前，需要先获取UploadTask对象，promise形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile2)获取，callback形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile1)获取。
+上传任务，使用下列方法前，需要先获取UploadTask对象，promise形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile)获取，callback形式通过[request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile)获取。
 
 **起始版本：** 6
 
@@ -17,8 +17,6 @@ interface UploadTask
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
 ```
-
-<a id="delete1"></a>
 
 ## delete
 
@@ -63,8 +61,6 @@ uploadTask.delete((err: BusinessError, result: boolean) => {
   console.info('Succeeded in deleting the upload task.');
 });
 ```
-
-<a id="delete2"></a>
 
 ## delete
 
@@ -133,7 +129,7 @@ off(type: 'progress', callback?: (uploadedSize: number, totalSize: number) => vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -177,7 +173,7 @@ off(type: 'headerReceive', callback?: (header: object) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -221,7 +217,7 @@ off(type: 'complete' | 'fail', callback?: Callback<Array<TaskState>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -294,7 +290,7 @@ on(type: 'progress', callback: (uploadedSize: number, totalSize: number) => void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -330,7 +326,7 @@ on(type: 'headerReceive', callback: (header: object) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -366,7 +362,7 @@ on(type: 'complete' | 'fail', callback: Callback<Array<TaskState>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -386,8 +382,6 @@ let upFailCallback = (taskStates: Array<request.TaskState>) => {
 uploadTask.on('fail', upFailCallback);
 ```
 
-<a id="remove1"></a>
-
 ## remove
 
 ```TypeScript
@@ -399,13 +393,13 @@ remove(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [delete](#delete1)替代。
+> [delete](#delete)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [delete](#delete1)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [delete](#delete)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -438,8 +432,6 @@ uploadTask.remove((err: BusinessError, result: boolean) => {
   }
 });
 ```
-
-<a id="remove2"></a>
 
 ## remove
 

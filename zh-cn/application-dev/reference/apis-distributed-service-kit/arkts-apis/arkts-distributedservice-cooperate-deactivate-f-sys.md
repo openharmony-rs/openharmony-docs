@@ -6,8 +6,6 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
-<a id="deactivate1"></a>
-
 ## deactivate
 
 ```TypeScript
@@ -20,7 +18,7 @@ function deactivate(isUnchained: boolean, callback: AsyncCallback<void>): void
 
 **废弃版本：** 11
 
-**替代接口：** [deactivateCooperate](arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate1)(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [deactivateCooperate](arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate)(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-cooperate-function deactivate(isUnchained: boolean, callback: AsyncCallback<void>): void--><!--Device-cooperate-function deactivate(isUnchained: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -40,7 +38,7 @@ function deactivate(isUnchained: boolean, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 <!--Del-->
 **示例**
@@ -64,8 +62,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="deactivate2"></a>
-
 ## deactivate
 
 ```TypeScript
@@ -78,7 +74,7 @@ function deactivate(isUnchained: boolean): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** [deactivateCooperate](arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate2)(isUnchained: boolean)
+**替代接口：** [deactivateCooperate](arkts-distributedservice-cooperate-deactivatecooperate-f-sys.md#deactivatecooperate)(isUnchained: boolean)
 
 <!--Device-cooperate-function deactivate(isUnchained: boolean): Promise<void>--><!--Device-cooperate-function deactivate(isUnchained: boolean): Promise<void>-End-->
 

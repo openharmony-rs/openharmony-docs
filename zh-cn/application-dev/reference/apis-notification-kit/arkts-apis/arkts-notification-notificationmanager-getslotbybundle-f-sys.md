@@ -14,7 +14,7 @@ function getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise<Noti
 
 获取指定应用指定类型的通知渠道。使用Promise异步回调。
 
-获取前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot1)创建通知渠道。
+获取前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot)创建通知渠道。
 
 **起始版本：** 12
 

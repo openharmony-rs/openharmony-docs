@@ -18,8 +18,6 @@ class DomainAccountManager
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="auth1"></a>
-
 ## auth
 
 ```TypeScript
@@ -52,7 +50,7 @@ static auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callba
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid domainAccountInfo or credential. |
@@ -92,8 +90,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="auth2"></a>
 
 ## auth
 
@@ -179,8 +175,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="authwithpopup1"></a>
-
 ## authWithPopup
 
 ```TypeScript
@@ -246,8 +240,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="authwithpopup2"></a>
 
 ## authWithPopup
 
@@ -317,8 +309,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getaccesstoken1"></a>
-
 ## getAccessToken
 
 ```TypeScript
@@ -347,7 +337,7 @@ static getAccessToken(businessParams: Record<string, Object>, callback: AsyncCal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid business parameters. |
@@ -385,8 +375,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getaccesstoken3"></a>
-
 ## getAccessToken
 
 ```TypeScript
@@ -420,7 +408,7 @@ static getAccessToken(businessParams: Record<string, Object>): Promise<Uint8Arra
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid business parameters. |
@@ -456,8 +444,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getaccountinfo1"></a>
-
 ## getAccountInfo
 
 ```TypeScript
@@ -489,7 +475,7 @@ static getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallb
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -525,8 +511,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getaccountinfo2"></a>
 
 ## getAccountInfo
 
@@ -564,7 +548,7 @@ static getAccountInfo(options: GetDomainAccountInfoOptions): Promise<DomainAccou
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -599,8 +583,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="hasaccount1"></a>
-
 ## hasAccount
 
 ```TypeScript
@@ -632,7 +614,7 @@ static hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid domainAccountInfo. |
@@ -667,8 +649,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="hasaccount2"></a>
 
 ## hasAccount
 
@@ -706,7 +686,7 @@ static hasAccount(domainAccountInfo: DomainAccountInfo): Promise<boolean>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid domainAccountInfo. |
@@ -776,7 +756,7 @@ static isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise<bo
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Domain account not found. |
@@ -914,8 +894,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="updateaccounttoken1"></a>
-
 ## updateAccountToken
 
 ```TypeScript
@@ -952,7 +930,7 @@ static updateAccountToken(
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid token. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -984,8 +962,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="updateaccounttoken2"></a>
 
 ## updateAccountToken
 
@@ -1024,7 +1000,7 @@ static updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Arra
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid token. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |

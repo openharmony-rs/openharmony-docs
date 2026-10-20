@@ -33,4 +33,4 @@ function offUIAccessibilityFocusChanged(callback?: Callback<UIAccessibilityFocus
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality. Possible causes:<br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.The listener or observer is not registered. |
+| [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality. Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.The listener or observer is not registered. |

@@ -19,7 +19,7 @@ Supported
 > 
 > - If there are three or more child components, only the first and second child components are displayed. If there is only one child component, the sidebar is displayed, and the content area is blank.
 > 
-> - The focus navigation is performed in the content area and then in the sidebar of the **SideBarContainer**component.
+> - The focus navigation is performed in the content area and then in the sidebar of the **SideBarContainer** component.
 
 ## SideBarContainer
 
@@ -41,7 +41,7 @@ Creates a sidebar container.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [SideBarContainerType](arkts-arkui-sidebarcontainer-comp-sidebarcontainertype-e.md) | No | Display type of the sidebar.<br>Default value: **SideBarContainerType.Embed** |
+| type | [SideBarContainerType](arkts-arkui-sidebarcontainer-comp-sidebarcontainertype-e.md) | No | Display type of the sidebar. <br>Default value: **SideBarContainerType.Embed** |
 
 ## Summary
 

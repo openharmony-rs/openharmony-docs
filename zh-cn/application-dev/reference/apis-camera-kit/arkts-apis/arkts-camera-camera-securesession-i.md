@@ -12,8 +12,6 @@ SecureSession继承自[Session](arkts-camera-camera-session-i.md)、[Flash](arkt
 
 安全TA：可用于图片处理，它具备验证服务器下发数据的验签能力、图片签名、解析及组装tlv逻辑的能力，还具备密钥读取、创建及操作能力。<!--RP2End-->
 
-@extends Session, Flash, AutoExposure, Focus, Zoom [since 12 - 19] @extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom [since 20]
-
 **继承/实现关系：** SecureSession extends [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [WhiteBalance](arkts-camera-camera-whitebalance-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md)
 
 **起始版本：** 12

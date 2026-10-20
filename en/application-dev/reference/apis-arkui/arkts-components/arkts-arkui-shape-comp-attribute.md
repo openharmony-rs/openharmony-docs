@@ -126,9 +126,9 @@ The coordinate array is stored in row-major order. After the original image is e
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;any&gt; | Yes | Array of length (row + 1) × (column + 1) × 2, which records the position of each vertex of the distorted bitmap. The coordinate system is based on the display area of the **Shape** component, with the origin (0,0) at the upper left corner, the x-axis extending to the right, and the y-axis extending downward.<br>Default unit: vp <br>When the abnormal values **undefined** and **null** are set, the parameter is processed as an empty array. |
-| column | number | Yes | Number of columns in the mesh matrix.<br>The value range is ≥ 0. <br>Default value: **0** <br>When the abnormal values **undefined**, **null**, **NaN**, and **Infinity** are set, the column and row parameters are processed as the default value **0**, and the value parameter is processed as an empty array. |
-| row | number | Yes | Number of rows in the mesh matrix.<br>The value range is ≥ 0. <br>Default value: **0** <br>When the abnormal values **undefined**, **null**, **NaN**, and **Infinity** are set, the column and row parameters are processed as the default value **0**, and the **value** parameter is processed as an empty array. |
+| value | Array&lt;any&gt; | Yes | Array of length (row + 1) × (column + 1) × 2, which records the position of each vertex of the distorted bitmap. The coordinate system is based on the display area of the **Shape** component, with the origin (0,0) at the upper left corner, the x-axis extending to the right, and the y-axis extending downward. <br>Default unit: vp <br>When the abnormal values **undefined** and **null** are set, the parameter is processed as an empty array. |
+| column | number | Yes | Number of columns in the mesh matrix. <br>The value range is ≥ 0. <br>Default value: **0** <br>When the abnormal values **undefined**, **null**, **NaN**, and **Infinity** are set, the column and row parameters are processed as the default value **0**, and the value parameter is processed as an empty array. |
+| row | number | Yes | Number of rows in the mesh matrix. <br>The value range is ≥ 0. <br>Default value: **0** <br>When the abnormal values **undefined**, **null**, **NaN**, and **Infinity** are set, the column and row parameters are processed as the default value **0**, and the **value** parameter is processed as an empty array. |
 
 ## stroke
 

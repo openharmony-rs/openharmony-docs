@@ -237,8 +237,6 @@ try {
 }
 ```
 
-<a id="openbasicchannel1"></a>
-
 ## openBasicChannel
 
 ```TypeScript
@@ -269,7 +267,7 @@ openBasicChannel(aid: number[]): Promise<Channel>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
 | [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected. |
@@ -305,8 +303,6 @@ function secureElementDemo() {
 }
 ```
 
-<a id="openbasicchannel2"></a>
-
 ## openBasicChannel
 
 ```TypeScript
@@ -332,7 +328,7 @@ openBasicChannel(aid: number[], callback: AsyncCallback<Channel>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
 | [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected. |
@@ -370,8 +366,6 @@ function secureElementDemo() {
 }
 ```
 
-<a id="openbasicchannel3"></a>
-
 ## openBasicChannel
 
 ```TypeScript
@@ -403,7 +397,7 @@ openBasicChannel(aid: number[], p2: number): Promise<Channel>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
 | [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected. |
@@ -440,8 +434,6 @@ function secureElementDemo() {
 }
 ```
 
-<a id="openbasicchannel4"></a>
-
 ## openBasicChannel
 
 ```TypeScript
@@ -468,7 +460,7 @@ openBasicChannel(aid: number[], p2: number, callback: AsyncCallback<Channel>): v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
 | [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected. |
@@ -507,8 +499,6 @@ function secureElementDemo() {
 }
 ```
 
-<a id="openlogicalchannel1"></a>
-
 ## openLogicalChannel
 
 ```TypeScript
@@ -539,7 +529,7 @@ openLogicalChannel(aid: number[]): Promise<Channel>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
 | [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected or a logical channel is already open to a non-multi-selectable applet. |
@@ -575,8 +565,6 @@ function secureElementDemo() {
 }
 ```
 
-<a id="openlogicalchannel2"></a>
-
 ## openLogicalChannel
 
 ```TypeScript
@@ -602,7 +590,7 @@ openLogicalChannel(aid: number[], callback: AsyncCallback<Channel>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
 | [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected or a logical channel is already open to a non-multi-selectable applet. |
@@ -640,8 +628,6 @@ function secureElementDemo() {
 }
 ```
 
-<a id="openlogicalchannel3"></a>
-
 ## openLogicalChannel
 
 ```TypeScript
@@ -673,7 +659,7 @@ openLogicalChannel(aid: number[], p2: number): Promise<Channel>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
 | [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected or a logical channel is already open to a non-multi-selectable applet. |
@@ -710,8 +696,6 @@ function secureElementDemo() {
 }
 ```
 
-<a id="openlogicalchannel4"></a>
-
 ## openLogicalChannel
 
 ```TypeScript
@@ -738,7 +722,7 @@ openLogicalChannel(aid: number[], p2: number, callback: AsyncCallback<Channel>):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session that has been closed. |
 | [3300102](../errorcode-se.md#3300102-找不到对应se安全单元异常) | NoSuchElementError, the AID on the SE is not available or cannot be selected or a logical channel is already open to a non-multi-selectable applet. |

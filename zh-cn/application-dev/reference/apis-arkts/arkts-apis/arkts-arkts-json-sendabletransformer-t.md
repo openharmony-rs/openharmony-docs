@@ -7,7 +7,7 @@ type SendableTransformer = (this: ISendable, key: string,
 
 定义Sendable JSON解析的转换结果函数类型。
 
-该类型用于描述JSON转换回调；当前[parseSendable](arkts-arkts-json-parsesendable-f.md)仅接受undefined，传入函数会抛出TypeError。
+用于Sendable JSON解析转换结果的函数类型，与[ArkTSUtils.ASON.Transformer](arkts-arkts-json-transformer-t.md)一致：this、value及返回值均为ISendable（而非Object），因为[parseSendable](arkts-arkts-json-parsesendable-f.md)的产物为可跨线程共享的Sendable对象。当前[parseSendable](arkts-arkts-json-parsesendable-f.md)仅接受undefined，传入函数会抛出TypeError。
 
 **起始版本：** 26.0.1
 

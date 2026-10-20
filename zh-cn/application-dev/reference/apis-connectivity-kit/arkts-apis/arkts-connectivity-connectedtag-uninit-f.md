@@ -30,4 +30,4 @@ function uninit(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true：卸载操作成功。 <br>false：卸载操作失败。 |
+| boolean | true：卸载操作成功。  <br>false：卸载操作失败。 |

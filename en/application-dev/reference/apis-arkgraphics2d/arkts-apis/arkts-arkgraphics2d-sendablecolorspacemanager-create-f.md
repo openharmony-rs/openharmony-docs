@@ -6,8 +6,6 @@
 import { sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 ```
 
-<a id="create1"></a>
-
 ## create
 
 ```TypeScript
@@ -26,7 +24,7 @@ Creates a criterion color space management instance that is sendable.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| colorSpaceName | [colorSpaceManager.ColorSpace](arkts-arkgraphics2d-colorspacemanager-colorspace-e.md) | Yes | Type of the color space.<br>**UNKNOWN** and **CUSTOM** cannot be used when creating standard color space objects. |
+| colorSpaceName | [colorSpaceManager.ColorSpace](arkts-arkgraphics2d-colorspacemanager-colorspace-e.md) | Yes | Type of the color space. <br>**UNKNOWN** and **CUSTOM** cannot be used when creating standard color space objects. |
 
 **Return value:**
 
@@ -50,8 +48,6 @@ let colorSpace: sendableColorSpaceManager.ColorSpaceManager;
 colorSpace = sendableColorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
 ```
 
-
-<a id="create2"></a>
 
 ## create
 

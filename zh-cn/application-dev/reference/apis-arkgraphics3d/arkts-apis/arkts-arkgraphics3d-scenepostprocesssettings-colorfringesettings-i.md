@@ -6,8 +6,6 @@ export interface ColorFringeSettings
 
 色晕设置。当RenderingPipelineType为FORWARD_LIGHTWEIGHT时，此功能不可用。
 
-@typedef ColorFringeSettings
-
 **起始版本：** 22
 
 <!--Device-unnamed-export interface ColorFringeSettings--><!--Device-unnamed-export interface ColorFringeSettings-End-->

@@ -8,7 +8,7 @@ interface CaptureSession
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -36,7 +36,7 @@ addInput(cameraInput: CameraInput): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -71,7 +71,7 @@ addOutput(cameraOutput: CameraOutput): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -106,7 +106,7 @@ beginConfig(): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -124,8 +124,6 @@ beginConfig(): void
 | --- | --- |
 | [7400105](../errorcode-camera.md#7400105-会话配置被锁定) | Session config locked. |
 
-<a id="commitconfig1"></a>
-
 ## commitConfig
 
 ```TypeScript
@@ -136,13 +134,13 @@ commitConfig(callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
 **废弃版本：** 11
 
-**替代接口：** [commitConfig](arkts-camera-camera-session-i.md#commitconfig1)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [commitConfig](arkts-camera-camera-session-i.md#commitconfig)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-commitConfig(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-commitConfig(callback: AsyncCallback<void>): void-End-->
 
@@ -161,8 +159,6 @@ commitConfig(callback: AsyncCallback<void>): void
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
-<a id="commitconfig2"></a>
-
 ## commitConfig
 
 ```TypeScript
@@ -173,7 +169,7 @@ commitConfig(): Promise<void>
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -208,7 +204,7 @@ getActiveVideoStabilizationMode(): VideoStabilizationMode
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -242,7 +238,7 @@ getExposureBiasRange(): Array<number>
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -276,7 +272,7 @@ getExposureMode(): ExposureMode
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -310,7 +306,7 @@ getExposureValue(): number
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -344,7 +340,7 @@ getFlashMode(): FlashMode
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -378,7 +374,7 @@ getFocalLength(): number
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -412,7 +408,7 @@ getFocusMode(): FocusMode
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -446,7 +442,7 @@ getFocusPoint(): Point
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -480,7 +476,7 @@ getMeteringPoint(): Point
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -514,7 +510,7 @@ getZoomRatio(): number
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -548,7 +544,7 @@ getZoomRatioRange(): Array<number>
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -582,7 +578,7 @@ hasFlash(): boolean
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -616,7 +612,7 @@ isExposureModeSupported(aeMode: ExposureMode): boolean
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -656,7 +652,7 @@ isFlashModeSupported(flashMode: FlashMode): boolean
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -696,7 +692,7 @@ isFocusModeSupported(afMode: FocusMode): boolean
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -736,7 +732,7 @@ isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): boolean
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -776,7 +772,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -805,7 +801,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -834,7 +830,7 @@ on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 > 
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
@@ -867,7 +863,7 @@ on(type: 'error', callback: ErrorCallback): void
 > 
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -886,8 +882,6 @@ on(type: 'error', callback: ErrorCallback): void
 | type | 'error' | 是 | 监听事件，固定为'error'，session创建成功之后可监听该接口。session调用相关接口出现错误时会触发该事件，比如调用[beginConfig](#beginconfig)，[commitConfig](#commitconfig)，[addInput](#addinput)等接口发生错误时返回错误信息。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -898,13 +892,13 @@ release(callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
 **废弃版本：** 11
 
-**替代接口：** [release](arkts-camera-camera-session-i.md#release1)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [release](arkts-camera-camera-session-i.md#release)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-release(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-release(callback: AsyncCallback<void>): void-End-->
 
@@ -922,8 +916,6 @@ release(callback: AsyncCallback<void>): void
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
-<a id="release2"></a>
-
 ## release
 
 ```TypeScript
@@ -934,7 +926,7 @@ release(): Promise<void>
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -968,7 +960,7 @@ removeInput(cameraInput: CameraInput): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -1003,7 +995,7 @@ removeOutput(cameraOutput: CameraOutput): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -1040,7 +1032,7 @@ setExposureBias(exposureBias: number): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -1074,7 +1066,7 @@ setExposureMode(aeMode: ExposureMode): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -1113,7 +1105,7 @@ setFlashMode(flashMode: FlashMode): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -1149,7 +1141,7 @@ setFocusMode(afMode: FocusMode): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -1185,7 +1177,7 @@ setFocusPoint(point: Point): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -1221,7 +1213,7 @@ setMeteringPoint(point: Point): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -1255,7 +1247,7 @@ setVideoStabilizationMode(mode: VideoStabilizationMode): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -1289,7 +1281,7 @@ setZoomRatio(zoomRatio: number): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -1313,8 +1305,6 @@ setZoomRatio(zoomRatio: number): void
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
-<a id="start1"></a>
-
 ## start
 
 ```TypeScript
@@ -1325,13 +1315,13 @@ start(callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
 **废弃版本：** 11
 
-**替代接口：** [start](arkts-camera-camera-session-i.md#start1)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [start](arkts-camera-camera-session-i.md#start)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-start(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-start(callback: AsyncCallback<void>): void-End-->
 
@@ -1350,8 +1340,6 @@ start(callback: AsyncCallback<void>): void
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -1362,7 +1350,7 @@ start(): Promise<void>
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -1387,8 +1375,6 @@ start(): Promise<void>
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -1399,13 +1385,13 @@ stop(callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
 **废弃版本：** 11
 
-**替代接口：** [stop](arkts-camera-camera-session-i.md#stop1)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [stop](arkts-camera-camera-session-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-stop(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-stop(callback: AsyncCallback<void>): void-End-->
 
@@ -1423,8 +1409,6 @@ stop(callback: AsyncCallback<void>): void
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
-<a id="stop2"></a>
-
 ## stop
 
 ```TypeScript
@@ -1435,7 +1419,7 @@ stop(): Promise<void>
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 

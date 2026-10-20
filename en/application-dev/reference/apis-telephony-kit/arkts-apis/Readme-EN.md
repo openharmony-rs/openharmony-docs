@@ -312,8 +312,7 @@
   - [startOsu(system api)](arkts-telephony-esim-startosu-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [switchToProfile(system api)](arkts-telephony-esim-switchtoprofile-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [AccessRule(system api)](arkts-telephony-esim-accessrule-i-sys.md)<!--DelEnd-->
+  - [AccessRule](arkts-telephony-esim-accessrule-i.md)
   <!--Del-->
   - [ContractRequestData(system api)](arkts-telephony-esim-contractrequestdata-i-sys.md)<!--DelEnd-->
   - [DownloadableProfile](arkts-telephony-esim-downloadableprofile-i.md)

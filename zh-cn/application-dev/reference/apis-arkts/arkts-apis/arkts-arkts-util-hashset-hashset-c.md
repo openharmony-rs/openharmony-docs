@@ -497,3 +497,17 @@ HashSet的元素个数。
 <!--Device-HashSet-length: number--><!--Device-HashSet-length: number-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**示例**
+
+```TypeScript
+// 创建HashSet实例并添加元素
+let hashSet = new HashSet<number>();
+hashSet.add(1);
+hashSet.add(2);
+hashSet.add(3);
+hashSet.add(4);
+hashSet.add(5);
+let result = hashSet.length;
+console.info("length:", result);  // length: 5
+```

@@ -6,8 +6,6 @@
 import { deviceControl } from '@kit.MDMKit';
 ```
 
-<a id="operatedevice1"></a>
-
 ## operateDevice
 
 ```TypeScript
@@ -63,8 +61,6 @@ try {
 }
 ```
 
-
-<a id="operatedevice2"></a>
 
 ## operateDevice
 

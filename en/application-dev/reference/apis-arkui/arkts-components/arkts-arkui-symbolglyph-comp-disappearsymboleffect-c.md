@@ -38,7 +38,7 @@ A constructor used to create a **DisappearSymbolEffect** instance, which comes w
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Animation scope. For specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER |
+| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Animation scope. For specific enumeration values and descriptions, see EffectScope Enumeration Description. <br>Default value: EffectScope.LAYER |
 
 ## scope
 

@@ -60,4 +60,4 @@ Returns the minimum velocity threshold for the preset swipe gesture recognizer t
 
 | Type | Description |
 | --- | --- |
-| number | Minimum velocity threshold for the preset swipe gesture recognizer to recognize a swipe, in vp/s. If no velocity threshold is configured, the default value 100vp/s is returned.<br>Value range: [0, +∞) |
+| number | Minimum velocity threshold for the preset swipe gesture recognizer to recognize a swipe, in vp/s. If no velocity threshold is configured, the default value 100vp/s is returned. <br>Value range: [0, +∞) |

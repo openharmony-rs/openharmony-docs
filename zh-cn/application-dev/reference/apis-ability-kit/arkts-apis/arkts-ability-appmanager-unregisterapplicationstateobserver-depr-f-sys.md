@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="unregisterapplicationstateobserver1"></a>
-
 ## unregisterApplicationStateObserver
 
 ```TypeScript
@@ -57,8 +55,6 @@ appManager.unregisterApplicationStateObserver(observerId, unregisterApplicationS
 
 <!--DelEnd-->
 
-
-<a id="unregisterapplicationstateobserver2"></a>
 
 ## unregisterApplicationStateObserver
 

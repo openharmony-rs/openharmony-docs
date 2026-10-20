@@ -6,8 +6,6 @@ interface ImageItem
 
 Image information for AI-generated images.
 
-@interface ImageItem
-
 **Since:** 23
 
 <!--Device-imageGeneration-interface ImageItem--><!--Device-imageGeneration-interface ImageItem-End-->

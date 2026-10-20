@@ -6,8 +6,6 @@ interface PageTransitionExitInterface extends CommonTransition<PageTransitionExi
 
 当前页面的自定义退场动效。
 
-@extends CommonTransition<PageTransitionExitInterface> @interface PageTransitionExitInterface
-
 **继承/实现关系：** PageTransitionExitInterface extends CommonTransition&lt;PageTransitionExitInterface&gt;
 
 **起始版本：** 7

@@ -46,7 +46,6 @@ Adds the types of metadata objects to be detected.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 13 - 22 |
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
@@ -238,7 +237,7 @@ Subscribes to events indicating available metadata objects. This API uses an asy
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'metadataObjectsAvailable' | Yes | Event type. The value is fixed at **'metadataObjectsAvailable'**. The event can be listened for when a metadataOutput instance is created.<br>This event is triggered and the corresponding metadata is returned when valid metadata is detected. If the input field is incorrect, no valid listening will be created. |
+| type | 'metadataObjectsAvailable' | Yes | Event type. The value is fixed at **'metadataObjectsAvailable'**. The event can be listened for when a metadataOutput instance is created. <br>This event is triggered and the corresponding metadata is returned when valid metadata is detected. If the input field is incorrect, no valid listening will be created. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[MetadataObject](arkts-camera-camera-metadataobject-i.md)&gt;&gt; | Yes | Callback used to return the metadata. |
 
 **Examples**
@@ -326,7 +325,6 @@ Removes the types of metadata objects to be detected.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 13 - 22 |
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
@@ -346,8 +344,6 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
   }
 }
 ```
-
-<a id="start1"></a>
 
 ## start
 
@@ -394,8 +390,6 @@ function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -439,8 +433,6 @@ function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -478,8 +470,6 @@ function stopMetadataOutput(metadataOutput: camera.MetadataOutput): void {
   })
 }
 ```
-
-<a id="stop2"></a>
 
 ## stop
 

@@ -6,8 +6,6 @@ declare class MediaCachedImageAttribute extends ImageAttribute
 
 从 ImageAttribute 继承的 MediaCachedImage 属性。
 
-@extends ImageAttribute
-
 **继承/实现关系：** MediaCachedImageAttribute extends [ImageAttribute](arkts-arkui-image-comp-attribute.md)
 
 **起始版本：** 12

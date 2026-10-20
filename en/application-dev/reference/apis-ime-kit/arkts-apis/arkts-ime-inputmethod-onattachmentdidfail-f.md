@@ -24,7 +24,7 @@ Subscribes to attachment failure events. This API uses an asynchronous callback 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AttachFailureReason](arkts-ime-inputmethod-attachfailurereason-e.md)&gt; | Yes | Callback used to return the reason for attachment failure. This callback is only invoked when the attachment failure is triggered by the registrant's process. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AttachFailureReason](arkts-ime-inputmethod-attachfailurereason-e.md)&gt; | Yes | Callback used to return the reason for the attachment failure. It is invoked only when the attachment failure is triggered by the process that registers the callback. |
 
 **Examples**
 

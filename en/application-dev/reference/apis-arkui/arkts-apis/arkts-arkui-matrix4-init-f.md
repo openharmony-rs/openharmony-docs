@@ -45,7 +45,7 @@ Constructor of **Matrix4**. It is used to create a 4 x 4 matrix based on the inp
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number     ] | Yes | Number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.<br>Value range of each number: (-∞, +∞) <br>Default value: <br>[1, 0, 0, 0, <br>0, 1, 0, 0, <br>0, 0, 1, 0, <br>0, 0, 0, 1] |
+| options | [       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number,       number     ] | Yes | Number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**. <br>Value range of each number: (-∞, +∞) <br>Default value: <br>[1, 0, 0, 0, <br>0, 1, 0, 0, <br>0, 0, 1, 0, <br>0, 0, 0, 1] |
 
 **Return value:**
 

@@ -36,8 +36,6 @@ declare function fchown(fd: number, uid: number, gid: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="fchown2"></a>
-
 ## fchown
 
 ```TypeScript

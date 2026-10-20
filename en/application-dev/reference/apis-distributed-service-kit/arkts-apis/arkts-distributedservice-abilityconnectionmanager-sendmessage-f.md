@@ -26,7 +26,7 @@ Sends text messages after a collaboration session is set up.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sessionId | number | Yes | ID of the collaboration session. |
+| sessionId | number | Yes | ID of the collaboration session, which is returned by the createAbilityConnectionSession API. |
 | msg | string | Yes | Text content. The maximum size of the text content is 1 KB. |
 
 **Return value:**

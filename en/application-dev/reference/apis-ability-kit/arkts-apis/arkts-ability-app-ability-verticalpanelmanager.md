@@ -2,8 +2,6 @@
 
 Defines a vertical domain panel manager.
 
-@namespace verticalPanelManager
-
 ## Modules to Import
 
 ```TypeScript

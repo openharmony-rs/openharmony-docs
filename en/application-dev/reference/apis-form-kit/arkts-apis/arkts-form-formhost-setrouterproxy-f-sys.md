@@ -6,8 +6,6 @@
 import { formHost } from '@kit.FormKit';
 ```
 
-<a id="setrouterproxy1"></a>
-
 ## setRouterProxy
 
 ```TypeScript
@@ -111,8 +109,6 @@ struct CardExample {
 
 <!--DelEnd-->
 
-
-<a id="setrouterproxy2"></a>
 
 ## setRouterProxy
 

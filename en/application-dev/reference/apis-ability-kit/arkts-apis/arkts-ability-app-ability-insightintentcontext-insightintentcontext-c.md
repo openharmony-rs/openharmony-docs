@@ -18,6 +18,43 @@ The module provides the intent execution context. It is used as a property in bo
 import { InsightIntentContext } from '@kit.AbilityKit';
 ```
 
+## getInsightIntentExecutionInfo
+
+```TypeScript
+getInsightIntentExecutionInfo(instanceId: number): Promise<insightIntent.InsightIntentExecutionInfo>
+```
+
+Get insight intent execution info.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-InsightIntentContext-getInsightIntentExecutionInfo(instanceId: int): Promise<insightIntent.InsightIntentExecutionInfo>--><!--Device-InsightIntentContext-getInsightIntentExecutionInfo(instanceId: int): Promise<insightIntent.InsightIntentExecutionInfo>-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| instanceId | number | Yes | The insight intent instance ID. It is from InsightIntentEntryExecutor.context.instanceId. <br>The value should be an integer. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[insightIntent.InsightIntentExecutionInfo](arkts-ability-insightintent-insightintentexecutioninfo-i.md)&gt; | Promise used to return the insight intent execution info. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [16000003](../errorcode-ability.md#16000003-id-does-not-exist) | The specified ID does not exist. |
+| [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. |
+
 ## setReturnModeForUIAbilityForeground
 
 ```TypeScript
@@ -163,8 +200,6 @@ export default class InsightIntentExecutorUI extends InsightIntentExecutor {
 }
 ```
 
-<a id="startability1"></a>
-
 ## startAbility
 
 ```TypeScript
@@ -250,8 +285,6 @@ export default class IntentExecutorImpl extends InsightIntentExecutor {
   }
 }
 ```
-
-<a id="startability2"></a>
 
 ## startAbility
 

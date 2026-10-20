@@ -88,3 +88,5 @@ Whether the timer is paused. The default value is **false**.
 <!--Device-NotificationTime-isPaused?: boolean--><!--Device-NotificationTime-isPaused?: boolean-End-->
 
 **System capability:** SystemCapability.Notification.Notification
+
+**Examples**

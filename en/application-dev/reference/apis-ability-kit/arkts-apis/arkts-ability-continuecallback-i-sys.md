@@ -6,8 +6,6 @@ export interface ContinueCallback
 
 ContinueCallback registered for notify continue result.
 
-@interface ContinueCallback
-
 **Since:** 9
 
 <!--Device-unnamed-export interface ContinueCallback--><!--Device-unnamed-export interface ContinueCallback-End-->

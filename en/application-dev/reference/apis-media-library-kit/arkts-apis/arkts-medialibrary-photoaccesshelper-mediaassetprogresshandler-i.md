@@ -36,4 +36,4 @@ Called when the progress of the requested video is returned.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| progress | number | Yes | Progress in percentage.<br>Value range: [0, 100] |
+| progress | number | Yes | Progress in percentage. <br>Value range: [0, 100] |

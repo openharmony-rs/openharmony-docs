@@ -191,8 +191,6 @@ let text: string = record.toPlainText();
 console.info(`Succeeded in converting to text. Text: ${text}`);
 ```
 
-<a id="converttotext1"></a>
-
 ## convertToText
 
 ```TypeScript
@@ -237,8 +235,6 @@ record.convertToText((err: BusinessError, data: string) => {
     console.info(`Succeeded in converting to text. Data: ${data}`);
 });
 ```
-
-<a id="converttotext2"></a>
 
 ## convertToText
 

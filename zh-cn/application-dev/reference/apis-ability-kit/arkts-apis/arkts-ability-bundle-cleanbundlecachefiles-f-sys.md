@@ -6,8 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="cleanbundlecachefiles1"></a>
-
 ## cleanBundleCacheFiles
 
 ```TypeScript
@@ -69,8 +67,6 @@ bundle.cleanBundleCacheFiles(bundleName).then(() => {
 
 <!--DelEnd-->
 
-
-<a id="cleanbundlecachefiles2"></a>
 
 ## cleanBundleCacheFiles
 

@@ -255,7 +255,7 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; ComponentContent &#124; undefined | 是 | 自定义键盘。<br>传入undefined时默认使用系统键盘。<br>**适用版本：** 23 |
+| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; ComponentContent &#124; undefined | 是 | 自定义键盘。 <br>传入undefined时默认使用系统键盘。<br>**适用版本：** 23 |
 | options | [KeyboardOptions](arkts-arkui-richeditor-comp-keyboardoptions-i.md) &#124; undefined | 否 | 设置自定义键盘是否支持避让功能。<br>传入undefined或省略时默认不支持避让。<br>**适用版本：** 23 |
 
 ## dataDetectorConfig

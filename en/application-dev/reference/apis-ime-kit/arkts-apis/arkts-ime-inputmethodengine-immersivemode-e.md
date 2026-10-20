@@ -4,13 +4,13 @@
 export enum ImmersiveMode
 ```
 
-Enumerates the immersive modes of the input method.<br> <br>
+Enumerates the immersive modes of the input method. <br>
 
 | Name | Value| Description |  
 | ------------ | -- | ------------------ |  
-| NONE_IMMERSIVE | 0 | The immersive mode is not used.|
-| IMMERSIVE | 1 | The immersive mode is used. Its style is determined by the input method application.|
-| LIGHT_IMMERSIVE | 2 | Immersive style in light mode.|
+| NONE_IMMERSIVE | 0 | The immersive mode is not used.|  
+| IMMERSIVE | 1 | The immersive mode is used. Its style is determined by the input method application.|  
+| LIGHT_IMMERSIVE | 2 | Immersive style in light mode.|  
 | DARK_IMMERSIVE | 3 | Immersive style in dark mode.|
 
 **Since:** 15

@@ -6,8 +6,6 @@ interface IncrementalBackupTime
 
 记录最后一次增量备份时间，用于描述备份增量的时间点。
 
-@interface IncrementalBackupTime
-
 **起始版本：** 12
 
 <!--Device-backup-interface IncrementalBackupTime--><!--Device-backup-interface IncrementalBackupTime-End-->

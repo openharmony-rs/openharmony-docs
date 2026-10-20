@@ -6,8 +6,6 @@ export interface TargetInfo
 
 Target information.
 
-@typedef TargetInfo
-
 **起始版本：** 21
 
 <!--Device-mechanicManager-export interface TargetInfo--><!--Device-mechanicManager-export interface TargetInfo-End-->

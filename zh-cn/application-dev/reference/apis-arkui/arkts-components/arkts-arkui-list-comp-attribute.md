@@ -66,8 +66,6 @@ backPressBehavior(behavior: ListBackPressBehavior | undefined)
 | --- | --- | --- | --- |
 | behavior | [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) &#124; undefined | 是 | List组件的系统返回键行为选项。当前支持通过[ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md)参数，配置系统返回键生效时，是否收起已展开的ListItem的划出组件。<br>设置为undefined时，恢复默认行为，即系统返回键生效时，收起已展开的ListItem的划出组件。 |
 
-<a id="cachedcount1"></a>
-
 ## cachedCount
 
 ```TypeScript
@@ -98,8 +96,6 @@ List下嵌套使用LazyForEach，并且LazyForEach下嵌套使用ListItemGroup�
 | --- | --- | --- | --- |
 | value | number | 是 | ListItem/ListItemGroup的预加载数量。<br>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
 
-<a id="cachedcount2"></a>
-
 ## cachedCount
 
 ```TypeScript
@@ -108,7 +104,7 @@ cachedCount(count: number, show: boolean)
 
 设置列表的预加载行数，并配置是否显示预加载节点。懒加载场景才会预加载List显示区域外上下各cachedCount行，非懒加载场景会全量加载。
 
-List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行。计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合裁剪[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1)或内容裁剪[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
+List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行。计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合裁剪[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)或内容裁剪[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
 
 > **说明：** 
 > 
@@ -132,9 +128,7 @@ List设置cachedCount后，显示区域外上下各会预加载并布局cachedCo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | count | number | 是 | 列表的预加载行数。<br>默认值：根据屏幕内显示的节点个数设置，最大值为16。 <br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
-| show | boolean | 是 | 被预加载的ListItem/ListItemGroup是否需要显示。设置为true时显示预加载的ListItem/ListItemGroup，设置为false时不显示预加载的ListItem/ListItemGroup。<br> 默认值：false |
-
-<a id="cachedcount3"></a>
+| show | boolean | 是 | 被预加载的ListItem/ListItemGroup是否需要显示。设置为true时显示预加载的ListItem/ListItemGroup，设置为false时不显示预加载的ListItem/ListItemGroup。 <br> 默认值：false |
 
 ## cachedCount
 
@@ -148,7 +142,7 @@ cachedCount(count: number | CacheCountInfo, show: boolean)
 
 若cachedCount属性的第一个参数为CacheCountInfo类型，当已缓存行数小于CacheCountInfo.minCount时，会在帧间空闲时隙预加载和布局。当已缓存行数大于CacheCountInfo.maxCount时，会将超出范围的节点销毁或回收复用。UI空闲时（无动画或用户操作），会在显示区域外上下各预加载CacheCountInfo.maxCount行。
 
-计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1)或[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
+计算预加载行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)或[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
 
 默认行为：count参数默认为number类型，数值根据屏幕内显示的节点个数设置，最大值为16。预加载的ListItem默认不参与绘制。
 
@@ -174,7 +168,7 @@ cachedCount(count: number | CacheCountInfo, show: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| count | number &#124; [CacheCountInfo](../arkts-apis/arkts-arkui-cachecountinfo-i.md) | 是 | 当参数类型为number时，表示列表的预加载行数。<br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。<br>当参数类型为CacheCountInfo时，表示预加载的最大最小范围。 |
+| count | number &#124; [CacheCountInfo](../arkts-apis/arkts-arkui-cachecountinfo-i.md) | 是 | 当参数类型为number时，表示列表的预加载行数。 <br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。<br>当参数类型为CacheCountInfo时，表示预加载的最大最小范围。 |
 | show | boolean | 是 | 被预加载的ListItem/ListItemGroup是否需要显示。<br>true：显示预加载的ListItem/ListItemGroup。<br>false：不显示预加载的ListItem/ListItemGroup。 |
 
 ## chainAnimation
@@ -247,8 +241,6 @@ childrenMainSize(value: ChildrenMainSize)
 | --- | --- | --- | --- |
 | value | [ChildrenMainSize](arkts-arkui-common-comp-childrenmainsize-c.md) | 是 | 该对象用来维护子组件在主轴方向的大小信息。 |
 
-<a id="contentendoffset1"></a>
-
 ## contentEndOffset
 
 ```TypeScript
@@ -275,15 +267,13 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 | --- | --- | --- | --- |
 | value | number | 是 | 内容区末尾偏移量。<br>默认值：0<br>单位：vp <br>**说明：** <br>设置为负数时，按默认值处理。<br>取值范围：[0, +∞) |
 
-<a id="contentendoffset2"></a>
-
 ## contentEndOffset
 
 ```TypeScript
 contentEndOffset(offset: number | Resource)
 ```
 
-设置内容区末尾偏移量。列表滚动到末尾位置时，列表内容与列表显示区域边界保留指定距离。与[contentEndOffset<sup>11+</sup>](#contentendoffset1)相比，参数名改为offset，并开始支持Resource类型。
+设置内容区末尾偏移量。列表滚动到末尾位置时，列表内容与列表显示区域边界保留指定距离。与[contentEndOffset<sup>11+</sup>](#contentendoffset)相比，参数名改为offset，并开始支持Resource类型。
 
 contentStartOffset + contentEndOffset超过List内容区长度后contentStartOffset和contentEndOffset会置0。
 
@@ -302,8 +292,6 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | offset | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 内容区末尾偏移量。<br>默认值：0<br>参数类型为number时单位为vp。 <br>设置异常值如负数、非数字Resource时，按默认值处理。<br>参数类型为number时取值范围：[0, +∞) |
-
-<a id="contentstartoffset1"></a>
 
 ## contentStartOffset
 
@@ -331,15 +319,13 @@ contentStartOffset + contentEndOffset超过List内容区长度后contentStartOff
 | --- | --- | --- | --- |
 | value | number | 是 | 内容区域起始偏移量。<br>默认值：0<br>单位：vp <br>**说明：** <br>设置为负数时，按默认值处理。<br>取值范围：[0, +∞) |
 
-<a id="contentstartoffset2"></a>
-
 ## contentStartOffset
 
 ```TypeScript
 contentStartOffset(offset: number | Resource)
 ```
 
-设置内容区域起始偏移量。列表滚动到起始位置时，列表内容与列表显示区域边界保留指定距离。与[contentStartOffset<sup>11+</sup>](#contentstartoffset1)相比，参数名改为offset，并开始支持Resource类型。
+设置内容区域起始偏移量。列表滚动到起始位置时，列表内容与列表显示区域边界保留指定距离。与[contentStartOffset<sup>11+</sup>](#contentstartoffset)相比，参数名改为offset，并开始支持Resource类型。
 
 contentStartOffset + contentEndOffset超过List内容区长度后contentStartOffset和contentEndOffset会置0。
 
@@ -544,8 +530,6 @@ friction(value: number | Resource)
 | --- | --- | --- | --- |
 | value | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 摩擦系数。<br>默认值：非Wearable设备为0.6，Wearable设备为0.9。<br>从API version 11开始，非Wearable设备默认值为0.7。<br>从API version 12开始，非Wearable设备默认值为0.75。<br>取值范围：(0, +∞) |
 
-<a id="lanes1"></a>
-
 ## lanes
 
 ```TypeScript
@@ -581,8 +565,6 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 | --- | --- | --- | --- |
 | value | number &#124; LengthConstrain | 是 | List组件的布局列数或行数。<br>默认值：1 <br>取值范围：[1, +∞)，传入小于1的值时按默认值处理。 |
 | gutter | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 否 | 列间距或行间距。<br>默认值：0<br>参数类型为number时单位为vp。<br>取值范围：[0, +∞)，传入负值时按默认值处理。<br>**说明：** <br>gutter为列间距或行间距，当列数或行数大于1时生效。<br><br>**适用版本：** 10 |
-
-<a id="lanes2"></a>
 
 ## lanes
 

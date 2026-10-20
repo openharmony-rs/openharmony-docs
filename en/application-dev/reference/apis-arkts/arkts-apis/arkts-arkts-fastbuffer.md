@@ -2,8 +2,6 @@
 
 The FastBuffer class is a container type for dealing with binary data directly. It can be constructed in a variety of ways.
 
-@namespace fastbuffer
-
 **Since:** 20
 
 <!--Device-unnamed-declare namespace fastbuffer--><!--Device-unnamed-declare namespace fastbuffer-End-->
@@ -28,10 +26,10 @@ import { fastbuffer } from '@kit.ArkTS';
 | [byteLength](arkts-arkts-fastbuffer-bytelength-f.md#bytelength) | Returns the byte length of a string when encoded using `encoding`. This is not the same as [`String.prototype.length`], which does not account for the encoding that is used to convert the string into bytes. |
 | [compare](arkts-arkts-fastbuffer-compare-f.md#compare) | Compares buf1 to buf2 |
 | [concat](arkts-arkts-fastbuffer-concat-f.md#concat) | Returns a new `FastBuffer` which is the result of concatenating all the `FastBuffer`instances in the `list` together. |
-| [from](arkts-arkts-fastbuffer-from-f.md#from1) | Allocates a new FastBuffer using an array of bytes in the range 0 – 255. Array entries outside that range will be truncated to fit into it. |
-| [from](arkts-arkts-fastbuffer-from-f.md#from2) | This creates a view of the ArrayBuffer without copying the underlying memory. |
-| [from](arkts-arkts-fastbuffer-from-f.md#from3) | Copies the passed buffer data onto a new FastBuffer instance. |
-| [from](arkts-arkts-fastbuffer-from-f.md#from4) | Creates a new FastBuffer containing string. The encoding parameter identifies the character encoding to be used when converting string into bytes. |
+| [from](arkts-arkts-fastbuffer-from-f.md#from) | Allocates a new FastBuffer using an array of bytes in the range 0 – 255. Array entries outside that range will be truncated to fit into it. |
+| [from](arkts-arkts-fastbuffer-from-f.md#from) | This creates a view of the ArrayBuffer without copying the underlying memory. |
+| [from](arkts-arkts-fastbuffer-from-f.md#from) | Copies the passed buffer data onto a new FastBuffer instance. |
+| [from](arkts-arkts-fastbuffer-from-f.md#from) | Creates a new FastBuffer containing string. The encoding parameter identifies the character encoding to be used when converting string into bytes. |
 | [isBuffer](arkts-arkts-fastbuffer-isbuffer-f.md#isbuffer) | Returns true if obj is a FastBuffer, false otherwise |
 | [isEncoding](arkts-arkts-fastbuffer-isencoding-f.md#isencoding) | Returns true if encoding is the name of a supported character encoding, or false otherwise. |
 | [transcode](arkts-arkts-fastbuffer-transcode-f.md#transcode) | Re-encodes the given FastBuffer or Uint8Array instance from one character encoding to another. |

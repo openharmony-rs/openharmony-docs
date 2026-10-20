@@ -6,8 +6,6 @@ interface AudioSpatializationManager
 
 空间音频管理。在使用AudioSpatializationManager的接口前，需要使用[getSpatializationManager](arkts-audio-audio-audiomanager-i.md#getspatializationmanager)获取AudioSpatializationManager实例。
 
-@typedef AudioSpatializationManager
-
 **起始版本：** 18
 
 <!--Device-audio-interface AudioSpatializationManager--><!--Device-audio-interface AudioSpatializationManager-End-->

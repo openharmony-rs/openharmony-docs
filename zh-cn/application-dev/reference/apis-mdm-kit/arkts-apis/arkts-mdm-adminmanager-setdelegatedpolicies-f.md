@@ -6,8 +6,6 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="setdelegatedpolicies1"></a>
-
 ## setDelegatedPolicies
 
 ```TypeScript

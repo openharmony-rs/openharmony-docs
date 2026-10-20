@@ -6,8 +6,6 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 
 The download media entity event.
 
-@typedef { function } DownloadMediaEntityEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

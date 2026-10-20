@@ -24,8 +24,6 @@ class ColorFilter
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="createblendmodecolorfilter1"></a>
-
 ## createBlendModeColorFilter
 
 ```TypeScript
@@ -57,7 +55,7 @@ static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode): Color
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -67,8 +65,6 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
 let colorFilter = drawing.ColorFilter.createBlendModeColorFilter(color, drawing.BlendMode.SRC);
 ```
-
-<a id="createblendmodecolorfilter3"></a>
 
 ## createBlendModeColorFilter
 
@@ -101,7 +97,7 @@ static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMod
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -142,7 +138,7 @@ static createComposeColorFilter(outer: ColorFilter, inner: ColorFilter): ColorFi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
 **示例**
 
@@ -277,7 +273,7 @@ static createMatrixColorFilter(matrix: Array<number>): ColorFilter
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 

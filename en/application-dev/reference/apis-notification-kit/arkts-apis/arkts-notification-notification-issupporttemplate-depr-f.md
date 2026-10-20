@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="issupporttemplate1"></a>
-
 ## isSupportTemplate
 
 ```TypeScript
@@ -32,8 +30,23 @@ Checks whether a specified template is supported before using [NotificationTempl
 | templateName | string | Yes | Template name. Currently, only **downloadTemplate** is supported. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. |
 
+**Examples**
 
-<a id="issupporttemplate2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let templateName: string = 'downloadTemplate';
+function isSupportTemplateCallback(err: Base.BusinessError, data: boolean) {
+  if (err) {
+    console.error("isSupportTemplate failed " + JSON.stringify(err));
+  } else {
+    console.info("isSupportTemplate success");
+  }
+}
+
+Notification.isSupportTemplate(templateName, isSupportTemplateCallback);
+```
+
 
 ## isSupportTemplate
 
@@ -64,3 +77,16 @@ Checks whether a specified template is supported before using [NotificationTempl
 | Type | Description |
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise used to return the result. |
+
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let templateName: string = 'downloadTemplate';
+Notification.isSupportTemplate(templateName).then((data: boolean) => {
+  console.info("isSupportTemplate success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`isSupportTemplate failed, code is ${err}`);
+});
+```

@@ -6,8 +6,6 @@ export interface RenderResourceFactory
 
 用于创建可在共享RenderContext的多个场景（[Scene](arkts-arkgraphics3d-scene-c.md)）中共享的渲染资源。
 
-@interface RenderResourceFactory
-
 **起始版本：** 20
 
 <!--Device-unnamed-export interface RenderResourceFactory--><!--Device-unnamed-export interface RenderResourceFactory-End-->
@@ -250,8 +248,6 @@ function createSamplerResource(): Promise<Sampler> {
 }
 ```
 
-<a id="createscene1"></a>
-
 ## createScene
 
 ```TypeScript
@@ -319,7 +315,7 @@ createShader(params: SceneResourceParameters): Promise<Shader>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 创建着色器的参数。详细.shader文件格式请参考.shader资源文件格式要求。 |
+| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | 是 | 创建着色器的参数。详细.shader文件格式请参考[].shader资源文件格式要求](../../../graphics3d/arkgraphics3D-shader-resource.md)。 |
 
 **返回值：**
 

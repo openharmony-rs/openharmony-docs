@@ -18,7 +18,7 @@ Enumerates the sync modes.
 PULL_ONLY
 ```
 
-Indicates that data is only pulled from the remote end.
+Pull data from the peer end to the local end only.
 
 **Since:** 9
 
@@ -34,7 +34,7 @@ Indicates that data is only pulled from the remote end.
 PUSH_ONLY
 ```
 
-Indicates that data is only pushed from the local end.
+Push data from the local end to the peer end only.
 
 **Since:** 9
 
@@ -50,7 +50,7 @@ Indicates that data is only pushed from the local end.
 PUSH_PULL
 ```
 
-Indicates that data is pushed from the local end, and then pulled from the remote end.
+Push data from the local end to the peer end and then pull data from the peer end to the local end.
 
 **Since:** 9
 

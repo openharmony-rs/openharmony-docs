@@ -4,7 +4,7 @@
 interface Entry
 ```
 
-Provides key-value pairs stored in the distributedKVStore.
+Defines the KV pairs stored in a KV store.
 
 **Since:** 9
 
@@ -24,7 +24,7 @@ import { distributedKVStore } from '@kit.ArkData';
 key: string
 ```
 
-Indicates the key
+Key name. The value cannot be empty and its length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md).
 
 **Type:** string
 
@@ -42,7 +42,7 @@ Indicates the key
 value: Value
 ```
 
-Indicates the value
+Value object of the KV pair.
 
 **Type:** [Value](arkts-arkdata-distributedkvstore-value-i.md)
 

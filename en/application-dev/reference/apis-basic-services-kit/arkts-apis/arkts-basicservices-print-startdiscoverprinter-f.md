@@ -6,8 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="startdiscoverprinter1"></a>
-
 ## startDiscoverPrinter
 
 ```TypeScript
@@ -20,7 +18,7 @@ Discovers printers by specifying the extension list. The discovered printers con
 
 **Required permissions:** 
 - API version 20 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
-- API versions 10 to 19: ohos.permission.MANAGE_PRINT_JOB
+- API versions 10 to 19: N/A
 
 <!--Device-print-function startDiscoverPrinter(extensionList: Array<string>, callback: AsyncCallback<void>): void--><!--Device-print-function startDiscoverPrinter(extensionList: Array<string>, callback: AsyncCallback<void>): void-End-->
 
@@ -38,7 +36,6 @@ Discovers printers by specifying the extension list. The discovered printers con
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application<br>**Applicable version:** 10 - 19 |
 
 **Examples**
 
@@ -60,8 +57,6 @@ print.startDiscoverPrinter(extensionList, (error: BusinessError) => {
 ```
 
 
-<a id="startdiscoverprinter2"></a>
-
 ## startDiscoverPrinter
 
 ```TypeScript
@@ -74,7 +69,7 @@ Discovers printers by specifying the extension list. The discovered printers con
 
 **Required permissions:** 
 - API version 20 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
-- API versions 10 to 19: ohos.permission.MANAGE_PRINT_JOB
+- API versions 10 to 19: N/A
 
 <!--Device-print-function startDiscoverPrinter(extensionList: Array<string>): Promise<void>--><!--Device-print-function startDiscoverPrinter(extensionList: Array<string>): Promise<void>-End-->
 
@@ -97,7 +92,6 @@ Discovers printers by specifying the extension list. The discovered printers con
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application<br>**Applicable version:** 10 - 19 |
 
 **Examples**
 

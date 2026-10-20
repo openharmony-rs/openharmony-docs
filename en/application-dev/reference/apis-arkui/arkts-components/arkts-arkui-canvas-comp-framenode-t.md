@@ -6,8 +6,6 @@ declare type FrameNode = import('../api/arkui/FrameNode').FrameNode
 
 Import the frame node type object for Canvas.
 
-@typedef { import('../api/arkui/FrameNode').FrameNode } FrameNode
-
 **Type:** import('../api/arkui/FrameNode').FrameNode
 
 **Since:** 13

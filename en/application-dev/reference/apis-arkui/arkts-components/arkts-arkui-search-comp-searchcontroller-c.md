@@ -88,9 +88,9 @@ When the component is in focus, this API is called to set the text selection are
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectionStart | number | Yes | Start position of the text selection area. The start position of the text in the text box is 0.<br>If selectionStart is less than 0, it is treated as 0. If selectionStart is greater than the maximum text length, it is treated as the maximum text length. <br> |
-| selectionEnd | number | Yes | End position of the text selection area.<br>If selectionEnd is less than 0, it is treated as 0. If selectionEnd is greater than the maximum text length, it is treated as the maximum text length. <br> |
-| options | [SelectionOptions](arkts-arkui-common-comp-selectionoptions-i.md) | No | Configuration for the selected text.<br>Default value: MenuPolicy.DEFAULT. |
+| selectionStart | number | Yes | Start position of the text selection area. The start position of the text in the text box is 0. <br>If selectionStart is less than 0, it is treated as 0. If selectionStart is greater than the maximum text length, it is treated as the maximum text length. <br> |
+| selectionEnd | number | Yes | End position of the text selection area. <br>If selectionEnd is less than 0, it is treated as 0. If selectionEnd is greater than the maximum text length, it is treated as the maximum text length. <br> |
+| options | [SelectionOptions](arkts-arkui-common-comp-selectionoptions-i.md) | No | Configuration for the selected text. <br>Default value: MenuPolicy.DEFAULT. |
 
 ## stopEditing
 

@@ -6,8 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="getpointersize1"></a>
-
 ## getPointerSize
 
 ```TypeScript
@@ -71,8 +69,6 @@ struct Index {
 
 <!--DelEnd-->
 
-
-<a id="getpointersize2"></a>
 
 ## getPointerSize
 

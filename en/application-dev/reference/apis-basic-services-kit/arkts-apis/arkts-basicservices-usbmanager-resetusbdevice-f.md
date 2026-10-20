@@ -50,8 +50,8 @@ input parameter.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [14400001](../errorcode-usb.md#14400001-usb-device-connection-denied) | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
 | [14400008](../errorcode-usb.md#14400008-no-device-disconnected) | No such device(it may have been disconnected). |
-| [14400010](../errorcode-usb.md#14400010-unrecognized-error) | Other USB error. Possible causes:<br>1.Unrecognized discard error code. |
-| [14400013](../errorcode-usb.md#14400013-parameter-validity-check-failed) | The USBDevicePipe validity check failed. Possible causes:<br>1.The input parameters fail the validation check.  <br>2.The call chain used to obtain the input parameters is not reasonable. |
+| [14400010](../errorcode-usb.md#14400010-unrecognized-error) | Other USB error. Possible causes:  <br>1.Unrecognized discard error code. |
+| [14400013](../errorcode-usb.md#14400013-parameter-validity-check-failed) | The USBDevicePipe validity check failed. Possible causes:  <br>1.The input parameters fail the validation check.  <br>2.The call chain used to obtain the input parameters is not reasonable. |
 | [14400004](../errorcode-usb.md#14400004-service-exception) |  |
 
 **Examples**

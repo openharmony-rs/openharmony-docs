@@ -6,8 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="getallscreens1"></a>
-
 ## getAllScreens
 
 ```TypeScript
@@ -61,8 +59,6 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
 <!--DelEnd-->
 
 
-<a id="getallscreens2"></a>
-
 ## getAllScreens
 
 ```TypeScript
@@ -86,7 +82,7 @@ function getAllScreens(callback: AsyncCallback<Array<Screen>>, isNeedUnused?: bo
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[Screen](arkts-arkui-screen-screen-i-sys.md)&gt;&gt; | 是 | Callback used to return the result. If obtaining all screens is successful is successful, **err** is **undefined**, and the returned object is screen object set obtained. Otherwise, **err** is an error object. |
-| isNeedUnused | boolean | 否 | Indicates whether unused screen information is required. **true** means they should be provided, **false** means they should not.<br>Default value: false. |
+| isNeedUnused | boolean | 否 | Indicates whether unused screen information is required. **true** means they should be provided, **false** means they should not. <br>Default value: false. |
 
 **错误码：**
 
@@ -118,8 +114,6 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
 
 <!--DelEnd-->
 
-
-<a id="getallscreens3"></a>
 
 ## getAllScreens
 
@@ -172,8 +166,6 @@ promise.then((data: Array<screen.Screen>) => {
 <!--DelEnd-->
 
 
-<a id="getallscreens4"></a>
-
 ## getAllScreens
 
 ```TypeScript
@@ -196,7 +188,7 @@ function getAllScreens(isNeedUnused?: boolean): Promise<Array<Screen>>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| isNeedUnused | boolean | 否 | Indicates whether unused screen information is required. This parameter is optional. If not provided, the unused screen information will not be returned<br>Default value: false. |
+| isNeedUnused | boolean | 否 | Indicates whether unused screen information is required. This parameter is optional. If not provided, the unused screen information will not be returned <br>Default value: false. |
 
 **返回值：**
 

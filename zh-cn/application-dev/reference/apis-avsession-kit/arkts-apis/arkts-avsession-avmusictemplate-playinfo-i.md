@@ -6,8 +6,6 @@ interface PlayInfo
 
 播放信息的定义。
 
-@interface MediaElement
-
 **起始版本：** 23
 
 <!--Device-avMusicTemplate-interface PlayInfo--><!--Device-avMusicTemplate-interface PlayInfo-End-->

@@ -17,7 +17,7 @@ Install the font file in the specified path as an application-level or session-l
 > **NOTE:** 
 > - When installing an application-level font, you need to call the [onFontObserver](arkts-localization-fontmanager-onfontobserver-f.md) API to register a listener for font service status changes.
 > - After the font is installed, the application can use the font by name. The same font path cannot be installed repeatedly.
-> - The maximum number of font files that can be installed on the PC/2in1 is 800, while other devices support a maximum of 200 font files.
+> - The maximum number of font files that can be installed on PC/2in1/Tablet is 800, while other devices support a maximum of 200 font files.
 
 **Since:** 26.0.1
 

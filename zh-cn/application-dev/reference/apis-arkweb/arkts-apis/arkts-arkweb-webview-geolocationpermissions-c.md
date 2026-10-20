@@ -47,7 +47,7 @@ static allowGeolocation(origin: string, incognito?: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
 **示例**
@@ -131,7 +131,7 @@ static deleteGeolocation(origin: string, incognito?: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
 **示例**
@@ -163,8 +163,6 @@ struct WebComponent {
   }
 }
 ```
-
-<a id="getaccessiblegeolocation1"></a>
 
 ## getAccessibleGeolocation
 
@@ -199,7 +197,7 @@ static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise<bo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
 **示例**
@@ -237,8 +235,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getaccessiblegeolocation2"></a>
-
 ## getAccessibleGeolocation
 
 ```TypeScript
@@ -267,7 +263,7 @@ static getAccessibleGeolocation(origin: string, callback: AsyncCallback<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-输入参数origin错误) | Invalid origin. |
 
 **示例**
@@ -306,8 +302,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getstoredgeolocation1"></a>
-
 ## getStoredGeolocation
 
 ```TypeScript
@@ -340,7 +334,7 @@ static getStoredGeolocation(incognito?: boolean): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例**
 
@@ -377,8 +371,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getstoredgeolocation2"></a>
-
 ## getStoredGeolocation
 
 ```TypeScript
@@ -406,7 +398,7 @@ static getStoredGeolocation(callback: AsyncCallback<Array<string>>, incognito?: 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例**
 

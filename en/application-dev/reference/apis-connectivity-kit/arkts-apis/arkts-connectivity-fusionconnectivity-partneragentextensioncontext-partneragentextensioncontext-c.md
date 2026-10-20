@@ -6,8 +6,6 @@ export default class PartnerAgentExtensionContext extends ExtensionContext
 
 Class for the context of the PartnerAgentExtensionAbility.
 
-@extends ExtensionContext
-
 **Inheritance/Implementation:** PartnerAgentExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 
 **Since:** 23

@@ -6,8 +6,6 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="getforegroundapplications1"></a>
-
 ## getForegroundApplications
 
 ```TypeScript
@@ -67,8 +65,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getforegroundapplications2"></a>
 
 ## getForegroundApplications
 

@@ -6,8 +6,6 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
-<a id="queryparticipants1"></a>
-
 ## queryParticipants
 
 ```TypeScript
@@ -56,8 +54,6 @@ cloudData.sharing.queryParticipants('sharing_resource_test', (err: BusinessError
 
 <!--DelEnd-->
 
-
-<a id="queryparticipants2"></a>
 
 ## queryParticipants
 

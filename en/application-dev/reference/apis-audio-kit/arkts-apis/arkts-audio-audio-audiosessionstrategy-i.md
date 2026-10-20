@@ -6,8 +6,6 @@ interface AudioSessionStrategy
 
 Describes an audio session strategy.
 
-@typedef AudioSessionStrategy [since 12 - 24]
-
 **Since:** 12
 
 <!--Device-audio-interface AudioSessionStrategy--><!--Device-audio-interface AudioSessionStrategy-End-->

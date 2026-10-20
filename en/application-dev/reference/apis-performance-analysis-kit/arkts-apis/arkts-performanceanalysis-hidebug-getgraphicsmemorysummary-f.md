@@ -26,7 +26,7 @@ Obtains the GPU memory data of an application. This API uses a promise to return
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| interval | number | No | Validity period of the cached GPU memory data, in seconds. Default value: **300** The value ranges from 2 to 3600. If the input value is out of the value range, the default value will be used.<br>If the cached GPU memory data exists for a period longer than the value of this parameter, the latest GPU memory data is obtained and the cache value is updated. Otherwise, the cache value is directly obtained. |
+| interval | number | No | Validity period of the cached GPU memory data, in seconds. Default value: **300** The value ranges from 2 to 3600. If the input value is out of the value range, the default value will be used. <br>If the cached GPU memory data exists for a period longer than the value of this parameter, the latest GPU memory data is obtained and the cache value is updated. Otherwise, the cache value is directly obtained. |
 
 **Return value:**
 

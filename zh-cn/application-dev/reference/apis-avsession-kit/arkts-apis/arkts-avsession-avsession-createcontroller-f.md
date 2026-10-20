@@ -6,8 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="createcontroller2"></a>
-
 ## createController
 
 ```TypeScript
@@ -20,7 +18,7 @@ function createController(sessionId: string): Promise<AVSessionController>
 
 **需要权限：** 
 - API版本23+：ohos.permission.MANAGE_MEDIA_RESOURCES or ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
-- API版本9-22：ohos.permission.MANAGE_MEDIA_RESOURCES
+- API版本9-22：N/A
 
 <!--Device-avSession-function createController(sessionId: string): Promise<AVSessionController>--><!--Device-avSession-function createController(sessionId: string): Promise<AVSessionController>-End-->
 
@@ -43,7 +41,6 @@ function createController(sessionId: string): Promise<AVSessionController>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 9 - 22 |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 

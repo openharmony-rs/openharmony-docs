@@ -773,3 +773,14 @@ Total number of values in this cache.
 <!--Device-LRUCache-length: number--><!--Device-LRUCache-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
+
+**Examples**
+
+```TypeScript
+let pro = new util.LRUCache<number, number>();
+pro.put(2, 10);
+pro.put(1, 8);
+let result = pro.length;
+console.info('result = ' + result);
+// Output: result = 2
+```

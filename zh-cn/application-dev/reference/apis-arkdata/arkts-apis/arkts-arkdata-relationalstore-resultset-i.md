@@ -8,7 +8,7 @@ interface ResultSet
 
 ResultSet实例不会实时刷新。使用结果集后，如果数据库中的数据发生变化（如增删改操作），需要重新查询才能获取到最新的数据。
 
-下列API示例中，都需先使用[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)、[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)、[remoteQuery](arkts-arkdata-relationalstore-rdbstore-i.md#remotequery2)、[queryLockedRow](arkts-arkdata-relationalstore-rdbstore-i.md#querylockedrow)等query类方法中任一方法获取到ResultSet实例，再通过此实例调用对应方法。
+下列API示例中，都需先使用[query](arkts-arkdata-relationalstore-rdbstore-i.md#query)、[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql)、[remoteQuery](arkts-arkdata-relationalstore-rdbstore-i.md#remotequery)、[queryLockedRow](arkts-arkdata-relationalstore-rdbstore-i.md#querylockedrow)等query类方法中任一方法获取到ResultSet实例，再通过此实例调用对应方法。
 
 **起始版本：** 9
 
@@ -76,7 +76,7 @@ getAsset(columnIndex: number): Asset
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |
@@ -135,7 +135,7 @@ getAssets(columnIndex: number): Assets
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |
@@ -194,7 +194,7 @@ getBlob(columnIndex: number): Uint8Array
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |
@@ -253,7 +253,7 @@ getColumnIndex(columnName: string): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -315,7 +315,7 @@ getColumnName(columnIndex: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -427,7 +427,7 @@ getColumnType(columnIdentifier: number | string): Promise<ColumnType>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
@@ -495,7 +495,7 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
@@ -616,7 +616,7 @@ getDouble(columnIndex: number): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |
@@ -681,7 +681,7 @@ getLong(columnIndex: number): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |
@@ -798,7 +798,7 @@ getRows(maxCount: number, position?: number): Promise<Array<ValuesBucket>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
@@ -1054,7 +1054,7 @@ getString(columnIndex: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |
@@ -1112,7 +1112,7 @@ getValue(columnIndex: number): ValueType
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
@@ -1178,7 +1178,7 @@ goTo(offset: number): boolean
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -1445,7 +1445,7 @@ goToRow(position: number): boolean
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
@@ -1504,7 +1504,7 @@ isColumnNull(columnIndex: number): boolean
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-列索引越界) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error.<br>**适用版本：** 12+ |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted.<br>**适用版本：** 12+ |
 | [14800012](../errorcode-data-rdb.md#14800012-结果集为空或指针索引越界) | ResultSet is empty or pointer index is out of bounds.<br>**适用版本：** 12+ |

@@ -27,7 +27,7 @@ Creates a media source from file descriptor.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fdSrc | [AVFileDescriptor](arkts-media-media-avfiledescriptor-i.md) | Yes | file descriptor handler.<br>file descriptor handler. |
+| fdSrc | [AVFileDescriptor](arkts-media-media-avfiledescriptor-i.md) | Yes | file descriptor handler. <br>file descriptor handler. |
 
 **Return value:**
 

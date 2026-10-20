@@ -8,7 +8,7 @@ export declare enum BottomOffset
 
 | 名称 | 值 | 说明 |  
 | - | - | - |  
-| OFFSET_FOR_BAR | 0 | 存在菜单栏情况下与窗口底部的距离。设置后弹框距离底部88vp。 |
+| OFFSET_FOR_BAR | 0 | 存在菜单栏情况下与窗口底部的距离。设置后弹框距离底部88vp。 |  
 | OFFSET_FOR_NONE | 1 | 不存在菜单栏情况下与窗口底部的距离。默认值，设置后弹框距离底部44vp。 |
 
 **起始版本：** 12

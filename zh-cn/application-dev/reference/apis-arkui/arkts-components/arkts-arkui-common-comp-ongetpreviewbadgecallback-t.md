@@ -8,8 +8,6 @@ declare type OnGetPreviewBadgeCallback = () => boolean | number
 
 返回true表示显示选中数量角标，对应Grid或List显示范围内选中item数量；false表示不显示角标。返回数字时默认显示角标，该数字表示角标中需要显示的数量。取值范围：[0, 2<sup>31</sup>-1]，超过取值范围时按返回true处理。返回浮点数时，向下取整。
 
-@typedef { function } OnGetPreviewBadgeCallback
-
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。

@@ -31,7 +31,7 @@ Obtains the bundle extension policy information of a specified application.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name of the application. |
-| userId | number | Yes | User ID, which can be obtained by calling getOsAccountLocalId. The value is greater than or equal to 0.<br>The value should be an integer. |
+| userId | number | Yes | User ID, which can be obtained by calling getOsAccountLocalId. The value is greater than or equal to 0. <br>The value should be an integer. |
 
 **Return value:**
 

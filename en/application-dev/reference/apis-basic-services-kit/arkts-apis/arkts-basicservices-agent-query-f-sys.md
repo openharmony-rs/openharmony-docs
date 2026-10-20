@@ -6,8 +6,6 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
-<a id="query1"></a>
-
 ## query
 
 ```TypeScript
@@ -39,12 +37,10 @@ Queries specified task details. Creates a group based on GroupConfig
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. |
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 | [21900006](../errorcode-request.md#21900006-task-not-found) | Task removed or not found. |
 
-
-<a id="query2"></a>
 
 ## query
 
@@ -82,6 +78,6 @@ Queries specified task details.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. |
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 | [21900006](../errorcode-request.md#21900006-task-not-found) | Task removed or not found. |

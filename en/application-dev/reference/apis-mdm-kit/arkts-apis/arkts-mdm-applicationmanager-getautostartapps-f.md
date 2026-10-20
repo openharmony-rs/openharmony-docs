@@ -6,8 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="getautostartapps1"></a>
-
 ## getAutoStartApps
 
 ```TypeScript
@@ -101,8 +99,6 @@ try {
 ```
 
 
-<a id="getautostartapps2"></a>
-
 ## getAutoStartApps
 
 ```TypeScript
@@ -178,8 +174,6 @@ try {
 ```
 
 
-<a id="getautostartapps3"></a>
-
 ## getAutoStartApps
 
 ```TypeScript
@@ -223,8 +217,6 @@ Checks the auto-start applications for the specified user.
 
 See [getAutoStartApps](#getautostartapps)
 
-
-<a id="getautostartapps4"></a>
 
 ## getAutoStartApps
 

@@ -48,7 +48,7 @@ Default value: **0**
 
 Value range: [0, stars]
 
-If the value is less than 0, 0 is used. If the value is greater than the value of [stars](arkts-arkui-rating-comp-attribute.md#stars1), the value of [stars](arkts-arkui-rating-comp-attribute.md#stars1) is used.
+If the value is less than 0, 0 is used. If the value is greater than the value of [stars](arkts-arkui-rating-comp-attribute.md#stars), the value of [stars](arkts-arkui-rating-comp-attribute.md#stars) is used.
 
 This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
 

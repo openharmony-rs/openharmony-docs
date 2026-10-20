@@ -36,7 +36,7 @@ Sets whether to enable the decrement button.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to enable or disable the decrement button.<br>Default value: **true**, which means the decrement button is enabled; **false** means the decrement button is disabled. |
+| value | boolean | Yes | Whether to enable or disable the decrement button. <br>Default value: **true**, which means the decrement button is enabled; **false** means the decrement button is disabled. |
 
 ## enableInc
 
@@ -60,7 +60,7 @@ Sets whether to enable the increment button.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to disable or enable the increment button.<br>Default value: **true**, which means the increment button is enabled; **false** means the button is disabled. |
+| value | boolean | Yes | Whether to disable or enable the increment button. <br>Default value: **true**, which means the increment button is enabled; **false** means the button is disabled. |
 
 ## onDec
 

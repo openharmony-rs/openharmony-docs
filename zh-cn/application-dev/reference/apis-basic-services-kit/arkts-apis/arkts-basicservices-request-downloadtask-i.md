@@ -4,7 +4,7 @@
 interface DownloadTask
 ```
 
-下载任务，使用下列方法前，需要先获取DownloadTask对象，promise形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile2)获取，callback形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile1)获取。
+下载任务，使用下列方法前，需要先获取DownloadTask对象，promise形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile)获取，callback形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile)获取。
 
 **起始版本：** 6
 
@@ -17,8 +17,6 @@ interface DownloadTask
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
 ```
-
-<a id="delete1"></a>
 
 ## delete
 
@@ -79,8 +77,6 @@ try {
 }
 ```
 
-<a id="delete2"></a>
-
 ## delete
 
 ```TypeScript
@@ -136,8 +132,6 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-<a id="gettaskinfo1"></a>
 
 ## getTaskInfo
 
@@ -198,8 +192,6 @@ try {
 }
 ```
 
-<a id="gettaskinfo2"></a>
-
 ## getTaskInfo
 
 ```TypeScript
@@ -256,8 +248,6 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-<a id="gettaskmimetype1"></a>
 
 ## getTaskMimeType
 
@@ -317,8 +307,6 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-<a id="gettaskmimetype2"></a>
 
 ## getTaskMimeType
 
@@ -402,7 +390,7 @@ off(type: 'progress', callback?: (receivedSize: number, totalSize: number) => vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -461,7 +449,7 @@ off(type: 'complete' | 'pause' | 'remove', callback?: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -546,7 +534,7 @@ off(type: 'fail', callback?: (err: number) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -609,7 +597,7 @@ on(type: 'progress', callback: (receivedSize: number, totalSize: number) => void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -660,7 +648,7 @@ on(type: 'complete' | 'pause' | 'remove', callback: () => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -721,7 +709,7 @@ on(type: 'fail', callback: (err: number) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed.<br>**适用版本：** 12+ |
 
 **示例**
 
@@ -746,8 +734,6 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-<a id="restore1"></a>
 
 ## restore
 
@@ -808,8 +794,6 @@ try {
 }
 ```
 
-<a id="restore2"></a>
-
 ## restore
 
 ```TypeScript
@@ -866,8 +850,6 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-
-<a id="suspend1"></a>
 
 ## suspend
 
@@ -928,8 +910,6 @@ try {
 }
 ```
 
-<a id="suspend2"></a>
-
 ## suspend
 
 ```TypeScript
@@ -987,8 +967,6 @@ try {
 }
 ```
 
-<a id="pause1"></a>
-
 ## pause
 
 ```TypeScript
@@ -1000,13 +978,13 @@ pause(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [suspend](#suspend1)替代。
+> [suspend](#suspend)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [suspend](#suspend1)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [suspend](#suspend)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1037,8 +1015,6 @@ downloadTask.pause((err: BusinessError) => {
   console.info('Succeeded in pausing the download task.');
 });
 ```
-
-<a id="pause2"></a>
 
 ## pause
 
@@ -1086,8 +1062,6 @@ downloadTask.pause().then(() => {
 });
 ```
 
-<a id="query1"></a>
-
 ## query
 
 ```TypeScript
@@ -1099,13 +1073,13 @@ query(callback: AsyncCallback<DownloadInfo>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getTaskInfo](#gettaskinfo1)替代。
+> [getTaskInfo](#gettaskinfo)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getTaskInfo](#gettaskinfo1)(callback: AsyncCallback&lt;DownloadInfo&gt;)
+**替代接口：** [getTaskInfo](#gettaskinfo)(callback: AsyncCallback&lt;DownloadInfo&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1136,8 +1110,6 @@ downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo) => {
   }
 });
 ```
-
-<a id="query2"></a>
 
 ## query
 
@@ -1185,8 +1157,6 @@ downloadTask.query().then((downloadInfo) => {
 });
 ```
 
-<a id="querymimetype1"></a>
-
 ## queryMimeType
 
 ```TypeScript
@@ -1198,13 +1168,13 @@ queryMimeType(callback: AsyncCallback<string>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getTaskMimeType](#gettaskmimetype1)替代。
+> [getTaskMimeType](#gettaskmimetype)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getTaskMimeType](#gettaskmimetype1)(callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getTaskMimeType](#gettaskmimetype)(callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1235,8 +1205,6 @@ downloadTask.queryMimeType((err: BusinessError, data: string) => {
   }
 });
 ```
-
-<a id="querymimetype2"></a>
 
 ## queryMimeType
 
@@ -1284,8 +1252,6 @@ downloadTask.queryMimeType().then((data: string) => {
 });
 ```
 
-<a id="remove1"></a>
-
 ## remove
 
 ```TypeScript
@@ -1297,13 +1263,13 @@ remove(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [delete](arkts-basicservices-request-uploadtask-i.md#delete1)替代。
+> [delete](arkts-basicservices-request-uploadtask-i.md#delete)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [delete](arkts-basicservices-request-uploadtask-i.md#delete1)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [delete](arkts-basicservices-request-uploadtask-i.md#delete)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1334,8 +1300,6 @@ downloadTask.remove((err, result) => {
   console.info('Succeeded in removing the download task.');
 });
 ```
-
-<a id="remove2"></a>
 
 ## remove
 
@@ -1383,8 +1347,6 @@ downloadTask.remove().then((result) => {
 });
 ```
 
-<a id="resume1"></a>
-
 ## resume
 
 ```TypeScript
@@ -1396,13 +1358,13 @@ resume(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [restore](#restore1)替代。
+> [restore](#restore)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [restore](#restore1)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [restore](#restore)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1433,8 +1395,6 @@ downloadTask.resume((err: BusinessError) => {
   console.info('Succeeded in resuming the download task.');
 });
 ```
-
-<a id="resume2"></a>
 
 ## resume
 

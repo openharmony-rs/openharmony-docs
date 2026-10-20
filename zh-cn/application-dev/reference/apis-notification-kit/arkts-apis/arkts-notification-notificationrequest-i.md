@@ -262,7 +262,7 @@ extraInfo?: { [key: string]: any }
 
 以下Key由系统赋值，开发者手动修改也不会生效，系统在数据传递时会自动修改为实际值。
 
-- 'ohos.notificationManager.wantUri'：用户点击通知时传递给应用的[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) 中的uri字段，使用[getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md#getactivenotifications1)接口获取该信息。
+- 'ohos.notificationManager.wantUri'：用户点击通知时传递给应用的[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) 中的uri字段，使用[getActiveNotifications](arkts-notification-notification-getactivenotifications-depr-f.md#getactivenotifications)接口获取该信息。
 
 **类型：** { [key: string]: any }
 
@@ -462,8 +462,6 @@ notificationFlags?: NotificationFlags
 ```
 
 通知标志位设置，默认为空。从API version 23开始成为可写参数，设置该参数可削减通知的提醒方式，当通知渠道类型为[LIVE_VIEW](arkts-notification-notificationmanager-slottype-e.md)时，该参数设置不生效。
-
-@readonly [since 8 - 22]
 
 **类型：** [NotificationFlags](arkts-notification-notificationflags-i.md)
 

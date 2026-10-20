@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getabilityrunninginfos1"></a>
-
 ## getAbilityRunningInfos
 
 ```TypeScript
@@ -35,8 +33,6 @@ function getAbilityRunningInfos(): Promise<Array<AbilityRunningInfo>>
 | --- | --- |
 | Promise&lt;Array&lt;[AbilityRunningInfo](arkts-ability-abilityrunninginfo-i.md)&gt;&gt; | Promise对象，返回Ability运行相关信息。 |
 
-
-<a id="getabilityrunninginfos2"></a>
 
 ## getAbilityRunningInfos
 

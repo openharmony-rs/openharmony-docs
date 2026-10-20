@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="getinstalledbundlelist1"></a>
-
 ## getInstalledBundleList
 
 ```TypeScript
@@ -68,8 +66,6 @@ bundleManager.getInstalledBundleList(wantTemp, accountId).then((result) => {
 });
 ```
 
-
-<a id="getinstalledbundlelist2"></a>
 
 ## getInstalledBundleList
 

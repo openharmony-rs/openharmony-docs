@@ -18,8 +18,6 @@ Implements a serial queue, in which all tasks are executed in sequence.
 import { taskpool } from '@kit.ArkTS';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -47,8 +45,6 @@ A constructor used to create a **SequenceRunner** instance.
 ```TypeScript
 let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

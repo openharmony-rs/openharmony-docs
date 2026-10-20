@@ -6,8 +6,6 @@ type BluetoothAddress = common.BluetoothAddress
 
 Bluetooth device address.
 
-@typedef { common.BluetoothAddress } BluetoothAddress
-
 **Type:** [common.BluetoothAddress](arkts-connectivity-common-bluetoothaddress-i.md)
 
 **Since:** 23

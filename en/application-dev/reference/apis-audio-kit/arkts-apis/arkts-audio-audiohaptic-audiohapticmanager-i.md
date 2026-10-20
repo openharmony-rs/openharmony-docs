@@ -107,7 +107,7 @@ Registers audio and haptic resources via URIs. This API uses a promise to return
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise, which returns the registered resource ID.<br>In normal cases, the returned resource ID is a non-negative number. A negative ID indicates a registration failure. In this case, check whether the number of registered resources exceeds the upper limit. |
+| Promise&lt;number&gt; | Promise, which returns the registered resource ID. <br>In normal cases, the returned resource ID is a non-negative number. A negative ID indicates a registration failure. In this case, check whether the number of registered resources exceeds the upper limit. |
 
 **Error codes:**
 
@@ -164,7 +164,7 @@ Registers audio and haptic resources via file descriptors. This API uses a promi
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise, which returns the registered resource ID.<br>In normal cases, the returned resource ID is a non-negative number. A negative ID indicates a registration failure. In this case, check whether the number of registered resources exceeds the upper limit. |
+| Promise&lt;number&gt; | Promise, which returns the registered resource ID. <br>In normal cases, the returned resource ID is a non-negative number. A negative ID indicates a registration failure. In this case, check whether the number of registered resources exceeds the upper limit. |
 
 **Examples**
 

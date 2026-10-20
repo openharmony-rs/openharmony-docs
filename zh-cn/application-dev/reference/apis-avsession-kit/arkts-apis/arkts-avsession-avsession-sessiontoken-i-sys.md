@@ -6,8 +6,6 @@ interface SessionToken
 
 会话令牌的信息。
 
-@typedef SessionToken
-
 **起始版本：** 9
 
 <!--Device-avSession-interface SessionToken--><!--Device-avSession-interface SessionToken-End-->

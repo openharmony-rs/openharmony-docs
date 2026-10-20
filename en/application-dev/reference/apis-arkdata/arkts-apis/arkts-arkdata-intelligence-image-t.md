@@ -6,8 +6,6 @@ type Image = string
 
 The type of the image can be its URI.
 
-@typedef { string } Image
-
 **Type:** string
 
 **Since:** 15

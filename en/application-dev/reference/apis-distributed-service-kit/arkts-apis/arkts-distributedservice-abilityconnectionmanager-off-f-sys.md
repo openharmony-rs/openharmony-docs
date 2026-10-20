@@ -29,9 +29,9 @@ Unregisters receiveImage event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'receiveImage' | Yes | Registration Type, 'receiveImage'. |
-| sessionId | number | Yes | Ability connection Session id. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[EventCallbackInfo](arkts-distributedservice-abilityconnectionmanager-eventcallbackinfo-i.md)&gt; | No | Used to handle ('receiveImage') command. |
+| type | 'receiveImage' | Yes | Indicates the event callback type. The supported event type is 'receiveImage'. |
+| sessionId | number | Yes | Indicates the ID of the created collaboration session. A collaboration session must be created first before obtaining the ID. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[EventCallbackInfo](arkts-distributedservice-abilityconnectionmanager-eventcallbackinfo-i.md)&gt; | No | Indicates the registered callback function. If this parameter is passed, the listener of this callback is unregistered. If this parameter is not passed, all 'receiveImage'event listeners are unregistered. |
 
 **Error codes:**
 
@@ -60,7 +60,7 @@ function off(type: 'collaborateEvent', sessionId: number,
         callback?: Callback<CollaborateEventInfo>): void
 ```
 
-Unregisters collaborateEvent event.
+Unregisters the callback listener for the collaborateEvent event. This method must be used with on('collaborateEvent'). When collaboration events are no longer needed or the component is destroyed, call this method to unregister the listener and release resources.
 
 **Since:** 18
 

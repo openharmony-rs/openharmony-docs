@@ -6,8 +6,6 @@ declare interface ReusableOptions
 
 可复用自定义组件的参数，用于配置内存优化策略，适用于需要降低可复用自定义组件内存使用量的场景。
 
-@interface ReusableOptions
-
 **起始版本：** 26.0.0
 
 <!--Device-unnamed-declare interface ReusableOptions--><!--Device-unnamed-declare interface ReusableOptions-End-->

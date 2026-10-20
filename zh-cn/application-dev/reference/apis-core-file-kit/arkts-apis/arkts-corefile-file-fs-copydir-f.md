@@ -58,8 +58,6 @@ declare function copyDir(src: string, dest: string, mode?: number): Promise<void
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
-<a id="copydir2"></a>
-
 ## copyDir
 
 ```TypeScript
@@ -105,8 +103,6 @@ declare function copyDir(src: string, dest: string, callback: AsyncCallback<void
 | 13900042 | Unknown error |
 
 
-<a id="copydir3"></a>
-
 ## copyDir
 
 ```TypeScript
@@ -137,8 +133,6 @@ declare function copyDir(src: string, dest: string, callback: AsyncCallback<void
 | --- | --- |
 | 13900015 | File exists |
 
-
-<a id="copydir4"></a>
 
 ## copyDir
 
@@ -185,8 +179,6 @@ declare function copyDir(src: string, dest: string, mode: number, callback: Asyn
 | 13900038 | Value too large for defined data type |
 | 13900042 | Unknown error |
 
-
-<a id="copydir5"></a>
 
 ## copyDir
 

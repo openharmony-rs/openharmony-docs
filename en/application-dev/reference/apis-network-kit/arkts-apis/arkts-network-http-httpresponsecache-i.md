@@ -49,8 +49,6 @@ stable.
 import { http } from '@kit.NetworkKit';
 ```
 
-<a id="delete1"></a>
-
 ## delete
 
 ```TypeScript
@@ -110,8 +108,6 @@ httpRequest.request("EXAMPLE_URL").then(data => {
   console.error("errcode" + JSON.stringify(error));
 });
 ```
-
-<a id="delete2"></a>
 
 ## delete
 
@@ -211,8 +207,6 @@ httpRequest.request("EXAMPLE_URL").then(data => {
 });
 ```
 
-<a id="flush1"></a>
-
 ## flush
 
 ```TypeScript
@@ -271,8 +265,6 @@ httpRequest.request("EXAMPLE_URL", (err: BusinessError, data: http.HttpResponse)
   }
 });
 ```
-
-<a id="flush2"></a>
 
 ## flush
 

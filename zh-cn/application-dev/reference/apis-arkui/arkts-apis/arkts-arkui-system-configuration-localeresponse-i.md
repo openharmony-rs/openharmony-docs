@@ -4,8 +4,6 @@
 export interface LocaleResponse
 ```
 
-@interface LocaleResponse
-
 **起始版本：** 12
 
 <!--Device-unnamed-export interface LocaleResponse--><!--Device-unnamed-export interface LocaleResponse-End-->

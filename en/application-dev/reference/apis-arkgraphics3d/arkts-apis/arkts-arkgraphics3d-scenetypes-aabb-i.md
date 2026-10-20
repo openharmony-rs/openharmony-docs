@@ -6,8 +6,6 @@ export interface Aabb
 
 Axis aligned boundary box used to determine whether two objects in space are overlapping.
 
-@typedef Aabb
-
 **Since:** 12
 
 <!--Device-unnamed-export interface Aabb--><!--Device-unnamed-export interface Aabb-End-->

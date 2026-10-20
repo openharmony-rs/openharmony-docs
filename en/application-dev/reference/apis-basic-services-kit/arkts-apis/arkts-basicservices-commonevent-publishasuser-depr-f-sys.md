@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="publishasuser1"></a>
-
 ## publishAsUser
 
 ```TypeScript
@@ -59,8 +57,6 @@ commonEvent.publishAsUser('event', userId, publishCallBack);
 
 <!--DelEnd-->
 
-
-<a id="publishasuser2"></a>
 
 ## publishAsUser
 

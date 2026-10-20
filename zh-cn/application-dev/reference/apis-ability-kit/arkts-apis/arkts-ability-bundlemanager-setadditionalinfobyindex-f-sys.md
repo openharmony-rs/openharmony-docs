@@ -32,7 +32,7 @@ function setAdditionalInfoByIndex(bundleName: string, additionalInfo: string, ap
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 包名。 |
 | additionalInfo | string | 是 | 要设置的其他信息。 |
-| appIndex | number | 是 | Index of the application mode.The value must be equal to 0 or 10000.<br>取值限定为整数。 |
+| appIndex | number | 是 | Index of the application mode.The value must be equal to 0 or 10000. <br>取值限定为整数。 |
 
 **错误码：**
 

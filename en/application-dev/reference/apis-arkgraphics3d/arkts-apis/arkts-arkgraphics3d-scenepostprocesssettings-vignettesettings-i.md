@@ -6,8 +6,6 @@ export interface VignetteSettings
 
 Describes the settings for vignette effects.
 
-@typedef VignetteSettings
-
 **Since:** 22
 
 <!--Device-unnamed-export interface VignetteSettings--><!--Device-unnamed-export interface VignetteSettings-End-->

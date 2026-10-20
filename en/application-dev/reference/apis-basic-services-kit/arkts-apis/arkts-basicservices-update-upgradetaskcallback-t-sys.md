@@ -6,8 +6,6 @@ export type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 Represents an event callback.
 
-@typedef UpgradeTaskCallback [since 9 - 22] @typedef { function } UpgradeTaskCallback [since 23]
-
 **Since:** 9
 
 <!--Device-update-export type UpgradeTaskCallback = (eventInfo: EventInfo) => void--><!--Device-update-export type UpgradeTaskCallback = (eventInfo: EventInfo) => void-End-->

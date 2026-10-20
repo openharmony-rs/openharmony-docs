@@ -6,8 +6,6 @@ export type VpnExtensionContext = _VpnExtensionContext.default
 
 The context of vpn extension. It allows access to vpnExtension-specific resources. The class of auto startup info.
 
-@typedef { _VpnExtensionContext.default }
-
 **Type:** _VpnExtensionContext.default
 
 **Since:** 11

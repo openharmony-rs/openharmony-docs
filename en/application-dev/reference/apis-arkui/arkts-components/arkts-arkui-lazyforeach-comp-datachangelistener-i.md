@@ -45,7 +45,7 @@ Invoked when data is added to the position indicated by the specified index.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the position where data is added. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
+| index | number | Yes | Index of the position where data is added. The value range is [0, data source length - 1]. <br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
 
 ## onDataChange
 
@@ -73,7 +73,7 @@ Notifies components that the data at the **index** position has changed. Called 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the position where data is changed. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
+| index | number | Yes | Index of the position where data is changed. The value range is [0, data source length - 1]. <br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
 
 ## onDataDelete
 
@@ -102,7 +102,7 @@ Invoked when data is deleted from the position indicated by the specified index.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the position where data is deleted. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
+| index | number | Yes | Index of the position where data is deleted. The value range is [0, data source length - 1]. <br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
 
 ## onDataMove
 
@@ -131,10 +131,8 @@ Invoked when data is moved, that is, when data is swapped between the **from** a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| from | number | Yes | Original position of data. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
-| to | number | Yes | Target position of data. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
-
-<a id="ondatareloaded1"></a>
+| from | number | Yes | Original position of data. The value range is [0, data source length - 1]. <br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
+| to | number | Yes | Target position of data. The value range is [0, data source length - 1]. <br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
 
 ## onDataReloaded
 
@@ -157,8 +155,6 @@ Invoked when all data is reloaded. For data items whose key remains unchanged, t
 <!--Device-DataChangeListener-onDataReloaded(): void--><!--Device-DataChangeListener-onDataReloaded(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-<a id="ondatareloaded2"></a>
 
 ## onDataReloaded
 
@@ -188,7 +184,7 @@ When reuse of old child components during the update is not allowed, data items 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| reuseImmediately | boolean | Yes | Whether old child components can be reused during the update.<br>**true**: old child components can be reused during the update. <br>**false**: old child components cannot be reused during the update. |
+| reuseImmediately | boolean | Yes | Whether old child components can be reused during the update. <br>**true**: old child components can be reused during the update. <br>**false**: old child components cannot be reused during the update. |
 
 ## onDatasetChange
 
@@ -252,7 +248,7 @@ Invoked when data is added to the position indicated by the specified index.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the position where data is added. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
+| index | number | Yes | Index of the position where data is added. The value range is [0, data source length - 1]. <br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
 
 ## onDataChanged
 
@@ -283,7 +279,7 @@ Invoked when data in the position indicated by the specified index is changed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Listener for data changes. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
+| index | number | Yes | Listener for data changes. The value range is [0, data source length - 1]. <br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
 
 ## onDataDeleted
 
@@ -314,7 +310,7 @@ Invoked when data is deleted from the position indicated by the specified index.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the position where data is deleted. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
+| index | number | Yes | Index of the position where data is deleted. The value range is [0, data source length - 1]. <br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
 
 ## onDataMoved
 
@@ -346,5 +342,5 @@ Invoked when data is moved, that is, when data is swapped between the **from** a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| from | number | Yes | Original position of data. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
-| to | number | Yes | Target position of data. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
+| from | number | Yes | Original position of data. The value range is [0, data source length - 1]. <br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
+| to | number | Yes | Target position of data. The value range is [0, data source length - 1]. <br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |

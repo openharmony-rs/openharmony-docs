@@ -26,9 +26,9 @@ Rotate in place according to the speed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mechId | number | Yes | ID of the mechanical device.<br>The value should be an integer. |
+| mechId | number | Yes | ID of the mechanical device. <br>The value should be an integer. |
 | angleSpeed | number | Yes | angular velocity. |
-| duration | number | Yes | Duration of movement, unit ms.<br>The value should be an integer. |
+| duration | number | Yes | Duration of movement, unit ms. <br>The value should be an integer. |
 
 **Return value:**
 

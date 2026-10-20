@@ -38,7 +38,7 @@ Synchronously queries whether a specified application or application clone of a 
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether a specified application is set to forbid being disabled.<br>The value **true** indicates that the specified application is set to forbid being disabled, and **false** indicates that the specified application is not set to forbid being disabled. |
+| boolean | Whether a specified application is set to forbid being disabled. <br>The value **true** indicates that the specified application is set to forbid being disabled, and **false** indicates that the specified application is not set to forbid being disabled. |
 
 **Error codes:**
 

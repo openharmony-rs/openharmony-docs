@@ -24,7 +24,7 @@ Checks whether the current device supports embodied control for a specific type 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mechDeviceType | [MechDeviceType](arkts-mechanic-mechanicmanager-mechdevicetype-e.md) | No | Associated device type.<br>Default: If this parameter is not provided, it represents all device types. As long as one or more types are supported, the result returned will be supported. |
+| mechDeviceType | [MechDeviceType](arkts-mechanic-mechanicmanager-mechdevicetype-e.md) | No | Associated device type. <br>Default: If this parameter is not provided, it represents all device types. As long as one or more types are supported, the result returned will be supported. |
 
 **Return value:**
 

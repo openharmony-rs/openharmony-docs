@@ -6,8 +6,6 @@ interface WifiP2pLinkedInfo
 
 P2P linked information.
 
-@typedef WifiP2pLinkedInfo
-
 **Since:** 9
 
 <!--Device-wifiManager-interface WifiP2pLinkedInfo--><!--Device-wifiManager-interface WifiP2pLinkedInfo-End-->

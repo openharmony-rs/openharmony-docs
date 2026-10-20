@@ -24,8 +24,6 @@ Defines the UserFileManager class and provides functions to access the data in u
 import { userFileManager } from '@kit.CoreFileKit';
 ```
 
-<a id="createalbum1"></a>
-
 ## createAlbum
 
 ```TypeScript
@@ -85,8 +83,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="createalbum2"></a>
 
 ## createAlbum
 
@@ -153,8 +149,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="createaudioasset1"></a>
-
 ## createAudioAsset
 
 ```TypeScript
@@ -210,8 +204,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="createaudioasset2"></a>
 
 ## createAudioAsset
 
@@ -271,8 +263,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="createphotoasset1"></a>
 
 ## createPhotoAsset
 
@@ -341,8 +331,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="createphotoasset2"></a>
-
 ## createPhotoAsset
 
 ```TypeScript
@@ -400,8 +388,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="createphotoasset3"></a>
 
 ## createPhotoAsset
 
@@ -464,8 +450,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="createphotoasset4"></a>
 
 ## createPhotoAsset
 
@@ -532,8 +516,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="createphotoasset5"></a>
-
 ## createPhotoAsset
 
 ```TypeScript
@@ -595,8 +577,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="delete1"></a>
 
 ## delete
 
@@ -672,8 +652,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="delete2"></a>
-
 ## delete
 
 ```TypeScript
@@ -746,8 +724,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="deletealbums1"></a>
-
 ## deleteAlbums
 
 ```TypeScript
@@ -808,8 +784,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="deletealbums2"></a>
 
 ## deleteAlbums
 
@@ -877,8 +851,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getactivepeers1"></a>
-
 ## getActivePeers
 
 ```TypeScript
@@ -925,8 +897,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="getactivepeers2"></a>
 
 ## getActivePeers
 
@@ -978,8 +948,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getalbums1"></a>
-
 ## getAlbums
 
 ```TypeScript
@@ -993,7 +961,7 @@ getAlbums(
 
 Obtains albums based on the specified options and album type. This API uses an asynchronous callback to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums1) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
 
 Before the operation, ensure that the albums to obtain exist.
 
@@ -1061,8 +1029,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getalbums2"></a>
-
 ## getAlbums
 
 ```TypeScript
@@ -1071,7 +1037,7 @@ getAlbums(type: AlbumType, subType: AlbumSubType, callback: AsyncCallback<FetchR
 
 Obtains albums by type. This API uses an asynchronous callback to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums1) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
 
 Before the operation, ensure that the albums to obtain exist.
 
@@ -1130,8 +1096,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getalbums3"></a>
-
 ## getAlbums
 
 ```TypeScript
@@ -1140,7 +1104,7 @@ getAlbums(type: AlbumType, subType: AlbumSubType, options?: FetchOptions): Promi
 
 Obtains albums based on the specified options and album type. This API uses a promise to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums1) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
 
 Before the operation, ensure that the albums to obtain exist.
 
@@ -1212,8 +1176,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getallpeers1"></a>
-
 ## getAllPeers
 
 ```TypeScript
@@ -1260,8 +1222,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="getallpeers2"></a>
 
 ## getAllPeers
 
@@ -1313,8 +1273,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="getaudioassets1"></a>
 
 ## getAudioAssets
 
@@ -1380,8 +1338,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="getaudioassets2"></a>
 
 ## getAudioAssets
 
@@ -1453,8 +1409,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getphotoalbums1"></a>
-
 ## getPhotoAlbums
 
 ```TypeScript
@@ -1463,9 +1417,9 @@ getPhotoAlbums(options: AlbumFetchOptions, callback: AsyncCallback<FetchResult<A
 
 Obtains image and video albums. This API uses an asynchronous callback to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums1) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
 
-This API will be deprecated. Use [getAlbums](#getalbums1) instead.
+This API will be deprecated. Use [getAlbums](#getalbums) instead.
 
 **Since:** 9
 
@@ -1528,8 +1482,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getphotoalbums2"></a>
-
 ## getPhotoAlbums
 
 ```TypeScript
@@ -1538,9 +1490,9 @@ getPhotoAlbums(options: AlbumFetchOptions): Promise<FetchResult<Album>>
 
 Obtains albums. This API uses a promise to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums1) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
 
-This API will be deprecated. Use [getAlbums](#getalbums1) instead.
+This API will be deprecated. Use [getAlbums](#getalbums) instead.
 
 **Since:** 9
 
@@ -1600,8 +1552,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="getphotoassets1"></a>
 
 ## getPhotoAssets
 
@@ -1669,8 +1619,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="getphotoassets2"></a>
 
 ## getPhotoAssets
 
@@ -1744,8 +1692,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getphotoindex1"></a>
-
 ## getPhotoIndex
 
 ```TypeScript
@@ -1781,7 +1727,7 @@ Obtains the index of an image or video in an album. This API uses an asynchronou
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
 <!--Del-->
 **Examples**
@@ -1827,8 +1773,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getphotoindex2"></a>
-
 ## getPhotoIndex
 
 ```TypeScript
@@ -1869,7 +1813,7 @@ Obtains the index of an image or video in an album. This API uses a promise to r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
 <!--Del-->
 **Examples**
@@ -1918,8 +1862,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getprivatealbum1"></a>
-
 ## getPrivateAlbum
 
 ```TypeScript
@@ -1928,7 +1870,7 @@ getPrivateAlbum(type: PrivateAlbumType, callback: AsyncCallback<FetchResult<Priv
 
 Obtains the system album. This API uses an asynchronous callback to return the result.
 
-This API will be deprecated. Use [getAlbums](#getalbums1) instead.
+This API will be deprecated. Use [getAlbums](#getalbums) instead.
 
 **Since:** 9
 
@@ -1978,8 +1920,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getprivatealbum2"></a>
-
 ## getPrivateAlbum
 
 ```TypeScript
@@ -1988,7 +1928,7 @@ getPrivateAlbum(type: PrivateAlbumType): Promise<FetchResult<PrivateAlbum>>
 
 Obtains the private album. This API uses a promise to return the result.
 
-This API will be deprecated. Use [getAlbums](#getalbums1) instead.
+This API will be deprecated. Use [getAlbums](#getalbums) instead.
 
 **Since:** 9
 
@@ -2042,8 +1982,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="off1"></a>
-
 ## off
 
 ```TypeScript
@@ -2052,7 +1990,7 @@ off(type: ChangeEvent, callback?: Callback<void>): void
 
 Unsubscribes from changes of the file management library. This API uses a callback to return the result.
 
-This API will be deprecated. Use [off](#off2) instead.
+This API will be deprecated. Use [off](#off) instead.
 
 **Since:** 9
 
@@ -2070,7 +2008,7 @@ This API will be deprecated. Use [off](#off2) instead.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [ChangeEvent](arkts-corefile-userfilemanager-changeevent-t-sys.md) | Yes | Type of event to subscribe to.<br>**'deviceChange'**: device change. <br>**'albumChange'**: album change. <br>**'imageChange'**: image change. <br>**'audioChange'**: audio file change. <br>**'videoChange'**: video file change. <br>**'remoteFileChange'**: change of the file on a registered device. |
+| type | [ChangeEvent](arkts-corefile-userfilemanager-changeevent-t-sys.md) | Yes | Type of event to subscribe to. <br>**'deviceChange'**: device change. <br>**'albumChange'**: album change. <br>**'imageChange'**: image change. <br>**'audioChange'**: audio file change. <br>**'videoChange'**: video file change. <br>**'remoteFileChange'**: change of the file on a registered device. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | Callback that returns no value. |
 
 <!--Del-->
@@ -2110,8 +2048,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="off2"></a>
-
 ## off
 
 ```TypeScript
@@ -2137,7 +2073,7 @@ Unregisters the listener for the specified URI. Multiple callbacks can be regist
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | uri | string | Yes | URI of the file asset or album, or [DefaultChangeUri](arkts-corefile-userfilemanager-defaultchangeuri-e-sys.md). |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChangeData](arkts-corefile-cloudsync-changedata-i.md)&gt; | No | Callback registered by [on](#on2). If this parameter is not specified, all listener callbacks registered for the URI will be unregistered. <br>Note that the specified callback will not be invoked. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChangeData](arkts-corefile-cloudsync-changedata-i.md)&gt; | No | Callback registered by [on](#on). If this parameter is not specified, all listener callbacks registered for the URI will be unregistered. <br>Note that the specified callback will not be invoked. |
 
 **Error codes:**
 
@@ -2191,8 +2127,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="on1"></a>
-
 ## on
 
 ```TypeScript
@@ -2201,7 +2135,7 @@ on(type: ChangeEvent, callback: Callback<void>): void
 
 Subscribes to changes of the file management library. This API uses a callback to return the result.
 
-This API will be deprecated. Use [on](#on2) instead.
+This API will be deprecated. Use [on](#on) instead.
 
 **Since:** 9
 
@@ -2219,7 +2153,7 @@ This API will be deprecated. Use [on](#on2) instead.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [ChangeEvent](arkts-corefile-userfilemanager-changeevent-t-sys.md) | Yes | Type of event to subscribe to.<br>**'deviceChange'**: device change. <br>**'albumChange'**: album change. <br>**'imageChange'**: image change. <br>**'audioChange'**: audio file change. <br>**'videoChange'**: video file change. <br>**'remoteFileChange'**: change of the file on a registered device. |
+| type | [ChangeEvent](arkts-corefile-userfilemanager-changeevent-t-sys.md) | Yes | Type of event to subscribe to. <br>**'deviceChange'**: device change. <br>**'albumChange'**: album change. <br>**'imageChange'**: image change. <br>**'audioChange'**: audio file change. <br>**'videoChange'**: video file change. <br>**'remoteFileChange'**: change of the file on a registered device. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Callback that returns no value. |
 
 <!--Del-->
@@ -2257,8 +2191,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="on2"></a>
-
 ## on
 
 ```TypeScript
@@ -2284,8 +2216,8 @@ Registers a listener for the specified URI. This API uses an asynchronous callba
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | uri | string | Yes | URI of the file asset or album, or [DefaultChangeUri](arkts-corefile-userfilemanager-defaultchangeuri-e-sys.md). |
-| forSubUri | boolean | Yes | Whether to perform fuzzy listening.<br>If **uri** is the URI of the album, the value **true** means to listen for the file change in the album; the value **false** means to listen for the album change only. If **uri** is the URI of the file asset, there is no difference whether **forSubUri** is **true** or **false**. If **uri** is **DefaultChangeUri**, the value must be **true**, otherwise, the URI cannot be found and no message can be received. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChangeData](arkts-corefile-cloudsync-changedata-i.md)&gt; | Yes | Callback used to return [ChangeData](arkts-corefile-userfilemanager-changedata-i-sys.md). <br>Note that different callbacks can be registered for a URI. You can use [off](#off2) to disable the specified callback or all callbacks for the URI. |
+| forSubUri | boolean | Yes | Whether to perform fuzzy listening. <br>If **uri** is the URI of the album, the value **true** means to listen for the file change in the album; the value **false** means to listen for the album change only. If **uri** is the URI of the file asset, there is no difference whether **forSubUri** is **true** or **false**. If **uri** is **DefaultChangeUri**, the value must be **true**, otherwise, the URI cannot be found and no message can be received. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChangeData](arkts-corefile-cloudsync-changedata-i.md)&gt; | Yes | Callback used to return [ChangeData](arkts-corefile-userfilemanager-changedata-i-sys.md). <br>Note that different callbacks can be registered for a URI. You can use [off](#off) to disable the specified callback or all callbacks for the URI. |
 
 **Error codes:**
 
@@ -2338,8 +2270,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -2387,8 +2317,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="release2"></a>
 
 ## release
 

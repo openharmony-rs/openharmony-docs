@@ -6,8 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="castaudio1"></a>
-
 ## castAudio
 
 ```TypeScript
@@ -69,8 +67,6 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data)
 
 <!--DelEnd-->
 
-
-<a id="castaudio2"></a>
 
 ## castAudio
 

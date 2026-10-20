@@ -6,8 +6,6 @@ declare type UniformDataType = import('../api/@ohos.data.uniformTypeDescriptor')
 
 Defines the uniform data type.
 
-@typedef { import('../api/@ohos.data.uniformTypeDescriptor').default.UniformDataType } UniformDataType
-
 **Type:** import('../api/@ohos.data.uniformTypeDescriptor').default.UniformDataType
 
 **Since:** 10

@@ -6,8 +6,6 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
-<a id="isinemergencycall1"></a>
-
 ## isInEmergencyCall
 
 ```TypeScript
@@ -61,8 +59,6 @@ call.isInEmergencyCall((err: BusinessError, data: boolean) => {
 
 <!--DelEnd-->
 
-
-<a id="isinemergencycall2"></a>
 
 ## isInEmergencyCall
 

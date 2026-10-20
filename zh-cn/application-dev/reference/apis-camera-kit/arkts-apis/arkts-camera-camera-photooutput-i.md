@@ -20,8 +20,6 @@ interface PhotoOutput extends CameraOutput
 import { camera } from '@kit.CameraKit';
 ```
 
-<a id="capture1"></a>
-
 ## capture
 
 ```TypeScript
@@ -67,8 +65,6 @@ function capture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
-<a id="capture2"></a>
-
 ## capture
 
 ```TypeScript
@@ -111,8 +107,6 @@ function capture(photoOutput: camera.PhotoOutput): void {
   });
 }
 ```
-
-<a id="capture3"></a>
 
 ## capture
 
@@ -171,8 +165,6 @@ function capture(photoOutput: camera.PhotoOutput): void {
   });
 }
 ```
-
-<a id="capture4"></a>
 
 ## capture
 
@@ -451,7 +443,7 @@ getPhotoRotation(deviceDegree?: number): ImageRotation
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceDegree | number | 否 | 设备旋转角度，单位度，取值范围：[0, 360]。<br>若入参超过该范围，则取入参除以360的余数。<br>从API version 23开始，入参deviceDegree为可选参数，当不传入参数时，由系统获取deviceDegree进行拍照旋转角度计算。<br>**适用版本：** 23 |
+| deviceDegree | number | 否 | 设备旋转角度，单位度，取值范围：[0, 360]。<br>若入参超过该范围，则取入参除以360的余数。<br>从API版本23开始，入参deviceDegree为可选参数，当不传入参数时，由系统获取deviceDegree进行拍照旋转角度计算。<br>**适用版本：** 23 |
 
 **返回值：**
 
@@ -534,6 +526,42 @@ function getSupportedMovingPhotoVideoCodecType(photoOutput: camera.PhotoOutput):
   return supportedVideoCodecTypesArray;
 }
 ```
+
+## isAutoAuxiliaryPhotoDeliverySupported
+
+```TypeScript
+isAutoAuxiliaryPhotoDeliverySupported(auxPhotoType: CameraAuxiliaryPhotoType): boolean
+```
+
+查询设备是否支持拍摄输出指定类型的辅助图。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-PhotoOutput-isAutoAuxiliaryPhotoDeliverySupported(auxPhotoType: CameraAuxiliaryPhotoType): boolean--><!--Device-PhotoOutput-isAutoAuxiliaryPhotoDeliverySupported(auxPhotoType: CameraAuxiliaryPhotoType): boolean-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| auxPhotoType | [CameraAuxiliaryPhotoType](arkts-camera-camera-cameraauxiliaryphototype-e.md) | 是 | 拍照回传的目标辅助图类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 设备是否支持回传指定类型的辅助图。true表示支持回传；false表示不支持回传。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [7400115](../errorcode-camera.md#7400115-参数超出范围) | Parameter out of the range. The auxPhotoType value is invalid. Check the CameraAuxiliaryPhotoType enum for valid values. |
 
 ## isAutoExtendedGainmapDeliverySupported
 
@@ -1011,7 +1039,7 @@ off(type: 'captureStart', callback?: AsyncCallback<number>): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 > 
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
@@ -1492,7 +1520,7 @@ on(type: 'captureStart', callback: AsyncCallback<number>): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 > 
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
@@ -1575,6 +1603,39 @@ function registerCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutpu
   photoOutput.onCapturePhotoAvailable(callback);
 }
 ```
+
+## setAutoAuxiliaryPhotosDeliveryEnabled
+
+```TypeScript
+setAutoAuxiliaryPhotosDeliveryEnabled(auxPhotoTypes: CameraAuxiliaryPhotoType[], enable: boolean): void
+```
+
+启用或禁用拍照自动回传指定类型的辅助图。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-PhotoOutput-setAutoAuxiliaryPhotosDeliveryEnabled(auxPhotoTypes: CameraAuxiliaryPhotoType[], enable: boolean): void--><!--Device-PhotoOutput-setAutoAuxiliaryPhotosDeliveryEnabled(auxPhotoTypes: CameraAuxiliaryPhotoType[], enable: boolean): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| auxPhotoTypes | [CameraAuxiliaryPhotoType](arkts-camera-camera-cameraauxiliaryphototype-e.md)[] | 是 | 回传的目标辅助图类型。 |
+| enable | boolean | 是 | 表示是否启用拍照自动回传指定类型的辅助图。true表示启用，false表示禁用。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Check if the camera device supports the required auxiliary photo types by using capability query APIs. |
+| [7400115](../errorcode-camera.md#7400115-参数超出范围) | Parameter out of the range. The auxPhotoType value is invalid. Check the CameraAuxiliaryPhotoType enum for valid values. |
+| [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
 ## setMovingPhotoVideoCodecType
 

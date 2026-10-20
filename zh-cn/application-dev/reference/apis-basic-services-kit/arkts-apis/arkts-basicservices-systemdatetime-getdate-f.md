@@ -6,8 +6,6 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="getdate1"></a>
-
 ## getDate
 
 ```TypeScript
@@ -36,7 +34,7 @@ function getDate(callback: AsyncCallback<Date>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. System error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. System error. |
 
 **示例**
 
@@ -57,8 +55,6 @@ try {
 }
 ```
 
-
-<a id="getdate2"></a>
 
 ## getDate
 
@@ -88,7 +84,7 @@ function getDate(): Promise<Date>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. System error. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. System error. |
 
 **示例**
 

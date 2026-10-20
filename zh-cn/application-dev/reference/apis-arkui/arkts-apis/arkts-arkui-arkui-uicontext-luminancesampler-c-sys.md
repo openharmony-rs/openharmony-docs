@@ -205,7 +205,7 @@ setBackgroundLuminanceSamplingConfigs(configs: BackgroundLuminanceSamplingConfig
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error.<br> 1. Incorrect parameter values. <br> 2. Incorrect parameters types. |
+| [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. <br> 1. Incorrect parameter values. <br> 2. Incorrect parameters types. |
 
 <!--Del-->
 **示例**

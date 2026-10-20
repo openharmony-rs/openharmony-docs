@@ -6,8 +6,6 @@
 import { formHost } from '@kit.FormKit';
 ```
 
-<a id="acquireformdata1"></a>
-
 ## acquireFormData
 
 ```TypeScript
@@ -69,8 +67,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="acquireformdata2"></a>
 
 ## acquireFormData
 

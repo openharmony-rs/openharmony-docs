@@ -311,8 +311,7 @@
   - [startOsu（系统接口）](arkts-telephony-esim-startosu-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [switchToProfile（系统接口）](arkts-telephony-esim-switchtoprofile-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [AccessRule（系统接口）](arkts-telephony-esim-accessrule-i-sys.md)<!--DelEnd-->
+  - [AccessRule](arkts-telephony-esim-accessrule-i.md)
   <!--Del-->
   - [ContractRequestData（系统接口）](arkts-telephony-esim-contractrequestdata-i-sys.md)<!--DelEnd-->
   - [DownloadableProfile](arkts-telephony-esim-downloadableprofile-i.md)

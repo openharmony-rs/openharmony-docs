@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="deletestorage1"></a>
-
 ## deleteStorage
 
 ```TypeScript
@@ -30,8 +28,6 @@ Deletes the singleton **Storage** instance of a file from the memory, and delete
 | path | string | Yes | Path of the target file. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
-
-<a id="deletestorage2"></a>
 
 ## deleteStorage
 

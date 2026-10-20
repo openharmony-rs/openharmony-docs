@@ -6,8 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="getdisallowedrunningbundlessync1"></a>
-
 ## getDisallowedRunningBundlesSync
 
 ```TypeScript
@@ -37,7 +35,7 @@ Obtains applications that are not allowed to run by the current user or specifie
 
 | Type | Description |
 | --- | --- |
-| Array&lt;string&gt; | Applications that are not allowed to run by the current user or specified user.<br>Note: For API version 20 and earlier versions, the return value is the **appId** list. In API version 21 and later versions, the return value is the **appId** or **appIdentifier** list. |
+| Array&lt;string&gt; | Applications that are not allowed to run by the current user or specified user. <br>Note: For API version 20 and earlier versions, the return value is the **appId** list. In API version 21 and later versions, the return value is the **appId** or **appIdentifier** list. |
 
 **Error codes:**
 
@@ -69,8 +67,6 @@ try {
 ```
 
 
-<a id="getdisallowedrunningbundlessync2"></a>
-
 ## getDisallowedRunningBundlesSync
 
 ```TypeScript
@@ -100,7 +96,7 @@ Obtains the application running blocklist of the current user or specified user.
 
 | Type | Description |
 | --- | --- |
-| Array&lt;string&gt; | Application running blocklist of the current user or specified user.<br>Note: the return value is the **appId** or **appIdentifier** list. |
+| Array&lt;string&gt; | Application running blocklist of the current user or specified user. <br>Note: the return value is the **appId** or **appIdentifier** list. |
 
 **Error codes:**
 

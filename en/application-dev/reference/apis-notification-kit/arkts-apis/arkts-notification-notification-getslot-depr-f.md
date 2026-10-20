@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getslot1"></a>
-
 ## getSlot
 
 ```TypeScript
@@ -32,8 +30,23 @@ Obtains a notification slot of a specified type. This API uses an asynchronous c
 | slotType | SlotType | Yes | Type of the notification slot, which can be used for social communication, service information, content consultation, and other purposes. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NotificationSlot](arkts-notification-notificationslot-i.md)&gt; | Yes | Callback used to return the result. |
 
+**Examples**
 
-<a id="getslot2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+// getSlot callback
+let getSlotCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("getSlot failed " + JSON.stringify(err));
+  } else {
+    console.info("getSlot success");
+  }
+}
+let slotType: Notification.SlotType = Notification.SlotType.SOCIAL_COMMUNICATION;
+Notification.getSlot(slotType, getSlotCallback);
+```
+
 
 ## getSlot
 
@@ -64,3 +77,16 @@ Obtains a notification slot of a specified type. This API uses a promise to retu
 | Type | Description |
 | --- | --- |
 | Promise&lt;[NotificationSlot](arkts-notification-notificationslot-i.md)&gt; | Promise used to return the result. |
+
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let slotType: Notification.SlotType = Notification.SlotType.SOCIAL_COMMUNICATION;
+Notification.getSlot(slotType).then((data) => {
+  console.info("getSlot success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`getSlot failed, code is ${err}`);
+});
+```

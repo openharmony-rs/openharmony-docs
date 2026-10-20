@@ -20,4 +20,4 @@ Defines the callback triggered when the state of the right element **Switch**, *
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Callback triggered when the selection state of the right element **Switch**, **CheckBox**, or **Radio** element of the list item changes.<br>The value **true** indicates that the state changes from unselected to selected. <br>The value **false** indicates that the state changes from selected to unselected. |
+| value | boolean | Yes | Callback triggered when the selection state of the right element **Switch**, **CheckBox**, or **Radio** element of the list item changes. <br>The value **true** indicates that the state changes from unselected to selected. <br>The value **false** indicates that the state changes from selected to unselected. |

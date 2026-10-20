@@ -12,6 +12,8 @@ This module applies to the following scenarios:
 
 **Since:** 23
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace companionDeviceAuth--><!--Device-unnamed-declare namespace companionDeviceAuth-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.CompanionDeviceAuth

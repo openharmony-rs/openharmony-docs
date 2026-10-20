@@ -6,8 +6,6 @@ declare type OnDidStopDraggingCallback = (willFling: boolean) => void
 
 滚动组件在结束拖拽时触发的回调。
 
-@typedef { function } OnDidStopDraggingCallback
-
 **起始版本：** 21
 
 **模型约束：** 此接口仅可在Stage模型下使用。

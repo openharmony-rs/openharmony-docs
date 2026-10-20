@@ -28,7 +28,7 @@ Obtains the information of a background load task. This API returns the result v
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| taskId | number | Yes | Id of the background load task.<br>The value range is all integers. |
+| taskId | number | Yes | Id of the background load task. <br>The value range is all integers. |
 
 **Return value:**
 

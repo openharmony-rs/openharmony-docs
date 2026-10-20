@@ -6,8 +6,6 @@ interface StreamParam
 
 Streaming configuration parameters.
 
-@interface StreamParam
-
 **Since:** 18
 
 <!--Device-abilityConnectionManager-interface StreamParam--><!--Device-abilityConnectionManager-interface StreamParam-End-->
@@ -88,7 +86,7 @@ Stream name, the receive end must be consistent with the transmit end.
 role: StreamRole
 ```
 
-Stream transmission role, which can be a receive stream or a transmit stream.
+Indicates the stream transmission mode (which can be a receive stream or a send stream). The bitrate parameter is valid only when role is SOURCE.
 
 **Type:** [StreamRole](arkts-distributedservice-abilityconnectionmanager-streamrole-e-sys.md)
 

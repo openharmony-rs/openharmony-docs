@@ -24,7 +24,7 @@ Obtains the switch status of the automatic time setting. This API returns the re
 
 | Type | Description |
 | --- | --- |
-| boolean | Switch status of the automatic time setting.<br>- **true**: The automatic time setting is on. <br>- **false**: The automatic time setting is off. |
+| boolean | Switch status of the automatic time setting. <br>- **true**: The automatic time setting is on. <br>- **false**: The automatic time setting is off. |
 
 **Error codes:**
 

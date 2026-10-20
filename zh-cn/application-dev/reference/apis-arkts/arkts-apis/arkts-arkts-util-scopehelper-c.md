@@ -130,15 +130,13 @@ console.info("range = " + range);
 // 输出结果：range = [30, 40]
 ```
 
-<a id="contains1"></a>
-
 ## contains
 
 ```TypeScript
 contains(value: ScopeType): boolean
 ```
 
-判断一个范围是否在此 **Scope** 范围内。
+判断一个值是否在此 **Scope** 范围内。
 
 **起始版本：** 9
 
@@ -191,8 +189,6 @@ let result = range.contains(tempMiDF);
 console.info("result = " + result);
 // 输出结果：result = true
 ```
-
-<a id="contains2"></a>
 
 ## contains
 
@@ -256,8 +252,6 @@ console.info("result = " + result);
 // 输出结果：result = false
 ```
 
-<a id="expand1"></a>
-
 ## expand
 
 ```TypeScript
@@ -320,8 +314,6 @@ console.info("result = " + result);
 // 输出结果：result = [30, 40]
 ```
 
-<a id="expand2"></a>
-
 ## expand
 
 ```TypeScript
@@ -383,8 +375,6 @@ let result = range.expand(rangeFir);
 console.info("result = " + result);
 // 输出结果：result = [30, 40]
 ```
-
-<a id="expand3"></a>
 
 ## expand
 
@@ -552,8 +542,6 @@ console.info("result = " + result);
 // 输出结果：result = 40
 ```
 
-<a id="intersect1"></a>
-
 ## intersect
 
 ```TypeScript
@@ -615,8 +603,6 @@ let result = range.intersect(rangeFir);
 console.info("result = " + result);
 // 输出结果：result = [35, 39]
 ```
-
-<a id="intersect2"></a>
 
 ## intersect
 

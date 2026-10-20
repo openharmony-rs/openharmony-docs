@@ -4,6 +4,8 @@ This module provides permission management capabilities for tools (CLI commands 
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 <!--Device-unnamed-declare namespace abilityToolAccessCtrl--><!--Device-unnamed-declare namespace abilityToolAccessCtrl-End-->
 
 **System capability:** SystemCapability.Security.Asset
@@ -11,6 +13,7 @@ This module provides permission management capabilities for tools (CLI commands 
 ## Modules to Import
 
 ```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## Summary

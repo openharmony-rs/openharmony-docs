@@ -13,7 +13,7 @@ function on(type: 'receiveImage', sessionId: number,
         callback: Callback<EventCallbackInfo>): void
 ```
 
-Registers receiveImage event.
+Registers a callback listener for the receiveImage event to receive asynchronous notifications of image transfer events. This method must be used with off('receiveImage'). When image reception is no longer needed, call off('receiveImage') to unregister the listener and release resources.
 
 **Since:** 18
 
@@ -62,7 +62,7 @@ function on(type: 'collaborateEvent', sessionId: number,
         callback: Callback<CollaborateEventInfo>): void
 ```
 
-Registers collaborateEvent event.
+Registers a callback listener for the collaborateEvent event. This API uses an asynchronous callback. The listener must be used in pair with off('collaborateEvent'). Cancel the listener in a timely manner to release resources when event reception is no longer needed.
 
 **Since:** 18
 
@@ -78,9 +78,9 @@ Registers collaborateEvent event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'collaborateEvent' | Yes | Registration Type, 'collaborateEvent'. |
-| sessionId | number | Yes | Ability connection Session id. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CollaborateEventInfo](arkts-distributedservice-abilityconnectionmanager-collaborateeventinfo-i.md)&gt; | Yes | Called when an error event comes. |
+| type | 'collaborateEvent' | Yes | Indicates the event callback type. The supported event type is'collaborateEvent', which is triggered when the collaboration status changes. |
+| sessionId | number | Yes | Indicates the ID of the created collaboration session. A collaboration session must be created first before obtaining the ID. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CollaborateEventInfo](arkts-distributedservice-abilityconnectionmanager-collaborateeventinfo-i.md)&gt; | Yes | Callback function that returns collaboration event information. |
 
 **Error codes:**
 

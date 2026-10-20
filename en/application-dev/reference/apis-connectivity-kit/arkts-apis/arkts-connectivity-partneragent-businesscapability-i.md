@@ -6,8 +6,6 @@ interface BusinessCapability
 
 Describes the business capabilities of the application.
 
-@typedef BusinessCapability
-
 **Since:** 23
 
 <!--Device-partnerAgent-interface BusinessCapability--><!--Device-partnerAgent-interface BusinessCapability-End-->

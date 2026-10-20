@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="setdistributedenable1"></a>
-
 ## setDistributedEnable
 
 ```TypeScript
@@ -69,8 +67,6 @@ notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 
 <!--DelEnd-->
 
-
-<a id="setdistributedenable2"></a>
 
 ## setDistributedEnable
 

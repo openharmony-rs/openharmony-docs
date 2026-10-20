@@ -6,8 +6,6 @@ declare type PromptActionDialogController = import('../api/@ohos.promptAction').
 
 从promptAction导入弹出框控制器类型
 
-@typedef { import('../api/@ohos.promptAction').promptAction.DialogController } PromptActionDialogController
-
 **类型：** import('../api/@ohos.promptAction').promptAction.DialogController
 
 **起始版本：** 18

@@ -6,8 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="isnetworkinterfacedisabled1"></a>
-
 ## isNetworkInterfaceDisabled
 
 ```TypeScript
@@ -75,8 +73,6 @@ networkManager.isNetworkInterfaceDisabled(wantTemp, 'eth0', (err, result) => {
 
 <!--DelEnd-->
 
-
-<a id="isnetworkinterfacedisabled2"></a>
 
 ## isNetworkInterfaceDisabled
 

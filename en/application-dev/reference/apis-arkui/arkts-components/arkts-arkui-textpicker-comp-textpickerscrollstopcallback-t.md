@@ -20,5 +20,5 @@ Defines the **onScrollStop** event callback signature.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string[] | Yes | Text of the currently selected item. For a multi-column data picker, the value is of the array type.<br>**Note:** <br>When the picker content is text or a mix of text and image, the value is the text value of the selected item. When the picker content is an image, the value is empty. |
+| value | string[] | Yes | Text of the currently selected item. For a multi-column data picker, the value is of the array type. <br>**Note:** <br>When the picker content is text or a mix of text and image, the value is the text value of the selected item. When the picker content is an image, the value is empty. |
 | index | number[] | Yes | Index of the selected item. The index is zero-based. Use the array type for multi-column pickers. |

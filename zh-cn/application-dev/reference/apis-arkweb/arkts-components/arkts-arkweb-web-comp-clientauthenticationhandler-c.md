@@ -28,8 +28,6 @@ cancel(): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="confirm1"></a>
-
 ## confirm
 
 ```TypeScript
@@ -53,8 +51,6 @@ confirm(priKeyFile: string, certChainFile: string): void
 | priKeyFile | string | 是 | 存放私钥文件的完整路径。 |
 | certChainFile | string | 是 | 存放证书链文件的完整路径。 |
 
-<a id="confirm2"></a>
-
 ## confirm
 
 ```TypeScript
@@ -71,14 +67,14 @@ confirm(authUri: string): void
 
 | 签名算法 | 密钥长度 |  
 | ------- | ------ |  
-| SSL_SIGN_RSA_PKCS1_SHA256 | 1024（API version 18后开始支持）、2048、3072、4096 |
-| SSL_SIGN_RSA_PKCS1_SHA384 | 1024（API version 18后开始支持）、2048、3072、4096 |
-| SSL_SIGN_RSA_PKCS1_SHA512 | 1024（API version 18后开始支持）、2048、3072、4096 |
-| SSL_SIGN_RSA_PSS_SHA256 | 1024（API version 18后开始支持）、2048、3072、4096 |
-| SSL_SIGN_RSA_PSS_SHA384 | 1024（API version 18后开始支持）、2048、3072、4096 |
-| SSL_SIGN_RSA_PSS_SHA512 | 1024（API version 18后开始支持）、2048、3072、4096 |
-| SSL_SIGN_ECDSA_SECP256R1_SHA256 | 256 |
-| SSL_SIGN_ECDSA_SECP384R1_SHA384 | 384 |
+| SSL_SIGN_RSA_PKCS1_SHA256 | 1024（API version 18后开始支持）、2048、3072、4096 |  
+| SSL_SIGN_RSA_PKCS1_SHA384 | 1024（API version 18后开始支持）、2048、3072、4096 |  
+| SSL_SIGN_RSA_PKCS1_SHA512 | 1024（API version 18后开始支持）、2048、3072、4096 |  
+| SSL_SIGN_RSA_PSS_SHA256 | 1024（API version 18后开始支持）、2048、3072、4096 |  
+| SSL_SIGN_RSA_PSS_SHA384 | 1024（API version 18后开始支持）、2048、3072、4096 |  
+| SSL_SIGN_RSA_PSS_SHA512 | 1024（API version 18后开始支持）、2048、3072、4096 |  
+| SSL_SIGN_ECDSA_SECP256R1_SHA256 | 256 |  
+| SSL_SIGN_ECDSA_SECP384R1_SHA384 | 384 |  
 | SSL_SIGN_ECDSA_SECP521R1_SHA512 | 521 |
 
 **起始版本：** 10
@@ -94,8 +90,6 @@ confirm(authUri: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | authUri | string | 是 | 凭据的关键值。 |
-
-<a id="confirm3"></a>
 
 ## confirm
 

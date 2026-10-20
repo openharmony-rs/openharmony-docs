@@ -38,7 +38,7 @@ Sets an extended attribute of a file or directory. This API uses a promise to re
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13900002 | No such file or directory |
 | 13900011 | Out of memory |
 | 13900012 | Permission denied |

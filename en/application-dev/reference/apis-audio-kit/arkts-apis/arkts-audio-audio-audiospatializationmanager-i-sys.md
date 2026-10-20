@@ -225,8 +225,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="isheadtrackingenabled2"></a>
-
 ## isHeadTrackingEnabled
 
 ```TypeScript
@@ -295,8 +293,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="isheadtrackingenabled1"></a>
 
 ## isHeadTrackingEnabled
 
@@ -530,8 +526,6 @@ Checks whether personalized spatialization is supported by system.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
-<a id="isspatializationenabled2"></a>
-
 ## isSpatializationEnabled
 
 ```TypeScript
@@ -600,8 +594,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="isspatializationenabled1"></a>
 
 ## isSpatializationEnabled
 
@@ -1492,8 +1484,6 @@ audioSpatializationManager.setAdaptiveSpatialRenderingEnabled(deviceDescriptor, 
 
 <!--DelEnd-->
 
-<a id="setheadtrackingenabled3"></a>
-
 ## setHeadTrackingEnabled
 
 ```TypeScript
@@ -1566,8 +1556,6 @@ audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enable).then
 
 <!--DelEnd-->
 
-<a id="setheadtrackingenabled1"></a>
-
 ## setHeadTrackingEnabled
 
 ```TypeScript
@@ -1625,8 +1613,6 @@ audioSpatializationManager.setHeadTrackingEnabled(enable, (err: BusinessError) =
 ```
 
 <!--DelEnd-->
-
-<a id="setheadtrackingenabled2"></a>
 
 ## setHeadTrackingEnabled
 
@@ -1729,8 +1715,6 @@ Set the personalized spatialization enabled or disabled by the specified device.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported on the device. |
 
-<a id="setspatializationenabled3"></a>
-
 ## setSpatializationEnabled
 
 ```TypeScript
@@ -1803,8 +1787,6 @@ audioSpatializationManager.setSpatializationEnabled(deviceDescriptor, enabled).t
 
 <!--DelEnd-->
 
-<a id="setspatializationenabled1"></a>
-
 ## setSpatializationEnabled
 
 ```TypeScript
@@ -1862,8 +1844,6 @@ audioSpatializationManager.setSpatializationEnabled(enable, (err: BusinessError)
 ```
 
 <!--DelEnd-->
-
-<a id="setspatializationenabled2"></a>
 
 ## setSpatializationEnabled
 

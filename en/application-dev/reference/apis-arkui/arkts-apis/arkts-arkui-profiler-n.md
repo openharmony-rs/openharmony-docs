@@ -6,8 +6,6 @@ declare namespace Profiler
 
 Profiler tools for inspectors.
 
-@namespace Profiler
-
 **Since:** 8
 
 <!--Device-unnamed-declare namespace Profiler--><!--Device-unnamed-declare namespace Profiler-End-->

@@ -111,8 +111,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="getprocessrunninginformation1"></a>
-
 ## getProcessRunningInformation
 
 ```TypeScript
@@ -169,8 +167,6 @@ export default class MyAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="getprocessrunninginformation2"></a>
 
 ## getProcessRunningInformation
 
@@ -399,8 +395,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="unregisterabilitylifecyclecallback1"></a>
-
 ## unregisterAbilityLifecycleCallback
 
 ```TypeScript
@@ -462,8 +456,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="unregisterabilitylifecyclecallback2"></a>
 
 ## unregisterAbilityLifecycleCallback
 
@@ -532,8 +524,6 @@ export default class MyAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="unregisterenvironmentcallback1"></a>
-
 ## unregisterEnvironmentCallback
 
 ```TypeScript
@@ -594,8 +584,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="unregisterenvironmentcallback2"></a>
 
 ## unregisterEnvironmentCallback
 

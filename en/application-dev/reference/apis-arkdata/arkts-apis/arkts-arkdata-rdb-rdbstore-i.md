@@ -6,7 +6,7 @@ interface RdbStore
 
 Provides APIs for managing data in an RDB store.
 
-Before using the APIs of this class, use [executeSql](#executesql1) to initialize the database table structure and related data.
+Before using the APIs of this class, use [executeSql](#executesql) to initialize the database table structure and related data.
 
 **Since:** 7
 
@@ -22,8 +22,6 @@ Before using the APIs of this class, use [executeSql](#executesql1) to initializ
 
 ```TypeScript
 ```
-
-<a id="batchinsert1"></a>
 
 ## batchInsert
 
@@ -100,8 +98,6 @@ rdbStore.batchInsert("EMPLOYEE", valueBuckets, (status: number, insertNum: numbe
   console.info("batchInsert is successful, the number of values that were inserted = " + insertNum);
 })
 ```
-
-<a id="batchinsert2"></a>
 
 ## batchInsert
 
@@ -277,8 +273,6 @@ data_rdb.getRdbStore(this.context, "RdbTest.db", 1, async (err: BusinessError, r
 })
 ```
 
-<a id="delete1"></a>
-
 ## delete
 
 ```TypeScript
@@ -317,8 +311,6 @@ rdbStore.delete(predicates, (err: BusinessError, rows: number) => {
   console.info("Delete rows: " + rows)
 })
 ```
-
-<a id="delete2"></a>
 
 ## delete
 
@@ -363,8 +355,6 @@ promise.then((rows: number) => {
 })
 ```
 
-<a id="executesql1"></a>
-
 ## executeSql
 
 ```TypeScript
@@ -403,8 +393,6 @@ rdbStore.executeSql(SQL_DELETE_TABLE, ['zhangsan'], (err: BusinessError) => {
   console.info('Delete table done.')
 })
 ```
-
-<a id="executesql2"></a>
 
 ## executeSql
 
@@ -448,8 +436,6 @@ promise.then(() => {
   console.error("ExecuteSql failed, err: " + err)
 })
 ```
-
-<a id="insert1"></a>
 
 ## insert
 
@@ -505,8 +491,6 @@ rdbStore.insert("EMPLOYEE", valueBucket, (status: number, rowId: number) => {
   console.info("Insert is successful, rowId = " + rowId);
 })
 ```
-
-<a id="insert2"></a>
 
 ## insert
 
@@ -566,8 +550,6 @@ promise.then((rowId: BusinessError) => {
   console.error("Insert failed");
 })
 ```
-
-<a id="obtaindistributedtablename1"></a>
 
 ## obtainDistributedTableName
 
@@ -629,8 +611,6 @@ rdbStore.obtainDistributedTableName(deviceId, "EMPLOYEE", (err: BusinessError, t
   console.info('ObtainDistributedTableName successfully, tableName=.' + tableName)
 })
 ```
-
-<a id="obtaindistributedtablename2"></a>
 
 ## obtainDistributedTableName
 
@@ -781,8 +761,6 @@ try {
 }
 ```
 
-<a id="query1"></a>
-
 ## query
 
 ```TypeScript
@@ -823,8 +801,6 @@ rdbStore.query(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], (err: Busin
   console.info("ResultSet column count: " + resultSet.columnCount)
 })
 ```
-
-<a id="query2"></a>
 
 ## query
 
@@ -871,8 +847,6 @@ promise.then((resultSet: void) => {
 })
 ```
 
-<a id="querysql1"></a>
-
 ## querySql
 
 ```TypeScript
@@ -911,8 +885,6 @@ rdbStore.querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = ?", 
   console.info("ResultSet column count: " + resultSet.columnCount)
 })
 ```
-
-<a id="querysql2"></a>
 
 ## querySql
 
@@ -1009,8 +981,6 @@ data_rdb.getRdbStore(this,context, "RdbTest.db", 1, async (err: BusinessError, r
 })
 ```
 
-<a id="setdistributedtables1"></a>
-
 ## setDistributedTables
 
 ```TypeScript
@@ -1049,8 +1019,6 @@ rdbStore.setDistributedTables(["EMPLOYEE"], (err: BusinessError) => {
   console.info('SetDistributedTables successfully.')
 })
 ```
-
-<a id="setdistributedtables2"></a>
 
 ## setDistributedTables
 
@@ -1095,8 +1063,6 @@ promise.then(() => {
 })
 ```
 
-<a id="sync1"></a>
-
 ## sync
 
 ```TypeScript
@@ -1123,7 +1089,7 @@ Synchronizes data across devices. This API uses an asynchronous callback to retu
 | --- | --- | --- | --- |
 | mode | [SyncMode](arkts-arkdata-rdb-syncmode-e.md) | Yes | Data sync mode. The value can be **push** or **pull**. |
 | predicates | [RdbPredicates](arkts-arkdata-rdb-rdbpredicates-c.md) | Yes | **RdbPredicates** object that specifies the data and devices to synchronize. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | Yes | Callback invoked to send the sync result to the caller.<br>**string** indicates the device ID. <br>**number** indicates the sync status of that device. The value **0** indicates a successful sync. Other values indicate a sync failure. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[string, number]&gt;&gt; | Yes | Callback invoked to send the sync result to the caller. <br>**string** indicates the device ID. <br>**number** indicates the sync status of that device. The value **0** indicates a successful sync. Other values indicate a sync failure. |
 
 **Examples**
 
@@ -1158,8 +1124,6 @@ rdbStore.sync(data_rdb.SyncMode.SYNC_MODE_PUSH, predicates, (err: BusinessError,
 })
 ```
 
-<a id="sync2"></a>
-
 ## sync
 
 ```TypeScript
@@ -1191,7 +1155,7 @@ Synchronizes data across devices. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[string, number]&gt;&gt; | Promise used to send the sync result.<br>**string** indicates the device ID. <br>**number** indicates the sync status of that device. The value **0** indicates a successful sync. Other values indicate a sync failure. |
+| Promise&lt;Array&lt;[string, number]&gt;&gt; | Promise used to send the sync result. <br>**string** indicates the device ID. <br>**number** indicates the sync status of that device. The value **0** indicates a successful sync. Other values indicate a sync failure. |
 
 **Examples**
 
@@ -1224,8 +1188,6 @@ promise.then((result: void) =>{
   console.error('Sync failed')
 })
 ```
-
-<a id="update1"></a>
 
 ## update
 
@@ -1283,8 +1245,6 @@ rdbStore.update(valueBucket, predicates, (err: BusinessError, rows: number) => {
   console.info("Updated row count: " + rows)
 })
 ```
-
-<a id="update2"></a>
 
 ## update
 

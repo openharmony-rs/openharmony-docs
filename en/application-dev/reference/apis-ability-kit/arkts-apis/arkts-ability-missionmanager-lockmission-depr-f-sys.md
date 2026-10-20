@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="lockmission1"></a>
-
 ## lockMission
 
 ```TypeScript
@@ -61,8 +59,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="lockmission2"></a>
 
 ## lockMission
 

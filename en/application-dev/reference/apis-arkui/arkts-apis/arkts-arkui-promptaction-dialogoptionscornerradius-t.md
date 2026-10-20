@@ -6,8 +6,6 @@ declare type DialogOptionsCornerRadius = Dimension | BorderRadiuses
 
 Defines the allowed data types for specifying the background corner radius of a dialog box.
 
-@typedef { Dimension | BorderRadiuses } DialogOptionsCornerRadius
-
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.

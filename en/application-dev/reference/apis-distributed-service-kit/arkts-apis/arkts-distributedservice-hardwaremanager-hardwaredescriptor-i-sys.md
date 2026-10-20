@@ -6,8 +6,6 @@ interface HardwareDescriptor
 
 Represents the distributed hardware information.
 
-@typedef HardwareDescriptor
-
 **Since:** 11
 
 <!--Device-hardwareManager-interface HardwareDescriptor--><!--Device-hardwareManager-interface HardwareDescriptor-End-->

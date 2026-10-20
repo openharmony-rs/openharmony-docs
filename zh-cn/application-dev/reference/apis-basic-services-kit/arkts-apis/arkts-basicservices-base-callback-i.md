@@ -6,8 +6,6 @@ export interface Callback<T>
 
 通用回调函数，用于在异步操作成功完成时回传处理结果。类型由开发者自定义。
 
-@typedef { Callback } [since 6 - 11] @typedef { Callback<T> } [since 12]
-
 **起始版本：** 6
 
 <!--Device-unnamed-export interface Callback<T>--><!--Device-unnamed-export interface Callback<T>-End-->

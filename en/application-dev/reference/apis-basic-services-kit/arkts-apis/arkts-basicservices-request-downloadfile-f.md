@@ -6,8 +6,6 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
-<a id="downloadfile1"></a>
-
 ## downloadFile
 
 ```TypeScript
@@ -43,7 +41,7 @@ Downloads a file. This API uses an asynchronous callback to return the result. H
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [13400001](../errorcode-request.md#13400001-file-operation-error) | Invalid file or file system error. |
 | [13400002](../errorcode-request.md#13400002-file-path-error) | File path not supported or invalid. |
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
@@ -72,8 +70,6 @@ try {
 }
 ```
 
-
-<a id="downloadfile2"></a>
 
 ## downloadFile
 
@@ -115,7 +111,7 @@ Downloads a file. This API uses a promise to return the result. HTTP is supporte
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | The permissions check fails. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameters check fails. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [13400001](../errorcode-request.md#13400001-file-operation-error) | Invalid file or file system error. |
 | [13400002](../errorcode-request.md#13400002-file-path-error) | File path not supported or invalid. |
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |

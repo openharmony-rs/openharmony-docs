@@ -6,8 +6,6 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-<a id="isosaccountadditiondisallowed1"></a>
-
 ## isOsAccountAdditionDisallowed
 
 ```TypeScript
@@ -37,7 +35,7 @@ Queries whether a user is not allowed to add an account.
 
 | Type | Description |
 | --- | --- |
-| boolean | If **true** is returned, accounts cannot be added.<br>If **false** is returned, the account can be added. |
+| boolean | If **true** is returned, accounts cannot be added. <br>If **false** is returned, the account can be added. |
 
 **Error codes:**
 
@@ -70,8 +68,6 @@ try {
 ```
 
 
-<a id="isosaccountadditiondisallowed2"></a>
-
 ## isOsAccountAdditionDisallowed
 
 ```TypeScript
@@ -101,7 +97,7 @@ Queries whether a user is not allowed to add an account. This API is applicable 
 
 | Type | Description |
 | --- | --- |
-| boolean | If **true** is returned, accounts cannot be added.<br>If **false** is returned, the account can be added. |
+| boolean | If **true** is returned, accounts cannot be added. <br>If **false** is returned, the account can be added. |
 
 **Error codes:**
 

@@ -31,7 +31,7 @@ Start an application for media playback with command info for an specific audio 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| userId | number | Yes | The userid which belongs to an audio zone.<br>The value should be an integer. |
+| userId | number | Yes | The userid which belongs to an audio zone. <br>The value should be an integer. |
 | bundleName | string | Yes | Specifies the bundleName which to be started. |
 | assetId | string | Yes | Specifies the assetId to be started. |
 | info | [CommandInfo](arkts-avsession-avsession-commandinfo-i.md) | No | Specifies the specified command information. |

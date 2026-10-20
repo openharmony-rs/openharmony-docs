@@ -38,7 +38,7 @@ Sets the color of the fill area. [ColorMetrics](../arkts-apis/arkts-arkui-graphi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; ColorMetrics | Yes | Color of the area to fill.<br>Default value: Color.Black <br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled as the default value. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; ColorMetrics | Yes | Color of the area to fill. <br>Default value: Color.Black <br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled as the default value. |
 
 ## stroke
 
@@ -64,4 +64,4 @@ Sets the stroke color. [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colorme
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; ColorMetrics | Yes | Stroke color.<br>Default value: Color.Transparent <br>The abnormal values **undefined** and **null** are handled as the default value, and **NaN** and **Infinity** are handled as Color.Black. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; ColorMetrics | Yes | Stroke color. <br>Default value: Color.Transparent <br>The abnormal values **undefined** and **null** are handled as the default value, and **NaN** and **Infinity** are handled as Color.Black. |

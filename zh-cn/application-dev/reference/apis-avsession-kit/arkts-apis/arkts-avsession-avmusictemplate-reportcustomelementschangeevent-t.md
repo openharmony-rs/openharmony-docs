@@ -7,8 +7,6 @@ type ReportCustomElementsChangeEvent = (actionType: ActionType, customType: Cust
 
 上报自定义元素变更信息的回调事件
 
-@typedef { function } ReportCustomElementsChangeEvent
-
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。

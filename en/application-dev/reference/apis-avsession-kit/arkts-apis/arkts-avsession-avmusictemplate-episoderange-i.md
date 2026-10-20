@@ -6,8 +6,6 @@ interface EpisodeRange
 
 The definition of EpisodeRange.
 
-@interface EpisodeRange
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-interface EpisodeRange--><!--Device-avMusicTemplate-interface EpisodeRange-End-->

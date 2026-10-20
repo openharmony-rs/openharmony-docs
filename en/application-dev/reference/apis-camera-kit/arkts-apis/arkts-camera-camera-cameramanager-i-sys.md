@@ -113,7 +113,7 @@ Creates a DepthDataOutput instance. This API returns the result synchronously.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| profile | [DepthProfile](arkts-camera-camera-depthprofile-i-sys.md) | Yes | Supported preview profile, which is obtained through  [getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability2). |
+| profile | [DepthProfile](arkts-camera-camera-depthprofile-i-sys.md) | Yes | Supported preview profile, which is obtained through  [getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability). |
 
 **Return value:**
 
@@ -149,6 +149,36 @@ function createDepthDataOutput(cameraOutputCapability: camera.CameraOutputCapabi
 ```
 
 <!--DelEnd-->
+
+## getControlCenterHeight
+
+```TypeScript
+getControlCenterHeight(): number
+```
+
+Gets the height of the control center.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CameraManager-getControlCenterHeight(): double--><!--Device-CameraManager-getControlCenterHeight(): double-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| number | The height of the control center. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
 ## isCameraMuteSupported
 

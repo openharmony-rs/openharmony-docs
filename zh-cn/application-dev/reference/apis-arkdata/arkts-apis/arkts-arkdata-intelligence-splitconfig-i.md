@@ -6,8 +6,6 @@ interface SplitConfig
 
 管理文本分块的配置信息。
 
-@interface SplitConfig
-
 **起始版本：** 15
 
 <!--Device-intelligence-interface SplitConfig--><!--Device-intelligence-interface SplitConfig-End-->

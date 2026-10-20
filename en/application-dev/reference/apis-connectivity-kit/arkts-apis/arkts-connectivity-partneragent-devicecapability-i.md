@@ -6,8 +6,6 @@ interface DeviceCapability
 
 Describes the capability of a partner device.
 
-@typedef DeviceCapability
-
 **Since:** 23
 
 <!--Device-partnerAgent-interface DeviceCapability--><!--Device-partnerAgent-interface DeviceCapability-End-->

@@ -29,10 +29,10 @@ import { effectKit } from '@kit.ArkGraphics2D';
 
 | Name | Description |
 | --- | --- |
-| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker1) | Creates a ColorPicker instance based on a pixel map. This API uses a promise to return the result. |
-| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker2) | Creates a ColorPicker instance for the selected region based on a pixel map. This API uses a promise to return the result. |
-| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker3) | Creates a ColorPicker instance based on a pixel map. This API uses an asynchronous callback to return the result. |
-| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker4) | Creates a ColorPicker instance for the selected region based on a pixel map. This API uses an asynchronous callback to return the result. |
+| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker) | Creates a ColorPicker instance based on a pixel map. This API uses a promise to return the result. |
+| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker) | Creates a ColorPicker instance for the selected region based on a pixel map. This API uses a promise to return the result. |
+| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker) | Creates a ColorPicker instance based on a pixel map. This API uses an asynchronous callback to return the result. |
+| [createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker) | Creates a ColorPicker instance for the selected region based on a pixel map. This API uses an asynchronous callback to return the result. |
 | [createEffect](arkts-arkgraphics2d-effectkit-createeffect-f.md#createeffect) | Creates a Filter instance based on the input PixelMap. You can then add various image effects through chained calls, and finally obtain the processed image via getEffectPixelMap. |
 
 ### Interfaces

@@ -6,8 +6,6 @@ interface CollectorRule
 
 安全事件采集规则。
 
-@typedef CollectorRule
-
 **起始版本：** 12
 
 <!--Device-securityGuard-interface CollectorRule--><!--Device-securityGuard-interface CollectorRule-End-->

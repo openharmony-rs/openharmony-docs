@@ -2,8 +2,6 @@
 
 提供安全事件存取、风险分析等功能。基于事件信息，您将能够分析设备的运行状态。
 
-@namespace securityGuard
-
 **起始版本：** 12
 
 <!--Device-unnamed-declare namespace securityGuard--><!--Device-unnamed-declare namespace securityGuard-End-->

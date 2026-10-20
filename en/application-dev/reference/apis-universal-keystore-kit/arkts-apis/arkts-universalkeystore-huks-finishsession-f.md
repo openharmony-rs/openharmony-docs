@@ -6,8 +6,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="finishsession1"></a>
-
 ## finishSession
 
 ```TypeScript
@@ -63,8 +61,6 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 | [12000026](../errorcode-huks.md#12000026-secure-element-fault) | the secure element is not available<br>**Applicable version:** 26.0.0 and later |
 
 
-<a id="finishsession2"></a>
-
 ## finishSession
 
 ```TypeScript
@@ -119,8 +115,6 @@ The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** mus
 | [12000018](../errorcode-huks.md#12000018-invalid-input-parameter) | the group id specified by the access group tag is invalid<br>**Applicable version:** 23 and later |
 | [12000026](../errorcode-huks.md#12000026-secure-element-fault) | the secure element is not available<br>**Applicable version:** 26.0.0 and later |
 
-
-<a id="finishsession3"></a>
 
 ## finishSession
 

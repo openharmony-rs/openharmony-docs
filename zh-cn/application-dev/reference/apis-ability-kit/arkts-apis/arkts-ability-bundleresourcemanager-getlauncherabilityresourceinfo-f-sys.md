@@ -6,8 +6,6 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
-<a id="getlauncherabilityresourceinfo1"></a>
-
 ## getLauncherAbilityResourceInfo
 
 ```TypeScript
@@ -88,8 +86,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getlauncherabilityresourceinfo2"></a>
 
 ## getLauncherAbilityResourceInfo
 

@@ -4,6 +4,8 @@ dialogSession模块用于支持系统应用弹框功能。
 
 **起始版本：** 11
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace dialogSession--><!--Device-unnamed-declare namespace dialogSession-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -24,8 +26,8 @@ import { dialogSession } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [getDialogSessionInfo](arkts-ability-dialogsession-getdialogsessioninfo-f-sys.md#getdialogsessioninfo) | 通过dialogSessionId获取会话信息。 |
-| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#senddialogresult1) | 发送用户请求。使用Promise异步回调。 |
-| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#senddialogresult2) | 发送用户请求。使用callback异步回调。 |
+| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#senddialogresult) | 发送用户请求。使用Promise异步回调。 |
+| [sendDialogResult](arkts-ability-dialogsession-senddialogresult-f-sys.md#senddialogresult) | 发送用户请求。使用callback异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

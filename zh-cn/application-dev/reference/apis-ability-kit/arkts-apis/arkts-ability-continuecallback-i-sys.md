@@ -6,8 +6,6 @@ export interface ContinueCallback
 
 表示跨设备迁移Mission完成后，返回迁移结果的回调函数。
 
-@interface ContinueCallback
-
 **起始版本：** 9
 
 <!--Device-unnamed-export interface ContinueCallback--><!--Device-unnamed-export interface ContinueCallback-End-->

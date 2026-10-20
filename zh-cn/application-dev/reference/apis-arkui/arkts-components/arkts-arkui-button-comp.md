@@ -81,7 +81,7 @@ Button(label: ResourceStr, options?: ButtonOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | label | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 按钮文本内容。<br>**说明：** 当文本字符的长度超过按钮本身的宽度时，文本将会被截断。 |
-| options | [ButtonOptions](arkts-arkui-button-comp-buttonoptions-i.md) | 否 | 配置按钮的显示样式。<br> 未设置时，则按照ButtonOptions中各参数的默认值配置。 |
+| options | [ButtonOptions](arkts-arkui-button-comp-buttonoptions-i.md) | 否 | 配置按钮的显示样式。 <br> 未设置时，则按照ButtonOptions中各参数的默认值配置。 |
 
 ## 汇总
 

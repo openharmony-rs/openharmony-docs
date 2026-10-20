@@ -216,10 +216,10 @@ Emotions. When this value is blank, the application does not search for audio by
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
-## queryKeyWord
+## queryKeyWords
 
 ```TypeScript
-queryKeyWord?: string
+queryKeyWords?: string
 ```
 
 Search for keywords. When this value is blank, the application does not search for audio by referring to this field.
@@ -230,7 +230,7 @@ Search for keywords. When this value is blank, the application does not search f
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SearchPlayKaraokeInfo-queryKeyWord?: string--><!--Device-SearchPlayKaraokeInfo-queryKeyWord?: string-End-->
+<!--Device-SearchPlayKaraokeInfo-queryKeyWords?: string--><!--Device-SearchPlayKaraokeInfo-queryKeyWords?: string-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 

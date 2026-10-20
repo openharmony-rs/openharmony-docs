@@ -20,8 +20,6 @@ PhotoOutput implements output information used in a photo session. It inherits f
 import { camera } from '@kit.CameraKit';
 ```
 
-<a id="capture1"></a>
-
 ## capture
 
 ```TypeScript
@@ -67,8 +65,6 @@ function capture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
-<a id="capture2"></a>
-
 ## capture
 
 ```TypeScript
@@ -111,8 +107,6 @@ function capture(photoOutput: camera.PhotoOutput): void {
   });
 }
 ```
-
-<a id="capture3"></a>
 
 ## capture
 
@@ -171,8 +165,6 @@ function capture(photoOutput: camera.PhotoOutput): void {
   });
 }
 ```
-
-<a id="capture4"></a>
 
 ## capture
 
@@ -488,7 +480,7 @@ natural orientation. For example, the rear camera sensor of a bar-type phone is 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceDegree | number | No | Device rotation angle, measured in degrees, within the range of [0, 360].<br>If the input value goes beyond this range, the system uses the remainder of the input value divided by 360. <br>Since API version 23, the input parameter **deviceDegree** is optional. If no parameter is passed, the system obtains the **deviceDegree** value to calculate the photo rotation angle.<br>**Since:** 23 |
+| deviceDegree | number | No | Device rotation angle, measured in degrees, within the range of [0, 360]. <br>If the input value goes beyond this range, the system uses the remainder of the input value divided by 360. <br>Since API version 23, the input parameter **deviceDegree** is optional. If no parameter is passed, the system obtains the **deviceDegree** value to calculate the photo rotation angle.<br>**Since:** 23 |
 
 **Return value:**
 
@@ -1722,7 +1714,7 @@ Sets a video codec type for moving photos.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| codecType | [VideoCodecType](arkts-camera-camera-videocodectype-e.md) | Yes | Video codec type.<br>If the value is not within the enumerated value range, this parameter does not take effect. |
+| codecType | [VideoCodecType](arkts-camera-camera-videocodectype-e.md) | Yes | Video codec type. <br>If the value is not within the enumerated value range, this parameter does not take effect. |
 
 **Error codes:**
 

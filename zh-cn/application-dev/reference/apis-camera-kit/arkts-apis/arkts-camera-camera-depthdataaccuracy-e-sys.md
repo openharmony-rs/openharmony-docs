@@ -4,7 +4,7 @@
 enum DepthDataAccuracy
 ```
 
-Describes the accuracy of depth data.
+描述深度数据的精度。
 
 **起始版本：** 13
 
@@ -20,7 +20,7 @@ Describes the accuracy of depth data.
 DEPTH_DATA_ACCURACY_ABSOLUTE = 1
 ```
 
-Absolute accuracy, which is the depth map calculated from distance measurement.
+绝对精度，基于测距计算的深度图。
 
 **起始版本：** 13
 
@@ -36,7 +36,7 @@ Absolute accuracy, which is the depth map calculated from distance measurement.
 DEPTH_DATA_ACCURACY_RELATIVE = 0
 ```
 
-Relative accuracy, which is the depth map calculated based on the disparity.
+相对精度，基于视差计算的深度图。
 
 **起始版本：** 13
 

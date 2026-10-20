@@ -6,7 +6,7 @@ interface EthEapStateInfo
 
 Represents the 802.1X EAP authentication state information, delivered via the stateChange callback.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 <!--Device-eap-interface EthEapStateInfo--><!--Device-eap-interface EthEapStateInfo-End-->
 
@@ -28,7 +28,7 @@ Supplementary message, such as the failure reason. Empty on success.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -46,7 +46,7 @@ Current retry count (resets to 0 on success). The value should be an integer.
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -64,7 +64,7 @@ Current authentication state.
 
 **Type:** [EthEapState](arkts-network-eap-etheapstate-e.md)
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

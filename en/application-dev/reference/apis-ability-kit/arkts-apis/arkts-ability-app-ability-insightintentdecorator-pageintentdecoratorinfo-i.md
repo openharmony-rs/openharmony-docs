@@ -80,6 +80,26 @@ Path of the page bound to the intent. The page must be a file that actually exis
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
+## permissions
+
+```TypeScript
+permissions?: string[]
+```
+
+Indicates the permissions required by the intent.
+
+**Type:** string[]
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-PageIntentDecoratorInfo-permissions?: string[]--><!--Device-PageIntentDecoratorInfo-permissions?: string[]-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
 ## uiAbility
 
 ```TypeScript

@@ -90,6 +90,29 @@ When **WebContextMenuParam** contains image content, this method is used to copy
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+## copyLinkToTextMenu
+
+```TypeScript
+copyLinkToTextMenu(): void
+```
+
+Copies a Text Fragment link that points to the currently highlighted text to the system clipboard. The copied URL contains a **#:~:text=** fragment that complies with the W3C Text Fragments specification. The clipboard content is the same as the URL returned by getTextFragmentGeneratedLink().
+
+Use this API in the **onContextMenuShow** event callback. Before calling this API, you are advised to call shouldOfferLinkToText() to check whether the current selection supports link generation. If the selection does not support link generation, this method does not write to the clipboard.
+
+> **NOTE:** 
+> 
+> After the operation is complete, closeContextMenu() should be called to close
+> the menu. Failure to do so may result in menu resources not being properly released.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebContextMenuResult-copyLinkToTextMenu(): void--><!--Device-WebContextMenuResult-copyLinkToTextMenu(): void-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
 ## cut
 
 ```TypeScript
@@ -175,6 +198,29 @@ Performs the redo operation, which re-executes the revoked operation.
 **Since:** 20
 
 <!--Device-WebContextMenuResult-redo(): void--><!--Device-WebContextMenuResult-redo(): void-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## removeFragments
+
+```TypeScript
+removeFragments(): void
+```
+
+Removes all Text Fragment highlights from the current web page, restoring the original text style.
+
+Use this API in the **onContextMenuShow** event callback. Before calling this API, you are advised to call isOverTextFragment() to check whether a highlight exists. If no highlight exists, this method does nothing.
+
+> **NOTE:** 
+> 
+> After the operation is complete, closeContextMenu() should be called to close
+> the menu. Failure to do so may result in menu resources not being properly released.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebContextMenuResult-removeFragments(): void--><!--Device-WebContextMenuResult-removeFragments(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

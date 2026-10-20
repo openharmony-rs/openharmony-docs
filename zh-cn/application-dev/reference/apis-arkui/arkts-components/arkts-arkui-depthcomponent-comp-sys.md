@@ -31,7 +31,8 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
@@ -42,17 +43,22 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 | [DepthComponentErrorEvent](arkts-arkui-depthcomponent-comp-depthcomponenterrorevent-i-sys.md) | 背景资源加载失败的事件信息。 |
 | [DepthComponentOptions](arkts-arkui-depthcomponent-comp-depthcomponentoptions-i-sys.md) | 景深组件配置项。 |
 | [DepthLightParams](arkts-arkui-depthcomponent-comp-depthlightparams-i-sys.md) | 光照参数。 |
+<!--DelEnd-->
 
-### 类型
+<!--Del-->
+### 类型（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [DepthComponentCompleteCallback](arkts-arkui-depthcomponent-comp-depthcomponentcompletecallback-t-sys.md) | 背景资源加载成功的回调函数。使用callback异步回调。 |
 | [DepthComponentErrorCallback](arkts-arkui-depthcomponent-comp-depthcomponenterrorcallback-t-sys.md) | 背景资源加载失败的回调函数。使用callback异步回调。 |
 | [DepthMapCallback](arkts-arkui-depthcomponent-comp-depthmapcallback-t-sys.md) | 深度图资源加载完成时的回调函数。使用callback异步回调。 |
+<!--DelEnd-->
 
-### 枚举
+<!--Del-->
+### 枚举（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [DepthSpaceType](arkts-arkui-depthcomponent-comp-depthspacetype-e-sys.md) | 景深空间类型枚举。 |
+<!--DelEnd-->

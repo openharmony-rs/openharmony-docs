@@ -20,7 +20,7 @@ Calculates the start line position of the current page based on the total offset
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| totalOffset | number | Yes | Total scrolling offset, that is, the offset between the top of the first **GridItem** in the **Grid** component and the top of the **Grid** component.<br>Unit:vp. |
+| totalOffset | number | Yes | Total scrolling offset, that is, the offset between the top of the first **GridItem** in the **Grid** component and the top of the **Grid** component. <br>Unit:vp. |
 
 **Return value:**
 

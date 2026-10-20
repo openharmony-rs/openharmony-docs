@@ -6,8 +6,6 @@
 import { power } from '@kit.BasicServicesKit';
 ```
 
-<a id="isscreenon1"></a>
-
 ## isScreenOn
 
 ```TypeScript
@@ -44,8 +42,6 @@ power.isScreenOn((err: Error, data: boolean) => {
 })
 ```
 
-
-<a id="isscreenon2"></a>
 
 ## isScreenOn
 

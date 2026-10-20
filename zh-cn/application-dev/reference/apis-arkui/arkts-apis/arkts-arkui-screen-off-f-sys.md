@@ -6,8 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="off1"></a>
-
 ## off
 
 ```TypeScript
@@ -36,7 +34,7 @@ function off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 <!--Del-->
 **示例**
@@ -54,8 +52,6 @@ screen.off('connect');
 <!--DelEnd-->
 
 
-<a id="off2"></a>
-
 ## off
 
 ```TypeScript
@@ -84,7 +80,7 @@ function off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 <!--Del-->
 **示例**
@@ -94,8 +90,6 @@ function off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback
 <!--DelEnd-->
 
 
-<a id="off3"></a>
-
 ## off
 
 ```TypeScript
@@ -124,7 +118,7 @@ function off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 <!--Del-->
 **示例**

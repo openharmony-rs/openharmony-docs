@@ -4,8 +4,6 @@
 export interface ClearStorageOptions
 ```
 
-@typedef ClearStorageOptions
-
 **Since:** 3
 
 **Deprecated since:** 6

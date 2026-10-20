@@ -6,8 +6,6 @@
 import { statfs } from '@kit.CoreFileKit';
 ```
 
-<a id="gettotalsize1"></a>
-
 ## getTotalSize
 
 ```TypeScript
@@ -68,8 +66,6 @@ statfs.getTotalSize(path).then((totalSize: number) => {
 });
 ```
 
-
-<a id="gettotalsize2"></a>
 
 ## getTotalSize
 

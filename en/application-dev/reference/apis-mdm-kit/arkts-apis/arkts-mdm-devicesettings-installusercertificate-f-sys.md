@@ -6,8 +6,6 @@
 import { deviceSettings } from '@kit.MDMKit';
 ```
 
-<a id="installusercertificate1"></a>
-
 ## installUserCertificate
 
 ```TypeScript
@@ -86,8 +84,6 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 
 <!--DelEnd-->
 
-
-<a id="installusercertificate2"></a>
 
 ## installUserCertificate
 

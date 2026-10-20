@@ -1,4 +1,4 @@
-# @arkts.utils(Defines the utils for ArkTS)
+# @arkts.utils(定义ArkTS工具)
 
 ## 导入模块
 

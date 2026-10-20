@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getuid1"></a>
-
 ## getUid
 
 ```TypeScript
@@ -88,8 +86,6 @@ wantAgent.getWantAgent({
 }, getWantAgentCallback);
 ```
 
-
-<a id="getuid2"></a>
 
 ## getUid
 

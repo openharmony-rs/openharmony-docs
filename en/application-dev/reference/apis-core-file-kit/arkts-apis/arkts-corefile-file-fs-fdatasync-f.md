@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function fdatasync(fd: number): Promise<void>
 ```
 
-Synchronizes the data of a file. This API uses a promise to return the result.
+Synchronizes data in a file. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -45,15 +45,13 @@ Synchronizes the data of a file. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
-<a id="fdatasync2"></a>
-
 ## fdatasync
 
 ```TypeScript
 declare function fdatasync(fd: number, callback: AsyncCallback<void>): void
 ```
 
-Synchronizes the data of a file. This API uses an asynchronous callback to return the result.
+Synchronizes data in a file. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -66,7 +64,7 @@ Synchronizes the data of a file. This API uses an asynchronous callback to retur
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | fd | number | Yes | FD of the file. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the file data is successfully synchronized, <b>err</b> is <b>undefined</b>. Otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 

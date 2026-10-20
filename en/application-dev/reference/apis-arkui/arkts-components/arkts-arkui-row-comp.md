@@ -40,7 +40,7 @@ Creates a horizontal linear layout container. You can set the spacing between ch
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [RowOptions](arkts-arkui-row-comp-rowoptions-i.md) | No | Configuration object of the horizontal layout, used to set the spacing between child components (unit: vp). The **space** attribute supports values of the number or string type. Pass this parameter when you need to customize the spacing between child components. If this parameter is not passed, the default spacing is 0.<br> <br>**Note:** Since API version 9, the **space** attribute does not take effect when it is set to a negative value or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**. |
+| options | [RowOptions](arkts-arkui-row-comp-rowoptions-i.md) | No | Configuration object of the horizontal layout, used to set the spacing between child components (unit: vp). The **space** attribute supports values of the number or string type. Pass this parameter when you need to customize the spacing between child components. If this parameter is not passed, the default spacing is 0. <br> <br>**Note:** Since API version 9, the **space** attribute does not take effect when it is set to a negative value or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**. |
 
 ## Row
 
@@ -73,7 +73,7 @@ Creates a horizontal linear layout container. You can set the spacing between ch
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [RowOptions](arkts-arkui-row-comp-rowoptions-i.md) &#124; [RowOptionsV2](arkts-arkui-row-comp-rowoptionsv2-i.md) | No | Configuration object of the horizontal layout, used to set the spacing between child components (in vp). The space property supports values of the number, string, or Resource type. If not set, the default spacing is 0.<br>**Note:** Since API version 9, this property does not take effect when space is a negative number or **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**. |
+| options | [RowOptions](arkts-arkui-row-comp-rowoptions-i.md) &#124; [RowOptionsV2](arkts-arkui-row-comp-rowoptionsv2-i.md) | No | Configuration object of the horizontal layout, used to set the spacing between child components (in vp). The space property supports values of the number, string, or Resource type. If not set, the default spacing is 0. <br>**Note:** Since API version 9, this property does not take effect when space is a negative number or **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**. |
 
 ## Summary
 

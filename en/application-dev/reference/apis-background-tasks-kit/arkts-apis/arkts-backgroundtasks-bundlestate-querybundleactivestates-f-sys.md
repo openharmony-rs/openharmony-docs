@@ -6,8 +6,6 @@
 import { bundleState } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="querybundleactivestates1"></a>
-
 ## queryBundleActiveStates
 
 ```TypeScript
@@ -32,8 +30,8 @@ Queries state data of all bundles within a specified period identified by the st
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| begin | number | Yes | Indicates the start time of the query period, in milliseconds.<br> Unit:ms |
-| end | number | Yes | Indicates the end time of the query period, in milliseconds.<br> Unit:ms |
+| begin | number | Yes | Indicates the start time of the query period, in milliseconds. <br> Unit:ms |
+| end | number | Yes | Indicates the end time of the query period, in milliseconds. <br> Unit:ms |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BundleActiveState](arkts-backgroundtasks-bundlestate-bundleactivestate-i.md)&gt;&gt; | Yes | the state data of all bundles. |
 
 <!--Del-->
@@ -59,8 +57,6 @@ bundleState.queryBundleActiveStates(0, 20000000000000, (err: BusinessError, res:
 <!--DelEnd-->
 
 
-<a id="querybundleactivestates2"></a>
-
 ## queryBundleActiveStates
 
 ```TypeScript
@@ -85,8 +81,8 @@ Queries state data of all bundles within a specified period identified by the st
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| begin | number | Yes | Indicates the start time of the query period, in milliseconds.<br> Unit:ms |
-| end | number | Yes | Indicates the end time of the query period, in milliseconds.<br> Unit:ms |
+| begin | number | Yes | Indicates the start time of the query period, in milliseconds. <br> Unit:ms |
+| end | number | Yes | Indicates the end time of the query period, in milliseconds. <br> Unit:ms |
 
 **Return value:**
 

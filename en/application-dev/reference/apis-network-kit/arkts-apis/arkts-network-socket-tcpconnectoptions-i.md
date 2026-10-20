@@ -26,7 +26,7 @@ address: NetAddress
 
 Bound IP address and port number.
 
-**Type:** [NetAddress](arkts-network-socket-p.md)
+**Type:** [NetAddress](arkts-network-socket-netaddress-t.md)
 
 **Since:** 7
 

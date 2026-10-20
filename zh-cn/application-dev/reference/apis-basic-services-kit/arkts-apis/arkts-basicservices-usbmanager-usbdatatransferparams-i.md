@@ -88,7 +88,7 @@ endpoint: number
 flags: UsbTransferFlags
 ```
 
-USB传输标志，用于控制传输行为。可选值包括：0（将短帧报告为错误）、1（自动释放传输缓冲区）、2（完成回调后自动释放传输资源）、3（传输增加一个额外的数据包）。
+USB传输标志，用于控制传输行为。可选值包括：0（将短帧报告为错误）、1（自动释放传输缓冲区）、2（完成回调后自动释放传输资源）、3（传输将增加一个额外的零长度数据包）。
 
 **类型：** [UsbTransferFlags](arkts-basicservices-usbmanager-usbtransferflags-e.md)
 

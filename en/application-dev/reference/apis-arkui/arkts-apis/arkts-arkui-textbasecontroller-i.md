@@ -92,6 +92,6 @@ unchanged.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectionStart | number | Yes | Start position of the selection.<br>If the value is less than 0, it is processed as 0. If the value is greater than the text length, it is processed as the current text length. <br>Special value effect: when both selectionStart and selectionEnd are -1, all text is selected. |
-| selectionEnd | number | Yes | End position of the selection.<br>If the value is less than 0, it is processed as 0. If the value is greater than the text length, it is processed as the current text length. <br>Special value effect: when both selectionStart and selectionEnd are -1, all text is selected. |
+| selectionStart | number | Yes | Start position of the selection. <br>If the value is less than 0, it is processed as 0. If the value is greater than the text length, it is processed as the current text length. <br>Special value effect: when both selectionStart and selectionEnd are -1, all text is selected. |
+| selectionEnd | number | Yes | End position of the selection. <br>If the value is less than 0, it is processed as 0. If the value is greater than the text length, it is processed as the current text length. <br>Special value effect: when both selectionStart and selectionEnd are -1, all text is selected. |
 | options | [SelectionOptions](../arkts-components/arkts-arkui-common-comp-selectionoptions-i.md) | No | Configuration of options. The default value is inherited from [SelectionOptions](../arkts-components/arkts-arkui-common-comp-selectionoptions-i.md). |

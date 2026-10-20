@@ -6,8 +6,6 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="enableadmin1"></a>
-
 ## enableAdmin
 
 ```TypeScript
@@ -77,8 +75,6 @@ adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_
 
 <!--DelEnd-->
 
-
-<a id="enableadmin2"></a>
 
 ## enableAdmin
 
@@ -150,8 +146,6 @@ adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_
 
 <!--DelEnd-->
 
-
-<a id="enableadmin3"></a>
 
 ## enableAdmin
 

@@ -29,9 +29,9 @@ function off(type: 'receiveImage', sessionId: number,
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'receiveImage' | 是 | 事件注册类型，'receiveImage'。 |
-| sessionId | number | 是 | 协同会话ID。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[EventCallbackInfo](arkts-distributedservice-abilityconnectionmanager-eventcallbackinfo-i.md)&gt; | 否 | 用于处理('receiveImage')事件的回调函数。 |
+| type | 'receiveImage' | 是 | 表示事件回调类型，支持的事件类型为'receiveImage'。 |
+| sessionId | number | 是 | 表示创建的协同会话ID，需先创建协同会话后获取。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[EventCallbackInfo](arkts-distributedservice-abilityconnectionmanager-eventcallbackinfo-i.md)&gt; | 否 | 用表示注册的回调函数。如果传入该参数，则取消该callback的监听。如果未传入该参数，则取消所有'receiveImage'事件监听。 |
 
 **错误码：**
 
@@ -62,7 +62,7 @@ function off(type: 'collaborateEvent', sessionId: number,
         callback?: Callback<CollaborateEventInfo>): void
 ```
 
-取消collaborateEvent事件的回调监听。
+取消collaborateEvent事件的回调监听。需与on('collaborateEvent')方法配合使用，在不需要接收协同事件或组件销毁时，应调用此方法取消监听以释放资源。
 
 **起始版本：** 18
 

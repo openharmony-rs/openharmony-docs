@@ -6,8 +6,6 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
-<a id="gettopability1"></a>
-
 ## getTopAbility
 
 ```TypeScript
@@ -37,8 +35,6 @@ Obtains the top ability, which is the ability that has the window focus. This AP
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
-
-<a id="gettopability2"></a>
 
 ## getTopAbility
 

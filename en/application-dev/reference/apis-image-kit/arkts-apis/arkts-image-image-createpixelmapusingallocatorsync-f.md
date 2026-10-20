@@ -6,8 +6,6 @@
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="createpixelmapusingallocatorsync1"></a>
-
 ## createPixelMapUsingAllocatorSync
 
 ```TypeScript
@@ -68,8 +66,6 @@ function createPixelMapUsingAllocatorSync() {
 }
 ```
 
-
-<a id="createpixelmapusingallocatorsync2"></a>
 
 ## createPixelMapUsingAllocatorSync
 

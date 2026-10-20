@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="uninstall1"></a>
-
 ## uninstall
 
 ```TypeScript
@@ -26,7 +24,7 @@ Uninstalls an application of the current user without retaining the bundle data.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall5)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
+**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -81,8 +79,6 @@ bundleManager.uninstall(wantTemp, 'bundleName', (err) => {
 <!--DelEnd-->
 
 
-<a id="uninstall2"></a>
-
 ## uninstall
 
 ```TypeScript
@@ -101,7 +97,7 @@ Uninstalls an application of the specified user without retaining the bundle dat
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall5)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
+**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -157,8 +153,6 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, (err) => {
 <!--DelEnd-->
 
 
-<a id="uninstall3"></a>
-
 ## uninstall
 
 ```TypeScript
@@ -177,7 +171,7 @@ Uninstalls an application of the current user. The **isKeepData** parameter spec
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall5)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
+**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -233,8 +227,6 @@ bundleManager.uninstall(wantTemp, 'bundleName', true, (err) => {
 <!--DelEnd-->
 
 
-<a id="uninstall4"></a>
-
 ## uninstall
 
 ```TypeScript
@@ -253,7 +245,7 @@ Uninstalls an application of the specified user. The **isKeepData** parameter sp
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall5)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
+**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 

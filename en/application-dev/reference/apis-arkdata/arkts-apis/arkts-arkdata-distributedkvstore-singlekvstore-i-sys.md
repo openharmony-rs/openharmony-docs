@@ -18,15 +18,13 @@ Provides APIs for data management in a single KV store, such as adding data, del
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="delete3"></a>
-
 ## delete
 
 ```TypeScript
 delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<void>): void
 ```
 
-Deletes the key-value pairs based on the dataSharePredicates.
+Deletes KV pairs from this KV store. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -42,14 +40,14 @@ Deletes the key-value pairs based on the dataSharePredicates.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Indicates the dataSharePredicates. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | the callback of delete. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filter criteria, which cannot be null. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -112,15 +110,13 @@ try {
 
 <!--DelEnd-->
 
-<a id="delete4"></a>
-
 ## delete
 
 ```TypeScript
 delete(predicates: dataSharePredicates.DataSharePredicates): Promise<void>
 ```
 
-Deletes the key-value pairs based on the dataSharePredicates.
+Deletes KV pairs from this KV store. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -136,19 +132,19 @@ Deletes the key-value pairs based on the dataSharePredicates.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Indicates the dataSharePredicates. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filter criteria, which cannot be null. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -161,15 +157,13 @@ See [delete](#delete)
 
 <!--DelEnd-->
 
-<a id="getresultset5"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-Obtains the KVStoreResultSet object matching the specified predicate object.
+Obtains a **KVStoreResultSet** object that matches the specified **Predicates** object. This API uses an asynchronous callback to return the result. After obtaining the result set, call [closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset) to close the result set in a timely manner to release resources.
 
 **Since:** 9
 
@@ -185,14 +179,14 @@ Obtains the KVStoreResultSet object matching the specified predicate object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Indicates the datasharePredicates. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Yes | {KVStoreResultSet}: the `KVStoreResultSet` object matching the specified `dataSharePredicates.DataSharePredicates` object. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filter criteria, which cannot be null. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Yes | Callback used to return the **KVStoreResultSet** object obtained. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -368,15 +362,13 @@ try {
 
 <!--DelEnd-->
 
-<a id="getresultset6"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise<KVStoreResultSet>
 ```
 
-Obtains the KVStoreResultSet object matching the specified predicate object.
+Obtains the **KVStoreResultSet** object that matches the specified **Predicates** object. This API uses a promise to return the result. After obtaining the result set, call [closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset) to close the result set in a timely manner to release resources.
 
 **Since:** 9
 
@@ -392,19 +384,19 @@ Obtains the KVStoreResultSet object matching the specified predicate object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Indicates the datasharePredicates. |
+| predicates | [dataSharePredicates.DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | Yes | Filter criteria, which cannot be null. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | {KVStoreResultSet}: the `KVStoreResultSet` object matching the specified `dataSharePredicates.DataSharePredicates` object. |
+| Promise&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Promise used to the **KVStoreResultSet** object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -580,15 +572,13 @@ try {
 
 <!--DelEnd-->
 
-<a id="putbatch3"></a>
-
 ## putBatch
 
 ```TypeScript
 putBatch(value: Array<ValuesBucket>, callback: AsyncCallback<void>): void
 ```
 
-Writes values of ValuesBucket type into the `SingleKVStore` database.
+Writes key-value pair data in batches. Each **ValuesBucket** object contains the key and value fields. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -604,14 +594,14 @@ Writes values of ValuesBucket type into the `SingleKVStore` database.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;[ValuesBucket](arkts-arkdata-valuesbucket-t.md)&gt; | Yes | Indicates the ValuesBucket array to be inserted. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | the callback of putBatch. |
+| value | Array&lt;[ValuesBucket](arkts-arkdata-valuesbucket-t.md)&gt; | Yes | Data to write. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -699,15 +689,13 @@ try {
 
 <!--DelEnd-->
 
-<a id="putbatch4"></a>
-
 ## putBatch
 
 ```TypeScript
 putBatch(value: Array<ValuesBucket>): Promise<void>
 ```
 
-Writes values of ValuesBucket type into the `SingleKVStore` database.
+Writes key-value pair data in batches. Each **ValuesBucket** object contains the key and value fields. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -723,19 +711,19 @@ Writes values of ValuesBucket type into the `SingleKVStore` database.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;[ValuesBucket](arkts-arkdata-valuesbucket-t.md)&gt; | Yes | Indicates the ValuesBucket array to be inserted. |
+| value | Array&lt;[ValuesBucket](arkts-arkdata-valuesbucket-t.md)&gt; | Yes | Data to write. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |

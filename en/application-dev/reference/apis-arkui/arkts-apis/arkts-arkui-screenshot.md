@@ -28,9 +28,9 @@ import { screenshot } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [save](arkts-arkui-screenshot-save-f-sys.md#save1) | Obtains a screenshot. This API uses an asynchronous callback to return the result. |
-| [save](arkts-arkui-screenshot-save-f-sys.md#save2) | Obtains a screenshot. This API uses an asynchronous callback to return the result. |
-| [save](arkts-arkui-screenshot-save-f-sys.md#save3) | Obtains a screenshot. This API uses a promise to return the result. |
+| [save](arkts-arkui-screenshot-save-f-sys.md#save) | Obtains a screenshot. This API uses an asynchronous callback to return the result. |
+| [save](arkts-arkui-screenshot-save-f-sys.md#save) | Obtains a screenshot. This API uses an asynchronous callback to return the result. |
+| [save](arkts-arkui-screenshot-save-f-sys.md#save) | Obtains a screenshot. This API uses a promise to return the result. |
 | [saveHdrPicture](arkts-arkui-screenshot-savehdrpicture-f-sys.md#savehdrpicture) | Obtains a screenshot. This API uses a promise to return the result. SDR stands for Standard Dynamic Range, and HDR stands for High Dynamic Range. |
 <!--DelEnd-->
 

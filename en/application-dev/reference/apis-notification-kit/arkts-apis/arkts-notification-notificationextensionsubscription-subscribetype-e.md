@@ -4,13 +4,7 @@
 export enum SubscribeType
 ```
 
-Describes the type that enables notification extension subscription.
-
-**Since:** 22
-
 <!--Device-notificationExtensionSubscription-export enum SubscribeType--><!--Device-notificationExtensionSubscription-export enum SubscribeType-End-->
-
-**System capability:** SystemCapability.Notification.Notification
 
 ## BLUETOOTH
 

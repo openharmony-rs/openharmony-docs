@@ -4,7 +4,7 @@
 interface Cipher
 ```
 
-Encryption and decryption interface, defining methods for symmetric and asymmetric encryption and decryption. Before use, you must create a **Cipher** instance by using [createCipher(transformation: string): Cipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md). Call the [init()](#init4), [update()](#update1), and [doFinal()](#dofinal2) APIs in this class as needed to complete encryption or decryption operations.
+Encryption and decryption interface, defining methods for symmetric and asymmetric encryption and decryption. Before use, you must create a **Cipher** instance by using [createCipher(transformation: string): Cipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md). Call the [init()](#init), [update()](#update), and [doFinal()](#dofinal) APIs in this class as needed to complete encryption or decryption operations.
 
 <br>For details about the complete encryption and decryption process, see [Encryption and Decryption Overview](../../../security/CryptoArchitectureKit/crypto-encryption-decryption.md).
 
@@ -28,8 +28,6 @@ not supported. **doFinal()** can be called multiple times to encrypt or decrypt 
 ```TypeScript
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 ```
-
-<a id="dofinal1"></a>
 
 ## doFinal
 
@@ -60,11 +58,11 @@ Finishes the crypto operation, encrypts or decrypts the input data, and then fee
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. The data is too long.<br>**Applicable version:** 22 and later |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. The data is too long.<br>**Applicable version:** 22 and later |
 
 **Examples**
 
@@ -163,8 +161,6 @@ async function cipherByPromise() {
 }
 ```
 
-<a id="dofinal2"></a>
-
 ## doFinal
 
 ```TypeScript
@@ -173,7 +169,7 @@ doFinal(data: DataBlob | null, callback: AsyncCallback<DataBlob>): void
 
 Finishes the crypto operation, encrypts or decrypts the input data, and then feeds back the output data. Data cannot be updated after the crypto operation is finished. This API uses an asynchronous callback to return the result.
 
-<br>(1) Processes the remaining data and the data passed in this time, and completes the encryption or decryption operation for symmetric encryption and decryption. This API uses an asynchronous callback to return the encrypted or decrypted data. If a small amount of data needs to be encrypted or decrypted, you can use **doFinal()** to pass in all the data without using **update()**. If all the data has been passed in by [update()](#update1), you can pass in **null** in **data** of **doFinal()**. The output of **doFinal()** varies with the symmetric block cipher mode in use. This API uses an asynchronous callback to return the result.
+<br>(1) Processes the remaining data and the data passed in this time, and completes the encryption or decryption operation for symmetric encryption and decryption. This API uses an asynchronous callback to return the encrypted or decrypted data. If a small amount of data needs to be encrypted or decrypted, you can use **doFinal()** to pass in all the data without using **update()**. If all the data has been passed in by [update()](#update), you can pass in **null** in **data** of **doFinal()**. The output of **doFinal()** varies with the symmetric block cipher mode in use. This API uses an asynchronous callback to return the result.
 
 - In a single encryption process with GCM or CCM mode, concatenating the results of each **update()** and  
 **doFinal()** produces the ciphertext and **authTag**. In GCM mode, **authTag** is the last 16 bytes. In CCM mode, **authTag** is the last 12 bytes. The rest part is the ciphertext. If **data** passed to **doFinal()** is **null**, the **doFinal()** result is only the **authTag**. During decryption, **authTag** must be set in [GcmParamsSpec](arkts-cryptoarchitecture-cryptoframework-gcmparamsspec-i.md) or [CcmParamsSpec](arkts-cryptoarchitecture-cryptoframework-ccmparamsspec-i.md), and the ciphertext must be set in **data**.  
@@ -215,11 +211,11 @@ of **update()** and **doFinal()** throughout the process will yield the complete
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. The data is too long.<br>**Applicable version:** 22 and later |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. The data is too long.<br>**Applicable version:** 22 and later |
 
 **Examples**
 
@@ -273,8 +269,6 @@ function cipherByCallback() {
 }
 ```
 
-<a id="dofinal4"></a>
-
 ## doFinal
 
 ```TypeScript
@@ -309,12 +303,12 @@ Finishes the crypto operation, encrypts or decrypts the input data, and then fee
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. The data is too long.<br>**Applicable version:** 22 and later |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. The data is too long.<br>**Applicable version:** 22 and later |
 
 **Examples**
 
@@ -412,8 +406,6 @@ async function cipherByPromise() {
   console.info('encryptUpdate plainText: ' + encryptUpdate.data);
 }
 ```
-
-<a id="dofinal5"></a>
 
 ## doFinal
 
@@ -477,12 +469,12 @@ of **update()** and **doFinal()** throughout the process will yield the complete
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. The data is too long.<br>**Applicable version:** 22 and later |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. The data is too long.<br>**Applicable version:** 22 and later |
 
 **Examples**
 
@@ -553,7 +545,7 @@ of **updateSync()** and **doFinalSync()** throughout the process will yield the 
 
 (2) Encrypts or decrypts the input data for RSA or SM2 asymmetric encryption/decryption. This API returns the encrypted or decrypted data synchronously. If a large amount of data is to be processed, call **doFinalSync()** multiple times and concatenate the results to obtain the complete plaintext or ciphertext.
 
-<br>See **NOTE:** in [doFinal()](#dofinal2) for other precautions.
+<br>See **NOTE:** in [doFinal()](#dofinal) for other precautions.
 
 <br><br>**NOTE:** <br>It is recommended to prioritize the use of asynchronous API, doFinal. Synchronous API may take a long time and block the main thread due to system busyness, high load, and other reasons. Therefore, it is advised to invoke synchronous API within a child thread to avoid blocking the main thread.
 
@@ -581,11 +573,11 @@ of **updateSync()** and **doFinalSync()** throughout the process will yield the 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. The data is too long.<br>**Applicable version:** 22 and later |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. The data is too long.<br>**Applicable version:** 22 and later |
 
 **Examples**
 
@@ -668,11 +660,11 @@ Obtains cipher specifications. Currently, only RSA and SM2 (available since API 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. Unsupported itemType.<br>**Applicable version:** 22 and later |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Unsupported itemType.<br>**Applicable version:** 22 and later |
 
 **Examples**
 
@@ -685,8 +677,6 @@ function testGetCipherSpec() {
   console.info('getCipherSpec: mdName =' + mdName);
 }
 ```
-
-<a id="init1"></a>
 
 ## init
 
@@ -721,13 +711,11 @@ Initializes the crypto operation with the given crypto mode, key and parameters.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. Invalid opMode value; <br>2. Invalid iv length; <br>3. Invalid key length.<br>**Applicable version:** 22 and later |
-
-<a id="init2"></a>
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Invalid opMode value; <br>2. Invalid iv length; <br>3. Invalid key length.<br>**Applicable version:** 22 and later |
 
 ## init
 
@@ -762,13 +750,11 @@ Initializes the [cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) o
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. Invalid opMode value; <br>2. Invalid iv length; <br>3. Invalid key length.<br>**Applicable version:** 22 and later |
-
-<a id="init3"></a>
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Invalid opMode value; <br>2. Invalid iv length; <br>3. Invalid key length.<br>**Applicable version:** 22 and later |
 
 ## init
 
@@ -808,14 +794,12 @@ Initializes the crypto operation with the given crypto mode, key and parameters.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. Invalid opMode value; <br>2. Invalid iv length; <br>3. Invalid key length.<br>**Applicable version:** 22 and later |
-
-<a id="init4"></a>
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Invalid opMode value; <br>2. Invalid iv length; <br>3. Invalid key length.<br>**Applicable version:** 22 and later |
 
 ## init
 
@@ -855,11 +839,11 @@ Initializes the cipher object for encryption and decryption. This API uses a pro
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. Invalid opMode value; <br>2. Invalid iv length; <br>3. Invalid key length.<br>**Applicable version:** 22 and later |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Invalid opMode value; <br>2. Invalid iv length; <br>3. Invalid key length.<br>**Applicable version:** 22 and later |
 
 ## initSync
 
@@ -893,11 +877,11 @@ Initializes a [cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) ins
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. Invalid opMode value; <br>2. Invalid iv length; <br>3. Invalid key length.<br>**Applicable version:** 22 and later |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Invalid opMode value; <br>2. Invalid iv length; <br>3. Invalid key length.<br>**Applicable version:** 22 and later |
 
 ## setCipherSpec
 
@@ -928,11 +912,11 @@ Sets cipher specifications. You can use this API to set cipher specifications th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. Unsupported itemType.<br>**Applicable version:** 22 and later |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. Unsupported itemType.<br>**Applicable version:** 22 and later |
 
 **Examples**
 
@@ -946,8 +930,6 @@ function testSetCipherSpec() {
 }
 ```
 
-<a id="update1"></a>
-
 ## update
 
 ```TypeScript
@@ -956,7 +938,7 @@ update(data: DataBlob, callback: AsyncCallback<DataBlob>): void
 
 Updates the data to encrypt or decrypt by segment. This API uses an asynchronous callback to return the result.
 
-<br>This API can be called only after the [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) instance is initialized by using [init()](#init4).
+<br>This API can be called only after the [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) instance is initialized by using [init()](#init).
 
 > **NOTE:** 
 > 
@@ -1000,13 +982,11 @@ Updates the data to encrypt or decrypt by segment. This API uses an asynchronous
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. The data is too long.<br>**Applicable version:** 22 and later |
-
-<a id="update3"></a>
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. The data is too long.<br>**Applicable version:** 22 and later |
 
 ## update
 
@@ -1016,7 +996,7 @@ update(data: DataBlob): Promise<DataBlob>
 
 Updates the data to encrypt or decrypt by segment. This API uses a promise to return the result.
 
-<br>This API can be called only after the [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) instance is initialized by using [init()](#init4).
+<br>This API can be called only after the [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) instance is initialized by using [init()](#init).
 
 > **NOTE:** 
 > 
@@ -1065,12 +1045,12 @@ Updates the data to encrypt or decrypt by segment. This API uses a promise to re
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. The data is too long.<br>**Applicable version:** 22 and later |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. The data is too long.<br>**Applicable version:** 22 and later |
 
 ## updateSync
 
@@ -1110,11 +1090,11 @@ Updates the data to encrypt or decrypt by segment.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17620002](../errorcode-crypto-framework.md#17620002-failed-to-obtain-the-native-object-or-convert-parameters) | Failed to obtain the native object or convert parameters. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
-| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes:<br>1. The data is too long.<br>**Applicable version:** 22 and later |
+| [17620003](../errorcode-crypto-framework.md#17620003-parameter-check-failed) | Parameter check failed. Possible causes: <br>1. The data is too long.<br>**Applicable version:** 22 and later |
 
 ## algName
 

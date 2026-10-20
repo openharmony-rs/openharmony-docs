@@ -16,6 +16,8 @@ This module provides API for creating and displaying toasts, dialog boxes, and a
 
 **Since:** 9
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 <!--Device-unnamed-declare namespace promptAction--><!--Device-unnamed-declare namespace promptAction-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -36,10 +38,10 @@ import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 | [openToast](arkts-arkui-promptaction-opentoast-f.md#opentoast) | Shows a toast. This API uses a promise to return the toast ID. |
 | [closeCustomDialog](arkts-arkui-promptaction-closecustomdialog-f.md#closecustomdialog) | Closes the specified custom dialog box. |
 | [openCustomDialog](arkts-arkui-promptaction-opencustomdialog-f.md#opencustomdialog) | Opens a custom dialog box. This API uses a promise to return the result. |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu1) | Creates and displays an action menu. This API uses an asynchronous callback to return the result. |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu2) | Creates and displays an action menu in the given settings. This API uses a promise to return the result. |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog1) | Creates and displays a dialog box. This API uses an asynchronous callback to return the result. |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog2) | Creates and displays a dialog box in the given settings. This API uses a promise to return the result. |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu) | Creates and displays an action menu. This API uses an asynchronous callback to return the result. |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu) | Creates and displays an action menu in the given settings. This API uses a promise to return the result. |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog) | Creates and displays a dialog box. This API uses an asynchronous callback to return the result. |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog) | Creates and displays a dialog box in the given settings. This API uses a promise to return the result. |
 | [showToast](arkts-arkui-promptaction-showtoast-f.md#showtoast) | Creates and displays a toast. |
 
 ### Classes

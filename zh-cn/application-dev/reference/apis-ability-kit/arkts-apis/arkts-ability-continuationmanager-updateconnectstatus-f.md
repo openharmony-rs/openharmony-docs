@@ -6,8 +6,6 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
-<a id="updateconnectstatus1"></a>
-
 ## updateConnectStatus
 
 ```TypeScript
@@ -58,8 +56,6 @@ continuationManager.updateConnectStatus(token, deviceId, continuationManager.Dev
 });
 ```
 
-
-<a id="updateconnectstatus2"></a>
 
 ## updateConnectStatus
 

@@ -4,7 +4,7 @@
 declare type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) => void
 ```
 
-Defines the callback type used in accessibility hover events. The value of isHover indicates whether the touch is hovering over the component. The value of event contains information about AccessibilityHoverEvent.
+Defines the callback type for accessibility hover events, active in accessibility mode.
 
 **Since:** 12
 
@@ -20,5 +20,5 @@ Defines the callback type used in accessibility hover events. The value of isHov
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isHover | boolean | Yes |  |
-| event | [AccessibilityHoverEvent](arkts-arkui-common-comp-accessibilityhoverevent-i.md) | Yes |  |
+| isHover | boolean | Yes | Hover state. **true**: The finger enters the component. **false**: The finger exits the component. |
+| event | [AccessibilityHoverEvent](arkts-arkui-common-comp-accessibilityhoverevent-i.md) | Yes | Accessibility hover event object, which is used to obtain detailed information when the accessibility hover event is triggered, including the accessibility hover action type (type), the coordinates of the finger relative to the component/window/screen (x, y, windowX, windowY, displayX, displayY, globalDisplayX, globalDisplayY), and other attributes. |

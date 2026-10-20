@@ -23,15 +23,13 @@ interface SingleKVStore extends KVStore
 ```TypeScript
 ```
 
-<a id="closeresultset1"></a>
-
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-关闭由[SingleKVStore.getResultSet](#getresultset1)返回的KvStoreResultSet对象，使用callback异步回调。
+关闭由[SingleKVStore.getResultSet](#getresultset)返回的KvStoreResultSet对象，使用callback异步回调。
 
 **起始版本：** 8
 
@@ -68,15 +66,13 @@ try {
 }
 ```
 
-<a id="closeresultset2"></a>
-
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 ```
 
-关闭由[SingleKVStore.getResultSet](#getresultset1)返回的KvStoreResultSet对象，使用Promise异步回调。
+关闭由[SingleKVStore.getResultSet](#getresultset)返回的KvStoreResultSet对象，使用Promise异步回调。
 
 **起始版本：** 8
 
@@ -115,8 +111,6 @@ try {
     console.error('CloseResultSet e ' + e);
 }
 ```
-
-<a id="get1"></a>
 
 ## get
 
@@ -164,8 +158,6 @@ try {
     console.error("An unexpected error occurred. Error:" + e);
 }
 ```
-
-<a id="get2"></a>
 
 ## get
 
@@ -218,8 +210,6 @@ try {
     console.error("An unexpected error occurred. Error:" + e);
 }
 ```
-
-<a id="getentries1"></a>
 
 ## getEntries
 
@@ -275,8 +265,6 @@ try {
     console.error('PutBatch e ' + e);
 }
 ```
-
-<a id="getentries2"></a>
 
 ## getEntries
 
@@ -345,8 +333,6 @@ try {
 }
 ```
 
-<a id="getentries3"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -369,7 +355,7 @@ getEntries(query: Query, callback: AsyncCallback<Entry[]>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| query | [Query](arkts-arkdata-distributeddata-query-c.md) | 是 | 表示要匹配的键前缀。 |
+| query | [Query](arkts-arkdata-distributeddata-query-c.md) | 是 | 表示查询对象。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Entry](arkts-arkdata-distributeddata-entry-i.md)[]&gt; | 是 | 回调函数。返回与指定Query对象匹配的键值对列表。 |
 
 **示例**
@@ -406,8 +392,6 @@ try {
     console.error('GetEntries e ' + e);
 }
 ```
-
-<a id="getentries4"></a>
 
 ## getEntries
 
@@ -476,8 +460,6 @@ try {
 }
 ```
 
-<a id="getresultset1"></a>
-
 ## getResultSet
 
 ```TypeScript
@@ -535,8 +517,6 @@ try {
     console.error('GetResultSet e ' + e);
 }
 ```
-
-<a id="getresultset2"></a>
 
 ## getResultSet
 
@@ -607,8 +587,6 @@ try {
 }
 ```
 
-<a id="getresultset3"></a>
-
 ## getResultSet
 
 ```TypeScript
@@ -665,8 +643,6 @@ try {
     console.error('GetResultSet e ' + e);
 }
 ```
-
-<a id="getresultset4"></a>
 
 ## getResultSet
 
@@ -734,8 +710,6 @@ try {
 }
 ```
 
-<a id="getresultsize1"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -790,8 +764,6 @@ try {
     console.error('GetResultSize e ' + e);
 }
 ```
-
-<a id="getresultsize2"></a>
 
 ## getResultSize
 
@@ -857,8 +829,6 @@ try {
 }
 ```
 
-<a id="getsecuritylevel1"></a>
-
 ## getSecurityLevel
 
 ```TypeScript
@@ -895,8 +865,6 @@ try {
     console.error('GetSecurityLevel e ' + e);
 }
 ```
-
-<a id="getsecuritylevel2"></a>
 
 ## getSecurityLevel
 
@@ -936,8 +904,6 @@ try {
     console.error('GetSecurityLevel e ' + e);
 }
 ```
-
-<a id="off1"></a>
 
 ## off
 
@@ -985,8 +951,6 @@ class KvstoreModel {
 }
 ```
 
-<a id="off2"></a>
-
 ## off
 
 ```TypeScript
@@ -1033,8 +997,6 @@ class KvstoreModel {
 }
 ```
 
-<a id="on1"></a>
-
 ## on
 
 ```TypeScript
@@ -1069,8 +1031,6 @@ kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, fun
     console.info("dataChange callback call data: " + JSON.stringify(data));
 });
 ```
-
-<a id="on2"></a>
 
 ## on
 
@@ -1116,8 +1076,6 @@ try {
     console.error('syncComplete put e ' + e);
 }
 ```
-
-<a id="removedevicedata1"></a>
 
 ## removeDeviceData
 
@@ -1169,8 +1127,6 @@ try {
     console.error('RemoveDeviceData e ' + e);
 }
 ```
-
-<a id="removedevicedata2"></a>
 
 ## removeDeviceData
 
@@ -1230,8 +1186,6 @@ try {
 }
 ```
 
-<a id="setsyncparam1"></a>
-
 ## setSyncParam
 
 ```TypeScript
@@ -1270,8 +1224,6 @@ try {
     console.error('testSingleKvStoreSetSyncParam e ' + e);
 }
 ```
-
-<a id="setsyncparam2"></a>
 
 ## setSyncParam
 

@@ -4,7 +4,11 @@
 export class MediaQuery
 ```
 
-class MediaQuery
+Provides different styles for different media types.
+
+> **NOTE:** 
+
+> - In the following API examples, you must first use [getMediaQuery()](arkts-arkui-arkui-uicontext-uicontext-c.md#getmediaquery) in **UIContext** to obtain a **MediaQuery** instance, and then call the APIs using the obtained instance.
 
 **Since:** 10
 
@@ -27,7 +31,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 matchMediaSync(condition: string): mediaQuery.MediaQueryListener
 ```
 
-Sets the media query criteria and returns the corresponding listening handle
+Sets the media query criteria and returns the corresponding listening handle.
 
 **Since:** 10
 
@@ -43,13 +47,13 @@ Sets the media query criteria and returns the corresponding listening handle
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| condition | string | Yes | media conditions |
+| condition | string | Yes | Media query condition. For details, see [Syntax](../../../../../ui/arkts-layout-development-media-query.md#syntax). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [mediaQuery.MediaQueryListener](arkts-arkui-mediaquery-mediaquerylistener-i.md) | the corresponding listening handle |
+| [mediaQuery.MediaQueryListener](arkts-arkui-mediaquery-mediaquerylistener-i.md) | Listening handle to a media event, which is used to register or unregister the listening callback. |
 
 **Examples**
 

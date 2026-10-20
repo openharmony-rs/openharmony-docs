@@ -6,8 +6,6 @@ declare type AccessibilityActionInterceptCallback = (action: AccessibilityAction
 
 定义onAccessibilityActionIntercept中使用的回调类型。
 
-@typedef { function } AccessibilityActionInterceptCallback
-
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。

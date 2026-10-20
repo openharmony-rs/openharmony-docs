@@ -123,7 +123,7 @@ Defines a constructor used to create a **Query** instance.
 deviceId(deviceId: string): Query
 ```
 
-Creates a **Query** object with the device ID as the key prefix.
+Adds the device ID as the prefix of the key.
 
 **Since:** 8
 

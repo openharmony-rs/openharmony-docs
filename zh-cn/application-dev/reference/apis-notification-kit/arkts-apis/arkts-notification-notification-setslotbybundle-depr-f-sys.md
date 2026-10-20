@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="setslotbybundle1"></a>
-
 ## setSlotByBundle
 
 ```TypeScript
@@ -37,8 +35,31 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback:
 | slot | [NotificationSlot](arkts-notification-notificationslot-i.md) | 是 | 通知通道。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设定通知通道回调函数。 |
 
+<!--Del-->
+**示例**
 
-<a id="setslotbybundle2"></a>
+```TypeScript
+import Base from '@ohos.base';
+import NotificationManager from '@ohos.notificationManager';
+
+let setSlotByBundleCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("setSlotByBundle failed " + JSON.stringify(err));
+  } else {
+    console.info("setSlotByBundle success");
+  }
+}
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+let notificationSlot: NotificationManager.NotificationSlot = {
+  type: Notification.SlotType.SOCIAL_COMMUNICATION
+};
+Notification.setSlotByBundle(bundle, notificationSlot, setSlotByBundleCallback);
+```
+
+<!--DelEnd-->
+
 
 ## setSlotByBundle
 
@@ -74,3 +95,25 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise<
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+import NotificationManager from '@ohos.notificationManager';
+
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+let notificationSlot: NotificationManager.NotificationSlot = {
+  type: Notification.SlotType.SOCIAL_COMMUNICATION
+};
+Notification.setSlotByBundle(bundle, notificationSlot).then(() => {
+  console.info("setSlotByBundle success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`setSlotByBundle failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

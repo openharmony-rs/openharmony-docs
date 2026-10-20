@@ -36,8 +36,6 @@ constructor()
 
 **系统能力：** SystemCapability.Utils.Lang
 
-<a id="lockasync1"></a>
-
 ## lockAsync
 
 ```TypeScript
@@ -71,8 +69,6 @@ lockAsync<T>(callback: AsyncLockCallback<T>): Promise<T>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200030](../errorcode-utils.md#10200030-锁不存在) | The lock does not exist. |
-
-<a id="lockasync2"></a>
 
 ## lockAsync
 
@@ -108,8 +104,6 @@ lockAsync<T>(callback: AsyncLockCallback<T>, mode: AsyncLockMode): Promise<T>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200030](../errorcode-utils.md#10200030-锁不存在) | The lock does not exist. |
-
-<a id="lockasync3"></a>
 
 ## lockAsync
 

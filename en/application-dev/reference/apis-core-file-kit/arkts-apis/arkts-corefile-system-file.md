@@ -11,7 +11,7 @@
 
 | Name | Description |
 | --- | --- |
-| [File](arkts-corefile-system-file-file-depr-c.md) | [File](arkts-corefile-system-file-file-depr-c.md) |
+| [File](arkts-corefile-system-file-file-depr-c.md) | File |
 
 ### Interfaces
 

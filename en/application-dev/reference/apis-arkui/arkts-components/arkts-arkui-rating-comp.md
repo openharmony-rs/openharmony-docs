@@ -4,7 +4,7 @@ The **Rating** component is used to select a rating within a given range, which 
 
 > **NOTE:** 
 > 
-> - If the parent node of the **Rating** component has fixed dimensions, you must also specify the width and height for the **Rating** component, or set its parent node's [clip](arkts-arkui-common-comp-commonmethod-c.md#clip2)attribute to **true**.
+> - If the parent node of the **Rating** component has fixed dimensions, you must also specify the width and height for the **Rating** component, or set its parent node's [clip](arkts-arkui-common-comp-commonmethod-c.md#clip)attribute to **true**.
 
 ## Child Components
 
@@ -34,7 +34,7 @@ Creates the Rating component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [RatingOptions](arkts-arkui-rating-comp-ratingoptions-i.md) | No | Rating bar options.<br> The default values of the parameters in **RatingOptions** apply if this parameter is not set. |
+| options | [RatingOptions](arkts-arkui-rating-comp-ratingoptions-i.md) | No | Rating bar options. <br> The default values of the parameters in **RatingOptions** apply if this parameter is not set. |
 
 ## Summary
 

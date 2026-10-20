@@ -8,9 +8,9 @@ export default class Fetch
 
 | data | Content-Type | 说明 |  
 | -------- | -------- | -------- |  
-| string | 不设置 | Content-Type默认为 & nbsp;text/plain，data值作为请求的body。 |
-| string | 任意 & nbsp;Type | data值作为请求的body。 |
-| Object | 不设置 | Content-Type默认为application/x-www-form-urlencoded，data按照资源地址规则进行encode拼接作为请求的body。 |
+| string | 不设置 | Content-Type默认为&nbsp;text/plain，data值作为请求的body。 |  
+| string | 任意&nbsp;Type | data值作为请求的body。 |  
+| Object | 不设置 | Content-Type默认为application/x-www-form-urlencoded，data按照资源地址规则进行encode拼接作为请求的body。 |  
 | Object | application/x-www-form-urlencoded | data按照资源地址规则进行encode拼接作为请求的body。 |
 
 **起始版本：** 3

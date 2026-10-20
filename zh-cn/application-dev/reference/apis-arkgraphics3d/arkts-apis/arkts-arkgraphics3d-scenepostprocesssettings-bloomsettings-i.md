@@ -6,8 +6,6 @@ export interface BloomSettings
 
 泛光设置。当RenderingPipelineType为FORWARD_LIGHTWEIGHT时，此功能不可用。
 
-@typedef BloomSettings
-
 **起始版本：** 18
 
 <!--Device-unnamed-export interface BloomSettings--><!--Device-unnamed-export interface BloomSettings-End-->

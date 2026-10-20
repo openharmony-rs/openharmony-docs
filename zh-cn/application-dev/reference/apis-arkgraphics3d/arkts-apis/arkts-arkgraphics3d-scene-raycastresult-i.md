@@ -6,8 +6,6 @@ export interface RaycastResult
 
 射线检测命中结果对象，包含被射线击中的3D物体详细信息。
 
-@typedef RaycastResult
-
 **起始版本：** 20
 
 <!--Device-unnamed-export interface RaycastResult--><!--Device-unnamed-export interface RaycastResult-End-->

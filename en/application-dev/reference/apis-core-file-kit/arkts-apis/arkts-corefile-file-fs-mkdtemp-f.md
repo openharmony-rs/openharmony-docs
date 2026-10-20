@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function mkdtemp(prefix: string): Promise<string>
 ```
 
-Creates a temporary directory. This API uses a promise to return the result.
+Create a temporary directory. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -53,15 +53,13 @@ Creates a temporary directory. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
-<a id="mkdtemp2"></a>
-
 ## mkdtemp
 
 ```TypeScript
 declare function mkdtemp(prefix: string, callback: AsyncCallback<string>): void
 ```
 
-Creates a temporary directory. This API uses an asynchronous callback to return the result.
+Create a temporary directory. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -74,7 +72,7 @@ Creates a temporary directory. This API uses an asynchronous callback to return 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | prefix | string | Yes | String to be replaced with six randomly generated characters to create a unique temporary directory. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the temporary directory. |
 
 **Error codes:**
 

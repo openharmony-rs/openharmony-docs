@@ -6,8 +6,6 @@ export interface PartnerDeviceAddress
 
 Describes the partner device address.
 
-@typedef PartnerDeviceAddress
-
 **Since:** 23
 
 <!--Device-partnerAgent-export interface PartnerDeviceAddress--><!--Device-partnerAgent-export interface PartnerDeviceAddress-End-->

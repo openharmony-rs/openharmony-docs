@@ -20,8 +20,6 @@ class UserAuth
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="auth1"></a>
-
 ## auth
 
 ```TypeScript
@@ -111,8 +109,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="auth2"></a>
 
 ## auth
 
@@ -334,7 +330,7 @@ cancelAuth(contextID: Uint8Array): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid contextId. |
 
@@ -431,7 +427,7 @@ getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType or authTrustLevel. |
 | [12300117](../errorcode-account.md#12300117-pin码过期) | PIN is expired. |
@@ -455,8 +451,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getproperty1"></a>
 
 ## getProperty
 
@@ -525,8 +519,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getproperty2"></a>
 
 ## getProperty
 
@@ -792,8 +784,6 @@ distributedDeviceMgr.getAvailableDeviceList().then((data: Array<distributedDevic
 
 <!--DelEnd-->
 
-<a id="setproperty1"></a>
-
 ## setProperty
 
 ```TypeScript
@@ -825,7 +815,7 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid request. |
 
@@ -856,8 +846,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="setproperty2"></a>
 
 ## setProperty
 
@@ -895,7 +883,7 @@ setProperty(request: SetPropertyRequest): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid request. |
 

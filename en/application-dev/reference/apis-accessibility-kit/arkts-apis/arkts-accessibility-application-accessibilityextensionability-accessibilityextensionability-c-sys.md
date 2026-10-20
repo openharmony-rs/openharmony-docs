@@ -181,7 +181,7 @@ Called when a key is pressed. You can determine whether to consume the event bas
 
 | Type | Description |
 | --- | --- |
-| boolean | The value **true** indicates that the event is consumed and will not be propagated.<br>The value **false** indicates that the event is not consumed and will continue to be propagated. |
+| boolean | The value **true** indicates that the event is consumed and will not be propagated. <br>The value **false** indicates that the event is not consumed and will continue to be propagated. |
 
 **Error codes:**
 

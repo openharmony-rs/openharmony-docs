@@ -18,6 +18,26 @@ Options用于指定在压缩或解压Zip文件时的选项。
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
+## keepTopLevelFolder
+
+```TypeScript
+keepTopLevelFolder?: boolean
+```
+
+指示是否在压缩文件中保留顶层源文件夹。
+
+**类型：** boolean
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-Options-keepTopLevelFolder?: boolean--><!--Device-Options-keepTopLevelFolder?: boolean-End-->
+
+**系统能力：** SystemCapability.BundleManager.Zlib
+
 ## level
 
 ```TypeScript

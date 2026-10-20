@@ -6,8 +6,6 @@ interface RRect
 
 Round rect.
 
-@interface RRect
-
 **Since:** 9
 
 <!--Device-unnamed-interface RRect--><!--Device-unnamed-interface RRect-End-->

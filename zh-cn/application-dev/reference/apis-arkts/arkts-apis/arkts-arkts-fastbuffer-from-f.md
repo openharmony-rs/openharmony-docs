@@ -6,8 +6,6 @@
 import { fastbuffer } from '@kit.ArkTS';
 ```
 
-<a id="from1"></a>
-
 ## from
 
 ```TypeScript
@@ -46,8 +44,6 @@ console.info(buf.toString('hex'));
 // 输出结果：627566666572
 ```
 
-
-<a id="from2"></a>
 
 ## from
 
@@ -97,8 +93,6 @@ console.info(buf.length.toString());
 // 输出结果：2
 ```
 
-
-<a id="from3"></a>
 
 ## from
 
@@ -157,8 +151,6 @@ console.info('uint8Array:', uint8Array);
 // 输出结果：1,1,1,1,1,1,1,1,1,1
 ```
 
-
-<a id="from4"></a>
 
 ## from
 

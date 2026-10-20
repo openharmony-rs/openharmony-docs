@@ -4,7 +4,7 @@
 export interface AtomicServiceBar
 ```
 
-interface AtomicServiceBar
+The AtomicServiceBar interface provides the ability to set properties of the atomic service menu bar, including the visibility, background color, title content, title font style, and icon color, and also supports obtaining menu bar layout information and listening for layout changes. It is suitable for scenarios where you need to customize the appearance and behavior of the menu bar in atomic services.
 
 **Since:** 11
 
@@ -27,7 +27,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 getBarRect(): Frame
 ```
 
-Get size and position of the bar.
+Obtains the layout information of the atomic service menu bar relative to the window. <br>The menu bar position reflected in the layout information already takes its left and right margins into account.
 
 **Since:** 15
 
@@ -77,7 +77,7 @@ struct Index {
 onBarRectChange(callback: Callback<Frame>): void
 ```
 
-When size and position of the bar changed, callback will be called.
+Callback triggered when the size or position of the atomic service menu bar (AtomicServiceMenuBar, the menu capsule in the upper-right corner) changes. It returns the latest layout information of the menu bar. The layout information includes the size and position of the menu bar, with the left and right margins taken into account for the position.
 
 **Since:** 26.0.0
 
@@ -93,7 +93,7 @@ When size and position of the bar changed, callback will be called.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[Frame](arkts-arkui-graphics-frame-i.md)&gt; | Yes | Callback that param contains the Frame. The parameters of the callback function cannot be undefined or null. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[Frame](arkts-arkui-graphics-frame-i.md)&gt; | Yes | Callback used to return the new layout information when the AtomicServiceMenuBar layout changes. |
 
 **Examples**
 
@@ -103,7 +103,7 @@ When size and position of the bar changed, callback will be called.
 setBackgroundColor(color: Nullable< Color | number | string>): void
 ```
 
-Set the background color of the bar.
+Sets the background color of the atomic service menu bar. <br>Since API version 12, the background of the atomic service menu bar is hidden by default. <br>When setBackgroundColor() is called in atomic services, the color parameter is ignored, and the background <br>color of the menu bar cannot be set.
 
 **Since:** 11
 
@@ -119,7 +119,7 @@ Set the background color of the bar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Nullable](arkts-arkui-nullable-t.md)&lt;[Color](arkts-arkui-color-e.md) &#124; number &#124; string&gt; | Yes | the color to set, undefined indicates using default. |
+| color | [Nullable](arkts-arkui-nullable-t.md)&lt;[Color](arkts-arkui-color-e.md) &#124; number &#124; string&gt; | Yes | Color of the atomic service menu bar. The value undefined means to use the default color. A number value indicates a HEX color in RGB or ARGB format, for example, 0xffffff. A string value indicates a color in RGB or ARGB format, for example, '#ffffff'. Since API version 12, this parameter will be ignored in atomic services. |
 
 **Examples**
 
@@ -156,7 +156,7 @@ export default class EntryAbility extends UIAbility {
 setIconColor(color: Nullable< Color | number | string>): void
 ```
 
-Set the color of the icon on the bar.
+Sets the color of the atomic service menu bar icon. <br>Since API version 12, the atomic service menu bar is hidden by default and replaced with a floating button. <br>When setIconColor() is called in atomic services, the color parameter is ignored, and the menu bar icon color <br>cannot be set.
 
 **Since:** 11
 
@@ -172,7 +172,7 @@ Set the color of the icon on the bar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Nullable](arkts-arkui-nullable-t.md)&lt;[Color](arkts-arkui-color-e.md) &#124; number &#124; string&gt; | Yes | the color to set to icon, undefined indicates using default. |
+| color | [Nullable](arkts-arkui-nullable-t.md)&lt;[Color](arkts-arkui-color-e.md) &#124; number &#124; string&gt; | Yes | Color of the atomic service menu bar. The value undefined means to use the default color. A number value indicates a HEX color in RGB or ARGB format, for example, 0xffffff. A string value indicates a color in RGB or ARGB format, for example, '#ffffff'. Since API version 12, this parameter will be ignored in atomic services. |
 
 **Examples**
 
@@ -209,7 +209,7 @@ export default class EntryAbility extends UIAbility {
 setTitleContent(content: string): void
 ```
 
-Set the title of the bar.
+Sets the title content of the atomic service menu bar. <br>Since API version 12, the title of the atomic service menu bar is hidden by default. <br>When setTitleContent() is called in atomic services, the content parameter is ignored, and the menu bar title <br>cannot be set.
 
 **Since:** 11
 
@@ -225,7 +225,7 @@ Set the title of the bar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| content | string | Yes | the content of the bar. |
+| content | string | Yes | Title content of the atomic service menu bar. Since API version 12, this parameter will be ignored in atomic services. |
 
 **Examples**
 
@@ -262,7 +262,7 @@ export default class EntryAbility extends UIAbility {
 setTitleFontStyle(font: FontStyle): void
 ```
 
-Set the font style of the bar's title.
+Sets the font style of the atomic service menu bar title. <br>Since API version 12, the title of the atomic service menu bar is hidden by default. <br>When setTitleFontStyle() is called in atomic services, the font parameter is ignored, and the font style of <br>the menu bar title, such as italic, cannot be set.
 
 **Since:** 11
 
@@ -278,7 +278,7 @@ Set the font style of the bar's title.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| font | [FontStyle](arkts-arkui-fontstyle-e.md) | Yes | the font style of the bar's title. |
+| font | [FontStyle](arkts-arkui-fontstyle-e.md) | Yes | Font style of the atomic service menu bar title. Since API version 12, this parameter will be ignored in atomic services. |
 
 **Examples**
 
@@ -315,7 +315,7 @@ export default class EntryAbility extends UIAbility {
 setVisible(visible: boolean): void
 ```
 
-Set the visibility of the bar, except the icon.
+Sets whether the atomic service menu bar is visible. <br>Since API version 12, the atomic service menu bar is hidden by default and replaced with a floating button. <br>When setVisible() is called in atomic services, the visible parameter is ignored, and menu bar cannot be <br>displayed or hidden.
 
 **Since:** 11
 
@@ -331,7 +331,7 @@ Set the visibility of the bar, except the icon.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| visible | boolean | Yes | whether this bar is visible. |
+| visible | boolean | Yes | Whether the atomic service menu bar is visible. The value true means the atomic service menu bar is visible, and false means the opposite. Since API version 12, this parameter will be ignored in atomic services. |
 
 **Examples**
 

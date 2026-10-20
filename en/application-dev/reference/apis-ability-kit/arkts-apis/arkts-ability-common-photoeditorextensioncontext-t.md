@@ -6,8 +6,6 @@ export type PhotoEditorExtensionContext = _PhotoEditorExtensionContext.default
 
 The context of an photo editor extension ability.
 
-@typedef { _PhotoEditorExtensionContext.default }
-
 **Type:** _PhotoEditorExtensionContext.default
 
 **Since:** 12

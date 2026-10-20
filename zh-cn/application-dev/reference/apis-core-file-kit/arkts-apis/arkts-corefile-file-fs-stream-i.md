@@ -18,8 +18,6 @@ declare interface Stream
 import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResult, WatchEvent, WatchEventListener, Watcher, ReadOptions, ReadTextOptions, WriteOptions, ListFileExtOptions, ListFileOptions, DfsListeners, TaskSignal } from '@kit.CoreFileKit';
 ```
 
-<a id="close1"></a>
-
 ## close
 
 ```TypeScript
@@ -66,8 +64,6 @@ stream.close().then(() => {
   console.error(`Failed to close file stream. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="close2"></a>
 
 ## close
 
@@ -153,8 +149,6 @@ let stream = fileIo.createStreamSync(filePath, "r+");
 stream.closeSync();
 ```
 
-<a id="flush1"></a>
-
 ## flush
 
 ```TypeScript
@@ -208,8 +202,6 @@ stream.flush().then(() => {
   console.error(`Failed to flush. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="flush2"></a>
 
 ## flush
 
@@ -309,8 +301,6 @@ stream.flushSync();
 stream.close();
 ```
 
-<a id="read1"></a>
-
 ## read
 
 ```TypeScript
@@ -381,8 +371,6 @@ stream.read(arrayBuffer, readOption).then((readLen: number) => {
 });
 ```
 
-<a id="read2"></a>
-
 ## read
 
 ```TypeScript
@@ -439,8 +427,6 @@ stream.read(arrayBuffer, (err: BusinessError, readLen: number) => {
   }
 });
 ```
-
-<a id="read3"></a>
 
 ## read
 
@@ -572,8 +558,6 @@ let num = stream.readSync(buf, readOption);
 stream.close();
 ```
 
-<a id="write1"></a>
-
 ## write
 
 ```TypeScript
@@ -644,8 +628,6 @@ stream.write("hello, world", writeOption).then((number: number) => {
 });
 ```
 
-<a id="write2"></a>
-
 ## write
 
 ```TypeScript
@@ -704,8 +686,6 @@ stream.write("hello, world", (err: BusinessError, bytesWritten: number) => {
   stream.close();
 });
 ```
-
-<a id="write3"></a>
 
 ## write
 

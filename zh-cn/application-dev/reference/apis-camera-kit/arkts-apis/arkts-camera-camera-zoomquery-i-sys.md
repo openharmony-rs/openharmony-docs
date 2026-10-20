@@ -8,7 +8,7 @@ interface ZoomQuery
 
 > **说明：** 
 > 
-> - 本Interface的起始版本为API version 12。接口在API version 12发生兼容变更，保留了内层元素的起始版本信息，会出现外层元素@since版本号大于内层元素的情况，不影响接口使用。
+> - 本Interface的起始版本为API版本12。接口在API版本12发生兼容变更，保留了内层元素的起始版本信息，会出现外层元素@since版本号大于内层元素的情况，不影响接口使用。
 
 **起始版本：** 12
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 isZoomCenterPointSupported(): boolean
 ```
 
-Checks whether zoom center point is supported.
+检查是否支持变焦中心点。
 
 **起始版本：** 20
 
@@ -42,7 +42,7 @@ Checks whether zoom center point is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Is the zoom center point supported. |
+| boolean | 是否支持变焦中心点。 |
 
 **错误码：**
 

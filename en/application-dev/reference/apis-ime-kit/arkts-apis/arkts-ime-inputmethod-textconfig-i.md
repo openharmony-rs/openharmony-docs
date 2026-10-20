@@ -24,7 +24,7 @@ import { inputMethod } from '@kit.IMEKit';
 capitalizeMode?: CapitalizeMode
 ```
 
-Whether to capitalize the first letter in the edit box. If it is not set or is set to an invalid value, the first letter is not capitalized by default.
+Capitalization mode set for the text box. If no value is set or an invalid value is set, no initial capitalization is performed by default.
 
 **Type:** [CapitalizeMode](arkts-ime-inputmethod-capitalizemode-e.md)
 
@@ -58,7 +58,7 @@ Cursor information.
 inputAttribute: InputAttribute
 ```
 
-Edit box attribute.
+Text box attribute.
 
 **Type:** [InputAttribute](arkts-ime-inputmethod-inputattribute-i.md)
 
@@ -74,7 +74,7 @@ Edit box attribute.
 newEditBox?: boolean
 ```
 
-Whether the edit box is new. The value **true** means the edit box is new; the value **false** means the opposite.
+Whether it is a new text box. The value **true** indicates a new text box, and **false** indicates a non-new text box. The default value is **false**.
 
 **Type:** boolean
 
@@ -90,7 +90,7 @@ Whether the edit box is new. The value **true** means the edit box is new; the v
 selection?: Range
 ```
 
-Text selection range.
+Selected text range.
 
 **Type:** [Range](arkts-ime-inputmethod-range-i.md)
 
@@ -106,7 +106,7 @@ Text selection range.
 windowId?: number
 ```
 
-ID of the window where the edit box is located. The value must be an integer. <br> <br>You are advised to call [getWindowProperties](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getwindowproperties) to obtain the window ID.
+ID of the window where the text box is located. This parameter must be an integer. <br> <br>It is recommended that you use [getWindowProperties](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getwindowproperties) to obtain the window ID attribute.
 
 **Type:** number
 

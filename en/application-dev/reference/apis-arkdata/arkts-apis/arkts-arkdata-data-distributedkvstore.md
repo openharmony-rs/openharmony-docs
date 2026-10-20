@@ -14,6 +14,8 @@ synchronizing data across devices. This class inherits from [SingleKVStore](arkt
 
 **Since:** 9
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace distributedKVStore--><!--Device-unnamed-declare namespace distributedKVStore-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
@@ -37,18 +39,18 @@ import { distributedKVStore } from '@kit.ArkData';
 | Name | Description |
 | --- | --- |
 | [FieldNode](arkts-arkdata-distributedkvstore-fieldnode-c.md) | Represents a **Schema** instance, which provides the methods for defining the values stored in a KV store. |
-| [Query](arkts-arkdata-distributedkvstore-query-c.md) | Provides methods to create a **Query** object, which defines different data query criteria. A **Query** object supports a maximum of 256 predicates. |
+| [Query](arkts-arkdata-distributedkvstore-query-c.md) | Provides methods to create a **Query** object, which defines different data query criteria. The predicate methods of a **Query** object return the object itself, allowing for chain calls. A **Query** object supports a maximum of 256 predicates. |
 | [Schema](arkts-arkdata-distributedkvstore-schema-c.md) | Defines the schema of a KV store. You can create a **Schema** object and pass it in [Options](arkts-arkdata-distributedkvstore-options-i.md) when creating or opening a KV store. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [BackupConfig](arkts-arkdata-distributedkvstore-backupconfig-i.md) | Provides backup config to backup or restore KVStore. |
+| [BackupConfig](arkts-arkdata-distributedkvstore-backupconfig-i.md) | Configures database backup. |
 | [ChangeNotification](arkts-arkdata-distributedkvstore-changenotification-i.md) | Defines the content of a data change notification, including inserted data, updated data, deleted data, and device ID. |
 | [Constants](arkts-arkdata-distributedkvstore-constants-i.md) | Provides constants of the distributed KV store. |
 | [DeviceKVStore](arkts-arkdata-distributedkvstore-devicekvstore-i.md) | Provides APIs for querying data in a device KV store and performing cross-device data sync. This class inherits from **SingleKVStore**. The **SingleKVStore** APIs such as **put** and **putBatch** can be used. Data is distinguished by device in a device KV store. Each device can only write and modify its own data. Data of other devices is read-only and cannot be modified. For example, a device KV store can be used to implement image sharing between devices. The images of other devices can be viewed, but not be modified or deleted. Before calling any method in **DeviceKVStore**, you must use getKVStore to obtain a **DeviceKVStore** object. |
-| [Entry](arkts-arkdata-distributedkvstore-entry-i.md) | Provides key-value pairs stored in the distributedKVStore. |
+| [Entry](arkts-arkdata-distributedkvstore-entry-i.md) | Defines the KV pairs stored in a KV store. |
 | [KVManager](arkts-arkdata-distributedkvstore-kvmanager-i.md) | Provides an instance to obtain information about a distributed KV store. Before calling any API in **KVManager**, you must use [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md) to create a **KVManager** instance. |
 | [KVManagerConfig](arkts-arkdata-distributedkvstore-kvmanagerconfig-i.md) | Provides the **KVManager** instance configuration, including the bundle name of the invoker and the application context. |
 | [KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md) | Provides APIs for obtaining the distributed KV store result sets. A maximum of eight result sets can be opened at a time. The **KVStoreResultSet** instance is not refreshed in real time. After using the result set, if the data in the database is changed (by being added, deleted, or modified), you need to query the result set again to obtain the latest data. Before calling any API in **KVStoreResultSet**, you must use ** getKVStore ** to construct a **SingleKVStore** or **DeviceKVStore** instance. |
@@ -73,4 +75,4 @@ import { distributedKVStore } from '@kit.ArkData';
 | [SecurityLevel](arkts-arkdata-distributedkvstore-securitylevel-e.md) | Enumerates the KV store security levels. |
 | [SubscribeType](arkts-arkdata-distributedkvstore-subscribetype-e.md) | Enumerates the subscription types. |
 | [SyncMode](arkts-arkdata-distributedkvstore-syncmode-e.md) | Enumerates the sync modes. |
-| [ValueType](arkts-arkdata-distributedkvstore-valuetype-e.md) | Indicates the `ValueType`. |
+| [ValueType](arkts-arkdata-distributedkvstore-valuetype-e.md) | Enumerates the types of the value in a KV pair. |

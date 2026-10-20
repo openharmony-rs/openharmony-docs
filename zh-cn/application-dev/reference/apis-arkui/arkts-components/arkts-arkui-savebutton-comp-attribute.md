@@ -48,6 +48,11 @@ iconSize(size: Dimension | SizeOptions)
 
 设置保存控件的图标尺寸。
 
+> **说明：** 
+> 
+> 在API版本10时，开发者可通过安全控件通用属性[iconSize](../arkts-apis/arkts-arkui-securitycomponentmethod-c.md#iconsize)设置图标尺寸，此时size类型仅支持Dimension。<br>
+> 从API版本20开始，开发者可以通过本接口设置图标尺寸，size类型增加支持SizeOptions。
+
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -70,7 +75,7 @@ iconSize(size: Dimension | SizeOptions)
 onClick(event: SaveButtonCallback)
 ```
 
-点击保存控件触发该回调。用户首次点击保存控件时会展示授权弹窗，点击允许后授权成功，应用会获取访问媒体库接口的临时授权（授权持续时间见[SaveButton](arkts-arkui-savebutton-comp.md)构造函数说明）；点击拒绝或关闭弹窗则授权失败。
+点击保存控件触发该回调。用户首次点击保存控件时会展示授权弹窗，点击允许后授权成功，应用会获取访问媒体库接口的临时授权（授权持续时间见[SaveButton](arkts-arkui-savebutton-comp.md#savebutton)构造函数说明）；点击拒绝或关闭弹窗则授权失败。
 
 **起始版本：** 10
 

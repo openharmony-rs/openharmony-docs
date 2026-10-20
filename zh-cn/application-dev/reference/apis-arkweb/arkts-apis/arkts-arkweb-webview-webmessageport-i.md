@@ -6,8 +6,6 @@ interface WebMessagePort
 
 WebMessagePort是Web组件中用于应用侧（ArkTS）与HTML5侧（JavaScript）之间双向通信的消息端口接口。通过createWebMessagePorts创建一对关联的端口，将一个端口发送到HTML5侧，另一个保留在应用侧，实现跨运行时消息传递。WebMessagePort支持两种消息协议：基础协议使用WebMessage作为消息载体（postMessageEvent/onMessageEvent），扩展协议使用WebMessageExt支持更丰富的数据类型（postMessageEventExt/onMessageEventExt）。
 
-@interface WebMessagePort [since 9 - 11]
-
 **起始版本：** 9
 
 <!--Device-webview-interface WebMessagePort--><!--Device-webview-interface WebMessagePort-End-->
@@ -106,7 +104,7 @@ onMessageEvent(callback: (result: WebMessage) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100006](../errorcode-webview.md#17100006-无法注册message-port回调) | Failed to register a message event for the port. |
 
 **示例**
@@ -177,7 +175,7 @@ onMessageEventExt(callback: (result: WebMessageExt) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100006](../errorcode-webview.md#17100006-无法注册message-port回调) | Failed to register a message event for the port. |
 
 **示例**
@@ -496,7 +494,7 @@ postMessageEvent(message: WebMessage): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100010](../errorcode-webview.md#17100010-无法使用该端口发送消息) | Failed to post messages through the port. |
 
 **示例**
@@ -569,7 +567,7 @@ postMessageEventExt(message: WebMessageExt): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100010](../errorcode-webview.md#17100010-无法使用该端口发送消息) | Failed to post messages through the port. |
 
 ## isExtentionType

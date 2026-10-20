@@ -6,8 +6,6 @@ namespace TTS
 
 Provides methods for setting information about text-to-speech (TTS) conversion, including the pitch, speech rate, engine, and plug-ins.
 
-@namespace TTS
-
 **Since:** 7
 
 <!--Device-settings-namespace TTS--><!--Device-settings-namespace TTS-End-->

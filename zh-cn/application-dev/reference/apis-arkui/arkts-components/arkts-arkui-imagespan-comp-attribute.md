@@ -6,8 +6,6 @@ declare class ImageSpanAttribute extends BaseSpan<ImageSpanAttribute>
 
 属性继承自[BaseSpan](arkts-arkui-span-comp-basespan-c.md)，通用属性方法支持[尺寸设置](arkts-arkui-common-comp.md)、[背景设置](arkts-arkui-common-comp.md)、[边框设置](arkts-arkui-common-comp.md)。
 
-@extends CommonMethod<ImageSpanAttribute> [since 10 - 10] @extends BaseSpan<ImageSpanAttribute> [since 11]
-
 **继承/实现关系：** ImageSpanAttribute extends BaseSpan&lt;ImageSpanAttribute&gt;
 
 **起始版本：** 10
@@ -148,11 +146,11 @@ resizable(value: ResizableOptions)
 
 当组件的参数类型为动图、[AnimatedDrawableDescriptor](../arkts-apis/arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md)和SVG时设置该属性不生效。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 <!--Device-ImageSpanAttribute-resizable(value: ResizableOptions): ImageSpanAttribute--><!--Device-ImageSpanAttribute-resizable(value: ResizableOptions): ImageSpanAttribute-End-->
 

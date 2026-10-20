@@ -18,8 +18,6 @@ Provides APIs for selecting and saving audio clips. Before using the APIs of **A
 import { picker } from '@kit.CoreFileKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -42,8 +40,6 @@ A constructor used to create an **AudioViewPicker** instance. This constructor i
 let audioPicker = new picker.AudioViewPicker(); // Construction without parameter is not recommended. There is a possibility that the AudioViewPicker instance fails to start.
 ```
 
-<a id="constructor2"></a>
-
 ## constructor
 
 ```TypeScript
@@ -64,7 +60,7 @@ A constructor used to create an **AudioViewPicker** instance. This constructor i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Application context (only **UIAbilityContext** is supported). For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md). |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Application context (only **UIAbilityContext** is supported). For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md). |
 
 **Examples**
 
@@ -93,8 +89,6 @@ struct Index {
   }
 }
 ```
-
-<a id="save1"></a>
 
 ## save
 
@@ -147,8 +141,6 @@ async function example16(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="save2"></a>
-
 ## save
 
 ```TypeScript
@@ -195,8 +187,6 @@ async function example17(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="save3"></a>
-
 ## save
 
 ```TypeScript
@@ -239,8 +229,6 @@ async function example18(context: common.UIAbilityContext) { // Ensure that cont
   }
 }
 ```
-
-<a id="select1"></a>
 
 ## select
 
@@ -292,8 +280,6 @@ async function example13(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="select2"></a>
-
 ## select
 
 ```TypeScript
@@ -338,8 +324,6 @@ async function example14(context: common.UIAbilityContext) { // Ensure that cont
   }
 }
 ```
-
-<a id="select3"></a>
 
 ## select
 

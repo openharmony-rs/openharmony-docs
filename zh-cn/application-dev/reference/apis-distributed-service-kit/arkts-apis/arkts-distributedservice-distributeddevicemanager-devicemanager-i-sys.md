@@ -307,7 +307,7 @@ getLocalDisplayDeviceName(maxNameLength: number): Promise<string>
 
 | 类型 | 说明 |
 | --- | --- |
-| string | 指定名称长度最大字节数的本机设备显示名。 |
+| Promise&lt;string&gt; | 指定名称长度最大字节数的本机设备显示名。 |
 
 **错误码：**
 
@@ -347,7 +347,7 @@ try {
 getOsTypeByNetworkId(networkId: string): number
 ```
 
-通过设备网络ID查询设备操作系统类型。
+根据设备网络ID查询设备操作系统类型。
 
 **起始版本：** 26.0.1
 
@@ -365,13 +365,13 @@ getOsTypeByNetworkId(networkId: string): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| networkId | string | 是 | The device's network ID |
+| networkId | string | 是 | 设备网络ID。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| number | Returns the device operating system type. Possible return:           1. 10: Operating system based on OpenHarmony         2. 11: Operating system not based on OpenHarmony         3. -1: Unknown |
+| number | 设备操作系统类型。           - 10：基于OpenHarmony的操作系统。           - 11：非基于OpenHarmony的操作系统。           - -1：未知。 |
 
 **错误码：**
 

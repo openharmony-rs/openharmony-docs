@@ -29,8 +29,6 @@ class EntryAbility extends AccessibilityExtensionAbility {
 }
 ```
 
-<a id="getfocuselement1"></a>
-
 ## getFocusElement
 
 ```TypeScript
@@ -80,8 +78,6 @@ axContext.getFocusElement(isAccessibilityFocus, (err: BusinessError, data: Acces
   console.info(`succeeded in getting focus element, ${JSON.stringify(data)}`);
 });
 ```
-
-<a id="getfocuselement2"></a>
 
 ## getFocusElement
 
@@ -135,8 +131,6 @@ axContext.getFocusElement().then((data: AccessibilityElement) => {
 });
 ```
 
-<a id="getfocuselement3"></a>
-
 ## getFocusElement
 
 ```TypeScript
@@ -184,8 +178,6 @@ axContext.getFocusElement((err: BusinessError, data: AccessibilityElement) => {
   console.info(`succeeded in getting focus element, ${JSON.stringify(data)}`);
 });
 ```
-
-<a id="getwindowrootelement1"></a>
 
 ## getWindowRootElement
 
@@ -236,8 +228,6 @@ axContext.getWindowRootElement(windowId, (err: BusinessError, data: Accessibilit
   console.info(`succeeded in getting root element of the window, ${JSON.stringify(data)}`);
 });
 ```
-
-<a id="getwindowrootelement2"></a>
 
 ## getWindowRootElement
 
@@ -291,8 +281,6 @@ axContext.getWindowRootElement().then((data: AccessibilityElement) => {
 });
 ```
 
-<a id="getwindowrootelement3"></a>
-
 ## getWindowRootElement
 
 ```TypeScript
@@ -341,8 +329,6 @@ axContext.getWindowRootElement((err: BusinessError, data: AccessibilityElement) 
 });
 ```
 
-<a id="getwindows1"></a>
-
 ## getWindows
 
 ```TypeScript
@@ -389,8 +375,6 @@ axContext.getWindows(displayId, (err: BusinessError, data: AccessibilityElement[
   console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 });
 ```
-
-<a id="getwindows2"></a>
 
 ## getWindows
 
@@ -441,8 +425,6 @@ axContext.getWindows().then((data: AccessibilityElement[]) => {
 });
 ```
 
-<a id="getwindows3"></a>
-
 ## getWindows
 
 ```TypeScript
@@ -487,8 +469,6 @@ axContext.getWindows((err: BusinessError, data: AccessibilityElement[]) => {
   console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 });
 ```
-
-<a id="injectgesture1"></a>
 
 ## injectGesture
 
@@ -542,8 +522,6 @@ axContext.injectGesture(gesturePath, (err: BusinessError) => {
   console.info(`Succeeded in injecting gesture,gesturePath is ${gesturePath}`);
 });
 ```
-
-<a id="injectgesture2"></a>
 
 ## injectGesture
 
@@ -645,8 +623,6 @@ for (let i = 0; i < 10; i++) {
 axContext.injectGestureSync(gesturePath);
 ```
 
-<a id="settargetbundlename1"></a>
-
 ## setTargetBundleName
 
 ```TypeScript
@@ -695,8 +671,6 @@ try {
   console.error(`Failed to set target bundle names. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="settargetbundlename2"></a>
 
 ## setTargetBundleName
 

@@ -6,8 +6,6 @@ declare class MediaCachedImageAttribute extends ImageAttribute
 
 Attributes of MediaCachedImage inherited from ImageAttribute.
 
-@extends ImageAttribute
-
 **Inheritance/Implementation:** MediaCachedImageAttribute extends [ImageAttribute](arkts-arkui-image-comp-attribute.md#imageattribute)
 
 **Since:** 12

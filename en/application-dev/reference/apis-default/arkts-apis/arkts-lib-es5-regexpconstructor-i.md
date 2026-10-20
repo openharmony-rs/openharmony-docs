@@ -9,8 +9,6 @@ interface RegExpConstructor
 ```TypeScript
 ```
 
-<a id="call1"></a>
-
 ## [[Call]]
 
 ```TypeScript
@@ -22,8 +20,6 @@ interface RegExpConstructor
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | pattern | RegExp &#124; string | Yes |  |
-
-<a id="call2"></a>
 
 ## [[Call]]
 
@@ -38,8 +34,6 @@ interface RegExpConstructor
 | pattern | string | Yes |  |
 | flags | string | No |  |
 
-<a id="construct1"></a>
-
 ## [[Construct]]
 
 ```TypeScript
@@ -51,8 +45,6 @@ new(pattern: RegExp | string): RegExp
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | pattern | RegExp &#124; string | Yes |  |
-
-<a id="construct2"></a>
 
 ## [[Construct]]
 

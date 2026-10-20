@@ -6,8 +6,6 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
-<a id="getdefaultsmssimid1"></a>
-
 ## getDefaultSmsSimId
 
 ```TypeScript
@@ -55,8 +53,6 @@ sms.getDefaultSmsSimId((err: BusinessError, data: number) => {
 });
 ```
 
-
-<a id="getdefaultsmssimid2"></a>
 
 ## getDefaultSmsSimId
 

@@ -6,8 +6,6 @@ interface SplitConfig
 
 Manages text chunk process configurations.
 
-@interface SplitConfig
-
 **Since:** 15
 
 <!--Device-intelligence-interface SplitConfig--><!--Device-intelligence-interface SplitConfig-End-->

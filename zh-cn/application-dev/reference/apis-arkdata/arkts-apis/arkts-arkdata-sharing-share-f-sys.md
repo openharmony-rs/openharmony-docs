@@ -6,8 +6,6 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
-<a id="share1"></a>
-
 ## share
 
 ```TypeScript
@@ -75,8 +73,6 @@ cloudData.sharing.share('sharing_resource_test', participants, (err: BusinessErr
 
 <!--DelEnd-->
 
-
-<a id="share2"></a>
 
 ## share
 

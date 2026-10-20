@@ -6,8 +6,6 @@ declare interface Header
 
 Request/response header object returned by the **Web** component. It is suitable for scenarios where reading or modifying HTTP headers is required, improving network request handling flexibility and controllability.
 
-@interface Header [since 8 - 11]
-
 **Since:** 8
 
 <!--Device-unnamed-declare interface Header--><!--Device-unnamed-declare interface Header-End-->

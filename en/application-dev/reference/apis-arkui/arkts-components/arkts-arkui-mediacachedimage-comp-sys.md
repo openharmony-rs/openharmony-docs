@@ -28,11 +28,13 @@ Image resource to be obtained.
 
 ## Summary
 
-### Interfaces
+<!--Del-->
+### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
 | [ASTCResource](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md) | Defines the resource which can use ASTC. |
+<!--DelEnd-->
 
 <!--Del-->
 ## Examples

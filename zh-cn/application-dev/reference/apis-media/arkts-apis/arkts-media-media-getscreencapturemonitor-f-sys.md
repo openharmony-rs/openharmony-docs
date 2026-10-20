@@ -1,0 +1,49 @@
+# getScreenCaptureMonitor（系统接口）
+
+## 导入模块
+
+```TypeScript
+```
+
+## getScreenCaptureMonitor
+
+```TypeScript
+function getScreenCaptureMonitor(): Promise<ScreenCaptureMonitor>
+```
+
+获取录屏监控模块实例。使用Promise异步回调。
+
+**起始版本：** 18
+
+<!--Device-media-function getScreenCaptureMonitor(): Promise<ScreenCaptureMonitor>--><!--Device-media-function getScreenCaptureMonitor(): Promise<ScreenCaptureMonitor>-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[ScreenCaptureMonitor](arkts-media-media-screencapturemonitor-i-sys.md)&gt; | Promise对象，返回ScreenCaptureMonitor实例，失败时返回null。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
+| [5400101](../../apis-media-kit/errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+let screenCaptureMonitor: media.ScreenCaptureMonitor;
+try {
+  screenCaptureMonitor = await media.getScreenCaptureMonitor();
+} catch (err) {
+  console.error(`getScreenCaptureMonitor failed, error message:${err.message}`);
+}
+```
+
+<!--DelEnd-->

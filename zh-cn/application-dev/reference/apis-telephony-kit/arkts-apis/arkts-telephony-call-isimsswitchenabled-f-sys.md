@@ -6,8 +6,6 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
-<a id="isimsswitchenabled1"></a>
-
 ## isImsSwitchEnabled
 
 ```TypeScript
@@ -59,8 +57,6 @@ call.isImsSwitchEnabled(0, (err: BusinessError, data: boolean) => {
 
 <!--DelEnd-->
 
-
-<a id="isimsswitchenabled2"></a>
 
 ## isImsSwitchEnabled
 

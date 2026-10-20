@@ -6,8 +6,6 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
-<a id="inputdialerspecialcode1"></a>
-
 ## inputDialerSpecialCode
 
 ```TypeScript
@@ -61,8 +59,6 @@ call.inputDialerSpecialCode('*#*#2846579#*#*', (err: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="inputdialerspecialcode2"></a>
 
 ## inputDialerSpecialCode
 

@@ -6,8 +6,6 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
-<a id="answercall1"></a>
-
 ## answerCall
 
 ```TypeScript
@@ -63,8 +61,6 @@ call.answerCall(1, (err: BusinessError) => {
 <!--DelEnd-->
 
 
-<a id="answercall2"></a>
-
 ## answerCall
 
 ```TypeScript
@@ -87,7 +83,7 @@ Answers a call. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callId | number | No | Call ID. You can obtain the value by subscribing to **callDetailsChange** events. This field is optional from API version 9.<br>If this field is not set, the latest ringing call will be connected. |
+| callId | number | No | Call ID. You can obtain the value by subscribing to **callDetailsChange** events. This field is optional from API version 9. <br>If this field is not set, the latest ringing call will be connected. |
 
 **Return value:**
 
@@ -122,8 +118,6 @@ call.answerCall(1).then(() => {
 
 <!--DelEnd-->
 
-
-<a id="answercall4"></a>
 
 ## answerCall
 
@@ -183,8 +177,6 @@ call.answerCall(0, 1).then(() => {
 
 <!--DelEnd-->
 
-
-<a id="answercall5"></a>
 
 ## answerCall
 

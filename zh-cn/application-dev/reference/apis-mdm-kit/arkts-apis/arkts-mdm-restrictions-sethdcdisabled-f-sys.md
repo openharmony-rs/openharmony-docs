@@ -6,8 +6,6 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
-<a id="sethdcdisabled1"></a>
-
 ## setHdcDisabled
 
 ```TypeScript
@@ -20,7 +18,7 @@ function setHdcDisabled(admin: Want, disabled: boolean, callback: AsyncCallback<
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -75,8 +73,6 @@ restrictions.setHdcDisabled(wantTemp, true, (err) => {
 <!--DelEnd-->
 
 
-<a id="sethdcdisabled2"></a>
-
 ## setHdcDisabled
 
 ```TypeScript
@@ -89,7 +85,7 @@ function setHdcDisabled(admin: Want, disabled: boolean): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 

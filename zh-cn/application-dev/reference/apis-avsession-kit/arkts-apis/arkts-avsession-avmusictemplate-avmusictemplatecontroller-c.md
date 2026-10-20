@@ -1535,6 +1535,43 @@ requestDialogInfo(actionType: DialogActionType, actionInfo?: DialogActionInfo): 
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
 
+## sendCustomCommand
+
+```TypeScript
+sendCustomCommand(command: string, args: string): Promise<OperResult>
+```
+
+将自定义命令发送到AVMusicTemplate
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AVMusicTemplateController-sendCustomCommand(command: string, args: string): Promise<OperResult>--><!--Device-AVMusicTemplateController-sendCustomCommand(command: string, args: string): Promise<OperResult>-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| command | string | 是 | 发送的命令名称。 |
+| args | string | 是 | 发送的命令名称。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)&gt; | Promise用于返回OperResult。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [35000003](../errorcode-avmusictemplate.md#35000003-模板监听未注册) | Template listener not registered. |
+| [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
+| [35000006](../errorcode-avmusictemplate.md#35000006-模板控制器不存在) | AVMusicTemplateController does not exist. |
+
 ## updateSettings
 
 ```TypeScript

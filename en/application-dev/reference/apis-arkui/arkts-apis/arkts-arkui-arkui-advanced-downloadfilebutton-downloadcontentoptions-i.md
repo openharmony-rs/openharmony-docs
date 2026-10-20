@@ -6,8 +6,6 @@ export interface DownloadContentOptions
 
 Defines the download content options.
 
-@interface DownloadContentOptions
-
 **Since:** 12
 
 <!--Device-unnamed-export interface DownloadContentOptions--><!--Device-unnamed-export interface DownloadContentOptions-End-->

@@ -4,6 +4,8 @@ The **workScheduler** module provides the APIs for registering, canceling, and q
 
 **Since:** 9
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace workScheduler--><!--Device-unnamed-declare namespace workScheduler-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
@@ -20,17 +22,17 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 
 | Name | Description |
 | --- | --- |
-| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus1) | Obtains the information a deferred task. This API uses an asynchronous callback to return the result. |
-| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus2) | Obtains the information a deferred task. This API uses a promise to return the result. |
-| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout2) | Checks whether the last execution of a task timed out. This API uses an asynchronous callback to return the result. |
-| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout3) | Checks whether the last execution of a task timed out. This API uses a promise to return the result. |
-| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks2) | Obtains all the deferred tasks. This API uses an asynchronous callback to return the result. |
-| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks3) | Obtains all the deferred tasks. This API uses a promise to return the result. |
+| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus) | Obtains the information a deferred task. This API uses an asynchronous callback to return the result. |
+| [getWorkStatus](arkts-backgroundtasks-workscheduler-getworkstatus-f.md#getworkstatus) | Obtains the information a deferred task. This API uses a promise to return the result. |
+| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout) | Checks whether the last execution of a task timed out. This API uses an asynchronous callback to return the result. |
+| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout) | Checks whether the last execution of a task timed out. This API uses a promise to return the result. |
+| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks) | Obtains all the deferred tasks. This API uses an asynchronous callback to return the result. |
+| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks) | Obtains all the deferred tasks. This API uses a promise to return the result. |
 | [startWork](arkts-backgroundtasks-workscheduler-startwork-f.md#startwork) | Requests a deferred task. Upon successful request, the deferred task is added to the execution queue and will be executed by the system once the trigger conditions are met. |
 | [stopAndClearWorks](arkts-backgroundtasks-workscheduler-stopandclearworks-f.md#stopandclearworks) | Stops and clears all the deferred tasks. |
 | [stopWork](arkts-backgroundtasks-workscheduler-stopwork-f.md#stopwork) | Stops a deferred task. |
-| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout1) | Checks whether the last execution of a task timed out. This API uses an asynchronous callback to return the result. |
-| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks1) | Obtains all the deferred tasks. This API uses an asynchronous callback to return the result. |
+| [isLastWorkTimeOut](arkts-backgroundtasks-workscheduler-islastworktimeout-f.md#islastworktimeout) | Checks whether the last execution of a task timed out. This API uses an asynchronous callback to return the result. |
+| [obtainAllWorks](arkts-backgroundtasks-workscheduler-obtainallworks-f.md#obtainallworks) | Obtains all the deferred tasks. This API uses an asynchronous callback to return the result. |
 
 <!--Del-->
 ### Functions(System API)

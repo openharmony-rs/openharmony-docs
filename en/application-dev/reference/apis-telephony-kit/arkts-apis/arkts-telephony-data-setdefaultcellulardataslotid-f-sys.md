@@ -6,8 +6,6 @@
 import { data } from '@kit.TelephonyKit';
 ```
 
-<a id="setdefaultcellulardataslotid1"></a>
-
 ## setDefaultCellularDataSlotId
 
 ```TypeScript
@@ -30,7 +28,7 @@ Sets the default slot of the SIM card used for mobile data. This API uses an asy
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | SIM card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | SIM card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -66,8 +64,6 @@ data.setDefaultCellularDataSlotId(0, (err: BusinessError) => {
 <!--DelEnd-->
 
 
-<a id="setdefaultcellulardataslotid2"></a>
-
 ## setDefaultCellularDataSlotId
 
 ```TypeScript
@@ -90,7 +86,7 @@ Sets the default slot of the SIM card used for mobile data. This API uses a prom
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | SIM card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | SIM card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Return value:**
 

@@ -6,8 +6,6 @@
 import { childProcessManager } from '@kit.AbilityKit';
 ```
 
-<a id="startchildprocess1"></a>
-
 ## startChildProcess
 
 ```TypeScript
@@ -89,8 +87,6 @@ try {
 }
 ```
 
-
-<a id="startchildprocess2"></a>
 
 ## startChildProcess
 

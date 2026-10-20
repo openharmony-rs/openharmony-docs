@@ -28,16 +28,20 @@ DistortionComponent(options?: DistortionComponentOptions)
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [DistortionComponentOptions](arkts-arkui-distortioncomponent-comp-distortioncomponentoptions-i-sys.md) | 空间扭曲形变选项。 |
 | [DistortionParam](arkts-arkui-distortioncomponent-comp-distortionparam-i-sys.md) | 空间扭曲形变参数。 |
+<!--DelEnd-->
 
-### 类型
+<!--Del-->
+### 类型（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [Vector2](arkts-arkui-distortioncomponent-comp-vector2-t-sys.md) | 二维向量类型，包含x和y坐标，表示位置坐标关系。 |
 | [Vector4](arkts-arkui-distortioncomponent-comp-vector4-t-sys.md) | 四维向量类型，包含x、y、z、w，各数值表示桶形形变程度。 |
+<!--DelEnd-->

@@ -313,8 +313,6 @@ class TestRemoteObject extends rpc.RemoteObject {
 let testRemoteObject = new TestRemoteObject('testObject');
 ```
 
-<a id="onremotemessagerequest1"></a>
-
 ## onRemoteMessageRequest
 
 ```TypeScript
@@ -440,8 +438,6 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 }
 ```
-
-<a id="onremotemessagerequest2"></a>
 
 ## onRemoteMessageRequest
 
@@ -574,8 +570,6 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
-<a id="sendmessagerequest1"></a>
-
 ## sendMessageRequest
 
 ```TypeScript
@@ -661,8 +655,6 @@ try {
   hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + error);
 }
 ```
-
-<a id="sendmessagerequest2"></a>
 
 ## sendMessageRequest
 
@@ -958,8 +950,6 @@ try {
 }
 ```
 
-<a id="sendrequest1"></a>
-
 ## sendRequest
 
 ```TypeScript
@@ -1028,8 +1018,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-
-<a id="sendrequest2"></a>
 
 ## sendRequest
 
@@ -1114,8 +1102,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
 }
 ```
-
-<a id="sendrequest3"></a>
 
 ## sendRequest
 

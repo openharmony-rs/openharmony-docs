@@ -18,8 +18,6 @@ Before calling any of the following APIs to manage the calendar, you must use [g
 import { calendarManager } from '@kit.CalendarKit';
 ```
 
-<a id="createcalendar1"></a>
-
 ## createCalendar
 
 ```TypeScript
@@ -55,9 +53,9 @@ Creates a Calendar object based on the calendar account information. This API us
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -79,8 +77,6 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 });
 ```
-
-<a id="createcalendar2"></a>
 
 ## createCalendar
 
@@ -112,9 +108,9 @@ Creates a Calendar object based on the calendar account information. This API us
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -141,8 +137,6 @@ try {
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="deletecalendar1"></a>
 
 ## deleteCalendar
 
@@ -179,9 +173,9 @@ Deletes a specified Calendar object. This API uses a promise to return the resul
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -215,8 +209,6 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 })
 ```
 
-<a id="deletecalendar2"></a>
-
 ## deleteCalendar
 
 ```TypeScript
@@ -247,9 +239,9 @@ Deletes a specified Calendar object. This API uses an asynchronous callback to r
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -335,8 +327,6 @@ calendarMgr?.editEvent(event).then((eventId: number): void => {
 });
 ```
 
-<a id="getallcalendars1"></a>
-
 ## getAllCalendars
 
 ```TypeScript
@@ -368,7 +358,7 @@ Obtains the created and default Calendar objects of the current application. Thi
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -390,8 +380,6 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
   
 });
 ```
-
-<a id="getallcalendars2"></a>
 
 ## getAllCalendars
 
@@ -422,9 +410,9 @@ Obtains the created and default Calendar objects of the current application. Thi
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -446,8 +434,6 @@ calendarMgr?.getAllCalendars((err: BusinessError, data: calendarManager.Calendar
   }
 });
 ```
-
-<a id="getcalendar1"></a>
 
 ## getCalendar
 
@@ -489,7 +475,7 @@ Obtains the default or specified Calendar object. This API uses a promise to ret
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 23 and later |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -506,8 +492,6 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
   console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="getcalendar2"></a>
 
 ## getCalendar
 
@@ -541,10 +525,10 @@ Obtains a specified Calendar object. This API uses an asynchronous callback to r
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [23900003](../errorcode-calendarManager.md#23900003-specified-account-not-found) | The specified account was not found.<br>**Applicable version:** 23 and later |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -573,8 +557,6 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
   // Check whether the permission is granted or whether the parameters are correct.
 })
 ```
-
-<a id="getcalendar3"></a>
 
 ## getCalendar
 
@@ -607,9 +589,9 @@ Obtains the default Calendar object, which is created when the data storage runs
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 

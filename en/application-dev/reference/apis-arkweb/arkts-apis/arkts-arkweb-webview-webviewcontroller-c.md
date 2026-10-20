@@ -174,13 +174,13 @@ Checks whether a specific number of steps forward or backward can be performed o
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether a specific number of steps forward or backward can be performed on the current page.<br>**true** is returned if a specific number of steps forward or backward can be performed on the current page; otherwise, **false** is returned. |
+| boolean | Whether a specific number of steps forward or backward can be performed on the current page. <br>**true** is returned if a specific number of steps forward or backward can be performed on the current page; otherwise, **false** is returned. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -239,7 +239,7 @@ Adds a list of domain names that bypass intelligent tracking prevention.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 
 **Examples**
@@ -300,7 +300,7 @@ Sets the bottom avoidance height of the visible viewport on the web page.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| avoidHeight | number | Yes | Bottom avoidance height of the visible viewport on the web page.<br>Unit: vp. <br>Value range: [0, height of the **Web** component] <br>If the value is less than 0, the value **0** is used. If the value is greater than the height of the **Web** component, the height of the **Web** component is used. |
+| avoidHeight | number | Yes | Bottom avoidance height of the visible viewport on the web page. <br>Unit: vp. <br>Value range: [0, height of the **Web** component] <br>If the value is less than 0, the value **0** is used. If the value is greater than the height of the **Web** component, the height of the **Web** component is used. |
 
 **Error codes:**
 
@@ -374,7 +374,7 @@ Because the previously loaded web pages are used for the operation, no page relo
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -643,7 +643,7 @@ Clears the IP address of a specified host after domain name resolution.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 
@@ -1167,8 +1167,6 @@ HTML file to be loaded:
 </html>
 ```
 
-<a id="createpdf1"></a>
-
 ## createPdf
 
 ```TypeScript
@@ -1256,8 +1254,6 @@ struct Index {
   }
 }
 ```
-
-<a id="createpdf2"></a>
 
 ## createPdf
 
@@ -1367,7 +1363,7 @@ Creates web message ports.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isExtentionType | boolean | No | Whether to use the extended interface.<br>The value **true** means to use the extended interface, and **false** means the opposite. <br>Default value: **false**. <br>If **undefined** or **null** is passed, error code **401** will be thrown.<br>**Since:** 10 |
+| isExtentionType | boolean | No | Whether to use the extended interface. <br>The value **true** means to use the extended interface, and **false** means the opposite. <br>Default value: **false**. <br>If **undefined** or **null** is passed, error code **401** will be thrown.<br>**Since:** 10 |
 
 **Return value:**
 
@@ -1380,7 +1376,7 @@ Creates web message ports.
 | Error Code ID | Error Message |
 | --- | --- |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed.<br>**Applicable version:** 10 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed.<br>**Applicable version:** 10 and later |
 
 **Examples**
 
@@ -1416,7 +1412,7 @@ Creates a **PrintDocumentAdapter** instance to provide content for printing.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -1448,8 +1444,6 @@ struct WebComponent {
 }
 ```
 
-<a id="customizeschemes1"></a>
-
 ## customizeSchemes
 
 ```TypeScript
@@ -1476,7 +1470,7 @@ Grants the cross-domain request and fetch request permissions for custom protoco
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100020](../errorcode-webview.md#17100020-failed-to-register-custom-schemes) | Failed to register custom schemes.<br>**Applicable version:** 12 and later |
 
 **Examples**
@@ -1517,8 +1511,6 @@ struct WebComponent {
 }
 ```
 
-<a id="customizeschemes2"></a>
-
 ## customizeSchemes
 
 ```TypeScript
@@ -1540,7 +1532,7 @@ Grants the cross-domain request and fetch request permissions for custom protoco
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | schemes | Array&lt;[WebCustomScheme](arkts-arkweb-webview-webcustomscheme-i.md)&gt; | Yes | Array of up to 10 custom schemes. |
-| lazyInitWebEngine | boolean | Yes | Whether to skip WebEngine initialization in the API.<br>The value **true** means to skip the WebEngine initialization and store the registered schemes temporarily. When the WebEngine is initialized, the schemes are transferred to the WebEngine. The value false means to initialize the WebEngine automatically in the API. |
+| lazyInitWebEngine | boolean | Yes | Whether to skip WebEngine initialization in the API. <br>The value **true** means to skip the WebEngine initialization and store the registered schemes temporarily. When the WebEngine is initialized, the schemes are transferred to the WebEngine. The value false means to initialize the WebEngine automatically in the API. |
 
 **Error codes:**
 
@@ -1607,7 +1599,7 @@ Deletes a JavaScript object with the specified name on the application side that
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 | [17100008](../errorcode-webview.md#17100008-deleting-a-javascriptproxy-that-does-not-exist) | Failed to delete JavaScriptProxy because it does not exist. |
 
@@ -1717,13 +1709,13 @@ Enables ad blocking.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable ad blocking.<br>The value **true** means to enable ad blocking, and **false** means the opposite. <br>Default value: **false**. |
+| enable | boolean | Yes | Whether to enable ad blocking. <br>The value **true** means to enable ad blocking, and **false** means the opposite. <br>Default value: **false**. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Parameter string is too long. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Parameter string is too long. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 
@@ -1880,14 +1872,14 @@ Enables intelligent tracking prevention.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable intelligent tracking prevention.<br>The value **true** means to enable intelligent tracking prevention, and **false** means the opposite. <br>Default value: **false**. |
+| enable | boolean | Yes | Whether to enable intelligent tracking prevention. <br>The value **true** means to enable intelligent tracking prevention, and **false** means the opposite. <br>Default value: **false**. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 
 **Examples**
@@ -1993,13 +1985,13 @@ By default, this feature does not take effect. OpenHarmony provides only the mal
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable the safe browsing feature.<br>The value **true** means to enable the safe browsing feature, and **false** means the opposite. <br>Default value: **false**. |
+| enable | boolean | Yes | Whether to enable the safe browsing feature. <br>The value **true** means to enable the safe browsing feature, and **false** means the opposite. <br>Default value: **false**. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 **Examples**
 
@@ -2389,8 +2381,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getcertificate1"></a>
-
 ## getCertificate
 
 ```TypeScript
@@ -2558,8 +2548,6 @@ struct Index {
 }
 ```
 
-<a id="getcertificate2"></a>
-
 ## getCertificate
 
 ```TypeScript
@@ -2586,7 +2574,7 @@ Obtains the certificate information of the current website. When the **Web** com
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a web component. |
 
 **Examples**
@@ -2847,7 +2835,7 @@ Queries whether the default error page is enabled.
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the default error page is enabled.<br>The value true indicates that the default error page is enabled, and false indicates the opposite. |
+| boolean | Whether the default error page is enabled. <br>The value true indicates that the default error page is enabled, and false indicates the opposite. |
 
 **Error codes:**
 
@@ -3424,7 +3412,7 @@ Obtains whether the web page background is printed.
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether to print the web page background.<br>The value **true** means to print the web page background; **false** means not to print the web page background. |
+| boolean | Whether to print the web page background. <br>The value **true** means to print the web page background; **false** means not to print the web page background. |
 
 **Error codes:**
 
@@ -3528,7 +3516,7 @@ Obtains the ArkWeb render subprocess mode.
 
 | Type | Description |
 | --- | --- |
-| [RenderProcessMode](arkts-arkweb-webview-renderprocessmode-e.md) | Render subprocess mode.<br>You can call **getRenderProcessMode()** to obtain the ArkWeb child render process mode of the current device. The enumerated value **0** indicates the single child render process mode, and **1** indicates the multi-child render process mode. <br>If the obtained value is not an enumerated value of **RenderProcessMode**, the multi-render subprocess mode is used by default. |
+| [RenderProcessMode](arkts-arkweb-webview-renderprocessmode-e.md) | Render subprocess mode. <br>You can call **getRenderProcessMode()** to obtain the ArkWeb child render process mode of the current device. The enumerated value **0** indicates the single child render process mode, and **1** indicates the multi-child render process mode. <br>If the obtained value is not an enumerated value of **RenderProcessMode**, the multi-render subprocess mode is used by default. |
 
 **Examples**
 
@@ -3574,7 +3562,7 @@ Obtains whether this web page is scrollable.
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether this web page is scrollable.<br>The value **true** indicates that this web page is scrollable, and **false** indicates the opposite. |
+| boolean | Whether this web page is scrollable. <br>The value **true** indicates that this web page is scrollable, and **false** indicates the opposite. |
 
 **Error codes:**
 
@@ -3783,7 +3771,7 @@ Queries the currently effective site isolation mode.
 
 | Type | Description |
 | --- | --- |
-| [SiteIsolationMode](arkts-arkweb-webview-siteisolationmode-e.md) | Site isolation mode.<br>getSiteIsolationMode() queries the currently effective site isolation mode. |
+| [SiteIsolationMode](arkts-arkweb-webview-siteisolationmode-e.md) | Site isolation mode. <br>getSiteIsolationMode() queries the currently effective site isolation mode. |
 
 **Examples**
 
@@ -3829,7 +3817,7 @@ Queries whether the subframe error page feature is enabled.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns whether the subframe error page feature is enabled.<br>- **true**: The subframe error page feature is enabled (that is, both **enable** and **includeSubframe** are **true**). <br>- **false**: The subframe error page feature is not enabled (including the case where the error page feature is not enabled, or the error page feature is enabled but the subframe error page feature is not enabled). |
+| boolean | Returns whether the subframe error page feature is enabled. <br>- **true**: The subframe error page feature is enabled (that is, both **enable** and **includeSubframe** are **true**). <br>- **false**: The subframe error page feature is not enabled (including the case where the error page feature is not enabled, or the error page feature is enabled but the subframe error page feature is not enabled). |
 
 **Error codes:**
 
@@ -4241,15 +4229,13 @@ Gets the current browser zoom factor of this web page.
 
 | Type | Description |
 | --- | --- |
-| number | Current browser zoom factor. The value **1** indicates that the page is not zoomed.<br>Value range: [0.25, 5.0]. The default value is **1**. |
+| number | Current browser zoom factor. The value **1** indicates that the page is not zoomed. <br>Value range: [0.25, 5.0]. The default value is **1**. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
-
-<a id="hasimage1"></a>
 
 ## hasImage
 
@@ -4271,7 +4257,7 @@ Checks whether this page contains images. This API uses a promise to return the 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result.<br> The value **true** indicates that this page contains images, and the value **false** indicates the opposite. |
+| Promise&lt;boolean&gt; | Promise used to return the result. <br> The value **true** indicates that this page contains images, and the value **false** indicates the opposite. |
 
 **Error codes:**
 
@@ -4312,8 +4298,6 @@ struct WebComponent {
 }
 ```
 
-<a id="hasimage2"></a>
-
 ## hasImage
 
 ```TypeScript
@@ -4334,13 +4318,13 @@ Checks whether this page contains images. This API uses an asynchronous callback
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result.<br> The value **true** indicates that this page contains images, and the value **false** indicates the opposite. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. <br> The value **true** indicates that this page contains images, and the value **false** indicates the opposite. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -4762,7 +4746,7 @@ Checks whether ad blocking is enabled.
 
 | Type | Description |
 | --- | --- |
-| boolean | **true** is returned if ad blocking is enabled; otherwise, **false** is returned.<br>Default value: **false**. |
+| boolean | **true** is returned if ad blocking is enabled; otherwise, **false** is returned. <br>Default value: **false**. |
 
 **Error codes:**
 
@@ -4925,7 +4909,7 @@ Checks whether this Webview is in incognito mode.
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the Webview is in incognito mode.<br>The value **true** indicates that incognito mode is enabled for WebView, and **false** indicates the opposite. <br>Default value: **false**. |
+| boolean | Whether the Webview is in incognito mode. <br>The value **true** indicates that incognito mode is enabled for WebView, and **false** indicates the opposite. <br>Default value: **false**. |
 
 **Error codes:**
 
@@ -4982,7 +4966,7 @@ Obtains whether the **Web** component has enabled intelligent tracking preventio
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the Web component has enabled the smart anti-tracking feature.<br>The value **true** indicates that the smart anti-tracking feature is enabled, and **false** indicates that it is not enabled. <br>Default value: **false** |
+| boolean | Whether the Web component has enabled the smart anti-tracking feature. <br>The value **true** indicates that the smart anti-tracking feature is enabled, and **false** indicates that it is not enabled. <br>Default value: **false** |
 
 **Error codes:**
 
@@ -5096,7 +5080,7 @@ Checks whether the safe browsing feature is enabled for this web page.
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the safe browsing feature is enabled for this web page.<br>The value **true** indicates that the safe browsing feature is enabled, and **false** indicates the opposite. <br>Default value: **false**. |
+| boolean | Whether the safe browsing feature is enabled for this web page. <br>The value **true** indicates that the safe browsing feature is enabled, and **false** indicates the opposite. <br>Default value: **false**. |
 
 **Examples**
 
@@ -5162,14 +5146,14 @@ If **encoding** is not base64 (including null values), ASCII encoding is used fo
 | data | string | Yes | String obtained after being base64 or URL encoded. |
 | mimeType | string | Yes | Media type (MIME). |
 | encoding | string | Yes | Encoding type, which can be base64 or URL. |
-| baseUrl | string | No | URL (HTTP/HTTPS/data compliant), which is assigned by the **Web** component to **window.origin**. If a large number of HTML files need to be loaded, set this parameter to **data**.<br>If **undefined** or **null** is passed, error code **401** will be thrown. |
-| historyUrl | string | No | URL used for historical records. If this parameter is not empty, historical records are managed based on this URL. This parameter is invalid when **baseUrl** is left empty.<br>If **undefined** or **null** is passed, error code **401** will be thrown. |
+| baseUrl | string | No | URL (HTTP/HTTPS/data compliant), which is assigned by the **Web** component to **window.origin**. If a large number of HTML files need to be loaded, set this parameter to **data**. <br>If **undefined** or **null** is passed, error code **401** will be thrown. |
+| historyUrl | string | No | URL used for historical records. If this parameter is not empty, historical records are managed based on this URL. This parameter is invalid when **baseUrl** is left empty. <br>If **undefined** or **null** is passed, error code **401** will be thrown. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>**Applicable version:** 9 - 10 |
 
@@ -5360,13 +5344,13 @@ Loads a specified URL.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | url | string &#124; Resource | Yes | URL to load. |
-| headers | Array&lt;[WebHeader](arkts-arkweb-webview-webheader-i.md)&gt; | No | Additional HTTP request header of the URL.<br>Default value: **[]**. <br>If **undefined** or **null** is passed, error code **401** will be thrown. |
+| headers | Array&lt;[WebHeader](arkts-arkweb-webview-webheader-i.md)&gt; | No | Additional HTTP request header of the URL. <br>Default value: **[]**. <br>If **undefined** or **null** is passed, error code **401** will be thrown. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. The webpage corresponding to the URL is invalid. |
 | [17100003](../errorcode-webview.md#17100003-incorrect-resource-path) | Invalid resource path or file type. |
@@ -5553,7 +5537,7 @@ Deregisters the attach state event of **WebViewController**. After the deregistr
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'controllerAttachStateChange' | Yes | Attach state event of **WebViewController**, whose value is fixed to **controllerAttachStateChange**. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ControllerAttachState](arkts-arkweb-webview-controllerattachstate-e.md)&gt; | No | Callback triggered when the attach state of **WebViewController** changes. By default, this parameter is left blank. If **Callback** is specified, only the specified callback is deregistered. Otherwise, all callbacks will be deregistered.<br>If **null** or **undefined** is passed, error code **401** is thrown. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ControllerAttachState](arkts-arkweb-webview-controllerattachstate-e.md)&gt; | No | Callback triggered when the attach state of **WebViewController** changes. By default, this parameter is left blank. If **Callback** is specified, only the specified callback is deregistered. Otherwise, all callbacks will be deregistered. <br>If **null** or **undefined** is passed, error code **401** is thrown. |
 
 **Examples**
 
@@ -5993,13 +5977,13 @@ Scrolls the page down by half the viewport or jumps to the bottom of the page.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bottom | boolean | Yes | Whether to jump to the bottom of the page.<br>The value **false** means to scroll the page down by half the viewport, and the value **true** means to jump to the bottom of the page. |
+| bottom | boolean | Yes | Whether to jump to the bottom of the page. <br>The value **false** means to scroll the page down by half the viewport, and the value **true** means to jump to the bottom of the page. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -6085,13 +6069,13 @@ Scrolls the page up by half the viewport or jumps to the top of the page.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| top | boolean | Yes | Whether to jump to the top of the page.<br>The value **false** means to scroll the page up by half the viewport, and the value **true** means to jump to the top of the page. |
+| top | boolean | Yes | Whether to jump to the top of the page. <br>The value **false** means to scroll the page up by half the viewport, and the value **true** means to jump to the top of the page. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -6339,7 +6323,7 @@ Sends a web message to an HTML window.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -6507,7 +6491,7 @@ Loads a URL with postData using the "POST" method. If the URL is not a network U
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 | [17100002](../errorcode-webview.md#17100002-incorrect-url-format) | URL error. The webpage corresponding to the URL is invalid. |
 
@@ -6805,8 +6789,6 @@ struct Index {
 }
 ```
 
-<a id="prefetchpage1"></a>
-
 ## prefetchPage
 
 ```TypeScript
@@ -6842,7 +6824,7 @@ Prefetches resources in the background for a page that is likely to be accessed 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | url | string | Yes | URL to preload. |
-| additionalHeaders | Array&lt;[WebHeader](arkts-arkweb-webview-webheader-i.md)&gt; | No | Additional HTTP request headers for the URL.<br>Default value: [] |
+| additionalHeaders | Array&lt;[WebHeader](arkts-arkweb-webview-webheader-i.md)&gt; | No | Additional HTTP request headers for the URL. <br>Default value: [] |
 
 **Error codes:**
 
@@ -6881,8 +6863,6 @@ struct WebComponent {
 }
 ```
 
-<a id="prefetchpage2"></a>
-
 ## prefetchPage
 
 ```TypeScript
@@ -6912,8 +6892,8 @@ Prefetches resources in the background for a page that is likely to be accessed 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | url | string | Yes | URL to preload. |
-| additionalHeaders | Array&lt;[WebHeader](arkts-arkweb-webview-webheader-i.md)&gt; | No | Additional HTTP request headers for the URL.<br>Default value: [] |
-| prefetchOptions | [PrefetchOptions](arkts-arkweb-webview-prefetchoptions-c.md) | No | Options for customizing the prefetch behavior.<br>The minimum interval between two prefetches is 500 ms. By default, Cache-Control: no-store in the response header is not ignored. |
+| additionalHeaders | Array&lt;[WebHeader](arkts-arkweb-webview-webheader-i.md)&gt; | No | Additional HTTP request headers for the URL. <br>Default value: [] |
+| prefetchOptions | [PrefetchOptions](arkts-arkweb-webview-prefetchoptions-c.md) | No | Options for customizing the prefetch behavior. <br>The minimum interval between two prefetches is 500 ms. By default, Cache-Control: no-store in the response header is not ignored. |
 
 **Error codes:**
 
@@ -6977,9 +6957,9 @@ Resources in the memory cache are automatically managed by the kernel. When too 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | request | [RequestInfo](arkts-arkweb-webview-requestinfo-i.md) | Yes | Information about the prefetched request. |
-| additionalHeaders | Array&lt;[WebHeader](arkts-arkweb-webview-webheader-i.md)&gt; | No | Additional HTTP request header of the prefetched request.<br>If **undefined** or **null** is passed, error code **401** will be thrown. |
-| cacheKey | string | No | Key used to query the cache of prefetched resources. The value can contain only letters and digits. If this parameter is not passed or is left empty, **url** is used by default.<br>If **undefined** or **null** is passed, error code **401** will be thrown. |
-| cacheValidTime | number | No | Validity period of the prefetched resource cache.<br>Value range: (0, 2147483647]. <br>Default value: 300s. <br>Unit: s. <br>If undefined or null is passed in, an exception with error code 401 is thrown. |
+| additionalHeaders | Array&lt;[WebHeader](arkts-arkweb-webview-webheader-i.md)&gt; | No | Additional HTTP request header of the prefetched request. <br>If **undefined** or **null** is passed, error code **401** will be thrown. |
+| cacheKey | string | No | Key used to query the cache of prefetched resources. The value can contain only letters and digits. If this parameter is not passed or is left empty, **url** is used by default. <br>If **undefined** or **null** is passed, error code **401** will be thrown. |
+| cacheValidTime | number | No | Validity period of the prefetched resource cache. <br>Value range: (0, 2147483647]. <br>Default value: 300s. <br>Unit: s. <br>If undefined or null is passed in, an exception with error code 401 is thrown. |
 
 **Error codes:**
 
@@ -7067,8 +7047,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="refresh1"></a>
-
 ## refresh
 
 ```TypeScript
@@ -7119,8 +7097,6 @@ struct WebComponent {
 }
 ```
 
-<a id="refresh2"></a>
-
 ## refresh
 
 ```TypeScript
@@ -7139,7 +7115,7 @@ Notifies the **Web** component to refresh the web page. You can choose whether t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| ignoreCache | boolean | Yes | Whether to ignore cache refresh when the **Web** component refreshes the web page.<br>The value **true** means to ignore the cache refresh, and **false** means the opposite. <br>**NOTE:** <br>If **undefined** or **null** is passed in, the value is **false**. |
+| ignoreCache | boolean | Yes | Whether to ignore cache refresh when the **Web** component refreshes the web page. <br>The value **true** means to ignore the cache refresh, and **false** means the opposite. <br>**NOTE:** <br>If **undefined** or **null** is passed in, the value is **false**. |
 
 **Error codes:**
 
@@ -7214,17 +7190,17 @@ For the example, see [Invoking Application Functions on the Frontend Page](../..
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jsObject | object | Yes | Application-side JavaScript object to be registered. Methods and attributes can be declared separately, but cannot be registered and used at the same time. If an object contains only attributes, HTML5 can access the attributes in the object. If an object contains only methods, HTML5 can access the methods in the object.<br>1. The parameter and return value can be any of the following types: <br>string, number, boolean. <br>2. Dictionary or Array, with a maximum of 10 nested layers and 10,000 data records per layer. <br>3. Object, which must contain the **methodNameListForJsProxy:[fun1, fun2]** attribute, where **fun1** and **fun2** are methods that can be called. <br>4. The parameter also supports Function and Promise. Their callback cannot have return values. <br>5. The return value supports Promise. Its callback cannot have a return value. |
+| jsObject | object | Yes | Application-side JavaScript object to be registered. Methods and attributes can be declared separately, but cannot be registered and used at the same time. If an object contains only attributes, HTML5 can access the attributes in the object. If an object contains only methods, HTML5 can access the methods in the object. <br>1. The parameter and return value can be any of the following types: <br>string, number, boolean. <br>2. Dictionary or Array, with a maximum of 10 nested layers and 10,000 data records per layer. <br>3. Object, which must contain the **methodNameListForJsProxy:[fun1, fun2]** attribute, where **fun1** and **fun2** are methods that can be called. <br>4. The parameter also supports Function and Promise. Their callback cannot have return values. <br>5. The return value supports Promise. Its callback cannot have a return value. |
 | name | string | Yes | Name of the object to be registered, which is the same as that invoked in the window. After registration, the window can use this name to access the JavaScript object at the application side. |
 | methodList | Array&lt;string&gt; | Yes | Synchronous methods of the JavaScript object to be registered at the application side. |
-| asyncMethodList | Array&lt;string&gt; | No | Asynchronous methods of the JavaScript object to be registered at the application side. The default value is null. Asynchronous methods cannot obtain return values.<br>If **undefined** or **null** is passed, error code **401** will be thrown.<br>**Since:** 12 |
-| permission | string | No | JSON string, which is empty by default. This string is used to configure JSBridge permission control and define the URL trustlist at the object and method levels.<br>1. The **scheme** and **host** parameters cannot be empty. The **host** does not support wildcards and can contain only complete host names. <br>2. You can configure only the object-level trustlist, which takes effect for all JSBridge methods. <br>3. If method-level trustlists are configured for JSBridge method A, the intersection of object-level and method-level trustlists takes effect. <br>If **undefined** or **null** is passed, error code **401** will be thrown.<br>**Since:** 12 |
+| asyncMethodList | Array&lt;string&gt; | No | Asynchronous methods of the JavaScript object to be registered at the application side. The default value is null. Asynchronous methods cannot obtain return values. <br>If **undefined** or **null** is passed, error code **401** will be thrown.<br>**Since:** 12 |
+| permission | string | No | JSON string, which is empty by default. This string is used to configure JSBridge permission control and define the URL trustlist at the object and method levels. <br>1. The **scheme** and **host** parameters cannot be empty. The **host** does not support wildcards and can contain only complete host names. <br>2. You can configure only the object-level trustlist, which takes effect for all JSBridge methods. <br>3. If method-level trustlists are configured for JSBridge method A, the intersection of object-level and method-level trustlists takes effect. <br>If **undefined** or **null** is passed, error code **401** will be thrown.<br>**Since:** 12 |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -7392,7 +7368,7 @@ Removes all resource caches generated by Webview (including private mode) in the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 **Examples**
 
@@ -7448,7 +7424,7 @@ Removes all resource caches generated by Webview in the app.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -7505,7 +7481,7 @@ Deletes the domain names from the list of domain names added through the **addIn
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 
 **Examples**
@@ -7615,7 +7591,7 @@ If the value of **state** is too large, exceptions may occur. It is recommended 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -7949,8 +7925,6 @@ HTML file to be loaded:
 </html>
 ```
 
-<a id="runjavascript1"></a>
-
 ## runJavaScript
 
 ```TypeScript
@@ -7995,7 +7969,7 @@ Executes a JavaScript script asynchronously in the context of the current page. 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 | [17100003](../errorcode-webview.md#17100003-incorrect-resource-path) | Calling a JS method that returns an empty ArrayBuffer via runJavaScript. |
 
@@ -8057,8 +8031,6 @@ HTML file to be loaded:
 </html>
 ```
 
-<a id="runjavascript2"></a>
-
 ## runJavaScript
 
 ```TypeScript
@@ -8098,7 +8070,7 @@ Executes a JavaScript script asynchronously in the context of the current page. 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 | [17100003](../errorcode-webview.md#17100003-incorrect-resource-path) | Calling a JS method that returns an empty ArrayBuffer via runJavaScript. |
 
@@ -8166,8 +8138,6 @@ HTML file to be loaded:
 </html>
 ```
 
-<a id="runjavascriptext1"></a>
-
 ## runJavaScriptExt
 
 ```TypeScript
@@ -8204,7 +8174,7 @@ Executes a JavaScript script asynchronously and returns the script execution res
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -8392,8 +8362,6 @@ function test() {
 </html>
 ```
 
-<a id="runjavascriptext2"></a>
-
 ## runJavaScriptExt
 
 ```TypeScript
@@ -8425,7 +8393,7 @@ Executes a JavaScript script. This API uses an asynchronous callback to return t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -8646,15 +8614,15 @@ Scrolls the page by the specified amount within a specified period.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deltaX | number | Yes | Amount to scroll by along the x-axis. The positive direction is rightward.<br>Unit: vp |
-| deltaY | number | Yes | Amount to scroll by along the y-axis. The positive direction is downward.<br>Unit: vp |
-| duration | number | No | Scrolling animation duration,<br>in milliseconds. <br>If no value is input or the input value is a negative number or 0, the animation is disabled. <br>If **null** or **undefined** is passed, error code **401** is thrown.<br>**Since:** 14 |
+| deltaX | number | Yes | Amount to scroll by along the x-axis. The positive direction is rightward. <br>Unit: vp |
+| deltaY | number | Yes | Amount to scroll by along the y-axis. The positive direction is downward. <br>Unit: vp |
+| duration | number | No | Scrolling animation duration, <br>in milliseconds. <br>If no value is input or the input value is a negative number or 0, the animation is disabled. <br>If **null** or **undefined** is passed, error code **401** is thrown.<br>**Since:** 14 |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -8735,8 +8703,8 @@ Scrolls the page by the specified amount and returns value to indicate whether t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deltaX | number | Yes | Amount to scroll by along the x-axis. The positive direction is rightward.<br>Unit: vp |
-| deltaY | number | Yes | Amount to scroll by along the y-axis. The positive direction is downward.<br>Unit: vp |
+| deltaX | number | Yes | Amount to scroll by along the x-axis. The positive direction is rightward. <br>Unit: vp |
+| deltaY | number | Yes | Amount to scroll by along the y-axis. The positive direction is downward. <br>Unit: vp |
 
 **Return value:**
 
@@ -8748,7 +8716,7 @@ Scrolls the page by the specified amount and returns value to indicate whether t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -8824,15 +8792,15 @@ Scrolls the page to the specified absolute position within a specified period.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| x | number | Yes | X coordinate of the absolute position. If the value is a negative number, the value 0 is used.<br>Unit: vp |
-| y | number | Yes | Y coordinate of the absolute position. If the value is a negative number, the value 0 is used.<br>Unit: vp |
-| duration | number | No | Scrolling animation duration,<br>in milliseconds. <br>If no value is input or the input value is a negative number or 0, the animation is disabled. <br>If **null** or **undefined** is passed, error code **401** is thrown.<br>**Since:** 14 |
+| x | number | Yes | X coordinate of the absolute position. If the value is a negative number, the value 0 is used. <br>Unit: vp |
+| y | number | Yes | Y coordinate of the absolute position. If the value is a negative number, the value 0 is used. <br>Unit: vp |
+| duration | number | No | Scrolling animation duration, <br>in milliseconds. <br>If no value is input or the input value is a negative number or 0, the animation is disabled. <br>If **null** or **undefined** is passed, error code **401** is thrown.<br>**Since:** 14 |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -8921,7 +8889,7 @@ Searches the web page for content that matches the keyword specified by **'searc
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -8991,13 +8959,13 @@ Searches for and highlights the next match.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| forward | boolean | Yes | Whether to search forward or backward.<br>The value **true** indicates a forward search, and the value **false** indicates a backward search. |
+| forward | boolean | Yes | Whether to search forward or backward. <br>The value **true** indicates a forward search, and the value **false** indicates a backward search. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -9233,13 +9201,13 @@ Mutes the web page. Typical use cases include: the app needs to control the web 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mute | boolean | Yes | Whether to mute the web page.<br>The value **true** means to mute the web page, and **false** means the opposite. |
+| mute | boolean | Yes | Whether to mute the web page. <br>The value **true** means to mute the web page, and **false** means the opposite. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -9392,7 +9360,7 @@ Sets the persistent cache capacity of the blankless loading solution and returns
 
 | Type | Description |
 | --- | --- |
-| number | Effective value that ranges from 0 MB to 100 MB.<br>When a value less than 0 is set, the value **0** takes effect. When a value greater than 100 is set, the value **100** takes effect. |
+| number | Effective value that ranges from 0 MB to 100 MB. <br>When a value less than 0 is set, the value **0** takes effect. When a value greater than 100 is set, the value **100** takes effect. |
 
 **Error codes:**
 
@@ -9536,7 +9504,7 @@ Sets the configuration parameters for frame interpolation during blankless loadi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Key value that uniquely identifies the page. This value must be the same as the **key** value of the **getBlanklessInfoWithKey** API.<br>The value cannot be empty and can contain a maximum of 2048 characters. <br>When an invalid value is set, the error code **WebBlanklessErrorCode** is returned, and the API does not take effect. |
+| key | string | Yes | Key value that uniquely identifies the page. This value must be the same as the **key** value of the **getBlanklessInfoWithKey** API. <br>The value cannot be empty and can contain a maximum of 2048 characters. <br>When an invalid value is set, the error code **WebBlanklessErrorCode** is returned, and the API does not take effect. |
 | param | [BlanklessLoadingParam](arkts-arkweb-webview-blanklessloadingparam-i.md) | Yes | Parameters for frame interpolation of blankless loading. |
 
 **Return value:**
@@ -9619,7 +9587,7 @@ Sets the network connection timeout interval. You can use the **onErrorReceive**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **Examples**
 
@@ -9693,7 +9661,7 @@ Sets a custom user agent, which will overwrite the default user agent.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -9783,8 +9751,6 @@ struct WebComponent {
 }
 ```
 
-<a id="seterrorpageenabled1"></a>
-
 ## setErrorPageEnabled
 
 ```TypeScript
@@ -9836,8 +9802,6 @@ struct WebComponent {
 }
 ```
 
-<a id="seterrorpageenabled2"></a>
-
 ## setErrorPageEnabled
 
 ```TypeScript
@@ -9852,7 +9816,7 @@ When **enable** is set to **true**, an error page is displayed when a mainframe 
 > 
 > - When **enable** is set to **false**, the error page feature for both mainframe and subframe is disabled regardless of the value of **includeSubframe**.
 > 
-> - When **includeSubframe** is set to **false**, the behavior of this API is the same as that of [setErrorPageEnabled](#seterrorpageenabled1)<sup>20+</sup>, that is, only the mainframe error page feature is enabled, and the subframe error page feature is not enabled.
+> - When **includeSubframe** is set to **false**, the behavior of this API is the same as that of [setErrorPageEnabled](#seterrorpageenabled)<sup>20+</sup>, that is, only the mainframe error page feature is enabled, and the subframe error page feature is not enabled.
 > 
 > - You can use [errorPageEvent.request.isMainFrame()](../arkts-components/arkts-arkweb-web-comp-webresourcerequest-c.md#ismainframe) to determine whether the error source is a mainframe or a subframe, so as to set the corresponding custom error page in the
 > **onOverrideErrorPage** callback.
@@ -9950,7 +9914,7 @@ Sets the IP address of the host after domain name resolution.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 
@@ -9983,7 +9947,7 @@ Sets how the **Web** component uses HTTPDNS for DNS resolution.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **Examples**
 
@@ -10028,13 +9992,13 @@ Sets the **window.navigator.onLine** attribute in JavaScript.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable the **window.navigator.onLine** attribute.<br>The value **true** indicates that the **window.navigator.onLine** attribute is enabled, and the value **false** indicates the opposite. <br>Default value: **true**. |
+| enable | boolean | Yes | Whether to enable the **window.navigator.onLine** attribute. <br>The value **true** indicates that the **window.navigator.onLine** attribute is enabled, and the value **false** indicates the opposite. <br>Default value: **true**. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -10142,7 +10106,7 @@ If a path in the list is not of the preceding paths, error code 401 is reported 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Parameter string is too long. <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Parameter string is too long. <br>3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -10257,13 +10221,13 @@ Sets whether to print the background of a web page. If the setting of this API i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to print the web page background.<br>The value **true** means to print the web page background, and **false** means the opposite. |
+| enable | boolean | Yes | Whether to print the web page background. <br>The value **true** means to print the web page background, and **false** means the opposite. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -10319,7 +10283,7 @@ Sets the ArkWeb rendering subprocess mode. You can select the appropriate mode b
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 **Examples**
 
@@ -10369,14 +10333,14 @@ Sets whether this web page is scrollable.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether this web page is scrollable.<br>The value **true** indicates that this web page is scrollable, and **false** indicates the opposite. <br>Default value: **true**. |
-| type | [ScrollType](arkts-arkweb-webview-scrolltype-e.md) | No | Scrolling type supported by the web page. The default value is supported.<br> - If the value of **enable** is set to **false**, the specified **ScrollType** is disabled. If **ScrollType** is set to the default value, all scrolling types are disabled. <br> - If the value of **enable** is set to **true**, all scrolling types are enabled regardless of the value of **ScrollType**. <br>If **null** or **undefined** is passed, error code **401** is thrown. |
+| enable | boolean | Yes | Whether this web page is scrollable. <br>The value **true** indicates that this web page is scrollable, and **false** indicates the opposite. <br>Default value: **true**. |
+| type | [ScrollType](arkts-arkweb-webview-scrolltype-e.md) | No | Scrolling type supported by the web page. The default value is supported. <br> - If the value of **enable** is set to **false**, the specified **ScrollType** is disabled. If **ScrollType** is set to the default value, all scrolling types are disabled. <br> - If the value of **enable** is set to **true**, all scrolling types are enabled regardless of the value of **ScrollType**. <br>If **null** or **undefined** is passed, error code **401** is thrown. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -10566,7 +10530,7 @@ For third-party applications that load only trusted web pages, you can disable t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [SiteIsolationMode](arkts-arkweb-webview-siteisolationmode-e.md) | Yes | Site isolation mode.<br>The default value depends on the device type and device mode. For PCs and tablets, strict site isolation is used by default. For phones, partial site isolation is used by default. In Secure Shield mode, strict site isolation is used by default. |
+| mode | [SiteIsolationMode](arkts-arkweb-webview-siteisolationmode-e.md) | Yes | Site isolation mode. <br>The default value depends on the device type and device mode. For PCs and tablets, strict site isolation is used by default. For phones, partial site isolation is used by default. In Secure Shield mode, strict site isolation is used by default. |
 
 **Error codes:**
 
@@ -10622,7 +10586,7 @@ If this API is not used to set the timeout interval for idle sockets, the defaul
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| timeout | number | Yes | Timeout interval for used sockets to stay idle in the **Web** component, in seconds.<br>Value range: [30, 300]. <br>If the value is less than 30, the value **30** takes effect. If the value is greater than 300, the value **300** takes effect. |
+| timeout | number | Yes | Timeout interval for used sockets to stay idle in the **Web** component, in seconds. <br>Value range: [30, 300]. <br>If the value is less than 30, the value **30** takes effect. If the value is greater than 300, the value **300** takes effect. |
 
 **Examples**
 
@@ -10688,8 +10652,6 @@ struct WebComponent {
 }
 ```
 
-<a id="seturltrustlist1"></a>
-
 ## setUrlTrustList
 
 ```TypeScript
@@ -10716,7 +10678,7 @@ Sets a URL trust list for the Web. Only URLs in the trust list are allowed to be
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Parameter string is too long. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Parameter string is too long. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -10782,8 +10744,6 @@ struct WebComponent {
   }
 }
 ```
-
-<a id="seturltrustlist2"></a>
 
 ## setUrlTrustList
 
@@ -11102,8 +11062,6 @@ Sets the **UserAgentMetadata** corresponding to the **User-Agent**.
 
 For details about the sample code, see [setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled).
 
-<a id="setwebdebuggingaccess1"></a>
-
 ## setWebDebuggingAccess
 
 ```TypeScript
@@ -11126,13 +11084,13 @@ NOTE: Enabling web debugging allows users to check and modify the internal statu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| webDebuggingAccess | boolean | Yes | Sets whether to enable web debugging.<br>The value **true** means to enable web debugging, and **false** means the opposite. <br>Default value: **false**. |
+| webDebuggingAccess | boolean | Yes | Sets whether to enable web debugging. <br>The value **true** means to enable web debugging, and **false** means the opposite. <br>Default value: **false**. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 
@@ -11162,8 +11120,6 @@ struct WebComponent {
 }
 ```
 
-<a id="setwebdebuggingaccess2"></a>
-
 ## setWebDebuggingAccess
 
 ```TypeScript
@@ -11172,7 +11128,7 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
 
 Sets whether to enable wireless web debugging. By default, wireless web debugging is disabled.
 
-* If no port is specified, this API is equivalent to the[setWebDebuggingAccess](#setwebdebuggingaccess1) API. In this case, ArkWeb starts a local domain socket listener.  
+* If no port is specified, this API is equivalent to the[setWebDebuggingAccess](#setwebdebuggingaccess) API. In this case, ArkWeb starts a local domain socket listener.  
 * When a port is specified, ArkWeb starts a TCP socket listener. In this case, you can debug the web page wirelessly. For details, see [Wireless Debugging](../../../web/web-debugging-with-devtools.md#wireless-debugging).
 
 A port number smaller than 1024 is a well-known or system port and can be enabled only with privileges in the operating system. Therefore, the value of port must be greater than 1024. Otherwise, the API throws an exception.
@@ -11189,8 +11145,8 @@ NOTE: Enabling web debugging allows users to check and modify the internal statu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| webDebuggingAccess | boolean | Yes | Sets whether to enable web debugging.<br>The value **true** indicates that web page debugging is enabled, and **false** indicates the opposite. |
-| port | number | Yes | Specifies the TCP port number of the DevTools service. If no port is specified, this API is equivalent to the [setWebDebuggingAccess] (#setwebdebuggingaccess) API.<br>Value range: (1024, 65535] <br>If the value of port is within the range of [0, 1024], the **BusinessError** exception is thrown. The error code is **17100023**. |
+| webDebuggingAccess | boolean | Yes | Sets whether to enable web debugging. <br>The value **true** indicates that web page debugging is enabled, and **false** indicates the opposite. |
+| port | number | Yes | Specifies the TCP port number of the DevTools service. If no port is specified, this API is equivalent to the [setWebDebuggingAccess] (#setwebdebuggingaccess) API. <br>Value range: (1024, 65535] <br>If the value of port is within the range of [0, 1024], the **BusinessError** exception is thrown. The error code is **17100023**. |
 
 **Error codes:**
 
@@ -11254,7 +11210,7 @@ Sets the destroy mode of the **Web** component. The destroy mode of the **Web** 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [WebDestroyMode](arkts-arkweb-webview-webdestroymode-e.md) | Yes | Destroy mode of the **Web** component.<br>Default value: **WebDestroyMode.NORMAL_MODE** |
+| mode | [WebDestroyMode](arkts-arkweb-webview-webdestroymode-e.md) | Yes | Destroy mode of the **Web** component. <br>Default value: **WebDestroyMode.NORMAL_MODE** |
 
 **Examples**
 
@@ -11353,7 +11309,7 @@ Sets the browser zoom factor of this web page. Both text and images are scaled s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| zoomFactor | number | Yes | Browser zoom factor to set. The value **1** indicates that the page is not zoomed. A value smaller than **1** indicates zoom-out, and a value greater than **1** indicates zoom-in.<br>Value range: [0.25, 5]. <br>Values beyond this range are clamped to the boundary. |
+| zoomFactor | number | Yes | Browser zoom factor to set. The value **1** indicates that the page is not zoomed. A value smaller than **1** indicates zoom-out, and a value greater than **1** indicates zoom-in. <br>Value range: [0.25, 5]. <br>Values beyond this range are clamped to the boundary. |
 
 **Error codes:**
 
@@ -11381,14 +11337,14 @@ Simulates a slide-to-scroll action on the page at the specified velocity.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| vx | number | Yes | Horizontal velocity component of swipe scrolling, where rightward is the positive direction.<br>Unit: vp/s. |
-| vy | number | Yes | Vertical velocity component of swipe scrolling, where downward is the positive direction.<br>Unit: vp/s. |
+| vx | number | Yes | Horizontal velocity component of swipe scrolling, where rightward is the positive direction. <br>Unit: vp/s. |
+| vy | number | Yes | Vertical velocity component of swipe scrolling, where downward is the positive direction. <br>Unit: vp/s. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 
 **Examples**
@@ -11792,8 +11748,6 @@ Stops microphone capture on the current web page.
 
 For the complete sample code, see [resumeMicrophone](#resumemicrophone).
 
-<a id="storewebarchive1"></a>
-
 ## storeWebArchive
 
 ```TypeScript
@@ -11815,7 +11769,7 @@ Stores this web page. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | baseName | string | Yes | Save path of the web page. The value cannot be null. |
-| autoName | boolean | Yes | Whether to automatically generate a file name.<br>The value **false** means the file is stored with the name specified by baseName, and **true** means the file name is automatically generated based on the current URL and stored in the directory specified by baseName. |
+| autoName | boolean | Yes | Whether to automatically generate a file name. <br>The value **false** means the file is stored with the name specified by baseName, and **true** means the file name is automatically generated based on the current URL and stored in the directory specified by baseName. |
 
 **Return value:**
 
@@ -11827,7 +11781,7 @@ Stores this web page. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 | [17100003](../errorcode-webview.md#17100003-incorrect-resource-path) | Invalid resource path or file type. |
 
@@ -11867,8 +11821,6 @@ struct WebComponent {
 }
 ```
 
-<a id="storewebarchive2"></a>
-
 ## storeWebArchive
 
 ```TypeScript
@@ -11890,14 +11842,14 @@ Stores this web page. This API uses an asynchronous callback to return the resul
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | baseName | string | Yes | Save path of the web page. The value cannot be null. |
-| autoName | boolean | Yes | Whether to automatically generate a file name.<br>The value **false** means the file is stored with the file name specified by **baseName**, and **true** means the file name is automatically generated based on the current URL and stored in the directory specified by **baseName**. |
+| autoName | boolean | Yes | Whether to automatically generate a file name. <br>The value **false** means the file is stored with the file name specified by **baseName**, and **true** means the file name is automatically generated based on the current URL and stored in the directory specified by **baseName**. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the save path if the operation is successful and null otherwise. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 | [17100003](../errorcode-webview.md#17100003-incorrect-resource-path) | Invalid resource path or file type. |
 
@@ -11957,7 +11909,7 @@ Calling this API will destroy the associated render process. If the render proce
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the render process is terminated.<br>The value **true** indicates that the render process can be destroyed or has been destroyed, and **false** indicates the opposite. |
+| boolean | Whether the render process is terminated. <br>The value **true** indicates that the render process can be destroyed or has been destroyed, and **false** indicates the opposite. |
 
 **Error codes:**
 
@@ -12015,7 +11967,7 @@ Clears the cache occupied by **Web** component based on the specified memory pre
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Parameter string is too long. <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Parameter string is too long. <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -12066,7 +12018,7 @@ Asynchronously waits for the **WebViewController** to be attached to the **Web**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| timeout | number | Yes | Asynchronous waiting duration.<br>Value range: [0, 65535] <br>Unit: ms. |
+| timeout | number | Yes | Asynchronous waiting duration. <br>Value range: [0, 65535] <br>Unit: ms. |
 
 **Return value:**
 
@@ -12248,13 +12200,13 @@ Zooms in or out of this web page. This API is effective only when [zoomAccess](.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| factor | number | Yes | Relative zoom ratio. The value must be greater than 0. The value **1** indicates that the page is not zoomed. A value smaller than **1** indicates zoom-out, and a value greater than **1** indicates zoom-in.<br>Value range: (0, 100] |
+| factor | number | Yes | Relative zoom ratio. The value must be greater than 0. The value **1** indicates that the page is not zoomed. A value smaller than **1** indicates zoom-out, and a value greater than **1** indicates zoom-in. <br>Value range: (0, 100] |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100001](../errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) | Init error. The WebviewController must be associated with a Web component. |
 | [17100004](../errorcode-webview.md#17100004-function-not-enabled) | Function not enabled. |
 

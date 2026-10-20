@@ -4,7 +4,7 @@
 export enum FlipOptions
 ```
 
-翻转选项。
+翻转选项的枚举。
 
 **起始版本：** 18
 

@@ -6,8 +6,6 @@
 import { geoLocationManager } from '@kit.LocationKit';
 ```
 
-<a id="enablelocation1"></a>
-
 ## enableLocation
 
 ```TypeScript
@@ -63,8 +61,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="enablelocation2"></a>
 
 ## enableLocation
 

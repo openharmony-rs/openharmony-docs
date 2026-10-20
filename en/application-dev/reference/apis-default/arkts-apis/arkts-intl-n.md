@@ -29,6 +29,6 @@ declare namespace Intl
 
 | Name | Description |
 | --- | --- |
-| [Collator](arkts-intl-p.md#collator) |  |
-| [DateTimeFormat](arkts-intl-p.md#datetimeformat) |  |
-| [NumberFormat](arkts-intl-p.md#numberformat) |  |
+| [Collator](arkts-intl-p.md) |  |
+| [DateTimeFormat](arkts-intl-p.md) |  |
+| [NumberFormat](arkts-intl-p.md) |  |

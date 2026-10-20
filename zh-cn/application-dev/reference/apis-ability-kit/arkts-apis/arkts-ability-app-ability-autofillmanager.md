@@ -6,6 +6,8 @@ autoFillManager模块为应用提供账号、密码、地址、电话号码等�
 
 **起始版本：** 11
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace autoFillManager--><!--Device-unnamed-declare namespace autoFillManager-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -23,8 +25,8 @@ import { autoFillManager } from '@kit.AbilityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [requestAutoFill](arkts-ability-autofillmanager-requestautofill-f.md#requestautofill) | 触发自动填充请求。 |
-| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave1) | 请求保存表单数据。使用callback异步回调。如果当前表单没有提供表单切换的功能，可以通过此接口保存历史表单输入数据，保存请求完成时会触发该回调。 |
-| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave2) | 触发自动保存请求。 |
+| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave) | 请求保存表单数据。使用callback异步回调。如果当前表单没有提供表单切换的功能，可以通过此接口保存历史表单输入数据，保存请求完成时会触发该回调。 |
+| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave) | 触发自动保存请求。 |
 
 ### 接口
 

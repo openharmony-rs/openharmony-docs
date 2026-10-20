@@ -4,7 +4,7 @@
 enum DepthDataQualityLevel
 ```
 
-Enumerates the quality levels of depth data.
+枚举深度数据的质量等级。
 
 **起始版本：** 13
 
@@ -20,7 +20,7 @@ Enumerates the quality levels of depth data.
 DEPTH_DATA_QUALITY_BAD = 0
 ```
 
-The depth map is of poor quality and cannot be used for blurring.
+深度图质量较差，无法用于虚化。
 
 **起始版本：** 13
 
@@ -36,7 +36,7 @@ The depth map is of poor quality and cannot be used for blurring.
 DEPTH_DATA_QUALITY_FAIR = 1
 ```
 
-The depth map is of average quality and cannot be used for high-quality blurring.
+深度图质量一般，无法用于高质量虚化。
 
 **起始版本：** 13
 
@@ -52,7 +52,7 @@ The depth map is of average quality and cannot be used for high-quality blurring
 DEPTH_DATA_QUALITY_GOOD = 2
 ```
 
-The depth map is of high quality and can be used for high-quality blurring.
+深度图质量较高，可用于高质量虚化。
 
 **起始版本：** 13
 

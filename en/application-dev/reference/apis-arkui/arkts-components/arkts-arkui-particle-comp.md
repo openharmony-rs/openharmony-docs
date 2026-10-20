@@ -59,7 +59,7 @@ Anonymous Object Rectification.
 | [ParticlePropertyAnimation](arkts-arkui-particle-comp-particlepropertyanimation-i.md) | Sets the lifecycle of particle properties. |
 | [ParticlePropertyOptions](arkts-arkui-particle-comp-particlepropertyoptions-i.md) | Sets particle attributes. |
 | [ParticlePropertyUpdaterConfigs](arkts-arkui-particle-comp-particlepropertyupdaterconfigs-i.md) | Sets the particle property updater configuration. |
-| [Particles](arkts-arkui-particle-comp-particles-i.md) | Defines a collection of particle animations. |
+| [Particles](arkts-arkui-particle-comp-particles-i.md#particles) | Defines a collection of particle animations. |
 | [ParticleUpdaterOptions](arkts-arkui-particle-comp-particleupdateroptions-i.md) | Defines the property change configuration. |
 | [PointParticleParameters](arkts-arkui-particle-comp-pointparticleparameters-i.md) | Sets the radius of a particle. |
 | [RippleFieldOptions](arkts-arkui-particle-comp-ripplefieldoptions-i.md) | Defines the parameters used to describe the particle ripple field information. |

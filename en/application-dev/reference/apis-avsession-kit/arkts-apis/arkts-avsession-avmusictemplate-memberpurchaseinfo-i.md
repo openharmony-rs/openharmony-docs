@@ -6,8 +6,6 @@ interface MemberPurchaseInfo
 
 The definition of member purchase information.
 
-@interface MemberPurchaseInfo
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-interface MemberPurchaseInfo--><!--Device-avMusicTemplate-interface MemberPurchaseInfo-End-->

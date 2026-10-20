@@ -6,8 +6,6 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="issuperadmin1"></a>
-
 ## isSuperAdmin
 
 ```TypeScript
@@ -61,8 +59,6 @@ adminManager.isSuperAdmin(bundleName, (err, result) => {
 
 <!--DelEnd-->
 
-
-<a id="issuperadmin2"></a>
 
 ## isSuperAdmin
 

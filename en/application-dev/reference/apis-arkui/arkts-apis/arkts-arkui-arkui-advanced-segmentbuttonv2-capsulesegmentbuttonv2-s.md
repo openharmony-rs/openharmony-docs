@@ -25,7 +25,7 @@ Creates a single-selection capsule segmented button.
 ## Modules to Import
 
 ```TypeScript
-import { SegmentButtonV2ItemOptions, OnSelectedIndexChange, OnSelectedIndexesChange, SegmentButtonV2Item, SegmentButtonV2Items, TabSegmentButtonV2, CapsuleSegmentButtonV2, MultiCapsuleSegmentButtonV2 } from '@kit.ArkUI';
+import { SegmentButtonV2ItemOptions, OnSelectedIndexChange, OnSelectedIndexesChange, SegmentButtonV2Item, SegmentButtonV2Items, TabSegmentButtonV2, CapsuleSegmentButtonV2, SegmentButtonV2InteractionMode, MultiCapsuleSegmentButtonV2 } from '@kit.ArkUI';
 ```
 
 ## $selectedIndex
@@ -299,6 +299,28 @@ This member is read-only and cannot be changed.
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-CapsuleSegmentButtonV2-readonly enableStateAnimation?: boolean--><!--Device-CapsuleSegmentButtonV2-readonly enableStateAnimation?: boolean-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## interactionMode
+
+```TypeScript
+readonly interactionMode?: SegmentButtonV2InteractionMode
+```
+
+Sets the drag interaction mode of the segmented button.
+
+If omitted, following drag is used with system material, and normal drag is used without it. Explicit normal drag without system material and explicit following drag with system material preserve the original behavior. Following drag without system material does not add material deformation or light effects. Normal drag with system material only changes drag positioning and selection updates. Material appearance, background scaling, slight displacement, selected-item deformation, and configured light effects are retained. If omitted, undefined or invalid, the default mode is used.
+
+**Type:** [SegmentButtonV2InteractionMode](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2interactionmode-e.md)
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-CapsuleSegmentButtonV2-readonly interactionMode?: SegmentButtonV2InteractionMode--><!--Device-CapsuleSegmentButtonV2-readonly interactionMode?: SegmentButtonV2InteractionMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

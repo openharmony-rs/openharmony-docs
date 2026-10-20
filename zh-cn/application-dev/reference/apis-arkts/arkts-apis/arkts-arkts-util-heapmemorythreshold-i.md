@@ -6,8 +6,6 @@ interface HeapMemoryThreshold
 
 描述 GC 后触发已注册回调的堆内存预警阈值。
 
-@interface HeapMemoryThreshold
-
 **起始版本：** 24
 
 <!--Device-util-interface HeapMemoryThreshold--><!--Device-util-interface HeapMemoryThreshold-End-->

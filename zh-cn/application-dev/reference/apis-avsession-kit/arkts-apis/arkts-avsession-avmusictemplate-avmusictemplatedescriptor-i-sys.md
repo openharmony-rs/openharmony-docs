@@ -6,8 +6,6 @@ interface AVMusicTemplateDescriptor
 
 音频模板描述。包含音频模板唯一标识，应用的包名和用户ID。
 
-@typedef {AVMusicTemplateDescriptor}
-
 **起始版本：** 23
 
 <!--Device-avMusicTemplate-interface AVMusicTemplateDescriptor--><!--Device-avMusicTemplate-interface AVMusicTemplateDescriptor-End-->

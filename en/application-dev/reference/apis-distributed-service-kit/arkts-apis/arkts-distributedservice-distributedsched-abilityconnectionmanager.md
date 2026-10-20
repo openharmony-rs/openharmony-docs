@@ -4,6 +4,8 @@ The **abilityConnectionManager** module provides APIs for cross-device connectio
 
 **Since:** 18
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace abilityConnectionManager--><!--Device-unnamed-declare namespace abilityConnectionManager-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
@@ -47,9 +49,9 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 | [destroyStream](arkts-distributedservice-abilityconnectionmanager-destroystream-f-sys.md#destroystream) | Destroy the Stream. |
 | [getSurfaceId](arkts-distributedservice-abilityconnectionmanager-getsurfaceid-f-sys.md#getsurfaceid) | Obtains the transmission surface. |
 | [off('receiveImage')](arkts-distributedservice-abilityconnectionmanager-off-f-sys.md#offreceiveimage) | Unregisters receiveImage event. |
-| [off('collaborateEvent')](arkts-distributedservice-abilityconnectionmanager-off-f-sys.md#offcollaborateevent) | Unregisters collaborateEvent event. |
-| [on('receiveImage')](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md#onreceiveimage) | Registers receiveImage event. |
-| [on('collaborateEvent')](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md#oncollaborateevent) | Registers collaborateEvent event. |
+| [off('collaborateEvent')](arkts-distributedservice-abilityconnectionmanager-off-f-sys.md#offcollaborateevent) | Unregisters the callback listener for the collaborateEvent event. This method must be used with on('collaborateEvent'). When collaboration events are no longer needed or the component is destroyed, call this method to unregister the listener and release resources. |
+| [on('receiveImage')](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md#onreceiveimage) | Registers a callback listener for the receiveImage event to receive asynchronous notifications of image transfer events. This method must be used with off('receiveImage'). When image reception is no longer needed, call off('receiveImage') to unregister the listener and release resources. |
+| [on('collaborateEvent')](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md#oncollaborateevent) | Registers a callback listener for the collaborateEvent event. This API uses an asynchronous callback. The listener must be used in pair with off('collaborateEvent'). Cancel the listener in a timely manner to release resources when event reception is no longer needed. |
 | [sendImage](arkts-distributedservice-abilityconnectionmanager-sendimage-f-sys.md#sendimage) | Send image data. |
 | [setSurfaceId](arkts-distributedservice-abilityconnectionmanager-setsurfaceid-f-sys.md#setsurfaceid) | Sets the transmission surface. |
 | [startStream](arkts-distributedservice-abilityconnectionmanager-startstream-f-sys.md#startstream) | Start Streaming |
@@ -84,7 +86,7 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 | --- | --- |
 | [CollaborateEventType](arkts-distributedservice-abilityconnectionmanager-collaborateeventtype-e.md) | Enumerates collaboration event types. |
 | [CollaborationKeys](arkts-distributedservice-abilityconnectionmanager-collaborationkeys-e.md) | Enumerates application collaboration key values. |
-| [CollaborationValues](arkts-distributedservice-abilityconnectionmanager-collaborationvalues-e.md) | Enumerates application collaboration key values. |
+| [CollaborationValues](arkts-distributedservice-abilityconnectionmanager-collaborationvalues-e.md) | Enumerates application collaboration-related values. |
 | [ConnectErrorCode](arkts-distributedservice-abilityconnectionmanager-connecterrorcode-e.md) | Enumerates connection error codes. |
 | [DisconnectReason](arkts-distributedservice-abilityconnectionmanager-disconnectreason-e.md) | Enumerates the disconnection reasons. |
 | [StartOptionParams](arkts-distributedservice-abilityconnectionmanager-startoptionparams-e.md) | Enumerates application start options. |
@@ -94,7 +96,7 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
 | Name | Description |
 | --- | --- |
-| [FlipOptions](arkts-distributedservice-abilityconnectionmanager-flipoptions-e-sys.md) | Flip option. |
+| [FlipOptions](arkts-distributedservice-abilityconnectionmanager-flipoptions-e-sys.md) | Enumerates flip options. |
 | [StartOptionParams](arkts-distributedservice-abilityconnectionmanager-startoptionparams-e-sys.md) | Enumerates application start options. |
 | [StreamRole](arkts-distributedservice-abilityconnectionmanager-streamrole-e-sys.md) | Stream transmission role. |
 | [VideoPixelFormat](arkts-distributedservice-abilityconnectionmanager-videopixelformat-e-sys.md) | Video pixelFormat Configuration Options. |

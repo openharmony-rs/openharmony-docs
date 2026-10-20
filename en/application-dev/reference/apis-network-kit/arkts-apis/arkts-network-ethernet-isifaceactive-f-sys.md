@@ -6,8 +6,6 @@
 import { ethernet } from '@kit.NetworkKit';
 ```
 
-<a id="isifaceactive1"></a>
-
 ## isIfaceActive
 
 ```TypeScript
@@ -63,8 +61,6 @@ ethernet.isIfaceActive("eth0", (error: BusinessError, value: number) => {
 
 <!--DelEnd-->
 
-
-<a id="isifaceactive2"></a>
 
 ## isIfaceActive
 

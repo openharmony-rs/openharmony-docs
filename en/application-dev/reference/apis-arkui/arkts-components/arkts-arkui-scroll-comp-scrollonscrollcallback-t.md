@@ -20,6 +20,6 @@ Represents the callback triggered when the **Scroll** component scrolls.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| xOffset | number | Yes | Horizontal offset relative to the previous frame. A positive offset indicates scrolling to the left, and a negative offset indicates scrolling to the right.<br>Unit: vp |
-| yOffset | number | Yes | Vertical offset relative to the previous frame. A positive offset indicates scrolling upward, and a negative offset indicates scrolling downward.<br>Unit: vp |
+| xOffset | number | Yes | Horizontal offset relative to the previous frame. A positive offset indicates scrolling to the left, and a negative offset indicates scrolling to the right. <br>Unit: vp |
+| yOffset | number | Yes | Vertical offset relative to the previous frame. A positive offset indicates scrolling upward, and a negative offset indicates scrolling downward. <br>Unit: vp |
 | scrollState | [ScrollState](arkts-arkui-list-comp-scrollstate-e.md) | Yes | Current scroll state. Idle indicates the idle state, Scroll indicates the scrolling state, and Fling indicates the inertial scroll state. |

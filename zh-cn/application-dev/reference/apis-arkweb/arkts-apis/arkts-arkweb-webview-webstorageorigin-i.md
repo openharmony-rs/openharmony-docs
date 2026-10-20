@@ -6,8 +6,6 @@ interface WebStorageOrigin
 
 提供Web SQL数据库的使用信息。
 
-@interface WebStorageOrigin [since 9 - 11]
-
 **起始版本：** 9
 
 <!--Device-webview-interface WebStorageOrigin--><!--Device-webview-interface WebStorageOrigin-End-->

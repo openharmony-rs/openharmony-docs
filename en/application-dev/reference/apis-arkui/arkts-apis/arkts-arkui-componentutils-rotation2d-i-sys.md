@@ -6,8 +6,6 @@ interface Rotation2D
 
 Describes a rotation in 2D, which can be defined by rotation angle and rotation center.
 
-@typedef Rotation2D
-
 **Since:** 23
 
 <!--Device-componentUtils-interface Rotation2D--><!--Device-componentUtils-interface Rotation2D-End-->

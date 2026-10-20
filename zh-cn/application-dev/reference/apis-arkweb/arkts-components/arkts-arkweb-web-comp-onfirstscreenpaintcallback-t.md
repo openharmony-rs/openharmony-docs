@@ -17,3 +17,7 @@ type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | firstScreenPaint | [FirstScreenPaint](arkts-arkweb-web-comp-firstscreenpaint-i.md) | 是 | 检测到首屏渲染时的详细信息。 |
+
+**示例**
+
+完整示例代码参考[onFirstScreenPaint](./arkts-basic-components-web-events.md#onfirstscreenpaint)。

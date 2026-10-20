@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="requestform1"></a>
-
 ## requestForm
 
 ```TypeScript
@@ -52,8 +50,6 @@ formHost.requestForm(formId, (error: Base.BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="requestform2"></a>
 
 ## requestForm
 

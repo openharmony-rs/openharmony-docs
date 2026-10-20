@@ -18,7 +18,7 @@ Defines the content for color filling.
 static readonly ORIGIN: ColorContent
 ```
 
-Resets the [fillColor](arkts-arkui-image-comp-attribute.md#fillcolor1) API, effectively the same as not setting [fillColor](arkts-arkui-image-comp-attribute.md#fillcolor1).
+Resets the [fillColor](arkts-arkui-image-comp-attribute.md#fillcolor) API, effectively the same as not setting [fillColor](arkts-arkui-image-comp-attribute.md#fillcolor).
 
 **Type:** [ColorContent](arkts-arkui-image-comp-colorcontent-c.md)
 

@@ -6,8 +6,6 @@ export interface Mesh extends SceneResource
 
 网格类型，继承自SceneResource。
 
-@extends SceneResource @interface Mesh
-
 **继承/实现关系：** Mesh extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **起始版本：** 12

@@ -45,8 +45,6 @@ let download = new cloudSync.Download()
 
 <!--DelEnd-->
 
-<a id="off1"></a>
-
 ## off
 
 ```TypeScript
@@ -78,7 +76,7 @@ Removes the specified callback from the device-cloud download progress.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
 <!--Del-->
@@ -97,8 +95,6 @@ download.off('progress', callback);
 ```
 
 <!--DelEnd-->
-
-<a id="off2"></a>
 
 ## off
 
@@ -130,7 +126,7 @@ Removes all callbacks from the device-cloud download progress.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
 <!--Del-->
@@ -179,7 +175,7 @@ Registers a listener for the download progress of a cloud file.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
 <!--Del-->
@@ -194,8 +190,6 @@ download.on('progress', (pg: cloudSync.DownloadProgress) => {
 ```
 
 <!--DelEnd-->
-
-<a id="start1"></a>
 
 ## start
 
@@ -233,7 +227,7 @@ Starts downloading a cloud file. This API uses a promise to return the result.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
 
@@ -258,8 +252,6 @@ download.start(uri).then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="start2"></a>
 
 ## start
 
@@ -292,7 +284,7 @@ Starts downloading a cloud file. This API uses an asynchronous callback to retur
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
 
@@ -315,8 +307,6 @@ download.start(uri, (err: BusinessError) => {
 ```
 
 <!--DelEnd-->
-
-<a id="stop1"></a>
 
 ## stop
 
@@ -359,7 +349,7 @@ Stops downloading a cloud file. This API uses a promise to return the result.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 <!--Del-->
 **Examples**
@@ -378,8 +368,6 @@ download.stop(uri).then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="stop2"></a>
 
 ## stop
 
@@ -417,7 +405,7 @@ Stops downloading a cloud file. This API uses an asynchronous callback to return
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 <!--Del-->
 **Examples**

@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="getdefaultvoiceslotid1"></a>
-
 ## getDefaultVoiceSlotId
 
 ```TypeScript
@@ -26,7 +24,7 @@ Obtains the default slot ID of the SIM card that provides voice services. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result.<br>- **0**: card slot 1. <br>- **1**: card slot 2. <br>- **-1**: card slot not set or service not unavailable |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. <br>- **0**: card slot 1. <br>- **1**: card slot 2. <br>- **-1**: card slot not set or service not unavailable |
 
 **Examples**
 
@@ -39,8 +37,6 @@ sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
 });
 ```
 
-
-<a id="getdefaultvoiceslotid2"></a>
 
 ## getDefaultVoiceSlotId
 
@@ -60,7 +56,7 @@ Obtains the default slot ID of the SIM card that provides voice services. This A
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the result.<br>- **0**: card slot 1. <br>- **1**: card slot 2. <br>- **-1**: card slot not set or service not unavailable |
+| Promise&lt;number&gt; | Promise used to return the result. <br>- **0**: card slot 1. <br>- **1**: card slot 2. <br>- **-1**: card slot not set or service not unavailable |
 
 **Examples**
 

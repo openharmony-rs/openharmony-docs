@@ -58,7 +58,7 @@ Obtains the number of fingers required to trigger the preset gesture.
 
 | Type | Description |
 | --- | --- |
-| number | Number of fingers required to trigger the preset gesture.<br>Value range: an integer from 1 to 10. |
+| number | Number of fingers required to trigger the preset gesture. <br>Value range: an integer from 1 to 10. |
 
 ## getState
 
@@ -254,7 +254,7 @@ Whether the current gesture recognizer is valid.
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the current gesture recognizer is valid.<br>Returns **false** if the component bound to this recognizer is destroyed or if the recognizer is not on the response chain. <br>Returns **true** if the bound component exists and the recognizer is in the response chain. |
+| boolean | Whether the current gesture recognizer is valid. <br>Returns **false** if the component bound to this recognizer is destroyed or if the recognizer is not on the response chain. <br>Returns **true** if the bound component exists and the recognizer is in the response chain. |
 
 ## preventBegin
 

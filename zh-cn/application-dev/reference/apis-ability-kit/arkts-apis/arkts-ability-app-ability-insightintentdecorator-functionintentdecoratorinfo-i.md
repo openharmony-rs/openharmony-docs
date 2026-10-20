@@ -10,10 +10,6 @@ declare interface FunctionIntentDecoratorInfo extends IntentDecoratorInfo
 
 **起始版本：** 20
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
 <!--Device-unnamed-declare interface FunctionIntentDecoratorInfo extends IntentDecoratorInfo--><!--Device-unnamed-declare interface FunctionIntentDecoratorInfo extends IntentDecoratorInfo-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -23,3 +19,23 @@ declare interface FunctionIntentDecoratorInfo extends IntentDecoratorInfo
 ```TypeScript
 import { InsightIntentLink, InsightIntentPage, InsightIntentFunctionMethod, InsightIntentFunction, InsightIntentEntry, LinkParamCategory, InsightIntentForm, InsightIntentEntity } from '@kit.AbilityKit';
 ```
+
+## permissions
+
+```TypeScript
+permissions?: string[]
+```
+
+表示该意图所需的权限。
+
+**类型：** string[]
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionIntentDecoratorInfo-permissions?: string[]--><!--Device-FunctionIntentDecoratorInfo-permissions?: string[]-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core

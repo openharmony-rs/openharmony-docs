@@ -28,13 +28,13 @@ Uninstalls an installed font file from the system font library by font name. Thi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fullName | string | Yes | Name of the font to be uninstalled. You can open the .ttf,ttc or .otf font file to obtain the name.<br>The font name is case-sensitive. Ensure that it exactly matches the actual font name. |
+| fullName | string | Yes | Name of the font to be uninstalled. You can open the .ttf,ttc or .otf font file to obtain the name. <br>The font name is case-sensitive. Ensure that it exactly matches the actual font name. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the uninstallation result.<br>- The value **0** indicates that the uninstallation is successful and the font has been removed from the system font library. <br>- Any other value indicates that the uninstallation failed. Troubleshoot based on the error code. |
+| Promise&lt;number&gt; | Promise used to return the uninstallation result. <br>- The value **0** indicates that the uninstallation is successful and the font has been removed from the system font library. <br>- Any other value indicates that the uninstallation failed. Troubleshoot based on the error code. |
 
 **Error codes:**
 

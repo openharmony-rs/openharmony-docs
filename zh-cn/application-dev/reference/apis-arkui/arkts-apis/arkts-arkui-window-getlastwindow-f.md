@@ -6,8 +6,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="getlastwindow1"></a>
-
 ## getLastWindow
 
 ```TypeScript
@@ -16,7 +14,7 @@ function getLastWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void
 
 获取当前应用内层级最高的子窗口，使用callback异步回调。
 
-若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow1)进行显示，则返回应用主窗口。
+若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)进行显示，则返回应用主窗口。
 
 **起始版本：** 9
 
@@ -38,7 +36,7 @@ function getLastWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. Top window or main window is null or destroyed;         2. This window context is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. Top window or main window is not created or destroyed;         2. Stage mode without context. |
 | [1300006](../errorcode-window.md#1300006-窗口上下文异常) | This window context is abnormal. |
 
 **示例**
@@ -87,8 +85,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="getlastwindow2"></a>
-
 ## getLastWindow
 
 ```TypeScript
@@ -97,7 +93,7 @@ function getLastWindow(ctx: BaseContext): Promise<Window>
 
 获取当前应用内层级最高的子窗口，使用Promise异步回调。
 
-若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow1)进行显示，则返回应用主窗口。
+若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)进行显示，则返回应用主窗口。
 
 **起始版本：** 9
 
@@ -124,7 +120,7 @@ function getLastWindow(ctx: BaseContext): Promise<Window>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. Top window or main window is null or destroyed;         2. This window context is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. Top window or main window is not created or destroyed;         2. Stage mode without context. |
 | [1300006](../errorcode-window.md#1300006-窗口上下文异常) | This window context is abnormal. |
 
 **示例**

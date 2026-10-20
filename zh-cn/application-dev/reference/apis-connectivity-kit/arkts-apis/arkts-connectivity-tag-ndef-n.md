@@ -24,8 +24,8 @@ import { tag } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createNdefMessage](arkts-connectivity-ndef-createndefmessage-f.md#createndefmessage1) | 使用原始字节数据创建NDEF标签的Message。该数据必须符合NDEF Record数据格式，如果不符合格式，则返回的NdefMessage数据对象，所包含的NDEF Record列表会为空。 |
-| [createNdefMessage](arkts-connectivity-ndef-createndefmessage-f.md#createndefmessage2) | 使用NDEF Records列表，创建NDEF Message。 |
+| [createNdefMessage](arkts-connectivity-ndef-createndefmessage-f.md#createndefmessage) | 使用原始字节数据创建NDEF标签的Message。该数据必须符合NDEF Record数据格式，如果不符合格式，则返回的NdefMessage数据对象，所包含的NDEF Record列表会为空。 |
+| [createNdefMessage](arkts-connectivity-ndef-createndefmessage-f.md#createndefmessage) | 使用NDEF Records列表，创建NDEF Message。 |
 | [makeApplicationRecord](arkts-connectivity-ndef-makeapplicationrecord-f.md#makeapplicationrecord) | 根据OpenHarmony应用的bundlename，构建NDEF标签的Record。 |
 | [makeExternalRecord](arkts-connectivity-ndef-makeexternalrecord-f.md#makeexternalrecord) | 根据应用程序特定的外部数据，构建NDEF标签的Record。 |
 | [makeMimeRecord](arkts-connectivity-ndef-makemimerecord-f.md#makemimerecord) | 根据输入的MIME数据和类型，构建NDEF标签的Record。 |

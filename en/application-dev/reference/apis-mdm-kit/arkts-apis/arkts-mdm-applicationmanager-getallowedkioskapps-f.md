@@ -6,8 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="getallowedkioskapps1"></a>
-
 ## getAllowedKioskApps
 
 ```TypeScript
@@ -66,8 +64,6 @@ try {
 }
 ```
 
-
-<a id="getallowedkioskapps2"></a>
 
 ## getAllowedKioskApps
 

@@ -4,11 +4,11 @@
 export enum PanelType
 ```
 
-Enumerates the types of the input method panel.<br> <br>
+Enumerates the types of the input method panel. <br>
 
 | Name | Value| Description |  
 | ------------ | -- | ------------------ |  
-| SOFT_KEYBOARD | 0 | Soft keyboard type.|
+| SOFT_KEYBOARD | 0 | Soft keyboard type.|  
 | STATUS_BAR | 1 | Status bar type.|
 
 **Since:** 10

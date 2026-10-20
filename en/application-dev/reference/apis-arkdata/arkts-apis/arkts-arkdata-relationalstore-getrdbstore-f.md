@@ -6,8 +6,6 @@
 import { relationalStore } from '@kit.ArkData';
 ```
 
-<a id="getrdbstore1"></a>
-
 ## getRdbStore
 
 ```TypeScript
@@ -22,7 +20,7 @@ When creating a database, you should consider whether to configure the [encrypt]
 
 | Encryption Type When the RDB Store Is Opened | Encryption Type When the RDB Store Is Created | Result|  
 | ------- | -------------------------------- | ---- |  
-| Non-encryption| Encryption | The RDB store is opened in encrypted mode. |
+| Non-encryption| Encryption | The RDB store is opened in encrypted mode. |  
 | Encryption| Non-encryption | The RDB store is opened in non-encrypted mode. |
 
 Currently, **getRdbStore()** does not support multi-thread concurrent operations.
@@ -45,7 +43,7 @@ Currently, **getRdbStore()** does not support multi-thread concurrent operations
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800010](../errorcode-data-rdb.md#14800010-invalid-database-path) | Failed to open or delete the database by an invalid database path. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
@@ -118,8 +116,6 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="getrdbstore2"></a>
-
 ## getRdbStore
 
 ```TypeScript
@@ -134,7 +130,7 @@ When creating a database, you should consider whether to configure the [encrypt]
 
 | Encryption Type When the RDB Store Is Opened | Encryption Type When the RDB Store Is Created | Result|  
 | ------- | -------------------------------- | ---- |  
-| Non-encryption| Encryption | The RDB store is opened in encrypted mode. |
+| Non-encryption| Encryption | The RDB store is opened in encrypted mode. |  
 | Encryption| Non-encryption | The RDB store is opened in non-encrypted mode. |
 
 Currently, **getRdbStore()** does not support multi-thread concurrent operations.
@@ -162,7 +158,7 @@ Currently, **getRdbStore()** does not support multi-thread concurrent operations
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800010](../errorcode-data-rdb.md#14800010-invalid-database-path) | Failed to open or delete the database by an invalid database path. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |

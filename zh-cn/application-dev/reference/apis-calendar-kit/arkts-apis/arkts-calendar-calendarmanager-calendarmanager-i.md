@@ -18,8 +18,6 @@ export interface CalendarManager
 import { calendarManager } from '@kit.CalendarKit';
 ```
 
-<a id="createcalendar1"></a>
-
 ## createCalendar
 
 ```TypeScript
@@ -53,9 +51,9 @@ createCalendar(calendarAccount: CalendarAccount): Promise<Calendar>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: <br>1. 必填参数为空；<br>2. 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -77,8 +75,6 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 });
 ```
-
-<a id="createcalendar2"></a>
 
 ## createCalendar
 
@@ -108,9 +104,9 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calenda
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: <br>1. 必填参数为空；<br>2. 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -137,8 +133,6 @@ try {
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="deletecalendar1"></a>
 
 ## deleteCalendar
 
@@ -173,9 +167,9 @@ deleteCalendar(calendar: Calendar): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: <br>1. 必填参数为空；<br>2. 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -209,8 +203,6 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 })
 ```
 
-<a id="deletecalendar2"></a>
-
 ## deleteCalendar
 
 ```TypeScript
@@ -239,9 +231,9 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: <br>1. 必填参数为空；<br>2. 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -325,8 +317,6 @@ calendarMgr?.editEvent(event).then((eventId: number): void => {
 });
 ```
 
-<a id="getallcalendars1"></a>
-
 ## getAllCalendars
 
 ```TypeScript
@@ -356,7 +346,7 @@ getAllCalendars(): Promise<Calendar[]>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -378,8 +368,6 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
   
 });
 ```
-
-<a id="getallcalendars2"></a>
 
 ## getAllCalendars
 
@@ -408,9 +396,9 @@ getAllCalendars(callback: AsyncCallback<Calendar[]>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: <br>1. 必填参数为空；<br>2. 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -432,8 +420,6 @@ calendarMgr?.getAllCalendars((err: BusinessError, data: calendarManager.Calendar
   }
 });
 ```
-
-<a id="getcalendar1"></a>
 
 ## getCalendar
 
@@ -473,7 +459,7 @@ getCalendar(calendarAccount?: CalendarAccount): Promise<Calendar>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900003](../errorcode-calendarManager.md#23900003-未找到指定的账户) | 未找到指定的账户。<br>**适用版本：** 23+ |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -490,8 +476,6 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
   console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="getcalendar2"></a>
 
 ## getCalendar
 
@@ -526,7 +510,7 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback<Calendar>)
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
 | [23900003](../errorcode-calendarManager.md#23900003-未找到指定的账户) | 未找到指定的账户。<br>**适用版本：** 23+ |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -555,8 +539,6 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
   // 检查权限是否已成功申请或者参数是否正确。
 })
 ```
-
-<a id="getcalendar3"></a>
 
 ## getCalendar
 
@@ -587,9 +569,9 @@ getCalendar(callback: AsyncCallback<Calendar>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。 |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因:<br>1. 必填参数为空；<br>2. 参数类型不正确。 |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | 参数检查失败，可能原因: <br>1. 必填参数为空；<br>2. 参数类型不正确。 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | 该设备不支持此API。 |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 

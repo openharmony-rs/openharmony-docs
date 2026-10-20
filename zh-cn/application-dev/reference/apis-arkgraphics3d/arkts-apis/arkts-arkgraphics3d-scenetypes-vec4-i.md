@@ -6,8 +6,6 @@ export interface Vec4
 
 四维向量，通常用于表示4D空间中的点、方向或向量变换，由x、y、z和w四个分量组成。
 
-@typedef Vec4
-
 **起始版本：** 12
 
 <!--Device-unnamed-export interface Vec4--><!--Device-unnamed-export interface Vec4-End-->

@@ -40,12 +40,11 @@ Sets custom event parameters. This API uses a promise to return the result. Duri
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
 | [11100001](../errorcode-hiappevent.md#11100001-application-event-logging-disabled) | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
-| [11101001](../errorcode-hiappevent.md#11101001-invalid-event-domain-name) | Invalid event domain. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
-| [11101002](../errorcode-hiappevent.md#11101002-invalid-event-name) | Invalid event name. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
+| [11101001](../errorcode-hiappevent.md#11101001-invalid-event-domain-name) | Invalid event domain. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
+| [11101002](../errorcode-hiappevent.md#11101002-invalid-event-name) | Invalid event name. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
 | [11101004](../errorcode-hiappevent.md#11101004-invalid-event-parameter-string-length) | Invalid string length of the event parameter. |
-| [11101005](../errorcode-hiappevent.md#11101005-invalid-event-parameter-name) | Invalid event parameter name. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
+| [11101005](../errorcode-hiappevent.md#11101005-invalid-event-parameter-name) | Invalid event parameter name. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
 | [11101007](../errorcode-hiappevent.md#11101007-invalid-number-of-custom-event-parameters) | The number of parameter keys exceeds the limit. |
 
 **Examples**

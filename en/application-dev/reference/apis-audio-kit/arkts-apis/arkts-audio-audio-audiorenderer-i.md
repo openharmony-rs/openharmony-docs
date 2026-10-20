@@ -6,7 +6,7 @@ interface AudioRenderer
 
 This interface provides APIs for audio rendering.
 
-Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer1) to create an AudioRenderer instance.
+Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer) to create an AudioRenderer instance.
 
 > **NOTE:** 
 > 
@@ -23,8 +23,6 @@ Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkt
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 ```
-
-<a id="drain1"></a>
 
 ## drain
 
@@ -59,8 +57,6 @@ audioRenderer.drain((err: BusinessError) => {
   }
 });
 ```
-
-<a id="drain2"></a>
 
 ## drain
 
@@ -132,8 +128,6 @@ audioRenderer.flush().then(() => {
 });
 ```
 
-<a id="getaudioeffectmode1"></a>
-
 ## getAudioEffectMode
 
 ```TypeScript
@@ -168,8 +162,6 @@ audioRenderer.getAudioEffectMode((err: BusinessError, effectMode: audio.AudioEff
 });
 ```
 
-<a id="getaudioeffectmode2"></a>
-
 ## getAudioEffectMode
 
 ```TypeScript
@@ -202,8 +194,6 @@ audioRenderer.getAudioEffectMode().then((effectMode: audio.AudioEffectMode) => {
 });
 ```
 
-<a id="getaudiostreamid1"></a>
-
 ## getAudioStreamId
 
 ```TypeScript
@@ -233,8 +223,6 @@ audioRenderer.getAudioStreamId((err: BusinessError, streamId: number) => {
   console.info(`Renderer GetStreamId: ${streamId}`);
 });
 ```
-
-<a id="getaudiostreamid2"></a>
 
 ## getAudioStreamId
 
@@ -302,8 +290,6 @@ try {
 }
 ```
 
-<a id="getaudiotime1"></a>
-
 ## getAudioTime
 
 ```TypeScript
@@ -333,8 +319,6 @@ audioRenderer.getAudioTime((err: BusinessError, timestamp: number) => {
   console.info(`Current timestamp: ${timestamp}`);
 });
 ```
-
-<a id="getaudiotime2"></a>
 
 ## getAudioTime
 
@@ -492,8 +476,6 @@ try {
 }
 ```
 
-<a id="getbuffersize1"></a>
-
 ## getBufferSize
 
 ```TypeScript
@@ -531,8 +513,6 @@ audioRenderer.getBufferSize((err: BusinessError, data: number) => {
 });
 ```
 
-<a id="getbuffersize2"></a>
-
 ## getBufferSize
 
 ```TypeScript
@@ -551,7 +531,7 @@ Obtains a reasonable minimum buffer size in bytes for rendering. This API uses a
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the buffer size.<br>The unit is bytes. |
+| Promise&lt;number&gt; | Promise used to return the buffer size. <br>The unit is bytes. |
 
 **Examples**
 
@@ -604,8 +584,6 @@ try {
 }
 ```
 
-<a id="getcurrentoutputdevices1"></a>
-
 ## getCurrentOutputDevices
 
 ```TypeScript
@@ -648,8 +626,6 @@ audioRenderer.getCurrentOutputDevices((err: BusinessError, deviceInfo: audio.Aud
   }
 });
 ```
-
-<a id="getcurrentoutputdevices2"></a>
 
 ## getCurrentOutputDevices
 
@@ -819,8 +795,6 @@ Gets loudness gain of this stream.
 let loudnessGain = audioRenderer.getLoudnessGain();
 ```
 
-<a id="getmaxstreamvolume1"></a>
-
 ## getMaxStreamVolume
 
 ```TypeScript
@@ -855,8 +829,6 @@ audioRenderer.getMaxStreamVolume((err: BusinessError, maxVolume: number) => {
 });
 ```
 
-<a id="getmaxstreamvolume2"></a>
-
 ## getMaxStreamVolume
 
 ```TypeScript
@@ -875,7 +847,7 @@ Obtains the maximum volume of the audio stream. This API uses a promise to retur
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the maximum volume of the audio stream.<br>The volume range is [0.0, 1.0]. |
+| Promise&lt;number&gt; | Promise used to return the maximum volume of the audio stream. <br>The volume range is [0.0, 1.0]. |
 
 **Examples**
 
@@ -923,8 +895,6 @@ try {
 }
 ```
 
-<a id="getminstreamvolume1"></a>
-
 ## getMinStreamVolume
 
 ```TypeScript
@@ -959,8 +929,6 @@ audioRenderer.getMinStreamVolume((err: BusinessError, minVolume: number) => {
 });
 ```
 
-<a id="getminstreamvolume2"></a>
-
 ## getMinStreamVolume
 
 ```TypeScript
@@ -979,7 +947,7 @@ Obtains the minimum volume of the audio stream. This API uses a promise to retur
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the minimum volume of the audio stream.<br>The volume range is [0.0, 1.0]. |
+| Promise&lt;number&gt; | Promise used to return the minimum volume of the audio stream. <br>The volume range is [0.0, 1.0]. |
 
 **Examples**
 
@@ -1027,8 +995,6 @@ try {
 }
 ```
 
-<a id="getrendererinfo1"></a>
-
 ## getRendererInfo
 
 ```TypeScript
@@ -1062,8 +1028,6 @@ audioRenderer.getRendererInfo((err: BusinessError, audioRendererInfo: audio.Audi
   }
 });
 ```
-
-<a id="getrendererinfo2"></a>
 
 ## getRendererInfo
 
@@ -1183,8 +1147,6 @@ Obtains the playback speed.
 let speed = audioRenderer.getSpeed();
 ```
 
-<a id="getstreaminfo1"></a>
-
 ## getStreamInfo
 
 ```TypeScript
@@ -1218,8 +1180,6 @@ audioRenderer.getStreamInfo((err: BusinessError, streamInfo: audio.AudioStreamIn
   console.info(`Renderer encoding type: ${streamInfo.encodingType}`);
 });
 ```
-
-<a id="getstreaminfo2"></a>
 
 ## getStreamInfo
 
@@ -1294,8 +1254,6 @@ try {
 }
 ```
 
-<a id="getunderflowcount1"></a>
-
 ## getUnderflowCount
 
 ```TypeScript
@@ -1329,8 +1287,6 @@ audioRenderer.getUnderflowCount((err: BusinessError, underflowCount: number) => 
   }
 });
 ```
-
-<a id="getunderflowcount2"></a>
 
 ## getUnderflowCount
 
@@ -2128,8 +2084,6 @@ audioRenderer.start().then(() => {
 });
 ```
 
-<a id="pause1"></a>
-
 ## pause
 
 ```TypeScript
@@ -2164,8 +2118,6 @@ audioRenderer.pause((err: BusinessError) => {
 });
 ```
 
-<a id="pause2"></a>
-
 ## pause
 
 ```TypeScript
@@ -2197,8 +2149,6 @@ audioRenderer.pause().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
-
-<a id="release1"></a>
 
 ## release
 
@@ -2234,8 +2184,6 @@ audioRenderer.release((err: BusinessError) => {
 });
 ```
 
-<a id="release2"></a>
-
 ## release
 
 ```TypeScript
@@ -2267,8 +2215,6 @@ audioRenderer.release().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
-
-<a id="setaudioeffectmode1"></a>
 
 ## setAudioEffectMode
 
@@ -2311,8 +2257,6 @@ audioRenderer.setAudioEffectMode(audio.AudioEffectMode.EFFECT_DEFAULT, (err: Bus
   }
 });
 ```
-
-<a id="setaudioeffectmode2"></a>
 
 ## setAudioEffectMode
 
@@ -2456,7 +2400,7 @@ Sets the independent audio session strategy and behavior parameters.
 > **NOTE:** 
 > 
 > If this API is called while an audio renderer is running, you must call the
-> [start](#start1) API again for
+> [start](#start) API again for
 > the settings to take effect.
 
 **Since:** 24
@@ -2490,8 +2434,6 @@ let strategy: audio.AudioSessionStrategy = {
 let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
 audioRenderer.setIndependentAudioSessionStrategy(strategy, behavior);
 ```
-
-<a id="setinterruptmode1"></a>
 
 ## setInterruptMode
 
@@ -2528,8 +2470,6 @@ audioRenderer.setInterruptMode(mode, (err: BusinessError) => {
   console.info('setInterruptMode Success!');
 });
 ```
-
-<a id="setinterruptmode2"></a>
 
 ## setInterruptMode
 
@@ -2712,8 +2652,6 @@ Sets the playback speed.
 audioRenderer.setSpeed(1.5);
 ```
 
-<a id="setvolume1"></a>
-
 ## setVolume
 
 ```TypeScript
@@ -2748,8 +2686,6 @@ audioRenderer.setVolume(0.5, (err: BusinessError) => {
   console.info('setVolume Success!');
 });
 ```
-
-<a id="setvolume2"></a>
 
 ## setVolume
 
@@ -2827,8 +2763,6 @@ audioRenderer.setVolumeWithRamp(volume, duration);
 console.info(`setVolumeWithRamp: ${volume}`);
 ```
 
-<a id="start1"></a>
-
 ## start
 
 ```TypeScript
@@ -2863,8 +2797,6 @@ audioRenderer.start((err: BusinessError) => {
 });
 ```
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -2883,7 +2815,7 @@ Starts this audio renderer. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise object, which indicates that the renderer is started successfully. If the operation fails, an error object with one of the following error codes is returned:<br>Error code 6800301: indicates abnormal status, focus preemption failure, and abnormal system processing. For details, see system logs. |
+| Promise&lt;void&gt; | Promise object, which indicates that the renderer is started successfully. If the operation fails, an error object with one of the following error codes is returned: <br>Error code 6800301: indicates abnormal status, focus preemption failure, and abnormal system processing. For details, see system logs. |
 
 **Examples**
 
@@ -2896,8 +2828,6 @@ audioRenderer.start().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
-
-<a id="stop1"></a>
 
 ## stop
 
@@ -2933,8 +2863,6 @@ audioRenderer.stop((err: BusinessError) => {
 });
 ```
 
-<a id="stop2"></a>
-
 ## stop
 
 ```TypeScript
@@ -2966,8 +2894,6 @@ audioRenderer.stop().then(() => {
   console.error(`ERROR: ${err}`);
 });
 ```
-
-<a id="getrenderrate1"></a>
 
 ## getRenderRate
 
@@ -3002,8 +2928,6 @@ audioRenderer.getRenderRate((err: BusinessError, renderRate: audio.AudioRenderer
   console.info(`getRenderRate: ${renderRate}`);
 });
 ```
-
-<a id="getrenderrate2"></a>
 
 ## getRenderRate
 
@@ -3079,8 +3003,6 @@ try {
 }
 ```
 
-<a id="setrenderrate1"></a>
-
 ## setRenderRate
 
 ```TypeScript
@@ -3119,8 +3041,6 @@ audioRenderer.setRenderRate(audio.AudioRendererRate.RENDER_RATE_NORMAL, (err: Bu
   }
 });
 ```
-
-<a id="setrenderrate2"></a>
 
 ## setRenderRate
 
@@ -3163,8 +3083,6 @@ audioRenderer.setRenderRate(audio.AudioRendererRate.RENDER_RATE_NORMAL).then(() 
   console.error(`ERROR: ${err}`);
 });
 ```
-
-<a id="write1"></a>
 
 ## write
 
@@ -3237,8 +3155,6 @@ audioRenderer.getBufferSize().then((data: number)=> {
     console.error(`AudioFrameworkRenderLog: getBufferSize: ERROR: ${err}`);
 });
 ```
-
-<a id="write2"></a>
 
 ## write
 

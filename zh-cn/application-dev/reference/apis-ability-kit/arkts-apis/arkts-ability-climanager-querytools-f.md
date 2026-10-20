@@ -17,7 +17,6 @@ function queryTools(): Promise<Array<ToolInfo>>
 **起始版本：** 26.0.1
 
 **需要权限：** 
-- API版本26：ohos.permission.QUERY_CLI_TOOL
 - API版本26+：ohos.permission.QUERY_CLI_TOOL or ohos.permission.QUERY_PUBLIC_CLI_TOOL
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -37,5 +36,4 @@ function queryTools(): Promise<Array<ToolInfo>>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 26.0.0 |
 | [35600050](../errorcode-ability.md#35600050-偶发性报错) | System Error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module. |

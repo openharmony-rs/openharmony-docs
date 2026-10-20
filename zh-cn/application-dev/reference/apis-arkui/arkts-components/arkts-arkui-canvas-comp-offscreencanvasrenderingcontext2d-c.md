@@ -27,8 +27,6 @@ declare class OffscreenCanvasRenderingContext2D extends CanvasRenderer
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -55,9 +53,7 @@ constructor(width: number, height: number, settings?: RenderingContextSettings)
 | --- | --- | --- | --- |
 | width | number | 是 | 离屏画布的宽度，默认单位：vp。<br>异常值NaN和Infinity按无效值处理。 |
 | height | number | 是 | 离屏画布的高度，默认单位：vp。<br>异常值NaN和Infinity按无效值处理。 |
-| settings | [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的参数，见RenderingContextSettings接口描述。<br>异常值undefined按RenderingContextSettings的默认值处理。<br>默认值：null。 |
-
-<a id="constructor2"></a>
+| settings | [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的参数，当需要开启抗锯齿等高级配置时传入此参数，见RenderingContextSettings接口描述。<br>异常值undefined按RenderingContextSettings的默认值处理。<br>默认值：null。 |
 
 ## constructor
 
@@ -85,7 +81,7 @@ constructor(width: number, height: number, settings?: RenderingContextSettings, 
 | --- | --- | --- | --- |
 | width | number | 是 | 离屏画布的宽度，默认单位：vp。<br>异常值NaN和Infinity按无效值处理。 |
 | height | number | 是 | 离屏画布的高度，默认单位：vp。<br>异常值NaN和Infinity按无效值处理。 |
-| settings | [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的参数，见RenderingContextSettings接口描述。<br>异常值undefined按RenderingContextSettings的默认值处理。<br>默认值：null。 |
+| settings | [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的参数，当需要开启抗锯齿等高级配置时传入此参数，见RenderingContextSettings接口描述。<br>异常值undefined按RenderingContextSettings的默认值处理。<br>默认值：null。 |
 | unit | LengthMetricsUnit | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md)。<br>异常值undefined、NaN和Infinity按默认值处理。<br>默认值：DEFAULT。 |
 
 ## toDataURL

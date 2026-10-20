@@ -6,8 +6,6 @@ export type ContinueDeviceInfo = _ContinueDeviceInfo
 
 Parameters corresponding to continue mission.
 
-@typedef { _ContinueDeviceInfo }
-
 **Type:** _ContinueDeviceInfo
 
 **Since:** 10

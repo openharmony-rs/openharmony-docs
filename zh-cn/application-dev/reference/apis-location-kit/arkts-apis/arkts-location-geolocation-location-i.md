@@ -6,8 +6,6 @@ export interface Location
 
 位置信息。
 
-@interface Location
-
 **起始版本：** 7
 
 **废弃版本：** 9

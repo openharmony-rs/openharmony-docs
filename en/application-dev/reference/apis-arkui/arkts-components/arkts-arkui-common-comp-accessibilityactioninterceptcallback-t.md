@@ -4,7 +4,7 @@
 declare type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => AccessibilityActionInterceptResult
 ```
 
-Defines the callback type used in accessibility action intercept. The value of action indicates the accessibility action type.
+Defines the callback type used in onAccessibilityActionIntercept.
 
 **Since:** 20
 
@@ -22,10 +22,10 @@ Defines the callback type used in accessibility action intercept. The value of a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| action | [AccessibilityAction](arkts-arkui-common-comp-accessibilityaction-e.md) | Yes | the enum of accessibility action type. |
+| action | [AccessibilityAction](arkts-arkui-common-comp-accessibilityaction-e.md) | Yes | Type of the accessibility control operation currently triggered. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [AccessibilityActionInterceptResult](arkts-arkui-common-comp-accessibilityactioninterceptresult-e.md) | the result of continuing to execute the action or interrupting it or bubbling up |
+| [AccessibilityActionInterceptResult](arkts-arkui-common-comp-accessibilityactioninterceptresult-e.md) | Result of intercepting an accessibility control operation, used to determine whether to intercept the accessibility control operation of the current component and the subsequent processing method. |

@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function unlinkSync(path: string): void
 ```
 
-Removes a file. This API returns the result synchronously.
+Deletes a single file synchronously. This method cannot be used to delete a directory.
 
 **Since:** 9
 

@@ -38,7 +38,7 @@ Sets the alignment format of child components in the vertical direction. After t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [VerticalAlign](../arkts-apis/arkts-arkui-verticalalign-e.md) | Yes | Alignment format of child components in the vertical direction.<br>Default value: **VerticalAlign.Center** |
+| value | [VerticalAlign](../arkts-apis/arkts-arkui-verticalalign-e.md) | Yes | Alignment format of child components in the vertical direction. <br>Default value: **VerticalAlign.Center** |
 
 ## justifyContent
 
@@ -69,7 +69,7 @@ Sets the alignment format of child components in the horizontal direction. After
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [FlexAlign](../arkts-apis/arkts-arkui-flexalign-e.md) | Yes | Alignment format of child components in the horizontal direction.<br>Default value: **FlexAlign.Start** <br>**Note:** Since API version 9, the **space** parameter does not take effect when **space** is a negative number or **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**. |
+| value | [FlexAlign](../arkts-apis/arkts-arkui-flexalign-e.md) | Yes | Alignment format of child components in the horizontal direction. <br>Default value: **FlexAlign.Start** <br>**Note:** Since API version 9, the **space** parameter does not take effect when **space** is a negative number or **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**. |
 
 ## reverse
 
@@ -105,4 +105,4 @@ Sets whether to reverse the arrangement order of child components in the horizon
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isReversed | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the arrangement order of child components in the horizontal direction is reversed.<br>The value **true** means that the child components are arranged in reverse order in the horizontal direction (from right to left), and the value **false** means that the child components are arranged in normal order in the horizontal direction (from left to right). If the parameter value is **undefined**, it is treated as **true**, and the main axis direction is reversed. |
+| isReversed | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the arrangement order of child components in the horizontal direction is reversed. <br>The value **true** means that the child components are arranged in reverse order in the horizontal direction (from right to left), and the value **false** means that the child components are arranged in normal order in the horizontal direction (from left to right). If the parameter value is **undefined**, it is treated as **true**, and the main axis direction is reversed. |

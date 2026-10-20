@@ -6,8 +6,6 @@ export interface DownloadStyleOptions
 
 Defines the DownloadFileButton style option.
 
-@interface DownloadStyleOptions
-
 **Since:** 12
 
 <!--Device-unnamed-export interface DownloadStyleOptions--><!--Device-unnamed-export interface DownloadStyleOptions-End-->

@@ -12,8 +12,6 @@ declare class Indicator<T>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="bottom1"></a>
-
 ## bottom
 
 ```TypeScript
@@ -45,8 +43,6 @@ bottom(value: Length): T
 | 类型 | 说明 |
 | --- | --- |
 | T | 返回当前导航点指示器，用于支持链式调用配置其他导航点属性。 |
-
-<a id="bottom2"></a>
 
 ## bottom
 

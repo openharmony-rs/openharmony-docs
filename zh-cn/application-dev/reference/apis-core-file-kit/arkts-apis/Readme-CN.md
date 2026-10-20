@@ -358,16 +358,41 @@
   - [StorageStats（系统接口）](arkts-corefile-storagestatistics-storagestats-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [UserdataDirInfo（系统接口）](arkts-corefile-storagestatistics-userdatadirinfo-i-sys.md)<!--DelEnd-->
-<!--Del-->
-- [@ohos.file.volumeManager（卷管理）](arkts-corefile-file-volumemanager.md)<!--DelEnd-->
+- [@ohos.file.volumeManager（卷管理）](arkts-corefile-file-volumemanager.md)
+  <!--Del-->
+  - [burn（系统接口）](arkts-corefile-volumemanager-burn-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [createIsoImage（系统接口）](arkts-corefile-volumemanager-createisoimage-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [createPartition（系统接口）](arkts-corefile-volumemanager-createpartition-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [deletePartition（系统接口）](arkts-corefile-volumemanager-deletepartition-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [eject（系统接口）](arkts-corefile-volumemanager-eject-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [erase（系统接口）](arkts-corefile-volumemanager-erase-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [format（系统接口）](arkts-corefile-volumemanager-format-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [formatPartition（系统接口）](arkts-corefile-volumemanager-formatpartition-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getAllDisks（系统接口）](arkts-corefile-volumemanager-getalldisks-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [getAllVolumes（系统接口）](arkts-corefile-volumemanager-getallvolumes-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getDiskById（系统接口）](arkts-corefile-volumemanager-getdiskbyid-f-sys.md)<!--DelEnd-->
+  - [getExternalDiskInfos](arkts-corefile-volumemanager-getexternaldiskinfos-f.md)
+  - [getExternalVolumeInfos](arkts-corefile-volumemanager-getexternalvolumeinfos-f.md)
+  <!--Del-->
+  - [getOpProcess（系统接口）](arkts-corefile-volumemanager-getopprocess-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getPartitionTable（系统接口）](arkts-corefile-volumemanager-getpartitiontable-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getVolumeById（系统接口）](arkts-corefile-volumemanager-getvolumebyid-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getVolumeByUuid（系统接口）](arkts-corefile-volumemanager-getvolumebyuuid-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [isVolumeInUse（系统接口）](arkts-corefile-volumemanager-isvolumeinuse-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [mount（系统接口）](arkts-corefile-volumemanager-mount-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -377,7 +402,21 @@
   <!--Del-->
   - [unmount（系统接口）](arkts-corefile-volumemanager-unmount-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [Disk（系统接口）](arkts-corefile-volumemanager-disk-i-sys.md)<!--DelEnd-->
+  - [ExternalDiskInfo](arkts-corefile-volumemanager-externaldiskinfo-i.md)
+  - [ExternalVolumeInfo](arkts-corefile-volumemanager-externalvolumeinfo-i.md)
+  <!--Del-->
+  - [FormatParams（系统接口）](arkts-corefile-volumemanager-formatparams-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PartitionInfo（系统接口）](arkts-corefile-volumemanager-partitioninfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PartitionParams（系统接口）](arkts-corefile-volumemanager-partitionparams-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [PartitionTableInfo（系统接口）](arkts-corefile-volumemanager-partitiontableinfo-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [Volume（系统接口）](arkts-corefile-volumemanager-volume-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [DiskType（系统接口）](arkts-corefile-volumemanager-disktype-e-sys.md)<!--DelEnd-->
 - [@ohos.fileshare](arkts-corefile-fileshare.md)
   - [activatePermission](arkts-corefile-fileshare-activatepermission-f.md)
   <!--Del-->

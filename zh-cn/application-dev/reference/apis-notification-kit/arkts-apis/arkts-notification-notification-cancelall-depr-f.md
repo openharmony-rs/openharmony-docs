@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="cancelall1"></a>
-
 ## cancelAll
 
 ```TypeScript
@@ -31,8 +29,22 @@ function cancelAll(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
 
+**示例**
 
-<a id="cancelall2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+// cancel回调
+let cancelAllCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("cancelAll failed " + JSON.stringify(err));
+  } else {
+    console.info("cancelAll success");
+  }
+}
+Notification.cancelAll(cancelAllCallback);
+```
+
 
 ## cancelAll
 
@@ -57,3 +69,15 @@ function cancelAll(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+Notification.cancelAll().then(() => {
+  console.info("cancelAll success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`cancelAll failed, code is ${err}`);
+});
+```

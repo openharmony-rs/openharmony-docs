@@ -4,7 +4,7 @@
 interface LuminationInfo
 ```
 
-Describes the illumination information.
+描述光照信息。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 readonly lumination?: number
 ```
 
-Illumination. The value range is [0, 1].
+光照度。取值范围为[0, 1]。
 
 **类型：** number
 

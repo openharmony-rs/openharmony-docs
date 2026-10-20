@@ -32,7 +32,7 @@ Sets additional information for a specified application instance. This API can b
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
 | additionalInfo | string | Yes | Additional information to set. |
-| appIndex | number | Yes | Index of the application mode.The value must be equal to 0 or 10000.<br>The value should be an integer. |
+| appIndex | number | Yes | Index of the application mode.The value must be equal to 0 or 10000. <br>The value should be an integer. |
 
 **Error codes:**
 

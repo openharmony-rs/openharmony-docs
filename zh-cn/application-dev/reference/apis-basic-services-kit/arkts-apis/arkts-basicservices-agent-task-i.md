@@ -4,7 +4,7 @@
 interface Task
 ```
 
-上传或下载任务。使用该方法前需要先获取Task对象，promise形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create2)获取，callback形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create1)获取。
+上传或下载任务。使用该方法前需要先获取Task对象，promise形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create)获取，callback形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create)获取。
 
 > **说明：** 
 > 
@@ -21,8 +21,6 @@ interface Task
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
 ```
-
-<a id="off1"></a>
 
 ## off
 
@@ -55,10 +53,8 @@ off(event: 'progress', callback?: (progress: Progress) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | task mode error.<br>**适用版本：** 10 |
-
-<a id="off2"></a>
 
 ## off
 
@@ -91,10 +87,8 @@ off(event: 'completed', callback?: (progress: Progress) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10 |
-
-<a id="off3"></a>
 
 ## off
 
@@ -127,10 +121,8 @@ off(event: 'failed', callback?: (progress: Progress) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10 |
-
-<a id="off4"></a>
 
 ## off
 
@@ -161,9 +153,7 @@ off(event: 'pause', callback?: (progress: Progress) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="off5"></a>
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## off
 
@@ -194,9 +184,7 @@ off(event: 'resume', callback?: (progress: Progress) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="off6"></a>
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## off
 
@@ -227,9 +215,7 @@ off(event: 'remove', callback?: (progress: Progress) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
-
-<a id="off7"></a>
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 
 ## off
 
@@ -262,9 +248,7 @@ off(event: 'response', callback?: Callback<HttpResponse>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="off8"></a>
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## off
 
@@ -295,9 +279,7 @@ off(event: 'faultOccur', callback?: Callback<Faults>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="off9"></a>
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## off
 
@@ -328,9 +310,7 @@ off(event: 'wait', callback?: Callback<WaitingReason>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="on1"></a>
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## on
 
@@ -363,10 +343,8 @@ on(event: 'progress', callback: (progress: Progress) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | task mode error.<br>**适用版本：** 10 |
-
-<a id="on2"></a>
 
 ## on
 
@@ -399,10 +377,8 @@ on(event: 'completed', callback: (progress: Progress) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | task mode error.<br>**适用版本：** 10 |
-
-<a id="on3"></a>
 
 ## on
 
@@ -410,7 +386,7 @@ on(event: 'completed', callback: (progress: Progress) => void): void
 on(event: 'failed', callback: (progress: Progress) => void): void
 ```
 
-订阅任务失败事件，使用callback异步回调。可通过调用[request.agent.show](arkts-basicservices-agent-show-f.md#show2)查看错误原因。
+订阅任务失败事件，使用callback异步回调。可通过调用[request.agent.show](arkts-basicservices-agent-show-f.md#show)查看错误原因。
 
 > **说明：** 
 > 
@@ -435,10 +411,8 @@ on(event: 'failed', callback: (progress: Progress) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10 |
-
-<a id="on4"></a>
 
 ## on
 
@@ -469,9 +443,7 @@ on(event: 'pause', callback: (progress: Progress) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="on5"></a>
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## on
 
@@ -502,9 +474,7 @@ on(event: 'resume', callback: (progress: Progress) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="on6"></a>
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## on
 
@@ -535,9 +505,7 @@ on(event: 'remove', callback: (progress: Progress) => void): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="on7"></a>
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## on
 
@@ -570,9 +538,7 @@ on(event: 'response', callback: Callback<HttpResponse>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="on8"></a>
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## on
 
@@ -603,9 +569,7 @@ on(event: 'faultOccur', callback: Callback<Faults>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="on9"></a>
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## on
 
@@ -636,9 +600,7 @@ on(event: 'wait', callback: Callback<WaitingReason>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="pause1"></a>
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## pause
 
@@ -646,7 +608,7 @@ on(event: 'wait', callback: Callback<WaitingReason>): void
 pause(callback: AsyncCallback<void>): void
 ```
 
-暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](#resume1)恢复。使用callback异步回调。
+暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](#resume)恢复。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -668,15 +630,13 @@ pause(callback: AsyncCallback<void>): void
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10 |
 | [21900007](../errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="pause2"></a>
-
 ## pause
 
 ```TypeScript
 pause(): Promise<void>
 ```
 
-暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](#resume1)恢复。使用Promise异步回调。
+暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](#resume)恢复。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -697,8 +657,6 @@ pause(): Promise<void>
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10 |
 | [21900007](../errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
-
-<a id="resume1"></a>
 
 ## resume
 
@@ -730,8 +688,6 @@ resume(callback: AsyncCallback<void>): void
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900005](../errorcode-request.md#21900005-任务模式错误) | Operation with wrong task mode.<br>**适用版本：** 10 |
 | [21900007](../errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
-
-<a id="resume2"></a>
 
 ## resume
 
@@ -794,10 +750,8 @@ setMaxSpeed(speed: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
-
-<a id="start1"></a>
 
 ## start
 
@@ -840,8 +794,6 @@ start(callback: AsyncCallback<void>): void
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900007](../errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -883,15 +835,13 @@ start(): Promise<void>
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900007](../errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
 stop(callback: AsyncCallback<void>): void
 ```
 
-停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start1)恢复。使用callback异步回调。
+停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start)恢复。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -914,15 +864,13 @@ stop(callback: AsyncCallback<void>): void
 | [13400003](../errorcode-request.md#13400003-服务异常) | Task service ability error. |
 | [21900007](../errorcode-request.md#21900007-在不支持的状态上的操作) | Operation with wrong task state. |
 
-<a id="stop2"></a>
-
 ## stop
 
 ```TypeScript
 stop(): Promise<void>
 ```
 
-停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start1)恢复。使用Promise异步回调。
+停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start)恢复。使用Promise异步回调。
 
 **起始版本：** 10
 

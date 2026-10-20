@@ -135,3 +135,8 @@ LANDSCAPE表示风景照片会被推荐。
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **系统接口：** 此接口为系统接口。
+
+<!--Del-->
+**示例**
+
+<!--DelEnd-->

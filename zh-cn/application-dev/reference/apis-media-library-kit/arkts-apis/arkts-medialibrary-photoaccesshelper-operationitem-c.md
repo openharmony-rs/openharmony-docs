@@ -28,7 +28,7 @@ field?: PhotoKeys
 
 当前仅支持如下关键字段：URI、PHOTO_TYPE、DISPLAY_NAME、SIZE、DURATION、WIDTH、HEIGHT、ORIENTATION、FAVORITE、TITLE、POSITION、PHOTO_SUBTYPE、DYNAMIC_RANGE_TYPE、COVER_POSITION、BURST_KEY、LCD_SIZE、THM_SIZE、DETAIL_TIME、MEDIA_SUFFIX、OWNER_ALBUM_ID、ASPECT_RATIO、DATE_TAKEN_MS<sup>24+</sup>
 
-通过[select](arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md#select1)接口配置此参数时，输入非法字段会抛出错误码401；通过PhotoPickerComponent (PhotoPicker组件)配置此参数时，输入非法字段无onPickerControllerReady回调。
+通过[select](arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md#select)接口配置此参数时，输入非法字段会抛出错误码401；通过PhotoPickerComponent (PhotoPicker组件)配置此参数时，输入非法字段无onPickerControllerReady回调。
 
 非条件谓词如and、or、beginWrap、endWrap等不涉及该字段。
 

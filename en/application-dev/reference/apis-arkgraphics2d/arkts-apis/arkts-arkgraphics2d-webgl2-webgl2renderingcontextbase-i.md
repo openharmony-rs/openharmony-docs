@@ -134,7 +134,7 @@ Binds a sampler
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | unit | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | Yes | Texture unit |
-| sampler | [WebGLSampler](arkts-arkgraphics2d-webgl2-webglsampler-i.md) &#124; null | Yes | [Sampler](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-sampler-i.md) |
+| sampler | [WebGLSampler](arkts-arkgraphics2d-webgl2-webglsampler-i.md) &#124; null | Yes | Sampler |
 
 ## bindTransformFeedback
 
@@ -220,7 +220,7 @@ Blits framebuffer
 | dstY0 | [webgl.GLint](arkts-arkgraphics2d-glint-t.md) | Yes | Destination Y0 |
 | dstX1 | [webgl.GLint](arkts-arkgraphics2d-glint-t.md) | Yes | Destination X1 |
 | dstY1 | [webgl.GLint](arkts-arkgraphics2d-glint-t.md) | Yes | Destination Y1 |
-| mask | [webgl.GLbitfield](arkts-arkgraphics2d-glbitfield-t.md) | Yes | [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) |
+| mask | [webgl.GLbitfield](arkts-arkgraphics2d-glbitfield-t.md) | Yes | Mask |
 | filter | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Filter |
 
 ## clearBufferfi
@@ -363,8 +363,6 @@ Client waits for sync object
 | --- | --- |
 | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Result |
 
-<a id="compressedteximage3d1"></a>
-
 ## compressedTexImage3D
 
 ```TypeScript
@@ -404,8 +402,6 @@ Compressed texture image 3D from PBO offset
 | border | [webgl.GLint](arkts-arkgraphics2d-glint-t.md) | Yes | Border |
 | imageSize | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Image size |
 | offset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | Offset |
-
-<a id="compressedteximage3d2"></a>
 
 ## compressedTexImage3D
 
@@ -449,8 +445,6 @@ Compressed texture image 3D from ArrayBufferView
 | srcOffset | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | Source offset |
 | srcLengthOverride | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | Source length override |
 
-<a id="compressedtexsubimage3d1"></a>
-
 ## compressedTexSubImage3D
 
 ```TypeScript
@@ -491,11 +485,9 @@ Compressed texture sub image 3D from PBO offset
 | width | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Width |
 | height | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Height |
 | depth | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Depth |
-| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Format](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-format-e.md) |
+| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Format |
 | imageSize | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Image size |
 | offset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | Offset |
-
-<a id="compressedtexsubimage3d2"></a>
 
 ## compressedTexSubImage3D
 
@@ -538,7 +530,7 @@ Compressed texture sub image 3D from ArrayBufferView
 | width | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Width |
 | height | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Height |
 | depth | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Depth |
-| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Format](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-format-e.md) |
+| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Format |
 | srcData | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) | Yes | Source data |
 | srcOffset | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | Source offset |
 | srcLengthOverride | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | Source length override |
@@ -838,7 +830,7 @@ Draws arrays instanced
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Mode](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-agent-mode-e.md) |
+| mode | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Mode |
 | first | [webgl.GLint](arkts-arkgraphics2d-glint-t.md) | Yes | First |
 | count | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Count |
 | instanceCount | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Instance count |
@@ -865,7 +857,7 @@ Sets draw buffers
 | --- | --- | --- | --- |
 | buffers | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md)[] | Yes | Buffers |
 
-## drawElementsInstanced
+## drawElementsInstanced('webgl.GLenum')
 
 ```TypeScript
 drawElementsInstanced(
@@ -891,13 +883,13 @@ Draws elements instanced
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Mode](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-agent-mode-e.md) |
+| mode | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Mode |
 | count | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Count |
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | offset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | Offset |
 | instanceCount | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Instance count |
 
-## drawRangeElements
+## drawRangeElements('webgl.GLenum')
 
 ```TypeScript
 drawRangeElements(
@@ -924,7 +916,7 @@ Draws range elements
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Mode](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-agent-mode-e.md) |
+| mode | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Mode |
 | start | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | Yes | Start |
 | end | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | Yes | End |
 | count | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Count |
@@ -1153,7 +1145,7 @@ Gets buffer sub data
 | srcByteOffset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | Source byte offset |
 | dstBuffer | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) | Yes | Destination buffer |
 | dstOffset | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | Destination offset |
-| length | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | [Length](../../apis-arkui/arkts-apis/arkts-arkui-length-t.md) |
+| length | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | Length |
 
 ## getFragDataLocation
 
@@ -1176,7 +1168,7 @@ Gets fragment data location
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | program | [webgl.WebGLProgram](arkts-arkgraphics2d-webgl-webglprogram-i.md) | Yes | Program |
-| name | string | Yes | [Name](../../apis-contacts-kit/arkts-apis/arkts-contacts-contact-name-c.md) |
+| name | string | Yes | Name |
 
 **Return value:**
 
@@ -1321,7 +1313,7 @@ Gets sampler parameter
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sampler | [WebGLSampler](arkts-arkgraphics2d-webgl2-webglsampler-i.md) | Yes | [Sampler](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-sampler-i.md) |
+| sampler | [WebGLSampler](arkts-arkgraphics2d-webgl2-webglsampler-i.md) | Yes | Sampler |
 | pname | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Parameter name |
 
 **Return value:**
@@ -1551,7 +1543,7 @@ Returns whether a sampler is valid
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sampler | [WebGLSampler](arkts-arkgraphics2d-webgl2-webglsampler-i.md) &#124; null | Yes | [Sampler](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-sampler-i.md) |
+| sampler | [WebGLSampler](arkts-arkgraphics2d-webgl2-webglsampler-i.md) &#124; null | Yes | Sampler |
 
 **Return value:**
 
@@ -1749,7 +1741,7 @@ Sets sampler parameterf
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sampler | [WebGLSampler](arkts-arkgraphics2d-webgl2-webglsampler-i.md) | Yes | [Sampler](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-sampler-i.md) |
+| sampler | [WebGLSampler](arkts-arkgraphics2d-webgl2-webglsampler-i.md) | Yes | Sampler |
 | pname | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Parameter name |
 | param | [webgl.GLfloat](arkts-arkgraphics2d-glfloat-t.md) | Yes | Parameter value |
 
@@ -1773,13 +1765,11 @@ Sets sampler parameteri
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sampler | [WebGLSampler](arkts-arkgraphics2d-webgl2-webglsampler-i.md) | Yes | [Sampler](../../apis-arkgraphics3d/arkts-apis/arkts-arkgraphics3d-sceneresources-sampler-i.md) |
+| sampler | [WebGLSampler](arkts-arkgraphics2d-webgl2-webglsampler-i.md) | Yes | Sampler |
 | pname | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Parameter name |
 | param | [webgl.GLint](arkts-arkgraphics2d-glint-t.md) | Yes | Parameter value |
 
-<a id="teximage3d1"></a>
-
-## texImage3D
+## texImage3D('webgl.GLenum')
 
 ```TypeScript
 texImage3D(
@@ -1817,13 +1807,11 @@ Sets texture image 3D from PBO offset
 | height | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Height |
 | depth | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Depth |
 | border | [webgl.GLint](arkts-arkgraphics2d-glint-t.md) | Yes | Border |
-| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Format](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-format-e.md) |
+| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Format |
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | pboOffset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | PBO offset |
 
-<a id="teximage3d2"></a>
-
-## texImage3D
+## texImage3D('webgl.GLenum')
 
 ```TypeScript
 texImage3D(
@@ -1861,13 +1849,11 @@ Sets texture image 3D from TexImageSource
 | height | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Height |
 | depth | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Depth |
 | border | [webgl.GLint](arkts-arkgraphics2d-glint-t.md) | Yes | Border |
-| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Format](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-format-e.md) |
+| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Format |
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | source | [webgl.TexImageSource](arkts-arkgraphics2d-teximagesource-t.md) | Yes | Image source |
 
-<a id="teximage3d3"></a>
-
-## texImage3D
+## texImage3D('webgl.GLenum')
 
 ```TypeScript
 texImage3D(
@@ -1905,13 +1891,11 @@ Sets texture image 3D from ArrayBufferView
 | height | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Height |
 | depth | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Depth |
 | border | [webgl.GLint](arkts-arkgraphics2d-glint-t.md) | Yes | Border |
-| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Format](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-format-e.md) |
+| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Format |
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | srcData | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) &#124; null | Yes | Source data |
 
-<a id="teximage3d4"></a>
-
-## texImage3D
+## texImage3D('webgl.GLenum')
 
 ```TypeScript
 texImage3D(
@@ -1950,7 +1934,7 @@ Sets texture image 3D from ArrayBufferView with offset
 | height | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Height |
 | depth | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Depth |
 | border | [webgl.GLint](arkts-arkgraphics2d-glint-t.md) | Yes | Border |
-| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Format](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-format-e.md) |
+| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Format |
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | srcData | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) | Yes | Source data |
 | srcOffset | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | Yes | Source offset |
@@ -2021,9 +2005,7 @@ Sets texture storage 3D
 | height | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Height |
 | depth | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Depth |
 
-<a id="texsubimage3d1"></a>
-
-## texSubImage3D
+## texSubImage3D('webgl.GLenum')
 
 ```TypeScript
 texSubImage3D(
@@ -2063,13 +2045,11 @@ Sets texture sub image 3D from PBO offset
 | width | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Width |
 | height | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Height |
 | depth | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Depth |
-| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Format](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-format-e.md) |
+| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Format |
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | pboOffset | [webgl.GLintptr](arkts-arkgraphics2d-glintptr-t.md) | Yes | PBO offset |
 
-<a id="texsubimage3d2"></a>
-
-## texSubImage3D
+## texSubImage3D('webgl.GLenum')
 
 ```TypeScript
 texSubImage3D(
@@ -2109,13 +2089,11 @@ Sets texture sub image 3D from TexImageSource
 | width | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Width |
 | height | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Height |
 | depth | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Depth |
-| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Format](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-format-e.md) |
+| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Format |
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | source | [webgl.TexImageSource](arkts-arkgraphics2d-teximagesource-t.md) | Yes | Image source |
 
-<a id="texsubimage3d3"></a>
-
-## texSubImage3D
+## texSubImage3D('webgl.GLenum')
 
 ```TypeScript
 texSubImage3D(
@@ -2156,7 +2134,7 @@ Sets texture sub image 3D from ArrayBufferView
 | width | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Width |
 | height | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Height |
 | depth | [webgl.GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Depth |
-| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Format](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-format-e.md) |
+| format | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Format |
 | type | [webgl.GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Type |
 | srcData | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) &#124; null | Yes | Source data |
 | srcOffset | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | No | Source offset |
@@ -2750,7 +2728,7 @@ Sets vertex attrib I4uiv value
 | index | [webgl.GLuint](arkts-arkgraphics2d-gluint-t.md) | Yes | Vertex attribute index |
 | values | [Uint32List](arkts-arkgraphics2d-uint32list-t.md) | Yes | Values |
 
-## vertexAttribIPointer
+## vertexAttribIPointer('webgl.GLenum')
 
 ```TypeScript
 vertexAttribIPointer(

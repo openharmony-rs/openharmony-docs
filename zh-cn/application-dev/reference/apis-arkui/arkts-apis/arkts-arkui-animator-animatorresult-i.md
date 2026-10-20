@@ -200,8 +200,6 @@ play(): void
 animator.play();
 ```
 
-<a id="reset1"></a>
-
 ## reset
 
 ```TypeScript
@@ -228,7 +226,7 @@ reset(options: AnimatorOptions): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The specified page is not found or the object property list is not obtained. |
 
 **示例**
@@ -270,15 +268,13 @@ struct AnimatorTest {
 }
 ```
 
-<a id="reset2"></a>
-
 ## reset
 
 ```TypeScript
 reset(options: AnimatorOptions | SimpleAnimatorOptions): void
 ```
 
-重置当前animator动画参数。与[reset](#reset1)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。建议在动画未开始播放或播放结束后（[onFinish](#onfinish)或[onCancel](#oncancel)回调触发后）调用此方法，重新设置动画参数后调用[play](#play)启动新动画。
+重置当前animator动画参数。与[reset](#reset)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。建议在动画未开始播放或播放结束后（[onFinish](#onfinish)或[onCancel](#oncancel)回调触发后）调用此方法，重新设置动画参数后调用[play](#play)启动新动画。
 
 **起始版本：** 18
 
@@ -300,7 +296,7 @@ reset(options: AnimatorOptions | SimpleAnimatorOptions): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The specified page is not found or the object property list is not obtained. |
 
 **示例**

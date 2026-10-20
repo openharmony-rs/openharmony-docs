@@ -4,7 +4,7 @@
 interface ColorEffect extends ColorEffectQuery
 ```
 
-ColorEffect extends [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md) Provides the APIs to obtain and set the lens color effect.
+ColorEffect 继承 [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md)提供获取和设置镜头色彩效果的接口。
 
 **继承/实现关系：** ColorEffect extends [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md)
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 getColorEffect(): ColorEffectType
 ```
 
-Obtains the color effect in use.
+获取当前使用的色彩效果。
 
 **起始版本：** 11
 
@@ -42,7 +42,7 @@ Obtains the color effect in use.
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorEffectType](arkts-camera-camera-coloreffecttype-e-sys.md) | Color effect. |
+| [ColorEffectType](arkts-camera-camera-coloreffecttype-e-sys.md) | 色彩效果。 |
 
 **错误码：**
 
@@ -69,7 +69,7 @@ function getColorEffect(session: camera.PhotoSessionForSys): camera.ColorEffectT
 setColorEffect(type: ColorEffectType): void
 ```
 
-Sets a color effect. Before the setting, call [getSupportedColorEffects](arkts-camera-camera-coloreffectquery-i-sys.md#getsupportedcoloreffects) to obtain the supported color effects.
+设置色彩效果。设置前，请先调用[getSupportedColorEffects](arkts-camera-camera-coloreffectquery-i-sys.md#getsupportedcoloreffects) 获取支持的色彩效果。
 
 **起始版本：** 11
 
@@ -83,7 +83,7 @@ Sets a color effect. Before the setting, call [getSupportedColorEffects](arkts-c
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [ColorEffectType](arkts-camera-camera-coloreffecttype-e-sys.md) | 是 | The type of color effect. |
+| type | [ColorEffectType](arkts-camera-camera-coloreffecttype-e-sys.md) | 是 | 色彩效果类型。 |
 
 **错误码：**
 

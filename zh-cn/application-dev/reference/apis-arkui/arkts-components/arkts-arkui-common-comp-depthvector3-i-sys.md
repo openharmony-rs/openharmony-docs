@@ -14,8 +14,6 @@ declare interface DepthVector3
 > 
 > - 本模块为系统接口。
 
-@interface DepthVector3
-
 **起始版本：** 26.0.0
 
 <!--Device-unnamed-declare interface DepthVector3--><!--Device-unnamed-declare interface DepthVector3-End-->

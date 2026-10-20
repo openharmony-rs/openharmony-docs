@@ -4,7 +4,7 @@
 class EffectSuggestionStatus
 ```
 
-Effect suggestion status
+效果建议状态
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 status: boolean
 ```
 
-Effect Suggestion type status.
+效果建议类型状态。
 
 **类型：** boolean
 
@@ -44,7 +44,7 @@ Effect Suggestion type status.
 type: EffectSuggestionType
 ```
 
-Effect Suggestion type.
+效果建议类型。
 
 **类型：** [EffectSuggestionType](arkts-camera-camera-effectsuggestiontype-e-sys.md)
 

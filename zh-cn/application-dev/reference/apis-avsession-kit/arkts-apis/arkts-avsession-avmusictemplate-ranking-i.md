@@ -6,8 +6,6 @@ interface Ranking extends MediaEntity
 
 排行榜的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。
 
-@extends MediaEntity @interface Ranking
-
 **继承/实现关系：** Ranking extends [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)
 
 **起始版本：** 23

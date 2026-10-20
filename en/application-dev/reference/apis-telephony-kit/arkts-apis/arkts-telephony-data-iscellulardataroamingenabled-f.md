@@ -6,8 +6,6 @@
 import { data } from '@kit.TelephonyKit';
 ```
 
-<a id="iscellulardataroamingenabled1"></a>
-
 ## isCellularDataRoamingEnabled
 
 ```TypeScript
@@ -30,8 +28,8 @@ Checks whether roaming is enabled for the cellular data service. This API uses a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result.<br>**true**: Roaming is enabled for the cellular data service. <br>**false**: Roaming is disabled for the cellular data service. |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. <br>**true**: Roaming is enabled for the cellular data service. <br>**false**: Roaming is disabled for the cellular data service. |
 
 **Error codes:**
 
@@ -60,8 +58,6 @@ data.isCellularDataRoamingEnabled(0, (err: BusinessError, contextData: boolean) 
 ```
 
 
-<a id="iscellulardataroamingenabled2"></a>
-
 ## isCellularDataRoamingEnabled
 
 ```TypeScript
@@ -84,13 +80,13 @@ Checks whether roaming is enabled for the cellular data service. This API uses a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result.<br>**true**: Roaming is enabled for the cellular data service. <br>**false**: Roaming is disabled for the cellular data service. |
+| Promise&lt;boolean&gt; | Promise used to return the result. <br>**true**: Roaming is enabled for the cellular data service. <br>**false**: Roaming is disabled for the cellular data service. |
 
 **Error codes:**
 

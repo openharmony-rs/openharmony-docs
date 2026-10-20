@@ -4,7 +4,7 @@
 export class ColumnLayoutAlgorithm implements LayoutAlgorithm
 ```
 
-垂直方向线性布局算法类。
+垂直方向线性布局算法类，用于实现子组件的垂直线性排列。适用于需要垂直排列子组件的场景，如纵向列表、垂直堆叠的表单项、垂直菜单等。支持设置子组件间距、水平对齐方式、垂直对齐方式和排列方向，提供类似Column组件的布局能力。
 
 > **说明：** 
 > 

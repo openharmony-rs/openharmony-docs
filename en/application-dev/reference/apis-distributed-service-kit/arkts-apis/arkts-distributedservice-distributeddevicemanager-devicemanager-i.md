@@ -39,8 +39,8 @@ Binds a device. This API uses an asynchronous callback to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | deviceId | string | Yes | Device ID. The value is a string of 1 to 255 characters. |
-| bindParam | { [key: string]: Object; } | Yes | Authentication parameters. You can determine the key-value pair to be passed in. By default, the following keys are carried:<br>**bindType**: binding type, which is mandatory. <br>The value **1** means PIN authentication. <br>**targetPkgName**: bundle name of the target to bind. <br>**appName**: application that attempts to bind the target. <br>**appOperation**: reason for the application to bind the target. <br>**customDescription**: detailed description of the operation. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;{deviceId: string;}&gt; | Yes | Callback used to return the authentication result. |
+| bindParam | { [key: string]: Object; } | Yes | Authentication parameters. The following keys can be passed in: <br>bindType (number, mandatory): Binding type. The value **1** means PIN authentication. Passing in other values will result in a parameter error. <br>targetPkgName (string, optional): Bundle name of the target to bind. If not passed in, the bundle name of the caller application is used by default. <br>appName (string, optional): Application that attempts to bind the target. It is displayed on the authentication UI to show the application that initiates the binding. If not passed in, it is not displayed. <br>appOperation (string, optional): Reason for the application to bind the target. It is displayed to the user to explain the binding purpose. If not passed in, it is not displayed. <br>customDescription (string, optional): Detailed supplement for the binding operation. It is displayed to the user to provide a more specific operation description. If not passed in, it is not displayed. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;{deviceId: string;}&gt; | Yes | Callback used to return the authentication result. When the authentication succeeds, **err** is **undefined** and **data** is an object containing **deviceId**; when the authentication fails, **err** is an error object. |
 
 **Error codes:**
 
@@ -85,8 +85,6 @@ try {
   console.error('bindTarget errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
-
-<a id="getavailabledevicelist1"></a>
 
 ## getAvailableDeviceList
 
@@ -137,8 +135,6 @@ try {
   console.error('getAvailableDeviceList errCode:' + e.code + ',errMessage:' + e.message);
 }
 ```
-
-<a id="getavailabledevicelist2"></a>
 
 ## getAvailableDeviceList
 
@@ -593,7 +589,7 @@ Unsubscribes from the **'discoverSuccess'** event. This API uses an asynchronous
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'discoverSuccess' | Yes | Event type, which has a fixed value of **'discoverSuccess'**. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;{ device: DeviceBasicInfo; }&gt; | No | Callback to unregister. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;{ device: DeviceBasicInfo; }&gt; | No | Callback to unregister, returning the discovered device information. If specified, this parameter unregisters the corresponding callback. Otherwise, all registered discoverSuccess callbacks are unregistered. |
 
 **Error codes:**
 
@@ -855,7 +851,7 @@ Subscribes to the **'discoverSuccess'** event. The application will be notified 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'discoverSuccess' | Yes | Event type, which has a fixed value of **'discoverSuccess'**. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;{ device: DeviceBasicInfo; }&gt; | Yes | Callback invoked when a device is successfully discovered. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;{ device: DeviceBasicInfo; }&gt; | Yes | Callback invoked when a device is successfully discovered, returning the discovered device information (**DeviceBasicInfo**). |
 
 **Error codes:**
 
@@ -962,7 +958,7 @@ Subscribes to the **'discoverFailure'** event. The application will be notified 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'discoverFailure' | Yes | Event type, which has a fixed value of **'discoverFailure'**. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;{ reason: number; }&gt; | Yes | Callback invoked when a device fails to be discovered. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;{ reason: number; }&gt; | Yes | Callback invoked when a device fails to be discovered. The callback parameter **reason** is of the number type, indicating the error code for the discovery failure. For details about the value, see [Device Management Error Codes](../../../reference/apis-distributedservice-kit/errorcode-device-manager.md). |
 
 **Error codes:**
 
@@ -1059,8 +1055,8 @@ Starts to discover devices nearby. The discovery process takes 2 minutes. A maxi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| discoverParam | { [key: string]: Object; } | Yes | Identifier of the device to discover. It specifies the type of the target to discover.<br>**discoverTargetType**: The default discovery target is device. The value is **1**. |
-| filterOptions | { [key: string]: Object; } | No | Options for filtering the devices to discover. The default value is **undefined**, which means to discover offline devices. The options include the following:<br>- **availableStatus(0-1)**: status of the device to discover. The value **0** means the device is untrusted. <br>- **0**: The device is offline. The client needs to call **bindTarget** to bind the device. <br>- **1**: The device is online and can be connected. <br>**discoverDistance(0-100)**: distance of the device to discover, in cm. This parameter is not used in Wi-Fi scenarios. <br>**authenticationStatus(0-1)**: authentication status of the device to discover. <br>- **0**: The device is not authenticated. <br>The value **1** means the device has been authenticated. <br>- **authorizationType(0-2)**: authorization type of the device to discover. <br>- **0**: The device is authenticated by a temporarily agreed session key. <br>- **1**: The device is authenticated by a key of the same account. <br>- **2**: The device is authenticated by a credential key of different accounts. |
+| discoverParam | { [key: string]: Object; } | Yes | Identifier of the device to discover. It specifies the type of the target to discover. <br>**discoverTargetType**: The default discovery target is device. The value is **1**. |
+| filterOptions | { [key: string]: Object; } | No | Options for filtering the devices to discover. The default value is **undefined**, which means to discover offline devices. The options include the following keys (if a key is not passed in, filtering is not performed by that dimension): <br>availableStatus(0-1): Filters devices by availability status. Values outside the range do not take effect. <br>- 0: The device is offline. The client needs to call **bindTarget** to bind the device. <br>- 1: The device is online and can be connected. <br>discoverDistance(0-100): Discovers devices within a specified distance, in cm. Values outside the range do not take effect. This parameter is not supported when Wi-Fi is used for device discovery. If passed in, it does not take effect. <br>authenticationStatus(0-1): Discovers devices by authentication status. Values outside the range do not take effect: <br>- 0: The device is not authenticated. The client needs to call **bindTarget** for authentication and binding. <br>- 1: The device is authenticated and can be used for distributed services. <br>authorizationType(0-2): Discovers devices by authorization type. Values outside the range do not take effect: <br>- 0: The device is authenticated by a temporarily agreed session key. <br>- 1: The device is authenticated by a key of the same account. <br>- 2: The device is authenticated by a credential key of different accounts. |
 
 **Error codes:**
 

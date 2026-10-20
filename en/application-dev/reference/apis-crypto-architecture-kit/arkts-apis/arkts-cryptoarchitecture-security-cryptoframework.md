@@ -4,6 +4,10 @@ The **cryptoFramework** module provides APIs for cryptographic operations, shiel
 
 **Since:** 9
 
+**Model restriction:** 
+- API version 12 and later: This API can be used in both the stage model and FA model.
+- API versions 9 to 11: This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace cryptoFramework--><!--Device-unnamed-declare namespace cryptoFramework-End-->
 
 **System capability:** SystemCapability.Security.CryptoFramework
@@ -26,8 +30,8 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | [createKdf](arkts-cryptoarchitecture-cryptoframework-createkdf-f.md#createkdf) | Creates a key derivation function instance. |
 | [createKem](arkts-cryptoarchitecture-cryptoframework-createkem-f.md#createkem) | Creates a Kem instance for key encapsulation and decapsulation operations. |
 | [createKeyAgreement](arkts-cryptoarchitecture-cryptoframework-createkeyagreement-f.md#createkeyagreement) | Creates a **KeyAgreement** instance. |
-| [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac1) | Creates a **Mac** instance. |
-| [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac2) | Creates a **Mac** instance. |
+| [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac) | Creates a **Mac** instance. |
+| [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac) | Creates a **Mac** instance. |
 | [createMd](arkts-cryptoarchitecture-cryptoframework-createmd-f.md#createmd) | Creates an **Md** instance. |
 | [createRandom](arkts-cryptoarchitecture-cryptoframework-createrandom-f.md#createrandom) | Creates a **Random** instance. |
 | [createSign](arkts-cryptoarchitecture-cryptoframework-createsign-f.md#createsign) | Creates a **Sign** instance. |
@@ -52,7 +56,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | [AsyKeyGeneratorBySpec](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md) | Asymmetric key generator interface with specified key specifications, defining methods for generating asymmetric keys based on specified key specifications. Before use, you must create an **AsyKeyGeneratorBySpec** instance by using [createAsyKeyGeneratorBySpec](arkts-cryptoarchitecture-cryptoframework-createasykeygeneratorbyspec-f.md). |
 | [AsyKeySpec](arkts-cryptoarchitecture-cryptoframework-asykeyspec-i.md) | Defines the asymmetric key parameters for creating a key generator. You need to construct a child class object and pass it to [createAsyKeyGeneratorBySpec()](arkts-cryptoarchitecture-cryptoframework-createasykeygeneratorbyspec-f.md) to create a key generator. When constructing a child class object, use little-endian format for RSA keys and use big-endian format and positive numbers for other key parameters of the bigint type. |
 | [CcmParamsSpec](arkts-cryptoarchitecture-cryptoframework-ccmparamsspec-i.md) | Encapsulates the parameters for encryption or decryption using the CCM AEAD mode, which requires an IV, AAD, and an authentication tag. It is a child class of [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) and used as a parameter in [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init) for symmetric encryption or decryption. |
-| [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) | Encryption and decryption interface, defining methods for symmetric and asymmetric encryption and decryption. Before use, you must create a **Cipher** instance by using [createCipher(transformation: string): Cipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md). Call the [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init), [update()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update1), and [doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal) APIs in this class as needed to complete encryption or decryption operations. |
+| [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) | Encryption and decryption interface, defining methods for symmetric and asymmetric encryption and decryption. Before use, you must create a **Cipher** instance by using [createCipher(transformation: string): Cipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md). Call the [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init), [update()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update), and [doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal) APIs in this class as needed to complete encryption or decryption operations. |
 | [CmacSpec](arkts-cryptoarchitecture-cryptoframework-cmacspec-i.md) | Represents the child class of [MacSpec](arkts-cryptoarchitecture-cryptoframework-macspec-i.md). It is used as an input parameter for CMAC computation. |
 | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | Encapsulates binary data. The core field **data** is of the Uint8Array type. |
 | [DHCommonParamsSpec](arkts-cryptoarchitecture-cryptoframework-dhcommonparamsspec-i.md) | Defines a child class of [AsyKeySpec](arkts-cryptoarchitecture-cryptoframework-asykeyspec-i.md) used to specify the common parameters of the public and private keys in the DH algorithm. |
@@ -84,7 +88,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | [KeyAgreement](arkts-cryptoarchitecture-cryptoframework-keyagreement-i.md) | Key agreement interface, defining methods for generating shared secrets based on asymmetric key pairs. Before use, you must create a **KeyAgreement** instance by using [createKeyAgreement(algName: string): KeyAgreement](arkts-cryptoarchitecture-cryptoframework-createkeyagreement-f.md). |
 | [KeyEncodingConfig](arkts-cryptoarchitecture-cryptoframework-keyencodingconfig-i.md) | Represents the RSA private key encoding parameters. You can use it to generate an encoded private key string with the specified algorithm and password. |
 | [KeyPair](arkts-cryptoarchitecture-cryptoframework-keypair-i.md) | Defines an asymmetric key pair, which includes a public key and a private key. |
-| [Mac](arkts-cryptoarchitecture-cryptoframework-mac-i.md) | Message authentication code (MAC) interface, defining methods for calculating MACs based on symmetric keys. Before use, you must create a **Mac** instance by using [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac1). |
+| [Mac](arkts-cryptoarchitecture-cryptoframework-mac-i.md) | Message authentication code (MAC) interface, defining methods for calculating MACs based on symmetric keys. Before use, you must create a **Mac** instance by using [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac). |
 | [MacSpec](arkts-cryptoarchitecture-cryptoframework-macspec-i.md) | Represents the message authentication code (MAC) parameters. You need to construct a child class object and use it as a parameter when computing an HMAC or a CMAC. |
 | [Md](arkts-cryptoarchitecture-cryptoframework-md-i.md) | Message digest interface, defining methods for calculating message digests. Before use, you must create an **Md** instance by using [createMd](arkts-cryptoarchitecture-cryptoframework-createmd-f.md). |
 | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) | Encapsulates the parameters used for encryption or decryption. You need to construct its child class object and pass it to [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init) for symmetric encryption or decryption. |

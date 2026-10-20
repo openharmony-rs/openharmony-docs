@@ -28,7 +28,7 @@ Checks whether the priority notification is enabled.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result.<br> - **true**: The priority notification is enabled. <br> - **false**: The priority notification is disabled. |
+| Promise&lt;boolean&gt; | Promise used to return the result. <br> - **true**: The priority notification is enabled. <br> - **false**: The priority notification is disabled. |
 
 **Error codes:**
 

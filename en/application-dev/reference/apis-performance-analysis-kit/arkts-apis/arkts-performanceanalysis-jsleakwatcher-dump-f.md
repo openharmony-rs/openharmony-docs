@@ -24,13 +24,13 @@ Dumps the list of leaked objects and VM memory snapshot.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| filePath | string | Yes | Path for storing exported information files.<br>**Note:**  Since API version 24, only the latest snapshot information is retained within the process lifecycle. |
+| filePath | string | Yes | Path for storing exported information files. <br>**Note:**  Since API version 24, only the latest snapshot information is retained within the process lifecycle. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;string&gt; | Export result. The file name extension is **.jsleaklist** for the list of leaked objects and **.heapsnapshot** for the VM memory snapshot.<br>Note: If the dump is successful, the path of the leaked object list file and the VM memory snapshot path are returned. Otherwise, an empty array is returned. |
+| Array&lt;string&gt; | Export result. The file name extension is **.jsleaklist** for the list of leaked objects and **.heapsnapshot** for the VM memory snapshot. <br>Note: If the dump is successful, the path of the leaked object list file and the VM memory snapshot path are returned. Otherwise, an empty array is returned. |
 
 **Examples**
 

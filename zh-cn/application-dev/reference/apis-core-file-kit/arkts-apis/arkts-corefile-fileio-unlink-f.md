@@ -36,8 +36,6 @@ declare function unlink(path: string): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="unlink2"></a>
-
 ## unlink
 
 ```TypeScript

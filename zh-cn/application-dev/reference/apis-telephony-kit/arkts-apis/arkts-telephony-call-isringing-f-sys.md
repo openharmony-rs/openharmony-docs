@@ -6,8 +6,6 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
-<a id="isringing1"></a>
-
 ## isRinging
 
 ```TypeScript
@@ -61,8 +59,6 @@ call.isRinging((err: BusinessError, data: boolean) => {
 
 <!--DelEnd-->
 
-
-<a id="isringing2"></a>
 
 ## isRinging
 

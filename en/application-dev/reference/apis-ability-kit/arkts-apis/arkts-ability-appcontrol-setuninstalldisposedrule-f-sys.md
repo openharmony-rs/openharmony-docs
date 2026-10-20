@@ -30,7 +30,7 @@ Sets an uninstallation disposed rule for an application or an application clone.
 | --- | --- | --- | --- |
 | appIdentifier | string | Yes | appIdentifier of the application for which the uninstall disposition rule is to be set. <br> If the application does not have an appIdentifier, appId can be used instead. appId is the unique identifier of the application, determined by the application Bundle name and signature information. For details about how to obtain it, see [Obtaining the appId of an Application](../../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
 | rule | [UninstallDisposedRule](arkts-ability-appcontrol-uninstalldisposedrule-i-sys.md) | Yes | Uninstallation disposed rule. |
-| appIndex | number | No | Index of the application clone. The default value is **0**.<br> The value **0** means to set the uninstallation disposed rule for the main application. A value greater than 0 means to set the uninstallation disposed rule for the application clone. |
+| appIndex | number | No | Index of the application clone. The default value is **0**. <br> The value **0** means to set the uninstallation disposed rule for the main application. A value greater than 0 means to set the uninstallation disposed rule for the application clone. |
 
 **Error codes:**
 

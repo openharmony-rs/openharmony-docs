@@ -99,8 +99,6 @@ try {
 }
 ```
 
-<a id="getdevices1"></a>
-
 ## getDevices
 
 ```TypeScript
@@ -135,8 +133,6 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err: Busin
   }
 });
 ```
-
-<a id="getdevices2"></a>
 
 ## getDevices
 
@@ -223,8 +219,6 @@ try {
 }
 ```
 
-<a id="getpreferoutputdeviceforrendererinfo1"></a>
-
 ## getPreferOutputDeviceForRendererInfo
 
 ```TypeScript
@@ -272,8 +266,6 @@ audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo, (err: Bus
   }
 });
 ```
-
-<a id="getpreferoutputdeviceforrendererinfo2"></a>
 
 ## getPreferOutputDeviceForRendererInfo
 
@@ -326,8 +318,6 @@ audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((aud
 })
 ```
 
-<a id="getpreferredinputdeviceforcapturerinfo1"></a>
-
 ## getPreferredInputDeviceForCapturerInfo
 
 ```TypeScript
@@ -375,8 +365,6 @@ audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo, (err: B
   }
 });
 ```
-
-<a id="getpreferredinputdeviceforcapturerinfo2"></a>
 
 ## getPreferredInputDeviceForCapturerInfo
 
@@ -533,8 +521,6 @@ try {
 }
 ```
 
-<a id="iscommunicationdeviceactive1"></a>
-
 ## isCommunicationDeviceActive
 
 ```TypeScript
@@ -569,8 +555,6 @@ audioRoutingManager.isCommunicationDeviceActive(audio.CommunicationDeviceType.SP
   console.info('Callback invoked to indicate that the active status of the device is obtained.');
 });
 ```
-
-<a id="iscommunicationdeviceactive2"></a>
 
 ## isCommunicationDeviceActive
 
@@ -1119,8 +1103,6 @@ audioRoutingManager.isMicBlockDetectionSupported().then((value: boolean) => {
 });
 ```
 
-<a id="setcommunicationdevice1"></a>
-
 ## setCommunicationDevice
 
 ```TypeScript
@@ -1160,8 +1142,6 @@ audioRoutingManager.setCommunicationDevice(audio.CommunicationDeviceType.SPEAKER
   console.info('Callback invoked to indicate that the device is set to the active status.');
 });
 ```
-
-<a id="setcommunicationdevice2"></a>
 
 ## setCommunicationDevice
 

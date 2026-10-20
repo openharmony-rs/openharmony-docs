@@ -6,8 +6,6 @@
 import { FaultLogger } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="queryselffaultlog1"></a>
-
 ## querySelfFaultLog
 
 ```TypeScript
@@ -62,8 +60,6 @@ FaultLogger.querySelfFaultLog(FaultLogger.FaultType.JS_CRASH, queryFaultLogCallb
 ```
 
 
-<a id="queryselffaultlog2"></a>
-
 ## querySelfFaultLog
 
 ```TypeScript
@@ -92,7 +88,7 @@ Obtains the fault information about the current application. This API uses a pro
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[FaultLogInfo](arkts-performanceanalysis-faultlogger-faultloginfo-i.md)&gt;&gt; | Promise used to return the fault information array. You can obtain the fault information instance in its **then()** method or use **await**.<br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. |
+| Promise&lt;Array&lt;[FaultLogInfo](arkts-performanceanalysis-faultlogger-faultloginfo-i.md)&gt;&gt; | Promise used to return the fault information array. You can obtain the fault information instance in its **then()** method or use **await**. <br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. |
 
 **Examples**
 

@@ -6,8 +6,6 @@ export default class UserAuthExtensionAbility extends UIExtensionAbility
 
 用户认证扩展能力组件
 
-@extends UIExtensionAbility
-
 **继承/实现关系：** UserAuthExtensionAbility extends [UIExtensionAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)
 
 **起始版本：** 10

@@ -558,8 +558,6 @@ httpRequest.once("headersReceive", (header: Object) => {
 });
 ```
 
-<a id="request1"></a>
-
 ## request
 
 ```TypeScript
@@ -634,7 +632,7 @@ request(url: string, callback: AsyncCallback<HttpResponse>): void
 | [2300999](../errorcode-net-http.md#2300999-内部错误) | Internal error. |
 | [2300998](../errorcode-net-http.md#2300998-不允许访问域名) | It is not allowed to access this domain.<br>**适用版本：** 12+ |
 | [2300997](../errorcode-net-http.md#2300997-明文http被拦截) | Cleartext traffic not permitted.<br>**适用版本：** 18+ |
-| 2300996 | The request was intercepted by the HTTP global interceptor.<br>**适用版本：** 26.0.0+ |
+| [2300996](../errorcode-net-http.md#2300996-请求被全局http拦截器拦截) | The request was intercepted by the HTTP global interceptor.<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
@@ -654,8 +652,6 @@ httpRequest.request("EXAMPLE_URL", (err: Error, data: http.HttpResponse) => {
   }
 });
 ```
-
-<a id="request2"></a>
 
 ## request
 
@@ -730,7 +726,7 @@ request(url: string, options: HttpRequestOptions, callback: AsyncCallback<HttpRe
 | [2300999](../errorcode-net-http.md#2300999-内部错误) | Internal error. |
 | [2300998](../errorcode-net-http.md#2300998-不允许访问域名) | It is not allowed to access this domain.<br>**适用版本：** 12+ |
 | [2300997](../errorcode-net-http.md#2300997-明文http被拦截) | Cleartext traffic not permitted.<br>**适用版本：** 18+ |
-| 2300996 | The request was intercepted by the HTTP global interceptor.<br>**适用版本：** 26.0.0+ |
+| [2300996](../errorcode-net-http.md#2300996-请求被全局http拦截器拦截) | The request was intercepted by the HTTP global interceptor.<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
@@ -775,8 +771,6 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
   }
 });
 ```
-
-<a id="request3"></a>
 
 ## request
 
@@ -856,7 +850,7 @@ request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>
 | [2300999](../errorcode-net-http.md#2300999-内部错误) | Internal error. |
 | [2300998](../errorcode-net-http.md#2300998-不允许访问域名) | It is not allowed to access this domain.<br>**适用版本：** 12+ |
 | [2300997](../errorcode-net-http.md#2300997-明文http被拦截) | Cleartext traffic not permitted.<br>**适用版本：** 18+ |
-| 2300996 | The request was intercepted by the HTTP global interceptor.<br>**适用版本：** 26.0.0+ |
+| [2300996](../errorcode-net-http.md#2300996-请求被全局http拦截器拦截) | The request was intercepted by the HTTP global interceptor.<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
@@ -890,8 +884,6 @@ promise.then((data:http.HttpResponse) => {
   console.error('error:' + JSON.stringify(err));
 });
 ```
-
-<a id="requestinstream1"></a>
 
 ## requestInStream
 
@@ -955,7 +947,7 @@ requestInStream(url: string, callback: AsyncCallback<number>): void
 | [2300999](../errorcode-net-http.md#2300999-内部错误) | Internal error. |
 | [2300998](../errorcode-net-http.md#2300998-不允许访问域名) | It is not allowed to access this domain.<br>**适用版本：** 12+ |
 | [2300997](../errorcode-net-http.md#2300997-明文http被拦截) | Cleartext traffic not permitted.<br>**适用版本：** 18+ |
-| 2300996 | The request was intercepted by the HTTP global interceptor.<br>**适用版本：** 26.0.0+ |
+| [2300996](../errorcode-net-http.md#2300996-请求被全局http拦截器拦截) | The request was intercepted by the HTTP global interceptor.<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
@@ -972,8 +964,6 @@ httpRequest.requestInStream("EXAMPLE_URL", (err: BusinessError, data: number) =>
   }
 })
 ```
-
-<a id="requestinstream2"></a>
 
 ## requestInStream
 
@@ -1038,7 +1028,7 @@ requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallbac
 | [2300999](../errorcode-net-http.md#2300999-内部错误) | Internal error. |
 | [2300998](../errorcode-net-http.md#2300998-不允许访问域名) | It is not allowed to access this domain.<br>**适用版本：** 12+ |
 | [2300997](../errorcode-net-http.md#2300997-明文http被拦截) | Cleartext traffic not permitted.<br>**适用版本：** 18+ |
-| 2300996 | The request was intercepted by the HTTP global interceptor.<br>**适用版本：** 26.0.0+ |
+| [2300996](../errorcode-net-http.md#2300996-请求被全局http拦截器拦截) | The request was intercepted by the HTTP global interceptor.<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
@@ -1077,8 +1067,6 @@ httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> , 
   }
 })
 ```
-
-<a id="requestinstream3"></a>
 
 ## requestInStream
 
@@ -1148,7 +1136,7 @@ requestInStream(url: string, options?: HttpRequestOptions): Promise<number>
 | [2300999](../errorcode-net-http.md#2300999-内部错误) | Internal error. |
 | [2300998](../errorcode-net-http.md#2300998-不允许访问域名) | It is not allowed to access this domain.<br>**适用版本：** 12+ |
 | [2300997](../errorcode-net-http.md#2300997-明文http被拦截) | Cleartext traffic not permitted.<br>**适用版本：** 18+ |
-| 2300996 | The request was intercepted by the HTTP global interceptor.<br>**适用版本：** 26.0.0+ |
+| [2300996](../errorcode-net-http.md#2300996-请求被全局http拦截器拦截) | The request was intercepted by the HTTP global interceptor.<br>**适用版本：** 26.0.0+ |
 
 **示例**
 
@@ -1251,7 +1239,7 @@ requestSync(url: string, options?: HttpRequestOptions): HttpResponse
 | [2300077](../errorcode-net-http.md#2300077-ssl-ca证书不存在或没有访问权限) | The SSL CA certificate does not exist or is inaccessible. |
 | [2300078](../errorcode-net-http.md#2300078-url请求的文件不存在) | Remote file not found. |
 | [2300094](../errorcode-net-http.md#2300094-身份校验失败) | Authentication error. |
-| 2300996 | The request was intercepted by the HTTP global interceptor. |
+| [2300996](../errorcode-net-http.md#2300996-请求被全局http拦截器拦截) | The request was intercepted by the HTTP global interceptor. |
 | [2300997](../errorcode-net-http.md#2300997-明文http被拦截) | Cleartext traffic not permitted. |
 | [2300998](../errorcode-net-http.md#2300998-不允许访问域名) | It is not allowed to access this domain. |
 | [2300999](../errorcode-net-http.md#2300999-内部错误) | Internal error. |

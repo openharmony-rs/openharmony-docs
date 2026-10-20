@@ -26,7 +26,7 @@ Check whether the specific action type is supported.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mechId | number | Yes | ID of the mechanical device.<br>The value should be an integer. |
+| mechId | number | Yes | ID of the mechanical device. <br>The value should be an integer. |
 | actionType | [ActionType](arkts-mechanic-mechanicmanager-actiontype-e-sys.md) | Yes | Type of action sequence. |
 
 **Return value:**

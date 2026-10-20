@@ -103,7 +103,7 @@ constructor(name: string)
 default: string
 ```
 
-表示Fieldnode的默认值。
+表示FieldNode的默认值。
 
 **类型：** string
 

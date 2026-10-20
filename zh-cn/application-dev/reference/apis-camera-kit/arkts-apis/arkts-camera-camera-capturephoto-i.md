@@ -71,3 +71,43 @@ main: ImageType
 <!--Device-CapturePhoto-main: ImageType--><!--Device-CapturePhoto-main: ImageType-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## oxygenPhoto
+
+```TypeScript
+oxygenPhoto?: ImageType
+```
+
+血氧辅助图对象，用于血氧检测分析。
+
+**类型：** [ImageType](arkts-camera-camera-imagetype-t.md)
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapturePhoto-oxygenPhoto?: ImageType--><!--Device-CapturePhoto-oxygenPhoto?: ImageType-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## pigmentationPhoto
+
+```TypeScript
+pigmentationPhoto?: ImageType
+```
+
+色斑辅助图对象，用于皮肤色斑分析。
+
+**类型：** [ImageType](arkts-camera-camera-imagetype-t.md)
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-CapturePhoto-pigmentationPhoto?: ImageType--><!--Device-CapturePhoto-pigmentationPhoto?: ImageType-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core

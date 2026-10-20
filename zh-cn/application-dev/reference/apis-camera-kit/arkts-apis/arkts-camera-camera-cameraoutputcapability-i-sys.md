@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 readonly depthProfiles: Array<DepthProfile>
 ```
 
-Supported depth stream profiles.
+支持的深度流 profile。
 
 **类型：** Array&lt;[DepthProfile](arkts-camera-camera-depthprofile-i-sys.md)&gt;
 

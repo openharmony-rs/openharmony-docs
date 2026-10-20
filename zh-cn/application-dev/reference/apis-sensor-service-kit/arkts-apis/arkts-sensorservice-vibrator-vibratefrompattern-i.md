@@ -24,7 +24,7 @@ import { vibrator } from '@kit.SensorServiceKit';
 pattern: VibratorPattern
 ```
 
-振动事件数组。由[VibratorPatternBuilder](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md)的addContinuousEvent和addTransientEvent方法添加后通过build方法生成。同一VibratorPattern中多个VibratorEvent的time值不能重叠。
+[build](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md#build)方法返回的[VibratorPattern](arkts-sensorservice-vibrator-vibratorpattern-i.md)对象。需先通过[VibratorPatternBuilder](arkts-sensorservice-vibrator-vibratorpatternbuilder-c.md)添加振动事件后调用build方法生成。
 
 **类型：** [VibratorPattern](arkts-sensorservice-vibrator-vibratorpattern-i.md)
 

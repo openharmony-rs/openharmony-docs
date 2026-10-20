@@ -6,8 +6,6 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
-<a id="isnrsupported1"></a>
-
 ## isNRSupported
 
 ```TypeScript
@@ -26,7 +24,7 @@ Checks whether the current device supports NR.
 
 | Type | Description |
 | --- | --- |
-| boolean | **true**: supported<br>- **false**: not supported |
+| boolean | **true**: supported <br>- **false**: not supported |
 
 **Examples**
 
@@ -35,8 +33,6 @@ let result: boolean = radio.isNRSupported();
 console.info("Result: "+ result);
 ```
 
-
-<a id="isnrsupported2"></a>
 
 ## isNRSupported
 
@@ -56,13 +52,13 @@ Checks whether the SIM card in the specified slot supports NR.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | **true**: supported<br>- **false**: not supported |
+| boolean | **true**: supported <br>- **false**: not supported |
 
 **Examples**
 

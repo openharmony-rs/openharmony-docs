@@ -38,7 +38,7 @@ Sets whether to enable anti-aliasing. This attribute supports the attributeModif
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to enable anti-aliasing.<br> true: enables anti-aliasing; false: disables anti-aliasing. <br> Default value: true <br> The abnormal values undefined and null are processed as false. |
+| value | boolean | Yes | Whether to enable anti-aliasing. <br> true: enables anti-aliasing; false: disables anti-aliasing. <br> Default value: true <br> The abnormal values undefined and null are processed as false. |
 
 **Return value:**
 
@@ -70,7 +70,7 @@ Sets the fill color. This attribute supports the attributeModifier attribute met
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Fill color.<br> Default value: Color.Black. <br> Abnormal values undefined, null, NaN, and Infinity are treated as the default value. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Fill color. <br> Default value: Color.Black. <br> Abnormal values undefined, null, NaN, and Infinity are treated as the default value. |
 
 **Return value:**
 
@@ -102,7 +102,7 @@ Sets the opacity of the fill area. This attribute supports dynamic setting throu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Opacity of the fill area.<br> **NOTE:**   The value range of the number format is [0.0, 1.0]. If the given value is less than 0.0, the value is 0.0; if the given value is greater than 1.0, the value is 1.0. Other abnormal values are processed as 1.0. The string format supports the string form of the number format value, and the value range is the same as that of the number format.  The Resource format supports strings in system resources or app resources, and the value range is the same as that of the number format.  The abnormal value NaN is processed as 0.0, and undefined, null, and Infinity are processed as 1.0. Default value: 1.0 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Opacity of the fill area. <br> **NOTE:**   The value range of the number format is [0.0, 1.0]. If the given value is less than 0.0, the value is 0.0; if the given value is greater than 1.0, the value is 1.0. Other abnormal values are processed as 1.0. The string format supports the string form of the number format value, and the value range is the same as that of the number format.  The Resource format supports strings in system resources or app resources, and the value range is the same as that of the number format.  The abnormal value NaN is processed as 0.0, and undefined, null, and Infinity are processed as 1.0. Default value: 1.0 |
 
 **Return value:**
 
@@ -134,7 +134,7 @@ Sets the stroke color. This attribute supports the attributeModifier attribute m
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Stroke color.<br> Default value: Color.Transparent. <br> Abnormal values undefined and null are processed as the default value, and NaN and Infinity are processed as Color.Black. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Stroke color. <br> Default value: Color.Transparent. <br> Abnormal values undefined and null are processed as the default value, and NaN and Infinity are processed as Color.Black. |
 
 **Return value:**
 
@@ -166,7 +166,7 @@ Sets the dashed line segment length and gap length of the stroke. This attribute
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;any&gt; | Yes | Array that defines the dashed pattern of the Rect stroke. The array elements alternately represent the segment length and gap length.<br> Default value: [] (empty array) <br> Default unit: vp <br> The abnormal values undefined and null are processed as the default value. <br> **NOTE:** Empty array: solid line <br> Even-numbered multi-element array: the array elements are cycled in order. For example, [a, b, c, d] represents segment length a -> gap length b -> segment length c -> gap length d -> segment length a -> ... Odd-numbered multi-element array: the array elements are repeated once and then cycled following the rule of an even-numbered multi-element array. For example, [a, b, c] is equivalent to [a, b, c, a, b, c], which represents segment length a -> gap length b -> segment length c -> gap length a -> segment length b -> gap length c -> segment length a -> ... |
+| value | Array&lt;any&gt; | Yes | Array that defines the dashed pattern of the Rect stroke. The array elements alternately represent the segment length and gap length. <br> Default value: [] (empty array) <br> Default unit: vp <br> The abnormal values undefined and null are processed as the default value. <br> **NOTE:** Empty array: solid line <br> Even-numbered multi-element array: the array elements are cycled in order. For example, [a, b, c, d] represents segment length a -> gap length b -> segment length c -> gap length d -> segment length a -> ... Odd-numbered multi-element array: the array elements are repeated once and then cycled following the rule of an even-numbered multi-element array. For example, [a, b, c] is equivalent to [a, b, c, a, b, c], which represents segment length a -> gap length b -> segment length c -> gap length a -> segment length b -> gap length c -> segment length a -> ... |
 
 **Return value:**
 
@@ -198,7 +198,7 @@ Sets the offset of the stroke drawing start point. This attribute supports the a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string | Yes | Offset of the stroke drawing start point.<br> Default value: 0 <br> Default unit: vp <br> The abnormal values undefined and null are processed as the default value. NaN and Infinity cause strokeDashArray to become invalid. |
+| value | number &#124; string | Yes | Offset of the stroke drawing start point. <br> Default value: 0 <br> Default unit: vp <br> The abnormal values undefined and null are processed as the default value. NaN and Infinity cause strokeDashArray to become invalid. |
 
 **Return value:**
 
@@ -230,7 +230,7 @@ Sets the line cap style of the stroke. This attribute supports the attributeModi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [LineCapStyle](../arkts-apis/arkts-arkui-linecapstyle-e.md) | Yes | Line cap style of the stroke.<br> Default value: LineCapStyle.Butt <br> The abnormal values undefined, null, NaN, and Infinity are processed as the default value. |
+| value | [LineCapStyle](../arkts-apis/arkts-arkui-linecapstyle-e.md) | Yes | Line cap style of the stroke. <br> Default value: LineCapStyle.Butt <br> The abnormal values undefined, null, NaN, and Infinity are processed as the default value. |
 
 **Return value:**
 
@@ -262,7 +262,7 @@ Sets the style for drawing the corners of the stroke. This attribute method supp
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [LineJoinStyle](../arkts-apis/arkts-arkui-linejoinstyle-e.md) | Yes | Style for drawing the corners of the stroke.<br> Default value: LineJoinStyle.Miter <br> Abnormal values undefined, null, NaN, and Infinity are processed as the default value. |
+| value | [LineJoinStyle](../arkts-apis/arkts-arkui-linejoinstyle-e.md) | Yes | Style for drawing the corners of the stroke. <br> Default value: LineJoinStyle.Miter <br> Abnormal values undefined, null, NaN, and Infinity are processed as the default value. |
 
 **Return value:**
 
@@ -294,7 +294,7 @@ Sets the limit value of the ratio of the miter length to the stroke width. This 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string | Yes | Limit value of the ratio of the miter length to the stroke width.<br> Default value: 4 <br> The abnormal values undefined, null, and NaN are processed as the default value, and Infinity causes stroke to become invalid. |
+| value | number &#124; string | Yes | Limit value of the ratio of the miter length to the stroke width. <br> Default value: 4 <br> The abnormal values undefined, null, and NaN are processed as the default value, and Infinity causes stroke to become invalid. |
 
 **Return value:**
 
@@ -326,7 +326,7 @@ Sets the stroke opacity. This attribute supports the attributeModifier attribute
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Stroke opacity.<br> Default value: the opacity set by stroke. <br> The abnormal value NaN is processed as 0.0, and undefined, null, and Infinity are processed as 1.0. |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Stroke opacity. <br> Default value: the opacity set by stroke. <br> The abnormal value NaN is processed as 0.0, and undefined, null, and Infinity are processed as 1.0. |
 
 **Return value:**
 
@@ -358,7 +358,7 @@ Sets the stroke width. This attribute supports the attributeModifier dynamic set
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Stroke width.<br> Value range: ≥0. <br> Default value: 1 <br> Default unit: vp <br> The abnormal values undefined, null, and NaN are processed as the default value, and Infinity is processed as 0. |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Stroke width. <br> Value range: ≥0. <br> Default value: 1 <br> Default unit: vp <br> The abnormal values undefined, null, and NaN are processed as the default value, and Infinity is processed as 0. |
 
 **Return value:**
 

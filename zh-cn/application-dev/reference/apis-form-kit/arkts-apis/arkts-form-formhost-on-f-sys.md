@@ -40,6 +40,19 @@ function on(type: "formUninstall", callback: Callback<string>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+<!--Del-->
+**示例**
+
+```TypeScript
+import { formHost } from '@kit.FormKit';
+
+formHost.on('formUninstall', (formId: string) => {
+  console.info(`formHost on formUninstall, formId: ${formId}`);
+});
+```
+
+<!--DelEnd-->
+
 
 ## on('formOverflow')
 

@@ -47,8 +47,8 @@ import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 | [startAsyncTrace](arkts-performanceanalysis-hitracemeter-startasynctrace-f.md#startasynctrace) | Starts an asynchronous trace with the trace output level specified. |
 | [startSyncTrace](arkts-performanceanalysis-hitracemeter-startsynctrace-f.md#startsynctrace) | Starts a synchronous trace with the trace output level specified. For details, see [finishSyncTrace()](arkts-performanceanalysis-hitracemeter-finishsynctrace-f.md). |
 | [startTrace](arkts-performanceanalysis-hitracemeter-starttrace-f.md#starttrace) | Starts an asynchronous trace. |
-| [traceByValue](arkts-performanceanalysis-hitracemeter-tracebyvalue-f.md#tracebyvalue1) | Traces the value changes of an integer variable. |
-| [traceByValue](arkts-performanceanalysis-hitracemeter-tracebyvalue-f.md#tracebyvalue2) | Traces an integer with the trace output level specified. It is used to mark the name and value of a predefined integer variable to be traced. |
+| [traceByValue](arkts-performanceanalysis-hitracemeter-tracebyvalue-f.md#tracebyvalue) | Traces the value changes of an integer variable. |
+| [traceByValue](arkts-performanceanalysis-hitracemeter-tracebyvalue-f.md#tracebyvalue) | Traces an integer with the trace output level specified. It is used to mark the name and value of a predefined integer variable to be traced. |
 | [unregisterTraceListener](arkts-performanceanalysis-hitracemeter-unregistertracelistener-f.md#unregistertracelistener) | Unregisters the callback function used to notify whether the trace capture is enabled, which is registered using **registerTraceListener()**. |
 
 ### Types

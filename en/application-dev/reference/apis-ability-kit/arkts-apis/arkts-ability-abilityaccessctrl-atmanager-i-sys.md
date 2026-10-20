@@ -43,7 +43,7 @@ Obtains the flags of a specified permission for a specified app. This API uses a
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | tokenID | number | Yes | Identity identifier of the target application. It can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to query. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to query. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
 
 **Return value:**
 
@@ -82,8 +82,6 @@ atManager.getPermissionFlags(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIO
 
 <!--DelEnd-->
 
-<a id="getpermissionrequesttogglestatus1"></a>
-
 ## getPermissionRequestToggleStatus
 
 ```TypeScript
@@ -108,7 +106,7 @@ Obtains the toggle state of a permission. This API uses a promise to return the 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission whose pop-up switch status is to be queried. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission whose pop-up switch status is to be queried. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
 
 **Return value:**
 
@@ -125,7 +123,7 @@ Obtains the toggle state of a permission. This API uses a promise to return the 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The permissionName exceeds 256 characters, or the specified permission is not a user_grant permission. |
 | [12100003](../errorcode-access-token.md#12100003-permission-not-exist) | The specified permission does not exist. |
-| [12100004](../errorcode-access-token.md#12100004-listener-apis-not-used-in-pairs) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus1).<br>**Applicable version:** 26.0.1 and later |
+| [12100004](../errorcode-access-token.md#12100004-listener-apis-not-used-in-pairs) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**Applicable version:** 26.0.1 and later |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
 <!--Del-->
@@ -150,8 +148,6 @@ atManager.getPermissionRequestToggleStatus(permission).then((res: abilityAccessC
 ```
 
 <!--DelEnd-->
-
-<a id="getpermissionrequesttogglestatus2"></a>
 
 ## getPermissionRequestToggleStatus
 
@@ -179,7 +175,7 @@ Obtains the permission dialog toggle status for a specified permission under a s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission whose pop-up switch status is to be queried. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission whose pop-up switch status is to be queried. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
 | subProfileId | number | Yes | ID of the sub-profile. It can be obtained from [OsAccountSubProfile.id](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-osaccountsubprofile-i-sys.md#id). <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. |
 
 **Return value:**
@@ -232,7 +228,7 @@ Obtains the status of the specified permissions. This API uses a promise to retu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | tokenID | number | Yes | Identity identifier of the target application. It can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names for which the permission status is to be obtained. Passing an invalid value returns error code 12100001.<br>The maximum length is 1024 and cannot be empty. Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names for which the permission status is to be obtained. Passing an invalid value returns error code 12100001. <br>The maximum length is 1024 and cannot be empty. Value constraint: The permission name length cannot exceed 256 characters. |
 
 **Return value:**
 
@@ -343,7 +339,7 @@ Grants an app permission. After the call is successful, the specified app obtain
 | --- | --- | --- | --- |
 | tokenID | number | Yes | Identity identifier of the target application. It can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
 | permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to grant. The permission name cannot exceed 256 characters. If the limit is exceeded, error code 12100001 is returned. |
-| permissionFlags | number | Yes | Authorization options.<br>The value should be an integer. <br>- 1: If the user denies the permission this time, the permission dialog box can still be displayed next time to request user authorization. <br>- 2: If the user denies the permission this time, the permission dialog box will not be displayed again. The user needs to grant the permission in the permission management page of system settings. <br>- 64: If the user selects to allow only this time, the permission is granted only for this time. The authorization is revoked when the app switches to the background or exits. |
+| permissionFlags | number | Yes | Authorization options. <br>The value should be an integer. <br>- 1: If the user denies the permission this time, the permission dialog box can still be displayed next time to request user authorization. <br>- 2: If the user denies the permission this time, the permission dialog box will not be displayed again. The user needs to grant the permission in the permission management page of system settings. <br>- 64: If the user selects to allow only this time, the permission is granted only for this time. The authorization is revoked when the app switches to the background or exits. |
 
 **Return value:**
 
@@ -383,8 +379,6 @@ atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags
 
 <!--DelEnd-->
 
-<a id="grantusergrantedpermission1"></a>
-
 ## grantUserGrantedPermission
 
 ```TypeScript
@@ -412,8 +406,8 @@ This API only supports granting permissions of the user_grant type. If you need 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | tokenID | number | Yes | Identity identifier of the target application. It can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to grant. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name cannot exceed 256 characters. |
-| permissionFlags | number | Yes | Authorization options.<br>The value should be an integer. <br>- 1: If the user denies the permission this time, the permission dialog box can still be displayed next time to request user authorization. <br>- 2: If the user denies the permission this time, the permission dialog box will not be displayed again. The user needs to grant the permission in the permission management page of system settings. <br>- 64: If the user selects to allow only this time, the permission is granted only for this session. The authorization is revoked when the app switches to the background or exits. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to grant. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name cannot exceed 256 characters. |
+| permissionFlags | number | Yes | Authorization options. <br>The value should be an integer. <br>- 1: If the user denies the permission this time, the permission dialog box can still be displayed next time to request user authorization. <br>- 2: If the user denies the permission this time, the permission dialog box will not be displayed again. The user needs to grant the permission in the permission management page of system settings. <br>- 64: If the user selects to allow only this time, the permission is granted only for this session. The authorization is revoked when the app switches to the background or exits. |
 
 **Return value:**
 
@@ -453,8 +447,6 @@ atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', perm
 
 <!--DelEnd-->
 
-<a id="grantusergrantedpermission2"></a>
-
 ## grantUserGrantedPermission
 
 ```TypeScript
@@ -485,8 +477,8 @@ Grants a user_grant permission to an app. This API uses an asynchronous callback
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | tokenID | number | Yes | Identity identifier of the target application. It can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to grant. The permission name cannot exceed 256 characters. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
-| permissionFlags | number | Yes | Authorization options.<br>The value should be an integer. <br>- 1: If the user denies the permission this time, the permission dialog box can still be displayed next time to request user authorization. <br>- 2: If the user denies the permission this time, the permission dialog box will not be displayed again. The user needs to grant the permission in system settings. <br>- 64: If the user selects to allow only this time, the permission is granted only for this session. The authorization is revoked when the app switches to the background or exits. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to grant. The permission name cannot exceed 256 characters. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionFlags | number | Yes | Authorization options. <br>The value should be an integer. <br>- 1: If the user denies the permission this time, the permission dialog box can still be displayed next time to request user authorization. <br>- 2: If the user denies the permission this time, the permission dialog box will not be displayed again. The user needs to grant the permission in system settings. <br>- 64: If the user selects to allow only this time, the permission is granted only for this session. The authorization is revoked when the app switches to the background or exits. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the permission grant is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -629,7 +621,7 @@ This API is usually used together with [off](arkts-ability-abilityaccessctrl-atm
 | --- | --- | --- | --- |
 | type | 'permissionStateChange' | Yes | Event type. The value is **'permissionStateChange'**, which indicates the permission state changes. |
 | tokenIDList | Array&lt;number&gt; | Yes | List of token IDs to subscribe to. If left empty, it subscribes to permission status changes of all apps. The app identity can be obtained through the [accessTokenId]{@link./bundleManager/ApplicationInfo:ApplicationInfo.accessTokenId} field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The maximum length is 1024. Value constraint: Each token ID in the list must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names to subscribe to. If left empty, it subscribes to permission state changes of all permissions. Passing an invalid value returns error code 12100001.<br>The maximum length is 1024. Value constraint: Each permission name in the list must be a valid permission name, and its length cannot exceed 256 characters. |
+| permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names to subscribe to. If left empty, it subscribes to permission state changes of all permissions. Passing an invalid value returns error code 12100001. <br>The maximum length is 1024. Value constraint: Each permission name in the list must be a valid permission name, and its length cannot exceed 256 characters. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PermissionStateChangeInfo](arkts-ability-abilityaccessctrl-permissionstatechangeinfo-i.md)&gt; | Yes | Callback used to return the result. Callback for subscribing to the status change events of the specified tokenID and permission name. |
 
 **Error codes:**
@@ -694,7 +686,7 @@ Queries all apps that have requested the specified permissions and their permiss
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names to query. Passing an invalid value returns error code 12100001.<br>The maximum length is 1024 and cannot be empty. Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names to query. Passing an invalid value returns error code 12100001. <br>The maximum length is 1024 and cannot be empty. Value constraint: The permission name length cannot exceed 256 characters. |
 
 **Return value:**
 
@@ -881,7 +873,7 @@ If the user denies authorization, the dialog cannot be pulled up again. Permissi
 | --- | --- | --- | --- |
 | context | [Context](arkts-ability-context-t.md) | Yes | Context of the UIAbility or UIExtensionAbility requesting the permission. If the context of another app, an invalid page, or a non-stage model is passed in, the API may report an error or fail to display the dialog box. |
 | windowId | number | Yes | ID of the app window. It can be obtained through [window.findWindow](../../apis-arkui/arkts-apis/arkts-arkui-window-findwindow-f.md)(window name). [getWindowProperties()](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md#getwindowproperties).id. This parameter must correspond to the current valid window. If a destroyed, invisible, or invalid window ID is passed in, 12100001 will be returned. <br>The value should be an integer. |
-| permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names. It is recommended that you pass in only the sensitive permissions that are actually required in the current window scenario.<br>The minimum length is 1. Value constraint: The length of a permission name in array cannot exceed 256 characters. |
+| permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names. It is recommended that you pass in only the sensitive permissions that are actually required in the current window scenario. <br>The minimum length is 1. Value constraint: The length of a permission name in array cannot exceed 256 characters. |
 
 **Return value:**
 
@@ -957,9 +949,9 @@ When the killProcess parameter is true and the permission status changes from "a
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | tokenID | number | Yes | Identity identifier of the target application. It can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to be revoked. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
-| permissionFlags | number | Yes | Authorization options.<br>The value should be an integer. <br>- 1: If the user denies the permission this time, the permission dialog box can still be displayed next time to request user authorization. <br>- 2: If the user denies the permission this time, the permission dialog box will not be displayed again. The user needs to grant the permission in the permission management of system settings. <br>- 64: If the user selects to allow only this time, the permission is granted only for this session. The authorization is revoked when the app switches to the background or exits. |
-| killProcess | boolean | No | Whether to terminate the app process.<br>- **true**: Terminate the app process. <br>- **false**: Do not terminate the app process. <br>- Default value: **true**.<br>**Since:** 26.0.0 |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to be revoked. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionFlags | number | Yes | Authorization options. <br>The value should be an integer. <br>- 1: If the user denies the permission this time, the permission dialog box can still be displayed next time to request user authorization. <br>- 2: If the user denies the permission this time, the permission dialog box will not be displayed again. The user needs to grant the permission in the permission management of system settings. <br>- 64: If the user selects to allow only this time, the permission is granted only for this session. The authorization is revoked when the app switches to the background or exits. |
+| killProcess | boolean | No | Whether to terminate the app process. <br>- **true**: Terminate the app process. <br>- **false**: Do not terminate the app process. <br>- Default value: **true**.<br>**Since:** 26.0.0 |
 
 **Return value:**
 
@@ -1006,8 +998,6 @@ atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlag
 
 <!--DelEnd-->
 
-<a id="revokeusergrantedpermission1"></a>
-
 ## revokeUserGrantedPermission
 
 ```TypeScript
@@ -1037,8 +1027,8 @@ When the permission status changes from "authorized" to "unauthorized", the app 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | tokenID | number | Yes | Identity identifier of the target application. It can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to be revoked. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
-| permissionFlags | number | Yes | Authorization options.<br>The value should be an integer. <br>- 1: If the user denies the permission this time, the permission dialog box can still be displayed next time to request user authorization. <br>- 2: If the user denies the permission this time, the permission dialog box will not be displayed again. The user needs to grant the permission in the permission management page of system settings. <br>- 64: If the user selects to allow only this time, the permission is granted only for this session. The authorization is revoked when the app switches to the background or exits. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to be revoked. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionFlags | number | Yes | Authorization options. <br>The value should be an integer. <br>- 1: If the user denies the permission this time, the permission dialog box can still be displayed next time to request user authorization. <br>- 2: If the user denies the permission this time, the permission dialog box will not be displayed again. The user needs to grant the permission in the permission management page of system settings. <br>- 64: If the user selects to allow only this time, the permission is granted only for this session. The authorization is revoked when the app switches to the background or exits. |
 
 **Return value:**
 
@@ -1078,8 +1068,6 @@ atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', per
 
 <!--DelEnd-->
 
-<a id="revokeusergrantedpermission2"></a>
-
 ## revokeUserGrantedPermission
 
 ```TypeScript
@@ -1110,8 +1098,8 @@ Revokes a user_grant permission from an app. This API uses an asynchronous callb
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | tokenID | number | Yes | Identity identifier of the target application. It can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to be revoked. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
-| permissionFlags | number | Yes | Authorization options.<br>The value should be an integer. <br>- 1: If the user denies the permission this time, the permission dialog box can still be displayed the next time to request user authorization. <br>- 2: If the user denies the permission this time, the permission dialog box will not be displayed again. The user needs to grant the permission in the permission management page of system settings. <br>- 64: If the user selects to allow only this time, the permission is granted only for this session. The permission is revoked after the app switches to the background or exits. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to be revoked. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionFlags | number | Yes | Authorization options. <br>The value should be an integer. <br>- 1: If the user denies the permission this time, the permission dialog box can still be displayed the next time to request user authorization. <br>- 2: If the user denies the permission this time, the permission dialog box will not be displayed again. The user needs to grant the permission in the permission management page of system settings. <br>- 64: If the user selects to allow only this time, the permission is granted only for this session. The permission is revoked after the app switches to the background or exits. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the permission revocation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -1148,8 +1136,6 @@ atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', per
 
 <!--DelEnd-->
 
-<a id="setpermissionrequesttogglestatus1"></a>
-
 ## setPermissionRequestToggleStatus
 
 ```TypeScript
@@ -1174,7 +1160,7 @@ Sets the dialog toggle status for a specified permission of the current user. Af
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission for which the dialog box switch status is to be set. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission for which the dialog box switch status is to be set. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
 | status | [PermissionRequestToggleStatus](arkts-ability-abilityaccessctrl-permissionrequesttogglestatus-e-sys.md) | Yes | Toggle state to set. |
 
 **Return value:**
@@ -1215,8 +1201,6 @@ atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.Permiss
 
 <!--DelEnd-->
 
-<a id="setpermissionrequesttogglestatus2"></a>
-
 ## setPermissionRequestToggleStatus
 
 ```TypeScript
@@ -1244,7 +1228,7 @@ Sets the dialog toggle status for a specified permission under a specified sub-p
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission for which the dialog box switch status is to be set. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission for which the dialog box switch status is to be set. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
 | status | [PermissionRequestToggleStatus](arkts-ability-abilityaccessctrl-permissionrequesttogglestatus-e-sys.md) | Yes | Toggle state to set. |
 | subProfileId | number | Yes | ID of the sub-profile. It can be obtained from [OsAccountSubProfile.id](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-osaccountsubprofile-i-sys.md#id). <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. |
 

@@ -24,7 +24,7 @@ GRAVITY_UNION = 1
 
 **说明：** 
 
-设置该类型时，需配合[useUnionEffect](arkts-arkui-common-comp-commonmethod-c-sys.md#useunioneffect2)并设置[GravityCenterOptions](arkts-arkui-common-comp-gravitycenteroptions-i-sys.md)的gravityCenter为true才能生效；不满足上述条件时，GRAVITY_UNION效果不生效。
+设置该类型时，需配合[useUnionEffect](arkts-arkui-common-comp-commonmethod-c-sys.md#useunioneffect)并设置[GravityCenterOptions](arkts-arkui-common-comp-gravitycenteroptions-i-sys.md)的gravityCenter为true才能生效；不满足上述条件时，GRAVITY_UNION效果不生效。
 
 **起始版本：** 26.0.0
 
@@ -46,7 +46,7 @@ SMOOTH_UNION = 0
 
 **说明：** 
 
-设置该类型时，需后代组件设置[useUnionEffect](arkts-arkui-common-comp-commonmethod-c-sys.md#useunioneffect2)属性才能产生融合效果。
+设置该类型时，需后代组件设置[useUnionEffect](arkts-arkui-common-comp-commonmethod-c-sys.md#useunioneffect)属性才能产生融合效果。
 
 **起始版本：** 26.0.0
 

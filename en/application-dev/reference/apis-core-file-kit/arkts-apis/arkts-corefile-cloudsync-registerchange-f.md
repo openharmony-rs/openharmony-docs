@@ -32,7 +32,7 @@ Subscribes to the change of a file. The callback returns the changed data.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13900001 | Operation not permitted |
 | 13900002 | No such file or directory. |
 | 13900012 | Permission denied |

@@ -18,8 +18,6 @@ interface Filter
 import { effectKit } from '@kit.ArkGraphics2D';
 ```
 
-<a id="blur1"></a>
-
 ## blur
 
 ```TypeScript
@@ -131,8 +129,6 @@ struct Index {
   }
 }
 ```
-
-<a id="blur2"></a>
 
 ## blur
 
@@ -351,19 +347,17 @@ struct Index {
 }
 ```
 
-<a id="geteffectpixelmap1"></a>
-
 ## getEffectPixelMap
 
 ```TypeScript
 getEffectPixelMap(): Promise<image.PixelMap>
 ```
 
-获取已添加链表效果的源图像的image.PixelMap，默认使用CPU渲染，使用Promise异步回调。如需指定渲染模式，可使用[getEffectPixelMap](#geteffectpixelmap2)接口。常用于图片处理后需要保存或显示结果的场景。
+获取已添加链表效果的源图像的image.PixelMap，默认使用CPU渲染，使用Promise异步回调。如需指定渲染模式，可使用[getEffectPixelMap](#geteffectpixelmap)接口。常用于图片处理后需要保存或显示结果的场景。
 
 > **说明：** 
 > 
-> 该方法默认使用CPU渲染，着色器平铺模式仅支持DECAL，其他模式（CLAMP、REPEAT、MIRROR）暂不支持。 如需使用GPU渲染或了解渲染模式对TileMode的影响，请参见[TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md)和[getEffectPixelMap](#geteffectpixelmap2)。
+> 该方法默认使用CPU渲染，着色器平铺模式仅支持DECAL，其他模式（CLAMP、REPEAT、MIRROR）暂不支持。 如需使用GPU渲染或了解渲染模式对TileMode的影响，请参见[TileMode](arkts-arkgraphics2d-effectkit-tilemode-e.md)和[getEffectPixelMap](#geteffectpixelmap)。
 
 **起始版本：** 11
 
@@ -410,8 +404,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
   }
 });
 ```
-
-<a id="geteffectpixelmap2"></a>
 
 ## getEffectPixelMap
 

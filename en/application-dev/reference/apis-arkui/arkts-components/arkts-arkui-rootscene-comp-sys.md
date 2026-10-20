@@ -28,8 +28,10 @@ Called when the RootScene is used.
 
 ## Summary
 
-### Interfaces
+<!--Del-->
+### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
 | [RootSceneSession](arkts-arkui-rootscene-comp-rootscenesession-i-sys.md) | Defines the session of RootScene. |
+<!--DelEnd-->

@@ -33,7 +33,7 @@ In non-kiosk mode, this API can be called normally but does not take effect. The
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
-| features | Array&lt;[KioskFeature](arkts-mdm-applicationmanager-kioskfeature-e.md)&gt; | Yes | Feature set of the Kiosk mode. (Since API version 24, swiping up from the bottom to access the recent taskbar and swiping left or right to display the side dock are supported.)<br> If an empty array is passed, the system will clear all previously delivered features and restore the kiosk mode to its default state. To be specific, abilities such as the notification center, control panel, recent task bar, and side dock are disabled. |
+| features | Array&lt;[KioskFeature](arkts-mdm-applicationmanager-kioskfeature-e.md)&gt; | Yes | Feature set of the Kiosk mode. (Since API version 24, swiping up from the bottom to access the recent taskbar and swiping left or right to display the side dock are supported.) <br> If an empty array is passed, the system will clear all previously delivered features and restore the kiosk mode to its default state. To be specific, abilities such as the notification center, control panel, recent task bar, and side dock are disabled. |
 
 **Error codes:**
 

@@ -8,6 +8,8 @@
 
 **起始版本：** 11
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace uiObserver--><!--Device-unnamed-declare namespace uiObserver-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

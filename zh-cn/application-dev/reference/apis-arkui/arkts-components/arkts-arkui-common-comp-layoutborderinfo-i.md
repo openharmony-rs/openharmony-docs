@@ -4,9 +4,7 @@
 declare interface LayoutBorderInfo
 ```
 
-子组件边框信息
-
-@interface LayoutBorderInfo
+子组件边框信息。
 
 **起始版本：** 9
 
@@ -24,7 +22,7 @@ declare interface LayoutBorderInfo
 borderWidth: EdgeWidths
 ```
 
-子组件边框宽度信息
+边框宽度类型，用于描述组件边框不同方向的宽度。单位：vp。
 
 **类型：** EdgeWidths
 
@@ -46,7 +44,7 @@ borderWidth: EdgeWidths
 margin: Margin
 ```
 
-子组件外边距信息
+外边距类型，用于描述组件不同方向的外边距。单位：vp。
 
 **类型：** [Margin](../arkts-apis/arkts-arkui-margin-t.md)
 
@@ -68,7 +66,7 @@ margin: Margin
 padding: Padding
 ```
 
-子组件内边距信息
+内边距类型，用于描述组件不同方向的内边距。单位：vp。
 
 **类型：** Padding
 

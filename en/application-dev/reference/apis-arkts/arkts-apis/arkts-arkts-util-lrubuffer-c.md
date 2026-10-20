@@ -789,3 +789,14 @@ Total number of values in this cache.
 <!--Device-LruBuffer-length: number--><!--Device-LruBuffer-length: number-End-->
 
 **System capability:** SystemCapability.Utils.Lang
+
+**Examples**
+
+```TypeScript
+let pro : util.LruBuffer<number,number>= new util.LruBuffer();
+pro.put(2,10);
+pro.put(1,8);
+let result = pro.length;
+console.info("result = " + result);
+// Output: result = 2
+```

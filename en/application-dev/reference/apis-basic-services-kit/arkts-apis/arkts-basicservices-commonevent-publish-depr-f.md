@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="publish1"></a>
-
 ## publish
 
 ```TypeScript
@@ -19,7 +17,7 @@ Publishes a common event with given properties. This API uses an asynchronous ca
 
 **Deprecated since:** 9
 
-**Substitutes:** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish1)(event: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish)(event: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-commonEvent-function publish(event: string, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publish(event: string, callback: AsyncCallback<void>): void-End-->
 
@@ -51,8 +49,6 @@ commonEvent.publish("event", publishCallBack);
 ```
 
 
-<a id="publish2"></a>
-
 ## publish
 
 ```TypeScript
@@ -65,7 +61,7 @@ Publishes a common event with given properties. This API uses an asynchronous ca
 
 **Deprecated since:** 9
 
-**Substitutes:** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish2)(event: string, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish)(event: string, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-commonEvent-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void-End-->
 

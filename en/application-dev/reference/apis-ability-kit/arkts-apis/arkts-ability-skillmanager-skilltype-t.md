@@ -6,8 +6,6 @@ export type SkillType = _SkillType
 
 Enumerates the skill types.
 
-@typedef { _SkillType }
-
 **Type:** _SkillType
 
 **Since:** 26.0.0

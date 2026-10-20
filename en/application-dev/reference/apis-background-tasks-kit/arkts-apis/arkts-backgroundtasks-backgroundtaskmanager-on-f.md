@@ -34,7 +34,7 @@ Subscribes to continuous task cancellation events. This API uses an asynchronous
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Callback parameter error;<br> 2. Register a exist callback type; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Callback parameter error; <br> 2. Register a exist callback type; 3. Parameter verification failed. |
 
 **Examples**
 

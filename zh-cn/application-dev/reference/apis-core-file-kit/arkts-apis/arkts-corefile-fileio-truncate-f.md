@@ -37,8 +37,6 @@ declare function truncate(path: string, len?: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="truncate2"></a>
-
 ## truncate
 
 ```TypeScript
@@ -64,8 +62,6 @@ declare function truncate(path: string, callback: AsyncCallback<void>): void
 | path | string | 是 | 待截断文件的应用沙箱路径。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
 
-
-<a id="truncate3"></a>
 
 ## truncate
 

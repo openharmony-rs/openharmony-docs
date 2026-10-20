@@ -113,8 +113,6 @@ clear(): void
 | [10200011](../errorcode-utils.md#10200011-传入的thisobject不是容器类的实例) | The clear method cannot be bound with non-sendable. |
 | [10200201](../errorcode-utils.md#10200201-concurrent修改错误) | Concurrent modification error. |
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -142,8 +140,6 @@ constructor(values?: readonly T[] | null)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-构造函数调用异常) | The ArkTS Set's constructor cannot be directly invoked. |
-
-<a id="constructor2"></a>
 
 ## constructor
 

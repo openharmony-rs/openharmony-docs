@@ -4,6 +4,8 @@ sendableContextManager模块提供Context与[SendableContext](arkts-ability-send
 
 **起始版本：** 12
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace sendableContextManager--><!--Device-unnamed-declare namespace sendableContextManager-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

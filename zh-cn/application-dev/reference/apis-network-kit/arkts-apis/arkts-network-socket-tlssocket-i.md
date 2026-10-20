@@ -18,8 +18,6 @@ TLSSocket连接。在调用TLSSocket的方法前，需要先通过[socket.constr
 import { socket } from '@kit.NetworkKit';
 ```
 
-<a id="bind1"></a>
-
 ## bind
 
 ```TypeScript
@@ -44,7 +42,7 @@ bind(address: NetAddress, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | 是 | 本端地址信息，参考[NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress)。 |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | 是 | 本端地址信息，参考[NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress)。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回TLSSocket绑定本机的IP地址和端口的结果。失败返回错误码、错误信息。 |
 
 **错误码：**
@@ -76,8 +74,6 @@ tls.bind(bindAddr, (err: BusinessError) => {
 });
 ```
 
-<a id="bind2"></a>
-
 ## bind
 
 ```TypeScript
@@ -102,7 +98,7 @@ bind(address: NetAddress): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | 是 | 本端地址信息，参考[NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress)。 |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | 是 | 本端地址信息，参考[NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress)。 |
 
 **返回值：**
 
@@ -136,8 +132,6 @@ tls.bind(bindAddr).then(() => {
   console.error('bind fail');
 });
 ```
-
-<a id="close1"></a>
 
 ## close
 
@@ -185,8 +179,6 @@ tls.close((err: BusinessError) => {
 });
 ```
 
-<a id="close2"></a>
-
 ## close
 
 ```TypeScript
@@ -230,8 +222,6 @@ tls.close().then(() => {
   console.error("failed" + err);
 });
 ```
-
-<a id="connect1"></a>
 
 ## connect
 
@@ -433,8 +423,6 @@ tlsOneWay.connect(tlsOneWayConnectOptions, (err: BusinessError) => {
   console.error("connect callback error" + err);
 });
 ```
-
-<a id="connect2"></a>
 
 ## connect
 
@@ -650,8 +638,6 @@ tlsOneWay.connect(tlsOneWayConnectOptions).then(() => {
 });
 ```
 
-<a id="getcertificate1"></a>
-
 ## getCertificate
 
 ```TypeScript
@@ -710,8 +696,6 @@ tls.getCertificate().then((data: socket.X509CertRawData) => {
   console.error("failed" + err);
 });
 ```
-
-<a id="getcertificate2"></a>
 
 ## getCertificate
 
@@ -772,8 +756,6 @@ tls.getCertificate().then((data: socket.X509CertRawData) => {
 });
 ```
 
-<a id="getciphersuite1"></a>
-
 ## getCipherSuite
 
 ```TypeScript
@@ -818,8 +800,6 @@ tls.getCipherSuite((err: BusinessError, data: Array<string>) => {
   }
 });
 ```
-
-<a id="getciphersuite2"></a>
 
 ## getCipherSuite
 
@@ -886,7 +866,7 @@ getLocalAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 以Promise形式返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -909,8 +889,6 @@ tls.getLocalAddress().then((localAddress: socket.NetAddress) => {
   console.error("Get failed, error: " + JSON.stringify(err));
 })
 ```
-
-<a id="getprotocol1"></a>
 
 ## getProtocol
 
@@ -956,8 +934,6 @@ tls.getProtocol((err: BusinessError, data: string) => {
 });
 ```
 
-<a id="getprotocol2"></a>
-
 ## getProtocol
 
 ```TypeScript
@@ -1000,8 +976,6 @@ tls.getProtocol().then((data: string) => {
 });
 ```
 
-<a id="getremoteaddress1"></a>
-
 ## getRemoteAddress
 
 ```TypeScript
@@ -1020,7 +994,7 @@ getRemoteAddress(callback: AsyncCallback<NetAddress>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetAddress](arkts-network-socket-p.md)&gt; | 是 | 回调函数。成功返回对端的socket地址，失败返回错误码、错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 是 | 回调函数。成功返回对端的socket地址，失败返回错误码、错误信息。 |
 
 **错误码：**
 
@@ -1045,8 +1019,6 @@ tls.getRemoteAddress((err: BusinessError, data: socket.NetAddress) => {
 });
 ```
 
-<a id="getremoteaddress2"></a>
-
 ## getRemoteAddress
 
 ```TypeScript
@@ -1065,7 +1037,7 @@ getRemoteAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -1087,8 +1059,6 @@ tls.getRemoteAddress().then(() => {
   console.error('getRemoteAddress fail');
 });
 ```
-
-<a id="getremotecertificate1"></a>
 
 ## getRemoteCertificate
 
@@ -1151,8 +1121,6 @@ tls.getRemoteCertificate().then((data: socket.X509CertRawData) => {
 });
 ```
 
-<a id="getremotecertificate2"></a>
-
 ## getRemoteCertificate
 
 ```TypeScript
@@ -1214,8 +1182,6 @@ tls.getRemoteCertificate().then((data: socket.X509CertRawData) => {
 });
 ```
 
-<a id="getsignaturealgorithms1"></a>
-
 ## getSignatureAlgorithms
 
 ```TypeScript
@@ -1258,8 +1224,6 @@ tls.getSignatureAlgorithms((err: BusinessError, data: Array<string>) => {
   }
 });
 ```
-
-<a id="getsignaturealgorithms2"></a>
 
 ## getSignatureAlgorithms
 
@@ -1314,7 +1278,7 @@ getSocketFd(): Promise<number>
 > 
 > - bind方法调用成功后，才可调用此方法。
 > 
-> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **起始版本：** 16
 
@@ -1349,8 +1313,6 @@ tls.getSocketFd().then((data: number) => {
   console.info("tls socket fd: " + data);
 })
 ```
-
-<a id="getstate1"></a>
 
 ## getState
 
@@ -1405,8 +1367,6 @@ tls.getState((err: BusinessError, data: socket.SocketStateBase) => {
   console.info('getState success:' + JSON.stringify(data));
 });
 ```
-
-<a id="getstate2"></a>
 
 ## getState
 
@@ -1774,8 +1734,6 @@ tls.bind(bindAddr, (err: BusinessError) => {
 });
 ```
 
-<a id="send1"></a>
-
 ## send
 
 ```TypeScript
@@ -1823,8 +1781,6 @@ tls.send("xxxx", (err: BusinessError) => {
   }
 });
 ```
-
-<a id="send2"></a>
 
 ## send
 
@@ -1876,8 +1832,6 @@ tls.send("xxxx").then(() => {
   console.error("failed" + err);
 });
 ```
-
-<a id="setextraoptions1"></a>
 
 ## setExtraOptions
 
@@ -1951,8 +1905,6 @@ tls.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
   console.info('setExtraOptions success');
 });
 ```
-
-<a id="setextraoptions2"></a>
 
 ## setExtraOptions
 

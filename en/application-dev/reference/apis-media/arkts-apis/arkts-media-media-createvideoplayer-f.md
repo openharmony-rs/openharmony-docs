@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="createvideoplayer1"></a>
-
 ## createVideoPlayer
 
 ```TypeScript
@@ -19,7 +17,7 @@ Creates a **VideoPlayer** instance. This API uses an asynchronous callback to re
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAVPlayer](arkts-media-media-createavplayer-f.md#createavplayer1)(callback: AsyncCallback&lt;AVPlayer&gt;)
+**Substitutes:** [createAVPlayer](arkts-media-media-createavplayer-f.md#createavplayer)(callback: AsyncCallback&lt;AVPlayer&gt;)
 
 <!--Device-media-function createVideoPlayer(callback: AsyncCallback<VideoPlayer>): void--><!--Device-media-function createVideoPlayer(callback: AsyncCallback<VideoPlayer>): void-End-->
 
@@ -47,8 +45,6 @@ media.createVideoPlayer((error: BusinessError, video: media.VideoPlayer) => {
 });
 ```
 
-
-<a id="createvideoplayer2"></a>
 
 ## createVideoPlayer
 

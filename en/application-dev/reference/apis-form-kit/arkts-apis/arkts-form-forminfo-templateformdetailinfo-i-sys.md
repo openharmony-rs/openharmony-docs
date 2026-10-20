@@ -6,8 +6,6 @@ interface TemplateFormDetailInfo
 
 TemplateFormDetailInfo
 
-@typedef TemplateFormDetailInfo
-
 **Since:** 23
 
 <!--Device-formInfo-interface TemplateFormDetailInfo--><!--Device-formInfo-interface TemplateFormDetailInfo-End-->

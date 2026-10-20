@@ -95,7 +95,6 @@ Obtains the current white balance value.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 12 - 19 |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
 **Examples**
@@ -141,7 +140,6 @@ Obtains the white balance mode in use.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 12 - 19 |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
 **Examples**
@@ -233,7 +231,6 @@ Sets a white balance value. Before the setting, run [getWhiteBalanceRange](arkts
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 12 - 19 |
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
@@ -279,7 +276,6 @@ Sets a white balance mode. Before the setting, run [isWhiteBalanceModeSupported]
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 12 - 19 |
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 

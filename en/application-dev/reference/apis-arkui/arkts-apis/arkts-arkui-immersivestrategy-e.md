@@ -53,3 +53,21 @@ Avoid the three-button navigation bar area on the phone.
 <!--Device-ImmersiveStrategy-AVOID_FLOAT_NAV = 1--><!--Device-ImmersiveStrategy-AVOID_FLOAT_NAV = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NAVIGATION_EXPAND_SAFE_AREA
+
+```TypeScript
+NAVIGATION_EXPAND_SAFE_AREA = 8
+```
+
+Expands the TitleBar and ToolBar of Navigation/NavDestination as safe areas for the content region.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-ImmersiveStrategy-NAVIGATION_EXPAND_SAFE_AREA = 8--><!--Device-ImmersiveStrategy-NAVIGATION_EXPAND_SAFE_AREA = 8-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full

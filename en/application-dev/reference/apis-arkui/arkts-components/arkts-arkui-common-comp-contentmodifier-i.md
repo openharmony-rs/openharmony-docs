@@ -6,8 +6,6 @@ declare interface ContentModifier<T>
 
 Defines the content modifier.
 
-@interface ContentModifier
-
 **Since:** 12
 
 <!--Device-unnamed-declare interface ContentModifier<T>--><!--Device-unnamed-declare interface ContentModifier<T>-End-->

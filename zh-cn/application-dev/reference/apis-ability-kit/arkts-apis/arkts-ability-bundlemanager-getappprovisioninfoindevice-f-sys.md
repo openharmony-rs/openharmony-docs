@@ -31,7 +31,7 @@ function getAppProvisionInfoInDevice(bundleName: string, userId: number): Promis
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 包名。 |
-| userId | number | 是 | User ID on the device.<br>取值限定为整数。 |
+| userId | number | 是 | User ID on the device. <br>取值限定为整数。 |
 
 **返回值：**
 

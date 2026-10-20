@@ -71,8 +71,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getallobject1"></a>
-
 ## getAllObject
 
 ```TypeScript
@@ -126,8 +124,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="getallobject2"></a>
 
 ## getAllObject
 
@@ -227,8 +223,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getfirstobject1"></a>
-
 ## getFirstObject
 
 ```TypeScript
@@ -283,8 +277,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getfirstobject2"></a>
-
 ## getFirstObject
 
 ```TypeScript
@@ -333,8 +325,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="getlastobject1"></a>
 
 ## getLastObject
 
@@ -390,8 +380,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getlastobject2"></a>
-
 ## getLastObject
 
 ```TypeScript
@@ -440,8 +428,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="getnextobject1"></a>
 
 ## getNextObject
 
@@ -502,8 +488,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getnextobject2"></a>
-
 ## getNextObject
 
 ```TypeScript
@@ -557,8 +541,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="getpositionobject1"></a>
 
 ## getPositionObject
 
@@ -620,8 +602,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="getpositionobject2"></a>
 
 ## getPositionObject
 

@@ -347,7 +347,7 @@ Moves the data read position with the specified offset from the current position
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| offset | number | Yes | Offset to move the data read position. A positive value means to move forward; a negative value means to move backward. If the cursor is beyond the start or end position of the result set, **false** is returned. |
+| offset | number | Yes | Offset to move the data read position. A positive value means to move towards the end of the result set (the row number increases); a negative value means to move towards the start of the result set (the row number decreases). If the cursor is beyond the start or end position of the result set, **false** is returned. |
 
 **Return value:**
 
@@ -359,7 +359,7 @@ Moves the data read position with the specified offset from the current position
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -549,7 +549,7 @@ Moves the data read position from 0 to an absolute position.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 

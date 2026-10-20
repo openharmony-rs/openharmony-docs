@@ -6,8 +6,6 @@ declare interface SceneOptions
 
 Scene options used by 3D scene control
 
-@interface SceneOptions
-
 **Since:** 12
 
 <!--Device-unnamed-declare interface SceneOptions--><!--Device-unnamed-declare interface SceneOptions-End-->

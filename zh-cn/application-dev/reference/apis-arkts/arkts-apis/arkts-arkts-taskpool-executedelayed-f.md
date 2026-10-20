@@ -6,8 +6,6 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
-<a id="executedelayed1"></a>
-
 ## executeDelayed
 
 ```TypeScript
@@ -75,8 +73,6 @@ taskpool.executeDelayed(1000, task).then(() => { // 1000: delayTime is 1000ms
 })
 ```
 
-
-<a id="executedelayed2"></a>
 
 ## executeDelayed
 

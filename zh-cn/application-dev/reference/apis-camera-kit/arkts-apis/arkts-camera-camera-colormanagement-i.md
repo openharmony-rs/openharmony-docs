@@ -88,7 +88,7 @@ P3广色域与HDR高动态范围成像：
 
 在录像模式下，通过设置色彩空间为H_LOG, 可以录制LOG视频（不支持前置与微距）。
 
-从API version 23开始，可以通过接口[getSupportedFullOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedfulloutputcapability)查询是否支持拍照模式下的预览P010格式。
+从API版本23开始，可以通过接口[getSupportedFullOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedfulloutputcapability)查询是否支持拍照模式下的预览P010格式。
 
 - 若应用不主动设置色彩空间，在拍照模式下，当预览输出格式为CAMERA_FORMAT_YUV_420_SP时，色彩空间默认为SRGB；当预览输出格式为CAMERA_FORMAT_YCRCB_P010/  
 CAMERA_FORMAT_YCBCR_P010时，色彩空间默认为BT2020_HLG。  
@@ -98,9 +98,9 @@ CAMERA_FORMAT_YCBCR_P010时，色彩空间默认为BT2020_HLG。
 
 | SDR/HDR拍摄 | 预览输出格式 | 色彩空间 |  
 |--------------------|------------| ------------|  
-| SDR(Default) | [CAMERA_FORMAT_YUV_420_SP](arkts-camera-camera-cameraformat-e.md) | SRGB |
-| HDR P3 | [CAMERA_FORMAT_YUV_420_SP](arkts-camera-camera-cameraformat-e.md) | DISPLAY_P3 |
-| HDR BT.2020 | CAMERA_FORMAT_YCRCB_P010,<br>CAMERA_FORMAT_YCBCR_P010 | [BT2020_HLG](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md) |
+| SDR(Default) | CAMERA_FORMAT_YUV_420_SP | SRGB |  
+| HDR P3 | CAMERA_FORMAT_YUV_420_SP | DISPLAY_P3 |  
+| HDR BT.2020 | CAMERA_FORMAT_YCRCB_P010,<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG |
 
 在录像模式下，使能SDR或HDR_VIVID拍摄效果时，CameraFormat与ColorSpace必须按照下列表格中的对应关系配置，若不满足表格中CameraFormat与ColorSpace配置，会导致预览异常等问题。
 
@@ -108,8 +108,8 @@ CAMERA_FORMAT_YCBCR_P010时，色彩空间默认为BT2020_HLG。
 
 | SDR/HDR拍摄 | CameraFormat | ColorSpace |  
 |--------------------|--------------------------|------------------|  
-| SDR(Default) | [CAMERA_FORMAT_YUV_420_SP](arkts-camera-camera-cameraformat-e.md) | [BT709_LIMIT](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md) |
-| HDR_VIVID | [CAMERA_FORMAT_YCRCB_P010](arkts-camera-camera-cameraformat-e.md) | BT2020_HLG_LIMIT,<br>BT2020_HLG |
+| SDR(Default) | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT |  
+| HDR_VIVID | CAMERA_FORMAT_YCRCB_P010 | BT2020_HLG_LIMIT,<br>BT2020_HLG |
 
 **起始版本：** 12
 
@@ -123,7 +123,7 @@ CAMERA_FORMAT_YCBCR_P010时，色彩空间默认为BT2020_HLG。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| colorSpace | [colorSpaceManager.ColorSpace](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md) | 是 | The type of color space. |
+| colorSpace | [colorSpaceManager.ColorSpace](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md) | 是 | 色彩空间的类型。 |
 
 **错误码：**
 

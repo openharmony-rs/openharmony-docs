@@ -20,8 +20,6 @@ WebResourceHandler与[WebSchemeHandler](arkts-arkweb-webview-webschemehandler-c.
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="didfail1"></a>
-
 ## didFail
 
 ```TypeScript
@@ -54,8 +52,6 @@ didFail(code: WebNetErrorList): void
 **示例**
 
 示例请参考[OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart)。
-
-<a id="didfail2"></a>
 
 ## didFail
 
@@ -158,8 +154,6 @@ struct WebComponent {
   }
 }
 ```
-
-<a id="didfail3"></a>
 
 ## didFail
 

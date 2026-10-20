@@ -81,7 +81,7 @@ Sends data to the player.
 
 | Type | Description |
 | --- | --- |
-| number | Number of bytes received by the server.<br>- A return value less than 0 indicates failure. <br>- A return value of -2 indicates that the player no longer needs the current data, and the client should stop the current read process. <br>- A return value of -3 indicates that the player's buffer is full, and the client should wait for the next read. |
+| number | Number of bytes received by the server. <br>- A return value less than 0 indicates failure. <br>- A return value of -2 indicates that the player no longer needs the current data, and the client should stop the current read process. <br>- A return value of -3 indicates that the player's buffer is full, and the client should wait for the next read. |
 
 **Examples**
 

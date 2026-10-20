@@ -6,8 +6,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="createaudiorenderer1"></a>
-
 ## createAudioRenderer
 
 ```TypeScript
@@ -63,8 +61,6 @@ audio.createAudioRenderer(audioRendererOptions,(err, data) => {
 });
 ```
 
-
-<a id="createaudiorenderer3"></a>
 
 ## createAudioRenderer
 

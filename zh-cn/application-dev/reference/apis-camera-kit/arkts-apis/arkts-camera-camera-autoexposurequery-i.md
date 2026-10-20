@@ -6,7 +6,7 @@ interface AutoExposureQuery
 
 针对设备的自动曝光特性提供了一系列查询功能。  
 > 
-> - 本模块接口在API version 12发生兼容变更，保留了内层元素的起始版本信息，会出现外层元素@since版本号大于内层元素的情况，不影响接口使用。
+> - 本模块接口在API版本12发生兼容变更，保留了内层元素的起始版本信息，会出现外层元素@since版本号大于内层元素的情况，不影响接口使用。
 
 **起始版本：** 12
 
@@ -98,8 +98,6 @@ isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 23 |
-| [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect.<br>**适用版本：** 12 - 23 |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
 **示例**

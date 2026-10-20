@@ -6,8 +6,6 @@ declare interface NestedScrollOptions
 
 Implements an object used to configure the [nestedScroll](arkts-arkui-common-comp-scrollablecommonmethod-c.md#nestedscroll) attribute.
 
-@interface NestedScrollOptions
-
 **Since:** 23
 
 <!--Device-unnamed-declare interface NestedScrollOptions--><!--Device-unnamed-declare interface NestedScrollOptions-End-->

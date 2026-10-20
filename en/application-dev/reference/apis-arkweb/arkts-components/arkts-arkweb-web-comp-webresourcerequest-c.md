@@ -114,7 +114,7 @@ Checks whether the resource request is for the main frame. Used to differentiate
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the resource request is a main frame request.<br>The value **true** indicates that the resource request is a main frame request, and **false** indicates that the resource request is not a main frame request. |
+| boolean | Whether the resource request is a main frame request. <br>The value **true** indicates that the resource request is a main frame request, and **false** indicates that the resource request is not a main frame request. |
 
 ## isRedirect
 
@@ -136,7 +136,7 @@ Checks whether the resource request is redirected by the server. Used to inspect
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the resource request is redirected by the server.<br>The value **true** indicates that the resource request is redirected by the server, and **false** indicates that the resource request is not redirected by the server. |
+| boolean | Whether the resource request is redirected by the server. <br>The value **true** indicates that the resource request is redirected by the server, and **false** indicates that the resource request is not redirected by the server. |
 
 ## isRequestGesture
 
@@ -158,4 +158,4 @@ Checks whether the resource request is associated with a gesture (such as a tap)
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the resource request is associated with a gesture (for example, a tap).<br>The value **true** indicates that the resource request is associated with a gesture, and **false** indicates the opposite. |
+| boolean | Whether the resource request is associated with a gesture (for example, a tap). <br>The value **true** indicates that the resource request is associated with a gesture, and **false** indicates the opposite. |

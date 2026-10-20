@@ -18,8 +18,6 @@ interface KVManager
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="closekvstore1"></a>
-
 ## closeKVStore
 
 ```TypeScript
@@ -40,7 +38,7 @@ closeKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节。 |
+| appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节（Byte）。 |
 | storeId | string | 是 | 要关闭的数据库唯一标识符，长度范围为1-[MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md)，且只能包含字母数字或下划线_。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当要关闭的数据库成功关闭，err为undefined，否则为错误对象。 |
 
@@ -48,7 +46,7 @@ closeKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 **示例**
 
@@ -92,8 +90,6 @@ try {
 }
 ```
 
-<a id="closekvstore2"></a>
-
 ## closeKVStore
 
 ```TypeScript
@@ -114,7 +110,7 @@ closeKVStore(appId: string, storeId: string, kvConfig?: Options): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节。 |
+| appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节（Byte）。 |
 | storeId | string | 是 | 要关闭的数据库唯一标识符，长度范围为1-[MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md)，且只能包含字母数字或下划线_。 |
 | kvConfig | [Options](arkts-arkdata-distributedkvstore-options-i.md) | 否 | 要关闭的数据库的配置信息，默认为空。<br>**适用版本：** 24 |
 
@@ -128,7 +124,7 @@ closeKVStore(appId: string, storeId: string, kvConfig?: Options): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 **示例**
 
@@ -171,8 +167,6 @@ try {
 }
 ```
 
-<a id="deletekvstore1"></a>
-
 ## deleteKVStore
 
 ```TypeScript
@@ -193,7 +187,7 @@ deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节。 |
+| appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节（Byte）。 |
 | storeId | string | 是 | 要删除的数据库唯一标识符，长度范围为1-[MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md)，且只能包含字母数字或下划线_。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当要删除的数据库成功删除，err为undefined，否则为错误对象。 |
 
@@ -201,7 +195,7 @@ deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-未找到相关数据) | Not found. |
 
 **示例**
@@ -247,8 +241,6 @@ try {
 }
 ```
 
-<a id="deletekvstore2"></a>
-
 ## deleteKVStore
 
 ```TypeScript
@@ -269,7 +261,7 @@ deleteKVStore(appId: string, storeId: string, kvConfig?: Options): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节。 |
+| appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节（Byte）。 |
 | storeId | string | 是 | 要删除的数据库唯一标识符，长度范围为1-[MAX_STORE_ID_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md)，且只能包含字母数字或下划线_。 |
 | kvConfig | [Options](arkts-arkdata-distributedkvstore-options-i.md) | 否 | 要删除的数据库的配置信息，默认为空。<br>**适用版本：** 24 |
 
@@ -283,7 +275,7 @@ deleteKVStore(appId: string, storeId: string, kvConfig?: Options): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-未找到相关数据) | Not found. |
 
 **示例**
@@ -327,15 +319,13 @@ try {
 }
 ```
 
-<a id="getallkvstoreid1"></a>
-
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 ```
 
-获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore1)方法删除的分布式键值数据库的storeId，使用callback异步回调。
+获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore)方法删除的分布式键值数据库的storeId，使用callback异步回调。
 
 **起始版本：** 9
 
@@ -349,14 +339,14 @@ getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节。 |
+| appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节（Byte）。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string[]&gt; | 是 | 回调函数。返回所有创建的分布式键值数据库的storeId。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 **示例**
 
@@ -379,15 +369,13 @@ try {
 }
 ```
 
-<a id="getallkvstoreid2"></a>
-
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string): Promise<string[]>
 ```
 
-获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore1)方法删除的分布式键值数据库的storeId，使用Promise异步回调。
+获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore)方法删除的分布式键值数据库的storeId，使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -401,7 +389,7 @@ getAllKVStoreId(appId: string): Promise<string[]>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节。 |
+| appId | string | 是 | 应用的BundleName，不可为空且长度范围为1-256字节（Byte）。 |
 
 **返回值：**
 
@@ -413,7 +401,7 @@ getAllKVStoreId(appId: string): Promise<string[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 **示例**
 
@@ -435,15 +423,13 @@ try {
 }
 ```
 
-<a id="getkvstore1"></a>
-
 ## getKVStore
 
 ```TypeScript
 getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>): void
 ```
 
-通过指定options和storeId，创建并获取分布式键值数据库，使用callback异步回调。获取数据库后，在使用完毕时需调用[closeKVStore](#closekvstore1)关闭数据库释放资源。
+通过指定options和storeId，创建并获取分布式键值数据库，使用callback异步回调。获取数据库后，在使用完毕时需调用[closeKVStore](#closekvstore)关闭数据库释放资源。
 
 > **注意：**
 > 
@@ -470,7 +456,7 @@ getKVStore<T>(storeId: string, options: Options, callback: AsyncCallback<T>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100002](../errorcode-distributedKVStore.md#15100002-打开已有数据库时参数配置发生变化) | Open existed database with changed options. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 
@@ -507,15 +493,13 @@ try {
 }
 ```
 
-<a id="getkvstore2"></a>
-
 ## getKVStore
 
 ```TypeScript
 getKVStore<T>(storeId: string, options: Options): Promise<T>
 ```
 
-指定options和storeId，创建并获取分布式键值数据库，使用Promise回调。获取数据库后，在使用完毕时需调用[closeKVStore](#closekvstore1)关闭数据库释放资源。
+指定options和storeId，创建并获取分布式键值数据库，使用Promise回调。获取数据库后，在使用完毕时需调用[closeKVStore](#closekvstore)关闭数据库释放资源。
 
 > **注意：**
 > 
@@ -547,7 +531,7 @@ getKVStore<T>(storeId: string, options: Options): Promise<T>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100002](../errorcode-distributedKVStore.md#15100002-打开已有数据库时参数配置发生变化) | Open existed database with changed options. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 
@@ -586,7 +570,7 @@ try {
 off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void
 ```
 
-取消订阅服务状态变更通知。必须先调用[on('distributedDataServiceDie')](#on)订阅后，才能调用off取消订阅。参数中的deathCallback必须是已经订阅过的deathCallback，否则会取消订阅失败。
+取消订阅服务终止事件。必须先调用[on('distributedDataServiceDie')](#on)订阅后，才能调用off取消订阅。参数中的deathCallback必须是已经订阅过的deathCallback，否则会取消订阅失败。
 
 **起始版本：** 9
 
@@ -598,14 +582,14 @@ off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | 'distributedDataServiceDie' | 是 | 取消订阅的事件名，固定为'distributedDataServiceDie'，即服务状态变更事件。 |
+| event | 'distributedDataServiceDie' | 是 | 取消订阅的事件名，固定为'distributedDataServiceDie'，即服务终止事件。 |
 | deathCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 否 | 回调函数。如果该参数不填，那么会将之前订阅过的所有的deathCallback取消订阅。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **示例**
 
@@ -630,7 +614,7 @@ try {
 on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void
 ```
 
-订阅服务终止事件。如果服务终止，需要重新调用[on('dataChange')](arkts-arkdata-distributedkvstore-singlekvstore-i.md#on1)和[on('syncComplete')](arkts-arkdata-distributedkvstore-singlekvstore-i.md#on2)注册数据变更通知和端端同步完成事件回调通知，并且端端同步操作会返回失败。调用on订阅后，在不需要监听时必须调用[off('distributedDataServiceDie')](#off)取消订阅。
+订阅服务终止事件。如果服务终止，需要重新调用[on('dataChange')](arkts-arkdata-distributedkvstore-singlekvstore-i.md#on)和[on('syncComplete')](arkts-arkdata-distributedkvstore-singlekvstore-i.md#on)注册数据变更通知和端端同步完成事件回调通知，并且端端同步操作会返回失败。调用on订阅后，在不需要监听时必须调用[off('distributedDataServiceDie')](#off)取消订阅。
 
 **起始版本：** 9
 
@@ -649,7 +633,7 @@ on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **示例**
 

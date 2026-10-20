@@ -38,3 +38,19 @@ function getUserHomeDir(): string
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | 13900042 | Unknown error. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+function getUserHomeDirExample() {
+  try {
+    let path = Environment.getUserHomeDir();
+    console.info(`Succeeded in getUserHomeDir, path is ${path}`);
+  } catch (err) {
+    console.error(`Failed to getUserHomeDir. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+<!--DelEnd-->

@@ -2961,3 +2961,21 @@ Length of the **Buffer** object, in bytes.
 | Error Code ID | Error Message |
 | --- | --- |
 | [10200013](../errorcode-utils.md#10200013-read-only-property) | Length cannot be set for the buffer that has only a getter. |
+
+**Examples**
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+
+let buf = buffer.from("12345678");
+console.info(JSON.stringify(buf.length));
+// Output: 8
+let arrayBuffer = buf.buffer;
+console.info(JSON.stringify(new Uint8Array(arrayBuffer)));
+// Output: {"0":49,"1":50,"2":51,"3":52,"4":53,"5":54,"6":55,"7":56}
+console.info(JSON.stringify(buf.byteOffset));
+// Output: 0
+let buf1 = buffer.from("abcd");
+console.info(JSON.stringify(buf1.byteOffset));
+// Output: 8
+```

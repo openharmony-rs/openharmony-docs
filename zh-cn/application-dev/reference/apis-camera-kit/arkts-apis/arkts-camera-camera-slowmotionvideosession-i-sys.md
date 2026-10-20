@@ -4,7 +4,7 @@
 interface SlowMotionVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect
 ```
 
-SlowMotionVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect Implements a slow-motion video session, which sets the parameters of the slow-motion video mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md).
+SlowMotionVideoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect实现慢动作录像会话，设置慢动作录像模式的参数，并保存运行相机所需的所有[CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md)实例。继承自[Session](arkts-camera-camera-session-i.md)。
 
 **继承/实现关系：** SlowMotionVideoSession extends [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 isSlowMotionDetectionSupported(): boolean
 ```
 
-Checks whether the device supports slow-motion detection.
+检查设备是否支持慢动作检测。
 
 **起始版本：** 12
 
@@ -42,7 +42,7 @@ Checks whether the device supports slow-motion detection.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for the support of slow-motion detection. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
+| boolean | 慢动作检测支持情况。支持时返回**true**，否则返回**false**。如果操作失败，则返回[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)中定义的错误码。 |
 
 **错误码：**
 
@@ -78,7 +78,7 @@ function isSlowMotionDetectionSupported(slowMotionVideoSession: camera.SlowMotio
 off(type: 'error', callback?: ErrorCallback): void
 ```
 
-Unsubscribes from HighResolutionPhotoSession error events.
+取消订阅HighResolutionPhotoSession错误事件。
 
 **起始版本：** 12
 
@@ -92,8 +92,8 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('error')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'error' | 是 | 事件类型，固定为**'error'**。session创建成功后可监听该事件。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 回调函数，用于返回结果。此参数为可选参数。如果指定此参数，则取消订阅指定事件**on('error')**中指定的callback。（callback对象不可是匿名函数。） |
 
 **错误码：**
 
@@ -118,7 +118,7 @@ function unregisterSessionError(slowMotionVideoSession: camera.SlowMotionVideoSe
 off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void
 ```
 
-Unsubscribes from focus state change events.
+取消订阅对焦状态变化事件。
 
 **起始版本：** 12
 
@@ -132,8 +132,8 @@ Unsubscribes from focus state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'focusStateChange' | 是 | 事件类型，固定为**'focusStateChange'**。session创建成功后可监听该事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | 回调函数，用于接收对焦状态。此参数可选。如果指定此参数，则取消订阅通过 **on('focusStateChange')** 注册的、使用该回调函数的事件。回调函数不能是匿名函数。 |
 
 **错误码：**
 
@@ -158,7 +158,7 @@ function unregisterFocusStateChange(slowMotionVideoSession: camera.SlowMotionVid
 off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback<SmoothZoomInfo>): void
 ```
 
-Unsubscribes from smooth zoom state change events.
+取消订阅平滑变焦状态变化事件。
 
 **起始版本：** 12
 
@@ -172,8 +172,8 @@ Unsubscribes from smooth zoom state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'smoothZoomInfoAvailable' | 是 | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('smoothZoomInfoAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'smoothZoomInfoAvailable' | 是 | 事件类型，固定为**'smoothZoomInfoAvailable'**。创建会话后可监听此事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 否 | 用于接收结果的回调函数。此参数可选。如果指定此参数，则取消订阅通过**on('smoothZoomInfoAvailable')**注册的、使用该回调函数的事件。回调函数不能是匿名函数。 |
 
 **错误码：**
 
@@ -198,7 +198,7 @@ function unregisterSmoothZoomInfo(slowMotionVideoSession: camera.SlowMotionVideo
 off(type: 'slowMotionStatus', callback?: AsyncCallback<SlowMotionStatus>): void
 ```
 
-Unsubscribes from slow-motion status change events.
+取消订阅慢动作状态变化事件。
 
 **起始版本：** 12
 
@@ -212,8 +212,8 @@ Unsubscribes from slow-motion status change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'slowMotionStatus' | 是 | Event type. The value is fixed at **'slowMotionStatus'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SlowMotionStatus](arkts-camera-camera-slowmotionstatus-e-sys.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('slowMotionStatus')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
+| type | 'slowMotionStatus' | 是 | 事件类型，固定为**'slowMotionStatus'**。创建会话后可监听此事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SlowMotionStatus](arkts-camera-camera-slowmotionstatus-e-sys.md)&gt; | 否 | 用于接收结果的回调函数。此参数可选。如果指定此参数，则取消订阅通过**on('slowMotionStatus')**注册的、使用该回调函数的事件。回调函数不能是匿名函数。如果操作失败，则返回[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)中定义的错误码。 |
 
 **错误码：**
 
@@ -238,7 +238,7 @@ function unregisterSlowMotionStatus(slowMotionVideoSession: camera.SlowMotionVid
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-Subscribes to HighResolutionPhotoSession error events. This API uses an asynchronous callback to return the result.
+订阅HighResolutionPhotoSession错误事件。使用callback异步回调。
 
 **起始版本：** 12
 
@@ -252,8 +252,8 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-camera-camera-session-i.md#beginconfig), [commitConfig](arkts-camera-camera-session-i.md#commitconfig), and [addInput](arkts-camera-camera-session-i.md#addinput). |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | Callback used to return an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md). |
+| type | 'error' | 是 | 事件类型。固定为**'error'**。session创建成功后可监听该事件。当调用会话相关接口如[beginConfig](arkts-camera-camera-session-i.md#beginconfig)、[commitConfig](arkts-camera-camera-session-i.md#commitconfig)、[addInput](arkts-camera-camera-session-i.md#addinput)等发生错误时触发该事件并返回错误信息。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数，用于返回错误码，错误码类型[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
 **错误码：**
 
@@ -284,7 +284,7 @@ function registerSessionError(slowMotionVideoSession: camera.SlowMotionVideoSess
 on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void
 ```
 
-Subscribes to focus state change events. This API uses an asynchronous callback to return the result.
+订阅对焦状态变化事件。使用callback异步回调。
 
 **起始版本：** 12
 
@@ -298,8 +298,8 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | Callback used to return the focus state change. |
+| type | 'focusStateChange' | 是 | 事件类型，固定为**'focusStateChange'**。session创建成功后可监听该事件。仅在自动对焦模式下相机对焦状态发生变化时触发该事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | 回调函数，用于返回对焦状态变化。 |
 
 **错误码：**
 
@@ -334,7 +334,7 @@ function registerFocusStateChange(slowMotionVideoSession: camera.SlowMotionVideo
 on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback<SmoothZoomInfo>): void
 ```
 
-Subscribes to smooth zoom state change events. This API uses an asynchronous callback to return the result.
+订阅平滑变焦状态变化事件。此接口通过异步回调返回结果。
 
 **起始版本：** 12
 
@@ -348,8 +348,8 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'smoothZoomInfoAvailable' | 是 | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 是 | Callback used to return the smooth zoom state change. |
+| type | 'smoothZoomInfoAvailable' | 是 | 事件类型，固定为**'smoothZoomInfoAvailable'**。创建会话后可监听此事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 是 | 用于接收平滑变焦状态变化信息的回调函数。 |
 
 **错误码：**
 
@@ -384,7 +384,7 @@ function registerSmoothZoomInfo(slowMotionVideoSession: camera.SlowMotionVideoSe
 on(type: 'slowMotionStatus', callback: AsyncCallback<SlowMotionStatus>): void
 ```
 
-Subscribes to slow-motion status change events. This API uses an asynchronous callback to return the result.
+订阅慢动作状态变化事件。此接口通过异步回调返回结果。
 
 **起始版本：** 12
 
@@ -398,8 +398,8 @@ Subscribes to slow-motion status change events. This API uses an asynchronous ca
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'slowMotionStatus' | 是 | Event type. The value is fixed at **'slowMotionStatus'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SlowMotionStatus](arkts-camera-camera-slowmotionstatus-e-sys.md)&gt; | 是 | Callback used to return the slow-motion status change. |
+| type | 'slowMotionStatus' | 是 | 事件类型，固定为**'slowMotionStatus'**。创建会话后可监听此事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SlowMotionStatus](arkts-camera-camera-slowmotionstatus-e-sys.md)&gt; | 是 | 用于接收慢动作状态变化信息的回调函数。 |
 
 **错误码：**
 
@@ -434,7 +434,7 @@ function registerSlowMotionStatus(slowMotionVideoSession: camera.SlowMotionVideo
 setSlowMotionDetectionArea(area: Rect): void
 ```
 
-Sets an area for slow-motion detection.
+设置慢动作检测区域。
 
 **起始版本：** 12
 
@@ -448,7 +448,7 @@ Sets an area for slow-motion detection.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| area | [Rect](arkts-camera-camera-rect-i.md) | 是 | Area. |
+| area | [Rect](arkts-camera-camera-rect-i.md) | 是 | 检测区域。 |
 
 **错误码：**
 

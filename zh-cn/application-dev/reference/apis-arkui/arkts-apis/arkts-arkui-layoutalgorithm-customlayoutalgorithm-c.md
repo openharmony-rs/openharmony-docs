@@ -4,7 +4,7 @@
 export class CustomLayoutAlgorithm implements LayoutAlgorithm
 ```
 
-自定义布局算法类。
+自定义布局算法类，允许开发者实现自定义的测量和布局逻辑。适用于需要精细控制子组件尺寸和位置的复杂布局场景，如瀑布流布局、不规则网格布局、动态流式布局等。通过重写onMeasure和onLayout方法，开发者可以实现内置布局算法无法覆盖的布局策略。
 
 > **说明：** 
 > 
@@ -32,7 +32,7 @@ onLayout(self: FrameNode, position: Position): void
 > **说明：** 
 > 
 > 在此函数中，开发者可以调用[FrameNode](arkts-arkui-framenode-c.md)的
-> [getChild()](arkts-arkui-framenode-c.md#getchild1)方法获取子组件FrameNode，调用
+> [getChild()](arkts-arkui-framenode-c.md#getchild)方法获取子组件FrameNode，调用
 > [FrameNode](arkts-arkui-framenode-c.md)的[layout()](arkts-arkui-framenode-c.md#layout)方法设置子组件位置，参考DynamicLayout组件
 > [示例1（自定义布局算法实现瀑布流布局）](../arkts-components/arkts-arkui-dynamiclayout-comp-attribute.md)。
 
@@ -70,9 +70,8 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint): void
 > **说明：** 
 > 
 > 在此函数中，开发者可以调用[FrameNode](arkts-arkui-framenode-c.md)的
-> [getChild()](arkts-arkui-framenode-c.md#getchild1)方法获取子组件FrameNode，调用
-> [FrameNode](arkts-arkui-framenode-c.md)的[measure()](arkts-arkui-framenode-c.md#measure)方法测量子组件大小，参考DynamicLayout组
-> 件
+> [getChild()](arkts-arkui-framenode-c.md#getchild)方法获取子组件FrameNode，调用
+> [FrameNode](arkts-arkui-framenode-c.md)的[measure()](arkts-arkui-framenode-c.md#measure)方法测量子组件大小，参考DynamicLayout组件
 > [示例1（自定义布局算法实现瀑布流布局）](../arkts-components/arkts-arkui-dynamiclayout-comp-attribute.md)。
 
 **起始版本：** 24

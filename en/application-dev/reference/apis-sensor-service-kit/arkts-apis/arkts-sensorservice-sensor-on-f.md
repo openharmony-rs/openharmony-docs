@@ -6,9 +6,7 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
-<a id="on3"></a>
-
-## on
+## on('SensorId.ACCELEROMETER')
 
 ```TypeScript
 function on(type: SensorId.ACCELEROMETER, callback: Callback<AccelerometerResponse>,
@@ -41,9 +39,9 @@ Subscribes to data of the acceleration sensor. This API uses an asynchronous cal
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission <br> required to call the API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -70,9 +68,7 @@ try {
 ```
 
 
-<a id="on4"></a>
-
-## on
+## on('SensorId.ACCELEROMETER_UNCALIBRATED')
 
 ```TypeScript
 function on(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback<AccelerometerUncalibratedResponse>,
@@ -101,9 +97,9 @@ Subscribes to data of the uncalibrated acceleration sensor. This API uses an asy
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission <br> required to call the API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -133,9 +129,7 @@ try {
 ```
 
 
-<a id="on5"></a>
-
-## on
+## on('SensorId.AMBIENT_LIGHT')
 
 ```TypeScript
 function on(type: SensorId.AMBIENT_LIGHT, callback: Callback<LightResponse>, options?: Options): void
@@ -161,8 +155,8 @@ Subscribes to data of the ambient light sensor. This API uses an asynchronous ca
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -187,9 +181,7 @@ try {
 ```
 
 
-<a id="on6"></a>
-
-## on
+## on('SensorId.AMBIENT_TEMPERATURE')
 
 ```TypeScript
 function on(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>,
@@ -216,8 +208,8 @@ Subscribes to data of the ambient temperature sensor. This API uses an asynchron
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -242,9 +234,7 @@ try {
 ```
 
 
-<a id="on7"></a>
-
-## on
+## on('SensorId.BAROMETER')
 
 ```TypeScript
 function on(type: SensorId.BAROMETER, callback: Callback<BarometerResponse>, options?: Options): void
@@ -270,8 +260,8 @@ Subscribes to data of the barometer sensor. This API uses an asynchronous callba
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -296,9 +286,7 @@ try {
 ```
 
 
-<a id="on8"></a>
-
-## on
+## on('SensorId.GRAVITY')
 
 ```TypeScript
 function on(type: SensorId.GRAVITY, callback: Callback<GravityResponse>,
@@ -325,8 +313,8 @@ Subscribes to data of the gravity sensor. This API uses an asynchronous callback
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -353,9 +341,7 @@ try {
 ```
 
 
-<a id="on9"></a>
-
-## on
+## on('SensorId.GYROSCOPE')
 
 ```TypeScript
 function on(type: SensorId.GYROSCOPE, callback: Callback<GyroscopeResponse>,
@@ -388,9 +374,9 @@ Subscribes to data of the gyroscope sensor. This API uses an asynchronous callba
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission <br> required to call the API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -417,9 +403,7 @@ try {
 ```
 
 
-<a id="on10"></a>
-
-## on
+## on('SensorId.GYROSCOPE_UNCALIBRATED')
 
 ```TypeScript
 function on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback<GyroscopeUncalibratedResponse>,
@@ -448,9 +432,9 @@ Subscribes to data of the uncalibrated gyroscope sensor. This API uses an asynch
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission <br> required to call the API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -480,9 +464,7 @@ try {
 ```
 
 
-<a id="on11"></a>
-
-## on
+## on('SensorId.HALL')
 
 ```TypeScript
 function on(type: SensorId.HALL, callback: Callback<HallResponse>, options?: Options): void
@@ -508,8 +490,8 @@ Subscribes to data of the Hall effect sensor. This API uses an asynchronous call
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -534,9 +516,7 @@ try {
 ```
 
 
-<a id="on12"></a>
-
-## on
+## on('SensorId.HEART_RATE')
 
 ```TypeScript
 function on(type: SensorId.HEART_RATE, callback: Callback<HeartRateResponse>,
@@ -565,9 +545,9 @@ Subscribes to data of the heart rate sensor. This API uses an asynchronous callb
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission <br> required to call the API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -592,9 +572,7 @@ try {
 ```
 
 
-<a id="on13"></a>
-
-## on
+## on('SensorId.HUMIDITY')
 
 ```TypeScript
 function on(type: SensorId.HUMIDITY, callback: Callback<HumidityResponse>,
@@ -621,8 +599,8 @@ Subscribes to data of the humidity sensor. This API uses an asynchronous callbac
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -647,9 +625,7 @@ try {
 ```
 
 
-<a id="on14"></a>
-
-## on
+## on('SensorId.LINEAR_ACCELEROMETER')
 
 ```TypeScript
 function on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback<LinearAccelerometerResponse>,
@@ -678,9 +654,9 @@ Subscribes to data of the linear acceleration sensor. This API uses an asynchron
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission <br> required to call the API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -707,9 +683,7 @@ try {
 ```
 
 
-<a id="on15"></a>
-
-## on
+## on('SensorId.MAGNETIC_FIELD')
 
 ```TypeScript
 function on(type: SensorId.MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>,
@@ -736,8 +710,8 @@ Subscribes to data of the magnetic field sensor. This API uses an asynchronous c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -764,9 +738,7 @@ try {
 ```
 
 
-<a id="on16"></a>
-
-## on
+## on('SensorId.MAGNETIC_FIELD_UNCALIBRATED')
 
 ```TypeScript
 function on(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>,
@@ -793,8 +765,8 @@ Subscribes to data of the uncalibrated magnetic field sensor. This API uses an a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -824,9 +796,7 @@ try {
 ```
 
 
-<a id="on17"></a>
-
-## on
+## on('SensorId.ORIENTATION')
 
 ```TypeScript
 function on(type: SensorId.ORIENTATION, callback: Callback<OrientationResponse>,
@@ -863,8 +833,8 @@ Subscribes to data of the orientation sensor. This API uses an asynchronous call
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -891,9 +861,7 @@ try {
 ```
 
 
-<a id="on18"></a>
-
-## on
+## on('SensorId.PEDOMETER')
 
 ```TypeScript
 function on(type: SensorId.PEDOMETER, callback: Callback<PedometerResponse>, options?: Options): void
@@ -926,9 +894,9 @@ Subscribes to data of the pedometer sensor. This API uses an asynchronous callba
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission <br> required to call the API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -953,9 +921,7 @@ try {
 ```
 
 
-<a id="on19"></a>
-
-## on
+## on('SensorId.PEDOMETER_DETECTION')
 
 ```TypeScript
 function on(type: SensorId.PEDOMETER_DETECTION, callback: Callback<PedometerDetectionResponse>,
@@ -984,9 +950,9 @@ Subscribes to data of the pedometer detection sensor. This API uses an asynchron
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission<br> required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission <br> required to call the API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -1011,9 +977,7 @@ try {
 ```
 
 
-<a id="on20"></a>
-
-## on
+## on('SensorId.PROXIMITY')
 
 ```TypeScript
 function on(type: SensorId.PROXIMITY, callback: Callback<ProximityResponse>, options?: Options): void
@@ -1039,8 +1003,8 @@ Subscribes to data of the proximity sensor. This API uses an asynchronous callba
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -1065,9 +1029,7 @@ try {
 ```
 
 
-<a id="on21"></a>
-
-## on
+## on('SensorId.ROTATION_VECTOR')
 
 ```TypeScript
 function on(type: SensorId.ROTATION_VECTOR, callback: Callback<RotationVectorResponse>,
@@ -1094,8 +1056,8 @@ Subscribes to data of the rotation vector sensor. This API uses an asynchronous 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -1121,9 +1083,7 @@ try {
 ```
 
 
-<a id="on22"></a>
-
-## on
+## on('SensorId.SIGNIFICANT_MOTION')
 
 ```TypeScript
 function on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>,
@@ -1150,8 +1110,8 @@ Subscribes to significant motion sensor data to detect significant motion events
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -1174,9 +1134,7 @@ try {
 ```
 
 
-<a id="on23"></a>
-
-## on
+## on('SensorId.WEAR_DETECTION')
 
 ```TypeScript
 function on(type: SensorId.WEAR_DETECTION, callback: Callback<WearDetectionResponse>,
@@ -1203,8 +1161,8 @@ Subscribes to data of the wear detection sensor. This API uses an asynchronous c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -1227,9 +1185,7 @@ try {
 ```
 
 
-<a id="on24"></a>
-
-## on
+## on('SensorId.FUSION_PRESSURE')
 
 ```TypeScript
 function on(type: SensorId.FUSION_PRESSURE, callback: Callback<FusionPressureResponse>,
@@ -1256,8 +1212,8 @@ Subscribes to the fused pressure sensor data. This API uses an asynchronous call
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 
@@ -1282,9 +1238,7 @@ try {
 ```
 
 
-<a id="on25"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_ACCELEROMETER')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback<AccelerometerResponse>,
@@ -1296,14 +1250,14 @@ Subscribes to data changes of the acceleration sensor. This API uses an asynchro
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.ACCELEROMETER](#on3)
+> [sensor.on.ACCELEROMETER](#onsensoridaccelerometer)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on3)(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridaccelerometer)(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -1334,9 +1288,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, (data: sensor.Accelero
 ```
 
 
-<a id="on26"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback: Callback<AccelerometerUncalibratedResponse>,
@@ -1348,14 +1300,14 @@ Subscribes to data changes of the uncalibrated acceleration sensor. This API use
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.ACCELEROMETER](#on4)
+> [sensor.on.ACCELEROMETER](#onsensoridaccelerometer_uncalibrated)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on4)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridaccelerometer_uncalibrated)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -1389,9 +1341,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, (data: se
 ```
 
 
-<a id="on27"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<LightResponse>,
@@ -1403,14 +1353,14 @@ Subscribes to data changes of the ambient light sensor. This API uses an asynchr
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.AMBIENT_LIGHT](#on5)
+> [sensor.on.AMBIENT_LIGHT](#onsensoridambient_light)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on5)(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridambient_light)(type: SensorId.AMBIENT_LIGHT, callback: Callback&lt;LightResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<LightResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback: Callback<LightResponse>,    options?: Options): void-End-->
 
@@ -1437,9 +1387,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, (data: sensor.LightRes
 ```
 
 
-<a id="on28"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>,
@@ -1451,14 +1399,14 @@ Subscribes to data changes of the ambient temperature sensor. This API uses an a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.AMBIENT_TEMPERATURE](#on6)
+> [sensor.on.AMBIENT_TEMPERATURE](#onsensoridambient_temperature)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on6)(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridambient_temperature)(type: SensorId.AMBIENT_TEMPERATURE, callback: Callback&lt;AmbientTemperatureResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback: Callback<AmbientTemperatureResponse>,    options?: Options): void-End-->
 
@@ -1485,9 +1433,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, (data: sensor.Am
 ```
 
 
-<a id="on29"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_BAROMETER')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<BarometerResponse>,
@@ -1499,14 +1445,14 @@ Subscribes to data changes of the barometer sensor. This API uses an asynchronou
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.BAROMETER](#on7)
+> [sensor.on.BAROMETER](#onsensoridbarometer)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on7)(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridbarometer)(type: SensorId.BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<BarometerResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback<BarometerResponse>,    options?: Options): void-End-->
 
@@ -1533,9 +1479,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, (data: sensor.BarometerRes
 ```
 
 
-<a id="on30"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_GRAVITY')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityResponse>,
@@ -1547,14 +1491,14 @@ Subscribes to data changes of the gravity sensor. This API uses an asynchronous 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.GRAVITY](#on8)
+> [sensor.on.GRAVITY](#onsensoridgravity)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on8)(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridgravity)(type: SensorId.GRAVITY, callback: Callback&lt;GravityResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback: Callback<GravityResponse>,    options?: Options): void-End-->
 
@@ -1583,9 +1527,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, (data: sensor.GravityRespons
 ```
 
 
-<a id="on31"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_GYROSCOPE')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback<GyroscopeResponse>,
@@ -1597,14 +1539,14 @@ Subscribes to data changes of the gyroscope sensor. This API uses an asynchronou
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.GYROSCOPE](#on9)
+> [sensor.on.GYROSCOPE](#onsensoridgyroscope)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on9)(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridgyroscope)(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.GYROSCOPE
 
@@ -1635,9 +1577,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, (data: sensor.GyroscopeRes
 ```
 
 
-<a id="on32"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback: Callback<GyroscopeUncalibratedResponse>,
@@ -1649,14 +1589,14 @@ Subscribes to data changes of the uncalibrated gyroscope sensor. This API uses a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.GYROSCOPE_UNCALIBRATED](#on10)
+> [sensor.on.GYROSCOPE_UNCALIBRATED](#onsensoridgyroscope_uncalibrated)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on10)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridgyroscope_uncalibrated)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.GYROSCOPE
 
@@ -1690,9 +1630,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, (data: sensor
 ```
 
 
-<a id="on33"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_HALL')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallResponse>,
@@ -1704,14 +1642,14 @@ Subscribes to data changes of the Hall effect sensor. This API uses an asynchron
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.HALL](#on11)
+> [sensor.on.HALL](#onsensoridhall)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on11)(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridhall)(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HALL, callback: Callback<HallResponse>,    options?: Options): void-End-->
 
@@ -1738,9 +1676,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, (data: sensor.HallResponse) => 
 ```
 
 
-<a id="on34"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_HEART_RATE')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback<HeartRateResponse>,
@@ -1752,14 +1688,14 @@ Subscribes to data changes of the heart rate sensor. This API uses an asynchrono
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.HALL](#on11)
+> [sensor.on.HALL](#onsensoridhall)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on12)(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridheart_rate)(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.HEALTH_DATA
 
@@ -1776,9 +1712,7 @@ Subscribes to data changes of the heart rate sensor. This API uses an asynchrono
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 
-<a id="on35"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_HUMIDITY')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<HumidityResponse>,
@@ -1790,14 +1724,14 @@ Subscribes to data changes of the humidity sensor. This API uses an asynchronous
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.SENSOR_TYPE_ID_HUMIDITY](#on13)
+> [sensor.on.SENSOR_TYPE_ID_HUMIDITY](#onsensoridhumidity)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on13)(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridhumidity)(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<HumidityResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback: Callback<HumidityResponse>,    options?: Options): void-End-->
 
@@ -1824,9 +1758,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, (data: sensor.HumidityRespo
 ```
 
 
-<a id="on36"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback: Callback<LinearAccelerometerResponse>,
@@ -1838,14 +1770,14 @@ Subscribes to data changes of the linear acceleration sensor. This API uses an a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.LINEAR_ACCELEROMETER](#on14)
+> [sensor.on.LINEAR_ACCELEROMETER](#onsensoridlinear_accelerometer)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on14)(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridlinear_accelerometer)(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -1862,9 +1794,7 @@ Subscribes to data changes of the linear acceleration sensor. This API uses an a
 | options | [Options](arkts-sensorservice-sensor-options-i.md) | No | This parameter is used to set the data reporting frequency. The default value is 200,000,000 ns (200 ms). |
 
 
-<a id="on37"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>,
@@ -1876,14 +1806,14 @@ Subscribes to data changes of the magnetic field sensor. This API uses an asynch
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.MAGNETIC_FIELD](#on15)
+> [sensor.on.MAGNETIC_FIELD](#onsensoridmagnetic_field)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on15)(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridmagnetic_field)(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback: Callback<MagneticFieldResponse>,    options?: Options): void-End-->
 
@@ -1912,9 +1842,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, (data: sensor.Magneti
 ```
 
 
-<a id="on38"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>,
@@ -1926,14 +1854,14 @@ Subscribes to data changes of the uncalibrated magnetic field sensor. This API u
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.MAGNETIC_FIELD_UNCALIBRATED](#on16)
+> [sensor.on.MAGNETIC_FIELD_UNCALIBRATED](#onsensoridmagnetic_field_uncalibrated)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on16)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridmagnetic_field_uncalibrated)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFieldUncalibratedResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback: Callback<MagneticFieldUncalibratedResponse>,    options?: Options): void-End-->
 
@@ -1965,9 +1893,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, (data: s
 ```
 
 
-<a id="on39"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_ORIENTATION')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<OrientationResponse>,
@@ -1979,14 +1905,14 @@ Subscribes to data changes of the orientation sensor. This API uses an asynchron
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.ORIENTATION](#on17)
+> [sensor.on.ORIENTATION](#onsensoridorientation)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on17)(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridorientation)(type: SensorId.ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<OrientationResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback<OrientationResponse>,    options?: Options): void-End-->
 
@@ -2015,9 +1941,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, (data: sensor.Orientatio
 ```
 
 
-<a id="on40"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_PEDOMETER')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback<PedometerResponse>,
@@ -2029,14 +1953,14 @@ Subscribes to data changes of the pedometer sensor. This API uses an asynchronou
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.PEDOMETER](#on18)
+> [sensor.on.PEDOMETER](#onsensoridpedometer)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on18)(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridpedometer)(type: SensorId.PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
@@ -2065,9 +1989,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, (data: sensor.PedometerRes
 ```
 
 
-<a id="on41"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback: Callback<PedometerDetectionResponse>,
@@ -2079,14 +2001,14 @@ Subscribes to data changes of the pedometer detection sensor. This API uses an a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.PEDOMETER_DETECTION](#on19)
+> [sensor.on.PEDOMETER_DETECTION](#onsensoridpedometer_detection)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on19)(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridpedometer_detection)(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options)
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
@@ -2115,9 +2037,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, (data: sensor.Pe
 ```
 
 
-<a id="on42"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_PROXIMITY')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<ProximityResponse>,
@@ -2129,14 +2049,14 @@ Subscribes to data changes of the proximity sensor. This API uses an asynchronou
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.PROXIMITY](#on20)
+> [sensor.on.PROXIMITY](#onsensoridproximity)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on20)(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridproximity)(type: SensorId.PROXIMITY, callback: Callback&lt;ProximityResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<ProximityResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback: Callback<ProximityResponse>,    options?: Options): void-End-->
 
@@ -2163,9 +2083,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, (data: sensor.ProximityRes
 ```
 
 
-<a id="on43"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<RotationVectorResponse>,
@@ -2177,14 +2095,14 @@ Subscribes to data changes of the rotation vector sensor. This API uses an async
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.ROTATION_VECTOR](#on21)
+> [sensor.on.ROTATION_VECTOR](#onsensoridrotation_vector)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on21)(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridrotation_vector)(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<RotationVectorResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback: Callback<RotationVectorResponse>,    options?: Options): void-End-->
 
@@ -2214,9 +2132,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, (data: sensor.Rotati
 ```
 
 
-<a id="on44"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>,
@@ -2228,14 +2144,14 @@ Subscribes to data changes of the significant motion sensor. This API uses an as
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.SIGNIFICANT_MOTION](#on22)
+> [sensor.on.SIGNIFICANT_MOTION](#onsensoridsignificant_motion)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on22)(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridsignificant_motion)(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback: Callback<SignificantMotionResponse>,    options?: Options): void-End-->
 
@@ -2262,9 +2178,7 @@ sensor.on(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, (data: sensor.Sig
 ```
 
 
-<a id="on45"></a>
-
-## on
+## on('SensorType.SENSOR_TYPE_ID_WEAR_DETECTION')
 
 ```TypeScript
 function on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<WearDetectionResponse>,
@@ -2276,14 +2190,14 @@ Subscribes to data changes of the wear detection sensor. This API uses an asynch
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.on.WEAR_DETECTION](#on23)
+> [sensor.on.WEAR_DETECTION](#onsensoridwear_detection)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [on](#on23)(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options)
+**Substitutes:** [on](#onsensoridwear_detection)(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options)
 
 <!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<WearDetectionResponse>,    options?: Options): void--><!--Device-sensor-function on(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback<WearDetectionResponse>,    options?: Options): void-End-->
 
@@ -2335,7 +2249,7 @@ Listens for sensor status changes. This API uses an asynchronous callback to ret
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception;<br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
+| [14500101](../errorcode-sensor.md#14500101-service-exception) | Service exception. Possible causes: 1. Sensor hdf service exception; <br> 2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Examples**
 

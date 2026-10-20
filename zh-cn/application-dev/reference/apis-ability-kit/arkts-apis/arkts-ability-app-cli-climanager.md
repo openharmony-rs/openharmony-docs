@@ -2,9 +2,9 @@
 
 本模块提供与系统命令行工具（CLI）的交互能力，可以查询工具信息、调用并执行CLI命令，以及管理会话。会话在调用execTool接口时创建，用于跟踪CLI工具的执行状态和结果。
 
-@namespace cliManager
-
 **起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace cliManager--><!--Device-unnamed-declare namespace cliManager-End-->
 

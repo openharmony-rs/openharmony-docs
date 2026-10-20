@@ -72,7 +72,7 @@ Dehydrates a file. This API uses a promise to return the result. The file can ha
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| filePath | string | Yes | Path of the file to dehydrate.<br>The maximum length is 4096 and cannot be empty. |
+| filePath | string | Yes | Path of the file to dehydrate. <br>The maximum length is 4096 and cannot be empty. |
 
 **Return value:**
 
@@ -126,7 +126,7 @@ Hydrates a placeholder file. This API uses a promise to return the result. Hydra
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| filePath | string | Yes | Path of the placeholder file to hydrate.<br>The maximum length is 4096 and cannot be empty. |
+| filePath | string | Yes | Path of the placeholder file to hydrate. <br>The maximum length is 4096 and cannot be empty. |
 | callbackType | [CallbackType](arkts-corefile-clouddiskmanager-callbacktype-e-sys.md) | Yes | Callback type for cloud file data fetching. |
 | priority | [HydratePriority](arkts-corefile-clouddiskmanager-hydratepriority-e-sys.md) | Yes | Priority of the hydrate task. |
 

@@ -6,8 +6,6 @@
 import { inputDevice } from '@kit.InputKit';
 ```
 
-<a id="setkeyboardrepeatdelay1"></a>
-
 ## setKeyboardRepeatDelay
 
 ```TypeScript
@@ -72,8 +70,6 @@ struct Index {
 
 <!--DelEnd-->
 
-
-<a id="setkeyboardrepeatdelay2"></a>
 
 ## setKeyboardRepeatDelay
 

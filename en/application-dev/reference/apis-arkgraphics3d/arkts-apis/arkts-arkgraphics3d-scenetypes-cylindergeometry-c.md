@@ -11,7 +11,7 @@ A cylinder geometry type that inherits from GeometryDefinition.
 > You must ensure that all three parameters are set correctly.
 > Invalid values may prevent cylinder creation or cause undefined behavior.
 
-@extends GeometryDefinition
+For example, with radius=0.5, height=1, and segmentCount=20, the mesh and UV layout of the generated cylinder are shown below. <br>![](../../../reference/apis-arkgraphics3d/figures/cylinder.png
 
 **Inheritance/Implementation:** CylinderGeometry extends [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md)
 

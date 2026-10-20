@@ -29,7 +29,7 @@ writeCharacteristicValueWithContext(
 
 client端向指定的server端特征值写入数据，适用于需要获取server端写入响应信息的应用场景（如设备配置指令下发、健康数据同步等）。使用Promise异步回调。
 
-与writeCharacteristicValue接口不同，此接口新增了返回server端响应信息的功能。在完成特征值写入操作后，调用方可以获取本端接收到server端回复消息的时间戳等信息。为获取server端的响应信息，此接口仅支持writeType为[WRITE](arkts-connectivity-ble-gattwritetype-e.md)的写入模式。需要先调用[getServices](arkts-connectivity-ble-gattclientdevice-i.md#getservices1)，获取到server端所有支持的能力，且这些能力中需包含指定的入参特征值UUID；否则会写入失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](arkts-connectivity-ble-gattclientdevice-i.md#readdescriptorvalue1)、writeCharacteristicValue、[writeDescriptorValue](arkts-connectivity-ble-gattclientdevice-i.md#writedescriptorvalue1)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。应用单次可写入的特征值数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](arkts-connectivity-ble-gattclientdevice-i.md#setblemtusize)接口指定MTU大小，进而修改单次可写入的特征值数据长度。
+与writeCharacteristicValue接口不同，此接口新增了返回server端响应信息的功能。在完成特征值写入操作后，调用方可以获取本端接收到server端回复消息的时间戳等信息。为获取server端的响应信息，此接口仅支持writeType为[WRITE](arkts-connectivity-ble-gattwritetype-e.md)的写入模式。需要先调用[getServices](arkts-connectivity-ble-gattclientdevice-i.md#getservices)，获取到server端所有支持的能力，且这些能力中需包含指定的入参特征值UUID；否则会写入失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](arkts-connectivity-ble-gattclientdevice-i.md#readdescriptorvalue)、writeCharacteristicValue、[writeDescriptorValue](arkts-connectivity-ble-gattclientdevice-i.md#writedescriptorvalue)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。应用单次可写入的特征值数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](arkts-connectivity-ble-gattclientdevice-i.md#setblemtusize)接口指定MTU大小，进而修改单次可写入的特征值数据长度。
 
 **起始版本：** 23
 

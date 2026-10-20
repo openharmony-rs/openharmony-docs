@@ -27,8 +27,8 @@ import { installer } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller1) | Obtains a BundleInstaller object. This API uses an asynchronous callback to return the result. |
-| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller2) | Obtains a BundleInstaller object. This API uses a promise to return the result. |
+| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller) | Obtains a BundleInstaller object. This API uses an asynchronous callback to return the result. |
+| [getBundleInstaller](arkts-ability-installer-getbundleinstaller-f-sys.md#getbundleinstaller) | Obtains a BundleInstaller object. This API uses a promise to return the result. |
 | [getBundleInstallerSync](arkts-ability-installer-getbundleinstallersync-f-sys.md#getbundleinstallersync) | Obtains and returns a BundleInstaller object. The API may return null when the call fails, so verify the return value before use. |
 <!--DelEnd-->
 

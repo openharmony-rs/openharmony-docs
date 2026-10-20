@@ -38,8 +38,8 @@ Gets the canvas that records the drawing commands.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| width | number | Yes | Indicates the width of the canvas object.<br>Unit: px. <br>Value range: An integer greater than 0. <br>The width value must be greater than 0. |
-| height | number | Yes | Indicates the height of the canvas object.<br>Unit: px. <br>Value range: An integer greater than 0. <br>The height value must be greater than 0. |
+| width | number | Yes | Indicates the width of the canvas object. <br>Unit: px. <br>Value range: An integer greater than 0. <br>The width value must be greater than 0. |
+| height | number | Yes | Indicates the height of the canvas object. <br>Unit: px. <br>Value range: An integer greater than 0. <br>The height value must be greater than 0. |
 
 **Return value:**
 

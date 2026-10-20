@@ -6,8 +6,6 @@ declare type OnSelectCallback = (index: number, selectStr: string) => void
 
 Callback of selecting an item from the select event.
 
-@typedef {function} OnSelectCallback
-
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.

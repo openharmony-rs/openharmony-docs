@@ -60,7 +60,7 @@ schema.skip = 0;
 get indexes(): Array<string>
 ```
 
-Get the string array of json.
+Indexes of the fields in **Value**. Indexes are created only for **FieldNode** with this parameter specified. The format is **'$.field1'**, **'$.field2'**.
 
 **Type:** Array&lt;string&gt;
 
@@ -94,7 +94,7 @@ Set the string array of json.
 get mode(): number
 ```
 
-Get the mode of schema.
+Schema mode, which can be **0** (compatible mode) or **1** (strict mode).
 
 **Type:** number
 
@@ -128,7 +128,7 @@ Set the mode of schema.
 get root(): FieldNode
 ```
 
-Get the root json object.
+Definitions of all the fields in **Value**.
 
 **Type:** [FieldNode](arkts-arkdata-distributedkvstore-fieldnode-c.md)
 
@@ -162,7 +162,7 @@ Set the root json object.
 get skip(): number
 ```
 
-Get the skip size of schema.
+Specified number of bytes to be skipped when checking the Value. Value range: [0, 4 * 1024 * 1024 - 2] bytes.
 
 **Type:** number
 

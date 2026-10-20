@@ -6,8 +6,6 @@ type QueryMemberPurchaseEvent = (memberPurchaseType: MemberPurchaseType) => Prom
 
 The query member purchase event.
 
-@typedef { function } QueryMemberPurchaseEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
@@ -20,7 +18,7 @@ The query member purchase event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| memberPurchaseType | [MemberPurchaseType](arkts-avsession-avmusictemplate-memberpurchasetype-e.md) | Yes | [memberPurchaseType](arkts-avsession-avmusictemplate-memberpurchaseinfo-i.md) |
+| memberPurchaseType | [MemberPurchaseType](arkts-avsession-avmusictemplate-memberpurchasetype-e.md) | Yes | memberPurchaseType |
 
 **Return value:**
 

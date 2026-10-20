@@ -18,8 +18,6 @@ interface DistributedAccountAbility
 import { distributedAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="getosaccountdistributedinfo1"></a>
-
 ## getOsAccountDistributedInfo
 
 ```TypeScript
@@ -47,7 +45,7 @@ getOsAccountDistributedInfo(callback: AsyncCallback<DistributedInfo>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 
 **示例**
@@ -71,8 +69,6 @@ try {
   console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountdistributedinfo2"></a>
 
 ## getOsAccountDistributedInfo
 
@@ -122,8 +118,6 @@ try {
 }
 ```
 
-<a id="setosaccountdistributedinfo1"></a>
-
 ## setOsAccountDistributedInfo
 
 ```TypeScript
@@ -152,7 +146,7 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCallbac
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid accountInfo. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -181,8 +175,6 @@ try {
   console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setosaccountdistributedinfo2"></a>
 
 ## setOsAccountDistributedInfo
 
@@ -217,7 +209,7 @@ setOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid accountInfo. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -245,8 +237,6 @@ try {
 }
 ```
 
-<a id="queryosaccountdistributedinfo1"></a>
-
 ## queryOsAccountDistributedInfo
 
 ```TypeScript
@@ -258,14 +248,14 @@ queryOsAccountDistributedInfo(callback: AsyncCallback<DistributedInfo>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getOsAccountDistributedInfo](#getosaccountdistributedinfo1)
+> [getOsAccountDistributedInfo](#getosaccountdistributedinfo)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getOsAccountDistributedInfo](#getosaccountdistributedinfo1)(callback: AsyncCallback&lt;DistributedInfo&gt;)
+**替代接口：** [getOsAccountDistributedInfo](#getosaccountdistributedinfo)(callback: AsyncCallback&lt;DistributedInfo&gt;)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -295,8 +285,6 @@ accountAbility.queryOsAccountDistributedInfo(
     }
   });
 ```
-
-<a id="queryosaccountdistributedinfo2"></a>
 
 ## queryOsAccountDistributedInfo
 
@@ -344,8 +332,6 @@ accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.Di
 });
 ```
 
-<a id="updateosaccountdistributedinfo1"></a>
-
 ## updateOsAccountDistributedInfo
 
 ```TypeScript
@@ -357,14 +343,14 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCall
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setOsAccountDistributedInfo](#setosaccountdistributedinfo1)
+> [setOsAccountDistributedInfo](#setosaccountdistributedinfo)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setOsAccountDistributedInfo](#setosaccountdistributedinfo1)(accountInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setOsAccountDistributedInfo](#setosaccountdistributedinfo)(accountInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -398,8 +384,6 @@ accountAbility.updateOsAccountDistributedInfo(accountInfo, (err: BusinessError) 
 });
 ```
 
-<a id="updateosaccountdistributedinfo2"></a>
-
 ## updateOsAccountDistributedInfo
 
 ```TypeScript
@@ -411,14 +395,14 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setOsAccountDistributedInfo](#setosaccountdistributedinfo2)
+> [setOsAccountDistributedInfo](#setosaccountdistributedinfo)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setOsAccountDistributedInfo](#setosaccountdistributedinfo2)(accountInfo: DistributedInfo)
+**替代接口：** [setOsAccountDistributedInfo](#setosaccountdistributedinfo)(accountInfo: DistributedInfo)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 

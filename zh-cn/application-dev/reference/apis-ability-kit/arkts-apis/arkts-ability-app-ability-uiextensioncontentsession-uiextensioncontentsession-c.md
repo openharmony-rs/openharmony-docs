@@ -229,8 +229,6 @@ struct UIExtensionPage {
 }
 ```
 
-<a id="setwindowprivacymode1"></a>
-
 ## setWindowPrivacyMode
 
 ```TypeScript
@@ -299,8 +297,6 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-<a id="setwindowprivacymode2"></a>
-
 ## setWindowPrivacyMode
 
 ```TypeScript
@@ -364,8 +360,6 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-<a id="startabilitybytype1"></a>
-
 ## startAbilityByType
 
 ```TypeScript
@@ -397,7 +391,7 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface.<br>**适用版本：** 11 |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist.<br>**适用版本：** 11 |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type.<br>**适用版本：** 11 |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 11 |
@@ -440,8 +434,6 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-<a id="startabilitybytype3"></a>
-
 ## startAbilityByType
 
 ```TypeScript
@@ -478,7 +470,7 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface.<br>**适用版本：** 11 |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist.<br>**适用版本：** 11 |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type.<br>**适用版本：** 11 |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component.<br>**适用版本：** 11 |
@@ -520,8 +512,6 @@ export default class ShareExtAbility extends ShareExtensionAbility {
   // ...
 }
 ```
-
-<a id="terminateself1"></a>
 
 ## terminateSelf
 
@@ -585,8 +575,6 @@ struct Index {
 }
 ```
 
-<a id="terminateself2"></a>
-
 ## terminateSelf
 
 ```TypeScript
@@ -642,8 +630,6 @@ struct Index {
   }
 }
 ```
-
-<a id="terminateselfwithresult1"></a>
 
 ## terminateSelfWithResult
 
@@ -717,8 +703,6 @@ struct Index {
   }
 }
 ```
-
-<a id="terminateselfwithresult2"></a>
 
 ## terminateSelfWithResult
 

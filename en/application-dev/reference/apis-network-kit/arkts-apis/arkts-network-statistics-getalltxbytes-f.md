@@ -6,8 +6,6 @@
 import { statistics } from '@kit.NetworkKit';
 ```
 
-<a id="getalltxbytes1"></a>
-
 ## getAllTxBytes
 
 ```TypeScript
@@ -54,8 +52,6 @@ statistics.getAllTxBytes((error: BusinessError, stats: number) => {
 });
 ```
 
-
-<a id="getalltxbytes2"></a>
 
 ## getAllTxBytes
 

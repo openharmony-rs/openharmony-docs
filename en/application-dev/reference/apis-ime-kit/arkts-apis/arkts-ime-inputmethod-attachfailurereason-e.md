@@ -18,7 +18,7 @@ Enumerates the reasons for attachment failure.
 CALLER_NOT_FOCUSED = 0
 ```
 
-The caller does not belong to the application of the focused window.
+Indicates a failure caused because the caller is not the application that owns the focused window. <br> <br>Usage scenarios: When **attach** is called while the application window is not focused, this failure reason is returned. <br> <br>Note: Ensure that the application window is focused before calling attach.
 
 **Since:** 22
 
@@ -32,7 +32,7 @@ The caller does not belong to the application of the focused window.
 IME_ABNORMAL
 ```
 
-The input method application is abnormal.
+Indicates a failure caused by an input method application exception. <br> <br>Usage scenarios: When the input method application process crashes or is not running normally, **attach** returns this failure reason.
 
 **Since:** 22
 
@@ -46,7 +46,7 @@ The input method application is abnormal.
 SERVICE_ABNORMAL
 ```
 
-The input method framework service is abnormal.
+Indicates a failure caused by an input method framework service exception. <br> <br>Usage scenarios: When the input method framework service process is abnormal, **attach** returns this failure reason.
 
 **Since:** 22
 

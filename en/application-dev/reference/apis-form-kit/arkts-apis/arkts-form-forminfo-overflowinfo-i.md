@@ -6,8 +6,6 @@ interface OverflowInfo
 
 Provides OverflowInfo about funInteraction or sceneAnimation form
 
-@typedef { OverflowInfo }
-
 **Since:** 20
 
 <!--Device-formInfo-interface OverflowInfo--><!--Device-formInfo-interface OverflowInfo-End-->

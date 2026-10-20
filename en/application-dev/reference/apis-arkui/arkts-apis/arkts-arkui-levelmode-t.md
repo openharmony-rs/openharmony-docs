@@ -6,8 +6,6 @@ declare type LevelMode = import('../api/@ohos.promptAction').LevelMode
 
 Import the LevelMode type from promptAction.
 
-@typedef { import('../api/@ohos.promptAction').LevelMode } LevelMode
-
 **Type:** import('../api/@ohos.promptAction').LevelMode
 
 **Since:** 15

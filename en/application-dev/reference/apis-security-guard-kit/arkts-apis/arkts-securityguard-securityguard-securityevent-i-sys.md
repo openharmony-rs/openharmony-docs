@@ -6,8 +6,6 @@ interface SecurityEvent
 
 Provides the SecurityEvent type, including the event id, version info, report content.
 
-@typedef SecurityEvent
-
 **Since:** 12
 
 <!--Device-securityGuard-interface SecurityEvent--><!--Device-securityGuard-interface SecurityEvent-End-->

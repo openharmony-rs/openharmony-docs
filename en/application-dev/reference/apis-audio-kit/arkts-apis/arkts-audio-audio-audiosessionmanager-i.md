@@ -12,8 +12,6 @@ Before calling any API in AudioSessionManager, you must use [getSessionManager](
 > 
 > - The initial APIs of this interface are supported since API version 12.
 
-@typedef AudioSessionManager [since 12 - 24]
-
 **Since:** 12
 
 <!--Device-audio-interface AudioSessionManager--><!--Device-audio-interface AudioSessionManager-End-->
@@ -304,7 +302,7 @@ Obtains the default audio output device set by calling [setDefaultOutputDevice](
 
 | Type | Description |
 | --- | --- |
-| [DeviceType](arkts-audio-audio-devicetype-e.md) | Device type.<br>The options are **EARPIECE**, **SPEAKER**, and **DEFAULT**. |
+| [DeviceType](arkts-audio-audio-devicetype-e.md) | Device type. <br>The options are **EARPIECE**, **SPEAKER**, and **DEFAULT**. |
 
 **Error codes:**
 

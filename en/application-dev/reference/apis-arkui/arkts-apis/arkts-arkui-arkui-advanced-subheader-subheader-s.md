@@ -418,7 +418,7 @@ Default value: **undefined**, indicating that no custom reading content is set, 
 titleId?: string
 ```
 
-Title identifier. Use this parameter when an ID needs to be set for the title. indicating that no title identifier is set. Default value: **undefined**.
+Title identifier. Use this parameter when an ID needs to be set for the title. Default value: **undefined**, indicating that no title identifier is set.
 
 **Type:** string
 

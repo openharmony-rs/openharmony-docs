@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getformsinfo1"></a>
-
 ## getFormsInfo
 
 ```TypeScript
@@ -54,8 +52,6 @@ formHost.getFormsInfo('com.example.ohos.formjsdemo', (error: Base.BusinessError,
 
 <!--DelEnd-->
 
-
-<a id="getformsinfo2"></a>
 
 ## getFormsInfo
 
@@ -109,8 +105,6 @@ formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error: Base.Busin
 
 <!--DelEnd-->
 
-
-<a id="getformsinfo3"></a>
 
 ## getFormsInfo
 

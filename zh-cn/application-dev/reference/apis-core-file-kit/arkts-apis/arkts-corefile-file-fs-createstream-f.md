@@ -68,8 +68,6 @@ declare function createStream(path: string, mode: string): Promise<Stream>
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
-<a id="createstream2"></a>
-
 ## createStream
 
 ```TypeScript

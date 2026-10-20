@@ -6,8 +6,6 @@
 import { router } from '@kit.ArkUI';
 ```
 
-<a id="pushnamedroute1"></a>
-
 ## pushNamedRoute
 
 ```TypeScript
@@ -24,7 +22,7 @@ Navigates to a page using the named route.
 
 **Deprecated since:** 18
 
-**Substitutes:** [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute1)(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute)(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -39,13 +37,13 @@ Navigates to a page using the named route.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | Yes | Page routing parameters. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the page routing result.<br>When the page redirection is successful, the value of **error** is **undefined**. When the page redirection fails, the value of **error** is the error object returned by the system. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the page routing result. <br>When the page redirection is successful, the value of **error** is **undefined**. When the page redirection fails, the value of **error** is the error object returned by the system. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100003](../errorcode-router.md#100003-too-many-pages-are-pushed-into-the-page-stack) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |
@@ -86,8 +84,6 @@ router.pushNamedRoute({
 ```
 
 
-<a id="pushnamedroute2"></a>
-
 ## pushNamedRoute
 
 ```TypeScript
@@ -104,7 +100,7 @@ Navigates to a page using the named route.
 
 **Deprecated since:** 18
 
-**Substitutes:** [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute2)(options: router.NamedRouterOptions)
+**Substitutes:** [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute)(options: router.NamedRouterOptions)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -130,7 +126,7 @@ Navigates to a page using the named route.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100003](../errorcode-router.md#100003-too-many-pages-are-pushed-into-the-page-stack) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |
@@ -173,8 +169,6 @@ router.pushNamedRoute({
 ```
 
 
-<a id="pushnamedroute3"></a>
-
 ## pushNamedRoute
 
 ```TypeScript
@@ -191,7 +185,7 @@ Navigates to a page using the named route.
 
 **Deprecated since:** 18
 
-**Substitutes:** [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute3)(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute)(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -207,13 +201,13 @@ Navigates to a page using the named route.
 | --- | --- | --- | --- |
 | options | [NamedRouterOptions](arkts-arkui-router-namedrouteroptions-i.md) | Yes | Page routing parameters. |
 | mode | [RouterMode](arkts-arkui-router-routermode-e.md) | Yes | Routing mode. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the page routing result.<br>When the page redirection is successful, the value of **error** is **undefined**. When the page redirection fails, the value of **error** is the error object returned by the system. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the page routing result. <br>When the page redirection is successful, the value of **error** is **undefined**. When the page redirection fails, the value of **error** is the error object returned by the system. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100003](../errorcode-router.md#100003-too-many-pages-are-pushed-into-the-page-stack) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |
@@ -254,8 +248,6 @@ router.pushNamedRoute({
 ```
 
 
-<a id="pushnamedroute4"></a>
-
 ## pushNamedRoute
 
 ```TypeScript
@@ -272,7 +264,7 @@ Navigates to a page using the named route.
 
 **Deprecated since:** 18
 
-**Substitutes:** [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute4)(options: router.NamedRouterOptions, mode: router.RouterMode)
+**Substitutes:** [pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute)(options: router.NamedRouterOptions, mode: router.RouterMode)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -299,7 +291,7 @@ Navigates to a page using the named route.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100003](../errorcode-router.md#100003-too-many-pages-are-pushed-into-the-page-stack) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Named route error. The named route does not exist. |

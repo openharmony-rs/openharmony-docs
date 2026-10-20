@@ -18,7 +18,7 @@ function updatePrinterInformation(printerInformation: PrinterInformation): Promi
 
 **需要权限：** 
 - API版本24+：ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
-- API版本18-23：ohos.permission.MANAGE_PRINT_JOB
+- API版本18-23：N/A
 
 <!--Device-print-function updatePrinterInformation(printerInformation: PrinterInformation): Promise<void>--><!--Device-print-function updatePrinterInformation(printerInformation: PrinterInformation): Promise<void>-End-->
 
@@ -41,7 +41,6 @@ function updatePrinterInformation(printerInformation: PrinterInformation): Promi
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application<br>**适用版本：** 18 - 23 |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**

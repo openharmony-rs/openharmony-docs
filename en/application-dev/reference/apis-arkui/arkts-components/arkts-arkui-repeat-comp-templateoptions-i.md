@@ -41,3 +41,18 @@ Maximum number of child component nodes that can be cached in the cache pool of 
 <!--Device-TemplateOptions-cachedCount?: number--><!--Device-TemplateOptions-cachedCount?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Examples**
+
+```TypeScript
+// arr is an array of the Array<string> type. Use Repeat in a List container component with virtual scrolling enabled.
+// Define a reusable template temp for generating Text components. Use the temp template for all data items.
+// Set the maximum cache count for the temp template to 2.
+List() {
+  Repeat<string>(this.arr)
+    .each((repeatItem: RepeatItem<string>) => {})
+    .virtualScroll()
+    .template('temp', (repeatItem: RepeatItem<string>) => { ListItem() { Text(repeatItem.item) }}, { cachedCount: 2 })
+    .templateId((item: string, index: number) => { return 'temp' })
+}
+```

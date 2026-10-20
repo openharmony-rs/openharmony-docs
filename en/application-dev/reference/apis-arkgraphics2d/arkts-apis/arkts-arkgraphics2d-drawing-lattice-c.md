@@ -26,8 +26,6 @@ Lattice object. which is used to divide an image by lattice.
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="createimagelattice1"></a>
-
 ## createImageLattice
 
 ```TypeScript
@@ -65,7 +63,7 @@ Divides the image into lattices. The lattices on both even columns and even rows
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 
@@ -81,8 +79,6 @@ class DrawingRenderNode extends RenderNode {
   }
 }
 ```
-
-<a id="createimagelattice3"></a>
 
 ## createImageLattice
 
@@ -121,7 +117,7 @@ Divides the image into lattices. The lattices on both even columns and even rows
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 

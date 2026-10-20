@@ -62,6 +62,26 @@ Indicates the session ID of the dialog manager (DM), which uniquely identifies t
 
 **System API:** This is a system API.
 
+## taskId
+
+```TypeScript
+taskId?: string
+```
+
+Indicates the task ID for task attribution. The value must be the task ID specified in startTask.
+
+**Type:** string
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExecOptions-taskId?: string--><!--Device-ExecOptions-taskId?: string-End-->
+
+**System capability:** SystemCapability.Ability.AgentRuntime.Core
+
+**System API:** This is a system API.
+
 ## timeout
 
 ```TypeScript

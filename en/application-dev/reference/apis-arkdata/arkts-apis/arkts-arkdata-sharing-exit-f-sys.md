@@ -6,8 +6,6 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
-<a id="exit1"></a>
-
 ## exit
 
 ```TypeScript
@@ -56,8 +54,6 @@ cloudData.sharing.exit('sharing_resource_test', (err: BusinessError, result) => 
 
 <!--DelEnd-->
 
-
-<a id="exit2"></a>
 
 ## exit
 

@@ -6,8 +6,6 @@ type Image = string
 
 表示图片的URI地址，为string类型。
 
-@typedef { string } Image
-
 **类型：** string
 
 **起始版本：** 15

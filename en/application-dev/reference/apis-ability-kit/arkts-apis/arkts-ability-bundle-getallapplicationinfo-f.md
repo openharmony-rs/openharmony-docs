@@ -6,8 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getallapplicationinfo1"></a>
-
 ## getAllApplicationInfo
 
 ```TypeScript
@@ -53,8 +51,6 @@ bundle.getAllApplicationInfo(bundleFlags, userId, (err, data) => {
 ```
 
 
-<a id="getallapplicationinfo2"></a>
-
 ## getAllApplicationInfo
 
 ```TypeScript
@@ -96,8 +92,6 @@ bundle.getAllApplicationInfo(bundleFlags, (err, data) => {
 })
 ```
 
-
-<a id="getallapplicationinfo3"></a>
 
 ## getAllApplicationInfo
 

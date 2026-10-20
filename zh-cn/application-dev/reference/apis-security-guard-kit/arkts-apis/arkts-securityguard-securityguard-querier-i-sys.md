@@ -6,8 +6,6 @@ interface Querier
 
 用于接收安全数据的回调函数。
 
-@interface Querier
-
 **起始版本：** 12
 
 <!--Device-securityGuard-interface Querier--><!--Device-securityGuard-interface Querier-End-->

@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="remove1"></a>
-
 ## remove
 
 ```TypeScript
@@ -43,8 +41,32 @@ Removes a notification for a specified bundle. This API uses an asynchronous cal
 | reason | RemoveReason | Yes | Reason for deleting a notification. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
+**Examples**
 
-<a id="remove2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let removeCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("remove failed " + JSON.stringify(err));
+  } else {
+    console.info("remove success");
+  }
+}
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+let notificationKey: Notification.NotificationKey = {
+  id: 0,
+  label: "label",
+};
+let reason: Notification.RemoveReason = Notification.RemoveReason.CLICK_REASON_REMOVE;
+Notification.remove(bundle, notificationKey, reason, removeCallback);
+```
+
+<!--DelEnd-->
+
 
 ## remove
 
@@ -82,8 +104,29 @@ Removes a notification for a specified bundle. This API uses a promise to return
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+<!--Del-->
+**Examples**
 
-<a id="remove3"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+let notificationKey: Notification.NotificationKey = {
+  id: 0,
+  label: "label",
+};
+let reason: Notification.RemoveReason = Notification.RemoveReason.CLICK_REASON_REMOVE;
+Notification.remove(bundle, notificationKey, reason).then(() => {
+  console.info("remove success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`remove failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->
+
 
 ## remove
 
@@ -115,8 +158,27 @@ Removes a notification for a specified bundle. This API uses an asynchronous cal
 | reason | RemoveReason | Yes | Reason for deleting a notification. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
+**Examples**
 
-<a id="remove4"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let hashCode: string = 'hashCode';
+
+let removeCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("remove failed " + JSON.stringify(err));
+  } else {
+    console.info("remove success");
+  }
+}
+let reason: Notification.RemoveReason = Notification.RemoveReason.CANCEL_REASON_REMOVE;
+Notification.remove(hashCode, reason, removeCallback);
+```
+
+<!--DelEnd-->
+
 
 ## remove
 
@@ -152,3 +214,20 @@ Removes a notification for a specified bundle. This API uses a promise to return
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let hashCode: string = 'hashCode';
+let reason: Notification.RemoveReason = Notification.RemoveReason.CLICK_REASON_REMOVE;
+Notification.remove(hashCode, reason).then(() => {
+  console.info("remove success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`remove failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

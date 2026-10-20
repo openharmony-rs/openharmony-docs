@@ -87,7 +87,7 @@ enablePaging(value: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 是否支持滑动翻页。设置为true支持滑动翻页，false不支持。<br>默认值：false |
+| value | boolean | 是 | 是否支持滑动翻页。设置为true支持滑动翻页，false不支持。 <br>默认值：false |
 
 ## enableScrollInteraction
 
@@ -551,8 +551,6 @@ scrollBar(barState: BarState)
 | --- | --- | --- | --- |
 | barState | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | 是 | 滚动条状态。<br>默认值：BarState.Auto |
 
-<a id="scrollbarcolor1"></a>
-
 ## scrollBarColor
 
 ```TypeScript
@@ -577,15 +575,13 @@ scrollBarColor(color: Color | number | string)
 | --- | --- | --- | --- |
 | color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string | 是 | 滚动条的颜色。<br>默认值：'#66182431'<br>number为HEX格式颜色，支持rgb或者argb，取值范围：[0x0, 0xFFFFFFFF]，示例：0xffffff。<br>string为rgb或者argb格式颜色，示例：'#ffffff'。 |
 
-<a id="scrollbarcolor2"></a>
-
 ## scrollBarColor
 
 ```TypeScript
 scrollBarColor(color: Color | number | string | Resource)
 ```
 
-设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor1)相比，color参数开始支持Resource类型。
+设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor)相比，color参数开始支持Resource类型。
 
 **起始版本：** 22
 
@@ -602,8 +598,6 @@ scrollBarColor(color: Color | number | string | Resource)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 滚动条的颜色。<br>默认值：'#66182431'<br>number为HEX格式颜色，支持rgb或者argb，取值范围：[0x0, 0xFFFFFFFF]，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
-
-<a id="scrollbarwidth1"></a>
 
 ## scrollBarWidth
 
@@ -628,8 +622,6 @@ scrollBarWidth(value: number | string)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number &#124; string | 是 | 滚动条的宽度。<br>默认值：4<br>单位：vp <br>取值范围：设置为小于0的值时，按4vp处理。设置为0时，不显示滚动条。 |
-
-<a id="scrollbarwidth2"></a>
 
 ## scrollBarWidth
 

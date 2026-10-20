@@ -28,7 +28,7 @@ accessRules: Array<AccessRule>
 
 Profile access rules.
 
-**Type:** Array&lt;[AccessRule](arkts-telephony-esim-accessrule-i-sys.md)&gt;
+**Type:** Array&lt;[AccessRule](arkts-telephony-esim-accessrule-i.md)&gt;
 
 **Since:** 18
 

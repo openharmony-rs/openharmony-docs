@@ -20,6 +20,8 @@ HCE卡模拟和AID列表的声明定义
 
 **起始版本：** 6
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 <!--Device-unnamed-declare namespace cardEmulation--><!--Device-unnamed-declare namespace cardEmulation-End-->
 
 **系统能力：** SystemCapability.Communication.NFC.CardEmulation

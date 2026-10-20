@@ -6,8 +6,6 @@ export type CliToolEvent = _CliToolEvent
 
 用于描述CLI工具进程运行期间产生的会话事件信息。
 
-@typedef { _CliToolEvent }
-
 **类型：** _CliToolEvent
 
 **起始版本：** 26.0.0

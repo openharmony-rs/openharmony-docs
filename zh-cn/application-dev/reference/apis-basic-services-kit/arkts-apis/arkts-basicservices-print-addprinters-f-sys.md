@@ -6,8 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="addprinters1"></a>
-
 ## addPrinters
 
 ```TypeScript
@@ -68,8 +66,6 @@ print.addPrinters([printerInfo], (error: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="addprinters2"></a>
 
 ## addPrinters
 

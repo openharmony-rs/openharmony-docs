@@ -94,8 +94,6 @@ Sets the animation form for switching **TabContent** when a tab bar tab is tappe
 | --- | --- | --- | --- |
 | mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[AnimationMode](arkts-arkui-tabs-comp-animationmode-e.md)&gt; | Yes | Animation form for switching **TabContent** when a tab bar tab is tapped or the **changeIndex** API of **TabsController** is called.<br>Default value: **AnimationMode.CONTENT_FIRST**, which means that when a tab bar tab is tapped or the **changeIndex** API of **TabsController** is called to switch TabContent, the content of the target page is loaded first, and then the switching animation starts. |
 
-<a id="barbackgroundblurstyle1"></a>
-
 ## barBackgroundBlurStyle
 
 ```TypeScript
@@ -123,8 +121,6 @@ Sets the background blur material of the tab bar. This is applicable to scenario
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [BlurStyle](arkts-arkui-common-comp-blurstyle-e.md) | Yes | Background blur material of the tab bar.<br>Default value: **BlurStyle.NONE** |
-
-<a id="barbackgroundblurstyle2"></a>
 
 ## barBackgroundBlurStyle
 
@@ -278,8 +274,6 @@ Sets the visible area of the tab bar in a grid-based manner. For details, see Ba
 | --- | --- | --- | --- |
 | value | [BarGridColumnOptions](arkts-arkui-tabs-comp-bargridcolumnoptions-i.md) | Yes | Sets the visible area of the tab bar in a grid-based manner. |
 
-<a id="barheight1"></a>
-
 ## barHeight
 
 ```TypeScript
@@ -303,8 +297,6 @@ In versions earlier than API version 14, if **barHeight** is set to a fixed valu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Height value of the tab bar.<br>Default value:<br>When the style is not set or a custom style is set through **CustomBuilder** and the **vertical** attribute is **false**, the default value is 56vp.<br>When the style is not set or a custom style is set through **CustomBuilder** and the **vertical** attribute is **true**, the default value is the height of the **Tabs**.<br>When the [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) style is set and the **vertical** attribute is **false**, the default value is 56vp.<br>When the **SubTabBarStyle** style is set and the **vertical** attribute is **true**, the default value is the height of the **Tabs**.<br>When the [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) style is set and the **vertical** attribute is **true**, the default value is the height of the **Tabs**.<br>When the BottomTabBarStyle style is set and the **vertical** attribute is **false**, the default value is 56vp. Starting from API version 12, the default value changes to 48vp.<br>**Since:** 8 |
-
-<a id="barheight2"></a>
 
 ## barHeight
 
@@ -331,8 +323,6 @@ Sets the height value of the tab bar. For horizontal **Tabs**, you can set heigh
 | height | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Height value of the tab bar.<br>Default value:<br>If no style is set or a custom style is set through **CustomBuilder** and **vertical** is **false**, the default value is 56vp.<br>If no style is set or a custom style is set through **CustomBuilder** and **vertical** is **true**, the default value is the height of **Tabs**.<br>If the [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) style is set and **vertical** is **false**, the default value is 56vp.<br>If the **SubTabBarStyle** style is set and **vertical** is **true**, the default value is the height of **Tabs**.<br>If the [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) style is set and **vertical** is **true**, the default value is the height of **Tabs**.<br>If the BottomTabBarStyle style is set and **vertical** is **false**, the default value is 48vp. |
 | noMinHeightLimit | boolean | Yes | Whether to cancel the minimum height limit of the tab bar when height is set to 'auto'. The default value is **false**.<br>**Note:** <br>The value true means to cancel the minimum height limit of the tab bar, that is, the height value of the tab bar can be smaller than the default value.<br>The value false means to limit the minimum height of the tab bar, that is, the minimum height value of the tab bar is equal to the default value. |
 
-<a id="barmode1"></a>
-
 ## barMode
 
 ```TypeScript
@@ -356,8 +346,6 @@ Sets the tab bar layout mode to BarMode.Fixed.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [BarMode.Fixed](arkts-arkui-tabs-comp-barmode-e.md) | Yes | All tab bars evenly share the bar width (evenly share the bar height in vertical mode). |
-
-<a id="barmode2"></a>
 
 ## barMode
 
@@ -383,8 +371,6 @@ Sets the tab bar layout mode to **BarMode.Scrollable**.
 | --- | --- | --- | --- |
 | value | [BarMode.Scrollable](arkts-arkui-tabs-comp-barmode-e.md) | Yes | All tab bars use the actual layout width and can be scrolled when the total width (**barWidth** of horizontal **Tabs**, **barHeight** of vertical **Tabs**) is exceeded. |
 | options | [ScrollableBarModeOptions](arkts-arkui-tabs-comp-scrollablebarmodeoptions-i.md) | Yes | Layout style of the tab bar in Scrollable mode.<br>**Note:** <br> Valid only in Scrollable and horizontal mode. |
-
-<a id="barmode3"></a>
 
 ## barMode
 
@@ -477,7 +463,7 @@ Sets the display style of the tab bar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[TabBarStyle](arkts-arkui-tabs-comp-tabbarstyle-e.md)&gt; | Yes | Display style of the tab bar.<br>Default value: **TabBarStyle.BOTTOM**. |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[TabBarStyle](arkts-arkui-tabs-comp-tabbarstyle-e.md)&gt; | Yes | Display style of the tab bar. <br>Default value: **TabBarStyle.BOTTOM**. |
 
 ## barWidth
 
@@ -693,7 +679,7 @@ Sets the minimum width of the content area of the **Tabs** component. This attri
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Length](../arkts-apis/arkts-arkui-length-t.md)&gt; | Yes | Minimum width of the content area. The width of the content area does not become smaller than this value; if the remaining space is insufficient, the content area is clipped.<br>If this attribute is not set or is set to **undefined**, no minimum width is imposed on the content area, which means the content area can be compressed to **0vp**. |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Length](../arkts-apis/arkts-arkui-length-t.md)&gt; | Yes | Minimum width of the content area. The width of the content area does not become smaller than this value; if the remaining space is insufficient, the content area is clipped. <br>If this attribute is not set or is set to **undefined**, no minimum width is imposed on the content area, which means the content area can be compressed to **0vp**. |
 
 ## minSidebarWidth
 
@@ -1112,7 +1098,7 @@ Sets the background blur style of the sidebar tab bar. This attribute takes effe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BlurStyle](arkts-arkui-common-comp-blurstyle-e.md)&gt; | Yes | Background blur style of the sidebar tab bar.<br>Default value: **BlurStyle.NONE**. |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BlurStyle](arkts-arkui-common-comp-blurstyle-e.md)&gt; | Yes | Background blur style of the sidebar tab bar. <br>Default value: **BlurStyle.NONE**. |
 
 ## sidebarBackgroundColor
 
@@ -1136,7 +1122,7 @@ Sets the background color of the sidebar tab bar. This attribute takes effect on
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Background color of the sidebar tab bar.<br>Default value: **Color.Transparent**. |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Background color of the sidebar tab bar. <br>Default value: **Color.Transparent**. |
 
 ## sidebarBottomBar
 
@@ -1208,7 +1194,7 @@ Sets the divider between the sidebar tab bar and the content area. This attribut
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DividerStyle](arkts-arkui-tabs-comp-dividerstyle-i.md)&gt; | Yes | Divider style between the sidebar tab bar and the content area. The divider is displayed vertically, where **strokeWidth** is its width, and **startMargin** and **endMargin** are the distances from the top and bottom of the sidebar, respectively.<br>**DividerStyle**: divider style.<br>**undefined**: no divider is displayed (default). |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DividerStyle](arkts-arkui-tabs-comp-dividerstyle-i.md)&gt; | Yes | Divider style between the sidebar tab bar and the content area. The divider is displayed vertically, where **strokeWidth** is its width, and **startMargin** and **endMargin** are the distances from the top and bottom of the sidebar, respectively. <br>**DividerStyle**: divider style.<br>**undefined**: no divider is displayed (default). |
 
 ## sidebarFooter
 
@@ -1280,7 +1266,7 @@ Sets the position of the sidebar tab bar. The sidebar tab bar position is not af
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| position | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BarPosition](arkts-arkui-tabs-comp-barposition-e.md)&gt; | Yes | Position of the sidebar tab bar.Start**.<br>Default value: **BarPosition. |
+| position | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BarPosition](arkts-arkui-tabs-comp-barposition-e.md)&gt; | Yes | Position of the sidebar tab bar.Start**. <br>Default value: **BarPosition. |
 
 ## sidebarSearchable
 
@@ -1448,7 +1434,7 @@ Sets the width of the sidebar tab bar. This attribute takes effect only when the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Length](../arkts-apis/arkts-arkui-length-t.md)&gt; | Yes | Width of the sidebar tab bar.<br>Default value: **240vp**. |
+| value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Length](../arkts-apis/arkts-arkui-length-t.md)&gt; | Yes | Width of the sidebar tab bar. <br>Default value: **240vp**. |
 
 ## vertical
 

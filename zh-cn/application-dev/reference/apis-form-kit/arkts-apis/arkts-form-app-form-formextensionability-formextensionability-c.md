@@ -46,7 +46,7 @@ onAcquireFormState?(want: Want): formInfo.FormState
 
 | 类型 | 说明 |
 | --- | --- |
-| [formInfo.FormState](arkts-form-forminfo-formstate-e.md) | [formInfo.FormState枚举，表示卡片当前的状态。](../../apis-form-kit/arkts-apis/arkts-form-app-form-forminfo.md) |
+| [formInfo.FormState](arkts-form-forminfo-formstate-e.md) | formInfo.FormState枚举，表示卡片当前的状态。 |
 
 **示例**
 

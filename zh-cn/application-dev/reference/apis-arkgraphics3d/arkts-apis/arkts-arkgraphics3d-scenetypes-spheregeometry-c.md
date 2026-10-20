@@ -6,8 +6,6 @@ export declare class SphereGeometry extends GeometryDefinition
 
 球体几何类型，继承自GeometryDefinition。
 
-@extends GeometryDefinition
-
 **继承/实现关系：** SphereGeometry extends [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md)
 
 **起始版本：** 18

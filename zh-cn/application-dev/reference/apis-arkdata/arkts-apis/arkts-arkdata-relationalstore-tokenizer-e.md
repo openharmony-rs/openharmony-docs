@@ -63,3 +63,111 @@ NONE_TOKENIZER = 0
 <!--Device-Tokenizer-NONE_TOKENIZER = 0--><!--Device-Tokenizer-NONE_TOKENIZER = 0-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**示例**
+
+示例代码中this.context定义见Stage模型的应用[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。
+
+使用ICU_TOKENIZER分词器时，创建表的示例：
+
+```TypeScript
+import { relationalStore } from '@kit.ArkData'; // 导入模块
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+// 此处示例在Stage模式、Ability中实现，使用者也可以在其他合理场景中使用
+export default class EntryAbility extends UIAbility {
+  async onWindowStageCreate(windowStage: window.WindowStage) {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "MyStore.db",
+      securityLevel: relationalStore.SecurityLevel.S3,
+      tokenizer: relationalStore.Tokenizer.ICU_TOKENIZER
+    };
+    store = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
+
+    const SQL_CREATE_TABLE = "CREATE VIRTUAL TABLE example USING fts4(name, content, tokenize='icu zh_CN')";
+    if (store != undefined) {
+      (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE, (err) => {
+        if (err) {
+          console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info('create virtual table done.');
+      });
+    }
+  }
+}
+```
+
+使用CUSTOM_TOKENIZER分词器时，创建表的示例：
+
+```TypeScript
+import { relationalStore } from '@kit.ArkData'; // 导入模块
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+// 此处示例在Stage模式、Ability中实现，使用者也可以在其他合理场景中使用
+export default class EntryAbility extends UIAbility {
+  async onWindowStageCreate(windowStage: window.WindowStage) {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "MyStore.db",
+      securityLevel: relationalStore.SecurityLevel.S3,
+      tokenizer: relationalStore.Tokenizer.CUSTOM_TOKENIZER
+    };
+    store = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
+
+    const SQL_CREATE_TABLE = "CREATE VIRTUAL TABLE example USING fts5(name, content, tokenize='customtokenizer')";
+    if (store != undefined) {
+      (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE, (err) => {
+        if (err) {
+          console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info('create virtual table done.');
+      });
+    }
+  }
+}
+```
+
+使用CUSTOM_TOKENIZER分词器，并指定分词模式时，创建表的示例：
+
+```TypeScript
+import { relationalStore } from '@kit.ArkData'; // 导入模块
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  async onWindowStageCreate(windowStage: window.WindowStage) {
+    console.info('custom tokenizer example: window stage create begin.');
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const storeConfig: relationalStore.StoreConfig = {
+      name: "MyStore.db",
+      securityLevel: relationalStore.SecurityLevel.S3
+    };
+    let customType = relationalStore.Tokenizer.CUSTOM_TOKENIZER;
+    let customTypeSupported = relationalStore.isTokenizerSupported(customType);
+    if (customTypeSupported) {
+      storeConfig.tokenizer = customType;
+    } else {
+      console.info('custom tokenizer example: not support custom tokenizer.');
+      return;
+    }
+    store = await relationalStore.getRdbStore(this.context, storeConfig);
+
+    const SQL_CREATE_TABLE =
+      "CREATE VIRTUAL TABLE example USING fts5(name, content, tokenize='customtokenizer cut_mode short_words')";
+    if (store != undefined) {
+      (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE, (err) => {
+        if (err) {
+          console.error(`custom tokenizer example: ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+          return;
+        }
+        console.info('custom tokenizer example: create virtual table done.');
+      });
+    }
+  }
+}
+```

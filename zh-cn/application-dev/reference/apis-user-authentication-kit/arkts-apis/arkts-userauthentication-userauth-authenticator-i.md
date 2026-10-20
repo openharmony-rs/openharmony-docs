@@ -22,8 +22,6 @@ interface Authenticator
 import { userAuth } from '@kit.UserAuthenticationKit';
 ```
 
-<a id="execute1"></a>
-
 ## execute
 
 ```TypeScript
@@ -66,8 +64,6 @@ authenticator.execute('FACE_ONLY', 'S2', (error, code) => {
   console.error(`Failed to auth. Code: ${code}`);
 });
 ```
-
-<a id="execute2"></a>
 
 ## execute
 

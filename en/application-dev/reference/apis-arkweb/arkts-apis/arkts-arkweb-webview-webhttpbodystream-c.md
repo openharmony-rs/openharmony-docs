@@ -228,7 +228,7 @@ Checks whether all data in this **WebHttpBodyStream** instance has been read.
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether all data in the **WebHttpBodyStream** instance has been read.<br>This API returns **true** if all data in the **WebHttpBodyStream** instance is read. It returns **false** before the first read attempt is made for the **WebHttpBodyStream** instance that uses chunked transfer. |
+| boolean | Whether all data in the **WebHttpBodyStream** instance has been read. <br>This API returns **true** if all data in the **WebHttpBodyStream** instance is read. It returns **false** before the first read attempt is made for the **WebHttpBodyStream** instance that uses chunked transfer. |
 
 **Examples**
 
@@ -254,7 +254,7 @@ Checks whether the uploaded data in this **WebHttpBodyStream** instance is in me
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the uploaded data in the **WebHttpBodyStream** instance is stored in memory.<br>This API returns **true** if all the upload data in the **WebHttpBodyStream** instance is in memory and all read requests will be completed synchronously. **false** is returned if the data is chunked. |
+| boolean | Whether the uploaded data in the **WebHttpBodyStream** instance is stored in memory. <br>This API returns **true** if all the upload data in the **WebHttpBodyStream** instance is in memory and all read requests will be completed synchronously. **false** is returned if the data is chunked. |
 
 **Examples**
 
@@ -290,7 +290,7 @@ Reads data from this **WebHttpBodyStream** instance.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 

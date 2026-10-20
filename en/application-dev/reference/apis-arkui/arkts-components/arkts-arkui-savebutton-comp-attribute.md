@@ -38,7 +38,7 @@ Sets the corner radius of the icon of the **SaveButton** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| radius | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; [BorderRadiuses](../arkts-apis/arkts-arkui-borderradiuses-t.md) | Yes | Corner radius of the icon of the **SaveButton** component. You can set the radius for each of the four corners individually.<br>The default value is 0 vp for all four corners. Units such as vp and px are supported, and valid values are greater than or equal to 0. Negative values are automatically clamped to **0**. <br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the corner radius setting of the icon does not take effect. |
+| radius | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; [BorderRadiuses](../arkts-apis/arkts-arkui-borderradiuses-t.md) | Yes | Corner radius of the icon of the **SaveButton** component. You can set the radius for each of the four corners individually. <br>The default value is 0 vp for all four corners. Units such as vp and px are supported, and valid values are greater than or equal to 0. Negative values are automatically clamped to **0**. <br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the corner radius setting of the icon does not take effect. |
 
 ## iconSize
 
@@ -47,6 +47,14 @@ iconSize(size: Dimension | SizeOptions)
 ```
 
 Sets the icon size of the **SaveButton** component.
+
+> **NOTE:** 
+> 
+> In API version 10, developers can set the icon size through the security component universal attribute
+> [iconSize](../arkts-apis/arkts-arkui-securitycomponentmethod-c.md#iconsize), where the size type supports only
+> Dimension.<br>
+> Since API version 20, developers can set the icon size through this API, and the size type additionally
+> supports SizeOptions.
 
 **Since:** 20
 
@@ -70,7 +78,7 @@ Sets the icon size of the **SaveButton** component.
 onClick(event: SaveButtonCallback)
 ```
 
-Triggered when the **SaveButton** component is clicked. When a user clicks the save button for the first time, an authorization dialog box is displayed. If the user allows authorization, the app obtains temporary access to media library APIs. For details about the authorization duration, see the description of the [SaveButton](arkts-arkui-savebutton-comp.md) constructor. Authorization fails if the user declines authorization or closes the dialog box.
+Triggered when the **SaveButton** component is clicked. When a user clicks the save button for the first time, an authorization dialog box is displayed. If the user allows authorization, the app obtains temporary access to media library APIs. For details about the authorization duration, see the description of the [SaveButton](arkts-arkui-savebutton-comp.md#savebutton) constructor. Authorization fails if the user declines authorization or closes the dialog box.
 
 **Since:** 10
 
@@ -86,7 +94,7 @@ Triggered when the **SaveButton** component is clicked. When a user clicks the s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [SaveButtonCallback](arkts-arkui-savebutton-comp-savebuttoncallback-t.md) | Yes | Callback object for the click event, which carries click details, authorization result and error information.<br>Starting from API version 18, **SaveButtonCallback** is adopted uniformly, which additionally provides error information.<br>**Since:** 18 |
+| event | [SaveButtonCallback](arkts-arkui-savebutton-comp-savebuttoncallback-t.md) | Yes | Callback object for the click event, which carries click details, authorization result and error information. <br>Starting from API version 18, **SaveButtonCallback** is adopted uniformly, which additionally provides error information.<br>**Since:** 18 |
 
 ## setIcon
 
@@ -138,7 +146,7 @@ Sets the text of the **SaveButton** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| text | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Custom text, used to replace the default system text for business-specific scenarios. When a string is passed, the text content is directly used. When a Resource is passed, multi- language adaptation is implemented via resource management.<br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, this setting does not take effect and the save button uses the default style. |
+| text | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Custom text, used to replace the default system text for business-specific scenarios. When a string is passed, the text content is directly used. When a Resource is passed, multi- language adaptation is implemented via resource management. <br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, this setting does not take effect and the save button uses the default style. |
 
 ## stateEffect
 
@@ -164,7 +172,7 @@ Sets the press effect of the **SaveButton** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to enable the press effect. **true** to enable, **false** otherwise.<br>Default value: **true**.<br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the press effect setting does not take effect. |
+| enabled | boolean | Yes | Whether to enable the press effect. **true** to enable, **false** otherwise. <br>Default value: **true**.<br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the press effect setting does not take effect. |
 
 ## symbolFontWeight
 
@@ -194,7 +202,7 @@ style icon resource (i.e., **$r('sys.symbol.*xxx*')**).
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fontWeight | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Symbol icon font weight of the save button.<br>For the number type: The value range is [100, 900] with an increment of 100. Larger values result in bolder font weight. <br>For the string type: The value can be a numeric string of the number type (for example, **"400"**) or a lowercase string of the enumerated value of FontWeight (for example, **"normal"**). <br>Default value: **FontWeight.Normal** (the corresponding value is **400**) <br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the setting does not take effect. |
+| fontWeight | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Symbol icon font weight of the save button. <br>For the number type: The value range is [100, 900] with an increment of 100. Larger values result in bolder font weight. <br>For the string type: The value can be a numeric string of the number type (for example, **"400"**) or a lowercase string of the enumerated value of FontWeight (for example, **"normal"**). <br>Default value: **FontWeight.Normal** (the corresponding value is **400**) <br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the setting does not take effect. |
 
 ## symbolIconColor
 
@@ -257,7 +265,7 @@ rendering strategy determines how the color array is applied.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| strategy | [SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md) | Yes | Rendering strategy for the symbol icon of the save button, which defines how the symbol icon is rendered.<br>Default value: SymbolRenderingStrategy.SINGLE. <br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the setting does not take effect. |
+| strategy | [SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md) | Yes | Rendering strategy for the symbol icon of the save button, which defines how the symbol icon is rendered. <br>Default value: SymbolRenderingStrategy.SINGLE. <br>If the app does not have the **ohos.permission.CUSTOMIZE_SAVE_BUTTON** permission, the setting does not take effect. |
 
 ## userCancelEvent
 
@@ -281,4 +289,4 @@ Sets the user authorization cancellation event for the **SaveButton** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to receive the user authorization cancellation event of the save button.<br>Default value: **false**.<br>The value **true** indicates that when a user manually cancels authorization in the authorization dialog box, the callback returns the result **CANCELED_BY_USER**. The value **false** indicates that user cancellation is not distinguished from other scenarios. <br>You are advised to enable this parameter if your service needs to distinguish between user cancellation and system errors/authorization failures. |
+| enabled | boolean | Yes | Whether to receive the user authorization cancellation event of the save button. <br>Default value: **false**.<br>The value **true** indicates that when a user manually cancels authorization in the authorization dialog box, the callback returns the result **CANCELED_BY_USER**. The value **false** indicates that user cancellation is not distinguished from other scenarios. <br>You are advised to enable this parameter if your service needs to distinguish between user cancellation and system errors/authorization failures. |

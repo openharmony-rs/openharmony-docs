@@ -17,7 +17,7 @@
 
 | Name | Description |
 | --- | --- |
-| [ClearStorageOptions](arkts-arkdata-system-storage-clearstorageoptions-i.md) | @typedef ClearStorageOptions |
-| [DeleteStorageOptions](arkts-arkdata-system-storage-deletestorageoptions-i.md) | @typedef DeleteStorageOptions |
-| [GetStorageOptions](arkts-arkdata-system-storage-getstorageoptions-i.md) | @typedef GetStorageOptions |
-| [SetStorageOptions](arkts-arkdata-system-storage-setstorageoptions-i.md) | @typedef SetStorageOptions |
+| [ClearStorageOptions](arkts-arkdata-system-storage-clearstorageoptions-i.md) |  |
+| [DeleteStorageOptions](arkts-arkdata-system-storage-deletestorageoptions-i.md) |  |
+| [GetStorageOptions](arkts-arkdata-system-storage-getstorageoptions-i.md) |  |
+| [SetStorageOptions](arkts-arkdata-system-storage-setstorageoptions-i.md) |  |

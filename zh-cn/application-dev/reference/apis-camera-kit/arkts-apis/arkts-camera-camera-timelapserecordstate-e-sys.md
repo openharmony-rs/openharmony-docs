@@ -4,7 +4,7 @@
 enum TimeLapseRecordState
 ```
 
-Enumerates the time-lapse recording states.
+枚举延时摄影录制状态。
 
 **起始版本：** 12
 
@@ -20,7 +20,7 @@ Enumerates the time-lapse recording states.
 IDLE = 0
 ```
 
-Recording not started.
+录制未开始。
 
 **起始版本：** 12
 
@@ -36,7 +36,7 @@ Recording not started.
 RECORDING = 1
 ```
 
-Recording.
+录制中。
 
 **起始版本：** 12
 

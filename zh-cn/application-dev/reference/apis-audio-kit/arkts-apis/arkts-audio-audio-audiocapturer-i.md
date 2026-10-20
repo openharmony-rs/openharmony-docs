@@ -4,7 +4,7 @@
 interface AudioCapturer
 ```
 
-提供音频采集的相关接口。在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer1)获取AudioCapturer实例。
+提供音频采集的相关接口。在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer)获取AudioCapturer实例。
 
 **起始版本：** 8
 
@@ -17,8 +17,6 @@ interface AudioCapturer
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 ```
-
-<a id="getaudiostreamid1"></a>
 
 ## getAudioStreamId
 
@@ -49,8 +47,6 @@ audioCapturer.getAudioStreamId((err: BusinessError, streamId: number) => {
   console.info(`audioCapturer GetStreamId: ${streamId}`);
 });
 ```
-
-<a id="getaudiostreamid2"></a>
 
 ## getAudioStreamId
 
@@ -118,8 +114,6 @@ try {
 }
 ```
 
-<a id="getaudiotime1"></a>
-
 ## getAudioTime
 
 ```TypeScript
@@ -149,8 +143,6 @@ audioCapturer.getAudioTime((err: BusinessError, timestamp: number) => {
   console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
 });
 ```
-
-<a id="getaudiotime2"></a>
 
 ## getAudioTime
 
@@ -296,8 +288,6 @@ try {
 }
 ```
 
-<a id="getbuffersize1"></a>
-
 ## getBufferSize
 
 ```TypeScript
@@ -331,8 +321,6 @@ audioCapturer.getBufferSize((err: BusinessError, bufferSize: number) => {
   }
 });
 ```
-
-<a id="getbuffersize2"></a>
 
 ## getBufferSize
 
@@ -400,8 +388,6 @@ try {
 }
 ```
 
-<a id="getcapturerinfo1"></a>
-
 ## getCapturerInfo
 
 ```TypeScript
@@ -437,8 +423,6 @@ audioCapturer.getCapturerInfo((err: BusinessError, capturerInfo: audio.AudioCapt
   }
 });
 ```
-
-<a id="getcapturerinfo2"></a>
 
 ## getCapturerInfo
 
@@ -686,8 +670,6 @@ try {
 }
 ```
 
-<a id="getstreaminfo1"></a>
-
 ## getStreamInfo
 
 ```TypeScript
@@ -725,8 +707,6 @@ audioCapturer.getStreamInfo((err: BusinessError, streamInfo: audio.AudioStreamIn
   }
 });
 ```
-
-<a id="getstreaminfo2"></a>
 
 ## getStreamInfo
 
@@ -1454,8 +1434,6 @@ audioCapturer.start((err: BusinessError) => {
 });
 ```
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -1489,8 +1467,6 @@ audioCapturer.release((err: BusinessError) => {
   }
 });
 ```
-
-<a id="release2"></a>
 
 ## release
 
@@ -1571,7 +1547,7 @@ setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: num
 > **说明：** 
 > 
 > 当音频采集器在运行状态时调用此接口后，必须重新调用接口
-> [start](#start1)使其生效。
+> [start](#start)使其生效。
 
 **起始版本：** 24
 
@@ -1761,8 +1737,6 @@ audioCapturer.setWillMuteWhenInterrupted(true).then(() => {
 });
 ```
 
-<a id="start1"></a>
-
 ## start
 
 ```TypeScript
@@ -1796,8 +1770,6 @@ audioCapturer.start((err: BusinessError) => {
   }
 });
 ```
-
-<a id="start2"></a>
 
 ## start
 
@@ -1834,8 +1806,6 @@ audioCapturer.start().then(() => {
 });
 ```
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -1869,8 +1839,6 @@ audioCapturer.stop((err: BusinessError) => {
   }
 });
 ```
-
-<a id="stop2"></a>
 
 ## stop
 
@@ -1906,8 +1874,6 @@ audioCapturer.stop().then(() => {
   console.error(`Failed to stop. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="read1"></a>
 
 ## read
 
@@ -1957,8 +1923,6 @@ audioCapturer.getBufferSize().then((bufferSize: number) => {
   console.error(`Failed to getBufferSize. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="read2"></a>
 
 ## read
 

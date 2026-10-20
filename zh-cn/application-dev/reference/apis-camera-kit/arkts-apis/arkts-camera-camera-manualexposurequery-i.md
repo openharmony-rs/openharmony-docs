@@ -4,7 +4,7 @@
 interface ManualExposureQuery
 ```
 
-Provides APIs to obtain the manual exposure range supported.
+提供了获取支持的手动曝光范围的方法。
 
 **起始版本：** 24
 
@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 getExposureBiasStep(): number
 ```
 
-Get exposure bias step.
+获取曝光补偿步长。
 
 **起始版本：** 24
 
@@ -40,7 +40,7 @@ Get exposure bias step.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | exposure bias step. |
+| number | 曝光补偿步长。 |
 
 **错误码：**
 
@@ -55,7 +55,7 @@ Get exposure bias step.
 getSupportedExposureDurationRange(): Array<number>
 ```
 
-Gets the supported manual exposure duration range, units: microseconds.
+获取支持的手动曝光时长范围，单位：微秒。
 
 **起始版本：** 24
 
@@ -69,7 +69,7 @@ Gets the supported manual exposure duration range, units: microseconds.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;number&gt; | The array of manual exposure range. |
+| Array&lt;number&gt; | 手动曝光时长范围数组。 |
 
 **错误码：**
 

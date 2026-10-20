@@ -6,8 +6,6 @@ export interface Color
 
 Color in RGBA format. It consists of four components: red, green, blue, and alpha.
 
-@typedef Color
-
 **Since:** 12
 
 <!--Device-unnamed-export interface Color--><!--Device-unnamed-export interface Color-End-->

@@ -26,8 +26,6 @@ controller: TextController = new TextController();
 let layoutManager: LayoutManager = this.controller.getLayoutManager();
 ```
 
-<a id="getcharacterpositionatcoordinate1"></a>
-
 ## getCharacterPositionAtCoordinate
 
 ```TypeScript
@@ -56,16 +54,14 @@ Obtains the position information of the character closest to the specified coord
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| x | number | Yes | X coordinate relative to the component.<br>Unit: px |
-| y | number | Yes | Y coordinate relative to the component.<br>Unit: px |
+| x | number | Yes | X coordinate relative to the component. <br>Unit: px |
+| y | number | Yes | Y coordinate relative to the component. <br>Unit: px |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) &#124; undefined | Character position information. When [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to the component, this API returns undefined. |
-
-<a id="getcharacterpositionatcoordinate2"></a>
 
 ## getCharacterPositionAtCoordinate
 
@@ -76,7 +72,7 @@ getCharacterPositionAtCoordinate(
 
 Obtains the position information of the character closest to the specified coordinate based on the specified encoding type.
 
-Compared with [getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate1), this API supports specifying the encoding type (UTF-8 or UTF-16) used for the character position through the encoding parameter.
+Compared with [getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate), this API supports specifying the encoding type (UTF-8 or UTF-16) used for the character position through the encoding parameter.
 
 > **NOTE:** 
 > 
@@ -97,17 +93,15 @@ Compared with [getCharacterPositionAtCoordinate](#getcharacterpositionatcoordina
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| x | number | Yes | Horizontal coordinate relative to the component.<br>Unit: px |
-| y | number | Yes | Vertical coordinate relative to the component.<br>Unit: px |
-| encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | No | Encoding type used by the character position. In UTF-8 encoding, the character position is in bytes; in UTF-16 encoding, the character position is in UTF-16 code units.<br>Default value: TextEncoding.TEXT_ENCODING_UTF8. |
+| x | number | Yes | Horizontal coordinate relative to the component. <br>Unit: px |
+| y | number | Yes | Vertical coordinate relative to the component. <br>Unit: px |
+| encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | No | Encoding type used by the character position. In UTF-8 encoding, the character position is in bytes; in UTF-16 encoding, the character position is in UTF-16 code units. <br>Default value: TextEncoding.TEXT_ENCODING_UTF8. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) &#124; undefined | Character position. Returns **undefined** when [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component. |
-
-<a id="getcharacterrangeforglyphrange1"></a>
 
 ## getCharacterRangeForGlyphRange
 
@@ -126,7 +120,7 @@ Obtains the character range and the actual glyph range based on the specified te
 
 | Text | 世 | 界 | H | e | l | l | o |  
 |---|---|---|---|---|---|---|---|  
-| Glyph Index Range | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+| Glyph Index Range | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |  
 | Character Index Range (UTF-8) | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
 
 Its glyph index range is [0, 7]. Since a Chinese character occupies 3 bytes, its corresponding character index range is [0, 11]. If the specified glyph index range is [0, 11], but there are only 7 glyphs in total, the actual glyph index range is [0, 7].
@@ -153,8 +147,6 @@ Its glyph index range is [0, 7]. Since a Chinese character occupies 3 bytes, its
 | --- | --- |
 | Array&lt;[TextRange](arkts-arkui-textrange-i.md)&gt; &#124; undefined | The array contains two elements: the first element is the character range, and the second element is the actual glyph range. <br>When the returned range is an abnormal value, the elements in the range are -1. <br>When the [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component, this API returns undefined. |
 
-<a id="getcharacterrangeforglyphrange2"></a>
-
 ## getCharacterRangeForGlyphRange
 
 ```TypeScript
@@ -163,7 +155,7 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): 
 
 Obtains the character range and the actual glyph range based on the specified encoding type and text glyph range.
 
-Compared with [getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange1), this API supports specifying the encoding type (UTF-8 or UTF-16) used for the character range through the **encoding** parameter.
+Compared with [getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange), this API supports specifying the encoding type (UTF-8 or UTF-16) used for the character range through the **encoding** parameter.
 
 > **NOTE:** 
 > 
@@ -174,8 +166,8 @@ Compared with [getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange1)
 
 | Text | 世 | 界 | H | e | l | l | o |  
 |---|---|---|---|---|---|---|---|  
-| Glyph Index Range | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
-| Character Index Range (UTF-8) | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
+| Glyph Index Range | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |  
+| Character Index Range (UTF-8) | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |  
 | Character Index Range (UTF-16) | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
 
 Under UTF-8 encoding, its glyph index range is [0, 7]. Since a Chinese character occupies 3 bytes, the corresponding character index range is [0, 11]. If the specified glyph index range exceeds the actual number of glyphs (for example, [0, 11]), since there are only 7 glyphs in total, the returned actual glyph index range is [0, 7].
@@ -197,7 +189,7 @@ Under UTF-16 encoding, the character index is measured in UTF-16 code units. A B
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | glyphRange | [TextRange](arkts-arkui-textrange-i.md) | Yes | Glyph range of the text. |
-| encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | No | Encoding type used for the character range. With UTF-8 encoding, the character index is in bytes; with UTF-16 encoding, the character index is in UTF-16 code units.<br>Default value: TextEncoding.TEXT_ENCODING_UTF8 |
+| encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | No | Encoding type used for the character range. With UTF-8 encoding, the character index is in bytes; with UTF-16 encoding, the character index is in UTF-16 code units. <br>Default value: TextEncoding.TEXT_ENCODING_UTF8 |
 
 **Return value:**
 
@@ -233,16 +225,14 @@ Obtains the position information of the character close to the given coordinate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| x | number | Yes | Horizontal coordinate relative to the component.<br>Unit: px |
-| y | number | Yes | Vertical coordinate relative to the component.<br>Unit: px |
+| x | number | Yes | Horizontal coordinate relative to the component. <br>Unit: px |
+| y | number | Yes | Vertical coordinate relative to the component. <br>Unit: px |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) | Character position information. When [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component, an invalid value is returned. |
-
-<a id="getglyphrangeforcharacterrange1"></a>
 
 ## getGlyphRangeForCharacterRange
 
@@ -261,7 +251,7 @@ Obtains the glyph range and the actual character range based on the specified te
 
 | Text | 世 | 界 | H | e | l | l | o |  
 |---|---|---|---|---|---|---|---|  
-| Glyph Index Range | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+| Glyph Index Range | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |  
 | Character Index Range (UTF-8) | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
 
 The glyph index range of the character "世" is [0, 1]. Since a Chinese character occupies 3 bytes, its corresponding character index range is [0, 3]. If the specified character index range is [0, 1], it is impossible to parse one- third of a Chinese character, so the actual character index range is [0, 3].
@@ -288,8 +278,6 @@ The glyph index range of the character "世" is [0, 1]. Since a Chinese characte
 | --- | --- |
 | Array&lt;[TextRange](arkts-arkui-textrange-i.md)&gt; &#124; undefined | The array contains two elements: the first element is the glyph range, and the second element is the actual character range. <br>When the returned range is an abnormal value, the elements in the range are -1. <br>When [LayoutManager](arkts-arkui-layoutmanager-i.md) is not bound to a component, this API returns undefined. |
 
-<a id="getglyphrangeforcharacterrange2"></a>
-
 ## getGlyphRangeForCharacterRange
 
 ```TypeScript
@@ -298,7 +286,7 @@ getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): A
 
 Obtains the glyph range and the actual character range based on the specified encoding type and text character range.
 
-Compared with [getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange1), this interface supports specifying the encoding type (UTF-8 or UTF-16) used for the character range through the encoding parameter.
+Compared with [getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange), this interface supports specifying the encoding type (UTF-8 or UTF-16) used for the character range through the encoding parameter.
 
 > **NOTE:** 
 > 
@@ -309,8 +297,8 @@ Compared with [getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange1)
 
 | Text | 世 | 界 | H | e | l | l | o |  
 |---|---|---|---|---|---|---|---|  
-| Glyph Index Range | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
-| Character Index Range (UTF-8) | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
+| Glyph Index Range | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |  
+| Character Index Range (UTF-8) | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |  
 | Character Index Range (UTF-16) | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
 
 Under UTF-8 encoding, a Chinese character occupies 3 bytes. The glyph index range of "世" is [0, 1], and its corresponding character index range is [0, 3]. If the specified character index range is [0, 1], it is impossible to parse one-third of a Chinese character, so the actual character index range is [0, 3].
@@ -332,7 +320,7 @@ Under UTF-16 encoding, the character index is measured in UTF-16 code units. A B
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | charRange | [TextRange](arkts-arkui-textrange-i.md) | Yes | Character range of the text. |
-| encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | No | Encoding type used by the character range. In UTF-8 encoding, the character index is in bytes; in UTF-16 encoding, the character index is in UTF-16 code units.<br>Default value: TextEncoding.TEXT_ENCODING_UTF8 |
+| encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | No | Encoding type used by the character range. In UTF-8 encoding, the character index is in bytes; in UTF-16 encoding, the character index is in UTF-16 code units. <br>Default value: TextEncoding.TEXT_ENCODING_UTF8 |
 
 **Return value:**
 

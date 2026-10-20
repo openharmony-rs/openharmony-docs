@@ -6,8 +6,6 @@ interface ControlCenterSession extends Beauty, Aperture, ColorEffect
 
 Control center session object.
 
-@extends Beauty, Aperture [since 20 - 24] @extends Beauty, Aperture, ColorEffect [since 26.0.0]
-
 **Inheritance/Implementation:** ControlCenterSession extends [Beauty](arkts-camera-camera-beauty-i-sys.md), [Aperture](arkts-camera-camera-aperture-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->
 
 **Since:** 20

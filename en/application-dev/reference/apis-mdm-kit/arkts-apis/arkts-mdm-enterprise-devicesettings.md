@@ -42,14 +42,14 @@ import { deviceSettings } from '@kit.MDMKit';
 | Name | Description |
 | --- | --- |
 | [getPowerPolicy](arkts-mdm-devicesettings-getpowerpolicy-f-sys.md#getpowerpolicy) | Obtains the power policy. |
-| [getScreenOffTime](arkts-mdm-devicesettings-getscreenofftime-f-sys.md#getscreenofftime1) | Obtains the device screen-off time. This API uses an asynchronous callback to return the result. |
-| [getScreenOffTime](arkts-mdm-devicesettings-getscreenofftime-f-sys.md#getscreenofftime2) | Obtains the device screen-off time. This API uses an asynchronous promise to return the result. |
-| [installUserCertificate](arkts-mdm-devicesettings-installusercertificate-f-sys.md#installusercertificate1) | Installs a user certificate. This API uses a callback to return the result. |
-| [installUserCertificate](arkts-mdm-devicesettings-installusercertificate-f-sys.md#installusercertificate2) | Installs a user certificate. This API uses a promise to return the result. |
+| [getScreenOffTime](arkts-mdm-devicesettings-getscreenofftime-f-sys.md#getscreenofftime) | Obtains the device screen-off time. This API uses an asynchronous callback to return the result. |
+| [getScreenOffTime](arkts-mdm-devicesettings-getscreenofftime-f-sys.md#getscreenofftime) | Obtains the device screen-off time. This API uses an asynchronous promise to return the result. |
+| [installUserCertificate](arkts-mdm-devicesettings-installusercertificate-f-sys.md#installusercertificate) | Installs a user certificate. This API uses a callback to return the result. |
+| [installUserCertificate](arkts-mdm-devicesettings-installusercertificate-f-sys.md#installusercertificate) | Installs a user certificate. This API uses a promise to return the result. |
 | [setPowerPolicy](arkts-mdm-devicesettings-setpowerpolicy-f-sys.md#setpowerpolicy) | Sets the power policy. |
 | [setScreenOffTime](arkts-mdm-devicesettings-setscreenofftime-f-sys.md#setscreenofftime) | Sets the device screen-off time. |
-| [uninstallUserCertificate](arkts-mdm-devicesettings-uninstallusercertificate-f-sys.md#uninstallusercertificate1) | Uninstalls a user certificate. This API uses a callback to return the result. |
-| [uninstallUserCertificate](arkts-mdm-devicesettings-uninstallusercertificate-f-sys.md#uninstallusercertificate2) | Uninstalls a user certificate. This API uses a promise to return the result. |
+| [uninstallUserCertificate](arkts-mdm-devicesettings-uninstallusercertificate-f-sys.md#uninstallusercertificate) | Uninstalls a user certificate. This API uses a callback to return the result. |
+| [uninstallUserCertificate](arkts-mdm-devicesettings-uninstallusercertificate-f-sys.md#uninstallusercertificate) | Uninstalls a user certificate. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 <!--Del-->

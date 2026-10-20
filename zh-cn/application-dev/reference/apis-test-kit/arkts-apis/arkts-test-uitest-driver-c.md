@@ -881,8 +881,6 @@ async function demo() {
 }
 ```
 
-<a id="fling1"></a>
-
 ## fling
 
 ```TypeScript
@@ -935,8 +933,6 @@ async function demo() {
 }
 ```
 
-<a id="fling2"></a>
-
 ## fling
 
 ```TypeScript
@@ -986,8 +982,6 @@ async function demo() {
   await driver.fling(UiDirection.DOWN, 10000);
 }
 ```
-
-<a id="fling3"></a>
 
 ## fling
 
@@ -1040,8 +1034,6 @@ async function demo() {
 }
 ```
 
-<a id="getdisplaydensity1"></a>
-
 ## getDisplayDensity
 
 ```TypeScript
@@ -1083,8 +1075,6 @@ async function demo() {
   let density = await driver.getDisplayDensity();
 }
 ```
-
-<a id="getdisplaydensity2"></a>
 
 ## getDisplayDensity
 
@@ -1135,8 +1125,6 @@ async function demo() {
 }
 ```
 
-<a id="getdisplayrotation1"></a>
-
 ## getDisplayRotation
 
 ```TypeScript
@@ -1178,8 +1166,6 @@ async function demo() {
   let rotation: DisplayRotation = await driver.getDisplayRotation();
 }
 ```
-
-<a id="getdisplayrotation2"></a>
 
 ## getDisplayRotation
 
@@ -1230,8 +1216,6 @@ async function demo() {
 }
 ```
 
-<a id="getdisplaysize1"></a>
-
 ## getDisplaySize
 
 ```TypeScript
@@ -1273,8 +1257,6 @@ async function demo() {
   let size = await driver.getDisplaySize();
 }
 ```
-
-<a id="getdisplaysize2"></a>
 
 ## getDisplaySize
 
@@ -1512,8 +1494,6 @@ async function demo() {
 }
 ```
 
-<a id="inputtext1"></a>
-
 ## inputText
 
 ```TypeScript
@@ -1569,8 +1549,6 @@ async function demo() {
   await driver.inputText(point, '123');
 }
 ```
-
-<a id="inputtext2"></a>
 
 ## inputText
 
@@ -2108,8 +2086,6 @@ async function demo() {
 }
 ```
 
-<a id="mousedrag1"></a>
-
 ## mouseDrag
 
 ```TypeScript
@@ -2160,8 +2136,6 @@ async function demo() {
   await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
-
-<a id="mousedrag2"></a>
 
 ## mouseDrag
 
@@ -2278,8 +2252,6 @@ async function demo() {
 }
 ```
 
-<a id="mouselongclick1"></a>
-
 ## mouseLongClick
 
 ```TypeScript
@@ -2332,8 +2304,6 @@ async function demo() {
   await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
-
-<a id="mouselongclick2"></a>
 
 ## mouseLongClick
 
@@ -2489,8 +2459,6 @@ async function demo() {
 }
 ```
 
-<a id="mousescroll1"></a>
-
 ## mouseScroll
 
 ```TypeScript
@@ -2543,8 +2511,6 @@ async function demo() {
   await driver.mouseScroll({ x: 360, y: 640 }, true, 30, 2072);
 }
 ```
-
-<a id="mousescroll2"></a>
 
 ## mouseScroll
 
@@ -2800,8 +2766,6 @@ async function demo() {
 }
 ```
 
-<a id="pressback1"></a>
-
 ## pressBack
 
 ```TypeScript
@@ -2843,8 +2807,6 @@ async function demo() {
   await driver.pressBack();
 }
 ```
-
-<a id="pressback2"></a>
 
 ## pressBack
 
@@ -2895,8 +2857,6 @@ async function demo() {
 }
 ```
 
-<a id="presshome1"></a>
-
 ## pressHome
 
 ```TypeScript
@@ -2938,8 +2898,6 @@ async function demo() {
   await driver.pressHome();
 }
 ```
-
-<a id="presshome2"></a>
 
 ## pressHome
 
@@ -2990,8 +2948,6 @@ async function demo() {
 }
 ```
 
-<a id="screencap1"></a>
-
 ## screenCap
 
 ```TypeScript
@@ -3040,8 +2996,6 @@ async function demo() {
   await driver.screenCap('/data/storage/el2/base/cache/1.png');
 }
 ```
-
-<a id="screencap2"></a>
 
 ## screenCap
 
@@ -3515,8 +3469,6 @@ async function demo() {
 }
 ```
 
-<a id="triggercombinekeys1"></a>
-
 ## triggerCombineKeys
 
 ```TypeScript
@@ -3568,8 +3520,6 @@ async function demo() {
   await driver.triggerCombineKeys(2072, 2047, 2035);
 }
 ```
-
-<a id="triggercombinekeys2"></a>
 
 ## triggerCombineKeys
 
@@ -3623,8 +3573,6 @@ async function demo() {
 }
 ```
 
-<a id="triggerkey1"></a>
-
 ## triggerKey
 
 ```TypeScript
@@ -3674,8 +3622,6 @@ async function demo() {
   await driver.triggerKey(KeyCode.KEYCODE_BACK); // 返回键。
 }
 ```
-
-<a id="triggerkey2"></a>
 
 ## triggerKey
 
@@ -3761,7 +3707,7 @@ HANDWRITING key with CLICK or DOUBLE_CLICK operation, SMART key with CLICK opera
 | key | [PenKey](arkts-test-uitest-penkey-e.md) | 是 | the pen key to operate. |
 | mode | [PenMode](arkts-test-uitest-penmode-e.md) | 是 | the pen mode. |
 | operation | [PenKeyOperation](arkts-test-uitest-penkeyoperation-e.md) | 是 | the operation type. |
-| options | [PenKeyOperationOptions](arkts-test-uitest-penkeyoperationoptions-i.md) | 否 | the operation options, including optional coordinate point. Default value: Refer to the default value of PenKeyOperationOption.<br>默认值：参考PenKeyOperationOption的默认值。 |
+| options | [PenKeyOperationOptions](arkts-test-uitest-penkeyoperationoptions-i.md) | 否 | the operation options, including optional coordinate point. Default value: Refer to the default value of PenKeyOperationOption. <br>默认值：参考PenKeyOperationOption的默认值。 |
 
 **返回值：**
 

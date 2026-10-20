@@ -18,8 +18,6 @@ Provides APIs for selecting and saving documents in different formats. Before us
 import { picker } from '@kit.CoreFileKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -42,8 +40,6 @@ A constructor used to create a **DocumentViewPicker** instance. This constructor
 let documentPicker = new picker.DocumentViewPicker(); // Construction without parameter is not recommended. There is a possibility that the DocumentViewPicker instance fails to start.
 ```
 
-<a id="constructor2"></a>
-
 ## constructor
 
 ```TypeScript
@@ -64,7 +60,7 @@ A constructor used to create a **DocumentViewPicker** instance. This constructor
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Application context (only **UIAbilityContext** is supported). For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md). |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Application context (only **UIAbilityContext** is supported). For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md). |
 
 **Examples**
 
@@ -94,8 +90,6 @@ struct Index {
 }
 ```
 
-<a id="constructor3"></a>
-
 ## constructor
 
 ```TypeScript
@@ -118,7 +112,7 @@ A constructor used to create a **DocumentViewPicker** object in a window created
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Application context (only **UIAbilityContext** is supported). For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md). |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | Application context (only **UIAbilityContext** is supported). For details about the application context of the stage model, see [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md). |
 | window | [window.Window](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md) | Yes | Window instance created by the application. |
 
 **Examples**
@@ -158,7 +152,7 @@ struct Index {
 getSelectedIndex(): number
 ```
 
-Obtains the index of the file suffix type of the file saved. This method takes effect only when used with [save()](#save1). This method can be used only after [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md) is configured. The index (number) returned by this method indicates the location of the file suffix specified in [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md). If no file suffix is specified, **getSelectedIndex()** returns **-1**.
+Obtains the index of the file suffix type of the file saved. This method takes effect only when used with [save()](#save). This method can be used only after [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md) is configured. The index (number) returned by this method indicates the location of the file suffix specified in [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md). If no file suffix is specified, **getSelectedIndex()** returns **-1**.
 
 **Since:** 14
 
@@ -173,8 +167,6 @@ Obtains the index of the file suffix type of the file saved. This method takes e
 | Type | Description |
 | --- | --- |
 | number | Subscript (number) of the selected suffix type in [DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md). The default value is **-1**. |
-
-<a id="save1"></a>
 
 ## save
 
@@ -227,8 +219,6 @@ async function example10(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="save2"></a>
-
 ## save
 
 ```TypeScript
@@ -277,8 +267,6 @@ async function example11(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="save3"></a>
-
 ## save
 
 ```TypeScript
@@ -323,8 +311,6 @@ async function example12(context: common.UIAbilityContext) { // Ensure that cont
   }
 }
 ```
-
-<a id="select1"></a>
 
 ## select
 
@@ -376,8 +362,6 @@ async function example07(context: common.UIAbilityContext) { // Ensure that cont
 }
 ```
 
-<a id="select2"></a>
-
 ## select
 
 ```TypeScript
@@ -424,8 +408,6 @@ async function example08(context: common.UIAbilityContext) { // Ensure that cont
   }
 }
 ```
-
-<a id="select3"></a>
 
 ## select
 

@@ -41,14 +41,14 @@ import { deviceSettings } from '@kit.MDMKit';
 | 名称 | 说明 |
 | --- | --- |
 | [getPowerPolicy](arkts-mdm-devicesettings-getpowerpolicy-f-sys.md#getpowerpolicy) | 获取电源策略。 |
-| [getScreenOffTime](arkts-mdm-devicesettings-getscreenofftime-f-sys.md#getscreenofftime1) | 获取设备息屏时间，使用callback异步回调。 |
-| [getScreenOffTime](arkts-mdm-devicesettings-getscreenofftime-f-sys.md#getscreenofftime2) | 获取设备息屏时间，使用Promise异步回调。 |
-| [installUserCertificate](arkts-mdm-devicesettings-installusercertificate-f-sys.md#installusercertificate1) | 安装用户证书，使用callback异步回调。 |
-| [installUserCertificate](arkts-mdm-devicesettings-installusercertificate-f-sys.md#installusercertificate2) | 安装用户证书，使用Promise异步回调。 |
+| [getScreenOffTime](arkts-mdm-devicesettings-getscreenofftime-f-sys.md#getscreenofftime) | 获取设备息屏时间，使用callback异步回调。 |
+| [getScreenOffTime](arkts-mdm-devicesettings-getscreenofftime-f-sys.md#getscreenofftime) | 获取设备息屏时间，使用Promise异步回调。 |
+| [installUserCertificate](arkts-mdm-devicesettings-installusercertificate-f-sys.md#installusercertificate) | 安装用户证书，使用callback异步回调。 |
+| [installUserCertificate](arkts-mdm-devicesettings-installusercertificate-f-sys.md#installusercertificate) | 安装用户证书，使用Promise异步回调。 |
 | [setPowerPolicy](arkts-mdm-devicesettings-setpowerpolicy-f-sys.md#setpowerpolicy) | 设置电源策略。 |
 | [setScreenOffTime](arkts-mdm-devicesettings-setscreenofftime-f-sys.md#setscreenofftime) | 设置设备息屏时间。 |
-| [uninstallUserCertificate](arkts-mdm-devicesettings-uninstallusercertificate-f-sys.md#uninstallusercertificate1) | 卸载用户证书，使用callback异步回调。 |
-| [uninstallUserCertificate](arkts-mdm-devicesettings-uninstallusercertificate-f-sys.md#uninstallusercertificate2) | 卸载用户证书，使用Promise异步回调。 |
+| [uninstallUserCertificate](arkts-mdm-devicesettings-uninstallusercertificate-f-sys.md#uninstallusercertificate) | 卸载用户证书，使用callback异步回调。 |
+| [uninstallUserCertificate](arkts-mdm-devicesettings-uninstallusercertificate-f-sys.md#uninstallusercertificate) | 卸载用户证书，使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

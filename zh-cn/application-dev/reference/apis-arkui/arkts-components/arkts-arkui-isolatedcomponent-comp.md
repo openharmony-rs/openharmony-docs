@@ -12,16 +12,20 @@ IsolatedComponent用于支持在本页面内嵌入显示独立Abc（方舟字节
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [IsolatedOptions](arkts-arkui-isolatedcomponent-comp-isolatedoptions-i-sys.md) | 用于在IsolatedComponent构造时传递构造参数。 |
+<!--DelEnd-->
 
-### 类型
+<!--Del-->
+### 类型（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [ErrorCallback](arkts-arkui-isolatedcomponent-comp-errorcallback-t-sys.md) | 错误回调类型，用于接收异常信息。 |
 | [RestrictedWorker](arkts-arkui-isolatedcomponent-comp-restrictedworker-t-sys.md) | 用于运行Abc的受限Worker。 |
 | [Want](arkts-arkui-isolatedcomponent-comp-want-t-sys.md) | 表示Want。 |
+<!--DelEnd-->

@@ -38,7 +38,7 @@ Alignment mode of the child components in the horizontal direction.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [HorizontalAlign](../arkts-apis/arkts-arkui-horizontalalign-e.md) | Yes | Alignment format of the child components in the horizontal direction.<br>Default value: **HorizontalAlign.Center** |
+| value | [HorizontalAlign](../arkts-apis/arkts-arkui-horizontalalign-e.md) | Yes | Alignment format of the child components in the horizontal direction. <br>Default value: **HorizontalAlign.Center** |
 
 ## justifyContent
 
@@ -100,4 +100,4 @@ Sets whether to reverse the vertical arrangement of child components.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isReversed | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the child components are arranged in reverse order in the vertical direction.<br>Default value: **true**. The value **true** indicates that the child components are arranged in reverse order in the vertical direction, and **false** indicates that they are arranged in normal order. |
+| isReversed | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the child components are arranged in reverse order in the vertical direction. <br>Default value: **true**. The value **true** indicates that the child components are arranged in reverse order in the vertical direction, and **false** indicates that they are arranged in normal order. |

@@ -10,8 +10,6 @@ sendableImage下的PixelMap支持Sendable属性，支持Worker线程共享。sen
 
 图像占用的内存往往较大，当PixelMap对象使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-@typedef PixelMap
-
 **继承/实现关系：** PixelMap extends [ISendable](arkts-image-sendableimage-isendable-t.md)
 
 **起始版本：** 12

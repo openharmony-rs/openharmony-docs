@@ -16,8 +16,6 @@ In addition to the [universal events](arkts-arkui-common-comp.md), the following
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="backbuttonicon1"></a>
-
 ## backButtonIcon
 
 ```TypeScript
@@ -50,8 +48,6 @@ Sets the icon of the back button on the title bar.
 | --- | --- | --- | --- |
 | value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md) | Yes | Icon of the back button on the title bar.<br>**Since:** 12 |
 
-<a id="backbuttonicon2"></a>
-
 ## backButtonIcon
 
 ```TypeScript
@@ -83,7 +79,7 @@ Sets the icon and accessibility text for the back button on the title bar.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | icon | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md) | Yes | Icon of the back button on the title bar. |
-| accessibilityText | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | No | Accessibility text for the back button.<br>Default value: **back** when the system language is English. |
+| accessibilityText | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | No | Accessibility text for the back button. <br>Default value: **back** when the system language is English. |
 
 ## bindToNestedScrollable
 
@@ -216,7 +212,7 @@ Sets whether to show or hide the system navigation bar when entering this **NavD
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to show or hide the system navigation bar when entering the current **NavDestination** component.<br>**true**: Show the system navigation bar. <br>**false**: Hide the system navigation bar. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to show or hide the system navigation bar when entering the current **NavDestination** component. <br>**true**: Show the system navigation bar. <br>**false**: Hide the system navigation bar. |
 
 ## enableStatusBar
 
@@ -254,8 +250,8 @@ Sets whether to show or hide the system status bar when entering this **NavDesti
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to show or hide the system status bar when entering the current **NavDestination** component.<br>**true**: Show the system status bar. <br>**false**: Hide the system status bar. |
-| animated | boolean | No | Whether to animate the visibility change of the system status bar. Default value: **false**.<br>**true**: Animate the visibility change of the system status bar. <br>**false**: Do not animate the visibility change of the system status bar. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to show or hide the system status bar when entering the current **NavDestination** component. <br>**true**: Show the system status bar. <br>**false**: Hide the system status bar. |
+| animated | boolean | No | Whether to animate the visibility change of the system status bar. Default value: **false**. <br>**true**: Animate the visibility change of the system status bar. <br>**false**: Do not animate the visibility change of the system status bar. |
 
 ## fullScreenOverlay
 
@@ -281,7 +277,7 @@ When set to true, in split navigation mode, the page covers both the NavBar and 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fullScreenOverlay | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to display as full screen overlay.<br>**true**: Full screen overlay mode, covers entire navigation container. <br>**false**: Normal display mode, follows navigation split rules(Except for DIALOG mode). <br>**undefined**: Follow the fullscreen inheritance rules. |
+| fullScreenOverlay | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to display as full screen overlay. <br>**true**: Full screen overlay mode, covers entire navigation container. <br>**false**: Normal display mode, follows navigation split rules(Except for DIALOG mode). <br>**undefined**: Follow the fullscreen inheritance rules. |
 
 ## hideBackButton
 
@@ -305,9 +301,7 @@ Sets whether to hide the back button in the title bar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hide | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to hide the back button in the title bar.<br>Default value: **false**. <br>**true**: Hide the back button in the title bar. <br>**false**: Show the back button in the title bar. |
-
-<a id="hidetitlebar1"></a>
+| hide | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to hide the back button in the title bar. <br>Default value: **false**. <br>**true**: Hide the back button in the title bar. <br>**false**: Show the back button in the title bar. |
 
 ## hideTitleBar
 
@@ -329,9 +323,7 @@ Specifies whether to hide the title bar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to hide the title bar.<br>Default value: **false**. <br>**true**: Hide the title bar. <br>**false**: Show the title bar. |
-
-<a id="hidetitlebar2"></a>
+| value | boolean | Yes | Whether to hide the title bar. <br>Default value: **false**. <br>**true**: Hide the title bar. <br>**false**: Show the title bar. |
 
 ## hideTitleBar
 
@@ -339,7 +331,7 @@ Specifies whether to hide the title bar.
 hideTitleBar(hide: boolean, animated: boolean)
 ```
 
-Specifies whether to hide the title bar. Compared with [hideTitleBar](#hidetitlebar1), this API adds the capability to control whether to animate the visibility change of the title bar.
+Specifies whether to hide the title bar. Compared with [hideTitleBar](#hidetitlebar), this API adds the capability to control whether to animate the visibility change of the title bar.
 
 **Since:** 13
 
@@ -355,8 +347,8 @@ Specifies whether to hide the title bar. Compared with [hideTitleBar](#hidetitle
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hide | boolean | Yes | Whether to hide the title bar.<br>Default value: **false**. <br>**true**: Hide the title bar. <br>**false**: Show the title bar. |
-| animated | boolean | Yes | Whether to animate the visibility change of the title bar.<br>Default value: **false**. <br>**true**: Animate the visibility change of the title bar. <br>**false**: Do not animate the visibility change of the title bar. |
+| hide | boolean | Yes | Whether to hide the title bar. <br>Default value: **false**. <br>**true**: Hide the title bar. <br>**false**: Show the title bar. |
+| animated | boolean | Yes | Whether to animate the visibility change of the title bar. <br>Default value: **false**. <br>**true**: Animate the visibility change of the title bar. <br>**false**: Do not animate the visibility change of the title bar. |
 
 ## hideToolBar
 
@@ -380,8 +372,8 @@ Specifies whether to hide the toolbar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hide | boolean | Yes | Whether to hide the toolbar.<br>Default value: **false**. <br>**true**: Hide the toolbar. <br>**false**: Show the toolbar. |
-| animated | boolean | No | Whether to animate the visibility change of the toolbar.<br>Default value: **false**. <br>**true**: Animate the visibility change of the toolbar. <br>**false**: Do not animate the visibility change of the toolbar. |
+| hide | boolean | Yes | Whether to hide the toolbar. <br>Default value: **false**. <br>**true**: Hide the toolbar. <br>**false**: Show the toolbar. |
+| animated | boolean | No | Whether to animate the visibility change of the toolbar. <br>Default value: **false**. <br>**true**: Animate the visibility change of the toolbar. <br>**false**: Do not animate the visibility change of the toolbar. |
 
 ## ignoreLayoutSafeArea
 
@@ -416,10 +408,8 @@ Ignores the layout safe area by allowing the component to extend into the non-sa
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| types | Array&lt;[LayoutSafeAreaType](arkts-arkui-common-comp-layoutsafeareatype-e.md)&gt; | No | Types of non-safe areas to extend into.<br>Default value: <br>[LayoutSafeAreaType.SYSTEM] |
-| edges | Array&lt;[LayoutSafeAreaEdge](arkts-arkui-common-comp-layoutsafeareaedge-e.md)&gt; | No | Edges for expanding the safe area.<br> Default value: <br>[LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM] |
-
-<a id="menus1"></a>
+| types | Array&lt;[LayoutSafeAreaType](arkts-arkui-common-comp-layoutsafeareatype-e.md)&gt; | No | Types of non-safe areas to extend into. <br>Default value: <br>[LayoutSafeAreaType.SYSTEM] |
+| edges | Array&lt;[LayoutSafeAreaEdge](arkts-arkui-common-comp-layoutsafeareaedge-e.md)&gt; | No | Edges for expanding the safe area. <br> Default value: <br>[LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM] |
 
 ## menus
 
@@ -453,15 +443,13 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 | --- | --- | --- | --- |
 | value | Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | Yes | Menu items in the upper right corner of the page. |
 
-<a id="menus2"></a>
-
 ## menus
 
 ```TypeScript
 menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions)
 ```
 
-Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. Compared with [menus](#menus1), this API adds menu options. When the value type is Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
+Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. Compared with [menus](#menus), this API adds menu options. When the value type is Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
 
 > **NOTE:** 
 > 
@@ -514,7 +502,7 @@ Sets the mode of the **NavDestination** component. Dynamic modification is not s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [NavDestinationMode](arkts-arkui-navdestination-comp-navdestinationmode-e.md) | Yes | Mode of the **NavDestination** component.<br>Default value: **NavDestinationMode.STANDARD**. |
+| value | [NavDestinationMode](arkts-arkui-navdestination-comp-navdestinationmode-e.md) | Yes | Mode of the **NavDestination** component. <br>Default value: **NavDestinationMode.STANDARD**. |
 
 ## onActive
 
@@ -542,7 +530,7 @@ Triggered when the **NavDestination** component becomes active (on top of the st
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;[NavDestinationActiveReason](arkts-arkui-navdestination-comp-navdestinationactivereason-e.md)&gt;&gt; | Yes | Indicates callback when destination is active. |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;[NavDestinationActiveReason](arkts-arkui-navdestination-comp-navdestinationactivereason-e.md)&gt;&gt; | Yes | Reason why the **NavDestination** component switches from active to inactive. |
 
 ## onBackPressed
 
@@ -592,7 +580,7 @@ Triggered when the navigation destination page is hidden. Starting from API vers
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[VisibilityChangeReason](arkts-arkui-navdestination-comp-visibilitychangereason-e.md)&gt; | Yes | Triggered when the navigation destination page is hidden.<br>In versions earlier than API version 21, the callback is a basic callback without parameters. <br>Since API version 21, the callback includes a **VisibilityChangeReason** parameter describing the trigger cause.<br>**Since:** 21 |
+| callback | Callback&lt;[VisibilityChangeReason](arkts-arkui-navdestination-comp-visibilitychangereason-e.md)&gt; | Yes | Triggered when the navigation destination page is hidden. <br>In versions earlier than API version 21, the callback is a basic callback without parameters. <br>Since API version 21, the callback includes a **VisibilityChangeReason** parameter describing the trigger cause.<br>**Since:** 21 |
 
 ## onInactive
 
@@ -620,7 +608,7 @@ Triggered when the **NavDestination** component becomes inactive (not on top of 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;[NavDestinationActiveReason](arkts-arkui-navdestination-comp-navdestinationactivereason-e.md)&gt;&gt; | Yes | Indicates callback when destination is inactive. |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;[NavDestinationActiveReason](arkts-arkui-navdestination-comp-navdestinationactivereason-e.md)&gt;&gt; | Yes | Reason why the **NavDestination** component switches from active to inactive. |
 
 ## onNewParam
 
@@ -632,7 +620,7 @@ Triggered when a **NavDestination** page that already exists in the stack is mov
 
 > **NOTE:** 
 > 
-> - This callback is not triggered by [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath1) or [replaceDestination](arkts-arkui-navigation-comp-navpathstack-c.md#replacedestination).
+> - This callback is not triggered by [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath) or [replaceDestination](arkts-arkui-navigation-comp-navpathstack-c.md#replacedestination).
 > 
 > - This API can be called in [attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier) since API version 22.
 
@@ -650,7 +638,7 @@ Triggered when a **NavDestination** page that already exists in the stack is mov
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;[ESObject](../../apis-default/arkts-apis/arkts-esobject-t.md)&gt;&gt; | Yes | Indicates callback when destination be pushed with singleton mode. |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;[ESObject](../../apis-default/arkts-apis/arkts-esobject-t.md)&gt;&gt; | Yes | Callback triggered by **onNewParam**, with the parameter being the data passed to the target page during navigation. |
 
 ## onReady
 
@@ -782,7 +770,7 @@ Triggered when the navigation destination page is displayed. Starting from API v
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[VisibilityChangeReason](arkts-arkui-navdestination-comp-visibilitychangereason-e.md)&gt; | Yes | Triggered when the navigation destination page is displayed.<br>In versions earlier than API version 21, the callback is a basic callback without parameters. <br>Since API version 21, the callback includes a **VisibilityChangeReason** parameter describing the trigger cause.<br>**Since:** 21 |
+| callback | Callback&lt;[VisibilityChangeReason](arkts-arkui-navdestination-comp-visibilitychangereason-e.md)&gt; | Yes | Triggered when the navigation destination page is displayed. <br>In versions earlier than API version 21, the callback is a basic callback without parameters. <br>Since API version 21, the callback includes a **VisibilityChangeReason** parameter describing the trigger cause.<br>**Since:** 21 |
 
 ## onWillAppear
 
@@ -914,7 +902,7 @@ Sets the display orientation for the **NavDestination** component. After the tra
 > 
 > 3. The type of **NavDestination** is [NavDestinationMode](arkts-arkui-navdestination-comp-navdestinationmode-e.md).STANDARD.
 > 
-> - The actual effect of setting the display orientation depends on the specific device support. For details, see [setPreferredOrientation](../arkts-apis/arkts-arkui-window-window-i.md#setpreferredorientation1).
+> - The actual effect of setting the display orientation depends on the specific device support. For details, see [setPreferredOrientation](../arkts-apis/arkts-arkui-window-window-i.md#setpreferredorientation).
 
 **Since:** 19
 
@@ -957,7 +945,7 @@ Sets whether the **NavDestination** component is recoverable. If set to recovera
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| recoverable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the **NavDestination** component is recoverable. By default, it is not recoverable.<br>Default value: **false**. <br>**true**: The **NavDestination** component is recoverable. <br>**false**: The **NavDestination** component is not recoverable. |
+| recoverable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the **NavDestination** component is recoverable. By default, it is not recoverable. <br>Default value: **false**. <br>**true**: The **NavDestination** component is recoverable. <br>**false**: The **NavDestination** component is not recoverable. |
 
 ## systemBarStyle
 
@@ -1014,7 +1002,7 @@ Sets the system transition animation of the **NavDestination** component. System
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [NavigationSystemTransitionType](arkts-arkui-navdestination-comp-navigationsystemtransitiontype-e.md) | Yes | Type of the system transition animation.<br>Default value: **NavigationSystemTransitionType.DEFAULT**. |
+| type | [NavigationSystemTransitionType](arkts-arkui-navdestination-comp-navigationsystemtransitiontype-e.md) | Yes | Type of the system transition animation. <br>Default value: **NavigationSystemTransitionType.DEFAULT**. |
 
 ## title
 

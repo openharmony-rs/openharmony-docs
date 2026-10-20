@@ -6,8 +6,6 @@ declare interface HorizontalAlignParam
 
 Defines the horizontal align rule of relative container.
 
-@interface HorizontalAlignParam
-
 **Since:** 23
 
 <!--Device-unnamed-declare interface HorizontalAlignParam--><!--Device-unnamed-declare interface HorizontalAlignParam-End-->

@@ -14,7 +14,7 @@ declare enum NavigationMode
 
 | 开发者设置的navBarWidth值 | calcNavBarWidth计算值 | navBarWidth最终取值 |  
 | --- | --- | --- |  
-| navBarWidth &lt; minNavBarWidth | NA | minNavBarWidth |
+| navBarWidth &lt; minNavBarWidth | NA | minNavBarWidth |  
 | navBarWidth  
 > maxNavBarWidth | calcNavBarWidth
 > maxNavBarWidth | maxNavBarWidth |

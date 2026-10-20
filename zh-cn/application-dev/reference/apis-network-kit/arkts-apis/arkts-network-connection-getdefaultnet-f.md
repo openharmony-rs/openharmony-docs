@@ -6,8 +6,6 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
-<a id="getdefaultnet1"></a>
-
 ## getDefaultNet
 
 ```TypeScript
@@ -66,8 +64,6 @@ connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
 });
 ```
 
-
-<a id="getdefaultnet2"></a>
 
 ## getDefaultNet
 

@@ -8,6 +8,8 @@ webNativeMessagingExtensionManager模块是ArkWeb提供的Web原生消息扩展�
 
 **起始版本：** 21
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace webNativeMessagingExtensionManager--><!--Device-unnamed-declare namespace webNativeMessagingExtensionManager-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

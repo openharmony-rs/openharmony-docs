@@ -4,7 +4,7 @@
 namespace OpenMode
 ```
 
-Mode Indicates the open flags.
+Enumerates the constants of the <b>mode</b> parameter used in <b>open()</b>, which specifies the file opening mode, such as <b>READ_ONLY</b>, <b>WRITE_ONLY</b>, <b>READ_WRITE</b>, or <b>CREATE</b>.
 
 **Since:** 9
 
@@ -33,5 +33,5 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 | [READ_WRITE](arkts-corefile-openmode-con.md#read_write) | Open the file in read/write mode. |
 | [SYNC](arkts-corefile-openmode-con.md#sync) | Open the file in synchronous I/O mode. |
 | [TRUNC](arkts-corefile-openmode-con.md#trunc) | If the file exists and is opened in write-only or read/write mode, truncate the file length to 0. |
-| [UNCACHE](arkts-corefile-openmode-con.md#uncache) | UNCACHE IO. |
+| [UNCACHE](arkts-corefile-openmode-con.md#uncache) | Disable the page cache for reading and writing a file. |
 | [WRITE_ONLY](arkts-corefile-openmode-con.md#write_only) | Open the file in write-only mode. |

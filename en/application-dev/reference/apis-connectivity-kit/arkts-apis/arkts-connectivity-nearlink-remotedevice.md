@@ -4,6 +4,8 @@ This module provides the capabilities of connecting to and managing NearLink rem
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace remoteDevice--><!--Device-unnamed-declare namespace remoteDevice-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

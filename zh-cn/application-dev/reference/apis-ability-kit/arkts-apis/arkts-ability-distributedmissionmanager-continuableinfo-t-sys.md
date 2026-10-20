@@ -6,8 +6,6 @@ export type ContinuableInfo = _ContinuableInfo
 
 应用任务对应的可迁移信息。
 
-@typedef { _ContinuableInfo }
-
 **类型：** _ContinuableInfo
 
 **起始版本：** 10

@@ -6,8 +6,6 @@ interface FormCustomConfig
 
 FormCustomConfig
 
-@typedef FormCustomConfig
-
 **Since:** 26.0.0
 
 <!--Device-formInfo-interface FormCustomConfig--><!--Device-formInfo-interface FormCustomConfig-End-->

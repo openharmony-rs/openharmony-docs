@@ -30,7 +30,7 @@ Get session descriptors for a unique audio zone across different session categor
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| userId | number | Yes | Specifies the user id that belongs to an audio zone.<br>The value should be an integer. |
+| userId | number | Yes | Specifies the user id that belongs to an audio zone. <br>The value should be an integer. |
 
 **Return value:**
 

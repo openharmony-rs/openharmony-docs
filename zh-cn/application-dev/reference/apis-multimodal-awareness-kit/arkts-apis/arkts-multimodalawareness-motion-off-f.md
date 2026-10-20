@@ -36,10 +36,9 @@ function off(type: 'operatingHandChanged', callback?: Callback<OperatingHandStat
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:<br> 1. The hardware does not support the capability; <br> 2. The chip does not support the capability; <br> 3. A dependent service feature is not supported. |
-| [31500001](../errorcode-motion.md#31500001-服务异常) | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception;<br> 2. N-API invocation exception, invalid N-API status. |
-| [31500003](../errorcode-motion.md#31500003-取消订阅失败) | Unsubscription failed. Possible causes: 1. Callback failure;<br> 2. N-API invocation exception, invalid N-API status; 3. IPC request exception. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: <br> 1. The hardware does not support the capability; <br> 2. The chip does not support the capability; <br> 3. A dependent service feature is not supported. |
+| [31500001](../errorcode-motion.md#31500001-服务异常) | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; <br> 2. N-API invocation exception, invalid N-API status. |
+| [31500003](../errorcode-motion.md#31500003-取消订阅失败) | Unsubscription failed. Possible causes: 1. Callback failure; <br> 2. N-API invocation exception, invalid N-API status; 3. IPC request exception. |
 
 **示例**
 
@@ -84,9 +83,9 @@ function off(type: 'holdingHandChanged', callback?: Callback<HoldingHandStatus>)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:<br> 1. The hardware does not support the capability; <br> 2. The chip does not support the capability; <br> 3. A dependent service feature is not supported. |
-| [31500001](../errorcode-motion.md#31500001-服务异常) | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception;<br> 2. N-API invocation exception, invalid N-API status. |
-| [31500003](../errorcode-motion.md#31500003-取消订阅失败) | Unsubscription failed. Possible causes: 1. Callback failure;<br> 2. N-API invocation exception, invalid N-API status; 3. IPC request exception. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: <br> 1. The hardware does not support the capability; <br> 2. The chip does not support the capability; <br> 3. A dependent service feature is not supported. |
+| [31500001](../errorcode-motion.md#31500001-服务异常) | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; <br> 2. N-API invocation exception, invalid N-API status. |
+| [31500003](../errorcode-motion.md#31500003-取消订阅失败) | Unsubscription failed. Possible causes: 1. Callback failure; <br> 2. N-API invocation exception, invalid N-API status; 3. IPC request exception. |
 
 **示例**
 

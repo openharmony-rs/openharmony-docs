@@ -30,9 +30,9 @@ Query recommend printer drivers by printer ID.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerId | string | Yes | Indicates the printer ID.<br>Printer ID of the printer to be connected. |
-| protocol | string | Yes | Indicates the protocol.<br>Protocol of the printer to be connected. |
-| ppdName | string | Yes | Indicates the ppd name.<br>Ppd name of the printer to be connected. |
+| printerId | string | Yes | Indicates the printer ID. <br>Printer ID of the printer to be connected. |
+| protocol | string | Yes | Indicates the protocol. <br>Protocol of the printer to be connected. |
+| ppdName | string | Yes | Indicates the ppd name. <br>Ppd name of the printer to be connected. |
 
 **Return value:**
 

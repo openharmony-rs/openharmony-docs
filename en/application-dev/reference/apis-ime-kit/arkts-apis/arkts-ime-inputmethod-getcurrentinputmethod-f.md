@@ -6,15 +6,13 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="getcurrentinputmethod1"></a>
-
 ## getCurrentInputMethod
 
 ```TypeScript
 function getCurrentInputMethod(): InputMethodProperty
 ```
 
-Obtains the current input method. This API returns the result synchronously.
+Obtains the current input method. This API returns the result synchronously. <br> <br>Meaning/Function: Obtains the property information of the input method currently in use. <br> <br>Usage scenarios: Used when an application needs to know which input method is currently active (for example, to determine the input method name or obtain the input method ID for subsequent switching operations). <br> <br>Use effect: Returns the **InputMethodProperty** object of the current input method.
 
 **Since:** 9
 
@@ -26,7 +24,7 @@ Obtains the current input method. This API returns the result synchronously.
 
 | Type | Description |
 | --- | --- |
-| [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | **InputmethodProperty** instance of the current input method. |
+| [InputMethodProperty](arkts-ime-inputmethod-inputmethodproperty-i.md) | Input method property object. |
 
 **Examples**
 

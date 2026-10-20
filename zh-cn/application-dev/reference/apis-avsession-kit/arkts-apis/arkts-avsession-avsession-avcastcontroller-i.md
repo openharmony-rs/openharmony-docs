@@ -22,8 +22,6 @@ interface AVCastController
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="getavplaybackstate1"></a>
-
 ## getAVPlaybackState
 
 ```TypeScript
@@ -61,8 +59,6 @@ avCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlay
   console.info('Succeeded in getting AV playback state.');
 });
 ```
-
-<a id="getavplaybackstate2"></a>
 
 ## getAVPlaybackState
 
@@ -102,8 +98,6 @@ avCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) =>
 });
 ```
 
-<a id="getcurrentitem1"></a>
-
 ## getCurrentItem
 
 ```TypeScript
@@ -141,8 +135,6 @@ avCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueIte
   console.info('Succeeded in getting current item.');
 });
 ```
-
-<a id="getcurrentitem2"></a>
 
 ## getCurrentItem
 
@@ -352,8 +344,6 @@ avCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
 });
 ```
 
-<a id="getvalidcommands1"></a>
-
 ## getValidCommands
 
 ```TypeScript
@@ -391,8 +381,6 @@ avCastController.getValidCommands((err: BusinessError, state: avSession.AVCastCo
   console.info('Succeeded in getting valid commands.');
 });
 ```
-
-<a id="getvalidcommands2"></a>
 
 ## getValidCommands
 
@@ -1865,8 +1853,6 @@ avCastController.on('customDataChange', (data: Record<string, Object>) => {
 });
 ```
 
-<a id="prepare1"></a>
-
 ## prepare
 
 ```TypeScript
@@ -1925,8 +1911,6 @@ avCastController.prepare(playItem, (err: BusinessError) => {
   console.info('Succeeded in preparing.');
 });
 ```
-
-<a id="prepare2"></a>
 
 ## prepare
 
@@ -2045,8 +2029,6 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
 }
 ```
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -2085,8 +2067,6 @@ avCastController.release((err: BusinessError) => {
 });
 ```
 
-<a id="release2"></a>
-
 ## release
 
 ```TypeScript
@@ -2124,8 +2104,6 @@ avCastController.release().then(() => {
   console.error(`Failed to release, code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="sendcontrolcommand1"></a>
 
 ## sendControlCommand
 
@@ -2169,8 +2147,6 @@ avCastController.sendControlCommand(avCommand, (err: BusinessError) => {
   console.info('Succeeded in sending control command.');
 });
 ```
-
-<a id="sendcontrolcommand2"></a>
 
 ## sendControlCommand
 
@@ -2264,8 +2240,6 @@ avCastController.sendCustomData({customData: 'This is custom data'}).then(() => 
 });
 ```
 
-<a id="start1"></a>
-
 ## start
 
 ```TypeScript
@@ -2277,7 +2251,7 @@ start(item: AVQueueItem, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 在音视频投播场景下，当应用程序顺序调用
-> [prepare](#prepare1)和start接口，且
+> [prepare](#prepare)和start接口，且
 > assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **起始版本：** 10
@@ -2332,8 +2306,6 @@ avCastController.start(playItem, (err: BusinessError) => {
 });
 ```
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -2345,7 +2317,7 @@ start(item: AVQueueItem): Promise<void>
 > **说明：** 
 > 
 > 在音视频投播场景下，当应用程序顺序调用
-> [prepare](#prepare1)和start接口，且
+> [prepare](#prepare)和start接口，且
 > assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **起始版本：** 10

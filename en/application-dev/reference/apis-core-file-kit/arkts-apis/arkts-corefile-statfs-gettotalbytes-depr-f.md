@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="gettotalbytes1"></a>
-
 ## getTotalBytes
 
 ```TypeScript
@@ -48,8 +46,6 @@ statfs.getTotalBytes(path, (err: BusinessError, totalBytes:Number) => {
 });
 ```
 
-
-<a id="gettotalbytes2"></a>
 
 ## getTotalBytes
 

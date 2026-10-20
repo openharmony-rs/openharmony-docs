@@ -59,3 +59,23 @@ Execution mode of the intent call, that is, execution mode supported when the bo
 <!--Device-EntryIntentDecoratorInfo-executeMode: insightIntent.ExecuteMode[]--><!--Device-EntryIntentDecoratorInfo-executeMode: insightIntent.ExecuteMode[]-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## permissions
+
+```TypeScript
+permissions?: string[]
+```
+
+Indicates the permissions required by the intent.
+
+**Type:** string[]
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-EntryIntentDecoratorInfo-permissions?: string[]--><!--Device-EntryIntentDecoratorInfo-permissions?: string[]-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core

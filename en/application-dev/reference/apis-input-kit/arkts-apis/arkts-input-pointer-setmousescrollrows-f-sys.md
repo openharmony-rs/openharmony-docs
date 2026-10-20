@@ -6,8 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="setmousescrollrows1"></a>
-
 ## setMouseScrollRows
 
 ```TypeScript
@@ -72,8 +70,6 @@ struct Index {
 
 <!--DelEnd-->
 
-
-<a id="setmousescrollrows2"></a>
 
 ## setMouseScrollRows
 

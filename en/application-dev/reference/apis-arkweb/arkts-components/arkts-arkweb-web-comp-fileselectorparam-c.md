@@ -218,7 +218,7 @@ Obtains whether the file selector excludes the option (*\/*), that is, all files
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether to exclude the "All file types" option.<br>The value **true** means to exclude (the "All file types" option is not included), and **false** means to include (the developer must ensure that the "All file types" option is included in the file selector). |
+| boolean | Whether to exclude the "All file types" option. <br>The value **true** means to exclude (the "All file types" option is not included), and **false** means to include (the developer must ensure that the "All file types" option is included in the file selector). |
 
 ## isCapture
 
@@ -240,4 +240,4 @@ Checks whether multimedia capabilities are invoked.
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether to invoke multimedia capabilities.<br>The value **true** means that multimedia devices such as the camera or microphone need to be called to obtain files (for example, taking a photo or recording audio), and **false** means that only existing files are selected from the storage device. Corresponds to the **capture** attribute of the HTML input tag. |
+| boolean | Whether to invoke multimedia capabilities. <br>The value **true** means that multimedia devices such as the camera or microphone need to be called to obtain files (for example, taking a photo or recording audio), and **false** means that only existing files are selected from the storage device. Corresponds to the **capture** attribute of the HTML input tag. |

@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="deleteform1"></a>
-
 ## deleteForm
 
 ```TypeScript
@@ -52,8 +50,6 @@ formHost.deleteForm(formId, (error: Base.BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="deleteform2"></a>
 
 ## deleteForm
 

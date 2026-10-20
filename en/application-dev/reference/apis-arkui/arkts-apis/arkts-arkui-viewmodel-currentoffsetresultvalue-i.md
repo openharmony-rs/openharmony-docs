@@ -6,8 +6,6 @@ export interface CurrentOffsetResultValue
 
 CurrentOffsetResultValue
 
-@interface CurrentOffsetResultValue
-
 **Since:** 4
 
 <!--Device-unnamed-export interface CurrentOffsetResultValue--><!--Device-unnamed-export interface CurrentOffsetResultValue-End-->

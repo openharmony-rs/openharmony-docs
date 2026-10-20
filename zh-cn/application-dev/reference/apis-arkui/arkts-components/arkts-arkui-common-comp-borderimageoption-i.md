@@ -6,8 +6,6 @@ declare interface BorderImageOption
 
 Border image option
 
-@interface BorderImageOption
-
 **起始版本：** 11
 
 <!--Device-unnamed-declare interface BorderImageOption--><!--Device-unnamed-declare interface BorderImageOption-End-->

@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="deleterdbstore1"></a>
-
 ## deleteRdbStore
 
 ```TypeScript
@@ -33,8 +31,6 @@ function deleteRdbStore(context: Context, name: string, callback: AsyncCallback<
 | name | string | 是 | 数据库名称，不能为空字符串且不能包含路径分隔符/。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当操作成功，err为undefined；否则为错误对象。 |
 
-
-<a id="deleterdbstore2"></a>
 
 ## deleteRdbStore
 

@@ -6,8 +6,6 @@
 import { settings } from '@kit.BasicServicesKit';
 ```
 
-<a id="getvalue1"></a>
-
 ## getValue
 
 ```TypeScript
@@ -52,8 +50,6 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, (err:Error,
 });
 ```
 
-
-<a id="getvalue2"></a>
 
 ## getValue
 
@@ -101,8 +97,6 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS).then((value
 ```
 
 
-<a id="getvalue3"></a>
-
 ## getValue
 
 ```TypeScript
@@ -144,8 +138,6 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, (err, valu
 });
 ```
 
-
-<a id="getvalue4"></a>
 
 ## getValue
 
@@ -189,8 +181,6 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS).then((valu
 });
 ```
 
-
-<a id="getvalue5"></a>
 
 ## getValue
 

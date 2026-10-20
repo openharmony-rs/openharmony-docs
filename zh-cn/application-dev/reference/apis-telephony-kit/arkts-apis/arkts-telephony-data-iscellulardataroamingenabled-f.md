@@ -6,8 +6,6 @@
 import { data } from '@kit.TelephonyKit';
 ```
 
-<a id="iscellulardataroamingenabled1"></a>
-
 ## isCellularDataRoamingEnabled
 
 ```TypeScript
@@ -57,8 +55,6 @@ data.isCellularDataRoamingEnabled(0, (err: BusinessError, contextData: boolean) 
 });
 ```
 
-
-<a id="iscellulardataroamingenabled2"></a>
 
 ## isCellularDataRoamingEnabled
 

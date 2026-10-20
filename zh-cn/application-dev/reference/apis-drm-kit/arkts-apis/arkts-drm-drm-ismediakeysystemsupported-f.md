@@ -6,8 +6,6 @@
 import { drm } from '@kit.DrmKit';
 ```
 
-<a id="ismediakeysystemsupported1"></a>
-
 ## isMediaKeySystemSupported
 
 ```TypeScript
@@ -56,8 +54,6 @@ console.info("isMediaKeySystemSupported: ", supported);
 ```
 
 
-<a id="ismediakeysystemsupported2"></a>
-
 ## isMediaKeySystemSupported
 
 ```TypeScript
@@ -104,8 +100,6 @@ let supported: boolean = drm.isMediaKeySystemSupported('com.clearplay.drm', 'vid
 console.info("isMediaKeySystemSupported: ", supported);
 ```
 
-
-<a id="ismediakeysystemsupported3"></a>
 
 ## isMediaKeySystemSupported
 

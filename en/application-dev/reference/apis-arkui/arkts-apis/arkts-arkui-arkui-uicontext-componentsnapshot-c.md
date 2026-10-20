@@ -29,8 +29,6 @@ import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
 import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
 ```
 
-<a id="createfrombuilder1"></a>
-
 ## createFromBuilder
 
 ```TypeScript
@@ -70,7 +68,7 @@ Builds a passed [CustomBuilder](../arkts-components/arkts-arkui-common-comp-cust
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | The builder is not a valid build function. |
 | [160001](../errorcode-snapshot.md#160001-image-loading-error) | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
@@ -132,8 +130,6 @@ struct ComponentSnapshotExample {
 }
 ```
 
-<a id="createfrombuilder2"></a>
-
 ## createFromBuilder
 
 ```TypeScript
@@ -178,7 +174,7 @@ Builds a passed [CustomBuilder](../arkts-components/arkts-arkui-common-comp-cust
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | The builder is not a valid build function. |
 | [160001](../errorcode-snapshot.md#160001-image-loading-error) | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
@@ -284,7 +280,7 @@ Captures a snapshot of the provided component content. Unlike **createFromBuilde
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | The builder is not a valid build function. |
 | [160001](../errorcode-snapshot.md#160001-image-loading-error) | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
@@ -370,8 +366,6 @@ struct Index {
 }
 ```
 
-<a id="get1"></a>
-
 ## get
 
 ```TypeScript
@@ -407,7 +401,7 @@ Obtains a screenshot of a loaded component by passing the [component ID](../../a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Invalid ID. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
 
@@ -454,8 +448,6 @@ struct SnapshotExample {
 }
 ```
 
-<a id="get2"></a>
-
 ## get
 
 ```TypeScript
@@ -496,7 +488,7 @@ Obtains a screenshot of a loaded component by passing the [component ID](../../a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Invalid ID. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
 
@@ -656,7 +648,7 @@ Obtains a screenshot of a loaded component by passing the [component ID](../../a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Invalid ID. |
 | [160002](../errorcode-snapshot.md#160002-snapshot-timeout) | Timeout. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
@@ -742,7 +734,7 @@ Obtains a screenshot of a loaded component by passing the component's **uniqueId
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Invalid ID. |
 | [160002](../errorcode-snapshot.md#160002-snapshot-timeout) | Timeout. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
@@ -845,7 +837,7 @@ Obtains a screenshot of a loaded component by passing the component's **uniqueId
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Invalid ID. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
 

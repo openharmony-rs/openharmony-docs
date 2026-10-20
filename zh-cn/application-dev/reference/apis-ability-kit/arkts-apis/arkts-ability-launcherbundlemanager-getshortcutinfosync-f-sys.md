@@ -6,8 +6,6 @@
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getshortcutinfosync1"></a>
-
 ## getShortcutInfoSync
 
 ```TypeScript
@@ -70,8 +68,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getshortcutinfosync2"></a>
 
 ## getShortcutInfoSync
 

@@ -134,8 +134,6 @@ onDataMove(from: number, to: number): void
 | from | number | 是 | 数据移动起始位置。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 | to | number | 是 | 数据移动目标位置。取值范围是[0, 数据源长度-1]。<br>小于0时取值为0，大于数据源长度-1时取值为数据源长度-1。 |
 
-<a id="ondatareloaded1"></a>
-
 ## onDataReloaded
 
 ```TypeScript
@@ -157,8 +155,6 @@ onDataReloaded(): void
 <!--Device-DataChangeListener-onDataReloaded(): void--><!--Device-DataChangeListener-onDataReloaded(): void-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-<a id="ondatareloaded2"></a>
 
 ## onDataReloaded
 

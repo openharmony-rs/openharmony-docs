@@ -68,7 +68,7 @@ Sets the font style of the numeric navigation indicator of the **Swiper** compon
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Font | Yes | Font style of the digit-style navigation indicator.<br>Only the **size** and **weight** parameters in **Font** are adjustable. Setting **family** and **style** has no effect. <br>Default value: <br>{ size: 14, weight: FontWeight.Normal } |
+| value | Font | Yes | Font style of the digit-style navigation indicator. <br>Only the **size** and **weight** parameters in **Font** are adjustable. Setting **family** and **style** has no effect. <br>Default value: <br>{ size: 14, weight: FontWeight.Normal } |
 
 **Return value:**
 
@@ -100,7 +100,7 @@ Sets the font color of the digit-style navigation indicator.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font color of the digit-style navigation indicator.<br>Default value: **'#ff182431'** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font color of the digit-style navigation indicator. <br>Default value: **'#ff182431'** |
 
 **Return value:**
 
@@ -132,7 +132,7 @@ Sets the font style of the selected digit-style navigation indicator.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Font | Yes | Font style of the selected digit-style navigation indicator.<br>Default value: <br>{ size: 14, weight: FontWeight.Normal } |
+| value | Font | Yes | Font style of the selected digit-style navigation indicator. <br>Default value: <br>{ size: 14, weight: FontWeight.Normal } |
 
 **Return value:**
 
@@ -164,7 +164,7 @@ Sets the font color of the selected digit-style navigation indicator.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font color of the selected digit-style navigation indicator.<br>Default value: **'#ff182431'** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font color of the selected digit-style navigation indicator. <br>Default value: **'#ff182431'** |
 
 **Return value:**
 

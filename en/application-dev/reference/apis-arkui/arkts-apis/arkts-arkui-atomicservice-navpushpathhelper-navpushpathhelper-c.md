@@ -40,8 +40,6 @@ A constructor used to create a **NavPushPathHelper** object.
 | --- | --- | --- | --- |
 | navPathStack | [NavPathStack](../arkts-components/arkts-arkui-navigation-comp-navpathstack-c.md) | Yes | [Navigation](../arkts-components/arkts-arkui-navigation-comp.md) stack. |
 
-<a id="pushdestination1"></a>
-
 ## pushDestination
 
 ```TypeScript
@@ -64,7 +62,7 @@ Checks for the target subpackage and, if it is not present, initiates a download
 | --- | --- | --- | --- |
 | moduleName | string | Yes | Module name of the package where the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page is located. |
 | info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | Yes | Information about the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. |
-| animated | boolean | No | Whether to support the transition animation.<br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
+| animated | boolean | No | Whether to support the transition animation. <br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
 
 **Return value:**
 
@@ -76,13 +74,11 @@ Checks for the target subpackage and, if it is not present, initiates a download
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100005](../errorcode-router.md#100005-builder-function-not-registered-during-navigation) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navdestination-not-found) | NavDestination not found. |
 | [300001](../errorcode-router.md#300001-silent-installation-of-the-hsp-failed-before-navigation) | hsp silent install fail. |
-
-<a id="pushdestination2"></a>
 
 ## pushDestination
 
@@ -126,8 +122,6 @@ Depending on the LaunchMode specified in the **options** parameter, different be
 | [100006](../errorcode-router.md#100006-navdestination-not-found) | NavDestination not found. |
 | [300001](../errorcode-router.md#300001-silent-installation-of-the-hsp-failed-before-navigation) | hsp silent install fail. |
 
-<a id="pushdestinationbyname1"></a>
-
 ## pushDestinationByName
 
 ```TypeScript
@@ -151,7 +145,7 @@ Checks for the target subpackage and, if it is not present, initiates a download
 | moduleName | string | Yes | Module name of the package where the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page is located. |
 | name | string | Yes | Name of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. |
 | param | Object | Yes | Settings of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. |
-| animated | boolean | No | Whether to support the transition animation.<br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
+| animated | boolean | No | Whether to support the transition animation. <br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
 
 **Return value:**
 
@@ -163,13 +157,11 @@ Checks for the target subpackage and, if it is not present, initiates a download
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100005](../errorcode-router.md#100005-builder-function-not-registered-during-navigation) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navdestination-not-found) | NavDestination not found. |
 | [300001](../errorcode-router.md#300001-silent-installation-of-the-hsp-failed-before-navigation) | hsp silent install fail. |
-
-<a id="pushdestinationbyname2"></a>
 
 ## pushDestinationByName
 
@@ -196,7 +188,7 @@ Checks for the target subpackage and, if it is not present, initiates a download
 | name | string | Yes | Name of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. |
 | param | Object | Yes | Settings of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. |
 | onPop | Callback&lt;[PopInfo](../arkts-components/arkts-arkui-navigation-comp-popinfo-i.md)&gt; | Yes | Callback used to handle the result returned when the page is popped out of the stack. |
-| animated | boolean | No | Whether to support the transition animation.<br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
+| animated | boolean | No | Whether to support the transition animation. <br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
 
 **Return value:**
 
@@ -208,13 +200,11 @@ Checks for the target subpackage and, if it is not present, initiates a download
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal error. |
 | [100005](../errorcode-router.md#100005-builder-function-not-registered-during-navigation) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navdestination-not-found) | NavDestination not found. |
 | [300001](../errorcode-router.md#300001-silent-installation-of-the-hsp-failed-before-navigation) | hsp silent install fail. |
-
-<a id="pushpath1"></a>
 
 ## pushPath
 
@@ -238,7 +228,7 @@ Checks for the target subpackage and, if it is not present, initiates a download
 | --- | --- | --- | --- |
 | moduleName | string | Yes | Module name of the package where the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page is located. |
 | info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | Yes | Information about the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. |
-| animated | boolean | No | Whether to support the transition animation.<br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
+| animated | boolean | No | Whether to support the transition animation. <br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
 
 **Return value:**
 
@@ -251,8 +241,6 @@ Checks for the target subpackage and, if it is not present, initiates a download
 | Error Code ID | Error Message |
 | --- | --- |
 | [300001](../errorcode-router.md#300001-silent-installation-of-the-hsp-failed-before-navigation) | hsp silent install fail. |
-
-<a id="pushpath2"></a>
 
 ## pushPath
 
@@ -292,8 +280,6 @@ Depending on the LaunchMode specified in the **options** parameter, different be
 | --- | --- |
 | [300001](../errorcode-router.md#300001-silent-installation-of-the-hsp-failed-before-navigation) | hsp silent install fail. |
 
-<a id="pushpathbyname1"></a>
-
 ## pushPathByName
 
 ```TypeScript
@@ -317,7 +303,7 @@ Checks for the target subpackage and, if it is not present, initiates a download
 | moduleName | string | Yes | Module name of the package where the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page is located. |
 | name | string | Yes | Name of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. |
 | param | Object | Yes | Settings of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. |
-| animated | boolean | No | Whether to support the transition animation.<br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
+| animated | boolean | No | Whether to support the transition animation. <br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
 
 **Return value:**
 
@@ -330,8 +316,6 @@ Checks for the target subpackage and, if it is not present, initiates a download
 | Error Code ID | Error Message |
 | --- | --- |
 | [300001](../errorcode-router.md#300001-silent-installation-of-the-hsp-failed-before-navigation) | hsp silent install fail. |
-
-<a id="pushpathbyname2"></a>
 
 ## pushPathByName
 
@@ -358,7 +342,7 @@ Checks for the target subpackage and, if it is not present, initiates a download
 | name | string | Yes | Name of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. |
 | param | Object | Yes | Settings of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. |
 | onPop | Callback&lt;[PopInfo](../arkts-components/arkts-arkui-navigation-comp-popinfo-i.md)&gt; | Yes | Callback used to receive the result. |
-| animated | boolean | No | Whether to support the transition animation.<br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
+| animated | boolean | No | Whether to support the transition animation. <br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
 
 **Return value:**
 
@@ -371,8 +355,6 @@ Checks for the target subpackage and, if it is not present, initiates a download
 | Error Code ID | Error Message |
 | --- | --- |
 | [300001](../errorcode-router.md#300001-silent-installation-of-the-hsp-failed-before-navigation) | hsp silent install fail. |
-
-<a id="replacepath1"></a>
 
 ## replacePath
 
@@ -396,7 +378,7 @@ Checks for the target subpackage and, if it is not present, initiates a download
 | --- | --- | --- | --- |
 | moduleName | string | Yes | Module name of the package where the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page is located. |
 | info | [NavPathInfo](../arkts-components/arkts-arkui-navigation-comp-navpathinfo-c.md) | Yes | Parameters of the page to replace the top of the navigation stack. |
-| animated | boolean | No | Whether to support the transition animation.<br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
+| animated | boolean | No | Whether to support the transition animation. <br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
 
 **Return value:**
 
@@ -409,8 +391,6 @@ Checks for the target subpackage and, if it is not present, initiates a download
 | Error Code ID | Error Message |
 | --- | --- |
 | [300001](../errorcode-router.md#300001-silent-installation-of-the-hsp-failed-before-navigation) | hsp silent install fail. |
-
-<a id="replacepath2"></a>
 
 ## replacePath
 
@@ -473,7 +453,7 @@ Checks for the target subpackage and, if it is not present, initiates a download
 | moduleName | string | Yes | Module name of the package where the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page is located. |
 | name | string | Yes | Name of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. |
 | param | Object | Yes | Settings of the [NavDestination](../arkts-components/arkts-arkui-navdestination-comp.md) page. |
-| animated | boolean | No | Whether to support the transition animation.<br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
+| animated | boolean | No | Whether to support the transition animation. <br>Default value: **true**. <br>**true**: The transition animation is supported. <br>**false**: The transition animation is not supported. |
 
 **Return value:**
 

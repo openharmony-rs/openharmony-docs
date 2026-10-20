@@ -218,7 +218,7 @@ name: string
 protocol?: number
 ```
 
-协议，包含TCP：6，UDP：17。当type=RULE_IP时有效。
+协议，包含TCP：6，UDP：17，ICMP：1，ICMPv6：58。当type=RULE_IP时有效。
 
 **类型：** number
 

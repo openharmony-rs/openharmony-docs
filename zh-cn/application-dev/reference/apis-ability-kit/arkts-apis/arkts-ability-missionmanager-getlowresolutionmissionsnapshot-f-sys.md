@@ -6,8 +6,6 @@
 import { missionManager } from '@kit.AbilityKit';
 ```
 
-<a id="getlowresolutionmissionsnapshot1"></a>
-
 ## getLowResolutionMissionSnapShot
 
 ```TypeScript
@@ -73,8 +71,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getlowresolutionmissionsnapshot2"></a>
 
 ## getLowResolutionMissionSnapShot
 

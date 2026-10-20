@@ -18,8 +18,6 @@ AVCastController definition used to implement a remote control when a cast is co
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="setdisplaysurface1"></a>
-
 ## setDisplaySurface
 
 ```TypeScript
@@ -73,8 +71,6 @@ media.createAVRecorder().then((avRecorder) => {
 ```
 
 <!--DelEnd-->
-
-<a id="setdisplaysurface2"></a>
 
 ## setDisplaySurface
 

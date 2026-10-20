@@ -6,8 +6,6 @@
 import { missionManager } from '@kit.AbilityKit';
 ```
 
-<a id="clearallmissions1"></a>
-
 ## clearAllMissions
 
 ```TypeScript
@@ -63,8 +61,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="clearallmissions2"></a>
 
 ## clearAllMissions
 

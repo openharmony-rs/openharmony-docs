@@ -2,9 +2,9 @@
 
 This module provides the capability to media enhancement
 
-@namespace avMusicTemplate
-
 **Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace avMusicTemplate--><!--Device-unnamed-declare namespace avMusicTemplate-End-->
 

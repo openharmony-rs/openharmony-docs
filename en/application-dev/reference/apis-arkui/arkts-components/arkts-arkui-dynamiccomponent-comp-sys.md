@@ -34,15 +34,19 @@ Creates a **DynamicComponent** component to display the .abc UI running in the w
 
 ## Summary
 
-### Interfaces
+<!--Del-->
+### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
 | [DynamicOptions](arkts-arkui-dynamiccomponent-comp-dynamicoptions-i-sys.md) | Defines the parameters to be passed during **DynamicComponent** construction. |
+<!--DelEnd-->
 
-### Types
+<!--Del-->
+### Types(System API)
 
 | Name | Description |
 | --- | --- |
 | [ErrorCallback](arkts-arkui-dynamiccomponent-comp-errorcallback-t-sys.md) | Defines the error callback type, which is used to receive exception information. |
 | [Worker](arkts-arkui-dynamiccomponent-comp-worker-t-sys.md) | Worker thread object used to run .abc. It must be created through **worker.ThreadWorker**. |
+<!--DelEnd-->

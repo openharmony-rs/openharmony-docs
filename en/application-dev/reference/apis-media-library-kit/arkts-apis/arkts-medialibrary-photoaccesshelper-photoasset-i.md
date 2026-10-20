@@ -51,8 +51,8 @@ Clones a media asset. The file name can be set, but the file type cannot be chan
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs |
 
 **Examples**
 
@@ -79,8 +79,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
-
-<a id="commitmodify1"></a>
 
 ## commitModify
 
@@ -111,11 +109,11 @@ Commits the modification on the file metadata to the database. This API uses an 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 11 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**Applicable version:** 10 |
-| 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters exceeds the maximum limit; <br>2.The member parameter must be a string. |
-| 14000001 | Display name invalid. Possible causes:<br>1.Title is invalid; <br>2.Cannot modify displayName for burst photos; <br>3.Invalid displayName. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.IPC call failed, possible causes: (1)Server internal error; (2)Database operation failed. Please retry and check logs; <br>2.Database update failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.The number of parameters exceeds the maximum limit; <br>2.The member parameter must be a string. |
+| 14000001 | Display name invalid. Possible causes: <br>1.Title is invalid; <br>2.Cannot modify displayName for burst photos; <br>3.Invalid displayName. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.IPC call failed, possible causes: (1)Server internal error; (2)Database operation failed. Please retry and check logs; <br>2.Database update failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -148,8 +146,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="commitmodify2"></a>
-
 ## commitModify
 
 ```TypeScript
@@ -179,11 +175,11 @@ Commits the modification on the file metadata to the database. This API uses a p
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 11 and later |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied<br>**Applicable version:** 10 |
-| 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters exceeds the maximum limit; <br>2.The member parameter must be a string. |
-| 14000001 | Display name invalid. Possible causes:<br>1.Title is invalid; <br>2.Cannot modify displayName for burst photos; <br>3.Invalid displayName. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.IPC call failed, possible causes: (1)Server internal error; (2)Database operation failed. Please retry and check logs; <br>2.Database update failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.The number of parameters exceeds the maximum limit; <br>2.The member parameter must be a string. |
+| 14000001 | Display name invalid. Possible causes: <br>1.Title is invalid; <br>2.Cannot modify displayName for burst photos; <br>3.Invalid displayName. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.IPC call failed, possible causes: (1)Server internal error; (2)Database operation failed. Please retry and check logs; <br>2.Database update failed, possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -251,7 +247,7 @@ Obtains a **PhotoAsset** member parameter.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.The member parameter is invalid, must be a valid member key of the asset data. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.The member parameter is invalid, must be a valid member key of the asset data. |
 | 14000014 | member not exist. |
 
 **Examples**
@@ -279,8 +275,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
-
-<a id="getthumbnail1"></a>
 
 ## getThumbnail
 
@@ -310,10 +304,10 @@ Obtains the thumbnail of a file. This API uses an asynchronous callback to retur
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit, maximum 2 parameters; <br>2.Invalid parameter type. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The PhotoAsset object is not a valid PhotoAsset; <br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>3.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit, maximum 2 parameters; <br>2.Invalid parameter type. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The PhotoAsset object is not a valid PhotoAsset; <br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>3.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs. |
 
 **Examples**
 
@@ -341,8 +335,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   });
 }
 ```
-
-<a id="getthumbnail2"></a>
 
 ## getThumbnail
 
@@ -373,10 +365,10 @@ Obtains the file thumbnail of the given size. This API uses an asynchronous call
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit, maximum 2 parameters; <br>2.Invalid parameter type. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Invalid number of parameters, expected 0 to 2 parameters; <br>2.The PhotoAsset object is not a valid PhotoAsset; <br>3.The size parameter is not a valid image.Size object, please check if width and height are valid numbers; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>5.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit, maximum 2 parameters; <br>2.Invalid parameter type. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Invalid number of parameters, expected 0 to 2 parameters; <br>2.The PhotoAsset object is not a valid PhotoAsset; <br>3.The size parameter is not a valid image.Size object, please check if width and height are valid numbers; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>5.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs. |
 
 **Examples**
 
@@ -410,8 +402,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
-
-<a id="getthumbnail3"></a>
 
 ## getThumbnail
 
@@ -447,10 +437,10 @@ Obtains the file thumbnail of the given size. This API uses a promise to return 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | 13900012 | Permission denied |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit, maximum 2 parameters; <br>2.Invalid parameter type. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.Invalid number of parameters, expected 0 to 2 parameters; <br>2.The PhotoAsset object is not a valid PhotoAsset; <br>3.The size parameter is not a valid image.Size object, please check if width and height are valid numbers; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>5.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit, maximum 2 parameters; <br>2.Invalid parameter type. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.Invalid number of parameters, expected 0 to 2 parameters; <br>2.The PhotoAsset object is not a valid PhotoAsset; <br>3.The size parameter is not a valid image.Size object, please check if width and height are valid numbers; <br>4.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>5.Failed to query the thumbnail, possible causes: (1)Thumbnail does not exist; (2)Database exception. Please retry and check logs. |
 
 **Examples**
 
@@ -505,8 +495,8 @@ Sets a **PhotoAsset** member parameter.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 13900020 | Invalid parameter. Possible causes:<br>1.The number of parameters is invalid, expected 1 or 2 parameters; <br>2.The member parameter must be a string. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.The number of parameters is invalid, expected 1 or 2 parameters; <br>2.The member parameter must be a string. |
 | 14000014 | member not exist. |
 
 **Examples**
@@ -533,8 +523,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
-
-<a id="close1"></a>
 
 ## close
 
@@ -565,9 +553,9 @@ Closes the current file. This API uses an asynchronous callback to return the re
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 13900020 | Invalid parameter. Possible causes:<br>1.The member parameter is invalid, must be a valid member key. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd(); <br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.The member parameter is invalid, must be a valid member key. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd(); <br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -600,8 +588,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
-
-<a id="close2"></a>
 
 ## close
 
@@ -637,9 +623,9 @@ Closes the current file. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 13900020 | Invalid parameter. Possible causes:<br>1.The member parameter is invalid, must be a valid member key. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd(); <br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.The member parameter is invalid, must be a valid member key. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd(); <br>2.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -667,8 +653,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 }
 ```
-
-<a id="getreadonlyfd1"></a>
 
 ## getReadOnlyFd
 
@@ -703,9 +687,9 @@ The returned FD must be closed when it is not required.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit or invalid PhotoAsset object; <br>2.The PhotoAsset is not a valid PhotoAsset object. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>2.Failed to open the file, please check if the file exists and the application has permission to access it. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit or invalid PhotoAsset object; <br>2.The PhotoAsset is not a valid PhotoAsset object. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>2.Failed to open the file, please check if the file exists and the application has permission to access it. |
 
 **Examples**
 
@@ -734,8 +718,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   });
 }
 ```
-
-<a id="getreadonlyfd2"></a>
 
 ## getReadOnlyFd
 
@@ -770,9 +752,9 @@ The returned FD must be closed when it is not required.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit or invalid PhotoAsset object; <br>2.The PhotoAsset is not a valid PhotoAsset object. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>2.Failed to open the file, please check if the file exists and the application has permission to access it. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes: <br>1.Parameter count exceeds the limit or invalid PhotoAsset object; <br>2.The PhotoAsset is not a valid PhotoAsset object. |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1.System internal error, possible causes: (1)Database exception; (2)File system exception; (3)IPC timeout. Please retry and check logs; <br>2.Failed to open the file, please check if the file exists and the application has permission to access it. |
 
 **Examples**
 

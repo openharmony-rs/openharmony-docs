@@ -10,7 +10,7 @@ Router提供页面跳转能力，包括跳转到应用内的指定页面、同�
 > 
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)说明。
 > 
-> - 如果使用传入callback形式的[pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl1)或[pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute1)接口，callback中通过[getLength](arkts-arkui-arkui-uicontext-router-c.md#getlength)等接口获取的栈信息为中间态的栈信息，可能与栈操作完全结束后，再通过[getLength](arkts-arkui-arkui-uicontext-router-c.md#getlength)等接口获取的栈信息不一致。
+> - 如果使用传入callback形式的[pushUrl](arkts-arkui-arkui-uicontext-router-c.md#pushurl)或[pushNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#pushnamedroute)接口，callback中通过[getLength](arkts-arkui-arkui-uicontext-router-c.md#getlength)等接口获取的栈信息为中间态的栈信息，可能与栈操作完全结束后，再通过[getLength](arkts-arkui-arkui-uicontext-router-c.md#getlength)等接口获取的栈信息不一致。
 
 **起始版本：** 8
 
@@ -30,8 +30,8 @@ import { router } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [back](arkts-arkui-router-back-f.md#back1) | 返回上一页面或指定的页面，会删除当前页面与指定页面之间的所有页面。如果此前调用了showAlertBeforeBackPage开启了返回询问对话框，则在执行返回操作时会先弹出确认对话框，用户确认后才执行返回；用户取消则不执行返回。 |
-| [back](arkts-arkui-router-back-f.md#back2) | 返回指定的页面，会删除当前页面与指定页面之间的所有页面。如果此前调用了showAlertBeforeBackPage开启了返回询问对话框，则在执行返回操作时会先弹出确认对话框，用户确认后才执行返回；用户取消则不执行返回。 |
+| [back](arkts-arkui-router-back-f.md#back) | 返回上一页面或指定的页面，会删除当前页面与指定页面之间的所有页面。如果此前调用了showAlertBeforeBackPage开启了返回询问对话框，则在执行返回操作时会先弹出确认对话框，用户确认后才执行返回；用户取消则不执行返回。 |
+| [back](arkts-arkui-router-back-f.md#back) | 返回指定的页面，会删除当前页面与指定页面之间的所有页面。如果此前调用了showAlertBeforeBackPage开启了返回询问对话框，则在执行返回操作时会先弹出确认对话框，用户确认后才执行返回；用户取消则不执行返回。 |
 | [clear](arkts-arkui-router-clear-f.md#clear) | 清空页面栈中的所有历史页面，仅保留当前页面作为栈顶页面。 |
 | [disableAlertBeforeBackPage](arkts-arkui-router-disablealertbeforebackpage-f.md#disablealertbeforebackpage) | 禁用页面返回询问对话框。适用于用户已完成保存操作可以安全返回、页面状态切换后不再需要返回确认、需要动态控制返回行为等场景。与showAlertBeforeBackPage()方法成对使用：调用showAlertBeforeBackPage()开启对话框后，可在适当时机调用本方法关闭对话框。 |
 | [enableAlertBeforeBackPage](arkts-arkui-router-enablealertbeforebackpage-f.md#enablealertbeforebackpage) | 开启页面返回询问对话框。调用此方法后，执行back返回页面时将弹出确认对话框，用户确认后才执行页面返回操作。适用于需要防止用户误操作返回导致数据丢失的场景，例如用户正在填写表单、编辑文档或进行支付操作时，弹出确认对话框以避免意外退出。 |
@@ -42,23 +42,23 @@ import { router } from '@kit.ArkUI';
 | [getStateByUrl](arkts-arkui-router-getstatebyurl-f.md#getstatebyurl) | 通过url获取对应页面的状态信息。 |
 | [hideAlertBeforeBackPage](arkts-arkui-router-hidealertbeforebackpage-f.md#hidealertbeforebackpage) | 禁用页面返回询问对话框。调用此方法后，将关闭由showAlertBeforeBackPage开启的返回询问对话框，back操作将不再弹出确认对话框，直接执行页面返回。 |
 | [push](arkts-arkui-router-push-f.md#push) | 跳转到应用内的指定页面。 |
-| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute1) | 跳转到指定的命名路由页面。 |
-| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute2) | 跳转到指定的命名路由页面。 |
-| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute3) | 跳转到指定的命名路由页面。 |
-| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute4) | 跳转到指定的命名路由页面。 |
-| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl1) | 跳转到应用内的指定页面。 |
-| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl2) | 跳转到应用内的指定页面。 |
-| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl3) | 跳转到应用内的指定页面。 |
-| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl4) | 跳转到应用内的指定页面。 |
+| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute) | 跳转到指定的命名路由页面。 |
+| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute) | 跳转到指定的命名路由页面。 |
+| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute) | 跳转到指定的命名路由页面。 |
+| [pushNamedRoute](arkts-arkui-router-pushnamedroute-f.md#pushnamedroute) | 跳转到指定的命名路由页面。 |
+| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl) | 跳转到应用内的指定页面。 |
+| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl) | 跳转到应用内的指定页面。 |
+| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl) | 跳转到应用内的指定页面。 |
+| [pushUrl](arkts-arkui-router-pushurl-f.md#pushurl) | 跳转到应用内的指定页面。 |
 | [replace](arkts-arkui-router-replace-f.md#replace) | 用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
-| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute1) | 用指定的命名路由页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
-| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute2) | 用指定的命名路由页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
-| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute3) | 用指定的命名路由页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
-| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute4) | 用指定的命名路由页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
-| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl1) | 用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
-| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl2) | 用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
-| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl3) | 用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
-| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl4) | 用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
+| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute) | 用指定的命名路由页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
+| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute) | 用指定的命名路由页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
+| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute) | 用指定的命名路由页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
+| [replaceNamedRoute](arkts-arkui-router-replacenamedroute-f.md#replacenamedroute) | 用指定的命名路由页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
+| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl) | 用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
+| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl) | 用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
+| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl) | 用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
+| [replaceUrl](arkts-arkui-router-replaceurl-f.md#replaceurl) | 用应用内的某个页面替换当前页面，并销毁被替换的页面。不支持设置页面转场动效，如需设置，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)。 |
 | [showAlertBeforeBackPage](arkts-arkui-router-showalertbeforebackpage-f.md#showalertbeforebackpage) | 开启页面返回询问对话框。调用此方法后，执行back返回页面时将弹出确认对话框，用户确认后才执行页面返回操作。适用于需要防止用户误操作返回导致数据丢失的场景，例如用户正在填写表单、编辑文档或进行支付操作时，弹出确认对话框以避免意外退出。 |
 
 ### 接口

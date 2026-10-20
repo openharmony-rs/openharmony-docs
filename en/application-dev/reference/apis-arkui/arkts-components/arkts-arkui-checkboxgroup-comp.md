@@ -34,7 +34,7 @@ When this API is used with components that come with the caching mechanism, such
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [CheckboxGroupOptions](arkts-arkui-checkboxgroup-comp-checkboxgroupoptions-i.md) | No | Check box group parameters.<br>The default values of the parameters in **CheckboxGroupOptions** apply if this parameter is not set. |
+| options | [CheckboxGroupOptions](arkts-arkui-checkboxgroup-comp-checkboxgroupoptions-i.md) | No | Check box group parameters. <br>The default values of the parameters in **CheckboxGroupOptions** apply if this parameter is not set. |
 
 ## Summary
 

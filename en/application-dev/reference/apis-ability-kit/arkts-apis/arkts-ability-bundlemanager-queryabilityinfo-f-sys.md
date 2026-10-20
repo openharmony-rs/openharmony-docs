@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="queryabilityinfo1"></a>
-
 ## queryAbilityInfo
 
 ```TypeScript
@@ -79,8 +77,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="queryabilityinfo2"></a>
 
 ## queryAbilityInfo
 
@@ -156,8 +152,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="queryabilityinfo3"></a>
 
 ## queryAbilityInfo
 
@@ -260,8 +254,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="queryabilityinfo4"></a>
 
 ## queryAbilityInfo
 

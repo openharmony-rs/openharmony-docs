@@ -22,7 +22,7 @@ declare class SegmentButtonOptions
 ## 导入模块
 
 ```TypeScript
-import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray, TabSegmentButtonOptions, TabSegmentButtonConstructionOptions, CapsuleSegmentButtonOptions, CapsuleSegmentButtonConstructionOptions, SegmentButtonTextItem, SegmentButtonIconItem, SegmentButtonIconTextItem, DimensionNoPercentage, CommonSegmentButtonOptions, ItemRestriction, SegmentButtonItemTuple, SegmentButtonItemArray, SegmentButtonItemOptionsConstructorOptions, SegmentButtonItemOptions, BorderRadiusMode } from '@kit.ArkUI';
+import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray, TabSegmentButtonOptions, TabSegmentButtonConstructionOptions, CapsuleSegmentButtonOptions, CapsuleSegmentButtonConstructionOptions, SegmentButtonTextItem, SegmentButtonIconItem, SegmentButtonIconTextItem, DimensionNoPercentage, CommonSegmentButtonOptions, SegmentButtonInteractionMode, ItemRestriction, SegmentButtonItemTuple, SegmentButtonItemArray, SegmentButtonItemOptionsConstructorOptions, SegmentButtonItemOptions, BorderRadiusMode } from '@kit.ArkUI';
 ```
 
 ## capsule
@@ -404,6 +404,28 @@ imageSize: SizeOptions
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SegmentButtonOptions-imageSize: SizeOptions--><!--Device-SegmentButtonOptions-imageSize: SizeOptions-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## interactionMode
+
+```TypeScript
+interactionMode?: SegmentButtonInteractionMode
+```
+
+设置分段按钮的拖拽交互模式。
+
+未配置时，启用系统材质的场景使用跟手拖拽，非系统材质场景使用普通拖拽，保持原有行为。非系统材质场景显式设置普通拖拽、系统材质场景显式设置跟手拖拽，均保持原有行为。非系统材质场景设置跟手拖拽时，不新增材质形变或点光源。系统材质场景设置普通拖拽时，仅改变拖拽位移和选中更新方式；材质外观、背板缩放、微量位移、选中项形变及已配置光效保持原有行为。未配置、undefined或非法值均使用默认模式。多选模式下该参数不生效。
+
+**类型：** [SegmentButtonInteractionMode](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttoninteractionmode-e.md)
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-SegmentButtonOptions-interactionMode?: SegmentButtonInteractionMode--><!--Device-SegmentButtonOptions-interactionMode?: SegmentButtonInteractionMode-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

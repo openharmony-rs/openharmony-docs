@@ -18,7 +18,7 @@ Enumerates the reasons for requesting the keyboard.
 MOUSE = 1
 ```
 
-The keyboard request is triggered by a mouse operation.
+Indicates that the keyboard request is triggered by a mouse operation. <br> <br>Usage scenarios: used when the user clicks the edit box with a mouse to trigger the keyboard to pop up.
 
 **Since:** 15
 
@@ -32,7 +32,7 @@ The keyboard request is triggered by a mouse operation.
 NONE = 0
 ```
 
-The keyboard request is triggered for no reason.
+Indicates that no specific reason triggers the keyboard request. <br> <br>Usage scenarios: default value, used when no specific trigger reason is specified.
 
 **Since:** 15
 
@@ -46,7 +46,7 @@ The keyboard request is triggered for no reason.
 OTHER = 20
 ```
 
-The keyboard request is triggered by other reasons.
+Indicates that the keyboard request is triggered by other reasons. <br> <br>Usage scenarios: used when the trigger reason for the keyboard to pop up is neither mouse nor touch.
 
 **Since:** 15
 
@@ -60,7 +60,7 @@ The keyboard request is triggered by other reasons.
 TOUCH = 2
 ```
 
-The keyboard request is triggered by a touch operation.
+Indicates that the keyboard request is triggered by a touch operation. <br> <br>Usage scenarios: used when the user taps the edit box to trigger the keyboard to pop up.
 
 **Since:** 15
 

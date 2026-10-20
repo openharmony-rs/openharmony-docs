@@ -26,7 +26,8 @@ Set a new value of form info.
 
 ## Summary
 
-### Interfaces
+<!--Del-->
+### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
@@ -34,8 +35,10 @@ Set a new value of form info.
 | [FormCallbackInfo](arkts-arkui-formcomponent-comp-formcallbackinfo-i-sys.md) | Represents the parameters for obtaining a widget ID (**formId**) when querying or uninstalling a widget. |
 | [FormInfo](arkts-arkui-formcomponent-comp-forminfo-i-sys.md) | Provides the widget information. |
 | [FormSize](arkts-arkui-formcomponent-comp-formsize-i-sys.md) | Provides the widget size information. |
+<!--DelEnd-->
 
-### Enums
+<!--Del-->
+### Enums(System API)
 
 | Name | Description |
 | --- | --- |
@@ -43,6 +46,7 @@ Set a new value of form info.
 | [FormDimension](arkts-arkui-formcomponent-comp-formdimension-e-sys.md) | Enumerates widget sizes. |
 | [FormRenderingMode](arkts-arkui-formcomponent-comp-formrenderingmode-e-sys.md) | Enumerates the widget rendering modes. |
 | [FormShape](arkts-arkui-formcomponent-comp-formshape-e-sys.md) | Defines the FormShape enum. |
+<!--DelEnd-->
 
 <!--Del-->
 ## Examples

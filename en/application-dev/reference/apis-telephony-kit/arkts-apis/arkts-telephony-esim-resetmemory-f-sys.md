@@ -28,7 +28,7 @@ Clears all specific profiles and resets the eUICC. This API uses a promise to re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 | options | [ResetOption](arkts-telephony-esim-resetoption-e-sys.md) | No | Reset options. |
 
 **Return value:**

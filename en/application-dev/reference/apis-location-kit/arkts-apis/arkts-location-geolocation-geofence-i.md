@@ -6,8 +6,6 @@ export interface Geofence
 
 Circular fence information.
 
-@interface Geofence
-
 **Since:** 8
 
 **Deprecated since:** 9

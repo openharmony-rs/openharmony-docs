@@ -6,8 +6,6 @@ interface ChangeSceneAnimationStateRequest
 
 ChangeSceneAnimationStateRequest
 
-@typedef { ChangeSceneAnimationStateRequest }
-
 **Since:** 20
 
 <!--Device-formInfo-interface ChangeSceneAnimationStateRequest--><!--Device-formInfo-interface ChangeSceneAnimationStateRequest-End-->

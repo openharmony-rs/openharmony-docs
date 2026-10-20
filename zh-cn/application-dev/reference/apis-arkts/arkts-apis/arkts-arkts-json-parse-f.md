@@ -35,3 +35,40 @@ function parse(text: string, reviver?: Transformer, options?: ParseOptions): Obj
 | 类型 | 说明 |
 | --- | --- |
 | Object &#124; null | 当传入的字符串为'null'时，返回null。 |
+
+**示例**
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+
+function reviverFunc(key: string, value: Object): Object | undefined | null {
+  if (key === "age" && typeof value === 'number') {
+    return value + 1;
+  }
+  return value;
+}
+
+const jsonText = '{"name": "John", "age": 30, "city": "ChongQing"}';
+let parsedObj = JSON.parse(jsonText);
+console.info((parsedObj as object)?.["name"]);
+// 打印结果：John
+
+const jsonTextStr = '{"name": "John", "age": 30}';
+let objRst = JSON.parse(jsonTextStr, reviverFunc);
+console.info((objRst as object)?.["age"]);
+// 打印结果：31
+
+const numberText = '{"number": 10, "largeNumber": 112233445566778899}';
+let options: JSON.ParseOptions = { bigIntMode: JSON.BigIntMode.PARSE_AS_BIGINT };
+let numberObj = JSON.parse(numberText, null, options) as Object;
+
+console.info(typeof (numberObj as object)?.["number"]);
+// 打印结果：number
+console.info((numberObj as object)?.["number"]);
+// 打印结果：10
+
+console.info(typeof (numberObj as object)?.["largeNumber"]);
+// 打印结果：bigint
+console.info((numberObj as object)?.["largeNumber"]);
+// 打印结果：112233445566778899
+```

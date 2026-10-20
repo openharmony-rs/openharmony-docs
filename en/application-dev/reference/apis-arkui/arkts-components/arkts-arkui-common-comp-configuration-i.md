@@ -6,8 +6,6 @@ declare interface Configuration
 
 Defines the data type of the interface restriction.
 
-@interface Configuration
-
 **Since:** 11
 
 <!--Device-unnamed-declare interface Configuration--><!--Device-unnamed-declare interface Configuration-End-->

@@ -8,8 +8,6 @@ export type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 **版本说明**： 从API version 23开始支持。
 
-@typedef UpgradeTaskCallback [since 9 - 22] @typedef { function } UpgradeTaskCallback [since 23]
-
 **起始版本：** 9
 
 <!--Device-update-export type UpgradeTaskCallback = (eventInfo: EventInfo) => void--><!--Device-update-export type UpgradeTaskCallback = (eventInfo: EventInfo) => void-End-->

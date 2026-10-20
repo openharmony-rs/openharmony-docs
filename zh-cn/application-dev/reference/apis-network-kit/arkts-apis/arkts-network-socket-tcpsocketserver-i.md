@@ -24,12 +24,12 @@ import { socket } from '@kit.NetworkKit';
 close(): Promise<void>
 ```
 
-TCPSocketServer停止监听并释放通过[listen](#listen1)方法绑定的端口。若多次调用[listen](#listen1)方法，再调用此方法时会释放TCPSocketServer的所有监听端口。使用Promise异步回调。
+TCPSocketServer停止监听并释放通过[listen](#listen)方法绑定的端口。若多次调用[listen](#listen)方法，再调用此方法时会释放TCPSocketServer的所有监听端口。使用Promise异步回调。
 
 > **说明：** 
 > 
 > 该方法不会关闭已有连接。如需关闭，请调用[TCPSocketConnection](arkts-network-socket-tcpsocketconnection-i.md)的
-> [close](arkts-network-socket-tcpsocketconnection-i.md#close1)方法。
+> [close](arkts-network-socket-tcpsocketconnection-i.md#close)方法。
 
 **起始版本：** 20
 
@@ -99,7 +99,7 @@ getLocalAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 以Promise形式返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -142,7 +142,7 @@ getSocketFd(): Promise<number>
 
 > **说明：** 
 > 
-> - [listen](#listen1)方法调用成功后，才可调用此方法。多次调用listen时，会获取最新监听端口绑定的文件描述符。
+> - [listen](#listen)方法调用成功后，才可调用此方法。多次调用listen时，会获取最新监听端口绑定的文件描述符。
 > 
 > - 监听异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > 
@@ -191,8 +191,6 @@ tcpServer.listen(listenAddr).then(() => {
   console.error('listen fail');
 });
 ```
-
-<a id="getstate1"></a>
 
 ## getState
 
@@ -257,8 +255,6 @@ tcpServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
 })
 ```
 
-<a id="getstate2"></a>
-
 ## getState
 
 ```TypeScript
@@ -319,8 +315,6 @@ tcpServer.getState().then((data: socket.SocketStateBase) => {
 });
 ```
 
-<a id="listen1"></a>
-
 ## listen
 
 ```TypeScript
@@ -345,7 +339,7 @@ listen(address: NetAddress, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | 是 | 目标地址信息。 |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | 是 | 目标地址信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。失败时返回错误码、错误信息。 |
 
 **错误码：**
@@ -381,8 +375,6 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 })
 ```
 
-<a id="listen2"></a>
-
 ## listen
 
 ```TypeScript
@@ -407,7 +399,7 @@ listen(address: NetAddress): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | 是 | 目标地址信息。 |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | 是 | 目标地址信息。 |
 
 **返回值：**
 
@@ -670,8 +662,6 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 })
 ```
 
-<a id="setextraoptions1"></a>
-
 ## setExtraOptions
 
 ```TypeScript
@@ -751,8 +741,6 @@ tcpServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
   console.info('setExtraOptions success');
 });
 ```
-
-<a id="setextraoptions2"></a>
 
 ## setExtraOptions
 

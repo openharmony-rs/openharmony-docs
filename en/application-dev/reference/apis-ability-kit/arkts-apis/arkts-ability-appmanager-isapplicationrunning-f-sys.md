@@ -6,8 +6,6 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="isapplicationrunning1"></a>
-
 ## isApplicationRunning
 
 ```TypeScript
@@ -65,8 +63,6 @@ appManager.isApplicationRunning(bundleName).then((data) => {
 
 <!--DelEnd-->
 
-
-<a id="isapplicationrunning2"></a>
 
 ## isApplicationRunning
 

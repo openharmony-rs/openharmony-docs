@@ -20,8 +20,6 @@ SwipeRefresherV2组件用于内容加载，内容加载指获取内容并加载�
 
 无
 
-@struct { SwipeRefresherV2 }
-
 **起始版本：** 26.0.0
 
 **装饰器类型：** @ComponentV2

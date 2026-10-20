@@ -6,8 +6,6 @@ export interface AttestResultInfo
 
 Device attest result information.
 
-@interface AttestResultInfo
-
 **Since:** 9
 
 <!--Device-deviceAttest-export interface AttestResultInfo--><!--Device-deviceAttest-export interface AttestResultInfo-End-->

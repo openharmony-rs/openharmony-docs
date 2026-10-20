@@ -41,7 +41,7 @@ Sets the foreground color for the **LoadingProgress** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Foreground color of the loading progress bar.<br>Default value: <br>API version 10 and earlier: '#99666666'<br>API version 11 and later: '#ff666666' |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Foreground color of the loading progress bar. <br>Default value: <br>API version 10 and earlier: '#99666666'<br>API version 11 and later: '#ff666666' |
 
 ## contentModifier
 
@@ -65,7 +65,7 @@ Creates a content modifier.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[LoadingProgressConfiguration](arkts-arkui-loadingprogress-comp-loadingprogressconfiguration-i.md)&gt; | Yes | Method for customizing the content area on the LoadingProgress component.<br>modifier: content modifier. Developers need to customize a class to implement the ContentModifier interface. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[LoadingProgressConfiguration](arkts-arkui-loadingprogress-comp-loadingprogressconfiguration-i.md)&gt; | Yes | Method for customizing the content area on the LoadingProgress component. <br>modifier: content modifier. Developers need to customize a class to implement the ContentModifier interface. |
 
 ## enableLoading
 
@@ -89,4 +89,4 @@ Sets whether to display the LoadingProgress animation. The component still takes
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to display the LoadingProgress animation.<br>Default value: true, where true means to display the LoadingProgress animation and false means not to display it. |
+| value | boolean | Yes | Whether to display the LoadingProgress animation. <br>Default value: true, where true means to display the LoadingProgress animation and false means not to display it. |

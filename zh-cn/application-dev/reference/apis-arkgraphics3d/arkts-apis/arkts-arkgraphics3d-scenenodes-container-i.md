@@ -6,8 +6,6 @@ export interface Container<T>
 
 定义场景对象的容器。容器提供了一种将场景对象分组到层次结构中的方法。
 
-@interface Container
-
 **起始版本：** 12
 
 <!--Device-unnamed-export interface Container<T>--><!--Device-unnamed-export interface Container<T>-End-->

@@ -18,6 +18,24 @@ Describes the custom information of the notification bar.
 import { request } from '@kit.BasicServicesKit';
 ```
 
+## hideStopButton
+
+```TypeScript
+hideStopButton?: boolean
+```
+
+Indicates whether to hide the stop button in the live window for a background task. If the value is true, the stop button in the live window is hidden and the layout is automatically adjusted. If the value is false, the stop button is displayed. This field only takes effect for background tasks (mode is BACKGROUND). Default value: false.
+
+**Type:** boolean
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Notification-hideStopButton?: boolean--><!--Device-Notification-hideStopButton?: boolean-End-->
+
+**System capability:** SystemCapability.Request.FileTransferAgent
+
 ## text
 
 ```TypeScript

@@ -20,7 +20,7 @@ declare class PathAttribute extends CommonShapeMethod<PathAttribute>
 commands(value: ResourceStr)
 ```
 
-设置符合[SVG路径描述规范](arkts-arkui-path-comp.md)的命令字符串，单位为px。命令字符串决定了路径的绘制形状和轨迹。支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。像素单位转换方法请参考[像素单位转换](arkts-arkui-common-comp.md)。
+设置符合[SVG路径描述规范](arkts-arkui-path-comp.md#path)的命令字符串，单位为px。命令字符串决定了路径的绘制形状和轨迹。支持[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)动态设置属性方法。像素单位转换方法请参考[像素单位转换](arkts-arkui-common-comp.md)。
 
 **起始版本：** 7
 
@@ -36,4 +36,4 @@ commands(value: ResourceStr)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 路径绘制的命令字符串，需符合[SVG路径描述规范](arkts-arkui-path-comp.md)，单位为px。<br>默认值：空字符串<br>异常值undefined和null按照默认值处理。<br>**适用版本：** 20 |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 路径绘制的命令字符串，需符合[SVG路径描述规范](arkts-arkui-path-comp.md#path)，单位为px。<br>默认值：空字符串<br>异常值undefined和null按照默认值处理。<br>**适用版本：** 20 |

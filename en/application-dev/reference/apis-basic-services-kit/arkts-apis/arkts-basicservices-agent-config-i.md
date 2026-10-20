@@ -553,7 +553,7 @@ Task title. The value contains a maximum of 256 characters. The default value is
 token?: string
 ```
 
-Task token. To query a task with a token, you need to provide the token and use [request.agent.touch](arkts-basicservices-agent-touch-f.md#touch1). Otherwise, the specified task cannot be queried. The value contains 8 to 2048 bytes. This parameter is left empty by default.
+Task token. To query a task with a token, you need to provide the token and use [request.agent.touch](arkts-basicservices-agent-touch-f.md#touch). Otherwise, the specified task cannot be queried. The value contains 8 to 2048 bytes. This parameter is left empty by default.
 
 **Type:** string
 

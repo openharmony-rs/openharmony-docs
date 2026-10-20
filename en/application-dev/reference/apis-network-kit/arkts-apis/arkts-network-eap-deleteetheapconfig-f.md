@@ -14,7 +14,7 @@ function deleteEthEapConfig(): Promise<void>
 
 Deletes the persisted 802.1X EAP configuration and stops any ongoing auto-authentication. Idempotent: resolves successfully even if no configuration has been stored.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_EAP
 

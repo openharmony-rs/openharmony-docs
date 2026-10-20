@@ -6,8 +6,6 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
-<a id="getvolumebyuuid1"></a>
-
 ## getVolumeByUuid
 
 ```TypeScript
@@ -39,13 +37,29 @@ function getVolumeByUuid(uuid: string, callback: AsyncCallback<Volume>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
+**示例**
 
-<a id="getvolumebyuuid2"></a>
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// uuid可通过getAllVolumes()接口获取卷设备信息后获得
+let uuid: string = "";
+volumeManager.getVolumeByUuid(uuid, (error: BusinessError, volume: volumeManager.Volume) => {
+  if (error) {
+    console.error(`getVolumeByUuid failed, code is: ${error.code}, message is: ${error.message}`);
+    return;
+  }
+  // 获取到卷设备信息
+});
+```
+
+<!--DelEnd-->
+
 
 ## getVolumeByUuid
 
@@ -83,7 +97,23 @@ function getVolumeByUuid(uuid: string): Promise<Volume>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// uuid可通过getAllVolumes()接口获取卷设备信息后获得
+let uuid: string = "";
+volumeManager.getVolumeByUuid(uuid).then((volume: volumeManager.Volume) => {
+  console.info("getVolumeByUuid successfully:" + JSON.stringify(volume));
+}).catch((error: BusinessError) => {
+  console.error(`Failed to getVolumeByUuid. Code: ${error.code}, message: ${error.message}`);
+});
+```
+
+<!--DelEnd-->

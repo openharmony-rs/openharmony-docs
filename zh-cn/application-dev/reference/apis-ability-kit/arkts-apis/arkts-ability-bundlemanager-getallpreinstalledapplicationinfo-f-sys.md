@@ -28,7 +28,7 @@ function getAllPreinstalledApplicationInfo(): Promise<Array<PreinstalledApplicat
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[PreinstalledApplicationInfo](arkts-ability-bundlemanager-preinstalledapplicationinfo-t-sys.md)&gt;&gt; | Promise对象，返回Array<[PreinstalledApplicationInfo](arkts-ability-bundlemanager-preinstalledapplicationinfo-t-sys.md)>。 |
+| Promise&lt;Array&lt;[PreinstalledApplicationInfo](arkts-ability-bundlemanager-preinstalledapplicationinfo-t-sys.md)&gt;&gt; | Promise对象，返回Array<PreinstalledApplicationInfo>。 |
 
 **错误码：**
 

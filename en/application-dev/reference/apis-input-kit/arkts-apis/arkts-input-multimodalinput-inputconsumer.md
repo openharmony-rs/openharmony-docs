@@ -37,9 +37,9 @@ import { inputConsumer } from '@kit.InputKit';
 | --- | --- |
 | [getShieldStatus](arkts-input-inputconsumer-getshieldstatus-f-sys.md#getshieldstatus) | Obtains the system hotkey shield status. |
 | [off('key')](arkts-input-inputconsumer-off-f-sys.md#offkey) | Unsubscribes from system hotkeys. This API uses an asynchronous callback to return the result. |
-| [offKey](arkts-input-inputconsumer-offkey-f-sys.md#offkey2) | Unsubscribes from system hotkeys. This API uses an asynchronous callback to return the result. |
+| [offKey](arkts-input-inputconsumer-offkey-f-sys.md#offkey) | Unsubscribes from system hotkeys. This API uses an asynchronous callback to return the result. |
 | [on('key')](arkts-input-inputconsumer-on-f-sys.md#onkey) | Subscribes to system hotkeys. This API uses an asynchronous callback to return the result. |
-| [onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey2) | Subscribes to key combinations (key command mode). You can specify different trigger modes through triggerType. When a key combination input event that meets the conditions occurs, this API uses an asynchronous callback to return the result. |
+| [onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey) | Subscribes to key combinations (key command mode). You can specify different trigger modes through triggerType. When a key combination input event that meets the conditions occurs, this API uses an asynchronous callback to return the result. |
 | [setShieldStatus](arkts-input-inputconsumer-setshieldstatus-f-sys.md#setshieldstatus) | Sets the system hotkey shield status. |
 <!--DelEnd-->
 

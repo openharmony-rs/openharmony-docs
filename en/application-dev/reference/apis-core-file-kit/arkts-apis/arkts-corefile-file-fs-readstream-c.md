@@ -4,7 +4,7 @@
 declare class ReadStream extends stream.Readable
 ```
 
-Defines a readable stream. You need to use [fileIo.createReadStream](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreatereadstream12) to create a **ReadStream** instance, which is inherited from [stream.Readable](../../apis-arkts/arkts-apis/arkts-arkts-stream-readableoptions-i.md).
+Defines a readable stream. You need to use [createReadStream](arkts-corefile-file-fs-createreadstream-f.md) to create a **ReadStream** instance, which is inherited from [stream.Readable](../../apis-arkts/arkts-apis/arkts-arkts-stream-readableoptions-i.md).
 
 The data obtained by **ReadStream** is a decoded string. Currently, only the UTF-8 format is supported.
 
@@ -88,7 +88,7 @@ Adjusts the position of the readable stream offset pointer.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | offset | number | Yes | Relative offset, in bytes. |
-| whence | [WhenceType](arkts-corefile-file-fs-whencetype-e.md) | No | Where to start the offset. The default value is **SEEK_SET**, which indicates the beginning of the file. |
+| whence | [WhenceType](arkts-corefile-file-fs-whencetype-e.md) | No | Where to start the offset. The default value is <b>SEEK_SET</b>, which indicates the beginning of the file. |
 
 **Return value:**
 

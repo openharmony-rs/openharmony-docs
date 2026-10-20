@@ -18,7 +18,7 @@ Defines options for menu items in the upper right corner of the page.
 moreButtonOptions?: MoreButtonOptions
 ```
 
-Options for the toolbar's more button menu.
+Options for the more button menu. After the setting, you can customize the background blur style and background effect of the more button.
 
 **Type:** [MoreButtonOptions](arkts-arkui-navigation-comp-morebuttonoptions-i.md)
 

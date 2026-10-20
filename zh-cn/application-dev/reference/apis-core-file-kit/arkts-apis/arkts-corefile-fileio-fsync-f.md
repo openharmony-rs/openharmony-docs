@@ -36,8 +36,6 @@ declare function fsync(fd: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="fsync2"></a>
-
 ## fsync
 
 ```TypeScript

@@ -6,8 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="getipaddress1"></a>
-
 ## getIpAddress
 
 ```TypeScript
@@ -75,8 +73,6 @@ networkManager.getIpAddress(wantTemp, 'eth0', (err, result) => {
 
 <!--DelEnd-->
 
-
-<a id="getipaddress2"></a>
 
 ## getIpAddress
 

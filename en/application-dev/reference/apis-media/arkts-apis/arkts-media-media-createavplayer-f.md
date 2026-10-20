@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="createavplayer1"></a>
-
 ## createAVPlayer
 
 ```TypeScript
@@ -59,8 +57,6 @@ media.createAVPlayer((error: BusinessError, video: media.AVPlayer) => {
 });
 ```
 
-
-<a id="createavplayer3"></a>
 
 ## createAVPlayer
 

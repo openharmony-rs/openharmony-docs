@@ -163,8 +163,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="destroyappclone1"></a>
-
 ## destroyAppClone
 
 ```TypeScript
@@ -237,8 +235,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="destroyappclone2"></a>
 
 ## destroyAppClone
 
@@ -322,8 +318,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="install1"></a>
-
 ## install
 
 ```TypeScript
@@ -390,7 +384,7 @@ Installs a specified app. This API uses an asynchronous callback to return the r
 | [17700054](../errorcode-bundle.md#17700054-bundle-installation-failure-due-to-permission-verification-failure) | Failed to install the HAP because the HAP requests wrong permissions.<br>**Applicable version:** 11 and later |
 | [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because the device has been controlled.<br>**Applicable version:** 12 and later |
 | [17700066](../errorcode-bundle.md#17700066-failed-to-install-the-native-software-package) | Failed to install the HAP because installing the native package failed.<br>**Applicable version:** 12 and later |
-| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
+| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same <br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
 | [17700077](../errorcode-bundle.md#17700077-application-installation-fails-but-preinstallation-is-successful) | Failed to install the HAP and restore to preinstalled bundle.<br>**Applicable version:** 17 and later |
 | [17700076](../errorcode-bundle.md#17700076-application-installation-failure-due-to-unsupported-distribution-type-in-the-signing-certificate-profile) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**Applicable version:** 18 and later |
 
@@ -427,8 +421,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="install2"></a>
 
 ## install
 
@@ -494,7 +486,7 @@ Installs a specified app. This API uses an asynchronous callback to return the r
 | [17700054](../errorcode-bundle.md#17700054-bundle-installation-failure-due-to-permission-verification-failure) | Failed to install the HAP because the HAP requests wrong permissions.<br>**Applicable version:** 11 and later |
 | [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because the device has been controlled.<br>**Applicable version:** 12 and later |
 | [17700066](../errorcode-bundle.md#17700066-failed-to-install-the-native-software-package) | Failed to install the HAP because installing the native package failed.<br>**Applicable version:** 12 and later |
-| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
+| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same <br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
 | [17700077](../errorcode-bundle.md#17700077-application-installation-fails-but-preinstallation-is-successful) | Failed to install the HAP and restore to preinstalled bundle.<br>**Applicable version:** 17 and later |
 | [17700076](../errorcode-bundle.md#17700076-application-installation-failure-due-to-unsupported-distribution-type-in-the-signing-certificate-profile) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**Applicable version:** 18 and later |
 
@@ -526,8 +518,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="install3"></a>
 
 ## install
 
@@ -600,7 +590,7 @@ Installs a specified app. This API uses a promise to return the result. Since AP
 | [17700054](../errorcode-bundle.md#17700054-bundle-installation-failure-due-to-permission-verification-failure) | Failed to install the HAP because the HAP requests wrong permissions.<br>**Applicable version:** 11 and later |
 | [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because the device has been controlled.<br>**Applicable version:** 12 and later |
 | [17700066](../errorcode-bundle.md#17700066-failed-to-install-the-native-software-package) | Failed to install the HAP because installing the native package failed.<br>**Applicable version:** 12 and later |
-| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
+| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same <br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
 | [17700077](../errorcode-bundle.md#17700077-application-installation-fails-but-preinstallation-is-successful) | Failed to install the HAP and restore to preinstalled bundle.<br>**Applicable version:** 17 and later |
 | [17700076](../errorcode-bundle.md#17700076-application-installation-failure-due-to-unsupported-distribution-type-in-the-signing-certificate-profile) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**Applicable version:** 18 and later |
 
@@ -685,7 +675,7 @@ Installs a plugin for an application. This API uses a promise to return the resu
 | [17700017](../errorcode-bundle.md#17700017-bundle-installation-failure-because-the-version-to-install-is-too-earlier) | Failed to install the plugin since the version of the plugin to install is too early. |
 | [17700048](../errorcode-bundle.md#17700048-code-signature-verification-failure) | Failed to install the plugin because the code signature verification is failed. |
 | [17700052](../errorcode-bundle.md#17700052-installing-a-debug-self-distributed-plugin-or-debug-application-is-not-allowed-in-non-developer-mode) | Failed to install the plugin because debug bundle cannot be installed under non-developer mode. |
-| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the plugin because a plugin with the same<br>bundle name but different signature information exists on the device. |
+| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the plugin because a plugin with the same <br>bundle name but different signature information exists on the device. |
 | [17700087](../errorcode-bundle.md#17700087-unsupported-plugin-installation) | Failed to install the plugin because the current device does not support plugin. |
 | [17700088](../errorcode-bundle.md#17700088-plugin-installation-failure-due-to-no-permission) | Failed to install the plugin because the host application lacks ohos.permission.kernel.SUPPORT_PLUGIN. |
 | [17700089](../errorcode-bundle.md#17700089-plugin-installation-failure-because-of-plugin-id-parsing-failure) | Failed to install the plugin because the plugin id fails to be parsed. |
@@ -771,7 +761,7 @@ Installs the app with the specified bundleName for the specified user. This API 
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName cannot be found or the bundle is not installed by the specified user. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The userId is invalid. |
 | [17700071](../errorcode-bundle.md#17700071-enterprise-applications-cannot-be-installed) | It is not allowed to install the enterprise bundle. |
-| [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**Applicable version:** 14 and later |
+| [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because this application is prohibited <br>from being installed on this device or by specified users.<br>**Applicable version:** 14 and later |
 
 <!--Del-->
 **Examples**
@@ -801,8 +791,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="recover1"></a>
 
 ## recover
 
@@ -839,8 +827,8 @@ Rolls back an application to the initial installation state. This API uses an as
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name is not found. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
-| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
-| [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**Applicable version:** 14 and later |
+| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same <br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
+| [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because this application is prohibited <br>from being installed on this device or by specified users.<br>**Applicable version:** 14 and later |
 
 <!--Del-->
 **Examples**
@@ -876,8 +864,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="recover2"></a>
-
 ## recover
 
 ```TypeScript
@@ -911,8 +897,8 @@ Rolls back an application to the initial installation state. This API uses an as
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name is not found. |
-| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
-| [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**Applicable version:** 14 and later |
+| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same <br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
+| [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because this application is prohibited <br>from being installed on this device or by specified users.<br>**Applicable version:** 14 and later |
 
 <!--Del-->
 **Examples**
@@ -942,8 +928,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="recover3"></a>
 
 ## recover
 
@@ -985,8 +969,8 @@ Rolls back an application to the initial installation state. This API uses a pro
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name is not found. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
-| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
-| [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**Applicable version:** 14 and later |
+| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same <br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
+| [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because this application is prohibited <br>from being installed on this device or by specified users.<br>**Applicable version:** 14 and later |
 
 <!--Del-->
 **Examples**
@@ -1089,8 +1073,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="uninstall1"></a>
-
 ## uninstall
 
 ```TypeScript
@@ -1167,8 +1149,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="uninstall2"></a>
-
 ## uninstall
 
 ```TypeScript
@@ -1236,8 +1216,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="uninstall3"></a>
 
 ## uninstall
 
@@ -1319,8 +1297,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="uninstall4"></a>
-
 ## uninstall
 
 ```TypeScript
@@ -1387,8 +1363,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="uninstall5"></a>
 
 ## uninstall
 
@@ -1646,7 +1620,7 @@ Uninstalls and updates a preinstalled application and restores it to the initial
 | [17700057](../errorcode-bundle.md#17700057-specified-application-is-not-a-preset-application) | Failed to uninstall updates because the HAP is not pre-installed. |
 | [17700060](../errorcode-bundle.md#17700060-specified-application-cannot-be-uninstalled) | The specified application cannot be uninstalled.<br>**Applicable version:** 13 and later |
 | [17700067](../errorcode-bundle.md#17700067-failed-to-uninstall-the-native-software-package) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**Applicable version:** 13 and later |
-| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
+| [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same <br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
 
 <!--Del-->
 **Examples**
@@ -1679,8 +1653,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="updatebundleforself1"></a>
 
 ## updateBundleForSelf
 
@@ -1768,8 +1740,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="updatebundleforself2"></a>
-
 ## updateBundleForSelf
 
 ```TypeScript
@@ -1848,8 +1818,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="updatebundleforself3"></a>
 
 ## updateBundleForSelf
 

@@ -28,13 +28,13 @@ Upgrades the OS if the OS version of the eSIM in the specified slot is not the l
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[OsuStatus](arkts-telephony-esim-osustatus-e-sys.md)&gt; | Promise used to return the OS upgrade status.<br> 1. Updating. <br> 2. Update failed. <br> 3. Update succeeded. <br> 4. Already the latest version. <br> 5. Update service unavailable. |
+| Promise&lt;[OsuStatus](arkts-telephony-esim-osustatus-e-sys.md)&gt; | Promise used to return the OS upgrade status. <br> 1. Updating. <br> 2. Update failed. <br> 3. Update succeeded. <br> 4. Already the latest version. <br> 5. Update service unavailable. |
 
 **Error codes:**
 

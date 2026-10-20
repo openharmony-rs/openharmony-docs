@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="getshownumber1"></a>
-
 ## getShowNumber
 
 ```TypeScript
@@ -60,8 +58,6 @@ sim.getShowNumber(0, (err: BusinessError, data: string) => {
 
 <!--DelEnd-->
 
-
-<a id="getshownumber2"></a>
 
 ## getShowNumber
 

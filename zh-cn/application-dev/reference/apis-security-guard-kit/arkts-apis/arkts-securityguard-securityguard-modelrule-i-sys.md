@@ -6,8 +6,6 @@ interface ModelRule
 
 安全模型规则。
 
-@typedef ModelRule
-
 **起始版本：** 12
 
 <!--Device-securityGuard-interface ModelRule--><!--Device-securityGuard-interface ModelRule-End-->

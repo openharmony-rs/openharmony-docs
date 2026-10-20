@@ -63,8 +63,6 @@ declare function moveFile(src: string, dest: string, mode?: number): Promise<voi
 | 13900042 | Unknown error |
 
 
-<a id="movefile2"></a>
-
 ## moveFile
 
 ```TypeScript
@@ -115,8 +113,6 @@ declare function moveFile(src: string, dest: string, callback: AsyncCallback<voi
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
-
-<a id="movefile3"></a>
 
 ## moveFile
 

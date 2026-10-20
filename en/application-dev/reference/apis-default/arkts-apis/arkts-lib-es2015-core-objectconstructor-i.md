@@ -9,8 +9,6 @@ interface ObjectConstructor
 ```TypeScript
 ```
 
-<a id="assign1"></a>
-
 ## assign
 
 ```TypeScript
@@ -27,8 +25,6 @@ Copy the values of all of the enumerable own properties from one or more source 
 | --- | --- | --- | --- |
 | target | T | Yes |  |
 | source | U | Yes |  |
-
-<a id="assign2"></a>
 
 ## assign
 
@@ -48,8 +44,6 @@ Copy the values of all of the enumerable own properties from one or more source 
 | source1 | U | Yes |  |
 | source2 | V | Yes |  |
 
-<a id="assign3"></a>
-
 ## assign
 
 ```TypeScript
@@ -68,8 +62,6 @@ Copy the values of all of the enumerable own properties from one or more source 
 | source1 | U | Yes |  |
 | source2 | V | Yes |  |
 | source3 | W | Yes |  |
-
-<a id="assign4"></a>
 
 ## assign
 

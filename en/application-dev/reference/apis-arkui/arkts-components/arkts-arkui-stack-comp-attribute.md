@@ -22,7 +22,7 @@ The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 alignContent(value: Alignment)
 ```
 
-Sets the alignment of child components in the container. When both this attribute and [align](arkts-arkui-common-comp-commonmethod-c.md#align1) are set, whichever is set last takes effect. When both this attribute and the constructor input parameter are set, the value set by the attribute takes effect, regardless of the setting order.
+Sets the alignment of child components in the container. When both this attribute and [align](arkts-arkui-common-comp-commonmethod-c.md#align) are set, whichever is set last takes effect. When both this attribute and the constructor input parameter are set, the value set by the attribute takes effect, regardless of the setting order.
 
 **Since:** 7
 
@@ -38,7 +38,7 @@ Sets the alignment of child components in the container. When both this attribut
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) | Yes | Alignment of all child components in the container.<br>Default value: **Alignment.Center** <br>Invalid value: the default value is used. |
+| value | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) | Yes | Alignment of all child components in the container. <br>Default value: **Alignment.Center** <br>Invalid value: the default value is used. |
 
 ## syncLoad
 
@@ -68,4 +68,4 @@ Sets whether to synchronously load all child components in the stack container. 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to synchronously load all child components in the Stack area.<br>The value **true** means synchronous loading, and **false** means asynchronous loading. <br>Default value: **true** |
+| enable | boolean | Yes | Whether to synchronously load all child components in the Stack area. <br>The value **true** means synchronous loading, and **false** means asynchronous loading. <br>Default value: **true** |

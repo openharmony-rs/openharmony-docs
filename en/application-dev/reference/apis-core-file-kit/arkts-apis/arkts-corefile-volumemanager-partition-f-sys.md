@@ -6,8 +6,6 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
-<a id="partition1"></a>
-
 ## partition
 
 ```TypeScript
@@ -40,13 +38,25 @@ Partitions a disk. This API uses an asynchronous callback to return the result. 
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
+**Examples**
 
-<a id="partition2"></a>
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let diskId: string = "";
+let type: number = 0;
+volumeManager.partition(diskId, type, (error: BusinessError) => {
+  // Do something.   
+});
+```
+
+<!--DelEnd-->
+
 
 ## partition
 
@@ -85,7 +95,23 @@ Partitions a disk. This API uses a promise to return the result. The system supp
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let diskId: string = "";
+let type: number = 0;
+volumeManager.partition(diskId, type).then(() => {
+  console.info("partition successfully");
+}).catch((error: BusinessError) => {
+  console.error("partition failed with error:" + JSON.stringify(error));
+});
+```
+
+<!--DelEnd-->

@@ -4,7 +4,7 @@
 enum ColorEffectType
 ```
 
-Enumerates the color effect types.
+枚举色彩效果类型。
 
 **起始版本：** 11
 
@@ -20,7 +20,7 @@ Enumerates the color effect types.
 BLACK_WHITE = 3
 ```
 
-Black and white color effect.
+黑白色彩效果。
 
 **起始版本：** 12
 
@@ -36,7 +36,7 @@ Black and white color effect.
 BRIGHT = 1
 ```
 
-Bright color effect.
+明亮色彩效果。
 
 **起始版本：** 11
 
@@ -52,7 +52,7 @@ Bright color effect.
 NORMAL = 0
 ```
 
-Regular color effect.
+普通色彩效果。
 
 **起始版本：** 11
 
@@ -68,7 +68,7 @@ Regular color effect.
 SOFT = 2
 ```
 
-Soft color effect.
+柔和色彩效果。
 
 **起始版本：** 11
 

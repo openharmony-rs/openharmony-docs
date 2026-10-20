@@ -35,7 +35,7 @@ Performs preprocessing for the asset query in the specified user space. This API
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Uint8Array&gt; | Promise used to return a challenge value.<br>**NOTE:**  The challenge value is used for subsequent user authentication. |
+| Promise&lt;Uint8Array&gt; | Promise used to return a challenge value. <br>**NOTE:**  The challenge value is used for subsequent user authentication. |
 
 **Error codes:**
 

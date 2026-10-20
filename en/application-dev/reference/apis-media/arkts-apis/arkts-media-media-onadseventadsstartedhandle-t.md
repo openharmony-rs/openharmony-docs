@@ -19,4 +19,4 @@ Registers a callback invoked when the ad starts to play.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | adsId | string | Yes | ID of the ad resource that is being played. |
-| duration | number | Yes | Playback duration of an ad, in milliseconds.<br>The value must be an integer. |
+| duration | number | Yes | Playback duration of an ad, in milliseconds. <br>The value must be an integer. |

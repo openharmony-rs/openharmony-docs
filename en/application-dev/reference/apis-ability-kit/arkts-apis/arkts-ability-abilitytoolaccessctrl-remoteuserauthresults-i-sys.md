@@ -17,6 +17,7 @@ Remote user authorization results.
 ## Modules to Import
 
 ```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## permissionQuery

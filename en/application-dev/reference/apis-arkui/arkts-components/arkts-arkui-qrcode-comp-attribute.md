@@ -36,7 +36,7 @@ Sets the background color of the QR code.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Background color of the QR code.<br>Default value: Color.White <br>Since API version 11, the default value is changed to '#ffffffff', and it is not modified when the system switches between light and dark modes. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Background color of the QR code. <br>Default value: Color.White <br>Since API version 11, the default value is changed to '#ffffffff', and it is not modified when the system switches between light and dark modes. |
 
 ## color
 
@@ -84,4 +84,4 @@ Sets the opacity of the QR code content. The minimum value is 0, and the maximum
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Opacity of the QR code content color.<br>Default value: 1 <br>Value range: [0, 1]. If the value is out of range, the default value is used. |
+| value | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Opacity of the QR code content color. <br>Default value: 1 <br>Value range: [0, 1]. If the value is out of range, the default value is used. |

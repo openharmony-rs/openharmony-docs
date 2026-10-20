@@ -20,8 +20,6 @@ interface CameraInput
 import { camera } from '@kit.CameraKit';
 ```
 
-<a id="close1"></a>
-
 ## close
 
 ```TypeScript
@@ -65,8 +63,6 @@ function closeCameraInput(cameraInput: camera.CameraInput): void {
   });
 }
 ```
-
-<a id="close2"></a>
 
 ## close
 
@@ -231,7 +227,6 @@ off(type: 'cameraOcclusionDetection', callback?: AsyncCallback<CameraOcclusionDe
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 22 |
 
 **示例**
 
@@ -331,7 +326,6 @@ on(type: 'cameraOcclusionDetection', callback: AsyncCallback<CameraOcclusionDete
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 22 |
 
 **示例**
 
@@ -355,8 +349,6 @@ function registerCameraOcclusionDetection(cameraInput: camera.CameraInput): void
   cameraInput.on('cameraOcclusionDetection', callback);
 }
 ```
-
-<a id="open1"></a>
 
 ## open
 
@@ -404,8 +396,6 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-<a id="open2"></a>
-
 ## open
 
 ```TypeScript
@@ -450,8 +440,6 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   });
 }
 ```
-
-<a id="open3"></a>
 
 ## open
 
@@ -502,8 +490,6 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   });
 }
 ```
-
-<a id="open4"></a>
 
 ## open
 

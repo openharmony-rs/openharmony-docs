@@ -12,8 +12,6 @@ Describes the text line height style.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -37,8 +35,6 @@ A constructor used to create a text line height style.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | lineHeight | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | Yes | Text line height setting. If the unit value of **LengthMetrics** is **PERCENT**, the current setting does not take effect. When the **value** of **LengthMetrics** is greater than 0, the text line height setting takes effect; otherwise, the text line height adapts to the font size. |
-
-<a id="constructor2"></a>
 
 ## constructor
 

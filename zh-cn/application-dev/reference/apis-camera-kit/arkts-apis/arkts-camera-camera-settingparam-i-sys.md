@@ -4,7 +4,7 @@
 interface SettingParam
 ```
 
-Defines the effect parameters used to preheat an image.
+定义用于预热图像的效果参数。
 
 **起始版本：** 11
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 faceSlender: number
 ```
 
-Face slimming level, which is obtained through [Beauty.getSupportedBeautyRange](arkts-camera-camera-beautyquery-i-sys.md#getsupportedbeautyrange). For example, the value **1** indicates level-1 slimming.
+瘦脸级别，通过[Beauty.getSupportedBeautyRange](arkts-camera-camera-beautyquery-i-sys.md#getsupportedbeautyrange)获取。例如，值**1**表示1级瘦脸。
 
 **类型：** number
 
@@ -44,7 +44,7 @@ Face slimming level, which is obtained through [Beauty.getSupportedBeautyRange](
 skinSmoothLevel: number
 ```
 
-Skin smoothing level, which is obtained through [Beauty.getSupportedBeautyRange](arkts-camera-camera-beautyquery-i-sys.md#getsupportedbeautyrange). For example, the value **1** indicates level-1 smoothing.
+磨皮级别，通过[Beauty.getSupportedBeautyRange](arkts-camera-camera-beautyquery-i-sys.md#getsupportedbeautyrange)获取。例如，值**1**表示1级磨皮。
 
 **类型：** number
 
@@ -62,7 +62,7 @@ Skin smoothing level, which is obtained through [Beauty.getSupportedBeautyRange]
 skinTone: number
 ```
 
-Skin tone perfection level, which is obtained through [Beauty.getSupportedBeautyRange](arkts-camera-camera-beautyquery-i-sys.md#getsupportedbeautyrange). For example, the value **0xBF986C** indicates a specific color.
+美肤级别，通过[Beauty.getSupportedBeautyRange](arkts-camera-camera-beautyquery-i-sys.md#getsupportedbeautyrange)获取。例如，值**0xBF986C**表示特定颜色。
 
 **类型：** number
 

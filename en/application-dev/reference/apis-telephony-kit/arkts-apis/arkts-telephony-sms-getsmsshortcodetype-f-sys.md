@@ -31,7 +31,7 @@ Get the SMS short code type of the destination address.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | slotId | number | Yes | Indicates the ID of the slot holding the SIM card for sending SMS messages. The value `0` indicates card slot 1, and the value `1` indicates card slot 2. |
-| destAddr | string | Yes | Indicates the destination address of the sending SMS.<br>Value range:[0,+∞) |
+| destAddr | string | Yes | Indicates the destination address of the sending SMS. <br>Value range:[0,+∞) |
 
 **Return value:**
 

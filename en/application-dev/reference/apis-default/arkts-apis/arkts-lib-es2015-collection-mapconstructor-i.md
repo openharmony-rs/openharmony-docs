@@ -9,15 +9,11 @@ interface MapConstructor
 ```TypeScript
 ```
 
-<a id="construct1"></a>
-
 ## [[Construct]]
 
 ```TypeScript
 new(): Map<any, any>
 ```
-
-<a id="construct2"></a>
 
 ## [[Construct]]
 

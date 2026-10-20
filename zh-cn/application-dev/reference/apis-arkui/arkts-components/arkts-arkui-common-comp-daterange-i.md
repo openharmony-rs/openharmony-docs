@@ -6,8 +6,6 @@ declare interface DateRange
 
 Defines a range of dates.
 
-@interface DateRange
-
 **起始版本：** 19
 
 <!--Device-unnamed-declare interface DateRange--><!--Device-unnamed-declare interface DateRange-End-->

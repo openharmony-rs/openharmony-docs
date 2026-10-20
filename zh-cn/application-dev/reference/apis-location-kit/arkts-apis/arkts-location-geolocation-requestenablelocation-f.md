@@ -6,8 +6,6 @@
 import { geolocation } from '@kit.LocationKit';
 ```
 
-<a id="requestenablelocation1"></a>
-
 ## requestEnableLocation
 
 ```TypeScript
@@ -46,8 +44,6 @@ geolocation.requestEnableLocation((err, data) => {
 });
 ```
 
-
-<a id="requestenablelocation2"></a>
 
 ## requestEnableLocation
 

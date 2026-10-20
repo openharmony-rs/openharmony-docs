@@ -20,8 +20,6 @@ WebResourceHandler is a handler used to return the result of an intercepted requ
 import { webview } from '@kit.ArkWeb';
 ```
 
-<a id="didfail1"></a>
-
 ## didFail
 
 ```TypeScript
@@ -54,8 +52,6 @@ Notifies the ArkWeb kernel that the intercepted request will fail and ends the n
 **Examples**
 
 For details about the example, see [OnRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart).
-
-<a id="didfail2"></a>
 
 ## didFail
 
@@ -158,8 +154,6 @@ struct WebComponent {
   }
 }
 ```
-
-<a id="didfail3"></a>
 
 ## didFail
 

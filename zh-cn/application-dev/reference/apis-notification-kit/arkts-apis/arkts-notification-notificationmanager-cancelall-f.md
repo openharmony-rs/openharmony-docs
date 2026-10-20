@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="cancelall1"></a>
-
 ## cancelAll
 
 ```TypeScript
@@ -26,9 +24,9 @@ function cancelAll(callback: AsyncCallback<void>): void
 
 **参见：**
 
-[publish](arkts-notification-notificationmanager-publish-f.md#publish1) 发布通知。
+[publish](arkts-notification-notificationmanager-publish-f.md#publish) 发布通知。
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel2) 取消已发布的通知。
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel) 取消已发布的通知。
 
 **参数：**
 
@@ -62,8 +60,6 @@ notificationManager.cancelAll(cancelAllCallback);
 ```
 
 
-<a id="cancelall2"></a>
-
 ## cancelAll
 
 ```TypeScript
@@ -82,9 +78,9 @@ function cancelAll(): Promise<void>
 
 **参见：**
 
-[publish](arkts-notification-notificationmanager-publish-f.md#publish2) 发布通知。
+[publish](arkts-notification-notificationmanager-publish-f.md#publish) 发布通知。
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel3) 根据指定的通知ID取消已发布的通知。
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel) 根据指定的通知ID取消已发布的通知。
 
 **返回值：**
 

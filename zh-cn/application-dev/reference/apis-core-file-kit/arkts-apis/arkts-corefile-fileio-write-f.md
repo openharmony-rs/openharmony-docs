@@ -47,8 +47,6 @@ declare function write(
 | Promise&lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 
-<a id="write2"></a>
-
 ## write
 
 ```TypeScript
@@ -75,8 +73,6 @@ declare function write(fd: number, buffer: ArrayBuffer | string, callback: Async
 | buffer | ArrayBuffer &#124; string | 是 | 待写入文件的数据，可来自缓冲区或字符串。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 异步将数据写入完成后执行的回调函数。返回实际写入的长度，单位为Byte。 |
 
-
-<a id="write3"></a>
 
 ## write
 

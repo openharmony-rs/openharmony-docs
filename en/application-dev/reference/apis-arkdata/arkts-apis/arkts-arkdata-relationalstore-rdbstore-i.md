@@ -6,9 +6,9 @@ interface RdbStore
 
 Provides APIs for managing data in an RDB store.
 
-Before using the following APIs, you should obtain an **RdbStore** instance by calling the [getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md#getrdbstore2) method and then call the corresponding method through the instance.
+Before using the following APIs, you should obtain an **RdbStore** instance by calling the [getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md#getrdbstore) method and then call the corresponding method through the instance.
 
-In addition, use [execute](#execute1) to initialize the database table structure and related data first, ensuring that the prerequisites for related API calls are met.
+In addition, use [execute](#execute) to initialize the database table structure and related data first, ensuring that the prerequisites for related API calls are met.
 
 **Since:** 9
 
@@ -21,8 +21,6 @@ In addition, use [execute](#execute1) to initialize the database table structure
 ```TypeScript
 import { relationalStore } from '@kit.ArkData';
 ```
-
-<a id="attach1"></a>
 
 ## attach
 
@@ -58,7 +56,7 @@ Attaches a database file to the currently linked database.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800010](../errorcode-data-rdb.md#14800010-invalid-database-path) | Failed to open or delete the database by an invalid database path. |
@@ -96,8 +94,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="attach2"></a>
-
 ## attach
 
 ```TypeScript
@@ -133,7 +129,7 @@ Attaches a database file to the currently linked database.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800010](../errorcode-data-rdb.md#14800010-invalid-database-path) | Failed to open or delete the database by an invalid database path. |
@@ -162,8 +158,6 @@ Attaches a database file to the currently linked database.
 
 See [attach](#attach)
 
-<a id="backup1"></a>
-
 ## backup
 
 ```TypeScript
@@ -189,7 +183,7 @@ Backs up a database in a specified name.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800010](../errorcode-data-rdb.md#14800010-invalid-database-path) | Failed to open or delete the database by an invalid database path.<br>**Applicable version:** 12 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
@@ -224,8 +218,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="backup2"></a>
-
 ## backup
 
 ```TypeScript
@@ -256,7 +248,7 @@ Backs up a database in a specified name.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -291,8 +283,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="batchinsert1"></a>
-
 ## batchInsert
 
 ```TypeScript
@@ -325,7 +315,7 @@ Write 32766 parameters per batch using the [ON_CONFLICT_REPLACE](arkts-arkdata-r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
@@ -393,8 +383,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="batchinsert2"></a>
-
 ## batchInsert
 
 ```TypeScript
@@ -430,7 +418,7 @@ Write 32766 parameters per batch using the [ON_CONFLICT_REPLACE](arkts-arkdata-r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
@@ -556,7 +544,7 @@ Write 32766 parameters per batch using the [ON_CONFLICT_REPLACE](arkts-arkdata-r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -665,7 +653,7 @@ A maximum of 32766 parameters can be inserted at a time. If the number of parame
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -773,7 +761,7 @@ A maximum of 32766 parameters can be inserted at a time. If the number of parame
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -1122,8 +1110,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="cleandirtydata1"></a>
-
 ## cleanDirtyData
 
 ```TypeScript
@@ -1189,8 +1175,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="cleandirtydata2"></a>
-
 ## cleanDirtyData
 
 ```TypeScript
@@ -1250,8 +1234,6 @@ if (store != undefined) {
   });
 }
 ```
-
-<a id="cleandirtydata3"></a>
 
 ## cleanDirtyData
 
@@ -1362,8 +1344,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="cloudsync1"></a>
-
 ## cloudSync
 
 ```TypeScript
@@ -1409,8 +1389,6 @@ if (store != undefined) {
   });
 }
 ```
-
-<a id="cloudsync2"></a>
 
 ## cloudSync
 
@@ -1462,8 +1440,6 @@ if (store != undefined) {
   });
 }
 ```
-
-<a id="cloudsync3"></a>
 
 ## cloudSync
 
@@ -1518,8 +1494,6 @@ if (store != undefined) {
   });
 };
 ```
-
-<a id="cloudsync4"></a>
 
 ## cloudSync
 
@@ -1634,8 +1608,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="commit1"></a>
-
 ## commit
 
 ```TypeScript
@@ -1697,8 +1669,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="commit2"></a>
-
 ## commit
 
 ```TypeScript
@@ -1731,7 +1701,7 @@ Commits the SQL statement executed.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -1836,8 +1806,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="delete1"></a>
-
 ## delete
 
 ```TypeScript
@@ -1865,7 +1833,7 @@ Deletes data from the database based on a specified instance object of RdbPredic
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
@@ -1902,8 +1870,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="delete2"></a>
-
 ## delete
 
 ```TypeScript
@@ -1934,7 +1900,7 @@ Deletes data from the database based on a specified instance object of RdbPredic
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
@@ -2001,7 +1967,7 @@ Deletes data from the database based on a specified instance object of RdbPredic
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -2210,7 +2176,7 @@ Detaches a database from this database.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -2268,7 +2234,7 @@ Notifies the registered observers of a change to the data resource specified by 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800050](../errorcode-data-rdb.md#14800050-failed-to-obtain-the-subscription-service) | Failed to obtain the subscription service. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
@@ -2281,8 +2247,6 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).emit('storeObserver');
 }
 ```
-
-<a id="execute1"></a>
 
 ## execute
 
@@ -2315,7 +2279,7 @@ Executes a SQL statement that contains specified parameters and returns a value 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The sql(attach,begin,commit,rollback etc.). |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
@@ -2390,8 +2354,6 @@ await store!.execute(insertSql, [0, vectorValue]);
 await store!.execute("insert into test values(1, '[3.5, 1.8]');");
 ```
 
-<a id="execute2"></a>
-
 ## execute
 
 ```TypeScript
@@ -2426,7 +2388,7 @@ Executes a SQL statement that contains specified parameters and returns a value 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The sql(attach,begin,commit,rollback etc.). |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
@@ -2472,8 +2434,6 @@ if (store != null) {
 }
 ```
 
-<a id="executesql1"></a>
-
 ## executeSql
 
 ```TypeScript
@@ -2500,7 +2460,7 @@ Executes a SQL statement that contains specified parameters but returns no value
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The sql(attach,begin,commit,rollback etc.).<br>**Applicable version:** 12 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
@@ -2536,8 +2496,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="executesql2"></a>
-
 ## executeSql
 
 ```TypeScript
@@ -2564,7 +2522,7 @@ Executes a SQL statement that contains specified parameters but returns no value
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The sql(attach,begin,commit,rollback etc.).<br>**Applicable version:** 12 and later |
@@ -2601,8 +2559,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="executesql3"></a>
-
 ## executeSql
 
 ```TypeScript
@@ -2634,7 +2590,7 @@ Executes a SQL statement that contains specified parameters but returns no value
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The sql(attach,begin,commit,rollback etc.).<br>**Applicable version:** 12 and later |
@@ -2702,7 +2658,7 @@ Executes a SQL statement that contains specified parameters and returns a value 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -2759,8 +2715,6 @@ if (store != undefined) {
   }
 }
 ```
-
-<a id="getmodifytime1"></a>
 
 ## getModifyTime
 
@@ -2832,8 +2786,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="getmodifytime2"></a>
-
 ## getModifyTime
 
 ```TypeScript
@@ -2902,8 +2854,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="insert1"></a>
-
 ## insert
 
 ```TypeScript
@@ -2932,7 +2882,7 @@ Inserts a row of data into the target table.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
@@ -2992,8 +2942,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="insert2"></a>
-
 ## insert
 
 ```TypeScript
@@ -3024,7 +2972,7 @@ Inserts a row of data into the target table.
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -3084,8 +3032,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="insert3"></a>
-
 ## insert
 
 ```TypeScript
@@ -3117,7 +3063,7 @@ Inserts a row of data into the target table.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
@@ -3177,8 +3123,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="insert4"></a>
-
 ## insert
 
 ```TypeScript
@@ -3212,7 +3156,7 @@ Inserts a row of data into the target table.
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -3271,8 +3215,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="insertsync1"></a>
-
 ## insertSync
 
 ```TypeScript
@@ -3305,7 +3247,7 @@ Inserts a row of data into the target table with sync interface.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -3364,8 +3306,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="insertsync2"></a>
-
 ## insertSync
 
 ```TypeScript
@@ -3398,7 +3338,7 @@ Inserts a row of data into the target table with sync interface.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -3472,7 +3412,7 @@ Locks data from the database based on a specified instance object of RdbPredicat
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -3509,8 +3449,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="obtaindistributedtablename1"></a>
-
 ## obtainDistributedTableName
 
 ```TypeScript
@@ -3539,7 +3477,7 @@ Obtain distributed table name of specified remote device according to local tabl
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -3578,8 +3516,6 @@ if (store != undefined && deviceId != undefined) {
 }
 ```
 
-<a id="obtaindistributedtablename2"></a>
-
 ## obtainDistributedTableName
 
 ```TypeScript
@@ -3613,7 +3549,7 @@ Obtain distributed table name of specified remote device according to local tabl
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -3650,8 +3586,6 @@ if (store != undefined && deviceId != undefined) {
 }
 ```
 
-<a id="off1"></a>
-
 ## off
 
 ```TypeScript
@@ -3678,7 +3612,7 @@ Remove specified observer of specified type from the database.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
 
@@ -3712,8 +3646,6 @@ try {
 }
 ```
 
-<a id="off2"></a>
-
 ## off
 
 ```TypeScript
@@ -3744,7 +3676,7 @@ Remove specified observer of specified type from the database.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -3752,8 +3684,6 @@ Remove specified observer of specified type from the database.
 **Examples**
 
 See [off](#off)
-
-<a id="off3"></a>
 
 ## off
 
@@ -3781,7 +3711,7 @@ Remove specified observer of specified type from the database.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800050](../errorcode-data-rdb.md#14800050-failed-to-obtain-the-subscription-service) | Failed to obtain the subscription service. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
@@ -3790,8 +3720,6 @@ Remove specified observer of specified type from the database.
 **Examples**
 
 See [off](#off)
-
-<a id="off4"></a>
 
 ## off
 
@@ -3826,8 +3754,6 @@ Unregister the database auto synchronization callback.
 
 See [off](#off)
 
-<a id="off5"></a>
-
 ## off
 
 ```TypeScript
@@ -3853,7 +3779,7 @@ Unsubscribes from the SQL statistics.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -3861,8 +3787,6 @@ Unsubscribes from the SQL statistics.
 **Examples**
 
 See [off](#off)
-
-<a id="off6"></a>
 
 ## off
 
@@ -3896,8 +3820,6 @@ Unsubscribes from the SQL performance statistics.
 
 See [off](#off)
 
-<a id="off7"></a>
-
 ## off
 
 ```TypeScript
@@ -3930,8 +3852,6 @@ Unsubscribes from the SQL execution error logs.
 
 See [off](#off)
 
-<a id="on1"></a>
-
 ## on
 
 ```TypeScript
@@ -3958,7 +3878,7 @@ Subscribes to data changes of this RDB store. The registered callback will be ca
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
 
@@ -3981,8 +3901,6 @@ try {
   console.error(`Register observer failed, code is ${code},message is ${message}`);
 }
 ```
-
-<a id="on2"></a>
 
 ## on
 
@@ -4010,7 +3928,7 @@ Subscribes to data changes of this RDB store. The registered callback will be ca
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -4018,8 +3936,6 @@ Subscribes to data changes of this RDB store. The registered callback will be ca
 **Examples**
 
 See [on](#on)
-
-<a id="on3"></a>
 
 ## on
 
@@ -4047,7 +3963,7 @@ Registers an observer for the database.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800050](../errorcode-data-rdb.md#14800050-failed-to-obtain-the-subscription-service) | Failed to obtain the subscription service. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
@@ -4056,8 +3972,6 @@ Registers an observer for the database.
 **Examples**
 
 See [on](#on)
-
-<a id="on4"></a>
 
 ## on
 
@@ -4084,15 +3998,13 @@ Register an automatic synchronization callback to the database.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed; <br>4. The event must be a not empty string; 5. The progress must be function. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed; <br>4. The event must be a not empty string; 5. The progress must be function. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
 
 **Examples**
 
 See [on](#on)
-
-<a id="on5"></a>
 
 ## on
 
@@ -4119,7 +4031,7 @@ Subscribes to the SQL statistics.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -4127,8 +4039,6 @@ Subscribes to the SQL statistics.
 **Examples**
 
 See [on](#on)
-
-<a id="on6"></a>
 
 ## on
 
@@ -4162,8 +4072,6 @@ Subscribes to the SQL performance statistics.
 
 See [on](#on)
 
-<a id="on7"></a>
-
 ## on
 
 ```TypeScript
@@ -4196,8 +4104,6 @@ Subscribes to the SQL execution error logs.
 
 See [on](#on)
 
-<a id="query1"></a>
-
 ## query
 
 ```TypeScript
@@ -4223,7 +4129,7 @@ Queries data in the database based on specified conditions.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
 | [14800015](../errorcode-data-rdb.md#14800015-rdb-store-not-respond) | The database does not respond.<br>**Applicable version:** 12 and later |
@@ -4259,8 +4165,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="query2"></a>
-
 ## query
 
 ```TypeScript
@@ -4287,7 +4191,7 @@ Queries data in the database based on specified conditions.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
 | [14800015](../errorcode-data-rdb.md#14800015-rdb-store-not-respond) | The database does not respond.<br>**Applicable version:** 12 and later |
@@ -4323,8 +4227,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="query3"></a>
-
 ## query
 
 ```TypeScript
@@ -4356,7 +4258,7 @@ Queries data in the database based on specified conditions.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
 | [14800015](../errorcode-data-rdb.md#14800015-rdb-store-not-respond) | The database does not respond.<br>**Applicable version:** 12 and later |
@@ -4392,8 +4294,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="querybystep1"></a>
-
 ## queryByStep
 
 ```TypeScript
@@ -4414,7 +4314,7 @@ Query data in the database step‑by‑step based on SQL statements.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sql | string | Yes | Indicates the SQL statement to execute.<br>Value range: (0, +∞) <br>A valid SQL statement must be used. Otherwise, an error code may be thrown when ResultSet is used. |
+| sql | string | Yes | Indicates the SQL statement to execute. <br>Value range: (0, +∞) <br>A valid SQL statement must be used. Otherwise, an error code may be thrown when ResultSet is used. |
 | bindArgs | Array&lt;[ValueType](arkts-arkdata-relationalstore-valuetype-t.md)&gt; | No | Indicates the [ValueType](arkts-arkdata-relationalstore-valuetype-t.md) values of the parameters in the SQL statement. <br>Default value:The default value is an empty array. <br>The value must be the same as the number of placeholders in the SQL statement. |
 
 **Return value:**
@@ -4458,8 +4358,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="querybystep2"></a>
-
 ## queryByStep
 
 ```TypeScript
@@ -4481,7 +4379,7 @@ Queries data in the database step‑by‑step based on specified conditions.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | predicates | [RdbPredicates](arkts-arkdata-relationalstore-rdbpredicates-c.md) | Yes | The specified query condition by the instance object of [RdbPredicates](arkts-arkdata-relationalstore-rdbpredicates-c.md). |
-| columns | Array&lt;string&gt; | No | The columns to query. If the value is null, the query applies to all columns.<br>Default value: empty array by default. <br>If an empty array is transferred, all columns are queried. |
+| columns | Array&lt;string&gt; | No | The columns to query. If the value is null, the query applies to all columns. <br>Default value: empty array by default. <br>If an empty array is transferred, all columns are queried. |
 
 **Return value:**
 
@@ -4557,7 +4455,7 @@ Queries locked data in the database based on specified conditions.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -4608,8 +4506,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="querysql1"></a>
-
 ## querySql
 
 ```TypeScript
@@ -4635,7 +4531,7 @@ Queries data in the database based on SQL statement.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
 | [14800015](../errorcode-data-rdb.md#14800015-rdb-store-not-respond) | The database does not respond.<br>**Applicable version:** 12 and later |
@@ -4687,8 +4583,6 @@ const querySql2 = "select * from test where id in (select id from test1)";
 let resultSet2 = await store.querySql(querySql2);
 ```
 
-<a id="querysql2"></a>
-
 ## querySql
 
 ```TypeScript
@@ -4715,7 +4609,7 @@ Queries data in the database based on SQL statement.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
 | [14800015](../errorcode-data-rdb.md#14800015-rdb-store-not-respond) | The database does not respond.<br>**Applicable version:** 12 and later |
@@ -4749,8 +4643,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="querysql3"></a>
-
 ## querySql
 
 ```TypeScript
@@ -4782,7 +4674,7 @@ Queries data in the database based on SQL statement.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
 | [14800015](../errorcode-data-rdb.md#14800015-rdb-store-not-respond) | The database does not respond.<br>**Applicable version:** 12 and later |
@@ -4858,7 +4750,7 @@ Queries data in the database based on SQL statement with sync interface.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
 | [14800015](../errorcode-data-rdb.md#14800015-rdb-store-not-respond) | The database does not respond. |
@@ -5051,7 +4943,7 @@ Queries data in the database based on specified conditions with sync function.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
 | [14800015](../errorcode-data-rdb.md#14800015-rdb-store-not-respond) | The database does not respond. |
@@ -5442,8 +5334,6 @@ Change the encryption parameters of the database.
 | [14800028](../errorcode-data-rdb.md#14800028-sqlite-io-error) | SQLite: Some kind of disk I/O error occurred. |
 | [14800029](../errorcode-data-rdb.md#14800029-sqlite-database-is-full) | SQLite: The database is full. |
 
-<a id="remotequery1"></a>
-
 ## remoteQuery
 
 ```TypeScript
@@ -5478,7 +5368,7 @@ Queries remote data in the database based on specified conditions before Synchro
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -5534,8 +5424,6 @@ if (store != undefined && deviceId != undefined) {
 }
 ```
 
-<a id="remotequery2"></a>
-
 ## remoteQuery
 
 ```TypeScript
@@ -5569,7 +5457,7 @@ Queries remote data in the database based on specified conditions before Synchro
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -5623,8 +5511,6 @@ if (store != undefined && deviceId != undefined) {
 }
 ```
 
-<a id="restore1"></a>
-
 ## restore
 
 ```TypeScript
@@ -5650,7 +5536,7 @@ Restores a database from a specified database file.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -5684,8 +5570,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="restore2"></a>
-
 ## restore
 
 ```TypeScript
@@ -5716,7 +5600,7 @@ Restores a database from a specified database file.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -5853,7 +5737,7 @@ Rolls back the SQL statement executed.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -5897,8 +5781,6 @@ if (store != null) {
 }
 ```
 
-<a id="setdistributedtables1"></a>
-
 ## setDistributedTables
 
 ```TypeScript
@@ -5926,7 +5808,7 @@ Set table to be distributed table.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -5944,8 +5826,6 @@ if (store != undefined) {
   });
 }
 ```
-
-<a id="setdistributedtables2"></a>
 
 ## setDistributedTables
 
@@ -5979,7 +5859,7 @@ Set table to be distributed table.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -5997,8 +5877,6 @@ if (store != undefined) {
   });
 }
 ```
-
-<a id="setdistributedtables3"></a>
 
 ## setDistributedTables
 
@@ -6028,7 +5906,7 @@ Set table to be distributed table.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800051](../errorcode-data-rdb.md#14800051-inconsistent-distributed-table-type) | The type of the distributed table does not match. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
@@ -6047,8 +5925,6 @@ if (store != undefined) {
   });
 }
 ```
-
-<a id="setdistributedtables4"></a>
 
 ## setDistributedTables
 
@@ -6084,7 +5960,7 @@ Set table to be distributed table.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800051](../errorcode-data-rdb.md#14800051-inconsistent-distributed-table-type) | The type of the distributed table does not match. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
@@ -6105,8 +5981,6 @@ if (store != undefined) {
   });
 }
 ```
-
-<a id="setdistributedtables5"></a>
 
 ## setDistributedTables
 
@@ -6142,7 +6016,7 @@ Set table to be a distributed table.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800051](../errorcode-data-rdb.md#14800051-inconsistent-distributed-table-type) | The type of the distributed table does not match. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
@@ -6263,8 +6137,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="sync1"></a>
-
 ## sync
 
 ```TypeScript
@@ -6295,7 +6167,7 @@ Sync data between devices.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -6337,8 +6209,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="sync2"></a>
-
 ## sync
 
 ```TypeScript
@@ -6372,7 +6242,7 @@ Sync data between devices.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -6438,7 +6308,7 @@ but their functionality is similar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [SyncMode](arkts-arkdata-relationalstore-syncmode-e.md) | Yes | Indicates the database synchronization mode.<br>Only SYNC_MODE_PUSH and SYNC_MODE_PULL are supported. |
+| mode | [SyncMode](arkts-arkdata-relationalstore-syncmode-e.md) | Yes | Indicates the database synchronization mode. <br>Only SYNC_MODE_PUSH and SYNC_MODE_PULL are supported. |
 | predicates | [RdbPredicates](arkts-arkdata-relationalstore-rdbpredicates-c.md) | Yes | The specified sync condition by the instance object of [RdbPredicates](arkts-arkdata-relationalstore-rdbpredicates-c.md). |
 
 **Return value:**
@@ -6525,7 +6395,7 @@ Unlocks data from the database based on a specified instance object of RdbPredic
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -6562,8 +6432,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="update1"></a>
-
 ## update
 
 ```TypeScript
@@ -6592,7 +6460,7 @@ Updates data in the database based on a specified instance object of RdbPredicat
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
@@ -6654,8 +6522,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="update2"></a>
-
 ## update
 
 ```TypeScript
@@ -6691,7 +6557,7 @@ Updates data in the database based on a specified instance object of RdbPredicat
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -6752,8 +6618,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="update3"></a>
-
 ## update
 
 ```TypeScript
@@ -6785,7 +6649,7 @@ Updates data in the database based on a specified instance object of RdbPredicat
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit.<br>**Applicable version:** 10 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
@@ -6847,8 +6711,6 @@ if (store != undefined) {
 }
 ```
 
-<a id="update4"></a>
-
 ## update
 
 ```TypeScript
@@ -6882,7 +6744,7 @@ Updates data in the database based on a specified instance object of RdbPredicat
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800047](../errorcode-data-rdb.md#14800047-wal-file-size-exceeds-the-default-limit) | The WAL file size exceeds the default limit. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -6975,7 +6837,7 @@ Updates data in the database based on a specified instance object of RdbPredicat
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed. |
@@ -7224,7 +7086,7 @@ Set RdbStore version. The version number must be an integer greater than 0. Obta
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.<br>**Applicable version:** 12 and later |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error.<br>**Applicable version:** 12 and later |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |

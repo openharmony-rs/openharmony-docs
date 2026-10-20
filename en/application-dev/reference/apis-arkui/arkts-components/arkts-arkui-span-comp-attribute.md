@@ -6,8 +6,6 @@ declare class SpanAttribute extends BaseSpan<SpanAttribute>
 
 Inherited from [BaseSpan](arkts-arkui-span-comp-basespan-c.md).
 
-@extends CommonMethod<SpanAttribute> [since 7 - 10] @extends BaseSpan<SpanAttribute> [since 11]
-
 **Inheritance/Implementation:** SpanAttribute extends BaseSpan&lt;SpanAttribute&gt;
 
 **Since:** 7
@@ -38,9 +36,7 @@ Sets the text decoration line style and its color. If this API is not used, the 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [DecorationStyleInterface](../arkts-apis/arkts-arkui-decorationstyleinterface-i.md) | Yes | Text decoration line style object.<br>**Note:** <br>The style parameter does not support the card capability.<br>**Since:** 12 |
-
-<a id="font1"></a>
+| value | [DecorationStyleInterface](../arkts-apis/arkts-arkui-decorationstyleinterface-i.md) | Yes | Text decoration line style object. <br>**Note:** <br>The style parameter does not support the card capability.<br>**Since:** 12 |
 
 ## font
 
@@ -69,8 +65,6 @@ Sets the text style, covering the font size, font width, Font family, and font s
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | Font | Yes | Text style, including the font size, font weight, font family, and font style. |
-
-<a id="font2"></a>
 
 ## font
 
@@ -143,7 +137,7 @@ Sets the font list. If this API is not used, the default font is 'HarmonyOS Sans
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Font list.<br>When multiple fonts are used, separate them with commas ','. The priority of the fonts takes effect in order. For example: 'Arial,HarmonyOS Sans'. |
+| value | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Font list. <br>When multiple fonts are used, separate them with commas ','. The priority of the fonts takes effect in order. For example: 'Arial,HarmonyOS Sans'. |
 
 ## fontSize
 
@@ -219,8 +213,6 @@ Sets the attributes of a variable font. This is applicable to scenarios where va
 | --- | --- | --- | --- |
 | fontVariations | Array&lt;[FontVariation](../arkts-apis/arkts-arkui-fontvariation-t.md)&gt; | Yes | Array of variable font attributes. Each array element contains two fields: axis (attribute axis name) and value (attribute value). The fontVariations attribute has a higher priority than [fontWeight](#fontweight). |
 
-<a id="fontweight1"></a>
-
 ## fontWeight
 
 ```TypeScript
@@ -248,9 +240,7 @@ Sets the font weight of the text. If the value is too large, the text may be cli
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the text.<br>For the number type, the value ranges from [100, 900], at an interval of 100. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enumvalues in FontWeight. If the value is set too large, the font may be truncated under different fonts. If a value outside the value range or not meeting the interval requirement is passed in, the default value is used. <br>Since API version 20, the Resource type is supported.<br>**Since:** 20 |
-
-<a id="fontweight2"></a>
+| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the text. <br>For the number type, the value ranges from [100, 900], at an interval of 100. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enumvalues in FontWeight. If the value is set too large, the font may be truncated under different fonts. If a value outside the value range or not meeting the interval requirement is passed in, the default value is used. <br>Since API version 20, the Resource type is supported.<br>**Since:** 20 |
 
 ## fontWeight
 
@@ -280,7 +270,7 @@ Sets the font weight of the text. If this API is not used, the default font weig
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| weight | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the text.<br>For the number type, the value ranges from 100 to 900, with an interval of 100. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enumvalues in FontWeight. If the value is set too large, the text may be truncated under different fonts. <br>If the value passed in is out of the value range, the default value is used. If the value passed in does not meet the interval requirement, the passed-in value is used when enableVariableFontWeight of fontWeightConfigs is set to true; otherwise, the default value is used. |
+| weight | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the text. <br>For the number type, the value ranges from 100 to 900, with an interval of 100. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enumvalues in FontWeight. If the value is set too large, the text may be truncated under different fonts. <br>If the value passed in is out of the value range, the default value is used. If the value passed in does not meet the interval requirement, the passed-in value is used when enableVariableFontWeight of fontWeightConfigs is set to true; otherwise, the default value is used. |
 | fontWeightConfigs | [FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md) | No | Font weight configuration object, used to configure options such as the variable font weight. The default value inherits [FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md). |
 
 ## letterSpacing
@@ -329,7 +319,7 @@ Sets the line height for the text. If this API is not used, the line height is a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Text line height.<br> The unit is fp when the value is of the number type. When the value is of the string type, the string form of a number type value is supported, and a unit can be attached, for example, "10" and "10fp". Percentage strings are not supported. |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Text line height. <br> The unit is fp when the value is of the number type. When the value is of the string type, the string form of a number type value is supported, and a unit can be attached, for example, "10" and "10fp". Percentage strings are not supported. |
 
 ## textCase
 

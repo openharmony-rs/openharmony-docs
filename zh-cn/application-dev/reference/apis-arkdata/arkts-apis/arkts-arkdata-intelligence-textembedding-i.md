@@ -8,8 +8,6 @@ interface TextEmbedding
 
 下列接口都需先使用[intelligence.getTextEmbeddingModel](arkts-arkdata-intelligence-gettextembeddingmodel-f.md)获取到TextEmbedding实例，再通过此实例调用对应接口。
 
-@interface TextEmbedding
-
 **起始版本：** 15
 
 <!--Device-intelligence-interface TextEmbedding--><!--Device-intelligence-interface TextEmbedding-End-->
@@ -21,8 +19,6 @@ interface TextEmbedding
 ```TypeScript
 import { intelligence } from '@kit.ArkData';
 ```
-
-<a id="getembedding1"></a>
 
 ## getEmbedding
 
@@ -56,7 +52,7 @@ getEmbedding(text: string): Promise<Array<number>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 
@@ -80,8 +76,6 @@ textEmbedding.loadModel()
     console.error(`Failed to load Model. Code: ${err.code}, message: ${err.message}`);
   })
 ```
-
-<a id="getembedding2"></a>
 
 ## getEmbedding
 
@@ -115,7 +109,7 @@ getEmbedding(batchTexts: Array<string>): Promise<Array<Array<number>>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-服务内部异常) | Inner error. |
 

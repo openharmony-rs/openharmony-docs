@@ -6,8 +6,6 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="settime1"></a>
-
 ## setTime
 
 ```TypeScript
@@ -39,7 +37,7 @@ Sets the system time. This API uses an asynchronous callback to return the resul
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [204](../../errorcode-universal.md#204-access-denied-by-user-access-control-policy) | Access denied due to user access control policy. Possible causes:         1. The operation is restricted by the OS-account constraint.         2. The required privilege for the operation has not been granted.<br>**Applicable version:** 26.0.0 and later |
 
 <!--Del-->
@@ -66,8 +64,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="settime2"></a>
 
 ## setTime
 
@@ -105,7 +101,7 @@ Sets the system time. This API uses a promise to return the result.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [204](../../errorcode-universal.md#204-access-denied-by-user-access-control-policy) | Access denied due to user access control policy. Possible causes:         1. The operation is restricted by the OS-account constraint.         2. The required privilege for the operation has not been granted.<br>**Applicable version:** 26.0.0 and later |
 
 <!--Del-->

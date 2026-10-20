@@ -12,7 +12,13 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function mmap(file: number | File, mode: MappingMode, offset: number, size: number): Promise<FileMapping>
 ```
 
-Creates a file mapping object based on a file descriptor or file object, using promise asynchronous callback. Maps file contents to memory for efficient read and write access to files. Note: In the read/write mode (MappingMode.READ_WRITE), if the mapping range exceeds the raw file size, the file size will be automatically expanded.
+Creates a file mapping object based on a file descriptor or file object for efficient read and write access to files. This API uses a promise to return the result.
+
+> **NOTE:** 
+> 
+> 1. Memory mapping can be performed only for regular files. Non-regular files, such as pipeline, socket, and device files, are not supported. You can use [statSync()](arkts-corefile-file-fs-statsync-f.md) to obtain file attributes and then call [Stat.isFile()](arkts-corefile-file-fs-stat-i.md#isfile) to check whether the file is a regular file.
+> 2. If the mapping range exceeds the raw file size and the write permission is granted for the file, the mapping file size will be automatically expanded.
+> 3. For files from external storage or network files, the establishment of mappings and access to the mapped memory are not guaranteed due to differences in the underlying file system. This may cause the application to terminate unexpectedly. You are advised to use other file access APIs such as [read](arkts-corefile-file-fs-read-f.md), [write](arkts-corefile-file-fs-write-f.md), or [Stream](arkts-corefile-file-fs-stream-i.md) in this scenario.
 
 **Since:** 26.0.0
 
@@ -27,15 +33,15 @@ Creates a file mapping object based on a file descriptor or file object, using p
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | file | number &#124; [File](arkts-corefile-file-fs-file-i.md) | Yes | File object or open file descriptor fd that has been opened. |
-| mode | [MappingMode](arkts-corefile-file-fs-mappingmode-e.md) | Yes | Option to create a file memory-mapped object. You must specify one of the following options:<br>MappingMode.READ_ONLY(0): read-only mode. The file mapping area is not writable. An exception is thrown when the file mapping area is modified. <br>MappingMode.READ_WRITE(1): read/write mode. The modification is written to the file mapping area and then synchronized to the file by the operating system (non-real-time). <br>MappingMode.PRIVATE(2): private mode. It is a copy-on-write mapping mechanism. Modifications to the mapping area are visible only to the current process and do not affect the original file. |
-| offset | number | Yes | Start position of the file mapping area, in bytes. |
-| size | number | Yes | Size of the file mapping area, in bytes. |
+| mode | [MappingMode](arkts-corefile-file-fs-mappingmode-e.md) | Yes | Option to create a file memory-mapped object. You must specify one of the following options: <br> <b>MappingMode.READ_ONLY(0)</b>: read-only mode. The file mapping area is not writable. An exception is thrown when the file mapping area is modified. <br> <b>MappingMode.READ_WRITE(1)</b>: read/write mode. The modification is written to the file mapping area and then synchronized to the file by the operating system (non-real-time). <b>MappingMode.PRIVATE(2)</b>: private mode. It is a copy-on-write mapping mechanism. Modifications to the mapping area are visible only to the current process and do not affect the raw file. |
+| offset | number | Yes | Start location of the file mapping area, in bytes. |
+| size | number | Yes | Size of the file mapping area, in bytes. The value must be greater than 0 and not greater than <b>INT32_MAX</b>. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[FileMapping](arkts-corefile-file-fs-filemapping-i.md)&gt; | Promise object. Returns a FileMapping object. |
+| Promise&lt;[FileMapping](arkts-corefile-file-fs-filemapping-i.md)&gt; | Promise used to return the file mapping object. Initial state of the returned object: The value of <b>position</b> is <b>0</b>, and the values of <b>limit</b> and <b>capacity</b> are equal to the value of <b>size</b>. |
 
 **Error codes:**
 

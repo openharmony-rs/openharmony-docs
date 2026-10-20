@@ -2,8 +2,6 @@
 
 Provides capabilities for controlling and interacting with mechanical devices connected to this device. The capabilities cover connection management, control, and monitoring.
 
-@namespace mechanicManager
-
 **Since:** 20
 
 <!--Device-unnamed-declare namespace mechanicManager--><!--Device-unnamed-declare namespace mechanicManager-End-->

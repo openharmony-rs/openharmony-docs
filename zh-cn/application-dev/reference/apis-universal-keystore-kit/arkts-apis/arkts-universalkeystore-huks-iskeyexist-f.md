@@ -6,8 +6,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="iskeyexist1"></a>
-
 ## isKeyExist
 
 ```TypeScript
@@ -19,14 +17,14 @@ function isKeyExist(keyAlias: string, options: HuksOptions, callback: AsyncCallb
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.isKeyItemExist<sup>9+</sup>](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist1)
+> [huks.isKeyItemExist<sup>9+</sup>](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist1)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist)(keyAlias: string, options: HuksOptions, callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-huks-function isKeyExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void--><!--Device-huks-function isKeyExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback<boolean>): void-End-->
 
@@ -55,8 +53,6 @@ huks.isKeyExist(keyAlias, emptyOptions, (err, data) => {
 ```
 
 
-<a id="iskeyexist2"></a>
-
 ## isKeyExist
 
 ```TypeScript
@@ -68,13 +64,13 @@ function isKeyExist(keyAlias: string, options: HuksOptions): Promise<boolean>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.isKeyItemExist<sup>9+</sup>](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist2)替代。
+> [huks.isKeyItemExist<sup>9+</sup>](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist2)(keyAlias: string, options: HuksOptions)
+**替代接口：** [isKeyItemExist](arkts-universalkeystore-huks-iskeyitemexist-f.md#iskeyitemexist)(keyAlias: string, options: HuksOptions)
 
 <!--Device-huks-function isKeyExist(keyAlias: string, options: HuksOptions): Promise<boolean>--><!--Device-huks-function isKeyExist(keyAlias: string, options: HuksOptions): Promise<boolean>-End-->
 

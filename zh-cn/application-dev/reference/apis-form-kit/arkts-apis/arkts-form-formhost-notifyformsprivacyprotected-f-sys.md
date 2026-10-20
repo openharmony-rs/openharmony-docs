@@ -6,8 +6,6 @@
 import { formHost } from '@kit.FormKit';
 ```
 
-<a id="notifyformsprivacyprotected1"></a>
-
 ## notifyFormsPrivacyProtected
 
 ```TypeScript
@@ -70,8 +68,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="notifyformsprivacyprotected2"></a>
 
 ## notifyFormsPrivacyProtected
 

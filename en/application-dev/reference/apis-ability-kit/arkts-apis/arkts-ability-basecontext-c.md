@@ -29,3 +29,18 @@ Whether the child class Context is used for the stage model. true: [Stage model]
 <!--Device-BaseContext-stageMode: boolean--><!--Device-BaseContext-stageMode: boolean-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Examples**
+
+Take the stage model as an example. You can access the stageMode field through UIAbilityContext.
+
+```TypeScript
+import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+
+class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // EntryAbility onCreate, isStageMode: true
+    console.info(`EntryAbility onCreate, isStageMode: ${this.context.stageMode}`);
+  }
+}
+```

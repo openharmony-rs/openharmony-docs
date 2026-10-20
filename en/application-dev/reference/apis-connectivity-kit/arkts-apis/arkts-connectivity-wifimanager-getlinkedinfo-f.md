@@ -6,8 +6,6 @@
 import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
-<a id="getlinkedinfo1"></a>
-
 ## getLinkedInfo
 
 ```TypeScript
@@ -53,8 +51,6 @@ wifiManager.getLinkedInfo().then((data: wifiManager.WifiLinkedInfo) => {
 });
 ```
 
-
-<a id="getlinkedinfo2"></a>
 
 ## getLinkedInfo
 

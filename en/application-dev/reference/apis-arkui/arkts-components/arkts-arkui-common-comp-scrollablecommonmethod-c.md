@@ -6,8 +6,6 @@ declare class ScrollableCommonMethod<T> extends CommonMethod<T>
 
 CommonScrollableMethod
 
-@extends CommonMethod<T>
-
 **Inheritance/Implementation:** ScrollableCommonMethod extends CommonMethod&lt;T&gt;
 
 **Since:** 12
@@ -40,7 +38,7 @@ When the automatic margin adjustment feature is enabled, the scrolling direction
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean &#124; undefined | Yes | Whether to automatically adjust the margin.<br>**true**: yes. <br>**false**: no. <br>**undefined**: no. |
+| enable | boolean &#124; undefined | Yes | Whether to automatically adjust the margin. <br>**true**: yes. <br>**false**: no. <br>**undefined**: no. |
 
 **Return value:**
 
@@ -72,7 +70,7 @@ When a status bar touch event is received, the scrollable component on the curre
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| backToTop | boolean | Yes | Whether to enable the back-to-top feature for the scrollable component when the status bar is touched. **true** to enable, **false** otherwise.<br>Default value: <br>Versions earlier than API version 18: **false** <br>API version 18 and later: **false** for horizontal scrolling and **true** for vertical scrolling |
+| backToTop | boolean | Yes | Whether to enable the back-to-top feature for the scrollable component when the status bar is touched. **true** to enable, **false** otherwise. <br>Default value: <br>Versions earlier than API version 18: **false** <br>API version 18 and later: **false** for horizontal scrolling and **true** for vertical scrolling |
 
 **Return value:**
 
@@ -230,7 +228,7 @@ Sets the effect used when the scroll boundary is reached.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| edgeEffect | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | Yes | Effect used when the scroll boundary is reached. The spring and shadow effects are supported.<br>Default value: **EdgeEffect.None** for the **Grid**, **Scroll**, and **WaterFlow** components and **EdgeEffect.Spring** for the **List** component |
+| edgeEffect | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | Yes | Effect used when the scroll boundary is reached. The spring and shadow effects are supported. <br>Default value: **EdgeEffect.None** for the **Grid**, **Scroll**, and **WaterFlow** components and **EdgeEffect.Spring** for the **List** component |
 | options | [EdgeEffectOptions](arkts-arkui-common-comp-edgeeffectoptions-i.md) | No | Whether to enable the sliding effect when the component content size is smaller than the component itself. Since API version 18, the edge where the edge effect takes effect can be set. Setting it to **{ alwaysEnabled: true }** enables the sliding effect, and **{ alwaysEnabled: false }** disables it.<br>Default value:<br>For the **List**, **Grid**, and **WaterFlow** components, the default value is **{ alwaysEnabled: false }**; for the **Scroll** component, the default value is **{ alwaysEnabled: true }**. Since API version 18, the **effectEdge** field is added by default, with the value **EffectEdge.START &#124; EffectEdge.END**. |
 
 **Return value:**
@@ -269,6 +267,36 @@ Sets whether to support scroll gestures.
 | --- | --- |
 | T | Current scrollable component. |
 
+## enableScrollWithKeyboard
+
+```TypeScript
+enableScrollWithKeyboard(enabled: boolean | undefined): T
+```
+
+Sets whether to enable scrolling with keyboard arrow keys. When enabled, the component will scroll in response to arrow key presses when focused but not in active focus state.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-ScrollableCommonMethod-enableScrollWithKeyboard(enabled: boolean | undefined): T--><!--Device-ScrollableCommonMethod-enableScrollWithKeyboard(enabled: boolean | undefined): T-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| enabled | boolean &#124; undefined | Yes | Whether to enable scrolling with keyboard arrow keys. <br>Default value: true. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| T |  |
+
 ## enableScrollWithMouse
 
 ```TypeScript
@@ -291,7 +319,7 @@ Set whether to support scrolling by dragging with the left mouse button pressed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean &#124; undefined | Yes | Whether to support scrolling by dragging with the left mouse button pressed.<br>Default value: For API versions earlier than 26.2.0,the defalut value is false. For API versions 26.2.0 and later, the defalut value is true when the scrollable component scrolls horizontally,false otherwise. |
+| enabled | boolean &#124; undefined | Yes | Whether to support scrolling by dragging with the left mouse button pressed. <br>Default value: For API versions earlier than 26.2.0,the defalut value is false. For API versions 26.2.0 and later, the defalut value is true when the scrollable component scrolls horizontally,false otherwise. |
 
 **Return value:**
 
@@ -310,23 +338,23 @@ Sets whether to enable the edge fading effect and the length of the fading edge.
 > **NOTE:** 
 > 
 > **fadingEdge** is implemented by setting the [overlay](arkts-arkui-common-comp-commonmethod-c.md#overlay) attribute and the
-> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode1) attribute (with the parameter
+> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode) attribute (with the parameter
 > values **BlendMode.SRC_OVER** and **BlendApplyType.OFFSCREEN**). When **fadingEdge** takes effect, it overrides
 > the **.overlay()** and **.blendMode()** attributes of the original component, and causes the APIs that require
 > screen capture of the current component and its child components to fail to capture the correct image. The APIs
-> that require screen capture include [blur](arkts-arkui-common-comp-commonmethod-c.md#blur1),
-> [linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur1),
-> [brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness1), [visualEffect](arkts-arkui-common-comp-commonmethod-c.md#visualeffect),
-> [grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale1), [saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate1),
-> [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast1),
-> [invert](arkts-arkui-common-comp-commonmethod-c.md#invert1),
-> [sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia1),
-> [hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate1),
-> [colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend1),
-> [lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect1),
-> [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect1),
-> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode1), and
-> [backgroundBrightness](arkts-arkui-common-comp-commonmethod-c.md#backgroundbrightness1).
+> that require screen capture include [blur](arkts-arkui-common-comp-commonmethod-c.md#blur),
+> [linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur),
+> [brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness), [visualEffect](arkts-arkui-common-comp-commonmethod-c.md#visualeffect),
+> [grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale), [saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate),
+> [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast),
+> [invert](arkts-arkui-common-comp-commonmethod-c.md#invert),
+> [sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia),
+> [hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate),
+> [colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend),
+> [lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect),
+> [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect),
+> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode), and
+> [backgroundBrightness](arkts-arkui-common-comp-commonmethod-c.md#backgroundbrightness).
 > 
 > When **fadingEdge** takes effect, it is recommended not to set the [background](arkts-arkui-common-comp-commonmethod-c.md#background)
 > related attributes on the component on which the **fadingEdge** attribute is set, because doing so affects the
@@ -338,7 +366,7 @@ Sets whether to enable the edge fading effect and the length of the fading edge.
 > system material and causes the material effect to be inconsistent with the expected effect.
 > 
 > When **fadingEdge** takes effect, the component on which the **fadingEdge** attribute is set is clipped to the
-> boundary. Setting the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) attribute to **false** on this component
+> boundary. Setting the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) attribute to **false** on this component
 > does not take effect.
 
 **Since:** 14
@@ -355,8 +383,8 @@ Sets whether to enable the edge fading effect and the length of the fading edge.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the edge fading effect. **true** to enable, **false** otherwise.<br>Default value: **false**. |
-| options | [FadingEdgeOptions](arkts-arkui-common-comp-fadingedgeoptions-i.md) | No | Object defining edge fading effect properties, such as the fading edge length.<br>If the value is less than 0, undefined, or not set, the default value is used. The default length is 32 vp. <br>If the value exceeds half the height of the container, it is adjusted to exactly half the height of the container. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the edge fading effect. **true** to enable, **false** otherwise. <br>Default value: **false**. |
+| options | [FadingEdgeOptions](arkts-arkui-common-comp-fadingedgeoptions-i.md) | No | Object defining edge fading effect properties, such as the fading edge length. <br>If the value is less than 0, undefined, or not set, the default value is used. The default length is 32 vp. <br>If the value exceeds half the height of the container, it is adjusted to exactly half the height of the container. |
 
 **Return value:**
 
@@ -396,7 +424,7 @@ Sets the maximum initial speed for inertial animation after a fling gesture.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| speedLimit | number | Yes | Maximum initial speed for inertial animation.<br>Default value: **9000** <br>Unit: vp/s <br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used. |
+| speedLimit | number | Yes | Maximum initial speed for inertial animation. <br>Default value: **9000** <br>Unit: vp/s <br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used. |
 
 **Return value:**
 
@@ -426,7 +454,7 @@ Sets the friction coefficient. It takes effect when the scroll area is swiped ma
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Friction coefficient.<br>Default value: **0.6** for non-wearable devices and **0.9** for wearable devices. <br>Since API version 11, the default value for non-wearable devices is **0.7**. <br>Since API version 12, the default value for non-wearable devices is **0.75**. <br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used. |
+| value | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Friction coefficient. <br>Default value: **0.6** for non-wearable devices and **0.9** for wearable devices. <br>Since API version 11, the default value for non-wearable devices is **0.7**. <br>Since API version 12, the default value for non-wearable devices is **0.75**. <br>Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used. |
 
 **Return value:**
 
@@ -456,7 +484,7 @@ Sets the nested scrolling mode in the forward and backward directions to impleme
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | Yes | Nested scrolling options.<br>Default value: **{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY }** |
+| value | [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | Yes | Nested scrolling options. <br>Default value: **{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY }** |
 
 **Return value:**
 
@@ -870,8 +898,6 @@ Sets the scrollbar state.
 | --- | --- |
 | T | Current scrollable component. |
 
-<a id="scrollbarcolor1"></a>
-
 ## scrollBarColor
 
 ```TypeScript
@@ -894,7 +920,7 @@ Sets the scrollbar color.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string | Yes | Scrollbar color.<br>The default value on children's smartwatches is **'#ffffff'**, which indicates white (100% opacity). The default value on other devices is **'#182431'**, which indicates dark blue-gray (40% opacity). <br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
+| color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string | Yes | Scrollbar color. <br>The default value on children's smartwatches is **'#ffffff'**, which indicates white (100% opacity). The default value on other devices is **'#182431'**, which indicates dark blue-gray (40% opacity). <br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
 
 **Return value:**
 
@@ -902,15 +928,13 @@ Sets the scrollbar color.
 | --- | --- |
 | T | Current scrollable component. |
 
-<a id="scrollbarcolor2"></a>
-
 ## scrollBarColor
 
 ```TypeScript
 scrollBarColor(color: Color | number | string | Resource): T
 ```
 
-Sets the scrollbar color. Compared with [scrollBarColor<sup>11+</sup>](#scrollbarcolor1), this API supports the Resource type for the **color** parameter.
+Sets the scrollbar color. Compared with [scrollBarColor<sup>11+</sup>](#scrollbarcolor), this API supports the Resource type for the **color** parameter.
 
 **Since:** 22
 
@@ -926,7 +950,7 @@ Sets the scrollbar color. Compared with [scrollBarColor<sup>11+</sup>](#scrollba
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Scrollbar color.<br>The default value on children's smartwatches is **'#ffffff'**, which indicates white (100% opacity). The default value on other devices is **'#182431'**, which indicates dark blue-gray (40% opacity). <br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
+| color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Scrollbar color. <br>The default value on children's smartwatches is **'#ffffff'**, which indicates white (100% opacity). The default value on other devices is **'#182431'**, which indicates dark blue-gray (40% opacity). <br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
 
 **Return value:**
 
@@ -1002,8 +1026,6 @@ Sets the margin of the scrollbar. The margin is calculated based on the distance
 | --- | --- |
 | T | Current scrollable component. |
 
-<a id="scrollbarwidth1"></a>
-
 ## scrollBarWidth
 
 ```TypeScript
@@ -1034,8 +1056,6 @@ Sets the width of the scrollbar. Percentage values are not supported. After the 
 | --- | --- |
 | T | Current scrollable component. |
 
-<a id="scrollbarwidth2"></a>
-
 ## scrollBarWidth
 
 ```TypeScript
@@ -1060,7 +1080,7 @@ If this API is not used, the scrollbar width is 4 vp.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Scrollbar width.<br>Unit: vp <br>The value range is [0, +∞). If this parameter is set to a value less than 0, **4vp** is used, and **5vp** is used for children's smartwatches. The value **0** means not to show the scrollbar. |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Scrollbar width. <br>Unit: vp <br>The value range is [0, +∞). If this parameter is set to a value less than 0, **4vp** is used, and **5vp** is used for children's smartwatches. The value **0** means not to show the scrollbar. |
 
 **Return value:**
 
@@ -1094,7 +1114,7 @@ Triggered when the scrollable component scrolls.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | (scrollOffset: number, scrollState: ScrollState) =&gt; void | Yes | Callback triggered when the scrollable component scrolls.<br>**scrollOffset**: offset relative to the previous frame. The offset is positive when the scrollable component is scrolled up and negative when it is scrolled down. Unit: vp <br>**scrollState**: current scroll state. |
+| event | (scrollOffset: number, scrollState: ScrollState) =&gt; void | Yes | Callback triggered when the scrollable component scrolls. <br>**scrollOffset**: offset relative to the previous frame. The offset is positive when the scrollable component is scrolled up and negative when it is scrolled down. Unit: vp <br>**scrollState**: current scroll state. |
 
 **Return value:**
 

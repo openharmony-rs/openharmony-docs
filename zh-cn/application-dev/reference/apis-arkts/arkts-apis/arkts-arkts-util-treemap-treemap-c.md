@@ -273,7 +273,7 @@ forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value?: V, key?: K, map?: TreeMap&lt;K, V&gt;) =&gt; void | 是 | 回调函数。callbackFn（必填）接受最多三个参数的函数。对每个元素调用的函数。 |
+| callbackFn | (value?: V, key?: K, map?: TreeMap&lt;K, V&gt;) =&gt; void | 是 | 回调函数。依次接收value、key和map三个参数：value为当前元素的值，key为当前元素的键，map为当前调用forEach方法的TreeMap实例。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为undefined。 |
 
 **错误码：**

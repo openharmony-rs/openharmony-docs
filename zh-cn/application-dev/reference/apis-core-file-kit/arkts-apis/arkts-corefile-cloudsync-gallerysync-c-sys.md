@@ -45,8 +45,6 @@ let gallerySync = new cloudSync.GallerySync()
 
 <!--DelEnd-->
 
-<a id="off1"></a>
-
 ## off
 
 ```TypeScript
@@ -78,7 +76,7 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
 <!--Del-->
@@ -97,8 +95,6 @@ gallerySync.off('progress', callback);
 ```
 
 <!--DelEnd-->
-
-<a id="off2"></a>
 
 ## off
 
@@ -130,7 +126,7 @@ off(evt: 'progress'): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
 <!--Del-->
@@ -179,7 +175,7 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
 <!--Del-->
@@ -194,8 +190,6 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 ```
 
 <!--DelEnd-->
-
-<a id="start1"></a>
 
 ## start
 
@@ -253,8 +247,6 @@ gallerySync.start().then(() => {
 
 <!--DelEnd-->
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -285,7 +277,7 @@ start(callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 22400001 | Cloud status not ready. |
 | 22400002 | Network unavailable. |
 | 22400003 | Low battery level. |
@@ -308,8 +300,6 @@ gallerySync.start((err: BusinessError) => {
 ```
 
 <!--DelEnd-->
-
-<a id="startwithtype1"></a>
 
 ## startWithType
 
@@ -353,8 +343,6 @@ startWithType(type: SyncType): Promise<void>
 | 22400002 | Network unavailable. |
 | 22400003 | Low battery level. |
 
-<a id="startwithtype2"></a>
-
 ## startWithType
 
 ```TypeScript
@@ -391,8 +379,6 @@ startWithType(callback: Callback<void>, type: SyncType): void
 | 22400001 | Cloud status not ready. |
 | 22400002 | Network unavailable. |
 | 22400003 | Low battery level. |
-
-<a id="stop1"></a>
 
 ## stop
 
@@ -447,8 +433,6 @@ gallerySync.stop().then(() => {
 
 <!--DelEnd-->
 
-<a id="stop2"></a>
-
 ## stop
 
 ```TypeScript
@@ -483,7 +467,7 @@ stop(callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 <!--Del-->
 **示例**

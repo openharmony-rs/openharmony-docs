@@ -4,7 +4,7 @@
 interface LcdFlashStatus
 ```
 
-Describes the LCD flash information.
+描述LCD闪光灯信息。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 readonly isLcdFlashNeeded: boolean
 ```
 
-Whether the LCD flash is required. **true** if required, **false** otherwise.
+是否需要LCD闪光灯。**true**表示需要，**false**表示不需要。
 
 **类型：** boolean
 
@@ -44,7 +44,7 @@ Whether the LCD flash is required. **true** if required, **false** otherwise.
 readonly lcdCompensation: number
 ```
 
-LCD flash compensation.
+LCD闪光灯补偿值。
 
 **类型：** number
 

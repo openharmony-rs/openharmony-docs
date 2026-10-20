@@ -214,8 +214,6 @@ getSuiteDownloadManager(): AudioSuiteDownloadManager
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
-<a id="setaudioscene1"></a>
-
 ## setAudioScene
 
 ```TypeScript
@@ -255,8 +253,6 @@ audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL, (err: Busine
 ```
 
 <!--DelEnd-->
-
-<a id="setaudioscene2"></a>
 
 ## setAudioScene
 

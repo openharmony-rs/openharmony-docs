@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function closeSync(file: number | File): void
 ```
 
-Closes a file or directory. This API returns the result synchronously.
+Closes a file or directory synchronously. After the file or directory is closed, the FD becomes invalid and cannot be used for read/write operations.
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ Closes a file or directory. This API returns the result synchronously.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| file | number &#124; [File](arkts-corefile-file-fs-file-i.md) | Yes | **File** object or FD of the file to close. Once closed, the **File** object or FD cannot be used for read or write operations. |
+| file | number &#124; [File](arkts-corefile-file-fs-file-i.md) | Yes | File object or open file descriptor fd that has been opened. After the function is disabled, the <b>File</b> object or FD cannot be used for read and write operations. If the file object or file descriptor is still used, an error may occur or the operation may fail. |
 
 **Error codes:**
 

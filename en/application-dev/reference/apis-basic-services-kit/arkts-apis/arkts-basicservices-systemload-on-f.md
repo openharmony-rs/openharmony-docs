@@ -31,7 +31,7 @@ Enables listening for system load level changes. This API uses an asynchronous c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Callback parameter error;<br> 2. Register a exist callback type; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Callback parameter error; <br> 2. Register a exist callback type; 3. Parameter verification failed. |
 
 **Examples**
 

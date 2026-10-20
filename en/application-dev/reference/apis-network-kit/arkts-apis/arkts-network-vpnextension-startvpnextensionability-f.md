@@ -26,7 +26,7 @@ Enables the VPN extension ability. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | Want information.<br> Note: From API version 22, the **parameters** field in **want** can be passed when the VPN is started for the first time. |
+| want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | Want information. <br> Note: From API version 22, the **parameters** field in **want** can be passed when the VPN is started for the first time. |
 
 **Return value:**
 

@@ -6,8 +6,6 @@ export interface PathPolicyInfo
 
 Policy information to manager permissions on a path.
 
-@interface PathPolicyInfo
-
 **Since:** 15
 
 <!--Device-fileShare-export interface PathPolicyInfo--><!--Device-fileShare-export interface PathPolicyInfo-End-->

@@ -4,7 +4,7 @@
 interface AVRecorder
 ```
 
-AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling any API in AVRecorder, you must use [createAVRecorder()](arkts-media-media-createavrecorder-f.md#createavrecorder1) to create an AVRecorder instance.
+AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling any API in AVRecorder, you must use [createAVRecorder()](arkts-media-media-createavrecorder-f.md#createavrecorder) to create an AVRecorder instance.
 
 For details about the audio and video recording demo, see [Audio Recording](../../../media/media/using-avrecorder-for-recording.md) and [Video Recording](../../../media/media/video-recording.md).
 
@@ -58,7 +58,7 @@ Get input meta surface for specified meta source type. it must be called between
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called from Non-System applications. Return by promise. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operate not permit. Return by promise. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | IO error. Return by promise. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |

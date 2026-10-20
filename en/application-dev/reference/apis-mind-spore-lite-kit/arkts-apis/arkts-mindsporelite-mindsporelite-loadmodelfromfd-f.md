@@ -6,8 +6,6 @@
 import { mindSporeLite } from '@kit.MindSporeLiteKit';
 ```
 
-<a id="loadmodelfromfd1"></a>
-
 ## loadModelFromFd
 
 ```TypeScript
@@ -68,8 +66,6 @@ mindSporeLite.loadModelFromFd(file.fd).then((mindSporeLiteModel: mindSporeLite.M
 ```
 
 
-<a id="loadmodelfromfd2"></a>
-
 ## loadModelFromFd
 
 ```TypeScript
@@ -120,8 +116,6 @@ mindSporeLite.loadModelFromFd(file.fd, (mindSporeLiteModel: mindSporeLite.Model)
 })
 ```
 
-
-<a id="loadmodelfromfd3"></a>
 
 ## loadModelFromFd
 

@@ -49,7 +49,7 @@ constructor(album: Album)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
 <!--Del-->
 **示例**
@@ -78,8 +78,6 @@ async function example(context: Context) {
 ```
 
 <!--DelEnd-->
-
-<a id="createanalysisalbumrequest2"></a>
 
 ## createAnalysisAlbumRequest
 
@@ -130,8 +128,8 @@ static createAnalysisAlbumRequest(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails.<br>Possible causes: <br>The input parameter is not within the valid range. |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. <br>Possible causes: <br>The input parameter is not within the valid range. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
 <!--Del-->
 **示例**
@@ -183,8 +181,8 @@ setDefaultCoverUri(coverUri: string): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails.<br>Possible causes: <br>The input parameter is not within the valid range. |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. <br>Possible causes: <br>The input parameter is not within the valid range. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
 <!--Del-->
 **示例**
@@ -268,8 +266,8 @@ setOrderPosition(assets: Array<PhotoAsset>, position: Array<number>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
 <!--Del-->
 **示例**
@@ -330,29 +328,29 @@ setRelationship(relationship: string): Promise<void>
 
 | 唯一标识 | 含义 |  
 | ---------- | ------- |  
-| me | 我 |
-| son | 儿子 |
-| daughter | 女儿 |
-| wife | 妻子 |
-| husband | 丈夫 |
-| father | 爸爸 |
-| mother | 妈妈 |
-| colleague | 同事 |
-| friend | 朋友 |
-| classmate | 同学 |
-| best_friend_female | 闺蜜 |
-| boyfriend | 男朋友 |
-| girlfriend | 女朋友 |
-| family | 家人 |
-| maternal_grandfather | 外公 |
-| maternal_grandmother | 外婆 |
-| paternal_grandfather | 爷爷 |
-| paternal_grandmother | 奶奶 |
-| older_brother | 哥哥 |
-| older_sister | 姐姐 |
-| younger_brother | 弟弟 |
-| younger_sister | 妹妹 |
-| relative | 亲戚 |
+| me | 我 |  
+| son | 儿子 |  
+| daughter | 女儿 |  
+| wife | 妻子 |  
+| husband | 丈夫 |  
+| father | 爸爸 |  
+| mother | 妈妈 |  
+| colleague | 同事 |  
+| friend | 朋友 |  
+| classmate | 同学 |  
+| best_friend_female | 闺蜜 |  
+| boyfriend | 男朋友 |  
+| girlfriend | 女朋友 |  
+| family | 家人 |  
+| maternal_grandfather | 外公 |  
+| maternal_grandmother | 外婆 |  
+| paternal_grandfather | 爷爷 |  
+| paternal_grandmother | 奶奶 |  
+| older_brother | 哥哥 |  
+| older_sister | 姐姐 |  
+| younger_brother | 弟弟 |  
+| younger_sister | 妹妹 |  
+| relative | 亲戚 |  
 | other | 其他 |
 
 **起始版本：** 21
@@ -383,8 +381,8 @@ setRelationship(relationship: string): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails.<br>Possible causes: <br>The input parameter is not within the valid range. |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | The scenario parameter verification fails. <br>Possible causes: <br>The input parameter is not within the valid range. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
 <!--Del-->
 **示例**

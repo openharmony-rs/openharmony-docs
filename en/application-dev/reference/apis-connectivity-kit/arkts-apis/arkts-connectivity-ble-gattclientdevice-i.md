@@ -194,8 +194,6 @@ try {
 }
 ```
 
-<a id="getdevicename1"></a>
-
 ## getDeviceName
 
 ```TypeScript
@@ -255,8 +253,6 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
-
-<a id="getdevicename2"></a>
 
 ## getDeviceName
 
@@ -318,8 +314,6 @@ try {
 }
 ```
 
-<a id="getrssivalue1"></a>
-
 ## getRssiValue
 
 ```TypeScript
@@ -374,8 +368,6 @@ try {
 }
 ```
 
-<a id="getrssivalue2"></a>
-
 ## getRssiValue
 
 ```TypeScript
@@ -427,8 +419,6 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
-
-<a id="getservices1"></a>
 
 ## getServices
 
@@ -498,8 +488,6 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
-
-<a id="getservices2"></a>
 
 ## getServices
 
@@ -1041,8 +1029,6 @@ try {
 }
 ```
 
-<a id="readcharacteristicvalue1"></a>
-
 ## readCharacteristicValue
 
 ```TypeScript
@@ -1124,8 +1110,6 @@ try {
 }
 ```
 
-<a id="readcharacteristicvalue2"></a>
-
 ## readCharacteristicValue
 
 ```TypeScript
@@ -1201,8 +1185,6 @@ try {
 }
 ```
 
-<a id="readdescriptorvalue1"></a>
-
 ## readDescriptorValue
 
 ```TypeScript
@@ -1274,8 +1256,6 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
-
-<a id="readdescriptorvalue2"></a>
 
 ## readDescriptorValue
 
@@ -1392,6 +1372,41 @@ try {
 }
 ```
 
+## refreshServices
+
+```TypeScript
+refreshServices(): Promise<void>
+```
+
+Refreshes the service cache of a connected BLE peripheral device.
+
+The cached services of the peer device are cleared and rediscovered after the refresh. The promise is resolved when the refresh request is delivered to the service, and the rediscovery proceeds asynchronously. Call getServices to obtain the refreshed service list.
+
+**Since:** 26.2.0
+
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GattClientDevice-refreshServices(): Promise<void>--><!--Device-GattClientDevice-refreshServices(): Promise<void>-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| 2900099 | Operation failed. |
+| 2901003 | The connection is not established. |
+
 ## setBLEMtu
 
 ```TypeScript
@@ -1495,8 +1510,6 @@ try {
 }
 ```
 
-<a id="setcharacteristicchangeindication1"></a>
-
 ## setCharacteristicChangeIndication
 
 ```TypeScript
@@ -1571,8 +1584,6 @@ try {
 }
 ```
 
-<a id="setcharacteristicchangeindication2"></a>
-
 ## setCharacteristicChangeIndication
 
 ```TypeScript
@@ -1641,8 +1652,6 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
-
-<a id="setcharacteristicchangenotification1"></a>
 
 ## setCharacteristicChangeNotification
 
@@ -1717,8 +1726,6 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
-
-<a id="setcharacteristicchangenotification2"></a>
 
 ## setCharacteristicChangeNotification
 
@@ -1897,8 +1904,6 @@ try {
 }
 ```
 
-<a id="writecharacteristicvalue1"></a>
-
 ## writeCharacteristicValue
 
 ```TypeScript
@@ -1981,8 +1986,6 @@ try {
 }
 ```
 
-<a id="writecharacteristicvalue2"></a>
-
 ## writeCharacteristicValue
 
 ```TypeScript
@@ -2060,8 +2063,6 @@ try {
 }
 ```
 
-<a id="writedescriptorvalue1"></a>
-
 ## writeDescriptorValue
 
 ```TypeScript
@@ -2132,8 +2133,6 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
-
-<a id="writedescriptorvalue2"></a>
 
 ## writeDescriptorValue
 

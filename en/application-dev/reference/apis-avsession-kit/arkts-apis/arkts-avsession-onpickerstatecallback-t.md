@@ -6,8 +6,6 @@ export type OnPickerStateCallback = (state: AVCastPickerState) => void
 
 Callback for picker state
 
-@typedef { function } OnPickerStateCallback
-
 **Since:** 20
 
 **Atomic service API:** This API can be used in atomic services since API version 20.

@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function moveFileSync(src: string, dest: string, mode?: number): void
 ```
 
-Moves a file. This API returns the result synchronously.
+Moves a file to the destination path. This API returns the result synchronously.
 
 > **NOTE:** 
 > 
@@ -30,9 +30,9 @@ Moves a file. This API returns the result synchronously.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| src | string | Yes | Application sandbox path of the file to move. |
+| src | string | Yes | Application sandbox path of the source file. |
 | dest | string | Yes | Application sandbox path of the destination file. |
-| mode | number | No | Move mode.<br> The value **0** means to overwrite the file with the same name in the destination directory; the value **1** means to throw an exception. The default value is **0**. |
+| mode | number | No | Move mode. The value <b>0</b> means to overwrite the file with the same name in the destination directory; the value <b>1</b> means to throw an exception. The default value is <b>0</b>. |
 
 **Error codes:**
 

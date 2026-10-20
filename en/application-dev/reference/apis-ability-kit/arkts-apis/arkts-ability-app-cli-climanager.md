@@ -2,9 +2,9 @@
 
 This module provides the capability to interact with system command-line interface (CLI) tools, including querying tool information, invoking and executing CLI commands, and managing sessions. A session is created when the execTool API is called, and is used to track the execution status and result of the CLI tool.
 
-@namespace cliManager
-
 **Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace cliManager--><!--Device-unnamed-declare namespace cliManager-End-->
 

@@ -4,6 +4,8 @@ Provide interfaces and functions for HiRetrieval feature.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used in both the stage model and FA model.
+
 <!--Device-unnamed-declare namespace hiRetrieval--><!--Device-unnamed-declare namespace hiRetrieval-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiRetrieval

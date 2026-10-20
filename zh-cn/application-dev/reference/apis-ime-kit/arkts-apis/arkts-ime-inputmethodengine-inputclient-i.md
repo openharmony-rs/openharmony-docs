@@ -4,7 +4,7 @@
 interface InputClient
 ```
 
-InputClient是输入法客户端对象，代表当前绑定到输入法应用的编辑框客户端。InputClient实例通过InputMethodAbility的[on('inputStart')](arkts-ime-inputmethodengine-inputmethodability-i.md#oninputstart)事件回调获取，每个绑定事件对应一个InputClient实例，输入法应用通过该实例与编辑框进行文本交互。<br> <br>核心功能概述：<br> <br>- 文本获取：通过[getForward](#getforward) /[getForwardSync](#getforwardsync)获取光标前的文本，通过[getBackward](#getbackward)/ [getBackwardSync](#getbackwardsync)获取光标后的文本，用于分析已输入内容并提供智能补全。<br>- 文本编辑：通过[insertText](#inserttext1)/ [insertTextSync](#inserttextsync)插入文本，通过[deleteForward](#deleteforward)/ [deleteForwardSync](#deleteforwardsync)删除光标前的文本，通过[deleteBackward](#deletebackward) /[deleteBackwardSync](#deletebackwardsync)删除光标后的文本。<br>- 功能键与光标：通过[sendKeyFunction](#sendkeyfunction)发送功能键（如回车键），通过[moveCursor](#movecursor)/ [moveCursorSync](#movecursorsync)移动光标。<br>- 选区操作：通过[selectByRange](#selectbyrange1)/ [selectByRangeSync](#selectbyrangesync)按范围选中文本，通过[selectByMovement](#selectbymovement1) /[selectByMovementSync](#selectbymovementsync)按方向选中文本。<br>- 编辑框属性：通过[getEditorAttribute](#geteditorattribute1) /[getEditorAttributeSync](#geteditorattributesync)获取编辑框属性信息（输入类型、回车键类型等），据此调整键盘布局。<br>- 文本预览：通过[setPreviewText](#setpreviewtext)/ [setPreviewTextSync](#setpreviewtextsync)设置预览文本，通过[finishTextPreview](#finishtextpreview)/ [finishTextPreviewSync](#finishtextpreviewsync)结束文本预览。<br>- 私有通信：通过[sendPrivateCommand](#sendprivatecommand)向应用发送私有命令，通过[sendMessage](#sendmessage)/ [recvMessage](#recvmessage)进行消息通信。<br> <br>注意事项：<br> <br>- InputClient实例与当前绑定的编辑框关联，当编辑框失去焦点或输入法解绑时，该实例可能失效。<br>- 同名Sync后缀接口为同步接口，阻塞主线程，容易影响UI交互，需谨慎使用。<br> <br>下列API均需使用[on('inputStart')](arkts-ime-inputmethodengine-inputmethodability-i.md#oninputstart)获取到InputClient实例后，通过实例调用。
+InputClient是输入法客户端对象，代表当前绑定到输入法应用的编辑框客户端。InputClient实例通过InputMethodAbility的[on('inputStart')](arkts-ime-inputmethodengine-inputmethodability-i.md#oninputstart)事件回调获取，每个绑定事件对应一个InputClient实例，输入法应用通过该实例与编辑框进行文本交互。<br> <br>核心功能概述：<br> <br>- 文本获取：通过[getForward](#getforward) /[getForwardSync](#getforwardsync)获取光标前的文本，通过[getBackward](#getbackward)/ [getBackwardSync](#getbackwardsync)获取光标后的文本，用于分析已输入内容并提供智能补全。<br>- 文本编辑：通过[insertText](#inserttext)/ [insertTextSync](#inserttextsync)插入文本，通过[deleteForward](#deleteforward)/ [deleteForwardSync](#deleteforwardsync)删除光标前的文本，通过[deleteBackward](#deletebackward) /[deleteBackwardSync](#deletebackwardsync)删除光标后的文本。<br>- 功能键与光标：通过[sendKeyFunction](#sendkeyfunction)发送功能键（如回车键），通过[moveCursor](#movecursor)/ [moveCursorSync](#movecursorsync)移动光标。<br>- 选区操作：通过[selectByRange](#selectbyrange)/ [selectByRangeSync](#selectbyrangesync)按范围选中文本，通过[selectByMovement](#selectbymovement) /[selectByMovementSync](#selectbymovementsync)按方向选中文本。<br>- 编辑框属性：通过[getEditorAttribute](#geteditorattribute) /[getEditorAttributeSync](#geteditorattributesync)获取编辑框属性信息（输入类型、回车键类型等），据此调整键盘布局。<br>- 文本预览：通过[setPreviewText](#setpreviewtext)/ [setPreviewTextSync](#setpreviewtextsync)设置预览文本，通过[finishTextPreview](#finishtextpreview)/ [finishTextPreviewSync](#finishtextpreviewsync)结束文本预览。<br>- 私有通信：通过[sendPrivateCommand](#sendprivatecommand)向应用发送私有命令，通过[sendMessage](#sendmessage)/ [recvMessage](#recvmessage)进行消息通信。<br> <br>注意事项：<br> <br>- InputClient实例与当前绑定的编辑框关联，当编辑框失去焦点或输入法解绑时，该实例可能失效。<br>- 同名Sync后缀接口为同步接口，阻塞主线程，容易影响UI交互，需谨慎使用。<br> <br>下列API均需使用[on('inputStart')](arkts-ime-inputmethodengine-inputmethodability-i.md#oninputstart)获取到InputClient实例后，通过实例调用。
 
 **起始版本：** 9
 
@@ -17,8 +17,6 @@ InputClient是输入法客户端对象，代表当前绑定到输入法应用的
 ```TypeScript
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
-
-<a id="deletebackward1"></a>
 
 ## deleteBackward
 
@@ -67,8 +65,6 @@ inputClient.deleteBackward(length, (err: BusinessError, result: boolean) => {
   }
 });
 ```
-
-<a id="deletebackward2"></a>
 
 ## deleteBackward
 
@@ -160,8 +156,6 @@ let length: number = 1;
 inputClient.deleteBackwardSync(length);
 ```
 
-<a id="deleteforward1"></a>
-
 ## deleteForward
 
 ```TypeScript
@@ -209,8 +203,6 @@ inputClient.deleteForward(length, (err: BusinessError, result: boolean) => {
   }
 });
 ```
-
-<a id="deleteforward2"></a>
 
 ## deleteForward
 
@@ -411,8 +403,6 @@ let attachOptions: inputMethodEngine.AttachOptions = inputClient.getAttachOption
 console.info(`Succeeded in getting AttachOptions, AttachOptions is ${attachOptions}`);
 ```
 
-<a id="getbackward1"></a>
-
 ## getBackward
 
 ```TypeScript
@@ -456,8 +446,6 @@ inputClient.getBackward(length, (err: BusinessError, text: string) => {
   console.info('Succeeded in getting backward, text: ' + text);
 });
 ```
-
-<a id="getbackward2"></a>
 
 ## getBackward
 
@@ -596,8 +584,6 @@ inputClient.getCallingWindowInfo().then((windowInfo: inputMethodEngine.WindowInf
 });
 ```
 
-<a id="geteditorattribute1"></a>
-
 ## getEditorAttribute
 
 ```TypeScript
@@ -636,8 +622,6 @@ inputClient.getEditorAttribute().then((editorAttribute: inputMethodEngine.Editor
   console.error(`Failed to getEditorAttribute. Code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="geteditorattribute3"></a>
 
 ## getEditorAttribute
 
@@ -688,7 +672,7 @@ getEditorAttributeSync(): EditorAttribute
 > **说明：** <br>
 > <br>
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口<br>
-> [getEditorAttribute](#geteditorattribute1) <br>
+> [getEditorAttribute](#geteditorattribute) <br>
 > 。
 
 **起始版本：** 10
@@ -716,8 +700,6 @@ let editorAttribute: inputMethodEngine.EditorAttribute = inputClient.getEditorAt
 console.info(`editorAttribute.inputPattern:  ${editorAttribute.inputPattern}`);
 console.info(`editorAttribute.enterKeyType:  ${editorAttribute.enterKeyType}`);
 ```
-
-<a id="getforward1"></a>
 
 ## getForward
 
@@ -762,8 +744,6 @@ inputClient.getForward(length, (err: BusinessError, text: string) => {
   console.info('Succeeded in getting forward, text: ' + text);
 });
 ```
-
-<a id="getforward2"></a>
 
 ## getForward
 
@@ -858,8 +838,6 @@ let text: string = inputClient.getForwardSync(length);
 console.info(`Succeeded in getting forward, text: ${text}`);
 ```
 
-<a id="gettextindexatcursor1"></a>
-
 ## getTextIndexAtCursor
 
 ```TypeScript
@@ -900,8 +878,6 @@ inputClient.getTextIndexAtCursor((err: BusinessError, index: number) => {
   console.info('Succeeded in getTextIndexAtCursor: ' + index);
 });
 ```
-
-<a id="gettextindexatcursor2"></a>
 
 ## getTextIndexAtCursor
 
@@ -980,8 +956,6 @@ let index: number = inputClient.getTextIndexAtCursorSync();
 console.info(`Succeeded in getTextIndexAtCursorSync, index: ${index}`);
 ```
 
-<a id="inserttext1"></a>
-
 ## insertText
 
 ```TypeScript
@@ -1029,8 +1003,6 @@ inputClient.insertText('test', (err: BusinessError, result: boolean) => {
   }
 });
 ```
-
-<a id="inserttext2"></a>
 
 ## insertText
 
@@ -1092,7 +1064,7 @@ insertTextSync(text: string): void
 > **说明：** <br>
 > <br>
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口<br>
-> [insertText](#inserttext2)。
+> [insertText](#inserttext)。
 
 **起始版本：** 10
 
@@ -1119,8 +1091,6 @@ insertTextSync(text: string): void
 ```TypeScript
 inputClient.insertTextSync('test');
 ```
-
-<a id="movecursor1"></a>
 
 ## moveCursor
 
@@ -1163,8 +1133,6 @@ inputClient.moveCursor(inputMethodEngine.Direction.CURSOR_UP, (err: BusinessErro
   console.info('Succeeded in moving cursor.');
 });
 ```
-
-<a id="movecursor2"></a>
 
 ## moveCursor
 
@@ -1352,7 +1320,7 @@ recvMessage(msgHandler?: MessageHandler): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| msgHandler | [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md) | 否 | 该对象将通过[onMessage](arkts-ime-inputmethodengine-messagehandler-i.md#onmessage2)接收来自已绑定当前输入法应用的编辑框应用所发送的自定义通信数据，并通过[onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated)接收终止此对象订阅的消息。<br>若不填写此参数，则取消全局已注册的[MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md)对象，同时触发其[onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated)回调函数。 |
+| msgHandler | [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md) | 否 | 该对象将通过[onMessage](arkts-ime-inputmethodengine-messagehandler-i.md#onmessage)接收来自已绑定当前输入法应用的编辑框应用所发送的自定义通信数据，并通过[onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated)接收终止此对象订阅的消息。<br>若不填写此参数，则取消全局已注册的[MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md)对象，同时触发其[onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated)回调函数。 |
 
 **错误码：**
 
@@ -1379,8 +1347,6 @@ inputMethodEngine.getInputMethodAbility()
       client.recvMessage(messageHandler);
     });
 ```
-
-<a id="selectbymovement1"></a>
 
 ## selectByMovement
 
@@ -1425,8 +1391,6 @@ inputClient.selectByMovement(movement, (err: BusinessError) => {
   console.info('Succeeded in selecting by movement.');
 });
 ```
-
-<a id="selectbymovement2"></a>
 
 ## selectByMovement
 
@@ -1485,7 +1449,7 @@ selectByMovementSync(movement: Movement): void
 > **说明：** <br>
 > <br>
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口<br>
-> [selectByMovement](#selectbymovement2)。
+> [selectByMovement](#selectbymovement)。
 
 **起始版本：** 10
 
@@ -1513,8 +1477,6 @@ selectByMovementSync(movement: Movement): void
 let movement: inputMethodEngine.Movement = { direction: 1 };
 inputClient.selectByMovementSync(movement);
 ```
-
-<a id="selectbyrange1"></a>
 
 ## selectByRange
 
@@ -1560,8 +1522,6 @@ inputClient.selectByRange(range, (err: BusinessError) => {
   console.info('Succeeded in selecting by range.');
 });
 ```
-
-<a id="selectbyrange2"></a>
 
 ## selectByRange
 
@@ -1621,7 +1581,7 @@ selectByRangeSync(range: Range): void
 > **说明：** <br>
 > <br>
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口<br>
-> [selectByRange](#selectbyrange1) <br>
+> [selectByRange](#selectbyrange) <br>
 > 。
 
 **起始版本：** 10
@@ -1651,8 +1611,6 @@ selectByRangeSync(range: Range): void
 let range: inputMethodEngine.Range = { start: 0, end: 1 };
 inputClient.selectByRangeSync(range);
 ```
-
-<a id="sendextendaction1"></a>
 
 ## sendExtendAction
 
@@ -1705,8 +1663,6 @@ inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY, (err: Business
   console.info('Succeeded in sending extend action.');
 });
 ```
-
-<a id="sendextendaction2"></a>
 
 ## sendExtendAction
 
@@ -1763,8 +1719,6 @@ inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY).then(() => {
 });
 ```
 
-<a id="sendkeyfunction1"></a>
-
 ## sendKeyFunction
 
 ```TypeScript
@@ -1812,8 +1766,6 @@ inputClient.sendKeyFunction(action, (err: BusinessError, result: boolean) => {
   }
 });
 ```
-
-<a id="sendkeyfunction2"></a>
 
 ## sendKeyFunction
 

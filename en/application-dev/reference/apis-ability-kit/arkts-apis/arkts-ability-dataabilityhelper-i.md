@@ -12,8 +12,6 @@ A DataAbilityHelper object is obtained through [acquireDataAbilityHelper](arkts-
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
 
-<a id="batchinsert1"></a>
-
 ## batchInsert
 
 ```TypeScript
@@ -59,8 +57,6 @@ DAHelper.batchInsert('dataability:///com.example.DataAbility', cars, (error, dat
     }
 });
 ```
-
-<a id="batchinsert2"></a>
 
 ## batchInsert
 
@@ -109,8 +105,6 @@ DAHelper.batchInsert('dataability:///com.example.DataAbility', cars).then((data)
 });
 ```
 
-<a id="call1"></a>
-
 ## call
 
 ```TypeScript
@@ -155,8 +149,6 @@ dataAbilityHelper.call('dataability:///com.example.jsapidemo.UserDataAbility',
     }
 });
 ```
-
-<a id="call2"></a>
 
 ## call
 
@@ -207,8 +199,6 @@ dataAbilityHelper.call('dataability:///com.example.jsapidemo.UserDataAbility',
 });
 ```
 
-<a id="delete1"></a>
-
 ## delete
 
 ```TypeScript
@@ -252,8 +242,6 @@ DAHelper.delete('dataability:///com.example.DataAbility', da, (error, data) => {
     }
 });
 ```
-
-<a id="delete2"></a>
 
 ## delete
 
@@ -300,8 +288,6 @@ DAHelper.delete('dataability:///com.example.DataAbility', da).then((data) => {
 });
 ```
 
-<a id="delete3"></a>
-
 ## delete
 
 ```TypeScript
@@ -342,8 +328,6 @@ DAHelper.delete('dataability:///com.example.DataAbility', (error, data) => {
     }
 });
 ```
-
-<a id="denormalizeuri1"></a>
 
 ## denormalizeUri
 
@@ -386,8 +370,6 @@ DAHelper.denormalizeUri('dataability:///com.example.DataAbility', (error, data) 
 });
 ```
 
-<a id="denormalizeuri2"></a>
-
 ## denormalizeUri
 
 ```TypeScript
@@ -429,8 +411,6 @@ DAHelper.denormalizeUri('dataability:///com.example.DataAbility').then((data) =>
     console.info(`denormalizeUri data: ${JSON.stringify(data)}`);
 });
 ```
-
-<a id="executebatch1"></a>
 
 ## executeBatch
 
@@ -480,8 +460,6 @@ dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbi
 });
 ```
 
-<a id="executebatch2"></a>
-
 ## executeBatch
 
 ```TypeScript
@@ -530,8 +508,6 @@ dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbi
 });
 ```
 
-<a id="getfiletypes1"></a>
-
 ## getFileTypes
 
 ```TypeScript
@@ -573,8 +549,6 @@ DAHelper.getFileTypes( 'dataability:///com.example.DataAbility', 'image/*', (err
     }
 });
 ```
-
-<a id="getfiletypes2"></a>
 
 ## getFileTypes
 
@@ -619,8 +593,6 @@ DAHelper.getFileTypes('dataability:///com.example.DataAbility', 'image/*').then(
 });
 ```
 
-<a id="gettype1"></a>
-
 ## getType
 
 ```TypeScript
@@ -661,8 +633,6 @@ DAHelper.getType('dataability:///com.example.DataAbility', (error, data) => {
     }
 });
 ```
-
-<a id="gettype2"></a>
 
 ## getType
 
@@ -705,8 +675,6 @@ DAHelper.getType('dataability:///com.example.DataAbility').then((data) => {
     console.info(`getType data: ${JSON.stringify(data)}`);
 });
 ```
-
-<a id="insert1"></a>
 
 ## insert
 
@@ -776,8 +744,6 @@ DAHelper.insert('dataability:///com.example.DataAbility', valueBucket).then((dat
 });
 ```
 
-<a id="insert2"></a>
-
 ## insert
 
 ```TypeScript
@@ -810,8 +776,6 @@ Inserts a single data record into the database. This API uses a promise to retur
 **Examples**
 
 See [insert](#insert)
-
-<a id="normalizeuri1"></a>
 
 ## normalizeUri
 
@@ -853,8 +817,6 @@ DAHelper.normalizeUri('dataability:///com.example.DataAbility', (error, data) =>
     }
 });
 ```
-
-<a id="normalizeuri2"></a>
 
 ## normalizeUri
 
@@ -898,8 +860,6 @@ DAHelper.normalizeUri('dataability:///com.example.DataAbility').then((data) => {
 });
 ```
 
-<a id="notifychange1"></a>
-
 ## notifyChange
 
 ```TypeScript
@@ -940,8 +900,6 @@ DAHelper.notifyChange('dataability:///com.example.DataAbility', (error) => {
     }
 });
 ```
-
-<a id="notifychange2"></a>
 
 ## notifyChange
 
@@ -1075,8 +1033,6 @@ DAHelper.on(
 );
 ```
 
-<a id="openfile1"></a>
-
 ## openFile
 
 ```TypeScript
@@ -1119,8 +1075,6 @@ DAHelper.openFile('dataability:///com.example.DataAbility', mode, (error, data) 
     }
 });
 ```
-
-<a id="openfile2"></a>
 
 ## openFile
 
@@ -1165,8 +1119,6 @@ DAHelper.openFile('dataability:///com.example.DataAbility', mode).then((data) =>
     console.info(`openFile data: ${JSON.stringify(data)}`);
 });
 ```
-
-<a id="query1"></a>
 
 ## query
 
@@ -1219,8 +1171,6 @@ DAHelper.query('dataability:///com.example.DataAbility', cars, da, (error, data)
 });
 ```
 
-<a id="query2"></a>
-
 ## query
 
 ```TypeScript
@@ -1261,8 +1211,6 @@ DAHelper.query('dataability:///com.example.DataAbility', (error, data) => {
     }
 });
 ```
-
-<a id="query3"></a>
 
 ## query
 
@@ -1307,8 +1255,6 @@ DAHelper.query('dataability:///com.example.DataAbility', cars, (error, data) => 
 });
 ```
 
-<a id="query4"></a>
-
 ## query
 
 ```TypeScript
@@ -1352,8 +1298,6 @@ DAHelper.query('dataability:///com.example.DataAbility', da, (error, data) => {
     }
 });
 ```
-
-<a id="query5"></a>
 
 ## query
 
@@ -1401,8 +1345,6 @@ DAHelper.query('dataability:///com.example.DataAbility', cars, da).then((data) =
     console.info(`query data: ${JSON.stringify(data)}`);
 });
 ```
-
-<a id="update1"></a>
 
 ## update
 
@@ -1461,8 +1403,6 @@ DAHelper.update('dataability:///com.example.DataAbility', va, da, (error, data) 
 });
 ```
 
-<a id="update2"></a>
-
 ## update
 
 ```TypeScript
@@ -1515,8 +1455,6 @@ DAHelper.update('dataability:///com.example.DataAbility', va, da).then((data) =>
     console.info(`update data: ${JSON.stringify(data)}`);
 });
 ```
-
-<a id="update3"></a>
 
 ## update
 

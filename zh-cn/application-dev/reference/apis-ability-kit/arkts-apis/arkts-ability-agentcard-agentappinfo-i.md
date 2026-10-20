@@ -6,8 +6,6 @@ export interface AgentAppInfo
 
 Agent的应用信息。
 
-@typedef AgentAppInfo
-
 **起始版本：** 24
 
 <!--Device-unnamed-export interface AgentAppInfo--><!--Device-unnamed-export interface AgentAppInfo-End-->

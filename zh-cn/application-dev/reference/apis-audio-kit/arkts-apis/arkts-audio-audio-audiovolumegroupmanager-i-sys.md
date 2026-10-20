@@ -18,8 +18,6 @@ interface AudioVolumeGroupManager
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="adjustsystemvolumebystep1"></a>
-
 ## adjustSystemVolumeByStep
 
 ```TypeScript
@@ -71,8 +69,6 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
 ```
 
 <!--DelEnd-->
-
-<a id="adjustsystemvolumebystep2"></a>
 
 ## adjustSystemVolumeByStep
 
@@ -129,8 +125,6 @@ audioVolumeGroupManager.adjustSystemVolumeByStep(audio.AudioVolumeType.MEDIA, au
 
 <!--DelEnd-->
 
-<a id="adjustvolumebystep1"></a>
-
 ## adjustVolumeByStep
 
 ```TypeScript
@@ -182,8 +176,6 @@ audioVolumeGroupManager.adjustVolumeByStep(audio.VolumeAdjustType.VOLUME_UP, (er
 ```
 
 <!--DelEnd-->
-
-<a id="adjustvolumebystep2"></a>
 
 ## adjustVolumeByStep
 
@@ -326,8 +318,6 @@ let value: boolean = audioVolumeGroupManager.isPersistentMicMute();
 
 <!--DelEnd-->
 
-<a id="mute1"></a>
-
 ## mute
 
 ```TypeScript
@@ -370,8 +360,6 @@ audioVolumeGroupManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessEr
 ```
 
 <!--DelEnd-->
-
-<a id="mute2"></a>
 
 ## mute
 
@@ -516,8 +504,6 @@ audioVolumeGroupManager.setMicMutePersistent(true, audio.PolicyType.PRIVACY).the
 
 <!--DelEnd-->
 
-<a id="setringermode1"></a>
-
 ## setRingerMode
 
 ```TypeScript
@@ -560,8 +546,6 @@ audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (e
 
 <!--DelEnd-->
 
-<a id="setringermode2"></a>
-
 ## setRingerMode
 
 ```TypeScript
@@ -602,8 +586,6 @@ audioVolumeGroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL).th
 ```
 
 <!--DelEnd-->
-
-<a id="setvolume1"></a>
 
 ## setVolume
 
@@ -647,8 +629,6 @@ audioVolumeGroupManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: Busines
 ```
 
 <!--DelEnd-->
-
-<a id="setvolume2"></a>
 
 ## setVolume
 

@@ -6,8 +6,6 @@
 import { deviceInfo } from '@kit.MDMKit';
 ```
 
-<a id="getdevicename1"></a>
-
 ## getDeviceName
 
 ```TypeScript
@@ -73,8 +71,6 @@ deviceInfo.getDeviceName(wantTemp, (err, result) => {
 
 <!--DelEnd-->
 
-
-<a id="getdevicename2"></a>
 
 ## getDeviceName
 

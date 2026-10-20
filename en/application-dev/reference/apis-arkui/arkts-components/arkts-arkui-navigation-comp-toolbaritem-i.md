@@ -60,7 +60,7 @@ Symbol icon for a single option on the menu bar when it is in active state. It h
 
 **NOTE:** 
 
-The SymbolGlyphModifier object's [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize) attribute cannot be used to change the icon size, [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) attribute cannot be used to change the animation effect, and [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect1) attribute cannot be used to change the animation effect type.
+The SymbolGlyphModifier object's [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize) attribute cannot be used to change the icon size, [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) attribute cannot be used to change the animation effect, and [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect) attribute cannot be used to change the animation effect type.
 
 **Type:** [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
@@ -132,7 +132,7 @@ Symbol icon for a single option on the toolbar. It has higher priority than **ic
 
 **NOTE:** 
 
-The SymbolGlyphModifier object's [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize) attribute cannot be used to change the icon size, [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) attribute cannot be used to change the animation effect, and [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect1) attribute cannot be used to change the animation effect type.
+The SymbolGlyphModifier object's [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize) attribute cannot be used to change the icon size, [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) attribute cannot be used to change the animation effect, and [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect) attribute cannot be used to change the animation effect type.
 
 **Type:** [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 

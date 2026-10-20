@@ -6,8 +6,6 @@ interface Banner extends MediaEntity
 
 海报的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。
 
-@extends MediaEntity @interface Banner
-
 **继承/实现关系：** Banner extends [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)
 
 **起始版本：** 23

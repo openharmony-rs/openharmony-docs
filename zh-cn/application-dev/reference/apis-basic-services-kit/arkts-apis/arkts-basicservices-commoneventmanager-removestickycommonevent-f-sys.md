@@ -6,8 +6,6 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="removestickycommonevent1"></a>
-
 ## removeStickyCommonEvent
 
 ```TypeScript
@@ -61,8 +59,6 @@ commonEventManager.removeStickyCommonEvent('sticky_event', (err: BusinessError) 
 
 <!--DelEnd-->
 
-
-<a id="removestickycommonevent2"></a>
 
 ## removeStickyCommonEvent
 

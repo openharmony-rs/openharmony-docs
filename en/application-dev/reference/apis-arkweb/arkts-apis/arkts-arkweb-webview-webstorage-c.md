@@ -44,7 +44,7 @@ Deletes all storage data used by JavaScript storage APIs, including the Web SQL 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| incognito | boolean | No | Whether to delete all data in the Web SQL Database in incognito mode. The value **true** means to delete all data in the Web SQL Database in incognito mode, and **false** means the opposite.<br>Default value: **false**. <br>If **undefined** or **null** is passed, the value is **false**.<br>**Since:** 11 |
+| incognito | boolean | No | Whether to delete all data in the Web SQL Database in incognito mode. The value **true** means to delete all data in the Web SQL Database in incognito mode, and **false** means the opposite. <br>Default value: **false**. <br>If **undefined** or **null** is passed, the value is **false**.<br>**Since:** 11 |
 
 **Examples**
 
@@ -94,13 +94,13 @@ Deletes all data in the specified origin.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| origin | string | Yes | Index of the origin, which is obtained through [getOrigins](#getorigins2). |
+| origin | string | Yes | Index of the origin, which is obtained through [getOrigins](#getorigins). |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. |
 
 **Examples**
@@ -224,8 +224,6 @@ HTML file to be loaded:
  </html>
 ```
 
-<a id="getoriginquota1"></a>
-
 ## getOriginQuota
 
 ```TypeScript
@@ -258,7 +256,7 @@ Obtains the storage quota of an origin in the Web SQL Database and HTML5-support
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. |
 
 **Examples**
@@ -297,8 +295,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getoriginquota2"></a>
-
 ## getOriginQuota
 
 ```TypeScript
@@ -320,13 +316,13 @@ Obtains the storage quota of an origin in Web SQL Database and HTML5-supported W
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | origin | string | Yes | Index of the origin. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Storage quota of the origin.<br>**number** is a long integer ranging from -2,147,483,648 to 2,147,483,647. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Storage quota of the origin. <br>**number** is a long integer ranging from -2,147,483,648 to 2,147,483,647. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. |
 
 **Examples**
@@ -365,8 +361,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getorigins1"></a>
-
 ## getOrigins
 
 ```TypeScript
@@ -393,7 +387,7 @@ Obtains information about origins that are currently using the Web SQL Database 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100012](../errorcode-webview.md#17100012-no-web-storage-origin) | Invalid web storage origin. |
 
 **Examples**
@@ -435,8 +429,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getorigins2"></a>
-
 ## getOrigins
 
 ```TypeScript
@@ -463,7 +455,7 @@ Obtains information about origins that are currently using the Web SQL Database 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100012](../errorcode-webview.md#17100012-no-web-storage-origin) | Invalid web storage origin. |
 
 **Examples**
@@ -505,8 +497,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getoriginusage1"></a>
-
 ## getOriginUsage
 
 ```TypeScript
@@ -539,7 +529,7 @@ Obtains the storage usage of an origin in the Web SQL Database and HTML5-support
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. |
 
 **Examples**
@@ -576,8 +566,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getoriginusage2"></a>
-
 ## getOriginUsage
 
 ```TypeScript
@@ -605,7 +593,7 @@ Obtains the storage usage of an origin in the Web SQL Database and HTML5-support
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. |
 
 **Examples**

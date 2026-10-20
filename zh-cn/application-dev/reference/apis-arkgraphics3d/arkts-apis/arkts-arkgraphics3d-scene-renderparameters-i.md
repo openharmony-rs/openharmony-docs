@@ -6,8 +6,6 @@ export interface RenderParameters
 
 渲染参数接口。
 
-@interface RenderParameters
-
 **起始版本：** 15
 
 <!--Device-unnamed-export interface RenderParameters--><!--Device-unnamed-export interface RenderParameters-End-->

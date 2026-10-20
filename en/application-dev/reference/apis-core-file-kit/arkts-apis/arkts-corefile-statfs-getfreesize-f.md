@@ -6,8 +6,6 @@
 import { statfs } from '@kit.CoreFileKit';
 ```
 
-<a id="getfreesize1"></a>
-
 ## getFreeSize
 
 ```TypeScript
@@ -68,8 +66,6 @@ statfs.getFreeSize(path).then((number: number) => {
 });
 ```
 
-
-<a id="getfreesize2"></a>
 
 ## getFreeSize
 

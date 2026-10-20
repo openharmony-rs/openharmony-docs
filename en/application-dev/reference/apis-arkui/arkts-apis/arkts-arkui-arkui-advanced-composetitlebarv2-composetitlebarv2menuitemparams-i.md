@@ -44,6 +44,8 @@ accessibilityDescription?: ResourceStr
 
 The accessibilityDescription of this menu item.
 
+Default value: **"Double-tap to activate."**
+
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **Since:** 26.0.0
@@ -64,9 +66,19 @@ accessibilityLevel?: string
 
 The accessibilityLevel of this menu item.
 
-**Type:** string
+Supported values:
 
-**Default:** auto .The options are as follows:<br>"auto":The value is converted to "yes" or "no" based on the component."yes": the current component is selectable for the accessibility service."no": The current component is not selectable for the accessibility service."no-hide-descendants":The current component and all its child components are not selectable<br> for the accessibility service.
+**"auto"**: The attribute value of the current component is converted to **"yes"** or **"no"** based on the situation.
+
+**"yes"**: The current component can be recognized by the accessibility service.
+
+**"no"**: The current component cannot be recognized by the accessibility service.
+
+**"no-hide-descendants"**: The current component and all its child components cannot be recognized by the accessibility service.
+
+Default value: **"auto"**.
+
+**Type:** string
 
 **Since:** 26.0.0
 

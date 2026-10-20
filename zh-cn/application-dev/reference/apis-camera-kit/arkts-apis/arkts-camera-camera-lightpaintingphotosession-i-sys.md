@@ -4,7 +4,7 @@
 interface LightPaintingPhotoSession extends Session, Flash, Focus, Zoom, ColorEffect
 ```
 
-LightPaintingPhotoSession extends Session, Flash, Focus, Zoom, ColorEffect Implements a light painting photo session, which sets the parameters of the light painting photo mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md).
+LightPaintingPhotoSession extends Session, Flash, Focus, Zoom, ColorEffect实现光绘拍照会话，用于设置光绘拍照模式的参数，并保存运行相机所需的所有[CameraInput](arkts-camera-camera-camerainput-i.md)和[CameraOutput](arkts-camera-camera-cameraoutput-i.md)实例。继承自[Session](arkts-camera-camera-session-i.md)。
 
 **继承/实现关系：** LightPaintingPhotoSession extends [Session](arkts-camera-camera-session-i.md), [Flash](arkts-camera-camera-flash-i.md), [Focus](arkts-camera-camera-focus-i.md), [Zoom](arkts-camera-camera-zoom-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 getLightPaintingType(): LightPaintingType
 ```
 
-Obtains the type of light painting shutter mode in use.
+获取当前使用的光绘快门模式类型。
 
 **起始版本：** 12
 
@@ -42,7 +42,7 @@ Obtains the type of light painting shutter mode in use.
 
 | 类型 | 说明 |
 | --- | --- |
-| [LightPaintingType](arkts-camera-camera-lightpaintingtype-e-sys.md) | The light painting type in use. |
+| [LightPaintingType](arkts-camera-camera-lightpaintingtype-e-sys.md) | 当前使用的光绘类型。 |
 
 **错误码：**
 
@@ -69,7 +69,7 @@ function getLightPaintingType(lightPaintingPhotoSession: camera.LightPaintingPho
 getSupportedLightPaintingTypes(): Array<LightPaintingType>
 ```
 
-Obtains the supported types of light painting shutter mode.
+获取支持的光绘快门模式类型列表。
 
 **起始版本：** 12
 
@@ -83,7 +83,7 @@ Obtains the supported types of light painting shutter mode.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[LightPaintingType](arkts-camera-camera-lightpaintingtype-e-sys.md)&gt; | List of light painting types. |
+| Array&lt;[LightPaintingType](arkts-camera-camera-lightpaintingtype-e-sys.md)&gt; | 光绘类型列表。 |
 
 **错误码：**
 
@@ -110,7 +110,7 @@ function getSupportedLightPaintingTypes(lightPaintingPhotoSession: camera.LightP
 off(type: 'error', callback?: ErrorCallback): void
 ```
 
-Unsubscribes from HighResolutionPhotoSession error events.
+注销监听光绘拍照会话错误事件。
 
 **起始版本：** 12
 
@@ -124,8 +124,8 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('error')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'error' | 是 | 事件类型，固定为**'error'**。创建会话后即可监听此事件。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 回调函数，用于返回结果。此参数为可选参数。如果指定此参数，则取消监听指定事件**on('error')**中指定的回调。（回调对象不能为匿名函数。） |
 
 **错误码：**
 
@@ -150,7 +150,7 @@ function unregisterSessionError(lightPaintingPhotoSession: camera.LightPaintingP
 off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void
 ```
 
-Unsubscribes from focus state change events.
+注销监听对焦状态变化事件。
 
 **起始版本：** 12
 
@@ -164,8 +164,8 @@ Unsubscribes from focus state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'focusStateChange' | 是 | 事件类型，固定为**'focusStateChange'**。创建会话后即可监听此事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | 回调函数，用于返回结果。此参数为可选参数。如果指定此参数，则取消监听指定事件**on('focusStateChange')**中指定的回调。（回调对象不能为匿名函数。） |
 
 **错误码：**
 
@@ -190,7 +190,7 @@ function unregisterFocusStateChange(lightPaintingPhotoSession: camera.LightPaint
 off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback<SmoothZoomInfo>): void
 ```
 
-Unsubscribes from smooth zoom state change events.
+注销监听平滑变焦状态变化事件。
 
 **起始版本：** 12
 
@@ -204,8 +204,8 @@ Unsubscribes from smooth zoom state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'smoothZoomInfoAvailable' | 是 | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('smoothZoomInfoAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'smoothZoomInfoAvailable' | 是 | 事件类型，固定为**'smoothZoomInfoAvailable'**。创建会话后即可监听此事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 否 | 回调函数，用于返回结果。此参数为可选参数。如果指定此参数，则取消监听指定事件**on('smoothZoomInfoAvailable')**中指定的回调。（回调对象不能为匿名函数。） |
 
 **错误码：**
 
@@ -230,7 +230,7 @@ function unregisterSmoothZoomInfo(lightPaintingPhotoSession: camera.LightPaintin
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-Subscribes to HighResolutionPhotoSession error events. This API uses an asynchronous callback to return the result.
+监听光绘拍照会话错误事件，使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -244,8 +244,8 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-camera-camera-session-i.md#beginconfig), [commitConfig](arkts-camera-camera-session-i.md#commitconfig), and [addInput](arkts-camera-camera-session-i.md#addinput). |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | Callback used to return an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md). |
+| type | 'error' | 是 | 事件类型，固定为**'error'**。创建会话后即可监听此事件。当调用会话相关API如[beginConfig](arkts-camera-camera-session-i.md#beginconfig)、[commitConfig](arkts-camera-camera-session-i.md#commitconfig)、[addInput](arkts-camera-camera-session-i.md#addinput)等发生错误时触发该事件并返回错误信息。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数，用于返回错误码，错误码定义见[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
 **错误码：**
 
@@ -276,7 +276,7 @@ function registerSessionError(lightPaintingPhotoSession: camera.LightPaintingPho
 on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void
 ```
 
-Subscribes to focus state change events. This API uses an asynchronous callback to return the result.
+监听对焦状态变化事件，使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -290,8 +290,8 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | Callback used to return the focus state change. |
+| type | 'focusStateChange' | 是 | 事件类型，固定为**'focusStateChange'**。创建会话后即可监听此事件。仅在自动对焦模式下相机对焦状态发生变化时触发该事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | 回调函数，用于返回对焦状态变化。 |
 
 **错误码：**
 
@@ -326,7 +326,7 @@ function registerFocusStateChange(lightPaintingPhotoSession: camera.LightPaintin
 on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback<SmoothZoomInfo>): void
 ```
 
-Subscribes to smooth zoom state change events. This API uses an asynchronous callback to return the result.
+监听平滑变焦状态变化事件，使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -340,8 +340,8 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'smoothZoomInfoAvailable' | 是 | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 是 | Callback used to return the smooth zoom state change. |
+| type | 'smoothZoomInfoAvailable' | 是 | 事件类型，固定为**'smoothZoomInfoAvailable'**。创建会话后即可监听此事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[SmoothZoomInfo](arkts-camera-camera-smoothzoominfo-i.md)&gt; | 是 | 回调函数，用于返回平滑变焦状态变化。 |
 
 **错误码：**
 
@@ -376,7 +376,7 @@ function registerSmoothZoomInfo(lightPaintingPhotoSession: camera.LightPaintingP
 setLightPaintingType(type: LightPaintingType): void
 ```
 
-Sets the type of light painting shutter mode.
+设置光绘快门模式类型。
 
 **起始版本：** 12
 
@@ -390,7 +390,7 @@ Sets the type of light painting shutter mode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [LightPaintingType](arkts-camera-camera-lightpaintingtype-e-sys.md) | 是 | Light painting type to set. |
+| type | [LightPaintingType](arkts-camera-camera-lightpaintingtype-e-sys.md) | 是 | 要设置的光绘类型。 |
 
 **错误码：**
 

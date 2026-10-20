@@ -6,15 +6,11 @@ export interface RenderResourceFactory
 
 Creates rendering resources that can be shared in multiple scenes ([Scene](arkts-arkgraphics3d-scene-c.md)) that share RenderContext.
 
-@interface RenderResourceFactory
-
 **Since:** 20
 
 <!--Device-unnamed-export interface RenderResourceFactory--><!--Device-unnamed-export interface RenderResourceFactory-End-->
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
-
-<a id="createscene2"></a>
 
 ## createScene
 

@@ -18,8 +18,6 @@ Defines the application account manager, which is used to manage account informa
 import { appAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="auth1"></a>
-
 ## auth
 
 ```TypeScript
@@ -47,7 +45,7 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, owner or authType. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -101,8 +99,6 @@ struct Index {
 }
 ```
 
-<a id="auth2"></a>
-
 ## auth
 
 ```TypeScript
@@ -137,7 +133,7 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, owner, authType or options. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -194,8 +190,6 @@ struct Index {
 }
 ```
 
-<a id="checkaccountlabels1"></a>
-
 ## checkAccountLabels
 
 ```TypeScript
@@ -223,7 +217,7 @@ Checks whether an application account has specific labels. This API uses an asyn
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, owner or labels. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -251,8 +245,6 @@ try {
   console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkaccountlabels2"></a>
 
 ## checkAccountLabels
 
@@ -286,7 +278,7 @@ Checks whether an application account has specific labels. This API uses a promi
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, owner or labels. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -312,8 +304,6 @@ try {
   console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkappaccess1"></a>
 
 ## checkAppAccess
 
@@ -341,7 +331,7 @@ Checks whether the caller can access the account data that belongs to the target
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or bundleName. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -365,8 +355,6 @@ try {
   console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkappaccess2"></a>
 
 ## checkAppAccess
 
@@ -399,7 +387,7 @@ Checks whether the caller can access the account data that belongs to the target
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or bundleName. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -420,8 +408,6 @@ try {
   console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkauthtokenvisibility1"></a>
 
 ## checkAuthTokenVisibility
 
@@ -450,7 +436,7 @@ Checks the visibility of an authorization token of the specified authentication 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, authType or bundleName. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -475,8 +461,6 @@ try {
   console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkauthtokenvisibility2"></a>
 
 ## checkAuthTokenVisibility
 
@@ -510,7 +494,7 @@ Checks the visibility of an authorization token of the specified authentication 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, authType or bundleName. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -533,8 +517,6 @@ try {
   console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkdatasyncenabled1"></a>
 
 ## checkDataSyncEnabled
 
@@ -564,7 +546,7 @@ Checks whether data synchronization is enabled for an application account. This 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -587,8 +569,6 @@ try {
   console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkdatasyncenabled2"></a>
 
 ## checkDataSyncEnabled
 
@@ -623,7 +603,7 @@ Checks whether data synchronization is enabled for an application account. This 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -644,8 +624,6 @@ try {
   console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="createaccount1"></a>
 
 ## createAccount
 
@@ -672,7 +650,7 @@ Creates an application account with the given name. This API uses an asynchronou
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name. |
 | [12300004](../errorcode-account.md#12300004-account-already-exists) | Account already exists. |
@@ -696,8 +674,6 @@ try {
   console.error(`createAccount err: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="createaccount2"></a>
 
 ## createAccount
 
@@ -725,7 +701,7 @@ Creates an application account with custom data. This API uses an asynchronous c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or options. |
 | [12300004](../errorcode-account.md#12300004-account-already-exists) | Account already exists. |
@@ -755,8 +731,6 @@ try {
 }
 ```
 
-<a id="createaccount3"></a>
-
 ## createAccount
 
 ```TypeScript
@@ -776,7 +750,7 @@ Creates an application account with custom data. This API uses a promise to retu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| options | [CreateAccountOptions](arkts-basicservices-appaccount-createaccountoptions-i.md) | No | Options for creating the application account. You can customize data based on service requirements, but do not add sensitive data (such as passwords and tokens).<br>By default, no value is passed in, which means no additional information needs to be added for the account. |
+| options | [CreateAccountOptions](arkts-basicservices-appaccount-createaccountoptions-i.md) | No | Options for creating the application account. You can customize data based on service requirements, but do not add sensitive data (such as passwords and tokens). <br>By default, no value is passed in, which means no additional information needs to be added for the account. |
 
 **Return value:**
 
@@ -788,7 +762,7 @@ Creates an application account with custom data. This API uses a promise to retu
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or options. |
 | [12300004](../errorcode-account.md#12300004-account-already-exists) | Account already exists. |
@@ -816,8 +790,6 @@ try {
 }
 ```
 
-<a id="createaccountimplicitly1"></a>
-
 ## createAccountImplicitly
 
 ```TypeScript
@@ -843,7 +815,7 @@ Creates an application account automatically by the authenticator based on the s
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid owner. |
 | [12300007](../errorcode-account.md#12300007-account-count-reached-the-limit) | The number of accounts reaches the upper limit. |
@@ -896,8 +868,6 @@ struct Index {
 }
 ```
 
-<a id="createaccountimplicitly2"></a>
-
 ## createAccountImplicitly
 
 ```TypeScript
@@ -924,7 +894,7 @@ Creates an application account automatically by the authenticator based on the s
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid owner or options. |
 | [12300007](../errorcode-account.md#12300007-account-count-reached-the-limit) | The number of accounts reaches the upper limit. |
@@ -981,8 +951,6 @@ struct Index {
 }
 ```
 
-<a id="deleteauthtoken1"></a>
-
 ## deleteAuthToken
 
 ```TypeScript
@@ -1011,7 +979,7 @@ Deletes the authorization token of the specified authentication type for an appl
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, owner, authType or token. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1036,8 +1004,6 @@ try {
   console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="deleteauthtoken2"></a>
 
 ## deleteAuthToken
 
@@ -1072,7 +1038,7 @@ Deletes the authorization token of the specified authentication type for an appl
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, owner, authType or token. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1094,8 +1060,6 @@ try {
   console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="deletecredential1"></a>
 
 ## deleteCredential
 
@@ -1123,7 +1087,7 @@ Deletes the credential for the specified type of an application account. This AP
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or credentialType. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1147,8 +1111,6 @@ try {
   console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="deletecredential2"></a>
 
 ## deleteCredential
 
@@ -1181,7 +1143,7 @@ Deletes the credential for the specified type of an application account. This AP
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or credentialType. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1203,8 +1165,6 @@ try {
   console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getaccountsbyowner1"></a>
 
 ## getAccountsByOwner
 
@@ -1254,8 +1214,6 @@ try {
   console.error(`getAccountsByOwner exception:code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getaccountsbyowner2"></a>
 
 ## getAccountsByOwner
 
@@ -1309,8 +1267,6 @@ try {
 }
 ```
 
-<a id="getallaccounts1"></a>
-
 ## getAllAccounts
 
 ```TypeScript
@@ -1335,7 +1291,7 @@ Obtains information about all accessible application accounts. This API uses an 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 
 **Examples**
@@ -1356,8 +1312,6 @@ try {
   console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getallaccounts2"></a>
 
 ## getAllAccounts
 
@@ -1402,8 +1356,6 @@ try {
 }
 ```
 
-<a id="getallaccounts3"></a>
-
 ## getAllAccounts
 
 ```TypeScript
@@ -1415,14 +1367,14 @@ Obtains the application accounts that can be accessed by the invoker based on th
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getAccountsByOwner](#getaccountsbyowner1)
+> [getAccountsByOwner](#getaccountsbyowner)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAccountsByOwner](#getaccountsbyowner1)(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+**Substitutes:** [getAccountsByOwner](#getaccountsbyowner)(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
 
 **Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -1452,8 +1404,6 @@ appAccountManager.getAllAccounts(selfBundle, (err: BusinessError, data: appAccou
 });
 ```
 
-<a id="getallaccounts4"></a>
-
 ## getAllAccounts
 
 ```TypeScript
@@ -1465,13 +1415,13 @@ Obtains the application accounts that can be accessed by the invoker based on th
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getAccountsByOwner](#getaccountsbyowner2) instead.
+> [getAccountsByOwner](#getaccountsbyowner) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAccountsByOwner](#getaccountsbyowner2)(owner: string)
+**Substitutes:** [getAccountsByOwner](#getaccountsbyowner)(owner: string)
 
 **Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -1504,8 +1454,6 @@ appAccountManager.getAllAccounts(selfBundle).then((data: appAccount.AppAccountIn
 });
 ```
 
-<a id="getallauthtokens1"></a>
-
 ## getAllAuthTokens
 
 ```TypeScript
@@ -1532,7 +1480,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or owner. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1556,8 +1504,6 @@ try {
   console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getallauthtokens2"></a>
 
 ## getAllAuthTokens
 
@@ -1590,7 +1536,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or owner. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1612,8 +1558,6 @@ try {
   console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getauthcallback1"></a>
 
 ## getAuthCallback
 
@@ -1640,7 +1584,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid sessionId. |
 | [12300108](../errorcode-account.md#12300108-authentication-session-not-found) | Session not found. |
@@ -1680,8 +1624,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getauthcallback2"></a>
-
 ## getAuthCallback
 
 ```TypeScript
@@ -1712,7 +1654,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid sessionId. |
 | [12300108](../errorcode-account.md#12300108-authentication-session-not-found) | Session not found. |
@@ -1750,15 +1692,13 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getauthlist1"></a>
-
 ## getAuthList
 
 ```TypeScript
 getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility1). This API uses an asynchronous callback to return the result.
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility). This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -1778,7 +1718,7 @@ Obtains the authorization list of the specified authentication type for an appli
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or authType. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1803,15 +1743,13 @@ try {
 }
 ```
 
-<a id="getauthlist2"></a>
-
 ## getAuthList
 
 ```TypeScript
 getAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility1). This API uses a promise to return the result.
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility). This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -1836,7 +1774,7 @@ Obtains the authorization list of the specified authentication type for an appli
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or authType. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1858,8 +1796,6 @@ try {
   console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getauthtoken1"></a>
 
 ## getAuthToken
 
@@ -1888,7 +1824,7 @@ Obtains the authorization token of the specified authentication type for an appl
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, owner or authType. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1913,8 +1849,6 @@ try {
   console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getauthtoken2"></a>
 
 ## getAuthToken
 
@@ -1948,7 +1882,7 @@ Obtains the authorization token of the specified authentication type for an appl
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, owner or authType. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1970,8 +1904,6 @@ try {
   console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getcredential1"></a>
 
 ## getCredential
 
@@ -1999,7 +1931,7 @@ Obtains the credential of an application account. This API uses an asynchronous 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or credentialType. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -2023,8 +1955,6 @@ try {
   console.error(`getCredential err: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getcredential2"></a>
 
 ## getCredential
 
@@ -2057,7 +1987,7 @@ Obtains the credential of an application account. This API uses a promise to ret
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or credentialType. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -2079,8 +2009,6 @@ try {
   console.error(`getCredential exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getcustomdata1"></a>
 
 ## getCustomData
 
@@ -2108,7 +2036,7 @@ Obtains the custom data of an application account based on the specified key. Th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or key. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -2132,8 +2060,6 @@ try {
   console.error(`getCustomData exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getcustomdata2"></a>
 
 ## getCustomData
 
@@ -2166,7 +2092,7 @@ Obtains the custom data of an application account based on the specified key. Th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or key. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -2220,7 +2146,7 @@ Obtains the custom data of an application account based on the specified key. Th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or key. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -2265,7 +2191,7 @@ Unsubscribes from account information changes.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid type. |
 
@@ -2439,8 +2365,6 @@ try {
 }
 ```
 
-<a id="queryauthenticatorinfo1"></a>
-
 ## queryAuthenticatorInfo
 
 ```TypeScript
@@ -2466,7 +2390,7 @@ Obtains the authenticator information of an application. This API uses an asynch
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid owner. |
 | [12300113](../errorcode-account.md#12300113-authentication-service-not-found) | Authenticator service not found. |
@@ -2490,8 +2414,6 @@ try {
   console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="queryauthenticatorinfo2"></a>
 
 ## queryAuthenticatorInfo
 
@@ -2523,7 +2445,7 @@ Obtains the authenticator information of an application. This API uses a promise
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid owner. |
 | [12300113](../errorcode-account.md#12300113-authentication-service-not-found) | Authenticator service not found. |
@@ -2545,8 +2467,6 @@ try {
   console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="removeaccount1"></a>
 
 ## removeAccount
 
@@ -2573,7 +2493,7 @@ Removes an application account. This API uses an asynchronous callback to return
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -2596,8 +2516,6 @@ try {
   console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="removeaccount2"></a>
 
 ## removeAccount
 
@@ -2629,7 +2547,7 @@ Removes an application account. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -2650,8 +2568,6 @@ try {
   console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="selectaccountsbyoptions1"></a>
 
 ## selectAccountsByOptions
 
@@ -2678,7 +2594,7 @@ Selects the accounts that can be accessed by the invoker based on the options. T
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid options. |
 | [12300010](../errorcode-account.md#12300010-account-service-not-respond) | Account service busy. |
@@ -2707,8 +2623,6 @@ try {
   console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="selectaccountsbyoptions2"></a>
 
 ## selectAccountsByOptions
 
@@ -2740,7 +2654,7 @@ Selects the accounts that can be accessed by the invoker based on the options. T
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid options. |
 | [12300010](../errorcode-account.md#12300010-account-service-not-respond) | Account service busy. |
@@ -2765,8 +2679,6 @@ try {
   console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setappaccess1"></a>
 
 ## setAppAccess
 
@@ -2819,8 +2731,6 @@ try {
   console.error(`setAppAccess exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setappaccess2"></a>
 
 ## setAppAccess
 
@@ -2877,8 +2787,6 @@ try {
 }
 ```
 
-<a id="setauthenticatorproperties1"></a>
-
 ## setAuthenticatorProperties
 
 ```TypeScript
@@ -2904,7 +2812,7 @@ Sets the authenticator attributes of an application. This API uses an asynchrono
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid owner. |
 | [12300010](../errorcode-account.md#12300010-account-service-not-respond) | Account service busy. |
@@ -2933,8 +2841,6 @@ try {
 }
 ```
 
-<a id="setauthenticatorproperties2"></a>
-
 ## setAuthenticatorProperties
 
 ```TypeScript
@@ -2961,7 +2867,7 @@ Sets the authenticator attributes of an application. This API uses an asynchrono
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid owner or options. |
 | [12300010](../errorcode-account.md#12300010-account-service-not-respond) | Account service busy. |
@@ -2993,8 +2899,6 @@ try {
 }
 ```
 
-<a id="setauthtoken1"></a>
-
 ## setAuthToken
 
 ```TypeScript
@@ -3022,7 +2926,7 @@ Sets an authorization token of the specific authentication type for an applicati
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, authType or token. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -3046,8 +2950,6 @@ try {
   console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setauthtoken2"></a>
 
 ## setAuthToken
 
@@ -3081,7 +2983,7 @@ Sets an authorization token of the specific authentication type for an applicati
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, authType or token. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -3103,8 +3005,6 @@ try {
   console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setauthtokenvisibility1"></a>
 
 ## setAuthTokenVisibility
 
@@ -3167,8 +3067,6 @@ try {
 }
 ```
 
-<a id="setauthtokenvisibility2"></a>
-
 ## setAuthTokenVisibility
 
 ```TypeScript
@@ -3226,8 +3124,6 @@ try {
 }
 ```
 
-<a id="setcredential1"></a>
-
 ## setCredential
 
 ```TypeScript
@@ -3256,7 +3152,7 @@ Sets a credential for an application account. This API uses an asynchronous call
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, credentialType or credential. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -3279,8 +3175,6 @@ try {
   console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setcredential2"></a>
 
 ## setCredential
 
@@ -3314,7 +3208,7 @@ Sets a credential for an application account. This API uses a promise to return 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, credentialType or credential. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -3335,8 +3229,6 @@ try {
   console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setcustomdata1"></a>
 
 ## setCustomData
 
@@ -3365,7 +3257,7 @@ Sets custom data for an application account. This API uses an asynchronous callb
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, key or value. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -3389,8 +3281,6 @@ try {
   console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setcustomdata2"></a>
 
 ## setCustomData
 
@@ -3424,7 +3314,7 @@ Sets custom data for an application account. This API uses a promise to return t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, key or value. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -3446,8 +3336,6 @@ try {
   console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setdatasyncenabled1"></a>
 
 ## setDataSyncEnabled
 
@@ -3478,7 +3366,7 @@ Sets data synchronization for an application account. This API uses an asynchron
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -3497,8 +3385,6 @@ try {
     console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setdatasyncenabled2"></a>
 
 ## setDataSyncEnabled
 
@@ -3534,7 +3420,7 @@ Sets data synchronization for an application account. This API uses a promise to
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -3555,8 +3441,6 @@ try {
     console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="verifycredential1"></a>
 
 ## verifyCredential
 
@@ -3584,7 +3468,7 @@ Verifies the validity of a specified account credential. This API uses an asynch
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name or owner. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -3614,8 +3498,6 @@ try {
 }
 ```
 
-<a id="verifycredential2"></a>
-
 ## verifyCredential
 
 ```TypeScript
@@ -3643,7 +3525,7 @@ Verifies the credential of an application account. This API uses an asynchronous
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid name, owner or options. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -3677,8 +3559,6 @@ try {
 }
 ```
 
-<a id="addaccount1"></a>
-
 ## addAccount
 
 ```TypeScript
@@ -3690,14 +3570,14 @@ Adds an application account with the given name. This API uses an asynchronous c
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [createAccount](#createaccount1)
+> [createAccount](#createaccount)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAccount](#createaccount1)(name: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [createAccount](#createaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -3720,8 +3600,6 @@ appAccountManager.addAccount('WangWu', (err: BusinessError) => {
 });
 ```
 
-<a id="addaccount2"></a>
-
 ## addAccount
 
 ```TypeScript
@@ -3733,14 +3611,14 @@ Adds an application account name and additional information. This API uses an as
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [createAccount](#createaccount2)
+> [createAccount](#createaccount)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAccount](#createaccount2)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [createAccount](#createaccount)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -3764,8 +3642,6 @@ appAccountManager.addAccount('LiSi', 'token101', (err: BusinessError) => {
 });
 ```
 
-<a id="addaccount3"></a>
-
 ## addAccount
 
 ```TypeScript
@@ -3776,14 +3652,14 @@ Adds an application account name and additional information. This API uses a pro
 
 > **NOTE:** 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [createAccount](#createaccount3)
+> [createAccount](#createaccount)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAccount](#createaccount3)(name: string, options?: CreateAccountOptions)
+**Substitutes:** [createAccount](#createaccount)(name: string, options?: CreateAccountOptions)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>--><!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>-End-->
 
@@ -3794,7 +3670,7 @@ Adds an application account name and additional information. This API uses a pro
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | name | string | Yes | Name of the application account. The value contains a maximum of 512 characters. |
-| extraInfo | string | No | Additional information (information that can be converted to the string type).<br>The additional information cannot be sensitive information (such as the password and token) of the application account. <br>By default, no value is passed, which means no additional information needs to be added for the account. |
+| extraInfo | string | No | Additional information (information that can be converted to the string type). <br>The additional information cannot be sensitive information (such as the password and token) of the application account. <br>By default, no value is passed, which means no additional information needs to be added for the account. |
 
 **Return value:**
 
@@ -3830,14 +3706,14 @@ Adds an application account implicitly based on the specified owner. This API us
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [createAccountImplicitly](#createaccountimplicitly1)
+> [createAccountImplicitly](#createaccountimplicitly)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [createAccountImplicitly](#createaccountimplicitly1)(owner: string, callback: AuthCallback)
+**Substitutes:** [createAccountImplicitly](#createaccountimplicitly)(owner: string, callback: AuthCallback)
 
 <!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
@@ -3910,14 +3786,14 @@ Authenticates an application account. This API uses an asynchronous callback to 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [auth](#auth1)
+> [auth](#auth)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [auth](#auth1)(name: string, owner: string, authType: string, callback: AuthCallback)
+**Substitutes:** [auth](#auth)(name: string, owner: string, authType: string, callback: AuthCallback)
 
 <!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
@@ -3974,8 +3850,6 @@ struct Index {
 }
 ```
 
-<a id="checkappaccountsyncenable1"></a>
-
 ## checkAppAccountSyncEnable
 
 ```TypeScript
@@ -3987,14 +3861,14 @@ Checks whether data synchronization is enabled for an application account. This 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkDataSyncEnabled](#checkdatasyncenabled1)
+> [checkDataSyncEnabled](#checkdatasyncenabled)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled1)(name: string, callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled)(name: string, callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -4023,8 +3897,6 @@ appAccountManager.checkAppAccountSyncEnable('ZhangSan', (err: BusinessError, res
 });
 ```
 
-<a id="checkappaccountsyncenable2"></a>
-
 ## checkAppAccountSyncEnable
 
 ```TypeScript
@@ -4036,13 +3908,13 @@ Checks whether data synchronization is enabled for an application account. This 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkDataSyncEnabled](#checkdatasyncenabled2) instead.
+> [checkDataSyncEnabled](#checkdatasyncenabled) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled2)(name: string)
+**Substitutes:** [checkDataSyncEnabled](#checkdatasyncenabled)(name: string)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -4074,8 +3946,6 @@ appAccountManager.checkAppAccountSyncEnable('ZhangSan').then((data: boolean) => 
 });
 ```
 
-<a id="checkoauthtokenvisibility1"></a>
-
 ## checkOAuthTokenVisibility
 
 ```TypeScript
@@ -4092,14 +3962,14 @@ Checks the visibility of an authorization token of the specified authentication 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [checkAuthTokenVisibility](#checkauthtokenvisibility1)
+> [checkAuthTokenVisibility](#checkauthtokenvisibility)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility1)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void--><!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void-End-->
 
@@ -4129,8 +3999,6 @@ appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.exampl
   });
 ```
 
-<a id="checkoauthtokenvisibility2"></a>
-
 ## checkOAuthTokenVisibility
 
 ```TypeScript
@@ -4142,14 +4010,14 @@ Checks the visibility of an authorization token of the specified authentication 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [checkAuthTokenVisibility](#checkauthtokenvisibility2)
+> [checkAuthTokenVisibility](#checkauthtokenvisibility)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility2)(name: string, authType: string, bundleName: string)
+**Substitutes:** [checkAuthTokenVisibility](#checkauthtokenvisibility)(name: string, authType: string, bundleName: string)
 
 <!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>--><!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>-End-->
 
@@ -4182,8 +4050,6 @@ appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.exampl
 });
 ```
 
-<a id="deleteaccount1"></a>
-
 ## deleteAccount
 
 ```TypeScript
@@ -4195,14 +4061,14 @@ Deletes an application account. This API uses an asynchronous callback to return
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [removeAccount](#removeaccount1)
+> [removeAccount](#removeaccount)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [removeAccount](#removeaccount1)(name: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [removeAccount](#removeaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4225,8 +4091,6 @@ appAccountManager.deleteAccount('ZhaoLiu', (err: BusinessError) => {
 });
 ```
 
-<a id="deleteaccount2"></a>
-
 ## deleteAccount
 
 ```TypeScript
@@ -4238,14 +4102,14 @@ Deletes an application account. This API uses a promise to return the result.
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [removeAccount](#removeaccount2)
+> [removeAccount](#removeaccount)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [removeAccount](#removeaccount2)(name: string)
+**Substitutes:** [removeAccount](#removeaccount)(name: string)
 
 <!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>--><!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>-End-->
 
@@ -4275,8 +4139,6 @@ appAccountManager.deleteAccount('ZhaoLiu').then(() => {
 });
 ```
 
-<a id="deleteoauthtoken1"></a>
-
 ## deleteOAuthToken
 
 ```TypeScript
@@ -4288,14 +4150,14 @@ Deletes the authorization token of the specified authentication type for an appl
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [deleteAuthToken](#deleteauthtoken1)
+> [deleteAuthToken](#deleteauthtoken)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [deleteAuthToken](#deleteauthtoken1)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [deleteAuthToken](#deleteauthtoken)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4326,8 +4188,6 @@ appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSoci
   });
 ```
 
-<a id="deleteoauthtoken2"></a>
-
 ## deleteOAuthToken
 
 ```TypeScript
@@ -4339,14 +4199,14 @@ Deletes the authorization token of the specified authentication type for an appl
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [deleteAuthToken](#deleteauthtoken2)
+> [deleteAuthToken](#deleteauthtoken)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [deleteAuthToken](#deleteauthtoken2)(name: string, owner: string, authType: string, token: string)
+**Substitutes:** [deleteAuthToken](#deleteauthtoken)(name: string, owner: string, authType: string, token: string)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>-End-->
 
@@ -4379,8 +4239,6 @@ appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSoci
 });
 ```
 
-<a id="disableappaccess1"></a>
-
 ## disableAppAccess
 
 ```TypeScript
@@ -4392,14 +4250,14 @@ Disables access to the third-party application with the specified package name u
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess1)
+> [setAppAccess](#setappaccess)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAppAccess](#setappaccess1)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4423,8 +4281,6 @@ appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err
 });
 ```
 
-<a id="disableappaccess2"></a>
-
 ## disableAppAccess
 
 ```TypeScript
@@ -4436,14 +4292,14 @@ Disables an application account from accessing an application. This API uses a p
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess2)
+> [setAppAccess](#setappaccess)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAppAccess](#setappaccess2)(name: string, bundleName: string, isAccessible: boolean)
+**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -4474,8 +4330,6 @@ appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo').then
 });
 ```
 
-<a id="enableappaccess1"></a>
-
 ## enableAppAccess
 
 ```TypeScript
@@ -4487,14 +4341,14 @@ Enables an application to access an application account. This API uses an asynch
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess1)
+> [setAppAccess](#setappaccess)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAppAccess](#setappaccess1)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4522,8 +4376,6 @@ appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err:
 });
 ```
 
-<a id="enableappaccess2"></a>
-
 ## enableAppAccess
 
 ```TypeScript
@@ -4535,14 +4387,14 @@ Enables an application to access an application account. This API uses a promise
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setAppAccess](#setappaccess2)
+> [setAppAccess](#setappaccess)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAppAccess](#setappaccess2)(name: string, bundleName: string, isAccessible: boolean)
+**Substitutes:** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -4573,8 +4425,6 @@ appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(
 });
 ```
 
-<a id="getaccountcredential1"></a>
-
 ## getAccountCredential
 
 ```TypeScript
@@ -4586,14 +4436,14 @@ Obtains the credential of an application account. This API uses an asynchronous 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCredential](#getcredential1)
+> [getCredential](#getcredential)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCredential](#getcredential1)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getCredential](#getcredential)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4621,8 +4471,6 @@ appAccountManager.getAccountCredential('ZhangSan', 'credentialType001', (err: Bu
 });
 ```
 
-<a id="getaccountcredential2"></a>
-
 ## getAccountCredential
 
 ```TypeScript
@@ -4634,14 +4482,14 @@ Obtains the credential of an application account. This API uses a promise to ret
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCredential](#getcredential2)
+> [getCredential](#getcredential)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCredential](#getcredential2)(name: string, credentialType: string)
+**Substitutes:** [getCredential](#getcredential)(name: string, credentialType: string)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>-End-->
 
@@ -4672,8 +4520,6 @@ appAccountManager.getAccountCredential('ZhangSan', 'credentialType001').then((da
 });
 ```
 
-<a id="getaccountextrainfo1"></a>
-
 ## getAccountExtraInfo
 
 ```TypeScript
@@ -4685,14 +4531,14 @@ Obtains additional information of an application account. Additional information
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata1)
+> [getCustomData](#getcustomdata)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCustomData](#getcustomdata1)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4719,8 +4565,6 @@ appAccountManager.getAccountExtraInfo('ZhangSan', (err: BusinessError, result: s
 });
 ```
 
-<a id="getaccountextrainfo2"></a>
-
 ## getAccountExtraInfo
 
 ```TypeScript
@@ -4732,13 +4576,13 @@ Obtains additional information of an application account. Additional information
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata2) instead.
+> [getCustomData](#getcustomdata) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCustomData](#getcustomdata2)(name: string, key: string)
+**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>--><!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>-End-->
 
@@ -4768,8 +4612,6 @@ appAccountManager.getAccountExtraInfo('ZhangSan').then((data: string) => {
 });
 ```
 
-<a id="getallaccessibleaccounts1"></a>
-
 ## getAllAccessibleAccounts
 
 ```TypeScript
@@ -4781,14 +4623,14 @@ Obtains information about all accessible application accounts. This API uses an 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getAllAccounts](#getallaccounts1)
+> [getAllAccounts](#getallaccounts)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAllAccounts](#getallaccounts1)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+**Substitutes:** [getAllAccounts](#getallaccounts)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
 
 **Required permissions:** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -4815,8 +4657,6 @@ appAccountManager.getAllAccessibleAccounts((err: BusinessError, data: appAccount
   }
 });
 ```
-
-<a id="getallaccessibleaccounts2"></a>
 
 ## getAllAccessibleAccounts
 
@@ -4861,8 +4701,6 @@ appAccountManager.getAllAccessibleAccounts().then((data: appAccount.AppAccountIn
 });
 ```
 
-<a id="getalloauthtokens1"></a>
-
 ## getAllOAuthTokens
 
 ```TypeScript
@@ -4874,14 +4712,14 @@ Obtains all tokens visible to the invoker for an application account. This API u
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAllAuthTokens](#getallauthtokens1)
+> [getAllAuthTokens](#getallauthtokens)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAllAuthTokens](#getallauthtokens1)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
+**Substitutes:** [getAllAuthTokens](#getallauthtokens)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void-End-->
 
@@ -4910,8 +4748,6 @@ appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo',
   });
 ```
 
-<a id="getalloauthtokens2"></a>
-
 ## getAllOAuthTokens
 
 ```TypeScript
@@ -4923,13 +4759,13 @@ Obtains all tokens visible to the invoker for an application account. This API u
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAllAuthTokens](#getallauthtokens2) instead.
+> [getAllAuthTokens](#getallauthtokens) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAllAuthTokens](#getallauthtokens2)(name: string, owner: string)
+**Substitutes:** [getAllAuthTokens](#getallauthtokens)(name: string, owner: string)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>-End-->
 
@@ -4961,8 +4797,6 @@ appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo').then((
 });
 ```
 
-<a id="getassociateddata1"></a>
-
 ## getAssociatedData
 
 ```TypeScript
@@ -4974,14 +4808,14 @@ Obtains the associated data of an application account based on the specified key
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata1)
+> [getCustomData](#getcustomdata)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCustomData](#getcustomdata1)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void-End-->
 
@@ -5009,8 +4843,6 @@ appAccountManager.getAssociatedData('ZhangSan', 'k001', (err: BusinessError, res
 });
 ```
 
-<a id="getassociateddata2"></a>
-
 ## getAssociatedData
 
 ```TypeScript
@@ -5022,13 +4854,13 @@ Obtains data to be associated with an application account. This API uses a promi
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getCustomData](#getcustomdata2) instead.
+> [getCustomData](#getcustomdata) instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getCustomData](#getcustomdata2)(name: string, key: string)
+**Substitutes:** [getCustomData](#getcustomdata)(name: string, key: string)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>-End-->
 
@@ -5059,8 +4891,6 @@ appAccountManager.getAssociatedData('ZhangSan', 'k001').then((data: string) => {
 });
 ```
 
-<a id="getauthenticatorcallback1"></a>
-
 ## getAuthenticatorCallback
 
 ```TypeScript
@@ -5072,14 +4902,14 @@ Obtains the authenticator callback for an authentication session. This API uses 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthCallback](#getauthcallback1)
+> [getAuthCallback](#getauthcallback)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthCallback](#getauthcallback1)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
+**Substitutes:** [getAuthCallback](#getauthcallback)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void-End-->
 
@@ -5118,8 +4948,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getauthenticatorcallback2"></a>
-
 ## getAuthenticatorCallback
 
 ```TypeScript
@@ -5131,13 +4959,13 @@ Obtains the authenticator callback for an authentication session. This API uses 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthCallback](#getauthcallback2) instead.
+> [getAuthCallback](#getauthcallback) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthCallback](#getauthcallback2)(sessionId: string)
+**Substitutes:** [getAuthCallback](#getauthcallback)(sessionId: string)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>-End-->
 
@@ -5179,8 +5007,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getauthenticatorinfo1"></a>
-
 ## getAuthenticatorInfo
 
 ```TypeScript
@@ -5192,14 +5018,14 @@ Obtains the authenticator information of an application. This API uses an asynch
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [queryAuthenticatorInfo](#queryauthenticatorinfo1)
+> [queryAuthenticatorInfo](#queryauthenticatorinfo)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo1)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
+**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void-End-->
 
@@ -5227,8 +5053,6 @@ appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo',
   });
 ```
 
-<a id="getauthenticatorinfo2"></a>
-
 ## getAuthenticatorInfo
 
 ```TypeScript
@@ -5240,13 +5064,13 @@ Obtains the authenticator information of an application. This API uses a promise
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [queryAuthenticatorInfo](#queryauthenticatorinfo2) instead.
+> [queryAuthenticatorInfo](#queryauthenticatorinfo) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo2)(owner: string)
+**Substitutes:** [queryAuthenticatorInfo](#queryauthenticatorinfo)(owner: string)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>-End-->
 
@@ -5277,27 +5101,25 @@ appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo').then((
 });
 ```
 
-<a id="getoauthlist1"></a>
-
 ## getOAuthList
 
 ```TypeScript
 getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility1). This API uses an asynchronous callback to return the result.
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility). This API uses an asynchronous callback to return the result.
 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthList](#getauthlist1)
+> [getAuthList](#getauthlist)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthList](#getauthlist1)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
+**Substitutes:** [getAuthList](#getauthlist)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -5325,26 +5147,24 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, dat
 });
 ```
 
-<a id="getoauthlist2"></a>
-
 ## getOAuthList
 
 ```TypeScript
 getOAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility1). This API uses a promise to return the result.
+Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibility). This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthList](#getauthlist2) instead.
+> [getAuthList](#getauthlist) instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthList](#getauthlist2)(name: string, authType: string)
+**Substitutes:** [getAuthList](#getauthlist)(name: string, authType: string)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>-End-->
 
@@ -5375,8 +5195,6 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData').then((data: string[]) =>
 });
 ```
 
-<a id="getoauthtoken1"></a>
-
 ## getOAuthToken
 
 ```TypeScript
@@ -5388,14 +5206,14 @@ Obtains the authorization token of the specified authentication type for an appl
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthToken](#getauthtoken1)
+> [getAuthToken](#getauthtoken)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthToken](#getauthtoken1)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getAuthToken](#getauthtoken)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -5425,8 +5243,6 @@ appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialD
   });
 ```
 
-<a id="getoauthtoken2"></a>
-
 ## getOAuthToken
 
 ```TypeScript
@@ -5438,14 +5254,14 @@ Obtains the authorization token of the specified authentication type for an appl
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getAuthToken](#getauthtoken2)
+> [getAuthToken](#getauthtoken)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getAuthToken](#getauthtoken2)(name: string, owner: string, authType: string)
+**Substitutes:** [getAuthToken](#getauthtoken)(name: string, owner: string, authType: string)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>-End-->
 
@@ -5477,8 +5293,6 @@ appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialD
 });
 ```
 
-<a id="setaccountcredential1"></a>
-
 ## setAccountCredential
 
 ```TypeScript
@@ -5490,14 +5304,14 @@ Sets a credential for an application account. This API uses an asynchronous call
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCredential](#setcredential1)
+> [setCredential](#setcredential)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCredential](#setcredential1)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setCredential](#setcredential)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5526,8 +5340,6 @@ appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credent
 });
 ```
 
-<a id="setaccountcredential2"></a>
-
 ## setAccountCredential
 
 ```TypeScript
@@ -5539,14 +5351,14 @@ Sets a credential for an application account. This API uses a promise to return 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCredential](#setcredential2)
+> [setCredential](#setcredential)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCredential](#setcredential2)(name: string, credentialType: string, credential: string)
+**Substitutes:** [setCredential](#setcredential)(name: string, credentialType: string, credential: string)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>-End-->
 
@@ -5578,8 +5390,6 @@ appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credent
 });
 ```
 
-<a id="setaccountextrainfo1"></a>
-
 ## setAccountExtraInfo
 
 ```TypeScript
@@ -5591,14 +5401,14 @@ Sets additional information for an application account. This API uses an asynchr
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata1)
+> [setCustomData](#setcustomdata)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCustomData](#setcustomdata1)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5626,8 +5436,6 @@ appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002', (err: BusinessError) 
 });
 ```
 
-<a id="setaccountextrainfo2"></a>
-
 ## setAccountExtraInfo
 
 ```TypeScript
@@ -5639,14 +5447,14 @@ Sets additional information for an application account. This API uses a promise 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata2)
+> [setCustomData](#setcustomdata)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCustomData](#setcustomdata2)(name: string, key: string, value: string)
+**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>-End-->
 
@@ -5677,8 +5485,6 @@ appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002').then(() => {
 });
 ```
 
-<a id="setappaccountsyncenable1"></a>
-
 ## setAppAccountSyncEnable
 
 ```TypeScript
@@ -5690,14 +5496,14 @@ Sets data synchronization for an application account. This API uses an asynchron
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setDataSyncEnabled](#setdatasyncenabled1)
+> [setDataSyncEnabled](#setdatasyncenabled)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled1)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5727,8 +5533,6 @@ appAccountManager.setAppAccountSyncEnable('ZhangSan', true, (err: BusinessError)
 });
 ```
 
-<a id="setappaccountsyncenable2"></a>
-
 ## setAppAccountSyncEnable
 
 ```TypeScript
@@ -5740,14 +5544,14 @@ Sets data synchronization for an application account. This API uses a promise to
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setDataSyncEnabled](#setdatasyncenabled2)
+> [setDataSyncEnabled](#setdatasyncenabled)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled2)(name: string, isEnabled: boolean)
+**Substitutes:** [setDataSyncEnabled](#setdatasyncenabled)(name: string, isEnabled: boolean)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5780,8 +5584,6 @@ appAccountManager.setAppAccountSyncEnable('ZhangSan', true).then(() => {
 });
 ```
 
-<a id="setassociateddata1"></a>
-
 ## setAssociatedData
 
 ```TypeScript
@@ -5793,14 +5595,14 @@ Sets data to be associated with an application account. This API uses an asynchr
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata1)
+> [setCustomData](#setcustomdata)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCustomData](#setcustomdata1)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5829,8 +5631,6 @@ appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001', (err: BusinessEr
 });
 ```
 
-<a id="setassociateddata2"></a>
-
 ## setAssociatedData
 
 ```TypeScript
@@ -5842,14 +5642,14 @@ Sets data to be associated with an application account. This API uses a promise 
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setCustomData](#setcustomdata2)
+> [setCustomData](#setcustomdata)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setCustomData](#setcustomdata2)(name: string, key: string, value: string)
+**Substitutes:** [setCustomData](#setcustomdata)(name: string, key: string, value: string)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>-End-->
 
@@ -5881,8 +5681,6 @@ appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001').then(() => {
 });
 ```
 
-<a id="setoauthtoken1"></a>
-
 ## setOAuthToken
 
 ```TypeScript
@@ -5894,14 +5692,14 @@ Sets an authorization token of the specific authentication type for an applicati
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthToken](#setauthtoken1)
+> [setAuthToken](#setauthtoken)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAuthToken](#setauthtoken1)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setAuthToken](#setauthtoken)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5930,8 +5728,6 @@ appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessE
 });
 ```
 
-<a id="setoauthtoken2"></a>
-
 ## setOAuthToken
 
 ```TypeScript
@@ -5943,14 +5739,14 @@ Sets an authorization token of the specific authentication type for an applicati
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthToken](#setauthtoken2)
+> [setAuthToken](#setauthtoken)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAuthToken](#setauthtoken2)(name: string, authType: string, token: string)
+**Substitutes:** [setAuthToken](#setauthtoken)(name: string, authType: string, token: string)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>-End-->
 
@@ -5982,8 +5778,6 @@ appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
 });
 ```
 
-<a id="setoauthtokenvisibility1"></a>
-
 ## setOAuthTokenVisibility
 
 ```TypeScript
@@ -6001,14 +5795,14 @@ Sets the visibility of an authorization token to an application. This API uses a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthTokenVisibility](#setauthtokenvisibility1)
+> [setAuthTokenVisibility](#setauthtokenvisibility)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility1)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
+**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
 
 <!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void-End-->
 
@@ -6039,8 +5833,6 @@ appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.
   });
 ```
 
-<a id="setoauthtokenvisibility2"></a>
-
 ## setOAuthTokenVisibility
 
 ```TypeScript
@@ -6052,14 +5844,14 @@ Sets the visibility of an authorization token to an application. This API uses a
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [setAuthTokenVisibility](#setauthtokenvisibility2)
+> [setAuthTokenVisibility](#setauthtokenvisibility)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility2)(name: string, authType: string, bundleName: string, isVisible: boolean)
+**Substitutes:** [setAuthTokenVisibility](#setauthtokenvisibility)(name: string, authType: string, bundleName: string, isVisible: boolean)
 
 <!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>--><!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>-End-->
 

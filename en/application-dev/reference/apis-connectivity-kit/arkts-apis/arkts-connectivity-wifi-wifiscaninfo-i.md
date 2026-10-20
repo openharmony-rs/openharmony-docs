@@ -6,8 +6,6 @@ interface WifiScanInfo
 
 Describes the scanned Wi-Fi information.
 
-@interface WifiScanInfo
-
 **Since:** 6
 
 **Deprecated since:** 9

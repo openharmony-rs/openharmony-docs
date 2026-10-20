@@ -6,8 +6,6 @@
 import { deviceAttest } from '@kit.BasicServicesKit';
 ```
 
-<a id="getatteststatus1"></a>
-
 ## getAttestStatus
 
 ```TypeScript
@@ -66,8 +64,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getatteststatus2"></a>
 
 ## getAttestStatus
 

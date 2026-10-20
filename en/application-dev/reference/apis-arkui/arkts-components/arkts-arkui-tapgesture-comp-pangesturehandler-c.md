@@ -38,8 +38,6 @@ Constructor used to create a pan gesture handler instance.
 | --- | --- | --- | --- |
 | options | [PanGestureHandlerOptions](arkts-arkui-tapgesture-comp-pangesturehandleroptions-i.md) | No | Configuration options of the pan gesture handler. Pass this parameter when you need to customize the minimum number of fingers to trigger dragging, the trigger direction, the minimum drag distance, the minimum drag distance for different input sources, or finger count validation. If this parameter is not passed, the default configuration of the pan gesture handler is used, for example, the number of fingers to trigger is 1, the direction is **PanDirection.All**, the minimum drag distance uses the default value based on the input source, and the number of fingers touching the screen is not checked by default. |
 
-<a id="onactioncancel1"></a>
-
 ## onActionCancel
 
 ```TypeScript
@@ -70,15 +68,13 @@ Sets the callback for pan gesture cancellation. This callback is triggered when 
 | --- | --- |
 | [PanGestureHandler](arkts-arkui-tapgesture-comp-pangesturehandler-c.md) | Pan gesture handler object. |
 
-<a id="onactioncancel2"></a>
-
 ## onActionCancel
 
 ```TypeScript
 onActionCancel(event: Callback<GestureEvent>): PanGestureHandler
 ```
 
-Sets the callback for pan gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful recognition. Compared with [onActionCancel](#onactioncancel1), this API returns gesture event information.
+Sets the callback for pan gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful recognition. Compared with [onActionCancel](#onactioncancel), this API returns gesture event information.
 
 **Since:** 18
 

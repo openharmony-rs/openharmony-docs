@@ -6,8 +6,6 @@ declare interface LayoutChild
 
 布局和测量发生时，框架传递给子组件的信息。
 
-@interface LayoutChild
-
 **起始版本：** 9
 
 **废弃版本：** 10
@@ -76,7 +74,7 @@ measure(childConstraint: ConstraintSizeOptions)
 borderInfo: LayoutBorderInfo
 ```
 
-子组件边框信息
+子组件边框信息。
 
 **类型：** [LayoutBorderInfo](arkts-arkui-common-comp-layoutborderinfo-i.md)
 
@@ -98,7 +96,7 @@ borderInfo: LayoutBorderInfo
 constraint: ConstraintSizeOptions
 ```
 
-子组件约束
+子组件约束尺寸。取值原则：minWidth≤maxWidth，minHeight≤maxHeight；单位：vp。
 
 **类型：** [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md)
 
@@ -120,7 +118,7 @@ constraint: ConstraintSizeOptions
 id: string
 ```
 
-子组件id
+子组件id。
 
 **类型：** string
 
@@ -142,7 +140,7 @@ id: string
 name: string
 ```
 
-子组件名字
+子组件名称。
 
 **类型：** string
 
@@ -164,7 +162,7 @@ name: string
 position: Position
 ```
 
-子组件位置信息
+子组件位置坐标。单位：vp。
 
 **类型：** Position
 

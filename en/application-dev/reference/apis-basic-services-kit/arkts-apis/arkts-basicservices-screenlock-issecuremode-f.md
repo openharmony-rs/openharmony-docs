@@ -6,8 +6,6 @@
 import { screenLock } from '@kit.BasicServicesKit';
 ```
 
-<a id="issecuremode1"></a>
-
 ## isSecureMode
 
 ```TypeScript
@@ -104,8 +102,6 @@ export default {
 }
 ```
 
-
-<a id="issecuremode2"></a>
 
 ## isSecureMode
 

@@ -6,8 +6,6 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
-<a id="uninstalldlpsandbox1"></a>
-
 ## uninstallDLPSandbox
 
 ```TypeScript
@@ -18,7 +16,7 @@ Uninstalls a DLP sandbox application for an application. This API uses a promise
 
 Use this API to clear the corresponding sandbox environment.
 
-This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox1).
+This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox).
 
 **Since:** 10
 
@@ -74,8 +72,6 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
 <!--DelEnd-->
 
 
-<a id="uninstalldlpsandbox2"></a>
-
 ## uninstallDLPSandbox
 
 ```TypeScript
@@ -86,7 +82,7 @@ Uninstalls a DLP sandbox application for an application. This API uses an asynch
 
 Use this API to clear the sandbox environment.
 
-This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox1).
+This API can be called only after a DLP sandbox is installed by calling [installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox).
 
 **Since:** 10
 
@@ -103,7 +99,7 @@ This API can be called only after a DLP sandbox is installed by calling [install
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 401 is thrown. |
-| userId | number | Yes | Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value is out of range, the excess part will be truncated. If the value of **userId** is less than 0, an error log is generated, and the function stops running. |
+| userId | number | Yes | Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**. The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated. If the value of **userId** is less than 0, an error log is generated, and the function stops running. |
 | appIndex | number | Yes | DLP sandbox index, which is the value returned after **installDLPSandbox** is successfully called. It is used to identify the installed DLP sandbox. The value range is [1000, 1100]. If the value of **appIndex** is less than 0, an error log is generated, and the function stops running. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the DLP sandbox uninstallation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 

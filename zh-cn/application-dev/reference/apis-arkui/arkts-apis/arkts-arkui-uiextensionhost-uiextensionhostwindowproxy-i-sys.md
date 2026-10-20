@@ -20,8 +20,6 @@ Transition Controller
 import { uiExtensionHost } from '@kit.ArkUI';
 ```
 
-<a id="createsubwindowwithoptions1"></a>
-
 ## createSubWindowWithOptions
 
 ```TypeScript
@@ -111,8 +109,6 @@ export default class EntryAbility extends UIExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="createsubwindowwithoptions2"></a>
 
 ## createSubWindowWithOptions
 
@@ -205,7 +201,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 <!--DelEnd-->
 
-## getWindowAvoidArea
+## getWindowAvoidArea('window.AvoidAreaType')
 
 ```TypeScript
 getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea

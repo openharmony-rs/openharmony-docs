@@ -108,8 +108,6 @@ Starts configuration for the session.
 | --- | --- |
 | [7400105](../errorcode-camera.md#7400105-session-configuration-locked) | Session config locked. |
 
-<a id="commitconfig1"></a>
-
 ## commitConfig
 
 ```TypeScript
@@ -122,7 +120,7 @@ Commits the configuration for this session. This API uses an asynchronous callba
 
 **Deprecated since:** 11
 
-**Substitutes:** [commitConfig](arkts-camera-camera-session-i.md#commitconfig1)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [commitConfig](arkts-camera-camera-session-i.md#commitconfig)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-commitConfig(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-commitConfig(callback: AsyncCallback<void>): void-End-->
 
@@ -140,8 +138,6 @@ Commits the configuration for this session. This API uses an asynchronous callba
 | --- | --- |
 | [7400102](../errorcode-camera.md#7400102-invalid-operation) | Operation not allowed. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
-
-<a id="commitconfig2"></a>
 
 ## commitConfig
 
@@ -786,8 +782,6 @@ Subscribes to CaptureSession error events. This API uses an asynchronous callbac
 | type | 'error' | Yes | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](#beginconfig), [commitConfig](#commitconfig), and [addInput](#addinput). |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | Yes | Callback used to return an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md). |
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -800,7 +794,7 @@ Releases this session. This API uses an asynchronous callback to return the resu
 
 **Deprecated since:** 11
 
-**Substitutes:** [release](arkts-camera-camera-session-i.md#release1)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [release](arkts-camera-camera-session-i.md#release)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-release(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-release(callback: AsyncCallback<void>): void-End-->
 
@@ -817,8 +811,6 @@ Releases this session. This API uses an asynchronous callback to return the resu
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
-
-<a id="release2"></a>
 
 ## release
 
@@ -1165,8 +1157,6 @@ Sets a zoom ratio, with a maximum precision of two decimal places.
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
-<a id="start1"></a>
-
 ## start
 
 ```TypeScript
@@ -1179,7 +1169,7 @@ Starts this session. This API uses an asynchronous callback to return the result
 
 **Deprecated since:** 11
 
-**Substitutes:** [start](arkts-camera-camera-session-i.md#start1)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [start](arkts-camera-camera-session-i.md#start)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-start(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-start(callback: AsyncCallback<void>): void-End-->
 
@@ -1197,8 +1187,6 @@ Starts this session. This API uses an asynchronous callback to return the result
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
-
-<a id="start2"></a>
 
 ## start
 
@@ -1231,8 +1219,6 @@ Starts this session. This API uses a promise to return the result.
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -1245,7 +1231,7 @@ Stops this session. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 11
 
-**Substitutes:** [stop](arkts-camera-camera-session-i.md#stop1)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [stop](arkts-camera-camera-session-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-CaptureSession-stop(callback: AsyncCallback<void>): void--><!--Device-CaptureSession-stop(callback: AsyncCallback<void>): void-End-->
 
@@ -1262,8 +1248,6 @@ Stops this session. This API uses an asynchronous callback to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
-
-<a id="stop2"></a>
 
 ## stop
 

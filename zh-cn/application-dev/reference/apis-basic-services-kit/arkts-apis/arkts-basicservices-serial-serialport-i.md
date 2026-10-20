@@ -709,7 +709,7 @@ write(data: Uint8Array, timeout?: number): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. undefined is passed as the optional parameter. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. undefined is passed as the optional parameter. |
 | [35700001](../errorcode-busmanager-serial.md#35700001-服务异常) | Service error. |
 | [35700002](../errorcode-busmanager-serial.md#35700002-参数错误) | Invalid parameter. |
 | [35700003](../errorcode-busmanager-serial.md#35700003-虚拟串口断开) | Virtual serial port disconnected. |

@@ -812,8 +812,7 @@
   - [isBandTypeSupported](arkts-connectivity-wifimanager-isbandtypesupported-f.md)
   - [isConnected](arkts-connectivity-wifimanager-isconnected-f.md)
   - [isFeatureSupported](arkts-connectivity-wifimanager-isfeaturesupported-f.md)
-  <!--Del-->
-  - [isHotspotActive(system api)](arkts-connectivity-wifimanager-ishotspotactive-f-sys.md)<!--DelEnd-->
+  - [isHotspotActive](arkts-connectivity-wifimanager-ishotspotactive-f.md)
   <!--Del-->
   - [isHotspotDualBandSupported(system api)](arkts-connectivity-wifimanager-ishotspotdualbandsupported-f-sys.md)<!--DelEnd-->
   - [isMeteredHotspot](arkts-connectivity-wifimanager-ismeteredhotspot-f.md)

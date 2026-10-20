@@ -148,7 +148,7 @@ Default value: **false**
 id?: string
 ```
 
-Right button ID in the subtitle. Set this parameter when an ID needs to be set for the right button in the subtitle. When omitted, this parameter is not set. indicating that no right button ID is set in the subtitle. Default value: **undefined**.
+Right button ID in the subtitle. Set this parameter when an ID needs to be set for the right button in the subtitle. When omitted, this parameter is not set. Default value: **undefined**, indicating that no right button ID is set in the subtitle.
 
 **Type:** string
 

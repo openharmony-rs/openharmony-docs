@@ -26,7 +26,7 @@ Sets timeout configuration for all tasks. Used when task-specific timeout config
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [TimeoutOptions](arkts-basicservices-cachedownload-timeoutoptions-i.md) | No | Task timeout configuration.<br>Default value: Refer to the default value of TimeoutOptions. |
+| options | [TimeoutOptions](arkts-basicservices-cachedownload-timeoutoptions-i.md) | No | Task timeout configuration. <br>Default value: Refer to the default value of TimeoutOptions. |
 
 **Examples**
 

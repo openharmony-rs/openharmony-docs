@@ -208,8 +208,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getdeviceinfo1"></a>
-
 ## getDeviceInfo
 
 ```TypeScript
@@ -273,8 +271,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getdeviceinfo2"></a>
-
 ## getDeviceInfo
 
 ```TypeScript
@@ -336,8 +332,6 @@ dmInstance.getDeviceInfo(networkId).then((data: deviceManager.DeviceInfo) => {
 
 <!--DelEnd-->
 
-<a id="getlocaldeviceinfo1"></a>
-
 ## getLocalDeviceInfo
 
 ```TypeScript
@@ -398,8 +392,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getlocaldeviceinfo2"></a>
 
 ## getLocalDeviceInfo
 
@@ -508,8 +500,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="gettrusteddevicelist1"></a>
-
 ## getTrustedDeviceList
 
 ```TypeScript
@@ -522,7 +512,7 @@ Obtains all trusted devices. This API uses an asynchronous callback to return th
 
 **Deprecated since:** 11
 
-**Substitutes:** [getAvailableDeviceList](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelist1)(callback: AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt;)
+**Substitutes:** [getAvailableDeviceList](arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelist)(callback: AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt;)
 
 **Required permissions:** ohos.permission.ACCESS_SERVICE_DM
 
@@ -569,8 +559,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="gettrusteddevicelist2"></a>
 
 ## getTrustedDeviceList
 
@@ -623,8 +611,6 @@ dmInstance.getTrustedDeviceList().then((data: Array<deviceManager.DeviceInfo>) =
 ```
 
 <!--DelEnd-->
-
-<a id="gettrusteddevicelistsync1"></a>
 
 ## getTrustedDeviceListSync
 
@@ -680,8 +666,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="gettrusteddevicelistsync2"></a>
 
 ## getTrustedDeviceListSync
 
@@ -1966,8 +1950,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="startdevicediscovery1"></a>
-
 ## startDeviceDiscovery
 
 ```TypeScript
@@ -2044,8 +2026,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="startdevicediscovery2"></a>
 
 ## startDeviceDiscovery
 

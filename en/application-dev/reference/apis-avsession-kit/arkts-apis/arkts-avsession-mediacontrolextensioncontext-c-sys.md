@@ -6,8 +6,6 @@ export default class MediaControlExtensionContext extends UIExtensionContext
 
 The context of media control extension. It allows access to UIExtension-specific resources.
 
-@extends UIExtensionContext
-
 **Inheritance/Implementation:** MediaControlExtensionContext extends [UIExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-uiextensioncontext-c.md)
 
 **Since:** 10

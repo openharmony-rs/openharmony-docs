@@ -6,8 +6,6 @@
 import { JSON } from '@kit.ArkTS';
 ```
 
-<a id="stringify1"></a>
-
 ## stringify
 
 ```TypeScript
@@ -38,8 +36,48 @@ Converts an ArkTS object or array into a JSON string. In the case of a container
 | --- | --- |
 | string | Return a JSON text. |
 
+**Examples**
 
-<a id="stringify2"></a>
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+
+interface Person {
+  name: string;
+  age: number;
+  city: string;
+}
+
+let person: Person = {name: "John",age: 30, city: "New York"};
+
+let rstArrStr = JSON.stringify(person, ["name", "age"]);
+console.info(rstArrStr);
+// Output: {"name":"John","age":30}
+
+let rstStrSpace = JSON.stringify(person, ["name", "age"], '  ');
+console.info(rstStrSpace);
+/*
+Output:
+{
+  "name": "John",
+  "age": 30
+}
+*/
+
+let rstStrStar = JSON.stringify(person, ["name", "age"], '  &&');
+console.info(rstStrStar);
+/*
+Output:
+{
+  &&"name": "John",
+  &&"age": 30
+}
+*/
+
+let bigIntObj = BigInt(112233445566778899n);
+console.info(JSON.stringify(bigIntObj));
+// Output: 112233445566778899
+```
+
 
 ## stringify
 
@@ -70,3 +108,36 @@ Converts an ArkTS object or array into a JSON string. In the case of a container
 | Type | Description |
 | --- | --- |
 | string | Return a JSON text. |
+
+**Examples**
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+
+function replacer(key: string, value: Object): Object {
+  if (typeof value === "string") {
+    return value.toUpperCase();
+  }
+  return value;
+}
+
+interface Person {
+  name: string;
+  age: number;
+  city: string;
+}
+let inputObj = {"name": "John", "age": 30, "city": "ChongQing"} as Person;
+
+console.info(JSON.stringify(inputObj, replacer));
+// Output: {"name":"JOHN","age":30,"city":"CHONGQING"}
+
+console.info(JSON.stringify(inputObj, replacer, '  '));
+/*
+Output:
+{
+  "name": "JOHN",
+  "age": 30,
+  "city": "CHONGQING"
+}
+*/
+```

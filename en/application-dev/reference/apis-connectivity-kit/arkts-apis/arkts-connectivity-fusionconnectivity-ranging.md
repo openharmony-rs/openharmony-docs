@@ -4,6 +4,8 @@ Provides APIs for Fusion Connectivity ranging.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace ranging--><!--Device-unnamed-declare namespace ranging-End-->
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core

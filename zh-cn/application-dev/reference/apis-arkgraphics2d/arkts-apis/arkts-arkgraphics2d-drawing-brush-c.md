@@ -26,8 +26,6 @@ class Brush
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -49,8 +47,6 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 const brush = new drawing.Brush();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -76,7 +72,7 @@ constructor(brush: Brush)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
 **示例**
 
@@ -320,7 +316,7 @@ setAlpha(alpha: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -355,7 +351,7 @@ setAntiAlias(aa: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
 **示例**
 
@@ -390,7 +386,7 @@ setBlendMode(mode: BlendMode): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -400,8 +396,6 @@ import { drawing } from '@kit.ArkGraphics2D';
 const brush = new drawing.Brush();
 brush.setBlendMode(drawing.BlendMode.SRC);
 ```
-
-<a id="setcolor1"></a>
 
 ## setColor
 
@@ -427,7 +421,7 @@ setColor(color: common2D.Color): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -439,15 +433,13 @@ const brush = new drawing.Brush();
 brush.setColor(color);
 ```
 
-<a id="setcolor2"></a>
-
 ## setColor
 
 ```TypeScript
 setColor(alpha: number, red: number, green: number, blue: number): void
 ```
 
-设置画刷的颜色。性能优于[setColor](#setcolor1)接口，推荐使用本接口。
+设置画刷的颜色。性能优于[setColor](#setcolor)接口，推荐使用本接口。
 
 **起始版本：** 12
 
@@ -468,7 +460,7 @@ setColor(alpha: number, red: number, green: number, blue: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -479,15 +471,13 @@ const brush = new drawing.Brush();
 brush.setColor(255, 255, 0, 0);
 ```
 
-<a id="setcolor3"></a>
-
 ## setColor
 
 ```TypeScript
 setColor(color: number): void
 ```
 
-设置画刷的颜色。与[setColor](#setcolor1)的区别是支持通过16进制ARGB数值直接设置颜色。
+设置画刷的颜色。与[setColor](#setcolor)的区别是支持通过16进制ARGB数值直接设置颜色。
 
 **起始版本：** 18
 
@@ -505,7 +495,7 @@ setColor(color: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -522,7 +512,7 @@ brush.setColor(0xffff0000);
 setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void
 ```
 
-设置画刷的颜色以及标准色域。与[setColor](#setcolor1)的区别是可以单独设置色域，适用于需要单独设置色域的场景。
+设置画刷的颜色以及标准色域。与[setColor](#setcolor)的区别是可以单独设置色域，适用于需要单独设置色域的场景。
 
 **起始版本：** 20
 
@@ -572,7 +562,7 @@ setColorFilter(filter: ColorFilter | null): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
 **示例**
 
@@ -608,7 +598,7 @@ setImageFilter(filter: ImageFilter | null): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
 **示例**
 
@@ -645,7 +635,7 @@ setMaskFilter(filter: MaskFilter | null): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
 **示例**
 
@@ -686,7 +676,7 @@ setShaderEffect(shaderEffect: ShaderEffect | null): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
 **示例**
 
@@ -722,7 +712,7 @@ setShadowLayer(shadowLayer: ShadowLayer | null): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 
 **示例**
 

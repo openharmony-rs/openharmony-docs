@@ -30,7 +30,7 @@ Set a specific interface up.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| ifaceName | string | Yes | the name of the interface to set up.<br>Value range:(0,1024] <br>Name of the actual network adapter to be started If the network adapter exists, try to up the network adapter. If the network adapter does not exist or does not meet the up condition, the network adapter fails to be up. The network adapter exists in the kernel, and the network adapter meets the up condition. None None |
+| ifaceName | string | Yes | the name of the interface to set up. <br>Value range:(0,1024] <br>Name of the actual network adapter to be started If the network adapter exists, try to up the network adapter. If the network adapter does not exist or does not meet the up condition, the network adapter fails to be up. The network adapter exists in the kernel, and the network adapter meets the up condition. None None |
 
 **Return value:**
 

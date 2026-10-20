@@ -1,7 +1,5 @@
 # createNode
 
-<a id="createnode1"></a>
-
 ## createNode
 
 ```TypeScript
@@ -70,8 +68,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode2"></a>
-
 ## createNode
 
 ```TypeScript
@@ -139,8 +135,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode3"></a>
-
 ## createNode
 
 ```TypeScript
@@ -207,8 +201,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode4"></a>
 
 ## createNode
 
@@ -280,8 +272,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode5"></a>
 
 ## createNode
 
@@ -357,8 +347,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode6"></a>
-
 ## createNode
 
 ```TypeScript
@@ -433,8 +421,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode7"></a>
-
 ## createNode
 
 ```TypeScript
@@ -501,8 +487,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode8"></a>
 
 ## createNode
 
@@ -590,8 +574,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode9"></a>
-
 ## createNode
 
 ```TypeScript
@@ -661,8 +643,6 @@ struct Sample {
 }
 ```
 
-
-<a id="createnode10"></a>
 
 ## createNode
 
@@ -748,8 +728,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode11"></a>
-
 ## createNode
 
 ```TypeScript
@@ -816,8 +794,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode12"></a>
 
 ## createNode
 
@@ -892,8 +868,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode13"></a>
-
 ## createNode
 
 ```TypeScript
@@ -961,8 +935,6 @@ struct Sample {
 }
 ```
 
-
-<a id="createnode14"></a>
 
 ## createNode
 
@@ -1032,8 +1004,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode15"></a>
 
 ## createNode
 
@@ -1108,8 +1078,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode16"></a>
 
 ## createNode
 
@@ -1188,8 +1156,6 @@ struct Sample {
 }
 ```
 
-
-<a id="createnode17"></a>
 
 ## createNode
 
@@ -1282,8 +1248,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode18"></a>
-
 ## createNode
 
 ```TypeScript
@@ -1319,8 +1283,6 @@ function createNode(context: UIContext, nodeType: 'ListItem'): ListItem
 
 参考createNode('List')示例。
 
-
-<a id="createnode19"></a>
 
 ## createNode
 
@@ -1388,8 +1350,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode20"></a>
 
 ## createNode
 
@@ -1465,8 +1425,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode21"></a>
-
 ## createNode
 
 ```TypeScript
@@ -1502,8 +1460,6 @@ function createNode(context: UIContext, nodeType: 'ListItemGroup'): ListItemGrou
 
 参考createNode('List')示例。
 
-
-<a id="createnode22"></a>
 
 ## createNode
 
@@ -1600,8 +1556,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode23"></a>
-
 ## createNode
 
 ```TypeScript
@@ -1637,8 +1591,6 @@ function createNode(context: UIContext, nodeType: 'FlowItem'): FlowItem
 
 参考createNode('WaterFlow')示例。
 
-
-<a id="createnode24"></a>
 
 ## createNode
 
@@ -1707,8 +1659,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode25"></a>
 
 ## createNode
 
@@ -1785,8 +1735,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode26"></a>
-
 ## createNode
 
 ```TypeScript
@@ -1859,8 +1807,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode27"></a>
 
 ## createNode
 
@@ -1937,8 +1883,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode28"></a>
 
 ## createNode
 
@@ -2018,8 +1962,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode29"></a>
-
 ## createNode
 
 ```TypeScript
@@ -2095,8 +2037,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode30"></a>
-
 ## createNode
 
 ```TypeScript
@@ -2168,8 +2108,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode31"></a>
-
 ## createNode
 
 ```TypeScript
@@ -2238,8 +2176,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode32"></a>
 
 ## createNode
 
@@ -2310,8 +2246,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode33"></a>
 
 ## createNode
 
@@ -2385,8 +2319,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode34"></a>
-
 ## createNode
 
 ```TypeScript
@@ -2455,8 +2387,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode35"></a>
-
 ## createNode
 
 ```TypeScript
@@ -2523,8 +2453,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode36"></a>
 
 ## createNode
 
@@ -2593,8 +2521,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="createnode37"></a>
-
 ## createNode
 
 ```TypeScript
@@ -2632,8 +2558,6 @@ function createNode(context: UIContext, nodeType: 'QRCode'): QRCode
 typeNode.createNode(uiContext, 'QRCode');
 ```
 
-
-<a id="createnode38"></a>
 
 ## createNode
 
@@ -2673,8 +2597,6 @@ typeNode.createNode(uiContext, 'Badge');
 ```
 
 
-<a id="createnode39"></a>
-
 ## createNode
 
 ```TypeScript
@@ -2713,8 +2635,6 @@ typeNode.createNode(uiContext, 'TextClock');
 ```
 
 
-<a id="createnode40"></a>
-
 ## createNode
 
 ```TypeScript
@@ -2752,8 +2672,6 @@ function createNode(context: UIContext, nodeType: 'TextTimer'): TextTimer
 typeNode.createNode(uiContext, 'TextTimer');
 ```
 
-
-<a id="createnode41"></a>
 
 ## createNode
 
@@ -2844,8 +2762,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="createnode42"></a>
 
 ## createNode
 

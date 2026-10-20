@@ -6,8 +6,6 @@
 import { data } from '@kit.TelephonyKit';
 ```
 
-<a id="enablecellulardataroaming1"></a>
-
 ## enableCellularDataRoaming
 
 ```TypeScript
@@ -63,8 +61,6 @@ data.enableCellularDataRoaming(0, (err: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="enablecellulardataroaming2"></a>
 
 ## enableCellularDataRoaming
 

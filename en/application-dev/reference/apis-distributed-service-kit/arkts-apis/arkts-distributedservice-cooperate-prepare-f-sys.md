@@ -6,8 +6,6 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
-<a id="prepare1"></a>
-
 ## prepare
 
 ```TypeScript
@@ -20,7 +18,7 @@ Prepares for screen hopping. This API uses an asynchronous callback to return th
 
 **Deprecated since:** 11
 
-**Substitutes:** [prepareCooperate](arkts-distributedservice-cooperate-preparecooperate-f-sys.md#preparecooperate1)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [prepareCooperate](arkts-distributedservice-cooperate-preparecooperate-f-sys.md#preparecooperate)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-cooperate-function prepare(callback: AsyncCallback<void>): void--><!--Device-cooperate-function prepare(callback: AsyncCallback<void>): void-End-->
 
@@ -39,7 +37,7 @@ Prepares for screen hopping. This API uses an asynchronous callback to return th
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 <!--Del-->
 **Examples**
@@ -62,8 +60,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="prepare2"></a>
 
 ## prepare
 
@@ -96,7 +92,7 @@ Prepares for screen hopping. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 <!--Del-->
 **Examples**

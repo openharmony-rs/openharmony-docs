@@ -18,15 +18,13 @@ Creates an **Animator** object.
 import { Animator, AnimatorOptions, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 ```
 
-<a id="create1"></a>
-
 ## create
 
 ```TypeScript
 static create(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 ```
 
-Creates an **AnimatorResult** object for animations. Compared with [create](#create2), this API accepts parameters of the [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md) type.
+Creates an **AnimatorResult** object for animations. Compared with [create](#create), this API accepts parameters of the [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md) type.
 
 **Since:** 18
 
@@ -54,7 +52,7 @@ Creates an **AnimatorResult** object for animations. Compared with [create](#cre
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 **Examples**
 
@@ -69,8 +67,6 @@ import { Animator as animator, SimpleAnimatorOptions } from '@kit.ArkUI';
 let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(2000);
 animator.create(options); // You are advised to use UIContext.createAnimator().
 ```
-
-<a id="create2"></a>
 
 ## create
 
@@ -114,7 +110,7 @@ Creates an **AnimatorResult** object for animations.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 **Examples**
 

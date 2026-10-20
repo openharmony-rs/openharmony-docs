@@ -4,6 +4,8 @@ The webNativeMessagingExtensionManager module is a Web native message extension 
 
 **Since:** 21
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace webNativeMessagingExtensionManager--><!--Device-unnamed-declare namespace webNativeMessagingExtensionManager-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

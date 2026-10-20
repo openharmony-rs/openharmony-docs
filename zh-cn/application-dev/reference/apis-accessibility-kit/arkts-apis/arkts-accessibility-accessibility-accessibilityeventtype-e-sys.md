@@ -436,6 +436,24 @@ TYPE_PAGE_OPEN = 28
 
 **系统接口：** 此接口为系统接口。
 
+## TYPE_PAGE_STATE_PRE_UPDATE
+
+```TypeScript
+TYPE_PAGE_STATE_PRE_UPDATE = 74
+```
+
+表示页面状态即将更新。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AccessibilityEventType-TYPE_PAGE_STATE_PRE_UPDATE = 74--><!--Device-AccessibilityEventType-TYPE_PAGE_STATE_PRE_UPDATE = 74-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## TYPE_PAGE_STATE_UPDATE
 
 ```TypeScript

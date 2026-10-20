@@ -6,8 +6,6 @@ declare class ScrollableCommonMethod<T> extends CommonMethod<T>
 
 CommonScrollableMethod
 
-@extends CommonMethod<T>
-
 **继承/实现关系：** ScrollableCommonMethod extends CommonMethod&lt;T&gt;
 
 **起始版本：** 12
@@ -269,6 +267,36 @@ enableScrollInteraction(value: boolean): T
 | --- | --- |
 | T | 返回当前滚动组件。 |
 
+## enableScrollWithKeyboard
+
+```TypeScript
+enableScrollWithKeyboard(enabled: boolean | undefined): T
+```
+
+设置是否支持键盘方向键滚动。开启后，组件在获焦且未激活焦点态时会响应键盘方向键滚动。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScrollableCommonMethod-enableScrollWithKeyboard(enabled: boolean | undefined): T--><!--Device-ScrollableCommonMethod-enableScrollWithKeyboard(enabled: boolean | undefined): T-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| enabled | boolean &#124; undefined | 是 | 是否支持键盘方向键滚动。<br>默认值：true。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| T |  |
+
 ## enableScrollWithMouse
 
 ```TypeScript
@@ -310,28 +338,28 @@ fadingEdge(enabled: Optional<boolean>, options?: FadingEdgeOptions): T
 > **说明：** 
 > 
 > fadingEdge是通过设置[overlay](arkts-arkui-common-comp-commonmethod-c.md#overlay)属性和
-> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode1)属性（参数值为BlendMode.SRC_OVER，
+> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode)属性（参数值为BlendMode.SRC_OVER，
 > BlendApplyType.OFFSCREEN）实现的。当fadingEdge生效时，会覆盖原组件的.overlay()属性和.blendMode()属性，并将导致当前组件和其子组件需要截屏的接口无法截取到正确的画面。需要截
-> 屏的接口有：[blur](arkts-arkui-common-comp-commonmethod-c.md#blur1)、
-> [linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur1)、
-> [brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness1)、[visualEffect](arkts-arkui-common-comp-commonmethod-c.md#visualeffect)、
-> [grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale1)、[saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate1)、
-> [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast1)、
-> [invert](arkts-arkui-common-comp-commonmethod-c.md#invert1)、
-> [sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia1)、
-> [hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate1)、
-> [colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend1)、
-> [lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect1)、
-> [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect1)、
-> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode1)、
-> [backgroundBrightness](arkts-arkui-common-comp-commonmethod-c.md#backgroundbrightness1)。
+> 屏的接口有：[blur](arkts-arkui-common-comp-commonmethod-c.md#blur)、
+> [linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur)、
+> [brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness)、[visualEffect](arkts-arkui-common-comp-commonmethod-c.md#visualeffect)、
+> [grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale)、[saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate)、
+> [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast)、
+> [invert](arkts-arkui-common-comp-commonmethod-c.md#invert)、
+> [sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia)、
+> [hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate)、
+> [colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend)、
+> [lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect)、
+> [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect)、
+> [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode)、
+> [backgroundBrightness](arkts-arkui-common-comp-commonmethod-c.md#backgroundbrightness)。
 > 
 > fadingEdge生效时，建议不在设置fadingEdge属性的组件上设置[background](arkts-arkui-common-comp-commonmethod-c.md#background)相关属性，会影响渐隐的显示效果。
 > 
 > fadingEdge生效时，建议不在设置fadingEdge属性的组件以及其子组件上设置[systemMaterial](arkts-arkui-common-comp-commonmethod-c.md#systemmaterial)相关属性，会影响系统材质的显示效果，
 > 导致材质效果与预期效果不一致。
 > 
-> fadingEdge生效时，设置fadingEdge属性的组件会裁剪到边界，在该组件上设置[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1)属性为false不生效。
+> fadingEdge生效时，设置fadingEdge属性的组件会裁剪到边界，在该组件上设置[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)属性为false不生效。
 
 **起始版本：** 14
 
@@ -862,8 +890,6 @@ scrollBar(barState: BarState): T
 | --- | --- |
 | T | 返回当前滚动组件。 |
 
-<a id="scrollbarcolor1"></a>
-
 ## scrollBarColor
 
 ```TypeScript
@@ -893,8 +919,6 @@ scrollBarColor(color: Color | number | string): T
 | 类型 | 说明 |
 | --- | --- |
 | T | 返回当前滚动组件。 |
-
-<a id="scrollbarcolor2"></a>
 
 ## scrollBarColor
 
@@ -994,8 +1018,6 @@ scrollBarMargin(margin: ScrollBarMargin): T
 | --- | --- |
 | T | 返回当前滚动组件。 |
 
-<a id="scrollbarwidth1"></a>
-
 ## scrollBarWidth
 
 ```TypeScript
@@ -1025,8 +1047,6 @@ scrollBarWidth(value: number | string): T
 | 类型 | 说明 |
 | --- | --- |
 | T | 返回当前滚动组件。 |
-
-<a id="scrollbarwidth2"></a>
 
 ## scrollBarWidth
 

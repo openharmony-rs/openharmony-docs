@@ -18,8 +18,6 @@ class URL
 import { url } from '@kit.ArkTS';
 ```
 
-<a id="constructor2"></a>
-
 ## constructor
 
 ```TypeScript
@@ -52,8 +50,6 @@ new url.URL('/path/path1'); // Raises a TypeError exception as '/path/path1' is 
 new url.URL('https://www.example.com', ); // Output https://www.example.com/
 new url.URL('https://www.example.com', absoluteUrl); // Output https://www.example.com/
 ```
-
-<a id="constructor1"></a>
 
 ## constructor
 
@@ -455,3 +451,26 @@ readonly searchParams: URLSearchParams
 <!--Device-URL-readonly searchParams: URLSearchParams--><!--Device-URL-readonly searchParams: URLSearchParams-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**示例**
+
+```TypeScript
+let parsedUrl = url.URL.parseURL('http://username:password@host:8080/directory/file?foo=1&bar=2#fragment');
+console.info("hash " + parsedUrl.hash); // hash #fragment
+console.info("host " + parsedUrl.host); // host host:8080
+console.info("hostname " + parsedUrl.hostname); // hostname host
+console.info("href " + parsedUrl.href); // href http://username:password@host:8080/directory/file?foo=1&bar=2#fragment
+console.info("origin " + parsedUrl.origin); // origin http://host:8080
+console.info("password " + parsedUrl.password); // password password
+console.info("pathname " + parsedUrl.pathname); // pathname /directory/file
+console.info("port " + parsedUrl.port); // port 8080
+console.info("protocol " + parsedUrl.protocol); // protocol http:
+console.info("search " + parsedUrl.search); // search ?foo=1&bar=2
+console.info("username " + parsedUrl.username); // username username
+// parsedUrl.params 返回值为URLParams对象
+console.info("params: foo " + parsedUrl.params.get("foo")); // params: foo 1
+
+let urlObj = url.URL.parseURL('http://testhost:80/directory/file?foo=1');
+console.info("port " + urlObj.port); // port 
+console.info("toString " + urlObj.toString()); // toString http://testhost/directory/file?foo=1
+```

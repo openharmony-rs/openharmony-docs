@@ -4,8 +4,6 @@
 export interface SubscribeMessageOptions
 ```
 
-@typedef SubscribeMessageOptions
-
 **Since:** 5
 
 **Deprecated since:** 8

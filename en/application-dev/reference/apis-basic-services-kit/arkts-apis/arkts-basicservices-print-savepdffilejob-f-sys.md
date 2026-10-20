@@ -30,8 +30,8 @@ Save the pdf file for a print job.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobId | string | Yes | Indicates the print job ID.<br>The print job ID to which the file to be saved belongs. |
-| fd | number | Yes | Indicates the fd.<br>Fd of the file to be saved. |
+| jobId | string | Yes | Indicates the print job ID. <br>The print job ID to which the file to be saved belongs. |
+| fd | number | Yes | Indicates the fd. <br>Fd of the file to be saved. |
 
 **Return value:**
 

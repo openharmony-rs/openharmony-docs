@@ -367,4 +367,6 @@
   <!--Del-->
   - [PositionType（系统接口）](arkts-medialibrary-sendablephotoaccesshelper-positiontype-e-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [ShareAlbumRiskStatus（系统接口）](arkts-medialibrary-sendablephotoaccesshelper-sharealbumriskstatus-e-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [ThumbnailVisibility（系统接口）](arkts-medialibrary-sendablephotoaccesshelper-thumbnailvisibility-e-sys.md)<!--DelEnd-->

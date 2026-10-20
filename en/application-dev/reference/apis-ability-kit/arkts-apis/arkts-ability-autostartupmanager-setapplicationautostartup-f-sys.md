@@ -6,8 +6,6 @@
 import { autoStartupManager } from '@kit.AbilityKit';
 ```
 
-<a id="setapplicationautostartup1"></a>
-
 ## setApplicationAutoStartup
 
 ```TypeScript
@@ -47,8 +45,6 @@ Sets an application component to automatically start upon system boot. This API 
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Failed to connect to the system service. |
 | 16000206 | The specified application is not authorized to start before the user is unlocked. |
 
-
-<a id="setapplicationautostartup2"></a>
 
 ## setApplicationAutoStartup
 

@@ -6,8 +6,6 @@ namespace wireless
 
 Provides methods for setting radio network information, including information about Bluetooth, Wi-Fi, Near Field Communication (NFC), and the airplane mode.
 
-@namespace wireless
-
 **Since:** 7
 
 <!--Device-settings-namespace wireless--><!--Device-settings-namespace wireless-End-->

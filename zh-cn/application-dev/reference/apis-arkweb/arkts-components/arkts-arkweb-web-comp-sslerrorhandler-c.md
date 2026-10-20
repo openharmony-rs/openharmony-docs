@@ -28,8 +28,6 @@ SslErrorHandler的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="handlecancel1"></a>
-
 ## handleCancel
 
 ```TypeScript
@@ -45,8 +43,6 @@ handleCancel(): void
 <!--Device-SslErrorHandler-handleCancel(): void--><!--Device-SslErrorHandler-handleCancel(): void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
-
-<a id="handlecancel2"></a>
 
 ## handleCancel
 

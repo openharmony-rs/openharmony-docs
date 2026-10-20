@@ -13,3 +13,7 @@ type OnProxyConfigChangeCallback = () => void
 <!--Device-webview-type OnProxyConfigChangeCallback = () => void--><!--Device-webview-type OnProxyConfigChangeCallback = () => void-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**示例**
+
+完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride)。

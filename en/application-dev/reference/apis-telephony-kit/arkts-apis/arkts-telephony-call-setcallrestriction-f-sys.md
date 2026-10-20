@@ -6,8 +6,6 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
-<a id="setcallrestriction1"></a>
-
 ## setCallRestriction
 
 ```TypeScript
@@ -30,7 +28,7 @@ Sets the call restriction status. This API uses an asynchronous callback to retu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2. |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2. |
 | info | [CallRestrictionInfo](arkts-telephony-call-callrestrictioninfo-i-sys.md) | Yes | Call restriction information. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
@@ -69,8 +67,6 @@ call.setCallRestriction(0, callRestrictionInfo, (err: BusinessError) => {
 <!--DelEnd-->
 
 
-<a id="setcallrestriction2"></a>
-
 ## setCallRestriction
 
 ```TypeScript
@@ -93,7 +89,7 @@ Sets the call restriction status. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2. |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2. |
 | info | [CallRestrictionInfo](arkts-telephony-call-callrestrictioninfo-i-sys.md) | Yes | Call restriction information. |
 
 **Return value:**

@@ -4,11 +4,11 @@
 interface HighResolutionPhotoSession extends Session, AutoExposure, Focus
 ```
 
-HighResolutionPhotoSession extends Session, AutoExposure, Focus Implements a high-resolution photo session, which sets the parameters of the high-resolution photo mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md).
+HighResolutionPhotoSession继承自[Session](arkts-camera-camera-session-i.md)、[AutoExposure](arkts-camera-camera-autoexposure-i.md)、[Focus](arkts-camera-camera-focus-i.md)。实现高分辨率拍照会话，用于设置高分辨率拍照模式的参数，并保存运行相机所需的[CameraInput](arkts-camera-camera-camerainput-i.md)和[CameraOutput](arkts-camera-camera-cameraoutput-i.md)实例。继承自[Session](arkts-camera-camera-session-i.md)。
 
-> **NOTE:** 
+> **说明：** 
 > 
-> In high-resolution photo capture scenarios, the physical camera lens must be used instead of the logical lens.
+> 高分辨率拍照场景下，必须使用物理相机镜头而非逻辑镜头。
 
 **继承/实现关系：** HighResolutionPhotoSession extends [Session](arkts-camera-camera-session-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [Focus](arkts-camera-camera-focus-i.md)
 
@@ -32,7 +32,7 @@ import { camera } from '@kit.CameraKit';
 off(type: 'error', callback?: ErrorCallback): void
 ```
 
-Unsubscribes from HighResolutionPhotoSession error events.
+注销监听高分辨率拍照会话的错误事件。
 
 **起始版本：** 12
 
@@ -46,8 +46,8 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('error')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'error' | 是 | 事件类型，固定为'error'，session创建成功之后可监听该接口。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
 **错误码：**
 
@@ -72,7 +72,7 @@ function unregisterSessionError(highResolutionPhotoSession: camera.HighResolutio
 off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void
 ```
 
-Unsubscribes from focus state change events.
+注销监听相机聚焦的状态变化。
 
 **起始版本：** 12
 
@@ -86,8 +86,8 @@ Unsubscribes from focus state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'focusStateChange' | 是 | 事件类型，固定为'focusStateChange'，session创建成功可监听。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | 回调函数，本参数可选。如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
 
 **错误码：**
 
@@ -112,7 +112,7 @@ function unregisterFocusStateChange(highResolutionPhotoSession: camera.HighResol
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-Subscribes to HighResolutionPhotoSession error events. This API uses an asynchronous callback to return the result.
+注册回调函数来监听高分辨率拍照会话的错误事件，使用callback异步回调返回结果。
 
 **起始版本：** 12
 
@@ -126,8 +126,8 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-camera-camera-session-i.md#beginconfig), [commitConfig](arkts-camera-camera-session-i.md#commitconfig), and [addInput](arkts-camera-camera-session-i.md#addinput). |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | Callback used to return an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md). |
+| type | 'error' | 是 | 事件类型，固定为'error'，session创建成功之后可监听该接口。session调用相关接口出现错误时会触发该事件，比如调用[beginConfig](arkts-camera-camera-session-i.md#beginconfig)，[commitConfig](arkts-camera-camera-session-i.md#commitconfig)，[addInput](arkts-camera-camera-session-i.md#addinput)等接口发生错误时返回错误信息。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
 **错误码：**
 
@@ -158,7 +158,7 @@ function registerSessionError(highResolutionPhotoSession: camera.HighResolutionP
 on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void
 ```
 
-Subscribes to focus state change events. This API uses an asynchronous callback to return the result.
+监听相机聚焦的状态变化，通过注册回调函数获取结果。使用callback异步回调。
 
 **起始版本：** 12
 
@@ -172,8 +172,8 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | Callback used to return the focus state change. |
+| type | 'focusStateChange' | 是 | 事件类型，固定为'focusStateChange'，session创建成功可监听。仅当自动对焦模式时，且相机对焦状态发生改变时可触发该事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | 回调函数，用于获取当前对焦状态。 |
 
 **错误码：**
 

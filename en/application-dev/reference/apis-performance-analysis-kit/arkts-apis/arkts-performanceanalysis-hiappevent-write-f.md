@@ -6,8 +6,6 @@
 import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="write1"></a>
-
 ## write
 
 ```TypeScript
@@ -40,13 +38,13 @@ Writes events of the **AppEventInfo** type. This API uses a promise to return th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [11100001](../errorcode-hiappevent.md#11100001-application-event-logging-disabled) | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
-| [11101001](../errorcode-hiappevent.md#11101001-invalid-event-domain-name) | Invalid event domain. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
-| [11101002](../errorcode-hiappevent.md#11101002-invalid-event-name) | Invalid event name. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
-| [11101003](../errorcode-hiappevent.md#11101003-invalid-number-of-event-parameters) | Invalid number of event parameters. Possibly caused by the number of parameters<br>is over 32. |
+| [11101001](../errorcode-hiappevent.md#11101001-invalid-event-domain-name) | Invalid event domain. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
+| [11101002](../errorcode-hiappevent.md#11101002-invalid-event-name) | Invalid event name. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
+| [11101003](../errorcode-hiappevent.md#11101003-invalid-number-of-event-parameters) | Invalid number of event parameters. Possibly caused by the number of parameters <br>is over 32. |
 | [11101004](../errorcode-hiappevent.md#11101004-invalid-event-parameter-string-length) | Invalid string length of the event parameter. |
-| [11101005](../errorcode-hiappevent.md#11101005-invalid-event-parameter-name) | Invalid event parameter name. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
+| [11101005](../errorcode-hiappevent.md#11101005-invalid-event-parameter-name) | Invalid event parameter name. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
 | [11101006](../errorcode-hiappevent.md#11101006-invalid-array-length-of-event-parameter-values) | Invalid array length of the event parameter. |
 
 **Examples**
@@ -73,8 +71,6 @@ hiAppEvent.write({
 });
 ```
 
-
-<a id="write2"></a>
 
 ## write
 
@@ -103,13 +99,13 @@ Writes events of the **AppEventInfo** type. This API uses an asynchronous callba
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [11100001](../errorcode-hiappevent.md#11100001-application-event-logging-disabled) | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
-| [11101001](../errorcode-hiappevent.md#11101001-invalid-event-domain-name) | Invalid event domain. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
-| [11101002](../errorcode-hiappevent.md#11101002-invalid-event-name) | Invalid event name. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
-| [11101003](../errorcode-hiappevent.md#11101003-invalid-number-of-event-parameters) | Invalid number of event parameters. Possibly caused by the number of parameters<br>is over 32. |
+| [11101001](../errorcode-hiappevent.md#11101001-invalid-event-domain-name) | Invalid event domain. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
+| [11101002](../errorcode-hiappevent.md#11101002-invalid-event-name) | Invalid event name. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
+| [11101003](../errorcode-hiappevent.md#11101003-invalid-number-of-event-parameters) | Invalid number of event parameters. Possibly caused by the number of parameters <br>is over 32. |
 | [11101004](../errorcode-hiappevent.md#11101004-invalid-event-parameter-string-length) | Invalid string length of the event parameter. |
-| [11101005](../errorcode-hiappevent.md#11101005-invalid-event-parameter-name) | Invalid event parameter name. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
+| [11101005](../errorcode-hiappevent.md#11101005-invalid-event-parameter-name) | Invalid event parameter name. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
 | [11101006](../errorcode-hiappevent.md#11101006-invalid-array-length-of-event-parameter-values) | Invalid array length of the event parameter. |
 
 **Examples**

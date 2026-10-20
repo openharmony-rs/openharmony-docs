@@ -4,7 +4,7 @@
 interface Task
 ```
 
-Implements an upload or download task. Before using this API, you must obtain a **Task** object, from a promise through [request.agent.create](arkts-basicservices-agent-create-f.md#create2) or from a callback through [request.agent.create](arkts-basicservices-agent-create-f.md#create1).
+Implements an upload or download task. Before using this API, you must obtain a **Task** object, from a promise through [request.agent.create](arkts-basicservices-agent-create-f.md#create) or from a callback through [request.agent.create](arkts-basicservices-agent-create-f.md#create).
 
 > **NOTE:** 
 > 
@@ -22,8 +22,6 @@ Implements an upload or download task. Before using this API, you must obtain a 
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
 ```
-
-<a id="off1"></a>
 
 ## off
 
@@ -58,10 +56,8 @@ Unsubscribes from task progress events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | task mode error.<br>**Applicable version:** 10 |
-
-<a id="off2"></a>
 
 ## off
 
@@ -96,10 +92,8 @@ Unsubscribes from task completion events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | Operation with wrong task mode.<br>**Applicable version:** 10 |
-
-<a id="off3"></a>
 
 ## off
 
@@ -134,10 +128,8 @@ Unsubscribes from task failure events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | Operation with wrong task mode.<br>**Applicable version:** 10 |
-
-<a id="off4"></a>
 
 ## off
 
@@ -170,9 +162,7 @@ Unsubscribes from the foreground task pause event.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="off5"></a>
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## off
 
@@ -205,9 +195,7 @@ Unsubscribes from foreground task resume events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="off6"></a>
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## off
 
@@ -240,9 +228,7 @@ Unsubscribes from the task removal event.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
-
-<a id="off7"></a>
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 
 ## off
 
@@ -277,9 +263,7 @@ Unsubscribes from task response headers.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="off8"></a>
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## off
 
@@ -312,9 +296,7 @@ Unsubscribes from task failure events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="off9"></a>
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## off
 
@@ -347,9 +329,7 @@ Unsubscribes from task waiting events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="on1"></a>
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## on
 
@@ -384,10 +364,8 @@ Subscribes to task progress changes. This API uses an asynchronous callback to r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | task mode error.<br>**Applicable version:** 10 |
-
-<a id="on2"></a>
 
 ## on
 
@@ -422,10 +400,8 @@ Subscribes to task completion events. This API uses an asynchronous callback to 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | task mode error.<br>**Applicable version:** 10 |
-
-<a id="on3"></a>
 
 ## on
 
@@ -433,7 +409,7 @@ Subscribes to task completion events. This API uses an asynchronous callback to 
 on(event: 'failed', callback: (progress: Progress) => void): void
 ```
 
-Subscribes to task failure events. This API uses an asynchronous callback to return the result. You can call [request.agent.show](arkts-basicservices-agent-show-f.md#show2) to view the error cause.
+Subscribes to task failure events. This API uses an asynchronous callback to return the result. You can call [request.agent.show](arkts-basicservices-agent-show-f.md#show) to view the error cause.
 
 > **NOTE:** 
 > 
@@ -460,10 +436,8 @@ Subscribes to task failure events. This API uses an asynchronous callback to ret
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | Operation with wrong task mode.<br>**Applicable version:** 10 |
-
-<a id="on4"></a>
 
 ## on
 
@@ -496,9 +470,7 @@ Subscribes to task pause events. This API uses an asynchronous callback to retur
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="on5"></a>
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## on
 
@@ -531,9 +503,7 @@ Subscribes to task resume events. This API uses an asynchronous callback to retu
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="on6"></a>
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## on
 
@@ -566,9 +536,7 @@ Subscribes to task removal events. This API uses an asynchronous callback to ret
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="on7"></a>
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## on
 
@@ -603,9 +571,7 @@ Subscribes to task response headers. This API uses an asynchronous callback to r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="on8"></a>
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## on
 
@@ -638,9 +604,7 @@ Subscribes to task failure events. This API uses a callback to return the result
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="on9"></a>
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## on
 
@@ -673,9 +637,7 @@ Subscribes to task wait events. This API uses a callback to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
-
-<a id="pause1"></a>
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 
 ## pause
 
@@ -683,7 +645,7 @@ Subscribes to task wait events. This API uses a callback to return the result.
 pause(callback: AsyncCallback<void>): void
 ```
 
-Pauses a task that is waiting, running, or retrying. A paused task can be resumed by [resume](#resume1). This API uses an asynchronous callback to return the result.
+Pauses a task that is waiting, running, or retrying. A paused task can be resumed by [resume](#resume). This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -705,15 +667,13 @@ Pauses a task that is waiting, running, or retrying. A paused task can be resume
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | Operation with wrong task mode.<br>**Applicable version:** 10 |
 | [21900007](../errorcode-request.md#21900007-operation-not-supported-by-the-task-state) | Operation with wrong task state. |
 
-<a id="pause2"></a>
-
 ## pause
 
 ```TypeScript
 pause(): Promise<void>
 ```
 
-Pauses a task that is waiting, running, or retrying. A paused task can be resumed by [resume](#resume1). This API uses a promise to return the result.
+Pauses a task that is waiting, running, or retrying. A paused task can be resumed by [resume](#resume). This API uses a promise to return the result.
 
 **Since:** 10
 
@@ -734,8 +694,6 @@ Pauses a task that is waiting, running, or retrying. A paused task can be resume
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | Operation with wrong task mode.<br>**Applicable version:** 10 |
 | [21900007](../errorcode-request.md#21900007-operation-not-supported-by-the-task-state) | Operation with wrong task state. |
-
-<a id="resume1"></a>
 
 ## resume
 
@@ -767,8 +725,6 @@ Resumes a paused task. This API uses an asynchronous callback to return the resu
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | Operation with wrong task mode.<br>**Applicable version:** 10 |
 | [21900007](../errorcode-request.md#21900007-operation-not-supported-by-the-task-state) | Operation with wrong task state. |
-
-<a id="resume2"></a>
 
 ## resume
 
@@ -831,10 +787,8 @@ Sets the maximum number of bytes that can be transmitted by a task per second. T
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
-
-<a id="start1"></a>
 
 ## start
 
@@ -879,8 +833,6 @@ Tasks in the following states can be started:
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 | [21900007](../errorcode-request.md#21900007-operation-not-supported-by-the-task-state) | Operation with wrong task state. |
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -924,15 +876,13 @@ Tasks in the following states can be started:
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 | [21900007](../errorcode-request.md#21900007-operation-not-supported-by-the-task-state) | Operation with wrong task state. |
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
 stop(callback: AsyncCallback<void>): void
 ```
 
-Stops a task that is running, waiting, or retrying. A paused task can be resumed by [start](#start1). This API uses an asynchronous callback to return the result.
+Stops a task that is running, waiting, or retrying. A paused task can be resumed by [start](#start). This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -955,15 +905,13 @@ Stops a task that is running, waiting, or retrying. A paused task can be resumed
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 | [21900007](../errorcode-request.md#21900007-operation-not-supported-by-the-task-state) | Operation with wrong task state. |
 
-<a id="stop2"></a>
-
 ## stop
 
 ```TypeScript
 stop(): Promise<void>
 ```
 
-Stops a task that is running, waiting, or retrying. A paused task can be resumed by [start](#start1). This API uses a promise to return the result.
+Stops a task that is running, waiting, or retrying. A paused task can be resumed by [start](#start). This API uses a promise to return the result.
 
 **Since:** 10
 

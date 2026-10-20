@@ -6,8 +6,6 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
-<a id="createmessage1"></a>
-
 ## createMessage
 
 ```TypeScript
@@ -58,8 +56,6 @@ sms.createMessage(pdu, specification, (err: BusinessError, data: sms.ShortMessag
 });
 ```
 
-
-<a id="createmessage2"></a>
 
 ## createMessage
 

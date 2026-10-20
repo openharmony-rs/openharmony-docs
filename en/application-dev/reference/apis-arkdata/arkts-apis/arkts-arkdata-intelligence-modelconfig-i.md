@@ -6,8 +6,6 @@ interface ModelConfig
 
 Manages configurations of the embedding model.
 
-@interface ModelConfig
-
 **Since:** 15
 
 <!--Device-intelligence-interface ModelConfig--><!--Device-intelligence-interface ModelConfig-End-->

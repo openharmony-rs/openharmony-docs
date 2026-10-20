@@ -84,6 +84,26 @@ isShellCommand?: boolean
 
 **系统接口：** 此接口为系统接口。
 
+## taskId
+
+```TypeScript
+taskId?: string
+```
+
+表示任务ID，用于任务归因。取值须为[startTask](arkts-ability-taskmanager-starttask-f-sys.md)中指定的任务ID。
+
+**类型：** string
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ExecCmdOptions-taskId?: string--><!--Device-ExecCmdOptions-taskId?: string-End-->
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## toolCallId
 
 ```TypeScript

@@ -17,3 +17,7 @@ This callback is triggered when the first screen rendering is detected to be com
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | firstScreenPaint | [FirstScreenPaint](arkts-arkweb-web-comp-firstscreenpaint-i.md) | Yes | Details about the first screen paint. |
+
+**Examples**
+
+For details about the complete sample code, see [onFirstScreenPaint](./arkts-basic-components-web-events.md#onfirstscreenpaint).

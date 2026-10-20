@@ -6,8 +6,6 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
-<a id="updateconfiguration1"></a>
-
 ## updateConfiguration
 
 ```TypeScript
@@ -42,8 +40,6 @@ function updateConfiguration(config: Configuration, callback: AsyncCallback<void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
-
-<a id="updateconfiguration2"></a>
 
 ## updateConfiguration
 

@@ -6,8 +6,6 @@ type LoginEvent = (controlType: LoginType, id?: string) => Promise<QrCodeInfo[]>
 
 The login event.
 
-@typedef { function } LoginEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

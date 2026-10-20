@@ -171,7 +171,7 @@ The background luminance is divided into three ranges based on the luminance thr
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| samplingCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | Yes | Callback used to return the current background luminance.<br>Note: offBackgroundLuminanceChange cannot be called in the listening callback. |
+| samplingCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | Yes | Callback used to return the current background luminance. <br>Note: offBackgroundLuminanceChange cannot be called in the listening callback. |
 
 <!--Del-->
 **Examples**
@@ -208,7 +208,7 @@ Sets the color picking parameters. If the luminance threshold is not within the 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [100001](../errorcode-internal.md#100001-internal-error) | Internal error.<br> 1. Incorrect parameter values. <br> 2. Incorrect parameters types. |
+| [100001](../errorcode-internal.md#100001-internal-error) | Internal error. <br> 1. Incorrect parameter values. <br> 2. Incorrect parameters types. |
 
 <!--Del-->
 **Examples**

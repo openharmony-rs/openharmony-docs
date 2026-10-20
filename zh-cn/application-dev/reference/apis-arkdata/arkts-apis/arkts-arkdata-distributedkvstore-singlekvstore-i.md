@@ -20,8 +20,6 @@ SingleKVStore数据库实例，提供增加数据、删除数据和订阅数据�
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="backup1"></a>
-
 ## backup
 
 ```TypeScript
@@ -49,7 +47,7 @@ backup(file: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
 **示例**
@@ -71,8 +69,6 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="backup2"></a>
 
 ## backup
 
@@ -106,7 +102,7 @@ backup(file: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
 **示例**
@@ -183,15 +179,13 @@ try {
 }
 ```
 
-<a id="closeresultset1"></a>
-
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KVStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-关闭由[SingleKVStore.getResultSet](#getresultset2)返回的KVStoreResultSet对象，使用callback异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
+关闭由[SingleKVStore.getResultSet](#getresultset)返回的KVStoreResultSet对象，使用callback异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
 
 **起始版本：** 9
 
@@ -212,7 +206,7 @@ closeResultSet(resultSet: KVStoreResultSet, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **示例**
 
@@ -244,15 +238,13 @@ try {
 }
 ```
 
-<a id="closeresultset2"></a>
-
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KVStoreResultSet): Promise<void>
 ```
 
-关闭由[SingleKVStore.getResultSet](#getresultset2)返回的KVStoreResultSet对象，使用Promise异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
+关闭由[SingleKVStore.getResultSet](#getresultset)返回的KVStoreResultSet对象，使用Promise异步回调。关闭结果集后，该结果集对象将不可再用，相关数据库资源被释放。
 
 **起始版本：** 9
 
@@ -278,7 +270,7 @@ closeResultSet(resultSet: KVStoreResultSet): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **示例**
 
@@ -307,15 +299,13 @@ try {
 }
 ```
 
-<a id="commit1"></a>
-
 ## commit
 
 ```TypeScript
 commit(callback: AsyncCallback<void>): void
 ```
 
-提交SingleKVStore数据库中的事务，使用callback异步回调。需先调用[startTransaction](#starttransaction1)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
+提交SingleKVStore数据库中的事务，使用callback异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
 
 **起始版本：** 9
 
@@ -356,15 +346,13 @@ try {
 }
 ```
 
-<a id="commit2"></a>
-
 ## commit
 
 ```TypeScript
 commit(): Promise<void>
 ```
 
-提交SingleKVStore数据库中的事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction1)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
+提交SingleKVStore数据库中的事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口提交事务。提交成功后，事务期间的所有数据变更将永久生效并写入数据库。
 
 **起始版本：** 9
 
@@ -403,8 +391,6 @@ try {
 }
 ```
 
-<a id="delete1"></a>
-
 ## delete
 
 ```TypeScript
@@ -432,7 +418,7 @@ delete(key: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
@@ -467,8 +453,6 @@ try {
 }
 ```
 
-<a id="delete2"></a>
-
 ## delete
 
 ```TypeScript
@@ -501,7 +485,7 @@ delete(key: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
@@ -532,15 +516,13 @@ try {
 }
 ```
 
-<a id="deletebackup1"></a>
-
 ## deleteBackup
 
 ```TypeScript
 deleteBackup(files: Array<string>, callback: AsyncCallback<Array<[string, number]>>): void
 ```
 
-根据指定名称从默认路径（context.databaseDir）删除备份文件，使用callback异步回调。删除备份文件后，将无法再通过[restore](#restore2)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex)接口。
+根据指定名称从默认路径（context.databaseDir）删除备份文件，使用callback异步回调。删除备份文件后，将无法再通过[restore](#restore)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex)接口。
 
 **起始版本：** 9
 
@@ -561,7 +543,7 @@ deleteBackup(files: Array<string>, callback: AsyncCallback<Array<[string, number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 **示例**
 
@@ -583,15 +565,13 @@ try {
 }
 ```
 
-<a id="deletebackup2"></a>
-
 ## deleteBackup
 
 ```TypeScript
 deleteBackup(files: Array<string>): Promise<Array<[string, number]>>
 ```
 
-根据指定名称从默认路径（context.databaseDir）删除备份文件，使用Promise异步回调。删除备份文件后，将无法再通过[restore](#restore1)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex)接口。
+根据指定名称从默认路径（context.databaseDir）删除备份文件，使用Promise异步回调。删除备份文件后，将无法再通过[restore](#restore)接口恢复该备份文件中的数据。如需从自定义路径删除备份，请使用[deleteBackupEx](#deletebackupex)接口。
 
 **起始版本：** 9
 
@@ -617,7 +597,7 @@ deleteBackup(files: Array<string>): Promise<Array<[string, number]>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 **示例**
 
@@ -692,8 +672,6 @@ try {
 }
 ```
 
-<a id="deletebatch1"></a>
-
 ## deleteBatch
 
 ```TypeScript
@@ -721,7 +699,7 @@ deleteBatch(keys: string[], callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
@@ -769,8 +747,6 @@ try {
 }
 ```
 
-<a id="deletebatch2"></a>
-
 ## deleteBatch
 
 ```TypeScript
@@ -803,7 +779,7 @@ deleteBatch(keys: string[]): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
@@ -847,8 +823,6 @@ try {
 }
 ```
 
-<a id="enablesync1"></a>
-
 ## enableSync
 
 ```TypeScript
@@ -876,7 +850,7 @@ enableSync(enabled: boolean, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **示例**
 
@@ -896,8 +870,6 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="enablesync2"></a>
 
 ## enableSync
 
@@ -931,7 +903,7 @@ enableSync(enabled: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **示例**
 
@@ -949,8 +921,6 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="get1"></a>
 
 ## get
 
@@ -979,7 +949,7 @@ get(key: string, callback: AsyncCallback<boolean | string | number | Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-未找到相关数据) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
@@ -1039,8 +1009,6 @@ try {
   console.error(`Failed to get. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="get2"></a>
 
 ## get
 
@@ -1074,7 +1042,7 @@ get(key: string): Promise<boolean | string | number | Uint8Array>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-未找到相关数据) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
@@ -1135,8 +1103,6 @@ try {
 }
 ```
 
-<a id="getentries1"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -1164,7 +1130,7 @@ getEntries(keyPrefix: string, callback: AsyncCallback<Entry[]>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
@@ -1211,8 +1177,6 @@ try {
 }
 ```
 
-<a id="getentries2"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -1245,7 +1209,7 @@ getEntries(keyPrefix: string): Promise<Entry[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
@@ -1288,8 +1252,6 @@ try {
 }
 ```
 
-<a id="getentries3"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -1317,7 +1279,7 @@ getEntries(query: Query, callback: AsyncCallback<Entry[]>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
@@ -1367,8 +1329,6 @@ try {
 }
 ```
 
-<a id="getentries4"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -1401,7 +1361,7 @@ getEntries(query: Query): Promise<Entry[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
@@ -1446,15 +1406,13 @@ try {
 }
 ```
 
-<a id="getresultset1"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-从SingleKVStore数据库中获取具有指定前缀的结果集，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset1)关闭结果集释放资源。
+从SingleKVStore数据库中获取具有指定前缀的结果集，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1475,7 +1433,7 @@ getResultSet(keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
@@ -1531,15 +1489,13 @@ try {
 }
 ```
 
-<a id="getresultset2"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(keyPrefix: string): Promise<KVStoreResultSet>
 ```
 
-从SingleKVStore数据库中获取具有指定前缀的结果集，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset1)关闭结果集释放资源。
+从SingleKVStore数据库中获取具有指定前缀的结果集，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1565,7 +1521,7 @@ getResultSet(keyPrefix: string): Promise<KVStoreResultSet>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
@@ -1613,15 +1569,13 @@ try {
 }
 ```
 
-<a id="getresultset3"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(query: Query, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-获取与指定Query对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset1)关闭结果集释放资源。
+获取与指定Query对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1642,7 +1596,7 @@ getResultSet(query: Query, callback: AsyncCallback<KVStoreResultSet>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
@@ -1690,15 +1644,13 @@ try {
 }
 ```
 
-<a id="getresultset4"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(query: Query): Promise<KVStoreResultSet>
 ```
 
-获取与指定Query对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset1)关闭结果集释放资源。
+获取与指定Query对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](#closeresultset)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1724,7 +1676,7 @@ getResultSet(query: Query): Promise<KVStoreResultSet>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits.<br>**适用版本：** 10+ |
@@ -1765,8 +1717,6 @@ try {
 }
 ```
 
-<a id="getresultsize1"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -1794,7 +1744,7 @@ getResultSize(query: Query, callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-未找到相关数据) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
@@ -1841,8 +1791,6 @@ try {
 }
 ```
 
-<a id="getresultsize2"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -1875,7 +1823,7 @@ getResultSize(query: Query): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-未找到相关数据) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
@@ -1915,8 +1863,6 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="getsecuritylevel1"></a>
 
 ## getSecurityLevel
 
@@ -1965,8 +1911,6 @@ try {
 }
 ```
 
-<a id="getsecuritylevel2"></a>
-
 ## getSecurityLevel
 
 ```TypeScript
@@ -2012,15 +1956,13 @@ try {
 }
 ```
 
-<a id="off1"></a>
-
 ## off
 
 ```TypeScript
 off(event: 'dataChange', listener?: Callback<ChangeNotification>): void
 ```
 
-取消订阅数据变更通知。必须先调用[on('dataChange')](#on1)订阅后，才能调用off取消订阅。
+取消订阅数据变更通知。必须先调用[on('dataChange')](#on)订阅后，才能调用off取消订阅。
 
 **起始版本：** 9
 
@@ -2039,7 +1981,7 @@ off(event: 'dataChange', listener?: Callback<ChangeNotification>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
 **示例**
@@ -2076,15 +2018,13 @@ class KvstoreModel {
 }
 ```
 
-<a id="off2"></a>
-
 ## off
 
 ```TypeScript
 off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void
 ```
 
-取消订阅端端同步完成事件回调通知。必须先调用[on('syncComplete')](#on2)订阅后，才能调用off取消订阅。
+取消订阅端端同步完成事件回调通知。必须先调用[on('syncComplete')](#on)订阅后，才能调用off取消订阅。
 
 **起始版本：** 9
 
@@ -2103,7 +2043,7 @@ off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **示例**
 
@@ -2139,15 +2079,13 @@ class KvstoreModel {
 }
 ```
 
-<a id="on1"></a>
-
 ## on
 
 ```TypeScript
 on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void
 ```
 
-订阅指定类型的数据变更通知。调用on订阅后，在不需要监听时必须调用[off('dataChange')](#off1)取消订阅。
+订阅指定类型的数据变更通知。调用on订阅后，在不需要监听时必须调用[off('dataChange')](#off)取消订阅。
 
 **起始版本：** 9
 
@@ -2167,7 +2105,7 @@ on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotificati
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-超过最大订阅数量或结果集数量) | Over max limits. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
@@ -2186,15 +2124,13 @@ try {
 }
 ```
 
-<a id="on2"></a>
-
 ## on
 
 ```TypeScript
 on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void
 ```
 
-订阅端端同步完成事件回调通知。调用on订阅后，在不需要监听时必须调用[off('syncComplete')](#off2)取消订阅。
+订阅端端同步完成事件回调通知。调用on订阅后，在不需要监听时必须调用[off('syncComplete')](#off)取消订阅。
 
 **起始版本：** 9
 
@@ -2213,7 +2149,7 @@ on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **示例**
 
@@ -2237,8 +2173,6 @@ try {
   console.error(`Failed to subscribe syncComplete. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="put1"></a>
 
 ## put
 
@@ -2268,7 +2202,7 @@ put(key: string, value: Uint8Array | string | number | boolean, callback: AsyncC
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
@@ -2311,8 +2245,6 @@ try {
 }
 ```
 
-<a id="put2"></a>
-
 ## put
 
 ```TypeScript
@@ -2346,7 +2278,7 @@ put(key: string, value: Uint8Array | string | number | boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
@@ -2354,8 +2286,6 @@ put(key: string, value: Uint8Array | string | number | boolean): Promise<void>
 **示例**
 
 参见 [put](#put)
-
-<a id="putbatch1"></a>
 
 ## putBatch
 
@@ -2384,7 +2314,7 @@ putBatch(entries: Entry[], callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
@@ -2432,8 +2362,6 @@ try {
 }
 ```
 
-<a id="putbatch2"></a>
-
 ## putBatch
 
 ```TypeScript
@@ -2466,7 +2394,7 @@ putBatch(entries: Entry[]): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 | [14800047](../errorcode-data-rdb.md#14800047-wal文件大小超过默认上限) | The WAL file size exceeds the default limit.<br>**适用版本：** 10+ |
@@ -2557,8 +2485,6 @@ try {
 }
 ```
 
-<a id="removedevicedata1"></a>
-
 ## removeDeviceData
 
 ```TypeScript
@@ -2596,7 +2522,7 @@ removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
 **示例**
@@ -2638,8 +2564,6 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="removedevicedata2"></a>
 
 ## removeDeviceData
 
@@ -2683,7 +2607,7 @@ removeDeviceData(deviceId: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
 **示例**
@@ -2716,8 +2640,6 @@ try {
 }
 ```
 
-<a id="restore1"></a>
-
 ## restore
 
 ```TypeScript
@@ -2745,7 +2667,7 @@ restore(file: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
 **示例**
@@ -2767,8 +2689,6 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="restore2"></a>
 
 ## restore
 
@@ -2802,7 +2722,7 @@ restore(file: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-数据库或查询结果集已关闭) | Database or result set already closed. |
 
 **示例**
@@ -2879,15 +2799,13 @@ try {
 }
 ```
 
-<a id="rollback1"></a>
-
 ## rollback
 
 ```TypeScript
 rollback(callback: AsyncCallback<void>): void
 ```
 
-在SingleKVStore数据库中回滚事务，使用callback异步回调。需先调用[startTransaction](#starttransaction1)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
+在SingleKVStore数据库中回滚事务，使用callback异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
 
 **起始版本：** 9
 
@@ -2928,15 +2846,13 @@ try {
 }
 ```
 
-<a id="rollback2"></a>
-
 ## rollback
 
 ```TypeScript
 rollback(): Promise<void>
 ```
 
-在SingleKVStore数据库中回滚事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction1)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
+在SingleKVStore数据库中回滚事务，使用Promise异步回调。需先调用[startTransaction](#starttransaction)启动事务后再调用本接口回滚事务。回滚成功后，事务期间的所有数据变更将被丢弃，不会写入数据库。
 
 **起始版本：** 9
 
@@ -2975,8 +2891,6 @@ try {
 }
 ```
 
-<a id="setsyncparam1"></a>
-
 ## setSyncParam
 
 ```TypeScript
@@ -3010,7 +2924,7 @@ setSyncParam(defaultAllowedDelayMs: number, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **示例**
 
@@ -3031,8 +2945,6 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="setsyncparam2"></a>
 
 ## setSyncParam
 
@@ -3072,7 +2984,7 @@ setSyncParam(defaultAllowedDelayMs: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **示例**
 
@@ -3091,8 +3003,6 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="setsyncrange1"></a>
 
 ## setSyncRange
 
@@ -3122,7 +3032,7 @@ setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: Asy
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **示例**
 
@@ -3144,8 +3054,6 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="setsyncrange2"></a>
 
 ## setSyncRange
 
@@ -3180,7 +3088,7 @@ setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise<void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **示例**
 
@@ -3201,15 +3109,13 @@ try {
 }
 ```
 
-<a id="starttransaction1"></a>
-
 ## startTransaction
 
 ```TypeScript
 startTransaction(callback: AsyncCallback<void>): void
 ```
 
-启动SingleKVStore数据库中的事务，使用callback异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit1)提交或[rollback](#rollback1)回滚才会结束事务。
+启动SingleKVStore数据库中的事务，使用callback异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit)提交或[rollback](#rollback)回滚才会结束事务。
 
 **起始版本：** 9
 
@@ -3282,15 +3188,13 @@ try {
 }
 ```
 
-<a id="starttransaction2"></a>
-
 ## startTransaction
 
 ```TypeScript
 startTransaction(): Promise<void>
 ```
 
-启动SingleKVStore数据库中的事务，使用Promise异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit1)提交或[rollback](#rollback1)回滚才会结束事务。
+启动SingleKVStore数据库中的事务，使用Promise异步回调。启动事务后，后续的数据库操作将纳入此事务范围，直到调用[commit](#commit)提交或[rollback](#rollback)回滚才会结束事务。
 
 **起始版本：** 9
 
@@ -3333,15 +3237,13 @@ try {
 }
 ```
 
-<a id="sync1"></a>
-
 ## sync
 
 ```TypeScript
 sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 ```
 
-在手动同步方式下，触发数据库端端同步。同步结果可通过订阅[on('syncComplete')](#on2)事件获取。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../../database/data-sync-of-kv-store.md)。
+在手动同步方式下，触发数据库端端同步。同步结果可通过订阅[on('syncComplete')](#on)事件获取。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../../database/data-sync-of-kv-store.md)。
 
 > **说明：** 
 > 
@@ -3372,7 +3274,7 @@ sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-未找到相关数据) | Not found. |
 
@@ -3431,15 +3333,13 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="sync2"></a>
-
 ## sync
 
 ```TypeScript
 sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: number): void
 ```
 
-在手动同步方式下，触发数据库端端同步，支持按查询条件过滤同步数据。同步结果可通过订阅[on('syncComplete')](#on2)事件获取。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../../database/data-sync-of-kv-store.md)。
+在手动同步方式下，触发数据库端端同步，支持按查询条件过滤同步数据。同步结果可通过订阅[on('syncComplete')](#on)事件获取。关于键值型数据库的端端同步方式说明，请见[键值型数据库跨设备数据同步](../../../database/data-sync-of-kv-store.md)。
 
 > **说明：** 
 > 
@@ -3471,7 +3371,7 @@ sync(deviceIds: string[], query: Query, mode: SyncMode, delayMs?: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-数据库损坏) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-未找到相关数据) | Not found. |
 

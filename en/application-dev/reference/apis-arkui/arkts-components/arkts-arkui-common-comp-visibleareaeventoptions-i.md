@@ -44,11 +44,11 @@ measureFromViewport?: boolean
 
 Visible area calculation mode.
 
-**true**: considers the parent's [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) attribute. If [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) is **false**, areas of the child component beyond the parent's bounds are counted as visible; if [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) is **true**, such areas are counted as invisible. **false**: ignores the parent's [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) attribute, treating areas beyond the parent's bounds as invisible.
+**true**: considers the parent's [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) attribute. If [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) is **false**, areas of the child component beyond the parent's bounds are counted as visible; if [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) is **true**, such areas are counted as invisible. **false**: ignores the parent's [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) attribute, treating areas beyond the parent's bounds as invisible.
 
 Default value: **false**.
 
-When **measureFromViewport** is set to **true**, and an ancestor node has the [scale](arkts-arkui-common-comp-commonmethod-c.md#scale1) attribute set, the component's visible ratio will be correctly calculated.
+When **measureFromViewport** is set to **true**, and an ancestor node has the [scale](arkts-arkui-common-comp-commonmethod-c.md#scale) attribute set, the component's visible ratio will be correctly calculated.
 
 **Type:** boolean
 

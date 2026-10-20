@@ -20,5 +20,5 @@ Defines the callback type used in registering to listen for printerInfoQuery eve
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerInfo | [PrinterInformation](arkts-basicservices-print-printerinformation-i.md) | Yes | the printer info<br>Printer Information. |
-| ppdInfo | [PpdInfo](arkts-basicservices-print-ppdinfo-i.md)[] | Yes | all the printer ppd info<br>All the printer ppd info. |
+| printerInfo | [PrinterInformation](arkts-basicservices-print-printerinformation-i.md) | Yes | the printer info <br>Printer Information. |
+| ppdInfo | [PpdInfo](arkts-basicservices-print-ppdinfo-i.md)[] | Yes | all the printer ppd info <br>All the printer ppd info. |

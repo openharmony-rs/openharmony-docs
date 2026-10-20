@@ -6,8 +6,6 @@ interface PageMediaEntity extends OperResult
 
 The definition of pagination object.
 
-@extends OperResult @interface PageMediaEntity
-
 **Inheritance/Implementation:** PageMediaEntity extends [OperResult](arkts-avsession-avmusictemplate-operresult-i.md)
 
 **Since:** 23

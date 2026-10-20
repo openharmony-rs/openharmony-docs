@@ -18,8 +18,6 @@ export class AsyncRunner
 import { taskpool } from '@kit.ArkTS';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -48,8 +46,6 @@ AsyncRunner的构造函数，用于创建一个**AsyncRunner**实例。构造一
 ```TypeScript
 let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(5);
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

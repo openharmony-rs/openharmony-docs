@@ -6,8 +6,6 @@ declare interface VerticalAlignParam
 
 Defines the vertical align rule of relative container.
 
-@interface VerticalAlignParam
-
 **Since:** 23
 
 <!--Device-unnamed-declare interface VerticalAlignParam--><!--Device-unnamed-declare interface VerticalAlignParam-End-->

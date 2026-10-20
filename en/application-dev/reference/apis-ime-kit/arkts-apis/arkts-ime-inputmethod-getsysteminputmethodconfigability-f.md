@@ -6,15 +6,13 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="getsysteminputmethodconfigability1"></a>
-
 ## getSystemInputMethodConfigAbility
 
 ```TypeScript
 function getSystemInputMethodConfigAbility(): ElementName
 ```
 
-Obtains the information about the input method configuration page ability.
+Obtains the information about the system input method configuration ability.
 
 **Since:** 11
 

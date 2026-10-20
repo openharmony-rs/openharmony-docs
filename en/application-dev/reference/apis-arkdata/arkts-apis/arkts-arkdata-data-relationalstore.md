@@ -40,15 +40,15 @@ import { relationalStore } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore1) | Deletes the RDB store with the specified database file name. This API uses a promise to return the result. |
-| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore2) | Deletes an RDB store. This API uses an asynchronous callback to return the result. |
-| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore3) | Deletes an RDB store. This API uses a promise to return the result. |
-| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore4) | Deletes an RDB store. This API uses a promise to return the result. |
+| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore) | Deletes the RDB store with the specified database file name. This API uses a promise to return the result. |
+| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore) | Deletes an RDB store. This API uses an asynchronous callback to return the result. |
+| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore) | Deletes an RDB store. This API uses a promise to return the result. |
+| [deleteRdbStore](arkts-arkdata-relationalstore-deleterdbstore-f.md#deleterdbstore) | Deletes an RDB store. This API uses a promise to return the result. |
 | [getDeleteSqlInfo](arkts-arkdata-relationalstore-getdeletesqlinfo-f.md#getdeletesqlinfo) | Obtains the SQL statement used to delete data. This API returns the result synchronously. |
 | [getInsertSqlInfo](arkts-arkdata-relationalstore-getinsertsqlinfo-f.md#getinsertsqlinfo) | Obtains the SQL statement used to insert data. This API returns the result synchronously. |
 | [getQuerySqlInfo](arkts-arkdata-relationalstore-getquerysqlinfo-f.md#getquerysqlinfo) | Obtains the SQL statement used to query data. This API returns the result synchronously. |
-| [getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md#getrdbstore1) | Obtains an RdbStore instance. You can set the **config** parameter as required and use **RdbStore** APIs to perform data operations. This API uses an asynchronous callback to return the result. |
-| [getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md#getrdbstore2) | Obtains an RdbStore instance. You can set the **config** parameter as required and use **RdbStore** APIs to perform data operations. This API uses a promise to return the result. |
+| [getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md#getrdbstore) | Obtains an RdbStore instance. You can set the **config** parameter as required and use **RdbStore** APIs to perform data operations. This API uses an asynchronous callback to return the result. |
+| [getRdbStore](arkts-arkdata-relationalstore-getrdbstore-f.md#getrdbstore) | Obtains an RdbStore instance. You can set the **config** parameter as required and use **RdbStore** APIs to perform data operations. This API uses a promise to return the result. |
 | [getRdbStoreSync](arkts-arkdata-relationalstore-getrdbstoresync-f.md#getrdbstoresync) | Obtains a RDB store. You can set parameters of the RDB store as required. This is a synchronous method that blocks the thread until the RDB store is obtained. |
 | [getUpdateSqlInfo](arkts-arkdata-relationalstore-getupdatesqlinfo-f.md#getupdatesqlinfo) | Obtains the SQL statement used to update data. This API returns the result synchronously. |
 | [isTokenizerSupported](arkts-arkdata-relationalstore-istokenizersupported-f.md#istokenizersupported) | Checks whether the specified tokenizer is supported. This API returns the result synchronously. |

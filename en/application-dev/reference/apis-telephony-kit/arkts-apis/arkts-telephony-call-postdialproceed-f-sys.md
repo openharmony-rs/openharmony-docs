@@ -6,8 +6,6 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
-<a id="postdialproceed1"></a>
-
 ## postDialProceed
 
 ```TypeScript
@@ -33,7 +31,7 @@ If the called number is in the format of "common phone number + semicolon (;) + 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callId | number | Yes | Call ID. |
-| proceed | boolean | Yes | Whether to send DTMF tones. The default value is **false**.<br>- **true**: yes <br>- **false**: no |
+| proceed | boolean | Yes | Whether to send DTMF tones. The default value is **false**. <br>- **true**: yes <br>- **false**: no |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -62,8 +60,6 @@ call.postDialProceed(1, true, (err: BusinessError) => {
 <!--DelEnd-->
 
 
-<a id="postdialproceed2"></a>
-
 ## postDialProceed
 
 ```TypeScript
@@ -89,7 +85,7 @@ If the called number is in the format of "common phone number + semicolon (;) + 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callId | number | Yes | Call ID. |
-| proceed | boolean | Yes | Whether to send DTMF tones. The default value is **false**.<br>- **true**: yes <br>- **false**: no |
+| proceed | boolean | Yes | Whether to send DTMF tones. The default value is **false**. <br>- **true**: yes <br>- **false**: no |
 
 **Return value:**
 

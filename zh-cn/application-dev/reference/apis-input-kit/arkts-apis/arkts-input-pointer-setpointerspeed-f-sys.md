@@ -6,8 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="setpointerspeed1"></a>
-
 ## setPointerSpeed
 
 ```TypeScript
@@ -72,8 +70,6 @@ struct Index {
 
 <!--DelEnd-->
 
-
-<a id="setpointerspeed2"></a>
 
 ## setPointerSpeed
 

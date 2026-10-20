@@ -125,7 +125,7 @@ let ndefTagType : tag.NfcForumType = ndefTag.getNdefTagType();
 console.info("ndef ndefTagType: " + ndefTagType);
 ```
 
-## getNdefTagTypeString
+## getNdefTagTypeString('tag.NfcForumType')
 
 ```TypeScript
 getNdefTagTypeString(type: tag.NfcForumType): string
@@ -157,7 +157,7 @@ getNdefTagTypeString(type: tag.NfcForumType): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 **示例**
 
@@ -207,8 +207,6 @@ let isWritable : boolean = ndefTag.isNdefWritable();
 console.info("ndef isNdefWritable: " + isWritable);
 ```
 
-<a id="readndef1"></a>
-
 ## readNdef
 
 ```TypeScript
@@ -238,7 +236,7 @@ readNdef(): Promise<NdefMessage>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [3100201](../errorcode-nfc.md#3100201-nfc服务读写tag错误) | The tag running state is abnormal in the service. |
 | [3100204](../errorcode-nfc.md#3100204-nfc芯片io异常) | The tag I/O operation failed.<br>**适用版本：** 12+ |
 
@@ -298,8 +296,6 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="readndef2"></a>
-
 ## readNdef
 
 ```TypeScript
@@ -329,15 +325,13 @@ readNdef(callback: AsyncCallback<NdefMessage>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [3100201](../errorcode-nfc.md#3100201-nfc服务读写tag错误) | The tag running state is abnormal in the service. |
 | [3100204](../errorcode-nfc.md#3100204-nfc芯片io异常) | The Tag I/O operation failed.<br>**适用版本：** 12+ |
 
 **示例**
 
 参见 [readNdef](#readndef)
-
-<a id="setreadonly1"></a>
 
 ## setReadOnly
 
@@ -368,7 +362,7 @@ setReadOnly(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [3100201](../errorcode-nfc.md#3100201-nfc服务读写tag错误) | The tag running state is abnormal in the service. |
 | [3100204](../errorcode-nfc.md#3100204-nfc芯片io异常) | The tag I/O operation failed.<br>**适用版本：** 12+ |
 
@@ -401,8 +395,6 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="setreadonly2"></a>
-
 ## setReadOnly
 
 ```TypeScript
@@ -432,7 +424,7 @@ setReadOnly(callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [3100201](../errorcode-nfc.md#3100201-nfc服务读写tag错误) | The tag running state is abnormal in the service. |
 | [3100204](../errorcode-nfc.md#3100204-nfc芯片io异常) | The Tag I/O operation failed.<br>**适用版本：** 12+ |
 
@@ -466,8 +458,6 @@ function nfcTechDemo() {
     }
 }
 ```
-
-<a id="writendef1"></a>
 
 ## writeNdef
 
@@ -504,7 +494,7 @@ writeNdef(msg: NdefMessage): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [3100201](../errorcode-nfc.md#3100201-nfc服务读写tag错误) | The tag running state is abnormal in the service. |
 | [3100204](../errorcode-nfc.md#3100204-nfc芯片io异常) | The tag I/O operation failed.<br>**适用版本：** 12+ |
 
@@ -574,8 +564,6 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="writendef2"></a>
-
 ## writeNdef
 
 ```TypeScript
@@ -606,7 +594,7 @@ writeNdef(msg: NdefMessage, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [3100201](../errorcode-nfc.md#3100201-nfc服务读写tag错误) | The tag running state is abnormal in the service. |
 | [3100204](../errorcode-nfc.md#3100204-nfc芯片io异常) | The Tag I/O operation failed.<br>**适用版本：** 12+ |
 

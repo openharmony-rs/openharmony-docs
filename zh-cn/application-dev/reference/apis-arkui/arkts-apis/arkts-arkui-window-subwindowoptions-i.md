@@ -80,7 +80,7 @@ maximizeSupported?: boolean
 modalityType?: ModalityType
 ```
 
-子窗口模态类型，仅当子窗口启用模态属性时生效。不设置，则默认为WINDOW_MODALITY。
+子窗口模态类型，仅当子窗口启用模态属性（即isModal为true）时可设置并生效，否则设置该参数会抛异常。不设置，则默认为WINDOW_MODALITY。
 
 **类型：** [ModalityType](arkts-arkui-window-modalitytype-e.md)
 
@@ -136,7 +136,7 @@ title: string
 windowRect?: Rect
 ```
 
-子窗口矩形区域，其中子窗口存在大小限制，具体参考[resize()](arkts-arkui-window-window-i.md#resize)方法。不设置且未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow1)显示前，则默认为{left: 0, top: 0, width: 0, height: 0}。具体参考[设置应用子窗口](../../../windowmanager/application-window-stage.md#设置应用子窗口)开发指南。
+子窗口矩形区域，其中子窗口存在大小限制，具体参考[resize()](arkts-arkui-window-window-i.md#resize)方法。不设置且未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)显示前，则默认为{left: 0, top: 0, width: 0, height: 0}。具体参考[设置应用子窗口](../../../windowmanager/application-window-stage.md#设置应用子窗口)开发指南。
 
 **类型：** [Rect](arkts-arkui-window-rect-i.md)
 

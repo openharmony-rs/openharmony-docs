@@ -6,8 +6,6 @@ export interface TrackingEventInfo
 
 Tracking event callback info.
 
-@typedef TrackingEventInfo
-
 **起始版本：** 20
 
 <!--Device-mechanicManager-export interface TrackingEventInfo--><!--Device-mechanicManager-export interface TrackingEventInfo-End-->

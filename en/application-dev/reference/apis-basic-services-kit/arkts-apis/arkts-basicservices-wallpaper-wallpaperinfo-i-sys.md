@@ -6,8 +6,6 @@ interface WallpaperInfo
 
 WallpaperInfo definition including folding status, rotation status, and resource path.
 
-@typedef WallpaperInfo
-
 **Since:** 14
 
 <!--Device-wallpaper-interface WallpaperInfo--><!--Device-wallpaper-interface WallpaperInfo-End-->

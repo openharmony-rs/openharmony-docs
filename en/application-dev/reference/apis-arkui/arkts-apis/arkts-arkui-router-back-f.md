@@ -6,8 +6,6 @@
 import { router } from '@kit.ArkUI';
 ```
 
-<a id="back1"></a>
-
 ## back
 
 ```TypeScript
@@ -24,7 +22,7 @@ Returns to the previous page or a specified page, and removes all pages between 
 
 **Deprecated since:** 18
 
-**Substitutes:** [back](arkts-arkui-arkui-uicontext-router-c.md#back1)(options?: router.RouterOptions)
+**Substitutes:** [back](arkts-arkui-arkui-uicontext-router-c.md#back)(options?: router.RouterOptions)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -45,8 +43,6 @@ this.getUIContext().getRouter().back({ url: 'pages/detail' });
 ```
 
 
-<a id="back2"></a>
-
 ## back
 
 ```TypeScript
@@ -63,7 +59,7 @@ Returns to a specified page, and removes all pages between the current page and 
 
 **Deprecated since:** 18
 
-**Substitutes:** [back](arkts-arkui-arkui-uicontext-router-c.md#back2)(index: number, params?: Object)
+**Substitutes:** [back](arkts-arkui-arkui-uicontext-router-c.md#back)(index: number, params?: Object)
 
 **Model restriction:** This API can be used only in the stage model.
 

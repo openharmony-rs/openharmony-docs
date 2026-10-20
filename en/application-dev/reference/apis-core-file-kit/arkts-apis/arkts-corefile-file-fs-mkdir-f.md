@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function mkdir(path: string): Promise<void>
 ```
 
-Creates a directory. This API uses a promise to return the result.
+Creates a single-level directory. If the parent directory does not exist, an error is reported. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -55,15 +55,13 @@ Creates a directory. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
-<a id="mkdir2"></a>
-
 ## mkdir
 
 ```TypeScript
 declare function mkdir(path: string, recursion: boolean): Promise<void>
 ```
 
-Creates a directory. This API uses a promise to return the result. The value **true** means to create a directory recursively.
+Creates a directory. This API uses a promise to return the result. The value <b>true</b> means to create a directory recursively.
 
 **Since:** 11
 
@@ -78,7 +76,7 @@ Creates a directory. This API uses a promise to return the result. The value **t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | path | string | Yes | Application sandbox path of the directory. |
-| recursion | boolean | Yes | Whether to create a directory recursively.<br> The value **true** means to create a directory recursively. The value **false** means to create a single-level directory. |
+| recursion | boolean | Yes | Whether to create a directory recursively. The value <b>true</b> means to create a directory recursively. The value <b>false</b> means to create a single-level directory. |
 
 **Return value:**
 
@@ -107,15 +105,13 @@ Creates a directory. This API uses a promise to return the result. The value **t
 | 13900042 | Unknown error |
 
 
-<a id="mkdir3"></a>
-
 ## mkdir
 
 ```TypeScript
 declare function mkdir(path: string, callback: AsyncCallback<void>): void
 ```
 
-Creates a directory. This API uses an asynchronous callback to return the result.
+Creates a single-level directory. If the parent directory does not exist, an error is reported. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -130,7 +126,7 @@ Creates a directory. This API uses an asynchronous callback to return the result
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | path | string | Yes | Application sandbox path of the directory. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the directory is successfully created, <b>err</b> is <b>undefined</b>; otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 
@@ -153,15 +149,13 @@ Creates a directory. This API uses an asynchronous callback to return the result
 | 13900042 | Unknown error |
 
 
-<a id="mkdir4"></a>
-
 ## mkdir
 
 ```TypeScript
 declare function mkdir(path: string, recursion: boolean, callback: AsyncCallback<void>): void
 ```
 
-Creates a directory. This API uses an asynchronous callback to return the result. The value **true** means to create a directory recursively.
+Creates a directory. If <b>recursion</b> is set to <b>true</b>, a directory is created recursively. This API uses an asynchronous callback to return the result.
 
 **Since:** 11
 
@@ -176,8 +170,8 @@ Creates a directory. This API uses an asynchronous callback to return the result
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | path | string | Yes | Application sandbox path of the directory. |
-| recursion | boolean | Yes | Whether to create a directory recursively.<br> The value **true** means to create a directory recursively. The value **false** means to create a single-level directory. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| recursion | boolean | Yes | Whether to create a directory recursively. The value <b>true</b> means to create a directory recursively. The value <b>false</b> means to create a single-level directory. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the directory is successfully created, <b>err</b> is <b>undefined</b>; otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 

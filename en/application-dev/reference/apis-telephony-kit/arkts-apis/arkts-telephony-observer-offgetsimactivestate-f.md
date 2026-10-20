@@ -30,7 +30,7 @@ Unregisters an observer for SIM card activation state changes. This API uses an 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | No | Callback function used to return whether the SIM card is activated.<br>- **true**: activated. <br>- **false**: not activated. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;boolean&gt; | No | Callback function used to return whether the SIM card is activated. <br>- **true**: activated. <br>- **false**: not activated. |
 
 **Error codes:**
 

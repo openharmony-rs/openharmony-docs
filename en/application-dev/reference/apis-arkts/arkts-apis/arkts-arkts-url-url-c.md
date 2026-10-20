@@ -18,8 +18,6 @@ The interface of URL is used to parse, construct, normalize, and encode URLs.
 import { url } from '@kit.ArkTS';
 ```
 
-<a id="constructor2"></a>
-
 ## constructor
 
 ```TypeScript
@@ -52,8 +50,6 @@ new url.URL('/path/path1'); // Raises a TypeError exception as '/path/path1' is 
 new url.URL('https://www.example.com', ); // Output https://www.example.com/
 new url.URL('https://www.example.com', b); // Output https://www.example.com/
 ```
-
-<a id="constructor1"></a>
 
 ## constructor
 
@@ -442,3 +438,26 @@ Gets the URLSearchParams object that represents the URL query parameter. This pr
 <!--Device-URL-readonly searchParams: URLSearchParams--><!--Device-URL-readonly searchParams: URLSearchParams-End-->
 
 **System capability:** SystemCapability.Utils.Lang
+
+**Examples**
+
+```TypeScript
+let that = url.URL.parseURL('http://username:password@host:8080/directory/file?foo=1&bar=2#fragment');
+console.info("hash " + that.hash); // hash #fragment
+console.info("host " + that.host); // host host:8080
+console.info("hostname " + that.hostname); // hostname host
+console.info("href " + that.href); // href http://username:password@host:8080/directory/file?foo=1&bar=2#fragment
+console.info("origin " + that.origin); // origin http://host:8080
+console.info("password " + that.password); // password password
+console.info("pathname " + that.pathname); // pathname /directory/file
+console.info("port " + that.port); // port 8080
+console.info("protocol " + that.protocol); // protocol http:
+console.info("search " + that.search); // search ?foo=1&bar=2
+console.info("username " + that.username); // username username
+// The return value of that.params is a URLParams object.
+console.info("params: foo " + that.params.get("foo")); // params: foo 1
+
+let urlObj = url.URL.parseURL('http://testhost:80/directory/file?foo=1');
+console.info("port " + urlObj.port); // port 
+console.info("toString " + urlObj.port); // toString http://testhost/directory/file?foo=1
+```

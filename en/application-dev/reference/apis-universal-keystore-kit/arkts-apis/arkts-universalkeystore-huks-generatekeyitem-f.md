@@ -6,8 +6,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="generatekeyitem1"></a>
-
 ## generateKeyItem
 
 ```TypeScript
@@ -193,8 +191,6 @@ export default {
 };
 ```
 
-
-<a id="generatekeyitem2"></a>
 
 ## generateKeyItem
 

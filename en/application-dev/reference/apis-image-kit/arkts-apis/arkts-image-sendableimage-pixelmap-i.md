@@ -6,8 +6,6 @@ interface PixelMap extends ISendable
 
 Sendable PixelMap instance.
 
-@typedef PixelMap
-
 **Inheritance/Implementation:** PixelMap extends [ISendable](arkts-image-sendableimage-isendable-t.md)
 
 **Since:** 12
@@ -577,7 +575,7 @@ Marshalling PixelMap and write into MessageSequence.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sequence | [rpc.MessageSequence](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-messagesequence-c.md) | Yes | [rpc.MessageSequence parameter.](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc.md) |
+| sequence | [rpc.MessageSequence](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-messagesequence-c.md) | Yes | rpc.MessageSequence parameter. |
 
 **Error codes:**
 
@@ -1297,7 +1295,7 @@ Creates a PixelMap object based on MessageSequence parameter.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sequence | [rpc.MessageSequence](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-messagesequence-c.md) | Yes | [rpc.MessageSequence parameter.](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc.md) |
+| sequence | [rpc.MessageSequence](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-messagesequence-c.md) | Yes | rpc.MessageSequence parameter. |
 
 **Return value:**
 

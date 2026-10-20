@@ -6,8 +6,6 @@ export interface AgentCapabilities
 
 定义Agent支持的可选能力。
 
-@typedef AgentCapabilities
-
 **起始版本：** 24
 
 <!--Device-unnamed-export interface AgentCapabilities--><!--Device-unnamed-export interface AgentCapabilities-End-->

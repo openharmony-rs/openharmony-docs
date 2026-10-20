@@ -40,7 +40,7 @@ Detects the encoding information of the input byte stream.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bytes | Uint8Array | Yes | Input byte stream. To detect the encoding of a text string, convert the text to a byte stream first while preserving its original format.<br>Byte stream to be identified and encoded |
+| bytes | Uint8Array | Yes | Input byte stream. To detect the encoding of a text string, convert the text to a byte stream first while preserving its original format. <br>Byte stream to be identified and encoded |
 
 **Return value:**
 

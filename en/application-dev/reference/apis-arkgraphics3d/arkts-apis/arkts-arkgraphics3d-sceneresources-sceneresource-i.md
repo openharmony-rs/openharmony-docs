@@ -6,8 +6,6 @@ export interface SceneResource
 
 Describes a resource in a scene.
 
-@interface SceneResource
-
 **Since:** 12
 
 <!--Device-unnamed-export interface SceneResource--><!--Device-unnamed-export interface SceneResource-End-->

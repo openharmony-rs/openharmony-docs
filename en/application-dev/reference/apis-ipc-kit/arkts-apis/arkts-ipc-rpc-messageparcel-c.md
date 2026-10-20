@@ -553,8 +553,6 @@ try {
 }
 ```
 
-<a id="readbooleanarray1"></a>
-
 ## readBooleanArray
 
 ```TypeScript
@@ -567,7 +565,7 @@ Reads the Boolean array from this **MessageParcel** object and writes it to the 
 
 **Deprecated since:** 9
 
-**Substitutes:** [readBooleanArray](arkts-ipc-rpc-messagesequence-c.md#readbooleanarray1)(dataIn: boolean[])
+**Substitutes:** [readBooleanArray](arkts-ipc-rpc-messagesequence-c.md#readbooleanarray)(dataIn: boolean[])
 
 <!--Device-MessageParcel-readBooleanArray(dataIn: boolean[]): void--><!--Device-MessageParcel-readBooleanArray(dataIn: boolean[]): void-End-->
 
@@ -596,8 +594,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-
-<a id="readbooleanarray2"></a>
 
 ## readBooleanArray
 
@@ -681,8 +677,6 @@ try {
 }
 ```
 
-<a id="readbytearray1"></a>
-
 ## readByteArray
 
 ```TypeScript
@@ -724,8 +718,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-
-<a id="readbytearray2"></a>
 
 ## readByteArray
 
@@ -810,8 +802,6 @@ try {
 }
 ```
 
-<a id="readchararray1"></a>
-
 ## readCharArray
 
 ```TypeScript
@@ -853,8 +843,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-
-<a id="readchararray2"></a>
 
 ## readCharArray
 
@@ -938,8 +926,6 @@ try {
 }
 ```
 
-<a id="readdoublearray1"></a>
-
 ## readDoubleArray
 
 ```TypeScript
@@ -981,8 +967,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-
-<a id="readdoublearray2"></a>
 
 ## readDoubleArray
 
@@ -1205,8 +1189,6 @@ try {
 }
 ```
 
-<a id="readfloatarray1"></a>
-
 ## readFloatArray
 
 ```TypeScript
@@ -1248,8 +1230,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-
-<a id="readfloatarray2"></a>
 
 ## readFloatArray
 
@@ -1333,8 +1313,6 @@ try {
 }
 ```
 
-<a id="readintarray1"></a>
-
 ## readIntArray
 
 ```TypeScript
@@ -1376,8 +1354,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-
-<a id="readintarray2"></a>
 
 ## readIntArray
 
@@ -1501,8 +1477,6 @@ try {
 }
 ```
 
-<a id="readlongarray1"></a>
-
 ## readLongArray
 
 ```TypeScript
@@ -1544,8 +1518,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-
-<a id="readlongarray2"></a>
 
 ## readLongArray
 
@@ -1610,7 +1582,7 @@ Reads raw data from this **MessageParcel** object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| size | number | Yes | Size of the raw data to read. |
+| size | number | Yes | Size of the original data to read, in bytes. |
 
 **Return value:**
 
@@ -1688,8 +1660,6 @@ try {
 }
 ```
 
-<a id="readremoteobjectarray1"></a>
-
 ## readRemoteObjectArray
 
 ```TypeScript
@@ -1702,7 +1672,7 @@ Reads the **IRemoteObject** array from this **MessageParcel** object and writes 
 
 **Deprecated since:** 9
 
-**Substitutes:** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray1)(objects: IRemoteObject[])
+**Substitutes:** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray)(objects: IRemoteObject[])
 
 <!--Device-MessageParcel-readRemoteObjectArray(objects: IRemoteObject[]): void--><!--Device-MessageParcel-readRemoteObjectArray(objects: IRemoteObject[]): void-End-->
 
@@ -1744,8 +1714,6 @@ try {
 }
 ```
 
-<a id="readremoteobjectarray2"></a>
-
 ## readRemoteObjectArray
 
 ```TypeScript
@@ -1758,7 +1726,7 @@ Reads the **IRemoteObject** array from this **MessageParcel** object.
 
 **Deprecated since:** 9
 
-**Substitutes:** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray1)(objects: IRemoteObject[])
+**Substitutes:** [readRemoteObjectArray](arkts-ipc-rpc-messagesequence-c.md#readremoteobjectarray)(objects: IRemoteObject[])
 
 <!--Device-MessageParcel-readRemoteObjectArray(): IRemoteObject[]--><!--Device-MessageParcel-readRemoteObjectArray(): IRemoteObject[]-End-->
 
@@ -1973,8 +1941,6 @@ try {
 }
 ```
 
-<a id="readshortarray1"></a>
-
 ## readShortArray
 
 ```TypeScript
@@ -2016,8 +1982,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-
-<a id="readshortarray2"></a>
 
 ## readShortArray
 
@@ -2101,8 +2065,6 @@ try {
 }
 ```
 
-<a id="readstringarray1"></a>
-
 ## readStringArray
 
 ```TypeScript
@@ -2115,7 +2077,7 @@ Reads the string array from this **MessageParcel** object and writes it to the c
 
 **Deprecated since:** 9
 
-**Substitutes:** [readStringArray](arkts-ipc-rpc-messagesequence-c.md#readstringarray1)(dataIn: string[])
+**Substitutes:** [readStringArray](arkts-ipc-rpc-messagesequence-c.md#readstringarray)(dataIn: string[])
 
 <!--Device-MessageParcel-readStringArray(dataIn: string[]): void--><!--Device-MessageParcel-readStringArray(dataIn: string[]): void-End-->
 
@@ -2144,8 +2106,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-
-<a id="readstringarray2"></a>
 
 ## readStringArray
 
@@ -3406,7 +3366,7 @@ Writes a **Sequenceable** object to this **MessageParcel** object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| val | [Sequenceable](arkts-ipc-rpc-sequenceable-i.md) | Yes | **Sequenceable** object to write. |
+| val | [Sequenceable](arkts-ipc-rpc-sequenceable-i.md) | Yes | **Sequenceable** object to write. It is advised that you ensure data integrity when implementing the **marshalling** and **unmarshalling** methods. The data structures for serialization and deserialization must be consistent. |
 
 **Return value:**
 

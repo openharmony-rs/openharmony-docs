@@ -6,8 +6,6 @@
 import { unifiedDataChannel } from '@kit.ArkData';
 ```
 
-<a id="insertdata1"></a>
-
 ## insertData
 
 ```TypeScript
@@ -40,7 +38,7 @@ Implementation mechanism After receiving the UnifiedData object, the system veri
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 
@@ -73,8 +71,6 @@ try {
 }
 ```
 
-
-<a id="insertdata2"></a>
 
 ## insertData
 
@@ -111,7 +107,7 @@ Writes data to the public data channel of UDMF and generates a unique identifier
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 

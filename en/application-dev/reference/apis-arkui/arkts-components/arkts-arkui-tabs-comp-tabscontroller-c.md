@@ -122,7 +122,7 @@ Controls the preloading of specified child nodes in **Tabs**. After this API is 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter invalid. Possible causes:<br> 1. The parameter type is not Array<number>. <br> 2. The parameter is an empty array. <br> 3. The parameter contains an invalid index. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter invalid. Possible causes: <br> 1. The parameter type is not Array<number>. <br> 2. The parameter is an empty array. <br> 3. The parameter contains an invalid index. |
 
 ## setTabBarOpacity
 
@@ -156,7 +156,7 @@ Sets the opacity of the tab bar. This API is suitable for scenarios where the ta
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| opacity | number | Yes | Opacity of the tab bar. The value **1.0** indicates fully opaque, and the value 0.0 indicates fully transparent. The value range is [0.0, 1.0]. If the set value is less than 0.0, it is processed as 0.0. If the set value is greater than 1.0, it is processed as 1.0.<br> Default value: **1.0**. |
+| opacity | number | Yes | Opacity of the tab bar. The value **1.0** indicates fully opaque, and the value 0.0 indicates fully transparent. The value range is [0.0, 1.0]. If the set value is less than 0.0, it is processed as 0.0. If the set value is greater than 1.0, it is processed as 1.0. <br> Default value: **1.0**. |
 
 ## setTabBarTranslate
 

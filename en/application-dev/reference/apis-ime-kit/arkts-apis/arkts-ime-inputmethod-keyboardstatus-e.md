@@ -18,7 +18,7 @@ Enumerates the soft keyboard states of the input method.
 HIDE = 1
 ```
 
-Hidden.
+Hidden state. <br> <br>Usage scenarios: indicates that the soft keyboard is currently hidden.
 
 **Since:** 10
 
@@ -32,7 +32,7 @@ Hidden.
 NONE = 0
 ```
 
-None.
+NONE. <br> <br>Usage scenarios: used when the keyboard status is not determined or cannot be determined.
 
 **Since:** 10
 
@@ -46,7 +46,7 @@ None.
 SHOW = 2
 ```
 
-Shown.
+Shown state. <br> <br>Usage scenarios: indicates that the soft keyboard is currently shown.
 
 **Since:** 10
 

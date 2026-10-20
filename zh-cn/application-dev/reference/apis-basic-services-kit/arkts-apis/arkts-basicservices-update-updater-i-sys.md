@@ -33,8 +33,6 @@ export interface Updater
 import { update } from '@kit.BasicServicesKit';
 ```
 
-<a id="checknewversion1"></a>
-
 ## checkNewVersion
 
 ```TypeScript
@@ -123,8 +121,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="checknewversion2"></a>
-
 ## checkNewVersion
 
 ```TypeScript
@@ -211,8 +207,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="clearerror1"></a>
 
 ## clearError
 
@@ -310,8 +304,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="clearerror2"></a>
-
 ## clearError
 
 ```TypeScript
@@ -408,8 +400,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="download1"></a>
 
 ## download
 
@@ -516,8 +506,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="download2"></a>
-
 ## download
 
 ```TypeScript
@@ -622,8 +610,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getcurrentversiondescription1"></a>
-
 ## getCurrentVersionDescription
 
 ```TypeScript
@@ -712,8 +698,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getcurrentversiondescription2"></a>
-
 ## getCurrentVersionDescription
 
 ```TypeScript
@@ -800,8 +784,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getcurrentversioninfo1"></a>
-
 ## getCurrentVersionInfo
 
 ```TypeScript
@@ -876,8 +858,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getcurrentversioninfo2"></a>
-
 ## getCurrentVersionInfo
 
 ```TypeScript
@@ -946,8 +926,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getnewversiondescription1"></a>
 
 ## getNewVersionDescription
 
@@ -1041,8 +1019,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getnewversiondescription2"></a>
 
 ## getNewVersionDescription
 
@@ -1142,8 +1118,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getnewversioninfo1"></a>
-
 ## getNewVersionInfo
 
 ```TypeScript
@@ -1233,8 +1207,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getnewversioninfo2"></a>
-
 ## getNewVersionInfo
 
 ```TypeScript
@@ -1322,8 +1294,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="gettaskinfo1"></a>
-
 ## getTaskInfo
 
 ```TypeScript
@@ -1408,8 +1378,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="gettaskinfo2"></a>
-
 ## getTaskInfo
 
 ```TypeScript
@@ -1492,8 +1460,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getupgradepolicy1"></a>
-
 ## getUpgradePolicy
 
 ```TypeScript
@@ -1563,8 +1529,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getupgradepolicy2"></a>
 
 ## getUpgradePolicy
 
@@ -1785,8 +1749,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="pausedownload1"></a>
-
 ## pauseDownload
 
 ```TypeScript
@@ -1885,8 +1847,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="pausedownload2"></a>
-
 ## pauseDownload
 
 ```TypeScript
@@ -1984,8 +1944,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="resumedownload1"></a>
-
 ## resumeDownload
 
 ```TypeScript
@@ -2079,8 +2037,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="resumedownload2"></a>
-
 ## resumeDownload
 
 ```TypeScript
@@ -2172,8 +2128,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="setupgradepolicy1"></a>
-
 ## setUpgradePolicy
 
 ```TypeScript
@@ -2251,8 +2205,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="setupgradepolicy2"></a>
 
 ## setUpgradePolicy
 
@@ -2334,8 +2286,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="terminateupgrade1"></a>
 
 ## terminateUpgrade
 
@@ -2419,8 +2369,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="terminateupgrade2"></a>
-
 ## terminateUpgrade
 
 ```TypeScript
@@ -2500,8 +2448,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="upgrade1"></a>
 
 ## upgrade
 
@@ -2603,8 +2549,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="upgrade2"></a>
 
 ## upgrade
 

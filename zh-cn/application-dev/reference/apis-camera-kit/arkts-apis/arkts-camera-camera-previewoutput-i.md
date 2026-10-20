@@ -47,7 +47,6 @@ addDeferredSurface(surfaceId: string): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13 - 23 |
 
 **示例**
 
@@ -87,7 +86,7 @@ enableBandwidthCompression(enabled: boolean): void
 
 > **说明：** 
 > 
-> 该接口只能在使用[Session.commitConfig](arkts-camera-camera-session-i.md#commitconfig1)接口之前调用，否则会影响预览流
+> 该接口只能在使用[Session.commitConfig](arkts-camera-camera-session-i.md#commitconfig)接口之前调用，否则会影响预览流
 > 出流格式。
 
 **起始版本：** 23
@@ -233,7 +232,7 @@ getPreviewRotation(displayRotation?: number): ImageRotation
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| displayRotation | number | 否 | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../../apis-arkui/arkts-apis/arkts-arkui-display-getdefaultdisplaysync-f.md)获得。<br> 从API version 23开始，入参displayRotation为可选参数，当不传入参数时，由系统获取displayRotation进行预览旋转角度计算。<br> 单位为度数（degree），取值范围为[0, 360]。<br>**适用版本：** 23 |
+| displayRotation | number | 否 | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../../apis-arkui/arkts-apis/arkts-arkui-display-getdefaultdisplaysync-f.md)获得。<br> 从API版本23开始，入参displayRotation为可选参数，当不传入参数时，由系统获取displayRotation进行预览旋转角度计算。<br> 单位为度数（degree），取值范围为[0, 360]。<br>**适用版本：** 23 |
 
 **返回值：**
 
@@ -675,7 +674,7 @@ LOG视频下，使能辅助监看之前，可先使用方法[isLogViewAssistSupp
 
 > **说明：** 
 > 
-> - 该接口只能在使用[Session.commitConfig](arkts-camera-camera-session-i.md#commitconfig1)接口之后调用。
+> - 该接口只能在使用[Session.commitConfig](arkts-camera-camera-session-i.md#commitconfig)接口之后调用。
 > 
 > - 预览辅助监看效果仅支持1080P及以下分辨率。
 
@@ -766,8 +765,6 @@ function testSetPreviewRotation(previewOutput: camera.PreviewOutput, previewRota
 }
 ```
 
-<a id="start1"></a>
-
 ## start
 
 ```TypeScript
@@ -778,13 +775,13 @@ start(callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
 **废弃版本：** 11
 
-**替代接口：** [start](arkts-camera-camera-session-i.md#start1)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [start](arkts-camera-camera-session-i.md#start)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-PreviewOutput-start(callback: AsyncCallback<void>): void--><!--Device-PreviewOutput-start(callback: AsyncCallback<void>): void-End-->
 
@@ -818,8 +815,6 @@ function startPreviewOutput(previewOutput: camera.PreviewOutput): void {
 }
 ```
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -830,7 +825,7 @@ start(): Promise<void>
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
@@ -868,8 +863,6 @@ function startPreviewOutput(previewOutput: camera.PreviewOutput): void {
 }
 ```
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -880,13 +873,13 @@ stop(callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
 **废弃版本：** 11
 
-**替代接口：** [stop](arkts-camera-camera-session-i.md#stop1)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [stop](arkts-camera-camera-session-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-PreviewOutput-stop(callback: AsyncCallback<void>): void--><!--Device-PreviewOutput-stop(callback: AsyncCallback<void>): void-End-->
 
@@ -914,8 +907,6 @@ function stopPreviewOutput(previewOutput: camera.PreviewOutput): void {
 }
 ```
 
-<a id="stop2"></a>
-
 ## stop
 
 ```TypeScript
@@ -926,7 +917,7 @@ stop(): Promise<void>
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 

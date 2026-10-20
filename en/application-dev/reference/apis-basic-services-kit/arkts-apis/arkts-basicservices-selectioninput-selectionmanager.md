@@ -19,6 +19,8 @@ This module provides word selection management capabilities, including creating,
 
 **Since:** 24
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace selectionManager--><!--Device-unnamed-declare namespace selectionManager-End-->
 
 **System capability:** SystemCapability.SelectionInput.Selection

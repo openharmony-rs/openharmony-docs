@@ -6,8 +6,6 @@ interface WebCustomScheme
 
 Defines a custom URL scheme.
 
-@interface WebCustomScheme [since 9 - 11]
-
 **Since:** 9
 
 <!--Device-webview-interface WebCustomScheme--><!--Device-webview-interface WebCustomScheme-End-->

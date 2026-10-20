@@ -39,7 +39,7 @@ Product ID.
 ## serial
 
 ```TypeScript
-serial: string
+serial?: string
 ```
 
 Serial Number.
@@ -50,7 +50,7 @@ Serial Number.
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-UsbDevice-serial: string--><!--Device-UsbDevice-serial: string-End-->
+<!--Device-UsbDevice-serial?: string--><!--Device-UsbDevice-serial?: string-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -160,7 +160,7 @@ The ability is started by means of atomic service sharing.
 START_ABILITY = 1
 ```
 
-The ability is started by calling [startAbility](arkts-ability-uiabilitycontext-c.md#startability1).
+The ability is started by calling [startAbility](arkts-ability-uiabilitycontext-c.md#startability).
 
 **Since:** 9
 

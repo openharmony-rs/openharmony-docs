@@ -20,8 +20,6 @@ class GenericsTask<A extends Array<Object>, R> extends Task
 import { taskpool } from '@kit.ArkTS';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -76,8 +74,6 @@ let task2: taskpool.Task = new taskpool.GenericsTask<[number, string, number], s
 
 let task3: taskpool.Task = new taskpool.GenericsTask<[[number, string]], string>(testWithArray, [100, "test"]);
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

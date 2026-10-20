@@ -83,7 +83,6 @@ Sets the number of data records of the event package obtained each time. When **
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [11104001](../errorcode-hiappevent.md#11104001-invalid-event-package-size) | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **Examples**
@@ -121,7 +120,6 @@ Sets the threshold for the data size of the event package obtained each time.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [11104001](../errorcode-hiappevent.md#11104001-invalid-event-package-size) | Invalid size value. Possibly caused by the size value is less than or equal to zero. |
 
 **Examples**

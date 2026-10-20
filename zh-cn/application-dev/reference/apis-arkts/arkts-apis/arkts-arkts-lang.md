@@ -20,7 +20,7 @@ import { lang, Retention, RetentionPolicy } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
-| [Retention](arkts-arkts-lang-retention-a.md#retention) | 系统提供的API注解能力，可用于指定自定义注解的生命周期。此注解只能标注在其他注解声明上。在自定义注解上标注Retention注解后，根据policy的不同取值，编译器会对自定义注解执行不同的保留策略。 |
+| [Retention](arkts-arkts-lang-retention-a.md) | 系统提供的API注解能力，可用于指定自定义注解的生命周期。此注解只能标注在其他注解声明上。在自定义注解上标注Retention注解后，根据policy的不同取值，编译器会对自定义注解执行不同的保留策略。 |
 
 ### 枚举
 

@@ -58,7 +58,7 @@ Obtains a key parameter. This API returns the result synchronously.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | This operation is not supported.<br>**Applicable version:** 12 and later |
@@ -128,7 +128,7 @@ Obtains the public key data that complies with the ASN.1 syntax and DER encoding
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| format | string | Yes | Format of the key. Supports EC keys, with the format values 'X509&#124;COMPRESSED' and'X509&#124;UNCOMPRESSED' supported.<br>Since API version 26.0.0, RSA keys are supported, with the format values 'PKCS1' and 'X509' supported. <br>Since API version 26.0.0, ML-DSA and ML-KEM keys are supported, with the format value 'X509' supported. |
+| format | string | Yes | Format of the key. Supports EC keys, with the format values 'X509&#124;COMPRESSED' and'X509&#124;UNCOMPRESSED' supported. <br>Since API version 26.0.0, RSA keys are supported, with the format values 'PKCS1' and 'X509' supported. <br>Since API version 26.0.0, ML-DSA and ML-KEM keys are supported, with the format value 'X509' supported. |
 
 **Return value:**
 
@@ -140,7 +140,7 @@ Obtains the public key data that complies with the ASN.1 syntax and DER encoding
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |
@@ -182,7 +182,7 @@ Obtains the public key data in PEM encoding. This API returns the result synchro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| format | string | Yes | Encoding format of the key data to obtain. Supports RSA keys, with the format values'X509' or 'PKCS1' supported.<br>Since API version 26.0.0, EC, ML-DSA, and ML-KEM keys are supported, with the format value 'X509'supported. |
+| format | string | Yes | Encoding format of the key data to obtain. Supports RSA keys, with the format values'X509' or 'PKCS1' supported. <br>Since API version 26.0.0, EC, ML-DSA, and ML-KEM keys are supported, with the format value 'X509'supported. |
 
 **Return value:**
 
@@ -194,7 +194,7 @@ Obtains the public key data in PEM encoding. This API returns the result synchro
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 26.2.0 and later |
 | [17620001](../errorcode-crypto-framework.md#17620001-memory-operation-failed) | Memory operation failed. |
 | [17630001](../errorcode-crypto-framework.md#17630001-cryptographic-operation-error) | Crypto operation error. |

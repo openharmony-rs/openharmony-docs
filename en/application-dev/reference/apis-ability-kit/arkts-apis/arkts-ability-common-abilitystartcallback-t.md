@@ -4,7 +4,7 @@
 export type AbilityStartCallback = _AbilityStartCallback
 ```
 
-Defines the callback invoked to return the UIExtensionAbility startup result. It is usually used as an input parameter in [UIAbilityContext.startAbilityByType](arkts-ability-uiabilitycontext-c.md#startabilitybytype1) or [UIExtensionContext.startAbilityByType](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#startabilitybytype1).
+Defines the callback invoked to return the UIExtensionAbility startup result. It is usually used as an input parameter in [UIAbilityContext.startAbilityByType](arkts-ability-uiabilitycontext-c.md#startabilitybytype) or [UIExtensionContext.startAbilityByType](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#startabilitybytype).
 
 **Type:** _AbilityStartCallback
 

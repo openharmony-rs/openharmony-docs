@@ -6,8 +6,6 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="isadminenabled1"></a>
-
 ## isAdminEnabled
 
 ```TypeScript
@@ -65,8 +63,6 @@ adminManager.isAdminEnabled(wantTemp, (err, result) => {
 <!--DelEnd-->
 
 
-<a id="isadminenabled2"></a>
-
 ## isAdminEnabled
 
 ```TypeScript
@@ -90,7 +86,7 @@ Checks whether a device administrator application of the specified user is enabl
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
-| userId | number | Yes | User ID, which must be greater than or equal to 0.<br> The default value is the user ID of the caller. |
+| userId | number | Yes | User ID, which must be greater than or equal to 0. <br> The default value is the user ID of the caller. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback invoked to return the result. If the operation is successful, **err** is **null** and **data** is a Boolean value (**true** means that the device administrator application is enabled; and **false** means the opposite). If the operation fails, **err** is an error object. |
 
 **Error codes:**
@@ -126,8 +122,6 @@ adminManager.isAdminEnabled(wantTemp, 100, (err, result) => {
 <!--DelEnd-->
 
 
-<a id="isadminenabled3"></a>
-
 ## isAdminEnabled
 
 ```TypeScript
@@ -151,7 +145,7 @@ Checks whether a device administrator application of the current or specified us
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
-| userId | number | No | User ID, which must be greater than or equal to 0.<br> - If **userId** is passed in, this API applies to the specified user. <br> - If **userId** is not passed in, this API applies to the current user. |
+| userId | number | No | User ID, which must be greater than or equal to 0. <br> - If **userId** is passed in, this API applies to the specified user. <br> - If **userId** is not passed in, this API applies to the current user. |
 
 **Return value:**
 

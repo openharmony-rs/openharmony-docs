@@ -6,8 +6,6 @@ export interface MaterialProperty
 
 Defines the textures, property factors, and texture samplers used by a material.
 
-@interface MaterialProperty
-
 **Since:** 20
 
 <!--Device-unnamed-export interface MaterialProperty--><!--Device-unnamed-export interface MaterialProperty-End-->

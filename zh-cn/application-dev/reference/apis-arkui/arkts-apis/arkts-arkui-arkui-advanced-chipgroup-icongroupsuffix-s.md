@@ -26,7 +26,7 @@ import { IconOptions, LabelOptions as ChipItemLabelOptions, ChipGroupItemOptions
 iconBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、[border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1)视觉属性。设置自动反色的系统材质时，fontColor如果使用系统预定义的可反色颜色资源（如`$r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。
+设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、[border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)视觉属性。设置自动反色的系统材质时，fontColor如果使用系统预定义的可反色颜色资源（如`$r('sys.color.font_primary')`），颜色自动适配到材质背景色的反色。
 
 默认值：undefined
 

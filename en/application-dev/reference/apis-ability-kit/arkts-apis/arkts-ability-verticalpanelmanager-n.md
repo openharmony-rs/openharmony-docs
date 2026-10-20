@@ -6,9 +6,9 @@ declare namespace verticalPanelManager
 
 Defines a vertical domain panel manager.
 
-@namespace verticalPanelManager
-
 **Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace verticalPanelManager--><!--Device-unnamed-declare namespace verticalPanelManager-End-->
 

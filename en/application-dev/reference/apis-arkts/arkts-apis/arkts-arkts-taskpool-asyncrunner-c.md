@@ -18,8 +18,6 @@ Implements an asynchronous queue, for which you can specify the task execution c
 import { taskpool } from '@kit.ArkTS';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -48,8 +46,6 @@ A constructor used to create an **AsyncRunner** instance. It constructs a non-gl
 ```TypeScript
 let runner: taskpool.AsyncRunner = new taskpool.AsyncRunner(5);
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getprocessrunninginformation1"></a>
-
 ## getProcessRunningInformation
 
 ```TypeScript
@@ -63,8 +61,6 @@ appManager.getProcessRunningInformation().then((data) => {
 
 <!--DelEnd-->
 
-
-<a id="getprocessrunninginformation2"></a>
 
 ## getProcessRunningInformation
 

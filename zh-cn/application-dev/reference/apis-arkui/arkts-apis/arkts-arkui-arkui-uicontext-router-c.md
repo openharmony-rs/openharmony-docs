@@ -41,8 +41,6 @@ import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
 import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
 ```
 
-<a id="back1"></a>
-
 ## back
 
 ```TypeScript
@@ -82,8 +80,6 @@ let uiContext: UIContext = this.getUIContext();
 let router: Router = uiContext.getRouter();
 router.back({url:'pages/detail'});
 ```
-
-<a id="back2"></a>
 
 ## back
 
@@ -418,8 +414,6 @@ let router: Router = uiContext.getRouter();
 router.hideAlertBeforeBackPage();
 ```
 
-<a id="pushnamedroute1"></a>
-
 ## pushNamedRoute
 
 ```TypeScript
@@ -449,7 +443,7 @@ pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
@@ -501,8 +495,6 @@ struct Index {
 }
 ```
 
-<a id="pushnamedroute2"></a>
-
 ## pushNamedRoute
 
 ```TypeScript
@@ -537,7 +529,7 @@ pushNamedRoute(options: router.NamedRouterOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
@@ -588,8 +580,6 @@ struct Index {
 }
 ```
 
-<a id="pushnamedroute3"></a>
-
 ## pushNamedRoute
 
 ```TypeScript
@@ -620,7 +610,7 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, call
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
@@ -679,8 +669,6 @@ struct Index {
 }
 ```
 
-<a id="pushnamedroute4"></a>
-
 ## pushNamedRoute
 
 ```TypeScript
@@ -716,7 +704,7 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Pro
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
@@ -772,8 +760,6 @@ struct Index {
 }
 ```
 
-<a id="pushurl1"></a>
-
 ## pushUrl
 
 ```TypeScript
@@ -803,7 +789,7 @@ pushUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100002](../errorcode-router.md#100002-路由页面跳转时输入的uri错误) | Uri error. The URI of the page to redirect is incorrect or does not exist |
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
@@ -856,8 +842,6 @@ struct Index {
 }
 ```
 
-<a id="pushurl2"></a>
-
 ## pushUrl
 
 ```TypeScript
@@ -896,7 +880,7 @@ pushUrl(options: router.RouterOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100002](../errorcode-router.md#100002-路由页面跳转时输入的uri错误) | Uri error. The URI of the page to redirect is incorrect or does not exist |
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
@@ -1011,8 +995,6 @@ struct Second {
 }
 ```
 
-<a id="pushurl3"></a>
-
 ## pushUrl
 
 ```TypeScript
@@ -1043,7 +1025,7 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncC
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100002](../errorcode-router.md#100002-路由页面跳转时输入的uri错误) | Uri error. The URI of the page to redirect is incorrect or does not exist |
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
@@ -1102,8 +1084,6 @@ struct Index {
 }
 ```
 
-<a id="pushurl4"></a>
-
 ## pushUrl
 
 ```TypeScript
@@ -1139,7 +1119,7 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100002](../errorcode-router.md#100002-路由页面跳转时输入的uri错误) | Uri error. The URI of the page to redirect is incorrect or does not exist |
 | [100003](../errorcode-router.md#100003-路由压入的page过多) | Page stack error. Too many pages are pushed. |
@@ -1197,8 +1177,6 @@ struct Index {
 }
 ```
 
-<a id="replacenamedroute1"></a>
-
 ## replaceNamedRoute
 
 ```TypeScript
@@ -1228,7 +1206,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback<vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
@@ -1275,8 +1253,6 @@ struct Index {
   }
 }
 ```
-
-<a id="replacenamedroute2"></a>
 
 ## replaceNamedRoute
 
@@ -1358,8 +1334,6 @@ struct Index {
   }
 }
 ```
-
-<a id="replacenamedroute3"></a>
 
 ## replaceNamedRoute
 
@@ -1446,15 +1420,13 @@ struct Index {
 }
 ```
 
-<a id="replacenamedroute4"></a>
-
 ## replaceNamedRoute
 
 ```TypeScript
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise<void>
 ```
 
-用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceNamedRoute](#replacenamedroute2)相比，新增了mode参数，即支持设置跳转页面使用的模式。
+用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceNamedRoute](#replacenamedroute)相比，新增了mode参数，即支持设置跳转页面使用的模式。
 
 **起始版本：** 10
 
@@ -1483,7 +1455,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Failed to get the delegate. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
@@ -1536,8 +1508,6 @@ struct Index {
 }
 ```
 
-<a id="replaceurl1"></a>
-
 ## replaceUrl
 
 ```TypeScript
@@ -1567,7 +1537,7 @@ replaceUrl(options: router.RouterOptions, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
@@ -1615,8 +1585,6 @@ struct Index {
 }
 ```
 
-<a id="replaceurl2"></a>
-
 ## replaceUrl
 
 ```TypeScript
@@ -1656,7 +1624,7 @@ replaceUrl(options: router.RouterOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
@@ -1703,8 +1671,6 @@ struct Index {
 }
 ```
 
-<a id="replaceurl3"></a>
-
 ## replaceUrl
 
 ```TypeScript
@@ -1735,7 +1701,7 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: Asy
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
@@ -1790,8 +1756,6 @@ struct Index {
 }
 ```
 
-<a id="replaceurl4"></a>
-
 ## replaceUrl
 
 ```TypeScript
@@ -1827,7 +1791,7 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise<void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Failed to get the delegate. This error code is thrown only in the standard system. |
 | [200002](../errorcode-router.md#200002-路由页面替换时输入的uri错误) | Uri error. The URI of the page to be used for replacement is incorrect or does not exist. |
 
@@ -1908,7 +1872,7 @@ showAlertBeforeBackPage(options: router.EnableAlertOptions): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 
 **示例**

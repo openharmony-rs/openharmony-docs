@@ -126,7 +126,7 @@ Obtains the **LayoutManager** object.
 
 | Type | Description |
 | --- | --- |
-| [LayoutManager](../arkts-apis/arkts-arkui-layoutmanager-i.md) | Layout manager object, which can be used to obtain information such as the layout position of the component content.<br>Returns undefined when the controller is not bound to a component or the component bound to the controller is released. |
+| [LayoutManager](../arkts-apis/arkts-arkui-layoutmanager-i.md) | Layout manager object, which can be used to obtain information such as the layout position of the component content. <br>Returns undefined when the controller is not bound to a component or the component bound to the controller is released. |
 
 ## getPreviewText
 
@@ -150,7 +150,7 @@ Obtains the preview text.
 
 | Type | Description |
 | --- | --- |
-| [PreviewText](../arkts-apis/arkts-arkui-previewtext-i.md) | Preview text information, including the candidate text content pre-displayed by the input method and its start position.<br>Returns undefined when the controller is not bound to a component or the component bound to the controller is released. |
+| [PreviewText](../arkts-apis/arkts-arkui-previewtext-i.md) | Preview text information, including the candidate text content pre-displayed by the input method and its start position. <br>Returns undefined when the controller is not bound to a component or the component bound to the controller is released. |
 
 ## getTypingStyle
 
@@ -174,7 +174,7 @@ Obtains the preset text style of a user.
 
 | Type | Description |
 | --- | --- |
-| [RichEditorTextStyle](arkts-arkui-richeditor-comp-richeditortextstyle-i.md) | A user-preset text input style object that contains style attributes such as font color, size, and weight. It can be used to query the input text style configuration of the current component.<br>When the controller is not bound to a component, or the component bound to the controller is released, undefined is returned. |
+| [RichEditorTextStyle](arkts-arkui-richeditor-comp-richeditortextstyle-i.md) | A user-preset text input style object that contains style attributes such as font color, size, and weight. It can be used to query the input text style configuration of the current component. <br>When the controller is not bound to a component, or the component bound to the controller is released, undefined is returned. |
 
 ## isEditing
 
@@ -220,7 +220,7 @@ Scrolls the content in the specified range into the visible area.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | No | Content range to scroll into the visible area, including the start position and end position of the content.<br>The start position must be less than or equal to the end position; otherwise, the API call does not take effect. A start position less than 0 is treated as 0, and an end position greater than the total text length is treated as the total text length. <br>If no range is specified, all content is used by default. If no start position is specified, the start position defaults to 0; if no end position is specified, the end position defaults to the total text length. |
+| range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | No | Content range to scroll into the visible area, including the start position and end position of the content. <br>The start position must be less than or equal to the end position; otherwise, the API call does not take effect. A start position less than 0 is treated as 0, and an end position greater than the total text length is treated as the total text length. <br>If no range is specified, all content is used by default. If no start position is specified, the start position defaults to 0; if no end position is specified, the end position defaults to the total text length. |
 
 ## setCaretOffset
 
@@ -252,7 +252,7 @@ When the controller is not bound to a component or the component bound to the co
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the caret offset is set successfully.<br>**true** if the caret offset is set successfully; **false** otherwise. |
+| boolean | Whether the caret offset is set successfully. <br>**true** if the caret offset is set successfully; **false** otherwise. |
 
 ## setSelection
 
@@ -290,7 +290,7 @@ close the menu, and the menu position will remain unchanged.
 | --- | --- | --- | --- |
 | selectionStart | number | Yes | Start position of the selection. |
 | selectionEnd | number | Yes | End position of the selection. |
-| options | [SelectionOptions](arkts-arkui-common-comp-selectionoptions-i.md) | No | Selection option configuration, used to control the menu popup policy during selection operations.<br>Pass this parameter when you need to customize the menu popup behavior (such as forcing the menu to show or hide); <br>when omitted, MenuPolicy.DEFAULT is used by default, following the system default menu popup policy. <br>For the applicable scenarios of each MenuPolicy value, see the SelectionOptions object description.<br>**Since:** 12 |
+| options | [SelectionOptions](arkts-arkui-common-comp-selectionoptions-i.md) | No | Selection option configuration, used to control the menu popup policy during selection operations. <br>Pass this parameter when you need to customize the menu popup behavior (such as forcing the menu to show or hide); <br>when omitted, MenuPolicy.DEFAULT is used by default, following the system default menu popup policy. <br>For the applicable scenarios of each MenuPolicy value, see the SelectionOptions object description.<br>**Since:** 12 |
 
 ## setStyledPlaceholder
 

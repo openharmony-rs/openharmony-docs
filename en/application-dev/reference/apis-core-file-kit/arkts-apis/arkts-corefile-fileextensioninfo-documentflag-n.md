@@ -10,6 +10,8 @@ Defines the values of **mode** used in **FileInfo**.
 
 **Deprecated since:** 23
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-fileExtensionInfo-namespace DocumentFlag--><!--Device-fileExtensionInfo-namespace DocumentFlag-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService

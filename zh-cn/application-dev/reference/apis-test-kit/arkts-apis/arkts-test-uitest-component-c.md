@@ -615,8 +615,6 @@ async function demo() {
 }
 ```
 
-<a id="inputtext1"></a>
-
 ## inputText
 
 ```TypeScript
@@ -670,8 +668,6 @@ async function demo() {
   await text.inputText('123');
 }
 ```
-
-<a id="inputtext2"></a>
 
 ## inputText
 
@@ -1256,8 +1252,6 @@ async function demo() {
 }
 ```
 
-<a id="scrollsearch1"></a>
-
 ## scrollSearch
 
 ```TypeScript
@@ -1311,8 +1305,6 @@ async function demo() {
   let button = await scrollBar.scrollSearch(ON.text('next page'));
 }
 ```
-
-<a id="scrollsearch2"></a>
 
 ## scrollSearch
 

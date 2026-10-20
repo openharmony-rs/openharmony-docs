@@ -6,8 +6,6 @@ declare class AnimatorAttribute extends CommonMethod<AnimatorAttribute>
 
 Defines AnimatorAttribute.
 
-@extends CommonMethod<AnimatorAttribute>
-
 **Inheritance/Implementation:** AnimatorAttribute extends CommonMethod&lt;AnimatorAttribute&gt;
 
 **Since:** 7

@@ -6,8 +6,6 @@
 import { sendableImage } from '@kit.ImageKit';
 ```
 
-<a id="createimagesource1"></a>
-
 ## createImageSource
 
 ```TypeScript
@@ -71,7 +69,7 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uri | string | Yes | Image path. Currently, only the application sandbox path is supported.<br>The following formats are supported: .jpg,png,gif,bmp,webp,dng SVG, and ico. |
+| uri | string | Yes | Image path. Currently, only the application sandbox path is supported. <br>The following formats are supported: .jpg,png,gif,bmp,webp,dng SVG, and ico. |
 
 **Return value:**
 
@@ -90,8 +88,6 @@ async function CreateImageSource(context : Context) {
 }
 ```
 
-
-<a id="createimagesource2"></a>
 
 ## createImageSource
 
@@ -136,8 +132,6 @@ async function CreateImageSource(context : Context) {
 }
 ```
 
-
-<a id="createimagesource3"></a>
 
 ## createImageSource
 

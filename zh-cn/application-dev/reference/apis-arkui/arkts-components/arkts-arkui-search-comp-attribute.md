@@ -1042,8 +1042,6 @@ onPaste(callback: OnPasteCallback)
 | --- | --- | --- | --- |
 | callback | OnPasteCallback | 是 | Executed when a paste operation is performed.Callback used to return the pasted text content.<br>**适用版本：** 18 |
 
-<a id="onsubmit1"></a>
-
 ## onSubmit
 
 ```TypeScript
@@ -1065,8 +1063,6 @@ onSubmit(callback: Callback<string>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | Callback&lt;string&gt; | 是 | 搜索提交回调，其返回值为当前搜索框中输入的文本内容。<br>**适用版本：** 18 |
-
-<a id="onsubmit2"></a>
 
 ## onSubmit
 

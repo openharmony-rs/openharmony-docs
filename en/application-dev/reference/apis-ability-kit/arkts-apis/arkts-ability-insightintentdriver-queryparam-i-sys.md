@@ -6,8 +6,6 @@ interface QueryParam
 
 Intent entity query parameters, used to filter intent entities on the device that meet matching conditions.
 
-@typedef QueryParam
-
 **Since:** 26.0.0
 
 <!--Device-insightIntentDriver-interface QueryParam--><!--Device-insightIntentDriver-interface QueryParam-End-->

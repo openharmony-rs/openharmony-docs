@@ -38,16 +38,20 @@ Creates a **SecurityUIExtensionComponent** component to embed and display the UI
 
 ## Summary
 
-### Interfaces
+<!--Del-->
+### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
 | [SecurityUIExtensionOptions](arkts-arkui-securityuiextensioncomponent-comp-securityuiextensionoptions-i-sys.md) | Defines the options to be passed when constructing **SecurityUIExtensionComponent**. |
 | [SecurityUIExtensionProxy](arkts-arkui-securityuiextensioncomponent-comp-securityuiextensionproxy-i-sys.md) | Used to send data to the launched **Ability** and subscribe to and unsubscribe from event callbacks after a successful connection is established. |
 | [TerminationInfo](arkts-arkui-securityuiextensioncomponent-comp-terminationinfo-i-sys.md) | Defines the result returned when the started **UIExtensionAbility** exits normally. |
+<!--DelEnd-->
 
-### Enums
+<!--Del-->
+### Enums(System API)
 
 | Name | Description |
 | --- | --- |
 | [SecurityDpiFollowStrategy](arkts-arkui-securityuiextensioncomponent-comp-securitydpifollowstrategy-e-sys.md) | Defines the enum of the resolution following strategy for **SecurityUIExtensionComponent**. |
+<!--DelEnd-->

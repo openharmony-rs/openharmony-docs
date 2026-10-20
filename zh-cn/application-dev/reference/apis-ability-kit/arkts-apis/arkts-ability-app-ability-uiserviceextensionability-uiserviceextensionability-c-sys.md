@@ -221,7 +221,7 @@ class UIServiceExt extends UIServiceExtensionAbility {
 onRequest(want: Want, startId: number): void
 ```
 
-请求拉起UIServiceExtension服务处理。如果是[startAbility](arkts-ability-uiabilitycontext-c.md#startability1)或者[startUIServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability)拉起的服务，会在[onCreate](#oncreate)之后回调。每次拉起服务都会回调，startId会递增。
+请求拉起UIServiceExtension服务处理。如果是[startAbility](arkts-ability-uiabilitycontext-c.md#startability)或者[startUIServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability)拉起的服务，会在[onCreate](#oncreate)之后回调。每次拉起服务都会回调，startId会递增。
 
 **起始版本：** 14
 

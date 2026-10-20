@@ -6,8 +6,6 @@
 import { wantAgent, WantAgent } from '@kit.AbilityKit';
 ```
 
-<a id="getoperationtype1"></a>
-
 ## getOperationType
 
 ```TypeScript
@@ -109,8 +107,6 @@ try {
 }
 ```
 
-
-<a id="getoperationtype2"></a>
 
 ## getOperationType
 

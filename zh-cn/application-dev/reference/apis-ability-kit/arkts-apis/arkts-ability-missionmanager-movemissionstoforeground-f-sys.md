@@ -6,8 +6,6 @@
 import { missionManager } from '@kit.AbilityKit';
 ```
 
-<a id="movemissionstoforeground1"></a>
-
 ## moveMissionsToForeground
 
 ```TypeScript
@@ -83,8 +81,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="movemissionstoforeground2"></a>
 
 ## moveMissionsToForeground
 
@@ -162,8 +158,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="movemissionstoforeground3"></a>
 
 ## moveMissionsToForeground
 

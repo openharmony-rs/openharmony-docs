@@ -6,8 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="queryapn1"></a>
-
 ## queryApn
 
 ```TypeScript
@@ -31,7 +29,7 @@ Queries the APN ID. This API is suitable for enterprise mobile network configura
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
-| apnInfo | Record&lt;string, string&gt; | Yes | APN information. After the setting, the system filters the APN configurations based on the specified conditions and returns the list of APN IDs that meet the conditions.<br>- **apnName**: APN identifier, which is optional. <br>- **mcc**: 3-digit mobile country code (MCC), which is optional. <br>- **mnc**: 2-digit or 3-digit mobile network code (MNC), which is optional. <br>- **apn**: access point name, which is optional. <br>- **type**: APN service type, which is optional. <br>- **user**: user name for APN authentication, which is optional. <br>- **proxy**: address of the proxy server for a common data connection, which is optional. <br>- **mmsproxy**: dedicated proxy address of the MMS service, which is optional. <br>- **authType**: authentication protocol type of the APN, which is optional. |
+| apnInfo | Record&lt;string, string&gt; | Yes | APN information. After the setting, the system filters the APN configurations based on the specified conditions and returns the list of APN IDs that meet the conditions. <br>- **apnName**: APN identifier, which is optional. <br>- **mcc**: 3-digit mobile country code (MCC), which is optional. <br>- **mnc**: 2-digit or 3-digit mobile network code (MNC), which is optional. <br>- **apn**: access point name, which is optional. <br>- **type**: APN service type, which is optional. <br>- **user**: user name for APN authentication, which is optional. <br>- **proxy**: address of the proxy server for a common data connection, which is optional. <br>- **mmsproxy**: dedicated proxy address of the MMS service, which is optional. <br>- **authType**: authentication protocol type of the APN, which is optional. |
 
 **Return value:**
 
@@ -74,8 +72,6 @@ try {
 ```
 
 
-<a id="queryapn2"></a>
-
 ## queryApn
 
 ```TypeScript
@@ -105,7 +101,7 @@ Queries the APN parameter information. This API is suitable for enterprise mobil
 
 | Type | Description |
 | --- | --- |
-| Record&lt;string, string&gt; | APN parameter information of the specified APN ID.<br>- **apnName**: APN identifier. <br>- **mcc**: 3-digit mobile country code (MCC). <br>- **mnc**: 2-digit or 3-digit mobile network code (MNC). <br>- **apn**: access point name. <br>- **type**: APN service type. <br>- **user**: user name for APN authentication. <br>- **proxy**: address of the proxy server for a common data connection. <br>- **mmsproxy**: dedicated proxy address of the MMS service. <br>- **authType**: authentication protocol type of the APN. |
+| Record&lt;string, string&gt; | APN parameter information of the specified APN ID. <br>- **apnName**: APN identifier. <br>- **mcc**: 3-digit mobile country code (MCC). <br>- **mnc**: 2-digit or 3-digit mobile network code (MNC). <br>- **apn**: access point name. <br>- **type**: APN service type. <br>- **user**: user name for APN authentication. <br>- **proxy**: address of the proxy server for a common data connection. <br>- **mmsproxy**: dedicated proxy address of the MMS service. <br>- **authType**: authentication protocol type of the APN. |
 
 **Error codes:**
 

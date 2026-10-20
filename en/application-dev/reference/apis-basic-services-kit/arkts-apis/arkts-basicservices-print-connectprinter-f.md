@@ -6,8 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="connectprinter1"></a>
-
 ## connectPrinter
 
 ```TypeScript
@@ -20,7 +18,7 @@ Connects to a printer by printer ID. This API uses an asynchronous callback to r
 
 **Required permissions:** 
 - API version 20 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
-- API versions 10 to 19: ohos.permission.MANAGE_PRINT_JOB
+- API versions 10 to 19: N/A
 
 <!--Device-print-function connectPrinter(printerId: string, callback: AsyncCallback<void>): void--><!--Device-print-function connectPrinter(printerId: string, callback: AsyncCallback<void>): void-End-->
 
@@ -38,7 +36,6 @@ Connects to a printer by printer ID. This API uses an asynchronous callback to r
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application<br>**Applicable version:** 10 - 19 |
 
 **Examples**
 
@@ -58,8 +55,6 @@ print.connectPrinter(printerId, (error: BusinessError) => {
 ```
 
 
-<a id="connectprinter2"></a>
-
 ## connectPrinter
 
 ```TypeScript
@@ -72,7 +67,7 @@ Connects to a printer by printer ID. This API uses a promise to return the resul
 
 **Required permissions:** 
 - API version 20 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
-- API versions 10 to 19: ohos.permission.MANAGE_PRINT_JOB
+- API versions 10 to 19: N/A
 
 <!--Device-print-function connectPrinter(printerId: string): Promise<void>--><!--Device-print-function connectPrinter(printerId: string): Promise<void>-End-->
 
@@ -95,7 +90,6 @@ Connects to a printer by printer ID. This API uses a promise to return the resul
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application<br>**Applicable version:** 10 - 19 |
 
 **Examples**
 

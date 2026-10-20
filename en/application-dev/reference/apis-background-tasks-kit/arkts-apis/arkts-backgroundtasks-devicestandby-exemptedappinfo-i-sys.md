@@ -6,8 +6,6 @@ export interface ExemptedAppInfo
 
 Information about an exempted application.
 
-@interface ExemptedAppInfo
-
 **Since:** 10
 
 <!--Device-deviceStandby-export interface ExemptedAppInfo--><!--Device-deviceStandby-export interface ExemptedAppInfo-End-->

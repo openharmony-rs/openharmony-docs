@@ -6,8 +6,6 @@ declare interface HorizontalAlignParam
 
 定义相对容器的水平对齐规则。
 
-@interface HorizontalAlignParam
-
 **起始版本：** 23
 
 <!--Device-unnamed-declare interface HorizontalAlignParam--><!--Device-unnamed-declare interface HorizontalAlignParam-End-->

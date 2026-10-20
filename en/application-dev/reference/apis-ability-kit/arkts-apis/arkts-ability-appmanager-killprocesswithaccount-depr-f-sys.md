@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="killprocesswithaccount1"></a>
-
 ## killProcessWithAccount
 
 ```TypeScript
@@ -62,8 +60,6 @@ appManager.killProcessWithAccount(bundleName, accountId)
 
 <!--DelEnd-->
 
-
-<a id="killprocesswithaccount2"></a>
 
 ## killProcessWithAccount
 

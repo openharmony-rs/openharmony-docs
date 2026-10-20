@@ -6,8 +6,6 @@ declare interface UIScrollableCommonEvent extends UICommonEvent
 
 用于设置滚动事件回调。
 
-@extends UICommonEvent @interface UIScrollableCommonEvent
-
 **继承/实现关系：** UIScrollableCommonEvent extends [UICommonEvent](arkts-arkui-common-comp-uicommonevent-i.md)
 
 **起始版本：** 19

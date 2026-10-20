@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="hasoperatorprivileges1"></a>
-
 ## hasOperatorPrivileges
 
 ```TypeScript
@@ -26,8 +24,8 @@ Checks whether the application (caller) has been granted the operator permission
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result, which indicates whether the application (caller) has been granted the operator permission.<br>- **true**: The application (caller) has been granted the operator permission. <br>- **false**: The application (caller) has not been granted the operator permission (no SIM card inserted or the SIM card is invalid). |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result, which indicates whether the application (caller) has been granted the operator permission. <br>- **true**: The application (caller) has been granted the operator permission. <br>- **false**: The application (caller) has not been granted the operator permission (no SIM card inserted or the SIM card is invalid). |
 
 **Error codes:**
 
@@ -51,8 +49,6 @@ sim.hasOperatorPrivileges(0, (err: BusinessError, data: boolean) => {
 ```
 
 
-<a id="hasoperatorprivileges2"></a>
-
 ## hasOperatorPrivileges
 
 ```TypeScript
@@ -71,13 +67,13 @@ Checks whether the application (caller) has been granted the operator permission
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the application (caller) has been granted the carrier permission, and the value **false** indicates the opposite.<br>- **true**: The application (caller) has been granted the operator permission. <br>- **false**: The application (caller) has not been granted the operator permission (no SIM card inserted or the SIM card is invalid). |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the application (caller) has been granted the carrier permission, and the value **false** indicates the opposite. <br>- **true**: The application (caller) has been granted the operator permission. <br>- **false**: The application (caller) has not been granted the operator permission (no SIM card inserted or the SIM card is invalid). |
 
 **Error codes:**
 

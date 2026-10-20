@@ -6,8 +6,6 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
-<a id="getuserrestricted1"></a>
-
 ## getUserRestricted
 
 ```TypeScript
@@ -72,8 +70,6 @@ try {
 }
 ```
 
-
-<a id="getuserrestricted2"></a>
 
 ## getUserRestricted
 

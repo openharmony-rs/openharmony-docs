@@ -6,8 +6,6 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
-<a id="stopusingpermission1"></a>
-
 ## stopUsingPermission
 
 ```TypeScript
@@ -35,7 +33,7 @@ This API must be used in conjunction with [startUsingPermission](arkts-ability-p
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | tokenID | number | Yes | Identity identifier of the target application. It can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to stop using. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to stop using. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
 
 **Return value:**
 
@@ -75,8 +73,6 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then((
 <!--DelEnd-->
 
 
-<a id="stopusingpermission2"></a>
-
 ## stopUsingPermission
 
 ```TypeScript
@@ -104,7 +100,7 @@ This API must be used in conjunction with [startUsingPermission](arkts-ability-p
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | tokenID | number | Yes | Identity identifier of the target application. It can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to stop using. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to stop using. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -140,8 +136,6 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: 
 
 <!--DelEnd-->
 
-
-<a id="stopusingpermission3"></a>
 
 ## stopUsingPermission
 
@@ -233,8 +227,6 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, {
 <!--DelEnd-->
 
 
-<a id="stopusingpermission4"></a>
-
 ## stopUsingPermission
 
 ```TypeScript
@@ -266,7 +258,7 @@ The pid must be the same as the pid passed into [startUsingPermission](arkts-abi
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | tokenID | number | Yes | Identity identifier of the target application. It can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The value should be an integer. Value constraint: This parameter must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to stop using. Passing an invalid value returns error code 12100001.<br>Value constraint: The permission name length cannot exceed 256 characters. |
+| permissionName | [Permissions](arkts-ability-permissions-t.md) | Yes | Name of the permission to stop using. Passing an invalid value returns error code 12100001. <br>Value constraint: The permission name length cannot exceed 256 characters. |
 | pid | number | No | Process PID of the caller. Must be the same as the pid passed to [startUsingPermission](arkts-ability-privacymanager-startusingpermission-f-sys.md). A mismatch may cause the API call to fail (error code 12100004). <br>The value should be an integer. Default value: -1, indicating no response based on process lifecycle. |
 
 **Return value:**

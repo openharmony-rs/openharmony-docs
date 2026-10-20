@@ -25,8 +25,8 @@ import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, Injec
 
 | Name | Description |
 | --- | --- |
-| [getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist1) | Obtains the accessibility application list. This API uses a promise to return the result. |
-| [getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist2) | Obtains the accessibility application list. This API uses an asynchronous callback to return the result. |
+| [getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist) | Obtains the accessibility application list. This API uses a promise to return the result. |
+| [getAccessibilityExtensionList](arkts-accessibility-accessibility-getaccessibilityextensionlist-f.md#getaccessibilityextensionlist) | Obtains the accessibility application list. This API uses an asynchronous callback to return the result. |
 | [getAccessibilityExtensionListSync](arkts-accessibility-accessibility-getaccessibilityextensionlistsync-f.md#getaccessibilityextensionlistsync) | Query the list of accessibility applications in the current system, which can be queried by criteria. |
 | [getFocusedUIAccessibilityElement](arkts-accessibility-accessibility-getfocuseduiaccessibilityelement-f.md#getfocuseduiaccessibilityelement) | Obtain the accessibility focus elements within the application. This API uses a promise to return the result. |
 | [getSeniorModeStateForSelf](arkts-accessibility-accessibility-getseniormodestateforself-f.md#getseniormodestateforself) | Checks whether the app has "senior mode" enabled. This API uses a promise to return the result. |
@@ -61,18 +61,18 @@ import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, Injec
 | [onSeniorModeStateChange](arkts-accessibility-accessibility-onseniormodestatechange-f.md#onseniormodestatechange) | Subscribes to the state changes of the senior mode. This API uses an asynchronous callback to return the result. |
 | [onSeniorModeStateChangeForSelf](arkts-accessibility-accessibility-onseniormodestatechangeforself-f.md#onseniormodestatechangeforself) | Subscribes to the "senior mode" change event of the app itself. This API uses an asynchronous callback to return the result. |
 | [onUIAccessibilityFocusChanged](arkts-accessibility-accessibility-onuiaccessibilityfocuschanged-f.md#onuiaccessibilityfocuschanged) | Subscribes to accessibility focus change events in the app. |
-| [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent1) | Sends an accessibility event. The event will be distributed to registered accessibility applications that match the event type for response. This API uses an asynchronous callback to return the result. |
-| [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent2) | Sends an accessibility event. The event will be distributed to registered accessibility extension applications that match the event type for response. This API uses a promise to return the result. |
+| [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent) | Sends an accessibility event. The event will be distributed to registered accessibility applications that match the event type for response. This API uses an asynchronous callback to return the result. |
+| [sendAccessibilityEvent](arkts-accessibility-accessibility-sendaccessibilityevent-f.md#sendaccessibilityevent) | Sends an accessibility event. The event will be distributed to registered accessibility extension applications that match the event type for response. This API uses a promise to return the result. |
 | [setSeniorModeStateForSelf](arkts-accessibility-accessibility-setseniormodestateforself-f.md#setseniormodestateforself) | Sets whether the app has "senior mode" enabled. This API uses a promise to return the result. |
-| [getAbilityLists](arkts-accessibility-accessibility-getabilitylists-f.md#getabilitylists1) | Obtains the accessibility application list. This API uses an asynchronous callback to return the result. |
-| [getAbilityLists](arkts-accessibility-accessibility-getabilitylists-f.md#getabilitylists2) | Obtains the accessibility application list. This API uses a promise to return the result. |
+| [getAbilityLists](arkts-accessibility-accessibility-getabilitylists-f.md#getabilitylists) | Obtains the accessibility application list. This API uses an asynchronous callback to return the result. |
+| [getAbilityLists](arkts-accessibility-accessibility-getabilitylists-f.md#getabilitylists) | Obtains the accessibility application list. This API uses a promise to return the result. |
 | [getCaptionsManager](arkts-accessibility-accessibility-getcaptionsmanager-f.md#getcaptionsmanager) | Obtains a **CaptionsManager** instance. |
-| [isOpenAccessibility](arkts-accessibility-accessibility-isopenaccessibility-f.md#isopenaccessibility1) | Checks whether an accessibility application is enabled. This API uses an asynchronous callback to return the result. |
-| [isOpenAccessibility](arkts-accessibility-accessibility-isopenaccessibility-f.md#isopenaccessibility2) | Checks whether an accessibility application is enabled. This API uses a promise to return the result. |
-| [isOpenTouchGuide](arkts-accessibility-accessibility-isopentouchguide-f.md#isopentouchguide1) | Checks whether touch guide mode is enabled. This API uses an asynchronous callback to return the result. |
-| [isOpenTouchGuide](arkts-accessibility-accessibility-isopentouchguide-f.md#isopentouchguide2) | Checks whether touch guide mode is enabled. This API uses a promise to return the result. |
-| [sendEvent](arkts-accessibility-accessibility-sendevent-f.md#sendevent1) | Sends an accessibility event. The event will be distributed to registered accessibility extension applications that match the event type for response. This API uses an asynchronous callback to return the result. |
-| [sendEvent](arkts-accessibility-accessibility-sendevent-f.md#sendevent2) | Sends an accessibility event. The event will be distributed to registered accessibility extension applications that match the event type for response. This API uses a promise to return the result. |
+| [isOpenAccessibility](arkts-accessibility-accessibility-isopenaccessibility-f.md#isopenaccessibility) | Checks whether an accessibility application is enabled. This API uses an asynchronous callback to return the result. |
+| [isOpenAccessibility](arkts-accessibility-accessibility-isopenaccessibility-f.md#isopenaccessibility) | Checks whether an accessibility application is enabled. This API uses a promise to return the result. |
+| [isOpenTouchGuide](arkts-accessibility-accessibility-isopentouchguide-f.md#isopentouchguide) | Checks whether touch guide mode is enabled. This API uses an asynchronous callback to return the result. |
+| [isOpenTouchGuide](arkts-accessibility-accessibility-isopentouchguide-f.md#isopentouchguide) | Checks whether touch guide mode is enabled. This API uses a promise to return the result. |
+| [sendEvent](arkts-accessibility-accessibility-sendevent-f.md#sendevent) | Sends an accessibility event. The event will be distributed to registered accessibility extension applications that match the event type for response. This API uses an asynchronous callback to return the result. |
+| [sendEvent](arkts-accessibility-accessibility-sendevent-f.md#sendevent) | Sends an accessibility event. The event will be distributed to registered accessibility extension applications that match the event type for response. This API uses a promise to return the result. |
 
 ### Classes
 

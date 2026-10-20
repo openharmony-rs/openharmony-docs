@@ -6,8 +6,6 @@
 import { wantAgent, WantAgent } from '@kit.AbilityKit';
 ```
 
-<a id="getwant1"></a>
-
 ## getWant
 
 ```TypeScript
@@ -41,8 +39,80 @@ Obtains the Want in a WantAgent object. This API uses an asynchronous callback t
 | [16000015](../errorcode-ability.md#16000015-service-timeout) | Service timeout. |
 | [16000151](../errorcode-ability.md#16000151-invalid-wantagent-object) | Invalid wantAgent object. |
 
+<!--Del-->
+**Examples**
 
-<a id="getwant2"></a>
+```TypeScript
+import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Store the created WantAgent instance.
+let wantAgentData: _WantAgent;
+// WantAgentInfo object.
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters:
+      {
+        mykey0: 2222,
+        mykey1: [1, 2, 3],
+        mykey2: '[1, 2, 3]',
+        mykey3: 'ssssssssssssssssssssssssss',
+        mykey4: [false, true, false],
+        mykey5: ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        mykey6: true,
+      }
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+  wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+};
+
+// Callback for creating a WantAgent instance.
+let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
+  if (err) {
+    console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+  } else {
+    wantAgentData = data;
+  }
+  // Callback for obtaining the Want data.
+  let getWantCallback = (err: BusinessError, data: Want) => {
+    if (err.code) {
+      console.error(`Failed to getWant. Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info(`getWant success, data: ${JSON.stringify(data)}.`);
+    }
+  }
+  try {
+    // Obtain the Want data of the WantAgent object.
+    wantAgent.getWant(wantAgentData, getWantCallback);
+  } catch(err) {
+    let code = (err as BusinessError).code;
+    let msg = (err as BusinessError).message;
+    console.error(`getWant failed, code: ${code}, message: ${msg}.`);
+  }
+}
+
+try {
+  // Create a WantAgent instance.
+  wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
+} catch(err) {
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`getWantAgent failed, code: ${code}, message: ${msg}.`);
+}
+```
+
+<!--DelEnd-->
+
 
 ## getWant
 
@@ -81,3 +151,73 @@ Obtains the Want in a WantAgent object. This API uses a promise to return the re
 | [16000007](../errorcode-ability.md#16000007-service-unresponsive) | Service busy. There are concurrent tasks. Try again later. |
 | [16000015](../errorcode-ability.md#16000015-service-timeout) | Service timeout. |
 | [16000151](../errorcode-ability.md#16000151-invalid-wantagent-object) | Invalid wantAgent object. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Store the created WantAgent instance.
+let wantAgentData: _WantAgent;
+// WantAgentInfo object.
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters:
+      {
+        mykey0: 2222,
+        mykey1: [1, 2, 3],
+        mykey2: '[1, 2, 3]',
+        mykey3: 'ssssssssssssssssssssssssss',
+        mykey4: [false, true, false],
+        mykey5: ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        mykey6: true,
+      }
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+  wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+};
+
+// Callback for creating a WantAgent instance.
+let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
+  if (err) {
+    console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+  } else {
+    wantAgentData = data;
+  }
+  try {
+    // Obtain the Want data of the WantAgent object.
+    wantAgent.getWant(wantAgentData).then((data)=>{
+      console.info(`getWant success, data: ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError)=>{
+      console.error(`getWant failed, code: ${err.code}, message: ${err.message}.`);
+    });
+  } catch(err){
+    let code = (err as BusinessError).code;
+    let msg = (err as BusinessError).message;
+    console.error(`getWant failed, code: ${code}, message: ${msg}.`);
+  }
+}
+
+try {
+  // Create a WantAgent instance.
+  wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
+} catch(err) {
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`getWantAgent failed, code: ${code}, message: ${msg}.`);
+}
+```
+
+<!--DelEnd-->

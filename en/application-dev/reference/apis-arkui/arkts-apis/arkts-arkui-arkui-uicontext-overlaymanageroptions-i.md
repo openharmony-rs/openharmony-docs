@@ -6,8 +6,6 @@ export interface OverlayManagerOptions
 
 Provides the parameters used for initializing [OverlayManager](arkts-arkui-arkui-uicontext-uicontext-c.md).
 
-@interface OverlayManagerOptions
-
 **Since:** 15
 
 <!--Device-unnamed-export interface OverlayManagerOptions--><!--Device-unnamed-export interface OverlayManagerOptions-End-->

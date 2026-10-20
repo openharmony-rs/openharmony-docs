@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="movemissiontofront1"></a>
-
 ## moveMissionToFront
 
 ```TypeScript
@@ -61,8 +59,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="movemissiontofront2"></a>
 
 ## moveMissionToFront
 
@@ -119,8 +115,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="movemissiontofront3"></a>
 
 ## moveMissionToFront
 

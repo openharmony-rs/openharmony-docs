@@ -6,8 +6,6 @@ export interface Environment extends SceneResource
 
 环境类型，继承自SceneResource。
 
-@extends SceneResource @interface Environment
-
 **继承/实现关系：** Environment extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **起始版本：** 12

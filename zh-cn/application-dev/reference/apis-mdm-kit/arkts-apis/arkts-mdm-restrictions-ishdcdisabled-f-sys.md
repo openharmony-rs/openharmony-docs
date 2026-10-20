@@ -6,8 +6,6 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
-<a id="ishdcdisabled1"></a>
-
 ## isHdcDisabled
 
 ```TypeScript
@@ -20,7 +18,7 @@ function isHdcDisabled(admin: Want, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy2)(admin: Want | null, feature: FeatureForDevice)
+**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy)(admin: Want | null, feature: FeatureForDevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -74,8 +72,6 @@ restrictions.isHdcDisabled(wantTemp, (err, result) => {
 <!--DelEnd-->
 
 
-<a id="ishdcdisabled2"></a>
-
 ## isHdcDisabled
 
 ```TypeScript
@@ -88,7 +84,7 @@ function isHdcDisabled(admin: Want): Promise<boolean>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy2)(admin: Want | null, feature: FeatureForDevice)
+**替代接口：** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy)(admin: Want | null, feature: FeatureForDevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 

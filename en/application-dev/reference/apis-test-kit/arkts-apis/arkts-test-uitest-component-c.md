@@ -615,8 +615,6 @@ async function demo() {
 }
 ```
 
-<a id="inputtext1"></a>
-
 ## inputText
 
 ```TypeScript
@@ -670,8 +668,6 @@ async function demo() {
   await text.inputText('123');
 }
 ```
-
-<a id="inputtext2"></a>
 
 ## inputText
 
@@ -1256,8 +1252,6 @@ async function demo() {
 }
 ```
 
-<a id="scrollsearch1"></a>
-
 ## scrollSearch
 
 ```TypeScript
@@ -1311,8 +1305,6 @@ async function demo() {
   let button = await scrollBar.scrollSearch(ON.text('next page'));
 }
 ```
-
-<a id="scrollsearch2"></a>
 
 ## scrollSearch
 
@@ -1389,7 +1381,7 @@ Scrolls to the bottom of this component. This API is applicable to components th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| speed | number | No | Swipe speed.<br>Value range:[200, 40000] <br>Unit: px/s. <br>If the value is a non-negative number that is not within the specified range or is null or undefined, the default value 600 is used. <br>Throws error code 401 if negative. <br>Default value: 600 |
+| speed | number | No | Swipe speed. <br>Value range:[200, 40000] <br>Unit: px/s. <br>If the value is a non-negative number that is not within the specified range or is null or undefined, the default value 600 is used. <br>Throws error code 401 if negative. <br>Default value: 600 |
 
 **Return value:**
 
@@ -1440,7 +1432,7 @@ Scrolls to the top of this component. This API is applicable to components that 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| speed | number | No | Swipe speed.<br>Value range:[200, 40000] <br>Unit: px/s. <br>If the value is a non-negative number that is not within the specified range or is null or undefined, the default value 600 is used. <br>Throws error code 401 if negative. <br>Default value: 600 |
+| speed | number | No | Swipe speed. <br>Value range:[200, 40000] <br>Unit: px/s. <br>If the value is a non-negative number that is not within the specified range or is null or undefined, the default value 600 is used. <br>Throws error code 401 if negative. <br>Default value: 600 |
 
 **Return value:**
 

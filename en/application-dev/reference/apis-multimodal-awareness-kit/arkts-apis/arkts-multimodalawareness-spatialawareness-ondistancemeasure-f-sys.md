@@ -40,7 +40,7 @@ Subscribe to distance measurement result data.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function can not work correctly due to<br> limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function can not work correctly due to <br> limited device capabilities. |
 | [35100001](../errorcode-spatialAwareness.md#35100001-service-exception) | Service exception. |
 | [35100002](../errorcode-spatialAwareness.md#35100002-subscription-failed) | Subscription failed. |
 | [35100004](../errorcode-spatialAwareness.md#35100004-invalid-parameter) | Parameter invalid. |

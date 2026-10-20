@@ -6,8 +6,6 @@ declare class InsightIntentEntryExecutor<T>
 
 The class of insight intent entry executor.
 
-@class InsightIntentEntryExecutor<T>
-
 **Since:** 20
 
 <!--Device-unnamed-declare class InsightIntentEntryExecutor<T>--><!--Device-unnamed-declare class InsightIntentEntryExecutor<T>-End-->

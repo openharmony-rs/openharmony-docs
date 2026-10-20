@@ -20,7 +20,7 @@ Triggered before the menu is displayed after the text selection area changes. Me
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| menuItems | Array&lt;[TextMenuItem](arkts-arkui-textmenuitem-i.md)&gt; | Yes | Menu items to be displayed.<br>**NOTE:** <br>Modifications to the name, icon, and shortcut key hint of the default menu items do not take effect. |
+| menuItems | Array&lt;[TextMenuItem](arkts-arkui-textmenuitem-i.md)&gt; | Yes | Menu items to be displayed. <br>**NOTE:** <br>Modifications to the name, icon, and shortcut key hint of the default menu items do not take effect. |
 
 **Return value:**
 

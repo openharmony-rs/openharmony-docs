@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="enabledistributedbybundle1"></a>
-
 ## enableDistributedByBundle
 
 ```TypeScript
@@ -37,8 +35,31 @@ function enableDistributedByBundle(bundle: BundleOption, enable: boolean, callba
 | enable | boolean | 是 | 是否支持。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 应用程序是否支持分布式通知的回调函数。 |
 
+<!--Del-->
+**示例**
 
-<a id="enabledistributedbybundle2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let enableDistributedByBundleCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("enableDistributedByBundle failed " + JSON.stringify(err));
+  } else {
+    console.info("enableDistributedByBundle success");
+  }
+};
+
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+
+let enable: boolean = true;
+
+Notification.enableDistributedByBundle(bundle, enable, enableDistributedByBundleCallback);
+```
+
+<!--DelEnd-->
+
 
 ## enableDistributedByBundle
 
@@ -74,3 +95,24 @@ function enableDistributedByBundle(bundle: BundleOption, enable: boolean): Promi
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let enable: boolean = true;
+
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+
+Notification.enableDistributedByBundle(bundle, enable).then(() => {
+  console.info("enableDistributedByBundle success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`enableDistributedByBundle failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

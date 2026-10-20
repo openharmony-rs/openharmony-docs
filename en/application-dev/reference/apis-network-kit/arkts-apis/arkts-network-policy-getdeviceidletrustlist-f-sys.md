@@ -6,8 +6,6 @@
 import { policy } from '@kit.NetworkKit';
 ```
 
-<a id="getdeviceidletrustlist1"></a>
-
 ## getDeviceIdleTrustlist
 
 ```TypeScript
@@ -57,8 +55,6 @@ policy.getDeviceIdleTrustlist((error: BusinessError, data: number[]) => {
 
 <!--DelEnd-->
 
-
-<a id="getdeviceidletrustlist2"></a>
 
 ## getDeviceIdleTrustlist
 

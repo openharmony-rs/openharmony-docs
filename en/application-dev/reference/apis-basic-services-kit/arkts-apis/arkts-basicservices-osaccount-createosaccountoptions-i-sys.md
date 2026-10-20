@@ -56,6 +56,26 @@ Forbidden list of the preinstalled applications, which cannot be installed on th
 
 **System API:** This is a system API.
 
+## localId
+
+```TypeScript
+localId?: number
+```
+
+ID of the OS account to create. If this parameter is not specified, the system automatically allocates an ID. The value should be an integer.
+
+**Type:** number
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-CreateOsAccountOptions-localId?: int--><!--Device-CreateOsAccountOptions-localId?: int-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
 ## shortName
 
 ```TypeScript

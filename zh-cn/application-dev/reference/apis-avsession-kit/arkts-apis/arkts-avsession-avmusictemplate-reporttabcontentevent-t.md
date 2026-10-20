@@ -6,8 +6,6 @@ type ReportTabContentEvent = (tabId: string, tabContent: MediaTabContent) => voi
 
 标签页内容上报事件。
 
-@typedef { function } ReportTabContentEvent
-
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。

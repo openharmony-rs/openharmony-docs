@@ -6,8 +6,6 @@ export type ContinuableInfo = _ContinuableInfo
 
 Continuable information corresponding to ability.
 
-@typedef { _ContinuableInfo }
-
 **Type:** _ContinuableInfo
 
 **Since:** 10

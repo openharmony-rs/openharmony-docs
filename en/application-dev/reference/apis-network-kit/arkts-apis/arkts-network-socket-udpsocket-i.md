@@ -18,8 +18,6 @@ Defines a UDP socket connection. Before calling UDPSocket APIs, you need to call
 import { socket } from '@kit.NetworkKit';
 ```
 
-<a id="bind1"></a>
-
 ## bind
 
 ```TypeScript
@@ -40,7 +38,7 @@ Binds the IP address and port number. The port number can be customized or rando
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | Yes | Local address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | Yes | Local address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. |
 
 **Error codes:**
@@ -70,8 +68,6 @@ udp.bind(bindAddr, (err: BusinessError) => {
 });
 ```
 
-<a id="bind2"></a>
-
 ## bind
 
 ```TypeScript
@@ -92,7 +88,7 @@ Binds the IP address and port number. The port number can be customized or rando
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | Yes | Local address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | Yes | Local address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
 
 **Return value:**
 
@@ -124,8 +120,6 @@ udp.bind(bindAddr).then(() => {
   console.error('bind fail');
 });
 ```
-
-<a id="close1"></a>
 
 ## close
 
@@ -170,8 +164,6 @@ udp.close((err: BusinessError) => {
   console.info('close success');
 })
 ```
-
-<a id="close2"></a>
 
 ## close
 
@@ -237,7 +229,7 @@ Obtains the local socket address of a **UDPSocket** connection. This API uses a 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | Promise used to return the result. |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Promise used to return the result. |
 
 **Error codes:**
 
@@ -281,11 +273,11 @@ Obtains the UDPSocket file descriptor. This API uses a promise to return the res
 
 > **NOTE:** 
 > 
-> - This API can be called only after [bind](#bind1) is successfully called.
+> - This API can be called only after [bind](#bind) is successfully called.
 > 
 > - This API returns **-1** in abnormal cases such as bind exceptions or socket closed (for example, after close is called).
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close1) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 23
 
@@ -330,8 +322,6 @@ udp.bind(bindAddr)
   console.error('bind fail');
 });
 ```
-
-<a id="getstate1"></a>
 
 ## getState
 
@@ -391,8 +381,6 @@ udp.bind(bindAddr, (err: BusinessError) => {
   })
 })
 ```
-
-<a id="getstate2"></a>
 
 ## getState
 
@@ -514,7 +502,7 @@ Unsubscribes from **listening** events or **close** events of the **UDPSocket** 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'listening' &#124; 'close' | Yes | Event type.<br>- **listening**: data packet message event. <br>- **close**: close event. |
+| type | 'listening' &#124; 'close' | Yes | Event type. <br>- **listening**: data packet message event. <br>- **close**: close event. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | Callback used to return the result. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events. |
 
 **Examples**
@@ -688,8 +676,6 @@ udp.on('error', (err: BusinessError) => {
 });
 ```
 
-<a id="send1"></a>
-
 ## send
 
 ```TypeScript
@@ -698,7 +684,7 @@ send(options: UDPSendOptions, callback: AsyncCallback<void>): void
 
 Sends data over a UDP socket connection. This API uses an asynchronous callback to return the result.
 
-Before sending data, call [UDPSocket.bind()](#bind1) to bind the IP address and port. Call the API in the worker thread or taskpool thread as this operation is time-consuming.
+Before sending data, call [UDPSocket.bind()](#bind) to bind the IP address and port. Call the API in the worker thread or taskpool thread as this operation is time-consuming.
 
 **Since:** 7
 
@@ -811,8 +797,6 @@ udp.send(sendOptions, (err: BusinessError) => {
 });
 ```
 
-<a id="send2"></a>
-
 ## send
 
 ```TypeScript
@@ -821,7 +805,7 @@ send(options: UDPSendOptions): Promise<void>
 
 Sends data over a UDP socket connection. This API uses a promise to return the result.
 
-Before sending data, call [UDPSocket.bind()](#bind1) to bind the IP address and port. Call the API in the worker thread or taskpool thread as this operation is time-consuming.
+Before sending data, call [UDPSocket.bind()](#bind) to bind the IP address and port. Call the API in the worker thread or taskpool thread as this operation is time-consuming.
 
 **Since:** 7
 
@@ -933,8 +917,6 @@ udp.send(sendOptions).then(() => {
 });
 ```
 
-<a id="setextraoptions1"></a>
-
 ## setExtraOptions
 
 ```TypeScript
@@ -1003,8 +985,6 @@ udp.bind(bindAddr, (err: BusinessError) => {
   })
 })
 ```
-
-<a id="setextraoptions2"></a>
 
 ## setExtraOptions
 

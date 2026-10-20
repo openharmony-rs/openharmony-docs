@@ -73,3 +73,28 @@ Element name information when the AbilityStage is created.
 <!--Device-AbilityStageContext-launchElement?: ElementName--><!--Device-AbilityStageContext-launchElement?: ElementName-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Examples**
+
+```TypeScript
+import { AbilityStage } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class MyAbilityStage extends AbilityStage {
+  onCreate() {
+    // Obtain the AbilityStageContext context.
+    let abilityStageContext = this.context;
+    // Obtain the current module name.
+    let name = abilityStageContext.currentHapModuleInfo.name;
+    // Obtain the current language.
+    let language = abilityStageContext.config.language;
+    // Obtain the ElementName when the AbilityStage is created.
+    let elementName = abilityStageContext.launchElement;
+    if (elementName) {
+      hilog.info(0x0000, 'testTag', 'bundleName: %{public}s', elementName.bundleName);
+      hilog.info(0x0000, 'testTag', 'moduleName: %{public}s', elementName.moduleName);
+      hilog.info(0x0000, 'testTag', 'abilityName: %{public}s', elementName.abilityName);
+    }
+  }
+}
+```

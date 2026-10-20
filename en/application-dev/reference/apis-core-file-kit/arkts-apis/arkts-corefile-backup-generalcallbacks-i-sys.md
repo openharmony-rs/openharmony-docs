@@ -6,8 +6,6 @@ interface GeneralCallbacks
 
 General callbacks for both backup and restore procedure. The backup service will notify the client by these callbacks.
 
-@interface GeneralCallbacks
-
 **Since:** 10
 
 <!--Device-backup-interface GeneralCallbacks--><!--Device-backup-interface GeneralCallbacks-End-->

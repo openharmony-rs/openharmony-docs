@@ -31,8 +31,6 @@ declare class CanvasRenderingContext2D extends CanvasRenderer
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -101,8 +99,6 @@ struct LengthMetricsUnitDemo {
 }
 ```
 
-<a id="constructor2"></a>
-
 ## constructor
 
 ```TypeScript
@@ -128,7 +124,7 @@ Creates a **CanvasRenderingContext2D** object, allowing for initial configuratio
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | settings | [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md) | No | Settings of the **CanvasRenderingContext2D** object. Pass this parameter when advanced configurations such as anti-aliasing need to be enabled. If not passed, the default configuration (anti-aliasing disabled) is used. For details, see [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md). <br>If abnormal values **undefined** and **null** are passed in, the default value of [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md) is used. |
-| unit | LengthMetricsUnit | No | Unit mode of the **CanvasRenderingContext2D** object. The configuration cannot be changed after being set. **DEFAULT**: default vp unit, suitable for most scenarios. **PX**: pixel unit, suitable for scenarios requiring precise pixel control.<br>If abnormal values **undefined**, **NaN**, and **Infinity** are passed in, the default value is used. <br>Default value: **DEFAULT** |
+| unit | LengthMetricsUnit | No | Unit mode of the **CanvasRenderingContext2D** object. The configuration cannot be changed after being set. **DEFAULT**: default vp unit, suitable for most scenarios. **PX**: pixel unit, suitable for scenarios requiring precise pixel control. <br>If abnormal values **undefined**, **NaN**, and **Infinity** are passed in, the default value is used. <br>Default value: **DEFAULT** |
 
 **Examples**
 
@@ -144,7 +140,7 @@ Obtains a **CanvasRenderingContext2D** object from a **DrawingRenderingContext**
 
 > **NOTE:** 
 > 
-> - The **CanvasRenderingContext2D** object obtained via this API cannot be used as a parameter to create a [Canvas](arkts-arkui-canvas-comp.md)component. Otherwise, the application crashes.
+> - The **CanvasRenderingContext2D** object obtained via this API cannot be used as a parameter to create a [Canvas](arkts-arkui-canvas-comp.md#canvas)component. Otherwise, the application crashes.
 > 
 > - If the input **DrawingRenderingContext** object is not bound to a **Canvas** component,an error code is returned.
 
@@ -162,8 +158,8 @@ Obtains a **CanvasRenderingContext2D** object from a **DrawingRenderingContext**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| drawingContext | [DrawingRenderingContext](arkts-arkui-canvas-comp-drawingrenderingcontext-c.md) | Yes | A **DrawingRenderingContext** object.<br>The abnormal value **undefined** or **null** is treated as an invalid value. |
-| options | [RenderingContextOptions](arkts-arkui-canvas-comp-renderingcontextoptions-i.md) | No | Configuration options of the rendering context.<br>The abnormal value **undefined** or **null** is treated as the default value. <br>Default value: { antialias: false } |
+| drawingContext | [DrawingRenderingContext](arkts-arkui-canvas-comp-drawingrenderingcontext-c.md) | Yes | A **DrawingRenderingContext** object. <br>The abnormal value **undefined** or **null** is treated as an invalid value. |
+| options | [RenderingContextOptions](arkts-arkui-canvas-comp-renderingcontextoptions-i.md) | No | Configuration options of the rendering context. <br>The abnormal value **undefined** or **null** is treated as the default value. <br>Default value: { antialias: false } |
 
 **Return value:**
 
@@ -606,8 +602,8 @@ Creates a data URL that contains a representation of an image. This API involves
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | string | No | Used to specify the image format.<br>Available options: **"image/png"** (lossless compression, suitable for scenarios requiring precise pixels), **"image/jpeg"** (lossy compression, suitable for photo-like images), **"image/webp"** (efficient compression, suitable for network transmission scenarios). <br>If abnormal values **undefined** and **null** are passed in, the default value is used. <br>Default value: **image/png** |
-| quality | any | No | When the image format is set to **image/jpeg** or **image/webp**, specifies the image quality in the range from 0 to 1. 0-0.5 is suitable for fast transmission or low-bandwidth scenarios, 0.6-0.8 is suitable for common scenarios, and 0.9-1.0 is suitable for high-quality requirements. If the value is out of range, the default value 0.92 is used.<br>If abnormal values **undefined**, **null**, **NaN**, and **Infinity** are passed in, the default value is used. <br>Default value: **0.92** |
+| type | string | No | Used to specify the image format. <br>Available options: **"image/png"** (lossless compression, suitable for scenarios requiring precise pixels), **"image/jpeg"** (lossy compression, suitable for photo-like images), **"image/webp"** (efficient compression, suitable for network transmission scenarios). <br>If abnormal values **undefined** and **null** are passed in, the default value is used. <br>Default value: **image/png** |
+| quality | any | No | When the image format is set to **image/jpeg** or **image/webp**, specifies the image quality in the range from 0 to 1. 0-0.5 is suitable for fast transmission or low-bandwidth scenarios, 0.6-0.8 is suitable for common scenarios, and 0.9-1.0 is suitable for high-quality requirements. If the value is out of range, the default value 0.92 is used. <br>If abnormal values **undefined**, **null**, **NaN**, and **Infinity** are passed in, the default value is used. <br>Default value: **0.92** |
 
 **Return value:**
 
@@ -674,7 +670,7 @@ Default value: **null**
 readonly height: number
 ```
 
-Component height.
+Component height of **CanvasRenderingContext2D**.
 
 Default unit: vp
 
@@ -698,7 +694,7 @@ Default unit: vp
 readonly width: number
 ```
 
-Component width.
+Component width of **CanvasRenderingContext2D**.
 
 Default unit: vp
 

@@ -20,8 +20,6 @@ class SessionRestore
 import { backup } from '@kit.CoreFileKit';
 ```
 
-<a id="appendbundles1"></a>
-
 ## appendBundles
 
 ```TypeScript
@@ -161,8 +159,6 @@ async function appendBundles() {
 ```
 
 <!--DelEnd-->
-
-<a id="appendbundles2"></a>
 
 ## appendBundles
 
@@ -314,7 +310,7 @@ cancel(bundleName: string): number
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 <!--Del-->
 **示例**
@@ -789,8 +785,6 @@ async function getRestoreCompatibilityInfo() {
 
 <!--DelEnd-->
 
-<a id="getfilehandle1"></a>
-
 ## getFileHandle
 
 ```TypeScript
@@ -894,8 +888,6 @@ async function getFileHandle() {
 ```
 
 <!--DelEnd-->
-
-<a id="getfilehandle2"></a>
 
 ## getFileHandle
 
@@ -1401,8 +1393,6 @@ async function testMigrateFile() {
 
 <!--DelEnd-->
 
-<a id="publishfile1"></a>
-
 ## publishFile
 
 ```TypeScript
@@ -1518,8 +1508,6 @@ g_session = createSessionRestore();
 ```
 
 <!--DelEnd-->
-
-<a id="publishfile2"></a>
 
 ## publishFile
 
@@ -1664,7 +1652,7 @@ release(): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13600001 | IPC error |
 | 13900001 | Operation not permitted |
 | 13900005 | I/O error |

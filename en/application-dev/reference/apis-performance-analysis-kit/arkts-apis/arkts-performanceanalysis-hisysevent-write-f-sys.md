@@ -6,8 +6,6 @@
 import { hiSysEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="write1"></a>
-
 ## write
 
 ```TypeScript
@@ -88,8 +86,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="write2"></a>
-
 ## write
 
 ```TypeScript
@@ -111,7 +107,7 @@ Writes event information to the event file. This API uses an asynchronous callba
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | info | [SysEventInfo](arkts-performanceanalysis-hisysevent-syseventinfo-i-sys.md) | Yes | System event information. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to process the received return value.<br>- Value **0**: The event verification is successful, and the event will be written to the event file asynchronously. <br>- A value greater than **0**: Invalid parameters are present in the event, and the event will be written to the event file asynchronously after the invalid parameters are ignored. <br>- A value smaller than **0**: The event parameter verification fails, and the event will not be written to the event file. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to process the received return value. <br>- Value **0**: The event verification is successful, and the event will be written to the event file asynchronously. <br>- A value greater than **0**: Invalid parameters are present in the event, and the event will be written to the event file asynchronously after the invalid parameters are ignored. <br>- A value smaller than **0**: The event parameter verification fails, and the event will not be written to the event file. |
 
 **Error codes:**
 

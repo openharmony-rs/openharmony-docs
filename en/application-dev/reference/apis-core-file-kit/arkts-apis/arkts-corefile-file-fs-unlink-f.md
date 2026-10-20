@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function unlink(path: string): Promise<void>
 ```
 
-Removes a file. This API uses a promise to return the result.
+Deletes a single file. This method cannot be used to delete a directory. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -55,15 +55,13 @@ Removes a file. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
-<a id="unlink2"></a>
-
 ## unlink
 
 ```TypeScript
 declare function unlink(path: string, callback: AsyncCallback<void>): void
 ```
 
-Removes a file. This API uses an asynchronous callback to return the result.
+Deletes a single file. This method cannot be used to delete a directory. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -78,7 +76,7 @@ Removes a file. This API uses an asynchronous callback to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | path | string | Yes | Application sandbox path of the file. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback invoked immediately after the file is removed. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the file is deleted successfully, <b>err</b> is <b>undefined</b>; otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 

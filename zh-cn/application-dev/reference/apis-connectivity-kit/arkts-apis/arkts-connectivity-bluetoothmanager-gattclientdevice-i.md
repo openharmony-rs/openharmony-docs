@@ -162,8 +162,6 @@ try {
 }
 ```
 
-<a id="getdevicename1"></a>
-
 ## getDeviceName
 
 ```TypeScript
@@ -221,8 +219,6 @@ try {
 }
 ```
 
-<a id="getdevicename2"></a>
-
 ## getDeviceName
 
 ```TypeScript
@@ -278,8 +274,6 @@ try {
     console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
 }
 ```
-
-<a id="getrssivalue1"></a>
 
 ## getRssiValue
 
@@ -337,8 +331,6 @@ try {
 }
 ```
 
-<a id="getrssivalue2"></a>
-
 ## getRssiValue
 
 ```TypeScript
@@ -392,8 +384,6 @@ try {
     console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
 }
 ```
-
-<a id="getservices1"></a>
 
 ## getServices
 
@@ -460,8 +450,6 @@ try {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
-
-<a id="getservices2"></a>
 
 ## getServices
 
@@ -728,8 +716,6 @@ try {
 }
 ```
 
-<a id="readcharacteristicvalue1"></a>
-
 ## readCharacteristicValue
 
 ```TypeScript
@@ -809,8 +795,6 @@ try {
 }
 ```
 
-<a id="readcharacteristicvalue2"></a>
-
 ## readCharacteristicValue
 
 ```TypeScript
@@ -886,8 +870,6 @@ try {
 }
 ```
 
-<a id="readdescriptorvalue1"></a>
-
 ## readDescriptorValue
 
 ```TypeScript
@@ -958,8 +940,6 @@ try {
     console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
 }
 ```
-
-<a id="readdescriptorvalue2"></a>
 
 ## readDescriptorValue
 

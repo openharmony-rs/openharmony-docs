@@ -38,7 +38,8 @@ Calendar(value: {
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
@@ -51,3 +52,4 @@ Calendar(value: {
 | [TodayStyle](arkts-arkui-calendar-comp-todaystyle-i-sys.md) | 今日样式。 |
 | [WeekStyle](arkts-arkui-calendar-comp-weekstyle-i-sys.md) | 周样式。 |
 | [WorkStateStyle](arkts-arkui-calendar-comp-workstatestyle-i-sys.md) | 工作状态样式。 |
+<!--DelEnd-->

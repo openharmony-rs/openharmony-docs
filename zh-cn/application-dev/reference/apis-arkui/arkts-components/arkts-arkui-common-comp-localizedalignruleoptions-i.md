@@ -6,8 +6,6 @@ declare interface LocalizedAlignRuleOptions
 
 相对布局组件中子组件的对齐规则。
 
-@interface LocalizedAlignRuleOptions
-
 **起始版本：** 12
 
 <!--Device-unnamed-declare interface LocalizedAlignRuleOptions--><!--Device-unnamed-declare interface LocalizedAlignRuleOptions-End-->

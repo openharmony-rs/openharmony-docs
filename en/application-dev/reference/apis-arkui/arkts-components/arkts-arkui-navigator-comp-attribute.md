@@ -12,7 +12,7 @@ Declare navigator properties.
 
 **Deprecated since:** 13
 
-**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md)
+**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md#navigation)
 
 <!--Device-unnamed-declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>--><!--Device-unnamed-declare class NavigatorAttribute extends CommonMethod<NavigatorAttribute>-End-->
 
@@ -30,7 +30,7 @@ Sets whether the **Navigator** component is activated. If the component is activ
 
 **Deprecated since:** 13
 
-**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md)
+**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md#navigation)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -82,7 +82,7 @@ Sets the path of the target page to be redirected to. The target page must be ad
 
 **Deprecated since:** 13
 
-**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md)
+**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md#navigation)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -108,7 +108,7 @@ Sets the navigation type.
 
 **Deprecated since:** 13
 
-**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md)
+**Substitutes:** [Navigation](arkts-arkui-navigation-comp.md#navigation)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

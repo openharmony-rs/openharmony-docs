@@ -4,7 +4,7 @@
 enum AuxiliaryType
 ```
 
-Enum for auxiliary type.
+辅助镜头类型枚举。
 
 **起始版本：** 18
 
@@ -20,7 +20,7 @@ Enum for auxiliary type.
 CONTRACT_LENS = 0
 ```
 
-Contract lens.
+辅助镜头。
 
 **起始版本：** 18
 

@@ -6,8 +6,6 @@ export interface SkillInfo
 
 Provides information about a skill. A skill is an independent functional unit that can be called by an agent application.
 
-@typedef SkillInfo
-
 **Since:** 26.0.0
 
 <!--Device-unnamed-export interface SkillInfo--><!--Device-unnamed-export interface SkillInfo-End-->

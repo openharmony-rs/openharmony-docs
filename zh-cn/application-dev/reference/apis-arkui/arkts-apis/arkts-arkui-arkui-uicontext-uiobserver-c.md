@@ -1114,8 +1114,6 @@ offRouterPageSizeChange(callback?: Callback<observer.RouterPageInfo>): void
 
 参考[onRouterPageSizeChange](#onrouterpagesizechange)接口示例。
 
-<a id="offswipercontentupdate1"></a>
-
 ## offSwiperContentUpdate
 
 ```TypeScript
@@ -1143,8 +1141,6 @@ offSwiperContentUpdate(callback?: Callback<SwiperContentInfo>): void
 **示例**
 
 参考[onSwiperContentUpdate](#onswipercontentupdate)接口示例。
-
-<a id="offswipercontentupdate2"></a>
 
 ## offSwiperContentUpdate
 
@@ -1195,9 +1191,9 @@ on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callbac
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationUpdate' | 是 | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates the state change event<br>of the **NavDestination** component. |
+| type | 'navDestinationUpdate' | 是 | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates the state change event <br>of the **NavDestination** component. |
 | options | { navigationId: ResourceStr } | 是 | ID of the target **NavDestination** component. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 是 | Callback used to return the current<br>state of the **NavDestination** component. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 是 | Callback used to return the current <br>state of the **NavDestination** component. |
 
 **示例**
 
@@ -1277,8 +1273,8 @@ Subscribes to status changes of this **NavDestination** component.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationUpdate' | 是 | Event type. The value is fixed at **'navDestinationUpdate'**,<br>which indicates the state change event of the **NavDestination** component. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 是 | Callback used to return the current state of<br>the **NavDestination** component. |
+| type | 'navDestinationUpdate' | 是 | Event type. The value is fixed at **'navDestinationUpdate'**, <br>which indicates the state change event of the **NavDestination** component. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 是 | Callback used to return the current state of <br>the **NavDestination** component. |
 
 **示例**
 
@@ -1582,7 +1578,7 @@ Unsubscribes to state changes of the page in the router.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'routerPageUpdate' | 是 | Event type.<br>The value is fixed at 'routerPageUpdate', which indicates the state change event of the page in the router. |
+| type | 'routerPageUpdate' | 是 | Event type. <br>The value is fixed at 'routerPageUpdate', which indicates the state change event of the page in the router. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.RouterPageInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 是 | Callback to be unregistered. |
 
 **示例**
@@ -2890,7 +2886,7 @@ on(type: 'nodeRenderState', nodeIdentity: NodeIdentity, callback: NodeRenderStat
 
 注意节点数量的限制。出于性能考虑，在单个UI实例中，注册节点太多，将会抛出异常。
 
-通常，当组件被移动到屏幕外时，会收到RENDER_OUT的通知。但在某些情况下，即使组件移动到屏幕外也不会触发RENDER_OUT通知。例如，具有缓存功能的组件Swiper，即使[cachedCount](../arkts-components/arkts-arkui-swiper-comp-attribute.md#cachedcount2)属性中的参数isShown配置为true，也不会触发RENDER_OUT通知。
+通常，当组件被移动到屏幕外时，会收到RENDER_OUT的通知。但在某些情况下，即使组件移动到屏幕外也不会触发RENDER_OUT通知。例如，具有缓存功能的组件Swiper，即使[cachedCount](../arkts-components/arkts-arkui-swiper-comp-attribute.md#cachedcount)属性中的参数isShown配置为true，也不会触发RENDER_OUT通知。
 
 **起始版本：** 20
 
@@ -3423,8 +3419,6 @@ struct QueryRouterPageSize {
 }
 ```
 
-<a id="onswipercontentupdate1"></a>
-
 ## onSwiperContentUpdate
 
 ```TypeScript
@@ -3500,8 +3494,6 @@ struct SwiperExample {
   }
 }
 ```
-
-<a id="onswipercontentupdate2"></a>
 
 ## onSwiperContentUpdate
 

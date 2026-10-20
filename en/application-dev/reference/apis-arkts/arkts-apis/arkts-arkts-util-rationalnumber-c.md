@@ -56,8 +56,6 @@ console.info("result = " + result);
 // Output: result = -1
 ```
 
-<a id="constructor2"></a>
-
 ## constructor
 
 ```TypeScript
@@ -79,8 +77,6 @@ A constructor used to create a **RationalNumber** object.
 ```TypeScript
 let rationalNumber = new util.RationalNumber();
 ```
-
-<a id="constructor1"></a>
 
 ## constructor
 

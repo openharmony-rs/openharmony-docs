@@ -6,8 +6,6 @@
 import { autoStartupManager } from '@kit.AbilityKit';
 ```
 
-<a id="queryallautostartupapplications1"></a>
-
 ## queryAllAutoStartupApplications
 
 ```TypeScript
@@ -43,8 +41,6 @@ function queryAllAutoStartupApplications(callback: AsyncCallback<Array<AutoStart
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Failed to connect to the system service. |
 
-
-<a id="queryallautostartupapplications2"></a>
 
 ## queryAllAutoStartupApplications
 

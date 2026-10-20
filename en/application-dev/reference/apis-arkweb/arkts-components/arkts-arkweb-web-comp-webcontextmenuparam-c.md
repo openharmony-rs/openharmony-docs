@@ -193,7 +193,7 @@ Obtains the height of a preview image.
 
 | Type | Description |
 | --- | --- |
-| number | Height of a preview image.<br>Unit: px (physical pixel) |
+| number | Height of a preview image. <br>Unit: px (physical pixel) |
 
 ## getPreviewWidth
 
@@ -213,7 +213,7 @@ Obtains the width of a preview image.
 
 | Type | Description |
 | --- | --- |
-| number | Width of a preview image.<br>Unit: px (physical pixel) |
+| number | Width of a preview image. <br>Unit: px (physical pixel) |
 
 ## getSelectionText
 
@@ -281,6 +281,30 @@ Obtains the URL link address corresponding to the **src** attribute of the eleme
 | --- | --- |
 | string | If the selected element has the **src** attribute, the URL in the **src** is returned. The maximum size of the returned URL is 2 MB. If the size exceeds the upper limit, an empty string is returned. |
 
+## getTextFragmentGeneratedLink
+
+```TypeScript
+getTextFragmentGeneratedLink(): string
+```
+
+Obtains a Text Fragment link URL that points to the currently highlighted text on the web page. The returned URL contains a **#:~:text=** fragment that complies with the W3C Text Fragments specification.
+
+Use this API in the **onContextMenuShow** event callback. Before calling this API, you are advised to call shouldOfferLinkToText() to check whether the current selection supports link generation. If the selection does not support link generation, an empty string is returned.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebContextMenuParam-getTextFragmentGeneratedLink(): string--><!--Device-WebContextMenuParam-getTextFragmentGeneratedLink(): string-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | Text Fragment link URL that contains the **#:~:text=** fragment and complies with the W3C Text Fragments specification. If the current selection does not support link generation, an empty string is returned. |
+
 ## getUnfilteredLinkUrl
 
 ```TypeScript
@@ -325,6 +349,54 @@ Checks whether a web element is editable. This is used to dynamically show or hi
 | --- | --- |
 | boolean | true if the web element is editable; false otherwise. |
 
+## isOverTextFragment
+
+```TypeScript
+isOverTextFragment(): boolean
+```
+
+Checks whether the current web page has a Text Fragment highlight. Use this API to determine whether the "Remove Highlight" and "Re-share Link"menu items should be displayed.
+
+Use this API in the **onContextMenuShow** event callback. The result is consistent with the Chromium **GetExistingSelectors** behavior.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebContextMenuParam-isOverTextFragment(): boolean--><!--Device-WebContextMenuParam-isOverTextFragment(): boolean-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | **true** if the current page has a Text Fragment highlight; **false** otherwise. |
+
+## shouldOfferLinkToText
+
+```TypeScript
+shouldOfferLinkToText(): boolean
+```
+
+Checks whether the currently selected text can be used to generate a Text Fragment link. A Text Fragment link is a URL that contains a **#:~:text=** fragment, which directs the browser to scroll to and highlight a specific text passage when the link is opened.
+
+Use this API in the **onContextMenuShow** event callback to determine whether to display a "Copy Link to Highlight" menu item. The result is consistent with the Chromium **ShouldOfferLinkToText** behavior.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebContextMenuParam-shouldOfferLinkToText(): boolean--><!--Device-WebContextMenuParam-shouldOfferLinkToText(): boolean-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | **true** if the currently selected text can be used to generate a Text Fragment link; **false** otherwise. |
+
 ## x
 
 ```TypeScript
@@ -345,7 +417,7 @@ X coordinate of the context menu, which is the horizontal distance relative to t
 
 | Type | Description |
 | --- | --- |
-| number | Non-negative integer if successful; -1 otherwise.<br>Unit: px (physical pixel). |
+| number | Non-negative integer if successful; -1 otherwise. <br>Unit: px (physical pixel). |
 
 ## y
 
@@ -367,4 +439,4 @@ Y coordinate of the context menu, which is the vertical distance relative to the
 
 | Type | Description |
 | --- | --- |
-| number | Non-negative integer when obtained successfully, and -1 otherwise.<br>Unit: px (physical pixel). |
+| number | Non-negative integer when obtained successfully, and -1 otherwise. <br>Unit: px (physical pixel). |

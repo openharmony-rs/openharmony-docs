@@ -356,8 +356,6 @@ export default class UIExtAbility extends UIExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="startability1"></a>
-
 ## startAbility
 
 ```TypeScript
@@ -437,8 +435,6 @@ export default class UIExtAbility extends UIExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startability2"></a>
 
 ## startAbility
 
@@ -522,8 +518,6 @@ export default class UIExtAbility extends UIExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startability3"></a>
 
 ## startAbility
 
@@ -615,8 +609,6 @@ export default class UIExtAbility extends UIExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="startabilityascaller1"></a>
-
 ## startAbilityAsCaller
 
 ```TypeScript
@@ -695,8 +687,6 @@ export default class UIExtAbility extends UIExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startabilityascaller2"></a>
 
 ## startAbilityAsCaller
 
@@ -779,8 +769,6 @@ export default class UIExtAbility extends UIExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startabilityascaller3"></a>
 
 ## startAbilityAsCaller
 
@@ -871,8 +859,6 @@ export default class UIExtAbility extends UIExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="startabilityforresult1"></a>
-
 ## startAbilityForResult
 
 ```TypeScript
@@ -881,9 +867,9 @@ startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 
 启动一个Ability，在Ability终止后返回结果给调用方。使用callback异步回调。Ability的终止方式包括以下几种情况：
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。  
-- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方，其他调用方返回异常信息，异常信息中resultCode为-1。
+- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方，其他调用方返回异常信息，异常信息中resultCode为-1。
 
 > **说明：** 
 > 
@@ -957,8 +943,6 @@ export default class UIExtAbility extends UIExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="startabilityforresult2"></a>
-
 ## startAbilityForResult
 
 ```TypeScript
@@ -967,9 +951,9 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 启动一个Ability，在Ability终止后返回结果给调用方。使用callback异步回调。Ability的终止方式包括以下几种情况：
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。  
-- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方，其他调用方返回异常信息，异常信息中resultCode为-1。
+- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方，其他调用方返回异常信息，异常信息中resultCode为-1。
 
 > **说明：** 
 > 
@@ -1046,8 +1030,6 @@ export default class UIExtAbility extends UIExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="startabilityforresult3"></a>
-
 ## startAbilityForResult
 
 ```TypeScript
@@ -1056,9 +1038,9 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 启动一个Ability，在Ability终止后返回结果给调用方。使用Promise异步回调。Ability的终止方式包括以下几种情况：
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死Ability会返回异常信息给调用方，异常信息中resultCode为-1。  
-- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方，其他调用方返回异常信息，异常信息中resultCode为-1。
+- 如果被启动的Ability模式是单实例模式，不同应用多次调用该接口启动这个Ability，当这个Ability调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方，其他调用方返回异常信息，异常信息中resultCode为-1。
 
 > **说明：** 
 > 

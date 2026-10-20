@@ -6,8 +6,6 @@
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="createpicturebyhdrandsdrpixelmap1"></a>
-
 ## createPictureByHdrAndSdrPixelMap
 
 ```TypeScript
@@ -84,8 +82,6 @@ async function CreatePictureTest(context: Context) {
 
 <!--DelEnd-->
 
-
-<a id="createpicturebyhdrandsdrpixelmap2"></a>
 
 ## createPictureByHdrAndSdrPixelMap
 

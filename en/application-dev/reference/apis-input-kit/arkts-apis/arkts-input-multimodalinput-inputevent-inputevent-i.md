@@ -6,8 +6,6 @@ export declare interface InputEvent
 
 Represents an input event.
 
-@interface InputEvent [since 9 - 11]
-
 **Since:** 9
 
 <!--Device-unnamed-export declare interface InputEvent--><!--Device-unnamed-export declare interface InputEvent-End-->

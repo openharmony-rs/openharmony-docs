@@ -6,8 +6,6 @@ type ReportExecuteActionEvent = (actionType: string, params: string) => void
 
 执行动作上报事件。
 
-@typedef { function } ReportExecuteActionEvent
-
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。

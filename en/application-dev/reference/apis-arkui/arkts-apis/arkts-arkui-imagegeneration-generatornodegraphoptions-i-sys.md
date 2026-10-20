@@ -6,8 +6,6 @@ interface GeneratorNodeGraphOptions
 
 Parameters used to open the NodeGraphComponent.
 
-@interface GeneratorNodeGraphOptions
-
 **Since:** 23
 
 <!--Device-imageGeneration-interface GeneratorNodeGraphOptions--><!--Device-imageGeneration-interface GeneratorNodeGraphOptions-End-->

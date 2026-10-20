@@ -16,8 +16,6 @@ declare class RefreshAttribute extends CommonMethod<RefreshAttribute>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="maxpulldowndistance1"></a>
-
 ## maxPullDownDistance
 
 ```TypeScript
@@ -41,8 +39,6 @@ maxPullDownDistance(distance: Optional<number>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | distance | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | 是 | 最大下拉距离。<br>取值范围：[0, +∞)，值小于0时按0处理。当该值小于刷新的下拉偏移量refreshOffset时，Refresh下拉离手不会触发刷新。<br>undefined和null按没有设置此属性处理。<br>默认值：undefined<br>单位：vp |
-
-<a id="maxpulldowndistance2"></a>
 
 ## maxPullDownDistance
 
@@ -68,7 +64,7 @@ maxPullDownDistance(distance: number | Resource | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| distance | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; undefined | 是 | 最大下拉距离。<br>默认值：undefined<br>单位：vp<br>取值范围：[0, +∞)，值小于0时按0处理。当该值小于刷新的下拉偏移量[refreshOffset](#refreshoffset1)时，Refresh下拉离手不会触发刷新。<br>undefined和null按没有设置此属性处理，即没有最大下拉距离限制。 |
+| distance | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; undefined | 是 | 最大下拉距离。<br>默认值：undefined<br>单位：vp<br>取值范围：[0, +∞)，值小于0时按0处理。当该值小于刷新的下拉偏移量[refreshOffset](#refreshoffset)时，Refresh下拉离手不会触发刷新。<br>undefined和null按没有设置此属性处理，即没有最大下拉距离限制。 |
 
 ## onOffsetChange
 
@@ -176,7 +172,7 @@ pullDownRatio(ratio: Optional<number>)
 pullToRefresh(value: boolean)
 ```
 
-设置当下拉距离超过[refreshOffset](#refreshoffset1)时是否能触发刷新。
+设置当下拉距离超过[refreshOffset](#refreshoffset)时是否能触发刷新。
 
 **起始版本：** 12
 
@@ -192,7 +188,7 @@ pullToRefresh(value: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 当下拉距离超过[refreshOffset](#refreshoffset1)时是否能触发刷新。true表示能触发刷新，false表示不能触发刷新。<br>默认值：true |
+| value | boolean | 是 | 当下拉距离超过[refreshOffset](#refreshoffset)时是否能触发刷新。true表示能触发刷新，false表示不能触发刷新。<br>默认值：true |
 
 ## pullUpToCancelRefresh
 
@@ -218,8 +214,6 @@ pullUpToCancelRefresh(enabled: boolean | undefined)
 | --- | --- | --- | --- |
 | enabled | boolean &#124; undefined | 是 | 设置上滑是否取消刷新。<br>true表示取消刷新；false表示不取消刷新。<br>默认值：true。值为undefined时，按默认值处理。 |
 
-<a id="refreshoffset1"></a>
-
 ## refreshOffset
 
 ```TypeScript
@@ -243,8 +237,6 @@ refreshOffset(value: number)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 下拉偏移量，单位vp。<br>取值范围：(0, +∞)。<br>默认值：未设置[promptText](arkts-arkui-refresh-comp-refreshoptions-i.md)参数时为64vp，设置了[promptText](arkts-arkui-refresh-comp-refreshoptions-i.md)参数时为96vp。 <br>如果取值为0或负数的时候此接口采用默认值。 |
-
-<a id="refreshoffset2"></a>
 
 ## refreshOffset
 

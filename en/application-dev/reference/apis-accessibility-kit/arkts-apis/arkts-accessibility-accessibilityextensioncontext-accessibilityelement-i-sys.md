@@ -372,8 +372,6 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 <!--DelEnd-->
 
-<a id="findelementbyfocusdirection1"></a>
-
 ## findElementByFocusDirection
 
 ```TypeScript
@@ -382,7 +380,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityEle
 
 Searches for an element based on the focus direction. This API uses a promise to return the result.
 
-Compared with [findElementsByCondition](#findelementsbycondition1), this method is mainly used to search for web components, while findElementsByCondition is mainly used to search for UI components.
+Compared with [findElementsByCondition](#findelementsbycondition), this method is mainly used to search for web components, while findElementsByCondition is mainly used to search for UI components.
 
 **Since:** 20
 
@@ -448,8 +446,6 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 ```
 
 <!--DelEnd-->
-
-<a id="findelementbyfocusdirection2"></a>
 
 ## findElementByFocusDirection
 
@@ -698,8 +694,6 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 <!--DelEnd-->
 
-<a id="findelementsbycondition1"></a>
-
 ## findElementsByCondition
 
 ```TypeScript
@@ -708,7 +702,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<Foc
 
 Queries focusable nodes that meet the conditions. This API uses a promise to return the result.
 
-Compared with [findElementByFocusDirection](#findelementbyfocusdirection1), this method is mainly used to find UI components, while findElementByFocusDirection is mainly used to find Web components.
+Compared with [findElementByFocusDirection](#findelementbyfocusdirection), this method is mainly used to find UI components, while findElementByFocusDirection is mainly used to find Web components.
 
 **Since:** 23
 
@@ -760,8 +754,6 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 ```
 
 <!--DelEnd-->
-
-<a id="findelementsbycondition2"></a>
 
 ## findElementsByCondition
 
@@ -913,8 +905,6 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
 
 <!--DelEnd-->
 
-<a id="getcursorposition1"></a>
-
 ## getCursorPosition
 
 ```TypeScript
@@ -954,8 +944,6 @@ rootElement.getCursorPosition((err: BusinessError, data: number) => {
 ```
 
 <!--DelEnd-->
-
-<a id="getcursorposition2"></a>
 
 ## getCursorPosition
 

@@ -4,8 +4,6 @@
 export interface DeleteStorageOptions
 ```
 
-@typedef DeleteStorageOptions
-
 **Since:** 3
 
 **Deprecated since:** 6

@@ -12,8 +12,6 @@ FaultLogExtensionContext模块提供访问[FaultLogExtensionAbility](arkts-perfo
 > 
 > - 本模块接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-@extends ExtensionContext
-
 **继承/实现关系：** FaultLogExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 
 **起始版本：** 21

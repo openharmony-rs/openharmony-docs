@@ -91,8 +91,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="changeappcloudswitch1"></a>
-
 ## changeAppCloudSwitch
 
 ```TypeScript
@@ -158,8 +156,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="changeappcloudswitch2"></a>
-
 ## changeAppCloudSwitch
 
 ```TypeScript
@@ -222,8 +218,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="changeappcloudswitch3"></a>
 
 ## changeAppCloudSwitch
 
@@ -306,8 +300,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="clear1"></a>
-
 ## clear
 
 ```TypeScript
@@ -375,8 +367,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="clear2"></a>
-
 ## clear
 
 ```TypeScript
@@ -442,8 +432,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="clear3"></a>
 
 ## clear
 
@@ -575,7 +563,7 @@ Synchronizes data of a specified application on the device to the cloud. This AP
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
-| [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. Empty conditions;<br>2. Missing GROUP BY clause. |
+| [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. Empty conditions; <br>2. Missing GROUP BY clause. |
 
 <!--Del-->
 **Examples**
@@ -680,8 +668,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="disablecloud1"></a>
-
 ## disableCloud
 
 ```TypeScript
@@ -738,8 +724,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="disablecloud2"></a>
 
 ## disableCloud
 
@@ -800,8 +784,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="enablecloud1"></a>
 
 ## enableCloud
 
@@ -866,8 +848,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="enablecloud2"></a>
-
 ## enableCloud
 
 ```TypeScript
@@ -929,8 +909,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="notifydatachange1"></a>
 
 ## notifyDataChange
 
@@ -997,8 +975,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="notifydatachange2"></a>
-
 ## notifyDataChange
 
 ```TypeScript
@@ -1058,8 +1034,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="notifydatachange3"></a>
 
 ## notifyDataChange
 
@@ -1123,8 +1097,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="notifydatachange4"></a>
-
 ## notifyDataChange
 
 ```TypeScript
@@ -1186,8 +1158,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="notifydatachange5"></a>
 
 ## notifyDataChange
 
@@ -1285,7 +1255,7 @@ Remove specified observer of specified type from the database.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
-| [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. bundlename is null;<br>2. the number of bundleInfos exceeds the upper limit or the number is 0. |
+| [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. bundlename is null; <br>2. the number of bundleInfos exceeds the upper limit or the number is 0. |
 
 <!--Del-->
 **Examples**
@@ -1366,7 +1336,7 @@ Subscribes to changes in the sync information of a specified application.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
-| [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. bundlename is null;<br>2. the number of bundleInfos exceeds the upper limit or the number is 0. |
+| [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. bundlename is null; <br>2. the number of bundleInfos exceeds the upper limit or the number is 0. |
 
 <!--Del-->
 **Examples**
@@ -1617,7 +1587,7 @@ Stops syncing data to the cloud.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
-| [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. bundlename is null;<br>2. the number of bundleInfos exceeds the upper limit or the number is 0. |
+| [14800001](../errorcode-data-rdb.md#14800001-invalid-parameter) | Invalid arguments. Possible causes: 1. bundlename is null; <br>2. the number of bundleInfos exceeds the upper limit or the number is 0. |
 
 <!--Del-->
 **Examples**

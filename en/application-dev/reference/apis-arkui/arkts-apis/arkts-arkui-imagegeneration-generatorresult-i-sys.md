@@ -6,8 +6,6 @@ interface GeneratorResult
 
 The result of AI-generated images
 
-@interface GeneratorResult
-
 **Since:** 23
 
 <!--Device-imageGeneration-interface GeneratorResult--><!--Device-imageGeneration-interface GeneratorResult-End-->

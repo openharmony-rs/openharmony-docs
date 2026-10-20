@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="setdistributedenablebybundle1"></a>
-
 ## setDistributedEnableByBundle
 
 ```TypeScript
@@ -74,8 +72,6 @@ notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedE
 
 <!--DelEnd-->
 
-
-<a id="setdistributedenablebybundle2"></a>
 
 ## setDistributedEnableByBundle
 

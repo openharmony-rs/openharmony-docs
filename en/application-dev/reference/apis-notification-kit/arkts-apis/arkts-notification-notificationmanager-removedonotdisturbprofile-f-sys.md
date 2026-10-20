@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="removedonotdisturbprofile1"></a>
-
 ## removeDoNotDisturbProfile
 
 ```TypeScript
@@ -72,8 +70,6 @@ notificationManager.removeDoNotDisturbProfile(templates).then(() => {
 
 <!--DelEnd-->
 
-
-<a id="removedonotdisturbprofile2"></a>
 
 ## removeDoNotDisturbProfile
 

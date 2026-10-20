@@ -6,8 +6,6 @@
 import { policy } from '@kit.NetworkKit';
 ```
 
-<a id="setnetquotapolicies1"></a>
-
 ## setNetQuotaPolicies
 
 ```TypeScript
@@ -75,8 +73,6 @@ policy.setNetQuotaPolicies(netQuotaPolicyList, (error: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="setnetquotapolicies2"></a>
 
 ## setNetQuotaPolicies
 

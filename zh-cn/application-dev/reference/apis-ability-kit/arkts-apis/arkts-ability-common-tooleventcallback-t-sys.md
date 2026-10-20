@@ -6,8 +6,6 @@ export type ToolEventCallback = _ToolEventCallback
 
 用于接收CLI工具进程运行期间产生的会话事件。
 
-@typedef { _ToolEventCallback }
-
 **类型：** _ToolEventCallback
 
 **起始版本：** 26.0.0

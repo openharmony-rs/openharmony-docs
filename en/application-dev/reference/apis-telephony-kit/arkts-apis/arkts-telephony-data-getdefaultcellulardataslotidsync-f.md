@@ -24,7 +24,7 @@ Obtains the default SIM card used for mobile data synchronously.
 
 | Type | Description |
 | --- | --- |
-| number | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 <br>- **2**: slot ID of the mobile data in the eSIM and SkyTone scenarios. |
+| number | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 <br>- **2**: slot ID of the mobile data in the eSIM and SkyTone scenarios. |
 
 **Examples**
 

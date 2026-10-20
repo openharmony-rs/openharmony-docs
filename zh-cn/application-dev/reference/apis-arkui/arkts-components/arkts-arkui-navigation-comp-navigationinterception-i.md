@@ -26,9 +26,9 @@ Navigation页面跳转前和页面跳转后的拦截回调。
 
 | 参数名 | 类型 | 必填 | 说明 |  
 | ------ | ------ | ---- | ---------------- |  
-| from | [NavDestinationContext](arkts-arkui-navdestination-comp-navdestinationcontext-i.md) \| [NavBar](arkts-arkui-navigation-comp-navbar-t.md) | 是 | 页面跳转之前的栈顶页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。 |
-| to | [NavDestinationContext](arkts-arkui-navdestination-comp-navdestinationcontext-i.md) \| [NavBar](arkts-arkui-navigation-comp-navbar-t.md) | 是 | 页面跳转之后的栈顶页面信息。参数值为navBar，则表示跳转的目标页面为Navigation首页。 |
-| operation | [NavigationOperation](arkts-arkui-navigation-comp-navigationoperation-e.md) | 是 | 当前页面跳转类型。 |
+| from | [NavDestinationContext](arkts-arkui-navdestination-comp-navdestinationcontext-i.md) \| [NavBar](arkts-arkui-navigation-comp-navbar-t.md) | 是 | 页面跳转之前的栈顶页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。 |  
+| to | [NavDestinationContext](arkts-arkui-navdestination-comp-navdestinationcontext-i.md) \| [NavBar](arkts-arkui-navigation-comp-navbar-t.md) | 是 | 页面跳转之后的栈顶页面信息。参数值为navBar，则表示跳转的目标页面为Navigation首页。 |  
+| operation | [NavigationOperation](arkts-arkui-navigation-comp-navigationoperation-e.md) | 是 | 当前页面跳转类型。 |  
 | isAnimated | boolean | 是 | 页面跳转是否有动画。<br>true：页面跳转有动画。<br>false：页面跳转没有动画。 |
 
 ## InterceptionModeCallback<sup>12+</sup>
@@ -61,10 +61,10 @@ Navigation页面跳转前的拦截回调。
 
 | 参数名 | 类型 | 必填 | 说明 |  
 | ------ | ------ | ---- | ---------------- |  
-| from | [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) \|[NavBar](arkts-arkui-navigation-comp-navbar-t.md) | 是 | 退场页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。 |
-| to | [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) \|[NavBar](arkts-arkui-navigation-comp-navbar-t.md) | 是 | 进场页面信息。参数值为navBar，则表示跳转的目标页面为Navigation首页。 |
-| pathStack | [NavPathStack](arkts-arkui-navigation-comp-navpathstack-c.md) | 是 | 页面栈。 |
-| operation | [NavigationOperation](arkts-arkui-navigation-comp-navigationoperation-e.md) | 是 | 当前页面跳转类型。 |
+| from | [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) \|[NavBar](arkts-arkui-navigation-comp-navbar-t.md) | 是 | 退场页面信息。参数值为navBar，则表示跳转前的页面为Navigation首页。 |  
+| to | [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) \|[NavBar](arkts-arkui-navigation-comp-navbar-t.md) | 是 | 进场页面信息。参数值为navBar，则表示跳转的目标页面为Navigation首页。 |  
+| pathStack | [NavPathStack](arkts-arkui-navigation-comp-navpathstack-c.md) | 是 | 页面栈。 |  
+| operation | [NavigationOperation](arkts-arkui-navigation-comp-navigationoperation-e.md) | 是 | 当前页面跳转类型。 |  
 | isAnimated | boolean | 是 | 页面跳转是否有动画。<br>true：页面跳转有动画。<br>false：页面跳转没有动画。 |
 
 ## didShow

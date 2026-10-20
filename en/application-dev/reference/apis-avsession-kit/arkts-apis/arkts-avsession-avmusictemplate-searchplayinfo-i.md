@@ -6,8 +6,6 @@ interface SearchPlayInfo
 
 The definition of SearchPlayInfo.
 
-@interface SearchPlayInfo
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-interface SearchPlayInfo--><!--Device-avMusicTemplate-interface SearchPlayInfo-End-->

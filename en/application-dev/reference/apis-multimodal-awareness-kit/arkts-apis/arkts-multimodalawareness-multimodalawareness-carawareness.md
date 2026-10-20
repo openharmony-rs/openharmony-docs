@@ -4,6 +4,8 @@ This module provides car awareness capabilities, including spatial motion intera
 
 **Since:** 26.0.1
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace carAwareness--><!--Device-unnamed-declare namespace carAwareness-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness

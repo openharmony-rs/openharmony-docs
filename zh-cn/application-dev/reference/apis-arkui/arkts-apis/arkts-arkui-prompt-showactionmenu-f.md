@@ -6,8 +6,6 @@
 import { prompt } from '@kit.ArkUI';
 ```
 
-<a id="showactionmenu1"></a>
-
 ## showActionMenu
 
 ```TypeScript
@@ -60,8 +58,6 @@ prompt.showActionMenu({
 })
 ```
 
-
-<a id="showactionmenu2"></a>
 
 ## showActionMenu
 

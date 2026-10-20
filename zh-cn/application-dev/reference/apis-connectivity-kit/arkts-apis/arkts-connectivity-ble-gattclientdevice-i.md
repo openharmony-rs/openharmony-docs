@@ -196,8 +196,6 @@ try {
 }
 ```
 
-<a id="getdevicename1"></a>
-
 ## getDeviceName
 
 ```TypeScript
@@ -259,8 +257,6 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
-
-<a id="getdevicename2"></a>
 
 ## getDeviceName
 
@@ -324,8 +320,6 @@ try {
 }
 ```
 
-<a id="getrssivalue1"></a>
-
 ## getRssiValue
 
 ```TypeScript
@@ -382,8 +376,6 @@ try {
 }
 ```
 
-<a id="getrssivalue2"></a>
-
 ## getRssiValue
 
 ```TypeScript
@@ -438,8 +430,6 @@ try {
 }
 ```
 
-<a id="getservices1"></a>
-
 ## getServices
 
 ```TypeScript
@@ -452,11 +442,11 @@ client获取server端支持的所有服务能力，即服务发现流程。使�
 
 readCharacteristicValue
 
-[readDescriptorValue](#readdescriptorvalue1)
+[readDescriptorValue](#readdescriptorvalue)
 
 writeCharacteristicValue
 
-[writeDescriptorValue](#writedescriptorvalue1)
+[writeDescriptorValue](#writedescriptorvalue)
 
 setCharacteristicChangeNotification
 
@@ -522,8 +512,6 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
-
-<a id="getservices2"></a>
 
 ## getServices
 
@@ -985,7 +973,7 @@ on(type: 'serviceChange', callback: Callback<void>): void
 
 client端设备订阅server端设备服务变化的通知事件，使用Callback异步回调。
 
-如client端已订阅该事件，当server端添加或删除服务时，client端均会收到服务变化通知。client端收到服务变化通知时，建议重新调用[getServices](#getservices1)获取server端设备支持的最新服务能力。
+如client端已订阅该事件，当server端添加或删除服务时，client端均会收到服务变化通知。client端收到服务变化通知时，建议重新调用[getServices](#getservices)获取server端设备支持的最新服务能力。
 
 **起始版本：** 22
 
@@ -1073,8 +1061,6 @@ try {
 }
 ```
 
-<a id="readcharacteristicvalue1"></a>
-
 ## readCharacteristicValue
 
 ```TypeScript
@@ -1083,7 +1069,7 @@ readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallba
 
 client端从指定的server端特征值读取数据。使用Callback异步回调。
 
-需要先调用[getServices](#getservices1)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会读取失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue1)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue1)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。读取特征值过程中，需确保[BLECharacteristic](arkts-connectivity-ble-blecharacteristic-i.md)入参特征值的serviceUuid、characteristicUuid准确。characteristicValue表示的数据内容长度可由用户任意指定，不会影响实际读取到的特征值数据内容。
+需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会读取失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。读取特征值过程中，需确保[BLECharacteristic](arkts-connectivity-ble-blecharacteristic-i.md)入参特征值的serviceUuid、characteristicUuid准确。characteristicValue表示的数据内容长度可由用户任意指定，不会影响实际读取到的特征值数据内容。
 
 **起始版本：** 10
 
@@ -1158,8 +1144,6 @@ try {
 }
 ```
 
-<a id="readcharacteristicvalue2"></a>
-
 ## readCharacteristicValue
 
 ```TypeScript
@@ -1168,7 +1152,7 @@ readCharacteristicValue(characteristic: BLECharacteristic): Promise<BLECharacter
 
 client端从指定的server端特征值读取数据。使用Promise异步回调。
 
-需要先调用[getServices](#getservices1)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会读取失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue1)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue1)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。读取特征值过程中，需确保[BLECharacteristic](arkts-connectivity-ble-blecharacteristic-i.md)入参特征值的serviceUuid、characteristicUuid准确。characteristicValue表示的数据内容长度可由用户任意指定，不会影响实际读取到的特征值数据内容。
+需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会读取失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。读取特征值过程中，需确保[BLECharacteristic](arkts-connectivity-ble-blecharacteristic-i.md)入参特征值的serviceUuid、characteristicUuid准确。characteristicValue表示的数据内容长度可由用户任意指定，不会影响实际读取到的特征值数据内容。
 
 **起始版本：** 10
 
@@ -1237,8 +1221,6 @@ try {
 }
 ```
 
-<a id="readdescriptorvalue1"></a>
-
 ## readDescriptorValue
 
 ```TypeScript
@@ -1247,7 +1229,7 @@ readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback<BLEDescri
 
 client端从指定的server端描述符读取数据。使用Callback异步回调。
 
-需要先调用[getServices](#getservices1)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会读取失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue1)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue1)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。读取描述符过程中，需确保[BLEDescriptor](arkts-connectivity-ble-bledescriptor-i.md)入参描述符的serviceUuid、characteristicUuid、descriptorUuid准确。descriptorValue表示的数据内容长度可由用户任意指定，不会影响实际读取到的描述符数据内容。
+需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会读取失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。读取描述符过程中，需确保[BLEDescriptor](arkts-connectivity-ble-bledescriptor-i.md)入参描述符的serviceUuid、characteristicUuid、descriptorUuid准确。descriptorValue表示的数据内容长度可由用户任意指定，不会影响实际读取到的描述符数据内容。
 
 **起始版本：** 10
 
@@ -1313,8 +1295,6 @@ try {
 }
 ```
 
-<a id="readdescriptorvalue2"></a>
-
 ## readDescriptorValue
 
 ```TypeScript
@@ -1323,7 +1303,7 @@ readDescriptorValue(descriptor: BLEDescriptor): Promise<BLEDescriptor>
 
 client端从指定的server端描述符读取数据。使用Promise异步回调。
 
-需要先调用[getServices](#getservices1)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会读取失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue1)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue1)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。读取描述符过程中，需确保[BLEDescriptor](arkts-connectivity-ble-bledescriptor-i.md)入参描述符的serviceUuid、characteristicUuid、descriptorUuid准确。descriptorValue表示的数据内容长度可由用户任意指定，不会影响实际读取到的描述符数据内容。
+需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会读取失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。读取描述符过程中，需确保[BLEDescriptor](arkts-connectivity-ble-bledescriptor-i.md)入参描述符的serviceUuid、characteristicUuid、descriptorUuid准确。descriptorValue表示的数据内容长度可由用户任意指定，不会影响实际读取到的描述符数据内容。
 
 **起始版本：** 10
 
@@ -1541,8 +1521,6 @@ try {
 }
 ```
 
-<a id="setcharacteristicchangeindication1"></a>
-
 ## setCharacteristicChangeIndication
 
 ```TypeScript
@@ -1555,7 +1533,7 @@ setCharacteristicChangeIndication(
 
 client端启用或者禁用接收server端特征值内容变更指示的能力。使用Callback异步回调。
 
-需要先调用[getServices](#getservices1)，获取到server端所有支持的能力，且需包含指定的入参特征值UUID。server端对应的特征值需包含标准协议定义的Client Characteristic Configuration描述符UUID（00002902-0000-1000-8000-00805f9b34fb），server端才能支持发送变更指示。若启用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，启用server端的指示能力。若禁用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，禁用server端的指示能力。通过[on('BLECharacteristicChange')](#onblecharacteristicchange)接收server端特征值内容变更指示。若client端收到server端特征值内容变更指示后，系统蓝牙服务会主动回复确认，应用无需关注。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue1)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue1)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。
+需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且需包含指定的入参特征值UUID。server端对应的特征值需包含标准协议定义的Client Characteristic Configuration描述符UUID（00002902-0000-1000-8000-00805f9b34fb），server端才能支持发送变更指示。若启用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，启用server端的指示能力。若禁用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，禁用server端的指示能力。通过[on('BLECharacteristicChange')](#onblecharacteristicchange)接收server端特征值内容变更指示。若client端收到server端特征值内容变更指示后，系统蓝牙服务会主动回复确认，应用无需关注。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。
 
 **起始版本：** 10
 
@@ -1619,8 +1597,6 @@ try {
 }
 ```
 
-<a id="setcharacteristicchangeindication2"></a>
-
 ## setCharacteristicChangeIndication
 
 ```TypeScript
@@ -1629,7 +1605,7 @@ setCharacteristicChangeIndication(characteristic: BLECharacteristic, enable: boo
 
 client端启用或者禁用接收server端特征值内容变更指示的能力。使用Promise异步回调。
 
-需要先调用[getServices](#getservices1)，获取到server端所有支持的能力，且需包含指定的入参特征值UUID。server端对应的特征值需包含标准协议定义的Client Characteristic Configuration描述符UUID（00002902-0000-1000-8000-00805f9b34fb），server端才能支持发送变更指示。若启用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，启用server端的指示能力。若禁用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，禁用server端的指示能力。通过[on('BLECharacteristicChange')](#onblecharacteristicchange)接收server端特征值内容变更指示。若client端收到server端特征值内容变更指示后，系统蓝牙服务会主动回复确认，应用无需关注。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue1)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue1)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。
+需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且需包含指定的入参特征值UUID。server端对应的特征值需包含标准协议定义的Client Characteristic Configuration描述符UUID（00002902-0000-1000-8000-00805f9b34fb），server端才能支持发送变更指示。若启用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，启用server端的指示能力。若禁用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，禁用server端的指示能力。通过[on('BLECharacteristicChange')](#onblecharacteristicchange)接收server端特征值内容变更指示。若client端收到server端特征值内容变更指示后，系统蓝牙服务会主动回复确认，应用无需关注。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。
 
 **起始版本：** 10
 
@@ -1692,8 +1668,6 @@ try {
 }
 ```
 
-<a id="setcharacteristicchangenotification1"></a>
-
 ## setCharacteristicChangeNotification
 
 ```TypeScript
@@ -1706,7 +1680,7 @@ setCharacteristicChangeNotification(
 
 client端启用或者禁用接收server端特征值内容变更通知的能力。使用Callback异步回调。
 
-需要先调用[getServices](#getservices1)，获取到server端所有支持的能力，且需包含指定的入参特征值UUID。server端对应的特征值需包含标准协议定义的Client Characteristic Configuration描述符UUID（00002902-0000-1000-8000-00805f9b34fb），server端才能支持发送变更通知。若启用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，启用server端的通知能力。若禁用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，禁用server端的通知能力。通过[on('BLECharacteristicChange')](#onblecharacteristicchange)接收server端特征值内容变更通知。若client端收到server端特征值内容变更通知后，无需回复确认。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue1)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue1)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。
+需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且需包含指定的入参特征值UUID。server端对应的特征值需包含标准协议定义的Client Characteristic Configuration描述符UUID（00002902-0000-1000-8000-00805f9b34fb），server端才能支持发送变更通知。若启用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，启用server端的通知能力。若禁用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，禁用server端的通知能力。通过[on('BLECharacteristicChange')](#onblecharacteristicchange)接收server端特征值内容变更通知。若client端收到server端特征值内容变更通知后，无需回复确认。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。
 
 **起始版本：** 10
 
@@ -1770,8 +1744,6 @@ try {
 }
 ```
 
-<a id="setcharacteristicchangenotification2"></a>
-
 ## setCharacteristicChangeNotification
 
 ```TypeScript
@@ -1780,7 +1752,7 @@ setCharacteristicChangeNotification(characteristic: BLECharacteristic, enable: b
 
 client端启用或者禁用接收server端特征值内容变更通知的能力。使用Promise异步回调。
 
-需要先调用[getServices](#getservices1)，获取到server端所有支持的能力，且需包含指定的入参特征值UUID。server端对应的特征值需包含标准协议定义的Client Characteristic Configuration描述符UUID（00002902-0000-1000-8000-00805f9b34fb），server端才能支持发送变更通知。若启用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，启用server端的通知能力。若禁用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，禁用server端的通知能力。通过[on('BLECharacteristicChange')](#onblecharacteristicchange)接收server端特征值内容变更通知。若client端收到server端特征值内容变更通知后，无需回复确认。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue1)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue1)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。
+需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且需包含指定的入参特征值UUID。server端对应的特征值需包含标准协议定义的Client Characteristic Configuration描述符UUID（00002902-0000-1000-8000-00805f9b34fb），server端才能支持发送变更通知。若启用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，启用server端的通知能力。若禁用该能力，系统蓝牙服务会自动往server端写Client Characteristic Configuration描述符，禁用server端的通知能力。通过[on('BLECharacteristicChange')](#onblecharacteristicchange)接收server端特征值内容变更通知。若client端收到server端特征值内容变更通知后，无需回复确认。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。
 
 **起始版本：** 10
 
@@ -1955,8 +1927,6 @@ try {
 }
 ```
 
-<a id="writecharacteristicvalue1"></a>
-
 ## writeCharacteristicValue
 
 ```TypeScript
@@ -1969,7 +1939,7 @@ writeCharacteristicValue(
 
 client端向指定的server端特征值写入数据。使用Callback异步回调。
 
-需要先调用[getServices](#getservices1)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会写入失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue1)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue1)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。应用单次可写入的特征值数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](#setblemtusize)接口指定MTU大小，进而修改单次可写入的特征值数据长度。
+需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会写入失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。应用单次可写入的特征值数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](#setblemtusize)接口指定MTU大小，进而修改单次可写入的特征值数据长度。
 
 **起始版本：** 10
 
@@ -2041,8 +2011,6 @@ try {
 }
 ```
 
-<a id="writecharacteristicvalue2"></a>
-
 ## writeCharacteristicValue
 
 ```TypeScript
@@ -2051,7 +2019,7 @@ writeCharacteristicValue(characteristic: BLECharacteristic, writeType: GattWrite
 
 client端向指定的server端特征值写入数据。使用Promise异步回调。
 
-需要先调用[getServices](#getservices1)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会写入失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue1)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue1)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。应用单次可写入的特征值数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](#setblemtusize)接口指定MTU大小，进而修改单次可写入的特征值数据长度。
+需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参特征值UUID；否则会写入失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。应用单次可写入的特征值数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](#setblemtusize)接口指定MTU大小，进而修改单次可写入的特征值数据长度。
 
 **起始版本：** 10
 
@@ -2122,8 +2090,6 @@ try {
 }
 ```
 
-<a id="writedescriptorvalue1"></a>
-
 ## writeDescriptorValue
 
 ```TypeScript
@@ -2132,7 +2098,7 @@ writeDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback<void>): 
 
 client端向指定的server端描述符写入数据。使用Callback异步回调。
 
-需要先调用[getServices](#getservices1)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会写入失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue1)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue1)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。应用单次可写入的描述符数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](#setblemtusize)接口指定MTU大小，进而修改单次可写入的描述符数据长度。Client Characteristic Configuration描述符（UUID：00002902-0000-1000-8000-00805f9b34fb）和 Server Characteristic Configuration描述符（UUID：00002903-0000-1000-8000-00805f9b34fb）较为特殊，蓝牙标准协议规定内容长度为2字节，写入内容长度应设置为2字节。
+需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会写入失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。应用单次可写入的描述符数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](#setblemtusize)接口指定MTU大小，进而修改单次可写入的描述符数据长度。Client Characteristic Configuration描述符（UUID：00002902-0000-1000-8000-00805f9b34fb）和 Server Characteristic Configuration描述符（UUID：00002903-0000-1000-8000-00805f9b34fb）较为特殊，蓝牙标准协议规定内容长度为2字节，写入内容长度应设置为2字节。
 
 **起始版本：** 10
 
@@ -2197,8 +2163,6 @@ try {
 }
 ```
 
-<a id="writedescriptorvalue2"></a>
-
 ## writeDescriptorValue
 
 ```TypeScript
@@ -2207,7 +2171,7 @@ writeDescriptorValue(descriptor: BLEDescriptor): Promise<void>
 
 client端向指定的server端描述符写入数据。使用Promise异步回调。
 
-需要先调用[getServices](#getservices1)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会写入失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue1)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue1)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。应用单次可写入的描述符数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](#setblemtusize)接口指定MTU大小，进而修改单次可写入的描述符数据长度。Client Characteristic Configuration描述符（UUID：00002902-0000-1000-8000-00805f9b34fb）和 Server Characteristic Configuration描述符（UUID：00002903-0000-1000-8000-00805f9b34fb）较为特殊，蓝牙标准协议规定内容长度为2字节，写入内容长度应设置为2字节。
+需要先调用[getServices](#getservices)，获取到server端所有支持的能力，且包含指定的入参描述符UUID；否则会写入失败。异步回调结果返回后，才能调用下一次读取或者写入操作，如readCharacteristicValue、[readDescriptorValue](#readdescriptorvalue)、writeCharacteristicValue、[writeDescriptorValue](#writedescriptorvalue)、setCharacteristicChangeNotification和setCharacteristicChangeIndication。应用单次可写入的描述符数据长度限制为（MTU-3）字节。调用方可根据实际需要通过[setBLEMtuSize](#setblemtusize)接口指定MTU大小，进而修改单次可写入的描述符数据长度。Client Characteristic Configuration描述符（UUID：00002902-0000-1000-8000-00805f9b34fb）和 Server Characteristic Configuration描述符（UUID：00002903-0000-1000-8000-00805f9b34fb）较为特殊，蓝牙标准协议规定内容长度为2字节，写入内容长度应设置为2字节。
 
 **起始版本：** 10
 

@@ -110,6 +110,24 @@ OPERATION_NOT_ALLOWED = 7400102
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+## PARAM_OUT_OF_RANGE
+
+```TypeScript
+PARAM_OUT_OF_RANGE = 7400115
+```
+
+参数超出范围。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-CameraErrorCode-PARAM_OUT_OF_RANGE = 7400115--><!--Device-CameraErrorCode-PARAM_OUT_OF_RANGE = 7400115-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 ## SERVICE_FATAL_ERROR
 
 ```TypeScript
@@ -187,5 +205,23 @@ UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110
 **原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-CameraErrorCode-UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110--><!--Device-CameraErrorCode-UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## UNSUPPORTED_MULTI_CAMERA_COMBINATION
+
+```TypeScript
+UNSUPPORTED_MULTI_CAMERA_COMBINATION = 7400113
+```
+
+不支持的多摄组合。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-CameraErrorCode-UNSUPPORTED_MULTI_CAMERA_COMBINATION = 7400113--><!--Device-CameraErrorCode-UNSUPPORTED_MULTI_CAMERA_COMBINATION = 7400113-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

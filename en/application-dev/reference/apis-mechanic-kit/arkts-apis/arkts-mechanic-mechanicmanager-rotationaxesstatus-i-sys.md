@@ -6,8 +6,6 @@ export interface RotationAxesStatus
 
 Rotation axes status
 
-@typedef RotationAxesStatus
-
 **Since:** 20
 
 <!--Device-mechanicManager-export interface RotationAxesStatus--><!--Device-mechanicManager-export interface RotationAxesStatus-End-->

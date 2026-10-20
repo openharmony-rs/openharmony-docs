@@ -4,9 +4,7 @@
 interface ControlCenterSession extends Beauty, Aperture, ColorEffect
 ```
 
-Control center session object.
-
-@extends Beauty, Aperture [since 20 - 24] @extends Beauty, Aperture, ColorEffect [since 26.0.0]
+控制中心会话对象。
 
 **继承/实现关系：** ControlCenterSession extends [Beauty](arkts-camera-camera-beauty-i-sys.md), [Aperture](arkts-camera-camera-aperture-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->
 
@@ -30,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 enableAutoFraming(enabled: boolean): void
 ```
 
-Enable auto-framing effect.
+启用自动取景效果。
 
 **起始版本：** 24
 
@@ -44,7 +42,7 @@ Enable auto-framing effect.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | enable auto-framing effect if TRUE. |
+| enabled | boolean | 是 | 为 TRUE 时启用自动取景效果。 |
 
 **错误码：**
 
@@ -60,7 +58,7 @@ Enable auto-framing effect.
 getAutoFramingStatus(): boolean
 ```
 
-Gets the status of auto-framing effect.
+获取自动取景效果的开启状态。
 
 **起始版本：** 24
 
@@ -74,7 +72,7 @@ Gets the status of auto-framing effect.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Is auto-framing active. |
+| boolean | 自动取景是否处于活跃状态。 |
 
 **错误码：**
 
@@ -88,7 +86,7 @@ Gets the status of auto-framing effect.
 getControlCenterHeight(): number
 ```
 
-Gets the control center height.
+获取控制中心高度。
 
 **起始版本：** 26.0.0
 
@@ -104,7 +102,7 @@ Gets the control center height.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | the control center height, in units of vp. |
+| number | 控制中心高度，单位为 vp。 |
 
 **错误码：**
 
@@ -118,7 +116,7 @@ Gets the control center height.
 getCurrentDevice(): CameraDevice
 ```
 
-Gets the current camera device.
+获取当前相机设备。
 
 **起始版本：** 26.0.0
 
@@ -134,7 +132,7 @@ Gets the current camera device.
 
 | 类型 | 说明 |
 | --- | --- |
-| [CameraDevice](arkts-camera-camera-cameradevice-i.md) | the current camera device. |
+| [CameraDevice](arkts-camera-camera-cameradevice-i.md) | 当前相机设备。 |
 
 **错误码：**
 
@@ -149,7 +147,7 @@ Gets the current camera device.
 isAutoFramingSupported(): boolean
 ```
 
-Checks whether auto-framing is supported.
+查询是否支持自动取景。
 
 **起始版本：** 24
 
@@ -163,7 +161,7 @@ Checks whether auto-framing is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Is auto-framing supported. |
+| boolean | 是否支持自动取景。 |
 
 **错误码：**
 
@@ -177,7 +175,7 @@ Checks whether auto-framing is supported.
 release(): Promise<void>
 ```
 
-Release control center session object.
+释放控制中心会话对象。
 
 **起始版本：** 20
 
@@ -191,7 +189,7 @@ Release control center session object.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise&lt;void&gt; | 用于返回结果的 Promise。 |
 
 **错误码：**
 
@@ -205,7 +203,7 @@ Release control center session object.
 usedAsPosition(position: CameraPosition): void
 ```
 
-Sets the camera to be used as a camera at the specified position.
+设置将相机用作指定位置的相机。
 
 **起始版本：** 26.0.0
 
@@ -221,7 +219,7 @@ Sets the camera to be used as a camera at the specified position.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| position | [CameraPosition](arkts-camera-camera-cameraposition-e.md) | 是 | The positon used for the camera. |
+| position | [CameraPosition](arkts-camera-camera-cameraposition-e.md) | 是 | 相机使用的位置。 |
 
 **错误码：**
 

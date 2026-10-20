@@ -6,8 +6,6 @@ interface WifiP2pDevice
 
 P2P device information.
 
-@typedef WifiP2pDevice
-
 **Since:** 9
 
 <!--Device-wifiManager-interface WifiP2pDevice--><!--Device-wifiManager-interface WifiP2pDevice-End-->

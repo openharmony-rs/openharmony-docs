@@ -6,8 +6,6 @@ export interface SearchResult
 
 Search result.
 
-@typedef SearchResult
-
 **Since:** 21
 
 <!--Device-mechanicManager-export interface SearchResult--><!--Device-mechanicManager-export interface SearchResult-End-->

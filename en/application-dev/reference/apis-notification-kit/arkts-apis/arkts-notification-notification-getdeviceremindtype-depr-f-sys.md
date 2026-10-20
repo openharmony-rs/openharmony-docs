@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getdeviceremindtype1"></a>
-
 ## getDeviceRemindType
 
 ```TypeScript
@@ -35,8 +33,25 @@ Obtains the notification reminder type. This API uses an asynchronous callback t
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;DeviceRemindType&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
+**Examples**
 
-<a id="getdeviceremindtype2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let getDeviceRemindTypeCallback = (err: Base.BusinessError, data: Notification.DeviceRemindType) => {
+  if (err) {
+    console.error("getDeviceRemindType failed " + JSON.stringify(err));
+  } else {
+    console.info("getDeviceRemindType success");
+  }
+};
+
+Notification.getDeviceRemindType(getDeviceRemindTypeCallback);
+```
+
+<!--DelEnd-->
+
 
 ## getDeviceRemindType
 
@@ -65,3 +80,18 @@ Obtains the notification reminder type. This API uses a promise to return the re
 | Type | Description |
 | --- | --- |
 | Promise&lt;DeviceRemindType&gt; | Promise used to return the result. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+
+Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) => {
+  console.info("getDeviceRemindType success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`getDeviceRemindType failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

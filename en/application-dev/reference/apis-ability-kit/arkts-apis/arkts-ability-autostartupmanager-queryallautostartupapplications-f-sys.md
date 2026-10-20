@@ -6,8 +6,6 @@
 import { autoStartupManager } from '@kit.AbilityKit';
 ```
 
-<a id="queryallautostartupapplications1"></a>
-
 ## queryAllAutoStartupApplications
 
 ```TypeScript
@@ -43,8 +41,6 @@ Obtains information about all auto-startup application components. This API uses
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Failed to connect to the system service. |
 
-
-<a id="queryallautostartupapplications2"></a>
 
 ## queryAllAutoStartupApplications
 

@@ -6,8 +6,6 @@
 import { cooperate } from '@kit.DistributedServiceKit';
 ```
 
-<a id="activatecooperate1"></a>
-
 ## activateCooperate
 
 ```TypeScript
@@ -40,8 +38,8 @@ function activateCooperate(targetNetworkId: string, inputDeviceId: number, callb
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
-| [20900001](../errorcode-devicestatus.md#20900001-操作输入设备失败) | Service exception. Possible causes:<br>1. A system error, such as null pointer, container-related exception, or IPC exception. <br>2. N-API invocation exception or invalid N-API status. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| [20900001](../errorcode-devicestatus.md#20900001-操作输入设备失败) | Service exception. Possible causes: <br>1. A system error, such as null pointer, container-related exception, or IPC exception. <br>2. N-API invocation exception or invalid N-API status. |
 
 <!--Del-->
 **示例**
@@ -66,8 +64,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="activatecooperate2"></a>
 
 ## activateCooperate
 
@@ -106,8 +102,8 @@ function activateCooperate(targetNetworkId: string, inputDeviceId: number): Prom
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
-| [20900001](../errorcode-devicestatus.md#20900001-操作输入设备失败) | Service exception. Possible causes:<br>1. A system error, such as null pointer, container-related exception, or IPC exception. <br>2. N-API invocation exception or invalid N-API status. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
+| [20900001](../errorcode-devicestatus.md#20900001-操作输入设备失败) | Service exception. Possible causes: <br>1. A system error, such as null pointer, container-related exception, or IPC exception. <br>2. N-API invocation exception or invalid N-API status. |
 
 <!--Del-->
 **示例**

@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="isdistributedenabled3"></a>
-
 ## isDistributedEnabled
 
 ```TypeScript

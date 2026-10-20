@@ -6,8 +6,6 @@
 import { relationalStore } from '@kit.ArkData';
 ```
 
-<a id="getrdbstore1"></a>
-
 ## getRdbStore
 
 ```TypeScript
@@ -22,7 +20,7 @@ function getRdbStore(context: Context, config: StoreConfig, callback: AsyncCallb
 
 | 当前打开数据库时配置的加密类型 | 本设备上创建该数据库时的加密类型 | 结果 |  
 | ------- | -------------------------------- | ---- |  
-| 非加密 | 加密 | 使用加密配置（encrypt=true）打开数据库。 |
+| 非加密 | 加密 | 使用加密配置（encrypt=true）打开数据库。 |  
 | 加密 | 非加密 | 使用非加密配置（encrypt=false）打开数据库。 |
 
 getRdbStore支持多线程并发操作。
@@ -45,7 +43,7 @@ getRdbStore支持多线程并发操作。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800010](../errorcode-data-rdb.md#14800010-数据库路径不合法) | Failed to open or delete the database by an invalid database path. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
@@ -118,8 +116,6 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="getrdbstore2"></a>
-
 ## getRdbStore
 
 ```TypeScript
@@ -134,7 +130,7 @@ function getRdbStore(context: Context, config: StoreConfig): Promise<RdbStore>
 
 | 当前打开数据库时配置的加密类型 | 本设备上创建该数据库时的加密类型 | 结果 |  
 | ------- | -------------------------------- | ---- |  
-| 非加密 | 加密 | 使用加密配置（encrypt=true）打开数据库。 |
+| 非加密 | 加密 | 使用加密配置（encrypt=true）打开数据库。 |  
 | 加密 | 非加密 | 使用非加密配置（encrypt=false）打开数据库。 |
 
 getRdbStore支持多线程并发操作。
@@ -162,7 +158,7 @@ getRdbStore支持多线程并发操作。
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800010](../errorcode-data-rdb.md#14800010-数据库路径不合法) | Failed to open or delete the database by an invalid database path. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |

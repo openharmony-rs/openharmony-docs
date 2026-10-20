@@ -6,8 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getabilityinfo1"></a>
-
 ## getAbilityInfo
 
 ```TypeScript
@@ -53,8 +51,6 @@ bundle.getAbilityInfo(bundleName, abilityName, (err, data) => {
 })
 ```
 
-
-<a id="getabilityinfo2"></a>
 
 ## getAbilityInfo
 

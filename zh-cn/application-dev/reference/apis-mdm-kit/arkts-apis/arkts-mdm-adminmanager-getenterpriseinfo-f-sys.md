@@ -6,8 +6,6 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="getenterpriseinfo1"></a>
-
 ## getEnterpriseInfo
 
 ```TypeScript
@@ -65,8 +63,6 @@ adminManager.getEnterpriseInfo(wantTemp, (err, result) => {
 
 <!--DelEnd-->
 
-
-<a id="getenterpriseinfo2"></a>
 
 ## getEnterpriseInfo
 

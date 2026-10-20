@@ -144,24 +144,6 @@ Secure wifi detect config: false - not, true - yes.
 
 **System API:** This is a system API.
 
-## netId
-
-```TypeScript
-netId?: number
-```
-
-Allocated networkId
-
-**Type:** number
-
-**Since:** 22
-
-<!--Device-WifiDeviceConfig-netId?: int--><!--Device-WifiDeviceConfig-netId?: int-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.STA
-
-**System API:** This is a system API.
-
 ## proxyConfig
 
 ```TypeScript

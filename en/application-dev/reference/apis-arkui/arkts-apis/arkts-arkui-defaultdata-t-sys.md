@@ -6,8 +6,6 @@ type DefaultData<T> = object
 
 Used for ide.
 
-@typedef { object } DefaultData<T>
-
 **Type:** object
 
 **Since:** 4

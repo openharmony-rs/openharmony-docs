@@ -6,8 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="addcontact1"></a>
-
 ## addContact
 
 ```TypeScript
@@ -20,7 +18,7 @@ function addContact(contact: Contact, callback: AsyncCallback<number>): void
 
 **废弃版本：** 10
 
-**替代接口：** [addContact](#addcontact2)(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;)
+**替代接口：** [addContact](#addcontact)(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -60,8 +58,6 @@ contact.addContact(context, {
 });
 ```
 
-
-<a id="addcontact2"></a>
 
 ## addContact
 
@@ -126,8 +122,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 
-<a id="addcontact3"></a>
-
 ## addContact
 
 ```TypeScript
@@ -140,7 +134,7 @@ function addContact(contact: Contact): Promise<number>
 
 **废弃版本：** 10
 
-**替代接口：** [addContact](#addcontact4)(context: Context, contact: Contact)
+**替代接口：** [addContact](#addcontact)(context: Context, contact: Contact)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -180,8 +174,6 @@ promise.then((data) => {
 });
 ```
 
-
-<a id="addcontact4"></a>
 
 ## addContact
 

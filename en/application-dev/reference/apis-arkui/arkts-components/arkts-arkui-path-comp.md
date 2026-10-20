@@ -60,7 +60,7 @@ Creates a **Path** component, which is used to generate a closed custom shape ba
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [PathOptions](arkts-arkui-path-comp-pathoptions-i.md) | No | Configuration object of the **Path** component drawing attributes.<br>If this parameter is omitted, no drawing attribute is set, and the component is displayed at the default size. The default width and height are automatically calculated based on the path content. <br>Abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. |
+| options | [PathOptions](arkts-arkui-path-comp-pathoptions-i.md) | No | Configuration object of the **Path** component drawing attributes. <br>If this parameter is omitted, no drawing attribute is set, and the component is displayed at the default size. The default width and height are automatically calculated based on the path content. <br>Abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. |
 
 ## Path
 
@@ -84,7 +84,7 @@ Creates a **Path** object instance, which is used to generate a closed custom sh
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [PathOptions](arkts-arkui-path-comp-pathoptions-i.md) | No | Configuration object of the drawing attributes of the **Path** component.<br>If this parameter is not set, no drawing attribute is set, and the component is displayed at the default size. The default width and height are automatically calculated based on the path content. <br>The abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. |
+| options | [PathOptions](arkts-arkui-path-comp-pathoptions-i.md) | No | Configuration object of the drawing attributes of the **Path** component. <br>If this parameter is not set, no drawing attribute is set, and the component is displayed at the default size. The default width and height are automatically calculated based on the path content. <br>The abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. |
 
 ## Summary
 

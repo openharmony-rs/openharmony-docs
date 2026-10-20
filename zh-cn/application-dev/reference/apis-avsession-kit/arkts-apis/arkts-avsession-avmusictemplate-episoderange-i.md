@@ -6,8 +6,6 @@ interface EpisodeRange
 
 剧集的范围的定义。
 
-@interface EpisodeRange
-
 **起始版本：** 23
 
 <!--Device-avMusicTemplate-interface EpisodeRange--><!--Device-avMusicTemplate-interface EpisodeRange-End-->

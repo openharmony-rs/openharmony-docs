@@ -28,7 +28,7 @@ Sets the effect strategy of the **SymbolGlyph** component. If this API is not us
 > 
 > - For animation attributes, only the **effectStrategy** attribute or a single **symbolEffect** attribute is supported. Mixing multiple animation attributes is not supported.
 > 
-> - This API supports only the three preset animation types: NONE, SCALE, and HIERARCHICAL. After being set, the animation plays automatically. To use richer animation types (such as appear, disappear, bounce, replacement, and pulse animations) or to control the playback state and trigger timing of the animation, use the [symbolEffect](#symboleffect1) API. The two cannot be used at the same time. For details, see the description of the [symbolEffect](#symboleffect1) API.
+> - This API supports only the three preset animation types: NONE, SCALE, and HIERARCHICAL. After being set, the animation plays automatically. To use richer animation types (such as appear, disappear, bounce, replacement, and pulse animations) or to control the playback state and trigger timing of the animation, use the [symbolEffect](#symboleffect) API. The two cannot be used at the same time. For details, see the description of the [symbolEffect](#symboleffect) API.
 
 **Since:** 11
 
@@ -47,8 +47,6 @@ Sets the effect strategy of the **SymbolGlyph** component. If this API is not us
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [SymbolEffectStrategy](arkts-arkui-symbolglyph-comp-symboleffectstrategy-e.md) | Yes | Animation strategy of the SymbolGlyph component. |
-
-<a id="fontcolor1"></a>
 
 ## fontColor
 
@@ -80,15 +78,13 @@ Sets the font color of the **SymbolGlyph** component.
 | --- | --- | --- | --- |
 | value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Font color of the SymbolGlyph component. <br> When value is undefined, the default color of the icon is used, and the default color follows the theme. <br>The color setting effect varies with the rendering strategy. For details, see [SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md). |
 
-<a id="fontcolor2"></a>
-
 ## fontColor
 
 ```TypeScript
 fontColor(value: Array<ResourceColor | ColorMetrics> | undefined)
 ```
 
-Sets the font color of the **SymbolGlyph** component. Compared with the [fontColor](#fontcolor1) API, this API supports passing in a parameter of the [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md) type.
+Sets the font color of the **SymbolGlyph** component. Compared with the [fontColor](#fontcolor) API, this API supports passing in a parameter of the [ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md) type.
 
 > **NOTE:** 
 > 
@@ -144,8 +140,6 @@ The display size of the icon is controlled by **fontSize**. After **width** or *
 | --- | --- | --- | --- |
 | value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Font size of the SymbolGlyph component. <br>Value range: [0, +∞) <br>Unit: [fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units) <br>Percentage strings are not supported. |
 
-<a id="fontweight1"></a>
-
 ## fontWeight
 
 ```TypeScript
@@ -176,9 +170,7 @@ The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | Yes | Font weight of the SymbolGlyph component.<br>The value of the number type ranges from 100 to 900, with an interval of 100. The default value is 400. A larger value indicates a heavier font. The string type supports the string form of the number type value, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. If the value is set too large, the font may be truncated in different fonts. <br>**Note:** <br>If a value outside the value range is passed, the default value is used. If a value that does not meet the interval requirement is passed, the default value is also used (only values that are integer multiples of 100 are supported). |
-
-<a id="fontweight2"></a>
+| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | Yes | Font weight of the SymbolGlyph component. <br>The value of the number type ranges from 100 to 900, with an interval of 100. The default value is 400. A larger value indicates a heavier font. The string type supports the string form of the number type value, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. If the value is set too large, the font may be truncated in different fonts. <br>**Note:** <br>If a value outside the value range is passed, the default value is used. If a value that does not meet the interval requirement is passed, the default value is also used (only values that are integer multiples of 100 are supported). |
 
 ## fontWeight
 
@@ -204,7 +196,7 @@ Sets the font weight of the symbol glyph in the **SymbolGlyph** component. It su
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the symbol glyph in the **SymbolGlyph** component.<br>For the number type, the value range is [100, 900], with an interval of 100. The default value is 400. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in **FontWeight**. If the value is set too large, the font may be truncated in different fonts. <br>If the value passed in is out of the value range, the default value is used. If the value passed in does not meet the interval requirement, the passed-in value is used when **enableVariableFontWeight** of **fontWeightConfigs** is set to **true**; otherwise, the default value is used. |
+| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the symbol glyph in the **SymbolGlyph** component. <br>For the number type, the value range is [100, 900], with an interval of 100. The default value is 400. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in **FontWeight**. If the value is set too large, the font may be truncated in different fonts. <br>If the value passed in is out of the value range, the default value is used. If the value passed in does not meet the interval requirement, the passed-in value is used when **enableVariableFontWeight** of **fontWeightConfigs** is set to **true**; otherwise, the default value is used. |
 | fontWeightConfigs | [FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md) | No | Font weight configuration. Pass this parameter when variable font weight adjustment (setting fine-grained font weight values that are not integer multiples of 100, such as 220 and 660) or automatic font weight update based on the device font weight level is required. The default value is inherited from [FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md). |
 
 ## maxFontScale
@@ -229,7 +221,7 @@ Sets the maximum font scale factor of the SymbolGlyph component. Applicable to s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Maximum font scale factor of the SymbolGlyph component.<br>Value range: [1, +∞) <br>**Note:** <br>If the set value is less than 1, it is processed as 1. If not set, the maximum scale factor is not limited. |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Maximum font scale factor of the SymbolGlyph component. <br>Value range: [1, +∞) <br>**Note:** <br>If the set value is less than 1, it is processed as 1. If not set, the maximum scale factor is not limited. |
 
 ## minFontScale
 
@@ -253,7 +245,7 @@ Sets the minimum font scale factor of the SymbolGlyph component. Applicable to s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Minimum font scale factor of the SymbolGlyph component.<br>Value range: [0, 1] <br>When set to 0, the scale is minimized. <br>**Note:** <br>When the set value is less than 0, it is treated as 0. When the set value is greater than 1, it is treated as 1. Invalid values do not take effect by default. When not set, the minimum scale factor is not limited. |
+| scale | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)&gt; | Yes | Minimum font scale factor of the SymbolGlyph component. <br>Value range: [0, 1] <br>When set to 0, the scale is minimized. <br>**Note:** <br>When the set value is less than 0, it is treated as 0. When the set value is greater than 1, it is treated as 1. Invalid values do not take effect by default. When not set, the minimum scale factor is not limited. |
 
 ## renderingStrategy
 
@@ -293,7 +285,7 @@ shaderStyle(shader: Array<ShaderStyle | undefined> | ShaderStyle)
 
 Applies a gradient or solid color shader effect to the **SymbolGlyph** component.
 
-Can be displayed as a radial gradient [RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md), a linear gradient [LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md), or a solid color [ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md). The priority of shaderStyle is higher than that of [fontColor](#fontcolor1) and AI recognition. For solid colors, [fontColor](#fontcolor1) is recommended.
+Can be displayed as a radial gradient [RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md), a linear gradient [LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md), or a solid color [ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md). The priority of shaderStyle is higher than that of [fontColor](#fontcolor) and AI recognition. For solid colors, [fontColor](#fontcolor) is recommended.
 
 **Since:** 20
 
@@ -310,8 +302,6 @@ Can be displayed as a radial gradient [RadialGradientStyle](../arkts-apis/arkts-
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | shader | Array&lt;[ShaderStyle](../arkts-apis/arkts-arkui-shaderstyle-c.md) &#124; undefined&gt; &#124; [ShaderStyle](../arkts-apis/arkts-arkui-shaderstyle-c.md) | Yes | Radial gradient, linear gradient, or solid color. <br>When a ShaderStyle is passed in, it covers all layers. When an array is passed in, if a data item is ShaderStyle, it is applied to that layer; if an array item is undefined, that layer uses the default color of SymbolGlyph, and layers that are not set also use the default color. Based on the passed-in parameter, the radial gradient [RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md), linear gradient [LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md), or solid color [ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md) is processed accordingly, and finally set on the SymbolGlyph component to display a gradient color effect. <br>**NOTE:** <br>Use a percentage for the center point. If a non-percentage value (for example, 10PX) is used, the effect is equivalent to setting 1000%. <br>It is recommended to use a percentage for the radius. <br>The percentage is based on the icon size. The recommended value range is [0, 1). |
-
-<a id="symboleffect1"></a>
 
 ## symbolEffect
 
@@ -343,9 +333,7 @@ Sets the effect strategy and playback state of the **SymbolGlyph** component. If
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | symbolEffect | [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md) | Yes | Animation strategy of the SymbolGlyph component. |
-| isActive | boolean | No | Playback state of the SymbolGlyph component animation.<br>The value **true** means to play, and **false** means not to play. |
-
-<a id="symboleffect2"></a>
+| isActive | boolean | No | Playback state of the SymbolGlyph component animation. <br>The value **true** means to play, and **false** means not to play. |
 
 ## symbolEffect
 
@@ -372,7 +360,7 @@ Sets the effect strategy and playback trigger of the **SymbolGlyph** component. 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | symbolEffect | [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md) | Yes | Animation strategy of the SymbolGlyph component. |
-| triggerValue | number | No | Trigger for playing the animation of the SymbolGlyph component. The animation is triggered when the value changes.<br>Set this parameter to -1 if you do not want to trigger the animation on the first time. |
+| triggerValue | number | No | Trigger for playing the animation of the SymbolGlyph component. The animation is triggered when the value changes. <br>Set this parameter to -1 if you do not want to trigger the animation on the first time. |
 
 ## symbolShadow
 

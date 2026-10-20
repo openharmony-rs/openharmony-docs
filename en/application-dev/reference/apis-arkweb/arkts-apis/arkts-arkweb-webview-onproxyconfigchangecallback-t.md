@@ -13,3 +13,7 @@ Callback invoked when the proxy configuration changes. A successful callback ind
 <!--Device-webview-type OnProxyConfigChangeCallback = () => void--><!--Device-webview-type OnProxyConfigChangeCallback = () => void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
+
+**Examples**
+
+For details about the sample code, see [removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride).

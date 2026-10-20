@@ -6,8 +6,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="finish1"></a>
-
 ## finish
 
 ```TypeScript
@@ -22,7 +20,7 @@ The **huks.init**, **huks.update**, and **huks.finish** must be used together.
 
 **Deprecated since:** 9
 
-**Substitutes:** [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishsession1)(handle: number, options: HuksOptions, callback: AsyncCallback&lt;HuksReturnResult&gt;)
+**Substitutes:** [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishsession)(handle: number, options: HuksOptions, callback: AsyncCallback&lt;HuksReturnResult&gt;)
 
 <!--Device-huks-function finish(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function finish(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -36,8 +34,6 @@ The **huks.init**, **huks.update**, and **huks.finish** must be used together.
 | options | [HuksOptions](arkts-universalkeystore-huks-huksoptions-i.md) | Yes | Parameter set used for the **finish** operation. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the obtained **HuksResult**. Otherwise, **err** is an error object. |
 
-
-<a id="finish2"></a>
 
 ## finish
 
@@ -53,7 +49,7 @@ The **huks.init**, **huks.update**, and **huks.finish** must be used together.
 
 **Deprecated since:** 9
 
-**Substitutes:** [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishsession2)( handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback&lt;HuksReturnResult&gt; )
+**Substitutes:** [finishSession](arkts-universalkeystore-huks-finishsession-f.md#finishsession)( handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback&lt;HuksReturnResult&gt; )
 
 <!--Device-huks-function finish(handle: number, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function finish(handle: number, options: HuksOptions): Promise<HuksResult>-End-->
 

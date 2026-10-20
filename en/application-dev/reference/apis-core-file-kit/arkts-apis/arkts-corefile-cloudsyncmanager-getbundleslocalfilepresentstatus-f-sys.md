@@ -42,10 +42,10 @@ Obtains the existence status of local files for multiple applications and checks
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: <br>1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900010 | Try again. |
-| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameter are left unspecified. 2.The length of the input parameter exceeds the upper limit. <br>3.The input parameter contains an invalid bundleName. |
-| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13900020 | Invalid argument. Possible causes: <br>1.Mandatory parameter are left unspecified. 2.The length of the input parameter exceeds the upper limit. <br>3.The input parameter contains an invalid bundleName. |
+| 22400005 | Inner error. Possible causes: <br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 <!--Del-->
 **Examples**

@@ -16,8 +16,6 @@ declare class TextPickerAttribute extends CommonMethod<TextPickerAttribute>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="canloop1"></a>
-
 ## canLoop
 
 ```TypeScript
@@ -42,15 +40,13 @@ canLoop(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否可循环滚动。<br>- true：可循环。<br>- false：不可循环。<br>默认值：true |
 
-<a id="canloop2"></a>
-
 ## canLoop
 
 ```TypeScript
 canLoop(isLoop: Optional<boolean>)
 ```
 
-设置是否可循环滚动。与[canLoop<sup>10+</sup>](#canloop1)相比，isLoop参数新增了对undefined类型的支持。
+设置是否可循环滚动。与[canLoop<sup>10+</sup>](#canloop)相比，isLoop参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -67,8 +63,6 @@ canLoop(isLoop: Optional<boolean>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isLoop | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 是否可循环滚动。<br>- true：可循环。<br>- false：不可循环。<br>默认值：true <br>当isLoop的值为undefined时，使用默认值。 |
-
-<a id="defaultpickeritemheight1"></a>
 
 ## defaultPickerItemHeight
 
@@ -94,15 +88,13 @@ defaultPickerItemHeight(value: number | string)
 | --- | --- | --- | --- |
 | value | number &#124; string | 是 | 选择项的高度。<br>取值范围：<br>number类型：[0, +∞)，单位为vp。<br>string类型：仅支持number类型取值的字符串形式，例如"56"。<br>默认值：选中项56vp，非选中项36vp。<br>**说明：** <br>设置该参数后，选中项与非选中项的高度均为所设置的值。<br>当value的值为负数时，使用默认值。 |
 
-<a id="defaultpickeritemheight2"></a>
-
 ## defaultPickerItemHeight
 
 ```TypeScript
 defaultPickerItemHeight(height: Optional<number | string>)
 ```
 
-设置选择项的高度。与[defaultPickerItemHeight](#defaultpickeritemheight1)相比，height参数新增了对undefined类型的支持。
+设置选择项的高度。与[defaultPickerItemHeight](#defaultpickeritemheight)相比，height参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -192,8 +184,6 @@ disableTextStyleAnimation(disabled: boolean)
 | --- | --- | --- | --- |
 | disabled | boolean | 是 | 是否关闭滑动过程中文本样式变化的动效。<br>- true：关闭文本样式变化动效。<br>- false：不关闭文本样式变化动效。<br>默认值：false <br>**说明：** <br>设置为true时，滑动过程中无字号、字重、字体颜色等变化动效，且文本均显示为[defaultTextStyle] [defaultTextStyle](#defaulttextstyle)属性设置的样式。如未设置[defaultTextStyle] [defaultTextStyle](#defaulttextstyle)，则显示为[Text](arkts-arkui-text-comp.md)组件默认样式。设置为false时，使用系统默认的滑动文本样式变化动效。 |
 
-<a id="disappeartextstyle1"></a>
-
 ## disappearTextStyle
 
 ```TypeScript
@@ -218,15 +208,13 @@ disappearTextStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | 是 | 边缘项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>} <br>} <br>**说明：** 未调用该方法设置样式时，使用默认值。 |
 
-<a id="disappeartextstyle2"></a>
-
 ## disappearTextStyle
 
 ```TypeScript
 disappearTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。与[disappearTextStyle<sup>10+</sup>](#disappeartextstyle1)相比，style参数新增了对undefined类型的支持。
+设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。与[disappearTextStyle<sup>10+</sup>](#disappeartextstyle)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -244,15 +232,13 @@ disappearTextStyle(style: Optional<PickerTextStyle>)
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | 是 | 边缘项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>} <br>} <br>当style的值为undefined时，使用默认值。 |
 
-<a id="disappeartextstyle3"></a>
-
 ## disappearTextStyle
 
 ```TypeScript
 disappearTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 ```
 
-设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[disappearTextStyle<sup>18+</sup>](#disappeartextstyle2)相比，style参数新增了对[TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)类型的支持。
+设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[disappearTextStyle<sup>18+</sup>](#disappeartextstyle)相比，style参数新增了对[TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)类型的支持。
 
 **起始版本：** 20
 
@@ -269,8 +255,6 @@ disappearTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) &#124; [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)&gt; | 是 | 边缘项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。<br>默认值：<br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>}, <br>minFontSize: 0, <br>maxFontSize: 0, <br>overflow: TextOverflow.Clip <br>} <br>当style的值为undefined时，使用默认值。 |
-
-<a id="divider1"></a>
 
 ## divider
 
@@ -298,15 +282,13 @@ divider(value: DividerOptions | null)
 | --- | --- | --- | --- |
 | value | [DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md) &#124; null | 是 | 分割线样式。当需要自定义分割线的线宽、边距、颜色时传入DividerOptions对象；当需要隐藏分割线时传入null；不传入时使用默认样式。<br>默认值：<br>{<br>strokeWidth: '2px', <br>startMargin: 0, <br>endMargin: 0, <br>color: '#33000000'<br>} <br>1. 当value设置为有效的[DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md)时，按设置的样式显示分割线。<br>2. 当value设置为null时，不显示分割线。 |
 
-<a id="divider2"></a>
-
 ## divider
 
 ```TypeScript
 divider(textDivider: Optional<DividerOptions | null>)
 ```
 
-设置分割线样式，不设置该属性则按“默认值”展示分割线。与[divider<sup>12+</sup>](#divider1)相比，textDivider参数新增了对undefined类型的支持。
+设置分割线样式，不设置该属性则按“默认值”展示分割线。与[divider<sup>12+</sup>](#divider)相比，textDivider参数新增了对undefined类型的支持。
 
 [DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md)中startMargin + endMargin 超过组件宽度后，startMargin和endMargin会被置0。
 
@@ -350,8 +332,6 @@ enableHapticFeedback(enable: Optional<boolean>)
 | --- | --- | --- | --- |
 | enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置是否开启触控反馈。<br>- true：开启触控反馈。<br>- false：不开启触控反馈。<br>默认值：true <br>设置为true后，其生效情况取决于系统的硬件是否支持。若硬件不支持触控反馈功能，开启该功能不会产生触控反馈效果，也不会抛出异常。 |
 
-<a id="gradientheight1"></a>
-
 ## gradientHeight
 
 ```TypeScript
@@ -376,15 +356,13 @@ gradientHeight(value: Dimension)
 | --- | --- | --- | --- |
 | value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | 内容区上下边缘的渐隐高度。<br>默认值：36vp <br>取值范围：[0, +∞)，支持百分比。<br>**说明：** <br>1. value设置为百分比时，100%为TextPicker高度的一半。<br>2. value设置为0时不显示渐隐效果。<br>3. value设置为数字且超过TextPicker高度的一半时，使用默认值。<br>4. 当value的值为负数时，使用默认值。 |
 
-<a id="gradientheight2"></a>
-
 ## gradientHeight
 
 ```TypeScript
 gradientHeight(height: Optional<Dimension>)
 ```
 
-设置渐隐效果的高度。若未设置该属性，则显示默认渐隐效果。与[gradientHeight<sup>12+</sup>](#gradientheight1)相比，height参数新增了对undefined类型的支持。
+设置渐隐效果的高度。若未设置该属性，则显示默认渐隐效果。与[gradientHeight<sup>12+</sup>](#gradientheight)相比，height参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -401,8 +379,6 @@ gradientHeight(height: Optional<Dimension>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | height | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Dimension](../arkts-apis/arkts-arkui-dimension-t.md)&gt; | 是 | 内容区上下边缘的渐隐高度。<br>默认值：36vp <br>取值范围：[0, +∞)，支持百分比。<br>**说明：** <br>1. height设置为百分比时，100%为TextPicker高度的一半。<br>2. height设置为0时不显示渐隐效果。<br>3. height设置为数字且超过TextPicker高度的一半时，使用默认值。<br>4. 当height的值为undefined或负数时，使用默认值。 |
-
-<a id="onchange1"></a>
 
 ## onChange
 
@@ -430,15 +406,13 @@ onChange(callback: (value: string[], index: number[]) => void)
 | --- | --- | --- | --- |
 | callback | (value: string[], index: number[]) =&gt; void | 是 | 选项归位至选中项位置时触发的回调。回调返回选中项的文本和索引值。 |
 
-<a id="onchange2"></a>
-
 ## onChange
 
 ```TypeScript
 onChange(callback: Optional<OnTextPickerChangeCallback>)
 ```
 
-滑动TextPicker文本内容后，选项归位至选中项位置时，触发该回调。当用户滑动选择器导致选中项变化时触发，不能通过修改双向绑定的状态变量（如selected）来触发。当显示文本或图片加文本列表时，value值为选中项中的文本值，当显示图片列表时，value值为空。与[onChange](#onchange1)相比，callback参数新增了对undefined类型的支持。
+滑动TextPicker文本内容后，选项归位至选中项位置时，触发该回调。当用户滑动选择器导致选中项变化时触发，不能通过修改双向绑定的状态变量（如selected）来触发。当显示文本或图片加文本列表时，value值为选中项中的文本值，当显示图片列表时，value值为空。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
 
 回调会在滑动动画结束后触发，如果需要快速获取索引值变化，建议使用[onEnterSelectedArea]{@linkTextPickerAttribute#onEnterSelectedArea}接口。
 
@@ -468,9 +442,9 @@ onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback)
 
 > **说明：** 
 > 
-> - 与[onChange](#onchange1)事件的差别在于，该事件的触发时机早于[onChange](#onchange1)事件。onEnterSelectedArea在滑动过程中选项进入选中区域时触发，适合实时获取索引值变化，适用于需要快速响应用户滑动的场景；onChange在滑动结束且选中项归位后触发，适合获取最终确认的选中值，适用于需要获取用户最终选择的场景。
+> - 与[onChange](#onchange)事件的差别在于，该事件的触发时机早于[onChange](#onchange)事件。onEnterSelectedArea在滑动过程中选项进入选中区域时触发，适合实时获取索引值变化，适用于需要快速响应用户滑动的场景；onChange在滑动结束且选中项归位后触发，适合获取最终确认的选中值，适用于需要获取用户最终选择的场景。
 > 
-> - 与[onScrollStop](#onscrollstop1)事件的差别在于，onEnterSelectedArea关注的是选项进入选中区域的逻辑状态，onScrollStop关注的是滚动行为完全停止。需要更早响应索引变化时使用onEnterSelectedArea，需要确认滚动完全停止时使用[onScrollStop](#onscrollstop1)。
+> - 与[onScrollStop](#onscrollstop)事件的差别在于，onEnterSelectedArea关注的是选项进入选中区域的逻辑状态，onScrollStop关注的是滚动行为完全停止。需要更早响应索引变化时使用onEnterSelectedArea，需要确认滚动完全停止时使用[onScrollStop](#onscrollstop)。
 > 
 > - 在多列联动场景中，不建议使用该回调。该回调标识的是滑动过程中选项进入分割线区域内的节点；跟随变化的选项并不涉及滑动，因此回调返回值中仅当前滑动列的值会正常变化，其余未滑动列的值保持不变。
 > 
@@ -491,8 +465,6 @@ onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [TextPickerEnterSelectedAreaCallback](arkts-arkui-textpicker-comp-textpickerenterselectedareacallback-t.md) | 是 | 滑动TextPicker过程中，选项进入分割线区域时触发的回调。 |
-
-<a id="onscrollstop1"></a>
 
 ## onScrollStop
 
@@ -526,15 +498,13 @@ onScrollStop(callback: TextPickerScrollStopCallback)
 | --- | --- | --- | --- |
 | callback | [TextPickerScrollStopCallback](arkts-arkui-textpicker-comp-textpickerscrollstopcallback-t.md) | 是 | 文本选择器的选项列滑动停止时触发该事件。 |
 
-<a id="onscrollstop2"></a>
-
 ## onScrollStop
 
 ```TypeScript
 onScrollStop(callback: Optional<TextPickerScrollStopCallback>)
 ```
 
-文本选择器的选项列滑动停止时触发该事件。与[onScrollStop<sup>14+</sup>](#onscrollstop1)相比，callback参数新增了对undefined类型的支持。
+文本选择器的选项列滑动停止时触发该事件。与[onScrollStop<sup>14+</sup>](#onscrollstop)相比，callback参数新增了对undefined类型的支持。
 
 手指拖动选项列触发的滑动，手指离开屏幕且滑动停止时会触发该事件。
 
@@ -584,8 +554,6 @@ selectedBackgroundStyle(style: Optional<PickerBackgroundStyle>)
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerBackgroundStyle](arkts-arkui-textpicker-comp-pickerbackgroundstyle-i.md)&gt; | 是 | 选中项背景的颜色和边框圆角半径，多列模式时会同时设置所有列的选中项背景的颜色和圆角半径。<br>默认值：<br>{<br>color: $r('sys.color.comp_background_tertiary'), <br>borderRadius: $r('sys.float.corner_radius_level12') <br>} |
 
-<a id="selectedindex1"></a>
-
 ## selectedIndex
 
 ```TypeScript
@@ -610,15 +578,13 @@ selectedIndex(value: number[])
 | --- | --- | --- | --- |
 | value | number[] | 是 | 选中项在数据选择列表中的索引值，索引从0开始。<br>默认值：0 <br>当value的值为负数或者超过数据选择列表的最大索引值时，使用默认值。<br> |
 
-<a id="selectedindex2"></a>
-
 ## selectedIndex
 
 ```TypeScript
 selectedIndex(index: Optional<number[]>)
 ```
 
-设置选中项在数据选择列表中的索引值，优先级高于[TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md)中的"value"属性。单列数据选择器使用number类型，多列数据选择器使用number[]类型。与[selectedIndex<sup>10+</sup>] [selectedIndex](#selectedindex1)相比，index参数新增了对undefined类型的支持。
+设置选中项在数据选择列表中的索引值，优先级高于[TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md)中的"value"属性。单列数据选择器使用number类型，多列数据选择器使用number[]类型。与[selectedIndex<sup>10+</sup>] [selectedIndex](#selectedindex)相比，index参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -635,8 +601,6 @@ selectedIndex(index: Optional<number[]>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | index | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number[]&gt; | 是 | 选中项在数据选择列表中的索引值，索引从0开始。<br>默认值：0 <br>当index的值为undefined时，使用[TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md)中的selected值。<br>当index的值为负数或者超过数据选择列表的最大索引值时，使用默认值。<br> |
-
-<a id="selectedtextstyle1"></a>
 
 ## selectedTextStyle
 
@@ -662,15 +626,13 @@ selectedTextStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | 是 | 选中项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} <br>**说明：** 未调用该方法设置样式时，使用默认值。 |
 
-<a id="selectedtextstyle2"></a>
-
 ## selectedTextStyle
 
 ```TypeScript
 selectedTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置选中项的文本颜色、字号、字体粗细。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle1)相比，style参数新增了对undefined类型的支持。
+设置选中项的文本颜色、字号、字体粗细。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -688,15 +650,13 @@ selectedTextStyle(style: Optional<PickerTextStyle>)
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | 是 | 选中项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} <br>当style的值为undefined时，使用默认值。 |
 
-<a id="selectedtextstyle3"></a>
-
 ## selectedTextStyle
 
 ```TypeScript
 selectedTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 ```
 
-设置选中项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[selectedTextStyle<sup>18+</sup>](#selectedtextstyle2)相比，style参数新增了对[TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)类型的支持。
+设置选中项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[selectedTextStyle<sup>18+</sup>](#selectedtextstyle)相比，style参数新增了对[TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)类型的支持。
 
 **起始版本：** 20
 
@@ -713,8 +673,6 @@ selectedTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) &#124; [TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)&gt; | 是 | 选中项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。<br>默认值：<br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>}, <br>minFontSize: 0, <br>maxFontSize: 0, <br>overflow: TextOverflow.Clip <br>} <br>当style的值为undefined时，使用默认值。 |
-
-<a id="textstyle1"></a>
 
 ## textStyle
 
@@ -740,15 +698,13 @@ textStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | 是 | 待选项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} <br>**说明：** 未调用该方法设置样式时，使用默认值。 |
 
-<a id="textstyle2"></a>
-
 ## textStyle
 
 ```TypeScript
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细。与[textStyle<sup>10+</sup>](#textstyle1)相比，style参数新增了对undefined类型的支持。
+设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细。与[textStyle<sup>10+</sup>](#textstyle)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -766,15 +722,13 @@ textStyle(style: Optional<PickerTextStyle>)
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | 是 | 待选项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} <br>当style的值为undefined时，使用默认值。 |
 
-<a id="textstyle3"></a>
-
 ## textStyle
 
 ```TypeScript
 textStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 ```
 
-设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[textStyle<sup>18+</sup>](#textstyle2)相比，style参数新增了对[TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)类型的支持。
+设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[textStyle<sup>18+</sup>](#textstyle)相比，style参数新增了对[TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)类型的支持。
 
 **起始版本：** 20
 

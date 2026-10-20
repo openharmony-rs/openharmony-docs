@@ -6,8 +6,6 @@
 import { unifiedDataChannel } from '@kit.ArkData';
 ```
 
-<a id="updatedata1"></a>
-
 ## updateData
 
 ```TypeScript
@@ -38,7 +36,7 @@ Updates the data in the UDMF public data channel. This API uses an asynchronous 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 
@@ -93,8 +91,6 @@ try {
 ```
 
 
-<a id="updatedata2"></a>
-
 ## updateData
 
 ```TypeScript
@@ -130,7 +126,7 @@ Updates the data in the UDMF public data channel. This API uses a promise to ret
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 

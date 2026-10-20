@@ -35,4 +35,4 @@ Initializes the active tag chip.
 
 | Type | Description |
 | --- | --- |
-| boolean | **true**: The initialization is successful.<br>**false**: The initialization fails. |
+| boolean | **true**: The initialization is successful. <br>**false**: The initialization fails. |

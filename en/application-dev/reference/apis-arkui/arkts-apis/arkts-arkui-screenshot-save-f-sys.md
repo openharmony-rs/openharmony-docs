@@ -6,8 +6,6 @@
 import { screenshot } from '@kit.ArkUI';
 ```
 
-<a id="save1"></a>
-
 ## save
 
 ```TypeScript
@@ -80,8 +78,6 @@ screenshot.save(screenshotOptions, (err: BusinessError, pixelMap: image.PixelMap
 <!--DelEnd-->
 
 
-<a id="save2"></a>
-
 ## save
 
 ```TypeScript
@@ -137,8 +133,6 @@ screenshot.save((err: BusinessError, pixelMap: image.PixelMap) => {
 
 <!--DelEnd-->
 
-
-<a id="save3"></a>
 
 ## save
 

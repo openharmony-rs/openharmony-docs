@@ -12,7 +12,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 function removeRight(deviceName: string): boolean
 ```
 
-移除应用访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。
+移除应用访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。返回true表示权限移除成功；返回false则表示权限移除失败。
 
 **起始版本：** 9
 
@@ -36,7 +36,7 @@ function removeRight(deviceName: string): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:  <br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 
 **示例**

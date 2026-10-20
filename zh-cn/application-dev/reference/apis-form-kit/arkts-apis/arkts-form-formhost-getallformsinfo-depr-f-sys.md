@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getallformsinfo1"></a>
-
 ## getAllFormsInfo
 
 ```TypeScript
@@ -53,8 +51,6 @@ formHost.getAllFormsInfo((error: Base.BusinessError, data: formInfo.FormInfo[]) 
 
 <!--DelEnd-->
 
-
-<a id="getallformsinfo2"></a>
 
 ## getAllFormsInfo
 

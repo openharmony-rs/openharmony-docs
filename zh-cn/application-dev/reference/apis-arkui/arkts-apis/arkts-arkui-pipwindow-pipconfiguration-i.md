@@ -42,7 +42,7 @@ componentController: XComponentController
 contentHeight?: number
 ```
 
-原始内容高度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create2)创建PiPController时，不传值则默认为1080。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create1)创建PiPController时，不传值则默认为XComponent组件的高度。
+原始内容高度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create)创建PiPController时，不传值则默认为1080。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create)创建PiPController时，不传值则默认为XComponent组件的高度。
 
 **类型：** number
 
@@ -60,7 +60,7 @@ contentHeight?: number
 contentWidth?: number
 ```
 
-原始内容宽度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create2)创建PiPController时，不传值则默认为1920。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create1)创建PiPController时，不传值则默认为XComponent组件的宽度。
+原始内容宽度，单位为px。用于确定画中画窗口比例。当[使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create)创建PiPController时，不传值则默认为1920。当[不使用typeNode的方式](arkts-arkui-pipwindow-create-f.md#create)创建PiPController时，不传值则默认为XComponent组件的宽度。
 
 **类型：** number
 

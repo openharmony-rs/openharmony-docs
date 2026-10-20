@@ -6,8 +6,6 @@
 import { deviceInfo } from '@kit.MDMKit';
 ```
 
-<a id="getdeviceserial1"></a>
-
 ## getDeviceSerial
 
 ```TypeScript
@@ -73,8 +71,6 @@ deviceInfo.getDeviceSerial(wantTemp, (err, result) => {
 
 <!--DelEnd-->
 
-
-<a id="getdeviceserial2"></a>
 
 ## getDeviceSerial
 

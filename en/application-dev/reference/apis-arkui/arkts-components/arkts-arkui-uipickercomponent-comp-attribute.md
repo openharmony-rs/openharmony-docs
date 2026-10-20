@@ -46,7 +46,7 @@ Sets whether the option list can loop scrolling. When there are many options and
 displayedItemCount(count: Optional<number>)
 ```
 
-Sets the number of visible options in the **UIPickerComponent** container. If this API is not called, the number of visible options is 7 rows. Reduce the number of visible options when space needs to be saved, and increase it when more preview information needs to be provided. This attribute, together with [itemHeight](#itemheight), affects the display effect of the component. It is recommended to adjust it in combination with the component [height](arkts-arkui-common-comp-commonmethod-c.md#height1) attribute to ensure complete display.
+Sets the number of visible options in the **UIPickerComponent** container. If this API is not called, the number of visible options is 7 rows. Reduce the number of visible options when space needs to be saved, and increase it when more preview information needs to be provided. This attribute, together with [itemHeight](#itemheight), affects the display effect of the component. It is recommended to adjust it in combination with the component [height](arkts-arkui-common-comp-commonmethod-c.md#height) attribute to ensure complete display.
 
 **Since:** 26.0.0
 
@@ -62,7 +62,7 @@ Sets the number of visible options in the **UIPickerComponent** container. If th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| count | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Number of visible options.<br>Value range: an integer in [2, 9]. <br>If a decimal is set, the value is rounded down to an integer. <br>If an even number is set, it is automatically converted to the odd number greater than it (for example, 2 becomes 3 and 8 becomes 9). <br>If the value is out of the range, the default value 7 rows is used. <br>If the value of **count** is **undefined**, the default value 7 rows is used. |
+| count | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Number of visible options. <br>Value range: an integer in [2, 9]. <br>If a decimal is set, the value is rounded down to an integer. <br>If an even number is set, it is automatically converted to the odd number greater than it (for example, 2 becomes 3 and 8 becomes 9). <br>If the value is out of the range, the default value 7 rows is used. <br>If the value of **count** is **undefined**, the default value 7 rows is used. |
 
 ## enableHapticFeedback
 
@@ -88,7 +88,7 @@ To enable haptic feedback, configure the requestPermissions field in the "module
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable haptic feedback.<br>- **true**: enables haptic feedback. <br>- **false**: disables haptic feedback. <br>Default value: **true** <br>When the value of enable is **undefined**, the default value is used. <br>After it is enabled, whether haptic feedback is available depends on the hardware support of the system. |
+| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable haptic feedback. <br>- **true**: enables haptic feedback. <br>- **false**: disables haptic feedback. <br>Default value: **true** <br>When the value of enable is **undefined**, the default value is used. <br>After it is enabled, whether haptic feedback is available depends on the hardware support of the system. |
 
 ## itemHeight
 
@@ -96,7 +96,7 @@ To enable haptic feedback, configure the requestPermissions field in the "module
 itemHeight(height: Optional<LengthMetrics>)
 ```
 
-Sets the height of each option in the **UIPickerComponent** container. If this API is not called, the height of each option is 40 vp. When the option content is large or a larger font is required, you can increase the height to avoid content clipping. When the option content is concise or a compact display is required, you can decrease the height. This attribute, together with [displayedItemCount](#displayeditemcount), affects the display effect of the component. You are advised to adjust it in combination with the component [height](arkts-arkui-common-comp-commonmethod-c.md#height1) attribute to ensure complete display.
+Sets the height of each option in the **UIPickerComponent** container. If this API is not called, the height of each option is 40 vp. When the option content is large or a larger font is required, you can increase the height to avoid content clipping. When the option content is concise or a compact display is required, you can decrease the height. This attribute, together with [displayedItemCount](#displayeditemcount), affects the display effect of the component. You are advised to adjust it in combination with the component [height](arkts-arkui-common-comp-commonmethod-c.md#height) attribute to ensure complete display.
 
 **Since:** 26.0.0
 
@@ -145,7 +145,7 @@ Triggered when the selected item changes while the picker options are being scro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnUIPickerComponentCallback](arkts-arkui-uipickercomponent-comp-onuipickercomponentcallback-t.md)&gt; | Yes | Callback invoked when the selected item changes.<br>When the value of callback is undefined, the callback is not used. |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnUIPickerComponentCallback](arkts-arkui-uipickercomponent-comp-onuipickercomponentcallback-t.md)&gt; | Yes | Callback invoked when the selected item changes. <br>When the value of callback is undefined, the callback is not used. |
 
 ## onScrollStop
 
@@ -205,4 +205,4 @@ Sets the style of the selected item indicator. Use a background indicator when t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerIndicatorStyle](arkts-arkui-uipickercomponent-comp-pickerindicatorstyle-i.md)&gt; | Yes | Style of the selected item indicator.<br>Default value: <br>**{<br>type: PickerIndicatorType.BACKGROUND, <br>borderRadius: {<br>value:12, <br>unit:LengthUnit.vp <br>}, <br>backgroundColor: 'sys.color.comp_background_tertiary'<br>}** <br>When the value of **style** is **undefined**, the default value is used. |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerIndicatorStyle](arkts-arkui-uipickercomponent-comp-pickerindicatorstyle-i.md)&gt; | Yes | Style of the selected item indicator. <br>Default value: <br>**{<br>type: PickerIndicatorType.BACKGROUND, <br>borderRadius: {<br>value:12, <br>unit:LengthUnit.vp <br>}, <br>backgroundColor: 'sys.color.comp_background_tertiary'<br>}** <br>When the value of **style** is **undefined**, the default value is used. |

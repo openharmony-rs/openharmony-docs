@@ -300,7 +300,7 @@ Measures the single-line display width of the specified text. For multi-line tex
 
 | Type | Description |
 | --- | --- |
-| number | Text width.<br>**NOTE:** <br>Floating-point results are rounded up. <br>Unit: px. |
+| number | Text width. <br>**NOTE:** <br>Floating-point results are rounded up. <br>Unit: px. |
 
 **Examples**
 
@@ -365,4 +365,4 @@ Measures the width and height of the given single-line text.
 
 | Type | Description |
 | --- | --- |
-| [SizeOptions](arkts-arkui-sizeoptions-i.md) | Width and height of the text.<br>**NOTE:** <br>If **constraintWidth** is not specified, the floating-point value of the text width will be rounded up. <br>The return values for text width and height are both in px. |
+| [SizeOptions](arkts-arkui-sizeoptions-i.md) | Width and height of the text. <br>**NOTE:** <br>If **constraintWidth** is not specified, the floating-point value of the text width will be rounded up. <br>The return values for text width and height are both in px. |

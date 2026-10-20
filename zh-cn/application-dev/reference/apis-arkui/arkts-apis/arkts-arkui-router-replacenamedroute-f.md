@@ -6,8 +6,6 @@
 import { router } from '@kit.ArkUI';
 ```
 
-<a id="replacenamedroute1"></a>
-
 ## replaceNamedRoute
 
 ```TypeScript
@@ -18,7 +16,7 @@ function replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<
 
 > **说明：** 
 > 
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute1)替代。replaceNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)替代。replaceNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
 > 
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
@@ -26,7 +24,7 @@ function replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<
 
 **废弃版本：** 18
 
-**替代接口：** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute1)(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -47,7 +45,7 @@ function replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
@@ -77,8 +75,6 @@ router.replaceNamedRoute({
 ```
 
 
-<a id="replacenamedroute2"></a>
-
 ## replaceNamedRoute
 
 ```TypeScript
@@ -89,7 +85,7 @@ function replaceNamedRoute(options: NamedRouterOptions): Promise<void>
 
 > **说明：** 
 > 
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute2)替代。replaceNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)替代。replaceNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
 > 
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
@@ -97,7 +93,7 @@ function replaceNamedRoute(options: NamedRouterOptions): Promise<void>
 
 **废弃版本：** 18
 
-**替代接口：** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute2)(options: router.NamedRouterOptions)
+**替代接口：** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)(options: router.NamedRouterOptions)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -123,7 +119,7 @@ function replaceNamedRoute(options: NamedRouterOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
@@ -155,8 +151,6 @@ router.replaceNamedRoute({
 ```
 
 
-<a id="replacenamedroute3"></a>
-
 ## replaceNamedRoute
 
 ```TypeScript
@@ -167,7 +161,7 @@ function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callba
 
 > **说明：** 
 > 
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute3)替代。replaceNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)替代。replaceNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
 > 
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
@@ -175,7 +169,7 @@ function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callba
 
 **废弃版本：** 18
 
-**替代接口：** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute3)(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -197,7 +191,7 @@ function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callba
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | The UI execution context is not found. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 
@@ -227,8 +221,6 @@ router.replaceNamedRoute({
 ```
 
 
-<a id="replacenamedroute4"></a>
-
 ## replaceNamedRoute
 
 ```TypeScript
@@ -239,7 +231,7 @@ function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promi
 
 > **说明：** 
 > 
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute4)替代。replaceNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)替代。replaceNamedRoute需先通过[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)获取[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)实例，然后通过该实例进行调用。
 > 
 > - 从API version 10开始，可以通过使用[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)中的[getRouter](arkts-arkui-arkui-uicontext-uicontext-c.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-arkui-arkui-uicontext-uicontext-c.md)对象。
 
@@ -247,7 +239,7 @@ function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promi
 
 **废弃版本：** 18
 
-**替代接口：** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute4)(options: router.NamedRouterOptions, mode: router.RouterMode)
+**替代接口：** [replaceNamedRoute](arkts-arkui-arkui-uicontext-router-c.md#replacenamedroute)(options: router.NamedRouterOptions, mode: router.RouterMode)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -274,7 +266,7 @@ function replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Failed to get the delegate. This error code is thrown only in the standard system. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Named route error. The named route does not exist. |
 

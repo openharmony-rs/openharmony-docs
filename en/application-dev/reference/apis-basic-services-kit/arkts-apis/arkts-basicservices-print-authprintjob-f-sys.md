@@ -30,9 +30,9 @@ Authenticate a print job.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobId | string | Yes | Indicates the print job ID.<br>Job ID to be printed. |
-| userName | string | Yes | Indicates the user name.<br>Indicates the user name. |
-| password | string | Yes | Indicates the user password.<br>Indicates the user password. |
+| jobId | string | Yes | Indicates the print job ID. <br>Job ID to be printed. |
+| userName | string | Yes | Indicates the user name. <br>Indicates the user name. |
+| password | string | Yes | Indicates the user password. <br>Indicates the user password. |
 
 **Return value:**
 

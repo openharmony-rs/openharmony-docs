@@ -28,7 +28,7 @@ Unregister session create callback for a specific audio zone.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| userId | number | Yes | The userid which belongs to an audio zone.<br>The value should be an integer. |
+| userId | number | Yes | The userid which belongs to an audio zone. <br>The value should be an integer. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVSessionDescriptor](arkts-avsession-avsession-avsessiondescriptor-i.md)&gt; | No | Used to handle ('sessionCreate' command). |
 
 **Error codes:**

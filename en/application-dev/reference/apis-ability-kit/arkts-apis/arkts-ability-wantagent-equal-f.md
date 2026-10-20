@@ -6,8 +6,6 @@
 import { wantAgent, WantAgent } from '@kit.AbilityKit';
 ```
 
-<a id="equal1"></a>
-
 ## equal
 
 ```TypeScript
@@ -30,7 +28,7 @@ Checks whether two WantAgent objects are equal, so as to determine whether the s
 | --- | --- | --- | --- |
 | agent | [WantAgent](arkts-ability-wantagent-t.md) | Yes | The first WantAgent object. |
 | otherAgent | [WantAgent](arkts-ability-wantagent-t.md) | Yes | The second WantAgent object. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value<code>true</code> means that the two WantAgent objects are equal, and <code>false</code> means the opposite. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value <code>true</code> means that the two WantAgent objects are equal, and <code>false</code> means the opposite. |
 
 **Error codes:**
 
@@ -110,8 +108,6 @@ try {
 ```
 
 
-<a id="equal2"></a>
-
 ## equal
 
 ```TypeScript
@@ -139,7 +135,7 @@ Checks whether two WantAgent objects are equal, so as to determine whether the s
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value<code>true</code> means that the two WantAgent objects are equal, and <code>false</code> means the opposite. |
+| Promise&lt;boolean&gt; | Promise used to return the result. The value <code>true</code> means that the two WantAgent objects are equal, and <code>false</code> means the opposite. |
 
 **Error codes:**
 

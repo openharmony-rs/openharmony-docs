@@ -12,7 +12,7 @@ import { http } from '@kit.NetworkKit';
 function createHttpResponseCache(cacheSize?: number): HttpResponseCache
 ```
 
-Creates an **HttpResponseCache** object that stores the response data of HTTP requests. You can call [flush](arkts-network-http-httpresponsecache-i.md#flush1) and [delete](arkts-network-http-httpresponsecache-i.md#delete1) in the object.
+Creates an **HttpResponseCache** object that stores the response data of HTTP requests. You can call [flush](arkts-network-http-httpresponsecache-i.md#flush) and [delete](arkts-network-http-httpresponsecache-i.md#delete) in the object.
 
 **Since:** 9
 

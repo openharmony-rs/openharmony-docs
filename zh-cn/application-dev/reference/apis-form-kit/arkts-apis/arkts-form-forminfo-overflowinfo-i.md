@@ -6,8 +6,6 @@ interface OverflowInfo
 
 互动卡片动效信息。
 
-@typedef { OverflowInfo }
-
 **起始版本：** 20
 
 <!--Device-formInfo-interface OverflowInfo--><!--Device-formInfo-interface OverflowInfo-End-->

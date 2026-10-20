@@ -6,8 +6,6 @@
 import { wifi } from '@kit.ConnectivityKit';
 ```
 
-<a id="removeuntrustedconfig1"></a>
-
 ## removeUntrustedConfig
 
 ```TypeScript
@@ -77,8 +75,6 @@ try {
 }
 ```
 
-
-<a id="removeuntrustedconfig2"></a>
 
 ## removeUntrustedConfig
 

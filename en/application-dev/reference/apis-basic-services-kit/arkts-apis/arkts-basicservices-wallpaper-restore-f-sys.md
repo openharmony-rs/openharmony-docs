@@ -6,8 +6,6 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
-<a id="restore1"></a>
-
 ## restore
 
 ```TypeScript
@@ -58,8 +56,6 @@ wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErro
 
 <!--DelEnd-->
 
-
-<a id="restore2"></a>
 
 ## restore
 

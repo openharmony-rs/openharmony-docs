@@ -6,8 +6,6 @@ type OnFontIdUpdatedFn = (fontId: string) => void
 
 Defines an OnFontIdUpdatedFn function.
 
-@typedef { function }
-
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.

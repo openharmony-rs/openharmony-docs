@@ -44,7 +44,7 @@ Sets the height of a shape.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| height | [Length](arkts-arkui-length-t.md) | Yes | Height of the shape.<br>Unit: vp <br>If the value is invalid, 0 vp is used. |
+| height | [Length](arkts-arkui-length-t.md) | Yes | Height of the shape. <br>Unit: vp <br>If the value is invalid, 0 vp is used. |
 
 **Return value:**
 
@@ -116,7 +116,7 @@ Sets the width of a shape.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| width | [Length](arkts-arkui-length-t.md) | Yes | Width of the shape.<br>Unit: vp <br>If the value is invalid, 0 vp is used. |
+| width | [Length](arkts-arkui-length-t.md) | Yes | Width of the shape. <br>Unit: vp <br>If the value is invalid, 0 vp is used. |
 
 **Return value:**
 

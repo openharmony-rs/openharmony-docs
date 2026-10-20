@@ -6,8 +6,6 @@ export interface CanvasRenderingContext2D
 
 CanvasRenderingContext2D allows you to draw rectangles, text, images, and other objects on a canvas. You can call getContext('2d') on canvas to obtain a CanvasRenderingContext2D object.
 
-@interface CanvasRenderingContext2D
-
 **Since:** 4
 
 <!--Device-unnamed-export interface CanvasRenderingContext2D--><!--Device-unnamed-export interface CanvasRenderingContext2D-End-->
@@ -167,8 +165,6 @@ Draws a closed path.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="createimagedata1"></a>
-
 ## createImageData
 
 ```TypeScript
@@ -197,8 +193,6 @@ Creates an ImageData object.
 | Type | Description |
 | --- | --- |
 | ImageData | Returns the newly created FunctionCallable object. |
-
-<a id="createimagedata2"></a>
 
 ## createImageData
 
@@ -259,8 +253,6 @@ Creates a linear gradient color.
 | --- | --- |
 | [CanvasGradient](arkts-arkui-viewmodel-canvasgradient-i.md) | LinearGradient object. |
 
-<a id="createpath2d1"></a>
-
 ## createPath2D
 
 ```TypeScript
@@ -288,8 +280,6 @@ Creates a path that is later used by the CanvasRenderingContext2D object.
 | Type | Description |
 | --- | --- |
 | [Path2D](arkts-arkui-viewmodel-path2d-i.md) | the object of Path2D. |
-
-<a id="createpath2d2"></a>
 
 ## createPath2D
 
@@ -381,8 +371,6 @@ Creates a radial gradient color.
 | --- | --- |
 | [CanvasGradient](arkts-arkui-viewmodel-canvasgradient-i.md) | RadialGradient object. |
 
-<a id="drawimage1"></a>
-
 ## drawImage
 
 ```TypeScript
@@ -408,8 +396,6 @@ Draws an image.
 | dy | number | Yes | Y-coordinate of the upper left corner of the drawing area on the canvas. |
 | dWidth | number | Yes | Width of the drawing area. |
 | dHeight | number | Yes | Height of the drawing area. |
-
-<a id="drawimage2"></a>
 
 ## drawImage
 
@@ -451,8 +437,6 @@ Draws an image.
 | dWidth | number | Yes | Width of the drawing area. |
 | dHeight | number | Yes | Height of the drawing area. |
 
-<a id="drawimage3"></a>
-
 ## drawImage
 
 ```TypeScript
@@ -478,8 +462,6 @@ Draws an image.
 | dy | number | Yes | Y-coordinate of the upper left corner of the drawing area on the canvas. |
 | dWidth | number | Yes | Width of the drawing area. |
 | dHeight | number | Yes | Height of the drawing area. |
-
-<a id="drawimage4"></a>
 
 ## drawImage
 
@@ -782,8 +764,6 @@ Moves a drawing path to a target position on the canvas.
 | x | number | Yes | X-coordinate of the target position. |
 | y | number | Yes | Y-coordinate of the target position. |
 
-<a id="putimagedata1"></a>
-
 ## putImageData
 
 ```TypeScript
@@ -807,8 +787,6 @@ Puts the ImageData onto a rectangular area on the canvas.
 | imageData | ImageData | Yes | ImageData object with pixels to put onto the canvas. |
 | dx | number | Yes | X-axis offset of the rectangle area on the canvas. |
 | dy | number | Yes | Y-axis offset of the rectangle area on the canvas. |
-
-<a id="putimagedata2"></a>
 
 ## putImageData
 
@@ -1029,8 +1007,6 @@ Uses same parameters as the transform() function to reset the existing transform
 | translateX | number | Yes | X-axis translation. |
 | translateY | number | Yes | Y-axis translation. |
 
-<a id="stroke1"></a>
-
 ## stroke
 
 ```TypeScript
@@ -1046,8 +1022,6 @@ Draws a border stroke.
 <!--Device-CanvasRenderingContext2D-stroke(): void--><!--Device-CanvasRenderingContext2D-stroke(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-<a id="stroke2"></a>
 
 ## stroke
 

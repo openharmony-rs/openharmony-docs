@@ -28,7 +28,7 @@ Checks whether the specified authentication capability is supported. This API is
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| authType | [UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md) | Yes | Authentication type. This parameter specifies the authentication type to be queried. The options are **FACE**, **FINGERPRINT**, **PIN**, and **COMPANION_DEVICE**.<br>Note: <br>PIN is supported since API version 11. <br>COMPANION_DEVICE query is supported since API version 26.0.0. |
+| authType | [UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md) | Yes | Authentication type. This parameter specifies the authentication type to be queried. The options are **FACE**, **FINGERPRINT**, **PIN**, and **COMPANION_DEVICE**. <br>Note: <br>PIN is supported since API version 11. <br>COMPANION_DEVICE query is supported since API version 26.0.0. |
 | authTrustLevel | [AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md) | Yes | Authentication trust level. This parameter specifies the authentication trust level to be queried. The valid values are **ATL1(10000)**, **ATL2(20000)**, **ATL3(30000)**, and **ATL4(40000)**. A higher level indicates a higher requirement on the liveness detection capability of the authentication solution. |
 
 **Error codes:**
@@ -36,7 +36,7 @@ Checks whether the specified authentication capability is supported. This API is
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. |
 | [12500002](../errorcode-useriam.md#12500002-common-error-code-of-the-identity-authentication-system) | General operation error. |
 | [12500005](../errorcode-useriam.md#12500005-unsupported-authentication-type) | The authentication type is not supported. |
 | [12500006](../errorcode-useriam.md#12500006-unsupported-authentication-trust-level) | The authentication trust level is not supported. |

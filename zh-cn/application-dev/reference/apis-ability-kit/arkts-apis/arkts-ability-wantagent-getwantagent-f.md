@@ -6,8 +6,6 @@
 import { wantAgent, WantAgent } from '@kit.AbilityKit';
 ```
 
-<a id="getwantagent1"></a>
-
 ## getWantAgent
 
 ```TypeScript
@@ -93,8 +91,6 @@ wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 }
 ```
 
-
-<a id="getwantagent2"></a>
 
 ## getWantAgent
 

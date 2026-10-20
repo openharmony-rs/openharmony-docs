@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function truncate(file: string | number, len?: number): Promise<void>
 ```
 
-Truncates a file. This API uses a promise to return the result.
+Truncates a file to the specified length. Excess content will be deleted. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -27,7 +27,7 @@ Truncates a file. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | file | string &#124; number | Yes | Application sandbox path or FD of the file. |
-| len | number | No | File length after truncation, in bytes. The default value is **0**. |
+| len | number | No | File length after truncation, in bytes. The default value is <b>0</b>. |
 
 **Return value:**
 
@@ -57,15 +57,13 @@ Truncates a file. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
-<a id="truncate2"></a>
-
 ## truncate
 
 ```TypeScript
 declare function truncate(file: string | number, callback: AsyncCallback<void>): void
 ```
 
-Truncates a file. This API uses an asynchronous callback to return the result.
+Truncates a file and deletes its content. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -80,7 +78,7 @@ Truncates a file. This API uses an asynchronous callback to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | file | string &#124; number | Yes | Application sandbox path or FD of the file. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback that returns no value. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the file is truncated successfully, <b>err</b> is <b>undefined</b>. Otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 
@@ -104,15 +102,13 @@ Truncates a file. This API uses an asynchronous callback to return the result.
 | 13900042 | Unknown error |
 
 
-<a id="truncate3"></a>
-
 ## truncate
 
 ```TypeScript
 declare function truncate(file: string | number, len: number, callback: AsyncCallback<void>): void
 ```
 
-Truncates a file. This API uses an asynchronous callback to return the result.
+Truncates a file to the specified length. Excess content will be deleted. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -127,8 +123,8 @@ Truncates a file. This API uses an asynchronous callback to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | file | string &#124; number | Yes | Application sandbox path or FD of the file. |
-| len | number | Yes | File length after truncation, in bytes. The default value is **0**.<br>**Since:** 11 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback that returns no value. |
+| len | number | Yes | File length after truncation, in bytes. The default value is <b>0</b>.<br>**Since:** 11 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the file is truncated successfully, <b>err</b> is <b>undefined</b>. Otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 

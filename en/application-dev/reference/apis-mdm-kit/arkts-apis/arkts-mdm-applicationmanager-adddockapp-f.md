@@ -47,7 +47,7 @@ Adds an application to the bottom shortcut bar of a PC/2-in-1 device based on th
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
 | bundleName | string | Yes | Bundle name of the application. |
 | abilityName | string | Yes | Ability name of the application. Only the application entry ability is supported. |
-| index | number | No | Location index of the application in the shortcut bar. The value range is [0, 100). The default value is 99.<br>Value range: [0,100). |
+| index | number | No | Location index of the application in the shortcut bar. The value range is [0, 100). The default value is 99. <br>Value range: [0,100). |
 
 **Error codes:**
 

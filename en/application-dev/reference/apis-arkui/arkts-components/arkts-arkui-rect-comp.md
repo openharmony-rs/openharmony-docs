@@ -38,7 +38,7 @@ Draws a rectangle. After being called, it creates a **Rect** object, for which a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [RectOptions](arkts-arkui-rect-comp-rectoptions-i.md) &#124; [RoundedRectOptions](arkts-arkui-rect-comp-roundedrectoptions-i.md) | No | Rect drawing attributes, including the width, height, and rounded corner configurations. If this parameter is not passed, the rectangle is drawn with the default values of the attributes (the width, height, and rounded corners are all 0).<br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
+| options | [RectOptions](arkts-arkui-rect-comp-rectoptions-i.md) &#124; [RoundedRectOptions](arkts-arkui-rect-comp-roundedrectoptions-i.md) | No | Rect drawing attributes, including the width, height, and rounded corner configurations. If this parameter is not passed, the rectangle is drawn with the default values of the attributes (the width, height, and rounded corners are all 0). <br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
 
 ## Rect
 
@@ -66,7 +66,7 @@ Draws a rectangle. After being called, it creates a **Rect** object, for which a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [RectOptions](arkts-arkui-rect-comp-rectoptions-i.md) &#124; [RoundedRectOptions](arkts-arkui-rect-comp-roundedrectoptions-i.md) | No | Drawing attributes of the rectangle, including the width, height, and rounded corners. If this parameter is not set, the rectangle is drawn with the default values of the attributes (the width, height, and rounded corners are all 0).<br>The abnormal values **undefined** and **null** are treated as invalid values, and the setting does not take effect. |
+| options | [RectOptions](arkts-arkui-rect-comp-rectoptions-i.md) &#124; [RoundedRectOptions](arkts-arkui-rect-comp-roundedrectoptions-i.md) | No | Drawing attributes of the rectangle, including the width, height, and rounded corners. If this parameter is not set, the rectangle is drawn with the default values of the attributes (the width, height, and rounded corners are all 0). <br>The abnormal values **undefined** and **null** are treated as invalid values, and the setting does not take effect. |
 
 ## Summary
 

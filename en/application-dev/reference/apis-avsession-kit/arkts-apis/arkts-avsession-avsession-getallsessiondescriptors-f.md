@@ -6,8 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="getallsessiondescriptors2"></a>
-
 ## getAllSessionDescriptors
 
 ```TypeScript
@@ -20,7 +18,7 @@ Get all avsession descriptors which can be shown on system entrance.
 
 **Required permissions:** 
 - API version 23 and later: ohos.permission.MANAGE_MEDIA_RESOURCES or ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
-- API versions 9 to 22: ohos.permission.MANAGE_MEDIA_RESOURCES
+- API versions 9 to 22: N/A
 
 <!--Device-avSession-function getAllSessionDescriptors(): Promise<Array<Readonly<AVSessionDescriptor>>>--><!--Device-avSession-function getAllSessionDescriptors(): Promise<Array<Readonly<AVSessionDescriptor>>>-End-->
 
@@ -37,7 +35,6 @@ Get all avsession descriptors which can be shown on system entrance.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App.<br>**Applicable version:** 9 - 22 |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
 **Examples**

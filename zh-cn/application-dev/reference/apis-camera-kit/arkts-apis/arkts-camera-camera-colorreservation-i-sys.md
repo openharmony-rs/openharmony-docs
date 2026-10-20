@@ -4,7 +4,7 @@
 interface ColorReservation extends ColorReservationQuery
 ```
 
-ColorReservation extends [ColorReservationQuery](arkts-camera-camera-colorreservationquery-i-sys.md) Provides API for obtaining and setting a color reservation type.
+ColorReservation 继承 [ColorReservationQuery](arkts-camera-camera-colorreservationquery-i-sys.md)提供获取和设置色彩保留类型的接口。
 
 **继承/实现关系：** ColorReservation extends [ColorReservationQuery](arkts-camera-camera-colorreservationquery-i-sys.md)
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 getColorReservation(): ColorReservationType
 ```
 
-Obtains the color reservation type in use.
+获取当前使用的色彩保留类型。
 
 **起始版本：** 15
 
@@ -42,7 +42,7 @@ Obtains the color reservation type in use.
 
 | 类型 | 说明 |
 | --- | --- |
-| [ColorReservationType](arkts-camera-camera-colorreservationtype-e-sys.md) | Color reservation type. |
+| [ColorReservationType](arkts-camera-camera-colorreservationtype-e-sys.md) | 色彩保留类型。 |
 
 **错误码：**
 
@@ -62,7 +62,7 @@ Obtains the color reservation type in use.
 setColorReservation(type: ColorReservationType): void
 ```
 
-Sets a color reservation type. Before the setting, call [getSupportedColorReservationTypes](arkts-camera-camera-colorreservationquery-i-sys.md#getsupportedcolorreservationtypes) to obtain the supported color reservation types.
+设置色彩保留类型。设置前，请先调用[getSupportedColorReservationTypes](arkts-camera-camera-colorreservationquery-i-sys.md#getsupportedcolorreservationtypes)获取支持的色彩保留类型。
 
 **起始版本：** 15
 
@@ -76,7 +76,7 @@ Sets a color reservation type. Before the setting, call [getSupportedColorReserv
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [ColorReservationType](arkts-camera-camera-colorreservationtype-e-sys.md) | 是 | Color reservation type, which is obtained by calling [getSupportedColorReservationTypes](arkts-camera-camera-colorreservationquery-i-sys.md#getsupportedcolorreservationtypes). |
+| type | [ColorReservationType](arkts-camera-camera-colorreservationtype-e-sys.md) | 是 | 色彩保留类型，通过调用[getSupportedColorReservationTypes](arkts-camera-camera-colorreservationquery-i-sys.md#getsupportedcolorreservationtypes) 获取。 |
 
 **错误码：**
 

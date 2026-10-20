@@ -4,7 +4,7 @@
 interface PasteData
 ```
 
-剪贴板内容对象。剪贴板内容包含一个或者多个内容条目（[PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md)）以及属性描述对象（[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)）。在调用PasteData的接口前，需要先通过[createData()](arkts-basicservices-pasteboard-createdata-f.md#createdata1)或[getData()](arkts-basicservices-pasteboard-systempasteboard-i.md#getdata1)获取一个PasteData对象。
+剪贴板内容对象。剪贴板内容包含一个或者多个内容条目（[PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md)）以及属性描述对象（[PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)）。在调用PasteData的接口前，需要先通过[createData()](arkts-basicservices-pasteboard-createdata-f.md#createdata)或[getData()](arkts-basicservices-pasteboard-systempasteboard-i.md#getdata)获取一个PasteData对象。
 
 **起始版本：** 6
 
@@ -17,8 +17,6 @@ interface PasteData
 ```TypeScript
 import { pasteboard } from '@kit.BasicServicesKit';
 ```
-
-<a id="addrecord1"></a>
 
 ## addRecord
 
@@ -54,8 +52,6 @@ let htmlRecord: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.
 pasteData.addRecord(textRecord);
 pasteData.addRecord(htmlRecord);
 ```
-
-<a id="addrecord2"></a>
 
 ## addRecord
 
@@ -747,7 +743,7 @@ addHtmlRecord(htmlText: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [addRecord](#addrecord2)(mimeType: string, value: ValueType)
+**替代接口：** [addRecord](#addrecord)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addHtmlRecord(htmlText: string): void--><!--Device-PasteData-addHtmlRecord(htmlText: string): void-End-->
 
@@ -779,7 +775,7 @@ addTextRecord(text: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [addRecord](#addrecord2)(mimeType: string, value: ValueType)
+**替代接口：** [addRecord](#addrecord)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addTextRecord(text: string): void--><!--Device-PasteData-addTextRecord(text: string): void-End-->
 
@@ -810,7 +806,7 @@ addUriRecord(uri: string): void
 
 **废弃版本：** 9
 
-**替代接口：** [addRecord](#addrecord2)(mimeType: string, value: ValueType)
+**替代接口：** [addRecord](#addrecord)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addUriRecord(uri: string): void--><!--Device-PasteData-addUriRecord(uri: string): void-End-->
 
@@ -841,7 +837,7 @@ addWantRecord(want: Want): void
 
 **废弃版本：** 9
 
-**替代接口：** [addRecord](#addrecord2)(mimeType: string, value: ValueType)
+**替代接口：** [addRecord](#addrecord)(mimeType: string, value: ValueType)
 
 <!--Device-PasteData-addWantRecord(want: Want): void--><!--Device-PasteData-addWantRecord(want: Want): void-End-->
 

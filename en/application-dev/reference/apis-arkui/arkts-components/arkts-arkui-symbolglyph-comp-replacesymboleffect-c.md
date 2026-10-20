@@ -14,8 +14,6 @@ Inherits from **SymbolEffect**.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -40,9 +38,7 @@ A constructor used to create a **ReplaceSymbolEffect** instance, which comes wit
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER |
-
-<a id="constructor2"></a>
+| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description. <br>Default value: EffectScope.LAYER |
 
 ## constructor
 
@@ -68,8 +64,8 @@ A constructor used to create a **ReplaceSymbolEffect** instance, which comes wit
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Animation scope.<br>Default value: EffectScope.LAYER |
-| replaceType | [ReplaceEffectType](arkts-arkui-symbolglyph-comp-replaceeffecttype-e.md) | No | Replacement animation type.<br>Default value: ReplaceEffectType.SEQUENTIAL |
+| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Animation scope. <br>Default value: EffectScope.LAYER |
+| replaceType | [ReplaceEffectType](arkts-arkui-symbolglyph-comp-replaceeffecttype-e.md) | No | Replacement animation type. <br>Default value: ReplaceEffectType.SEQUENTIAL |
 
 ## replaceType
 

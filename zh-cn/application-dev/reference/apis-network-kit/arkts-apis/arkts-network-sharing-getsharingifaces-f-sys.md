@@ -6,8 +6,6 @@
 import { sharing } from '@kit.NetworkKit';
 ```
 
-<a id="getsharingifaces1"></a>
-
 ## getSharingIfaces
 
 ```TypeScript
@@ -60,8 +58,6 @@ sharing.getSharingIfaces(SHARING_BLUETOOTH, (error: BusinessError, data: string[
 
 <!--DelEnd-->
 
-
-<a id="getsharingifaces2"></a>
 
 ## getSharingIfaces
 

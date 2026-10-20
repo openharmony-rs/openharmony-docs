@@ -4,7 +4,7 @@
 interface FocusTrackingInfo
 ```
 
-Describes the focus tracking information, which is obtained by calling VideoSessionForSys. [on('focusTrackingInfoAvailable')](arkts-camera-camera-videosession-i-sys.md#onfocustrackinginfoavailable).
+描述焦点跟踪信息，通过调用VideoSessionForSys的[on('focusTrackingInfoAvailable')](arkts-camera-camera-videosession-i-sys.md#onfocustrackinginfoavailable)获取。
 
 **起始版本：** 15
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 trackingMode: FocusTrackingMode
 ```
 
-Tracing mode.
+跟踪模式。
 
 **类型：** [FocusTrackingMode](arkts-camera-camera-focustrackingmode-e-sys.md)
 
@@ -44,7 +44,7 @@ Tracing mode.
 trackingRegion: Rect
 ```
 
-Tracking region.
+跟踪区域。
 
 **类型：** [Rect](arkts-camera-camera-rect-i.md)
 

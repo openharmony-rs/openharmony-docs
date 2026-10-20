@@ -533,6 +533,7 @@
   - [FileEntity](arkts-ability-insightintent-fileentity-i.md)
   <!--Del-->
   - [FileEntity(system api)](arkts-ability-insightintent-fileentity-i-sys.md)<!--DelEnd-->
+  - [InsightIntentExecutionInfo](arkts-ability-insightintent-insightintentexecutioninfo-i.md)
   - [IntentEntity](arkts-ability-insightintent-intententity-i.md)
   - [IntentResult](arkts-ability-insightintent-intentresult-i.md)
   <!--Del-->
@@ -627,8 +628,12 @@
 - [@ohos.app.ability.InsightIntentExecutor(Base Class for Intent Execution)](arkts-ability-app-ability-insightintentexecutor.md)
   - [InsightIntentExecutor](arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md)
 - [@ohos.app.ability.insightIntentProvider(Intent Provider Management)](arkts-ability-app-ability-insightintentprovider.md)
+  - [offWillInsightIntentExecute](arkts-ability-insightintentprovider-offwillinsightintentexecute-f.md)
+  - [onWillInsightIntentExecute](arkts-ability-insightintentprovider-onwillinsightintentexecute-f.md)
   - [sendExecuteResult](arkts-ability-insightintentprovider-sendexecuteresult-f.md)
   - [sendIntentResult](arkts-ability-insightintentprovider-sendintentresult-f.md)
+  - [InsightIntentExecutionCallBack](arkts-ability-insightintentprovider-insightintentexecutioncallback-i.md)
+  - [OnWillInsightIntentExecuteCallBackFn](arkts-ability-insightintentprovider-onwillinsightintentexecutecallbackfn-t.md)
 - [@ohos.app.ability.InteropAbilityLifecycleCallback](arkts-ability-app-ability-interopabilitylifecyclecallback.md)
   - [InteropAbilityLifecycleCallback](arkts-ability-app-ability-interopabilitylifecyclecallback-interopabilitylifecyclecallback-i.md)
   - [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
@@ -1217,6 +1222,8 @@
   - [getAllLauncherAbilityResourceInfo(system api)](arkts-ability-bundleresourcemanager-getalllauncherabilityresourceinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getAllUninstalledBundleResourceInfo(system api)](arkts-ability-bundleresourcemanager-getalluninstalledbundleresourceinfo-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [getBundleResourceArchiveInfo(system api)](arkts-ability-bundleresourcemanager-getbundleresourcearchiveinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [getBundleResourceInfo(system api)](arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->

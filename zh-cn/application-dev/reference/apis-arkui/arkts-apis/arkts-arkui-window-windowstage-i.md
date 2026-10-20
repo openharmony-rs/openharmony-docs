@@ -20,8 +20,6 @@ interface WindowStage
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="createsubwindow1"></a>
-
 ## createSubWindow
 
 ```TypeScript
@@ -90,8 +88,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
-<a id="createsubwindow2"></a>
 
 ## createSubWindow
 
@@ -242,8 +238,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="getmainwindow1"></a>
-
 ## getMainWindow
 
 ```TypeScript
@@ -252,7 +246,7 @@ getMainWindow(): Promise<Window>
 
 获取该WindowStage实例下的主窗口，使用Promise异步回调。
 
-调用该接口前，建议先通过[loadContent](arkts-arkui-window-window-i.md#loadcontent1)方法或者[setUIContent](arkts-arkui-window-window-i.md#setuicontent1)方法完成页面加载。
+调用该接口前，建议先通过[loadContent](arkts-arkui-window-window-i.md#loadcontent)方法或者[setUIContent](arkts-arkui-window-window-i.md#setuicontent)方法完成页面加载。
 
 **起始版本：** 9
 
@@ -309,8 +303,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="getmainwindow2"></a>
-
 ## getMainWindow
 
 ```TypeScript
@@ -319,7 +311,7 @@ getMainWindow(callback: AsyncCallback<Window>): void
 
 获取该WindowStage实例下的主窗口，使用callback异步回调。
 
-调用该接口前，建议先通过[loadContent](arkts-arkui-window-window-i.md#loadcontent1)方法或者[setUIContent](arkts-arkui-window-window-i.md#setuicontent1)方法完成页面加载。
+调用该接口前，建议先通过[loadContent](arkts-arkui-window-window-i.md#loadcontent)方法或者[setUIContent](arkts-arkui-window-window-i.md#setuicontent)方法完成页面加载。
 
 **起始版本：** 9
 
@@ -437,8 +429,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="getsubwindow1"></a>
-
 ## getSubWindow
 
 ```TypeScript
@@ -494,8 +484,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
-<a id="getsubwindow2"></a>
 
 ## getSubWindow
 
@@ -613,8 +601,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="loadcontent1"></a>
-
 ## loadContent
 
 ```TypeScript
@@ -684,8 +670,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
-<a id="loadcontent2"></a>
 
 ## loadContent
 
@@ -758,8 +742,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="loadcontent3"></a>
-
 ## loadContent
 
 ```TypeScript
@@ -825,8 +807,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
-<a id="loadcontentbyname1"></a>
 
 ## loadContentByName
 
@@ -916,8 +896,6 @@ export struct Index {
 }
 ```
 
-<a id="loadcontentbyname2"></a>
-
 ## loadContentByName
 
 ```TypeScript
@@ -1004,8 +982,6 @@ export struct Index {
   }
 }
 ```
-
-<a id="loadcontentbyname3"></a>
 
 ## loadContentByName
 
@@ -1098,8 +1074,6 @@ export struct Index {
 }
 ```
 
-<a id="off1"></a>
-
 ## off
 
 ```TypeScript
@@ -1175,8 +1149,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="off2"></a>
-
 ## off
 
 ```TypeScript
@@ -1239,8 +1211,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="off3"></a>
-
 ## off
 
 ```TypeScript
@@ -1302,8 +1272,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="on1"></a>
-
 ## on
 
 ```TypeScript
@@ -1359,8 +1327,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
-<a id="on2"></a>
 
 ## on
 
@@ -1431,8 +1397,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
-<a id="on3"></a>
 
 ## on
 
@@ -1590,7 +1554,6 @@ removeImageForRecent(): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required or a non-system application calls the API.<br>**适用版本：** 26.0.0+ |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 22 - 24 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
@@ -1681,8 +1644,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="setcustomdensity1"></a>
-
 ## setCustomDensity
 
 ```TypeScript
@@ -1717,7 +1678,7 @@ setCustomDensity(density: number): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300005](../errorcode-window.md#1300005-windowstage异常) | This window stage is abnormal. |
 
 **示例**
@@ -1740,8 +1701,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
-<a id="setcustomdensity2"></a>
 
 ## setCustomDensity
 
@@ -1868,8 +1827,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="setsupportedwindowmodes1"></a>
-
 ## setSupportedWindowModes
 
 ```TypeScript
@@ -1937,8 +1894,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="setsupportedwindowmodes2"></a>
 
 ## setSupportedWindowModes
 
@@ -2044,9 +1999,9 @@ Set the application modality of the windowStage.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300005](../errorcode-window.md#1300005-windowstage异常) | This window stage is abnormal. Possible cause: The window is not created or destroyed.<br>**适用版本：** 20+ |
+| [1300005](../errorcode-window.md#1300005-windowstage异常) | This window stage is abnormal. Possible cause: The window stage is not created or destroyed.<br>**适用版本：** 20+ |
 
 **示例**
 
@@ -2074,8 +2029,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowrectautosave1"></a>
-
 ## setWindowRectAutoSave
 
 ```TypeScript
@@ -2090,10 +2043,10 @@ setWindowRectAutoSave(enabled: boolean): Promise<void>
 
 |上一次窗口状态|记忆规则|  
 |-------------|-------|  
-|自由窗口|保留自由窗口的大小/位置，超出工作区回弹|
-|二分屏窗口|保留二分屏之前自由窗口的大小/位置|
-|最大化窗口|保留最大化|
-|沉浸式窗口|保留沉浸式之前自由窗口的大小/位置|
+|自由窗口|保留自由窗口的大小/位置，超出工作区回弹|  
+|二分屏窗口|保留二分屏之前自由窗口的大小/位置|  
+|最大化窗口|保留最大化|  
+|沉浸式窗口|保留沉浸式之前自由窗口的大小/位置|  
 |最小化窗口|保留最小化之前自由窗口的大小/位置|
 
 **起始版本：** 14
@@ -2153,8 +2106,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowrectautosave2"></a>
-
 ## setWindowRectAutoSave
 
 ```TypeScript
@@ -2171,10 +2122,10 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 
 |上一次窗口状态|记忆规则|  
 |-------------|-------|  
-|自由窗口|保留自由窗口的大小/位置，超出工作区回弹。|
-|二分屏窗口|保留二分屏之前自由窗口的大小/位置。|
-|最大化窗口|保留最大化。|
-|沉浸式窗口|保留沉浸式之前自由窗口的大小/位置。|
+|自由窗口|保留自由窗口的大小/位置，超出工作区回弹。|  
+|二分屏窗口|保留二分屏之前自由窗口的大小/位置。|  
+|最大化窗口|保留最大化。|  
+|沉浸式窗口|保留沉浸式之前自由窗口的大小/位置。|  
 |最小化窗口|保留最小化之前自由窗口的大小/位置。|
 
 **起始版本：** 17

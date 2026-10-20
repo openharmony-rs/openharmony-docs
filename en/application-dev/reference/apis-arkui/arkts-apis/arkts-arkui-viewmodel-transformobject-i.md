@@ -6,8 +6,6 @@ export interface TransformObject
 
 TransformObject
 
-@interface TransformObject
-
 **Since:** 4
 
 <!--Device-unnamed-export interface TransformObject--><!--Device-unnamed-export interface TransformObject-End-->
@@ -162,7 +160,7 @@ Defines a 3D transformation for rotating the X / Y / Z axes.
 | x | number | Yes | the vector value of the x-axis |
 | y | number | Yes | the vector value of the y-axis |
 | z | number | Yes | the vector value of the z-axis |
-| angle | number | Yes | the rotate value for x & y & z vector. |
+| angle | number | Yes | the rotate value for x&y&z vector. |
 
 ## rotateX
 

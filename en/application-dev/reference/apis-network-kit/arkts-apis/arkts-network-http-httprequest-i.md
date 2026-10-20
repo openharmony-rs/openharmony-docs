@@ -770,8 +770,6 @@ httpRequest.once("headersReceive", (header: Object) => {
 });
 ```
 
-<a id="request1"></a>
-
 ## request
 
 ```TypeScript
@@ -890,8 +888,6 @@ httpRequest.request("EXAMPLE_URL", (err: Error, data: http.HttpResponse) => {
   }
 });
 ```
-
-<a id="request2"></a>
 
 ## request
 
@@ -1038,8 +1034,6 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
 });
 ```
 
-<a id="request3"></a>
-
 ## request
 
 ```TypeScript
@@ -1181,8 +1175,6 @@ promise.then((data:http.HttpResponse) => {
 });
 ```
 
-<a id="requestinstream1"></a>
-
 ## requestInStream
 
 ```TypeScript
@@ -1280,8 +1272,6 @@ httpRequest.requestInStream("EXAMPLE_URL", (err: BusinessError, data: number) =>
   }
 })
 ```
-
-<a id="requestinstream2"></a>
 
 ## requestInStream
 
@@ -1403,8 +1393,6 @@ httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> , 
   }
 })
 ```
-
-<a id="requestinstream3"></a>
 
 ## requestInStream
 

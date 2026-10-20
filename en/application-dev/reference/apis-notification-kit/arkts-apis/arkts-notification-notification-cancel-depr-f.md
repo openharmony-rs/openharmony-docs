@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="cancel1"></a>
-
 ## cancel
 
 ```TypeScript
@@ -32,8 +30,22 @@ Cancels a notification with the specified ID. This API uses an asynchronous call
 | id | number | Yes | Notification ID. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+**Examples**
 
-<a id="cancel2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+// cancel callback
+let cancelCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("cancel failed " + JSON.stringify(err));
+  } else {
+    console.info("cancel success");
+  }
+}
+Notification.cancel(0, cancelCallback);
+```
+
 
 ## cancel
 
@@ -61,8 +73,22 @@ Cancels a notification with the specified ID and label. This API uses an asynchr
 | label | string | Yes | Notification label. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+**Examples**
 
-<a id="cancel3"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+// cancel callback
+let cancelCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("cancel failed " + JSON.stringify(err));
+  } else {
+    console.info("cancel success");
+  }
+}
+Notification.cancel(0, "label", cancelCallback);
+```
+
 
 ## cancel
 
@@ -94,3 +120,15 @@ Cancels a notification with the specified ID and optional label. This API uses a
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
+
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+
+Notification.cancel(0).then(() => {
+  console.info("cancel success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`cancel failed, code is ${err}`);
+});
+```

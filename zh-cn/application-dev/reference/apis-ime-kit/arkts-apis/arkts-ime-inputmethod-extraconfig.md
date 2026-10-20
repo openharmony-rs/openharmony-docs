@@ -23,7 +23,34 @@
  <br>
  <br>本模块为纯数据定义模块，`InputMethodExtraConfig`作为数据类型需与其他模块的API组合使用。典型组合为：在`TextInput`控件的
  `onWillAttachIME`方法中，通过`IMEClient.setExtraConfig`将`InputMethodExtraConfig`传递给输入法应用，输入法应用侧通过`@ohos.inputMethodEngine`模块的`EditorAttribute`接收并处理该配置。
-
+ <br>
+ <br>```javascript
+ <br>// 以下为阐述调用逻辑的伪代码
+ <br>@Entry
+ <br>@Component
+ <br>struct Index2 {
+ <br> // 1. 构造输入法扩展信息
+ <br> private extraConfig: InputMethodExtraConfig = {
+ <br> customSettings: {
+ <br> 'inputMode': 'chat',
+ <br> 'showEmojiPanel': true,
+ <br> 'themeColor': 'dark',
+ <br> 'autoCapitalize': false
+ <br> }
+ <br> };
+ <br>
+ <br> build() {
+ <br> Column() {
+ <br> TextInput()
+ <br> .onWillAttachIME((client: IMEClient): void => {
+ <br> client.setExtraConfig(this.extraConfig);
+ <br> })
+ <br> }
+ <br> .height('100%')
+ <br> .width('100%')
+ <br> }
+ <br>}
+ <br>```
 
 
 ## 导入模块

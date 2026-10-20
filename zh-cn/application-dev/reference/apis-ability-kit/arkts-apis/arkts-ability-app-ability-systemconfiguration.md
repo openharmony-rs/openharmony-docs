@@ -11,6 +11,8 @@ systemConfiguration模块提供系统环境变化监听回调能力，包括系�
 
 **起始版本：** 24
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace systemConfiguration--><!--Device-unnamed-declare namespace systemConfiguration-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

@@ -4,6 +4,8 @@ Provides APIs for registering the component layout and drawing completion callba
 
 **Since:** 10
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace inspector--><!--Device-unnamed-declare namespace inspector-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

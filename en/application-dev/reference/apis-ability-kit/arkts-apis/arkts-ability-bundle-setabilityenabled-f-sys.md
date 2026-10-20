@@ -6,8 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="setabilityenabled1"></a>
-
 ## setAbilityEnabled
 
 ```TypeScript
@@ -63,8 +61,6 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
 
 <!--DelEnd-->
 
-
-<a id="setabilityenabled2"></a>
 
 ## setAbilityEnabled
 

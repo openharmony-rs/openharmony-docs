@@ -6,8 +6,6 @@ type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: Dialog
 
 The request dialog info event.
 
-@typedef { function } RequestDialogInfoEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

@@ -6,8 +6,6 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
-<a id="getappclipboardpolicy1"></a>
-
 ## getAppClipboardPolicy
 
 ```TypeScript
@@ -90,8 +88,6 @@ try {
 ```
 
 
-<a id="getappclipboardpolicy2"></a>
-
 ## getAppClipboardPolicy
 
 ```TypeScript
@@ -154,8 +150,6 @@ try {
 ```
 
 
-<a id="getappclipboardpolicy3"></a>
-
 ## getAppClipboardPolicy
 
 ```TypeScript
@@ -200,8 +194,6 @@ Obtains the device clipboard policy of a specified application for a specified u
 
 See [getAppClipboardPolicy](#getappclipboardpolicy)
 
-
-<a id="getappclipboardpolicy4"></a>
 
 ## getAppClipboardPolicy
 

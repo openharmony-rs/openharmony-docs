@@ -24,8 +24,6 @@ Defines the AbsAlbum.
 import { userFileManager } from '@kit.CoreFileKit';
 ```
 
-<a id="getphotoassets1"></a>
-
 ## getPhotoAssets
 
 ```TypeScript
@@ -60,8 +58,6 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900020 | if type options is not FetchOptions |
-
-<a id="getphotoassets2"></a>
 
 ## getPhotoAssets
 

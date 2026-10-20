@@ -6,8 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="gethistoricalsessiondescriptors1"></a>
-
 ## getHistoricalSessionDescriptors
 
 ```TypeScript
@@ -60,8 +58,6 @@ avSession.getHistoricalSessionDescriptors(1, (descriptors: avSession.AVSessionDe
 
 <!--DelEnd-->
 
-
-<a id="gethistoricalsessiondescriptors2"></a>
 
 ## getHistoricalSessionDescriptors
 

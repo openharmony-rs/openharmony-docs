@@ -70,13 +70,13 @@ Deletes a cache file. This API returns the result synchronously.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: <br>1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system |
-| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020 | Invalid argument. Possible causes: <br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 14000002 | Invalid URI. |
-| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: <br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Examples**
 
@@ -95,8 +95,6 @@ try {
   console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
 }
 ```
-
-<a id="constructor1"></a>
 
 ## constructor
 
@@ -152,8 +150,6 @@ Query the total size of cached files.
 | --- | --- |
 | 13900010 | Try again. |
 
-<a id="off1"></a>
-
 ## off
 
 ```TypeScript
@@ -179,7 +175,7 @@ Removes the specified callback from the device-cloud file cache progress.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
 **Examples**
@@ -202,15 +198,13 @@ try {
 }
 ```
 
-<a id="off2"></a>
-
 ## off
 
 ```TypeScript
 off(event: 'batchDownload', callback?: Callback<MultiDownloadProgress>): void
 ```
 
-Removes the listener added via the [on](#on2) API for file batch downloads.
+Removes the listener added via the [on](#on) API for file batch downloads.
 
 **Since:** 20
 
@@ -229,8 +223,8 @@ Removes the listener added via the [on](#on2) API for file batch downloads.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13900020 | Invalid argument. Possible causes: <br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 22400005 | Inner error. Possible causes: <br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Examples**
 
@@ -250,8 +244,6 @@ try {
   console.error(`Failed to unregister download callback, error code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="on1"></a>
 
 ## on
 
@@ -278,7 +270,7 @@ Registers a listener for the download progress of a file from the Drive Kit.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
 **Examples**
@@ -298,8 +290,6 @@ try {
   console.error(`Error code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="on2"></a>
 
 ## on
 
@@ -326,8 +316,8 @@ Registers a listener for the batch download of a file from the Drive Kit.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13900020 | Invalid argument. Possible causes: <br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 22400005 | Inner error. Possible causes: <br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Examples**
 
@@ -351,8 +341,6 @@ try {
   console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="start1"></a>
 
 ## start
 
@@ -384,7 +372,7 @@ Starts downloading a file from the Drive Kit to the local device. This API uses 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
@@ -416,8 +404,6 @@ fileCache.start(uri).then(() => {
 });
 ```
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -443,7 +429,7 @@ Starts downloading a file from the Drive Kit to the local device. This API uses 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
@@ -501,11 +487,11 @@ Different batch download tasks can be distinguished by the task ID returned.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
-| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13600001 | IPC error. Possible causes: <br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900020 | Invalid argument. Possible causes: <br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 14000002 | Invalid uri. |
 | 22400004 | Exceed the maximum limit. |
-| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: <br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Examples**
 
@@ -529,8 +515,6 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
   console.error(`start download failed with error message: ${err.message}, error code: ${err.code}`);
 });
 ```
-
-<a id="stop1"></a>
 
 ## stop
 
@@ -565,7 +549,7 @@ When **stop()** is called, the current file download process terminates, and dow
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13900002 | No such file or directory. |
 | 14000002 | Invalid uri. |
@@ -586,8 +570,6 @@ fileCache.stop(uri, true).then(() => {
   console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
-
-<a id="stop2"></a>
 
 ## stop
 
@@ -616,7 +598,7 @@ When **stop()** is called, the current file download process terminates, and dow
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13900002 | No such file or directory. |
 | 14000002 | Invalid uri. |
@@ -673,9 +655,9 @@ When **stopBatch()** is called, the batch download terminates. The **needClean**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 13600001 | IPC error. Possible causes:<br>1.IPC failed or timed out. 2.Failed to load the service. |
-| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
-| 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 13600001 | IPC error. Possible causes: <br>1.IPC failed or timed out. 2.Failed to load the service. |
+| 13900020 | Invalid argument. Possible causes: <br>1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 22400005 | Inner error. Possible causes: <br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **Examples**
 

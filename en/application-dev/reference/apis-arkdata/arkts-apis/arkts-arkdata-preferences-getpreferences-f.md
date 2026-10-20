@@ -6,8 +6,6 @@
 import { preferences } from '@kit.ArkData';
 ```
 
-<a id="getpreferences1"></a>
-
 ## getPreferences
 
 ```TypeScript
@@ -36,7 +34,7 @@ Obtains a **Preferences** instance. This API uses an asynchronous callback to re
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-internal-error) | Inner error.<br>**Applicable version:** 11 and later |
 
 **Examples**
@@ -84,8 +82,6 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="getpreferences2"></a>
-
 ## getPreferences
 
 ```TypeScript
@@ -114,7 +110,7 @@ Obtains a **Preferences** instance. This API uses an asynchronous callback to re
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [15501001](../errorcode-preferences.md#15501001-stage-model-required) | The operations is supported in stage mode only. |
 | [15501002](../errorcode-preferences.md#15501002-invalid-datagroupid-parameter-in-options) | Invalid dataGroupId. |
@@ -168,8 +164,6 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="getpreferences3"></a>
-
 ## getPreferences
 
 ```TypeScript
@@ -203,7 +197,7 @@ Obtains a **Preferences** instance. This API uses a promise to return the result
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [15500000](../errorcode-preferences.md#15500000-internal-error) | Inner error.<br>**Applicable version:** 11 and later |
 
 **Examples**
@@ -250,8 +244,6 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="getpreferences4"></a>
-
 ## getPreferences
 
 ```TypeScript
@@ -285,7 +277,7 @@ Obtains a **Preferences** instance. This API uses a promise to return the result
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [15501001](../errorcode-preferences.md#15501001-stage-model-required) | The operations is supported in stage mode only. |
 | [15501002](../errorcode-preferences.md#15501002-invalid-datagroupid-parameter-in-options) | Invalid dataGroupId. |

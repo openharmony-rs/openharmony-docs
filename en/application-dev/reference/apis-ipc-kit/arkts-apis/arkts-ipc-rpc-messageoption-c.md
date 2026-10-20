@@ -18,8 +18,6 @@ Defines the options used to construct the **MessageOption** object.
 import { rpc } from '@kit.IPCKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -41,7 +39,7 @@ A constructor used to create a **MessageOption** object.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | syncFlags | number | No | Synchronous or asynchronous call flag. The value range is {0, 1}. The value **0** indicates synchronous call (use this value when you need to obtain the response immediately), and the value **1** indicates asynchronous call (use this value when you do not need to obtain the response immediately). If this parameter is not specified, **0** (synchronous call) is used by default. |
-| waitTime | number | No | Maximum wait time for an RPC call, in seconds.<br>Default value: **8** <br>Value range: (0, 3000]. If an RPC call takes a long time, you can increase the wait time. If a quick response is required, you can reduce the wait time. If this parameter is not specified, the default wait time of 8 seconds is used. |
+| waitTime | number | No | Maximum wait time for an RPC call, in seconds. <br>Default value: **8** <br>Value range: (0, 3000]. If an RPC call takes a long time, you can increase the wait time. If a quick response is required, you can reduce the wait time. If this parameter is not specified, the default wait time of 8 seconds is used. |
 
 **Examples**
 
@@ -54,8 +52,6 @@ class TestRemoteObject extends rpc.MessageOption {
   }
 }
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 closeDelayed(time: number): Promise<void>
 ```
 
-Delay close camera.
+延迟关闭相机。
 
 **起始版本：** 18
 
@@ -40,13 +40,13 @@ Delay close camera.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| time | number | 是 | delay time for turning off camera, in units of second. |
+| time | number | 是 | 关闭相机的延迟时间，单位为秒。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise&lt;void&gt; | 用于返回结果的 Promise。 |
 
 **错误码：**
 
@@ -62,7 +62,7 @@ Delay close camera.
 controlAuxiliary(auxiliaryType: AuxiliaryType, auxiliaryStatus: AuxiliaryStatus): Promise<void>
 ```
 
-Control auxiliary.
+辅助控制。
 
 **起始版本：** 18
 
@@ -76,14 +76,14 @@ Control auxiliary.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| auxiliaryType | [AuxiliaryType](arkts-camera-camera-auxiliarytype-e-sys.md) | 是 | Auxiliary type. |
-| auxiliaryStatus | [AuxiliaryStatus](arkts-camera-camera-auxiliarystatus-e-sys.md) | 是 | Auxiliary status. |
+| auxiliaryType | [AuxiliaryType](arkts-camera-camera-auxiliarytype-e-sys.md) | 是 | 辅助类型。 |
+| auxiliaryStatus | [AuxiliaryStatus](arkts-camera-camera-auxiliarystatus-e-sys.md) | 是 | 辅助状态。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise&lt;void&gt; | 用于返回结果的Promise。 |
 
 **错误码：**
 
@@ -99,7 +99,7 @@ Control auxiliary.
 usedAsPosition(position: CameraPosition): void
 ```
 
-Sets the camera to be used as a camera at the specified position.
+设置将相机用作指定位置的相机。
 
 **起始版本：** 19
 
@@ -113,7 +113,7 @@ Sets the camera to be used as a camera at the specified position.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| position | [CameraPosition](arkts-camera-camera-cameraposition-e.md) | 是 | The positon used for the camera. |
+| position | [CameraPosition](arkts-camera-camera-cameraposition-e.md) | 是 | 相机使用的位置。 |
 
 **错误码：**
 

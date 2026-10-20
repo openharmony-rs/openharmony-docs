@@ -4,8 +4,6 @@
 export interface LocaleResponse
 ```
 
-@interface LocaleResponse
-
 **Since:** 12
 
 <!--Device-unnamed-export interface LocaleResponse--><!--Device-unnamed-export interface LocaleResponse-End-->

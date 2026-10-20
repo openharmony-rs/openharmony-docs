@@ -6,8 +6,6 @@ declare interface PopupBorderLinearGradient
 
 弹出边框线性渐变色。
 
-@interface PopupBorderLinearGradient
-
 **起始版本：** 20
 
 <!--Device-unnamed-declare interface PopupBorderLinearGradient--><!--Device-unnamed-declare interface PopupBorderLinearGradient-End-->

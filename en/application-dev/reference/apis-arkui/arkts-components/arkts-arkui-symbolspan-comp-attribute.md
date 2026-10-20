@@ -132,8 +132,6 @@ Sets the size of the **SymbolSpan** component. When the value is of the string t
 | --- | --- | --- | --- |
 | value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Size of the SymbolSpan component. <br>Value range: [0, +∞) <br>Unit: [fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#basic-pixel-units) |
 
-<a id="fontweight1"></a>
-
 ## fontWeight
 
 ```TypeScript
@@ -164,9 +162,7 @@ The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | Yes | Font weight of the SymbolSpan component.<br>For the number type, the value range is [100, 900], with an interval of 100. The default value is 400. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. If the value is set too large, the font may be truncated in different fonts. If a value outside the value range or not meeting the interval requirement is passed, the default value is used. |
-
-<a id="fontweight2"></a>
+| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | Yes | Font weight of the SymbolSpan component. <br>For the number type, the value range is [100, 900], with an interval of 100. The default value is 400. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. If the value is set too large, the font may be truncated in different fonts. If a value outside the value range or not meeting the interval requirement is passed, the default value is used. |
 
 ## fontWeight
 
@@ -194,8 +190,8 @@ The sys.symbol.ohos_lungs icon does not support setting fontWeight.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the SymbolSpan component.<br>The number type value range is [100, 900], with an interval of 100. The default value is 400. A larger value indicates a heavier font. The string type supports only the string form of the number type values, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. Setting an excessively large value may cause truncation with different fonts. <br>If the value is out of the value range, the default value is used. If the value does not meet the interval requirement, the passed value is used when enableVariableFontWeight of fontWeightConfigs is set to true; otherwise, the default value is used. |
-| fontWeightConfigs | [FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md) | No | Font weight configuration. Pass this parameter when variable font weight adjustment needs to be enabled (setting a fine-grained font weight value that is not an integer multiple of 100, such as 220 or 660) or when the font weight needs to be automatically updated based on the device font weight level.<br>Default value: { enableVariableFontWeight: false, enableDeviceFontWeightCategory: true } |
+| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the SymbolSpan component. <br>The number type value range is [100, 900], with an interval of 100. The default value is 400. A larger value indicates a heavier font. The string type supports only the string form of the number type values, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. Setting an excessively large value may cause truncation with different fonts. <br>If the value is out of the value range, the default value is used. If the value does not meet the interval requirement, the passed value is used when enableVariableFontWeight of fontWeightConfigs is set to true; otherwise, the default value is used. |
+| fontWeightConfigs | [FontWeightConfigs](../arkts-apis/arkts-arkui-fontweightconfigs-i.md) | No | Font weight configuration. Pass this parameter when variable font weight adjustment needs to be enabled (setting a fine-grained font weight value that is not an integer multiple of 100, such as 220 or 660) or when the font weight needs to be automatically updated based on the device font weight level. <br>Default value: { enableVariableFontWeight: false, enableDeviceFontWeightCategory: true } |
 
 ## renderingStrategy
 

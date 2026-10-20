@@ -44,14 +44,14 @@ Allows the specified origin to use the geolocation APIs. It is used to pre-autho
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| origin | string | Yes | String of the specified origin.<br>The origin format must comply with the format defined in RFC 6454. An exception is thrown when a string that does not comply with the RFC 6454 format is input, with error code 17100011. |
-| incognito | boolean | No | The value **true** indicates that the specified origin is allowed to use geolocation in privacy mode, and **false** indicates that the specified origin is allowed to use geolocation in normal (non-privacy) mode.<br>Default value: **false**. <br>The value is **false** when null or undefined is input.<br>**Since:** 11 |
+| origin | string | Yes | String of the specified origin. <br>The origin format must comply with the format defined in RFC 6454. An exception is thrown when a string that does not comply with the RFC 6454 format is input, with error code 17100011. |
+| incognito | boolean | No | The value **true** indicates that the specified origin is allowed to use geolocation in privacy mode, and **false** indicates that the specified origin is allowed to use geolocation in normal (non-privacy) mode. <br>Default value: **false**. <br>The value is **false** when null or undefined is input.<br>**Since:** 11 |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. |
 
 **Examples**
@@ -104,7 +104,7 @@ Clears the geolocation permission status of all origins. It is used to revoke ge
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| incognito | boolean | No | The value **true** indicates clearing the geolocation permission status of all origins in Privacy Mode, and **false** indicates clearing the geolocation permission status of all origins in Normal Mode.<br>Default value: **false**. <br>The value **false** is used when null or undefined is input.<br>**Since:** 11 |
+| incognito | boolean | No | The value **true** indicates clearing the geolocation permission status of all origins in Privacy Mode, and **false** indicates clearing the geolocation permission status of all origins in Normal Mode. <br>Default value: **false**. <br>The value **false** is used when null or undefined is input.<br>**Since:** 11 |
 
 **Examples**
 
@@ -128,14 +128,14 @@ Clears the geolocation permission status of the specified origin. It is used to 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| origin | string | Yes | String of the specified origin.<br>The origin format must comply with the format defined in RFC 6454. Throws an exception when a string that does not comply with the RFC 6454 format is input. Error code: 17100011. |
-| incognito | boolean | No | Whether to clear the geolocation permission status of the specified origin in privacy mode. The value **true** indicates clearing in privacy mode, and **false** indicates clearing in normal non-privacy mode.<br>Default value: **false**. <br>The value is **false** when null or undefined is input.<br>**Since:** 11 |
+| origin | string | Yes | String of the specified origin. <br>The origin format must comply with the format defined in RFC 6454. Throws an exception when a string that does not comply with the RFC 6454 format is input. Error code: 17100011. |
+| incognito | boolean | No | Whether to clear the geolocation permission status of the specified origin in privacy mode. The value **true** indicates clearing in privacy mode, and **false** indicates clearing in normal non-privacy mode. <br>Default value: **false**. <br>The value is **false** when null or undefined is input.<br>**Since:** 11 |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. |
 
 **Examples**
@@ -172,8 +172,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getaccessiblegeolocation1"></a>
-
 ## getAccessibleGeolocation
 
 ```TypeScript
@@ -194,20 +192,20 @@ Obtains the geolocation permission status of the specified origin. This API uses
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| origin | string | Yes | String of the specified origin.<br>The origin format must comply with the format defined in RFC 6454. An exception is thrown when a string that does not comply with the RFC 6454 format is input, with error code 17100011. |
-| incognito | boolean | No | Whether to obtain the geolocation permission status of the specified origin in privacy mode. The value **true** indicates obtaining in privacy mode, and **false** indicates obtaining in normal mode.<br>Default value: **false**. <br>An exception with error code 401 is thrown when null or undefined is input.<br>**Since:** 11 |
+| origin | string | Yes | String of the specified origin. <br>The origin format must comply with the format defined in RFC 6454. An exception is thrown when a string that does not comply with the RFC 6454 format is input, with error code 17100011. |
+| incognito | boolean | No | Whether to obtain the geolocation permission status of the specified origin in privacy mode. The value **true** indicates obtaining in privacy mode, and **false** indicates obtaining in normal mode. <br>Default value: **false**. <br>An exception with error code 401 is thrown when null or undefined is input.<br>**Since:** 11 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the geolocation permission status of the specified origin.<br>If the operation is successful, the value **true** means that the geolocation permission is granted, and **false** means the opposite. <br>If the operation fails, the geolocation permission status of the specified origin is not found. |
+| Promise&lt;boolean&gt; | Promise used to return the geolocation permission status of the specified origin. <br>If the operation is successful, the value **true** means that the geolocation permission is granted, and **false** means the opposite. <br>If the operation fails, the geolocation permission status of the specified origin is not found. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. |
 
 **Examples**
@@ -245,8 +243,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getaccessiblegeolocation2"></a>
-
 ## getAccessibleGeolocation
 
 ```TypeScript
@@ -267,15 +263,15 @@ Obtains the geolocation permission status of the specified origin. This API uses
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| origin | string | Yes | String of the specified origin.<br>The origin format must comply with the format defined in RFC 6454. An exception is thrown when a non- conforming input string is input. Error code: 17100011. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the geolocation permission status of the specified origin.<br>If the operation is successful, the value **true** means that the geolocation permission is granted, and **false** means the opposite. <br>If the operation fails, the geolocation permission status of the specified origin is not found. |
-| incognito | boolean | No | The value **true** indicates to get the geolocation permission status of the specified origin in privacy mode, and **false** indicates to get it in normal mode.<br>Default value: **false**. <br>Throws an exception error with error code 401 when null or undefined is input.<br>**Since:** 11 |
+| origin | string | Yes | String of the specified origin. <br>The origin format must comply with the format defined in RFC 6454. An exception is thrown when a non- conforming input string is input. Error code: 17100011. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the geolocation permission status of the specified origin. <br>If the operation is successful, the value **true** means that the geolocation permission is granted, and **false** means the opposite. <br>If the operation fails, the geolocation permission status of the specified origin is not found. |
+| incognito | boolean | No | The value **true** indicates to get the geolocation permission status of the specified origin in privacy mode, and **false** indicates to get it in normal mode. <br>Default value: **false**. <br>Throws an exception error with error code 401 when null or undefined is input.<br>**Since:** 11 |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [17100011](../errorcode-webview.md#17100011-invalid-origin) | Invalid origin. |
 
 **Examples**
@@ -314,8 +310,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getstoredgeolocation1"></a>
-
 ## getStoredGeolocation
 
 ```TypeScript
@@ -336,7 +330,7 @@ Obtains the geolocation permission status of all origins. This API uses a promis
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| incognito | boolean | No | The value **true** indicates that all origin information of stored geolocation permission status is obtained in private mode, and **false** indicates that it is obtained in normal mode.<br>Default value: **false**. <br>Throws an exception error code 401 when null or undefined is passed in.<br>**Since:** 11 |
+| incognito | boolean | No | The value **true** indicates that all origin information of stored geolocation permission status is obtained in private mode, and **false** indicates that it is obtained in normal mode. <br>Default value: **false**. <br>Throws an exception error code 401 when null or undefined is passed in.<br>**Since:** 11 |
 
 **Return value:**
 
@@ -348,7 +342,7 @@ Obtains the geolocation permission status of all origins. This API uses a promis
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 
@@ -385,8 +379,6 @@ struct WebComponent {
 }
 ```
 
-<a id="getstoredgeolocation2"></a>
-
 ## getStoredGeolocation
 
 ```TypeScript
@@ -408,13 +400,13 @@ Obtains the geolocation permission status of all origins. This API uses an async
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;string&gt;&gt; | Yes | Callback invoked to return all origin information of stored geolocation permission statuses. The callback parameters include: error (error object, which is null when retrieval is successful) and origins (array of origin strings with stored geolocation permissions, where each element is an origin string that complies with the format defined in RFC 6454). When retrieval fails, error is the error object. |
-| incognito | boolean | No | Whether to obtain all origin information of stored geolocation permission statuses in privacy mode. The value **true** indicates privacy mode, and **false** indicates normal mode.<br>Default value: **false**. <br>Throws an exception error code 401 when null or undefined is passed in.<br>**Since:** 11 |
+| incognito | boolean | No | Whether to obtain all origin information of stored geolocation permission statuses in privacy mode. The value **true** indicates privacy mode, and **false** indicates normal mode. <br>Default value: **false**. <br>Throws an exception error code 401 when null or undefined is passed in.<br>**Since:** 11 |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 

@@ -6,8 +6,6 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="unsubscribemanagedevent1"></a>
-
 ## unsubscribeManagedEvent
 
 ```TypeScript
@@ -75,8 +73,6 @@ adminManager.unsubscribeManagedEvent(wantTemp, events, (err) => {
 
 <!--DelEnd-->
 
-
-<a id="unsubscribemanagedevent2"></a>
 
 ## unsubscribeManagedEvent
 

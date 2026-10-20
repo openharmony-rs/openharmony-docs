@@ -28,17 +28,17 @@ enum TiffPropertyKey
 
 | RESOLUTION_UNIT | 'TiffResolutionUnit' | XResolution（水平分辨率）和YResolution（垂直分辨率）的单位，取值为英寸（Inch）或厘米（Centimeter）。 |  
 | COPYRIGHT | 'TiffCopyright' | 图像的版权信息。 |  
-| DATE_TIME | 'TiffDateTime' | 与图像关联的日期和时间（通常为最后修改时间）。 |
-| IMAGE_DESCRIPTION | 'TiffImageDescription' | 图像信息描述。 |
-| Y_RESOLUTION | 'TiffYResolution' | 垂直方向分辨率（每分辨率单位的像素数）。 |
-| X_RESOLUTION | 'TiffXResolution' | 水平方向分辨率（每分辨率单位的像素数）。 |
-| WHITE_POINT | 'TiffWhitePoint' | 用于指定图像的白点（white point）色度坐标，即图像颜色空间中被认为是“白色”的参考点。 |
-| TILE_LENGTH | 'TiffTileLength' | 每个图像分块的高度。单位：像素（px）。 |
-| TRANSFER_FUNCTION | 'TiffTransferFunction' | 图像的传递函数，通常用于颜色校正。 |
-| TILE_WIDTH | 'TiffTileWidth' | 每个图像分块的宽度。单位：像素（px）。 |
-| MAKE | 'TiffMake' | 拍摄设备制造商。 |
-| MODEL | 'TiffModel' | 拍摄设备型号名称或编号。 |
-| HOST_COMPUTER | 'TiffHostComputer' | 用于图像处理的主机或系统。 |
+| DATE_TIME | 'TiffDateTime' | 与图像关联的日期和时间（通常为最后修改时间）。 |  
+| IMAGE_DESCRIPTION | 'TiffImageDescription' | 图像信息描述。 |  
+| Y_RESOLUTION | 'TiffYResolution' | 垂直方向分辨率（每分辨率单位的像素数）。 |  
+| X_RESOLUTION | 'TiffXResolution' | 水平方向分辨率（每分辨率单位的像素数）。 |  
+| WHITE_POINT | 'TiffWhitePoint' | 用于指定图像的白点（white point）色度坐标，即图像颜色空间中被认为是“白色”的参考点。 |  
+| TILE_LENGTH | 'TiffTileLength' | 每个图像分块的高度。单位：像素（px）。 |  
+| TRANSFER_FUNCTION | 'TiffTransferFunction' | 图像的传递函数，通常用于颜色校正。 |  
+| TILE_WIDTH | 'TiffTileWidth' | 每个图像分块的宽度。单位：像素（px）。 |  
+| MAKE | 'TiffMake' | 拍摄设备制造商。 |  
+| MODEL | 'TiffModel' | 拍摄设备型号名称或编号。 |  
+| HOST_COMPUTER | 'TiffHostComputer' | 用于图像处理的主机或系统。 |  
 | COMPRESSION | 'TiffCompression' | TIFF图像数据所用的压缩方案。
 
 - 1表示无压缩。  

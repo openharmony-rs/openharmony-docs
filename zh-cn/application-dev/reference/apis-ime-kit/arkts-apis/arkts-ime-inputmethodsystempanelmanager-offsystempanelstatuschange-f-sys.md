@@ -12,7 +12,7 @@ import { inputMethodSystemPanelManager } from '@kit.IMEKit';
 function offSystemPanelStatusChange(callback?: Callback<SystemPanelStatus>): void
 ```
 
-取消订阅系统面板状态改变事件。
+取消订阅系统面板状态变化事件。<br> <br>使用场景：当系统面板不再需要接收面板状态变化通知时使用此接口，如面板关闭或退出时。<br> <br>相关接口间的配合/制约关系：取消订阅后，之前通过onSystemPanelStatusChange注册的回调将不再被触发。
 
 **起始版本：** 26.0.0
 
@@ -28,7 +28,7 @@ function offSystemPanelStatusChange(callback?: Callback<SystemPanelStatus>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SystemPanelStatus](arkts-ime-inputmethodsystempanelmanager-systempanelstatus-i-sys.md)&gt; | 否 | 当系统面板状态改变时触发的回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SystemPanelStatus](arkts-ime-inputmethodsystempanelmanager-systempanelstatus-i-sys.md)&gt; | 否 | 回调函数。<br>使用场景：传入需要取消的特定回调函数时，仅取消该回调的订阅。<br>默认值：不传入时，取消所有已订阅的onSystemPanelStatusChange回调。<br>说明：建议传入需要取消的特定回调函数引用，避免取消所有回调导致其他订阅者的回调也被移除。 |
 
 **错误码：**
 

@@ -6,8 +6,6 @@ interface Rect
 
 Indicates rectangle, unit is vp.
 
-@typedef Rect
-
 **Since:** 20
 
 <!--Device-formInfo-interface Rect--><!--Device-formInfo-interface Rect-End-->
