@@ -135,7 +135,7 @@ type Vector4 = Vector4
 
 ### 示例1（动态改变角点形变）
 
-该示例演示如何使用[DistortionComponent](#distortioncomponent)组件，通过改变四个角点的坐标，产生由角点拉伸带来的空间扭曲效果。点击按钮后，使用animateTo同时播放角点形变动画和前景文字的透明度、缩放联动动画，再次点击恢复原始状态。
+该示例演示如何使用[DistortionComponent](#distortioncomponent)组件，通过改变四个角点的坐标，产生由角点拉伸带来的空间扭曲效果。点击按钮后，使用animateTo同时播放角点形变动画。
 
 从API版本26.0.0开始，新增系统组件DistortionComponent。
 
