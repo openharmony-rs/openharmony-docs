@@ -66,7 +66,7 @@
 
 ## 旋转策略及设备差异性
 
-应用可以通过在[module.json5配置文件](../quick-start/module-configuration-file.md)中配置“orientation”字段或者在运行时调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置“orientation”字段，设置应用的显示方向。无论通过哪种方式设置，[orientation](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)字段的取值含义都相同，均为旋转方向类型枚举（即旋转策略）。详情可参考[设置窗口的旋转策略](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715)。
+应用可以通过在[module.json5配置文件](../quick-start/module-configuration-file.md)中配置“orientation”字段或者在运行时调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置“orientation”字段，设置应用的显示方向。无论通过哪种方式设置，该字段的取值含义都相同，均为旋转方向类型枚举（即旋转策略）。详情可参考[设置窗口的旋转策略](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715)。
 
 系统提供了18种的方向类型枚举，以应对不同场景的需要。根据使用场景的不同，这些方向类型可分为：固定方向类型、自动旋转方向类型、临时方向类型和其他方向类型。
 
@@ -101,7 +101,7 @@
 
 这7种方向类型根据不同的使用场景，也存在一些差异。比如：
 
-- 带有“RESTRICTED”字样的类型“AUTO_ROTATION_RESTRICTED”、“AUTO_ROTATION_PORTRAIT_RESTRICTED”和“AUTO_ROTATION_LANDSCAPE_RESTRICTED”受系统旋转锁定开关控制。当旋转锁定打开时，设置了该类型的应用会固定在锁定的方向，不再跟随重力传感器调整页面。针对搭载OpenHarmony 7.0.0及以上版本的设备，当旋转锁定打开时，设置了该类型的应用会固定在锁定的方向，除了不再跟随重力传感器调整页面外，也不再跟随智感传感器调整页面。
+- 带有“RESTRICTED”后缀的类型“AUTO_ROTATION_RESTRICTED”、“AUTO_ROTATION_PORTRAIT_RESTRICTED”和“AUTO_ROTATION_LANDSCAPE_RESTRICTED”受系统旋转锁定开关控制。当旋转锁定打开时，设置了该类型的应用会固定在锁定的方向，不再跟随重力传感器调整页面。针对搭载OpenHarmony 7.0.0及以上版本的设备，当旋转锁定打开时，设置了该类型的应用会固定在锁定的方向，除了不再跟随重力传感器调整页面外，也不再跟随智感传感器调整页面。
 
 - 带有“PORTRAIT”或“LANDSCAPE”的类型，将应用限制在“竖屏/反向竖屏”，“横屏/反向横屏”两个方向旋转。
 

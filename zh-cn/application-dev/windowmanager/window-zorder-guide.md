@@ -82,7 +82,7 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 | ZOrder | 系统管理 | 可跨应用生效| 内部渲染顺序管理 |
 | zLevel | [setSubWindowZLevel()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowzlevel18)/创建窗口时设置 | 仅同应用内生效 | 子窗口层级管理 |
 | 窗口置顶 | [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) | 可跨应用生效 | 视频、导航等常驻窗口 |
-| 点击抬升 | [setRaiseByClickEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setraisebyclickenabled14) | 可跨应用生效 | 防误触、固定布局 |
+| 点击抬升 | [setRaiseByClickEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setraisebyclickenabled14) | 同应用内同类型子窗口之间 | 防误触、固定布局 |
 
 ## 层级相关开发场景
 
