@@ -56,6 +56,10 @@
 
 3. 构造用户需要的广播参数及数据。广播中携带的服务UUID必须为自定义UUID，参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)。
 
+    > **说明：**
+    >
+    > 广播参数中可通过frameType字段指定无线帧类型，默认值为FRAME_TYPE_1（基础帧）。FRAME_TYPE_4为扩展覆盖帧，可提升广播覆盖范围；使用前需调用[isFrameType4Supported](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)查询当前设备是否支持，不支持时请使用默认值。
+
     <!-- @[advertising_build_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
     ``` TypeScript
@@ -167,6 +171,10 @@
     ```
 
 2. 订阅扫描结果。为避免重复订阅，先调用[offDeviceFound()](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanoffdevicefound)取消已有订阅，再调用[onDeviceFound()](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanondevicefound)订阅扫描结果，当扫描到设备时将触发回调。回调中调用的parseScanResult解析方法在步骤3中定义。
+
+    > **说明：**
+    >
+    > 扫描结果中的frameType字段表示收到的广播包的无线帧类型；若结果中未返回该字段，则按FRAME_TYPE_1（基础帧）处理。
 
     <!-- @[scan_on_device_found](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
@@ -345,6 +353,10 @@
     ```
 
 5. 启动星闪扫描。其中filters为第4步配置的扫描过滤器，scanOptions为扫描参数。
+
+    > **说明：**
+    >
+    > 扫描参数中可通过frameType字段指定要扫描的无线帧类型，默认值为FRAME_TYPE_1（基础帧）。若需扫描FRAME_TYPE_4（扩展覆盖帧）的广播，请先调用[isFrameType4Supported](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)确认设备支持。
 
     <!-- @[scan_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
