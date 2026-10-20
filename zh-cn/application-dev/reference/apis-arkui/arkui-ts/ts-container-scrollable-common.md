@@ -1569,22 +1569,18 @@ ArkTS-Sta: type OnVisibleIndexesChangeCallback = (start: int, end: int) => void
 
 ## ScrollSnapOffsetProvider
 
-用于自定义限位滚动的距离和吸附位置。目前仅[Grid](ts-container-grid.md)组件的[scrollSnapStrategy](ts-container-grid.md#scrollsnapstrategy)属性支持传入ScrollSnapOffsetProvider的对象。开发者实现ScrollSnapOffsetProvider后，将对象传入scrollSnapStrategy即可使用。
+用于自定义限位滚动的距离和吸附位置。目前仅[Grid](ts-container-grid.md)组件的[scrollSnapStrategy](ts-container-grid.md#scrollsnapstrategy)属性支持此接口。开发者实现该接口后，将对象传入scrollSnapStrategy即可使用。
 
 自定义限位滚动分为两个阶段：先按指定的距离惯性滚动，再通过限位动画滚动到目标吸附位置。两个回调分别在两个阶段的起始时机调用：
 
 - [calculateApproachOffset](#calculateapproachoffset)：在惯性滚动开始时调用一次。
 - [calculateSnapOffset](#calculatesnapoffset)：在惯性阶段结束、限位动画开始前调用一次。
 
-实现ScrollSnapOffsetProvider时需要注意：
+使用时请注意：
 
 - 偏移量的单位是vp，速度的单位是vp/s。
 - 两个回调均在UI线程同步调用，应仅用于计算，不应修改组件布局或应用状态。
 - 回调不提供item的位置和尺寸，开发者需要自行记录或计算这些信息。
-
-> **说明：**
->
-> - velocity、decayOffset为[calculateApproachOffset](#calculateapproachoffset)的参数：velocity表示惯性滚动开始时的速度，朝内容末端滚动时为正，反向布局和RTL方向由组件统一处理；decayOffset表示按默认惯性滚动预测的滑行距离，数值不小于0。
 
 **起始版本：** 26.2.0
 
@@ -1606,8 +1602,8 @@ calculateApproachOffset(velocity: number, decayOffset: number): number
 
 | 参数名   | 类型                            | 必填   | 说明                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| velocity | number | 是    | 惯性滚动开始时的速度，朝内容末端滚动时为正。<br/>单位：vp/s |
-| decayOffset | number | 是    | 按默认惯性滚动预测的滑行距离，数值不小于0。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| velocity | number | 是    | 惯性滚动开始时的速度，朝内容末端滚动时为正。反向布局和RTL方向由组件统一处理。<br/>单位：vp/s |
+| decayOffset | number | 是    | 按默认惯性滚动预测的滑行距离。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
@@ -1633,14 +1629,13 @@ calculateSnapOffset(velocity: number): number
 
 | 参数名   | 类型                            | 必填   | 说明                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| velocity | number | 是    | 惯性滚动开始时的速度，朝内容末端滚动时为正。<br/>单位：vp/s |
+| velocity | number | 是    | 惯性滚动开始时的速度，朝内容末端滚动时为正。反向布局和RTL方向由组件统一处理。<br/>单位：vp/s |
 
 **返回值：**
 
 | 类型    | 说明       |
 | ------- | ---------- |
 | number  | 最终吸附位置相对内容起点的滚动偏移量，不能为NaN或Infinity，0也是有效值。超出组件可滚动范围时，目标位置会限制在范围内。返回NaN或Infinity，或回调抛出异常时，Grid在当前滚动位置停止。<br/>单位：vp<br/>取值范围：[0, 合法滚动范围最大偏移量] |
-
 
 ## 示例
 
