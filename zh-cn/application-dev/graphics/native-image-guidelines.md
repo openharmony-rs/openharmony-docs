@@ -1,6 +1,6 @@
 ---
 kits: ["ArkGraphics 2D / 方舟2D图形服务"]
-shortdes: "介绍NativeImage将Surface与OpenGL外部纹理绑定、作为图形队列消费者端接收并更新Buffer的完整流程，需配合NativeWindow、NativeBuffer、EGL与GLES3使用，适用于C/C++图形渲染与视频画面上屏场景。"
+description: "介绍NativeImage将Surface与OpenGL外部纹理绑定、作为图形队列消费者端接收并更新Buffer的完整流程，需配合NativeWindow、NativeBuffer、EGL与GLES3使用，适用于C/C++图形渲染与视频画面上屏场景。"
 keywords: [NativeImage, 图形队列, 消费者, 纹理更新, NativeWindow, NativeBuffer, EGL, GLES3]
 doctype: guide
 status: active
