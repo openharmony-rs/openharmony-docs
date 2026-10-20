@@ -63,8 +63,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 2. 调用OH_AVMuxer_Create()创建封装器实例对象。
 
    <!-- @[Muxer::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
+   
+   ``` C++
    int32_t Muxer::Create(int32_t fd, int32_t outputFormat)
    {
        outputFormat_ = outputFormat;
@@ -81,12 +81,12 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    视频画面需要旋转的时候设置，示例中对mp4格式设置旋转角度，flv格式不支持旋转元数据。
 
    <!-- @[Muxer::SetRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
+   
+   ``` C++
    int32_t Muxer::SetRotation()
    {
        CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
+   
        // flv不支持旋转元数据。
        if (outputFormat_ == AV_OUTPUT_FORMAT_FLV) {
            return AVCODEC_SAMPLE_ERR_OK;
@@ -160,12 +160,12 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    **方法二：用OH_AVFormat_CreateAudioFormat创建format**
 
    <!-- @[Muxer::AddAudioTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
+   
+   ``` C++
    int32_t Muxer::AddAudioTrack(SampleInfo &sampleInfo)
    {
        CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
+   
        // 添加音频轨：用OH_AVFormat_CreateAudioFormat创建format，这里以封装AAC音频为例。
        OH_AVFormat *formatAudio = OH_AVFormat_CreateAudioFormat(sampleInfo.audio.audioCodecMime.data(),
            sampleInfo.audio.audioSampleRate, sampleInfo.audio.audioChannelCount);
@@ -212,16 +212,16 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    **方法二：用OH_AVFormat_CreateVideoFormat创建format**
 
    <!-- @[Muxer::AddVideoTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
+   
+   ``` C++
    int32_t Muxer::AddVideoTrack(SampleInfo &sampleInfo)
    {
        CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
+   
        // 添加视频轨：用OH_AVFormat_CreateVideoFormat创建format。
        OH_AVFormat *formatVideo = OH_AVFormat_CreateVideoFormat(sampleInfo.video.videoCodecMime.data(),
            sampleInfo.video.videoWidth, sampleInfo.video.videoHeight);
-
+   
        OH_AVFormat_SetDoubleValue(formatVideo, OH_MD_KEY_FRAME_RATE, sampleInfo.video.frameRate);
        OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_WIDTH, sampleInfo.video.videoWidth);
        OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_HEIGHT, sampleInfo.video.videoHeight);
@@ -234,7 +234,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
            OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_TRANSFER_CHARACTERISTICS, sampleInfo.video.transfer);
            OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_MATRIX_COEFFICIENTS, sampleInfo.video.matrix);
        }
-
+   
        int32_t ret = OH_AVMuxer_AddTrack(muxer_, &videoTrackId_, formatVideo);
        OH_AVFormat_Destroy(formatVideo);
        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK && videoTrackId_ >= 0, AVCODEC_SAMPLE_ERR_ERROR, "AddTrack failed");
@@ -327,12 +327,12 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 9. 调用OH_AVMuxer_Start()开始封装。
 
    <!-- @[Muxer::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
+   
+   ``` C++
    int32_t Muxer::Start()
    {
        CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
+   
        int ret = OH_AVMuxer_Start(muxer_);
        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Start failed, ret: %{public}d", ret);
        return AVCODEC_SAMPLE_ERR_OK;
@@ -346,20 +346,22 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
     封装数据包括视频、音频、封面等数据。
 
     <!-- @[Muxer::WriteSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-    ```cpp
+    
+    ``` C++
     int32_t Muxer::WriteSample(int32_t trackId, OH_AVBuffer *buffer, OH_AVCodecBufferAttr &attr)
     {
+        // 音视频编码输出可能由不同线程到达；整个“更新属性并写入容器”过程需要保持原子性。
         std::lock_guard<std::mutex> lock(writeMutex_);
-
+    
         CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
         CHECK_AND_RETURN_RET_LOG(buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Get a empty buffer");
-        
+    
         int32_t ret = OH_AVBuffer_SetBufferAttr(buffer, &attr);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "SetBufferAttr failed");
-
+    
         ret = OH_AVMuxer_WriteSampleBuffer(muxer_, trackId, buffer);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Write sample failed");
+        // Muxer不接管编码器输出Buffer；调用方仍需使用原bufferIndex将该Buffer归还给编码器。
         return AVCODEC_SAMPLE_ERR_OK;
     }
     ```
@@ -367,24 +369,24 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
     示例中buffer来自编码器输出的AVBuffer，封装前通过OH_AVBuffer_SetBufferAttr()设置当前数据的pts、size、flags等属性，通过GetAudioTrackId()/GetVideoTrackId()选择写的音视频轨，封装封面时必须一次写完一张图片。写入示例如下：
 
     <!-- @[Recorder::AudioEncOutputThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
-
-    ```cpp
+    
+    ``` C++
     void Recorder::AudioEncOutputThread()
     {
         while (true) {
             CHECK_AND_BREAK_LOG(!isEos_, "Work done, thread out");
             CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-
+    
             std::shared_ptr<CodecBufferInfo> bufferInfo = audioEncContext_->outputBufferQueue.Dequeue();
             std::shared_lock<std::shared_mutex> codecLock(audioEncContext_->codecMutex);
             CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-            CHECK_AND_CONTINUE_LOG(bufferInfo != nullptr && bufferInfo->isValid,
-                                   "Buffer queue is empty or invalid, continue");
-
+            CHECK_AND_CONTINUE_LOG(bufferInfo != nullptr, "Buffer queue is empty, continue");
+    
             audioEncContext_->outputFrameCount++;
             AVCODEC_SAMPLE_LOGW(
                 "Audio Out buffer count: %{public}u, size: %{public}d, flag: %{public}u, pts: %{public}" PRId64,
                 audioEncContext_->outputFrameCount, bufferInfo->attr.size, bufferInfo->attr.flags, bufferInfo->attr.pts);
+            // 写入后按同一索引归还。输出队列耗尽时，音频编码器会停止回调。
             muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo->buffer,
                                 bufferInfo->attr);
             int32_t ret = audioEncoder_->FreeOutputData(bufferInfo->bufferIndex);
@@ -397,12 +399,12 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 11. 调用OH_AVMuxer_Stop()，停止封装。
 
     <!-- @[Muxer::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-    ```cpp
+    
+    ``` C++
     int32_t Muxer::Stop()
     {
         CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
+    
         int32_t ret = OH_AVMuxer_Stop(muxer_);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Muxer stop failed");
         return AVCODEC_SAMPLE_ERR_OK;
@@ -416,11 +418,12 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
     注意不能重复销毁，否则将会导致程序崩溃。
 
     <!-- @[Muxer::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-    ```cpp
+    
+    ``` C++
     int32_t Muxer::Release()
     {
         if (muxer_ != nullptr) {
+            // Destroy只释放封装器资源，不关闭Create()时由业务侧传入的文件描述符。
             OH_AVMuxer_Destroy(muxer_);
             muxer_ = nullptr;
         }
