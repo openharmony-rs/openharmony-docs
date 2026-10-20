@@ -190,8 +190,8 @@ struct DistortionCornerExample {
                 bottomRight: { x: 0.8, y: 1.1 },
                 barrelDistortion: { x: 0, y: 0, z: 0, w: 0 }
               }
-              this.contentOpacity = 0.6;
-              this.contentScale = 0.8;
+              this.contentOpacity = 0.5;
+              this.contentScale = 0.5;
             } else {
               this.distortionParam = {
                 topLeft: { x: 0, y: 0 },
