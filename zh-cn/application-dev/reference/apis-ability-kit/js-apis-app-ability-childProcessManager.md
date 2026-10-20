@@ -723,7 +723,7 @@ void Main(NativeChildProcess_Args args)
         char *fdName = current->fdName;
         int32_t fd = current->fd;
         current = current->next;
-        // 业务逻辑..
+        // 业务逻辑...
     }
 }
 } // extern "C"
