@@ -32,7 +32,7 @@ If a callback is passed, only the subscriptions that match the callback are canc
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PerceptionEvent](arkts-multimodalawareness-behaviorawareness-perceptionevent-i-sys.md)&lt;[BehaviorAwarenessPayload](arkts-multimodalawareness-behaviorawareness-behaviorawarenesspayload-i-sys.md)&gt;&gt; | No | Callback used to return Awareness event. Used to clear the awareness of all subscriptions Events.<br>Default value: If this parameter is not specified, all subscriptions of the current package are canceled. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PerceptionEvent](arkts-multimodalawareness-behaviorawareness-perceptionevent-i-sys.md)&lt;[BehaviorAwarenessPayload](arkts-multimodalawareness-behaviorawareness-behaviorawarenesspayload-i-sys.md)&gt;&gt; | No | Callback used to return Awareness event. Used to clear the awareness of all subscriptions Events. <br>Default value: If this parameter is not specified, all subscriptions of the current package are canceled. |
 
 **Return value:**
 

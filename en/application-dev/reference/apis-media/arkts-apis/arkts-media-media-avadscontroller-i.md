@@ -38,7 +38,7 @@ Adds an ad media source to the ad controller and specifies the position where th
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | src | [MediaSource](arkts-media-media-mediasource-i.md) | Yes | Media source of the ad to be inserted into the main content. |
-| start | number | Yes | Position where the ad is inserted during the playback of the main media resources, which is calculated from the start of the main media resource playback.<br>The unit is milliseconds.<br>The value must be a non-negative integer and cannot exceed the total duration of the main media resource. Otherwise, error code 5400108 will be triggered. |
+| start | number | Yes | Position where the ad is inserted during the playback of the main media resources, which is calculated from the start of the main media resource playback. <br>The unit is milliseconds.<br>The value must be a non-negative integer and cannot exceed the total duration of the main media resource. Otherwise, error code 5400108 will be triggered. |
 
 **Return value:**
 
@@ -115,7 +115,7 @@ Unregisters the callback for handling ad content loading failures.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnAdsEventLoadingErrorHandle](arkts-media-media-onadseventloadingerrorhandle-t.md) | No | Callback for handling ad content loading failures.<br>If this parameter is specified, only the specified callback is unregistered. If this parameter is not specified, all callbacks for the event are unregistered by default. |
+| callback | [OnAdsEventLoadingErrorHandle](arkts-media-media-onadseventloadingerrorhandle-t.md) | No | Callback for handling ad content loading failures. <br>If this parameter is specified, only the specified callback is unregistered. If this parameter is not specified, all callbacks for the event are unregistered by default. |
 
 **Examples**
 
@@ -149,7 +149,7 @@ Unregisters the callback triggered when the ad content playback is complete.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | No | Callback invoked when the ad playback is complete.<br>If this parameter is specified, only the specified callback is unregistered. If this parameter is not specified, all callbacks for the event are unregistered by default. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | No | Callback invoked when the ad playback is complete. <br>If this parameter is specified, only the specified callback is unregistered. If this parameter is not specified, all callbacks for the event are unregistered by default. |
 
 **Examples**
 
@@ -217,7 +217,7 @@ Unregisters the callback triggered when a new ad is played.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnAdsEventAdsStartedHandle](arkts-media-media-onadseventadsstartedhandle-t.md) | No | Callback triggered when the ad starts playing. It is usually used when the main content playback screen is switched to the ad playback screen.<br>If this parameter is specified, only the specified callback is unregistered. If this parameter is not specified, all callbacks for the event are unregistered by default. |
+| callback | [OnAdsEventAdsStartedHandle](arkts-media-media-onadseventadsstartedhandle-t.md) | No | Callback triggered when the ad starts playing. It is usually used when the main content playback screen is switched to the ad playback screen. <br>If this parameter is specified, only the specified callback is unregistered. If this parameter is not specified, all callbacks for the event are unregistered by default. |
 
 **Examples**
 
@@ -361,7 +361,7 @@ Registers a callback triggered when a new ad is played.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnAdsEventAdsStartedHandle](arkts-media-media-onadseventadsstartedhandle-t.md) | Yes | Callback triggered when the ad starts playing. It is usually used when the main content playback screen is switched to the ad playback screen.<br>The first parameter indicates the ID of the ad being played, and the second parameter indicates the ad duration, in milliseconds |
+| callback | [OnAdsEventAdsStartedHandle](arkts-media-media-onadseventadsstartedhandle-t.md) | Yes | Callback triggered when the ad starts playing. It is usually used when the main content playback screen is switched to the ad playback screen. <br>The first parameter indicates the ID of the ad being played, and the second parameter indicates the ad duration, in milliseconds |
 
 **Examples**
 

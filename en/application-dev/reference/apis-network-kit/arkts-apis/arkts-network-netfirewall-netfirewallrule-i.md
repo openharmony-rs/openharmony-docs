@@ -218,7 +218,7 @@ Rule name. This parameter is mandatory and can contain a maximum of 128 characte
 protocol?: number
 ```
 
-Protocol, which can be TCP (value **6**) or UDP (value **17**). This parameter is valid only when **type** is set to **RULE_IP**.
+Protocol, which can be TCP (value **6**) or UDP (value **17**) or ICMP (value **1**) or ICMPv6 (value **58**). This parameter is valid only when **type** is set to **RULE_IP**.
 
 **Type:** number
 

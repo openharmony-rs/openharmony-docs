@@ -9,8 +9,6 @@ interface ObjectConstructor
 ```TypeScript
 ```
 
-<a id="entries1"></a>
-
 ## entries
 
 ```TypeScript
@@ -26,8 +24,6 @@ Returns an array of key/values of the enumerable properties of an object
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | o | { [s: string]: T } &#124; ArrayLike&lt;T&gt; | Yes |  |
-
-<a id="entries2"></a>
 
 ## entries
 
@@ -61,8 +57,6 @@ Returns an object containing all own property descriptors of an object
 | --- | --- | --- | --- |
 | o | T | Yes |  |
 
-<a id="values1"></a>
-
 ## values
 
 ```TypeScript
@@ -78,8 +72,6 @@ Returns an array of values of the enumerable properties of an object
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | o | { [s: string]: T } &#124; ArrayLike&lt;T&gt; | Yes |  |
-
-<a id="values2"></a>
 
 ## values
 

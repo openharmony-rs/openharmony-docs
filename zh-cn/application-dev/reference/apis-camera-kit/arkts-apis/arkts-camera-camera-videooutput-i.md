@@ -29,7 +29,7 @@ enableMirror(enabled: boolean): void
 启用/关闭镜像录像。
 
 - 调用该接口前，需要通过[isMirrorSupported](#ismirrorsupported)查询是否支录像镜像功能。  
-- 启用/关闭录像镜像后，需要通过[getVideoRotation](#getvideorotation)获取录像旋转角度以及[updateRotation](../../apis-media-kit/arkts-apis/arkts-media-media-avrecorder-i.md#updaterotation)更新旋转角度。
+- 启用/关闭录像镜像后，需要通过[getVideoRotation](#getvideorotation)获取录像旋转角度以及[updateRotation](../../apis-media/arkts-apis/arkts-media-media-avrecorder-i.md#updaterotation)更新旋转角度。
 
 **起始版本：** 15
 
@@ -49,7 +49,6 @@ enableMirror(enabled: boolean): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 14 |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
@@ -205,7 +204,7 @@ getVideoRotation(deviceDegree?: number): ImageRotation
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| deviceDegree | number | 否 | 设备旋转角度，单位度，取值范围[0, 360]。<br> 从API version 23开始，入参deviceDegree为可选参数，当不传入参数时，由系统获取deviceDegree进行录像旋转角度计算。<br>**适用版本：** 23 |
+| deviceDegree | number | 否 | 设备旋转角度，单位度，取值范围[0, 360]。<br> 从API版本23开始，入参deviceDegree为可选参数，当不传入参数时，由系统获取deviceDegree进行录像旋转角度计算。<br>**适用版本：** 23 |
 
 **返回值：**
 
@@ -310,7 +309,6 @@ isMirrorSupported(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 14 |
 
 **示例**
 
@@ -592,8 +590,6 @@ function setFrameRateRange(videoOutput: camera.VideoOutput, frameRateRange: Arra
 }
 ```
 
-<a id="start1"></a>
-
 ## start
 
 ```TypeScript
@@ -639,8 +635,6 @@ function startVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -684,8 +678,6 @@ function startVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -717,8 +709,6 @@ function stopVideoOutput(videoOutput: camera.VideoOutput): void {
   });
 }
 ```
-
-<a id="stop2"></a>
 
 ## stop
 

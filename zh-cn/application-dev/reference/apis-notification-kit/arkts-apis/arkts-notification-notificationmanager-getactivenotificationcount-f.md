@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="getactivenotificationcount1"></a>
-
 ## getActiveNotificationCount
 
 ```TypeScript
@@ -24,7 +22,7 @@ function getActiveNotificationCount(callback: AsyncCallback<number>): void
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber1) 设置角标个数。
+**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber) 设置角标个数。
 
 **参数：**
 
@@ -58,8 +56,6 @@ notificationManager.getActiveNotificationCount(getActiveNotificationCountCallbac
 ```
 
 
-<a id="getactivenotificationcount2"></a>
-
 ## getActiveNotificationCount
 
 ```TypeScript
@@ -76,7 +72,7 @@ function getActiveNotificationCount(): Promise<number>
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber2) 设置角标个数。
+**参见：** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber) 设置角标个数。
 
 **返回值：**
 

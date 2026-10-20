@@ -6,8 +6,6 @@ interface WebHeader
 
 Describes the request/response header returned by the **Web** component.
 
-@interface WebHeader [since 9 - 11]
-
 **Since:** 9
 
 <!--Device-webview-interface WebHeader--><!--Device-webview-interface WebHeader-End-->

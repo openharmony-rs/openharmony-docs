@@ -6,7 +6,7 @@ interface Window
 
 当前窗口实例，窗口管理器管理的基本单元。
 
-下列API示例中都需先使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow1)、[createWindow()](arkts-arkui-window-createwindow-f.md#createwindow1)、[findWindow()](arkts-arkui-window-findwindow-f.md)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
+下列API示例中都需先使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow)、[createWindow()](arkts-arkui-window-createwindow-f.md#createwindow)、[findWindow()](arkts-arkui-window-findwindow-f.md)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
 
 **起始版本：** 6
 
@@ -148,10 +148,10 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 
 | 屏幕角度 | 屏幕方向 | 窗口方向 |  
 | ------- | ------- | ------- |  
-| 0 | [PORTRAIT](arkts-arkui-window-orientation-e.md) | [PORTRAIT](arkts-arkui-window-orientation-e.md) |
-| 90 | [LANDSCAPE](arkts-arkui-window-orientation-e.md) | [LANDSCAPE_INVERTED](arkts-arkui-window-orientation-e.md) |
-| 180 | [PORTRAIT_INVERTED](arkts-arkui-window-orientation-e.md) | [PORTRAIT_INVERTED](arkts-arkui-window-orientation-e.md) |
-| 270 | [LANDSCAPE_INVERTED](arkts-arkui-window-orientation-e.md) | [LANDSCAPE](arkts-arkui-window-orientation-e.md) |
+| 0 | PORTRAIT | PORTRAIT |  
+| 90 | LANDSCAPE | LANDSCAPE_INVERTED |  
+| 180 | PORTRAIT_INVERTED | PORTRAIT_INVERTED |  
+| 270 | LANDSCAPE_INVERTED | LANDSCAPE |
 
 **起始版本：** 23
 
@@ -258,8 +258,6 @@ try {
 }
 ```
 
-<a id="destroywindow1"></a>
-
 ## destroyWindow
 
 ```TypeScript
@@ -303,8 +301,6 @@ windowClass.destroyWindow((err) => {
   console.info('Succeeded in destroying the window.');
 });
 ```
-
-<a id="destroywindow2"></a>
 
 ## destroyWindow
 
@@ -442,7 +438,6 @@ enableDrag(enable: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 14 - 19 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
@@ -622,7 +617,7 @@ getImmersiveModeEnabledState(): boolean
 
 仅支持主窗和子窗调用。
 
-返回值与[setImmersiveModeEnabledState()](#setimmersivemodeenabledstate)以及[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen2)设置结果一致，若未调用上述两个接口则默认返回false。
+返回值与[setImmersiveModeEnabledState()](#setimmersivemodeenabledstate)以及[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen)设置结果一致，若未调用上述两个接口则默认返回false。
 
 **起始版本：** 12
 
@@ -845,9 +840,9 @@ getSubWindowZLevel(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Function setSubWindowZLevel can not work correctly due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Function getSubWindowZLevel can not work correctly due to limited device capabilities. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
 
 **示例**
 
@@ -1212,7 +1207,7 @@ try {
 getWindowDecorHeight(): number
 ```
 
-对存在标题栏和三键区的窗口形态生效，用于获取窗口的标题栏高度。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+对存在标题栏和三键区的窗口形态生效，用于获取窗口的标题栏高度。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 由于系统像素转换可能存在精度误差，调用[setWindowDecorHeight()](#setwindowdecorheight)设置的值与获取的值可能存在1vp的差异。
 
@@ -1256,7 +1251,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 getWindowDecorVisible(): boolean
 ```
 
-查询窗口标题栏是否可见。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+查询窗口标题栏是否可见。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 **起始版本：** 18
 
@@ -1645,7 +1640,7 @@ getWindowTransitionAnimation(transitionType: WindowTransitionType): TransitionAn
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例**
@@ -1946,6 +1941,53 @@ let isInFreeWindowMode: boolean = windowClass.isInFreeWindowMode();
 console.info(`isInFreeWindowMode: ${isInFreeWindowMode}`);
 ```
 
+## isInWindowPostureMode
+
+```TypeScript
+isInWindowPostureMode(mode: WindowPostureMode): boolean
+```
+
+查询当前窗口是否处于指定的窗口姿态模式。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Window-isInWindowPostureMode(mode: WindowPostureMode): boolean--><!--Device-Window-isInWindowPostureMode(mode: WindowPostureMode): boolean-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mode | [WindowPostureMode](arkts-arkui-window-windowposturemode-e.md) | 是 | 窗口姿态模式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 当前窗口是否处于指定的窗口姿态模式。true表示当前窗口处于指定的窗口姿态模式，false表示不处于。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: Invalid parameter range. |
+
+**示例**
+
+```TypeScript
+try {
+  let isInDesktopMode: boolean = windowClass.isInWindowPostureMode(window.WindowPostureMode.DESKTOP_MODE);
+  console.info(`isInDesktopMode: ${isInDesktopMode}`);
+} catch (exception) {
+  console.error(`Failed to check window posture mode. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## isReceiveDragEventEnabled
 
 ```TypeScript
@@ -2195,8 +2237,6 @@ try {
 }
 ```
 
-<a id="iswindowsupportwidegamut1"></a>
-
 ## isWindowSupportWideGamut
 
 ```TypeScript
@@ -2237,8 +2277,6 @@ promise.then((data) => {
   console.error(`Failed to check whether the window support WideGamut. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="iswindowsupportwidegamut2"></a>
 
 ## isWindowSupportWideGamut
 
@@ -2311,8 +2349,8 @@ keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Only float windows, subwindows, dialog windows, or window type as system windows are supported. |
 
 **示例**
 
@@ -2323,8 +2361,6 @@ try {
   console.error(`Failed to keep keyboard onFocus. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="loadcontent1"></a>
 
 ## loadContent
 
@@ -2380,8 +2416,6 @@ windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   console.info('Succeeded in loading the content.');
 });
 ```
-
-<a id="loadcontent2"></a>
 
 ## loadContent
 
@@ -2441,8 +2475,6 @@ promise.then(() => {
 });
 ```
 
-<a id="loadcontent3"></a>
-
 ## loadContent
 
 ```TypeScript
@@ -2458,13 +2490,13 @@ loadContent(path: string, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setUIContent()](#setuicontent1)替代。
+> [setUIContent()](#setuicontent)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setUIContent](#setuicontent1)(path: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setUIContent](#setuicontent)(path: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-loadContent(path: string, callback: AsyncCallback<void>): void--><!--Device-Window-loadContent(path: string, callback: AsyncCallback<void>): void-End-->
 
@@ -2492,8 +2524,6 @@ windowClass.loadContent('pages/page2/page3', (err: BusinessError) => {
 });
 ```
 
-<a id="loadcontent4"></a>
-
 ## loadContent
 
 ```TypeScript
@@ -2508,13 +2538,13 @@ loadContent(path: string): Promise<void>
 
 > **说明：** 
 > 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[setUIContent()](#setuicontent2)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setUIContent()](#setuicontent)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setUIContent](#setuicontent2)(path: string)
+**替代接口：** [setUIContent](#setuicontent)(path: string)
 
 <!--Device-Window-loadContent(path: string): Promise<void>--><!--Device-Window-loadContent(path: string): Promise<void>-End-->
 
@@ -2544,8 +2574,6 @@ promise.then(() => {
   console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="loadcontentbyname1"></a>
 
 ## loadContentByName
 
@@ -2644,8 +2672,6 @@ export struct Index {
 }
 ```
 
-<a id="loadcontentbyname2"></a>
-
 ## loadContentByName
 
 ```TypeScript
@@ -2723,8 +2749,6 @@ export struct Index {
   }
 }
 ```
-
-<a id="loadcontentbyname3"></a>
 
 ## loadContentByName
 
@@ -2811,8 +2835,6 @@ export struct Index {
 }
 ```
 
-<a id="maximize1"></a>
-
 ## maximize
 
 ```TypeScript
@@ -2883,8 +2905,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
-<a id="maximize2"></a>
 
 ## maximize
 
@@ -3026,8 +3046,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<a id="minimize1"></a>
-
 ## minimize
 
 ```TypeScript
@@ -3037,7 +3055,7 @@ minimize(callback: AsyncCallback<void>): void
 此接口根据调用对象不同，实现不同的功能：
 
 - 当调用对象为主窗口时，实现最小化功能，可在Dock栏中还原，2in1 设备上可以使用[restore()](#restore)进行还原。  
-- 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，不可在Dock栏中还原，可以使用[showWindow()](#showwindow1)进行还原。
+- 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，不可在Dock栏中还原，可以使用[showWindow()](#showwindow)进行还原。
 
 该接口仅支持主窗口、子窗口或全局悬浮窗，其它窗口调用返回1300002错误码，使用callback异步回调。
 
@@ -3078,8 +3096,6 @@ windowClass.minimize((err: BusinessError) => {
 });
 ```
 
-<a id="minimize2"></a>
-
 ## minimize
 
 ```TypeScript
@@ -3089,7 +3105,7 @@ minimize(): Promise<void>
 此接口根据调用对象不同，实现不同的功能：
 
 - 当调用对象为主窗口时，实现最小化功能，可在Dock栏中还原，2in1 设备上可以使用[restore()](#restore)进行还原。  
-- 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，不可在Dock栏中还原，可以使用[showWindow()](#showwindow1)进行还原。
+- 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，不可在Dock栏中还原，可以使用[showWindow()](#showwindow)进行还原。
 
 该接口仅支持主窗口、子窗口或全局悬浮窗，其它窗口调用返回1300002错误码，使用Promise异步回调。
 
@@ -3127,8 +3143,6 @@ promise.then(() => {
   console.error(`Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="movewindowto1"></a>
 
 ## moveWindowTo
 
@@ -3196,8 +3210,6 @@ try {
 }
 ```
 
-<a id="movewindowto2"></a>
-
 ## moveWindowTo
 
 ```TypeScript
@@ -3261,8 +3273,6 @@ try {
 }
 ```
 
-<a id="movewindowtoasync1"></a>
-
 ## moveWindowToAsync
 
 ```TypeScript
@@ -3277,8 +3287,8 @@ moveWindowToAsync(x: number, y: number): Promise<void>
 
 | 窗口类型 | [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态 | 非自由窗口状态 |  
 |---------|---------------|-----------------|  
-| 主窗口 | 相对于屏幕移动 | 调用不生效不报错 |
-| 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |
+| 主窗口 | 相对于屏幕移动 | 调用不生效不报错 |  
+| 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |  
 | 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
 
 > **说明：** 
@@ -3335,8 +3345,6 @@ try {
 }
 ```
 
-<a id="movewindowtoasync2"></a>
-
 ## moveWindowToAsync
 
 ```TypeScript
@@ -3351,8 +3359,8 @@ moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): 
 
 | 窗口类型 | [自由窗口](../../../windowmanager/window-terminology.md#自由窗口)状态 | 非自由窗口状态 |  
 |---------|---------------|-----------------|  
-| 主窗口 | 相对于屏幕移动 | 调用不生效不报错 |
-| 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |
+| 主窗口 | 相对于屏幕移动 | 调用不生效不报错 |  
+| 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |  
 | 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
 
 > **说明：** 
@@ -3413,8 +3421,6 @@ try {
   console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="movewindowtoglobal1"></a>
 
 ## moveWindowToGlobal
 
@@ -3481,8 +3487,6 @@ try {
   console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="movewindowtoglobal2"></a>
 
 ## moveWindowToGlobal
 
@@ -3667,8 +3671,6 @@ try {
 }
 ```
 
-<a id="off2"></a>
-
 ## off
 
 ```TypeScript
@@ -3724,7 +3726,7 @@ try {
 off(type: 'frameMetricsMeasured', callback?: Callback<FrameMetrics>): void
 ```
 
-关闭窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+关闭窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 **起始版本：** 22
 
@@ -3744,7 +3746,7 @@ off(type: 'frameMetricsMeasured', callback?: Callback<FrameMetrics>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例**
 
@@ -3790,7 +3792,7 @@ off(type: 'occlusionStateChanged', callback?: Callback<OcclusionState>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -4224,7 +4226,7 @@ off(type: 'displayIdChange', callback?: Callback<number>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Incorrect parameter types;         2. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例**
 
@@ -4273,7 +4275,7 @@ off(type: 'windowVisibilityChange', callback?: Callback<boolean>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Incorrect parameter types;         2. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -4325,7 +4327,7 @@ off(type: 'systemDensityChange', callback?: Callback<number>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例**
 
@@ -4463,7 +4465,7 @@ off(type: 'screenshotAppEvent', callback?: Callback<ScreenshotEventType>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -4808,7 +4810,7 @@ off(type: 'windowHighlightChange', callback?: Callback<boolean>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -4835,7 +4837,7 @@ try {
 off(type: 'windowTitleButtonRectChange', callback?: Callback<TitleButtonRect>): void
 ```
 
-关闭窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+关闭窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 **起始版本：** 11
 
@@ -5096,6 +5098,55 @@ offWindowFocusStateChange(callback?: Callback<WindowFocusState>): void
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
+## offWindowPostureModeChange
+
+```TypeScript
+offWindowPostureModeChange(mode: WindowPostureMode, callback?: Callback<boolean>): void
+```
+
+关闭窗口所处指定姿态模式变化的监听。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Window-offWindowPostureModeChange(mode: WindowPostureMode, callback?: Callback<boolean>): void--><!--Device-Window-offWindowPostureModeChange(mode: WindowPostureMode, callback?: Callback<boolean>): void-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mode | [WindowPostureMode](arkts-arkui-window-windowposturemode-e.md) | 是 | 监听的窗口姿态模式。 |
+| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;boolean&gt; | 否 | 回调函数。返回当前窗口是否处于指定的窗口姿态模式。如果传入参数，则关闭该监听；如果不传入参数，则关闭所有注册到指定窗口姿态模式的监听。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: Invalid parameter range. |
+
+**示例**
+
+```TypeScript
+const callback = (isInDesktopMode: boolean) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
+  // 关闭指定callback的监听
+  windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听
+  windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE);
+} catch (exception) {
+  console.error(`Failed to disable the listener for window posture mode change. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## on('rotationChange')
 
 ```TypeScript
@@ -5201,8 +5252,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="on2"></a>
-
 ## on
 
 ```TypeScript
@@ -5252,7 +5301,7 @@ try {
 on(type: 'frameMetricsMeasured', callback: Callback<FrameMetrics>): void
 ```
 
-开启窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+开启窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。但当同时使用该接口和[postFrameCallback](arkts-arkui-arkui-uicontext-uicontext-c.md#postframecallback)、[postDelayedFrameCallback](arkts-arkui-arkui-uicontext-uicontext-c.md#postdelayedframecallback)、[displaySync.on('frame')](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-displaysync-displaysync-i.md#onframe)中的任意一个时，即使无UI内容重绘，也可能触发回调。
 
@@ -5274,7 +5323,7 @@ on(type: 'frameMetricsMeasured', callback: Callback<FrameMetrics>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例**
 
@@ -5319,7 +5368,7 @@ on(type: 'occlusionStateChanged', callback: Callback<OcclusionState>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -5733,7 +5782,7 @@ on(type: 'displayIdChange', callback: Callback<number>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例**
 
@@ -5780,7 +5829,7 @@ on(type: 'windowVisibilityChange', callback: Callback<boolean>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -5826,7 +5875,7 @@ on(type: 'systemDensityChange', callback: Callback<number>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例**
 
@@ -5955,7 +6004,7 @@ on(type: 'screenshotAppEvent', callback: Callback<ScreenshotEventType>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -6289,7 +6338,7 @@ on(type: 'windowHighlightChange', callback: Callback<boolean>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -6310,7 +6359,7 @@ try {
 on(type: 'windowTitleButtonRectChange', callback: Callback<TitleButtonRect>): void
 ```
 
-开启窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+开启窗口标题栏上的最小化、最大化、关闭按钮矩形区域变化的监听，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 **起始版本：** 11
 
@@ -6547,7 +6596,48 @@ onWindowFocusStateChange(callback: Callback<WindowFocusState>): void
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
-<a id="raisetoapptop2"></a>
+## onWindowPostureModeChange
+
+```TypeScript
+onWindowPostureModeChange(mode: WindowPostureMode, callback: Callback<boolean>): void
+```
+
+开启窗口所处指定姿态模式变化的监听。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Window-onWindowPostureModeChange(mode: WindowPostureMode, callback: Callback<boolean>): void--><!--Device-Window-onWindowPostureModeChange(mode: WindowPostureMode, callback: Callback<boolean>): void-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| mode | [WindowPostureMode](arkts-arkui-window-windowposturemode-e.md) | 是 | 监听的窗口姿态模式。 |
+| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;boolean&gt; | 是 | 回调函数。当窗口所处指定窗口姿态模式变化时触发，返回当前窗口是否处于指定的窗口姿态模式，true表示处于，false表示不处于。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: Invalid parameter range. |
+
+**示例**
+
+```TypeScript
+try {
+  windowClass.onWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, (isInDesktopMode: boolean) => {
+    console.info(`Succeeded in enabling the listener for window posture mode changes. isInDesktopMode: ${isInDesktopMode}`);
+  });
+} catch (exception) {
+  console.error(`Failed to enable the listener for window posture mode changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
 
 ## raiseToAppTop
 
@@ -6557,7 +6647,7 @@ raiseToAppTop(): Promise<void>
 
 应用子窗口调用，提升应用子窗口到顶层，只在当前应用同一个父窗口下的相同类型子窗范围内生效，对于自定义了zLevel属性的子窗口，只在当前应用同一个父窗口下相同zLevel值的子窗范围内生效。使用Promise异步回调。
 
-使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](#showwindow1)并执行完毕。
+使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](#showwindow)并执行完毕。
 
 **起始版本：** 14
 
@@ -6575,10 +6665,10 @@ raiseToAppTop(): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed; 2. The window is not shown. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
-| [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
+| [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
 
 **示例**
 
@@ -6609,8 +6699,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="recover1"></a>
 
 ## recover
 
@@ -6672,8 +6760,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="recover2"></a>
 
 ## recover
 
@@ -6748,8 +6834,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="resetaspectratio1"></a>
-
 ## resetAspectRatio
 
 ```TypeScript
@@ -6814,8 +6898,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="resetaspectratio2"></a>
-
 ## resetAspectRatio
 
 ```TypeScript
@@ -6877,8 +6959,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="resize1"></a>
 
 ## resize
 
@@ -6949,8 +7029,6 @@ try {
   console.error(`Failed to change the window size. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="resize2"></a>
 
 ## resize
 
@@ -7301,8 +7379,6 @@ struct FloatWindowInfo {
 }
 ```
 
-<a id="setaspectratio1"></a>
-
 ## setAspectRatio
 
 ```TypeScript
@@ -7375,8 +7451,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="setaspectratio2"></a>
 
 ## setAspectRatio
 
@@ -7535,7 +7609,7 @@ export default class EntryAbility extends UIAbility {
 setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 ```
 
-设置装饰栏按钮样式，仅对主窗和子窗生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+设置装饰栏按钮样式，仅对主窗和子窗生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 **起始版本：** 14
 
@@ -7809,7 +7883,7 @@ setExclusivelyHighlighted(exclusivelyHighlighted: boolean): Promise<void>
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Main window, dialog window and the subwindow with modal attributes are not supported. |
 
 **示例**
 
@@ -8209,8 +8283,6 @@ try {
 }
 ```
 
-<a id="setpreferredorientation1"></a>
-
 ## setPreferredOrientation
 
 ```TypeScript
@@ -8243,7 +8315,7 @@ setPreferredOrientation(orientation: Orientation): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: Failed to convert parameter to Orientation. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: Invalid parameter value range. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 
 **示例**
@@ -8282,8 +8354,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setpreferredorientation2"></a>
-
 ## setPreferredOrientation
 
 ```TypeScript
@@ -8311,7 +8381,7 @@ setPreferredOrientation(orientation: Orientation, callback: AsyncCallback<void>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: Failed to convert parameter to Orientation. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: Invalid parameter value range. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 
 **示例**
@@ -8425,8 +8495,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setraisebyclickenabled2"></a>
-
 ## setRaiseByClickEnabled
 
 ```TypeScript
@@ -8437,7 +8505,7 @@ setRaiseByClickEnabled(enable: boolean): Promise<void>
 
 通常来说，点击一个子窗口，会将该子窗口显示抬升到应用内同一个父窗口下同类型子窗口的最上方，如果设置为false，那么点击子窗口的时候，不会将该子窗口进行抬升，而是保持不变。
 
-使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](#showwindow1)并执行完毕。
+使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](#showwindow)并执行完毕。
 
 **起始版本：** 14
 
@@ -8463,10 +8531,10 @@ setRaiseByClickEnabled(enable: boolean): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed; 2. The window is not shown. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
-| [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
+| [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
 
 **示例**
 
@@ -8574,7 +8642,7 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 
 1. 只支持一级子窗调用该接口，子窗需处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）。
 2. 当子窗调用该接口后，立即使其显示位置跟随主窗并保持相对位置不变，除非传入false再次调用该接口，否则效果将持续。
-3. 当子窗调用该接口后，再调用[moveWindowTo()](#movewindowto)、[maximize()](#maximize1)修改窗口位置或大小的接口将不生效。
+3. 当子窗调用该接口后，再调用[moveWindowTo()](#movewindowto)、[maximize()](#maximize)修改窗口位置或大小的接口将不生效。
 
 该接口调用生效后，[setFollowParentWindowLayoutEnabled()](#setfollowparentwindowlayoutenabled)接口调用不生效。
 
@@ -8642,8 +8710,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setresizebydragenabled1"></a>
-
 ## setResizeByDragEnabled
 
 ```TypeScript
@@ -8692,8 +8758,6 @@ try {
   console.error(`Failed to set the function of disabling the resize by drag window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setresizebydragenabled2"></a>
 
 ## setResizeByDragEnabled
 
@@ -8963,8 +9027,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setsubwindowmodal1"></a>
-
 ## setSubWindowModal
 
 ```TypeScript
@@ -9003,9 +9065,9 @@ setSubWindowModal(isModal: boolean): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally.<br>**适用版本：** 20+ |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
 
 **示例**
 
@@ -9043,8 +9105,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setsubwindowmodal2"></a>
-
 ## setSubWindowModal
 
 ```TypeScript
@@ -9057,7 +9117,7 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise<void>
 
 当子窗口模态类型为模应用子窗时，其父级窗口与该应用其他实例的窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态类型被禁用。
 
-此接口仅支持设置子窗口模态类型，当需要禁用子窗口模态属性时，建议使用[setSubWindowModal<sup>12+</sup>](#setsubwindowmodal1)。
+此接口仅支持设置子窗口模态类型，当需要禁用子窗口模态属性时，建议使用[setSubWindowModal<sup>12+</sup>](#setsubwindowmodal)。
 
 子窗口之外的窗口调用该接口时，会报错。
 
@@ -9088,9 +9148,9 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally.<br>**适用版本：** 20+ |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
 
 **示例**
 
@@ -9167,7 +9227,7 @@ setSubWindowZLevel(zLevel: number): Promise<void>
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only non-modal subwindows are supported. |
-| [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. |
+| [1300009](../errorcode-window.md#1300009-父窗口无效) | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
 
 **示例**
 
@@ -9402,7 +9462,6 @@ setTouchableAreas(rects: Array<Rect>): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required or a non-system application calls the API.<br>**适用版本：** 26.0.0+ |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12 - 24 |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: Invalid parameter range. |
@@ -9426,8 +9485,6 @@ try {
   console.error(`Failed to set touchable areas. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setuicontent1"></a>
 
 ## setUIContent
 
@@ -9478,8 +9535,6 @@ try {
   console.error(`Failed to load the content. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setuicontent2"></a>
 
 ## setUIContent
 
@@ -9544,7 +9599,7 @@ setWindowBackgroundColor(color: string | ColorMetrics): void
 
 未调用该接口时，窗口在浅色模式默认背景色为`'#FFF0F0F0'`，在深色模式默认背景色为`'#FF1A1A1A'`。
 
-Stage模型下，该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+Stage模型下，该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 **起始版本：** 9
 
@@ -9591,8 +9646,6 @@ windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   };
 });
 ```
-
-<a id="setwindowbrightness1"></a>
 
 ## setWindowBrightness
 
@@ -9682,8 +9735,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowbrightness2"></a>
-
 ## setWindowBrightness
 
 ```TypeScript
@@ -9769,8 +9820,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowcolorspace1"></a>
-
 ## setWindowColorSpace
 
 ```TypeScript
@@ -9822,8 +9871,6 @@ try {
   console.error(`Failed to set window colorspace. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setwindowcolorspace2"></a>
 
 ## setWindowColorSpace
 
@@ -9880,7 +9927,7 @@ try {
 setWindowContainerColor(activeColor: string, inactiveColor: string): void
 ```
 
-设置主窗口容器在焦点态和非焦点态时的背景色。在Stage模型下，该接口需在调用[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)后使用。
+设置主窗口容器在焦点态和非焦点态时的背景色。在Stage模型下，该接口需在调用[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)后使用。
 
 窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。内容区域背景色默认跟随系统深浅色，当同时使用该接口和[setWindowBackgroundColor()](#setwindowbackgroundcolor)设置背景色时，内容区域显示窗口背景色，标题栏显示窗口容器背景色。
 
@@ -9906,7 +9953,7 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例**
 
@@ -9954,7 +10001,7 @@ export default class EntryAbility extends UIAbility {
 setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 ```
 
-设置主窗口容器在焦点态和非焦点态时的背景色。该接口需在调用[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)后使用。
+设置主窗口容器在焦点态和非焦点态时的背景色。该接口需在调用[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)后使用。
 
 窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。内容区域背景色默认跟随系统深浅色，当同时使用该接口和[setWindowBackgroundColor()](#setwindowbackgroundcolor)设置背景色时，内容区域显示窗口背景色，标题栏显示窗口容器背景色。
 
@@ -9980,10 +10027,9 @@ setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required or a non-system application calls the API.<br>**适用版本：** 26.0.0+ |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 20 - 24 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例**
 
@@ -10090,7 +10136,7 @@ try {
 setWindowDecorHeight(height: number): void
 ```
 
-设置窗口的标题栏高度，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+设置窗口的标题栏高度，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 当主窗口进入全屏沉浸状态时，此时鼠标Hover到窗口标题栏热区时，会显示悬浮标题栏，悬浮标题栏高度固定为37vp。
 
@@ -10138,7 +10184,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 setWindowDecorVisible(isVisible: boolean): void
 ```
 
-设置窗口标题栏是否可见，对存在标题栏和三键区的窗口形态生效。Stage模型下，该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+设置窗口标题栏是否可见，对存在标题栏和三键区的窗口形态生效。Stage模型下，该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 设置窗口标题栏不可见后，当主窗口进入全屏沉浸状态时，此时鼠标Hover到上方窗口标题栏热区上会显示悬浮标题栏。若想禁用悬浮标题栏显示，请使用[setTitleAndDockHoverShown()](#settitleanddockhovershown)接口。
 
@@ -10231,8 +10277,6 @@ try {
 }
 ```
 
-<a id="setwindowfocusable1"></a>
-
 ## setWindowFocusable
 
 ```TypeScript
@@ -10268,7 +10312,7 @@ setWindowFocusable(isFocusable: boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. The screen of the window is not allowed to be focused. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -10288,8 +10332,6 @@ try {
   console.error(`Failed to set the window to be focusable. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setwindowfocusable2"></a>
 
 ## setWindowFocusable
 
@@ -10321,7 +10363,7 @@ setWindowFocusable(isFocusable: boolean, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. The screen of the window is not allowed to be focused. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -10350,7 +10392,7 @@ try {
 setWindowGrayScale(grayScale: number): Promise<void>
 ```
 
-设置窗口灰阶，使用Promise异步回调。该接口需要在调用[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)使窗口加载页面内容后调用。
+设置窗口灰阶，使用Promise异步回调。该接口需要在调用[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)使窗口加载页面内容后调用。
 
 **起始版本：** 12
 
@@ -10378,7 +10420,7 @@ setWindowGrayScale(grayScale: number): Promise<void>
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -10407,8 +10449,6 @@ windowClass?.setUIContent('pages/Index', (error: BusinessError) => {
   }
 });
 ```
-
-<a id="setwindowkeepscreenon1"></a>
 
 ## setWindowKeepScreenOn
 
@@ -10445,7 +10485,7 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -10465,8 +10505,6 @@ try {
   console.error(`Failed to set the screen to be always on. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setwindowkeepscreenon2"></a>
 
 ## setWindowKeepScreenOn
 
@@ -10498,7 +10536,7 @@ setWindowKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback<void>): v
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -10520,8 +10558,6 @@ try {
   console.error(`Failed to set the screen to be always on. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setwindowlayoutfullscreen2"></a>
 
 ## setWindowLayoutFullScreen
 
@@ -10599,8 +10635,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowlayoutfullscreen1"></a>
-
 ## setWindowLayoutFullScreen
 
 ```TypeScript
@@ -10616,13 +10650,13 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback<v
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的
-> [setWindowLayoutFullScreen()](#setwindowlayoutfullscreen2)替代。
+> [setWindowLayoutFullScreen()](#setwindowlayoutfullscreen)替代。
 
 **起始版本：** 9
 
 **废弃版本：** 12
 
-**替代接口：** [setWindowLayoutFullScreen](#setwindowlayoutfullscreen2)(isLayoutFullScreen: boolean)
+**替代接口：** [setWindowLayoutFullScreen](#setwindowlayoutfullscreen)(isLayoutFullScreen: boolean)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -10682,8 +10716,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="setwindowlimits1"></a>
 
 ## setWindowLimits
 
@@ -10754,8 +10786,6 @@ try {
   console.error(`Failed to change the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setwindowlimits2"></a>
 
 ## setWindowLimits
 
@@ -10958,8 +10988,6 @@ try {
 }
 ```
 
-<a id="setwindowprivacymode1"></a>
-
 ## setWindowPrivacyMode
 
 ```TypeScript
@@ -11020,8 +11048,6 @@ try {
   console.error(`Failed to set the window to privacy mode. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setwindowprivacymode2"></a>
 
 ## setWindowPrivacyMode
 
@@ -11115,9 +11141,9 @@ setWindowShadowEnabled(enable: boolean): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例**
 
@@ -11199,8 +11225,6 @@ try {
 }
 ```
 
-<a id="setwindowsystembarenable2"></a>
-
 ## setWindowSystemBarEnable
 
 ```TypeScript
@@ -11276,8 +11300,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowsystembarenable1"></a>
-
 ## setWindowSystemBarEnable
 
 ```TypeScript
@@ -11293,14 +11315,14 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的
-> [setWindowSystemBarEnable()](#setwindowsystembarenable2)
+> [setWindowSystemBarEnable()](#setwindowsystembarenable)
 > 替代。
 
 **起始版本：** 9
 
 **废弃版本：** 12
 
-**替代接口：** [setWindowSystemBarEnable](#setwindowsystembarenable2)(names: Array&lt;'status' | 'navigation'&gt;)
+**替代接口：** [setWindowSystemBarEnable](#setwindowsystembarenable)(names: Array&lt;'status' | 'navigation'&gt;)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -11361,8 +11383,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="setwindowsystembarproperties2"></a>
 
 ## setWindowSystemBarProperties
 
@@ -11444,8 +11464,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowsystembarproperties1"></a>
-
 ## setWindowSystemBarProperties
 
 ```TypeScript
@@ -11459,14 +11477,14 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback:
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的
-> [setWindowSystemBarProperties()](#setwindowsystembarproperties2)
+> [setWindowSystemBarProperties()](#setwindowsystembarproperties)
 > 替代。
 
 **起始版本：** 9
 
 **废弃版本：** 12
 
-**替代接口：** [setWindowSystemBarProperties](#setwindowsystembarproperties2)(systemBarProperties: SystemBarProperties)
+**替代接口：** [setWindowSystemBarProperties](#setwindowsystembarproperties)(systemBarProperties: SystemBarProperties)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -11540,7 +11558,7 @@ export default class EntryAbility extends UIAbility {
 setWindowTitle(titleName: string): Promise<void>
 ```
 
-设置窗口标题，使用Promise异步回调。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+设置窗口标题，使用Promise异步回调。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 **起始版本：** 15
 
@@ -11661,7 +11679,7 @@ export default class EntryAbility extends UIAbility {
 setWindowTitleMoveEnabled(enabled: boolean): void
 ```
 
-禁止/使能主窗或子窗标题栏默认移动窗口和双击最大化的功能，当禁用标题栏默认移动窗口和双击最大化的功能时，可使用[startMoving()](#startmoving)在应用热区中发起拖拽移动，使用[maximize()](#maximize1)实现最大化功能。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+禁止/使能主窗或子窗标题栏默认移动窗口和双击最大化的功能，当禁用标题栏默认移动窗口和双击最大化的功能时，可使用[startMoving()](#startmoving)在应用热区中发起拖拽移动，使用[maximize()](#maximize)实现最大化功能。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 **起始版本：** 14
 
@@ -11808,8 +11826,6 @@ struct Index {
 }
 ```
 
-<a id="setwindowtouchable1"></a>
-
 ## setWindowTouchable
 
 ```TypeScript
@@ -11865,8 +11881,6 @@ try {
   console.error(`Failed to set the window to be touchable. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setwindowtouchable2"></a>
 
 ## setWindowTouchable
 
@@ -11961,7 +11975,7 @@ setWindowTransitionAnimation(transitionType: WindowTransitionType, animation: Tr
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
-| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause:         1. Invalid parameter range;         2. Invalid parameter length. |
 
 **示例**
@@ -12007,8 +12021,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="showwindow1"></a>
-
 ## showWindow
 
 ```TypeScript
@@ -12019,8 +12031,8 @@ showWindow(callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 
-> 调用该接口前，建议先通过[loadContent](#loadcontent1)方法或者
-> [setUIContent](#setuicontent2)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会
+> 调用该接口前，建议先通过[loadContent](#loadcontent)方法或者
+> [setUIContent](#setuicontent)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会
 > 一直显示启动界面；如果系统窗口、应用子窗口、模态窗和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
 
 **起始版本：** 9
@@ -12095,8 +12107,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="showwindow2"></a>
-
 ## showWindow
 
 ```TypeScript
@@ -12107,8 +12117,8 @@ showWindow(): Promise<void>
 
 > **说明：** 
 > 
-> 调用该接口前，建议优先通过[loadContent](#loadcontent1)方法或者
-> [setUIContent](#setuicontent2)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会
+> 调用该接口前，建议优先通过[loadContent](#loadcontent)方法或者
+> [setUIContent](#setuicontent)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会
 > 一直显示启动界面；如果系统窗口、应用子窗口、模态窗和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
 
 **起始版本：** 9
@@ -12182,8 +12192,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="showwindow3"></a>
-
 ## showWindow
 
 ```TypeScript
@@ -12197,7 +12205,7 @@ showWindow(options: ShowWindowOptions): Promise<void>
 > **说明：** 
 > 
 > 调用该接口前，建议优先通过[loadContent](../../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者
-> [setUIContent](#setuicontent2)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会
+> [setUIContent](#setuicontent)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会
 > 一直显示启动界面；如果系统窗口、应用子窗口和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
 
 **起始版本：** 20
@@ -12281,15 +12289,13 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="snapshot1"></a>
-
 ## snapshot
 
 ```TypeScript
 snapshot(callback: AsyncCallback<image.PixelMap>): void
 ```
 
-获取窗口截图，使用callback异步回调。若当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](#setwindowprivacymode2)接口设置），截图结果为白屏。
+获取窗口截图，使用callback异步回调。若当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](#setwindowprivacymode)接口设置），截图结果为白屏。
 
 **起始版本：** 9
 
@@ -12328,15 +12334,13 @@ windowClass.snapshot((err: BusinessError, pixelMap: image.PixelMap) => {
 });
 ```
 
-<a id="snapshot2"></a>
-
 ## snapshot
 
 ```TypeScript
 snapshot(): Promise<image.PixelMap>
 ```
 
-获取当前窗口截图。若当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](#setwindowprivacymode2)接口设置），截图结果为白屏。
+获取当前窗口截图。若当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](#setwindowprivacymode)接口设置），截图结果为白屏。
 
 **起始版本：** 9
 
@@ -12379,7 +12383,7 @@ promise.then((pixelMap: image.PixelMap) => {
 snapshotIgnorePrivacy(): Promise<image.PixelMap>
 ```
 
-获取当前窗口截图。即使当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](#setwindowprivacymode2)接口设置），仍可调用本接口返回当前窗口截图。
+获取当前窗口截图。即使当前窗口设置为隐私模式（可通过[setWindowPrivacyMode](#setwindowprivacymode)接口设置），仍可调用本接口返回当前窗口截图。
 
 **起始版本：** 18
 
@@ -12423,9 +12427,9 @@ promise.then((pixelMap: image.PixelMap) => {
 snapshotSync(): image.PixelMap
 ```
 
-获取当前窗口截图，此接口为同步接口。若当前窗口设置为隐私模式（[setWindowPrivacyMode](#setwindowprivacymode2)接口设置），截图结果为白屏。
+获取当前窗口截图，此接口为同步接口。若当前窗口设置为隐私模式（[setWindowPrivacyMode](#setwindowprivacymode)接口设置），截图结果为白屏。
 
-Stage模型下，该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+Stage模型下，该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 **起始版本：** 20
 
@@ -12461,8 +12465,6 @@ try {
   console.error(`Failed to snapshot window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="startmoving1"></a>
 
 ## startMoving
 
@@ -12552,8 +12554,6 @@ struct Index {
   }
 }
 ```
-
-<a id="startmoving2"></a>
 
 ## startMoving
 
@@ -12708,8 +12708,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="destroy1"></a>
-
 ## destroy
 
 ```TypeScript
@@ -12721,13 +12719,13 @@ destroy(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [destroyWindow()](#destroywindow1)替代。
+> [destroyWindow()](#destroywindow)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [destroyWindow](#destroywindow1)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [destroyWindow](#destroywindow)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-destroy(callback: AsyncCallback<void>): void--><!--Device-Window-destroy(callback: AsyncCallback<void>): void-End-->
 
@@ -12753,8 +12751,6 @@ windowClass.destroy((err: BusinessError) => {
   console.info('Succeeded in destroying the window.');
 });
 ```
-
-<a id="destroy2"></a>
 
 ## destroy
 
@@ -12796,8 +12792,6 @@ promise.then(() => {
   console.error(`Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="getavoidarea1"></a>
 
 ## getAvoidArea
 
@@ -12856,8 +12850,6 @@ windowClass.getAvoidArea(type, (err: BusinessError, data) => {
   console.info('Succeeded in obtaining the area. Data:' + JSON.stringify(data));
 });
 ```
-
-<a id="getavoidarea2"></a>
 
 ## getAvoidArea
 
@@ -12920,8 +12912,6 @@ promise.then((data) => {
 });
 ```
 
-<a id="getcolorspace1"></a>
-
 ## getColorSpace
 
 ```TypeScript
@@ -12962,8 +12952,6 @@ promise.then((data) => {
   console.error(`Failed to get window colorspace. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="getcolorspace2"></a>
 
 ## getColorSpace
 
@@ -13008,8 +12996,6 @@ windowClass.getColorSpace((err: BusinessError, data) => {
 });
 ```
 
-<a id="getproperties1"></a>
-
 ## getProperties
 
 ```TypeScript
@@ -13053,8 +13039,6 @@ windowClass.getProperties((err: BusinessError, data) => {
 });
 ```
 
-<a id="getproperties2"></a>
-
 ## getProperties
 
 ```TypeScript
@@ -13095,8 +13079,6 @@ promise.then((data) => {
   console.error(`Failed to obtain the window properties. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="isshowing1"></a>
 
 ## isShowing
 
@@ -13141,8 +13123,6 @@ windowClass.isShowing((err: BusinessError, data) => {
 });
 ```
 
-<a id="isshowing2"></a>
-
 ## isShowing
 
 ```TypeScript
@@ -13183,8 +13163,6 @@ promise.then((data) => {
   console.error(`Failed to check whether the window is showing. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="issupportwidegamut1"></a>
 
 ## isSupportWideGamut
 
@@ -13228,8 +13206,6 @@ promise.then((data) => {
 });
 ```
 
-<a id="issupportwidegamut2"></a>
-
 ## isSupportWideGamut
 
 ```TypeScript
@@ -13241,13 +13217,13 @@ isSupportWideGamut(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [isWindowSupportWideGamut()](#iswindowsupportwidegamut2)替代。
+> [isWindowSupportWideGamut()](#iswindowsupportwidegamut)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [isWindowSupportWideGamut](#iswindowsupportwidegamut2)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [isWindowSupportWideGamut](#iswindowsupportwidegamut)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-Window-isSupportWideGamut(callback: AsyncCallback<boolean>): void--><!--Device-Window-isSupportWideGamut(callback: AsyncCallback<boolean>): void-End-->
 
@@ -13273,8 +13249,6 @@ windowClass.isSupportWideGamut((err: BusinessError, data) => {
   console.info('Succeeded in checking whether the window support WideGamut Data: ' + JSON.stringify(data));
 });
 ```
-
-<a id="moveto1"></a>
 
 ## moveTo
 
@@ -13326,8 +13300,6 @@ promise.then(() => {
 });
 ```
 
-<a id="moveto2"></a>
-
 ## moveTo
 
 ```TypeScript
@@ -13375,8 +13347,6 @@ windowClass.moveTo(300, 300, (err: BusinessError) => {
   console.info('Succeeded in moving the window.');
 });
 ```
-
-<a id="resetsize1"></a>
 
 ## resetSize
 
@@ -13440,8 +13410,6 @@ promise.then(() => {
 });
 ```
 
-<a id="resetsize2"></a>
-
 ## resetSize
 
 ```TypeScript
@@ -13502,15 +13470,13 @@ windowClass.resetSize(500, 1000, (err: BusinessError) => {
 });
 ```
 
-<a id="setbackgroundcolor1"></a>
-
 ## setBackgroundColor
 
 ```TypeScript
 setBackgroundColor(color: string): Promise<void>
 ```
 
-设置窗口的背景色，使用Promise异步回调。Stage模型下，该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+设置窗口的背景色，使用Promise异步回调。Stage模型下，该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 > **说明：** 
 > 
@@ -13553,15 +13519,13 @@ promise.then(() => {
 });
 ```
 
-<a id="setbackgroundcolor2"></a>
-
 ## setBackgroundColor
 
 ```TypeScript
 setBackgroundColor(color: string, callback: AsyncCallback<void>): void
 ```
 
-设置窗口的背景色，使用callback异步回调。Stage模型下，该接口需要在[loadContent()](#loadcontent1)或[setUIContent()](#setuicontent1)调用生效后使用。
+设置窗口的背景色，使用callback异步回调。Stage模型下，该接口需要在[loadContent()](#loadcontent)或[setUIContent()](#setuicontent)调用生效后使用。
 
 > **说明：** 
 > 
@@ -13600,8 +13564,6 @@ windowClass.setBackgroundColor(color, (err: BusinessError) => {
   console.info('Succeeded in setting the background color.');
 });
 ```
-
-<a id="setbrightness1"></a>
 
 ## setBrightness
 
@@ -13654,8 +13616,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setbrightness2"></a>
-
 ## setBrightness
 
 ```TypeScript
@@ -13705,8 +13665,6 @@ windowClass.setBrightness(brightness, (err: BusinessError) => {
 });
 ```
 
-<a id="setcolorspace1"></a>
-
 ## setColorSpace
 
 ```TypeScript
@@ -13718,13 +13676,13 @@ setColorSpace(colorSpace: ColorSpace): Promise<void>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [setWindowColorSpace()](#setwindowcolorspace1)替代。
+> [setWindowColorSpace()](#setwindowcolorspace)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowColorSpace](#setwindowcolorspace1)(colorSpace:ColorSpace)
+**替代接口：** [setWindowColorSpace](#setwindowcolorspace)(colorSpace:ColorSpace)
 
 <!--Device-Window-setColorSpace(colorSpace: ColorSpace): Promise<void>--><!--Device-Window-setColorSpace(colorSpace: ColorSpace): Promise<void>-End-->
 
@@ -13755,8 +13713,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setcolorspace2"></a>
-
 ## setColorSpace
 
 ```TypeScript
@@ -13768,14 +13724,14 @@ setColorSpace(colorSpace: ColorSpace, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [setWindowColorSpace()](#setwindowcolorspace2)
+> [setWindowColorSpace()](#setwindowcolorspace)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowColorSpace](#setwindowcolorspace2)(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setWindowColorSpace](#setwindowcolorspace)(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-setColorSpace(colorSpace: ColorSpace, callback: AsyncCallback<void>): void--><!--Device-Window-setColorSpace(colorSpace: ColorSpace, callback: AsyncCallback<void>): void-End-->
 
@@ -13802,8 +13758,6 @@ windowClass.setColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError) => 
   console.info('Succeeded in setting window colorspace.');
 });
 ```
-
-<a id="setdimbehind1"></a>
 
 ## setDimBehind
 
@@ -13842,8 +13796,6 @@ windowClass.setDimBehind(0.5, (err: BusinessError) => {
   console.info('Succeeded in setting the dimness.');
 });
 ```
-
-<a id="setdimbehind2"></a>
 
 ## setDimBehind
 
@@ -13886,8 +13838,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setfocusable1"></a>
-
 ## setFocusable
 
 ```TypeScript
@@ -13899,13 +13849,13 @@ setFocusable(isFocusable: boolean): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setWindowFocusable()](#setwindowfocusable1)替代。
+> [setWindowFocusable()](#setwindowfocusable)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowFocusable](#setwindowfocusable1)(isFocusable: boolean)
+**替代接口：** [setWindowFocusable](#setwindowfocusable)(isFocusable: boolean)
 
 <!--Device-Window-setFocusable(isFocusable: boolean): Promise<void>--><!--Device-Window-setFocusable(isFocusable: boolean): Promise<void>-End-->
 
@@ -13937,8 +13887,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setfocusable2"></a>
-
 ## setFocusable
 
 ```TypeScript
@@ -13950,14 +13898,14 @@ setFocusable(isFocusable: boolean, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setWindowFocusable()](#setwindowfocusable2)
+> [setWindowFocusable()](#setwindowfocusable)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowFocusable](#setwindowfocusable2)(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setWindowFocusable](#setwindowfocusable)(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-setFocusable(isFocusable: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setFocusable(isFocusable: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -13986,8 +13934,6 @@ windowClass.setFocusable(isFocusable, (err: BusinessError) => {
 });
 ```
 
-<a id="setfullscreen1"></a>
-
 ## setFullScreen
 
 ```TypeScript
@@ -14003,15 +13949,15 @@ setFullScreen(isFullScreen: boolean, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议联合使用
-> [setWindowSystemBarEnable()](#setwindowsystembarenable2)
-> 和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen2)替代实现全
+> [setWindowSystemBarEnable()](#setwindowsystembarenable)
+> 和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen)替代实现全
 > 屏。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowSystemBarEnable](#setwindowsystembarenable2)(names: Array&lt;'status' | 'navigation'&gt;)
+**替代接口：** [setWindowSystemBarEnable](#setwindowsystembarenable)(names: Array&lt;'status' | 'navigation'&gt;)
 
 <!--Device-Window-setFullScreen(isFullScreen: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setFullScreen(isFullScreen: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -14058,8 +14004,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setfullscreen2"></a>
-
 ## setFullScreen
 
 ```TypeScript
@@ -14075,15 +14019,15 @@ setFullScreen(isFullScreen: boolean): Promise<void>
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议联合使用
-> [setWindowSystemBarEnable()](#setwindowsystembarenable2)
-> 和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen2)替代实现全
+> [setWindowSystemBarEnable()](#setwindowsystembarenable)
+> 和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen)替代实现全
 > 屏。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowSystemBarEnable](#setwindowsystembarenable2)(names: Array&lt;'status' | 'navigation'&gt;)
+**替代接口：** [setWindowSystemBarEnable](#setwindowsystembarenable)(names: Array&lt;'status' | 'navigation'&gt;)
 
 <!--Device-Window-setFullScreen(isFullScreen: boolean): Promise<void>--><!--Device-Window-setFullScreen(isFullScreen: boolean): Promise<void>-End-->
 
@@ -14133,8 +14077,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setkeepscreenon1"></a>
-
 ## setKeepScreenOn
 
 ```TypeScript
@@ -14146,13 +14088,13 @@ setKeepScreenOn(isKeepScreenOn: boolean): Promise<void>
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [setWindowKeepScreenOn()](#setwindowkeepscreenon1)替代。
+> [setWindowKeepScreenOn()](#setwindowkeepscreenon)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowKeepScreenOn](#setwindowkeepscreenon1)(isKeepScreenOn: boolean)
+**替代接口：** [setWindowKeepScreenOn](#setwindowkeepscreenon)(isKeepScreenOn: boolean)
 
 <!--Device-Window-setKeepScreenOn(isKeepScreenOn: boolean): Promise<void>--><!--Device-Window-setKeepScreenOn(isKeepScreenOn: boolean): Promise<void>-End-->
 
@@ -14184,8 +14126,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setkeepscreenon2"></a>
-
 ## setKeepScreenOn
 
 ```TypeScript
@@ -14197,14 +14137,14 @@ setKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [setWindowKeepScreenOn()](#setwindowkeepscreenon2)
+> [setWindowKeepScreenOn()](#setwindowkeepscreenon)
 > 替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowKeepScreenOn](#setwindowkeepscreenon2)(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setWindowKeepScreenOn](#setwindowkeepscreenon)(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-setKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -14233,8 +14173,6 @@ windowClass.setKeepScreenOn(isKeepScreenOn, (err: BusinessError) => {
 });
 ```
 
-<a id="setlayoutfullscreen1"></a>
-
 ## setLayoutFullScreen
 
 ```TypeScript
@@ -14250,13 +14188,13 @@ setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback<void>):
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setWindowLayoutFullScreen()](#setwindowlayoutfullscreen2)替代。
+> [setWindowLayoutFullScreen()](#setwindowlayoutfullscreen)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowLayoutFullScreen](#setwindowlayoutfullscreen2)(isLayoutFullScreen: boolean)
+**替代接口：** [setWindowLayoutFullScreen](#setwindowlayoutfullscreen)(isLayoutFullScreen: boolean)
 
 <!--Device-Window-setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -14303,8 +14241,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setlayoutfullscreen2"></a>
-
 ## setLayoutFullScreen
 
 ```TypeScript
@@ -14320,13 +14256,13 @@ setLayoutFullScreen(isLayoutFullScreen: boolean): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setWindowLayoutFullScreen()](#setwindowlayoutfullscreen2)替代。
+> [setWindowLayoutFullScreen()](#setwindowlayoutfullscreen)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowLayoutFullScreen](#setwindowlayoutfullscreen2)(isLayoutFullScreen: boolean)
+**替代接口：** [setWindowLayoutFullScreen](#setwindowlayoutfullscreen)(isLayoutFullScreen: boolean)
 
 <!--Device-Window-setLayoutFullScreen(isLayoutFullScreen: boolean): Promise<void>--><!--Device-Window-setLayoutFullScreen(isLayoutFullScreen: boolean): Promise<void>-End-->
 
@@ -14376,8 +14312,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setoutsidetouchable1"></a>
-
 ## setOutsideTouchable
 
 ```TypeScript
@@ -14425,8 +14359,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setoutsidetouchable2"></a>
-
 ## setOutsideTouchable
 
 ```TypeScript
@@ -14471,8 +14403,6 @@ windowClass.setOutsideTouchable(true, (err: BusinessError) => {
 });
 ```
 
-<a id="setprivacymode1"></a>
-
 ## setPrivacyMode
 
 ```TypeScript
@@ -14484,13 +14414,13 @@ setPrivacyMode(isPrivacyMode: boolean): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setWindowPrivacyMode()](#setwindowprivacymode1)替代。
+> [setWindowPrivacyMode()](#setwindowprivacymode)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowPrivacyMode](#setwindowprivacymode1)(isPrivacyMode: boolean)
+**替代接口：** [setWindowPrivacyMode](#setwindowprivacymode)(isPrivacyMode: boolean)
 
 <!--Device-Window-setPrivacyMode(isPrivacyMode: boolean): Promise<void>--><!--Device-Window-setPrivacyMode(isPrivacyMode: boolean): Promise<void>-End-->
 
@@ -14522,8 +14452,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setprivacymode2"></a>
-
 ## setPrivacyMode
 
 ```TypeScript
@@ -14535,14 +14463,14 @@ setPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setWindowPrivacyMode()](#setwindowprivacymode2)
+> [setWindowPrivacyMode()](#setwindowprivacymode)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowPrivacyMode](#setwindowprivacymode2)(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setWindowPrivacyMode](#setwindowprivacymode)(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-setPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -14571,8 +14499,6 @@ windowClass.setPrivacyMode(isPrivacyMode, (err: BusinessError) => {
 });
 ```
 
-<a id="setsystembarenable1"></a>
-
 ## setSystemBarEnable
 
 ```TypeScript
@@ -14588,14 +14514,14 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallbac
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setWindowSystemBarEnable()](#setwindowsystembarenable2)
+> [setWindowSystemBarEnable()](#setwindowsystembarenable)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowSystemBarEnable](#setwindowsystembarenable2)(names: Array&lt;'status'|'navigation'&gt;)
+**替代接口：** [setWindowSystemBarEnable](#setwindowsystembarenable)(names: Array&lt;'status'|'navigation'&gt;)
 
 <!--Device-Window-setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallback<void>): void--><!--Device-Window-setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallback<void>): void-End-->
 
@@ -14643,8 +14569,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setsystembarenable2"></a>
-
 ## setSystemBarEnable
 
 ```TypeScript
@@ -14660,14 +14584,14 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setWindowSystemBarEnable()](#setwindowsystembarenable2)
+> [setWindowSystemBarEnable()](#setwindowsystembarenable)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowSystemBarEnable](#setwindowsystembarenable2)(names: Array&lt;'status'|'navigation'&gt;)
+**替代接口：** [setWindowSystemBarEnable](#setwindowsystembarenable)(names: Array&lt;'status'|'navigation'&gt;)
 
 <!--Device-Window-setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise<void>--><!--Device-Window-setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise<void>-End-->
 
@@ -14718,8 +14642,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setsystembarproperties1"></a>
-
 ## setSystemBarProperties
 
 ```TypeScript
@@ -14733,14 +14655,14 @@ setSystemBarProperties(systemBarProperties: SystemBarProperties, callback: Async
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [setWindowSystemBarProperties()](#setwindowsystembarproperties2)
+> [setWindowSystemBarProperties()](#setwindowsystembarproperties)
 > 替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowSystemBarProperties](#setwindowsystembarproperties2)(systemBarProperties: SystemBarProperties)
+**替代接口：** [setWindowSystemBarProperties](#setwindowsystembarproperties)(systemBarProperties: SystemBarProperties)
 
 <!--Device-Window-setSystemBarProperties(systemBarProperties: SystemBarProperties, callback: AsyncCallback<void>): void--><!--Device-Window-setSystemBarProperties(systemBarProperties: SystemBarProperties, callback: AsyncCallback<void>): void-End-->
 
@@ -14793,8 +14715,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setsystembarproperties2"></a>
-
 ## setSystemBarProperties
 
 ```TypeScript
@@ -14808,14 +14728,14 @@ setSystemBarProperties(systemBarProperties: SystemBarProperties): Promise<void>
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [setWindowSystemBarProperties()](#setwindowsystembarproperties2)
+> [setWindowSystemBarProperties()](#setwindowsystembarproperties)
 > 替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowSystemBarProperties](#setwindowsystembarproperties2)(systemBarProperties: SystemBarProperties)
+**替代接口：** [setWindowSystemBarProperties](#setwindowsystembarproperties)(systemBarProperties: SystemBarProperties)
 
 <!--Device-Window-setSystemBarProperties(systemBarProperties: SystemBarProperties): Promise<void>--><!--Device-Window-setSystemBarProperties(systemBarProperties: SystemBarProperties): Promise<void>-End-->
 
@@ -14871,8 +14791,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="settouchable1"></a>
-
 ## setTouchable
 
 ```TypeScript
@@ -14884,13 +14802,13 @@ setTouchable(isTouchable: boolean): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setWindowTouchable()](#setwindowtouchable1)替代。
+> [setWindowTouchable()](#setwindowtouchable)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowTouchable](#setwindowtouchable1)(isTouchable: boolean)
+**替代接口：** [setWindowTouchable](#setwindowtouchable)(isTouchable: boolean)
 
 <!--Device-Window-setTouchable(isTouchable: boolean): Promise<void>--><!--Device-Window-setTouchable(isTouchable: boolean): Promise<void>-End-->
 
@@ -14922,8 +14840,6 @@ promise.then(() => {
 });
 ```
 
-<a id="settouchable2"></a>
-
 ## setTouchable
 
 ```TypeScript
@@ -14935,14 +14851,14 @@ setTouchable(isTouchable: boolean, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setWindowTouchable()](#setwindowtouchable2)
+> [setWindowTouchable()](#setwindowtouchable)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setWindowTouchable](#setwindowtouchable2)(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setWindowTouchable](#setwindowtouchable)(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-setTouchable(isTouchable: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setTouchable(isTouchable: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -14971,8 +14887,6 @@ windowClass.setTouchable(isTouchable, (err: BusinessError) => {
 });
 ```
 
-<a id="show1"></a>
-
 ## show
 
 ```TypeScript
@@ -14984,13 +14898,13 @@ show(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [showWindow()](#showwindow1)替代。
+> [showWindow()](#showwindow)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [showWindow](#showwindow1)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [showWindow](#showwindow)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-show(callback: AsyncCallback<void>): void--><!--Device-Window-show(callback: AsyncCallback<void>): void-End-->
 
@@ -15016,8 +14930,6 @@ windowClass.show((err: BusinessError) => {
   console.info('Succeeded in showing the window.');
 });
 ```
-
-<a id="show2"></a>
 
 ## show
 

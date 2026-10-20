@@ -8,7 +8,7 @@ Defines the vertical position of the title relative to the subtitle in the dialo
 
 | Name| Value| Description|  
 | - | - | - |  
-| TOP | 0 | The title is above the subtitle.Default value.|
+| TOP | 0 | The title is above the subtitle.Default value.|  
 | BOTTOM | 1 | The title is below the subtitle.|
 
 **Since:** 12

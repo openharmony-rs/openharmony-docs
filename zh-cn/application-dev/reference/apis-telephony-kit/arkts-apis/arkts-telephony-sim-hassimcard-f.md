@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="hassimcard1"></a>
-
 ## hasSimCard
 
 ```TypeScript
@@ -54,8 +52,6 @@ sim.hasSimCard(0, (err: BusinessError, data: boolean) => {
 });
 ```
 
-
-<a id="hassimcard2"></a>
 
 ## hasSimCard
 

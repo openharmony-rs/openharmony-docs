@@ -20,8 +20,6 @@ Before calling any API in AudioManager, you must use [getAudioManager](arkts-aud
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="getaudioscene1"></a>
-
 ## getAudioScene
 
 ```TypeScript
@@ -55,8 +53,6 @@ audioManager.getAudioScene((err: BusinessError, value: audio.AudioScene) => {
   console.info(`Callback invoked to indicate that the audio scene mode is obtained ${value}.`);
 });
 ```
-
-<a id="getaudioscene2"></a>
 
 ## getAudioScene
 
@@ -610,8 +606,6 @@ audioManager.on('interrupt', interAudioInterrupt, (interruptAction: audio.Interr
 });
 ```
 
-<a id="getaudioparameter1"></a>
-
 ## getAudioParameter
 
 ```TypeScript
@@ -649,8 +643,6 @@ audioManager.getAudioParameter('key_example', (err: BusinessError, value: string
 });
 ```
 
-<a id="getaudioparameter2"></a>
-
 ## getAudioParameter
 
 ```TypeScript
@@ -686,8 +678,6 @@ audioManager.getAudioParameter('key_example').then((value: string) => {
   console.info(`Promise returned to indicate that the value of the audio parameter is obtained ${value}.`);
 });
 ```
-
-<a id="getdevices1"></a>
 
 ## getDevices
 
@@ -728,8 +718,6 @@ audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err: BusinessErro
 });
 ```
 
-<a id="getdevices2"></a>
-
 ## getDevices
 
 ```TypeScript
@@ -767,8 +755,6 @@ audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data: audio.
   console.info('Promise returned to indicate that the device list is obtained.');
 });
 ```
-
-<a id="getmaxvolume1"></a>
 
 ## getMaxVolume
 
@@ -809,8 +795,6 @@ audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, valu
 });
 ```
 
-<a id="getmaxvolume2"></a>
-
 ## getMaxVolume
 
 ```TypeScript
@@ -848,8 +832,6 @@ audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((data: number) => {
   console.info('Promise returned to indicate that the maximum volume is obtained.');
 });
 ```
-
-<a id="getminvolume1"></a>
 
 ## getMinVolume
 
@@ -890,8 +872,6 @@ audioManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, valu
 });
 ```
 
-<a id="getminvolume2"></a>
-
 ## getMinVolume
 
 ```TypeScript
@@ -929,8 +909,6 @@ audioManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
   console.info(`Promise returned to indicate that the minimum volume is obtained. ${value}`);
 });
 ```
-
-<a id="getringermode1"></a>
 
 ## getRingerMode
 
@@ -970,8 +948,6 @@ audioManager.getRingerMode((err: BusinessError, value: audio.AudioRingMode) => {
 });
 ```
 
-<a id="getringermode2"></a>
-
 ## getRingerMode
 
 ```TypeScript
@@ -1004,8 +980,6 @@ audioManager.getRingerMode().then((value: audio.AudioRingMode) => {
 });
 ```
 
-<a id="getvolume1"></a>
-
 ## getVolume
 
 ```TypeScript
@@ -1029,7 +1003,7 @@ Obtains the volume of a stream. This API uses an asynchronous callback to return
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream volume obtained; otherwise, **err** is an error object. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolume1) and [getMaxVolume](#getmaxvolume1). |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream volume obtained; otherwise, **err** is an error object. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolume) and [getMaxVolume](#getmaxvolume). |
 
 **Examples**
 
@@ -1044,8 +1018,6 @@ audioManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: 
   console.info('Callback invoked to indicate that the volume is obtained.');
 });
 ```
-
-<a id="getvolume2"></a>
 
 ## getVolume
 
@@ -1075,7 +1047,7 @@ Obtains the volume of a stream. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the volume of the stream. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolume1) and [getMaxVolume](#getmaxvolume1). |
+| Promise&lt;number&gt; | Promise used to return the volume of the stream. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolume) and [getMaxVolume](#getmaxvolume). |
 
 **Examples**
 
@@ -1084,8 +1056,6 @@ audioManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
   console.info(`Promise returned to indicate that the volume is obtained ${value} .`);
 });
 ```
-
-<a id="isactive1"></a>
 
 ## isActive
 
@@ -1126,8 +1096,6 @@ audioManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: b
 });
 ```
 
-<a id="isactive2"></a>
-
 ## isActive
 
 ```TypeScript
@@ -1165,8 +1133,6 @@ audioManager.isActive(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
   console.info(`Promise returned to indicate that the active status of the stream is obtained ${value}.`);
 });
 ```
-
-<a id="isdeviceactive1"></a>
 
 ## isDeviceActive
 
@@ -1207,8 +1173,6 @@ audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER, (err: BusinessError,
 });
 ```
 
-<a id="isdeviceactive2"></a>
-
 ## isDeviceActive
 
 ```TypeScript
@@ -1246,8 +1210,6 @@ audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER).then((value: boolean
   console.info(`Promise returned to indicate that the active status of the device is obtained ${value}.`);
 });
 ```
-
-<a id="ismicrophonemute1"></a>
 
 ## isMicrophoneMute
 
@@ -1289,8 +1251,6 @@ audioManager.isMicrophoneMute((err: BusinessError, value: boolean) => {
 });
 ```
 
-<a id="ismicrophonemute2"></a>
-
 ## isMicrophoneMute
 
 ```TypeScript
@@ -1324,8 +1284,6 @@ audioManager.isMicrophoneMute().then((value: boolean) => {
   console.info(`Promise returned to indicate that the mute status of the microphone is obtained ${value}.`);
 });
 ```
-
-<a id="ismute1"></a>
 
 ## isMute
 
@@ -1366,8 +1324,6 @@ audioManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boo
 });
 ```
 
-<a id="ismute2"></a>
-
 ## isMute
 
 ```TypeScript
@@ -1405,8 +1361,6 @@ audioManager.isMute(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
   console.info(`Promise returned to indicate that the mute status of the stream is obtained ${value}.`);
 });
 ```
-
-<a id="mute1"></a>
 
 ## mute
 
@@ -1448,8 +1402,6 @@ audioManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessError) => {
 });
 ```
 
-<a id="mute2"></a>
-
 ## mute
 
 ```TypeScript
@@ -1488,8 +1440,6 @@ audioManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
   console.info('Promise returned to indicate that the stream is muted.');
 });
 ```
-
-<a id="setaudioparameter1"></a>
 
 ## setAudioParameter
 
@@ -1531,8 +1481,6 @@ audioManager.setAudioParameter('key_example', 'value_example', (err: BusinessErr
 });
 ```
 
-<a id="setaudioparameter2"></a>
-
 ## setAudioParameter
 
 ```TypeScript
@@ -1571,8 +1519,6 @@ audioManager.setAudioParameter('key_example', 'value_example').then(() => {
   console.info('Promise returned to indicate a successful setting of the audio parameter.');
 });
 ```
-
-<a id="setdeviceactive1"></a>
 
 ## setDeviceActive
 
@@ -1614,8 +1560,6 @@ audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true, (err: Busines
 });
 ```
 
-<a id="setdeviceactive2"></a>
-
 ## setDeviceActive
 
 ```TypeScript
@@ -1654,8 +1598,6 @@ audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true).then(() => {
   console.info('Promise returned to indicate that the device is set to the active status.');
 });
 ```
-
-<a id="setmicrophonemute1"></a>
 
 ## setMicrophoneMute
 
@@ -1696,8 +1638,6 @@ audioManager.setMicrophoneMute(true, (err: BusinessError) => {
 });
 ```
 
-<a id="setmicrophonemute2"></a>
-
 ## setMicrophoneMute
 
 ```TypeScript
@@ -1735,8 +1675,6 @@ audioManager.setMicrophoneMute(true).then(() => {
   console.info('Promise returned to indicate that the microphone is muted.');
 });
 ```
-
-<a id="setringermode1"></a>
 
 ## setRingerMode
 
@@ -1777,8 +1715,6 @@ audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (err: Busines
 });
 ```
 
-<a id="setringermode2"></a>
-
 ## setRingerMode
 
 ```TypeScript
@@ -1816,8 +1752,6 @@ audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL).then(() => {
   console.info('Promise returned to indicate a successful setting of the ringer mode.');
 });
 ```
-
-<a id="setvolume1"></a>
 
 ## setVolume
 
@@ -1860,8 +1794,6 @@ audioManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: BusinessError) => 
   console.info('Callback invoked to indicate a successful volume setting.');
 });
 ```
-
-<a id="setvolume2"></a>
 
 ## setVolume
 

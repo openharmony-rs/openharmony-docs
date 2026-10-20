@@ -8,8 +8,6 @@ The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and attrib
 
 The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-@extends ColumnAttribute
-
 **Inheritance/Implementation:** GridContainerAttribute extends [ColumnAttribute](arkts-arkui-column-comp-attribute.md#columnattribute)
 
 **Since:** 7

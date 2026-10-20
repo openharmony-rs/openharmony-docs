@@ -67,8 +67,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="setimageforrecent2"></a>
-
 ## setImageForRecent
 
 ```TypeScript

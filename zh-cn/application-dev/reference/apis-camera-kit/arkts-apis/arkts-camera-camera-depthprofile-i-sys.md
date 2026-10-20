@@ -4,7 +4,7 @@
 interface DepthProfile
 ```
 
-Describes the profile of depth data. It inherits from [Profile](arkts-camera-camera-profile-i.md).
+描述深度数据的 profile。继承自 [Profile](arkts-camera-camera-profile-i.md)。
 
 **起始版本：** 13
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 readonly dataAccuracy: DepthDataAccuracy
 ```
 
-Accuracy of the depth data, which can be either relative accuracy or absolute accuracy.
+深度数据的精度，可以是相对精度或绝对精度。
 
 **类型：** [DepthDataAccuracy](arkts-camera-camera-depthdataaccuracy-e-sys.md)
 
@@ -44,7 +44,7 @@ Accuracy of the depth data, which can be either relative accuracy or absolute ac
 readonly format: CameraFormat
 ```
 
-Camera output format.
+相机输出格式。
 
 **类型：** [CameraFormat](arkts-camera-camera-cameraformat-e.md)
 
@@ -62,7 +62,7 @@ Camera output format.
 readonly size: Size
 ```
 
-Depth data resolution.
+深度数据分辨率。
 
 **类型：** Size
 

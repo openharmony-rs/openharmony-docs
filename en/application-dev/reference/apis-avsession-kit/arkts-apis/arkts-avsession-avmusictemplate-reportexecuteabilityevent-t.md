@@ -6,8 +6,6 @@ type ReportExecuteAbilityEvent = (want: WantAgent) => void
 
 The report extension ability event.
 
-@typedef { function } ReportExecuteActionEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

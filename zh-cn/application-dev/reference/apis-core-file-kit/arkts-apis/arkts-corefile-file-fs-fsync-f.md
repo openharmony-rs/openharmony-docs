@@ -45,8 +45,6 @@ declare function fsync(fd: number): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="fsync2"></a>
-
 ## fsync
 
 ```TypeScript

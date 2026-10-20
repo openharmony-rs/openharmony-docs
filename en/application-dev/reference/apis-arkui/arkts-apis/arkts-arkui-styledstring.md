@@ -18,7 +18,7 @@
 | [LineSpacingStyle](arkts-arkui-linespacingstyle-c.md) | Describes the text line spacing object. It is suitable for scenarios that require adjusting the spacing between lines within a paragraph, such as improving text reading comfort and adjusting document layout density. |
 | [MutableStyledString](arkts-arkui-mutablestyledstring-c.md) | Inherits from the [StyledString](arkts-arkui-styledstring-c.md) class. |
 | [ParagraphStyle](arkts-arkui-paragraphstyle-c.md) | Describes the text paragraph style. |
-| [StyledString](arkts-arkui-styledstring-c.md) | [StyledString](arkts-arkui-styledstring-c.md) |
+| [StyledString](arkts-arkui-styledstring-c.md) | StyledString |
 | [TextShadowStyle](arkts-arkui-textshadowstyle-c.md) | Describes the text shadow style. |
 | [TextStyle](arkts-arkui-textstyle-c.md) | Describes the text style. |
 | [UrlStyle](arkts-arkui-urlstyle-c.md) | Describes the hyperlink style. |
@@ -29,7 +29,7 @@
 
 | Name | Description |
 | --- | --- |
-| [StyledString](arkts-arkui-styledstring-c-sys.md) | [StyledString](arkts-arkui-styledstring-c.md) |
+| [StyledString](arkts-arkui-styledstring-c-sys.md) | StyledString |
 <!--DelEnd-->
 
 ### Interfaces
@@ -45,11 +45,11 @@
 | [ImageAttachmentInterface](arkts-arkui-imageattachmentinterface-i.md) | Defines the ImageAttachmentInterface. |
 | [ImageAttachmentLayoutStyle](arkts-arkui-imageattachmentlayoutstyle-i.md) | Defines the ImageAttachment Layout Style. |
 | [LeadingMarginSpanDrawInfo](arkts-arkui-leadingmarginspandrawinfo-i.md) | Provides the custom drawing information. |
-| [ParagraphStyleInterface](arkts-arkui-paragraphstyleinterface-i.md) | [ParagraphStyleInterface](arkts-arkui-paragraphstyleinterface-i.md) |
+| [ParagraphStyleInterface](arkts-arkui-paragraphstyleinterface-i.md) | ParagraphStyleInterface |
 | [ResourceImageAttachmentOptions](arkts-arkui-resourceimageattachmentoptions-i.md) | Defines the settings for images of the ResourceStr type. |
 | [SpanStyle](arkts-arkui-spanstyle-i.md) | Describes the span style. |
 | [StyleOptions](arkts-arkui-styleoptions-i.md) | Describes the style options. |
-| [TextStyleInterface](arkts-arkui-textstyleinterface-i.md) | [TextStyleInterface](arkts-arkui-textstyleinterface-i.md) |
+| [TextStyleInterface](arkts-arkui-textstyleinterface-i.md) | TextStyleInterface |
 
 ### Types
 

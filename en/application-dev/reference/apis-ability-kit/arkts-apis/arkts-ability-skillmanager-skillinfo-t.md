@@ -6,8 +6,6 @@ export type SkillInfo = _SkillInfo
 
 Provides information about a skill, including skill name, type, and associated metadata.
 
-@typedef { _SkillInfo }
-
 **Type:** _SkillInfo
 
 **Since:** 26.0.0

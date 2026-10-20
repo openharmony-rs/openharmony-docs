@@ -6,8 +6,6 @@ export interface AgentSkill
 
 表示Agent可以执行的不同能力或功能。
 
-@typedef AgentSkill
-
 **起始版本：** 24
 
 <!--Device-unnamed-export interface AgentSkill--><!--Device-unnamed-export interface AgentSkill-End-->

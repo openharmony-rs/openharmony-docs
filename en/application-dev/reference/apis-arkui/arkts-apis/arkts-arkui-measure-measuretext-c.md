@@ -56,7 +56,7 @@ Measures the single-line display width of the specified text. For multi-line tex
 
 | Type | Description |
 | --- | --- |
-| number | Text width.<br>Unit: px |
+| number | Text width. <br>Unit: px |
 
 **Examples**
 
@@ -120,7 +120,7 @@ Measures the width and height of the given text.
 
 | Type | Description |
 | --- | --- |
-| [SizeOptions](arkts-arkui-sizeoptions-i.md) | Layout width and height occupied by the text.<br>**NOTE:** <br>The return values for text width and height are both in px. |
+| [SizeOptions](arkts-arkui-sizeoptions-i.md) | Layout width and height occupied by the text. <br>**NOTE:** <br>The return values for text width and height are both in px. |
 
 **Examples**
 

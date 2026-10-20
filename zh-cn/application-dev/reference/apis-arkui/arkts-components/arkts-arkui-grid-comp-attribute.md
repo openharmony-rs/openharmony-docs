@@ -40,8 +40,6 @@ alignItems(alignment: Optional<GridItemAlignment>)
 | --- | --- | --- | --- |
 | alignment | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[GridItemAlignment](arkts-arkui-grid-comp-griditemalignment-e.md)&gt; | 是 | 设置Grid中GridItem的对齐方式。<br>默认值：GridItemAlignment.DEFAULT |
 
-<a id="cachedcount1"></a>
-
 ## cachedCount
 
 ```TypeScript
@@ -70,8 +68,6 @@ cachedCount(value: number)
 | --- | --- | --- | --- |
 | value | number | 是 | 预加载的GridItem的数量。<br>默认值：垂直滚动时为一个屏幕内可显示的行数，水平滚动时为一个屏幕内可显示的列数，最大值为16。<br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。<br>通过状态变量单独更新value值时，Grid组件不会触发布局更新，缓存节点数量仅会在下次布局时更新。 |
 
-<a id="cachedcount2"></a>
-
 ## cachedCount
 
 ```TypeScript
@@ -80,7 +76,7 @@ cachedCount(count: number, show: boolean)
 
 设置主轴方向前后两侧分别预加载的网格行/列数，并配置是否显示预加载节点，只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了[virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll)开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效。
 
-设置缓存后，会在Grid显示区域沿主轴方向的前后两侧分别预加载cachedCount个网格行/列。垂直滚动时，上下两侧分别预加载cachedCount行；水平滚动时，左右两侧分别预加载cachedCount列。配合裁剪[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1)或内容裁剪[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
+设置缓存后，会在Grid显示区域沿主轴方向的前后两侧分别预加载cachedCount个网格行/列。垂直滚动时，上下两侧分别预加载cachedCount行；水平滚动时，左右两侧分别预加载cachedCount列。配合裁剪[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)或内容裁剪[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
 
 **起始版本：** 14
 
@@ -97,7 +93,7 @@ cachedCount(count: number, show: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | count | number | 是 | 预加载的GridItem的数量。<br>默认值：垂直滚动时为一个屏幕内可显示的行数，水平滚动时为一个屏幕内可显示的列数，最大值为16。<br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。<br>通过状态变量单独更新count值时，Grid组件不会触发布局更新，缓存节点数量仅会在下次布局时更新。 |
-| show | boolean | 是 | 被预加载的GridItem是否需要显示。设置为true时显示预加载的GridItem，设置为false时不显示预加载的GridItem。<br> 默认值：false |
+| show | boolean | 是 | 被预加载的GridItem是否需要显示。设置为true时显示预加载的GridItem，设置为false时不显示预加载的GridItem。 <br> 默认值：false |
 
 ## cellLength
 
@@ -154,8 +150,6 @@ columnsGap(value: Length)
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 列与列的间距。<br>默认值：0 <br>取值范围：[0, +∞)，设置为小于0的值时，按默认值0显示。 |
 
-<a id="columnstemplate1"></a>
-
 ## columnsTemplate
 
 ```TypeScript
@@ -198,8 +192,6 @@ auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值�
 | --- | --- | --- | --- |
 | value | string | 是 |  |
 
-<a id="columnstemplate2"></a>
-
 ## columnsTemplate
 
 ```TypeScript
@@ -208,7 +200,7 @@ columnsTemplate(value: string | ItemFillPolicy)
 
 设置当前网格组件布局列的数量，不设置时默认1列。
 
-当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate1)。
+当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate)。
 
 当value设置为ItemFillPolicy类型时，将根据Grid组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
 
@@ -975,8 +967,6 @@ scrollBar(value: BarState)
 | --- | --- | --- | --- |
 | value | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | 是 | 滚动条状态。<br>默认值：BarState.Auto<br>**说明：** <br>API version 9及以下版本默认值为BarState.Off，API version 10及以上版本的默认值为BarState.Auto。 |
 
-<a id="scrollbarcolor1"></a>
-
 ## scrollBarColor
 
 ```TypeScript
@@ -1001,15 +991,13 @@ scrollBarColor(value: Color | number | string)
 | --- | --- | --- | --- |
 | value | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string | 是 | 滚动条的颜色。<br>默认值：'#182431'（40%不透明度）<br>number为HEX格式颜色，支持rgb或者argb，示例：0 xffffff。<br>string为rgb或者argb格式颜色，示例：'#ffffff'。 |
 
-<a id="scrollbarcolor2"></a>
-
 ## scrollBarColor
 
 ```TypeScript
 scrollBarColor(color: Color | number | string | Resource)
 ```
 
-设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor1)相比， 参数名改为color，并开始支持Resource类型。
+设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor)相比， 参数名改为color，并开始支持Resource类型。
 
 **起始版本：** 22
 
@@ -1026,8 +1014,6 @@ scrollBarColor(color: Color | number | string | Resource)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | 滚动条的颜色。<br>默认值：'#182431'（40%不透明度）<br>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
-
-<a id="scrollbarwidth1"></a>
 
 ## scrollBarWidth
 
@@ -1052,8 +1038,6 @@ scrollBarWidth(value: number | string)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number &#124; string | 是 | 滚动条的宽度。<br>默认值：4<br>单位：vp<br>取值范围：[0, +∞)，设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。 |
-
-<a id="scrollbarwidth2"></a>
 
 ## scrollBarWidth
 

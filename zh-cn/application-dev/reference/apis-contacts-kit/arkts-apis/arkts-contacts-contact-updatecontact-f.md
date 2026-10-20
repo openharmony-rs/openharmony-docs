@@ -6,8 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="updatecontact1"></a>
-
 ## updateContact
 
 ```TypeScript
@@ -20,7 +18,7 @@ function updateContact(contact: Contact, callback: AsyncCallback<void>): void
 
 **废弃版本：** 10
 
-**替代接口：** [updateContact](#updatecontact2)(context: Context, contact: Contact, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [updateContact](#updatecontact)(context: Context, contact: Contact, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -61,8 +59,6 @@ contact.selectContacts().then((data) => {
 });
 ```
 
-
-<a id="updatecontact2"></a>
 
 ## updateContact
 
@@ -130,8 +126,6 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="updatecontact3"></a>
-
 ## updateContact
 
 ```TypeScript
@@ -144,7 +138,7 @@ function updateContact(contact: Contact, attrs: ContactAttributes, callback: Asy
 
 **废弃版本：** 10
 
-**替代接口：** [updateContact](#updatecontact4)(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [updateContact](#updatecontact)(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -189,8 +183,6 @@ contact.selectContacts().then((data) => {
 });
 ```
 
-
-<a id="updatecontact4"></a>
 
 ## updateContact
 
@@ -260,8 +252,6 @@ contact.selectContacts().then((data) => {
 ```
 
 
-<a id="updatecontact5"></a>
-
 ## updateContact
 
 ```TypeScript
@@ -274,7 +264,7 @@ function updateContact(contact: Contact, attrs?: ContactAttributes): Promise<voi
 
 **废弃版本：** 10
 
-**替代接口：** [updateContact](#updatecontact6)(context: Context, contact: Contact, attrs?: ContactAttributes)
+**替代接口：** [updateContact](#updatecontact)(context: Context, contact: Contact, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.WRITE_CONTACTS
 
@@ -319,8 +309,6 @@ contact.selectContacts().then((data) => {
 });
 ```
 
-
-<a id="updatecontact6"></a>
 
 ## updateContact
 

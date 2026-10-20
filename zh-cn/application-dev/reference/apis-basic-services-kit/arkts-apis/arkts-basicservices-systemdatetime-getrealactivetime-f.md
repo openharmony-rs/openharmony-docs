@@ -6,8 +6,6 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="getrealactivetime1"></a>
-
 ## getRealActiveTime
 
 ```TypeScript
@@ -37,7 +35,7 @@ function getRealActiveTime(isNano: boolean, callback: AsyncCallback<number>): vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Incorrect parameter types. |
 
 **示例**
 
@@ -58,8 +56,6 @@ try {
 }
 ```
 
-
-<a id="getrealactivetime2"></a>
 
 ## getRealActiveTime
 
@@ -89,7 +85,7 @@ function getRealActiveTime(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Incorrect parameter types. |
 
 **示例**
 
@@ -110,8 +106,6 @@ try {
 }
 ```
 
-
-<a id="getrealactivetime3"></a>
 
 ## getRealActiveTime
 
@@ -147,7 +141,7 @@ function getRealActiveTime(isNano?: boolean): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br> 1. Incorrect parameter types. |
 
 **示例**
 

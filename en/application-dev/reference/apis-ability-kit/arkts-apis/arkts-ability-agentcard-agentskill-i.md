@@ -6,8 +6,6 @@ export interface AgentSkill
 
 Represents a distinct capability or function that an agent can perform.
 
-@typedef AgentSkill
-
 **Since:** 24
 
 <!--Device-unnamed-export interface AgentSkill--><!--Device-unnamed-export interface AgentSkill-End-->

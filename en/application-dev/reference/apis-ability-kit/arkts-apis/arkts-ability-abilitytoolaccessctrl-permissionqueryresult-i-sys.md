@@ -17,6 +17,7 @@ Permission query result.
 ## Modules to Import
 
 ```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## needDialog

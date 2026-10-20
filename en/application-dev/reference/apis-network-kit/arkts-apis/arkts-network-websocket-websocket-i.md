@@ -18,8 +18,6 @@ Defines a **WebSocket** object. Before invoking WebSocket APIs, you need to call
 import { webSocket } from '@kit.NetworkKit';
 ```
 
-<a id="close1"></a>
-
 ## close
 
 ```TypeScript
@@ -66,8 +64,6 @@ ws.close((err: BusinessError) => {
   }
 });
 ```
-
-<a id="close2"></a>
 
 ## close
 
@@ -122,8 +118,6 @@ ws.close(options, (err: BusinessError) => {
     }
 });
 ```
-
-<a id="close3"></a>
 
 ## close
 
@@ -180,8 +174,6 @@ promise.then((value: boolean) => {
     console.error("close fail, error:" + JSON.stringify(err))
 });
 ```
-
-<a id="connect1"></a>
 
 ## connect
 
@@ -249,8 +241,6 @@ ws.connect(url, (err: BusinessError, value: boolean) => {
   }
 });
 ```
-
-<a id="connect2"></a>
 
 ## connect
 
@@ -343,8 +333,6 @@ ws.connect(url, options, (err: BusinessError, value: Object) => {
   }
 });
 ```
-
-<a id="connect3"></a>
 
 ## connect
 
@@ -571,7 +559,7 @@ Unsubscribes from WebSocket close events. This API uses an asynchronous callback
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'close' | Yes | Event type.<br> **close**: event indicating that a WebSocket connection has been closed. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[CloseResult](arkts-network-websocket-closeresult-i.md)&gt; | No | Callback used to return the result.<br>**close** and **reason** indicate the error code and error cause for closing the connection, respectively. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[CloseResult](arkts-network-websocket-closeresult-i.md)&gt; | No | Callback used to return the result. <br>**close** and **reason** indicate the error code and error cause for closing the connection, respectively. |
 
 **Examples**
 
@@ -695,7 +683,7 @@ ws.off('headerReceive');
 on(type: 'open', callback: AsyncCallback<Object>): void
 ```
 
-Subscribes to WebSocket open events. This API uses an asynchronous callback to return the result. This event indicates whether the WebSocket connection is successful. This API must be called before [connect](#connect1) is called to initiate a connection request.
+Subscribes to WebSocket open events. This API uses an asynchronous callback to return the result. This event indicates whether the WebSocket connection is successful. This API must be called before [connect](#connect) is called to initiate a connection request.
 
 **Since:** 6
 
@@ -827,7 +815,7 @@ Subscribes to WebSocket close events. This API uses an asynchronous callback to 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'close' | Yes | Event type.<br> **close**: event indicating that a WebSocket connection has been closed. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[CloseResult](arkts-network-websocket-closeresult-i.md)&gt; | Yes | Callback used to return the result.<br>**close** and **reason** indicate the error code and error cause for closing the connection, respectively. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[CloseResult](arkts-network-websocket-closeresult-i.md)&gt; | Yes | Callback used to return the result. <br>**close** and **reason** indicate the error code and error cause for closing the connection, respectively. |
 
 **Examples**
 
@@ -942,8 +930,6 @@ ws.on('headerReceive', (data) => {
 });
 ```
 
-<a id="send1"></a>
-
 ## send
 
 ```TypeScript
@@ -966,7 +952,7 @@ Sends data through a WebSocket connection. This API uses an asynchronous callbac
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | string &#124; ArrayBuffer | Yes | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 - 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned. |
+| data | string &#124; ArrayBuffer | Yes | Data to send. <br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 - 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite. |
 
 **Error codes:**
@@ -1007,8 +993,6 @@ ws.on('open', (err: BusinessError, value: Object) => {
 });
 ```
 
-<a id="send2"></a>
-
 ## send
 
 ```TypeScript
@@ -1031,7 +1015,7 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| data | string &#124; ArrayBuffer | Yes | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 - 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned. |
+| data | string &#124; ArrayBuffer | Yes | Data to send. <br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 - 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned. |
 
 **Return value:**
 

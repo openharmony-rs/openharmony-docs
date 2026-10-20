@@ -49,7 +49,6 @@ Enables or disables mirror recording.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 12 - 14 |
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
@@ -207,7 +206,7 @@ natural orientation. For example, the rear camera sensor of a bar-type phone is 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceDegree | number | No | Device rotation angle, measured in degrees, within the range of [0, 360].<br> Since API version 23, the input parameter **deviceDegree** is optional. If no parameter is passed, the system obtains the **deviceDegree** value to calculate the video rotation angle.<br>**Since:** 23 |
+| deviceDegree | number | No | Device rotation angle, measured in degrees, within the range of [0, 360]. <br> Since API version 23, the input parameter **deviceDegree** is optional. If no parameter is passed, the system obtains the **deviceDegree** value to calculate the video rotation angle.<br>**Since:** 23 |
 
 **Return value:**
 
@@ -312,7 +311,6 @@ Checks whether mirror recording is supported.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 12 - 14 |
 
 **Examples**
 
@@ -596,8 +594,6 @@ function setFrameRateRange(videoOutput: camera.VideoOutput, frameRateRange: Arra
 }
 ```
 
-<a id="start1"></a>
-
 ## start
 
 ```TypeScript
@@ -643,8 +639,6 @@ function startVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -688,8 +682,6 @@ function startVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -721,8 +713,6 @@ function stopVideoOutput(videoOutput: camera.VideoOutput): void {
   });
 }
 ```
-
-<a id="stop2"></a>
 
 ## stop
 

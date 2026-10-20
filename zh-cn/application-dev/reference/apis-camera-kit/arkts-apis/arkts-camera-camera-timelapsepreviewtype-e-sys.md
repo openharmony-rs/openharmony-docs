@@ -4,7 +4,7 @@
 enum TimeLapsePreviewType
 ```
 
-Enumerates the time-lapse preview types, which affect the shooting algorithm.
+枚举延时摄影预览类型，影响拍摄算法。
 
 **起始版本：** 12
 
@@ -20,7 +20,7 @@ Enumerates the time-lapse preview types, which affect the shooting algorithm.
 DARK = 1
 ```
 
-Dark environment, a scenario with poor illumination, for example, at night or in a dark area.
+暗光环境，光照条件较差的场景，例如夜间或暗处。
 
 **起始版本：** 12
 
@@ -36,7 +36,7 @@ Dark environment, a scenario with poor illumination, for example, at night or in
 LIGHT = 2
 ```
 
-Bright environment, a scenario with good illumination, for example, in the daytime or under light.
+明亮环境，光照条件良好的场景，例如白天或有灯光照射处。
 
 **起始版本：** 12
 

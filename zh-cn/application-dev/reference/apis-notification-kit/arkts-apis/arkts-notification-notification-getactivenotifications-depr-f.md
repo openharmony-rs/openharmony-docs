@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getactivenotifications1"></a>
-
 ## getActiveNotifications
 
 ```TypeScript
@@ -31,8 +29,23 @@ function getActiveNotifications(callback: AsyncCallback<Array<NotificationReques
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[NotificationRequest](arkts-notification-notificationrequest-i.md)&gt;&gt; | 是 | 获取当前应用通知列表回调函数。 |
 
+**示例**
 
-<a id="getactivenotifications2"></a>
+```TypeScript
+import Base from '@ohos.base';
+import NotificationManager from '@ohos.notificationManager';
+
+let getActiveNotificationsCallback = (err: Base.BusinessError, data: NotificationManager.NotificationRequest[]) => {
+  if (err) {
+    console.error("getActiveNotifications failed " + JSON.stringify(err));
+  } else {
+    console.info("getActiveNotifications success");
+  }
+}
+
+Notification.getActiveNotifications(getActiveNotificationsCallback);
+```
+
 
 ## getActiveNotifications
 
@@ -57,3 +70,31 @@ function getActiveNotifications(): Promise<Array<NotificationRequest>>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;Array&lt;[NotificationRequest](arkts-notification-notificationrequest-i.md)&gt;&gt; | 以Promise形式返回获取当前应用通知列表。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+import NotificationManager from '@ohos.notificationManager';
+
+let getActiveNotificationsCallback = (err: Base.BusinessError, data: NotificationManager.NotificationRequest[]) => {
+  if (err) {
+    console.error("getActiveNotifications failed " + JSON.stringify(err));
+  } else {
+    console.info("getActiveNotifications success");
+  }
+}
+
+Notification.getActiveNotifications(getActiveNotificationsCallback);
+```
+
+```TypeScript
+import Base from '@ohos.base';
+import NotificationManager from '@ohos.notificationManager';
+
+Notification.getActiveNotifications().then((data: NotificationManager.NotificationRequest[]) => {
+  console.info("getActiveNotifications success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`getActiveNotifications failed, code is ${err}`);
+});
+```

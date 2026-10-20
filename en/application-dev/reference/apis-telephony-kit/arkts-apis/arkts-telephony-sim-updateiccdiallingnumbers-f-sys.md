@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="updateiccdiallingnumbers1"></a>
-
 ## updateIccDiallingNumbers
 
 ```TypeScript
@@ -69,8 +67,6 @@ sim.updateIccDiallingNumbers(0, sim.ContactType.GENERAL_CONTACT, diallingNumbers
 
 <!--DelEnd-->
 
-
-<a id="updateiccdiallingnumbers2"></a>
 
 ## updateIccDiallingNumbers
 

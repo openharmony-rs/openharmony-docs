@@ -555,8 +555,6 @@ getLineHeight(line: number): number
 let lineHeight = paragraph.getLineHeight(0);
 ```
 
-<a id="getlinemetrics1"></a>
-
 ## getLineMetrics
 
 ```TypeScript
@@ -584,8 +582,6 @@ getLineMetrics(): Array<LineMetrics>
 ```TypeScript
 let arrLineMetric =  paragraph.getLineMetrics();
 ```
-
-<a id="getlinemetrics2"></a>
 
 ## getLineMetrics
 
@@ -1092,12 +1088,12 @@ getVisibleTextRanges(): Array<Range>
 
 | 场景 | 说明 |  
 |---|---|  
-| 文本未被截断 | 范围包含全部已排版文本 |
-| 仅设置maxLines截断（未设置省略号） | 范围为实际显示的文本，即第一行至第maxLines行末尾的文本。 |
-| 尾部省略（EllipsisMode.END） | 范围为省略号之前的文本。 |
-| 头部省略（EllipsisMode.START） | 范围为省略号之后的文本。 |
-| 中部省略（EllipsisMode.MIDDLE） | 第一个范围为省略号之前的文本，第二个范围为省略号之后的文本。 |
-| 多行头部省略（EllipsisMode.MULTILINE_START） | 同中部省略，返回省略号前后的文本范围。 |
+| 文本未被截断 | 范围包含全部已排版文本 |  
+| 仅设置maxLines截断（未设置省略号） | 范围为实际显示的文本，即第一行至第maxLines行末尾的文本。 |  
+| 尾部省略（EllipsisMode.END） | 范围为省略号之前的文本。 |  
+| 头部省略（EllipsisMode.START） | 范围为省略号之后的文本。 |  
+| 中部省略（EllipsisMode.MIDDLE） | 第一个范围为省略号之前的文本，第二个范围为省略号之后的文本。 |  
+| 多行头部省略（EllipsisMode.MULTILINE_START） | 同中部省略，返回省略号前后的文本范围。 |  
 | 多行中部省略（EllipsisMode.MULTILINE_MIDDLE） | 同中部省略，返回省略号前后的文本范围。 |
 
 **起始版本：** 26.0.0

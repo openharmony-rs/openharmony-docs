@@ -24,8 +24,8 @@ import { formAgent } from '@kit.FormKit';
 | 名称 | 说明 |
 | --- | --- |
 | [getAvailableFormHostServices](arkts-form-formagent-getavailableformhostservices-f-sys.md#getavailableformhostservices) | 获取可用的卡片使用方服务信息列表。使用Promise异步回调。 |
-| [requestPublishForm](arkts-form-formagent-requestpublishform-f-sys.md#requestpublishform1) | 请求发布一张卡片到使用方，使用callback异步回调。使用方通常为桌面。适用于系统应用需要主动将卡片添加到桌面的场景。 |
-| [requestPublishForm](arkts-form-formagent-requestpublishform-f-sys.md#requestpublishform2) | 请求发布一张卡片到使用方，使用Promise异步回调。使用方通常为桌面。适用于系统应用需要主动将卡片添加到桌面的场景。 |
+| [requestPublishForm](arkts-form-formagent-requestpublishform-f-sys.md#requestpublishform) | 请求发布一张卡片到使用方，使用callback异步回调。使用方通常为桌面。适用于系统应用需要主动将卡片添加到桌面的场景。 |
+| [requestPublishForm](arkts-form-formagent-requestpublishform-f-sys.md#requestpublishform) | 请求发布一张卡片到使用方，使用Promise异步回调。使用方通常为桌面。适用于系统应用需要主动将卡片添加到桌面的场景。 |
 | [requestPublishFormCrossDevice](arkts-form-formagent-requestpublishformcrossdevice-f-sys.md#requestpublishformcrossdevice) | 请求发布一张卡片到远端设备的卡片使用方服务。使用Promise异步回调。 |
 | [updateFormCrossBundle](arkts-form-formagent-updateformcrossbundle-f-sys.md#updateformcrossbundle) | 跨应用更新卡片，使用Promise异步回调。 |
 <!--DelEnd-->

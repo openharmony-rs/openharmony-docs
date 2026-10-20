@@ -44,7 +44,7 @@ onCancel(fillContent?: string): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1.The input parameter is not valid parameter; <br>2. Mandatory parameters are left unspecified.<br>**适用版本：** 12+ |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: <br>1.The input parameter is not valid parameter; <br>2. Mandatory parameters are left unspecified.<br>**适用版本：** 12+ |
 
 <!--Del-->
 **示例**

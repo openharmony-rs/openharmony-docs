@@ -6,8 +6,6 @@ export interface GeofenceRequest
 
 请求添加GNSS围栏消息中携带的参数，包括定位场景和围栏信息。
 
-@interface GeofenceRequest
-
 **起始版本：** 8
 
 **废弃版本：** 9

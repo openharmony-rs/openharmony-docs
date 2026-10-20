@@ -30,7 +30,7 @@ Set the SIM card labelIndex.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| simId | number | Yes | Indicates the sim Id for card from sim account information.<br>Value range:[1,500] |
+| simId | number | Yes | Indicates the sim Id for card from sim account information. <br>Value range:[1,500] |
 | simLabelIndex | number | Yes | Indicates the simlabel index for card. |
 
 **Return value:**

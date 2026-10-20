@@ -8,10 +8,10 @@ Enumerates the types of HTTP interceptors.
 
 | Name | Value|Description |  
 | ------ | --|-------------------------------------- |  
-| INITIAL_REQUEST |'INITIAL_REQUEST' |Intercepts after the initial HTTP request is assembled.|
-| REDIRECTION | 'REDIRECTION' |Intercepts when a redirection response is received.|
-| CACHE_CHECKED | 'READ_CACHE' |Intercepts when the HTTP cache is checked and hit.|
-| NETWORK_CONNECT | 'CONNECT_NETWORK' |Intercepts before the network request is sent.|
+| INITIAL_REQUEST |'INITIAL_REQUEST' |Intercepts after the initial HTTP request is assembled.|  
+| REDIRECTION | 'REDIRECTION' |Intercepts when a redirection response is received.|  
+| CACHE_CHECKED | 'READ_CACHE' |Intercepts when the HTTP cache is checked and hit.|  
+| NETWORK_CONNECT | 'CONNECT_NETWORK' |Intercepts before the network request is sent.|  
 | FINAL_RESPONSE | 'FINAL_RESPONSE' |Intercepts when the final HTTP response is obtained.|
 
 **Since:** 22

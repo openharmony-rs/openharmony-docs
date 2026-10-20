@@ -4,7 +4,7 @@
 enum EffectSuggestionType
 ```
 
-Enum for effect suggestion.
+效果建议枚举。
 
 **起始版本：** 12
 
@@ -20,7 +20,7 @@ Enum for effect suggestion.
 EFFECT_SUGGESTION_FOOD = 2
 ```
 
-Food.
+食物。
 
 **起始版本：** 12
 
@@ -36,7 +36,7 @@ Food.
 EFFECT_SUGGESTION_NONE = 0
 ```
 
-None.
+无效果建议。
 
 **起始版本：** 12
 
@@ -52,7 +52,7 @@ None.
 EFFECT_SUGGESTION_PORTRAIT = 1
 ```
 
-Portrait.
+人像。
 
 **起始版本：** 12
 
@@ -68,7 +68,7 @@ Portrait.
 EFFECT_SUGGESTION_SKY = 3
 ```
 
-Sky.
+天空。
 
 **起始版本：** 12
 
@@ -84,7 +84,7 @@ Sky.
 EFFECT_SUGGESTION_STAGE = 5
 ```
 
-Stage.
+舞台。
 
 **起始版本：** 18
 
@@ -100,7 +100,7 @@ Stage.
 EFFECT_SUGGESTION_SUNRISE_SUNSET = 4
 ```
 
-Sunrise and sunset.
+日出日落。
 
 **起始版本：** 12
 

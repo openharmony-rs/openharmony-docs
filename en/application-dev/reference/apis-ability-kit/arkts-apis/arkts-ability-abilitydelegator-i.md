@@ -18,8 +18,6 @@ The **AbilityDelegator** module can listen for and manage the lifecycle changes 
 
 **Test API:** This API is used only in automated test scripts.
 
-<a id="addabilitymonitor1"></a>
-
 ## addAbilityMonitor
 
 ```TypeScript
@@ -78,8 +76,6 @@ abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
   }
 });
 ```
-
-<a id="addabilitymonitor2"></a>
 
 ## addAbilityMonitor
 
@@ -187,8 +183,6 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.addAbilityMonitorSync(monitor);
 ```
 
-<a id="addabilitystagemonitor1"></a>
-
 ## addAbilityStageMonitor
 
 ```TypeScript
@@ -239,8 +233,6 @@ abilityDelegator.addAbilityStageMonitor({
   }
 });
 ```
-
-<a id="addabilitystagemonitor2"></a>
 
 ## addAbilityStageMonitor
 
@@ -366,8 +358,6 @@ Add an InteropAbilityMonitor object for monitoring the lifecycle state changes o
 | --- | --- |
 | [16000100](../errorcode-ability.md#16000100-failed-to-call-abilitymonitor-apis-to-listen-for-ability-lifecycle-changes) | Calling AddInteropAbilityMonitorSync failed. |
 
-<a id="doabilitybackground1"></a>
-
 ## doAbilityBackground
 
 ```TypeScript
@@ -425,8 +415,6 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
   }
 });
 ```
-
-<a id="doabilitybackground2"></a>
 
 ## doAbilityBackground
 
@@ -487,8 +475,6 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-<a id="doabilityforeground1"></a>
-
 ## doAbilityForeground
 
 ```TypeScript
@@ -546,8 +532,6 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
   }
 });
 ```
-
-<a id="doabilityforeground2"></a>
 
 ## doAbilityForeground
 
@@ -608,8 +592,6 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-<a id="executeshellcommand1"></a>
-
 ## executeShellCommand
 
 ```TypeScript
@@ -655,8 +637,6 @@ abilityDelegator.executeShellCommand(shellCommand, (err: BusinessError, data: ab
 });
 ```
 
-<a id="executeshellcommand2"></a>
-
 ## executeShellCommand
 
 ```TypeScript
@@ -701,8 +681,6 @@ abilityDelegator.executeShellCommand(shellCommand, timeout, (err: BusinessError,
 });
 ```
 
-<a id="executeshellcommand3"></a>
-
 ## executeShellCommand
 
 ```TypeScript
@@ -746,8 +724,6 @@ abilityDelegator.executeShellCommand(shellCommand, timeout).then((data) => {
   console.info('executeShellCommand promise');
 });
 ```
-
-<a id="finishtest1"></a>
 
 ## finishTest
 
@@ -800,8 +776,6 @@ abilityDelegator.finishTest(msg, 0, (err: BusinessError) => {
   }
 });
 ```
-
-<a id="finishtest2"></a>
 
 ## finishTest
 
@@ -946,8 +920,6 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 let context = abilityDelegator.getAppContext();
 ```
 
-<a id="getcurrenttopability1"></a>
-
 ## getCurrentTopAbility
 
 ```TypeScript
@@ -998,8 +970,6 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-<a id="getcurrenttopability2"></a>
-
 ## getCurrentTopAbility
 
 ```TypeScript
@@ -1044,8 +1014,6 @@ abilityDelegator.getCurrentTopAbility().then((data: UIAbility) => {
 });
 ```
 
-<a id="print1"></a>
-
 ## print
 
 ```TypeScript
@@ -1089,8 +1057,6 @@ abilityDelegator.print(msg, (err: BusinessError) => {
   }
 });
 ```
-
-<a id="print2"></a>
 
 ## print
 
@@ -1178,8 +1144,6 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.printSync(msg);
 ```
 
-<a id="removeabilitymonitor1"></a>
-
 ## removeAbilityMonitor
 
 ```TypeScript
@@ -1235,8 +1199,6 @@ abilityDelegator.removeAbilityMonitor(monitor, (error: BusinessError) => {
   }
 });
 ```
-
-<a id="removeabilitymonitor2"></a>
 
 ## removeAbilityMonitor
 
@@ -1346,8 +1308,6 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.removeAbilityMonitorSync(monitor);
 ```
 
-<a id="removeabilitystagemonitor1"></a>
-
 ## removeAbilityStageMonitor
 
 ```TypeScript
@@ -1398,8 +1358,6 @@ abilityDelegator.removeAbilityStageMonitor({
   }
 });
 ```
-
-<a id="removeabilitystagemonitor2"></a>
 
 ## removeAbilityStageMonitor
 
@@ -1572,8 +1530,6 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.setMockList(mockList);
 ```
 
-<a id="startability1"></a>
-
 ## startAbility
 
 ```TypeScript
@@ -1645,8 +1601,6 @@ abilityDelegator.startAbility(want, (err: BusinessError, data: void) => {
 });
 ```
 
-<a id="startability2"></a>
-
 ## startAbility
 
 ```TypeScript
@@ -1714,8 +1668,6 @@ abilityDelegator.startAbility(want).then((data: void) => {
 });
 ```
 
-<a id="waitabilitymonitor1"></a>
-
 ## waitAbilityMonitor
 
 ```TypeScript
@@ -1773,8 +1725,6 @@ abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbil
   }
 });
 ```
-
-<a id="waitabilitymonitor2"></a>
 
 ## waitAbilityMonitor
 
@@ -1840,8 +1790,6 @@ abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, dat
 });
 ```
 
-<a id="waitabilitymonitor3"></a>
-
 ## waitAbilityMonitor
 
 ```TypeScript
@@ -1901,8 +1849,6 @@ abilityDelegator.waitAbilityMonitor(monitor).then((data: UIAbility) => {
 });
 ```
 
-<a id="waitabilitystagemonitor1"></a>
-
 ## waitAbilityStageMonitor
 
 ```TypeScript
@@ -1954,8 +1900,6 @@ abilityDelegator.waitAbilityStageMonitor({
   }
 });
 ```
-
-<a id="waitabilitystagemonitor2"></a>
 
 ## waitAbilityStageMonitor
 
@@ -2010,8 +1954,6 @@ abilityDelegator.waitAbilityStageMonitor({
   }
 });
 ```
-
-<a id="waitabilitystagemonitor3"></a>
 
 ## waitAbilityStageMonitor
 

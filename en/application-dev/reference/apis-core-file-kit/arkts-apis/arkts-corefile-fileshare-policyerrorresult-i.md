@@ -6,8 +6,6 @@ export interface PolicyErrorResult
 
 Failed policy result on URI.
 
-@interface { object }
-
 **Since:** 11
 
 <!--Device-fileShare-export interface PolicyErrorResult--><!--Device-fileShare-export interface PolicyErrorResult-End-->

@@ -6,8 +6,6 @@
 import { systemParameter } from '@kit.BasicServicesKit';
 ```
 
-<a id="get1"></a>
-
 ## get
 
 ```TypeScript
@@ -56,8 +54,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="get2"></a>
 
 ## get
 
@@ -109,8 +105,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="get3"></a>
-
 ## get
 
 ```TypeScript
@@ -136,7 +130,7 @@ function get(key: string, def?: string): Promise<string>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | key | string | 是 | 待查询的系统参数key。 |
-| def | string | 否 | def为所要获取的系统参数的默认值。<br> def为可选参数，仅当系统参数不存在时生效。 <br> def可以传undefined或任意字符串类型的值。 |
+| def | string | 否 | def为所要获取的系统参数的默认值。 <br> def为可选参数，仅当系统参数不存在时生效。 <br> def可以传undefined或任意字符串类型的值。 |
 
 **返回值：**
 

@@ -12,8 +12,6 @@ declare class LineHeightStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -37,8 +35,6 @@ constructor(lineHeight: LengthMetrics)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | lineHeight | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | 是 | 文本行高设置项。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效。LengthMetrics的value值大于0时，文本行高设置生效，否则文本行高自适应字体大小。 |
-
-<a id="constructor2"></a>
 
 ## constructor
 

@@ -6,8 +6,6 @@ type RequestDialogInfoEvent = (actionType: DialogActionType, actionInfo?: Dialog
 
 对话框信息请求事件。使用Promise异步回调。
 
-@typedef { function } RequestDialogInfoEvent
-
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。

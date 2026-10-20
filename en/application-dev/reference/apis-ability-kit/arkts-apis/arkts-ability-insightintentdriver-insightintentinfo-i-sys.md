@@ -305,6 +305,26 @@ Data format of intent parameters, which is used to define the input data format 
 
 **System API:** This is a system API.
 
+## permissions
+
+```TypeScript
+readonly permissions?: string[]
+```
+
+The permissions required by the intent.
+
+**Type:** string[]
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InsightIntentInfo-readonly permissions?: string[]--><!--Device-InsightIntentInfo-readonly permissions?: string[]-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
 ## result
 
 ```TypeScript

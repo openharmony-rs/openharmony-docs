@@ -6,8 +6,6 @@ export interface RenderResourceFactory
 
 Creates rendering resources that can be shared in multiple scenes ([Scene](arkts-arkgraphics3d-scene-c.md)) that share RenderContext.
 
-@interface RenderResourceFactory
-
 **Since:** 20
 
 <!--Device-unnamed-export interface RenderResourceFactory--><!--Device-unnamed-export interface RenderResourceFactory-End-->
@@ -250,8 +248,6 @@ function createSamplerResource(): Promise<Sampler> {
 }
 ```
 
-<a id="createscene1"></a>
-
 ## createScene
 
 ```TypeScript
@@ -319,7 +315,7 @@ Creates a shader based on the scene resource parameters. This API uses a promise
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | Yes | Parameters for creating the shader. For details about the .shader file format, see Requirements on the .shader File Format. |
+| params | [SceneResourceParameters](arkts-arkgraphics3d-scene-sceneresourceparameters-i.md) | Yes | Parameters for creating the shader. For details about the .shader file format, see [Requirements on the .shader File Format](../../../graphics3d/arkgraphics3D-shader-resource.md). |
 
 **Return value:**
 

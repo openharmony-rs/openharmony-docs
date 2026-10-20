@@ -6,8 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="queryapn1"></a>
-
 ## queryApn
 
 ```TypeScript
@@ -73,8 +71,6 @@ try {
 }
 ```
 
-
-<a id="queryapn2"></a>
 
 ## queryApn
 

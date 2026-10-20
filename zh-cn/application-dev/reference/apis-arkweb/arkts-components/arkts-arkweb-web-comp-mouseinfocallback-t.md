@@ -17,3 +17,7 @@ type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | event | [NativeEmbedMouseInfo](arkts-arkweb-web-comp-nativeembedmouseinfo-i.md) | 是 | 提供鼠标/触摸板在同层标签上单击或长按的详细信息。 |
+
+**示例**
+
+完整示例代码参考[onNativeEmbedMouseEvent](./arkts-basic-components-web-events.md#onnativeembedmouseevent)。

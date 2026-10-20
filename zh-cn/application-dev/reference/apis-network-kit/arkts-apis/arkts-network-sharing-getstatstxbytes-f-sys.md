@@ -6,8 +6,6 @@
 import { sharing } from '@kit.NetworkKit';
 ```
 
-<a id="getstatstxbytes1"></a>
-
 ## getStatsTxBytes
 
 ```TypeScript
@@ -57,8 +55,6 @@ sharing.getStatsTxBytes((error: BusinessError, data: number) => {
 
 <!--DelEnd-->
 
-
-<a id="getstatstxbytes2"></a>
 
 ## getStatsTxBytes
 

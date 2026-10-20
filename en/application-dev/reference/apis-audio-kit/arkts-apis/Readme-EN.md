@@ -52,6 +52,10 @@
   <!--Del-->
   - [AudioHRTFAnonymousDescriptor(system api)](arkts-audio-audio-audiohrtfanonymousdescriptor-i-sys.md)<!--DelEnd-->
   - [AudioLoopback](arkts-audio-audio-audioloopback-i.md)
+  <!--Del-->
+  - [AudioLoopback(system api)](arkts-audio-audio-audioloopback-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [AudioLoopbackAvailableStatus(system api)](arkts-audio-audio-audioloopbackavailablestatus-i-sys.md)<!--DelEnd-->
   - [AudioManager](arkts-audio-audio-audiomanager-i.md)
   <!--Del-->
   - [AudioManager(system api)](arkts-audio-audio-audiomanager-i-sys.md)<!--DelEnd-->
@@ -77,6 +81,8 @@
   - [AudioRoutingManager](arkts-audio-audio-audioroutingmanager-i.md)
   <!--Del-->
   - [AudioRoutingManager(system api)](arkts-audio-audio-audioroutingmanager-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [AudioSeparationEffectAvailableStatus(system api)](arkts-audio-audio-audioseparationeffectavailablestatus-i-sys.md)<!--DelEnd-->
   - [AudioSessionDeactivatedEvent](arkts-audio-audio-audiosessiondeactivatedevent-i.md)
   - [AudioSessionManager](arkts-audio-audio-audiosessionmanager-i.md)
   - [AudioSessionStateChangedEvent](arkts-audio-audio-audiosessionstatechangedevent-i.md)
@@ -171,6 +177,8 @@
   - [AudioLoopbackMode](arkts-audio-audio-audioloopbackmode-e.md)
   - [AudioLoopbackReverbPreset](arkts-audio-audio-audioloopbackreverbpreset-e.md)
   - [AudioLoopbackStatus](arkts-audio-audio-audioloopbackstatus-e.md)
+  <!--Del-->
+  - [AudioLoopbackUnavailableReason(system api)](arkts-audio-audio-audioloopbackunavailablereason-e-sys.md)<!--DelEnd-->
   - [AudioPlaybackCaptureMode](arkts-audio-audio-audioplaybackcapturemode-e.md)
   <!--Del-->
   - [AudioPlaybackCaptureMode(system api)](arkts-audio-audio-audioplaybackcapturemode-e-sys.md)<!--DelEnd-->

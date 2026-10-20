@@ -23,8 +23,6 @@ Provides APIs to query and synchronize data in a device KV store. This class inh
 ```TypeScript
 ```
 
-<a id="closeresultset1"></a>
-
 ## closeResultSet
 
 ```TypeScript
@@ -68,8 +66,6 @@ try {
     console.error('CloseResultSet e ' + e);
 }
 ```
-
-<a id="closeresultset2"></a>
 
 ## closeResultSet
 
@@ -118,15 +114,13 @@ try {
 }
 ```
 
-<a id="get1"></a>
-
 ## get
 
 ```TypeScript
 get(deviceId: string, key: string, callback: AsyncCallback<boolean | string | number | Uint8Array>): void
 ```
 
-Obtains a string value that matches the specified device ID and key. This API uses an asynchronous callback to return the result.
+Obtains the string value that matches the specified device ID and key. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -164,15 +158,13 @@ try{
 }
 ```
 
-<a id="get2"></a>
-
 ## get
 
 ```TypeScript
 get(deviceId: string, key: string): Promise<boolean | string | number | Uint8Array>
 ```
 
-Obtains a string value that matches the specified device ID and key. This API uses a promise to return the result.
+Obtains the string value that matches the specified device ID and key. This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -219,15 +211,13 @@ try {
 }
 ```
 
-<a id="getentries1"></a>
-
 ## getEntries
 
 ```TypeScript
 getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback<Entry[]>): void
 ```
 
-Obtains all KV pairs that match the specified device ID and key prefix. This API uses an asynchronous callback to return the result.
+Obtains all key-value pairs that match the specified device ID and key prefix. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -278,15 +268,13 @@ try {
 }
 ```
 
-<a id="getentries2"></a>
-
 ## getEntries
 
 ```TypeScript
 getEntries(deviceId: string, keyPrefix: string): Promise<Entry[]>
 ```
 
-Obtains all KV pairs that match the specified device ID and key prefix. This API uses a promise to return the result.
+Obtains all key-value pairs that match the specified device ID and key prefix. This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -348,8 +336,6 @@ try {
 }
 ```
 
-<a id="getentries3"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -410,8 +396,6 @@ try {
     console.error('GetEntries e ' + e);
 }
 ```
-
-<a id="getentries4"></a>
 
 ## getEntries
 
@@ -480,15 +464,13 @@ try {
 }
 ```
 
-<a id="getentries5"></a>
-
 ## getEntries
 
 ```TypeScript
 getEntries(deviceId: string, query: Query, callback: AsyncCallback<Entry[]>): void
 ```
 
-Obtains the KV pairs that match the specified device ID and **Query** object. This API uses an asynchronous callback to return the result.
+Obtains the list of key-value pairs that match the specified device ID and **Query** object. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -544,15 +526,13 @@ try {
 }
 ```
 
-<a id="getentries6"></a>
-
 ## getEntries
 
 ```TypeScript
 getEntries(deviceId: string, query: Query): Promise<Entry[]>
 ```
 
-Obtains the KV pairs that match the specified device ID and **Query** object. This API uses a promise to return the result.
+Obtains the list of key-value pairs that match the specified device ID and **Query** object. This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -615,15 +595,13 @@ try {
 }
 ```
 
-<a id="getresultset1"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback<KvStoreResultSet>): void
 ```
 
-Obtains a **KvStoreResultSet** object that matches the specified device ID and key prefix. This API uses an asynchronous callback to return the result.
+Obtains the **KvStoreResultSet** object that matches the specified device ID and key prefix. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -661,15 +639,13 @@ try {
 }
 ```
 
-<a id="getresultset2"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(deviceId: string, keyPrefix: string): Promise<KvStoreResultSet>
 ```
 
-Obtains a **KvStoreResultSet** object that matches the specified device ID and key prefix. This API uses a promise to return the result.
+Obtains the **KvStoreResultSet** object that matches the specified device ID and key prefix. This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -715,8 +691,6 @@ try {
     console.error('GetResultSet e ' + e);
 }
 ```
-
-<a id="getresultset3"></a>
 
 ## getResultSet
 
@@ -778,8 +752,6 @@ try {
     console.error('GetResultSet e ' + e);
 }
 ```
-
-<a id="getresultset4"></a>
 
 ## getResultSet
 
@@ -854,15 +826,13 @@ try {
 }
 ```
 
-<a id="getresultset5"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(deviceId: string, query: Query, callback: AsyncCallback<KvStoreResultSet>): void
 ```
 
-Obtains a **KvStoreResultSet** object that matches the specified device ID and **Query** object. This API uses an asynchronous callback to return the result.
+Obtains the KvStoreResultSet object that matches the specified device ID and Query object. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -917,15 +887,13 @@ try {
 }
 ```
 
-<a id="getresultset6"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(deviceId: string, query: Query): Promise<KvStoreResultSet>
 ```
 
-Obtains a **KvStoreResultSet** object that matches the specified device ID and **Query** object. This API uses a promise to return the result.
+Obtains the **KvStoreResultSet** object that matches the specified device ID and **Query** object. This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -994,8 +962,6 @@ try {
 }
 ```
 
-<a id="getresultsize1"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -1051,8 +1017,6 @@ try {
     console.error('GetResultSize e ' + e);
 }
 ```
-
-<a id="getresultsize2"></a>
 
 ## getResultSize
 
@@ -1119,8 +1083,6 @@ try {
 }
 ```
 
-<a id="getresultsize3"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -1176,8 +1138,6 @@ try {
     console.error('GetResultSize e ' + e);
 }
 ```
-
-<a id="getresultsize4"></a>
 
 ## getResultSize
 
@@ -1244,8 +1204,6 @@ try {
 }
 ```
 
-<a id="off1"></a>
-
 ## off
 
 ```TypeScript
@@ -1291,8 +1249,6 @@ class KvstoreModel {
     }
 }
 ```
-
-<a id="off2"></a>
 
 ## off
 
@@ -1340,8 +1296,6 @@ class KvstoreModel {
 }
 ```
 
-<a id="on1"></a>
-
 ## on
 
 ```TypeScript
@@ -1376,8 +1330,6 @@ kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, fun
     console.info("dataChange callback call data: " + JSON.stringify(data));
 });
 ```
-
-<a id="on2"></a>
 
 ## on
 
@@ -1424,15 +1376,13 @@ try {
 }
 ```
 
-<a id="removedevicedata1"></a>
-
 ## removeDeviceData
 
 ```TypeScript
 removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void
 ```
 
-Deletes data of the specified device from this KV store. This API uses an asynchronous callback to return the result.
+Deletes the data of the specified device from the current database. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -1477,15 +1427,13 @@ try {
 }
 ```
 
-<a id="removedevicedata2"></a>
-
 ## removeDeviceData
 
 ```TypeScript
 removeDeviceData(deviceId: string): Promise<void>
 ```
 
-Deletes data of the specified device from this KV store. This API uses a promise to return the result.
+Deletes the data of the specified device from the current database. This API uses a promise to return the result.
 
 **Since:** 8
 

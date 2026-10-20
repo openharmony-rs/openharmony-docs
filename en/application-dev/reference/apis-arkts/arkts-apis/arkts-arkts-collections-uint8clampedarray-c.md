@@ -88,8 +88,6 @@ Returns the element at the given index. If no element is found, **undefined** is
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The at method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -111,8 +109,6 @@ A constructor used to create an empty ArkTS Uint8ClampedArray.
 | Error Code ID | Error Message |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Uint8ClampedArray's constructor cannot be directly invoked. |
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -142,8 +138,6 @@ A constructor used to create an ArkTS Uint8ClampedArray of a given length.
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Uint8ClampedArray's constructor cannot be directly invoked. |
 
-<a id="constructor3"></a>
-
 ## constructor
 
 ```TypeScript
@@ -172,8 +166,6 @@ A constructor that creates an ArkTS Uint8ClampedArray from an iterable object.
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Uint8ClampedArray's constructor cannot be directly invoked. |
 
-<a id="constructor4"></a>
-
 ## constructor
 
 ```TypeScript
@@ -201,8 +193,6 @@ A constructor that creates an ArkTS Uint8ClampedArray from an array-like object 
 | Error Code ID | Error Message |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Uint8ClampedArray's constructor cannot be directly invoked. |
-
-<a id="constructor5"></a>
 
 ## constructor
 
@@ -514,8 +504,6 @@ Calls a callback function for each element in this ArkTS Uint8ClampedArray.
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The forEach method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
-<a id="from1"></a>
-
 ## from
 
 ```TypeScript
@@ -543,8 +531,6 @@ Creates an ArkTS Uint8ClampedArray from an array-like or iterator object.
 | Type | Description |
 | --- | --- |
 | [Uint8ClampedArray](arkts-arkts-collections-uint8clampedarray-c.md) | New ArkTS Uint8ClampedArray generated. |
-
-<a id="from2"></a>
 
 ## from
 
@@ -574,8 +560,6 @@ Creates an ArkTS Uint8ClampedArray from an array-like object.
 | Type | Description |
 | --- | --- |
 | [Uint8ClampedArray](arkts-arkts-collections-uint8clampedarray-c.md) | New ArkTS Uint8ClampedArray generated. |
-
-<a id="from3"></a>
 
 ## from
 
@@ -839,9 +823,7 @@ Creates an ArkTS Uint8ClampedArray with a variable number of parameters.
 
 | Type | Description |
 | --- | --- |
-| [Uint8ClampedArray](arkts-arkts-collections-uint8clampedarray-c.md) | New ArkTS Uint8ClampedArray instance. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-
-<a id="reduce1"></a>
+| [Uint8ClampedArray](arkts-arkts-collections-uint8clampedarray-c.md) | New ArkTS Uint8ClampedArray instance. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ## reduce
 
@@ -877,8 +859,6 @@ Applies a reduce function on each element in this ArkTS Uint8ClampedArray and re
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
-
-<a id="reduce2"></a>
 
 ## reduce
 
@@ -916,8 +896,6 @@ Applies a reduce function for each element in this ArkTS Uint8ClampedArray, rece
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
-<a id="reduceright1"></a>
-
 ## reduceRight
 
 ```TypeScript
@@ -939,7 +917,7 @@ Reversely traverses this ArkTS Uint8ClampedArray, applies a reduce function for 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callbackFn | [TypedArrayReduceCallback](arkts-arkts-collections-typedarrayreducecallback-t.md)&lt;U, number, [Uint8ClampedArray](arkts-arkts-collections-uint8clampedarray-c.md)&gt; | Yes | A function that is called for each element in the Uint8ClampedArray. |
-| initialValue | U | Yes | A value to use as the first argument to the first call of the callback.<br>If no initial value is provided, the last element of the Uint8ClampedArray will be used, <br>and the callback will start with the second-to-last element. |
+| initialValue | U | Yes | A value to use as the first argument to the first call of the callback. <br>If no initial value is provided, the last element of the Uint8ClampedArray will be used, <br>and the callback will start with the second-to-last element. |
 
 **Return value:**
 
@@ -953,8 +931,6 @@ Reversely traverses this ArkTS Uint8ClampedArray, applies a reduce function for 
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
-
-<a id="reduceright2"></a>
 
 ## reduceRight
 

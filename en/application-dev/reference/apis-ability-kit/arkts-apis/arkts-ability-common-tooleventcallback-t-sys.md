@@ -6,8 +6,6 @@ export type ToolEventCallback = _ToolEventCallback
 
 Define the cli event callback function.
 
-@typedef { _ToolEventCallback }
-
 **Type:** _ToolEventCallback
 
 **Since:** 26.0.0

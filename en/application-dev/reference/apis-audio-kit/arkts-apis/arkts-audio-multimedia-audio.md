@@ -28,11 +28,11 @@ import { audio } from '@kit.AudioKit';
 
 | Name | Description |
 | --- | --- |
-| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer1) | Creates an AudioCapturer instance. This API uses an asynchronous callback to return the result. |
-| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer3) | Creates an AudioCapturer instance. This API uses a promise to return the result. |
-| [createAudioLoopback](arkts-audio-audio-createaudioloopback-f.md#createaudioloopback) | Creates an<b>AudioLoopback</b> instance, which provides low-latency in-ear monitoring using a fast capturer and renderer. |
-| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer1) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
-| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer3) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
+| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer) | Creates an AudioCapturer instance. This API uses an asynchronous callback to return the result. |
+| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer) | Creates an AudioCapturer instance. This API uses a promise to return the result. |
+| [createAudioLoopback](arkts-audio-audio-createaudioloopback-f.md#createaudioloopback) | Creates an <b>AudioLoopback</b> instance, which provides low-latency in-ear monitoring using a fast capturer and renderer. |
+| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
+| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
 | [getAudioManager](arkts-audio-audio-getaudiomanager-f.md#getaudiomanager) | Obtains an AudioManager instance. |
 
 <!--Del-->
@@ -43,8 +43,8 @@ import { audio } from '@kit.AudioKit';
 | [createAsrProcessingController](arkts-audio-audio-createasrprocessingcontroller-f-sys.md#createasrprocessingcontroller) | Create ASR processing controller on one audio capturer. |
 | [createGlobalAudioLoopback](arkts-audio-audio-createglobalaudioloopback-f-sys.md#createglobalaudioloopback) | Creates a global audio loopback instance, which provides low-latency in-ear monitor function. Hardware audio loopback can only be created in supported platform, application can use [isAudioLoopbackSupported](arkts-audio-audio-audiostreammanager-i.md#isaudioloopbacksupported) to check first. There should be only one main instance that own the global loopback in the system, the others are controllers. A controller can manage the global loopback by sending commands to the main instance, and listen status change from it. |
 | [createMicInAudioCapturer](arkts-audio-audio-createmicinaudiocapturer-f-sys.md#createmicinaudiocapturer) | Obtains a special [AudioCapturer](arkts-audio-audio-audiocapturer-i.md) instance. This method uses a promise to return the capturer instance. This capture can be used to record both Mic-In audio data and echo reference signal, for application to process algorithm. Mic-In audio data and echo reference signal will be put in one buffer or multiple buffers according to configuration set by application. Capturer is also not allowed to be created when application is in background. |
-| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer1) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses an asynchronous callback to return the renderer instance. |
-| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer3) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses a promise to return the renderer instance. |
+| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses an asynchronous callback to return the renderer instance. |
+| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses a promise to return the renderer instance. |
 <!--DelEnd-->
 
 ### Interfaces
@@ -112,6 +112,8 @@ import { audio } from '@kit.AudioKit';
 | [AudioEffectManager](arkts-audio-audio-audioeffectmanager-i-sys.md) | Implements audio effect management. @typedef AudioEffectManager |
 | [AudioEffectProperty](arkts-audio-audio-audioeffectproperty-i-sys.md) | Describes an audio effect property. |
 | [AudioHRTFAnonymousDescriptor](arkts-audio-audio-audiohrtfanonymousdescriptor-i-sys.md) | Anonymous personalzied HRTF file descriptor for cross-process transfer. |
+| [AudioLoopback](arkts-audio-audio-audioloopback-i-sys.md) | This interface provides APIs for audio monitoring. |
+| [AudioLoopbackAvailableStatus](arkts-audio-audio-audioloopbackavailablestatus-i-sys.md) | Defines the availability status of global audio loopback. |
 | [AudioManager](arkts-audio-audio-audiomanager-i-sys.md) | This interface implements audio volume and device management. |
 | [AudioPersonalizedSpatialEnabledChangeForAnyDevice](arkts-audio-audio-audiopersonalizedspatialenabledchangeforanydevice-i-sys.md) | This interface is used to notify the listener of personalized spatialization enabled state change of any device. |
 | [AudioRecordingManager](arkts-audio-audio-audiorecordingmanager-i-sys.md) | Provides recording strategy management, including collaborative recording and recording control capabilities. |
@@ -121,6 +123,7 @@ import { audio } from '@kit.AudioKit';
 | [AudioRendererOptions](arkts-audio-audio-audiorendereroptions-i-sys.md) | Describes audio renderer configurations. |
 | [AudioRendererTargetParams](arkts-audio-audio-audiorenderertargetparams-i-sys.md) | Options for setting the render target of an audio renderer. This parameter takes effect only when the target is non-PLAYBACK. In other cases, this parameter does not need to be specified and does not take effect even if specified. Both uid and streamId must be specified. |
 | [AudioRoutingManager](arkts-audio-audio-audioroutingmanager-i-sys.md) | This interface implements audio routing management. |
+| [AudioSeparationEffectAvailableStatus](arkts-audio-audio-audioseparationeffectavailablestatus-i-sys.md) | Indicates the available status of audio separation effect. |
 | [AudioSpatialDeviceState](arkts-audio-audio-audiospatialdevicestate-i-sys.md) | Describes spatial device state. |
 | [AudioSpatialEnabledStateForDevice](arkts-audio-audio-audiospatialenabledstatefordevice-i-sys.md) | This interface is used to notify the listener of any device Spatialization or Head Tracking enable or Adaptive Spatial Rendering state change. |
 | [AudioSpatializationManager](arkts-audio-audio-audiospatializationmanager-i-sys.md) | Implements audio spatialization management. @typedef AudioSpatializationManager This interface implements spatial audio management. |
@@ -225,6 +228,7 @@ import { audio } from '@kit.AudioKit';
 | [AsrVoiceMuteMode](arkts-audio-audio-asrvoicemutemode-e-sys.md) | ASR voice mute mode. |
 | [AsrWhisperDetectionMode](arkts-audio-audio-asrwhisperdetectionmode-e-sys.md) | ASR whisper detection mode. |
 | [AudioDevcieSelectStrategy](arkts-audio-audio-audiodevcieselectstrategy-e-sys.md) | Enumerates the device select strategy. |
+| [AudioLoopbackUnavailableReason](arkts-audio-audio-audioloopbackunavailablereason-e-sys.md) | Enumerates the reasons why audio loopback is unavailable. |
 | [AudioPlaybackCaptureMode](arkts-audio-audio-audioplaybackcapturemode-e-sys.md) | Defines mode for playback capture, each mode means different target streams to capture. |
 | [AudioSeparationVolumeType](arkts-audio-audio-audioseparationvolumetype-e-sys.md) | Volume type for audio separation effect. |
 | [AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e-sys.md) | Enumerates audio session behavior flags. |

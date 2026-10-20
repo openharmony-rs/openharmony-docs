@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="cancel1"></a>
-
 ## cancel
 
 ```TypeScript
@@ -32,8 +30,22 @@ function cancel(id: number, callback: AsyncCallback<void>): void
 | id | number | 是 | 通知ID。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
 
+**示例**
 
-<a id="cancel2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+// cancel回调
+let cancelCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("cancel failed " + JSON.stringify(err));
+  } else {
+    console.info("cancel success");
+  }
+}
+Notification.cancel(0, cancelCallback);
+```
+
 
 ## cancel
 
@@ -61,8 +73,22 @@ function cancel(id: number, label: string, callback: AsyncCallback<void>): void
 | label | string | 是 | 通知标签。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
 
+**示例**
 
-<a id="cancel3"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+// cancel回调
+let cancelCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("cancel failed " + JSON.stringify(err));
+  } else {
+    console.info("cancel success");
+  }
+}
+Notification.cancel(0, "label", cancelCallback);
+```
+
 
 ## cancel
 
@@ -94,3 +120,15 @@ function cancel(id: number, label?: string): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+Notification.cancel(0).then(() => {
+  console.info("cancel success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`cancel failed, code is ${err}`);
+});
+```

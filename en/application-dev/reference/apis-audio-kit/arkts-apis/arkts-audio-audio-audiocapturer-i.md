@@ -6,7 +6,7 @@ interface AudioCapturer
 
 This interface provides APIs for audio capture.
 
-Before calling any API in AudioCapturer, you must use [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer1) to create an AudioCapturer instance.
+Before calling any API in AudioCapturer, you must use [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer) to create an AudioCapturer instance.
 
 > **NOTE:** 
 > 
@@ -23,8 +23,6 @@ Before calling any API in AudioCapturer, you must use [createAudioCapturer](arkt
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 ```
-
-<a id="getaudiostreamid1"></a>
 
 ## getAudioStreamId
 
@@ -55,8 +53,6 @@ audioCapturer.getAudioStreamId((err: BusinessError, streamId: number) => {
   console.info(`audioCapturer GetStreamId: ${streamId}`);
 });
 ```
-
-<a id="getaudiostreamid2"></a>
 
 ## getAudioStreamId
 
@@ -124,8 +120,6 @@ try {
 }
 ```
 
-<a id="getaudiotime1"></a>
-
 ## getAudioTime
 
 ```TypeScript
@@ -156,8 +150,6 @@ audioCapturer.getAudioTime((err: BusinessError, timestamp: number) => {
 });
 ```
 
-<a id="getaudiotime2"></a>
-
 ## getAudioTime
 
 ```TypeScript
@@ -176,7 +168,7 @@ Obtains the timestamp of the current recording position, measured in nanoseconds
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return a timestamp representing the number of nanoseconds elapsed since the Unix epoch (January 1, 1970).<br>The timestamp unit is nanoseconds. |
+| Promise&lt;number&gt; | Promise used to return a timestamp representing the number of nanoseconds elapsed since the Unix epoch (January 1, 1970). <br>The timestamp unit is nanoseconds. |
 
 **Examples**
 
@@ -304,8 +296,6 @@ try {
 }
 ```
 
-<a id="getbuffersize1"></a>
-
 ## getBufferSize
 
 ```TypeScript
@@ -340,8 +330,6 @@ audioCapturer.getBufferSize((err: BusinessError, bufferSize: number) => {
 });
 ```
 
-<a id="getbuffersize2"></a>
-
 ## getBufferSize
 
 ```TypeScript
@@ -360,7 +348,7 @@ Obtains a reasonable minimum buffer size in bytes for capturing. This API uses a
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the buffer size.<br>The unit is bytes. |
+| Promise&lt;number&gt; | Promise used to return the buffer size. <br>The unit is bytes. |
 
 **Examples**
 
@@ -408,8 +396,6 @@ try {
 }
 ```
 
-<a id="getcapturerinfo1"></a>
-
 ## getCapturerInfo
 
 ```TypeScript
@@ -445,8 +431,6 @@ audioCapturer.getCapturerInfo((err: BusinessError, capturerInfo: audio.AudioCapt
   }
 });
 ```
-
-<a id="getcapturerinfo2"></a>
 
 ## getCapturerInfo
 
@@ -694,8 +678,6 @@ try {
 }
 ```
 
-<a id="getstreaminfo1"></a>
-
 ## getStreamInfo
 
 ```TypeScript
@@ -733,8 +715,6 @@ audioCapturer.getStreamInfo((err: BusinessError, streamInfo: audio.AudioStreamIn
   }
 });
 ```
-
-<a id="getstreaminfo2"></a>
 
 ## getStreamInfo
 
@@ -1468,8 +1448,6 @@ audioCapturer.start((err: BusinessError) => {
 });
 ```
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -1503,8 +1481,6 @@ audioCapturer.release((err: BusinessError) => {
   }
 });
 ```
-
-<a id="release2"></a>
 
 ## release
 
@@ -1585,7 +1561,7 @@ Sets the independent audio session strategy and behavior parameters.
 > **NOTE:** 
 > 
 > If this API is called while an audio capturer is running, you must call the
-> [start](#start1) API again for
+> [start](#start) API again for
 > the settings to take effect.
 
 **Since:** 24
@@ -1760,8 +1736,6 @@ audioCapturer.setWillMuteWhenInterrupted(true).then(() => {
 });
 ```
 
-<a id="start1"></a>
-
 ## start
 
 ```TypeScript
@@ -1796,8 +1770,6 @@ audioCapturer.start((err: BusinessError) => {
 });
 ```
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -1816,7 +1788,7 @@ Starts this audio capturer to start capturing audio data. This API uses a promis
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise object, which indicates that the capturer is started successfully. If the operation fails, an error object with the following error code is returned:<br>Error code 6800301: indicates abnormal status, focus preemption failure, and abnormal system processing. For details, see system logs. |
+| Promise&lt;void&gt; | Promise object, which indicates that the capturer is started successfully. If the operation fails, an error object with the following error code is returned: <br>Error code 6800301: indicates abnormal status, focus preemption failure, and abnormal system processing. For details, see system logs. |
 
 **Examples**
 
@@ -1832,8 +1804,6 @@ audioCapturer.start().then(() => {
   console.error(`Failed to start. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="stop1"></a>
 
 ## stop
 
@@ -1869,8 +1839,6 @@ audioCapturer.stop((err: BusinessError) => {
 });
 ```
 
-<a id="stop2"></a>
-
 ## stop
 
 ```TypeScript
@@ -1905,8 +1873,6 @@ audioCapturer.stop().then(() => {
   console.error(`Failed to stop. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="read1"></a>
 
 ## read
 
@@ -1952,8 +1918,6 @@ audioCapturer.getBufferSize().then((bufferSize: number) => {
   console.error(`Failed to getBufferSize. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="read2"></a>
 
 ## read
 

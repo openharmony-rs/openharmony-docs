@@ -36,21 +36,21 @@ import { formInfo } from '@kit.FormKit';
 
 | Name | Description |
 | --- | --- |
-| [ChangeSceneAnimationStateRequest](arkts-form-forminfo-changesceneanimationstaterequest-i-sys.md) | [ChangeSceneAnimationStateRequest](arkts-form-forminfo-changesceneanimationstaterequest-i-sys.md) |
-| [FormCustomConfig](arkts-form-forminfo-formcustomconfig-i-sys.md) | [FormCustomConfig](arkts-form-forminfo-formcustomconfig-i-sys.md) |
-| [FormHostServiceInfo](arkts-form-forminfo-formhostserviceinfo-i-sys.md) | [FormHostServiceInfo](arkts-form-forminfo-formhostserviceinfo-i-sys.md) |
+| [ChangeSceneAnimationStateRequest](arkts-form-forminfo-changesceneanimationstaterequest-i-sys.md) | ChangeSceneAnimationStateRequest |
+| [FormCustomConfig](arkts-form-forminfo-formcustomconfig-i-sys.md) | FormCustomConfig |
+| [FormHostServiceInfo](arkts-form-forminfo-formhostserviceinfo-i-sys.md) | FormHostServiceInfo |
 | [FormInfo](arkts-form-forminfo-forminfo-i-sys.md) | Provides information about a form. |
 | [FormInfoFilter](arkts-form-forminfo-forminfofilter-i-sys.md) | The optional options used as filters to ask getFormsInfo to return formInfos from only forms that match the options. |
 | [FormProviderFilter](arkts-form-forminfo-formproviderfilter-i-sys.md) | Information about a running form. |
 | [FunInteractionParams](arkts-form-forminfo-funinteractionparams-i-sys.md) | The fun interaction form params. |
 | [OverflowRequest](arkts-form-forminfo-overflowrequest-i-sys.md) | Provides OverflowRequest about request/cancel form's overflow |
-| [PeerFormHostServiceInfo](arkts-form-forminfo-peerformhostserviceinfo-i-sys.md) | [PeerFormHostServiceInfo](arkts-form-forminfo-peerformhostserviceinfo-i-sys.md) |
-| [PublishFormCrossBundleInfo](arkts-form-forminfo-publishformcrossbundleinfo-i-sys.md) | [PublishFormCrossBundleInfo](arkts-form-forminfo-publishformcrossbundleinfo-i-sys.md) |
-| [PublishFormCrossDeviceResult](arkts-form-forminfo-publishformcrossdeviceresult-i-sys.md) | [PublishFormCrossDeviceResult](arkts-form-forminfo-publishformcrossdeviceresult-i-sys.md) |
+| [PeerFormHostServiceInfo](arkts-form-forminfo-peerformhostserviceinfo-i-sys.md) | PeerFormHostServiceInfo |
+| [PublishFormCrossBundleInfo](arkts-form-forminfo-publishformcrossbundleinfo-i-sys.md) | PublishFormCrossBundleInfo |
+| [PublishFormCrossDeviceResult](arkts-form-forminfo-publishformcrossdeviceresult-i-sys.md) | PublishFormCrossDeviceResult |
 | [PublishFormResult](arkts-form-forminfo-publishformresult-i-sys.md) | The result of publish form. |
 | [RunningFormInfo](arkts-form-forminfo-runningforminfo-i-sys.md) | The class of a running form information. |
 | [SceneAnimationParams](arkts-form-forminfo-sceneanimationparams-i-sys.md) | The scene animation form params. |
-| [TemplateFormDetailInfo](arkts-form-forminfo-templateformdetailinfo-i-sys.md) | [TemplateFormDetailInfo](arkts-form-forminfo-templateformdetailinfo-i-sys.md) |
+| [TemplateFormDetailInfo](arkts-form-forminfo-templateformdetailinfo-i-sys.md) | TemplateFormDetailInfo |
 <!--DelEnd-->
 
 <!--Del-->

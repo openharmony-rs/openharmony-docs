@@ -38,7 +38,7 @@ Sets the effect used when the scroll boundary is reached.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| edgeEffect | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | Yes | Effect used when the scroll boundary is reached. The spring and shadow effects are supported.<br>Default value: **EdgeEffect.None** |
+| edgeEffect | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | Yes | Effect used when the scroll boundary is reached. The spring and shadow effects are supported. <br>Default value: **EdgeEffect.None** |
 | options | [EdgeEffectOptions](arkts-arkui-common-comp-edgeeffectoptions-i.md) | No | Whether to enable the effect when the component content is smaller than the component itself. The value **{ alwaysEnabled: true }** enables the sliding effect, and **{ alwaysEnabled: false }** disables it. When not passed, the default value is used.<br>Default value: **{ alwaysEnabled: true }**<br><br>**Since:** 11 |
 
 ## enableBouncesZoom
@@ -63,7 +63,7 @@ Sets whether to enable the zoom bounce effect.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable the zoom bounce effect. When the user zooms beyond the maximum or minimum zoom ratio, the content bounces back to the maximum or minimum zoom ratio after the gesture is released. The value **true** means to enable the effect, and **false** means to disable it.<br>Default value: **true** |
+| enable | boolean | Yes | Whether to enable the zoom bounce effect. When the user zooms beyond the maximum or minimum zoom ratio, the content bounces back to the maximum or minimum zoom ratio after the gesture is released. The value **true** means to enable the effect, and **false** means to disable it. <br>Default value: **true** |
 
 ## enablePaging
 
@@ -87,7 +87,7 @@ Sets whether to enable swipe paging. If both swipe paging (**enablePaging**) and
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to support swipe paging. The value **true** means that swipe paging is supported, and **false** means the opposite.<br>Default value: **false** |
+| value | boolean | Yes | Whether to support swipe paging. The value **true** means that swipe paging is supported, and **false** means the opposite. <br>Default value: **false** |
 
 ## enableScrollInteraction
 
@@ -135,7 +135,7 @@ Sets the friction coefficient. It takes effect when the scroll area is swiped, a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Friction coefficient.<br>Default value: **0.9** for wearable devices and **0.6** for non-wearable devices <br>Since API version 11, the default value for non-wearable devices is **0.7**. <br>Since API version 12, the default value for non-wearable devices is **0.75**. <br>Value range: (0, +∞). If the value is less than or equal to 0, the default value is used. |
+| value | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Friction coefficient. <br>Default value: **0.9** for wearable devices and **0.6** for non-wearable devices <br>Since API version 11, the default value for non-wearable devices is **0.7**. <br>Since API version 12, the default value for non-wearable devices is **0.75**. <br>Value range: (0, +∞). If the value is less than or equal to 0, the default value is used. |
 
 ## initialOffset
 
@@ -183,7 +183,7 @@ Sets the maximum gesture-based zoom scale for the **Scroll** component's content
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | number | Yes | Maximum gesture-based zoom scale for the **Scroll** component's content.<br>Default value: **1**. <br>Value range: (0, +∞). If the value is less than or equal to 0, the default value 1 is used. |
+| scale | number | Yes | Maximum gesture-based zoom scale for the **Scroll** component's content. <br>Default value: **1**. <br>Value range: (0, +∞). If the value is less than or equal to 0, the default value 1 is used. |
 
 ## minZoomScale
 
@@ -207,7 +207,7 @@ Sets the minimum gesture-based zoom scale for the **Scroll** component's content
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scale | number | Yes | Minimum gesture-based zoom scale for the **Scroll** component's content.<br>Default value: **1**. <br>Value range: (0, maxZoomScale]. If the value is less than or equal to 0, the default value **1** is used. If the value is greater than **maxZoomScale**, **maxZoomScale** is used. |
+| scale | number | Yes | Minimum gesture-based zoom scale for the **Scroll** component's content. <br>Default value: **1**. <br>Value range: (0, maxZoomScale]. If the value is less than or equal to 0, the default value **1** is used. If the value is greater than **maxZoomScale**, **maxZoomScale** is used. |
 
 ## nestedScroll
 
@@ -532,7 +532,7 @@ Sets the scroll direction. After this value is modified, the scroll offset is re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ScrollDirection](arkts-arkui-scroll-comp-scrolldirection-e.md) | Yes | Scrolling direction.<br>Default value: **ScrollDirection.Vertical** |
+| value | [ScrollDirection](arkts-arkui-scroll-comp-scrolldirection-e.md) | Yes | Scrolling direction. <br>Default value: **ScrollDirection.Vertical** |
 
 ## scrollBar
 
@@ -558,9 +558,7 @@ Since API version 10, when the scrollable component has rounded corners, to prev
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| barState | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | Yes | Scrollbar state.<br>Default value: **BarState.Auto** |
-
-<a id="scrollbarcolor1"></a>
+| barState | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | Yes | Scrollbar state. <br>Default value: **BarState.Auto** |
 
 ## scrollBarColor
 
@@ -584,9 +582,7 @@ Sets the scrollbar color.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string | Yes | Scrollbar color.<br>Default value: **'#66182431'** <br>A number value indicates a HEX color in RGB or ARGB format, value range: [0x0, 0xFFFFFFFF], for example, **0xffffff**. <br>A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
-
-<a id="scrollbarcolor2"></a>
+| color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string | Yes | Scrollbar color. <br>Default value: **'#66182431'** <br>A number value indicates a HEX color in RGB or ARGB format, value range: [0x0, 0xFFFFFFFF], for example, **0xffffff**. <br>A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
 
 ## scrollBarColor
 
@@ -594,7 +590,7 @@ Sets the scrollbar color.
 scrollBarColor(color: Color | number | string | Resource)
 ```
 
-Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor1), this API supports the Resource type for the **color** parameter.
+Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor), this API supports the Resource type for the **color** parameter.
 
 **Since:** 22
 
@@ -611,8 +607,6 @@ Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor1), this
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Scrollbar color.<br>Default value: **'#66182431'**<br>A number value indicates a HEX color in RGB or ARGB format, with a value range of [0x0, 0xFFFFFFFF], for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
-
-<a id="scrollbarwidth1"></a>
 
 ## scrollBarWidth
 
@@ -637,8 +631,6 @@ Sets the width of the scroll bar. Percentage values are not supported. After the
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number &#124; string | Yes | Width of the scrollbar.<br>Default value: **4**<br>Unit: vp <br>Value range: If the value is less than 0, the default value 4 vp is used. If the value is 0, the scrollbar is not displayed. |
-
-<a id="scrollbarwidth2"></a>
 
 ## scrollBarWidth
 
@@ -749,7 +741,7 @@ input settings that trigger scrolling.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | (xOffset: number, yOffset: number) =&gt; void | Yes | callback when scroll, xOffset: Actual scroll offset relative to the previous frame.<br>Unit: vp yOffset: Vertical offset relative to the previous frame. A positive offset indicates scrolling upward, and a negative offset indicates scrolling downward. <br>Unit: vp |
+| event | (xOffset: number, yOffset: number) =&gt; void | Yes | callback when scroll, xOffset: Actual scroll offset relative to the previous frame. <br>Unit: vp yOffset: Vertical offset relative to the previous frame. A positive offset indicates scrolling upward, and a negative offset indicates scrolling downward. <br>Unit: vp |
 
 ## onScrollEnd
 

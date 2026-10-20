@@ -19,8 +19,6 @@ interface LongPressGestureInterface extends GestureInterface<LongPressGestureInt
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="call1"></a>
-
 ## [[Call]]
 
 ```TypeScript
@@ -47,15 +45,13 @@ If the long press duration reaches or exceeds 500 milliseconds, the system prior
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | { fingers?: number; repeat?: boolean; duration?: number } | No | Parameters for the long press gesture.<br> - **fingers**: minimum number of fingers to trigger a long press gesture. The value ranges from 1 to 10. <br>Default value: **1**. <br> - **repeat**: whether to continuously trigger the event callback. The value **true** means to continuously trigger the event callback, and **false** means the opposite.<br>Default value: **false**. <br> - **duration**: minimum hold-down time, in ms.<br>Default value: **500**. |
+| value | { fingers?: number; repeat?: boolean; duration?: number } | No | Parameters for the long press gesture. <br> - **fingers**: minimum number of fingers to trigger a long press gesture. The value ranges from 1 to 10. <br>Default value: **1**. <br> - **repeat**: whether to continuously trigger the event callback. The value **true** means to continuously trigger the event callback, and **false** means the opposite.<br>Default value: **false**. <br> - **duration**: minimum hold-down time, in ms.<br>Default value: **500**. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-tapgesture-comp-longpressgestureinterface-i.md) |  |
-
-<a id="call2"></a>
 
 ## [[Call]]
 
@@ -121,8 +117,6 @@ Registers the callback for successful long press gesture recognition.
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-tapgesture-comp-longpressgestureinterface-i.md) |  |
 
-<a id="onactioncancel1"></a>
-
 ## onActionCancel
 
 ```TypeScript
@@ -150,8 +144,6 @@ Registers the callback for long press gesture cancellation. This callback is tri
 | Type | Description |
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-tapgesture-comp-longpressgestureinterface-i.md) |  |
-
-<a id="onactioncancel2"></a>
 
 ## onActionCancel
 

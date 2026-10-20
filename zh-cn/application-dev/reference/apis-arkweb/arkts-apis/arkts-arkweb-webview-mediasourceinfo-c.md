@@ -81,3 +81,16 @@ type: SourceType
 <!--Device-MediaSourceInfo-type: SourceType--><!--Device-MediaSourceInfo-type: SourceType-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**示例**
+
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+const mediaInfo: webview.MediaSourceInfo = {
+  type: webview.SourceType.URL,
+  source: 'https://example.com/video.mp4',
+  format: 'mp4'
+};
+```

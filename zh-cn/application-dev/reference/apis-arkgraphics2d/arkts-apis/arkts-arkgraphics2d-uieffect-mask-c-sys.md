@@ -276,8 +276,6 @@ struct Index {
 
 <!--DelEnd-->
 
-<a id="createpixelmapmask1"></a>
-
 ## createPixelMapMask
 
 ```TypeScript
@@ -359,8 +357,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 ```
 
 <!--DelEnd-->
-
-<a id="createpixelmapmask2"></a>
 
 ## createPixelMapMask
 

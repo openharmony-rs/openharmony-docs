@@ -18,8 +18,6 @@ Provides APIs for querying and updating the login state of a distributed account
 import { distributedAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="getosaccountdistributedinfo1"></a>
-
 ## getOsAccountDistributedInfo
 
 ```TypeScript
@@ -47,7 +45,7 @@ Obtains the distributed account information. This API uses an asynchronous callb
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 
 **Examples**
@@ -71,8 +69,6 @@ try {
   console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountdistributedinfo2"></a>
 
 ## getOsAccountDistributedInfo
 
@@ -122,8 +118,6 @@ try {
 }
 ```
 
-<a id="setosaccountdistributedinfo1"></a>
-
 ## setOsAccountDistributedInfo
 
 ```TypeScript
@@ -152,7 +146,7 @@ Sets the distributed account information. This API uses an asynchronous callback
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid accountInfo. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -181,8 +175,6 @@ try {
   console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setosaccountdistributedinfo2"></a>
 
 ## setOsAccountDistributedInfo
 
@@ -217,7 +209,7 @@ Sets the distributed account information. This API uses a promise to return the 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid accountInfo. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -245,8 +237,6 @@ try {
 }
 ```
 
-<a id="queryosaccountdistributedinfo1"></a>
-
 ## queryOsAccountDistributedInfo
 
 ```TypeScript
@@ -258,14 +248,14 @@ Queries the distributed account information. This API uses an asynchronous callb
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getOsAccountDistributedInfo](#getosaccountdistributedinfo1)
+> [getOsAccountDistributedInfo](#getosaccountdistributedinfo)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getOsAccountDistributedInfo](#getosaccountdistributedinfo1)(callback: AsyncCallback&lt;DistributedInfo&gt;)
+**Substitutes:** [getOsAccountDistributedInfo](#getosaccountdistributedinfo)(callback: AsyncCallback&lt;DistributedInfo&gt;)
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -295,8 +285,6 @@ accountAbility.queryOsAccountDistributedInfo(
     }
   });
 ```
-
-<a id="queryosaccountdistributedinfo2"></a>
 
 ## queryOsAccountDistributedInfo
 
@@ -344,8 +332,6 @@ accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.Di
 });
 ```
 
-<a id="updateosaccountdistributedinfo1"></a>
-
 ## updateOsAccountDistributedInfo
 
 ```TypeScript
@@ -357,14 +343,14 @@ Updates the distributed account information. This API uses an asynchronous callb
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setOsAccountDistributedInfo](#setosaccountdistributedinfo1)
+> [setOsAccountDistributedInfo](#setosaccountdistributedinfo)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setOsAccountDistributedInfo](#setosaccountdistributedinfo1)(accountInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setOsAccountDistributedInfo](#setosaccountdistributedinfo)(accountInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -398,8 +384,6 @@ accountAbility.updateOsAccountDistributedInfo(accountInfo, (err: BusinessError) 
 });
 ```
 
-<a id="updateosaccountdistributedinfo2"></a>
-
 ## updateOsAccountDistributedInfo
 
 ```TypeScript
@@ -411,14 +395,14 @@ Updates the distributed account information. This API uses a promise to return t
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [setOsAccountDistributedInfo](#setosaccountdistributedinfo2)
+> [setOsAccountDistributedInfo](#setosaccountdistributedinfo)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [setOsAccountDistributedInfo](#setosaccountdistributedinfo2)(accountInfo: DistributedInfo)
+**Substitutes:** [setOsAccountDistributedInfo](#setosaccountdistributedinfo)(accountInfo: DistributedInfo)
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 

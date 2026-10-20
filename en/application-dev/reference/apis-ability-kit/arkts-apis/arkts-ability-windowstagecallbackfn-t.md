@@ -6,8 +6,6 @@ type WindowStageCallbackFn = (ability: any, windowStage: window.WindowStage) => 
 
 The callback was called when both ability and window stage are registered for listening.
 
-@typedef { function }
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

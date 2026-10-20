@@ -49,6 +49,66 @@ let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
 indexUtil.addLocale('en-US');
 ```
 
+## getBilingualIndex
+
+```TypeScript
+getBilingualIndex(text: string): string
+```
+
+Obtains the bilingual index of the text object.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-IndexUtil-getBilingualIndex(text: string): string--><!--Device-IndexUtil-getBilingualIndex(text: string): string-End-->
+
+**System capability:** SystemCapability.Global.I18n
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| text | string | Yes | Input text. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| string | Bilingual index of the text object. Returns '#' if no proper index is found or text is empty. |
+
+## getBilingualIndexList
+
+```TypeScript
+getBilingualIndexList(mode?: BilingualIndexMode): Array<string>
+```
+
+Obtains the bilingual index list of the current locale.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-IndexUtil-getBilingualIndexList(mode?: BilingualIndexMode): Array<string>--><!--Device-IndexUtil-getBilingualIndexList(mode?: BilingualIndexMode): Array<string>-End-->
+
+**System capability:** SystemCapability.Global.I18n
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| mode | [BilingualIndexMode](arkts-localization-i18n-bilingualindexmode-e.md) | No | Bilingual index mode, defaults to FULL. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Array&lt;string&gt; | Bilingual index list. The first element is '#', followed by local index list and English index list. |
+
 ## getIndex
 
 ```TypeScript
@@ -118,3 +178,31 @@ let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
 // 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '...' ]
 let indexList: Array<string> = indexUtil.getIndexList();
 ```
+
+## isBilingualIndexSupported
+
+```TypeScript
+static isBilingualIndexSupported(locale: Intl.Locale): boolean
+```
+
+Checks whether the specified locale supports bilingual index.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-IndexUtil-static isBilingualIndexSupported(locale: Intl.Locale): boolean--><!--Device-IndexUtil-static isBilingualIndexSupported(locale: Intl.Locale): boolean-End-->
+
+**System capability:** SystemCapability.Global.I18n
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| locale | [Intl.Locale](arkts-localization-intl-locale-c.md) | Yes | Locale to check, in BCP 47 format (e.g., "zh-CN"). |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | true if bilingual index is supported, false otherwise. |

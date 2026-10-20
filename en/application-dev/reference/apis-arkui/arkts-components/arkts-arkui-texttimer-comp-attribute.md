@@ -36,7 +36,7 @@ Customizes the content area of **TextTimer**. When the default text display styl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[TextTimerConfiguration](arkts-arkui-texttimer-comp-texttimerconfiguration-i.md)&gt; | Yes | Method for customizing the content area on the TextTimer component.<br>modifier: content modifier. The developer needs to define a custom class to implement the ContentModifier interface. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[TextTimerConfiguration](arkts-arkui-texttimer-comp-texttimerconfiguration-i.md)&gt; | Yes | Method for customizing the content area on the TextTimer component. <br>modifier: content modifier. The developer needs to define a custom class to implement the ContentModifier interface. |
 
 ## fontColor
 
@@ -60,7 +60,7 @@ Sets the font color.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font color.<br>Default value on Wearable devices: '#c5ffffff', displayed in white. <br>Default value on other devices: '#e6182431', displayed in black. |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font color. <br>Default value on Wearable devices: '#c5ffffff', displayed in white. <br>Default value on other devices: '#e6182431', displayed in black. |
 
 ## fontFamily
 
@@ -132,7 +132,7 @@ Sets the font style.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [FontStyle](../arkts-apis/arkts-arkui-fontstyle-e.md) | Yes | Font style, for example, the italic font style.<br>Default value: FontStyle.Normal |
+| value | [FontStyle](../arkts-apis/arkts-arkui-fontstyle-e.md) | Yes | Font style, for example, the italic font style. <br>Default value: FontStyle.Normal |
 
 ## fontWeight
 
@@ -182,7 +182,7 @@ The timer update frequency is processed based on the minimum unit of **format**.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | Yes | Custom time format displayed by the timer. It must contain at least one of the keywords HH, mm, ss, or SS.<br>Default value: 'HH:mm:ss.SS' |
+| value | string | Yes | Custom time format displayed by the timer. It must contain at least one of the keywords HH, mm, ss, or SS. <br>Default value: 'HH:mm:ss.SS' |
 
 ## onTimer
 
@@ -206,7 +206,7 @@ Triggered when the time text changes. This event is not triggered in the locked-
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | (utc: number, elapsedTime: number) =&gt; void | Yes | utc: Linux timestamp, which is the amount of time that has elapsed since January 1, 1970, in the minimum unit of the format.<br>elapsedTime: Elapsed time of the timer, in the minimum unit of the format. |
+| event | (utc: number, elapsedTime: number) =&gt; void | Yes | utc: Linux timestamp, which is the amount of time that has elapsed since January 1, 1970, in the minimum unit of the format. <br>elapsedTime: Elapsed time of the timer, in the minimum unit of the format. |
 
 ## textShadow
 

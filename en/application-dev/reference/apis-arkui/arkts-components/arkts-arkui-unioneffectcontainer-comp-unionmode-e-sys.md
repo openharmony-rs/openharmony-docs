@@ -24,7 +24,7 @@ Union deformation effect under gravity, suitable for union scenarios that requir
 
 **NOTE:** 
 
-When this type is set, it takes effect only when used together with [useUnionEffect](arkts-arkui-common-comp-commonmethod-c-sys.md#useunioneffect2) and when **gravityCenter** of [GravityCenterOptions](arkts-arkui-common-comp-gravitycenteroptions-i-sys.md) is set to **true**. If the preceding conditions are not met, **GRAVITY_UNION** does not take effect.
+When this type is set, it takes effect only when used together with [useUnionEffect](arkts-arkui-common-comp-commonmethod-c-sys.md#useunioneffect) and when **gravityCenter** of [GravityCenterOptions](arkts-arkui-common-comp-gravitycenteroptions-i-sys.md) is set to **true**. If the preceding conditions are not met, **GRAVITY_UNION** does not take effect.
 
 **Since:** 26.0.0
 
@@ -46,7 +46,7 @@ Smooth union deformation effect, suitable for union scenarios that require smoot
 
 **NOTE:** 
 
-When this type is set, the union effect is produced only when descendant components set the [useUnionEffect](arkts-arkui-common-comp-commonmethod-c-sys.md#useunioneffect1) attribute.
+When this type is set, the union effect is produced only when descendant components set the [useUnionEffect](arkts-arkui-common-comp-commonmethod-c-sys.md#useunioneffect) attribute.
 
 **Since:** 26.0.0
 

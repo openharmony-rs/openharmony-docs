@@ -36,8 +36,6 @@ Synchronizes the data of a file. This API uses a promise to return the result.
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
-<a id="fdatasync2"></a>
-
 ## fdatasync
 
 ```TypeScript

@@ -6,8 +6,6 @@ interface IncrementalBackupTime
 
 Save the time information of the incremental backup. IncrementalBackupTime is useful when doing IPC with the backup service.
 
-@interface IncrementalBackupTime
-
 **Since:** 12
 
 <!--Device-backup-interface IncrementalBackupTime--><!--Device-backup-interface IncrementalBackupTime-End-->

@@ -17,6 +17,7 @@ interface RemoteUserAuthItem
 ## 导入模块
 
 ```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## authResult

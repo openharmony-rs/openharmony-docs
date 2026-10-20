@@ -6,8 +6,6 @@ declare interface LayoutBorderInfo
 
 Provides the border information of the child component.
 
-@interface LayoutBorderInfo
-
 **Since:** 9
 
 **Deprecated since:** 10
@@ -24,7 +22,7 @@ Provides the border information of the child component.
 borderWidth: EdgeWidths
 ```
 
-Edge widths in different directions of the component.
+Border width type, used to describe the width of the component border in different directions.<br>Unit: vp.
 
 **Type:** EdgeWidths
 
@@ -46,7 +44,7 @@ Edge widths in different directions of the component.
 margin: Margin
 ```
 
-Margin values in different directions of the component.
+Margin type, used to describe the margin of the component in different directions.<br>Unit: vp.
 
 **Type:** [Margin](../arkts-apis/arkts-arkui-margin-t.md)
 
@@ -68,7 +66,7 @@ Margin values in different directions of the component.
 padding: Padding
 ```
 
-Padding values in different directions of the component.
+Padding type, used to describe the padding of the component in different directions.<br>Unit: vp.
 
 **Type:** Padding
 

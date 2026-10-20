@@ -112,8 +112,6 @@ onmessageerror?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void
 | this | [DedicatedWorkerGlobalScope](arkts-arkts-worker-dedicatedworkerglobalscope-i.md) | 是 |  |
 | ev | [MessageEvent](arkts-arkts-worker-messageevent-i.md) | 是 |  |
 
-<a id="postmessage1"></a>
-
 ## postMessage
 
 ```TypeScript
@@ -187,8 +185,6 @@ parentPort.onmessage = (e: MessageEvents) => {
 }
 ```
 
-<a id="postmessage2"></a>
-
 ## postMessage
 
 ```TypeScript
@@ -236,8 +232,6 @@ parentPort.onmessage = (e: MessageEvents) => {
   parentPort.postMessage("receive data from main thread");
 }
 ```
-
-<a id="postmessage3"></a>
 
 ## postMessage
 

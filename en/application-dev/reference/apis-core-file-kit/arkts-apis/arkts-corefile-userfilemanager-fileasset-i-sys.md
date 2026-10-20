@@ -24,8 +24,6 @@ Provides APIs for encapsulating file asset attributes.
 import { userFileManager } from '@kit.CoreFileKit';
 ```
 
-<a id="close1"></a>
-
 ## close
 
 ```TypeScript
@@ -88,8 +86,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="close2"></a>
-
 ## close
 
 ```TypeScript
@@ -151,8 +147,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="commitmodify1"></a>
 
 ## commitModify
 
@@ -218,8 +212,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="commitmodify2"></a>
-
 ## commitModify
 
 ```TypeScript
@@ -283,8 +275,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="favorite1"></a>
-
 ## favorite
 
 ```TypeScript
@@ -342,8 +332,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="favorite2"></a>
 
 ## favorite
 
@@ -468,8 +456,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getexif1"></a>
-
 ## getExif
 
 ```TypeScript
@@ -482,40 +468,40 @@ For details about the EXIF tags, see [image.PropertyKey](../../apis-image-kit/ar
 
 | Key Value | Description |  
 | --------------------------------------- | ----------------- |  
-| BitsPerSample | Number of bits per sample.|
-| Orientation | Image orientation.|
-| ImageLength | Image length.|
-| ImageWidth | Image width.|
-| GPSLatitude | GPS latitude of the image.|
-| GPSLongitude | GPS longitude of the image.|
-| GPSLatitudeRef | Longitude reference, for example, W or E.|
-| GPSLongitudeRef | Latitude reference, for example, N or S.|
-| DateTimeOriginal | Shooting time.|
-| ExposureTime | Exposure time.|
-| SceneType | Scene type.|
-| ISOSpeedRatings | ISO sensitivity or speed.|
-| FNumber | f-number.|
-| DateTime | Modification time.|
-| GPSTimeStamp | GPS timestamp.|
-| GPSDateStamp | GPS date stamp.|
-| ImageDescription | Image description.|
-| Make | Manufacturer.|
-| MakeNote | Manufacturer.|
-| Model | Model.|
-| PhotoMode | Photo mode.|
-| SensitivityType | Sensitivity type.|
-| StandardOutputSensitivity | Standard output sensitivity.|
-| RecommendedExposureIndex | Recommended exposure index.|
-| ApertureValue | Aperture value.|
-| MeteringMode | Metering mode.|
-| LightSource | Light source.|
-| Flash | Flash status.|
-| FocalLength | Focal length.|
-| UserComment | User comments.|
-| PixelXDimension | Pixel X dimension.|
-| PixelYDimension | Pixel Y dimension.|
-| WhiteBalance | White balance.|
-| FocalLengthIn35mmFilm | Focal length in 35 mm film.|
+| BitsPerSample | Number of bits per sample.|  
+| Orientation | Image orientation.|  
+| ImageLength | Image length.|  
+| ImageWidth | Image width.|  
+| GPSLatitude | GPS latitude of the image.|  
+| GPSLongitude | GPS longitude of the image.|  
+| GPSLatitudeRef | Longitude reference, for example, W or E.|  
+| GPSLongitudeRef | Latitude reference, for example, N or S.|  
+| DateTimeOriginal | Shooting time.|  
+| ExposureTime | Exposure time.|  
+| SceneType | Scene type.|  
+| ISOSpeedRatings | ISO sensitivity or speed.|  
+| FNumber | f-number.|  
+| DateTime | Modification time.|  
+| GPSTimeStamp | GPS timestamp.|  
+| GPSDateStamp | GPS date stamp.|  
+| ImageDescription | Image description.|  
+| Make | Manufacturer.|  
+| MakeNote | Manufacturer.|  
+| Model | Model.|  
+| PhotoMode | Photo mode.|  
+| SensitivityType | Sensitivity type.|  
+| StandardOutputSensitivity | Standard output sensitivity.|  
+| RecommendedExposureIndex | Recommended exposure index.|  
+| ApertureValue | Aperture value.|  
+| MeteringMode | Metering mode.|  
+| LightSource | Light source.|  
+| Flash | Flash status.|  
+| FocalLength | Focal length.|  
+| UserComment | User comments.|  
+| PixelXDimension | Pixel X dimension.|  
+| PixelYDimension | Pixel Y dimension.|  
+| WhiteBalance | White balance.|  
+| FocalLengthIn35mmFilm | Focal length in 35 mm film.|  
 | ExposureBiasValue | Exposure compensation.|
 
 > **NOTE:** 
@@ -593,8 +579,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getexif2"></a>
-
 ## getExif
 
 ```TypeScript
@@ -607,40 +591,40 @@ For details about the EXIF tags, see [image.PropertyKey](../../apis-image-kit/ar
 
 | Key Value | Description |  
 | --------------------------------------- | ----------------- |  
-| BitsPerSample | Number of bits per sample.|
-| Orientation | Image orientation.|
-| ImageLength | Image length.|
-| ImageWidth | Image width.|
-| GPSLatitude | GPS latitude of the image.|
-| GPSLongitude | GPS longitude of the image.|
-| GPSLatitudeRef | Longitude reference, for example, W or E.|
-| GPSLongitudeRef | Latitude reference, for example, N or S.|
-| DateTimeOriginal | Shooting time.|
-| ExposureTime | Exposure time.|
-| SceneType | Scene type.|
-| ISOSpeedRatings | ISO sensitivity or speed.|
-| FNumber | f-number.|
-| DateTime | Modification time.|
-| GPSTimeStamp | GPS timestamp.|
-| GPSDateStamp | GPS date stamp.|
-| ImageDescription | Image description.|
-| Make | Manufacturer.|
-| MakeNote | Manufacturer.|
-| Model | Model.|
-| PhotoMode | Photo mode.|
-| SensitivityType | Sensitivity type.|
-| StandardOutputSensitivity | Standard output sensitivity.|
-| RecommendedExposureIndex | Recommended exposure index.|
-| ApertureValue | Aperture value.|
-| MeteringMode | Metering mode.|
-| LightSource | Light source.|
-| Flash | Flash status.|
-| FocalLength | Focal length.|
-| UserComment | User comments.|
-| PixelXDimension | Pixel X dimension.|
-| PixelYDimension | Pixel Y dimension.|
-| WhiteBalance | White balance.|
-| FocalLengthIn35mmFilm | Focal length in 35 mm film.|
+| BitsPerSample | Number of bits per sample.|  
+| Orientation | Image orientation.|  
+| ImageLength | Image length.|  
+| ImageWidth | Image width.|  
+| GPSLatitude | GPS latitude of the image.|  
+| GPSLongitude | GPS longitude of the image.|  
+| GPSLatitudeRef | Longitude reference, for example, W or E.|  
+| GPSLongitudeRef | Latitude reference, for example, N or S.|  
+| DateTimeOriginal | Shooting time.|  
+| ExposureTime | Exposure time.|  
+| SceneType | Scene type.|  
+| ISOSpeedRatings | ISO sensitivity or speed.|  
+| FNumber | f-number.|  
+| DateTime | Modification time.|  
+| GPSTimeStamp | GPS timestamp.|  
+| GPSDateStamp | GPS date stamp.|  
+| ImageDescription | Image description.|  
+| Make | Manufacturer.|  
+| MakeNote | Manufacturer.|  
+| Model | Model.|  
+| PhotoMode | Photo mode.|  
+| SensitivityType | Sensitivity type.|  
+| StandardOutputSensitivity | Standard output sensitivity.|  
+| RecommendedExposureIndex | Recommended exposure index.|  
+| ApertureValue | Aperture value.|  
+| MeteringMode | Metering mode.|  
+| LightSource | Light source.|  
+| Flash | Flash status.|  
+| FocalLength | Focal length.|  
+| UserComment | User comments.|  
+| PixelXDimension | Pixel X dimension.|  
+| PixelYDimension | Pixel Y dimension.|  
+| WhiteBalance | White balance.|  
+| FocalLengthIn35mmFilm | Focal length in 35 mm film.|  
 | ExposureBiasValue | Exposure compensation.|
 
 > **NOTE:** 
@@ -708,8 +692,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="getthumbnail1"></a>
-
 ## getThumbnail
 
 ```TypeScript
@@ -767,8 +749,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="getthumbnail2"></a>
 
 ## getThumbnail
 
@@ -830,8 +810,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="getthumbnail3"></a>
 
 ## getThumbnail
 
@@ -898,8 +876,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="open1"></a>
-
 ## open
 
 ```TypeScript
@@ -956,8 +932,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="open2"></a>
 
 ## open
 
@@ -1079,8 +1053,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="sethidden1"></a>
-
 ## setHidden
 
 ```TypeScript
@@ -1147,8 +1119,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="sethidden2"></a>
 
 ## setHidden
 
@@ -1224,8 +1194,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 <!--DelEnd-->
 
-<a id="setusercomment1"></a>
-
 ## setUserComment
 
 ```TypeScript
@@ -1264,7 +1232,7 @@ Sets user comment information of an image or video. This API uses an asynchronou
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
 <!--Del-->
 **Examples**
@@ -1299,8 +1267,6 @@ async function example(mgr: userFileManager.UserFileManager) {
 ```
 
 <!--DelEnd-->
-
-<a id="setusercomment2"></a>
 
 ## setUserComment
 
@@ -1345,7 +1311,7 @@ Sets user comment information of an image or video. This API uses a promise to r
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Called by non-system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
 <!--Del-->
 **Examples**

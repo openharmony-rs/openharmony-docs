@@ -35,6 +35,25 @@ function off(type: 'streamChange', callback?: Callback<number>): void
 | type | 'streamChange' | 是 | 固定填"streamChange"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 状态改变回调函数，返回0：无，1：下行，2：上行，3：双向。 |
 
+<!--Del-->
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvStreamChangeFunc = (result: number) => {
+    console.info("Receive stream change event: " + result);
+};
+
+// Register event
+wifi.on("streamChange", recvStreamChangeFunc);
+
+// Unregister event
+wifi.off("streamChange", recvStreamChangeFunc);
+```
+
+<!--DelEnd-->
+
 
 ## off('hotspotStaJoin')
 
@@ -65,6 +84,25 @@ function off(type: 'hotspotStaJoin', callback?: Callback<StationInfo>): void
 | type | 'hotspotStaJoin' | 是 | 固定填"hotspotStaJoin"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[StationInfo](arkts-connectivity-wifi-stationinfo-i-sys.md)&gt; | 否 | 回调函数，返回StationInfo对象。 |
 
+<!--Del-->
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvHotspotStaJoinFunc = (result: wifi.StationInfo) => {
+    console.info("Receive hotspot sta join event: " + result);
+};
+
+// Register event
+wifi.on("hotspotStaJoin", recvHotspotStaJoinFunc);
+
+// Unregister event
+wifi.off("hotspotStaJoin", recvHotspotStaJoinFunc);
+```
+
+<!--DelEnd-->
+
 
 ## off('hotspotStaLeave')
 
@@ -94,3 +132,22 @@ function off(type: 'hotspotStaLeave', callback?: Callback<StationInfo>): void
 | --- | --- | --- | --- |
 | type | 'hotspotStaLeave' | 是 | 固定填"hotspotStaLeave"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[StationInfo](arkts-connectivity-wifi-stationinfo-i-sys.md)&gt; | 否 | 回调函数，返回StationInfo对象。 |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import wifi from '@ohos.wifi';
+
+let recvHotspotStaLeaveFunc = (result: wifi.StationInfo) => {
+    console.info("Receive hotspot sta leave event: " + result);
+};
+
+// Register event
+wifi.on("hotspotStaLeave", recvHotspotStaLeaveFunc);
+
+// Unregister event
+wifi.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
+```
+
+<!--DelEnd-->

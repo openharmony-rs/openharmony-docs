@@ -4,7 +4,7 @@
 enum ColorReservationType
 ```
 
-Enumerates the color reservation types.
+枚举色彩保留类型。
 
 **起始版本：** 15
 
@@ -20,7 +20,7 @@ Enumerates the color reservation types.
 NONE = 0
 ```
 
-No color reservation.
+无色彩保留。
 
 **起始版本：** 15
 
@@ -36,7 +36,7 @@ No color reservation.
 PORTRAIT = 1
 ```
 
-Portrait color reservation.
+人像色彩保留。
 
 **起始版本：** 15
 

@@ -30,7 +30,7 @@ Reset the specified network management policy.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| iccid | string | Yes | Indicates the specified SIM that is valid when netType is cellular.<br>Value range:(0, 1024] |
+| iccid | string | Yes | Indicates the specified SIM that is valid when netType is cellular. <br>Value range:(0, 1024] |
 
 **Return value:**
 

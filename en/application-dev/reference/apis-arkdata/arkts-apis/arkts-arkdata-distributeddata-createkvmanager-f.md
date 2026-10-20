@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="createkvmanager1"></a>
-
 ## createKVManager
 
 ```TypeScript
@@ -57,8 +55,6 @@ try {
 }
 ```
 
-
-<a id="createkvmanager2"></a>
 
 ## createKVManager
 

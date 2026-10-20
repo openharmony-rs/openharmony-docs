@@ -6,8 +6,6 @@ interface SecurityEventInfo
 
 调用订阅接口使用的事件信息。
 
-@interface SecurityEventInfo
-
 **起始版本：** 12
 
 <!--Device-securityGuard-interface SecurityEventInfo--><!--Device-securityGuard-interface SecurityEventInfo-End-->

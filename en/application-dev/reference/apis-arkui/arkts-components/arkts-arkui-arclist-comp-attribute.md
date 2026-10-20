@@ -40,7 +40,7 @@ Sets the number of arc list items to be preloaded (cached). In a lazy loading sc
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| count | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Number of **ArcListItem** items to preload.<br>Default value: set based on the number of nodes displayed on the screen, with a maximum of 16. <br>Value range: [0, +∞) <br>If this parameter is set to a negative number, **1** is used. |
+| count | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Number of **ArcListItem** items to preload. <br>Default value: set based on the number of nodes displayed on the screen, with a maximum of 16. <br>Value range: [0, +∞) <br>If this parameter is set to a negative number, **1** is used. |
 
 ## chainAnimation
 
@@ -108,7 +108,7 @@ Sets the crown response sensitivity.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sensitivity | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CrownSensitivity](../arkts-apis/arkts-arkui-crownsensitivity-e.md)&gt; | Yes | Crown response sensitivity.<br>Default value: **CrownSensitivity.MEDIUM**, which indicates a moderate response speed. |
+| sensitivity | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CrownSensitivity](../arkts-apis/arkts-arkui-crownsensitivity-e.md)&gt; | Yes | Crown response sensitivity. <br>Default value: **CrownSensitivity.MEDIUM**, which indicates a moderate response speed. |
 
 ## enableScrollInteraction
 
@@ -174,7 +174,7 @@ Sets the maximum initial speed for inertial scrolling after a fling gesture. If 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| speed | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Maximum initial speed when the inertial scrolling animation starts. If this parameter is set to a value less than or equal to 0, the default value is used.<br>Default value: **9000** <br>Unit: vp/s <br>Value range: (0, +∞) <br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
+| speed | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Maximum initial speed when the inertial scrolling animation starts. If this parameter is set to a value less than or equal to 0, the default value is used. <br>Default value: **9000** <br>Unit: vp/s <br>Value range: (0, +∞) <br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
 
 ## friction
 
@@ -196,7 +196,7 @@ Sets the friction coefficient, which takes effect when manually swiping the scro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| friction | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Friction coefficient. It takes effect when manually swiping the scroll area and affects only the inertial scrolling process. If set to a value less than or equal to 0, the default value is used.<br>Default value: **0.8** <br>Value range: (0, +∞) |
+| friction | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Friction coefficient. It takes effect when manually swiping the scroll area and affects only the inertial scrolling process. If set to a value less than or equal to 0, the default value is used. <br>Default value: **0.8** <br>Value range: (0, +∞) |
 
 ## onDidScroll
 
@@ -378,7 +378,7 @@ Sets the state of the scrollbar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| status | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BarState](../arkts-apis/arkts-arkui-barstate-e.md)&gt; | Yes | Scroll bar status.<br>Default value: **BarState.Auto** |
+| status | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BarState](../arkts-apis/arkts-arkui-barstate-e.md)&gt; | Yes | Scroll bar status. <br>Default value: **BarState.Auto** |
 
 ## scrollBarColor
 
@@ -400,7 +400,7 @@ Sets the color of the scrollbar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Scrollbar color.<br>Default value: **ColorMetrics.numeric(0xA9FFFFFF)** <br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Scrollbar color. <br>Default value: **ColorMetrics.numeric(0xA9FFFFFF)** <br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
 
 ## scrollBarWidth
 
@@ -422,7 +422,7 @@ Sets the width of the **ArcList** scrollbar in the pressed state. If not set, th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | Yes | Width of the **ArcList** scrollbar in the pressed state.<br>Default value: **LengthMetrics.vp(24)** <br>Width in the unpressed state: **LengthMetrics.vp(4)** <br>If this parameter is set to an abnormal value such as a negative value or **undefined**, the width of the scrollbar in the normal state is used. <br>Unit: vp |
+| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | Yes | Width of the **ArcList** scrollbar in the pressed state. <br>Default value: **LengthMetrics.vp(24)** <br>Width in the unpressed state: **LengthMetrics.vp(4)** <br>If this parameter is set to an abnormal value such as a negative value or **undefined**, the width of the scrollbar in the normal state is used. <br>Unit: vp |
 
 ## space
 

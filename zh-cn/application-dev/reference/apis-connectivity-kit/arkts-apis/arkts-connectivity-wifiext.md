@@ -26,10 +26,10 @@ import { wifiext } from '@kit.ConnectivityKit';
 | --- | --- |
 | [disableHotspot](arkts-connectivity-wifiext-disablehotspot-f.md#disablehotspot) | 禁用Wi-Fi热点。 |
 | [enableHotspot](arkts-connectivity-wifiext-enablehotspot-f.md#enablehotspot) | 启用Wi-Fi热点。 |
-| [getPowerModel](arkts-connectivity-wifiext-getpowermodel-f.md#getpowermodel1) | 获取功率模式，使用Promise异步回调。 |
-| [getPowerModel](arkts-connectivity-wifiext-getpowermodel-f.md#getpowermodel2) | 获取功率模式。使用callback异步回调。 |
-| [getSupportedPowerModel](arkts-connectivity-wifiext-getsupportedpowermodel-f.md#getsupportedpowermodel1) | 获取支持的功率模式。使用Promise异步回调。 |
-| [getSupportedPowerModel](arkts-connectivity-wifiext-getsupportedpowermodel-f.md#getsupportedpowermodel2) | 获取支持的功率模式。使用callback异步回调。 |
+| [getPowerModel](arkts-connectivity-wifiext-getpowermodel-f.md#getpowermodel) | 获取功率模式，使用Promise异步回调。 |
+| [getPowerModel](arkts-connectivity-wifiext-getpowermodel-f.md#getpowermodel) | 获取功率模式。使用callback异步回调。 |
+| [getSupportedPowerModel](arkts-connectivity-wifiext-getsupportedpowermodel-f.md#getsupportedpowermodel) | 获取支持的功率模式。使用Promise异步回调。 |
+| [getSupportedPowerModel](arkts-connectivity-wifiext-getsupportedpowermodel-f.md#getsupportedpowermodel) | 获取支持的功率模式。使用callback异步回调。 |
 | [setPowerModel](arkts-connectivity-wifiext-setpowermodel-f.md#setpowermodel) | 设置功率模式。 |
 
 ### 枚举

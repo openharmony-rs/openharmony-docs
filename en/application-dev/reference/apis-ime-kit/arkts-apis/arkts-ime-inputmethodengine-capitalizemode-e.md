@@ -4,13 +4,13 @@
 export enum CapitalizeMode
 ```
 
-Enumerates the modes of capitalizing the first letter of a text.<br> <br>
+Enumerates the modes of capitalizing the first letter of a text. <br>
 
 | Name| Value| Description|  
 | -------- | -- | -------- |  
-| NONE | 0 | The first letter is not capitalized.|
-| SENTENCES | 1 | The first letter of each sentence is capitalized.|
-| WORDS | 2 | The first letter of each word is capitalized.|
+| NONE | 0 | The first letter is not capitalized.|  
+| SENTENCES | 1 | The first letter of each sentence is capitalized.|  
+| WORDS | 2 | The first letter of each word is capitalized.|  
 | CHARACTERS | 3 | All letters are capitalized.|
 
 **Since:** 20

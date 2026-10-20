@@ -81,17 +81,31 @@ Creates a **Grid** component.
 | --- | --- |
 | [ComputedBarAttribute](arkts-arkui-grid-comp-computedbarattribute-i.md) | Provides information about the position and length of the scrollbar. |
 | [GridLayoutOptions](arkts-arkui-grid-comp-gridlayoutoptions-i.md) | Defines the grid layout options. In this API, **irregularIndexes** and **onGetIrregularSizeByIndex** can be used for grids where either **rowsTemplate** or **columnsTemplate** is set. These properties allow you to specify an index array and set the number of rows and columns to be occupied by a grid item at the specified index. For details about the usage, see [Example 3](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns). On the other hand, **onGetRectByIndex** can be used for grids where both **rowsTemplate** and **columnsTemplate** are set. It allows you to specify the position and size for the grid item at the specified index. For details about the usage, see [Example 1](../../../reference/apis-arkui/arkui-ts/ts-container-grid.md#example-1-creating-a-fixed-row-and-column-grid-layout). |
+| [UIGridEvent](arkts-arkui-grid-comp-uigridevent-i.md) | Represents the return value of the [getEvent('Grid')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent) method in **frameNode**, which can be used to set scroll events for a **Grid** node. |
+
+<!--Del-->
+### Interfaces(System API)
+
+| Name | Description |
+| --- | --- |
 | [StartLineInfo](arkts-arkui-grid-comp-startlineinfo-i-sys.md) | Records the position of the start line in the grid. |
-| [UIGridEvent](arkts-arkui-grid-comp-uigridevent-i.md) | Represents the return value of the [getEvent('Grid')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent4) method in **frameNode**, which can be used to set scroll events for a **Grid** node. |
+<!--DelEnd-->
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [OnGetStartIndexByIndexCallback](arkts-arkui-grid-comp-ongetstartindexbyindexcallback-t-sys.md) | Calculates the start line on the page when the grid is scrolled to the specified target index. This API is used to support operations such as [scrollToIndex](Scroller#scrollToIndex). This callback must be set simultaneously with **onGetStartIndexByOffset** to take effect. |
-| [OnGetStartIndexByOffsetCallback](arkts-arkui-grid-comp-ongetstartindexbyoffsetcallback-t-sys.md) | Calculates the start line position of the current page based on the total offset of the **Grid** component, which is used for fast scrolling or reverse scrolling. This callback must be set simultaneously with **onGetStartIndexByIndex** to take effect. |
 | [OnGridScrollIndexCallback](arkts-arkui-grid-comp-ongridscrollindexcallback-t.md) | Represents a callback for item changes in the visible area of the **Grid** component. |
 | [PlaceholderProvider](arkts-arkui-grid-comp-placeholderprovider-t.md) | Provides the placeholder description for an item of a scrollable component. |
+
+<!--Del-->
+### Types(System API)
+
+| Name | Description |
+| --- | --- |
+| [OnGetStartIndexByIndexCallback](arkts-arkui-grid-comp-ongetstartindexbyindexcallback-t-sys.md) | Calculates the start line on the page when the grid is scrolled to the specified target index. This API is used to support operations such as [scrollToIndex](Scroller#scrollToIndex). This callback must be set simultaneously with **onGetStartIndexByOffset** to take effect. |
+| [OnGetStartIndexByOffsetCallback](arkts-arkui-grid-comp-ongetstartindexbyoffsetcallback-t-sys.md) | Calculates the start line position of the current page based on the total offset of the **Grid** component, which is used for fast scrolling or reverse scrolling. This callback must be set simultaneously with **onGetStartIndexByIndex** to take effect. |
+<!--DelEnd-->
 
 ### Enums
 

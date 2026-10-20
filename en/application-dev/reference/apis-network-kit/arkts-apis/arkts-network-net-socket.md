@@ -30,8 +30,8 @@ import { socket } from '@kit.NetworkKit';
 | [constructMulticastSocketInstance](arkts-network-socket-constructmulticastsocketinstance-f.md#constructmulticastsocketinstance) | Creates a **MulticastSocket** object. |
 | [constructTCPSocketInstance](arkts-network-socket-constructtcpsocketinstance-f.md#constructtcpsocketinstance) | Creates a **TCPSocket** object. |
 | [constructTCPSocketServerInstance](arkts-network-socket-constructtcpsocketserverinstance-f.md#constructtcpsocketserverinstance) | Creates a **TCPSocketServer** object. |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance1) | Creates a **TLSSocket** object. |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance2) | Upgrades a **TCPSocket** connection to a **TLSSocket** connection. |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance) | Creates a **TLSSocket** object. |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance) | Upgrades a **TCPSocket** connection to a **TLSSocket** connection. |
 | [constructTLSSocketServerInstance](arkts-network-socket-constructtlssocketserverinstance-f.md#constructtlssocketserverinstance) | Creates a **TLSSocketServer** object. |
 | [constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md#constructudpsocketinstance) | Creates a **UDPSocket** object. |
 
@@ -71,6 +71,7 @@ import { socket } from '@kit.NetworkKit';
 
 | Name | Description |
 | --- | --- |
+| [NetAddress](arkts-network-socket-netaddress-t.md) | Define a network address. |
 | [X509CertRawData](arkts-network-socket-x509certrawdata-t.md) | Defines the certificate raw data. |
 
 ### Enums
@@ -79,9 +80,3 @@ import { socket } from '@kit.NetworkKit';
 | --- | --- |
 | [Protocol](arkts-network-socket-protocol-e.md) | Enumerates TLS protocol versions. |
 | [ProxyTypes](arkts-network-socket-proxytypes-e.md) | Enumerates socket proxy types. |
-
-### Properties
-
-| Name | Description |
-| --- | --- |
-| [NetAddress](arkts-network-socket-p.md#netaddress) | Define a network address. |

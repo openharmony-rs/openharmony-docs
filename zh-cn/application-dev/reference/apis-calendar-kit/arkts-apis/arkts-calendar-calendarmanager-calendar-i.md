@@ -4,7 +4,7 @@
 export interface Calendar
 ```
 
-下列API示例中需先通过[createCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#createcalendar2)、[getCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#getcalendar3)中任一方法获取Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。
+下列API示例中需先通过[createCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#createcalendar)、[getCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#getcalendar)中任一方法获取Calendar对象，再通过此对象调用对应方法，对该Calendar下的日程进行创建、删除、修改、查询等操作。
 
 **起始版本：** 10
 
@@ -17,8 +17,6 @@ export interface Calendar
 ```TypeScript
 import { calendarManager } from '@kit.CalendarKit';
 ```
-
-<a id="addevent1"></a>
 
 ## addEvent
 
@@ -57,7 +55,7 @@ addEvent(event: Event): Promise<number>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -91,8 +89,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 });
 ```
 
-<a id="addevent2"></a>
-
 ## addEvent
 
 ```TypeScript
@@ -125,7 +121,7 @@ addEvent(event: Event, callback: AsyncCallback<number>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -158,8 +154,6 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
   console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="addevents1"></a>
 
 ## addEvents
 
@@ -196,7 +190,7 @@ addEvents(events: Event[]): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -237,8 +231,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 });
 ```
 
-<a id="addevents2"></a>
-
 ## addEvents
 
 ```TypeScript
@@ -269,7 +261,7 @@ addEvents(events: Event[], callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -311,8 +303,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
   }
 });
 ```
-
-<a id="deleteevent1"></a>
 
 ## deleteEvent
 
@@ -380,8 +370,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 });
 ```
 
-<a id="deleteevent2"></a>
-
 ## deleteEvent
 
 ```TypeScript
@@ -446,8 +434,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
   }
 });
 ```
-
-<a id="deleteevents1"></a>
 
 ## deleteEvents
 
@@ -527,8 +513,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
   }
 });
 ```
-
-<a id="deleteevents2"></a>
 
 ## deleteEvents
 
@@ -692,8 +676,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 });
 ```
 
-<a id="getevents1"></a>
-
 ## getEvents
 
 ```TypeScript
@@ -730,7 +712,7 @@ getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise<Event[
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -773,8 +755,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 });
 ```
 
-<a id="getevents2"></a>
-
 ## getEvents
 
 ```TypeScript
@@ -806,7 +786,7 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -864,8 +844,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 });
 ```
 
-<a id="getevents3"></a>
-
 ## getEvents
 
 ```TypeScript
@@ -895,7 +873,7 @@ getEvents(callback: AsyncCallback<Event[]>):void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -1052,7 +1030,7 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | 权限校验失败。<br>**适用版本：** 23+ |
-| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因:<br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
+| [23900004](../errorcode-calendarManager.md#23900004-内部程序错误) | 内部程序错误，可能原因: <br>1. dataShare数据库执行错误；<br>2. 空指针错误；<br>3. 数据解析错误。<br>**适用版本：** 23+ |
 
 **示例**
 
@@ -1093,8 +1071,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
   }
 });
 ```
-
-<a id="setconfig1"></a>
 
 ## setConfig
 
@@ -1158,8 +1134,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 });
 ```
 
-<a id="setconfig2"></a>
-
 ## setConfig
 
 ```TypeScript
@@ -1218,8 +1192,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
   }
 });
 ```
-
-<a id="updateevent1"></a>
 
 ## updateEvent
 
@@ -1288,8 +1260,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
   }
 });
 ```
-
-<a id="updateevent2"></a>
 
 ## updateEvent
 

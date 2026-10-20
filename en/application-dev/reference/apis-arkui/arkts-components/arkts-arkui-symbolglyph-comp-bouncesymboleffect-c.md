@@ -38,8 +38,8 @@ A constructor used to create a **BounceSymbolEffect** instance, which comes with
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER |
-| direction | [EffectDirection](arkts-arkui-symbolglyph-comp-effectdirection-e.md) | No | Animation direction. For details about the specific enumeration values and descriptions, see EffectDirection Enumeration Description.<br>Default value: EffectDirection.DOWN |
+| scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description. <br>Default value: EffectScope.LAYER |
+| direction | [EffectDirection](arkts-arkui-symbolglyph-comp-effectdirection-e.md) | No | Animation direction. For details about the specific enumeration values and descriptions, see EffectDirection Enumeration Description. <br>Default value: EffectDirection.DOWN |
 
 ## direction
 

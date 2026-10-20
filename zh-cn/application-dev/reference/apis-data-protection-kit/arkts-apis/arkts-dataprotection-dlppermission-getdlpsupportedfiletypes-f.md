@@ -6,8 +6,6 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
-<a id="getdlpsupportedfiletypes1"></a>
-
 ## getDLPSupportedFileTypes
 
 ```TypeScript
@@ -50,8 +48,6 @@ dlpPermission.getDLPSupportedFileTypes().then((fileTypes) => { // 获取支持DL
 });
 ```
 
-
-<a id="getdlpsupportedfiletypes2"></a>
 
 ## getDLPSupportedFileTypes
 

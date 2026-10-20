@@ -6,8 +6,6 @@ export interface LocationRequest
 
 位置信息请求参数。
 
-@interface LocationRequest
-
 **起始版本：** 7
 
 **废弃版本：** 9

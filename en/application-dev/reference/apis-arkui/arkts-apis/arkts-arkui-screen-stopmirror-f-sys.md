@@ -6,8 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="stopmirror1"></a>
-
 ## stopMirror
 
 ```TypeScript
@@ -36,7 +34,7 @@ Stops mirror mode. This API uses an asynchronous callback to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400001](../errorcode-display.md#1400001-invalid-display-or-screen) | Invalid display or screen. |
 
 <!--Del-->
@@ -60,8 +58,6 @@ screen.stopMirror(mirrorScreenIds, (err: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="stopmirror2"></a>
 
 ## stopMirror
 

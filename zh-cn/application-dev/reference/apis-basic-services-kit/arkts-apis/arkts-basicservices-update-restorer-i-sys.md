@@ -121,8 +121,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="factoryreset1"></a>
-
 ## factoryReset
 
 ```TypeScript
@@ -193,8 +191,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="factoryreset2"></a>
 
 ## factoryReset
 

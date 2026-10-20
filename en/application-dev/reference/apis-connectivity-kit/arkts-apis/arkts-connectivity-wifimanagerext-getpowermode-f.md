@@ -6,8 +6,6 @@
 import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
-<a id="getpowermode1"></a>
-
 ## getPowerMode
 
 ```TypeScript
@@ -56,8 +54,6 @@ async function getWifiPowerMode() {
 }
 ```
 
-
-<a id="getpowermode2"></a>
 
 ## getPowerMode
 

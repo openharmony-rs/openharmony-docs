@@ -366,8 +366,6 @@ if (proxy != undefined) {
 }
 ```
 
-<a id="sendmessagerequest1"></a>
-
 ## sendMessageRequest
 
 ```TypeScript
@@ -485,8 +483,6 @@ try {
   hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + error);
 }
 ```
-
-<a id="sendmessagerequest2"></a>
 
 ## sendMessageRequest
 
@@ -1035,8 +1031,6 @@ if (proxy != undefined) {
 }
 ```
 
-<a id="sendrequest1"></a>
-
 ## sendRequest
 
 ```TypeScript
@@ -1140,8 +1134,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
 }
 ```
-
-<a id="sendrequest2"></a>
 
 ## sendRequest
 
@@ -1259,8 +1251,6 @@ try {
   hilog.error(0x0000, 'testTag', 'sendRequest failed, error: ' + error);
 }
 ```
-
-<a id="sendrequest3"></a>
 
 ## sendRequest
 

@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="hasoperatorprivileges1"></a>
-
 ## hasOperatorPrivileges
 
 ```TypeScript
@@ -54,8 +52,6 @@ sim.hasOperatorPrivileges(0, (err: BusinessError, data: boolean) => {
 });
 ```
 
-
-<a id="hasoperatorprivileges2"></a>
 
 ## hasOperatorPrivileges
 

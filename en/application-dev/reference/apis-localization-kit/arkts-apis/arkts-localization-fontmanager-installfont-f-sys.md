@@ -16,7 +16,7 @@ Installs a font file from a specified path into the system font library. This AP
 
 > **NOTE:** 
 > - After successful installation, applications can use the font by its font name. The same font path cannot be installed repeatedly.
-> - A maximum of 200 font files can be installed. In version 26.0.1 and later, a maximum of 800 font files can be installed on PCs and 2-in-1 devices.
+> - A maximum of 200 font files can be installed. In version 26.0.1 and later, a maximum of 800 font files can be installed on PCs, 2-in-1 devices, and tablets.
 
 **Since:** 19
 
@@ -38,7 +38,7 @@ Installs a font file from a specified path into the system font library. This AP
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the installation result.<br>- The value **0** indicates that the installation is successful and the font has been added to the system font library. <br>- Any other value indicates that the installation failed. Troubleshoot based on the error code. |
+| Promise&lt;number&gt; | Promise used to return the installation result. <br>- The value **0** indicates that the installation is successful and the font has been added to the system font library. <br>- Any other value indicates that the installation failed. Troubleshoot based on the error code. |
 
 **Error codes:**
 

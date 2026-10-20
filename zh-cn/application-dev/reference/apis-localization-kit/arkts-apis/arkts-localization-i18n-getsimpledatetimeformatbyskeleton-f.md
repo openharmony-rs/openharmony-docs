@@ -6,8 +6,6 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
-<a id="getsimpledatetimeformatbyskeleton1"></a>
-
 ## getSimpleDateTimeFormatBySkeleton
 
 ```TypeScript
@@ -59,8 +57,6 @@ try {
 ```
 
 
-<a id="getsimpledatetimeformatbyskeleton2"></a>
-
 ## getSimpleDateTimeFormatBySkeleton
 
 ```TypeScript
@@ -73,7 +69,7 @@ export function getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: int
 
 **废弃版本：** 20
 
-**替代接口：** [getSimpleDateTimeFormatBySkeleton](#getsimpledatetimeformatbyskeleton1)(skeleton: string, locale?: Intl.Locale)
+**替代接口：** [getSimpleDateTimeFormatBySkeleton](#getsimpledatetimeformatbyskeleton)(skeleton: string, locale?: Intl.Locale)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 

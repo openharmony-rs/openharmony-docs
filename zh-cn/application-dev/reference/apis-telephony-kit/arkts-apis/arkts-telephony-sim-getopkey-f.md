@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="getopkey1"></a>
-
 ## getOpKey
 
 ```TypeScript
@@ -59,8 +57,6 @@ try {
 }
 ```
 
-
-<a id="getopkey2"></a>
 
 ## getOpKey
 

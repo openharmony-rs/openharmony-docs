@@ -30,4 +30,4 @@ function init(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | true：初始化成功。 <br>false：初始化失败。 |
+| boolean | true：初始化成功。  <br>false：初始化失败。 |

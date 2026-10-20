@@ -33,7 +33,7 @@ Sets the connection mode. This API uses a promise to return the result. Before c
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | mode | [ConnectionMode](arkts-connectivity-manager-connectionmode-e-sys.md) | Yes | Connection mode to be set. |
-| duration | number | Yes | Duration of the mode to set, in seconds. The value **0** indicates no time limit.<br>The value should be an integer. |
+| duration | number | Yes | Duration of the mode to set, in seconds. The value **0** indicates no time limit. <br>The value should be an integer. |
 
 **Return value:**
 

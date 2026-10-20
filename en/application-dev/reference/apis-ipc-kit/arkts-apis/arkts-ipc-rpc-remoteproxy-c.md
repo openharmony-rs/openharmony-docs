@@ -366,8 +366,6 @@ if (proxy != undefined) {
 }
 ```
 
-<a id="sendmessagerequest1"></a>
-
 ## sendMessageRequest
 
 ```TypeScript
@@ -485,8 +483,6 @@ try {
   hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + error);
 }
 ```
-
-<a id="sendmessagerequest2"></a>
 
 ## sendMessageRequest
 
@@ -1035,15 +1031,13 @@ if (proxy != undefined) {
 }
 ```
 
-<a id="sendrequest1"></a>
-
 ## sendRequest
 
 ```TypeScript
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): boolean
 ```
 
-Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the API returns immediately and **reply** is empty. The specific response need to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the response is returned when **sendRequest** returns, and **reply** contains the response content.
+Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the API returns immediately and **reply** is empty. The specific response needs to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the response is returned when **sendRequest** returns, and **reply** contains the response content.
 
 **Since:** 7
 
@@ -1140,8 +1134,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
 }
 ```
-
-<a id="sendrequest2"></a>
 
 ## sendRequest
 
@@ -1259,8 +1251,6 @@ try {
   hilog.error(0x0000, 'testTag', 'sendRequest failed, error: ' + error);
 }
 ```
-
-<a id="sendrequest3"></a>
 
 ## sendRequest
 

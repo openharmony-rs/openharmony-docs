@@ -158,8 +158,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getosaccountforegroundsubprofileid1"></a>
-
 ## getOsAccountForegroundSubProfileId
 
 ```TypeScript
@@ -212,8 +210,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getosaccountforegroundsubprofileid2"></a>
 
 ## getOsAccountForegroundSubProfileId
 
@@ -340,8 +336,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getosaccountsubprofile1"></a>
-
 ## getOsAccountSubProfile
 
 ```TypeScript
@@ -406,8 +400,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getosaccountsubprofile2"></a>
 
 ## getOsAccountSubProfile
 
@@ -476,8 +468,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getosaccountsubprofileids1"></a>
-
 ## getOsAccountSubProfileIds
 
 ```TypeScript
@@ -532,8 +522,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getosaccountsubprofileids2"></a>
 
 ## getOsAccountSubProfileIds
 

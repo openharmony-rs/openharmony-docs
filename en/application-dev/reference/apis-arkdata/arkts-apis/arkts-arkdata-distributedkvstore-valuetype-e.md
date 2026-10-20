@@ -4,9 +4,7 @@
 enum ValueType
 ```
 
-Indicates the `ValueType`.
-
-<p>`ValueType` is obtained based on the value.
+Enumerates the types of the value in a KV pair.
 
 **Since:** 9
 
@@ -20,7 +18,7 @@ Indicates the `ValueType`.
 BOOLEAN = 4
 ```
 
-Indicates that the value type is boolean.
+Boolean.
 
 **Since:** 9
 
@@ -36,7 +34,7 @@ Indicates that the value type is boolean.
 BYTE_ARRAY = 3
 ```
 
-Indicates that the value type is byte array.
+Byte array.
 
 **Since:** 9
 
@@ -52,7 +50,7 @@ Indicates that the value type is byte array.
 DOUBLE = 5
 ```
 
-Indicates that the value type is double.
+Double (double-precision floating point).
 
 **Since:** 9
 
@@ -68,7 +66,7 @@ Indicates that the value type is double.
 FLOAT = 2
 ```
 
-Indicates that the value type is float.
+Float (single-precision floating point).
 
 **Since:** 9
 
@@ -82,7 +80,7 @@ Indicates that the value type is float.
 INTEGER = 1
 ```
 
-Indicates that the value type is int.
+Integer.
 
 **Since:** 9
 
@@ -96,7 +94,7 @@ Indicates that the value type is int.
 STRING = 0
 ```
 
-Indicates that the value type is string.
+String.
 
 **Since:** 9
 

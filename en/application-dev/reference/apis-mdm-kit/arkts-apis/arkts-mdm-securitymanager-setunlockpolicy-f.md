@@ -29,7 +29,7 @@ Sets the unlock policy.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | policy | [UnlockPolicy](arkts-mdm-securitymanager-unlockpolicy-e.md) | Yes | policy indicates the unlock policy. |
-| accountId | number | Yes | accountId indicates the ID of OS account.<br>Value range:[0, +∞). |
+| accountId | number | Yes | accountId indicates the ID of OS account. <br>Value range:[0, +∞). |
 
 **Error codes:**
 

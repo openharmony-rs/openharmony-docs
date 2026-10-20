@@ -18,7 +18,7 @@ Enumerates the subscription types.
 SUBSCRIBE_TYPE_ALL
 ```
 
-Subscription to both local and remote data changes
+Local and remote data changes.
 
 **Since:** 9
 
@@ -34,7 +34,7 @@ Subscription to both local and remote data changes
 SUBSCRIBE_TYPE_LOCAL
 ```
 
-Subscription to local data changes
+Local data changes.
 
 **Since:** 9
 
@@ -50,7 +50,7 @@ Subscription to local data changes
 SUBSCRIBE_TYPE_REMOTE
 ```
 
-Subscription to remote data changes
+Remote data changes.
 
 **Since:** 9
 

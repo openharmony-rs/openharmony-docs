@@ -22,8 +22,6 @@ export class Locale
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -56,8 +54,6 @@ let locale = new intl.Locale();
 // 返回系统当前区域ID
 let localeID = locale.toString();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

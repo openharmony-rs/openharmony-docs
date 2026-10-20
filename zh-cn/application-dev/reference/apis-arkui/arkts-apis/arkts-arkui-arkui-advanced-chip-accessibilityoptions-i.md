@@ -60,8 +60,6 @@ accessibilityLevel?: string
 
 "no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。
 
-默认值："auto"。
-
 值为undefined时，按默认值处理。
 
 **类型：** string

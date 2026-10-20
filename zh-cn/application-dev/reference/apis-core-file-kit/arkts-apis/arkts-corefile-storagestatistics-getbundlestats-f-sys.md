@@ -6,8 +6,6 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
-<a id="getbundlestats1"></a>
-
 ## getBundleStats
 
 ```TypeScript
@@ -78,8 +76,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getbundlestats2"></a>
 
 ## getBundleStats
 

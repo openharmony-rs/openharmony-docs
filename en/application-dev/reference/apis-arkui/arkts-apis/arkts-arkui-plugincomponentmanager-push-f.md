@@ -6,8 +6,6 @@
 import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 ```
 
-<a id="push1"></a>
-
 ## push
 
 ```TypeScript

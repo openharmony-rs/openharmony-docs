@@ -54,8 +54,6 @@ getEventTargetInfo(): EventTargetInfo
 | --- | --- |
 | [EventTargetInfo](arkts-arkui-tapgesture-comp-eventtargetinfo-c.md) | 当前触摸识别器对应组件的信息。 |
 
-<a id="ishostbelongsto1"></a>
-
 ## isHostBelongsTo
 
 ```TypeScript
@@ -85,8 +83,6 @@ Check whether the current gesture binding node is a descendant of the passed-in 
 | 类型 | 说明 |
 | --- | --- |
 | boolean | the query result. |
-
-<a id="ishostbelongsto2"></a>
 
 ## isHostBelongsTo
 

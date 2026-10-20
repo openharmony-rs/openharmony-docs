@@ -28,17 +28,21 @@ UnionEffectContainer(options?: UnionEffectContainerOptions)
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [UnionEffectContainerOptions](arkts-arkui-unioneffectcontainer-comp-unioneffectcontaineroptions-i-sys.md) | 设置UnionEffectContainer构造参数。 |
+<!--DelEnd-->
 
-### 枚举
+<!--Del-->
+### 枚举（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [UnionMode](arkts-arkui-unioneffectcontainer-comp-unionmode-e-sys.md) | 设置融合效果模式。 |
+<!--DelEnd-->
 
 <!--Del-->
 ## 示例

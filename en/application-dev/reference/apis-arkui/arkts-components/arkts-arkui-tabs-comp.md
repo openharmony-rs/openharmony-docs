@@ -19,8 +19,8 @@ Only the child component [TabContent](arkts-arkui-tabcontent-comp.md) and the re
 > loading and release are required, see
 > [Example 13](../../../reference/apis-arkui/arkui-ts/ts-container-tabs.md#example-13-implementing-lazy-loading-and-resource-release-of-pages).
 > 
-> When [height](arkts-arkui-common-comp-commonmethod-c.md#height1) of **Tabs** is set to auto, the height adapts to the child
-> component height. When [width](arkts-arkui-common-comp-commonmethod-c.md#width1) is set to auto, the width adapts to the
+> When [height](arkts-arkui-common-comp-commonmethod-c.md#height) of **Tabs** is set to auto, the height adapts to the child
+> component height. When [width](arkts-arkui-common-comp-commonmethod-c.md#width) is set to auto, the width adapts to the
 > child component width.
 
 ## Tabs
@@ -81,10 +81,10 @@ Creates a **Tabs** container.
 
 | Name | Description |
 | --- | --- |
-| [AnimationMode](arkts-arkui-tabs-comp-animationmode-e.md) | Enumerates the animation forms for switching **TabContent** when a [TabBar](arkts-arkui-tabcontent-comp-attribute.md#tabbar1) tab is tapped. |
+| [AnimationMode](arkts-arkui-tabs-comp-animationmode-e.md) | Enumerates the animation forms for switching **TabContent** when a [TabBar](arkts-arkui-tabcontent-comp-attribute.md#tabbar) tab is tapped. |
 | [BarMode](arkts-arkui-tabs-comp-barmode-e.md) | Enumerates layout modes of the tab bar. |
 | [BarPosition](arkts-arkui-tabs-comp-barposition-e.md) | Enumerates the positions of the **Tabs** component. |
-| [LayoutStyle](arkts-arkui-tabs-comp-layoutstyle-e.md) | Enumerates the tab layout modes when the tab bar is not scrolled in [Scrollable](arkts-arkui-tabs-comp-attribute.md#barmode3) mode. |
+| [LayoutStyle](arkts-arkui-tabs-comp-layoutstyle-e.md) | Enumerates the tab layout modes when the tab bar is not scrolled in [Scrollable](arkts-arkui-tabs-comp-attribute.md#barmode) mode. |
 | [TabBarDisplayMode](arkts-arkui-tabs-comp-tabbardisplaymode-e.md) | Enumerates the actual display modes of the tab bar under different Tabs container sizes. This enum is used in [barDisplayModeBreakpoint](arkts-arkui-tabs-comp-attribute.md#bardisplaymodebreakpoint) to specify the display mode for different breakpoint sizes. It is only meaningful when **TabBarStyle** is set to **SIDEBAR_ADAPTABLE** or **SIDEBAR**. |
 | [TabBarStyle](arkts-arkui-tabs-comp-tabbarstyle-e.md) | Enumerates the display styles of the tab bar. |
 | [TabsCacheMode](arkts-arkui-tabs-comp-tabscachemode-e.md) | Enumerates the caching modes for child components. |

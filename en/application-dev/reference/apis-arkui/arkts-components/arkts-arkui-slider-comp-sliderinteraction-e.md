@@ -8,8 +8,8 @@ Interaction mode between the user and the slider.
 
 | Name | Value|Description |  
 | ------ | -- | ----------------------------- |  
-| SLIDE_AND_CLICK | 0 | Users can drag the slider or touch the track to move the slider. The slider moves as soon as the mouse or finger is pressed.|
-| SLIDE_ONLY | 1 | Users are not allowed to move the slider by touching the slider.|
+| SLIDE_AND_CLICK | 0 | Users can drag the slider or touch the track to move the slider. The slider moves as soon as the mouse or finger is pressed.|  
+| SLIDE_ONLY | 1 | Users are not allowed to move the slider by touching the slider.|  
 | SLIDE_AND_CLICK_UP | 2 |Users can drag the slider or touch the track to move the slider. The slider moves when the mouse is released or finger is lifted, if the release/lift position coincides with the screen press position.|
 
 **Since:** 12

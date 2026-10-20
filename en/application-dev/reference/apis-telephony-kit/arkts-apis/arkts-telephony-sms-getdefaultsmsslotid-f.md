@@ -6,8 +6,6 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
-<a id="getdefaultsmsslotid1"></a>
-
 ## getDefaultSmsSlotId
 
 ```TypeScript
@@ -26,7 +24,7 @@ Obtains the default slot ID of the SIM card used to send SMS messages. This API 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Examples**
 
@@ -39,8 +37,6 @@ sms.getDefaultSmsSlotId((err: BusinessError, data: number) => {
 });
 ```
 
-
-<a id="getdefaultsmsslotid2"></a>
 
 ## getDefaultSmsSlotId
 
@@ -60,7 +56,7 @@ Obtains the default slot ID of the SIM card used to send SMS messages. This API 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the result.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| Promise&lt;number&gt; | Promise used to return the result. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Examples**
 

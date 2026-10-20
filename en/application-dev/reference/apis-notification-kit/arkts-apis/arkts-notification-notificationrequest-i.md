@@ -451,8 +451,6 @@ notificationFlags?: NotificationFlags
 
 Notification flags. The default value is empty. This parameter is writable since API version 23. You can set this parameter to reduce the notification modes. This parameter does not take effect when the notification slot type is LIVE_VIEW.
 
-@readonly [since 8 - 22]
-
 **Type:** [NotificationFlags](arkts-notification-notificationflags-i.md)
 
 **Since:** 8

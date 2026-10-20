@@ -6,8 +6,6 @@ type GetWantParamsCallback = (formInfo: Array<formInfo.FormInfo>) => Array<Recor
 
 Get want parameters callback.
 
-@typedef { function }
-
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.

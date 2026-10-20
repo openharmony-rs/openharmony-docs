@@ -594,8 +594,6 @@ audioRoutingManager.restoreOutputDeviceByFilter(outputAudioRendererFilter).then(
 
 <!--DelEnd-->
 
-<a id="selectinputdevice1"></a>
-
 ## selectInputDevice
 
 ```TypeScript
@@ -653,8 +651,6 @@ async function selectInputDevice(){
 ```
 
 <!--DelEnd-->
-
-<a id="selectinputdevice2"></a>
 
 ## selectInputDevice
 
@@ -796,8 +792,6 @@ async function selectInputDeviceByFilter(){
 
 <!--DelEnd-->
 
-<a id="selectoutputdevice1"></a>
-
 ## selectOutputDevice
 
 ```TypeScript
@@ -854,8 +848,6 @@ async function selectOutputDevice(){
 ```
 
 <!--DelEnd-->
-
-<a id="selectoutputdevice2"></a>
 
 ## selectOutputDevice
 
@@ -917,8 +909,6 @@ async function selectOutputDevice(){
 ```
 
 <!--DelEnd-->
-
-<a id="selectoutputdevicebyfilter1"></a>
 
 ## selectOutputDeviceByFilter
 
@@ -986,8 +976,6 @@ async function selectOutputDeviceByFilter(){
 ```
 
 <!--DelEnd-->
-
-<a id="selectoutputdevicebyfilter2"></a>
 
 ## selectOutputDeviceByFilter
 
@@ -1059,8 +1047,6 @@ async function selectOutputDeviceByFilter(){
 ```
 
 <!--DelEnd-->
-
-<a id="selectoutputdevicebyfilter3"></a>
 
 ## selectOutputDeviceByFilter
 
@@ -1139,8 +1125,6 @@ audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, output
 
 <!--DelEnd-->
 
-<a id="unexcludeoutputdevices1"></a>
-
 ## unexcludeOutputDevices
 
 ```TypeScript
@@ -1216,8 +1200,6 @@ async function unexcludeOutputDevices(){
 ```
 
 <!--DelEnd-->
-
-<a id="unexcludeoutputdevices2"></a>
 
 ## unexcludeOutputDevices
 

@@ -58,7 +58,7 @@ Obtains the **LayoutManager** object.
 
 | Type | Description |
 | --- | --- |
-| [LayoutManager](../arkts-apis/arkts-arkui-layoutmanager-i.md) | Layout manager object, which is used to obtain text layout information, including the number of lines, glyph position, line information, and character viewport rectangle.<br>**NOTE:** <br>If the **TextController** component has not been bound to the **Text** component or the bound **Text** component has been destroyed or uninstalled, **undefined** will be returned. |
+| [LayoutManager](../arkts-apis/arkts-arkui-layoutmanager-i.md) | Layout manager object, which is used to obtain text layout information, including the number of lines, glyph position, line information, and character viewport rectangle. <br>**NOTE:** <br>If the **TextController** component has not been bound to the **Text** component or the bound **Text** component has been destroyed or uninstalled, **undefined** will be returned. |
 
 ## setStyledString
 
@@ -129,6 +129,6 @@ Sets the text selection area, which will be highlighted.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectionStart | number &#124; undefined | Yes | Start position of the text selection range.<br>Value range: [0, +∞). Negative values and **undefined** are treated as **0**. |
-| selectionEnd | number &#124; undefined | Yes | End position of the text selection range.<br>Value range: [0, +∞). Negative values and **undefined** are treated as **0**. |
-| options | [SelectionOptions](arkts-arkui-common-comp-selectionoptions-i.md) | No | Configuration options for text selection.<br>Default value: **MenuPolicy.DEFAULT** in **SelectionOptions** |
+| selectionStart | number &#124; undefined | Yes | Start position of the text selection range. <br>Value range: [0, +∞). Negative values and **undefined** are treated as **0**. |
+| selectionEnd | number &#124; undefined | Yes | End position of the text selection range. <br>Value range: [0, +∞). Negative values and **undefined** are treated as **0**. |
+| options | [SelectionOptions](arkts-arkui-common-comp-selectionoptions-i.md) | No | Configuration options for text selection. <br>Default value: **MenuPolicy.DEFAULT** in **SelectionOptions** |

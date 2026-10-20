@@ -6,8 +6,6 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
-<a id="partition1"></a>
-
 ## partition
 
 ```TypeScript
@@ -40,13 +38,30 @@ function partition(diskId: string, type: number, callback: AsyncCallback<void>):
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
+**示例**
 
-<a id="partition2"></a>
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// diskId可通过getAllDisks()接口获取
+let diskId: string = "";
+let type: number = 0;
+volumeManager.partition(diskId, type, (error: BusinessError) => {
+  if (error) {
+    console.error(`partition failed, code is: ${error.code}, message is: ${error.message}`);
+    return;
+  }
+  // 对磁盘设备分区成功后的回调
+});
+```
+
+<!--DelEnd-->
+
 
 ## partition
 
@@ -85,7 +100,24 @@ function partition(diskId: string, type: number): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// diskId可通过getAllDisks()接口获取
+let diskId: string = "";
+let type: number = 0;
+volumeManager.partition(diskId, type).then(() => {
+  console.info("partition successfully");
+}).catch((error: BusinessError) => {
+  console.error(`Failed to partition. Code: ${error.code}, message: ${error.message}`);
+});
+```
+
+<!--DelEnd-->

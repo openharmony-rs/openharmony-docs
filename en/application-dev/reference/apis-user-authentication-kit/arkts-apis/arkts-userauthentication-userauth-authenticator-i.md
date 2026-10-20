@@ -22,8 +22,6 @@ Provides APIs for managing the **Authenticator** object.
 import { userAuth } from '@kit.UserAuthenticationKit';
 ```
 
-<a id="execute1"></a>
-
 ## execute
 
 ```TypeScript
@@ -48,8 +46,8 @@ Starts user authentication. This API uses an asynchronous callback to return the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [AuthType](arkts-userauthentication-userauth-authtype-t.md) | Yes | Authentication type. Currently, only **FACE_ONLY** is supported.<br>**ALL** is a reserved parameter. Authentication of the **ALL** type is not supported in the current version. |
-| level | [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md) | Yes | Security level of the authentication. It can be **S1** (lowest), **S2**, **S3**, or **S4** (highest).<br>Devices capable of 3D facial recognition support S3 and lower-level authentication. <br>Devices capable of 2D facial recognition support S2 and lower-level authentication. |
+| type | [AuthType](arkts-userauthentication-userauth-authtype-t.md) | Yes | Authentication type. Currently, only **FACE_ONLY** is supported. <br>**ALL** is a reserved parameter. Authentication of the **ALL** type is not supported in the current version. |
+| level | [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md) | Yes | Security level of the authentication. It can be **S1** (lowest), **S2**, **S3**, or **S4** (highest). <br>Devices capable of 3D facial recognition support S3 and lower-level authentication. <br>Devices capable of 2D facial recognition support S2 and lower-level authentication. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. **number** indicates the [AuthenticationResult](arkts-userauthentication-userauth-authenticationresult-e.md). |
 
 **Examples**
@@ -66,8 +64,6 @@ authenticator.execute('FACE_ONLY', 'S2', (error, code) => {
   console.error(`Failed to auth. Code: ${code}`);
 });
 ```
-
-<a id="execute2"></a>
 
 ## execute
 
@@ -93,8 +89,8 @@ Starts user authentication. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [AuthType](arkts-userauthentication-userauth-authtype-t.md) | Yes | Authentication type. Currently, only "FACE_ONLY" is supported.<br>ALL is a reserved parameter. The current version does not support ALL-type authentication. |
-| level | [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md) | Yes | Security level of the authentication. It can be "S1" (lowest), "S2", "S3", or "S4"(highest).<br>Devices capable of 3D facial recognition support S3 and lower-level authentication. <br>Devices capable of 2D facial recognition support S2 and lower-level authentication. |
+| type | [AuthType](arkts-userauthentication-userauth-authtype-t.md) | Yes | Authentication type. Currently, only "FACE_ONLY" is supported. <br>ALL is a reserved parameter. The current version does not support ALL-type authentication. |
+| level | [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md) | Yes | Security level of the authentication. It can be "S1" (lowest), "S2", "S3", or "S4"(highest). <br>Devices capable of 3D facial recognition support S3 and lower-level authentication. <br>Devices capable of 2D facial recognition support S2 and lower-level authentication. |
 
 **Return value:**
 

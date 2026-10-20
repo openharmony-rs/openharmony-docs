@@ -6,8 +6,6 @@ export interface ScrollParam
 
 ScrollParam
 
-@interface ScrollParam
-
 **Since:** 4
 
 <!--Device-unnamed-export interface ScrollParam--><!--Device-unnamed-export interface ScrollParam-End-->

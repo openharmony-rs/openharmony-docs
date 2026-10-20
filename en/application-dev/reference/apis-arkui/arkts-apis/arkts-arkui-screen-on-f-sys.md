@@ -6,8 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="on1"></a>
-
 ## on
 
 ```TypeScript
@@ -36,7 +34,7 @@ Subscribes to events related to the screen state.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 <!--Del-->
 **Examples**
@@ -52,8 +50,6 @@ screen.on('connect', callback);
 <!--DelEnd-->
 
 
-<a id="on2"></a>
-
 ## on
 
 ```TypeScript
@@ -82,7 +78,7 @@ Subscribes to events related to the screen state.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 <!--Del-->
 **Examples**
@@ -92,8 +88,6 @@ See [on](#on)
 <!--DelEnd-->
 
 
-<a id="on3"></a>
-
 ## on
 
 ```TypeScript
@@ -122,7 +116,7 @@ Subscribes to events related to the screen state.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 <!--Del-->
 **Examples**

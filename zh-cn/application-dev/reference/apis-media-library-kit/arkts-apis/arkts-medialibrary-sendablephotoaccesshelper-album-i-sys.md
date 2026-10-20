@@ -85,3 +85,83 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 ```
 
 <!--DelEnd-->
+
+## cloudId
+
+```TypeScript
+readonly cloudId?: string
+```
+
+相册CloudId。
+
+**类型：** string
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Album-readonly cloudId?: string--><!--Device-Album-readonly cloudId?: string-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## shareAlbumOwner
+
+```TypeScript
+readonly shareAlbumOwner?: string
+```
+
+共享相册的所有者。
+
+**类型：** string
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Album-readonly shareAlbumOwner?: string--><!--Device-Album-readonly shareAlbumOwner?: string-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## shareRiskStatus
+
+```TypeScript
+readonly shareRiskStatus?: ShareAlbumRiskStatus
+```
+
+共享相册的风控状态。
+
+**类型：** [ShareAlbumRiskStatus](arkts-medialibrary-sendablephotoaccesshelper-sharealbumriskstatus-e-sys.md)
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Album-readonly shareRiskStatus?: ShareAlbumRiskStatus--><!--Device-Album-readonly shareRiskStatus?: ShareAlbumRiskStatus-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## shareRiskType
+
+```TypeScript
+readonly shareRiskType?: string
+```
+
+共享相册的风控类型。
+
+**类型：** string
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Album-readonly shareRiskType?: string--><!--Device-Album-readonly shareRiskType?: string-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。

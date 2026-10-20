@@ -26,8 +26,6 @@ Implements a shadow layer.
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="create1"></a>
-
 ## create
 
 ```TypeScript
@@ -61,7 +59,7 @@ Creates a **ShadowLayer** object.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 
@@ -76,8 +74,6 @@ class DrawingRenderNode extends RenderNode {
   }
 }
 ```
-
-<a id="create3"></a>
 
 ## create
 
@@ -112,7 +108,7 @@ Creates a **ShadowLayer** object.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 

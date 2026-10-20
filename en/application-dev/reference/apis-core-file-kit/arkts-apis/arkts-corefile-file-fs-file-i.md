@@ -4,7 +4,7 @@
 declare interface File
 ```
 
-Represents a **File** object opened by **open()**.
+Represents a <b>File</b> object opened by <b>open()</b>. It contains the FD and provides capabilities such as locking a file and obtaining the parent directory.
 
 **Since:** 9
 
@@ -24,7 +24,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 getParent(): string
 ```
 
-Obtains the parent directory of this file object.
+Obtains the parent directory of the <b>File</b> object.
 
 **Since:** 11
 
@@ -55,15 +55,13 @@ console.info(`Succeeded in getting parent path, the parent path is: ${file.getPa
 fileIo.closeSync(file);
 ```
 
-<a id="lock1"></a>
-
 ## lock
 
 ```TypeScript
 lock(exclusive?: boolean): Promise<void>
 ```
 
-Applies an exclusive lock or a shared lock on this file in blocking mode. This API uses a promise to return the result.
+Applies an exclusive lock or a shared lock on a file in blocking mode. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -75,7 +73,7 @@ Applies an exclusive lock or a shared lock on this file in blocking mode. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| exclusive | boolean | No | Lock to apply.<br> The value **true** means an exclusive lock, and the value **false** (default) means a shared lock. |
+| exclusive | boolean | No | Whether to apply an exclusive lock. The value <b>true</b> indicates an exclusive lock is applied, and <b>false</b> indicates a shared lock is applied. The default value is <b>false</b>. |
 
 **Return value:**
 
@@ -110,15 +108,13 @@ file.lock(true).then(() => {
 });
 ```
 
-<a id="lock2"></a>
-
 ## lock
 
 ```TypeScript
 lock(callback: AsyncCallback<void>): void
 ```
 
-Applies an exclusive lock or a shared lock on this file in blocking mode. This API uses an asynchronous callback to return the result.
+Applies a shared lock on a file in blocking mode. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -130,7 +126,7 @@ Applies an exclusive lock or a shared lock on this file in blocking mode. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the file is locked successfully, <b>err</b> is <b>undefined</b>. Otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 
@@ -160,15 +156,13 @@ file.lock((err: BusinessError) => {
 });
 ```
 
-<a id="lock3"></a>
-
 ## lock
 
 ```TypeScript
 lock(exclusive: boolean, callback: AsyncCallback<void>): void
 ```
 
-Applies an exclusive lock or a shared lock on this file in blocking mode. This API uses an asynchronous callback to return the result.
+Applies an exclusive lock or a shared lock on a file in blocking mode. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -180,8 +174,8 @@ Applies an exclusive lock or a shared lock on this file in blocking mode. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| exclusive | boolean | Yes | Lock to apply.<br> The value **true** means an exclusive lock, and the value **false** (default) means a shared lock. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| exclusive | boolean | Yes | Whether to apply an exclusive lock. The value <b>true</b> indicates an exclusive lock is applied, and <b>false</b> indicates a shared lock is applied. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the file is locked successfully, <b>err</b> is <b>undefined</b>. Otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 
@@ -217,7 +211,7 @@ file.lock(true, (err: BusinessError) => {
 tryLock(exclusive?: boolean): void
 ```
 
-Applies an exclusive lock or a shared lock on this file in non-blocking mode.
+Applies an exclusive lock or a shared lock on a file in non-blocking mode.
 
 **Since:** 9
 
@@ -229,7 +223,7 @@ Applies an exclusive lock or a shared lock on this file in non-blocking mode.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| exclusive | boolean | No | Lock to apply.<br> The value **true** means an exclusive lock, and the value **false** (default) means a shared lock. |
+| exclusive | boolean | No | Whether to apply an exclusive lock. The value <b>true</b> indicates an exclusive lock is applied, and <b>false</b> indicates a shared lock is applied. The default value is <b>false</b>. |
 
 **Error codes:**
 

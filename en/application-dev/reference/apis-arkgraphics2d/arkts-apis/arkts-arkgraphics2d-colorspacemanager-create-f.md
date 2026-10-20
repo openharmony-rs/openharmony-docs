@@ -6,8 +6,6 @@
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 ```
 
-<a id="create1"></a>
-
 ## create
 
 ```TypeScript
@@ -26,7 +24,7 @@ Creates a standard color space object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| colorSpaceName | [ColorSpace](arkts-arkgraphics2d-colorspacemanager-colorspace-e.md) | Yes | Type of the color space.<br>**UNKNOWN** and **CUSTOM** cannot be used when creating standard color space objects. |
+| colorSpaceName | [ColorSpace](arkts-arkgraphics2d-colorspacemanager-colorspace-e.md) | Yes | Type of the color space. <br>**UNKNOWN** and **CUSTOM** cannot be used when creating standard color space objects. |
 
 **Return value:**
 
@@ -52,8 +50,6 @@ try {
 }
 ```
 
-
-<a id="create2"></a>
 
 ## create
 

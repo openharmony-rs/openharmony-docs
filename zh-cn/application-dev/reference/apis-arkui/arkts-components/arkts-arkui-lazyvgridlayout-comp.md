@@ -10,7 +10,7 @@ API版本26.0.0之前，其父组件支持[WaterFlow](arkts-arkui-waterflow-comp
 
 > **说明：** 
 > 
-> - LazyVGridLayout组件高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](arkts-arkui-common-comp-commonmethod-c.md#height1)、[size](arkts-arkui-common-comp-commonmethod-c.md#size)中的height、[constraintSize](arkts-arkui-common-comp-commonmethod-c.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio)、[layoutWeight](arkts-arkui-common-comp-commonmethod-c.md#layoutweight)，以及[height](arkts-arkui-common-comp-commonmethod-c.md#height2)取[LayoutPolicy](arkts-arkui-common-comp-layoutpolicy-c.md)值的场景。
+> - LazyVGridLayout组件高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](arkts-arkui-common-comp-commonmethod-c.md#height)、[size](arkts-arkui-common-comp-commonmethod-c.md#size)中的height、[constraintSize](arkts-arkui-common-comp-commonmethod-c.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio)、[layoutWeight](arkts-arkui-common-comp-commonmethod-c.md#layoutweight)，以及[height](arkts-arkui-common-comp-commonmethod-c.md#height)取[LayoutPolicy](arkts-arkui-common-comp-layoutpolicy-c.md)值的场景。
 > 
 > - 当父组件设置主轴方向尺寸时，LazyVGridLayout按照父组件可视区域进行懒加载；当父组件未设置主轴方向尺寸时，LazyVGridLayout会被内容撑开，导致所有子组件都会被加载布局。
 > 
@@ -18,7 +18,7 @@ API版本26.0.0之前，其父组件支持[WaterFlow](arkts-arkui-waterflow-comp
 > 
 > 1. 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段，并且布局方向[FlexDirection](../arkts-apis/arkts-arkui-flexdirection-e.md)设置为FlexDirection.Column的情况下支持懒加载。在WaterFlow的多列模式或横向布局（FlexDirection.Row或FlexDirection.RowReverse）下使用该组件，则不支持懒加载。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。
 > 
-> 2. 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](arkts-arkui-list-comp-attribute.md#listdirection)属性设置为Axis.Vertical）。在非竖直方向的List中使用该组件会导致应用崩溃。当List设置了[lanes](arkts-arkui-list-comp-attribute.md#lanes1)、[chainAnimation](arkts-arkui-list-comp-attribute.md#chainanimation)、[scrollSnapAlign](arkts-arkui-list-comp-attribute.md#scrollsnapalign)属性中的任意一个或多个时，该组件的懒加载功能会失效。
+> 2. 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](arkts-arkui-list-comp-attribute.md#listdirection)属性设置为Axis.Vertical）。在非竖直方向的List中使用该组件会导致应用崩溃。当List设置了[lanes](arkts-arkui-list-comp-attribute.md#lanes)、[chainAnimation](arkts-arkui-list-comp-attribute.md#chainanimation)、[scrollSnapAlign](arkts-arkui-list-comp-attribute.md#scrollsnapalign)属性中的任意一个或多个时，该组件的懒加载功能会失效。
 > 
 > 3. 在Scroll组件下，要求Scroll组件布局方向必须是竖直方向（即[scrollable](arkts-arkui-scroll-comp-attribute.md#scrollable)属性设置为ScrollDirection.Vertical）。在非竖直方向的Scroll中使用该组件会导致应用崩溃。
 > 

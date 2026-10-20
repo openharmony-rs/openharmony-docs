@@ -6,8 +6,6 @@ declare interface LocalizedAlignRuleOptions
 
 Defines the Localized align rule options of relative container.
 
-@interface LocalizedAlignRuleOptions
-
 **Since:** 12
 
 <!--Device-unnamed-declare interface LocalizedAlignRuleOptions--><!--Device-unnamed-declare interface LocalizedAlignRuleOptions-End-->

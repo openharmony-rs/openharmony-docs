@@ -6,8 +6,6 @@ type LoginType = 'queryLoginInfo' | 'refreshLoginInfo' | 'cancel' | 'logout'
 
 登录的类型。该类型可取的值为下表字符串。
 
-@typedef { 'queryLoginInfo' | 'refreshLoginInfo' | 'cancel' | 'logout' } LoginType
-
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。

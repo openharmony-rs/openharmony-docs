@@ -496,8 +496,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="getvolumegroupinfos1"></a>
-
 ## getVolumeGroupInfos
 
 ```TypeScript
@@ -537,8 +535,6 @@ audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID, (err: BusinessErr
 ```
 
 <!--DelEnd-->
-
-<a id="getvolumegroupinfos2"></a>
 
 ## getVolumeGroupInfos
 

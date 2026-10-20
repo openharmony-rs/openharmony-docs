@@ -46,7 +46,7 @@ Starts screen hopping based on the specified options. This API uses a promise to
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [20900001](../errorcode-devicestatus.md#20900001-input-device-operation-failed) | Service exception. Possible causes:<br>1. A system error, such as null pointer, container-related exception, or IPC exception. <br>2. N-API invocation exception or invalid N-API status. |
+| [20900001](../errorcode-devicestatus.md#20900001-input-device-operation-failed) | Service exception. Possible causes: <br>1. A system error, such as null pointer, container-related exception, or IPC exception. <br>2. N-API invocation exception or invalid N-API status. |
 
 <!--Del-->
 **Examples**

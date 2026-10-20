@@ -22,8 +22,6 @@ TLSSocketConnection连接，即TLSSocket客户端与服务端的连接。在调�
 import { socket } from '@kit.NetworkKit';
 ```
 
-<a id="close1"></a>
-
 ## close
 
 ```TypeScript
@@ -97,8 +95,6 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="close2"></a>
-
 ## close
 
 ```TypeScript
@@ -167,8 +163,6 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   });
 });
 ```
-
-<a id="getciphersuite1"></a>
 
 ## getCipherSuite
 
@@ -241,8 +235,6 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   });
 });
 ```
-
-<a id="getciphersuite2"></a>
 
 ## getCipherSuite
 
@@ -335,7 +327,7 @@ getLocalAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 以Promise形式返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -386,8 +378,6 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="getremoteaddress1"></a>
-
 ## getRemoteAddress
 
 ```TypeScript
@@ -406,7 +396,7 @@ getRemoteAddress(callback: AsyncCallback<NetAddress>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetAddress](arkts-network-socket-p.md)&gt; | 是 | 回调函数。成功返回对端的socket地址，失败返回错误码、错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 是 | 回调函数。成功返回对端的socket地址，失败返回错误码、错误信息。 |
 
 **错误码：**
 
@@ -458,8 +448,6 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="getremoteaddress2"></a>
-
 ## getRemoteAddress
 
 ```TypeScript
@@ -478,7 +466,7 @@ getRemoteAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 以Promise形式返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -526,8 +514,6 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   });
 });
 ```
-
-<a id="getremotecertificate1"></a>
 
 ## getRemoteCertificate
 
@@ -643,8 +629,6 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="getremotecertificate2"></a>
-
 ## getRemoteCertificate
 
 ```TypeScript
@@ -758,8 +742,6 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="getsignaturealgorithms1"></a>
-
 ## getSignatureAlgorithms
 
 ```TypeScript
@@ -829,8 +811,6 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   });
 });
 ```
-
-<a id="getsignaturealgorithms2"></a>
 
 ## getSignatureAlgorithms
 
@@ -913,7 +893,7 @@ getSocketFd(): Promise<number>
 > 
 > - 连接断开、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > 
-> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-tcpsocketconnection-i.md#close1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-tcpsocketconnection-i.md#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **起始版本：** 23
 
@@ -1398,8 +1378,6 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="send1"></a>
-
 ## send
 
 ```TypeScript
@@ -1474,8 +1452,6 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   });
 });
 ```
-
-<a id="send2"></a>
 
 ## send
 

@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 getZoomCenterPoint(): Point
 ```
 
-Gets zoom center point.
+获取变焦中心点。
 
 **起始版本：** 20
 
@@ -42,7 +42,7 @@ Gets zoom center point.
 
 | 类型 | 说明 |
 | --- | --- |
-| [Point](arkts-camera-camera-point-i.md) | The current zoom center point. |
+| [Point](arkts-camera-camera-point-i.md) | 当前变焦中心点。 |
 
 **错误码：**
 
@@ -57,7 +57,7 @@ Gets zoom center point.
 prepareZoom(): void
 ```
 
-Instructs the bottom layer to prepare for zooming, for example, powering on the sensor.
+指示底层准备变焦，例如给传感器上电。
 
 **起始版本：** 11
 
@@ -99,7 +99,7 @@ function prepareZoom(sessionExtendsZoom: camera.Zoom): void {
 setZoomCenterPoint(point: Point): void
 ```
 
-Sets zoom center point.
+设置变焦中心点。
 
 **起始版本：** 20
 
@@ -113,7 +113,7 @@ Sets zoom center point.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| point | [Point](arkts-camera-camera-point-i.md) | 是 | Target zoom center point. |
+| point | [Point](arkts-camera-camera-point-i.md) | 是 | 目标变焦中心点。 |
 
 **错误码：**
 
@@ -128,7 +128,7 @@ Sets zoom center point.
 unprepareZoom(): void
 ```
 
-Instructs the bottom layer to unprepare for zooming.
+指示底层取消变焦准备。
 
 **起始版本：** 11
 

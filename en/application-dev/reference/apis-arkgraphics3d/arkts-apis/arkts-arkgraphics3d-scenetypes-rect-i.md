@@ -6,8 +6,6 @@ export interface Rect
 
 Rectangle in a plane.
 
-@typedef Rect
-
 **Since:** 12
 
 <!--Device-unnamed-export interface Rect--><!--Device-unnamed-export interface Rect-End-->

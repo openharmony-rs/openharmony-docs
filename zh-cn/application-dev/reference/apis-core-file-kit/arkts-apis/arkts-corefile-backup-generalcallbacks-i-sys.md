@@ -6,8 +6,6 @@ interface GeneralCallbacks
 
 备份和恢复过程中的通用回调。备份服务通过这些回调向客户端通知备份或恢复阶段。
 
-@interface GeneralCallbacks
-
 **起始版本：** 10
 
 <!--Device-backup-interface GeneralCallbacks--><!--Device-backup-interface GeneralCallbacks-End-->

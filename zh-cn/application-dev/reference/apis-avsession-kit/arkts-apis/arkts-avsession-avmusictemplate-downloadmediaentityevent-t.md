@@ -6,8 +6,6 @@ type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: 
 
 媒体实体下载事件。使用Promise异步回调。
 
-@typedef { function } DownloadMediaEntityEvent
-
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。

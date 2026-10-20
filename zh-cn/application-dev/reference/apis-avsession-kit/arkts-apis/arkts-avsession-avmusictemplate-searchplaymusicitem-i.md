@@ -6,8 +6,6 @@ interface SearchPlayMusicItem
 
 搜播的音频项目的定义。
 
-@interface SearchPlayMusicItem
-
 **起始版本：** 23
 
 <!--Device-avMusicTemplate-interface SearchPlayMusicItem--><!--Device-avMusicTemplate-interface SearchPlayMusicItem-End-->

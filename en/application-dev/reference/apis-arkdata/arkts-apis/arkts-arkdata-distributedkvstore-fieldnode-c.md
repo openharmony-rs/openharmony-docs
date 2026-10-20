@@ -50,7 +50,7 @@ Appends a child node to this **FieldNode**.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -94,13 +94,13 @@ Defines a constructor used to create a **FieldNode** instance with a string fiel
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| name | string | Yes | Value of **FieldNode**, with a maximum of 64 characters. This parameter cannot be left blank. |
+| name | string | Yes | Value of the **FieldNode**, which cannot be empty. The value contains 1 to 64 characters. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 ## default
 
@@ -108,7 +108,7 @@ Defines a constructor used to create a **FieldNode** instance with a string fiel
 default: string
 ```
 
-Indicates the default value of field node.
+Default value of FieldNode. The value of default must be a string literal that can be parsed by the type. Ensure that the value type is the same as type.
 
 **Type:** string
 
@@ -124,7 +124,7 @@ Indicates the default value of field node.
 get nullable(): boolean
 ```
 
-Get the nullable of database field.
+Whether the field can be null. The value **true** means the node field can be null; the value **false** means the opposite.
 
 **Type:** boolean
 
@@ -158,7 +158,7 @@ Set the nullable of database field.
 get type(): number
 ```
 
-Get the type of value.
+Data type of the specified node. The value is an enum of [ValueType](arkts-arkdata-distributedkvstore-valuetype-e.md). Note: BYTE_ARRAY is not supported. Using this type will cause [getKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#getkvstore) to fail.
 
 **Type:** number
 

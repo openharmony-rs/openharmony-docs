@@ -72,7 +72,7 @@ product: string
 serialNumber: string
 ```
 
-配件的SN号。
+配件的序列号（SN）。
 
 **类型：** string
 

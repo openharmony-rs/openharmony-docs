@@ -6,8 +6,6 @@
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="createimagecreator1"></a>
-
 ## createImageCreator
 
 ```TypeScript
@@ -16,7 +14,7 @@ function createImageCreator(width: number, height: number, format: number, capac
 
 通过宽、高、图片格式、容量创建ImageCreator实例。
 
-由于图片占用内存较大，所以当ImageCreator实例使用完成后，应主动调用[release](arkts-image-image-imagecreator-i.md#release1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+由于图片占用内存较大，所以当ImageCreator实例使用完成后，应主动调用[release](arkts-image-image-imagecreator-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 > **说明：** 
 > 
@@ -54,8 +52,6 @@ let creator: image.ImageCreator = image.createImageCreator(8192, 8192, image.Ima
 ```
 
 
-<a id="createimagecreator2"></a>
-
 ## createImageCreator
 
 ```TypeScript
@@ -64,7 +60,7 @@ function createImageCreator(size: Size, format: ImageFormat, capacity: number): 
 
 通过图片大小、图片格式、容量创建ImageCreator实例。
 
-由于图片占用内存较大，所以当ImageCreator实例使用完成后，应主动调用[release](arkts-image-image-imagecreator-i.md#release1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+由于图片占用内存较大，所以当ImageCreator实例使用完成后，应主动调用[release](arkts-image-image-imagecreator-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **起始版本：** 11
 

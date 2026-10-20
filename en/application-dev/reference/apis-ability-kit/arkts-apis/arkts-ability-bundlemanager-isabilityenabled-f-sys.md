@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="isabilityenabled1"></a>
-
 ## isAbilityEnabled
 
 ```TypeScript
@@ -29,7 +27,7 @@ Checks whether an ability of an application or an application clone is enabled. 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | info | [AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md) | Yes | Information about the target ability. |
-| appIndex | number | Yes | Index of the application clone.<br> The value **0** means to obtain the enabled status of the ability of the main application. A value greater than 0 means to obtain the enabled status of the ability of the application clone. |
+| appIndex | number | Yes | Index of the application clone. <br> The value **0** means to obtain the enabled status of the ability of the main application. A value greater than 0 means to obtain the enabled status of the ability of the application clone. |
 
 **Return value:**
 
@@ -84,8 +82,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="isabilityenabled2"></a>
 
 ## isAbilityEnabled
 
@@ -158,8 +154,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="isabilityenabled3"></a>
 
 ## isAbilityEnabled
 

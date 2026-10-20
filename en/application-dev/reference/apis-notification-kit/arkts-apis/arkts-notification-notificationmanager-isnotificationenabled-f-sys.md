@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="isnotificationenabled1"></a>
-
 ## isNotificationEnabled
 
 ```TypeScript
@@ -68,8 +66,6 @@ notificationManager.isNotificationEnabled(bundle, isNotificationEnabledCallback)
 
 <!--DelEnd-->
 
-
-<a id="isnotificationenabled2"></a>
 
 ## isNotificationEnabled
 
@@ -132,8 +128,6 @@ notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
 <!--DelEnd-->
 
 
-<a id="isnotificationenabled5"></a>
-
 ## isNotificationEnabled
 
 ```TypeScript
@@ -193,8 +187,6 @@ notificationManager.isNotificationEnabled(userId, isNotificationEnabledCallback)
 
 <!--DelEnd-->
 
-
-<a id="isnotificationenabled6"></a>
 
 ## isNotificationEnabled
 

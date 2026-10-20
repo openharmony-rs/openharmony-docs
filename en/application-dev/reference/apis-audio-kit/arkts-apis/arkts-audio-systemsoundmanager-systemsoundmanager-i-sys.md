@@ -20,8 +20,6 @@ System sound manager object.
 import { systemSoundManager } from '@kit.AudioKit';
 ```
 
-<a id="addcustomizedtone1"></a>
-
 ## addCustomizedTone
 
 ```TypeScript
@@ -96,8 +94,6 @@ systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, path).then((val
 ```
 
 <!--DelEnd-->
-
-<a id="addcustomizedtone2"></a>
 
 ## addCustomizedTone
 
@@ -633,8 +629,6 @@ systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then(
 
 <!--DelEnd-->
 
-<a id="getmockhapticringtoneplayer1"></a>
-
 ## getMockHapticRingtonePlayer
 
 ```TypeScript
@@ -673,8 +667,6 @@ Obtains a mock haptic ringtone player for playing vibration files and their corr
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [20700002](../errorcode-audio-ringtone-sys.md#20700002-parameter-check-failed) | Parameter verification failed. The hapticUri does not exist or is incorrectly formatted. Ensure it is a JSON file and that it exists in the system's file system. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. The ringtone database access timed out or encountered an error. It is recommended to restart your phone. |
-
-<a id="getmockhapticringtoneplayer2"></a>
 
 ## getMockHapticRingtonePlayer
 
@@ -1727,8 +1719,6 @@ systemSoundManagerInstance.setToneHapticsSettings(context, type, toneHapticsSett
 
 <!--DelEnd-->
 
-<a id="getsystemringtoneplayer1"></a>
-
 ## getSystemRingtonePlayer
 
 ```TypeScript
@@ -1781,8 +1771,6 @@ systemSoundManagerInstance.getSystemRingtonePlayer(context, type, (err: Business
 ```
 
 <!--DelEnd-->
-
-<a id="getsystemringtoneplayer2"></a>
 
 ## getSystemRingtonePlayer
 
@@ -1840,8 +1828,6 @@ systemSoundManagerInstance.getSystemRingtonePlayer(context, type).then((value: s
 
 <!--DelEnd-->
 
-<a id="getsystemringtoneuri1"></a>
-
 ## getSystemRingtoneUri
 
 ```TypeScript
@@ -1892,8 +1878,6 @@ systemSoundManagerInstance.getSystemRingtoneUri(context, type, (err: BusinessErr
 ```
 
 <!--DelEnd-->
-
-<a id="getsystemringtoneuri2"></a>
 
 ## getSystemRingtoneUri
 
@@ -1949,8 +1933,6 @@ systemSoundManagerInstance.getSystemRingtoneUri(context, type).then((value: stri
 
 <!--DelEnd-->
 
-<a id="setsystemringtoneuri1"></a>
-
 ## setSystemRingtoneUri
 
 ```TypeScript
@@ -2003,8 +1985,6 @@ systemSoundManagerInstance.setSystemRingtoneUri(context, uri, type, (err: Busine
 ```
 
 <!--DelEnd-->
-
-<a id="setsystemringtoneuri2"></a>
 
 ## setSystemRingtoneUri
 

@@ -29,7 +29,7 @@ Removes the list of applications that are not allowed to use a feature for a spe
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
-| feature | string | Yes | Feature to set.<br>- **snapshotSkip**: screen snapshot capability. |
+| feature | string | Yes | Feature to set. <br>- **snapshotSkip**: screen snapshot capability. |
 | list | Array&lt;string&gt; | Yes | List of content such as the bundle names. |
 | accountId | number | Yes | User ID, which must be greater than or equal to 0. <br>**accountId** can be obtained via APIs such as [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). |
 

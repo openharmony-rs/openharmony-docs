@@ -4,7 +4,7 @@
 declare class AlphabetIndexerAttribute extends CommonMethod<AlphabetIndexerAttribute>
 ```
 
-[width](arkts-arkui-common-comp-commonmethod-c.md#width1)属性设置"auto"时表示自适应宽度，宽度会随索引项最大宽度变化。
+[width](arkts-arkui-common-comp-commonmethod-c.md#width)属性设置"auto"时表示自适应宽度，宽度会随索引项最大宽度变化。
 
 [padding](arkts-arkui-common-comp-commonmethod-c.md#padding)属性默认为4vp。
 
@@ -377,7 +377,7 @@ popupItemBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 提示弹窗二级索引项背景颜色。<br>默认值：<br>API version 11及以前：#FFFFFFFF，显示为白色。<br>API version 12及以后：#00000000，显示为透明色。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 提示弹窗二级索引项背景颜色。 <br>默认值：<br>API version 11及以前：#FFFFFFFF，显示为白色。<br>API version 12及以后：#00000000，显示为透明色。 |
 
 ## popupItemBorderRadius
 
@@ -425,7 +425,7 @@ popupItemFont(value: Font)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Font | 是 | 提示弹窗二级索引项文本样式。<br>默认值：<br>{<br>size:24,<br>weight:FontWeight.Medium<br>} |
+| value | Font | 是 | 提示弹窗二级索引项文本样式。 <br>默认值：<br>{<br>size:24,<br>weight:FontWeight.Medium<br>} |
 
 ## popupPosition
 
@@ -471,7 +471,7 @@ popupSelectedColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 提示弹窗二级索引选中项文本颜色。<br>默认值：#FF182431，显示为深暗蓝色。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 提示弹窗二级索引选中项文本颜色。 <br>默认值：#FF182431，显示为深暗蓝色。 |
 
 ## popupTitleBackground
 
@@ -519,7 +519,7 @@ popupUnselectedColor(value: ResourceColor)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 提示弹窗二级索引未选中项文本颜色。<br>默认值：#FF182431，显示为深暗蓝色。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | 是 | 提示弹窗二级索引未选中项文本颜色。 <br>默认值：#FF182431，显示为深暗蓝色。 |
 
 ## selected
 

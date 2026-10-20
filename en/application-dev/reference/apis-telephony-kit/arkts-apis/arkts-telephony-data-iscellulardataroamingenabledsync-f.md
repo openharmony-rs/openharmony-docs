@@ -28,13 +28,13 @@ Checks whether roaming is enabled for the cellular data service. This API return
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether roaming is enabled for the cellular data service.<br>**true**: Roaming is enabled for the cellular data service. <br>**false**: Roaming is disabled for the cellular data service. |
+| boolean | Whether roaming is enabled for the cellular data service. <br>**true**: Roaming is enabled for the cellular data service. <br>**false**: Roaming is disabled for the cellular data service. |
 
 **Error codes:**
 

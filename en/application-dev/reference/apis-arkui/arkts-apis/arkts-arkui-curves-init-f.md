@@ -28,7 +28,7 @@ Implements initialization for the interpolation curve, which is used to create a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| curve | [Curve](arkts-arkui-curves-curve-e.md) | No | Curve type.<br>Default value: **Curve.Linear** |
+| curve | [Curve](arkts-arkui-curves-curve-e.md) | No | Curve type. <br>Default value: **Curve.Linear** |
 
 **Return value:**
 

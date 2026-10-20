@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="acquireformstate1"></a>
-
 ## acquireFormState
 
 ```TypeScript
@@ -65,8 +63,6 @@ formHost.acquireFormState(want, (error: Base.BusinessError, data: formInfo.FormS
 
 <!--DelEnd-->
 
-
-<a id="acquireformstate2"></a>
 
 ## acquireFormState
 

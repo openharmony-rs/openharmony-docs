@@ -34,8 +34,6 @@ Use **OffscreenCanvasRenderingContext2D** to draw shapes, images, and text offsc
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -63,8 +61,6 @@ Creates an offscreen canvas object. You can configure the canvas width, canvas h
 | width | number | Yes | Width of the offscreen canvas. The default unit is vp.<br> Invalid values **NaN** and **Infinity** are treated as invalid. |
 | height | number | Yes | Height of the offscreen canvas. The default unit is vp.<br> Invalid values **NaN** and **Infinity** are treated as invalid. |
 | settings | [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md) | No | Used to configure the parameters of the **OffscreenCanvasRenderingContext2D** object. Pass this parameter when advanced configurations such as antialiasing need to be enabled. See the description of the **RenderingContextSettings** API.<br>The exception value **undefined** is handled as the default value of [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md).<br> Default value: **null** |
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -119,8 +115,8 @@ Creates a data URL that contains a representation of an image. This API involves
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | string | No | Used to specify the image format.<br>Optional values: **image/png**, **image/jpeg**, and **image/webp**. <br>The exception values **undefined** and **null** are handled as the default value. <br>Default value: **image/png** |
-| quality | any | No | When the image format is image/jpeg or image/webp, selects the image quality in the range [0, 1]. If the value is out of range, the default value **0.92** is used.<br>The exception values **undefined**, **null**, **NaN**, and **Infinity** are handled as the default value. <br>Default value: **0.92** |
+| type | string | No | Used to specify the image format. <br>Optional values: **image/png**, **image/jpeg**, and **image/webp**. <br>The exception values **undefined** and **null** are handled as the default value. <br>Default value: **image/png** |
+| quality | any | No | When the image format is image/jpeg or image/webp, selects the image quality in the range [0, 1]. If the value is out of range, the default value **0.92** is used. <br>The exception values **undefined**, **null**, **NaN**, and **Infinity** are handled as the default value. <br>Default value: **0.92** |
 
 **Return value:**
 

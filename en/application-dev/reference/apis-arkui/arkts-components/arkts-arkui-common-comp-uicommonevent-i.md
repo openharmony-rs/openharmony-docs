@@ -66,7 +66,7 @@ Sets the callback for the [onBlur](arkts-arkui-common-comp-commonmethod-c.md#onb
 setOnClick(callback: Callback<ClickEvent> | undefined): void
 ```
 
-Sets the callback for the [click event](arkts-arkui-common-comp-commonmethod-c.md#onclick1). When **callback** is undefined, the callback for the click event is reset.
+Sets the callback for the [click event](arkts-arkui-common-comp-commonmethod-c.md#onclick). When **callback** is undefined, the callback for the click event is reset.
 
 **Since:** 12
 
@@ -258,7 +258,7 @@ Sets the callback for the [touch event](arkts-arkui-common-comp-commonmethod-c.m
 setOnVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): void
 ```
 
-Sets the callback for the [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange1) visible area change event with a limited callback interval. When **event** is undefined, resets the callback for the visible area change event.
+Sets the callback for the [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange) visible area change event with a limited callback interval. When **event** is undefined, resets the callback for the visible area change event.
 
 > **NOTE:** 
 > 

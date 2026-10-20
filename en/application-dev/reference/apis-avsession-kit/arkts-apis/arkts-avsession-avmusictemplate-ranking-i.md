@@ -6,8 +6,6 @@ interface Ranking extends MediaEntity
 
 The definition of Ranking.
 
-@extends MediaEntity @interface Ranking
-
 **Inheritance/Implementation:** Ranking extends [MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)
 
 **Since:** 23

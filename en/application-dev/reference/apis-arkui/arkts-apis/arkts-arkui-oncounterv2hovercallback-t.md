@@ -20,4 +20,4 @@ Defines the mouse hover callback type for the **CounterV2** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isHover | boolean | Yes | Whether the mouse is hovering over the component.<br>The value is **true** when the mouse enters and **false** when it leaves. |
+| isHover | boolean | Yes | Whether the mouse is hovering over the component. <br>The value is **true** when the mouse enters and **false** when it leaves. |

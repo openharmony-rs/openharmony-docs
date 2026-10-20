@@ -20,8 +20,10 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 
 | Name | Description |
 | --- | --- |
+| [disableUserGrantedByBundle](arkts-notification-notificationextensionsubscription-disableusergrantedbybundle-f.md#disableusergrantedbybundle) | Disables the switch status of a specified app in the list of obtained local notifications in this app. This API uses a promise to return the result. |
 | [getSubscribeInfo](arkts-notification-notificationextensionsubscription-getsubscribeinfo-f.md#getsubscribeinfo) | Obtains the subscription information about the notification extension of this application. This API uses a promise to return the result. |
-| [getUserGrantedEnabledBundles](arkts-notification-notificationextensionsubscription-getusergrantedenabledbundles-f.md#getusergrantedenabledbundles2) | Obtains the applications that are allowed to access device notifications for the current application. This API uses a promise to return the result. |
+| [getUserGrantedBundleIcon](arkts-notification-notificationextensionsubscription-getusergrantedbundleicon-f.md#getusergrantedbundleicon) | Queries the icons of apps whose switch is turned on in the list of obtained local notifications in this app. This API uses a promise to return the result. |
+| [getUserGrantedEnabledBundles](arkts-notification-notificationextensionsubscription-getusergrantedenabledbundles-f.md#getusergrantedenabledbundles) | Obtains the applications that are allowed to access device notifications for the current application. This API uses a promise to return the result. |
 | [isUserGranted](arkts-notification-notificationextensionsubscription-isusergranted-f.md#isusergranted) | Checks whether the **Allow access to notifications on this device** switch is toggled on. This API uses a promise to return the result. |
 | [openSubscriptionSettings](arkts-notification-notificationextensionsubscription-opensubscriptionsettings-f.md#opensubscriptionsettings) | Opens the settings screen of notification extension subscription in a semi-modal dialog box. On this screen, the user can toggle on the **Allow access to notifications on this device** switch and grant access to notifications for specified applications. This API uses a promise to return the result. |
 | [openSubscriptionSettingsWithResult](arkts-notification-notificationextensionsubscription-opensubscriptionsettingswithresult-f.md#opensubscriptionsettingswithresult) | Opens the settings screen of notification extension subscription in a semi-modal dialog box. On this screen, the user can toggle on the **Allow access to notifications on this device** switch and grant access to notifications for specified applications. This API uses a promise to return the result. When the semi-modal window is closed, the user-defined authorization result is returned. |
@@ -34,7 +36,7 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 | Name | Description |
 | --- | --- |
 | [getAllSubscriptionBundles](arkts-notification-notificationextensionsubscription-getallsubscriptionbundles-f-sys.md#getallsubscriptionbundles) | Obtains all applications that have requested the ohos.permission.SUBSCRIBE_NOTIFICATION permission and implemented [NotificationSubscriberExtensionAbility](arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md). This API uses a promise to return the result. |
-| [getUserGrantedEnabledBundles](arkts-notification-notificationextensionsubscription-getusergrantedenabledbundles-f-sys.md#getusergrantedenabledbundles1) | Obtains the applications that are allowed to access device notifications. This API uses a promise to return the result. |
+| [getUserGrantedEnabledBundles](arkts-notification-notificationextensionsubscription-getusergrantedenabledbundles-f-sys.md#getusergrantedenabledbundles) | Obtains the applications that are allowed to access device notifications. This API uses a promise to return the result. |
 | [getUserGrantedState](arkts-notification-notificationextensionsubscription-getusergrantedstate-f-sys.md#getusergrantedstate) | Obtains the enabling state of the **Allow access to notifications on this device** switch of a specified application. This API uses a promise to return the result. |
 | [setUserGrantedBundleState](arkts-notification-notificationextensionsubscription-setusergrantedbundlestate-f-sys.md#setusergrantedbundlestate) | Sets the enabling state of device notification access for the specified application. This API uses a promise to return the result. |
 | [setUserGrantedState](arkts-notification-notificationextensionsubscription-setusergrantedstate-f-sys.md#setusergrantedstate) | Sets the enabling state of the **Allow access to notifications on this device** switch for a specified application. This API uses a promise to return the result. |
@@ -55,4 +57,4 @@ import { notificationExtensionSubscription } from '@kit.NotificationKit';
 
 | Name | Description |
 | --- | --- |
-| [SubscribeType](arkts-notification-notificationextensionsubscription-subscribetype-e.md) | Describes the type that enables notification extension subscription. |
+| [SubscribeType](arkts-notification-notificationextensionsubscription-subscribetype-e.md) |  |

@@ -6,8 +6,6 @@ export type AgentExtensionContext = _AgentExtensionContext
 
 agent service ability的上下文。
 
-@typedef { _AgentExtensionContext }
-
 **类型：** _AgentExtensionContext
 
 **起始版本：** 24

@@ -28,8 +28,6 @@ Cancel this certificate request.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-<a id="confirm1"></a>
-
 ## confirm
 
 ```TypeScript
@@ -53,8 +51,6 @@ Uses the specified private key and client certificate chain.
 | priKeyFile | string | Yes | Full path for storing the private key file. |
 | certChainFile | string | Yes | Full path for storing the certificate chain file. |
 
-<a id="confirm2"></a>
-
 ## confirm
 
 ```TypeScript
@@ -69,14 +65,14 @@ Instructs the **Web** component to use the specified credentials (obtained from 
 
 | Signing Algorithm | Key Length |  
 | ------- | ------ |  
-| SSL_SIGN_RSA_PKCS1_SHA256 | 1024 (supported since API version 18), 2048, 3072, and 4096 |
-| SSL_SIGN_RSA_PKCS1_SHA384 | 1024 (supported since API version 18), 2048, 3072, and 4096 |
-| SSL_SIGN_RSA_PKCS1_SHA512 | 1024 (supported since API version 18), 2048, 3072, and 4096 |
-| SSL_SIGN_RSA_PSS_SHA256 | 1024 (supported since API version 18), 2048, 3072, and 4096 |
-| SSL_SIGN_RSA_PSS_SHA384 | 1024 (supported since API version 18), 2048, 3072, and 4096 |
-| SSL_SIGN_RSA_PSS_SHA512 | 1024 (supported since API version 18), 2048, 3072, and 4096 |
-| SSL_SIGN_ECDSA_SECP256R1_SHA256 | 256 |
-| SSL_SIGN_ECDSA_SECP384R1_SHA384 | 384 |
+| SSL_SIGN_RSA_PKCS1_SHA256 | 1024 (supported since API version 18), 2048, 3072, and 4096 |  
+| SSL_SIGN_RSA_PKCS1_SHA384 | 1024 (supported since API version 18), 2048, 3072, and 4096 |  
+| SSL_SIGN_RSA_PKCS1_SHA512 | 1024 (supported since API version 18), 2048, 3072, and 4096 |  
+| SSL_SIGN_RSA_PSS_SHA256 | 1024 (supported since API version 18), 2048, 3072, and 4096 |  
+| SSL_SIGN_RSA_PSS_SHA384 | 1024 (supported since API version 18), 2048, 3072, and 4096 |  
+| SSL_SIGN_RSA_PSS_SHA512 | 1024 (supported since API version 18), 2048, 3072, and 4096 |  
+| SSL_SIGN_ECDSA_SECP256R1_SHA256 | 256 |  
+| SSL_SIGN_ECDSA_SECP384R1_SHA384 | 384 |  
 | SSL_SIGN_ECDSA_SECP521R1_SHA512 | 521 |
 
 **Since:** 10
@@ -92,8 +88,6 @@ Instructs the **Web** component to use the specified credentials (obtained from 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | authUri | string | Yes | Key value of the credentials. |
-
-<a id="confirm3"></a>
 
 ## confirm
 

@@ -6,8 +6,6 @@ declare type AccessibilityCallback = (isHover: boolean, event: AccessibilityHove
 
 提供开启无障碍模式后的无障碍悬浮回调事件类型。
 
-@typedef { function } AccessibilityCallback
-
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。

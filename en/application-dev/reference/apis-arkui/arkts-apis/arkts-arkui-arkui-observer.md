@@ -8,6 +8,8 @@ Provides APIs for listening for UI component behavior changes, including listeni
 
 **Since:** 11
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace uiObserver--><!--Device-unnamed-declare namespace uiObserver-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

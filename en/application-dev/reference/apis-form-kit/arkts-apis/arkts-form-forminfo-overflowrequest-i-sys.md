@@ -6,8 +6,6 @@ interface OverflowRequest
 
 Provides OverflowRequest about request/cancel form's overflow
 
-@typedef { OverflowRequest }
-
 **Since:** 20
 
 <!--Device-formInfo-interface OverflowRequest--><!--Device-formInfo-interface OverflowRequest-End-->

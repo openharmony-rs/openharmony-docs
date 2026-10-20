@@ -113,7 +113,7 @@ URLSearchParams的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| init | string[][] &#124; Record&lt;string, string&gt; &#124; string &#124; URLSearchParams | 否 | 入参对象。<br>- string[][]：字符串二维数组，每个内部数组包含两个元素，分别为键名和键值。<br>- Record<string, string>：对象列表。<br>- string：字符串，需遵循URL查询参数格式，如'key=value & key2=value2'。<br>- URLSearchParams：对象。<br>- 默认值：undefined。 |
+| init | string[][] &#124; Record&lt;string, string&gt; &#124; string &#124; URLSearchParams | 否 | 入参对象。<br>- string[][]：字符串二维数组，每个内部数组包含两个元素，分别为键名和键值。<br>- Record<string, string>：对象列表。<br>- string：字符串，需遵循URL查询参数格式，如'key=value&key2=value2'。<br>- URLSearchParams：对象。<br>- 默认值：undefined。 |
 
 **示例**
 

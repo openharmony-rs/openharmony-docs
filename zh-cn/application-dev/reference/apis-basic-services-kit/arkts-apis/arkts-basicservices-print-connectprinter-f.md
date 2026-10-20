@@ -6,8 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="connectprinter1"></a>
-
 ## connectPrinter
 
 ```TypeScript
@@ -20,7 +18,7 @@ function connectPrinter(printerId: string, callback: AsyncCallback<void>): void
 
 **需要权限：** 
 - API版本20+：ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
-- API版本10-19：ohos.permission.MANAGE_PRINT_JOB
+- API版本10-19：N/A
 
 <!--Device-print-function connectPrinter(printerId: string, callback: AsyncCallback<void>): void--><!--Device-print-function connectPrinter(printerId: string, callback: AsyncCallback<void>): void-End-->
 
@@ -38,7 +36,6 @@ function connectPrinter(printerId: string, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application<br>**适用版本：** 10 - 19 |
 
 **示例**
 
@@ -58,8 +55,6 @@ print.connectPrinter(printerId, (error: BusinessError) => {
 ```
 
 
-<a id="connectprinter2"></a>
-
 ## connectPrinter
 
 ```TypeScript
@@ -72,7 +67,7 @@ function connectPrinter(printerId: string): Promise<void>
 
 **需要权限：** 
 - API版本20+：ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINT
-- API版本10-19：ohos.permission.MANAGE_PRINT_JOB
+- API版本10-19：N/A
 
 <!--Device-print-function connectPrinter(printerId: string): Promise<void>--><!--Device-print-function connectPrinter(printerId: string): Promise<void>-End-->
 
@@ -95,7 +90,6 @@ function connectPrinter(printerId: string): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application<br>**适用版本：** 10 - 19 |
 
 **示例**
 

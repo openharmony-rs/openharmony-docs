@@ -16,7 +16,7 @@ Manually triggers or disconnects the 802.1X EAP authentication of Ethernet.
 
 When **action** is **ACTION_CONNECT**, authentication is re-triggered with the saved configuration (manual counterpart of the auto-auth trigger; fails if no configuration has been stored). If the authentication is occupied by an enterprise app, this API does not interrupt it; the result is delivered via the stateChange callback. When **action** is **ACTION_DISCONNECT**, auto authentication is stopped and the underlying 802.1X authentication is logged off.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_EAP
 

@@ -49,7 +49,7 @@ Constructor.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
 <!--Del-->
 **Examples**
@@ -78,8 +78,6 @@ async function example(context: Context) {
 ```
 
 <!--DelEnd-->
-
-<a id="createanalysisalbumrequest2"></a>
 
 ## createAnalysisAlbumRequest
 
@@ -130,8 +128,8 @@ Creates a change request for the **Analysis** album.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails.<br>Possible causes: <br>The input parameter is not within the valid range. |
-| [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. <br>Possible causes: <br>The input parameter is not within the valid range. |
+| [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
 <!--Del-->
 **Examples**
@@ -183,8 +181,8 @@ Sets the default cover image for the smart album.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails.<br>Possible causes: <br>The input parameter is not within the valid range. |
-| [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. <br>Possible causes: <br>The input parameter is not within the valid range. |
+| [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
 <!--Del-->
 **Examples**
@@ -268,8 +266,8 @@ Sets the sequence of assets in the **Analysis** album.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| 14000011 | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
 <!--Del-->
 **Examples**
@@ -330,30 +328,30 @@ The supported relationship names include:
 
 | Unique ID | Description |  
 | ---------- | ------- |  
-| me | Me|
-| son | Son|
-| daughter | Daughter|
-| wife | Wife|
-| husband | Husband|
-| father | Father|
-| mother | Mother|
-| colleague | Colleague|
-| friend | Friend|
-| classmate | Classmate|
-| best_friend_female | Best female friend|
-| boyfriend | Boyfriend|
-| girlfriend | Girlfriend|
-| family | Family|
-| maternal_grandfather | Maternal grandfather|
-| maternal_grandmother | Maternal grandmother|
-| paternal_grandfather | Paternal grandfather|
-| paternal_grandmother | Paternal grandmother|
-| older_brother | Older brother|
-| older_sister | Older sister|
-| younger_brother | Younger brother|
-| younger_sister | Younger sister|
-| relative | Relative|
-| other | [Other](../../apis-arkweb/arkts-components/arkts-arkweb-web-comp-contextmenuinputfieldtype-e.md) |
+| me | Me|  
+| son | Son|  
+| daughter | Daughter|  
+| wife | Wife|  
+| husband | Husband|  
+| father | Father|  
+| mother | Mother|  
+| colleague | Colleague|  
+| friend | Friend|  
+| classmate | Classmate|  
+| best_friend_female | Best female friend|  
+| boyfriend | Boyfriend|  
+| girlfriend | Girlfriend|  
+| family | Family|  
+| maternal_grandfather | Maternal grandfather|  
+| maternal_grandmother | Maternal grandmother|  
+| paternal_grandfather | Paternal grandfather|  
+| paternal_grandmother | Paternal grandmother|  
+| older_brother | Older brother|  
+| older_sister | Older sister|  
+| younger_brother | Younger brother|  
+| younger_sister | Younger sister|  
+| relative | Relative|  
+| other | Other|
 
 **Since:** 21
 
@@ -369,7 +367,7 @@ The supported relationship names include:
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| relationship | string | Yes | Name of the relationship to set.<br>You can set it to an empty string to remove the current relationship setting. |
+| relationship | string | Yes | Name of the relationship to set. <br>You can set it to an empty string to remove the current relationship setting. |
 
 **Return value:**
 
@@ -383,8 +381,8 @@ The supported relationship names include:
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails.<br>Possible causes: <br>The input parameter is not within the valid range. |
-| [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| [23800151](../errorcode-medialibrary.md#23800151-failed-to-verify-scene-parameters) | The scenario parameter verification fails. <br>Possible causes: <br>The input parameter is not within the valid range. |
+| [23800301](../errorcode-medialibrary.md#23800301-system-internal-error) | Internal system error. It is recommended to retry and check the logs. <br>Possible causes: <br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
 
 <!--Del-->
 **Examples**

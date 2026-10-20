@@ -6,8 +6,6 @@ declare type DialogOptionsBorderWidth = Dimension | EdgeWidths
 
 Defines the allowed data types for specifying the background border width of a dialog box.
 
-@typedef { Dimension | EdgeWidths } DialogOptionsBorderWidth
-
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.

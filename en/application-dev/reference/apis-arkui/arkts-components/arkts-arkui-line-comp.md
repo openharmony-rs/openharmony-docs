@@ -40,7 +40,7 @@ Draws a straight line. The **Line** component draws the line within the rectangu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [LineOptions](arkts-arkui-line-comp-lineoptions-i.md) | No | Drawing area of the **Line** component, which contains the **width** and **height** attributes used to set the width and height of the **Line** component. If this parameter is not passed, the **width** and **height** attributes of the Line component are processed based on their respective default logic (see **LineOptions** object description).<br>The abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. |
+| options | [LineOptions](arkts-arkui-line-comp-lineoptions-i.md) | No | Drawing area of the **Line** component, which contains the **width** and **height** attributes used to set the width and height of the **Line** component. If this parameter is not passed, the **width** and **height** attributes of the Line component are processed based on their respective default logic (see **LineOptions** object description). <br>The abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. |
 
 ## Line
 
@@ -66,7 +66,7 @@ Draws a straight line. The **Line** component draws the line within the rectangu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [LineOptions](arkts-arkui-line-comp-lineoptions-i.md) | No | Drawing area of the **Line** component, which contains the **width** and **height** attributes used to set the width and height of the **Line** component. If this parameter is not passed, the **width** and **height** attributes of the **Line** component are processed according to the default logic of their respective attributes (see the **LineOptions** object description).<br>The abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. |
+| options | [LineOptions](arkts-arkui-line-comp-lineoptions-i.md) | No | Drawing area of the **Line** component, which contains the **width** and **height** attributes used to set the width and height of the **Line** component. If this parameter is not passed, the **width** and **height** attributes of the **Line** component are processed according to the default logic of their respective attributes (see the **LineOptions** object description). <br>The abnormal values **undefined** and **null** are processed as invalid values, and this setting does not take effect. |
 
 ## Summary
 

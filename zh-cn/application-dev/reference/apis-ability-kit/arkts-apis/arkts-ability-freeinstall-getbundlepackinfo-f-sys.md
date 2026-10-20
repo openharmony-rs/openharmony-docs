@@ -6,8 +6,6 @@
 import { freeInstall } from '@kit.AbilityKit';
 ```
 
-<a id="getbundlepackinfo1"></a>
-
 ## getBundlePackInfo
 
 ```TypeScript
@@ -45,8 +43,6 @@ function getBundlePackInfo(bundleName: string,
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 
-
-<a id="getbundlepackinfo2"></a>
 
 ## getBundlePackInfo
 

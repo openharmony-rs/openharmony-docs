@@ -4,6 +4,8 @@ abilityConnectionManager模块提供了应用协同接口管理能力。设备�
 
 **起始版本：** 18
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace abilityConnectionManager--><!--Device-unnamed-declare namespace abilityConnectionManager-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
@@ -47,9 +49,9 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 | [destroyStream](arkts-distributedservice-abilityconnectionmanager-destroystream-f-sys.md#destroystream) | 发送图片和视频流等业务结束后，创建传输流的应用应及时销毁传输流，否则会增加系统功耗。需与createStream()方法配对使用，在业务结束后必须调用此方法销毁传输流以释放资源。 |
 | [getSurfaceId](arkts-distributedservice-abilityconnectionmanager-getsurfaceid-f-sys.md#getsurfaceid) | 获取指定传输流绑定的Surface的唯一标识符。Surface ID可用于将Surface与组件关联，实现音视频数据的显示。 |
 | [off('receiveImage')](arkts-distributedservice-abilityconnectionmanager-off-f-sys.md#offreceiveimage) | 取消receiveImage事件的回调监听。 |
-| [off('collaborateEvent')](arkts-distributedservice-abilityconnectionmanager-off-f-sys.md#offcollaborateevent) | 取消collaborateEvent事件的回调监听。 |
-| [on('receiveImage')](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md#onreceiveimage) | 注册receiveImage事件的回调监听。 |
-| [on('collaborateEvent')](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md#oncollaborateevent) | 注册collaborateEvent事件的回调监听。 |
+| [off('collaborateEvent')](arkts-distributedservice-abilityconnectionmanager-off-f-sys.md#offcollaborateevent) | 取消collaborateEvent事件的回调监听。需与on('collaborateEvent')方法配合使用，在不需要接收协同事件或组件销毁时，应调用此方法取消监听以释放资源。 |
+| [on('receiveImage')](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md#onreceiveimage) | 注册receiveImage事件的回调监听，用于接收图片传输事件的异步通知。需与off('receiveImage')方法配合使用，在不需要接收图片时，应调用off('receiveImage')取消监听以释放资源。 |
+| [on('collaborateEvent')](arkts-distributedservice-abilityconnectionmanager-on-f-sys.md#oncollaborateevent) | 注册collaborateEvent事件的回调监听，使用callback异步回调。该监听需与off('collaborateEvent')成对使用，在不再需要接收事件时及时取消监听以释放资源。 |
 | [sendImage](arkts-distributedservice-abilityconnectionmanager-sendimage-f-sys.md#sendimage) | 应用连接成功并创建传输流后，设备A或设备B可向对端设备发送图片。图片会根据指定的压缩质量进行编码后，通过传输流通道发送至对端设备。发送成功后，对端设备可通过注册的回调接收图片，使用Promise异步回调。业务结束后应及时销毁传输流，否则会增加系统功耗，使用场景包括跨设备视频通话中发送视频帧、远程协作时发送截图、跨设备图片共享等需要向对端发送图片数据的场景。 |
 | [setSurfaceId](arkts-distributedservice-abilityconnectionmanager-setsurfaceid-f-sys.md#setsurfaceid) | 设置传输流与Surface的绑定关系。Surface用于承载音视频数据的显示或采集，绑定后传输流的音视频数据将直接渲染到Surface上或从Surface采集数据。 |
 | [startStream](arkts-distributedservice-abilityconnectionmanager-startstream-f-sys.md#startstream) | 启动指定传输流，使传输流开始发送或接收视频数据。启动前需确保传输流已完成Surface绑定，否则无法正常启动。需与stopStream()方法配对使用，使用完毕后应调用stopStream()停止传输流，最后调用destroyStream()销毁传输流以释放资源。 |
@@ -84,7 +86,7 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 | --- | --- |
 | [CollaborateEventType](arkts-distributedservice-abilityconnectionmanager-collaborateeventtype-e.md) | 协同事件类型的枚举。 |
 | [CollaborationKeys](arkts-distributedservice-abilityconnectionmanager-collaborationkeys-e.md) | 应用协作键值的枚举。 |
-| [CollaborationValues](arkts-distributedservice-abilityconnectionmanager-collaborationvalues-e.md) | 应用协作键值的枚举。 |
+| [CollaborationValues](arkts-distributedservice-abilityconnectionmanager-collaborationvalues-e.md) | 应用协作相关值的枚举。 |
 | [ConnectErrorCode](arkts-distributedservice-abilityconnectionmanager-connecterrorcode-e.md) | 连接的错误码。 |
 | [DisconnectReason](arkts-distributedservice-abilityconnectionmanager-disconnectreason-e.md) | 当前断连原因的枚举。 |
 | [StartOptionParams](arkts-distributedservice-abilityconnectionmanager-startoptionparams-e.md) | 启动选项参数的枚举。 |
@@ -94,7 +96,7 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [FlipOptions](arkts-distributedservice-abilityconnectionmanager-flipoptions-e-sys.md) | 翻转选项。 |
+| [FlipOptions](arkts-distributedservice-abilityconnectionmanager-flipoptions-e-sys.md) | 翻转选项的枚举。 |
 | [StartOptionParams](arkts-distributedservice-abilityconnectionmanager-startoptionparams-e-sys.md) | 启动选项参数的枚举。 |
 | [StreamRole](arkts-distributedservice-abilityconnectionmanager-streamrole-e-sys.md) | 流传输角色。 |
 | [VideoPixelFormat](arkts-distributedservice-abilityconnectionmanager-videopixelformat-e-sys.md) | 视频像素格式配置选项。 |

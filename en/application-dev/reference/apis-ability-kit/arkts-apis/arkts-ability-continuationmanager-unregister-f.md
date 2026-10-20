@@ -6,8 +6,6 @@
 import { continuationManager } from '@kit.AbilityKit';
 ```
 
-<a id="unregister1"></a>
-
 ## unregister
 
 ```TypeScript
@@ -50,8 +48,6 @@ continuationManager.unregister(token, (err) => {
 });
 ```
 
-
-<a id="unregister2"></a>
 
 ## unregister
 

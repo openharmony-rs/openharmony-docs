@@ -6,8 +6,6 @@ declare type Blender = import('../api/@ohos.graphics.uiEffect').default.Blender
 
 Blender
 
-@typedef { import('../api/@ohos.graphics.uiEffect').default.Blender } Blender
-
 **类型：** import('../api/@ohos.graphics.uiEffect').default.Blender
 
 **起始版本：** 13

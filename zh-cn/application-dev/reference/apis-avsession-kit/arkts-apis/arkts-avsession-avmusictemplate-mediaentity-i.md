@@ -6,8 +6,6 @@ interface MediaEntity
 
 媒体实例的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。
 
-@interface MediaEntity
-
 **起始版本：** 23
 
 <!--Device-avMusicTemplate-interface MediaEntity--><!--Device-avMusicTemplate-interface MediaEntity-End-->

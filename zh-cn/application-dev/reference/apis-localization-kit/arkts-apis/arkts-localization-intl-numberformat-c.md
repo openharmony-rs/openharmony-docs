@@ -18,8 +18,6 @@ export class NumberFormat
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -44,8 +42,6 @@ import { intl } from '@kit.LocalizationKit';
 // 使用系统当前区域ID创建NumberFormat对象
 let formatter: intl.NumberFormat = new intl.NumberFormat();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

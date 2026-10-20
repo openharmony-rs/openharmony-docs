@@ -34,7 +34,7 @@ Obtains the wallpaper colors for the wallpaper of the specified type. Returns rg
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[RgbaColor](arkts-basicservices-wallpaper-rgbacolor-i.md)&gt; | the Array<[RgbaColor](arkts-basicservices-wallpaper-rgbacolor-i.md)> returned by the function. |
+| Array&lt;[RgbaColor](arkts-basicservices-wallpaper-rgbacolor-i.md)&gt; | the Array<RgbaColor> returned by the function. |
 
 **Error codes:**
 

@@ -30,11 +30,11 @@ enum PngPropertyKey
 
 | WARNING | 'PngWarning' | PNG图像的警告信息。 |  
 | Y_PIXELS_PER_METER | 'PngYPixelsPerMeter' | PNG图像Y方向每米像素数。 |  
-| GAMMA | 'PngGamma' | PNG图像的系数伽马的值。 |
-| CHROMATICITIES | 'PngChromaticities' | PNG图像的原色与白点色度坐标cHRM（primary chromaticities and white point）。该信息可用于与设备无关的色彩校正。 |
-| DESCRIPTION | 'PngDescription' | PNG图像的描述。 |
-| TITLE | 'PngTitle' | PNG图像的标题。 |
-| COMMENT | 'PngComment' | PNG图像的注释。 |
+| GAMMA | 'PngGamma' | PNG图像的系数伽马的值。 |  
+| CHROMATICITIES | 'PngChromaticities' | PNG图像的原色与白点色度坐标cHRM（primary chromaticities and white point）。该信息可用于与设备无关的色彩校正。 |  
+| DESCRIPTION | 'PngDescription' | PNG图像的描述。 |  
+| TITLE | 'PngTitle' | PNG图像的标题。 |  
+| COMMENT | 'PngComment' | PNG图像的注释。 |  
 | DISCLAIMER | 'PngDisclaimer' | PNG图像的免责声明。 |
 
 **起始版本：** 26.0.0

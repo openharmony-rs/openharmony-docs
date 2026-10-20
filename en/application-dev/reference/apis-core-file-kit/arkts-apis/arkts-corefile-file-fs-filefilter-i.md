@@ -4,7 +4,7 @@
 export interface FileFilter
 ```
 
-Defines the file name filtering interface used by listFileExt().
+Describes a file name filter, which can be used to customize file name filtering rules.
 
 **Since:** 26.0.0
 
@@ -24,9 +24,9 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 filter(name: string): boolean
 ```
 
-Filtering function, which determines whether the specified file name should be included in the file list.
+Filters files of the [listFileExt](arkts-corefile-file-fs-listfileext-f.md) or [listFileExtSync](arkts-corefile-file-fs-listfileextsync-f.md) API and determines whether a specified file name should be included in the returned file list.
 
-Note: This function is frequently invoked. Avoid time-consuming operations, such as file I/O and network requests.
+Note: This function is frequently called. Do not perform time-consuming operations, such as file I/O operations and network requests.
 
 **Since:** 26.0.0
 
@@ -40,10 +40,10 @@ Note: This function is frequently invoked. Avoid time-consuming operations, such
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| name | string | Yes | Name of the file to be filtered. |
+| name | string | Yes | Name or relative path of the file to be filtered. In recursive mode, the value is a relative file path, which starts with a slash (/). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns true if the file should be included, false otherwise. |
+| boolean | Whether the file is included in the returned file list. <b>true</b>: The file is included. <b>false</b>: The file is not included. |

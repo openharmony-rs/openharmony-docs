@@ -6,8 +6,6 @@ interface AudioCapabilities
 
 表示投播设备支持的音频能力。
 
-@typedef AudioCapabilities
-
 **起始版本：** 20
 
 <!--Device-avSession-interface AudioCapabilities--><!--Device-avSession-interface AudioCapabilities-End-->

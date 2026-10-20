@@ -6,8 +6,6 @@
 import { formProvider } from '@kit.FormKit';
 ```
 
-<a id="updateform1"></a>
-
 ## updateForm
 
 ```TypeScript
@@ -80,8 +78,6 @@ try {
 }
 ```
 
-
-<a id="updateform2"></a>
 
 ## updateForm
 

@@ -6,8 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="setscreenrotationlocked1"></a>
-
 ## setScreenRotationLocked
 
 ```TypeScript
@@ -36,7 +34,7 @@ function setScreenRotationLocked(isLocked:boolean, callback: AsyncCallback<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 <!--Del-->
 **示例**
@@ -58,8 +56,6 @@ screen.setScreenRotationLocked(isLocked, (err: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="setscreenrotationlocked2"></a>
 
 ## setScreenRotationLocked
 
@@ -94,7 +90,7 @@ function setScreenRotationLocked(isLocked:boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 
 <!--Del-->
 **示例**

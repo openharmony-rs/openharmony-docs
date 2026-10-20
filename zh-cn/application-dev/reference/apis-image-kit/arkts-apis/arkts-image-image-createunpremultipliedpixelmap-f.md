@@ -6,8 +6,6 @@
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="createunpremultipliedpixelmap1"></a>
-
 ## createUnpremultipliedPixelMap
 
 ```TypeScript
@@ -72,8 +70,6 @@ function createUnpremultipliedPixelMap() {
 }
 ```
 
-
-<a id="createunpremultipliedpixelmap2"></a>
 
 ## createUnpremultipliedPixelMap
 

@@ -392,8 +392,6 @@ try {
 }
 ```
 
-<a id="notifycharacteristicchanged1"></a>
-
 ## notifyCharacteristicChanged
 
 ```TypeScript
@@ -463,8 +461,6 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
-
-<a id="notifycharacteristicchanged2"></a>
 
 ## notifyCharacteristicChanged
 
@@ -864,14 +860,11 @@ try {
 on(type: 'characteristicRead', callback: Callback<CharacteristicReadRequest>): void
 ```
 
-Subscribe characteristic read event. On API 26.0.0 and above, if the application has ohos.permission.GET_BLUETOOTH_PEERS_MAC, the type of the peer device address is real. Otherwise, the type of the peer device address is virtual.
+Subscribe characteristic read event.
 
 **Since:** 10
 
-**Required permissions:** 
-- API version 26 and later: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API version 25: N/A
-- API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -927,14 +920,11 @@ gattServer.on('characteristicRead', ReadCharacteristicReq);
 on(type: 'characteristicWrite', callback: Callback<CharacteristicWriteRequest>): void
 ```
 
-Subscribe characteristic write event. On API 26.0.0 and above, if the application has ohos.permission.GET_BLUETOOTH_PEERS_MAC, the type of the peer device address is real. Otherwise, the type of the peer device address is virtual.
+Subscribe characteristic write event.
 
 **Since:** 10
 
-**Required permissions:** 
-- API version 26 and later: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API version 25: N/A
-- API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -993,14 +983,11 @@ gattServer.on('characteristicWrite', WriteCharacteristicReq);
 on(type: 'descriptorRead', callback: Callback<DescriptorReadRequest>): void
 ```
 
-Subscribe descriptor read event. On API 26.0.0 and above, if the application has ohos.permission.GET_BLUETOOTH_PEERS_MAC, the type of the peer device address is real. Otherwise, the type of the peer device address is virtual.
+Subscribe descriptor read event.
 
 **Since:** 10
 
-**Required permissions:** 
-- API version 26 and later: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API version 25: N/A
-- API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1056,14 +1043,11 @@ gattServer.on('descriptorRead', ReadDescriptorReq);
 on(type: 'descriptorWrite', callback: Callback<DescriptorWriteRequest>): void
 ```
 
-Subscribe descriptor write event. On API 26.0.0 and above, if the application has ohos.permission.GET_BLUETOOTH_PEERS_MAC, the type of the peer device address is real. Otherwise, the type of the peer device address is virtual.
+Subscribe descriptor write event.
 
 **Since:** 10
 
-**Required permissions:** 
-- API version 26 and later: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API version 25: N/A
-- API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1122,14 +1106,11 @@ gattServer.on('descriptorWrite', WriteDescriptorReq);
 on(type: 'connectionStateChange', callback: Callback<BLEConnectionChangeState>): void
 ```
 
-Subscribe server connection state changed event. On API 26.0.0 and above, if the application has ohos.permission.GET_BLUETOOTH_PEERS_MAC, the type of the peer device address is real. Otherwise, the type of the peer device address is virtual.
+Subscribe server connection state changed event.
 
 **Since:** 10
 
-**Required permissions:** 
-- API version 26 and later: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API version 25: N/A
-- API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
 

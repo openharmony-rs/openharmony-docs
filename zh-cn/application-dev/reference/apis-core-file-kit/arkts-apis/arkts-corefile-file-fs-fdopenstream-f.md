@@ -68,8 +68,6 @@ declare function fdopenStream(fd: number, mode: string): Promise<Stream>
 | 13900042 | Unknown error |
 
 
-<a id="fdopenstream2"></a>
-
 ## fdopenStream
 
 ```TypeScript

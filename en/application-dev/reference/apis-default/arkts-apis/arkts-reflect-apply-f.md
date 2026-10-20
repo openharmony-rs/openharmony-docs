@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="apply1"></a>
-
 ## apply
 
 ```TypeScript
@@ -29,8 +27,6 @@ Calls the function with the specified object as the this value and the elements 
 | thisArgument | T | Yes |  |
 | argumentsList | Readonly&lt;A&gt; | Yes |  |
 
-
-<a id="apply2"></a>
 
 ## apply
 

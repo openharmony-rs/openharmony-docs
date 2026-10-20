@@ -9,8 +9,6 @@ interface PromiseConstructor
 ```TypeScript
 ```
 
-<a id="allsettled1"></a>
-
 ## allSettled
 
 ```TypeScript
@@ -32,8 +30,6 @@ Creates a Promise that is resolved with an array of results when all of the prov
 | Type | Description |
 | --- | --- |
 | Promise&lt;{ -readonly [P in keyof T]: PromiseSettledResult&lt;Awaited&lt;T[P]&gt;&gt; }&gt; | A new Promise. |
-
-<a id="allsettled2"></a>
 
 ## allSettled
 

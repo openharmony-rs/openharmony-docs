@@ -36,4 +36,4 @@ Obtains the minimum angle change required for the rotation gesture to be recogni
 
 | Type | Description |
 | --- | --- |
-| number | Minimum angle change required for the rotation gesture to be recognized, in degrees (deg).<br>Value range: [0, +∞) <br>**NOTE:** <br>If the provided angle is less than or equal to 0 or greater than 360, it is converted to the default value **1**. |
+| number | Minimum angle change required for the rotation gesture to be recognized, in degrees (deg). <br>Value range: [0, +∞) <br>**NOTE:** <br>If the provided angle is less than or equal to 0 or greater than 360, it is converted to the default value **1**. |

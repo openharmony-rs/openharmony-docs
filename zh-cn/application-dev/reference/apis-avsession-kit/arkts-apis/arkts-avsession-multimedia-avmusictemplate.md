@@ -5,6 +5,8 @@ AVMusicTemplate
 
 **起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace avMusicTemplate--><!--Device-unnamed-declare namespace avMusicTemplate-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
@@ -68,6 +70,8 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 | [QueryMediaEntityParam](arkts-avsession-avmusictemplate-querymediaentityparam-i.md) | 查询媒体实例参数的定义。 |
 | [Ranking](arkts-avsession-avmusictemplate-ranking-i.md) | 排行榜的定义。继承自[MediaEntity](arkts-avsession-avmusictemplate-mediaentity-i.md)。 |
 | [SearchPlayInfo](arkts-avsession-avmusictemplate-searchplayinfo-i.md) | 搜播信息的定义。 |
+| [SearchPlayKaraokeInfo](arkts-avsession-avmusictemplate-searchplaykaraokeinfo-i.md) | 搜播K歌信息的定义 |
+| [SearchPlayKaraokeItem](arkts-avsession-avmusictemplate-searchplaykaraokeitem-i.md) | 搜播的音频项目的定义。 |
 | [SearchPlayMusicInfo](arkts-avsession-avmusictemplate-searchplaymusicinfo-i.md) | 搜播的音频信息的定义。 |
 | [SearchPlayMusicItem](arkts-avsession-avmusictemplate-searchplaymusicitem-i.md) | 搜播的音频项目的定义。 |
 | [SearchPlayVideoInfo](arkts-avsession-avmusictemplate-searchplayvideoinfo-i.md) | 搜播的视频信息的定义。 |
@@ -90,6 +94,7 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 | --- | --- |
 | [ActionType](arkts-avsession-avmusictemplate-actiontype-t.md) | 操作类型的定义。该类型可取的值为下表字符串。 |
 | [ClearSearchHistoryEvent](arkts-avsession-avmusictemplate-clearsearchhistoryevent-t.md) | 清除搜索历史事件。使用Promise异步回调。 |
+| [CustomCommandEvent](arkts-avsession-avmusictemplate-customcommandevent-t.md) | 带有事件和参数的通用处理函数。 |
 | [CustomType](arkts-avsession-avmusictemplate-customtype-t.md) | 自定义类型。该类型可取的值为下表字符串。 |
 | [DialogActionType](arkts-avsession-avmusictemplate-dialogactiontype-t.md) | 对话框操作类型。该类型可取的值为下表字符串。 |
 | [DialogControlType](arkts-avsession-avmusictemplate-dialogcontroltype-t.md) | 对话框控制类型的定义。该类型可取的值为下表字符串。 |

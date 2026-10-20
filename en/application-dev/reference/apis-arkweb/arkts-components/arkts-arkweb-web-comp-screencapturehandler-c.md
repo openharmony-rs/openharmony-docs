@@ -56,7 +56,7 @@ Denies the screen capture operation initiated by a web page. This method is call
 getOrigin(): string
 ```
 
-Obtains the origin of the web page. This method is used to verify the trustworthiness of the request origin, or to implement a whitelist mechanism to control which web pages can perform screen capture.
+Obtains the origin of the web page. Used to validate the origin of the web page initiating the request, allowing developers to control which web pages are permitted to initiate screen capture requests via an origin allowlist.
 
 **Since:** 10
 

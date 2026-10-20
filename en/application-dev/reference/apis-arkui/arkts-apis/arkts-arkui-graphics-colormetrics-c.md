@@ -121,11 +121,11 @@ Instantiates the **ColorMetrics** class using ColorSpace and RGBA colorS. Only t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| colorSpace | ColorSpace | Yes | Color space. To use ColorSpace.DISPLAY_P3, call [setWindowColorSpace](arkts-arkui-window-window-i.md#setwindowcolorspace1) on the corresponding window to set the current window to wide color gamut mode. |
+| colorSpace | ColorSpace | Yes | Color space. To use ColorSpace.DISPLAY_P3, call [setWindowColorSpace](arkts-arkui-window-window-i.md#setwindowcolorspace) on the corresponding window to set the current window to wide color gamut mode. |
 | red | number | Yes | Red component of the color. The value is a floating point number ranging from 0 to 1. A value out of range is treated as a boundary value. |
 | green | number | Yes | Green component of the color. The value is a floating point number ranging from 0 to 1. A value out of range is treated as a boundary value. |
 | blue | number | Yes | Blue component of the color. The value is a floating point number ranging from 0 to 1. A value out of range is treated as a boundary value. |
-| alpha | number | No | Alpha component of the color. The value is a floating point number ranging from 0.0 to 1.0. The default value is 1.0 (fully opaque).<br> **Note:** If alpha is less than 0, the color is fully transparent. If alpha is greater than 1, the color is opaque. |
+| alpha | number | No | Alpha component of the color. The value is a floating point number ranging from 0.0 to 1.0. The default value is 1.0 (fully opaque). <br> **Note:** If alpha is less than 0, the color is fully transparent. If alpha is greater than 1, the color is opaque. |
 
 **Return value:**
 
@@ -155,7 +155,7 @@ Instantiates the **ColorMetrics** class using a color in HEX format.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Color in HEX format. RGB and ARGB color values are supported.<br>Value range: [0, 0xffffffff] <br>A value out of range is treated as a boundary value. |
+| value | number | Yes | Color in HEX format. RGB and ARGB color values are supported. <br>Value range: [0, 0xffffffff] <br>A value out of range is treated as a boundary value. |
 
 **Return value:**
 
@@ -225,7 +225,7 @@ Instantiates the **ColorMetrics** class using colors in RGB or RGBA format.
 | red | number | Yes | Red component of the color. The value is an integer ranging from 0 to 255. A value out of range is treated as a boundary value. |
 | green | number | Yes | Green component of the color. The value is an integer ranging from 0 to 255. A value out of range is treated as a boundary value. |
 | blue | number | Yes | Blue component of the color. The value is an integer ranging from 0 to 255. A value out of range is treated as a boundary value. |
-| alpha | number | No | Alpha component of the color. The value is a floating point number ranging from 0.0 to 1.         0. The default value is 1.0 (fully opaque).<br> **Note:** If alpha is less than 0, the color is fully transparent. If alpha is greater than 1, the color is opaque. |
+| alpha | number | No | Alpha component of the color. The value is a floating point number ranging from 0.0 to 1.         0. The default value is 1.0 (fully opaque). <br> **Note:** If alpha is less than 0, the color is fully transparent. If alpha is greater than 1, the color is opaque. |
 
 **Return value:**
 

@@ -171,3 +171,5 @@ QR_OR_BAR_CODE = 1
 <!--Device-RecommendationType-QR_OR_BAR_CODE = 1--><!--Device-RecommendationType-QR_OR_BAR_CODE = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**示例**

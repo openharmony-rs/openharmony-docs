@@ -388,8 +388,6 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
-<a id="onbundleadded1"></a>
-
 ## onBundleAdded
 
 ```TypeScript
@@ -438,8 +436,6 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 }
 ```
-
-<a id="onbundleadded2"></a>
 
 ## onBundleAdded
 
@@ -492,8 +488,6 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
-<a id="onbundleremoved1"></a>
-
 ## onBundleRemoved
 
 ```TypeScript
@@ -542,8 +536,6 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 }
 ```
-
-<a id="onbundleremoved2"></a>
 
 ## onBundleRemoved
 

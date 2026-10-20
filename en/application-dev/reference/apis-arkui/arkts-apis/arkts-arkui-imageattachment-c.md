@@ -12,8 +12,6 @@ Describes the image attachment.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -37,8 +35,6 @@ A constructor used to create an image object.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [ImageAttachmentInterface](arkts-arkui-imageattachmentinterface-i.md) | Yes | Image attachment options. |
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -81,6 +77,26 @@ Image color filter of the styled string.
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-ImageAttachment-readonly colorFilter?: ColorFilterType--><!--Device-ImageAttachment-readonly colorFilter?: ColorFilterType-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## imageTag
+
+```TypeScript
+readonly imageTag?: string
+```
+
+Image text tag.
+
+**Type:** string
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-ImageAttachment-readonly imageTag?: string--><!--Device-ImageAttachment-readonly imageTag?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,11 +150,11 @@ Resizable image options of the styled string.
 
 **Type:** [ResizableOptions](../arkts-components/arkts-arkui-image-comp-resizableoptions-i.md)
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-ImageAttachment-readonly resizable?: ResizableOptions--><!--Device-ImageAttachment-readonly resizable?: ResizableOptions-End-->
 

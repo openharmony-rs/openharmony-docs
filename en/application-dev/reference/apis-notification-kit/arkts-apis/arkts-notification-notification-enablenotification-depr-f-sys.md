@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="enablenotification1"></a>
-
 ## enableNotification
 
 ```TypeScript
@@ -37,8 +35,27 @@ Sets whether to enable notification for a specified application. This API uses a
 | enable | boolean | Yes | Whether to enable notification. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
+**Examples**
 
-<a id="enablenotification2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let enableNotificationCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("enableNotification failed " + JSON.stringify(err));
+  } else {
+    console.info("enableNotification success");
+  }
+}
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+Notification.enableNotification(bundle, false, enableNotificationCallback);
+```
+
+<!--DelEnd-->
+
 
 ## enableNotification
 
@@ -74,3 +91,21 @@ Sets whether to enable notification for a specified application. This API uses a
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+Notification.enableNotification(bundle, false).then(() => {
+  console.info("enableNotification success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`enableNotification failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

@@ -20,5 +20,5 @@ declare type OnTabsGestureSwipeCallback = (index: number, extraInfo: TabsAnimati
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 当前显示元素的索引，索引从0开始。<br>取值范围：[0, 页签总数-1] |
+| index | number | 是 | 当前显示元素的索引，索引从0开始。 <br>取值范围：[0, 页签总数-1] |
 | extraInfo | [TabsAnimationEvent](arkts-arkui-tabs-comp-tabsanimationevent-i.md) | 是 | 动画相关信息，只返回主轴方向上当前显示元素相对于Tabs起始位置的位移。 |

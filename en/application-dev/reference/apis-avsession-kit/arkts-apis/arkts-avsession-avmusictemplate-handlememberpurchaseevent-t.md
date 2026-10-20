@@ -6,8 +6,6 @@ type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise<DialogInf
 
 The handle member purchase event.
 
-@typedef { function } HandleMemberPurchaseEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

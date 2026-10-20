@@ -12,11 +12,11 @@ import { connection } from '@kit.ConnectivityKit';
 function onAclStateChange(callback: Callback<AclStateResult>): void
 ```
 
-Subscribe the event of acl state changed from a remote device. If the application has ohos.permission.GET_BLUETOOTH_PEERS_MAC, the type of the peer device address is real. Otherwise, the type of the peer device address is virtual.
+Subscribe the event of acl state changed from a remote device.
 
 **Since:** 26.0.0
 
-**Required permissions:** ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+**Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 
 **Model restriction:** This API can be used only in the stage model.
 

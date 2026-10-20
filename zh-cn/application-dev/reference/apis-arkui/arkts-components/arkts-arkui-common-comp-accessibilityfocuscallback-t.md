@@ -6,8 +6,6 @@ declare type AccessibilityFocusCallback = (isFocus: boolean) => void
 
 定义onAccessibilityFocus中使用的回调类型。
 
-@typedef {function} AccessibilityFocusCallback
-
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。

@@ -25,7 +25,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 alignContent(value: Alignment)
 ```
 
-Sets the alignment of child components in the container. After this attribute is set, child components are arranged in the container according to the specified alignment. When both this attribute and [align](arkts-arkui-common-comp-commonmethod-c.md#align1) are set, whichever is set last takes effect.
+Sets the alignment of child components in the container. After this attribute is set, child components are arranged in the container according to the specified alignment. When both this attribute and [align](arkts-arkui-common-comp-commonmethod-c.md#align) are set, whichever is set last takes effect.
 
 > **NOTE:** 
 > 
@@ -45,7 +45,7 @@ Sets the alignment of child components in the container. After this attribute is
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) | Yes | Alignment of the child component in the container. The value can be **TopStart**, **Top**, **TopEnd**, **Start**, **Center**, **End**, **BottomStart**, **Bottom**, or **BottomEnd**.<br>Default value: **Alignment.Center** <br>If an illegal value is set, the default value is used. |
+| value | [Alignment](../arkts-apis/arkts-arkui-alignment-e.md) | Yes | Alignment of the child component in the container. The value can be **TopStart**, **Top**, **TopEnd**, **Start**, **Center**, **End**, **BottomStart**, **Bottom**, or **BottomEnd**. <br>Default value: **Alignment.Center** <br>If an illegal value is set, the default value is used. |
 
 ## autoHalfFold
 
@@ -75,7 +75,7 @@ Typical usage: When the user has turned off the auto-rotate function in system s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to enable auto rotation.<br>Default value: **true**. When set to **true**, **FolderStack** automatically rotates during layout in the half-fold status (see FoldStatus). When set to **false**, FolderStack does not automatically rotate in the half-fold status. This attribute takes effect only when system auto rotation is disabled. When system auto rotation is enabled, this attribute does not take effect, and **FolderStack** follows the system rotation behavior. This parameter takes effect only on dual-fold devices. When the parent component of **FolderStack** is an if/else conditional rendering node, this parameter becomes invalid. <br>Illegal value: processed as the default value. |
+| value | boolean | Yes | Whether to enable auto rotation. <br>Default value: **true**. When set to **true**, **FolderStack** automatically rotates during layout in the half-fold status (see FoldStatus). When set to **false**, FolderStack does not automatically rotate in the half-fold status. This attribute takes effect only when system auto rotation is disabled. When system auto rotation is enabled, this attribute does not take effect, and **FolderStack** follows the system rotation behavior. This parameter takes effect only on dual-fold devices. When the parent component of **FolderStack** is an if/else conditional rendering node, this parameter becomes invalid. <br>Illegal value: processed as the default value. |
 
 ## enableAnimation
 
@@ -103,7 +103,7 @@ Sets whether to use the default animation effect. After this attribute is set, t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to use the default animation effect.<br>Default value: **true**, which means the default animation effect is used; **false** means the default animation effect is not used. <br>If an illegal value is set, the default value is used. |
+| value | boolean | Yes | Whether to use the default animation effect. <br>Default value: **true**, which means the default animation effect is used; **false** means the default animation effect is not used. <br>If an illegal value is set, the default value is used. |
 
 ## onFolderStateChange
 

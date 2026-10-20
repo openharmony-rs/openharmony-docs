@@ -10,8 +10,6 @@ AudioSessionManager是音频系统中的会话管理模块。本模块提供音�
 
 > - 本Interface首批接口从API version 12开始支持。
 
-@typedef AudioSessionManager [since 12 - 24]
-
 **起始版本：** 12
 
 <!--Device-audio-interface AudioSessionManager--><!--Device-audio-interface AudioSessionManager-End-->

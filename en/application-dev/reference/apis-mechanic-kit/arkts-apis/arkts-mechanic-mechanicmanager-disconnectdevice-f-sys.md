@@ -30,7 +30,7 @@ Disconnect a device with mechanic id.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mechId | number | Yes | mechanic device id.<br>The value should be an integer. |
+| mechId | number | Yes | mechanic device id. <br>The value should be an integer. |
 
 **Return value:**
 

@@ -125,8 +125,6 @@ registerDeathRecipient(recipient: DeathRecipient, flags: number): void
 | [1900005](../errorcode-rpc.md#1900005-ipc对象权限错误) | Operation allowed only for the proxy object. |
 | [1900008](../errorcode-rpc.md#1900008-非法的ipc对象) | The proxy or remote object is invalid. |
 
-<a id="sendmessagerequest1"></a>
-
 ## sendMessageRequest
 
 ```TypeScript
@@ -166,8 +164,6 @@ sendMessageRequest(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain the passed object instance. |
-
-<a id="sendmessagerequest2"></a>
 
 ## sendMessageRequest
 
@@ -350,8 +346,6 @@ removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 | --- | --- |
 | boolean | true：回调注销成功，false：回调注销失败。 |
 
-<a id="sendrequest1"></a>
-
 ## sendRequest
 
 ```TypeScript
@@ -384,8 +378,6 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 | 类型 | 说明 |
 | --- | --- |
 | boolean | true：发送成功，false：发送失败。 |
-
-<a id="sendrequest2"></a>
 
 ## sendRequest
 
@@ -424,8 +416,6 @@ sendRequest(
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;[SendRequestResult](arkts-ipc-rpc-sendrequestresult-i.md)&gt; | Promise对象，返回发送请求的响应结果。 |
-
-<a id="sendrequest3"></a>
 
 ## sendRequest
 

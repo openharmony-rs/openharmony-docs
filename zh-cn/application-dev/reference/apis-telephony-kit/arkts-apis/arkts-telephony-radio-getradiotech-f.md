@@ -6,8 +6,6 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
-<a id="getradiotech1"></a>
-
 ## getRadioTech
 
 ```TypeScript
@@ -70,8 +68,6 @@ radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
 });
 ```
 
-
-<a id="getradiotech2"></a>
 
 ## getRadioTech
 

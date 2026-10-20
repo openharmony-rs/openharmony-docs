@@ -44,7 +44,7 @@ Type of the data channel related to the data operation.
 key?: string
 ```
 
-Unique identifier of the data object in the UDMF, which can be obtained from the value returned by [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata1).
+Unique identifier of the data object in the UDMF, which can be obtained from the value returned by [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata).
 
 The key consists of **udmf:/**, **intention**, **bundleName**, and **groupId** with a (/) in between, for example, **udmf://DataHub/com.ohos.test/0123456789**.
 

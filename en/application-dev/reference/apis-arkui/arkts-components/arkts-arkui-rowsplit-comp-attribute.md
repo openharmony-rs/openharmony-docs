@@ -8,7 +8,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 > **NOTE:** 
 > 
-> The default value of [shape clipping](arkts-arkui-common-comp-commonmethod-c.md#clip1) of the **RowSplit** component is
+> The default value of [shape clipping](arkts-arkui-common-comp-commonmethod-c.md#clip) of the **RowSplit** component is
 > **true**.
 
 The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
@@ -54,4 +54,4 @@ Sets whether the divider is draggable. When set to **true**, the user can drag t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether the divider can be dragged. When set to **true**, the divider can be dragged; when set to **false**, the divider cannot be dragged.<br>Default value: **false** <br>Invalid value: handled as the default value. |
+| value | boolean | Yes | Whether the divider can be dragged. When set to **true**, the divider can be dragged; when set to **false**, the divider cannot be dragged. <br>Default value: **false** <br>Invalid value: handled as the default value. |

@@ -33,7 +33,7 @@ Creates a **NetConnection** object, which can be used to listen for the network 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | netSpecifier | [NetSpecifier](arkts-network-connection-netspecifier-i.md) | No | Specification of the network to be listened for. If this parameter is not specified, the default network is listened for. |
-| timeout | number | No | Timeout interval for obtaining the network specified by **netSpecifier**. The input value must be an uint32_t integer. This parameter is valid only when **netSpecifier** is present. The default value is **0**.<br>**Note:**  If the network to be listened for does not exist, the system attempts to activate the network. If the timeout interval is exceeded and the network status listener is registered, the **netUnavailable** event is triggered. |
+| timeout | number | No | Timeout interval for obtaining the network specified by **netSpecifier**. The input value must be an uint32_t integer. This parameter is valid only when **netSpecifier** is present. The default value is **0**. <br>**Note:**  If the network to be listened for does not exist, the system attempts to activate the network. If the timeout interval is exceeded and the network status listener is registered, the **netUnavailable** event is triggered. |
 
 **Return value:**
 

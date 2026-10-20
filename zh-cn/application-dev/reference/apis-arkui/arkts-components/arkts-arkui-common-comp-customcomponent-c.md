@@ -6,8 +6,6 @@ declare class CustomComponent extends BaseCustomComponent
 
 自定义组件
 
-@extends CommonAttribute [since 7 - 17] @extends BaseCustomComponent [since 18]
-
 **继承/实现关系：** CustomComponent extends [BaseCustomComponent](arkts-arkui-common-comp-basecustomcomponent-c.md)
 
 **起始版本：** 7
@@ -52,6 +50,8 @@ aboutToReuse?(params: Record<string, Object | undefined | null>): void
 onLayout?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void
 ```
 
+ArkUI框架会在自定义组件确定子组件位置时，将该自定义组件的子节点信息和自身的尺寸范围通过onLayout传递给自定义组件，开发者可在该方法中对子组件进行布局操作。不允许在onLayout函数中改变状态变量。
+
 **起始版本：** 9
 
 **废弃版本：** 10
@@ -69,13 +69,15 @@ onLayout?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | children | Array&lt;[LayoutChild](arkts-arkui-common-comp-layoutchild-i.md)&gt; | 是 | 子组件的布局信息。 |
-| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 父组件的尺寸约束。 |
+| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 父组件约束信息，包含minWidth、maxWidth、minHeight、maxHeight等约束条件。取值原则：minWidth≤maxWidth，minHeight≤maxHeight；单位：vp。 |
 
 ## onMeasure
 
 ```TypeScript
 onMeasure?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void
 ```
+
+ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的子节点信息和自身的尺寸范围通过onMeasure传递给自定义组件，开发者可在该方法中对子组件进行测量操作。不允许在onMeasure函数中改变状态变量。
 
 **起始版本：** 9
 
@@ -94,4 +96,4 @@ onMeasure?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | children | Array&lt;[LayoutChild](arkts-arkui-common-comp-layoutchild-i.md)&gt; | 是 | 子组件的布局信息。 |
-| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 父组件的尺寸约束。 |
+| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 父组件约束信息，包含minWidth、maxWidth、minHeight、maxHeight等约束条件。取值原则：minWidth≤maxWidth，minHeight≤maxHeight；单位：vp。 |

@@ -7,8 +7,6 @@ import { accessibility } from '@kit.AccessibilityKit';
 import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType, UIRect, UIAccessibilityElement } from '@kit.AccessibilityKit';
 ```
 
-<a id="isopenaccessibility1"></a>
-
 ## isOpenAccessibility
 
 ```TypeScript
@@ -48,8 +46,6 @@ accessibility.isOpenAccessibility((err: BusinessError, data: boolean) => {
 });
 ```
 
-
-<a id="isopenaccessibility2"></a>
 
 ## isOpenAccessibility
 

@@ -8,10 +8,10 @@ HTTP拦截器的类型枚举。
 
 | 名称 | 值 |说明 |  
 | ------ | --|-------------------------------------- |  
-| INITIAL_REQUEST |'INITIAL_REQUEST' |在初始HTTP请求组装完成后拦截。|
-| REDIRECTION | 'REDIRECTION' |当收到重定向响应时拦截。|
-| CACHE_CHECKED | 'READ_CACHE' |在检查并且命中HTTP缓存时拦截。|
-| NETWORK_CONNECT | 'CONNECT_NETWORK' |在网络请求将要发出前拦截。|
+| INITIAL_REQUEST |'INITIAL_REQUEST' |在初始HTTP请求组装完成后拦截。|  
+| REDIRECTION | 'REDIRECTION' |当收到重定向响应时拦截。|  
+| CACHE_CHECKED | 'READ_CACHE' |在检查并且命中HTTP缓存时拦截。|  
+| NETWORK_CONNECT | 'CONNECT_NETWORK' |在网络请求将要发出前拦截。|  
 | FINAL_RESPONSE | 'FINAL_RESPONSE' |在获取最终HTTP响应时拦截。|
 
 **起始版本：** 22

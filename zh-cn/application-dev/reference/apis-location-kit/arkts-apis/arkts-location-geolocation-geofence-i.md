@@ -6,8 +6,6 @@ export interface Geofence
 
 GNSS围栏的配置参数。目前只支持圆形围栏。
 
-@interface Geofence
-
 **起始版本：** 8
 
 **废弃版本：** 9

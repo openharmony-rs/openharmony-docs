@@ -138,7 +138,7 @@ Waits for the ConditionVariable to be notified, or until the specified time limi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| timeout | number | Yes | The maximum time to wait. The value should be an integer.<br>Unit: ms. |
+| timeout | number | Yes | The maximum time to wait. The value should be an integer. <br>Unit: ms. |
 
 **Return value:**
 

@@ -162,7 +162,7 @@ Creates a floating layer node with the specified display order. This API allows 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| content | [ComponentContent](arkts-arkui-componentcontent-c.md) | 是 | Content to add to the target node on the **OverlayManager**.<br>**NOTE:** <br> By default, the new node is centered on the page and stacked according to its stacking level. |
+| content | [ComponentContent](arkts-arkui-componentcontent-c.md) | 是 | Content to add to the target node on the **OverlayManager**. <br>**NOTE:** <br> By default, the new node is centered on the page and stacked according to its stacking level. |
 | levelOrder | [LevelOrder](arkts-arkui-promptaction-levelorder-c.md) | 否 |  |
 
 **示例**

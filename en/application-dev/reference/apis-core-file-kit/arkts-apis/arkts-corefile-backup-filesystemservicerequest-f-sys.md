@@ -30,7 +30,7 @@ Requests filesystem garbage collection with specified configuration.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [FileSystemRequestConfig](arkts-corefile-backup-filesystemrequestconfig-i-sys.md) | Yes | Configuration parameters for garbage collection.<br>triggerType: 0. writeSize: 0 - 2097152(MB). waitTime: 0-300(s). |
+| config | [FileSystemRequestConfig](arkts-corefile-backup-filesystemrequestconfig-i-sys.md) | Yes | Configuration parameters for garbage collection. <br>triggerType: 0. writeSize: 0 - 2097152(MB). waitTime: 0-300(s). |
 
 **Return value:**
 

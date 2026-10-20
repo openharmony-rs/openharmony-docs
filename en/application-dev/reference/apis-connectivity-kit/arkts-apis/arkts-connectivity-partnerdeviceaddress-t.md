@@ -6,8 +6,6 @@ type PartnerDeviceAddress = partnerAgent.PartnerDeviceAddress
 
 Partner device address.
 
-@typedef { partnerAgent.PartnerDeviceAddress } PartnerDeviceAddress
-
 **Type:** [partnerAgent.PartnerDeviceAddress](arkts-connectivity-partneragent-partnerdeviceaddress-i.md)
 
 **Since:** 23

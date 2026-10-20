@@ -6,8 +6,6 @@ export interface Image extends SceneResource
 
 Image resource, which inherits from SceneResource.
 
-@extends SceneResource @interface Image
-
 **Inheritance/Implementation:** Image extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **Since:** 12

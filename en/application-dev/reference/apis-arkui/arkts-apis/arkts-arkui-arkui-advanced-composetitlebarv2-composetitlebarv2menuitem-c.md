@@ -72,6 +72,8 @@ accessibilityDescription?: ResourceStr
 
 The accessibilityDescription of this menu item.
 
+Default value: **"Double-tap to activate."**
+
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **Since:** 26.0.0

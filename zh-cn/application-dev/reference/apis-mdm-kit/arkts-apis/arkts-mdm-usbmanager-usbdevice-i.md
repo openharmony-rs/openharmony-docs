@@ -39,7 +39,7 @@ productId: number
 ## serial
 
 ```TypeScript
-serial: string
+serial?: string
 ```
 
 序列号。
@@ -50,7 +50,7 @@ serial: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UsbDevice-serial: string--><!--Device-UsbDevice-serial: string-End-->
+<!--Device-UsbDevice-serial?: string--><!--Device-UsbDevice-serial?: string-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

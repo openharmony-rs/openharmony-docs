@@ -6,8 +6,6 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="disableadmin3"></a>
-
 ## disableAdmin
 
 ```TypeScript

@@ -6,8 +6,6 @@ export interface PolicyErrorResult
 
 授予或激活权限失败的URI策略结果。
 
-@interface { object }
-
 **起始版本：** 11
 
 <!--Device-fileShare-export interface PolicyErrorResult--><!--Device-fileShare-export interface PolicyErrorResult-End-->

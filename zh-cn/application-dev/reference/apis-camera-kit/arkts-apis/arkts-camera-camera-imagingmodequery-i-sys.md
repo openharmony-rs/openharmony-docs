@@ -4,7 +4,7 @@
 interface ImagingModeQuery
 ```
 
-Imaging mode query object.
+成像模式查询对象。
 
 **起始版本：** 26.0.1
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 isImagingModeSupported(mode: CameraImagingMode): boolean
 ```
 
-Checks whether a camera imaging mode is supported.
+检测是否支持指定的相机成像模式。
 
 **起始版本：** 26.0.1
 
@@ -42,13 +42,13 @@ Checks whether a camera imaging mode is supported.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [CameraImagingMode](arkts-camera-camera-cameraimagingmode-e-sys.md) | 是 | Imaging mode. |
+| mode | [CameraImagingMode](arkts-camera-camera-cameraimagingmode-e-sys.md) | 是 | 成像模式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Is the imaging mode supported. |
+| boolean | 是否支持该成像模式。**true**表示支持，**false**表示不支持。 |
 
 **错误码：**
 

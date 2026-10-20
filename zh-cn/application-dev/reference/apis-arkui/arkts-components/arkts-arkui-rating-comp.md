@@ -4,7 +4,7 @@
 
 > **说明：** 
 
-> - 当Rating的父节点有指定宽高时，需为Rating组件指定宽高，或为父节点设置值为true的[clip](arkts-arkui-common-comp-commonmethod-c.md#clip2)属性。
+> - 当Rating的父节点有指定宽高时，需为Rating组件指定宽高，或为父节点设置值为true的[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)属性。
 
 ## 子组件
 
@@ -14,10 +14,10 @@
 
 | 按键 | 功能描述 |  
 |------------|-----------------------------|  
-| Tab | 组件间切换焦点。 |
-| 左右方向键 | 评分预览增加/减少（步长为stepSize），不改变实际分值。 |
-| Home | 移动到第一个星星， 不改变实际分值。 |
-| End | 移动到最后一个星星， 不改变实际分值。 |
+| Tab | 组件间切换焦点。 |  
+| 左右方向键 | 评分预览增加/减少（步长为stepSize），不改变实际分值。 |  
+| Home | 移动到第一个星星， 不改变实际分值。 |  
+| End | 移动到最后一个星星， 不改变实际分值。 |  
 | Space/Enter | 将当前预览的评分值设置为实际评分。 |
 
 ## Rating

@@ -6,8 +6,6 @@ export type DriverExtensionContext = _DriverExtensionContext
 
 Define a DriverExtensionContext for store context.
 
-@typedef { _DriverExtensionContext }
-
 **Type:** _DriverExtensionContext
 
 **Since:** 10

@@ -6,8 +6,6 @@ declare interface PixelRoundPolicy
 
 指定组件级像素取整的方向。
 
-@interface PixelRoundPolicy
-
 **起始版本：** 11
 
 <!--Device-unnamed-declare interface PixelRoundPolicy--><!--Device-unnamed-declare interface PixelRoundPolicy-End-->
@@ -24,7 +22,7 @@ bottom?: PixelRoundCalcPolicy
 
 **类型：** [PixelRoundCalcPolicy](../arkts-apis/arkts-arkui-pixelroundcalcpolicy-e.md)
 
-**默认值：** PixelRoundCalcPolicy.NO_FORCE_ROUND
+**默认值：** undefined
 
 **起始版本：** 11
 
@@ -48,7 +46,7 @@ end?: PixelRoundCalcPolicy
 
 **类型：** [PixelRoundCalcPolicy](../arkts-apis/arkts-arkui-pixelroundcalcpolicy-e.md)
 
-**默认值：** PixelRoundCalcPolicy.NO_FORCE_ROUND
+**默认值：** undefined
 
 **起始版本：** 11
 
@@ -72,7 +70,7 @@ start?: PixelRoundCalcPolicy
 
 **类型：** [PixelRoundCalcPolicy](../arkts-apis/arkts-arkui-pixelroundcalcpolicy-e.md)
 
-**默认值：** PixelRoundCalcPolicy.NO_FORCE_ROUND
+**默认值：** undefined
 
 **起始版本：** 11
 
@@ -96,7 +94,7 @@ top?: PixelRoundCalcPolicy
 
 **类型：** [PixelRoundCalcPolicy](../arkts-apis/arkts-arkui-pixelroundcalcpolicy-e.md)
 
-**默认值：** PixelRoundCalcPolicy.NO_FORCE_ROUND
+**默认值：** undefined
 
 **起始版本：** 11
 

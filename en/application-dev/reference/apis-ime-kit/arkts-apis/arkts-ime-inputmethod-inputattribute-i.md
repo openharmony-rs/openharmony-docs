@@ -24,7 +24,7 @@ import { inputMethod } from '@kit.IMEKit';
 abilityName?: string
 ```
 
-Ability name set for the edit box. <br> <br>- If the ability name is set for the edit box, the length cannot exceed 127 characters. (A name longer than 127 characters will be automatically truncated to 127 characters.) <br>- If the ability name is not set for the edit box, the value is an empty string by default. <br>- This field is provided for the input method application when [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach1) is called.
+Ability name set for the text box. <br> <br>- When the text box sets an ability name, the length does not exceed 127 characters (if it exceeds, it is automatically truncated to 127 characters). <br>- When the text box does not set an ability name, it defaults to an empty string. <br>- This field is provided to the input method application when [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) is called.
 
 **Type:** string
 
@@ -40,7 +40,7 @@ Ability name set for the edit box. <br> <br>- If the ability name is set for the
 consumeKeyEvents?: boolean
 ```
 
-Whether the editor supports consuming key events.
+Whether the text box has full capability to handle keys such as letters, characters, and function keys. The default value is **false**. <br> <br>- The value **true** indicates that this capability is available. <br>- The value **false** indicates that this capability is not available. <br>- This field is provided to the input method application when [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) / [updateAttribute](arkts-ime-inputmethod-inputmethodcontroller-i.md#updateattribute) is called. <br> <br>**Model restriction:** This parameter can be used only in the stage model.
 
 **Type:** boolean
 
@@ -60,7 +60,7 @@ Whether the editor supports consuming key events.
 enterKeyType: EnterKeyType
 ```
 
-Function type represented by the Enter key.
+Enter key function type.
 
 **Type:** [EnterKeyType](arkts-ime-inputmethod-enterkeytype-e.md)
 
@@ -76,7 +76,7 @@ Function type represented by the Enter key.
 placeholder?: string
 ```
 
-Placeholder information set for the edit box. <br> <br>- When placeholder information is set for the edit box, the length cannot exceed 255 characters (a placeholder longer than 255 characters will be automatically truncated to 255 characters). It is used to prompt or guide users to enter temporary text or symbols. (For example, the placeholder prompts whether the input item is mandatory.) <br>- If no placeholder is set for the edit box, the value is an empty string by default. <br>- This field is provided for the input method application when [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach1) is called.
+Placeholder information set for the text box. <br> <br>- When the text box sets placeholder information, the length does not exceed 255 characters (if it exceeds, it is automatically truncated to 255 characters), used to prompt or guide the user to enter temporary text or symbols. (For example, prompting the input result feedback of an input item being "mandatory" or "optional".) <br>- When the text box does not set placeholder information, it defaults to an empty string. <br>- This field is provided to the input method application when [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) is called.
 
 **Type:** string
 
@@ -92,7 +92,7 @@ Placeholder information set for the edit box. <br> <br>- When placeholder inform
 textInputType: TextInputType
 ```
 
-Enumerates the text input types.
+Text input type.
 
 **Type:** [TextInputType](arkts-ime-inputmethod-textinputtype-e.md)
 

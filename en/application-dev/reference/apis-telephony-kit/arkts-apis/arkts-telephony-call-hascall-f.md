@@ -6,8 +6,6 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
-<a id="hascall1"></a>
-
 ## hasCall
 
 ```TypeScript
@@ -42,8 +40,6 @@ call.hasCall((err: BusinessError, data: boolean) => {
 });
 ```
 
-
-<a id="hascall2"></a>
 
 ## hasCall
 

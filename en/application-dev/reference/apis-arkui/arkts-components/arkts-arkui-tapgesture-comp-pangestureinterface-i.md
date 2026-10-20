@@ -16,8 +16,6 @@ A pan gesture can be triggered by a finger or stylus swipe, a left-mouse-button 
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="call1"></a>
-
 ## [[Call]]
 
 ```TypeScript
@@ -38,15 +36,13 @@ Creates a pan gesture. Inherits from [GestureInterface<T>](arkts-arkui-tapgestur
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | { fingers?: number; direction?: PanDirection; distance?: number } &#124; [PanGestureOptions](arkts-arkui-tapgesture-comp-pangestureoptions-c.md) | No | Parameters for the pan gesture. <br> - **fingers**: minimum number of fingers to trigger a pan gesture. The value ranges from 1 to 10. <br>Default value: **1**<br>Value range: [1, 10] <br>**NOTE:** <br>If the value is less than 1 or is not set, the default value is used. <br> - **direction**: pan direction. The value supports the AND (&amp;) and OR (\&#124;) operations. <br>Default value: **PanDirection.All** <br> - **distance**: minimum pan distance to trigger the gesture, in vp.<br>Value range: [0, +∞) <br>Default value: **8** for the stylus and **5** for other input sources. <br>**NOTE:** <br>If a pan gesture and a [tab](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-customelement-i.md#tabs) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.<br>If the value specified is less than **0**, the default value is used.<br>When the [scale](arkts-arkui-common-comp-commonmethod-c.md#scale1) attribute is applied to the component, the actual pan distance is adjusted based on the **scale** ratio. |
+| value | { fingers?: number; direction?: PanDirection; distance?: number } &#124; [PanGestureOptions](arkts-arkui-tapgesture-comp-pangestureoptions-c.md) | No | Parameters for the pan gesture. <br> - **fingers**: minimum number of fingers to trigger a pan gesture. The value ranges from 1 to 10. <br>Default value: **1**<br>Value range: [1, 10] <br>**NOTE:** <br>If the value is less than 1 or is not set, the default value is used. <br> - **direction**: pan direction. The value supports the AND (&amp;) and OR (\&#124;) operations. <br>Default value: **PanDirection.All** <br> - **distance**: minimum pan distance to trigger the gesture, in vp.<br>Value range: [0, +∞) <br>Default value: **8** for the stylus and **5** for other input sources. <br>**NOTE:** <br>If a pan gesture and a [tab](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-customelement-i.md#tabs) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.<br>If the value specified is less than **0**, the default value is used.<br>When the [scale](arkts-arkui-common-comp-commonmethod-c.md#scale) attribute is applied to the component, the actual pan distance is adjusted based on the **scale** ratio. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
 | [PanGestureInterface](arkts-arkui-tapgesture-comp-pangestureinterface-i.md) |  |
-
-<a id="call2"></a>
 
 ## [[Call]]
 
@@ -78,8 +74,6 @@ Creates a pan gesture. Compared with PanGesture | PanGestureOptions)}, this API 
 | --- | --- |
 | [PanGestureInterface](arkts-arkui-tapgesture-comp-pangestureinterface-i.md) |  |
 
-<a id="onactioncancel1"></a>
-
 ## onActionCancel
 
 ```TypeScript
@@ -107,8 +101,6 @@ Registers the callback for pan gesture cancellation. This callback is triggered 
 | Type | Description |
 | --- | --- |
 | [PanGestureInterface](arkts-arkui-tapgesture-comp-pangestureinterface-i.md) |  |
-
-<a id="onactioncancel2"></a>
 
 ## onActionCancel
 

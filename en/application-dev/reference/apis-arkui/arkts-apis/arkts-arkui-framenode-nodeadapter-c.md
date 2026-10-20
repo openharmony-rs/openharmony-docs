@@ -159,8 +159,8 @@ Inserts a specified number of items starting from a specific index.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| start | number | Yes | Starting index of the items to insert.<br>Value range: 0, +∞). |
-| count | number | Yes | Number of the items to insert.<br>Value range: [0, +∞). |
+| start | number | Yes | Starting index of the items to insert. <br>Value range: 0, +∞). |
+| count | number | Yes | Number of the items to insert. <br>Value range: [0, +∞). |
 
 ## isDisposed
 
@@ -212,8 +212,8 @@ Moves items from the starting index to the ending index.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| from | number | Yes | Original index from which the data will be moved.<br>Value range: [0, +∞). |
-| to | number | Yes | Target index to which the data will be moved.<br>Value range: [0, +∞). |
+| from | number | Yes | Original index from which the data will be moved. <br>Value range: [0, +∞). |
+| to | number | Yes | Target index to which the data will be moved. <br>Value range: [0, +∞). |
 
 ## onAttachToNode
 
@@ -276,7 +276,7 @@ Called during node initialization or when new child nodes are detected. When add
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the loaded node.<br>Value range: [0, +∞). |
+| index | number | Yes | Index of the loaded node. <br>Value range: [0, +∞). |
 
 **Return value:**
 
@@ -349,7 +349,7 @@ Called during node initialization or when new child nodes are detected. The **in
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the loaded node.<br>Value range: [0, +∞). |
+| index | number | Yes | Index of the loaded node. <br>Value range: [0, +∞). |
 
 **Return value:**
 
@@ -422,8 +422,8 @@ Reloads a specified number of items starting from a specific index.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| start | number | Yes | Starting index of the items to reload.<br>Value range: 0, +∞). |
-| count | number | Yes | Number of the items to reload.<br>Value range: [0, +∞). |
+| start | number | Yes | Starting index of the items to reload. <br>Value range: 0, +∞). |
+| count | number | Yes | Number of the items to reload. <br>Value range: [0, +∞). |
 
 ## removeItem
 
@@ -447,8 +447,8 @@ Removes a specified number of items starting from a specific index.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| start | number | Yes | Starting index of the items to remove.<br>Value range: [0, +∞). |
-| count | number | Yes | Number of the items to remove.<br>Value range: [0, +∞). |
+| start | number | Yes | Starting index of the items to remove. <br>Value range: [0, +∞). |
+| count | number | Yes | Number of the items to remove. <br>Value range: [0, +∞). |
 
 ## totalNodeCount
 

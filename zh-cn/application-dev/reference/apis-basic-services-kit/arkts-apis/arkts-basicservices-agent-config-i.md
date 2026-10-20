@@ -545,7 +545,7 @@ title?: string
 token?: string
 ```
 
-任务令牌。查询带有token的任务需提供token并通过[request.agent.touch](arkts-basicservices-agent-touch-f.md#touch1)查询，否则无法查询到指定任务。其最小为8个字节，最大为2048个字节。默认为空。
+任务令牌。查询带有token的任务需提供token并通过[request.agent.touch](arkts-basicservices-agent-touch-f.md#touch)查询，否则无法查询到指定任务。其最小为8个字节，最大为2048个字节。默认为空。
 
 **类型：** string
 

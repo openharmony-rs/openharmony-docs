@@ -28,8 +28,8 @@ Notify watermark complete.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| jobId | string | Yes | Indicates the job ID.<br>Print job ID in preview. |
-| result | [WatermarkHandleResult](arkts-basicservices-print-watermarkhandleresult-e.md) | Yes | Indicates the result.<br>Watermark processing results. |
+| jobId | string | Yes | Indicates the job ID. <br>Print job ID in preview. |
+| result | [WatermarkHandleResult](arkts-basicservices-print-watermarkhandleresult-e.md) | Yes | Indicates the result. <br>Watermark processing results. |
 
 **Error codes:**
 

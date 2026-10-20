@@ -6,8 +6,6 @@ interface ASTCResource
 
 定义可以使用 ASTC 的资源。
 
-@interface ASTCResource
-
 **起始版本：** 12
 
 <!--Device-unnamed-interface ASTCResource--><!--Device-unnamed-interface ASTCResource-End-->

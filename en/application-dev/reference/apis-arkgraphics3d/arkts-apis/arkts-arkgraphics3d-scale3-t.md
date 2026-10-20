@@ -6,8 +6,6 @@ export type Scale3 = Vec3
 
 Scaling of an object in 3D space. The value is of the Vec3 type. Any 3D vector.
 
-@typedef { Vec3 }
-
 **Type:** [Vec3](arkts-arkgraphics3d-scenetypes-vec3-i.md)
 
 **Since:** 12

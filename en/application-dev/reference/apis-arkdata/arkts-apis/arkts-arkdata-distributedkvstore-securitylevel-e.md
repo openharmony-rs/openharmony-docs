@@ -13,7 +13,7 @@ Enumerates the KV store security levels.
 > 
 > * This operation does not apply to the databases that require cross-device sync. Data cannot be synced between databases of different security levels. If you want to upgrade the security level of a database, you are advised to create a database of a higher security level.
 > 
-> * You need to close the database before modifying the **securityLevel** parameter, and open it after the security level is upgraded.
+> * After closing the current database, modify the **securityLevel** parameter to reset the database security level,and then call the getKVStore API to open the database again.
 > 
 > * You cannot downgrade the database security level. For example, you can change the database security level from S2 to S3, but cannot change it from S3 to S2.
 
@@ -29,7 +29,7 @@ Enumerates the KV store security levels.
 S1
 ```
 
-S1: means the db is in the low security level There are some low impact when the data is leaked.
+Low security level. Disclosure, tampering, corruption, or loss of the data may cause minor impact on an individual or group.<br>Examples: gender and nationality information, and user application records
 
 **Since:** 9
 
@@ -45,7 +45,7 @@ S1: means the db is in the low security level There are some low impact when the
 S2
 ```
 
-S2: means the db is in the middle security level There are some major impact when the data is leaked.
+Medium security level. Disclosure, tampering, corruption, or loss of the data may cause major impact on an individual or group.<br>Examples: individual mailing addresses and nicknames
 
 **Since:** 9
 
@@ -61,7 +61,7 @@ S2: means the db is in the middle security level There are some major impact whe
 S3
 ```
 
-S3: means the db is in the high security level There are some severity impact when the data is leaked.
+High security level. Disclosure, tampering, corruption, or loss of the data may cause critical impact on an individual or group.<br>Examples: real-time precise positioning information and movement trajectory
 
 **Since:** 9
 
@@ -77,7 +77,7 @@ S3: means the db is in the high security level There are some severity impact wh
 S4
 ```
 
-S4: means the db is in the critical security level There are some critical impact when the data is leaked.
+Critical security level for a KV store. Disclosure, tampering, corruption, or loss of the data may cause significant adverse impact on an individual or group.<br><br>Examples: political opinions, religion, philosophical belief, trade union membership, genetic data, biological information, health, sexual life status, sexual orientation, device authentication, and personal credit card information.
 
 **Since:** 9
 

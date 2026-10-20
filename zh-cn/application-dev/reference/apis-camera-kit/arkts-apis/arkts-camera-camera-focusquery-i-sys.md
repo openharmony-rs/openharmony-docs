@@ -8,7 +8,7 @@ interface FocusQuery
 
 > **说明：** 
 > 
-> - 本Interface的起始版本为API version 12。接口在API version 12发生兼容变更，保留了内层元素的起始版本信息，会出现外层元素@since版本号大于内层元素的情况，不影响接口使用。
+> - 本Interface的起始版本为API版本12。接口在API版本12发生兼容变更，保留了内层元素的起始版本信息，会出现外层元素@since版本号大于内层元素的情况，不影响接口使用。
 
 **起始版本：** 12
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 isFocusAssistSupported(): boolean
 ```
 
-Checks whether the focus assist is supported.
+检测是否支持对焦辅助。
 
 **起始版本：** 12
 
@@ -42,7 +42,7 @@ Checks whether the focus assist is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for the support of the focus assist. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
+| boolean | 检测是否支持对焦辅助的结果。**true**表示支持，**false**表示不支持。接口调用失败会返回错误码，错误码定义见[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
 **错误码：**
 
@@ -78,7 +78,7 @@ function isFocusAssistSupported(professionalPhotoSession: camera.ProfessionalPho
 isFocusDrivenTypeSupported(type: FocusDrivenType): boolean
 ```
 
-Checks whether a focus drive type is supported.
+检测是否支持指定的对焦驱动类型。
 
 **起始版本：** 15
 
@@ -92,13 +92,13 @@ Checks whether a focus drive type is supported.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [FocusDrivenType](arkts-camera-camera-focusdriventype-e-sys.md) | 是 | Focus drive type. |
+| type | [FocusDrivenType](arkts-camera-camera-focusdriventype-e-sys.md) | 是 | 对焦驱动类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for the support of the focus drive type. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
+| boolean | 检测是否支持指定对焦驱动类型的结果。**true**表示支持，**false**表示不支持。接口调用失败会返回错误码，错误码定义见[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
 **错误码：**
 
@@ -135,7 +135,7 @@ function isFocusDrivenTypeSupported(session: camera.VideoSessionForSys, type: ca
 isFocusRangeTypeSupported(type: FocusRangeType): boolean
 ```
 
-Checks whether a focus range type is supported.
+检测是否支持指定的对焦范围类型。
 
 **起始版本：** 15
 
@@ -149,13 +149,13 @@ Checks whether a focus range type is supported.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [FocusRangeType](arkts-camera-camera-focusrangetype-e-sys.md) | 是 | Focus range type. |
+| type | [FocusRangeType](arkts-camera-camera-focusrangetype-e-sys.md) | 是 | 对焦范围类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for the support of the focus range type. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
+| boolean | 检测是否支持指定对焦范围类型的结果。**true**表示支持，**false**表示不支持。接口调用失败会返回错误码，错误码定义见[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)。 |
 
 **错误码：**
 

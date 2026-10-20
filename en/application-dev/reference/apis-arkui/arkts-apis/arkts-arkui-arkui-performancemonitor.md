@@ -11,6 +11,8 @@ The **performanceMonitor** module provides APIs for monitoring performance metri
 
 **Since:** 10
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace performanceMonitor--><!--Device-unnamed-declare namespace performanceMonitor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

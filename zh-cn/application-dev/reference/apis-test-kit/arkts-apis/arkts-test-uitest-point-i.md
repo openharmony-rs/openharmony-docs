@@ -55,8 +55,6 @@ x: number
 
 从API version 11开始，该接口支持在原子化服务中使用。
 
-@readonly [since 9-19]
-
 **类型：** number
 
 **起始版本：** 9
@@ -80,8 +78,6 @@ y: number
 **说明：** 从API version 20开始，该属性不再为只读属性。
 
 从API version 11开始，该接口支持在原子化服务中使用。
-
-@readonly [since 9-19]
 
 **类型：** number
 

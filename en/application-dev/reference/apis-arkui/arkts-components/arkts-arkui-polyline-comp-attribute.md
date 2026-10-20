@@ -38,4 +38,4 @@ Sets the list of coordinate points that the polyline passes through. This attrib
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;any&gt; | Yes | List of coordinate points that the polyline passes through. Pass in a two-dimensional array, where each sub-array represents the [x, y] coordinates of a vertex.<br>Default value: [] (empty array) <br>Default unit: vp <br>Abnormal values undefined and null are processed as the default value. |
+| value | Array&lt;any&gt; | Yes | List of coordinate points that the polyline passes through. Pass in a two-dimensional array, where each sub-array represents the [x, y] coordinates of a vertex. <br>Default value: [] (empty array) <br>Default unit: vp <br>Abnormal values undefined and null are processed as the default value. |

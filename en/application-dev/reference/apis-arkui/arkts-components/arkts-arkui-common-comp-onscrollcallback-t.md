@@ -22,5 +22,5 @@ Triggered when the scrollable component scrolls.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scrollOffset | number | Yes | Offset relative to the previous frame. The offset is positive when the scrollable component is scrolled up and negative when it is scrolled down.<br>Unit: vp |
+| scrollOffset | number | Yes | Offset relative to the previous frame. The offset is positive when the scrollable component is scrolled up and negative when it is scrolled down. <br>Unit: vp |
 | scrollState | [ScrollState](arkts-arkui-list-comp-scrollstate-e.md) | Yes | Current scroll state. |

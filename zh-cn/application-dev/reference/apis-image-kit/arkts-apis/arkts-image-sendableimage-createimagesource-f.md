@@ -6,8 +6,6 @@
 import { sendableImage } from '@kit.ImageKit';
 ```
 
-<a id="createimagesource1"></a>
-
 ## createImageSource
 
 ```TypeScript
@@ -91,8 +89,6 @@ async function CreateImageSource(context : Context) {
 ```
 
 
-<a id="createimagesource2"></a>
-
 ## createImageSource
 
 ```TypeScript
@@ -136,8 +132,6 @@ async function CreateImageSource(context : Context) {
 }
 ```
 
-
-<a id="createimagesource3"></a>
 
 ## createImageSource
 

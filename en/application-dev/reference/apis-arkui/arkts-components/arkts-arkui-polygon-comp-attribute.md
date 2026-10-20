@@ -38,4 +38,4 @@ Sets the vertex coordinates of the polygon. This attribute can be dynamically se
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;any&gt; | Yes | List of vertex coordinates of the polygon. A two-dimensional array is passed in, where each sub-array represents the [x, y] coordinates of a vertex.<br>Default value: [] (empty array) <br>Default unit: vp <br>The abnormal values **undefined** and **null** are handled as the default value. |
+| value | Array&lt;any&gt; | Yes | List of vertex coordinates of the polygon. A two-dimensional array is passed in, where each sub-array represents the [x, y] coordinates of a vertex. <br>Default value: [] (empty array) <br>Default unit: vp <br>The abnormal values **undefined** and **null** are handled as the default value. |

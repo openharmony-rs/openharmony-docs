@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="isabilityenabled1"></a>
-
 ## isAbilityEnabled
 
 ```TypeScript
@@ -85,8 +83,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="isabilityenabled2"></a>
-
 ## isAbilityEnabled
 
 ```TypeScript
@@ -158,8 +154,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="isabilityenabled3"></a>
 
 ## isAbilityEnabled
 

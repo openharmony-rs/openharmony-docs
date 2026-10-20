@@ -171,3 +171,5 @@ QR code or barcode.
 <!--Device-RecommendationType-QR_OR_BAR_CODE = 1--><!--Device-RecommendationType-QR_OR_BAR_CODE = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Examples**

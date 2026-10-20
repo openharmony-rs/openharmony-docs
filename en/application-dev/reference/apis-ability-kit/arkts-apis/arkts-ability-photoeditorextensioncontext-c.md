@@ -6,8 +6,6 @@ declare class PhotoEditorExtensionContext extends ExtensionContext
 
 The context of Photo Editor extension. It allows access to PhotoEditorExtension-specific resources.
 
-@extends ExtensionContext
-
 **Inheritance/Implementation:** PhotoEditorExtensionContext extends [ExtensionContext](arkts-ability-extensioncontext-c.md)
 
 **Since:** 12
@@ -47,7 +45,7 @@ Save image data by image pixmap.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Params error. Possible causes: 1.Mandatory parameters are left unspecified.<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Params error. Possible causes: 1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. |
 | [29600001](../errorcode-ability.md#29600001-internal-error-during-image-editing) | Internal error. |
 | [29600002](../errorcode-ability.md#29600002-image-input-error) | Image input error. |
 | [29600003](../errorcode-ability.md#29600003-image-too-large) | Image too big. |
@@ -124,7 +122,7 @@ Save image data by uri.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Params error. Possible causes: 1.Mandatory parameters are left unspecified.<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Params error. Possible causes: 1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. |
 | [29600001](../errorcode-ability.md#29600001-internal-error-during-image-editing) | Internal error. |
 | [29600002](../errorcode-ability.md#29600002-image-input-error) | Image input error. |
 | [29600003](../errorcode-ability.md#29600003-image-too-large) | Image too big. |

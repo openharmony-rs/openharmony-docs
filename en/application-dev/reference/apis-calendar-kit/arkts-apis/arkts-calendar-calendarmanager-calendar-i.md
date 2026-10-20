@@ -4,7 +4,7 @@
 export interface Calendar
 ```
 
-In the following API examples, you need to use [createCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#createcalendar2) or getCalendar() to obtain
+In the following API examples, you need to use [createCalendar()](arkts-calendar-calendarmanager-calendarmanager-i.md#createcalendar) or getCalendar() to obtain
 
 a **Calendar** object before calling related APIs.
 
@@ -19,8 +19,6 @@ a **Calendar** object before calling related APIs.
 ```TypeScript
 import { calendarManager } from '@kit.CalendarKit';
 ```
-
-<a id="addevent1"></a>
 
 ## addEvent
 
@@ -59,7 +57,7 @@ Adds an event, with no event ID, instanceStartTime, and instanceEndTime specifie
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -93,8 +91,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 });
 ```
 
-<a id="addevent2"></a>
-
 ## addEvent
 
 ```TypeScript
@@ -127,7 +123,7 @@ Adds an event, with no event ID, instanceStartTime, and instanceEndTime specifie
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -160,8 +156,6 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
   console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="addevents1"></a>
 
 ## addEvents
 
@@ -198,7 +192,7 @@ Adds events in batches, with no event ID, instanceStartTime, and instanceEndTime
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -239,8 +233,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 });
 ```
 
-<a id="addevents2"></a>
-
 ## addEvents
 
 ```TypeScript
@@ -271,7 +263,7 @@ Adds events in batches, with no event ID, instanceStartTime, and instanceEndTime
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -313,8 +305,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
   }
 });
 ```
-
-<a id="deleteevent1"></a>
 
 ## deleteEvent
 
@@ -382,8 +372,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 });
 ```
 
-<a id="deleteevent2"></a>
-
 ## deleteEvent
 
 ```TypeScript
@@ -448,8 +436,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
   }
 });
 ```
-
-<a id="deleteevents1"></a>
 
 ## deleteEvents
 
@@ -529,8 +515,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
   }
 });
 ```
-
-<a id="deleteevents2"></a>
 
 ## deleteEvents
 
@@ -694,8 +678,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 });
 ```
 
-<a id="getevents1"></a>
-
 ## getEvents
 
 ```TypeScript
@@ -732,7 +714,7 @@ Obtains all events in a calendar that match the filter criteria. This API uses a
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -775,8 +757,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 });
 ```
 
-<a id="getevents2"></a>
-
 ## getEvents
 
 ```TypeScript
@@ -808,7 +788,7 @@ Obtains all events in a calendar that match the filter criteria. This API uses a
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -864,8 +844,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 });
 ```
 
-<a id="getevents3"></a>
-
 ## getEvents
 
 ```TypeScript
@@ -897,7 +875,7 @@ For versions earlier than API version 20, the default fields to be obtained incl
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -1056,7 +1034,7 @@ Queries the event instance with a specified event key in a calendar. This API us
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 23 and later |
-| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes:<br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
+| [23900004](../errorcode-calendarManager.md#23900004-internal-program-error) | Internal program errors. Possible causes: <br>1. dataShare database execution error; <br>2. null pointer error; <br>3. Data parsing error.<br>**Applicable version:** 23 and later |
 
 **Examples**
 
@@ -1097,8 +1075,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
   }
 });
 ```
-
-<a id="setconfig1"></a>
 
 ## setConfig
 
@@ -1162,8 +1138,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 });
 ```
 
-<a id="setconfig2"></a>
-
 ## setConfig
 
 ```TypeScript
@@ -1222,8 +1196,6 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
   }
 });
 ```
-
-<a id="updateevent1"></a>
 
 ## updateEvent
 
@@ -1292,8 +1264,6 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
   }
 });
 ```
-
-<a id="updateevent2"></a>
 
 ## updateEvent
 

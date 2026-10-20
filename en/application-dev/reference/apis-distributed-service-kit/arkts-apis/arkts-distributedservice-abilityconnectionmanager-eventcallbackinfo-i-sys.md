@@ -24,7 +24,7 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 image?: image.PixelMap
 ```
 
-Received image.
+Received image. If this parameter is not passed, it indicates that no image is received or the image information is unavailable.
 
 **Type:** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 

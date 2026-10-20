@@ -38,7 +38,7 @@ Sets the color of the dot-style navigation indicator.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the dot-style navigation indicator.<br>Default value: **'#1A182431'** (light gray) |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the dot-style navigation indicator. <br>Default value: **'#1A182431'** (light gray) |
 
 **Return value:**
 
@@ -256,7 +256,7 @@ Sets the color of the selected dot-style navigation indicator.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the selected dot-style navigation indicator.<br>Default value: **'#007DFF'** (blue) |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the selected dot-style navigation indicator. <br>Default value: **'#007DFF'** (blue) |
 
 **Return value:**
 

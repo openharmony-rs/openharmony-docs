@@ -18,8 +18,6 @@ Provides the API for formatting number strings.
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -44,8 +42,6 @@ import { intl } from '@kit.LocalizationKit';
 // Create a NumberFormat object using the current system locale ID.
 let formatter: intl.NumberFormat = new intl.NumberFormat();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

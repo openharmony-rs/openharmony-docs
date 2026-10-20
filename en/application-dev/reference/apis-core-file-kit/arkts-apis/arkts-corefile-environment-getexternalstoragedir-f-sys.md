@@ -38,3 +38,20 @@ Obtains the sandbox path of the root directory of an external storage card. This
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 13900042 | Unknown error. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+function getExternalStorageDirExample() {
+  try {
+    let path = Environment.getExternalStorageDir();
+    console.info(`Succeeded in getExternalStorageDir, path is ${path}`);
+  } catch (err) {
+    console.error(`Failed to getExternalStorageDir. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+<!--DelEnd-->

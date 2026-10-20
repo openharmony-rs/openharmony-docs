@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="getisocountrycodeforsim1"></a>
-
 ## getISOCountryCodeForSim
 
 ```TypeScript
@@ -55,8 +53,6 @@ sim.getISOCountryCodeForSim(0, (err: BusinessError, data: string) => {
 });
 ```
 
-
-<a id="getisocountrycodeforsim2"></a>
 
 ## getISOCountryCodeForSim
 

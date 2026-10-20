@@ -6,8 +6,6 @@ export interface PostProcessSettings
 
 Post-processing settings, which are used to configure the image processing effect after camera rendering, including tone mapping, bloom, vignetting, and chromatic aberration. This is used as the postProcess attribute of Camera.
 
-@typedef PostProcessSettings
-
 **Since:** 12
 
 <!--Device-unnamed-export interface PostProcessSettings--><!--Device-unnamed-export interface PostProcessSettings-End-->

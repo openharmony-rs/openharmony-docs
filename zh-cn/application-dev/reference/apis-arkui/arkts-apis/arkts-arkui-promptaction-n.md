@@ -14,6 +14,8 @@ declare namespace promptAction
 
 **起始版本：** 9
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 <!--Device-unnamed-declare namespace promptAction--><!--Device-unnamed-declare namespace promptAction-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -34,10 +36,10 @@ import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 | [openToast](arkts-arkui-promptaction-opentoast-f.md#opentoast) | 显示即时反馈并通过Promise返回其id。 |
 | [closeCustomDialog](arkts-arkui-promptaction-closecustomdialog-f.md#closecustomdialog) | 关闭自定义弹窗。 |
 | [openCustomDialog](arkts-arkui-promptaction-opencustomdialog-f.md#opencustomdialog) | 打开自定义弹窗。通过Promise返回结果。 |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu1) | 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。 |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu2) | 创建并显示操作菜单，菜单响应后通过Promise返回结果。 |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog1) | 创建并显示对话框，对话框响应结果使用callback异步回调返回。 |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog2) | 创建并显示对话框，对话框通过Promise返回结果。 |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu) | 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。 |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu) | 创建并显示操作菜单，菜单响应后通过Promise返回结果。 |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog) | 创建并显示对话框，对话框响应结果使用callback异步回调返回。 |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog) | 创建并显示对话框，对话框通过Promise返回结果。 |
 | [showToast](arkts-arkui-promptaction-showtoast-f.md#showtoast) | Creates and displays a toast. |
 
 ### 类

@@ -18,7 +18,7 @@ Describes the configuration options for child components to be preloaded.
 independent?: boolean
 ```
 
-Whether [cachedCount](arkts-arkui-swiper-comp-attribute.md#cachedcount3) is calculated based on the actual number of child components.
+Whether [cachedCount](arkts-arkui-swiper-comp-attribute.md#cachedcount) is calculated based on the actual number of child components.
 
 When set to **true**, **cachedCount** is calculated based on the actual number of child components instead of by group.
 

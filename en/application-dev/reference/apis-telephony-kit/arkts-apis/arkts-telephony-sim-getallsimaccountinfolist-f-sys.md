@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="getallsimaccountinfolist1"></a>
-
 ## getAllSimAccountInfoList
 
 ```TypeScript
@@ -58,8 +56,6 @@ sim.getAllSimAccountInfoList((err: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="getallsimaccountinfolist2"></a>
 
 ## getAllSimAccountInfoList
 

@@ -20,8 +20,6 @@ Implements configuration, acquisition, and listening for properties.
 import { config } from '@kit.AccessibilityKit';
 ```
 
-<a id="get1"></a>
-
 ## get
 
 ```TypeScript
@@ -66,8 +64,6 @@ config.highContrastText.get().then((data: boolean) => {
 ```
 
 <!--DelEnd-->
-
-<a id="get2"></a>
 
 ## get
 
@@ -208,8 +204,6 @@ config.highContrastText.on((data: boolean) => {
 
 <!--DelEnd-->
 
-<a id="set1"></a>
-
 ## set
 
 ```TypeScript
@@ -265,8 +259,6 @@ config.highContrastText.set(value).then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="set2"></a>
 
 ## set
 

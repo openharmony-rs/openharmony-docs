@@ -18,8 +18,6 @@ declare class Decimal
 import { Decimal } from '@kit.ArkTS';
 ```
 
-<a id="abs1"></a>
-
 ## abs
 
 ```TypeScript
@@ -41,8 +39,6 @@ abs(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="abs2"></a>
 
 ## abs
 
@@ -78,8 +74,6 @@ static abs(n: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="acos1"></a>
-
 ## acos
 
 ```TypeScript
@@ -107,8 +101,6 @@ acos(): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
-
-<a id="acos2"></a>
 
 ## acos
 
@@ -145,8 +137,6 @@ static acos(n: Value): Decimal
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="acosh1"></a>
-
 ## acosh
 
 ```TypeScript
@@ -174,8 +164,6 @@ acosh(): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
-
-<a id="acosh2"></a>
 
 ## acosh
 
@@ -212,8 +200,6 @@ static acosh(n: Value): Decimal
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="add1"></a>
-
 ## add
 
 ```TypeScript
@@ -247,8 +233,6 @@ add(n: Value): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
-
-<a id="add2"></a>
 
 ## add
 
@@ -285,8 +269,6 @@ static add(x: Value, y: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="asin1"></a>
-
 ## asin
 
 ```TypeScript
@@ -314,8 +296,6 @@ asin(): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
-
-<a id="asin2"></a>
 
 ## asin
 
@@ -352,8 +332,6 @@ static asin(n: Value): Decimal
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="asinh1"></a>
-
 ## asinh
 
 ```TypeScript
@@ -381,8 +359,6 @@ asinh(): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
-
-<a id="asinh2"></a>
 
 ## asinh
 
@@ -419,8 +395,6 @@ static asinh(n: Value): Decimal
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="atan1"></a>
-
 ## atan
 
 ```TypeScript
@@ -448,8 +422,6 @@ atan(): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
-
-<a id="atan2"></a>
 
 ## atan
 
@@ -522,8 +494,6 @@ static atan2(y: Value, x: Value): Decimal
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="atanh1"></a>
-
 ## atanh
 
 ```TypeScript
@@ -551,8 +521,6 @@ atanh(): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
-
-<a id="atanh2"></a>
 
 ## atanh
 
@@ -589,8 +557,6 @@ static atanh(n: Value): Decimal
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="cbrt1"></a>
-
 ## cbrt
 
 ```TypeScript
@@ -612,8 +578,6 @@ cbrt(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="cbrt2"></a>
 
 ## cbrt
 
@@ -649,8 +613,6 @@ static cbrt(n: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="ceil1"></a>
-
 ## ceil
 
 ```TypeScript
@@ -672,8 +634,6 @@ ceil(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="ceil2"></a>
 
 ## ceil
 
@@ -708,8 +668,6 @@ static ceil(n: Value): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
-
-<a id="clamp1"></a>
 
 ## clamp
 
@@ -746,8 +704,6 @@ clamp(min: Value, max: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `min` is out of range. |
-
-<a id="clamp2"></a>
 
 ## clamp
 
@@ -848,8 +804,6 @@ Decimal的构造函数。
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="cos1"></a>
-
 ## cos
 
 ```TypeScript
@@ -871,8 +825,6 @@ cos(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="cos2"></a>
 
 ## cos
 
@@ -908,8 +860,6 @@ static cos(n: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="cosh1"></a>
-
 ## cosh
 
 ```TypeScript
@@ -931,8 +881,6 @@ cosh(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="cosh2"></a>
 
 ## cosh
 
@@ -990,8 +938,6 @@ decimalPlaces(): number
 | --- | --- |
 | number | the number type |
 
-<a id="div1"></a>
-
 ## div
 
 ```TypeScript
@@ -1025,8 +971,6 @@ div(n: Value): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
-
-<a id="div2"></a>
 
 ## div
 
@@ -1131,8 +1075,6 @@ equals(n: Value): boolean
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="exp1"></a>
-
 ## exp
 
 ```TypeScript
@@ -1160,8 +1102,6 @@ exp(): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
-
-<a id="exp2"></a>
 
 ## exp
 
@@ -1198,8 +1138,6 @@ static exp(n: Value): Decimal
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="floor1"></a>
-
 ## floor
 
 ```TypeScript
@@ -1221,8 +1159,6 @@ floor(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="floor2"></a>
 
 ## floor
 
@@ -1560,8 +1496,6 @@ lessThanOrEqualTo(n: Value): boolean
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="ln1"></a>
-
 ## ln
 
 ```TypeScript
@@ -1589,8 +1523,6 @@ ln(): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
-
-<a id="ln2"></a>
 
 ## ln
 
@@ -1627,8 +1559,6 @@ static ln(n: Value): Decimal
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="log1"></a>
-
 ## log
 
 ```TypeScript
@@ -1663,8 +1593,6 @@ log(n: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
-
-<a id="log2"></a>
 
 ## log
 
@@ -1840,8 +1768,6 @@ static min(...n: Value[]): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="mod1"></a>
-
 ## mod
 
 ```TypeScript
@@ -1875,8 +1801,6 @@ mod(n: Value): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
-
-<a id="mod2"></a>
 
 ## mod
 
@@ -1913,8 +1837,6 @@ static mod(x: Value, y: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="mul1"></a>
-
 ## mul
 
 ```TypeScript
@@ -1948,8 +1870,6 @@ mul(n: Value): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
-
-<a id="mul2"></a>
 
 ## mul
 
@@ -2008,8 +1928,6 @@ negate(): Decimal
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
 
-<a id="pow1"></a>
-
 ## pow
 
 ```TypeScript
@@ -2044,8 +1962,6 @@ pow(n: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
-
-<a id="pow2"></a>
 
 ## pow
 
@@ -2083,8 +1999,6 @@ static pow(base: Value, exponent: Value): Decimal
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 | [10200060](../errorcode-utils.md#10200060-超出精度限制) | Precision limit exceeded. |
 
-<a id="precision1"></a>
-
 ## precision
 
 ```TypeScript
@@ -2106,8 +2020,6 @@ precision(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | the number type |
-
-<a id="precision2"></a>
 
 ## precision
 
@@ -2143,8 +2055,6 @@ precision(includeZeros: boolean | number): number
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `includeZeros` is out of range. |
 
-<a id="random1"></a>
-
 ## random
 
 ```TypeScript
@@ -2172,8 +2082,6 @@ static random(): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200061](../errorcode-utils.md#10200061-加密方法不可用) | Crypto unavailable. |
-
-<a id="random2"></a>
 
 ## random
 
@@ -2309,8 +2217,6 @@ static sign(n: Value): number
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="sin1"></a>
-
 ## sin
 
 ```TypeScript
@@ -2332,8 +2238,6 @@ sin(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="sin2"></a>
 
 ## sin
 
@@ -2369,8 +2273,6 @@ static sin(n: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="sinh1"></a>
-
 ## sinh
 
 ```TypeScript
@@ -2392,8 +2294,6 @@ sinh(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="sinh2"></a>
 
 ## sinh
 
@@ -2429,8 +2329,6 @@ static sinh(n: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="sqrt1"></a>
-
 ## sqrt
 
 ```TypeScript
@@ -2452,8 +2350,6 @@ sqrt(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="sqrt2"></a>
 
 ## sqrt
 
@@ -2489,8 +2385,6 @@ static sqrt(n: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="sub1"></a>
-
 ## sub
 
 ```TypeScript
@@ -2524,8 +2418,6 @@ sub(n: Value): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
-
-<a id="sub2"></a>
 
 ## sub
 
@@ -2598,8 +2490,6 @@ static sum(...n: Value[]): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="tan1"></a>
-
 ## tan
 
 ```TypeScript
@@ -2621,8 +2511,6 @@ tan(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="tan2"></a>
 
 ## tan
 
@@ -2658,8 +2546,6 @@ static tan(n: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="tanh1"></a>
-
 ## tanh
 
 ```TypeScript
@@ -2681,8 +2567,6 @@ tanh(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="tanh2"></a>
 
 ## tanh
 
@@ -2718,8 +2602,6 @@ static tanh(n: Value): Decimal
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="tobinary1"></a>
-
 ## toBinary
 
 ```TypeScript
@@ -2741,8 +2623,6 @@ toBinary(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | the string type |
-
-<a id="tobinary2"></a>
 
 ## toBinary
 
@@ -2777,8 +2657,6 @@ toBinary(significantDigits: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
-
-<a id="tobinary3"></a>
 
 ## toBinary
 
@@ -2815,8 +2693,6 @@ toBinary(significantDigits: number, rounding: Rounding): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits &#124; rounding` is out of range. |
 
-<a id="todecimalplaces1"></a>
-
 ## toDecimalPlaces
 
 ```TypeScript
@@ -2838,8 +2714,6 @@ toDecimalPlaces(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="todecimalplaces2"></a>
 
 ## toDecimalPlaces
 
@@ -2874,8 +2748,6 @@ toDecimalPlaces(decimalPlaces: number): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces` is out of range. |
-
-<a id="todecimalplaces3"></a>
 
 ## toDecimalPlaces
 
@@ -2912,8 +2784,6 @@ toDecimalPlaces(decimalPlaces: number, rounding: Rounding): Decimal
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces &#124; rounding` is out of range. |
 
-<a id="toexponential1"></a>
-
 ## toExponential
 
 ```TypeScript
@@ -2935,8 +2805,6 @@ toExponential(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | the string type |
-
-<a id="toexponential2"></a>
 
 ## toExponential
 
@@ -2971,8 +2839,6 @@ toExponential(decimalPlaces: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces` is out of range. |
-
-<a id="toexponential3"></a>
 
 ## toExponential
 
@@ -3009,8 +2875,6 @@ toExponential(decimalPlaces: number, rounding: Rounding): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces &#124; rounding` is out of range. |
 
-<a id="tofixed1"></a>
-
 ## toFixed
 
 ```TypeScript
@@ -3032,8 +2896,6 @@ toFixed(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | the string type |
-
-<a id="tofixed2"></a>
 
 ## toFixed
 
@@ -3068,8 +2930,6 @@ toFixed(decimalPlaces: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces` is out of range. |
-
-<a id="tofixed3"></a>
 
 ## toFixed
 
@@ -3106,8 +2966,6 @@ toFixed(decimalPlaces: number, rounding: Rounding): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `decimalPlaces &#124; rounding` is out of range. |
 
-<a id="tofraction1"></a>
-
 ## toFraction
 
 ```TypeScript
@@ -3129,8 +2987,6 @@ toFraction(): Decimal[]
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md)[] | the Decimal[] type |
-
-<a id="tofraction2"></a>
 
 ## toFraction
 
@@ -3166,8 +3022,6 @@ toFraction(maxDenominator: Value): Decimal[]
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
 
-<a id="tohexadecimal1"></a>
-
 ## toHexadecimal
 
 ```TypeScript
@@ -3189,8 +3043,6 @@ toHexadecimal(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | the string type |
-
-<a id="tohexadecimal2"></a>
 
 ## toHexadecimal
 
@@ -3225,8 +3077,6 @@ toHexadecimal(significantDigits: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
-
-<a id="tohexadecimal3"></a>
 
 ## toHexadecimal
 
@@ -3263,8 +3113,6 @@ toHexadecimal(significantDigits: number, rounding: Rounding): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits &#124; rounding` is out of range. |
 
-<a id="tonearest1"></a>
-
 ## toNearest
 
 ```TypeScript
@@ -3298,8 +3146,6 @@ toNearest(n: Value): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Incorrect parameter types;         2. Parameter verification failed. |
-
-<a id="tonearest2"></a>
 
 ## toNearest
 
@@ -3359,8 +3205,6 @@ toNumber(): number
 | --- | --- |
 | number | the number type |
 
-<a id="tooctal1"></a>
-
 ## toOctal
 
 ```TypeScript
@@ -3382,8 +3226,6 @@ toOctal(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | the string type |
-
-<a id="tooctal2"></a>
 
 ## toOctal
 
@@ -3418,8 +3260,6 @@ toOctal(significantDigits: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
-
-<a id="tooctal3"></a>
 
 ## toOctal
 
@@ -3456,8 +3296,6 @@ toOctal(significantDigits: number, rounding: Rounding): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits &#124; rounding` is out of range. |
 
-<a id="toprecision1"></a>
-
 ## toPrecision
 
 ```TypeScript
@@ -3479,8 +3317,6 @@ toPrecision(): string
 | 类型 | 说明 |
 | --- | --- |
 | string | the string type |
-
-<a id="toprecision2"></a>
 
 ## toPrecision
 
@@ -3515,8 +3351,6 @@ toPrecision(significantDigits: number): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
-
-<a id="toprecision3"></a>
 
 ## toPrecision
 
@@ -3553,8 +3387,6 @@ toPrecision(significantDigits: number, rounding: Rounding): string
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits &#124; rounding` is out of range. |
 
-<a id="tosignificantdigits1"></a>
-
 ## toSignificantDigits
 
 ```TypeScript
@@ -3576,8 +3408,6 @@ toSignificantDigits(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="tosignificantdigits2"></a>
 
 ## toSignificantDigits
 
@@ -3612,8 +3442,6 @@ toSignificantDigits(significantDigits: number): Decimal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200001](../errorcode-utils.md#10200001-参数范围越界错误) | The value of `significantDigits` is out of range. |
-
-<a id="tosignificantdigits3"></a>
 
 ## toSignificantDigits
 
@@ -3672,8 +3500,6 @@ toString(): string
 | --- | --- |
 | string | the string type |
 
-<a id="trunc1"></a>
-
 ## trunc
 
 ```TypeScript
@@ -3695,8 +3521,6 @@ trunc(): Decimal
 | 类型 | 说明 |
 | --- | --- |
 | [Decimal](arkts-arkts-math-decimal-decimal-c.md) | the Decimal type |
-
-<a id="trunc2"></a>
 
 ## trunc
 

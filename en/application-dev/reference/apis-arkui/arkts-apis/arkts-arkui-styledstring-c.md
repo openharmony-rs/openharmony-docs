@@ -20,7 +20,7 @@ constructor(value: string | ImageAttachment | CustomSpan, styles?: Array<StyleOp
 
 A constructor used to create a styled string.
 
-It is not supported to create it before [loadContent()](arkts-arkui-window-window-i.md#loadcontent1).
+It is not supported to create it before [loadContent()](arkts-arkui-window-window-i.md#loadcontent).
 
 **Since:** 12
 
@@ -37,7 +37,7 @@ It is not supported to create it before [loadContent()](arkts-arkui-window-windo
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | string &#124; [ImageAttachment](arkts-arkui-imageattachment-c.md) &#124; [CustomSpan](arkts-arkui-customspan-c.md) | Yes | Text content of the styled string. <br>**NOTE:** <br>When the type of value is **ImageAttachment** or **CustomSpan**, the **styles** parameter does not take effect. <br>To set styles, use methods such as [setStyle](arkts-arkui-mutablestyledstring-c.md#setstyle). |
-| styles | Array&lt;[StyleOptions](arkts-arkui-styleoptions-i.md)&gt; | No | Initialization options of the styled string.<br>**NOTE:** <br>If **start** is an invalid value, the default value **0** is used. <br>If **length** is an invalid value, **length** equals the actual length of the styled string after start. <br>If **StyledStringKey** does not match **StyledStringValue**, **styles** does not take effect. |
+| styles | Array&lt;[StyleOptions](arkts-arkui-styleoptions-i.md)&gt; | No | Initialization options of the styled string. <br>**NOTE:** <br>If **start** is an invalid value, the default value **0** is used. <br>If **length** is an invalid value, **length** equals the actual length of the styled string after start. <br>If **StyledStringKey** does not match **StyledStringValue**, **styles** does not take effect. |
 
 ## equals
 
@@ -105,7 +105,7 @@ Converts an HTML-formatted string into a styled string. HTML tags are mapped to 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [170001](../errorcode-styled-string.md#170001-conversion-error) | Convert Error. |
 
 ## getString
@@ -164,13 +164,13 @@ This API returns only styles explicitly set by the developer.
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[SpanStyle](arkts-arkui-spanstyle-i.md)&gt; | Array of style objects.<br>**Note:** <br>If no style is set for the styled string in the specified range, an empty array is returned. <br>An exception is thrown if **start** and **length** are out of bounds or a mandatory parameter is **undefined**. <br>An exception is thrown if an invalid value or **undefined** is passed to **styledKey**. <br>If **styledKey** is **CustomSpan**, the style object passed when creating **CustomSpan** is returned, and modifying this style object also affects the actual display effect. |
+| Array&lt;[SpanStyle](arkts-arkui-spanstyle-i.md)&gt; | Array of style objects. <br>**Note:** <br>If no style is set for the styled string in the specified range, an empty array is returned. <br>An exception is thrown if **start** and **length** are out of bounds or a mandatory parameter is **undefined**. <br>An exception is thrown if an invalid value or **undefined** is passed to **styledKey**. <br>If **styledKey** is **CustomSpan**, the style object passed when creating **CustomSpan** is returned, and modifying this style object also affects the actual display effect. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## subStyledString
 
@@ -195,19 +195,19 @@ Obtains a substring of this styled string. The specified range must not exceed t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | start | number | Yes | Subscript that corresponds to the start position of the sub-styled string. |
-| length | number | No | Length of the sub-styled string.<br>If not passed, the default value is the difference between the length of the queried styled string object and the value of **start**. |
+| length | number | No | Length of the sub-styled string. <br>If not passed, the default value is the difference between the length of the queried styled string object and the value of **start**. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [StyledString](arkts-arkui-styledstring-c.md) | Sub-styled string.<br>**NOTE:** <br>When **start** is a valid input parameter, the default value of **length** is the difference between the length of the queried styled string object and the value of **start**. <br>An exception is thrown when **start** and **length** are out of bounds or when a mandatory parameter is set to **undefined**. |
+| [StyledString](arkts-arkui-styledstring-c.md) | Sub-styled string. <br>**NOTE:** <br>When **start** is a valid input parameter, the default value of **length** is the difference between the length of the queried styled string object and the value of **start**. <br>An exception is thrown when **start** and **length** are out of bounds or when a mandatory parameter is set to **undefined**. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## toHtml
 
@@ -245,7 +245,7 @@ For details about how to use this API, see [Example 12: Implementing Conversion 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## length
 

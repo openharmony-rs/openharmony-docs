@@ -6,8 +6,6 @@
 import { FaultLogger } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="query1"></a>
-
 ## query
 
 ```TypeScript
@@ -73,8 +71,6 @@ try {
 ```
 
 
-<a id="query2"></a>
-
 ## query
 
 ```TypeScript
@@ -103,7 +99,7 @@ Obtains the fault information about the current application. This API uses a pro
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[FaultLogInfo](arkts-performanceanalysis-faultlogger-faultloginfo-i.md)&gt;&gt; | Promise used to return the fault information array. You can obtain the fault information instance in its **then()** method or use **await**.<br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. |
+| Promise&lt;Array&lt;[FaultLogInfo](arkts-performanceanalysis-faultlogger-faultloginfo-i.md)&gt;&gt; | Promise used to return the fault information array. You can obtain the fault information instance in its **then()** method or use **await**. <br>**value** is the fault information array obtained. If **value** is **undefined**, an exception occurs during the information retrieval. |
 
 **Error codes:**
 

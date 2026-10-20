@@ -6,8 +6,6 @@ export declare interface KeyEvent extends InputEvent
 
 Key event.
 
-@interface KeyEvent [since 9 - 11]
-
 **Inheritance/Implementation:** KeyEvent extends [InputEvent](arkts-input-multimodalinput-inputevent-inputevent-i.md)
 
 **Since:** 9

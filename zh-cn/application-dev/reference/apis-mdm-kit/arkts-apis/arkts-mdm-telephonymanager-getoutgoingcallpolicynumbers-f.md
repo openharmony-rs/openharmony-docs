@@ -6,8 +6,6 @@
 import { telephonyManager } from '@kit.MDMKit';
 ```
 
-<a id="getoutgoingcallpolicynumbers1"></a>
-
 ## getOutgoingCallPolicyNumbers
 
 ```TypeScript
@@ -70,8 +68,6 @@ try {
 }
 ```
 
-
-<a id="getoutgoingcallpolicynumbers2"></a>
 
 ## getOutgoingCallPolicyNumbers
 

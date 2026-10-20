@@ -30,7 +30,7 @@ Get default preferences by printer ID.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerId | string | Yes | Indicates the printer ID.<br>Added printer ID in the system. |
+| printerId | string | Yes | Indicates the printer ID. <br>Added printer ID in the system. |
 
 **Return value:**
 

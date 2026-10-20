@@ -20,8 +20,6 @@ Provides APIs for querying data in a device KV store and performing cross-device
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
-<a id="get1"></a>
-
 ## get
 
 ```TypeScript
@@ -42,14 +40,14 @@ Obtains the value of the specified key for this device. This API uses an asynchr
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Key of the value to obtain. It cannot be empty, and the length cannot exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| key | string | Yes | Key of the data to obtain. The value cannot be empty and its length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean &#124; string &#124; number &#124; Uint8Array&gt; | Yes | Callback used to return the value obtained. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -159,8 +157,6 @@ try {
   console.error(`Failed to get. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
-<a id="get2"></a>
 
 ## get
 
@@ -182,19 +178,19 @@ Obtains the value of the specified key for this device. This API uses a promise 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| key | string | Yes | Key of the value to obtain. It cannot be empty, and the length cannot exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| key | string | Yes | Key of the data to obtain. The value cannot be empty and its length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean &#124; string &#124; number &#124; Uint8Array&gt; | Promise used to return the value obtained. |
+| Promise&lt;boolean &#124; string &#124; number &#124; Uint8Array&gt; | Promise used to return the value obtained. The value type depends on the data type when the value is stored. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -305,15 +301,13 @@ try {
 }
 ```
 
-<a id="get3"></a>
-
 ## get
 
 ```TypeScript
 get(deviceId: string, key: string, callback: AsyncCallback<boolean | string | number | Uint8Array>): void
 ```
 
-Obtains a string value that matches the specified device ID and key. This API uses an asynchronous callback to return the result.
+Obtains a value that matches the specified device ID and key. This API uses an asynchronous callback to return the result.
 
 > **NOTE:** 
 > 
@@ -335,15 +329,15 @@ Obtains a string value that matches the specified device ID and key. This API us
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the target device. |
-| key | string | Yes | Key of the value to obtain. It cannot be empty or exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean &#124; string &#124; number &#124; Uint8Array&gt; | Yes | Callback used to return the value obtained. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
+| key | string | Yes | Key name of the data to obtain. The value cannot be empty and its length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean &#124; string &#124; number &#124; Uint8Array&gt; | Yes | Callback used to return the result. If the operation is successful, the value that matches the specified condition is returned. The value type depends on the data type when the value is stored. If the operation fails, an error object is returned. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -454,15 +448,13 @@ try {
 }
 ```
 
-<a id="get4"></a>
-
 ## get
 
 ```TypeScript
 get(deviceId: string, key: string): Promise<boolean | string | number | Uint8Array>
 ```
 
-Obtains a string value that matches the specified device ID and key. This API uses a promise to return the result.
+Obtains a value that matches the specified device ID and key. This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
@@ -484,20 +476,20 @@ Obtains a string value that matches the specified device ID and key. This API us
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the target device. |
-| key | string | Yes | Key of the value to obtain. It cannot be empty or exceed [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
+| key | string | Yes | Key to obtain. The value cannot be empty and its length range is 1- [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean &#124; string &#124; number &#124; Uint8Array&gt; | Promise used to return the string value that matches the given condition. |
+| Promise&lt;boolean &#124; string &#124; number &#124; Uint8Array&gt; | Promise used to return the value that matches the conditions. The value type depends on the data type when the value is stored. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -608,8 +600,6 @@ try {
 }
 ```
 
-<a id="getentries1"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -630,14 +620,14 @@ Obtains all KV pairs that match the specified key prefix for this device. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keyPrefix | string | Yes | Key prefix to match. It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
+| keyPrefix | string | Yes | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Entry](arkts-arkdata-distributedkvstore-entry-i.md)[]&gt; | Yes | Callback used to return the KV pairs that match the specified prefix. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
@@ -684,8 +674,6 @@ try {
 }
 ```
 
-<a id="getentries2"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -706,7 +694,7 @@ Obtains all KV pairs that match the specified key prefix for this device. This A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keyPrefix | string | Yes | Key prefix to match. It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
+| keyPrefix | string | Yes | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
 
 **Return value:**
 
@@ -718,7 +706,7 @@ Obtains all KV pairs that match the specified key prefix for this device. This A
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
@@ -760,8 +748,6 @@ try {
 }
 ```
 
-<a id="getentries3"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -790,15 +776,15 @@ Obtains all KV pairs that match the specified device ID and key prefix. This API
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the target device. |
-| keyPrefix | string | Yes | Key prefix to match. It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
+| keyPrefix | string | Yes | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Entry](arkts-arkdata-distributedkvstore-entry-i.md)[]&gt; | Yes | Callback used to return the KV pairs obtained. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
@@ -845,8 +831,6 @@ try {
 }
 ```
 
-<a id="getentries4"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -875,8 +859,8 @@ Obtains all KV pairs that match the specified device ID and key prefix. This API
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the target device. |
-| keyPrefix | string | Yes | Key prefix to match. It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
+| keyPrefix | string | Yes | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
 
 **Return value:**
 
@@ -888,7 +872,7 @@ Obtains all KV pairs that match the specified device ID and key prefix. This API
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
@@ -933,8 +917,6 @@ try {
 }
 ```
 
-<a id="getentries5"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -955,14 +937,14 @@ Obtains all KV pairs that match the specified **Query** object for this device. 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| query | [Query](arkts-arkdata-distributedkvstore-query-c.md) | Yes | Key prefix to match. |
+| query | [Query](arkts-arkdata-distributedkvstore-query-c.md) | Yes | **Query** object to match. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Entry](arkts-arkdata-distributedkvstore-entry-i.md)[]&gt; | Yes | Callback used to return the KV pairs that match the specified **Query** object on the local device. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
@@ -1012,8 +994,6 @@ try {
 }
 ```
 
-<a id="getentries6"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -1046,7 +1026,7 @@ Obtains all KV pairs that match the specified **Query** object for this device. 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
@@ -1091,8 +1071,6 @@ try {
 }
 ```
 
-<a id="getentries7"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -1121,7 +1099,7 @@ Obtains the KV pairs that match the specified device ID and **Query** object. Th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the target device. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
 | query | [Query](arkts-arkdata-distributedkvstore-query-c.md) | Yes | **Query** object to match. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Entry](arkts-arkdata-distributedkvstore-entry-i.md)[]&gt; | Yes | Callback used to return the KV pairs that match the specified device ID and **Query** object. |
 
@@ -1129,7 +1107,7 @@ Obtains the KV pairs that match the specified device ID and **Query** object. Th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
@@ -1181,8 +1159,6 @@ try {
 }
 ```
 
-<a id="getentries8"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -1211,7 +1187,7 @@ Obtains the KV pairs that match the specified device ID and **Query** object. Th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the target device. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
 | query | [Query](arkts-arkdata-distributedkvstore-query-c.md) | Yes | **Query** object to match. |
 
 **Return value:**
@@ -1224,7 +1200,7 @@ Obtains the KV pairs that match the specified device ID and **Query** object. Th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 
@@ -1270,15 +1246,13 @@ try {
 }
 ```
 
-<a id="getresultset1"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-Obtains a result set with the specified prefix for this device. This API uses an asynchronous callback to return the result.
+Obtains a result set with the specified prefix for this device. This API uses an asynchronous callback to return the result. After using the obtained result set, call [closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset) to close the result set and release resources.
 
 **Since:** 9
 
@@ -1292,14 +1266,14 @@ Obtains a result set with the specified prefix for this device. This API uses an
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keyPrefix | string | Yes | Key prefix to match. It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
+| keyPrefix | string | Yes | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Yes | Callback used to return the result set with the specified prefix. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
@@ -1355,15 +1329,13 @@ try {
 }
 ```
 
-<a id="getresultset2"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(keyPrefix: string): Promise<KVStoreResultSet>
 ```
 
-Obtains a result set with the specified prefix for this device. This API uses a promise to return the result.
+Obtains a result set with the specified prefix for this device. This API uses a promise to return the result. After using the obtained result set, call [closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset) to close the result set and release resources.
 
 **Since:** 9
 
@@ -1377,7 +1349,7 @@ Obtains a result set with the specified prefix for this device. This API uses a 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keyPrefix | string | Yes | Key prefix to match. It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
+| keyPrefix | string | Yes | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
 
 **Return value:**
 
@@ -1389,7 +1361,7 @@ Obtains a result set with the specified prefix for this device. This API uses a 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
@@ -1437,8 +1409,6 @@ try {
 }
 ```
 
-<a id="getresultset3"></a>
-
 ## getResultSet
 
 ```TypeScript
@@ -1467,15 +1437,15 @@ Obtains a **KVStoreResultSet** object that matches the specified device ID and k
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the target device. |
-| keyPrefix | string | Yes | Key prefix to match. It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
+| keyPrefix | string | Yes | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Yes | Callback used to return the **KVStoreResultSet** object obtained. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
@@ -1510,8 +1480,6 @@ try {
 }
 ```
 
-<a id="getresultset4"></a>
-
 ## getResultSet
 
 ```TypeScript
@@ -1540,8 +1508,8 @@ Obtains a **KVStoreResultSet** object that matches the specified device ID and k
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the target device. |
-| keyPrefix | string | Yes | Key prefix to match. It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
+| keyPrefix | string | Yes | Key prefix to match. The length ranges from 1 to [MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md). It cannot contain '^'; otherwise, the predicate becomes invalid and all data in the RDB store will be returned. |
 
 **Return value:**
 
@@ -1553,7 +1521,7 @@ Obtains a **KVStoreResultSet** object that matches the specified device ID and k
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
@@ -1584,8 +1552,6 @@ try {
 }
 ```
 
-<a id="getresultset5"></a>
-
 ## getResultSet
 
 ```TypeScript
@@ -1593,14 +1559,6 @@ getResultSet(query: Query, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
 Obtains a **KVStoreResultSet** object that matches the specified **Query** object for this device. This API uses an asynchronous callback to return the result.
-
-> **NOTE:** 
-> 
-> **deviceId** can be obtained by
-> [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
-> .
-> 
-> For details about how to obtain **deviceId**, see [sync()](arkts-arkdata-distributedkvstore-syncmode-e.md).
 
 **Since:** 9
 
@@ -1615,13 +1573,13 @@ Obtains a **KVStoreResultSet** object that matches the specified **Query** objec
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | query | [Query](arkts-arkdata-distributedkvstore-query-c.md) | Yes | **Query** object to match. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Yes | Callback used to return the **KVStoreResultSet** object obtained. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Yes | Callback used to return the result. If the operation is successful, the **KVStoreResultSet** object that matches the specified **Query** object is returned. If the operation fails, an error object is returned. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
@@ -1679,8 +1637,6 @@ try {
 }
 ```
 
-<a id="getresultset6"></a>
-
 ## getResultSet
 
 ```TypeScript
@@ -1713,7 +1669,7 @@ Obtains a **KVStoreResultSet** object that matches the specified **Query** objec
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
@@ -1756,15 +1712,13 @@ try {
 }
 ```
 
-<a id="getresultset7"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(deviceId: string, query: Query, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-Obtains a **KVStoreResultSet** object that matches the specified device ID and **Query** object. This API uses an asynchronous callback to return the result.
+Obtains a **KVStoreResultSet** object that matches the specified device ID and **Query** object. This API uses an asynchronous callback to return the result. After using the obtained result set, call [closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset) to close the result set and release resources.
 
 > **NOTE:** 
 > 
@@ -1786,7 +1740,7 @@ Obtains a **KVStoreResultSet** object that matches the specified device ID and *
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the device to which the **KVStoreResultSet** object belongs. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
 | query | [Query](arkts-arkdata-distributedkvstore-query-c.md) | Yes | **Query** object to match. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[KVStoreResultSet](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md)&gt; | Yes | Callback used to return the **KVStoreResultSet** object that matches the specified device ID and **Query** object. |
 
@@ -1794,7 +1748,7 @@ Obtains a **KVStoreResultSet** object that matches the specified device ID and *
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
@@ -1852,15 +1806,13 @@ try {
 }
 ```
 
-<a id="getresultset8"></a>
-
 ## getResultSet
 
 ```TypeScript
 getResultSet(deviceId: string, query: Query): Promise<KVStoreResultSet>
 ```
 
-Obtains a **KVStoreResultSet** object that matches the specified device ID and **Query** object. This API uses a promise to return the result.
+Obtains a **KVStoreResultSet** object that matches the specified device ID and **Query** object. This API uses a promise to return the result. After using the obtained result set, call [closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset) to close the result set and release resources.
 
 > **NOTE:** 
 > 
@@ -1882,7 +1834,7 @@ Obtains a **KVStoreResultSet** object that matches the specified device ID and *
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the device to which the **KVStoreResultSet** object belongs. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
 | query | [Query](arkts-arkdata-distributedkvstore-query-c.md) | Yes | **Query** object to match. |
 
 **Return value:**
@@ -1895,7 +1847,7 @@ Obtains a **KVStoreResultSet** object that matches the specified device ID and *
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
 | [15100001](../errorcode-distributedKVStore.md#15100001-subscription-count-or-result-set-count-reaches-the-limit) | Over max limits.<br>**Applicable version:** 10 and later |
@@ -1950,8 +1902,6 @@ try {
 }
 ```
 
-<a id="getresultsize1"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -1979,7 +1929,7 @@ Obtains the number of results that match the specified **Query** object for this
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -2026,8 +1976,6 @@ try {
 }
 ```
 
-<a id="getresultsize2"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -2060,7 +2008,7 @@ Obtains the number of results that match the specified **Query** object for this
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -2101,8 +2049,6 @@ try {
 }
 ```
 
-<a id="getresultsize3"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -2131,7 +2077,7 @@ Obtains the number of results that match the specified device ID and **Query** o
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the device to which the **KVStoreResultSet** object belongs. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
 | query | [Query](arkts-arkdata-distributedkvstore-query-c.md) | Yes | **Query** object to match. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the number of results obtained. |
 
@@ -2139,7 +2085,7 @@ Obtains the number of results that match the specified device ID and **Query** o
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |
@@ -2186,8 +2132,6 @@ try {
 }
 ```
 
-<a id="getresultsize4"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -2216,7 +2160,7 @@ Obtains the number of results that match the specified device ID and **Query** o
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the device to which the **KVStoreResultSet** object belongs. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
 | query | [Query](arkts-arkdata-distributedkvstore-query-c.md) | Yes | **Query** object to match. |
 
 **Return value:**
@@ -2229,7 +2173,7 @@ Obtains the number of results that match the specified device ID and **Query** o
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 | [15100003](../errorcode-distributedKVStore.md#15100003-kv-store-corrupted) | Database corrupted. |
 | [15100004](../errorcode-distributedKVStore.md#15100004-failed-to-find-data) | Not found. |
 | [15100005](../errorcode-distributedKVStore.md#15100005-kv-store-or-result-set-closed) | Database or result set already closed. |

@@ -6,8 +6,6 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
-<a id="getvolumebyid1"></a>
-
 ## getVolumeById
 
 ```TypeScript
@@ -39,13 +37,24 @@ Obtains information about a volume based on the volume ID. This API uses an asyn
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
+**Examples**
 
-<a id="getvolumebyid2"></a>
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let volumeId: string = "";
+volumeManager.getVolumeById(volumeId, (error: BusinessError, volume: volumeManager.Volume) => {
+  // Do something.   
+});
+```
+
+<!--DelEnd-->
+
 
 ## getVolumeById
 
@@ -83,7 +92,22 @@ Obtains information about a volume based on the volume ID. This API uses a promi
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let volumeId: string = "";
+volumeManager.getVolumeById(volumeId).then((volume: volumeManager.Volume) => {
+  console.info("getVolumeById successfully:" + JSON.stringify(volume));
+}).catch((error: BusinessError) => {
+  console.error("getVolumeById failed with error:" + JSON.stringify(error));
+});
+```
+
+<!--DelEnd-->

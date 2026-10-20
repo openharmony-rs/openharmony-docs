@@ -6,8 +6,6 @@ export interface Node extends SceneResource
 
 3D场景由树状层次结构的节点组成，其中每个节点都实现了Node接口。继承自SceneResource。
 
-@extends SceneResource @interface Node
-
 **继承/实现关系：** Node extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **起始版本：** 12

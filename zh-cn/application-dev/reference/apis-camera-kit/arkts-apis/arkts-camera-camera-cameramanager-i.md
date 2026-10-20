@@ -18,8 +18,6 @@ interface CameraManager
 import { camera } from '@kit.CameraKit';
 ```
 
-<a id="createcamerainput1"></a>
-
 ## createCameraInput
 
 ```TypeScript
@@ -77,8 +75,6 @@ function createCameraInput(camera: camera.CameraDevice, cameraManager: camera.Ca
   return cameraInput;
 }
 ```
-
-<a id="createcamerainput2"></a>
 
 ## createCameraInput
 
@@ -161,7 +157,7 @@ createDeferredPreviewOutput(profile: Profile): PreviewOutput
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| profile | [Profile](arkts-camera-camera-profile-i.md) | 是 | 支持的预览配置信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability2)接口获取。 |
+| profile | [Profile](arkts-camera-camera-profile-i.md) | 是 | 支持的预览配置信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability)接口获取。 |
 
 **返回值：**
 
@@ -174,7 +170,6 @@ createDeferredPreviewOutput(profile: Profile): PreviewOutput
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 23 |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 24+ |
 
 **示例**
@@ -216,7 +211,7 @@ createMetadataOutput(metadataObjectTypes: Array<MetadataObjectType>): MetadataOu
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| metadataObjectTypes | Array&lt;[MetadataObjectType](arkts-camera-camera-metadataobjecttype-e.md)&gt; | 是 | metadata流类型信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability2)接口获取。 |
+| metadataObjectTypes | Array&lt;[MetadataObjectType](arkts-camera-camera-metadataobjecttype-e.md)&gt; | 是 | metadata流类型信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability)接口获取。 |
 
 **返回值：**
 
@@ -249,8 +244,6 @@ function createMetadataOutput(cameraManager: camera.CameraManager, cameraOutputC
 }
 ```
 
-<a id="createphotooutput2"></a>
-
 ## createPhotoOutput
 
 ```TypeScript
@@ -271,7 +264,7 @@ createPhotoOutput(profile?: Profile): PhotoOutput
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| profile | [Profile](arkts-camera-camera-profile-i.md) | 否 | 支持的拍照配置信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability2)接口获取。<br>API version 11时，该参数必填；从API version 12开始，如果使用[preconfig](arkts-camera-camera-photosession-i.md#preconfig)进行预配置，传入profile参数会覆盖preconfig的预配置参数。 |
+| profile | [Profile](arkts-camera-camera-profile-i.md) | 否 | 支持的拍照配置信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability)接口获取。<br>API版本11时，该参数必填；从API版本12开始，如果使用[preconfig](arkts-camera-camera-photosession-i.md#preconfig)进行预配置，传入profile参数会覆盖preconfig的预配置参数。 |
 
 **返回值：**
 
@@ -305,8 +298,6 @@ function createPhotoOutput(cameraOutputCapability: camera.CameraOutputCapability
 }
 ```
 
-<a id="createphotooutput1"></a>
-
 ## createPhotoOutput
 
 ```TypeScript
@@ -317,7 +308,7 @@ createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 
 > **说明：** 
 > 
-> - 从API version 10开始支持，从API version 11开始废弃。
+> - 从API版本10开始支持，从API版本11开始废弃。
 > 
 > - 该接口只支持创建JPEG格式的拍照输出对象。
 
@@ -325,7 +316,7 @@ createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 
 **废弃版本：** 11
 
-**替代接口：** [createPhotoOutput](#createphotooutput2)(profile?: Profile)
+**替代接口：** [createPhotoOutput](#createphotooutput)(profile?: Profile)
 
 <!--Device-CameraManager-createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput--><!--Device-CameraManager-createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput-End-->
 
@@ -335,7 +326,7 @@ createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| profile | [Profile](arkts-camera-camera-profile-i.md) | 是 | 支持的拍照配置信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability2)接口获取。 |
+| profile | [Profile](arkts-camera-camera-profile-i.md) | 是 | 支持的拍照配置信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability)接口获取。 |
 | surfaceId | string | 是 | 从[ImageReceiver](../../apis-image-kit/arkts-apis/arkts-image-image-imagereceiver-i.md)获取的surfaceId。 |
 
 **返回值：**
@@ -353,8 +344,6 @@ createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 **示例**
 
 参见 [createPhotoOutput](#createphotooutput)
-
-<a id="createpreviewoutput1"></a>
 
 ## createPreviewOutput
 
@@ -376,7 +365,7 @@ createPreviewOutput(profile: Profile, surfaceId: string): PreviewOutput
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| profile | [Profile](arkts-camera-camera-profile-i.md) | 是 | 支持的预览配置信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability2)接口获取。 |
+| profile | [Profile](arkts-camera-camera-profile-i.md) | 是 | 支持的预览配置信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability)接口获取。 |
 | surfaceId | string | 是 | 从XComponent或者[ImageReceiver](../../apis-image-kit/arkts-apis/arkts-image-image-imagereceiver-i.md)组件获取的surfaceId。 |
 
 **返回值：**
@@ -410,8 +399,6 @@ function createPreviewOutput(cameraOutputCapability: camera.CameraOutputCapabili
   return previewOutput;
 }
 ```
-
-<a id="createpreviewoutput2"></a>
 
 ## createPreviewOutput
 
@@ -519,8 +506,6 @@ function createSession(cameraManager: camera.CameraManager, mode: camera.SceneMo
 }
 ```
 
-<a id="createvideooutput1"></a>
-
 ## createVideoOutput
 
 ```TypeScript
@@ -533,8 +518,8 @@ createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 
 | SDR/HDR拍摄 | CameraFormat | ColorSpace |  
 |--------------------|--------------------------|------------------|  
-| SDR | [CAMERA_FORMAT_YUV_420_SP](arkts-camera-camera-cameraformat-e.md) | [BT709_LIMIT](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md) |
-| HDR_VIVID | [CAMERA_FORMAT_YCRCB_P010](arkts-camera-camera-cameraformat-e.md)<br>CAMERA_FORMAT_YCBCR_P010 | [BT2020_HLG_LIMIT](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md)<br>BT2020_HLG_FULL |
+| SDR | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT |  
+| HDR_VIVID | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
 
 **起始版本：** 10
 
@@ -548,8 +533,8 @@ createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| profile | [VideoProfile](arkts-camera-camera-videoprofile-i.md) | 是 | 支持的录像配置信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability2)接口获取。 |
-| surfaceId | string | 是 | 从[AVRecorder](../../apis-media-kit/arkts-apis/arkts-media-media-avrecorder-i.md)获取的surfaceId。 |
+| profile | [VideoProfile](arkts-camera-camera-videoprofile-i.md) | 是 | 支持的录像配置信息，通过[getSupportedOutputCapability](#getsupportedoutputcapability)接口获取。 |
+| surfaceId | string | 是 | 从[AVRecorder](../../apis-media/arkts-apis/arkts-media-media-avrecorder-i.md)获取的surfaceId。 |
 
 **返回值：**
 
@@ -583,8 +568,6 @@ function createVideoOutput(cameraOutputCapability: camera.CameraOutputCapability
 }
 ```
 
-<a id="createvideooutput2"></a>
-
 ## createVideoOutput
 
 ```TypeScript
@@ -605,7 +588,7 @@ createVideoOutput(surfaceId: string): VideoOutput
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| surfaceId | string | 是 | 从[AVRecorder](../../apis-media-kit/arkts-apis/arkts-media-media-avrecorder-i.md)获取的surfaceId。 |
+| surfaceId | string | 是 | 从[AVRecorder](../../apis-media/arkts-apis/arkts-media-media-avrecorder-i.md)获取的surfaceId。 |
 
 **返回值：**
 
@@ -888,8 +871,6 @@ function getSupportedFullOutputCapability(camera: camera.CameraDevice, cameraMan
 }
 ```
 
-<a id="getsupportedoutputcapability2"></a>
-
 ## getSupportedOutputCapability
 
 ```TypeScript
@@ -928,8 +909,6 @@ function getSupportedOutputCapability(camera: camera.CameraDevice, cameraManager
 }
 ```
 
-<a id="getsupportedoutputcapability1"></a>
-
 ## getSupportedOutputCapability
 
 ```TypeScript
@@ -940,13 +919,13 @@ getSupportedOutputCapability(camera: CameraDevice): CameraOutputCapability
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 
 **废弃版本：** 11
 
-**替代接口：** [getSupportedOutputCapability](#getsupportedoutputcapability2)(camera: CameraDevice, mode: SceneMode)
+**替代接口：** [getSupportedOutputCapability](#getsupportedoutputcapability)(camera: CameraDevice, mode: SceneMode)
 
 <!--Device-CameraManager-getSupportedOutputCapability(camera: CameraDevice): CameraOutputCapability--><!--Device-CameraManager-getSupportedOutputCapability(camera: CameraDevice): CameraOutputCapability-End-->
 
@@ -1109,7 +1088,6 @@ isTorchLevelControlSupported(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 23 - 24 |
 
 **示例**
 
@@ -1492,7 +1470,6 @@ setTorchModeOnWithLevel(torchLevel: number): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 23 - 24 |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
@@ -1515,7 +1492,7 @@ createCaptureSession(): CaptureSession
 
 > **说明：** 
 > 
-> 从 API version 10开始支持，从API version 11开始废弃。
+> 从 API版本10开始支持，从API版本11开始废弃。
 
 **起始版本：** 10
 

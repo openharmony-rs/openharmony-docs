@@ -6,8 +6,6 @@
 import { formHost } from '@kit.FormKit';
 ```
 
-<a id="casttonormalform1"></a>
-
 ## castToNormalForm
 
 ```TypeScript
@@ -67,8 +65,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="casttonormalform2"></a>
 
 ## castToNormalForm
 

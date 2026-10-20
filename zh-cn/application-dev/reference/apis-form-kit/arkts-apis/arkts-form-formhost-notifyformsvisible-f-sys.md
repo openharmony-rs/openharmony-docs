@@ -6,8 +6,6 @@
 import { formHost } from '@kit.FormKit';
 ```
 
-<a id="notifyformsvisible1"></a>
-
 ## notifyFormsVisible
 
 ```TypeScript
@@ -67,8 +65,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="notifyformsvisible2"></a>
 
 ## notifyFormsVisible
 

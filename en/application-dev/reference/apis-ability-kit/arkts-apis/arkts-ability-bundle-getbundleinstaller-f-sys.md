@@ -6,8 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="getbundleinstaller1"></a>
-
 ## getBundleInstaller
 
 ```TypeScript
@@ -64,8 +62,6 @@ bundle.getBundleInstaller((err, data) => {
 
 <!--DelEnd-->
 
-
-<a id="getbundleinstaller2"></a>
 
 ## getBundleInstaller
 

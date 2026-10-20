@@ -20,8 +20,6 @@ Provides APIs for tone playing.
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="load1"></a>
-
 ## load
 
 ```TypeScript
@@ -62,8 +60,6 @@ tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_5, (err: BusinessError) => {
 ```
 
 <!--DelEnd-->
-
-<a id="load2"></a>
 
 ## load
 
@@ -106,8 +102,6 @@ tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_1).then(() => {
 
 <!--DelEnd-->
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -148,8 +142,6 @@ tonePlayer.release((err: BusinessError) => {
 
 <!--DelEnd-->
 
-<a id="release2"></a>
-
 ## release
 
 ```TypeScript
@@ -184,8 +176,6 @@ tonePlayer.release().then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="start1"></a>
 
 ## start
 
@@ -227,8 +217,6 @@ tonePlayer.start((err: BusinessError) => {
 
 <!--DelEnd-->
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -263,8 +251,6 @@ tonePlayer.start().then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="stop1"></a>
 
 ## stop
 
@@ -305,8 +291,6 @@ tonePlayer.stop((err: BusinessError) => {
 ```
 
 <!--DelEnd-->
-
-<a id="stop2"></a>
 
 ## stop
 

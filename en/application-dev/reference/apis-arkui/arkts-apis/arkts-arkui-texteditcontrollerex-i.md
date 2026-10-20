@@ -116,7 +116,7 @@ Sets the offset of the caret.
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the cursor is set successfully.<br>The value **true** indicates that the cursor is set successfully, and **false** indicates the opposite. |
+| boolean | Whether the cursor is set successfully. <br>The value **true** indicates that the cursor is set successfully, and **false** indicates the opposite. |
 
 ## stopEditing
 

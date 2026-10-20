@@ -6,8 +6,6 @@ export interface SubMesh
 
 Sub-mesh resource.
 
-@interface SubMesh
-
 **Since:** 12
 
 <!--Device-unnamed-export interface SubMesh--><!--Device-unnamed-export interface SubMesh-End-->

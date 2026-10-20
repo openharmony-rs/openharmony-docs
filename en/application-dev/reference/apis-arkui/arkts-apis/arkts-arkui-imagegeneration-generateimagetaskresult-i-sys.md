@@ -6,8 +6,6 @@ interface GenerateImageTaskResult
 
 Configuration result for AI-generated image tasks.
 
-@interface GenerateImageTaskResult
-
 **Since:** 23
 
 <!--Device-imageGeneration-interface GenerateImageTaskResult--><!--Device-imageGeneration-interface GenerateImageTaskResult-End-->

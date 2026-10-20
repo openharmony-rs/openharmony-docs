@@ -6,8 +6,6 @@ declare class CustomComponent extends BaseCustomComponent
 
 Custom Component
 
-@extends CommonAttribute [since 7 - 17] @extends BaseCustomComponent [since 18]
-
 **Inheritance/Implementation:** CustomComponent extends [BaseCustomComponent](arkts-arkui-common-comp-basecustomcomponent-c.md)
 
 **Since:** 7
@@ -53,7 +51,7 @@ When a reusable custom component is re-added to the node tree from the reuse cac
 onLayout?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void
 ```
 
-Invoked when the custom component lays out its child components. Through this callback the component receives its child component layout information and size constraint from the ArkUI framework. State variables should not be changed in this callback.
+When the custom component determines the positions of its child components, the ArkUI framework passes the child node information of the custom component and its own size range to the custom component through **onLayout**. Developers can lay out child components in this method. State variables are not allowed to be changed in the **onLayout** function.
 
 **Since:** 9
 
@@ -72,7 +70,7 @@ Invoked when the custom component lays out its child components. Through this ca
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | children | Array&lt;[LayoutChild](arkts-arkui-common-comp-layoutchild-i.md)&gt; | Yes | Child component layout information. |
-| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | Yes | Size constraint of the parent component. |
+| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | Yes | Constraint information of the parent component, including constraint conditions such as **minWidth**, **maxWidth**, **minHeight**, and **maxHeight**. Value principle: **minWidth** ≤ **maxWidth**, **minHeight** ≤ **maxHeight**. Unit: vp. |
 
 ## onMeasure
 
@@ -80,7 +78,7 @@ Invoked when the custom component lays out its child components. Through this ca
 onMeasure?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void
 ```
 
-Invoked when the custom component needs to determine its size. Through this callback the component receives its child component layout information and its own size constraints from the ArkUI framework. State variables should not be changed in this callback.
+When the custom component determines its size, the ArkUI framework passes the child node information of the custom component and its own size range to the custom component through **onMeasure**. Developers can measure child components in this method. State variables are not allowed to be changed in the **onMeasure** function.
 
 **Since:** 9
 
@@ -99,4 +97,4 @@ Invoked when the custom component needs to determine its size. Through this call
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | children | Array&lt;[LayoutChild](arkts-arkui-common-comp-layoutchild-i.md)&gt; | Yes | Child component layout information. |
-| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | Yes | Size constraint of the parent component. |
+| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | Yes | Constraint information of the parent component, including constraint conditions such as **minWidth**, **maxWidth**, **minHeight**, and **maxHeight**. Value principle: **minWidth** ≤ **maxWidth** and **minHeight** ≤ **maxHeight**. Unit: vp. |

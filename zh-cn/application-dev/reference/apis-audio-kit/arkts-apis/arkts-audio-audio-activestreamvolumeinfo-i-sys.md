@@ -6,8 +6,6 @@ interface ActiveStreamVolumeInfo
 
 活动音频流的音量信息。
 
-@typedef ActiveStreamVolumeInfo
-
 **起始版本：** 24
 
 <!--Device-audio-interface ActiveStreamVolumeInfo--><!--Device-audio-interface ActiveStreamVolumeInfo-End-->

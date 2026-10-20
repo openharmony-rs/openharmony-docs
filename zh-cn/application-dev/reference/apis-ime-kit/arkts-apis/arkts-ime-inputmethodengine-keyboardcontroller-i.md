@@ -18,8 +18,6 @@ interface KeyboardController
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
-<a id="exitcurrentinputtype1"></a>
-
 ## exitCurrentInputType
 
 ```TypeScript
@@ -61,8 +59,6 @@ keyboardController.exitCurrentInputType((err: BusinessError) => {
 });
 ```
 
-<a id="exitcurrentinputtype2"></a>
-
 ## exitCurrentInputType
 
 ```TypeScript
@@ -101,8 +97,6 @@ keyboardController.exitCurrentInputType().then(() => {
   console.error(`Failed to exit current input type. Code:${err.code}, message:${err.message}`);
 });
 ```
-
-<a id="hide1"></a>
 
 ## hide
 
@@ -144,8 +138,6 @@ keyboardController.hide((err: BusinessError) => {
 });
 ```
 
-<a id="hide2"></a>
-
 ## hide
 
 ```TypeScript
@@ -184,8 +176,6 @@ keyboardController.hide().then(() => {
 });
 ```
 
-<a id="hidekeyboard1"></a>
-
 ## hideKeyboard
 
 ```TypeScript
@@ -201,7 +191,7 @@ hideKeyboard(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [hide](#hide1)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [hide](#hide)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void--><!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void-End-->
 
@@ -226,8 +216,6 @@ keyboardController.hideKeyboard((err: BusinessError) => {
   console.info('Succeeded in hiding keyboard.');
 });
 ```
-
-<a id="hidekeyboard2"></a>
 
 ## hideKeyboard
 

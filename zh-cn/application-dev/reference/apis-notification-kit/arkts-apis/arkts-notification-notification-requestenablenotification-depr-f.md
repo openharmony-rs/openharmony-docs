@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="requestenablenotification1"></a>
-
 ## requestEnableNotification
 
 ```TypeScript
@@ -31,8 +29,22 @@ function requestEnableNotification(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 应用请求通知使能的回调函数。 |
 
+**示例**
 
-<a id="requestenablenotification2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let requestEnableNotificationCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("requestEnableNotification failed " + JSON.stringify(err));
+  } else {
+    console.info("requestEnableNotification success");
+  }
+};
+
+Notification.requestEnableNotification(requestEnableNotificationCallback);
+```
+
 
 ## requestEnableNotification
 
@@ -57,3 +69,15 @@ function requestEnableNotification(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+Notification.requestEnableNotification().then(() => {
+  console.info("requestEnableNotification success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`requestEnableNotification failed, code is ${err}`);
+});
+```

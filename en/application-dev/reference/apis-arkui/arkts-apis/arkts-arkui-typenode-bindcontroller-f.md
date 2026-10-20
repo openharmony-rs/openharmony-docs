@@ -1,7 +1,5 @@
 # bindController
 
-<a id="bindcontroller1"></a>
-
 ## bindController
 
 ```TypeScript
@@ -83,8 +81,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="bindcontroller2"></a>
-
 ## bindController
 
 ```TypeScript
@@ -122,8 +118,6 @@ Binds a [SwiperController](../arkts-components/arkts-arkui-swiper-comp-swipercon
 
 See the example for createNode('Swiper')12+.
 
-
-<a id="bindcontroller3"></a>
 
 ## bindController
 
@@ -165,8 +159,6 @@ typeNode.bindController(node, scroller, 'Scroll');
 ```
 
 
-<a id="bindcontroller4"></a>
-
 ## bindController
 
 ```TypeScript
@@ -206,8 +198,6 @@ Binds a [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) in
 typeNode.bindController(node, scroller, 'List');
 ```
 
-
-<a id="bindcontroller5"></a>
 
 ## bindController
 
@@ -283,8 +273,6 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="bindcontroller6"></a>
-
 ## bindController
 
 ```TypeScript
@@ -324,8 +312,6 @@ Binds a [Scroller](../arkts-components/arkts-arkui-scroll-comp-scroller-c.md) in
 typeNode.bindController(node, scroller, 'WaterFlow');
 ```
 
-
-<a id="bindcontroller7"></a>
 
 ## bindController
 
@@ -400,8 +386,6 @@ struct FrameNodeTypeTest {
 }
 ```
 
-
-<a id="bindcontroller8"></a>
 
 ## bindController
 

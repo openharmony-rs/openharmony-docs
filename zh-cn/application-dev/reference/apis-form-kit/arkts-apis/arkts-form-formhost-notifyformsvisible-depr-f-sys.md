@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="notifyformsvisible1"></a>
-
 ## notifyFormsVisible
 
 ```TypeScript
@@ -53,8 +51,6 @@ formHost.notifyFormsVisible(formIds, true, (error: Base.BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="notifyformsvisible2"></a>
 
 ## notifyFormsVisible
 

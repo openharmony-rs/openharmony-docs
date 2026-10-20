@@ -7,8 +7,6 @@ type QueryMediaEntityByKeywordEvent = (keyword: string, searchType: EntityType,
 
 通过关键字查询媒体数据的回调事件
 
-@typedef { function } QueryMediaEntityByKeywordEvent
-
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。

@@ -126,7 +126,7 @@ For example, in the key combination Ctrl+Alt+A, Ctrl+Alt are the preKeys.
 triggerType?: KeyCommandTriggerType
 ```
 
-Trigger mode. The value can be PRESSED (1), REPEAT_PRESSED (2), or ALL_RELEASED (3). The command trigger mode is enabled. Once this value is set, isFinalKeyDown and isRepeat are ignored. This parameter is optional for the [inputConsumer.on('key')](arkts-input-inputconsumer-on-f-sys.md#onkey) API and mandatory for the [inputConsumer.onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey2) API.
+Trigger mode. The value can be PRESSED (1), REPEAT_PRESSED (2), or ALL_RELEASED (3). The command trigger mode is enabled. Once this value is set, isFinalKeyDown and isRepeat are ignored. This parameter is optional for the [inputConsumer.on('key')](arkts-input-inputconsumer-on-f-sys.md#onkey) API and mandatory for the [inputConsumer.onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey) API.
 
 **Type:** [KeyCommandTriggerType](arkts-input-inputconsumer-keycommandtriggertype-e-sys.md)
 

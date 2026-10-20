@@ -18,7 +18,7 @@ CommonMethod.
 advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 ```
 
-Defines how the component's content (including the content of it child components) is blended with the existing content on the canvas (possibly offscreen canvas) below. This API cannot be used with [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode1).
+Defines how the component's content (including the content of it child components) is blended with the existing content on the canvas (possibly offscreen canvas) below. This API cannot be used with [blendMode](arkts-arkui-common-comp-commonmethod-c.md#blendmode).
 
 **Since:** 13
 
@@ -37,7 +37,7 @@ Defines how the component's content (including the content of it child component
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | effect | [BlendMode](arkts-arkui-common-comp-blendmode-e.md) &#124; [Blender](arkts-arkui-common-comp-blender-t-sys.md) | Yes | Blend mode or blender type, depending on the parameter type. <br>When the parameter type is **BlendMode**, it indicates the blend mode. <br>Default value: **BlendMode.NONE** <br>When the parameter type is **Blender**, it indicates the blender type, used to describe the blending effect. <br>A **Blender** instance must be created using methods, for example,  [uiEffect.createBrightnessBlender](../../../reference/apis-arkgraphics2d/js-apis-uiEffect-sys.md#uieffectcreatebrightnessblender), from the **uiEffect** module. Using a custom object as a parameter will not take effect. |
-| type | [BlendApplyType](arkts-arkui-common-comp-blendapplytype-e.md) | No | Whether the blend mode is implemented offscreen.<br>Default value: **BlendApplyType.FAST** <br>**NOTE:** <br>1. When this parameter is set to **BlendApplyType.FAST**, the blend mode is not implemented offscreen. <br>2. When this parameter is set to **BlendApplyType.OFFSCREEN**, an offscreen canvas matching the size of the current component is created. The content of the current component (including its child components) is then drawn onto the offscreen canvas, and blended with the existing content on the underlying canvas using the specified blend mode. <br>3. For text components, this API does not apply to emoji expressions when not offscreen. <br>4. Compared with **BlendApplyType.OFFSCREEN**, when this parameter is set to **BlendApplyType.OFFSCREEN_WITH_BACKGROUND**, the system first copies a canvas with a background as the initial background color (the canvas for **BlendApplyType.OFFSCREEN** starts with a transparent background) when creating an offscreen canvas matching the current component's size. The blending operation is then performed on this base. The two modes are identical in all other functional aspects. |
+| type | [BlendApplyType](arkts-arkui-common-comp-blendapplytype-e.md) | No | Whether the blend mode is implemented offscreen. <br>Default value: **BlendApplyType.FAST** <br>**NOTE:** <br>1. When this parameter is set to **BlendApplyType.FAST**, the blend mode is not implemented offscreen. <br>2. When this parameter is set to **BlendApplyType.OFFSCREEN**, an offscreen canvas matching the size of the current component is created. The content of the current component (including its child components) is then drawn onto the offscreen canvas, and blended with the existing content on the underlying canvas using the specified blend mode. <br>3. For text components, this API does not apply to emoji expressions when not offscreen. <br>4. Compared with **BlendApplyType.OFFSCREEN**, when this parameter is set to **BlendApplyType.OFFSCREEN_WITH_BACKGROUND**, the system first copies a canvas with a background as the initial background color (the canvas for **BlendApplyType.OFFSCREEN** starts with a transparent background) when creating an offscreen canvas matching the current component's size. The blending operation is then performed on this base. The two modes are identical in all other functional aspects. |
 
 **Return value:**
 
@@ -103,7 +103,7 @@ Sets the edge light effect for the component.
 excludeFromRenderGroup(exclude: boolean | undefined): T
 ```
 
-Sets whether the current component and its child components are removed from the render group of the ancestor component. If this attribute is used alone, no effect is achieved. It must be used with the [renderGroup](arkts-arkui-common-comp-commonmethod-c.md#rendergroup2) attribute of the ancestor component.
+Sets whether the current component and its child components are removed from the render group of the ancestor component. If this attribute is used alone, no effect is achieved. It must be used with the [renderGroup](arkts-arkui-common-comp-commonmethod-c.md#rendergroup) attribute of the ancestor component.
 
 Removing the current component and its children from the render group does not affect the offscreen canvas of the ancestor component, and the cache of the render group is still valid. In this way, the render group cache can be reused. If the display area of the current component occupies only a part of the display area of the render group drawing content, and the display effect of the current component and its children is frequently updated, setting **excludeFromRenderGroup** helps optimize the drawing performance.
 
@@ -114,11 +114,11 @@ If this attribute is not set, the current component and its children are not rem
 > The drawing content of the component with **excludeFromRenderGroup** set to **true** and its children cannot the
 > component's own boundary range. Otherwise, the displayed content may be clipped. For example, if the child
 > component exceeds the boundary range of the current component due to attributes such as
-> [translate](arkts-arkui-common-comp-commonmethod-c.md#translate1) or
-> [scale](arkts-arkui-common-comp-commonmethod-c.md#scale1), or the drawing content extend beyond its boundaries
+> [translate](arkts-arkui-common-comp-commonmethod-c.md#translate) or
+> [scale](arkts-arkui-common-comp-commonmethod-c.md#scale), or the drawing content extend beyond its boundaries
 > because the current component has attributes such as
-> [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1) and
-> [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect1), the displayed
+> [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow) and
+> [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect), the displayed
 > content may be clipped. In such scenarios, **excludeFromRenderGroup** should not be set to **true**.
 
 **Since:** 22
@@ -135,7 +135,7 @@ If this attribute is not set, the current component and its children are not rem
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| exclude | boolean &#124; undefined | Yes | Whether to remove the current component and its child components from the render group of the ancestor component.<br>**true**: yes. **false**: no. <br>If **exclude** is set to **undefined**, the value **false** is used. |
+| exclude | boolean &#124; undefined | Yes | Whether to remove the current component and its child components from the render group of the ancestor component. <br>**true**: yes. **false**: no. <br>If **exclude** is set to **undefined**, the value **false** is used. |
 
 **Return value:**
 
@@ -166,6 +166,38 @@ Marks the node as an independent render layer. Once marked, the component and it
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | boolean &#124; undefined | Yes | Whether to mark the node as an independent render layer. The value **true** means to mark the node as an independent render layer, and **false** or **undefined** means to cancel the mark. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| T | Current component. |
+
+## safeAreaInset
+
+```TypeScript
+safeAreaInset(options?: SafeAreaInsetOptions): T
+```
+
+Places custom content at one or more component edges and reserves component-level safe area for it. Use this attribute for edge toolbars, action areas, or placeholders. Each call replaces the complete four-edge configuration; omitted edges do not retain their previous content. Content is attached to the inner boundary of the component's ordinary `padding`. On each physical edge of the same component, the effective safe area is the greater of the declared `safeAreaPadding` and the inset extent, not their sum. Ancestor and system safe areas retain their existing accumulation rules. The effective safe area is included when calculating the component's adaptive size perpendicular to the edge.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-CommonMethod-safeAreaInset(options?: SafeAreaInsetOptions): T--><!--Device-CommonMethod-safeAreaInset(options?: SafeAreaInsetOptions): T-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| options | [SafeAreaInsetOptions](arkts-arkui-common-comp-safeareainsetoptions-i-sys.md) | No | Complete four-edge configuration. Default value: `undefined`, which resets all edges. Passing `null`, a non-object value, or an object without a valid edge also resets all edges. An invalid edge structure or `content`, or an empty build result, clears only that edge. Invalid `spacing` falls back to `0vp` and invalid `alignment` falls back to `SafeAreaInsetAlignment.CENTER`, without clearing valid content on the same edge. |
 
 **Return value:**
 
@@ -205,8 +237,6 @@ Applies a spatial effect to component.
 | --- | --- |
 | T |  |
 
-<a id="useunioneffect1"></a>
-
 ## useUnionEffect
 
 ```TypeScript
@@ -229,15 +259,13 @@ Specify whether the current component participates in the fusion effect of the a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean &#124; undefined | Yes | Whether the component participates in the fusion effect of the ancestor component **UnionEffectContainer**.<br>The value **true** means that the component participates in the fusion effect of the ancestor component **UnionEffectContainer**, and **false** means the opposite. <br>Default value: **false**. Undefined means to default value. |
+| value | boolean &#124; undefined | Yes | Whether the component participates in the fusion effect of the ancestor component **UnionEffectContainer**. <br>The value **true** means that the component participates in the fusion effect of the ancestor component **UnionEffectContainer**, and **false** means the opposite. <br>Default value: **false**. Undefined means to default value. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
 | T | return the component attribute. |
-
-<a id="useunioneffect2"></a>
 
 ## useUnionEffect
 

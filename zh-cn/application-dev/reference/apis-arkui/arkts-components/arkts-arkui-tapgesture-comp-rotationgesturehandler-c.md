@@ -38,8 +38,6 @@ constructor(options?: RotationGestureHandlerOptions)
 | --- | --- | --- | --- |
 | options | [RotationGestureHandlerOptions](arkts-arkui-tapgesture-comp-rotationgesturehandleroptions-i.md) | 否 | 旋转手势处理器配置参数。 |
 
-<a id="onactioncancel1"></a>
-
 ## onActionCancel
 
 ```TypeScript
@@ -70,15 +68,13 @@ onActionCancel(event: Callback<void>): RotationGestureHandler
 | --- | --- |
 | [RotationGestureHandler](arkts-arkui-tapgesture-comp-rotationgesturehandler-c.md) | 返回当前旋转手势处理器对象。 |
 
-<a id="onactioncancel2"></a>
-
 ## onActionCancel
 
 ```TypeScript
 onActionCancel(event: Callback<GestureEvent>): RotationGestureHandler
 ```
 
-设置旋转手势处理器取消回调。旋转手势处理器识别成功后，接收到触摸取消事件时触发回调。与[onActionCancel](#onactioncancel1)相比，此接口返回手势事件信息。
+设置旋转手势处理器取消回调。旋转手势处理器识别成功后，接收到触摸取消事件时触发回调。与[onActionCancel](#onactioncancel)相比，此接口返回手势事件信息。
 
 **起始版本：** 18
 

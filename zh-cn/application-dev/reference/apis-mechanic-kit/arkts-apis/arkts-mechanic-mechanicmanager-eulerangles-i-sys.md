@@ -6,8 +6,6 @@ export interface EulerAngles
 
 Absolute euler angles relative to the home position.
 
-@typedef EulerAngles
-
 **起始版本：** 20
 
 <!--Device-mechanicManager-export interface EulerAngles--><!--Device-mechanicManager-export interface EulerAngles-End-->

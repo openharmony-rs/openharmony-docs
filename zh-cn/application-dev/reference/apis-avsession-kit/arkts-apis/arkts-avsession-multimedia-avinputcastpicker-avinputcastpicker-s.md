@@ -8,8 +8,6 @@ export declare struct AVInputCastPicker
 
 该组件为自定义组件，开发者在使用前需要先了解[@Component](../../../ui/state-management/arkts-create-custom-components.md#component)。
 
-@struct { AVInputCastPicker }
-
 **起始版本：** 20
 
 **装饰器类型：** @Component

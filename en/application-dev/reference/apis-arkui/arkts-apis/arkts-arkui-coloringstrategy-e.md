@@ -18,7 +18,7 @@ Enumerates the coloring strategies.
 AVERAGE = 'average'
 ```
 
-The shadow colors of the component are the average color obtained from the component background shadow area. This strategy is only applicable when set within the [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1) attribute whose input parameter type is ShadowOptions.
+The shadow colors of the component are the average color obtained from the component background shadow area. This strategy is only applicable when set within the [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow) attribute whose input parameter type is ShadowOptions.
 
 **Since:** 11
 
@@ -36,7 +36,7 @@ The shadow colors of the component are the average color obtained from the compo
 INVERT = 'invert'
 ```
 
-The foreground colors are the inverse of the component background colors. This strategy is only applicable when set within the [foregroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#foregroundcolor1) attribute.
+The foreground colors are the inverse of the component background colors. This strategy is only applicable when set within the [foregroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#foregroundcolor) attribute.
 
 **Since:** 10
 
@@ -54,7 +54,7 @@ The foreground colors are the inverse of the component background colors. This s
 PRIMARY = 'primary'
 ```
 
-The shadow colors of the component are the primary color obtained from the component background shadow area. This strategy is only applicable when set within the [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1) attribute whose input parameter type is ShadowOptions.
+The shadow colors of the component are the primary color obtained from the component background shadow area. This strategy is only applicable when set within the [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow) attribute whose input parameter type is ShadowOptions.
 
 **Since:** 11
 

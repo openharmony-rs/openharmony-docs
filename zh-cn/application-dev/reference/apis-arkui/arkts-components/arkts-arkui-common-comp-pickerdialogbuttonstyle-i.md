@@ -6,8 +6,6 @@ declare interface PickerDialogButtonStyle
 
 Provide an interface for the button style of picker
 
-@interface PickerDialogButtonStyle
-
 **起始版本：** 12
 
 <!--Device-unnamed-declare interface PickerDialogButtonStyle--><!--Device-unnamed-declare interface PickerDialogButtonStyle-End-->

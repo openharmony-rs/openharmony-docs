@@ -42,7 +42,7 @@ When **SliderBlockType.SHAPE** is used, **blockBorderColor** sets the border col
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Border color of the slider in the block direction.<br>Default value: **'#00000000'** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Border color of the slider in the block direction. <br>Default value: **'#00000000'** |
 
 ## blockBorderWidth
 
@@ -74,8 +74,6 @@ When **SliderBlockType.SHAPE** is used, **blockBorderWidth** sets the border wid
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Border width of the slider.<br>**Note:** <br>For the string type, percentage values are not supported. |
 
-<a id="blockcolor1"></a>
-
 ## blockColor
 
 ```TypeScript
@@ -106,9 +104,7 @@ When **SliderBlockType.SHAPE** is used, **blockColor** sets the color of the thu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the thumb.<br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')** |
-
-<a id="blockcolor2"></a>
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the thumb. <br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')** |
 
 ## blockColor
 
@@ -218,7 +214,7 @@ Creates a content modifier.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[SliderConfiguration](arkts-arkui-slider-comp-sliderconfiguration-i.md)&gt; | Yes | Content modifier to apply to the **Slider** component.<br>**ContentModifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[SliderConfiguration](arkts-arkui-slider-comp-sliderconfiguration-i.md)&gt; | Yes | Content modifier to apply to the **Slider** component. <br>**ContentModifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
 
 ## digitalCrownSensitivity
 
@@ -351,7 +347,7 @@ Sets the prefix of the slider.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | content | ComponentContent | Yes | Visual content of the slider prefix, which will be displayed at the start of the slider. |
-| options | [SliderPrefixOptions](arkts-arkui-slider-comp-sliderprefixoptions-i.md) | No | Configuration options of the slider prefix, used to set accessibility- related attributes.<br>Default value: **null** |
+| options | [SliderPrefixOptions](arkts-arkui-slider-comp-sliderprefixoptions-i.md) | No | Configuration options of the slider prefix, used to set accessibility- related attributes. <br>Default value: **null** |
 
 ## selectedBorderRadius
 
@@ -377,8 +373,6 @@ Set the corner radius of the selected (highlighted) part of the slider.
 | --- | --- | --- | --- |
 | value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | Yes | Corner radius of the selected part of the slider.<br>Default value: When **style** is set to **SliderStyle.InSet** or **SliderStyle.OutSet**, the default value follows the corner radius of the track; when **style** is set to **SliderStyle.NONE**, the default value is **0**.<br>**Note:** <br> Percentage values are not supported. If the value is less than 0, the default value is used. |
 
-<a id="selectedcolor1"></a>
-
 ## selectedColor
 
 ```TypeScript
@@ -403,9 +397,7 @@ Sets the color of the portion of the track between the minimum value and the thu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the portion of the track between the minimum value and the thumb.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')** |
-
-<a id="selectedcolor2"></a>
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the portion of the track between the minimum value and the thumb. <br>Default value: **$r('sys.color.ohos_id_color_emphasize')** |
 
 ## selectedColor
 
@@ -413,7 +405,7 @@ Sets the color of the portion of the track between the minimum value and the thu
 selectedColor(selectedColor: ResourceColor | LinearGradient)
 ```
 
-Sets the color of the portion of the track between the minimum value and the thumb, representing the selected portion. Compared to [selectedColor](#selectedcolor1), this API supports the **LinearGradient** type.
+Sets the color of the portion of the track between the minimum value and the thumb, representing the selected portion. Compared to [selectedColor](#selectedcolor), this API supports the **LinearGradient** type.
 
 **Since:** 18
 
@@ -431,9 +423,7 @@ Sets the color of the portion of the track between the minimum value and the thu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectedColor | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Color of the portion of the track between the minimum value and the thumb.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')** <br>**NOTE:** <br>With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied. |
-
-<a id="showsteps1"></a>
+| selectedColor | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Color of the portion of the track between the minimum value and the thumb. <br>Default value: **$r('sys.color.ohos_id_color_emphasize')** <br>**NOTE:** <br>With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied. |
 
 ## showSteps
 
@@ -460,8 +450,6 @@ Sets whether to display the step markers.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | boolean | Yes | Whether to display the step markers.<br>**true**: display the step markers; **false**: do not display the step markers.<br>Default Value: **false** |
-
-<a id="showsteps2"></a>
 
 ## showSteps
 
@@ -492,7 +480,7 @@ The accessibility text settings take effect only when the step markers are displ
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | boolean | Yes | Whether to display the step markers.<br>**true**: display the step markers; **false**: do not display the step markers.<br>Default value: **false** |
-| options | [SliderShowStepOptions](arkts-arkui-slider-comp-slidershowstepoptions-i.md) | No | Configuration options of the accessibility text of the step markers.<br>Default value: **null** |
+| options | [SliderShowStepOptions](arkts-arkui-slider-comp-slidershowstepoptions-i.md) | No | Configuration options of the accessibility text of the step markers. <br>Default value: **null** |
 
 ## showTips
 
@@ -522,7 +510,7 @@ The drawing area of the tooltip is the overlay of the slider.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to display a tooltip when the user drags the slider.<br>**true**: Display a tooltip. **false**: Do not display a tooltip. <br>Default value: **false** |
+| value | boolean | Yes | Whether to display a tooltip when the user drags the slider. <br>**true**: Display a tooltip. **false**: Do not display a tooltip. <br>Default value: **false** |
 | content | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | No | Text content of the tooltip. When passed in, custom text is displayed (used when a specific format or additional information needs to be shown); when not passed in, the current percentage value is displayed by default.<br><br>**Since:** 10 |
 
 ## slideRange
@@ -644,7 +632,7 @@ Sets the suffix of the slider.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | content | ComponentContent | Yes | Visual content of the slider suffix, which will be displayed at the end position of the slider. |
-| options | [SliderSuffixOptions](arkts-arkui-slider-comp-slidersuffixoptions-i.md) | No | Configuration options of the slider suffix, used to set accessibility- related attributes.<br>Default value: **null** |
+| options | [SliderSuffixOptions](arkts-arkui-slider-comp-slidersuffixoptions-i.md) | No | Configuration options of the slider suffix, used to set accessibility- related attributes. <br>Default value: **null** |
 
 ## trackBorderRadius
 

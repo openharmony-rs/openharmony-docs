@@ -6,8 +6,6 @@ declare interface LocalizedHorizontalAlignParam
 
 定义相对容器的水平对齐规则。
 
-@interface LocalizedHorizontalAlignParam
-
 **起始版本：** 12
 
 <!--Device-unnamed-declare interface LocalizedHorizontalAlignParam--><!--Device-unnamed-declare interface LocalizedHorizontalAlignParam-End-->

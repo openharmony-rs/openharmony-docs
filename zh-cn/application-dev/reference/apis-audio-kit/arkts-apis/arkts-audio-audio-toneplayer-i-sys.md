@@ -4,7 +4,7 @@
 interface TonePlayer
 ```
 
-提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。在调用TonePlayer的接口前，需要先通过[createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer1)创建实例。
+提供播放和管理DTMF（Dual Tone Multi Frequency，双音多频）音调的方法，包括各种系统监听音调、专有音调，如拨号音、通话回铃音等。在调用TonePlayer的接口前，需要先通过[createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer)创建实例。
 
 **起始版本：** 9
 
@@ -19,8 +19,6 @@ interface TonePlayer
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 ```
-
-<a id="load1"></a>
 
 ## load
 
@@ -63,8 +61,6 @@ tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_5, (err: BusinessError) => {
 
 <!--DelEnd-->
 
-<a id="load2"></a>
-
 ## load
 
 ```TypeScript
@@ -106,8 +102,6 @@ tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_1).then(() => {
 
 <!--DelEnd-->
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -148,8 +142,6 @@ tonePlayer.release((err: BusinessError) => {
 
 <!--DelEnd-->
 
-<a id="release2"></a>
-
 ## release
 
 ```TypeScript
@@ -184,8 +176,6 @@ tonePlayer.release().then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="start1"></a>
 
 ## start
 
@@ -227,8 +217,6 @@ tonePlayer.start((err: BusinessError) => {
 
 <!--DelEnd-->
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -263,8 +251,6 @@ tonePlayer.start().then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="stop1"></a>
 
 ## stop
 
@@ -305,8 +291,6 @@ tonePlayer.stop((err: BusinessError) => {
 ```
 
 <!--DelEnd-->
-
-<a id="stop2"></a>
 
 ## stop
 

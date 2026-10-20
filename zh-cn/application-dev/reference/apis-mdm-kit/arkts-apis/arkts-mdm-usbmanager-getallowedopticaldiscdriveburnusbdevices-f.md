@@ -9,7 +9,7 @@ import { usbManager } from '@kit.MDMKit';
 ## getAllowedOpticalDiscDriveBurnUsbDevices
 
 ```TypeScript
-function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPolicy): Array<UsbDevice>
+function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPolicy): Promise<Array<UsbDevice>>
 ```
 
 获取支持CD/DVD刻录的USB设备列表。
@@ -20,7 +20,7 @@ function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPoli
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-usbManager-function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPolicy): Array<UsbDevice>--><!--Device-usbManager-function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPolicy): Array<UsbDevice>-End-->
+<!--Device-usbManager-function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPolicy): Promise<Array<UsbDevice>>--><!--Device-usbManager-function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPolicy): Promise<Array<UsbDevice>>-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -34,7 +34,7 @@ function getAllowedOpticalDiscDriveBurnUsbDevices(queryPolicy?: common.QueryPoli
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[UsbDevice](arkts-mdm-usbmanager-usbdevice-i.md)&gt; | 允许的USB设备数组。 |
+| Promise&lt;Array&lt;[UsbDevice](arkts-mdm-usbmanager-usbdevice-i.md)&gt;&gt; | 允许的USB设备数组，使用Promise异步回调。 |
 
 **错误码：**
 

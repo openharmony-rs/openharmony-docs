@@ -55,8 +55,6 @@ console.info(`Succeeded in getting parent path, the parent path is: ${file.getPa
 fileIo.closeSync(file);
 ```
 
-<a id="lock1"></a>
-
 ## lock
 
 ```TypeScript
@@ -110,8 +108,6 @@ file.lock(true).then(() => {
 });
 ```
 
-<a id="lock2"></a>
-
 ## lock
 
 ```TypeScript
@@ -159,8 +155,6 @@ file.lock((err: BusinessError) => {
   fileIo.closeSync(file);
 });
 ```
-
-<a id="lock3"></a>
 
 ## lock
 

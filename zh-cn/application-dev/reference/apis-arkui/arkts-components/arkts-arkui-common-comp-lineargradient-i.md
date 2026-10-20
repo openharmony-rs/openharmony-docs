@@ -6,8 +6,6 @@ declare interface LinearGradient
 
 Linear Gradient Interface
 
-@interface LinearGradient
-
 **起始版本：** 11
 
 <!--Device-unnamed-declare interface LinearGradient--><!--Device-unnamed-declare interface LinearGradient-End-->

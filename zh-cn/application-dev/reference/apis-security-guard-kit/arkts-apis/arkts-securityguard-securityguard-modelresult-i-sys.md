@@ -6,8 +6,6 @@ interface ModelResult
 
 安全模型结果。
 
-@typedef ModelResult
-
 **起始版本：** 12
 
 <!--Device-securityGuard-interface ModelResult--><!--Device-securityGuard-interface ModelResult-End-->

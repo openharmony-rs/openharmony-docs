@@ -4,6 +4,8 @@ The distributedMissionManager module implements mission management across device
 
 **Since:** 9
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace distributedMissionManager--><!--Device-unnamed-declare namespace distributedMissionManager-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
@@ -23,20 +25,20 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [continueMission](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission1) | Continues a mission on a remote device, with the mission ID specified. This API uses an asynchronous callback to return the result. |
-| [continueMission](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission2) | Continues a mission on a remote device, with the mission ID specified. This API uses a promise to return the result. |
-| [continueMission](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission3) | Continues a mission on a remote device, with the bundle name specified. This API uses an asynchronous callback to return the result. |
-| [continueMission](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission4) | Continues a mission on a remote device, with the bundle name specified. This API uses a promise to return the result. |
+| [continueMission](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission) | Continues a mission on a remote device, with the mission ID specified. This API uses an asynchronous callback to return the result. |
+| [continueMission](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission) | Continues a mission on a remote device, with the mission ID specified. This API uses a promise to return the result. |
+| [continueMission](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission) | Continues the task of a specified application from the source device to the target device by specifying the bundle name. This API uses an asynchronous callback to return the result. |
+| [continueMission](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission) | Continues the task of a specified application from the source device to the target device by specifying the bundle name. This API uses a promise to return the result. |
 | [off('continueStateChange')](arkts-ability-distributedmissionmanager-off-f-sys.md#offcontinuestatechange) | Unsubscribes from continuation state change events of the current mission. |
 | [on('continueStateChange')](arkts-ability-distributedmissionmanager-on-f-sys.md#oncontinuestatechange) | Subscribes to continuation state change events of the current mission. |
-| [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener1) | Registers a mission status listener. This API uses an asynchronous callback to return the result. |
-| [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener2) | Registers a mission status listener. This API uses a promise to return the result. |
-| [startSyncRemoteMissions](arkts-ability-distributedmissionmanager-startsyncremotemissions-f-sys.md#startsyncremotemissions1) | Starts to synchronize the remote mission list. This API uses an asynchronous callback to return the result. |
-| [startSyncRemoteMissions](arkts-ability-distributedmissionmanager-startsyncremotemissions-f-sys.md#startsyncremotemissions2) | Starts to synchronize the remote mission list. This API uses a promise to return the result. |
-| [stopSyncRemoteMissions](arkts-ability-distributedmissionmanager-stopsyncremotemissions-f-sys.md#stopsyncremotemissions1) | Stops synchronizing the remote mission list. This API uses an asynchronous callback to return the result. |
-| [stopSyncRemoteMissions](arkts-ability-distributedmissionmanager-stopsyncremotemissions-f-sys.md#stopsyncremotemissions2) | Stops synchronizing the remote mission list. This API uses a promise to return the result. |
-| [unRegisterMissionListener](arkts-ability-distributedmissionmanager-unregistermissionlistener-f-sys.md#unregistermissionlistener1) | Unregisters a mission status listener. This API uses an asynchronous callback to return the result. |
-| [unRegisterMissionListener](arkts-ability-distributedmissionmanager-unregistermissionlistener-f-sys.md#unregistermissionlistener2) | Unregisters a mission status listener. This API uses a promise to return the result. |
+| [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener) | Registers a mission status listener. This API uses an asynchronous callback to return the result. |
+| [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener) | Registers a mission status listener. This API uses a promise to return the result. |
+| [startSyncRemoteMissions](arkts-ability-distributedmissionmanager-startsyncremotemissions-f-sys.md#startsyncremotemissions) | Starts to synchronize the remote mission list. This API uses an asynchronous callback to return the result. |
+| [startSyncRemoteMissions](arkts-ability-distributedmissionmanager-startsyncremotemissions-f-sys.md#startsyncremotemissions) | Starts to synchronize the remote mission list. This API uses a promise to return the result. |
+| [stopSyncRemoteMissions](arkts-ability-distributedmissionmanager-stopsyncremotemissions-f-sys.md#stopsyncremotemissions) | Stops synchronizing the remote mission list. This API uses an asynchronous callback to return the result. |
+| [stopSyncRemoteMissions](arkts-ability-distributedmissionmanager-stopsyncremotemissions-f-sys.md#stopsyncremotemissions) | Stops synchronizing the remote mission list. This API uses a promise to return the result. |
+| [unRegisterMissionListener](arkts-ability-distributedmissionmanager-unregistermissionlistener-f-sys.md#unregistermissionlistener) | Unregisters a mission status listener. This API uses an asynchronous callback to return the result. |
+| [unRegisterMissionListener](arkts-ability-distributedmissionmanager-unregistermissionlistener-f-sys.md#unregistermissionlistener) | Unregisters a mission status listener. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 <!--Del-->
@@ -56,9 +58,9 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 | [ContinueCallback](arkts-ability-distributedmissionmanager-continuecallback-t-sys.md) | ContinueCallback registered for notify continue result. |
 | [ContinueDeviceInfo](arkts-ability-distributedmissionmanager-continuedeviceinfo-t-sys.md) | Parameters corresponding to continue mission. |
 | [ContinueMissionInfo](arkts-ability-distributedmissionmanager-continuemissioninfo-t-sys.md) | Parameters corresponding to continue mission. |
-| [MissionCallback](arkts-ability-distributedmissionmanager-missioncallback-t-sys.md) | Defines the callback invoked after synchronization starts. It is used as an input parameter in [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener2). |
-| [MissionDeviceInfo](arkts-ability-distributedmissionmanager-missiondeviceinfo-t-sys.md) | Defines the parameters required for registering a listener. It is used as an input parameter in [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener2). |
-| [MissionParameter](arkts-ability-distributedmissionmanager-missionparameter-t-sys.md) | Defines the parameters required for mission synchronization. It is used an input parameter in [startSyncRemoteMissions](arkts-ability-distributedmissionmanager-startsyncremotemissions-f-sys.md#startsyncremotemissions2). |
+| [MissionCallback](arkts-ability-distributedmissionmanager-missioncallback-t-sys.md) | Defines the callback invoked after synchronization starts. It is used as an input parameter in [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener). |
+| [MissionDeviceInfo](arkts-ability-distributedmissionmanager-missiondeviceinfo-t-sys.md) | Defines the parameters required for registering a listener. It is used as an input parameter in [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener). |
+| [MissionParameter](arkts-ability-distributedmissionmanager-missionparameter-t-sys.md) | Defines the parameters required for mission synchronization. It is used an input parameter in [startSyncRemoteMissions](arkts-ability-distributedmissionmanager-startsyncremotemissions-f-sys.md#startsyncremotemissions). |
 <!--DelEnd-->
 
 <!--Del-->

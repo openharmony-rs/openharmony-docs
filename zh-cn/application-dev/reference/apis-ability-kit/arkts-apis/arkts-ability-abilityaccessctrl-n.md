@@ -6,6 +6,8 @@ declare namespace abilityAccessCtrl
 
 **起始版本：** 8
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 <!--Device-unnamed-declare namespace abilityAccessCtrl--><!--Device-unnamed-declare namespace abilityAccessCtrl-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken

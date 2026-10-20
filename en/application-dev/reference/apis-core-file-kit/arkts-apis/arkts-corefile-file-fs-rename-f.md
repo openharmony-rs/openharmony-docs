@@ -30,8 +30,8 @@ Renames a file or directory. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| oldPath | string | Yes | Application sandbox path of the file or directory to rename. |
-| newPath | string | Yes | Application sandbox path of the renamed file or directory. |
+| oldPath | string | Yes | Original application sandbox path of the file or directory. |
+| newPath | string | Yes | New application sandbox path of the file or directory. |
 
 **Return value:**
 
@@ -64,8 +64,6 @@ Renames a file or directory. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
-<a id="rename2"></a>
-
 ## rename
 
 ```TypeScript
@@ -90,9 +88,9 @@ Renames a file or directory. This API uses an asynchronous callback to return th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| oldPath | string | Yes | Application sandbox path of the file or directory to rename. |
-| newPath | string | Yes | Application sandbox path of the renamed file or directory. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| oldPath | string | Yes | Original application sandbox path of the file or directory. |
+| newPath | string | Yes | New application sandbox path of the file or directory. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the file is renamed successfully, <b>err</b> is <b>undefined</b>; otherwise, <b>err</b> is an error object. |
 
 **Error codes:**
 

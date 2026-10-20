@@ -13,3 +13,5 @@ This callback is triggered when the input method is detected to be successfully 
 <!--Device-unnamed-type OnInputmethodAttachedCallback = () => void--><!--Device-unnamed-type OnInputmethodAttachedCallback = () => void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
+
+**Examples**

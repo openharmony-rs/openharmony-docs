@@ -6,8 +6,6 @@ export type ContinueCallback = _ContinueCallback
 
 ContinueCallback registered for notify continue result.
 
-@typedef { _ContinueCallback }
-
 **Type:** _ContinueCallback
 
 **Since:** 10

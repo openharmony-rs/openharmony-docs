@@ -4,7 +4,7 @@
 export interface ListFileOptions
 ```
 
-Defines the options used in **listFile()**.
+Defines the options used in <b>listFile()</b>.
 
 **Since:** 11
 

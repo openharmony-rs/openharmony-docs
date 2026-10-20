@@ -36,8 +36,6 @@ Removes a directory. This API uses a promise to return the result.
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
-<a id="rmdir2"></a>
-
 ## rmdir
 
 ```TypeScript

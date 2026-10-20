@@ -117,8 +117,6 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16000055](../errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
 
-<a id="disconnectserviceextensionability1"></a>
-
 ## disconnectServiceExtensionAbility
 
 ```TypeScript
@@ -149,8 +147,6 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback<vo
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
-
-<a id="disconnectserviceextensionability2"></a>
 
 ## disconnectServiceExtensionAbility
 
@@ -232,9 +228,9 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise<Abilit
 
 打开一个独立窗口的原子化服务，并返回结果。使用Promise异步回调。分为以下几种情况：
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死原子化服务会返回异常信息给调用方，异常信息中resultCode为-1。  
-- 如果不同应用多次调用该接口启动同一个原子化服务，当这个原子化服务调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息，异常信息中resultCode为-1。
+- 如果不同应用多次调用该接口启动同一个原子化服务，当这个原子化服务调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息，异常信息中resultCode为-1。
 
 > **说明：** 
 > 
@@ -286,7 +282,7 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback<Abili
 - "actions"列表中包含"ohos.want.action.viewData"。  
 - "entities"列表中包含"entity.system.browsable"。  
 - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。  
-如果希望获取被拉起方终止后的结果，可以设置callback参数，此参数的使用可参照[startAbilityForResult](#startabilityforresult1)接口。传入的参数不合法时，如未设置必选参数或link字符串不是标准格式的URL，接口会直接抛出异常。参数校验通过，拉起目标方时出现的错误通过promise返回错误信息。
+如果希望获取被拉起方终止后的结果，可以设置callback参数，此参数的使用可参照[startAbilityForResult](#startabilityforresult)接口。传入的参数不合法时，如未设置必选参数或link字符串不是标准格式的URL，接口会直接抛出异常。参数校验通过，拉起目标方时出现的错误通过promise返回错误信息。
 
 > **说明：** 
 > 
@@ -400,8 +396,6 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 | --- | --- |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 
-<a id="startability1"></a>
-
 ## startAbility
 
 ```TypeScript
@@ -463,8 +457,6 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
-<a id="startability2"></a>
-
 ## startAbility
 
 ```TypeScript
@@ -524,8 +516,6 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback<void>): 
 | [16000078](../errorcode-ability.md#16000078-不支持应用多实例) | The multi-instance is not supported.<br>**适用版本：** 14+ |
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
-
-<a id="startability3"></a>
 
 ## startAbility
 
@@ -594,8 +584,6 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
-<a id="startabilityforresult1"></a>
-
 ## startAbilityForResult
 
 ```TypeScript
@@ -604,9 +592,9 @@ startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 
 启动一个UIAbility，开发者可以通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。UIAbility被启动后，有如下情况:
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死UIAbility会返回异常信息给调用方, 异常信息中resultCode为-1。  
-- 如果被启动的UIAbility模式是单实例模式, 不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
+- 如果被启动的UIAbility模式是单实例模式, 不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
 
 > **说明：** 
 > 
@@ -661,8 +649,6 @@ startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
-<a id="startabilityforresult2"></a>
-
 ## startAbilityForResult
 
 ```TypeScript
@@ -671,9 +657,9 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 
 启动一个UIAbility，开发者可以通过回调函数接收被拉起的UIAbility退出时的返回结果。使用callback异步回调。UIAbility被启动后，有如下情况:
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死UIAbility会返回异常信息给调用方，异常信息中resultCode为-1。  
-- 如果被启动的UIAbility模式是单实例模式, 不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方，其它调用方返回异常信息, 异常信息中resultCode为-1。
+- 如果被启动的UIAbility模式是单实例模式, 不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方，其它调用方返回异常信息, 异常信息中resultCode为-1。
 
 > **说明：** 
 > 
@@ -727,8 +713,6 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 | [16000079](../errorcode-ability.md#16000079-不支持指定app_instance_key) | The APP_INSTANCE_KEY cannot be specified.<br>**适用版本：** 14+ |
 | [16000080](../errorcode-ability.md#16000080-不支持创建新实例) | Creating a new instance is not supported.<br>**适用版本：** 14+ |
 
-<a id="startabilityforresult3"></a>
-
 ## startAbilityForResult
 
 ```TypeScript
@@ -737,9 +721,9 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise<AbilityResult
 
 启动一个UIAbility，开发者可以通过回调函数接收被拉起的UIAbility退出时的返回结果。使用Promise异步回调。UIAbility被启动后，有如下情况:
 
-- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止并且返回结果给调用方。  
+- 正常情况下可通过调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。  
 - 异常情况下比如杀死UIAbility会返回异常信息给调用方, 异常信息中resultCode为-1。  
-- 如果被启动的UIAbility模式是单实例模式, 不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
+- 如果被启动的UIAbility模式是单实例模式, 不同应用多次调用该接口启动这个UIAbility，当这个UIAbility调用[terminateSelfWithResult](arkts-ability-uiabilitycontext-c.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息, 异常信息中resultCode为-1。
 
 > **说明：** 
 > 
@@ -851,8 +835,6 @@ startUIServiceExtensionAbility(want: Want): Promise<void>
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
-<a id="terminateself1"></a>
-
 ## terminateSelf
 
 ```TypeScript
@@ -881,8 +863,6 @@ terminateSelf(callback: AsyncCallback<void>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
-<a id="terminateself2"></a>
-
 ## terminateSelf
 
 ```TypeScript
@@ -904,8 +884,6 @@ terminateSelf(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-<a id="terminateselfwithresult1"></a>
 
 ## terminateSelfWithResult
 
@@ -935,8 +913,6 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-
-<a id="terminateselfwithresult2"></a>
 
 ## terminateSelfWithResult
 

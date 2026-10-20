@@ -4,7 +4,7 @@
 interface TripodDetectionResult extends SceneFeatureDetectionResult
 ```
 
-TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md) Describes the tripod detection result.
+TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md)描述三脚架检测结果。
 
 **继承/实现关系：** TripodDetectionResult extends [SceneFeatureDetectionResult](arkts-camera-camera-scenefeaturedetectionresult-i-sys.md)
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 readonly tripodStatus: TripodStatus
 ```
 
-Tripod status.
+三脚架状态。
 
 **类型：** [TripodStatus](arkts-camera-camera-tripodstatus-e-sys.md)
 

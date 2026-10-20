@@ -4,7 +4,7 @@
 export interface Channel
 ```
 
-Channel的实例表示在某个Session实例上创建通道，可能为基础通道或逻辑通道。通过[Session.openBasicChannel](arkts-connectivity-omapi-session-i.md#openbasicchannel1)或[Session.openLogicalChannel](arkts-connectivity-omapi-session-i.md#openlogicalchannel1)获取Channel实例。
+Channel的实例表示在某个Session实例上创建通道，可能为基础通道或逻辑通道。通过[Session.openBasicChannel](arkts-connectivity-omapi-session-i.md#openbasicchannel)或[Session.openLogicalChannel](arkts-connectivity-omapi-session-i.md#openlogicalchannel)获取Channel实例。
 
 **起始版本：** 10
 
@@ -227,8 +227,6 @@ try {
 }
 ```
 
-<a id="transmit1"></a>
-
 ## transmit
 
 ```TypeScript
@@ -259,7 +257,7 @@ transmit(command: number[]): Promise<number[]>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session or channel that has been closed. |
 | [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the command is filtered by the security policy. |
@@ -287,8 +285,6 @@ try {
 }
 ```
 
-<a id="transmit2"></a>
-
 ## transmit
 
 ```TypeScript
@@ -314,7 +310,7 @@ transmit(command: number[], callback: AsyncCallback<number[]>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3300101](../errorcode-se.md#3300101-se服务状态异常) | IllegalStateError, an attempt is made to use an SE session or channel that has been closed. |
 | [3300103](../errorcode-se.md#3300103-无法获取访问控制规则异常) | SecurityError, the command is filtered by the security policy. |

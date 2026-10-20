@@ -411,7 +411,7 @@ TYPE_WALLPAPER = 9
 ## TYPE_INPUT_METHOD
 
 ```TypeScript
-TYPE_INPUT_METHOD
+TYPE_INPUT_METHOD = 2
 ```
 
 表示输入法窗口。
@@ -424,7 +424,7 @@ TYPE_INPUT_METHOD
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowType-TYPE_INPUT_METHOD--><!--Device-WindowType-TYPE_INPUT_METHOD-End-->
+<!--Device-WindowType-TYPE_INPUT_METHOD = 2--><!--Device-WindowType-TYPE_INPUT_METHOD = 2-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

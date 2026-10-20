@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="removeallslots1"></a>
-
 ## removeAllSlots
 
 ```TypeScript
@@ -31,8 +29,21 @@ function removeAllSlots(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 表示被指定的回调方法。 |
 
+**示例**
 
-<a id="removeallslots2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let removeAllCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("removeAllSlots failed " + JSON.stringify(err));
+  } else {
+    console.info("removeAllSlots success");
+  }
+}
+Notification.removeAllSlots(removeAllCallback);
+```
+
 
 ## removeAllSlots
 
@@ -57,3 +68,15 @@ function removeAllSlots(): Promise<void>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+Notification.removeAllSlots().then(() => {
+  console.info("removeAllSlots success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`removeAllSlots failed, code is ${err}`);
+});
+```

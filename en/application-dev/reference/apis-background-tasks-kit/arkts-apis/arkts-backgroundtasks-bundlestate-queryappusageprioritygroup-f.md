@@ -6,8 +6,6 @@
 import { bundleState } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="queryappusageprioritygroup1"></a>
-
 ## queryAppUsagePriorityGroup
 
 ```TypeScript
@@ -47,8 +45,6 @@ bundleState.queryAppUsagePriorityGroup((err: BusinessError, res: number) => {
 });
 ```
 
-
-<a id="queryappusageprioritygroup2"></a>
 
 ## queryAppUsagePriorityGroup
 

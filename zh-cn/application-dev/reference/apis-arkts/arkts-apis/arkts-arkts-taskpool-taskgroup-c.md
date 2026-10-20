@@ -4,7 +4,7 @@
 class TaskGroup
 ```
 
-表示任务组，一次执行一组任务，适用于执行一组有关联的任务。如果所有任务正常执行，异步执行完毕后返回所有任务结果的数组，数组中元素的顺序与调用[addTask](#addtask2)添加任务的顺序相同。如果任意任务失败，则会抛出对应异常。如果任务组中存在多个任务失败的情况，则会抛出第一个失败任务的异常。任务组可以多次执行，但执行后不能新增任务。
+表示任务组，一次执行一组任务，适用于执行一组有关联的任务。如果所有任务正常执行，异步执行完毕后返回所有任务结果的数组，数组中元素的顺序与调用[addTask](#addtask)添加任务的顺序相同。如果任意任务失败，则会抛出对应异常。如果任务组中存在多个任务失败的情况，则会抛出第一个失败任务的异常。任务组可以多次执行，但执行后不能新增任务。
 
 **起始版本：** 10
 
@@ -17,8 +17,6 @@ class TaskGroup
 ```TypeScript
 import { taskpool } from '@kit.ArkTS';
 ```
-
-<a id="addtask1"></a>
 
 ## addTask
 
@@ -61,8 +59,6 @@ function printArgs(args: number): number {
 let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
 taskGroup.addTask(printArgs, 100); // 100: test number
 ```
-
-<a id="addtask2"></a>
 
 ## addTask
 
@@ -108,8 +104,6 @@ let task: taskpool.Task = new taskpool.Task(printArgs, 200); // 200: test number
 taskGroup.addTask(task);
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -131,8 +125,6 @@ TaskGroup的构造函数。
 ```TypeScript
 let taskGroup = new taskpool.TaskGroup();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

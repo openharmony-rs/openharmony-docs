@@ -6,8 +6,6 @@ export interface ToolInfo
 
 ToolInfo describes the basic information of a CLI tool, including the tool name, version, description, executable path, and input/output schema.
 
-@typedef ToolInfo
-
 **Since:** 26.0.0
 
 <!--Device-unnamed-export interface ToolInfo--><!--Device-unnamed-export interface ToolInfo-End-->

@@ -18,8 +18,6 @@ interface CameraManager
 import { camera } from '@kit.CameraKit';
 ```
 
-<a id="createcamerainput1"></a>
-
 ## createCameraInput
 
 ```TypeScript
@@ -77,8 +75,6 @@ function createCameraInput(camera: camera.CameraDevice, cameraManager: camera.Ca
   return cameraInput;
 }
 ```
-
-<a id="createcamerainput2"></a>
 
 ## createCameraInput
 
@@ -161,7 +157,7 @@ Creates a deferred **PreviewOutput** instance and adds it, instead of a common *
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| profile | [Profile](arkts-camera-camera-profile-i.md) | Yes | Supported preview profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability2). |
+| profile | [Profile](arkts-camera-camera-profile-i.md) | Yes | Supported preview profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability). |
 
 **Return value:**
 
@@ -174,7 +170,6 @@ Creates a deferred **PreviewOutput** instance and adds it, instead of a common *
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 12 - 23 |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error.<br>**Applicable version:** 24 and later |
 
 **Examples**
@@ -216,7 +211,7 @@ Creates a **MetadataOutput** instance. This API returns the result synchronously
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| metadataObjectTypes | Array&lt;[MetadataObjectType](arkts-camera-camera-metadataobjecttype-e.md)&gt; | Yes | Metadata object types, which are obtained through [getSupportedOutputCapability](#getsupportedoutputcapability2). |
+| metadataObjectTypes | Array&lt;[MetadataObjectType](arkts-camera-camera-metadataobjecttype-e.md)&gt; | Yes | Metadata object types, which are obtained through [getSupportedOutputCapability](#getsupportedoutputcapability). |
 
 **Return value:**
 
@@ -249,8 +244,6 @@ function createMetadataOutput(cameraManager: camera.CameraManager, cameraOutputC
 }
 ```
 
-<a id="createphotooutput2"></a>
-
 ## createPhotoOutput
 
 ```TypeScript
@@ -271,7 +264,7 @@ Creates a **PhotoOutput** instance. This API returns the result synchronously.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| profile | [Profile](arkts-camera-camera-profile-i.md) | No | Supported photo profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability2). <br>In API version 11, this parameter is mandatory. Starting from API version 12, it will overwrite the preconfigured parameters passed in through [preconfig](arkts-camera-camera-photosession-i.md#preconfig). |
+| profile | [Profile](arkts-camera-camera-profile-i.md) | No | Supported photo profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability). <br>In API version 11, this parameter is mandatory. Starting from API version 12, it will overwrite the preconfigured parameters passed in through [preconfig](arkts-camera-camera-photosession-i.md#preconfig). |
 
 **Return value:**
 
@@ -305,8 +298,6 @@ function createPhotoOutput(cameraOutputCapability: camera.CameraOutputCapability
 }
 ```
 
-<a id="createphotooutput1"></a>
-
 ## createPhotoOutput
 
 ```TypeScript
@@ -323,7 +314,7 @@ Creates a **PhotoOutput** instance. This API returns the result synchronously.
 
 **Deprecated since:** 11
 
-**Substitutes:** [createPhotoOutput](#createphotooutput2)(profile?: Profile)
+**Substitutes:** [createPhotoOutput](#createphotooutput)(profile?: Profile)
 
 <!--Device-CameraManager-createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput--><!--Device-CameraManager-createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput-End-->
 
@@ -333,7 +324,7 @@ Creates a **PhotoOutput** instance. This API returns the result synchronously.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| profile | [Profile](arkts-camera-camera-profile-i.md) | Yes | Supported photo profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability2). |
+| profile | [Profile](arkts-camera-camera-profile-i.md) | Yes | Supported photo profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability). |
 | surfaceId | string | Yes | Surface ID, which is obtained from [ImageReceiver](../../apis-image-kit/arkts-apis/arkts-image-image-imagereceiver-i.md). |
 
 **Return value:**
@@ -351,8 +342,6 @@ Creates a **PhotoOutput** instance. This API returns the result synchronously.
 **Examples**
 
 See [createPhotoOutput](#createphotooutput)
-
-<a id="createpreviewoutput1"></a>
 
 ## createPreviewOutput
 
@@ -374,7 +363,7 @@ Creates a **PreviewOutput** instance. This API returns the result synchronously.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| profile | [Profile](arkts-camera-camera-profile-i.md) | Yes | Supported preview profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability2). |
+| profile | [Profile](arkts-camera-camera-profile-i.md) | Yes | Supported preview profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability). |
 | surfaceId | string | Yes | Surface ID, which is obtained from XComponent or [ImageReceiver](../../apis-image-kit/arkts-apis/arkts-image-image-imagereceiver-i.md). |
 
 **Return value:**
@@ -408,8 +397,6 @@ function createPreviewOutput(cameraOutputCapability: camera.CameraOutputCapabili
   return previewOutput;
 }
 ```
-
-<a id="createpreviewoutput2"></a>
 
 ## createPreviewOutput
 
@@ -517,8 +504,6 @@ function createSession(cameraManager: camera.CameraManager, mode: camera.SceneMo
 }
 ```
 
-<a id="createvideooutput1"></a>
-
 ## createVideoOutput
 
 ```TypeScript
@@ -531,8 +516,8 @@ In video recording mode, if SDR or HDR VIVID is enabled, the camera format and c
 
 | SDR/HDR Photo Capture | CameraFormat | ColorSpace |  
 |--------------------|--------------------------|------------------|  
-| SDR | [CAMERA_FORMAT_YUV_420_SP](arkts-camera-camera-cameraformat-e.md) | [BT709_LIMIT](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md) |
-| HDR_VIVID | [CAMERA_FORMAT_YCRCB_P010](arkts-camera-camera-cameraformat-e.md)<br>CAMERA_FORMAT_YCBCR_P010 | [BT2020_HLG_LIMIT](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md)<br>BT2020_HLG_FULL |
+| SDR | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT |  
+| HDR_VIVID | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
 
 **Since:** 10
 
@@ -546,7 +531,7 @@ In video recording mode, if SDR or HDR VIVID is enabled, the camera format and c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| profile | [VideoProfile](arkts-camera-camera-videoprofile-i.md) | Yes | Supported video profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability2). |
+| profile | [VideoProfile](arkts-camera-camera-videoprofile-i.md) | Yes | Supported video profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability). |
 | surfaceId | string | Yes | Surface ID, which is obtained from [AVRecorder](../../apis-media/arkts-apis/arkts-media-media-avrecorder-i.md). |
 
 **Return value:**
@@ -580,8 +565,6 @@ function createVideoOutput(cameraOutputCapability: camera.CameraOutputCapability
   return videoOutput;
 }
 ```
-
-<a id="createvideooutput2"></a>
 
 ## createVideoOutput
 
@@ -887,8 +870,6 @@ function getSupportedFullOutputCapability(camera: camera.CameraDevice, cameraMan
 }
 ```
 
-<a id="getsupportedoutputcapability2"></a>
-
 ## getSupportedOutputCapability
 
 ```TypeScript
@@ -927,8 +908,6 @@ function getSupportedOutputCapability(camera: camera.CameraDevice, cameraManager
 }
 ```
 
-<a id="getsupportedoutputcapability1"></a>
-
 ## getSupportedOutputCapability
 
 ```TypeScript
@@ -941,7 +920,7 @@ Obtains the output capability supported by a camera device. This API returns the
 
 **Deprecated since:** 11
 
-**Substitutes:** [getSupportedOutputCapability](#getsupportedoutputcapability2)(camera: CameraDevice, mode: SceneMode)
+**Substitutes:** [getSupportedOutputCapability](#getsupportedoutputcapability)(camera: CameraDevice, mode: SceneMode)
 
 <!--Device-CameraManager-getSupportedOutputCapability(camera: CameraDevice): CameraOutputCapability--><!--Device-CameraManager-getSupportedOutputCapability(camera: CameraDevice): CameraOutputCapability-End-->
 
@@ -1104,7 +1083,6 @@ Checks whether the device supports flashlight brightness control.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 23 - 24 |
 
 **Examples**
 
@@ -1487,7 +1465,6 @@ Sets the torch mode to [ON](arkts-camera-camera-torchmode-e.md#on) with the spec
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 23 - 24 |
 | [7400102](../errorcode-camera.md#7400102-invalid-operation) | Operation not allowed. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error. |
 

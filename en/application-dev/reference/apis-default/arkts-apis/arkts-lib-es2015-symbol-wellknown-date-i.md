@@ -9,8 +9,6 @@ interface Date
 ```TypeScript
 ```
 
-<a id="symboltoprimitive1"></a>
-
 ## [Symbol.toPrimitive]
 
 ```TypeScript
@@ -26,8 +24,6 @@ Converts a Date object to a string.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | hint | "default" | Yes |  |
-
-<a id="symboltoprimitive2"></a>
 
 ## [Symbol.toPrimitive]
 
@@ -45,8 +41,6 @@ Converts a Date object to a string.
 | --- | --- | --- | --- |
 | hint | "string" | Yes |  |
 
-<a id="symboltoprimitive3"></a>
-
 ## [Symbol.toPrimitive]
 
 ```TypeScript
@@ -62,8 +56,6 @@ Converts a Date object to a number.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | hint | "number" | Yes |  |
-
-<a id="symboltoprimitive4"></a>
 
 ## [Symbol.toPrimitive]
 

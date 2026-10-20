@@ -675,6 +675,22 @@ Super user do.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## SUPER_PRIVACY
+
+```TypeScript
+SUPER_PRIVACY = 53
+```
+
+Super privacy mode. Once disabled, the super privacy mode cannot be enabled.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-SUPER_PRIVACY = 53--><!--Device-FeatureForDevice-SUPER_PRIVACY = 53-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## SYSTEM_ROLLBACK
 
 ```TypeScript

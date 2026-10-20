@@ -20,7 +20,9 @@ Defines the IndicatorComponent attribute functions.
 count(totalCount: number)
 ```
 
-Sets the total number of indicator.
+Sets the total number of indicators. When not bound to a **Swiper** component, you can use this API to customize the number of indicators.
+
+When the **Indicator** component is bound to a **Swiper** component, the count is subject to the number of pages in the **Swiper** component.
 
 **Since:** 15
 
@@ -38,7 +40,7 @@ Sets the total number of indicator.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| totalCount | number | Yes |  |
+| totalCount | number | Yes | Total number of navigation dots. The value range is [2, +∞). <br>Default value: 2.<br>If 0, 1, or a negative number is passed in, the default value 2 is used. |
 
 ## initialIndex
 
@@ -46,7 +48,9 @@ Sets the total number of indicator.
 initialIndex(index: number)
 ```
 
-Called when the index value of the displayed subcomponent is set in the container.
+Sets the index value of the current indicator when it first appears. If the value is less than 0 or greater than or equal to the total number of indicators, the default value **0** is used.
+
+This attribute does not take effect when the **Indicator** component is bound to a **Swiper** component.
 
 **Since:** 15
 
@@ -64,7 +68,7 @@ Called when the index value of the displayed subcomponent is set in the containe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes |  |
+| index | number | Yes | Initial index of the navigation indicator when it first appears.<br>Default value: **0** |
 
 ## loop
 
@@ -72,7 +76,9 @@ Called when the index value of the displayed subcomponent is set in the containe
 loop(isLoop: boolean)
 ```
 
-Called when setting whether to turn on cyclic sliding.
+Sets whether to enable looping for the indicators.
+
+This attribute does not take effect when the **Indicator** component is bound to a **Swiper** component.
 
 **Since:** 15
 
@@ -90,7 +96,7 @@ Called when setting whether to turn on cyclic sliding.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isLoop | boolean | Yes |  |
+| isLoop | boolean | Yes | Whether to enable looping. The value **true** means to enable looping, and **false** means the opposite.<br>Default value: **true** |
 
 ## onChange
 
@@ -98,7 +104,7 @@ Called when setting whether to turn on cyclic sliding.
 onChange(event: Callback<number>)
 ```
 
-Called when the index value changes.
+Triggered when the currently selected navigation index changes. The callback provides the new index.
 
 **Since:** 15
 
@@ -116,7 +122,7 @@ Called when the index value changes.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | Callback&lt;number&gt; | Yes |  |
+| event | Callback&lt;number&gt; | Yes | Callback invoked when the index of the currently displayed selected indicator changes. The callback parameter is the index value of the currently selected indicator. |
 
 ## style
 
@@ -150,7 +156,9 @@ Sets the indicator style.
 vertical(isVertical: boolean)
 ```
 
-Called when setting whether to slide vertically.
+Sets whether the indicators are arranged vertically.
+
+This attribute does not take effect when the **Indicator** component is bound to a **Swiper** component.
 
 **Since:** 15
 
@@ -168,4 +176,4 @@ Called when setting whether to slide vertically.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isVertical | boolean | Yes |  |
+| isVertical | boolean | Yes | Whether the indicator is arranged vertically. The value true means vertical arrangement, and false means horizontal arrangement.<br>Default value: false. |

@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="setslotbybundle1"></a>
-
 ## setSlotByBundle
 
 ```TypeScript
@@ -37,8 +35,31 @@ Sets the notification slot for a specified application. This API uses an asynchr
 | slot | [NotificationSlot](arkts-notification-notificationslot-i.md) | Yes | Notification slot. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
+**Examples**
 
-<a id="setslotbybundle2"></a>
+```TypeScript
+import Base from '@ohos.base';
+import NotificationManager from '@ohos.notificationManager';
+
+let setSlotByBundleCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("setSlotByBundle failed " + JSON.stringify(err));
+  } else {
+    console.info("setSlotByBundle success");
+  }
+}
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+let notificationSlot: NotificationManager.NotificationSlot = {
+  type: Notification.SlotType.SOCIAL_COMMUNICATION
+};
+Notification.setSlotByBundle(bundle, notificationSlot, setSlotByBundleCallback);
+```
+
+<!--DelEnd-->
+
 
 ## setSlotByBundle
 
@@ -74,3 +95,25 @@ Sets the notification slot for a specified application. This API uses a promise 
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | the promise returned by the function. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+import NotificationManager from '@ohos.notificationManager';
+
+let bundle: Notification.BundleOption = {
+  bundle: "bundleName1",
+};
+let notificationSlot: NotificationManager.NotificationSlot = {
+  type: Notification.SlotType.SOCIAL_COMMUNICATION
+};
+Notification.setSlotByBundle(bundle, notificationSlot).then(() => {
+  console.info("setSlotByBundle success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`setSlotByBundle failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

@@ -13,7 +13,9 @@ function claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force
     onConflict?: Callback<InterfaceConflictInfo>): void
 ```
 
-独占方式声明USB设备接口。本接口在调用时检查指定的USB接口是否已被其他进程占用，避免声明时发生冲突。设置**force**为**true**时，操作系统会先从内核驱动程序中释放该接口，再将控制权授予调用方应用。独占声明成功后，其他进程仍可通过[usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md)声明同一接口；可使用**onConflict**回调接收此类冲突通知。
+以独占方式声明USB设备接口。本接口在调用时检查其他进程是否已占用指定的USB接口，避免声明时发生冲突。设置**force**为**true**时，操作系统会先从内核驱动程序中释放该接口，再将控制权授予调用方应用。独占声明成功后，其他进程仍可通过[usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md)声明同一接口（即本接口的独占声明不会阻止其他进程的声明行为，与claimInterface声明成功后其他程序无法访问该接口的独占语义不同）；可使用**onConflict**回调接收此类冲突通知。使用完后需调用[releaseInterface](arkts-basicservices-usbmanager-releaseinterface-f.md)释放该接口的控制权。
+
+**使用场景**：适用于需要独占访问USB接口并及时感知其他进程访问冲突的场景（如多进程竞争使用同一USB接口）；若无需感知其他进程的冲突访问，直接使用[usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md)即可。
 
 **起始版本：** 26.0.1
 
@@ -28,9 +30,9 @@ function claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | pipe | [USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md) | 是 | 总线地址和设备地址，通过调用[usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md)获取。 |
-| iface | [USBInterface](arkts-basicservices-usbmanager-usbinterface-i.md) | 是 | 目标USB接口的索引。可以使用[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md)获取设备信息，并根据ID识别USB接口。 |
-| force | boolean | 否 | 是否强制声明USB接口。默认值为**false**，表示不强制声明USB接口。可以根据需要设置该值。<br>默认值：false。 |
-| onConflict | [Callback](arkts-basicservices-base-callback-i.md)&lt;[InterfaceConflictInfo](arkts-basicservices-usbmanager-interfaceconflictinfo-i.md)&gt; | 否 | 回调函数，返回独占声明成功后其他进程通过非互斥的[usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md)接口声明同一USB接口时的冲突信息。如果不指定此参数，则发生此类冲突时不发送通知。<br>默认值：不触发回调。 |
+| iface | [USBInterface](arkts-basicservices-usbmanager-usbinterface-i.md) | 是 | 目标USB接口对象。可以使用[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md)获取设备信息，并根据ID识别USB接口。 |
+| force | boolean | 否 | 是否强制声明USB接口。默认值为**false**，表示不强制声明USB接口。 |
+| onConflict | [Callback](arkts-basicservices-base-callback-i.md)&lt;[InterfaceConflictInfo](arkts-basicservices-usbmanager-interfaceconflictinfo-i.md)&gt; | 否 | 回调函数，返回独占声明成功后其他进程通过非独占的[usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md)接口声明同一USB接口时的冲突信息。如果不指定此参数，则发生此类冲突时不发送通知。 |
 
 **错误码：**
 

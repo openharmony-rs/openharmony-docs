@@ -6,8 +6,6 @@ export interface PopupV2Button
 
 PopupV2Button定义按钮的相关属性和事件。
 
-@typedef PopupV2Button
-
 **起始版本：** 26.0.0
 
 <!--Device-unnamed-export interface PopupV2Button--><!--Device-unnamed-export interface PopupV2Button-End-->

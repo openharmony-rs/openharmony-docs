@@ -4,7 +4,7 @@
 class Query
 ```
 
-Provides methods to create a **Query** object, which defines different data query criteria. A **Query** object supports a maximum of 256 predicates.
+Provides methods to create a **Query** object, which defines different data query criteria. The predicate methods of a **Query** object return the object itself, allowing for chain calls. A **Query** object supports a maximum of 256 predicates.
 
 **Since:** 9
 
@@ -24,7 +24,7 @@ import { distributedKVStore } from '@kit.ArkData';
 and(): Query
 ```
 
-Creates a **Query** object with the AND condition.
+Creates a **Query** object with the AND condition. You need to add query conditions using predicate methods such as **equalTo** and **notEqualTo** before calling **and()** to combine multiple conditions. If there is no predicate method, calling **and()** will be invalid.
 
 **Since:** 9
 
@@ -66,7 +66,7 @@ try {
 beginGroup(): Query
 ```
 
-Creates a **Query** object for a query condition group with a left parenthesis.
+Creates a **Query** object for a query condition group with a left parenthesis. It must be used in conjunction with endGroup() to form a complete query condition group.
 
 **Since:** 9
 
@@ -128,7 +128,9 @@ Creates a **Query** object with the device ID as the key prefix.
 
 > **NOTE:** 
 > 
-> **deviceId** can be obtained by
+> **deviceId** is **networkId** in
+> [DeviceBasicInfo](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicebasicinfo-i.md), which can be
+> obtained by
 > [deviceManager.getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
 > .
 > 
@@ -146,7 +148,7 @@ Creates a **Query** object with the device ID as the key prefix.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the device to be queried. This parameter cannot be left empty. |
+| deviceId | string | Yes | Network ID of the device whose data is to be queried. This parameter cannot be left empty. |
 
 **Return value:**
 
@@ -158,7 +160,7 @@ Creates a **Query** object with the device ID as the key prefix.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -183,7 +185,7 @@ try {
 endGroup(): Query
 ```
 
-Creates a **Query** object for a query condition group with a right parenthesis.
+Creates a **Query** object for a query condition group with a right parenthesis. It must be used in conjunction with beginGroup() to form a complete query condition group.
 
 **Since:** 9
 
@@ -248,7 +250,7 @@ Creates a **Query** object to match the specified field whose value is equal to 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| value | number &#124; string &#124; boolean | Yes | Value specified. |
+| value | number &#124; string &#124; boolean | Yes | Value for the field to match. The value type must be the same as the field type defined in **Schema**. |
 
 **Return value:**
 
@@ -260,7 +262,7 @@ Creates a **Query** object to match the specified field whose value is equal to 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -300,7 +302,7 @@ Obtains the query statement of the **Query** object.
 
 | Type | Description |
 | --- | --- |
-| string | Returns the query statement obtained. |
+| string | Query statement string constructed by the **Query** object, which can be used to view and debug the current query conditions. |
 
 **Examples**
 
@@ -347,8 +349,8 @@ Creates a **Query** object to match the specified field whose value is greater t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| field | string | Yes | Indicates the field, which cannot contain ^. |
-| value | number &#124; string &#124; boolean | Yes | Indicates the value to be compared. |
+| field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
+| value | number &#124; string &#124; boolean | Yes | Value for the field to match. The value type must be the same as the field type defined in **Schema**. |
 
 **Return value:**
 
@@ -360,7 +362,7 @@ Creates a **Query** object to match the specified field whose value is greater t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -409,7 +411,7 @@ Creates a **Query** object to match the specified field whose value is greater t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| value | number &#124; string | Yes | Value specified. |
+| value | number &#124; string | Yes | Value for the field to match. The value type must be the same as the field type defined in **Schema**. |
 
 **Return value:**
 
@@ -421,7 +423,7 @@ Creates a **Query** object to match the specified field whose value is greater t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -482,7 +484,7 @@ Creates a **Query** object to match the specified field whose value is within th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -543,7 +545,7 @@ Creates a **Query** object to match the specified field whose value is within th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -603,7 +605,7 @@ Creates a **Query** object to match the specified field whose value is not **nul
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -663,7 +665,7 @@ Creates a **Query** object to match the specified field whose value is **null**.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -712,7 +714,7 @@ Creates a **Query** object to match the specified field whose value is less than
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| value | number &#124; string | Yes | Value specified. |
+| value | number &#124; string | Yes | Value for the field to match. The value type must be the same as the field type defined in **Schema**. |
 
 **Return value:**
 
@@ -724,7 +726,7 @@ Creates a **Query** object to match the specified field whose value is less than
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -773,7 +775,7 @@ Creates a **Query** object to match the specified field whose value is less than
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| value | number &#124; string | Yes | Value specified. |
+| value | number &#124; string | Yes | Value for the field to match. The value type must be the same as the field type defined in **Schema**. |
 
 **Return value:**
 
@@ -785,7 +787,7 @@ Creates a **Query** object to match the specified field whose value is less than
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -834,7 +836,7 @@ Creates a **Query** object to match the specified field whose value is similar t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| value | string | Yes | String specified. |
+| value | string | Yes | Value for the field to match, which is a string. |
 
 **Return value:**
 
@@ -846,7 +848,7 @@ Creates a **Query** object to match the specified field whose value is similar t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -886,8 +888,8 @@ Creates a **Query** object to specify the number of records of the query result 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| total | number | Yes | Maximum number of results to query. The value must be a non-negative integer.<br>If the value is a negative number, the entire result set is queried. |
-| offset | number | Yes | Start position of the query result. The value must be a non-negative integer.<br>If the value is a negative number, the entire result set is queried.<br>If **offset** exceeds the end of the result set, the query result is empty. |
+| total | number | Yes | Maximum number of data records.<br>If the value is a non-negative integer, it indicates the maximum number of records.<br>If the value is a negative number, the entire result set is queried. |
+| offset | number | Yes | Start position of the query result. If the value is a non-negative integer, it indicates the specified start position. If the value is a negative number, the entire result set is queried. If **offset** exceeds the end of the result set, the query result is empty. |
 
 **Return value:**
 
@@ -899,7 +901,7 @@ Creates a **Query** object to specify the number of records of the query result 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -951,7 +953,7 @@ Creates a **Query** object to match the specified field whose value is not equal
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| value | number &#124; string &#124; boolean | Yes | Value specified. |
+| value | number &#124; string &#124; boolean | Yes | Value for the field to match. The value type must be the same as the field type defined in **Schema**. |
 
 **Return value:**
 
@@ -963,7 +965,7 @@ Creates a **Query** object to match the specified field whose value is not equal
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -1024,7 +1026,7 @@ Creates a **Query** object to match the specified field whose value is not withi
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -1085,7 +1087,7 @@ Creates a **Query** object to match the specified field whose value is not withi
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -1111,7 +1113,7 @@ try {
 or(): Query
 ```
 
-Creates a **Query** object with the OR condition.
+Creates a **Query** object with the OR condition. You need to add query conditions using predicate methods such as **equalTo** and **notEqualTo** before calling **or()** to combine multiple conditions. If there is no predicate method, calling **or()** will be invalid.
 
 **Since:** 9
 
@@ -1187,7 +1189,7 @@ Creates a **Query** object to sort the query results in ascending order.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -1248,7 +1250,7 @@ Creates a **Query** object to sort the query results in descending order.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -1289,7 +1291,7 @@ Creates a **Query** object with a specified key prefix.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| prefix | string | Yes | Key prefix, which cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
+| prefix | string | Yes | Key prefix, which cannot contain '^'. The length range is 0 to MAX_KEY_LENGTH. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
 
 **Return value:**
 
@@ -1301,7 +1303,7 @@ Creates a **Query** object with a specified key prefix.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -1342,7 +1344,7 @@ Resets the **Query** object.
 
 | Type | Description |
 | --- | --- |
-| [Query](arkts-arkdata-distributedkvstore-query-c.md) | **Query** object reset. |
+| [Query](arkts-arkdata-distributedkvstore-query-c.md) | **Query** object, which is reset and all added predicate conditions are cleared. It can be used to reconstruct query conditions. |
 
 **Examples**
 
@@ -1396,7 +1398,7 @@ Creates a **Query** object with an index preferentially used for query.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **Examples**
 
@@ -1446,7 +1448,7 @@ Creates a **Query** object to match the specified field whose value is not simil
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | field | string | Yes | Field to match. It cannot contain '^'. If the value contains '^', the predicate becomes invalid and all data in the KV store will be returned. |
-| value | string | Yes | String specified. |
+| value | string | Yes | Value for the field not to match, which is a string. |
 
 **Return value:**
 
@@ -1458,7 +1460,7 @@ Creates a **Query** object to match the specified field whose value is not simil
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types; <br>3.Parameter verification failed. |
 
 **Examples**
 

@@ -6,8 +6,6 @@ type PublishFormCrossBundleControlCallback = (info: PublishFormCrossBundleInfo) 
 
 publish form cross bundle control callback.
 
-@typedef { function } PublishFormCrossBundleControlCallback
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

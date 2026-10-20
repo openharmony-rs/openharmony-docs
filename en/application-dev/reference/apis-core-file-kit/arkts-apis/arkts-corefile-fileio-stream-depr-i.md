@@ -21,8 +21,6 @@ Provides a stream for file operations. Before calling any API of the **Stream** 
 ```TypeScript
 ```
 
-<a id="close1"></a>
-
 ## close
 
 ```TypeScript
@@ -59,8 +57,6 @@ ss.close().then(() => {
   console.error("close fileStream  failed with error:" + err);
 });
 ```
-
-<a id="close2"></a>
 
 ## close
 
@@ -123,8 +119,6 @@ let ss = fileio.createStreamSync(filePath, "r+");
 ss.closeSync();
 ```
 
-<a id="flush1"></a>
-
 ## flush
 
 ```TypeScript
@@ -161,8 +155,6 @@ ss.flush().then(() => {
   console.error("flush failed with error:" + err);
 });
 ```
-
-<a id="flush2"></a>
 
 ## flush
 
@@ -224,8 +216,6 @@ let filePath = pathDir + "/test.txt";
 let ss = fileio.createStreamSync(filePath, "r+");
 ss.flushSync();
 ```
-
-<a id="read1"></a>
 
 ## read
 
@@ -290,8 +280,6 @@ ss.read(arrayBuffer, option).then((readResult: fileio.ReadOut) => {
   console.error("read data failed with error:" + err);
 });
 ```
-
-<a id="read2"></a>
 
 ## read
 
@@ -367,8 +355,6 @@ ss.read(arrayBuffer, option, (err: BusinessError, readResult: fileio.ReadOut) =>
   }
 });
 ```
-
-<a id="read3"></a>
 
 ## read
 
@@ -486,8 +472,6 @@ let buf = new ArrayBuffer(4096)
 let num = ss.readSync(buf, option);
 ```
 
-<a id="write1"></a>
-
 ## write
 
 ```TypeScript
@@ -549,8 +533,6 @@ ss.write("hello, world", option).then((number: number) => {
   console.error("write failed with error:" + err);
 });
 ```
-
-<a id="write2"></a>
 
 ## write
 
@@ -621,8 +603,6 @@ ss.write("hello, world", option, (err: BusinessError, bytesWritten: number) => {
   }
 });
 ```
-
-<a id="write3"></a>
 
 ## write
 

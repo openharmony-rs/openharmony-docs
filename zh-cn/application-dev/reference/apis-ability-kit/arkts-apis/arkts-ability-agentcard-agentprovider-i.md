@@ -6,8 +6,6 @@ export interface AgentProvider
 
 表示Agent的服务提供商。
 
-@typedef AgentProvider
-
 **起始版本：** 24
 
 <!--Device-unnamed-export interface AgentProvider--><!--Device-unnamed-export interface AgentProvider-End-->

@@ -504,6 +504,22 @@ ThumbnailExtensionAbility: provides extended capabilities for offering thumbnail
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
+## UKEY_AUTH
+
+```TypeScript
+UKEY_AUTH = 40
+```
+
+[UkeyAuthExtensionAbility](../../../reference/apis-device-certificate-kit/js-apis-UkeyAuthExtensionAbility.md): provides developers with the capability to customized UKey authentication page.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ExtensionAbilityType-UKEY_AUTH = 40--><!--Device-ExtensionAbilityType-UKEY_AUTH = 40-End-->
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.Core
+
 ## UNSPECIFIED
 
 ```TypeScript

@@ -12,7 +12,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 function getFileDescriptor(pipe: USBDevicePipe): number
 ```
 
-获取文件描述符。如果USB服务异常，可能返回错误码，注意需要对接口返回值做判空或错误码检查处理。
+获取文件描述符。该接口适用于需要通过文件描述符访问USB设备的场景，获取后可结合文件读写能力与设备进行数据交互。如果USB服务异常，会返回错误码，注意需要对接口返回值做错误码检查处理。
 
 **起始版本：** 9
 
@@ -36,7 +36,7 @@ function getFileDescriptor(pipe: USBDevicePipe): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:  <br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 
 **示例**

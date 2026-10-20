@@ -6,8 +6,6 @@
 import { screen } from '@kit.ArkUI';
 ```
 
-<a id="destroyvirtualscreen1"></a>
-
 ## destroyVirtualScreen
 
 ```TypeScript
@@ -36,7 +34,7 @@ function destroyVirtualScreen(screenId:number, callback: AsyncCallback<void>): v
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400002](../errorcode-display.md#1400002-无权限操作) | Unauthorized operation. |
 
@@ -61,8 +59,6 @@ screen.destroyVirtualScreen(screenId, (err: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="destroyvirtualscreen2"></a>
 
 ## destroyVirtualScreen
 
@@ -97,7 +93,7 @@ function destroyVirtualScreen(screenId:number): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400002](../errorcode-display.md#1400002-无权限操作) | Unauthorized operation. |
 

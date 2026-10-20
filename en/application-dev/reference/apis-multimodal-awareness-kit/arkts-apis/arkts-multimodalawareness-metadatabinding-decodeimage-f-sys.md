@@ -40,7 +40,7 @@ Decodes the information carried in the image. This API uses a promise to return 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [32100001](../errorcode-metadataBinding.md#32100001-file-creation-failed) | Internal handling failed. |
-| [32100003](../errorcode-metadataBinding.md#32100003-decoding-failed) | Decode process fail. Possible causes:<br>1. Image is not an encoded Image. <br>2. Image destroyed, decoding failed. |
+| [32100003](../errorcode-metadataBinding.md#32100003-decoding-failed) | Decode process fail. Possible causes: <br>1. Image is not an encoded Image. <br>2. Image destroyed, decoding failed. |
 
 <!--Del-->
 **Examples**

@@ -6,8 +6,6 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
-<a id="isdlpfile1"></a>
-
 ## isDLPFile
 
 ```TypeScript
@@ -65,8 +63,6 @@ dlpPermission.isDLPFile(file).then((isDLPFile: boolean) => {
 });
 ```
 
-
-<a id="isdlpfile2"></a>
 
 ## isDLPFile
 

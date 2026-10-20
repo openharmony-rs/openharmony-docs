@@ -65,7 +65,7 @@ Obtains the content size.
 
 | Type | Description |
 | --- | --- |
-| [SizeResult](arkts-arkui-common-comp-sizeresult-i.md) | Total size of the scrollable component's content, including the content width and height.<br>Unit: vp |
+| [SizeResult](arkts-arkui-common-comp-sizeresult-i.md) | Total size of the scrollable component's content, including the content width and height. <br>Unit: vp |
 
 **Error codes:**
 
@@ -131,7 +131,7 @@ The scroll component performs inertial scrolling based on the initial velocity p
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Controller not bound to a component. |
 
 ## getFrameNode
@@ -197,7 +197,7 @@ Obtains the index of a child component based on coordinates.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Controller not bound to a component. |
 
 ## getItemRect
@@ -232,13 +232,13 @@ Obtains the size and position of a child component relative to its container.
 
 | Type | Description |
 | --- | --- |
-| [RectResult](arkts-arkui-common-comp-rectresult-i.md) | Size and position of the child component relative to the component.<br>Unit: vp |
+| [RectResult](arkts-arkui-common-comp-rectresult-i.md) | Size and position of the child component relative to the component. <br>Unit: vp |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Controller not bound to a component. |
 
 ## getScrollState
@@ -357,8 +357,8 @@ Scrolls by the specified amount.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| dx | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Amount to scroll by in the horizontal direction. The percentage format is not supported.<br>Value range: (-∞, +∞). |
-| dy | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Amount to scroll by in the vertical direction. The percentage format is not supported.<br>Value range: (-∞, +∞). |
+| dx | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Amount to scroll by in the horizontal direction. The percentage format is not supported. <br>Value range: (-∞, +∞). |
+| dy | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Amount to scroll by in the vertical direction. The percentage format is not supported. <br>Value range: (-∞, +∞). |
 
 ## scrollEdge
 
@@ -385,9 +385,7 @@ By default, the **Scroll** component comes with an animation, while the **Grid**
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [Edge](../arkts-apis/arkts-arkui-edge-e.md) | Yes | Edge position to scroll to. |
-| options | [ScrollEdgeOptions](arkts-arkui-scroll-comp-scrolledgeoptions-i.md) | No | Mode of scrolling to the edge position.<br><em>Atomic service API</em>: This API can be used in atomic services since API version 12.<br>**Since:** 12 |
-
-<a id="scrollpage1"></a>
+| options | [ScrollEdgeOptions](arkts-arkui-scroll-comp-scrolledgeoptions-i.md) | No | Mode of scrolling to the edge position. <br><em>Atomic service API</em>: This API can be used in atomic services since API version 12.<br>**Since:** 12 |
 
 ## scrollPage
 
@@ -413,8 +411,6 @@ Scrolls to the next or previous page.
 | --- | --- | --- | --- |
 | value | [ScrollPageOptions](arkts-arkui-scroll-comp-scrollpageoptions-i.md) | Yes | Paging mode. It contains the **next** (whether to page down) and **animation** (whether to enable the paging animation) fields, which are used to specify the paging behavior.<br>**Since:** 14 |
 
-<a id="scrollpage2"></a>
-
 ## scrollPage
 
 ```TypeScript
@@ -439,7 +435,7 @@ Scrolls to the next or previous page.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | { next: boolean; direction?: Axis } | Yes | next: Whether to turn to the next page. The value<em>true</em> means to scroll to the next page, and <em>false</em> means to scroll to the previous page. direction: Scrolling direction: horizontal or vertical. |
+| value | { next: boolean; direction?: Axis } | Yes | next: Whether to turn to the next page. The value <em>true</em> means to scroll to the next page, and <em>false</em> means to scroll to the previous page. direction: Scrolling direction: horizontal or vertical. |
 
 ## scrollTo
 
@@ -493,7 +489,7 @@ When the smooth animation is enabled, all items passed through are loaded and la
 > 
 > 2. When refreshing the data source in [LazyForEach](arkts-arkui-lazyforeach-comp.md), [ForEach](arkts-arkui-foreach-comp-attribute.md#foreachattribute), or [Repeat](arkts-arkui-repeat-comp.md), ensure that this API is called after the data refresh is complete.
 > 
-> 3. Since API version 11, [contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset1) and [contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset1) are supported in **List**. Since API version 22,contentStartOffsetand contentEndOffsetcan be set in the **Grid** and **WaterFlow** components.
+> 3. Since API version 11, [contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset) and [contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset) are supported in **List**. Since API version 22,contentStartOffsetand contentEndOffsetcan be set in the **Grid** and **WaterFlow** components.
 > 
 > - When **contentStartOffset** is set for the scroll container component and **ScrollAlign** is set to **START**,the head of the specified item is aligned with the **contentStartOffset** position of the scroll container component when scrolling ends.
 > 
@@ -520,7 +516,7 @@ When the smooth animation is enabled, all items passed through are loaded and la
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Index of the item to be scrolled to in the container.<br>**NOTE:** <br>If the value set is a negative value or greater than the maximum index of the items in the container, the value is deemed abnormal, and no scrolling will be performed. |
+| value | number | Yes | Index of the item to be scrolled to in the container. <br>**NOTE:** <br>If the value set is a negative value or greater than the maximum index of the items in the container, the value is deemed abnormal, and no scrolling will be performed. |
 | smooth | boolean | No | Whether to animate scrolling to the index of a list item. The value **true** indicates that animation is used, and **false** indicates that no animation is used. When not passed, no animation is used by default.<br>Default value: **false**.<br>**Since:** 12 |
 | align | [ScrollAlign](arkts-arkui-scroll-comp-scrollalign-e.md) | No | Alignment between the element to scroll to and the current container. You can select the corresponding alignment based on whether the item is expected to be displayed at the start, end, or center.<br>Default value: **ScrollAlign.START** for **List**, **ScrollAlign.AUTO** for **Grid**, and **ScrollAlign.START** for **WaterFlow**.<br>**NOTE:** <br>This parameter is supported only by the **List**, **Grid**, and **WaterFlow** components.<br>**Since:** 12 |
 | options | [ScrollToIndexOptions](arkts-arkui-scroll-comp-scrolltoindexoptions-i.md) | No | Options for scrolling to the specified index, including the **extraOffset** field, which specifies the extra offset after scrolling.<br>When not passed, there is no extra offset.<br><br>**Since:** 12 |

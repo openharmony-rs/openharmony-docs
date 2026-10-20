@@ -23,8 +23,6 @@ interface DeviceKVStore extends KVStore
 ```TypeScript
 ```
 
-<a id="closeresultset1"></a>
-
 ## closeResultSet
 
 ```TypeScript
@@ -68,8 +66,6 @@ try {
     console.error('CloseResultSet e ' + e);
 }
 ```
-
-<a id="closeresultset2"></a>
 
 ## closeResultSet
 
@@ -118,8 +114,6 @@ try {
 }
 ```
 
-<a id="get1"></a>
-
 ## get
 
 ```TypeScript
@@ -163,8 +157,6 @@ try{
     console.error('get e' + e);
 }
 ```
-
-<a id="get2"></a>
 
 ## get
 
@@ -218,8 +210,6 @@ try {
     console.error('Get e ' + e);
 }
 ```
-
-<a id="getentries1"></a>
 
 ## getEntries
 
@@ -277,8 +267,6 @@ try {
     console.error('PutBatch e ' + e);
 }
 ```
-
-<a id="getentries2"></a>
 
 ## getEntries
 
@@ -348,8 +336,6 @@ try {
 }
 ```
 
-<a id="getentries3"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -410,8 +396,6 @@ try {
     console.error('GetEntries e ' + e);
 }
 ```
-
-<a id="getentries4"></a>
 
 ## getEntries
 
@@ -480,8 +464,6 @@ try {
 }
 ```
 
-<a id="getentries5"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -543,8 +525,6 @@ try {
     console.error('GetEntries e ' + e);
 }
 ```
-
-<a id="getentries6"></a>
 
 ## getEntries
 
@@ -615,8 +595,6 @@ try {
 }
 ```
 
-<a id="getresultset1"></a>
-
 ## getResultSet
 
 ```TypeScript
@@ -660,8 +638,6 @@ try {
     console.error('GetResultSet e ' + e);
 }
 ```
-
-<a id="getresultset2"></a>
 
 ## getResultSet
 
@@ -715,8 +691,6 @@ try {
     console.error('GetResultSet e ' + e);
 }
 ```
-
-<a id="getresultset3"></a>
 
 ## getResultSet
 
@@ -778,8 +752,6 @@ try {
     console.error('GetResultSet e ' + e);
 }
 ```
-
-<a id="getresultset4"></a>
 
 ## getResultSet
 
@@ -854,8 +826,6 @@ try {
 }
 ```
 
-<a id="getresultset5"></a>
-
 ## getResultSet
 
 ```TypeScript
@@ -916,8 +886,6 @@ try {
     console.error('GetResultSet e ' + e);
 }
 ```
-
-<a id="getresultset6"></a>
 
 ## getResultSet
 
@@ -994,8 +962,6 @@ try {
 }
 ```
 
-<a id="getresultsize1"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -1051,8 +1017,6 @@ try {
     console.error('GetResultSize e ' + e);
 }
 ```
-
-<a id="getresultsize2"></a>
 
 ## getResultSize
 
@@ -1119,8 +1083,6 @@ try {
 }
 ```
 
-<a id="getresultsize3"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -1176,8 +1138,6 @@ try {
     console.error('GetResultSize e ' + e);
 }
 ```
-
-<a id="getresultsize4"></a>
 
 ## getResultSize
 
@@ -1244,8 +1204,6 @@ try {
 }
 ```
 
-<a id="off1"></a>
-
 ## off
 
 ```TypeScript
@@ -1291,8 +1249,6 @@ class KvstoreModel {
     }
 }
 ```
-
-<a id="off2"></a>
 
 ## off
 
@@ -1340,8 +1296,6 @@ class KvstoreModel {
 }
 ```
 
-<a id="on1"></a>
-
 ## on
 
 ```TypeScript
@@ -1376,8 +1330,6 @@ kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, fun
     console.info("dataChange callback call data: " + JSON.stringify(data));
 });
 ```
-
-<a id="on2"></a>
 
 ## on
 
@@ -1423,8 +1375,6 @@ try {
     console.error('syncComplete put e ' + e);
 }
 ```
-
-<a id="removedevicedata1"></a>
 
 ## removeDeviceData
 
@@ -1476,8 +1426,6 @@ try {
     console.error('RemoveDeviceData e ' + e);
 }
 ```
-
-<a id="removedevicedata2"></a>
 
 ## removeDeviceData
 

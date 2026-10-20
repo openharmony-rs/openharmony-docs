@@ -30,7 +30,7 @@ Creates a temporary directory. This API returns the result synchronously.
 
 | Type | Description |
 | --- | --- |
-| string | Unique directory generated. |
+| string | Unique path generated. |
 
 **Error codes:**
 

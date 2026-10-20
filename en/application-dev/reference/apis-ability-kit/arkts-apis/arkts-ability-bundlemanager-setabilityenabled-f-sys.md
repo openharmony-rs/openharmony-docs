@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="setabilityenabled1"></a>
-
 ## setAbilityEnabled
 
 ```TypeScript
@@ -31,7 +29,7 @@ Enables or disables an ability of an application or an application clone. This A
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | info | [AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md) | Yes | Information about the target ability. |
-| appIndex | number | Yes | Index of the application clone.<br> The value **0** means to enable or disable the ability of the main application. A value greater than 0 means to enable or disable the ability of the application clone. |
+| appIndex | number | Yes | Index of the application clone. <br> The value **0** means to enable or disable the ability of the main application. A value greater than 0 means to enable or disable the ability of the application clone. |
 | isEnabled | boolean | Yes | Whether to enable the application. **true** to enable, **false** otherwise. |
 
 **Return value:**
@@ -88,8 +86,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="setabilityenabled2"></a>
 
 ## setAbilityEnabled
 
@@ -166,8 +162,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="setabilityenabled3"></a>
 
 ## setAbilityEnabled
 

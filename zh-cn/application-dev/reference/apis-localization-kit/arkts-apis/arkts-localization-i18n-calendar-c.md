@@ -457,8 +457,6 @@ calendar.setMinimalDaysInFirstWeek(3);
 let minimalDaysInFirstWeek: number = calendar.getMinimalDaysInFirstWeek(); // minimalDaysInFirstWeek = 3
 ```
 
-<a id="settime1"></a>
-
 ## setTime
 
 ```TypeScript
@@ -490,8 +488,6 @@ let calendar: i18n.Calendar = i18n.getCalendar('en-US', 'gregory');
 let date: Date = new Date(2021, 10, 7, 8, 0, 0); // 时间日期为2021.11.07 08:00:00
 calendar.setTime(date);
 ```
-
-<a id="settime2"></a>
 
 ## setTime
 

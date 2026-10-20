@@ -18,8 +18,6 @@ UDPSocket连接。在调用UDPSocket的方法前，需要先通过[socket.constr
 import { socket } from '@kit.NetworkKit';
 ```
 
-<a id="bind1"></a>
-
 ## bind
 
 ```TypeScript
@@ -40,7 +38,7 @@ bind(address: NetAddress, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | 是 | 本端地址信息，参考[NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress)。 |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | 是 | 本端地址信息，参考[NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress)。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。成功返回空，失败返回错误码、错误信息。 |
 
 **错误码：**
@@ -70,8 +68,6 @@ udp.bind(bindAddr, (err: BusinessError) => {
 });
 ```
 
-<a id="bind2"></a>
-
 ## bind
 
 ```TypeScript
@@ -92,7 +88,7 @@ bind(address: NetAddress): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | 是 | 本端地址信息，参考[NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress)。 |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | 是 | 本端地址信息，参考[NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress)。 |
 
 **返回值：**
 
@@ -124,8 +120,6 @@ udp.bind(bindAddr).then(() => {
   console.error('bind fail');
 });
 ```
-
-<a id="close1"></a>
 
 ## close
 
@@ -170,8 +164,6 @@ udp.close((err: BusinessError) => {
   console.info('close success');
 })
 ```
-
-<a id="close2"></a>
 
 ## close
 
@@ -237,7 +229,7 @@ getLocalAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 以Promise形式返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -281,11 +273,11 @@ getSocketFd(): Promise<number>
 
 > **说明：** 
 > 
-> - [bind](#bind1)方法调用成功后，才可调用此方法。
+> - [bind](#bind)方法调用成功后，才可调用此方法。
 > 
 > - bind异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > 
-> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **起始版本：** 23
 
@@ -330,8 +322,6 @@ udp.bind(bindAddr)
   console.error('bind fail');
 });
 ```
-
-<a id="getstate1"></a>
 
 ## getState
 
@@ -391,8 +381,6 @@ udp.bind(bindAddr, (err: BusinessError) => {
   })
 })
 ```
-
-<a id="getstate2"></a>
 
 ## getState
 
@@ -688,8 +676,6 @@ udp.on('error', (err: BusinessError) => {
 });
 ```
 
-<a id="send1"></a>
-
 ## send
 
 ```TypeScript
@@ -698,7 +684,7 @@ send(options: UDPSendOptions, callback: AsyncCallback<void>): void
 
 通过UDPSocket连接发送数据。使用callback异步回调。
 
-发送数据前，需要先调用[UDPSocket.bind()](#bind1)绑定IP地址和端口。该接口为耗时操作，请在Worker线程或taskpool线程调用该接口。
+发送数据前，需要先调用[UDPSocket.bind()](#bind)绑定IP地址和端口。该接口为耗时操作，请在Worker线程或taskpool线程调用该接口。
 
 **起始版本：** 7
 
@@ -811,8 +797,6 @@ udp.send(sendOptions, (err: BusinessError) => {
 });
 ```
 
-<a id="send2"></a>
-
 ## send
 
 ```TypeScript
@@ -821,7 +805,7 @@ send(options: UDPSendOptions): Promise<void>
 
 通过UDPSocket连接发送数据。使用Promise异步回调。
 
-发送数据前，需要先调用[UDPSocket.bind()](#bind1)绑定IP地址和端口。该接口为耗时操作，请在Worker线程或taskpool线程调用该接口。
+发送数据前，需要先调用[UDPSocket.bind()](#bind)绑定IP地址和端口。该接口为耗时操作，请在Worker线程或taskpool线程调用该接口。
 
 **起始版本：** 7
 
@@ -933,8 +917,6 @@ udp.send(sendOptions).then(() => {
 });
 ```
 
-<a id="setextraoptions1"></a>
-
 ## setExtraOptions
 
 ```TypeScript
@@ -1003,8 +985,6 @@ udp.bind(bindAddr, (err: BusinessError) => {
   })
 })
 ```
-
-<a id="setextraoptions2"></a>
 
 ## setExtraOptions
 

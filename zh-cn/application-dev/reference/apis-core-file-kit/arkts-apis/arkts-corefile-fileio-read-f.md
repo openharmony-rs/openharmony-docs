@@ -46,8 +46,6 @@ declare function read(
 | Promise&lt;[ReadOut](arkts-corefile-fileio-readout-depr-i.md)&gt; | Promise对象。返回读取的结果。 |
 
 
-<a id="read2"></a>
-
 ## read
 
 ```TypeScript
@@ -74,8 +72,6 @@ declare function read(fd: number, buffer: ArrayBuffer, callback: AsyncCallback<R
 | buffer | ArrayBuffer | 是 | 用于保存读取到的文件数据的缓冲区。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ReadOut](arkts-corefile-fileio-readout-depr-i.md)&gt; | 是 | 异步读取数据之后的回调。 |
 
-
-<a id="read3"></a>
 
 ## read
 

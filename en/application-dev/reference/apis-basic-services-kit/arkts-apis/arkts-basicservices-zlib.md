@@ -20,8 +20,8 @@ import { zlib } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [compressFile](arkts-basicservices-zlib-compressfile-f.md#compressfile1) | Compresses a file. This API uses an asynchronous callback to return the result. |
-| [compressFile](arkts-basicservices-zlib-compressfile-f.md#compressfile2) | Compresses a file. This API uses a promise to return the result. |
+| [compressFile](arkts-basicservices-zlib-compressfile-f.md#compressfile) | Compresses a file. This API uses an asynchronous callback to return the result. |
+| [compressFile](arkts-basicservices-zlib-compressfile-f.md#compressfile) | Compresses a file. This API uses a promise to return the result. |
 | [compressFiles](arkts-basicservices-zlib-compressfiles-f.md#compressfiles) | Compresses multiple specified files. This API uses a promise to return the result. |
 | [createChecksum](arkts-basicservices-zlib-createchecksum-f.md#createchecksum) | Creates this checksum object. This API uses a promise to return the result. |
 | [createChecksumSync](arkts-basicservices-zlib-createchecksumsync-f.md#createchecksumsync) | Creates this checksum object. A checksum instance is returned upon a success. |
@@ -29,9 +29,9 @@ import { zlib } from '@kit.BasicServicesKit';
 | [createGZipSync](arkts-basicservices-zlib-creategzipsync-f.md#creategzipsync) | Creates this **GZip** object. A **GZip** instance is returned upon a success. |
 | [createZip](arkts-basicservices-zlib-createzip-f.md#createzip) | Creates this **Zip** instance. This API uses a promise to return the result. |
 | [createZipSync](arkts-basicservices-zlib-createzipsync-f.md#createzipsync) | Creates this **Zip** instance. A **Zip** instance is returned upon a success. |
-| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile1) | Decompresses a file. This API uses an asynchronous callback to return the result. |
-| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile2) | Decompresses a file. This API uses an asynchronous callback to return the result. |
-| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile3) | Decompresses a file. This API uses a promise to return the result. |
+| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile) | Decompresses a file. This API uses an asynchronous callback to return the result. |
+| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile) | Decompresses a file. This API uses an asynchronous callback to return the result. |
+| [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile) | Decompresses a file. This API uses a promise to return the result. |
 | [getOriginalSize](arkts-basicservices-zlib-getoriginalsize-f.md#getoriginalsize) | Obtains the original size of a compressed file. This API uses a promise to return the result. |
 | [unzipFile](arkts-basicservices-zlib-unzipfile-f.md#unzipfile) | Unzips a file. The execution result is returned after the decompression is complete. This API uses a promise to return the result. |
 | [zipFile](arkts-basicservices-zlib-zipfile-f.md#zipfile) | Zips a file. The execution result is returned after the compression is complete. This API uses a promise to return the result. |
@@ -63,13 +63,13 @@ import { zlib } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [CompressFlushMode](arkts-basicservices-zlib-compressflushmode-e.md) | [CompressFlushMode](arkts-basicservices-zlib-compressflushmode-e.md) |
-| [CompressLevel](arkts-basicservices-zlib-compresslevel-e.md) | [CompressLevel](arkts-basicservices-zlib-compresslevel-e.md) |
+| [CompressFlushMode](arkts-basicservices-zlib-compressflushmode-e.md) | CompressFlushMode |
+| [CompressLevel](arkts-basicservices-zlib-compresslevel-e.md) | CompressLevel |
 | [CompressMethod](arkts-basicservices-zlib-compressmethod-e.md) | The deflate compression method (the only one supported in this version). |
-| [CompressStrategy](arkts-basicservices-zlib-compressstrategy-e.md) | [CompressStrategy](arkts-basicservices-zlib-compressstrategy-e.md) |
-| [MemLevel](arkts-basicservices-zlib-memlevel-e.md) | [MemLevel](arkts-basicservices-zlib-memlevel-e.md) |
+| [CompressStrategy](arkts-basicservices-zlib-compressstrategy-e.md) | CompressStrategy |
+| [MemLevel](arkts-basicservices-zlib-memlevel-e.md) | MemLevel |
 | [OffsetReferencePoint](arkts-basicservices-zlib-offsetreferencepoint-e.md) | Defines the reference point for the offset. |
-| [ParallelStrategy](arkts-basicservices-zlib-parallelstrategy-e.md) | [ParallelStrategy](arkts-basicservices-zlib-parallelstrategy-e.md) |
+| [ParallelStrategy](arkts-basicservices-zlib-parallelstrategy-e.md) | ParallelStrategy |
 | [PathSeparatorStrategy](arkts-basicservices-zlib-pathseparatorstrategy-e.md) | Defines **PathSeparatorStrategy**, a property of [Options](arkts-basicservices-zlib-options-i.md), used to specify the separator strategy for the file path in the compressed package specified for decompression. |
 | [ReturnStatus](arkts-basicservices-zlib-returnstatus-e.md) | Return codes for the compression/decompression functions. |
 | [ErrorCode](arkts-basicservices-zlib-errorcode-e.md) | ErrorCode |

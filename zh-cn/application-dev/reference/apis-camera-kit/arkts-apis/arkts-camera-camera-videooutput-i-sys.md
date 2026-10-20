@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 attachMetaSurface(surfaceId: string, type: VideoMetaType): void
 ```
 
-Attach a meta surface to VideoOutput.
+将元数据surface附加到VideoOutput。
 
 **起始版本：** 12
 
@@ -40,8 +40,8 @@ Attach a meta surface to VideoOutput.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| surfaceId | string | 是 | Surface object id used for receiving meta infos. |
-| type | [VideoMetaType](arkts-camera-camera-videometatype-e-sys.md) | 是 | Video meta type. |
+| surfaceId | string | 是 | 用于接收元数据信息的Surface对象id。 |
+| type | [VideoMetaType](arkts-camera-camera-videometatype-e-sys.md) | 是 | 视频元数据类型。 |
 
 **错误码：**
 
@@ -57,7 +57,7 @@ Attach a meta surface to VideoOutput.
 enableAutoDeferredVideoEnhancement(enabled: boolean): void
 ```
 
-Enable auto deferred video enhancement if needed.
+如有需要，启用自动延迟视频增强。
 
 **起始版本：** 13
 
@@ -71,7 +71,7 @@ Enable auto deferred video enhancement if needed.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | Status of auto deferred video enhancement. |
+| enabled | boolean | 是 | 自动延迟视频增强的状态。 |
 
 **错误码：**
 
@@ -87,7 +87,7 @@ Enable auto deferred video enhancement if needed.
 enableAutoVideoFrameRate(enabled: boolean): void
 ```
 
-Enable auto frame rate for video capture.
+启用视频录制的自动帧率。
 
 **起始版本：** 18
 
@@ -101,7 +101,7 @@ Enable auto frame rate for video capture.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | enable auto frame rate if TRUE. |
+| enabled | boolean | 是 | 为TRUE时启用自动帧率。 |
 
 **错误码：**
 
@@ -116,7 +116,7 @@ Enable auto frame rate for video capture.
 getSupportedRotations(): Array<ImageRotation>
 ```
 
-Get supported video rotations.
+获取支持的视频旋转角度。
 
 **起始版本：** 14
 
@@ -130,7 +130,7 @@ Get supported video rotations.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[ImageRotation](arkts-camera-camera-imagerotation-e.md)&gt; | The array of supported video rotations. |
+| Array&lt;[ImageRotation](arkts-camera-camera-imagerotation-e.md)&gt; | 支持的视频旋转角度数组。 |
 
 **错误码：**
 
@@ -144,7 +144,7 @@ Get supported video rotations.
 getSupportedVideoMetaTypes(): Array<VideoMetaType>
 ```
 
-Get supported video meta types.
+获取支持的视频元数据类型。
 
 **起始版本：** 12
 
@@ -158,7 +158,7 @@ Get supported video meta types.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[VideoMetaType](arkts-camera-camera-videometatype-e-sys.md)&gt; | The array of supported video meta type. |
+| Array&lt;[VideoMetaType](arkts-camera-camera-videometatype-e-sys.md)&gt; | 支持的视频元数据类型数组。 |
 
 **错误码：**
 
@@ -173,7 +173,7 @@ Get supported video meta types.
 isAutoDeferredVideoEnhancementEnabled(): boolean
 ```
 
-Confirm if auto deferred video enhancement is enabled.
+确认是否启用了自动延迟视频增强。
 
 **起始版本：** 13
 
@@ -187,7 +187,7 @@ Confirm if auto deferred video enhancement is enabled.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | TRUE if auto deferred video enhancement is enabled. |
+| boolean | 如果启用了自动延迟视频增强，返回TRUE。 |
 
 **错误码：**
 
@@ -202,7 +202,7 @@ Confirm if auto deferred video enhancement is enabled.
 isAutoDeferredVideoEnhancementSupported(): boolean
 ```
 
-Confirm if auto deferred video enhancement is supported in the specific device.
+确认特定设备是否支持自动延迟视频增强。
 
 **起始版本：** 13
 
@@ -216,7 +216,7 @@ Confirm if auto deferred video enhancement is supported in the specific device.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | TRUE if auto deferred video enhancement is supported. |
+| boolean | 如果支持自动延迟视频增强，返回TRUE。 |
 
 **错误码：**
 
@@ -231,7 +231,7 @@ Confirm if auto deferred video enhancement is supported in the specific device.
 isAutoVideoFrameRateSupported(): boolean
 ```
 
-Determine whether auto frame rate is supported.
+判断是否支持自动帧率。
 
 **起始版本：** 18
 
@@ -245,7 +245,7 @@ Determine whether auto frame rate is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Is auto frame rate supported. |
+| boolean | 是否支持自动帧率。 |
 
 **错误码：**
 
@@ -259,7 +259,7 @@ Determine whether auto frame rate is supported.
 isRotationSupported(): boolean
 ```
 
-Determine whether video rotation is supported.
+判断是否支持视频旋转。
 
 **起始版本：** 14
 
@@ -273,7 +273,7 @@ Determine whether video rotation is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Is video rotation supported. |
+| boolean | 是否支持视频旋转。 |
 
 **错误码：**
 
@@ -287,7 +287,7 @@ Determine whether video rotation is supported.
 off(type: 'deferredVideoEnhancementInfo', callback?: AsyncCallback<DeferredVideoEnhancementInfo>): void
 ```
 
-Unsubscribes from deferred video enhancement info callback.
+取消订阅延迟视频增强信息回调。
 
 **起始版本：** 13
 
@@ -301,8 +301,8 @@ Unsubscribes from deferred video enhancement info callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'deferredVideoEnhancementInfo' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DeferredVideoEnhancementInfo](arkts-camera-camera-deferredvideoenhancementinfo-i-sys.md)&gt; | 否 | Callback used to return the result. |
+| type | 'deferredVideoEnhancementInfo' | 是 | 事件类型。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DeferredVideoEnhancementInfo](arkts-camera-camera-deferredvideoenhancementinfo-i-sys.md)&gt; | 否 | 回调函数，用于返回结果。 |
 
 **错误码：**
 
@@ -316,7 +316,7 @@ Unsubscribes from deferred video enhancement info callback.
 on(type: 'deferredVideoEnhancementInfo', callback: AsyncCallback<DeferredVideoEnhancementInfo>): void
 ```
 
-Subscribes deferred video enhancement info callback.
+订阅延迟视频增强信息回调。
 
 **起始版本：** 13
 
@@ -330,8 +330,8 @@ Subscribes deferred video enhancement info callback.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'deferredVideoEnhancementInfo' | 是 | Event type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DeferredVideoEnhancementInfo](arkts-camera-camera-deferredvideoenhancementinfo-i-sys.md)&gt; | 是 | Callback used to return the result. |
+| type | 'deferredVideoEnhancementInfo' | 是 | 事件类型。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DeferredVideoEnhancementInfo](arkts-camera-camera-deferredvideoenhancementinfo-i-sys.md)&gt; | 是 | 回调函数，用于返回结果。 |
 
 **错误码：**
 
@@ -345,7 +345,7 @@ Subscribes deferred video enhancement info callback.
 setRotation(rotation: ImageRotation): void
 ```
 
-Set a video rotation.
+设置视频旋转角度。
 
 **起始版本：** 14
 
@@ -359,7 +359,7 @@ Set a video rotation.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| rotation | [ImageRotation](arkts-camera-camera-imagerotation-e.md) | 是 | The rotation angle. |
+| rotation | [ImageRotation](arkts-camera-camera-imagerotation-e.md) | 是 | 旋转角度。 |
 
 **错误码：**
 

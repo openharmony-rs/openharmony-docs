@@ -32,8 +32,6 @@ EventResult的构造函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-<a id="setgestureeventresult1"></a>
-
 ## setGestureEventResult
 
 ```TypeScript
@@ -59,8 +57,6 @@ setGestureEventResult(result: boolean): void
 **示例**
 
 触摸事件示例代码参考[onNativeEmbedGestureEvent](./arkts-basic-components-web-events.md#onnativeembedgestureevent)。
-
-<a id="setgestureeventresult2"></a>
 
 ## setGestureEventResult
 

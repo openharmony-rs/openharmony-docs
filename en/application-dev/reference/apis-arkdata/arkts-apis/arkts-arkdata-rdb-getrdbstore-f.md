@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getrdbstore1"></a>
-
 ## getRdbStore
 
 ```TypeScript
@@ -34,8 +32,6 @@ Obtains an RDB store. This API uses an asynchronous callback to return the resul
 | version | number | Yes | RDB store version.<br>Currently, automatic RDB upgrades and downgrades performed based on **version** is not supported. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RdbStore](arkts-arkdata-rdb-rdbstore-i.md)&gt; | Yes | Callback used to return the RDB store obtained. |
 
-
-<a id="getrdbstore2"></a>
 
 ## getRdbStore
 

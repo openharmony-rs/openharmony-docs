@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getrdbstore1"></a>
-
 ## getRdbStore
 
 ```TypeScript
@@ -34,8 +32,6 @@ function getRdbStore(context: Context, config: StoreConfig, version: number, cal
 | version | number | 是 | 数据库版本。<br>目前暂不支持通过version自动识别数据库升级降级操作，只能由开发者自行维护。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RdbStore](arkts-arkdata-rdb-rdbstore-i.md)&gt; | 是 | 回调函数。当操作成功，err为undefined，data为RdbStore对象；否则为错误对象。 |
 
-
-<a id="getrdbstore2"></a>
 
 ## getRdbStore
 

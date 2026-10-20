@@ -6,8 +6,6 @@ export interface VignetteSettings
 
 边缘暗角设置。
 
-@typedef VignetteSettings
-
 **起始版本：** 22
 
 <!--Device-unnamed-export interface VignetteSettings--><!--Device-unnamed-export interface VignetteSettings-End-->

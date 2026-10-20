@@ -38,16 +38,20 @@ SecurityUIExtensionComponent(
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [SecurityUIExtensionOptions](arkts-arkui-securityuiextensioncomponent-comp-securityuiextensionoptions-i-sys.md) | 用于构造SecurityUIExtensionComponent时传递参数。 |
 | [SecurityUIExtensionProxy](arkts-arkui-securityuiextensioncomponent-comp-securityuiextensionproxy-i-sys.md) | 用于在双方建立连接成功后，向被拉起的Ability发送数据，以及订阅和取消订阅事件回调。 |
 | [TerminationInfo](arkts-arkui-securityuiextensioncomponent-comp-terminationinfo-i-sys.md) | 用于表示被拉起的UIExtensionAbility正常退出时的返回结果。 |
+<!--DelEnd-->
 
-### 枚举
+<!--Del-->
+### 枚举（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [SecurityDpiFollowStrategy](arkts-arkui-securityuiextensioncomponent-comp-securitydpifollowstrategy-e-sys.md) | 定义SecurityUIExtensionComponent内容分辨率跟随策略的枚举。 |
+<!--DelEnd-->

@@ -4,7 +4,7 @@
 export enum CollaborationValues
 ```
 
-应用协作键值的枚举。
+应用协作相关值的枚举。
 
 **起始版本：** 18
 

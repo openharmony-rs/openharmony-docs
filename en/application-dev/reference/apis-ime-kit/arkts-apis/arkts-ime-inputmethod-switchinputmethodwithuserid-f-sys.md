@@ -12,7 +12,7 @@ import { inputMethod } from '@kit.IMEKit';
 function switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: number): Promise<void>
 ```
 
-Switch input method and subtype of a specified user.
+Switches the input method. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -30,15 +30,15 @@ Switch input method and subtype of a specified user.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleName | string | Yes | indicates the bundle name of the target input method. |
-| subtypeId | string | No | indicates the id of the input method subtype. If the param is not set, switch to the target input method with a default subtype. |
-| userId | number | No | the user ID. If not provided: If the caller is not a user 0 application, the value defaults to the caller's user ID. If the caller is a user 0 application, the value defaults to the foreground user ID of the main screen. |
+| bundleName | string | Yes | Bundle name of the target input method. |
+| subtypeId | string | No | ID of the input method subtype. If this parameter is not set, the system switches to the target input method that uses the default subtype. |
+| userId | number | No | User ID. The value range is the ID of a valid user. If this parameter is not provided: <br> - If the caller is not an application of user 0, this value defaults to the user ID of the caller. <br> - If the caller is an application of user 0, this value defaults to the foreground user ID of the home screen. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

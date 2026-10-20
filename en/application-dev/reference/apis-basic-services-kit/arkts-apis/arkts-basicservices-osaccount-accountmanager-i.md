@@ -18,8 +18,6 @@ Provides APIs for managing OS accounts.
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="checkmultiosaccountenabled1"></a>
-
 ## checkMultiOsAccountEnabled
 
 ```TypeScript
@@ -44,7 +42,7 @@ Checks whether multiple OS accounts are supported. This API uses an asynchronous
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 
 **Examples**
@@ -66,8 +64,6 @@ try {
   console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkmultiosaccountenabled2"></a>
 
 ## checkMultiOsAccountEnabled
 
@@ -113,8 +109,6 @@ try {
 }
 ```
 
-<a id="checkosaccounttestable1"></a>
-
 ## checkOsAccountTestable
 
 ```TypeScript
@@ -141,7 +135,7 @@ Checks whether the current OS account is a test account. This API uses an asynch
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 
 **Examples**
@@ -163,8 +157,6 @@ try {
   console.error(`checkOsAccountTestable code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkosaccounttestable2"></a>
 
 ## checkOsAccountTestable
 
@@ -212,8 +204,6 @@ try {
 }
 ```
 
-<a id="getactivatedosaccountlocalids1"></a>
-
 ## getActivatedOsAccountLocalIds
 
 ```TypeScript
@@ -238,7 +228,7 @@ Obtains information about all activated OS accounts. This API uses an asynchrono
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 
 **Examples**
@@ -263,8 +253,6 @@ try {
   console.error(`getActivatedOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getactivatedosaccountlocalids2"></a>
 
 ## getActivatedOsAccountLocalIds
 
@@ -310,8 +298,6 @@ try {
 }
 ```
 
-<a id="getforegroundosaccountlocalid1"></a>
-
 ## getForegroundOsAccountLocalId
 
 ```TypeScript
@@ -356,8 +342,6 @@ try {
 }
 ```
 
-<a id="getosaccountcount1"></a>
-
 ## getOsAccountCount
 
 ```TypeScript
@@ -385,7 +369,7 @@ Obtains the number of OS accounts created. This API uses an asynchronous callbac
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 
 **Examples**
@@ -407,8 +391,6 @@ try {
   console.error(`getOsAccountCount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountcount2"></a>
 
 ## getOsAccountCount
 
@@ -490,7 +472,7 @@ Obtains the domain account information associated with a specified OS account. T
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | OS account not found. |
 
@@ -513,8 +495,6 @@ accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccoun
   console.error(`getOsAccountDomainInfo err: code is ${err.code}, message is ${err.message}`);
 })
 ```
-
-<a id="getosaccountlocalid1"></a>
 
 ## getOsAccountLocalId
 
@@ -540,7 +520,7 @@ Obtains the ID of the OS account to which the current process belongs. This API 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 
 **Examples**
@@ -562,8 +542,6 @@ try {
   console.error(`getOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountlocalid2"></a>
 
 ## getOsAccountLocalId
 
@@ -609,8 +587,6 @@ try {
 }
 ```
 
-<a id="getosaccountlocalidfordomain1"></a>
-
 ## getOsAccountLocalIdForDomain
 
 ```TypeScript
@@ -639,7 +615,7 @@ Obtains the OS account ID based on the domain account information. This API uses
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid domainInfo. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Domain account not found. |
@@ -664,8 +640,6 @@ try {
   console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountlocalidfordomain2"></a>
 
 ## getOsAccountLocalIdForDomain
 
@@ -700,7 +674,7 @@ Obtains the OS account ID based on the domain account information. This API uses
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid domainInfo. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Domain account not found. |
@@ -723,8 +697,6 @@ try {
   console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountlocalidforserialnumber1"></a>
 
 ## getOsAccountLocalIdForSerialNumber
 
@@ -751,7 +723,7 @@ Obtains the OS account ID based on the SN. This API uses an asynchronous callbac
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid serialNumber. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | The account indicated by serialNumber does not exist. |
@@ -779,8 +751,6 @@ try {
   console.error(`get localId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountlocalidforserialnumber2"></a>
 
 ## getOsAccountLocalIdForSerialNumber
 
@@ -812,7 +782,7 @@ Obtains the OS account ID based on the SN. This API uses a promise to return the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid serialNumber. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | The account indicated by serialNumber does not exist. |
@@ -839,8 +809,6 @@ try {
 }
 ```
 
-<a id="getosaccountlocalidforuid1"></a>
-
 ## getOsAccountLocalIdForUid
 
 ```TypeScript
@@ -866,7 +834,7 @@ Obtains the OS account ID based on the process UID. This API uses an asynchronou
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid uid. |
 
@@ -893,8 +861,6 @@ try {
   console.error(`getOsAccountLocalIdForUid exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountlocalidforuid2"></a>
 
 ## getOsAccountLocalIdForUid
 
@@ -926,7 +892,7 @@ Obtains the OS account ID based on the process UID. This API uses a promise to r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid uid. |
 
@@ -982,7 +948,7 @@ Obtains the OS account ID based on the process UID. The API returns the result s
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid uid. |
 
 **Examples**
@@ -1154,8 +1120,6 @@ try {
 }
 ```
 
-<a id="getosaccounttype1"></a>
-
 ## getOsAccountType
 
 ```TypeScript
@@ -1180,7 +1144,7 @@ Obtains the type of the account to which the current process belongs. This API u
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 
 **Examples**
@@ -1202,8 +1166,6 @@ try {
   console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccounttype2"></a>
 
 ## getOsAccountType
 
@@ -1249,8 +1211,6 @@ try {
 }
 ```
 
-<a id="getserialnumberforosaccountlocalid1"></a>
-
 ## getSerialNumberForOsAccountLocalId
 
 ```TypeScript
@@ -1276,7 +1236,7 @@ Obtains the SN of an OS account based on the account ID. This API uses an asynch
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1304,8 +1264,6 @@ try {
   console.error(`get serialNumber exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getserialnumberforosaccountlocalid2"></a>
 
 ## getSerialNumberForOsAccountLocalId
 
@@ -1337,7 +1295,7 @@ Obtains the SN of an OS account based on the account ID. This API uses a promise
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1363,8 +1321,6 @@ try {
   console.error(`getSerialNumberForOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="isosaccountconstraintenabled1"></a>
 
 ## isOsAccountConstraintEnabled
 
@@ -1396,7 +1352,7 @@ Checks whether a constraint is enabled for the current OS account. This API uses
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 
 **Examples**
@@ -1419,8 +1375,6 @@ try {
   console.error(`isOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="isosaccountunlocked1"></a>
 
 ## isOsAccountUnlocked
 
@@ -1466,8 +1420,6 @@ try {
 }
 ```
 
-<a id="querydistributedvirtualdeviceid1"></a>
-
 ## queryDistributedVirtualDeviceId
 
 ```TypeScript
@@ -1495,7 +1447,7 @@ Queries the ID of a distributed virtual device. This API uses an asynchronous ca
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 
 **Examples**
@@ -1517,8 +1469,6 @@ try {
   console.error(`queryDistributedVirtualDeviceId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="querydistributedvirtualdeviceid2"></a>
 
 ## queryDistributedVirtualDeviceId
 
@@ -1567,8 +1517,6 @@ try {
 }
 ```
 
-<a id="checkosaccountactivated1"></a>
-
 ## checkOsAccountActivated
 
 ```TypeScript
@@ -1604,7 +1552,7 @@ Checks whether an OS account is activated. This API uses an asynchronous callbac
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1632,8 +1580,6 @@ try {
   console.error(`checkOsAccountActivated exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkosaccountactivated2"></a>
 
 ## checkOsAccountActivated
 
@@ -1675,7 +1621,7 @@ Checks whether an OS account is activated. This API uses a promise to return the
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1701,8 +1647,6 @@ try {
   console.error(`checkOsAccountActivated exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkosaccountconstraintenabled1"></a>
 
 ## checkOsAccountConstraintEnabled
 
@@ -1740,7 +1684,7 @@ Checks whether the specified constraint is enabled for an OS account. This API u
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid localId or constraint. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1769,8 +1713,6 @@ try {
   console.error(`checkOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkosaccountconstraintenabled2"></a>
 
 ## checkOsAccountConstraintEnabled
 
@@ -1813,7 +1755,7 @@ Checks whether the specified constraint is enabled for an OS account. This API u
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid localId or constraint. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -1840,8 +1782,6 @@ try {
   console.error(`checkOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkosaccountverified1"></a>
 
 ## checkOsAccountVerified
 
@@ -1898,8 +1838,6 @@ try {
 }
 ```
 
-<a id="checkosaccountverified2"></a>
-
 ## checkOsAccountVerified
 
 ```TypeScript
@@ -1953,8 +1891,6 @@ try {
 }
 ```
 
-<a id="checkosaccountverified3"></a>
-
 ## checkOsAccountVerified
 
 ```TypeScript
@@ -1990,7 +1926,7 @@ Checks whether an OS account has been verified. This API uses an asynchronous ca
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -2016,8 +1952,6 @@ try {
   console.error(`checkOsAccountVerified exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkosaccountverified4"></a>
 
 ## checkOsAccountVerified
 
@@ -2059,7 +1993,7 @@ Checks whether an OS account has been verified. This API uses a promise to retur
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -2083,8 +2017,6 @@ try {
   console.error(`checkOsAccountVerified exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getcreatedosaccountscount1"></a>
 
 ## getCreatedOsAccountsCount
 
@@ -2132,8 +2064,6 @@ accountManager.getCreatedOsAccountsCount((err: BusinessError, count: number)=>{
 });
 ```
 
-<a id="getcreatedosaccountscount2"></a>
-
 ## getCreatedOsAccountsCount
 
 ```TypeScript
@@ -2177,8 +2107,6 @@ accountManager.getCreatedOsAccountsCount().then((count: number) => {
   console.error(`getCreatedOsAccountsCount failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="getcurrentosaccount1"></a>
 
 ## getCurrentOsAccount
 
@@ -2238,8 +2166,6 @@ try {
 }
 ```
 
-<a id="getcurrentosaccount2"></a>
-
 ## getCurrentOsAccount
 
 ```TypeScript
@@ -2296,8 +2222,6 @@ try {
 }
 ```
 
-<a id="getdistributedvirtualdeviceid1"></a>
-
 ## getDistributedVirtualDeviceId
 
 ```TypeScript
@@ -2309,14 +2233,14 @@ Obtains the ID of a distributed virtual device. This API uses an asynchronous ca
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid1)
+> [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid1)(callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid)(callback: AsyncCallback&lt;string&gt;)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC or ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -2344,8 +2268,6 @@ accountManager.getDistributedVirtualDeviceId((err: BusinessError, virtualID: str
   }
 });
 ```
-
-<a id="getdistributedvirtualdeviceid2"></a>
 
 ## getDistributedVirtualDeviceId
 
@@ -2390,8 +2312,6 @@ accountManager.getDistributedVirtualDeviceId().then((virtualID: string) => {
   console.error(`getDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="getosaccountallconstraints1"></a>
 
 ## getOsAccountAllConstraints
 
@@ -2441,8 +2361,6 @@ accountManager.getOsAccountAllConstraints(localId, (err: BusinessError, constrai
   }
 });
 ```
-
-<a id="getosaccountallconstraints2"></a>
 
 ## getOsAccountAllConstraints
 
@@ -2496,8 +2414,6 @@ accountManager.getOsAccountAllConstraints(localId).then((constraints: string[]) 
 });
 ```
 
-<a id="getosaccountconstraints1"></a>
-
 ## getOsAccountConstraints
 
 ```TypeScript
@@ -2533,7 +2449,7 @@ Obtains all constraints enabled for an OS account. This API uses an asynchronous
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -2561,8 +2477,6 @@ try {
   console.error(`getOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountconstraints2"></a>
 
 ## getOsAccountConstraints
 
@@ -2604,7 +2518,7 @@ Obtains all constraints enabled for an OS account. This API uses a promise to re
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -2630,8 +2544,6 @@ try {
   console.error(`getOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountlocalidbyserialnumber1"></a>
 
 ## getOsAccountLocalIdBySerialNumber
 
@@ -2681,8 +2593,6 @@ accountManager.getOsAccountLocalIdBySerialNumber(serialNumber, (err: BusinessErr
   }
 });
 ```
-
-<a id="getosaccountlocalidbyserialnumber2"></a>
 
 ## getOsAccountLocalIdBySerialNumber
 
@@ -2736,8 +2646,6 @@ accountManager.getOsAccountLocalIdBySerialNumber(serialNumber).then((localId: nu
 });
 ```
 
-<a id="getosaccountlocalidfromdomain1"></a>
-
 ## getOsAccountLocalIdFromDomain
 
 ```TypeScript
@@ -2787,8 +2695,6 @@ accountManager.getOsAccountLocalIdFromDomain(domainInfo, (err: BusinessError, lo
 });
 ```
 
-<a id="getosaccountlocalidfromdomain2"></a>
-
 ## getOsAccountLocalIdFromDomain
 
 ```TypeScript
@@ -2800,14 +2706,14 @@ Obtains the OS account ID based on the domain account information. This API uses
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain2)
+> [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain2)(domainInfo: DomainAccountInfo)
+**Substitutes:** [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain)(domainInfo: DomainAccountInfo)
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -2840,8 +2746,6 @@ accountManager.getOsAccountLocalIdFromDomain(domainInfo).then((localId: number) 
   console.error(`getOsAccountLocalIdFromDomain failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="getosaccountlocalidfromprocess1"></a>
 
 ## getOsAccountLocalIdFromProcess
 
@@ -2888,8 +2792,6 @@ accountManager.getOsAccountLocalIdFromProcess((err: BusinessError, localId: numb
 });
 ```
 
-<a id="getosaccountlocalidfromprocess2"></a>
-
 ## getOsAccountLocalIdFromProcess
 
 ```TypeScript
@@ -2931,8 +2833,6 @@ accountManager.getOsAccountLocalIdFromProcess().then((localId: number) => {
   console.error(`getOsAccountLocalIdFromProcess failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="getosaccountlocalidfromuid1"></a>
 
 ## getOsAccountLocalIdFromUid
 
@@ -2982,8 +2882,6 @@ accountManager.getOsAccountLocalIdFromUid(uid, (err: BusinessError, localId: num
   }
 });
 ```
-
-<a id="getosaccountlocalidfromuid2"></a>
 
 ## getOsAccountLocalIdFromUid
 
@@ -3036,8 +2934,6 @@ accountManager.getOsAccountLocalIdFromUid(uid).then((localId: number) => {
 });
 ```
 
-<a id="getosaccounttypefromprocess1"></a>
-
 ## getOsAccountTypeFromProcess
 
 ```TypeScript
@@ -3049,14 +2945,14 @@ Obtains the type of the account to which the current process belongs. This API u
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getOsAccountType](#getosaccounttype1)
+> [getOsAccountType](#getosaccounttype)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getOsAccountType](#getosaccounttype1)(callback: AsyncCallback&lt;OsAccountType&gt;)
+**Substitutes:** [getOsAccountType](#getosaccounttype)(callback: AsyncCallback&lt;OsAccountType&gt;)
 
 <!--Device-AccountManager-getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void--><!--Device-AccountManager-getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void-End-->
 
@@ -3082,8 +2978,6 @@ accountManager.getOsAccountTypeFromProcess((err: BusinessError, accountType: osA
   }
 });
 ```
-
-<a id="getosaccounttypefromprocess2"></a>
 
 ## getOsAccountTypeFromProcess
 
@@ -3126,8 +3020,6 @@ accountManager.getOsAccountTypeFromProcess().then((accountType: osAccount.OsAcco
   console.error(`getOsAccountTypeFromProcess err: code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="getserialnumberbyosaccountlocalid1"></a>
 
 ## getSerialNumberByOsAccountLocalId
 
@@ -3178,8 +3070,6 @@ accountManager.getSerialNumberByOsAccountLocalId(localId, (err: BusinessError, s
   }
 });
 ```
-
-<a id="getserialnumberbyosaccountlocalid2"></a>
 
 ## getSerialNumberByOsAccountLocalId
 
@@ -3234,8 +3124,6 @@ accountManager.getSerialNumberByOsAccountLocalId(localId).then((serialNumber: nu
 });
 ```
 
-<a id="ismultiosaccountenable1"></a>
-
 ## isMultiOsAccountEnable
 
 ```TypeScript
@@ -3247,14 +3135,14 @@ Checks whether multiple OS accounts are supported. This API uses an asynchronous
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkMultiOsAccountEnabled](#checkmultiosaccountenabled1)
+> [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkMultiOsAccountEnabled](#checkmultiosaccountenabled1)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AccountManager-isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void-End-->
 
@@ -3280,8 +3168,6 @@ accountManager.isMultiOsAccountEnable((err: BusinessError, isEnabled: boolean) =
   }
 });
 ```
-
-<a id="ismultiosaccountenable2"></a>
 
 ## isMultiOsAccountEnable
 
@@ -3324,8 +3210,6 @@ accountManager.isMultiOsAccountEnable().then((isEnabled: boolean) => {
   console.error(`isMultiOsAccountEnable failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="isosaccountactived1"></a>
 
 ## isOsAccountActived
 
@@ -3375,8 +3259,6 @@ accountManager.isOsAccountActived(localId, (err: BusinessError, isActived: boole
   }
 });
 ```
-
-<a id="isosaccountactived2"></a>
 
 ## isOsAccountActived
 
@@ -3430,8 +3312,6 @@ accountManager.isOsAccountActived(localId).then((isActived: boolean) => {
 });
 ```
 
-<a id="isosaccountconstraintenable1"></a>
-
 ## isOsAccountConstraintEnable
 
 ```TypeScript
@@ -3482,8 +3362,6 @@ accountManager.isOsAccountConstraintEnable(localId, constraint, (err: BusinessEr
   }
 });
 ```
-
-<a id="isosaccountconstraintenable2"></a>
 
 ## isOsAccountConstraintEnable
 
@@ -3539,8 +3417,6 @@ accountManager.isOsAccountConstraintEnable(localId, constraint).then((isEnabled:
 });
 ```
 
-<a id="isosaccountverified1"></a>
-
 ## isOsAccountVerified
 
 ```TypeScript
@@ -3552,14 +3428,14 @@ Checks whether an OS account has been verified. This API uses an asynchronous ca
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkOsAccountVerified](#checkosaccountverified1)
+> [checkOsAccountVerified](#checkosaccountverified)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkOsAccountVerified](#checkosaccountverified1)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [checkOsAccountVerified](#checkosaccountverified)(callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -3587,8 +3463,6 @@ accountManager.isOsAccountVerified((err: BusinessError, isVerified: boolean) => 
   }
 });
 ```
-
-<a id="isosaccountverified2"></a>
 
 ## isOsAccountVerified
 
@@ -3636,8 +3510,6 @@ accountManager.isOsAccountVerified(localId, (err: BusinessError, isVerified: boo
   }
 });
 ```
-
-<a id="isosaccountverified3"></a>
 
 ## isOsAccountVerified
 
@@ -3687,8 +3559,6 @@ accountManager.isOsAccountVerified().then((isVerified: boolean) => {
 });
 ```
 
-<a id="istestosaccount1"></a>
-
 ## isTestOsAccount
 
 ```TypeScript
@@ -3700,14 +3570,14 @@ Checks whether the current OS account is a test account. This API uses an asynch
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkOsAccountTestable](#checkosaccounttestable1)
+> [checkOsAccountTestable](#checkosaccounttestable)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkOsAccountTestable](#checkosaccounttestable1)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [checkOsAccountTestable](#checkosaccounttestable)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AccountManager-isTestOsAccount(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isTestOsAccount(callback: AsyncCallback<boolean>): void-End-->
 
@@ -3735,8 +3605,6 @@ accountManager.isTestOsAccount((err: BusinessError, isTestable: boolean) => {
   }
 });
 ```
-
-<a id="istestosaccount2"></a>
 
 ## isTestOsAccount
 
@@ -3781,8 +3649,6 @@ let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
     console.error(`isTestOsAccount failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="queryactivatedosaccountids1"></a>
 
 ## queryActivatedOsAccountIds
 
@@ -3832,8 +3698,6 @@ accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[]
 });
 ```
 
-<a id="queryactivatedosaccountids2"></a>
-
 ## queryActivatedOsAccountIds
 
 ```TypeScript
@@ -3875,8 +3739,6 @@ accountManager.queryActivatedOsAccountIds().then((idArray: number[]) => {
   console.error(`queryActivatedOsAccountIds err: code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="querycurrentosaccount1"></a>
 
 ## queryCurrentOsAccount
 
@@ -3921,8 +3783,6 @@ accountManager.queryCurrentOsAccount((err: BusinessError, curAccountInfo: osAcco
   }
 });
 ```
-
-<a id="querycurrentosaccount2"></a>
 
 ## queryCurrentOsAccount
 

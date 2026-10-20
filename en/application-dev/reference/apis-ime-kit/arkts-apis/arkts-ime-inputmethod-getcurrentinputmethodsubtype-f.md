@@ -6,8 +6,6 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="getcurrentinputmethodsubtype1"></a>
-
 ## getCurrentInputMethodSubtype
 
 ```TypeScript

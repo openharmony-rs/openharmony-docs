@@ -170,4 +170,4 @@ Sets the sticky effect of the list item.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Sticky](arkts-arkui-listitem-comp-sticky-e.md) | Yes | Sticky effect of the list item.<br>Default value: **Sticky.None** |
+| value | [Sticky](arkts-arkui-listitem-comp-sticky-e.md) | Yes | Sticky effect of the list item. <br>Default value: **Sticky.None** |

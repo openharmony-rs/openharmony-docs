@@ -6,8 +6,6 @@ declare interface EdgeEffectOptions
 
 edgeEffect属性参数对象。
 
-@interface EdgeEffectOptions
-
 **起始版本：** 12
 
 <!--Device-unnamed-declare interface EdgeEffectOptions--><!--Device-unnamed-declare interface EdgeEffectOptions-End-->

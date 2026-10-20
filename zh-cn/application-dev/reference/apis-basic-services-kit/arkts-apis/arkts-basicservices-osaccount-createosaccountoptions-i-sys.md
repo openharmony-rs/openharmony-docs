@@ -56,6 +56,26 @@ disallowedPreinstalledBundles?: Array<string>
 
 **系统接口：** 此接口为系统接口。
 
+## localId
+
+```TypeScript
+localId?: number
+```
+
+要创建的系统帐户ID。如果不指定该参数，系统将自动分配一个ID。取值限定为整数。
+
+**类型：** number
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CreateOsAccountOptions-localId?: int--><!--Device-CreateOsAccountOptions-localId?: int-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
 ## shortName
 
 ```TypeScript

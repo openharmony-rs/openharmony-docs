@@ -8,18 +8,18 @@ Defines an interpolation curve. For details about the curves and animations, see
 
 | Name | Value| Description |  
 | ------------------- | -- | ------------------------------------------------------------ |  
-| Linear | 0 | The animation speed keeps unchanged. |
-| Ease | 1 | The animation starts at a low speed and then accelerates. It slows down before the animation ends. **cubic-bezier(0.25, 0.1, 0.25, 1.0)**|
-| EaseIn | 2 | The animation starts at a low speed and then picks up speed until the end. The cubic-bezier curve (0.42, 0.0, 1.0, 1.0) is used. |
-| EaseOut | 3 | The animation ends at a low speed. The cubic-bezier curve (0.0, 0.0, 0.58, 1.0) is used. |
-| EaseInOut | 4 | The animation starts and ends at a low speed. The cubic-bezier curve (0.42, 0.0, 0.58, 1.0) is used.|
-| FastOutSlowIn | 5 | The animation uses the standard cubic-bezier curve (0.4, 0.0, 0.2, 1.0). |
-| LinearOutSlowIn | 6 | The animation uses the deceleration cubic-bezier curve (0.0, 0.0, 0.2, 1.0). |
-| FastOutLinearIn | 7 | The animation uses the acceleration cubic-bezier curve (0.4, 0.0, 1.0, 1.0). |
-| ExtremeDeceleration | 8 | The animation uses the extreme deceleration cubic-bezier curve (0.0, 0.0, 0.0, 1.0). |
-| Sharp | 9 | The animation uses the sharp cubic-bezier curve (0.33, 0.0, 0.67, 1.0). |
-| Rhythm | 10 | The animation uses the rhythm cubic-bezier curve (0.7, 0.0, 0.2, 1.0). |
-| Smooth | 11 | The animation uses the smooth cubic-bezier curve (0.4, 0.0, 0.4, 1.0). |
+| Linear | 0 | The animation speed keeps unchanged. |  
+| Ease | 1 | The animation starts at a low speed and then accelerates. It slows down before the animation ends. **cubic-bezier(0.25, 0.1, 0.25, 1.0)**|  
+| EaseIn | 2 | The animation starts at a low speed and then picks up speed until the end. The cubic-bezier curve (0.42, 0.0, 1.0, 1.0) is used. |  
+| EaseOut | 3 | The animation ends at a low speed. The cubic-bezier curve (0.0, 0.0, 0.58, 1.0) is used. |  
+| EaseInOut | 4 | The animation starts and ends at a low speed. The cubic-bezier curve (0.42, 0.0, 0.58, 1.0) is used.|  
+| FastOutSlowIn | 5 | The animation uses the standard cubic-bezier curve (0.4, 0.0, 0.2, 1.0). |  
+| LinearOutSlowIn | 6 | The animation uses the deceleration cubic-bezier curve (0.0, 0.0, 0.2, 1.0). |  
+| FastOutLinearIn | 7 | The animation uses the acceleration cubic-bezier curve (0.4, 0.0, 1.0, 1.0). |  
+| ExtremeDeceleration | 8 | The animation uses the extreme deceleration cubic-bezier curve (0.0, 0.0, 0.0, 1.0). |  
+| Sharp | 9 | The animation uses the sharp cubic-bezier curve (0.33, 0.0, 0.67, 1.0). |  
+| Rhythm | 10 | The animation uses the rhythm cubic-bezier curve (0.7, 0.0, 0.2, 1.0). |  
+| Smooth | 11 | The animation uses the smooth cubic-bezier curve (0.4, 0.0, 0.4, 1.0). |  
 | Friction | 12 | The animation uses the damping cubic-bezier curve (0.2, 0.0, 0.2, 1.0). |
 
 **Since:** 7

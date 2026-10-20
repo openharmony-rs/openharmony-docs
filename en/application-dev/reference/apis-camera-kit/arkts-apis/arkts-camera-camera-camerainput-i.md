@@ -20,8 +20,6 @@ It provides camera device information used in [Session](arkts-camera-camera-sess
 import { camera } from '@kit.CameraKit';
 ```
 
-<a id="close1"></a>
-
 ## close
 
 ```TypeScript
@@ -65,8 +63,6 @@ function closeCameraInput(cameraInput: camera.CameraInput): void {
   });
 }
 ```
-
-<a id="close2"></a>
 
 ## close
 
@@ -130,7 +126,7 @@ Obtains the physical camera orientation in the current fold state of the device.
 
 | Type | Description |
 | --- | --- |
-| number | Physical camera orientation.<br>The value ranges from 0 to 360, in degrees. |
+| number | Physical camera orientation. <br>The value ranges from 0 to 360, in degrees. |
 
 **Examples**
 
@@ -231,7 +227,6 @@ Unsubscribes from **CameraInput** occlusion events. This API uses an asynchronou
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 12 - 22 |
 
 **Examples**
 
@@ -331,7 +326,6 @@ Subscribes to **CameraInput** occlusion events. This API uses an asynchronous ca
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 12 - 22 |
 
 **Examples**
 
@@ -355,8 +349,6 @@ function registerCameraOcclusionDetection(cameraInput: camera.CameraInput): void
   cameraInput.on('cameraOcclusionDetection', callback);
 }
 ```
-
-<a id="open1"></a>
 
 ## open
 
@@ -404,8 +396,6 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
 }
 ```
 
-<a id="open2"></a>
-
 ## open
 
 ```TypeScript
@@ -450,8 +440,6 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   });
 }
 ```
-
-<a id="open3"></a>
 
 ## open
 
@@ -502,8 +490,6 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   });
 }
 ```
-
-<a id="open4"></a>
 
 ## open
 

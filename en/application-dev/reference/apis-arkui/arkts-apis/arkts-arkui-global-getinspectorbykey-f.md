@@ -11,9 +11,9 @@
 export declare function getInspectorByKey(id: string): string
 ```
 
-Obtains all attributes of the component with the specified ID.
+Obtains all attributes of the component with the specified ID, excluding the information about child components.<br>This API is intended for application testing purposes only. It is recommended that you call this API after application startup and layout completion. The API requires significant processing time. Avoid using it.
 
-**Since:** 11
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -33,4 +33,4 @@ Obtains all attributes of the component with the specified ID.
 
 | Type | Description |
 | --- | --- |
-| string |  |
+| string | JSON string of the component attribute list.<br>**Note:** <br>The string information contains the tag and ID of the component, the position information (coordinates relative to the upper left corner of the window), and the attribute information contained in the component (for test inspection). For the meaning of each field in the component, see the return value description of getInspectorInfo. |

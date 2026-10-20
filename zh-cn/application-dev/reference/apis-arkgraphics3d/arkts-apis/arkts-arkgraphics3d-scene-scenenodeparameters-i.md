@@ -6,8 +6,6 @@ export interface SceneNodeParameters
 
 场景节点参数对象，用于提供场景节点层次中的名称和路径。
 
-@typedef SceneNodeParameters
-
 **起始版本：** 12
 
 <!--Device-unnamed-export interface SceneNodeParameters--><!--Device-unnamed-export interface SceneNodeParameters-End-->

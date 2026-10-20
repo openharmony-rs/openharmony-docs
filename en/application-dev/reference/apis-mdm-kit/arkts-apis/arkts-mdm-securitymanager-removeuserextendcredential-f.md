@@ -29,7 +29,7 @@ Removes the extended user credential.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | info | [RemoveCredentialInfo](arkts-mdm-securitymanager-removecredentialinfo-i.md) | Yes | info indicates the the infomation required to remove the credential. |
-| accountId | number | Yes | accountId indicates the ID of OS account.<br>Value range:[0, +∞). |
+| accountId | number | Yes | accountId indicates the ID of OS account. <br>Value range:[0, +∞). |
 
 **Error codes:**
 

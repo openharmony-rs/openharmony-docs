@@ -6,8 +6,6 @@ type QueryMediaEntityEvent = (params: QueryMediaEntityParam) => Promise<PageMedi
 
 The query media entity event.
 
-@typedef { function } QueryMediaEntityEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

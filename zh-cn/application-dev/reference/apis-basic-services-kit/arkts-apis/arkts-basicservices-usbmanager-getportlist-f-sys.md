@@ -37,4 +37,4 @@ function getPortList(): Array<USBPort>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 18+ |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied. Normal application do not have permission to use system api. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
-| [14400004](../errorcode-usb.md#14400004-服务异常) |  |
+| [14400004](../errorcode-usb.md#14400004-服务异常) | Service exception. Possible causes:  <br>1. No accessory is plugged in.<br>**适用版本：** 23+  **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |

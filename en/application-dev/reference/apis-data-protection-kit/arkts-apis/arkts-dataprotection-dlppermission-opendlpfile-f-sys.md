@@ -6,8 +6,6 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
-<a id="opendlpfile1"></a>
-
 ## openDLPFile
 
 ```TypeScript
@@ -34,7 +32,7 @@ When a DLP management application or an authorized application needs to access a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
+| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
 | appId | string | Yes | ID of the caller. The value contains 8 to 1024 bytes. If the value is out of range, error code 401 is thrown. |
 
 **Return value:**
@@ -98,8 +96,6 @@ ExampleFunction();
 <!--DelEnd-->
 
 
-<a id="opendlpfile2"></a>
-
 ## openDLPFile
 
 ```TypeScript
@@ -122,7 +118,7 @@ Opens a DLP file. This API uses an asynchronous callback to return the result. A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
+| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
 | appId | string | Yes | ID of the caller. The value contains 8 to 1024 bytes. If the value is out of range, error code 401 is thrown. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DLPFile](arkts-dataprotection-dlppermission-dlpfile-i-sys.md)&gt; | Yes | Callback used to receive the result of opening a DLP file. The callback parameters include **err** and **res**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object. **res** is a **DLPFile** object that represents the DLP file opened. |
 

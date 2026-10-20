@@ -24,4 +24,4 @@ Checks whether the current device can send and receive SMS messages. This API wo
 
 | Type | Description |
 | --- | --- |
-| boolean | **true**: The device can send and receive SMS messages.<br>- **false**: The device cannot send or receive SMS messages. |
+| boolean | **true**: The device can send and receive SMS messages. <br>- **false**: The device cannot send or receive SMS messages. |

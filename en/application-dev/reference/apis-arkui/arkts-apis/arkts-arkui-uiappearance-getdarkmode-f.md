@@ -26,10 +26,6 @@ Obtains the current system color mode configuration. This API is applicable to s
 
 **Since:** 20
 
-**Required permissions:** 
-- API version 20 and later: N/A
-- API versions 10 to 19: ohos.permission.UPDATE_CONFIGURATION
-
 <!--Device-uiAppearance-function getDarkMode(): DarkMode--><!--Device-uiAppearance-function getDarkMode(): DarkMode-End-->
 
 **System capability:** SystemCapability.ArkUI.UiAppearance
@@ -44,7 +40,6 @@ Obtains the current system color mode configuration. This API is applicable to s
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied.<br>**Applicable version:** 10 - 19 |
 | [500001](../errorcode-uiappearance.md#500001-internal-error) | Internal error. |
 
 **Examples**

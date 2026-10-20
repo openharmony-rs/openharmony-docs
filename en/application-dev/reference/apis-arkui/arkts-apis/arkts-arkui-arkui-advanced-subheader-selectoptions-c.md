@@ -26,10 +26,6 @@ onSelect?: (index: number, value?: string) => void
 
 Callback for when an item is selected in the dropdown menu.
 
-- index: index of the selected item.
-
-- value: value of the selected item.
-
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -44,8 +40,8 @@ Callback for when an item is selected in the dropdown menu.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes |  |
-| value | string | No |  |
+| index | number | Yes |  index of the selected item. |
+| value | string | No |  value of the selected item. |
 
 ## defaultFocus
 
@@ -81,7 +77,7 @@ Default value: **false**
 id?: string
 ```
 
-Dropdown button ID. Set this parameter when an ID needs to be set for the dropdown button. When omitted, this parameter is not set. indicating that no dropdown button ID is set. Default value: **undefined**.
+Dropdown button ID. Set this parameter when an ID needs to be set for the dropdown button. When omitted, this parameter is not set. Default value: **undefined**, indicating that no dropdown button ID is set.
 
 **Type:** string
 

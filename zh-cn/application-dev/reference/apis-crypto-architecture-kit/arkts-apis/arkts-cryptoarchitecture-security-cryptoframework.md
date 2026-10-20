@@ -4,6 +4,10 @@
 
 **起始版本：** 9
 
+**模型约束：** 
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace cryptoFramework--><!--Device-unnamed-declare namespace cryptoFramework-End-->
 
 **系统能力：** SystemCapability.Security.CryptoFramework
@@ -26,8 +30,8 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | [createKdf](arkts-cryptoarchitecture-cryptoframework-createkdf-f.md#createkdf) | 创建密钥派生函数实例。 |
 | [createKem](arkts-cryptoarchitecture-cryptoframework-createkem-f.md#createkem) | 创建一个用于密钥封装和解封装操作的Kem实例。 |
 | [createKeyAgreement](arkts-cryptoarchitecture-cryptoframework-createkeyagreement-f.md#createkeyagreement) | 创建密钥协商实例。 |
-| [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac1) | 创建消息认证码实例。 |
-| [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac2) | 创建消息认证码实例。 |
+| [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac) | 创建消息认证码实例。 |
+| [createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac) | 创建消息认证码实例。 |
 | [createMd](arkts-cryptoarchitecture-cryptoframework-createmd-f.md#createmd) | 创建消息摘要实例。 |
 | [createRandom](arkts-cryptoarchitecture-cryptoframework-createrandom-f.md#createrandom) | 创建随机数实例。 |
 | [createSign](arkts-cryptoarchitecture-cryptoframework-createsign-f.md#createsign) | 创建签名实例。 |
@@ -52,7 +56,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | [AsyKeyGeneratorBySpec](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md) | 指定密钥规格的非对称密钥生成器接口，定义根据指定密钥规格生成非对称密钥的方法。调用前，需通过[createAsyKeyGeneratorBySpec](arkts-cryptoarchitecture-cryptoframework-createasykeygeneratorbyspec-f.md)方法创建一个AsyKeyGeneratorBySpec实例。 |
 | [AsyKeySpec](arkts-cryptoarchitecture-cryptoframework-asykeyspec-i.md) | 指定非对称密钥参数的基本接口，用于创建密钥生成器。在指定非对称密钥参数时需要构造其子类对象，并将子类对象传入[createAsyKeyGeneratorBySpec()](arkts-cryptoarchitecture-cryptoframework-createasykeygeneratorbyspec-f.md)方法创建密钥生成器。构造子类对象时，除了RSA密钥采用小端写法外，其他bigint类型的密钥参数均采用大端写法，并使用正数。 |
 | [CcmParamsSpec](arkts-cryptoarchitecture-cryptoframework-ccmparamsspec-i.md) | 加解密参数[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)的子类，封装使用CCM AEAD模式进行加密或解密的参数，需要IV、AAD和认证标签。它是[ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)的子类，用于在对称加解密时作为[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)方法的参数。 |
-| [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) | 加解密接口，定义对称加解密和非对称加解密方法。调用前，需通过[createCipher(transformation: string): Cipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md)方法创建一个Cipher实例。按序调用Cipher实例中的[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)、[update()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update1)、[doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal)方法完成加解密操作。 |
+| [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md) | 加解密接口，定义对称加解密和非对称加解密方法。调用前，需通过[createCipher(transformation: string): Cipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md)方法创建一个Cipher实例。按序调用Cipher实例中的[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)、[update()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#update)、[doFinal()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#dofinal)方法完成加解密操作。 |
 | [CmacSpec](arkts-cryptoarchitecture-cryptoframework-cmacspec-i.md) | 消息认证码参数[MacSpec](arkts-cryptoarchitecture-cryptoframework-macspec-i.md)的子类，作为CMAC计算的输入。 |
 | [DataBlob](arkts-cryptoarchitecture-cryptoframework-datablob-i.md) | 二进制数据的封装接口，核心字段data为Uint8Array类型。 |
 | [DHCommonParamsSpec](arkts-cryptoarchitecture-cryptoframework-dhcommonparamsspec-i.md) | 密钥参数[AsyKeySpec](arkts-cryptoarchitecture-cryptoframework-asykeyspec-i.md)的子类，用于指定DH算法中公私钥包含的公共参数。 |
@@ -84,7 +88,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | [KeyAgreement](arkts-cryptoarchitecture-cryptoframework-keyagreement-i.md) | 密钥协商接口，定义基于非对称密钥对生成共享密钥的方法。调用前，需通过[createKeyAgreement(algName: string): KeyAgreement](arkts-cryptoarchitecture-cryptoframework-createkeyagreement-f.md)方法创建一个KeyAgreement实例。 |
 | [KeyEncodingConfig](arkts-cryptoarchitecture-cryptoframework-keyencodingconfig-i.md) | RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数，生成指定算法、密码的编码后的私钥字符串。 |
 | [KeyPair](arkts-cryptoarchitecture-cryptoframework-keypair-i.md) | 非对称密钥对包含公钥和私钥。 |
-| [Mac](arkts-cryptoarchitecture-cryptoframework-mac-i.md) | 消息认证码接口，定义基于对称密钥计算消息认证码的方法。调用前，需通过[createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac1)方法创建一个Mac实例。 |
+| [Mac](arkts-cryptoarchitecture-cryptoframework-mac-i.md) | 消息认证码接口，定义基于对称密钥计算消息认证码的方法。调用前，需通过[createMac](arkts-cryptoarchitecture-cryptoframework-createmac-f.md#createmac)方法创建一个Mac实例。 |
 | [MacSpec](arkts-cryptoarchitecture-cryptoframework-macspec-i.md) | 消息认证码参数，计算HMAC或CMAC时，需要构建子类对象并作为输入参数。 |
 | [Md](arkts-cryptoarchitecture-cryptoframework-md-i.md) | 消息摘要接口，定义计算消息摘要的方法。调用前，需通过[createMd](arkts-cryptoarchitecture-cryptoframework-createmd-f.md)方法创建一个Md实例。 |
 | [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) | 加解密参数，在进行对称加解密时需要构造其子类对象，并将子类对象传入[init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init)方法。 |

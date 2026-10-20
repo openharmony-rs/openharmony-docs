@@ -4,6 +4,8 @@ Provides methods to accessing bluetooth PAN(Personal Area Networking Profile)-re
 
 **Since:** 10
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace pan--><!--Device-unnamed-declare namespace pan-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

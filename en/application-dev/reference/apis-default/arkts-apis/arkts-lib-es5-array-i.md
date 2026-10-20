@@ -9,8 +9,6 @@ interface Array<T>
 ```TypeScript
 ```
 
-<a id="concat1"></a>
-
 ## concat
 
 ```TypeScript
@@ -27,8 +25,6 @@ Combines two or more arrays. This method returns a new array without modifying a
 | --- | --- | --- | --- |
 | items | ConcatArray&lt;T&gt;[] | Yes |  |
 
-<a id="concat2"></a>
-
 ## concat
 
 ```TypeScript
@@ -44,8 +40,6 @@ Combines two or more arrays. This method returns a new array without modifying a
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | items | (T &#124; ConcatArray&lt;T&gt;)[] | Yes |  |
-
-<a id="every1"></a>
 
 ## every
 
@@ -66,8 +60,6 @@ Determines whether all the members of an array satisfy the specified test.
 | predicate | (value: T, index: number, array: T[]) =&gt; value is S | Yes |  |
 | thisArg | any | No |  |
 
-<a id="every2"></a>
-
 ## every
 
 ```TypeScript
@@ -87,8 +79,6 @@ Determines whether all the members of an array satisfy the specified test.
 | predicate | (value: T, index: number, array: T[]) =&gt; unknown | Yes |  |
 | thisArg | any | No |  |
 
-<a id="filter1"></a>
-
 ## filter
 
 ```TypeScript
@@ -105,8 +95,6 @@ Returns the elements of an array that meet the condition specified in a callback
 | --- | --- | --- | --- |
 | predicate | (value: T, index: number, array: T[]) =&gt; value is S | Yes |  |
 | thisArg | any | No |  |
-
-<a id="filter2"></a>
 
 ## filter
 
@@ -235,8 +223,6 @@ Appends new elements to the end of an array, and returns the new length of the a
 | --- | --- | --- | --- |
 | items | T[] | Yes |  |
 
-<a id="reduce1"></a>
-
 ## reduce
 
 ```TypeScript
@@ -253,8 +239,6 @@ Calls the specified callback function for all the elements in an array. The retu
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: T, currentValue: T, currentIndex: number, array: T[]) =&gt; T | Yes |  |
 
-<a id="reduce2"></a>
-
 ## reduce
 
 ```TypeScript
@@ -267,8 +251,6 @@ reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, arr
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: T, currentValue: T, currentIndex: number, array: T[]) =&gt; T | Yes |  |
 | initialValue | T | Yes |  |
-
-<a id="reduce3"></a>
 
 ## reduce
 
@@ -287,8 +269,6 @@ Calls the specified callback function for all the elements in an array. The retu
 | callbackfn | (previousValue: U, currentValue: T, currentIndex: number, array: T[]) =&gt; U | Yes |  |
 | initialValue | U | Yes |  |
 
-<a id="reduceright1"></a>
-
 ## reduceRight
 
 ```TypeScript
@@ -305,8 +285,6 @@ Calls the specified callback function for all the elements in an array, in desce
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: T, currentValue: T, currentIndex: number, array: T[]) =&gt; T | Yes |  |
 
-<a id="reduceright2"></a>
-
 ## reduceRight
 
 ```TypeScript
@@ -319,8 +297,6 @@ reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: T, currentValue: T, currentIndex: number, array: T[]) =&gt; T | Yes |  |
 | initialValue | T | Yes |  |
-
-<a id="reduceright3"></a>
 
 ## reduceRight
 
@@ -409,8 +385,6 @@ Sorts an array in place. This method mutates the array and returns a reference t
 | --- | --- | --- | --- |
 | compareFn | (a: T, b: T) =&gt; number | No |  |
 
-<a id="splice1"></a>
-
 ## splice
 
 ```TypeScript
@@ -433,8 +407,6 @@ Removes elements from an array and, if necessary, inserts new elements in their 
 | Type | Description |
 | --- | --- |
 | T[] | An array containing the elements that were deleted. |
-
-<a id="splice2"></a>
 
 ## splice
 

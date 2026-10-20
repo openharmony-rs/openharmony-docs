@@ -4,6 +4,8 @@ appMemoryOptimizer provides application memory optimization capabilities, includ
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace appMemoryOptimizer--><!--Device-unnamed-declare namespace appMemoryOptimizer-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

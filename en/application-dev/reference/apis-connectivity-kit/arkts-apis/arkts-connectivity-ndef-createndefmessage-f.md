@@ -6,8 +6,6 @@
 import { tag } from '@kit.ConnectivityKit';
 ```
 
-<a id="createndefmessage1"></a>
-
 ## createNdefMessage
 
 ```TypeScript
@@ -40,10 +38,8 @@ Creates an NDEF message from raw byte data. The data must comply with the NDEF r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
-
-<a id="createndefmessage2"></a>
 
 ## createNdefMessage
 
@@ -77,4 +73,4 @@ Creates an NDEF message from the NDEF records list.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The parameter check failed. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |

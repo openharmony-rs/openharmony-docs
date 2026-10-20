@@ -28,8 +28,8 @@ Sets the list of applications controlled by enterprise DLP. This API uses a prom
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appLists | Array&lt;string&gt; | Yes | List of application identifiers of the controlled applications.<br>The maximum length of the array is 100. If the length exceeds 100, error code 19100001 is returned. <br>Each element in the array is the appIdentifier of the application. The maximum length of a single application identifier is 4096 bytes. If the length exceeds 4096 bytes, error code 19100001 is returned. |
-| userId | number | No | ID of the user for whom the controlled application is configured. If this parameter is not specified, the current user is used by default.<br>The value should be an integer. |
+| appLists | Array&lt;string&gt; | Yes | List of application identifiers of the controlled applications. <br>The maximum length of the array is 100. If the length exceeds 100, error code 19100001 is returned. <br>Each element in the array is the appIdentifier of the application. The maximum length of a single application identifier is 4096 bytes. If the length exceeds 4096 bytes, error code 19100001 is returned. |
+| userId | number | No | ID of the user for whom the controlled application is configured. If this parameter is not specified, the current user is used by default. <br>The value should be an integer. |
 
 **Return value:**
 

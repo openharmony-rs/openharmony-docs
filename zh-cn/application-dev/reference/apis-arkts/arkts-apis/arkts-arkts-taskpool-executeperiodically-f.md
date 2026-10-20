@@ -6,8 +6,6 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
-<a id="executeperiodically1"></a>
-
 ## executePeriodically
 
 ```TypeScript
@@ -89,8 +87,6 @@ function taskpoolTest() {
 taskpoolTest();
 ```
 
-
-<a id="executeperiodically2"></a>
 
 ## executePeriodically
 

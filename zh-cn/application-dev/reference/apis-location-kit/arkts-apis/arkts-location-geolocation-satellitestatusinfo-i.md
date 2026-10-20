@@ -6,8 +6,6 @@ export interface SatelliteStatusInfo
 
 卫星状态信息。
 
-@interface SatelliteStatusInfo
-
 **起始版本：** 8
 
 **废弃版本：** 9

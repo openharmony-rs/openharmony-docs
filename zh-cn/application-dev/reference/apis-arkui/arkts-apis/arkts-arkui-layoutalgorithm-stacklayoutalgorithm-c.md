@@ -4,7 +4,7 @@
 export class StackLayoutAlgorithm implements LayoutAlgorithm
 ```
 
-堆叠布局算法类。
+堆叠布局算法类，用于实现子组件的堆叠排列。适用于需要子组件重叠显示的场景，如图层叠加、悬浮按钮、带背景的内容区域、卡片叠加效果等。支持设置子组件在堆叠容器中的对齐方式，提供类似Stack组件的布局能力。
 
 > **说明：** 
 > 

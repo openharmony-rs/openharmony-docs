@@ -108,7 +108,7 @@ devAddress: number
 manufacturerName: string
 ```
 
-产商信息。
+厂商信息。
 
 **类型：** string
 

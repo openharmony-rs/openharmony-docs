@@ -59,3 +59,23 @@ The execute mode of the intent. For UIAbility, the parameter can be set to insig
 <!--Device-EntryIntentDecoratorInfo-executeMode?: insightIntent.ExecuteMode[]--><!--Device-EntryIntentDecoratorInfo-executeMode?: insightIntent.ExecuteMode[]-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## permissions
+
+```TypeScript
+permissions?: string[]
+```
+
+表示该意图所需的权限。
+
+**类型：** string[]
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-EntryIntentDecoratorInfo-permissions?: string[]--><!--Device-EntryIntentDecoratorInfo-permissions?: string[]-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core

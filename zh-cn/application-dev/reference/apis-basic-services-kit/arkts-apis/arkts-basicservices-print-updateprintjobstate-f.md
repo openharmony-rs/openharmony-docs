@@ -6,8 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="updateprintjobstate1"></a>
-
 ## updatePrintJobState
 
 ```TypeScript
@@ -21,7 +19,7 @@ function updatePrintJobState(jobId: string, state: PrintJobState, subState: Prin
 
 **需要权限：** 
 - API版本24+：ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
-- API版本10-23：ohos.permission.MANAGE_PRINT_JOB
+- API版本10-23：N/A
 
 <!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState,    callback: AsyncCallback<void>): void--><!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState,    callback: AsyncCallback<void>): void-End-->
 
@@ -41,7 +39,6 @@ function updatePrintJobState(jobId: string, state: PrintJobState, subState: Prin
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application<br>**适用版本：** 10 - 23 |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**
@@ -64,8 +61,6 @@ print.updatePrintJobState(jobId, state, subState, (error: BusinessError) => {
 ```
 
 
-<a id="updateprintjobstate2"></a>
-
 ## updatePrintJobState
 
 ```TypeScript
@@ -78,7 +73,7 @@ function updatePrintJobState(jobId: string, state: PrintJobState, subState: Prin
 
 **需要权限：** 
 - API版本24+：ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
-- API版本10-23：ohos.permission.MANAGE_PRINT_JOB
+- API版本10-23：N/A
 
 <!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState): Promise<void>--><!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState): Promise<void>-End-->
 
@@ -103,7 +98,6 @@ function updatePrintJobState(jobId: string, state: PrintJobState, subState: Prin
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application<br>**适用版本：** 10 - 23 |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例**

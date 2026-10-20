@@ -6,7 +6,7 @@ declare class OffscreenCanvas
 
 The **OffscreenCanvas** component is used to draw custom graphics.
 
-When the [Canvas](arkts-arkui-canvas-comp.md) component or **CanvasRenderingContext2D** object is used, rendering, animation, and user interaction usually occur on the main thread of the application. Calculations related to canvas animation and rendering may affect application performance. **OffscreenCanvas** allows for rendering off the screen. This means that some tasks can be run in a separate thread to reduce the load on the main thread.
+When the [Canvas](arkts-arkui-canvas-comp.md#canvas) component or **CanvasRenderingContext2D** object is used, rendering, animation, and user interaction usually occur on the main thread of the application. Calculations related to canvas animation and rendering may affect application performance. **OffscreenCanvas** allows for rendering off the screen. This means that some tasks can be run in a separate thread to reduce the load on the main thread.
 
 > **NOTE:** 
 > 
@@ -18,15 +18,11 @@ When the [Canvas](arkts-arkui-canvas-comp.md) component or **CanvasRenderingCont
 
 Not supported.
 
-@extends CanvasRenderer [since 8 - 10]
-
 **Since:** 8
 
 <!--Device-unnamed-declare class OffscreenCanvas--><!--Device-unnamed-declare class OffscreenCanvas-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-<a id="constructor1"></a>
 
 ## constructor
 
@@ -52,10 +48,8 @@ Constructs an **OffscreenCanvas** object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| width | number | Yes | Width of the **OffscreenCanvas** component.<br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0. <br>Unit: vp. |
-| height | number | Yes | Height of the **OffscreenCanvas** component.<br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0. <br>Unit: vp. |
-
-<a id="constructor2"></a>
+| width | number | Yes | Width of the **OffscreenCanvas** component. <br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0. <br>Unit: vp. |
+| height | number | Yes | Height of the **OffscreenCanvas** component. <br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0. <br>Unit: vp. |
 
 ## constructor
 
@@ -81,8 +75,8 @@ Creates an **OffscreenCanvas** object, with support for configuring the unit mod
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| width | number | Yes | Width of the **OffscreenCanvas** component.<br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0. <br>The unit is determined by the unit parameter. Default unit: vp. |
-| height | number | Yes | Height of the **OffscreenCanvas** component.<br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0. <br>The unit is determined by the unit parameter. Default unit: vp. |
+| width | number | Yes | Width of the **OffscreenCanvas** component. <br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0. <br>The unit is determined by the unit parameter. Default unit: vp. |
+| height | number | Yes | Height of the **OffscreenCanvas** component. <br>Abnormal values **NaN** and **Infinity** are treated as invalid values, and negative numbers are treated as 0. <br>The unit is determined by the unit parameter. Default unit: vp. |
 | unit | LengthMetricsUnit | Yes | Unit mode of the **OffscreenCanvas** object. Once configured, it cannot be changed dynamically. The configuration method is the same as that of [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md). Optional values: **DEFAULT** (default unit mode, which uses vp as the unit and automatically adapts based on the screen density) and PX (px pixel unit, which is suitable for scenarios requiring precise pixel control, where the width and height values are calculated based on physical pixels). <br>Abnormal values **NaN** and **Infinity** are treated as the default value. <br>Default value: **DEFAULT**. |
 
 ## getContext
@@ -115,7 +109,7 @@ Obtains the drawing context of the offscreen canvas.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| contextType | "2d" | Yes | Type of the drawing context of the **OffscreenCanvas** component. Currently, only the "2d" type is supported.<br>"2d": Creates an **OffscreenCanvasRenderingContext2D** object that represents a 2D rendering context. <br>The abnormal values **undefined** and **null** are treated as invalid values, and the API returns **undefined**. |
+| contextType | "2d" | Yes | Type of the drawing context of the **OffscreenCanvas** component. Currently, only the "2d" type is supported. <br>"2d": Creates an **OffscreenCanvasRenderingContext2D** object that represents a 2D rendering context. <br>The abnormal values **undefined** and **null** are treated as invalid values, and the API returns **undefined**. |
 | options | [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md) | No | Parameters used to configure the **OffscreenCanvasRenderingContext2D** object. See [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md). This parameter is passed when custom rendering context settings (such as enabling antialiasing) are required. If not passed, the default settings are used (**antialias** defaults to **false**). <br>The abnormal values **undefined** and **null** are treated as the default values of [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md). <br>Default value: **null**. |
 
 **Return value:**

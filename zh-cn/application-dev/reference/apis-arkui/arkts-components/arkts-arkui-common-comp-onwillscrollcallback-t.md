@@ -7,8 +7,6 @@ declare type OnWillScrollCallback =
 
 Called before scroll to allow developer to control real offset the Scrollable can scroll.
 
-@typedef { function } OnWillScrollCallback
-
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。

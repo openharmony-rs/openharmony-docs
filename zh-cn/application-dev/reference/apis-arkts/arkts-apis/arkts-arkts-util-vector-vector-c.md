@@ -281,7 +281,7 @@ forEach(callbackFn: (value: T, index?: number, vector?: Vector<T>) => void, this
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, vector?: Vector&lt;T&gt;) =&gt; void | 是 | 回调函数，用于遍历Vector中的每个元素。 |
+| callbackFn | (value: T, index?: number, vector?: Vector&lt;T&gt;) =&gt; void | 是 | 回调函数，用于遍历Vector中的每个元素。回调函数依次接收value、index和vector参数，分别表示当前元素的值、元素下标和当前调用forEach方法的Vector实例。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **示例**
@@ -883,7 +883,7 @@ replaceAllElements(callbackFn: (value: T, index?: number, vector?: Vector<T>) =>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callbackFn | (value: T, index?: number, vector?: Vector&lt;T&gt;) =&gt; T | 是 | 回调函数，用于操作Vector中的元素，并用操作后的结果替换原元素。 |
+| callbackFn | (value: T, index?: number, vector?: Vector&lt;T&gt;) =&gt; T | 是 | 回调函数，用于操作Vector中的元素，并用操作后的结果替换原元素。回调函数依次接收value、index和vector参数，分别表示当前元素的值、元素下标和当前调用replaceAllElements方法的Vector实例。 |
 | thisArg | Object | 否 | callbackFn被调用时用作this值，默认值为当前实例对象。 |
 
 **示例**

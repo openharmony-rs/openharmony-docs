@@ -4,7 +4,7 @@
 class JsMessageExt
 ```
 
-JsMessageExt is a data class in the ArkWeb framework used to encapsulate the result returned after executing a JavaScript script through the [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext2) API. Unlike the conventional runJavaScript API, runJavaScriptExt supports richer return value types, and JsMessageExt provides a type-safe way to access these diverse return results. Developers first obtain the data type through the getType method of JsMessageExt, and then call the corresponding get method to retrieve the specific value.
+JsMessageExt is a data class in the ArkWeb framework used to encapsulate the result returned after executing a JavaScript script through the [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext) API. Unlike the conventional runJavaScript API, runJavaScriptExt supports richer return value types, and JsMessageExt provides a type-safe way to access these diverse return results. Developers first obtain the data type through the getType method of JsMessageExt, and then call the corresponding get method to retrieve the specific value.
 
 JsMessageExt supports parsing of multiple JavaScript return value types: string (getString), number (getNumber), boolean (getBoolean), raw binary data (getArrayBuffer), array (getArray), and more. When the obtained data type does not match the actual stored type (for example, calling getString on a numeric type), error code 17100014 is thrown. Starting from API version 22, JsMessageExt also provides the getErrorDescription method for obtaining exception information during JavaScript execution. If the return value is of the object type, it is uniformly formatted into a description string.
 
@@ -34,7 +34,7 @@ import { webview } from '@kit.ArkWeb';
 getArray(): Array<string | number | boolean>
 ```
 
-Obtains array-type data of the data object. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext2).
+Obtains array-type data of the data object. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext).
 
 **Since:** 10
 
@@ -62,7 +62,7 @@ Obtains array-type data of the data object. For details about the sample code, s
 getArrayBuffer(): ArrayBuffer
 ```
 
-Obtains raw binary data of the data object. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext2).
+Obtains raw binary data of the data object. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext).
 
 **Since:** 10
 
@@ -90,7 +90,7 @@ Obtains raw binary data of the data object. For details about the sample code, s
 getBoolean(): boolean
 ```
 
-Obtains Boolean-type data of the data object. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext2).
+Obtains Boolean-type data of the data object. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext).
 
 **Since:** 10
 
@@ -118,7 +118,7 @@ Obtains Boolean-type data of the data object. For details about the sample code,
 getErrorDescription(): string | null
 ```
 
-Obtains the error information about the JavaScript execution. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext2).
+Obtains the error information about the JavaScript execution. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext).
 
 **Since:** 22
 
@@ -138,7 +138,7 @@ Obtains the error information about the JavaScript execution. For details about 
 getNumber(): number
 ```
 
-Obtains number-type data of the data object. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext2).
+Obtains number-type data of the data object. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext).
 
 **Since:** 10
 
@@ -166,7 +166,7 @@ Obtains number-type data of the data object. For details about the sample code, 
 getString(): string
 ```
 
-Obtains string-type data of the data object. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext2).
+Obtains string-type data of the data object. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext).
 
 **Since:** 10
 
@@ -194,7 +194,7 @@ Obtains string-type data of the data object. For details about the sample code, 
 getType(): JsMessageType
 ```
 
-Obtains the type of the data object. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext2).
+Obtains the type of the data object. For details about the sample code, see [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext).
 
 **Since:** 10
 

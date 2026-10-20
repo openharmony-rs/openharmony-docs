@@ -4,7 +4,7 @@
 interface ApertureInfo
 ```
 
-Describes the aperture information.
+描述光圈信息。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 readonly aperture?: number
 ```
 
-Aperture.
+光圈。
 
 **类型：** number
 

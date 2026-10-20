@@ -29,6 +29,6 @@ Obtains the single-tap/double-tap operation mode in touch guide mode. This can b
 
 | Type | Description |
 | --- | --- |
-| string | Touch mode.<br>- **singleTouchMode**: Single-touch mode. <br>- **doubleTouchMode**: Double-touch mode. <br>- **none**: Touch guide mode is disabled. |
+| string | Touch mode. <br>- **singleTouchMode**: Single-touch mode. <br>- **doubleTouchMode**: Double-touch mode. <br>- **none**: Touch guide mode is disabled. |
 
 **Examples**

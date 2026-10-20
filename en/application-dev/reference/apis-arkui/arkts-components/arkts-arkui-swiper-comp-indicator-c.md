@@ -12,8 +12,6 @@ Sets the distance between the indicator and the **Swiper** component. Because th
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="bottom1"></a>
-
 ## bottom
 
 ```TypeScript
@@ -45,8 +43,6 @@ Sets the position of the navigation indicator relative to the bottom edge of the
 | Type | Description |
 | --- | --- |
 | T | Current navigation dot indicator, which supports chained calls to configure other indicator attributes. |
-
-<a id="bottom2"></a>
 
 ## bottom
 
@@ -157,7 +153,7 @@ Sets the distance between the navigation point indicator and the left edge (in r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | LengthMetrics | Yes | Right-to-left scripts: Distance between the navigation indicator and the left edge of the **Swiper** component.<br>Left-to-right scripts: Distance between the navigation indicator and the right edge of the **Swiper** component. <br>Default value: **0** <br>Unit: vp <br>Value range: [0, Swiper width - Navigation indicator area width]. Values outside this range are adjusted to the nearest boundary. |
+| value | LengthMetrics | Yes | Right-to-left scripts: Distance between the navigation indicator and the left edge of the **Swiper** component. <br>Left-to-right scripts: Distance between the navigation indicator and the right edge of the **Swiper** component. <br>Default value: **0** <br>Unit: vp <br>Value range: [0, Swiper width - Navigation indicator area width]. Values outside this range are adjusted to the nearest boundary. |
 
 **Return value:**
 
@@ -253,7 +249,7 @@ Sets the distance between the navigation indicator and the right edge (in [RTL](
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | LengthMetrics | Yes | Right-to-left scripts: Distance between the navigation indicator and the right edge of the **Swiper** component.<br>Left-to-right scripts: Distance between the navigation indicator and the left edge of the **Swiper** component. <br>Default value: **0** <br>Unit: vp <br>Value range: [0, Swiper width - Navigation indicator area width]. Values outside this range are adjusted to the nearest boundary. |
+| value | LengthMetrics | Yes | Right-to-left scripts: Distance between the navigation indicator and the right edge of the **Swiper** component. <br>Left-to-right scripts: Distance between the navigation indicator and the left edge of the **Swiper** component. <br>Default value: **0** <br>Unit: vp <br>Value range: [0, Swiper width - Navigation indicator area width]. Values outside this range are adjusted to the nearest boundary. |
 
 **Return value:**
 

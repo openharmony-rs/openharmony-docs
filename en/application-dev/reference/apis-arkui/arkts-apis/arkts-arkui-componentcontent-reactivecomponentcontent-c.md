@@ -394,7 +394,7 @@ Sets whether the current **ReactiveComponentContent** object inherits the freeze
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether the **ReactiveComponentContent** object inherits the freeze policy from its parent component's custom components.<br>**true**: Inherits the freeze policy from its parent component's custom components. **false**: Does not inherit the freeze policy from its parent component's custom components. <br>**Note:** Only when the parent component is a custom component, **BuilderNode**, **ComponentContent**, **ReactiveBuilderNode**, or **ReactiveComponentContent**, setting the parameter to **true** will inherit the freeze policy from the parent component's custom components. |
+| enabled | boolean | Yes | Whether the **ReactiveComponentContent** object inherits the freeze policy from its parent component's custom components. <br>**true**: Inherits the freeze policy from its parent component's custom components. **false**: Does not inherit the freeze policy from its parent component's custom components. <br>**Note:** Only when the parent component is a custom component, **BuilderNode**, **ComponentContent**, **ReactiveBuilderNode**, or **ReactiveComponentContent**, setting the parameter to **true** will inherit the freeze policy from the parent component's custom components. |
 
 **Examples**
 
@@ -602,7 +602,7 @@ Queries whether the current **ReactiveComponentContent** object has released the
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the reference to the backend entity node has been released.<br>**true**: The node has released the reference to the backend entity node; **false**: The node has not released the reference to the backend entity node. |
+| boolean | Whether the reference to the backend entity node has been released. <br>**true**: The node has released the reference to the backend entity node; **false**: The node has not released the reference to the backend entity node. |
 
 **Examples**
 

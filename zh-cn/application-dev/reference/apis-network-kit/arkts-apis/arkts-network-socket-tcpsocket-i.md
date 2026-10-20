@@ -18,8 +18,6 @@ TCPSocket连接。在调用TCPSocket的方法前，需要先通过[socket.constr
 import { socket } from '@kit.NetworkKit';
 ```
 
-<a id="bind1"></a>
-
 ## bind
 
 ```TypeScript
@@ -48,7 +46,7 @@ bind(address: NetAddress, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | 是 | 本端地址信息，参考[NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress)。 |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | 是 | 本端地址信息，参考[NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress)。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。失败返回错误、错误信息。 |
 
 **错误码：**
@@ -78,8 +76,6 @@ tcp.bind(bindAddr, (err: BusinessError) => {
 })
 ```
 
-<a id="bind2"></a>
-
 ## bind
 
 ```TypeScript
@@ -108,7 +104,7 @@ bind(address: NetAddress): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | 是 | 本端地址信息，参考[NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress)。 |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | 是 | 本端地址信息，参考[NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress)。 |
 
 **返回值：**
 
@@ -140,8 +136,6 @@ tcp.bind(bindAddr).then(() => {
   console.error('bind fail');
 });
 ```
-
-<a id="close1"></a>
 
 ## close
 
@@ -188,8 +182,6 @@ tcp.close((err: BusinessError) => {
 })
 ```
 
-<a id="close2"></a>
-
 ## close
 
 ```TypeScript
@@ -232,8 +224,6 @@ tcp.close().then(() => {
   console.error('close fail');
 });
 ```
-
-<a id="connect1"></a>
 
 ## connect
 
@@ -335,8 +325,6 @@ tcp.connect(tcpconnectoptions, (err: BusinessError) => {
   console.info('connect success');
 })
 ```
-
-<a id="connect2"></a>
 
 ## connect
 
@@ -462,7 +450,7 @@ getLocalAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | 以Promise形式返回获取本地socket地址的结果。 |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 以Promise形式返回获取本地socket地址的结果。 |
 
 **错误码：**
 
@@ -495,8 +483,6 @@ tcp.bind(bindAddr).then(() => {
 });
 ```
 
-<a id="getremoteaddress1"></a>
-
 ## getRemoteAddress
 
 ```TypeScript
@@ -521,7 +507,7 @@ getRemoteAddress(callback: AsyncCallback<NetAddress>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetAddress](arkts-network-socket-p.md)&gt; | 是 | 回调函数。成功时返回对端Socket地址，失败时返回错误码、错误信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 是 | 回调函数。成功时返回对端Socket地址，失败时返回错误码、错误信息。 |
 
 **错误码：**
 
@@ -556,8 +542,6 @@ tcp.connect(tcpconnectoptions, () => {
 });
 ```
 
-<a id="getremoteaddress2"></a>
-
 ## getRemoteAddress
 
 ```TypeScript
@@ -582,7 +566,7 @@ getRemoteAddress(): Promise<NetAddress>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | 以Promise形式返回获取对端socket地址的结果。 |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | 以Promise形式返回获取对端socket地址的结果。 |
 
 **错误码：**
 
@@ -617,8 +601,6 @@ tcp.connect(tcpconnectoptions).then(() => {
 });
 ```
 
-<a id="getsocketfd1"></a>
-
 ## getSocketFd
 
 ```TypeScript
@@ -631,7 +613,7 @@ getSocketFd(callback: AsyncCallback<number>): void
 > 
 > - bind或connect方法调用成功后，才可调用此方法。
 > 
-> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-udpsocket-i.md#close1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-udpsocket-i.md#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **起始版本：** 10
 
@@ -672,8 +654,6 @@ tcp.getSocketFd((err: BusinessError, data: number) => {
 })
 ```
 
-<a id="getsocketfd2"></a>
-
 ## getSocketFd
 
 ```TypeScript
@@ -686,7 +666,7 @@ getSocketFd(): Promise<number>
 > 
 > - bind或connect方法调用成功后，才可调用此方法。
 > 
-> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-udpsocket-i.md#close1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-udpsocket-i.md#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **起始版本：** 10
 
@@ -725,8 +705,6 @@ tcp.getSocketFd().then((data: number) => {
   console.info("socketFd: " + data);
 })
 ```
-
-<a id="getstate1"></a>
 
 ## getState
 
@@ -786,8 +764,6 @@ tcp.connect(tcpconnectoptions, () => {
   });
 });
 ```
-
-<a id="getstate2"></a>
 
 ## getState
 
@@ -1084,8 +1060,6 @@ tcp.on('error', (err: BusinessError) => {
 });
 ```
 
-<a id="send1"></a>
-
 ## send
 
 ```TypeScript
@@ -1149,8 +1123,6 @@ tcp.connect(tcpconnectoptions, () => {
   })
 })
 ```
-
-<a id="send2"></a>
 
 ## send
 
@@ -1218,8 +1190,6 @@ tcp.connect(tcpconnectoptions, () => {
   });
 })
 ```
-
-<a id="setextraoptions1"></a>
 
 ## setExtraOptions
 
@@ -1298,8 +1268,6 @@ tcp.connect(tcpconnectoptions, () => {
   });
 });
 ```
-
-<a id="setextraoptions2"></a>
 
 ## setExtraOptions
 

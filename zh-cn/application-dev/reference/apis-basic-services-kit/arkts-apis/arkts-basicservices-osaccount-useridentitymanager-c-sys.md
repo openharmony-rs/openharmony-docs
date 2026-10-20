@@ -132,7 +132,7 @@ cancel(challenge: Uint8Array): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid challenge. |
 
@@ -263,7 +263,7 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid credentialId. |
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
@@ -324,7 +324,7 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
 
@@ -350,8 +350,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getauthinfo1"></a>
 
 ## getAuthInfo
 
@@ -408,8 +406,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getauthinfo2"></a>
 
 ## getAuthInfo
 
@@ -469,8 +465,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getauthinfo3"></a>
 
 ## getAuthInfo
 
@@ -532,8 +526,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getauthinfo4"></a>
 
 ## getAuthInfo
 
@@ -801,8 +793,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="opensession1"></a>
-
 ## openSession
 
 ```TypeScript
@@ -833,7 +823,7 @@ openSession(callback: AsyncCallback<Uint8Array>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 <!--Del-->
@@ -858,8 +848,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="opensession2"></a>
 
 ## openSession
 

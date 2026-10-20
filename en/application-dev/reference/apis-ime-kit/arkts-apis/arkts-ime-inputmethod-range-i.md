@@ -24,7 +24,7 @@ import { inputMethod } from '@kit.IMEKit';
 end: number
 ```
 
-Index of the last selected character in the text box. The value is an integer greater than or equal to 0, and cannot exceed the actual text length. The **end** value must be greater than the **start** value.
+Index of the last selected character in the edit box. The value is an integer greater than or equal to 0, and cannot exceed the actual text length. The **end** value must be greater than the **start** value.
 
 **Type:** number
 
@@ -40,7 +40,7 @@ Index of the last selected character in the text box. The value is an integer gr
 start: number
 ```
 
-Index of the first selected character in the text box. The value is an integer greater than or equal to 0, and cannot exceed the actual text length.
+Index of the first selected character in the edit box. The value is an integer greater than or equal to 0, and cannot exceed the actual text length.
 
 **Type:** number
 

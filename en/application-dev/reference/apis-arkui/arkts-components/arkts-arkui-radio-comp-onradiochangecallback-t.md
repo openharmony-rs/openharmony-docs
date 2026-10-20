@@ -6,8 +6,6 @@ declare type OnRadioChangeCallback = (isChecked: boolean) => void
 
 Callback of radio box selection status changes event.
 
-@typedef {function} OnRadioChangeCallback
-
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.

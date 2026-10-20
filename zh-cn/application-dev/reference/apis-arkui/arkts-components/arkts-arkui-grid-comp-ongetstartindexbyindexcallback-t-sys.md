@@ -12,6 +12,8 @@ declare type OnGetStartIndexByIndexCallback = (targetIndex: number) => StartLine
 
 <!--Device-unnamed-declare type OnGetStartIndexByIndexCallback = (targetIndex: int) => StartLineInfo--><!--Device-unnamed-declare type OnGetStartIndexByIndexCallback = (targetIndex: int) => StartLineInfo-End-->
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**

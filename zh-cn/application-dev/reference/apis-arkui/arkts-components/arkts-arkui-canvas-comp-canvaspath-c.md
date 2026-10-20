@@ -312,4 +312,4 @@ roundRect(x: number, y: number, w: number, h: number, radii?: number | Array<num
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [103701](../errorcode-canvas.md#103701-参数错误) | Parameter error. Possible causes:<br> 1. The param radii is a list that has zero or more than four elements. <br> 2. The param radii contains negative value. |
+| [103701](../errorcode-canvas.md#103701-参数错误) | Parameter error. Possible causes: <br> 1. The param radii is a list that has zero or more than four elements. <br> 2. The param radii contains negative value. |

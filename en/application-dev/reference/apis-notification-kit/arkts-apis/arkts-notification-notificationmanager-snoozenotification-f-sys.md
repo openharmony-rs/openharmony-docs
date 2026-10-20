@@ -31,7 +31,7 @@ Snoozes a notification. The notification will be reminded again after the specif
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | hashCode | string | Yes | Unique ID of the notification to be snoozed. |
-| delayTime | number | Yes | Interval for the snoozed notification.<br>Unit: second. |
+| delayTime | number | Yes | Interval for the snoozed notification. <br>Unit: second. |
 
 **Return value:**
 

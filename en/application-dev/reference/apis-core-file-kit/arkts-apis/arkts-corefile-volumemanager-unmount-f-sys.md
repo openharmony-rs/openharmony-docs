@@ -6,8 +6,6 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
-<a id="unmount1"></a>
-
 ## unmount
 
 ```TypeScript
@@ -39,7 +37,7 @@ Unmounts a volume. This API uses an asynchronous callback to return the result.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600002 | Not supported filesystem. |
 | 13600004 | Failed to unmount. |
@@ -47,8 +45,19 @@ Unmounts a volume. This API uses an asynchronous callback to return the result.
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
+**Examples**
 
-<a id="unmount2"></a>
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let volumeId: string = "";
+volumeManager.unmount(volumeId, (error: BusinessError) => {
+  // Do something.
+});
+```
+
+<!--DelEnd-->
+
 
 ## unmount
 
@@ -86,10 +95,25 @@ Unmounts a volume. This API uses a promise to return the result.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600002 | Not supported filesystem. |
 | 13600004 | Failed to unmount. |
 | 13600005 | Incorrect volume state. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+let volumeId: string = "";
+volumeManager.unmount(volumeId).then(() => {
+  // Do something.
+}).catch((error: BusinessError) => {
+  console.error("mount failed");
+});
+```
+
+<!--DelEnd-->

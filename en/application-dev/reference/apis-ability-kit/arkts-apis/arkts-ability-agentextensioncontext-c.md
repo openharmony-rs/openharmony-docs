@@ -12,8 +12,6 @@ AgentExtensionContext provides developers with the capability to access the [Age
 > 
 > - In the examples in this document, `this.context` is used to obtain the `AgentExtensionContext`, where `this`represents an instance inheriting from `AgentExtensionAbility`.
 
-@extends ExtensionContext
-
 **Inheritance/Implementation:** AgentExtensionContext extends [ExtensionContext](arkts-ability-extensioncontext-c.md)
 
 **Since:** 24

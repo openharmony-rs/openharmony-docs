@@ -36,7 +36,7 @@ Prioritize the layout constraint settings in terms of height.
 MAX_LINES_FIRST
 ```
 
-Sets the text height adaptation mode to [maxLines](../arkts-components/arkts-arkui-textarea-comp-attribute.md#maxlines1) first.
+Sets the text height adaptation mode to [maxLines](../arkts-components/arkts-arkui-textarea-comp-attribute.md#maxlines) first.
 
 **Since:** 10
 

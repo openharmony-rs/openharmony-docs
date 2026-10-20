@@ -6,8 +6,6 @@
 import { geoLocationManager } from '@kit.LocationKit';
 ```
 
-<a id="getaddressesfromlocation1"></a>
-
 ## getAddressesFromLocation
 
 ```TypeScript
@@ -62,8 +60,6 @@ try {
 }
 ```
 
-
-<a id="getaddressesfromlocation2"></a>
 
 ## getAddressesFromLocation
 

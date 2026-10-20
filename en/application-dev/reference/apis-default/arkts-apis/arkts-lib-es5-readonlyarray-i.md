@@ -9,8 +9,6 @@ interface ReadonlyArray<T>
 ```TypeScript
 ```
 
-<a id="concat1"></a>
-
 ## concat
 
 ```TypeScript
@@ -27,8 +25,6 @@ Combines two or more arrays.
 | --- | --- | --- | --- |
 | items | ConcatArray&lt;T&gt;[] | Yes |  |
 
-<a id="concat2"></a>
-
 ## concat
 
 ```TypeScript
@@ -44,8 +40,6 @@ Combines two or more arrays.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | items | (T &#124; ConcatArray&lt;T&gt;)[] | Yes |  |
-
-<a id="every1"></a>
 
 ## every
 
@@ -66,8 +60,6 @@ Determines whether all the members of an array satisfy the specified test.
 | predicate | (value: T, index: number, array: readonly T[]) =&gt; value is S | Yes |  |
 | thisArg | any | No |  |
 
-<a id="every2"></a>
-
 ## every
 
 ```TypeScript
@@ -87,8 +79,6 @@ Determines whether all the members of an array satisfy the specified test.
 | predicate | (value: T, index: number, array: readonly T[]) =&gt; unknown | Yes |  |
 | thisArg | any | No |  |
 
-<a id="filter1"></a>
-
 ## filter
 
 ```TypeScript
@@ -105,8 +95,6 @@ Returns the elements of an array that meet the condition specified in a callback
 | --- | --- | --- | --- |
 | predicate | (value: T, index: number, array: readonly T[]) =&gt; value is S | Yes |  |
 | thisArg | any | No |  |
-
-<a id="filter2"></a>
 
 ## filter
 
@@ -209,8 +197,6 @@ Calls a defined callback function on each element of an array, and returns an ar
 | callbackfn | (value: T, index: number, array: readonly T[]) =&gt; U | Yes |  |
 | thisArg | any | No |  |
 
-<a id="reduce1"></a>
-
 ## reduce
 
 ```TypeScript
@@ -227,8 +213,6 @@ Calls the specified callback function for all the elements in an array. The retu
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) =&gt; T | Yes |  |
 
-<a id="reduce2"></a>
-
 ## reduce
 
 ```TypeScript
@@ -241,8 +225,6 @@ reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, arr
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) =&gt; T | Yes |  |
 | initialValue | T | Yes |  |
-
-<a id="reduce3"></a>
 
 ## reduce
 
@@ -261,8 +243,6 @@ Calls the specified callback function for all the elements in an array. The retu
 | callbackfn | (previousValue: U, currentValue: T, currentIndex: number, array: readonly T[]) =&gt; U | Yes |  |
 | initialValue | U | Yes |  |
 
-<a id="reduceright1"></a>
-
 ## reduceRight
 
 ```TypeScript
@@ -279,8 +259,6 @@ Calls the specified callback function for all the elements in an array, in desce
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) =&gt; T | Yes |  |
 
-<a id="reduceright2"></a>
-
 ## reduceRight
 
 ```TypeScript
@@ -293,8 +271,6 @@ reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) =&gt; T | Yes |  |
 | initialValue | T | Yes |  |
-
-<a id="reduceright3"></a>
 
 ## reduceRight
 

@@ -6,8 +6,6 @@ declare type ButtonTriggerClickCallback = (xPos: number, yPos: number) => void
 
 Defines the callback type used in ButtonConfiguration.
 
-@typedef {function} ButtonTriggerClickCallback
-
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.

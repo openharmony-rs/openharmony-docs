@@ -20,4 +20,4 @@ Defines the callback for the value change of the inline number **CounterV2**.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Current value.<br>Value range: [min, max], where **min** and **max** correspond to the minimum and maximum values of **CounterV2**, respectively. |
+| value | number | Yes | Current value. <br>Value range: [min, max], where **min** and **max** correspond to the minimum and maximum values of **CounterV2**, respectively. |

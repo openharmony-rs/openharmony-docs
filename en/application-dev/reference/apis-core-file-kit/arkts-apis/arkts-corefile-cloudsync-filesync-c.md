@@ -18,8 +18,6 @@ Provides APIs for the file manager application to perform device-cloud sync of t
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -45,8 +43,6 @@ A constructor used to create a **FileSync** instance.
 ```TypeScript
 let fileSync = new cloudSync.FileSync()
 ```
-
-<a id="getlastsynctime1"></a>
 
 ## getLastSyncTime
 
@@ -90,8 +86,6 @@ fileSync.getLastSyncTime().then((timeStamp: number) => {
 });
 ```
 
-<a id="getlastsynctime2"></a>
-
 ## getLastSyncTime
 
 ```TypeScript
@@ -116,7 +110,7 @@ Obtains the last sync time. This API uses an asynchronous callback to return the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 
 **Examples**
@@ -203,7 +197,7 @@ Registers a listener for the device-cloud sync progress.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
 **Examples**
@@ -216,8 +210,6 @@ let callback = (pg: cloudSync.SyncProgress) => {
 
 fileSync.on('progress', callback);
 ```
-
-<a id="start1"></a>
 
 ## start
 
@@ -269,8 +261,6 @@ fileSync.start().then(() => {
 });
 ```
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -317,8 +307,6 @@ fileSync.start((err: BusinessError) => {
 });
 ```
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -362,8 +350,6 @@ fileSync.stop().then(() => {
 });
 ```
 
-<a id="stop2"></a>
-
 ## stop
 
 ```TypeScript
@@ -390,7 +376,7 @@ Calling **stop** will stop the sync process. To resume the sync, call [start](#s
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 
 **Examples**

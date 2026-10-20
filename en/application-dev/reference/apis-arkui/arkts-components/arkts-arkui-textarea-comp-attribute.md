@@ -156,7 +156,7 @@ Sets whether to enable leading punctuation compression. If this API is not calle
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable leading punctuation compression.<br>The value **true** means to enable leading punctuation compression, and **false** means the opposite. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable leading punctuation compression. <br>The value **true** means to enable leading punctuation compression, and **false** means the opposite. |
 
 ## contentType
 
@@ -317,9 +317,9 @@ When [disableMenuItems](../arkts-apis/arkts-arkui-arkui-uicontext-textmenucontro
 ellipsisMode(mode: Optional<EllipsisMode>)
 ```
 
-Sets the ellipsis position. The ellipsisMode attribute must be used together with [textOverflow](#textoverflow) set to TextOverflow.Ellipsis and [maxLines](#maxlines1). Setting the ellipsisMode attribute alone does not take effect. If this API is not called, the default ellipsis position is EllipsisMode.END.
+Sets the ellipsis position. The ellipsisMode attribute must be used together with [textOverflow](#textoverflow) set to TextOverflow.Ellipsis and [maxLines](#maxlines). Setting the ellipsisMode attribute alone does not take effect. If this API is not called, the default ellipsis position is EllipsisMode.END.
 
-EllipsisMode.START and EllipsisMode.CENTER take effect only when [maxLines](#maxlines1) is set to 1.
+EllipsisMode.START and EllipsisMode.CENTER take effect only when [maxLines](#maxlines) is set to 1.
 
 **Since:** 18
 
@@ -335,7 +335,7 @@ EllipsisMode.START and EllipsisMode.CENTER take effect only when [maxLines](#max
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[EllipsisMode](../arkts-apis/arkts-arkui-ellipsismode-e.md)&gt; | Yes | Ellipsis position. It must be used together with [textOverflow](#textoverflow) set to TextOverflow.Ellipsis and [maxLines](#maxlines1). Setting it alone does not take effect. <br>EllipsisMode.START and EllipsisMode.CENTER take effect only when maxLines is set to 1. |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[EllipsisMode](../arkts-apis/arkts-arkui-ellipsismode-e.md)&gt; | Yes | Ellipsis position. It must be used together with [textOverflow](#textoverflow) set to TextOverflow.Ellipsis and [maxLines](#maxlines). Setting it alone does not take effect. <br>EllipsisMode.START and EllipsisMode.CENTER take effect only when maxLines is set to 1. |
 
 ## enableAutoFill
 
@@ -361,7 +361,7 @@ Sets whether to enable autofill. <!--RP2--><!--RP2End-->If this API is not used 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to enable autofill.<br>The value **true** means to enable autofill, and **false** means the opposite. |
+| value | boolean | Yes | Whether to enable autofill. <br>The value **true** means to enable autofill, and **false** means the opposite. |
 
 ## enableAutoSpacing
 
@@ -385,7 +385,7 @@ Sets whether to enable automatic spacing between Chinese and Western characters.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western characters.<br>The value **true** means to enable automatic spacing, and **false** means to disable it. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western characters. <br>The value **true** means to enable automatic spacing, and **false** means to disable it. |
 
 ## enableHapticFeedback
 
@@ -411,7 +411,7 @@ When haptic feedback is enabled, you need to set the **requestPermissions** fiel
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isEnabled | boolean | Yes | Whether to enable haptic feedback.<br>The value **true** means to enable haptic feedback, and **false** means the opposite. |
+| isEnabled | boolean | Yes | Whether to enable haptic feedback. <br>The value **true** means to enable haptic feedback, and **false** means the opposite. |
 
 ## enableKeyboardOnFocus
 
@@ -437,7 +437,7 @@ Since API version 10, the input method is bound by default when the component ga
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to actively pull up the soft keyboard when the component gains focus by means other than tapping.<br>The value **true** means to actively pull up the soft keyboard, and **false** means the opposite. |
+| value | boolean | Yes | Whether to actively pull up the soft keyboard when the component gains focus by means other than tapping. <br>The value **true** means to actively pull up the soft keyboard, and **false** means the opposite. |
 
 ## enablePreviewText
 
@@ -463,7 +463,7 @@ Preview text is defined as a temporary text state, and text interception is not 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable input preview text.<br>The value **true** means to enable it, and **false** means to disable it. |
+| enable | boolean | Yes | Whether to enable input preview text. <br>The value **true** means to enable it, and **false** means to disable it. |
 
 ## enableSelectedDataDetector
 
@@ -497,7 +497,7 @@ This feature takes effect only when CopyOptions is CopyOptions.LocalDevice or Co
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean &#124; undefined | Yes | Whether to perform entity recognition on the selected text.<br>true: enables recognition; false: disables recognition. <br>This feature takes effect only when CopyOptions is CopyOptions.LocalDevice or CopyOptions.CROSS_DEVICE. |
+| enable | boolean &#124; undefined | Yes | Whether to perform entity recognition on the selected text. <br>true: enables recognition; false: disables recognition. <br>This feature takes effect only when CopyOptions is CopyOptions.LocalDevice or CopyOptions.CROSS_DEVICE. |
 
 ## enterKeyType
 
@@ -549,7 +549,7 @@ Supports adaptive line height based on the actual text height for stacked multi-
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height adapts to the actual text height.<br>The value **true** means the line height adapts to the actual text height, and **false** means the line height does not adapt to the actual text height. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height adapts to the actual text height. <br>The value **true** means the line height adapts to the actual text height, and **false** means the line height does not adapt to the actual text height. |
 
 ## fontColor
 
@@ -597,7 +597,7 @@ Sets the font list.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font list. The default font is 'HarmonyOS Sans'.<br>When multiple fonts are used, separate them with commas (','). The fonts take effect in the order of priority. For example: 'Arial,HarmonyOS Sans'. |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font list. The default font is 'HarmonyOS Sans'. <br>When multiple fonts are used, separate them with commas (','). The fonts take effect in the order of priority. For example: 'Arial,HarmonyOS Sans'. |
 
 ## fontFeature
 
@@ -629,7 +629,7 @@ For example, the input format for monospaced digits is: "ss01" on.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | Yes | Font feature, used to set the special display effect of text, such as monospaced digits. The format is: normal &#124;<feature-tag-value>. |
+| value | string | Yes | Font feature, used to set the special display effect of text, such as monospaced digits. The format is: normal &#124; <feature-tag-value>. |
 
 ## fontSize
 
@@ -695,7 +695,7 @@ Sets the font weight of the text. If the value is too large, the text may be tru
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the text.<br>For the number type, the value ranges from 100 to 900 at an interval of 100. A larger value indicates a heavier font weight. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. If the value is too large, the text may be truncated under certain fonts. If the value is out of the valid range or does not meet the interval requirement, 400 is used. <br>Since API version 20, the Resource type is supported.<br>**Since:** 20 |
+| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Font weight of the text. <br>For the number type, the value ranges from 100 to 900 at an interval of 100. A larger value indicates a heavier font weight. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in FontWeight. If the value is too large, the text may be truncated under certain fonts. If the value is out of the valid range or does not meet the interval requirement, 400 is used. <br>Since API version 20, the Resource type is supported.<br>**Since:** 20 |
 
 ## halfLeading
 
@@ -719,7 +719,7 @@ Sets the text to be vertically centered within a line, evenly distributing the l
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| halfLeading | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Sets whether the text is vertically centered.<br>The value **true** means to evenly distribute the line spacing to the top and bottom of the line, and **false** means the opposite. |
+| halfLeading | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Sets whether the text is vertically centered. <br>The value **true** means to evenly distribute the line spacing to the top and bottom of the line, and **false** means the opposite. |
 
 ## heightAdaptivePolicy
 
@@ -729,7 +729,7 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 
 Sets how the text height is adapted. If this API is not called, the text height is adapted by default in the manner of TextHeightAdaptivePolicy.MAX_LINES_FIRST.
 
-When this parameter is set to TextHeightAdaptivePolicy.MAX_LINES_FIRST, the [maxLines](#maxlines1) attribute is preferentially used to adjust the text height. If the layout size obtained by using the maxLines attribute exceeds the layout constraint, the font size is reduced within the range of [minFontSize](#minfontsize) and [maxFontSize](#maxfontsize) to display more text.
+When this parameter is set to TextHeightAdaptivePolicy.MAX_LINES_FIRST, the [maxLines](#maxlines) attribute is preferentially used to adjust the text height. If the layout size obtained by using the maxLines attribute exceeds the layout constraint, the font size is reduced within the range of [minFontSize](#minfontsize) and [maxFontSize](#maxfontsize) to display more text.
 
 When the component is set to the inline input style, the font size in the editing state may differ from that in the non-editing state.
 
@@ -751,7 +751,7 @@ When this parameter is set to TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST, 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [TextHeightAdaptivePolicy](../arkts-apis/arkts-arkui-textheightadaptivepolicy-e.md) | Yes | How the text height is adapted.<br>MAX_LINES_FIRST preferentially uses maxLines to adjust the height, and reduces the font size within the range of minFontSize and maxFontSize when the layout constraint is exceeded; MIN_FONT_SIZE_FIRST preferentially uses minFontSize to adjust the height; LAYOUT_CONSTRAINT_FIRST preferentially uses the layout constraint to adjust the height, and reduces the font size when the constraint is exceeded. |
+| value | [TextHeightAdaptivePolicy](../arkts-apis/arkts-arkui-textheightadaptivepolicy-e.md) | Yes | How the text height is adapted. <br>MAX_LINES_FIRST preferentially uses maxLines to adjust the height, and reduces the font size within the range of minFontSize and maxFontSize when the layout constraint is exceeded; MIN_FONT_SIZE_FIRST preferentially uses minFontSize to adjust the height; LAYOUT_CONSTRAINT_FIRST preferentially uses the layout constraint to adjust the height, and reduces the font size when the constraint is exceeded. |
 
 ## horizontalScrolling
 
@@ -781,7 +781,7 @@ Sets whether to enable horizontal scrolling when the text width exceeds the widt
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable horizontal scrolling.<br>The value **true** means to enable horizontal scrolling, and **false** means to disable horizontal scrolling, in which case the text wraps automatically. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable horizontal scrolling. <br>The value **true** means to enable horizontal scrolling, and **false** means to disable horizontal scrolling, in which case the text wraps automatically. |
 
 ## includeFontPadding
 
@@ -805,7 +805,7 @@ Sets whether to add spacing to the first and last lines to avoid text truncation
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| include | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing to the first and last lines to avoid text truncation.<br>true indicates that spacing is added to the first and last lines; false indicates that no spacing is added to the first and last lines. |
+| include | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing to the first and last lines to avoid text truncation. <br>true indicates that spacing is added to the first and last lines; false indicates that no spacing is added to the first and last lines. |
 
 ## inputFilter
 
@@ -856,7 +856,7 @@ Sets the style of the keyboard that is pulled up for the input box. This takes e
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appearance | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[KeyboardAppearance](../arkts-apis/arkts-arkui-keyboardappearance-e.md)&gt; | Yes | Keyboard style.<br>When set to KeyboardAppearance.NONE_IMMERSIVE, a non-immersive keyboard is displayed; when set to KeyboardAppearance.IMMERSIVE, an immersive keyboard is displayed. |
+| appearance | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[KeyboardAppearance](../arkts-apis/arkts-arkui-keyboardappearance-e.md)&gt; | Yes | Keyboard style. <br>When set to KeyboardAppearance.NONE_IMMERSIVE, a non-immersive keyboard is displayed; when set to KeyboardAppearance.IMMERSIVE, an immersive keyboard is displayed. |
 
 ## letterSpacing
 
@@ -934,8 +934,6 @@ Sets the line height of the text. If the value is not greater than 0, the line h
 | --- | --- | --- | --- |
 | value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Line height of the text. A [pixel unit](arkts-arkui-common-comp.md) must be explicitly specified, for example, '10px'. A percentage string can also be set, for example, '100%'. <br>**Note:** If no pixel unit is specified, the default unit fp is used. For example, '10' is equivalent to 10. |
 
-<a id="linespacing1"></a>
-
 ## lineSpacing
 
 ```TypeScript
@@ -959,8 +957,6 @@ Sets the line spacing of the text. If the value is not greater than 0, the defau
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | LengthMetrics | Yes | Line spacing of the text. |
-
-<a id="linespacing2"></a>
 
 ## lineSpacing
 
@@ -1019,7 +1015,7 @@ maxFontSize(value: number | string | Resource)
 
 Sets the maximum font size for text display. The string type supports the string form of the value that the number type accepts, and can carry a unit, for example, "10" or "10fp".
 
-It must be used together with [minFontSize](#minfontsize) and [maxLines](#maxlines1) or a layout size limit. Setting it alone does not take effect.
+It must be used together with [minFontSize](#minfontsize) and [maxLines](#maxlines) or a layout size limit. Setting it alone does not take effect.
 
 When adaptive font size takes effect, the fontSize setting does not take effect.
 
@@ -1063,9 +1059,7 @@ Sets the maximum number of characters that can be entered. When the maximum numb
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Maximum number of characters that can be entered.<br>Value range: [0, UINT32_MAX]. If value is less than 0, no limit is set. |
-
-<a id="maxlines1"></a>
+| value | number | Yes | Maximum number of characters that can be entered. <br>Value range: [0, UINT32_MAX]. If value is less than 0, no limit is set. |
 
 ## maxLines
 
@@ -1103,9 +1097,7 @@ Sets the maximum number of lines that can be displayed for the text. You can opt
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Maximum number of lines that can be displayed for the text in the inline input style editing state.<br>When textOverflow is configured, the excess part is truncated. When textOverflow is not configured, the text can be scrolled for display in the focused state in inline mode, and this parameter does not take effect in the unfocused state. In non-inline mode, the text is truncated by line. <br>Value range: (0, UINT32_MAX]. If 0 or a negative number is passed in, the default value is used. |
-
-<a id="maxlines2"></a>
+| value | number | Yes | Maximum number of lines that can be displayed for the text in the inline input style editing state. <br>When textOverflow is configured, the excess part is truncated. When textOverflow is not configured, the text can be scrolled for display in the focused state in inline mode, and this parameter does not take effect in the unfocused state. In non-inline mode, the text is truncated by line. <br>Value range: (0, UINT32_MAX]. If 0 or a negative number is passed in, the default value is used. |
 
 ## maxLines
 
@@ -1143,7 +1135,7 @@ Sets the maximum number of lines that can be displayed for the text, and optiona
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| lines | number | Yes | Maximum number of lines that can be displayed for the text in the editing state of the inline input style.<br>When textOverflow is configured, the excess part can be configured to be truncated or scrolled. When textOverflow is not configured, the text can be scrolled for display in the focused state of inline mode, and this parameter does not take effect in the unfocused state. In non-inline mode, the text is truncated by line. <br>Value range: (0, +∞). If 0 or a negative number is passed in, the default value is used. |
+| lines | number | Yes | Maximum number of lines that can be displayed for the text in the editing state of the inline input style. <br>When textOverflow is configured, the excess part can be configured to be truncated or scrolled. When textOverflow is not configured, the text can be scrolled for display in the focused state of inline mode, and this parameter does not take effect in the unfocused state. In non-inline mode, the text is truncated by line. <br>Value range: (0, +∞). If 0 or a negative number is passed in, the default value is used. |
 | options | [MaxLinesOptions](../arkts-apis/arkts-arkui-maxlinesoptions-i.md) | Yes | Display effect when the text is too long. |
 
 ## minFontScale
@@ -1178,7 +1170,7 @@ minFontSize(value: number | string | Resource)
 
 Sets the minimum font size for the text. The string type supports the string form of the value of the number type, and can carry a unit, for example, "10" or "10fp".
 
-This attribute must be used together with [maxFontSize](#maxfontsize) and [maxLines](#maxlines1) or a layout size limit. Setting it alone does not take effect.
+This attribute must be used together with [maxFontSize](#maxfontsize) and [maxLines](#maxlines) or a layout size limit. Setting it alone does not take effect.
 
 When the adaptive font size takes effect, the fontSize setting does not take effect.
 
@@ -1222,7 +1214,7 @@ Sets the minimum number of lines. The component height is automatically adjusted
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| lines | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Minimum number of lines.<br>Value range: [1, INT32_MAX] <br>If the value of lines is less than 1, the default value is used. |
+| lines | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Minimum number of lines. <br>Value range: [1, INT32_MAX] <br>If the value of lines is less than 1, the default value is used. |
 
 ## onChange
 
@@ -1380,7 +1372,7 @@ Triggered when the deletion is complete.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[DeleteValue](../arkts-apis/arkts-arkui-deletevalue-i.md)&gt; | Yes | Callback invoked when the deletion is complete.<br>Tapping the clear button does not trigger the onDidDelete callback. <br>Only supported in the scenario where the system input method is used for input. |
+| callback | Callback&lt;[DeleteValue](../arkts-apis/arkts-arkui-deletevalue-i.md)&gt; | Yes | Callback invoked when the deletion is complete. <br>Tapping the clear button does not trigger the onDidDelete callback. <br>Only supported in the scenario where the system input method is used for input. |
 
 ## onDidInsert
 
@@ -1414,7 +1406,7 @@ Triggered when input is completed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[InsertValue](../arkts-apis/arkts-arkui-insertvalue-i.md)&gt; | Yes | Callback invoked when input is completed.<br>Only supported for input from the system input method. |
+| callback | Callback&lt;[InsertValue](../arkts-apis/arkts-arkui-insertvalue-i.md)&gt; | Yes | Callback invoked when input is completed. <br>Only supported for input from the system input method. |
 
 ## onEditChange
 
@@ -1462,8 +1454,6 @@ Triggered when a paste operation is performed.
 | --- | --- | --- | --- |
 | callback | (value: string, event: PasteEvent) =&gt; void | Yes | Called when using the Clipboard menu. |
 
-<a id="onsubmit1"></a>
-
 ## onSubmit
 
 ```TypeScript
@@ -1487,8 +1477,6 @@ Triggered when the Enter key on the soft keyboard is pressed.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | (enterKey: EnterKeyType) =&gt; void | Yes | callback of the listened event. |
-
-<a id="onsubmit2"></a>
 
 ## onSubmit
 
@@ -1604,7 +1592,7 @@ Triggered when the text content is about to change.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[EditableTextChangeValue](../arkts-apis/arkts-arkui-editabletextchangevalue-i.md), boolean&gt; | Yes | Callback invoked when the text content is about to change.<br>If true is returned, the change is applied normally. If false is returned, the current trigger is intercepted. |
+| callback | Callback&lt;[EditableTextChangeValue](../arkts-apis/arkts-arkui-editabletextchangevalue-i.md), boolean&gt; | Yes | Callback invoked when the text content is about to change. <br>If true is returned, the change is applied normally. If false is returned, the current trigger is intercepted. |
 
 ## onWillCopy
 
@@ -1710,7 +1698,7 @@ Tapping the clear button does not trigger the onWillDelete callback.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[DeleteValue](../arkts-apis/arkts-arkui-deletevalue-i.md), boolean&gt; | Yes | Callback invoked when a deletion is about to occur.<br>Returning true indicates a normal deletion, and returning false indicates that the deletion is not performed. <br>This callback is not triggered during preview and candidate word operations. Tapping the clear button does not trigger the onDidDelete callback. <br>Only supported in the scenario where the system input method is used. |
+| callback | Callback&lt;[DeleteValue](../arkts-apis/arkts-arkui-deletevalue-i.md), boolean&gt; | Yes | Callback invoked when a deletion is about to occur. <br>Returning true indicates a normal deletion, and returning false indicates that the deletion is not performed. <br>This callback is not triggered during preview and candidate word operations. Tapping the clear button does not trigger the onDidDelete callback. <br>Only supported in the scenario where the system input method is used. |
 
 ## onWillInsert
 
@@ -1744,7 +1732,7 @@ Triggers this callback when text is about to be inserted.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[InsertValue](../arkts-apis/arkts-arkui-insertvalue-i.md), boolean&gt; | Yes | Callback invoked when text is about to be inserted.<br>Returning true indicates normal insertion, and returning false indicates no insertion. <br>This callback is not triggered during preview and candidate word operations. <br>It is supported only in the scenario of input through the system input method. |
+| callback | Callback&lt;[InsertValue](../arkts-apis/arkts-arkui-insertvalue-i.md), boolean&gt; | Yes | Callback invoked when text is about to be inserted. <br>Returning true indicates normal insertion, and returning false indicates no insertion. <br>This callback is not triggered during preview and candidate word operations. <br>It is supported only in the scenario of input through the system input method. |
 
 ## orphanCharOptimization
 
@@ -1768,7 +1756,7 @@ Orphan character optimization improves text layout by handling orphan characters
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable orphan character optimization for the last line of a paragraph.<br>The value true means to enable orphan character optimization, and false means to disable it. <br>If the value is undefined or null, orphan character optimization is disabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable orphan character optimization for the last line of a paragraph. <br>The value true means to enable orphan character optimization, and false means to disable it. <br>If the value is undefined or null, orphan character optimization is disabled. |
 
 ## placeholderColor
 
@@ -1840,7 +1828,7 @@ Sets whether to enable hanging punctuation at the end of a line. If this API is 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable hanging punctuation at the end of a line.<br>The value **true** means to enable hanging punctuation at the end of a line, and **false** means the opposite. If the value is **undefined** or **null**, hanging punctuation is not enabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable hanging punctuation at the end of a line. <br>The value **true** means to enable hanging punctuation at the end of a line, and **false** means the opposite. If the value is **undefined** or **null**, hanging punctuation is not enabled. |
 
 ## scrollBarColor
 
@@ -1912,7 +1900,7 @@ Sets the backplane style of the text being dragged in the multi-line text input 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SelectedDragPreviewStyle](../arkts-apis/arkts-arkui-selecteddragpreviewstyle-i.md) &#124; undefined | Yes | Backplane style of the text being dragged.<br>When set to undefined, the backplane color follows the theme: white in light mode and black in dark mode. |
+| value | [SelectedDragPreviewStyle](../arkts-apis/arkts-arkui-selecteddragpreviewstyle-i.md) &#124; undefined | Yes | Backplane style of the text being dragged. <br>When set to undefined, the backplane color follows the theme: white in light mode and black in dark mode. |
 
 ## selectionMenuHidden
 
@@ -1967,7 +1955,7 @@ Sets the text shader effect, such as linear gradient and radial gradient effects
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| shader | [ShaderStyle](../arkts-apis/arkts-arkui-shaderstyle-c.md) &#124; undefined | Yes | Text shader effect, used to set the text gradient effect (such as linear gradient and radial gradient).<br>When the value is undefined, no gradient effect is applied. |
+| shader | [ShaderStyle](../arkts-apis/arkts-arkui-shaderstyle-c.md) &#124; undefined | Yes | Text shader effect, used to set the text gradient effect (such as linear gradient and radial gradient). <br>When the value is undefined, no gradient effect is applied. |
 
 ## showCounter
 
@@ -1997,7 +1985,7 @@ When the number of entered characters is greater than the maximum number of char
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to display the counter.<br>**true** indicates that the counter is displayed, and **false** indicates that it is not displayed. |
+| value | boolean | Yes | Whether to display the counter. <br>**true** indicates that the counter is displayed, and **false** indicates that it is not displayed. |
 | options | [InputCounterOptions](arkts-arkui-common-comp-inputcounteroptions-i.md) | No | Configuration options of the counter, used to customize the display threshold (**thresholdPercentage**) and the red border (**highlightBorder**) of the counter. If this parameter is not passed, the counter is displayed when the number of entered characters reaches the maximum number of characters, and the border and the counter subscript turn red by default.<br>**Since:** 11 |
 
 ## stopBackPress
@@ -2022,7 +2010,7 @@ Sets whether to block the back key event from being passed to other components o
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isStopped | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to block the back key.<br>true means to block it, and false means not to block it. The default value is used for an invalid value. |
+| isStopped | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to block the back key. <br>true means to block it, and false means not to block it. The default value is used for an invalid value. |
 
 ## strokeColor
 
@@ -2094,7 +2082,7 @@ Sets the width of the text stroke. When both the strokeWidth attribute and [shad
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | Yes | Width of the text stroke. When the unit attribute of the LengthMetrics object is LengthUnit.PERCENT, this setting does not take effect and the default value is used.<br>If the value is less than 0, solid text is displayed; if the value is greater than 0, hollow text is displayed. |
+| width | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | Yes | Width of the text stroke. When the unit attribute of the LengthMetrics object is LengthUnit.PERCENT, this setting does not take effect and the default value is used. <br>If the value is less than 0, solid text is displayed; if the value is greater than 0, hollow text is displayed. |
 
 ## style
 
@@ -2130,7 +2118,7 @@ Sets the horizontal alignment of the text in the input box. If this API is not c
 
 TextAlign.Start, TextAlign.Center, and TextAlign.End are supported. Since API version 11, TextAlign.JUSTIFY is also supported.
 
-The [align](arkts-arkui-common-comp-commonmethod-c.md#align1) attribute can be used to control the vertical position of the text paragraph. In this component, the align attribute cannot be used to control the horizontal position of the text paragraph.
+The [align](arkts-arkui-common-comp-commonmethod-c.md#align) attribute can be used to control the vertical position of the text paragraph. In this component, the align attribute cannot be used to control the horizontal position of the text paragraph.
 
 - Alignment.TopStart, Alignment.Top, and Alignment.TopEnd: the content is aligned to the top.  
 - Alignment.Start, Alignment.Center, and Alignment.End: the content is vertically centered.  
@@ -2174,7 +2162,7 @@ Sets the text layout direction. If this API is not called, the text layout direc
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| direction | [TextDirection](../arkts-apis/arkts-arkui-textdirection-e.md) &#124; undefined | Yes | Text layout direction.<br>If this parameter is set to **undefined**, it is processed as **TextDirection.DEFAULT**, which means the text layout direction follows the component layout direction. |
+| direction | [TextDirection](../arkts-apis/arkts-arkui-textdirection-e.md) &#124; undefined | Yes | Text layout direction. <br>If this parameter is set to **undefined**, it is processed as **TextDirection.DEFAULT**, which means the text layout direction follows the component layout direction. |
 
 ## textIndent
 
@@ -2208,11 +2196,11 @@ textOverflow(value: TextOverflow)
 
 Sets how the text is displayed when it is too long. If this API is not called, the default display mode for overlong text is TextOverflow.Clip.
 
-In inline mode, the truncation effect of [maxLines](#maxlines1) takes effect only when textOverflow is actively configured. If it is not configured, the text is not truncated by default.
+In inline mode, the truncation effect of [maxLines](#maxlines) takes effect only when textOverflow is actively configured. If it is not configured, the text is not truncated by default.
 
 Text is truncated by character. For example, English text is truncated by word as the minimum unit. To truncate by letter, set wordBreak to WordBreak.BREAK_ALL.
 
-When textOverflow is set to TextOverflow.None, TextOverflow.Clip, or TextOverflow.Ellipsis, it must be used together with [maxLines](#maxlines1); setting it alone does not take effect. Setting TextOverflow.None has the same effect as TextOverflow.Clip.
+When textOverflow is set to TextOverflow.None, TextOverflow.Clip, or TextOverflow.Ellipsis, it must be used together with [maxLines](#maxlines); setting it alone does not take effect. Setting TextOverflow.None has the same effect as TextOverflow.Clip.
 
 > **NOTE:** 
 > 
@@ -2233,7 +2221,7 @@ When textOverflow is set to TextOverflow.None, TextOverflow.Clip, or TextOverflo
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [TextOverflow](../arkts-apis/arkts-arkui-textoverflow-e.md) | Yes | Display mode for overlong text.<br>In inline mode, it takes effect only when actively configured. When set to None, Clip, or Ellipsis, it must be used together with maxLines; setting it alone does not take effect. <br>The TextOverflow.MARQUEE mode is not supported. When set to MARQUEE, the text is displayed as Clip. |
+| value | [TextOverflow](../arkts-apis/arkts-arkui-textoverflow-e.md) | Yes | Display mode for overlong text. <br>In inline mode, it takes effect only when actively configured. When set to None, Clip, or Ellipsis, it must be used together with maxLines; setting it alone does not take effect. <br>The TextOverflow.MARQUEE mode is not supported. When set to MARQUEE, the text is displayed as Clip. |
 
 ## type
 

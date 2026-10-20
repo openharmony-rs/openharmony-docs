@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="isdistributedenabled1"></a>
-
 ## isDistributedEnabled
 
 ```TypeScript
@@ -31,8 +29,22 @@ Checks whether this device supports distributed notifications. This API uses an 
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. |
 
+**Examples**
 
-<a id="isdistributedenabled2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let isDistributedEnabledCallback = (err: Base.BusinessError, data: boolean) => {
+  if (err) {
+    console.error("isDistributedEnabled failed " + JSON.stringify(err));
+  } else {
+    console.info("isDistributedEnabled success " + JSON.stringify(data));
+  }
+};
+
+Notification.isDistributedEnabled(isDistributedEnabledCallback);
+```
+
 
 ## isDistributedEnabled
 
@@ -57,3 +69,15 @@ Checks whether this device supports distributed notifications. This API uses a p
 | Type | Description |
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise used to return the result. |
+
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+
+Notification.isDistributedEnabled().then((data: boolean) => {
+    console.info("isDistributedEnabled success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`isDistributedEnabled failed, code is ${err}`);
+});
+```

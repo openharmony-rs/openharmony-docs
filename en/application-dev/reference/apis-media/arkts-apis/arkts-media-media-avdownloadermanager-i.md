@@ -37,7 +37,7 @@ Creates an offline download task based on the media source. By default, download
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| source | [MediaSource](arkts-media-media-mediasource-i.md) | Yes | Media resource, which must contain at least the resource URL.<br>The value cannot be null. |
+| source | [MediaSource](arkts-media-media-mediasource-i.md) | Yes | Media resource, which must contain at least the resource URL. <br>The value cannot be null. |
 
 **Return value:**
 
@@ -77,7 +77,7 @@ Sets whether download is allowed on a cellular network. By default, download is 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether download is allowed on a cellular network.<br>- **true**: allowed. <br>- **false**: not allowed (default). |
+| value | boolean | Yes | Whether download is allowed on a cellular network. <br>- **true**: allowed. <br>- **false**: not allowed (default). |
 
 **Examples**
 
@@ -196,7 +196,7 @@ Obtains the download progress of a specified offline download task.
 
 | Type | Description |
 | --- | --- |
-| number | Download progress percentage.<br>- Value range: [0.0, 1.0] <br>- If the return value is **-1**, the resource size is unknown. |
+| number | Download progress percentage. <br>- Value range: [0.0, 1.0] <br>- If the return value is **-1**, the resource size is unknown. |
 
 **Error codes:**
 
@@ -284,7 +284,7 @@ Unregisters the listener for the progress change event of an offline download ta
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnAVDownloadProgressChangeHandle](arkts-media-media-onavdownloadprogresschangehandle-t.md) | No | Callback for progress changes, which must be registered using **onProgressChange**.<br>By default, if this parameter is not specified, all callbacks for the event are unregistered. |
+| callback | [OnAVDownloadProgressChangeHandle](arkts-media-media-onavdownloadprogresschangehandle-t.md) | No | Callback for progress changes, which must be registered using **onProgressChange**. <br>By default, if this parameter is not specified, all callbacks for the event are unregistered. |
 
 **Examples**
 
@@ -346,7 +346,7 @@ Registers a listener for the progress change event of an offline download task. 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnAVDownloadProgressChangeHandle](arkts-media-media-onavdownloadprogresschangehandle-t.md) | Yes | Callback for progress changes, which is implemented by the app.<br>The first parameter indicates the download task ID, and the second parameter indicates the download progress. <br>The value can be **-1** or a number within the range of [0.0, 1.0]. The value **-1** indicates that the resource size is unknown. |
+| callback | [OnAVDownloadProgressChangeHandle](arkts-media-media-onavdownloadprogresschangehandle-t.md) | Yes | Callback for progress changes, which is implemented by the app. <br>The first parameter indicates the download task ID, and the second parameter indicates the download progress. <br>The value can be **-1** or a number within the range of [0.0, 1.0]. The value **-1** indicates that the resource size is unknown. |
 
 **Examples**
 
@@ -379,7 +379,7 @@ Registers a listener for the status change event of an offline download task.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnAVDownloadTaskStateHandle](arkts-media-media-onavdownloadtaskstatehandle-t.md) | Yes | Callback for status changes, which is implemented by the app.<br>The first parameter indicates the ID of the task whose status changes, and the second parameter indicates the new status of the task |
+| callback | [OnAVDownloadTaskStateHandle](arkts-media-media-onavdownloadtaskstatehandle-t.md) | Yes | Callback for status changes, which is implemented by the app. <br>The first parameter indicates the ID of the task whose status changes, and the second parameter indicates the new status of the task |
 
 **Examples**
 
@@ -412,7 +412,7 @@ Pauses a specified offline download task. The downloaded data will be retained. 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| taskId | string | No | ID of the offline download task to pause.<br>By default, if this parameter is not specified, all download tasks are paused. |
+| taskId | string | No | ID of the offline download task to pause. <br>By default, if this parameter is not specified, all download tasks are paused. |
 
 **Error codes:**
 
@@ -478,7 +478,7 @@ Removes an offline download task from the offline download manager. After the ta
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| taskId | string | No | ID of the offline download task to remove.<br>By default, if this parameter is not specified, all offline download tasks are removed. |
+| taskId | string | No | ID of the offline download task to remove. <br>By default, if this parameter is not specified, all offline download tasks are removed. |
 
 **Error codes:**
 
@@ -518,7 +518,7 @@ Resumes a specified offline download task from the breakpoint where the task was
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| taskId | string | No | ID of the offline download task to resume. The task must be in the paused state.<br>By default, if this parameter is not specified, all paused offline download tasks are resumed. |
+| taskId | string | No | ID of the offline download task to resume. The task must be in the paused state. <br>By default, if this parameter is not specified, all paused offline download tasks are resumed. |
 
 **Error codes:**
 

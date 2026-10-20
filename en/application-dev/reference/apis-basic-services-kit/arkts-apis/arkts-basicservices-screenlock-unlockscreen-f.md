@@ -6,8 +6,6 @@
 import { screenLock } from '@kit.BasicServicesKit';
 ```
 
-<a id="unlockscreen1"></a>
-
 ## unlockScreen
 
 ```TypeScript
@@ -104,8 +102,6 @@ export default {
 }
 ```
 
-
-<a id="unlockscreen2"></a>
 
 ## unlockScreen
 

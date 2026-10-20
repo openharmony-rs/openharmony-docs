@@ -4,6 +4,9 @@ You can use this module to reference the ability public module class.
 
 **Since:** 9
 
+**Model restriction:** 
+- API version 11 and later: This API can be used in both the stage model and FA model.
+
 <!--Device-unnamed-declare namespace common--><!--Device-unnamed-declare namespace common-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
@@ -22,7 +25,7 @@ import { common } from '@kit.AbilityKit';
 | --- | --- |
 | [AbilityResult](arkts-ability-common-abilityresult-t.md) | Defines the result code and data returned when a started ability is terminated. |
 | [AbilityStageContext](arkts-ability-common-abilitystagecontext-t.md) | Defines the context environment for the [AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md). It inherits from Context. |
-| [AbilityStartCallback](arkts-ability-common-abilitystartcallback-t.md) | Defines the callback invoked to return the UIExtensionAbility startup result. It is usually used as an input parameter in [UIAbilityContext.startAbilityByType](arkts-ability-uiabilitycontext-c.md#startabilitybytype1) or [UIExtensionContext.startAbilityByType](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#startabilitybytype1). |
+| [AbilityStartCallback](arkts-ability-common-abilitystartcallback-t.md) | Defines the callback invoked to return the UIExtensionAbility startup result. It is usually used as an input parameter in [UIAbilityContext.startAbilityByType](arkts-ability-uiabilitycontext-c.md#startabilitybytype) or [UIExtensionContext.startAbilityByType](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#startabilitybytype). |
 | [AgentAppInfo](arkts-ability-common-agentappinfo-t.md) | Application-related information for the agent. |
 | [AgentCapabilities](arkts-ability-common-agentcapabilities-t.md) | Capabilities in an AgentCard represent the specific skills, services, and functions that an agent can perform or provide within the system. |
 | [AgentCard](arkts-ability-common-agentcard-t.md) | The AgentCard information describes the basic information and capabilities provided by an Agent. |

@@ -6,8 +6,6 @@ export interface ToneMappingSettings
 
 Describes the tone mapping settings.
 
-@typedef ToneMappingSettings
-
 **Since:** 12
 
 <!--Device-unnamed-export interface ToneMappingSettings--><!--Device-unnamed-export interface ToneMappingSettings-End-->

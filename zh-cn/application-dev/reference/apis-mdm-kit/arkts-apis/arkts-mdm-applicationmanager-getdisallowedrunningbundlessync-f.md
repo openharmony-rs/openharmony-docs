@@ -6,8 +6,6 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-<a id="getdisallowedrunningbundlessync1"></a>
-
 ## getDisallowedRunningBundlesSync
 
 ```TypeScript
@@ -68,8 +66,6 @@ try {
 }
 ```
 
-
-<a id="getdisallowedrunningbundlessync2"></a>
 
 ## getDisallowedRunningBundlesSync
 

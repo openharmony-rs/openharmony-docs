@@ -16,8 +16,6 @@ In addition to the [universal events](arkts-arkui-common-comp.md), the following
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="datetimeoptions1"></a>
-
 ## dateTimeOptions
 
 ```TypeScript
@@ -40,9 +38,7 @@ Sets whether to display a leading zero for the hour, minute, and second. '2-digi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [DateTimeOptions](arkts-arkui-timepicker-comp-datetimeoptions-t.md) | Yes | Sets whether to display leading zeros for the hour, minute, and second.<br>Default value: <br>hour: The default value is "2-digit" in the 24-hour format, which sets whether the hour is displayed as a 2 -digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". The default value is "numeric" in the 12-hour format, that is, no leading zero. <br>minute: The default value is "2-digit", which sets whether the minute is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". <br>second: The default value is "2-digit", which sets whether the second is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". <br> When the values of hour, minute, and second are set to undefined, the display effect follows the same rules as their default values. |
-
-<a id="datetimeoptions2"></a>
+| value | [DateTimeOptions](arkts-arkui-timepicker-comp-datetimeoptions-t.md) | Yes | Sets whether to display leading zeros for the hour, minute, and second. <br>Default value: <br>hour: The default value is "2-digit" in the 24-hour format, which sets whether the hour is displayed as a 2 -digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". The default value is "numeric" in the 12-hour format, that is, no leading zero. <br>minute: The default value is "2-digit", which sets whether the minute is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". <br>second: The default value is "2-digit", which sets whether the second is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". <br> When the values of hour, minute, and second are set to undefined, the display effect follows the same rules as their default values. |
 
 ## dateTimeOptions
 
@@ -50,7 +46,7 @@ Sets whether to display a leading zero for the hour, minute, and second. '2-digi
 dateTimeOptions(timeFormat: Optional<DateTimeOptions>)
 ```
 
-Sets whether to display a leading zero for the hours, minutes, and seconds. Compared with [dateTimeOptions<sup>12+</sup>](#datetimeoptions1), this API supports the **undefined** type for the **timeFormat** parameter.
+Sets whether to display a leading zero for the hours, minutes, and seconds. Compared with [dateTimeOptions<sup>12+</sup>](#datetimeoptions), this API supports the **undefined** type for the **timeFormat** parameter.
 
 **Since:** 18
 
@@ -66,7 +62,7 @@ Sets whether to display a leading zero for the hours, minutes, and seconds. Comp
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| timeFormat | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DateTimeOptions](arkts-arkui-timepicker-comp-datetimeoptions-t.md)&gt; | Yes | Sets whether the hour, minute, and second are displayed with a leading zero. Currently, only the hour, minute, and second parameters are supported.<br>Default value: <br>hour: The default value is "2-digit" in the 24-hour format. Sets whether the hour is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". The default value is "numeric" in the 12-hour format, that is, no leading zero. <br>minute: The default value is "2-digit". Sets whether the minute is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". <br>second: The default value is "2-digit". Sets whether the second is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". <br> When the values of hour, minute, and second are set to undefined, the display effect follows the same rules as their default values. |
+| timeFormat | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DateTimeOptions](arkts-arkui-timepicker-comp-datetimeoptions-t.md)&gt; | Yes | Sets whether the hour, minute, and second are displayed with a leading zero. Currently, only the hour, minute, and second parameters are supported. <br>Default value: <br>hour: The default value is "2-digit" in the 24-hour format. Sets whether the hour is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". The default value is "numeric" in the 12-hour format, that is, no leading zero. <br>minute: The default value is "2-digit". Sets whether the minute is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". <br>second: The default value is "2-digit". Sets whether the second is displayed as a 2-digit number. If the actual value is less than 10, a leading zero is added and displayed, that is, "0X". <br> When the values of hour, minute, and second are set to undefined, the display effect follows the same rules as their default values. |
 
 ## digitalCrownSensitivity
 
@@ -90,9 +86,7 @@ Sets the crown sensitivity. High sensitivity applies to scenarios where the time
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sensitivity | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CrownSensitivity](../arkts-apis/arkts-arkui-crownsensitivity-e.md)&gt; | Yes | Crown response sensitivity.<br>Default value: CrownSensitivity.MEDIUM, indicating a moderate response speed. |
-
-<a id="disappeartextstyle1"></a>
+| sensitivity | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CrownSensitivity](../arkts-apis/arkts-arkui-crownsensitivity-e.md)&gt; | Yes | Crown response sensitivity. <br>Default value: CrownSensitivity.MEDIUM, indicating a moderate response speed. |
 
 ## disappearTextStyle
 
@@ -116,9 +110,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight of the edge items (the second item above or below the selected item).<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>} <br>} |
-
-<a id="disappeartextstyle2"></a>
+| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight of the edge items (the second item above or below the selected item). <br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>} <br>} |
 
 ## disappearTextStyle
 
@@ -126,7 +118,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 disappearTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the text color, font size, and font weight of edge items (the second item above or below the selected item). Compared with [disappearTextStyle<sup>10+</sup>](#disappeartextstyle1), this API supports the **undefined** type for the **style** parameter.
+Sets the text color, font size, and font weight of edge items (the second item above or below the selected item). Compared with [disappearTextStyle<sup>10+</sup>](#disappeartextstyle), this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -142,7 +134,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight of the edge items.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>} <br>} <br>When the value of style is undefined, the default value is used. |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight of the edge items. <br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>} <br>} <br>When the value of style is undefined, the default value is used. |
 
 ## enableCascade
 
@@ -150,7 +142,7 @@ Sets the text color, font size, and font weight of edge items (the second item a
 enableCascade(enabled: boolean)
 ```
 
-Sets whether the AM/PM indicator automatically switches based on the hour value. This takes effect only when [useMilitaryTime](#usemilitarytime1) is set to false. Automatic switching applies to daily consumer scenarios such as alarms and schedules that emphasize operation efficiency and a smooth experience, while manual switching applies to scenarios such as healthcare and legal affairs that demand strict time precision and tolerate no ambiguity.
+Sets whether the AM/PM indicator automatically switches based on the hour value. This takes effect only when [useMilitaryTime](#usemilitarytime) is set to false. Automatic switching applies to daily consumer scenarios such as alarms and schedules that emphasize operation efficiency and a smooth experience, while manual switching applies to scenarios such as healthcare and legal affairs that demand strict time precision and tolerate no ambiguity.
 
 **Since:** 18
 
@@ -166,9 +158,7 @@ Sets whether the AM/PM indicator automatically switches based on the hour value.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether the AM/PM indicator automatically switches based on the hour. This parameter takes effect only when useMilitaryTime is set to false.<br>- true: automatically switches. When enabled is set to true, it takes effect only when the loop parameter is also set to true. <br>- false: does not automatically switch. The AM/PM indicator must be selected manually and is not automatically adjusted based on the hour. <br>Default value: false |
-
-<a id="enablehapticfeedback1"></a>
+| enabled | boolean | Yes | Whether the AM/PM indicator automatically switches based on the hour. This parameter takes effect only when useMilitaryTime is set to false. <br>- true: automatically switches. When enabled is set to true, it takes effect only when the loop parameter is also set to true. <br>- false: does not automatically switch. The AM/PM indicator must be selected manually and is not automatically adjusted based on the hour. <br>Default value: false |
 
 ## enableHapticFeedback
 
@@ -198,9 +188,7 @@ To enable haptic feedback, you must declare the following permission under **req
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable haptic feedback.<br>- true: Enable haptic feedback. <br>- false: Disable haptic feedback. <br>Default value: true <br>If this parameter is set to true but the system hardware does not support the vibration function, no vibration feedback is generated. |
-
-<a id="enablehapticfeedback2"></a>
+| enable | boolean | Yes | Whether to enable haptic feedback. <br>- true: Enable haptic feedback. <br>- false: Disable haptic feedback. <br>Default value: true <br>If this parameter is set to true but the system hardware does not support the vibration function, no vibration feedback is generated. |
 
 ## enableHapticFeedback
 
@@ -208,7 +196,7 @@ To enable haptic feedback, you must declare the following permission under **req
 enableHapticFeedback(enable: Optional<boolean>)
 ```
 
-Sets whether to enable haptic feedback. Compared with [enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback1), the enable parameter additionally supports the undefined type.
+Sets whether to enable haptic feedback. Compared with [enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback), the enable parameter additionally supports the undefined type.
 
 To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
 
@@ -226,9 +214,7 @@ To enable haptic feedback, you must declare the following permission under **req
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable haptic feedback.<br>- true: haptic feedback is enabled. <br>- false: haptic feedback is disabled. <br>Default value: true <br>When the value of enable is undefined, the default value is used. <br>If the value is set to true but the system hardware does not support vibration, no vibration feedback is generated. |
-
-<a id="loop1"></a>
+| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable haptic feedback. <br>- true: haptic feedback is enabled. <br>- false: haptic feedback is disabled. <br>Default value: true <br>When the value of enable is undefined, the default value is used. <br>If the value is set to true but the system hardware does not support vibration, no vibration feedback is generated. |
 
 ## loop
 
@@ -252,9 +238,7 @@ Sets whether to enable loop mode. Loop mode is suitable for scenarios where the 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to enable loop mode.<br>- true: loop mode is enabled. <br>- false: loop mode is disabled. <br>Default value: true <br>**Note:** When start or end is set to a non-default value, loop does not take effect. |
-
-<a id="loop2"></a>
+| value | boolean | Yes | Whether to enable loop mode. <br>- true: loop mode is enabled. <br>- false: loop mode is disabled. <br>Default value: true <br>**Note:** When start or end is set to a non-default value, loop does not take effect. |
 
 ## loop
 
@@ -262,7 +246,7 @@ Sets whether to enable loop mode. Loop mode is suitable for scenarios where the 
 loop(isLoop: Optional<boolean>)
 ```
 
-Sets whether to enable loop scrolling. Compared with [loop<sup>11+</sup>](#loop1), this API supports the **undefined** type for the **isLoop** parameter.
+Sets whether to enable loop scrolling. Compared with [loop<sup>11+</sup>](#loop), this API supports the **undefined** type for the **isLoop** parameter.
 
 > **NOTE:** 
 > 
@@ -282,9 +266,7 @@ Sets whether to enable loop scrolling. Compared with [loop<sup>11+</sup>](#loop1
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isLoop | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable loop mode.<br>- true: enable loop mode. <br>- false: disable loop mode. <br>Default value: true <br>When the value of isLoop is undefined, the default value is used. |
-
-<a id="onchange1"></a>
+| isLoop | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable loop mode. <br>- true: enable loop mode. <br>- false: disable loop mode. <br>Default value: true <br>When the value of isLoop is undefined, the default value is used. |
 
 ## onChange
 
@@ -312,15 +294,13 @@ The callback is triggered after the scroll animation ends. If you need to obtain
 | --- | --- | --- | --- |
 | callback | (value: TimePickerResult) =&gt; void | Yes | Callback used to return the selected time. The value of hour ranges from 0 to 23, regardless of the display format. |
 
-<a id="onchange2"></a>
-
 ## onChange
 
 ```TypeScript
 onChange(callback: Optional<OnTimePickerChangeCallback>)
 ```
 
-Triggered when the time picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. Compared with [onChange](#onchange1), this API supports the **undefined** type for the **callback** parameter.
+Triggered when the time picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
 
 The callback is triggered after the scroll animation ends. If you need to obtain index changes quickly, use the [onEnterSelectedArea](#onenterselectedarea) API instead. Note that when [enableCascade](#enablecascade) is set to true, because the AM/PM column and the hour column are linked, the behavior of this callback may not meet expectations, and it is not recommended to use it in this scenario.
 
@@ -338,7 +318,7 @@ The callback is triggered after the scroll animation ends. If you need to obtain
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnTimePickerChangeCallback](arkts-arkui-timepicker-comp-ontimepickerchangecallback-t.md)&gt; | Yes | Callback invoked when the time is selected.<br>When the value of callback is undefined, the callback is not used. |
+| callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnTimePickerChangeCallback](arkts-arkui-timepicker-comp-ontimepickerchangecallback-t.md)&gt; | Yes | Callback invoked when the time is selected. <br>When the value of callback is undefined, the callback is not used. |
 
 ## onEnterSelectedArea
 
@@ -348,7 +328,7 @@ onEnterSelectedArea(callback: Callback<TimePickerResult>)
 
 Triggered when an option enters the divider area during the scrolling of the TimePicker. It applies to scenarios that require a quick response, such as updating the UI in real time and validating the time range in real time during scrolling. Compared with onChange, this callback is triggered earlier and is suitable for scenarios that require immediate feedback.
 
-The difference from the [onChange](#onchange1) event is that this event is triggered earlier than the [onChange](#onchange1) event. When the scroll distance of the scrolled column exceeds half the height of the selected item, the option has already entered the divider area, and this event is triggered. When [enableCascade](#enablecascade) is set to true, because the AM/PM column and the hour column are linked (that is, the AM/PM indicator is automatically adjusted based on the hour value), it is not recommended to use this callback. This callback marks the point at which the option enters the divider area during scrolling, while the options changed by the linkage do not involve scrolling. Therefore, in the return value of the callback, only the value of the currently scrolled column changes normally, and the values of the other unscrolled columns remain unchanged.
+The difference from the [onChange](#onchange) event is that this event is triggered earlier than the [onChange](#onchange) event. When the scroll distance of the scrolled column exceeds half the height of the selected item, the option has already entered the divider area, and this event is triggered. When [enableCascade](#enablecascade) is set to true, because the AM/PM column and the hour column are linked (that is, the AM/PM indicator is automatically adjusted based on the hour value), it is not recommended to use this callback. This callback marks the point at which the option enters the divider area during scrolling, while the options changed by the linkage do not involve scrolling. Therefore, in the return value of the callback, only the value of the currently scrolled column changes normally, and the values of the other unscrolled columns remain unchanged.
 
 > **NOTE:** 
 > 
@@ -369,8 +349,6 @@ The difference from the [onChange](#onchange1) event is that this event is trigg
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | Callback&lt;[TimePickerResult](arkts-arkui-timepicker-comp-timepickerresult-i.md)&gt; | Yes | Callback triggered during the scrolling of the time picker when an item enters the divider area. |
-
-<a id="selectedtextstyle1"></a>
 
 ## selectedTextStyle
 
@@ -394,9 +372,7 @@ Sets the text color, font size, and font weight of the selected item.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight of the selected item.<br>Default value: <br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} |
-
-<a id="selectedtextstyle2"></a>
+| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight of the selected item. <br>Default value: <br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} |
 
 ## selectedTextStyle
 
@@ -404,7 +380,7 @@ Sets the text color, font size, and font weight of the selected item.
 selectedTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the text color, font size, and font weight of the selected item. Compared with [selectedTextStyle<sup>10+</sup>](#selectedtextstyle1), the **style** parameter additionally supports the **undefined** type.
+Sets the text color, font size, and font weight of the selected item. Compared with [selectedTextStyle<sup>10+</sup>](#selectedtextstyle), the **style** parameter additionally supports the **undefined** type.
 
 **Since:** 18
 
@@ -420,9 +396,7 @@ Sets the text color, font size, and font weight of the selected item. Compared w
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight of the selected item.<br>Default value: <br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} <br>When the value of style is undefined, the default value is used. |
-
-<a id="textstyle1"></a>
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight of the selected item. <br>Default value: <br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} <br>When the value of style is undefined, the default value is used. |
 
 ## textStyle
 
@@ -446,9 +420,7 @@ Sets the text color, font size, and font weight of candidate items (the item imm
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight of the options.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} |
-
-<a id="textstyle2"></a>
+| value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Text color, font size, and font weight of the options. <br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} |
 
 ## textStyle
 
@@ -456,7 +428,7 @@ Sets the text color, font size, and font weight of candidate items (the item imm
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the text color, font size, and font weight of candidate items (the item immediately adjacent to the selected item, above or below). Compared with [textStyle<sup>10+</sup>](#textstyle1), this API supports the **undefined** type for the **style** parameter.
+Sets the text color, font size, and font weight of candidate items (the item immediately adjacent to the selected item, above or below). Compared with [textStyle<sup>10+</sup>](#textstyle), this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -472,9 +444,7 @@ Sets the text color, font size, and font weight of candidate items (the item imm
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight of the options.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} <br>When the value of style is undefined, the default value is used. |
-
-<a id="usemilitarytime1"></a>
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | Yes | Text color, font size, and font weight of the options. <br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} <br>When the value of style is undefined, the default value is used. |
 
 ## useMilitaryTime
 
@@ -498,9 +468,7 @@ Sets whether the time is displayed in 24-hour format. If this API is not used, t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether the time is displayed in 24-hour format.<br>- true: The time is displayed in 24-hour format. <br>- false: The time is displayed in 12-hour format. |
-
-<a id="usemilitarytime2"></a>
+| value | boolean | Yes | Whether the time is displayed in 24-hour format. <br>- true: The time is displayed in 24-hour format. <br>- false: The time is displayed in 12-hour format. |
 
 ## useMilitaryTime
 
@@ -508,7 +476,7 @@ Sets whether the time is displayed in 24-hour format. If this API is not used, t
 useMilitaryTime(isMilitaryTime: Optional<boolean>)
 ```
 
-Sets whether the time is displayed in 24-hour format. If this attribute is not specified, the system time format is used by default. Compared with [useMilitaryTime](#usemilitarytime1), this API supports the **undefined** type for the **isMilitaryTime** parameter.
+Sets whether the time is displayed in 24-hour format. If this attribute is not specified, the system time format is used by default. Compared with [useMilitaryTime](#usemilitarytime), this API supports the **undefined** type for the **isMilitaryTime** parameter.
 
 **Since:** 18
 
@@ -524,4 +492,4 @@ Sets whether the time is displayed in 24-hour format. If this attribute is not s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isMilitaryTime | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the displayed time is in 24-hour format.<br>- true: The displayed time is in 24-hour format. <br>- false: The displayed time is in 12-hour format. <br>When the value of isMilitaryTime is undefined, the system setting is followed. |
+| isMilitaryTime | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the displayed time is in 24-hour format. <br>- true: The displayed time is in 24-hour format. <br>- false: The displayed time is in 12-hour format. <br>When the value of isMilitaryTime is undefined, the system setting is followed. |

@@ -91,8 +91,6 @@ Creates a new rejected promise for the provided reason.
 | --- | --- |
 | Promise&lt;T&gt; | A new rejected Promise. |
 
-<a id="resolve1"></a>
-
 ## resolve
 
 ```TypeScript
@@ -108,8 +106,6 @@ Creates a new resolved promise.
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | A resolved promise. |
-
-<a id="resolve2"></a>
 
 ## resolve
 
@@ -132,8 +128,6 @@ Creates a new resolved promise for the provided value.
 | Type | Description |
 | --- | --- |
 | Promise&lt;Awaited&lt;T&gt;&gt; | A promise whose internal state matches the provided promise. |
-
-<a id="resolve3"></a>
 
 ## resolve
 

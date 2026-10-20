@@ -8,8 +8,6 @@ type CombinedOptions<T extends ViewModel, Data> = object &
 
 Used for ide.
 
-@typedef { object & Options<T, Data> & ThisType<T & ViewModel & Data> } CombinedOptions<T extends ViewModel, Data>
-
 **Type:** object & [Options](arkts-arkui-viewmodel-options-i.md)&lt;T, Data&gt; & ThisType&lt;T & [ViewModel](arkts-arkui-viewmodel-i.md) & Data&gt;
 
 **Since:** 4

@@ -18,7 +18,7 @@ Queries whether the USB is disabled.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy2)(admin: Want | null, feature: FeatureForDevice)
+**Substitutes:** [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy)(admin: Want | null, feature: FeatureForDevice)
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_USB
 
@@ -40,7 +40,7 @@ Queries whether the USB is disabled.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns **true** if USB is disabled;<br>returns **false** otherwise. |
+| boolean | Returns **true** if USB is disabled; <br>returns **false** otherwise. |
 
 **Error codes:**
 

@@ -16,8 +16,6 @@ declare class TimePickerAttribute extends CommonMethod<TimePickerAttribute>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="datetimeoptions1"></a>
-
 ## dateTimeOptions
 
 ```TypeScript
@@ -42,15 +40,13 @@ dateTimeOptions(value: DateTimeOptions)
 | --- | --- | --- | --- |
 | value | [DateTimeOptions](arkts-arkui-timepicker-comp-datetimeoptions-t.md) | 是 | 设置时分秒是否显示前导0。<br>默认值：<br>hour: 24小时制默认为"2-digit"，设置hour是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"；12小时制默认为"numeric"，即没有前导0。<br>minute: 默认为"2-digit"，设置minute是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"。<br>second: 默认为"2-digit"，设置second是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"。<br> 当hour、minute、second的值设置为undefined时，显示效果与其默认值规则一致。 |
 
-<a id="datetimeoptions2"></a>
-
 ## dateTimeOptions
 
 ```TypeScript
 dateTimeOptions(timeFormat: Optional<DateTimeOptions>)
 ```
 
-设置时分秒是否显示前导0。与[dateTimeOptions<sup>12+</sup>](#datetimeoptions1)相比，timeFormat参数新增了对undefined类型的支持。
+设置时分秒是否显示前导0。与[dateTimeOptions<sup>12+</sup>](#datetimeoptions)相比，timeFormat参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -92,8 +88,6 @@ digitalCrownSensitivity(sensitivity: Optional<CrownSensitivity>)
 | --- | --- | --- | --- |
 | sensitivity | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CrownSensitivity](../arkts-apis/arkts-arkui-crownsensitivity-e.md)&gt; | 是 | 表冠响应灵敏度。<br>默认值：CrownSensitivity.MEDIUM，表示响应速度适中。 |
 
-<a id="disappeartextstyle1"></a>
-
 ## disappearTextStyle
 
 ```TypeScript
@@ -118,15 +112,13 @@ disappearTextStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | 是 | 边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号和字体粗细。<br>默认值：<br>{<br>color: '#ff182431', <br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular <br>} <br>} |
 
-<a id="disappeartextstyle2"></a>
-
 ## disappearTextStyle
 
 ```TypeScript
 disappearTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。与[disappearTextStyle<sup>10+</sup>](#disappeartextstyle1)相比，style参数新增了对undefined类型的支持。
+设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。与[disappearTextStyle<sup>10+</sup>](#disappeartextstyle)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -150,7 +142,7 @@ disappearTextStyle(style: Optional<PickerTextStyle>)
 enableCascade(enabled: boolean)
 ```
 
-设置上午和下午的标识是否根据小时数自动切换，仅在[useMilitaryTime](#usemilitarytime1)设置为false时生效。自动切换适用于闹钟、日程等注重操作效率和流畅体验的日常消费场景，手动切换适用于医疗、法律等对时间精确性要求严苛、不容歧义的场景。
+设置上午和下午的标识是否根据小时数自动切换，仅在[useMilitaryTime](#usemilitarytime)设置为false时生效。自动切换适用于闹钟、日程等注重操作效率和流畅体验的日常消费场景，手动切换适用于医疗、法律等对时间精确性要求严苛、不容歧义的场景。
 
 **起始版本：** 18
 
@@ -167,8 +159,6 @@ enableCascade(enabled: boolean)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enabled | boolean | 是 | 上午和下午的标识是否根据小时数自动切换，仅在useMilitaryTime设置为false时生效。<br>- true：自动切换。当enabled设置为true时，仅在loop参数同时为true时生效。<br>- false：不自动切换。上午/下午标识需手动选择，不会根据小时数自动调整。<br>默认值：false |
-
-<a id="enablehapticfeedback1"></a>
 
 ## enableHapticFeedback
 
@@ -200,15 +190,13 @@ enableHapticFeedback(enable: boolean)
 | --- | --- | --- | --- |
 | enable | boolean | 是 | 设置是否开启触控反馈。<br>- true：开启触控反馈。<br>- false：不开启触控反馈。<br>默认值：true <br>设置为true后，若系统硬件不支持振动功能，则不会产生振动反馈。 |
 
-<a id="enablehapticfeedback2"></a>
-
 ## enableHapticFeedback
 
 ```TypeScript
 enableHapticFeedback(enable: Optional<boolean>)
 ```
 
-设置是否开启触控反馈。与[enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback1)相比，enable参数新增了对undefined类型的支持。
+设置是否开启触控反馈。与[enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback)相比，enable参数新增了对undefined类型的支持。
 
 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
 
@@ -227,8 +215,6 @@ enableHapticFeedback(enable: Optional<boolean>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 设置是否开启触控反馈。<br>- true：开启触控反馈。<br>- false：不开启触控反馈。<br>默认值：true <br>当enable的值为undefined时，使用默认值。<br>设置为true后，若系统硬件不支持振动功能，则不会产生振动反馈。 |
-
-<a id="loop1"></a>
 
 ## loop
 
@@ -254,15 +240,13 @@ loop(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否启用循环模式。<br>- true：启用循环模式。<br>- false：不启用循环模式。<br>默认值：true <br>**说明：** 设置了start或end且为非默认值的场景下，loop不生效。 |
 
-<a id="loop2"></a>
-
 ## loop
 
 ```TypeScript
 loop(isLoop: Optional<boolean>)
 ```
 
-设置是否启用循环模式。与[loop<sup>11+</sup>](#loop1)相比，isLoop参数新增了对undefined类型的支持。
+设置是否启用循环模式。与[loop<sup>11+</sup>](#loop)相比，isLoop参数新增了对undefined类型的支持。
 
 > **说明：** 
 > 
@@ -283,8 +267,6 @@ loop(isLoop: Optional<boolean>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | isLoop | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 是否启用循环模式。<br>- true：启用循环模式。<br>- false：不启用循环模式。<br>默认值：true <br>当isLoop的值为undefined时，使用默认值。 |
-
-<a id="onchange1"></a>
 
 ## onChange
 
@@ -312,15 +294,13 @@ onChange(callback: (value: TimePickerResult) => void)
 | --- | --- | --- | --- |
 | callback | (value: TimePickerResult) =&gt; void | 是 | 回调返回选中的时间结果，hour取值0-23，与展示制式无关。 |
 
-<a id="onchange2"></a>
-
 ## onChange
 
 ```TypeScript
 onChange(callback: Optional<OnTimePickerChangeCallback>)
 ```
 
-滑动TimePicker后，时间选项归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。与[onChange](#onchange1)相比，callback参数新增了对undefined类型的支持。
+滑动TimePicker后，时间选项归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
 
 回调会在滑动动画结束后触发，如果需要快速获取索引值变化，建议使用[onEnterSelectedArea](#onenterselectedarea)接口。需要注意的是，当[enableCascade](#enablecascade)设置为true时，由于上午/下午列与小时列存在联动关系，该回调的行为可能不符合预期，不建议在此场景下使用。
 
@@ -348,7 +328,7 @@ onEnterSelectedArea(callback: Callback<TimePickerResult>)
 
 滑动TimePicker过程中，选项进入分割线区域内，触发该回调。适用于需要在滑动过程中实时更新UI、实时验证时间范围等需要快速响应的场景。与onChange相比，该回调触发时机更早，适合需要即时反馈的场景。
 
-与[onChange](#onchange1)事件的差别在于，该事件的触发时机早于[onChange](#onchange1)事件，当滑动列的滑动距离超过选中项高度的一半时，选项已经进入分割线区域内，会触发该事件。当[enableCascade](#enablecascade)设置为true时，由于上午/下午列与小时列存在联动关系（即上午/下午标识会根据小时数自动调整），不建议使用该回调。该回调标识的是滑动过程中选项进入分割线区域内的节点，而联动变化的选项并不涉及滑动，因此，回调的返回值中，仅当前滑动列的值会正常变化，其余未滑动列的值保持不变。
+与[onChange](#onchange)事件的差别在于，该事件的触发时机早于[onChange](#onchange)事件，当滑动列的滑动距离超过选中项高度的一半时，选项已经进入分割线区域内，会触发该事件。当[enableCascade](#enablecascade)设置为true时，由于上午/下午列与小时列存在联动关系（即上午/下午标识会根据小时数自动调整），不建议使用该回调。该回调标识的是滑动过程中选项进入分割线区域内的节点，而联动变化的选项并不涉及滑动，因此，回调的返回值中，仅当前滑动列的值会正常变化，其余未滑动列的值保持不变。
 
 > **说明：** 
 > 
@@ -369,8 +349,6 @@ onEnterSelectedArea(callback: Callback<TimePickerResult>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | Callback&lt;[TimePickerResult](arkts-arkui-timepicker-comp-timepickerresult-i.md)&gt; | 是 | 滑动TimePicker过程中，选项进入分割线区域时触发的回调。 |
-
-<a id="selectedtextstyle1"></a>
 
 ## selectedTextStyle
 
@@ -396,15 +374,13 @@ selectedTextStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | 是 | 选中项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} |
 
-<a id="selectedtextstyle2"></a>
-
 ## selectedTextStyle
 
 ```TypeScript
 selectedTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置选中项的文本颜色、字号及字体粗细。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle1)相比，style参数新增了对undefined类型的支持。
+设置选中项的文本颜色、字号及字体粗细。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -421,8 +397,6 @@ selectedTextStyle(style: Optional<PickerTextStyle>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | 是 | 选中项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff007dff', <br>font: {<br>size: '20fp', <br>weight: FontWeight.Medium <br>} <br>} <br>当style的值为undefined时，使用默认值。 |
-
-<a id="textstyle1"></a>
 
 ## textStyle
 
@@ -448,15 +422,13 @@ textStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | 是 | 待选项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} |
 
-<a id="textstyle2"></a>
-
 ## textStyle
 
 ```TypeScript
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细。与[textStyle<sup>10+</sup>](#textstyle1)相比，style参数新增了对undefined类型的支持。
+设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细。与[textStyle<sup>10+</sup>](#textstyle)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -473,8 +445,6 @@ textStyle(style: Optional<PickerTextStyle>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)&gt; | 是 | 待选项的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} <br>当style的值为undefined时，使用默认值。 |
-
-<a id="usemilitarytime1"></a>
 
 ## useMilitaryTime
 
@@ -500,15 +470,13 @@ useMilitaryTime(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 时间是否以24小时制展示。<br>- true：时间以24小时制展示。<br>- false：时间以12小时制展示。 |
 
-<a id="usemilitarytime2"></a>
-
 ## useMilitaryTime
 
 ```TypeScript
 useMilitaryTime(isMilitaryTime: Optional<boolean>)
 ```
 
-设置展示时间是否为24小时制，未通过该接口设置时，默认跟随系统设置展示。与[useMilitaryTime](#usemilitarytime1)相比，isMilitaryTime参数新增了对undefined类型的支持。
+设置展示时间是否为24小时制，未通过该接口设置时，默认跟随系统设置展示。与[useMilitaryTime](#usemilitarytime)相比，isMilitaryTime参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 

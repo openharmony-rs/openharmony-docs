@@ -6,8 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="getallsessiondescriptors2"></a>
-
 ## getAllSessionDescriptors
 
 ```TypeScript
@@ -20,7 +18,7 @@ function getAllSessionDescriptors(): Promise<Array<Readonly<AVSessionDescriptor>
 
 **需要权限：** 
 - API版本23+：ohos.permission.MANAGE_MEDIA_RESOURCES or ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
-- API版本9-22：ohos.permission.MANAGE_MEDIA_RESOURCES
+- API版本9-22：N/A
 
 <!--Device-avSession-function getAllSessionDescriptors(): Promise<Array<Readonly<AVSessionDescriptor>>>--><!--Device-avSession-function getAllSessionDescriptors(): Promise<Array<Readonly<AVSessionDescriptor>>>-End-->
 
@@ -37,7 +35,6 @@ function getAllSessionDescriptors(): Promise<Array<Readonly<AVSessionDescriptor>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 9 - 22 |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
 **示例**

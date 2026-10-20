@@ -6,8 +6,6 @@ interface AVMusicTemplateDescriptor
 
 Description of the AVMusicTemplate.
 
-@typedef {AVMusicTemplateDescriptor}
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-interface AVMusicTemplateDescriptor--><!--Device-avMusicTemplate-interface AVMusicTemplateDescriptor-End-->

@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="queryabilityinfo1"></a>
-
 ## queryAbilityInfo
 
 ```TypeScript
@@ -79,8 +77,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="queryabilityinfo2"></a>
 
 ## queryAbilityInfo
 
@@ -157,8 +153,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="queryabilityinfo3"></a>
-
 ## queryAbilityInfo
 
 ```TypeScript
@@ -191,7 +185,7 @@ function queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Pr
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md)&gt;&gt; | Promise对象，返回Array<[AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md)>。 |
+| Promise&lt;Array&lt;[AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md)&gt;&gt; | Promise对象，返回Array<AbilityInfo>。 |
 
 **错误码：**
 
@@ -260,8 +254,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="queryabilityinfo4"></a>
 
 ## queryAbilityInfo
 

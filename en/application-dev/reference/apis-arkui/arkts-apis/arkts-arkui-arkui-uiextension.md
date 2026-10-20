@@ -4,6 +4,8 @@ The **uiExtension** module provides APIs for the [EmbeddedUIExtensionAbility](..
 
 **Since:** 12
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace uiExtension--><!--Device-unnamed-declare namespace uiExtension-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

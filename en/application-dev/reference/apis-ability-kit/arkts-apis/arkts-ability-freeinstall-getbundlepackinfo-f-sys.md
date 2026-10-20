@@ -6,8 +6,6 @@
 import { freeInstall } from '@kit.AbilityKit';
 ```
 
-<a id="getbundlepackinfo1"></a>
-
 ## getBundlePackInfo
 
 ```TypeScript
@@ -45,8 +43,6 @@ Obtains bundlePackInfo based on **bundleName** and **bundlePackFlag**. This API 
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name is not found. |
 
-
-<a id="getbundlepackinfo2"></a>
 
 ## getBundlePackInfo
 

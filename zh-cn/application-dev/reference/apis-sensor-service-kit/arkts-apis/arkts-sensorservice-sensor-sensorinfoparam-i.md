@@ -6,8 +6,6 @@ interface SensorInfoParam
 
 传感器传入设置参数，多传感器情况下通过deviceId、sensorIndex控制指定传感器。
 
-**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。
-
 **起始版本：** 19
 
 <!--Device-sensor-interface SensorInfoParam--><!--Device-sensor-interface SensorInfoParam-End-->
@@ -26,7 +24,7 @@ import { sensor } from '@kit.SensorServiceKit';
 deviceId?: number
 ```
 
-指定目标传感器所属设备的ID。默认值：-1（表示本地设备）。可通过sensor.on('sensorStatusChange')或[getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist1)获取远程设备ID。
+指定目标传感器所属设备的ID。默认值：-1（表示本地设备）。可通过sensor.on('sensorStatusChange')或[getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist)获取远程设备ID。
 
 **类型：** number
 
@@ -44,7 +42,7 @@ deviceId?: number
 sensorIndex?: number
 ```
 
-指定目标传感器的索引，同一类型传感器可能有多个实例。默认值：0（表示设备上的默认传感器）。其它传感器索引需通过[getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist1)或sensor.on('sensorStatusChange')获取。
+指定目标传感器的索引，同一类型传感器可能有多个实例。默认值：0（表示设备上的默认传感器）。其它传感器索引需通过[getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist)或sensor.on('sensorStatusChange')获取。
 
 **类型：** number
 

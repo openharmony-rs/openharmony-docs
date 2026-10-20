@@ -6,8 +6,6 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="clearupapplicationdata1"></a>
-
 ## clearUpApplicationData
 
 ```TypeScript
@@ -71,8 +69,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="clearupapplicationdata2"></a>
 
 ## clearUpApplicationData
 

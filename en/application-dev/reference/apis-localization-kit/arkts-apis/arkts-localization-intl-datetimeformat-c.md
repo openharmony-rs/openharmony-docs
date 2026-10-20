@@ -22,8 +22,6 @@ Performs date and time formatting.
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -54,8 +52,6 @@ import { intl } from '@kit.LocalizationKit';
 // Create a DateTimeFormat object using the current system locale ID.
 let formatter: intl.DateTimeFormat = new intl.DateTimeFormat();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

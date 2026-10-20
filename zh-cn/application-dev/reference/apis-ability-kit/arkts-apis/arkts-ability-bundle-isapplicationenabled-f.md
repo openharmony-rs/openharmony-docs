@@ -6,8 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="isapplicationenabled1"></a>
-
 ## isApplicationEnabled
 
 ```TypeScript
@@ -47,8 +45,6 @@ bundle.isApplicationEnabled(bundleName, (err, data) => {
 })
 ```
 
-
-<a id="isapplicationenabled2"></a>
 
 ## isApplicationEnabled
 

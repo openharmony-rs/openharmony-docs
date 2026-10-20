@@ -6,8 +6,6 @@
 import { dataShare } from '@kit.ArkData';
 ```
 
-<a id="createdatasharehelper1"></a>
-
 ## createDataShareHelper
 
 ```TypeScript
@@ -74,8 +72,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-
-<a id="createdatasharehelper2"></a>
 
 ## createDataShareHelper
 
@@ -149,8 +145,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-
-<a id="createdatasharehelper3"></a>
 
 ## createDataShareHelper
 

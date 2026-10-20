@@ -10,8 +10,6 @@ AgentHostProxy用于从[AgentExtensionAbility](arkts-ability-app-agent-agentexte
 > 
 > - 本模块接口需要在主线程中使用，不支持在Worker、TaskPool等子线程中使用。
 
-@interface AgentHostProxy
-
 **起始版本：** 24
 
 <!--Device-unnamed-export interface AgentHostProxy--><!--Device-unnamed-export interface AgentHostProxy-End-->

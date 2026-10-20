@@ -6,8 +6,6 @@ export interface Blend
 
 Controls the transparency of materials.
 
-@interface Blend
-
 **Since:** 20
 
 <!--Device-unnamed-export interface Blend--><!--Device-unnamed-export interface Blend-End-->

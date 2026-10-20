@@ -24,7 +24,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 end?: number
 ```
 
-End position to read the data, in bytes. This parameter is optional. The default value is the end of the file.
+End offset position of the file, in bytes. This parameter is optional. The default value is the end of the file.
 
 **Type:** number
 
@@ -40,7 +40,7 @@ End position to read the data, in bytes. This parameter is optional. The default
 start?: number
 ```
 
-Start position to read the data, in bytes. This parameter is optional. By default, data is read from the current position.
+Start offset position of the file, in bytes. This parameter is optional. The default value is the current position.
 
 **Type:** number
 

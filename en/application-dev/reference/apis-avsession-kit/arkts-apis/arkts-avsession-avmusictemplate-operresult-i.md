@@ -6,8 +6,6 @@ interface OperResult
 
 The definition of the operate result.
 
-@interface OperResult
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-interface OperResult--><!--Device-avMusicTemplate-interface OperResult-End-->

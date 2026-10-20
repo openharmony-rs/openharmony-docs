@@ -40,7 +40,7 @@ Creates a vertical linear layout container. You can set the spacing between chil
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ColumnOptions](arkts-arkui-column-comp-columnoptions-i.md) | No | Spacing configuration options of the **Column** component. It sets the vertical spacing between elements in the column layout through the **space** attribute. Pass this parameter when a fixed vertical spacing needs to be set for child components; if omitted, no child component spacing is set.<br> |
+| options | [ColumnOptions](arkts-arkui-column-comp-columnoptions-i.md) | No | Spacing configuration options of the **Column** component. It sets the vertical spacing between elements in the column layout through the **space** attribute. Pass this parameter when a fixed vertical spacing needs to be set for child components; if omitted, no child component spacing is set. <br> |
 
 ## Column
 

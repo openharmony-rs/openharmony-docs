@@ -17,6 +17,7 @@ Remote user authorization item.
 ## Modules to Import
 
 ```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## authResult

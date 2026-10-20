@@ -20,8 +20,6 @@ The **ImageData** object stores pixel data rendered on a canvas, supporting read
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -49,8 +47,6 @@ Creates an **ImageData** object with the specified width, height, and pixel data
 | width | number | Yes | Width of the rectangular area, in vp. The width and height must not exceed 16384 px, and the maximum area must not exceed 16000 px × 16000 px. If the maximum area is exceeded, rendering will be abnormal. When the created area exceeds 536870911 square pixels, the width and height of the returned object are 0, and **data** is **undefined**.<br> Invalid values such as **NaN**, **Infinity**, negative numbers, and **0** are treated as **0**. |
 | height | number | Yes | Height of the rectangular area, in vp. The width and height must not exceed 16384 px, and the maximum area must not exceed 16000 px × 16000 px. If the maximum area is exceeded, rendering will be abnormal. When the created area exceeds 536870911 square pixels, the width and height of the returned object are 0, and **data** is **undefined**.<br> Invalid values such as **NaN**, **Infinity**, negative numbers, and **0** are treated as **0**. |
 | data | Uint8ClampedArray | No | One-dimensional array that stores pixel data in RGBA format. Each pixel occupies 4 bytes, in the order of R, G, B, and A. Data values range from 0 to 255. The array length must be width × height × 4. Pass this parameter when custom pixel data for **ImageData** is needed, for example, when pixel-level processing or modification of an image is required. When the invalid value **undefined** is passed, **data** is **undefined**.<br> Default value: a one-dimensional array with all values set to 0 |
-
-<a id="constructor2"></a>
 
 ## constructor
 

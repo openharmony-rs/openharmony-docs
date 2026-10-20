@@ -34,7 +34,7 @@ Callback invoked when an API call fails. The callback parameters are **data** of
 
 **Deprecated since:** 8
 
-**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)
+**Substitutes:** on
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -61,7 +61,7 @@ Callback invoked when the compass sensor data changes. The callback parameter is
 
 **Deprecated since:** 8
 
-**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)
+**Substitutes:** on
 
 **Model restriction:** This API can be used only in the FA model.
 

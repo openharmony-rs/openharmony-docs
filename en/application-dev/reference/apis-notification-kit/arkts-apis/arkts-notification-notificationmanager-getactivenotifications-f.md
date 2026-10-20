@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="getactivenotifications1"></a>
-
 ## getActiveNotifications
 
 ```TypeScript
@@ -24,7 +22,7 @@ This API is used to query the detailed information list of all stored notificati
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber1) sets the notification badge number.
+**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber) sets the notification badge number.
 
 **Parameters:**
 
@@ -57,8 +55,6 @@ notificationManager.getActiveNotifications(getActiveNotificationsCallback);
 ```
 
 
-<a id="getactivenotifications2"></a>
-
 ## getActiveNotifications
 
 ```TypeScript
@@ -75,7 +71,7 @@ This API is used to query the detailed information list of all stored notificati
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber2) sets the notification badge number.
+**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber) sets the notification badge number.
 
 **Return value:**
 

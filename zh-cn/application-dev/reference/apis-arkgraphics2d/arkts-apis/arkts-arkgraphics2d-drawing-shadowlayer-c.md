@@ -26,8 +26,6 @@ class ShadowLayer
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-<a id="create1"></a>
-
 ## create
 
 ```TypeScript
@@ -61,7 +59,7 @@ static create(blurRadius: number, x: number, y: number, color: common2D.Color): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -76,8 +74,6 @@ class DrawingRenderNode extends RenderNode {
   }
 }
 ```
-
-<a id="create3"></a>
 
 ## create
 
@@ -112,7 +108,7 @@ static create(blurRadius: number, x: number, y: number, color: common2D.Color | 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 

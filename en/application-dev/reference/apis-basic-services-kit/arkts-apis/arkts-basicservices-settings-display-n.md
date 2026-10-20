@@ -6,8 +6,6 @@ namespace display
 
 Provides methods for setting the display effect, including the font size, screen brightness, screen rotation, animation factor, and display color.
 
-@namespace display
-
 **Since:** 7
 
 <!--Device-settings-namespace display--><!--Device-settings-namespace display-End-->

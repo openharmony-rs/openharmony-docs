@@ -2,8 +2,6 @@
 
 提供与本设备连接的机械设备的控制和交互能力。包括连接管理、控制和监控功能
 
-@namespace mechanicManager
-
 **起始版本：** 20
 
 <!--Device-unnamed-declare namespace mechanicManager--><!--Device-unnamed-declare namespace mechanicManager-End-->

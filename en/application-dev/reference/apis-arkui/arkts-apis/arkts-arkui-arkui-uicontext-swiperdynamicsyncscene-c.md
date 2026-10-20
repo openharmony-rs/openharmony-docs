@@ -48,3 +48,56 @@ Dynamic sync scene of the **Swiper** component.
 <!--Device-SwiperDynamicSyncScene-readonly type: SwiperDynamicSyncSceneType--><!--Device-SwiperDynamicSyncScene-readonly type: SwiperDynamicSyncSceneType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Examples**
+
+```TypeScript
+import { SwiperDynamicSyncSceneType, SwiperDynamicSyncScene } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Frame {
+  @State ANIMATION: ExpectedFrameRateRange = { min: 0, max: 120, expected: 90 };
+  @State GESTURE: ExpectedFrameRateRange = { min: 0, max: 120, expected: 30};
+  private scenes: SwiperDynamicSyncScene[] = [];
+
+  build() {
+    Column() {
+      Text("Animation "+ JSON.stringify(this.ANIMATION))
+      Text("Gesture "+ JSON.stringify(this.GESTURE))
+      Row(){
+        Swiper() {
+          Text('one')
+          Text('two')
+          Text('three')
+        }
+        .width('100%')
+        .height('300vp')
+        .id("dynamicSwiper")
+        .backgroundColor(Color.Blue)
+        .autoPlay(true)
+        .onAppear(()=>{
+          let scenes = this.getUIContext().requireDynamicSyncScene("dynamicSwiper") as SwiperDynamicSyncScene[];
+          if (scenes) {
+            this.scenes = scenes;
+          }
+        })
+      }
+
+      Button("set frame")
+        .onClick(() => {
+          this.scenes.forEach((scene: SwiperDynamicSyncScene) => {
+
+            if (scene.type == SwiperDynamicSyncSceneType.ANIMATION) {
+              scene.setFrameRateRange(this.ANIMATION);
+            }
+
+            if (scene.type == SwiperDynamicSyncSceneType.GESTURE) {
+              scene.setFrameRateRange(this.GESTURE);
+            }
+          });
+        })
+    }
+  }
+}
+```

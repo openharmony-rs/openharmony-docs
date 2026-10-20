@@ -4,7 +4,7 @@
 interface EditorAttribute
 ```
 
-Represents the attributes of the edit box.
+Describes the attribute of the edit box.
 
 **Since:** 8
 
@@ -138,7 +138,7 @@ Extra information about the input method.
 readonly gradientMode?: GradientMode
 ```
 
-Gradient mode.
+Gradient mode. If this attribute is not specified or is set to an invalid value, the gradient mode is not used by default.
 
 **Type:** [GradientMode](arkts-ime-inputmethodengine-gradientmode-e.md)
 

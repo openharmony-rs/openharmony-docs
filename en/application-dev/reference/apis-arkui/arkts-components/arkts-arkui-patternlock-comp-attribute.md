@@ -80,7 +80,7 @@ Sets whether to reset the component state when the component area is pressed aga
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to reset the component state when the component area is pressed again after password input is complete.<br>true: reset the component state (that is, clear the previously entered password); false: do not reset the component state. |
+| value | boolean | Yes | Whether to reset the component state when the component area is pressed again after password input is complete. <br>true: reset the component state (that is, clear the previously entered password); false: do not reset the component state. |
 
 ## backgroundColor
 
@@ -128,7 +128,7 @@ Sets the radius of the grid dots. If this attribute is not set, the default radi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Radius of the grid dot.<br>Value range: (0, sideLength/11]. If the value is less than or equal to 0, the default value is used. If the value exceeds the maximum, the maximum value is used. |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Radius of the grid dot. <br>Value range: (0, sideLength/11]. If the value is less than or equal to 0, the default value is used. If the value exceeds the maximum, the maximum value is used. |
 
 ## onDotConnect
 
@@ -229,7 +229,7 @@ Sets the width of the connecting lines. If this attribute is not set, the defaul
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string | Yes | Width of the line.<br>Unit: vp <br>Value range: (0, sideLength/3]. If the value is set to 0 or a negative number, the line is not displayed. If the value exceeds the maximum, the maximum value is used. |
+| value | number &#124; string | Yes | Width of the line. <br>Unit: vp <br>Value range: (0, sideLength/3]. If the value is set to 0 or a negative number, the line is not displayed. If the value exceeds the maximum, the maximum value is used. |
 
 ## regularColor
 
@@ -301,7 +301,7 @@ Sets the width and height of the component (the width and height are equal). If 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Width and height of the component.<br>Value range: greater than 0. <br>If the value is set to 0 or a negative number, the component is not displayed. |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Width and height of the component. <br>Value range: greater than 0. <br>If the value is set to 0 or a negative number, the component is not displayed. |
 
 ## skipUnselectedPoint
 
@@ -325,4 +325,4 @@ Sets whether unselected grid dots are skipped when the password path passes over
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| skipped | boolean | Yes | Whether to skip the selection of unselected grid dots when the password path passes through them.<br>true: skip the selection; false: select automatically. |
+| skipped | boolean | Yes | Whether to skip the selection of unselected grid dots when the password path passes through them. <br>true: skip the selection; false: select automatically. |

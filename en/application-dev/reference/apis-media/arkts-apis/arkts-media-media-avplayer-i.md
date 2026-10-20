@@ -4,7 +4,7 @@
 interface AVPlayer
 ```
 
-AVPlayer is a playback management class. It provides APIs to manage and play media assets. Before calling any API in AVPlayer, you must use [createAVPlayer()](arkts-media-media-createavplayer-f.md#createavplayer1) to create an AVPlayer instance.
+AVPlayer is a playback management class. It provides APIs to manage and play media assets. Before calling any API in AVPlayer, you must use [createAVPlayer()](arkts-media-media-createavplayer-f.md#createavplayer) to create an AVPlayer instance.
 
 When using the AVPlayer instance, you are advised to register the following callbacks to proactively obtain status changes: [on('stateChange')](#onstatechange): listens for AVPlayer state changes. [on('error')](#onerror): listens for error events.
 
@@ -46,7 +46,7 @@ Add a new playback source to the player's playlist.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | src | [MediaSource](arkts-media-media-mediasource-i.md) | Yes | Playback source to be added to the playlist. |
-| id | string | No | Indicates the ID of a media source in the playlist. The newly added media source is inserted before the specified media source.<br>Default value:if empty, it means adding to the end of the list |
+| id | string | No | Indicates the ID of a media source in the playlist. The newly added media source is inserted before the specified media source. <br>Default value:if empty, it means adding to the end of the list |
 
 **Return value:**
 
@@ -94,7 +94,7 @@ Adds an external subtitle to a video based on the FD. Currently, the external su
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fd | number | Yes | Resource handle, which is obtained by calling [resourceManager.getRawFd](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd1). |
+| fd | number | Yes | Resource handle, which is obtained by calling [resourceManager.getRawFd](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd). |
 | offset | number | No | Resource offset, which needs to be entered based on the preset asset information. An invalid value causes a failure to parse subtitle assets. The default value is **0**.unit:Byte. |
 | length | number | No | Resource length, which needs to be entered based on the preset asset information. The default value is the remaining bytes from the offset in the file. An invalid value causes a failure to parse subtitle assets. The default value is **0**. |
 
@@ -602,7 +602,7 @@ Obtains the list of loaded time ranges. This API uses a promise to return the re
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[Range](arkts-media-media-range-i.md)&gt;&gt; | Promise used to return the list of loaded time ranges on the player.<br>The time range is represented by the **[start, end]** position on the playback timeline, in milliseconds. |
+| Promise&lt;Array&lt;[Range](arkts-media-media-range-i.md)&gt;&gt; | Promise used to return the list of loaded time ranges on the player. <br>The time range is represented by the **[start, end]** position on the playback timeline, in milliseconds. |
 
 **Examples**
 
@@ -895,7 +895,7 @@ Obtains the list of seekable time ranges. This API uses a promise to return the 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[Range](arkts-media-media-range-i.md)&gt;&gt; | Promise used to return the list of seekable time ranges on the player.<br>The time range is represented by the **[start, end]** position on the playback timeline, in milliseconds. |
+| Promise&lt;Array&lt;[Range](arkts-media-media-range-i.md)&gt;&gt; | Promise used to return the list of seekable time ranges on the player. <br>The time range is represented by the **[start, end]** position on the playback timeline, in milliseconds. |
 
 **Examples**
 
@@ -956,8 +956,6 @@ async function test(){
 }
 ```
 
-<a id="gettrackdescription1"></a>
-
 ## getTrackDescription
 
 ```TypeScript
@@ -1003,8 +1001,6 @@ async function test(){
   });
 }
 ```
-
-<a id="gettrackdescription2"></a>
 
 ## getTrackDescription
 
@@ -1593,7 +1589,7 @@ async function test(){
 off(type: 'availableBitrates', callback?: Callback<Array<number>>): void
 ```
 
-Unsubscribes from available bitrates of HLS/DASH streams. This event is reported after [prepare](#prepare1) is called.
+Unsubscribes from available bitrates of HLS/DASH streams. This event is reported after [prepare](#prepare) is called.
 
 **Since:** 9
 
@@ -1680,7 +1676,7 @@ Unsubscribes from audio stream output device changes and reasons. This API uses 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 
@@ -1940,7 +1936,7 @@ Unregisters listener to detect when changes occur in the playback content.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | No | Callback invoked when the event is triggered.<br>Default value:If this parameter is not specified, all callback functions for the event are unsubscribed. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | No | Callback invoked when the event is triggered. <br>Default value:If this parameter is not specified, all callback functions for the event are unsubscribed. |
 
 **Examples**
 
@@ -1978,7 +1974,7 @@ Unregister listener to detect time-based metadata, Currently, only the #EXT-X-DA
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVTimedMetaData](arkts-media-media-avtimedmetadata-i.md)&gt; | No | Callback invoked when the event is triggered.<br>Default value:If this parameter is not specified, all callback functions for the event are unsubscribed. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AVTimedMetaData](arkts-media-media-avtimedmetadata-i.md)&gt; | No | Callback invoked when the event is triggered. <br>Default value:If this parameter is not specified, all callback functions for the event are unsubscribed. |
 
 **Examples**
 
@@ -2558,7 +2554,7 @@ async function test(){
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-Subscribes to [AVPlayer](arkts-media-multimedia-media.md) errors. This event is used only for error prompt and does not require the user to stop playback control. If the [AVPlayerState](arkts-media-media-avplayerstate-t.md) is also switched to error, call [reset()](#reset1) or [release()](#release1) to exit the playback. If the playback remains in the error state after the [reset()](#reset1) method is called, you are advised to directly invoke the [release()](#release1) method to exit the playback operation.
+Subscribes to [AVPlayer](arkts-media-multimedia-media.md) errors. This event is used only for error prompt and does not require the user to stop playback control. If the [AVPlayerState](arkts-media-media-avplayerstate-t.md) is also switched to error, call [reset()](#reset) or [release()](#release) to exit the playback. If the playback remains in the error state after the [reset()](#reset) method is called, you are advised to directly invoke the [release()](#release) method to exit the playback operation.
 
 **Since:** 9
 
@@ -2645,7 +2641,7 @@ When subscribing to this event, you are advised to implement the player behavior
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 
@@ -3006,8 +3002,6 @@ async function test(){
 }
 ```
 
-<a id="pause1"></a>
-
 ## pause
 
 ```TypeScript
@@ -3054,8 +3048,6 @@ async function test(){
 }
 ```
 
-<a id="pause2"></a>
-
 ## pause
 
 ```TypeScript
@@ -3099,8 +3091,6 @@ async function test(){
   });
 }
 ```
-
-<a id="play1"></a>
 
 ## play
 
@@ -3148,8 +3138,6 @@ async function test(){
 }
 ```
 
-<a id="play2"></a>
-
 ## play
 
 ```TypeScript
@@ -3193,8 +3181,6 @@ async function test(){
   });
 }
 ```
-
-<a id="prepare1"></a>
 
 ## prepare
 
@@ -3243,8 +3229,6 @@ async function test(){
 }
 ```
 
-<a id="prepare2"></a>
-
 ## prepare
 
 ```TypeScript
@@ -3292,8 +3276,6 @@ async function test(){
 }
 ```
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -3339,8 +3321,6 @@ async function test(){
   });
 }
 ```
-
-<a id="release2"></a>
 
 ## release
 
@@ -3435,8 +3415,6 @@ async function test() {
 }
 ```
 
-<a id="reset1"></a>
-
 ## reset
 
 ```TypeScript
@@ -3482,8 +3460,6 @@ async function test(){
   });
 }
 ```
-
-<a id="reset2"></a>
 
 ## reset
 
@@ -3745,7 +3721,7 @@ Sets the decryption configuration. When receiving an [on('mediaKeySystemInfoUpda
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **Examples**
 
@@ -3910,7 +3886,7 @@ Sets a source of streaming media that can be pre-downloaded, downloads the media
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 
 **Examples**
@@ -4127,7 +4103,7 @@ setSuperResolution(enabled: boolean) : Promise<void>
 
 Enables or disables super resolution. This API can be called when the AVPlayer is in the initialized, prepared, playing, paused, completed, or stopped state. This API uses a promise to return the result.
 
-Before calling [prepare()](#prepare1), enable super resolution by using [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md).
+Before calling [prepare()](#prepare), enable super resolution by using [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md).
 
 **Since:** 18
 
@@ -4247,7 +4223,7 @@ Sets the resolution of the output video after super resolution. This API can be 
 
 The input parameter values must be in the range of 320 × 320 to 1920 × 1080 (in px).
 
-Before calling [prepare()](#prepare1), enable super resolution by using [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md).
+Before calling [prepare()](#prepare), enable super resolution by using [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md).
 
 **Since:** 18
 
@@ -4328,8 +4304,6 @@ async function test(){
 }
 ```
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -4375,8 +4349,6 @@ async function test(){
   });
 }
 ```
-
-<a id="stop2"></a>
 
 ## stop
 
@@ -4450,7 +4422,7 @@ Audio interruption mode. The default value is **SHARE_MODE**. It is a dynamic pr
 
 and can be set only when the AVPlayer is in the prepared, playing, paused, or completed state.
 
-To take effect, this property must be set before [play()](#play1) is called for the first time.
+To take effect, this property must be set before [play()](#play) is called for the first time.
 
 **Type:** [audio.InterruptMode](../../apis-audio-kit/arkts-apis/arkts-audio-audio-interruptmode-e.md)
 
@@ -4472,7 +4444,7 @@ Audio renderer information. If the media source contains videos, the default val
 
 This parameter can be set only when the AVPlayer is in the initialized state.
 
-To take effect, this property must be set before [prepare()](#prepare1) is called for the first time.
+To take effect, this property must be set before [prepare()](#prepare) is called for the first time.
 
 **Type:** [audio.AudioRendererInfo](../../apis-audio-kit/arkts-apis/arkts-audio-audio-audiorendererinfo-i.md)
 

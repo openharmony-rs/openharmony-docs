@@ -6,8 +6,6 @@ declare interface EditModeOptions
 
 List/Grid组件编辑模式选项属性参数对象。
 
-@interface EditModeOptions
-
 **起始版本：** 23
 
 <!--Device-unnamed-declare interface EditModeOptions--><!--Device-unnamed-declare interface EditModeOptions-End-->

@@ -29,7 +29,7 @@ Open the Certificate Management Uninstall Certificate dialog. The corresponding 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | context | [common.Context](../../apis-ability-kit/arkts-apis/arkts-ability-common-context-t.md) | Yes | Context of the application. |
-| certType | [CertificateType](arkts-devicecertificate-certificatemanagerdialog-certificatetype-e.md) | Yes | The type of the certificate to uninstall, only CA_CERT is supported.<br>Currently, only the CA_CERT type is supported. |
+| certType | [CertificateType](arkts-devicecertificate-certificatemanagerdialog-certificatetype-e.md) | Yes | The type of the certificate to uninstall, only CA_CERT is supported. <br>Currently, only the CA_CERT type is supported. |
 | certUri | string | Yes | Unique identifier of the certificate to uninstall. You can obtain the certUri by using the API for installing a CA certificate or querying the CA certificate list. |
 
 **Return value:**
@@ -43,8 +43,8 @@ Open the Certificate Management Uninstall Certificate dialog. The corresponding 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
-| [29700001](../errorcode-certManagerDialog.md#29700001-internal-error) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [29700001](../errorcode-certManagerDialog.md#29700001-internal-error) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 | [29700002](../errorcode-certManagerDialog.md#29700002-operation-canceled) | The user cancels the uninstallation operation. |
 | [29700003](../errorcode-certManagerDialog.md#29700003-failed-to-install-the-certificate) | The user uninstall certificate failed in the certificate manager dialog, such as the certificate uri is not exist. |
 | [29700004](../errorcode-certManagerDialog.md#29700004-operation-not-supported-by-the-device) | For security purposes, the current device does not support this API. You can use the [supportsCACertDialog](arkts-devicecertificate-certificatemanagerdialog-supportscacertdialog-f.md) to determine whether the device can open the dialog box for deleting a CA certificate with certType set to CA. |

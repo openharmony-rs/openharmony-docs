@@ -6,8 +6,6 @@ type SettingsChangeEvent = (settingItem: SettingItem) => Promise<SettingItem>
 
 The settings change event.
 
-@typedef { function } SettingsChangeEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

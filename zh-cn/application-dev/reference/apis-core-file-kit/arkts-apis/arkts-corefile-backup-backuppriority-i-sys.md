@@ -6,8 +6,6 @@ interface BackupPriority
 
 控制备份和恢复的优先级顺序。
 
-@interface BackupPriority
-
 **起始版本：** 12
 
 <!--Device-backup-interface BackupPriority--><!--Device-backup-interface BackupPriority-End-->

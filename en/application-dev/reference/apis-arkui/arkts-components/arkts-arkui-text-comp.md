@@ -40,7 +40,7 @@ Defines the constructor of Text.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | content | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | No | Plain text. This parameter is required when the text content needs to be directly displayed. This parameter does not take effect when the subcomponent [Span](arkts-arkui-span-comp.md) is contained or the [styled string](../arkts-apis/arkts-arkui-styledstring.md#styled_string) is set. <br>Default value: **' '** <br>**NOTE:** <br>Priority of displayed content: Styled string &gt; Content of the **Span** component &gt; Text content of the **Text** component. |
-| value | [TextOptions](arkts-arkui-text-comp-textoptions-i.md) | No | Text component initialization option, which is used to configure the text controller. This parameter is required when the **TextController** feature needs to be used to control the text content and selection.<br>Default value: If this parameter is not set, the text controller is not used. <br> |
+| value | [TextOptions](arkts-arkui-text-comp-textoptions-i.md) | No | Text component initialization option, which is used to configure the text controller. This parameter is required when the **TextController** feature needs to be used to control the text content and selection. <br>Default value: If this parameter is not set, the text controller is not used. <br> |
 
 ## Summary
 

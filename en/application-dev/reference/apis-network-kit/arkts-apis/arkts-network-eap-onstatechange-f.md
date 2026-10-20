@@ -14,7 +14,7 @@ function onStateChange(callback: Callback<EthEapStateInfo>): void
 
 Subscribes to 802.1X EAP authentication state changes.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_EAP
 

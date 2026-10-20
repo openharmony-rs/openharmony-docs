@@ -4,9 +4,7 @@
 export interface WatchEventListener
 ```
 
-(event: WatchEvent): void
-
-Provides APIs for observing events.
+Defines a watch event listener. When the monitored file or directory changes, a callback is triggered.
 
 **Since:** 10
 
@@ -26,7 +24,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 (event: WatchEvent): void
 ```
 
-Specifies the callback function to be invoked.
+Callback invoked when the monitored file or directory changes.
 
 **Since:** 10
 

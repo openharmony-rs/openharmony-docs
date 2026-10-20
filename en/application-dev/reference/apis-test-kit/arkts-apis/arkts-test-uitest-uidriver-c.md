@@ -436,7 +436,7 @@ Captures the current screen of this **UiDriver** object and saves it as a PNG im
 
 **Deprecated since:** 9
 
-**Substitutes:** [screenCap](arkts-test-uitest-driver-c.md#screencap1)(savePath: string)
+**Substitutes:** [screenCap](arkts-test-uitest-driver-c.md#screencap)(savePath: string)
 
 <!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>--><!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>-End-->
 

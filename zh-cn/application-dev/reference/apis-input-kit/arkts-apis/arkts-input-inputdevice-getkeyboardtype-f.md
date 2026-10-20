@@ -6,8 +6,6 @@
 import { inputDevice } from '@kit.InputKit';
 ```
 
-<a id="getkeyboardtype1"></a>
-
 ## getKeyboardType
 
 ```TypeScript
@@ -67,8 +65,6 @@ struct Index {
 }
 ```
 
-
-<a id="getkeyboardtype2"></a>
 
 ## getKeyboardType
 

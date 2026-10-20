@@ -6,8 +6,6 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
-<a id="gettotalsize1"></a>
-
 ## getTotalSize
 
 ```TypeScript
@@ -17,10 +15,6 @@ function getTotalSize(callback: AsyncCallback<number>): void
 获取内置存储的总空间大小（单位为Byte），以callback方式返回。
 
 **起始版本：** 15
-
-**需要权限：** 
-- API版本15+：N/A
-- API版本9-14：ohos.permission.STORAGE_MANAGER
 
 <!--Device-storageStatistics-function getTotalSize(callback: AsyncCallback<long>): void--><!--Device-storageStatistics-function getTotalSize(callback: AsyncCallback<long>): void-End-->
 
@@ -36,8 +30,6 @@ function getTotalSize(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.<br>**适用版本：** 9 - 14 |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application.<br>**适用版本：** 9 - 14 |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
@@ -57,8 +49,6 @@ storageStatistics.getTotalSize((error: BusinessError, totalSize: number) => {
 ```
 
 
-<a id="gettotalsize2"></a>
-
 ## getTotalSize
 
 ```TypeScript
@@ -68,10 +58,6 @@ function getTotalSize(): Promise<number>
 获取内置存储的总空间大小（单位为Byte），以Promise方式返回。
 
 **起始版本：** 15
-
-**需要权限：** 
-- API版本15+：N/A
-- API版本9-14：ohos.permission.STORAGE_MANAGER
 
 <!--Device-storageStatistics-function getTotalSize(): Promise<long>--><!--Device-storageStatistics-function getTotalSize(): Promise<long>-End-->
 
@@ -87,8 +73,6 @@ function getTotalSize(): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed.<br>**适用版本：** 9 - 14 |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application.<br>**适用版本：** 9 - 14 |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 

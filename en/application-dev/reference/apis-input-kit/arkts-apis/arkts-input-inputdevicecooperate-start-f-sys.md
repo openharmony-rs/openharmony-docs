@@ -6,8 +6,6 @@
 import { inputDeviceCooperate } from '@kit.InputKit';
 ```
 
-<a id="start1"></a>
-
 ## start
 
 ```TypeScript
@@ -80,8 +78,6 @@ struct Index {
 
 <!--DelEnd-->
 
-
-<a id="start2"></a>
 
 ## start
 

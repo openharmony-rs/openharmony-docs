@@ -20,7 +20,7 @@ import { abilityManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-f.md#getabilityrunninginfos1) | 获取UIAbility运行时的相关信息。使用Promise异步回调。 |
+| [getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-f.md#getabilityrunninginfos) | 获取UIAbility运行时的相关信息。使用Promise异步回调。 |
 | [isEmbeddedUIExtensionSupported](arkts-ability-abilitymanager-isembeddeduiextensionsupported-f.md#isembeddeduiextensionsupported) | 开发者通过调用该接口判断[EmbeddedUIExtensionAbility](arkts-ability-app-ability-embeddeduiextensionability-embeddeduiextensionability-c.md)是否可以在当前设备上使用。 |
 | [restartSelfAtomicService](arkts-ability-abilitymanager-restartselfatomicservice-f.md#restartselfatomicservice) | 重启当前原子化服务。 |
 
@@ -29,17 +29,17 @@ import { abilityManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [acquireShareData](arkts-ability-abilitymanager-acquiresharedata-f-sys.md#acquiresharedata1) | 系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调并返回分享数据。使用callback异步回调。 |
-| [acquireShareData](arkts-ability-abilitymanager-acquiresharedata-f-sys.md#acquiresharedata3) | 系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调并返回分享数据。使用Promise异步回调。 |
+| [acquireShareData](arkts-ability-abilitymanager-acquiresharedata-f-sys.md#acquiresharedata) | 系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调并返回分享数据。使用callback异步回调。 |
+| [acquireShareData](arkts-ability-abilitymanager-acquiresharedata-f-sys.md#acquiresharedata) | 系统弹框通过该接口发起原子化服务分享，触发目标UIAbility的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调并返回分享数据。使用Promise异步回调。 |
 | [clearPreloadedUIExtensionAbilities](arkts-ability-abilitymanager-clearpreloadeduiextensionabilities-f-sys.md#clearpreloadeduiextensionabilities) | 清除当前进程中所有已经预加载的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)实例。使用Promise异步回调。 |
 | [clearPreloadedUIExtensionAbility](arkts-ability-abilitymanager-clearpreloadeduiextensionability-f-sys.md#clearpreloadeduiextensionability) | 清除指定的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)实例。使用Promise异步回调。 |
-| [getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-f-sys.md#getabilityrunninginfos2) | 获取UIAbility运行相关信息。使用callback异步回调。 |
-| [getExtensionRunningInfos](arkts-ability-abilitymanager-getextensionrunninginfos-f-sys.md#getextensionrunninginfos1) | 获取关于运行扩展能力的信息。使用Promise异步回调。 |
-| [getExtensionRunningInfos](arkts-ability-abilitymanager-getextensionrunninginfos-f-sys.md#getextensionrunninginfos2) | 获取关于运行扩展能力的信息。使用callback异步回调。 |
-| [getForegroundUIAbilities](arkts-ability-abilitymanager-getforegrounduiabilities-f-sys.md#getforegrounduiabilities1) | 获取前台正在运行的应用Ability的信息。使用callback异步回调。 |
-| [getForegroundUIAbilities](arkts-ability-abilitymanager-getforegrounduiabilities-f-sys.md#getforegrounduiabilities2) | 获取前台正在运行的应用Ability的信息。使用Promise异步回调。 |
-| [getTopAbility](arkts-ability-abilitymanager-gettopability-f-sys.md#gettopability1) | 获取窗口焦点所在的Ability。使用Promise异步回调。 |
-| [getTopAbility](arkts-ability-abilitymanager-gettopability-f-sys.md#gettopability2) | 获取窗口焦点所在的Ability。使用callback异步回调。 |
+| [getAbilityRunningInfos](arkts-ability-abilitymanager-getabilityrunninginfos-f-sys.md#getabilityrunninginfos) | 获取UIAbility运行相关信息。使用callback异步回调。 |
+| [getExtensionRunningInfos](arkts-ability-abilitymanager-getextensionrunninginfos-f-sys.md#getextensionrunninginfos) | 获取关于运行扩展能力的信息。使用Promise异步回调。 |
+| [getExtensionRunningInfos](arkts-ability-abilitymanager-getextensionrunninginfos-f-sys.md#getextensionrunninginfos) | 获取关于运行扩展能力的信息。使用callback异步回调。 |
+| [getForegroundUIAbilities](arkts-ability-abilitymanager-getforegrounduiabilities-f-sys.md#getforegrounduiabilities) | 获取前台正在运行的应用Ability的信息。使用callback异步回调。 |
+| [getForegroundUIAbilities](arkts-ability-abilitymanager-getforegrounduiabilities-f-sys.md#getforegrounduiabilities) | 获取前台正在运行的应用Ability的信息。使用Promise异步回调。 |
+| [getTopAbility](arkts-ability-abilitymanager-gettopability-f-sys.md#gettopability) | 获取窗口焦点所在的Ability。使用Promise异步回调。 |
+| [getTopAbility](arkts-ability-abilitymanager-gettopability-f-sys.md#gettopability) | 获取窗口焦点所在的Ability。使用callback异步回调。 |
 | [isEmbeddedOpenAllowed](arkts-ability-abilitymanager-isembeddedopenallowed-f-sys.md#isembeddedopenallowed) | 判断是否允许嵌入式拉起[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)。使用Promise异步回调。 |
 | [notifyDebugAssertResult](arkts-ability-abilitymanager-notifydebugassertresult-f-sys.md#notifydebugassertresult) | 将断言调试结果通知应用程序。使用Promise异步回调。 |
 | [off('abilityForegroundState')](arkts-ability-abilitymanager-off-f-sys.md#offabilityforegroundstate) | 取消注册Ability启动和退出的观测器。 |
@@ -51,10 +51,10 @@ import { abilityManager } from '@kit.AbilityKit';
 | [preloadUIExtensionAbility](arkts-ability-abilitymanager-preloaduiextensionability-f-sys.md#preloaduiextensionability) | 预加载指定的[UIExtensionAbility](arkts-ability-app-ability-uiextensionability-uiextensionability-c.md)并返回预加载UIExtensionAbility实例的ID。使用Promise异步回调。应用需要提前加载UIExtensionAbility以提升启动性能时使用。 |
 | [queryAtomicServiceStartupRule](arkts-ability-abilitymanager-queryatomicservicestartuprule-f-sys.md#queryatomicservicestartuprule) | 查询嵌入式拉起[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)的规则。使用Promise异步回调。该接口仅在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。 |
 | [setResidentProcessEnabled](arkts-ability-abilitymanager-setresidentprocessenabled-f-sys.md#setresidentprocessenabled) | 常驻进程支持按需启停。 |
-| [updateConfiguration](arkts-ability-abilitymanager-updateconfiguration-f-sys.md#updateconfiguration1) | 通过传入修改的配置项来更新配置。使用callback异步回调。 |
-| [updateConfiguration](arkts-ability-abilitymanager-updateconfiguration-f-sys.md#updateconfiguration2) | 通过修改配置来更新配置。使用Promise异步回调。 |
-| [notifySaveAsResult](arkts-ability-abilitymanager-notifysaveasresult-f-sys.md#notifysaveasresult1) | 该接口仅供[DLP](../../apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission.md)（Data Loss Prevention, 数据丢失防护）管理应用使用，其他应用禁止使用，DLP管理应用通过该接口通知沙箱应用另存为结果。使用callback异步回调。 |
-| [notifySaveAsResult](arkts-ability-abilitymanager-notifysaveasresult-f-sys.md#notifysaveasresult2) | 该接口仅供[DLP](../../apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission.md)（Data Loss Prevention, 数据丢失防护）管理应用使用，其他应用禁止使用，DLP管理应用通过该接口通知沙箱应用另存为结果。使用Promise异步回调。 |
+| [updateConfiguration](arkts-ability-abilitymanager-updateconfiguration-f-sys.md#updateconfiguration) | 通过传入修改的配置项来更新配置。使用callback异步回调。 |
+| [updateConfiguration](arkts-ability-abilitymanager-updateconfiguration-f-sys.md#updateconfiguration) | 通过修改配置来更新配置。使用Promise异步回调。 |
+| [notifySaveAsResult](arkts-ability-abilitymanager-notifysaveasresult-f-sys.md#notifysaveasresult) | 该接口仅供[DLP](../../apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission.md)（Data Loss Prevention, 数据丢失防护）管理应用使用，其他应用禁止使用，DLP管理应用通过该接口通知沙箱应用另存为结果。使用callback异步回调。 |
+| [notifySaveAsResult](arkts-ability-abilitymanager-notifysaveasresult-f-sys.md#notifysaveasresult) | 该接口仅供[DLP](../../apis-data-protection-kit/arkts-apis/arkts-dataprotection-dlppermission.md)（Data Loss Prevention, 数据丢失防护）管理应用使用，其他应用禁止使用，DLP管理应用通过该接口通知沙箱应用另存为结果。使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

@@ -28,7 +28,7 @@ Checks whether a notification slot type is enabled for the specified application
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundles | Array&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)&gt; | Yes | Array of bundle information of the applications.<br>The maximum length is 1000 and cannot be empty. |
+| bundles | Array&lt;[BundleOption](arkts-notification-notificationmanager-bundleoption-t.md)&gt; | Yes | Array of bundle information of the applications. <br>The maximum length is 1000 and cannot be empty. |
 | type | [SlotType](arkts-notification-notificationmanager-slottype-e.md) | Yes | Notification slot type. All bundles share the same slot type. |
 
 **Return value:**

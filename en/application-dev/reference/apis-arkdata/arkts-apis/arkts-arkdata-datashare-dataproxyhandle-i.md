@@ -458,7 +458,7 @@ Puts a value into the published data. This operation can be performed only on mu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | uri | string | Yes | Indicates the URI of the data to operate. |
-| key | number | Yes | The key corresponding to the added value. It is unique for the same application.<br>The value range is all integers. |
+| key | number | Yes | The key corresponding to the added value. It is unique for the same application. <br>The value range is all integers. |
 | value | [ValueType](arkts-arkdata-valuetype-t.md) | Yes | The value to be put. |
 | config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Configuration of the data proxy operation. |
 
@@ -529,7 +529,7 @@ Removes the value corresponding to the key. This operation can be performed only
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | uri | string | Yes | Indicates the URI of the data to operate. |
-| key | number | Yes | The key corresponding to the added value.<br>The value range is all integers. |
+| key | number | Yes | The key corresponding to the added value. <br>The value range is all integers. |
 | config | [DataProxyConfig](arkts-arkdata-datashare-dataproxyconfig-i.md) | Yes | Configuration of the data proxy operation. |
 
 **Return value:**

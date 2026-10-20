@@ -6,8 +6,6 @@ declare type LevelOrder = import('../api/@ohos.promptAction').LevelOrder
 
 Import the LevelOrder type from promptAction.
 
-@typedef { import('../api/@ohos.promptAction').LevelOrder } LevelOrder
-
 **Type:** import('../api/@ohos.promptAction').LevelOrder
 
 **Since:** 18

@@ -6,8 +6,6 @@ export interface Effect extends SceneResource
 
 特效类型，继承自SceneResource。由createEffect接口获得。
 
-@extends SceneResource @interface Effect
-
 **继承/实现关系：** Effect extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 
 **起始版本：** 21
@@ -36,7 +34,7 @@ getPropertyValue(propertyName: string): Object | null | undefined
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：-'exposure'：该属性表示图像的曝光度。-'vibrance'：该属性表示图像的自然饱和度。 |
+| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：<br>-'exposure'：该属性表示图像的曝光度。<br>-'vibrance'：该属性表示图像的自然饱和度。 |
 
 **返回值：**
 
@@ -84,8 +82,8 @@ setPropertyValue(propertyName: string, value: Object | undefined): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：-'exposure'：该属性表示图像的曝光度。-'vibrance'：该属性表示图像的自然饱和度。 |
-| value | Object &#124; undefined | 是 | 要设置的特效属性值。'exposure'：value实际类型为number，推荐取值范围[-5, 5]。取值越大，图像越亮。'vibrance'：value实际类型为number，推荐取值范围 [-1, 1]。取值越大，图像颜色越鲜艳。 |
+| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：<br>-'exposure'：该属性表示图像的曝光度。<br>-'vibrance'：该属性表示图像的自然饱和度。 |
+| value | Object &#124; undefined | 是 | 要设置的特效属性值。<br>-'exposure'：value实际类型为number，推荐取值范围[-5, 5]。取值越大，图像越亮。<br>-'vibrance'：value实际类型为number，推荐取值范围 [-1, 1]。取值越大，图像颜色越鲜艳。 |
 
 **返回值：**
 

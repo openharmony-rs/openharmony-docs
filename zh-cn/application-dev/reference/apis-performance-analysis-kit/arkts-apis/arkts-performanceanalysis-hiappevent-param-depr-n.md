@@ -8,8 +8,8 @@ namespace Param
 
 | 名称 | 类型 | 可读 | 可写 | 说明 |  
 | ------------------------------- | ------ | ---- | ---- | ------------------ |  
-| USER_ID | string | 是 | 否 | 用户自定义ID。 |
-| DISTRIBUTED_SERVICE_NAME | string | 是 | 否 | 分布式服务名称。 |
+| USER_ID | string | 是 | 否 | 用户自定义ID。 |  
+| DISTRIBUTED_SERVICE_NAME | string | 是 | 否 | 分布式服务名称。 |  
 | DISTRIBUTED_SERVICE_INSTANCE_ID | string | 是 | 否 | 分布式服务实例ID。 |
 
 **起始版本：** 7

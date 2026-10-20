@@ -8,9 +8,9 @@ export default class Fetch
 
 | data | Content-Type | Description|  
 | -------- | -------- | -------- |  
-| string | Left unspecified| The default value of Content-Type is **text/plain**, and the value of data is used as the request body.|
-| string | Any type| The value of data is used as the request body.|
-| Object | Left unspecified| The default value of **Content-Type** is **application/x-www-form-urlencoded**. The **data** value is encoded based on the URL rule and appended in the request body.|
+| string | Left unspecified| The default value of Content-Type is **text/plain**, and the value of data is used as the request body.|  
+| string | Any type| The value of data is used as the request body.|  
+| Object | Left unspecified| The default value of **Content-Type** is **application/x-www-form-urlencoded**. The **data** value is encoded based on the URL rule and appended in the request body.|  
 | Object | application/x-www-form-urlencoded | The value of data is encoded based on the URL rule and is used as the request body.|
 
 **Since:** 3

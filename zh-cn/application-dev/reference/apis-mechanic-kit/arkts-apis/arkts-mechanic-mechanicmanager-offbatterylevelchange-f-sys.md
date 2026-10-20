@@ -29,7 +29,7 @@ function offBatteryLevelChange(mechId: number, callback?: Callback<BatteryLevelI
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mechId | number | 是 | ID of the mechanical device. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BatteryLevelInfo](arkts-mechanic-mechanicmanager-batterylevelinfo-i-sys.md)&gt; | 否 | Callback function that returns the current battery level.<br>If not specified, all callbacks registered for this mechId will be removed. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BatteryLevelInfo](arkts-mechanic-mechanicmanager-batterylevelinfo-i-sys.md)&gt; | 否 | Callback function that returns the current battery level. <br>If not specified, all callbacks registered for this mechId will be removed. |
 
 **错误码：**
 

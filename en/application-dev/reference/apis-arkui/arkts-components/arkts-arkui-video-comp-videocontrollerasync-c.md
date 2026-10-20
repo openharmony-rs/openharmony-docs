@@ -116,7 +116,7 @@ Requests full-screen playback. If this API is not called, full-screen playback i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to play in full screen (fill the app window).<br>**true**: request full-screen playback; **false**: do not request full-screen playback. |
+| value | boolean | Yes | Whether to play in full screen (fill the app window). <br>**true**: request full-screen playback; **false**: do not request full-screen playback. |
 
 ## reset
 
@@ -170,7 +170,7 @@ Sets the playback position of the video, with an optional seek mode.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number | Yes | Video playback progress position. <br>Value range: [0, [duration](arkts-arkui-video-comp-preparedinfo-i.md)] <br>If the **value** is greater than **duration**, the progress jumps to the end. If the **value** is less than 0, the progress does not jump. <br>Unit: s |
-| seekMode | [SeekMode](arkts-arkui-video-comp-seekmode-e.md) | No | Seek mode.<br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are processed as **PreviousKeyframe**. <br>Default value: **PreviousKeyframe** |
+| seekMode | [SeekMode](arkts-arkui-video-comp-seekmode-e.md) | No | Seek mode. <br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are processed as **PreviousKeyframe**. <br>Default value: **PreviousKeyframe** |
 
 ## start
 

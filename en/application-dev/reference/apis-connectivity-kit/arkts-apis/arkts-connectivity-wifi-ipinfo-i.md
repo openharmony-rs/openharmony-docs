@@ -6,8 +6,6 @@ interface IpInfo
 
 Wi-Fi IP information.
 
-@interface IpInfo
-
 **Since:** 7
 
 **Deprecated since:** 9

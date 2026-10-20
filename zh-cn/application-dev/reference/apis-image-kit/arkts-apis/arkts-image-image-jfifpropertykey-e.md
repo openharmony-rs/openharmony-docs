@@ -21,7 +21,7 @@ enum JfifPropertyKey
 
 | X_DENSITY | 'JfifXDensity' | JFIF图像X方向密度。 |  
 | Y_DENSITY | 'JfifYDensity' | JFIF图像Y方向密度。 |  
-| VERSION | 'JfifVersion' | JFIF图像版本。 |
+| VERSION | 'JfifVersion' | JFIF图像版本。 |  
 | IS_PROGRESSIVE | 'JfifIsProgressive' | 图像是否采用渐进式编码，即图像在加载过程中按多次扫描逐步提升清晰度。true表示采用，false表示不采用。 |
 
 **起始版本：** 26.0.0

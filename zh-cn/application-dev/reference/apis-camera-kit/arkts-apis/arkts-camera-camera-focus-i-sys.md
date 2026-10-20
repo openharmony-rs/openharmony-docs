@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 getFocusAssist(): boolean
 ```
 
-Checks whether the focus assist is enabled.
+查询是否已开启对焦辅助。
 
 **起始版本：** 12
 
@@ -42,7 +42,7 @@ Checks whether the focus assist is enabled.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for whether the focus assist is enabled. **true** if enabled, **false** otherwise. |
+| boolean | 查询是否已开启对焦辅助的结果。**true**表示已开启，**false**表示未开启。 |
 
 **错误码：**
 
@@ -76,7 +76,7 @@ function getFocusAssist(professionalPhotoSession: camera.ProfessionalPhotoSessio
 getFocusDriven(): FocusDrivenType
 ```
 
-Obtains the focus drive type in use.
+获取当前使用的对焦驱动类型。
 
 **起始版本：** 15
 
@@ -90,7 +90,7 @@ Obtains the focus drive type in use.
 
 | 类型 | 说明 |
 | --- | --- |
-| [FocusDrivenType](arkts-camera-camera-focusdriventype-e-sys.md) | Focus drive type. |
+| [FocusDrivenType](arkts-camera-camera-focusdriventype-e-sys.md) | 对焦驱动类型。 |
 
 **错误码：**
 
@@ -126,7 +126,7 @@ function getFocusDriven(session: camera.VideoSessionForSys): camera.FocusDrivenT
 getFocusRange(): FocusRangeType
 ```
 
-Obtains the focus range type in use.
+获取当前使用的对焦范围类型。
 
 **起始版本：** 15
 
@@ -140,7 +140,7 @@ Obtains the focus range type in use.
 
 | 类型 | 说明 |
 | --- | --- |
-| [FocusRangeType](arkts-camera-camera-focusrangetype-e-sys.md) | Focus range type. |
+| [FocusRangeType](arkts-camera-camera-focusrangetype-e-sys.md) | 对焦范围类型。 |
 
 **错误码：**
 
@@ -176,7 +176,7 @@ function getFocusRange(session: camera.VideoSessionForSys): camera.FocusRangeTyp
 setFocusAssist(enabled: boolean): void
 ```
 
-Sets the focus assist. Before the setting, call [isFocusAssistSupported](arkts-camera-camera-focusquery-i-sys.md#isfocusassistsupported) to check whether the device supports the focus assist.
+设置对焦辅助。设置之前，需要先调用[isFocusAssistSupported](arkts-camera-camera-focusquery-i-sys.md#isfocusassistsupported)检测设备是否支持对焦辅助。
 
 **起始版本：** 12
 
@@ -190,7 +190,7 @@ Sets the focus assist. Before the setting, call [isFocusAssistSupported](arkts-c
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | boolean | 是 | Whether to enable or disable focus assist. **true** to enable, **false** otherwise. |
+| enabled | boolean | 是 | 是否开启或关闭对焦辅助。**true**表示开启，**false**表示关闭。 |
 
 **错误码：**
 
@@ -225,7 +225,7 @@ function setFocusAssist(professionalPhotoSession: camera.ProfessionalPhotoSessio
 setFocusDriven(type: FocusDrivenType): void
 ```
 
-Sets a focus drive type. Before the setting, call [isFocusDrivenTypeSupported](arkts-camera-camera-focusquery-i-sys.md#isfocusdriventypesupported) to check whether the focus drive type is supported.
+设置对焦驱动类型。设置之前，需要先调用[isFocusDrivenTypeSupported](arkts-camera-camera-focusquery-i-sys.md#isfocusdriventypesupported)检测是否支持该对焦驱动类型。
 
 **起始版本：** 15
 
@@ -239,7 +239,7 @@ Sets a focus drive type. Before the setting, call [isFocusDrivenTypeSupported](a
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [FocusDrivenType](arkts-camera-camera-focusdriventype-e-sys.md) | 是 | Focus drive type. |
+| type | [FocusDrivenType](arkts-camera-camera-focusdriventype-e-sys.md) | 是 | 对焦驱动类型。 |
 
 **错误码：**
 
@@ -276,7 +276,7 @@ function setFocusDriven(session: camera.VideoSessionForSys, type: camera.FocusDr
 setFocusRange(type: FocusRangeType): void
 ```
 
-Sets a focus range type. Before the setting, call [isFocusRangeTypeSupported](arkts-camera-camera-focusquery-i-sys.md#isfocusrangetypesupported) to check whether the focus range type is supported.
+设置对焦范围类型。设置之前，需要先调用[isFocusRangeTypeSupported](arkts-camera-camera-focusquery-i-sys.md#isfocusrangetypesupported)检测是否支持该对焦范围类型。
 
 **起始版本：** 15
 
@@ -290,7 +290,7 @@ Sets a focus range type. Before the setting, call [isFocusRangeTypeSupported](ar
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [FocusRangeType](arkts-camera-camera-focusrangetype-e-sys.md) | 是 | Focus range type. |
+| type | [FocusRangeType](arkts-camera-camera-focusrangetype-e-sys.md) | 是 | 对焦范围类型。 |
 
 **错误码：**
 

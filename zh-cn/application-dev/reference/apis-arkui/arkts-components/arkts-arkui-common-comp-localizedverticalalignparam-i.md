@@ -6,8 +6,6 @@ declare interface LocalizedVerticalAlignParam
 
 定义相对容器的纵向对齐规则。
 
-@interface LocalizedVerticalAlignParam
-
 **起始版本：** 12
 
 <!--Device-unnamed-declare interface LocalizedVerticalAlignParam--><!--Device-unnamed-declare interface LocalizedVerticalAlignParam-End-->

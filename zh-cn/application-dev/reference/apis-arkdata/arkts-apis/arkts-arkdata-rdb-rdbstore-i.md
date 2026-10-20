@@ -6,7 +6,7 @@ interface RdbStore
 
 提供管理关系数据库（RDB）方法的接口。
 
-在使用以下相关接口前，请使用[executeSql](#executesql1)接口初始化数据库表结构和相关数据。
+在使用以下相关接口前，请使用[executeSql](#executesql)接口初始化数据库表结构和相关数据。
 
 **起始版本：** 7
 
@@ -22,8 +22,6 @@ interface RdbStore
 
 ```TypeScript
 ```
-
-<a id="batchinsert1"></a>
 
 ## batchInsert
 
@@ -100,8 +98,6 @@ rdbStore.batchInsert("EMPLOYEE", valueBuckets, (status: number, insertNum: numbe
   console.info("batchInsert is successful, the number of values that were inserted = " + insertNum);
 })
 ```
-
-<a id="batchinsert2"></a>
 
 ## batchInsert
 
@@ -277,8 +273,6 @@ data_rdb.getRdbStore(this.context, "RdbTest.db", 1, async (err: BusinessError, r
 })
 ```
 
-<a id="delete1"></a>
-
 ## delete
 
 ```TypeScript
@@ -317,8 +311,6 @@ rdbStore.delete(predicates, (err: BusinessError, rows: number) => {
   console.info("Delete rows: " + rows)
 })
 ```
-
-<a id="delete2"></a>
 
 ## delete
 
@@ -363,8 +355,6 @@ promise.then((rows: number) => {
 })
 ```
 
-<a id="executesql1"></a>
-
 ## executeSql
 
 ```TypeScript
@@ -403,8 +393,6 @@ rdbStore.executeSql(SQL_DELETE_TABLE, ['zhangsan'], (err: BusinessError) => {
   console.info('Delete table done.')
 })
 ```
-
-<a id="executesql2"></a>
 
 ## executeSql
 
@@ -448,8 +436,6 @@ promise.then(() => {
   console.error("ExecuteSql failed, err: " + err)
 })
 ```
-
-<a id="insert1"></a>
 
 ## insert
 
@@ -505,8 +491,6 @@ rdbStore.insert("EMPLOYEE", valueBucket, (status: number, rowId: number) => {
   console.info("Insert is successful, rowId = " + rowId);
 })
 ```
-
-<a id="insert2"></a>
 
 ## insert
 
@@ -567,8 +551,6 @@ promise.then((rowId: BusinessError) => {
 })
 ```
 
-<a id="obtaindistributedtablename1"></a>
-
 ## obtainDistributedTableName
 
 ```TypeScript
@@ -628,8 +610,6 @@ rdbStore.obtainDistributedTableName(deviceId, "EMPLOYEE", (err: BusinessError, t
   console.info('ObtainDistributedTableName successfully, tableName=.' + tableName)
 })
 ```
-
-<a id="obtaindistributedtablename2"></a>
 
 ## obtainDistributedTableName
 
@@ -779,8 +759,6 @@ try {
 }
 ```
 
-<a id="query1"></a>
-
 ## query
 
 ```TypeScript
@@ -821,8 +799,6 @@ rdbStore.query(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], (err: Busin
   console.info("ResultSet column count: " + resultSet.columnCount)
 })
 ```
-
-<a id="query2"></a>
 
 ## query
 
@@ -869,8 +845,6 @@ promise.then((resultSet: void) => {
 })
 ```
 
-<a id="querysql1"></a>
-
 ## querySql
 
 ```TypeScript
@@ -909,8 +883,6 @@ rdbStore.querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = ?", 
   console.info("ResultSet column count: " + resultSet.columnCount)
 })
 ```
-
-<a id="querysql2"></a>
 
 ## querySql
 
@@ -1007,8 +979,6 @@ data_rdb.getRdbStore(this,context, "RdbTest.db", 1, async (err: BusinessError, r
 })
 ```
 
-<a id="setdistributedtables1"></a>
-
 ## setDistributedTables
 
 ```TypeScript
@@ -1047,8 +1017,6 @@ rdbStore.setDistributedTables(["EMPLOYEE"], (err: BusinessError) => {
   console.info('SetDistributedTables successfully.')
 })
 ```
-
-<a id="setdistributedtables2"></a>
 
 ## setDistributedTables
 
@@ -1092,8 +1060,6 @@ promise.then(() => {
   console.error("SetDistributedTables failed, err: " + err)
 })
 ```
-
-<a id="sync1"></a>
 
 ## sync
 
@@ -1155,8 +1121,6 @@ rdbStore.sync(data_rdb.SyncMode.SYNC_MODE_PUSH, predicates, (err: BusinessError,
   }
 })
 ```
-
-<a id="sync2"></a>
 
 ## sync
 
@@ -1223,8 +1187,6 @@ promise.then((result: void) =>{
 })
 ```
 
-<a id="update1"></a>
-
 ## update
 
 ```TypeScript
@@ -1281,8 +1243,6 @@ rdbStore.update(valueBucket, predicates, (err: BusinessError, rows: number) => {
   console.info("Updated row count: " + rows)
 })
 ```
-
-<a id="update2"></a>
 
 ## update
 

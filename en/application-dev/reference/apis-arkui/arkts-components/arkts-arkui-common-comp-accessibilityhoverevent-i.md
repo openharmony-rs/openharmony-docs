@@ -20,7 +20,7 @@ The accessibility hover action triggers this method invocation.
 displayX: number
 ```
 
-X coordinate of the accessibility hover point relative to the left edge of the device screen.
+X coordinate of the finger position relative to the upper left corner of the app screen.<br>Unit: vp<br>Value range: [0, +∞)
 
 **Type:** number
 
@@ -40,7 +40,7 @@ X coordinate of the accessibility hover point relative to the left edge of the d
 displayY: number
 ```
 
-Y coordinate of the accessibility hover point relative to the upper edge of the device screen.
+Y coordinate of the finger position relative to the upper left corner of the app screen.<br>Unit: vp<br>Value range: [0, +∞)
 
 **Type:** number
 
@@ -60,7 +60,7 @@ Y coordinate of the accessibility hover point relative to the upper edge of the 
 globalDisplayX?: number
 ```
 
-X coordinate of the point relative to the global display.
+X coordinate of the finger position relative to the upper left corner of the global screen.<br>Unit: vp<br>Value range: [0, +∞)
 
 **Type:** number
 
@@ -80,7 +80,7 @@ X coordinate of the point relative to the global display.
 globalDisplayY?: number
 ```
 
-Y coordinate of the point relative to the global display.
+Y coordinate of the finger position relative to the upper left corner of the global screen.<br>Unit: vp<br>Value range: [0, +∞)
 
 **Type:** number
 
@@ -100,7 +100,7 @@ Y coordinate of the point relative to the global display.
 type: AccessibilityHoverType
 ```
 
-Type of the accessibility hover event.
+Accessibility hover action type, including HOVER_ENTER (finger enters the component), HOVER_MOVE (finger moves within the component), HOVER_EXIT (finger leaves the component), and HOVER_CANCEL (the hover event is canceled).
 
 **Type:** [AccessibilityHoverType](../arkts-apis/arkts-arkui-accessibilityhovertype-e.md)
 
@@ -120,7 +120,7 @@ Type of the accessibility hover event.
 windowX: number
 ```
 
-X coordinate of the accessibility hover point relative to the left edge of the current window.
+X coordinate of the finger position relative to the upper left corner of the app window.<br>Unit: vp<br>Value range: [0, +∞)
 
 **Type:** number
 
@@ -140,7 +140,7 @@ X coordinate of the accessibility hover point relative to the left edge of the c
 windowY: number
 ```
 
-Y coordinate of the accessibility hover point relative to the upper edge of the current window.
+Y coordinate of the finger position relative to the upper left corner of the app window.<br>Unit: vp<br>Value range: [0, +∞)
 
 **Type:** number
 
@@ -160,7 +160,7 @@ Y coordinate of the accessibility hover point relative to the upper edge of the 
 x: number
 ```
 
-X coordinate of the accessibility hover point relative to the left edge of the event hit element.
+X coordinate of the finger position relative to the upper left corner of the current component.<br>Unit: vp<br>Value range: [0, +∞)
 
 **Type:** number
 
@@ -180,7 +180,7 @@ X coordinate of the accessibility hover point relative to the left edge of the e
 y: number
 ```
 
-Y coordinate of the accessibility hover point relative to the upper edge of the event hit element.
+Y coordinate of the finger position relative to the upper left corner of the current component.<br>Unit: vp<br>Value range: [0, +∞)
 
 **Type:** number
 

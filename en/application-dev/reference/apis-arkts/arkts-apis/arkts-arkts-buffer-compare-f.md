@@ -33,7 +33,7 @@ Compares two **Buffer** objects. This API is used for sorting **Buffer** objects
 
 | Type | Description |
 | --- | --- |
-| -1 &#124; 0 &#124; 1 | Returns **0** if **buf1** is the same as **buf2**.<br>Returns **1** if **buf1** comes after **buf2** when sorted. <br>Returns **-1** if **buf1** comes before **buf2** when sorted. |
+| -1 &#124; 0 &#124; 1 | Returns **0** if **buf1** is the same as **buf2**. <br>Returns **1** if **buf1** comes after **buf2** when sorted. <br>Returns **-1** if **buf1** comes before **buf2** when sorted. |
 
 **Examples**
 

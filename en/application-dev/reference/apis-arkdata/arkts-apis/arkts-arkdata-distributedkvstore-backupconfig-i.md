@@ -4,7 +4,7 @@
 interface BackupConfig
 ```
 
-Provides backup config to backup or restore KVStore.
+Configures database backup.
 
 **Since:** 24
 
@@ -24,7 +24,7 @@ import { distributedKVStore } from '@kit.ArkData';
 fileName: string
 ```
 
-Specifies the file name to the backup database
+Name of the database to back up. There is no length limit, but the name cannot contain slashes (/).
 
 **Type:** string
 
@@ -42,7 +42,7 @@ Specifies the file name to the backup database
 filePath: string
 ```
 
-Specifies the root directory relative to the backup database
+Path of the database to back up. There is no length limit.
 
 **Type:** string
 

@@ -6,8 +6,6 @@
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
-<a id="on1"></a>
-
 ## on
 
 ```TypeScript
@@ -49,8 +47,6 @@ emitter.on(innerEvent, callback);
 ```
 
 
-<a id="on2"></a>
-
 ## on
 
 ```TypeScript
@@ -86,8 +82,18 @@ let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
 emitter.on('eventId', callback);
 ```
 
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
 
-<a id="on3"></a>
+let emitter1: emitter.Emitter = new emitter.Emitter();
+
+let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
+  console.info(`eventData: ${JSON.stringify(eventData)}`);
+};
+
+emitter1.on('eventId', callback);
+```
+
 
 ## on
 
@@ -136,4 +142,30 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
 };
 // 收到eventId为"eventId"的事件后执行回调函数
 emitter.on('eventId', callback);
+```
+
+```TypeScript
+import { Callback } from '@kit.BasicServicesKit';
+
+let emitter1: emitter.Emitter = new emitter.Emitter();
+
+@Sendable
+class Sample {
+  constructor() {
+    this.count = 100;
+  }
+  printCount() {
+    console.info('Print count : ' + this.count);
+  }
+  count: number;
+}
+
+let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.GenericEventData<Sample>): void => {
+  console.info(`eventData: ${JSON.stringify(eventData?.data)}`);
+  if (eventData?.data instanceof Sample) {
+    eventData?.data?.printCount();
+  }
+};
+
+emitter1.on('eventId', callback);
 ```

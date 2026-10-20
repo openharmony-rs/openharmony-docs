@@ -6,8 +6,6 @@ interface SecurityEventRule
 
 Provides the conditions of querySecurityEvent.
 
-@interface SecurityEventRule
-
 **Since:** 12
 
 <!--Device-securityGuard-interface SecurityEventRule--><!--Device-securityGuard-interface SecurityEventRule-End-->

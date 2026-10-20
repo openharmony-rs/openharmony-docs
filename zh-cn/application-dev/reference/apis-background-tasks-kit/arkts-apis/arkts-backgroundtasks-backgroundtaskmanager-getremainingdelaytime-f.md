@@ -6,8 +6,6 @@
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="getremainingdelaytime1"></a>
-
 ## getRemainingDelayTime
 
 ```TypeScript
@@ -58,8 +56,6 @@ backgroundTaskManager.getRemainingDelayTime(requestId, (error: BusinessError, re
 })
 ```
 
-
-<a id="getremainingdelaytime2"></a>
 
 ## getRemainingDelayTime
 

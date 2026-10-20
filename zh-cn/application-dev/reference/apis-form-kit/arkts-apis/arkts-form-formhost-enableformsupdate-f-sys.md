@@ -6,8 +6,6 @@
 import { formHost } from '@kit.FormKit';
 ```
 
-<a id="enableformsupdate1"></a>
-
 ## enableFormsUpdate
 
 ```TypeScript
@@ -66,8 +64,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="enableformsupdate2"></a>
 
 ## enableFormsUpdate
 

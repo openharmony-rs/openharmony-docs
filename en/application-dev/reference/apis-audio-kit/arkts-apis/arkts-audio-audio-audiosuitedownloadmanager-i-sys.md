@@ -44,7 +44,7 @@ If the interface is invoked when the interface is not in the valid state, the in
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to cancel.<br>The maximum length is 5. |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to cancel. <br>The maximum length is 5. |
 
 **Return value:**
 
@@ -84,7 +84,7 @@ This interface is used only to query the local installation status of a feature 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to query.<br>The maximum length is 5. |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to query. <br>The maximum length is 5. |
 
 **Return value:**
 
@@ -124,7 +124,7 @@ This interface queries information through the network.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to query.<br>The maximum length is 5. |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to query. <br>The maximum length is 5. |
 
 **Return value:**
 
@@ -165,7 +165,7 @@ This interface is used only to query the local installation status of a feature 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to query.<br>The maximum length is 5. |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to query. <br>The maximum length is 5. |
 
 **Return value:**
 
@@ -203,7 +203,7 @@ Unsubscribe from the download status change event. After you cancel the callback
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSuiteFeatureStatusInfoArray](arkts-audio-audio-audiosuitefeaturestatusinfoarray-t-sys.md)&gt; | No | Callback to be unsubscribed.<br>If the callback parameter is not transferred, all subscriptions are canceled. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSuiteFeatureStatusInfoArray](arkts-audio-audio-audiosuitefeaturestatusinfoarray-t-sys.md)&gt; | No | Callback to be unsubscribed. <br>If the callback parameter is not transferred, all subscriptions are canceled. |
 
 **Error codes:**
 
@@ -267,7 +267,7 @@ If the interface is invoked when the interface is not in the valid state, the in
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to pause.<br>The maximum length is 5. |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to pause. <br>The maximum length is 5. |
 
 **Return value:**
 
@@ -307,7 +307,7 @@ The interface returns a message after sending a command. During the download, yo
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to download.<br>The maximum length is 5. |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to download. <br>The maximum length is 5. |
 
 **Return value:**
 
@@ -347,7 +347,7 @@ The interface returns after the download starts. During the download, you can ob
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to download.<br>The maximum length is 5. |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to download. <br>The maximum length is 5. |
 | networkType | [NetworkType](arkts-audio-audio-networktype-e-sys.md) | Yes | Network type for downloading. |
 
 **Return value:**
@@ -390,7 +390,7 @@ If the interface is invoked when the interface is not in the valid state, the in
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to uninstall.<br>The maximum length is 5. |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md)&gt; | Yes | Types of the features to uninstall. <br>The maximum length is 5. |
 
 **Return value:**
 

@@ -60,7 +60,7 @@ invalidate(): void
 get canvas(): DrawingCanvas
 ```
 
-获取绘制内容的画布对象。
+获取绘制内容的画布对象。仅当**DrawingRenderingContext**对象与**Canvas**组件绑定后，才可使用该接口。获取的**Canvas**对象可用于绑定**Brush**、**Pen**等绘图工具，以绘制形状、文本和图片。
 
 **类型：** [DrawingCanvas](arkts-arkui-canvas-comp-drawingcanvas-t.md)
 

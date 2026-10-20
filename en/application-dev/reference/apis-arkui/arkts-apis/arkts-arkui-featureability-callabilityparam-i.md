@@ -4,8 +4,6 @@
 export interface CallAbilityParam
 ```
 
-@typedef CallAbilityParam
-
 **Since:** 5
 
 **Deprecated since:** 8

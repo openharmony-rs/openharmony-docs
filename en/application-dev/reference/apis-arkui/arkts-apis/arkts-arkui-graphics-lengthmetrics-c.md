@@ -83,7 +83,7 @@ A constructor used to create a **LengthMetrics** instance. If the **unit** param
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Value of the length property.<br>Value range: (-∞, +∞). |
+| value | number | Yes | Value of the length property. <br>Value range: (-∞, +∞). |
 | unit | [LengthUnit](arkts-arkui-graphics-lengthunit-e.md) | No | Unit of the length property. The default value is vp. |
 
 ## fp
@@ -108,7 +108,7 @@ Creates a length property in fp.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Value of the length property.<br>Value range: (-∞, +∞). |
+| value | number | Yes | Value of the length property. <br>Value range: (-∞, +∞). |
 
 **Return value:**
 
@@ -138,7 +138,7 @@ Creates a length property in lpx.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Value of the length property.<br>Value range: (-∞, +∞). |
+| value | number | Yes | Value of the length property. <br>Value range: (-∞, +∞). |
 
 **Return value:**
 
@@ -168,7 +168,7 @@ Creates a length property in percent. The value **1** indicates 100%.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Value of the length property.<br>Value range: [0, 1]. <br>A value out of range is treated as a boundary value. |
+| value | number | Yes | Value of the length property. <br>Value range: [0, 1]. <br>A value out of range is treated as a boundary value. |
 
 **Return value:**
 
@@ -198,7 +198,7 @@ Creates a length property in px.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Value of the length property.<br>Value range: (-∞, +∞). |
+| value | number | Yes | Value of the length property. <br>Value range: (-∞, +∞). |
 
 **Return value:**
 
@@ -304,7 +304,7 @@ Creates a length property in vp.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Value of the length property.<br>Value range: (-∞, +∞). |
+| value | number | Yes | Value of the length property. <br>Value range: (-∞, +∞). |
 
 **Return value:**
 

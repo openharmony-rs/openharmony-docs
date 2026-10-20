@@ -6,8 +6,6 @@
 import { wifiManager } from '@kit.MDMKit';
 ```
 
-<a id="iswifiactive1"></a>
-
 ## isWifiActive
 
 ```TypeScript
@@ -74,8 +72,6 @@ wifiManager.isWifiActive(wantTemp, (err, result) => {
 <!--DelEnd-->
 
 
-<a id="iswifiactive2"></a>
-
 ## isWifiActive
 
 ```TypeScript
@@ -110,7 +106,7 @@ Queries the Wi-Fi status of the current device. This API uses a promise to retur
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the Wi-Fi status.<br>The value **true** means that Wi-Fi is enabled; the value **false** means the opposite. |
+| Promise&lt;boolean&gt; | Promise used to return the Wi-Fi status. <br>The value **true** means that Wi-Fi is enabled; the value **false** means the opposite. |
 
 **Error codes:**
 

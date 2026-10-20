@@ -6,8 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="setcustomcursor1"></a>
-
 ## setCustomCursor
 
 ```TypeScript
@@ -88,8 +86,6 @@ struct Index {
 }
 ```
 
-
-<a id="setcustomcursor2"></a>
 
 ## setCustomCursor
 

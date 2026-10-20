@@ -4,6 +4,8 @@ This module provides the definition of the NearLink scanning mode.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace scan--><!--Device-unnamed-declare namespace scan-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

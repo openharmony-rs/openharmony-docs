@@ -6,8 +6,6 @@ interface PanelStartCallback
 
 The callback of start vertical panel.
 
-@typedef PanelStartCallback
-
 **Since:** 20
 
 <!--Device-verticalPanelManager-interface PanelStartCallback--><!--Device-verticalPanelManager-interface PanelStartCallback-End-->

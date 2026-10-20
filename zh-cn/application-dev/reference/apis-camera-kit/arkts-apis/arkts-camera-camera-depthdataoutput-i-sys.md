@@ -4,7 +4,7 @@
 interface DepthDataOutput extends CameraOutput
 ```
 
-Implements depth data output. It inherits from [CameraOutput](arkts-camera-camera-cameraoutput-i.md).
+实现深度数据输出。继承自 [CameraOutput](arkts-camera-camera-cameraoutput-i.md)。
 
 **继承/实现关系：** DepthDataOutput extends [CameraOutput](arkts-camera-camera-cameraoutput-i.md)
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 off(type: 'depthDataAvailable', callback?: AsyncCallback<DepthData>): void
 ```
 
-Unsubscribes from depth data availability events.
+取消订阅深度数据可用事件。
 
 **起始版本：** 13
 
@@ -42,8 +42,8 @@ Unsubscribes from depth data availability events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'depthDataAvailable' | 是 | Event type. The value is fixed at **'depthDataAvailable'**. The event can be listened for when a depthDataOutput instance is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DepthData](arkts-camera-camera-depthdata-i-sys.md)&gt; | 否 | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
+| type | 'depthDataAvailable' | 是 | 事件类型。值固定为 **'depthDataAvailable'**。创建 depthDataOutput 实例后即可监听此事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DepthData](arkts-camera-camera-depthdata-i-sys.md)&gt; | 否 | 用于返回结果的回调。如果指定此参数，将取消订阅指定回调的指定事件。（回调对象不能为匿名函数。）否则，将取消订阅指定事件的所有回调。 |
 
 **错误码：**
 
@@ -77,7 +77,7 @@ function unRegisterDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): 
 off(type: 'error', callback?: ErrorCallback): void
 ```
 
-Unsubscribes from DepthDataOutput error events.
+取消订阅 DepthDataOutput 错误事件。
 
 **起始版本：** 13
 
@@ -91,8 +91,8 @@ Unsubscribes from DepthDataOutput error events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a depthDataOutput instance is created. |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
+| type | 'error' | 是 | 事件类型。值固定为 **'error'**。创建 depthDataOutput 实例后即可监听此事件。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 用于返回结果的回调。如果指定此参数，将取消订阅指定回调的指定事件。（回调对象不能为匿名函数。）否则，将取消订阅指定事件的所有回调。 |
 
 **错误码：**
 
@@ -117,11 +117,11 @@ function unregisterDepthDataOutputError(depthDataOutput: camera.DepthDataOutput)
 on(type: 'depthDataAvailable', callback: AsyncCallback<DepthData>): void
 ```
 
-Subscribes to depth data availability events. This API uses an asynchronous callback to return the result.
+订阅深度数据可用事件。此接口使用异步回调返回结果。
 
-> **NOTE:** 
+> **注意**
 > 
-> Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
+> 当前不支持在 **on()** 的回调方法中使用 **off()** 取消注册回调。
 
 **起始版本：** 13
 
@@ -135,8 +135,8 @@ Subscribes to depth data availability events. This API uses an asynchronous call
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'depthDataAvailable' | 是 | Event type. The value is fixed at **'depthDataAvailable'**. The event can be listened for when a depthDataOutput instance is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DepthData](arkts-camera-camera-depthdata-i-sys.md)&gt; | 是 | Callback used to listen for depth data. |
+| type | 'depthDataAvailable' | 是 | 事件类型。值固定为 **'depthDataAvailable'**。创建 depthDataOutput 实例后即可监听此事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DepthData](arkts-camera-camera-depthdata-i-sys.md)&gt; | 是 | 用于监听深度数据的回调。 |
 
 **错误码：**
 
@@ -170,11 +170,11 @@ function registerDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): vo
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-Subscribes to DepthDataOutput error events. This API uses an asynchronous callback to return the result.
+订阅 DepthDataOutput 错误事件。此接口使用异步回调返回结果。
 
-> **NOTE:** 
+> **注意**
 > 
-> Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
+> 当前不支持在 **on()** 的回调方法中使用 **off()** 取消注册回调。
 
 **起始版本：** 13
 
@@ -188,8 +188,8 @@ Subscribes to DepthDataOutput error events. This API uses an asynchronous callba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a depthDataOutput instance is created. |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | Callback used to return an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md). |
+| type | 'error' | 是 | 事件类型。值固定为 **'error'**。创建 depthDataOutput 实例后即可监听此事件。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 用于返回 [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) 中定义的错误码的回调。 |
 
 **错误码：**
 
@@ -220,7 +220,7 @@ function registerDepthDataOutputError(depthDataOutput: camera.DepthDataOutput): 
 start(): Promise<void>
 ```
 
-Starts depth data output. This API uses a promise to return the result.
+启动深度数据输出。此接口使用 Promise 返回结果。
 
 **起始版本：** 13
 
@@ -234,7 +234,7 @@ Starts depth data output. This API uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | 不返回值的 Promise。 |
 
 **错误码：**
 
@@ -267,7 +267,7 @@ function startDepthDataOutput(depthDataOutput: camera.DepthDataOutput): void {
 stop(): Promise<void>
 ```
 
-Stops depth data output. This API uses a promise to return the result.
+停止深度数据输出。此接口使用 Promise 返回结果。
 
 **起始版本：** 13
 
@@ -281,7 +281,7 @@ Stops depth data output. This API uses a promise to return the result.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. |
+| Promise&lt;void&gt; | 不返回值的 Promise。 |
 
 **错误码：**
 

@@ -44,8 +44,6 @@ declare function readText(
 | Promise&lt;string&gt; | Promise对象。返回读取文件的内容。 |
 
 
-<a id="readtext2"></a>
-
 ## readText
 
 ```TypeScript

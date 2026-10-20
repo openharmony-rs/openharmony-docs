@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="set1"></a>
-
 ## set
 
 ```TypeScript
@@ -31,8 +29,6 @@ Sets the property of target, equivalent to `target[propertyKey] = value` when `r
 | value | P extends keyof T ? T[P] : any | Yes |  |
 | receiver | any | No |  |
 
-
-<a id="set2"></a>
 
 ## set
 

@@ -6,8 +6,6 @@ export interface OffscreenCanvasRenderingContext2D
 
 Provides a 2D rendering context for the drawing surface of the &lt; Canvas &gt; element. It is used to draw shapes, text, images and other objects.
 
-@interface OffscreenCanvasRenderingContext2D
-
 **Since:** 7
 
 <!--Device-unnamed-export interface OffscreenCanvasRenderingContext2D--><!--Device-unnamed-export interface OffscreenCanvasRenderingContext2D-End-->
@@ -167,8 +165,6 @@ Closing the current path.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="createimagedata1"></a>
-
 ## createImageData
 
 ```TypeScript
@@ -197,8 +193,6 @@ Create an ImageData object.
 | Type | Description |
 | --- | --- |
 | ImageData | ImageData New ImageData object with width and height specified. |
-
-<a id="createimagedata2"></a>
 
 ## createImageData
 
@@ -259,8 +253,6 @@ Creates a linear gradient color.
 | --- | --- |
 | [CanvasGradient](arkts-arkui-viewmodel-canvasgradient-i.md) | LinearGradient object. |
 
-<a id="createpath2d1"></a>
-
 ## createPath2D
 
 ```TypeScript
@@ -288,8 +280,6 @@ Creates a path that is later used by the CanvasRenderingContext2D object.
 | Type | Description |
 | --- | --- |
 | [Path2D](arkts-arkui-viewmodel-path2d-i.md) | the object of Path2D. |
-
-<a id="createpath2d2"></a>
 
 ## createPath2D
 
@@ -381,8 +371,6 @@ Create a radial tween object.
 | --- | --- |
 | [CanvasGradient](arkts-arkui-viewmodel-canvasgradient-i.md) | RadialGradient object. |
 
-<a id="drawimage1"></a>
-
 ## drawImage
 
 ```TypeScript
@@ -408,8 +396,6 @@ Draw an Image object.
 | dy | number | Yes | The top left corner of the image is the Y-axis coordinates on the target canvas. |
 | dw | number | Yes | Image The width drawn on the target canvas. |
 | dh | number | Yes | Image The height drawn on the target canvas. |
-
-<a id="drawimage2"></a>
 
 ## drawImage
 
@@ -451,8 +437,6 @@ Draw an Image object.
 | dw | number | Yes | Image The width drawn on the target canvas. |
 | dh | number | Yes | Image The height drawn on the target canvas. |
 
-<a id="drawimage3"></a>
-
 ## drawImage
 
 ```TypeScript
@@ -478,8 +462,6 @@ Draw an Image object.
 | dy | number | Yes | The top left corner of the image is the Y-axis coordinates on the target canvas. |
 | dw | number | Yes | Image The width drawn on the target canvas. |
 | dh | number | Yes | Image The height drawn on the target canvas. |
-
-<a id="drawimage4"></a>
 
 ## drawImage
 
@@ -686,8 +668,6 @@ Get an PixelMap object.
 | --- | --- |
 | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | PixelMap A PixelMap object that contains the rectangular ImageData given by the canvas. |
 
-<a id="ispointinpath1"></a>
-
 ## isPointInPath
 
 ```TypeScript
@@ -716,8 +696,6 @@ Check whether the specified coordinate point is on the Path.
 | Type | Description |
 | --- | --- |
 | boolean | boolean Return true if the detection point is contained within the current or specified path Otherwise return false. |
-
-<a id="ispointinpath2"></a>
 
 ## isPointInPath
 
@@ -749,8 +727,6 @@ Check whether the specified coordinate point is on the Path.
 | --- | --- |
 | boolean | boolean Return true if the detection point is contained within the current or specified path Otherwise return false. |
 
-<a id="ispointinstroke1"></a>
-
 ## isPointInStroke
 
 ```TypeScript
@@ -779,8 +755,6 @@ Checks whether the specified coordinate point is on the stroke edge.
 | Type | Description |
 | --- | --- |
 | boolean | boolean A Boolean value that returns true when the point is on the line of the path, false otherwise. |
-
-<a id="ispointinstroke2"></a>
 
 ## isPointInStroke
 
@@ -886,8 +860,6 @@ Moves the current canvas to the specified coordinate point.
 | x | number | Yes | The x axis. |
 | y | number | Yes | The y axis. |
 
-<a id="putimagedata1"></a>
-
 ## putImageData
 
 ```TypeScript
@@ -911,8 +883,6 @@ Draws the specified ImageData object to the canvas.
 | imageData | ImageData | Yes | An array object containing pixel values. |
 | dx | number | Yes | The offset of the position of the source image data in the target canvas (the offset in the X-axis direction). |
 | dy | number | Yes | The offset of the position of the source image data in the target canvas (the Y-axis offset). |
-
-<a id="putimagedata2"></a>
 
 ## putImageData
 
@@ -1142,8 +1112,6 @@ Set the rotation, pan, and zoom effects.
 | e | number | Yes | The level of mobile. |
 | f | number | Yes | Vertical movement. |
 
-<a id="stroke1"></a>
-
 ## stroke
 
 ```TypeScript
@@ -1159,8 +1127,6 @@ Stroke draws the current path.
 <!--Device-OffscreenCanvasRenderingContext2D-stroke(): void--><!--Device-OffscreenCanvasRenderingContext2D-stroke(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-<a id="stroke2"></a>
 
 ## stroke
 

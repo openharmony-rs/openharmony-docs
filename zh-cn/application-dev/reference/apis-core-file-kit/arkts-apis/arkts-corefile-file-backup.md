@@ -2,8 +2,6 @@
 
 提供备份和恢复能力的模块。
 
-@namespace backup
-
 **起始版本：** 10
 
 <!--Device-unnamed-declare namespace backup--><!--Device-unnamed-declare namespace backup-End-->
@@ -28,9 +26,9 @@ import { backup } from '@kit.CoreFileKit';
 | [fileSystemServiceRequest](arkts-corefile-backup-filesystemservicerequest-f-sys.md#filesystemservicerequest) | 根据指定配置请求文件系统执行碎片清理。 |
 | [getBackupInfo](arkts-corefile-backup-getbackupinfo-f-sys.md#getbackupinfo) | 获取需要备份的应用信息。 |
 | [getBackupVersion](arkts-corefile-backup-getbackupversion-f-sys.md#getbackupversion) | 获取备份版本信息。 |
-| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities1) | 获取描述本地能力的JSON文件。 |
-| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities2) | 获取描述本地能力的JSON文件。 |
-| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities3) | 获取描述本地能力的JSON文件。 |
+| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities) | 获取描述本地能力的JSON文件。 |
+| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities) | 获取描述本地能力的JSON文件。 |
+| [getLocalCapabilities](arkts-corefile-backup-getlocalcapabilities-f-sys.md#getlocalcapabilities) | 获取描述本地能力的JSON文件。 |
 | [updateSendRate](arkts-corefile-backup-updatesendrate-f-sys.md#updatesendrate) | 更新备份应用发送文件描述符的速率。 |
 | [updateTimer](arkts-corefile-backup-updatetimer-f-sys.md#updatetimer) | 设置应用备份或恢复的时长。 |
 <!--DelEnd-->

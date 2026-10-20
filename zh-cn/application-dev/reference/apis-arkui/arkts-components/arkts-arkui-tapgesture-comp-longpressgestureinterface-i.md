@@ -18,8 +18,6 @@ interface LongPressGestureInterface extends GestureInterface<LongPressGestureInt
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="call1"></a>
-
 ## [[Call]]
 
 ```TypeScript
@@ -46,15 +44,13 @@ interface LongPressGestureInterface extends GestureInterface<LongPressGestureInt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | { fingers?: number; repeat?: boolean; duration?: number } | 否 | 设置长按手势参数。<br> - fingers：触发长按的最少手指数，最小值为1， & nbsp;最大值为10。<br>默认值：1 <br> - repeat：是否连续触发事件回调。true表示连续触发事件回调，false表示不连续触发事件回调。<br>默认值：false <br> - duration：触发长按的最短时间，单位为毫秒（ms）。<br>默认值：500 |
+| value | { fingers?: number; repeat?: boolean; duration?: number } | 否 | 设置长按手势参数。<br> - fingers：触发长按的最少手指数，最小值为1，&nbsp;最大值为10。<br>默认值：1 <br> - repeat：是否连续触发事件回调。true表示连续触发事件回调，false表示不连续触发事件回调。<br>默认值：false <br> - duration：触发长按的最短时间，单位为毫秒（ms）。<br>默认值：500 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-tapgesture-comp-longpressgestureinterface-i.md) |  |
-
-<a id="call2"></a>
 
 ## [[Call]]
 
@@ -120,8 +116,6 @@ onAction(event: (event: GestureEvent) => void): LongPressGestureInterface
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-tapgesture-comp-longpressgestureinterface-i.md) |  |
 
-<a id="onactioncancel1"></a>
-
 ## onActionCancel
 
 ```TypeScript
@@ -149,8 +143,6 @@ onActionCancel(event: () => void): LongPressGestureInterface
 | 类型 | 说明 |
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-tapgesture-comp-longpressgestureinterface-i.md) |  |
-
-<a id="onactioncancel2"></a>
 
 ## onActionCancel
 

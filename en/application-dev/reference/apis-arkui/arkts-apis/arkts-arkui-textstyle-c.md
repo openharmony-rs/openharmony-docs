@@ -34,7 +34,7 @@ A constructor used to create a text style.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [TextStyleInterface](arkts-arkui-textstyleinterface-i.md) | No | Font style setting item.<br>Default value: when not passed, inherits the default values of the **TextStyleInterface** properties. |
+| value | [TextStyleInterface](arkts-arkui-textstyleinterface-i.md) | No | Font style setting item. <br>Default value: when not passed, inherits the default values of the **TextStyleInterface** properties. |
 
 ## fontColor
 

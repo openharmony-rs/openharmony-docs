@@ -6,8 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="queryabilitybywant1"></a>
-
 ## queryAbilityByWant
 
 ```TypeScript
@@ -61,8 +59,6 @@ bundle.queryAbilityByWant(want, bundleFlags, userId, (err, data) => {
 ```
 
 
-<a id="queryabilitybywant2"></a>
-
 ## queryAbilityByWant
 
 ```TypeScript
@@ -112,8 +108,6 @@ bundle.queryAbilityByWant(want, bundleFlags, (err, data) => {
 })
 ```
 
-
-<a id="queryabilitybywant3"></a>
 
 ## queryAbilityByWant
 

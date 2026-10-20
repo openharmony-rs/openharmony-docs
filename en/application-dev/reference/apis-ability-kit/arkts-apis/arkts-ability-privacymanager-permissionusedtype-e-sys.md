@@ -8,8 +8,8 @@ Enumerates the means for using a sensitive permission.
 
 | Name | Value| Description |  
 | ----------------------- | -- | ---------------- |  
-| NORMAL_TYPE | 0 | The sensitive permission is used after authorization through a dialog box or a system settings page. |
-| PICKER_TYPE | 1 | Indicates that a sensitive permission is used through a PICKER service, but this method does not grant the permission. |
+| NORMAL_TYPE | 0 | The sensitive permission is used after authorization through a dialog box or a system settings page. |  
+| PICKER_TYPE | 1 | Indicates that a sensitive permission is used through a PICKER service, but this method does not grant the permission. |  
 | SECURITY_COMPONENT_TYPE | 2 | Indicates that a sensitive permission is used through security component authorization. A security component is a system-provided authorization component; after the user taps it, the application can temporarily obtain the corresponding permission. |
 
 **Since:** 12

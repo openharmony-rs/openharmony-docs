@@ -6,7 +6,7 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-## addOsAccount
+## addOsAccount('osAccount.OsAccountType')
 
 ```TypeScript
 function addOsAccount(admin: Want, name: string, type: osAccount.OsAccountType): osAccount.OsAccountInfo

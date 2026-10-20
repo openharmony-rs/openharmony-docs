@@ -1,5 +1,12 @@
 # LayoutAlgorithm
 
+Provides layout algorithms supported by the [DynamicLayout](../arkts-components/arkts-arkui-dynamiclayout-comp-attribute.md#dynamiclayoutattribute) component.
+ **LayoutAlgorithm** is the base type of layout algorithms for the dynamic layout container.
+ It provides multiple layout algorithm implementations, including linear layout, stack layout, and grid layout.
+ You can select an appropriate layout algorithm based on the actual scenario, or inherit **CustomLayoutAlgorithm** to implement a custom layout.
+
+
+
 ## Summary
 
 ### Classes

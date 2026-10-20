@@ -6,8 +6,6 @@ export type ContinueMissionInfo = _ContinueMissionInfo
 
 Parameters corresponding to continue mission.
 
-@typedef { _ContinueMissionInfo }
-
 **Type:** _ContinueMissionInfo
 
 **Since:** 10

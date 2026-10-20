@@ -6,8 +6,6 @@
 import { mindSporeLite } from '@kit.MindSporeLiteKit';
 ```
 
-<a id="loadmodelfrombuffer1"></a>
-
 ## loadModelFromBuffer
 
 ```TypeScript
@@ -79,8 +77,6 @@ globalContext.getApplicationContext()
 ```
 
 
-<a id="loadmodelfrombuffer2"></a>
-
 ## loadModelFromBuffer
 
 ```TypeScript
@@ -142,8 +138,6 @@ globalContext.getApplicationContext()
   });
 ```
 
-
-<a id="loadmodelfrombuffer3"></a>
 
 ## loadModelFromBuffer
 

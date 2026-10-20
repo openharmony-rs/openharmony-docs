@@ -82,6 +82,7 @@
   <!--Del-->
   - [setBackgroundTaskState（系统接口）](arkts-backgroundtasks-backgroundtaskmanager-setbackgroundtaskstate-f-sys.md)<!--DelEnd-->
   - [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md)
+  - [startContinuousTask](arkts-backgroundtasks-backgroundtaskmanager-startcontinuoustask-f.md)
   - [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-f.md)
   <!--Del-->
   - [subscribeContinuousTaskState（系统接口）](arkts-backgroundtasks-backgroundtaskmanager-subscribecontinuoustaskstate-f-sys.md)<!--DelEnd-->

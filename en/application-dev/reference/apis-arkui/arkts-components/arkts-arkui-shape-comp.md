@@ -36,7 +36,7 @@ Draws the **Shape** component. After being called, it creates a **Shape** object
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | Yes | Drawing target. The shape can be drawn into the specified **PixelMap** object.<br>Note: This parameter is mandatory. A valid **PixelMap** object must be passed in. The parameter does not take effect when **undefined** or **null** is passed in. |
+| value | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | Yes | Drawing target. The shape can be drawn into the specified **PixelMap** object. <br>Note: This parameter is mandatory. A valid **PixelMap** object must be passed in. The parameter does not take effect when **undefined** or **null** is passed in. |
 
 ## Shape
 
@@ -80,7 +80,7 @@ Draws the **Shape** component. After being called, it creates a **Shape** object
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | No | Drawing target. You can draw a shape in the specified **PixelMap** object. If this parameter is not set, the shape is drawn in the current drawing target by default.<br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
+| value | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | No | Drawing target. You can draw a shape in the specified **PixelMap** object. If this parameter is not set, the shape is drawn in the current drawing target by default. <br>The abnormal values **undefined** and **null** are treated as invalid values, and this setting does not take effect. |
 
 ## Summary
 

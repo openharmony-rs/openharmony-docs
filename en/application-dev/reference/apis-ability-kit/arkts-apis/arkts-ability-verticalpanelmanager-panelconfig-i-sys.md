@@ -6,8 +6,6 @@ interface PanelConfig
 
 Indicates the panel config
 
-@interface PanelConfig
-
 **Since:** 20
 
 <!--Device-verticalPanelManager-interface PanelConfig--><!--Device-verticalPanelManager-interface PanelConfig-End-->

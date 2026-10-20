@@ -400,8 +400,6 @@ try {
 }
 ```
 
-<a id="notifycharacteristicchanged1"></a>
-
 ## notifyCharacteristicChanged
 
 ```TypeScript
@@ -471,8 +469,6 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
-
-<a id="notifycharacteristicchanged2"></a>
 
 ## notifyCharacteristicChanged
 

@@ -6,8 +6,6 @@ interface SettingContent
 
 The definition of setting content
 
-@interface SettingContent
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-interface SettingContent--><!--Device-avMusicTemplate-interface SettingContent-End-->

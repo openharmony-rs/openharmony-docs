@@ -6,8 +6,6 @@
 import { PiPWindow } from '@kit.ArkUI';
 ```
 
-<a id="create1"></a>
-
 ## create
 
 ```TypeScript
@@ -145,8 +143,6 @@ struct Index {
 }
 ```
 
-
-<a id="create2"></a>
 
 ## create
 

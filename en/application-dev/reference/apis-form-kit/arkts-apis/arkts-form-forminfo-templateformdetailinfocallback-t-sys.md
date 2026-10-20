@@ -6,8 +6,6 @@ type TemplateFormDetailInfoCallback = (info: Array<TemplateFormDetailInfo>) => v
 
 template form detail info callback.
 
-@typedef { function } TemplateFormDetailInfoCallback
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

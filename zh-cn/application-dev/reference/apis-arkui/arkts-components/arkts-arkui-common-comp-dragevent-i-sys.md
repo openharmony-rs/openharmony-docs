@@ -81,7 +81,7 @@ executeFollowHandMorphDropAnimation(onAnimationFinished: Callback<void>, animati
 dragAnimationType?: DragAnimationType
 ```
 
-设置拖拽动画类型。该属性仅支持在[onDragStart](arkts-arkui-common-comp-commonmethod-c.md#ondragstart)阶段设置，可在[onDragStart](arkts-arkui-common-comp-commonmethod-c.md#ondragstart)、[onDragEnter](arkts-arkui-common-comp-commonmethod-c.md#ondragenter)、[onDragMove](arkts-arkui-common-comp-commonmethod-c.md#ondragmove)、[onDragLeave](arkts-arkui-common-comp-commonmethod-c.md#ondragleave)、[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop1)、[onDragEnd](arkts-arkui-common-comp-commonmethod-c.md#ondragend)回调中获取。
+设置拖拽动画类型。该属性仅支持在[onDragStart](arkts-arkui-common-comp-commonmethod-c.md#ondragstart)阶段设置，可在[onDragStart](arkts-arkui-common-comp-commonmethod-c.md#ondragstart)、[onDragEnter](arkts-arkui-common-comp-commonmethod-c.md#ondragenter)、[onDragMove](arkts-arkui-common-comp-commonmethod-c.md#ondragmove)、[onDragLeave](arkts-arkui-common-comp-commonmethod-c.md#ondragleave)、[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop)、[onDragEnd](arkts-arkui-common-comp-commonmethod-c.md#ondragend)回调中获取。
 
 默认值为DEFAULT
 

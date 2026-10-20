@@ -18,7 +18,7 @@ Enumerates the text input types.
 DATETIME
 ```
 
-Date.
+Date type. <br> <br>Usage scenarios: applicable to date and time input boxes, and the input method displays a date-related keyboard layout.
 
 **Since:** 10
 
@@ -32,7 +32,7 @@ Date.
 EMAIL_ADDRESS
 ```
 
-Email address.
+Email address type. <br> <br>Usage scenarios: applicable to email input boxes, and the input method keyboard highlights common email symbols such as "@" and ".".
 
 **Since:** 10
 
@@ -46,7 +46,7 @@ Email address.
 MULTILINE
 ```
 
-Multi-line.
+Multiline type. <br> <br>Usage scenarios: applicable to scenarios that require multiline text input, such as long text editing and comment boxes.
 
 **Since:** 10
 
@@ -60,7 +60,7 @@ Multi-line.
 NEW_PASSWORD
 ```
 
-New password.
+New password type. <br> <br>Usage scenarios: applicable to input boxes for setting a new password, and the input method can provide password strength hints.
 
 **Since:** 20
 
@@ -74,7 +74,7 @@ New password.
 NONE = -1
 ```
 
-None.
+NONE. <br> <br>Usage scenarios: used when the edit box does not want to specify a particular input type, and the input method uses the default keyboard layout.
 
 **Since:** 10
 
@@ -88,7 +88,7 @@ None.
 NUMBER
 ```
 
-Number.
+Number type. <br> <br>Usage scenarios: applicable to scenarios that require only numeric input, such as quantity input and age input, and the input method displays a numeric keyboard.
 
 **Since:** 10
 
@@ -102,7 +102,7 @@ Number.
 NUMBER_DECIMAL
 ```
 
-Number with a decimal point.
+Number type with a decimal point. <br> <br>Usage scenarios: applicable to scenarios that require input of numbers with a decimal point, such as amount input.
 
 **Since:** 20
 
@@ -116,7 +116,7 @@ Number with a decimal point.
 NUMBER_PASSWORD
 ```
 
-Numeric password.
+Numeric password type. <br> <br>Usage scenarios: applicable to scenarios that require only numeric password input, such as PIN code input.
 
 **Since:** 11
 
@@ -130,7 +130,7 @@ Numeric password.
 ONE_TIME_CODE
 ```
 
-Verification code.
+Verification code type. <br> <br>Usage scenarios: applicable to verification code input boxes, and the input method can optimize the verification code input experience.
 
 **Since:** 20
 
@@ -144,7 +144,7 @@ Verification code.
 PHONE
 ```
 
-Phone number.
+Phone number type. <br> <br>Usage scenarios: applicable to phone number input boxes, and the input method displays a phone number keyboard (including digits and common phone symbols).
 
 **Since:** 10
 
@@ -158,7 +158,7 @@ Phone number.
 SCREEN_LOCK_PASSWORD
 ```
 
-Lock screen password.
+Screen lock password type. <br> <br>Usage scenarios: applicable to the password input box on the lock screen.
 
 **Since:** 20
 
@@ -172,7 +172,7 @@ Lock screen password.
 TEXT = 0
 ```
 
-Text.
+Text type. <br> <br>Usage scenarios: applicable to ordinary text input boxes, such as chat and memo, and the input method displays a full-featured keyboard.
 
 **Since:** 10
 
@@ -186,7 +186,7 @@ Text.
 URL
 ```
 
-URL.
+Link type. <br> <br>Usage scenarios: applicable to URL input boxes, and the input method keyboard highlights common URL symbols such as "/" and ".".
 
 **Since:** 10
 
@@ -200,7 +200,7 @@ URL.
 USER_NAME
 ```
 
-Username.
+Username type. <br> <br>Usage scenarios: applicable to username input boxes, and the input method can provide optimized suggestions based on username characteristics.
 
 **Since:** 20
 
@@ -214,7 +214,7 @@ Username.
 VISIBLE_PASSWORD
 ```
 
-Password.
+Password type. <br> <br>Usage scenarios: applicable to password input boxes, and the input method displays a visible password keyboard without automatic suggestions.
 
 **Since:** 10
 

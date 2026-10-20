@@ -6,8 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="settouchpadscrolldirection1"></a>
-
 ## setTouchpadScrollDirection
 
 ```TypeScript
@@ -28,7 +26,7 @@ Sets the touchpad scroll direction. This API uses an asynchronous callback to re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| state | boolean | Yes | Touchpad scroll direction.<br>The value **true** indicates that the scroll direction is the same as the finger moving direction, and the value **false** indicates the opposite. <br>The default value is **true**. |
+| state | boolean | Yes | Touchpad scroll direction. <br>The value **true** indicates that the scroll direction is the same as the finger moving direction, and the value **false** indicates the opposite. <br>The default value is **true**. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -73,8 +71,6 @@ struct Index {
 <!--DelEnd-->
 
 
-<a id="settouchpadscrolldirection2"></a>
-
 ## setTouchpadScrollDirection
 
 ```TypeScript
@@ -95,7 +91,7 @@ Sets the touchpad scroll direction. This API uses a promise to return the result
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| state | boolean | Yes | Touchpad scroll direction.<br>The value **true** indicates that the scroll direction is the same as the finger moving direction, and the value **false** indicates the opposite. <br>The default value is **true**. |
+| state | boolean | Yes | Touchpad scroll direction. <br>The value **true** indicates that the scroll direction is the same as the finger moving direction, and the value **false** indicates the opposite. <br>The default value is **true**. |
 
 **Return value:**
 

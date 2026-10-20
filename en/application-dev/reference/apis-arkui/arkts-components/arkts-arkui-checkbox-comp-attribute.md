@@ -14,8 +14,6 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="contentmodifier1"></a>
-
 ## contentModifier
 
 ```TypeScript
@@ -40,15 +38,13 @@ Creates a content modifier for the **Checkbox** component. Setting this attribut
 | --- | --- | --- | --- |
 | modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[CheckBoxConfiguration](arkts-arkui-checkbox-comp-checkboxconfiguration-i.md)&gt; | Yes | Content modifier to apply to the **Checkbox** component.<br>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API. |
 
-<a id="contentmodifier2"></a>
-
 ## contentModifier
 
 ```TypeScript
 contentModifier(modifier: Optional<ContentModifier<CheckBoxConfiguration>>)
 ```
 
-Creates a content modifier for the **Checkbox** component. Compared with [contentModifier](#contentmodifier1)<sup>12 +</sup>, this API supports the **undefined** type for the **modifier** parameter. Setting this attribute will invalidate other attribute settings.
+Creates a content modifier for the **Checkbox** component. Compared with [contentModifier](#contentmodifier)<sup>12 +</sup>, this API supports the **undefined** type for the **modifier** parameter. Setting this attribute will invalidate other attribute settings.
 
 **Since:** 18
 
@@ -65,8 +61,6 @@ Creates a content modifier for the **Checkbox** component. Compared with [conten
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | modifier | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[CheckBoxConfiguration](arkts-arkui-checkbox-comp-checkboxconfiguration-i.md)&gt;&gt; | Yes | Content modifier to apply to the **Checkbox** component.<br>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API.<br>When the value of **modifier** is **undefined**, the content modifier is not used. |
-
-<a id="mark1"></a>
 
 ## mark
 
@@ -92,15 +86,13 @@ Sets the check mark style of the check box.
 | --- | --- | --- | --- |
 | value | [MarkStyle](../arkts-apis/arkts-arkui-markstyle-i.md) | Yes | Check mark style of the check box. Since API version 12, if **indicatorBuilder** is set, the style is determined by **indicatorBuilder**. <br>Default value: {<br>strokeColor : `$r('sys.color.ohos_id_color_foreground_contrary')`, <br>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`, <br>size: '20vp'<br>} |
 
-<a id="mark2"></a>
-
 ## mark
 
 ```TypeScript
 mark(style: Optional<MarkStyle>)
 ```
 
-Sets the check mark style of the check box. Compared with [mark](#mark1)<sup>10+</sup>, this API supports the **undefined** type for the **style** parameter.
+Sets the check mark style of the check box. Compared with [mark](#mark)<sup>10+</sup>, this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -117,8 +109,6 @@ Sets the check mark style of the check box. Compared with [mark](#mark1)<sup>10+
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[MarkStyle](../arkts-apis/arkts-arkui-markstyle-i.md)&gt; | Yes | Check mark style of the check box. If **indicatorBuilder** is set, the content in **indicatorBuilder** is displayed.<br>If the value of **style** is **undefined**, the default value is used: {<br>strokeColor: `$r('sys.color.ohos_id_color_foreground_contrary')`,<br>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`,<br>size: '20vp'<br>} |
-
-<a id="onchange1"></a>
 
 ## onChange
 
@@ -146,15 +136,13 @@ Invoked when the selected state of the check box changes.
 | --- | --- | --- | --- |
 | callback | [OnCheckboxChangeCallback](arkts-arkui-checkbox-comp-oncheckboxchangecallback-t.md) | Yes | Callback used to return the selected state.<br>**Since:** 18 |
 
-<a id="onchange2"></a>
-
 ## onChange
 
 ```TypeScript
 onChange(callback: Optional<OnCheckboxChangeCallback>)
 ```
 
-Invoked when the selected state of the check box changes. Compared with [onChange](#onchange1), this API supports the **undefined** type for the **callback** parameter.
+Invoked when the selected state of the check box changes. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
 
 **Since:** 18
 
@@ -173,8 +161,6 @@ Invoked when the selected state of the check box changes. Compared with [onChang
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnCheckboxChangeCallback](arkts-arkui-checkbox-comp-oncheckboxchangecallback-t.md)&gt; | Yes | Callback used to return the selected state.<br>If **callback** is set to **undefined**, the callback function is not used. |
-
-<a id="select1"></a>
 
 ## select
 
@@ -204,9 +190,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether the check box is selected.<br>Default value: **false** <br>**true**: The check box is selected. <br>**false**: The check box is not selected. |
-
-<a id="select2"></a>
+| value | boolean | Yes | Whether the check box is selected. <br>Default value: **false** <br>**true**: The check box is selected. <br>**false**: The check box is not selected. |
 
 ## select
 
@@ -214,7 +198,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 select(isSelected: Optional<boolean>)
 ```
 
-Sets whether the check box is selected. Compared with [select](#select1), this API supports the **undefined** type for the **isSelected** parameter.
+Sets whether the check box is selected. Compared with [select](#select), this API supports the **undefined** type for the **isSelected** parameter.
 
 This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md) and [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 
@@ -235,8 +219,6 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | isSelected | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the check box is selected.<br>The default value is **false** when the value of **isSelected** is **undefined**.<br>The value **true** indicates the check box is selected, and **false** indicates the opposite. |
-
-<a id="selectedcolor1"></a>
 
 ## selectedColor
 
@@ -262,9 +244,7 @@ Sets the color of the check box when it is selected.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the check box when it is selected.<br>Default value: **$r('sys.color.ohos_id_color_text_primary_activated')**. <br>An invalid value is handled as the default value. |
-
-<a id="selectedcolor2"></a>
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the check box when it is selected. <br>Default value: **$r('sys.color.ohos_id_color_text_primary_activated')**. <br>An invalid value is handled as the default value. |
 
 ## selectedColor
 
@@ -272,7 +252,7 @@ Sets the color of the check box when it is selected.
 selectedColor(resColor: Optional<ResourceColor>)
 ```
 
-Sets the color of the check box when it is selected. Compared with [selectedColor](#selectedcolor1), this API supports the **undefined** type for the **resColor** parameter.
+Sets the color of the check box when it is selected. Compared with [selectedColor](#selectedcolor), this API supports the **undefined** type for the **resColor** parameter.
 
 **Since:** 18
 
@@ -292,15 +272,13 @@ Sets the color of the check box when it is selected. Compared with [selectedColo
 | --- | --- | --- | --- |
 | resColor | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | Yes | Color of the check box when it is selected.<br>When the value of **resColor** is **undefined**, the default value **$r('sys.color.ohos_id_color_text_primary_activated')** is used.<br>An invalid value is handled as the default value. |
 
-<a id="shape1"></a>
-
 ## shape
 
 ```TypeScript
 shape(value: CheckBoxShape)
 ```
 
-Sets the check box shape, including circle and rounded square. To adjust the style of the current check box, use [contentModifier](#contentmodifier1).
+Sets the check box shape, including circle and rounded square. To adjust the style of the current check box, use [contentModifier](#contentmodifier).
 
 **Since:** 11
 
@@ -318,9 +296,7 @@ Sets the check box shape, including circle and rounded square. To adjust the sty
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [CheckBoxShape](../arkts-apis/arkts-arkui-checkboxshape-e.md) | Yes | Shape of the check box, including circle and rounded square.<br>Default value: **CheckBoxShape.CIRCLE** |
-
-<a id="shape2"></a>
+| value | [CheckBoxShape](../arkts-apis/arkts-arkui-checkboxshape-e.md) | Yes | Shape of the check box, including circle and rounded square. <br>Default value: **CheckBoxShape.CIRCLE** |
 
 ## shape
 
@@ -328,7 +304,7 @@ Sets the check box shape, including circle and rounded square. To adjust the sty
 shape(shape: Optional<CheckBoxShape>)
 ```
 
-Sets the check box shape. Compared with [shape](#shape1)<sup>11+</sup>, this API supports the **undefined** type for the **shape** parameter. To adjust the style of the current check box, use the [contentModifier](#contentmodifier1) attribute.
+Sets the check box shape. Compared with [shape](#shape)<sup>11+</sup>, this API supports the **undefined** type for the **shape** parameter. To adjust the style of the current check box, use the [contentModifier](#contentmodifier) attribute.
 
 **Since:** 18
 
@@ -347,8 +323,6 @@ Sets the check box shape. Compared with [shape](#shape1)<sup>11+</sup>, this API
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | shape | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CheckBoxShape](../arkts-apis/arkts-arkui-checkboxshape-e.md)&gt; | Yes | Shape of the check box, which can be a circle or a rounded square.<br> When the value of **shape** is **undefined**, the default value is **CheckBoxShape.CIRCLE**. |
-
-<a id="unselectedcolor1"></a>
 
 ## unselectedColor
 
@@ -372,9 +346,7 @@ Sets the border color of the check box when it is not selected.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Border color of the check box when it is not selected.<br>Default value: **$r('sys.color.ohos_id_color_switch_outline_off')**. |
-
-<a id="unselectedcolor2"></a>
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Border color of the check box when it is not selected. <br>Default value: **$r('sys.color.ohos_id_color_switch_outline_off')**. |
 
 ## unselectedColor
 
@@ -382,7 +354,7 @@ Sets the border color of the check box when it is not selected.
 unselectedColor(resColor: Optional<ResourceColor>)
 ```
 
-Sets the border color of the check box when it is not selected. Compared with [unselectedColor](#unselectedcolor1)<sup>10+</sup>, this API supports the **undefined** type for the **resColor** parameter.
+Sets the border color of the check box when it is not selected. Compared with [unselectedColor](#unselectedcolor)<sup>10+</sup>, this API supports the **undefined** type for the **resColor** parameter.
 
 **Since:** 18
 

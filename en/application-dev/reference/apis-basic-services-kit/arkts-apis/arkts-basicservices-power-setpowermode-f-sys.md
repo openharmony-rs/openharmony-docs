@@ -6,8 +6,6 @@
 import { power } from '@kit.BasicServicesKit';
 ```
 
-<a id="setpowermode1"></a>
-
 ## setPowerMode
 
 ```TypeScript
@@ -57,8 +55,6 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: Error) => {
 
 <!--DelEnd-->
 
-
-<a id="setpowermode2"></a>
 
 ## setPowerMode
 

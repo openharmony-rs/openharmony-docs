@@ -126,8 +126,6 @@ Concatenates this ArkTS array with one or more arrays.
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The concat method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -149,8 +147,6 @@ A constructor used to create an empty ArkTS array.
 | Error Code ID | Error Message |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Array's constructor cannot be directly invoked. |
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -181,8 +177,6 @@ A constructor used to create an ArkTS array with the given elements.
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Array's constructor cannot be directly invoked. |
 
-<a id="constructor3"></a>
-
 ## constructor
 
 ```TypeScript
@@ -210,8 +204,6 @@ A constructor used to create an ArkTS array with the given elements.
 | Error Code ID | Error Message |
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Array's constructor cannot be directly invoked. |
-
-<a id="containsall1"></a>
 
 ## containsAll
 
@@ -249,8 +241,6 @@ Checks whether all elements in a specified ArkTS Array are contained in this Ark
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The containsAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification exception |
-
-<a id="containsall2"></a>
 
 ## containsAll
 
@@ -634,8 +624,6 @@ Calls a callback function for each element in this ArkTS Array.
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The forEach method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
-<a id="from1"></a>
-
 ## from
 
 ```TypeScript
@@ -669,8 +657,6 @@ Creates an ArkTS array from an array-like object.
 | Error Code ID | Error Message |
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The from method cannot be bound.<br>**Applicable version:** 12 - 17 |
-
-<a id="from2"></a>
 
 ## from
 
@@ -706,8 +692,6 @@ Creates an ArkTS array from an iterable object.
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The from method cannot be bound.<br>**Applicable version:** 12 - 17 |
 
-<a id="from3"></a>
-
 ## from
 
 ```TypeScript
@@ -736,8 +720,6 @@ Creates an ArkTS array from an array-like object, and uses a custom function to 
 | Type | Description |
 | --- | --- |
 | Array&lt;T&gt; | Newly created ArkTS array. |
-
-<a id="from4"></a>
 
 ## from
 
@@ -1095,8 +1077,6 @@ Adds elements to the end of this ArkTS array and returns the new length of the a
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The push method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
-<a id="reduce1"></a>
-
 ## reduce
 
 ```TypeScript
@@ -1131,8 +1111,6 @@ Calls a callback function for each element in this ArkTS array, uses the previou
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
-
-<a id="reduce2"></a>
 
 ## reduce
 
@@ -1173,15 +1151,13 @@ Similar to the previous API, this API takes an initial value as the second param
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
-<a id="reduceright1"></a>
-
 ## reduceRight
 
 ```TypeScript
 reduceRight<U = T>(callbackFn: ArrayReduceCallback<U, T, Array<T>>, initialValue: U): U
 ```
 
-This API is similar to the [reduceRight](#reduceright2) API, but it takes an initial value as the second parameter to initialize the accumulator before the array traversal starts from right to left.
+This API is similar to the [reduceRight](#reduceright) API, but it takes an initial value as the second parameter to initialize the accumulator before the array traversal starts from right to left.
 
 **Since:** 18
 
@@ -1210,8 +1186,6 @@ This API is similar to the [reduceRight](#reduceright2) API, but it takes an ini
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
-
-<a id="reduceright2"></a>
 
 ## reduceRight
 
@@ -1247,8 +1221,6 @@ Goes through each element in this ArkTS array from right to left, uses a callbac
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
-
-<a id="retainall1"></a>
 
 ## retainAll
 
@@ -1287,8 +1259,6 @@ Retains only the elements in this ArkTS Array that are contained in the specifie
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The retainAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification exception |
 
-<a id="retainall2"></a>
-
 ## retainAll
 
 ```TypeScript
@@ -1325,8 +1295,6 @@ Retains only the elements in this ArkTS Array that are contained in the specifie
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The retainAll method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification exception |
-
-<a id="retainall3"></a>
 
 ## retainAll
 
@@ -1562,8 +1530,6 @@ Sorts elements in this ArkTS array and returns a new array.
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The sort method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
-<a id="splice1"></a>
-
 ## splice
 
 ```TypeScript
@@ -1598,8 +1564,6 @@ Removes elements from a specified position (start) and all elements after the sp
 | --- | --- |
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The splice method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
-
-<a id="splice2"></a>
 
 ## splice
 

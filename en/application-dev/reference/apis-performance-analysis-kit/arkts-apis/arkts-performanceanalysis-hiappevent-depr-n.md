@@ -39,8 +39,8 @@ The **hiAppEvent** module provides the application event logging functions, such
 | Name | Description |
 | --- | --- |
 | [configure](arkts-performanceanalysis-hiappevent-configure-depr-f.md#configure) | Configures the application event logging function, such as setting the event logging switch and maximum size of the directory that stores the event logging files. |
-| [write](arkts-performanceanalysis-hiappevent-write-depr-f.md#write1) | Writes event information to the event file of the current day. This API uses a promise to return the result. |
-| [write](arkts-performanceanalysis-hiappevent-write-depr-f.md#write2) | Writes event information to the event file of the current day. This API uses an asynchronous callback to return the result. |
+| [write](arkts-performanceanalysis-hiappevent-write-depr-f.md#write) | Writes event information to the event file of the current day. This API uses a promise to return the result. |
+| [write](arkts-performanceanalysis-hiappevent-write-depr-f.md#write) | Writes event information to the event file of the current day. This API uses an asynchronous callback to return the result. |
 
 ### Interfaces
 

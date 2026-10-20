@@ -6,8 +6,6 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
-<a id="updateprintjobstate1"></a>
-
 ## updatePrintJobState
 
 ```TypeScript
@@ -21,7 +19,7 @@ Updates the print job state. This API uses an asynchronous callback to return th
 
 **Required permissions:** 
 - API version 24 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
-- API versions 10 to 23: ohos.permission.MANAGE_PRINT_JOB
+- API versions 10 to 23: N/A
 
 <!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState,    callback: AsyncCallback<void>): void--><!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState,    callback: AsyncCallback<void>): void-End-->
 
@@ -41,7 +39,6 @@ Updates the print job state. This API uses an asynchronous callback to return th
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application<br>**Applicable version:** 10 - 23 |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Examples**
@@ -64,8 +61,6 @@ print.updatePrintJobState(jobId, state, subState, (error: BusinessError) => {
 ```
 
 
-<a id="updateprintjobstate2"></a>
-
 ## updatePrintJobState
 
 ```TypeScript
@@ -78,7 +73,7 @@ Updates the print job state. This API uses a promise to return the result.
 
 **Required permissions:** 
 - API version 24 and later: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
-- API versions 10 to 23: ohos.permission.MANAGE_PRINT_JOB
+- API versions 10 to 23: N/A
 
 <!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState): Promise<void>--><!--Device-print-function updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState): Promise<void>-End-->
 
@@ -103,7 +98,6 @@ Updates the print job state. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application<br>**Applicable version:** 10 - 23 |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Examples**

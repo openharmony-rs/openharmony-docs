@@ -47,7 +47,6 @@ Adds a surface for delayed preview. This API can run after [commitConfig](arkts-
 | Error Code ID | Error Message |
 | --- | --- |
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 13 - 23 |
 
 **Examples**
 
@@ -88,7 +87,7 @@ Before enabling this feature, you can call [isBandwidthCompressionSupported](#is
 > **NOTE:** 
 > 
 > This function must be called prior to
-> [Session.commitConfig](arkts-camera-camera-session-i.md#commitconfig1). Otherwise, the
+> [Session.commitConfig](arkts-camera-camera-session-i.md#commitconfig). Otherwise, the
 > preview output stream format will be affected.
 
 **Since:** 23
@@ -725,8 +724,6 @@ function testSetPreviewRotation(previewOutput: camera.PreviewOutput, previewRota
 }
 ```
 
-<a id="start1"></a>
-
 ## start
 
 ```TypeScript
@@ -739,7 +736,7 @@ Starts to output preview streams. This API uses an asynchronous callback to retu
 
 **Deprecated since:** 11
 
-**Substitutes:** [start](arkts-camera-camera-session-i.md#start1)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [start](arkts-camera-camera-session-i.md#start)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-PreviewOutput-start(callback: AsyncCallback<void>): void--><!--Device-PreviewOutput-start(callback: AsyncCallback<void>): void-End-->
 
@@ -772,8 +769,6 @@ function startPreviewOutput(previewOutput: camera.PreviewOutput): void {
   });
 }
 ```
-
-<a id="start2"></a>
 
 ## start
 
@@ -819,8 +814,6 @@ function startPreviewOutput(previewOutput: camera.PreviewOutput): void {
 }
 ```
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -833,7 +826,7 @@ Stops outputting preview streams. This API uses an asynchronous callback to retu
 
 **Deprecated since:** 11
 
-**Substitutes:** [stop](arkts-camera-camera-session-i.md#stop1)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [stop](arkts-camera-camera-session-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-PreviewOutput-stop(callback: AsyncCallback<void>): void--><!--Device-PreviewOutput-stop(callback: AsyncCallback<void>): void-End-->
 
@@ -860,8 +853,6 @@ function stopPreviewOutput(previewOutput: camera.PreviewOutput): void {
   })
 }
 ```
-
-<a id="stop2"></a>
 
 ## stop
 

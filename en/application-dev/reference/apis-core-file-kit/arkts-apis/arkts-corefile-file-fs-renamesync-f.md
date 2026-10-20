@@ -30,8 +30,8 @@ Renames a file or directory. This API returns the result synchronously.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| oldPath | string | Yes | Application sandbox path of the file or directory to rename. |
-| newPath | string | Yes | Application sandbox path of the renamed file or directory. |
+| oldPath | string | Yes | Original application sandbox path of the file or directory. |
+| newPath | string | Yes | New application sandbox path of the file or directory. |
 
 **Error codes:**
 

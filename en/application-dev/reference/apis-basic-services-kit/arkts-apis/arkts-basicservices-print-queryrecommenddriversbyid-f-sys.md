@@ -30,7 +30,7 @@ Query recommend printer drivers by printer ID.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerId | string | Yes | Indicates the printer ID.<br>Indicates the printer ID. |
+| printerId | string | Yes | Indicates the printer ID. <br>Indicates the printer ID. |
 
 **Return value:**
 

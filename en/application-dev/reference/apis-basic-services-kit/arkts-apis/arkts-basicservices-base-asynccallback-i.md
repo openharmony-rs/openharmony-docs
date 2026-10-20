@@ -10,8 +10,6 @@ The error parameter is of the [BusinessError](arkts-basicservices-base-businesse
 
 The type of the asynchronous return value is defined by the developer.
 
-@typedef AsyncCallback [since 6 - 11] @typedef AsyncCallback<T, E = void> [since 12]
-
 **Since:** 6
 
 <!--Device-unnamed-export interface AsyncCallback<T, E = void>--><!--Device-unnamed-export interface AsyncCallback<T, E = void>-End-->

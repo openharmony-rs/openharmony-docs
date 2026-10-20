@@ -6,8 +6,6 @@ export interface LocationCommand
 
 扩展命令参数。
 
-@interface LocationCommand
-
 **起始版本：** 8
 
 **废弃版本：** 9

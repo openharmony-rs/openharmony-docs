@@ -42,7 +42,7 @@ const MAX_KEY_LENGTH = 1024
 const MAX_KEY_LENGTH_DEVICE = 896
 ```
 
-设备密钥长度，单位字节。
+最大设备密钥长度，单位字节。
 
 **起始版本：** 7
 

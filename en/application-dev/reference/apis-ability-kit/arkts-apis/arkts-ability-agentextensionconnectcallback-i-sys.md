@@ -6,8 +6,6 @@ export interface AgentExtensionConnectCallback
 
 Agent extension connect callback.
 
-@interface AgentExtensionConnectCallback
-
 **Since:** 24
 
 <!--Device-unnamed-export interface AgentExtensionConnectCallback--><!--Device-unnamed-export interface AgentExtensionConnectCallback-End-->

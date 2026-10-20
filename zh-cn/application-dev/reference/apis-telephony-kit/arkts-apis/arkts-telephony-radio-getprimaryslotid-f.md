@@ -6,8 +6,6 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
-<a id="getprimaryslotid1"></a>
-
 ## getPrimarySlotId
 
 ```TypeScript
@@ -52,8 +50,6 @@ radio.getPrimarySlotId((err: BusinessError, data: number) => {
 });
 ```
 
-
-<a id="getprimaryslotid2"></a>
 
 ## getPrimarySlotId
 

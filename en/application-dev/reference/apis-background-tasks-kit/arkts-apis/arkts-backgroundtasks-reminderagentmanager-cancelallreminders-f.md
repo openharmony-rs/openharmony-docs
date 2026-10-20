@@ -6,8 +6,6 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="cancelallreminders1"></a>
-
 ## cancelAllReminders
 
 ```TypeScript
@@ -50,8 +48,6 @@ reminderAgentManager.cancelAllReminders((err: BusinessError) =>{
 });
 ```
 
-
-<a id="cancelallreminders2"></a>
 
 ## cancelAllReminders
 

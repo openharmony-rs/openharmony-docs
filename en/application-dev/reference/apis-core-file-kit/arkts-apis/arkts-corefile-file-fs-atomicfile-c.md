@@ -4,11 +4,11 @@
 export class AtomicFile
 ```
 
-AtomicFile is a class used to perform atomic read and write operations on files.
+<b>AtomicFile</b> is a class used to perform atomic read, write, and other operations on files.
 
 A temporary file is written and renamed to the original file location, which ensures file integrity. If the write operation fails, the temporary file is deleted without modifying the original file content.
 
-You can call **finishWrite()** or **failWrite()** to write or roll back file content.
+You can call <b>finishWrite()</b> or <b>failWrite()</b> to write or roll back file content.
 
 **Since:** 15
 
@@ -28,7 +28,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 constructor(path: string)
 ```
 
-Creates an **AtomicFile** class for a file in a specified path.
+Creates an **AtomicFile** instance for a file in a specified path.
 
 **Since:** 15
 
@@ -54,7 +54,7 @@ Creates an **AtomicFile** class for a file in a specified path.
 delete(): void
 ```
 
-Deletes the **AtomicFile** class, including the original files and temporary files.
+Deletes the original files and temporary files of **AtomicFile**.
 
 **Since:** 15
 

@@ -22,8 +22,6 @@ interface AVCastController
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="setdisplaysurface1"></a>
-
 ## setDisplaySurface
 
 ```TypeScript
@@ -77,8 +75,6 @@ media.createAVRecorder().then((avRecorder) => {
 ```
 
 <!--DelEnd-->
-
-<a id="setdisplaysurface2"></a>
 
 ## setDisplaySurface
 

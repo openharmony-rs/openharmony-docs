@@ -6,8 +6,6 @@ export type FormEditExtensionContext = _FormEditExtensionContext.default
 
 The context of form edit extension. It allows access to formEditExtension-specific resources.
 
-@typedef { _FormEditExtensionContext.default }
-
 **Type:** _FormEditExtensionContext.default
 
 **Since:** 22

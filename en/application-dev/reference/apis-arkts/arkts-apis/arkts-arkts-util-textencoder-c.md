@@ -18,8 +18,6 @@ Provides APIs to encode strings into byte arrays. Multiple encoding formats are 
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -41,8 +39,6 @@ A constructor used to create a **TextEncoder** object.
 ```TypeScript
 let textEncoder = new util.TextEncoder();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -106,8 +102,6 @@ Creates a **TextEncoder** object.
 let textEncoder = util.TextEncoder.create("utf-8");
 ```
 
-<a id="encodeinto1"></a>
-
 ## encodeInto
 
 ```TypeScript
@@ -144,8 +138,6 @@ let result = textEncoder.encodeInto("\uD800¥¥");
 console.info("result = " + result);
 // Output: result = 237,160,128,194,165,194,165
 ```
-
-<a id="encodeinto2"></a>
 
 ## encodeInto
 

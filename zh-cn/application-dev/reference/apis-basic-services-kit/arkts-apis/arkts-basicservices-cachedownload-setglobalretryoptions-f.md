@@ -26,7 +26,7 @@ Sets retry options for all tasks. Used when task-specific retry configuration is
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [RetryOptions](arkts-basicservices-cachedownload-retryoptions-i.md) | 否 | Task retry configurations.<br>Default value: Refer to the default value of RetryOptions. |
+| options | [RetryOptions](arkts-basicservices-cachedownload-retryoptions-i.md) | 否 | Task retry configurations. <br>Default value: Refer to the default value of RetryOptions. |
 
 **示例**
 

@@ -1,4 +1,4 @@
-# utils（Defines the utils for ArkTS）
+# utils（定义ArkTS工具）
 
 ```TypeScript
 declare namespace utils

@@ -50,7 +50,7 @@ appendChild(child: FieldNode): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameters types. |
 
 **示例**
 
@@ -100,7 +100,7 @@ constructor(name: string)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Parameter verification failed. |
 
 ## default
 
@@ -124,7 +124,7 @@ default: string
 get nullable(): boolean
 ```
 
-获取数据库字段是否为空。
+表示数据库字段是否可以为空。true表示此节点数据可以为空，false表示此节点数据不能为空。
 
 **类型：** boolean
 
@@ -140,7 +140,7 @@ get nullable(): boolean
 set nullable(isnullable: boolean)
 ```
 
-设置数据库字段是否为空.
+设置数据库字段是否为空。true表示此节点数据可以为空，false表示此节点数据不能为空。
 
 **类型：** boolean
 
@@ -158,7 +158,7 @@ set nullable(isnullable: boolean)
 get type(): number
 ```
 
-获取节点对应的数据类型。
+表示指定节点对应的数据类型，取值为ValueType对应的枚举值。说明：暂不支持BYTE_ARRAY，使用此类型会导致getKVStore失败。
 
 **类型：** number
 
@@ -174,7 +174,7 @@ get type(): number
 set type(type: number)
 ```
 
-设置节点对应的数据类型。
+设置节点对应的数据类型。取值为ValueType对应的枚举值。暂不支持BYTE_ARRAY，使用此类型会导致getKVStore失败。
 
 **类型：** number
 

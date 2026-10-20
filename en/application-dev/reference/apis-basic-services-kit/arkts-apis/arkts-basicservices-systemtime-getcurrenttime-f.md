@@ -6,8 +6,6 @@
 import { systemTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="getcurrenttime1"></a>
-
 ## getCurrentTime
 
 ```TypeScript
@@ -59,8 +57,6 @@ try {
 ```
 
 
-<a id="getcurrenttime2"></a>
-
 ## getCurrentTime
 
 ```TypeScript
@@ -110,8 +106,6 @@ try {
 }
 ```
 
-
-<a id="getcurrenttime3"></a>
 
 ## getCurrentTime
 

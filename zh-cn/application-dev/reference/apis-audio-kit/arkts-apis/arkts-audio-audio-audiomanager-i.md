@@ -18,8 +18,6 @@ interface AudioManager
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="getaudioscene1"></a>
-
 ## getAudioScene
 
 ```TypeScript
@@ -53,8 +51,6 @@ audioManager.getAudioScene((err: BusinessError, value: audio.AudioScene) => {
   console.info(`Succeeded in obtaining the audio scene mode, audioScene: ${value}.`);
 });
 ```
-
-<a id="getaudioscene2"></a>
 
 ## getAudioScene
 
@@ -593,8 +589,6 @@ audioManager.on('interrupt', interAudioInterrupt, (interruptAction: audio.Interr
 });
 ```
 
-<a id="getaudioparameter1"></a>
-
 ## getAudioParameter
 
 ```TypeScript
@@ -635,8 +629,6 @@ audioManager.getAudioParameter('key_example', (err: BusinessError, value: string
   console.info(`Succeeded in obtaining the audio parameter, value: ${value}.`);
 });
 ```
-
-<a id="getaudioparameter2"></a>
 
 ## getAudioParameter
 
@@ -682,8 +674,6 @@ audioManager.getAudioParameter('key_example').then((value: string) => {
 });
 ```
 
-<a id="getdevices1"></a>
-
 ## getDevices
 
 ```TypeScript
@@ -695,7 +685,7 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptor
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getDevices](arkts-audio-audio-audioroutingmanager-i.md#getdevices1)
+> [getDevices](arkts-audio-audio-audioroutingmanager-i.md#getdevices)
 > 替代。
 
 **起始版本：** 7
@@ -729,8 +719,6 @@ audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err: BusinessErro
 });
 ```
 
-<a id="getdevices2"></a>
-
 ## getDevices
 
 ```TypeScript
@@ -742,7 +730,7 @@ getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getDevices](arkts-audio-audio-audioroutingmanager-i.md#getdevices1)
+> [getDevices](arkts-audio-audio-audioroutingmanager-i.md#getdevices)
 > 替代。
 
 **起始版本：** 7
@@ -778,8 +766,6 @@ audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data: audio.
   console.error(`Failed to obtain the device list. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="getmaxvolume1"></a>
 
 ## getMaxVolume
 
@@ -826,8 +812,6 @@ audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, valu
   console.info(`Succeeded in obtaining the maximum volume, maxVolume: ${value}.`);
 });
 ```
-
-<a id="getmaxvolume2"></a>
 
 ## getMaxVolume
 
@@ -878,8 +862,6 @@ audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((data: number) => {
 });
 ```
 
-<a id="getminvolume1"></a>
-
 ## getMinVolume
 
 ```TypeScript
@@ -925,8 +907,6 @@ audioManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, valu
   console.info(`Succeeded in obtaining the minimum volume, minVolume: ${value}.`);
 });
 ```
-
-<a id="getminvolume2"></a>
 
 ## getMinVolume
 
@@ -977,8 +957,6 @@ audioManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
 });
 ```
 
-<a id="getringermode1"></a>
-
 ## getRingerMode
 
 ```TypeScript
@@ -990,7 +968,7 @@ getRingerMode(callback: AsyncCallback<AudioRingMode>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getRingerMode](arkts-audio-audio-audiovolumegroupmanager-i.md#getringermode1)
+> [getRingerMode](arkts-audio-audio-audiovolumegroupmanager-i.md#getringermode)
 > 替代。
 
 **起始版本：** 7
@@ -1023,8 +1001,6 @@ audioManager.getRingerMode((err: BusinessError, value: audio.AudioRingMode) => {
 });
 ```
 
-<a id="getringermode2"></a>
-
 ## getRingerMode
 
 ```TypeScript
@@ -1036,7 +1012,7 @@ getRingerMode(): Promise<AudioRingMode>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getRingerMode](arkts-audio-audio-audiovolumegroupmanager-i.md#getringermode1)
+> [getRingerMode](arkts-audio-audio-audiovolumegroupmanager-i.md#getringermode)
 > 替代。
 
 **起始版本：** 7
@@ -1066,8 +1042,6 @@ audioManager.getRingerMode().then((value: audio.AudioRingMode) => {
   console.error(`Failed to obtain the ringer mode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="getvolume1"></a>
 
 ## getVolume
 
@@ -1099,7 +1073,7 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](#getminvolume1)和[getMaxVolume](#getmaxvolume1)获取。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](#getminvolume)和[getMaxVolume](#getmaxvolume)获取。 |
 
 **示例**
 
@@ -1114,8 +1088,6 @@ audioManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: 
   console.info(`Succeeded in obtaining the volume, volume: ${value}.`);
 });
 ```
-
-<a id="getvolume2"></a>
 
 ## getVolume
 
@@ -1152,7 +1124,7 @@ getVolume(volumeType: AudioVolumeType): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过[getMinVolume](#getminvolume1)和[getMaxVolume](#getmaxvolume1)获取。 |
+| Promise&lt;number&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过[getMinVolume](#getminvolume)和[getMaxVolume](#getmaxvolume)获取。 |
 
 **示例**
 
@@ -1166,8 +1138,6 @@ audioManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
 });
 ```
 
-<a id="isactive1"></a>
-
 ## isActive
 
 ```TypeScript
@@ -1179,7 +1149,7 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用
-> [isActive](arkts-audio-audio-audiostreammanager-i.md#isactive1)
+> [isActive](arkts-audio-audio-audiostreammanager-i.md#isactive)
 > 替代；API version 20及以后，建议使用[isStreamActive](arkts-audio-audio-audiostreammanager-i.md#isstreamactive)
 > 替代。
 
@@ -1214,8 +1184,6 @@ audioManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: b
 });
 ```
 
-<a id="isactive2"></a>
-
 ## isActive
 
 ```TypeScript
@@ -1227,7 +1195,7 @@ isActive(volumeType: AudioVolumeType): Promise<boolean>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用
-> [isActive](arkts-audio-audio-audiostreammanager-i.md#isactive1)
+> [isActive](arkts-audio-audio-audiostreammanager-i.md#isactive)
 > 替代；API version 20及以后，建议使用[isStreamActive](arkts-audio-audio-audiostreammanager-i.md#isstreamactive)
 > 替代。
 
@@ -1265,8 +1233,6 @@ audioManager.isActive(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
 });
 ```
 
-<a id="isdeviceactive1"></a>
-
 ## isDeviceActive
 
 ```TypeScript
@@ -1278,7 +1244,7 @@ isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback<boolean>): 
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#iscommunicationdeviceactive1)
+> [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#iscommunicationdeviceactive)
 > 替代。
 
 **起始版本：** 7
@@ -1312,8 +1278,6 @@ audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER, (err: BusinessError,
 });
 ```
 
-<a id="isdeviceactive2"></a>
-
 ## isDeviceActive
 
 ```TypeScript
@@ -1325,7 +1289,7 @@ isDeviceActive(deviceType: ActiveDeviceType): Promise<boolean>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#iscommunicationdeviceactive1)
+> [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#iscommunicationdeviceactive)
 > 替代。
 
 **起始版本：** 7
@@ -1362,8 +1326,6 @@ audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER).then((value: boolean
 });
 ```
 
-<a id="ismicrophonemute1"></a>
-
 ## isMicrophoneMute
 
 ```TypeScript
@@ -1375,7 +1337,7 @@ isMicrophoneMute(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [isMicrophoneMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismicrophonemute1)
+> [isMicrophoneMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismicrophonemute)
 > 替代。
 
 **起始版本：** 7
@@ -1410,8 +1372,6 @@ audioManager.isMicrophoneMute((err: BusinessError, value: boolean) => {
 });
 ```
 
-<a id="ismicrophonemute2"></a>
-
 ## isMicrophoneMute
 
 ```TypeScript
@@ -1423,7 +1383,7 @@ isMicrophoneMute(): Promise<boolean>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [isMicrophoneMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismicrophonemute1)
+> [isMicrophoneMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismicrophonemute)
 > 替代。
 
 **起始版本：** 7
@@ -1456,8 +1416,6 @@ audioManager.isMicrophoneMute().then((value: boolean) => {
 });
 ```
 
-<a id="ismute1"></a>
-
 ## isMute
 
 ```TypeScript
@@ -1469,7 +1427,7 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用
-> [isMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismute1)
+> [isMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismute)
 > 替代；API version 20及以后，建议使用
 > [isSystemMutedForStream](arkts-audio-audio-audiovolumemanager-i.md#issystemmutedforstream)替代。
 
@@ -1504,8 +1462,6 @@ audioManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boo
 });
 ```
 
-<a id="ismute2"></a>
-
 ## isMute
 
 ```TypeScript
@@ -1517,7 +1473,7 @@ isMute(volumeType: AudioVolumeType): Promise<boolean>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用
-> [isMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismute1)
+> [isMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismute)
 > 替代；API version 20及以后，建议使用
 > [isSystemMutedForStream](arkts-audio-audio-audiovolumemanager-i.md#issystemmutedforstream)替代。
 
@@ -1554,8 +1510,6 @@ audioManager.isMute(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
   console.error(`Failed to check whether the stream is muted. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="mute1"></a>
 
 ## mute
 
@@ -1600,8 +1554,6 @@ audioManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessError) => {
   console.info('Succeeded in muting the stream.');
 });
 ```
-
-<a id="mute2"></a>
 
 ## mute
 
@@ -1650,8 +1602,6 @@ audioManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
 });
 ```
 
-<a id="setaudioparameter1"></a>
-
 ## setAudioParameter
 
 ```TypeScript
@@ -1695,8 +1645,6 @@ audioManager.setAudioParameter('key_example', 'value_example', (err: BusinessErr
   console.info('Succeeded in setting the audio parameter.');
 });
 ```
-
-<a id="setaudioparameter2"></a>
 
 ## setAudioParameter
 
@@ -1745,8 +1693,6 @@ audioManager.setAudioParameter('key_example', 'value_example').then(() => {
 });
 ```
 
-<a id="setdeviceactive1"></a>
-
 ## setDeviceActive
 
 ```TypeScript
@@ -1758,7 +1704,7 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean, callback: AsyncCa
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setCommunicationDevice](arkts-audio-audio-audioroutingmanager-i.md#setcommunicationdevice1)
+> [setCommunicationDevice](arkts-audio-audio-audioroutingmanager-i.md#setcommunicationdevice)
 > 替代。
 
 **起始版本：** 7
@@ -1793,8 +1739,6 @@ audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true, (err: Busines
 });
 ```
 
-<a id="setdeviceactive2"></a>
-
 ## setDeviceActive
 
 ```TypeScript
@@ -1806,7 +1750,7 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setCommunicationDevice](arkts-audio-audio-audioroutingmanager-i.md#setcommunicationdevice1)
+> [setCommunicationDevice](arkts-audio-audio-audioroutingmanager-i.md#setcommunicationdevice)
 > 替代。
 
 **起始版本：** 7
@@ -1843,8 +1787,6 @@ audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true).then(() => {
   console.error(`Failed to set the active status of the device. Code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="setmicrophonemute1"></a>
 
 ## setMicrophoneMute
 
@@ -1888,8 +1830,6 @@ audioManager.setMicrophoneMute(true, (err: BusinessError) => {
   console.info('Succeeded in muting the microphone.');
 });
 ```
-
-<a id="setmicrophonemute2"></a>
 
 ## setMicrophoneMute
 
@@ -1937,8 +1877,6 @@ audioManager.setMicrophoneMute(true).then(() => {
 });
 ```
 
-<a id="setringermode1"></a>
-
 ## setRingerMode
 
 ```TypeScript
@@ -1981,8 +1919,6 @@ audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (err: Busines
   console.info('Succeeded in setting the ringer mode.');
 });
 ```
-
-<a id="setringermode2"></a>
 
 ## setRingerMode
 
@@ -2030,8 +1966,6 @@ audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL).then(() => {
 });
 ```
 
-<a id="setvolume1"></a>
-
 ## setVolume
 
 ```TypeScript
@@ -2061,7 +1995,7 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume](#getminvolume1)和[getMaxVolume](#getmaxvolume1)获取。 |
+| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume](#getminvolume)和[getMaxVolume](#getmaxvolume)获取。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置指定流的音量成功，err为undefined，否则为错误对象。 |
 
 **示例**
@@ -2077,8 +2011,6 @@ audioManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: BusinessError) => 
   console.info('Succeeded in setting the volume.');
 });
 ```
-
-<a id="setvolume2"></a>
 
 ## setVolume
 
@@ -2109,7 +2041,7 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume](#getminvolume1)和[getMaxVolume](#getmaxvolume1)获取。 |
+| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume](#getminvolume)和[getMaxVolume](#getmaxvolume)获取。 |
 
 **返回值：**
 

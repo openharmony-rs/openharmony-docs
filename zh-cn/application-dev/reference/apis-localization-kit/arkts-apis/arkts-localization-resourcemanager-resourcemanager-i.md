@@ -86,8 +86,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="closerawfd1"></a>
-
 ## closeRawFd
 
 ```TypeScript
@@ -147,8 +145,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="closerawfd2"></a>
 
 ## closeRawFd
 
@@ -265,8 +261,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getboolean1"></a>
-
 ## getBoolean
 
 ```TypeScript
@@ -337,8 +331,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getboolean2"></a>
 
 ## getBoolean
 
@@ -488,8 +480,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getcolor1"></a>
-
 ## getColor
 
 ```TypeScript
@@ -593,8 +583,6 @@ this.context.resourceManager.getColor(resource)
   });
 ```
 
-<a id="getcolor2"></a>
-
 ## getColor
 
 ```TypeScript
@@ -664,8 +652,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getcolor3"></a>
 
 ## getColor
 
@@ -737,8 +723,6 @@ this.context.resourceManager.getColor(resource, (error: BusinessError, value: nu
   }
 });
 ```
-
-<a id="getcolor4"></a>
 
 ## getColor
 
@@ -816,8 +800,6 @@ this.context.resourceManager.getColor(resource)
   });
 ```
 
-<a id="getcolorbyname1"></a>
-
 ## getColorByName
 
 ```TypeScript
@@ -882,8 +864,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getcolorbyname2"></a>
 
 ## getColorByName
 
@@ -1026,8 +1006,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getcolorsync1"></a>
-
 ## getColorSync
 
 ```TypeScript
@@ -1098,8 +1076,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getcolorsync2"></a>
 
 ## getColorSync
 
@@ -1178,8 +1154,6 @@ try {
 }
 ```
 
-<a id="getconfiguration1"></a>
-
 ## getConfiguration
 
 ```TypeScript
@@ -1226,8 +1200,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getconfiguration2"></a>
 
 ## getConfiguration
 
@@ -1314,8 +1286,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getdevicecapability1"></a>
-
 ## getDeviceCapability
 
 ```TypeScript
@@ -1362,8 +1332,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getdevicecapability2"></a>
 
 ## getDeviceCapability
 
@@ -1540,8 +1508,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getdoublepluralstringvaluesync1"></a>
-
 ## getDoublePluralStringValueSync
 
 ```TypeScript
@@ -1632,8 +1598,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getdoublepluralstringvaluesync3"></a>
-
 ## getDoublePluralStringValueSync
 
 ```TypeScript
@@ -1650,7 +1614,7 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 
 **废弃版本：** 20
 
-**替代接口：** [getDoublePluralStringValueSync](#getdoublepluralstringvaluesync1)(resId: number, num: number, ...args: Array&lt;string | number&gt;)
+**替代接口：** [getDoublePluralStringValueSync](#getdoublepluralstringvaluesync)(resId: number, num: number, ...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1729,8 +1693,6 @@ try {
 }
 ```
 
-<a id="getdrawabledescriptor1"></a>
-
 ## getDrawableDescriptor
 
 ```TypeScript
@@ -1805,8 +1767,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getdrawabledescriptor2"></a>
 
 ## getDrawableDescriptor
 
@@ -2052,8 +2012,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getintpluralstringvaluesync1"></a>
-
 ## getIntPluralStringValueSync
 
 ```TypeScript
@@ -2144,8 +2102,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getintpluralstringvaluesync3"></a>
-
 ## getIntPluralStringValueSync
 
 ```TypeScript
@@ -2162,7 +2118,7 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 
 **废弃版本：** 20
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2311,8 +2267,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediabase64byname1"></a>
-
 ## getMediaBase64ByName
 
 ```TypeScript
@@ -2369,8 +2323,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getmediabase64byname2"></a>
 
 ## getMediaBase64ByName
 
@@ -2429,8 +2381,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getmediabase64byname3"></a>
 
 ## getMediaBase64ByName
 
@@ -2491,8 +2441,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getmediabase64byname4"></a>
 
 ## getMediaBase64ByName
 
@@ -2621,8 +2569,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediabyname1"></a>
-
 ## getMediaByName
 
 ```TypeScript
@@ -2679,8 +2625,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getmediabyname2"></a>
 
 ## getMediaByName
 
@@ -2739,8 +2683,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getmediabyname3"></a>
 
 ## getMediaByName
 
@@ -2801,8 +2743,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getmediabyname4"></a>
 
 ## getMediaByName
 
@@ -2931,8 +2871,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediacontent5"></a>
-
 ## getMediaContent
 
 ```TypeScript
@@ -2991,8 +2929,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediacontent6"></a>
-
 ## getMediaContent
 
 ```TypeScript
@@ -3050,8 +2986,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getmediacontent7"></a>
 
 ## getMediaContent
 
@@ -3113,8 +3047,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediacontent8"></a>
-
 ## getMediaContent
 
 ```TypeScript
@@ -3175,8 +3107,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getmediacontent1"></a>
 
 ## getMediaContent
 
@@ -3241,8 +3171,6 @@ try {
 }
 ```
 
-<a id="getmediacontent2"></a>
-
 ## getMediaContent
 
 ```TypeScript
@@ -3306,8 +3234,6 @@ try {
   console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
 }
 ```
-
-<a id="getmediacontent3"></a>
 
 ## getMediaContent
 
@@ -3374,8 +3300,6 @@ try {
   console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
 }
 ```
-
-<a id="getmediacontent4"></a>
 
 ## getMediaContent
 
@@ -3444,8 +3368,6 @@ try {
 }
 ```
 
-<a id="getmediacontentbase645"></a>
-
 ## getMediaContentBase64
 
 ```TypeScript
@@ -3502,8 +3424,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getmediacontentbase646"></a>
 
 ## getMediaContentBase64
 
@@ -3562,8 +3482,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getmediacontentbase647"></a>
 
 ## getMediaContentBase64
 
@@ -3625,8 +3543,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediacontentbase648"></a>
-
 ## getMediaContentBase64
 
 ```TypeScript
@@ -3687,8 +3603,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getmediacontentbase641"></a>
 
 ## getMediaContentBase64
 
@@ -3753,8 +3667,6 @@ try {
 }
 ```
 
-<a id="getmediacontentbase642"></a>
-
 ## getMediaContentBase64
 
 ```TypeScript
@@ -3818,8 +3730,6 @@ try {
   console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
 }
 ```
-
-<a id="getmediacontentbase643"></a>
 
 ## getMediaContentBase64
 
@@ -3886,8 +3796,6 @@ try {
   console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
 }
 ```
-
-<a id="getmediacontentbase644"></a>
 
 ## getMediaContentBase64
 
@@ -3956,8 +3864,6 @@ try {
 }
 ```
 
-<a id="getmediacontentbase64sync1"></a>
-
 ## getMediaContentBase64Sync
 
 ```TypeScript
@@ -4023,8 +3929,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getmediacontentbase64sync2"></a>
 
 ## getMediaContentBase64Sync
 
@@ -4097,8 +4001,6 @@ try {
 }
 ```
 
-<a id="getmediacontentsync1"></a>
-
 ## getMediaContentSync
 
 ```TypeScript
@@ -4164,8 +4066,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getmediacontentsync2"></a>
 
 ## getMediaContentSync
 
@@ -4237,8 +4137,6 @@ try {
   console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
 }
 ```
-
-<a id="getnumber1"></a>
 
 ## getNumber
 
@@ -4337,8 +4235,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getnumber2"></a>
-
 ## getNumber
 
 ```TypeScript
@@ -4351,7 +4247,7 @@ getNumber(resource: Resource): number
 
 **废弃版本：** 20
 
-**替代接口：** [getNumber](#getnumber1)(resId: number)
+**替代接口：** [getNumber](#getnumber)(resId: number)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4620,8 +4516,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getrawfd1"></a>
-
 ## getRawFd
 
 ```TypeScript
@@ -4633,7 +4527,7 @@ getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void
 > **说明：** 
 > 
 > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync)或
-> [closeRawFd](#closerawfd1)关闭
+> [closeRawFd](#closerawfd)关闭
 > fd，避免资源泄露。
 
 **起始版本：** 9
@@ -4689,8 +4583,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getrawfd2"></a>
-
 ## getRawFd
 
 ```TypeScript
@@ -4702,7 +4594,7 @@ getRawFd(path: string): Promise<RawFileDescriptor>
 > **说明：** 
 > 
 > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync)或
-> [closeRawFd](#closerawfd1)关闭
+> [closeRawFd](#closerawfd)关闭
 > fd，避免资源泄露。
 
 **起始版本：** 9
@@ -4772,7 +4664,7 @@ getRawFdSync(path: string): RawFileDescriptor
 > **说明：** 
 > 
 > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync)或
-> [closeRawFd](#closerawfd1)关闭
+> [closeRawFd](#closerawfd)关闭
 > fd，避免资源泄露。
 
 **起始版本：** 10
@@ -4823,8 +4715,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getrawfilecontent1"></a>
 
 ## getRawFileContent
 
@@ -4883,8 +4773,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getrawfilecontent2"></a>
 
 ## getRawFileContent
 
@@ -5004,8 +4892,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getrawfilelist1"></a>
-
 ## getRawFileList
 
 ```TypeScript
@@ -5061,8 +4947,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getrawfilelist2"></a>
 
 ## getRawFileList
 
@@ -5257,8 +5141,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getstringarraybyname1"></a>
-
 ## getStringArrayByName
 
 ```TypeScript
@@ -5328,8 +5210,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getstringarraybyname2"></a>
 
 ## getStringArrayByName
 
@@ -5480,8 +5360,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getstringarrayvalue3"></a>
-
 ## getStringArrayValue
 
 ```TypeScript
@@ -5551,8 +5429,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getstringarrayvalue4"></a>
 
 ## getStringArrayValue
 
@@ -5628,8 +5504,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getstringarrayvalue1"></a>
-
 ## getStringArrayValue
 
 ```TypeScript
@@ -5704,8 +5578,6 @@ this.context.resourceManager.getStringArrayValue(resource, (error: BusinessError
   }
 });
 ```
-
-<a id="getstringarrayvalue2"></a>
 
 ## getStringArrayValue
 
@@ -5787,8 +5659,6 @@ this.context.resourceManager.getStringArrayValue(resource)
   });
 ```
 
-<a id="getstringarrayvaluesync1"></a>
-
 ## getStringArrayValueSync
 
 ```TypeScript
@@ -5863,8 +5733,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getstringarrayvaluesync2"></a>
 
 ## getStringArrayValueSync
 
@@ -5947,8 +5815,6 @@ try {
 }
 ```
 
-<a id="getstringbyname1"></a>
-
 ## getStringByName
 
 ```TypeScript
@@ -6013,8 +5879,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getstringbyname2"></a>
 
 ## getStringByName
 
@@ -6083,8 +5947,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getstringbynamesync1"></a>
 
 ## getStringByNameSync
 
@@ -6156,8 +6018,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getstringbynamesync2"></a>
 
 ## getStringByNameSync
 
@@ -6232,8 +6092,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getstringsync1"></a>
-
 ## getStringSync
 
 ```TypeScript
@@ -6304,8 +6162,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getstringsync2"></a>
 
 ## getStringSync
 
@@ -6379,8 +6235,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getstringsync4"></a>
 
 ## getStringSync
 
@@ -6459,8 +6313,6 @@ try {
 }
 ```
 
-<a id="getstringsync5"></a>
-
 ## getStringSync
 
 ```TypeScript
@@ -6473,7 +6325,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 
 **废弃版本：** 20
 
-**替代接口：** [getStringSync](#getstringsync2)(resId: number, ...args: Array&lt;string | number&gt;)
+**替代接口：** [getStringSync](#getstringsync)(resId: number, ...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -6539,8 +6391,6 @@ try {
   console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
 }
 ```
-
-<a id="getstringvalue3"></a>
 
 ## getStringValue
 
@@ -6624,8 +6474,6 @@ this.context.resourceManager.getStringValue(resource, (error: BusinessError, val
 });
 ```
 
-<a id="getstringvalue4"></a>
-
 ## getStringValue
 
 ```TypeScript
@@ -6693,8 +6541,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getstringvalue1"></a>
 
 ## getStringValue
 
@@ -6767,8 +6613,6 @@ this.context.resourceManager.getStringValue(resource, (error: BusinessError, val
 });
 ```
 
-<a id="getstringvalue2"></a>
-
 ## getStringValue
 
 ```TypeScript
@@ -6833,8 +6677,6 @@ this.context.resourceManager.getStringValue(resource, (error: BusinessError, val
 });
 ```
 
-<a id="getsymbol1"></a>
-
 ## getSymbol
 
 ```TypeScript
@@ -6893,8 +6735,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
-<a id="getsymbol2"></a>
 
 ## getSymbol
 
@@ -7193,8 +7033,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="closerawfiledescriptor1"></a>
-
 ## closeRawFileDescriptor
 
 ```TypeScript
@@ -7207,7 +7045,7 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [closeRawFd](#closerawfd1)(path: string, callback: _AsyncCallback&lt;void&gt;)
+**替代接口：** [closeRawFd](#closerawfd)(path: string, callback: _AsyncCallback&lt;void&gt;)
 
 <!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void--><!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void-End-->
 
@@ -7236,8 +7074,6 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="closerawfiledescriptor2"></a>
-
 ## closeRawFileDescriptor
 
 ```TypeScript
@@ -7250,7 +7086,7 @@ closeRawFileDescriptor(path: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [closeRawFd](#closerawfd2)(path: string)
+**替代接口：** [closeRawFd](#closerawfd)(path: string)
 
 <!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>--><!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>-End-->
 
@@ -7279,8 +7115,6 @@ resourceManager.getResourceManager((error, mgr) => {
     mgr.closeRawFileDescriptor("test.txt");
 });
 ```
-
-<a id="getmedia1"></a>
 
 ## getMedia
 
@@ -7320,8 +7154,6 @@ resourceManager.getResourceManager((error, mgr) => {
     });
 });
 ```
-
-<a id="getmedia2"></a>
 
 ## getMedia
 
@@ -7367,8 +7199,6 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getmediabase641"></a>
-
 ## getMediaBase64
 
 ```TypeScript
@@ -7407,8 +7237,6 @@ resourceManager.getResourceManager((error, mgr) => {
     });
 });
 ```
-
-<a id="getmediabase642"></a>
 
 ## getMediaBase64
 
@@ -7454,8 +7282,6 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getpluralstring1"></a>
-
 ## getPluralString
 
 ```TypeScript
@@ -7473,7 +7299,7 @@ getPluralString(resId: number, num: number, callback: AsyncCallback<string>): vo
 
 **废弃版本：** 9
 
-**替代接口：** [getPluralStringValue](#getpluralstringvalue3)(resId: number, num: number, callback: _AsyncCallback&lt;string&gt;)
+**替代接口：** [getPluralStringValue](#getpluralstringvalue)(resId: number, num: number, callback: _AsyncCallback&lt;string&gt;)
 
 <!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void--><!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void-End-->
 
@@ -7503,8 +7329,6 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getpluralstring2"></a>
-
 ## getPluralString
 
 ```TypeScript
@@ -7522,7 +7346,7 @@ getPluralString(resId: number, num: number): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [getPluralStringValue](#getpluralstringvalue4)(resId: number, num: number)
+**替代接口：** [getPluralStringValue](#getpluralstringvalue)(resId: number, num: number)
 
 <!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>--><!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>-End-->
 
@@ -7554,8 +7378,6 @@ resourceManager.getResourceManager((error, mgr) => {
     });
 });
 ```
-
-<a id="getpluralstringbyname1"></a>
 
 ## getPluralStringByName
 
@@ -7636,8 +7458,6 @@ this.context.resourceManager.getPluralStringByName("test", 1, (error: BusinessEr
   }
 });
 ```
-
-<a id="getpluralstringbyname2"></a>
 
 ## getPluralStringByName
 
@@ -7810,8 +7630,6 @@ try {
 }
 ```
 
-<a id="getpluralstringvalue1"></a>
-
 ## getPluralStringValue
 
 ```TypeScript
@@ -7829,7 +7647,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<s
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7901,8 +7719,6 @@ this.context.resourceManager.getPluralStringValue(resource, 1,
   });
 ```
 
-<a id="getpluralstringvalue2"></a>
-
 ## getPluralStringValue
 
 ```TypeScript
@@ -7920,7 +7736,7 @@ getPluralStringValue(resource: Resource, num: number): Promise<string>
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7996,8 +7812,6 @@ this.context.resourceManager.getPluralStringValue(resource, 1)
   });
 ```
 
-<a id="getpluralstringvalue3"></a>
-
 ## getPluralStringValue
 
 ```TypeScript
@@ -8015,7 +7829,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -8079,8 +7893,6 @@ this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1,
   });
 ```
 
-<a id="getpluralstringvalue4"></a>
-
 ## getPluralStringValue
 
 ```TypeScript
@@ -8098,7 +7910,7 @@ getPluralStringValue(resId: number, num: number): Promise<string>
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -8166,8 +7978,6 @@ this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1)
   });
 ```
 
-<a id="getpluralstringvaluesync1"></a>
-
 ## getPluralStringValueSync
 
 ```TypeScript
@@ -8185,7 +7995,7 @@ getPluralStringValueSync(resId: number, num: number): string
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -8254,8 +8064,6 @@ try {
 }
 ```
 
-<a id="getpluralstringvaluesync2"></a>
-
 ## getPluralStringValueSync
 
 ```TypeScript
@@ -8273,7 +8081,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8350,8 +8158,6 @@ try {
 }
 ```
 
-<a id="getrawfile1"></a>
-
 ## getRawFile
 
 ```TypeScript
@@ -8364,7 +8170,7 @@ getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getRawFileContent](#getrawfilecontent1)(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;)
+**替代接口：** [getRawFileContent](#getrawfilecontent)(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;)
 
 <!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void-End-->
 
@@ -8395,8 +8201,6 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getrawfile2"></a>
-
 ## getRawFile
 
 ```TypeScript
@@ -8409,7 +8213,7 @@ getRawFile(path: string): Promise<Uint8Array>
 
 **废弃版本：** 9
 
-**替代接口：** [getRawFileContent](#getrawfilecontent2)(path: string)
+**替代接口：** [getRawFileContent](#getrawfilecontent)(path: string)
 
 <!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>--><!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>-End-->
 
@@ -8443,8 +8247,6 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getrawfiledescriptor1"></a>
-
 ## getRawFileDescriptor
 
 ```TypeScript
@@ -8457,7 +8259,7 @@ getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): 
 
 **废弃版本：** 9
 
-**替代接口：** [getRawFd](#getrawfd1)(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;)
+**替代接口：** [getRawFd](#getrawfd)(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;)
 
 <!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void--><!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void-End-->
 
@@ -8490,8 +8292,6 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getrawfiledescriptor2"></a>
-
 ## getRawFileDescriptor
 
 ```TypeScript
@@ -8504,7 +8304,7 @@ getRawFileDescriptor(path: string): Promise<RawFileDescriptor>
 
 **废弃版本：** 9
 
-**替代接口：** [getRawFd](#getrawfd2)(path: string)
+**替代接口：** [getRawFd](#getrawfd)(path: string)
 
 <!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>--><!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>-End-->
 
@@ -8539,8 +8339,6 @@ resourceManager.getResourceManager((error, mgr) => {
     });
 });
 ```
-
-<a id="getstring1"></a>
 
 ## getString
 
@@ -8580,8 +8378,6 @@ resourceManager.getResourceManager((error, mgr) => {
     });
 });
 ```
-
-<a id="getstring2"></a>
 
 ## getString
 
@@ -8627,8 +8423,6 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getstringarray1"></a>
-
 ## getStringArray
 
 ```TypeScript
@@ -8667,8 +8461,6 @@ resourceManager.getResourceManager((error, mgr) => {
     });
 });
 ```
-
-<a id="getstringarray2"></a>
 
 ## getStringArray
 

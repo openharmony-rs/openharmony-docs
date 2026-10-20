@@ -4,9 +4,7 @@
 export interface MissionCallback
 ```
 
-作为可以[registerMissionListener]的入参，表示开始同步后，建立的回调函数，用于监听任务状态变化，包含任务列表变化通知、任务快照通知和断开连接通知等功能。
-
-@interface MissionCallback
+作为[registerMissionListener]的入参，表示开始同步后，建立的回调函数，用于监听任务状态变化，包含任务列表变化通知、任务快照通知和断开连接通知等功能。
 
 **起始版本：** 9
 
@@ -126,7 +124,7 @@ distributedMissionManager.registerMissionListener(
 notifySnapshot: NotifySnapshotCallback
 ```
 
-notifySnapshot是任务监听的callback函数，用于通知任务快照变化。当任务的快照（即任务当前界面状态的快照）发生变化时触发该回调。用于在多设备协同场景下，监听远程设备任务界面状态变化，如多屏协同中界面同步更新等场景。
+notifySnapshot是任务监听的callback函数，用于通知任务快照变化。当任务的快照（即任务当前界面状态的快照）发生变化时触发该回调。用于在多设备协同场景下，监听远程设备任务界面状态变化，如任务切换、任务恢复和多屏协同中界面同步更新等场景。
 
 **起始版本：** 9
 

@@ -35,8 +35,8 @@ import { distributedBundle } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [getRemoteAbilityInfo](arkts-ability-distributedbundle-getremoteabilityinfo-f-sys.md#getremoteabilityinfo1) | Obtains the information about the remote ability that matches the given element name. This API uses an asynchronous callback to return the result. |
-| [getRemoteAbilityInfo](arkts-ability-distributedbundle-getremoteabilityinfo-f-sys.md#getremoteabilityinfo2) | Obtains the information about the remote ability that matches the given element name. This API uses a promise to return the result. |
-| [getRemoteAbilityInfos](arkts-ability-distributedbundle-getremoteabilityinfos-f-sys.md#getremoteabilityinfos1) | Obtains the information about remote abilities that match the given element names. This API uses an asynchronous callback to return the result. |
-| [getRemoteAbilityInfos](arkts-ability-distributedbundle-getremoteabilityinfos-f-sys.md#getremoteabilityinfos2) | Obtains the information about remote abilities that match the given element names. This API uses a promise to return the result. |
+| [getRemoteAbilityInfo](arkts-ability-distributedbundle-getremoteabilityinfo-f-sys.md#getremoteabilityinfo) | Obtains the information about the remote ability that matches the given element name. This API uses an asynchronous callback to return the result. |
+| [getRemoteAbilityInfo](arkts-ability-distributedbundle-getremoteabilityinfo-f-sys.md#getremoteabilityinfo) | Obtains the information about the remote ability that matches the given element name. This API uses a promise to return the result. |
+| [getRemoteAbilityInfos](arkts-ability-distributedbundle-getremoteabilityinfos-f-sys.md#getremoteabilityinfos) | Obtains the information about remote abilities that match the given element names. This API uses an asynchronous callback to return the result. |
+| [getRemoteAbilityInfos](arkts-ability-distributedbundle-getremoteabilityinfos-f-sys.md#getremoteabilityinfos) | Obtains the information about remote abilities that match the given element names. This API uses a promise to return the result. |
 <!--DelEnd-->

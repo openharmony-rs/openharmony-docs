@@ -6,8 +6,6 @@ export interface RenderContext
 
 定义了所有渲染资源的上下文。在同一渲染上下文中创建的多个场景之间，可以共享渲染资源。
 
-@interface RenderContext
-
 **起始版本：** 20
 
 <!--Device-unnamed-export interface RenderContext--><!--Device-unnamed-export interface RenderContext-End-->

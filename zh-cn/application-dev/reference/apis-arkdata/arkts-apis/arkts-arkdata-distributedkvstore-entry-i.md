@@ -24,7 +24,7 @@ import { distributedKVStore } from '@kit.ArkData';
 key: string
 ```
 
-表示键名。
+表示键名。不能为空且长度范围为1-[MAX_KEY_LENGTH](arkts-arkdata-distributedkvstore-constants-i.md)。
 
 **类型：** string
 

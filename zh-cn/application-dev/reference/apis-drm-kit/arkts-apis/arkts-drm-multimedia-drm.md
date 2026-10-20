@@ -28,9 +28,9 @@ import { drm } from '@kit.DrmKit';
 | [createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md#createmediakeysystem) | 创建MediaKeySystem实例。最多可以创建64个MediaKeySystem实例。超过上限时，会抛出错误码24700103。建议及时调用[destroy](arkts-drm-drm-mediakeysystem-i.md#destroy)接口释放不再使用的MediaKeySystem实例。 |
 | [getMediaKeySystems](arkts-drm-drm-getmediakeysystems-f.md#getmediakeysystems) | 获取设备支持的插件信息列表。 |
 | [getMediaKeySystemUuid](arkts-drm-drm-getmediakeysystemuuid-f.md#getmediakeysystemuuid) | 获取DRM解决方案支持的DRM内容保护系统唯一标识。 |
-| [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported1) | 判断设备是否支持指定的DRM解决方案、媒体类型及内容保护级别。 |
-| [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported2) | 判断设备是否支持指定的DRM解决方案及媒体类型。 |
-| [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported3) | 判断设备是否支持指定的DRM解决方案。 |
+| [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported) | 判断设备是否支持指定的DRM解决方案、媒体类型及内容保护级别。 |
+| [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported) | 判断设备是否支持指定的DRM解决方案及媒体类型。 |
+| [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported) | 判断设备是否支持指定的DRM解决方案。 |
 
 ### 接口
 
@@ -39,7 +39,7 @@ import { drm } from '@kit.DrmKit';
 | [EventInfo](arkts-drm-drm-eventinfo-i.md) | 事件信息。 |
 | [KeysInfo](arkts-drm-drm-keysinfo-i.md) | 媒体密钥中密钥信息。 |
 | [MediaKeyRequest](arkts-drm-drm-mediakeyrequest-i.md) | 媒体密钥请求参数。 |
-| [MediaKeySession](arkts-drm-drm-mediakeysession-i.md) | 支持媒体密钥管理。在调用MediaKeySession方法之前，必须使用[createMediaKeySession](arkts-drm-drm-mediakeysystem-i.md#createmediakeysession1)获取一个MediaKeySession实例。 |
+| [MediaKeySession](arkts-drm-drm-mediakeysession-i.md) | 支持媒体密钥管理。在调用MediaKeySession方法之前，必须使用[createMediaKeySession](arkts-drm-drm-mediakeysystem-i.md#createmediakeysession)获取一个MediaKeySession实例。 |
 | [MediaKeyStatus](arkts-drm-drm-mediakeystatus-i.md) | 媒体密钥状态。 |
 | [MediaKeySystem](arkts-drm-drm-mediakeysystem-i.md) | 支持MediaKeySystem实例管理、设备证书申请与处理、会话创建、离线媒体密钥管理、获取DRM度量记录、设备属性等。在调用MediaKeySystem方法之前，必须使用[createMediaKeySystem](arkts-drm-drm-createmediakeysystem-f.md)创建一个MediaKeySystem实例。 |
 | [MediaKeySystemDescription](arkts-drm-drm-mediakeysystemdescription-i.md) | 插件信息。 |

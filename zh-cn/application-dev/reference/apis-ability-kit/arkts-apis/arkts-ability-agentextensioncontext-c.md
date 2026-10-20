@@ -12,8 +12,6 @@ AgentExtensionContext为开发者提供访问当前[AgentExtensionAbility](arkts
 > 
 > - 在本文档的示例中，通过`this.context`来获取`AgentExtensionContext`，其中`this`代表继承自`AgentExtensionAbility`的实例。
 
-@extends ExtensionContext
-
 **继承/实现关系：** AgentExtensionContext extends [ExtensionContext](arkts-ability-extensioncontext-c.md)
 
 **起始版本：** 24

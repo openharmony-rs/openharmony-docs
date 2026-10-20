@@ -246,8 +246,6 @@ Calls a defined callback function on each element of an array, and returns an ar
 | callbackfn | (value: bigint, index: number, array: BigUint64Array) =&gt; bigint | Yes |  |
 | thisArg | any | No |  |
 
-<a id="reduce1"></a>
-
 ## reduce
 
 ```TypeScript
@@ -263,8 +261,6 @@ Calls the specified callback function for all the elements in an array. The retu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: bigint, currentValue: bigint, currentIndex: number, array: BigUint64Array) =&gt; bigint | Yes |  |
-
-<a id="reduce2"></a>
 
 ## reduce
 
@@ -283,8 +279,6 @@ Calls the specified callback function for all the elements in an array. The retu
 | callbackfn | (previousValue: U, currentValue: bigint, currentIndex: number, array: BigUint64Array) =&gt; U | Yes |  |
 | initialValue | U | Yes |  |
 
-<a id="reduceright1"></a>
-
 ## reduceRight
 
 ```TypeScript
@@ -300,8 +294,6 @@ Calls the specified callback function for all the elements in an array, in desce
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callbackfn | (previousValue: bigint, currentValue: bigint, currentIndex: number, array: BigUint64Array) =&gt; bigint | Yes |  |
-
-<a id="reduceright2"></a>
 
 ## reduceRight
 

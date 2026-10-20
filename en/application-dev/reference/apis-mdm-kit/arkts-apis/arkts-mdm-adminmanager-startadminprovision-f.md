@@ -31,7 +31,7 @@ Enables the device administrator application to open a page for the BYOD adminis
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
 | type | [AdminType](arkts-mdm-adminmanager-admintype-e.md) | Yes | Type of the activated device administrator application. Only the **ADMIN_TYPE_BYOD** type is supported. |
 | context | [common.Context](../../apis-ability-kit/arkts-apis/arkts-ability-common-context-t.md) | Yes | Context information of the administrator application. |
-| parameters | Record&lt;string, string&gt; | Yes | Custom parameters. The key value must contain **activateId** and may optionally include **customizedInfo** and **localDeactivationPolicy**.<br>- **activateId**: project activation ID. <br>- **customizedInfo**: enterprise-defined information. <br>- **localDeactivationPolicy**: local deactivation delay (unit: hour). This parameter is supported since API version 22. |
+| parameters | Record&lt;string, string&gt; | Yes | Custom parameters. The key value must contain **activateId** and may optionally include **customizedInfo** and **localDeactivationPolicy**. <br>- **activateId**: project activation ID. <br>- **customizedInfo**: enterprise-defined information. <br>- **localDeactivationPolicy**: local deactivation delay (unit: hour). This parameter is supported since API version 22. |
 
 **Error codes:**
 

@@ -6,8 +6,6 @@
 import { privacyManager } from '@kit.AbilityKit';
 ```
 
-<a id="setpermissionusedrecordtogglestatus1"></a>
-
 ## setPermissionUsedRecordToggleStatus
 
 ```TypeScript
@@ -71,8 +69,6 @@ privacyManager.setPermissionUsedRecordToggleStatus(true).then(() => {
 <!--DelEnd-->
 
 
-<a id="setpermissionusedrecordtogglestatus2"></a>
-
 ## setPermissionUsedRecordToggleStatus
 
 ```TypeScript
@@ -116,7 +112,7 @@ When **status** is **true**, the [addPermissionUsedRecord](arkts-ability-privacy
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system app. Interface caller is not a system app. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The specified subProfileId does not exist for the current user. |
-| [12100006](../errorcode-access-token.md#12100006-operation-not-allowed) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#setpermissionusedrecordtogglestatus1). |
+| [12100006](../errorcode-access-token.md#12100006-operation-not-allowed) | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#setpermissionusedrecordtogglestatus). |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-internal-service-error) | Common inner error. Possible causes: 1. Database error. 2. Failed to query all applications under the user. |
 

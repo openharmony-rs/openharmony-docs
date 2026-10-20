@@ -30,7 +30,7 @@ Switches an active perception advertiser to high frequency for 10 seconds. After
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | [PerceptionType](arkts-distributedservice-softbusbase-perceptiontype-e-sys.md) | Yes | Perception service type. For details, see [PerceptionType](arkts-distributedservice-softbusbase-perceptiontype-e-sys.md). |
-| customData | ArrayBuffer | No | Custom payload carried in the advertising. The data structure is defined by the application layer protocol. If the length exceeds 5 bytes, an error is thrown.<br>The maximum length is 5 bytes. Default value: An empty ArrayBuffer. |
+| customData | ArrayBuffer | No | Custom payload carried in the advertising. The data structure is defined by the application layer protocol. If the length exceeds 5 bytes, an error is thrown. <br>The maximum length is 5 bytes. Default value: An empty ArrayBuffer. |
 
 **Return value:**
 

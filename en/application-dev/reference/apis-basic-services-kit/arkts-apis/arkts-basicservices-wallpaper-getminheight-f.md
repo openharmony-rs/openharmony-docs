@@ -6,8 +6,6 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
-<a id="getminheight1"></a>
-
 ## getMinHeight
 
 ```TypeScript
@@ -44,8 +42,6 @@ wallpaper.getMinHeight((error: BusinessError, data: Number) => {
 });
 ```
 
-
-<a id="getminheight2"></a>
 
 ## getMinHeight
 

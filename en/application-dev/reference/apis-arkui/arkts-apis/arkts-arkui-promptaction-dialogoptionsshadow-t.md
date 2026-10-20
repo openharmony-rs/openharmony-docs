@@ -6,8 +6,6 @@ declare type DialogOptionsShadow = ShadowOptions | ShadowStyle
 
 Defines the allowed data types for specifying the background shadow of a dialog box.
 
-@typedef { ShadowOptions | ShadowStyle } DialogOptionsShadow
-
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.

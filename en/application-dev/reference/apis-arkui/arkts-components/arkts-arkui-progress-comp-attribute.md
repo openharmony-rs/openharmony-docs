@@ -10,7 +10,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 > **NOTE:** 
 > 
 > This component overrides the universal attribute
-> [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1). When applied directly to the
+> [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor). When applied directly to the
 > **Progress** component, it sets the background color of the progress indicator itself. To set the background color
 > for the entire **Progress** component area, apply **backgroundColor** to the outer container that wraps the
 > **Progress** component.
@@ -49,7 +49,7 @@ Since API version 23, LinearGradient can be used to set the gradient color of th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Foreground color of the progress bar.<br>Since API version 10, LinearGradient is supported for setting the gradient color of the Ring style. Since API version 23, LinearGradient is supported for setting the gradient color of the Linear style and Capsule style. <br>Default value: <br>- Capsule: <br>   API version 9 and earlier: '#ff007dff'<br>   API version 10: '#33006cde'<br>   API version 11 and later: '#33007dff'<br>- Ring: <br>   API version 9 and earlier: '#ff007dff'<br>   API version 10 and later: start: '#ff86c1ff', end: '#ff254ff7'<br>- Other styles: '#ff007dff' |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Foreground color of the progress bar. <br>Since API version 10, LinearGradient is supported for setting the gradient color of the Ring style. Since API version 23, LinearGradient is supported for setting the gradient color of the Linear style and Capsule style. <br>Default value: <br>- Capsule: <br>   API version 9 and earlier: '#ff007dff'<br>   API version 10: '#33006cde'<br>   API version 11 and later: '#33007dff'<br>- Ring: <br>   API version 9 and earlier: '#ff007dff'<br>   API version 10 and later: start: '#ff86c1ff', end: '#ff254ff7'<br>- Other styles: '#ff007dff' |
 
 ## contentModifier
 
@@ -151,4 +151,4 @@ Sets the current progress value. When a value less than 0 is set, it is set to 0
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Current progress value.<br>Default value: 0 <br>Value range: [0, total]. When the value is set to less than 0, it is set to 0. When the value is set to greater than total, it is set to total. When an invalid value is set, it is handled as the default value. <br>**Note:** When the status of a Ring type progress bar is set to ProgressStatus.LOADING, the set progress value does not take effect. |
+| value | number | Yes | Current progress value. <br>Default value: 0 <br>Value range: [0, total]. When the value is set to less than 0, it is set to 0. When the value is set to greater than total, it is set to total. When an invalid value is set, it is handled as the default value. <br>**Note:** When the status of a Ring type progress bar is set to ProgressStatus.LOADING, the set progress value does not take effect. |

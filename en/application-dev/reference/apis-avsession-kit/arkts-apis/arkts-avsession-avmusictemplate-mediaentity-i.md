@@ -6,8 +6,6 @@ interface MediaEntity
 
 The definition of MediaEntity.
 
-@interface MediaEntity
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-interface MediaEntity--><!--Device-avMusicTemplate-interface MediaEntity-End-->

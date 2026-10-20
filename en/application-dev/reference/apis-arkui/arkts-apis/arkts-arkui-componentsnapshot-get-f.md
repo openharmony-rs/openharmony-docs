@@ -6,8 +6,6 @@
 import { componentSnapshot } from '@kit.ArkUI';
 ```
 
-<a id="get1"></a>
-
 ## get
 
 ```TypeScript
@@ -48,7 +46,7 @@ Obtains the snapshot of a component that has been loaded based on the provided c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Invalid ID. |
 
 **Examples**
@@ -95,8 +93,6 @@ struct SnapshotExample {
 ```
 
 
-<a id="get2"></a>
-
 ## get
 
 ```TypeScript
@@ -142,7 +138,7 @@ Obtains the snapshot of a component that has been loaded based on the provided c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Invalid ID. |
 
 **Examples**

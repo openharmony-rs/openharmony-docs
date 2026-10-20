@@ -6,8 +6,6 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
-<a id="search1"></a>
-
 ## search
 
 ```TypeScript
@@ -32,11 +30,9 @@ Searches for task IDs based on [Filter](arkts-basicservices-agent-filter-i.md). 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 
-
-<a id="search2"></a>
 
 ## search
 
@@ -63,11 +59,9 @@ Searches for task IDs based on [Filter](arkts-basicservices-agent-filter-i.md). 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 
-
-<a id="search3"></a>
 
 ## search
 
@@ -99,5 +93,5 @@ Searches for task IDs based on [Filter](arkts-basicservices-agent-filter-i.md). 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Incorrect parameter type. <br> 2. Parameter verification failed. |
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |

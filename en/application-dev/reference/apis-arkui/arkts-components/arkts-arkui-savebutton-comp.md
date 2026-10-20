@@ -54,7 +54,7 @@ Creates a save button with the specified icon, text and button type. When the us
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [SaveButtonOptions](arkts-arkui-savebutton-comp-savebuttonoptions-i.md) | Yes | Configuration options for the save button, used to set properties such as icon, text and button type.<br>You are advised to explicitly set at least one of **icon** and **text** to help users identify the button. If both are not specified, the component uses the default style. |
+| options | [SaveButtonOptions](arkts-arkui-savebutton-comp-savebuttonoptions-i.md) | Yes | Configuration options for the save button, used to set properties such as icon, text and button type. <br>You are advised to explicitly set at least one of **icon** and **text** to help users identify the button. If both are not specified, the component uses the default style. |
 
 ## Summary
 

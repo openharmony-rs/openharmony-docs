@@ -18,8 +18,6 @@ Defines a TCP socket connection. Before calling TCPSocket APIs, you need to call
 import { socket } from '@kit.NetworkKit';
 ```
 
-<a id="bind1"></a>
-
 ## bind
 
 ```TypeScript
@@ -51,7 +49,7 @@ Binds an IP address and a port number. The port number can be customized or rand
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | Yes | Local address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | Yes | Local address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation fails, an error message is returned. |
 
 **Error codes:**
@@ -80,8 +78,6 @@ tcp.bind(bindAddr, (err: BusinessError) => {
   console.info('bind success');
 })
 ```
-
-<a id="bind2"></a>
 
 ## bind
 
@@ -114,7 +110,7 @@ Binds an IP address and a port number. The port number can be customized or rand
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | Yes | Local address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | Yes | Local address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
 
 **Return value:**
 
@@ -146,8 +142,6 @@ tcp.bind(bindAddr).then(() => {
   console.error('bind fail');
 });
 ```
-
-<a id="close1"></a>
 
 ## close
 
@@ -194,8 +188,6 @@ tcp.close((err: BusinessError) => {
 })
 ```
 
-<a id="close2"></a>
-
 ## close
 
 ```TypeScript
@@ -238,8 +230,6 @@ tcp.close().then(() => {
   console.error('close fail');
 });
 ```
-
-<a id="connect1"></a>
 
 ## connect
 
@@ -341,8 +331,6 @@ tcp.connect(tcpconnectoptions, (err: BusinessError) => {
   console.info('connect success');
 })
 ```
-
-<a id="connect2"></a>
 
 ## connect
 
@@ -468,7 +456,7 @@ Obtains the local socket address of a **TCPSocket** connection. This API uses a 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | Promise used to return the result. |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Promise used to return the result. |
 
 **Error codes:**
 
@@ -501,8 +489,6 @@ tcp.bind(bindAddr).then(() => {
 });
 ```
 
-<a id="getremoteaddress1"></a>
-
 ## getRemoteAddress
 
 ```TypeScript
@@ -527,7 +513,7 @@ Obtains the remote address of a socket connection. This API uses an asynchronous
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetAddress](arkts-network-socket-p.md)&gt; | Yes | Callback used to return the result. If the operation is successful, the remote address is returned. If the operation fails, an error message is returned. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Yes | Callback used to return the result. If the operation is successful, the remote address is returned. If the operation fails, an error message is returned. |
 
 **Error codes:**
 
@@ -562,8 +548,6 @@ tcp.connect(tcpconnectoptions, () => {
 });
 ```
 
-<a id="getremoteaddress2"></a>
-
 ## getRemoteAddress
 
 ```TypeScript
@@ -588,7 +572,7 @@ Obtains the remote address of a socket connection. This API uses a promise to re
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | Promise used to return the result. |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Promise used to return the result. |
 
 **Error codes:**
 
@@ -623,8 +607,6 @@ tcp.connect(tcpconnectoptions).then(() => {
 });
 ```
 
-<a id="getsocketfd1"></a>
-
 ## getSocketFd
 
 ```TypeScript
@@ -637,7 +619,7 @@ Obtains the file descriptor of the **TCPSocket** object. This API uses an asynch
 > 
 > - This API can be called only after **bind** or **connect** is successfully called.
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close1) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 10
 
@@ -678,8 +660,6 @@ tcp.getSocketFd((err: BusinessError, data: number) => {
 })
 ```
 
-<a id="getsocketfd2"></a>
-
 ## getSocketFd
 
 ```TypeScript
@@ -692,7 +672,7 @@ Obtains the file descriptor of the **TCPSocket** object. This API uses a promise
 > 
 > - This API can be called only after **bind** or **connect** is successfully called.
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close1) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 10
 
@@ -731,8 +711,6 @@ tcp.getSocketFd().then((data: number) => {
   console.info("socketFd: " + data);
 })
 ```
-
-<a id="getstate1"></a>
 
 ## getState
 
@@ -792,8 +770,6 @@ tcp.connect(tcpconnectoptions, () => {
   });
 });
 ```
-
-<a id="getstate2"></a>
 
 ## getState
 
@@ -1090,8 +1066,6 @@ tcp.on('error', (err: BusinessError) => {
 });
 ```
 
-<a id="send1"></a>
-
 ## send
 
 ```TypeScript
@@ -1156,8 +1130,6 @@ tcp.connect(tcpconnectoptions, () => {
   })
 })
 ```
-
-<a id="send2"></a>
 
 ## send
 
@@ -1226,8 +1198,6 @@ tcp.connect(tcpconnectoptions, () => {
   });
 })
 ```
-
-<a id="setextraoptions1"></a>
 
 ## setExtraOptions
 
@@ -1306,8 +1276,6 @@ tcp.connect(tcpconnectoptions, () => {
   });
 });
 ```
-
-<a id="setextraoptions2"></a>
 
 ## setExtraOptions
 

@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="createavmetadataextractor1"></a>
-
 ## createAVMetadataExtractor
 
 ```TypeScript
@@ -51,8 +49,6 @@ media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) =>
 });
 ```
 
-
-<a id="createavmetadataextractor3"></a>
 
 ## createAVMetadataExtractor
 

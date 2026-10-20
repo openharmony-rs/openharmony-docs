@@ -6,8 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="selectcontacts1"></a>
-
 ## selectContacts
 
 ```TypeScript
@@ -53,8 +51,6 @@ contact.selectContacts((err: BusinessError, data) => {
 ```
 
 
-<a id="selectcontacts2"></a>
-
 ## selectContacts
 
 ```TypeScript
@@ -89,8 +85,6 @@ promise.then((data) => {
 });
 ```
 
-
-<a id="selectcontacts3"></a>
 
 ## selectContacts
 
@@ -139,8 +133,6 @@ contact.selectContacts({
 });
 ```
 
-
-<a id="selectcontacts4"></a>
 
 ## selectContacts
 

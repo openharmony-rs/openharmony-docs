@@ -6,8 +6,6 @@
 import { insightIntentDriver } from '@kit.AbilityKit';
 ```
 
-<a id="execute1"></a>
-
 ## execute
 
 ```TypeScript
@@ -96,8 +94,6 @@ import { insightIntentDriver, insightIntent } from '@kit.AbilityKit';
 
 <!--DelEnd-->
 
-
-<a id="execute2"></a>
 
 ## execute
 

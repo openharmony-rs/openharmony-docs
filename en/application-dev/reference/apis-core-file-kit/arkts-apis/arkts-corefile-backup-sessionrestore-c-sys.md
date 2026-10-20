@@ -20,8 +20,6 @@ Control class for restore procedure.
 import { backup } from '@kit.CoreFileKit';
 ```
 
-<a id="appendbundles1"></a>
-
 ## appendBundles
 
 ```TypeScript
@@ -161,8 +159,6 @@ async function appendBundles() {
 ```
 
 <!--DelEnd-->
-
-<a id="appendbundles2"></a>
 
 ## appendBundles
 
@@ -314,7 +310,7 @@ cancel the application being restore.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
 <!--Del-->
 **Examples**
@@ -710,8 +706,6 @@ async function getRestoreCompatibilityInfo() {
 
 <!--DelEnd-->
 
-<a id="getfilehandle1"></a>
-
 ## getFileHandle
 
 ```TypeScript
@@ -815,8 +809,6 @@ async function getFileHandle() {
 ```
 
 <!--DelEnd-->
-
-<a id="getfilehandle2"></a>
 
 ## getFileHandle
 
@@ -1164,8 +1156,6 @@ Migrate file from source path to destination path.
 | 13900001 | Operation not permitted |
 | 13900020 | Invalid argument |
 
-<a id="publishfile1"></a>
-
 ## publishFile
 
 ```TypeScript
@@ -1281,8 +1271,6 @@ g_session = createSessionRestore();
 ```
 
 <!--DelEnd-->
-
-<a id="publishfile2"></a>
 
 ## publishFile
 
@@ -1427,7 +1415,7 @@ End restore process
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13600001 | IPC error |
 | 13900001 | Operation not permitted |
 | 13900005 | I/O error |

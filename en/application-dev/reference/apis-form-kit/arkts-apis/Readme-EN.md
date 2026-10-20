@@ -12,6 +12,7 @@
   - [updateFormCrossBundle(system api)](arkts-form-formagent-updateformcrossbundle-f-sys.md)<!--DelEnd-->
 - [@ohos.app.form.formBindingData(formBindingData)](arkts-form-app-form-formbindingdata.md)
   - [createFormBindingData](arkts-form-formbindingdata-createformbindingdata-f.md)
+  - [createFormBindingDataEx](arkts-form-formbindingdata-createformbindingdataex-f.md)
   - [FormBindingData](arkts-form-formbindingdata-formbindingdata-i.md)
   - [ProxyData](arkts-form-formbindingdata-proxydata-i.md)
 - [@ohos.app.form.FormEditExtensionAbility(FormEditExtensionAbility)](arkts-form-app-form-formeditextensionability.md)

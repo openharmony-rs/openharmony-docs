@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="casttempform1"></a>
-
 ## castTempForm
 
 ```TypeScript
@@ -52,8 +50,6 @@ formHost.castTempForm(formId, (error: Base.BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="casttempform2"></a>
 
 ## castTempForm
 

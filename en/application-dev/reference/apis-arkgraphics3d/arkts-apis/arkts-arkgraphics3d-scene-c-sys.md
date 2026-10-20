@@ -12,8 +12,6 @@ Describes a scene.
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
-<a id="load2"></a>
-
 ## load
 
 ```TypeScript

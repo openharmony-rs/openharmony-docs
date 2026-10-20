@@ -6,8 +6,6 @@ export interface AgentCapabilities
 
 Defines optional capabilities supported by an agent.
 
-@typedef AgentCapabilities
-
 **Since:** 24
 
 <!--Device-unnamed-export interface AgentCapabilities--><!--Device-unnamed-export interface AgentCapabilities-End-->

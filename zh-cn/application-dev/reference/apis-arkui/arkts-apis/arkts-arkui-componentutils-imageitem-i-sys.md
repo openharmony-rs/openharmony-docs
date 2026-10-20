@@ -6,8 +6,6 @@ interface ImageItem
 
 带有布局信息的图像对象。
 
-@interface ImageItem
-
 **起始版本：** 23
 
 <!--Device-componentUtils-interface ImageItem--><!--Device-componentUtils-interface ImageItem-End-->

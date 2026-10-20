@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getforegroundapplications1"></a>
-
 ## getForegroundApplications
 
 ```TypeScript
@@ -52,8 +50,6 @@ appManager.getForegroundApplications((err, data) => {
 
 <!--DelEnd-->
 
-
-<a id="getforegroundapplications2"></a>
 
 ## getForegroundApplications
 

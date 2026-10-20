@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="setlockstate1"></a>
-
 ## setLockState
 
 ```TypeScript
@@ -67,8 +65,6 @@ sim.setLockState(0, lockInfo, (err: BusinessError, data: sim.LockStatusResponse)
 
 <!--DelEnd-->
 
-
-<a id="setlockstate2"></a>
 
 ## setLockState
 

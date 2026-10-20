@@ -28,8 +28,6 @@ Constructs a **SslErrorHandler** object.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-<a id="handlecancel1"></a>
-
 ## handleCancel
 
 ```TypeScript
@@ -45,8 +43,6 @@ Notifies the Web component to cancel this request and stops the current SSL cert
 <!--Device-SslErrorHandler-handleCancel(): void--><!--Device-SslErrorHandler-handleCancel(): void-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
-
-<a id="handlecancel2"></a>
 
 ## handleCancel
 
@@ -66,7 +62,7 @@ Cancels this request and determines whether to stop loading based on the **abort
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| abortLoading | boolean | Yes | Whether to stop loading the page after canceling the request.<br>The value **true** indicates that the page stops loading, and **false** indicates that the page continues loading. |
+| abortLoading | boolean | Yes | Whether to stop loading the page after canceling the request. <br>The value **true** indicates that the page stops loading, and **false** indicates that the page continues loading. |
 
 ## handleConfirm
 

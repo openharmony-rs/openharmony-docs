@@ -18,7 +18,7 @@ Indicates options for preloading a page.
 onDestroy?: Callback<void>
 ```
 
-Callback when preloaded page is destroyed by the system.
+Callback invoked when the preloaded page is destroyed by the system.
 
 **Type:** Callback&lt;void&gt;
 

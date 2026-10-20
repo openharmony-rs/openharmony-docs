@@ -6,8 +6,6 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
-<a id="clearcustomdnsrules1"></a>
-
 ## clearCustomDnsRules
 
 ```TypeScript
@@ -55,8 +53,6 @@ connection.clearCustomDnsRules((error: BusinessError, data: void) => {
 })
 ```
 
-
-<a id="clearcustomdnsrules2"></a>
 
 ## clearCustomDnsRules
 

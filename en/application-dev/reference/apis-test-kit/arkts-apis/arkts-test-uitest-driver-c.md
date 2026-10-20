@@ -334,7 +334,7 @@ Injects a crown rotation event. You can specify the rotation speed. This API use
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | d | number | Yes | Number of rotation ticks. A positive value indicates rotation, and a negative value indicates counterclockwise rotation. The value must be an integer. If the value is not an integer, error code 401 is returned. |
-| speed | number | No | Rotation speed.<br>Unit: ticks/s. <br>Value range: [1, 500] <br>If the value is a non-negative number that is not within the specified range or is null or undefined, the default value 20 is used. <br>Throws error code 17000007 if negative. <br>Default value: 20 |
+| speed | number | No | Rotation speed. <br>Unit: ticks/s. <br>Value range: [1, 500] <br>If the value is a non-negative number that is not within the specified range or is null or undefined, the default value 20 is used. <br>Throws error code 17000007 if negative. <br>Default value: 20 |
 
 **Return value:**
 
@@ -539,7 +539,7 @@ Drags from the start coordinate point to the target coordinate point. This metho
 | starty | number | Yes | Vertical coordinate of the start point, in pixels. The value is an integer greater than or equal to 0. |
 | endx | number | Yes | Horizontal coordinate of the end point, in pixels. The value is an integer greater than or equal to 0. |
 | endy | number | Yes | Vertical coordinate of the end point, in pixels. The value is an integer greater than or equal to 0. |
-| speed | number | No | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.<br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
+| speed | number | No | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used. <br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
 
 **Return value:**
 
@@ -589,8 +589,8 @@ Drags from the start point to the target point. You can specify the drag speed a
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | from | [Point](arkts-test-uitest-point-i.md) | Yes | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs. |
-| to | [Point](arkts-test-uitest-point-i.md) | Yes | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note:**  The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown. |
-| speed | number | No | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.<br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 17000007 if negative. <br>Default value: 600 |
+| to | [Point](arkts-test-uitest-point-i.md) | Yes | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs. <br> **Note:**  The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown. |
+| speed | number | No | Drag speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used. <br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 17000007 if negative. <br>Default value: 600 |
 | duration | number | No | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500. If the value is less than 1500, the 17000007 error code is thrown. If the value is **null** or **undefined**, the default value is used. |
 
 **Return value:**
@@ -702,7 +702,7 @@ Dumps the current layout information and saves it as a JSON file. This method is
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | savePath | string | Yes | the path where to store the json, must be in the application sandbox directory. The path must be the [sandbox path](../../../file-management/app-sandbox-directory.md) of the current application. |
-| displayId | number | No | Display ID. The default value is the default screen ID of the device.<br> **Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. |
+| displayId | number | No | Display ID. The default value is the default screen ID of the device. <br> **Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. |
 
 **Return value:**
 
@@ -881,8 +881,6 @@ async function demo() {
 }
 ```
 
-<a id="fling1"></a>
-
 ## fling
 
 ```TypeScript
@@ -907,8 +905,8 @@ Simulates a fling operation. This API uses a promise to return the result.
 | --- | --- | --- | --- |
 | from | [Point](arkts-test-uitest-point-i.md) | Yes | Coordinates of the point where the finger touches the screen. |
 | to | [Point](arkts-test-uitest-point-i.md) | Yes | Coordinates of the point where the finger leaves the screen. |
-| stepLen | number | Yes | Sliding step length, in pixels. If the value is a negative number, error code 401 is returned.<br>Unit: px |
-| speed | number | Yes | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.<br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
+| stepLen | number | Yes | Sliding step length, in pixels. If the value is a negative number, error code 401 is returned. <br>Unit: px |
+| speed | number | Yes | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used. <br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
 
 **Return value:**
 
@@ -935,8 +933,6 @@ async function demo() {
 }
 ```
 
-<a id="fling2"></a>
-
 ## fling
 
 ```TypeScript
@@ -960,7 +956,7 @@ Simulates a fling operation with the specified direction and speed. This API use
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | direction | [UiDirection](arkts-test-uitest-uidirection-e.md) | Yes | Direction of the fling operation. |
-| speed | number | Yes | Swipe speed.<br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
+| speed | number | Yes | Swipe speed. <br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
 
 **Return value:**
 
@@ -987,8 +983,6 @@ async function demo() {
 }
 ```
 
-<a id="fling3"></a>
-
 ## fling
 
 ```TypeScript
@@ -1012,8 +1006,8 @@ Simulates a fling operation on a specified display with the specified direction 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | direction | [UiDirection](arkts-test-uitest-uidirection-e.md) | Yes | Direction of the fling operation. |
-| speed | number | Yes | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.<br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
-| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note:**  If the input **displayId** does not exist, the exception **401** is reported. |
+| speed | number | Yes | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used. <br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
+| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0. <br> **Note:**  If the input **displayId** does not exist, the exception **401** is reported. |
 
 **Return value:**
 
@@ -1039,8 +1033,6 @@ async function demo() {
   await driver.fling(UiDirection.DOWN, 10000, 0);
 }
 ```
-
-<a id="getdisplaydensity1"></a>
 
 ## getDisplayDensity
 
@@ -1089,8 +1081,6 @@ async function demo() {
 }
 ```
 
-<a id="getdisplaydensity2"></a>
-
 ## getDisplayDensity
 
 ```TypeScript
@@ -1113,7 +1103,7 @@ Obtains the density of the specified display of the current device. This API use
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. |
+| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0. <br> **Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. |
 
 **Return value:**
 
@@ -1139,8 +1129,6 @@ async function demo() {
   let density = await driver.getDisplayDensity(0);
 }
 ```
-
-<a id="getdisplayrotation1"></a>
 
 ## getDisplayRotation
 
@@ -1189,8 +1177,6 @@ async function demo() {
 }
 ```
 
-<a id="getdisplayrotation2"></a>
-
 ## getDisplayRotation
 
 ```TypeScript
@@ -1213,7 +1199,7 @@ Obtains the display rotation of the specified device. This API uses a promise to
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. |
+| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0. <br> **Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. |
 
 **Return value:**
 
@@ -1239,8 +1225,6 @@ async function demo() {
   let rotation: DisplayRotation = await driver.getDisplayRotation(0);
 }
 ```
-
-<a id="getdisplaysize1"></a>
 
 ## getDisplaySize
 
@@ -1289,8 +1273,6 @@ async function demo() {
 }
 ```
 
-<a id="getdisplaysize2"></a>
-
 ## getDisplaySize
 
 ```TypeScript
@@ -1313,7 +1295,7 @@ Obtains the size of the specified display on the current device. This API uses a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. |
+| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0. <br> **Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. |
 
 **Return value:**
 
@@ -1367,7 +1349,7 @@ Simulates a multi-point knuckle scrolling operation. This API uses a promise to 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | pointers | [PointerMatrix](arkts-test-uitest-pointermatrix-c.md) | Yes | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.  **Note:**  Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to **1**. |
-| speed | number | No | Knuckle pointer action speed.<br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 17000007 if negative. <br>Default value: 600 |
+| speed | number | No | Knuckle pointer action speed. <br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 17000007 if negative. <br>Default value: 600 |
 
 **Return value:**
 
@@ -1426,7 +1408,7 @@ Injects a multi-finger operation into a device. This method applies to test scen
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | pointers | [PointerMatrix](arkts-test-uitest-pointermatrix-c.md) | Yes | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory. |
-| speed | number | No | Pointer action speed, in px/s.<br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
+| speed | number | No | Pointer action speed, in px/s. <br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
 
 **Return value:**
 
@@ -1492,7 +1474,7 @@ Simulates a continuous multi-point pen injection operation. This method is appli
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | pointers | [PointerMatrix](arkts-test-uitest-pointermatrix-c.md) | Yes | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory. **Note:**  Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to **1**. |
-| speed | number | No | Pen pointer action speed.<br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
+| speed | number | No | Pen pointer action speed. <br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
 | pressure | number | No | Injection pressure. The value range is [0.0, 1.0]. The default value is **1.0**. If the value is **null** or **undefined**, the default value is used. If the value is out of the value range, error code 401 is thrown. |
 
 **Return value:**
@@ -1526,8 +1508,6 @@ async function demo() {
   await driver.injectPenPointerAction(pointer, 600, 0.5);
 }
 ```
-
-<a id="inputtext1"></a>
 
 ## inputText
 
@@ -1584,8 +1564,6 @@ async function demo() {
   await driver.inputText(point, '123');
 }
 ```
-
-<a id="inputtext2"></a>
 
 ## inputText
 
@@ -1673,8 +1651,8 @@ Drags from the start point to the end point and checks whether the target compon
 | --- | --- | --- | --- |
 | on | [On](arkts-test-uitest-on-c.md) | Yes | Attributes of the target [Component](arkts-test-uitest-component-c.md). |
 | from | [Point](arkts-test-uitest-point-i.md) | Yes | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs. |
-| to | [Point](arkts-test-uitest-point-i.md) | Yes | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note:**  The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown. |
-| speed | number | No | Drag speed.<br>Value range:[200, 40000] <br>Throws error code 17000007 if negative. <br>Default value: 600 |
+| to | [Point](arkts-test-uitest-point-i.md) | Yes | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs. <br> **Note:**  The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown. |
+| speed | number | No | Drag speed. <br>Value range:[200, 40000] <br>Throws error code 17000007 if negative. <br>Default value: 600 |
 | duration | number | No | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500. If the value is less than 1500, the 17000007 error code is thrown. If the value is **null** or **undefined**, the default value is used. |
 
 **Return value:**
@@ -1777,8 +1755,8 @@ Swipes from the start point to the end point and checks whether the target compo
 | --- | --- | --- | --- |
 | on | [On](arkts-test-uitest-on-c.md) | Yes | Attributes of the target component. |
 | from | [Point](arkts-test-uitest-point-i.md) | Yes | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs. |
-| to | [Point](arkts-test-uitest-point-i.md) | Yes | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note:**  The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown. |
-| speed | number | No | Swipe speed.<br>Value range:[200, 40000] <br>Throws error code 17000007 if negative. <br>Default value: 600 |
+| to | [Point](arkts-test-uitest-point-i.md) | Yes | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs. <br> **Note:**  The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown. |
+| speed | number | No | Swipe speed. <br>Value range:[200, 40000] <br>Throws error code 17000007 if negative. <br>Default value: 600 |
 
 **Return value:**
 
@@ -2123,8 +2101,6 @@ async function demo() {
 }
 ```
 
-<a id="mousedrag1"></a>
-
 ## mouseDrag
 
 ```TypeScript
@@ -2149,7 +2125,7 @@ Drags the mouse pointer from the start point to the end point. This API uses a p
 | --- | --- | --- | --- |
 | from | [Point](arkts-test-uitest-point-i.md) | Yes | Coordinates of the start point. |
 | to | [Point](arkts-test-uitest-point-i.md) | Yes | Coordinates of the end point. |
-| speed | number | No | Swipe speed.<br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
+| speed | number | No | Swipe speed. <br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
 
 **Return value:**
 
@@ -2176,8 +2152,6 @@ async function demo() {
 }
 ```
 
-<a id="mousedrag2"></a>
-
 ## mouseDrag
 
 ```TypeScript
@@ -2202,7 +2176,7 @@ Drags the mouse from the start point to the end point. You can specify the dragg
 | --- | --- | --- | --- |
 | from | [Point](arkts-test-uitest-point-i.md) | Yes | Coordinates of the start point. |
 | to | [Point](arkts-test-uitest-point-i.md) | Yes | Coordinates of the end point. |
-| speed | number | No | Swipe speed.<br>Value range:[200, 40000] <br>Unit: px/s. <br>If the value is a non-negative number that is not within the specified range or is null or undefined, the default value 600 is used. <br>Throws error code 401 if negative. <br>Default value: 600 |
+| speed | number | No | Swipe speed. <br>Value range:[200, 40000] <br>Unit: px/s. <br>If the value is a non-negative number that is not within the specified range or is null or undefined, the default value 600 is used. <br>Throws error code 401 if negative. <br>Default value: 600 |
 | duration | number | No | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500. If the value is less than 1500, error code 401 is thrown. If the value is **null** or **undefined**, the default value is used. |
 
 **Return value:**
@@ -2293,8 +2267,6 @@ async function demo() {
 }
 ```
 
-<a id="mouselongclick1"></a>
-
 ## mouseLongClick
 
 ```TypeScript
@@ -2347,8 +2319,6 @@ async function demo() {
   await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
-
-<a id="mouselongclick2"></a>
 
 ## mouseLongClick
 
@@ -2477,7 +2447,7 @@ Moves the mouse pointer from the start point to the end point, with a visible mo
 | --- | --- | --- | --- |
 | from | [Point](arkts-test-uitest-point-i.md) | Yes | Coordinates of the start point. |
 | to | [Point](arkts-test-uitest-point-i.md) | Yes | Coordinates of the end point. |
-| speed | number | No | Swipe speed.<br>Value range:[200, 40000] <br>Unit: px/s. <br>If the value is a non-negative number that is not within the specified range or is null or undefined, the default value 600 is used. <br>Throws error code 401 if negative. <br>Default value: 600 |
+| speed | number | No | Swipe speed. <br>Value range:[200, 40000] <br>Unit: px/s. <br>If the value is a non-negative number that is not within the specified range or is null or undefined, the default value 600 is used. <br>Throws error code 401 if negative. <br>Default value: 600 |
 
 **Return value:**
 
@@ -2503,8 +2473,6 @@ async function demo() {
   await driver.mouseMoveWithTrack({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
-
-<a id="mousescroll1"></a>
 
 ## mouseScroll
 
@@ -2559,8 +2527,6 @@ async function demo() {
 }
 ```
 
-<a id="mousescroll2"></a>
-
 ## mouseScroll
 
 ```TypeScript
@@ -2588,7 +2554,7 @@ Injects a mouse scroll action at the specified coordinates, with the optional ke
 | d | number | Yes | Number of ticks scrolled by the mouse wheel. A tick indicates a 120 px scroll at the mouse cursor position. If the value is a negative number, error code 401 is returned. |
 | key1 | number | No | First key code value. For details, see [KeyCode](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md). <br>Default value: 0 |
 | key2 | number | No | Second key code value. For details, see [KeyCode](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md). <br>Default value: 0 |
-| speed | number | No | Swipe speed of the mouse wheel.<br>Value range:[1, 500] <br>Unit: ticks/s <br>Throws error code 401 if negative. <br>Default value: 20 |
+| speed | number | No | Swipe speed of the mouse wheel. <br>Value range:[1, 500] <br>Unit: ticks/s <br>Throws error code 401 if negative. <br>Default value: 20 |
 
 **Return value:**
 
@@ -2787,7 +2753,7 @@ Simulates a pen swipe operation. This API uses a promise to return the result.
 | --- | --- | --- | --- |
 | startPoint | [Point](arkts-test-uitest-point-i.md) | Yes | Coordinates of the start point. |
 | endPoint | [Point](arkts-test-uitest-point-i.md) | Yes | Coordinates of the end point. |
-| speed | number | No | Speed of pen swipe.<br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
+| speed | number | No | Speed of pen swipe. <br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
 | pressure | number | No | Swipe pressure of the pen. The value ranges from 0.0 to 1.0. The default value is **1.0**. If the value is **null** or **undefined**, the default value is used. If the value is out of the value range, error code 401 is thrown. |
 
 **Return value:**
@@ -2814,8 +2780,6 @@ async function demo() {
   await driver.penSwipe({ x: 100, y: 100 }, { x: 100, y: 500 }, 600, 0.5);
 }
 ```
-
-<a id="pressback1"></a>
 
 ## pressBack
 
@@ -2864,8 +2828,6 @@ async function demo() {
 }
 ```
 
-<a id="pressback2"></a>
-
 ## pressBack
 
 ```TypeScript
@@ -2888,7 +2850,7 @@ Simulates pressing the Back button on a specified screen. This API uses a promis
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. |
+| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0. <br> **Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. |
 
 **Return value:**
 
@@ -2914,8 +2876,6 @@ async function demo() {
   await driver.pressBack(0);
 }
 ```
-
-<a id="presshome1"></a>
 
 ## pressHome
 
@@ -2959,8 +2919,6 @@ async function demo() {
 }
 ```
 
-<a id="presshome2"></a>
-
 ## pressHome
 
 ```TypeScript
@@ -2983,7 +2941,7 @@ Injects an operation of returning to the home screen on the specified display. T
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. |
+| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0. <br> **Note:**  If the input **displayId** does not exist, the exception **17000007** is reported. |
 
 **Return value:**
 
@@ -3009,8 +2967,6 @@ async function demo() {
   await driver.pressHome(0);
 }
 ```
-
-<a id="screencap1"></a>
 
 ## screenCap
 
@@ -3061,8 +3017,6 @@ async function demo() {
 }
 ```
 
-<a id="screencap2"></a>
-
 ## screenCap
 
 ```TypeScript
@@ -3086,7 +3040,7 @@ Captures the specified screen and saves it as a PNG image to the given save path
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | savePath | string | Yes | File save path. The path must be the [sandbox path](../../../file-management/app-sandbox-directory.md) of the current application. |
-| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note:**  If the input **displayId** does not exist, the exception **401** is reported. |
+| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0. <br> **Note:**  If the input **displayId** does not exist, the exception **401** is reported. |
 
 **Return value:**
 
@@ -3292,7 +3246,7 @@ Swipes from the start coordinate point to the target coordinate point. This meth
 | starty | number | Yes | Vertical coordinate of the start point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown. |
 | endx | number | Yes | Horizontal coordinate of the end point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown. |
 | endy | number | Yes | Vertical coordinate of the end point, in pixels. The value is an integer greater than or equal to 0. If the value is out of range, error code 401 is thrown. |
-| speed | number | No | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.<br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
+| speed | number | No | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used. <br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 401 if negative. <br>Default value: 600 |
 
 **Return value:**
 
@@ -3344,8 +3298,8 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | from | [Point](arkts-test-uitest-point-i.md) | Yes | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs. |
-| to | [Point](arkts-test-uitest-point-i.md) | Yes | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note:**  The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown. |
-| speed | number | No | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.<br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 17000007 if negative. <br>Default value: 600 |
+| to | [Point](arkts-test-uitest-point-i.md) | Yes | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs. <br> **Note:**  The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown. |
+| speed | number | No | Swipe speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used. <br>Value range:[200, 40000] <br>Unit: px/s. <br>Throws error code 17000007 if negative. <br>Default value: 600 |
 
 **Return value:**
 
@@ -3507,7 +3461,7 @@ Simulates a two-finger scroll gesture on the touchpad. This API uses a promise t
 | point | [Point](arkts-test-uitest-point-i.md) | Yes | Point of the mouse cursor when the two-finger scrolling is performed on the touchpad. |
 | direction | [UiDirection](arkts-test-uitest-uidirection-e.md) | Yes | Direction of two-finger scrolling on the touchpad. |
 | d | number | Yes | Number of grids scrolled by two fingers on the touchpad. A tick indicates a 120 px scroll at the mouse cursor position. If the value is a negative number, the 17000007 error code is returned. |
-| speed | number | No | Speed of two-finger scrolling on the touchpad.<br>Unit: ticks/s. <br>Value range: [1, 500] <br>Throws error code 17000007 if negative. <br>Default value: 20 |
+| speed | number | No | Speed of two-finger scrolling on the touchpad. <br>Unit: ticks/s. <br>Value range: [1, 500] <br>Throws error code 17000007 if negative. <br>Default value: 20 |
 
 **Return value:**
 
@@ -3534,8 +3488,6 @@ async function demo() {
   await driver.touchPadTwoFingersScroll({ x: 100, y: 100 }, UiDirection.UP, 20, 10);
 }
 ```
-
-<a id="triggercombinekeys1"></a>
 
 ## triggerCombineKeys
 
@@ -3589,8 +3541,6 @@ async function demo() {
 }
 ```
 
-<a id="triggercombinekeys2"></a>
-
 ## triggerCombineKeys
 
 ```TypeScript
@@ -3643,8 +3593,6 @@ async function demo() {
 }
 ```
 
-<a id="triggerkey1"></a>
-
 ## triggerKey
 
 ```TypeScript
@@ -3695,8 +3643,6 @@ async function demo() {
 }
 ```
 
-<a id="triggerkey2"></a>
-
 ## triggerKey
 
 ```TypeScript
@@ -3720,7 +3666,7 @@ Triggers a key event by passing the key code value on the specified screen. This
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | keyCode | number | Yes | Key code value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../../apis-input-kit/arkts-apis/arkts-input-multimodalinput-keycode-keycode-e.md). |
-| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note:**  If the input **displayId** does not exist, the exception **401** is reported. |
+| displayId | number | Yes | Display ID. The value is an integer greater than or equal to 0. <br> **Note:**  If the input **displayId** does not exist, the exception **401** is reported. |
 
 **Return value:**
 

@@ -6,8 +6,6 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
-<a id="getdisallowedpolicyforaccount1"></a>
-
 ## getDisallowedPolicyForAccount
 
 ```TypeScript
@@ -20,7 +18,7 @@ function getDisallowedPolicyForAccount(admin: Want | null, feature: string, acco
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicyForAccount](#getdisallowedpolicyforaccount2)(admin: Want | null, feature: FeatureForAccount, accountId: number)
+**替代接口：** [getDisallowedPolicyForAccount](#getdisallowedpolicyforaccount)(admin: Want | null, feature: FeatureForAccount, accountId: number)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
@@ -73,8 +71,6 @@ try {
 }
 ```
 
-
-<a id="getdisallowedpolicyforaccount2"></a>
 
 ## getDisallowedPolicyForAccount
 

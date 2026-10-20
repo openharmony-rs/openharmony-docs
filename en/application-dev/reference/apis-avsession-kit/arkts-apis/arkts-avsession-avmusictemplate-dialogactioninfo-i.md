@@ -6,8 +6,6 @@ interface DialogActionInfo
 
 The definition of dialog action result.
 
-@interface DialogActionInfo
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-interface DialogActionInfo--><!--Device-avMusicTemplate-interface DialogActionInfo-End-->

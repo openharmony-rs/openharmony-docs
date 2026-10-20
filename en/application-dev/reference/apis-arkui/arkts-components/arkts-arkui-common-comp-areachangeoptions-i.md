@@ -6,8 +6,6 @@ declare interface AreaChangeOptions
 
 Parameters related to area change.
 
-@typedef AreaChangeOptions
-
 **Since:** 26.0.0
 
 <!--Device-unnamed-declare interface AreaChangeOptions--><!--Device-unnamed-declare interface AreaChangeOptions-End-->

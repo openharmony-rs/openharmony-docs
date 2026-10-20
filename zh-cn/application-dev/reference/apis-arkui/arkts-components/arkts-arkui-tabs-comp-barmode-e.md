@@ -34,7 +34,7 @@ Fixed = 1
 Scrollable = 0
 ```
 
-每一个TabBar均使用实际布局宽度，超过总长度（横向Tabs的[barWidth](arkts-arkui-tabs-comp-attribute.md#barwidth)，纵向Tabs的[barHeight](arkts-arkui-tabs-comp-attribute.md#barheight1)）后可滑动。
+每一个TabBar均使用实际布局宽度，超过总长度（横向Tabs的[barWidth](arkts-arkui-tabs-comp-attribute.md#barwidth)，纵向Tabs的[barHeight](arkts-arkui-tabs-comp-attribute.md#barheight)）后可滑动。
 
 **起始版本：** 7
 

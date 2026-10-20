@@ -100,7 +100,7 @@ Requests full-screen playback.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to play in full-screen mode (fill the app window).<br>The value **true** requests full-screen playback, and **false** does not request full-screen playback. <br>Default value: **false** |
+| value | boolean | Yes | Whether to play in full-screen mode (fill the app window). <br>The value **true** requests full-screen playback, and **false** does not request full-screen playback. <br>Default value: **false** |
 
 ## reset
 
@@ -119,8 +119,6 @@ Resets the video player. The current frame is displayed, and playback starts fro
 <!--Device-VideoController-reset(): void--><!--Device-VideoController-reset(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-<a id="setcurrenttime1"></a>
 
 ## setCurrentTime
 
@@ -149,9 +147,7 @@ Sets the video playback position.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Video playback progress position. <br>Value range: [0, [duration](arkts-arkui-video-comp-preparedinfo-i.md)] <br>If the **value** is greater than **duration**, the progress jumps to the end; if the **value** is less than 0, no progress jump is performed. <br>Unit: s <br>Since API version 8, the video seek mode can be set. For details, see [setCurrentTime<sup>8+</sup>](#setcurrenttime2). |
-
-<a id="setcurrenttime2"></a>
+| value | number | Yes | Video playback progress position. <br>Value range: [0, [duration](arkts-arkui-video-comp-preparedinfo-i.md)] <br>If the **value** is greater than **duration**, the progress jumps to the end; if the **value** is less than 0, no progress jump is performed. <br>Unit: s <br>Since API version 8, the video seek mode can be set. For details, see [setCurrentTime<sup>8+</sup>](#setcurrenttime). |
 
 ## setCurrentTime
 
@@ -181,7 +177,7 @@ Sets the video playback position with the specified seek mode.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number | Yes | Video playback position. <br>Value range: [0, [duration](arkts-arkui-video-comp-preparedinfo-i.md)] <br>If **value** is greater than **duration**, the progress jumps to the end. If **value** is less than 0, no progress jump is performed. <br>Unit: s |
-| seekMode | [SeekMode](arkts-arkui-video-comp-seekmode-e.md) | Yes | Seek mode.<br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are processed as **PreviousKeyframe**. |
+| seekMode | [SeekMode](arkts-arkui-video-comp-seekmode-e.md) | Yes | Seek mode. <br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are processed as **PreviousKeyframe**. |
 
 ## start
 

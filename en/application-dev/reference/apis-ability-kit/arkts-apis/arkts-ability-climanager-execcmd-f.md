@@ -21,7 +21,6 @@ If an event callback is provided in the options, the system automatically subscr
 **Since:** 26.0.1
 
 **Required permissions:** 
-- API version 26: ohos.permission.EXEC_CLI_TOOL
 - API version 26 and later: ohos.permission.EXEC_CLI_TOOL or ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 **Model restriction:** This API can be used only in the stage model.
@@ -48,7 +47,6 @@ If an event callback is provided in the options, the system automatically subscr
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 26.0.0 |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: Failed to call the API due to limited device capabilities.<br>**Applicable version:** 26.0.1 and later |
 | [35600031](../errorcode-ability.md#35600031-maximum-number-of-concurrent-tools-reached) | Maximum number of processes has been reached. |
 | [35600050](../errorcode-ability.md#35600050-occasional-error) | System Error. 1. Failed to connect to the system service;         2. The system service failed to communicate with the dependent module. |

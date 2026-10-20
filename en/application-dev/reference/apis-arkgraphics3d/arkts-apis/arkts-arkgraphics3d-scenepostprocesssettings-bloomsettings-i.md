@@ -6,8 +6,6 @@ export interface BloomSettings
 
 Describes the settings for bloom effects. It is unavailable when RenderingPipelineType is set to FORWARD_LIGHTWEIGHT.
 
-@typedef BloomSettings
-
 **Since:** 18
 
 <!--Device-unnamed-export interface BloomSettings--><!--Device-unnamed-export interface BloomSettings-End-->

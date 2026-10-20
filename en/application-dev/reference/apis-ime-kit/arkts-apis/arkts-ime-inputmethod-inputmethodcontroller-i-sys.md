@@ -4,7 +4,11 @@
 interface InputMethodController
 ```
 
-In the following API examples, you must first use [getController](arkts-ime-inputmethod-getcontroller-f.md) to obtain an **InputMethodController** instance, and then call the APIs using the obtained instance.
+In the following API examples, you must first use [getController](arkts-ime-inputmethod-getcontroller-f.md) to obtain an **InputMethodController** instance, and then call the APIs using the obtained instance. <br> <br>**InputMethodController** is the input method client controller, which provides foreground applications with core capabilities for interacting with the input method. After obtaining an instance through `inputMethod.getController()`, you can perform the following operations: <br> <br>- Attachment management: Use [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) to establish attachment to the input method, and use [detach](arkts-ime-inputmethod-inputmethodcontroller-i.md#detach) to perform detachment. **attach** and **detach** must be used in pairs. <br>- Keyboard control: Use [showTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#showtextinput) to start the soft keyboard and enter the editing state, and use [hideTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#hidetextinput) to hide the soft keyboard and exit the editing state. **showTextInput** and **hideTextInput** must be used in pairs. <br>- Edit box state synchronization: Use APIs such as [updateCursor](arkts-ime-inputmethod-inputmethodcontroller-i.md#updatecursor), <br> <br>[changeSelection](arkts-ime-inputmethod-inputmethodcontroller-i.md#changeselection), and [updateAttribute](arkts-ime-inputmethod-inputmethodcontroller-i.md#updateattribute) to synchronize edit box state information such as the cursor, selection, and attributes with the input method. <br>- Event subscription: Use APIs such as **on('insertText')** and **on('deleteLeft')** to subscribe to text operation events sent by the input method application. <br> <br>Typical call sequence: `getController()` → `attach()` → `showTextInput()`/`hideTextInput()` → `detach()` <br> <br>  
+> **NOTE:** <br>
+> <br>
+> **attach** and **detach** must be used in pairs, and **showTextInput** and **hideTextInput** must be used in <br>
+> pairs. Otherwise, resource leaks or inconsistent states may occur.
 
 **Since:** 6
 
@@ -18,8 +22,6 @@ In the following API examples, you must first use [getController](arkts-ime-inpu
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="hidesoftkeyboard3"></a>
-
 ## hideSoftKeyboard
 
 ```TypeScript
@@ -29,7 +31,8 @@ hideSoftKeyboard(displayId: number): Promise<void>
 Hides the soft keyboard on a specified screen. This API uses a promise to return the result. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> This API can be called only when the edit box is attached to the input method. That is, it can be called to hide the soft keyboard only when the edit box is focused.
+> This API can be called only when the edit box is attached to the input method. That is, it can be called to <br>
+> hide the soft keyboard only when the edit box is focused.
 
 **Since:** 23
 
@@ -47,7 +50,7 @@ Hides the soft keyboard on a specified screen. This API uses a promise to return
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| displayId | number | Yes | Display ID. |
+| displayId | number | Yes | Screen ID. |
 
 **Return value:**
 
@@ -80,18 +83,17 @@ inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
 
 <!--DelEnd-->
 
-<a id="showsoftkeyboard3"></a>
-
 ## showSoftKeyboard
 
 ```TypeScript
 showSoftKeyboard(displayId: number): Promise<void>
 ```
 
-Shows the soft keyboard on a specified screen. This API uses a promise to return the result. <br> <br>  
+Shows the soft keyboard on a specified screen. This API uses a promise to return the result. <br> <br>Paired calls: <br> <br>- This method is used together with **hideSoftKeyboard** to control the showing and hiding of the soft keyboard. <br>- Generally, after calling **showSoftKeyboard** to show the soft keyboard, you can call **hideSoftKeyboard** to hide the soft keyboard when needed. <br>- This API can be called only when the edit box is attached to the input method. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> This API can be called only when the edit box is attached to the input method. That is, it can be called to show the soft keyboard only when the edit box is focused.
+> This API can be called only when the edit box is attached to the input method. That is, it can be called to <br>
+> show the soft keyboard only when the edit box is focused.
 
 **Since:** 23
 
@@ -109,7 +111,7 @@ Shows the soft keyboard on a specified screen. This API uses a promise to return
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| displayId | number | Yes | Display ID. |
+| displayId | number | Yes | Screen ID. |
 
 **Return value:**
 

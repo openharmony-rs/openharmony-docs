@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="setdonotdisturbdate1"></a>
-
 ## setDoNotDisturbDate
 
 ```TypeScript
@@ -36,8 +34,31 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback<voi
 | date | DoNotDisturbDate | 是 | 免打扰时间选项。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
 
+<!--Del-->
+**示例**
 
-<a id="setdonotdisturbdate2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let setDoNotDisturbDateCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("setDoNotDisturbDate failed " + JSON.stringify(err));
+  } else {
+    console.info("setDoNotDisturbDate success");
+  }
+}
+
+let doNotDisturbDate: Notification.DoNotDisturbDate = {
+  type: Notification.DoNotDisturbType.TYPE_ONCE,
+  begin: new Date(),
+  end: new Date(2021, 11, 15, 18, 0)
+};
+
+Notification.setDoNotDisturbDate(doNotDisturbDate, setDoNotDisturbDateCallback);
+```
+
+<!--DelEnd-->
+
 
 ## setDoNotDisturbDate
 
@@ -73,8 +94,26 @@ function setDoNotDisturbDate(date: DoNotDisturbDate): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
+<!--Del-->
+**示例**
 
-<a id="setdonotdisturbdate3"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let doNotDisturbDate: Notification.DoNotDisturbDate = {
+    type: Notification.DoNotDisturbType.TYPE_ONCE,
+    begin: new Date(),
+    end: new Date(2021, 11, 15, 18, 0)
+};
+Notification.setDoNotDisturbDate(doNotDisturbDate).then(() => {
+  console.info("setDoNotDisturbDate success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`setDoNotDisturbDate failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->
+
 
 ## setDoNotDisturbDate
 
@@ -106,8 +145,32 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: A
 | userId | number | 是 | 设置免打扰时间的用户ID。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设置免打扰时间回调函数。 |
 
+<!--Del-->
+**示例**
 
-<a id="setdonotdisturbdate4"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let setDoNotDisturbDateCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("setDoNotDisturbDate failed " + JSON.stringify(err));
+  } else {
+    console.info("setDoNotDisturbDate success");
+  }
+}
+
+let doNotDisturbDate: Notification.DoNotDisturbDate = {
+  type: Notification.DoNotDisturbType.TYPE_ONCE,
+  begin: new Date(),
+  end: new Date(2021, 11, 15, 18, 0)
+};
+
+let userId: number = 1;
+Notification.setDoNotDisturbDate(doNotDisturbDate, userId, setDoNotDisturbDateCallback);
+```
+
+<!--DelEnd-->
+
 
 ## setDoNotDisturbDate
 
@@ -143,3 +206,26 @@ function setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise<vo
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let doNotDisturbDate: Notification.DoNotDisturbDate = {
+  type: Notification.DoNotDisturbType.TYPE_ONCE,
+  begin: new Date(),
+  end: new Date(2021, 11, 15, 18, 0)
+};
+
+let userId: number = 1;
+
+Notification.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
+  console.info("setDoNotDisturbDate success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`setDoNotDisturbDate failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

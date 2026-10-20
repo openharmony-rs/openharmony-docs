@@ -11,6 +11,8 @@ The **locationManager** module provides location service management capabilities
 
 **Since:** 12
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace locationManager--><!--Device-unnamed-declare namespace locationManager-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
@@ -27,8 +29,8 @@ import { locationManager } from '@kit.MDMKit';
 
 | Name | Description |
 | --- | --- |
-| [getLocationPolicy](arkts-mdm-locationmanager-getlocationpolicy-f.md#getlocationpolicy1) | Queries the location service policy. |
-| [getLocationPolicy](arkts-mdm-locationmanager-getlocationpolicy-f.md#getlocationpolicy2) | Queries the location service policy. This API can be used in enterprise device administrator applications to check the current location service policy state of the device, for policy compliance verification or state confirmation before policy adjustment. It is suitable for scenarios such as confirming the current policy configuration, reading the policy state when the device administrator application starts, and checking the policy when troubleshooting location service issues. |
+| [getLocationPolicy](arkts-mdm-locationmanager-getlocationpolicy-f.md#getlocationpolicy) | Queries the location service policy. |
+| [getLocationPolicy](arkts-mdm-locationmanager-getlocationpolicy-f.md#getlocationpolicy) | Queries the location service policy. This API can be used in enterprise device administrator applications to check the current location service policy state of the device, for policy compliance verification or state confirmation before policy adjustment. It is suitable for scenarios such as confirming the current policy configuration, reading the policy state when the device administrator application starts, and checking the policy when troubleshooting location service issues. |
 | [setLocationPolicy](arkts-mdm-locationmanager-setlocationpolicy-f.md#setlocationpolicy) | Sets a location service policy. This API can be used in enterprise management and control scenarios. For example, you can disable the location service in confidential areas to protect information security, or forcibly enable the location service in logistics and distribution applications to track device locations. |
 
 ### Enums

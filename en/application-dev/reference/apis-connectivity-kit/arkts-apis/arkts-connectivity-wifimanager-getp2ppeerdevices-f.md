@@ -6,8 +6,6 @@
 import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
-<a id="getp2ppeerdevices1"></a>
-
 ## getP2pPeerDevices
 
 ```TypeScript
@@ -56,8 +54,6 @@ import { wifiManager } from '@kit.ConnectivityKit';
   });
 ```
 
-
-<a id="getp2ppeerdevices2"></a>
 
 ## getP2pPeerDevices
 

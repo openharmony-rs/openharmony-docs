@@ -6,8 +6,6 @@ export interface ToneMappingSettings
 
 色调映射设置。
 
-@typedef ToneMappingSettings
-
 **起始版本：** 12
 
 <!--Device-unnamed-export interface ToneMappingSettings--><!--Device-unnamed-export interface ToneMappingSettings-End-->

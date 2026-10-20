@@ -28,7 +28,7 @@ Sets or updates the default SM-DP+ address stored in the eUICC. This API uses a 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 | address | string | Yes | Default SM-DP+ address. |
 
 **Return value:**

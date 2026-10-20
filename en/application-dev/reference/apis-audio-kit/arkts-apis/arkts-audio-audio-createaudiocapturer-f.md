@@ -6,8 +6,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="createaudiocapturer1"></a>
-
 ## createAudioCapturer
 
 ```TypeScript
@@ -64,8 +62,6 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 ```
 
 
-<a id="createaudiocapturer3"></a>
-
 ## createAudioCapturer
 
 ```TypeScript
@@ -90,7 +86,7 @@ Creates an AudioCapturer instance. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[AudioCapturer](arkts-audio-audio-audiocapturer-i.md)&gt; | Promise used to return the result. If the operation is successful, an AudioCapturer instance is returned; otherwise, an error object with either of the following error codes is returned:<br>Error code 6800301: indicates a parameter verification exception, permission verification exception, or system processing exception. For details, see system logs. <br>Error code 6800101: indicates that a mandatory parameter is null or the parameter type is incorrect. |
+| Promise&lt;[AudioCapturer](arkts-audio-audio-audiocapturer-i.md)&gt; | Promise used to return the result. If the operation is successful, an AudioCapturer instance is returned; otherwise, an error object with either of the following error codes is returned: <br>Error code 6800301: indicates a parameter verification exception, permission verification exception, or system processing exception. For details, see system logs. <br>Error code 6800101: indicates that a mandatory parameter is null or the parameter type is incorrect. |
 
 **Examples**
 

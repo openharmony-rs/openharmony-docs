@@ -32,7 +32,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 | [Magnifier](arkts-arkui-arkui-uicontext-magnifier-c.md) | Provides the capability of displaying and hiding of the magnifier. The magnifier enlarges the component content for you to view the component details. |
 | [MarqueeDynamicSyncScene](arkts-arkui-arkui-uicontext-marqueedynamicsyncscene-c.md) | Represents a dynamic synchronization scene of Marquee. |
 | [MeasureUtils](arkts-arkui-arkui-uicontext-measureutils-c.md) | Provides APIs for measuring text metrics, such as text height and width. |
-| [MediaQuery](arkts-arkui-arkui-uicontext-mediaquery-c.md) | class MediaQuery |
+| [MediaQuery](arkts-arkui-arkui-uicontext-mediaquery-c.md) | Provides different styles for different media types. |
 | [NoneActionProposal](arkts-arkui-arkui-uicontext-noneactionproposal-c.md) | Smart gesture no-action handling. When dynamically customizing smart gesture behavior through the [registerMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor) API, setting the return value [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)'s **selectedProposal** to an object of this type willnot trigger any action. |
 | [OverlayManager](arkts-arkui-arkui-uicontext-overlaymanager-c.md) | Provides the capability to draw overlays. |
 | [PageSwitchActionProposal](arkts-arkui-arkui-uicontext-pageswitchactionproposal-c.md) | Handles the smart gesture page turning action. The default direction is forward page turning, including rightward and downward. When dynamically customizing smart gesture behavior through the [registerMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor) API, setting the return value [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)'s **selectedProposal** to an object of this typetriggers the page turning operation of the target component. |
@@ -46,7 +46,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 | [TargetedGestureProposal](arkts-arkui-arkui-uicontext-targetedgestureproposal-c.md) | Base class for smart gesture handling with a target node. |
 | [TextMenuController](arkts-arkui-arkui-uicontext-textmenucontroller-c.md) | The TextMenuController class is used to control the behavior of the text selection menu. It supports setting menu display options (such as displaying in a separate window with priority), disabling system service menu items or specific menu items. It is applicable to app scenarios where the text selection menu display mode needs to be customized or specific menu functions need to be restricted, such as disabling translation, search, and other functions in specific business scenarios. |
 | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | Implements a **UIContext** instance. |
-| [UIInspector](arkts-arkui-arkui-uicontext-uiinspector-c.md) | Provides APIs for registering the component layout and drawing display completion callbacks. |
+| [UIInspector](arkts-arkui-arkui-uicontext-uiinspector-c.md) | Provides the capability to register callbacks for component layout and component draw-to-display completion notifications. "Draw-to-display" means that the drawing commands of the node are sent to the graphics service and have been successfully displayed. For example, you can obtain the precise component size after layout is complete, or perform operations such as screenshot capture or animation synchronization after draw-to-display is complete. This is suitable for scenarios where precise awareness of component layout and drawing timing is required. |
 | [UIObserver](arkts-arkui-arkui-uicontext-uiobserver-c.md) | Provides APIs for listening for UI component behavior changes. |
 
 <!--Del-->
@@ -64,7 +64,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 
 | Name | Description |
 | --- | --- |
-| [AtomicServiceBar](arkts-arkui-arkui-uicontext-atomicservicebar-i.md) | interface AtomicServiceBar |
+| [AtomicServiceBar](arkts-arkui-arkui-uicontext-atomicservicebar-i.md) | The AtomicServiceBar interface provides the ability to set properties of the atomic service menu bar, including the visibility, background color, title content, title font style, and icon color, and also supports obtaining menu bar layout information and listening for layout changes. It is suitable for scenarios where you need to customize the appearance and behavior of the menu bar in atomic services. |
 | [GestureObserverConfigs](arkts-arkui-arkui-uicontext-gestureobserverconfigs-i.md) | Specifies the gesture callback phases to listen for (passing an empty array means no gesture callback stage is listened for). Notifications are sent only when the gesture triggers the specified phases. |
 | [GestureTriggerInfo](arkts-arkui-arkui-uicontext-gesturetriggerinfo-i.md) | Defines the information provided when a specific gesture callback is triggered. |
 | [OrderOverlayOptions](arkts-arkui-arkui-uicontext-orderoverlayoptions-i.md) | Options for opening an overlay with order. |

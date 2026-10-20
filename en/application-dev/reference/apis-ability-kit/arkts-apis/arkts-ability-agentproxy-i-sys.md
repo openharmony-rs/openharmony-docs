@@ -6,8 +6,6 @@ export interface AgentProxy
 
 The proxy object of the AgentExtensionAbility, used to send messages to the AgentExtensionAbility, etc.
 
-@interface AgentProxy
-
 **Since:** 24
 
 <!--Device-unnamed-export interface AgentProxy--><!--Device-unnamed-export interface AgentProxy-End-->

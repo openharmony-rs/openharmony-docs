@@ -2,9 +2,9 @@
 
 Module for AI-generated images using UI Component.
 
-@namespace imageGeneration
-
 **Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace imageGeneration--><!--Device-unnamed-declare namespace imageGeneration-End-->
 

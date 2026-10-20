@@ -6,8 +6,6 @@
 import { networkManager } from '@kit.MDMKit';
 ```
 
-<a id="setglobalproxy1"></a>
-
 ## setGlobalProxy
 
 ```TypeScript
@@ -84,8 +82,6 @@ networkManager.setGlobalProxy(wantTemp, httpProxy, (err) => {
 
 <!--DelEnd-->
 
-
-<a id="setglobalproxy2"></a>
 
 ## setGlobalProxy
 

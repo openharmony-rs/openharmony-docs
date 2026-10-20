@@ -6,8 +6,6 @@
 import { systemParameter } from '@kit.BasicServicesKit';
 ```
 
-<a id="get1"></a>
-
 ## get
 
 ```TypeScript
@@ -56,8 +54,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="get2"></a>
 
 ## get
 
@@ -109,8 +105,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="get3"></a>
-
 ## get
 
 ```TypeScript
@@ -136,7 +130,7 @@ Obtains a value of the specified key. This API uses a promise to return the resu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | key | string | Yes | Key to be queried. |
-| def | string | No | Default value of the system parameter.<br> It works only when the system parameter does not exist. <br> Its value can be **undefined** or a random character string. |
+| def | string | No | Default value of the system parameter. <br> It works only when the system parameter does not exist. <br> Its value can be **undefined** or a random character string. |
 
 **Return value:**
 

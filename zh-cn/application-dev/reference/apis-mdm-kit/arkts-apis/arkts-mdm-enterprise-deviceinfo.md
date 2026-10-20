@@ -38,10 +38,10 @@ import { deviceInfo } from '@kit.MDMKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getDeviceName](arkts-mdm-deviceinfo-getdevicename-f-sys.md#getdevicename1) | 获取设备名称，使用callback异步回调。 |
-| [getDeviceName](arkts-mdm-deviceinfo-getdevicename-f-sys.md#getdevicename2) | 获取设备名称，使用Promise异步回调。 |
-| [getDeviceSerial](arkts-mdm-deviceinfo-getdeviceserial-f-sys.md#getdeviceserial1) | 获取设备序列号，使用callback异步回调。 |
-| [getDeviceSerial](arkts-mdm-deviceinfo-getdeviceserial-f-sys.md#getdeviceserial2) | 获取设备序列号，使用Promise异步回调。 |
-| [getDisplayVersion](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md#getdisplayversion1) | 获取设备版本号，使用callback异步回调。 |
-| [getDisplayVersion](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md#getdisplayversion2) | 获取设备版本号，使用Promise异步回调。 |
+| [getDeviceName](arkts-mdm-deviceinfo-getdevicename-f-sys.md#getdevicename) | 获取设备名称，使用callback异步回调。 |
+| [getDeviceName](arkts-mdm-deviceinfo-getdevicename-f-sys.md#getdevicename) | 获取设备名称，使用Promise异步回调。 |
+| [getDeviceSerial](arkts-mdm-deviceinfo-getdeviceserial-f-sys.md#getdeviceserial) | 获取设备序列号，使用callback异步回调。 |
+| [getDeviceSerial](arkts-mdm-deviceinfo-getdeviceserial-f-sys.md#getdeviceserial) | 获取设备序列号，使用Promise异步回调。 |
+| [getDisplayVersion](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md#getdisplayversion) | 获取设备版本号，使用callback异步回调。 |
+| [getDisplayVersion](arkts-mdm-deviceinfo-getdisplayversion-f-sys.md#getdisplayversion) | 获取设备版本号，使用Promise异步回调。 |
 <!--DelEnd-->

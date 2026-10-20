@@ -6,8 +6,6 @@ export type ToolInfo = _ToolInfo
 
 Define basic information about the CLI tool.
 
-@typedef { _ToolInfo }
-
 **Type:** _ToolInfo
 
 **Since:** 26.0.0

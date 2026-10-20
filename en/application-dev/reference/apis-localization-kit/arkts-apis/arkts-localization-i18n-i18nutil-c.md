@@ -293,8 +293,6 @@ try {
 }
 ```
 
-<a id="getunicodewrappedfilepath1"></a>
-
 ## getUnicodeWrappedFilePath
 
 ```TypeScript
@@ -351,8 +349,6 @@ try {
 }
 ```
 
-<a id="getunicodewrappedfilepath2"></a>
-
 ## getUnicodeWrappedFilePath
 
 ```TypeScript
@@ -367,7 +363,7 @@ For example, "/data/out/tmp" is changed to "tmp/out/data/" after localization.
 
 **Deprecated since:** 20
 
-**Substitutes:** [getUnicodeWrappedFilePath](#getunicodewrappedfilepath1)(path: string, delimiter?: string, locale?: Intl.Locale)
+**Substitutes:** [getUnicodeWrappedFilePath](#getunicodewrappedfilepath)(path: string, delimiter?: string, locale?: Intl.Locale)
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 

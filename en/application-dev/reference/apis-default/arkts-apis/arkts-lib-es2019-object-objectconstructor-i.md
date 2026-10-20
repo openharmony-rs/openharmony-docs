@@ -9,8 +9,6 @@ interface ObjectConstructor
 ```TypeScript
 ```
 
-<a id="fromentries1"></a>
-
 ## fromEntries
 
 ```TypeScript
@@ -26,8 +24,6 @@ Returns an object created by key-value entries for properties and methods
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | entries | Iterable&lt;readonly [PropertyKey, T]&gt; | Yes |  |
-
-<a id="fromentries2"></a>
 
 ## fromEntries
 

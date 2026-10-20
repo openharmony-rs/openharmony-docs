@@ -4,7 +4,7 @@
 interface GetAuthInfoOptions
 ```
 
-Represents a set of optional parameters for [GetAuthInfo](arkts-basicservices-osaccount-useridentitymanager-c-sys.md#getauthinfo4).
+Represents a set of optional parameters for [GetAuthInfo](arkts-basicservices-osaccount-useridentitymanager-c-sys.md#getauthinfo).
 
 **Since:** 12
 

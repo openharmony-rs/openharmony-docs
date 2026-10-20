@@ -18,8 +18,6 @@ interface AccountManager
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="checkmultiosaccountenabled1"></a>
-
 ## checkMultiOsAccountEnabled
 
 ```TypeScript
@@ -44,7 +42,7 @@ checkMultiOsAccountEnabled(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
@@ -66,8 +64,6 @@ try {
   console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkmultiosaccountenabled2"></a>
 
 ## checkMultiOsAccountEnabled
 
@@ -113,8 +109,6 @@ try {
 }
 ```
 
-<a id="checkosaccounttestable1"></a>
-
 ## checkOsAccountTestable
 
 ```TypeScript
@@ -139,7 +133,7 @@ checkOsAccountTestable(callback: AsyncCallback<boolean>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
@@ -161,8 +155,6 @@ try {
   console.error(`checkOsAccountTestable code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkosaccounttestable2"></a>
 
 ## checkOsAccountTestable
 
@@ -208,8 +200,6 @@ try {
 }
 ```
 
-<a id="getactivatedosaccountlocalids1"></a>
-
 ## getActivatedOsAccountLocalIds
 
 ```TypeScript
@@ -234,7 +224,7 @@ getActivatedOsAccountLocalIds(callback: AsyncCallback<Array<number>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
@@ -259,8 +249,6 @@ try {
   console.error(`getActivatedOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getactivatedosaccountlocalids2"></a>
 
 ## getActivatedOsAccountLocalIds
 
@@ -306,8 +294,6 @@ try {
 }
 ```
 
-<a id="getforegroundosaccountlocalid1"></a>
-
 ## getForegroundOsAccountLocalId
 
 ```TypeScript
@@ -352,8 +338,6 @@ try {
 }
 ```
 
-<a id="getosaccountcount1"></a>
-
 ## getOsAccountCount
 
 ```TypeScript
@@ -381,7 +365,7 @@ getOsAccountCount(callback: AsyncCallback<number>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
@@ -403,8 +387,6 @@ try {
   console.error(`getOsAccountCount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountcount2"></a>
 
 ## getOsAccountCount
 
@@ -486,7 +468,7 @@ getOsAccountDomainInfo(localId: number): Promise<DomainAccountInfo>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | OS account not found. |
 
@@ -509,8 +491,6 @@ accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccoun
   console.error(`getOsAccountDomainInfo err: code is ${err.code}, message is ${err.message}`);
 })
 ```
-
-<a id="getosaccountlocalid1"></a>
 
 ## getOsAccountLocalId
 
@@ -536,7 +516,7 @@ getOsAccountLocalId(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
@@ -558,8 +538,6 @@ try {
   console.error(`getOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountlocalid2"></a>
 
 ## getOsAccountLocalId
 
@@ -605,8 +583,6 @@ try {
 }
 ```
 
-<a id="getosaccountlocalidfordomain1"></a>
-
 ## getOsAccountLocalIdForDomain
 
 ```TypeScript
@@ -635,7 +611,7 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallb
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid domainInfo. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Domain account not found. |
@@ -660,8 +636,6 @@ try {
   console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountlocalidfordomain2"></a>
 
 ## getOsAccountLocalIdForDomain
 
@@ -696,7 +670,7 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise<number>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid domainInfo. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Domain account not found. |
@@ -719,8 +693,6 @@ try {
   console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountlocalidforserialnumber1"></a>
 
 ## getOsAccountLocalIdForSerialNumber
 
@@ -747,7 +719,7 @@ getOsAccountLocalIdForSerialNumber(serialNumber: number, callback: AsyncCallback
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid serialNumber. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | The account indicated by serialNumber does not exist. |
@@ -775,8 +747,6 @@ try {
   console.error(`get localId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountlocalidforserialnumber2"></a>
 
 ## getOsAccountLocalIdForSerialNumber
 
@@ -808,7 +778,7 @@ getOsAccountLocalIdForSerialNumber(serialNumber: number): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid serialNumber. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | The account indicated by serialNumber does not exist. |
@@ -835,8 +805,6 @@ try {
 }
 ```
 
-<a id="getosaccountlocalidforuid1"></a>
-
 ## getOsAccountLocalIdForUid
 
 ```TypeScript
@@ -862,7 +830,7 @@ getOsAccountLocalIdForUid(uid: number, callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid uid. |
 
@@ -889,8 +857,6 @@ try {
   console.error(`getOsAccountLocalIdForUid exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountlocalidforuid2"></a>
 
 ## getOsAccountLocalIdForUid
 
@@ -922,7 +888,7 @@ getOsAccountLocalIdForUid(uid: number): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid uid. |
 
@@ -978,7 +944,7 @@ getOsAccountLocalIdForUidSync(uid: number): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid uid. |
 
 **示例**
@@ -1150,8 +1116,6 @@ try {
 }
 ```
 
-<a id="getosaccounttype1"></a>
-
 ## getOsAccountType
 
 ```TypeScript
@@ -1176,7 +1140,7 @@ getOsAccountType(callback: AsyncCallback<OsAccountType>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
@@ -1198,8 +1162,6 @@ try {
   console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccounttype2"></a>
 
 ## getOsAccountType
 
@@ -1245,8 +1207,6 @@ try {
 }
 ```
 
-<a id="getserialnumberforosaccountlocalid1"></a>
-
 ## getSerialNumberForOsAccountLocalId
 
 ```TypeScript
@@ -1272,7 +1232,7 @@ getSerialNumberForOsAccountLocalId(localId: number, callback: AsyncCallback<numb
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1300,8 +1260,6 @@ try {
   console.error(`get serialNumber exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getserialnumberforosaccountlocalid2"></a>
 
 ## getSerialNumberForOsAccountLocalId
 
@@ -1333,7 +1291,7 @@ getSerialNumberForOsAccountLocalId(localId: number): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1359,8 +1317,6 @@ try {
   console.error(`getSerialNumberForOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="isosaccountconstraintenabled1"></a>
 
 ## isOsAccountConstraintEnabled
 
@@ -1392,7 +1348,7 @@ isOsAccountConstraintEnabled(constraint: string): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
@@ -1415,8 +1371,6 @@ try {
   console.error(`isOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="isosaccountunlocked1"></a>
 
 ## isOsAccountUnlocked
 
@@ -1462,8 +1416,6 @@ try {
 }
 ```
 
-<a id="querydistributedvirtualdeviceid1"></a>
-
 ## queryDistributedVirtualDeviceId
 
 ```TypeScript
@@ -1491,7 +1443,7 @@ queryDistributedVirtualDeviceId(callback: AsyncCallback<string>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
 **示例**
@@ -1513,8 +1465,6 @@ try {
   console.error(`queryDistributedVirtualDeviceId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="querydistributedvirtualdeviceid2"></a>
 
 ## queryDistributedVirtualDeviceId
 
@@ -1563,8 +1513,6 @@ try {
 }
 ```
 
-<a id="checkosaccountactivated1"></a>
-
 ## checkOsAccountActivated
 
 ```TypeScript
@@ -1599,7 +1547,7 @@ checkOsAccountActivated(localId: number, callback: AsyncCallback<boolean>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1627,8 +1575,6 @@ try {
   console.error(`checkOsAccountActivated exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkosaccountactivated2"></a>
 
 ## checkOsAccountActivated
 
@@ -1669,7 +1615,7 @@ checkOsAccountActivated(localId: number): Promise<boolean>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1695,8 +1641,6 @@ try {
   console.error(`checkOsAccountActivated exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkosaccountconstraintenabled1"></a>
 
 ## checkOsAccountConstraintEnabled
 
@@ -1733,7 +1677,7 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: A
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId or constraint. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1762,8 +1706,6 @@ try {
   console.error(`checkOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkosaccountconstraintenabled2"></a>
 
 ## checkOsAccountConstraintEnabled
 
@@ -1805,7 +1747,7 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise<bo
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId or constraint. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1832,8 +1774,6 @@ try {
   console.error(`checkOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkosaccountverified1"></a>
 
 ## checkOsAccountVerified
 
@@ -1890,8 +1830,6 @@ try {
 }
 ```
 
-<a id="checkosaccountverified2"></a>
-
 ## checkOsAccountVerified
 
 ```TypeScript
@@ -1945,8 +1883,6 @@ try {
 }
 ```
 
-<a id="checkosaccountverified3"></a>
-
 ## checkOsAccountVerified
 
 ```TypeScript
@@ -1981,7 +1917,7 @@ checkOsAccountVerified(localId: number, callback: AsyncCallback<boolean>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -2007,8 +1943,6 @@ try {
   console.error(`checkOsAccountVerified exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkosaccountverified4"></a>
 
 ## checkOsAccountVerified
 
@@ -2049,7 +1983,7 @@ checkOsAccountVerified(localId: number): Promise<boolean>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -2073,8 +2007,6 @@ try {
   console.error(`checkOsAccountVerified exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getcreatedosaccountscount1"></a>
 
 ## getCreatedOsAccountsCount
 
@@ -2122,8 +2054,6 @@ accountManager.getCreatedOsAccountsCount((err: BusinessError, count: number)=>{
 });
 ```
 
-<a id="getcreatedosaccountscount2"></a>
-
 ## getCreatedOsAccountsCount
 
 ```TypeScript
@@ -2167,8 +2097,6 @@ accountManager.getCreatedOsAccountsCount().then((count: number) => {
   console.error(`getCreatedOsAccountsCount failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="getcurrentosaccount1"></a>
 
 ## getCurrentOsAccount
 
@@ -2227,8 +2155,6 @@ try {
 }
 ```
 
-<a id="getcurrentosaccount2"></a>
-
 ## getCurrentOsAccount
 
 ```TypeScript
@@ -2284,8 +2210,6 @@ try {
 }
 ```
 
-<a id="getdistributedvirtualdeviceid1"></a>
-
 ## getDistributedVirtualDeviceId
 
 ```TypeScript
@@ -2297,14 +2221,14 @@ getDistributedVirtualDeviceId(callback: AsyncCallback<string>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid1)
+> [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid1)(callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid)(callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC or ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -2332,8 +2256,6 @@ accountManager.getDistributedVirtualDeviceId((err: BusinessError, virtualID: str
   }
 });
 ```
-
-<a id="getdistributedvirtualdeviceid2"></a>
 
 ## getDistributedVirtualDeviceId
 
@@ -2378,8 +2300,6 @@ accountManager.getDistributedVirtualDeviceId().then((virtualID: string) => {
   console.error(`getDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="getosaccountallconstraints1"></a>
 
 ## getOsAccountAllConstraints
 
@@ -2428,8 +2348,6 @@ accountManager.getOsAccountAllConstraints(localId, (err: BusinessError, constrai
   }
 });
 ```
-
-<a id="getosaccountallconstraints2"></a>
 
 ## getOsAccountAllConstraints
 
@@ -2482,8 +2400,6 @@ accountManager.getOsAccountAllConstraints(localId).then((constraints: string[]) 
 });
 ```
 
-<a id="getosaccountconstraints1"></a>
-
 ## getOsAccountConstraints
 
 ```TypeScript
@@ -2518,7 +2434,7 @@ getOsAccountConstraints(localId: number, callback: AsyncCallback<Array<string>>)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -2546,8 +2462,6 @@ try {
   console.error(`getOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountconstraints2"></a>
 
 ## getOsAccountConstraints
 
@@ -2588,7 +2502,7 @@ getOsAccountConstraints(localId: number): Promise<Array<string>>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -2614,8 +2528,6 @@ try {
   console.error(`getOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getosaccountlocalidbyserialnumber1"></a>
 
 ## getOsAccountLocalIdBySerialNumber
 
@@ -2665,8 +2577,6 @@ accountManager.getOsAccountLocalIdBySerialNumber(serialNumber, (err: BusinessErr
   }
 });
 ```
-
-<a id="getosaccountlocalidbyserialnumber2"></a>
 
 ## getOsAccountLocalIdBySerialNumber
 
@@ -2720,8 +2630,6 @@ accountManager.getOsAccountLocalIdBySerialNumber(serialNumber).then((localId: nu
 });
 ```
 
-<a id="getosaccountlocalidfromdomain1"></a>
-
 ## getOsAccountLocalIdFromDomain
 
 ```TypeScript
@@ -2771,8 +2679,6 @@ accountManager.getOsAccountLocalIdFromDomain(domainInfo, (err: BusinessError, lo
 });
 ```
 
-<a id="getosaccountlocalidfromdomain2"></a>
-
 ## getOsAccountLocalIdFromDomain
 
 ```TypeScript
@@ -2784,14 +2690,14 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise<number>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain2)
+> [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain2)(domainInfo: DomainAccountInfo)
+**替代接口：** [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain)(domainInfo: DomainAccountInfo)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -2824,8 +2730,6 @@ accountManager.getOsAccountLocalIdFromDomain(domainInfo).then((localId: number) 
   console.error(`getOsAccountLocalIdFromDomain failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="getosaccountlocalidfromprocess1"></a>
 
 ## getOsAccountLocalIdFromProcess
 
@@ -2871,8 +2775,6 @@ accountManager.getOsAccountLocalIdFromProcess((err: BusinessError, localId: numb
 });
 ```
 
-<a id="getosaccountlocalidfromprocess2"></a>
-
 ## getOsAccountLocalIdFromProcess
 
 ```TypeScript
@@ -2914,8 +2816,6 @@ accountManager.getOsAccountLocalIdFromProcess().then((localId: number) => {
   console.error(`getOsAccountLocalIdFromProcess failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="getosaccountlocalidfromuid1"></a>
 
 ## getOsAccountLocalIdFromUid
 
@@ -2965,8 +2865,6 @@ accountManager.getOsAccountLocalIdFromUid(uid, (err: BusinessError, localId: num
   }
 });
 ```
-
-<a id="getosaccountlocalidfromuid2"></a>
 
 ## getOsAccountLocalIdFromUid
 
@@ -3019,8 +2917,6 @@ accountManager.getOsAccountLocalIdFromUid(uid).then((localId: number) => {
 });
 ```
 
-<a id="getosaccounttypefromprocess1"></a>
-
 ## getOsAccountTypeFromProcess
 
 ```TypeScript
@@ -3032,13 +2928,13 @@ getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getOsAccountType](#getosaccounttype1)替代。
+> [getOsAccountType](#getosaccounttype)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getOsAccountType](#getosaccounttype1)(callback: AsyncCallback&lt;OsAccountType&gt;)
+**替代接口：** [getOsAccountType](#getosaccounttype)(callback: AsyncCallback&lt;OsAccountType&gt;)
 
 <!--Device-AccountManager-getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void--><!--Device-AccountManager-getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void-End-->
 
@@ -3064,8 +2960,6 @@ accountManager.getOsAccountTypeFromProcess((err: BusinessError, accountType: osA
   }
 });
 ```
-
-<a id="getosaccounttypefromprocess2"></a>
 
 ## getOsAccountTypeFromProcess
 
@@ -3108,8 +3002,6 @@ accountManager.getOsAccountTypeFromProcess().then((accountType: osAccount.OsAcco
   console.error(`getOsAccountTypeFromProcess err: code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="getserialnumberbyosaccountlocalid1"></a>
 
 ## getSerialNumberByOsAccountLocalId
 
@@ -3160,8 +3052,6 @@ accountManager.getSerialNumberByOsAccountLocalId(localId, (err: BusinessError, s
   }
 });
 ```
-
-<a id="getserialnumberbyosaccountlocalid2"></a>
 
 ## getSerialNumberByOsAccountLocalId
 
@@ -3216,8 +3106,6 @@ accountManager.getSerialNumberByOsAccountLocalId(localId).then((serialNumber: nu
 });
 ```
 
-<a id="ismultiosaccountenable1"></a>
-
 ## isMultiOsAccountEnable
 
 ```TypeScript
@@ -3229,14 +3117,14 @@ isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkMultiOsAccountEnabled](#checkmultiosaccountenabled1)
+> [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkMultiOsAccountEnabled](#checkmultiosaccountenabled1)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AccountManager-isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void-End-->
 
@@ -3262,8 +3150,6 @@ accountManager.isMultiOsAccountEnable((err: BusinessError, isEnabled: boolean) =
   }
 });
 ```
-
-<a id="ismultiosaccountenable2"></a>
 
 ## isMultiOsAccountEnable
 
@@ -3306,8 +3192,6 @@ accountManager.isMultiOsAccountEnable().then((isEnabled: boolean) => {
   console.error(`isMultiOsAccountEnable failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="isosaccountactived1"></a>
 
 ## isOsAccountActived
 
@@ -3356,8 +3240,6 @@ accountManager.isOsAccountActived(localId, (err: BusinessError, isActived: boole
   }
 });
 ```
-
-<a id="isosaccountactived2"></a>
 
 ## isOsAccountActived
 
@@ -3410,8 +3292,6 @@ accountManager.isOsAccountActived(localId).then((isActived: boolean) => {
 });
 ```
 
-<a id="isosaccountconstraintenable1"></a>
-
 ## isOsAccountConstraintEnable
 
 ```TypeScript
@@ -3461,8 +3341,6 @@ accountManager.isOsAccountConstraintEnable(localId, constraint, (err: BusinessEr
   }
 });
 ```
-
-<a id="isosaccountconstraintenable2"></a>
 
 ## isOsAccountConstraintEnable
 
@@ -3517,8 +3395,6 @@ accountManager.isOsAccountConstraintEnable(localId, constraint).then((isEnabled:
 });
 ```
 
-<a id="isosaccountverified1"></a>
-
 ## isOsAccountVerified
 
 ```TypeScript
@@ -3530,14 +3406,14 @@ isOsAccountVerified(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkOsAccountVerified](#checkosaccountverified1)
+> [checkOsAccountVerified](#checkosaccountverified)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkOsAccountVerified](#checkosaccountverified1)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkOsAccountVerified](#checkosaccountverified)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -3565,8 +3441,6 @@ accountManager.isOsAccountVerified((err: BusinessError, isVerified: boolean) => 
   }
 });
 ```
-
-<a id="isosaccountverified2"></a>
 
 ## isOsAccountVerified
 
@@ -3613,8 +3487,6 @@ accountManager.isOsAccountVerified(localId, (err: BusinessError, isVerified: boo
   }
 });
 ```
-
-<a id="isosaccountverified3"></a>
 
 ## isOsAccountVerified
 
@@ -3663,8 +3535,6 @@ accountManager.isOsAccountVerified().then((isVerified: boolean) => {
 });
 ```
 
-<a id="istestosaccount1"></a>
-
 ## isTestOsAccount
 
 ```TypeScript
@@ -3676,14 +3546,14 @@ isTestOsAccount(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkOsAccountTestable](#checkosaccounttestable1)
+> [checkOsAccountTestable](#checkosaccounttestable)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkOsAccountTestable](#checkosaccounttestable1)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkOsAccountTestable](#checkosaccounttestable)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AccountManager-isTestOsAccount(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isTestOsAccount(callback: AsyncCallback<boolean>): void-End-->
 
@@ -3709,8 +3579,6 @@ accountManager.isTestOsAccount((err: BusinessError, isTestable: boolean) => {
   }
 });
 ```
-
-<a id="istestosaccount2"></a>
 
 ## isTestOsAccount
 
@@ -3753,8 +3621,6 @@ let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
     console.error(`isTestOsAccount failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="queryactivatedosaccountids1"></a>
 
 ## queryActivatedOsAccountIds
 
@@ -3804,8 +3670,6 @@ accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[]
 });
 ```
 
-<a id="queryactivatedosaccountids2"></a>
-
 ## queryActivatedOsAccountIds
 
 ```TypeScript
@@ -3847,8 +3711,6 @@ accountManager.queryActivatedOsAccountIds().then((idArray: number[]) => {
   console.error(`queryActivatedOsAccountIds err: code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="querycurrentosaccount1"></a>
 
 ## queryCurrentOsAccount
 
@@ -3892,8 +3754,6 @@ accountManager.queryCurrentOsAccount((err: BusinessError, curAccountInfo: osAcco
   }
 });
 ```
-
-<a id="querycurrentosaccount2"></a>
 
 ## queryCurrentOsAccount
 

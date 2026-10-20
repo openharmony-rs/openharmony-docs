@@ -12,8 +12,6 @@ This component is implemented based on [state management V2](../../../ui/state-m
 > 
 > - If [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) or [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are set for **SwipeRefresherV2**, the compilation toolchain will generate an additional node \_\_Common\_\_ and mount the universal attributes or universal events on \_\_Common\_\_, rather than directly applying them to **SwipeRefresherV2** itself. This may cause the set universal attributes or universal events to not take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **SwipeRefresherV2**.
 
-@struct { SwipeRefresherV2 }
-
 **Since:** 26.0.0
 
 **Decorator:** @ComponentV2

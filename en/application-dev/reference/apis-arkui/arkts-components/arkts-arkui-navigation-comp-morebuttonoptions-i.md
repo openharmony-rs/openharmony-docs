@@ -38,7 +38,7 @@ Background blur style of the more button menu. If this parameter is not set, bac
 backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 ```
 
-Options for the title bar background blur style.
+Background blur style options of the more button menu.
 
 **NOTE:** 
 
@@ -64,7 +64,7 @@ Avoid using this API in conjunction with **backgroundEffect**.
 backgroundEffect?: BackgroundEffectOptions
 ```
 
-Title bar background properties, including blur radius, brightness, saturation, and color.
+Background properties of the more button menu, including blur radius, brightness, saturation, and color.
 
 **NOTE:** 
 

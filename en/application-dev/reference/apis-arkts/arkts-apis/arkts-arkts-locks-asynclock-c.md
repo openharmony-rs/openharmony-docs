@@ -36,8 +36,6 @@ Default constructor.
 
 **System capability:** SystemCapability.Utils.Lang
 
-<a id="lockasync1"></a>
-
 ## lockAsync
 
 ```TypeScript
@@ -71,8 +69,6 @@ Perform an operation with the acquired lock exclusively. The method acquires the
 | Error Code ID | Error Message |
 | --- | --- |
 | [10200030](../errorcode-utils.md#10200030-lock-does-not-exist) | The lock does not exist. |
-
-<a id="lockasync2"></a>
 
 ## lockAsync
 
@@ -108,8 +104,6 @@ Perform an operation with the acquired lock. The method acquires the lock first,
 | Error Code ID | Error Message |
 | --- | --- |
 | [10200030](../errorcode-utils.md#10200030-lock-does-not-exist) | The lock does not exist. |
-
-<a id="lockasync3"></a>
 
 ## lockAsync
 

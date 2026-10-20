@@ -6,8 +6,6 @@ export type ContinueDeviceInfo = _ContinueDeviceInfo
 
 迁移任务所需的参数。
 
-@typedef { _ContinueDeviceInfo }
-
 **类型：** _ContinueDeviceInfo
 
 **起始版本：** 10

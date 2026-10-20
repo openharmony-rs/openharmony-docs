@@ -41,7 +41,7 @@ Sets the position of the input cursor.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Length of the characters from the start of the string to the cursor position.<br>If value is less than 0, it is processed as 0. If value is greater than the string length, it is processed as the string length. |
+| value | number | Yes | Length of the characters from the start of the string to the cursor position. <br>If value is less than 0, it is processed as 0. If value is greater than the string length, it is processed as the string length. |
 
 ## constructor
 
@@ -81,9 +81,9 @@ Sets the text selection area and highlights it when the component is focused. Th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectionStart | number | Yes | Start position of the text selection area. The start position of the text in the text box is 0.<br>If selectionStart is less than 0, it is processed as 0. If selectionStart is greater than the maximum text length, it is processed as the maximum text length. <br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
-| selectionEnd | number | Yes | End position of the text selection area.<br>If selectionEnd is less than 0, it is processed as 0. If selectionEnd is greater than the maximum text length, it is processed as the maximum text length. <br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
-| options | [SelectionOptions](arkts-arkui-common-comp-selectionoptions-i.md) | No | Configuration for the selected text.<br>Default value: MenuPolicy.DEFAULT <br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Since:** 12 |
+| selectionStart | number | Yes | Start position of the text selection area. The start position of the text in the text box is 0. <br>If selectionStart is less than 0, it is processed as 0. If selectionStart is greater than the maximum text length, it is processed as the maximum text length. <br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| selectionEnd | number | Yes | End position of the text selection area. <br>If selectionEnd is less than 0, it is processed as 0. If selectionEnd is greater than the maximum text length, it is processed as the maximum text length. <br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| options | [SelectionOptions](arkts-arkui-common-comp-selectionoptions-i.md) | No | Configuration for the selected text. <br>Default value: MenuPolicy.DEFAULT <br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Since:** 12 |
 
 ## stopEditing
 

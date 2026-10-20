@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="getdisallowedinstallbundles1"></a>
-
 ## getDisallowedInstallBundles
 
 ```TypeScript
@@ -73,8 +71,6 @@ bundleManager.getDisallowedInstallBundles(wantTemp, (err, result) => {
 
 <!--DelEnd-->
 
-
-<a id="getdisallowedinstallbundles2"></a>
 
 ## getDisallowedInstallBundles
 
@@ -143,8 +139,6 @@ bundleManager.getDisallowedInstallBundles(wantTemp, 100, (err, result) => {
 <!--DelEnd-->
 
 
-<a id="getdisallowedinstallbundles3"></a>
-
 ## getDisallowedInstallBundles
 
 ```TypeScript
@@ -174,7 +168,7 @@ Obtains the list of applications that are not allowed to be installed by the cur
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
-| userId | number | No | User ID, which must be greater than or equal to 0.<br> - If **userId** is passed in, this API applies to the specified user. <br> - If **userId** is not passed in, this API applies to the current user. |
+| userId | number | No | User ID, which must be greater than or equal to 0. <br> - If **userId** is passed in, this API applies to the specified user. <br> - If **userId** is not passed in, this API applies to the current user. |
 
 **Return value:**
 

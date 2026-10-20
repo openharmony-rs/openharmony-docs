@@ -8,7 +8,7 @@ enum DarkMode
 
 | 名称 | 值 | 说明 |  
 | -- | -- | -- |  
-| ALWAYS_DARK | 0 | 系统始终为深色。 |
+| ALWAYS_DARK | 0 | 系统始终为深色。 |  
 | ALWAYS_LIGHT | 1 | 系统始终为浅色。 |
 
 **起始版本：** 20

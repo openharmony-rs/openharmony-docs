@@ -2,8 +2,6 @@
 
 inspector的性能分析（Profiler）工具。
 
-@namespace Profiler
-
 ## 汇总
 
 ### 命名空间

@@ -18,7 +18,7 @@ Enumerates the desired dynamic range of an image during decoding.
 AUTO = 0
 ```
 
-The image is decoded based on the format. If the image is in HDR format, it is decoded based on the HDR content; otherwise, it is decoded based on the SDR content. The image source created by calling [CreateIncrementalSource](arkts-image-image-createincrementalsource-f.md#createincrementalsource1) is decoded into SDR content.
+The image is decoded based on the format. If the image is in HDR format, it is decoded based on the HDR content; otherwise, it is decoded based on the SDR content. The image source created by calling [CreateIncrementalSource](arkts-image-image-createincrementalsource-f.md#createincrementalsource) is decoded into SDR content.
 
 **Since:** 12
 
@@ -32,7 +32,7 @@ The image is decoded based on the format. If the image is in HDR format, it is d
 HDR = 2
 ```
 
-The image is decoded according to the high dynamic range. The image source created by calling [CreateIncrementalSource](arkts-image-image-createincrementalsource-f.md#createincrementalsource1) is decoded into SDR content.
+The image is decoded according to the high dynamic range. The image source created by calling [CreateIncrementalSource](arkts-image-image-createincrementalsource-f.md#createincrementalsource) is decoded into SDR content.
 
 **Since:** 12
 

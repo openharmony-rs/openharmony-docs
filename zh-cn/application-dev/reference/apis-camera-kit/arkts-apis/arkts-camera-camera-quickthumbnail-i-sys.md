@@ -4,7 +4,7 @@
 interface QuickThumbnail
 ```
 
-Quick thumbnail object
+快速缩略图对象。
 
 **起始版本：** 19
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 release(): Promise<void>
 ```
 
-Release quick thumbnail object.
+释放快速缩略图对象。
 
 **起始版本：** 19
 
@@ -40,7 +40,7 @@ Release quick thumbnail object.
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise used to return the result. |
+| Promise&lt;void&gt; | 用于返回结果的 Promise。 |
 
 **错误码：**
 
@@ -54,7 +54,7 @@ Release quick thumbnail object.
 readonly captureId: number
 ```
 
-capture id.
+拍摄ID。
 
 **类型：** number
 
@@ -72,7 +72,7 @@ capture id.
 thumbnailImage: image.PixelMap
 ```
 
-Thumbnail image.
+缩略图图像。
 
 **类型：** [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)
 

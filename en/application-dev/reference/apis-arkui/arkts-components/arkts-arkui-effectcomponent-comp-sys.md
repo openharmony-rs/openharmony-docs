@@ -52,17 +52,21 @@ Creates an effect rendering merging component. When no parameter is passed or th
 
 ## Summary
 
-### Interfaces
+<!--Del-->
+### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
 | [EffectComponentOptions](arkts-arkui-effectcomponent-comp-effectcomponentoptions-i-sys.md) | Sets the construction parameters of the current EffectComponent, including the rendering layer of the EffectComponent. |
+<!--DelEnd-->
 
-### Enums
+<!--Del-->
+### Enums(System API)
 
 | Name | Description |
 | --- | --- |
 | [EffectLayer](arkts-arkui-effectcomponent-comp-effectlayer-e-sys.md) | Rendering layer of the EffectComponent. |
+<!--DelEnd-->
 
 <!--Del-->
 ## Examples

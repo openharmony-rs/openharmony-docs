@@ -6,8 +6,6 @@ declare type OnCheckboxGroupChangeCallback = (value: CheckboxGroupResult) => voi
 
 Defines a CheckboxGroup callback when onChange. Anonymous Object Rectification.
 
-@typedef { function } OnCheckboxGroupChangeCallback
-
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.

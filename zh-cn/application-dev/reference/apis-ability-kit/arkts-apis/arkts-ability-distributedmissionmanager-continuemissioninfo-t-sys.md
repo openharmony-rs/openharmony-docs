@@ -6,8 +6,6 @@ export type ContinueMissionInfo = _ContinueMissionInfo
 
 迁移任务所需的参数。
 
-@typedef { _ContinueMissionInfo }
-
 **类型：** _ContinueMissionInfo
 
 **起始版本：** 10

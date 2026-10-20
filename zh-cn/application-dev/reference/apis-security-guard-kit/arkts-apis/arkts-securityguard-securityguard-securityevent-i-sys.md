@@ -6,8 +6,6 @@ interface SecurityEvent
 
 提供SecurityEvent类型，包括事件ID、版本信息和上报内容。
 
-@typedef SecurityEvent
-
 **起始版本：** 12
 
 <!--Device-securityGuard-interface SecurityEvent--><!--Device-securityGuard-interface SecurityEvent-End-->

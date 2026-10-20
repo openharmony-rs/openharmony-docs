@@ -12,7 +12,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 function closePipe(pipe: USBDevicePipe): number
 ```
 
-关闭设备连接通道。
+关闭设备连接通道。适用于使用USBDevicePipe完成数据传输和设备控制操作后释放设备连接的场景。
 
 1. 调用[usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md)获取设备列表；
 2. 调用[usbManager.requestRight](arkts-basicservices-usbmanager-requestright-f.md)获取设备请求权限；
@@ -40,7 +40,7 @@ function closePipe(pipe: USBDevicePipe): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:  <br>1.Mandatory parameters are left unspecified.  <br>2.Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 
 **示例**

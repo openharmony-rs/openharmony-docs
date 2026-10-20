@@ -64,7 +64,7 @@ schema.skip = 0;
 get indexes(): Array<string>
 ```
 
-获取索引字段定义。
+索引字段定义，只有通过此字段指定的FieldNode才会创建索引，格式为：'$.field1', '$.field2'。
 
 **类型：** Array&lt;string&gt;
 
@@ -98,7 +98,7 @@ set indexes(indexes: Array<string>)
 get mode(): number
 ```
 
-获取Schema的模式。
+Schema的模式，可以取值0或1，0表示COMPATIBLE模式，1表示STRICT模式。
 
 **类型：** number
 
@@ -132,7 +132,7 @@ set mode(mode: number)
 get root(): FieldNode
 ```
 
-获取Value中所有字段的定义。
+存放了Value中所有字段的定义。
 
 **类型：** [FieldNode](arkts-arkdata-distributedkvstore-fieldnode-c.md)
 
@@ -166,7 +166,7 @@ set root(root: FieldNode)
 get skip(): number
 ```
 
-获取跳过的字节数。
+支持在检查Value时，跳过skip指定的字节（Byte）数，取值范围为[0, 4 * 1024 * 1024 - 2]字节（Byte）。
 
 **类型：** number
 

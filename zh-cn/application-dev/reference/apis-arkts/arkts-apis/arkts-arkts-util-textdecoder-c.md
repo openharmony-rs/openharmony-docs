@@ -18,8 +18,6 @@ class TextDecoder
 import { util } from '@kit.ArkTS';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -44,8 +42,6 @@ let retStr = textDecoder.encoding;
 console.info('retStr = ' + retStr);
 // 输出结果：retStr = utf-8
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

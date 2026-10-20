@@ -4,6 +4,9 @@
 
 **起始版本：** 9
 
+**模型约束：** 
+- API版本11+：此接口可在Stage模型和FA模型下使用。
+
 <!--Device-unnamed-declare namespace common--><!--Device-unnamed-declare namespace common-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -22,7 +25,7 @@ import { common } from '@kit.AbilityKit';
 | --- | --- |
 | [AbilityResult](arkts-ability-common-abilityresult-t.md) | 定义Ability被拉起并退出后返回的结果码和数据。 |
 | [AbilityStageContext](arkts-ability-common-abilitystagecontext-t.md) | [AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)组件上下文，继承自Context。 |
-| [AbilityStartCallback](arkts-ability-common-abilitystartcallback-t.md) | 定义了拉起UIExtensionAbility的回调结果，通常作为[UIAbilityContext.startAbilityByType](arkts-ability-uiabilitycontext-c.md#startabilitybytype1) / [UIExtensionContext.startAbilityByType](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#startabilitybytype1)的入参传入。 |
+| [AbilityStartCallback](arkts-ability-common-abilitystartcallback-t.md) | 定义了拉起UIExtensionAbility的回调结果，通常作为[UIAbilityContext.startAbilityByType](arkts-ability-uiabilitycontext-c.md#startabilitybytype) / [UIExtensionContext.startAbilityByType](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#startabilitybytype)的入参传入。 |
 | [AgentAppInfo](arkts-ability-common-agentappinfo-t.md) | agent的应用程序相关信息。 |
 | [AgentCapabilities](arkts-ability-common-agentcapabilities-t.md) | AgentCard中的功能表示特定的skills、服务和功能agent可以在系统内执行或提供。 |
 | [AgentCard](arkts-ability-common-agentcard-t.md) | AgentCard在系统中显示agent的配置文件和联系信息。 |

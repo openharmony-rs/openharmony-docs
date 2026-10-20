@@ -1,4 +1,4 @@
-# PermissionInfo（系统接口）
+# PermissionInfo
 
 ```TypeScript
 interface PermissionInfo
@@ -12,11 +12,10 @@ interface PermissionInfo
 
 **系统能力：** SystemCapability.Security.Asset
 
-**系统接口：** 此接口为系统接口。
-
 ## 导入模块
 
 ```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## authStatusInfo
@@ -34,46 +33,6 @@ authStatusInfo?: AuthStatusInfo
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 <!--Device-PermissionInfo-authStatusInfo?: AuthStatusInfo--><!--Device-PermissionInfo-authStatusInfo?: AuthStatusInfo-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
-**系统接口：** 此接口为系统接口。
-
-## permission
-
-```TypeScript
-permission: string
-```
-
-权限名称。
-
-**类型：** string
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-PermissionInfo-permission: string--><!--Device-PermissionInfo-permission: string-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
-**系统接口：** 此接口为系统接口。
-
-## permissionStatus
-
-```TypeScript
-permissionStatus: abilityAccessCtrl.PermissionStatus
-```
-
-权限状态。
-
-**类型：** [abilityAccessCtrl.PermissionStatus](arkts-ability-abilityaccessctrl-permissionstatus-e.md)
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-PermissionInfo-permissionStatus: abilityAccessCtrl.PermissionStatus--><!--Device-PermissionInfo-permissionStatus: abilityAccessCtrl.PermissionStatus-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 

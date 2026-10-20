@@ -88,13 +88,13 @@ Inserts a string.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | start | number | Yes | Subscript of the position where the string will be inserted. |
-| other | string | Yes | New text content to insert.<br>**Note:** <br>The inserted string uses the style of the character at position **start-1**. If no style is set for the character at position **start-1**, the style of the character at position **start** is used. |
+| other | string | Yes | New text content to insert. <br>**Note:** <br>The inserted string uses the style of the character at position **start-1**. If no style is set for the character at position **start-1**, the style of the character at position **start** is used. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## insertStyledString
 
@@ -125,7 +125,7 @@ Inserts a new styled string at the specified position.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## removeString
 
@@ -158,7 +158,7 @@ This API equally works when the styled string contains an image or [CustomSpan](
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## removeStyle
 
@@ -194,7 +194,7 @@ This API equally works when the styled string contains an image.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## removeStyles
 
@@ -229,7 +229,7 @@ This API equally works when the styled string contains an image.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## replaceString
 
@@ -255,13 +255,13 @@ Replaces the string in the specified range of this styled string.
 | --- | --- | --- | --- |
 | start | number | Yes | Subscript of the target range. |
 | length | number | Yes | Length of the target range. |
-| other | string | Yes | New text content to replace.<br>**NOTE:** <br>The replacement string uses the style of the character at the **start** position. |
+| other | string | Yes | New text content to replace. <br>**NOTE:** <br>The replacement string uses the style of the character at the **start** position. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## replaceStyle
 
@@ -285,13 +285,13 @@ Replaces the style in the specified range of this styled string.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| spanStyle | [SpanStyle](arkts-arkui-spanstyle-i.md) | Yes | Style object.<br>**NOTE:** <br>By default, the original style is cleared and replaced with the new style. <br>When the **styledKey** of **SpanStyle** is **IMAGE** or **CUSTOM_SPAN**, the style takes effect only when the content at the start position is currently an image or **CustomSpan** with a length of 1; otherwise, it has no effect. |
+| spanStyle | [SpanStyle](arkts-arkui-spanstyle-i.md) | Yes | Style object. <br>**NOTE:** <br>By default, the original style is cleared and replaced with the new style. <br>When the **styledKey** of **SpanStyle** is **IMAGE** or **CUSTOM_SPAN**, the style takes effect only when the content at the start position is currently an image or **CustomSpan** with a length of 1; otherwise, it has no effect. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## replaceStyledString
 
@@ -323,7 +323,7 @@ Replaces the styled string in the specified range.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 
 ## setStyle
 
@@ -347,7 +347,7 @@ Sets a new style for the specified range of this styled string.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| spanStyle | [SpanStyle](arkts-arkui-spanstyle-i.md) | Yes | Style object.<br>By default, the original style is not cleared, and the new style is overlaid. <br>If the **StyledStringValue** types are the same, the new style overrides the old style. <br>When the **styledKey** of **SpanStyle** is **IMAGE** or **CUSTOM_SPAN**, the style takes effect only when the position of start is currently an image or **CustomSpan** and the length is 1; otherwise, it has no effect. |
+| spanStyle | [SpanStyle](arkts-arkui-spanstyle-i.md) | Yes | Style object. <br>By default, the original style is not cleared, and the new style is overlaid. <br>If the **StyledStringValue** types are the same, the new style overrides the old style. <br>When the **styledKey** of **SpanStyle** is **IMAGE** or **CUSTOM_SPAN**, the style takes effect only when the position of start is currently an image or **CustomSpan** and the length is 1; otherwise, it has no effect. |
 
 **Error codes:**
 

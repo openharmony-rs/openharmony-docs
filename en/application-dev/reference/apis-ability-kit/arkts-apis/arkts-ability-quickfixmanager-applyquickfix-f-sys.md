@@ -6,8 +6,6 @@
 import { quickFixManager } from '@kit.AbilityKit';
 ```
 
-<a id="applyquickfix1"></a>
-
 ## applyQuickFix
 
 ```TypeScript
@@ -65,8 +63,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="applyquickfix2"></a>
 
 ## applyQuickFix
 

@@ -6,8 +6,6 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
-<a id="removemissedincomingcallnotification1"></a>
-
 ## removeMissedIncomingCallNotification
 
 ```TypeScript
@@ -60,8 +58,6 @@ call.removeMissedIncomingCallNotification((err: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="removemissedincomingcallnotification2"></a>
 
 ## removeMissedIncomingCallNotification
 

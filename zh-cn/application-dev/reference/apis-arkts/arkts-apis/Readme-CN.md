@@ -37,7 +37,7 @@
   - [Modulo](arkts-arkts-modulo-t.md)
   - [Rounding](arkts-arkts-rounding-t.md)
   - [Value](arkts-arkts-value-t.md)
-- [@arkts.utils（Defines the utils for ArkTS）](arkts-arkts-utils.md)
+- [@arkts.utils（定义ArkTS工具）](arkts-arkts-utils.md)
   - [utils](arkts-arkts-utils-n.md)
     - [ASON](arkts-arkts-utils-ason-n.md)
       - [parse](arkts-arkts-ason-parse-f.md)

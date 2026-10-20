@@ -60,7 +60,7 @@ Sets the font color of the menu item content.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font color of the menu item content.<br>Default value: **'#E5000000'** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font color of the menu item content. <br>Default value: **'#E5000000'** |
 
 ## labelFont
 
@@ -108,7 +108,7 @@ Sets the font color of the menu item label.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font color of the menu item label.<br>Default value: **'#99000000'** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font color of the menu item label. <br>Default value: **'#99000000'** |
 
 ## onChange
 
@@ -160,7 +160,7 @@ Since API version 18, this parameter supports two-way binding through [!!](../..
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether the menu item is selected.<br>**true**: The menu item is selected. **false**: The menu item is not selected. <br>Default value: **false**. |
+| value | boolean | Yes | Whether the menu item is selected. <br>**true**: The menu item is selected. **false**: The menu item is not selected. <br>Default value: **false**. |
 
 ## selectIcon
 

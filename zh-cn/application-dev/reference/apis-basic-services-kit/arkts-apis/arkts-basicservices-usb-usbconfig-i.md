@@ -88,7 +88,7 @@ interfaces: Array<USBInterface>
 isRemoteWakeup: boolean
 ```
 
-检查当前配置是否支持远程唤醒。
+检查当前配置是否支持远程唤醒。true表示支持，false表示不支持。
 
 **类型：** boolean
 
@@ -108,7 +108,7 @@ isRemoteWakeup: boolean
 isSelfPowered: boolean
 ```
 
-检查当前配置是否支持独立电源。
+检查当前配置是否支持独立电源。true表示支持，false表示不支持。
 
 **类型：** boolean
 

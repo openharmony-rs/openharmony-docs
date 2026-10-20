@@ -6,8 +6,6 @@ namespace phone
 
 Provides methods for setting the answering mode of incoming and outgoing calls.
 
-@namespace phone
-
 **Since:** 7
 
 <!--Device-settings-namespace phone--><!--Device-settings-namespace phone-End-->

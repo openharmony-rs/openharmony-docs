@@ -11,9 +11,9 @@
 export declare function sendMouseEvent(event: MouseEvent): boolean
 ```
 
-Send mouse event.
+Sends a mouse event.<br>This API is intended for application testing purposes only. It is recommended that you call this API after application startup and layout completion. The API requires significant processing time. Avoid using it.
 
-**Since:** 11
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -27,10 +27,10 @@ Send mouse event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [MouseEvent](../arkts-components/arkts-arkui-common-comp-mouseevent-i.md) | Yes | MouseEvent to be sent. |
+| event | [MouseEvent](../arkts-components/arkts-arkui-common-comp-mouseevent-i.md) | Yes | Mouse event. For details, see MouseEvent. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean |  |
+| boolean | Returns **true** if the event is sent successfully; returns **false** otherwise. |

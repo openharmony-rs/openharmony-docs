@@ -24,7 +24,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 start(): void
 ```
 
-Starts listening.
+Starts listening for file or directory change events.
 
 **Since:** 10
 
@@ -37,7 +37,6 @@ Starts listening.
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900002 | No such file or directory |
-| 13900005 | I/O error |
 | 13900008 | Bad file descriptor |
 | 13900011 | Out of memory |
 | 13900012 | Permission denied |
@@ -66,7 +65,7 @@ watcher.stop();
 stop(): void
 ```
 
-Stops listening and removes the **Watcher** object.
+Stops listening for file or directory change events and removes the <b>Watcher</b> object.
 
 **Since:** 10
 
@@ -79,7 +78,6 @@ Stops listening and removes the **Watcher** object.
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900002 | No such file or directory |
-| 13900005 | I/O error |
 | 13900008 | Bad file descriptor |
 | 13900011 | Out of memory |
 | 13900012 | Permission denied |

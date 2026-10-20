@@ -6,7 +6,7 @@ interface Window
 
 Represents a window instance, which is the basic unit managed by the window manager.
 
-In the following API examples, you must use [getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow1), [createWindow()](arkts-arkui-window-createwindow-f.md#createwindow1), or [findWindow()](arkts-arkui-window-findwindow-f.md) to obtain a Window instance (named windowClass in this example) and then call a method in this instance.
+In the following API examples, you must use [getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow), [createWindow()](arkts-arkui-window-createwindow-f.md#createwindow), or [findWindow()](arkts-arkui-window-findwindow-f.md) to obtain a Window instance (named windowClass in this example) and then call a method in this instance.
 
 **Since:** 6
 
@@ -147,10 +147,10 @@ Window orientation refers to the direction of the screen where the window reside
 
 | Screen Angle| Screen Orientation| Window Orientation|  
 | ------- | ------- | ------- |  
-| 0 | [PORTRAIT](arkts-arkui-window-orientation-e.md) | [PORTRAIT](arkts-arkui-window-orientation-e.md) |
-| 90 | [LANDSCAPE](arkts-arkui-window-orientation-e.md) | [LANDSCAPE_INVERTED](arkts-arkui-window-orientation-e.md) |
-| 180 | [PORTRAIT_INVERTED](arkts-arkui-window-orientation-e.md) | [PORTRAIT_INVERTED](arkts-arkui-window-orientation-e.md) |
-| 270 | [LANDSCAPE_INVERTED](arkts-arkui-window-orientation-e.md) | [LANDSCAPE](arkts-arkui-window-orientation-e.md) |
+| 0 | PORTRAIT | PORTRAIT |  
+| 90 | LANDSCAPE | LANDSCAPE_INVERTED |  
+| 180 | PORTRAIT_INVERTED | PORTRAIT_INVERTED |  
+| 270 | LANDSCAPE_INVERTED | LANDSCAPE |
 
 **Since:** 23
 
@@ -257,8 +257,6 @@ try {
 }
 ```
 
-<a id="destroywindow1"></a>
-
 ## destroyWindow
 
 ```TypeScript
@@ -302,8 +300,6 @@ windowClass.destroyWindow((err) => {
   console.info('Succeeded in destroying the window.');
 });
 ```
-
-<a id="destroywindow2"></a>
 
 ## destroyWindow
 
@@ -441,7 +437,6 @@ After window dragging is enabled, the window can be resized using the mouse or t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 14 - 19 |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
@@ -620,7 +615,7 @@ Checks whether the immersive layout is enabled for this window.
 
 This API can be called only by the main window and child windows.
 
-The return value is consistent with the settings applied via [setImmersiveModeEnabledState()](#setimmersivemodeenabledstate) and [setWindowLayoutFullScreen()](#setwindowlayoutfullscreen2). If neither of these APIs has been called, the default return value is **false**.
+The return value is consistent with the settings applied via [setImmersiveModeEnabledState()](#setimmersivemodeenabledstate) and [setWindowLayoutFullScreen()](#setwindowlayoutfullscreen). If neither of these APIs has been called, the default return value is **false**.
 
 **Since:** 12
 
@@ -1215,7 +1210,7 @@ try {
 getWindowDecorHeight(): number
 ```
 
-Obtains the height of the title bar of this window. This API takes effect for the window that has a title bar and a three-button area. In the stage model, this API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+Obtains the height of the title bar of this window. This API takes effect for the window that has a title bar and a three-button area. In the stage model, this API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 **Since:** 11
 
@@ -1257,7 +1252,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 getWindowDecorVisible(): boolean
 ```
 
-Checks whether the title bar of this window is visible. In the stage model, this API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+Checks whether the title bar of this window is visible. In the stage model, this API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 **Since:** 18
 
@@ -1550,7 +1545,7 @@ Obtains the properties of the <!--Del-->three-button navigation bar and <!--DelE
 
 | Type | Description |
 | --- | --- |
-| [SystemBarProperties](arkts-arkui-window-systembarproperties-i.md) | Properties of the<!--Del-->three-button navigation bar and <!--DelEnd-->status bar. |
+| [SystemBarProperties](arkts-arkui-window-systembarproperties-i.md) | Properties of the <!--Del-->three-button navigation bar and <!--DelEnd-->status bar. |
 
 **Error codes:**
 
@@ -1630,7 +1625,7 @@ Currently, this API can be used only on the main window of an application.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
-| [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. |
+| [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 | [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Examples**
@@ -1984,7 +1979,7 @@ Obtains whether the current window can receive [drag events](../arkts-components
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the current window can receive drag events.<br>**true** if the current window can receive drag events; **false** otherwise. |
+| boolean | Whether the current window can receive drag events. <br>**true** if the current window can receive drag events; **false** otherwise. |
 
 **Error codes:**
 
@@ -2027,7 +2022,7 @@ Obtains whether the current window supports the event separation state.
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the current window supports the event separation state.<br>**true** if support; **false** otherwise. |
+| boolean | Whether the current window supports the event separation state. <br>**true** if support; **false** otherwise. |
 
 **Error codes:**
 
@@ -2070,7 +2065,7 @@ Checks whether a floating window, modal window, or system window (**WindowType**
 
 | Type | Description |
 | --- | --- |
-| boolean | Check result for whether the window is enabled to access the avoid area.<br> **true** if enabled, **false** otherwise. |
+| boolean | Check result for whether the window is enabled to access the avoid area. <br> **true** if enabled, **false** otherwise. |
 
 **Error codes:**
 
@@ -2213,8 +2208,6 @@ try {
 }
 ```
 
-<a id="iswindowsupportwidegamut1"></a>
-
 ## isWindowSupportWideGamut
 
 ```TypeScript
@@ -2255,8 +2248,6 @@ promise.then((data) => {
   console.error(`Failed to check whether the window support WideGamut. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="iswindowsupportwidegamut2"></a>
 
 ## isWindowSupportWideGamut
 
@@ -2342,8 +2333,6 @@ try {
 }
 ```
 
-<a id="loadcontent1"></a>
-
 ## loadContent
 
 ```TypeScript
@@ -2394,8 +2383,6 @@ windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   console.info('Succeeded in loading the content.');
 });
 ```
-
-<a id="loadcontent2"></a>
 
 ## loadContent
 
@@ -2451,8 +2438,6 @@ promise.then(() => {
 });
 ```
 
-<a id="loadcontent3"></a>
-
 ## loadContent
 
 ```TypeScript
@@ -2465,7 +2450,7 @@ Loads content from a page to this window. This API uses an asynchronous callback
 
 **Deprecated since:** 9
 
-**Substitutes:** [setUIContent](#setuicontent1)(path: string, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setUIContent](#setuicontent)(path: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-loadContent(path: string, callback: AsyncCallback<void>): void--><!--Device-Window-loadContent(path: string, callback: AsyncCallback<void>): void-End-->
 
@@ -2493,8 +2478,6 @@ windowClass.loadContent('pages/page2/page3', (err: BusinessError) => {
 });
 ```
 
-<a id="loadcontent4"></a>
-
 ## loadContent
 
 ```TypeScript
@@ -2507,7 +2490,7 @@ Loads content from a page to this window. This API uses a promise to return the 
 
 **Deprecated since:** 9
 
-**Substitutes:** [setUIContent](#setuicontent2)(path: string)
+**Substitutes:** [setUIContent](#setuicontent)(path: string)
 
 <!--Device-Window-loadContent(path: string): Promise<void>--><!--Device-Window-loadContent(path: string): Promise<void>-End-->
 
@@ -2537,8 +2520,6 @@ promise.then(() => {
   console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="loadcontentbyname1"></a>
 
 ## loadContentByName
 
@@ -2633,8 +2614,6 @@ export struct Index {
 }
 ```
 
-<a id="loadcontentbyname2"></a>
-
 ## loadContentByName
 
 ```TypeScript
@@ -2708,8 +2687,6 @@ export struct Index {
   }
 }
 ```
-
-<a id="loadcontentbyname3"></a>
 
 ## loadContentByName
 
@@ -2792,8 +2769,6 @@ export struct Index {
 }
 ```
 
-<a id="maximize1"></a>
-
 ## maximize
 
 ```TypeScript
@@ -2864,8 +2839,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
-<a id="maximize2"></a>
 
 ## maximize
 
@@ -2970,8 +2943,6 @@ Maximize the app window.
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause:         1. Invalid window type. Only main windows and maximizable subwindows are supported;         2. The acrossDisplay parameter only supports main windows.         3. The snapshotAnimationConfig parameter only supports main windows. |
 | [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: Invalid parameter range. |
 
-<a id="minimize1"></a>
-
 ## minimize
 
 ```TypeScript
@@ -2983,7 +2954,7 @@ The behavior of this API varies based on the caller:
 - Minimizes the main window if the caller is the main window. The main window can be restored in the dock bar.  
 For 2-in-1 devices, it can be restored by calling [restore()](#restore).  
 - Hides the child window or global floating window if the caller is a child window. The child window or floating  
-window cannot be restored in the dock bar. It can be made visible again by calling [showWindow()](#showwindow1).
+window cannot be restored in the dock bar. It can be made visible again by calling [showWindow()](#showwindow).
 
 This API can be called only by the main window, child window, or global floating window. If it is called by other windows, error code 1300002 is thrown. This API uses an asynchronous callback to return the result.
 
@@ -3024,8 +2995,6 @@ windowClass.minimize((err: BusinessError) => {
 });
 ```
 
-<a id="minimize2"></a>
-
 ## minimize
 
 ```TypeScript
@@ -3037,7 +3006,7 @@ The behavior of this API varies based on the caller:
 - Minimizes the main window if the caller is the main window. The main window can be restored in the dock bar.  
 For 2-in-1 devices, it can be restored by calling [restore()](#restore).  
 - Hides the child window or global floating window if the caller is a child window. The child window or floating  
-window cannot be restored in the dock bar. It can be made visible again by calling [showWindow()](#showwindow1).
+window cannot be restored in the dock bar. It can be made visible again by calling [showWindow()](#showwindow).
 
 This API can be called only by the main window, child window, or global floating window. If it is called by other windows, error code 1300002 is thrown. This API uses a promise to return the result.
 
@@ -3075,8 +3044,6 @@ promise.then(() => {
   console.error(`Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="movewindowto1"></a>
 
 ## moveWindowTo
 
@@ -3146,8 +3113,6 @@ try {
 }
 ```
 
-<a id="movewindowto2"></a>
-
 ## moveWindowTo
 
 ```TypeScript
@@ -3213,8 +3178,6 @@ try {
 }
 ```
 
-<a id="movewindowtoasync1"></a>
-
 ## moveWindowToAsync
 
 ```TypeScript
@@ -3278,8 +3241,6 @@ try {
 }
 ```
 
-<a id="movewindowtoasync2"></a>
-
 ## moveWindowToAsync
 
 ```TypeScript
@@ -3292,8 +3253,8 @@ This API takes effect only when the window is in floating window mode (**window.
 
 | Window Type| [Freeform Window](../../../windowmanager/window-terminology.md#freeform-window) State| Non-freeform Window State|  
 |---------|---------------|-----------------|  
-| Main window| Move relative to the screen.| API calls do not take effect or return an error.|
-| App subwindow/Modal window| Move relative to the screen.| Move relative to the main window.|
+| Main window| Move relative to the screen.| API calls do not take effect or return an error.|  
+| App subwindow/Modal window| Move relative to the screen.| Move relative to the main window.|  
 | System window/Global floating window| Move relative to the screen.| Move relative to the screen.|
 
 > **NOTE:** 
@@ -3353,8 +3314,6 @@ try {
   console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="movewindowtoglobal1"></a>
 
 ## moveWindowToGlobal
 
@@ -3420,8 +3379,6 @@ try {
   console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="movewindowtoglobal2"></a>
 
 ## moveWindowToGlobal
 
@@ -3605,8 +3562,6 @@ try {
 }
 ```
 
-<a id="off2"></a>
-
 ## off
 
 ```TypeScript
@@ -3662,7 +3617,7 @@ try {
 off(type: 'frameMetricsMeasured', callback?: Callback<FrameMetrics>): void
 ```
 
-Unsubscribes from events indicating changes in window frame metrics. This API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+Unsubscribes from events indicating changes in window frame metrics. This API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 **Since:** 22
 
@@ -4773,7 +4728,7 @@ try {
 off(type: 'windowTitleButtonRectChange', callback?: Callback<TitleButtonRect>): void
 ```
 
-Unsubscribes from the change event of the rectangle that holds the minimize, maximize, and close buttons on the title bar of the window. This API takes effect for the window that has a title bar or a three-button area. In the stage model, this API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+Unsubscribes from the change event of the rectangle that holds the minimize, maximize, and close buttons on the title bar of the window. This API takes effect for the window that has a title bar or a three-button area. In the stage model, this API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 **Since:** 11
 
@@ -5164,8 +5119,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="on2"></a>
-
 ## on
 
 ```TypeScript
@@ -5215,7 +5168,7 @@ try {
 on(type: 'frameMetricsMeasured', callback: Callback<FrameMetrics>): void
 ```
 
-Subscribes to events indicating changes in window frame metrics. This API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+Subscribes to events indicating changes in window frame metrics. This API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 The callback is triggered only when the client UI content is redrawn (for example, during page transitions, interactions with responsive components, setting background colors, or adjusting opacity).
 
@@ -6281,7 +6234,7 @@ try {
 on(type: 'windowTitleButtonRectChange', callback: Callback<TitleButtonRect>): void
 ```
 
-Subscribes to the change event of the rectangle that holds the minimize, maximize, and close buttons on the title bar of the window. This API takes effect for the window that has a title bar or a three-button area. In the stage model, this API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+Subscribes to the change event of the rectangle that holds the minimize, maximize, and close buttons on the title bar of the window. This API takes effect for the window that has a title bar or a three-button area. In the stage model, this API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 **Since:** 11
 
@@ -6543,8 +6496,6 @@ Registers a callback that is invoked when the window changes to the specified wi
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
 | [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: Invalid parameter range. |
 
-<a id="raisetoapptop2"></a>
-
 ## raiseToAppTop
 
 ```TypeScript
@@ -6553,7 +6504,7 @@ raiseToAppTop(): Promise<void>
 
 Brings a child window to the top. This action is limited to child windows of the same type under the same parent window within the current application. For child windows with a custom zLevel property, it only applies to child windows with the same zLevel value under the same parent window within the current application. This API uses a promise to return the result.
 
-Before calling this API, ensure that the child window has been created and [showWindow()](#showwindow1) has been successfully executed.
+Before calling this API, ensure that the child window has been created and [showWindow()](#showwindow) has been successfully executed.
 
 **Since:** 14
 
@@ -6605,8 +6556,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="recover1"></a>
 
 ## recover
 
@@ -6669,8 +6618,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="recover2"></a>
-
 ## recover
 
 ```TypeScript
@@ -6713,8 +6660,6 @@ Restores the main window from full-screen, maximized, or split-screen mode to a 
 **Examples**
 
 See [recover](#recover)
-
-<a id="resetaspectratio1"></a>
 
 ## resetAspectRatio
 
@@ -6780,8 +6725,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="resetaspectratio2"></a>
-
 ## resetAspectRatio
 
 ```TypeScript
@@ -6843,8 +6786,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="resize1"></a>
 
 ## resize
 
@@ -6915,8 +6856,6 @@ try {
   console.error(`Failed to change the window size. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="resize2"></a>
 
 ## resize
 
@@ -7263,8 +7202,6 @@ struct FloatWindowInfo {
 }
 ```
 
-<a id="setaspectratio1"></a>
-
 ## setAspectRatio
 
 ```TypeScript
@@ -7339,8 +7276,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="setaspectratio2"></a>
 
 ## setAspectRatio
 
@@ -7502,7 +7437,7 @@ export default class EntryAbility extends UIAbility {
 setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 ```
 
-Sets the button style of the decoration bar. The setting takes effect only for the main window and child windows. In the stage model, this API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+Sets the button style of the decoration bar. The setting takes effect only for the main window and child windows. In the stage model, this API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 **Since:** 14
 
@@ -8171,8 +8106,6 @@ try {
 }
 ```
 
-<a id="setpreferredorientation1"></a>
-
 ## setPreferredOrientation
 
 ```TypeScript
@@ -8247,8 +8180,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="setpreferredorientation2"></a>
 
 ## setPreferredOrientation
 
@@ -8395,8 +8326,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setraisebyclickenabled2"></a>
-
 ## setRaiseByClickEnabled
 
 ```TypeScript
@@ -8407,7 +8336,7 @@ Sets whether to enable a child window to raise itself by click. This API uses a 
 
 Generally, when a child window is clicked, it is brought to the forefront among sibling child windows of the same type that share the same parent window within the application. If the **enable** parameter is set to **false**, when the child window is clicked, it still stays in its existing position.
 
-Before calling this API, ensure that the child window has been created and [showWindow()](#showwindow1) has been successfully executed.
+Before calling this API, ensure that the child window has been created and [showWindow()](#showwindow) has been successfully executed.
 
 **Since:** 14
 
@@ -8544,7 +8473,7 @@ The relative position is defined by the offset between the anchor points of the 
 
 1. This API applies only to level-1 child windows that are not maximized.
 2. Once this API is called on a child window, its display position will immediately follow the main window and maintain a fixed relative position. This effect will persist until this API is called again with **false**.
-3. If this API is called on a child window, subsequent calls to [moveWindowTo()](#movewindowto) or [maximize()](#maximize1) to modify the window's position or size will not take effect.
+3. If this API is called on a child window, subsequent calls to [moveWindowTo()](#movewindowto) or [maximize()](#maximize) to modify the window's position or size will not take effect.
 
 Once this API is successfully called, the [setFollowParentWindowLayoutEnabled()](#setfollowparentwindowlayoutenabled) API will no longer take effect.
 
@@ -8612,8 +8541,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setresizebydragenabled1"></a>
-
 ## setResizeByDragEnabled
 
 ```TypeScript
@@ -8662,8 +8589,6 @@ try {
   console.error(`Failed to set the function of disabling the resize by drag window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setresizebydragenabled2"></a>
 
 ## setResizeByDragEnabled
 
@@ -8936,8 +8861,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setsubwindowmodal1"></a>
-
 ## setSubWindowModal
 
 ```TypeScript
@@ -9016,8 +8939,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setsubwindowmodal2"></a>
-
 ## setSubWindowModal
 
 ```TypeScript
@@ -9030,7 +8951,7 @@ When the child window is of the window-modal type, its parent window does not re
 
 When the child window is of the application-modal type, its parent window and the windows from other instances of the application do not respond to user interactions until the child window is closed or the child window's modal property is disabled.
 
-This API is used to set the modality type. To disable the modal property, you are advised to use [setSubWindowModal<sup>12+</sup>](#setsubwindowmodal1).
+This API is used to set the modality type. To disable the modal property, you are advised to use [setSubWindowModal<sup>12+</sup>](#setsubwindowmodal).
 
 If this API is called by a window other than the child window, an error is reported.
 
@@ -9413,7 +9334,6 @@ Sets the touchable areas for this window. By default, the entire window is touch
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required or a non-system application calls the API.<br>**Applicable version:** 26.0.0 and later |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 - 24 |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 | [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause: Invalid parameter range. |
@@ -9437,8 +9357,6 @@ try {
   console.error(`Failed to set touchable areas. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setuicontent1"></a>
 
 ## setUIContent
 
@@ -9489,8 +9407,6 @@ try {
   console.error(`Failed to load the content. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setuicontent2"></a>
 
 ## setUIContent
 
@@ -9555,7 +9471,7 @@ Sets the background color for this window.
 
 If this API is not called, the default background color of the window is **'#FFF0F0F0'** in light mode and **'#FF1A1A1A'** in dark mode.
 
-In the stage model, this API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+In the stage model, this API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 **Since:** 9
 
@@ -9602,8 +9518,6 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
   };
 });
 ```
-
-<a id="setwindowbrightness1"></a>
 
 ## setWindowBrightness
 
@@ -9689,8 +9603,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowbrightness2"></a>
-
 ## setWindowBrightness
 
 ```TypeScript
@@ -9772,8 +9684,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowcolorspace1"></a>
-
 ## setWindowColorSpace
 
 ```TypeScript
@@ -9825,8 +9735,6 @@ try {
   console.error(`Failed to set window colorspace. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setwindowcolorspace2"></a>
 
 ## setWindowColorSpace
 
@@ -9883,7 +9791,7 @@ try {
 setWindowContainerColor(activeColor: string, inactiveColor: string): void
 ```
 
-Sets the background color of the main window container for both when it has focus and when it does not. In the stage model, you need to call this API after [loadContent()](#loadcontent1) or [setUIContent()](#setuicontent1).
+Sets the background color of the main window container for both when it has focus and when it does not. In the stage model, you need to call this API after [loadContent()](#loadcontent) or [setUIContent()](#setuicontent).
 
 The background color you set here covers the entire window, including both the title bar and the content area. If you also use [setWindowBackgroundColor()](#setwindowbackgroundcolor), the content area shows the window background color, whereas the title bar shows the container background color.
 
@@ -9957,7 +9865,7 @@ export default class EntryAbility extends UIAbility {
 setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 ```
 
-Sets the background color of the main window container for both when it has focus and when it does not. In the stage model, you need to call this API after [loadContent()](#loadcontent1) or [setUIContent()](#setuicontent1).
+Sets the background color of the main window container for both when it has focus and when it does not. In the stage model, you need to call this API after [loadContent()](#loadcontent) or [setUIContent()](#setuicontent).
 
 The background color you set here covers the entire window, including both the title bar and the content area. If you also use [setWindowBackgroundColor()](#setwindowbackgroundcolor), the content area shows the window background color, whereas the title bar shows the container background color.
 
@@ -9983,7 +9891,6 @@ The background color you set here covers the entire window, including both the t
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required or a non-system application calls the API.<br>**Applicable version:** 26.0.0 and later |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 20 - 24 |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
@@ -10053,7 +9960,7 @@ try {
 setWindowDecorHeight(height: number): void
 ```
 
-Sets the height of the title bar of this window. This API takes effect for the window that has a title bar and a three-button area. In the stage model, this API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+Sets the height of the title bar of this window. This API takes effect for the window that has a title bar and a three-button area. In the stage model, this API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 For tablets, if this API is called outside of [free windows](../../../windowmanager/window-terminology.md#free-windows) mode, the change applies once the device switches to free windows mode. If this API is called in free windows mode, the change takes effect immediately.
 
@@ -10101,7 +10008,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 setWindowDecorVisible(isVisible: boolean): void
 ```
 
-Sets whether the title bar is visible in the window. This API takes effect for the window that has a title bar or a three-button area. In the stage model, this API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+Sets whether the title bar is visible in the window. This API takes effect for the window that has a title bar or a three-button area. In the stage model, this API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 When the window title bar is hidden and the main window transitions into full-screen mode, hovering the cursor over the hot zone of the top window's title bar will cause a floating title bar to appear. To prevent the floating title bar from appearing, call [setTitleAndDockHoverShown()](#settitleanddockhovershown).
 
@@ -10194,8 +10101,6 @@ try {
 }
 ```
 
-<a id="setwindowfocusable1"></a>
-
 ## setWindowFocusable
 
 ```TypeScript
@@ -10251,8 +10156,6 @@ try {
   console.error(`Failed to set the window to be focusable. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setwindowfocusable2"></a>
 
 ## setWindowFocusable
 
@@ -10313,7 +10216,7 @@ try {
 setWindowGrayScale(grayScale: number): Promise<void>
 ```
 
-Sets the grayscale effect for this window. This API uses a promise to return the result. This API can be called only after [loadContent()](#loadcontent1) or [setUIContent()](#setuicontent1) is called.
+Sets the grayscale effect for this window. This API uses a promise to return the result. This API can be called only after [loadContent()](#loadcontent) or [setUIContent()](#setuicontent) is called.
 
 **Since:** 12
 
@@ -10371,8 +10274,6 @@ windowClass?.setUIContent('pages/Index', (error: BusinessError) => {
 });
 ```
 
-<a id="setwindowkeepscreenon1"></a>
-
 ## setWindowKeepScreenOn
 
 ```TypeScript
@@ -10429,8 +10330,6 @@ try {
 }
 ```
 
-<a id="setwindowkeepscreenon2"></a>
-
 ## setWindowKeepScreenOn
 
 ```TypeScript
@@ -10483,8 +10382,6 @@ try {
   console.error(`Failed to set the screen to be always on. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setwindowlayoutfullscreen2"></a>
 
 ## setWindowLayoutFullScreen
 
@@ -10562,8 +10459,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowlayoutfullscreen1"></a>
-
 ## setWindowLayoutFullScreen
 
 ```TypeScript
@@ -10580,7 +10475,7 @@ A non-immersive layout means that the layout avoids the status bar and <!--RP15-
 
 **Deprecated since:** 12
 
-**Substitutes:** [setWindowLayoutFullScreen](#setwindowlayoutfullscreen2)(isLayoutFullScreen: boolean)
+**Substitutes:** [setWindowLayoutFullScreen](#setwindowlayoutfullscreen)(isLayoutFullScreen: boolean)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -10592,7 +10487,7 @@ A non-immersive layout means that the layout avoids the status bar and <!--RP15-
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isLayoutFullScreen | boolean | Yes | Whether the layout of the window is immersive. (In immersive layout mode, the status bar and<!--RP15-->three-button navigation bar<!--RP15End--> remain visible.) **true** if immersive, **false** otherwise. |
+| isLayoutFullScreen | boolean | Yes | Whether the layout of the window is immersive. (In immersive layout mode, the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> remain visible.) **true** if immersive, **false** otherwise. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -10640,8 +10535,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="setwindowlimits1"></a>
 
 ## setWindowLimits
 
@@ -10706,8 +10599,6 @@ try {
   console.error(`Failed to change the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setwindowlimits2"></a>
 
 ## setWindowLimits
 
@@ -10881,8 +10772,6 @@ Set the window mask using a per-pixel alpha array
 | [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported. |
 | [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause:         1. The maskWidth is not equal to the window width or the maskHeight is not equal to the window height.         2. The length of windowMask is not equal to maskWidth multiplied by maskHeight. |
 
-<a id="setwindowprivacymode1"></a>
-
 ## setWindowPrivacyMode
 
 ```TypeScript
@@ -10943,8 +10832,6 @@ try {
   console.error(`Failed to set the window to privacy mode. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setwindowprivacymode2"></a>
 
 ## setWindowPrivacyMode
 
@@ -11122,8 +11009,6 @@ try {
 }
 ```
 
-<a id="setwindowsystembarenable2"></a>
-
 ## setWindowSystemBarEnable
 
 ```TypeScript
@@ -11199,8 +11084,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowsystembarenable1"></a>
-
 ## setWindowSystemBarEnable
 
 ```TypeScript
@@ -11217,7 +11100,7 @@ The return value does not indicate that the status bar and <!--RP15-->three-butt
 
 **Deprecated since:** 12
 
-**Substitutes:** [setWindowSystemBarEnable](#setwindowsystembarenable2)(names: Array&lt;'status' | 'navigation'&gt;)
+**Substitutes:** [setWindowSystemBarEnable](#setwindowsystembarenable)(names: Array&lt;'status' | 'navigation'&gt;)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -11229,7 +11112,7 @@ The return value does not indicate that the status bar and <!--RP15-->three-butt
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| names | Array&lt;'status' &#124; 'navigation'&gt; | Yes | Whether to show the status bar and<!--RP15-->three-button navigation bar<!--RP15End--> in full-screen mode.<br>For example, to show all of them, set this parameter to **['status','navigation']**. If this parameter is set to [], they are hidden. |
+| names | Array&lt;'status' &#124; 'navigation'&gt; | Yes | Whether to show the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> in full-screen mode.<br>For example, to show all of them, set this parameter to **['status','navigation']**. If this parameter is set to [], they are hidden. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -11278,8 +11161,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="setwindowsystembarproperties2"></a>
 
 ## setWindowSystemBarProperties
 
@@ -11361,8 +11242,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setwindowsystembarproperties1"></a>
-
 ## setWindowSystemBarProperties
 
 ```TypeScript
@@ -11377,7 +11256,7 @@ This API does not take effect when it is called by a child window.
 
 **Deprecated since:** 12
 
-**Substitutes:** [setWindowSystemBarProperties](#setwindowsystembarproperties2)(systemBarProperties: SystemBarProperties)
+**Substitutes:** [setWindowSystemBarProperties](#setwindowsystembarproperties)(systemBarProperties: SystemBarProperties)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -11451,7 +11330,7 @@ export default class EntryAbility extends UIAbility {
 setWindowTitle(titleName: string): Promise<void>
 ```
 
-Sets the window title. This API uses a promise to return the result. In the stage model, this API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+Sets the window title. This API uses a promise to return the result. In the stage model, this API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 **Since:** 15
 
@@ -11572,7 +11451,7 @@ export default class EntryAbility extends UIAbility {
 setWindowTitleMoveEnabled(enabled: boolean): void
 ```
 
-Enables or disables the capability to move the window (either main window or child window) by dragging its title bar and to maximize the window with a double-click. When this capability is disabled, you can use [startMoving()](#startmoving) to move the window by dragging in the application's hot zone and use [maximize()](#maximize1) to maximize the window. In the stage model, this API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+Enables or disables the capability to move the window (either main window or child window) by dragging its title bar and to maximize the window with a double-click. When this capability is disabled, you can use [startMoving()](#startmoving) to move the window by dragging in the application's hot zone and use [maximize()](#maximize) to maximize the window. In the stage model, this API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 **Since:** 14
 
@@ -11719,8 +11598,6 @@ struct Index {
 }
 ```
 
-<a id="setwindowtouchable1"></a>
-
 ## setWindowTouchable
 
 ```TypeScript
@@ -11774,8 +11651,6 @@ try {
   console.error(`Failed to set the window to be touchable. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="setwindowtouchable2"></a>
 
 ## setWindowTouchable
 
@@ -11868,7 +11743,7 @@ Currently, this API can be used only on the main window of an application.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed;         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
-| [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. |
+| [1300004](../errorcode-window.md#1300004-unauthorized-operation) | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 | [1300016](../errorcode-window.md#1300016-parameter-verification-error) | Parameter error. Possible cause:         1. Invalid parameter range;         2. Invalid parameter length. |
 
 **Examples**
@@ -11914,8 +11789,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="showwindow1"></a>
-
 ## showWindow
 
 ```TypeScript
@@ -11927,8 +11800,8 @@ Shows this window. This API uses an asynchronous callback to return the result. 
 > **NOTE:** 
 > 
 > Before calling this API, you are advised to load the page by using
-> [loadContent](#loadcontent1) or
-> [setUIContent](#setuicontent2). If the main window has not
+> [loadContent](#loadcontent) or
+> [setUIContent](#setuicontent). If the main window has not
 > finished loading and you call this API directly, the starting window keeps showing. Similarly, if the system
 > window, application child window, modal window, or global floating window has finished loading and you call
 > this API directly, the window is in the foreground but is not visible.
@@ -12005,8 +11878,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="showwindow2"></a>
-
 ## showWindow
 
 ```TypeScript
@@ -12018,8 +11889,8 @@ Shows this window. This API uses a promise to return the result. This API takes 
 > **NOTE:** 
 > 
 > Before calling this API, you are advised to load the page by using
-> [loadContent](#loadcontent1) or
-> [setUIContent](#setuicontent2). If the main window has not
+> [loadContent](#loadcontent) or
+> [setUIContent](#setuicontent). If the main window has not
 > finished loading and you call this API directly, the starting window keeps showing. Similarly, if the system
 > window, application child window, modal window, or global floating window has finished loading and you call
 > this API directly, the window is in the foreground but is not visible.
@@ -12095,8 +11966,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="showwindow3"></a>
-
 ## showWindow
 
 ```TypeScript
@@ -12110,8 +11979,8 @@ This API can be used only for application child windows, application main window
 > **NOTE:** 
 > 
 > Before calling this API, you are advised to load the page by using
-> [loadContent](#loadcontent1) or
-> [setUIContent](#setuicontent2). If the main window has not
+> [loadContent](#loadcontent) or
+> [setUIContent](#setuicontent). If the main window has not
 > finished loading and you call this API directly, the starting window keeps showing. Similarly, if the system
 > window, application child window, or global floating window has finished loading and you call this API directly
 > , the window is in the foreground but is not visible.
@@ -12197,15 +12066,13 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="snapshot1"></a>
-
 ## snapshot
 
 ```TypeScript
 snapshot(callback: AsyncCallback<image.PixelMap>): void
 ```
 
-Captures this window. This API uses an asynchronous callback to return the result. If privacy mode is enabled for the current window (using [setWindowPrivacyMode](#setwindowprivacymode2)), taking a screenshot will result in a blank screen.
+Captures this window. This API uses an asynchronous callback to return the result. If privacy mode is enabled for the current window (using [setWindowPrivacyMode](#setwindowprivacymode)), taking a screenshot will result in a blank screen.
 
 **Since:** 9
 
@@ -12244,15 +12111,13 @@ windowClass.snapshot((err: BusinessError, pixelMap: image.PixelMap) => {
 });
 ```
 
-<a id="snapshot2"></a>
-
 ## snapshot
 
 ```TypeScript
 snapshot(): Promise<image.PixelMap>
 ```
 
-Captures this window. If privacy mode is enabled for the current window (using [setWindowPrivacyMode](#setwindowprivacymode2)), taking a screenshot will result in a blank screen.
+Captures this window. If privacy mode is enabled for the current window (using [setWindowPrivacyMode](#setwindowprivacymode)), taking a screenshot will result in a blank screen.
 
 **Since:** 9
 
@@ -12295,7 +12160,7 @@ promise.then((pixelMap: image.PixelMap) => {
 snapshotIgnorePrivacy(): Promise<image.PixelMap>
 ```
 
-Captures this window. This API can be called to obtain the screenshot of the current window even if privacy mode is enabled for the current window (using [setWindowPrivacyMode](#setwindowprivacymode2)).
+Captures this window. This API can be called to obtain the screenshot of the current window even if privacy mode is enabled for the current window (using [setWindowPrivacyMode](#setwindowprivacymode)).
 
 **Since:** 18
 
@@ -12339,9 +12204,9 @@ promise.then((pixelMap: image.PixelMap) => {
 snapshotSync(): image.PixelMap
 ```
 
-Captures this window. This API returns the result synchronously. If privacy mode is enabled for the current window (using [setWindowPrivacyMode](#setwindowprivacymode2)), taking a screenshot will result in a blank screen.
+Captures this window. This API returns the result synchronously. If privacy mode is enabled for the current window (using [setWindowPrivacyMode](#setwindowprivacymode)), taking a screenshot will result in a blank screen.
 
-In the stage model, this API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+In the stage model, this API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 **Since:** 20
 
@@ -12377,8 +12242,6 @@ try {
   console.error(`Failed to snapshot window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
-
-<a id="startmoving1"></a>
 
 ## startMoving
 
@@ -12466,8 +12329,6 @@ struct Index {
   }
 }
 ```
-
-<a id="startmoving2"></a>
 
 ## startMoving
 
@@ -12622,8 +12483,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="destroy1"></a>
-
 ## destroy
 
 ```TypeScript
@@ -12636,7 +12495,7 @@ Destroys this window. This API uses an asynchronous callback to return the resul
 
 **Deprecated since:** 9
 
-**Substitutes:** [destroyWindow](#destroywindow1)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [destroyWindow](#destroywindow)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-destroy(callback: AsyncCallback<void>): void--><!--Device-Window-destroy(callback: AsyncCallback<void>): void-End-->
 
@@ -12662,8 +12521,6 @@ windowClass.destroy((err: BusinessError) => {
   console.info('Succeeded in destroying the window.');
 });
 ```
-
-<a id="destroy2"></a>
 
 ## destroy
 
@@ -12701,8 +12558,6 @@ promise.then(() => {
   console.error(`Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="getavoidarea1"></a>
 
 ## getAvoidArea
 
@@ -12771,8 +12626,6 @@ promise.then((data) => {
 });
 ```
 
-<a id="getavoidarea2"></a>
-
 ## getAvoidArea
 
 ```TypeScript
@@ -12821,8 +12674,6 @@ Global floating window, modal window, or system window:
 
 See [getAvoidArea](#getavoidarea)
 
-<a id="getcolorspace1"></a>
-
 ## getColorSpace
 
 ```TypeScript
@@ -12859,8 +12710,6 @@ promise.then((data) => {
   console.error(`Failed to get window colorspace. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="getcolorspace2"></a>
 
 ## getColorSpace
 
@@ -12901,8 +12750,6 @@ windowClass.getColorSpace((err: BusinessError, data) => {
 });
 ```
 
-<a id="getproperties1"></a>
-
 ## getProperties
 
 ```TypeScript
@@ -12942,8 +12789,6 @@ windowClass.getProperties((err: BusinessError, data) => {
 });
 ```
 
-<a id="getproperties2"></a>
-
 ## getProperties
 
 ```TypeScript
@@ -12980,8 +12825,6 @@ promise.then((data) => {
   console.error(`Failed to obtain the window properties. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="isshowing1"></a>
 
 ## isShowing
 
@@ -13022,8 +12865,6 @@ windowClass.isShowing((err: BusinessError, data) => {
 });
 ```
 
-<a id="isshowing2"></a>
-
 ## isShowing
 
 ```TypeScript
@@ -13060,8 +12901,6 @@ promise.then((data) => {
   console.error(`Failed to check whether the window is showing. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-
-<a id="issupportwidegamut1"></a>
 
 ## isSupportWideGamut
 
@@ -13100,8 +12939,6 @@ promise.then((data) => {
 });
 ```
 
-<a id="issupportwidegamut2"></a>
-
 ## isSupportWideGamut
 
 ```TypeScript
@@ -13114,7 +12951,7 @@ Checks whether this window supports the wide-gamut color space. This API uses an
 
 **Deprecated since:** 9
 
-**Substitutes:** [isWindowSupportWideGamut](#iswindowsupportwidegamut2)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [isWindowSupportWideGamut](#iswindowsupportwidegamut)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-Window-isSupportWideGamut(callback: AsyncCallback<boolean>): void--><!--Device-Window-isSupportWideGamut(callback: AsyncCallback<boolean>): void-End-->
 
@@ -13140,8 +12977,6 @@ windowClass.isSupportWideGamut((err: BusinessError, data) => {
   console.info('Succeeded in checking whether the window support WideGamut Data: ' + JSON.stringify(data));
 });
 ```
-
-<a id="moveto1"></a>
 
 ## moveTo
 
@@ -13189,8 +13024,6 @@ promise.then(() => {
 });
 ```
 
-<a id="moveto2"></a>
-
 ## moveTo
 
 ```TypeScript
@@ -13233,8 +13066,6 @@ windowClass.moveTo(300, 300, (err: BusinessError) => {
   console.info('Succeeded in moving the window.');
 });
 ```
-
-<a id="resetsize1"></a>
 
 ## resetSize
 
@@ -13294,8 +13125,6 @@ promise.then(() => {
 });
 ```
 
-<a id="resetsize2"></a>
-
 ## resetSize
 
 ```TypeScript
@@ -13351,15 +13180,13 @@ windowClass.resetSize(500, 1000, (err: BusinessError) => {
 });
 ```
 
-<a id="setbackgroundcolor1"></a>
-
 ## setBackgroundColor
 
 ```TypeScript
 setBackgroundColor(color: string): Promise<void>
 ```
 
-Sets the background color for this window. This API uses a promise to return the result. In the stage model, this API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+Sets the background color for this window. This API uses a promise to return the result. In the stage model, this API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 **Since:** 6
 
@@ -13397,15 +13224,13 @@ promise.then(() => {
 });
 ```
 
-<a id="setbackgroundcolor2"></a>
-
 ## setBackgroundColor
 
 ```TypeScript
 setBackgroundColor(color: string, callback: AsyncCallback<void>): void
 ```
 
-Sets the background color for this window. This API uses an asynchronous callback to return the result. In the stage model, this API must be used after the call of [loadContent](#loadcontent1) or [setUIContent()](#setuicontent1) takes effect.
+Sets the background color for this window. This API uses an asynchronous callback to return the result. In the stage model, this API must be used after the call of [loadContent](#loadcontent) or [setUIContent()](#setuicontent) takes effect.
 
 **Since:** 6
 
@@ -13439,8 +13264,6 @@ windowClass.setBackgroundColor(color, (err: BusinessError) => {
   console.info('Succeeded in setting the background color.');
 });
 ```
-
-<a id="setbrightness1"></a>
 
 ## setBrightness
 
@@ -13488,8 +13311,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setbrightness2"></a>
-
 ## setBrightness
 
 ```TypeScript
@@ -13533,8 +13354,6 @@ windowClass.setBrightness(brightness, (err: BusinessError) => {
 });
 ```
 
-<a id="setcolorspace1"></a>
-
 ## setColorSpace
 
 ```TypeScript
@@ -13547,7 +13366,7 @@ Sets a color space for this window. This API uses a promise to return the result
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowColorSpace](#setwindowcolorspace1)(colorSpace:ColorSpace)
+**Substitutes:** [setWindowColorSpace](#setwindowcolorspace)(colorSpace:ColorSpace)
 
 <!--Device-Window-setColorSpace(colorSpace: ColorSpace): Promise<void>--><!--Device-Window-setColorSpace(colorSpace: ColorSpace): Promise<void>-End-->
 
@@ -13578,8 +13397,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setcolorspace2"></a>
-
 ## setColorSpace
 
 ```TypeScript
@@ -13592,7 +13409,7 @@ Sets a color space for this window. This API uses an asynchronous callback to re
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowColorSpace](#setwindowcolorspace2)(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setWindowColorSpace](#setwindowcolorspace)(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-setColorSpace(colorSpace: ColorSpace, callback: AsyncCallback<void>): void--><!--Device-Window-setColorSpace(colorSpace: ColorSpace, callback: AsyncCallback<void>): void-End-->
 
@@ -13619,8 +13436,6 @@ windowClass.setColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError) => 
   console.info('Succeeded in setting window colorspace.');
 });
 ```
-
-<a id="setdimbehind1"></a>
 
 ## setDimBehind
 
@@ -13659,8 +13474,6 @@ windowClass.setDimBehind(0.5, (err: BusinessError) => {
   console.info('Succeeded in setting the dimness.');
 });
 ```
-
-<a id="setdimbehind2"></a>
 
 ## setDimBehind
 
@@ -13703,8 +13516,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setfocusable1"></a>
-
 ## setFocusable
 
 ```TypeScript
@@ -13717,7 +13528,7 @@ Sets whether this window is focusable, that is, whether the window can gain focu
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowFocusable](#setwindowfocusable1)(isFocusable: boolean)
+**Substitutes:** [setWindowFocusable](#setwindowfocusable)(isFocusable: boolean)
 
 <!--Device-Window-setFocusable(isFocusable: boolean): Promise<void>--><!--Device-Window-setFocusable(isFocusable: boolean): Promise<void>-End-->
 
@@ -13749,8 +13560,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setfocusable2"></a>
-
 ## setFocusable
 
 ```TypeScript
@@ -13763,7 +13572,7 @@ Sets whether this window is focusable, that is, whether the window can gain focu
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowFocusable](#setwindowfocusable2)(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setWindowFocusable](#setwindowfocusable)(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-setFocusable(isFocusable: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setFocusable(isFocusable: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -13792,8 +13601,6 @@ windowClass.setFocusable(isFocusable, (err: BusinessError) => {
 });
 ```
 
-<a id="setfullscreen1"></a>
-
 ## setFullScreen
 
 ```TypeScript
@@ -13809,15 +13616,15 @@ Non-full-screen mode means that the layout avoids the status bar and <!--RP15-->
 > **NOTE:** 
 > 
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use
-> [setWindowSystemBarEnable()](#setwindowsystembarenable2)
-> and [setWindowLayoutFullScreen()](#setwindowlayoutfullscreen2)
+> [setWindowSystemBarEnable()](#setwindowsystembarenable)
+> and [setWindowLayoutFullScreen()](#setwindowlayoutfullscreen)
 > to implement the full-screen mode.
 
 **Since:** 6
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowSystemBarEnable](#setwindowsystembarenable2)(names: Array&lt;'status' | 'navigation'&gt;), [setWindowLayoutFullScreen](#setwindowlayoutfullscreen2)(isLayoutFullScreen: boolean)
+**Substitutes:** [setWindowSystemBarEnable](#setwindowsystembarenable)(names: Array&lt;'status' | 'navigation'&gt;), [setWindowLayoutFullScreen](#setwindowlayoutfullscreen)(isLayoutFullScreen: boolean)
 
 <!--Device-Window-setFullScreen(isFullScreen: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setFullScreen(isFullScreen: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -13827,7 +13634,7 @@ Non-full-screen mode means that the layout avoids the status bar and <!--RP15-->
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isFullScreen | boolean | Yes | Whether to set full-screen mode (full-screen mode affects the display of the status bar and<!--RP15-->three-button navigation bar<!--RP15End-->). **true** to set full-screen mode, **false** otherwise. |
+| isFullScreen | boolean | Yes | Whether to set full-screen mode (full-screen mode affects the display of the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->). **true** to set full-screen mode, **false** otherwise. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Examples**
@@ -13864,8 +13671,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setfullscreen2"></a>
-
 ## setFullScreen
 
 ```TypeScript
@@ -13881,15 +13686,15 @@ Non-full-screen mode means that the layout avoids the status bar and <!--RP15-->
 > **NOTE:** 
 > 
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use
-> [setWindowSystemBarEnable()](#setwindowsystembarenable2)
-> and [setWindowLayoutFullScreen()](#setwindowlayoutfullscreen2)
+> [setWindowSystemBarEnable()](#setwindowsystembarenable)
+> and [setWindowLayoutFullScreen()](#setwindowlayoutfullscreen)
 > to implement the full-screen mode.
 
 **Since:** 6
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowSystemBarEnable](#setwindowsystembarenable2)(names: Array&lt;'status' | 'navigation'&gt;), [setWindowLayoutFullScreen](#setwindowlayoutfullscreen2)(isLayoutFullScreen: boolean)
+**Substitutes:** [setWindowSystemBarEnable](#setwindowsystembarenable)(names: Array&lt;'status' | 'navigation'&gt;), [setWindowLayoutFullScreen](#setwindowlayoutfullscreen)(isLayoutFullScreen: boolean)
 
 <!--Device-Window-setFullScreen(isFullScreen: boolean): Promise<void>--><!--Device-Window-setFullScreen(isFullScreen: boolean): Promise<void>-End-->
 
@@ -13899,7 +13704,7 @@ Non-full-screen mode means that the layout avoids the status bar and <!--RP15-->
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isFullScreen | boolean | Yes | Whether to set full-screen mode (full-screen mode affects the display of the status bar and<!--RP15-->three-button navigation bar<!--RP15End-->). **true** to set full-screen mode, **false** otherwise. |
+| isFullScreen | boolean | Yes | Whether to set full-screen mode (full-screen mode affects the display of the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->). **true** to set full-screen mode, **false** otherwise. |
 
 **Return value:**
 
@@ -13939,8 +13744,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setkeepscreenon1"></a>
-
 ## setKeepScreenOn
 
 ```TypeScript
@@ -13953,7 +13756,7 @@ Sets whether to keep the screen always on. This API uses a promise to return the
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowKeepScreenOn](#setwindowkeepscreenon1)(isKeepScreenOn: boolean)
+**Substitutes:** [setWindowKeepScreenOn](#setwindowkeepscreenon)(isKeepScreenOn: boolean)
 
 <!--Device-Window-setKeepScreenOn(isKeepScreenOn: boolean): Promise<void>--><!--Device-Window-setKeepScreenOn(isKeepScreenOn: boolean): Promise<void>-End-->
 
@@ -13985,8 +13788,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setkeepscreenon2"></a>
-
 ## setKeepScreenOn
 
 ```TypeScript
@@ -13999,7 +13800,7 @@ Sets whether to keep the screen always on. This API uses an asynchronous callbac
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowKeepScreenOn](#setwindowkeepscreenon2)(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setWindowKeepScreenOn](#setwindowkeepscreenon)(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-setKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -14028,8 +13829,6 @@ windowClass.setKeepScreenOn(isKeepScreenOn, (err: BusinessError) => {
 });
 ```
 
-<a id="setlayoutfullscreen1"></a>
-
 ## setLayoutFullScreen
 
 ```TypeScript
@@ -14046,7 +13845,7 @@ A non-immersive layout means that the layout avoids the status bar and <!--RP15-
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowLayoutFullScreen](#setwindowlayoutfullscreen2)(isLayoutFullScreen: boolean)
+**Substitutes:** [setWindowLayoutFullScreen](#setwindowlayoutfullscreen)(isLayoutFullScreen: boolean)
 
 <!--Device-Window-setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -14056,7 +13855,7 @@ A non-immersive layout means that the layout avoids the status bar and <!--RP15-
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isLayoutFullScreen | boolean | Yes | Whether the layout of the window is immersive. (Immersive layout mode does not affect the display of the status bar and<!--RP15-->three-button navigation bar<!--RP15End-->.) **true** if immersive, **false** otherwise. |
+| isLayoutFullScreen | boolean | Yes | Whether the layout of the window is immersive. (Immersive layout mode does not affect the display of the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->.) **true** if immersive, **false** otherwise. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Examples**
@@ -14093,8 +13892,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setlayoutfullscreen2"></a>
-
 ## setLayoutFullScreen
 
 ```TypeScript
@@ -14111,7 +13908,7 @@ A non-immersive layout means that the layout avoids the status bar and <!--RP15-
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowLayoutFullScreen](#setwindowlayoutfullscreen2)(isLayoutFullScreen: boolean)
+**Substitutes:** [setWindowLayoutFullScreen](#setwindowlayoutfullscreen)(isLayoutFullScreen: boolean)
 
 <!--Device-Window-setLayoutFullScreen(isLayoutFullScreen: boolean): Promise<void>--><!--Device-Window-setLayoutFullScreen(isLayoutFullScreen: boolean): Promise<void>-End-->
 
@@ -14121,7 +13918,7 @@ A non-immersive layout means that the layout avoids the status bar and <!--RP15-
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isLayoutFullScreen | boolean | Yes | Whether the layout of the window is immersive. (Immersive layout mode does not affect the display of the status bar and<!--RP15-->three-button navigation bar<!--RP15End-->.) **true** if immersive, **false** otherwise. |
+| isLayoutFullScreen | boolean | Yes | Whether the layout of the window is immersive. (Immersive layout mode does not affect the display of the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->.) **true** if immersive, **false** otherwise. |
 
 **Return value:**
 
@@ -14160,8 +13957,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="setoutsidetouchable1"></a>
 
 ## setOutsideTouchable
 
@@ -14207,8 +14002,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setoutsidetouchable2"></a>
-
 ## setOutsideTouchable
 
 ```TypeScript
@@ -14250,8 +14043,6 @@ windowClass.setOutsideTouchable(true, (err: BusinessError) => {
 });
 ```
 
-<a id="setprivacymode1"></a>
-
 ## setPrivacyMode
 
 ```TypeScript
@@ -14264,7 +14055,7 @@ Sets whether this window is in privacy mode. This API uses a promise to return t
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowPrivacyMode](#setwindowprivacymode1)(isPrivacyMode: boolean)
+**Substitutes:** [setWindowPrivacyMode](#setwindowprivacymode)(isPrivacyMode: boolean)
 
 <!--Device-Window-setPrivacyMode(isPrivacyMode: boolean): Promise<void>--><!--Device-Window-setPrivacyMode(isPrivacyMode: boolean): Promise<void>-End-->
 
@@ -14296,8 +14087,6 @@ promise.then(() => {
 });
 ```
 
-<a id="setprivacymode2"></a>
-
 ## setPrivacyMode
 
 ```TypeScript
@@ -14310,7 +14099,7 @@ Sets whether this window is in privacy mode. This API uses an asynchronous callb
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowPrivacyMode](#setwindowprivacymode2)(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setWindowPrivacyMode](#setwindowprivacymode)(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-setPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -14339,8 +14128,6 @@ windowClass.setPrivacyMode(isPrivacyMode, (err: BusinessError) => {
 });
 ```
 
-<a id="setsystembarenable1"></a>
-
 ## setSystemBarEnable
 
 ```TypeScript
@@ -14357,7 +14144,7 @@ The return value does not indicate that the status bar and <!--RP15-->three-butt
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowSystemBarEnable](#setwindowsystembarenable2)(names: Array&lt;'status'|'navigation'&gt;)
+**Substitutes:** [setWindowSystemBarEnable](#setwindowsystembarenable)(names: Array&lt;'status'|'navigation'&gt;)
 
 <!--Device-Window-setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallback<void>): void--><!--Device-Window-setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallback<void>): void-End-->
 
@@ -14367,7 +14154,7 @@ The return value does not indicate that the status bar and <!--RP15-->three-butt
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| names | Array&lt;'status' &#124; 'navigation'&gt; | Yes | Whether to show the status bar and<!--RP15-->three-button navigation bar<!--RP15End--> in full-screen mode.<br>For example, to show all of them, set this parameter to **['status','navigation']**. If this parameter is set to [], they are hidden. |
+| names | Array&lt;'status' &#124; 'navigation'&gt; | Yes | Whether to show the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> in full-screen mode.<br>For example, to show all of them, set this parameter to **['status','navigation']**. If this parameter is set to [], they are hidden. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Examples**
@@ -14405,8 +14192,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setsystembarenable2"></a>
-
 ## setSystemBarEnable
 
 ```TypeScript
@@ -14423,7 +14208,7 @@ The return value does not indicate that the status bar and <!--RP15-->three-butt
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowSystemBarEnable](#setwindowsystembarenable2)(names: Array&lt;'status'|'navigation'&gt;)
+**Substitutes:** [setWindowSystemBarEnable](#setwindowsystembarenable)(names: Array&lt;'status'|'navigation'&gt;)
 
 <!--Device-Window-setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise<void>--><!--Device-Window-setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise<void>-End-->
 
@@ -14433,7 +14218,7 @@ The return value does not indicate that the status bar and <!--RP15-->three-butt
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| names | Array&lt;'status' &#124; 'navigation'&gt; | Yes | Whether to show the status bar and<!--RP15-->three-button navigation bar<!--RP15End--> in full-screen mode.<br>For example, to show all of them, set this parameter to **['status','navigation']**. If this parameter is set to [], they are hidden. |
+| names | Array&lt;'status' &#124; 'navigation'&gt; | Yes | Whether to show the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> in full-screen mode.<br>For example, to show all of them, set this parameter to **['status','navigation']**. If this parameter is set to [], they are hidden. |
 
 **Return value:**
 
@@ -14474,8 +14259,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setsystembarproperties1"></a>
-
 ## setSystemBarProperties
 
 ```TypeScript
@@ -14490,7 +14273,7 @@ This API does not take effect when it is called by a child window. The configura
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowSystemBarProperties](#setwindowsystembarproperties2)(systemBarProperties: SystemBarProperties)
+**Substitutes:** [setWindowSystemBarProperties](#setwindowsystembarproperties)(systemBarProperties: SystemBarProperties)
 
 <!--Device-Window-setSystemBarProperties(systemBarProperties: SystemBarProperties, callback: AsyncCallback<void>): void--><!--Device-Window-setSystemBarProperties(systemBarProperties: SystemBarProperties, callback: AsyncCallback<void>): void-End-->
 
@@ -14543,8 +14326,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="setsystembarproperties2"></a>
-
 ## setSystemBarProperties
 
 ```TypeScript
@@ -14559,7 +14340,7 @@ This API does not take effect when it is called by a child window.
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowSystemBarProperties](#setwindowsystembarproperties2)(systemBarProperties: SystemBarProperties)
+**Substitutes:** [setWindowSystemBarProperties](#setwindowsystembarproperties)(systemBarProperties: SystemBarProperties)
 
 <!--Device-Window-setSystemBarProperties(systemBarProperties: SystemBarProperties): Promise<void>--><!--Device-Window-setSystemBarProperties(systemBarProperties: SystemBarProperties): Promise<void>-End-->
 
@@ -14615,8 +14396,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="settouchable1"></a>
-
 ## setTouchable
 
 ```TypeScript
@@ -14629,7 +14408,7 @@ Sets whether this window is touchable. This API uses a promise to return the res
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowTouchable](#setwindowtouchable1)(isTouchable: boolean)
+**Substitutes:** [setWindowTouchable](#setwindowtouchable)(isTouchable: boolean)
 
 <!--Device-Window-setTouchable(isTouchable: boolean): Promise<void>--><!--Device-Window-setTouchable(isTouchable: boolean): Promise<void>-End-->
 
@@ -14661,8 +14440,6 @@ promise.then(() => {
 });
 ```
 
-<a id="settouchable2"></a>
-
 ## setTouchable
 
 ```TypeScript
@@ -14675,7 +14452,7 @@ Sets whether this window is touchable. This API uses an asynchronous callback to
 
 **Deprecated since:** 9
 
-**Substitutes:** [setWindowTouchable](#setwindowtouchable2)(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setWindowTouchable](#setwindowtouchable)(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-setTouchable(isTouchable: boolean, callback: AsyncCallback<void>): void--><!--Device-Window-setTouchable(isTouchable: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -14704,8 +14481,6 @@ windowClass.setTouchable(isTouchable, (err: BusinessError) => {
 });
 ```
 
-<a id="show1"></a>
-
 ## show
 
 ```TypeScript
@@ -14718,7 +14493,7 @@ Shows this window. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [showWindow](#showwindow1)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [showWindow](#showwindow)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-Window-show(callback: AsyncCallback<void>): void--><!--Device-Window-show(callback: AsyncCallback<void>): void-End-->
 
@@ -14744,8 +14519,6 @@ windowClass.show((err: BusinessError) => {
   console.info('Succeeded in showing the window.');
 });
 ```
-
-<a id="show2"></a>
 
 ## show
 

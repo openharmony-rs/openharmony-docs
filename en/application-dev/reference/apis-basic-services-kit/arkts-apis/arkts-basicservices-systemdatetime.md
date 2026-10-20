@@ -22,21 +22,21 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 | --- | --- |
 | [getAutoTimeStatus](arkts-basicservices-systemdatetime-getautotimestatus-f.md#getautotimestatus) | Obtains the switch status of the automatic time setting. This API returns the result synchronously. |
 | [getTime](arkts-basicservices-systemdatetime-gettime-f.md#gettime) | Obtains the time elapsed since the Unix epoch. This API returns the result synchronously. |
-| [getTimezone](arkts-basicservices-systemdatetime-gettimezone-f.md#gettimezone1) | Obtains the system time zone. This API uses an asynchronous callback to return the result. |
-| [getTimezone](arkts-basicservices-systemdatetime-gettimezone-f.md#gettimezone2) | Obtains the system time zone. This API uses a promise to return the result. |
+| [getTimezone](arkts-basicservices-systemdatetime-gettimezone-f.md#gettimezone) | Obtains the system time zone. This API uses an asynchronous callback to return the result. |
+| [getTimezone](arkts-basicservices-systemdatetime-gettimezone-f.md#gettimezone) | Obtains the system time zone. This API uses a promise to return the result. |
 | [getTimezoneSync](arkts-basicservices-systemdatetime-gettimezonesync-f.md#gettimezonesync) | Obtains the system time zone in synchronous mode. |
 | [getUptime](arkts-basicservices-systemdatetime-getuptime-f.md#getuptime) | Obtains the time elapsed since system startup. This API returns the result synchronously. |
-| [getCurrentTime](arkts-basicservices-systemdatetime-getcurrenttime-f.md#getcurrenttime1) | Obtains the time elapsed since the Unix epoch. This API uses an asynchronous callback to return the result. |
-| [getCurrentTime](arkts-basicservices-systemdatetime-getcurrenttime-f.md#getcurrenttime2) | Obtains the time elapsed since the Unix epoch. This API uses an asynchronous callback to return the result. |
-| [getCurrentTime](arkts-basicservices-systemdatetime-getcurrenttime-f.md#getcurrenttime3) | Obtains the time elapsed since the Unix epoch. This API uses a promise to return the result. |
-| [getDate](arkts-basicservices-systemdatetime-getdate-f.md#getdate1) | Obtains the current system date. This API uses an asynchronous callback to return the result. |
-| [getDate](arkts-basicservices-systemdatetime-getdate-f.md#getdate2) | Obtains the current system date. This API uses a promise to return the result. |
-| [getRealActiveTime](arkts-basicservices-systemdatetime-getrealactivetime-f.md#getrealactivetime1) | Obtains the time elapsed since system startup, excluding the deep sleep time. This API uses an asynchronous callback to return the result. |
-| [getRealActiveTime](arkts-basicservices-systemdatetime-getrealactivetime-f.md#getrealactivetime2) | Obtains the time elapsed since system startup, excluding the deep sleep time. This API uses an asynchronous callback to return the result. |
-| [getRealActiveTime](arkts-basicservices-systemdatetime-getrealactivetime-f.md#getrealactivetime3) | Obtains the time elapsed since system startup, excluding the deep sleep time. This API uses a promise to return the result. |
-| [getRealTime](arkts-basicservices-systemdatetime-getrealtime-f.md#getrealtime1) | Obtains the time elapsed since system startup, including the deep sleep time. This API uses an asynchronous callback to return the result. |
-| [getRealTime](arkts-basicservices-systemdatetime-getrealtime-f.md#getrealtime2) | Obtains the time elapsed since system startup, including the deep sleep time. This API uses an asynchronous callback to return the result. |
-| [getRealTime](arkts-basicservices-systemdatetime-getrealtime-f.md#getrealtime3) | Obtains the time elapsed since system startup, including the deep sleep time. This API uses a promise to return the result. |
+| [getCurrentTime](arkts-basicservices-systemdatetime-getcurrenttime-f.md#getcurrenttime) | Obtains the time elapsed since the Unix epoch. This API uses an asynchronous callback to return the result. |
+| [getCurrentTime](arkts-basicservices-systemdatetime-getcurrenttime-f.md#getcurrenttime) | Obtains the time elapsed since the Unix epoch. This API uses an asynchronous callback to return the result. |
+| [getCurrentTime](arkts-basicservices-systemdatetime-getcurrenttime-f.md#getcurrenttime) | Obtains the time elapsed since the Unix epoch. This API uses a promise to return the result. |
+| [getDate](arkts-basicservices-systemdatetime-getdate-f.md#getdate) | Obtains the current system date. This API uses an asynchronous callback to return the result. |
+| [getDate](arkts-basicservices-systemdatetime-getdate-f.md#getdate) | Obtains the current system date. This API uses a promise to return the result. |
+| [getRealActiveTime](arkts-basicservices-systemdatetime-getrealactivetime-f.md#getrealactivetime) | Obtains the time elapsed since system startup, excluding the deep sleep time. This API uses an asynchronous callback to return the result. |
+| [getRealActiveTime](arkts-basicservices-systemdatetime-getrealactivetime-f.md#getrealactivetime) | Obtains the time elapsed since system startup, excluding the deep sleep time. This API uses an asynchronous callback to return the result. |
+| [getRealActiveTime](arkts-basicservices-systemdatetime-getrealactivetime-f.md#getrealactivetime) | Obtains the time elapsed since system startup, excluding the deep sleep time. This API uses a promise to return the result. |
+| [getRealTime](arkts-basicservices-systemdatetime-getrealtime-f.md#getrealtime) | Obtains the time elapsed since system startup, including the deep sleep time. This API uses an asynchronous callback to return the result. |
+| [getRealTime](arkts-basicservices-systemdatetime-getrealtime-f.md#getrealtime) | Obtains the time elapsed since system startup, including the deep sleep time. This API uses an asynchronous callback to return the result. |
+| [getRealTime](arkts-basicservices-systemdatetime-getrealtime-f.md#getrealtime) | Obtains the time elapsed since system startup, including the deep sleep time. This API uses a promise to return the result. |
 
 <!--Del-->
 ### Functions(System API)
@@ -45,13 +45,13 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 | --- | --- |
 | [getNtpTime](arkts-basicservices-systemdatetime-getntptime-f-sys.md#getntptime) | Obtains the actual time calculated based on the last updated NTP time. This API returns the result synchronously. |
 | [setAutoTimeStatus](arkts-basicservices-systemdatetime-setautotimestatus-f-sys.md#setautotimestatus) | Sets the status of the automatic time setting. This API uses a promise to return the result. |
-| [setTime](arkts-basicservices-systemdatetime-settime-f-sys.md#settime1) | Sets the system time. This API uses an asynchronous callback to return the result. |
-| [setTime](arkts-basicservices-systemdatetime-settime-f-sys.md#settime2) | Sets the system time. This API uses a promise to return the result. |
-| [setTimezone](arkts-basicservices-systemdatetime-settimezone-f-sys.md#settimezone1) | Sets the system time zone. This API uses an asynchronous callback to return the result. |
-| [setTimezone](arkts-basicservices-systemdatetime-settimezone-f-sys.md#settimezone2) | Sets the system time zone. This API uses a promise to return the result. |
+| [setTime](arkts-basicservices-systemdatetime-settime-f-sys.md#settime) | Sets the system time. This API uses an asynchronous callback to return the result. |
+| [setTime](arkts-basicservices-systemdatetime-settime-f-sys.md#settime) | Sets the system time. This API uses a promise to return the result. |
+| [setTimezone](arkts-basicservices-systemdatetime-settimezone-f-sys.md#settimezone) | Sets the system time zone. This API uses an asynchronous callback to return the result. |
+| [setTimezone](arkts-basicservices-systemdatetime-settimezone-f-sys.md#settimezone) | Sets the system time zone. This API uses a promise to return the result. |
 | [updateNtpTime](arkts-basicservices-systemdatetime-updatentptime-f-sys.md#updatentptime) | Updates the NTP time from the NTP server This API returns the result asynchronously. In this way, the NTP time is updated from the NTP server only once within one hour. |
-| [setDate](arkts-basicservices-systemdatetime-setdate-f-sys.md#setdate1) | Sets the system date. This API uses an asynchronous callback to return the result. |
-| [setDate](arkts-basicservices-systemdatetime-setdate-f-sys.md#setdate2) | Sets the system date. This API uses a promise to return the result. |
+| [setDate](arkts-basicservices-systemdatetime-setdate-f-sys.md#setdate) | Sets the system date. This API uses an asynchronous callback to return the result. |
+| [setDate](arkts-basicservices-systemdatetime-setdate-f-sys.md#setdate) | Sets the system date. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Enums

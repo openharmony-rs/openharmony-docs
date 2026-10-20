@@ -6,8 +6,6 @@
 import { securityLabel } from '@kit.CoreFileKit';
 ```
 
-<a id="getsecuritylabel1"></a>
-
 ## getSecurityLabel
 
 ```TypeScript
@@ -59,8 +57,6 @@ securityLabel.getSecurityLabel(filePath).then((type: string) => {
 });
 ```
 
-
-<a id="getsecuritylabel2"></a>
 
 ## getSecurityLabel
 

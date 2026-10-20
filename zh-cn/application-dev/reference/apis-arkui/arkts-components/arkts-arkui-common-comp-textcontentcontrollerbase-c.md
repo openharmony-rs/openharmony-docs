@@ -171,7 +171,7 @@ getCaretOffset() : CaretOffset
 
 | 类型 | 说明 |
 | --- | --- |
-| [CaretOffset](arkts-arkui-common-comp-caretoffset-i.md) | 光标相对输入框的位置。           *<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
+| [CaretOffset](arkts-arkui-common-comp-caretoffset-i.md) | 光标相对输入框的位置。           * <br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ## getSelection
 

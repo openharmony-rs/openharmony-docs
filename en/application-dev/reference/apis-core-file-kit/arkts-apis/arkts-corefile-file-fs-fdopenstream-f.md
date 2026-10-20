@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function fdopenStream(fd: number, mode: string): Promise<Stream>
 ```
 
-Opens a stream based on an FD. This API uses a promise to return the result. To close the stream, use **close()** of [Stream](arkts-corefile-file-fs-stream-i.md).
+Opens a file stream based on the file descriptor. This API uses a promise to return the result. To close the stream, use <b>close()</b> of [Stream](arkts-corefile-file-fs-stream-i.md).
 
 **Since:** 9
 
@@ -27,7 +27,7 @@ Opens a stream based on an FD. This API uses a promise to return the result. To 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | fd | number | Yes | FD of the file. |
-| mode | string | Yes | **r**: Open a file for reading. The file must exist.<br>- **r+**: Open a file for both reading and writing. The file must exist.<br>- **w**: Open a file for writing. If the file exists, clear its content. If the file does not exist, create a file.<br>- **w+**: Open a file for both reading and writing. If the file exists, clear its content. If the file does not exist, create a file.<br>- **a**: Open a file in append mode for writing at the end of the file. If the file does not exist, create a file. If the file exists, write data to the end of the file (the original content of the file is reserved).<br>- **a+**: Open a file in append mode for reading or updating at the end of the file. If the file does not exist, create a file. If the file exists, write data to the end of the file (the original content of the file is reserved). |
+| mode | string | Yes | <b>r</b>: Open a file for reading. The file must exist. <br>           - <b>r+</b>: Open a file for both reading and writing. The file must exist. <br>           - <b>w</b>: Open a file for writing. If the file exists, clear its content. If the file does not exist,   create a file. <br>           - <b>w+</b>: Open a file for both reading and writing. If the file exists, clear its content.   If the file does not exist, create a file. <br>           - <b>a</b>: Open a file in append mode for writing at the end of the file. If the file does not exist,   create a file. If the file exists, write data to the end of the file (the original content of the file is reserved). <br>           - <b>a+</b>: Open a file in append mode for reading or updating at the end of the file. If the file does not exist,   create a file. If the file exists, write data to the end of the file (the original content of the file is reserved). |
 
 **Return value:**
 
@@ -68,15 +68,13 @@ Opens a stream based on an FD. This API uses a promise to return the result. To 
 | 13900042 | Unknown error |
 
 
-<a id="fdopenstream2"></a>
-
 ## fdopenStream
 
 ```TypeScript
 declare function fdopenStream(fd: number, mode: string, callback: AsyncCallback<Stream>): void
 ```
 
-Opens a stream based on an FD. This API uses an asynchronous callback to return the result. To close the stream, use **close()** of [Stream](arkts-corefile-file-fs-stream-i.md).
+Opens a stream based on the file descriptor. To close the stream, use <b>close()</b> of [Stream](arkts-corefile-file-fs-stream-i.md). This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -91,8 +89,8 @@ Opens a stream based on an FD. This API uses an asynchronous callback to return 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | fd | number | Yes | FD of the file. |
-| mode | string | Yes | **r**: Open a file for reading. The file must exist.<br>- **r+**: Open a file for both reading and writing. The file must exist.<br>- **w**: Open a file for writing. If the file exists, clear its content. If the file does not exist, create a file.<br>- **w+**: Open a file for both reading and writing. If the file exists, clear its content. If the file does not exist, create a file.<br>- **a**: Open a file in append mode for writing at the end of the file. If the file does not exist, create a file. If the file exists, write data to the end of the file (the original content of the file is reserved).<br>- **a+**: Open a file in append mode for reading or updating at the end of the file. If the file does not exist, create a file. If the file exists, write data to the end of the file (the original content of the file is reserved). |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Stream](arkts-corefile-file-fs-stream-i.md)&gt; | Yes | Callback used to return the result. |
+| mode | string | Yes | <b>r</b>: Open a file for reading. The file must exist. <br>           - <b>r+</b>: Open a file for both reading and writing. The file must exist. <br>           - <b>w</b>: Open a file for writing. If the file exists, clear its content. If the file does not exist,   create a file. <br>           - <b>w+</b>: Open a file for both reading and writing. If the file exists, clear its content.   If the file does not exist, create a file. <br>           - <b>a</b>: Open a file in append mode for writing at the end of the file. If the file does not exist,   create a file. If the file exists, write data to the end of the file (the original content of the file is reserved). <br>           - <b>a+</b>: Open a file in append mode for reading or updating at the end of the file. If the file does not exist,   create a file. If the file exists, write data to the end of the file (the original content of the file is reserved). |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Stream](arkts-corefile-file-fs-stream-i.md)&gt; | Yes | Callback used to return the <b>Stream</b> object. |
 
 **Error codes:**
 

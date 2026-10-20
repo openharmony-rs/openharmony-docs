@@ -4,7 +4,7 @@
 export interface InputWindowInfo
 ```
 
-Describes the window information of the input method keyboard.
+Window information of the input method soft keyboard (system API extended properties).
 
 **Since:** 10
 
@@ -24,7 +24,7 @@ import { inputMethod } from '@kit.IMEKit';
 userId?: number
 ```
 
-Indicates the ID of the user whose input window is shown.
+ID of the user that displays the input method window. <br> <br>This attribute can be used only by system applications.
 
 **Type:** number
 

@@ -55,7 +55,7 @@ Obtains information about a system font based on the font name.
 
 | Type | Description |
 | --- | --- |
-| [font.FontInfo](arkts-arkui-font-fontinfo-i.md) | Detailed information of the font.<br>If no font is found, **undefined** is returned. |
+| [font.FontInfo](arkts-arkui-font-fontinfo-i.md) | Detailed information of the font. <br>If no font is found, **undefined** is returned. |
 
 **Examples**
 

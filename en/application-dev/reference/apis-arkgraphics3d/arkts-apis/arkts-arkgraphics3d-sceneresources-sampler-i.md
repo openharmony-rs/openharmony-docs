@@ -6,8 +6,6 @@ export interface Sampler
 
 Describes the sampling modes used during texture sampling.
 
-@interface { Sampler }
-
 **Since:** 20
 
 <!--Device-unnamed-export interface Sampler--><!--Device-unnamed-export interface Sampler-End-->

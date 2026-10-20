@@ -6,8 +6,6 @@ interface DeviceBlockStatusInfo
 
 描述音频设备被堵塞状态和设备信息。
 
-@typedef DeviceBlockStatusInfo
-
 **起始版本：** 13
 
 <!--Device-audio-interface DeviceBlockStatusInfo--><!--Device-audio-interface DeviceBlockStatusInfo-End-->

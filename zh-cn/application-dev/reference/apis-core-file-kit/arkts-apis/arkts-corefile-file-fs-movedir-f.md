@@ -63,8 +63,6 @@ declare function moveDir(src: string, dest: string, mode?: number): Promise<void
 | 13900042 | Unknown error |
 
 
-<a id="movedir2"></a>
-
 ## moveDir
 
 ```TypeScript
@@ -117,8 +115,6 @@ declare function moveDir(src: string, dest: string, callback: AsyncCallback<void
 | 13900042 | Unknown error |
 
 
-<a id="movedir3"></a>
-
 ## moveDir
 
 ```TypeScript
@@ -153,8 +149,6 @@ declare function moveDir(src: string, dest: string, callback: AsyncCallback<void
 | --- | --- |
 | 13900015 | File exists |
 
-
-<a id="movedir4"></a>
 
 ## moveDir
 
@@ -202,8 +196,6 @@ declare function moveDir(src: string, dest: string, mode: number, callback: Asyn
 | 13900041 | Quota exceeded |
 | 13900042 | Unknown error |
 
-
-<a id="movedir5"></a>
 
 ## moveDir
 

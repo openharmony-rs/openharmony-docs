@@ -113,8 +113,6 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="disconnectserviceextensionability1"></a>
-
 ## disconnectServiceExtensionAbility
 
 ```TypeScript
@@ -185,8 +183,6 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="disconnectserviceextensionability2"></a>
 
 ## disconnectServiceExtensionAbility
 
@@ -265,8 +261,6 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="startability1"></a>
-
 ## startAbility
 
 ```TypeScript
@@ -335,8 +329,6 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startability2"></a>
 
 ## startAbility
 

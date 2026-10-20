@@ -4,7 +4,7 @@
 declare enum LayoutStyle
 ```
 
-Enumerates the tab layout modes when the tab bar is not scrolled in [Scrollable](arkts-arkui-tabs-comp-attribute.md#barmode3) mode.
+Enumerates the tab layout modes when the tab bar is not scrolled in [Scrollable](arkts-arkui-tabs-comp-attribute.md#barmode) mode.
 
 | Name | Value | Description |  
 | ---------- | -- | ---------------------------------------- |  

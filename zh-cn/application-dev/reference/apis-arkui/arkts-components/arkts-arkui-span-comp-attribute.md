@@ -6,8 +6,6 @@ declare class SpanAttribute extends BaseSpan<SpanAttribute>
 
 属性继承自[BaseSpan](arkts-arkui-span-comp-basespan-c.md)。
 
-@extends CommonMethod<SpanAttribute> [since 7 - 10] @extends BaseSpan<SpanAttribute> [since 11]
-
 **继承/实现关系：** SpanAttribute extends BaseSpan&lt;SpanAttribute&gt;
 
 **起始版本：** 7
@@ -40,8 +38,6 @@ decoration(value: DecorationStyleInterface)
 | --- | --- | --- | --- |
 | value | [DecorationStyleInterface](../arkts-apis/arkts-arkui-decorationstyleinterface-i.md) | 是 | 文本装饰线样式对象。<br>**说明：** <br>style参数不支持卡片能力。<br>**适用版本：** 12 |
 
-<a id="font1"></a>
-
 ## font
 
 ```TypeScript
@@ -69,8 +65,6 @@ font(value: Font)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | Font | 是 | 文本样式，包括字体大小、字体粗细、字体族和字体风格。 |
-
-<a id="font2"></a>
 
 ## font
 
@@ -219,8 +213,6 @@ fontVariations(fontVariations: Array<FontVariation>)
 | --- | --- | --- | --- |
 | fontVariations | Array&lt;[FontVariation](../arkts-apis/arkts-arkui-fontvariation-t.md)&gt; | 是 | 可变字体的属性数组，每个数组元素包含axis（属性轴名称）和value（属性值）两个字段。fontVariations属性的优先级高于[fontWeight](#fontweight)。 |
 
-<a id="fontweight1"></a>
-
 ## fontWeight
 
 ```TypeScript
@@ -248,8 +240,6 @@ fontWeight(value: number | FontWeight | ResourceStr)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | 是 | 文本的字体粗细。<br>number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“ regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。传入超出取值范围或不符合间隔要求的值时取默认值。<br>从API version 20开始，支持Resource类型。<br>**适用版本：** 20 |
-
-<a id="fontweight2"></a>
 
 ## fontWeight
 

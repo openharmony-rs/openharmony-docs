@@ -79,7 +79,7 @@ UIAbility生命周期回调，当UIAbility侧滑返回时触发，根据返回�
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | The value<code>true</code> means that the UIAbility instance will be moved to the background and will not be destroyed, and <code>false</code> means that the UIAbility instance will be destroyed. |
+| boolean | The value <code>true</code> means that the UIAbility instance will be moved to the background and will not be destroyed, and <code>false</code> means that the UIAbility instance will be destroyed. |
 
 **示例**
 
@@ -105,7 +105,7 @@ UIAbility生命周期回调，在多设备协同场景下，协同方应用在�
 > 
 > - 该生命周期回调不支持[specified启动模式](../../../application-models/uiability-launch-type.md#specified启动模式)。
 > 
-> - 通过[startAbility](arkts-ability-uiabilitycontext-c.md#startability1)等方法拉起协同方应用时，需要在Want对象中设置协同标记[Flags](arkts-ability-wantconstant-flags-e.md)为FLAG_ABILITY_ON_COLLABORATE。
+> - 通过[startAbility](arkts-ability-uiabilitycontext-c.md#startability)等方法拉起协同方应用时，需要在Want对象中设置协同标记[Flags](arkts-ability-wantconstant-flags-e.md)为FLAG_ABILITY_ON_COLLABORATE。
 > 
 > - [冷启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时，该回调在[onForeground](#onforeground)前或[onBackground](#onbackground)后调用；[热启动](../../../application-models/uiability-intra-device-interaction.md#目标uiability热启动)时，该回调在[onNewWant](#onnewwant)前调用。
 
@@ -264,7 +264,7 @@ export default class MyUIAbility extends UIAbility {
 onDestroy(): void | Promise<void>
 ```
 
-当UIAbility被销毁（例如使用[terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself1)接口停止UIAbility）时，系统触发该回调。开发者可以在该生命周期中执行资源清理、数据保存等相关操作。
+当UIAbility被销毁（例如使用[terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself)接口停止UIAbility）时，系统触发该回调。开发者可以在该生命周期中执行资源清理、数据保存等相关操作。
 
 使用同步回调或Promise异步回调。
 
@@ -532,7 +532,7 @@ export default class MyUIAbility extends UIAbility {
 onPrepareToTerminate(): boolean
 ```
 
-在UIAbility即将关闭前（例如用户通过点击应用窗口右上角的关闭按钮、或者通过Dock栏/托盘右键退出应用时），系统会触发该回调，用于在UIAbility正式关闭前执行其他操作。开发者可以在该回调中返回true阻拦此次关闭，然后在合适时机主动调用[terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself1)接口关闭。例如，询问用户是否确认关闭UIAbility，再主动销毁UIAbility。该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+在UIAbility即将关闭前（例如用户通过点击应用窗口右上角的关闭按钮、或者通过Dock栏/托盘右键退出应用时），系统会触发该回调，用于在UIAbility正式关闭前执行其他操作。开发者可以在该回调中返回true阻拦此次关闭，然后在合适时机主动调用[terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself)接口关闭。例如，询问用户是否确认关闭UIAbility，再主动销毁UIAbility。该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 > **说明：** 
 > 
@@ -556,7 +556,7 @@ onPrepareToTerminate(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Whether to terminate the UIAbility.<br>The value <code>true</code> means that the termination process is canceled. <br>The value <code>false</code> means to continue terminating the UIAbility. |
+| boolean | Whether to terminate the UIAbility. <br>The value <code>true</code> means that the termination process is canceled. <br>The value <code>false</code> means to continue terminating the UIAbility. |
 
 **示例**
 
@@ -599,7 +599,7 @@ onPrepareToTerminateAsync(): Promise<boolean>
 
 在UIAbility关闭前（例如用户通过点击应用窗口右上角的关闭按钮、或者通过Dock栏/托盘右键退出应用时），系统会触发该回调，用于在UIAbility正式关闭前执行其他操作。
 
-开发者可以在该回调中返回true阻拦此次关闭，然后在合适时机主动调用[terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself1)接口关闭。例如，询问用户是否确认关闭UIAbility，再主动销毁UIAbility。从API version 15开始，该接口仅在2in1设备中可正常执行回调，在其他设备上不执行回调。从API version 19开始，该接口在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+开发者可以在该回调中返回true阻拦此次关闭，然后在合适时机主动调用[terminateSelf](arkts-ability-uiabilitycontext-c.md#terminateself)接口关闭。例如，询问用户是否确认关闭UIAbility，再主动销毁UIAbility。从API version 15开始，该接口仅在2in1设备中可正常执行回调，在其他设备上不执行回调。从API version 19开始，该接口在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
 
 > **说明：** 
 > 
@@ -625,7 +625,7 @@ onPrepareToTerminateAsync(): Promise<boolean>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise used to return the result.<br>The value <code>true</code> means that the termination process is canceled. <br>The value <code>false</code> means to continue terminating the UIAbility. |
+| Promise&lt;boolean&gt; | Promise used to return the result. <br>The value <code>true</code> means that the termination process is canceled. <br>The value <code>false</code> means to continue terminating the UIAbility. |
 
 **示例**
 

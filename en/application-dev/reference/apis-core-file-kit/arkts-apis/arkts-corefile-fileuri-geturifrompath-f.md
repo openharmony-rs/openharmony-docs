@@ -38,7 +38,7 @@ Get the uri from the path of file in app sandbox
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalidPossible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalidPossible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 **Examples**
 

@@ -6,8 +6,6 @@ declare type DialogOptionsBorderStyle = BorderStyle | EdgeStyles
 
 Defines the allowed data types for specifying the background border style of a dialog box.
 
-@typedef { BorderStyle | EdgeStyles } DialogOptionsBorderStyle
-
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.

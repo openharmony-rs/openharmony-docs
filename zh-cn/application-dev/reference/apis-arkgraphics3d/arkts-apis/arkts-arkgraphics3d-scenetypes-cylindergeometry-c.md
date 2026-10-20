@@ -10,7 +10,7 @@ export declare class CylinderGeometry extends GeometryDefinition
 > 
 > 开发者需保证参数radius，height，segmentCount设置正确，否则无法创建圆柱体并可能引发不可预期的行为。
 
-@extends GeometryDefinition
+以radius=0.5，height=1，segmentCount=20为例，生成圆柱体的网格以及UV布局如下：<br>![](../../../reference/apis-arkgraphics3d/figures/cylinder.png
 
 **继承/实现关系：** CylinderGeometry extends [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md)
 

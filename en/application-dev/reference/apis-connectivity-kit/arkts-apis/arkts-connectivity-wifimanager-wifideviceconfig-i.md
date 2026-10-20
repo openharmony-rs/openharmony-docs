@@ -86,6 +86,22 @@ Hide SSID or not, false(default): not hide
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
+## netId
+
+```TypeScript
+netId?: number
+```
+
+Allocated networkId
+
+**Type:** number
+
+**Since:** 22
+
+<!--Device-WifiDeviceConfig-netId?: int--><!--Device-WifiDeviceConfig-netId?: int-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.STA
+
 ## preSharedKey
 
 ```TypeScript

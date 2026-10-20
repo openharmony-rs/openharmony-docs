@@ -6,8 +6,6 @@ declare interface FadingEdgeOptions
 
 fadingEdge属性边缘渐隐参数对象。
 
-@typedef FadingEdgeOptions
-
 **起始版本：** 14
 
 <!--Device-unnamed-declare interface FadingEdgeOptions--><!--Device-unnamed-declare interface FadingEdgeOptions-End-->

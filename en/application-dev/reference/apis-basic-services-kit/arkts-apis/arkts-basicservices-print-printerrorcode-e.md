@@ -12,6 +12,22 @@ Enumerates the print error codes.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
+## E_PRINT_EDM_POLICY_RESTRICTED
+
+```TypeScript
+E_PRINT_EDM_POLICY_RESTRICTED = 13100015
+```
+
+The print operation is restricted by EDM policy.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PrintErrorCode-E_PRINT_EDM_POLICY_RESTRICTED = 13100015--><!--Device-PrintErrorCode-E_PRINT_EDM_POLICY_RESTRICTED = 13100015-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
 ## E_PRINT_FILE_IO
 
 ```TypeScript

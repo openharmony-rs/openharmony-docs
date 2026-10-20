@@ -6,8 +6,6 @@ type QueryCompilationByKeywordEvent = (keyword: string) => Promise<Compilation[]
 
 The query compilation by keyword event.
 
-@typedef { function } QueryCompilationByKeywordEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

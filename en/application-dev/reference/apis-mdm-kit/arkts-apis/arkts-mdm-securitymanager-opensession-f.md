@@ -28,7 +28,7 @@ Opens a credential change session for the specified account.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| accountId | number | Yes | accountId indicates the ID of OS account.<br>Value range:[0, +∞). |
+| accountId | number | Yes | accountId indicates the ID of OS account. <br>Value range:[0, +∞). |
 
 **Return value:**
 

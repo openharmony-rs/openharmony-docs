@@ -25,8 +25,6 @@ controller: TextController = new TextController();
 let layoutManager: LayoutManager = this.controller.getLayoutManager();
 ```
 
-<a id="getcharacterpositionatcoordinate1"></a>
-
 ## getCharacterPositionAtCoordinate
 
 ```TypeScript
@@ -64,8 +62,6 @@ getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | u
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) &#124; undefined | 字符的位置信息。当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，该接口会返回undefined。 |
 
-<a id="getcharacterpositionatcoordinate2"></a>
-
 ## getCharacterPositionAtCoordinate
 
 ```TypeScript
@@ -75,7 +71,7 @@ getCharacterPositionAtCoordinate(
 
 根据指定编码类型，获取距离指定坐标最近的字符位置信息。
 
-相比[getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate1)，本接口支持通过encoding参数指定字符位置使用的编码类型（UTF-8或UTF-16）。
+相比[getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate)，本接口支持通过encoding参数指定字符位置使用的编码类型（UTF-8或UTF-16）。
 
 > **说明：** 
 > 
@@ -105,8 +101,6 @@ getCharacterPositionAtCoordinate(
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) &#124; undefined | 字符的位置信息。当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，该接口会返回undefined。 |
 
-<a id="getcharacterrangeforglyphrange1"></a>
-
 ## getCharacterRangeForGlyphRange
 
 ```TypeScript
@@ -122,7 +116,7 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange): Array<TextRange> | undefi
 
 | 文本 | 世 | 界 | H | e | l | l | o |  
 |---|---|---|---|---|---|---|---|  
-| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |  
 | 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
 
 其字形索引范围为[0, 7]，一个汉字占3个字节，所以其对应的字符索引范围为[0, 11]。如果指定的字形索引范围是[0, 11]，但字形一共只有7个，所以实际的字形索引范围是[0, 7]。
@@ -149,8 +143,6 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange): Array<TextRange> | undefi
 | --- | --- |
 | Array&lt;[TextRange](arkts-arkui-textrange-i.md)&gt; &#124; undefined | 数组中含有两个元素，第一个元素是字符范围，第二个元素是实际的字形范围。<br>当返回的范围是异常值时，范围内元素为-1。<br>当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，该接口会返回undefined。 |
 
-<a id="getcharacterrangeforglyphrange2"></a>
-
 ## getCharacterRangeForGlyphRange
 
 ```TypeScript
@@ -159,7 +151,7 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): 
 
 根据指定编码类型和文本字形范围，获取字符范围以及实际的字形范围。
 
-相比[getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange1)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
+相比[getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
 
 > **说明：** 
 > 
@@ -168,8 +160,8 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): 
 
 | 文本 | 世 | 界 | H | e | l | l | o |  
 |---|---|---|---|---|---|---|---|  
-| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
-| 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
+| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |  
+| 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |  
 | 字符索引范围（UTF-16） | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
 
 UTF-8编码时，其字形索引范围为[0, 7]，一个汉字占3个字节，对应的字符索引范围为[0, 11]。如果指定的字形索引范围超出实际字形数量（如[0, 11]），由于字形一共只有7个，返回的实际字形索引范围为[0, 7]。
@@ -236,8 +228,6 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) | 字符位置信息。当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，返回无效值。 |
 
-<a id="getglyphrangeforcharacterrange1"></a>
-
 ## getGlyphRangeForCharacterRange
 
 ```TypeScript
@@ -253,7 +243,7 @@ getGlyphRangeForCharacterRange(charRange: TextRange): Array<TextRange> | undefin
 
 | 文本 | 世 | 界 | H | e | l | l | o |  
 |---|---|---|---|---|---|---|---|  
-| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
+| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |  
 | 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
 
 其中文本“世”的字形索引范围为[0, 1]，一个汉字占3个字节，所以其对应的字符索引范围为[0, 3]。如果指定的字符索引范围是[0, 1]，但无法解析出三分之一个汉字，所以实际的字符索引范围是[0, 3]。
@@ -280,8 +270,6 @@ getGlyphRangeForCharacterRange(charRange: TextRange): Array<TextRange> | undefin
 | --- | --- |
 | Array&lt;[TextRange](arkts-arkui-textrange-i.md)&gt; &#124; undefined | 数组中含有两个元素，第一个元素是字形范围，第二个元素是实际的字符范围。<br>当返回的范围是异常值时，范围内元素为-1。<br>当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，该接口会返回undefined。 |
 
-<a id="getglyphrangeforcharacterrange2"></a>
-
 ## getGlyphRangeForCharacterRange
 
 ```TypeScript
@@ -290,7 +278,7 @@ getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): A
 
 根据指定编码类型和文本字符范围，获取字形范围以及实际的字符范围。
 
-相比[getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange1)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
+相比[getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
 
 > **说明：** 
 > 
@@ -299,8 +287,8 @@ getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): A
 
 | 文本 | 世 | 界 | H | e | l | l | o |  
 |---|---|---|---|---|---|---|---|  
-| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
-| 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |
+| 字形索引范围 | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |  
+| 字符索引范围（UTF-8） | [0, 3] | [3, 6] | [6, 7] | [7, 8] | [8, 9] | [9, 10] | [10, 11] |  
 | 字符索引范围（UTF-16） | [0, 1] | [1, 2] | [2, 3] | [3, 4] | [4, 5] | [5, 6] | [6, 7] |
 
 UTF-8编码时，一个汉字占3个字节，“世”的字形索引范围为[0, 1]，其对应的字符索引范围为[0, 3]。如果指定的字符索引范围是[0, 1]，但无法解析出三分之一个汉字，所以实际的字符索引范围是[0, 3]。

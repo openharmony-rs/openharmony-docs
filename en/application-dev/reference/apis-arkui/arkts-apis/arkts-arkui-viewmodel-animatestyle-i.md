@@ -6,8 +6,6 @@ export interface AnimateStyle
 
 AnimateStyle
 
-@interface AnimateStyle
-
 **Since:** 4
 
 <!--Device-unnamed-export interface AnimateStyle--><!--Device-unnamed-export interface AnimateStyle-End-->

@@ -38,7 +38,7 @@ A constructor used to create a **HierarchicalSymbolEffect** instance, which come
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fillStyle | [EffectFillStyle](arkts-arkui-symbolglyph-comp-effectfillstyle-e.md) | No | Animation mode. For the specific enumeration values and descriptions, see EffectFillStyle Enumeration Description.<br>Default value: EffectFillStyle.CUMULATIVE |
+| fillStyle | [EffectFillStyle](arkts-arkui-symbolglyph-comp-effectfillstyle-e.md) | No | Animation mode. For the specific enumeration values and descriptions, see EffectFillStyle Enumeration Description. <br>Default value: EffectFillStyle.CUMULATIVE |
 
 ## fillStyle
 

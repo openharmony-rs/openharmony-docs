@@ -18,8 +18,6 @@ You must first use [on('inputStart')](arkts-ime-inputmethodengine-inputmethodabi
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
-<a id="deletebackward1"></a>
-
 ## deleteBackward
 
 ```TypeScript
@@ -67,8 +65,6 @@ inputClient.deleteBackward(length, (err: BusinessError, result: boolean) => {
   }
 });
 ```
-
-<a id="deletebackward2"></a>
 
 ## deleteBackward
 
@@ -156,8 +152,6 @@ let length: number = 1;
 inputClient.deleteBackwardSync(length);
 ```
 
-<a id="deleteforward1"></a>
-
 ## deleteForward
 
 ```TypeScript
@@ -205,8 +199,6 @@ inputClient.deleteForward(length, (err: BusinessError, result: boolean) => {
   }
 });
 ```
-
-<a id="deleteforward2"></a>
 
 ## deleteForward
 
@@ -390,7 +382,7 @@ Obtains the additional options for binding an input method.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability;         2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**Applicable version:** 19 |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**Applicable version:** 19 |
 
 **Examples**
 
@@ -398,8 +390,6 @@ Obtains the additional options for binding an input method.
 let attachOptions: inputMethodEngine.AttachOptions = inputClient.getAttachOptions();
 console.info(`Succeeded in getting AttachOptions, AttachOptions is ${attachOptions}`);
 ```
-
-<a id="getbackward1"></a>
 
 ## getBackward
 
@@ -444,8 +434,6 @@ inputClient.getBackward(length, (err: BusinessError, text: string) => {
   console.info('Succeeded in getting backward, text: ' + text);
 });
 ```
-
-<a id="getbackward2"></a>
 
 ## getBackward
 
@@ -545,7 +533,8 @@ getCallingWindowInfo(): Promise<WindowInfo>
 Obtains information about the application window, in which the input box that starts an input method is located. This API uses a promise to return the result. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> This API applies only to the input method applications that use [Panel](arkts-ime-inputmethodengine-panel-i.md) as the soft keyboard window.
+> This API applies only to the input method applications that use [Panel](arkts-ime-inputmethodengine-panel-i.md) as the <br>
+> soft keyboard window.
 
 **Since:** 12
 
@@ -579,8 +568,6 @@ inputClient.getCallingWindowInfo().then((windowInfo: inputMethodEngine.WindowInf
   console.error(`Failed to getCallingWindowInfo. Code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="geteditorattribute1"></a>
 
 ## getEditorAttribute
 
@@ -622,8 +609,6 @@ inputClient.getEditorAttribute((err: BusinessError, editorAttribute: inputMethod
   console.info(`editorAttribute.enterKeyType:  ${editorAttribute.enterKeyType}`);
 });
 ```
-
-<a id="geteditorattribute3"></a>
 
 ## getEditorAttribute
 
@@ -698,8 +683,6 @@ console.info(`editorAttribute.inputPattern:  ${editorAttribute.inputPattern}`);
 console.info(`editorAttribute.enterKeyType:  ${editorAttribute.enterKeyType}`);
 ```
 
-<a id="getforward1"></a>
-
 ## getForward
 
 ```TypeScript
@@ -743,8 +726,6 @@ inputClient.getForward(length, (err: BusinessError, text: string) => {
   console.info('Succeeded in getting forward, text: ' + text);
 });
 ```
-
-<a id="getforward2"></a>
 
 ## getForward
 
@@ -835,8 +816,6 @@ let text: string = inputClient.getForwardSync(length);
 console.info(`Succeeded in getting forward, text: ${text}`);
 ```
 
-<a id="gettextindexatcursor1"></a>
-
 ## getTextIndexAtCursor
 
 ```TypeScript
@@ -877,8 +856,6 @@ inputClient.getTextIndexAtCursor((err: BusinessError, index: number) => {
   console.info('Succeeded in getTextIndexAtCursor: ' + index);
 });
 ```
-
-<a id="gettextindexatcursor2"></a>
 
 ## getTextIndexAtCursor
 
@@ -953,8 +930,6 @@ let index: number = inputClient.getTextIndexAtCursorSync();
 console.info(`Succeeded in getTextIndexAtCursorSync, index: ${index}`);
 ```
 
-<a id="inserttext1"></a>
-
 ## insertText
 
 ```TypeScript
@@ -1002,8 +977,6 @@ inputClient.insertText('test', (err: BusinessError, result: boolean) => {
   }
 });
 ```
-
-<a id="inserttext2"></a>
 
 ## insertText
 
@@ -1089,8 +1062,6 @@ Inserts text.
 inputClient.insertTextSync('test');
 ```
 
-<a id="movecursor1"></a>
-
 ## moveCursor
 
 ```TypeScript
@@ -1109,7 +1080,7 @@ Moves the cursor. This API uses an asynchronous callback to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| direction | number | Yes | Direction in which the cursor moves.<br>- **1**: upward. <br>- **2**: downward. <br>- **3**: leftward. <br>- **4**: rightward. which cannot be less than 0. |
+| direction | number | Yes | Direction in which the cursor moves. <br> - **1**: upward. <br> - **2**: downward. <br> - **3**: leftward. <br> - **4**: rightward. which cannot be less than 0. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -1133,8 +1104,6 @@ inputClient.moveCursor(inputMethodEngine.Direction.CURSOR_UP, (err: BusinessErro
 });
 ```
 
-<a id="movecursor2"></a>
-
 ## moveCursor
 
 ```TypeScript
@@ -1153,7 +1122,7 @@ Moves the cursor. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| direction | number | Yes | Direction in which the cursor moves.<br>- **1**: upward. <br>- **2**: downward. <br>- **3**: leftward. <br>- **4**: rightward. which cannot be less than 0. |
+| direction | number | Yes | Direction in which the cursor moves. <br> - **1**: upward. <br> - **2**: downward. <br> - **3**: leftward. <br> - **4**: rightward. which cannot be less than 0. |
 
 **Return value:**
 
@@ -1198,7 +1167,7 @@ Moves the cursor.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| direction | number | Yes | Direction in which the cursor moves.<br>- **1**: upward. <br>- **2**: downward. <br>- **3**: leftward. <br>- **4**: rightward. which cannot be less than 0. |
+| direction | number | Yes | Direction in which the cursor moves. <br> - **1**: upward. <br> - **2**: downward. <br> - **3**: leftward. <br> - **4**: rightward. which cannot be less than 0. |
 
 **Error codes:**
 
@@ -1273,7 +1242,7 @@ Subscribes to the event indicating that the additional options for binding an in
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability;         2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**Applicable version:** 19 |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**Applicable version:** 19 |
 
 **Examples**
 
@@ -1298,9 +1267,13 @@ recvMessage(msgHandler?: MessageHandler): void
 Registers or unregisters MessageHandler. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> The [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md) object is globally unique. After multiple registrations, only the last registered object is valid and retained, and the [onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated) callback of the penultimate registered object is triggered. <br>
+> The [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md) object is globally unique. After multiple <br>
+> registrations, only the last registered object is valid and retained, and the <br>
+> [onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated) callback of the penultimate registered <br>
+> object is triggered. <br>
 > <br>
-> If no parameter is set, unregister [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md). Its [onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated) callback will be triggered.
+> If no parameter is set, unregister [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md). Its <br>
+> [onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated) callback will be triggered.
 
 **Since:** 15
 
@@ -1312,7 +1285,7 @@ Registers or unregisters MessageHandler. <br> <br>
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| msgHandler | [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md) | No | This object receives custom communication data from the edit box application attached to the input method application through [onMessage](arkts-ime-inputmethodengine-messagehandler-i.md#onmessage2) and receives a message for terminating the subscription to this object through [onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated). <br>If no parameter is set, unregister [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md). Its [onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated) callback will be triggered. |
+| msgHandler | [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md) | No | This object receives custom communication data from the edit box application attached to the input method application through [onMessage](arkts-ime-inputmethodengine-messagehandler-i.md#onmessage) and receives a message for terminating the subscription to this object through [onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated). If no parameter is set, unregister [MessageHandler](arkts-ime-inputmethodengine-messagehandler-i.md). Its [onTerminated](arkts-ime-inputmethodengine-messagehandler-i.md#onterminated) callback will be triggered. |
 
 **Error codes:**
 
@@ -1339,8 +1312,6 @@ inputMethodEngine.getInputMethodAbility()
       inputClient.recvMessage(messageHandler);
     });
 ```
-
-<a id="selectbymovement1"></a>
 
 ## selectByMovement
 
@@ -1384,8 +1355,6 @@ inputClient.selectByMovement(movement, (err: BusinessError) => {
   console.info('Succeeded in selecting by movement.');
 });
 ```
-
-<a id="selectbymovement2"></a>
 
 ## selectByMovement
 
@@ -1467,8 +1436,6 @@ let movement: inputMethodEngine.Movement = { direction: 1 };
 inputClient.selectByMovementSync(movement);
 ```
 
-<a id="selectbyrange1"></a>
-
 ## selectByRange
 
 ```TypeScript
@@ -1511,8 +1478,6 @@ inputClient.selectByRange(range, (err: BusinessError) => {
   console.info('Succeeded in selecting by range.');
 });
 ```
-
-<a id="selectbyrange2"></a>
 
 ## selectByRange
 
@@ -1594,8 +1559,6 @@ let range: inputMethodEngine.Range = { start: 0, end: 1 };
 inputClient.selectByRangeSync(range);
 ```
 
-<a id="sendextendaction1"></a>
-
 ## sendExtendAction
 
 ```TypeScript
@@ -1605,9 +1568,15 @@ sendExtendAction(action: ExtendAction, callback: AsyncCallback<void>): void
 Sends an extended edit action. This API uses an asynchronous callback to return the result. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> The input method applications call this API to send extended edit actions to the edit box. The edit box listens for the corresponding event using [on('handleExtendAction')](arkts-ime-inputmethod-inputmethodcontroller-i.md#onhandleextendaction) for further processing. <br>
+> The input method applications call this API to send extended edit actions to the edit box. The edit box listens <br>
+> for the corresponding event using <br>
+> [on('handleExtendAction')](arkts-ime-inputmethod-inputmethodcontroller-i.md#onhandleextendaction) <br>
+> for further processing. <br>
 > <br>
-> When the edit box responds to the **PASTE** command of [ExtendAction](arkts-ime-inputmethodengine-extendaction-e.md), the edit box application needs to apply for the [ohos.permission.READ_PASTEBOARD](../../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard) permission.
+> When the edit box responds to the **PASTE** command of [ExtendAction](arkts-ime-inputmethodengine-extendaction-e.md), <br>
+> the edit box application needs to apply for the <br>
+> [ohos.permission.READ_PASTEBOARD](../../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard) <br>
+> permission.
 
 **Since:** 10
 
@@ -1644,8 +1613,6 @@ inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY, (err: Business
 });
 ```
 
-<a id="sendextendaction2"></a>
-
 ## sendExtendAction
 
 ```TypeScript
@@ -1655,9 +1622,15 @@ sendExtendAction(action: ExtendAction): Promise<void>
 Sends an extended edit action. This API uses a promise to return the result. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> The input method applications call this API to send extended edit actions to the edit box. The edit box listens for the corresponding event using [on('handleExtendAction')] [on](arkts-ime-inputmethod-inputmethodcontroller-i.md#onhandleextendaction) for further processing. <br>
+> The input method applications call this API to send extended edit actions to the edit box. The edit box listens <br>
+> for the corresponding event using <br>
+> [on('handleExtendAction')](arkts-ime-inputmethod-inputmethodcontroller-i.md#onhandleextendaction) <br>
+> for further processing. <br>
 > <br>
-> When the edit box responds to the **PASTE** command of [ExtendAction](arkts-ime-inputmethodengine-extendaction-e.md), the edit box application needs to apply for the [ohos.permission.READ_PASTEBOARD](../../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard) permission.
+> When the edit box responds to the **PASTE** command of [ExtendAction](arkts-ime-inputmethodengine-extendaction-e.md), <br>
+> the edit box application needs to apply for the <br>
+> [ohos.permission.READ_PASTEBOARD](../../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard) <br>
+> permission.
 
 **Since:** 10
 
@@ -1697,8 +1670,6 @@ inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY).then(() => {
 });
 ```
 
-<a id="sendkeyfunction1"></a>
-
 ## sendKeyFunction
 
 ```TypeScript
@@ -1717,7 +1688,7 @@ Sends the function key. This API uses an asynchronous callback to return the res
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| action | number | Yes | Action of the function key.<br>- **0**: invalid key. <br>- **1**: confirm key (Enter key). |
+| action | number | Yes | Action of the function key. <br> - **0**: invalid key. <br> - **1**: confirm key (Enter key). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true**. Otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -1747,8 +1718,6 @@ inputClient.sendKeyFunction(action, (err: BusinessError, result: boolean) => {
 });
 ```
 
-<a id="sendkeyfunction2"></a>
-
 ## sendKeyFunction
 
 ```TypeScript
@@ -1767,7 +1736,7 @@ Sends the function key. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| action | number | Yes | Action of the function key.<br>**0**: invalid key. <br>**1**: confirm key (Enter key). |
+| action | number | Yes | Action of the function key. **0**: invalid key. **1**: confirm key (Enter key). |
 
 **Return value:**
 
@@ -1808,7 +1777,8 @@ sendMessage(msgId: string, msgParam?: ArrayBuffer): Promise<void>
 Sends the custom communication to the edit box application attached to the input method application. This API uses a promise to return the result. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> This API can be called only when the edit box is attached to the input method and enter the edit mode, and the input method application is in full experience mode. <br>
+> This API can be called only when the edit box is attached to the input method and enter the edit mode, and the <br>
+> input method application is in full experience mode. <br>
 > <br>
 > The maximum length of **msgId** is 256 B, and the maximum length of **msgParam** is 128 KB.
 
@@ -1835,7 +1805,7 @@ Sends the custom communication to the edit box application attached to the input
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Incorrect parameter types. 2. Incorrect parameter length. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Incorrect parameter length. |
 | [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800009](../errorcode-inputmethod-framework.md#12800009-input-method-client-detached) | input method client detached. |
 | [12800014](../errorcode-inputmethod-framework.md#12800014-non-full-access-mode-of-the-input-method-application) | the input method is in basic mode. |
@@ -1865,9 +1835,9 @@ sendPrivateCommand(commandData: Record<string, CommandDataType>): Promise<void>
 Sends private data to the system component that needs to communicate with the input method application. This API uses a promise to return the result. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> - The private data channel allows communication between the system preset input method application and specific system components (such as a text box or a home screen application). It is usually used to implement custom input on a specific device. <br><br>
+> - The private data channel allows communication between the system preset input method application and specific <br>system components (such as a text box or a home screen application). It is usually used to implement custom <br>input on a specific device. <br><br>
 > - The total size of the private data is 32 KB, and the maximum number of private data records is 5. <br><br>
-> - Private data is sent to the text box by default. To send it to a desktop application, add a data entry `{'sys_cmd':1}` to the private data.
+> - Private data is sent to the text box by default. To send it to a desktop application, add a data entry <br>`{'sys_cmd':1}` to the private data.
 
 **Since:** 12
 
@@ -1934,7 +1904,7 @@ Sets the preview text. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | text | string | Yes | Preview text to set. |
-| range | [Range](arkts-ime-inputmethodengine-range-i.md) | Yes | Range of the preview text.<br>- If the value is { start: -1, end: -1 }, **text** replaces the entire text in the current preview area by default. <br>- If **start** is equal to **end**, **text** is inserted into the cursor position specified by **start**. <br>- If **start** is not equal to **end**, **text** replaces the text of the specified range. <br>- If the values of **start** and **end** are negative values, a parameter error is returned. <br>- If there is preview text in the text box, the value of **range** cannot exceed the range of the preview text. Otherwise, a parameter error is returned. <br>- If there is no preview text in the text box, the value of **range** cannot exceed the text range of the text box. Otherwise, a parameter error is returned. |
+| range | [Range](arkts-ime-inputmethodengine-range-i.md) | Yes | Range of the preview text. <br> - If the value is { start: -1, end: -1 }, **text** replaces the entire text in the current preview area by default. <br> - If **start** is equal to **end**, **text** is inserted into the cursor position specified by **start**. <br> - If **start** is not equal to **end**, **text** replaces the text of the specified range. <br> - If the values of **start** and **end** are negative values, a parameter error is returned. <br> - If there is preview text in the text box, the value of **range** cannot exceed the range of the preview text. Otherwise, a parameter error is returned. <br> - If there is no preview text in the text box, the value of **range** cannot exceed the text range of the text box. Otherwise, a parameter error is returned. |
 
 **Return value:**
 
@@ -1982,7 +1952,7 @@ Sets the preview text.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | text | string | Yes | Preview text to set. |
-| range | [Range](arkts-ime-inputmethodengine-range-i.md) | Yes | Range of the preview text.<br>- If the value is { start: -1, end: -1 }, **text** replaces the entire text in the current preview area by default. <br>- If **start** is equal to **end**, **text** is inserted into the cursor position specified by **start**. <br>- If **start** is not equal to **end**, **text** replaces the text of the specified range. <br>- If the values of **start** and **end** are negative values, a parameter error is returned. <br>- If there is preview text in the text box, the value of **range** cannot exceed the range of the preview text. Otherwise, a parameter error is returned. <br>- If there is no preview text in the text box, the value of **range** cannot exceed the text range of the text box. Otherwise, a parameter error is returned. |
+| range | [Range](arkts-ime-inputmethodengine-range-i.md) | Yes | Range of the preview text. <br> - If the value is { start: -1, end: -1 }, **text** replaces the entire text in the current preview area by default. <br> - If **start** is equal to **end**, **text** is inserted into the cursor position specified by **start**. <br> - If **start** is not equal to **end**, **text** replaces the text of the specified range. <br> - If the values of **start** and **end** are negative values, a parameter error is returned. <br> - If there is preview text in the text box, the value of **range** cannot exceed the range of the preview text. Otherwise, a parameter error is returned. <br> - If there is no preview text in the text box, the value of **range** cannot exceed the text range of the text box. Otherwise, a parameter error is returned. |
 
 **Error codes:**
 

@@ -10,7 +10,7 @@ Toggle的样式。
 > 
 > Toggle的样式继承对应组件样式的默认值，且不支持设置。例如，如果ToggleType为Button，则该组件样式继承ButtonType的默认值。由于Button.type从API
 > version 18开始，默认类型从胶囊型变更为圆角矩形，胶囊型按钮不支持设置
-> [borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius1)，此时使用
+> [borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius)，此时使用
 > Toggle组件设置borderRadius也不生效。
 
 **起始版本：** 8

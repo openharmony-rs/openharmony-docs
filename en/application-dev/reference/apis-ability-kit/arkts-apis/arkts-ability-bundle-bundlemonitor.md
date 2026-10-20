@@ -2,8 +2,6 @@
 
 The module provides APIs for listening for bundle installation, uninstall, and updates.
 
-@namespace bundleMonitor
-
 **Since:** 9
 
 <!--Device-unnamed-declare namespace bundleMonitor--><!--Device-unnamed-declare namespace bundleMonitor-End-->

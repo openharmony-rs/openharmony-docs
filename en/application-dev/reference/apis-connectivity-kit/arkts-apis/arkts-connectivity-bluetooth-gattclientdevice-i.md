@@ -125,8 +125,6 @@ let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('
 let ret : boolean = device.disconnect();
 ```
 
-<a id="getdevicename1"></a>
-
 ## getDeviceName
 
 ```TypeScript
@@ -165,8 +163,6 @@ let deviceName : void = gattClient.getDeviceName((err : BusinessError, data : st
 })
 ```
 
-<a id="getdevicename2"></a>
-
 ## getDeviceName
 
 ```TypeScript
@@ -202,8 +198,6 @@ gattClient.getDeviceName().then((data) => {
     console.info('device name' + JSON.stringify(data));
 })
 ```
-
-<a id="getrssivalue1"></a>
 
 ## getRssiValue
 
@@ -244,8 +238,6 @@ gattClient.getRssiValue((err : BusinessError, data : number)=> {
 })
 ```
 
-<a id="getrssivalue2"></a>
-
 ## getRssiValue
 
 ```TypeScript
@@ -281,8 +273,6 @@ gattClient.getRssiValue().then((data : number) => {
     console.info('rssi' + JSON.stringify(data));
 })
 ```
-
-<a id="getservices1"></a>
 
 ## getServices
 
@@ -330,8 +320,6 @@ let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('
 device.connect();
 device.getServices(getServices);
 ```
-
-<a id="getservices2"></a>
 
 ## getServices
 
@@ -515,8 +503,6 @@ let device : bluetooth.GattClientDevice = bluetooth.BLE.createGattClientDevice('
 device.on('BLEConnectionStateChange', ConnectStateChanged);
 ```
 
-<a id="readcharacteristicvalue1"></a>
-
 ## readCharacteristicValue
 
 ```TypeScript
@@ -576,8 +562,6 @@ characteristicValue: bufferCCC, descriptors:descriptors};
 device.readCharacteristicValue(characteristic, readCcc);
 ```
 
-<a id="readcharacteristicvalue2"></a>
-
 ## readCharacteristicValue
 
 ```TypeScript
@@ -633,8 +617,6 @@ characteristicValue: bufferCCC, descriptors:descriptors};
 device.readCharacteristicValue(characteristic);
 ```
 
-<a id="readdescriptorvalue1"></a>
-
 ## readDescriptorValue
 
 ```TypeScript
@@ -683,8 +665,6 @@ let descriptor : bluetooth.BLEDescriptor = {serviceUuid: '00001810-0000-1000-800
   descriptorUuid: '00002903-0000-1000-8000-00805F9B34FB', descriptorValue: bufferDesc};
 device.readDescriptorValue(descriptor, readDesc);
 ```
-
-<a id="readdescriptorvalue2"></a>
 
 ## readDescriptorValue
 

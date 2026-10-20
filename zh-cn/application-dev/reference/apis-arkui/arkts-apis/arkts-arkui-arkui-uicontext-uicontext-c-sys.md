@@ -74,8 +74,6 @@ struct MyStateSample {
 
 <!--DelEnd-->
 
-<a id="freezeuinode1"></a>
-
 ## freezeUINode
 
 ```TypeScript
@@ -106,8 +104,6 @@ freezeUINode(id: string, isFrozen: boolean): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-
-<a id="freezeuinode2"></a>
 
 ## freezeUINode
 

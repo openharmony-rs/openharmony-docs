@@ -16,10 +16,6 @@ Obtains the total space of the built-in storage, in bytes. This API returns the 
 
 **Since:** 15
 
-**Required permissions:** 
-- API version 15 and later: N/A
-- API versions 10 to 14: ohos.permission.STORAGE_MANAGER
-
 <!--Device-storageStatistics-function getTotalSizeSync(): long--><!--Device-storageStatistics-function getTotalSizeSync(): long-End-->
 
 **System capability:** SystemCapability.FileManagement.StorageService.SpatialStatistics
@@ -34,8 +30,6 @@ Obtains the total space of the built-in storage, in bytes. This API returns the 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.<br>**Applicable version:** 10 - 14 |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application.<br>**Applicable version:** 10 - 14 |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 

@@ -4,7 +4,7 @@
 interface TimeLapsePhotoSession extends Session, Focus, ManualFocus, AutoExposure, ManualExposure, ManualIso, WhiteBalance, Zoom, ColorEffect
 ```
 
-TimeLapsePhotoSession extends Session, Focus, ManualFocus, AutoExposure, ManualExposure, ManualIso, WhiteBalance, Zoom, ColorEffect Implements a time-lapse photo session, which sets the parameters of the time-lapse photo mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md).
+TimeLapsePhotoSession 继承 Session, Focus, ManualFocus, AutoExposure, ManualExposure, ManualIso, WhiteBalance, Zoom, ColorEffect实现延时拍照会话，用于设置延时拍照模式的参数，并保存运行相机所需的所有[CameraInput](arkts-camera-camera-camerainput-i.md) 和 [CameraOutput](arkts-camera-camera-cameraoutput-i.md)实例。继承自 [Session](arkts-camera-camera-session-i.md)。
 
 **继承/实现关系：** TimeLapsePhotoSession extends [Session](arkts-camera-camera-session-i.md), [Focus](arkts-camera-camera-focus-i.md), [ManualFocus](arkts-camera-camera-manualfocus-i.md), [AutoExposure](arkts-camera-camera-autoexposure-i.md), [ManualExposure](arkts-camera-camera-manualexposure-i.md), [ManualIso](arkts-camera-camera-manualiso-i.md), [WhiteBalance](arkts-camera-camera-whitebalance-i.md), [Zoom](arkts-camera-camera-zoom-i.md)<!--Del-->, [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md)<!--DelEnd-->
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 getSupportedTimeLapseIntervalRange(): Array<number>
 ```
 
-Obtains the supported time-lapse shooting interval range.
+获取支持的延时拍摄间隔范围。
 
 **起始版本：** 12
 
@@ -42,7 +42,7 @@ Obtains the supported time-lapse shooting interval range.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;number&gt; | Interval range, in ms. The value depends on the underlying capability. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
+| Array&lt;number&gt; | 间隔范围，单位为毫秒。具体值取决于底层能力。如果操作失败，返回 [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) 中定义的错误码。 |
 
 **错误码：**
 
@@ -78,7 +78,7 @@ function getSupportedTimeLapseIntervalRange(timeLapsePhotoSession: camera.TimeLa
 getTimeLapseInterval(): number
 ```
 
-Obtains the current time-lapse shooting interval.
+获取当前延时拍摄间隔。
 
 **起始版本：** 12
 
@@ -92,7 +92,7 @@ Obtains the current time-lapse shooting interval.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | Shooting interval, in ms. |
+| number | 拍摄间隔，单位为毫秒。 |
 
 **错误码：**
 
@@ -128,7 +128,7 @@ function getTimeLapseInterval(timeLapsePhotoSession: camera.TimeLapsePhotoSessio
 getTimeLapsePreviewType(): TimeLapsePreviewType
 ```
 
-Obtains the time-lapse preview type.
+获取延时摄影预览类型。
 
 **起始版本：** 12
 
@@ -142,7 +142,7 @@ Obtains the time-lapse preview type.
 
 | 类型 | 说明 |
 | --- | --- |
-| [TimeLapsePreviewType](arkts-camera-camera-timelapsepreviewtype-e-sys.md) | Preview type. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
+| [TimeLapsePreviewType](arkts-camera-camera-timelapsepreviewtype-e-sys.md) | 预览类型。如果操作失败，返回[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) 中定义的错误码。 |
 
 **错误码：**
 
@@ -178,7 +178,7 @@ function getTimeLapsePreviewType(timeLapsePhotoSession: camera.TimeLapsePhotoSes
 getTimeLapseRecordState(): TimeLapseRecordState
 ```
 
-Obtains the time-lapse shooting state.
+获取延时拍摄状态。
 
 **起始版本：** 12
 
@@ -192,7 +192,7 @@ Obtains the time-lapse shooting state.
 
 | 类型 | 说明 |
 | --- | --- |
-| [TimeLapseRecordState](arkts-camera-camera-timelapserecordstate-e-sys.md) | Shooting state. If the operation fails, an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) is returned. |
+| [TimeLapseRecordState](arkts-camera-camera-timelapserecordstate-e-sys.md) | 拍摄状态。如果操作失败，返回[CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) 中定义的错误码。 |
 
 **错误码：**
 
@@ -228,7 +228,7 @@ function getTimeLapseRecordState(timeLapsePhotoSession: camera.TimeLapsePhotoSes
 isTryAENeeded(): boolean
 ```
 
-Checks whether Try AE is required.
+查询是否需要执行 Try AE。
 
 **起始版本：** 12
 
@@ -242,7 +242,7 @@ Checks whether Try AE is required.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for whether Try AE is required. **true** if required, **false** otherwise. The error code type is defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md). |
+| boolean | 查询是否需要执行 Try AE 的结果。**true** 表示需要，**false** 表示不需要。错误码类型定义在 [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) 中。 |
 
 **错误码：**
 
@@ -278,7 +278,7 @@ function isTryAENeeded(timeLapsePhotoSession: camera.TimeLapsePhotoSession): boo
 off(type: 'error', callback?: ErrorCallback): void
 ```
 
-Unsubscribes from HighResolutionPhotoSession error events.
+取消订阅TimeLapsePhotoSession错误事件。
 
 **起始版本：** 12
 
@@ -292,8 +292,8 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('error')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'error' | 是 | 事件类型。值固定为 **'error'**。创建会话后即可监听此事件。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 用于返回结果的回调。此参数为可选参数。如果指定此参数将取消订阅指定回调的 **on('error')** 事件。（回调对象不能为匿名函数。） |
 
 **错误码：**
 
@@ -318,7 +318,7 @@ function unregisterSessionError(timeLapsePhotoSession: camera.TimeLapsePhotoSess
 off(type: 'focusStateChange', callback?: AsyncCallback<FocusState>): void
 ```
 
-Unsubscribes from focus state change events.
+取消订阅对焦状态变更事件。
 
 **起始版本：** 12
 
@@ -332,8 +332,8 @@ Unsubscribes from focus state change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type | 'focusStateChange' | 是 | 事件类型。值固定为 **'focusStateChange'**。创建会话后即可监听此事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 否 | 用于返回结果的回调。此参数为可选参数。如果指定此参数，将取消订阅指定回调的 **on('focusStateChange')** 事件。（回调对象不能为匿名函数。） |
 
 **错误码：**
 
@@ -358,7 +358,7 @@ function unregisterFocusStateChange(timeLapsePhotoSession: camera.TimeLapsePhoto
 off(type: 'isoInfoChange', callback?: AsyncCallback<IsoInfo>): void
 ```
 
-Unsubscribes from automatic ISO change events.
+取消订阅自动 ISO 变更事件。
 
 **起始版本：** 12
 
@@ -372,8 +372,8 @@ Unsubscribes from automatic ISO change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'isoInfoChange' | 是 | Event type. The value is fixed at **'isoInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[IsoInfo](arkts-camera-camera-isoinfo-i.md)&gt; | 否 | Callback, which is optional and is used to match **callback** in **on('isoInfoChange')**. |
+| type | 'isoInfoChange' | 是 | 事件类型。值固定为 **'isoInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[IsoInfo](arkts-camera-camera-isoinfo-i.md)&gt; | 否 | 回调，为可选参数，用于匹配 **on('isoInfoChange')** 中的 **callback**。 |
 
 **错误码：**
 
@@ -398,7 +398,7 @@ function unregisterIsoInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSess
 off(type: 'exposureInfoChange', callback?: AsyncCallback<ExposureInfo>): void
 ```
 
-Unsubscribes from exposure information change events.
+取消订阅曝光信息变更事件。
 
 **起始版本：** 12
 
@@ -412,8 +412,8 @@ Unsubscribes from exposure information change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'exposureInfoChange' | 是 | Event type. The value is fixed at **'exposureInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ExposureInfo](arkts-camera-camera-exposureinfo-i.md)&gt; | 否 | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**. |
+| type | 'exposureInfoChange' | 是 | 事件类型。值固定为 **'exposureInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ExposureInfo](arkts-camera-camera-exposureinfo-i.md)&gt; | 否 | 回调，为可选参数，用于匹配 **on('exposureInfoChange')** 中的 **callback**。 |
 
 **错误码：**
 
@@ -438,7 +438,7 @@ function unregisterExposureInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhot
 off(type: 'luminationInfoChange', callback?: AsyncCallback<LuminationInfo>): void
 ```
 
-Unsubscribes from illumination change events.
+取消订阅光照变更事件。
 
 **起始版本：** 12
 
@@ -452,8 +452,8 @@ Unsubscribes from illumination change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'luminationInfoChange' | 是 | Event type. The value is fixed at **'luminationInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LuminationInfo](arkts-camera-camera-luminationinfo-i-sys.md)&gt; | 否 | Callback, which is optional and is used to match **callback** in **on('luminationInfoChange')**. |
+| type | 'luminationInfoChange' | 是 | 事件类型。值固定为 **'luminationInfoChange'** |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LuminationInfo](arkts-camera-camera-luminationinfo-i-sys.md)&gt; | 否 | 回调，为可选参数，用于匹配 **on('luminationInfoChange')** 中的 **callback**。 |
 
 **错误码：**
 
@@ -478,7 +478,7 @@ function unregisterLuminationInfoEvent(timeLapsePhotoSession: camera.TimeLapsePh
 off(type: 'tryAEInfoChange', callback?: AsyncCallback<TryAEInfo>): void
 ```
 
-Unsubscribes from Try AE change events.
+取消订阅 Try AE 变更事件。
 
 **起始版本：** 12
 
@@ -492,8 +492,8 @@ Unsubscribes from Try AE change events.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'tryAEInfoChange' | 是 | Event type. The value is fixed at **'tryAEInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[TryAEInfo](arkts-camera-camera-tryaeinfo-i-sys.md)&gt; | 否 | Callback, which is optional and is used to match **callback** in **on('tryAEInfoChange')**. |
+| type | 'tryAEInfoChange' | 是 | 事件类型。值固定为 **'tryAEInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[TryAEInfo](arkts-camera-camera-tryaeinfo-i-sys.md)&gt; | 否 | 回调，为可选参数，用于匹配 **on('tryAEInfoChange')** 中的 **callback**。 |
 
 **错误码：**
 
@@ -518,7 +518,7 @@ function unregisterTryAEInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSe
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-Subscribes to HighResolutionPhotoSession error events. This API uses an asynchronous callback to return the result.
+订阅TimeLapsePhotoSession错误事件。此接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -532,8 +532,8 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-camera-camera-session-i.md#beginconfig), [commitConfig](arkts-camera-camera-session-i.md#commitconfig), and [addInput](arkts-camera-camera-session-i.md#addinput). |
-| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | Callback used to return an error code defined in [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md). |
+| type | 'error' | 是 | 事件类型。值固定为 **'error'**。创建会话后即可监听此事件。当调用会话相关 API 如[beginConfig](arkts-camera-camera-session-i.md#beginconfig)、[commitConfig](arkts-camera-camera-session-i.md#commitconfig) 和[addInput](arkts-camera-camera-session-i.md#addinput) 时发生错误，将触发此事件并返回错误信息。 |
+| callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 是 | 用于返回 [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md) 中定义的错误码的回调。 |
 
 **错误码：**
 
@@ -564,7 +564,7 @@ function registerSessionError(timeLapsePhotoSession: camera.TimeLapsePhotoSessio
 on(type: 'focusStateChange', callback: AsyncCallback<FocusState>): void
 ```
 
-Subscribes to focus state change events. This API uses an asynchronous callback to return the result.
+订阅对焦状态变更事件。此接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -578,8 +578,8 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'focusStateChange' | 是 | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | Callback used to return the focus state change. |
+| type | 'focusStateChange' | 是 | 事件类型。值固定为 **'focusStateChange'**。创建会话后即可监听此事件。仅在自动对焦模式下相机对焦状态变更时触发此事件。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[FocusState](arkts-camera-camera-focusstate-e.md)&gt; | 是 | 用于返回对焦状态变更的回调。 |
 
 **错误码：**
 
@@ -614,7 +614,7 @@ function registerFocusStateChange(timeLapsePhotoSession: camera.TimeLapsePhotoSe
 on(type: 'isoInfoChange', callback: AsyncCallback<IsoInfo>): void
 ```
 
-Subscribes to automatic ISO change events to obtain real-time ISO information. This API uses an asynchronous callback to return the result.
+订阅自动 ISO 变更事件以获取实时 ISO 信息。此接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -628,8 +628,8 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'isoInfoChange' | 是 | Event type. The value is fixed at **'isoInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[IsoInfo](arkts-camera-camera-isoinfo-i.md)&gt; | 是 | Callback used to return the ISO information. |
+| type | 'isoInfoChange' | 是 | 事件类型。值固定为 **'isoInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[IsoInfo](arkts-camera-camera-isoinfo-i.md)&gt; | 是 | 用于返回 ISO 信息的回调。 |
 
 **错误码：**
 
@@ -664,7 +664,7 @@ function registerIsoInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSessio
 on(type: 'exposureInfoChange', callback: AsyncCallback<ExposureInfo>): void
 ```
 
-Subscribes to exposure information change events to obtain the exposure information. This API uses an asynchronous callback to return the result.
+订阅曝光信息变更事件以获取曝光信息。此接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -678,8 +678,8 @@ Subscribes to exposure information change events to obtain the exposure informat
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'exposureInfoChange' | 是 | Event type. The value is fixed at **'exposureInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ExposureInfo](arkts-camera-camera-exposureinfo-i.md)&gt; | 是 | Callback used to return the exposure information. |
+| type | 'exposureInfoChange' | 是 | 事件类型。值固定为 **'exposureInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ExposureInfo](arkts-camera-camera-exposureinfo-i.md)&gt; | 是 | 用于返回曝光信息的回调。 |
 
 **错误码：**
 
@@ -714,7 +714,7 @@ function registerExposureInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoS
 on(type: 'luminationInfoChange', callback: AsyncCallback<LuminationInfo>): void
 ```
 
-Subscribes to illumination change events to obtain real-time illumination information. This API uses an asynchronous callback to return the result.
+订阅光照变更事件以获取实时光照信息。此接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -728,8 +728,8 @@ Subscribes to illumination change events to obtain real-time illumination inform
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'luminationInfoChange' | 是 | Event type. The value is fixed at **'luminationInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LuminationInfo](arkts-camera-camera-luminationinfo-i-sys.md)&gt; | 是 | Callback used to return the illumination information. |
+| type | 'luminationInfoChange' | 是 | 事件类型。值固定为 **'luminationInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[LuminationInfo](arkts-camera-camera-luminationinfo-i-sys.md)&gt; | 是 | 用于返回光照信息的回调。 |
 
 **错误码：**
 
@@ -764,7 +764,7 @@ function registerLuminationInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhot
 on(type: 'tryAEInfoChange', callback: AsyncCallback<TryAEInfo>): void
 ```
 
-Subscribes to Try AE change events to obtain real-time Try AE parameters. This API uses an asynchronous callback to return the result.
+订阅 Try AE 变更事件以获取实时 Try AE 参数。此接口使用异步回调返回结果。
 
 **起始版本：** 12
 
@@ -778,8 +778,8 @@ Subscribes to Try AE change events to obtain real-time Try AE parameters. This A
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'tryAEInfoChange' | 是 | Event type. The value is fixed at **'tryAEInfoChange'**. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[TryAEInfo](arkts-camera-camera-tryaeinfo-i-sys.md)&gt; | 是 | Callback used to return the Try AE parameters. |
+| type | 'tryAEInfoChange' | 是 | 事件类型。值固定为 **'tryAEInfoChange'**。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[TryAEInfo](arkts-camera-camera-tryaeinfo-i-sys.md)&gt; | 是 | 用于返回 Try AE 参数的回调。 |
 
 **错误码：**
 
@@ -814,7 +814,7 @@ function registerTryAEInfoEvent(timeLapsePhotoSession: camera.TimeLapsePhotoSess
 setTimeLapseInterval(interval: number): void
 ```
 
-Sets a time-lapse shooting interval.
+设置延时拍摄间隔。
 
 **起始版本：** 12
 
@@ -828,7 +828,7 @@ Sets a time-lapse shooting interval.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| interval | number | 是 | Shooting interval, in units of ms, the supported range can be obtained by calling [getSupportedTimeLapseIntervalRange](#getsupportedtimelapseintervalrange) |
+| interval | number | 是 | 拍摄间隔，单位为毫秒，支持的范围可通过调用[getSupportedTimeLapseIntervalRange](#getsupportedtimelapseintervalrange) 获取。 |
 
 **错误码：**
 
@@ -864,7 +864,7 @@ function setTimeLapseInterval(timeLapsePhotoSession: camera.TimeLapsePhotoSessio
 setTimeLapsePreviewType(type: TimeLapsePreviewType): void
 ```
 
-Sets the time-lapse preview type.
+设置延时摄影预览类型。
 
 **起始版本：** 12
 
@@ -878,7 +878,7 @@ Sets the time-lapse preview type.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | [TimeLapsePreviewType](arkts-camera-camera-timelapsepreviewtype-e-sys.md) | 是 | Preview type. |
+| type | [TimeLapsePreviewType](arkts-camera-camera-timelapsepreviewtype-e-sys.md) | 是 | 预览类型。 |
 
 **错误码：**
 
@@ -913,7 +913,7 @@ function setTimeLapsePreviewType(timeLapsePhotoSession: camera.TimeLapsePhotoSes
 setTimeLapseRecordState(state: TimeLapseRecordState): void
 ```
 
-Sets the time-lapse shooting state.
+设置延时拍摄状态。
 
 **起始版本：** 12
 
@@ -927,7 +927,7 @@ Sets the time-lapse shooting state.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| state | [TimeLapseRecordState](arkts-camera-camera-timelapserecordstate-e-sys.md) | 是 | Shooting state. |
+| state | [TimeLapseRecordState](arkts-camera-camera-timelapserecordstate-e-sys.md) | 是 | 拍摄状态。 |
 
 **错误码：**
 
@@ -962,7 +962,7 @@ function setTimeLapseRecordState(timeLapsePhotoSession: camera.TimeLapsePhotoSes
 startTryAE(): void
 ```
 
-Starts to execute Try AE.
+开始执行 Try AE。
 
 **起始版本：** 12
 
@@ -1005,7 +1005,7 @@ function startTryAE(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
 stopTryAE(): void
 ```
 
-Stops the execution of Try AE.
+停止执行 Try AE。
 
 **起始版本：** 12
 

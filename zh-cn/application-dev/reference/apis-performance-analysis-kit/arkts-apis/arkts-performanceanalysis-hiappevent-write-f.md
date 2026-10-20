@@ -6,8 +6,6 @@
 import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="write1"></a>
-
 ## write
 
 ```TypeScript
@@ -40,13 +38,13 @@ function write(info: AppEventInfo): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [11100001](../errorcode-hiappevent.md#11100001-打点功能被关闭) | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
-| [11101001](../errorcode-hiappevent.md#11101001-非法的事件领域名称) | Invalid event domain. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
-| [11101002](../errorcode-hiappevent.md#11101002-非法的事件名称) | Invalid event name. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
-| [11101003](../errorcode-hiappevent.md#11101003-非法的事件参数数量) | Invalid number of event parameters. Possibly caused by the number of parameters<br>is over 32. |
+| [11101001](../errorcode-hiappevent.md#11101001-非法的事件领域名称) | Invalid event domain. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
+| [11101002](../errorcode-hiappevent.md#11101002-非法的事件名称) | Invalid event name. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
+| [11101003](../errorcode-hiappevent.md#11101003-非法的事件参数数量) | Invalid number of event parameters. Possibly caused by the number of parameters <br>is over 32. |
 | [11101004](../errorcode-hiappevent.md#11101004-非法的事件参数字符串长度) | Invalid string length of the event parameter. |
-| [11101005](../errorcode-hiappevent.md#11101005-非法的事件参数名称) | Invalid event parameter name. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
+| [11101005](../errorcode-hiappevent.md#11101005-非法的事件参数名称) | Invalid event parameter name. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
 | [11101006](../errorcode-hiappevent.md#11101006-非法的事件参数数组长度) | Invalid array length of the event parameter. |
 
 **示例**
@@ -73,8 +71,6 @@ hiAppEvent.write({
 });
 ```
 
-
-<a id="write2"></a>
 
 ## write
 
@@ -103,13 +99,13 @@ function write(info: AppEventInfo, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [11100001](../errorcode-hiappevent.md#11100001-打点功能被关闭) | Function disabled. Possibly caused by the param disable in ConfigOption is true. |
-| [11101001](../errorcode-hiappevent.md#11101001-非法的事件领域名称) | Invalid event domain. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
-| [11101002](../errorcode-hiappevent.md#11101002-非法的事件名称) | Invalid event name. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
-| [11101003](../errorcode-hiappevent.md#11101003-非法的事件参数数量) | Invalid number of event parameters. Possibly caused by the number of parameters<br>is over 32. |
+| [11101001](../errorcode-hiappevent.md#11101001-非法的事件领域名称) | Invalid event domain. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
+| [11101002](../errorcode-hiappevent.md#11101002-非法的事件名称) | Invalid event name. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
+| [11101003](../errorcode-hiappevent.md#11101003-非法的事件参数数量) | Invalid number of event parameters. Possibly caused by the number of parameters <br>is over 32. |
 | [11101004](../errorcode-hiappevent.md#11101004-非法的事件参数字符串长度) | Invalid string length of the event parameter. |
-| [11101005](../errorcode-hiappevent.md#11101005-非法的事件参数名称) | Invalid event parameter name. Possible causes: 1. Contain invalid characters;<br>2. Length is invalid. |
+| [11101005](../errorcode-hiappevent.md#11101005-非法的事件参数名称) | Invalid event parameter name. Possible causes: 1. Contain invalid characters; <br>2. Length is invalid. |
 | [11101006](../errorcode-hiappevent.md#11101006-非法的事件参数数组长度) | Invalid array length of the event parameter. |
 
 **示例**

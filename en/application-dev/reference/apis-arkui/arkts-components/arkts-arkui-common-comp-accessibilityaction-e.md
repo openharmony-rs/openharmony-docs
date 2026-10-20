@@ -4,7 +4,7 @@
 declare enum AccessibilityAction
 ```
 
-Enum for accessibility action type
+Enumerates types of accessibility control operations triggered by components.
 
 **Since:** 20
 
@@ -18,7 +18,7 @@ Enum for accessibility action type
 ACCESSIBILITY_CLICK = 1
 ```
 
-accessibility click action
+Accessibility click action.
 
 **Since:** 20
 
@@ -38,7 +38,7 @@ accessibility click action
 UNDEFINED_ACTION = 0
 ```
 
-undefined action type
+Undefined accessibility control operation.
 
 **Since:** 20
 

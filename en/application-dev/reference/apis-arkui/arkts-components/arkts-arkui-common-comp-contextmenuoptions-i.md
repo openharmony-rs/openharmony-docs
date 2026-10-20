@@ -10,30 +10,30 @@ Configures menu item information.
 
 | Value of placement | Menu Offset |  
 | ------------------------------------------------------------ | ------------------------------------------------------------ |  
-| Placement.TopLeft, Placement.Top, or Placement.TopRight | If the value of **x** is a positive number for **offset**, the menu shifts to the right relative to the component. If the value of **y** is a positive number, the menu shifts upward relative to the component.|
-| Placement.BottomLeft, Placement.Bottom, or Placement.BottomRight| If the value of **x** is a positive number for **offset**, the menu shifts to the left relative to the component. If the value of **y** is a positive number, the menu shifts downward relative to the component.|
+| Placement.TopLeft, Placement.Top, or Placement.TopRight | If the value of **x** is a positive number for **offset**, the menu shifts to the right relative to the component. If the value of **y** is a positive number, the menu shifts upward relative to the component.|  
+| Placement.BottomLeft, Placement.Bottom, or Placement.BottomRight| If the value of **x** is a positive number for **offset**, the menu shifts to the left relative to the component. If the value of **y** is a positive number, the menu shifts downward relative to the component.|  
 | Placement.RightTop, Placement.Right, or Placement.RightBottom | If the value of **x** is a positive number for **offset**, the menu shifts to the right relative to the component. If the value of **y** is a positive number, the menu shifts downward relative to the component.|
 
 **Table 2: Default position of the menu arrow when both arrowOffset and placement are set**
 
 | Value of placement | Menu Arrow Position |  
 | ------------------------------------------- | ------------------------------------------------------------ |  
-| Placement.Top or Placement.Bottom | The arrow is displayed horizontally and centered by default, with a distance from the left edge of the menu equal to the arrow's safe distance.|
-| Placement.Left or Placement.Right | The arrow is displayed vertically and centered by default, with a distance from the top edge of the menu equal to the arrow's safe distance.|
-| Placement.TopLeft or Placement.BottomLeft | The arrow is displayed horizontally by default, with a distance from the left edge of the menu equal to the arrow's safe distance.|
-| Placement.TopRight or Placement.BottomRight | The arrow is displayed horizontally by default, with a distance from the right edge of the menu equal to the arrow's safe distance. |
-| Placement.LeftTop or Placement.RightTop | The arrow is displayed vertically by default, with a distance from the top edge of the menu equal to the arrow's safe distance. |
+| Placement.Top or Placement.Bottom | The arrow is displayed horizontally and centered by default, with a distance from the left edge of the menu equal to the arrow's safe distance.|  
+| Placement.Left or Placement.Right | The arrow is displayed vertically and centered by default, with a distance from the top edge of the menu equal to the arrow's safe distance.|  
+| Placement.TopLeft or Placement.BottomLeft | The arrow is displayed horizontally by default, with a distance from the left edge of the menu equal to the arrow's safe distance.|  
+| Placement.TopRight or Placement.BottomRight | The arrow is displayed horizontally by default, with a distance from the right edge of the menu equal to the arrow's safe distance. |  
+| Placement.LeftTop or Placement.RightTop | The arrow is displayed vertically by default, with a distance from the top edge of the menu equal to the arrow's safe distance. |  
 | Placement.LeftBottom or Placement.RightBottom| The arrow is displayed vertically by default, with a distance from the bottom edge of the menu equal to the arrow's safe distance. |
 
 **Table 3 Default menu position when enableArrow is set to true and placement is not set or set to an invalid value**
 
 | API| Default Menu Position|  
 |------|-------------|  
-| [bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu1) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
-| [bindMenu<sup>11+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindmenu2) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
-| [bindContextMenu<sup>8+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1) | Placement.Top |
-| [bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
-| [bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse1) | Placement.Top |
+| [bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu) | Placement.BottomLeft |  
+| [bindMenu<sup>11+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindmenu) | Placement.BottomLeft |  
+| [bindContextMenu<sup>8+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) | Placement.Top |  
+| [bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) | Placement.BottomLeft |  
+| [bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse) | Placement.Top |
 
 **Since:** 10
 
@@ -856,9 +856,9 @@ Preferred position of the context menu. If the set position is insufficient for 
 
 **NOTE:** 
 
-1. When this parameter is used as the input parameter of [bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu2), its default value is **Placement.BottomLeft**.
-2. When this parameter is used as the input parameter of [bindContextMenu<sup>8+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1) or [bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse1), the menu is displayed at the click position.
-3. When this parameter is used as the input parameter of [bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2), its default value is **Placement.BottomLeft**.
+1. When this parameter is used as the input parameter of [bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu), its default value is **Placement.BottomLeft**.
+2. When this parameter is used as the input parameter of [bindContextMenu<sup>8+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) or [bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse), the menu is displayed at the click position.
+3. When this parameter is used as the input parameter of [bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu), its default value is **Placement.BottomLeft**.
 4. If the value of **placement** is **undefined**, **null**, or empty, the default value is used.
 
 **Type:** [Placement](../arkts-apis/arkts-arkui-placement-e.md)
@@ -883,7 +883,7 @@ Preferred position of the context menu. If the set position is insufficient for 
 preview?: MenuPreviewMode | CustomBuilder
 ```
 
-Preview displayed when the context menu is triggered by a long-press or by calling [bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2). It can be a screenshot of the target component or custom content.
+Preview displayed when the context menu is triggered by a long-press or by calling [bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu). It can be a screenshot of the target component or custom content.
 
 Default value: **MenuPreviewMode.NONE**, indicating no preview.
 

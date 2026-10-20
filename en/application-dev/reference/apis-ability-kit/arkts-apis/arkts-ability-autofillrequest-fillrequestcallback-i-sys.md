@@ -44,7 +44,7 @@ Called when an auto-fill request is canceled.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1.The input parameter is not valid parameter; <br>2. Mandatory parameters are left unspecified.<br>**Applicable version:** 12 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br>1.The input parameter is not valid parameter; <br>2. Mandatory parameters are left unspecified.<br>**Applicable version:** 12 and later |
 
 <!--Del-->
 **Examples**

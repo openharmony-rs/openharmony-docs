@@ -18,8 +18,6 @@ interface AppAccountManager
 import { appAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="auth1"></a>
-
 ## auth
 
 ```TypeScript
@@ -47,7 +45,7 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, owner or authType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -101,8 +99,6 @@ struct Index {
 }
 ```
 
-<a id="auth2"></a>
-
 ## auth
 
 ```TypeScript
@@ -137,7 +133,7 @@ auth(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, owner, authType or options. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -194,8 +190,6 @@ struct Index {
 }
 ```
 
-<a id="checkaccountlabels1"></a>
-
 ## checkAccountLabels
 
 ```TypeScript
@@ -223,7 +217,7 @@ checkAccountLabels(name: string, owner: string, labels: Array<string>, callback:
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, owner or labels. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -251,8 +245,6 @@ try {
   console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkaccountlabels2"></a>
 
 ## checkAccountLabels
 
@@ -286,7 +278,7 @@ checkAccountLabels(name: string, owner: string, labels: Array<string>): Promise<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, owner or labels. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -312,8 +304,6 @@ try {
   console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkappaccess1"></a>
 
 ## checkAppAccess
 
@@ -341,7 +331,7 @@ checkAppAccess(name: string, bundleName: string, callback: AsyncCallback<boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or bundleName. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -365,8 +355,6 @@ try {
   console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkappaccess2"></a>
 
 ## checkAppAccess
 
@@ -399,7 +387,7 @@ checkAppAccess(name: string, bundleName: string): Promise<boolean>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or bundleName. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -420,8 +408,6 @@ try {
   console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkauthtokenvisibility1"></a>
 
 ## checkAuthTokenVisibility
 
@@ -450,7 +436,7 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string, cal
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, authType or bundleName. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -475,8 +461,6 @@ try {
   console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkauthtokenvisibility2"></a>
 
 ## checkAuthTokenVisibility
 
@@ -510,7 +494,7 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Pr
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, authType or bundleName. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -533,8 +517,6 @@ try {
   console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkdatasyncenabled1"></a>
 
 ## checkDataSyncEnabled
 
@@ -564,7 +546,7 @@ checkDataSyncEnabled(name: string, callback: AsyncCallback<boolean>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -587,8 +569,6 @@ try {
   console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="checkdatasyncenabled2"></a>
 
 ## checkDataSyncEnabled
 
@@ -623,7 +603,7 @@ checkDataSyncEnabled(name: string): Promise<boolean>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -644,8 +624,6 @@ try {
   console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="createaccount1"></a>
 
 ## createAccount
 
@@ -672,7 +650,7 @@ createAccount(name: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name. |
 | [12300004](../errorcode-account.md#12300004-账号已存在) | Account already exists. |
@@ -696,8 +674,6 @@ try {
   console.error(`createAccount err: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="createaccount2"></a>
 
 ## createAccount
 
@@ -725,7 +701,7 @@ createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallba
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or options. |
 | [12300004](../errorcode-account.md#12300004-账号已存在) | Account already exists. |
@@ -754,8 +730,6 @@ try {
   console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="createaccount3"></a>
 
 ## createAccount
 
@@ -788,7 +762,7 @@ createAccount(name: string, options?: CreateAccountOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or options. |
 | [12300004](../errorcode-account.md#12300004-账号已存在) | Account already exists. |
@@ -816,8 +790,6 @@ try {
 }
 ```
 
-<a id="createaccountimplicitly1"></a>
-
 ## createAccountImplicitly
 
 ```TypeScript
@@ -843,7 +815,7 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid owner. |
 | [12300007](../errorcode-account.md#12300007-账号数量已达上限) | The number of accounts reaches the upper limit. |
@@ -896,8 +868,6 @@ struct Index {
 }
 ```
 
-<a id="createaccountimplicitly2"></a>
-
 ## createAccountImplicitly
 
 ```TypeScript
@@ -924,7 +894,7 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid owner or options. |
 | [12300007](../errorcode-account.md#12300007-账号数量已达上限) | The number of accounts reaches the upper limit. |
@@ -981,8 +951,6 @@ struct Index {
 }
 ```
 
-<a id="deleteauthtoken1"></a>
-
 ## deleteAuthToken
 
 ```TypeScript
@@ -1011,7 +979,7 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string, ca
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, owner, authType or token. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1036,8 +1004,6 @@ try {
   console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="deleteauthtoken2"></a>
 
 ## deleteAuthToken
 
@@ -1072,7 +1038,7 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string): P
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, owner, authType or token. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1094,8 +1060,6 @@ try {
   console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="deletecredential1"></a>
 
 ## deleteCredential
 
@@ -1123,7 +1087,7 @@ deleteCredential(name: string, credentialType: string, callback: AsyncCallback<v
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or credentialType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1147,8 +1111,6 @@ try {
   console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="deletecredential2"></a>
 
 ## deleteCredential
 
@@ -1181,7 +1143,7 @@ deleteCredential(name: string, credentialType: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or credentialType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1203,8 +1165,6 @@ try {
   console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getaccountsbyowner1"></a>
 
 ## getAccountsByOwner
 
@@ -1254,8 +1214,6 @@ try {
   console.error(`getAccountsByOwner exception:code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getaccountsbyowner2"></a>
 
 ## getAccountsByOwner
 
@@ -1309,8 +1267,6 @@ try {
 }
 ```
 
-<a id="getallaccounts1"></a>
-
 ## getAllAccounts
 
 ```TypeScript
@@ -1335,7 +1291,7 @@ getAllAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 
 **示例**
@@ -1356,8 +1312,6 @@ try {
   console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getallaccounts2"></a>
 
 ## getAllAccounts
 
@@ -1402,8 +1356,6 @@ try {
 }
 ```
 
-<a id="getallaccounts3"></a>
-
 ## getAllAccounts
 
 ```TypeScript
@@ -1415,14 +1367,14 @@ getAllAccounts(owner: string, callback: AsyncCallback<Array<AppAccountInfo>>): v
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getAccountsByOwner](#getaccountsbyowner1)
+> [getAccountsByOwner](#getaccountsbyowner)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAccountsByOwner](#getaccountsbyowner1)(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+**替代接口：** [getAccountsByOwner](#getaccountsbyowner)(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -1452,8 +1404,6 @@ appAccountManager.getAllAccounts(selfBundle, (err: BusinessError, data: appAccou
 });
 ```
 
-<a id="getallaccounts4"></a>
-
 ## getAllAccounts
 
 ```TypeScript
@@ -1465,13 +1415,13 @@ getAllAccounts(owner: string): Promise<Array<AppAccountInfo>>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getAccountsByOwner](#getaccountsbyowner2)替代。
+> [getAccountsByOwner](#getaccountsbyowner)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAccountsByOwner](#getaccountsbyowner2)(owner: string)
+**替代接口：** [getAccountsByOwner](#getaccountsbyowner)(owner: string)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -1504,8 +1454,6 @@ appAccountManager.getAllAccounts(selfBundle).then((data: appAccount.AppAccountIn
 });
 ```
 
-<a id="getallauthtokens1"></a>
-
 ## getAllAuthTokens
 
 ```TypeScript
@@ -1532,7 +1480,7 @@ getAllAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<Auth
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or owner. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1556,8 +1504,6 @@ try {
   console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getallauthtokens2"></a>
 
 ## getAllAuthTokens
 
@@ -1590,7 +1536,7 @@ getAllAuthTokens(name: string, owner: string): Promise<Array<AuthTokenInfo>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or owner. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1612,8 +1558,6 @@ try {
   console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getauthcallback1"></a>
 
 ## getAuthCallback
 
@@ -1640,7 +1584,7 @@ getAuthCallback(sessionId: string, callback: AsyncCallback<AuthCallback>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid sessionId. |
 | [12300108](../errorcode-account.md#12300108-认证会话不存在) | Session not found. |
@@ -1680,8 +1624,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getauthcallback2"></a>
-
 ## getAuthCallback
 
 ```TypeScript
@@ -1712,7 +1654,7 @@ getAuthCallback(sessionId: string): Promise<AuthCallback>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid sessionId. |
 | [12300108](../errorcode-account.md#12300108-认证会话不存在) | Session not found. |
@@ -1750,15 +1692,13 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getauthlist1"></a>
-
 ## getAuthList
 
 ```TypeScript
 getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](#setauthtokenvisibility1)来设置）。使用callback异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](#setauthtokenvisibility)来设置）。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -1778,7 +1718,7 @@ getAuthList(name: string, authType: string, callback: AsyncCallback<Array<string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or authType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1803,15 +1743,13 @@ try {
 }
 ```
 
-<a id="getauthlist2"></a>
-
 ## getAuthList
 
 ```TypeScript
 getAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](#setauthtokenvisibility1)来设置）。使用Promise异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setAuthTokenVisibility](#setauthtokenvisibility)来设置）。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -1836,7 +1774,7 @@ getAuthList(name: string, authType: string): Promise<Array<string>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or authType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1858,8 +1796,6 @@ try {
   console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getauthtoken1"></a>
 
 ## getAuthToken
 
@@ -1888,7 +1824,7 @@ getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallb
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, owner or authType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1913,8 +1849,6 @@ try {
   console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getauthtoken2"></a>
 
 ## getAuthToken
 
@@ -1948,7 +1882,7 @@ getAuthToken(name: string, owner: string, authType: string): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, owner or authType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -1970,8 +1904,6 @@ try {
   console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getcredential1"></a>
 
 ## getCredential
 
@@ -1999,7 +1931,7 @@ getCredential(name: string, credentialType: string, callback: AsyncCallback<stri
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or credentialType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -2023,8 +1955,6 @@ try {
   console.error(`getCredential err: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getcredential2"></a>
 
 ## getCredential
 
@@ -2057,7 +1987,7 @@ getCredential(name: string, credentialType: string): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or credentialType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -2079,8 +2009,6 @@ try {
   console.error(`getCredential exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getcustomdata1"></a>
 
 ## getCustomData
 
@@ -2108,7 +2036,7 @@ getCustomData(name: string, key: string, callback: AsyncCallback<string>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or key. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -2132,8 +2060,6 @@ try {
   console.error(`getCustomData exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="getcustomdata2"></a>
 
 ## getCustomData
 
@@ -2166,7 +2092,7 @@ getCustomData(name: string, key: string): Promise<string>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or key. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -2220,7 +2146,7 @@ getCustomDataSync(name: string, key: string): string
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or key. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -2265,7 +2191,7 @@ off(type: 'accountChange', callback?: Callback<Array<AppAccountInfo>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid type. |
 
@@ -2439,8 +2365,6 @@ try {
 }
 ```
 
-<a id="queryauthenticatorinfo1"></a>
-
 ## queryAuthenticatorInfo
 
 ```TypeScript
@@ -2466,7 +2390,7 @@ queryAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid owner. |
 | [12300113](../errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
@@ -2490,8 +2414,6 @@ try {
   console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="queryauthenticatorinfo2"></a>
 
 ## queryAuthenticatorInfo
 
@@ -2523,7 +2445,7 @@ queryAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid owner. |
 | [12300113](../errorcode-account.md#12300113-认证服务不存在) | Authenticator service not found. |
@@ -2545,8 +2467,6 @@ try {
   console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="removeaccount1"></a>
 
 ## removeAccount
 
@@ -2573,7 +2493,7 @@ removeAccount(name: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -2596,8 +2516,6 @@ try {
   console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="removeaccount2"></a>
 
 ## removeAccount
 
@@ -2629,7 +2547,7 @@ removeAccount(name: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -2650,8 +2568,6 @@ try {
   console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="selectaccountsbyoptions1"></a>
 
 ## selectAccountsByOptions
 
@@ -2678,7 +2594,7 @@ selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid options. |
 | [12300010](../errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
@@ -2707,8 +2623,6 @@ try {
   console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="selectaccountsbyoptions2"></a>
 
 ## selectAccountsByOptions
 
@@ -2740,7 +2654,7 @@ selectAccountsByOptions(options: SelectAccountsOptions): Promise<Array<AppAccoun
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid options. |
 | [12300010](../errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
@@ -2765,8 +2679,6 @@ try {
   console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setappaccess1"></a>
 
 ## setAppAccess
 
@@ -2819,8 +2731,6 @@ try {
   console.error(`setAppAccess exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setappaccess2"></a>
 
 ## setAppAccess
 
@@ -2877,8 +2787,6 @@ try {
 }
 ```
 
-<a id="setauthenticatorproperties1"></a>
-
 ## setAuthenticatorProperties
 
 ```TypeScript
@@ -2904,7 +2812,7 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid owner. |
 | [12300010](../errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
@@ -2933,8 +2841,6 @@ try {
 }
 ```
 
-<a id="setauthenticatorproperties2"></a>
-
 ## setAuthenticatorProperties
 
 ```TypeScript
@@ -2961,7 +2867,7 @@ setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callbac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid owner or options. |
 | [12300010](../errorcode-account.md#12300010-账号服务忙碌) | Account service busy. |
@@ -2993,8 +2899,6 @@ try {
 }
 ```
 
-<a id="setauthtoken1"></a>
-
 ## setAuthToken
 
 ```TypeScript
@@ -3022,7 +2926,7 @@ setAuthToken(name: string, authType: string, token: string, callback: AsyncCallb
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, authType or token. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -3046,8 +2950,6 @@ try {
   console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setauthtoken2"></a>
 
 ## setAuthToken
 
@@ -3081,7 +2983,7 @@ setAuthToken(name: string, authType: string, token: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, authType or token. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -3103,8 +3005,6 @@ try {
   console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setauthtokenvisibility1"></a>
 
 ## setAuthTokenVisibility
 
@@ -3167,8 +3067,6 @@ try {
 }
 ```
 
-<a id="setauthtokenvisibility2"></a>
-
 ## setAuthTokenVisibility
 
 ```TypeScript
@@ -3226,8 +3124,6 @@ try {
 }
 ```
 
-<a id="setcredential1"></a>
-
 ## setCredential
 
 ```TypeScript
@@ -3256,7 +3152,7 @@ setCredential(name: string, credentialType: string, credential: string,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, credentialType or credential. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -3279,8 +3175,6 @@ try {
   console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setcredential2"></a>
 
 ## setCredential
 
@@ -3314,7 +3208,7 @@ setCredential(name: string, credentialType: string, credential: string): Promise
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, credentialType or credential. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -3335,8 +3229,6 @@ try {
   console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setcustomdata1"></a>
 
 ## setCustomData
 
@@ -3365,7 +3257,7 @@ setCustomData(name: string, key: string, value: string, callback: AsyncCallback<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, key or value. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -3389,8 +3281,6 @@ try {
   console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setcustomdata2"></a>
 
 ## setCustomData
 
@@ -3424,7 +3314,7 @@ setCustomData(name: string, key: string, value: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, key or value. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -3446,8 +3336,6 @@ try {
   console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setdatasyncenabled1"></a>
 
 ## setDataSyncEnabled
 
@@ -3478,7 +3366,7 @@ setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback<voi
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -3497,8 +3385,6 @@ try {
     console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="setdatasyncenabled2"></a>
 
 ## setDataSyncEnabled
 
@@ -3534,7 +3420,7 @@ setDataSyncEnabled(name: string, isEnabled: boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -3555,8 +3441,6 @@ try {
     console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
 }
 ```
-
-<a id="verifycredential1"></a>
 
 ## verifyCredential
 
@@ -3584,7 +3468,7 @@ verifyCredential(name: string, owner: string, callback: AuthCallback): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or owner. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -3614,8 +3498,6 @@ try {
 }
 ```
 
-<a id="verifycredential2"></a>
-
 ## verifyCredential
 
 ```TypeScript
@@ -3643,7 +3525,7 @@ verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name, owner or options. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -3677,8 +3559,6 @@ try {
 }
 ```
 
-<a id="addaccount1"></a>
-
 ## addAccount
 
 ```TypeScript
@@ -3690,14 +3570,14 @@ addAccount(name: string, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [createAccount](#createaccount1)替
+> [createAccount](#createaccount)替
 > 代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createAccount](#createaccount1)(name: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [createAccount](#createaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -3720,8 +3600,6 @@ appAccountManager.addAccount('WangWu', (err: BusinessError) => {
 });
 ```
 
-<a id="addaccount2"></a>
-
 ## addAccount
 
 ```TypeScript
@@ -3733,14 +3611,14 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [createAccount](#createaccount2)
+> [createAccount](#createaccount)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createAccount](#createaccount2)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [createAccount](#createaccount)(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-addAccount(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -3764,8 +3642,6 @@ appAccountManager.addAccount('LiSi', 'token101', (err: BusinessError) => {
 });
 ```
 
-<a id="addaccount3"></a>
-
 ## addAccount
 
 ```TypeScript
@@ -3776,14 +3652,14 @@ addAccount(name: string, extraInfo?: string): Promise<void>
 
 > **说明：** 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [createAccount](#createaccount3)
+> [createAccount](#createaccount)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createAccount](#createaccount3)(name: string, options?: CreateAccountOptions)
+**替代接口：** [createAccount](#createaccount)(name: string, options?: CreateAccountOptions)
 
 <!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>--><!--Device-AppAccountManager-addAccount(name: string, extraInfo?: string): Promise<void>-End-->
 
@@ -3830,14 +3706,14 @@ addAccountImplicitly(
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [createAccountImplicitly](#createaccountimplicitly1)
+> [createAccountImplicitly](#createaccountimplicitly)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [createAccountImplicitly](#createaccountimplicitly1)(owner: string, callback: AuthCallback)
+**替代接口：** [createAccountImplicitly](#createaccountimplicitly)(owner: string, callback: AuthCallback)
 
 <!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-addAccountImplicitly(      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
@@ -3910,14 +3786,14 @@ authenticate(
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [auth](#auth1)
+> [auth](#auth)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [auth](#auth1)(name: string, owner: string, authType: string, callback: AuthCallback)
+**替代接口：** [auth](#auth)(name: string, owner: string, authType: string, callback: AuthCallback)
 
 <!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void--><!--Device-AppAccountManager-authenticate(      name: string,      owner: string,      authType: string,      options: { [key: string]: any },      callback: AuthenticatorCallback    ): void-End-->
 
@@ -3974,8 +3850,6 @@ struct Index {
 }
 ```
 
-<a id="checkappaccountsyncenable1"></a>
-
 ## checkAppAccountSyncEnable
 
 ```TypeScript
@@ -3987,14 +3861,14 @@ checkAppAccountSyncEnable(name: string, callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkDataSyncEnabled](#checkdatasyncenabled1)
+> [checkDataSyncEnabled](#checkdatasyncenabled)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkDataSyncEnabled](#checkdatasyncenabled1)(name: string, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkDataSyncEnabled](#checkdatasyncenabled)(name: string, callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -4023,8 +3897,6 @@ appAccountManager.checkAppAccountSyncEnable('ZhangSan', (err: BusinessError, res
 });
 ```
 
-<a id="checkappaccountsyncenable2"></a>
-
 ## checkAppAccountSyncEnable
 
 ```TypeScript
@@ -4036,13 +3908,13 @@ checkAppAccountSyncEnable(name: string): Promise<boolean>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [checkDataSyncEnabled](#checkdatasyncenabled2)替代。
+> [checkDataSyncEnabled](#checkdatasyncenabled)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [checkDataSyncEnabled](#checkdatasyncenabled2)(name: string)
+**替代接口：** [checkDataSyncEnabled](#checkdatasyncenabled)(name: string)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -4074,8 +3946,6 @@ appAccountManager.checkAppAccountSyncEnable('ZhangSan').then((data: boolean) => 
 });
 ```
 
-<a id="checkoauthtokenvisibility1"></a>
-
 ## checkOAuthTokenVisibility
 
 ```TypeScript
@@ -4092,14 +3962,14 @@ checkOAuthTokenVisibility(
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [checkAuthTokenVisibility](#checkauthtokenvisibility1)
+> [checkAuthTokenVisibility](#checkauthtokenvisibility)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [checkAuthTokenVisibility](#checkauthtokenvisibility1)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [checkAuthTokenVisibility](#checkauthtokenvisibility)(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void--><!--Device-AppAccountManager-checkOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      callback: AsyncCallback<boolean>    ): void-End-->
 
@@ -4129,8 +3999,6 @@ appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.exampl
   });
 ```
 
-<a id="checkoauthtokenvisibility2"></a>
-
 ## checkOAuthTokenVisibility
 
 ```TypeScript
@@ -4142,14 +4010,14 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): P
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [checkAuthTokenVisibility](#checkauthtokenvisibility2)
+> [checkAuthTokenVisibility](#checkauthtokenvisibility)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [checkAuthTokenVisibility](#checkauthtokenvisibility2)(name: string, authType: string, bundleName: string)
+**替代接口：** [checkAuthTokenVisibility](#checkauthtokenvisibility)(name: string, authType: string, bundleName: string)
 
 <!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>--><!--Device-AppAccountManager-checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise<boolean>-End-->
 
@@ -4182,8 +4050,6 @@ appAccountManager.checkOAuthTokenVisibility('LiSi', 'getSocialData', 'com.exampl
 });
 ```
 
-<a id="deleteaccount1"></a>
-
 ## deleteAccount
 
 ```TypeScript
@@ -4195,14 +4061,14 @@ deleteAccount(name: string, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [removeAccount](#removeaccount1)替
+> [removeAccount](#removeaccount)替
 > 代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [removeAccount](#removeaccount1)(name: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [removeAccount](#removeaccount)(name: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteAccount(name: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4225,8 +4091,6 @@ appAccountManager.deleteAccount('ZhaoLiu', (err: BusinessError) => {
 });
 ```
 
-<a id="deleteaccount2"></a>
-
 ## deleteAccount
 
 ```TypeScript
@@ -4238,14 +4102,14 @@ deleteAccount(name: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [removeAccount](#removeaccount2)替
+> [removeAccount](#removeaccount)替
 > 代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [removeAccount](#removeaccount2)(name: string)
+**替代接口：** [removeAccount](#removeaccount)(name: string)
 
 <!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>--><!--Device-AppAccountManager-deleteAccount(name: string): Promise<void>-End-->
 
@@ -4275,8 +4139,6 @@ appAccountManager.deleteAccount('ZhaoLiu').then(() => {
 });
 ```
 
-<a id="deleteoauthtoken1"></a>
-
 ## deleteOAuthToken
 
 ```TypeScript
@@ -4288,14 +4150,14 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string, c
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [deleteAuthToken](#deleteauthtoken1)
+> [deleteAuthToken](#deleteauthtoken)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [deleteAuthToken](#deleteauthtoken1)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [deleteAuthToken](#deleteauthtoken)(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4326,8 +4188,6 @@ appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSoci
   });
 ```
 
-<a id="deleteoauthtoken2"></a>
-
 ## deleteOAuthToken
 
 ```TypeScript
@@ -4339,14 +4199,14 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string): 
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [deleteAuthToken](#deleteauthtoken2)
+> [deleteAuthToken](#deleteauthtoken)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [deleteAuthToken](#deleteauthtoken2)(name: string, owner: string, authType: string, token: string)
+**替代接口：** [deleteAuthToken](#deleteauthtoken)(name: string, owner: string, authType: string, token: string)
 
 <!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise<void>-End-->
 
@@ -4379,8 +4239,6 @@ appAccountManager.deleteOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSoci
 });
 ```
 
-<a id="disableappaccess1"></a>
-
 ## disableAppAccess
 
 ```TypeScript
@@ -4392,14 +4250,14 @@ disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](#setappaccess1)
+> [setAppAccess](#setappaccess)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess](#setappaccess1)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4423,8 +4281,6 @@ appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err
 });
 ```
 
-<a id="disableappaccess2"></a>
-
 ## disableAppAccess
 
 ```TypeScript
@@ -4436,14 +4292,14 @@ disableAppAccess(name: string, bundleName: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](#setappaccess2)
+> [setAppAccess](#setappaccess)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess](#setappaccess2)(name: string, bundleName: string, isAccessible: boolean)
+**替代接口：** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean)
 
 <!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-disableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -4474,8 +4330,6 @@ appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo').then
 });
 ```
 
-<a id="enableappaccess1"></a>
-
 ## enableAppAccess
 
 ```TypeScript
@@ -4487,14 +4341,14 @@ enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>)
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](#setappaccess1)
+> [setAppAccess](#setappaccess)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess](#setappaccess1)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string, callback: AsyncCallback<void>): void-End-->
 
@@ -4522,8 +4376,6 @@ appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err:
 });
 ```
 
-<a id="enableappaccess2"></a>
-
 ## enableAppAccess
 
 ```TypeScript
@@ -4535,14 +4387,14 @@ enableAppAccess(name: string, bundleName: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setAppAccess](#setappaccess2)
+> [setAppAccess](#setappaccess)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setAppAccess](#setappaccess2)(name: string, bundleName: string, isAccessible: boolean)
+**替代接口：** [setAppAccess](#setappaccess)(name: string, bundleName: string, isAccessible: boolean)
 
 <!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>--><!--Device-AppAccountManager-enableAppAccess(name: string, bundleName: string): Promise<void>-End-->
 
@@ -4573,8 +4425,6 @@ appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo').then(
 });
 ```
 
-<a id="getaccountcredential1"></a>
-
 ## getAccountCredential
 
 ```TypeScript
@@ -4586,14 +4436,14 @@ getAccountCredential(name: string, credentialType: string, callback: AsyncCallba
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCredential](#getcredential1)
+> [getCredential](#getcredential)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCredential](#getcredential1)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getCredential](#getcredential)(name: string, credentialType: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4621,8 +4471,6 @@ appAccountManager.getAccountCredential('ZhangSan', 'credentialType001', (err: Bu
 });
 ```
 
-<a id="getaccountcredential2"></a>
-
 ## getAccountCredential
 
 ```TypeScript
@@ -4634,13 +4482,13 @@ getAccountCredential(name: string, credentialType: string): Promise<string>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCredential](#getcredential2)替代。
+> [getCredential](#getcredential)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCredential](#getcredential2)(name: string, credentialType: string)
+**替代接口：** [getCredential](#getcredential)(name: string, credentialType: string)
 
 <!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>--><!--Device-AppAccountManager-getAccountCredential(name: string, credentialType: string): Promise<string>-End-->
 
@@ -4671,8 +4519,6 @@ appAccountManager.getAccountCredential('ZhangSan', 'credentialType001').then((da
 });
 ```
 
-<a id="getaccountextrainfo1"></a>
-
 ## getAccountExtraInfo
 
 ```TypeScript
@@ -4684,14 +4530,14 @@ getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](#getcustomdata1)
+> [getCustomData](#getcustomdata)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData](#getcustomdata1)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAccountExtraInfo(name: string, callback: AsyncCallback<string>): void-End-->
 
@@ -4718,8 +4564,6 @@ appAccountManager.getAccountExtraInfo('ZhangSan', (err: BusinessError, result: s
 });
 ```
 
-<a id="getaccountextrainfo2"></a>
-
 ## getAccountExtraInfo
 
 ```TypeScript
@@ -4731,13 +4575,13 @@ getAccountExtraInfo(name: string): Promise<string>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](#getcustomdata2)替代。
+> [getCustomData](#getcustomdata)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData](#getcustomdata2)(name: string, key: string)
+**替代接口：** [getCustomData](#getcustomdata)(name: string, key: string)
 
 <!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>--><!--Device-AppAccountManager-getAccountExtraInfo(name: string): Promise<string>-End-->
 
@@ -4767,8 +4611,6 @@ appAccountManager.getAccountExtraInfo('ZhangSan').then((data: string) => {
 });
 ```
 
-<a id="getallaccessibleaccounts1"></a>
-
 ## getAllAccessibleAccounts
 
 ```TypeScript
@@ -4780,14 +4622,14 @@ getAllAccessibleAccounts(callback: AsyncCallback<Array<AppAccountInfo>>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getAllAccounts](#getallaccounts1)
+> [getAllAccounts](#getallaccounts)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAccounts](#getallaccounts1)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
+**替代接口：** [getAllAccounts](#getallaccounts)(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;)
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS
 
@@ -4814,8 +4656,6 @@ appAccountManager.getAllAccessibleAccounts((err: BusinessError, data: appAccount
   }
 });
 ```
-
-<a id="getallaccessibleaccounts2"></a>
 
 ## getAllAccessibleAccounts
 
@@ -4860,8 +4700,6 @@ appAccountManager.getAllAccessibleAccounts().then((data: appAccount.AppAccountIn
 });
 ```
 
-<a id="getalloauthtokens1"></a>
-
 ## getAllOAuthTokens
 
 ```TypeScript
@@ -4873,14 +4711,14 @@ getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAu
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAllAuthTokens](#getallauthtokens1)
+> [getAllAuthTokens](#getallauthtokens)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAuthTokens](#getallauthtokens1)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
+**替代接口：** [getAllAuthTokens](#getallauthtokens)(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback<Array<OAuthTokenInfo>>): void-End-->
 
@@ -4909,8 +4747,6 @@ appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo',
   });
 ```
 
-<a id="getalloauthtokens2"></a>
-
 ## getAllOAuthTokens
 
 ```TypeScript
@@ -4922,13 +4758,13 @@ getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAllAuthTokens](#getallauthtokens2)替代。
+> [getAllAuthTokens](#getallauthtokens)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAllAuthTokens](#getallauthtokens2)(name: string, owner: string)
+**替代接口：** [getAllAuthTokens](#getallauthtokens)(name: string, owner: string)
 
 <!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>--><!--Device-AppAccountManager-getAllOAuthTokens(name: string, owner: string): Promise<Array<OAuthTokenInfo>>-End-->
 
@@ -4960,8 +4796,6 @@ appAccountManager.getAllOAuthTokens('LiSi', 'com.example.accountjsdemo').then((
 });
 ```
 
-<a id="getassociateddata1"></a>
-
 ## getAssociatedData
 
 ```TypeScript
@@ -4973,14 +4807,14 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): v
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](#getcustomdata1)
+> [getCustomData](#getcustomdata)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData](#getcustomdata1)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getCustomData](#getcustomdata)(name: string, key: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string, callback: AsyncCallback<string>): void-End-->
 
@@ -5008,8 +4842,6 @@ appAccountManager.getAssociatedData('ZhangSan', 'k001', (err: BusinessError, res
 });
 ```
 
-<a id="getassociateddata2"></a>
-
 ## getAssociatedData
 
 ```TypeScript
@@ -5021,13 +4853,13 @@ getAssociatedData(name: string, key: string): Promise<string>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getCustomData](#getcustomdata2)替代。
+> [getCustomData](#getcustomdata)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getCustomData](#getcustomdata2)(name: string, key: string)
+**替代接口：** [getCustomData](#getcustomdata)(name: string, key: string)
 
 <!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>--><!--Device-AppAccountManager-getAssociatedData(name: string, key: string): Promise<string>-End-->
 
@@ -5058,8 +4890,6 @@ appAccountManager.getAssociatedData('ZhangSan', 'k001').then((data: string) => {
 });
 ```
 
-<a id="getauthenticatorcallback1"></a>
-
 ## getAuthenticatorCallback
 
 ```TypeScript
@@ -5071,14 +4901,14 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<Authenticato
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthCallback](#getauthcallback1)
+> [getAuthCallback](#getauthcallback)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthCallback](#getauthcallback1)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
+**替代接口：** [getAuthCallback](#getauthcallback)(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string, callback: AsyncCallback<AuthenticatorCallback>): void-End-->
 
@@ -5117,8 +4947,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getauthenticatorcallback2"></a>
-
 ## getAuthenticatorCallback
 
 ```TypeScript
@@ -5130,13 +4958,13 @@ getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthCallback](#getauthcallback2)替代。
+> [getAuthCallback](#getauthcallback)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthCallback](#getauthcallback2)(sessionId: string)
+**替代接口：** [getAuthCallback](#getauthcallback)(sessionId: string)
 
 <!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>--><!--Device-AppAccountManager-getAuthenticatorCallback(sessionId: string): Promise<AuthenticatorCallback>-End-->
 
@@ -5178,8 +5006,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getauthenticatorinfo1"></a>
-
 ## getAuthenticatorInfo
 
 ```TypeScript
@@ -5191,14 +5017,14 @@ getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>):
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [queryAuthenticatorInfo](#queryauthenticatorinfo1)
+> [queryAuthenticatorInfo](#queryauthenticatorinfo)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [queryAuthenticatorInfo](#queryauthenticatorinfo1)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
+**替代接口：** [queryAuthenticatorInfo](#queryauthenticatorinfo)(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string, callback: AsyncCallback<AuthenticatorInfo>): void-End-->
 
@@ -5226,8 +5052,6 @@ appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo',
   });
 ```
 
-<a id="getauthenticatorinfo2"></a>
-
 ## getAuthenticatorInfo
 
 ```TypeScript
@@ -5239,13 +5063,13 @@ getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [queryAuthenticatorInfo](#queryauthenticatorinfo2)替代。
+> [queryAuthenticatorInfo](#queryauthenticatorinfo)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [queryAuthenticatorInfo](#queryauthenticatorinfo2)(owner: string)
+**替代接口：** [queryAuthenticatorInfo](#queryauthenticatorinfo)(owner: string)
 
 <!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>--><!--Device-AppAccountManager-getAuthenticatorInfo(owner: string): Promise<AuthenticatorInfo>-End-->
 
@@ -5276,27 +5100,25 @@ appAccountManager.getAuthenticatorInfo('com.example.accountjsdemo').then((
 });
 ```
 
-<a id="getoauthlist1"></a>
-
 ## getOAuthList
 
 ```TypeScript
 getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibility1)来设置）。使用callback异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibility)来设置）。使用callback异步回调。
 
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthList](#getauthlist1)
+> [getAuthList](#getauthlist)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthList](#getauthlist1)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
+**替代接口：** [getAuthList](#getauthlist)(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string, callback: AsyncCallback<Array<string>>): void-End-->
 
@@ -5324,26 +5146,24 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData', (err: BusinessError, dat
 });
 ```
 
-<a id="getoauthlist2"></a>
-
 ## getOAuthList
 
 ```TypeScript
 getOAuthList(name: string, authType: string): Promise<Array<string>>
 ```
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibility1)来设置）。使用Promise异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibility)来设置）。使用Promise异步回调。
 
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthList](#getauthlist2)替代。
+> [getAuthList](#getauthlist)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthList](#getauthlist2)(name: string, authType: string)
+**替代接口：** [getAuthList](#getauthlist)(name: string, authType: string)
 
 <!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>--><!--Device-AppAccountManager-getOAuthList(name: string, authType: string): Promise<Array<string>>-End-->
 
@@ -5374,8 +5194,6 @@ appAccountManager.getOAuthList('LiSi', 'getSocialData').then((data: string[]) =>
 });
 ```
 
-<a id="getoauthtoken1"></a>
-
 ## getOAuthToken
 
 ```TypeScript
@@ -5387,14 +5205,14 @@ getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCall
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthToken](#getauthtoken1)
+> [getAuthToken](#getauthtoken)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthToken](#getauthtoken1)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getAuthToken](#getauthtoken)(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback<string>): void-End-->
 
@@ -5424,8 +5242,6 @@ appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialD
   });
 ```
 
-<a id="getoauthtoken2"></a>
-
 ## getOAuthToken
 
 ```TypeScript
@@ -5437,13 +5253,13 @@ getOAuthToken(name: string, owner: string, authType: string): Promise<string>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [getAuthToken](#getauthtoken2)替代。
+> [getAuthToken](#getauthtoken)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getAuthToken](#getauthtoken2)(name: string, owner: string, authType: string)
+**替代接口：** [getAuthToken](#getauthtoken)(name: string, owner: string, authType: string)
 
 <!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>--><!--Device-AppAccountManager-getOAuthToken(name: string, owner: string, authType: string): Promise<string>-End-->
 
@@ -5475,8 +5291,6 @@ appAccountManager.getOAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialD
 });
 ```
 
-<a id="setaccountcredential1"></a>
-
 ## setAccountCredential
 
 ```TypeScript
@@ -5488,14 +5302,14 @@ setAccountCredential(name: string, credentialType: string, credential: string, c
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setCredential](#setcredential1)
+> [setCredential](#setcredential)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCredential](#setcredential1)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setCredential](#setcredential)(name: string, credentialType: string, credential: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5524,8 +5338,6 @@ appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credent
 });
 ```
 
-<a id="setaccountcredential2"></a>
-
 ## setAccountCredential
 
 ```TypeScript
@@ -5537,14 +5349,14 @@ setAccountCredential(name: string, credentialType: string, credential: string): 
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setCredential](#setcredential2)
+> [setCredential](#setcredential)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCredential](#setcredential2)(name: string, credentialType: string, credential: string)
+**替代接口：** [setCredential](#setcredential)(name: string, credentialType: string, credential: string)
 
 <!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>--><!--Device-AppAccountManager-setAccountCredential(name: string, credentialType: string, credential: string): Promise<void>-End-->
 
@@ -5576,8 +5388,6 @@ appAccountManager.setAccountCredential('ZhangSan', 'credentialType001', 'credent
 });
 ```
 
-<a id="setaccountextrainfo1"></a>
-
 ## setAccountExtraInfo
 
 ```TypeScript
@@ -5589,14 +5399,14 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<voi
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](#setcustomdata1)
+> [setCustomData](#setcustomdata)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData](#setcustomdata1)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5624,8 +5434,6 @@ appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002', (err: BusinessError) 
 });
 ```
 
-<a id="setaccountextrainfo2"></a>
-
 ## setAccountExtraInfo
 
 ```TypeScript
@@ -5637,13 +5445,13 @@ setAccountExtraInfo(name: string, extraInfo: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](#setcustomdata2)替代。
+> [setCustomData](#setcustomdata)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData](#setcustomdata2)(name: string, key: string, value: string)
+**替代接口：** [setCustomData](#setcustomdata)(name: string, key: string, value: string)
 
 <!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>--><!--Device-AppAccountManager-setAccountExtraInfo(name: string, extraInfo: string): Promise<void>-End-->
 
@@ -5674,8 +5482,6 @@ appAccountManager.setAccountExtraInfo('ZhangSan', 'Tk002').then(() => {
 });
 ```
 
-<a id="setappaccountsyncenable1"></a>
-
 ## setAppAccountSyncEnable
 
 ```TypeScript
@@ -5687,14 +5493,14 @@ setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setDataSyncEnabled](#setdatasyncenabled1)
+> [setDataSyncEnabled](#setdatasyncenabled)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setDataSyncEnabled](#setdatasyncenabled1)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setDataSyncEnabled](#setdatasyncenabled)(name: string, isEnabled: boolean, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5724,8 +5530,6 @@ appAccountManager.setAppAccountSyncEnable('ZhangSan', true, (err: BusinessError)
 });
 ```
 
-<a id="setappaccountsyncenable2"></a>
-
 ## setAppAccountSyncEnable
 
 ```TypeScript
@@ -5737,13 +5541,13 @@ setAppAccountSyncEnable(name: string, isEnable: boolean): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setDataSyncEnabled](#setdatasyncenabled2)替代。
+> [setDataSyncEnabled](#setdatasyncenabled)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setDataSyncEnabled](#setdatasyncenabled2)(name: string, isEnabled: boolean)
+**替代接口：** [setDataSyncEnabled](#setdatasyncenabled)(name: string, isEnabled: boolean)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -5776,8 +5580,6 @@ appAccountManager.setAppAccountSyncEnable('ZhangSan', true).then(() => {
 });
 ```
 
-<a id="setassociateddata1"></a>
-
 ## setAssociatedData
 
 ```TypeScript
@@ -5789,14 +5591,14 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](#setcustomdata1)
+> [setCustomData](#setcustomdata)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData](#setcustomdata1)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setCustomData](#setcustomdata)(name: string, key: string, value: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5825,8 +5627,6 @@ appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001', (err: BusinessEr
 });
 ```
 
-<a id="setassociateddata2"></a>
-
 ## setAssociatedData
 
 ```TypeScript
@@ -5838,13 +5638,13 @@ setAssociatedData(name: string, key: string, value: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setCustomData](#setcustomdata2)替代。
+> [setCustomData](#setcustomdata)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setCustomData](#setcustomdata2)(name: string, key: string, value: string)
+**替代接口：** [setCustomData](#setcustomdata)(name: string, key: string, value: string)
 
 <!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>--><!--Device-AppAccountManager-setAssociatedData(name: string, key: string, value: string): Promise<void>-End-->
 
@@ -5876,8 +5676,6 @@ appAccountManager.setAssociatedData('ZhangSan', 'k001', 'v001').then(() => {
 });
 ```
 
-<a id="setoauthtoken1"></a>
-
 ## setOAuthToken
 
 ```TypeScript
@@ -5889,14 +5687,14 @@ setOAuthToken(name: string, authType: string, token: string, callback: AsyncCall
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthToken](#setauthtoken1)
+> [setAuthToken](#setauthtoken)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthToken](#setauthtoken1)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setAuthToken](#setauthtoken)(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback<void>): void-End-->
 
@@ -5925,8 +5723,6 @@ appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessE
 });
 ```
 
-<a id="setoauthtoken2"></a>
-
 ## setOAuthToken
 
 ```TypeScript
@@ -5938,13 +5734,13 @@ setOAuthToken(name: string, authType: string, token: string): Promise<void>
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthToken](#setauthtoken2)替代。
+> [setAuthToken](#setauthtoken)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthToken](#setauthtoken2)(name: string, authType: string, token: string)
+**替代接口：** [setAuthToken](#setauthtoken)(name: string, authType: string, token: string)
 
 <!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>--><!--Device-AppAccountManager-setOAuthToken(name: string, authType: string, token: string): Promise<void>-End-->
 
@@ -5976,8 +5772,6 @@ appAccountManager.setOAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
 });
 ```
 
-<a id="setoauthtokenvisibility1"></a>
-
 ## setOAuthTokenVisibility
 
 ```TypeScript
@@ -5995,14 +5789,14 @@ setOAuthTokenVisibility(
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthTokenVisibility](#setauthtokenvisibility1)
+> [setAuthTokenVisibility](#setauthtokenvisibility)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthTokenVisibility](#setauthtokenvisibility1)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
+**替代接口：** [setAuthTokenVisibility](#setauthtokenvisibility)( name: string, authType: string, bundleName: string, isVisible: boolean, callback: AsyncCallback&lt;void&gt; )
 
 <!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void--><!--Device-AppAccountManager-setOAuthTokenVisibility(      name: string,      authType: string,      bundleName: string,      isVisible: boolean,      callback: AsyncCallback<void>    ): void-End-->
 
@@ -6033,8 +5827,6 @@ appAccountManager.setOAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.
   });
 ```
 
-<a id="setoauthtokenvisibility2"></a>
-
 ## setOAuthTokenVisibility
 
 ```TypeScript
@@ -6046,14 +5838,14 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃。建议使用
-> [setAuthTokenVisibility](#setauthtokenvisibility2)
+> [setAuthTokenVisibility](#setauthtokenvisibility)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [setAuthTokenVisibility](#setauthtokenvisibility2)(name: string, authType: string, bundleName: string, isVisible: boolean)
+**替代接口：** [setAuthTokenVisibility](#setauthtokenvisibility)(name: string, authType: string, bundleName: string, isVisible: boolean)
 
 <!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>--><!--Device-AppAccountManager-setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVisible: boolean): Promise<void>-End-->
 

@@ -4,7 +4,7 @@ Provides matrix transformation capabilities for components, including translatio
 
 **Matrix4** can be used in the following scenarios:
 
-In [Transformation](../arkts-components/arkts-arkui-common-comp.md), the [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform2) API uses the **Matrix4** object to set the two -dimensional transformation matrix for a component, and the [transform3D](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform3d) API uses the **Matrix4** object to set the three-dimensional transformation matrix for a component.
+In [Transformation](../arkts-components/arkts-arkui-common-comp.md), the [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform) API uses the **Matrix4** object to set the two -dimensional transformation matrix for a component, and the [transform3D](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform3d) API uses the **Matrix4** object to set the three-dimensional transformation matrix for a component.
 
 **Since:** 7
 

@@ -26,7 +26,9 @@ import { SubHeaderV2IconType, SubHeaderV2Title, SubHeaderV2Select, SubHeaderV2, 
 action?: SubHeaderV2OperationItemAction
 ```
 
-callback function when operate the text or icon.
+Callback function when operate the text or icon.
+
+Default value: **() =&gt; void**.
 
 **Since:** 18
 

@@ -24,7 +24,7 @@ import { vibrator } from '@kit.SensorServiceKit';
 deviceId: number
 ```
 
-设备的ID。可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration5)等接口指定目标设备。
+设备的ID。可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration)和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)等接口指定目标设备。
 
 **类型：** number
 

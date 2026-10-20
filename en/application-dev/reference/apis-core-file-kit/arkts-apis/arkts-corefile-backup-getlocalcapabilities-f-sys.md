@@ -6,8 +6,6 @@
 import { backup } from '@kit.CoreFileKit';
 ```
 
-<a id="getlocalcapabilities1"></a>
-
 ## getLocalCapabilities
 
 ```TypeScript
@@ -83,8 +81,6 @@ The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](
 
 <!--DelEnd-->
 
-
-<a id="getlocalcapabilities2"></a>
 
 ## getLocalCapabilities
 
@@ -165,8 +161,6 @@ The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](
 <!--DelEnd-->
 
 
-<a id="getlocalcapabilities3"></a>
-
 ## getLocalCapabilities
 
 ```TypeScript
@@ -203,7 +197,7 @@ Obtain a json file that describes local capabilities.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13600001 | IPC error |
 | 13900005 | I/O error |
 | 13900011 | Out of memory |

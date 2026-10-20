@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getbundleinfoforself1"></a>
-
 ## getBundleInfoForSelf
 
 ```TypeScript
@@ -65,8 +63,6 @@ try {
 }
 ```
 
-
-<a id="getbundleinfoforself2"></a>
 
 ## getBundleInfoForSelf
 

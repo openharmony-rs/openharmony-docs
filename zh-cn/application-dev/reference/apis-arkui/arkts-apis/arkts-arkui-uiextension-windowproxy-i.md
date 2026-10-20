@@ -18,8 +18,6 @@ UIExtension窗口代理。
 import { uiExtension } from '@kit.ArkUI';
 ```
 
-<a id="createsubwindowwithoptions1"></a>
-
 ## createSubWindowWithOptions
 
 ```TypeScript
@@ -107,8 +105,6 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-<a id="createsubwindowwithoptions2"></a>
-
 ## createSubWindowWithOptions
 
 ```TypeScript
@@ -195,7 +191,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-## getWindowAvoidArea
+## getWindowAvoidArea('window.AvoidAreaType')
 
 ```TypeScript
 getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea

@@ -28,3 +28,16 @@ function remove(obj: object, property: string): void
 | --- | --- | --- | --- |
 | obj | object | 是 | ArkTS对象，仅支持最外层为字典形式（即大括号而非中括号包围）的合法JSON串解析后的对象。 |
 | property | string | 是 | 要删除的属性名称，用于指定需从ArkTS对象中移除的属性。 |
+
+**示例**
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+
+const jsonText = '{"name": "John", "age": 30, "city": "ChongQing"}';
+let inputObj = JSON.parse(jsonText);
+JSON.remove(inputObj, "name");
+let result = JSON.has(inputObj, "name");
+console.info("result = " + result);
+// 打印结果：result = false
+```

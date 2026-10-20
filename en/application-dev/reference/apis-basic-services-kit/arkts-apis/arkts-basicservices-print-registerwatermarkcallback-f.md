@@ -28,7 +28,7 @@ Register to listen for watermark handling.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | Yes | Indicates the callback type used in registering to listen for watermark handling.<br>Indicates the callback type used in registering to listen for watermark handling. |
+| callback | [WatermarkCallback](arkts-basicservices-print-watermarkcallback-t.md) | Yes | Indicates the callback type used in registering to listen for watermark handling. <br>Indicates the callback type used in registering to listen for watermark handling. |
 
 **Error codes:**
 

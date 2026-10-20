@@ -206,7 +206,7 @@ onTimer(event: (utc: number, elapsedTime: number) => void)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| event | (utc: number, elapsedTime: number) =&gt; void | 是 | utc: Linux timestamp, which is the amount of time that has elapsed since January 1, 1970, in the minimum unit of the format.<br>elapsedTime: Elapsed time of the timer, in the minimum unit of the format. |
+| event | (utc: number, elapsedTime: number) =&gt; void | 是 | utc: Linux timestamp, which is the amount of time that has elapsed since January 1, 1970, in the minimum unit of the format. <br>elapsedTime: Elapsed time of the timer, in the minimum unit of the format. |
 
 ## textShadow
 

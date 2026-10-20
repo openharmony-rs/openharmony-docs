@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="getactivesimaccountinfolist1"></a>
-
 ## getActiveSimAccountInfoList
 
 ```TypeScript
@@ -60,8 +58,6 @@ sim.getActiveSimAccountInfoList((err: BusinessError, data: Array<sim.IccAccountI
 });
 ```
 
-
-<a id="getactivesimaccountinfolist2"></a>
 
 ## getActiveSimAccountInfoList
 

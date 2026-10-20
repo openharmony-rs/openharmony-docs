@@ -6,8 +6,6 @@
 import { geolocation } from '@kit.LocationKit';
 ```
 
-<a id="flushcachedgnsslocations1"></a>
-
 ## flushCachedGnssLocations
 
 ```TypeScript
@@ -48,8 +46,6 @@ geolocation.flushCachedGnssLocations((err, result) => {
 });
 ```
 
-
-<a id="flushcachedgnsslocations2"></a>
 
 ## flushCachedGnssLocations
 

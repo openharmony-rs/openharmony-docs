@@ -6,8 +6,6 @@ export interface Rect
 
 用于表示平面中的矩形。
 
-@typedef Rect
-
 **起始版本：** 12
 
 <!--Device-unnamed-export interface Rect--><!--Device-unnamed-export interface Rect-End-->

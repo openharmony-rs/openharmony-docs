@@ -4,7 +4,7 @@
 interface KVManager
 ```
 
-数据管理实例，用于获取KVStore的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager1)构建一个KVManager实例。
+数据管理实例，用于获取KVStore的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager)构建一个KVManager实例。
 
 **起始版本：** 7
 
@@ -20,8 +20,6 @@ interface KVManager
 
 ```TypeScript
 ```
-
-<a id="closekvstore1"></a>
 
 ## closeKVStore
 
@@ -46,7 +44,7 @@ closeKVStore(appId: string, storeId: string, kvStore: KVStore, callback: AsyncCa
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | appId | string | 是 | 所调用数据库方的包名。 |
-| storeId | string | 是 | Unique identifier of the 要关闭的KVStore数据库。 The length cannot exceed [MAX_STORE_ID_LENGTH](arkts-arkdata-distributeddata-constants-n.md). |
+| storeId | string | 是 | 要关闭的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](arkts-arkdata-distributeddata-constants-n.md)。 |
 | kvStore | [KVStore](arkts-arkdata-distributeddata-kvstore-i.md) | 是 | 要关闭的KVStore数据库。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
@@ -77,8 +75,6 @@ try {
 }
 ```
 
-<a id="closekvstore2"></a>
-
 ## closeKVStore
 
 ```TypeScript
@@ -102,7 +98,7 @@ closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | appId | string | 是 | 所调用数据库方的包名。 |
-| storeId | string | 是 | Unique identifier of the 要关闭的KVStore数据库。 The length cannot exceed [MAX_STORE_ID_LENGTH](arkts-arkdata-distributeddata-constants-n.md). |
+| storeId | string | 是 | 要关闭的数据库唯一标识符，长度不大于[MAX_STORE_ID_LENGTH](arkts-arkdata-distributeddata-constants-n.md)。 |
 | kvStore | [KVStore](arkts-arkdata-distributeddata-kvstore-i.md) | 是 | 要关闭的KVStore数据库。 |
 
 **返回值：**
@@ -141,8 +137,6 @@ try {
     console.error('closeKVStore e ' + e);
 }
 ```
-
-<a id="deletekvstore1"></a>
 
 ## deleteKVStore
 
@@ -196,8 +190,6 @@ try {
     console.error('DeleteKVStore e ' + e);
 }
 ```
-
-<a id="deletekvstore2"></a>
 
 ## deleteKVStore
 
@@ -261,15 +253,13 @@ try {
 }
 ```
 
-<a id="getallkvstoreid1"></a>
-
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 ```
 
-获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore1)方法删除的KVStore数据库的storeId，使用callback异步回调。
+获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore)方法删除的KVStore数据库的storeId，使用callback异步回调。
 
 **起始版本：** 8
 
@@ -302,15 +292,13 @@ try {
 }
 ```
 
-<a id="getallkvstoreid2"></a>
-
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string): Promise<string[]>
 ```
 
-获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore1)方法删除的KVStore数据库的storeId，使用Promise异步回调。
+获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore)方法删除的KVStore数据库的storeId，使用Promise异步回调。
 
 **起始版本：** 8
 
@@ -350,8 +338,6 @@ try {
     console.error('getAllKVStoreId e ' + e);
 }
 ```
-
-<a id="getkvstore1"></a>
 
 ## getKVStore
 
@@ -408,8 +394,6 @@ try {
     console.error("An unexpected error occurred. Error:" + e);
 }
 ```
-
-<a id="getkvstore2"></a>
 
 ## getKVStore
 

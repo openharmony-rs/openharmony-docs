@@ -34,7 +34,13 @@ In the same lifecycle, you can set system event configuration by policy.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value. <br>For details about the event configuration policy, see [EventPolicy](arkts-performanceanalysis-hiappevent-eventpolicy-i.md). If the configuration policy is incorrect, the API returns a failure message. <br>- If the parameter type is incorrect, error code 401 is returned. <br>- If the parameter specifications are incorrect, the error information is output in HiLog logs. |
+| Promise&lt;void&gt; | Promise that returns no value. <br>For details about the event configuration policy, see [EventPolicy](arkts-performanceanalysis-hiappevent-eventpolicy-i.md). If the configuration policy is incorrect, the API returns a failure message. <br>- If the parameter specifications are incorrect, the error information is output in HiLog logs. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 
 **Examples**
 

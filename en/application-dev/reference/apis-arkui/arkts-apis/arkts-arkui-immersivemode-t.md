@@ -6,8 +6,6 @@ declare type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode
 
 Import the ImmersiveMode type from promptAction.
 
-@typedef { import('../api/@ohos.promptAction').ImmersiveMode } ImmersiveMode
-
 **Type:** import('../api/@ohos.promptAction').ImmersiveMode
 
 **Since:** 15

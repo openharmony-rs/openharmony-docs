@@ -40,7 +40,7 @@ Maximum number of batch operations allowed, which is 128.
 readonly MAX_KEY_LENGTH: number
 ```
 
-Maximum length of a key in the database, which is 1024 bytes.
+The value is 1024, indicating the maximum length allowed for a key in the database, in bytes.
 
 **Type:** number
 
@@ -56,7 +56,7 @@ Maximum length of a key in the database, which is 1024 bytes.
 readonly MAX_KEY_LENGTH_DEVICE: number
 ```
 
-Maximum length of a key in a device KV store, which is 896 bytes.
+The value is 896, indicating the maximum length allowed for a key in the device collaboration database, in bytes.
 
 **Type:** number
 
@@ -72,7 +72,7 @@ Maximum length of a key in a device KV store, which is 896 bytes.
 readonly MAX_QUERY_LENGTH: number
 ```
 
-Maximum query length, which is 512000 bytes.
+The value is 512000, indicating the maximum query length, in bytes.
 
 **Type:** number
 
@@ -88,7 +88,7 @@ Maximum query length, which is 512000 bytes.
 readonly MAX_STORE_ID_LENGTH: number
 ```
 
-Maximum length of a KV store ID, which is 128 bytes.
+The value is 128, indicating the maximum length allowed for a database identifier, in bytes.
 
 **Type:** number
 
@@ -104,7 +104,7 @@ Maximum length of a KV store ID, which is 128 bytes.
 readonly MAX_VALUE_LENGTH: number
 ```
 
-Maximum length of a value in the database, which is 4194303 bytes.
+The value is 4194303, indicating the maximum length allowed for a value in the database, in bytes.
 
 **Type:** number
 

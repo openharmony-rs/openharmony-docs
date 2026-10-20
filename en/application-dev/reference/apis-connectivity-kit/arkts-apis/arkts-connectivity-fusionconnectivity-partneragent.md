@@ -2,9 +2,9 @@
 
 Provides APIs for managing partner agents.
 
-@namespace partnerAgent
-
 **Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace partnerAgent--><!--Device-unnamed-declare namespace partnerAgent-End-->
 

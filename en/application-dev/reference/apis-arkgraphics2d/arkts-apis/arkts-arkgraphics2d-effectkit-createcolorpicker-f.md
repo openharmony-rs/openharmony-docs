@@ -6,8 +6,6 @@
 import { effectKit } from '@kit.ArkGraphics2D';
 ```
 
-<a id="createcolorpicker1"></a>
-
 ## createColorPicker
 
 ```TypeScript
@@ -74,8 +72,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 });
 ```
 
-
-<a id="createcolorpicker2"></a>
 
 ## createColorPicker
 
@@ -145,8 +141,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 ```
 
 
-<a id="createcolorpicker3"></a>
-
 ## createColorPicker
 
 ```TypeScript
@@ -208,8 +202,6 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 });
 ```
 
-
-<a id="createcolorpicker4"></a>
 
 ## createColorPicker
 

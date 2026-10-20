@@ -6,8 +6,6 @@ export interface MissionCallback
 
 MissionCallback registered by app.
 
-@interface MissionCallback
-
 **Since:** 9
 
 <!--Device-unnamed-export interface MissionCallback--><!--Device-unnamed-export interface MissionCallback-End-->
@@ -126,7 +124,7 @@ distributedMissionManager.registerMissionListener(
 notifySnapshot: NotifySnapshotCallback
 ```
 
-Called by system when snapshot changed.
+Called by the system when a snapshot changes. The snapshot refers to a snapshot of the current UI state of the task. This is used in multi-device collaboration scenarios to listen for remote device task UI state changes, such as task switching, task recovery, and multi-screen collaboration UI synchronization.
 
 **Since:** 9
 

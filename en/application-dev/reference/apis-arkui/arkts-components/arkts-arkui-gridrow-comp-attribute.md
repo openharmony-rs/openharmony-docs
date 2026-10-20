@@ -40,7 +40,7 @@ Sets the alignment mode of **GridCol** within **GridRow** along the cross axis. 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md) | Yes | Alignment mode of **GridCol** within **GridRow** along the cross axis.<br>Default value: **ItemAlign.Start** <br>Invalid value: The default value is used. <br>**NOTE:** <br>The supported **ItemAlign** values are: **ItemAlign.Start**, **ItemAlign.Center**, **ItemAlign.End**, **ItemAlign.Stretch**. |
+| value | [ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md) | Yes | Alignment mode of **GridCol** within **GridRow** along the cross axis. <br>Default value: **ItemAlign.Start** <br>Invalid value: The default value is used. <br>**NOTE:** <br>The supported **ItemAlign** values are: **ItemAlign.Start**, **ItemAlign.Center**, **ItemAlign.End**, **ItemAlign.Stretch**. |
 
 ## onBreakpointChange
 

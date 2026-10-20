@@ -31,7 +31,7 @@ Queries the senior mode state of an app. This API uses a promise to return the r
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name of the app whose senior mode state is to be queried. |
-| appIndex | number | No | Clone index of the app bundle.<br>Value range: an integer greater than or equal to 0. If not specified, the default value is **0**. |
+| appIndex | number | No | Clone index of the app bundle. <br>Value range: an integer greater than or equal to 0. If not specified, the default value is **0**. |
 
 **Return value:**
 
@@ -43,10 +43,10 @@ Queries the senior mode state of an app. This API uses a promise to return the r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.<br>The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed.<br>A non-system application calls a system API. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. <br>The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. <br>A non-system application calls a system API. |
 | [9300000](../errorcode-accessibility.md#9300000-accessibility-system-service-abnormal) | System abnormality. |
-| [9300008](../errorcode-accessibility.md#9300008-app-clone-index-invalid) | The appIndex is invalid. Possible causes:<br>1.The appIndex is out of the valid range. <br>2.The application corresponding to the appIndex does not exist. |
+| [9300008](../errorcode-accessibility.md#9300008-app-clone-index-invalid) | The appIndex is invalid. Possible causes: <br>1.The appIndex is out of the valid range. <br>2.The application corresponding to the appIndex does not exist. |
 
 <!--Del-->
 **Examples**

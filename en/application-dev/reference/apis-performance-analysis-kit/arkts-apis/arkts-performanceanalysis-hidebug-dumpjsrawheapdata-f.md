@@ -6,8 +6,6 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="dumpjsrawheapdata1"></a>
-
 ## dumpJsRawHeapData
 
 ```TypeScript
@@ -69,8 +67,6 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 })
 ```
 
-
-<a id="dumpjsrawheapdata2"></a>
 
 ## dumpJsRawHeapData
 
@@ -137,8 +133,6 @@ hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
 })
 ```
 
-
-<a id="dumpjsrawheapdata3"></a>
 
 ## dumpJsRawHeapData
 

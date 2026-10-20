@@ -64,8 +64,6 @@ declare function rename(oldPath: string, newPath: string): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="rename2"></a>
-
 ## rename
 
 ```TypeScript

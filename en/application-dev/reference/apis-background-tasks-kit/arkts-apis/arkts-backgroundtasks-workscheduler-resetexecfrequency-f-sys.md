@@ -30,7 +30,7 @@ Reset the execution frequency.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uid | number | Yes | App uid.<br>The value should be an integer. |
+| uid | number | Yes | App uid. <br>The value should be an integer. |
 
 **Error codes:**
 

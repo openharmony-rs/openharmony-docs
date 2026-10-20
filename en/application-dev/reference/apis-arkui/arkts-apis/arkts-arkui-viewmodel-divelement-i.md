@@ -6,8 +6,6 @@ export interface DivElement extends Element
 
 The <div> component provides a div container.
 
-@extends Element @interface DivElement
-
 **Inheritance/Implementation:** DivElement extends [Element](arkts-arkui-viewmodel-element-i.md)
 
 **Since:** 6

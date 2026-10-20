@@ -28,7 +28,7 @@ Sets the enabled state of the magnification effect. The magnification effect dep
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| state | boolean | Yes | Indicates the enabled state of the magnification effect.<br>- **true**: indicates that the magnification effect is enabled. <br>- **false**: indicates that the magnification effect is disabled. |
+| state | boolean | Yes | Indicates the enabled state of the magnification effect. <br>- **true**: indicates that the magnification effect is enabled. <br>- **false**: indicates that the magnification effect is disabled. |
 
 **Error codes:**
 

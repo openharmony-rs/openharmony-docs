@@ -17,8 +17,8 @@
 > 已经显示的Tabs子组件TabContent后续隐藏时不会被销毁，若需要页面懒加载和释放，可以参考
 > [示例13](arkts-arkui-tabs-comp.md)。
 > 
-> Tabs设置[height](arkts-arkui-common-comp-commonmethod-c.md#height1)为auto时，可根据子组件高度自适应高度大小。设置
-> [width](arkts-arkui-common-comp-commonmethod-c.md#width1)为auto时，可根据子组件宽度自适应宽度大小。
+> Tabs设置[height](arkts-arkui-common-comp-commonmethod-c.md#height)为auto时，可根据子组件高度自适应高度大小。设置
+> [width](arkts-arkui-common-comp-commonmethod-c.md#width)为auto时，可根据子组件宽度自适应宽度大小。
 
 ## Tabs
 
@@ -75,10 +75,10 @@ Tabs(options?: TabsOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [AnimationMode](arkts-arkui-tabs-comp-animationmode-e.md) | 点击[TabBar](arkts-arkui-tabcontent-comp-attribute.md#tabbar1)页签时切换TabContent的动画形式枚举。 |
+| [AnimationMode](arkts-arkui-tabs-comp-animationmode-e.md) | 点击[TabBar](arkts-arkui-tabcontent-comp-attribute.md#tabbar)页签时切换TabContent的动画形式枚举。 |
 | [BarMode](arkts-arkui-tabs-comp-barmode-e.md) | TabBar布局模式枚举。 |
 | [BarPosition](arkts-arkui-tabs-comp-barposition-e.md) | Tabs页签位置枚举。 |
-| [LayoutStyle](arkts-arkui-tabs-comp-layoutstyle-e.md) | [Scrollable](arkts-arkui-tabs-comp-attribute.md#barmode3)模式下不滚动时的页签排布方式枚举。 |
+| [LayoutStyle](arkts-arkui-tabs-comp-layoutstyle-e.md) | [Scrollable](arkts-arkui-tabs-comp-attribute.md#barmode)模式下不滚动时的页签排布方式枚举。 |
 | [TabsCacheMode](arkts-arkui-tabs-comp-tabscachemode-e.md) | 子组件的缓存模式。 |
 | [TabsNestedScrollMode](arkts-arkui-tabs-comp-tabsnestedscrollmode-e.md) | Tabs组件和父组件的嵌套滚动模式枚举。 |
 

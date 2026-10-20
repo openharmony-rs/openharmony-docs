@@ -6,8 +6,6 @@
 import { FaultLogger } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="query1"></a>
-
 ## query
 
 ```TypeScript
@@ -72,8 +70,6 @@ try {
 }
 ```
 
-
-<a id="query2"></a>
 
 ## query
 

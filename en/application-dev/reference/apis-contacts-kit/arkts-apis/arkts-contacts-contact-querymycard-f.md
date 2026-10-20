@@ -6,8 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="querymycard1"></a>
-
 ## queryMyCard
 
 ```TypeScript
@@ -20,7 +18,7 @@ Queries my card. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryMyCard](#querymycard2)(context: Context, callback: AsyncCallback&lt;Contact&gt;)
+**Substitutes:** [queryMyCard](#querymycard)(context: Context, callback: AsyncCallback&lt;Contact&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -50,8 +48,6 @@ contact.queryMyCard((err: BusinessError, data) => {
 });
 ```
 
-
-<a id="querymycard2"></a>
 
 ## queryMyCard
 
@@ -106,8 +102,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 
-<a id="querymycard3"></a>
-
 ## queryMyCard
 
 ```TypeScript
@@ -120,7 +114,7 @@ Queries my card. (The contact attribute list can be imported.) This API uses an 
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryMyCard](#querymycard4)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
+**Substitutes:** [queryMyCard](#querymycard)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -153,8 +147,6 @@ contact.queryMyCard({
 });
 ```
 
-
-<a id="querymycard4"></a>
 
 ## queryMyCard
 
@@ -212,8 +204,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 
-<a id="querymycard5"></a>
-
 ## queryMyCard
 
 ```TypeScript
@@ -226,7 +216,7 @@ Queries my card. (The contact attribute list can be imported.) This API uses a p
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryMyCard](#querymycard6)(context: Context, attrs?: ContactAttributes)
+**Substitutes:** [queryMyCard](#querymycard)(context: Context, attrs?: ContactAttributes)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -260,8 +250,6 @@ promise.then((data) => {
 });
 ```
 
-
-<a id="querymycard6"></a>
 
 ## queryMyCard
 

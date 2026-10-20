@@ -120,8 +120,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="requestmodaluiextension1"></a>
-
 ## requestModalUIExtension
 
 ```TypeScript
@@ -206,8 +204,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="requestmodaluiextension2"></a>
 
 ## requestModalUIExtension
 
@@ -393,8 +389,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="setmissionicon1"></a>
-
 ## setMissionIcon
 
 ```TypeScript
@@ -467,8 +461,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="setmissionicon2"></a>
 
 ## setMissionIcon
 
@@ -547,8 +539,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startabilityascaller1"></a>
 
 ## startAbilityAsCaller
 
@@ -638,8 +628,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startabilityascaller2"></a>
 
 ## startAbilityAsCaller
 
@@ -731,8 +719,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startabilityascaller3"></a>
 
 ## startAbilityAsCaller
 
@@ -945,8 +931,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="startabilityforresultwithaccount1"></a>
-
 ## startAbilityForResultWithAccount
 
 ```TypeScript
@@ -1052,8 +1036,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startabilityforresultwithaccount2"></a>
 
 ## startAbilityForResultWithAccount
 
@@ -1169,8 +1151,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="startabilityforresultwithaccount3"></a>
-
 ## startAbilityForResultWithAccount
 
 ```TypeScript
@@ -1285,8 +1265,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="startabilitywithaccount1"></a>
-
 ## startAbilityWithAccount
 
 ```TypeScript
@@ -1391,8 +1369,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startabilitywithaccount2"></a>
 
 ## startAbilityWithAccount
 
@@ -1502,8 +1478,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startabilitywithaccount3"></a>
 
 ## startAbilityWithAccount
 
@@ -1619,8 +1593,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="startrecentability1"></a>
-
 ## startRecentAbility
 
 ```TypeScript
@@ -1722,8 +1694,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startrecentability2"></a>
 
 ## startRecentAbility
 
@@ -1831,8 +1801,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startrecentability3"></a>
 
 ## startRecentAbility
 
@@ -1945,8 +1913,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="startserviceextensionability1"></a>
-
 ## startServiceExtensionAbility
 
 ```TypeScript
@@ -2028,8 +1994,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startserviceextensionability2"></a>
 
 ## startServiceExtensionAbility
 
@@ -2117,8 +2081,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startserviceextensionabilitywithaccount1"></a>
 
 ## startServiceExtensionAbilityWithAccount
 
@@ -2212,8 +2174,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startserviceextensionabilitywithaccount2"></a>
 
 ## startServiceExtensionAbilityWithAccount
 
@@ -2313,8 +2273,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="stopserviceextensionability1"></a>
-
 ## stopServiceExtensionAbility
 
 ```TypeScript
@@ -2394,8 +2352,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="stopserviceextensionability2"></a>
 
 ## stopServiceExtensionAbility
 
@@ -2479,8 +2435,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="stopserviceextensionabilitywithaccount1"></a>
 
 ## stopServiceExtensionAbilityWithAccount
 
@@ -2567,8 +2521,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="stopserviceextensionabilitywithaccount2"></a>
 
 ## stopServiceExtensionAbilityWithAccount
 
@@ -2769,8 +2721,6 @@ export default class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-<a id="disconnectability1"></a>
-
 ## disconnectAbility
 
 ```TypeScript
@@ -2845,8 +2795,6 @@ export default class EntryAbility extends UIAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="disconnectability2"></a>
 
 ## disconnectAbility
 

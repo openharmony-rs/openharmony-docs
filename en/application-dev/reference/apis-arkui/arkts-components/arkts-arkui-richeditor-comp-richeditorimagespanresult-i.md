@@ -32,6 +32,26 @@ Image style.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## imageTag
+
+```TypeScript
+imageTag?: string
+```
+
+Image text tag.
+
+**Type:** string
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-RichEditorImageSpanResult-imageTag?: string--><!--Device-RichEditorImageSpanResult-imageTag?: string-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## offsetInSpan
 
 ```TypeScript

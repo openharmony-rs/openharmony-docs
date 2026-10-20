@@ -35,7 +35,7 @@ function on(type: 'operationSubmitMetadata', bundleName: string, callback: Callb
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [32100001](../errorcode-metadataBinding.md#32100001-文件创建失败) | Internal handling failed. |
-| [32100004](../errorcode-metadataBinding.md#32100004-订阅失败) | Subscribe Failed. Possible causes:<br>1. Abnormal system capability. <br>2. IPC communication abnormality. <br>3. Algorithm loading exception. |
+| [32100004](../errorcode-metadataBinding.md#32100004-订阅失败) | Subscribe Failed. Possible causes: <br>1. Abnormal system capability. <br>2. IPC communication abnormality. <br>3. Algorithm loading exception. |
 
 **示例**
 

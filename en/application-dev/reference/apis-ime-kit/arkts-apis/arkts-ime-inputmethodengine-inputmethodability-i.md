@@ -18,8 +18,6 @@ In the following API examples, you must first use [getInputMethodAbility](arkts-
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
-<a id="createpanel1"></a>
-
 ## createPanel
 
 ```TypeScript
@@ -29,8 +27,17 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback<Panel>): 
 Creates an input method panel. This API can be called only by the input method application in the [InputMethodExtensionAbility](arkts-ime-inputmethodextensionability-c.md) class. This API uses an asynchronous callback to return the result. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> Only one [SOFT_KEYBOARD](arkts-ime-inputmethodengine-paneltype-e.md) panel and one [STATUS_BAR](arkts-ime-inputmethodengine-paneltype-e.md) panel can be created for a single input method. <br> <br>
-> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1), and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu1), or set **showInSubwindow** to **false**.
+> Only one [SOFT_KEYBOARD](arkts-ime-inputmethodengine-paneltype-e.md) panel and one <br>
+> [STATUS_BAR](arkts-ime-inputmethodengine-paneltype-e.md) panel can be created for a single input method. <br> <br>
+> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such <br>
+> as <br>
+> [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), <br>
+> <br>
+> [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu), <br>
+> and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog). You are advised to adopt <br>
+> alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or <br>
+> [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu), or <br>
+> set **showInSubwindow** to **false**.
 
 **Since:** 10
 
@@ -82,8 +89,6 @@ class InputMethodExt extends InputMethodExtensionAbility {
 }
 ```
 
-<a id="createpanel2"></a>
-
 ## createPanel
 
 ```TypeScript
@@ -93,9 +98,17 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise<Panel>
 Creates an input method panel. This API can be called only by the input method application in the [InputMethodExtensionAbility](arkts-ime-inputmethodextensionability-c.md) class. This API uses a promise to return the result. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> Only one [SOFT_KEYBOARD](arkts-ime-inputmethodengine-paneltype-e.md) panel and one [STATUS_BAR](arkts-ime-inputmethodengine-paneltype-e.md) panel can be created for a single input method. <br>
+> Only one [SOFT_KEYBOARD](arkts-ime-inputmethodengine-paneltype-e.md) panel and one <br>
+> [STATUS_BAR](arkts-ime-inputmethodengine-paneltype-e.md) panel can be created for a single input method. <br> <br>
+> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such <br>
+> as <br>
+> [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), <br>
 > <br>
-> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1), and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu1), or set **showInSubwindow** to **false**.
+> [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu), <br>
+> and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog). You are advised to adopt <br>
+> alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or <br>
+> [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu), or <br>
+> set **showInSubwindow** to **false**.
 
 **Since:** 10
 
@@ -149,8 +162,6 @@ class InputMethodExt extends InputMethodExtensionAbility {
     }
 }
 ```
-
-<a id="destroypanel1"></a>
 
 ## destroyPanel
 
@@ -212,8 +223,6 @@ if (inputPanel) {
   })
 }
 ```
-
-<a id="destroypanel2"></a>
 
 ## destroyPanel
 
@@ -415,7 +424,7 @@ Disables listening for a keyboard visibility event. This API uses an asynchronou
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'keyboardShow' &#124; 'keyboardHide' | Yes | Event type.<br>- The value **'keyboardShow'** indicates the keyboard display event. <br>- The value **'keyboardHide'** indicates the keyboard hiding event. |
+| type | 'keyboardShow' &#124; 'keyboardHide' | Yes | Event type. <br> - The value **'keyboardShow'** indicates the keyboard display event. <br> - The value **'keyboardHide'** indicates the keyboard hiding event. |
 | callback | () =&gt; void | No | Callback used to return the result. |
 
 **Examples**
@@ -578,7 +587,7 @@ Unsubscribes from the event of discarding candidate words and sends the event to
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'discardTypingText' | Yes | Event type, which is **'discardTypingText'**.<br> - **'discardTypingText'**: indicates unsubscribing from the event of discarding candidate words and sending the event to the input method. |
+| type | 'discardTypingText' | Yes | Event type, which is **'discardTypingText'**. <br> - **'discardTypingText'**: indicates unsubscribing from the event of discarding candidate words and sending the event to the input method. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified type. |
 
 **Examples**
@@ -697,7 +706,7 @@ Enables listening for a keyboard visibility event. This API uses an asynchronous
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'keyboardShow' &#124; 'keyboardHide' | Yes | Event type.<br>- The value **'keyboardShow'** indicates the keyboard display event. <br>- The value **'keyboardHide'** indicates the keyboard hiding event. |
+| type | 'keyboardShow' &#124; 'keyboardHide' | Yes | Event type. <br> - The value **'keyboardShow'** indicates the keyboard display event. <br> - The value **'keyboardHide'** indicates the keyboard hiding event. |
 | callback | () =&gt; void | Yes | Callback used to return the result. |
 
 **Examples**
@@ -836,7 +845,7 @@ Enables listening for changes of the screen ID of the window associated with the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability;         2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Examples**
 
@@ -865,7 +874,7 @@ Subscribes to the event of discarding candidate words and sends the event to the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'discardTypingText' | Yes | Event type, which is **'discardTypingText'**.<br> - **'discardTypingText'**: indicates subscribing to the event of discarding candidate words and sending the event to the input method. |
+| type | 'discardTypingText' | Yes | Event type, which is **'discardTypingText'**. <br> - **'discardTypingText'**: indicates subscribing to the event of discarding candidate words and sending the event to the input method. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Examples**

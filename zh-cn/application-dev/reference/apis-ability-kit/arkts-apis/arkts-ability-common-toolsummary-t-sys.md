@@ -6,8 +6,6 @@ export type ToolSummary = _ToolSummary
 
 用于描述系统命令行工具（CLI）的摘要信息。
 
-@typedef { _ToolSummary }
-
 **类型：** _ToolSummary
 
 **起始版本：** 26.0.0

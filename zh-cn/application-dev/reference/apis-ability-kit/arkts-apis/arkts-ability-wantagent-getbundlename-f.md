@@ -6,8 +6,6 @@
 import { wantAgent, WantAgent } from '@kit.AbilityKit';
 ```
 
-<a id="getbundlename1"></a>
-
 ## getBundleName
 
 ```TypeScript
@@ -108,8 +106,6 @@ try {
 }
 ```
 
-
-<a id="getbundlename2"></a>
 
 ## getBundleName
 

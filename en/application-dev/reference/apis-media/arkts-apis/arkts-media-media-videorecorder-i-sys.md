@@ -19,8 +19,6 @@ The maintenance of this interface has been stopped since version api 9. Please u
 ```TypeScript
 ```
 
-<a id="getinputsurface1"></a>
-
 ## getInputSurface
 
 ```TypeScript
@@ -71,8 +69,6 @@ videoRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 ```
 
 <!--DelEnd-->
-
-<a id="getinputsurface3"></a>
 
 ## getInputSurface
 
@@ -169,8 +165,6 @@ videoRecorder.on('error', (error: BusinessError) => { // Set the 'error' event c
 
 <!--DelEnd-->
 
-<a id="pause1"></a>
-
 ## pause
 
 ```TypeScript
@@ -220,8 +214,6 @@ videoRecorder.pause((err: BusinessError) => {
 
 <!--DelEnd-->
 
-<a id="pause2"></a>
-
 ## pause
 
 ```TypeScript
@@ -269,8 +261,6 @@ videoRecorder.pause().then(() => {
 
 <!--DelEnd-->
 
-<a id="prepare1"></a>
-
 ## prepare
 
 ```TypeScript
@@ -301,7 +291,7 @@ Prepares for recording.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Return by callback. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by callback. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by callback. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App.<br>**Applicable version:** 12 and later |
@@ -347,8 +337,6 @@ videoRecorder.prepare(videoConfig, (err: BusinessError) => {
 
 <!--DelEnd-->
 
-<a id="prepare2"></a>
-
 ## prepare
 
 ```TypeScript
@@ -384,7 +372,7 @@ Prepares for recording.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Return by promise. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3.Parameter verification failed. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Return by promise. |
 | [5400105](../../apis-media-kit/errorcode-media.md#5400105-play-service-dead) | Service died. Return by promise. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App.<br>**Applicable version:** 12 and later |
@@ -427,8 +415,6 @@ videoRecorder.prepare(videoConfig).then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="release1"></a>
 
 ## release
 
@@ -477,8 +463,6 @@ videoRecorder.release((err: BusinessError) => {
 
 <!--DelEnd-->
 
-<a id="release2"></a>
-
 ## release
 
 ```TypeScript
@@ -523,8 +507,6 @@ videoRecorder.release().then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="reset1"></a>
 
 ## reset
 
@@ -574,8 +556,6 @@ videoRecorder.reset((err: BusinessError) => {
 
 <!--DelEnd-->
 
-<a id="reset2"></a>
-
 ## reset
 
 ```TypeScript
@@ -621,8 +601,6 @@ videoRecorder.reset().then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="resume1"></a>
 
 ## resume
 
@@ -673,8 +651,6 @@ videoRecorder.resume((err: BusinessError) => {
 
 <!--DelEnd-->
 
-<a id="resume2"></a>
-
 ## resume
 
 ```TypeScript
@@ -721,8 +697,6 @@ videoRecorder.resume().then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="start1"></a>
 
 ## start
 
@@ -773,8 +747,6 @@ videoRecorder.start((err: BusinessError) => {
 
 <!--DelEnd-->
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -821,8 +793,6 @@ videoRecorder.start().then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="stop1"></a>
 
 ## stop
 
@@ -872,8 +842,6 @@ videoRecorder.stop((err: BusinessError) => {
 ```
 
 <!--DelEnd-->
-
-<a id="stop2"></a>
 
 ## stop
 

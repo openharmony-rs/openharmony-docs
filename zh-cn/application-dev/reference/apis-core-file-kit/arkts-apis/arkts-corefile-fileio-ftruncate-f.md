@@ -37,8 +37,6 @@ declare function ftruncate(fd: number, len?: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="ftruncate2"></a>
-
 ## ftruncate
 
 ```TypeScript
@@ -64,8 +62,6 @@ declare function ftruncate(fd: number, callback: AsyncCallback<void>): void
 | fd | number | 是 | 待截断文件的文件描述符。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，本调用无返回值。 |
 
-
-<a id="ftruncate3"></a>
 
 ## ftruncate
 

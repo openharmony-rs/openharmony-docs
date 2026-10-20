@@ -6,8 +6,6 @@
 import { sharing } from '@kit.NetworkKit';
 ```
 
-<a id="issharingsupported1"></a>
-
 ## isSharingSupported
 
 ```TypeScript
@@ -57,8 +55,6 @@ sharing.isSharingSupported((error: BusinessError, data: boolean) => {
 
 <!--DelEnd-->
 
-
-<a id="issharingsupported2"></a>
 
 ## isSharingSupported
 

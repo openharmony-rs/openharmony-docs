@@ -88,3 +88,5 @@ isPaused?: boolean
 <!--Device-NotificationTime-isPaused?: boolean--><!--Device-NotificationTime-isPaused?: boolean-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
+
+**示例**

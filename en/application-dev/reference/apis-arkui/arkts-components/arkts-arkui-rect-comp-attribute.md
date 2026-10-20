@@ -38,7 +38,7 @@ Sets the radius of the rounded corner. The value range is greater than or equal 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) &#124; Array&lt;any&gt; | Yes | Rounded corner radius.<br>Default value: **0** <br>Default unit: vp <br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are processed as [[0, 0], [0, 0], [0, 0], [0, 0]].<br>**Since:** 20 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) &#124; Array&lt;any&gt; | Yes | Rounded corner radius. <br>Default value: **0** <br>Default unit: vp <br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are processed as [[0, 0], [0, 0], [0, 0], [0, 0]].<br>**Since:** 20 |
 
 ## radiusHeight
 
@@ -64,7 +64,7 @@ Sets the height of the rounded corner. When only **radiusHeight** is set, the he
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Height of the rounded corner. Value range: ≥ 0.<br>Default value: **0** <br>Default unit: vp. <br>The abnormal values **undefined**, **null**, **NaN**, and **Infinity** are processed as the default value.<br>**Since:** 20 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Height of the rounded corner. Value range: ≥ 0. <br>Default value: **0** <br>Default unit: vp. <br>The abnormal values **undefined**, **null**, **NaN**, and **Infinity** are processed as the default value.<br>**Since:** 20 |
 
 ## radiusWidth
 
@@ -90,4 +90,4 @@ Sets the width of the rounded corner. When only **radiusWidth** is set, the widt
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Width of the rounded corner. Value range: ≥ 0.<br>Default value: **0** <br>Default unit: vp <br>The abnormal values **undefined**, **null**, **NaN**, and **Infinity** are processed as the default value.<br>**Since:** 20 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Width of the rounded corner. Value range: ≥ 0. <br>Default value: **0** <br>Default unit: vp <br>The abnormal values **undefined**, **null**, **NaN**, and **Infinity** are processed as the default value.<br>**Since:** 20 |

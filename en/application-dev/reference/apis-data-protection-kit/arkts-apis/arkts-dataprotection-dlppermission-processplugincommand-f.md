@@ -29,7 +29,7 @@ Process the plugin-related commands in the transparent encryption and decryption
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | code | [PluginCmd](arkts-dataprotection-dlppermission-plugincmd-e.md) | Yes | Represents the command code for the plugin of an enterprise security application |
-| message | string | Yes | Represents the messages associated with the given command<br>The maximum length is 4096. |
+| message | string | Yes | Represents the messages associated with the given command <br>The maximum length is 4096. |
 
 **Return value:**
 

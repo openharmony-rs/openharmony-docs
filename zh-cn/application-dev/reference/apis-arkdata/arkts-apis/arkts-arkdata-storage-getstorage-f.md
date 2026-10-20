@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getstorage1"></a>
-
 ## getStorage
 
 ```TypeScript
@@ -30,8 +28,6 @@ function getStorage(path: string, callback: AsyncCallback<Storage>): void
 | path | string | 是 | 应用程序内部数据存储路径。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Storage](arkts-arkdata-storage-storage-i.md)&gt; | 是 | 回调函数。 |
 
-
-<a id="getstorage2"></a>
 
 ## getStorage
 

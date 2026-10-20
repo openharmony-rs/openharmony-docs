@@ -2,9 +2,9 @@
 
 This module provides app domain verification info.
 
-@namespace appDomainVerify
-
 **Since:** 13
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace appDomainVerify--><!--Device-unnamed-declare namespace appDomainVerify-End-->
 

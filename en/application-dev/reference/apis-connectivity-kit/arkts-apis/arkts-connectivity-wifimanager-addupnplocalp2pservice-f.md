@@ -29,9 +29,9 @@ Add a UPnP local P2P service description and register it.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uuid | string | Yes | A string representation of this UUID in the following format. as per<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>.<br> The standard fixed length is 36 characters, and spaces are not allowed. for example, "6859dede-8574-59ab-9332-123456789012" |
-| device | string | Yes | UPnP device type, a string representation of this device in the following format, as per<a href="http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf">. UPnP Device Architecture 1.1</a><br> The length depends on the standard definition, and spaces are not allowed. It is usually tens of characters, and it is recommended to keep it within 255 characters. for example, "urn:schemas-upnp-org:device:MediaServer:1" |
-| services | Array&lt;string&gt; | Yes | UPnP service type list, a string representation of this service in the following format, as per<a href="http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf">. UPnP Device Architecture 1.1</a><br> The length of each service must not exceed 512 bytes. It is recommended that the Array contain no more. for example, ["urn:schemas-upnp-org:service:ContentDirectory:1"] |
+| uuid | string | Yes | A string representation of this UUID in the following format. as per <a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>.<br> The standard fixed length is 36 characters, and spaces are not allowed. for example, "6859dede-8574-59ab-9332-123456789012" |
+| device | string | Yes | UPnP device type, a string representation of this device in the following format, as per <a href="http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf">. UPnP Device Architecture 1.1</a><br> The length depends on the standard definition, and spaces are not allowed. It is usually tens of characters, and it is recommended to keep it within 255 characters. for example, "urn:schemas-upnp-org:device:MediaServer:1" |
+| services | Array&lt;string&gt; | Yes | UPnP service type list, a string representation of this service in the following format, as per <a href="http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf">. UPnP Device Architecture 1.1</a><br> The length of each service must not exceed 512 bytes. It is recommended that the Array contain no more. for example, ["urn:schemas-upnp-org:service:ContentDirectory:1"] |
 | serviceName | string | Yes | Service name used to identify the local service object. |
 
 **Error codes:**

@@ -6,8 +6,6 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
-<a id="setprinterdisabled1"></a>
-
 ## setPrinterDisabled
 
 ```TypeScript
@@ -20,7 +18,7 @@ function setPrinterDisabled(admin: Want, disabled: boolean, callback: AsyncCallb
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
@@ -75,8 +73,6 @@ restrictions.setPrinterDisabled(wantTemp, true, (err) => {
 <!--DelEnd-->
 
 
-<a id="setprinterdisabled2"></a>
-
 ## setPrinterDisabled
 
 ```TypeScript
@@ -89,7 +85,7 @@ function setPrinterDisabled(admin: Want, disabled: boolean): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESTRICT_POLICY
 

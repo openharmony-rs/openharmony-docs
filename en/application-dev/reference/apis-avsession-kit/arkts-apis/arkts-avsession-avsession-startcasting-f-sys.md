@@ -6,8 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="startcasting1"></a>
-
 ## startCasting
 
 ```TypeScript
@@ -66,8 +64,6 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
 
 <!--DelEnd-->
 
-
-<a id="startcasting2"></a>
 
 ## startCasting
 

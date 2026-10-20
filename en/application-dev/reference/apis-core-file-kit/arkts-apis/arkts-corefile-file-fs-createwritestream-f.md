@@ -25,7 +25,7 @@ Creates a writeable stream. This API returns the result synchronously.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | path | string | Yes | Path of the file. |
-| options | [WriteStreamOptions](arkts-corefile-file-fs-writestreamoptions-i.md) | No | The options are as follows:<br>- **start** (number): start position to write the data, in bytes. This parameter is optional. By default, data is written from the current position.<br>- **mode** (number): [mode](../../../reference/apis-core-file-kit/js-apis-file-fs.md#openmode) for creating the writeable stream. This parameter is optional. The default value is the write-only mode. |
+| options | [WriteStreamOptions](arkts-corefile-file-fs-writestreamoptions-i.md) | No | The options are as follows:<br>           - **start** (number): start position to write the data, in bytes. This parameter is optional.   By default, data is written from the current position.<br>           - **mode** (number): [Mode](arkts-corefile-fileio-openmode-n.md) for creating the writeable stream.   This parameter is optional. The default value is the write-only mode. |
 
 **Return value:**
 

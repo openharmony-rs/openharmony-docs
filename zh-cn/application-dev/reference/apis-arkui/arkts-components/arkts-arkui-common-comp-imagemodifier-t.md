@@ -6,8 +6,6 @@ declare type ImageModifier = import('../api/arkui/ImageModifier').ImageModifier
 
 ImageModifier
 
-@typedef { import('../api/arkui/ImageModifier').ImageModifier } ImageModifier
-
 **类型：** import('../api/arkui/ImageModifier').ImageModifier
 
 **起始版本：** 12

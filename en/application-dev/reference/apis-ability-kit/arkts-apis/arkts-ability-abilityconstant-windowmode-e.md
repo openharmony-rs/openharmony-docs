@@ -4,7 +4,7 @@
 export enum WindowMode
 ```
 
-Enumerates the window modes in which a UIAbility can be displayed at startup. It can be used in [startAbility](arkts-ability-uiabilitycontext-c.md#startability3).
+Enumerates the window modes in which a UIAbility can be displayed at startup. It can be used in [startAbility](arkts-ability-uiabilitycontext-c.md#startability).
 
 **Since:** 12
 

@@ -4,6 +4,8 @@
 
 **Since:** 26.2.0
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace behaviorAwareness--><!--Device-unnamed-declare namespace behaviorAwareness-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.DeviceStatus

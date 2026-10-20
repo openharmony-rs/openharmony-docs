@@ -6,8 +6,6 @@ export default class FenceExtensionContext extends ExtensionContext
 
 class of static subscriber extension context.
 
-@extends ExtensionContext
-
 **Inheritance/Implementation:** FenceExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
 
 **Since:** 14

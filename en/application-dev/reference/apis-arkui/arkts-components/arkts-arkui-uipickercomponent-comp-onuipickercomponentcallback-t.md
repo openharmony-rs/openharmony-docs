@@ -20,4 +20,4 @@ Defines the callback type for the [onChange](arkts-arkui-uipickercomponent-comp-
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectedIndex | number | Yes | Index of the currently selected item.<br>Value range: an integer in [0, number of child components - 1]. |
+| selectedIndex | number | Yes | Index of the currently selected item. <br>Value range: an integer in [0, number of child components - 1]. |

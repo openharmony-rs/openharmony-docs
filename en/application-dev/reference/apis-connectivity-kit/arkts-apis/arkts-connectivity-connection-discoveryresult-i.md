@@ -89,3 +89,21 @@ RSSI of the remote device
 <!--Device-DiscoveryResult-rssi: int--><!--Device-DiscoveryResult-rssi: int-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## transport
+
+```TypeScript
+transport?: BluetoothTransport
+```
+
+The transport of the discovery device.
+
+**Type:** [BluetoothTransport](arkts-connectivity-connection-bluetoothtransport-e.md)
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DiscoveryResult-transport?: BluetoothTransport--><!--Device-DiscoveryResult-transport?: BluetoothTransport-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core

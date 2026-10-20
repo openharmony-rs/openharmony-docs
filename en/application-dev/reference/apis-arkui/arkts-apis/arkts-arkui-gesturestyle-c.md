@@ -34,4 +34,4 @@ A constructor used to create a gesture style.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [GestureStyleInterface](arkts-arkui-gesturestyleinterface-i.md) | No | Event gesture settings.<br>Default value: no gesture event is bound when this parameter is not passed. |
+| value | [GestureStyleInterface](arkts-arkui-gesturestyleinterface-i.md) | No | Event gesture settings. <br>Default value: no gesture event is bound when this parameter is not passed. |

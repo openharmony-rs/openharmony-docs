@@ -6,8 +6,6 @@ export interface BusinessAbilityInfo
 
 包含基本业务路由信息。
 
-@typedef BusinessAbilityInfo
-
 **起始版本：** 10
 
 <!--Device-unnamed-export interface BusinessAbilityInfo--><!--Device-unnamed-export interface BusinessAbilityInfo-End-->

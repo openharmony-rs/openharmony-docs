@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getmissioninfo1"></a>
-
 ## getMissionInfo
 
 ```TypeScript
@@ -63,8 +61,6 @@ missionManager.getMissionInfo('', missionId, (error, mission) => {
 
 <!--DelEnd-->
 
-
-<a id="getmissioninfo2"></a>
 
 ## getMissionInfo
 

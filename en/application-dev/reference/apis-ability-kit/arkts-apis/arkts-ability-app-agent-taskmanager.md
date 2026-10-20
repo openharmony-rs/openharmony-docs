@@ -4,6 +4,8 @@ The **taskManager** module provides APIs for managing the lifecycle of tasks. A 
 
 **Since:** 26.2.0
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace taskManager--><!--Device-unnamed-declare namespace taskManager-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core

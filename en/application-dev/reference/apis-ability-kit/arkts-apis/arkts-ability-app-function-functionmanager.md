@@ -4,9 +4,9 @@ A Function is a business logic unit defined in an application package. It can re
 
 This module provides the capability to manage and invoke Functions, including querying available Function information and invoking a specified Function to execute business logic.
 
-@namespace functionManager
-
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace functionManager--><!--Device-unnamed-declare namespace functionManager-End-->
 

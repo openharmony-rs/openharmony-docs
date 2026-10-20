@@ -46,7 +46,6 @@ addMetadataObjectTypes(types: Array<MetadataObjectType>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 13 - 22 |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
@@ -326,7 +325,6 @@ removeMetadataObjectTypes(types: Array<MetadataObjectType>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 13 - 22 |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
@@ -346,8 +344,6 @@ function removeMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types:
   }
 }
 ```
-
-<a id="start1"></a>
 
 ## start
 
@@ -394,8 +390,6 @@ function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -439,8 +433,6 @@ function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -478,8 +470,6 @@ function stopMetadataOutput(metadataOutput: camera.MetadataOutput): void {
   })
 }
 ```
-
-<a id="stop2"></a>
 
 ## stop
 

@@ -6,8 +6,6 @@ export interface BundleVersion
 
 Describe bundle version
 
-@interface BundleVersion
-
 **Since:** 10
 
 <!--Device-unnamed-export interface BundleVersion--><!--Device-unnamed-export interface BundleVersion-End-->

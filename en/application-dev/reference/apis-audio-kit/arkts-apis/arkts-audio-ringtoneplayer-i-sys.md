@@ -14,8 +14,6 @@ Provides APIs for setting and obtaining ringtone parameters as well as playing a
 
 **System API:** This is a system API.
 
-<a id="configure1"></a>
-
 ## configure
 
 ```TypeScript
@@ -61,8 +59,6 @@ systemRingtonePlayer.configure(ringtoneOptions, (err: BusinessError) => {
 ```
 
 <!--DelEnd-->
-
-<a id="configure2"></a>
 
 ## configure
 
@@ -113,8 +109,6 @@ systemRingtonePlayer.configure(ringtoneOptions).then(() => {
 
 <!--DelEnd-->
 
-<a id="getaudiorendererinfo1"></a>
-
 ## getAudioRendererInfo
 
 ```TypeScript
@@ -158,8 +152,6 @@ systemRingtonePlayer.getAudioRendererInfo((err: BusinessError, value: audio.Audi
 
 <!--DelEnd-->
 
-<a id="getaudiorendererinfo2"></a>
-
 ## getAudioRendererInfo
 
 ```TypeScript
@@ -201,8 +193,6 @@ systemRingtonePlayer.getAudioRendererInfo().then((value: audio.AudioRendererInfo
 
 <!--DelEnd-->
 
-<a id="gettitle1"></a>
-
 ## getTitle
 
 ```TypeScript
@@ -241,8 +231,6 @@ systemRingtonePlayer.getTitle((err: BusinessError, value: string) => {
 ```
 
 <!--DelEnd-->
-
-<a id="gettitle2"></a>
 
 ## getTitle
 
@@ -402,8 +390,6 @@ systemRingtonePlayer.on('audioInterrupt', async(interruptEvent: audio.InterruptE
 
 <!--DelEnd-->
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -443,8 +429,6 @@ systemRingtonePlayer.release((err: BusinessError) => {
 
 <!--DelEnd-->
 
-<a id="release2"></a>
-
 ## release
 
 ```TypeScript
@@ -481,8 +465,6 @@ systemRingtonePlayer.release().then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="start1"></a>
 
 ## start
 
@@ -523,8 +505,6 @@ systemRingtonePlayer.start((err: BusinessError) => {
 
 <!--DelEnd-->
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -561,8 +541,6 @@ systemRingtonePlayer.start().then(() => {
 ```
 
 <!--DelEnd-->
-
-<a id="stop1"></a>
 
 ## stop
 
@@ -602,8 +580,6 @@ systemRingtonePlayer.stop((err: BusinessError) => {
 ```
 
 <!--DelEnd-->
-
-<a id="stop2"></a>
 
 ## stop
 

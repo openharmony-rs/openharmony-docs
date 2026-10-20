@@ -372,8 +372,6 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 <!--DelEnd-->
 
-<a id="findelementbyfocusdirection1"></a>
-
 ## findElementByFocusDirection
 
 ```TypeScript
@@ -382,7 +380,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityEle
 
 根据焦点方向查找元素。使用Promise异步回调。
 
-与[findElementsByCondition](#findelementsbycondition1)相比，本方法主要用于查找Web组件；findElementsByCondition主要用于查找UI组件。
+与[findElementsByCondition](#findelementsbycondition)相比，本方法主要用于查找Web组件；findElementsByCondition主要用于查找UI组件。
 
 **起始版本：** 20
 
@@ -472,8 +470,6 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 ```
 
 <!--DelEnd-->
-
-<a id="findelementbyfocusdirection2"></a>
 
 ## findElementByFocusDirection
 
@@ -724,8 +720,6 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 <!--DelEnd-->
 
-<a id="findelementsbycondition1"></a>
-
 ## findElementsByCondition
 
 ```TypeScript
@@ -734,7 +728,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<Foc
 
 查询满足条件的可聚焦节点。使用Promise异步回调。
 
-与[findElementByFocusDirection](#findelementbyfocusdirection1)相比，本方法主要用于查找UI组件；findElementByFocusDirection主要用于查找Web组件。
+与[findElementByFocusDirection](#findelementbyfocusdirection)相比，本方法主要用于查找UI组件；findElementByFocusDirection主要用于查找Web组件。
 
 **起始版本：** 23
 
@@ -798,8 +792,6 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 ```
 
 <!--DelEnd-->
-
-<a id="findelementsbycondition2"></a>
 
 ## findElementsByCondition
 
@@ -952,8 +944,6 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
 
 <!--DelEnd-->
 
-<a id="getcursorposition1"></a>
-
 ## getCursorPosition
 
 ```TypeScript
@@ -993,8 +983,6 @@ rootElement.getCursorPosition((err: BusinessError, data: number) => {
 ```
 
 <!--DelEnd-->
-
-<a id="getcursorposition2"></a>
 
 ## getCursorPosition
 

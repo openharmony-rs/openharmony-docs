@@ -4,7 +4,7 @@
 interface VibratePreset
 ```
 
-Represents the preset vibration effect. When [vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1) or [vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration2) is called, the value of [VibrateEffect<sup>9+</sup>](arkts-sensorservice-vibrator-vibrateeffect-t.md) can be **VibratePreset**, indicating that the preset vibration effect is triggered.
+Represents the preset vibration effect. When [vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration) or [vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration) is called, the value of [VibrateEffect<sup>9+</sup>](arkts-sensorservice-vibrator-vibrateeffect-t.md) can be **VibratePreset**, indicating that the preset vibration effect is triggered.
 
 **Since:** 9
 

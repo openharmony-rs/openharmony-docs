@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getappprovisioninfo1"></a>
-
 ## getAppProvisionInfo
 
 ```TypeScript
@@ -70,8 +68,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getappprovisioninfo2"></a>
 
 ## getAppProvisionInfo
 
@@ -138,8 +134,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getappprovisioninfo3"></a>
 
 ## getAppProvisionInfo
 

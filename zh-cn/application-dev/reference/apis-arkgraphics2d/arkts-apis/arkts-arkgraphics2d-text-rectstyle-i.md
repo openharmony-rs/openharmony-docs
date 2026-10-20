@@ -18,6 +18,46 @@ interface RectStyle
 import { text } from '@kit.ArkGraphics2D';
 ```
 
+## borderColor
+
+```TypeScript
+borderColor?: common2D.Color
+```
+
+矩形边框的颜色，默认值为白色。
+
+**类型：** [common2D.Color](arkts-arkgraphics2d-common2d-color-i.md)
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-RectStyle-borderColor?: common2D.Color--><!--Device-RectStyle-borderColor?: common2D.Color-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## borderWidth
+
+```TypeScript
+borderWidth?: number
+```
+
+矩形边框的宽度，单位为物理像素px，默认值为0。
+
+**类型：** number
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-RectStyle-borderWidth?: double--><!--Device-RectStyle-borderWidth?: double-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
 ## color
 
 ```TypeScript

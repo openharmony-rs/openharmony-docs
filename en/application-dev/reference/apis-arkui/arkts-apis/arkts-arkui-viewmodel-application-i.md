@@ -6,8 +6,6 @@ export interface Application
 
 Application
 
-@interface Application
-
 **Since:** 4
 
 <!--Device-unnamed-export interface Application--><!--Device-unnamed-export interface Application-End-->

@@ -30,7 +30,7 @@ Creates an <b>AudioLoopback</b> instance, which provides low-latency in-ear moni
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[AudioLoopback](arkts-audio-audio-audioloopback-i.md)&gt; | Promise used to return the<b>AudioLoopback</b> instance. |
+| Promise&lt;[AudioLoopback](arkts-audio-audio-audioloopback-i.md)&gt; | Promise used to return the <b>AudioLoopback</b> instance. |
 
 **Error codes:**
 

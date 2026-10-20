@@ -34,7 +34,7 @@ A constructor used to create the text line spacing. If this API is not used to s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| lineSpacing | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | Yes | Text line spacing.<br>Value range: [0, +∞). |
+| lineSpacing | [LengthMetrics](arkts-arkui-lengthmetrics-t.md) | Yes | Text line spacing. <br>Value range: [0, +∞). |
 | options | [LineSpacingOptions](arkts-arkui-linespacingoptions-i.md) | No | Line spacing configuration options. |
 
 ## lineSpacing

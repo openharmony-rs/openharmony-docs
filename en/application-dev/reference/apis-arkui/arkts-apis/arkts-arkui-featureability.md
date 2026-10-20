@@ -14,6 +14,6 @@
 
 | Name | Description |
 | --- | --- |
-| [SendMessageOptions](arkts-arkui-featureability-sendmessageoptions-i.md) | @typedef SendMessageOptions |
-| [SubscribeMessageOptions](arkts-arkui-featureability-subscribemessageoptions-i.md) | @typedef SubscribeMessageOptions |
-| [SubscribeMessageResponse](arkts-arkui-featureability-subscribemessageresponse-i.md) | @typedef SubscribeMessageResponse |
+| [SendMessageOptions](arkts-arkui-featureability-sendmessageoptions-i.md) |  |
+| [SubscribeMessageOptions](arkts-arkui-featureability-subscribemessageoptions-i.md) |  |
+| [SubscribeMessageResponse](arkts-arkui-featureability-subscribemessageresponse-i.md) |  |

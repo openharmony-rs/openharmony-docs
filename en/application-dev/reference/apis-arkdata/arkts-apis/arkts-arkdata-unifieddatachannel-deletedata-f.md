@@ -6,8 +6,6 @@
 import { unifiedDataChannel } from '@kit.ArkData';
 ```
 
-<a id="deletedata1"></a>
-
 ## deleteData
 
 ```TypeScript
@@ -37,7 +35,7 @@ Deletes data from the UDMF public data channel. This API uses an asynchronous ca
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 
@@ -74,8 +72,6 @@ try {
 ```
 
 
-<a id="deletedata2"></a>
-
 ## deleteData
 
 ```TypeScript
@@ -104,13 +100,13 @@ Deletes data from the UDMF public data channel. This API uses a promise to retur
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md)&gt;&gt; | Promise used to return the data deleted.<br>If only the **key** is specified in **options**, the data corresponding to the key deleted is returned. <br>If only the **intention** is specified in **options**, all data in the **intention** deleted is returned. <br>If both **intention** and **key** are specified, the intersection of the two deleted is returned. If there is no intersection between the two, an error object is returned. |
+| Promise&lt;Array&lt;[UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md)&gt;&gt; | Promise used to return the data deleted. <br>If only the **key** is specified in **options**, the data corresponding to the key deleted is returned. <br>If only the **intention** is specified in **options**, all data in the **intention** deleted is returned. <br>If both **intention** and **key** are specified, the intersection of the two deleted is returned. If there is no intersection between the two, an error object is returned. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 

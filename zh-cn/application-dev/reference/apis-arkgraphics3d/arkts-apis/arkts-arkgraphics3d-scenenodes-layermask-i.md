@@ -6,8 +6,6 @@ export interface LayerMask
 
 用于定义节点的图层掩码。
 
-@interface LayerMask
-
 **起始版本：** 12
 
 <!--Device-unnamed-export interface LayerMask--><!--Device-unnamed-export interface LayerMask-End-->

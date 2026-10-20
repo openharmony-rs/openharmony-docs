@@ -4,7 +4,7 @@
 export enum FlipOptions
 ```
 
-Flip option.
+Enumerates flip options.
 
 **Since:** 18
 

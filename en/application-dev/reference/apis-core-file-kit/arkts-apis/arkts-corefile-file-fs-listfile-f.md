@@ -51,17 +51,13 @@ You can configure the **recursion** parameter in **options** to recursively list
 | 13900042 | Unknown error |
 
 
-<a id="listfile2"></a>
-
 ## listFile
 
 ```TypeScript
 declare function listFile(path: string, callback: AsyncCallback<string[]>): void
 ```
 
-Lists the names of all files and directories in the current path. Filtering is supported. This API uses an asynchronous callback to return the result.
-
-You can configure the **recursion** parameter in **options** to recursively list the relative paths of all files. The relative path starts with a slash (/).
+Lists the names of all files and directories in the current path. A file name array is returned. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -88,8 +84,6 @@ You can configure the **recursion** parameter in **options** to recursively list
 | 13900018 | Not a directory |
 | 13900042 | Unknown error |
 
-
-<a id="listfile3"></a>
 
 ## listFile
 

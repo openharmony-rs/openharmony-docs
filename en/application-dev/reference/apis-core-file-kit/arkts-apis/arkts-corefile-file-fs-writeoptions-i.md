@@ -4,7 +4,7 @@
 export interface WriteOptions extends Options
 ```
 
-Defines the options used in **write()**. It inherits from [Options](arkts-corefile-file-fs-options-i.md).
+Defines the options used in <b>write()</b>. It inherits from [Options](arkts-corefile-file-fs-options-i.md).
 
 **Inheritance/Implementation:** WriteOptions extends [Options](arkts-corefile-file-fs-options-i.md)
 
@@ -44,7 +44,7 @@ Length of the data to write, in bytes. This parameter is optional. The default v
 offset?: number
 ```
 
-Start position of the file to write, in bytes. This parameter is optional. By default, data is written from the current position.
+Position to write data in the file, in bytes. This parameter is optional. By default, data is written from the current position.
 
 **Type:** number
 

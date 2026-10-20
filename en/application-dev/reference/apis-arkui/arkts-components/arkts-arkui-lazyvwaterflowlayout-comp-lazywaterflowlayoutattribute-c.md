@@ -82,7 +82,7 @@ Sets the footer component of the current **LazyVWaterFlowLayout**. If this API i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; undefined | Yes | Footer component constructor.<br>When the input parameter is **undefined**, no footer component is set. If a footer component already exists, it will be removed. |
+| builder | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; undefined | Yes | Footer component constructor. <br>When the input parameter is **undefined**, no footer component is set. If a footer component already exists, it will be removed. |
 
 **Return value:**
 
@@ -121,7 +121,7 @@ Sets the header component of the current **LazyVWaterFlowLayout**. If this API i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; undefined | Yes | Constructor of the header component.<br>When the input parameter is **undefined**, no header component is set. If a header component already exists, it is also removed. |
+| builder | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; undefined | Yes | Constructor of the header component. <br>When the input parameter is **undefined**, no header component is set. If a header component already exists, it is also removed. |
 
 **Return value:**
 
@@ -174,7 +174,7 @@ Sets the **onVisibleIndexesChange** callback. When the indexes of child componen
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnVisibleIndexesChangeCallback](arkts-arkui-common-comp-onvisibleindexeschangecallback-t.md) &#124; undefined | Yes | Callback invoked when the index of a child component in the visible area changes.<br>When the method input parameter is **undefined**, the listening is canceled. |
+| callback | [OnVisibleIndexesChangeCallback](arkts-arkui-common-comp-onvisibleindexeschangecallback-t.md) &#124; undefined | Yes | Callback invoked when the index of a child component in the visible area changes. <br>When the method input parameter is **undefined**, the listening is canceled. |
 
 **Return value:**
 
@@ -240,7 +240,7 @@ When this component scrolls into the visible area with the scroll container, and
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sticky | [StickyStyle](arkts-arkui-list-comp-stickystyle-e.md) &#124; undefined | Yes | Sticky style of the header component and footer component. The **sticky** attribute can be set to **StickyStyle.Header** (header component sticks to the top), **StickyStyle.Footer** (footer component sticks to the bottom), **StickyStyle.BOTH** (both header sticks to the top and footer sticks to the bottom), or **StickyStyle.None** (sticky style disabled).<br>When the input parameter is **undefined**, the default value **StickyStyle.None** is restored. <br>If this API is not used, the header component does not stick to the top and the footer component does not stick to the bottom by default. |
+| sticky | [StickyStyle](arkts-arkui-list-comp-stickystyle-e.md) &#124; undefined | Yes | Sticky style of the header component and footer component. The **sticky** attribute can be set to **StickyStyle.Header** (header component sticks to the top), **StickyStyle.Footer** (footer component sticks to the bottom), **StickyStyle.BOTH** (both header sticks to the top and footer sticks to the bottom), or **StickyStyle.None** (sticky style disabled). <br>When the input parameter is **undefined**, the default value **StickyStyle.None** is restored. <br>If this API is not used, the header component does not stick to the top and the footer component does not stick to the bottom by default. |
 
 **Return value:**
 

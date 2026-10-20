@@ -29,18 +29,18 @@ import { ethernet } from '@kit.NetworkKit';
 | --- | --- |
 | [disableEthernetInterface](arkts-network-ethernet-disableethernetinterface-f-sys.md#disableethernetinterface) | Disable the ethernet interface. |
 | [enableEthernetInterface](arkts-network-ethernet-enableethernetinterface-f-sys.md#enableethernetinterface) | Enable the ethernet interface. |
-| [getAllActiveIfaces](arkts-network-ethernet-getallactiveifaces-f-sys.md#getallactiveifaces1) | Obtains the active network interface. This API uses an asynchronous callback to return the result. |
-| [getAllActiveIfaces](arkts-network-ethernet-getallactiveifaces-f-sys.md#getallactiveifaces2) | Obtains the active network interface. This API uses a promise to return the result. |
+| [getAllActiveIfaces](arkts-network-ethernet-getallactiveifaces-f-sys.md#getallactiveifaces) | Obtains the active network interface. This API uses an asynchronous callback to return the result. |
+| [getAllActiveIfaces](arkts-network-ethernet-getallactiveifaces-f-sys.md#getallactiveifaces) | Obtains the active network interface. This API uses a promise to return the result. |
 | [getEthernetDeviceInfos](arkts-network-ethernet-getethernetdeviceinfos-f-sys.md#getethernetdeviceinfos) | Obtains the device information (such as the vendor name, product name, and maximum connection rate) of the local Ethernet NIC. This API uses a promise to return the result. |
-| [getIfaceConfig](arkts-network-ethernet-getifaceconfig-f-sys.md#getifaceconfig1) | Obtains the information about a specified network interface. This API uses an asynchronous callback to return the result. |
-| [getIfaceConfig](arkts-network-ethernet-getifaceconfig-f-sys.md#getifaceconfig2) | Obtains the information about a specified network interface. This API uses a promise to return the result. |
+| [getIfaceConfig](arkts-network-ethernet-getifaceconfig-f-sys.md#getifaceconfig) | Obtains the information about a specified network interface. This API uses an asynchronous callback to return the result. |
+| [getIfaceConfig](arkts-network-ethernet-getifaceconfig-f-sys.md#getifaceconfig) | Obtains the information about a specified network interface. This API uses a promise to return the result. |
 | [isEthernetEnabled](arkts-network-ethernet-isethernetenabled-f-sys.md#isethernetenabled) | Check whether the global ethernet switch is enabled. |
-| [isIfaceActive](arkts-network-ethernet-isifaceactive-f-sys.md#isifaceactive1) | Checks whether the interface is activated. This API uses an asynchronous callback to return the result. |
-| [isIfaceActive](arkts-network-ethernet-isifaceactive-f-sys.md#isifaceactive2) | Checks whether the interface is activated. This API uses a promise to return the result. |
+| [isIfaceActive](arkts-network-ethernet-isifaceactive-f-sys.md#isifaceactive) | Checks whether the interface is activated. This API uses an asynchronous callback to return the result. |
+| [isIfaceActive](arkts-network-ethernet-isifaceactive-f-sys.md#isifaceactive) | Checks whether the interface is activated. This API uses a promise to return the result. |
 | [off('interfaceStateChange')](arkts-network-ethernet-off-f-sys.md#offinterfacestatechange) | Unregisters the observer for NIC hot swap events. This API uses an asynchronous callback to return the result. |
 | [on('interfaceStateChange')](arkts-network-ethernet-on-f-sys.md#oninterfacestatechange) | Registers the observer for NIC hot swap events. This API uses an asynchronous callback to return the result. |
-| [setIfaceConfig](arkts-network-ethernet-setifaceconfig-f-sys.md#setifaceconfig1) | Sets the network interface configuration information. This API uses an asynchronous callback to return the result. |
-| [setIfaceConfig](arkts-network-ethernet-setifaceconfig-f-sys.md#setifaceconfig2) | Sets the network interface configuration information. This API uses a promise to return the result. |
+| [setIfaceConfig](arkts-network-ethernet-setifaceconfig-f-sys.md#setifaceconfig) | Sets the network interface configuration information. This API uses an asynchronous callback to return the result. |
+| [setIfaceConfig](arkts-network-ethernet-setifaceconfig-f-sys.md#setifaceconfig) | Sets the network interface configuration information. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Interfaces

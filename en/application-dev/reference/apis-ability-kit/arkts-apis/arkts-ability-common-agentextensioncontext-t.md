@@ -6,8 +6,6 @@ export type AgentExtensionContext = _AgentExtensionContext
 
 The context of the agent service ability.
 
-@typedef { _AgentExtensionContext }
-
 **Type:** _AgentExtensionContext
 
 **Since:** 24

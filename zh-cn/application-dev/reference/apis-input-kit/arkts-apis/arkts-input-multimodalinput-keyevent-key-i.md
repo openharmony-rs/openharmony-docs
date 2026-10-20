@@ -6,8 +6,6 @@ export declare interface Key
 
 按键。
 
-@interface Key [since 9 - 11]
-
 **起始版本：** 9
 
 <!--Device-unnamed-export declare interface Key--><!--Device-unnamed-export declare interface Key-End-->

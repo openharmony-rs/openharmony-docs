@@ -6,8 +6,6 @@
 import { abilityManager } from '@kit.AbilityKit';
 ```
 
-<a id="acquiresharedata1"></a>
-
 ## acquireShareData
 
 ```TypeScript
@@ -28,7 +26,7 @@ Called by a system dialog box to obtain shared data, which is set by the target 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| missionId | number | Yes | Mission ID on the target application. The maximum value is 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1. |
+| missionId | number | Yes | Mission ID on the target application. The maximum value is 2<sup>31</sup>-1. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Record&lt;string, Object&gt;&gt; | Yes | Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the shared data obtained. Otherwise, **err** is an error object. You can perform error handling or other custom processing.<br>**Since:** 11 |
 
 **Error codes:**
@@ -39,8 +37,6 @@ Called by a system dialog box to obtain shared data, which is set by the target 
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
-
-<a id="acquiresharedata3"></a>
 
 ## acquireShareData
 
@@ -62,7 +58,7 @@ Called by a system dialog box to obtain shared data, which is set by the target 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| missionId | number | Yes | Mission ID on the target application. The maximum value is 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1. |
+| missionId | number | Yes | Mission ID on the target application. The maximum value is 2<sup>31</sup>-1. |
 
 **Return value:**
 

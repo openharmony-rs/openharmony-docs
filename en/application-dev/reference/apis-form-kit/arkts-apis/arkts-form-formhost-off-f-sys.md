@@ -32,7 +32,7 @@ Unsubscribes from widget uninstall events. This API uses an asynchronous callbac
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | "formUninstall" | Yes | Event type. The value **"formUninstall"** indicates a widget uninstall event. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | No | Callback used to return the widget ID. If it is left unspecified, it indicates the callback for all the events that have been subscribed.<br> To cancel the subscription with a given callback, this parameter must be set to the same value as **callback** in **on("formUninstall")**. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;string&gt; | No | Callback used to return the widget ID. If it is left unspecified, it indicates the callback for all the events that have been subscribed. <br> To cancel the subscription with a given callback, this parameter must be set to the same value as **callback** in **on("formUninstall")**. |
 
 **Error codes:**
 
@@ -40,6 +40,19 @@ Unsubscribes from widget uninstall events. This API uses an asynchronous callbac
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { formHost } from '@kit.FormKit';
+
+formHost.off('formUninstall', (formId: string) => {
+  console.info(`formHost on formUninstall, formId: ${formId}`);
+});
+```
+
+<!--DelEnd-->
 
 
 ## off('formOverflow')

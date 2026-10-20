@@ -6,8 +6,6 @@ export interface WindowAnimationFinishedCallback
 
 Window animation finished callback.
 
-@interface WindowAnimationFinishedCallback
-
 **Since:** 9
 
 <!--Device-windowAnimationManager-export interface WindowAnimationFinishedCallback--><!--Device-windowAnimationManager-export interface WindowAnimationFinishedCallback-End-->

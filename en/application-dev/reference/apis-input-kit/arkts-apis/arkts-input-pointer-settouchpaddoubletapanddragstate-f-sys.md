@@ -6,8 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="settouchpaddoubletapanddragstate1"></a>
-
 ## setTouchpadDoubleTapAndDragState
 
 ```TypeScript
@@ -72,8 +70,6 @@ struct Index {
 
 <!--DelEnd-->
 
-
-<a id="settouchpaddoubletapanddragstate2"></a>
 
 ## setTouchpadDoubleTapAndDragState
 

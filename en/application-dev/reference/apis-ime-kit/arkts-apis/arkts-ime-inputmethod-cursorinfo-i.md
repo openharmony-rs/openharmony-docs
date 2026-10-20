@@ -4,7 +4,7 @@
 export interface CursorInfo
 ```
 
-Represents the cursor information.
+Cursor information.
 
 **Since:** 10
 
@@ -24,7 +24,7 @@ import { inputMethod } from '@kit.IMEKit';
 displayId?: number
 ```
 
-ID of the monitor where the cursor is located.
+ID of the display where the cursor is located. This parameter must be an integer, with a minimum value of 0 and a default value of 0. <br> <br>**Initial version:** 26.0.0 <br> <br>**Model restriction:** This parameter can be used only in the Stage model.
 
 **Type:** number
 
@@ -42,7 +42,7 @@ ID of the monitor where the cursor is located.
 height: number
 ```
 
-Height of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.
+Height of the cursor, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen height.
 
 **Type:** number
 
@@ -58,7 +58,7 @@ Height of the cursor, in px. The value must be an integer. The minimum value is 
 left: number
 ```
 
-Horizontal coordinate of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.
+Horizontal coordinate of the cursor, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen width.
 
 **Type:** number
 
@@ -74,7 +74,7 @@ Horizontal coordinate of the cursor, in px. The value must be an integer. The mi
 top: number
 ```
 
-Vertical coordinate of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.
+Vertical coordinate of the cursor, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen height.
 
 **Type:** number
 
@@ -90,7 +90,7 @@ Vertical coordinate of the cursor, in px. The value must be an integer. The mini
 width: number
 ```
 
-Width of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.
+Width of the cursor, in px. This parameter must be an integer, with a minimum value of 0 and a maximum value of the current screen width.
 
 **Type:** number
 

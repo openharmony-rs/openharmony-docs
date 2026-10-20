@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="issupporttemplate1"></a>
-
 ## isSupportTemplate
 
 ```TypeScript
@@ -54,8 +52,6 @@ let isSupportTemplateCallback = (err: BusinessError, data: boolean): void => {
 notificationManager.isSupportTemplate(templateName, isSupportTemplateCallback);
 ```
 
-
-<a id="issupporttemplate2"></a>
 
 ## isSupportTemplate
 

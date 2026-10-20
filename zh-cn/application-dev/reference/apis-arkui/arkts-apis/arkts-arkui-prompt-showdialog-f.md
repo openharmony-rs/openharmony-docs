@@ -6,8 +6,6 @@
 import { prompt } from '@kit.ArkUI';
 ```
 
-<a id="showdialog1"></a>
-
 ## showDialog
 
 ```TypeScript
@@ -61,8 +59,6 @@ prompt.showDialog({
 });
 ```
 
-
-<a id="showdialog2"></a>
 
 ## showDialog
 

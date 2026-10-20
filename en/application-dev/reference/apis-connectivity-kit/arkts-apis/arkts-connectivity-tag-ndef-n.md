@@ -24,8 +24,8 @@ import { tag } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [createNdefMessage](arkts-connectivity-ndef-createndefmessage-f.md#createndefmessage1) | Creates an NDEF message from raw byte data. The data must comply with the NDEF record format. Otherwise, the NDEF record list contained in the **NdefMessage** object will be empty. |
-| [createNdefMessage](arkts-connectivity-ndef-createndefmessage-f.md#createndefmessage2) | Creates an NDEF message from the NDEF records list. |
+| [createNdefMessage](arkts-connectivity-ndef-createndefmessage-f.md#createndefmessage) | Creates an NDEF message from raw byte data. The data must comply with the NDEF record format. Otherwise, the NDEF record list contained in the **NdefMessage** object will be empty. |
+| [createNdefMessage](arkts-connectivity-ndef-createndefmessage-f.md#createndefmessage) | Creates an NDEF message from the NDEF records list. |
 | [makeApplicationRecord](arkts-connectivity-ndef-makeapplicationrecord-f.md#makeapplicationrecord) | Creates an NDEF record based on the specified application bundle name. |
 | [makeExternalRecord](arkts-connectivity-ndef-makeexternalrecord-f.md#makeexternalrecord) | Creates an NDEF record based on application-specific data. |
 | [makeMimeRecord](arkts-connectivity-ndef-makemimerecord-f.md#makemimerecord) | Creates an NDEF record based on the specified MIME data and type. |

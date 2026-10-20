@@ -6,8 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="addcontact1"></a>
-
 ## addContact
 
 ```TypeScript
@@ -20,7 +18,7 @@ Adds a contact. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 10
 
-**Substitutes:** [addContact](#addcontact2)(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;)
+**Substitutes:** [addContact](#addcontact)(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;)
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 
@@ -60,8 +58,6 @@ contact.addContact(context, {
 });
 ```
 
-
-<a id="addcontact2"></a>
 
 ## addContact
 
@@ -126,8 +122,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 
-<a id="addcontact3"></a>
-
 ## addContact
 
 ```TypeScript
@@ -140,7 +134,7 @@ Adds a contact. This API uses a promise to return the result.
 
 **Deprecated since:** 10
 
-**Substitutes:** [addContact](#addcontact4)(context: Context, contact: Contact)
+**Substitutes:** [addContact](#addcontact)(context: Context, contact: Contact)
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 
@@ -180,8 +174,6 @@ promise.then((data) => {
 });
 ```
 
-
-<a id="addcontact4"></a>
 
 ## addContact
 

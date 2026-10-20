@@ -56,8 +56,6 @@ console.info("result = " + result);
 // 输出结果：result = -1
 ```
 
-<a id="constructor2"></a>
-
 ## constructor
 
 ```TypeScript
@@ -79,8 +77,6 @@ constructor()
 ```TypeScript
 let rationalNumber = new util.RationalNumber();
 ```
-
-<a id="constructor1"></a>
 
 ## constructor
 

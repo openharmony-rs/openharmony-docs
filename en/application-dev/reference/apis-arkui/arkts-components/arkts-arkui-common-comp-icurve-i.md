@@ -34,7 +34,7 @@ Calculates the interpolated value along the curve at the specified normalized ti
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fraction | number | Yes | Current normalized time.<br>Value range: [0, 1]. <br>**NOTE:** <br>A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**. |
+| fraction | number | Yes | Current normalized time. <br>Value range: [0, 1]. <br>**NOTE:** <br>A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**. |
 
 **Return value:**
 

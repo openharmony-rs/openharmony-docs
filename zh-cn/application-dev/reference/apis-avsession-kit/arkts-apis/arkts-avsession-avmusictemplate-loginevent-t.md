@@ -6,8 +6,6 @@ type LoginEvent = (controlType: LoginType, id?: string) => Promise<QrCodeInfo[]>
 
 登录事件。使用Promise异步回调。
 
-@typedef { function } LoginEvent
-
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。

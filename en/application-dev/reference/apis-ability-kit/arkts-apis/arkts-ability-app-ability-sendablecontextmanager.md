@@ -4,6 +4,8 @@ The sendableContextManager module provides APIs for converting between Context a
 
 **Since:** 12
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace sendableContextManager--><!--Device-unnamed-declare namespace sendableContextManager-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

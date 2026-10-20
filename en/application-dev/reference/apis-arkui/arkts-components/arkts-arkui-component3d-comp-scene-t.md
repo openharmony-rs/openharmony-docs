@@ -6,8 +6,6 @@ declare type Scene = import('../api/@ohos.graphics.scene').Scene
 
 Provides methods for controlling the 3d scene
 
-@typedef { import('../api/@ohos.graphics.scene').Scene }
-
 **Type:** import('../api/@ohos.graphics.scene').Scene
 
 **Since:** 12

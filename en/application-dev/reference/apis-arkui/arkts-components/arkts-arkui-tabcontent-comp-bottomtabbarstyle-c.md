@@ -177,7 +177,7 @@ Sets the layout mode of the images and texts on the bottom tab.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [LayoutMode](arkts-arkui-tabcontent-comp-layoutmode-e.md) | Yes | Layout mode of the images and text on the bottom tab.<br>Default value: **LayoutMode.VERTICAL** |
+| value | [LayoutMode](arkts-arkui-tabcontent-comp-layoutmode-e.md) | Yes | Layout mode of the images and text on the bottom tab. <br>Default value: **LayoutMode.VERTICAL** |
 
 **Return value:**
 
@@ -238,7 +238,7 @@ Sets the padding of the bottom tab. It cannot be set in percentage. When the par
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Padding &#124; [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; [LocalizedPadding](../arkts-apis/arkts-arkui-localizedpadding-i.md) | Yes | Padding of the bottom tab, which is used to set the distance between the tab content and the boundary. (The percentage setting is not supported.) When you need to adjust the interior space distribution of the tab and optimize the visual effect, pass a custom value.<br>Value range: [0, +∞] <br>Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}** <br>If of the LocalizedPadding type, this attribute supports the mirroring capability. <br>Default value: **{start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),** <br>**top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)}**<br>**Since:** 12 |
+| value | Padding &#124; [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) &#124; [LocalizedPadding](../arkts-apis/arkts-arkui-localizedpadding-i.md) | Yes | Padding of the bottom tab, which is used to set the distance between the tab content and the boundary. (The percentage setting is not supported.) When you need to adjust the interior space distribution of the tab and optimize the visual effect, pass a custom value. <br>Value range: [0, +∞] <br>Default value: **{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}** <br>If of the LocalizedPadding type, this attribute supports the mirroring capability. <br>Default value: **{start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),** <br>**top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)}**<br>**Since:** 12 |
 
 **Return value:**
 
@@ -268,7 +268,7 @@ Sets whether the images and text on the bottom tab can be symmetrically extended
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether the images and text on the bottom tab can be symmetrically extended by the minimum value of the available space on the left and right bottom tabs. If **true** is passed, the symmetric borrowing function is enabled (when you need to optimize the tab layout and fully utilize the space). If **false** is passed, the symmetric borrowing function is disabled (when you need to keep the fixed tab layout and avoid positional changes of tab content).<br>The default value is **false**. |
+| value | boolean | Yes | Whether the images and text on the bottom tab can be symmetrically extended by the minimum value of the available space on the left and right bottom tabs. If **true** is passed, the symmetric borrowing function is enabled (when you need to optimize the tab layout and fully utilize the space). If **false** is passed, the symmetric borrowing function is disabled (when you need to keep the fixed tab layout and avoid positional changes of tab content). <br>The default value is **false**. |
 
 **Return value:**
 
@@ -298,7 +298,7 @@ Sets the vertical alignment mode of the images and text on the bottom tab.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [VerticalAlign](../arkts-apis/arkts-arkui-verticalalign-e.md) | Yes | Vertical alignment mode of the images and text on the bottom tab.<br>Default value: **VerticalAlign.Center** |
+| value | [VerticalAlign](../arkts-apis/arkts-arkui-verticalalign-e.md) | Yes | Vertical alignment mode of the images and text on the bottom tab. <br>Default value: **VerticalAlign.Center** |
 
 **Return value:**
 

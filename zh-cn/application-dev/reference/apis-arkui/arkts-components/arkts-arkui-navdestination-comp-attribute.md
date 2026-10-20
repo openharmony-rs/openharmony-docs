@@ -16,8 +16,6 @@ declare class NavDestinationAttribute extends CommonMethod<NavDestinationAttribu
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="backbuttonicon1"></a>
-
 ## backButtonIcon
 
 ```TypeScript
@@ -47,8 +45,6 @@ backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md) | 是 | 标题栏返回键图标。<br>**适用版本：** 11 |
-
-<a id="backbuttonicon2"></a>
 
 ## backButtonIcon
 
@@ -294,9 +290,7 @@ hideBackButton(hide: Optional<boolean>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hide | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 是否隐藏标题栏中的返回键。<br>默认值：false<br>true：隐藏返回键。<br>false：显示返回键。 |
-
-<a id="hidetitlebar1"></a>
+| hide | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 是否隐藏标题栏中的返回键。 <br>默认值：false<br>true：隐藏返回键。<br>false：显示返回键。 |
 
 ## hideTitleBar
 
@@ -320,15 +314,13 @@ hideTitleBar(value: boolean)
 | --- | --- | --- | --- |
 | value | boolean | 是 | 是否隐藏标题栏。<br>默认值：false<br>true：隐藏标题栏。<br>false：显示标题栏。 |
 
-<a id="hidetitlebar2"></a>
-
 ## hideTitleBar
 
 ```TypeScript
 hideTitleBar(hide: boolean, animated: boolean)
 ```
 
-设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar1)相比，新增标题栏显隐时是否使用动画。
+设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar)相比，新增标题栏显隐时是否使用动画。
 
 **起始版本：** 13
 
@@ -405,8 +397,6 @@ ignoreLayoutSafeArea(types?: Array<LayoutSafeAreaType>, edges?: Array<LayoutSafe
 | types | Array&lt;[LayoutSafeAreaType](arkts-arkui-common-comp-layoutsafeareatype-e.md)&gt; | 否 | 配置扩展安全区域的类型。<br>默认值：<br>[LayoutSafeAreaType.SYSTEM] |
 | edges | Array&lt;[LayoutSafeAreaEdge](arkts-arkui-common-comp-layoutsafeareaedge-e.md)&gt; | 否 | 配置扩展安全区域的方向。<br> 默认值：<br> [LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]。<br>默认扩展顶部和底部方向，用于避让系统状态栏和导航栏的安全区域。 |
 
-<a id="menus1"></a>
-
 ## menus
 
 ```TypeScript
@@ -437,15 +427,13 @@ menus(value: Array<NavigationMenuItem> | CustomBuilder)
 | --- | --- | --- | --- |
 | value | Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 是 | 页面右上角菜单。 |
 
-<a id="menus2"></a>
-
 ## menus
 
 ```TypeScript
 menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions)
 ```
 
-设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus1)相比，新增菜单选项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
+设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus)相比，新增菜单选项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
 > **说明：** 
 
@@ -612,7 +600,7 @@ onNewParam(callback: Optional<Callback<ESObject>>)
 
 > **说明：** 
 
-> - [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath1)、[replaceDestination](arkts-arkui-navigation-comp-navpathstack-c.md#replacedestination)不会触发该回调。
+> - [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath)、[replaceDestination](arkts-arkui-navigation-comp-navpathstack-c.md#replacedestination)不会触发该回调。
 > 
 > - 从API version 22开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 

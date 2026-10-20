@@ -6,8 +6,6 @@ export interface Element
 
 Element
 
-@interface Element
-
 **Since:** 4
 
 <!--Device-unnamed-export interface Element--><!--Device-unnamed-export interface Element-End-->

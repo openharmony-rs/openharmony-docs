@@ -15,14 +15,14 @@ enum SuspendType
 ## AUTO_CLEANUP
 
 ```TypeScript
-AUTO_CLEANUP = 2
+AUTO_CLEANUP
 ```
 
 系统自动清理。
 
 **起始版本：** 12
 
-<!--Device-SuspendType-AUTO_CLEANUP = 2--><!--Device-SuspendType-AUTO_CLEANUP = 2-End-->
+<!--Device-SuspendType-AUTO_CLEANUP--><!--Device-SuspendType-AUTO_CLEANUP-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -43,13 +43,13 @@ ENTER_BACK_FORWARD_CACHE = 0
 ## ENTER_BACKGROUND
 
 ```TypeScript
-ENTER_BACKGROUND = 1
+ENTER_BACKGROUND
 ```
 
 页面进入后台。
 
 **起始版本：** 12
 
-<!--Device-SuspendType-ENTER_BACKGROUND = 1--><!--Device-SuspendType-ENTER_BACKGROUND = 1-End-->
+<!--Device-SuspendType-ENTER_BACKGROUND--><!--Device-SuspendType-ENTER_BACKGROUND-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

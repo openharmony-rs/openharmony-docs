@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="install3"></a>
-
 ## install
 
 ```TypeScript

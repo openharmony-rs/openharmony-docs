@@ -28,16 +28,20 @@ Creates a DistortionComponent with content.
 
 ## Summary
 
-### Interfaces
+<!--Del-->
+### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
 | [DistortionComponentOptions](arkts-arkui-distortioncomponent-comp-distortioncomponentoptions-i-sys.md) | Defines the spatial distortion options. |
 | [DistortionParam](arkts-arkui-distortioncomponent-comp-distortionparam-i-sys.md) | Defines the spatial distortion parameters. |
+<!--DelEnd-->
 
-### Types
+<!--Del-->
+### Types(System API)
 
 | Name | Description |
 | --- | --- |
 | [Vector2](arkts-arkui-distortioncomponent-comp-vector2-t-sys.md) | Defines the two-dimensional vector, which contains the x and y coordinates and indicates the position relationship. |
 | [Vector4](arkts-arkui-distortioncomponent-comp-vector4-t-sys.md) | Defines the four-dimensional vector, which contains x, y, z, and w coordinates that indicate the barrel distortion degree. |
+<!--DelEnd-->

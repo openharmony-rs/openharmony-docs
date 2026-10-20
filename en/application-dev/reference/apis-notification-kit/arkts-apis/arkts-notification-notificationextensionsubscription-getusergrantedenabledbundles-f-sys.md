@@ -6,8 +6,6 @@
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
-<a id="getusergrantedenabledbundles1"></a>
-
 ## getUserGrantedEnabledBundles
 
 ```TypeScript

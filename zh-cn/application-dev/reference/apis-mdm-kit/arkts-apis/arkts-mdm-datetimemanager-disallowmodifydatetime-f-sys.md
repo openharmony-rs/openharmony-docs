@@ -6,8 +6,6 @@
 import { dateTimeManager } from '@kit.MDMKit';
 ```
 
-<a id="disallowmodifydatetime1"></a>
-
 ## disallowModifyDateTime
 
 ```TypeScript
@@ -20,7 +18,7 @@ function disallowModifyDateTime(admin: Want, disallow: boolean, callback: AsyncC
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_DATETIME
 
@@ -75,8 +73,6 @@ dateTimeManager.disallowModifyDateTime(wantTemp, true, (err) => {
 <!--DelEnd-->
 
 
-<a id="disallowmodifydatetime2"></a>
-
 ## disallowModifyDateTime
 
 ```TypeScript
@@ -89,7 +85,7 @@ function disallowModifyDateTime(admin: Want, disallow: boolean): Promise<void>
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**替代接口：** [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_DATETIME
 

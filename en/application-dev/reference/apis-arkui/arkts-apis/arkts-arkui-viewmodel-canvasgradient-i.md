@@ -6,8 +6,6 @@ export interface CanvasGradient
 
 You can create a gradient object on the canvas by calling CanvasRenderingContext2D.createLinearGradient().
 
-@interface CanvasGradient
-
 **Since:** 4
 
 <!--Device-unnamed-export interface CanvasGradient--><!--Device-unnamed-export interface CanvasGradient-End-->

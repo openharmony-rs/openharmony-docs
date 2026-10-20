@@ -6,8 +6,6 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
-<a id="create1"></a>
-
 ## create
 
 ```TypeScript
@@ -45,14 +43,12 @@ Creates an upload or download task and adds it to the queue. This API uses an as
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [13400001](../errorcode-request.md#13400001-file-operation-error) | Invalid file or file system error. |
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 | [21900004](../errorcode-request.md#21900004-application-task-queue-full) | The application task queue is full. |
 | [21900005](../errorcode-request.md#21900005-task-mode-error) | Operation with wrong task mode. |
 
-
-<a id="create2"></a>
 
 ## create
 
@@ -96,7 +92,7 @@ Creates an upload or download task and adds it to the queue. This API uses a pro
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Missing mandatory parameters. <br> 2. Incorrect parameter type. <br> 3. Parameter verification failed. |
 | [13400001](../errorcode-request.md#13400001-file-operation-error) | Invalid file or file system error. |
 | [13400003](../errorcode-request.md#13400003-service-error) | Task service ability error. |
 | [21900004](../errorcode-request.md#21900004-application-task-queue-full) | The application task queue is full. |

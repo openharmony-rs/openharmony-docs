@@ -21,8 +21,6 @@ Listens for file change. You can call the **Watcher.stop()** method synchronousl
 ```TypeScript
 ```
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -58,8 +56,6 @@ watcher.stop().then(() => {
   console.info("close watcher succeed");
 });
 ```
-
-<a id="stop2"></a>
 
 ## stop
 

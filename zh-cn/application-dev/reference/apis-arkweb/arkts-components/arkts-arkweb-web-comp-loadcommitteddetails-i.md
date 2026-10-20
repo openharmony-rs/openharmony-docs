@@ -6,8 +6,6 @@ declare interface LoadCommittedDetails
 
 提供已提交跳转的网页详细信息，包括是否主文档、导航类型等。适用于需要监控页面导航行为的场景，提升导航状态管理的准确性和用户体验。
 
-@interface LoadCommittedDetails [since 11 - 11]
-
 **起始版本：** 11
 
 <!--Device-unnamed-declare interface LoadCommittedDetails--><!--Device-unnamed-declare interface LoadCommittedDetails-End-->

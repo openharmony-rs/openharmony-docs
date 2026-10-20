@@ -35,8 +35,6 @@ declare function chmod(path: string, mode: number): Promise<void>
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="chmod2"></a>
-
 ## chmod
 
 ```TypeScript

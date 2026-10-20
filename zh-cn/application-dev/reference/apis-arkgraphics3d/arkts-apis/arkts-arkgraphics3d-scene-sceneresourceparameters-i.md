@@ -6,8 +6,6 @@ export interface SceneResourceParameters
 
 场景资源参数对象，包含name和uri，用于提供场景资源的名称以及3D场景所需的资源文件路径。
 
-@typedef SceneResourceParameters
-
 **起始版本：** 12
 
 <!--Device-unnamed-export interface SceneResourceParameters--><!--Device-unnamed-export interface SceneResourceParameters-End-->

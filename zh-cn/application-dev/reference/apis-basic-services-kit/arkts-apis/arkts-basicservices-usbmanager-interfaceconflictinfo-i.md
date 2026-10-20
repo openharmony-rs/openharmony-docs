@@ -8,7 +8,7 @@ interface InterfaceConflictInfo
 
 > **说明：** 
 > 
-> 此回调在其他进程调用非互斥的
+> 此回调在其他进程调用非独占的
 > [usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md)
 > 接口声明同一USB接口时触发。独占持有方可通过此回调获知潜在的访问冲突。
 

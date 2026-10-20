@@ -45,4 +45,4 @@ Triggered when the paste button is clicked, returning the authorization result. 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [PasteButtonCallback](arkts-arkui-pastebutton-comp-pastebuttoncallback-t.md) | Yes | Callback for the click event, used to handle the authorization result after the paste button is clicked.<br>Starting from API version 18, **PasteButtonCallback** is adopted uniformly, which additionally provides error information.<br>**Since:** 18 |
+| event | [PasteButtonCallback](arkts-arkui-pastebutton-comp-pastebuttoncallback-t.md) | Yes | Callback for the click event, used to handle the authorization result after the paste button is clicked. <br>Starting from API version 18, **PasteButtonCallback** is adopted uniformly, which additionally provides error information.<br>**Since:** 18 |

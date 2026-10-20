@@ -6,8 +6,6 @@ type OnBackupSizeReport = (reportInfo: string) => void
 
 返回应用备份数据量信息的回调函数。
 
-@typedef {function} OnBackupSizeReport
-
 **起始版本：** 18
 
 <!--Device-backup-type OnBackupSizeReport = (reportInfo: string) => void--><!--Device-backup-type OnBackupSizeReport = (reportInfo: string) => void-End-->

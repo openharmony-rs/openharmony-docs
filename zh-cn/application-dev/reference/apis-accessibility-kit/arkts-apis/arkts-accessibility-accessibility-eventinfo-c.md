@@ -19,8 +19,6 @@ import { accessibility } from '@kit.AccessibilityKit';
 import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType, UIRect, UIAccessibilityElement } from '@kit.AccessibilityKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -56,8 +54,6 @@ let eventInfo: accessibility.EventInfo = ({
   triggerAction: 'click',
 });
 ```
-
-<a id="constructor3"></a>
 
 ## constructor
 

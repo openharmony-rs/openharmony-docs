@@ -6,8 +6,6 @@ interface Rotation2D
 
 描述二维空间中的旋转，可以通过旋转角度和旋转中心来定义。
 
-@typedef Rotation2D
-
 **起始版本：** 23
 
 <!--Device-componentUtils-interface Rotation2D--><!--Device-componentUtils-interface Rotation2D-End-->

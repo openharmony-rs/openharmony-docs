@@ -4,7 +4,7 @@
 interface AVImageGenerator
 ```
 
-AVImageGenerator is a class for video thumbnail retrieval. It provides APIs to obtain a thumbnail from a video. Before calling any API in AVImageGenerator, you must use [createAVImageGenerator()](arkts-media-media-createavimagegenerator-f.md#createavimagegenerator3) to create an AVImageGenerator instance.
+AVImageGenerator is a class for video thumbnail retrieval. It provides APIs to obtain a thumbnail from a video. Before calling any API in AVImageGenerator, you must use [createAVImageGenerator()](arkts-media-media-createavimagegenerator-f.md#createavimagegenerator) to create an AVImageGenerator instance.
 
 For details about the demo for obtaining video thumbnails, see [Obtaining Video Thumbnails](../../../media/media/avimagegenerator.md).
 
@@ -18,8 +18,6 @@ For details about the demo for obtaining video thumbnails, see [Obtaining Video 
 
 ```TypeScript
 ```
-
-<a id="fetchframebytime1"></a>
 
 ## fetchFrameByTime
 
@@ -91,8 +89,6 @@ media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImage
   }
 });
 ```
-
-<a id="fetchframebytime3"></a>
 
 ## fetchFrameByTime
 
@@ -200,8 +196,8 @@ Fetches a scaled thumbnail from the video at a particular timestamp. This API us
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) |  |
-| [5400106](../../apis-media-kit/errorcode-media.md#5400106-format-not-supported) |  |
+| [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation not allowed. Returned by promise. |
+| [5400106](../../apis-media-kit/errorcode-media.md#5400106-format-not-supported) | Unsupported format. Returned by promise. |
 
 **Examples**
 
@@ -236,8 +232,6 @@ media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImage
   }
 });
 ```
-
-<a id="release1"></a>
 
 ## release
 
@@ -290,8 +284,6 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
   }
 });
 ```
-
-<a id="release2"></a>
 
 ## release
 

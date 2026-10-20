@@ -436,6 +436,24 @@ Event of opening a page.
 
 **System API:** This is a system API.
 
+## TYPE_PAGE_STATE_PRE_UPDATE
+
+```TypeScript
+TYPE_PAGE_STATE_PRE_UPDATE = 74
+```
+
+Indicates that the page status is about to be updated.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityEventType-TYPE_PAGE_STATE_PRE_UPDATE = 74--><!--Device-AccessibilityEventType-TYPE_PAGE_STATE_PRE_UPDATE = 74-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
 ## TYPE_PAGE_STATE_UPDATE
 
 ```TypeScript

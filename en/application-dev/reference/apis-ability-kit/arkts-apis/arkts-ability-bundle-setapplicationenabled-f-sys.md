@@ -6,8 +6,6 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
-<a id="setapplicationenabled1"></a>
-
 ## setApplicationEnabled
 
 ```TypeScript
@@ -70,8 +68,6 @@ bundle.setApplicationEnabled(bundleName, false).then(() => {
 
 <!--DelEnd-->
 
-
-<a id="setapplicationenabled2"></a>
 
 ## setApplicationEnabled
 

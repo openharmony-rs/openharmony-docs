@@ -6,8 +6,6 @@
 import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
-<a id="getsupportedpowermode1"></a>
-
 ## getSupportedPowerMode
 
 ```TypeScript
@@ -52,8 +50,6 @@ wifiManagerExt.getSupportedPowerMode((err, data: wifiManagerExt.PowerMode[]) => 
 });
 ```
 
-
-<a id="getsupportedpowermode2"></a>
 
 ## getSupportedPowerMode
 

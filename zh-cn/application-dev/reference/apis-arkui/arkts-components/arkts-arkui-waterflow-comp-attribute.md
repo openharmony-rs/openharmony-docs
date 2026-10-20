@@ -16,8 +16,6 @@ declare class WaterFlowAttribute extends ScrollableCommonMethod<WaterFlowAttribu
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="cachedcount1"></a>
-
 ## cachedCount
 
 ```TypeScript
@@ -42,9 +40,7 @@ cachedCount(value: number)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 预加载的FlowItem的数量。<br>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
-
-<a id="cachedcount2"></a>
+| value | number | 是 | 预加载的FlowItem的数量。 <br>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
 
 ## cachedCount
 
@@ -54,7 +50,7 @@ cachedCount(count: number, show: boolean)
 
 设置预加载的FlowItem数量，并配置是否显示预加载节点。
 
-配合[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1)或[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
+配合[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)或[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
 
 只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了virtualScroll开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效，超出显示及缓存范围的FlowItem会被释放。
 
@@ -72,8 +68,8 @@ cachedCount(count: number, show: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| count | number | 是 | 预加载的FlowItem的数量。<br>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
-| show | boolean | 是 | 被预加载的FlowItem是否需要显示。设置为true时显示预加载的FlowItem，设置为false时不显示预加载的FlowItem。<br> 默认值：false |
+| count | number | 是 | 预加载的FlowItem的数量。 <br>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
+| show | boolean | 是 | 被预加载的FlowItem是否需要显示。设置为true时显示预加载的FlowItem，设置为false时不显示预加载的FlowItem。 <br> 默认值：false |
 
 ## columnsGap
 
@@ -97,9 +93,7 @@ columnsGap(value: Length)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 列与列的间距。<br>默认值：0<br>单位：vp<br>取值范围：[0, +∞)，小于0时按0处理。 |
-
-<a id="columnstemplate1"></a>
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 列与列的间距。 <br>默认值：0<br>单位：vp<br>取值范围：[0, +∞)，小于0时按0处理。 |
 
 ## columnsTemplate
 
@@ -133,8 +127,6 @@ columnsTemplate(value: string)
 | --- | --- | --- | --- |
 | value | string | 是 | 当前瀑布流组件布局列的数量。<br>默认值：'1fr' |
 
-<a id="columnstemplate2"></a>
-
 ## columnsTemplate
 
 ```TypeScript
@@ -143,7 +135,7 @@ columnsTemplate(value: string | ItemFillPolicy)
 
 设置当前瀑布流组件布局列的数量，不设置时默认1列。当[layoutDirection](#layoutdirection)设置为横向布局（FlexDirection.Row或FlexDirection.RowReverse）时，columnsTemplate不生效，由[rowsTemplate](#rowstemplate)控制布局。使用[sections](arkts-arkui-waterflow-comp-waterflowoptions-i.md)分组混合布局时，此属性会被忽略。
 
-当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate1)。
+当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate)。
 
 当value设置为ItemFillPolicy类型时，将根据WaterFlow组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
 
@@ -421,7 +413,7 @@ rowsGap(value: Length)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 行与行的间距。<br>默认值：0<br>单位：vp<br>取值范围：[0, +∞)，小于0时按0处理。 |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | 是 | 行与行的间距。 <br>默认值：0<br>单位：vp<br>取值范围：[0, +∞)，小于0时按0处理。 |
 
 ## rowsTemplate
 
@@ -429,7 +421,7 @@ rowsGap(value: Length)
 rowsTemplate(value: string)
 ```
 
-设置当前瀑布流组件布局行的数量，不设置时默认1行。当[layoutDirection](#layoutdirection)设置为纵向布局（FlexDirection.Column或FlexDirection.ColumnReverse）或不设置时，rowsTemplate不生效，由[columnsTemplate](#columnstemplate1)控制布局。使用[sections](arkts-arkui-waterflow-comp-waterflowoptions-i.md)分组混合布局时，此属性会被忽略。
+设置当前瀑布流组件布局行的数量，不设置时默认1行。当[layoutDirection](#layoutdirection)设置为纵向布局（FlexDirection.Column或FlexDirection.ColumnReverse）或不设置时，rowsTemplate不生效，由[columnsTemplate](#columnstemplate)控制布局。使用[sections](arkts-arkui-waterflow-comp-waterflowoptions-i.md)分组混合布局时，此属性会被忽略。
 
 例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。
 
@@ -454,6 +446,32 @@ rowsTemplate(value: string)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | string | 是 | 当前瀑布流组件布局行的数量。<br>默认值：'1fr' |
+
+## scrollSnapStrategy
+
+```TypeScript
+scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
+```
+
+设置用户滚动结束后WaterFlow使用的滚动吸附策略。
+
+支持从上到下、分段和滑动窗口布局。START、CENTER、END分别将item对齐到滚动轴方向视口的起始、中间和末尾位置。自定义提供方计算趋近距离和最终绝对滚动目标，单位为vp。吸附目标受合法滚动范围限制。默认不启用吸附。设置为NONE或undefined时清除策略，恢复默认滚动行为。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-WaterFlowAttribute-scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider): WaterFlowAttribute--><!--Device-WaterFlowAttribute-scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider): WaterFlowAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| strategy | [ScrollSnapAlign](arkts-arkui-list-comp-scrollsnapalign-e.md) &#124; [ScrollSnapOffsetProvider](../arkts-apis/arkts-arkui-scrollsnapoffsetprovider-i.md) | 否 | 内置对齐策略或自定义提供方。 |
 
 ## supportEmptyBranchInLazyLoading
 

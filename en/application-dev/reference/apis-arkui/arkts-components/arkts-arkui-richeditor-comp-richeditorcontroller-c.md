@@ -59,7 +59,7 @@ Adds a custom layout (**BuilderSpan**) to **RichEditor**.
 > 
 > - If the component cursor is blinking, the cursor position is updated to after the newly inserted builder after insertion.
 > 
-> - For the node text of [addBuilderSpan](#addbuilderspan), the [enableDataDetector](arkts-arkui-richeditor-comp-attribute.md#enabledatadetector),[dataDetectorConfig](arkts-arkui-richeditor-comp-attribute.md#datadetectorconfig), and [enableSelectedDataDetector](arkts-arkui-richeditor-comp-attribute.md#enableselecteddatadetector) functions do not take effect.Only the following universal attributes are supported: [size](arkts-arkui-common-comp-commonmethod-c.md#size),[padding](arkts-arkui-common-comp-commonmethod-c.md#padding), [margin](arkts-arkui-common-comp-commonmethod-c.md#margin),[aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio), [borderStyle](arkts-arkui-common-comp-commonmethod-c.md#borderstyle),[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor),[borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius1),[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1),[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle),[opacity](arkts-arkui-common-comp.md), [blur](arkts-arkui-common-comp-commonmethod-c.md#blur1),[backdropBlur](arkts-arkui-common-comp-commonmethod-c.md#backdropblur1),[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1),[grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale1),[brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness1),[saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate1), [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast1),[invert](arkts-arkui-common-comp-commonmethod-c.md#invert1),[sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia1),[hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate1),[colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend1),[linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur1),[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1), [mask](arkts-arkui-common-comp-commonmethod-c.md#mask1),[foregroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#foregroundblurstyle),[accessibilityGroup](arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup1),[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext1),[accessibilityDescription](arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription1),[accessibilityLevel](arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel),[sphericalEffect](arkts-arkui-common-comp-commonmethod-c.md#sphericaleffect1),[lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect1),[pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect1).
+> - For the node text of [addBuilderSpan](#addbuilderspan), the [enableDataDetector](arkts-arkui-richeditor-comp-attribute.md#enabledatadetector),[dataDetectorConfig](arkts-arkui-richeditor-comp-attribute.md#datadetectorconfig), and [enableSelectedDataDetector](arkts-arkui-richeditor-comp-attribute.md#enableselecteddatadetector) functions do not take effect.Only the following universal attributes are supported: [size](arkts-arkui-common-comp-commonmethod-c.md#size),[padding](arkts-arkui-common-comp-commonmethod-c.md#padding), [margin](arkts-arkui-common-comp-commonmethod-c.md#margin),[aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio), [borderStyle](arkts-arkui-common-comp-commonmethod-c.md#borderstyle),[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor),[borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius),[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor),[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle),[opacity](arkts-arkui-common-comp.md), [blur](arkts-arkui-common-comp-commonmethod-c.md#blur),[backdropBlur](arkts-arkui-common-comp-commonmethod-c.md#backdropblur),[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow),[grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale),[brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness),[saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate), [contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast),[invert](arkts-arkui-common-comp-commonmethod-c.md#invert),[sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia),[hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate),[colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend),[linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur),[clip](arkts-arkui-common-comp-commonmethod-c.md#clip), [mask](arkts-arkui-common-comp-commonmethod-c.md#mask),[foregroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#foregroundblurstyle),[accessibilityGroup](arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup),[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext),[accessibilityDescription](arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription),[accessibilityLevel](arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel),[sphericalEffect](arkts-arkui-common-comp-commonmethod-c.md#sphericaleffect),[lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect),[pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect).
 
 **Since:** 11
 
@@ -109,7 +109,7 @@ This API is a synchronous API. Adding network images directly under poor network
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Image content. |
-| options | [RichEditorImageSpanOptions](arkts-arkui-richeditor-comp-richeditorimagespanoptions-i.md) | No | Image options.<br>Pass this parameter when you need to set the image style, offset position, or paragraph style; if it is not passed, the image is inserted at the end of the content using the default style. |
+| options | [RichEditorImageSpanOptions](arkts-arkui-richeditor-comp-richeditorimagespanoptions-i.md) | No | Image options. <br>Pass this parameter when you need to set the image style, offset position, or paragraph style; if it is not passed, the image is inserted at the end of the content using the default style. |
 
 **Return value:**
 
@@ -181,7 +181,7 @@ Adds an icon symbol (**SymbolSpan**) to **RichEditor**. If the component cursor 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Reference to the SymbolSpan icon resource, used to specify a system preset or custom Symbol icon. |
-| options | [RichEditorSymbolSpanOptions](arkts-arkui-richeditor-comp-richeditorsymbolspanoptions-i.md) | No | Symbol options.<br>Pass this parameter when you need to set the offset position or style of the SymbolSpan; if it is not passed, the SymbolSpan is inserted at the end of the content with the default style. |
+| options | [RichEditorSymbolSpanOptions](arkts-arkui-richeditor-comp-richeditorsymbolspanoptions-i.md) | No | Symbol options. <br>Pass this parameter when you need to set the offset position or style of the SymbolSpan; if it is not passed, the SymbolSpan is inserted at the end of the content with the default style. |
 
 **Return value:**
 
@@ -211,8 +211,8 @@ Adds text content. If the component cursor is blinking, the cursor position is u
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| content | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Text content.<br>The Resource type is supported since API version 20.<br>**Since:** 20 |
-| options | [RichEditorTextSpanOptions](arkts-arkui-richeditor-comp-richeditortextspanoptions-i.md) | No | Text options.<br>Pass this parameter when you need to set information such as the offset position, text style, and paragraph style. If this parameter is not passed, the text is inserted at the end of the content using the default style. |
+| content | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Text content. <br>The Resource type is supported since API version 20.<br>**Since:** 20 |
+| options | [RichEditorTextSpanOptions](arkts-arkui-richeditor-comp-richeditortextspanoptions-i.md) | No | Text options. <br>Pass this parameter when you need to set information such as the offset position, text style, and paragraph style. If this parameter is not passed, the text is inserted at the end of the content using the default style. |
 
 **Return value:**
 
@@ -272,7 +272,7 @@ Converts a styled string to a span.
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[RichEditorSpan](arkts-arkui-richeditor-comp-richeditorspan-t.md)&gt; | Text and image span information obtained after parsing the styled string. It can be used to query the content, style, and position of each span in the styled string.<br>Returns undefined when the controller is not bound to a component or the component bound to the controller is released. |
+| Array&lt;[RichEditorSpan](arkts-arkui-richeditor-comp-richeditorspan-t.md)&gt; | Text and image span information obtained after parsing the styled string. It can be used to query the content, style, and position of each span in the styled string. <br>Returns undefined when the controller is not bound to a component or the component bound to the controller is released. |
 
 **Error codes:**
 
@@ -302,13 +302,13 @@ Obtains the paragraph information within a specified range.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [RichEditorRange](arkts-arkui-richeditor-comp-richeditorrange-i.md) | No | Range of the paragraph to obtain.<br>If omitted, information about all paragraphs is obtained. |
+| value | [RichEditorRange](arkts-arkui-richeditor-comp-richeditorrange-i.md) | No | Range of the paragraph to obtain. <br>If omitted, information about all paragraphs is obtained. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[RichEditorParagraphResult](arkts-arkui-richeditor-comp-richeditorparagraphresult-i.md)&gt; | Paragraph information within the selection range, including the style and start/end positions of each paragraph. It can be used to query paragraph layout attributes or update paragraph styles.<br>Returns undefined when the controller is not bound to a component or the component bound to the controller is released. |
+| Array&lt;[RichEditorParagraphResult](arkts-arkui-richeditor-comp-richeditorparagraphresult-i.md)&gt; | Paragraph information within the selection range, including the style and start/end positions of each paragraph. It can be used to query paragraph layout attributes or update paragraph styles. <br>Returns undefined when the controller is not bound to a component or the component bound to the controller is released. |
 
 ## getRichEditorBuilderSpans
 
@@ -340,13 +340,13 @@ Obtains the identity and position information of BuilderSpans within the specifi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [RichEditorRange](arkts-arkui-richeditor-comp-richeditorrange-i.md) | No | Range of target BuilderSpans.<br>When omitted, returns all BuilderSpan information. |
+| value | [RichEditorRange](arkts-arkui-richeditor-comp-richeditorrange-i.md) | No | Range of target BuilderSpans. <br>When omitted, returns all BuilderSpan information. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[BuilderSpanInfo](arkts-arkui-richeditor-comp-builderspaninfo-i.md)&gt; | Array of BuilderSpan identity and position information.<br>Returns **undefined** when the controller is not bound to a component or the component bound to the controller is released. |
+| Array&lt;[BuilderSpanInfo](arkts-arkui-richeditor-comp-builderspaninfo-i.md)&gt; | Array of BuilderSpan identity and position information. <br>Returns **undefined** when the controller is not bound to a component or the component bound to the controller is released. |
 
 ## getSelection
 
@@ -370,7 +370,7 @@ Obtains the range and span information of the selection. If no text is selected,
 
 | Type | Description |
 | --- | --- |
-| [RichEditorSelection](arkts-arkui-richeditor-comp-richeditorselection-i.md) | Detailed information about the start and end positions of the selection range and the selected text and images.<br>Returns undefined when the controller is not bound to a component or the component bound to the controller is released. |
+| [RichEditorSelection](arkts-arkui-richeditor-comp-richeditorselection-i.md) | Detailed information about the start and end positions of the selection range and the selected text and images. <br>Returns undefined when the controller is not bound to a component or the component bound to the controller is released. |
 
 ## getSpans
 
@@ -394,13 +394,13 @@ Obtains span information.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [RichEditorRange](arkts-arkui-richeditor-comp-richeditorrange-i.md) | No | Range of the span to obtain.<br>If omitted, information about all spans is obtained. |
+| value | [RichEditorRange](arkts-arkui-richeditor-comp-richeditorrange-i.md) | No | Range of the span to obtain. <br>If omitted, information about all spans is obtained. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[RichEditorImageSpanResult](arkts-arkui-richeditor-comp-richeditorimagespanresult-i.md) &#124; [RichEditorTextSpanResult](arkts-arkui-richeditor-comp-richeditortextspanresult-i.md)&gt; | Detailed information about the text and image spans within the specified range, including the position, content, style, and other attributes of each span. It can be used to query and manipulate the text and image content in the component.<br>Returns undefined when the controller is not bound to a component or the component bound to the controller is released. |
+| Array&lt;[RichEditorImageSpanResult](arkts-arkui-richeditor-comp-richeditorimagespanresult-i.md) &#124; [RichEditorTextSpanResult](arkts-arkui-richeditor-comp-richeditortextspanresult-i.md)&gt; | Detailed information about the text and image spans within the specified range, including the position, content, style, and other attributes of each span. It can be used to query and manipulate the text and image content in the component. <br>Returns undefined when the controller is not bound to a component or the component bound to the controller is released. |
 
 ## toStyledString
 
@@ -430,7 +430,7 @@ Converts the component content within the given range to a styled string. **Symb
 
 | Type | Description |
 | --- | --- |
-| [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | Styled string obtained after converting the content in the specified range of the component. It can be used to transfer rich text content across components or perform style editing operations.<br>If the controller is not bound to a component or the component bound to the controller is released, **undefined** is returned. |
+| [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | Styled string obtained after converting the content in the specified range of the component. It can be used to transfer rich text content across components or perform style editing operations. <br>If the controller is not bound to a component or the component bound to the controller is released, **undefined** is returned. |
 
 **Error codes:**
 

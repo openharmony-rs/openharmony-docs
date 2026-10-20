@@ -6,8 +6,6 @@
 import { freeInstall } from '@kit.AbilityKit';
 ```
 
-<a id="getdispatchinfo1"></a>
-
 ## getDispatchInfo
 
 ```TypeScript
@@ -40,8 +38,6 @@ function getDispatchInfo(callback: AsyncCallback<DispatchInfo>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
-
-<a id="getdispatchinfo2"></a>
 
 ## getDispatchInfo
 

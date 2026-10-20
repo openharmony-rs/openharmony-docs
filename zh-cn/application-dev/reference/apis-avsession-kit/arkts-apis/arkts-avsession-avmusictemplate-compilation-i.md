@@ -6,8 +6,6 @@ interface Compilation extends OperResult
 
 合集的定义。继承自[OperResult](arkts-avsession-avmusictemplate-operresult-i.md)。
 
-@extends OperResult @interface Compilation
-
 **继承/实现关系：** Compilation extends [OperResult](arkts-avsession-avmusictemplate-operresult-i.md)
 
 **起始版本：** 23

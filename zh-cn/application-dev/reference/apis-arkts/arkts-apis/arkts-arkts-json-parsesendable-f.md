@@ -39,3 +39,56 @@ function parseSendable(text: string, reviver?: SendableTransformer, options?: Pa
 | 类型 | 说明 |
 | --- | --- |
 | [ISendable](arkts-arkts-json-isendable-t.md) &#124; null | 返回与JSON字符串对应的Sendable对象；当JSON字符串为'null'时返回null；当options.parseReturnType为[MAP](arkts-arkts-json-parsereturntype-e.md#map)时返回collections.Map。 |
+
+**示例**
+
+```TypeScript
+import { JSON, collections, lang } from '@kit.ArkTS';
+
+// 基础用法：解析为Sendable对象，可直接跨Worker/TaskPool传递
+let sendableObj: lang.ISendable | null = JSON.parseSendable('{"name": "John", "age": 30}');
+console.info(`result: ${(sendableObj as object)?.["name"]}`); // 打印结果：result: John
+
+// 86个数字键：任意数量数字键全部可访问
+let parts86: string[] = [];
+for (let i = 0; i < 86; i++) {
+  parts86.push('"' + i + '": ' + i * 2);
+}
+let numericObj86: lang.ISendable | null = JSON.parseSendable('{' + parts86.join(',') + '}');
+console.info(`result: ${(numericObj86 as object)?.[84]}`); // 打印结果：result: 168
+console.info(`result: ${(numericObj86 as object)?.[85]}`); // 打印结果：result: 170
+
+// 1021个数字键：属性数量超过1020时仍全部可访问
+let parts1021: string[] = [];
+for (let i = 0; i < 1021; i++) {
+  parts1021.push('"' + i + '": ' + i);
+}
+let numericObj1021: lang.ISendable | null = JSON.parseSendable('{' + parts1021.join(',') + '}');
+console.info(`result: ${(numericObj1021 as object)?.[0]}`); // 打印结果：result: 0
+console.info(`result: ${(numericObj1021 as object)?.[1020]}`); // 打印结果：result: 1020
+
+// MAP返回类型：任意条数可增删，键为字符串
+let mapOptions: JSON.ParseOptions = {
+  bigIntMode: JSON.BigIntMode.PARSE_AS_BIGINT,
+  parseReturnType: JSON.ParseReturnType.MAP
+};
+let sendableMap: lang.ISendable | null = JSON.parseSendable('{"a": 1, "b": 2}', undefined, mapOptions);
+console.info(`result: ${(sendableMap as collections.Map<string, number>).get("a")}`); // 打印结果：result: 1
+
+// 也可传入仅含bigIntMode的ParseOptions对象（parseReturnType默认为OBJECT）
+let bigOptions: JSON.ParseOptions = {
+  bigIntMode: JSON.BigIntMode.PARSE_AS_BIGINT
+};
+let bigObj: lang.ISendable | null = JSON.parseSendable('{"largeNumber":112233445566778899}', undefined, bigOptions);
+console.info(`result: ${(bigObj as object)?.["largeNumber"]}`); // 打印结果：result: 112233445566778899
+
+// reviver当前仅接受undefined
+try {
+  JSON.parseSendable('{"a": 1}', (key: string, value: lang.ISendable): lang.ISendable | undefined => {
+    return value;
+  });
+} catch (e) {
+  console.error(`error: ${(e as Error).message}`);
+  // 打印结果：error: Parameter error. Reviver only supports undefined currently.
+}
+```

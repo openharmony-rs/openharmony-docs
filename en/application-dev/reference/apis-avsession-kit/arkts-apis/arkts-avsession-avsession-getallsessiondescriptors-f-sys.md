@@ -6,8 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="getallsessiondescriptors1"></a>
-
 ## getAllSessionDescriptors
 
 ```TypeScript

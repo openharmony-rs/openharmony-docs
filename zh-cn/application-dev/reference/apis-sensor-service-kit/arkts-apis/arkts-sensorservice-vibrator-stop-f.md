@@ -6,8 +6,6 @@
 import { vibrator } from '@kit.SensorServiceKit';
 ```
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -19,13 +17,13 @@ function stop(stopMode: VibratorStopMode): Promise<void>
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用
-> [vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration1)替代。
+> [vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration1)(stopMode: VibratorStopMode)
+**替代接口：** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)(stopMode: VibratorStopMode)
 
 **需要权限：** ohos.permission.VIBRATE
 
@@ -68,8 +66,6 @@ vibrator.stop(vibrator.VibratorStopMode.VIBRATOR_STOP_MODE_PRESET).then(() => {
 ```
 
 
-<a id="stop2"></a>
-
 ## stop
 
 ```TypeScript
@@ -81,14 +77,14 @@ function stop(stopMode: VibratorStopMode, callback?: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用
-> [vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration2)
+> [vibrator.stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration2)(stopMode: VibratorStopMode, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)(stopMode: VibratorStopMode, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.VIBRATE
 

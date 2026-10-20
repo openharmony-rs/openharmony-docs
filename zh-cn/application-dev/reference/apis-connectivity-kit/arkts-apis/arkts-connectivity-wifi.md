@@ -24,21 +24,21 @@ import { wifi } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addUntrustedConfig](arkts-connectivity-wifi-adduntrustedconfig-f.md#adduntrustedconfig1) | 添加不可信网络配置，使用Promise异步回调。 |
-| [addUntrustedConfig](arkts-connectivity-wifi-adduntrustedconfig-f.md#adduntrustedconfig2) | 添加不可信网络配置，使用callback异步回调。 |
+| [addUntrustedConfig](arkts-connectivity-wifi-adduntrustedconfig-f.md#adduntrustedconfig) | 添加不可信网络配置，使用Promise异步回调。 |
+| [addUntrustedConfig](arkts-connectivity-wifi-adduntrustedconfig-f.md#adduntrustedconfig) | 添加不可信网络配置，使用callback异步回调。 |
 | [createGroup](arkts-connectivity-wifi-creategroup-f.md#creategroup) | 创建群组。 |
 | [getCountryCode](arkts-connectivity-wifi-getcountrycode-f.md#getcountrycode) | 获取国家码信息。 |
-| [getCurrentGroup](arkts-connectivity-wifi-getcurrentgroup-f.md#getcurrentgroup1) | 获取P2P当前组信息。使用Promise异步回调。 |
-| [getCurrentGroup](arkts-connectivity-wifi-getcurrentgroup-f.md#getcurrentgroup2) | 获取P2P当前组信息。使用callback异步回调。 |
+| [getCurrentGroup](arkts-connectivity-wifi-getcurrentgroup-f.md#getcurrentgroup) | 获取P2P当前组信息。使用Promise异步回调。 |
+| [getCurrentGroup](arkts-connectivity-wifi-getcurrentgroup-f.md#getcurrentgroup) | 获取P2P当前组信息。使用callback异步回调。 |
 | [getIpInfo](arkts-connectivity-wifi-getipinfo-f.md#getipinfo) | 获取IP信息。 |
-| [getLinkedInfo](arkts-connectivity-wifi-getlinkedinfo-f.md#getlinkedinfo1) | 获取Wi-Fi连接信息。使用Promise异步回调。 |
-| [getLinkedInfo](arkts-connectivity-wifi-getlinkedinfo-f.md#getlinkedinfo2) | 获取Wi-Fi连接信息。使用callback异步回调。 |
-| [getP2pLinkedInfo](arkts-connectivity-wifi-getp2plinkedinfo-f.md#getp2plinkedinfo1) | 获取P2P连接信息。使用Promise异步回调。 |
-| [getP2pLinkedInfo](arkts-connectivity-wifi-getp2plinkedinfo-f.md#getp2plinkedinfo2) | 获取P2P连接信息。使用callback异步回调。 |
-| [getP2pPeerDevices](arkts-connectivity-wifi-getp2ppeerdevices-f.md#getp2ppeerdevices1) | 获取P2P对端设备列表信息。使用Promise异步回调。 |
-| [getP2pPeerDevices](arkts-connectivity-wifi-getp2ppeerdevices-f.md#getp2ppeerdevices2) | 获取P2P对端设备列表信息。使用callback异步回调。 |
-| [getScanInfos](arkts-connectivity-wifi-getscaninfos-f.md#getscaninfos1) | 获取扫描结果，使用Promise异步回调。 |
-| [getScanInfos](arkts-connectivity-wifi-getscaninfos-f.md#getscaninfos2) | 获取扫描结果，使用callback异步回调。 |
+| [getLinkedInfo](arkts-connectivity-wifi-getlinkedinfo-f.md#getlinkedinfo) | 获取Wi-Fi连接信息。使用Promise异步回调。 |
+| [getLinkedInfo](arkts-connectivity-wifi-getlinkedinfo-f.md#getlinkedinfo) | 获取Wi-Fi连接信息。使用callback异步回调。 |
+| [getP2pLinkedInfo](arkts-connectivity-wifi-getp2plinkedinfo-f.md#getp2plinkedinfo) | 获取P2P连接信息。使用Promise异步回调。 |
+| [getP2pLinkedInfo](arkts-connectivity-wifi-getp2plinkedinfo-f.md#getp2plinkedinfo) | 获取P2P连接信息。使用callback异步回调。 |
+| [getP2pPeerDevices](arkts-connectivity-wifi-getp2ppeerdevices-f.md#getp2ppeerdevices) | 获取P2P对端设备列表信息。使用Promise异步回调。 |
+| [getP2pPeerDevices](arkts-connectivity-wifi-getp2ppeerdevices-f.md#getp2ppeerdevices) | 获取P2P对端设备列表信息。使用callback异步回调。 |
+| [getScanInfos](arkts-connectivity-wifi-getscaninfos-f.md#getscaninfos) | 获取扫描结果，使用Promise异步回调。 |
+| [getScanInfos](arkts-connectivity-wifi-getscaninfos-f.md#getscaninfos) | 获取扫描结果，使用callback异步回调。 |
 | [getSignalLevel](arkts-connectivity-wifi-getsignallevel-f.md#getsignallevel) | 查询Wi-Fi信号强度。 |
 | [isConnected](arkts-connectivity-wifi-isconnected-f.md#isconnected) | 查询Wi-Fi是否已连接。 |
 | [isFeatureSupported](arkts-connectivity-wifi-isfeaturesupported-f.md#isfeaturesupported) | 判断设备是否支持指定featureId对应的Wi-Fi特性。 |
@@ -68,8 +68,8 @@ import { wifi } from '@kit.ConnectivityKit';
 | [p2pCancelConnect](arkts-connectivity-wifi-p2pcancelconnect-f.md#p2pcancelconnect) | 取消P2P连接。 |
 | [p2pConnect](arkts-connectivity-wifi-p2pconnect-f.md#p2pconnect) | 执行P2P连接。 |
 | [removeGroup](arkts-connectivity-wifi-removegroup-f.md#removegroup) | 移除群组。 |
-| [removeUntrustedConfig](arkts-connectivity-wifi-removeuntrustedconfig-f.md#removeuntrustedconfig1) | 移除不可信网络配置，使用Promise异步回调。 |
-| [removeUntrustedConfig](arkts-connectivity-wifi-removeuntrustedconfig-f.md#removeuntrustedconfig2) | 移除不可信网络配置，使用callback异步回调。 |
+| [removeUntrustedConfig](arkts-connectivity-wifi-removeuntrustedconfig-f.md#removeuntrustedconfig) | 移除不可信网络配置，使用Promise异步回调。 |
+| [removeUntrustedConfig](arkts-connectivity-wifi-removeuntrustedconfig-f.md#removeuntrustedconfig) | 移除不可信网络配置，使用callback异步回调。 |
 | [scan](arkts-connectivity-wifi-scan-f.md#scan) | 启动Wi-Fi扫描。 |
 | [startDiscoverDevices](arkts-connectivity-wifi-startdiscoverdevices-f.md#startdiscoverdevices) | 开始发现设备。 |
 | [stopDiscoverDevices](arkts-connectivity-wifi-stopdiscoverdevices-f.md#stopdiscoverdevices) | 停止发现设备。 |
@@ -79,8 +79,8 @@ import { wifi } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addDeviceConfig](arkts-connectivity-wifi-adddeviceconfig-f-sys.md#adddeviceconfig1) | 添加网络配置。使用Promise异步回调。 |
-| [addDeviceConfig](arkts-connectivity-wifi-adddeviceconfig-f-sys.md#adddeviceconfig2) | 添加网络配置。使用callback异步回调。 |
+| [addDeviceConfig](arkts-connectivity-wifi-adddeviceconfig-f-sys.md#adddeviceconfig) | 添加网络配置。使用Promise异步回调。 |
+| [addDeviceConfig](arkts-connectivity-wifi-adddeviceconfig-f-sys.md#adddeviceconfig) | 添加网络配置。使用callback异步回调。 |
 | [connectToDevice](arkts-connectivity-wifi-connecttodevice-f-sys.md#connecttodevice) | 连接到指定网络。 |
 | [connectToNetwork](arkts-connectivity-wifi-connecttonetwork-f-sys.md#connecttonetwork) | 应用使用该接口连接到热点。 |
 | [deletePersistentGroup](arkts-connectivity-wifi-deletepersistentgroup-f-sys.md#deletepersistentgroup) | 删除永久组。 |

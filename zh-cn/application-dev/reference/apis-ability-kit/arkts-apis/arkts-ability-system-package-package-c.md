@@ -48,3 +48,27 @@ static hasInstalled(options: CheckPackageHasInstalledOptions): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | options | [CheckPackageHasInstalledOptions](arkts-ability-system-package-checkpackagehasinstalledoptions-i.md) | 是 | Options |
+
+**示例**
+
+```TypeScript
+import Package from '@system.package';
+
+@Entry
+@Component
+struct MainPage {
+  hasInstalled() {
+    Package.hasInstalled({
+      bundleName: 'com.example.bundlename',
+      success: (data) => {
+        console.info('package has installed: ' + data);
+      },
+      fail: (msg:string, code) => {
+        console.error('query package fail, code: ' + code + ', data: ' + msg);
+      },
+    });
+  }
+  build() {
+  }
+}
+```

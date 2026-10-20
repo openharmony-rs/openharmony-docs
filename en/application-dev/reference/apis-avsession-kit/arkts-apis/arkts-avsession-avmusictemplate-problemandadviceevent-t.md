@@ -6,8 +6,6 @@ type ProblemAndAdviceEvent = (advice: string) => Promise<OperResult>
 
 The problem and advice event.
 
-@typedef { function } ProblemAndAdviceEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

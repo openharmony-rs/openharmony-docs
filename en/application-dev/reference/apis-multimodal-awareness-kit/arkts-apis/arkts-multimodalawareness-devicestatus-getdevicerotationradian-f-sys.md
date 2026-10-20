@@ -35,7 +35,7 @@ The posture data contains the rotation angles of the x, y, and z axes, that is, 
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission check failed. A non-system application uses the system API. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function can not work correctly due to limited <br> device capabilities. |
 | [32500001](../errorcode-deviceStatus.md#32500001-abnormal-service) | Service exception. |
 
 <!--Del-->

@@ -4,7 +4,7 @@
 enum PortraitThemeType
 ```
 
-Enumerates the camera portrait theme types.
+枚举相机人像主题类型。
 
 **起始版本：** 14
 
@@ -20,7 +20,7 @@ Enumerates the camera portrait theme types.
 DELICATE = 1
 ```
 
-Delicate portrait theme type.
+精致人像主题类型。
 
 **起始版本：** 14
 
@@ -36,7 +36,7 @@ Delicate portrait theme type.
 NATURAL = 0
 ```
 
-Natural portrait theme type.
+自然人像主题类型。
 
 **起始版本：** 14
 
@@ -52,7 +52,7 @@ Natural portrait theme type.
 STYLISH = 2
 ```
 
-Stylish portrait theme type.
+时尚人像主题类型。
 
 **起始版本：** 14
 

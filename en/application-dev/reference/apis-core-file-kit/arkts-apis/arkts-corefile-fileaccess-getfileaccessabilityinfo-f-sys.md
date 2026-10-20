@@ -6,8 +6,6 @@
 import { fileAccess } from '@kit.CoreFileKit';
 ```
 
-<a id="getfileaccessabilityinfo1"></a>
-
 ## getFileAccessAbilityInfo
 
 ```TypeScript
@@ -34,7 +32,7 @@ Obtains information about all Wants with **extension** set to **fileAccess** in 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)&gt;&gt; | Yes | The callback is used to return a Array<[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)> object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)&gt;&gt; | Yes | The callback is used to return a Array<Want> object. |
 
 **Error codes:**
 
@@ -95,8 +93,6 @@ async function getFileAccessAbilityInfo() {
 
 <!--DelEnd-->
 
-
-<a id="getfileaccessabilityinfo2"></a>
 
 ## getFileAccessAbilityInfo
 

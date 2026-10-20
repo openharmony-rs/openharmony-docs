@@ -36,7 +36,7 @@ Callback invoked when an API call fails. The callback parameters are **data** of
 
 **Deprecated since:** 8
 
-**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)
+**Substitutes:** on
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
@@ -65,7 +65,7 @@ Callback function invoked when the step counter sensor data changes. The callbac
 
 **Deprecated since:** 8
 
-**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)
+**Substitutes:** on
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 

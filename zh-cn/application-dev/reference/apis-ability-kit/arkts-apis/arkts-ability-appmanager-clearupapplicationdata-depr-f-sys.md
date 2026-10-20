@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="clearupapplicationdata1"></a>
-
 ## clearUpApplicationData
 
 ```TypeScript
@@ -60,8 +58,6 @@ appManager.clearUpApplicationData(bundleName)
 
 <!--DelEnd-->
 
-
-<a id="clearupapplicationdata2"></a>
 
 ## clearUpApplicationData
 

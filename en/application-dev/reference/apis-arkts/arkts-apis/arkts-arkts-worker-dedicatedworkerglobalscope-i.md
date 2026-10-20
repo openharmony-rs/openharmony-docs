@@ -112,8 +112,6 @@ The onmessage attribute of parentPort specifies the event handler to be called t
 | this | [DedicatedWorkerGlobalScope](arkts-arkts-worker-dedicatedworkerglobalscope-i.md) | Yes |  |
 | ev | [MessageEvent](arkts-arkts-worker-messageevent-i.md) | Yes |  |
 
-<a id="postmessage1"></a>
-
 ## postMessage
 
 ```TypeScript
@@ -187,8 +185,6 @@ parentPort.onmessage = (e: MessageEvents) => {
 }
 ```
 
-<a id="postmessage2"></a>
-
 ## postMessage
 
 ```TypeScript
@@ -236,8 +232,6 @@ parentPort.onmessage = (e: MessageEvents) => {
   parentPort.postMessage("receive data from main thread");
 }
 ```
-
-<a id="postmessage3"></a>
 
 ## postMessage
 

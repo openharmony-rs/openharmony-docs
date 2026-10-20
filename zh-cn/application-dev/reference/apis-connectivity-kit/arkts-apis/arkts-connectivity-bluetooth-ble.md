@@ -6,6 +6,8 @@
 
 **起始版本：** 10
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace ble--><!--Device-unnamed-declare namespace ble-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
@@ -26,23 +28,23 @@ import { ble } from '@kit.ConnectivityKit';
 | [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md#creategattclientdevice) | 创建[GattClientDevice](arkts-connectivity-ble-gattclientdevice-i.md)实例，表示GATT连接中的client端。 |
 | [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md#creategattclientdevice) | 创建[GattClientDevice](arkts-connectivity-ble-gattclientdevice-i.md)实例，表示GATT连接中的client端，可通过[GattSetting](arkts-connectivity-ble-gattsetting-i.md)设置GATT连接参数。 |
 | [createGattServer](arkts-connectivity-ble-creategattserver-f.md#creategattserver) | 创建[GattServer](arkts-connectivity-ble-gattserver-i.md)实例，表示GATT连接中的server端。 |
-| [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md#disableadvertising1) | 停止指定标识的BLE广播。使用Callback异步回调。 |
-| [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md#disableadvertising2) | 停止指定标识的BLE广播。使用Promise异步回调。 |
-| [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md#enableadvertising1) | 重新启动指定标识的BLE广播。使用Callback异步回调。 |
-| [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md#enableadvertising2) | 重新启动指定标识的BLE广播。使用Promise异步回调。 |
+| [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md#disableadvertising) | 停止指定标识的BLE广播。使用Callback异步回调。 |
+| [disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md#disableadvertising) | 停止指定标识的BLE广播。使用Promise异步回调。 |
+| [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md#enableadvertising) | 重新启动指定标识的BLE广播。使用Callback异步回调。 |
+| [enableAdvertising](arkts-connectivity-ble-enableadvertising-f.md#enableadvertising) | 重新启动指定标识的BLE广播。使用Promise异步回调。 |
 | [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md#getconnectedbledevices) | 获取和本机设备已连接GATT的BLE设备集合。 |
 | [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md#getconnectedbledevices) | 根据指定的本机设备Profile协议类型，获取和本机设备已连接GATT的BLE设备集合。 |
 | [off('advertisingStateChange')](arkts-connectivity-ble-off-f.md#offadvertisingstatechange) | 取消订阅BLE广播状态。广播停止或启动将不再收到通知。 |
 | [off('BLEDeviceFind')](arkts-connectivity-ble-off-f.md#offbledevicefind) | 取消订阅BLE设备扫描结果上报事件。 |
 | [on('advertisingStateChange')](arkts-connectivity-ble-on-f.md#onadvertisingstatechange) | 订阅BLE广播状态。使用Callback异步回调。 |
 | [on('BLEDeviceFind')](arkts-connectivity-ble-on-f.md#onbledevicefind) | 订阅BLE设备扫描结果上报事件。使用Callback异步回调。 |
-| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising1) | 开始发送BLE广播报文。 |
-| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising2) | 首次启动发送BLE广播报文。使用Callback异步回调。 |
-| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising3) | 首次启动发送BLE广播报文。使用Promise异步回调。 |
+| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising) | 开始发送BLE广播报文。 |
+| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising) | 首次启动发送BLE广播报文。使用Callback异步回调。 |
+| [startAdvertising](arkts-connectivity-ble-startadvertising-f.md#startadvertising) | 首次启动发送BLE广播报文。使用Promise异步回调。 |
 | [startBLEScan](arkts-connectivity-ble-startblescan-f.md#startblescan) | 发起BLE扫描流程。 |
-| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising1) | 停止发送BLE广播报文。 |
-| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising2) | 完全停止发送BLE广播。使用Callback异步回调。 |
-| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising3) | 完全停止发送BLE广播。使用Promise异步回调。 |
+| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising) | 停止发送BLE广播报文。 |
+| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising) | 完全停止发送BLE广播。使用Callback异步回调。 |
+| [stopAdvertising](arkts-connectivity-ble-stopadvertising-f.md#stopadvertising) | 完全停止发送BLE广播。使用Promise异步回调。 |
 | [stopBLEScan](arkts-connectivity-ble-stopblescan-f.md#stopblescan) | 停止BLE扫描流程。 |
 
 ### 接口

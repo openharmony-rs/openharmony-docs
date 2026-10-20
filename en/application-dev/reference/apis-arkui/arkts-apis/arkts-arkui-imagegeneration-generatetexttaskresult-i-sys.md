@@ -6,8 +6,6 @@ interface GenerateTextTaskResult
 
 Configuration result for AI-generated text tasks.
 
-@interface GenerateTextTaskResult
-
 **Since:** 23
 
 <!--Device-imageGeneration-interface GenerateTextTaskResult--><!--Device-imageGeneration-interface GenerateTextTaskResult-End-->

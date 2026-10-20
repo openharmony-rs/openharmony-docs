@@ -12,6 +12,24 @@ const enum AlbumType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+## SHARE
+
+```TypeScript
+SHARE = 8192
+```
+
+共享相册
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AlbumType-SHARE = 8192--><!--Device-AlbumType-SHARE = 8192-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## SMART
 
 ```TypeScript

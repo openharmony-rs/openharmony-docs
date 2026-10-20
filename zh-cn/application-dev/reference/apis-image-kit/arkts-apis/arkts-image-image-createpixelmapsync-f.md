@@ -6,8 +6,6 @@
 import { image } from '@kit.ImageKit';
 ```
 
-<a id="createpixelmapsync1"></a>
-
 ## createPixelMapSync
 
 ```TypeScript
@@ -74,8 +72,6 @@ function createPixelMapSync() {
 }
 ```
 
-
-<a id="createpixelmapsync2"></a>
 
 ## createPixelMapSync
 

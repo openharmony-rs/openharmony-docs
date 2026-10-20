@@ -14,7 +14,7 @@ function getEthEapConfig(): Promise<EthEapConfig>
 
 Gets the 802.1X EAP configuration for Ethernet. Sensitive fields (password, certPassword, certEntry) are always returned empty.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_EAP
 

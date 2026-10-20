@@ -11,9 +11,9 @@
 export declare function sendTouchEvent(event: TouchObject): boolean
 ```
 
-Send touch event.
+Sends a touch event.<br>This API is intended for application testing purposes only. It is recommended that you call this API after application startup and layout completion. The API requires significant processing time. Avoid using it.
 
-**Since:** 11
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -27,10 +27,10 @@ Send touch event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | [TouchObject](../arkts-components/arkts-arkui-common-comp-touchobject-i.md) | Yes | TouchObject to be sent. |
+| event | [TouchObject](../arkts-components/arkts-arkui-common-comp-touchobject-i.md) | Yes | Touch event. For details about the event parameter, see TouchObject. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean |  |
+| boolean | Returns **true** if the event is sent successfully; returns **false** otherwise. |

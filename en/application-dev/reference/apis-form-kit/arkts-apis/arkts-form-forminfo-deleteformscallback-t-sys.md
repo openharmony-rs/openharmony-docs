@@ -6,8 +6,6 @@ type DeleteFormsCallback = (formIds: Array<string>) => void
 
 callback for deleting the forms.
 
-@typedef { function }
-
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.

@@ -6,8 +6,6 @@
 import { installer } from '@kit.AbilityKit';
 ```
 
-<a id="getbundleinstaller1"></a>
-
 ## getBundleInstaller
 
 ```TypeScript
@@ -37,8 +35,6 @@ Obtains a BundleInstaller object. This API uses an asynchronous callback to retu
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
-
-<a id="getbundleinstaller2"></a>
 
 ## getBundleInstaller
 

@@ -40,7 +40,7 @@ Sets whether to automatically scale the **ArcListItem**. When enabled, the **Arc
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether ArcListItem supports automatic scaling display. The value true means supported, and false means not supported.<br>Default value: true, automatic scaling display is supported. |
+| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether ArcListItem supports automatic scaling display. The value true means supported, and false means not supported. <br>Default value: true, automatic scaling display is supported. |
 
 **Return value:**
 

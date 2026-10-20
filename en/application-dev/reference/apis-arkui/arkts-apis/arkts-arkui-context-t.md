@@ -6,8 +6,6 @@ export type Context = common.Context
 
 Context of the Ability (app component) where the current component resides.
 
-@typedef { common.Context } Context
-
 **Type:** [common.Context](../../apis-ability-kit/arkts-apis/arkts-ability-common-context-t.md)
 
 **Since:** 12

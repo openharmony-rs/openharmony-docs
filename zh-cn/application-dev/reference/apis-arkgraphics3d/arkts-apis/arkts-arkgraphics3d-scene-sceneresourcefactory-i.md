@@ -6,8 +6,6 @@ export interface SceneResourceFactory extends RenderResourceFactory
 
 用于创建3D场景中资源的接口，例如相机、光源等，继承自RenderResourceFactory。
 
-@extends RenderResourceFactory @interface SceneResourceFactory
-
 **继承/实现关系：** SceneResourceFactory extends [RenderResourceFactory](arkts-arkgraphics3d-scene-renderresourcefactory-i.md)
 
 **起始版本：** 12
@@ -15,8 +13,6 @@ export interface SceneResourceFactory extends RenderResourceFactory
 <!--Device-unnamed-export interface SceneResourceFactory extends RenderResourceFactory--><!--Device-unnamed-export interface SceneResourceFactory extends RenderResourceFactory-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
-
-<a id="createcamera1"></a>
 
 ## createCamera
 
@@ -66,8 +62,6 @@ function createCameraPromise(): Promise<Camera> {
   });
 }
 ```
-
-<a id="createcamera2"></a>
 
 ## createCamera
 

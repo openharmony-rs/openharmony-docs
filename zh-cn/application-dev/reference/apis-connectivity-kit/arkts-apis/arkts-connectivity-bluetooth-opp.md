@@ -6,6 +6,8 @@ OPP模块提供了使用蓝牙传输文件的功能，包括发送文件、接�
 
 **起始版本：** 16
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace opp--><!--Device-unnamed-declare namespace opp-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core

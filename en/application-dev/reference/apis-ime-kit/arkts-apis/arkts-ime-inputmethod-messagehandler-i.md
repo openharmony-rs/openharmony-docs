@@ -7,11 +7,17 @@ interface MessageHandler
 Represents a custom communication object. <br> <br>  
 > **NOTE:** <br>
 > <br>
-> You can register this object to receive custom communication data sent by the input method application. When the custom communication data is received, the [onMessage](#onmessage2) callback in this object is triggered. <br>
+> You can register this object to receive custom communication data sent by the input method application. When the <br>
+> custom communication data is received, the <br>
+> [onMessage](#onmessage) callback in this <br>
+> object is triggered. <br>
 > <br>
-> This object is globally unique. After multiple registrations, only the last registered object is valid and retained, and the [onTerminated](#onterminated) callback of the penultimate registered object is triggered. <br>
+> This object is globally unique. After multiple registrations, only the last registered object is valid and <br>
+> retained, and the [onTerminated](#onterminated) callback of the penultimate <br>
+> registered object is triggered. <br>
 > <br>
-> If this object is unregistered, its [onTerminated](#onterminated) callback will be triggered.
+> If this object is unregistered, its [onTerminated](#onterminated) callback will <br>
+> be triggered.
 
 **Since:** 15
 
@@ -24,8 +30,6 @@ Represents a custom communication object. <br> <br>
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
 ```
-
-<a id="onmessage2"></a>
 
 ## onMessage
 

@@ -6,8 +6,6 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
-<a id="getcellinformation1"></a>
-
 ## getCellInformation
 
 ```TypeScript
@@ -63,8 +61,6 @@ radio.getCellInformation(slotId, (err: BusinessError, data: Array<radio.CellInfo
 
 <!--DelEnd-->
 
-
-<a id="getcellinformation2"></a>
 
 ## getCellInformation
 
@@ -124,8 +120,6 @@ radio.getCellInformation(slotId).then((data: Array<radio.CellInformation>) => {
 
 <!--DelEnd-->
 
-
-<a id="getcellinformation3"></a>
 
 ## getCellInformation
 

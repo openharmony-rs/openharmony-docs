@@ -6,8 +6,6 @@ type QueryPlaylistEvent = (pageIndex: number, sort: Sort) => Promise<PageMediaEn
 
 The query play list event.
 
-@typedef { function } QueryPlaylistEvent
-
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.

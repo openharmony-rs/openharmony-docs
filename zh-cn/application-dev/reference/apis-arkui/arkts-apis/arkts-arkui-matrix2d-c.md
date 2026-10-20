@@ -12,8 +12,6 @@ declare class Matrix2D
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -33,8 +31,6 @@ constructor()
 <!--Device-Matrix2D-constructor()--><!--Device-Matrix2D-constructor()-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -114,8 +110,6 @@ invert(): Matrix2D
 | --- | --- |
 | [Matrix2D](arkts-arkui-matrix2d-c.md) | 逆矩阵结果。 |
 
-<a id="rotate2"></a>
-
 ## rotate
 
 ```TypeScript
@@ -149,8 +143,6 @@ rotate(degree: number, rx?: number, ry?: number): Matrix2D
 | 类型 | 说明 |
 | --- | --- |
 | [Matrix2D](arkts-arkui-matrix2d-c.md) | 旋转后结果矩阵对象。 |
-
-<a id="rotate1"></a>
 
 ## rotate
 

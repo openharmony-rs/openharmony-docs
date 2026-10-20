@@ -6,8 +6,6 @@ export type CliToolEvent = _CliToolEvent
 
 The event data of cli execute.
 
-@typedef { _CliToolEvent }
-
 **Type:** _CliToolEvent
 
 **Since:** 26.0.0

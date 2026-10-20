@@ -6,8 +6,6 @@ export interface BusinessAbilityInfo
 
 Contains basic business ability information.
 
-@typedef BusinessAbilityInfo
-
 **Since:** 10
 
 <!--Device-unnamed-export interface BusinessAbilityInfo--><!--Device-unnamed-export interface BusinessAbilityInfo-End-->

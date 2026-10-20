@@ -29,7 +29,7 @@ Obtains the security status of the current device. This API is applicable to sce
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
-| item | string | Yes | Type of the security status to obtain.<br>- **patch**: device security patch. <br>- **encryption**: device file system encryption. |
+| item | string | Yes | Type of the security status to obtain. <br>- **patch**: device security patch. <br>- **encryption**: device file system encryption. |
 
 **Return value:**
 

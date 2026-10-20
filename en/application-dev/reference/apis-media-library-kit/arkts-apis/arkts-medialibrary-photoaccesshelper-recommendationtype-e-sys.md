@@ -135,3 +135,8 @@ Landscape images will be recommended.
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **System API:** This is a system API.
+
+<!--Del-->
+**Examples**
+
+<!--DelEnd-->

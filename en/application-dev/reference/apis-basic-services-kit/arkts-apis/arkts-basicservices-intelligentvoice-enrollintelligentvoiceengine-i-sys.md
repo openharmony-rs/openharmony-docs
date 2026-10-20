@@ -20,8 +20,6 @@ Implements enroll intelligent voice engine. @typedef EnrollIntelligentVoiceEngin
 import { intelligentVoice } from '@kit.BasicServicesKit';
 ```
 
-<a id="commit1"></a>
-
 ## commit
 
 ```TypeScript
@@ -73,8 +71,6 @@ if (enrollIntelligentVoiceEngine != null) {
 
 <!--DelEnd-->
 
-<a id="commit2"></a>
-
 ## commit
 
 ```TypeScript
@@ -123,8 +119,6 @@ if (enrollIntelligentVoiceEngine != null) {
 ```
 
 <!--DelEnd-->
-
-<a id="enrollforresult1"></a>
 
 ## enrollForResult
 
@@ -180,8 +174,6 @@ if (enrollIntelligentVoiceEngine != null) {
 ```
 
 <!--DelEnd-->
-
-<a id="enrollforresult2"></a>
 
 ## enrollForResult
 
@@ -299,8 +291,6 @@ if (enrollIntelligentVoiceEngine != null) {
 
 <!--DelEnd-->
 
-<a id="getparameter1"></a>
-
 ## getParameter
 
 ```TypeScript
@@ -354,8 +344,6 @@ if (enrollIntelligentVoiceEngine != null) {
 ```
 
 <!--DelEnd-->
-
-<a id="getparameter2"></a>
 
 ## getParameter
 
@@ -414,8 +402,6 @@ if (enrollIntelligentVoiceEngine != null) {
 
 <!--DelEnd-->
 
-<a id="getsupportedregions1"></a>
-
 ## getSupportedRegions
 
 ```TypeScript
@@ -469,8 +455,6 @@ if (enrollIntelligentVoiceEngine != null) {
 
 <!--DelEnd-->
 
-<a id="getsupportedregions2"></a>
-
 ## getSupportedRegions
 
 ```TypeScript
@@ -520,8 +504,6 @@ if (enrollIntelligentVoiceEngine != null) {
 ```
 
 <!--DelEnd-->
-
-<a id="init1"></a>
 
 ## init
 
@@ -580,8 +562,6 @@ if (enrollIntelligentVoiceEngine != null) {
 ```
 
 <!--DelEnd-->
-
-<a id="init2"></a>
 
 ## init
 
@@ -644,8 +624,6 @@ if (enrollIntelligentVoiceEngine != null) {
 
 <!--DelEnd-->
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -696,8 +674,6 @@ if (enrollIntelligentVoiceEngine != null) {
 
 <!--DelEnd-->
 
-<a id="release2"></a>
-
 ## release
 
 ```TypeScript
@@ -745,8 +721,6 @@ if (enrollIntelligentVoiceEngine != null) {
 ```
 
 <!--DelEnd-->
-
-<a id="setparameter1"></a>
 
 ## setParameter
 
@@ -801,8 +775,6 @@ if (enrollIntelligentVoiceEngine != null) {
 ```
 
 <!--DelEnd-->
-
-<a id="setparameter2"></a>
 
 ## setParameter
 
@@ -861,8 +833,6 @@ if (enrollIntelligentVoiceEngine != null) {
 
 <!--DelEnd-->
 
-<a id="setsensibility1"></a>
-
 ## setSensibility
 
 ```TypeScript
@@ -915,8 +885,6 @@ if (enrollIntelligentVoiceEngine != null) {
 ```
 
 <!--DelEnd-->
-
-<a id="setsensibility2"></a>
 
 ## setSensibility
 
@@ -974,8 +942,6 @@ if (enrollIntelligentVoiceEngine != null) {
 
 <!--DelEnd-->
 
-<a id="setwakeuphapinfo1"></a>
-
 ## setWakeupHapInfo
 
 ```TypeScript
@@ -1032,8 +998,6 @@ if (enrollIntelligentVoiceEngine != null) {
 ```
 
 <!--DelEnd-->
-
-<a id="setwakeuphapinfo2"></a>
 
 ## setWakeupHapInfo
 
@@ -1095,8 +1059,6 @@ if (enrollIntelligentVoiceEngine != null) {
 
 <!--DelEnd-->
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -1146,8 +1108,6 @@ if (enrollIntelligentVoiceEngine != null) {
 ```
 
 <!--DelEnd-->
-
-<a id="stop2"></a>
 
 ## stop
 

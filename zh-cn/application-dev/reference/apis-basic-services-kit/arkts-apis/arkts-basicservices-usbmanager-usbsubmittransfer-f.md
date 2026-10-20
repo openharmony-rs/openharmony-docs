@@ -38,9 +38,9 @@ function usbSubmitTransfer(transfer: UsbDataTransferParams): void
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [14400001](../errorcode-usb.md#14400001-usb设备访问权限被拒绝) | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
-| [14400007](../errorcode-usb.md#14400007-资源繁忙) | Resource busy. Possible causes:<br>1. The transfer has already been submitted.  <br>2. The interface is claimed by another program or driver. |
+| [14400007](../errorcode-usb.md#14400007-资源繁忙) | Resource busy. Possible causes:  <br>1. The transfer has already been submitted.  <br>2. The interface is claimed by another program or driver. |
 | [14400008](../errorcode-usb.md#14400008-没有设备连接已断开) | No such device (it may have been disconnected). |
-| [14400009](../errorcode-usb.md#14400009-内存不足) | Insufficient memory. Possible causes:<br>1. Memory allocation failed. |
+| [14400009](../errorcode-usb.md#14400009-内存不足) | Insufficient memory. Possible causes:  <br>1. Memory allocation failed. |
 | [14400012](../errorcode-usb.md#14400012-io错误) | Transmission I/O error. |
 
 **示例**

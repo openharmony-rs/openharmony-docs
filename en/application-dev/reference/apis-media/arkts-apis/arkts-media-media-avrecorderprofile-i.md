@@ -133,7 +133,7 @@ Whether to enable video encoding policy to quality stable encoding.
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 <!--Device-AVRecorderProfile-enableStableQualityMode?: boolean--><!--Device-AVRecorderProfile-enableStableQualityMode?: boolean-End-->
 
@@ -199,7 +199,7 @@ Set the quality parameter in StableQualityMode. The value range is [0, 51]. A sm
 
 **Type:** number
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

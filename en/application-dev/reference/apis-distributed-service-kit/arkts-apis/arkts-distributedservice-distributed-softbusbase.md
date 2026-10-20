@@ -4,6 +4,8 @@ The **softbusBase** module provides APIs for device perception, including starti
 
 **Since:** 26.0.1
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace softbusBase--><!--Device-unnamed-declare namespace softbusBase-End-->
 
 **System capability:** SystemCapability.Communication.SoftBus.Core

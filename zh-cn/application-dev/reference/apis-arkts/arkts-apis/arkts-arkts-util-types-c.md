@@ -160,7 +160,7 @@ console.info("result = " + result);
 isArrayBufferView(value: Object): boolean
 ```
 
-判断入参是否为 ArrayBufferView 类型。
+判断入参是否为 ArrayBufferView 类型。ArrayBufferView 类型包括 Int8Array、Int16Array、Int32Array、Uint8Array、Uint8ClampedArray、Uint32Array、Float32Array、Float64Array 和 DataView。
 
 **起始版本：** 8
 
@@ -1184,7 +1184,7 @@ console.info("result = " + result);
 isTypedArray(value: Object): boolean
 ```
 
-判断入参是否为 TypedArray 类型。
+判断入参是否为 TypedArray 类型。TypedArray 类型包括 Int8Array、Int16Array、Int32Array、Uint8Array、Uint8ClampedArray、Uint16Array、Uint32Array、Float32Array、Float64Array、BigInt64Array 和 BigUint64Array。
 
 **起始版本：** 8
 

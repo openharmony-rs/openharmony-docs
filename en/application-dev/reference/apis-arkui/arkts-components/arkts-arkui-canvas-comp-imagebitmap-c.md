@@ -28,7 +28,7 @@ Releases all image resources associated with the **ImageBitmap** object and sets
 > **NOTE:** 
 > 
 > - This method must be used together with the [constructor()](#constructor)method. After creating an **ImageBitmap** object, call **close()** to release resources when they are no longer needed. Failure to call **close()** may cause image resource leaks and affect app performance.
-> - It is recommended to call this method after **Canvas** drawing is complete, for example, at the end of the [onReady](arkts-arkui-canvas-comp-attribute.md#onready1)callback.
+> - It is recommended to call this method after **Canvas** drawing is complete, for example, at the end of the [onReady](arkts-arkui-canvas-comp-attribute.md#onready)callback.
 
 **Since:** 8
 
@@ -41,8 +41,6 @@ Releases all image resources associated with the **ImageBitmap** object and sets
 <!--Device-ImageBitmap-close(): void--><!--Device-ImageBitmap-close(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-<a id="constructor1"></a>
 
 ## constructor
 
@@ -74,8 +72,6 @@ Creates an **ImageBitmap** object using an image data source.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | src | string | Yes | Image data source. Supports local images.<br>         1. The string format is used to load local images, for example,   **ImageBitmap("common/images/example.jpg")**. For modules of the "entry" and"feature" types, the starting point of the image loading path is the **ets** folder of the current module. For modules of the "har" and "shared" types, the starting point of the image loading path is the **ets** folder of the currently built "entry" or "feature" type module.<br> For modules of the "har" and "shared" types, it is recommended to use [ImageSource](../../../media/image/image-decoding.md) to decode resource images into a unified **PixelMap** for loading.<br>         2. Supported local image types: bmp, jpg, png, svg, and webp.<br>   **NOTE:** <br> - In ArkTS widgets, strings with network-related path prefixes such as **http://**, the **datashare://** path prefix, and the **file://data/storage** path prefix are not supported. |
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -109,8 +105,6 @@ Creates an **ImageBitmap** object using an image data source. This API supports 
 | src | string | Yes | Image data source, which supports local images.<br>         1. The string format is used to load local images, for example,   **ImageBitmap("common/images/example.jpg")**. For modules of the "entry" and"feature" types, the image loading path starts from the **ets** folder of the current module. For modules of the "har" and "shared" types, the image loading path starts from the **ets** folder of the currently built "entry" or "feature"type module.<br> For modules of the "har" and "shared" types, you are advised to use [ImageSource](../../../media/image/image-decoding.md) to decode resource images into a unified **PixelMap** for loading.<br>         2. Supported local image types: bmp, jpg, png, svg, and webp.<br>   **NOTE:** <br> - ArkTS widgets do not support strings with network-related path prefixes such as **http://**, the **datashare://** path prefix, or the **file://data/storage** path prefix. |
 | unit | LengthMetricsUnit | Yes | Unit mode for configuring the **ImageBitmap** object. The mode cannot be dynamically changed after configuration. The configuration method is the same as that of [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md).<br> Default value: **LengthMetricsUnit.DEFAULT**.<br> Abnormal values such as **undefined**, **NaN**, and **Infinity** are processed as the default value. |
 
-<a id="constructor3"></a>
-
 ## constructor
 
 ```TypeScript
@@ -139,8 +133,6 @@ Creates an **ImageBitmap** object using a **PixelMap** object.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | data | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | Yes | Image data source, set through a **PixelMap** object. Applicable to scenarios where images need to be decoded and processed before drawing, which can improve image loading performance. |
-
-<a id="constructor4"></a>
 
 ## constructor
 
@@ -171,8 +163,6 @@ Creates an **ImageBitmap** object using a **PixelMap** object. This API supports
 | --- | --- | --- | --- |
 | data | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | Yes | Image data source, set through a **PixelMap** object. This is suitable for scenarios where images need to be decoded and processed before drawing, which can improve image loading performance. |
 | unit | LengthMetricsUnit | Yes | Unit mode for configuring the **ImageBitmap** object. Once configured, it cannot be changed dynamically. The configuration method is the same as that of [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md).<br> Default value: **LengthMetricsUnit.DEFAULT**.<br> Abnormal values such as **undefined**, **NaN**, and **Infinity** are processed as the default value. |
-
-<a id="constructor5"></a>
 
 ## constructor
 

@@ -12,7 +12,7 @@ rendered at a time. When a user swipes, the nodes that are out of the screen ran
 
 If a scrollable component is nested in a **List** component, their scrolling directions are the same, and the main axis size is not set for the **List** component, the **List** component loads all child components, causing lazy loading to fail. In this scenario, you are advised to nest the [ListItemGroup](arkts-arkui-listitemgroup-comp.md) component in **List** to optimize performance.
 
-Preloading in **List** refers to loading not only the visible child components within the display area but also some invisible child components outside the display area during idle time. Preloading can reduce frame drops during scrolling and improve smoothness. Preloading takes effect only when combined with lazy loading. **List** supports setting the number of preloaded items through [cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount1). By default, one screen of child components is preloaded both above and below the display area (up to 16 rows of child components). When **List** is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md), the preloading capabilities differ as follows:
+Preloading in **List** refers to loading not only the visible child components within the display area but also some invisible child components outside the display area during idle time. Preloading can reduce frame drops during scrolling and improve smoothness. Preloading takes effect only when combined with lazy loading. **List** supports setting the number of preloaded items through [cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount). By default, one screen of child components is preloaded both above and below the display area (up to 16 rows of child components). When **List** is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md), the preloading capabilities differ as follows:
 
 - When the **List** component is used together with **ForEach** and **cachedCount** is set, in addition to laying out  
 child components within the visible area, child components within the range of **cachedCount** outside the visible area are pre-laid out during idle time.  
@@ -88,13 +88,20 @@ Creates a list container.
 
 | Name | Description |
 | --- | --- |
-| [ChainAnimationOptions](arkts-arkui-list-comp-chainanimationoptions-i-sys.md) | Defines a collection of chain animation effect attributes, used to set the maximum spacing, minimum spacing, animation intensity, conduction coefficient, edge effect, stiffness, and damping of the list. When the list requires fine-grained control over the chained linkage elastic effect, different animation feels can be achieved by adjusting the parameters in this object. |
 | [CloseSwipeActionOptions](arkts-arkui-list-comp-closeswipeactionoptions-i.md) | Implements the callbacks and events for the [ListItem](arkts-arkui-listitem-comp.md) in the [expanded](arkts-arkui-listitem-comp-swipeactionstate-e.md) state. |
 | [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) | Defines the system back button behavior of the **List** component. |
 | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) | Defines the divider style of the list or list item group. |
 | [ListOptions](arkts-arkui-list-comp-listoptions-i.md) | Defines the options of the **List** component. |
-| [UIListEvent](arkts-arkui-list-comp-uilistevent-i.md) | Represents the return value of the [getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent2) method in **frameNode**, which can be used to set scroll events for a **List** node. |
+| [UIListEvent](arkts-arkui-list-comp-uilistevent-i.md) | Represents the return value of the [getEvent('List')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent) method in **frameNode**, which can be used to set scroll events for a **List** node. |
 | [VisibleListContentInfo](arkts-arkui-list-comp-visiblelistcontentinfo-i.md) | Describes the details of the child components in the visible area of a list. |
+
+<!--Del-->
+### Interfaces(System API)
+
+| Name | Description |
+| --- | --- |
+| [ChainAnimationOptions](arkts-arkui-list-comp-chainanimationoptions-i-sys.md) | Defines a collection of chain animation effect attributes, used to set the maximum spacing, minimum spacing, animation intensity, conduction coefficient, edge effect, stiffness, and damping of the list. When the list requires fine-grained control over the chained linkage elastic effect, different animation feels can be achieved by adjusting the parameters in this object. |
+<!--DelEnd-->
 
 ### Types
 
@@ -108,13 +115,20 @@ Creates a list container.
 
 | Name | Description |
 | --- | --- |
-| [ChainEdgeEffect](arkts-arkui-list-comp-chainedgeeffect-e-sys.md) | Sets the edge effect of the chain animation effect, which determines how the spacing between list items changes when the list continues to be dragged after being scrolled to the edge. |
 | [ListItemAlign](arkts-arkui-list-comp-listitemalign-e.md) | Sets the alignment mode of child components in the cross-axis direction of the list. |
 | [ListItemGroupArea](arkts-arkui-list-comp-listitemgrouparea-e.md) | Enumerates the areas of **ListItemGroup**. |
 | [ScrollSnapAlign](arkts-arkui-list-comp-scrollsnapalign-e.md) | Enumerates the alignment modes of list items when scrolling ends. |
 | [ScrollSnapAnimationSpeed](arkts-arkui-list-comp-scrollsnapanimationspeed-e.md) | Enumerates the speeds of the snap animation for list scrolling. |
 | [ScrollState](arkts-arkui-list-comp-scrollstate-e.md) | Enumerates the scrolling states. |
 | [StickyStyle](arkts-arkui-list-comp-stickystyle-e.md) | Enumerates the sticky styles. |
+
+<!--Del-->
+### Enums(System API)
+
+| Name | Description |
+| --- | --- |
+| [ChainEdgeEffect](arkts-arkui-list-comp-chainedgeeffect-e-sys.md) | Sets the edge effect of the chain animation effect, which determines how the spacing between list items changes when the list continues to be dragged after being scrolled to the edge. |
+<!--DelEnd-->
 
 ## Examples
 

@@ -180,7 +180,7 @@ ChipV2的style属性，如颜色、大小等，参考[ChipGroupV2ItemStyle](arkt
 
 默认值：
 
-{ size: ChipV2Size.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'),selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }
+{ size: ChipV2Size.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }
 
 值为undefined时，按默认值处理。
 

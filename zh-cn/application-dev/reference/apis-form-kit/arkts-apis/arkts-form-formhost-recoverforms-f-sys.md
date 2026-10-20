@@ -6,8 +6,6 @@
 import { formHost } from '@kit.FormKit';
 ```
 
-<a id="recoverforms1"></a>
-
 ## recoverForms
 
 ```TypeScript
@@ -72,8 +70,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="recoverforms2"></a>
 
 ## recoverForms
 

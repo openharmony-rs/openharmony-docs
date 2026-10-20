@@ -42,9 +42,9 @@ Checks whether a given month exist leap month in gregorianYear and cyclicalYear.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| gregorianYear | number | Yes | Gregorian year to check, supported range is from 1900 to 2100.<br>The value range is all integers. <br>Year. |
-| cyclicalYear | number | Yes | Cyclical year to check, supported range is from 1 to 60.<br>The value range is all integers. <br>Year. |
-| month | number | Yes | Month to check. Note: The month starts from 0. For example, 0 indicates January.<br>The value range is all integers. <br>Month. |
+| gregorianYear | number | Yes | Gregorian year to check, supported range is from 1900 to 2100. <br>The value range is all integers. <br>Year. |
+| cyclicalYear | number | Yes | Cyclical year to check, supported range is from 1 to 60. <br>The value range is all integers. <br>Year. |
+| month | number | Yes | Month to check. Note: The month starts from 0. For example, 0 indicates January. <br>The value range is all integers. <br>Month. |
 
 **Return value:**
 

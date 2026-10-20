@@ -26,7 +26,7 @@ Move a mechanical device with the specified parameters.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mechId | number | Yes | ID of the mechanical device.<br>The value should be an integer. |
+| mechId | number | Yes | ID of the mechanical device. <br>The value should be an integer. |
 | params | [MoveParams](arkts-mechanic-mechanicmanager-moveparams-i-sys.md) | Yes | Parameters to use when moving. |
 
 **Return value:**

@@ -90,7 +90,7 @@ Registers a callback with the SA.
 
 | Type | Description |
 | --- | --- |
-| number | Registration result. The unique ID of the callback is returned. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>53</sup>-1]. |
+| number | Registration result. The unique ID of the callback is returned. The value range is [0, 2<sup>53</sup>-1]. |
 
 **Error codes:**
 

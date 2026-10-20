@@ -1718,7 +1718,7 @@ Rich text component.
 ROLE_NONE = 124
 ```
 
-Null.
+Does not set a specific accessibility component type. The component is announced by the screen reader based on its default type.
 
 **Since:** 18
 
@@ -1918,7 +1918,7 @@ Parent component of the drawing components.
 SHEET_DRAG_BAR = 7
 ```
 
-Drag bar for sheets.
+Drag bar of a dialog box.
 
 **Since:** 18
 

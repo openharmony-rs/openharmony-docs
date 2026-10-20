@@ -34,3 +34,15 @@ function has(obj: object, property: string): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | 返回ArkTS对象是否包含指定属性的结果。true表示对象包含指定属性；false表示对象不包含指定属性。 |
+
+**示例**
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+
+const jsonText = '{"name": "John", "age": 30, "city": "ChongQing"}';
+let inputObj = JSON.parse(jsonText);
+let hasNameResult = JSON.has(inputObj, "name");
+console.info("hasNameResult = " + hasNameResult);
+// 打印结果：hasNameResult = true
+```

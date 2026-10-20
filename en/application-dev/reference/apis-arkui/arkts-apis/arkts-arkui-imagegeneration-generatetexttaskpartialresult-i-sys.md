@@ -6,8 +6,6 @@ interface GenerateTextTaskPartialResult
 
 Configuration stream result for AI-generated text tasks.
 
-@interface GenerateTextTaskPartialResult
-
 **Since:** 23
 
 <!--Device-imageGeneration-interface GenerateTextTaskPartialResult--><!--Device-imageGeneration-interface GenerateTextTaskPartialResult-End-->

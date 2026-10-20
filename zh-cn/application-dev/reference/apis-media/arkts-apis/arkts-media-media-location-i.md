@@ -1,0 +1,50 @@
+# Location
+
+```TypeScript
+interface Location
+```
+
+提供媒体资源的地理位置定义。
+
+**起始版本：** 6
+
+<!--Device-media-interface Location--><!--Device-media-interface Location-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## 导入模块
+
+```TypeScript
+```
+
+## latitude
+
+```TypeScript
+latitude: number
+```
+
+纬度。
+
+**类型：** number
+
+**起始版本：** 6
+
+<!--Device-Location-latitude: double--><!--Device-Location-latitude: double-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## longitude
+
+```TypeScript
+longitude: number
+```
+
+经度。
+
+**类型：** number
+
+**起始版本：** 6
+
+<!--Device-Location-longitude: double--><!--Device-Location-longitude: double-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core

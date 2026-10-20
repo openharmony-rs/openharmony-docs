@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getactivenotificationcount1"></a>
-
 ## getActiveNotificationCount
 
 ```TypeScript
@@ -31,8 +29,22 @@ function getActiveNotificationCount(callback: AsyncCallback<number>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 获取未删除通知数回调函数。 |
 
+**示例**
 
-<a id="getactivenotificationcount2"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let getActiveNotificationCountCallback = (err: Base.BusinessError, data: number) => {
+  if (err) {
+    console.error("getActiveNotificationCount failed " + JSON.stringify(err));
+  } else {
+    console.info("getActiveNotificationCount success");
+  }
+}
+
+Notification.getActiveNotificationCount(getActiveNotificationCountCallback);
+```
+
 
 ## getActiveNotificationCount
 
@@ -57,3 +69,15 @@ function getActiveNotificationCount(): Promise<number>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;number&gt; | 以Promise形式返回获取当前应用未删除通知数。 |
+
+**示例**
+
+```TypeScript
+import Base from '@ohos.base';
+
+Notification.getActiveNotificationCount().then((data: number) => {
+  console.info("getActiveNotificationCount success, data: " + JSON.stringify(data));
+}).catch((err: Base.BusinessError) => {
+  console.error(`getActiveNotificationCount failed, code is ${err}`);
+});
+```

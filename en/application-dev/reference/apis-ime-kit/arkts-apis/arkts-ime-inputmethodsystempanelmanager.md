@@ -10,6 +10,8 @@ This module provides the input method system panel management functions, which a
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace inputMethodSystemPanelManager--><!--Device-unnamed-declare namespace inputMethodSystemPanelManager-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

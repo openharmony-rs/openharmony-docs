@@ -20,8 +20,6 @@ Before invoking **NetHandle** APIs, call **getNetHandle** to obtain a **NetHandl
 import { connection } from '@kit.NetworkKit';
 ```
 
-<a id="bindsocket1"></a>
-
 ## bindSocket
 
 ```TypeScript
@@ -113,8 +111,6 @@ interface Data {
   }
 })
 ```
-
-<a id="bindsocket2"></a>
 
 ## bindSocket
 
@@ -208,8 +204,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-<a id="getaddressbyname1"></a>
-
 ## getAddressByName
 
 ```TypeScript
@@ -265,8 +259,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-<a id="getaddressbyname2"></a>
-
 ## getAddressByName
 
 ```TypeScript
@@ -321,8 +313,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   });
 });
 ```
-
-<a id="getaddressesbyname1"></a>
 
 ## getAddressesByName
 
@@ -380,8 +370,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   });
 });
 ```
-
-<a id="getaddressesbyname2"></a>
 
 ## getAddressesByName
 

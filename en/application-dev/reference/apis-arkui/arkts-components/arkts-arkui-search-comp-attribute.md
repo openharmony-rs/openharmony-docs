@@ -119,7 +119,7 @@ Sets whether to compress the leading punctuation at the beginning of a line. Whe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to compress the leading punctuation at the beginning of a line.<br>true means to compress the leading punctuation; false means not to compress it. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to compress the leading punctuation at the beginning of a line. <br>true means to compress the leading punctuation; false means not to compress it. |
 
 ## copyOption
 
@@ -242,7 +242,7 @@ Sets the divider color of the input box.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Sets the divider color.<br>By default, the system theme color is used: 0x33000000 in light mode, which indicates black (20% opacity), and 0x33FFFFFF in dark mode, which indicates white (20% opacity). |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Sets the divider color. <br>By default, the system theme color is used: 0x33000000 in light mode, which indicates black (20% opacity), and 0x33FFFFFF in dark mode, which indicates white (20% opacity). |
 
 ## editMenuOptions
 
@@ -292,7 +292,7 @@ Sets whether to enable automatic spacing between Chinese and Western characters.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western characters.<br>true enables automatic spacing, and false disables it. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western characters. <br>true enables automatic spacing, and false disables it. |
 
 ## enableHapticFeedback
 
@@ -318,7 +318,7 @@ When haptic feedback is enabled, you need to set the **requestPermissions** fiel
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isEnabled | boolean | Yes | Whether to enable haptic feedback.<br>The value **true** means to enable haptic feedback, and **false** means the opposite. |
+| isEnabled | boolean | Yes | Whether to enable haptic feedback. <br>The value **true** means to enable haptic feedback, and **false** means the opposite. |
 
 ## enableKeyboardOnFocus
 
@@ -344,7 +344,7 @@ Since API version 10, focus gain is bound to the input method by default.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to proactively bring up the soft keyboard when Search gains focus.<br>The value **true** means to proactively bring it up, and **false** means not to. |
+| value | boolean | Yes | Whether to proactively bring up the soft keyboard when Search gains focus. <br>The value **true** means to proactively bring it up, and **false** means not to. |
 
 ## enablePreviewText
 
@@ -377,7 +377,7 @@ The preview content is defined as a temporary text state, and text interception 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable input preview.<br>The value **true** means to enable input preview, and **false** means the opposite. |
+| enable | boolean | Yes | Whether to enable input preview. <br>The value **true** means to enable input preview, and **false** means the opposite. |
 
 ## enableSelectedDataDetector
 
@@ -409,7 +409,7 @@ This feature takes effect only when CopyOptions is CopyOptions.LocalDevice or Co
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean &#124; undefined | Yes | Whether to enable entity recognition on the selected text.<br>true: enables recognition; false: disables recognition. |
+| enable | boolean &#124; undefined | Yes | Whether to enable entity recognition on the selected text. <br>true: enables recognition; false: disables recognition. |
 
 ## enterKeyType
 
@@ -457,7 +457,7 @@ For multi-line text stacking, supports adaptive line height based on the actual 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height adapts to the actual text height.<br>This API takes effect only when the line height is smaller than the actual text height. <br>The value **true** means the line height adapts to the actual text height, and **false** means the line height does not adapt to the actual text height. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height adapts to the actual text height. <br>This API takes effect only when the line height is smaller than the actual text height. <br>The value **true** means the line height adapts to the actual text height, and **false** means the line height does not adapt to the actual text height. |
 
 ## fontColor
 
@@ -465,7 +465,7 @@ For multi-line text stacking, supports adaptive line height based on the actual 
 fontColor(value: ResourceColor)
 ```
 
-Sets the font color of the input text. If this API is not called, the default font color of the input text is '#FF182431' (dark gray), and on Wearable devices the default is '#dbffffff' (white, with an opacity of 86%). fontSize,fontStyle, fontWeight, and fontFamily are set in [textFont](#textfont).
+Sets the font color of the input text. If this API is not called, the default font color of the input text is '#FF182431' (dark gray), and on Wearable devices the default is '#dbffffff' (white, with an opacity of 86%). fontSize, fontStyle, fontWeight, and fontFamily are set in [textFont](#textfont).
 
 > **NOTE:** 
 > 
@@ -541,7 +541,7 @@ Vertically centers the text within a line by evenly distributing the line spacin
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| halfLeading | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to vertically center the text.<br>true means the line spacing is evenly distributed to the top and bottom of the line, and false means it is not. |
+| halfLeading | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to vertically center the text. <br>true means the line spacing is evenly distributed to the top and bottom of the line, and false means it is not. |
 
 ## includeFontPadding
 
@@ -565,7 +565,7 @@ Sets whether to add spacing before the first line and after the last line to pre
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| include | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing before the first line and after the last line to prevent text truncation.<br>true indicates that spacing is added before the first line and after the last line; false indicates that spacing is not added. |
+| include | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing before the first line and after the last line to prevent text truncation. <br>true indicates that spacing is added before the first line and after the last line; false indicates that spacing is not added. |
 
 ## inputFilter
 
@@ -677,7 +677,7 @@ Sets the line height of the text. If the value is not greater than 0, the line h
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Line height of the text.<br>When the value is of the number type, the unit is fp. When the value is of the string type, it supports the string form of a number-type value and can carry a unit, for example, "10" or "10fp". |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Line height of the text. <br>When the value is of the number type, the unit is fp. When the value is of the string type, it supports the string form of a number-type value and can carry a unit, for example, "10" or "10fp". |
 
 ## maxFontScale
 
@@ -967,7 +967,7 @@ Triggered when the deletion is complete.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[DeleteValue](../arkts-apis/arkts-arkui-deletevalue-i.md)&gt; | Yes | Callback invoked when the deletion is complete.<br>Supported only in the scenario where the system input method is used for input. |
+| callback | Callback&lt;[DeleteValue](../arkts-apis/arkts-arkui-deletevalue-i.md)&gt; | Yes | Callback invoked when the deletion is complete. <br>Supported only in the scenario where the system input method is used for input. |
 
 ## onDidInsert
 
@@ -1001,7 +1001,7 @@ Triggered when input is completed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[InsertValue](../arkts-apis/arkts-arkui-insertvalue-i.md)&gt; | Yes | Callback invoked when input is completed.<br>Only supported in the scenario where the system input method is used for input. |
+| callback | Callback&lt;[InsertValue](../arkts-apis/arkts-arkui-insertvalue-i.md)&gt; | Yes | Callback invoked when input is completed. <br>Only supported in the scenario where the system input method is used for input. |
 
 ## onEditChange
 
@@ -1049,8 +1049,6 @@ Called when a paste operation is performed.
 | --- | --- | --- | --- |
 | callback | OnPasteCallback | Yes | Executed when a paste operation is performed.Callback used to return the pasted text content.<br>**Since:** 18 |
 
-<a id="onsubmit1"></a>
-
 ## onSubmit
 
 ```TypeScript
@@ -1072,8 +1070,6 @@ Triggered when the search icon or search button is clicked, or when the search b
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | Callback&lt;string&gt; | Yes | Callback for search submission, whose return value is the text entered in the current search box.<br>**Since:** 18 |
-
-<a id="onsubmit2"></a>
 
 ## onSubmit
 
@@ -1193,7 +1189,7 @@ Triggered when the text content is about to change.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[EditableTextChangeValue](../arkts-apis/arkts-arkui-editabletextchangevalue-i.md), boolean&gt; | Yes | Callback invoked when the text content is about to change.<br>Returning true indicates a normal modification. Returning false indicates that this trigger is intercepted. |
+| callback | Callback&lt;[EditableTextChangeValue](../arkts-apis/arkts-arkui-editabletextchangevalue-i.md), boolean&gt; | Yes | Callback invoked when the text content is about to change. <br>Returning true indicates a normal modification. Returning false indicates that this trigger is intercepted. |
 
 ## onWillCopy
 
@@ -1297,7 +1293,7 @@ Triggered when the content is about to be deleted.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[DeleteValue](../arkts-apis/arkts-arkui-deletevalue-i.md), boolean&gt; | Yes | Callback invoked when the content is about to be deleted.<br>Returning true indicates normal deletion, and returning false indicates no deletion. <br>This callback is not triggered during the preview delete operation. <br>Only supported for input through the system input method. |
+| callback | Callback&lt;[DeleteValue](../arkts-apis/arkts-arkui-deletevalue-i.md), boolean&gt; | Yes | Callback invoked when the content is about to be deleted. <br>Returning true indicates normal deletion, and returning false indicates no deletion. <br>This callback is not triggered during the preview delete operation. <br>Only supported for input through the system input method. |
 
 ## onWillInsert
 
@@ -1331,7 +1327,7 @@ Triggered when input is about to be inserted.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[InsertValue](../arkts-apis/arkts-arkui-insertvalue-i.md), boolean&gt; | Yes | Callback invoked when input is about to be inserted.<br>Returning true indicates normal insertion, and returning false indicates no insertion. <br>This callback is not triggered during preview and candidate word operations. <br>It is supported only when the input is from the system input method. |
+| callback | Callback&lt;[InsertValue](../arkts-apis/arkts-arkui-insertvalue-i.md), boolean&gt; | Yes | Callback invoked when input is about to be inserted. <br>Returning true indicates normal insertion, and returning false indicates no insertion. <br>This callback is not triggered during preview and candidate word operations. <br>It is supported only when the input is from the system input method. |
 
 ## placeholderColor
 
@@ -1339,7 +1335,7 @@ Triggered when input is about to be inserted.
 placeholderColor(value: ResourceColor)
 ```
 
-Sets the text color of the placeholder. If this API is not called, the default placeholder text color is '#99182431' (dark gray, with an opacity of 60%), and on Wearable devices the default is '#99ffffff' (white, with an opacityof 60%).
+Sets the text color of the placeholder. If this API is not called, the default placeholder text color is '#99182431' (dark gray, with an opacity of 60%), and on Wearable devices the default is '#99ffffff' (white, with an opacity of 60%).
 
 **Since:** 8
 
@@ -1407,8 +1403,8 @@ On Wearable devices, the default font size is 18fp.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Text content of the search button at the end of the search box.<br>Since API version 20, the Resource type is supported.<br>**Since:** 20 |
-| option | [SearchButtonOptions](arkts-arkui-search-comp-searchbuttonoptions-i.md) | No | Configures the style of the search button at the end of the search box.<br>Default value: <br>{<br>fontSize: '16fp', <br>fontColor: '#ff3f97e9'<br>}<br>**Since:** 10 |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Text content of the search button at the end of the search box. <br>Since API version 20, the Resource type is supported.<br>**Since:** 20 |
+| option | [SearchButtonOptions](arkts-arkui-search-comp-searchbuttonoptions-i.md) | No | Configures the style of the search button at the end of the search box. <br>Default value: <br>{<br>fontSize: '16fp', <br>fontColor: '#ff3f97e9'<br>}<br>**Since:** 10 |
 
 ## searchIcon
 
@@ -1482,7 +1478,7 @@ Sets the backplane style for text dragging in the search box.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SelectedDragPreviewStyle](../arkts-apis/arkts-arkui-selecteddragpreviewstyle-i.md) &#124; undefined | Yes | Backplane style for text dragging.<br>When set to undefined: the backplane color follows the theme, showing white in light mode and black in dark mode. |
+| value | [SelectedDragPreviewStyle](../arkts-apis/arkts-arkui-selecteddragpreviewstyle-i.md) &#124; undefined | Yes | Backplane style for text dragging. <br>When set to undefined: the backplane color follows the theme, showing white in light mode and black in dark mode. |
 
 ## selectionMenuHidden
 
@@ -1506,7 +1502,7 @@ Sets whether to hide the system text selection menu. If this API is not called, 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to hide the system text selection menu.<br>When set to **true**, the system text selection menu is hidden when the input box is clicked to place the cursor, long-pressed, double-tapped, triple-tapped, or right-clicked. <br>When set to **false**, the system text selection menu is displayed. |
+| value | boolean | Yes | Whether to hide the system text selection menu. <br>When set to **true**, the system text selection menu is hidden when the input box is clicked to place the cursor, long-pressed, double-tapped, triple-tapped, or right-clicked. <br>When set to **false**, the system text selection menu is displayed. |
 
 ## shaderStyle
 
@@ -1560,7 +1556,7 @@ Sets whether to prevent the back key event from being propagated upward. When se
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isStopped | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to block the back key.<br>The value true means to block, and false means not to block. <br>An invalid value uses the default value. |
+| isStopped | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to block the back key. <br>The value true means to block, and false means not to block. <br>An invalid value uses the default value. |
 
 ## strokeColor
 
@@ -1689,7 +1685,7 @@ Specifies the text layout direction. If this API is not called, the default text
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| direction | [TextDirection](../arkts-apis/arkts-arkui-textdirection-e.md) &#124; undefined | Yes | Text layout direction.<br>When set to undefined, it is processed as TextDirection.DEFAULT, meaning that the text layout direction follows the component layout direction. |
+| direction | [TextDirection](../arkts-apis/arkts-arkui-textdirection-e.md) &#124; undefined | Yes | Text layout direction. <br>When set to undefined, it is processed as TextDirection.DEFAULT, meaning that the text layout direction follows the component layout direction. |
 
 ## textFont
 

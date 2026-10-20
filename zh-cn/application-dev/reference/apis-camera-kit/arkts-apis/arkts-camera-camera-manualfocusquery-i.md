@@ -4,7 +4,7 @@
 interface ManualFocusQuery
 ```
 
-Manual Focus Query object.
+手动对焦查询对象。
 
 **起始版本：** 24
 
@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 isFocusDistanceSupported(): boolean
 ```
 
-Checks whether a focus distance is supported.
+检测是否支持对焦距离设置。
 
 **起始版本：** 24
 
@@ -38,7 +38,7 @@ Checks whether a focus distance is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Is focus distance supported. |
+| boolean | 是否支持对焦距离。**true**表示支持，**false**表示不支持。 |
 
 **错误码：**
 

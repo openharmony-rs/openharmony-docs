@@ -22,8 +22,6 @@ Provides the capability for obtaining the plural rule type.
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -52,8 +50,6 @@ import { intl } from '@kit.LocalizationKit';
 // Create a PluralRules object using the current system locale ID.
 let pluralRules = new intl.PluralRules();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

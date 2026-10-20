@@ -6,8 +6,6 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
-<a id="getfreesize1"></a>
-
 ## getFreeSize
 
 ```TypeScript
@@ -17,10 +15,6 @@ function getFreeSize(callback: AsyncCallback<number>): void
 Obtains the available space (in bytes) of the built-in storage. This API uses an asynchronous callback to return the result.
 
 **Since:** 15
-
-**Required permissions:** 
-- API version 15 and later: N/A
-- API versions 9 to 14: ohos.permission.STORAGE_MANAGER
 
 <!--Device-storageStatistics-function getFreeSize(callback: AsyncCallback<long>): void--><!--Device-storageStatistics-function getFreeSize(callback: AsyncCallback<long>): void-End-->
 
@@ -36,8 +30,6 @@ Obtains the available space (in bytes) of the built-in storage. This API uses an
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.<br>**Applicable version:** 9 - 14 |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application.<br>**Applicable version:** 9 - 14 |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:Mandatory parameters are left unspecified; |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
@@ -57,8 +49,6 @@ storageStatistics.getFreeSize((error: BusinessError, number: number) => {
 ```
 
 
-<a id="getfreesize2"></a>
-
 ## getFreeSize
 
 ```TypeScript
@@ -68,10 +58,6 @@ function getFreeSize(): Promise<number>
 Obtains the available space (in bytes) of the built-in storage. This API uses a promise to return the result.
 
 **Since:** 15
-
-**Required permissions:** 
-- API version 15 and later: N/A
-- API versions 9 to 14: ohos.permission.STORAGE_MANAGER
 
 <!--Device-storageStatistics-function getFreeSize(): Promise<long>--><!--Device-storageStatistics-function getFreeSize(): Promise<long>-End-->
 
@@ -87,8 +73,6 @@ Obtains the available space (in bytes) of the built-in storage. This API uses a 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.<br>**Applicable version:** 9 - 14 |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application.<br>**Applicable version:** 9 - 14 |
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 

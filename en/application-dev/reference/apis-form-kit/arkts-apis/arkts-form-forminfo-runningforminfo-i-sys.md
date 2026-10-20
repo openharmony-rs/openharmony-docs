@@ -6,8 +6,6 @@ interface RunningFormInfo
 
 The class of a running form information.
 
-@typedef RunningFormInfo
-
 **Since:** 20
 
 <!--Device-formInfo-interface RunningFormInfo--><!--Device-formInfo-interface RunningFormInfo-End-->

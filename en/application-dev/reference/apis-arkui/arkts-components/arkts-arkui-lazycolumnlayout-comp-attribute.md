@@ -42,7 +42,7 @@ Sets the alignment mode of the child components in the horizontal direction. If 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [HorizontalAlign](../arkts-apis/arkts-arkui-horizontalalign-e.md) &#124; undefined | Yes | Alignment mode of child components in the horizontal direction.<br>If the input parameter is **undefined**, **HorizontalAlign.Center** is used. |
+| value | [HorizontalAlign](../arkts-apis/arkts-arkui-horizontalalign-e.md) &#124; undefined | Yes | Alignment mode of child components in the horizontal direction. <br>If the input parameter is **undefined**, **HorizontalAlign.Center** is used. |
 
 ## footer
 
@@ -76,7 +76,7 @@ Sets the footer component of the current **LazyColumnLayout**. If not set throug
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; undefined | Yes | Constructor of the footer component.<br>When the method parameter is **undefined**, the current **LazyColumnLayout** does not set a footer component. If a footer component already exists, it will also be removed. |
+| builder | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; undefined | Yes | Constructor of the footer component. <br>When the method parameter is **undefined**, the current **LazyColumnLayout** does not set a footer component. If a footer component already exists, it will also be removed. |
 
 ## header
 
@@ -109,7 +109,7 @@ Sets the header component of the current **LazyColumnLayout**. If not set throug
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; undefined | Yes | Constructor of the header component.<br>When the method parameter is **undefined**, the current **LazyColumnLayout** does not set a header component. If a header component already exists, it will also be removed. |
+| builder | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; undefined | Yes | Constructor of the header component. <br>When the method parameter is **undefined**, the current **LazyColumnLayout** does not set a header component. If a header component already exists, it will also be removed. |
 
 ## onVisibleIndexesChange
 
@@ -148,7 +148,7 @@ Triggered when the index of a child component in the viewport of **LazyColumnLay
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnVisibleIndexesChangeCallback](arkts-arkui-common-comp-onvisibleindexeschangecallback-t.md) &#124; undefined | Yes | Callback invoked when the start and end index values of child components in the viewport change.<br>If the method parameter is **undefined**, the listening is canceled. |
+| callback | [OnVisibleIndexesChangeCallback](arkts-arkui-common-comp-onvisibleindexeschangecallback-t.md) &#124; undefined | Yes | Callback invoked when the start and end index values of child components in the viewport change. <br>If the method parameter is **undefined**, the listening is canceled. |
 
 ## space
 
@@ -172,7 +172,7 @@ Sets the vertical spacing between child components. If this attribute is not set
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| space | LengthMetrics &#124; undefined | Yes | Spacing between child components in the vertical direction.<br>Value range: [0, +∞) <br>If set to a value less than 0, **0vp** is used. <br>If the method parameter is **undefined**, the value is restored to **0vp**. |
+| space | LengthMetrics &#124; undefined | Yes | Spacing between child components in the vertical direction. <br>Value range: [0, +∞) <br>If set to a value less than 0, **0vp** is used. <br>If the method parameter is **undefined**, the value is restored to **0vp**. |
 
 ## sticky
 
@@ -202,4 +202,4 @@ When this component scrolls with the scrollable container into the viewport and 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sticky | [StickyStyle](arkts-arkui-list-comp-stickystyle-e.md) &#124; undefined | Yes | Sticky style for the header and footer components. The **sticky** attribute can be set to **StickyStyle.Header** or **StickyStyle.Footer**, or to **StickyStyle.BOTH** to support both header stick-to-top and footer stick-to-bottom.<br>When the method parameter is **undefined**, the default value **StickyStyle.None** is restored. <br>If not set through this API, the header does not stick to the top and the footer does not stick to the bottom by default. |
+| sticky | [StickyStyle](arkts-arkui-list-comp-stickystyle-e.md) &#124; undefined | Yes | Sticky style for the header and footer components. The **sticky** attribute can be set to **StickyStyle.Header** or **StickyStyle.Footer**, or to **StickyStyle.BOTH** to support both header stick-to-top and footer stick-to-bottom. <br>When the method parameter is **undefined**, the default value **StickyStyle.None** is restored. <br>If not set through this API, the header does not stick to the top and the footer does not stick to the bottom by default. |

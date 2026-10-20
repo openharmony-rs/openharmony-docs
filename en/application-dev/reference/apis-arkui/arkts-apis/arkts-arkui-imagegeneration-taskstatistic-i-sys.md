@@ -6,8 +6,6 @@ interface TaskStatistic
 
 Statistics Related to AI Image Generation Tasks.
 
-@interface TaskStatistic
-
 **Since:** 23
 
 <!--Device-imageGeneration-interface TaskStatistic--><!--Device-imageGeneration-interface TaskStatistic-End-->

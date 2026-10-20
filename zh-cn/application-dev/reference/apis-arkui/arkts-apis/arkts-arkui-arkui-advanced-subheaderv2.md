@@ -34,9 +34,9 @@ import { SubHeaderV2IconType, SubHeaderV2Title, SubHeaderV2Select, SubHeaderV2, 
 
 | 名称 | 说明 |
 | --- | --- |
-| [SubHeaderV2IconType](arkts-arkui-subheaderv2icontype-t.md) | [SubHeaderV2IconType](arkts-arkui-subheaderv2icontype-t.md) |
+| [SubHeaderV2IconType](arkts-arkui-subheaderv2icontype-t.md) | SubHeaderV2IconType |
 | [SubHeaderV2OperationItemAction](arkts-arkui-subheaderv2operationitemaction-t.md) | 操作区设置项的回调事件类型。 |
-| [SubHeaderV2OperationItemType](arkts-arkui-subheaderv2operationitemtype-t.md) | [SubHeaderV2OperationItemType](arkts-arkui-subheaderv2operationitemtype-t.md) |
+| [SubHeaderV2OperationItemType](arkts-arkui-subheaderv2operationitemtype-t.md) | SubHeaderV2OperationItemType |
 | [SubHeaderV2SelectOnSelect](arkts-arkui-subheaderv2selectonselect-t.md) | 下拉菜单选中某一项的回调类型。 |
 | [SubHeaderV2TitleBuilder](arkts-arkui-subheaderv2titlebuilder-t.md) | 自定义标题区内容的回调事件类型。 |
 

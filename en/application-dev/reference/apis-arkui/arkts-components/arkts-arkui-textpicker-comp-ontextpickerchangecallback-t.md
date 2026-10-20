@@ -20,5 +20,5 @@ Defines the **onChange** event callback signature.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| selectItem | string[] | Yes | Text of the currently selected item. For a multi-column data picker, selectItem is of the array type.<br>**Note:** <br>When the picker content is text or a mix of text and images, the value of selectItem is the text value of the selected item. When the picker content is an image, the value of selectItem is empty. |
+| selectItem | string[] | Yes | Text of the currently selected item. For a multi-column data picker, selectItem is of the array type. <br>**Note:** <br>When the picker content is text or a mix of text and images, the value of selectItem is the text value of the selected item. When the picker content is an image, the value of selectItem is empty. |
 | index | number[] | Yes | Index of the selected item. The index is zero-based. Use the array type for multi-column pickers. |

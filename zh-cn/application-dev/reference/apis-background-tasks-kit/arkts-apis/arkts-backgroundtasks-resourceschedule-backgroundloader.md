@@ -4,6 +4,8 @@
 
 **起始版本：** 26.2.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace backgroundLoader--><!--Device-unnamed-declare namespace backgroundLoader-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler

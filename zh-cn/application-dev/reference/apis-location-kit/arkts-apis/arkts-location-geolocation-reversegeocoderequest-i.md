@@ -6,8 +6,6 @@ export interface ReverseGeoCodeRequest
 
 逆地理编码请求参数。
 
-@interface ReverseGeoCodeRequest
-
 **起始版本：** 7
 
 **废弃版本：** 9

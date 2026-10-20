@@ -6,8 +6,6 @@
 import { innerBundleManager, BundleStatusCallback } from '@kit.AbilityKit';
 ```
 
-<a id="getshortcutinfos1"></a>
-
 ## getShortcutInfos
 
 ```TypeScript
@@ -42,8 +40,6 @@ Obtains an array of the shortcut information based on a given bundle name. This 
 | bundleName | string | Yes | Bundle name. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ShortcutInfo](arkts-ability-shortcutinfo-depr-i.md)&gt;&gt; | Yes | Callback used to return an array of the shortcut information. |
 
-
-<a id="getshortcutinfos2"></a>
 
 ## getShortcutInfos
 

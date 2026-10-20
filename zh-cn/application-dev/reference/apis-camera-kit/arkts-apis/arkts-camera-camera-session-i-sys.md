@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 getActiveParameter(key: string): string
 ```
 
-Gets the active value of the given key in camera metadata.
+获取相机元数据中指定键的当前生效值。
 
 **起始版本：** 24
 
@@ -40,13 +40,13 @@ Gets the active value of the given key in camera metadata.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | Tag name in camera metadata. |
+| key | string | 是 | 相机元数据中的标签名。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | The active value of the key in camera metadata. |
+| string | 相机元数据中该键的当前生效值。 |
 
 **错误码：**
 
@@ -63,7 +63,7 @@ Gets the active value of the given key in camera metadata.
 getCameraOutputCapabilities(camera: CameraDevice): Array<CameraOutputCapability>
 ```
 
-Get the supported camera output capability set.
+获取支持相机输出能力集合。
 
 **起始版本：** 13
 
@@ -77,13 +77,13 @@ Get the supported camera output capability set.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| camera | [CameraDevice](arkts-camera-camera-cameradevice-i.md) | 是 | Camera device. |
+| camera | [CameraDevice](arkts-camera-camera-cameradevice-i.md) | 是 | 相机设备。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[CameraOutputCapability](arkts-camera-camera-cameraoutputcapability-i.md)&gt; | The array of the output capability. |
+| Array&lt;[CameraOutputCapability](arkts-camera-camera-cameraoutputcapability-i.md)&gt; | 输出能力数组。 |
 
 **错误码：**
 
@@ -99,7 +99,7 @@ Get the supported camera output capability set.
 getParameters(key: string): Array<string>
 ```
 
-Gets the values of the given key in camera metadata.
+获取相机元数据中指定键的值。
 
 **起始版本：** 24
 
@@ -115,13 +115,13 @@ Gets the values of the given key in camera metadata.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| key | string | 是 | Tag name in camera metadata. |
+| key | string | 是 | 相机元数据中的标签名。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | The values of the key in camera metadata. |
+| Array&lt;string&gt; | 相机元数据中该键对应的值数组。 |
 
 **错误码：**
 
@@ -138,7 +138,7 @@ Gets the values of the given key in camera metadata.
 getSupportedKeys(): Array<string>
 ```
 
-Gets the supported keys in camera metadata.
+获取相机元数据中支持的键。
 
 **起始版本：** 24
 
@@ -154,7 +154,7 @@ Gets the supported keys in camera metadata.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | The supported keys in camera metadata. |
+| Array&lt;string&gt; | 相机元数据中支持的键数组。 |
 
 **错误码：**
 
@@ -170,7 +170,7 @@ Gets the supported keys in camera metadata.
 setParameters(kvpairs: Record<string, string>): void
 ```
 
-Sets key-value pairs parameters for the session.
+设置会话的键值对参数。
 
 **起始版本：** 24
 
@@ -186,7 +186,7 @@ Sets key-value pairs parameters for the session.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| kvpairs | Record&lt;string, string&gt; | 是 | The pairs of tag name and value in camera metadata. |
+| kvpairs | Record&lt;string, string&gt; | 是 | 相机元数据中标签名和值的键值对。 |
 
 **错误码：**
 
@@ -203,7 +203,7 @@ Sets key-value pairs parameters for the session.
 setUsage(usage: UsageType, enabled: boolean): void
 ```
 
-Set usage for the capture session.
+设置会话的使用类型。
 
 **起始版本：** 13
 
@@ -217,8 +217,8 @@ Set usage for the capture session.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| usage | [UsageType](arkts-camera-camera-usagetype-e-sys.md) | 是 | The capture session usage. |
-| enabled | boolean | 是 | Enable usage for session if TRUE. |
+| usage | [UsageType](arkts-camera-camera-usagetype-e-sys.md) | 是 | 拍照会话使用类型。 |
+| enabled | boolean | 是 | 是否为会话启用该使用类型。true表示启用，false表示不启用。 |
 
 **错误码：**
 

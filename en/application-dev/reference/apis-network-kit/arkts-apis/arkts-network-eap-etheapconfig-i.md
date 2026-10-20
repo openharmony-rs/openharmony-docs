@@ -6,7 +6,7 @@ interface EthEapConfig
 
 Represents the 802.1X Ethernet EAP configuration, including the EAP profile and feature toggles.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 <!--Device-eap-interface EthEapConfig--><!--Device-eap-interface EthEapConfig-End-->
 
@@ -28,7 +28,7 @@ Whether to automatically initiate authentication when the network cable is conne
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -46,7 +46,7 @@ Whether the 802.1X feature is enabled.
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -64,7 +64,7 @@ Whether the configuration is locked. When locked, modifications are denied excep
 
 **Type:** boolean
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -82,7 +82,7 @@ EAP profile information.
 
 **Type:** [EthEapProfile](arkts-network-eap-etheapprofile-i.md)
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -6,8 +6,6 @@ export interface SceneNodeParameters
 
 Describes the scene node parameters, which are used to provide the name and path in the scene node tree.
 
-@typedef SceneNodeParameters
-
 **Since:** 12
 
 <!--Device-unnamed-export interface SceneNodeParameters--><!--Device-unnamed-export interface SceneNodeParameters-End-->

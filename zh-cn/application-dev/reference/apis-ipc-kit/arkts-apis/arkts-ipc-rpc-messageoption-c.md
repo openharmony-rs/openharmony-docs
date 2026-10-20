@@ -18,8 +18,6 @@ class MessageOption
 import { rpc } from '@kit.IPCKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -54,8 +52,6 @@ class TestRemoteObject extends rpc.MessageOption {
   }
 }
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

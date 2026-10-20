@@ -28,7 +28,7 @@ Cancels the listening on the carrier call status and obtaining of the call numbe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CCallStateInfo](arkts-telephony-observer-ccallstateinfo-i.md)&gt; | No | Callback function used to return the call status information object.<br>The application can obtain CCallState. <br> |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CCallStateInfo](arkts-telephony-observer-ccallstateinfo-i.md)&gt; | No | Callback function used to return the call status information object. <br>The application can obtain CCallState. <br> |
 
 **Error codes:**
 

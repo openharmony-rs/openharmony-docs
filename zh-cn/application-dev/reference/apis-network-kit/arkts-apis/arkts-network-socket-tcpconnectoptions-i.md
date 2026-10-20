@@ -26,7 +26,7 @@ address: NetAddress
 
 绑定的地址以及端口。
 
-**类型：** [NetAddress](arkts-network-socket-p.md)
+**类型：** [NetAddress](arkts-network-socket-netaddress-t.md)
 
 **起始版本：** 7
 

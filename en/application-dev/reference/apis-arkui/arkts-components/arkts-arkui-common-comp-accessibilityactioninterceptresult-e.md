@@ -4,7 +4,7 @@
 declare enum AccessibilityActionInterceptResult
 ```
 
-Enum for the result of accessibility action intercept function
+Enumerates possible results for accessibility action interception.
 
 **Since:** 20
 
@@ -18,7 +18,7 @@ Enum for the result of accessibility action intercept function
 ACTION_CONTINUE = 1
 ```
 
-the accessibility action can be continued
+Does not intercept the accessibility control operation received by the current component. After the callback handling is complete, the current component is allowed to respond to the accessibility control operation and execute its processing logic.
 
 **Since:** 20
 
@@ -38,7 +38,7 @@ the accessibility action can be continued
 ACTION_INTERCEPT = 0
 ```
 
-intercept the accessibility action
+Intercepts the accessibility control action received by the current component. After the callback processing is complete, the component won't respond.
 
 **Since:** 20
 
@@ -58,7 +58,7 @@ intercept the accessibility action
 ACTION_RISE = 2
 ```
 
-the accessibility action need to bubble up for execution
+Does not intercept the accessibility control operation received by the current component. After the callback handling is complete, the component still needs to respond and execute its processing logic, and the accessibility control operation information is passed to the parent component. When the information is passed to the next component that uses onAccessibilityActionIntercept, the callback registered in that component is triggered, but the processing logic of that component is not triggered. After the processing is complete, ACTION_RISE can continue to be used to pass the accessibility control operation information to the parent component.
 
 **Since:** 20
 

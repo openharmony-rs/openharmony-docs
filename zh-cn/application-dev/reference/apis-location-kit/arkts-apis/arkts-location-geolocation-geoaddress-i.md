@@ -6,8 +6,6 @@ export interface GeoAddress
 
 地理编码地址信息。
 
-@interface GeoAddress
-
 **起始版本：** 7
 
 **废弃版本：** 9

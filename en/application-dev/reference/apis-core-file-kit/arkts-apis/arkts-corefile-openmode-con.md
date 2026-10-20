@@ -142,7 +142,7 @@ If the file exists and is opened in write-only or read/write mode, truncate the 
 const UNCACHE = 0o10000000000
 ```
 
-UNCACHE IO.
+Disable the page cache for reading and writing a file.
 
 **Since:** 26.0.0
 

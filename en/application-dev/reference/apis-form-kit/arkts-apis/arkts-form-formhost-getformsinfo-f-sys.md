@@ -6,8 +6,6 @@
 import { formHost } from '@kit.FormKit';
 ```
 
-<a id="getformsinfo1"></a>
-
 ## getFormsInfo
 
 ```TypeScript
@@ -66,8 +64,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getformsinfo2"></a>
 
 ## getFormsInfo
 
@@ -133,8 +129,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="getformsinfo3"></a>
-
 ## getFormsInfo
 
 ```TypeScript
@@ -197,8 +191,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getformsinfo4"></a>
 
 ## getFormsInfo
 

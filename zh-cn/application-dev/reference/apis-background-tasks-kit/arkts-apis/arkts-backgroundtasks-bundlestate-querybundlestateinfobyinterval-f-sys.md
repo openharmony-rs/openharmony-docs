@@ -6,8 +6,6 @@
 import { bundleState } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="querybundlestateinfobyinterval1"></a>
-
 ## queryBundleStateInfoByInterval
 
 ```TypeScript
@@ -38,8 +36,8 @@ Queries usage information about each bundle within a specified period at a speci
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | byInterval | [IntervalType](arkts-backgroundtasks-bundlestate-intervaltype-e.md) | 是 | Indicates the interval at which the usage statistics are queried. The value can be BY_OPTIMIZED, BY_DAILY, BY_WEEKLY, BY_MONTHLY, or BY_ANNUALLY. |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds.<br> Unit:ms |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds.<br> Unit:ms |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. <br> Unit:ms |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. <br> Unit:ms |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BundleStateInfo](arkts-backgroundtasks-bundlestate-bundlestateinfo-i.md)&gt;&gt; | 是 | the callback of usage information about each bundle. |
 
 <!--Del-->
@@ -64,8 +62,6 @@ bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED
 
 <!--DelEnd-->
 
-
-<a id="querybundlestateinfobyinterval2"></a>
 
 ## queryBundleStateInfoByInterval
 
@@ -96,8 +92,8 @@ Queries usage information about each bundle within a specified period at a speci
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | byInterval | [IntervalType](arkts-backgroundtasks-bundlestate-intervaltype-e.md) | 是 | Indicates the interval at which the usage statistics are queried. The value can be BY_OPTIMIZED, BY_DAILY, BY_WEEKLY, BY_MONTHLY, or BY_ANNUALLY. |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds.<br> Unit:ms |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds.<br> Unit:ms |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. <br> Unit:ms |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. <br> Unit:ms |
 
 **返回值：**
 

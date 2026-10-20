@@ -6,8 +6,6 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
-<a id="enableairplanemode1"></a>
-
 ## enableAirplaneMode
 
 ```TypeScript
@@ -56,8 +54,6 @@ connection.enableAirplaneMode((error: BusinessError) => {
 
 <!--DelEnd-->
 
-
-<a id="enableairplanemode2"></a>
 
 ## enableAirplaneMode
 

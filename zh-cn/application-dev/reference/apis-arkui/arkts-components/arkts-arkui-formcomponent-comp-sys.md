@@ -26,7 +26,8 @@ Set a new value of form info.
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
@@ -34,8 +35,10 @@ Set a new value of form info.
 | [FormCallbackInfo](arkts-arkui-formcomponent-comp-formcallbackinfo-i-sys.md) | 卡片查询或者卸载时获取formId的参数。 |
 | [FormInfo](arkts-arkui-formcomponent-comp-forminfo-i-sys.md) | 卡片信息。 |
 | [FormSize](arkts-arkui-formcomponent-comp-formsize-i-sys.md) | 卡片大小信息。 |
+<!--DelEnd-->
 
-### 枚举
+<!--Del-->
+### 枚举（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
@@ -43,6 +46,7 @@ Set a new value of form info.
 | [FormDimension](arkts-arkui-formcomponent-comp-formdimension-e-sys.md) | 卡片尺寸枚举 |
 | [FormRenderingMode](arkts-arkui-formcomponent-comp-formrenderingmode-e-sys.md) | 卡片渲染模式枚举 |
 | [FormShape](arkts-arkui-formcomponent-comp-formshape-e-sys.md) | 定义卡片形状枚举。 |
+<!--DelEnd-->
 
 <!--Del-->
 ## 示例

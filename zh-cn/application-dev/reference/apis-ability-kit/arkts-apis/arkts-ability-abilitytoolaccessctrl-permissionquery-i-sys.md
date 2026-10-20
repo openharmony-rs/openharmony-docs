@@ -17,6 +17,7 @@ interface PermissionQuery
 ## 导入模块
 
 ```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## callerTokenId

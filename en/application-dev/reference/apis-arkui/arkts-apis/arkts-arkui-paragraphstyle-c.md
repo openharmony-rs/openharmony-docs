@@ -40,7 +40,7 @@ A constructor used to create a text paragraph style.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ParagraphStyleInterface](arkts-arkui-paragraphstyleinterface-i.md) | No | Paragraph style setting item.<br>Default value: If not passed, the default values of the properties of **ParagraphStyleInterface** are inherited. |
+| value | [ParagraphStyleInterface](arkts-arkui-paragraphstyleinterface-i.md) | No | Paragraph style setting item. <br>Default value: If not passed, the default values of the properties of **ParagraphStyleInterface** are inherited. |
 
 ## leadingMargin
 

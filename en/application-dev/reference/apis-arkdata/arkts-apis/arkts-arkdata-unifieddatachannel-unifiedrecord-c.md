@@ -47,7 +47,7 @@ Adds data of a specified data type and content to the current data record. You c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 
@@ -76,8 +76,6 @@ record.addEntry(uniformTypeDescriptor.UniformDataType.FILE_URI, fileUri);
 unifiedData.addRecord(record);
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -101,8 +99,6 @@ Defines a constructor used to create a **UnfiedRecord** object.
 ```TypeScript
 let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -137,7 +133,7 @@ If **value** is of the [Want](../../apis-ability-kit/arkts-apis/arkts-ability-ap
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3.Parameter verification failed. |
 
 **Examples**
 
@@ -281,7 +277,7 @@ Obtains data of the specified type from the data record.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 

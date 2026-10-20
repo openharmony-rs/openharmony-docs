@@ -15,7 +15,7 @@ Enumeration of SearchPlayInfoType.
 ## PLAY_KARAOKE
 
 ```TypeScript
-PLAY_KARAOKE = 'playKaroke'
+PLAY_KARAOKE = 'playKaraoke'
 ```
 
 K song on demand
@@ -24,14 +24,14 @@ K song on demand
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SearchPlayInfoType-PLAY_KARAOKE = 'playKaroke'--><!--Device-SearchPlayInfoType-PLAY_KARAOKE = 'playKaroke'-End-->
+<!--Device-SearchPlayInfoType-PLAY_KARAOKE = 'playKaraoke'--><!--Device-SearchPlayInfoType-PLAY_KARAOKE = 'playKaraoke'-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 
 ## PLAY_KARAOKE_LIST
 
 ```TypeScript
-PLAY_KARAOKE_LIST = 'playKarokeList'
+PLAY_KARAOKE_LIST = 'playKaraokeList'
 ```
 
 K song playlist on-demand
@@ -40,7 +40,7 @@ K song playlist on-demand
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SearchPlayInfoType-PLAY_KARAOKE_LIST = 'playKarokeList'--><!--Device-SearchPlayInfoType-PLAY_KARAOKE_LIST = 'playKarokeList'-End-->
+<!--Device-SearchPlayInfoType-PLAY_KARAOKE_LIST = 'playKaraokeList'--><!--Device-SearchPlayInfoType-PLAY_KARAOKE_LIST = 'playKaraokeList'-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.AVMusicTemplate
 

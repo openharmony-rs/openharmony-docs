@@ -18,7 +18,7 @@ Enumerates the directions of cursor movement of the input method.
 CURSOR_DOWN
 ```
 
-Downward.
+Downward. <br> <br>Usage scenarios: Used when the input method requests to move the cursor downward.
 
 **Since:** 10
 
@@ -32,7 +32,7 @@ Downward.
 CURSOR_LEFT
 ```
 
-Leftward.
+Leftward. <br> <br>Usage scenarios: Used when the input method requests to move the cursor leftward, such as moving the cursor before deleting the character to the left of the cursor.
 
 **Since:** 10
 
@@ -46,7 +46,7 @@ Leftward.
 CURSOR_RIGHT
 ```
 
-Rightward.
+Rightward. <br> <br>Usage scenarios: Used when the input method requests to move the cursor rightward.
 
 **Since:** 10
 
@@ -60,7 +60,7 @@ Rightward.
 CURSOR_UP = 1
 ```
 
-Upward.
+Upward. <br> <br>Usage scenarios: Used when the input method requests to move the cursor upward, such as moving the cursor up in multi-line text.
 
 **Since:** 10
 

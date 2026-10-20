@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="cancelall1"></a>
-
 ## cancelAll
 
 ```TypeScript
@@ -26,9 +24,9 @@ After cancellation, all notifications of the current application will be removed
 
 **See also:**
 
-[publish](arkts-notification-notificationmanager-publish-f.md#publish1) publishes a notification.
+[publish](arkts-notification-notificationmanager-publish-f.md#publish) publishes a notification.
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel2) cancels a published notification based on the notification ID and label.
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel) cancels a published notification based on the notification ID and label.
 
 **Parameters:**
 
@@ -62,8 +60,6 @@ notificationManager.cancelAll(cancelAllCallback);
 ```
 
 
-<a id="cancelall2"></a>
-
 ## cancelAll
 
 ```TypeScript
@@ -82,9 +78,9 @@ After cancellation, all notifications of the current application will be removed
 
 **See also:**
 
-[publish](arkts-notification-notificationmanager-publish-f.md#publish2) publishes a notification.
+[publish](arkts-notification-notificationmanager-publish-f.md#publish) publishes a notification.
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel3) cancels a notification with the specified ID.
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel) cancels a notification with the specified ID.
 
 **Return value:**
 

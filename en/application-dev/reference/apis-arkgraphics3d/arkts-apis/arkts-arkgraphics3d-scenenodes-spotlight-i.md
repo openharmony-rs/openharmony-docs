@@ -14,8 +14,6 @@ A spotlight emits a conical beam of light in a specific direction, with the inte
 > If the value set for outerAngle is greater than PI/2, it is forcibly set to PI/2 internally.
 > If the value set for outerAngle is less than innerAngle, it is forcibly set to innerAngle internally.
 
-@extends Light @interface SpotLight
-
 **Inheritance/Implementation:** SpotLight extends [Light](arkts-arkgraphics3d-scenenodes-light-i.md)
 
 **Since:** 12

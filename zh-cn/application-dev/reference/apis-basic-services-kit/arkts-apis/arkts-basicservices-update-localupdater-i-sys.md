@@ -32,8 +32,6 @@ export interface LocalUpdater
 import { update } from '@kit.BasicServicesKit';
 ```
 
-<a id="applynewversion1"></a>
-
 ## applyNewVersion
 
 ```TypeScript
@@ -109,8 +107,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="applynewversion2"></a>
 
 ## applyNewVersion
 
@@ -328,8 +324,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="verifyupgradepackage1"></a>
-
 ## verifyUpgradePackage
 
 ```TypeScript
@@ -413,8 +407,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="verifyupgradepackage2"></a>
 
 ## verifyUpgradePackage
 

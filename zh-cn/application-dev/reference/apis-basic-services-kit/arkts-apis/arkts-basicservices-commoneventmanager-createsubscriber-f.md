@@ -6,8 +6,6 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
-<a id="createsubscriber1"></a>
-
 ## createSubscriber
 
 ```TypeScript
@@ -69,8 +67,6 @@ try {
 }
 ```
 
-
-<a id="createsubscriber2"></a>
 
 ## createSubscriber
 

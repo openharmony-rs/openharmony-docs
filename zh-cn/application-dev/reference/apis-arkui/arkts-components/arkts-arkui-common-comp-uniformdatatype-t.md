@@ -6,8 +6,6 @@ declare type UniformDataType = import('../api/@ohos.data.uniformTypeDescriptor')
 
 标准化数据类型。
 
-@typedef { import('../api/@ohos.data.uniformTypeDescriptor').default.UniformDataType } UniformDataType
-
 **类型：** import('../api/@ohos.data.uniformTypeDescriptor').default.UniformDataType
 
 **起始版本：** 10

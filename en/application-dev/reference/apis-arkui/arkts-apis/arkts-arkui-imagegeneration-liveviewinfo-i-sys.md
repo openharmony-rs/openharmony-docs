@@ -6,8 +6,6 @@ interface LiveViewInfo
 
 Information for LiveView in AI image generation.
 
-@interface LiveViewInfo
-
 **Since:** 26.0.0
 
 <!--Device-imageGeneration-interface LiveViewInfo--><!--Device-imageGeneration-interface LiveViewInfo-End-->

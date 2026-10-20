@@ -6,8 +6,6 @@
 import { freeInstall } from '@kit.AbilityKit';
 ```
 
-<a id="sethapmoduleupgradeflag1"></a>
-
 ## setHapModuleUpgradeFlag
 
 ```TypeScript
@@ -47,8 +45,6 @@ Sets an upgrade flag for a module. This API uses an asynchronous callback to ret
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle name is not found. |
 | [17700002](../errorcode-bundle.md#17700002-module-name-does-not-exist) | The specified module name is not found. |
 
-
-<a id="sethapmoduleupgradeflag2"></a>
 
 ## setHapModuleUpgradeFlag
 

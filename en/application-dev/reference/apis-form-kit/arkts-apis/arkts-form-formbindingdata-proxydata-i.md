@@ -6,8 +6,6 @@ interface ProxyData
 
 Defines the form proxy data.
 
-@typedef ProxyData
-
 **Since:** 10
 
 <!--Device-formBindingData-interface ProxyData--><!--Device-formBindingData-interface ProxyData-End-->

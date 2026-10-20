@@ -6,8 +6,6 @@
 import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
-<a id="getp2pgroups1"></a>
-
 ## getP2pGroups
 
 ```TypeScript
@@ -63,8 +61,6 @@ wifiManager.getP2pGroups().then(data => {
 
 <!--DelEnd-->
 
-
-<a id="getp2pgroups2"></a>
 
 ## getP2pGroups
 

@@ -31,7 +31,8 @@ Defines the DepthComponent constructor.
 
 ## Summary
 
-### Interfaces
+<!--Del-->
+### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
@@ -42,17 +43,22 @@ Defines the DepthComponent constructor.
 | [DepthComponentErrorEvent](arkts-arkui-depthcomponent-comp-depthcomponenterrorevent-i-sys.md) | Provides the event information about the background resource load failure. |
 | [DepthComponentOptions](arkts-arkui-depthcomponent-comp-depthcomponentoptions-i-sys.md) | Provides configuration options of **DepthComponent**. |
 | [DepthLightParams](arkts-arkui-depthcomponent-comp-depthlightparams-i-sys.md) | Provides lighting parameters. |
+<!--DelEnd-->
 
-### Types
+<!--Del-->
+### Types(System API)
 
 | Name | Description |
 | --- | --- |
 | [DepthComponentCompleteCallback](arkts-arkui-depthcomponent-comp-depthcomponentcompletecallback-t-sys.md) | type DepthComponentCompleteCallback = (event: DepthComponentCompleteEvent) =&gt; void |
 | [DepthComponentErrorCallback](arkts-arkui-depthcomponent-comp-depthcomponenterrorcallback-t-sys.md) | type DepthComponentErrorCallback = (error: DepthComponentErrorEvent) =&gt; void |
 | [DepthMapCallback](arkts-arkui-depthcomponent-comp-depthmapcallback-t-sys.md) | type DepthMapCallback = (error: BusinessError&lt;void&gt;) =&gt; void |
+<!--DelEnd-->
 
-### Enums
+<!--Del-->
+### Enums(System API)
 
 | Name | Description |
 | --- | --- |
 | [DepthSpaceType](arkts-arkui-depthcomponent-comp-depthspacetype-e-sys.md) | Enumerates depth space types. |
+<!--DelEnd-->

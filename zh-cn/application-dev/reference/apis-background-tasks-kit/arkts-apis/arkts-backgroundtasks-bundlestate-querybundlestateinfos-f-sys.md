@@ -6,8 +6,6 @@
 import { bundleState } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="querybundlestateinfos1"></a>
-
 ## queryBundleStateInfos
 
 ```TypeScript
@@ -34,8 +32,8 @@ This method queries usage information at the BY_OPTIMIZED interval by default.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds.<br> Unit:ms |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds.<br> Unit:ms |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. <br> Unit:ms |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. <br> Unit:ms |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[BundleActiveInfoResponse](arkts-backgroundtasks-bundlestate-bundleactiveinforesponse-i.md)&gt; | 是 | the callback of queryBundleStateInfos. the [BundleActiveInfoResponse](arkts-backgroundtasks-bundlestate-bundleactiveinforesponse-i.md) objects containing the usage information about each bundle. |
 
 <!--Del-->
@@ -58,8 +56,6 @@ bundleState.queryBundleStateInfos(0, 20000000000000, (err: BusinessError ,
 
 <!--DelEnd-->
 
-
-<a id="querybundlestateinfos2"></a>
 
 ## queryBundleStateInfos
 
@@ -87,8 +83,8 @@ This method queries usage information at the BY_OPTIMIZED interval by default.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| begin | number | 是 | Indicates the start time of the query period, in milliseconds.<br> Unit:ms |
-| end | number | 是 | Indicates the end time of the query period, in milliseconds.<br> Unit:ms |
+| begin | number | 是 | Indicates the start time of the query period, in milliseconds. <br> Unit:ms |
+| end | number | 是 | Indicates the end time of the query period, in milliseconds. <br> Unit:ms |
 
 **返回值：**
 

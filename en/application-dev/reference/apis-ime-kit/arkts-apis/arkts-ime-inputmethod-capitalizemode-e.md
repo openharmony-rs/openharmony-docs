@@ -6,12 +6,15 @@ export enum CapitalizeMode
 
 Enumerates the modes of capitalizing the first letter of a text. <br>
 
-| Name| Value| Description|  
+| Name | Value | Description |  
 | -------- | -- | -------- |  
-| NONE | 0 | The first letter is not capitalized.|
-| SENTENCES | 1 | The first letter of each sentence is capitalized.|
-| WORDS | 2 | The first letter of each word is capitalized.|
-| CHARACTERS | 3 | All letters are capitalized.|
+| NONE | 0 | No initial capitalization is performed.<br> <br>Usage scenarios: Applicable to input boxes that do not require automatic capitalization, such as password input and verification code input.|
+
+| SENTENCES | 1 | The first letter of each sentence is capitalized.<br> <br>Usage scenarios: Applicable to ordinary text input boxes, such as chat and memo, where the first letter is automatically capitalized following punctuation marks such as a period.|
+
+| WORDS | 2 | The first letter of each word is capitalized.<br> <br>Usage scenarios: Applicable to scenarios where the first letter of each word needs to be capitalized, such as titles and personal names.|
+
+| CHARACTERS | 3 | Every letter is capitalized.<br> <br>Usage scenarios: Applicable to all uppercase input scenarios, such as abbreviation input (for example, the domain name part in a URL).|
 
 **Since:** 20
 

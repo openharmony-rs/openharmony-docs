@@ -6,8 +6,6 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
-<a id="startability1"></a>
-
 ## startAbility
 
 ```TypeScript
@@ -66,8 +64,6 @@ featureAbility.startAbility(
 );
 ```
 
-
-<a id="startability2"></a>
 
 ## startAbility
 

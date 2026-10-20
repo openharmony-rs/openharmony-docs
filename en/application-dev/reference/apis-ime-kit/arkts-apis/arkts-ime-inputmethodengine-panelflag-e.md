@@ -4,12 +4,12 @@
 export enum PanelFlag
 ```
 
-Enumerates the state types of the input method panel.<br> <br>
+Enumerates the state types of the input method panel. <br>
 
 | Name | Value| Description |  
 | ------------ | -- | ------------------ |  
-| FLG_FIXED | 0 | Fixed state type.|
-| FLG_FLOATING | 1 | Floating state type.|
+| FLG_FIXED | 0 | Fixed state type.|  
+| FLG_FLOATING | 1 | Floating state type.|  
 | FLAG_CANDIDATE<sup>15+</sup> | 2 | Candidate state type.|
 
 **Since:** 10

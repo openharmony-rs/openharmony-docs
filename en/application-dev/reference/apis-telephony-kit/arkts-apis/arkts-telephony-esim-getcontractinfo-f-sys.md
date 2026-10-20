@@ -28,7 +28,7 @@ Obtains the encrypted eSIM ID and other information required for enabling eSIM.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 | requestData | [ContractRequestData](arkts-telephony-esim-contractrequestdata-i-sys.md) | Yes | Information to be encrypted. |
 
 **Return value:**

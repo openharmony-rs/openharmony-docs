@@ -905,8 +905,6 @@ struct Index {
 }
 ```
 
-<a id="getchild1"></a>
-
 ## getChild
 
 ```TypeScript
@@ -940,8 +938,6 @@ getChild(index: number): FrameNode | null
 **示例**
 
 请参考节点操作示例。
-
-<a id="getchild2"></a>
 
 ## getChild
 
@@ -978,8 +974,6 @@ getChild(index: number, expandMode?: ExpandMode): FrameNode | null
 
 请参考LazyForEach场景节点操作示例。
 
-<a id="getchildrencount1"></a>
-
 ## getChildrenCount
 
 ```TypeScript
@@ -1007,8 +1001,6 @@ getChildrenCount(): number
 **示例**
 
 请参考节点操作示例。
-
-<a id="getchildrencount2"></a>
 
 ## getChildrenCount
 
@@ -2000,7 +1992,7 @@ struct Index {
 getPositionToParentWithTransform(): Position
 ```
 
-获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform1)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate1)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -2176,7 +2168,7 @@ struct Index {
 getPositionToScreenWithTransform(): Position
 ```
 
-获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform1)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate1)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -2351,7 +2343,7 @@ struct Index {
 getPositionToWindowWithTransform(): Position
 ```
 
-获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform1)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate1)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -3738,7 +3730,7 @@ moveTo(targetParent: FrameNode, index?: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | targetParent | [FrameNode](arkts-arkui-framenode-c.md) | 是 | 目标父节点。<br>targetParent节点不可以为声明式创建的节点，即不可修改的FrameNode。若目标父节点不符合规格，则抛出异常信息。 |
-| index | number | 否 | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。<br/>若参数无效或不指定，则添加到目标FrameNode的最后。<br>默认值：-1 |
+| index | number | 否 | 子节点序列号。当前FrameNode将被添加到目标FrameNode对应序列号的子节点之前，若目标FrameNode有n个节点，index取值范围为[0, n-1]。<br/ >若参数无效或不指定，则添加到目标FrameNode的最后。<br>默认值：-1 |
 
 **错误码：**
 

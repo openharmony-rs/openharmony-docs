@@ -29,7 +29,7 @@ Unsubscribes to device battery level change information.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | mechId | number | Yes | ID of the mechanical device. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BatteryLevelInfo](arkts-mechanic-mechanicmanager-batterylevelinfo-i-sys.md)&gt; | No | Callback function that returns the current battery level.<br>If not specified, all callbacks registered for this mechId will be removed. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BatteryLevelInfo](arkts-mechanic-mechanicmanager-batterylevelinfo-i-sys.md)&gt; | No | Callback function that returns the current battery level. <br>If not specified, all callbacks registered for this mechId will be removed. |
 
 **Error codes:**
 

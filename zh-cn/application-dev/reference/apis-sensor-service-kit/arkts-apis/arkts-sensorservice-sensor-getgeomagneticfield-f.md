@@ -6,8 +6,6 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
-<a id="getgeomagneticfield1"></a>
-
 ## getGeomagneticField
 
 ```TypeScript
@@ -19,8 +17,7 @@ function getGeomagneticField(locationOptions: LocationOptions, timeMillis: numbe
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用
-> [sensor.getGeomagneticInfo]
-> [getGeomagneticInfo](arkts-sensorservice-sensor-getgeomagneticinfo-f.md)
+> [sensor.getGeomagneticInfo](arkts-sensorservice-sensor-getgeomagneticinfo-f.md)
 > 替代。
 
 **起始版本：** 8
@@ -60,8 +57,6 @@ sensor.getGeomagneticField({ latitude: 80, longitude: 0, altitude: 0 }, 15804864
 ```
 
 
-<a id="getgeomagneticfield2"></a>
-
 ## getGeomagneticField
 
 ```TypeScript
@@ -73,8 +68,8 @@ function getGeomagneticField(locationOptions: LocationOptions, timeMillis: numbe
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用
-> [sensor.getGeomagneticInfo](arkts-sensorservice-sensor-getgeomagneticinfo-f.md)替
-> 代。
+> [sensor.getGeomagneticInfo](arkts-sensorservice-sensor-getgeomagneticinfo-f.md)
+> 替代。
 
 **起始版本：** 8
 

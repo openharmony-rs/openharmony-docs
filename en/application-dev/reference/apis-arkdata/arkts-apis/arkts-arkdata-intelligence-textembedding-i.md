@@ -6,8 +6,6 @@ interface TextEmbedding
 
 Describes the text embedding functions of the multi-modal embedding model. Chinese and English are supported.
 
-@interface TextEmbedding
-
 **Since:** 15
 
 <!--Device-intelligence-interface TextEmbedding--><!--Device-intelligence-interface TextEmbedding-End-->
@@ -19,8 +17,6 @@ Describes the text embedding functions of the multi-modal embedding model. Chine
 ```TypeScript
 import { intelligence } from '@kit.ArkData';
 ```
-
-<a id="getembedding1"></a>
 
 ## getEmbedding
 
@@ -52,7 +48,7 @@ Obtains the embedding vector of the given text. The model can process up to 512 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-internal-error) | Inner error. |
 
@@ -76,8 +72,6 @@ textEmbedding.loadModel()
     console.error(`Failed to load Model. Code: ${err.code}, message: ${err.message}`);
   })
 ```
-
-<a id="getembedding2"></a>
 
 ## getEmbedding
 
@@ -109,7 +103,7 @@ Obtains the embedding vector of a given batch of text. The model can process up 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [31300000](../errorcode-intelligence.md#31300000-internal-error) | Inner error. |
 

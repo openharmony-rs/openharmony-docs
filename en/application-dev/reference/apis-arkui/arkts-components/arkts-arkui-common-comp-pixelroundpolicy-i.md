@@ -6,8 +6,6 @@ declare interface PixelRoundPolicy
 
 Rounding strategy for the boundary of the current component.
 
-@interface PixelRoundPolicy
-
 **Since:** 11
 
 <!--Device-unnamed-declare interface PixelRoundPolicy--><!--Device-unnamed-declare interface PixelRoundPolicy-End-->
@@ -24,7 +22,7 @@ Boundary rounding strategy for the bottom edge of the component. <br>Since API v
 
 **Type:** [PixelRoundCalcPolicy](../arkts-apis/arkts-arkui-pixelroundcalcpolicy-e.md)
 
-**Default:** PixelRoundCalcPolicy.NO_FORCE_ROUND
+**Default:** undefined
 
 **Since:** 11
 
@@ -48,7 +46,7 @@ Boundary rounding strategy for the tail edge of the component. <br>Since API ver
 
 **Type:** [PixelRoundCalcPolicy](../arkts-apis/arkts-arkui-pixelroundcalcpolicy-e.md)
 
-**Default:** PixelRoundCalcPolicy.NO_FORCE_ROUND
+**Default:** undefined
 
 **Since:** 11
 
@@ -72,7 +70,7 @@ Boundary rounding strategy for the front edge of the component. <br>Since API ve
 
 **Type:** [PixelRoundCalcPolicy](../arkts-apis/arkts-arkui-pixelroundcalcpolicy-e.md)
 
-**Default:** PixelRoundCalcPolicy.NO_FORCE_ROUND
+**Default:** undefined
 
 **Since:** 11
 
@@ -96,7 +94,7 @@ Boundary rounding strategy for the top edge of the component. <br>Since API vers
 
 **Type:** [PixelRoundCalcPolicy](../arkts-apis/arkts-arkui-pixelroundcalcpolicy-e.md)
 
-**Default:** PixelRoundCalcPolicy.NO_FORCE_ROUND
+**Default:** undefined
 
 **Since:** 11
 

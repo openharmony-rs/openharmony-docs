@@ -12,15 +12,13 @@ export interface CommonEventSubscriber
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-<a id="abortcommonevent1"></a>
-
 ## abortCommonEvent
 
 ```TypeScript
 abortCommonEvent(callback: AsyncCallback<void>): void
 ```
 
-添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent1)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用callback异步回调。
+添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -59,15 +57,13 @@ subscriber.finishCommonEvent((err: BusinessError) => {
 });
 ```
 
-<a id="abortcommonevent2"></a>
-
 ## abortCommonEvent
 
 ```TypeScript
 abortCommonEvent(): Promise<void>
 ```
 
-添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent1)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用Promise异步回调。
+添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用Promise异步回调。
 
 **起始版本：** 7
 
@@ -102,7 +98,7 @@ subscriber.finishCommonEvent().then(() => {
 abortCommonEventSync(): void
 ```
 
-同步添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent1)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
+同步添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
 
 **起始版本：** 10
 
@@ -121,15 +117,13 @@ subscriber.finishCommonEvent().then(() => {
 });
 ```
 
-<a id="clearabortcommonevent1"></a>
-
 ## clearAbortCommonEvent
 
 ```TypeScript
 clearAbortCommonEvent(callback: AsyncCallback<void>): void
 ```
 
-清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent1)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用callback异步回调。
+清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -168,15 +162,13 @@ subscriber.finishCommonEvent((err: BusinessError) => {
 });
 ```
 
-<a id="clearabortcommonevent2"></a>
-
 ## clearAbortCommonEvent
 
 ```TypeScript
 clearAbortCommonEvent(): Promise<void>
 ```
 
-清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent1)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用Promise异步回调。
+清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用Promise异步回调。
 
 **起始版本：** 7
 
@@ -211,7 +203,7 @@ subscriber.finishCommonEvent().then(() => {
 clearAbortCommonEventSync(): void
 ```
 
-同步清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent1)配合使用时，可以使该公共事件继续向下一个订阅者传递。
+同步清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent)配合使用时，可以使该公共事件继续向下一个订阅者传递。
 
 **起始版本：** 10
 
@@ -229,8 +221,6 @@ subscriber.finishCommonEvent().then(() => {
   console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="finishcommonevent1"></a>
 
 ## finishCommonEvent
 
@@ -270,8 +260,6 @@ subscriber.finishCommonEvent((err: BusinessError) => {
 });
 ```
 
-<a id="finishcommonevent2"></a>
-
 ## finishCommonEvent
 
 ```TypeScript
@@ -301,8 +289,6 @@ subscriber.finishCommonEvent().then(() => {
   console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="getabortcommonevent1"></a>
 
 ## getAbortCommonEvent
 
@@ -341,8 +327,6 @@ subscriber.getAbortCommonEvent((err: BusinessError, abortEvent: boolean) => {
   console.info(`Succeeded in getting abort common event, abortEvent is ${JSON.stringify(abortEvent)}`);
 });
 ```
-
-<a id="getabortcommonevent2"></a>
 
 ## getAbortCommonEvent
 
@@ -401,8 +385,6 @@ let abortEvent: boolean = subscriber.getAbortCommonEventSync();
 console.info(`Succeeded in getting abort common event, abortEvent is ${JSON.stringify(abortEvent)}`);
 ```
 
-<a id="getcode1"></a>
-
 ## getCode
 
 ```TypeScript
@@ -442,8 +424,6 @@ subscriber.getCode((err: BusinessError, code: number) => {
   console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
 });
 ```
-
-<a id="getcode2"></a>
 
 ## getCode
 
@@ -506,8 +486,6 @@ let code: number = subscriber.getCodeSync();
 console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
 ```
 
-<a id="getdata1"></a>
-
 ## getData
 
 ```TypeScript
@@ -548,8 +526,6 @@ subscriber.getData((err: BusinessError, data: string) => {
   console.info(`Succeeded in getting data, data is ${JSON.stringify(data)}`);
 });
 ```
-
-<a id="getdata2"></a>
 
 ## getData
 
@@ -612,8 +588,6 @@ let data: string = subscriber.getDataSync();
 console.info(`Succeeded in getting data, data is ${data}`);
 ```
 
-<a id="getsubscribeinfo1"></a>
-
 ## getSubscribeInfo
 
 ```TypeScript
@@ -653,8 +627,6 @@ subscriber.getSubscribeInfo((err: BusinessError, subscribeInfo: commonEventManag
   console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
 });
 ```
-
-<a id="getsubscribeinfo3"></a>
 
 ## getSubscribeInfo
 
@@ -717,8 +689,6 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = subscriber.getS
 console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
 ```
 
-<a id="isorderedcommonevent1"></a>
-
 ## isOrderedCommonEvent
 
 ```TypeScript
@@ -756,8 +726,6 @@ subscriber.isOrderedCommonEvent((err: BusinessError, isOrdered: boolean) => {
   console.info(`isOrderedCommonEvent ${JSON.stringify(isOrdered)}`);
 });
 ```
-
-<a id="isorderedcommonevent2"></a>
 
 ## isOrderedCommonEvent
 
@@ -816,8 +784,6 @@ let isOrdered: boolean = subscriber.isOrderedCommonEventSync();
 console.info(`isOrderedCommonEventSync ${JSON.stringify(isOrdered)}`);
 ```
 
-<a id="isstickycommonevent1"></a>
-
 ## isStickyCommonEvent
 
 ```TypeScript
@@ -855,8 +821,6 @@ subscriber.isStickyCommonEvent((err: BusinessError, isSticky: boolean) => {
   console.info(`isStickyCommonEvent ${JSON.stringify(isSticky)}`);
 });
 ```
-
-<a id="isstickycommonevent2"></a>
 
 ## isStickyCommonEvent
 
@@ -915,8 +879,6 @@ let isSticky: boolean = subscriber.isStickyCommonEventSync();
 console.info(`isStickyCommonEventSync ${JSON.stringify(isSticky)}`);
 ```
 
-<a id="setcode1"></a>
-
 ## setCode
 
 ```TypeScript
@@ -957,8 +919,6 @@ subscriber.setCode(1, (err: BusinessError) => {
   console.info(`Succeeded in setting code.`);
 });
 ```
-
-<a id="setcode2"></a>
 
 ## setCode
 
@@ -1004,8 +964,6 @@ subscriber.setCode(1).then(() => {
 });
 ```
 
-<a id="setcodeanddata1"></a>
-
 ## setCodeAndData
 
 ```TypeScript
@@ -1047,8 +1005,6 @@ subscriber.setCodeAndData(1, 'publish_data_changed', (err: BusinessError) => {
   console.info(`Succeeded in setting code and data.`);
 });
 ```
-
-<a id="setcodeanddata2"></a>
 
 ## setCodeAndData
 
@@ -1174,8 +1130,6 @@ try {
 }
 ```
 
-<a id="setdata1"></a>
-
 ## setData
 
 ```TypeScript
@@ -1216,8 +1170,6 @@ subscriber.setData('publish_data_changed', (err: BusinessError) => {
   console.info(`Succeeded in setting data.`);
 });
 ```
-
-<a id="setdata2"></a>
 
 ## setData
 

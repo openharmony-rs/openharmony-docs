@@ -8,7 +8,7 @@ Enumerates the color modes, used to configure the dark or light mode of the syst
 
 | Name| Value| Description|  
 | -- | -- | -- |  
-| ALWAYS_DARK | 0 | The system is always in dark mode.|
+| ALWAYS_DARK | 0 | The system is always in dark mode.|  
 | ALWAYS_LIGHT | 1 | The system is always in light mode.|
 
 **Since:** 20

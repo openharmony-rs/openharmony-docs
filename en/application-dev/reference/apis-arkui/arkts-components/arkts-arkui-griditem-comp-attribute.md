@@ -156,7 +156,7 @@ This attribute must be used before the [polymorphic style](arkts-arkui-common-co
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether the grid item is selectable in the mouse selection box area. The value **true** means that the grid item is selectable in the mouse selection box area, and **false** means the opposite.<br>Default value: **true**. |
+| value | boolean | Yes | Whether the grid item is selectable in the mouse selection box area. The value **true** means that the grid item is selectable in the mouse selection box area, and **false** means the opposite. <br>Default value: **true**. |
 
 ## selected
 

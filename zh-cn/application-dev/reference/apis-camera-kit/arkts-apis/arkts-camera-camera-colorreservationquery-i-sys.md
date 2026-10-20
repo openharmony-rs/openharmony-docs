@@ -4,7 +4,7 @@
 interface ColorReservationQuery
 ```
 
-Provides APIs for querying the color retention type supported by the device.
+提供查询设备支持的色彩保留类型的接口。
 
 **起始版本：** 15
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 getSupportedColorReservationTypes(): Array<ColorReservationType>
 ```
 
-Obtains the supported color reservation types.
+获取支持的色彩保留类型。
 
 **起始版本：** 15
 
@@ -40,7 +40,7 @@ Obtains the supported color reservation types.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[ColorReservationType](arkts-camera-camera-colorreservationtype-e-sys.md)&gt; | Array of color reservation types supported. |
+| Array&lt;[ColorReservationType](arkts-camera-camera-colorreservationtype-e-sys.md)&gt; | 支持的色彩保留类型数组。 |
 
 **错误码：**
 

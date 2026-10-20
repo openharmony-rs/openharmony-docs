@@ -6,7 +6,7 @@ enum EthEapConnectAction
 
 Enumerates the manual connect actions for the 802.1X EAP authentication of Ethernet.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 <!--Device-eap-enum EthEapConnectAction--><!--Device-eap-enum EthEapConnectAction-End-->
 
@@ -20,7 +20,7 @@ ACTION_CONNECT = 0
 
 Re-triggers authentication with the saved configuration.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -36,7 +36,7 @@ ACTION_DISCONNECT = 1
 
 Stops auto authentication and logs off the underlying 802.1X authentication.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

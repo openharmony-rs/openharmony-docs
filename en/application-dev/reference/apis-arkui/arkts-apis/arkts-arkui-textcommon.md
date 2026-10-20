@@ -23,7 +23,7 @@
 | [DecorationStyleResult](arkts-arkui-decorationstyleresult-i.md) | Provides the text decoration information returned by the backend. |
 | [DeleteValue](arkts-arkui-deletevalue-i.md) | Provides an interface for deleting value from text. |
 | [EditableTextChangeValue](arkts-arkui-editabletextchangevalue-i.md) | Provides detailed information of text changes, including preview text. |
-| [EditMenuOptions](arkts-arkui-editmenuoptions-i.md) | [EditMenuOptions](arkts-arkui-editmenuoptions-i.md) |
+| [EditMenuOptions](arkts-arkui-editmenuoptions-i.md) | EditMenuOptions |
 | [FontConfigs](arkts-arkui-fontconfigs-i.md) | Defines font configurations. |
 | [FontSettingOptions](arkts-arkui-fontsettingoptions-i.md) | Defines font setting options. |
 | [FontWeightConfigs](arkts-arkui-fontweightconfigs-i.md) | Defines font weight configurations. When the configuration object (including an empty object **{}**) is passed, the default values are used for properties that are not explicitly set. When **null** or **undefined** is passed, default values are not applied, and the font weight behavior is consistent with that of the parent component text. |
@@ -44,7 +44,7 @@
 | [TextDataDetectorConfig](arkts-arkui-textdatadetectorconfig-i.md) | This configuration is only available for the [Text](../arkts-components/arkts-arkui-text-comp.md) and [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md) components. |
 | [TextEditControllerEx](arkts-arkui-texteditcontrollerex-i.md) | Implements an extended text editing controller. |
 | [TextLayoutOptions](arkts-arkui-textlayoutoptions-i.md) | Defines the text layout options. |
-| [TextMenuItem](arkts-arkui-textmenuitem-i.md) | [TextMenuItem](arkts-arkui-textmenuitem-i.md) |
+| [TextMenuItem](arkts-arkui-textmenuitem-i.md) | TextMenuItem |
 | [TextMenuOptions](arkts-arkui-textmenuoptions-i.md) | Provides the options for customizing the context menu on selection. |
 | [TextRange](arkts-arkui-textrange-i.md) | Defines the text range. |
 

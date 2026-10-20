@@ -6,8 +6,6 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
-<a id="notifydatachange1"></a>
-
 ## notifyDataChange
 
 ```TypeScript
@@ -43,7 +41,7 @@ function notifyDataChange(accountId: string, bundleName: string): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 <!--Del-->
 **示例**
@@ -62,8 +60,6 @@ cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
 
 <!--DelEnd-->
 
-
-<a id="notifydatachange2"></a>
 
 ## notifyDataChange
 
@@ -95,7 +91,7 @@ function notifyDataChange(accountId: string, bundleName: string, callback: Async
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 <!--Del-->
 **示例**
@@ -116,8 +112,6 @@ cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) =>
 
 <!--DelEnd-->
 
-
-<a id="notifydatachange3"></a>
 
 ## notifyDataChange
 
@@ -156,7 +150,7 @@ function notifyDataChange(userId: number, extraData: ExtraData): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 
 <!--Del-->
@@ -176,8 +170,6 @@ cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
 
 <!--DelEnd-->
 
-
-<a id="notifydatachange4"></a>
 
 ## notifyDataChange
 
@@ -211,7 +203,7 @@ function notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncC
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 
 <!--Del-->

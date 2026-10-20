@@ -23,8 +23,6 @@ Before calling the following APIs, use [data_storage.getStorage](arkts-arkdata-s
 ```TypeScript
 ```
 
-<a id="clear1"></a>
-
 ## clear
 
 ```TypeScript
@@ -58,8 +56,6 @@ storage.clear(function (err) {
     console.info("Succeeded in clearing the storage.");
 })
 ```
-
-<a id="clear2"></a>
 
 ## clear
 
@@ -116,8 +112,6 @@ Clears this **Storage** object.
 storage.clearSync();
 ```
 
-<a id="delete1"></a>
-
 ## delete
 
 ```TypeScript
@@ -152,8 +146,6 @@ storage.delete('startup', function (err) {
     console.info("Succeeded in deleting startup key.");
 })
 ```
-
-<a id="delete2"></a>
 
 ## delete
 
@@ -222,8 +214,6 @@ Deletes data with the specified key from this storage object.
 storage.deleteSync('startup');
 ```
 
-<a id="flush1"></a>
-
 ## flush
 
 ```TypeScript
@@ -257,8 +247,6 @@ storage.flush(function (err) {
     console.info("Succeeded in flushing to file.");
 })
 ```
-
-<a id="flush2"></a>
 
 ## flush
 
@@ -315,8 +303,6 @@ Saves the modification of this object to the **Storage** instance and synchroniz
 storage.flushSync();
 ```
 
-<a id="get1"></a>
-
 ## get
 
 ```TypeScript
@@ -352,8 +338,6 @@ storage.get('startup', 'default', function(err, value) {
     console.info("The value of startup is " + value);
 })
 ```
-
-<a id="get2"></a>
 
 ## get
 
@@ -431,8 +415,6 @@ let value = storage.getSync('startup', 'default');
 console.info("The value of startup is " + value);
 ```
 
-<a id="has1"></a>
-
 ## has
 
 ```TypeScript
@@ -475,8 +457,6 @@ storage.has('startup', function (err, isExist) {
     }
 })
 ```
-
-<a id="has2"></a>
 
 ## has
 
@@ -622,8 +602,6 @@ storage.putSync('startup', 'auto');
 storage.flushSync();  // observer will be called.
 ```
 
-<a id="put1"></a>
-
 ## put
 
 ```TypeScript
@@ -659,8 +637,6 @@ storage.put('startup', 'auto', function (err) {
     console.info("Succeeded in putting the value of startup.");
 })
 ```
-
-<a id="put2"></a>
 
 ## put
 

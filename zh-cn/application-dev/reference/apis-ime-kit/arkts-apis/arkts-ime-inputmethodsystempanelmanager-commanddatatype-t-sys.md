@@ -4,7 +4,7 @@
 type CommandDataType = number | string | boolean
 ```
 
-表示私有数据的数据类型。
+表示私有数据命令中值的数据类型。接口参数具体类型根据其功能而定，key为命令名称（string类型），value为命令数据值（支持number、string或boolean类型）。
 
 **起始版本：** 26.0.0
 
@@ -18,6 +18,6 @@ type CommandDataType = number | string | boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| int | 表示值类型为数字。 |
-| string | 表示值类型为字符串。 |
-| boolean | 表示值类型为布尔值。 |
+| int | 数字类型，用于表示数值类命令数据，如开关状态码、配置参数值等。 |
+| string | 字符串类型，用于表示文本类命令数据，如命令标识、文本内容、路径信息等。 |
+| boolean | 布尔类型，用于表示开关类命令数据，如功能启用/禁用状态等。 |

@@ -6,8 +6,6 @@
 import { Environment } from '@kit.CoreFileKit';
 ```
 
-<a id="getuserdatadir1"></a>
-
 ## getUserDataDir
 
 ```TypeScript
@@ -38,8 +36,20 @@ function getUserDataDir(): Promise<string>
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
+<!--Del-->
+**示例**
 
-<a id="getuserdatadir2"></a>
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+Environment.getUserDataDir().then((path: string) => {
+  console.info("getUserDataDir successfully, Path: " + path);
+}).catch((err: BusinessError) => {
+  console.error("getUserDataDir failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
+<!--DelEnd-->
+
 
 ## getUserDataDir
 
@@ -70,3 +80,19 @@ function getUserDataDir(callback: AsyncCallback<string>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application |
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+Environment.getUserDataDir((err: BusinessError, path: string) => {
+  if (err) {
+    console.error("getUserDataDir failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("getUserDataDir successfully, Path: " + path);
+  }
+});
+```
+
+<!--DelEnd-->

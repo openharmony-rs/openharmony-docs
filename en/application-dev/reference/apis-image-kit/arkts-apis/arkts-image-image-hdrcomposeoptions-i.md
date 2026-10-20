@@ -6,8 +6,6 @@ interface HdrComposeOptions
 
 Describes compose parameters.
 
-@typedef HdrComposeOptions
-
 **Since:** 23
 
 <!--Device-image-interface HdrComposeOptions--><!--Device-image-interface HdrComposeOptions-End-->

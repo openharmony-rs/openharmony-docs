@@ -6,8 +6,6 @@ interface WifiP2PConfig
 
 P2P config.
 
-@typedef WifiP2PConfig
-
 **Since:** 9
 
 <!--Device-wifiManager-interface WifiP2PConfig--><!--Device-wifiManager-interface WifiP2PConfig-End-->

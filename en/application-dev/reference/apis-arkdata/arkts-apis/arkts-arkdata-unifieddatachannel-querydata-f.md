@@ -6,8 +6,6 @@
 import { unifiedDataChannel } from '@kit.ArkData';
 ```
 
-<a id="querydata1"></a>
-
 ## queryData
 
 ```TypeScript
@@ -37,7 +35,7 @@ Queries data in the UDMF public data channel. This API uses an asynchronous call
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 
@@ -74,8 +72,6 @@ try {
 ```
 
 
-<a id="querydata2"></a>
-
 ## queryData
 
 ```TypeScript
@@ -104,13 +100,13 @@ Queries data in the UDMF public data channel. This API uses a promise to return 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md)&gt;&gt; | Promise used to return the result queried.<br>If only the **key** is specified in **options**, the data corresponding to the key is returned. <br>If only the **intention** is specified in **options**, all data in the **intention** is returned. <br>If both **intention** and **key** are specified, the intersection of the two is returned, which is the result obtained when only **key** is specified. If there is no intersection between the specified **intention** and **key**, an error object is returned. |
+| Promise&lt;Array&lt;[UnifiedData](arkts-arkdata-unifieddatachannel-unifieddata-c.md)&gt;&gt; | Promise used to return the result queried. <br>If only the **key** is specified in **options**, the data corresponding to the key is returned. <br>If only the **intention** is specified in **options**, all data in the **intention** is returned. <br>If both **intention** and **key** are specified, the intersection of the two is returned, which is the result obtained when only **key** is specified. If there is no intersection between the specified **intention** and **key**, an error object is returned. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 

@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="cleanbundlecachefiles1"></a>
-
 ## cleanBundleCacheFiles
 
 ```TypeScript
@@ -71,8 +69,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="cleanbundlecachefiles2"></a>
 
 ## cleanBundleCacheFiles
 
@@ -141,8 +137,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="cleanbundlecachefiles3"></a>
-
 ## cleanBundleCacheFiles
 
 ```TypeScript
@@ -168,7 +162,7 @@ No permission is required when the caller clears its own cache.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
-| appIndex | number | Yes | Index of the application clone.<br>The value **0** means to clear the cache of the main application. A value greater than 0 means to clear the cache data of the application clone. |
+| appIndex | number | Yes | Index of the application clone. <br>The value **0** means to clear the cache of the main application. A value greater than 0 means to clear the cache data of the application clone. |
 
 **Return value:**
 

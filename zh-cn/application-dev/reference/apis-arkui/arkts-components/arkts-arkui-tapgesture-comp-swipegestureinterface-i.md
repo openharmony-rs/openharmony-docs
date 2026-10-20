@@ -14,8 +14,6 @@ interface SwipeGestureInterface extends GestureInterface<SwipeGestureInterface>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="call1"></a>
-
 ## [[Call]]
 
 ```TypeScript
@@ -43,8 +41,6 @@ interface SwipeGestureInterface extends GestureInterface<SwipeGestureInterface>
 | 类型 | 说明 |
 | --- | --- |
 | [SwipeGestureInterface](arkts-arkui-tapgesture-comp-swipegestureinterface-i.md) |  |
-
-<a id="call2"></a>
 
 ## [[Call]]
 

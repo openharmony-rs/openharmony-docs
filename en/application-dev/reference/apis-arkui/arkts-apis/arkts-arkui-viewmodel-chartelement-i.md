@@ -6,8 +6,6 @@ export interface ChartElement extends Element
 
 The <chart> component displays line charts, gauge charts, and bar charts.
 
-@extends Element @interface ChartElement
-
 **Inheritance/Implementation:** ChartElement extends [Element](arkts-arkui-viewmodel-element-i.md)
 
 **Since:** 4

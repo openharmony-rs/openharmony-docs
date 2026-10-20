@@ -4,7 +4,7 @@
 interface ImagingMode extends ImagingModeQuery
 ```
 
-Implements imaging mode.
+实现成像模式功能。
 
 **继承/实现关系：** ImagingMode extends [ImagingModeQuery](arkts-camera-camera-imagingmodequery-i-sys.md)
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 getImagingMode(): CameraImagingMode
 ```
 
-Gets current imaging mode.
+获取当前成像模式。
 
 **起始版本：** 26.0.1
 
@@ -44,7 +44,7 @@ Gets current imaging mode.
 
 | 类型 | 说明 |
 | --- | --- |
-| [CameraImagingMode](arkts-camera-camera-cameraimagingmode-e-sys.md) | The current imaging mode. |
+| [CameraImagingMode](arkts-camera-camera-cameraimagingmode-e-sys.md) | 当前的成像模式。 |
 
 **错误码：**
 
@@ -59,7 +59,7 @@ Gets current imaging mode.
 setImagingMode(mode: CameraImagingMode): void
 ```
 
-Sets imaging mode.
+设置成像模式。
 
 **起始版本：** 26.0.1
 
@@ -75,7 +75,7 @@ Sets imaging mode.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| mode | [CameraImagingMode](arkts-camera-camera-cameraimagingmode-e-sys.md) | 是 | Target imaging mode. |
+| mode | [CameraImagingMode](arkts-camera-camera-cameraimagingmode-e-sys.md) | 是 | 目标成像模式。 |
 
 **错误码：**
 

@@ -8,8 +8,6 @@ declare class ParticleAttribute extends CommonMethod<ParticleAttribute>
 
 支持[通用事件](arkts-arkui-common-comp.md)。
 
-@extends CommonMethod<ParticleAttribute>
-
 **继承/实现关系：** ParticleAttribute extends CommonMethod&lt;ParticleAttribute&gt;
 
 **起始版本：** 10

@@ -98,7 +98,7 @@ Display mode of the RichEditor scroll bar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| state | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | Yes | Display mode of the RichEditor scroll bar.<br>Default value: BarState.Auto |
+| state | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | Yes | Display mode of the RichEditor scroll bar. <br>Default value: BarState.Auto |
 
 ## bindSelectionMenu
 
@@ -123,10 +123,10 @@ Sets a custom selection menu. It supports custom menu styles and trigger conditi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| spanType | [RichEditorSpanType](arkts-arkui-richeditor-comp-richeditorspantype-e.md) | Yes | Type of the menu.<br>Default value: RichEditorSpanType.TEXT |
+| spanType | [RichEditorSpanType](arkts-arkui-richeditor-comp-richeditorspantype-e.md) | Yes | Type of the menu. <br>Default value: RichEditorSpanType.TEXT |
 | content | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | Yes | Menu content. |
-| responseType | [ResponseType](../arkts-apis/arkts-arkui-responsetype-e.md) &#124; [RichEditorResponseType](arkts-arkui-richeditor-comp-richeditorresponsetype-e.md) | Yes | Response type of the menu.<br> Default value: <br>ResponseType.LongPress<br>**Since:** 11 |
-| options | [SelectionMenuOptions](arkts-arkui-richeditor-comp-selectionmenuoptions-i.md) | No | Options of the menu.<br>Pass this parameter when you need to customize the menu pop-up/close callback, specify the menu type, and other information. If this parameter is not passed, the default selection menu options are used. |
+| responseType | [ResponseType](../arkts-apis/arkts-arkui-responsetype-e.md) &#124; [RichEditorResponseType](arkts-arkui-richeditor-comp-richeditorresponsetype-e.md) | Yes | Response type of the menu. <br> Default value: <br>ResponseType.LongPress<br>**Since:** 11 |
+| options | [SelectionMenuOptions](arkts-arkui-richeditor-comp-selectionmenuoptions-i.md) | No | Options of the menu. <br>Pass this parameter when you need to customize the menu pop-up/close callback, specify the menu type, and other information. If this parameter is not passed, the default selection menu options are used. |
 
 ## caretColor
 
@@ -150,7 +150,7 @@ Sets the color of the caret and selection handle in the text box.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the caret and selection handle in the text box.<br>Default value: **'#007DFF'** |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the caret and selection handle in the text box. <br>Default value: **'#007DFF'** |
 
 ## compressLeadingPunctuation
 
@@ -183,7 +183,7 @@ This is applicable to scenarios where leading punctuation needs to be aligned wi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable leading punctuation compression.<br>true indicates that leading punctuation compression is enabled, and false indicates that it is disabled. <br>Default value: false. <br>When set to undefined or null, the default value is used. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable leading punctuation compression. <br>true indicates that leading punctuation compression is enabled, and false indicates that it is disabled. <br>Default value: false. <br>When set to undefined or null, the default value is used. |
 
 ## copyOptions
 
@@ -217,7 +217,7 @@ When **copyOptions** is set to **CopyOptions.None**, the copy, cut, translate, s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [CopyOptions](../arkts-apis/arkts-arkui-copyoptions-e.md) | Yes | Whether the text content supports copy and paste.<br>Default value: CopyOptions.LocalDevice |
+| value | [CopyOptions](../arkts-apis/arkts-arkui-copyoptions-e.md) | Yes | Whether the text content supports copy and paste. <br>Default value: CopyOptions.LocalDevice |
 
 ## customKeyboard
 
@@ -256,8 +256,8 @@ The custom keyboard supports the continue function. You can call the [setCustomK
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; ComponentContent &#124; undefined | Yes | Custom keyboard.<br>When **undefined** is passed, the system keyboard is used by default.<br>**Since:** 23 |
-| options | [KeyboardOptions](arkts-arkui-richeditor-comp-keyboardoptions-i.md) &#124; undefined | No | Sets whether the custom keyboard supports the avoidance feature.<br>When undefined is passed in or the parameter is omitted, avoidance is not supported by default.<br>**Since:** 23 |
+| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; ComponentContent &#124; undefined | Yes | Custom keyboard. <br>When **undefined** is passed, the system keyboard is used by default.<br>**Since:** 23 |
+| options | [KeyboardOptions](arkts-arkui-richeditor-comp-keyboardoptions-i.md) &#124; undefined | No | Sets whether the custom keyboard supports the avoidance feature.  <br>When undefined is passed in or the parameter is omitted, avoidance is not supported by default.<br>**Since:** 23 |
 
 ## dataDetectorConfig
 
@@ -344,7 +344,7 @@ Whether to enable automatic spacing between Chinese and Western characters. This
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western text.<br>true indicates that automatic spacing is enabled, and false indicates that it is disabled. <br>Default value: false |
+| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable automatic spacing between Chinese and Western text. <br>true indicates that automatic spacing is enabled, and false indicates that it is disabled. <br>Default value: false |
 
 ## enableDataDetector
 
@@ -380,7 +380,7 @@ When **copyOptions** is set to **CopyOptions.None**, the menu displayed after an
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable text recognition.<br>true indicates that special entity recognition is enabled, and false indicates that special entity recognition is disabled. <br>Default value: false |
+| enable | boolean | Yes | Whether to enable text recognition. <br>true indicates that special entity recognition is enabled, and false indicates that special entity recognition is disabled. <br>Default value: false |
 
 ## enableHapticFeedback
 
@@ -408,7 +408,7 @@ Sets whether to enable haptic feedback.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isEnabled | boolean | Yes | Whether to enable haptic feedback.<br>Default value: true. The value true means to enable haptic feedback, and false means to disable it. <br>**Note:** <br>Haptic feedback takes effect only when the application has the ohos.permission.VIBRATE permission, the user has enabled haptic feedback, and the system hardware supports it. <br>Different device types vary in their support for vibration hardware. Haptic feedback is unavailable on device types without vibration hardware. |
+| isEnabled | boolean | Yes | Whether to enable haptic feedback. <br>Default value: true. The value true means to enable haptic feedback, and false means to disable it. <br>**Note:** <br>Haptic feedback takes effect only when the application has the ohos.permission.VIBRATE permission, the user has enabled haptic feedback, and the system hardware supports it. <br>Different device types vary in their support for vibration hardware. Haptic feedback is unavailable on device types without vibration hardware. |
 
 ## enableKeyboardOnFocus
 
@@ -436,7 +436,7 @@ Sets whether to enable the input method when the **RichEditor** component obtain
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isEnabled | boolean | Yes | Whether to pop up the soft keyboard when the **TextInput** component obtains focus in a way other than clicking.<br>**true**: yes; **false**: no <br>Default value: **true** |
+| isEnabled | boolean | Yes | Whether to pop up the soft keyboard when the **TextInput** component obtains focus in a way other than clicking. <br>**true**: yes; **false**: no <br>Default value: **true** |
 
 ## enablePreviewText
 
@@ -466,7 +466,7 @@ After this feature is enabled, the pinyin and stroke characters entered during i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable the preview feature.<br>The value true means to enable it, and false means to disable it. <br>Default value: true |
+| enable | boolean | Yes | Whether to enable the preview feature. <br>The value true means to enable it, and false means to disable it. <br>Default value: true |
 
 ## enableSelectedDataDetector
 
@@ -498,7 +498,7 @@ This API depends on the text recognition capability of the device; otherwise, th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean &#124; undefined | Yes | Whether to enable the text selection AI menu function. The value **true** indicates enabled, and **false** indicates disabled.<br>Default value: **true**. <br>When set to **undefined** or **null**, the default value is used. |
+| enable | boolean &#124; undefined | Yes | Whether to enable the text selection AI menu function. The value **true** indicates enabled, and **false** indicates disabled. <br>Default value: **true**. <br>When set to **undefined** or **null**, the default value is used. |
 
 ## enterKeyType
 
@@ -524,7 +524,7 @@ After this attribute is set, the icon and trigger behavior of the Enter key on t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [EnterKeyType](arkts-arkui-textinput-comp-enterkeytype-e.md) | Yes | Type of the Enter key on the soft keyboard.<br>The default value is EnterKeyType.NEW_LINE. <br>For the applicable scenarios of each enum value, see the EnterKeyType enum description. |
+| value | [EnterKeyType](arkts-arkui-textinput-comp-enterkeytype-e.md) | Yes | Type of the Enter key on the soft keyboard. <br>The default value is EnterKeyType.NEW_LINE. <br>For the applicable scenarios of each enum value, see the EnterKeyType enum description. |
 
 ## fallbackLineSpacing
 
@@ -552,7 +552,7 @@ This API depends on the **lineHeight** property of [RichEditorTextStyle](arkts-a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height adapts based on the actual text height.<br>true indicates that the line height adapts based on the actual text height, and false indicates the opposite. <br>Default value: false. <br>When set to undefined or null, the default value is used. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the line height adapts based on the actual text height. <br>true indicates that the line height adapts based on the actual text height, and false indicates the opposite. <br>Default value: false. <br>When set to undefined or null, the default value is used. |
 
 ## horizontalScrolling
 
@@ -576,7 +576,7 @@ Sets whether to enable horizontal scrolling when the text width exceeds the cont
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable horizontal scrolling.<br>The value true means to enable horizontal scrolling, and the value false means to disable horizontal scrolling, in which case the text wraps automatically. <br>Default value: false. When this parameter is set to undefined or null, horizontal scrolling is not enabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable horizontal scrolling. <br>The value true means to enable horizontal scrolling, and the value false means to disable horizontal scrolling, in which case the text wraps automatically. <br>Default value: false. When this parameter is set to undefined or null, horizontal scrolling is not enabled. |
 
 ## includeFontPadding
 
@@ -600,7 +600,7 @@ Whether to add spacing to the first and last lines to avoid text truncation. Thi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| include | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing to the first and last lines to avoid text truncation.<br>The value true means to add spacing to the first and last lines, and false means not to add spacing to the first and last lines. <br>Default value: false <br>If this parameter is set to undefined or null, the default value is used. |
+| include | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to add spacing to the first and last lines to avoid text truncation. <br>The value true means to add spacing to the first and last lines, and false means not to add spacing to the first and last lines. <br>Default value: false <br>If this parameter is set to undefined or null, the default value is used. |
 
 ## keyboardAppearance
 
@@ -626,7 +626,7 @@ Applicable to scenarios where the keyboard visual style needs to be adjusted bas
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appearance | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[KeyboardAppearance](../arkts-apis/arkts-arkui-keyboardappearance-e.md)&gt; | Yes | Keyboard appearance.<br>Default value: KeyboardAppearance.NONE_IMMERSIVE. <br>For the applicable scenarios of each enum value, see the KeyboardAppearance enum description. <br>When set to undefined or null, the default value is used. |
+| appearance | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[KeyboardAppearance](../arkts-apis/arkts-arkui-keyboardappearance-e.md)&gt; | Yes | Keyboard appearance. <br>Default value: KeyboardAppearance.NONE_IMMERSIVE. <br>For the applicable scenarios of each enum value, see the KeyboardAppearance enum description. <br>When set to undefined or null, the default value is used. |
 
 ## maxLength
 
@@ -650,7 +650,7 @@ Sets the maximum length of the component content.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| maxLength | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Maximum input length of the content. When the total length of the content (including text, images, symbols, and builders) reaches this value, no more content can be added.<br>Default value: Infinity, which means unlimited input. <br>**NOTE:** <br>Value range: [0, +∞). If this attribute is not set or is set to undefined or a negative number, the default value Infinity is used. If it is set to 0, no content can be entered. If it is set to a decimal, the integer part is used. |
+| maxLength | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Maximum input length of the content. When the total length of the content (including text, images, symbols, and builders) reaches this value, no more content can be added. <br>Default value: Infinity, which means unlimited input. <br>**NOTE:** <br>Value range: [0, +∞). If this attribute is not set or is set to undefined or a negative number, the default value Infinity is used. If it is set to 0, no content can be entered. If it is set to a decimal, the integer part is used. |
 
 ## maxLines
 
@@ -674,7 +674,7 @@ Sets the maximum number of lines that the component can display.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| maxLines | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Sets the maximum number of lines that the rich text can display. maxLines is the number of displayable lines. When maxLines is set, the content beyond the limit can be scrolled for display. If both the component height and the maximum number of lines are set, the component height takes effect first.<br>Value range: (0, UINT32_MAX]. <br>Default value: UINT32_MAX, which means unlimited input. <br>When set to 0, a negative number, undefined, or null, the default value is used. |
+| maxLines | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Sets the maximum number of lines that the rich text can display. maxLines is the number of displayable lines. When maxLines is set, the content beyond the limit can be scrolled for display. If both the component height and the maximum number of lines are set, the component height takes effect first. <br>Value range: (0, UINT32_MAX]. <br>Default value: UINT32_MAX, which means unlimited input. <br>When set to 0, a negative number, undefined, or null, the default value is used. |
 
 ## onCopy
 
@@ -812,7 +812,7 @@ This callback is not supported when the **RichEditor** component built with [Ric
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[TextRange](../arkts-apis/arkts-arkui-textrange-i.md)&gt; | Yes | **TextRange** indicates the text range for the current input.<br>Callback invoked when IME input is completed. |
+| callback | Callback&lt;[TextRange](../arkts-apis/arkts-arkui-textrange-i.md)&gt; | Yes | **TextRange** indicates the text range for the current input. <br>Callback invoked when IME input is completed. |
 
 ## onEditingChange
 
@@ -836,7 +836,7 @@ Triggered when the content editing state in the component changes.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;boolean&gt; | Yes | Callback invoked when the editing state changes.<br>true indicates the editing state, and false indicates the non-editing state. |
+| callback | Callback&lt;boolean&gt; | Yes | Callback invoked when the editing state changes. <br>true indicates the editing state, and false indicates the non-editing state. |
 
 ## onIMEInputComplete
 
@@ -1024,7 +1024,7 @@ Since API version 26.0.0, before the input box is about to bind the input method
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[IMEClient](../arkts-apis/arkts-arkui-imeclient-i.md)&gt; &#124; undefined | Yes | Callback invoked before the component is bound to the input method.<br>When the value is undefined, the bound callback event is cleared. |
+| callback | Callback&lt;[IMEClient](../arkts-apis/arkts-arkui-imeclient-i.md)&gt; &#124; undefined | Yes | Callback invoked before the component is bound to the input method. <br>When the value is undefined, the bound callback event is cleared. |
 
 ## onWillChange
 
@@ -1080,7 +1080,7 @@ Orphan character optimization improves text layout by processing orphan characte
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable orphan word optimization for the last line of a paragraph.<br>The value true means to enable orphan word optimization, and false means the opposite. <br>Default value: false. When set to undefined or null, orphan word optimization is not enabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable orphan word optimization for the last line of a paragraph. <br>The value true means to enable orphan word optimization, and false means the opposite. <br>Default value: false. When set to undefined or null, orphan word optimization is not enabled. |
 
 ## placeholder
 
@@ -1111,7 +1111,7 @@ After this attribute is set, the prompt text is displayed when the component has
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Placeholder text. |
-| style | [PlaceholderStyle](arkts-arkui-richeditor-comp-placeholderstyle-i.md) | No | Font style of the prompt text.<br>Pass this parameter when you need to customize the color, font size, and other styles of the placeholder; if omitted, the theme style is used by default. |
+| style | [PlaceholderStyle](arkts-arkui-richeditor-comp-placeholderstyle-i.md) | No | Font style of the prompt text. <br>Pass this parameter when you need to customize the color, font size, and other styles of the placeholder; if omitted, the theme style is used by default. |
 
 ## punctuationOverflow
 
@@ -1137,7 +1137,7 @@ When enabled, a single punctuation mark at the end of a line is allowed to excee
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable hanging punctuation at the end of a line.<br>The value **true** means to enable hanging punctuation at the end of a line, and **false** means the opposite. <br>Default value: **false**. When this parameter is set to **undefined** or **null**, hanging punctuation is not enabled. |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable hanging punctuation at the end of a line. <br>The value **true** means to enable hanging punctuation at the end of a line, and **false** means the opposite. <br>Default value: **false**. When this parameter is set to **undefined** or **null**, hanging punctuation is not enabled. |
 
 ## scrollBarColor
 
@@ -1161,7 +1161,7 @@ Sets the color of the scrollbar.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Color of the scrollbar.<br>Default value: **'#66182431'**, displayed as gray. <br>Note: Invalid values are treated as the default value. |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;ColorMetrics&gt; | Yes | Color of the scrollbar. <br>Default value: **'#66182431'**, displayed as gray. <br>Note: Invalid values are treated as the default value. |
 
 ## selectedBackgroundColor
 
@@ -1237,7 +1237,7 @@ Sets whether to enable single-line mode. The single-line mode is disabled by def
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isEnable | boolean &#124; undefined | Yes | Whether to enable single-line mode.<br>The value true means to enable single-line mode, and false means the opposite. <br>If this parameter is set to undefined or null, it is processed as false, and single-line mode is not enabled. |
+| isEnable | boolean &#124; undefined | Yes | Whether to enable single-line mode. <br>The value true means to enable single-line mode, and false means the opposite. <br>If this parameter is set to undefined or null, it is processed as false, and single-line mode is not enabled. |
 
 ## stopBackPress
 
@@ -1261,7 +1261,7 @@ Sets whether to prevent the back key from being passed through. This is applicab
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isStopped | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to prevent the back key event from being propagated.<br>**true**: Propagation is prevented. **false**: Propagation is allowed. <br>Default value: **true** Invalid values are treated as the default value. |
+| isStopped | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to prevent the back key event from being propagated. <br>**true**: Propagation is prevented. **false**: Propagation is allowed. <br>Default value: **true** Invalid values are treated as the default value. |
 
 ## undoStyle
 
@@ -1287,4 +1287,4 @@ When the [RichEditorStyledStringOptions](arkts-arkui-richeditor-comp-richeditors
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[UndoStyle](arkts-arkui-richeditor-comp-undostyle-e.md)&gt; | Yes | Option for whether to retain the original style when undoing or restoring.<br>Default value: UndoStyle.CLEAR_STYLE. <br>If this parameter is set to undefined or null, the default value is used. |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[UndoStyle](arkts-arkui-richeditor-comp-undostyle-e.md)&gt; | Yes | Option for whether to retain the original style when undoing or restoring. <br>Default value: UndoStyle.CLEAR_STYLE. <br>If this parameter is set to undefined or null, the default value is used. |

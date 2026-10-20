@@ -156,7 +156,7 @@ Seeks to a specific time point in the media.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| targetTime | number | Yes | Target time for seek, calculated from the start of media playback.<br>Unit: seconds. |
+| targetTime | number | Yes | Target time for seek, calculated from the start of media playback. <br>Unit: seconds. |
 
 **Examples**
 
@@ -182,7 +182,7 @@ Sets the muted status.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| muted | boolean | Yes | Whether to mute the player.<br>The value **true** means to mute the player, and **false** means the opposite. |
+| muted | boolean | Yes | Whether to mute the player. <br>The value **true** means to mute the player, and **false** means the opposite. |
 
 **Examples**
 
@@ -208,7 +208,7 @@ Sets the playback rate.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| playbackRate | number | Yes | Playback rate.<br>Value range: [0, 10.0], where 1 indicates the original speed. If the value is out of range, it is automatically corrected to the boundary value. |
+| playbackRate | number | Yes | Playback rate. <br>Value range: [0, 10.0], where 1 indicates the original speed. If the value is out of range, it is automatically corrected to the boundary value. |
 
 **Examples**
 
@@ -234,7 +234,7 @@ Sets the playback volume.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| volume | number | Yes | Volume of the player.<br>Value range: [0, 1.0], where 0 indicates mute and 1.0 indicates the maximum volume. If the value is out of range, it is automatically corrected to the boundary value. |
+| volume | number | Yes | Volume of the player. <br>Value range: [0, 1.0], where 0 indicates mute and 1.0 indicates the maximum volume. If the value is out of range, it is automatically corrected to the boundary value. |
 
 **Examples**
 
@@ -284,10 +284,10 @@ Notifies the app of the surface position information. This method is called back
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| x | number | Yes | x coordinate of the surface relative to the Web component.<br>Unit: px. |
-| y | number | Yes | y coordinate of the surface relative to the Web component.<br>Unit: px. |
-| width | number | Yes | Width of the surface.<br>Unit: px. |
-| height | number | Yes | Height of the surface.<br>Unit: px. |
+| x | number | Yes | x coordinate of the surface relative to the Web component. <br>Unit: px. |
+| y | number | Yes | y coordinate of the surface relative to the Web component. <br>Unit: px. |
+| width | number | Yes | Width of the surface. <br>Unit: px. |
+| height | number | Yes | Height of the surface. <br>Unit: px. |
 
 **Examples**
 

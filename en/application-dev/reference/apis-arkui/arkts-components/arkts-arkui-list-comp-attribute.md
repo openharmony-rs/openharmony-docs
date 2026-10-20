@@ -40,7 +40,7 @@ Sets the layout mode of list items along the cross axis when the cross-axis widt
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ListItemAlign](arkts-arkui-list-comp-listitemalign-e.md) | Yes | Alignment mode of list items along the cross axis.<br>Default value: **ListItemAlign.Start** |
+| value | [ListItemAlign](arkts-arkui-list-comp-listitemalign-e.md) | Yes | Alignment mode of list items along the cross axis. <br>Default value: **ListItemAlign.Start** |
 
 ## backPressBehavior
 
@@ -65,8 +65,6 @@ Sets the system back button behavior of the **List** component.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | behavior | [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) &#124; undefined | Yes | System back button behavior of the **List** component. Currently, you can use the [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) parameter to configure whether to collapse the expanded swipe-out component of a **ListItem** when the system back button takes effect. <br>If this parameter is set to **undefined**, the default behavior is restored. That is, when the system back button takes effect, the expanded swipe-out component of the **ListItem** is collapsed. |
-
-<a id="cachedcount1"></a>
 
 ## cachedCount
 
@@ -96,9 +94,7 @@ When **LazyForEach** is nested under **List**, and **ListItemGroup** is nested u
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Number of list items or list item groups to be preloaded (cached).<br>Default value: number of nodes visible on the screen, with the maximum value of 16 <br>Value range: [0, +∞). <br>Values less than 0 are treated as **1**. |
-
-<a id="cachedcount2"></a>
+| value | number | Yes | Number of list items or list item groups to be preloaded (cached). <br>Default value: number of nodes visible on the screen, with the maximum value of 16 <br>Value range: [0, +∞). <br>Values less than 0 are treated as **1**. |
 
 ## cachedCount
 
@@ -108,7 +104,7 @@ cachedCount(count: number, show: boolean)
 
 Sets the number of rows to be preloaded for the list and specifies whether to display the preloaded nodes. In the lazy loading scenario, **cachedCount** rows are preloaded both above and below the display area of **List**. In the non-lazy loading scenario, all child components are loaded.
 
-After **cachedCount** is set for the list, **cachedCount** rows are preloaded and laid out both above and below the display area. When calculating the number of preloaded rows, the number of **ListItem** rows inside a **ListItemGroup** is counted. If a **ListItemGroup** contains no **ListItem**, the entire **ListItemGroup** is counted as one row. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
+After **cachedCount** is set for the list, **cachedCount** rows are preloaded and laid out both above and below the display area. When calculating the number of preloaded rows, the number of **ListItem** rows inside a **ListItemGroup** is counted. If a **ListItemGroup** contains no **ListItem**, the entire **ListItemGroup** is counted as one row. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
 
 > **NOTE:** 
 > 
@@ -133,9 +129,7 @@ After **cachedCount** is set for the list, **cachedCount** rows are preloaded an
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | count | number | Yes | Number of preloaded rows in the list.<br>Default value: determined by the number of nodes displayed on the screen, with a maximum of 16. <br>Value range: [0, +∞). If the value is less than 0, it is processed as 1. |
-| show | boolean | Yes | Whether the preloaded **ListItem** or **ListItemGroup** needs to be displayed. The value **true** means to display the preloaded **ListItem** or **ListItemGroup**, and **false** means not to display the preloaded **ListItem** or **ListItemGroup**.<br> Default value: **false** |
-
-<a id="cachedcount3"></a>
+| show | boolean | Yes | Whether the preloaded **ListItem** or **ListItemGroup** needs to be displayed. The value **true** means to display the preloaded **ListItem** or **ListItemGroup**, and **false** means not to display the preloaded **ListItem** or **ListItemGroup**. <br> Default value: **false** |
 
 ## cachedCount
 
@@ -149,7 +143,7 @@ If the first parameter of the **cachedCount** attribute is of the **number** typ
 
 If the first parameter of the **cachedCount** attribute is of the **CacheCountInfo** type, preloading and layout occur during idle frames when the number of cached rows is less than **CacheCountInfo.minCount**. When the number of cached rows is greater than **CacheCountInfo.maxCount**, the nodes beyond the range are destroyed or recycled for reuse. When the UI is idle (no animation or user operation), **CacheCountInfo.maxCount** rows are preloaded both above and below the display area.
 
-When calculating the number of preloaded rows, the number of **ListItem** rows inside a **ListItemGroup** is counted. If a **ListItemGroup** contains no **ListItem**, the entire **ListItemGroup** is counted as one row. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
+When calculating the number of preloaded rows, the number of **ListItem** rows inside a **ListItemGroup** is counted. If a **ListItemGroup** contains no **ListItem**, the entire **ListItemGroup** is counted as one row. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
 
 Default behavior: The **count** parameter is of the **number** type by default, with its value set based on the number of nodes displayed on the screen, up to a maximum of 16. Preloaded **ListItem** components are not involved in drawing by default.
 
@@ -179,8 +173,8 @@ Default behavior: The **count** parameter is of the **number** type by default, 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| count | number &#124; [CacheCountInfo](../arkts-apis/arkts-arkui-cachecountinfo-i.md) | Yes | When the parameter type is number, this parameter indicates the number of preloaded rows in the list.<br>Value range: [0, +∞). If a value less than 0 is set, 1 is used. <br>When the parameter type is **CacheCountInfo**, this parameter indicates the maximum and minimum preloading range. |
-| show | boolean | Yes | Whether the preloaded ** or **ListItemGroup** needs to be displayed.<br>**true**: The preloaded **ListItem** or **ListItemGroup** is displayed. <br>**false**: The preloaded **ListItem** or **ListItemGroup** is not displayed. |
+| count | number &#124; [CacheCountInfo](../arkts-apis/arkts-arkui-cachecountinfo-i.md) | Yes | When the parameter type is number, this parameter indicates the number of preloaded rows in the list. <br>Value range: [0, +∞). If a value less than 0 is set, 1 is used. <br>When the parameter type is **CacheCountInfo**, this parameter indicates the maximum and minimum preloading range. |
+| show | boolean | Yes | Whether the preloaded ** or **ListItemGroup** needs to be displayed. <br>**true**: The preloaded **ListItem** or **ListItemGroup** is displayed. <br>**false**: The preloaded **ListItem** or **ListItemGroup** is not displayed. |
 
 ## chainAnimation
 
@@ -216,7 +210,7 @@ Sets whether to enable the chain linkage effect for the current **List** compone
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to enable chained animations.<br>**false** (default): Chained animations are disabled. **true**: Chained animations are enabled. |
+| value | boolean | Yes | Whether to enable chained animations. <br>**false** (default): Chained animations are disabled. **true**: Chained animations are enabled. |
 
 ## childrenMainSize
 
@@ -257,8 +251,6 @@ Sets the size information of the child components of a **List** component along 
 | --- | --- | --- | --- |
 | value | [ChildrenMainSize](arkts-arkui-common-comp-childrenmainsize-c.md) | Yes | Size information of child components in the main axis direction. |
 
-<a id="contentendoffset1"></a>
-
 ## contentEndOffset
 
 ```TypeScript
@@ -285,15 +277,13 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 | --- | --- | --- | --- |
 | value | number | Yes | Offset of the end of the content area.<br>Default value: **0**<br>Unit: vp<br>**NOTE:** <br>If this parameter is set to a negative value, the default value is used.<br>Value range: [0, +∞) |
 
-<a id="contentendoffset2"></a>
-
 ## contentEndOffset
 
 ```TypeScript
 contentEndOffset(offset: number | Resource)
 ```
 
-Sets the offset from the end of the list content to the boundary of the list display area. Compared with [contentEndOffset<sup>11+</sup>](#contentendoffset1), the parameter name is changed to **offset** and the Resource type is supported.
+Sets the offset from the end of the list content to the boundary of the list display area. Compared with [contentEndOffset<sup>11+</sup>](#contentendoffset), the parameter name is changed to **offset** and the Resource type is supported.
 
 If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length of the list content area, both offsets are reset to **0**.
 
@@ -312,8 +302,6 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | offset | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Offset from the end of the content area.<br>Default value: **0**<br>When the parameter type is number, the unit is vp. <br>If an invalid value such as a negative number or a non- numeric Resource is set, the default value is used.<br>When the parameter type is number, the value range is [0, +∞) |
-
-<a id="contentstartoffset1"></a>
 
 ## contentStartOffset
 
@@ -341,15 +329,13 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 | --- | --- | --- | --- |
 | value | number | Yes | Start offset of the content area.<br>Default value: **0**<br>Unit: vp<br>**Note:** <br/ >If this parameter is set to a negative value, the default value is used.<br>Value range: [0, +∞) |
 
-<a id="contentstartoffset2"></a>
-
 ## contentStartOffset
 
 ```TypeScript
 contentStartOffset(offset: number | Resource)
 ```
 
-Sets the offset from the start of the list content to the boundary of the list display area. Compared with [contentStartOffset<sup>11+</sup>](#contentstartoffset1), the parameter name is changed to **offset** and the Resource type is supported.
+Sets the offset from the start of the list content to the boundary of the list display area. Compared with [contentStartOffset<sup>11+</sup>](#contentstartoffset), the parameter name is changed to **offset** and the Resource type is supported.
 
 If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length of the list content area, both offsets are reset to **0**.
 
@@ -401,7 +387,7 @@ When a list item has [polymorphic styles](arkts-arkui-common-comp.md) applied, t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) &#124; null | Yes | Style of the divider for the list items.<br>Default value: **null**<br>**Since:** 18 |
+| value | [ListDividerOptions](arkts-arkui-list-comp-listdivideroptions-i.md) &#124; null | Yes | Style of the divider for the list items. <br>Default value: **null**<br>**Since:** 18 |
 
 ## edgeEffect
 
@@ -433,7 +419,7 @@ Sets the effect used when the scroll boundary is reached.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | Yes | Effect used when the scroll boundary is reached. The spring and shadow effects are supported.<br>Default value: **EdgeEffect.Spring** |
+| value | [EdgeEffect](../arkts-apis/arkts-arkui-edgeeffect-e.md) | Yes | Effect used when the scroll boundary is reached. The spring and shadow effects are supported. <br>Default value: **EdgeEffect.Spring** |
 | options | [EdgeEffectOptions](arkts-arkui-common-comp-edgeeffectoptions-i.md) | No | Whether to enable the sliding effect when the component content is smaller than the component itself. The value **{ alwaysEnabled: true }** enables the sliding effect, and **{ alwaysEnabled: false }** disables it.<br>Default value: **{ alwaysEnabled: false }**<br><br>**Since:** 11 |
 
 ## editModeOptions
@@ -530,7 +516,7 @@ Sets the focus wrap mode for arrow keys.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[FocusWrapMode](../arkts-apis/arkts-arkui-focuswrapmode-e.md)&gt; | Yes | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT** <br>**NOTE:** <br>Abnormal values are treated as the default value, meaning that cross-axis arrow keys cannot wrap. |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[FocusWrapMode](../arkts-apis/arkts-arkui-focuswrapmode-e.md)&gt; | Yes | Focus wrap mode for cross-axis arrow keys. <br>Default value: **FocusWrapMode.DEFAULT** <br>**NOTE:** <br>Abnormal values are treated as the default value, meaning that cross-axis arrow keys cannot wrap. |
 
 ## friction
 
@@ -555,8 +541,6 @@ Sets the friction coefficient. It applies only to gestures in the scrolling area
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Friction coefficient.<br>Default value: **0.6** for non-wearable devices and **0.9** for wearable devices.<br>Since API version 11, the default value is **0.7** for non-wearable devices.<br>Since API version 12, the default value is **0.75** for non-wearable devices.<br>Value range: (0, +∞) |
-
-<a id="lanes1"></a>
 
 ## lanes
 
@@ -594,8 +578,6 @@ on the width of **ListItemGroup**. Therefore, when the width of **ListItemGroup*
 | --- | --- | --- | --- |
 | value | number &#124; LengthConstrain | Yes | Number of columns or rows in the layout of the **List** component.<br> Default value: **1**<br>Value range: [1, +∞). If a value less than 1 is passed, the default value is used. |
 | gutter | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | No | Column spacing or row spacing.<br>Default value: **0**<br>When the parameter type is number, the unit is vp.<br>Value range: [0, +∞).If a negative value is passed, the default value is used. <br>**NOTE:** <br>**gutter** specifies the column spacing or row spacing, which takes effect only when the number of columns or rows is greater than 1.<br> |
-
-<a id="lanes2"></a>
 
 ## lanes
 
@@ -648,7 +630,7 @@ Sets the direction in which the list items are arranged.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Axis](../arkts-apis/arkts-arkui-axis-e.md) | Yes | Direction in which the list items are arranged.<br>Default value: **Axis.Vertical** |
+| value | [Axis](../arkts-apis/arkts-arkui-axis-e.md) | Yes | Direction in which the list items are arranged. <br>Default value: **Axis.Vertical** |
 
 ## maintainVisibleContentPosition
 
@@ -672,7 +654,7 @@ Sets whether to maintain the visible content's position when data is inserted or
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to maintain the visible content's position when data is inserted or deleted outside the visible area of the component.<br>Default value: **false** <br>**false**: The visible content position will change when data is inserted or deleted. **true**: The visible content position remains unchanged when data is inserted or deleted. |
+| enabled | boolean | Yes | Whether to maintain the visible content's position when data is inserted or deleted outside the visible area of the component. <br>Default value: **false** <br>**false**: The visible content position will change when data is inserted or deleted. **true**: The visible content position remains unchanged when data is inserted or deleted. |
 
 ## multiSelectable
 
@@ -698,7 +680,7 @@ Sets whether to enable multiselect.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to enable multiselect.<br>**false** (default): Multiselect is disabled. **true**: Multiselect is enabled. |
+| value | boolean | Yes | Whether to enable multiselect. <br>**false** (default): Multiselect is disabled. **true**: Multiselect is enabled. |
 
 ## nestedScroll
 
@@ -722,7 +704,7 @@ Sets the nested scrolling mode in the forward and backward directions to impleme
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | Yes | Nested scrolling options.<br>Default value: **{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY }** |
+| value | [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | Yes | Nested scrolling options. <br>Default value: **{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY }** |
 
 ## onEditModeChange
 
@@ -746,7 +728,7 @@ Triggered when the edit mode state changes.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;boolean&gt; &#124; undefined | Yes | Callback invoked when the edit mode state changes.<br>The value **true** indicates entering the edit mode, and **false** indicates exiting the edit mode. <br>If **undefined** is passed in, the callback is canceled. |
+| callback | Callback&lt;boolean&gt; &#124; undefined | Yes | Callback invoked when the edit mode state changes. <br>The value **true** indicates entering the edit mode, and **false** indicates exiting the edit mode. <br>If **undefined** is passed in, the callback is canceled. |
 
 ## onItemDragEnter
 
@@ -1141,7 +1123,7 @@ Sets the scrollbar state.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | Yes | Scrollbar state.<br>In API version 9 and earlier versions, the default value is **BarState.Off**. Since API version 10, the default value is **BarState.Auto**. |
+| value | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | Yes | Scrollbar state. <br>In API version 9 and earlier versions, the default value is **BarState.Off**. Since API version 10, the default value is **BarState.Auto**. |
 
 ## scrollPlaceholder
 
@@ -1201,7 +1183,7 @@ This API is available only when the heights of list items are the same. During t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ScrollSnapAlign](arkts-arkui-list-comp-scrollsnapalign-e.md) | Yes | Alignment mode of the scroll snap position.<br>Default value: **ScrollSnapAlign.NONE** |
+| value | [ScrollSnapAlign](arkts-arkui-list-comp-scrollsnapalign-e.md) | Yes | Alignment mode of the scroll snap position. <br>Default value: **ScrollSnapAlign.NONE** |
 
 ## scrollSnapAnimationSpeed
 
@@ -1249,7 +1231,7 @@ Whether the list's layout starts from the bottom (end) rather than the top (begi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether the list's layout starts from the bottom (end) rather than the top (beginning).<br>**false** (default): The layout starts from the top. **true**: The layout starts from the bottom. |
+| enabled | boolean | Yes | Whether the list's layout starts from the bottom (end) rather than the top (beginning). <br>**false** (default): The layout starts from the top. **true**: The layout starts from the bottom. |
 
 ## sticky
 
@@ -1281,7 +1263,7 @@ Used together with the [ListItemGroup](arkts-arkui-listitemgroup-comp.md) compon
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [StickyStyle](arkts-arkui-list-comp-stickystyle-e.md) | Yes | Whether to pin the header to the top or the footer to the bottom in the list item group.<br>Default value: **StickyStyle.None** |
+| value | [StickyStyle](arkts-arkui-list-comp-stickystyle-e.md) | Yes | Whether to pin the header to the top or the footer to the bottom in the list item group. <br>Default value: **StickyStyle.None** |
 
 ## supportEmptyBranchInLazyLoading
 
@@ -1329,7 +1311,7 @@ Sets whether to synchronously load all child components in the list.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to synchronously load all child components in the list.<br>**true**: yes; **false**: no Default value: **true** <br>**NOTE:** <br>When this parameter is set to **false**, in the first display or **scrollToIndex** jumps without animation, if the time consumed by the frame layout exceeds 50 ms, the child components that have not been laid out in the list are delayed to the next frame for layout. |
+| enable | boolean | Yes | Whether to synchronously load all child components in the list. <br>**true**: yes; **false**: no Default value: **true** <br>**NOTE:** <br>When this parameter is set to **false**, in the first display or **scrollToIndex** jumps without animation, if the time consumed by the frame layout exceeds 50 ms, the child components that have not been laid out in the list are delayed to the next frame for layout. |
 
 ## editMode
 
@@ -1415,4 +1397,4 @@ Triggered when the list scrolls.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | (scrollOffset: number, scrollState: ScrollState) =&gt; void | Yes | Callback when scroll, scrollOffset: Offset relative to the previous frame. The offset is positive when the list content scrolls up and negative when the list content scrolls down.<br>Unit: vp scrollState: Current scroll state. |
+| event | (scrollOffset: number, scrollState: ScrollState) =&gt; void | Yes | Callback when scroll, scrollOffset: Offset relative to the previous frame. The offset is positive when the list content scrolls up and negative when the list content scrolls down. <br>Unit: vp scrollState: Current scroll state. |

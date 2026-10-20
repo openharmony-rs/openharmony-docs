@@ -6,8 +6,6 @@ namespace date
 
 Provides methods for setting time and date formats.
 
-@namespace date
-
 **Since:** 7
 
 <!--Device-settings-namespace date--><!--Device-settings-namespace date-End-->

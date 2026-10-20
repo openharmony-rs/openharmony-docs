@@ -6,8 +6,6 @@ export interface ResourceRequest
 
 The request of standby resources.
 
-@interface ResourceRequest
-
 **Since:** 10
 
 <!--Device-deviceStandby-export interface ResourceRequest--><!--Device-deviceStandby-export interface ResourceRequest-End-->

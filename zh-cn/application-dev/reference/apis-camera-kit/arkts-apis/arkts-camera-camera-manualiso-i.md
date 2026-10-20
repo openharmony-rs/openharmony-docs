@@ -4,7 +4,7 @@
 interface ManualIso extends ManualIsoQuery
 ```
 
-ManualIso object.
+手动ISO对象。
 
 **继承/实现关系：** ManualIso extends [ManualIsoQuery](arkts-camera-camera-manualisoquery-i.md)
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 getIso(): number
 ```
 
-Gets current ISO.
+获取当前ISO值。
 
 **起始版本：** 24
 
@@ -40,13 +40,12 @@ Gets current ISO.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | The current ISO. |
+| number | 当前的ISO值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 23 |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed, the inputDevice or the session is abnormal.<br>**适用版本：** 24+ |
 
@@ -56,7 +55,7 @@ Gets current ISO.
 setIso(iso: number): void
 ```
 
-Sets ISO sensitivity value, within the range of getSupportedIsoRange. This control can not be effective if ExposureMode is set to EXPOSURE_MODE_LOCKED.
+设置ISO感光度值，取值需在getSupportedIsoRange返回的范围内。如果曝光模式设置为EXPOSURE_MODE_LOCKED，此设置不生效。
 
 **起始版本：** 24
 
@@ -70,13 +69,11 @@ Sets ISO sensitivity value, within the range of getSupportedIsoRange. This contr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| iso | number | 是 | [ISO](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md) |
+| iso | number | 是 | ISO感光度值。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12 - 23 |
-| [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect.<br>**适用版本：** 12 - 23 |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400102](../errorcode-camera.md#7400102-非法操作) | Operation not allowed, the inputDevice or the session is abnormal.<br>**适用版本：** 24+ |

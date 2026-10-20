@@ -6,8 +6,6 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
-<a id="querymycard1"></a>
-
 ## queryMyCard
 
 ```TypeScript
@@ -20,7 +18,7 @@ function queryMyCard(callback: AsyncCallback<Contact>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryMyCard](#querymycard2)(context: Context, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryMyCard](#querymycard)(context: Context, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -50,8 +48,6 @@ contact.queryMyCard((err: BusinessError, data) => {
 });
 ```
 
-
-<a id="querymycard2"></a>
 
 ## queryMyCard
 
@@ -106,8 +102,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 
-<a id="querymycard3"></a>
-
 ## queryMyCard
 
 ```TypeScript
@@ -120,7 +114,7 @@ function queryMyCard(attrs: ContactAttributes, callback: AsyncCallback<Contact>)
 
 **废弃版本：** 10
 
-**替代接口：** [queryMyCard](#querymycard4)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
+**替代接口：** [queryMyCard](#querymycard)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -153,8 +147,6 @@ contact.queryMyCard({
 });
 ```
 
-
-<a id="querymycard4"></a>
 
 ## queryMyCard
 
@@ -212,8 +204,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 
-<a id="querymycard5"></a>
-
 ## queryMyCard
 
 ```TypeScript
@@ -226,7 +216,7 @@ function queryMyCard(attrs?: ContactAttributes): Promise<Contact>
 
 **废弃版本：** 10
 
-**替代接口：** [queryMyCard](#querymycard6)(context: Context, attrs?: ContactAttributes)
+**替代接口：** [queryMyCard](#querymycard)(context: Context, attrs?: ContactAttributes)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -260,8 +250,6 @@ promise.then((data) => {
 });
 ```
 
-
-<a id="querymycard6"></a>
 
 ## queryMyCard
 

@@ -6,8 +6,6 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
-<a id="abortsession1"></a>
-
 ## abortSession
 
 ```TypeScript
@@ -419,8 +417,6 @@ export default {
 };
 ```
 
-
-<a id="abortsession2"></a>
 
 ## abortSession
 

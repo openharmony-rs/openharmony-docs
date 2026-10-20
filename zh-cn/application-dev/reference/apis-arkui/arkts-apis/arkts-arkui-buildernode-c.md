@@ -36,8 +36,6 @@ export class BuilderNode<Args extends Object[]>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="build1"></a>
-
 ## build
 
 ```TypeScript
@@ -140,8 +138,6 @@ struct Index {
 }
 ```
 
-<a id="build2"></a>
-
 ## build
 
 ```TypeScript
@@ -150,7 +146,7 @@ build(builder: WrappedBuilder<Args>, arg: Object, options: BuildOptions): void
 
 依照传入的对象创建组件树，并持有组件树的根节点。无状态的UI方法[@Builder](../../../ui/state-management/arkts-builder.md)最多拥有一个根节点。
 
-支持自定义组件。相比[build(builder: WrappedBuilder\<Args>, arg?: Object)](#build1)接口，本接口支持builder的配置参数，用于配置Builder的构建行为，具体属性见[BuildOptions](arkts-arkui-buildernode-buildoptions-i.md)。
+支持自定义组件。相比[build(builder: WrappedBuilder\<Args>, arg?: Object)](#build)接口，本接口支持builder的配置参数，用于配置Builder的构建行为，具体属性见[BuildOptions](arkts-arkui-buildernode-buildoptions-i.md)。
 
 > **说明：** 
 > 
@@ -995,7 +991,7 @@ BuilderNode通过reuse和[recycle](#recycle)完成其内外自定义组件之间
 update(arg: Object): void
 ```
 
-根据提供的参数更新BuilderNode，该参数与[build](#build1)方法调用时传入的参数类型相同。对自定义组件进行update的时候需要在自定义组件中将使用的变量定义为[@Prop](../../../ui/state-management/arkts-prop.md)类型。
+根据提供的参数更新BuilderNode，该参数与[build](#build)方法调用时传入的参数类型相同。对自定义组件进行update的时候需要在自定义组件中将使用的变量定义为[@Prop](../../../ui/state-management/arkts-prop.md)类型。
 
 **起始版本：** 11
 
@@ -1011,7 +1007,7 @@ update(arg: Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| arg | Object | 是 | 用于更新BuilderNode的参数，和[build](#build1)调用时传入的参数类型一致。 |
+| arg | Object | 是 | 用于更新BuilderNode的参数，和[build](#build)调用时传入的参数类型一致。 |
 
 **示例**
 

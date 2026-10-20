@@ -6,8 +6,6 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
-<a id="reset1"></a>
-
 ## reset
 
 ```TypeScript
@@ -50,8 +48,6 @@ wallpaper.reset(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError)
 });
 ```
 
-
-<a id="reset2"></a>
 
 ## reset
 

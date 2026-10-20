@@ -6,8 +6,6 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
-<a id="getpasswordpolicy1"></a>
-
 ## getPasswordPolicy
 
 ```TypeScript
@@ -67,8 +65,6 @@ try {
 }
 ```
 
-
-<a id="getpasswordpolicy2"></a>
 
 ## getPasswordPolicy
 

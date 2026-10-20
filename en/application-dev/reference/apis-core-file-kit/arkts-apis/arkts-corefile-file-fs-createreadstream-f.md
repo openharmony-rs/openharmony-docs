@@ -25,7 +25,7 @@ Creates a readable stream. This API returns the result synchronously.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | path | string | Yes | Path of the file. |
-| options | [ReadStreamOptions](arkts-corefile-file-fs-readstreamoptions-i.md) | No | The options are as follows:<br>- **start** (number): start position to read data, in bytes. This parameter is optional. By default, data is read from the current position.<br>- **end** (number): end position to read data, in bytes. This parameter is optional. The default value is the end of the file. |
+| options | [ReadStreamOptions](arkts-corefile-file-fs-readstreamoptions-i.md) | No | The options are as follows:<br>           - **start** (number): start position to read data, in bytes. This parameter is optional. By default,   data is read from the current position.<br>           - **end** (number): end position to read data, in bytes. This parameter is optional.   The default value is the end of the file. |
 
 **Return value:**
 

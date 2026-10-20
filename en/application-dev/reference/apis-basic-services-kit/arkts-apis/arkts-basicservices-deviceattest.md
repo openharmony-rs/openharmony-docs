@@ -2,8 +2,6 @@
 
 xts_device_attest authResult information
 
-@namespace deviceAttest
-
 **Since:** 9
 
 <!--Device-unnamed-declare namespace deviceAttest--><!--Device-unnamed-declare namespace deviceAttest-End-->
@@ -23,8 +21,8 @@ import { deviceAttest } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [getAttestStatus](arkts-basicservices-deviceattest-getatteststatus-f-sys.md#getatteststatus1) | Obtains the AttestResultInfo object. |
-| [getAttestStatus](arkts-basicservices-deviceattest-getatteststatus-f-sys.md#getatteststatus2) | Obtains the AttestResultInfo object. |
+| [getAttestStatus](arkts-basicservices-deviceattest-getatteststatus-f-sys.md#getatteststatus) | Obtains the AttestResultInfo object. |
+| [getAttestStatus](arkts-basicservices-deviceattest-getatteststatus-f-sys.md#getatteststatus) | Obtains the AttestResultInfo object. |
 | [getAttestStatusSync](arkts-basicservices-deviceattest-getatteststatussync-f-sys.md#getatteststatussync) | Obtains the AttestResultInfo object. |
 <!--DelEnd-->
 

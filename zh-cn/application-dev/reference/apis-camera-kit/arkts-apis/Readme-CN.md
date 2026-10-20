@@ -257,6 +257,7 @@
   - [AuxiliaryType（系统接口）](arkts-camera-camera-auxiliarytype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [BeautyType（系统接口）](arkts-camera-camera-beautytype-e-sys.md)<!--DelEnd-->
+  - [CameraAuxiliaryPhotoType](arkts-camera-camera-cameraauxiliaryphototype-e.md)
   - [CameraConcurrentType](arkts-camera-camera-cameraconcurrenttype-e.md)
   - [CameraErrorCode](arkts-camera-camera-cameraerrorcode-e.md)
   <!--Del-->

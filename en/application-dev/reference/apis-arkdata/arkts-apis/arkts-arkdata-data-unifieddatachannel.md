@@ -4,6 +4,8 @@ As a part of the Unified Data Management Framework (UDMF), the **unifiedDataChan
 
 **Since:** 10
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace unifiedDataChannel--><!--Device-unnamed-declare namespace unifiedDataChannel-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core
@@ -21,16 +23,16 @@ import { unifiedDataChannel } from '@kit.ArkData';
 | Name | Description |
 | --- | --- |
 | [convertRecordsToEntries](arkts-arkdata-unifieddatachannel-convertrecordstoentries-f.md#convertrecordstoentries) | Converts the provided data into a multi-style data structure, which is useful when the original data uses multiple records to represent different styles of the same data. |
-| [deleteData](arkts-arkdata-unifieddatachannel-deletedata-f.md#deletedata1) | Deletes data from the UDMF public data channel. This API uses an asynchronous callback to return the result. |
-| [deleteData](arkts-arkdata-unifieddatachannel-deletedata-f.md#deletedata2) | Deletes data from the UDMF public data channel. This API uses a promise to return the result. |
-| [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata1) | Writes data to the public data channel of the UDMF and generates a unique identifier for the data. This API uses an asynchronous callback to return the result. |
-| [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata2) | Writes data to the public data channel of UDMF and generates a unique identifier for the data. This API uses a promise to return the result asynchronously. |
-| [queryData](arkts-arkdata-unifieddatachannel-querydata-f.md#querydata1) | Queries data in the UDMF public data channel. This API uses an asynchronous callback to return the result. |
-| [queryData](arkts-arkdata-unifieddatachannel-querydata-f.md#querydata2) | Queries data in the UDMF public data channel. This API uses a promise to return the result. |
+| [deleteData](arkts-arkdata-unifieddatachannel-deletedata-f.md#deletedata) | Deletes data from the UDMF public data channel. This API uses an asynchronous callback to return the result. |
+| [deleteData](arkts-arkdata-unifieddatachannel-deletedata-f.md#deletedata) | Deletes data from the UDMF public data channel. This API uses a promise to return the result. |
+| [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata) | Writes data to the public data channel of the UDMF and generates a unique identifier for the data. This API uses an asynchronous callback to return the result. |
+| [insertData](arkts-arkdata-unifieddatachannel-insertdata-f.md#insertdata) | Writes data to the public data channel of UDMF and generates a unique identifier for the data. This API uses a promise to return the result asynchronously. |
+| [queryData](arkts-arkdata-unifieddatachannel-querydata-f.md#querydata) | Queries data in the UDMF public data channel. This API uses an asynchronous callback to return the result. |
+| [queryData](arkts-arkdata-unifieddatachannel-querydata-f.md#querydata) | Queries data in the UDMF public data channel. This API uses a promise to return the result. |
 | [removeAppShareOptions](arkts-arkdata-unifieddatachannel-removeappshareoptions-f.md#removeappshareoptions) | Removes the data control information set by [setAppShareOptions](arkts-arkdata-unifieddatachannel-setappshareoptions-f.md). |
 | [setAppShareOptions](arkts-arkdata-unifieddatachannel-setappshareoptions-f.md#setappshareoptions) | Sets the [ShareOptions](arkts-arkdata-unifieddatachannel-shareoptions-e.md) for the application data. Currently, only the drag- and-drop data channel is supported. |
-| [updateData](arkts-arkdata-unifieddatachannel-updatedata-f.md#updatedata1) | Updates the data in the UDMF public data channel. This API uses an asynchronous callback to return the result. |
-| [updateData](arkts-arkdata-unifieddatachannel-updatedata-f.md#updatedata2) | Updates the data in the UDMF public data channel. This API uses a promise to return the result. |
+| [updateData](arkts-arkdata-unifieddatachannel-updatedata-f.md#updatedata) | Updates the data in the UDMF public data channel. This API uses an asynchronous callback to return the result. |
+| [updateData](arkts-arkdata-unifieddatachannel-updatedata-f.md#updatedata) | Updates the data in the UDMF public data channel. This API uses a promise to return the result. |
 
 ### Classes
 

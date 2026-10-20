@@ -286,7 +286,7 @@ console.info(uriInstance.clearQuery().toString()); // https://www.test.com
 constructor(uri: string)
 ```
 
-构造函数用于创建URI对象，将输入的URI字符串按照RFC3986规范解析并分解为scheme、userInfo、host、port、path、query和fragment等组件。
+构造函数用于创建URI对象，将输入的URI字符串按照RFC3986规范解析并分解为scheme、userInfo、host、port、path、query和fragment等组件。URI的标准形式为[scheme:]scheme-specific-part[#fragment]，细化形式为[scheme:][//authority][path][?query][#fragment]。包含scheme的URI为绝对URI，否则为相对URI；scheme-specific-part以“/”开头时为分层URI，否则为不透明URI；authority由[userInfo@]host[:port]组成，authority存在时必须包含host。
 
 **起始版本：** 8
 

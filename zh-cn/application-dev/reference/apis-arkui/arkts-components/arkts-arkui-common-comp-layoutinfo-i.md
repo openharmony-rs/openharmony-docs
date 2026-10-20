@@ -4,9 +4,7 @@
 declare interface LayoutInfo
 ```
 
-子组件布局位置信息
-
-@interface LayoutInfo
+子组件布局位置信息。
 
 **起始版本：** 9
 
@@ -24,7 +22,7 @@ declare interface LayoutInfo
 constraint: ConstraintSizeOptions
 ```
 
-子组件布局约束
+子组件约束尺寸。取值原则：minWidth≤maxWidth，minHeight≤maxHeight；单位：vp。
 
 **类型：** [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md)
 
@@ -46,7 +44,7 @@ constraint: ConstraintSizeOptions
 position: Position
 ```
 
-子组件位置信息
+子组件位置坐标。单位：vp。
 
 **类型：** Position
 

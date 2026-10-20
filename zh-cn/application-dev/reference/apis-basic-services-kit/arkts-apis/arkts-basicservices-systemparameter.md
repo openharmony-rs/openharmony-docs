@@ -39,11 +39,11 @@ import { systemParameter } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [get](arkts-basicservices-systemparameter-get-f-sys.md#get1) | 获取系统参数key对应的值，使用callback异步回调。 |
-| [get](arkts-basicservices-systemparameter-get-f-sys.md#get2) | 获取系统参数key对应的值，使用callback异步回调。 |
-| [get](arkts-basicservices-systemparameter-get-f-sys.md#get3) | 获取系统参数key对应的值，使用Promise异步回调。 |
+| [get](arkts-basicservices-systemparameter-get-f-sys.md#get) | 获取系统参数key对应的值，使用callback异步回调。 |
+| [get](arkts-basicservices-systemparameter-get-f-sys.md#get) | 获取系统参数key对应的值，使用callback异步回调。 |
+| [get](arkts-basicservices-systemparameter-get-f-sys.md#get) | 获取系统参数key对应的值，使用Promise异步回调。 |
 | [getSync](arkts-basicservices-systemparameter-getsync-f-sys.md#getsync) | 获取系统参数key对应的值。 |
-| [set](arkts-basicservices-systemparameter-set-f-sys.md#set1) | 设置系统参数key对应的值，使用callback异步回调。 |
-| [set](arkts-basicservices-systemparameter-set-f-sys.md#set2) | 设置系统参数key对应的值，使用Promise异步回调。 |
+| [set](arkts-basicservices-systemparameter-set-f-sys.md#set) | 设置系统参数key对应的值，使用callback异步回调。 |
+| [set](arkts-basicservices-systemparameter-set-f-sys.md#set) | 设置系统参数key对应的值，使用Promise异步回调。 |
 | [setSync](arkts-basicservices-systemparameter-setsync-f-sys.md#setsync) | 设置系统参数key对应的值。 |
 <!--DelEnd-->

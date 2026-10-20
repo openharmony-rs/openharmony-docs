@@ -6,8 +6,6 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
-<a id="getaltitude1"></a>
-
 ## getAltitude
 
 ```TypeScript
@@ -55,8 +53,6 @@ sensor.getAltitude(0, 200, (err: BusinessError, data: number) => {
 });
 ```
 
-
-<a id="getaltitude2"></a>
 
 ## getAltitude
 

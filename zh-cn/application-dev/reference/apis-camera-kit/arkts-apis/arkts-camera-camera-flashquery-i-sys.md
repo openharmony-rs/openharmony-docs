@@ -8,7 +8,7 @@ interface FlashQuery
 
 > **说明：** 
 > 
-> - 本Interface的起始版本为API version 12。接口在API version 12发生兼容变更，保留了内层元素的起始版本信息，会出现外层元素@since版本号大于内层元素的情况，不影响接口使用。
+> - 本Interface的起始版本为API版本12。接口在API版本12发生兼容变更，保留了内层元素的起始版本信息，会出现外层元素@since版本号大于内层元素的情况，不影响接口使用。
 
 **起始版本：** 12
 
@@ -28,7 +28,7 @@ import { camera } from '@kit.CameraKit';
 isLcdFlashSupported(): boolean
 ```
 
-Checks whether the LCD flash is supported.
+检测是否支持LCD闪光灯。
 
 **起始版本：** 12
 
@@ -42,7 +42,7 @@ Checks whether the LCD flash is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for the support of the LCD flash. **true** if supported, **false** otherwise. |
+| boolean | 检测是否支持LCD闪光灯的结果。**true**表示支持，**false**表示不支持。 |
 
 **错误码：**
 

@@ -3,6 +3,7 @@
 ## 导入模块
 
 ```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## requestToolPermissions
@@ -29,7 +30,7 @@ export function requestToolPermissions(permissionQuery: PermissionQuery): Promis
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| permissionQuery | [PermissionQuery](arkts-ability-abilitytoolaccessctrl-permissionquery-i-sys.md) | 是 | 权限查询信息 |
+| permissionQuery | [PermissionQuery](arkts-ability-abilitytoolaccessctrl-permissionquery-i-sys.md) | 是 | 权限查询信息。 |
 
 **返回值：**
 

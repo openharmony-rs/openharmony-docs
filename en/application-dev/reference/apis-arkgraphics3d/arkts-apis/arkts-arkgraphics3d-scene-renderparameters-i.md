@@ -6,8 +6,6 @@ export interface RenderParameters
 
 Describes the rendering parameters.
 
-@interface RenderParameters
-
 **Since:** 15
 
 <!--Device-unnamed-export interface RenderParameters--><!--Device-unnamed-export interface RenderParameters-End-->

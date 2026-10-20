@@ -6,8 +6,6 @@ type NotifyMissionsChangedCallback = (deviceId: string) => void
 
 Callback function on mission changed.
 
-@typedef { function } NotifyMissionsChangedCallback
-
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.

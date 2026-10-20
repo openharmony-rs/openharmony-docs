@@ -6,8 +6,6 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
-<a id="setvolumedescription1"></a>
-
 ## setVolumeDescription
 
 ```TypeScript
@@ -40,15 +38,32 @@ function setVolumeDescription(uuid: string, description: string, callback: Async
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600002 | Not supported filesystem. |
 | 13600005 | Incorrect volume state. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
+**示例**
 
-<a id="setvolumedescription2"></a>
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// uuid可通过getAllVolumes()接口获取卷设备信息后获得
+let uuid: string = "";
+let description: string = "";
+volumeManager.setVolumeDescription(uuid, description, (error: BusinessError) => {
+  if (error) {
+    console.error(`setVolumeDescription failed, code is: ${error.code}, message is: ${error.message}`);
+    return;
+  }
+  // 设置卷设备描述成功的回调
+});
+```
+
+<!--DelEnd-->
+
 
 ## setVolumeDescription
 
@@ -87,9 +102,26 @@ function setVolumeDescription(uuid: string, description: string): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes: 1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 | 13600002 | Not supported filesystem. |
 | 13600005 | Incorrect volume state. |
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// uuid可通过getAllVolumes()接口获取卷设备信息后获得
+let uuid: string = "";
+let description: string = "";
+volumeManager.setVolumeDescription(uuid, description).then(() => {
+  console.info("setVolumeDescription successfully");
+}).catch((error: BusinessError) => {
+  console.error(`Failed to setVolumeDescription. Code: ${error.code}, message: ${error.message}`);
+});
+```
+
+<!--DelEnd-->

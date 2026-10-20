@@ -42,7 +42,7 @@ Obtains the current selection range of the **RichEditor** component.
 
 | Type | Description |
 | --- | --- |
-| [RichEditorRange](arkts-arkui-richeditor-comp-richeditorrange-i.md) | Selection range.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned. |
+| [RichEditorRange](arkts-arkui-richeditor-comp-richeditorrange-i.md) | Selection range. <br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned. |
 
 ## getStyledString
 
@@ -66,7 +66,7 @@ Obtains the styled string displayed in the **RichEditor** component.
 
 | Type | Description |
 | --- | --- |
-| [MutableStyledString](../arkts-apis/arkts-arkui-mutablestyledstring-c.md) | Styled string displayed in the rich text component.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned. |
+| [MutableStyledString](../arkts-apis/arkts-arkui-mutablestyledstring-c.md) | Styled string displayed in the rich text component. <br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned. |
 
 ## onContentChanged
 

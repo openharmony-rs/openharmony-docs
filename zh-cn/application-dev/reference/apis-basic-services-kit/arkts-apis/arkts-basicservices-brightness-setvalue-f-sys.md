@@ -6,8 +6,6 @@
 import { brightness } from '@kit.BasicServicesKit';
 ```
 
-<a id="setvalue1"></a>
-
 ## setValue
 
 ```TypeScript
@@ -51,8 +49,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="setvalue2"></a>
 
 ## setValue
 

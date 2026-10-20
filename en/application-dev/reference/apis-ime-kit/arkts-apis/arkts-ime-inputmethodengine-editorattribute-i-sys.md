@@ -4,7 +4,7 @@
 interface EditorAttribute
 ```
 
-Represents the attributes of the edit box.
+Describes the attribute of the edit box.
 
 **Since:** 8
 

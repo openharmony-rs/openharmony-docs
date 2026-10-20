@@ -6,8 +6,6 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
-<a id="getid1"></a>
-
 ## getId
 
 ```TypeScript
@@ -48,8 +46,6 @@ wallpaper.getId(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError,
 });
 ```
 
-
-<a id="getid2"></a>
 
 ## getId
 

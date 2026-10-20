@@ -4,7 +4,7 @@
 interface DepthFusionQuery
 ```
 
-A class for querying depth fusion capabilities.
+用于查询深度融合能力的类。
 
 **起始版本：** 14
 
@@ -26,7 +26,7 @@ import { camera } from '@kit.CameraKit';
 getDepthFusionThreshold(): Array<number>
 ```
 
-Obtains the depth fusion threshold.
+获取深度融合阈值。
 
 **起始版本：** 14
 
@@ -40,7 +40,7 @@ Obtains the depth fusion threshold.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;number&gt; | Depth fusion threshold. |
+| Array&lt;number&gt; | 深度融合阈值。 |
 
 **错误码：**
 
@@ -74,7 +74,7 @@ function getDepthFusionThreshold(DepthFusionQuery: camera.DepthFusionQuery): voi
 isDepthFusionSupported(): boolean
 ```
 
-Checks whether depth fusion is supported.
+查询是否支持深度融合。
 
 **起始版本：** 14
 
@@ -88,7 +88,7 @@ Checks whether depth fusion is supported.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Check result for the support of depth fusion. **true** if supported, **false** otherwise. |
+| boolean | 查询是否支持深度融合的结果。**true** 表示支持，**false** 表示不支持。 |
 
 **错误码：**
 

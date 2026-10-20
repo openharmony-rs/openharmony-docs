@@ -10,8 +10,6 @@ export interface AsyncCallback<T, E = void>
 
 异步返回值的类型由开发者自定义，回调将返回对应类型的信息。
 
-@typedef AsyncCallback [since 6 - 11] @typedef AsyncCallback<T, E = void> [since 12]
-
 **起始版本：** 6
 
 <!--Device-unnamed-export interface AsyncCallback<T, E = void>--><!--Device-unnamed-export interface AsyncCallback<T, E = void>-End-->

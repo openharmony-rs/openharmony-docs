@@ -6,8 +6,6 @@ export type BusinessAbilityInfo = _BusinessAbilityInfo.BusinessAbilityInfo
 
 Obtains business ability info.
 
-@typedef { _BusinessAbilityInfo.BusinessAbilityInfo }
-
 **Type:** [_BusinessAbilityInfo.BusinessAbilityInfo](arkts-ability-businessabilityinfo-i-sys.md)
 
 **Since:** 10

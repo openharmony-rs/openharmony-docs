@@ -22,7 +22,7 @@ declare class StackAttribute extends CommonMethod<StackAttribute>
 alignContent(value: Alignment)
 ```
 
-设置子组件在容器内的对齐方式。该属性与[align](arkts-arkui-common-comp-commonmethod-c.md#align1)同时设置时，后设置的属性值会覆盖先设置的属性值。该属性与接口构造入参同时设置时，以属性设置的值为准，与设置顺序无关。
+设置子组件在容器内的对齐方式。该属性与[align](arkts-arkui-common-comp-commonmethod-c.md#align)同时设置时，后设置的属性值会覆盖先设置的属性值。该属性与接口构造入参同时设置时，以属性设置的值为准，与设置顺序无关。
 
 **起始版本：** 7
 

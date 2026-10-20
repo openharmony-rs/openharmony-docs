@@ -6,8 +6,6 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="switchcurrentinputmethodsubtype1"></a>
-
 ## switchCurrentInputMethodSubtype
 
 ```TypeScript
@@ -72,8 +70,6 @@ inputMethod.switchCurrentInputMethodSubtype({
 });
 ```
 
-
-<a id="switchcurrentinputmethodsubtype2"></a>
 
 ## switchCurrentInputMethodSubtype
 

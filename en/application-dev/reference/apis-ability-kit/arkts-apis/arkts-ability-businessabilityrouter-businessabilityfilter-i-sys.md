@@ -6,8 +6,6 @@ export interface BusinessAbilityFilter
 
 This filter value is used to filter business ability info
 
-@typedef BusinessAbilityFilter
-
 **Since:** 10
 
 <!--Device-businessAbilityRouter-export interface BusinessAbilityFilter--><!--Device-businessAbilityRouter-export interface BusinessAbilityFilter-End-->

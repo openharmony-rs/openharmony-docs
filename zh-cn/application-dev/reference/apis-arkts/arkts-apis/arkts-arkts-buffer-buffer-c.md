@@ -2961,3 +2961,21 @@ Buffer对象的字节长度。
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [10200013](../errorcode-utils.md#10200013-只读属性设置错误) | Length cannot be set for the buffer that has only a getter. |
+
+**示例**
+
+```TypeScript
+import { buffer } from '@kit.ArkTS';
+
+let buf = buffer.from("12345678");
+console.info(JSON.stringify(buf.length));
+// 输出结果：8
+let arrayBuffer = buf.buffer;
+console.info(JSON.stringify(new Uint8Array(arrayBuffer)));
+// 输出结果：{"0":49,"1":50,"2":51,"3":52,"4":53,"5":54,"6":55,"7":56}
+console.info(JSON.stringify(buf.byteOffset));
+// 输出结果：0
+let buf1 = buffer.from("abcd");
+console.info(JSON.stringify(buf1.byteOffset));
+// 输出结果：8
+```

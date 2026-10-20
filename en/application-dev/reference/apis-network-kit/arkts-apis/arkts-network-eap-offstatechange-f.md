@@ -14,7 +14,7 @@ function offStateChange(callback?: Callback<EthEapStateInfo>): void
 
 Unsubscribes from 802.1X EAP authentication state changes.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_EAP
 

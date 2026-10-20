@@ -12,7 +12,7 @@ import { appManager } from '@kit.AbilityKit';
 function killProcessesInBatch(pids: Array<number>): Promise<void>
 ```
 
-批量终止进程。使用Promise异步回调。该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。**需要权限**：ohos.permission.KILL_APP_PROCESSES
+批量终止进程。使用Promise异步回调。该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。
 
 **起始版本：** 14
 

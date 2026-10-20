@@ -6,8 +6,6 @@ declare interface NativeEmbedDataInfo
 
 Provides detailed information about the changes of the same-layer tag lifecycle, including the status and tag information. It is suitable for scenarios where monitoring same-layer element lifecycle is required, improving rendering state management accuracy and user experience.
 
-@interface NativeEmbedDataInfo [since 11 - 11]
-
 **Since:** 11
 
 <!--Device-unnamed-declare interface NativeEmbedDataInfo--><!--Device-unnamed-declare interface NativeEmbedDataInfo-End-->

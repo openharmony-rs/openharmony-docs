@@ -6,8 +6,6 @@ type OnContinueDoneCallback = (result: number) => void
 
 Callback function on continue mission done.
 
-@typedef { function } OnContinueDoneCallback
-
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.

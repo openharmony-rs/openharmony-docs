@@ -175,8 +175,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getgroupdir1"></a>
-
 ## getGroupDir
 
 ```TypeScript
@@ -231,8 +229,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="getgroupdir2"></a>
 
 ## getGroupDir
 
@@ -339,8 +335,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="createmodulecontext1"></a>
 
 ## createModuleContext
 

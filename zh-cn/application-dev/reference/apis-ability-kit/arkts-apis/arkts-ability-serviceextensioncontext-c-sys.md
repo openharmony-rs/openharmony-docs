@@ -223,8 +223,6 @@ class EntryAbility extends ServiceExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="disconnectserviceextensionability1"></a>
-
 ## disconnectServiceExtensionAbility
 
 ```TypeScript
@@ -293,8 +291,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="disconnectserviceextensionability2"></a>
 
 ## disconnectServiceExtensionAbility
 
@@ -655,8 +651,6 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="requestmodaluiextension1"></a>
-
 ## requestModalUIExtension
 
 ```TypeScript
@@ -742,8 +736,6 @@ class ServiceExtension extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="requestmodaluiextension2"></a>
 
 ## requestModalUIExtension
 
@@ -928,8 +920,6 @@ export default class ServiceExtension extends ServiceExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="startability1"></a>
-
 ## startAbility
 
 ```TypeScript
@@ -1019,8 +1009,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startability2"></a>
 
 ## startAbility
 
@@ -1116,8 +1104,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startability3"></a>
 
 ## startAbility
 
@@ -1218,8 +1204,6 @@ class EntryAbility extends ServiceExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="startabilityascaller1"></a>
-
 ## startAbilityAsCaller
 
 ```TypeScript
@@ -1307,8 +1291,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startabilityascaller2"></a>
 
 ## startAbilityAsCaller
 
@@ -1400,8 +1382,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startabilityascaller3"></a>
 
 ## startAbilityAsCaller
 
@@ -1742,8 +1722,6 @@ class EntryAbility extends ServiceExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="startabilitywithaccount1"></a>
-
 ## startAbilityWithAccount
 
 ```TypeScript
@@ -1843,8 +1821,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startabilitywithaccount2"></a>
 
 ## startAbilityWithAccount
 
@@ -1950,8 +1926,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startabilitywithaccount3"></a>
 
 ## startAbilityWithAccount
 
@@ -2063,8 +2037,6 @@ class EntryAbility extends ServiceExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="startrecentability1"></a>
-
 ## startRecentAbility
 
 ```TypeScript
@@ -2158,8 +2130,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startrecentability2"></a>
 
 ## startRecentAbility
 
@@ -2261,8 +2231,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startrecentability3"></a>
 
 ## startRecentAbility
 
@@ -2367,8 +2335,6 @@ class EntryAbility extends ServiceExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="startserviceextensionability1"></a>
-
 ## startServiceExtensionAbility
 
 ```TypeScript
@@ -2448,8 +2414,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startserviceextensionability2"></a>
 
 ## startServiceExtensionAbility
 
@@ -2535,8 +2499,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startserviceextensionabilitywithaccount1"></a>
 
 ## startServiceExtensionAbilityWithAccount
 
@@ -2628,8 +2590,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="startserviceextensionabilitywithaccount2"></a>
 
 ## startServiceExtensionAbilityWithAccount
 
@@ -2903,8 +2863,6 @@ export default class MyServiceExtensionAbility extends ServiceExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="stopserviceextensionability1"></a>
-
 ## stopServiceExtensionAbility
 
 ```TypeScript
@@ -2980,8 +2938,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="stopserviceextensionability2"></a>
 
 ## stopServiceExtensionAbility
 
@@ -3063,8 +3019,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="stopserviceextensionabilitywithaccount1"></a>
 
 ## stopServiceExtensionAbilityWithAccount
 
@@ -3150,8 +3104,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="stopserviceextensionabilitywithaccount2"></a>
 
 ## stopServiceExtensionAbilityWithAccount
 
@@ -3243,8 +3195,6 @@ class EntryAbility extends ServiceExtensionAbility {
 
 <!--DelEnd-->
 
-<a id="terminateself1"></a>
-
 ## terminateSelf
 
 ```TypeScript
@@ -3304,8 +3254,6 @@ class EntryAbility extends ServiceExtensionAbility {
 ```
 
 <!--DelEnd-->
-
-<a id="terminateself2"></a>
 
 ## terminateSelf
 

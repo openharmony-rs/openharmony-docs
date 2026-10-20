@@ -56,8 +56,6 @@ declare function rmdir(path: string): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="rmdir2"></a>
-
 ## rmdir
 
 ```TypeScript

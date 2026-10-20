@@ -29,7 +29,7 @@ Claims a USB device interface exclusively. When this API is called, the system c
 | --- | --- | --- | --- |
 | pipe | [USBDevicePipe](arkts-basicservices-usbmanager-usbdevicepipe-i.md) | Yes | USB device pipe, which is used to determine the bus address and device address. You need to call [usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md) to obtain its value. |
 | iface | [USBInterface](arkts-basicservices-usbmanager-usbinterface-i.md) | Yes | Index of the target USB interface. You can call [usbManager.getDevices](arkts-basicservices-usbmanager-getdevices-f.md) to obtain the device information and identify the USB interface based on the ID. |
-| force | boolean | No | Whether to forcibly claim the USB interface. The default value is **false**, indicating that the USB interface is not forcibly claimed. You can set this parameter as required.<br>The default value is **false**. |
+| force | boolean | No | Whether to forcibly claim the USB interface. The default value is **false**, indicating that the USB interface is not forcibly claimed. You can set this parameter as required. <br>The default value is **false**. |
 | onConflict | [Callback](arkts-basicservices-base-callback-i.md)&lt;[InterfaceConflictInfo](arkts-basicservices-usbmanager-interfaceconflictinfo-i.md)&gt; | No | Callback used to return the conflict information when other processes claim the same USB interface by calling [usbManager.claimInterface](arkts-basicservices-usbmanager-claiminterface-f.md) non-exclusively after the interface is claimed exclusively. If this parameter is not specified, no notification is sent when such a conflict occurs. <br>Default value: no callback is triggered. |
 
 **Error codes:**

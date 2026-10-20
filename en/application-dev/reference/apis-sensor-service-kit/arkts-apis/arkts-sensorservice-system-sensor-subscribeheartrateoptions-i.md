@@ -36,7 +36,7 @@ Callback invoked when an API call fails. The callback parameters are **data** of
 
 **Deprecated since:** 8
 
-**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)
+**Substitutes:** on
 
 **Required permissions:** ohos.permission.READ_HEALTH_DATA
 
@@ -65,7 +65,7 @@ Callback invoked when the heart rate sensor data changes. The callback parameter
 
 **Deprecated since:** 8
 
-**Substitutes:** [on](arkts-sensorservice-sensor-on-f.md)
+**Substitutes:** on
 
 **Required permissions:** ohos.permission.READ_HEALTH_DATA
 

@@ -293,8 +293,6 @@ try {
 }
 ```
 
-<a id="getunicodewrappedfilepath1"></a>
-
 ## getUnicodeWrappedFilePath
 
 ```TypeScript
@@ -351,8 +349,6 @@ try {
 }
 ```
 
-<a id="getunicodewrappedfilepath2"></a>
-
 ## getUnicodeWrappedFilePath
 
 ```TypeScript
@@ -367,7 +363,7 @@ static getUnicodeWrappedFilePath(path: string, delimiter?: string, locale?: intl
 
 **废弃版本：** 20
 
-**替代接口：** [getUnicodeWrappedFilePath](#getunicodewrappedfilepath1)(path: string, delimiter?: string, locale?: Intl.Locale)
+**替代接口：** [getUnicodeWrappedFilePath](#getunicodewrappedfilepath)(path: string, delimiter?: string, locale?: Intl.Locale)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 

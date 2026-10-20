@@ -7,7 +7,7 @@ Video组件用于播放视频文件并控制其播放状态，支持播放、暂
 > 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > <br>
 > 
-> Video组件只提供简单的视频播放功能，无法支撑复杂的视频播控场景。复杂开发场景推荐使用[AVPlayer](../../apis-media-kit/arkts-apis/arkts-media-media-avplayer-i.md)播控API和
+> Video组件只提供简单的视频播放功能，无法支撑复杂的视频播控场景。复杂开发场景推荐使用[AVPlayer](../../apis-media/arkts-apis/arkts-media-media-avplayer-i.md)播控API和
 > [XComponent](arkts-arkui-xcomponent-comp.md)组件开发。
 > <br>
 > 

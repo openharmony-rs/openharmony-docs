@@ -20,8 +20,8 @@ Function that returns typed string to render one template.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| item | T | Yes | Each data item in arr. T is the data type passed in by the developer.<br>When omitted, this parameter is ignored by default. Do not use this parameter in the closure function implementation; otherwise, a compile error occurs. |
-| index | number | Yes | Index corresponding to the current data item.<br>When omitted, this parameter is ignored by default. Do not use this parameter in the closure function implementation; otherwise, a compile error occurs. |
+| item | T | Yes | Each data item in arr. T is the data type passed in by the developer. <br>When omitted, this parameter is ignored by default. Do not use this parameter in the closure function implementation; otherwise, a compile error occurs. |
+| index | number | Yes | Index corresponding to the current data item. <br>When omitted, this parameter is ignored by default. Do not use this parameter in the closure function implementation; otherwise, a compile error occurs. |
 
 **Return value:**
 

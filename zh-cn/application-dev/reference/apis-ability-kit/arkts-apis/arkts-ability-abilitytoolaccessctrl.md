@@ -4,18 +4,25 @@ abilityToolAccessCtrl的命名空间
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 <!--Device-unnamed-declare namespace abilityToolAccessCtrl--><!--Device-unnamed-declare namespace abilityToolAccessCtrl-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 
-**系统接口：** 此接口为系统接口。
-
 ## 导入模块
 
 ```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## 汇总
+
+### 函数
+
+| 名称 | 说明 |
+| --- | --- |
+| [requestToolTicket](arkts-ability-abilitytoolaccessctrl-requesttoolticket-f.md#requesttoolticket) | 获取CLI工具的执行认证票据。该函数用于获取CLI工具及子命令的执行认证票据。如果CLI工具所需权限用户尚未授权，会返回需要授权的权限列表及权限状态。如果CLI工具所需权限用户均授权，会返回授权的票据。 |
 
 <!--Del-->
 ### 函数（系统接口）
@@ -32,13 +39,21 @@ abilityToolAccessCtrl的命名空间
 | [verifyControllerDevicePackage](arkts-ability-abilitytoolaccessctrl-verifycontrollerdevicepackage-f-sys.md#verifycontrollerdevicepackage) | 验证来自控制器设备的授权包。验证控制器设备发送的远程授权包。它验证票证和远程设备信息，以确保授权是合法的。 |
 <!--DelEnd-->
 
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [CliCmdInfo](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i.md) | CLI命令信息。 |
+| [PermissionInfo](arkts-ability-abilitytoolaccessctrl-permissioninfo-i.md) | 权限信息。 |
+| [TicketOpions](arkts-ability-abilitytoolaccessctrl-ticketopions-i.md) | 生成票据的可选参数 |
+| [TicketQueryResult](arkts-ability-abilitytoolaccessctrl-ticketqueryresult-i.md) | 票据查询结果。 |
+
 <!--Del-->
 ### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [AuthStatusInfo](arkts-ability-abilitytoolaccessctrl-authstatusinfo-i-sys.md) | 授权状态信息。 |
-| [CliCmdInfo](arkts-ability-abilitytoolaccessctrl-clicmdinfo-i-sys.md) | CLI命令信息。 |
 | [OperationInfo](arkts-ability-abilitytoolaccessctrl-operationinfo-i-sys.md) | 操作信息。 |
 | [PermissionInfo](arkts-ability-abilitytoolaccessctrl-permissioninfo-i-sys.md) | 权限信息。 |
 | [PermissionQuery](arkts-ability-abilitytoolaccessctrl-permissionquery-i-sys.md) | 权限查询信息。 |

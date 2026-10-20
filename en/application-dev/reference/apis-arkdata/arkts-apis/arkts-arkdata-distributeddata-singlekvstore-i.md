@@ -25,15 +25,13 @@ Data is not distinguished by device in a single KV store. The data written to di
 ```TypeScript
 ```
 
-<a id="closeresultset1"></a>
-
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KvStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-Closes the **KvStoreResultSet** object obtained by [SingleKVStore.getResultSet](#getresultset1). This API uses an asynchronous callback to return the result.
+Closes the **KvStoreResultSet** object obtained by [SingleKVStore.getResultSet](#getresultset). This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -70,15 +68,13 @@ try {
 }
 ```
 
-<a id="closeresultset2"></a>
-
 ## closeResultSet
 
 ```TypeScript
 closeResultSet(resultSet: KvStoreResultSet): Promise<void>
 ```
 
-Closes the **KvStoreResultSet** object obtained by [SingleKVStore.getResultSet](#getresultset1). This API uses a promise to return the result.
+Closes the **KvStoreResultSet** object obtained by [SingleKVStore.getResultSet](#getresultset). This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -117,8 +113,6 @@ try {
     console.error('CloseResultSet e ' + e);
 }
 ```
-
-<a id="get1"></a>
 
 ## get
 
@@ -166,8 +160,6 @@ try {
     console.error("An unexpected error occurred. Error:" + e);
 }
 ```
-
-<a id="get2"></a>
 
 ## get
 
@@ -220,8 +212,6 @@ try {
     console.error("An unexpected error occurred. Error:" + e);
 }
 ```
-
-<a id="getentries1"></a>
 
 ## getEntries
 
@@ -277,8 +267,6 @@ try {
     console.error('PutBatch e ' + e);
 }
 ```
-
-<a id="getentries2"></a>
 
 ## getEntries
 
@@ -347,8 +335,6 @@ try {
 }
 ```
 
-<a id="getentries3"></a>
-
 ## getEntries
 
 ```TypeScript
@@ -371,7 +357,7 @@ Obtains the KV pairs that match the specified **Query** object. This API uses an
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| query | [Query](arkts-arkdata-distributeddata-query-c.md) | Yes | Key prefix to match. |
+| query | [Query](arkts-arkdata-distributeddata-query-c.md) | Yes | **Query** object to match. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Entry](arkts-arkdata-distributeddata-entry-i.md)[]&gt; | Yes | Callback used to return the KV pairs that match the specified **Query** object. |
 
 **Examples**
@@ -408,8 +394,6 @@ try {
     console.error('GetEntries e ' + e);
 }
 ```
-
-<a id="getentries4"></a>
 
 ## getEntries
 
@@ -478,8 +462,6 @@ try {
 }
 ```
 
-<a id="getresultset1"></a>
-
 ## getResultSet
 
 ```TypeScript
@@ -537,8 +519,6 @@ try {
     console.error('GetResultSet e ' + e);
 }
 ```
-
-<a id="getresultset2"></a>
 
 ## getResultSet
 
@@ -609,8 +589,6 @@ try {
 }
 ```
 
-<a id="getresultset3"></a>
-
 ## getResultSet
 
 ```TypeScript
@@ -667,8 +645,6 @@ try {
     console.error('GetResultSet e ' + e);
 }
 ```
-
-<a id="getresultset4"></a>
 
 ## getResultSet
 
@@ -736,8 +712,6 @@ try {
 }
 ```
 
-<a id="getresultsize1"></a>
-
 ## getResultSize
 
 ```TypeScript
@@ -792,8 +766,6 @@ try {
     console.error('GetResultSize e ' + e);
 }
 ```
-
-<a id="getresultsize2"></a>
 
 ## getResultSize
 
@@ -859,8 +831,6 @@ try {
 }
 ```
 
-<a id="getsecuritylevel1"></a>
-
 ## getSecurityLevel
 
 ```TypeScript
@@ -897,8 +867,6 @@ try {
     console.error('GetSecurityLevel e ' + e);
 }
 ```
-
-<a id="getsecuritylevel2"></a>
 
 ## getSecurityLevel
 
@@ -938,8 +906,6 @@ try {
     console.error('GetSecurityLevel e ' + e);
 }
 ```
-
-<a id="off1"></a>
 
 ## off
 
@@ -987,8 +953,6 @@ class KvstoreModel {
 }
 ```
 
-<a id="off2"></a>
-
 ## off
 
 ```TypeScript
@@ -1035,8 +999,6 @@ class KvstoreModel {
 }
 ```
 
-<a id="on1"></a>
-
 ## on
 
 ```TypeScript
@@ -1071,8 +1033,6 @@ kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, fun
     console.info("dataChange callback call data: " + JSON.stringify(data));
 });
 ```
-
-<a id="on2"></a>
 
 ## on
 
@@ -1119,15 +1079,13 @@ try {
 }
 ```
 
-<a id="removedevicedata1"></a>
-
 ## removeDeviceData
 
 ```TypeScript
 removeDeviceData(deviceId: string, callback: AsyncCallback<void>): void
 ```
 
-Deletes data of a device. This API uses an asynchronous callback to return the result.
+Deletes the data of the specified device. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -1172,15 +1130,13 @@ try {
 }
 ```
 
-<a id="removedevicedata2"></a>
-
 ## removeDeviceData
 
 ```TypeScript
 removeDeviceData(deviceId: string): Promise<void>
 ```
 
-Deletes data of a device. This API uses a promise to return the result.
+Deletes the data of the specified device. This API uses a promise to return the result.
 
 **Since:** 8
 
@@ -1232,8 +1188,6 @@ try {
 }
 ```
 
-<a id="setsyncparam1"></a>
-
 ## setSyncParam
 
 ```TypeScript
@@ -1272,8 +1226,6 @@ try {
     console.error('testSingleKvStoreSetSyncParam e ' + e);
 }
 ```
-
-<a id="setsyncparam2"></a>
 
 ## setSyncParam
 
@@ -1327,7 +1279,7 @@ try {
 sync(deviceIds: string[], mode: SyncMode, delayMs?: number): void
 ```
 
-Synchronizes the KV store manually.
+Triggers database synchronization in manual synchronization mode.
 
 **Since:** 7
 

@@ -6,8 +6,6 @@
 import { deviceSettings } from '@kit.MDMKit';
 ```
 
-<a id="uninstallusercertificate1"></a>
-
 ## uninstallUserCertificate
 
 ```TypeScript
@@ -76,8 +74,6 @@ deviceSettings.uninstallUserCertificate(wantTemp, aliasStr, (err) => {
 
 <!--DelEnd-->
 
-
-<a id="uninstallusercertificate2"></a>
 
 ## uninstallUserCertificate
 

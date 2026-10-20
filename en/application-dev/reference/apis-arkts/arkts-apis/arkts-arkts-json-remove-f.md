@@ -28,3 +28,16 @@ Removes a key from an ArkTS object. This API can be used for related operations 
 | --- | --- | --- | --- |
 | obj | object | Yes | ArkTS object. |
 | property | string | Yes | Key to remove. |
+
+**Examples**
+
+```TypeScript
+import { JSON } from '@kit.ArkTS';
+
+const jsonText = '{"name": "John", "age": 30, "city": "ChongQing"}';
+let inputObj = JSON.parse(jsonText);
+JSON.remove(inputObj, "name");
+let result = JSON.has(inputObj, "name");
+console.info("result = " + result);
+// Output: result = false
+```

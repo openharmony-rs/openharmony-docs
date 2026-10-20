@@ -34,7 +34,7 @@ Creates a **QRCode** component. The displayed QR code can be scanned to obtain t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | QR code content string. It supports a maximum of 512 characters. If the limit is exceeded, only the first 512 characters are used.<br>Since API version 20, the Resource type is supported. <br>**Note:** <br>Setting it to null has the same effect as setting it to the string "null"; setting it to undefined has the same effect as setting it to the string "undefined"; passing an empty string generates an invalid QR code. |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | QR code content string. It supports a maximum of 512 characters. If the limit is exceeded, only the first 512 characters are used. <br>Since API version 20, the Resource type is supported. <br>**Note:** <br>Setting it to null has the same effect as setting it to the string "null"; setting it to undefined has the same effect as setting it to the string "undefined"; passing an empty string generates an invalid QR code. |
 
 ## Summary
 

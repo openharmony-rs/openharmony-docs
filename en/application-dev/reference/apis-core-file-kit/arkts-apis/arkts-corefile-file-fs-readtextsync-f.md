@@ -30,7 +30,7 @@ Reads the text content of a file. This API returns the result synchronously.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | filePath | string | Yes | Application sandbox path of the file. |
-| options | [ReadTextOptions](arkts-corefile-file-fs-readtextoptions-i.md) | No | The options are as follows:<br>- **offset** (number): position of the data to read in the file, in bytes. This parameter is optional. By default, data is read from the current position.<br>- **length** (number): length of the data to read, in bytes. This parameter is optional. The default value is the file length.<br>- **encoding** (string): format of the data to be encoded.<br>It is valid only when the data is of the string type. The default value is **'utf-8'**, which is the only value supported.<br>**Since:** 11 |
+| options | [ReadTextOptions](arkts-corefile-file-fs-readtextoptions-i.md) | No | The options are as follows:<br>           - **offset** (number): position of the data to read in the file, in bytes. This parameter is optional.   By default, data is read from the current position.<br>           - **length** (number): length of the data to read, in bytes. This parameter is optional. The default value is   the file length.<br>           - **encoding** (string): format of the data to be encoded.<br>It is valid only when the data is   of the string type. The default value is **'utf-8'**, which is the only value supported.<br>**Since:** 11 |
 
 **Return value:**
 

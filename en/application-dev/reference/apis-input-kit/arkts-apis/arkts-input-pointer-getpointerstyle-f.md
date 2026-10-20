@@ -6,8 +6,6 @@
 import { pointer } from '@kit.InputKit';
 ```
 
-<a id="getpointerstyle1"></a>
-
 ## getPointerStyle
 
 ```TypeScript
@@ -79,8 +77,6 @@ struct Index {
 }
 ```
 
-
-<a id="getpointerstyle2"></a>
 
 ## getPointerStyle
 

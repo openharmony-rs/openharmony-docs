@@ -6,8 +6,6 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
-<a id="getnetcapabilities1"></a>
-
 ## getNetCapabilities
 
 ```TypeScript
@@ -66,8 +64,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-
-<a id="getnetcapabilities2"></a>
 
 ## getNetCapabilities
 

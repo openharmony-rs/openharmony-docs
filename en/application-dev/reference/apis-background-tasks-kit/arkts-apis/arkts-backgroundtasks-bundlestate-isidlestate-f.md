@@ -6,8 +6,6 @@
 import { bundleState } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="isidlestate1"></a>
-
 ## isIdleState
 
 ```TypeScript
@@ -46,8 +44,6 @@ bundleState.isIdleState("com.ohos.camera", (err: BusinessError, res: boolean) =>
 });
 ```
 
-
-<a id="isidlestate2"></a>
 
 ## isIdleState
 

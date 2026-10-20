@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="construct1"></a>
-
 ## construct
 
 ```TypeScript
@@ -29,8 +27,6 @@ Constructs the target with the elements of specified array as the arguments and 
 | argumentsList | Readonly&lt;A&gt; | Yes |  |
 | newTarget | new (...args: any) =&gt; any | No |  |
 
-
-<a id="construct2"></a>
 
 ## construct
 

@@ -4,7 +4,7 @@
 interface ManualExposureQuery
 ```
 
-Provides APIs to obtain the manual exposure range supported.
+提供了获取支持的手动曝光范围的方法。
 
 **起始版本：** 24
 
@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 getSupportedExposureRange(): Array<number>
 ```
 
-Obtains the supported manual exposure durations.
+获取支持的手动曝光时长列表。
 
 **起始版本：** 11
 
@@ -38,7 +38,7 @@ Obtains the supported manual exposure durations.
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;number&gt; | Array of manual exposure durations supported, in ms. |
+| Array&lt;number&gt; | 支持的手动曝光时长数组，单位为ms。 |
 
 **错误码：**
 

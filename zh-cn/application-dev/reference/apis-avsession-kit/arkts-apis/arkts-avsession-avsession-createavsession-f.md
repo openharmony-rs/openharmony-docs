@@ -6,8 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="createavsession1"></a>
-
 ## createAVSession
 
 ```TypeScript
@@ -79,8 +77,6 @@ struct Index {
 }
 ```
 
-
-<a id="createavsession2"></a>
 
 ## createAVSession
 

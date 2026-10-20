@@ -139,7 +139,7 @@ This API does not work when the text is being dragged.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | No | Range of the text to delete, including the start position and end position of the text to delete.<br>The start position must be less than or equal to the end position; otherwise, the API call is invalid. A start position less than 0 is treated as 0, and an end position greater than the text length is treated as the text length. <br>If the deletion range is not specified, all text is deleted by default. If the start position of the text to delete is not specified, deletion starts from subscript 0 by default; if the end position of the text to delete is not specified, the end of the text is used as the deletion end point by default. |
+| range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | No | Range of the text to delete, including the start position and end position of the text to delete. <br>The start position must be less than or equal to the end position; otherwise, the API call is invalid. A start position less than 0 is treated as 0, and an end position greater than the text length is treated as the text length. <br>If the deletion range is not specified, all text is deleted by default. If the start position of the text to delete is not specified, deletion starts from subscript 0 by default; if the end position of the text to delete is not specified, the end of the text is used as the deletion end point by default. |
 
 ## getCaretOffset
 
@@ -175,7 +175,7 @@ Obtains the position information of the caret.
 
 | Type | Description |
 | --- | --- |
-| [CaretOffset](arkts-arkui-common-comp-caretoffset-i.md) | Position of the caret relative to the text box.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned. |
+| [CaretOffset](arkts-arkui-common-comp-caretoffset-i.md) | Position of the caret relative to the text box. <br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned. |
 
 ## getSelection
 
@@ -199,7 +199,7 @@ Obtains the current text selection range.
 
 | Type | Description |
 | --- | --- |
-| [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | Current text selection range, or cursor position if no text is selected.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned. |
+| [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | Current text selection range, or cursor position if no text is selected. <br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned. |
 
 ## getTextContentLineCount
 
@@ -223,7 +223,7 @@ Obtains the number of lines of the edited text.
 
 | Type | Description |
 | --- | --- |
-| number | Number of lines of the edited text.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned. |
+| number | Number of lines of the edited text. <br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned. |
 
 ## getTextContentRect
 
@@ -247,7 +247,7 @@ Obtains the position of the edited text area relative to the component and its s
 
 | Type | Description |
 | --- | --- |
-| [RectResult](arkts-arkui-common-comp-rectresult-i.md) | Position of the edited text area relative to the component and its size.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned. |
+| [RectResult](arkts-arkui-common-comp-rectresult-i.md) | Position of the edited text area relative to the component and its size. <br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned. |
 
 ## scrollToVisible
 
@@ -276,7 +276,7 @@ Passes the start and end indexes to the bound text box components (**TextInput**
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | No | Text range to be scrolled to the visible area, including the start and end positions of the text.<br>The start position must be less than or equal to the end position. Otherwise, the API call is invalid. If the start position is less than 0, it is treated as the value **0**. If the end position is greater than the length of the entire text, it is treated as the length of the entire text. <br>If no range is specified, the entire text is used by default. If the start position is not specified, the default start position is 0. If the end position is not specified, the default end position is the length of the entire text. |
+| range | [TextRange](../arkts-apis/arkts-arkui-textrange-i.md) | No | Text range to be scrolled to the visible area, including the start and end positions of the text. <br>The start position must be less than or equal to the end position. Otherwise, the API call is invalid. If the start position is less than 0, it is treated as the value **0**. If the end position is greater than the length of the entire text, it is treated as the length of the entire text. <br>If no range is specified, the entire text is used by default. If the start position is not specified, the default start position is 0. If the end position is not specified, the default end position is the length of the entire text. |
 
 ## setStyledPlaceholder
 
@@ -305,4 +305,4 @@ Sets the placeholder text with the styled string, triggering binding or update.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| styledString | [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | Yes | Sets the placeholder of the styled string. Its priority is higher than that of the plain text placeholder attribute.<br>The placeholder does not support styled string events, gestures, or hyperlink jumps. |
+| styledString | [StyledString](../arkts-apis/arkts-arkui-styledstring-c.md) | Yes | Sets the placeholder of the styled string. Its priority is higher than that of the plain text placeholder attribute. <br>The placeholder does not support styled string events, gestures, or hyperlink jumps. |

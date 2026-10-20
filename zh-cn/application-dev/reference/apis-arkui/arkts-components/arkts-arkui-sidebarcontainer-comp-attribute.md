@@ -86,8 +86,6 @@ divider(value: DividerStyle | null)
 | --- | --- | --- | --- |
 | value | [DividerStyle](arkts-arkui-sidebarcontainer-comp-dividerstyle-i.md) &#124; null | 是 | 分割线的样式。<br>默认为DividerStyle：显示分割线。<br>- null或undefined：行为不做处理，分割线样式保持默认值，不做任何改变。<br>**说明：** <br>API version 11及以下版本，null效果为不显示分割线。 |
 
-<a id="maxsidebarwidth1"></a>
-
 ## maxSideBarWidth
 
 ```TypeScript
@@ -112,15 +110,13 @@ maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时
 | --- | --- | --- | --- |
 | value | number | 是 | 侧边栏最大宽度。<br>默认值：280vp<br>单位：vp<br>取值范围：[0, +∞)<br>异常值时取默认值。<br>值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。 |
 
-<a id="maxsidebarwidth2"></a>
-
 ## maxSideBarWidth
 
 ```TypeScript
 maxSideBarWidth(value: Length)
 ```
 
-设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。与[maxSideBarWidth](#maxsidebarwidth1)相比，value参数新增了对百分比字符串和其他像素单位的支持。
+设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。与[maxSideBarWidth](#maxsidebarwidth)相比，value参数新增了对百分比字符串和其他像素单位的支持。
 
 maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时默认值优先级高于侧边栏子组件maxWidth。
 
@@ -154,10 +150,10 @@ Embed场景下，增大组件尺寸时仅增大内容区的尺寸。
 
 当缩小侧边栏的尺寸至minSideBarWidth后，继续缩小组件尺寸时，
 
-- 如果[autoHide](#autohide)属性为false，则会保持侧边栏宽度[minSideBarWidth](#minsidebarwidth1)和内容区宽度minContentWidth不变，但内容区会被截断显示；  
+- 如果[autoHide](#autohide)属性为false，则会保持侧边栏宽度[minSideBarWidth](#minsidebarwidth)和内容区宽度minContentWidth不变，但内容区会被截断显示；  
 - 如果autoHide属性为true，则会优先隐藏侧边栏，然后继续缩小至内容区宽度minContentWidth后，内容区宽度保持不变，但内容区会被截断显示。
 
-minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth1)与sideBarWidth属性，minContentWidth未设置时默认值优先级低于设置的minSideBarWidth与maxSideBarWidth属性。
+minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBarWidth属性，minContentWidth未设置时默认值优先级低于设置的minSideBarWidth与maxSideBarWidth属性。
 
 **起始版本：** 10
 
@@ -174,8 +170,6 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth1)与sideB
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | 是 | SideBarContainer组件内容区可显示的最小宽度。<br>默认值：360vp<br>取值范围：[0, +∞)<br>设置为小于0时按默认值处理。 |
-
-<a id="minsidebarwidth1"></a>
 
 ## minSideBarWidth
 
@@ -201,15 +195,13 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 | --- | --- | --- | --- |
 | value | number | 是 | 侧边栏最小宽度。<br>。<br>单位为：vp。取值范围：[0, +∞)。默认值：API version 9及以下版本默认值为200vp，API version 10及以上版本的默认值为240vp。 |
 
-<a id="minsidebarwidth2"></a>
-
 ## minSideBarWidth
 
 ```TypeScript
 minSideBarWidth(value: Length)
 ```
 
-设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。与[minSideBarWidth](#minsidebarwidth1)相比，value参数新增了对百分比字符串和其他像素单位的支持。
+设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。与[minSideBarWidth](#minsidebarwidth)相比，value参数新增了对百分比字符串和其他像素单位的支持。
 
 minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时默认值优先级高于侧边栏子组件minWidth。
 
@@ -365,8 +357,6 @@ sideBarPosition(value: SideBarPosition)
 | --- | --- | --- | --- |
 | value | [SideBarPosition](arkts-arkui-sidebarcontainer-comp-sidebarposition-e.md) | 是 | 侧边栏显示位置。<br>默认值：SideBarPosition.Start |
 
-<a id="sidebarwidth1"></a>
-
 ## sideBarWidth
 
 ```TypeScript
@@ -390,8 +380,6 @@ sideBarWidth(value: number)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | number | 是 | 侧边栏的宽度。<br>默认值：240vp<br>单位：vp<br>取值范围：[0, +∞)<br>异常值时取默认值。<br>**说明：** <br>API version 10以下版本的默认值为200vp，API version 10及以上版本的默认值为240vp。 |
-
-<a id="sidebarwidth2"></a>
 
 ## sideBarWidth
 

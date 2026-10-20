@@ -114,7 +114,7 @@ Obtains the UID of the remote process.
 
 | Type | Description |
 | --- | --- |
-| number | Return the UID of the [RemoteProxy](arkts-ipc-rpc-remoteproxy-c.md) object. |
+| number | UID of the remote process obtained. |
 
 **Examples**
 
@@ -313,8 +313,6 @@ class TestRemoteObject extends rpc.RemoteObject {
 let testRemoteObject = new TestRemoteObject("testObject");
 ```
 
-<a id="onremotemessagerequest1"></a>
-
 ## onRemoteMessageRequest
 
 ```TypeScript
@@ -357,7 +355,7 @@ Called to return a response to **sendMessageRequest()**. The server processes th
 
 | Type | Description |
 | --- | --- |
-| boolean &#124; Promise&lt;boolean&gt; | If the request is processed synchronously in **onRemoteMessageRequest**, a Boolean value is returned. The value **true** means that the operation is successful, and **false** means the opposite.<br>- If the request is processed asynchronously in **onRemoteMessageRequest**, a promise object is returned. The value **true** means that the operation is successful, and **false** means the opposite. |
+| boolean &#124; Promise&lt;boolean&gt; | If the request is processed synchronously in **onRemoteMessageRequest**, a Boolean value is returned. The value **true** means that the operation is successful, and **false** means the opposite. <br>- If the request is processed asynchronously in **onRemoteMessageRequest**, a promise object is returned. The value **true** means that the operation is successful, and **false** means the opposite. |
 
 **Examples**
 
@@ -443,8 +441,6 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
-<a id="onremotemessagerequest2"></a>
-
 ## onRemoteMessageRequest
 
 ```TypeScript
@@ -489,7 +485,7 @@ Provides a response to **sendMessageRequest()**. The server processes the reques
 
 | Type | Description |
 | --- | --- |
-| boolean &#124; Promise&lt;boolean&gt; | If the request is processed synchronously in **onRemoteMessageRequest**, a Boolean value is returned. The value **true** means that the operation is successful, and **false** means the opposite.<br>- If the request is processed asynchronously in **onRemoteMessageRequest**, a promise object is returned. The value **true** means that the operation is successful, and **false** means the opposite. |
+| boolean &#124; Promise&lt;boolean&gt; | If the request is processed synchronously in **onRemoteMessageRequest**, a Boolean value is returned. The value **true** means that the operation is successful, and **false** means the opposite. <br>- If the request is processed asynchronously in **onRemoteMessageRequest**, a promise object is returned. The value **true** means that the operation is successful, and **false** means the opposite. |
 
 **Examples**
 
@@ -578,8 +574,6 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
-<a id="sendmessagerequest1"></a>
-
 ## sendMessageRequest
 
 ```TypeScript
@@ -665,8 +659,6 @@ try {
   hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error: ' + error);
 }
 ```
-
-<a id="sendmessagerequest2"></a>
 
 ## sendMessageRequest
 
@@ -962,8 +954,6 @@ try {
 }
 ```
 
-<a id="sendrequest1"></a>
-
 ## sendRequest
 
 ```TypeScript
@@ -1032,8 +1022,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
 ```
-
-<a id="sendrequest2"></a>
 
 ## sendRequest
 
@@ -1118,8 +1106,6 @@ try {
   hilog.error(0x0000, 'testTag', 'error: ' + error);
 }
 ```
-
-<a id="sendrequest3"></a>
 
 ## sendRequest
 

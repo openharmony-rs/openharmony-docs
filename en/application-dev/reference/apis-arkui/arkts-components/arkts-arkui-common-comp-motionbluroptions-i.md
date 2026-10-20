@@ -18,7 +18,7 @@ Defines motion blur options.
 anchor: MotionBlurAnchor
 ```
 
-Anchor point coordinates of the motion blur. They must be consistent with the anchor point (centerX/centerY) of the animation [scale](arkts-arkui-common-comp-commonmethod-c.md#scale1) attribute; otherwise, unexpected effects may occur.
+Anchor point coordinates of the motion blur. They must be consistent with the anchor point (centerX/centerY) of the animation [scale](arkts-arkui-common-comp-commonmethod-c.md#scale) attribute; otherwise, unexpected effects may occur.
 
 **Type:** [MotionBlurAnchor](arkts-arkui-common-comp-motionbluranchor-i.md)
 

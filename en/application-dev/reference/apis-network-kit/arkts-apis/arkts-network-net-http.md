@@ -21,7 +21,7 @@ import { http } from '@kit.NetworkKit';
 | Name | Description |
 | --- | --- |
 | [createHttp](arkts-network-http-createhttp-f.md#createhttp) | Creates an HTTP request. You can use this API to initiate or destroy an HTTP request, or enable or disable listening for HTTP Response Header events. To initiate multiple HTTP requests, you must create an **HttpRequest** object for each HTTP request. An **HttpRequest** object corresponds to an HTTP request. |
-| [createHttpResponseCache](arkts-network-http-createhttpresponsecache-f.md#createhttpresponsecache) | Creates an **HttpResponseCache** object that stores the response data of HTTP requests. You can call [flush](arkts-network-http-httpresponsecache-i.md#flush1) and [delete](arkts-network-http-httpresponsecache-i.md#delete1) in the object. |
+| [createHttpResponseCache](arkts-network-http-createhttpresponsecache-f.md#createhttpresponsecache) | Creates an **HttpResponseCache** object that stores the response data of HTTP requests. You can call [flush](arkts-network-http-httpresponsecache-i.md#flush) and [delete](arkts-network-http-httpresponsecache-i.md#delete) in the object. |
 
 ### Classes
 

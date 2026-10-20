@@ -6,7 +6,7 @@ interface Screen
 
 Defines the [physical screen](../../../displaymanager/display-terminology.md#physical-screen) instance.
 
-Before calling any API in Screen, you must use [getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens1) or [createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md#createvirtualscreen1) to obtain a Screen instance.
+Before calling any API in Screen, you must use [getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens) or [createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md#createvirtualscreen) to obtain a Screen instance.
 
 **Since:** 9
 
@@ -21,8 +21,6 @@ Before calling any API in Screen, you must use [getAllScreens()](arkts-arkui-scr
 ```TypeScript
 import { screen } from '@kit.ArkUI';
 ```
-
-<a id="setdensitydpi1"></a>
 
 ## setDensityDpi
 
@@ -52,7 +50,7 @@ Sets the pixel density of the screen. This API uses an asynchronous callback to 
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
 <!--Del-->
@@ -100,8 +98,6 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 <!--DelEnd-->
 
-<a id="setdensitydpi2"></a>
-
 ## setDensityDpi
 
 ```TypeScript
@@ -135,7 +131,7 @@ Sets the pixel density of the screen. This API uses a promise to return the resu
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
 <!--Del-->
@@ -180,8 +176,6 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 <!--DelEnd-->
 
-<a id="setorientation1"></a>
-
 ## setOrientation
 
 ```TypeScript
@@ -210,7 +204,7 @@ Sets the screen orientation. This API uses an asynchronous callback to return th
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
 <!--Del-->
@@ -257,8 +251,6 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 <!--DelEnd-->
 
-<a id="setorientation2"></a>
-
 ## setOrientation
 
 ```TypeScript
@@ -292,7 +284,7 @@ Sets the screen orientation. This API uses a promise to return the result. The s
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
 <!--Del-->
@@ -336,8 +328,6 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 ```
 
 <!--DelEnd-->
-
-<a id="setorientation3"></a>
 
 ## setOrientation
 
@@ -410,8 +400,6 @@ screensPromise.then((data: Array<screen.Screen>) => {
 
 <!--DelEnd-->
 
-<a id="setscreenactivemode1"></a>
-
 ## setScreenActiveMode
 
 ```TypeScript
@@ -440,7 +428,7 @@ Sets the active mode of the screen. This API uses an asynchronous callback to re
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
 <!--Del-->
@@ -488,8 +476,6 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 <!--DelEnd-->
 
-<a id="setscreenactivemode2"></a>
-
 ## setScreenActiveMode
 
 ```TypeScript
@@ -523,7 +509,7 @@ Sets the active mode of the screen. This API uses a promise to return the result
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
 <!--Del-->

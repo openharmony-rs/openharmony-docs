@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="cancel1"></a>
-
 ## cancel
 
 ```TypeScript
@@ -28,9 +26,9 @@ Compared with notificationManager.cancel(id, label, callback), which includes th
 
 **See also:**
 
-[publish](arkts-notification-notificationmanager-publish-f.md#publish1) publishes a notification.
+[publish](arkts-notification-notificationmanager-publish-f.md#publish) publishes a notification.
 
-[cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelall1) cancels all notifications of this application.
+[cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelall) cancels all notifications of this application.
 
 [cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md) cancels notifications under a notification group of this application.
 
@@ -68,8 +66,6 @@ notificationManager.cancel(0, cancelCallback);
 ```
 
 
-<a id="cancel2"></a>
-
 ## cancel
 
 ```TypeScript
@@ -90,9 +86,9 @@ Compared with notificationManager.cancel(id, callback), which requires only the 
 
 **See also:**
 
-[publish](arkts-notification-notificationmanager-publish-f.md#publish1) publishes a notification.
+[publish](arkts-notification-notificationmanager-publish-f.md#publish) publishes a notification.
 
-[cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelall1) cancels all notifications of this application.
+[cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelall) cancels all notifications of this application.
 
 [cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md) cancels notifications under a notification group of this application.
 
@@ -131,8 +127,6 @@ notificationManager.cancel(0, 'label', cancelCallback);
 ```
 
 
-<a id="cancel3"></a>
-
 ## cancel
 
 ```TypeScript
@@ -151,11 +145,11 @@ After cancellation, the corresponding notification will be removed from the noti
 
 **See also:**
 
-[publish](arkts-notification-notificationmanager-publish-f.md#publish1) publishes a notification.
+[publish](arkts-notification-notificationmanager-publish-f.md#publish) publishes a notification.
 
 [cancelAll](arkts-notification-notificationmanager-cancelall-f.md) cancels all notifications of this application.
 
-[cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md#cancelgroup2) cancels notifications under a notification group of this application.
+[cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md#cancelgroup) cancels notifications under a notification group of this application.
 
 **Parameters:**
 

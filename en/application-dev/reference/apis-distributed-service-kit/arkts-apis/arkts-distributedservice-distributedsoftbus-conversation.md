@@ -4,6 +4,8 @@ The DSoftBus module **conversation** provides APIs for cross-device interaction 
 
 **Since:** 26.0.1
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace conversation--><!--Device-unnamed-declare namespace conversation-End-->
 
 **System capability:** SystemCapability.Communication.SoftBus.Core

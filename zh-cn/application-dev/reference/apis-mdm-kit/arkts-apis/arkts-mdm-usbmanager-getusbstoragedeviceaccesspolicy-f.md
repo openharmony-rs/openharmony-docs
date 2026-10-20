@@ -6,8 +6,6 @@
 import { usbManager } from '@kit.MDMKit';
 ```
 
-<a id="getusbstoragedeviceaccesspolicy1"></a>
-
 ## getUsbStorageDeviceAccessPolicy
 
 ```TypeScript
@@ -69,8 +67,6 @@ try {
 }
 ```
 
-
-<a id="getusbstoragedeviceaccesspolicy2"></a>
 
 ## getUsbStorageDeviceAccessPolicy
 

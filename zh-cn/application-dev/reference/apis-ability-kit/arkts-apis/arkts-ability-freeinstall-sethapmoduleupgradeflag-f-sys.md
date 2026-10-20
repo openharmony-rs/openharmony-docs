@@ -6,8 +6,6 @@
 import { freeInstall } from '@kit.AbilityKit';
 ```
 
-<a id="sethapmoduleupgradeflag1"></a>
-
 ## setHapModuleUpgradeFlag
 
 ```TypeScript
@@ -47,8 +45,6 @@ function setHapModuleUpgradeFlag(bundleName: string,
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module name is not found. |
 
-
-<a id="sethapmoduleupgradeflag2"></a>
 
 ## setHapModuleUpgradeFlag
 

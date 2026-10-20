@@ -6,8 +6,6 @@ declare interface LayoutChild
 
 Provides the child component layout information.
 
-@interface LayoutChild
-
 **Since:** 9
 
 **Deprecated since:** 10
@@ -24,7 +22,7 @@ Provides the child component layout information.
 layout(childLayoutInfo: LayoutInfo)
 ```
 
-Call this layout method in onLayout callback to assign layout info to sub component.
+Applies the specified layout constraints to the child component.
 
 **Since:** 9
 
@@ -42,7 +40,7 @@ Call this layout method in onLayout callback to assign layout info to sub compon
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| childLayoutInfo | [LayoutInfo](arkts-arkui-common-comp-layoutinfo-i.md) | Yes |  |
+| childLayoutInfo | [LayoutInfo](arkts-arkui-common-comp-layoutinfo-i.md) | Yes | Layout information of the child component, including **position** (position coordinates) and **constraint** (constraint size). The position is used to set the **position** of the child component, and the constraint is used to pass **constraint** information to the child component. |
 
 ## measure
 
@@ -50,7 +48,7 @@ Call this layout method in onLayout callback to assign layout info to sub compon
 measure(childConstraint: ConstraintSizeOptions)
 ```
 
-Call this measure method in onMeasure callback to supply sub component size.
+Applies specified size constraints to child components.
 
 **Since:** 9
 
@@ -68,7 +66,7 @@ Call this measure method in onMeasure callback to supply sub component size.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| childConstraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | Yes |  |
+| childConstraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | Yes | Constraint information about the size range of the child component, including constraint conditions such as **minWidth**, **maxWidth**, **minHeight**, and **maxHeight**. Unit: vp. |
 
 ## borderInfo
 
@@ -76,7 +74,7 @@ Call this measure method in onMeasure callback to supply sub component size.
 borderInfo: LayoutBorderInfo
 ```
 
-Sub component border info.
+Provides the border information of the child component.
 
 **Type:** [LayoutBorderInfo](arkts-arkui-common-comp-layoutborderinfo-i.md)
 
@@ -98,7 +96,7 @@ Sub component border info.
 constraint: ConstraintSizeOptions
 ```
 
-Sub component constraint.
+Constraint size of the child component. Value principle: **minWidth** ≤ **maxWidth**, **minHeight** ≤ **maxHeight**. Unit: vp.
 
 **Type:** [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md)
 
@@ -120,7 +118,7 @@ Sub component constraint.
 id: string
 ```
 
-Sub component id.
+ID of the child component.
 
 **Type:** string
 
@@ -142,7 +140,7 @@ Sub component id.
 name: string
 ```
 
-Sub component name.
+Name of the child component.
 
 **Type:** string
 
@@ -164,7 +162,7 @@ Sub component name.
 position: Position
 ```
 
-Sub component position.
+Position coordinates of the child component. Unit: vp.
 
 **Type:** Position
 

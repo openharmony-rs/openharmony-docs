@@ -6,8 +6,6 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
-<a id="cansetcalltransfertime1"></a>
-
 ## canSetCallTransferTime
 
 ```TypeScript
@@ -30,7 +28,7 @@ Checks whether the call forwarding time can be set. This API uses an asynchronou
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2. |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value **true** indicates that the call forwarding time can be set, and the value **false** indicates the opposite. |
 
 **Error codes:**
@@ -64,8 +62,6 @@ call.canSetCallTransferTime(slotId, (err: BusinessError, data: boolean) => {
 <!--DelEnd-->
 
 
-<a id="cansetcalltransfertime2"></a>
-
 ## canSetCallTransferTime
 
 ```TypeScript
@@ -88,7 +84,7 @@ Checks whether the call forwarding time can be set. This API uses a promise to r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2. |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2. |
 
 **Return value:**
 

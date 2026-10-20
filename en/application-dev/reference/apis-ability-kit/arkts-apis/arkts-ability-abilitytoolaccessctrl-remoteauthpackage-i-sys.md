@@ -17,6 +17,7 @@ Remote authorization package.
 ## Modules to Import
 
 ```TypeScript
+import { abilityToolAccessCtrl } from '@kit.AbilityKit';
 ```
 
 ## challenge

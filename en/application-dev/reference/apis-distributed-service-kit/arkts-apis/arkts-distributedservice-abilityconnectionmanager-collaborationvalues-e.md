@@ -4,7 +4,7 @@
 export enum CollaborationValues
 ```
 
-Enumerates application collaboration key values.
+Enumerates application collaboration-related values.
 
 **Since:** 18
 

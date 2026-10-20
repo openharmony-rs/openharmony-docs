@@ -6,8 +6,6 @@ interface FormProviderFilter
 
 Information about a running form.
 
-@typedef FormProviderFilter
-
 **起始版本：** 10
 
 <!--Device-formInfo-interface FormProviderFilter--><!--Device-formInfo-interface FormProviderFilter-End-->

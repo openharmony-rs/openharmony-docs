@@ -4,7 +4,7 @@
 declare type AccessibilityFocusCallback = (isFocus: boolean) => void
 ```
 
-Defines the callback type used in accessibility focus. The value of isFocus indicates whether the current component is focused
+Defines the callback type used in **onAccessibilityFocus**.
 
 **Since:** 18
 
@@ -22,4 +22,4 @@ Defines the callback type used in accessibility focus. The value of isFocus indi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isFocus | boolean | Yes | if component is focused,isFocus will be true. else isFocus is false. |
+| isFocus | boolean | Yes | Whether the component has focus.<br>true: the current component has focus.<br>false: the current component is blurred. |

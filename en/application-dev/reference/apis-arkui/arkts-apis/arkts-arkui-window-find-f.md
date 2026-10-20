@@ -6,8 +6,6 @@
 import { window } from '@kit.ArkUI';
 ```
 
-<a id="find1"></a>
-
 ## find
 
 ```TypeScript
@@ -50,8 +48,6 @@ window.find('test', (err: BusinessError, data) => {
 });
 ```
 
-
-<a id="find2"></a>
 
 ## find
 

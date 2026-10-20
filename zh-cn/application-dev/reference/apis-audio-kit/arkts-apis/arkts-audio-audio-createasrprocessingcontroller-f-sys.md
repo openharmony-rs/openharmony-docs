@@ -6,8 +6,6 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="createasrprocessingcontroller1"></a>
-
 ## createAsrProcessingController
 
 ```TypeScript
@@ -82,8 +80,6 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 <!--DelEnd-->
 
-
-<a id="createasrprocessingcontroller2"></a>
 
 ## createAsrProcessingController
 

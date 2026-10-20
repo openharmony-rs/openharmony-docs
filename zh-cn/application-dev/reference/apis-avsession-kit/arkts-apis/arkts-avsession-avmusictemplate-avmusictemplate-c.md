@@ -80,6 +80,36 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 
+## offCustomCommand
+
+```TypeScript
+offCustomCommand(callback?: CustomCommandEvent): void
+```
+
+取消注册自定义命令回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AVMusicTemplate-offCustomCommand(callback?: CustomCommandEvent): void--><!--Device-AVMusicTemplate-offCustomCommand(callback?: CustomCommandEvent): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [CustomCommandEvent](arkts-avsession-avmusictemplate-customcommandevent-t.md) | 否 | 用于处理（'sendCustomCommand'）事件的回调。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.function offCustomCommand can not work correctly due to limited device capabilities. |
+| [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
+| [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
+
 ## offDownloadMediaEntity
 
 ```TypeScript
@@ -797,6 +827,36 @@ onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.function onClearSearchHistory can not work correctly due to limited device capabilities. |
+| [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
+| [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
+
+## onCustomCommand
+
+```TypeScript
+onCustomCommand(callback: CustomCommandEvent): void
+```
+
+注册自定义命令回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AVMusicTemplate-onCustomCommand(callback: CustomCommandEvent): void--><!--Device-AVMusicTemplate-onCustomCommand(callback: CustomCommandEvent): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVMusicTemplate
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [CustomCommandEvent](arkts-avsession-avmusictemplate-customcommandevent-t.md) | 是 | 用于处理（'sendCustomCommand'）事件的回调。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.function onCustomCommand can not work correctly due to limited device capabilities. |
 | [35000005](../errorcode-avmusictemplate.md#35000005-音频模板不存在) | AVMusicTemplate does not exist. |
 | [35000012](../errorcode-avmusictemplate.md#35000012-音频模板错误) | AVMusicTemplate error. |
 

@@ -30,7 +30,7 @@ Delete a printer from cups.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| printerName | string | Yes | Indicates the printer name.<br>Printer name to be deleted. |
+| printerName | string | Yes | Indicates the printer name. <br>Printer name to be deleted. |
 
 **Return value:**
 

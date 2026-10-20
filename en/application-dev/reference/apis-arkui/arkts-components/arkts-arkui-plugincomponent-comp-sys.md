@@ -30,16 +30,20 @@ Creates a **PluginComponent** to display the UI provided by an external applicat
 
 ## Summary
 
-### Interfaces
+<!--Del-->
+### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
 | [PluginComponentOptions](arkts-arkui-plugincomponent-comp-plugincomponentoptions-i-sys.md) | Defines options for constructing a **PluginComponent**. |
 | [PluginComponentTemplate](arkts-arkui-plugincomponent-comp-plugincomponenttemplate-i-sys.md) | Defines the plugin component template information, which is used to bind to the component defined by the provider. |
 | [PluginErrorData](arkts-arkui-plugincomponent-comp-pluginerrordata-i-sys.md) | Data provided when the error occurs. |
+<!--DelEnd-->
 
-### Types
+<!--Del-->
+### Types(System API)
 
 | Name | Description |
 | --- | --- |
 | [PluginErrorCallback](arkts-arkui-plugincomponent-comp-pluginerrorcallback-t-sys.md) | Callback invoked when an error occurs. |
+<!--DelEnd-->

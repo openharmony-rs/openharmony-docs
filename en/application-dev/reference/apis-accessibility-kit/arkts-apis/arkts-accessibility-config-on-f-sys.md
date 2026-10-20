@@ -30,7 +30,7 @@ This API must be used together with [config.off('enabledAccessibilityExtensionLi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'enabledAccessibilityExtensionListChange' | Yes | The parameter is fixed to 'enabledAccessibilityExtensionListChange', which specifies the event type for listening to the list change ofenabled accessibility extensions. |
+| type | 'enabledAccessibilityExtensionListChange' | Yes | The parameter is fixed to 'enabledAccessibilityExtensionListChange', which specifies the event type for listening to the list change of enabled accessibility extensions. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Callback invoked when the list of enabled accessibility extension abilities changes. |
 
 **Error codes:**
@@ -47,8 +47,8 @@ This API must be used together with [config.off('enabledAccessibilityExtensionLi
 ```TypeScript
 import { config } from '@kit.AccessibilityKit';
 
-config.on('enabledAccessibilityExtensionListChange', () => {
-  console.info('subscribe enabled accessibility extension list change state success');
+config.highContrastText.on((data: boolean) => {
+  console.info(`subscribe highContrastText success, result: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -93,12 +93,6 @@ This API must be used together with [config.off('installedAccessibilityListChang
 <!--Del-->
 **Examples**
 
-```TypeScript
-import { config } from '@kit.AccessibilityKit';
-
-config.on('installedAccessibilityListChange', () => {
-  console.info('subscribe installed accessibility extension list change state success');
-});
-```
+See on
 
 <!--DelEnd-->

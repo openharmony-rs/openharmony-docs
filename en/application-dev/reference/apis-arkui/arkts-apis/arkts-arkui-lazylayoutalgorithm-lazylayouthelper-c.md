@@ -58,7 +58,7 @@ Obtains the end position of the visible area. It can be used together with [getV
 
 | Type | Description |
 | --- | --- |
-| number | End position of the visible area.<br>The unit is px. |
+| number | End position of the visible area. <br>The unit is px. |
 
 ## getViewStart
 
@@ -82,7 +82,7 @@ Obtains the start position of the visible area. It can be used together with [ge
 
 | Type | Description |
 | --- | --- |
-| number | Start position of the visible area.<br>The unit is px. |
+| number | Start position of the visible area. <br>The unit is px. |
 
 ## setAdjustedOffset
 
@@ -110,7 +110,7 @@ Take the vertical layout as an example. When the layout direction is **LazyLayou
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| offset | number | Yes | Adjusted offset. A positive value indicates that the position is adjusted towards the end of the content, and a negative value indicates that the position is adjusted towards the start of the content. The unit is px.<br>The value should be an integer. |
+| offset | number | Yes | Adjusted offset. A positive value indicates that the position is adjusted towards the end of the content, and a negative value indicates that the position is adjusted towards the start of the content. The unit is px. <br>The value should be an integer. |
 
 ## setChildrenInactive
 

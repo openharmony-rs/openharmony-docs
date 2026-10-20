@@ -42,7 +42,7 @@ Calls a method of an object registered with the host thread. This API is called 
 | --- | --- | --- | --- |
 | instanceName | string | Yes | Key used for registration. It is used to search for the object in the host thread. |
 | methodName | string | Yes | Name of the method to call. Note that the method cannot be modified by async or generator, or return results asynchronously by using the asynchronous mechanism at the bottom layer. Otherwise, an exception is thrown. |
-| timeout | number | Yes | Maximum duration that the current synchronous invoking waits, in ms. The value is an integer ranging from 1 to 5000. The value 0 means that the 5000 ms duration is used. The value should be an integer.<br>Unit:ms. |
+| timeout | number | Yes | Maximum duration that the current synchronous invoking waits, in ms. The value is an integer ranging from 1 to 5000. The value 0 means that the 5000 ms duration is used. The value should be an integer. <br>Unit:ms. |
 | args | Object[] | Yes | the method argument called on registered globalCallObject. |
 
 **Return value:**
@@ -212,8 +212,6 @@ Called when the Worker thread receives a message that cannot be deserialized. Th
 | [10200004](../errorcode-utils.md#10200004-worker-instance-is-not-running) | The Worker instance is not running. |
 | [10200005](../errorcode-utils.md#10200005-api-not-supported-in-the-worker-thread) | The called API is not supported in the worker thread. |
 
-<a id="postmessage1"></a>
-
 ## postMessage
 
 ```TypeScript
@@ -267,8 +265,6 @@ workerPort.onmessage = (e: MessageEvents): void => {
     workerPort.postMessage(buffer, [buffer]);
 }
 ```
-
-<a id="postmessage2"></a>
 
 ## postMessage
 

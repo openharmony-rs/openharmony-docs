@@ -6,8 +6,6 @@ export declare interface LifecycleForm
 
 interface of form lifecycle.
 
-@interface LifecycleForm
-
 **Since:** 7
 
 <!--Device-unnamed-export declare interface LifecycleForm--><!--Device-unnamed-export declare interface LifecycleForm-End-->

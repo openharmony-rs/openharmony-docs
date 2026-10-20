@@ -6,8 +6,6 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="addnotificationslot1"></a>
-
 ## addNotificationSlot
 
 ```TypeScript
@@ -55,8 +53,6 @@ reminderAgentManager.addNotificationSlot(mySlot, (err: BusinessError) => {
 });
 ```
 
-
-<a id="addnotificationslot2"></a>
 
 ## addNotificationSlot
 

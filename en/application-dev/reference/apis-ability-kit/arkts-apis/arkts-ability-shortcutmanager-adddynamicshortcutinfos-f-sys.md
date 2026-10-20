@@ -28,7 +28,7 @@ Adds dynamic shortcuts for the given user.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| shortcutInfo | Array&lt;[ShortcutInfo](arkts-ability-shortcutmanager-shortcutinfo-t.md)&gt; | Yes | Information about the dynamic shortcuts. When the shortcut information is submitted through this API, the following validations are performed:<br> 1. The **sourceType** field in **ShortcutInfo** is set to **2**. <br> 2. If the **moduleName** field in **ShortcutInfo** does not exist in the corresponding application, error code 17700002 is thrown. <br> 3. If the **hostAbility** field in **ShortcutInfo** is set to a non-empty string, the system checks whether the corresponding ability exists. If it does not exist, error code 17700003 is thrown. |
+| shortcutInfo | Array&lt;[ShortcutInfo](arkts-ability-shortcutmanager-shortcutinfo-t.md)&gt; | Yes | Information about the dynamic shortcuts. When the shortcut information is submitted through this API, the following validations are performed: <br> 1. The **sourceType** field in **ShortcutInfo** is set to **2**. <br> 2. If the **moduleName** field in **ShortcutInfo** does not exist in the corresponding application, error code 17700002 is thrown. <br> 3. If the **hostAbility** field in **ShortcutInfo** is set to a non-empty string, the system checks whether the corresponding ability exists. If it does not exist, error code 17700003 is thrown. |
 | userId | number | Yes | User ID of the dynamic shortcut, which can be obtained by [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). Default value: the user where the caller is located. Value range: greater than or equal to 0. |
 
 **Return value:**

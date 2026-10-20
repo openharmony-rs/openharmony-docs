@@ -52,6 +52,10 @@
   <!--Del-->
   - [AudioHRTFAnonymousDescriptor（系统接口）](arkts-audio-audio-audiohrtfanonymousdescriptor-i-sys.md)<!--DelEnd-->
   - [AudioLoopback](arkts-audio-audio-audioloopback-i.md)
+  <!--Del-->
+  - [AudioLoopback（系统接口）](arkts-audio-audio-audioloopback-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [AudioLoopbackAvailableStatus（系统接口）](arkts-audio-audio-audioloopbackavailablestatus-i-sys.md)<!--DelEnd-->
   - [AudioManager](arkts-audio-audio-audiomanager-i.md)
   <!--Del-->
   - [AudioManager（系统接口）](arkts-audio-audio-audiomanager-i-sys.md)<!--DelEnd-->
@@ -77,6 +81,8 @@
   - [AudioRoutingManager](arkts-audio-audio-audioroutingmanager-i.md)
   <!--Del-->
   - [AudioRoutingManager（系统接口）](arkts-audio-audio-audioroutingmanager-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [AudioSeparationEffectAvailableStatus（系统接口）](arkts-audio-audio-audioseparationeffectavailablestatus-i-sys.md)<!--DelEnd-->
   - [AudioSessionDeactivatedEvent](arkts-audio-audio-audiosessiondeactivatedevent-i.md)
   - [AudioSessionManager](arkts-audio-audio-audiosessionmanager-i.md)
   - [AudioSessionStateChangedEvent](arkts-audio-audio-audiosessionstatechangedevent-i.md)
@@ -169,6 +175,8 @@
   - [AudioLoopbackMode](arkts-audio-audio-audioloopbackmode-e.md)
   - [AudioLoopbackReverbPreset](arkts-audio-audio-audioloopbackreverbpreset-e.md)
   - [AudioLoopbackStatus](arkts-audio-audio-audioloopbackstatus-e.md)
+  <!--Del-->
+  - [AudioLoopbackUnavailableReason（系统接口）](arkts-audio-audio-audioloopbackunavailablereason-e-sys.md)<!--DelEnd-->
   - [AudioPlaybackCaptureMode](arkts-audio-audio-audioplaybackcapturemode-e.md)
   <!--Del-->
   - [AudioPlaybackCaptureMode（系统接口）](arkts-audio-audio-audioplaybackcapturemode-e-sys.md)<!--DelEnd-->

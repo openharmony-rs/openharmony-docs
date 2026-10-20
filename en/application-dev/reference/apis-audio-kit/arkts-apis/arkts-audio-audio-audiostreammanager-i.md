@@ -24,8 +24,6 @@ Before calling any API in AudioStreamManager, you must use [getStreamManager](ar
 import { audio } from '@kit.AudioKit';
 ```
 
-<a id="getaudioeffectinfoarray1"></a>
-
 ## getAudioEffectInfoArray
 
 ```TypeScript
@@ -67,8 +65,6 @@ audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MUSIC,
   }
 });
 ```
-
-<a id="getaudioeffectinfoarray2"></a>
 
 ## getAudioEffectInfoArray
 
@@ -162,8 +158,6 @@ try {
 }
 ```
 
-<a id="getcurrentaudiocapturerinfoarray1"></a>
-
 ## getCurrentAudioCapturerInfoArray
 
 ```TypeScript
@@ -202,8 +196,6 @@ audioStreamManager.getCurrentAudioCapturerInfoArray((err: BusinessError, audioCa
   }
 });
 ```
-
-<a id="getcurrentaudiocapturerinfoarray2"></a>
 
 ## getCurrentAudioCapturerInfoArray
 
@@ -281,8 +273,6 @@ try {
 }
 ```
 
-<a id="getcurrentaudiorendererinfoarray1"></a>
-
 ## getCurrentAudioRendererInfoArray
 
 ```TypeScript
@@ -321,8 +311,6 @@ audioStreamManager.getCurrentAudioRendererInfoArray((err: BusinessError, audioRe
   }
 });
 ```
-
-<a id="getcurrentaudiorendererinfoarray2"></a>
 
 ## getCurrentAudioRendererInfoArray
 
@@ -807,7 +795,7 @@ Checks whether recording can be started based on the audio source type in the au
 
 | Type | Description |
 | --- | --- |
-| boolean | Check result for whether recording can be started. **true** if recording can be started, **false** otherwise.<br>This API checks whether the specified audio source type in the capturer information can acquire focus. It should be called before starting audio recording to avoid conflicts with existing recording streams. |
+| boolean | Check result for whether recording can be started. **true** if recording can be started, **false** otherwise. <br>This API checks whether the specified audio source type in the capturer information can acquire focus. It should be called before starting audio recording to avoid conflicts with existing recording streams. |
 
 **Error codes:**
 
@@ -1073,8 +1061,6 @@ audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audi
 });
 ```
 
-<a id="isactive1"></a>
-
 ## isActive
 
 ```TypeScript
@@ -1113,8 +1099,6 @@ if (err) {
   console.info(`Callback invoked to indicate that the active status of the stream is obtained ${value}.`);
 });
 ```
-
-<a id="isactive2"></a>
 
 ## isActive
 

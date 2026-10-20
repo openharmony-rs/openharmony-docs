@@ -1,7 +1,7 @@
 # ContinueCallback
 
 表示跨设备迁移Mission完成后，返回迁移结果的回调函数，迁移Mission详见：
- [continueMission接口](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission1)
+ [continueMission接口](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission)
 
 
 
@@ -20,5 +20,5 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [OnContinueDoneCallback](arkts-ability-oncontinuedonecallback-t-sys.md) | @typedef { function } OnContinueDoneCallback |
+| [OnContinueDoneCallback](arkts-ability-oncontinuedonecallback-t-sys.md) |  |
 <!--DelEnd-->

@@ -472,8 +472,6 @@ onmessageerror?: (event: MessageEvents) => void
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 
-<a id="postmessage1"></a>
-
 ## postMessage
 
 ```TypeScript
@@ -578,8 +576,6 @@ struct Index {
   }
 }
 ```
-
-<a id="postmessage2"></a>
 
 ## postMessage
 

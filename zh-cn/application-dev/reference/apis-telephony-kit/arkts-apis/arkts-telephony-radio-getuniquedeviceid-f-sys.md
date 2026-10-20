@@ -6,8 +6,6 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
-<a id="getuniquedeviceid1"></a>
-
 ## getUniqueDeviceId
 
 ```TypeScript
@@ -65,8 +63,6 @@ radio.getUniqueDeviceId(slotId, (err: BusinessError, data: string) => {
 
 <!--DelEnd-->
 
-
-<a id="getuniquedeviceid2"></a>
 
 ## getUniqueDeviceId
 
@@ -128,8 +124,6 @@ radio.getUniqueDeviceId(slotId).then((data: string) => {
 
 <!--DelEnd-->
 
-
-<a id="getuniquedeviceid3"></a>
 
 ## getUniqueDeviceId
 

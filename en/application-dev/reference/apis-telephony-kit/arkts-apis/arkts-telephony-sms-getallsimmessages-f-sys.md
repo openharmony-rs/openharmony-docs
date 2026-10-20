@@ -6,8 +6,6 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
-<a id="getallsimmessages1"></a>
-
 ## getAllSimMessages
 
 ```TypeScript
@@ -30,7 +28,7 @@ Obtains all SIM card messages. This API uses an asynchronous callback to return 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | SIM card slot ID.<br>- **0**: card slot 1 <br>- **1**: card slot 2 |
+| slotId | number | Yes | SIM card slot ID. <br>- **0**: card slot 1 <br>- **1**: card slot 2 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[SimShortMessage](arkts-telephony-sms-simshortmessage-i-sys.md)&gt;&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -61,8 +59,6 @@ sms.getAllSimMessages(slotId, (err: BusinessError, data: sms.SimShortMessage[]) 
 <!--DelEnd-->
 
 
-<a id="getallsimmessages2"></a>
-
 ## getAllSimMessages
 
 ```TypeScript
@@ -85,7 +81,7 @@ Obtains all SIM card messages. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | SIM card slot ID.<br>- **0**: card slot 1 <br>- **1**: card slot 2 |
+| slotId | number | Yes | SIM card slot ID. <br>- **0**: card slot 1 <br>- **1**: card slot 2 |
 
 **Return value:**
 

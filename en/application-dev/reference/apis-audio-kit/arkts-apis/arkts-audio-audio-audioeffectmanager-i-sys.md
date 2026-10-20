@@ -69,6 +69,66 @@ try {
 
 <!--DelEnd-->
 
+## getAudioSeparationEffectAvailableStatus
+
+```TypeScript
+getAudioSeparationEffectAvailableStatus(): AudioSeparationEffectAvailableStatus
+```
+
+Obtains the availability status of the audio separation effect. The playback control application can determine whether to display the audio separation switch button based on the status.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioEffectManager-getAudioSeparationEffectAvailableStatus(): AudioSeparationEffectAvailableStatus--><!--Device-AudioEffectManager-getAudioSeparationEffectAvailableStatus(): AudioSeparationEffectAvailableStatus-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Renderer
+
+**System API:** This is a system API.
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [AudioSeparationEffectAvailableStatus](arkts-audio-audio-audioseparationeffectavailablestatus-i-sys.md) | Returns the available status of audio separation effect. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
+
+## getAudioSeparationEffectEnabled
+
+```TypeScript
+getAudioSeparationEffectEnabled(): boolean
+```
+
+Gets the audio separation effect enabled status.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioEffectManager-getAudioSeparationEffectEnabled(): boolean--><!--Device-AudioEffectManager-getAudioSeparationEffectEnabled(): boolean-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Renderer
+
+**System API:** This is a system API.
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | Returns whether the audio separation effect is enabled. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
+
 ## getSupportedAudioEffectProperty
 
 ```TypeScript
@@ -160,6 +220,36 @@ console.info(`Audio separation effect is supported: ${isSupported}`);
 
 <!--DelEnd-->
 
+## offAudioSeparationEffectAvailableStatusChange
+
+```TypeScript
+offAudioSeparationEffectAvailableStatusChange(callback?: Callback<AudioSeparationEffectAvailableStatus>): void
+```
+
+This API is used to unsubscribe from audio separation effect status change events. After you cancel the callback, the system does not trigger the callback.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioEffectManager-offAudioSeparationEffectAvailableStatusChange(callback?: Callback<AudioSeparationEffectAvailableStatus>): void--><!--Device-AudioEffectManager-offAudioSeparationEffectAvailableStatusChange(callback?: Callback<AudioSeparationEffectAvailableStatus>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Renderer
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSeparationEffectAvailableStatus](arkts-audio-audio-audioseparationeffectavailablestatus-i-sys.md)&gt; | No | Callback to be canceled. <br>If the callback parameter is not transferred, all subscriptions are canceled. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
+
 ## offAudioSeparationEffectEnabledChange
 
 ```TypeScript
@@ -201,6 +291,36 @@ audioEffectManager.offAudioSeparationEffectEnabledChange();
 ```
 
 <!--DelEnd-->
+
+## onAudioSeparationEffectAvailableStatusChange
+
+```TypeScript
+onAudioSeparationEffectAvailableStatusChange(callback: Callback<AudioSeparationEffectAvailableStatus>): void
+```
+
+Subscribes to the status change event of the audio separation effect. When the system detects that the current scenario is not the target scenario for audio separation, this callback function is used to notify the playback control application.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioEffectManager-onAudioSeparationEffectAvailableStatusChange(callback: Callback<AudioSeparationEffectAvailableStatus>): void--><!--Device-AudioEffectManager-onAudioSeparationEffectAvailableStatusChange(callback: Callback<AudioSeparationEffectAvailableStatus>): void-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Renderer
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioSeparationEffectAvailableStatus](arkts-audio-audio-audioseparationeffectavailablestatus-i-sys.md)&gt; | Yes | Callback function, which is used to return the changed availablity status. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
 ## onAudioSeparationEffectEnabledChange
 
@@ -321,7 +441,7 @@ Sets audio separation effect enable or disable for specific application process,
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | enabled | boolean | Yes | The required effect state, true for enabled, false for disabled. |
-| uid | number | Yes | The uid of target application process to add effect.<br>The value should be an integer. |
+| uid | number | Yes | The uid of target application process to add effect. <br>The value should be an integer. |
 | streamId | number | No | The id of target audio playback stream to add effect, the playback application can use [getAudioStreamId](arkts-audio-audio-audiorenderer-i.md#getaudiostreamid) to obtain it. |
 
 **Return value:**
@@ -381,7 +501,7 @@ Sets audio separation effect volume for specific volume type. This API uses a pr
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | [AudioSeparationVolumeType](arkts-audio-audio-audioseparationvolumetype-e-sys.md) | Yes | The type to set volume. |
-| volume | number | Yes | The target volume value.<br>Value range: [0,1]. |
+| volume | number | Yes | The target volume value. <br>Value range: [0,1]. |
 
 **Return value:**
 

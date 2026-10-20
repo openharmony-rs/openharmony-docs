@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function statSync(file: string | number): Stat
 ```
 
-Obtains detailed attribute information of a file or directory. This API returns the result synchronously.
+Obtains detailed attributes of a file or directory synchronously. The returned <b>Stat</b> object contains attributes such as the file size, permission mode, access time, and modification time.
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ Obtains detailed attribute information of a file or directory. This API returns 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| file | string &#124; number | Yes | Application sandbox path, URI, or FD of the file or directory.<br>**Note:**  URIs can be passed since API version 22. |
+| file | string &#124; number | Yes | Application sandbox path, URI, or FD of the file or directory. <br>**Note:**  URIs can be passed since API version 22. |
 
 **Return value:**
 

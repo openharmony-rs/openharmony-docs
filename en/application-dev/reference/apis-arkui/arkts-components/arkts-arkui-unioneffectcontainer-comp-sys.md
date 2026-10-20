@@ -28,17 +28,21 @@ Specify the construction options for the UnionEffectContainer to create the Unio
 
 ## Summary
 
-### Interfaces
+<!--Del-->
+### Interfaces(System API)
 
 | Name | Description |
 | --- | --- |
 | [UnionEffectContainerOptions](arkts-arkui-unioneffectcontainer-comp-unioneffectcontaineroptions-i-sys.md) | Sets the construction options of **UnionEffectContainer**. |
+<!--DelEnd-->
 
-### Enums
+<!--Del-->
+### Enums(System API)
 
 | Name | Description |
 | --- | --- |
 | [UnionMode](arkts-arkui-unioneffectcontainer-comp-unionmode-e-sys.md) | Enumerates the union effect modes. |
+<!--DelEnd-->
 
 <!--Del-->
 ## Examples

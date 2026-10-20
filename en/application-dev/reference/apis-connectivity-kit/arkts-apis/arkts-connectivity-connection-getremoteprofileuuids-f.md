@@ -6,8 +6,6 @@
 import { connection } from '@kit.ConnectivityKit';
 ```
 
-<a id="getremoteprofileuuids1"></a>
-
 ## getRemoteProfileUuids
 
 ```TypeScript
@@ -38,7 +36,6 @@ Obtains the profile UUIDs supported by the remote device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs.<br>**Applicable version:** 10 - 11 |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
@@ -58,8 +55,6 @@ try {
 }
 ```
 
-
-<a id="getremoteprofileuuids2"></a>
 
 ## getRemoteProfileUuids
 
@@ -96,7 +91,6 @@ Obtains the profile UUIDs supported by the remote device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs.<br>**Applicable version:** 10 - 11 |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |

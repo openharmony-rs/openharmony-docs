@@ -139,7 +139,7 @@ Called when a physical key is pressed. In this API, you can determine whether to
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns **true** if the event is consumed and will not be transferred;<br>returns **false** if the event is not consumed and will be transferred. |
+| boolean | Returns **true** if the event is consumed and will not be transferred; <br>returns **false** if the event is not consumed and will be transferred. |
 
 **Examples**
 

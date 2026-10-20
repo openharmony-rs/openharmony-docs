@@ -91,6 +91,26 @@ Indicates whether to enable B Frame Encoding for reduce file size.
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 
+## enableStableQualityMode
+
+```TypeScript
+enableStableQualityMode?: boolean
+```
+
+Whether to enable video encoding policy to quality stable encoding.
+
+**Type:** boolean
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-AVTranscoderConfig-enableStableQualityMode?: boolean--><!--Device-AVTranscoderConfig-enableStableQualityMode?: boolean-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVTranscoder
+
 ## fileFormat
 
 ```TypeScript
@@ -106,6 +126,26 @@ Container format of the output video file. Currently, only MP4 is supported.
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-AVTranscoderConfig-fileFormat: ContainerFormatType--><!--Device-AVTranscoderConfig-fileFormat: ContainerFormatType-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.AVTranscoder
+
+## sqrFactor
+
+```TypeScript
+sqrFactor?: number
+```
+
+Set the quality parameter in StableQualityMode. The value range is [0, 51]. A smaller value indicates a higher output bit rate and better quality. The value should be an integer.
+
+**Type:** number
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-AVTranscoderConfig-sqrFactor?: int--><!--Device-AVTranscoderConfig-sqrFactor?: int-End-->
 
 **System capability:** SystemCapability.Multimedia.Media.AVTranscoder
 

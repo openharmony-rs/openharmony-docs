@@ -53,6 +53,7 @@ import { eSIM } from '@kit.TelephonyKit';
 
 | Name | Description |
 | --- | --- |
+| [AccessRule](arkts-telephony-esim-accessrule-i.md) | Establishes a single UICC access rule pursuant to the GlobalPlatform Secure Element Access Control specification. |
 | [DownloadableProfile](arkts-telephony-esim-downloadableprofile-i.md) | Defines a downloadable profile. |
 
 <!--Del-->
@@ -60,7 +61,6 @@ import { eSIM } from '@kit.TelephonyKit';
 
 | Name | Description |
 | --- | --- |
-| [AccessRule](arkts-telephony-esim-accessrule-i-sys.md) | Establishes a single UICC access rule pursuant to the GlobalPlatform Secure Element Access Control specification. |
 | [ContractRequestData](arkts-telephony-esim-contractrequestdata-i-sys.md) | Information required for encryption. |
 | [DownloadConfiguration](arkts-telephony-esim-downloadconfiguration-i-sys.md) | Defines the download configuration. |
 | [DownloadProfileResult](arkts-telephony-esim-downloadprofileresult-i-sys.md) | Defines the profile download result. |

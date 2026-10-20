@@ -26,9 +26,9 @@ Move a mechanical device at the specified speed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mechId | number | Yes | ID of the mechanical device.<br>The value should be an integer. |
+| mechId | number | Yes | ID of the mechanical device. <br>The value should be an integer. |
 | params | [SpeedParams](arkts-mechanic-mechanicmanager-speedparams-i-sys.md) | Yes | Parameters to use when moving. |
-| duration | number | Yes | Duration of movement, in ms.<br>The value should be an integer. |
+| duration | number | Yes | Duration of movement, in ms. <br>The value should be an integer. |
 
 **Return value:**
 

@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="getabilitylabel1"></a>
-
 ## getAbilityLabel
 
 ```TypeScript
@@ -79,8 +77,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="getabilitylabel2"></a>
 
 ## getAbilityLabel
 

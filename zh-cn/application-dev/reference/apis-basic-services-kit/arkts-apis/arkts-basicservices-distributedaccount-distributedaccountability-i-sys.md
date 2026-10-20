@@ -18,8 +18,6 @@ interface DistributedAccountAbility
 import { distributedAccount } from '@kit.BasicServicesKit';
 ```
 
-<a id="getosaccountdistributedinfobylocalid1"></a>
-
 ## getOsAccountDistributedInfoByLocalId
 
 ```TypeScript
@@ -80,8 +78,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="getosaccountdistributedinfobylocalid2"></a>
 
 ## getOsAccountDistributedInfoByLocalId
 
@@ -147,8 +143,6 @@ try {
 
 <!--DelEnd-->
 
-<a id="setosaccountdistributedinfobylocalid1"></a>
-
 ## setOsAccountDistributedInfoByLocalId
 
 ```TypeScript
@@ -181,7 +175,7 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid distributedInfo. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account identified by localId or by distributedInfo not found. |
@@ -213,8 +207,6 @@ try {
 ```
 
 <!--DelEnd-->
-
-<a id="setosaccountdistributedinfobylocalid2"></a>
 
 ## setOsAccountDistributedInfoByLocalId
 
@@ -253,7 +245,7 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid distributedInfo. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account identified by localId or by distributedInfo not found. |

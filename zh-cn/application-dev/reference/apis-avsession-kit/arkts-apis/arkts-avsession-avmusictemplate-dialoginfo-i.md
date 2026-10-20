@@ -6,8 +6,6 @@ interface DialogInfo
 
 对话框信息的定义。
 
-@interface DialogInfo
-
 **起始版本：** 23
 
 <!--Device-avMusicTemplate-interface DialogInfo--><!--Device-avMusicTemplate-interface DialogInfo-End-->

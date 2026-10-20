@@ -6,8 +6,6 @@ interface ModelRule
 
 Provides the ModelRule type.
 
-@typedef ModelRule
-
 **Since:** 12
 
 <!--Device-securityGuard-interface ModelRule--><!--Device-securityGuard-interface ModelRule-End-->

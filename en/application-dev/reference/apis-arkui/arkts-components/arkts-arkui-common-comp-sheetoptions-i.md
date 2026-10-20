@@ -1012,7 +1012,7 @@ Sets the system material of the component.
 
 Default value: undefined, which clears the material effect set by this API.
 
-**Note:** Different system materials correspond to different attribute effects. This API affects the background color [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), border color [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor), border width [borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), and shadow [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1). Using it together with the preceding APIs is not recommended. For a usage example, see [Example 10 (Setting the System Material for a Half-Modal)](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#example-10-setting-the-system-material-for-a-half-modal).
+**Note:** Different system materials correspond to different attribute effects. This API affects the background color [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), border color [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor), border width [borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), and shadow [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow). Using it together with the preceding APIs is not recommended. For a usage example, see [Example 10 (Setting the System Material for a Half-Modal)](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#example-10-setting-the-system-material-for-a-half-modal).
 
 **Type:** [SystemUiMaterial](arkts-arkui-common-comp-systemuimaterial-t.md)
 

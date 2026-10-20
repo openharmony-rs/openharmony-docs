@@ -4,7 +4,7 @@
 interface Panel
 ```
 
-Panel是输入法面板对象，提供面板页面加载、显示/隐藏、尺寸调整、位置移动、模式切换等功能。Panel实例通过InputMethodAbility的[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel1)接口获取，使用完毕后需调用[destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel1)销毁以释放资源。createPanel与destroyPanel必须配对调用。<br> <br>核心功能概述：<br> <br>- 页面加载：通过[setUiContent](#setuicontent1)为面板加载键盘页面内容，支持加载普通页面和与LocalStorage关联的页面。<br>- 显示与隐藏：通过[show](#show1)显示面板，通过[hide](#hide1)隐藏面板。面板的显示/隐藏也可通过订阅on('show')/on('hide')事件监听状态变化。<br>- 尺寸与位置调整：通过[resize](#resize)调整面板尺寸，通过[moveTo](#moveto)移动面板位置，通过[startMoving](#startmoving)拖拽移动面板，通过[adjustPanelRect](#adjustpanelrect1)/ [updatePanelRect](#updatepanelrect1)/ [updateRegion](#updateregion)调整面板区域。<br>- 模式设置：通过[changeFlag](#changeflag)切换面板固定态/浮动态，通过[setPrivacyMode](#setprivacymode)设置隐私模式，通过[setImmersiveMode](#setimmersivemode)/ [getImmersiveMode](#getimmersivemode)设置/获取沉浸模式。<br>- 事件监听：通过on('show')/on('hide')/on('sizeChange')监听面板状态变化事件。<br> <br>面板生命周期：<br> <br>1. 在InputMethodAbility的[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel1)中创建Panel实例并指定面板类型和标志位。<br>2. 调用[setUiContent](#setuicontent1)加载键盘页面内容。<br>3. 调用[show](#show1)显示面板，用户可交互。<br>4. 根据需要调用resize、moveTo、changeFlag等接口动态调整面板。<br>5. 使用完毕后调用[destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel1)销毁面板，释放资源。<br> <br>下列API均需使用[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel1)获取到Panel实例后，通过实例调用。
+Panel是输入法面板对象，提供面板页面加载、显示/隐藏、尺寸调整、位置移动、模式切换等功能。Panel实例通过InputMethodAbility的[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel)接口获取，使用完毕后需调用[destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel)销毁以释放资源。createPanel与destroyPanel必须配对调用。<br> <br>核心功能概述：<br> <br>- 页面加载：通过[setUiContent](#setuicontent)为面板加载键盘页面内容，支持加载普通页面和与LocalStorage关联的页面。<br>- 显示与隐藏：通过[show](#show)显示面板，通过[hide](#hide)隐藏面板。面板的显示/隐藏也可通过订阅on('show')/on('hide')事件监听状态变化。<br>- 尺寸与位置调整：通过[resize](#resize)调整面板尺寸，通过[moveTo](#moveto)移动面板位置，通过[startMoving](#startmoving)拖拽移动面板，通过[adjustPanelRect](#adjustpanelrect)/ [updatePanelRect](#updatepanelrect)/ [updateRegion](#updateregion)调整面板区域。<br>- 模式设置：通过[changeFlag](#changeflag)切换面板固定态/浮动态，通过[setPrivacyMode](#setprivacymode)设置隐私模式，通过[setImmersiveMode](#setimmersivemode)/ [getImmersiveMode](#getimmersivemode)设置/获取沉浸模式。<br>- 事件监听：通过on('show')/on('hide')/on('sizeChange')监听面板状态变化事件。<br> <br>面板生命周期：<br> <br>1. 在InputMethodAbility的[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel)中创建Panel实例并指定面板类型和标志位。<br>2. 调用[setUiContent](#setuicontent)加载键盘页面内容。<br>3. 调用[show](#show)显示面板，用户可交互。<br>4. 根据需要调用resize、moveTo、changeFlag等接口动态调整面板。<br>5. 使用完毕后调用[destroyPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#destroypanel)销毁面板，释放资源。<br> <br>下列API均需使用[createPanel](arkts-ime-inputmethodengine-inputmethodability-i.md#createpanel)获取到Panel实例后，通过实例调用。
 
 **起始版本：** 10
 
@@ -18,8 +18,6 @@ Panel是输入法面板对象，提供面板页面加载、显示/隐藏、尺�
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
-<a id="adjustpanelrect1"></a>
-
 ## adjustPanelRect
 
 ```TypeScript
@@ -32,8 +30,8 @@ adjustPanelRect(flag: PanelFlag, rect: PanelRect): void
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。<br>
 > <br>
 > 此接口为同步接口，接口返回成功仅代表系统侧收到设置的请求，不代表设置完成。如果需要感知执行过程中的异常，建议使用<br>
-> [updatePanelRect](#updatepanelrect1)或<br>
-> [updatePanelRectSync](#updatepanelrectsync1)。<br>
+> [updatePanelRect](#updatepanelrect)或<br>
+> [updatePanelRectSync](#updatepanelrectsync)。<br>
 > <br>
 > 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。
 
@@ -89,8 +87,6 @@ let panelRect: inputMethodEngine.PanelRect = {
 panel.adjustPanelRect(panelFlag, panelRect);
 ```
 
-<a id="adjustpanelrect2"></a>
-
 ## adjustPanelRect
 
 ```TypeScript
@@ -101,13 +97,13 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 > **说明：** <br>
 > <br>
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。此接口兼容<br>
-> [adjustPanelRect](#adjustpanelrect1)的调用方法，若入参rect <br>
+> [adjustPanelRect](#adjustpanelrect)的调用方法，若入参rect <br>
 > 仅填写属性landscapeRect和portraitRect，则默认调用<br>
-> [adjustPanelRect](#adjustpanelrect1)。<br>
+> [adjustPanelRect](#adjustpanelrect)。<br>
 > <br>
 > 此接口为同步接口，接口返回成功仅代表系统侧收到设置的请求，不代表设置完成。如果需要感知执行过程中的异常，建议使用<br>
-> [updatePanelRect](#updatepanelrect2)或<br>
-> [updatePanelRectSync](#updatepanelrectsync2) <br>
+> [updatePanelRect](#updatepanelrect)或<br>
+> [updatePanelRectSync](#updatepanelrectsync) <br>
 > 。<br>
 > <br>
 > 手机的PanelFlag是FLG_FLOATING且面板宽度在0~288vp之间时，面板底部功能键将随面板宽度动态调整大小，为了保证最佳用户体验，建议面板宽度不小于90vp。<br>
@@ -328,8 +324,6 @@ inputMethodAbility.createPanel(this.context, panelConfig).then((panel: inputMeth
 });
 ```
 
-<a id="hide1"></a>
-
 ## hide
 
 ```TypeScript
@@ -364,8 +358,6 @@ panel.hide((err: BusinessError) => {
 });
 ```
 
-<a id="hide2"></a>
-
 ## hide
 
 ```TypeScript
@@ -397,8 +389,6 @@ panel.hide().then(() => {
   console.error(`Failed to hide panel. Code is ${err.code}, message is ${err.message}`);
 });
 ```
-
-<a id="moveto1"></a>
 
 ## moveTo
 
@@ -442,8 +432,6 @@ panel.moveTo(300, 300, (err: BusinessError) => {
   console.info('Succeeded in moving the panel.');
 });
 ```
-
-<a id="moveto2"></a>
 
 ## moveTo
 
@@ -570,7 +558,7 @@ off(type: 'sizeChange', callback?: SizeChangeCallback): void
 > ），输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。<br>
 > <br>
 > - 从API version 12-14开始支持，此接口回调函数中仅包含[window.Size](../../apis-arkui/arkts-apis/arkts-arkui-window-size-i.md)类型的必选参数。<br><br>
-> - 从API version 15起，调用<br>[adjustPanelRect](#adjustpanelrect2)接口后，此<br>接口回调函数增加[KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md)类型的可选参数。
+> - 从API version 15起，调用<br>[adjustPanelRect](#adjustpanelrect)接口后，此<br>接口回调函数增加[KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md)类型的可选参数。
 
 **起始版本：** 12
 
@@ -666,7 +654,7 @@ on(type: 'sizeChange', callback: SizeChangeCallback): void
 > ），输入法应用可通过该回调获取的真实面板大小，完成最终的面板布局刷新。<br>
 > <br>
 > - 从API version 12-14开始支持，此接口回调函数中仅包含[window.Size](../../apis-arkui/arkts-apis/arkts-arkui-window-size-i.md)类型的必选参数。<br><br>
-> - 从API version 15起，调用<br>[adjustPanelRect](#adjustpanelrect2)接口后，此<br>接口回调函数增加[KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md)类型的可选参数。
+> - 从API version 15起，调用<br>[adjustPanelRect](#adjustpanelrect)接口后，此<br>接口回调函数增加[KeyboardArea](arkts-ime-inputmethodengine-keyboardarea-i.md)类型的可选参数。
 
 **起始版本：** 12
 
@@ -697,8 +685,6 @@ panel.on('sizeChange', (windowSize: window.Size, keyboardArea: inputMethodEngine
     `keyboardArea: ${keyboardArea.top}, ${keyboardArea.bottom}, ${keyboardArea.left}, ${keyboardArea.right}`);
 });
 ```
-
-<a id="resize1"></a>
 
 ## resize
 
@@ -747,8 +733,6 @@ panel.resize(500, 1000, (err: BusinessError) => {
   console.info('Succeeded in changing the panel size.');
 });
 ```
-
-<a id="resize2"></a>
 
 ## resize
 
@@ -807,7 +791,7 @@ panel.resize(500, 1000).then(() => {
 setImmersiveEffect(effect: ImmersiveEffect): void
 ```
 
-设置输入法应用的沉浸效果。<br> <br>- 只有在[启用沉浸式模式](#setimmersivemode)时，才能使用渐变模式和流光模式。<br>- 只有在启用渐变模式时，才能使用流光模式。<br>- 未启用渐变模式时，渐变高度必须为0px。<br>- 只有系统应用才能设置流光模式。<br>- 必须先调用以下任一接口，才能调用当前接口：<br> - [adjustPanelRect](#adjustpanelrect1)(支持API version 12) <br> - [adjustPanelRect](#adjustpanelrect2)(支持API version 15) <br> - [resize](#resize)(支持API version 10)
+设置输入法应用的沉浸效果。<br> <br>- 只有在[启用沉浸式模式](#setimmersivemode)时，才能使用渐变模式和流光模式。<br>- 只有在启用渐变模式时，才能使用流光模式。<br>- 未启用渐变模式时，渐变高度必须为0px。<br>- 只有系统应用才能设置流光模式。<br>- 必须先调用以下任一接口，才能调用当前接口：<br> - [adjustPanelRect](#adjustpanelrect)(支持API version 12) <br> - [adjustPanelRect](#adjustpanelrect)(支持API version 15) <br> - [resize](#resize)(支持API version 10)
 
 **起始版本：** 20
 
@@ -1006,8 +990,6 @@ try {
 }
 ```
 
-<a id="setuicontent1"></a>
-
 ## setUiContent
 
 ```TypeScript
@@ -1050,8 +1032,6 @@ panel.setUiContent('pages/page2/page2', (err: BusinessError) => {
   console.info('Succeeded in setting the content.');
 });
 ```
-
-<a id="setuicontent2"></a>
 
 ## setUiContent
 
@@ -1097,8 +1077,6 @@ panel.setUiContent('pages/page2/page2').then(() => {
 });
 ```
 
-<a id="setuicontent3"></a>
-
 ## setUiContent
 
 ```TypeScript
@@ -1143,8 +1121,6 @@ panel.setUiContent('pages/page2/page2', storage, (err: BusinessError) => {
   console.info('Succeeded in setting the content.');
 });
 ```
-
-<a id="setuicontent4"></a>
 
 ## setUiContent
 
@@ -1194,8 +1170,6 @@ panel.setUiContent('pages/page2/page2', storage).then(() => {
 });
 ```
 
-<a id="show1"></a>
-
 ## show
 
 ```TypeScript
@@ -1229,8 +1203,6 @@ panel.show((err: BusinessError) => {
   console.info('Succeeded in showing the panel.');
 });
 ```
-
-<a id="show2"></a>
 
 ## show
 
@@ -1292,8 +1264,6 @@ startMoving(): void
 ```TypeScript
 panel.startMoving();
 ```
-
-<a id="updatepanelrect1"></a>
 
 ## updatePanelRect
 
@@ -1366,8 +1336,6 @@ let panelRect: inputMethodEngine.PanelRect = {
 panel.updatePanelRect(panelFlag, panelRect);
 ```
 
-<a id="updatepanelrect2"></a>
-
 ## updatePanelRect
 
 ```TypeScript
@@ -1378,9 +1346,9 @@ updatePanelRect(flag: PanelFlag, rect: EnhancedPanelRect): Promise<void>
 > **说明：** <br>
 > <br>
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。此接口兼容<br>
-> [adjustPanelRect](#adjustpanelrect1)的调用方法，若入参rect <br>
+> [adjustPanelRect](#adjustpanelrect)的调用方法，若入参rect <br>
 > 仅填写属性landscapeRect和portraitRect，则默认调用<br>
-> [adjustPanelRect](#adjustpanelrect1)。<br>
+> [adjustPanelRect](#adjustpanelrect)。<br>
 > <br>
 > 此接口为异步接口，接口返回仅代表系统侧收到设置的请求，不代表已完成设置。<br>
 > <br>
@@ -1449,8 +1417,6 @@ let panelRect: inputMethodEngine.EnhancedPanelRect = {
 panel.updatePanelRect(panelFlag, panelRect);
 ```
 
-<a id="updatepanelrectsync1"></a>
-
 ## updatePanelRectSync
 
 ```TypeScript
@@ -1461,7 +1427,7 @@ updatePanelRectSync(flag: PanelFlag, rect: PanelRect): void
 > **说明：** <br>
 > <br>
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口<br>
-> [updatePanelRect](#updatepanelrect1)。<br>
+> [updatePanelRect](#updatepanelrect)。<br>
 > <br>
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。<br>
 > <br>
@@ -1519,8 +1485,6 @@ let panelRect: inputMethodEngine.PanelRect = {
 panel.updatePanelRectSync(panelFlag, panelRect);
 ```
 
-<a id="updatepanelrectsync2"></a>
-
 ## updatePanelRectSync
 
 ```TypeScript
@@ -1531,12 +1495,12 @@ updatePanelRectSync(flag: PanelFlag, rect: EnhancedPanelRect): void
 > **说明：** <br>
 > <br>
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口<br>
-> [updatePanelRect](#updatepanelrect1)。<br>
+> [updatePanelRect](#updatepanelrect)。<br>
 > <br>
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。此接口兼容<br>
-> [adjustPanelRect](#adjustpanelrect1)的调用方法，若入参rect <br>
+> [adjustPanelRect](#adjustpanelrect)的调用方法，若入参rect <br>
 > 仅填写属性landscapeRect和portraitRect，则默认调用<br>
-> [adjustPanelRect](#adjustpanelrect1)。<br>
+> [adjustPanelRect](#adjustpanelrect)。<br>
 > <br>
 > 此接口为同步接口，接口返回代表系统侧收到设置的请求，并已完成设置。<br>
 > <br>

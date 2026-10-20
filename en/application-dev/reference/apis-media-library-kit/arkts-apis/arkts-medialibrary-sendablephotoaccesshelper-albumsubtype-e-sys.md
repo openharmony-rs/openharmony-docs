@@ -172,6 +172,24 @@ Album for screenshots and screen recording files.
 
 **System API:** This is a system API.
 
+## SHARE
+
+```TypeScript
+SHARE = 8193
+```
+
+Share album.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AlbumSubtype-SHARE = 8193--><!--Device-AlbumSubtype-SHARE = 8193-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
 ## SHOOTING_MODE
 
 ```TypeScript

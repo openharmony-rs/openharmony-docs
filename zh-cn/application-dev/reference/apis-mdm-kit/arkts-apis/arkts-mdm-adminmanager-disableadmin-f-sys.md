@@ -6,8 +6,6 @@
 import { adminManager } from '@kit.MDMKit';
 ```
 
-<a id="disableadmin1"></a>
-
 ## disableAdmin
 
 ```TypeScript
@@ -68,8 +66,6 @@ adminManager.disableAdmin(wantTemp, (err) => {
 
 <!--DelEnd-->
 
-
-<a id="disableadmin2"></a>
 
 ## disableAdmin
 

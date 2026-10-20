@@ -42,6 +42,36 @@ Displays the menu.
 | --- | --- | --- | --- |
 | options | [ShowActionMenuOptions](arkts-arkui-system-prompt-showactionmenuoptions-i.md) | Yes | Options. |
 
+**Examples**
+
+```TypeScript
+import prompt from '@system.prompt';
+class C{
+  showActionMenu() {
+    prompt.showActionMenu({
+      title: 'Title Info',
+      buttons: [
+        {
+          text: 'item1',
+          color: '#666666'
+        },
+        {
+          text: 'item2',
+          color: '#000000'
+        },
+      ],
+      success: (tapIndex)=> {
+        console.info('dialog success callback, click button : ' + tapIndex);
+      },
+      fail: (errMsg)=> {
+        console.info('dialog fail callback' + errMsg);
+      },
+    });
+  }
+}
+export default new C()
+```
+
 ## showDialog
 
 ```TypeScript
@@ -66,6 +96,33 @@ Displays the dialog box.
 | --- | --- | --- | --- |
 | options | [ShowDialogOptions](arkts-arkui-system-prompt-showdialogoptions-i.md) | Yes | Options. |
 
+**Examples**
+
+```TypeScript
+import prompt from '@system.prompt';
+class B{
+  showDialog() {
+    prompt.showDialog({
+      title: 'Title Info',
+      message: 'Message Info',
+      buttons: [
+        {
+          text: 'button',
+          color: '#666666'
+        },
+      ],
+      success: (data)=> {
+        console.info('dialog success callback, click button : ' + data.index);
+      },
+      cancel: ()=> {
+        console.info('dialog cancel callback');
+      },
+    });
+  }
+}
+export default new B()
+```
+
 ## showToast
 
 ```TypeScript
@@ -89,3 +146,18 @@ Displays the notification text.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | options | [ShowToastOptions](arkts-arkui-system-prompt-showtoastoptions-i.md) | Yes | Options. |
+
+**Examples**
+
+```TypeScript
+import prompt from '@system.prompt';
+class A{
+  showToast() {
+    prompt.showToast({
+      message: 'Message Info',
+      duration: 2000
+    });
+  }
+}
+export default new A()
+```

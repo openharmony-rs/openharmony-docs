@@ -76,9 +76,9 @@ Adds the polymorphic style states supported by the component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uiStates | number | Yes | UI states of the target node to be processed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **targetUIStates = UIState.PRESSED  &#124;  UIState.FOCUSED**. |
+| uiStates | number | Yes | UI states of the target node to be processed. <br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **targetUIStates = UIState.PRESSED  &#124;  UIState.FOCUSED**. |
 | statesChangeHandler | [UIStatesChangeHandler](arkts-arkui-uistateschangehandler-t.md) | Yes | Callback invoked when the state changes. |
-| excludeInner | boolean | No | Whether to disable internal default state style processing. The default value is **false**. Internal default state style processing refers to the built-in state style response of a component (for example, the default visual feedback when a button is pressed).<br>The value **true** means to disable internal default state style processing, and **false** means not to disable it. |
+| excludeInner | boolean | No | Whether to disable internal default state style processing. The default value is **false**. Internal default state style processing refers to the built-in state style response of a component (for example, the default visual feedback when a button is pressed). <br>The value **true** means to disable internal default state style processing, and **false** means not to disable it. |
 
 **Examples**
 
@@ -905,8 +905,6 @@ struct Index {
 }
 ```
 
-<a id="getchild1"></a>
-
 ## getChild
 
 ```TypeScript
@@ -929,7 +927,7 @@ Obtains the child node in the specified position of this node.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the child node to obtain.<br>The value range of index is [0, +∞). If the current node has n child nodes, the valid value range of index is [0, n-1]. |
+| index | number | Yes | Index of the child node to obtain. <br>The value range of index is [0, +∞). If the current node has n child nodes, the valid value range of index is [0, n-1]. |
 
 **Return value:**
 
@@ -940,8 +938,6 @@ Obtains the child node in the specified position of this node.
 **Examples**
 
 See Example of Node Operations.
-
-<a id="getchild2"></a>
 
 ## getChild
 
@@ -965,8 +961,8 @@ Obtains a child node at a specified index from this FrameNode, with optional sup
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the child node to obtain.<br>The value range of index is [0, +∞). If the current node has n child nodes, the valid value range of index is [0, n-1]. |
-| expandMode | [ExpandMode](arkts-arkui-framenode-expandmode-e.md) | No | Expansion mode of the child node.<br>Default value: **ExpandMode.EXPAND**. |
+| index | number | Yes | Index of the child node to obtain. <br>The value range of index is [0, +∞). If the current node has n child nodes, the valid value range of index is [0, n-1]. |
+| expandMode | [ExpandMode](arkts-arkui-framenode-expandmode-e.md) | No | Expansion mode of the child node. <br>Default value: **ExpandMode.EXPAND**. |
 
 **Return value:**
 
@@ -977,8 +973,6 @@ Obtains a child node at a specified index from this FrameNode, with optional sup
 **Examples**
 
 See Example of Node Operations in the LazyForEach Scenario.
-
-<a id="getchildrencount1"></a>
 
 ## getChildrenCount
 
@@ -1007,8 +1001,6 @@ Obtains the number of child nodes of this FrameNode.
 **Examples**
 
 See Example of Node Operations.
-
-<a id="getchildrencount2"></a>
 
 ## getChildrenCount
 
@@ -2001,7 +1993,7 @@ struct Index {
 getPositionToParentWithTransform(): Position
 ```
 
-Obtains the position offset of this FrameNode relative to its parent component with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform1) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate1). This API returns the transformed coordinates of the upper left corner after component layout.
+Obtains the position offset of this FrameNode relative to its parent component with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate). This API returns the transformed coordinates of the upper left corner after component layout.
 
 **Since:** 12
 
@@ -2177,7 +2169,7 @@ struct Index {
 getPositionToScreenWithTransform(): Position
 ```
 
-Obtains the position offset of this FrameNode relative to the screen with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform1) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate1). This API returns the transformed coordinates of the upper left corner after component layout.
+Obtains the position offset of this FrameNode relative to the screen with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate). This API returns the transformed coordinates of the upper left corner after component layout.
 
 **Since:** 12
 
@@ -2352,7 +2344,7 @@ struct Index {
 getPositionToWindowWithTransform(): Position
 ```
 
-Obtains the position offset of this FrameNode relative to the window with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform1) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate1). This API returns the transformed coordinates of the upper left corner after component layout.
+Obtains the position offset of this FrameNode relative to the window with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate). This API returns the transformed coordinates of the upper left corner after component layout.
 
 **Since:** 12
 
@@ -2863,7 +2855,7 @@ Obtains whether the node is mounted to the main node tree.
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the node is mounted to the main node tree.<br>The value **true** means that the node is mounted to the main node tree, and **false** means the opposite. |
+| boolean | Whether the node is mounted to the main node tree. <br>The value **true** means that the node is mounted to the main node tree, and **false** means the opposite. |
 
 **Examples**
 
@@ -2947,7 +2939,7 @@ Obtains whether the node is in render state. A node is considered to be in rende
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the node is in render state.<br>**true**: The node is in render state. **false**: The node is not in render state. |
+| boolean | Whether the node is in render state. <br>**true**: The node is in render state. **false**: The node is not in render state. |
 
 **Examples**
 
@@ -3066,7 +3058,7 @@ Queries whether the node is mounted to the main node tree. Both this API and [is
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the node is mounted to the main node tree.<br>The value **true** means that the node is mounted to the main node tree, and **false** means the opposite. |
+| boolean | Whether the node is mounted to the main node tree. <br>The value **true** means that the node is mounted to the main node tree, and **false** means the opposite. |
 
 **Error codes:**
 
@@ -3645,7 +3637,7 @@ Obtains whether the node is visible.
 
 | Type | Description |
 | --- | --- |
-| boolean | Whether the node is visible.<br>The value **true** means that the node is visible, and **false** means the opposite. |
+| boolean | Whether the node is visible. <br>The value **true** means that the node is visible, and **false** means the opposite. |
 
 **Examples**
 
@@ -3740,8 +3732,8 @@ Moves this FrameNode to a specified position within the target FrameNode. If thi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| targetParent | [FrameNode](arkts-arkui-framenode-c.md) | Yes | Target parent node.<br>The target parent node must not be a declaratively created node, that is, a FrameNode that is not modifiable. If it does not meet the specifications, an exception is thrown. |
-| index | number | No | Index of the child node. The current FrameNode will be inserted before the child node at the specified sequence number in the target FrameNode. If the target FrameNode has *n* nodes, the value range for **index** is [0, *n*-1].<br>If the parameter is invalid or not specified, the current FrameNode will be added to the end of the target FrameNode. <br>Default value: **-1** |
+| targetParent | [FrameNode](arkts-arkui-framenode-c.md) | Yes | Target parent node. <br>The target parent node must not be a declaratively created node, that is, a FrameNode that is not modifiable. If it does not meet the specifications, an exception is thrown. |
+| index | number | No | Index of the child node. The current FrameNode will be inserted before the child node at the specified sequence number in the target FrameNode. If the target FrameNode has *n* nodes, the value range for **index** is [0, *n*-1]. <br>If the parameter is invalid or not specified, the current FrameNode will be added to the end of the target FrameNode. <br>Default value: **-1** |
 
 **Error codes:**
 
@@ -3954,7 +3946,7 @@ Removes the state processing registration from the component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| uiStates | number | Yes | UI states to be removed.<br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **removeUIStates = UIState.PRESSED  &#124;  UIState.FOCUSED**. |
+| uiStates | number | Yes | UI states to be removed. <br>Multiple states can be specified simultaneously using bitwise OR operations, for example, **removeUIStates = UIState.PRESSED  &#124;  UIState.FOCUSED**. |
 
 **Examples**
 

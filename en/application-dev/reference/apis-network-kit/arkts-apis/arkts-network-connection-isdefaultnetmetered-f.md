@@ -6,8 +6,6 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
-<a id="isdefaultnetmetered1"></a>
-
 ## isDefaultNetMetered
 
 ```TypeScript
@@ -53,8 +51,6 @@ connection.isDefaultNetMetered((error: BusinessError, data: boolean) => {
 });
 ```
 
-
-<a id="isdefaultnetmetered2"></a>
 
 ## isDefaultNetMetered
 

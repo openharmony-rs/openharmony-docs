@@ -6,8 +6,6 @@ declare interface Callback<T, V = void>
 
 定义基础的回调函数。
 
-@typedef Callback<T, V = void>
-
 **起始版本：** 12
 
 <!--Device-unnamed-declare interface Callback<T, V = void>--><!--Device-unnamed-declare interface Callback<T, V = void>-End-->

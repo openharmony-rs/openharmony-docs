@@ -2235,7 +2235,7 @@ Sets the stencil function
 | --- | --- | --- | --- |
 | func | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Stencil function |
 | ref | [GLint](arkts-arkgraphics2d-glint-t.md) | Yes | Reference value |
-| mask | [GLuint](arkts-arkgraphics2d-gluint-t.md) | Yes | [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) |
+| mask | [GLuint](arkts-arkgraphics2d-gluint-t.md) | Yes | Mask |
 
 ## stencilFuncSeparate
 
@@ -2260,7 +2260,7 @@ Sets the stencil function separately for front and back faces
 | face | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Face mode |
 | func | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Stencil function |
 | ref | [GLint](arkts-arkgraphics2d-glint-t.md) | Yes | Reference value |
-| mask | [GLuint](arkts-arkgraphics2d-gluint-t.md) | Yes | [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) |
+| mask | [GLuint](arkts-arkgraphics2d-gluint-t.md) | Yes | Mask |
 
 ## stencilMask
 

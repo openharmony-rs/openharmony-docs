@@ -16,7 +16,7 @@ Sets the 802.1X EAP configuration for Ethernet. The configuration is persisted a
 
 Any field change triggers one auto-auth cycle unless the feature is disabled or the authentication is occupied by an enterprise app (then the config is only persisted; the enterprise app keeps control). The auth result is delivered via the stateChange callback, not by this API's return.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_EAP
 

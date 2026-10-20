@@ -18,8 +18,6 @@ Defines a TLS socket connection. Before calling TLSSocket APIs, you need to call
 import { socket } from '@kit.NetworkKit';
 ```
 
-<a id="bind1"></a>
-
 ## bind
 
 ```TypeScript
@@ -45,7 +43,7 @@ Binds the IP address and port number. This API uses an asynchronous callback to 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | Yes | Local address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | Yes | Local address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, the result of binding the local IP address and port number is returned. If the operation fails, an error message is returned. |
 
 **Error codes:**
@@ -77,8 +75,6 @@ tls.bind(bindAddr, (err: BusinessError) => {
 });
 ```
 
-<a id="bind2"></a>
-
 ## bind
 
 ```TypeScript
@@ -104,7 +100,7 @@ Binds the IP address and port number. This API uses a promise to return the resu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| address | [NetAddress](arkts-network-socket-p.md) | Yes | Local address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
+| address | [NetAddress](arkts-network-socket-netaddress-t.md) | Yes | Local address. For details, see [NetAddress](../../../reference/apis-network-kit/js-apis-socket.md#netaddress). |
 
 **Return value:**
 
@@ -138,8 +134,6 @@ tls.bind(bindAddr).then(() => {
   console.error('bind fail');
 });
 ```
-
-<a id="close1"></a>
 
 ## close
 
@@ -187,8 +181,6 @@ tls.close((err: BusinessError) => {
 });
 ```
 
-<a id="close2"></a>
-
 ## close
 
 ```TypeScript
@@ -232,8 +224,6 @@ tls.close().then(() => {
   console.error("failed" + err);
 });
 ```
-
-<a id="connect1"></a>
 
 ## connect
 
@@ -435,8 +425,6 @@ tlsOneWay.connect(tlsOneWayConnectOptions, (err: BusinessError) => {
   console.error("connect callback error" + err);
 });
 ```
-
-<a id="connect2"></a>
 
 ## connect
 
@@ -652,8 +640,6 @@ tlsOneWay.connect(tlsOneWayConnectOptions).then(() => {
 });
 ```
 
-<a id="getcertificate1"></a>
-
 ## getCertificate
 
 ```TypeScript
@@ -712,8 +698,6 @@ tls.getCertificate().then((data: socket.X509CertRawData) => {
   console.error("failed" + err);
 });
 ```
-
-<a id="getcertificate2"></a>
 
 ## getCertificate
 
@@ -774,8 +758,6 @@ tls.getCertificate().then((data: socket.X509CertRawData) => {
 });
 ```
 
-<a id="getciphersuite1"></a>
-
 ## getCipherSuite
 
 ```TypeScript
@@ -820,8 +802,6 @@ tls.getCipherSuite((err: BusinessError, data: Array<string>) => {
   }
 });
 ```
-
-<a id="getciphersuite2"></a>
 
 ## getCipherSuite
 
@@ -888,7 +868,7 @@ Obtains the local socket address of a **TLSSocket** connection. This API uses a 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | Promise used to return the result. |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Promise used to return the result. |
 
 **Error codes:**
 
@@ -911,8 +891,6 @@ tls.getLocalAddress().then((localAddress: socket.NetAddress) => {
   console.error("Get failed, error: " + JSON.stringify(err));
 })
 ```
-
-<a id="getprotocol1"></a>
 
 ## getProtocol
 
@@ -958,8 +936,6 @@ tls.getProtocol((err: BusinessError, data: string) => {
 });
 ```
 
-<a id="getprotocol2"></a>
-
 ## getProtocol
 
 ```TypeScript
@@ -1002,8 +978,6 @@ tls.getProtocol().then((data: string) => {
 });
 ```
 
-<a id="getremoteaddress1"></a>
-
 ## getRemoteAddress
 
 ```TypeScript
@@ -1022,7 +996,7 @@ Obtains the remote address of a TLS socket connection. This API uses an asynchro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetAddress](arkts-network-socket-p.md)&gt; | Yes | Callback used to return the result. If the operation is successful, the remote address is returned. If the operation fails, an error message is returned. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Yes | Callback used to return the result. If the operation is successful, the remote address is returned. If the operation fails, an error message is returned. |
 
 **Error codes:**
 
@@ -1047,8 +1021,6 @@ tls.getRemoteAddress((err: BusinessError, data: socket.NetAddress) => {
 });
 ```
 
-<a id="getremoteaddress2"></a>
-
 ## getRemoteAddress
 
 ```TypeScript
@@ -1067,7 +1039,7 @@ Obtains the remote address of a TLS socket connection. This API uses a promise t
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[NetAddress](arkts-network-socket-p.md)&gt; | Promise used to return the result. If the operation fails, an error message is returned. |
+| Promise&lt;[NetAddress](arkts-network-socket-netaddress-t.md)&gt; | Promise used to return the result. If the operation fails, an error message is returned. |
 
 **Error codes:**
 
@@ -1089,8 +1061,6 @@ tls.getRemoteAddress().then(() => {
   console.error('getRemoteAddress fail');
 });
 ```
-
-<a id="getremotecertificate1"></a>
 
 ## getRemoteCertificate
 
@@ -1153,8 +1123,6 @@ tls.getRemoteCertificate().then((data: socket.X509CertRawData) => {
 });
 ```
 
-<a id="getremotecertificate2"></a>
-
 ## getRemoteCertificate
 
 ```TypeScript
@@ -1216,8 +1184,6 @@ tls.getRemoteCertificate().then((data: socket.X509CertRawData) => {
 });
 ```
 
-<a id="getsignaturealgorithms1"></a>
-
 ## getSignatureAlgorithms
 
 ```TypeScript
@@ -1260,8 +1226,6 @@ tls.getSignatureAlgorithms((err: BusinessError, data: Array<string>) => {
   }
 });
 ```
-
-<a id="getsignaturealgorithms2"></a>
 
 ## getSignatureAlgorithms
 
@@ -1316,7 +1280,7 @@ Obtains the file descriptor of the **TLSSocket** object. This API uses a promise
 > 
 > - This API can be called only after **bind** is successfully called.
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close1) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 16
 
@@ -1351,8 +1315,6 @@ tls.getSocketFd().then((data: number) => {
   console.info("tls socket fd: " + data);
 })
 ```
-
-<a id="getstate1"></a>
 
 ## getState
 
@@ -1407,8 +1369,6 @@ tls.getState((err: BusinessError, data: socket.SocketStateBase) => {
   console.info('getState success:' + JSON.stringify(data));
 });
 ```
-
-<a id="getstate2"></a>
 
 ## getState
 
@@ -1776,8 +1736,6 @@ tls.bind(bindAddr, (err: BusinessError) => {
 });
 ```
 
-<a id="send1"></a>
-
 ## send
 
 ```TypeScript
@@ -1825,8 +1783,6 @@ tls.send("xxxx", (err: BusinessError) => {
   }
 });
 ```
-
-<a id="send2"></a>
 
 ## send
 
@@ -1878,8 +1834,6 @@ tls.send("xxxx").then(() => {
   console.error("failed" + err);
 });
 ```
-
-<a id="setextraoptions1"></a>
 
 ## setExtraOptions
 
@@ -1953,8 +1907,6 @@ tls.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
   console.info('setExtraOptions success');
 });
 ```
-
-<a id="setextraoptions2"></a>
 
 ## setExtraOptions
 

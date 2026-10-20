@@ -6,15 +6,13 @@
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="getcurrentinputmethodsubtype2"></a>
-
 ## getCurrentInputMethodSubtype
 
 ```TypeScript
 function getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
 ```
 
-Get the current input method subtype of a specified user.
+Obtains the current input method subtype of a specified user.
 
 **Since:** 26.0.0
 
@@ -30,13 +28,13 @@ Get the current input method subtype of a specified user.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| userId | number | No | the user ID. If not provided: If the caller is not a user 0 application, the value defaults to the caller's user ID. If the caller is a user 0 application, the value defaults to the foreground user ID of the main screen. |
+| userId | number | No | User ID. The value is the ID of a valid user. If this parameter is not provided: <br> - If the caller is not an application of user 0, the value defaults to the caller's user ID. <br> - If the caller is an application of user 0, the value defaults to the foreground user ID of the home screen. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [InputMethodSubtype](arkts-ime-inputmethodsubtype-i.md) | the subtype of the current input method. |
+| [InputMethodSubtype](arkts-ime-inputmethodsubtype-i.md) | Current input method subtype. |
 
 **Error codes:**
 

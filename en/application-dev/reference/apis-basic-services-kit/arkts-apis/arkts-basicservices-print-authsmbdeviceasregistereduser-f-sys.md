@@ -30,9 +30,9 @@ Authenticate SMB device as registered user and get available printers.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| host | [SharedHost](arkts-basicservices-print-sharedhost-i.md) | Yes | The SMB host to authenticate.<br>The SMB host to authenticate. |
-| username | string | Yes | The username for authentication.<br>User name used for authentication. |
-| password | string | Yes | The password for authentication.<br>Password used for authentication. |
+| host | [SharedHost](arkts-basicservices-print-sharedhost-i.md) | Yes | The SMB host to authenticate. <br>The SMB host to authenticate. |
+| username | string | Yes | The username for authentication. <br>User name used for authentication. |
+| password | string | Yes | The password for authentication. <br>Password used for authentication. |
 
 **Return value:**
 

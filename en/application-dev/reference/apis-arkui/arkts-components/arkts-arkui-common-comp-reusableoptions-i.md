@@ -6,8 +6,6 @@ declare interface ReusableOptions
 
 Defines the parameters of a reusable custom component, which are used to configure the memory optimization strategy. They apply to scenarios where the memory usage of reusable custom components needs to be reduced.
 
-@interface ReusableOptions
-
 **Since:** 26.0.0
 
 <!--Device-unnamed-declare interface ReusableOptions--><!--Device-unnamed-declare interface ReusableOptions-End-->

@@ -6,8 +6,6 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
-<a id="setcallwaiting1"></a>
-
 ## setCallWaiting
 
 ```TypeScript
@@ -30,8 +28,8 @@ Specifies whether to enable the call waiting service. This API uses an asynchron
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2. |
-| activate | boolean | Yes | Whether to enable call waiting.<br>- **false**: Disable call waiting. <br>- **true**: Enable call waiting. |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2. |
+| activate | boolean | Yes | Whether to enable call waiting. <br>- **false**: Disable call waiting. <br>- **true**: Enable call waiting. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 **Error codes:**
@@ -64,8 +62,6 @@ call.setCallWaiting(0, true, (err: BusinessError) => {
 <!--DelEnd-->
 
 
-<a id="setcallwaiting2"></a>
-
 ## setCallWaiting
 
 ```TypeScript
@@ -88,8 +84,8 @@ Specifies whether to enable the call waiting service. This API uses a promise to
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2. |
-| activate | boolean | Yes | Whether to enable call waiting.<br>- **false**: Disable call waiting. <br>- **true**: Enable call waiting. |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2. |
+| activate | boolean | Yes | Whether to enable call waiting. <br>- **false**: Disable call waiting. <br>- **true**: Enable call waiting. |
 
 **Return value:**
 

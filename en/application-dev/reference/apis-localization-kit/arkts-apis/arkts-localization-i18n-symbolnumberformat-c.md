@@ -42,8 +42,8 @@ A constructor used to create a SymbolNumberFormat object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| locale | [Intl.Locale](arkts-localization-intl-locale-c.md) | No | Locale object used for formatting the date time value. The default value is the current system locale.<br>Default value:The default is the current system locale. <br>Default Value: System Locale. <br>Region object. |
-| options | [SymbolNumberFormatOptions](arkts-localization-i18n-symbolnumberformatoptions-i.md) | No | Indicates the symbols used to replace. Such as zero, nan, positiveInfinity, etc.<br>Symbol Number Formatting Options. |
+| locale | [Intl.Locale](arkts-localization-intl-locale-c.md) | No | Locale object used for formatting the date time value. The default value is the current system locale. <br>Default value:The default is the current system locale. <br>Default Value: System Locale. <br>Region object. |
+| options | [SymbolNumberFormatOptions](arkts-localization-i18n-symbolnumberformatoptions-i.md) | No | Indicates the symbols used to replace. Such as zero, nan, positiveInfinity, etc. <br>Symbol Number Formatting Options. |
 
 **Examples**
 
@@ -258,8 +258,8 @@ Parse a localized string to number object. For example, "123,456" will parse to 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| text | string | Yes | Localized string to be parse.<br>Text to be parsed |
-| lenientMode | boolean | Yes | Indicates whether parsing allows any non-compliant localized strings. For example, "1,23,456" is a invalid thousand separator number string, it will parse failure when lenientMode is false, and will parse success with value 123456 when lenientMode is true.it's better set to false, ensure the data is not polluted.<br>Whether to use loose rules |
+| text | string | Yes | Localized string to be parse. <br>Text to be parsed |
+| lenientMode | boolean | Yes | Indicates whether parsing allows any non-compliant localized strings. For example, "1,23,456" is a invalid thousand separator number string, it will parse failure when lenientMode is false, and will parse success with value 123456 when lenientMode is true.it's better set to false, ensure the data is not polluted. <br>Whether to use loose rules |
 
 **Return value:**
 

@@ -6,8 +6,6 @@
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
-<a id="createx509crl1"></a>
-
 ## createX509Crl
 
 ```TypeScript
@@ -19,7 +17,7 @@ function createX509Crl(inStream: EncodingBlob, callback: AsyncCallback<X509Crl>)
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 11开始废弃，建议使用
-> [cert.createX509CRL()](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl1)替代。
+> [cert.createX509CRL()](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl)替代。
 
 **起始版本：** 9
 
@@ -42,7 +40,7 @@ function createX509Crl(inStream: EncodingBlob, callback: AsyncCallback<X509Crl>)
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | This operation is not supported. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 
@@ -86,8 +84,6 @@ cert.createX509Crl(encodingBlob, (error, _x509Crl) => {
 ```
 
 
-<a id="createx509crl2"></a>
-
 ## createX509Crl
 
 ```TypeScript
@@ -99,7 +95,7 @@ function createX509Crl(inStream: EncodingBlob): Promise<X509Crl>
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 11开始废弃，建议使用
-> [cert.createX509CRL()](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl2)替代。
+> [cert.createX509CRL()](arkts-devicecertificate-cert-createx509crl-f.md#createx509crl)替代。
 
 **起始版本：** 9
 
@@ -127,7 +123,7 @@ function createX509Crl(inStream: EncodingBlob): Promise<X509Crl>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | This operation is not supported. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 

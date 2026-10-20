@@ -6,8 +6,6 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
-<a id="cancel1"></a>
-
 ## cancel
 
 ```TypeScript
@@ -124,8 +122,6 @@ concurrentFunc();
 ```
 
 
-<a id="cancel2"></a>
-
 ## cancel
 
 ```TypeScript
@@ -194,8 +190,6 @@ function concurrentFunc() {
 concurrentFunc();
 ```
 
-
-<a id="cancel3"></a>
 
 ## cancel
 

@@ -6,8 +6,6 @@ export interface LayerMask
 
 Defines the layer mask of a node.
 
-@interface LayerMask
-
 **Since:** 12
 
 <!--Device-unnamed-export interface LayerMask--><!--Device-unnamed-export interface LayerMask-End-->

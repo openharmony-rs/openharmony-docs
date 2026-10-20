@@ -30,7 +30,7 @@ Sets an application clone as the default application of the specified type. This
 | --- | --- | --- | --- |
 | type | string | Yes | Type of the application. The value can be a value of [ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md), [MIMEType](../../../database/uniform-data-type-list.md#generic-utds), or [UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md). |
 | elementName | [ElementName](arkts-ability-elementname-i.md) | Yes | Element information of the application. Only **bundleName**, **abilityName**, and **moduleName** are used, and the three properties must be set. |
-| appIndex | number | Yes | Index of the application clone.<br>The options include 1, 2, 3, 4, and 5. |
+| appIndex | number | Yes | Index of the application clone. <br>The options include 1, 2, 3, 4, and 5. |
 | userId | number | No | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). <br>Default value: the ID of the user that calls the API. |
 
 **Error codes:**

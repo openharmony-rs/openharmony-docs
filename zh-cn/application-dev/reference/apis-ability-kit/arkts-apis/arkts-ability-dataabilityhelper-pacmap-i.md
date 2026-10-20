@@ -25,7 +25,7 @@ export interface PacMap
 **起始版本：** 7
 
 **模型约束：** 
-- API版本7-10：此接口仅可在FA模型下使用。
+- API版本11+：此接口可在Stage模型和FA模型下使用。
 
 <!--Device-PacMap-[key: string]: number | string | boolean | Array<string | number | boolean> | null--><!--Device-PacMap-[key: string]: number | string | boolean | Array<string | number | boolean> | null-End-->
 

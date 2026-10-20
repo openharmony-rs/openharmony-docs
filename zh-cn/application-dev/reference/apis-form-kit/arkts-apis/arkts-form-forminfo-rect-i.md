@@ -6,8 +6,6 @@ interface Rect
 
 通用矩形区域信息。可用于描述卡片坐标区域、互动卡片动效区域等信息。
 
-@typedef Rect
-
 **起始版本：** 20
 
 <!--Device-formInfo-interface Rect--><!--Device-formInfo-interface Rect-End-->

@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="subscribe1"></a>
-
 ## subscribe
 
 ```TypeScript
@@ -36,8 +34,31 @@ Subscribes to notifications of all applications under this user. This API uses a
 | subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | Yes | Notification subscriber. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
+**Examples**
 
-<a id="subscribe2"></a>
+```TypeScript
+import Base from '@ohos.base';
+import NotificationSubscribe from '@ohos.notificationSubscribe';
+
+let subscribeCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("subscribe failed " + JSON.stringify(err));
+  } else {
+    console.info("subscribe success");
+  }
+}
+function onConsumeCallback(data: NotificationSubscribe.SubscribeCallbackData) {
+  console.info("Consume callback: " + JSON.stringify(data));
+}
+let subscriber: NotificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+Notification.subscribe(subscriber, subscribeCallback);
+```
+
+<!--DelEnd-->
+
 
 ## subscribe
 
@@ -73,8 +94,35 @@ Subscribes to a notification with the subscription information specified. This A
 | info | [NotificationSubscribeInfo](arkts-notification-notificationsubscribeinfo-i-sys.md) | Yes | Notification subscription information. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
+**Examples**
 
-<a id="subscribe3"></a>
+```TypeScript
+import Base from '@ohos.base';
+import NotificationSubscribe from '@ohos.notificationSubscribe';
+
+// subscribe callback
+let subscribeCallback = (err: Base.BusinessError) => {
+  if (err) {
+    console.error("subscribe failed " + JSON.stringify(err));
+  } else {
+    console.info("subscribe success");
+  }
+}
+let onConsumeCallback = (data: NotificationSubscribe.SubscribeCallbackData) => {
+  console.info("Consume callback: " + JSON.stringify(data));
+}
+let subscriber: NotificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+let info: NotificationSubscribe.NotificationSubscribeInfo = {
+  bundleNames: ["bundleName1", "bundleName2"]
+};
+Notification.subscribe(subscriber, info, subscribeCallback);
+```
+
+<!--DelEnd-->
+
 
 ## subscribe
 
@@ -110,3 +158,25 @@ Subscribes to a notification with the subscription information specified. This A
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+import NotificationSubscribe from '@ohos.notificationSubscribe';
+
+function onConsumeCallback(data: NotificationSubscribe.SubscribeCallbackData) {
+  console.info("Consume callback: " + JSON.stringify(data));
+}
+let subscriber: NotificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+Notification.subscribe(subscriber).then(() => {
+  console.info("subscribe success");
+}).catch((err: Base.BusinessError) => {
+  console.error(`subscribe failed, code is ${err}`);
+});
+```
+
+<!--DelEnd-->

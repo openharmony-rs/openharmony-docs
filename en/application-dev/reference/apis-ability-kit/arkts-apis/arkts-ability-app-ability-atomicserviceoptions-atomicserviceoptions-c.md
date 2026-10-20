@@ -79,3 +79,53 @@ Additional parameters. For details, see the **parameters** field in [Want](arkts
 <!--Device-AtomicServiceOptions-parameters?: Record<string, Object>--><!--Device-AtomicServiceOptions-parameters?: Record<string, Object>-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**Examples**
+
+```TypeScript
+import { UIAbility, AtomicServiceOptions, common, wantConstant, CompletionHandlerForAtomicService, FailureCode } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let completionHandler: CompletionHandlerForAtomicService = {
+      // Callback for handling the successful opening of the atomic service.
+      onAtomicServiceRequestSuccess(appId: string) {
+        hilog.info(0x0000, 'testTag', `appId:${appId}`);
+      },
+      // Callback for handling the failure to open the atomic service.
+      onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMessage: string) {
+        hilog.info(0x0000, 'testTag', `appId:${appId}, failureCode:${failureCode}, failureMessage:${failureMessage}`);
+      }
+    };
+    // Define the startup options of the atomic service.
+    let options: AtomicServiceOptions = {
+      // Use the install-free capability to automatically trigger installation when the target atomic service is not installed.
+      flags: wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
+      parameters: {
+        'demo.result': 123456
+      },
+      completionHandlerForAtomicService: completionHandler
+    };
+
+    try {
+      let appId: string = '6918661953712445909'; // Use the actual appId.
+      this.context.openAtomicService(appId, options) // Open the atomic service.
+        .then((result: common.AbilityResult) => {
+          // Business logic processing after the atomic service is opened successfully.
+          console.info('openAtomicService succeed');
+        })
+        .catch((err: BusinessError) => {
+          // Handle the business logic for the failure to open the atomic service.
+          console.error(`openAtomicService failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      // Process input parameter errors.
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`openAtomicService failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```

@@ -6,8 +6,6 @@
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="tracebyvalue1"></a>
-
 ## traceByValue
 
 ```TypeScript
@@ -43,8 +41,6 @@ hiTraceMeter.traceByValue("myTestCount", traceCount);  // 当myTestCount发生�
 // 业务流程......
 ```
 
-
-<a id="tracebyvalue2"></a>
 
 ## traceByValue
 

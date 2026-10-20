@@ -12,8 +12,6 @@ WebGL 1.0
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
 
-<a id="bufferdata1"></a>
-
 ## bufferData
 
 ```TypeScript
@@ -37,8 +35,6 @@ Sets buffer data
 | target | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Buffer target |
 | size | [GLsizeiptr](arkts-arkgraphics2d-glsizeiptr-t.md) | Yes | Buffer size |
 | usage | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Buffer usage |
-
-<a id="bufferdata2"></a>
 
 ## bufferData
 
@@ -159,7 +155,7 @@ Compressed texture sub image 2D
 | yoffset | [GLint](arkts-arkgraphics2d-glint-t.md) | Yes | Y offset |
 | width | [GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Width |
 | height | [GLsizei](arkts-arkgraphics2d-glsizei-t.md) | Yes | Height |
-| format | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | [Format](../../apis-mind-spore-lite-kit/arkts-apis/arkts-mindsporelite-mindsporelite-format-e.md) |
+| format | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Format |
 | data | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) | Yes | Compressed image data |
 
 ## readPixels
@@ -197,8 +193,6 @@ Reads pixels from the framebuffer
 | format | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel format |
 | type | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | pixels | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) &#124; null | Yes | Pixel buffer |
-
-<a id="teximage2d1"></a>
 
 ## texImage2D
 
@@ -240,8 +234,6 @@ Sets texture image 2D from pixels
 | type | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | pixels | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) &#124; null | Yes | Pixel data |
 
-<a id="teximage2d2"></a>
-
 ## texImage2D
 
 ```TypeScript
@@ -275,8 +267,6 @@ Sets texture image 2D from TexImageSource
 | format | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel format |
 | type | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | source | [TexImageSource](arkts-arkgraphics2d-teximagesource-t.md) | Yes | Image source |
-
-<a id="texsubimage2d1"></a>
 
 ## texSubImage2D
 
@@ -317,8 +307,6 @@ Sets texture sub image 2D from pixels
 | format | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel format |
 | type | [GLenum](arkts-arkgraphics2d-glenum-t.md) | Yes | Pixel type |
 | pixels | [ArrayBufferView](../../apis-default/arkts-apis/arkts-lib-es5-arraybufferview-i.md) &#124; null | Yes | Pixel data |
-
-<a id="texsubimage2d2"></a>
 
 ## texSubImage2D
 

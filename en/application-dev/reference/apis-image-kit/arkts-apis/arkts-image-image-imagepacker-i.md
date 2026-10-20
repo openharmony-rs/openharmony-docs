@@ -8,7 +8,7 @@ The **ImagePacker** class provides APIs to compress and encode images.
 
 Before calling any API in ImagePacker, you must use [image.createImagePacker](arkts-image-image-createimagepacker-f.md) to create an ImagePacker instance. During encoding, do not modify or release the ImageSource, PixelMap, or Picture object that is being used as the input. Otherwise, a crash or other undefined behavior may occur.
 
-Images occupy a large amount of memory. When you finish using an ImagePacker instance, call [release](#release1) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+Images occupy a large amount of memory. When you finish using an ImagePacker instance, call [release](#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 Currently, the following formats are supported: jpeg, webp, png, heic<sup>12+</sup>, and gif<sup>18+</sup>. (The supported formats may vary depending on the hardware. You can refer to the **supportedFormats** property of ImagePacker to see which ones are supported.)
 
@@ -118,7 +118,7 @@ Compresses or packs an image into a file and uses a promise to return the result
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bufferInfo | [BinaryBufferInfo](arkts-image-image-binarybufferinfo-i.md) | Yes | image buffer info. |
-| fd | number | Yes | ID of a file descriptor<br>The value must be a positive integer. |
+| fd | number | Yes | ID of a file descriptor <br>The value must be a positive integer. |
 | options | [PackingOptionsForTiff](arkts-image-image-packingoptionsfortiff-i.md) | No | Options for tiff image packing. |
 
 **Return value:**
@@ -175,8 +175,6 @@ async function PackBinaryImageToTiffFile(context: Context) {
   fileIo.closeSync(file);
 }
 ```
-
-<a id="packing5"></a>
 
 ## packing
 
@@ -243,8 +241,6 @@ async function Packing(context: Context) {
 }
 ```
 
-<a id="packing1"></a>
-
 ## packing
 
 ```TypeScript
@@ -293,8 +289,6 @@ async function Packing(context : Context) {
   })
 }
 ```
-
-<a id="packing2"></a>
 
 ## packing
 
@@ -348,8 +342,6 @@ async function Packing(context : Context) {
     })
 }
 ```
-
-<a id="packing3"></a>
 
 ## packing
 
@@ -408,8 +400,6 @@ async function Packing() {
   })
 }
 ```
-
-<a id="packing4"></a>
 
 ## packing
 
@@ -473,8 +463,6 @@ async function Packing() {
 }
 ```
 
-<a id="packtodata1"></a>
-
 ## packToData
 
 ```TypeScript
@@ -537,8 +525,6 @@ async function PackToData(context : Context) {
     })
 }
 ```
-
-<a id="packtodata2"></a>
 
 ## packToData
 
@@ -674,8 +660,6 @@ async function PackToDataFromPixelmapSequence(context : Context) {
 }
 ```
 
-<a id="packtofile1"></a>
-
 ## packToFile
 
 ```TypeScript
@@ -736,8 +720,6 @@ async function PackToFile(context : Context) {
   })
 }
 ```
-
-<a id="packtofile2"></a>
 
 ## packToFile
 
@@ -802,8 +784,6 @@ async function PackToFile(context : Context) {
   })
 }
 ```
-
-<a id="packtofile3"></a>
 
 ## packToFile
 
@@ -872,8 +852,6 @@ async function PackToFile(context : Context) {
   })
 }
 ```
-
-<a id="packtofile4"></a>
 
 ## packToFile
 
@@ -946,8 +924,6 @@ async function PackToFile(context : Context) {
   })
 }
 ```
-
-<a id="packtofile5"></a>
 
 ## packToFile
 
@@ -1085,8 +1061,6 @@ async function PackToFile(context : Context) {
 }
 ```
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -1127,8 +1101,6 @@ async function Release() {
   })
 }
 ```
-
-<a id="release2"></a>
 
 ## release
 

@@ -6,8 +6,6 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
-<a id="upload1"></a>
-
 ## upload
 
 ```TypeScript
@@ -20,7 +18,7 @@ Uploads a file. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile2)(context: BaseContext, config: UploadConfig)
+**Substitutes:** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile)(context: BaseContext, config: UploadConfig)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -64,8 +62,6 @@ request.upload(uploadConfig, (err: BusinessError, data: request.UploadTask) => {
 ```
 
 
-<a id="upload2"></a>
-
 ## upload
 
 ```TypeScript
@@ -78,7 +74,7 @@ Uploads a file. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile2)(context: BaseContext, config: UploadConfig)
+**Substitutes:** [uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile)(context: BaseContext, config: UploadConfig)
 
 **Required permissions:** ohos.permission.INTERNET
 

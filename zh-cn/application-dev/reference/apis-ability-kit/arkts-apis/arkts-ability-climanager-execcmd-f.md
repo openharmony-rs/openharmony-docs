@@ -17,7 +17,6 @@ function execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise<CliSessi
 **起始版本：** 26.0.1
 
 **需要权限：** 
-- API版本26：ohos.permission.EXEC_CLI_TOOL
 - API版本26+：ohos.permission.EXEC_CLI_TOOL or ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -44,7 +43,6 @@ function execCmd(cmd: string, execCmdOptions?: ExecCmdOptions): Promise<CliSessi
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 26.0.0 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: Failed to call the API due to limited device capabilities.<br>**适用版本：** 26.0.1+ |
 | [35600031](../errorcode-ability.md#35600031-工具并发数已达上限) | Maximum number of processes has been reached. |
 | [35600050](../errorcode-ability.md#35600050-偶发性报错) | System Error. 1. Failed to connect to the system service;         2. The system service failed to communicate with the dependent module. |

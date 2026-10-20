@@ -18,8 +18,6 @@ Provides the ImageProcessor type, including the processing function. @typedef Im
 import { videoProcessingEngine } from '@kit.ImageKit';
 ```
 
-<a id="enhancedetail1"></a>
-
 ## enhanceDetail
 
 ```TypeScript
@@ -55,9 +53,9 @@ The function generate the destinationImage from sourceImage with necessary scali
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function enhanceDetail can not work correctly due to<br>limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function enhanceDetail can not work correctly due to <br>limited device capabilities. |
 | [29200007](../errorcode-videoprocessingengine.md#29200007-insufficient-memory) | Out of memory. |
-| [29200009](../errorcode-videoprocessingengine.md#29200009-invalid-value) | Input value is invalid. This error is returned for<br>all of the following error conditions: <br>1 - Invalid input or output image buffer - The image buffer width(height) <br>is too large or colorspace is incorrect. <br>2 - Invalid parameter - The parameter does not contain valid information, <br>such as detail enhancer level is incorrect. |
+| [29200009](../errorcode-videoprocessingengine.md#29200009-invalid-value) | Input value is invalid. This error is returned for <br>all of the following error conditions: <br>1 - Invalid input or output image buffer - The image buffer width(height) <br>is too large or colorspace is incorrect. <br>2 - Invalid parameter - The parameter does not contain valid information, <br>such as detail enhancer level is incorrect. |
 
 **Examples**
 
@@ -72,8 +70,6 @@ async function enhanceDetail(sourceImage: image.PixelMap, width: number, height:
     imageProcessor.enhanceDetail(sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
-
-<a id="enhancedetail2"></a>
 
 ## enhanceDetail
 
@@ -109,9 +105,9 @@ The function generate the destinationImage from sourceImage with necessary scali
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function enhanceDetail can not work correctly due to<br>limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function enhanceDetail can not work correctly due to <br>limited device capabilities. |
 | [29200007](../errorcode-videoprocessingengine.md#29200007-insufficient-memory) | Out of memory. |
-| [29200009](../errorcode-videoprocessingengine.md#29200009-invalid-value) | Input value is invalid. This error is returned for<br>all of the following error conditions: <br>1 - Invalid input or output image buffer - The image buffer width(height) <br>is too large or colorspace is incorrect. <br>2 - Invalid parameter - The parameter does not contain valid information, <br>such as detail enhancer level is incorrect. |
+| [29200009](../errorcode-videoprocessingengine.md#29200009-invalid-value) | Input value is invalid. This error is returned for <br>all of the following error conditions: <br>1 - Invalid input or output image buffer - The image buffer width(height) <br>is too large or colorspace is incorrect. <br>2 - Invalid parameter - The parameter does not contain valid information, <br>such as detail enhancer level is incorrect. |
 
 **Examples**
 
@@ -126,8 +122,6 @@ async function enhanceDetail(sourceImage: image.PixelMap, scale: number) {
     imageProcessor.enhanceDetail(sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
-
-<a id="enhancedetailsync1"></a>
 
 ## enhanceDetailSync
 
@@ -158,16 +152,16 @@ The function generate the destinationImage from sourceImage with necessary scali
 
 | Type | Description |
 | --- | --- |
-| [image.PixelMap](arkts-image-image-pixelmap-i.md) | Returns the destination pixelmap instance .<br>if the operation is successful; Otherwise, return undefined. |
+| [image.PixelMap](arkts-image-image-pixelmap-i.md) | Returns the destination pixelmap instance . <br>if the operation is successful; Otherwise, return undefined. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function enhanceDetailSync can not work correctly due<br>to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function enhanceDetailSync can not work correctly due <br>to limited device capabilities. |
 | [29200004](../errorcode-videoprocessingengine.md#29200004-processing-failure) | Failed to process image buffer. For example, the processing times out. |
 | [29200007](../errorcode-videoprocessingengine.md#29200007-insufficient-memory) | Out of memory. |
-| [29200009](../errorcode-videoprocessingengine.md#29200009-invalid-value) | Input value is invalid. This error is returned for<br>all of the following error conditions: <br>1 - Invalid input or output image buffer - The image buffer width(height) <br>is too large or colorspace is incorrect. <br>2 - Invalid parameter - The parameter does not contain valid information, <br>such as detail enhancer level is incorrect. |
+| [29200009](../errorcode-videoprocessingengine.md#29200009-invalid-value) | Input value is invalid. This error is returned for <br>all of the following error conditions: <br>1 - Invalid input or output image buffer - The image buffer width(height) <br>is too large or colorspace is incorrect. <br>2 - Invalid parameter - The parameter does not contain valid information, <br>such as detail enhancer level is incorrect. |
 
 **Examples**
 
@@ -182,8 +176,6 @@ async function enhanceDetailSync(sourceImage: image.PixelMap, width: number, hei
     sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
-
-<a id="enhancedetailsync2"></a>
 
 ## enhanceDetailSync
 
@@ -213,16 +205,16 @@ The function generate the destinationImage from sourceImage with necessary scali
 
 | Type | Description |
 | --- | --- |
-| [image.PixelMap](arkts-image-image-pixelmap-i.md) | Returns the destination pixelmap instance<br>if the operation is successful; Otherwise, return undefined. |
+| [image.PixelMap](arkts-image-image-pixelmap-i.md) | Returns the destination pixelmap instance <br>if the operation is successful; Otherwise, return undefined. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function enhanceDetailSync can not work correctly due<br>to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Function enhanceDetailSync can not work correctly due <br>to limited device capabilities. |
 | [29200004](../errorcode-videoprocessingengine.md#29200004-processing-failure) | Failed to process image buffer. For example, the processing times out. |
 | [29200007](../errorcode-videoprocessingengine.md#29200007-insufficient-memory) | Out of memory. |
-| [29200009](../errorcode-videoprocessingengine.md#29200009-invalid-value) | Input value is invalid. This error is returned for<br>all of the following error conditions: <br>1 - Invalid input or output image buffer - The image buffer width(height) <br>is too large or colorspace is incorrect. <br>2 - Invalid parameter - The parameter does not contain valid information, <br>such as detail enhancer level is incorrect. |
+| [29200009](../errorcode-videoprocessingengine.md#29200009-invalid-value) | Input value is invalid. This error is returned for <br>all of the following error conditions: <br>1 - Invalid input or output image buffer - The image buffer width(height) <br>is too large or colorspace is incorrect. <br>2 - Invalid parameter - The parameter does not contain valid information, <br>such as detail enhancer level is incorrect. |
 
 **Examples**
 

@@ -6,8 +6,6 @@ interface QrCodeInfo
 
 二维码信息的定义。
 
-@interface QrCodeInfo
-
 **起始版本：** 23
 
 <!--Device-avMusicTemplate-interface QrCodeInfo--><!--Device-avMusicTemplate-interface QrCodeInfo-End-->

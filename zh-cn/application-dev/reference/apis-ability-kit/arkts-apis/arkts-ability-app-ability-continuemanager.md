@@ -6,6 +6,8 @@ continueManager提供了应用跨端迁移的管理能力，如获取应用跨�
 
 **起始版本：** 18
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-unnamed-declare namespace continueManager--><!--Device-unnamed-declare namespace continueManager-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission

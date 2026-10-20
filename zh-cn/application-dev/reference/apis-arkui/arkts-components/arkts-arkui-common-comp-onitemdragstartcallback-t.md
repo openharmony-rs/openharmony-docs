@@ -6,8 +6,6 @@ declare type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: number) 
 
 开始拖拽列表或网格元素时触发的回调。
 
-@typedef { function } OnItemDragStartCallback
-
 **起始版本：** 23
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。

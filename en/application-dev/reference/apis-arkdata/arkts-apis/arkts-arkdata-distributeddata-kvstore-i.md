@@ -21,8 +21,6 @@ Provides APIs to manage data in a KV store, for example, adding or deleting data
 ```TypeScript
 ```
 
-<a id="commit1"></a>
-
 ## commit
 
 ```TypeScript
@@ -64,8 +62,6 @@ try {
 }
 ```
 
-<a id="commit2"></a>
-
 ## commit
 
 ```TypeScript
@@ -104,8 +100,6 @@ try {
     console.error('Commit e ' + e);
 }
 ```
-
-<a id="delete1"></a>
 
 ## delete
 
@@ -158,8 +152,6 @@ try {
 }
 ```
 
-<a id="delete2"></a>
-
 ## delete
 
 ```TypeScript
@@ -211,8 +203,6 @@ try {
     console.error("An unexpected error occurred. Error:" + e);
 }
 ```
-
-<a id="deletebatch1"></a>
 
 ## deleteBatch
 
@@ -269,8 +259,6 @@ try {
     console.error('DeleteBatch e ' + e);
 }
 ```
-
-<a id="deletebatch2"></a>
 
 ## deleteBatch
 
@@ -337,8 +325,6 @@ try {
 }
 ```
 
-<a id="enablesync1"></a>
-
 ## enableSync
 
 ```TypeScript
@@ -380,8 +366,6 @@ try {
     console.error('EnableSync e ' + e);
 }
 ```
-
-<a id="enablesync2"></a>
 
 ## enableSync
 
@@ -427,8 +411,6 @@ try {
     console.error('EnableSync e ' + e);
 }
 ```
-
-<a id="off1"></a>
 
 ## off
 
@@ -476,8 +458,6 @@ class KvstoreModel {
 }
 ```
 
-<a id="off2"></a>
-
 ## off
 
 ```TypeScript
@@ -524,8 +504,6 @@ class KvstoreModel {
 }
 ```
 
-<a id="on1"></a>
-
 ## on
 
 ```TypeScript
@@ -561,8 +539,6 @@ kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, fun
 });
 ```
 
-<a id="on2"></a>
-
 ## on
 
 ```TypeScript
@@ -596,8 +572,6 @@ kvStore.on('syncComplete', function (data) {
     console.info("callback call data: " + data);
 });
 ```
-
-<a id="put1"></a>
 
 ## put
 
@@ -643,8 +617,6 @@ try {
     console.error("An unexpected error occurred. Error:" + e);
 }
 ```
-
-<a id="put2"></a>
 
 ## put
 
@@ -693,8 +665,6 @@ try {
     console.error("An unexpected error occurred. Error:" + e);
 }
 ```
-
-<a id="putbatch1"></a>
 
 ## putBatch
 
@@ -751,8 +721,6 @@ try {
     console.info('PutBatch e ' + JSON.stringify(e));
 }
 ```
-
-<a id="putbatch2"></a>
 
 ## putBatch
 
@@ -818,8 +786,6 @@ try {
 }
 ```
 
-<a id="rollback1"></a>
-
 ## rollback
 
 ```TypeScript
@@ -861,8 +827,6 @@ try {
 }
 ```
 
-<a id="rollback2"></a>
-
 ## rollback
 
 ```TypeScript
@@ -901,8 +865,6 @@ try {
     console.error('Rollback e ' + e);
 }
 ```
-
-<a id="setsyncrange1"></a>
 
 ## setSyncRange
 
@@ -944,8 +906,6 @@ try {
     console.error('SetSyncRange e ' + e);
 }
 ```
-
-<a id="setsyncrange2"></a>
 
 ## setSyncRange
 
@@ -994,8 +954,6 @@ try {
     console.error('SetSyncRange e ' + e);
 }
 ```
-
-<a id="starttransaction1"></a>
 
 ## startTransaction
 
@@ -1057,8 +1015,6 @@ try {
     console.error('startTransaction e ' + e);
 }
 ```
-
-<a id="starttransaction2"></a>
 
 ## startTransaction
 

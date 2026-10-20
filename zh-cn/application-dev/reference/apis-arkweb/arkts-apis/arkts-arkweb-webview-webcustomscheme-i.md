@@ -6,8 +6,6 @@ interface WebCustomScheme
 
 自定义协议配置。
 
-@interface WebCustomScheme [since 9 - 11]
-
 **起始版本：** 9
 
 <!--Device-webview-interface WebCustomScheme--><!--Device-webview-interface WebCustomScheme-End-->

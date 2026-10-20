@@ -6,8 +6,6 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="startcastdevicediscovery1"></a>
-
 ## startCastDeviceDiscovery
 
 ```TypeScript
@@ -47,8 +45,6 @@ avSession.startCastDeviceDiscovery(() => {
 
 <!--DelEnd-->
 
-
-<a id="startcastdevicediscovery2"></a>
 
 ## startCastDeviceDiscovery
 
@@ -92,8 +88,6 @@ avSession.startCastDeviceDiscovery(filter, () => {
 
 <!--DelEnd-->
 
-
-<a id="startcastdevicediscovery3"></a>
 
 ## startCastDeviceDiscovery
 

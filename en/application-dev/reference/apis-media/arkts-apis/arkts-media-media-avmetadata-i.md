@@ -167,7 +167,7 @@ Description of the media asset. This parameter is not supported in AVRecorder se
 duration?: string
 ```
 
-Duration of the media asset. This parameter is not supported in AVRecorder settings.
+Duration of the media asset, in ms. This parameter is not supported in AVRecorder settings.
 
 **Type:** string
 

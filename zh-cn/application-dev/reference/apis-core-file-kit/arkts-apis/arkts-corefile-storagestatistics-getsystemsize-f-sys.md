@@ -6,8 +6,6 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
-<a id="getsystemsize1"></a>
-
 ## getSystemSize
 
 ```TypeScript
@@ -60,8 +58,6 @@ storageStatistics.getSystemSize((error: BusinessError, number: number) => {
 
 <!--DelEnd-->
 
-
-<a id="getsystemsize2"></a>
 
 ## getSystemSize
 

@@ -8,9 +8,9 @@ enum BlurType
 
 | 名称 | 值 | 说明 | 示意图 |  
 | ------ | - | ------------------ | -------- |  
-| NORMAL | 0 | 全面模糊，外圈和内部实体一起模糊。 | ![NORMAL](../../../reference/apis-arkgraphics2d/figures/BlurType-Normal.png) |
-| SOLID | 1 | 内部实体不变，只模糊外圈边缘部分。 | ![SOLID](../../../reference/apis-arkgraphics2d/figures/BlurType-Solid.png) |
-| OUTER | 2 | 只有外圈边缘模糊，内部实体完全透明。 | ![OUTER](../../../reference/apis-arkgraphics2d/figures/BlurType-Outer.png) |
+| NORMAL | 0 | 全面模糊，外圈和内部实体一起模糊。 | ![NORMAL](../../../reference/apis-arkgraphics2d/figures/BlurType-Normal.png) |  
+| SOLID | 1 | 内部实体不变，只模糊外圈边缘部分。 | ![SOLID](../../../reference/apis-arkgraphics2d/figures/BlurType-Solid.png) |  
+| OUTER | 2 | 只有外圈边缘模糊，内部实体完全透明。 | ![OUTER](../../../reference/apis-arkgraphics2d/figures/BlurType-Outer.png) |  
 | INNER | 3 | 只有内部实体模糊，外圈边缘清晰。 | ![INNER](../../../reference/apis-arkgraphics2d/figures/BlurType-Inner.png) |
 
 **起始版本：** 12

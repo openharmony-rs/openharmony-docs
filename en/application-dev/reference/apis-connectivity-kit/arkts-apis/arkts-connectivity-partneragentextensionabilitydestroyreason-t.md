@@ -6,8 +6,6 @@ type PartnerAgentExtensionAbilityDestroyReason = partnerAgent.PartnerAgentExtens
 
 The reasons for destroying partner agent extension ability.
 
-@typedef { partnerAgent.PartnerAgentExtensionAbilityDestroyReason } PartnerAgentExtensionAbilityDestroyReason
-
 **Type:** [partnerAgent.PartnerAgentExtensionAbilityDestroyReason](arkts-connectivity-partneragent-partneragentextensionabilitydestroyreason-e.md)
 
 **Since:** 23

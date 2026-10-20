@@ -6,8 +6,6 @@ interface GeneratorResultPageIcon
 
 Custom icon object in the generation result page of ImageGeneratorDialog.
 
-@interface GeneratorResultPageIcon
-
 **Since:** 23
 
 <!--Device-imageGeneration-interface GeneratorResultPageIcon--><!--Device-imageGeneration-interface GeneratorResultPageIcon-End-->

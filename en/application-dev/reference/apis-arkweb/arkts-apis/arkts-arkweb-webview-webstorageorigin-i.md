@@ -6,8 +6,6 @@ interface WebStorageOrigin
 
 Provides usage information of the Web SQL Database.
 
-@interface WebStorageOrigin [since 9 - 11]
-
 **Since:** 9
 
 <!--Device-webview-interface WebStorageOrigin--><!--Device-webview-interface WebStorageOrigin-End-->

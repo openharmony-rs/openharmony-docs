@@ -4,7 +4,7 @@
 export class UIInspector
 ```
 
-Provides APIs for registering the component layout and drawing display completion callbacks.
+Provides the capability to register callbacks for component layout and component draw-to-display completion notifications. "Draw-to-display" means that the drawing commands of the node are sent to the graphics service and have been successfully displayed. For example, you can obtain the precise component size after layout is complete, or perform operations such as screenshot capture or animation synchronization after draw-to-display is complete. This is suitable for scenarios where precise awareness of component layout and drawing timing is required.
 
 **Since:** 10
 
@@ -21,15 +21,13 @@ import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
 import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
 ```
 
-<a id="createcomponentobserver1"></a>
-
 ## createComponentObserver
 
 ```TypeScript
 createComponentObserver(id: string): inspector.ComponentObserver
 ```
 
-Registers a callback for layout and drawing display completion notifications for a specific component.
+Registers callbacks for component layout and component draw-to-display completion notifications. For example, you can obtain the precise component size after layout is complete, or perform operations such as screenshot capture or animation synchronization after draw-to-display is complete.
 
 **Since:** 10
 
@@ -96,15 +94,13 @@ struct UIInspectorExample {
 }
 ```
 
-<a id="createcomponentobserver2"></a>
-
 ## createComponentObserver
 
 ```TypeScript
 createComponentObserver(id: string | number): inspector.ComponentObserver
 ```
 
-Registers a callback for layout and drawing display completion notifications for a specific component. <br>Display refers to the process of sending the drawing command of a node to the graphics service and completing <br>the display. Compared with createComponentObserver, this API supports the input of **UniqueID** (the unique ID <br>allocated by the system to a node).
+Registers callbacks for component layout and component draw-to-display completion notifications. "Draw-to-display"means that the drawing commands of the node are sent to the graphics service and have been successfully displayed. For example, you can obtain the precise component size after layout is complete, or perform operations such as screenshot capture or animation synchronization after draw-to-display is complete. <br>Compared with createComponentObserver, this API additionally supports the input of **UniqueID** (the unique ID <br>allocated by the system to a node).
 
 **Since:** 23
 
@@ -120,7 +116,7 @@ Registers a callback for layout and drawing display completion notifications for
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string &#124; number | Yes | When the type is string, it indicates the ID of the specified component, set using the universal attributes [id](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id) or [key](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#key). <br>When the type is number, it indicates the unique ID of the node allocated by the system, obtained through <br>[getUniqueId](arkts-arkui-framenode-c.md#getuniqueid). When using the unique ID to create a listener handle, <br>ensure that the node corresponding to the unique ID exists. Otherwise, the listener does not take effect. <br>The value of the parameter in the number type is an integer ranging from 1 to 2147483647. |
+| id | string &#124; number | Yes | When the type is string, this parameter specifies the component ID, which is set through the universal attribute [id](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id) or [key](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#key). When using a component ID to create a listener handle, ensure that the component corresponding to the ID already exists; otherwise, the listener will not take effect. When the type is number, this parameter specifies the UniqueID, which is a unique identifier assigned by the system to a node and can be obtained through [getUniqueId](arkts-arkui-framenode-c.md#getuniqueid). When using a UniqueID to create a listener handle, ensure that the node corresponding to the UniqueID already exists; otherwise, the listener will not take effect. The value range of the number type is an integer from 1 to 2147483647. |
 
 **Return value:**
 

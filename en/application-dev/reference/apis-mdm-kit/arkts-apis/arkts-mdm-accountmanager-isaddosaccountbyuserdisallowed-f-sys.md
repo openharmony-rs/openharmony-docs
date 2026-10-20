@@ -41,7 +41,7 @@ Queries whether to disallow a user to add accounts.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns **true** if the user is not allowed to add system accounts;<br>returns **false** otherwise. |
+| boolean | Returns **true** if the user is not allowed to add system accounts; <br>returns **false** otherwise. |
 
 **Error codes:**
 

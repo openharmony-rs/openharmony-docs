@@ -6,8 +6,6 @@ interface DialogButtonInfo
 
 对话框按钮信息的定义。
 
-@interface DialogButtonInfo
-
 **起始版本：** 23
 
 <!--Device-avMusicTemplate-interface DialogButtonInfo--><!--Device-avMusicTemplate-interface DialogButtonInfo-End-->

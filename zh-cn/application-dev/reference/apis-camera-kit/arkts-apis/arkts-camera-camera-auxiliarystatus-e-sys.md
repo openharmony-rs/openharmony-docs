@@ -4,7 +4,7 @@
 enum AuxiliaryStatus
 ```
 
-Enum for auxiliary status.
+辅助镜头状态枚举。
 
 **起始版本：** 18
 
@@ -20,7 +20,7 @@ Enum for auxiliary status.
 LOCKED = 0
 ```
 
-Auxiliary locked.
+辅助镜头已锁定。
 
 **起始版本：** 18
 
@@ -36,7 +36,7 @@ Auxiliary locked.
 OFF = 2
 ```
 
-Turn off auxiliary.
+关闭辅助镜头。
 
 **起始版本：** 18
 
@@ -52,7 +52,7 @@ Turn off auxiliary.
 ON = 1
 ```
 
-Turn on auxiliary.
+开启辅助镜头。
 
 **起始版本：** 18
 

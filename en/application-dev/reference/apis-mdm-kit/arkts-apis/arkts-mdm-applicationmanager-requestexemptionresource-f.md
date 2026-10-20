@@ -32,7 +32,7 @@ The exemption is time-limited. When the specified duration expires, the system a
 | --- | --- | --- | --- |
 | resourceType | [StandbyResourceType](arkts-mdm-applicationmanager-standbyresourcetype-e.md) | Yes | Standby resource type. |
 | bundleName | string | Yes | Bundle name of the application to apply for the resource exemption. |
-| duration | number | Yes | Exemption duration.<br>Unit: Seconds. The value must be greater than 0. |
+| duration | number | Yes | Exemption duration. <br>Unit: Seconds. The value must be greater than 0. |
 
 **Error codes:**
 

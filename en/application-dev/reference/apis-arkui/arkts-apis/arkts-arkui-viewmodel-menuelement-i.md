@@ -6,8 +6,6 @@ export interface MenuElement extends Element
 
 The <menu> component provides menus as temporary pop-up windows to display operations that can be performed by users.
 
-@extends Element @interface MenuElement
-
 **Inheritance/Implementation:** MenuElement extends [Element](arkts-arkui-viewmodel-element-i.md)
 
 **Since:** 4

@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="getdisalloweduninstallbundlessync1"></a>
-
 ## getDisallowedUninstallBundlesSync
 
 ```TypeScript
@@ -69,8 +67,6 @@ try {
 }
 ```
 
-
-<a id="getdisalloweduninstallbundlessync2"></a>
 
 ## getDisallowedUninstallBundlesSync
 

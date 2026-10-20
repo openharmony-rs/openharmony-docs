@@ -71,3 +71,77 @@ Unit: page.
 <!--Device-PageSwitchActionProposal-pageCount: int--><!--Device-PageSwitchActionProposal-pageCount: int-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Examples**
+
+This example implements custom smart gesture action handling as smart gesture page turning action handling in the smart gesture listening callback. For the complete example, see [Example 1: Enabling Smart Gestures and Customizing Action Handling](./arkts-apis-uicontext-smartgesturecontroller.md#example-1-enabling-smart-gestures-and-customizing-action-handling).
+
+```TypeScript
+import {
+  BaseGestureHandlingProposal,
+  GestureHandlingResolution,
+  PageSwitchActionProposal,
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SmartGestureControllerExample {
+  private controller = this.getUIContext().getSmartGestureController();
+  private smartGestureMonitor = (proposal: BaseGestureHandlingProposal) => {
+    let result = new GestureHandlingResolution(true);
+    let node = this.getUIContext().getFrameNodeById('target_swiper');
+    if (node) {
+      let pageSwitchProposal = new PageSwitchActionProposal(node, 2);
+      result.selectedProposal = pageSwitchProposal;
+    }
+    return result;
+  };
+
+  aboutToAppear(): void {
+    this.controller.enableSmartTapAndSlideGestures(true);
+    this.controller.registerMonitor(this.smartGestureMonitor);
+  }
+
+  aboutToDisappear(): void {
+    this.controller.clearMonitors();
+    this.controller.enableSmartTapAndSlideGestures(false);
+  }
+
+  build() {
+    Scroll() {
+      Column({ space: 12 }) {
+        Swiper() {
+          Column({ space: 8 }) {
+            Text('page 0')
+          }
+          .justifyContent(FlexAlign.Start)
+          .padding(12)
+
+          Column({ space: 8 }) {
+            Text('page 1')
+          }
+          .justifyContent(FlexAlign.Start)
+          .padding(12)
+
+          Column({ space: 8 }) {
+            Text('page 2')
+          }
+          .justifyContent(FlexAlign.Start)
+          .padding(12)
+        }
+        .width(180)
+        .height(180)
+        .id('target_swiper')
+        .index(0)
+        .loop(false)
+        .borderRadius(12)
+        .borderWidth(1)
+      }.width('100%')
+    }
+    .layoutWeight(1)
+    .width('100%')
+    .height('100%')
+    .padding(12)
+  }
+}
+```

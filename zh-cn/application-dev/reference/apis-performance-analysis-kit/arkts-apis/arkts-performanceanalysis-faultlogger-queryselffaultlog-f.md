@@ -6,8 +6,6 @@
 import { FaultLogger } from '@kit.PerformanceAnalysisKit';
 ```
 
-<a id="queryselffaultlog1"></a>
-
 ## querySelfFaultLog
 
 ```TypeScript
@@ -61,8 +59,6 @@ function queryFaultLogCallback(error: BusinessError, value: Array<FaultLogger.Fa
 FaultLogger.querySelfFaultLog(FaultLogger.FaultType.JS_CRASH, queryFaultLogCallback);
 ```
 
-
-<a id="queryselffaultlog2"></a>
 
 ## querySelfFaultLog
 

@@ -22,6 +22,21 @@ enableNestedScroll(enabled: Optional<boolean>)
 
 Sets whether the scrollbar supports nested scrolling. It is used in scenarios such as multi-layer scroll containers and nested lists where the inner scrollable component needs to be dragged through the scrollbar and linked with the parent scrolling. It takes effect only when the ScrollBar is bound to a scrollable component through a Scroller.
 
+> **NOTE:** 
+> 
+> When nested scrolling is enabled for the scrollbar, the scroll offset is first sent to the bound inner scrollable
+> component, which then passes it to the outer parent scrollable component in sequence based on the set nested
+> scrolling priority.
+> 
+> Nested scrolling is not supported when the layout mode of the WaterFlow component is the sliding window mode
+> ([WaterFlowLayoutMode.SLIDING_WINDOW](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md)).
+> 
+> When the nested scrolling mode is set to
+> [PARALLEL](../arkts-apis/arkts-arkui-nestedscrollmode-e.md), the parent and child components scroll simultaneously. In this case, you need
+> to set the scrolling order of the parent and child components in
+> [onScrollFrameBegin](arkts-arkui-scroll-comp-attribute.md#onscrollframebegin) based on the
+> required logic.
+
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.

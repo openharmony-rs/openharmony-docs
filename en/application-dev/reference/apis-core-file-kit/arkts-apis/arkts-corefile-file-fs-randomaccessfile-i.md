@@ -4,7 +4,7 @@
 declare interface RandomAccessFile
 ```
 
-Provides APIs for randomly reading and writing a stream. Before invoking any API of **RandomAccessFile**, you need to use **createRandomAccessFile()** to create a **RandomAccessFile** instance synchronously or asynchronously.
+Provides APIs for randomly reading and writing a stream based on offset pointers. Before invoking any API of <b>RandomAccessFile</b>, you need to use <b>createRandomAccessFile()</b> to create a <b>RandomAccessFile</b> instance synchronously or asynchronously.
 
 **Since:** 10
 
@@ -24,7 +24,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 close(): void
 ```
 
-Closes the **RandomAccessFile** instance. This API returns the result synchronously.
+Closes a <b>RandomAccessFile</b> object synchronously. After the object is closed, it cannot be used for read or write operations.
 
 **Since:** 10
 
@@ -57,7 +57,7 @@ randomAccessFile.close();
 getReadStream(): ReadStream
 ```
 
-Obtains a **ReadStream** instance of this **RandomAccessFile**.
+Obtains a <b>ReadStream</b> instance of this <b>RandomAccessFile</b> to read data from a stream file.
 
 **Since:** 12
 
@@ -69,7 +69,7 @@ Obtains a **ReadStream** instance of this **RandomAccessFile**.
 
 | Type | Description |
 | --- | --- |
-| [ReadStream](arkts-corefile-file-fs-readstream-c.md) | **ReadStream** instance obtained. |
+| [ReadStream](arkts-corefile-file-fs-readstream-c.md) | <b>ReadStream</b> instance obtained. |
 
 **Error codes:**
 
@@ -98,7 +98,7 @@ randomAccessFile.close();
 getWriteStream(): WriteStream
 ```
 
-Obtains a **WriteStream** instance of this **RandomAccessFile**.
+Obtains a <b>WriteStream</b> instance of this <b>RandomAccessFile</b> to write data to a stream file.
 
 **Since:** 12
 
@@ -110,7 +110,7 @@ Obtains a **WriteStream** instance of this **RandomAccessFile**.
 
 | Type | Description |
 | --- | --- |
-| [WriteStream](arkts-corefile-file-fs-writestream-c.md) | **WriteStream** instance obtained. |
+| [WriteStream](arkts-corefile-file-fs-writestream-c.md) | <b>WriteStream</b> instance obtained. |
 
 **Error codes:**
 
@@ -132,8 +132,6 @@ const ws = randomAccessFile.getWriteStream();
 ws.close();
 randomAccessFile.close();
 ```
-
-<a id="read1"></a>
 
 ## read
 
@@ -157,7 +155,7 @@ Reads data from a file. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | Yes | Buffer used to store the file read. |
-| options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | No | The options are as follows:<br>- **length** (number): length of the data to read, in bytes. This parameter is optional. The default value is the buffer length.<br>- **offset** (number): start position to read the data, in bytes (it is determined by **filePointer** plus **offset**). This parameter is optional. By default, data is read from the **filePointer**.<br>**Since:** 11 |
+| options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | No | The options are as follows:<br>           - **length** (number): length of the data to read , in bytes. This parameter is optional.   The default value is the buffer length.<br>           - **offset** (number): start position to read the data, in bytes (it is determined by **filePointer** plus   **offset**). This parameter is optional. By default, data is read from the **filePointer**.<br>**Since:** 11 |
 
 **Return value:**
 
@@ -205,15 +203,13 @@ randomAccessFile.read(arrayBuffer, readOption).then((readLength: number) => {
 });
 ```
 
-<a id="read2"></a>
-
 ## read
 
 ```TypeScript
 read(buffer: ArrayBuffer, callback: AsyncCallback<number>): void
 ```
 
-Reads data from a file. This API uses an asynchronous callback to return the result.
+Reads data from a file and returns the number of bytes read. This API uses an asynchronous callback to return the result.
 
 **Since:** 10
 
@@ -225,8 +221,8 @@ Reads data from a file. This API uses an asynchronous callback to return the res
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| buffer | ArrayBuffer | Yes | Buffer used to store the file read. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. return the length of the data read, in bytes. |
+| buffer | ArrayBuffer | Yes | Buffer used for reading the file. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the length of the data read, in bytes. |
 
 **Error codes:**
 
@@ -266,8 +262,6 @@ randomAccessFile.read(arrayBuffer, (err: BusinessError, readLength: number) => {
 });
 ```
 
-<a id="read3"></a>
-
 ## read
 
 ```TypeScript
@@ -291,8 +285,8 @@ Reads data from a file. This API uses an asynchronous callback to return the res
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | Yes | Buffer used to store the file read. |
-| options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | Yes | The options are as follows:<br>- **length** (number): length of the data to read, in bytes. This parameter is optional. The default value is the buffer length.<br>- **offset** (number): start position to read the data, in bytes (it is determined by **filePointer** plus **offset**). This parameter is optional. By default, data is read from the **filePointer**.<br>**Since:** 11 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. return the length of the data read, in bytes. |
+| options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | Yes | The options are as follows:<br>           - **length** (number): length of the data to read , in bytes. This parameter is optional.   The default value is the buffer length.<br>           - **offset** (number): start position to read the data, in bytes (it is determined by **filePointer** plus   **offset**). This parameter is optional. By default, data is read from the **filePointer**.<br>**Since:** 11 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. The callback returns the length of the data read, in bytes. |
 
 **Error codes:**
 
@@ -358,7 +352,7 @@ Reads data from a file. This API returns the result synchronously.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer | Yes | Buffer used to store the file read. |
-| options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | No | The options are as follows:<br>- **length** (number): length of the data to read, in bytes. This parameter is optional. The default value is the buffer length.<br>- **offset** (number): start position to read the data, in bytes (it is determined by **filePointer** plus **offset**). This parameter is optional. By default, data is read from the **filePointer**.<br><br>**Since:** 11 |
+| options | [ReadOptions](arkts-corefile-file-fs-readoptions-i.md) | No | The options are as follows:<br>           - **length** (number): length of the data to read , in bytes. This parameter is optional.   The default value is the buffer length.<br>           - **offset** (number): start position to read the data, in bytes (it is determined by **filePointer** plus   **offset**). This parameter is optional. By default, data is read from the **filePointer**.<br>**Since:** 11 |
 
 **Return value:**
 
@@ -400,7 +394,7 @@ fileIo.closeSync(file);
 setFilePointer(filePointer: number): void
 ```
 
-Sets the file offset pointer.
+Sets the file offset pointer to specify the start position of subsequent read and write operations.
 
 **Since:** 10
 
@@ -412,7 +406,7 @@ Sets the file offset pointer.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| filePointer | number | Yes | Offset pointer to the **RandomAccessFile** instance, in bytes. |
+| filePointer | number | Yes | Offset pointer to the <b>RandomAccessFile</b> instance, in bytes. |
 
 **Error codes:**
 
@@ -432,8 +426,6 @@ let randomAccessFile = fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMo
 randomAccessFile.setFilePointer(1);
 randomAccessFile.close();
 ```
-
-<a id="write1"></a>
 
 ## write
 
@@ -457,7 +449,7 @@ Writes data into a file. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer &#124; string | Yes | Data to write. It can be a string or data from a buffer. |
-| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | No | The options are as follows:<br>- **length** (number): length of the data to write, in bytes. The default value is the buffer length.<br>- **offset** (number): start position to write the data, in bytes (it is determined by **filePointer** plus **offset**). This parameter is optional. By default, data is written from the **filePointer**.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>**Since:** 11 |
+| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | No | The options are as follows:<br>           - **length** (number): length of the data to write, in bytes. The default value is the buffer length.<br>           - **offset** (number): start position to write the data, in bytes   (it is determined by **filePointer** plus **offset**). This parameter is optional. By default, data is written from the **filePointer**.<br>           - **encoding** (string): format of the data to be encoded when the   data is a string. The default value is **'utf-8'**, which is the only value supported.<br>**Since:** 11 |
 
 **Return value:**
 
@@ -508,8 +500,6 @@ randomAccessFile.write(arrayBuffer, writeOption).then((bytesWritten: number) => 
 });
 ```
 
-<a id="write2"></a>
-
 ## write
 
 ```TypeScript
@@ -528,8 +518,8 @@ Writes data to a file. This API uses an asynchronous callback to return the resu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| buffer | ArrayBuffer &#124; string | Yes | Data to write. It can be a string or data from a buffer. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. The call back returns the length of the data written, in bytes. |
+| buffer | ArrayBuffer &#124; string | Yes | A string or data from a buffer to be written to the file. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the length of the data written, in bytes. |
 
 **Error codes:**
 
@@ -571,8 +561,6 @@ randomAccessFile.write(arrayBuffer, (err: BusinessError, bytesWritten: number) =
 });
 ```
 
-<a id="write3"></a>
-
 ## write
 
 ```TypeScript
@@ -596,8 +584,8 @@ Writes data to a file. This API uses an asynchronous callback to return the resu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer &#124; string | Yes | Data to write. It can be a string or data from a buffer. |
-| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | Yes | The options are as follows:<br>- **length** (number): length of the data to write, in bytes. This parameter is optional. The default value is the buffer length.<br>- **offset** (number): start position to write the data, in bytes (it is determined by **filePointer** plus **offset**). This parameter is optional. By default, data is written from the **filePointer**.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>**Since:** 11 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. The call back returns the length of the data written, in bytes. |
+| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | Yes | The options are as follows:<br>           - **length** (number): length of the data to write, in bytes. The default value is the buffer length.<br>           - **offset** (number): start position to write the data, in bytes   (it is determined by **filePointer** plus **offset**). This parameter is optional. By default, data is written from the **filePointer**.<br>           - **encoding** (string): format of the data to be encoded when the   data is a string. The default value is **'utf-8'**, which is the only value supported.<br>**Since:** 11 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. The callback returns the length of the data written, in bytes. |
 
 **Error codes:**
 
@@ -667,7 +655,7 @@ Writes data to a file. This API returns the result synchronously.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | buffer | ArrayBuffer &#124; string | Yes | Data to write. It can be a string or data from a buffer. |
-| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | No | The options are as follows:<br>- **length** (number): length of the data to write, in bytes. This parameter is optional. The default value is the buffer length.<br>- **offset** (number): start position to write the data, in bytes (it is determined by **filePointer** plus **offset**). This parameter is optional. By default, data is written from the **filePointer**.<br>- **encoding** (string): format of the data to be encoded when the data is a string. The default value is **'utf-8'**, which is the only value supported.<br>**Since:** 11 |
+| options | [WriteOptions](arkts-corefile-file-fs-writeoptions-i.md) | No | The options are as follows:<br>           - **length** (number): length of the data to write, in bytes. The default value is the buffer length.<br>           - **offset** (number): start position to write the data, in bytes   (it is determined by **filePointer** plus **offset**). This parameter is optional. By default, data is written from the **filePointer**.<br>           - **encoding** (string): format of the data to be encoded when the   data is a string. The default value is **'utf-8'**, which is the only value supported.<br>**Since:** 11 |
 
 **Return value:**
 
@@ -730,7 +718,7 @@ FD of the file.
 readonly filePointer: number
 ```
 
-Offset pointer to the **RandomAccessFile** instance, in bytes.
+Offset pointer to the <b>RandomAccessFile</b> instance, in bytes. This parameter indicates the current read/write position.
 
 **Type:** number
 

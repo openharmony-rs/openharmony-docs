@@ -6,8 +6,6 @@ declare interface LayoutInfo
 
 Provides the child component layout information.
 
-@interface LayoutInfo
-
 **Since:** 9
 
 **Deprecated since:** 10
@@ -24,7 +22,7 @@ Provides the child component layout information.
 constraint: ConstraintSizeOptions
 ```
 
-Constraint size of the child component.
+Constraint size of the child component. Value principle: **minWidth** ≤ **maxWidth**, **minHeight** ≤ **maxHeight**; unit: vp.
 
 **Type:** [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md)
 
@@ -46,7 +44,7 @@ Constraint size of the child component.
 position: Position
 ```
 
-Position coordinates of the child component.
+Position coordinates of the child component. Unit: vp.
 
 **Type:** Position
 

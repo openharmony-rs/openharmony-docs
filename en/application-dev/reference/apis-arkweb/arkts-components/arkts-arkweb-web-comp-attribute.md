@@ -86,7 +86,7 @@ Sets whether to enable the back-to-top feature for the **Web** component when th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| backToTop | boolean | Yes | Whether to enable the back-to-top feature. The value **true** means to enable the feature, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **true**. |
+| backToTop | boolean | Yes | Whether to enable the back-to-top feature. The value **true** means to enable the feature, and **false** means the opposite. <br>When **undefined** or **null** is passed in, the value is **true**. |
 
 ## bindSelectionMenu
 
@@ -162,7 +162,7 @@ Sets whether to block online downloads. When this attribute is not explicitly ca
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| block | boolean | Yes | Whether to allow online downloads.<br>The value **true** means to block online downloads, and **false** means the opposite. <br>If **undefined** or **null** is passed in, the value is **false**. |
+| block | boolean | Yes | Whether to allow online downloads. <br>The value **true** means to block online downloads, and **false** means the opposite. <br>If **undefined** or **null** is passed in, the value is **false**. |
 
 ## blurOnKeyboardHideMode
 
@@ -204,7 +204,7 @@ Sets the rendering process to bypass vsync (vertical synchronization) scheduling
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| condition | [WebBypassVsyncCondition](arkts-arkweb-web-comp-webbypassvsynccondition-e.md) | Yes | Condition for triggering the rendering process to bypass vsync scheduling.<br> When **undefined** or **null** is passed in, the value is **NONE**. |
+| condition | [WebBypassVsyncCondition](arkts-arkweb-web-comp-webbypassvsynccondition-e.md) | Yes | Condition for triggering the rendering process to bypass vsync scheduling. <br> When **undefined** or **null** is passed in, the value is **NONE**. |
 
 ## cacheMode
 
@@ -226,7 +226,37 @@ Sets the cache mode. When this attribute is not explicitly called, the default v
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| cacheMode | [CacheMode](arkts-arkweb-web-comp-cachemode-e.md) | Yes | Cache mode to set.<br>When **undefined** or **null** is passed in, the value is **CacheMode.Default**. |
+| cacheMode | [CacheMode](arkts-arkweb-web-comp-cachemode-e.md) | Yes | Cache mode to set. <br>When **undefined** or **null** is passed in, the value is **CacheMode.Default**. |
+
+## caretColor
+
+```TypeScript
+caretColor(value: ResourceColor)
+```
+
+Sets the color of the text input caret and selection handles of the **Web** component.
+
+When this attribute is not explicitly called or is reset, the caret uses the page's CSS `caret-color` result. If the CSS value is **auto** or not set, the caret uses the built-in default color (currently **#0A59F7**). Selection handles use the current theme colors.
+
+> **NOTE:** 
+> 
+> - The priority is: a non-zero value set by this API the `caret-color` CSS property set by the web page the built-in default color. A non-zero value set by this API also overrides an explicit CSS color or transparent.
+> 
+> - The exact color value **#00000000** is reserved as the reset sentinel. After reset, the CSS `caret-color` value is used. If the CSS value is **auto** or not set, the built-in default color is used.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebAttribute-caretColor(value: ResourceColor): WebAttribute--><!--Device-WebAttribute-caretColor(value: ResourceColor): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | [ResourceColor](../../apis-arkui/arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the text input caret and selection handles. <br>When **undefined** or **null** is passed in, this attribute is reset. |
 
 ## copyOptions
 
@@ -255,7 +285,7 @@ Sets the clipboard copy scope option. If this attribute is not explicitly called
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | CopyOptions | Yes | Pasteboard copy options.<br>When **undefined** or **null** is passed in, the value is **CopyOptions.None**. |
+| value | CopyOptions | Yes | Pasteboard copy options. <br>When **undefined** or **null** is passed in, the value is **CopyOptions.None**. |
 
 ## darkMode
 
@@ -279,7 +309,7 @@ When dark mode is enabled, the **Web** component enables the dark style defined 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [WebDarkMode](arkts-arkweb-web-comp-webdarkmode-e.md) | Yes | Dark mode for the web page, which can be set to **Off**, **On**, or **Auto**.<br>When **null** or **undefined** is passed, the value is **WebDarkMode.Off**. |
+| mode | [WebDarkMode](arkts-arkweb-web-comp-webdarkmode-e.md) | Yes | Dark mode for the web page, which can be set to **Off**, **On**, or **Auto**. <br>When **null** or **undefined** is passed, the value is **WebDarkMode.Off**. |
 
 ## databaseAccess
 
@@ -305,7 +335,7 @@ Sets whether to enable the Web SQL Database storage API permission. If this perm
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| databaseAccess | boolean | Yes | Whether to enable Web SQL Database storage API permission.<br>**true** means enabling the detection, and **false** means disabling it. <br>If **undefined** or **null** is passed in, the value is **false**. |
+| databaseAccess | boolean | Yes | Whether to enable Web SQL Database storage API permission. <br>**true** means enabling the detection, and **false** means disabling it. <br>If **undefined** or **null** is passed in, the value is **false**. |
 
 ## dataDetectorConfig
 
@@ -357,7 +387,7 @@ When this attribute is not explicitly called, the default fixed font size is **1
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| size | number | Yes | Default fixed font size to set, in px.<br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px. <br>When **null** or **undefined** is passed in, the value is **13**. |
+| size | number | Yes | Default fixed font size to set, in px. <br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px. <br>When **null** or **undefined** is passed in, the value is **13**. |
 
 ## defaultFontSize
 
@@ -381,7 +411,7 @@ When this attribute is not explicitly called, the default font size of the web p
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| size | number | Yes | Default font size to set, in px.<br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px. <br>When **null** or **undefined** is passed in, the value is **16**. |
+| size | number | Yes | Default font size to set, in px. <br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px. <br>When **null** or **undefined** is passed in, the value is **16**. |
 
 ## defaultTextEncodingFormat
 
@@ -403,7 +433,7 @@ Sets the default text encoding format for the web page. When this attribute is n
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| textEncodingFormat | string | Yes | Default text encoding format.<br>When **null** or **undefined** is passed in, the value is **UTF-8**. |
+| textEncodingFormat | string | Yes | Default text encoding format. <br>When **null** or **undefined** is passed in, the value is **UTF-8**. |
 
 ## domStorageAccess
 
@@ -425,7 +455,7 @@ Sets whether to enable the DOM Storage API permission. If this attribute is not 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| domStorageAccess | boolean | Yes | Sets whether to enable the Document Object Model storage interface (DOM Storage API).<br>The value **true** enables it, and **false** disables it. <br>If **undefined** or **null** is passed, the default value **false** is used. |
+| domStorageAccess | boolean | Yes | Sets whether to enable the Document Object Model storage interface (DOM Storage API). <br>The value **true** enables it, and **false** disables it. <br>If **undefined** or **null** is passed, the default value **false** is used. |
 
 ## editMenuOptions
 
@@ -492,7 +522,29 @@ Sets whether to enable web page autofill. By default, this feature is enabled.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to enable autofill for web pages. The value **true** means to enable autofill, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **true**. |
+| value | boolean | Yes | Whether to enable autofill for web pages. The value **true** means to enable autofill, and **false** means the opposite. <br>When **undefined** or **null** is passed in, the value is **true**. |
+
+## enableBlankScreenMonitor
+
+```TypeScript
+enableBlankScreenMonitor(enable: boolean)
+```
+
+Enables or disables the blank screen monitor. When the monitor is enabled, the onMonitoredBlankScreen callback will be triggered after blank screen is monitored.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebAttribute-enableBlankScreenMonitor(enable: boolean): WebAttribute--><!--Device-WebAttribute-enableBlankScreenMonitor(enable: boolean): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| enable | boolean | Yes | Whether to enable the blank screen monitor. The value **true** means to enable the monitor, and **false** means to disable it. |
 
 ## enableDataDetector
 
@@ -529,7 +581,7 @@ For details about the application scenario, see [Using Smart Text Data Detector]
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable web text recognition. The value **true** means to enable web text recognition, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the attribute setting does not take effect. |
+| enable | boolean | Yes | Whether to enable web text recognition. The value **true** means to enable web text recognition, and **false** means the opposite. <br>When **undefined** or **null** is passed in, the attribute setting does not take effect. |
 
 ## enableDefaultContextMenu
 
@@ -557,7 +609,7 @@ Sets whether to enable the default right-click context menu. If this method is n
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable the default right-click context menu. The value **true** means enabled, and **false** means disabled.<br>When **undefined** or **null** is passed, the value is **false**. |
+| enable | boolean | Yes | Whether to enable the default right-click context menu. The value **true** means enabled, and **false** means disabled. <br>When **undefined** or **null** is passed, the value is **false**. |
 
 ## enableDrag
 
@@ -604,7 +656,7 @@ Sets whether the **Web** component can change the font weight according to the s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| follow | boolean | Yes | Whether the **Web** component can change the font weight according to the system settings.<br>The value **true** means that the **Web** component can change the font weight according to the system settings, and **false** means the opposite. <br>When **undefined** or **null** is passed in, the value is **false**. |
+| follow | boolean | Yes | Whether the **Web** component can change the font weight according to the system settings. <br>The value **true** means that the **Web** component can change the font weight according to the system settings, and **false** means the opposite. <br>When **undefined** or **null** is passed in, the value is **false**. |
 
 ## enableFullscreenVideoOverlay
 
@@ -632,7 +684,7 @@ Sets whether to enable the overlay fullscreen playback feature for the **Web** c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to enable the overlay fullscreen playback feature for the **Web** component.<br>**true** means the feature is enabled. <br>**false** means the feature is disabled. <br>When **undefined** or **null** is passed, the value is **false**. |
+| enabled | boolean | Yes | Whether to enable the overlay fullscreen playback feature for the **Web** component. <br>**true** means the feature is enabled. <br>**false** means the feature is disabled. <br>When **undefined** or **null** is passed, the value is **false**. |
 
 ## enableHapticFeedback
 
@@ -652,7 +704,7 @@ Sets whether to enable haptic feedback for long-pressed text in the **Web** comp
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to enable vibration.<br>The value **true** indicates that vibration is enabled, and **false** indicates the opposite. <br>If **undefined** or **null** is passed, the default value is used, which means vibration is enabled. |
+| enabled | boolean | Yes | Whether to enable vibration. <br>The value **true** indicates that vibration is enabled, and **false** indicates the opposite. <br>If **undefined** or **null** is passed, the default value is used, which means vibration is enabled. |
 
 ## enableImageAnalyzer
 
@@ -681,7 +733,7 @@ Sets whether to enable AI analysis of web page images. Currently, the image text
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable AI analyzer for web page images. The value **true** means to enable AI analyzer, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is reset to **true**. |
+| enable | boolean | Yes | Whether to enable AI analyzer for web page images. The value **true** means to enable AI analyzer, and **false** means the opposite. <br>If **undefined** or **null** is passed in, the value is reset to **true**. |
 
 ## enableMediaNetworkProxy
 
@@ -707,7 +759,7 @@ Sets whether to enable the media resource network request proxy feature for the 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to enable the media resource network request proxy feature for the **Web** component.<br>**true** means the feature is enabled. <br>**false** means the feature is disabled. |
+| enabled | boolean | Yes | Whether to enable the media resource network request proxy feature for the **Web** component. <br>**true** means the feature is enabled. <br>**false** means the feature is disabled. |
 
 ## enableNativeEmbedMode
 
@@ -734,7 +786,7 @@ Sets whether to enable the same-layer rendering feature. When this method is not
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to enable the same-layer rendering feature.<br>The value **true** means to enable the same-layer rendering feature, and **false** means the opposite. <br>When **undefined** or **null** is passed in, the value is **false**. |
+| enabled | boolean | Yes | Whether to enable the same-layer rendering feature. <br>The value **true** means to enable the same-layer rendering feature, and **false** means the opposite. <br>When **undefined** or **null** is passed in, the value is **false**. |
 
 ## enableNativeMediaPlayer
 
@@ -805,7 +857,7 @@ For details about the application scenario, see [Using Smart Text Data Detector]
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether to enable web text recognition. The value **true** means to enable web text recognition, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the attribute is reset to the default value. |
+| enable | boolean | Yes | Whether to enable web text recognition. The value **true** means to enable web text recognition, and **false** means the opposite. <br>If **undefined** or **null** is passed in, the attribute is reset to the default value. |
 
 ## enableWebAVSession
 
@@ -825,7 +877,7 @@ Sets whether to support an application to connect to media controller. If this a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to support an application to connect to media controller.<br>The value **true** means to support an application to connect to media controller, and **false** means the opposite. <br>When **undefined** or **null** is passed in, the value is **true**. |
+| enabled | boolean | Yes | Whether to support an application to connect to media controller. <br>The value **true** means to support an application to connect to media controller, and **false** means the opposite. <br>When **undefined** or **null** is passed in, the value is **true**. |
 
 ## fileAccess
 
@@ -893,7 +945,7 @@ Sets whether to enable forcible dark mode for the web page. This API is applicab
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| access | boolean | Yes | Whether to enable forced dark mode for web pages.<br>The value **true** means to enable it, and **false** means not to enable it. <br>If null or undefined is passed, the default value **false** is used. |
+| access | boolean | Yes | Whether to enable forced dark mode for web pages. <br>The value **true** means to enable it, and **false** means not to enable it. <br>If null or undefined is passed, the default value **false** is used. |
 
 ## forceDisplayScrollBar
 
@@ -923,7 +975,7 @@ When **layoutMode** is set to **WebLayoutMode.FIT_CONTENT**, the **enabled** par
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether the scroll bar is always displayed.<br>The value **true** indicates that the scroll bar is always displayed, and **false** indicates the opposite. <br>When layoutMode is set to WebLayoutMode.FIT_CONTENT, the enabled parameter is forcibly set to **false**, and setting it to **true** does not take effect. <br>If **undefined** or **null** is passed in, the attribute setting does not take effect. |
+| enabled | boolean | Yes | Whether the scroll bar is always displayed. <br>The value **true** indicates that the scroll bar is always displayed, and **false** indicates the opposite. <br>When layoutMode is set to WebLayoutMode.FIT_CONTENT, the enabled parameter is forcibly set to **false**, and setting it to **true** does not take effect. <br>If **undefined** or **null** is passed in, the attribute setting does not take effect. |
 
 ## forceEnableZoom
 
@@ -965,7 +1017,7 @@ Sets whether to enable the geolocation permission. If this attribute is not expl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| geolocationAccess | boolean | Yes | Whether to enable the geolocation permission.<br>The value **true** means to enable the permission, and **false** means the opposite. <br>The value **false** is used when **undefined** or **null** is passed in. |
+| geolocationAccess | boolean | Yes | Whether to enable the geolocation permission. <br>The value **true** means to enable the permission, and **false** means the opposite. <br>The value **false** is used when **undefined** or **null** is passed in. |
 
 ## gestureFocusMode
 
@@ -1014,7 +1066,7 @@ Sets whether to display the horizontal scrollbar, including the system default s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| horizontalScrollBar | boolean | Yes | Sets whether to display the horizontal scrollbar.<br>The value **true** indicates to display it, and **false** indicates not to display it. <br>The default value is **false** when undefined or null is passed. |
+| horizontalScrollBar | boolean | Yes | Sets whether to display the horizontal scrollbar. <br>The value **true** indicates to display it, and **false** indicates not to display it. <br>The default value is **false** when undefined or null is passed. |
 
 ## imageAccess
 
@@ -1036,7 +1088,7 @@ Sets whether to allow automatic loading of image resources. If this attribute is
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| imageAccess | boolean | Yes | Whether to allow automatic loading of image resources.<br>The value **true** means allowed, and **false** means not allowed. <br>If **undefined** or **null** is passed, the value is **false**. |
+| imageAccess | boolean | Yes | Whether to allow automatic loading of image resources. <br>The value **true** means allowed, and **false** means not allowed. <br>If **undefined** or **null** is passed, the value is **false**. |
 
 ## initialScale
 
@@ -1058,7 +1110,7 @@ Sets the zoom percentage of the entire page. If this attribute is not explicitly
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| percent | number | Yes | Scale factor of the entire page.<br>Value range: (0, 1000] <br>When **undefined** or **null** is passed in, the attribute setting does not take effect. |
+| percent | number | Yes | Scale factor of the entire page. <br>Value range: (0, 1000] <br>When **undefined** or **null** is passed in, the attribute setting does not take effect. |
 
 ## javaScriptAccess
 
@@ -1080,7 +1132,7 @@ Sets whether to allow execution of JavaScript scripts. If this attribute is not 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| javaScriptAccess | boolean | Yes | Whether to allow JavaScript script execution.<br>The value **true** means allowed, and **false** means not allowed. <br>The default value is **false** when undefined or null is passed. |
+| javaScriptAccess | boolean | Yes | Whether to allow JavaScript script execution. <br>The value **true** means allowed, and **false** means not allowed. <br>The default value is **false** when undefined or null is passed. |
 
 ## javaScriptOnDocumentEnd
 
@@ -1114,7 +1166,7 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scripts | Array&lt;[ScriptItem](arkts-arkweb-web-comp-scriptitem-i.md)&gt; | Yes | Script item array to be injected.<br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components. |
+| scripts | Array&lt;[ScriptItem](arkts-arkweb-web-comp-scriptitem-i.md)&gt; | Yes | Script item array to be injected. <br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components. |
 
 ## javaScriptOnDocumentStart
 
@@ -1148,7 +1200,7 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scripts | Array&lt;[ScriptItem](arkts-arkweb-web-comp-scriptitem-i.md)&gt; | Yes | Script item array to be injected.<br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components. |
+| scripts | Array&lt;[ScriptItem](arkts-arkweb-web-comp-scriptitem-i.md)&gt; | Yes | Script item array to be injected. <br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components. |
 
 ## javaScriptProxy
 
@@ -1184,7 +1236,7 @@ Registers the ArkTS object in **javaScriptProxy** with the **Web** component. Th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| javaScriptProxy | [JavaScriptProxy](arkts-arkweb-web-comp-javascriptproxy-i.md) | Yes | Object to be registered. Methods can be declared, but attributes cannot.<br>When **undefined** or **null** is passed in, the ArkTS object in javaScriptProxy is not registered with the **Web** component.<br>**Since:** 12 |
+| javaScriptProxy | [JavaScriptProxy](arkts-arkweb-web-comp-javascriptproxy-i.md) | Yes | Object to be registered. Methods can be declared, but attributes cannot. <br>When **undefined** or **null** is passed in, the ArkTS object in javaScriptProxy is not registered with the **Web** component.<br>**Since:** 12 |
 
 ## keyboardAppearance
 
@@ -1230,7 +1282,7 @@ If the keyboard avoidance mode set in **UIContext** is [KeyboardAvoidMode.RESIZE
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [WebKeyboardAvoidMode](arkts-arkweb-web-comp-webkeyboardavoidmode-e.md) | Yes | Web soft keyboard avoidance mode.<br>In the nested scrolling scenario, the soft keyboard avoidance mode of the **Web** component is not recommended, including **RESIZE_VISUAL** and **RESIZE_CONTENT**. <br>Default value: **WebKeyboardAvoidMode.RESIZE_CONTENT** |
+| mode | [WebKeyboardAvoidMode](arkts-arkweb-web-comp-webkeyboardavoidmode-e.md) | Yes | Web soft keyboard avoidance mode. <br>In the nested scrolling scenario, the soft keyboard avoidance mode of the **Web** component is not recommended, including **RESIZE_VISUAL** and **RESIZE_CONTENT**. <br>Default value: **WebKeyboardAvoidMode.RESIZE_CONTENT** |
 
 ## layoutMode
 
@@ -1314,7 +1366,7 @@ Sets the web-based media playback policy, including the validity period for auto
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [WebMediaOptions](arkts-arkweb-web-comp-webmediaoptions-i.md) | Yes | Web-based media playback policy.<br>After the parameter settings are updated, the playback must be started again for the settings to take effect. <br>When **undefined** or **null** is passed in, **{resumeInterval: 0, audioExclusive: true}** is used. |
+| options | [WebMediaOptions](arkts-arkweb-web-comp-webmediaoptions-i.md) | Yes | Web-based media playback policy. <br>After the parameter settings are updated, the playback must be started again for the settings to take effect. <br>When **undefined** or **null** is passed in, **{resumeInterval: 0, audioExclusive: true}** is used. |
 
 ## mediaPlayGestureAccess
 
@@ -1336,7 +1388,7 @@ Sets whether autoplay of audible videos requires a user tap. Muted video playbac
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| access | boolean | Yes | Whether the autoplay of videos with audio requires a user tap.<br>The value **true** indicates that a user tap is required, and **false** indicates that the video can be autoplayed. <br>If **undefined** or **null** is passed, the value is **false**. |
+| access | boolean | Yes | Whether the autoplay of videos with audio requires a user tap. <br>The value **true** indicates that a user tap is required, and **false** indicates that the video can be autoplayed. <br>If **undefined** or **null** is passed, the value is **false**. |
 
 ## metaViewport
 
@@ -1362,7 +1414,7 @@ Sets whether the **viewport** attribute of the **meta** tag is enabled. When thi
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether the **viewport** attribute of the **meta** tag is enabled.<br>The value **true** indicates that the **viewport** attribute of the **meta** tag is enabled and parsed, and the layout is performed based on the **viewport** attribute. <br>The value **false** indicates the **viewport** attribute of the **meta** tag is disabled and not parsed, and the default layout is used. <br>When **null** or **undefined** is passed in, the value is **true**. |
+| enabled | boolean | Yes | Whether the **viewport** attribute of the **meta** tag is enabled. <br>The value **true** indicates that the **viewport** attribute of the **meta** tag is enabled and parsed, and the layout is performed based on the **viewport** attribute. <br>The value **false** indicates the **viewport** attribute of the **meta** tag is disabled and not parsed, and the default layout is used. <br>When **null** or **undefined** is passed in, the value is **true**. |
 
 ## minFontSize
 
@@ -1386,7 +1438,7 @@ When no attribute is explicitly called, the default minimum font size of the web
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| size | number | Yes | Minimum font size to set, in px.<br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px. <br>When **null** or **undefined** is passed in, the value is **8**. |
+| size | number | Yes | Minimum font size to set, in px. <br>Value range: [-2^31, 2^31-1]. In actual rendering, values greater than 72 px are handled as 72 px, and values less than 1 px are handled as 1 px. <br>When **null** or **undefined** is passed in, the value is **8**. |
 
 ## minLogicalFontSize
 
@@ -1415,7 +1467,7 @@ When this attribute is not explicitly called, the default minimum logical font s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| size | number | Yes | Sets the minimum logical font size for web pages, in px.<br>The value ranges from [-2^31, 2^31-1]. During actual rendering, values greater than 72 px are rendered as 72 px, and values less than 1 px are rendered as 1 px. <br>Defaults to 8 when null or undefined is passed in. |
+| size | number | Yes | Sets the minimum logical font size for web pages, in px. <br>The value ranges from [-2^31, 2^31-1]. During actual rendering, values greater than 72 px are rendered as 72 px, and values less than 1 px are rendered as 1 px. <br>Defaults to 8 when null or undefined is passed in. |
 
 ## mixedMode
 
@@ -1437,7 +1489,7 @@ Sets the behavior when a secure source attempts to load resources from an insecu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mixedMode | [MixedMode](arkts-arkweb-web-comp-mixedmode-e.md) | Yes | Mixed content mode to be set.<br>If **undefined** or **null** is passed in, the value **MixedMode.All** is used. |
+| mixedMode | [MixedMode](arkts-arkweb-web-comp-mixedmode-e.md) | Yes | Mixed content mode to be set. <br>If **undefined** or **null** is passed in, the value **MixedMode.All** is used. |
 
 ## multiWindowAccess
 
@@ -1461,7 +1513,7 @@ Enabling the multi-window permission requires implementation of the **onWindowNe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| multiWindow | boolean | Yes | Whether to enable the multi-window permission.<br>The value **true** means to enable, and **false** means the opposite. |
+| multiWindow | boolean | Yes | Whether to enable the multi-window permission. <br>The value **true** means to enable, and **false** means the opposite. |
 
 ## nativeEmbedOptions
 
@@ -1481,7 +1533,7 @@ Sets the same-layer rendering configuration. This attribute takes effect only wh
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [EmbedOptions](arkts-arkweb-web-comp-embedoptions-i.md) | No | Configuration options of the same-layer rendering.<br>If **undefined** or **null** is passed in, the value **{supportDefaultIntrinsicSize: false}** is used. |
+| options | [EmbedOptions](arkts-arkweb-web-comp-embedoptions-i.md) | No | Configuration options of the same-layer rendering. <br>If **undefined** or **null** is passed in, the value **{supportDefaultIntrinsicSize: false}** is used. |
 
 ## nestedScroll
 
@@ -1585,7 +1637,7 @@ Triggered when **alert()** is invoked to display an alert dialog box on the web 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[OnAlertEvent](arkts-arkweb-web-comp-onalertevent-i.md), boolean&gt; | Yes | Callback used when **alert()** is invoked to display an alert dialog box on the web page.<br>Return value: boolean <br> If the callback returns **true**, the application can use the custom dialog box (allows the confirm and cancel operations) and invoke the **JsResult** API to notify the **Web** component the confirmation result. If the callback returns **false**, the processing result of the dialog box is regarded as cancel.<br>**Since:** 12 |
+| callback | Callback&lt;[OnAlertEvent](arkts-arkweb-web-comp-onalertevent-i.md), boolean&gt; | Yes | Callback used when **alert()** is invoked to display an alert dialog box on the web page. <br>Return value: boolean <br> If the callback returns **true**, the application can use the custom dialog box (allows the confirm and cancel operations) and invoke the **JsResult** API to notify the **Web** component the confirmation result. If the callback returns **false**, the processing result of the dialog box is regarded as cancel.<br>**Since:** 12 |
 
 ## onAudioStateChanged
 
@@ -1633,7 +1685,7 @@ Called when the page refresh is about to complete or the current page is closed.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[OnBeforeUnloadEvent](arkts-arkweb-web-comp-onbeforeunloadevent-i.md), boolean&gt; | Yes | Callback triggered when the page refresh is about to complete or the current page is closed.<br>Return value: boolean <br> If the callback returns **true**, the application can use the custom dialog box (allows the confirm and cancel operations) and invoke the **JsResult** API to notify the **Web** component whether to exit the current page based on the user's operation. The value **false** means that the custom dialog box drawn in the function is ineffective.<br>**Since:** 12 |
+| callback | Callback&lt;[OnBeforeUnloadEvent](arkts-arkweb-web-comp-onbeforeunloadevent-i.md), boolean&gt; | Yes | Callback triggered when the page refresh is about to complete or the current page is closed. <br>Return value: boolean <br> If the callback returns **true**, the application can use the custom dialog box (allows the confirm and cancel operations) and invoke the **JsResult** API to notify the **Web** component whether to exit the current page based on the user's operation. The value **false** means that the custom dialog box drawn in the function is ineffective.<br>**Since:** 12 |
 
 ## onCameraCaptureStateChange
 
@@ -1675,7 +1727,7 @@ Triggered when an SSL client certificate request is received.
 
 > **NOTE:** 
 > 
-> - The **Web** component can respond with [ClientAuthenticationHandler.confirm](arkts-arkweb-web-comp-clientauthenticationhandler-c.md#confirm2),[ClientAuthenticationHandler.cancel](arkts-arkweb-web-comp-clientauthenticationhandler-c.md#cancel), or [ClientAuthenticationHandler.ignore](arkts-arkweb-web-comp-clientauthenticationhandler-c.md#ignore).
+> - The **Web** component can respond with [ClientAuthenticationHandler.confirm](arkts-arkweb-web-comp-clientauthenticationhandler-c.md#confirm),[ClientAuthenticationHandler.cancel](arkts-arkweb-web-comp-clientauthenticationhandler-c.md#cancel), or [ClientAuthenticationHandler.ignore](arkts-arkweb-web-comp-clientauthenticationhandler-c.md#ignore).
 > 
 > - If **ClientAuthenticationHandler.confirm** or **ClientAuthenticationHandler.cancel** is called, the **Web**component stores the authentication result in the memory (within the application lifecycle) and does not call
 > **onClientAuthenticationRequest()** again for the same host and port. If **onClientAuthenticationRequest.ignore**
@@ -1715,7 +1767,7 @@ Triggered when **confirm()** is invoked by the web page. Call the [handleCancel]
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[OnConfirmEvent](arkts-arkweb-web-comp-onconfirmevent-i.md), boolean&gt; | Yes | Callback triggered when **confirm()** is invoked by the web page.<br>Return value: boolean <br> If the callback returns **true**, the application can use the custom dialog box (allows the confirm and cancel operations) and invoke the **JsResult** API to notify the **Web** component the confirmation result. If the callback returns **false**, the processing result of the dialog box is regarded as cancel.<br>**Since:** 12 |
+| callback | Callback&lt;[OnConfirmEvent](arkts-arkweb-web-comp-onconfirmevent-i.md), boolean&gt; | Yes | Callback triggered when **confirm()** is invoked by the web page. <br>Return value: boolean <br> If the callback returns **true**, the application can use the custom dialog box (allows the confirm and cancel operations) and invoke the **JsResult** API to notify the **Web** component the confirmation result. If the callback returns **false**, the processing result of the dialog box is regarded as cancel.<br>**Since:** 12 |
 
 ## onConsole
 
@@ -1737,7 +1789,7 @@ Triggered to notify the host application of a JavaScript console message.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[OnConsoleEvent](arkts-arkweb-web-comp-onconsoleevent-i.md), boolean&gt; | Yes | Callback used when the web page receives a JavaScript console message.<br>Return value: boolean <br> The value **true** means that the message will not be printed to HiLog logs, and **false** means the opposite.<br>**Since:** 12 |
+| callback | Callback&lt;[OnConsoleEvent](arkts-arkweb-web-comp-onconsoleevent-i.md), boolean&gt; | Yes | Callback used when the web page receives a JavaScript console message. <br>Return value: boolean <br> The value **true** means that the message will not be printed to HiLog logs, and **false** means the opposite.<br>**Since:** 12 |
 
 ## onContextMenuHide
 
@@ -1781,7 +1833,31 @@ Triggered when a context menu is displayed after the user clicks the right mouse
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[OnContextMenuShowEvent](arkts-arkweb-web-comp-oncontextmenushowevent-i.md), boolean&gt; | Yes | Callback invoked during a call to allow for the display of a custom context menu.<br>Return value: boolean <br> The value **true** means that a custom menu is triggered, and **false** means that the custom menu is ineffective.<br>**Since:** 12 |
+| callback | Callback&lt;[OnContextMenuShowEvent](arkts-arkweb-web-comp-oncontextmenushowevent-i.md), boolean&gt; | Yes | Callback invoked during a call to allow for the display of a custom context menu. <br>Return value: boolean <br> The value **true** means that a custom menu is triggered, and **false** means that the custom menu is ineffective.<br>**Since:** 12 |
+
+## onContextMenuUpdate
+
+```TypeScript
+onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
+```
+
+Registers a callback to be invoked when the context menu item status is updated by the kernel asynchronously. The callback is triggered after the kernel completes asynchronous processing, notifying the application to update the display status of menu items.
+
+The shouldOfferLinkToText() method returns a synchronous initial value, while this callback provides the asynchronous final value. The two are complementary.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebAttribute-onContextMenuUpdate(callback: OnContextMenuUpdateCallback): WebAttribute--><!--Device-WebAttribute-onContextMenuUpdate(callback: OnContextMenuUpdateCallback): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [OnContextMenuUpdateCallback](arkts-arkweb-web-comp-oncontextmenuupdatecallback-t.md) | Yes | Callback function that receives the menu item ID and options. |
 
 ## onControllerAttached
 
@@ -2103,7 +2179,7 @@ Triggered when an HTTP authentication request is received.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[OnHttpAuthRequestEvent](arkts-arkweb-web-comp-onhttpauthrequestevent-i.md), boolean&gt; | Yes | Callback invoked when the browser requires user credentials.<br>Return value: boolean <br> The value **true** means that the HTTP authentication is successful, and **false** means the opposite.<br>**Since:** 12 |
+| callback | Callback&lt;[OnHttpAuthRequestEvent](arkts-arkweb-web-comp-onhttpauthrequestevent-i.md), boolean&gt; | Yes | Callback invoked when the browser requires user credentials. <br>Return value: boolean <br> The value **true** means that the HTTP authentication is successful, and **false** means the opposite.<br>**Since:** 12 |
 
 ## onHttpErrorReceive
 
@@ -2213,7 +2289,7 @@ Triggered when the key event is intercepted and before it is consumed by the web
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | (event: KeyEvent) =&gt; boolean | Yes | Key event that is triggered.<br>The return value is of the Boolean type. The value **true** means to pass the **KeyEvent** to the web kernel, and **false** means the opposite. |
+| callback | (event: KeyEvent) =&gt; boolean | Yes | Key event that is triggered. <br>The return value is of the Boolean type. The value **true** means to pass the **KeyEvent** to the web kernel, and **false** means the opposite. |
 
 ## onInterceptRequest
 
@@ -2279,7 +2355,7 @@ Sets whether to allow loading of image resources from the network (resources acc
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| onlineImageAccess | boolean | Yes | Whether to allow loading image resources from the network.<br>The value **true** means that loading is allowed, and **false** means it is not allowed. <br>When **undefined** or **null** is passed in, the value is **false**. |
+| onlineImageAccess | boolean | Yes | Whether to allow loading image resources from the network. <br>The value **true** means that loading is allowed, and **false** means it is not allowed. <br>When **undefined** or **null** is passed in, the value is **false**. |
 
 ## onLoadFinished
 
@@ -2329,7 +2405,7 @@ Triggered when the **Web** component is about to access a URL. This API is used 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[OnLoadInterceptEvent](arkts-arkweb-web-comp-onloadinterceptevent-i.md), boolean&gt; | Yes | Callback triggered when a navigation (including iframe navigation) occurs, allowing the application to approve or cancel it.<br>The return value is of the Boolean type. The value **true** means to cancel the navigation, and **false** means the opposite. <br>If **undefined** or **null** is returned, the value is **false**.<br>**Since:** 12 |
+| callback | Callback&lt;[OnLoadInterceptEvent](arkts-arkweb-web-comp-onloadinterceptevent-i.md), boolean&gt; | Yes | Callback triggered when a navigation (including iframe navigation) occurs, allowing the application to approve or cancel it. <br>The return value is of the Boolean type. The value **true** means to cancel the navigation, and **false** means the opposite. <br>If **undefined** or **null** is returned, the value is **false**.<br>**Since:** 12 |
 
 ## onLoadStarted
 
@@ -2398,6 +2474,28 @@ You can use the **resumeMicrophone**, **pauseMicrophone**, and **stopMicrophone*
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [OnMicrophoneCaptureStateChangeCallback](arkts-arkweb-web-comp-onmicrophonecapturestatechangecallback-t.md) | Yes | Callback triggered when the microphone capture state changes. It returns the original and new states. |
+
+## onMonitoredBlankScreen
+
+```TypeScript
+onMonitoredBlankScreen(callback: OnMonitorBlankScreenCallback)
+```
+
+Registers a callback for blank screen monitoring attribution. The callback is triggered when the Web component monitors a blank screen and completes root cause attribution.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebAttribute-onMonitoredBlankScreen(callback: OnMonitorBlankScreenCallback): WebAttribute--><!--Device-WebAttribute-onMonitoredBlankScreen(callback: OnMonitorBlankScreenCallback): WebAttribute-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [OnMonitorBlankScreenCallback](arkts-arkweb-web-comp-onmonitorblankscreencallback-t.md) | Yes | Callback for blank screen monitoring attribution. |
 
 ## onNativeEmbedGestureEvent
 
@@ -2539,7 +2637,7 @@ Triggered when an error occurs during web page loading of main resources. You ca
 > **NOTE:** 
 > 
 > This feature takes effect only after the default error page is enabled by calling the
-> [setErrorPageEnabled](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#seterrorpageenabled1)
+> [setErrorPageEnabled](../arkts-apis/arkts-arkweb-webview-webviewcontroller-c.md#seterrorpageenabled)
 > API.
 > 
 > If the error code obtained through [errorPageEvent.error.getErrorCode()](arkts-arkweb-web-comp-webresourceerror-c.md#geterrorcode) is
@@ -2585,7 +2683,7 @@ Triggered when the URL is about to be loaded in the current web page, allowing t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [OnOverrideUrlLoadingCallback](arkts-arkweb-web-comp-onoverrideurlloadingcallback-t.md) | Yes | Callback for **onOverrideUrlLoading**.<br>Return value: boolean <br> The value **true** means to stop loading the URL, and the value **false** means the opposite. |
+| callback | [OnOverrideUrlLoadingCallback](arkts-arkweb-web-comp-onoverrideurlloadingcallback-t.md) | Yes | Callback for **onOverrideUrlLoading**. <br>Return value: boolean <br> The value **true** means to stop loading the URL, and the value **false** means the opposite. |
 
 ## onOverScroll
 
@@ -2779,7 +2877,7 @@ Triggered when **prompt()** is invoked by the web page. Call the [handleCancel](
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[OnPromptEvent](arkts-arkweb-web-comp-onpromptevent-i.md), boolean&gt; | Yes | Callback used when **prompt()** is invoked by the web page.<br>Return value: boolean <br> If the callback returns **true**, the application can use the custom dialog box (allows the confirm, cancel, and input operations) and invoke the **JsResult** API to notify the **Web** component the processing result. If the callback returns **false**, the processing result of the dialog box is regarded as cancel.<br>**Since:** 12 |
+| callback | Callback&lt;[OnPromptEvent](arkts-arkweb-web-comp-onpromptevent-i.md), boolean&gt; | Yes | Callback used when **prompt()** is invoked by the web page. <br>Return value: boolean <br> If the callback returns **true**, the application can use the custom dialog box (allows the confirm, cancel, and input operations) and invoke the **JsResult** API to notify the **Web** component the processing result. If the callback returns **false**, the processing result of the dialog box is regarded as cancel.<br>**Since:** 12 |
 
 ## onRefreshAccessedHistory
 
@@ -2802,8 +2900,6 @@ Triggered for the application to update its access history when the navigation i
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | Callback&lt;[OnRefreshAccessedHistoryEvent](arkts-arkweb-web-comp-onrefreshaccessedhistoryevent-i.md)&gt; | Yes | Callback triggered when the navigation is complete.<br>**Since:** 12 |
-
-<a id="onrenderexited1"></a>
 
 ## onRenderExited
 
@@ -2832,8 +2928,6 @@ For details about the component lifecycle, see [Lifecycle of the Web Components]
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | Callback&lt;[OnRenderExitedEvent](arkts-arkweb-web-comp-onrenderexitedevent-i.md)&gt; | Yes | Callback triggered when the rendering process exits abnormally.<br>**Since:** 12 |
-
-<a id="onrenderexited2"></a>
 
 ## onRenderExited
 
@@ -3113,7 +3207,7 @@ Triggered to process an HTML form whose input type is **file**. If this function
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | Callback&lt;[OnShowFileSelectorEvent](arkts-arkweb-web-comp-onshowfileselectorevent-i.md), boolean&gt; | Yes | Callback triggered to notify the **Web** component of the file selection result.<br>Return value: boolean <br> The value **true** means that you can invoke the system-provided dialog box. The value **false** means that the custom dialog box drawn in the function is ineffective.<br>**Since:** 12 |
+| callback | Callback&lt;[OnShowFileSelectorEvent](arkts-arkweb-web-comp-onshowfileselectorevent-i.md), boolean&gt; | Yes | Callback triggered to notify the **Web** component of the file selection result. <br>Return value: boolean <br> The value **true** means that you can invoke the system-provided dialog box. The value **false** means that the custom dialog box drawn in the function is ineffective.<br>**Since:** 12 |
 
 ## onSslErrorEvent
 
@@ -3421,7 +3515,7 @@ When the FCP of a page is triggered, the default segment parsing logic is restor
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| optimizeParserBudget | boolean | Yes | Whether to enable segment-based HTML parsing optimization.<br>The value **true** means to use the number of parsed records instead of the parsing time as the segment point for HTML segment parsing, and reduce the upper limit of the number of parsed records in each segment. The value **false** means to use the parsing time as the segment point for HTML segment parsing. <br>If **undefined** or **null** is passed in, the value is **false**. |
+| optimizeParserBudget | boolean | Yes | Whether to enable segment-based HTML parsing optimization. <br>The value **true** means to use the number of parsed records instead of the parsing time as the segment point for HTML segment parsing, and reduce the upper limit of the number of parsed records in each segment. The value **false** means to use the parsing time as the segment point for HTML segment parsing. <br>If **undefined** or **null** is passed in, the value is **false**. |
 
 ## overScrollMode
 
@@ -3443,7 +3537,7 @@ Sets the over-scroll mode of the **Web** component. When enabled, if the user sc
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [OverScrollMode](arkts-arkweb-web-comp-overscrollmode-e.md) | Yes | Whether to enable the overscroll mode.<br>When **undefined** or **null** is passed in, the value is **OverScrollMode.NEVER**. |
+| mode | [OverScrollMode](arkts-arkweb-web-comp-overscrollmode-e.md) | Yes | Whether to enable the overscroll mode. <br>When **undefined** or **null** is passed in, the value is **OverScrollMode.NEVER**. |
 
 ## overviewModeAccess
 
@@ -3465,7 +3559,7 @@ Sets whether to load web pages by using the overview mode. That is, zoom out the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| overviewModeAccess | boolean | Yes | Whether to load web pages in overview mode.<br>The value **true** means to use overview mode, and **false** means not to use it. <br>The default value is **false** when undefined or null is passed in. |
+| overviewModeAccess | boolean | Yes | Whether to load web pages in overview mode. <br>The value **true** means to use overview mode, and **false** means not to use it. <br>The default value is **false** when undefined or null is passed in. |
 
 ## pinchSmooth
 
@@ -3487,7 +3581,7 @@ Sets whether to enable pinch smooth mode for the web page. When this attribute i
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| isEnabled | boolean | Yes | Whether to enable pinch smooth mode for the web page.<br>The value **true** means to enable pinch smooth mode, and **false** means the opposite. <br>If **undefined** or **null** is passed in, the value is **false**. |
+| isEnabled | boolean | Yes | Whether to enable pinch smooth mode for the web page. <br>The value **true** means to enable pinch smooth mode, and **false** means the opposite. <br>If **undefined** or **null** is passed in, the value is **false**. |
 
 ## registerNativeEmbedRule
 
@@ -3564,7 +3658,7 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scripts | Array&lt;[ScriptItem](arkts-arkweb-web-comp-scriptitem-i.md)&gt; | Yes | Script item array to be injected.<br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components. |
+| scripts | Array&lt;[ScriptItem](arkts-arkweb-web-comp-scriptitem-i.md)&gt; | Yes | Script item array to be injected. <br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components. |
 
 ## runJavaScriptOnDocumentStart
 
@@ -3592,7 +3686,7 @@ Injects a JavaScript script into the **Web** component. When the specified page 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scripts | Array&lt;[ScriptItem](arkts-arkweb-web-comp-scriptitem-i.md)&gt; | Yes | Script item array to be injected.<br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components. |
+| scripts | Array&lt;[ScriptItem](arkts-arkweb-web-comp-scriptitem-i.md)&gt; | Yes | Script item array to be injected. <br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components. |
 
 ## runJavaScriptOnHeadEnd
 
@@ -3618,7 +3712,7 @@ Injects a JavaScript script into the **Web** component. When the **head** tag of
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| scripts | Array&lt;[ScriptItem](arkts-arkweb-web-comp-scriptitem-i.md)&gt; | Yes | Script item array to be injected.<br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components. |
+| scripts | Array&lt;[ScriptItem](arkts-arkweb-web-comp-scriptitem-i.md)&gt; | Yes | Script item array to be injected. <br>When **undefined** or **null** is passed in, JavaScript scripts are not injected into **Web** components. |
 
 ## scrollbarLayoutPolicy
 
@@ -3677,7 +3771,7 @@ After automatic font sizing takes effect, any text smaller than 16 px is enlarge
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| textAutosizing | boolean | Yes | Whether to enable automatic text resizing.<br>The value **true** means to enable automatic text resizing, and **false** means the opposite. <br>When **undefined** or **null** is passed in, the value is **true**. |
+| textAutosizing | boolean | Yes | Whether to enable automatic text resizing. <br>The value **true** means to enable automatic text resizing, and **false** means the opposite. <br>When **undefined** or **null** is passed in, the value is **true**. |
 
 ## textZoomRatio
 
@@ -3699,7 +3793,7 @@ Sets the text zoom ratio of the page. When this attribute is not explicitly call
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| textZoomRatio | number | Yes | Text zoom percentage for the page. The value **100** indicates the original size, a value greater than **100** indicates zoom in, and a value less than **100** indicates zoom out.<br>The value is an integer in the range (0, 2147483647]. |
+| textZoomRatio | number | Yes | Text zoom percentage for the page. The value **100** indicates the original size, a value greater than **100** indicates zoom in, and a value less than **100** indicates zoom out. <br>The value is an integer in the range (0, 2147483647]. |
 
 ## verticalScrollBarAccess
 
@@ -3727,7 +3821,7 @@ Sets whether to display the vertical scrollbar, including the system default scr
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| verticalScrollBar | boolean | Yes | Whether to display the vertical scrollbar.<br>The value **true** means to display, and **false** means not to display. <br>The default value is **false** when undefined or null is passed in. |
+| verticalScrollBar | boolean | Yes | Whether to display the vertical scrollbar. <br>The value **true** means to display, and **false** means not to display. <br>The default value is **false** when undefined or null is passed in. |
 
 ## webCursiveFont
 
@@ -3751,7 +3845,7 @@ When this attribute is not explicitly called, the default cursive font family of
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| family | string | Yes | Cursive font family to set.<br>When **null** or **undefined** is passed in, the value is **cursive**. |
+| family | string | Yes | Cursive font family to set. <br>When **null** or **undefined** is passed in, the value is **cursive**. |
 
 ## webFantasyFont
 
@@ -3775,7 +3869,7 @@ When this attribute is not explicitly called, the default fantasy font family of
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| family | string | Yes | Fantasy font family to set.<br>When **null** or **undefined** is passed in, the value is **fantasy**. |
+| family | string | Yes | Fantasy font family to set. <br>When **null** or **undefined** is passed in, the value is **fantasy**. |
 
 ## webFixedFont
 
@@ -3823,7 +3917,7 @@ When this attribute is not explicitly called, the sans-serif font family of the 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| family | string | Yes | Sans-serif font family to set.<br>When **null** or **undefined** is passed in, the sans-serif font family is **sans-serif**. |
+| family | string | Yes | Sans-serif font family to set. <br>When **null** or **undefined** is passed in, the sans-serif font family is **sans-serif**. |
 
 ## webSerifFont
 
@@ -3847,7 +3941,7 @@ When this attribute is not explicitly called, the default serif font family of t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| family | string | Yes | Serif font family to set.<br>When **null** or **undefined** is passed in, the sans-serif font family is **serif**. |
+| family | string | Yes | Serif font family to set. <br>When **null** or **undefined** is passed in, the sans-serif font family is **serif**. |
 
 ## webStandardFont
 
@@ -3871,7 +3965,7 @@ When this attribute is not explicitly called, the default standard font family o
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| family | string | Yes | Standard font family to set.<br>When **null** or **undefined** is passed in, the sans-serif font family is **sans-serif**. |
+| family | string | Yes | Standard font family to set. <br>When **null** or **undefined** is passed in, the sans-serif font family is **sans-serif**. |
 
 ## zoomAccess
 
@@ -3893,7 +3987,7 @@ Sets whether to support zoom gestures. If this attribute is not explicitly calle
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| zoomAccess | boolean | Yes | Whether to support gesture-based zooming.<br>The value **true** indicates supported, and **false** indicates not supported. <br>When **undefined** or **null** is passed, the value is **false**. |
+| zoomAccess | boolean | Yes | Whether to support gesture-based zooming. <br>The value **true** indicates supported, and **false** indicates not supported. <br>When **undefined** or **null** is passed, the value is **false**. |
 
 ## zoomControlAccess
 
@@ -3987,7 +4081,7 @@ Triggered when the **Web** component is about to access a URL. This API is used 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | (event?: { data: string &#124; WebResourceRequest}) =&gt; boolean | Yes | URL information.<br>The return value is of the Boolean type. If **true** is returned, the access is blocked. Otherwise, the access is allowed. |
+| callback | (event?: { data: string &#124; WebResourceRequest}) =&gt; boolean | Yes | URL information. <br>The return value is of the Boolean type. If **true** is returned, the access is blocked. Otherwise, the access is allowed. |
 
 ## password
 
@@ -4089,7 +4183,7 @@ Sets the text zoom ratio of the page.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| textZoomAtio | number | Yes | Text zoom percentage of the page to set. The value 100 indicates the original size, a value greater than 100 indicates zoom-in, and a value less than 100 indicates zoom-out.<br>The value range is (0, 2147483647]. |
+| textZoomAtio | number | Yes | Text zoom percentage of the page to set. The value 100 indicates the original size, a value greater than 100 indicates zoom-in, and a value less than 100 indicates zoom-out. <br>The value range is (0, 2147483647]. |
 
 ## userAgent
 

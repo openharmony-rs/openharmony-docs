@@ -101,7 +101,7 @@ Converts this Sendable album to a non-Sendable album.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The current album object is invalid, the Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum(). |
+| 14000011 | MediaLibrary inner fail. Possible causes: <br>1. The current album object is invalid, the Album is not a valid instance obtained from photoAccessHelper.getAlbums() or createAlbum(). |
 
 **Examples**
 

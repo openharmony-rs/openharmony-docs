@@ -18,7 +18,7 @@ Enumerates the function types represented by the Enter key of the input method.
 DONE
 ```
 
-Done.
+Done. <br> <br>Usage scenarios: applicable to the last input box of a single-step form, where the Enter key indicates that input is complete.
 
 **Since:** 10
 
@@ -32,7 +32,7 @@ Done.
 GO
 ```
 
-Go.
+Go. <br> <br>Usage scenarios: applicable to URL input boxes, where the Enter key triggers the "Go" action, such as opening a link.
 
 **Since:** 10
 
@@ -46,7 +46,7 @@ Go.
 NEWLINE
 ```
 
-Line break.
+Line break. <br> <br>Usage scenarios: applicable to multi-line text edit boxes, where the Enter key inserts a line break.
 
 **Since:** 12
 
@@ -60,7 +60,7 @@ Line break.
 NEXT
 ```
 
-Next.
+Next. <br> <br>Usage scenarios: applicable to multi-step forms, where the Enter key jumps to the next input box.
 
 **Since:** 10
 
@@ -74,7 +74,7 @@ Next.
 NONE
 ```
 
-None.
+NONE. <br> <br>Usage scenarios: the Enter key has no specific behavior and is used only as a line break or a normal key.
 
 **Since:** 10
 
@@ -88,7 +88,7 @@ None.
 PREVIOUS
 ```
 
-Previous.
+Previous. <br> <br>Usage scenarios: applicable to multi-step forms, where the Enter key jumps to the previous input box.
 
 **Since:** 10
 
@@ -102,7 +102,7 @@ Previous.
 SEARCH
 ```
 
-Search.
+Search. <br> <br>Usage scenarios: applicable to search boxes, where the Enter key triggers the search action.
 
 **Since:** 10
 
@@ -116,7 +116,7 @@ Search.
 SEND
 ```
 
-Send.
+Send. <br> <br>Usage scenarios: applicable to message sending boxes, where the Enter key triggers the send action.
 
 **Since:** 10
 
@@ -130,7 +130,7 @@ Send.
 UNSPECIFIED = 0
 ```
 
-Not specified.
+Unspecified. <br> <br>Usage scenarios: used when the edit box does not specify a specific function for the Enter key.
 
 **Since:** 10
 

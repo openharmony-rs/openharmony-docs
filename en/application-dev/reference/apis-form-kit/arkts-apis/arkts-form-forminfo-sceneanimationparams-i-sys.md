@@ -6,8 +6,6 @@ interface SceneAnimationParams
 
 The scene animation form params.
 
-@typedef { SceneAnimationParams }
-
 **Since:** 20
 
 <!--Device-formInfo-interface SceneAnimationParams--><!--Device-formInfo-interface SceneAnimationParams-End-->

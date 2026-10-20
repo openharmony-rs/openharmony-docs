@@ -79,3 +79,53 @@ parameters?: Record<string, Object>
 <!--Device-AtomicServiceOptions-parameters?: Record<string, Object>--><!--Device-AtomicServiceOptions-parameters?: Record<string, Object>-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**示例**
+
+```TypeScript
+import { UIAbility, AtomicServiceOptions, common, wantConstant, CompletionHandlerForAtomicService, FailureCode } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let completionHandler: CompletionHandlerForAtomicService = {
+      // 原子化服务打开成功的回调处理
+      onAtomicServiceRequestSuccess(appId: string) {
+        hilog.info(0x0000, 'testTag', `appId:${appId}`);
+      },
+      // 原子化服务打开失败的回调处理
+      onAtomicServiceRequestFailure(appId: string, failureCode: FailureCode, failureMessage: string) {
+        hilog.info(0x0000, 'testTag', `appId:${appId}, failureCode:${failureCode}, failureMessage:${failureMessage}`);
+      }
+    };
+    // 定义原子化服务启动选项参数
+    let options: AtomicServiceOptions = {
+      // 使用免安装能力，目标原子化服务未安装时自动触发安装
+      flags: wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
+      parameters: {
+        'demo.result': 123456
+      },
+      completionHandlerForAtomicService: completionHandler
+    };
+
+    try {
+      let appId: string = '6918661953712445909'; // 根据实际appId修改此值
+      this.context.openAtomicService(appId, options) // 打开原子化服务
+        .then((result: common.AbilityResult) => {
+          // 打开成功后的业务逻辑处理
+          console.info('openAtomicService succeed');
+        })
+        .catch((err: BusinessError) => {
+          // 处理打开失败的业务逻辑
+          console.error(`openAtomicService failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`openAtomicService failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```

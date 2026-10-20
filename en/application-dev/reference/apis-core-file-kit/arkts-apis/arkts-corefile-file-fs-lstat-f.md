@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function lstat(path: string): Promise<Stat>
 ```
 
-Obtains information about a symbolic link that is used to refer to a file or directory. This API uses a promise to return the result.
+Obtains information about a symbolic link that is used to refer to a file or directory. The attributes of the symbolic link are returned, instead of the attributes of the target file. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -24,13 +24,13 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| path | string | Yes | Application sandbox path or URI of the file.<br>**Note:**  URIs can be passed since API version 22. |
+| path | string | Yes | Application sandbox path or URI of the file. <br>**Note:**  URIs can be passed since API version 22. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[Stat](arkts-corefile-file-fs-stat-i.md)&gt; | Promise used to return the symbolic link information obtained. For details, see **Stat**. |
+| Promise&lt;[Stat](arkts-corefile-file-fs-stat-i.md)&gt; | Promise used to return the symbolic link information obtained. For details, see <b>Stat</b>. |
 
 **Error codes:**
 
@@ -48,15 +48,13 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 | 13900042 | Unknown error |
 
 
-<a id="lstat2"></a>
-
 ## lstat
 
 ```TypeScript
 declare function lstat(path: string, callback: AsyncCallback<Stat>): void
 ```
 
-Obtains information about a symbolic link that is used to refer to a file or directory. This API uses an asynchronous callback to return the result.
+Obtains information about a symbolic link that is used to refer to a file or directory. The attributes of the symbolic link are returned, instead of the attributes of the target file. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -68,8 +66,8 @@ Obtains information about a symbolic link that is used to refer to a file or dir
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| path | string | Yes | Application sandbox path or URI of the file.<br>**Note:**  URIs can be passed since API version 22. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Stat](arkts-corefile-file-fs-stat-i.md)&gt; | Yes | Callback used to return the symbolic link information obtained. |
+| path | string | Yes | Application sandbox path or URI of the file. <br>**Note:**  URIs can be passed since API version 22. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Stat](arkts-corefile-file-fs-stat-i.md)&gt; | Yes | Callback used to return the <b>Stat</b> object. |
 
 **Error codes:**
 

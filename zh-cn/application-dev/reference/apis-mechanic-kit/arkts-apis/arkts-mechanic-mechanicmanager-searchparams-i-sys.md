@@ -6,8 +6,6 @@ export interface SearchParams
 
 Parameters for target searching.
 
-@typedef SearchParams
-
 **起始版本：** 21
 
 <!--Device-mechanicManager-export interface SearchParams--><!--Device-mechanicManager-export interface SearchParams-End-->

@@ -6,8 +6,6 @@ interface FormInfo
 
 Provides information about a form.
 
-@typedef FormInfo
-
 **Since:** 9
 
 <!--Device-formInfo-interface FormInfo--><!--Device-formInfo-interface FormInfo-End-->

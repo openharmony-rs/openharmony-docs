@@ -20,7 +20,7 @@ import { lang, Retention, RetentionPolicy } from '@kit.ArkTS';
 
 | Name | Description |
 | --- | --- |
-| [Retention](arkts-arkts-lang-retention-a.md#retention) | An annotation used to annotate the lifecycle of other annotations. |
+| [Retention](arkts-arkts-lang-retention-a.md) | An annotation used to annotate the lifecycle of other annotations. |
 
 ### Enums
 

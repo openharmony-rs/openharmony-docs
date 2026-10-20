@@ -12,6 +12,8 @@ declare type OnGetStartIndexByOffsetCallback = (totalOffset: number) => StartLin
 
 <!--Device-unnamed-declare type OnGetStartIndexByOffsetCallback = (totalOffset: double) => StartLineInfo--><!--Device-unnamed-declare type OnGetStartIndexByOffsetCallback = (totalOffset: double) => StartLineInfo-End-->
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**

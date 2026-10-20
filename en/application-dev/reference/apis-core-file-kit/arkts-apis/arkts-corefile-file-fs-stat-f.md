@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function stat(file: string | number): Promise<Stat>
 ```
 
-Obtains detailed attribute information of a file or directory. This API uses a promise to return the result.
+Obtains detailed attributes of a file or directory. The returned <b>Stat</b> object contains attributes such as the file size, permission mode, access time, and modification time. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ Obtains detailed attribute information of a file or directory. This API uses a p
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| file | string &#124; number | Yes | Application sandbox path, URI, or FD of the file or directory.<br>**Note:**  URIs can be passed since API version 22. |
+| file | string &#124; number | Yes | Application sandbox path, URI, or FD of the file or directory. <br>**Note:**  URIs can be passed since API version 22. |
 
 **Return value:**
 
@@ -53,15 +53,13 @@ Obtains detailed attribute information of a file or directory. This API uses a p
 | 13900042 | Unknown error |
 
 
-<a id="stat2"></a>
-
 ## stat
 
 ```TypeScript
 declare function stat(file: string | number, callback: AsyncCallback<Stat>): void
 ```
 
-Obtains detailed attribute information of a file or directory. This API uses an asynchronous callback to return the result.
+Obtains detailed attributes of a file or directory. The returned <b>Stat</b> object contains attributes such as the file size, permission mode, access time, and modification time. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -75,7 +73,7 @@ Obtains detailed attribute information of a file or directory. This API uses an 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| file | string &#124; number | Yes | Application sandbox path, URI, or FD of the file or directory.<br>**Note:**  URIs can be passed since API version 22. |
+| file | string &#124; number | Yes | Application sandbox path, URI, or FD of the file or directory. <br>**Note:**  URIs can be passed since API version 22. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Stat](arkts-corefile-file-fs-stat-i.md)&gt; | Yes | Callback used to return the file or directory information obtained. |
 
 **Error codes:**

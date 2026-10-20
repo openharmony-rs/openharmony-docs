@@ -36,7 +36,7 @@ Creates a content modifier.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[TextClockConfiguration](arkts-arkui-textclock-comp-textclockconfiguration-i.md)&gt; | Yes | Method for customizing the content area on the TextClock component.<br>modifier: content modifier. Developers need to customize a class to implement the ContentModifier API. |
+| modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[TextClockConfiguration](arkts-arkui-textclock-comp-textclockconfiguration-i.md)&gt; | Yes | Method for customizing the content area on the TextClock component. <br>modifier: content modifier. Developers need to customize a class to implement the ContentModifier API. |
 
 ## dateTimeOptions
 
@@ -62,7 +62,7 @@ Sets whether to display a leading zero for the hour.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| dateTimeOptions | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DateTimeOptions](arkts-arkui-timepicker-comp-datetimeoptions-t.md)&gt; | Yes | Sets whether to display a leading zero for the hour. Only the hour parameter is supported. The value {hour: "2-digit"} indicates that a leading zero is displayed, and the value {hour: "numeric"} indicates that no leading zero is displayed.<br>Default value: undefined. By default, a leading zero is displayed in the 24-hour format and not displayed in the 12-hour format. |
+| dateTimeOptions | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[DateTimeOptions](arkts-arkui-timepicker-comp-datetimeoptions-t.md)&gt; | Yes | Sets whether to display a leading zero for the hour. Only the hour parameter is supported. The value {hour: "2-digit"} indicates that a leading zero is displayed, and the value {hour: "numeric"} indicates that no leading zero is displayed. <br>Default value: undefined. By default, a leading zero is displayed in the 24-hour format and not displayed in the 12-hour format. |
 
 ## fontColor
 
@@ -86,7 +86,7 @@ Sets the font color.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font Color.<br>Default value on Wearable devices: '#c5ffffff'; default value on other devices: '#e6182431' |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Font Color. <br>Default value on Wearable devices: '#c5ffffff'; default value on other devices: '#e6182431' |
 
 ## fontFamily
 
@@ -144,7 +144,7 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | Yes | Text feature effect, used to set the OpenType features of the text. Format: normal &#124;<feature-tag-value>, where the <feature-tag-value> format is: <string> [ <integer> &#124; on &#124; off ]. Multiple features can be set, separated by ','. For example, the format for using monospaced clock digits is:'"ss01" on'. |
+| value | string | Yes | Text feature effect, used to set the OpenType features of the text. Format: normal &#124; <feature-tag-value>, where the <feature-tag-value> format is: <string> [ <integer> &#124; on &#124; off ]. Multiple features can be set, separated by ','. For example, the format for using monospaced clock digits is:'"ss01" on'. |
 
 ## fontSize
 
@@ -168,7 +168,7 @@ Sets the font size.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Font size. When fontSize is of the number type, the unit fp is used.<br>The default font size is 16fp. Percentage strings are not supported. If a percentage string is passed in, the default value is used. |
+| value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Font size. When fontSize is of the number type, the unit fp is used. <br>The default font size is 16fp. Percentage strings are not supported. If a percentage string is passed in, the default value is used. |
 
 ## fontStyle
 
@@ -192,7 +192,7 @@ Sets the font style.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [FontStyle](../arkts-apis/arkts-arkui-fontstyle-e.md) | Yes | Font style.<br>Default value: FontStyle.Normal, which indicates the standard font style (not italic). |
+| value | [FontStyle](../arkts-apis/arkts-arkui-fontstyle-e.md) | Yes | Font style. <br>Default value: FontStyle.Normal, which indicates the standard font style (not italic). |
 
 ## fontWeight
 
@@ -216,7 +216,7 @@ Sets the font weight of the text. If the value is too large, the text in differe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | Yes | Font weight of the text. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font. The default value is 400 for values outside the range of the number type. For the string type, the following values are supported: the string form of a number type value (for example, 400), and the enum values 'lighter' (corresponding to 300), 'regular' (corresponding to 400), 'medium' (corresponding to 500), 'bold' (corresponding to 700), and 'bolder' (corresponding to 900), which correspond to the respective enum values in FontWeight.<br>Default value: FontWeight.Normal |
+| value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | Yes | Font weight of the text. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a heavier font. The default value is 400 for values outside the range of the number type. For the string type, the following values are supported: the string form of a number type value (for example, 400), and the enum values 'lighter' (corresponding to 300), 'regular' (corresponding to 400), 'medium' (corresponding to 500), 'bold' (corresponding to 700), and 'bolder' (corresponding to 900), which correspond to the respective enum values in FontWeight. <br>Default value: FontWeight.Normal |
 
 ## format
 
@@ -266,34 +266,34 @@ The following table shows how different settings of **format** work out.
 
 | Input Format | Display Effect |  
 | ------------------------- | ---------------------- |  
-| EEEE, M, d, yyyy | Saturday, Feb, 4, 2023 |
-| M d, yyyy | Feb 4, 2023 |
-| EEEE, M, d | Saturday, Feb, 4 |
-| M d | Feb 4 |
-| MM/dd/yyyy | Feb/04/2023 |
-| EEEE MM dd | Saturday Feb 04 |
-| yyyy | 2023 |
-| yy | 23 |
-| MM | Feb |
-| M | Feb |
-| dd (complete date) | 04 |
-| d | 4 |
-| EEEE (full name) | Saturday |
-| E, EE, EEE (abbreviation) | [Sat](../arkts-apis/arkts-arkui-week-e.md) |
-| M d, yyyy | Feb 4, 2023 |
-| yyyy/M/d | 2023/Feb/4 |
-| yyyy-M-d | 2023-Feb-4 |
-| yyyy.M.d | 2023.Feb.4 |
-| HH:mm:ss | 17:00:04 |
-| aa hh:mm:ss | AM 5:00:04 |
-| hh:mm:ss | 5:00:04 |
-| HH:mm | 17:00 |
-| aa hh:mm | AM 5:00 |
-| hh:mm | 5:00 |
-| mm:ss | 00:04 |
-| mm:ss.SS | 00:04.91 |
-| mm:ss.SSS | 00:04.536 |
-| hh:mm:ss aa | 5:00:04 AM |
+| EEEE, M, d, yyyy | Saturday, Feb, 4, 2023 |  
+| M d, yyyy | Feb 4, 2023 |  
+| EEEE, M, d | Saturday, Feb, 4 |  
+| M d | Feb 4 |  
+| MM/dd/yyyy | Feb/04/2023 |  
+| EEEE MM dd | Saturday Feb 04 |  
+| yyyy | 2023 |  
+| yy | 23 |  
+| MM | Feb |  
+| M | Feb |  
+| dd (complete date) | 04 |  
+| d | 4 |  
+| EEEE (full name) | Saturday |  
+| E, EE, EEE (abbreviation) | Sat |  
+| M d, yyyy | Feb 4, 2023 |  
+| yyyy/M/d | 2023/Feb/4 |  
+| yyyy-M-d | 2023-Feb-4 |  
+| yyyy.M.d | 2023.Feb.4 |  
+| HH:mm:ss | 17:00:04 |  
+| aa hh:mm:ss | AM 5:00:04 |  
+| hh:mm:ss | 5:00:04 |  
+| HH:mm | 17:00 |  
+| aa hh:mm | AM 5:00 |  
+| hh:mm | 5:00 |  
+| mm:ss | 00:04 |  
+| mm:ss.SS | 00:04.91 |  
+| mm:ss.SSS | 00:04.536 |  
+| hh:mm:ss aa | 5:00:04 AM |  
 | HH | 17 |
 
 **Since:** 8
@@ -310,7 +310,7 @@ The following table shows how different settings of **format** work out.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Time format to display.<br>Since API version 20, the Resource type is supported.<br>**Since:** 20 |
+| value | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Time format to display. <br>Since API version 20, the Resource type is supported.<br>**Since:** 20 |
 
 ## onDateChange
 

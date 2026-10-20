@@ -28,11 +28,13 @@ MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [ASTCResource](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md) | 定义可以使用 ASTC 的资源。 |
+<!--DelEnd-->
 
 <!--Del-->
 ## 示例

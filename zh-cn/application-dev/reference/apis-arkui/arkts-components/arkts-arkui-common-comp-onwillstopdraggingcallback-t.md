@@ -6,8 +6,6 @@ declare type OnWillStopDraggingCallback = (velocity: number) => void
 
 滚动组件划动离手时触发的回调。
 
-@typedef { function } OnWillStopDraggingCallback
-
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。

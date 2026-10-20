@@ -76,7 +76,7 @@ Sets the footer component of the current **LazyVGridLayout**.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; undefined | Yes | Footer component constructor.<br>When the method input parameter is **undefined**, the current **LazyVGridLayout** does not set a footer component. If a footer component already exists, it will also be removed. |
+| builder | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; undefined | Yes | Footer component constructor. <br>When the method input parameter is **undefined**, the current **LazyVGridLayout** does not set a footer component. If a footer component already exists, it will also be removed. |
 
 **Return value:**
 
@@ -115,7 +115,7 @@ Sets the header component of the current **LazyVGridLayout**.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| builder | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; undefined | Yes | Constructor of the header component.<br>When the method input parameter is **undefined**, the current **LazyVGridLayout** does not set a header component. If a header component already exists, it is also removed. |
+| builder | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; undefined | Yes | Constructor of the header component. <br>When the method input parameter is **undefined**, the current **LazyVGridLayout** does not set a header component. If a header component already exists, it is also removed. |
 
 **Return value:**
 
@@ -232,7 +232,7 @@ When this component scrolls into the visible area along with the scroll containe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sticky | [StickyStyle](arkts-arkui-list-comp-stickystyle-e.md) &#124; undefined | Yes | Sticky style of the header and footer components. The **sticky** attribute can be set to **StickyStyle.Header** or **StickyStyle.Footer**, or to **StickyStyle.BOTH** to support both header stick-to-top and footer stick-to-bottom.<br>When the method input parameter is **undefined**, the default value **StickyStyle.None** is restored. <br>When not set through this API, the header does not stick to the top and the footer does not stick to the bottom by default. |
+| sticky | [StickyStyle](arkts-arkui-list-comp-stickystyle-e.md) &#124; undefined | Yes | Sticky style of the header and footer components. The **sticky** attribute can be set to **StickyStyle.Header** or **StickyStyle.Footer**, or to **StickyStyle.BOTH** to support both header stick-to-top and footer stick-to-bottom. <br>When the method input parameter is **undefined**, the default value **StickyStyle.None** is restored. <br>When not set through this API, the header does not stick to the top and the footer does not stick to the bottom by default. |
 
 **Return value:**
 

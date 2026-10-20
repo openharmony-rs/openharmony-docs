@@ -4,6 +4,8 @@ This module provides the SparkLink Service Access Protocol (SSAP) connection cap
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace ssap--><!--Device-unnamed-declare namespace ssap-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

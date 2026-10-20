@@ -18,8 +18,6 @@ class DocumentViewPicker
 import { picker } from '@kit.CoreFileKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -42,8 +40,6 @@ constructor()
 let documentPicker = new picker.DocumentViewPicker(); // 不推荐使用无参构造，会出现概率性拉起失败问题
 ```
 
-<a id="constructor2"></a>
-
 ## constructor
 
 ```TypeScript
@@ -64,7 +60,7 @@ constructor(context: Context)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用上下文（仅支持UIAbilityContext）。Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md)。 |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用上下文（仅支持UIAbilityContext）。Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md)。 |
 
 **示例**
 
@@ -94,8 +90,6 @@ struct Index {
 }
 ```
 
-<a id="constructor3"></a>
-
 ## constructor
 
 ```TypeScript
@@ -118,7 +112,7 @@ constructor(context: Context, window: window.Window)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用上下文（仅支持UIAbilityContext）。Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md)。 |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | 是 | 应用上下文（仅支持UIAbilityContext）。Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md)。 |
 | window | [window.Window](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md) | 是 | 应用创建的窗口实例。 |
 
 **示例**
@@ -158,7 +152,7 @@ struct Index {
 getSelectedIndex(): number
 ```
 
-获取保存成功后的文件后缀类型的下标。该方法只在调用 [save()](#save1)时使用生效，其他场景下不适用。该方法需要配置参数[DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md)。该方法返回的是所选后缀类型的下标(number)。所选的后缀类型是开发者所传的参数[DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md)里的某个后缀类型。如果没有传参，并且调用了getSelectedIndex()方法，返回值为-1。
+获取保存成功后的文件后缀类型的下标。该方法只在调用 [save()](#save)时使用生效，其他场景下不适用。该方法需要配置参数[DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md)。该方法返回的是所选后缀类型的下标(number)。所选的后缀类型是开发者所传的参数[DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md)里的某个后缀类型。如果没有传参，并且调用了getSelectedIndex()方法，返回值为-1。
 
 **起始版本：** 14
 
@@ -173,8 +167,6 @@ getSelectedIndex(): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 返回所选后缀类型在[DocumentSaveOptions.fileSuffixChoices](arkts-corefile-picker-documentsaveoptions-c.md)里的下标(number)。默认返回-1。 |
-
-<a id="save1"></a>
 
 ## save
 
@@ -227,8 +219,6 @@ async function example10(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
-<a id="save2"></a>
-
 ## save
 
 ```TypeScript
@@ -277,8 +267,6 @@ async function example11(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
-<a id="save3"></a>
-
 ## save
 
 ```TypeScript
@@ -323,8 +311,6 @@ async function example12(context: common.UIAbilityContext) { // 需确保 contex
   }
 }
 ```
-
-<a id="select1"></a>
 
 ## select
 
@@ -376,8 +362,6 @@ async function example07(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
-<a id="select2"></a>
-
 ## select
 
 ```TypeScript
@@ -424,8 +408,6 @@ async function example08(context: common.UIAbilityContext) { // 需确保 contex
   }
 }
 ```
-
-<a id="select3"></a>
 
 ## select
 

@@ -6,8 +6,6 @@
 import { settings } from '@kit.BasicServicesKit';
 ```
 
-<a id="setvalue3"></a>
-
 ## setValue
 
 ```TypeScript
@@ -49,8 +47,6 @@ settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', (st
 });
 ```
 
-
-<a id="setvalue4"></a>
 
 ## setValue
 
@@ -98,8 +94,6 @@ settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100').the
 });
 ```
 
-
-<a id="setvalue5"></a>
 
 ## setValue
 

@@ -6,8 +6,6 @@ declare class RootSceneAttribute extends CommonMethod<RootSceneAttribute>
 
 Defines the attribute functions of RootScene.
 
-@extends CommonMethod<RootSceneAttribute>
-
 **Inheritance/Implementation:** RootSceneAttribute extends CommonMethod&lt;RootSceneAttribute&gt;
 
 **Since:** 10

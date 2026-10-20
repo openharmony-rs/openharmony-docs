@@ -82,7 +82,7 @@ photoUris: Array<string>
 
 返回图库选择后的媒体文件的URI数组。
 
-此URI数组只能通过临时授权的方式调用[photoAccessHelper.getAssets](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets1)接口去使用，具体使用方式请参考[媒体文件URI的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
+此URI数组只能通过临时授权的方式调用[photoAccessHelper.getAssets](arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets)接口去使用，具体使用方式请参考[媒体文件URI的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
 
 **注意：**
 

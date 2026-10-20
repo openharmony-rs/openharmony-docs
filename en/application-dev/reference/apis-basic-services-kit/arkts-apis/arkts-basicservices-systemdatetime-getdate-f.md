@@ -6,8 +6,6 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="getdate1"></a>
-
 ## getDate
 
 ```TypeScript
@@ -36,7 +34,7 @@ Obtains the current system date. This API uses an asynchronous callback to retur
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. System error. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. System error. |
 
 **Examples**
 
@@ -57,8 +55,6 @@ try {
 }
 ```
 
-
-<a id="getdate2"></a>
 
 ## getDate
 
@@ -88,7 +84,7 @@ Obtains the current system date. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. System error. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. System error. |
 
 **Examples**
 

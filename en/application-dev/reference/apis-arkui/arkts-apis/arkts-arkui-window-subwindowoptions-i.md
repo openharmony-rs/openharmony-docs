@@ -80,7 +80,7 @@ This parameter can be used properly on devices that support the [freeform window
 modalityType?: ModalityType
 ```
 
-Modality type of the child window. This parameter takes effect only when the modal property is enabled for the child window. **WINDOW_MODALITY** means window-modal, and **APPLICATION_MODALITY** means application-modal. The default value is **WINDOW_MODALITY**.
+The modal type of the child window can be set and takes effect only when the modal property is enabled for the child window (that is, `isModal` is `true`); otherwise, setting this parameter throws an exception. **WINDOW_MODALITY** means window-modal, and **APPLICATION_MODALITY** means application-modal. The default value is **WINDOW_MODALITY**.
 
 **Type:** [ModalityType](arkts-arkui-window-modalitytype-e.md)
 
@@ -136,7 +136,7 @@ Title of the child window. The title display area should not go past the left si
 windowRect?: Rect
 ```
 
-Rectangle of the child window, and the size of the child window is limited. For details, see [resize()](arkts-arkui-window-window-i.md#resize). If this parameter is not set and [showWindow()](arkts-arkui-window-window-i.md#showwindow1) is not called, the default value {left: 0, top: 0, width: 0, height: 0} is used. For details, see [Setting a Child Window of an Application](../../../windowmanager/application-window-stage.md#setting-a-child-window-of-an-application).
+Rectangle of the child window, and the size of the child window is limited. For details, see [resize()](arkts-arkui-window-window-i.md#resize). If this parameter is not set and [showWindow()](arkts-arkui-window-window-i.md#showwindow) is not called, the default value {left: 0, top: 0, width: 0, height: 0} is used. For details, see [Setting a Child Window of an Application](../../../windowmanager/application-window-stage.md#setting-a-child-window-of-an-application).
 
 **Type:** [Rect](arkts-arkui-window-rect-i.md)
 

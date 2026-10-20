@@ -104,6 +104,42 @@ LINEAR_MAP = 4
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+## MEL_MAP
+
+```TypeScript
+MEL_MAP = 12
+```
+
+色斑图。
+
+记录人脸区域的色斑分布，可用于肤质分析。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AuxiliaryPictureType-MEL_MAP = 12--><!--Device-AuxiliaryPictureType-MEL_MAP = 12-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## OXY_MAP
+
+```TypeScript
+OXY_MAP = 11
+```
+
+血氧图。
+
+记录人脸区域像素的血氧饱和度，可用于肤质分析。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AuxiliaryPictureType-OXY_MAP = 11--><!--Device-AuxiliaryPictureType-OXY_MAP = 11-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 ## UNREFOCUS_MAP
 
 ```TypeScript

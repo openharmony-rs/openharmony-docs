@@ -34,15 +34,19 @@ DynamicComponent(options: DynamicOptions)
 
 ## 汇总
 
-### 接口
+<!--Del-->
+### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [DynamicOptions](arkts-arkui-dynamiccomponent-comp-dynamicoptions-i-sys.md) | 用于在DynamicComponent构造时传递参数。 |
+<!--DelEnd-->
 
-### 类型
+<!--Del-->
+### 类型（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
 | [ErrorCallback](arkts-arkui-dynamiccomponent-comp-errorcallback-t-sys.md) | 错误回调类型，用于接收异常信息。 |
 | [Worker](arkts-arkui-dynamiccomponent-comp-worker-t-sys.md) | 用于运行Abc的Worker线程对象。需通过worker.ThreadWorker创建。 |
+<!--DelEnd-->

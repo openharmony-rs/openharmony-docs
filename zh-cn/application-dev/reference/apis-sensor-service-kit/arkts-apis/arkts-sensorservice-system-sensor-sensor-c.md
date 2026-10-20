@@ -57,14 +57,14 @@ static subscribeAccelerometer(options: subscribeAccelerometerOptions): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [ACCELEROMETER](arkts-sensorservice-sensor-on-f.md#on25)
+> [ACCELEROMETER](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_accelerometer)
 > 替代。
 
 **起始版本：** 3
 
 **废弃版本：** 8
 
-**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#on25)(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_accelerometer)(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;, options?: Options)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
@@ -91,14 +91,14 @@ static subscribeBarometer(options: SubscribeBarometerOptions): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [BAROMETER](arkts-sensorservice-sensor-on-f.md#on29)
+> [BAROMETER](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_barometer)
 > 替代。
 
 **起始版本：** 3
 
 **废弃版本：** 8
 
-**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#on29)(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_barometer)(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback: Callback&lt;BarometerResponse&gt;, options?: Options)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -123,7 +123,7 @@ static subscribeCompass(options: SubscribeCompassOptions): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [ORIENTATION](arkts-sensorservice-sensor-on-f.md#on39)
+> [ORIENTATION](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_orientation)
 > 替代。
 
 **起始版本：** 3
@@ -155,7 +155,7 @@ static subscribeDeviceOrientation(options: SubscribeDeviceOrientationOptions): v
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [ORIENTATION](arkts-sensorservice-sensor-on-f.md#on39)
+> [ORIENTATION](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_orientation)
 > 替代。
 
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
@@ -164,7 +164,7 @@ static subscribeDeviceOrientation(options: SubscribeDeviceOrientationOptions): v
 
 **废弃版本：** 8
 
-**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#on39)(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_orientation)(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback: Callback&lt;OrientationResponse&gt;, options?: Options)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -189,14 +189,14 @@ static subscribeGyroscope(options: SubscribeGyroscopeOptions): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [GYROSCOPE](arkts-sensorservice-sensor-on-f.md#on31)
+> [GYROSCOPE](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_gyroscope)
 > 替代。
 
 **起始版本：** 6
 
 **废弃版本：** 8
 
-**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#on31)(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_gyroscope)(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;, options?: Options)
 
 **需要权限：** ohos.permission.GYROSCOPE
 
@@ -223,14 +223,14 @@ static subscribeHeartRate(options: SubscribeHeartRateOptions): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [HEART_RATE](arkts-sensorservice-sensor-on-f.md#on34)
+> [HEART_RATE](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_heart_rate)
 > 替代。
 
 **起始版本：** 3
 
 **废弃版本：** 8
 
-**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#on34)(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_heart_rate)(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, options?: Options)
 
 **需要权限：** ohos.permission.READ_HEALTH_DATA
 
@@ -257,7 +257,7 @@ static subscribeLight(options: SubscribeLightOptions): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [AMBIENT_LIGHT](arkts-sensorservice-sensor-on-f.md#on27)
+> [AMBIENT_LIGHT](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_ambient_light)
 > 替代。
 
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
@@ -291,14 +291,14 @@ static subscribeOnBodyState(options: SubscribeOnBodyStateOptions): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [WEAR_DETECTION](arkts-sensorservice-sensor-on-f.md#on45)
+> [WEAR_DETECTION](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_wear_detection)
 > 替代。
 
 **起始版本：** 3
 
 **废弃版本：** 8
 
-**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#on45)(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_wear_detection)(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -323,7 +323,7 @@ static subscribeProximity(options: SubscribeProximityOptions): void
 > **说明：** 
 > 
 > 从 API version 3开始支持，从API version 8开始废弃。除Lite Wearable外，建议使用
-> [PROXIMITY](arkts-sensorservice-sensor-on-f.md#on42)
+> [PROXIMITY](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_proximity)
 > 替代。
 
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
@@ -357,14 +357,14 @@ static subscribeStepCounter(options: SubscribeStepCounterOptions): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [PEDOMETER](arkts-sensorservice-sensor-on-f.md#on40)
+> [PEDOMETER](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_pedometer)
 > 替代。
 
 **起始版本：** 3
 
 **废弃版本：** 8
 
-**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#on40)(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options)
+**替代接口：** [on](arkts-sensorservice-sensor-on-f.md#onsensortypesensor_type_id_pedometer)(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback: Callback&lt;PedometerResponse&gt;, options?: Options)
 
 **需要权限：** ohos.permission.ACTIVITY_MOTION
 
@@ -391,14 +391,14 @@ static unsubscribeAccelerometer(): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [ACCELEROMETER](arkts-sensorservice-sensor-off-f.md#off48)
+> [ACCELEROMETER](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_accelerometer)
 > 替代。
 
 **起始版本：** 3
 
 **废弃版本：** 8
 
-**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#off48)(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;)
+**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_accelerometer)(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
@@ -419,14 +419,14 @@ static unsubscribeBarometer(): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [BAROMETER](arkts-sensorservice-sensor-off-f.md#off52)
+> [BAROMETER](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_barometer)
 > 替代。
 
 **起始版本：** 3
 
 **废弃版本：** 8
 
-**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#off52)(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback&lt;BarometerResponse&gt;)
+**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_barometer)(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback&lt;BarometerResponse&gt;)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -445,14 +445,14 @@ static unsubscribeCompass(): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [ORIENTATION](arkts-sensorservice-sensor-off-f.md#off62)
+> [ORIENTATION](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_orientation)
 > 替代。
 
 **起始版本：** 3
 
 **废弃版本：** 8
 
-**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#off62)(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;)
+**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_orientation)(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -471,7 +471,7 @@ static unsubscribeDeviceOrientation(): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [ORIENTATION](arkts-sensorservice-sensor-off-f.md#off62)
+> [ORIENTATION](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_orientation)
 > 替代。
 
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
@@ -480,7 +480,7 @@ static unsubscribeDeviceOrientation(): void
 
 **废弃版本：** 8
 
-**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#off62)(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;)
+**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_orientation)(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -499,14 +499,14 @@ static unsubscribeGyroscope(): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [GYROSCOPE](arkts-sensorservice-sensor-off-f.md#off54)
+> [GYROSCOPE](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_gyroscope)
 > 替代。
 
 **起始版本：** 6
 
 **废弃版本：** 8
 
-**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#off54)(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;)
+**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_gyroscope)(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;)
 
 **需要权限：** ohos.permission.GYROSCOPE
 
@@ -527,14 +527,14 @@ static unsubscribeHeartRate(): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [HEART_RATE](arkts-sensorservice-sensor-off-f.md#off57)
+> [HEART_RATE](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_heart_rate)
 > 替代。
 
 **起始版本：** 3
 
 **废弃版本：** 8
 
-**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#off57)(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;)
+**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_heart_rate)(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;)
 
 **需要权限：** ohos.permission.READ_HEALTH_DATA
 
@@ -555,7 +555,7 @@ static unsubscribeLight(): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [AMBIENT_LIGHT](arkts-sensorservice-sensor-off-f.md#off50)
+> [AMBIENT_LIGHT](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_ambient_light)
 > 替代。
 
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
@@ -564,7 +564,7 @@ static unsubscribeLight(): void
 
 **废弃版本：** 8
 
-**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#off50)(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;)
+**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_ambient_light)(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -583,14 +583,14 @@ static unsubscribeOnBodyState(): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [WEAR_DETECTION](arkts-sensorservice-sensor-off-f.md#off68)
+> [WEAR_DETECTION](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_wear_detection)
 > 替代。
 
 **起始版本：** 3
 
 **废弃版本：** 8
 
-**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#off68)(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;)
+**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_wear_detection)(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -609,7 +609,7 @@ static unsubscribeProximity(): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [PROXIMITY](arkts-sensorservice-sensor-off-f.md#off65)
+> [PROXIMITY](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_proximity)
 > 替代。
 
 **设备行为差异**：该接口在Wearable、Lite Wearable中可正常调用，在其他设备类型中无效果。
@@ -637,14 +637,14 @@ static unsubscribeStepCounter(): void
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [PEDOMETER](arkts-sensorservice-sensor-off-f.md#off63)
+> [PEDOMETER](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_pedometer)
 > 替代。
 
 **起始版本：** 3
 
 **废弃版本：** 8
 
-**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#off63)(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;)
+**替代接口：** [off](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_pedometer)(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;)
 
 **需要权限：** ohos.permission.ACTIVITY_MOTION
 

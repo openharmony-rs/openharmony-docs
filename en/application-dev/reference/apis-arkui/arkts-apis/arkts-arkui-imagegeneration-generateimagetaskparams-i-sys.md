@@ -6,8 +6,6 @@ interface GenerateImageTaskParams
 
 Configuration parameter options for AI-generated image tasks.
 
-@interface GenerateImageTaskParams
-
 **Since:** 23
 
 <!--Device-imageGeneration-interface GenerateImageTaskParams--><!--Device-imageGeneration-interface GenerateImageTaskParams-End-->

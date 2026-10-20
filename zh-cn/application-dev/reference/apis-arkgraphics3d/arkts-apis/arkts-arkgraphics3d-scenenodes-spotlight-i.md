@@ -14,8 +14,6 @@ export interface SpotLight extends Light
 > 当outerAngle设置的值大于PI/2时，内部会强制其等于PI/2。
 > 当outerAngle设置的值小于innerAngle时，内部会强制其等于innerAngle。
 
-@extends Light @interface SpotLight
-
 **继承/实现关系：** SpotLight extends [Light](arkts-arkgraphics3d-scenenodes-light-i.md)
 
 **起始版本：** 12

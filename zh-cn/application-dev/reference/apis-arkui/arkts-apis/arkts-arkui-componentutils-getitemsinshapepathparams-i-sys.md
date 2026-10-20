@@ -6,8 +6,6 @@ interface GetItemsInShapePathParams
 
 需要获取图像对象时设置的图像选项。
 
-@interface GetItemsInShapePathParams
-
 **起始版本：** 23
 
 <!--Device-componentUtils-interface GetItemsInShapePathParams--><!--Device-componentUtils-interface GetItemsInShapePathParams-End-->

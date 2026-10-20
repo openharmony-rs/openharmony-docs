@@ -24,8 +24,6 @@ You can use the APIs of this module to start **StaticSubscriberExtensionAbility*
 import { StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
 ```
 
-<a id="startability1"></a>
-
 ## startAbility
 
 ```TypeScript
@@ -111,8 +109,6 @@ class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbilit
 ```
 
 <!--DelEnd-->
-
-<a id="startability2"></a>
 
 ## startAbility
 

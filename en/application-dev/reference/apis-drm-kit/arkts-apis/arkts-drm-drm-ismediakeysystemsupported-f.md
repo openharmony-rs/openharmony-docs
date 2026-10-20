@@ -6,8 +6,6 @@
 import { drm } from '@kit.DrmKit';
 ```
 
-<a id="ismediakeysystemsupported1"></a>
-
 ## isMediaKeySystemSupported
 
 ```TypeScript
@@ -28,8 +26,8 @@ Checks whether the device supports the combination of the DRM solution, MIME typ
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| name | string | Yes | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported3). |
-| mimeType | string | Yes | MIME type. The supported MIME types depend on the DRM solution. Before calling this API, ensure that the MIME type is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported2). |
+| name | string | Yes | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported). |
+| mimeType | string | Yes | MIME type. The supported MIME types depend on the DRM solution. Before calling this API, ensure that the MIME type is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported). |
 | level | [ContentProtectionLevel](arkts-drm-drm-contentprotectionlevel-e.md) | Yes | Content protection level. |
 
 **Return value:**
@@ -56,8 +54,6 @@ console.info("isMediaKeySystemSupported: ", supported);
 ```
 
 
-<a id="ismediakeysystemsupported2"></a>
-
 ## isMediaKeySystemSupported
 
 ```TypeScript
@@ -78,7 +74,7 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| name | string | Yes | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported3). |
+| name | string | Yes | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](#ismediakeysystemsupported). |
 | mimeType | string | Yes | MIME type. The supported MIME types depend on the DRM solution. For example, video/avc and video/hevc. |
 
 **Return value:**
@@ -104,8 +100,6 @@ let supported: boolean = drm.isMediaKeySystemSupported('com.clearplay.drm', 'vid
 console.info("isMediaKeySystemSupported: ", supported);
 ```
 
-
-<a id="ismediakeysystemsupported3"></a>
 
 ## isMediaKeySystemSupported
 

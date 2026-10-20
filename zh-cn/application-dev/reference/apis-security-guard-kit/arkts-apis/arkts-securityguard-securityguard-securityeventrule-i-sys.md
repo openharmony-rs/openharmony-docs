@@ -6,8 +6,6 @@ interface SecurityEventRule
 
 用户获取安全数据的规则。
 
-@interface SecurityEventRule
-
 **起始版本：** 12
 
 <!--Device-securityGuard-interface SecurityEventRule--><!--Device-securityGuard-interface SecurityEventRule-End-->

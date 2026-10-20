@@ -60,7 +60,7 @@ Invalidates the component and triggers re-rendering of the component.
 get canvas(): DrawingCanvas
 ```
 
-Obtains the canvas object for drawing content.
+Obtains the canvas object for drawing content. This API can be used only after the **DrawingRenderingContext** object is bound to the **Canvas** component. The obtained **Canvas** object can be used to bind drawing tools such as **Brush** and **Pen** to draw shapes, texts, and images.
 
 **Type:** [DrawingCanvas](arkts-arkui-canvas-comp-drawingcanvas-t.md)
 

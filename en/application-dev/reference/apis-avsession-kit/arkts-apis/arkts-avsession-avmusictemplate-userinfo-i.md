@@ -6,8 +6,6 @@ interface UserInfo
 
 The definition of User information.
 
-@interface UserInfo
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-interface UserInfo--><!--Device-avMusicTemplate-interface UserInfo-End-->

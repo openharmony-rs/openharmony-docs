@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getabilityrunninginfos1"></a>
-
 ## getAbilityRunningInfos
 
 ```TypeScript
@@ -35,8 +33,6 @@ Obtains the ability running information. This API uses a promise to return the r
 | --- | --- |
 | Promise&lt;Array&lt;[AbilityRunningInfo](arkts-ability-abilityrunninginfo-i.md)&gt;&gt; | Promise used to return the ability running information. |
 
-
-<a id="getabilityrunninginfos2"></a>
 
 ## getAbilityRunningInfos
 

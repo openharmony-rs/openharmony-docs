@@ -6,8 +6,6 @@
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
-<a id="emit1"></a>
-
 ## emit
 
 ```TypeScript
@@ -54,8 +52,6 @@ emitter.emit(innerEvent, eventData);
 ```
 
 
-<a id="emit2"></a>
-
 ## emit
 
 ```TypeScript
@@ -96,8 +92,18 @@ let eventData: emitter.EventData = {
 emitter.emit('eventId', eventData);
 ```
 
+```TypeScript
+let emitter1: emitter.Emitter = new emitter.Emitter();
+let eventData: emitter.EventData = {
+  data: {
+    "content": "content",
+    "id": 1,
+  }
+};
 
-<a id="emit5"></a>
+emitter1.emit('eventId', eventData);
+```
+
 
 ## emit
 
@@ -146,8 +152,27 @@ let eventData: emitter.GenericEventData<Sample> = {
 emitter.emit('eventId', eventData);
 ```
 
+```TypeScript
+@Sendable
+class Sample {
+  constructor() {
+    this.count = 100;
+  }
+  printCount() {
+    console.info('Print count : ' + this.count);
+  }
+  count: number;
+}
 
-<a id="emit7"></a>
+let emitter1: emitter.Emitter = new emitter.Emitter();
+
+let eventData: emitter.GenericEventData<Sample> = {
+  data: new Sample()
+};
+
+emitter1.emit('eventId', eventData);
+```
+
 
 ## emit
 
@@ -194,8 +219,22 @@ let options: emitter.Options = {
 emitter.emit('eventId', options, eventData);
 ```
 
+```TypeScript
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
-<a id="emit10"></a>
+let options: emitter.Options = {
+  priority: emitter.EventPriority.HIGH
+};
+let eventData: emitter.EventData = {
+  data: {
+    "content": "content",
+    "id": 1,
+  }
+};
+
+emitter1.emit('eventId', options, eventData);
+```
+
 
 ## emit
 
@@ -247,4 +286,28 @@ let eventData: emitter.GenericEventData<Sample> = {
 };
 
 emitter.emit('eventId', options, eventData);
+```
+
+```TypeScript
+@Sendable
+class Sample {
+  constructor() {
+    this.count = 100;
+  }
+  printCount() {
+    console.info('Print count : ' + this.count);
+  }
+  count: number;
+}
+
+let emitter1: emitter.Emitter = new emitter.Emitter();
+
+let options: emitter.Options = {
+  priority: emitter.EventPriority.HIGH
+};
+let eventData: emitter.GenericEventData<Sample> = {
+  data: new Sample()
+};
+
+emitter1.emit('eventId', options, eventData);
 ```

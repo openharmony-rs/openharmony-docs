@@ -6,8 +6,6 @@ export interface Color
 
 用于表示RGBA格式的颜色，包含四个分量，依次为红色、绿色、蓝色和透明度。
 
-@typedef Color
-
 **起始版本：** 12
 
 <!--Device-unnamed-export interface Color--><!--Device-unnamed-export interface Color-End-->

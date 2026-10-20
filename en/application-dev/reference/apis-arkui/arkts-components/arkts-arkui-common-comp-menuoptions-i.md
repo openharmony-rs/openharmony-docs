@@ -6,8 +6,6 @@ declare interface MenuOptions extends ContextMenuOptions
 
 Configues menu item information, which is inherited from [ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md).
 
-@extends ContextMenuOptions @interface MenuOptions
-
 **Inheritance/Implementation:** MenuOptions extends [ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md)
 
 **Since:** 10

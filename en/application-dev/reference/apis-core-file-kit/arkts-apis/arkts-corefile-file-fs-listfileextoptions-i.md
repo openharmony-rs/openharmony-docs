@@ -4,7 +4,7 @@
 export interface ListFileExtOptions
 ```
 
-Defines the options used in listFileExt().
+Defines the options used in <b>listFileExt</b>.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 fileFilter?: FileFilter
 ```
 
-File name filtering interface. This parameter is optional. Filtering rules can be defined based on file names.
+File name filtering rule. The default value is empty, indicating that no filtering is performed.
 
 **Type:** [FileFilter](arkts-corefile-file-fs-filefilter-i.md)
 
@@ -42,7 +42,7 @@ File name filtering interface. This parameter is optional. Filtering rules can b
 listNum?: number
 ```
 
-Number of file names to list. This parameter is optional. The default value is 0, which means to list all files. The value should be an integer.
+Number of file names to be listed. The default value is <b>0</b>, indicating that all files are listed.
 
 **Type:** number
 
@@ -60,7 +60,7 @@ Number of file names to list. This parameter is optional. The default value is 0
 recursion?: boolean
 ```
 
-Whether to list all files in the subdirectories recursively. This parameter is optional. The default value is false. If recursion is false, the names of files and directories that meet the filtering requirements in the current directory are returned. If recursion is true, relative paths (starting with"/") of all files that meet the specified conditions in the current directory are returned.
+Whether to list all files in subfolders recursively. The default value is <b>false</b>. <br><b>false</b>: The names of files and directories that meet the filtering requirements in the current directory are returned. <br><b>true</b>: Relative paths (starting with /) of all files that meet the filtering requirements in the directory are returned.
 
 **Type:** boolean
 

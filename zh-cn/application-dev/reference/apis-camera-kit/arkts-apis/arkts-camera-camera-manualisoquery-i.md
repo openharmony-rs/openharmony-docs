@@ -4,7 +4,7 @@
 interface ManualIsoQuery
 ```
 
-Provides APIs to check whether a camera device supports manual ISO setting and obtain the ISO range supported by the device.
+提供了查询相机设备是否支持手动ISO设置以及获取设备支持的ISO范围的方法。
 
 **起始版本：** 24
 
@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 getSupportedIsoRange(): number[]
 ```
 
-Get a array of supported standard ISO sensitivity values, as defined in ISO 12232:2006.
+获取支持的标准ISO感光度值数组，标准定义参考ISO 12232:2006。
 
 **起始版本：** 24
 
@@ -38,7 +38,7 @@ Get a array of supported standard ISO sensitivity values, as defined in ISO 1223
 
 | 类型 | 说明 |
 | --- | --- |
-| number[] | The array of ISO sensitivity values. |
+| number[] | ISO感光度值数组。 |
 
 **错误码：**
 

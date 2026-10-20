@@ -6,8 +6,6 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
-<a id="getsimoperatornumeric1"></a>
-
 ## getSimOperatorNumeric
 
 ```TypeScript
@@ -26,7 +24,7 @@ Obtains the home public land mobile network (PLMN) ID of the SIM card in the spe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the result, which is the home PLMN ID of the SIM card in the specified slot. |
 
 **Error codes:**
@@ -52,8 +50,6 @@ sim.getSimOperatorNumeric(0, (err: BusinessError, data: string) => {
 ```
 
 
-<a id="getsimoperatornumeric2"></a>
-
 ## getSimOperatorNumeric
 
 ```TypeScript
@@ -72,7 +68,7 @@ Obtains the home PLMN ID of the SIM card in the specified slot. This API uses a 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| slotId | number | Yes | Card slot ID.<br>- **0**: card slot 1. <br>- **1**: card slot 2 |
+| slotId | number | Yes | Card slot ID. <br>- **0**: card slot 1. <br>- **1**: card slot 2 |
 
 **Return value:**
 

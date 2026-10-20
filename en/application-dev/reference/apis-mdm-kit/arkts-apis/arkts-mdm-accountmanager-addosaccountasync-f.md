@@ -6,7 +6,7 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-## addOsAccountAsync
+## addOsAccountAsync('osAccount.OsAccountType')
 
 ```TypeScript
 function addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountType): Promise<osAccount.OsAccountInfo>
@@ -35,7 +35,7 @@ Adds an account in the background. This API uses a promise to return the result.
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
 | name | string | Yes | Account name, which is the name of the account to be added. An account with a duplicate name or an empty name cannot be created. An attempt to create a duplicate-name account will result in error code 9201003, and an attempt to create an account with an empty name will result in error code 401. |
-| type | [osAccount.OsAccountType](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-osaccounttype-e.md) | Yes | Type of the account to add.<br>The value can be any of the following: <br>· **ADMIN**: administrator account. <br>· **NORMAL**: normal account. <br>· **GUEST**: guest account. |
+| type | [osAccount.OsAccountType](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-osaccounttype-e.md) | Yes | Type of the account to add. <br>The value can be any of the following: <br>· **ADMIN**: administrator account. <br>· **NORMAL**: normal account. <br>· **GUEST**: guest account. |
 
 **Return value:**
 

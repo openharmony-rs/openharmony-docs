@@ -66,7 +66,7 @@ Sets whether to enable autoplay. This attribute can be dynamically set using [at
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to enable autoplay.<br>The value **true** means to enable autoplay, and **false** means to disable autoplay. <br>Default value: **false** |
+| value | boolean | Yes | Whether to enable autoplay. <br>The value **true** means to enable autoplay, and **false** means to disable autoplay. <br>Default value: **false** |
 
 ## controls
 
@@ -166,7 +166,7 @@ Currently, the component can respond to the following keys when it is in focus: 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to enable shortcut key response.<br>The value **true** means to enable shortcut key response, and **false** means to disable it. <br>Default value: **false** |
+| enabled | boolean | Yes | Whether to enable shortcut key response. <br>The value **true** means to enable shortcut key response, and **false** means to disable it. <br>Default value: **false** |
 
 ## loop
 
@@ -190,7 +190,7 @@ Sets whether to loop the video. This attribute can be dynamically set using [att
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to loop a single video.<br>The value **true** means to enable loop playback, and **false** means to disable loop playback. <br>Default value: **false** |
+| value | boolean | Yes | Whether to loop a single video. <br>The value **true** means to enable loop playback, and **false** means to disable loop playback. <br>Default value: **false** |
 
 ## muted
 
@@ -219,7 +219,7 @@ Sets whether to mute the video. This attribute can be dynamically set using [att
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether the video is muted.<br>The value **true** means to enable muting, and **false** means to disable muting. <br>Default value: **false** |
+| value | boolean | Yes | Whether the video is muted. <br>The value **true** means to enable muting, and **false** means to disable muting. <br>Default value: **false** |
 
 ## objectFit
 

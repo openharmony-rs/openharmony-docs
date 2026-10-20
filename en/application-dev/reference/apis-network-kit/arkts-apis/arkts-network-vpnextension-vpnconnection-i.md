@@ -29,10 +29,12 @@ Creates a VPN based on the specified configuration. This API uses a promise to r
 > **NOTE:** 
 > 
 > You are advised to call [destroy()](#destroy) or
-> [destroy(vpnId: string)](#destroy2) to destroy the VPN and clear
+> [destroy(vpnId: string)](#destroy) to destroy the VPN and clear
 > resources when the VPN is not needed.
 
 **Since:** 11
+
+**Required permissions:** ohos.permission.INTERNET
 
 <!--Device-VpnConnection-create(config: VpnConfig): Promise<int>--><!--Device-VpnConnection-create(config: VpnConfig): Promise<int>-End-->
 
@@ -54,6 +56,7 @@ Creates a VPN based on the specified configuration. This API uses a promise to r
 
 | Error Code ID | Error Message |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 | [2200001](../errorcode-net-ethernet.md#2200001-invalid-parameter-value) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-service-connection-failure) | Operation failed. Cannot connect to service. |
@@ -140,8 +143,6 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 }
 ```
 
-<a id="destroy1"></a>
-
 ## destroy
 
 ```TypeScript
@@ -190,8 +191,6 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
   }
 }
 ```
-
-<a id="destroy2"></a>
 
 ## destroy
 

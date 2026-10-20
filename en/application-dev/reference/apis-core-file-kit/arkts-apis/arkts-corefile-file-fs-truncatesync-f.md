@@ -12,7 +12,7 @@ import { fileIo, ConflictFiles, FileFilter, Filter, Options, ReaderIteratorResul
 declare function truncateSync(file: string | number, len?: number): void
 ```
 
-Truncates the file content. This API returns the result synchronously.
+Truncates a file to the specified length synchronously. Excess content will be deleted.
 
 **Since:** 9
 
@@ -27,7 +27,7 @@ Truncates the file content. This API returns the result synchronously.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | file | string &#124; number | Yes | Application sandbox path or FD of the file. |
-| len | number | No | File length after truncation, in bytes. The default value is **0**. |
+| len | number | No | File length after truncation, in bytes. The default value is <b>0</b>. |
 
 **Error codes:**
 

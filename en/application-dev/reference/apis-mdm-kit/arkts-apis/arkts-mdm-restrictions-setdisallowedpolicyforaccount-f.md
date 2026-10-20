@@ -6,8 +6,6 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
-<a id="setdisallowedpolicyforaccount1"></a>
-
 ## setDisallowedPolicyForAccount
 
 ```TypeScript
@@ -20,7 +18,7 @@ Disallows a feature for a specified user.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDisallowedPolicyForAccount](#setdisallowedpolicyforaccount2)(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number)
+**Substitutes:** [setDisallowedPolicyForAccount](#setdisallowedpolicyforaccount)(admin: Want, feature: FeatureForAccount, disallow: boolean, accountId: number)
 
 **Required permissions:** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
@@ -69,8 +67,6 @@ try {
 }
 ```
 
-
-<a id="setdisallowedpolicyforaccount2"></a>
 
 ## setDisallowedPolicyForAccount
 

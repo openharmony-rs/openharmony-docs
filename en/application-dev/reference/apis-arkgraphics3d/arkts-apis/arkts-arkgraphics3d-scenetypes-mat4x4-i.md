@@ -6,8 +6,6 @@ export interface Mat4x4
 
 A camera matrix, which is a mathematical tool for transforming 3D world coordinates into 2D image coordinates.
 
-@typedef Mat4x4
-
 **Since:** 23
 
 <!--Device-unnamed-export interface Mat4x4--><!--Device-unnamed-export interface Mat4x4-End-->

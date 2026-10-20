@@ -14,8 +14,6 @@ After the **CanvasRenderingContext2D** object is bound to the **Canvas** compone
 > 
 > * When the width or height of the **Canvas** component exceeds 8000 px, rendering via the CPU causes significant performance degradation.
 
-@extends CanvasPath
-
 **Inheritance/Implementation:** CanvasRenderer extends [CanvasPath](arkts-arkui-canvas-comp-canvaspath-c.md)
 
 **Since:** 8
@@ -73,8 +71,6 @@ Clears the drawn content in the specified area.
 | w | number | Yes | Width of the rectangle.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no drawing is performed.<br>Default unit: vp |
 | h | number | Yes | Height of the rectangle.<br>**undefined**, **null**, **NaN**, and **Infinity** are treated as invalid values and no drawing is performed.<br>Default unit: vp |
 
-<a id="clip1"></a>
-
 ## clip
 
 ```TypeScript
@@ -100,8 +96,6 @@ Sets the current path as the clipping path.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | fillRule | [CanvasFillRule](arkts-arkui-canvas-comp-canvasfillrule-t.md) | No | Rule by which to determine whether a point is inside or outside the area to clip.<br>The options are **"nonzero"** and **"evenodd"**.<br>Invalid values **undefined** and **null** are treated as the default value.<br>Default value: **"nonzero"** |
-
-<a id="clip2"></a>
 
 ## clip
 
@@ -166,8 +160,6 @@ Creates a conic gradient.
 | --- | --- |
 | [CanvasGradient](arkts-arkui-canvas-comp-canvasgradient-c.md) | New **CanvasGradient** object used to create a gradient effect on the offscreen canvas. |
 
-<a id="createimagedata1"></a>
-
 ## createImageData
 
 ```TypeScript
@@ -200,8 +192,6 @@ Creates a new **ImageData** object with the specified width and height based on 
 | Type | Description |
 | --- | --- |
 | [ImageData](arkts-arkui-canvas-comp-imagedata-c.md) | New **ImageData** object. |
-
-<a id="createimagedata2"></a>
 
 ## createImageData
 
@@ -340,8 +330,6 @@ Creates a radial gradient color.
 | --- | --- |
 | [CanvasGradient](arkts-arkui-canvas-comp-canvasgradient-c.md) | New **CanvasGradient** object used to create a gradient effect on the offscreen canvas. |
 
-<a id="drawimage1"></a>
-
 ## drawImage
 
 ```TypeScript
@@ -369,8 +357,6 @@ Draws an image.
 | image | [ImageBitmap](arkts-arkui-canvas-comp-imagebitmap-c.md) &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | Yes | Image resource. For details, see **ImageBitmap** or **PixelMap**.<br>**undefined** and **null** are treated as invalid values and no rendering will be performed. |
 | dx | number | Yes | X-coordinate of the upper left corner of the drawing area.<br> Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp |
 | dy | number | Yes | Y-coordinate of the upper left corner of the drawing area.<br> Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp |
-
-<a id="drawimage2"></a>
 
 ## drawImage
 
@@ -401,8 +387,6 @@ Draws the image by stretching or compressing it.
 | dy | number | Yes | Y-axis position of the upper left corner of the drawing area.<br> Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp |
 | dw | number | Yes | Width of the drawing area. If the width of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp |
 | dh | number | Yes | Height of the drawing area. If the height of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed.<br>Default unit: vp |
-
-<a id="drawimage3"></a>
 
 ## drawImage
 
@@ -448,8 +432,6 @@ Draws the image after cropping, stretching, or compressing it.
 | dw | number | Yes | Width of the drawing area.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed. If the width of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Default unit: vp |
 | dh | number | Yes | Height of the drawing area.<br>Negative values, **undefined**, and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid and no rendering will be performed. If the height of the drawing area is different from that of the cropped image, the latter will be stretched or compressed to the former.<br>Default unit: vp |
 
-<a id="fill1"></a>
-
 ## fill
 
 ```TypeScript
@@ -475,8 +457,6 @@ Fills the current path.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | fillRule | [CanvasFillRule](arkts-arkui-canvas-comp-canvasfillrule-t.md) | No | Rule by which to determine whether a point is inside or outside the area to fill.<br>The options are **"nonzero"** and **"evenodd"**.<br>Invalid values **undefined** and **null** are treated as the default value.<br>Default value: **"nonzero"** |
-
-<a id="fill2"></a>
 
 ## fill
 
@@ -715,8 +695,6 @@ Returns a text measurement object, through which the width of the specified text
 | --- | --- |
 | [TextMetrics](arkts-arkui-canvas-comp-textmetrics-i.md) | Text metrics.<br>If an invalid value (**undefined** or **null**) is passed in, the text is processed as "undefined" or "null". |
 
-<a id="putimagedata1"></a>
-
 ## putImageData
 
 ```TypeScript
@@ -744,8 +722,6 @@ Fills a new rectangular area with **ImageData** data.
 | imageData | [ImageData](arkts-arkui-canvas-comp-imagedata-c.md) | Yes | **ImageData** object that contains pixel values.<br> **undefined** and **null** are treated as invalid values and no drawing is performed. |
 | dx | number &#124; string | Yes | Offset of the fill area on the x-axis.<br> Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br> Default unit: vp |
 | dy | number &#124; string | Yes | Offset of the fill area on the y-axis.<br> Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as **0**.<br> Default unit: vp |
-
-<a id="putimagedata2"></a>
 
 ## putImageData
 
@@ -1013,8 +989,6 @@ Draws the currently passed-in **PixelMap** object on the canvas. For the **setPi
 | --- | --- | --- | --- |
 | value | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | No | **PixelMap** object that contains pixel values.<br>Abnormal values **undefined** and **null** are treated as invalid values and will not be drawn.<br> Default value: **null** |
 
-<a id="settransform1"></a>
-
 ## setTransform
 
 ```TypeScript
@@ -1058,8 +1032,6 @@ The **setTransform** method uses the same parameters as the **transform()** meth
 | e | number | Yes | **translateX**: horizontal translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other drawing APIs with valid parameters continue to render correctly.<br>Default unit: vp |
 | f | number | Yes | **translateY**: vertical translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** values cause the current API to have no effect, and other drawing APIs with valid parameters continue to render correctly.<br>Default unit: vp |
 
-<a id="settransform2"></a>
-
 ## setTransform
 
 ```TypeScript
@@ -1086,8 +1058,6 @@ Resets the existing transform matrix and creates a new one with the **Matrix2D**
 | --- | --- | --- | --- |
 | transform | Matrix2D | No | Transformation matrix.<br>Exception values **undefined** and **null** are treated as invalid values.<br>Default value: **null** |
 
-<a id="stroke1"></a>
-
 ## stroke
 
 ```TypeScript
@@ -1107,8 +1077,6 @@ Performs a stroke operation based on the current path.
 <!--Device-CanvasRenderer-stroke(): void--><!--Device-CanvasRenderer-stroke(): void-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-<a id="stroke2"></a>
 
 ## stroke
 
@@ -1516,16 +1484,16 @@ Available values are as follows:
 
 | Name | Description |  
 | ------ | ------ |  
-| source-over | Displays the new drawing content over the existing drawing content. This is the default value. |
-| source-atop | Displays the new drawing content on top of the existing drawing content. |
-| source-in | Displays the new drawing content inside the existing drawing content. |
-| source-out | Displays the new drawing content outside the existing drawing content. |
-| destination-over | Displays the existing drawing content over the new drawing content. |
-| destination-atop | Displays the existing drawing content on top of the new drawing content. |
-| destination-in | Displays the existing drawing content inside the new drawing content. |
-| destination-out | Displays the existing drawing content outside the new drawing content. |
-| lighter | Displays both the new and existing drawing content. |
-| copy | Displays the new drawing content and ignores the existing drawing content. |
+| source-over | Displays the new drawing content over the existing drawing content. This is the default value. |  
+| source-atop | Displays the new drawing content on top of the existing drawing content. |  
+| source-in | Displays the new drawing content inside the existing drawing content. |  
+| source-out | Displays the new drawing content outside the existing drawing content. |  
+| destination-over | Displays the existing drawing content over the new drawing content. |  
+| destination-atop | Displays the existing drawing content on top of the new drawing content. |  
+| destination-in | Displays the existing drawing content inside the new drawing content. |  
+| destination-out | Displays the existing drawing content outside the new drawing content. |  
+| lighter | Displays both the new and existing drawing content. |  
+| copy | Displays the new drawing content and ignores the existing drawing content. |  
 | xor | Blends the new drawing content with the existing drawing content using an XOR operation. |
 
 Default value: 'source-over'

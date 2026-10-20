@@ -29,7 +29,7 @@ import { omapi } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [Channel](arkts-connectivity-omapi-channel-i.md) | A **Channel** instance indicates a channel set up by a **Session** instance. The channel can be a basic channel or a logical channel. You can use [Session.openBasicChannel](arkts-connectivity-omapi-session-i.md#openbasicchannel1) or [Session.openLogicalChannel](arkts-connectivity-omapi-session-i.md#openlogicalchannel1) to obtain a channel instance. |
+| [Channel](arkts-connectivity-omapi-channel-i.md) | A **Channel** instance indicates a channel set up by a **Session** instance. The channel can be a basic channel or a logical channel. You can use [Session.openBasicChannel](arkts-connectivity-omapi-session-i.md#openbasicchannel) or [Session.openLogicalChannel](arkts-connectivity-omapi-session-i.md#openlogicalchannel) to obtain a channel instance. |
 | [Reader](arkts-connectivity-omapi-reader-i.md) | Obtains the SE supported by the device. If eSE, SIM, and SIM2 are supported, three instances will be returned. SIM2 is supported since API version 22. You can use [SEService.getReaders](arkts-connectivity-omapi-seservice-i.md#getreaders) to obtain a **Reader** instance. |
 | [SEService](arkts-connectivity-omapi-seservice-i.md) | **SEService** indicates the connection service used to connect to all available SEs in the system. You can use [createService](arkts-connectivity-omapi-createservice-f.md) to create an **SEService** instance. |
 | [Session](arkts-connectivity-omapi-session-i.md) | A **Session** instance indicates a session created on an SE **Reader** instance. You can use [Reader.openSession](arkts-connectivity-omapi-reader-i.md#opensession) to obtain a **Session** instance. |

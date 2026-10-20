@@ -52,7 +52,7 @@ Collapses the [list items](arkts-arkui-listitem-comp.md) in the [EXPANDED](arkts
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Controller not bound to a component. |
 
 ## getItemRectInGroup
@@ -91,13 +91,13 @@ Obtains the size of a [list item](arkts-arkui-listitem-comp.md) in a [list item 
 
 | Type | Description |
 | --- | --- |
-| [RectResult](arkts-arkui-common-comp-rectresult-i.md) | Size of the list item in the list item group and its position relative to the list.<br>Unit: vp |
+| [RectResult](arkts-arkui-common-comp-rectresult-i.md) | Size of the list item in the list item group and its position relative to the list. <br>Unit: vp |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Controller not bound to a component. |
 
 ## getVisibleListContentInfo
@@ -135,7 +135,7 @@ Obtains the index information of the child component at the specified coordinate
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Controller not bound to a component. |
 
 ## scrollToItemInGroup
@@ -160,14 +160,14 @@ Scrolls to the specified list item in the specified list item group.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the target list item group in the current container.<br>**NOTE:** <br>If the value set is a negative value or greater than the maximum index of the items in the container, the value is deemed abnormal, and no scrolling will be performed. |
-| indexInGroup | number | Yes | Index of the target list item in the list item group specified by **index**.<br>**NOTE:** <br>If the value set is a negative value or greater than the maximum index of the items in the list item group, the value is deemed abnormal, and no scrolling will be performed. |
-| smooth | boolean | No | Whether the scroll animation is enabled. The options are **true** (enabled) and **false** (disabled).<br>Default value: **false** <br>**NOTE:** <br>When **smooth** is set to **true**, all passed items are loaded and counted in layout calculation. This may result in performance issues if a large number of items are involved. |
-| align | [ScrollAlign](arkts-arkui-scroll-comp-scrollalign-e.md) | No | How the list item to scroll to is aligned with the container.<br>Default value: **ScrollAlign.START** |
+| index | number | Yes | Index of the target list item group in the current container. <br>**NOTE:** <br>If the value set is a negative value or greater than the maximum index of the items in the container, the value is deemed abnormal, and no scrolling will be performed. |
+| indexInGroup | number | Yes | Index of the target list item in the list item group specified by **index**. <br>**NOTE:** <br>If the value set is a negative value or greater than the maximum index of the items in the list item group, the value is deemed abnormal, and no scrolling will be performed. |
+| smooth | boolean | No | Whether the scroll animation is enabled. The options are **true** (enabled) and **false** (disabled). <br>Default value: **false** <br>**NOTE:** <br>When **smooth** is set to **true**, all passed items are loaded and counted in layout calculation. This may result in performance issues if a large number of items are involved. |
+| align | [ScrollAlign](arkts-arkui-scroll-comp-scrollalign-e.md) | No | How the list item to scroll to is aligned with the container. <br>Default value: **ScrollAlign.START** |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-incorrect-route-name) | Controller not bound to a component. |

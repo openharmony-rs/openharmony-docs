@@ -4,6 +4,8 @@ The **linkEnhance** module delivers highly efficient Bluetooth connectivity and 
 
 **Since:** 20
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace linkEnhance--><!--Device-unnamed-declare namespace linkEnhance-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration

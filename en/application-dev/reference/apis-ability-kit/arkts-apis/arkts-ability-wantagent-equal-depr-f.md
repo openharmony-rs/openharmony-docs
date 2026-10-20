@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="equal1"></a>
-
 ## equal
 
 ```TypeScript
@@ -91,8 +89,6 @@ wantAgent.getWantAgent({
 }, getWantAgentCallback);
 ```
 
-
-<a id="equal2"></a>
 
 ## equal
 

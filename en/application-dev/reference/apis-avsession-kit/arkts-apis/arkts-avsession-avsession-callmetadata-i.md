@@ -6,8 +6,6 @@ interface CallMetadata
 
 The metadata of the current call.
 
-@interface CallMetadata [since 11 - 11]
-
 **Since:** 11
 
 <!--Device-avSession-interface CallMetadata--><!--Device-avSession-interface CallMetadata-End-->

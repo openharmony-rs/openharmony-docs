@@ -6,8 +6,6 @@
 import { connection } from '@kit.ConnectivityKit';
 ```
 
-<a id="pairdevice1"></a>
-
 ## pairDevice
 
 ```TypeScript
@@ -60,8 +58,6 @@ try {
 }
 ```
 
-
-<a id="pairdevice2"></a>
 
 ## pairDevice
 
@@ -123,8 +119,6 @@ try {
 }
 ```
 
-
-<a id="pairdevice3"></a>
 
 ## pairDevice
 

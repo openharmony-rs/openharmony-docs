@@ -18,8 +18,6 @@ ApplicationContext inherits from [Context](arkts-ability-context.md) and provide
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-<a id="clearupapplicationdata1"></a>
-
 ## clearUpApplicationData
 
 ```TypeScript
@@ -74,8 +72,6 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
-<a id="clearupapplicationdata2"></a>
-
 ## clearUpApplicationData
 
 ```TypeScript
@@ -106,7 +102,7 @@ Clears up all data in the application file path and revokes the permissions that
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the application data is cleared up,<[code](arkts-ability-triggerinfo-i.md)>error</code> is <code>undefined</code>; otherwise, <code>error</code> is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the application data is cleared up, <code>error</code> is <code>undefined</code>; otherwise, <code>error</code> is an error object. |
 
 **Error codes:**
 
@@ -450,8 +446,6 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-<a id="getrunningprocessinformation1"></a>
-
 ## getRunningProcessInformation
 
 ```TypeScript
@@ -503,8 +497,6 @@ export default class MyAbility extends UIAbility {
   }
 }
 ```
-
-<a id="getrunningprocessinformation2"></a>
 
 ## getRunningProcessInformation
 
@@ -627,7 +619,7 @@ getUIAbilityChildProcessInfos(): Promise<Array<ChildProcessInformation>>
 
 Obtains the UIAbility child process information of the current application. This API uses a promise to return the result asynchronously.
 
-Returns the processes started through the [startSelfUIAbilityInChildProcess](arkts-ability-uiabilitycontext-c.md#startselfuiabilityinchildprocess) API, as well as the child processes started through the [startAbility](arkts-ability-uiabilitycontext-c.md#startability3) API with [processMode](arkts-ability-contextconstant-processmode-e.md) in the [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) parameter set to NEW_PROCESS_ATTACH_TO_PARENT. An empty array is returned when there is no child process.
+Returns the processes started through the [startSelfUIAbilityInChildProcess](arkts-ability-uiabilitycontext-c.md#startselfuiabilityinchildprocess) API, as well as the child processes started through the [startAbility](arkts-ability-uiabilitycontext-c.md#startability) API with [processMode](arkts-ability-contextconstant-processmode-e.md) in the [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) parameter set to NEW_PROCESS_ATTACH_TO_PARENT. An empty array is returned when there is no child process.
 
 **Since:** 26.0.1
 
@@ -672,8 +664,6 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
-<a id="killallprocesses1"></a>
 
 ## killAllProcesses
 
@@ -725,8 +715,6 @@ export default class MyAbility extends UIAbility {
   }
 }
 ```
-
-<a id="killallprocesses2"></a>
 
 ## killAllProcesses
 
@@ -786,8 +774,6 @@ export default class MyAbility extends UIAbility {
   }
 }
 ```
-
-<a id="killallprocesses3"></a>
 
 ## killAllProcesses
 

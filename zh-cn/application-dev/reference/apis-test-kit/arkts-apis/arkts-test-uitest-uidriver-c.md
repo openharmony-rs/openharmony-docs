@@ -470,13 +470,13 @@ UiDriver对象采取如下操作：捕获当前屏幕，并保存为PNG格式的
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[screenCap<sup>9+</sup>](arkts-test-uitest-driver-c.md#screencap1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[screenCap<sup>9+</sup>](arkts-test-uitest-driver-c.md#screencap)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [screenCap](arkts-test-uitest-driver-c.md#screencap1)(savePath: string)
+**替代接口：** [screenCap](arkts-test-uitest-driver-c.md#screencap)(savePath: string)
 
 <!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>--><!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>-End-->
 

@@ -6,8 +6,6 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
-<a id="queryappgroup1"></a>
-
 ## queryAppGroup
 
 ```TypeScript
@@ -41,7 +39,7 @@ function queryAppGroup(callback: AsyncCallback<number>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [10000001](../errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
-| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
+| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; <br> 2. Failed to apply for memory. |
 | [10000003](../errorcode-DeviceUsageStatistics.md#10000003-系统服务操作失败) | Failed to get system ability manager. |
 | [10000004](../errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
 | [10000005](../errorcode-DeviceUsageStatistics.md#10000005-应用未安装) | Application is not installed. |
@@ -66,8 +64,6 @@ usageStatistics.queryAppGroup((err: BusinessError, res: number) => {
 
 <!--DelEnd-->
 
-
-<a id="queryappgroup2"></a>
 
 ## queryAppGroup
 
@@ -101,7 +97,7 @@ function queryAppGroup(): Promise<number>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [10000001](../errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
-| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
+| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; <br> 2. Failed to apply for memory. |
 | [10000003](../errorcode-DeviceUsageStatistics.md#10000003-系统服务操作失败) | Failed to get system ability manager. |
 | [10000004](../errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
 | [10000005](../errorcode-DeviceUsageStatistics.md#10000005-应用未安装) | Application is not installed. |
@@ -124,8 +120,6 @@ usageStatistics.queryAppGroup().then((res: number) => {
 
 <!--DelEnd-->
 
-
-<a id="queryappgroup3"></a>
 
 ## queryAppGroup
 
@@ -161,7 +155,7 @@ function queryAppGroup(bundleName: string, callback: AsyncCallback<number>): voi
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [10000001](../errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
-| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
+| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; <br> 2. Failed to apply for memory. |
 | [10000003](../errorcode-DeviceUsageStatistics.md#10000003-系统服务操作失败) | Failed to get system ability manager. |
 | [10000004](../errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
 | [10000005](../errorcode-DeviceUsageStatistics.md#10000005-应用未安装) | Application is not installed. |
@@ -187,8 +181,6 @@ usageStatistics.queryAppGroup(bundleName, (err: BusinessError, res: number) => {
 
 <!--DelEnd-->
 
-
-<a id="queryappgroup4"></a>
 
 ## queryAppGroup
 
@@ -229,7 +221,7 @@ function queryAppGroup(bundleName: string): Promise<number>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [10000001](../errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
-| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
+| [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; <br> 2. Failed to apply for memory. |
 | [10000003](../errorcode-DeviceUsageStatistics.md#10000003-系统服务操作失败) | Failed to get system ability manager. |
 | [10000004](../errorcode-DeviceUsageStatistics.md#10000004-通信失败) | Failed to access the device usage service. |
 | [10000005](../errorcode-DeviceUsageStatistics.md#10000005-应用未安装) | Application is not installed. |

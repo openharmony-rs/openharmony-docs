@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
-<a id="queryextensionabilityinfo1"></a>
-
 ## queryExtensionAbilityInfo
 
 ```TypeScript
@@ -81,8 +79,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="queryextensionabilityinfo2"></a>
 
 ## queryExtensionAbilityInfo
 
@@ -160,8 +156,6 @@ try {
 <!--DelEnd-->
 
 
-<a id="queryextensionabilityinfo3"></a>
-
 ## queryExtensionAbilityInfo
 
 ```TypeScript
@@ -195,7 +189,7 @@ function queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAb
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt;&gt; | Promise对象，返回Array<[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)>。 |
+| Promise&lt;Array&lt;[ExtensionAbilityInfo](arkts-ability-bundlemanager-extensionabilityinfo-t.md)&gt;&gt; | Promise对象，返回Array<ExtensionAbilityInfo>。 |
 
 **错误码：**
 

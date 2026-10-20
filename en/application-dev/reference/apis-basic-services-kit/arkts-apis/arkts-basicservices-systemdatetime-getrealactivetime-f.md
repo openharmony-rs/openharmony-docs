@@ -6,8 +6,6 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
-<a id="getrealactivetime1"></a>
-
 ## getRealActiveTime
 
 ```TypeScript
@@ -37,7 +35,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Incorrect parameter types. |
 
 **Examples**
 
@@ -58,8 +56,6 @@ try {
 }
 ```
 
-
-<a id="getrealactivetime2"></a>
 
 ## getRealActiveTime
 
@@ -89,7 +85,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Incorrect parameter types. |
 
 **Examples**
 
@@ -110,8 +106,6 @@ try {
 }
 ```
 
-
-<a id="getrealactivetime3"></a>
 
 ## getRealActiveTime
 
@@ -147,7 +141,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Incorrect parameter types. |
 
 **Examples**
 

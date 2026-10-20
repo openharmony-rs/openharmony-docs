@@ -6,8 +6,6 @@ export interface AgentProvider
 
 Represents the service provider of an agent.
 
-@typedef AgentProvider
-
 **Since:** 24
 
 <!--Device-unnamed-export interface AgentProvider--><!--Device-unnamed-export interface AgentProvider-End-->

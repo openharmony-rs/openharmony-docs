@@ -216,8 +216,6 @@ Obtains the AudioSuiteDownloadManager instance for downloading audio suite algor
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
-<a id="setaudioscene1"></a>
-
 ## setAudioScene
 
 ```TypeScript
@@ -257,8 +255,6 @@ audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL, (err: Busine
 ```
 
 <!--DelEnd-->
-
-<a id="setaudioscene2"></a>
 
 ## setAudioScene
 

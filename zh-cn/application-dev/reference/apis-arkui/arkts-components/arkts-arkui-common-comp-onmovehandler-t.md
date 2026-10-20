@@ -6,8 +6,6 @@ declare type OnMoveHandler = (from: number, to: number) => void
 
 定义数据源拖拽回调。
 
-@typedef { function } OnMoveHandler
-
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。

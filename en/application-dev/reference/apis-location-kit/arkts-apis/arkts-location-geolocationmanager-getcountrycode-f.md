@@ -6,8 +6,6 @@
 import { geoLocationManager } from '@kit.LocationKit';
 ```
 
-<a id="getcountrycode1"></a>
-
 ## getCountryCode
 
 ```TypeScript
@@ -56,8 +54,6 @@ try {
 }
 ```
 
-
-<a id="getcountrycode2"></a>
 
 ## getCountryCode
 

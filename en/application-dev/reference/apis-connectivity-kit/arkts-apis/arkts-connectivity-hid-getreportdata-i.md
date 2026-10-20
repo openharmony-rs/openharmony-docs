@@ -6,8 +6,6 @@ interface GetReportData
 
 Describe the GET_REPORT data is received from remote host.
 
-@typedef GetReportData
-
 **Since:** 23
 
 <!--Device-hid-interface GetReportData--><!--Device-hid-interface GetReportData-End-->

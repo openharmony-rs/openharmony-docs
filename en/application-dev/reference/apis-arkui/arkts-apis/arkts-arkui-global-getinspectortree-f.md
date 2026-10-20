@@ -11,9 +11,9 @@
 export declare function getInspectorTree(): Object
 ```
 
-Get components tree.
+Obtains the component tree and component attributes.<br>This API is intended for application testing purposes only. It is recommended that you call this API after application startup and layout completion. The API requires significant processing time. Avoid using it.
 
-**Since:** 11
+**Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
@@ -27,4 +27,4 @@ Get components tree.
 
 | Type | Description |
 | --- | --- |
-| Object |  |
+| Object | JSON object of the component tree and component attribute list. For details about each field in the component, see the return value description of getInspectorInfo. |

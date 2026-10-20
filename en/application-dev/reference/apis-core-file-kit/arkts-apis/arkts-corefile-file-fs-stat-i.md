@@ -4,7 +4,7 @@
 declare interface Stat
 ```
 
-Represents detailed file information. Before calling any API of the **Stat()** class, use [stat()](../../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiostat) to create a **Stat** instance.
+Obtains detailed information of a file, including attributes such as the file size, permission mode, access time, and modification time. Before calling an API of the <b>Stat</b> class, use stat() to create a <b>Stat</b> instance.
 
 **Since:** 9
 

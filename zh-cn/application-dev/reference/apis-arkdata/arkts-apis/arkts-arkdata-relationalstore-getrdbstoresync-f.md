@@ -20,7 +20,7 @@ function getRdbStoreSync(context: Context, config: StoreConfig): RdbStore
 
 | 当前打开数据库时配置的加密类型 | 本设备上创建该数据库时的加密类型 | 结果 |  
 | ------- | -------------------------------- | ---- |  
-| 非加密 | 加密 | 使用加密配置（encrypt=true）打开数据库。 |
+| 非加密 | 加密 | 使用加密配置（encrypt=true）打开数据库。 |  
 | 加密 | 非加密 | 使用非加密配置（encrypt=false）打开数据库。 |
 
 getRdbStoreSync支持多线程并发操作。

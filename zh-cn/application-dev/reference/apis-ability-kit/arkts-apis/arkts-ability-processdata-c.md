@@ -127,3 +127,37 @@ uid: number
 <!--Device-ProcessData-uid: int--><!--Device-ProcessData-uid: int-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**示例**
+
+```TypeScript
+import { appManager } from '@kit.AbilityKit';
+
+let observerCode = appManager.on('applicationState', {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
+    console.info(`onForegroundApplicationChanged, appStateData: ${JSON.stringify(appStateData)}.`);
+  },
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
+    console.info(`onAbilityStateChanged, abilityStateData: ${JSON.stringify(abilityStateData)}.`);
+  },
+  onProcessCreated(processData: appManager.ProcessData) {
+    console.info(`onProcessCreated, processData: ${JSON.stringify(processData)}.`);
+  },
+  onProcessDied(processData: appManager.ProcessData) {
+    console.info(`onProcessDied, processData: ${JSON.stringify(processData)}.`);
+  },
+  onProcessStateChanged(processData: appManager.ProcessData) {
+    console.info(`onProcessStateChanged, processData.pid : ${JSON.stringify(processData.pid)}.`);
+    console.info(`onProcessStateChanged, processData.bundleName : ${JSON.stringify(processData.bundleName)}.`);
+    console.info(`onProcessStateChanged, processData.uid : ${JSON.stringify(processData.uid)}.`);
+    console.info(`onProcessStateChanged, processData.isContinuousTask : ${JSON.stringify(processData.isContinuousTask)}.`);
+    console.info(`onProcessStateChanged, processData.isKeepAlive : ${JSON.stringify(processData.isKeepAlive)}.`);
+  },
+  onAppStarted(appStateData: appManager.AppStateData) {
+    console.info(`onAppStarted, appStateData: ${JSON.stringify(appStateData)}.`);
+  },
+  onAppStopped(appStateData: appManager.AppStateData) {
+    console.info(`onAppStopped, appStateData: ${JSON.stringify(appStateData)}.`);
+  }
+});
+```

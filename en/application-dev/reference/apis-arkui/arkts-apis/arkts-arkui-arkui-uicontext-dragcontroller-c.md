@@ -97,7 +97,7 @@ Creates a drag action object, explicitly specifying the drag preview (multiple p
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal handling failed. |
 
 **Examples**
@@ -323,8 +323,6 @@ struct Index {
 }
 ```
 
-<a id="executedrag1"></a>
-
 ## executeDrag
 
 ```TypeScript
@@ -356,7 +354,7 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal handling failed. |
 
 **Examples**
@@ -418,8 +416,6 @@ struct DragControllerPage {
 }
 ```
 
-<a id="executedrag2"></a>
-
 ## executeDrag
 
 ```TypeScript
@@ -450,14 +446,14 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;{ event: DragEvent, extraParams: string }&gt; | Callback used to return the result.<br>- **event**: drag event information that includes only the drag result. <br>- **extraParams**: extra information about the drag event.<br>**Since:** 11 |
+| Promise&lt;{ event: DragEvent, extraParams: string }&gt; | Callback used to return the result. <br>- **event**: drag event information that includes only the drag result. <br>- **extraParams**: extra information about the drag event.<br>**Since:** 11 |
 | Promise&lt;[dragController.DragEventParam](arkts-arkui-dragcontroller-drageventparam-i.md)&gt; | Promise used to return the result. **resolve** returns the drag end result.<br>- **event**: drag event information that includes only the drag result.<br>- **extraParams**: extra information about the drag event. **reject** returns the error information.<br>**Since:** 12 |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-internal-error) | Internal handling failed. |
 
 **Examples**

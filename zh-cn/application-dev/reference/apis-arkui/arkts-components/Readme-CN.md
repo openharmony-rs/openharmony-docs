@@ -395,6 +395,10 @@
   - [ReuseOptions](arkts-arkui-common-comp-reuseoptions-i.md)
   - [RotateAngleOptions](arkts-arkui-common-comp-rotateangleoptions-i.md)
   - [RotateOptions](arkts-arkui-common-comp-rotateoptions-i.md)
+  <!--Del-->
+  - [SafeAreaInsetEdgeConfig（系统接口）](arkts-arkui-common-comp-safeareainsetedgeconfig-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [SafeAreaInsetOptions（系统接口）](arkts-arkui-common-comp-safeareainsetoptions-i-sys.md)<!--DelEnd-->
   - [ScaleOptions](arkts-arkui-common-comp-scaleoptions-i.md)
   - [SelectionOptions](arkts-arkui-common-comp-selectionoptions-i.md)
   - [ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)
@@ -546,6 +550,8 @@
   - [RepeatMode](arkts-arkui-common-comp-repeatmode-e.md)
   - [ReusableMemOptStrategy](arkts-arkui-common-comp-reusablememoptstrategy-e.md)
   - [SafeAreaEdge](arkts-arkui-common-comp-safeareaedge-e.md)
+  <!--Del-->
+  - [SafeAreaInsetAlignment（系统接口）](arkts-arkui-common-comp-safeareainsetalignment-e-sys.md)<!--DelEnd-->
   - [SafeAreaType](arkts-arkui-common-comp-safeareatype-e.md)
   - [ScrollSizeMode](arkts-arkui-common-comp-scrollsizemode-e.md)
   - [ShadowStyle](arkts-arkui-common-comp-shadowstyle-e.md)

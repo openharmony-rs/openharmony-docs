@@ -6,8 +6,6 @@
 import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
-<a id="getphotoaccesshelper2"></a>
-
 ## getPhotoAccessHelper
 
 ```TypeScript

@@ -4,6 +4,8 @@ Provides the VideoProcessor type, including AIHDR related functions.
 
 **Since:** 26.0.0
 
+**Model restriction:** This API can be used only in the stage model.
+
 <!--Device-unnamed-declare namespace videoProcessing--><!--Device-unnamed-declare namespace videoProcessing-End-->
 
 **System capability:** SystemCapability.Multimedia.VideoProcessingEngine

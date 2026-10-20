@@ -116,6 +116,7 @@ Sets Value.
 | [SslErrorEvent](arkts-arkweb-web-comp-sslerrorevent-i.md) | 用户加载资源时发生SSL错误时触发的回调详情，包括URL、错误类型和证书链。适用于需要详细分析SSL错误的场景，提升安全问题的诊断和排查效率。 |
 | [UrlRegexRule](arkts-arkweb-web-comp-urlregexrule-i.md) | 定义Url正则表达式规则。 |
 | [VerifyPinEvent](arkts-arkweb-web-comp-verifypinevent-i.md) | 定义当需要用户进行PIN码认证时触发回调。 |
+| [WebContextMenuOptions](arkts-arkweb-web-comp-webcontextmenuoptions-i.md) | 定义上下文菜单项的选项。 |
 | [WebKeyboardCallbackInfo](arkts-arkweb-web-comp-webkeyboardcallbackinfo-i.md) | 拦截网页可编辑元素拉起软键盘的回调入参，包括[WebKeyboardController](arkts-arkweb-web-comp.md)和可编辑元素的属性。适用于需要自定义键盘交互的场景，提升输入体验的定制性和灵活性。 |
 | [WebKeyboardOptions](arkts-arkweb-web-comp-webkeyboardoptions-i.md) | 拦截网页可编辑元素拉起软键盘的回调返回值，包括键盘类型和自定义键盘。适用于需要控制软键盘行为的场景。 |
 | [WebMediaOptions](arkts-arkweb-web-comp-webmediaoptions-i.md) | 用于配置 Web 组件的媒体策略，包括音频续播有效期、音频独占模式等。适用于需要优化音频播放体验和多实例音频管理的场景，提升媒体播放的稳定性和用户体验。 |
@@ -132,6 +133,7 @@ Sets Value.
 | [OnAISessionCallback](arkts-arkweb-web-comp-onaisessioncallback-t.md) | AI会话操作结果回调函数类型。用于报告会话创建或执行的结果。 |
 | [OnCameraCaptureStateChangeCallback](arkts-arkweb-web-comp-oncameracapturestatechangecallback-t.md) | 当页面摄像设备状态发生改变时触发此回调。 |
 | [OnContextMenuHideCallback](arkts-arkweb-web-comp-oncontextmenuhidecallback-t.md) | 上下文菜单自定义隐藏的回调。 |
+| [OnContextMenuUpdateCallback](arkts-arkweb-web-comp-oncontextmenuupdatecallback-t.md) | 上下文菜单项状态更新的回调类型。 |
 | [OnCreateAISession](arkts-arkweb-web-comp-oncreateaisession-t.md) | AI会话创建回调函数类型。允许自定义模型初始化和结果处理。 |
 | [OnDestroyAISession](arkts-arkweb-web-comp-ondestroyaisession-t.md) | AI会话销毁回调函数类型。用于清理与自定义AI模型关联的资源。 |
 | [OnDetectBlankScreenCallback](arkts-arkweb-web-comp-ondetectblankscreencallback-t.md) | 检测到白屏时触发此回调。 |
@@ -172,7 +174,7 @@ Sets Value.
 | [CameraCaptureState](arkts-arkweb-web-comp-cameracapturestate-e.md) | 定义摄像头使用状态的值，用于标识摄像头的当前工作状态，帮助开发者实时监控摄像头资源使用情况，优化资源管理和用户隐私保护。 |
 | [ConsoleMessageSource](arkts-arkweb-web-comp-consolemessagesource-e.md) | ConsoleMessage的日志来源。 |
 | [ContextMenuDataMediaType](arkts-arkweb-web-comp-contextmenudatamediatype-e.md) | 触发上下文菜单的网页元素类型（增强获取类型能力）。 |
-| [ContextMenuEditStateFlags](arkts-arkweb-web-comp-contextmenueditstateflags-e.md) | 支持以按位或的方式使用此枚举。例如，如果需要同时支持CAN_CUT、CAN_COPY和CAN_SELECT_ALL，可使用CAN_CUT | [CAN_COPY](arkts-arkweb-web-comp-contextmenueditstateflags-e.md) | CAN_SELECT_ALL或11。 |
+| [ContextMenuEditStateFlags](arkts-arkweb-web-comp-contextmenueditstateflags-e.md) | 支持以按位或的方式使用此枚举。例如，如果需要同时支持CAN_CUT、CAN_COPY和CAN_SELECT_ALL，可使用CAN_CUT | CAN_COPY | CAN_SELECT_ALL或11。 |
 | [ContextMenuInputFieldType](arkts-arkweb-web-comp-contextmenuinputfieldtype-e.md) | 输入框类型。 |
 | [ContextMenuMediaType](arkts-arkweb-web-comp-contextmenumediatype-e.md) | 触发上下文菜单的网页元素类型。 |
 | [ContextMenuSourceType](arkts-arkweb-web-comp-contextmenusourcetype-e.md) | 触发上下文菜单的事件来源。 |
@@ -200,6 +202,7 @@ Sets Value.
 | [ViewportFit](arkts-arkweb-web-comp-viewportfit-e.md) | 网页meta中viewport-fit配置的视口类型。 |
 | [WebBypassVsyncCondition](arkts-arkweb-web-comp-webbypassvsynccondition-e.md) | 跳过渲染vsync条件。 |
 | [WebCaptureMode](arkts-arkweb-web-comp-webcapturemode-e.md) | Web屏幕捕获模式。 |
+| [WebContextMenuItemId](arkts-arkweb-web-comp-webcontextmenuitemid-e.md) | 枚举上下文菜单项的ID。 |
 | [WebDarkMode](arkts-arkweb-web-comp-webdarkmode-e.md) | Web深色模式的配置，用于控制网页内容的深色主题显示，帮助开发者根据用户偏好和系统主题提升视觉体验和可读性。 |
 | [WebElementType](arkts-arkweb-web-comp-webelementtype-e.md) | 网页元素信息。 |
 | [WebKeyboardAppearanceMode](arkts-arkweb-web-comp-webkeyboardappearancemode-e.md) | WebView中输入法沉浸模式，用于控制软键盘的显示风格，帮助开发者根据应用主题和用户偏好提供一致性的视觉体验，支持默认外观、系统跟随、浅色和深色沉浸式风格。 |

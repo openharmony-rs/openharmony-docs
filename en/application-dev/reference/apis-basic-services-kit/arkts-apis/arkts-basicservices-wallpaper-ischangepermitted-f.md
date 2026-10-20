@@ -6,8 +6,6 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
-<a id="ischangepermitted1"></a>
-
 ## isChangePermitted
 
 ```TypeScript
@@ -44,8 +42,6 @@ wallpaper.isChangePermitted((error: BusinessError, data: Boolean) => {
 });
 ```
 
-
-<a id="ischangepermitted2"></a>
 
 ## isChangePermitted
 

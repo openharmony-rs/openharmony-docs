@@ -4,8 +4,6 @@
 export interface SendMessageOptions
 ```
 
-@typedef SendMessageOptions
-
 **Since:** 5
 
 **Deprecated since:** 8

@@ -225,8 +225,6 @@ function canAddOutput(session: camera.Session, cameraOutput: camera.CameraOutput
 }
 ```
 
-<a id="commitconfig1"></a>
-
 ## commitConfig
 
 ```TypeScript
@@ -272,8 +270,6 @@ function commitConfig(session: camera.Session): void {
 }
 ```
 
-<a id="commitconfig2"></a>
-
 ## commitConfig
 
 ```TypeScript
@@ -318,8 +314,6 @@ function commitConfig(session: camera.Session): void {
 }
 ```
 
-<a id="release1"></a>
-
 ## release
 
 ```TypeScript
@@ -363,8 +357,6 @@ function releaseCaptureSession(session: camera.Session): void {
   });
 }
 ```
-
-<a id="release2"></a>
 
 ## release
 
@@ -502,8 +494,6 @@ function removeOutput(session: camera.Session, previewOutput: camera.PreviewOutp
 }
 ```
 
-<a id="start1"></a>
-
 ## start
 
 ```TypeScript
@@ -550,8 +540,6 @@ function startCaptureSession(session: camera.Session): void {
 }
 ```
 
-<a id="start2"></a>
-
 ## start
 
 ```TypeScript
@@ -596,8 +584,6 @@ function startCaptureSession(session: camera.Session): void {
 }
 ```
 
-<a id="stop1"></a>
-
 ## stop
 
 ```TypeScript
@@ -641,8 +627,6 @@ function stopCaptureSession(session: camera.Session): void {
   });
 }
 ```
-
-<a id="stop2"></a>
 
 ## stop
 

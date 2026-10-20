@@ -15,7 +15,7 @@ declare enum ScrollBarDirection
 ## Horizontal
 
 ```TypeScript
-Horizontal = 1
+Horizontal
 ```
 
 横向滚动条。
@@ -26,14 +26,14 @@ Horizontal = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ScrollBarDirection-Horizontal = 1--><!--Device-ScrollBarDirection-Horizontal = 1-End-->
+<!--Device-ScrollBarDirection-Horizontal--><!--Device-ScrollBarDirection-Horizontal-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Vertical
 
 ```TypeScript
-Vertical = 0
+Vertical
 ```
 
 纵向滚动条。
@@ -44,6 +44,6 @@ Vertical = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ScrollBarDirection-Vertical = 0--><!--Device-ScrollBarDirection-Vertical = 0-End-->
+<!--Device-ScrollBarDirection-Vertical--><!--Device-ScrollBarDirection-Vertical-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

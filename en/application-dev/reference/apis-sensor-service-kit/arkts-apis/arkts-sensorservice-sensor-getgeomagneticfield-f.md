@@ -6,8 +6,6 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
-<a id="getgeomagneticfield1"></a>
-
 ## getGeomagneticField
 
 ```TypeScript
@@ -58,8 +56,6 @@ sensor.getGeomagneticField({ latitude: 80, longitude: 0, altitude: 0 }, 15804864
 });
 ```
 
-
-<a id="getgeomagneticfield2"></a>
 
 ## getGeomagneticField
 

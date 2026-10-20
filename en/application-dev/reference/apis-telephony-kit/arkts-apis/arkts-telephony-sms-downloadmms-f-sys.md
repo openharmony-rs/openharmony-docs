@@ -6,8 +6,6 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
-<a id="downloadmms1"></a>
-
 ## downloadMms
 
 ```TypeScript
@@ -131,8 +129,6 @@ class EntryAbility extends UIAbility {
 
 <!--DelEnd-->
 
-
-<a id="downloadmms2"></a>
 
 ## downloadMms
 

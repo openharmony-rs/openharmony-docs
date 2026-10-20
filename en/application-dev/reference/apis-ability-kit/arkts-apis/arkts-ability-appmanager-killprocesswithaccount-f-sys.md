@@ -6,8 +6,6 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
-<a id="killprocesswithaccount1"></a>
-
 ## killProcessWithAccount
 
 ```TypeScript
@@ -80,8 +78,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="killprocesswithaccount2"></a>
 
 ## killProcessWithAccount
 
@@ -158,8 +154,6 @@ try {
 
 <!--DelEnd-->
 
-
-<a id="killprocesswithaccount3"></a>
 
 ## killProcessWithAccount
 

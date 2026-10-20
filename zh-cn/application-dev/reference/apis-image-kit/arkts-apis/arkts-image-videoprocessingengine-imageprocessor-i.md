@@ -18,8 +18,6 @@ interface ImageProcessor
 import { videoProcessingEngine } from '@kit.ImageKit';
 ```
 
-<a id="enhancedetail1"></a>
-
 ## enhanceDetail
 
 ```TypeScript
@@ -73,8 +71,6 @@ async function enhanceDetail(sourceImage: image.PixelMap, width: number, height:
 }
 ```
 
-<a id="enhancedetail2"></a>
-
 ## enhanceDetail
 
 ```TypeScript
@@ -126,8 +122,6 @@ async function enhanceDetail(sourceImage: image.PixelMap, scale: number) {
     imageProcessor.enhanceDetail(sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
-
-<a id="enhancedetailsync1"></a>
 
 ## enhanceDetailSync
 
@@ -182,8 +176,6 @@ function enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: n
     sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
-
-<a id="enhancedetailsync2"></a>
 
 ## enhanceDetailSync
 

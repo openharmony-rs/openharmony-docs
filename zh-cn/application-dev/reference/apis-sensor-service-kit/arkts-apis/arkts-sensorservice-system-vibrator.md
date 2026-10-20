@@ -5,7 +5,7 @@
  适用于Lite Wearable轻量穿戴设备。对于其他设备类型，自API version 8起该模块不再维护。
  与[@ohos.vibrator (振动)](arkts-sensorservice-vibrator.md)模块相比，本模块功能较为简单，不支持振动效果查询、振动器列表查询、自定义振动文件等高级功能。对于Lite Wearable设备，
  本模块持续维护；对于其他设备类型，从API version 8起不再维护，推荐使用[@ohos.vibrator (振动)](arkts-sensorservice-vibrator.md)模块的
- [vibrator.startVibration()](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)
+ [vibrator.startVibration()](arkts-sensorservice-vibrator-startvibration-f.md#startvibration)
  接口，该替代接口支持更丰富的振动效果（包括指定时长振动[VibrateTime](arkts-sensorservice-vibrator-vibratetime-i.md)、预置效果振动
  [VibratePreset](arkts-sensorservice-vibrator-vibratepreset-i.md)、自定义文件振动
  [VibrateFromFile](arkts-sensorservice-vibrator-vibratefromfile-i.md)等），适用于更多设备类型。

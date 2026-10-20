@@ -6,8 +6,6 @@ declare class AgentExtensionAbility extends ExtensionAbility
 
 The class of agent extension ability. This class cannot be used in Harmony Archive(HAR).
 
-@extends ExtensionAbility
-
 **Inheritance/Implementation:** AgentExtensionAbility extends [ExtensionAbility](arkts-ability-app-ability-extensionability-extensionability-c.md)
 
 **Since:** 24

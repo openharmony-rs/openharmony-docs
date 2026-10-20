@@ -6,8 +6,6 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
-<a id="cancelgroup1"></a>
-
 ## cancelGroup
 
 ```TypeScript
@@ -56,8 +54,6 @@ let groupName: string = 'GroupName';
 notificationManager.cancelGroup(groupName, cancelGroupCallback);
 ```
 
-
-<a id="cancelgroup2"></a>
 
 ## cancelGroup
 

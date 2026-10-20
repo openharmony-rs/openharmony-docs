@@ -6,8 +6,6 @@
 import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
-<a id="getp2plocaldevice1"></a>
-
 ## getP2pLocalDevice
 
 ```TypeScript
@@ -56,8 +54,6 @@ import { wifiManager } from '@kit.ConnectivityKit';
   });
 ```
 
-
-<a id="getp2plocaldevice2"></a>
 
 ## getP2pLocalDevice
 

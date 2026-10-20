@@ -110,6 +110,22 @@ The print driver is missing.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
+## PRINT_JOB_BLOCK_EDM_POLICY_RESTRICTED
+
+```TypeScript
+PRINT_JOB_BLOCK_EDM_POLICY_RESTRICTED = 44
+```
+
+The print job is restricted by EDM policy.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PrintJobSubState-PRINT_JOB_BLOCK_EDM_POLICY_RESTRICTED = 44--><!--Device-PrintJobSubState-PRINT_JOB_BLOCK_EDM_POLICY_RESTRICTED = 44-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
 ## PRINT_JOB_BLOCK_FILE_PARSING_ERROR
 
 ```TypeScript

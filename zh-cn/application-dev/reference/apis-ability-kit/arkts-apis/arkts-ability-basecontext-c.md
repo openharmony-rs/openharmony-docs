@@ -29,3 +29,18 @@ stageMode: boolean
 <!--Device-BaseContext-stageMode: boolean--><!--Device-BaseContext-stageMode: boolean-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**示例**
+
+以Stage模型为例，用户可通过UIAbilityContext访问stageMode字段。
+
+```TypeScript
+import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+
+class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // EntryAbility onCreate, isStageMode: true
+    console.info(`EntryAbility onCreate, isStageMode: ${this.context.stageMode}`);
+  }
+}
+```

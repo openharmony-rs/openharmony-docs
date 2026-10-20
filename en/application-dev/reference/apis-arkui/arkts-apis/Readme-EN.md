@@ -240,7 +240,7 @@
   - [FilterResult](arkts-arkui-arkui-advanced-filter-filterresult-c.md)
   - [Filter](arkts-arkui-arkui-advanced-filter-filter-s.md)
   - [FilterType](arkts-arkui-arkui-advanced-filter-filtertype-e.md)
-- [@ohos.arkui.advanced.FoldSplitContainer(Defines FoldSplitContainer component.)](arkts-arkui-arkui-advanced-foldsplitcontainer.md)
+- [@ohos.arkui.advanced.FoldSplitContainer](arkts-arkui-arkui-advanced-foldsplitcontainer.md)
   - [FoldSplitContainer](arkts-arkui-arkui-advanced-foldsplitcontainer-foldsplitcontainer-s.md)
   - [ExpandedRegionLayoutOptions](arkts-arkui-arkui-advanced-foldsplitcontainer-expandedregionlayoutoptions-i.md)
   - [FoldedRegionLayoutOptions](arkts-arkui-arkui-advanced-foldsplitcontainer-foldedregionlayoutoptions-i.md)
@@ -312,6 +312,7 @@
   - [SegmentButtonItemArray](arkts-arkui-segmentbuttonitemarray-t.md)
   - [SegmentButtonItemTuple](arkts-arkui-segmentbuttonitemtuple-t.md)
   - [BorderRadiusMode](arkts-arkui-arkui-advanced-segmentbutton-borderradiusmode-e.md)
+  - [SegmentButtonInteractionMode](arkts-arkui-arkui-advanced-segmentbutton-segmentbuttoninteractionmode-e.md)
 - [@ohos.arkui.advanced.SegmentButtonV2(api/@ohos.arkui.advanced.SegmentedButton.d.ts)](arkts-arkui-arkui-advanced-segmentbuttonv2.md)
   - [SegmentButtonV2Item](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2item-c.md)
   - [SegmentButtonV2Items](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2items-c.md)
@@ -321,6 +322,7 @@
   - [SegmentButtonV2ItemOptions](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2itemoptions-i.md)
   - [OnSelectedIndexChange](arkts-arkui-onselectedindexchange-t.md)
   - [OnSelectedIndexesChange](arkts-arkui-onselectedindexeschange-t.md)
+  - [SegmentButtonV2InteractionMode](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2interactionmode-e.md)
 - [@ohos.arkui.advanced.SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu.md)
   - [SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md)
   - [EditorEventInfo](arkts-arkui-arkui-advanced-selectionmenu-editoreventinfo-i.md)
@@ -1056,7 +1058,11 @@
   <!--Del-->
   - [off(system api)](arkts-arkui-screen-off-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [offDisconnectWithInfo(system api)](arkts-arkui-screen-offdisconnectwithinfo-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [on(system api)](arkts-arkui-screen-on-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onDisconnectWithInfo(system api)](arkts-arkui-screen-ondisconnectwithinfo-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [resizeVirtualScreen(system api)](arkts-arkui-screen-resizevirtualscreen-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -1085,6 +1091,8 @@
   - [Rect(system api)](arkts-arkui-screen-rect-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [Screen(system api)](arkts-arkui-screen-screen-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [ScreenDisconnectInfo(system api)](arkts-arkui-screen-screendisconnectinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [ScreenModeInfo(system api)](arkts-arkui-screen-screenmodeinfo-i-sys.md)<!--DelEnd-->
   <!--Del-->

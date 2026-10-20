@@ -6,8 +6,6 @@
 import { connection } from '@kit.ConnectivityKit';
 ```
 
-<a id="disconnectallowedprofiles2"></a>
-
 ## disconnectAllowedProfiles
 
 ```TypeScript
@@ -22,8 +20,7 @@ function disconnectAllowedProfiles(deviceId: string): Promise<void>
 
 **需要权限：** 
 - API版本26+：ohos.permission.ACCESS_BLUETOOTH
-- API版本25：N/A
-- API版本11-24：ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
+- API版本11-25：N/A
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -48,8 +45,6 @@ function disconnectAllowedProfiles(deviceId: string): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs.<br>**适用版本：** 11 - 24 |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed.<br>**适用版本：** 11 - 24 |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |

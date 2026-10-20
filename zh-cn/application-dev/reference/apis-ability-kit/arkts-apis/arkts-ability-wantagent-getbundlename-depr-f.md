@@ -5,8 +5,6 @@
 ```TypeScript
 ```
 
-<a id="getbundlename1"></a>
-
 ## getBundleName
 
 ```TypeScript
@@ -88,8 +86,6 @@ wantAgent.getWantAgent({
 }, getWantAgentCallback);
 ```
 
-
-<a id="getbundlename2"></a>
 
 ## getBundleName
 

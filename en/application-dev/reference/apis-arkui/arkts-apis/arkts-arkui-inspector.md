@@ -2,8 +2,6 @@
 
 Profiler tools for inspectors.
 
-@namespace Profiler
-
 ## Summary
 
 ### Namespaces

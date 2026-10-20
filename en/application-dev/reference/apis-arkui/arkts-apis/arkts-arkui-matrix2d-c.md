@@ -26,8 +26,6 @@ addPath to apply the graphic transformation corresponding to the **Matrix2D** ob
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -47,8 +45,6 @@ Constructs a two-dimensional transformation matrix object. The default value is 
 <!--Device-Matrix2D-constructor()--><!--Device-Matrix2D-constructor()-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-<a id="constructor2"></a>
 
 ## constructor
 
@@ -75,7 +71,7 @@ Constructs a two-dimensional transformation matrix object. The default value is 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| unit | [LengthMetricsUnit](arkts-arkui-lengthmetricsunit-t.md) | Yes | Unit mode of the **Matrix2D** object. The configuration cannot be dynamically changed after being set. The configuration method is the same as that of CanvasRenderingContext2D.<br>Default value: **DEFAULT** <br>If the invalid values **NaN** and **Infinity** are passed in, the default value is used. |
+| unit | [LengthMetricsUnit](arkts-arkui-lengthmetricsunit-t.md) | Yes | Unit mode of the **Matrix2D** object. The configuration cannot be dynamically changed after being set. The configuration method is the same as that of CanvasRenderingContext2D. <br>Default value: **DEFAULT** <br>If the invalid values **NaN** and **Infinity** are passed in, the default value is used. |
 
 ## identity
 
@@ -129,8 +125,6 @@ Obtains the inverse of the current matrix. It is commonly used to undo previous 
 | --- | --- |
 | [Matrix2D](arkts-arkui-matrix2d-c.md) | Inverse matrix result, which can be used for reverse transformation or to undo previous transformation operations. |
 
-<a id="rotate2"></a>
-
 ## rotate
 
 ```TypeScript
@@ -156,16 +150,14 @@ Performs a left-multiply rotation operation on the current matrix, centered at t
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | degree | number | Yes | Rotation angle (in radians). The value range is unlimited. A positive value indicates clockwise rotation. You can convert an angle to radians using `angle * Math.PI / 180` and pass it to this API. <br>Invalid values **undefined** and **null** are treated as invalid values. **NaN** and **Infinity** will cause **Matrix2D** exceptions. <br>Default unit: radians |
-| rx | number | No | Horizontal coordinate of the rotation point. The value range is not limited.<br>Default unit: vp. <br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions. <br>Default value: **0**. |
-| ry | number | No | Vertical coordinate of the rotation point. The value range is not limited.<br>Default unit: vp. <br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions. <br>Default value: **0**. |
+| rx | number | No | Horizontal coordinate of the rotation point. The value range is not limited. <br>Default unit: vp. <br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions. <br>Default value: **0**. |
+| ry | number | No | Vertical coordinate of the rotation point. The value range is not limited. <br>Default unit: vp. <br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions. <br>Default value: **0**. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
 | [Matrix2D](arkts-arkui-matrix2d-c.md) | Resulting matrix object after rotation, which can be used to perform rotation transformation on graphics. |
-
-<a id="rotate1"></a>
 
 ## rotate
 
@@ -193,8 +185,8 @@ Performs a rotation operation on the current matrix. This API is an empty API an
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| rx | number | No | Horizontal coordinate of the rotation point. The value range is unlimited.<br>Default unit: vp <br>The abnormal values **undefined** and **null** are processed as invalid values, and **NaN** and **Infinity** cause **Matrix2D** exceptions. <br>Default value: **0** |
-| ry | number | No | Vertical coordinate of the rotation point. The value range is unlimited.<br>Default unit: vp <br>The abnormal values **undefined** and **null** are processed as invalid values, and **NaN** and **Infinity** cause **Matrix2D** exceptions. <br>Default value: **0** |
+| rx | number | No | Horizontal coordinate of the rotation point. The value range is unlimited. <br>Default unit: vp <br>The abnormal values **undefined** and **null** are processed as invalid values, and **NaN** and **Infinity** cause **Matrix2D** exceptions. <br>Default value: **0** |
+| ry | number | No | Vertical coordinate of the rotation point. The value range is unlimited. <br>Default unit: vp <br>The abnormal values **undefined** and **null** are processed as invalid values, and **NaN** and **Infinity** cause **Matrix2D** exceptions. <br>Default value: **0** |
 
 **Return value:**
 
@@ -226,8 +218,8 @@ Performs a left-multiply scaling operation on the current matrix. It is commonly
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sx | number | No | Horizontal scaling ratio coefficient. The value range is not limited. A value greater than 1 indicates magnification, less than 1 indicates reduction, and a negative value indicates horizontal flipping.<br>Abnormal values **undefined** and **null** are treated as invalid input. **NaN** and **Infinity** cause **Matrix2D** exceptions. <br>Default value: **1.0** |
-| sy | number | No | Vertical scaling ratio coefficient. The value range is not limited. A value greater than 1 indicates magnification, less than 1 indicates reduction, and a negative value indicates vertical flipping.<br>Abnormal values **undefined** and **null** are treated as invalid input. **NaN** and **Infinity** cause **Matrix2D** exceptions. <br>Default value: **1.0** |
+| sx | number | No | Horizontal scaling ratio coefficient. The value range is not limited. A value greater than 1 indicates magnification, less than 1 indicates reduction, and a negative value indicates horizontal flipping. <br>Abnormal values **undefined** and **null** are treated as invalid input. **NaN** and **Infinity** cause **Matrix2D** exceptions. <br>Default value: **1.0** |
+| sy | number | No | Vertical scaling ratio coefficient. The value range is not limited. A value greater than 1 indicates magnification, less than 1 indicates reduction, and a negative value indicates vertical flipping. <br>Abnormal values **undefined** and **null** are treated as invalid input. **NaN** and **Infinity** cause **Matrix2D** exceptions. <br>Default value: **1.0** |
 
 **Return value:**
 
@@ -259,8 +251,8 @@ Performs a left-multiply translation operation on the current matrix. It is comm
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| tx | number | No | Horizontal translation distance. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions. <br>Default unit: vp. <br>Default value: **0**. |
-| ty | number | No | Vertical translation distance. The value range is not limited.<br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions. <br>Default unit: vp. <br>Default value: **0**. |
+| tx | number | No | Horizontal translation distance. The value range is not limited. <br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions. <br>Default unit: vp. <br>Default value: **0**. |
+| ty | number | No | Vertical translation distance. The value range is not limited. <br>Invalid values **undefined** and **null** are treated as invalid inputs. **NaN** and **Infinity** values will trigger **Matrix2D** exceptions. <br>Default unit: vp. <br>Default value: **0**. |
 
 **Return value:**
 
@@ -292,7 +284,7 @@ Multiplies the current matrix by the target matrix. This API is an empty API and
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| other | [Matrix2D](arkts-arkui-matrix2d-c.md) | No | Target matrix.<br>Invalid values **undefined** and **null** are treated as invalid inputs. <br>Default value: **null**. |
+| other | [Matrix2D](arkts-arkui-matrix2d-c.md) | No | Target matrix. <br>Invalid values **undefined** and **null** are treated as invalid inputs. <br>Default value: **null**. |
 
 **Return value:**
 

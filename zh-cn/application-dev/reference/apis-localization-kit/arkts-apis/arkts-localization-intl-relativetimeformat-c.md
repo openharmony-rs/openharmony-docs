@@ -22,8 +22,6 @@ export class RelativeTimeFormat
 import { intl } from '@kit.LocalizationKit';
 ```
 
-<a id="constructor1"></a>
-
 ## constructor
 
 ```TypeScript
@@ -52,8 +50,6 @@ import { intl } from '@kit.LocalizationKit';
 // 使用系统区域创建RelativeTimeFormat对象
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat();
 ```
-
-<a id="constructor2"></a>
 
 ## constructor
 

@@ -38,8 +38,6 @@ declare function copyFile(src: string | number, dest: string | number, mode?: nu
 | Promise&lt;void&gt; | Promise对象。无返回值。 |
 
 
-<a id="copyfile2"></a>
-
 ## copyFile
 
 ```TypeScript
@@ -66,8 +64,6 @@ copyFile.
 | dest | string &#124; number | 是 | 目标文件路径或目标文件描述符。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 异步复制文件之后的回调。 |
 
-
-<a id="copyfile3"></a>
 
 ## copyFile
 

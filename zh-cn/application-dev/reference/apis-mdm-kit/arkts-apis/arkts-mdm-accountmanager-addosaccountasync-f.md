@@ -6,7 +6,7 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-## addOsAccountAsync
+## addOsAccountAsync('osAccount.OsAccountType')
 
 ```TypeScript
 function addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountType): Promise<osAccount.OsAccountInfo>

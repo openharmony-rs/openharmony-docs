@@ -6,8 +6,6 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
-<a id="addallowedinstallbundles1"></a>
-
 ## addAllowedInstallBundles
 
 ```TypeScript
@@ -76,8 +74,6 @@ bundleManager.addAllowedInstallBundles(wantTemp, appIds, (err) => {
 
 <!--DelEnd-->
 
-
-<a id="addallowedinstallbundles2"></a>
 
 ## addAllowedInstallBundles
 
@@ -148,8 +144,6 @@ bundleManager.addAllowedInstallBundles(wantTemp, appIds, 100, (err) => {
 
 <!--DelEnd-->
 
-
-<a id="addallowedinstallbundles3"></a>
 
 ## addAllowedInstallBundles
 

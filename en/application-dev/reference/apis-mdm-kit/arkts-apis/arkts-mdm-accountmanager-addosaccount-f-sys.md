@@ -6,7 +6,7 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-## addOsAccount
+## addOsAccount('osAccount.OsAccountType')
 
 ```TypeScript
 function addOsAccount(admin: Want, name: string, type: osAccount.OsAccountType): osAccount.OsAccountInfo
@@ -36,7 +36,7 @@ Adds an account in the background.
 | --- | --- | --- | --- |
 | admin | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application. |
 | name | string | Yes | User ID, which must be greater than or equal to 0. |
-| type | [osAccount.OsAccountType](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-osaccounttype-e.md) | Yes | Type of the account to add.<br>The value can be any of the following: <br>· **ADMIN**: administrator account. <br>· **NORMAL**: normal account. <br>· **GUEST**: guest account. |
+| type | [osAccount.OsAccountType](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-osaccounttype-e.md) | Yes | Type of the account to add. <br>The value can be any of the following: <br>· **ADMIN**: administrator account. <br>· **NORMAL**: normal account. <br>· **GUEST**: guest account. |
 
 **Return value:**
 

@@ -189,8 +189,6 @@ mapping.unmapSync();
 fileIo.closeSync(file);
 ```
 
-<a id="msync1"></a>
-
 ## msync
 
 ```TypeScript
@@ -245,8 +243,6 @@ mapping.msync().then(() => {
   fileIo.closeSync(file);
 });
 ```
-
-<a id="msync2"></a>
 
 ## msync
 
@@ -310,8 +306,6 @@ mapping.msync(50, buffer.byteLength).then(() => {
 });
 ```
 
-<a id="msyncsync1"></a>
-
 ## msyncSync
 
 ```TypeScript
@@ -357,8 +351,6 @@ console.info("Succeeded in msync.");
 mapping.unmapSync();
 fileIo.closeSync(file);
 ```
-
-<a id="msyncsync2"></a>
 
 ## msyncSync
 
@@ -413,8 +405,6 @@ mapping.unmapSync();
 fileIo.closeSync(file);
 ```
 
-<a id="read1"></a>
-
 ## read
 
 ```TypeScript
@@ -468,8 +458,6 @@ console.info(`Succeeded in reading data, size is: ${bytesRead}`);
 mapping.unmapSync();
 fileIo.closeSync(file);
 ```
-
-<a id="read2"></a>
 
 ## read
 
@@ -741,8 +729,6 @@ console.info("Succeeded in unmap.");
 fileIo.closeSync(file);
 ```
 
-<a id="write1"></a>
-
 ## write
 
 ```TypeScript
@@ -798,8 +784,6 @@ mapping.msyncSync();
 mapping.unmapSync();
 fileIo.closeSync(file);
 ```
-
-<a id="write2"></a>
 
 ## write
 

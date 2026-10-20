@@ -2,9 +2,9 @@
 
 This module provides skill query capabilities for applications.
 
-@namespace skillManager
-
 **Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace skillManager--><!--Device-unnamed-declare namespace skillManager-End-->
 

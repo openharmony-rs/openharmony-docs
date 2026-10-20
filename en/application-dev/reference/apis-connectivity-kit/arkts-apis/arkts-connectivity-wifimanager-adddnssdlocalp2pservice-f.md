@@ -29,10 +29,10 @@ Add a Bonjour (DNS-SD) local P2P service description and register it.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| instanceName | string | Yes | Instance name, which is used for peer service discovery.<br>The maximum length is 63. |
+| instanceName | string | Yes | Instance name, which is used for peer service discovery. <br>The maximum length is 63. |
 | serviceType | string | Yes | Service type, which is used for peer service discovery. This parameter cannot be left blank. The value can be customized. The recommended format is "_<ServiceName>._<Protocol>", for example, "_http._tcp". <br>The maximum length is 63. |
-| txtRecord | Map&lt;string, string&gt; | Yes | TXT record containing key/value pairs. The key cannot contain an equal sign (=), and the length of a single record (key.length + value.length). must be less than 255 bytes.<br> It is recommended that the total size of all keys and values after serialization be kept within 200-400 bytes. <br>Exceeding the limit of a single mDNS packet will cause the data to fail to be properly broadcast or to be ignored by the peer. There is no limit to the number of key-value pairs. The definition format is as follows: <a href="http://files.dns-sd.org/draft-cheshire-dnsext-dns-sd.txt">draft-cheshire-dnsext-dns-sd.txt</a> |
-| serviceName | string | Yes | Service name used to identify the local service object.<br>The maximum length is 63. |
+| txtRecord | Map&lt;string, string&gt; | Yes | TXT record containing key/value pairs. The key cannot contain an equal sign (=), and the length of a single record (key.length + value.length). must be less than 255 bytes. <br> It is recommended that the total size of all keys and values after serialization be kept within 200-400 bytes. <br>Exceeding the limit of a single mDNS packet will cause the data to fail to be properly broadcast or to be ignored by the peer. There is no limit to the number of key-value pairs. The definition format is as follows: <a href="http://files.dns-sd.org/draft-cheshire-dnsext-dns-sd.txt">draft-cheshire-dnsext-dns-sd.txt</a> |
+| serviceName | string | Yes | Service name used to identify the local service object. <br>The maximum length is 63. |
 
 **Error codes:**
 
