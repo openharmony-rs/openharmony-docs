@@ -105,8 +105,6 @@
 
 - 带有“PORTRAIT”或“LANDSCAPE”的类型，将应用限制在“竖屏/反向竖屏”，“横屏/反向横屏”两个方向旋转。
 
-- “AUTO_ROTATION_UNSPECIFIED”是比较特殊的自动旋转类型。该类型既支持自动旋转，又受系统旋转锁定开关控制，与“AUTO_ROTATION_RESTRICTED”非常类似。
-
 > **说明：**
 > 
 > “AUTO_ROTATION_RESTRICTED”和“AUTO_ROTATION_UNSPECIFIED”两个旋转策略在功能上非常相似，都支持受到旋转锁定开关控制自动旋转。但在不同的产品上，这两个旋转策略还是有一些区别。
