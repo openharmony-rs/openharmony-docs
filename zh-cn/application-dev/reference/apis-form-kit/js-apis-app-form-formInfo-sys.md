@@ -595,7 +595,7 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 | serviceName | string | 否 | 否 | 服务名称。 |
 | serviceDisplayName | string | 否 | 否 | 服务显示名称。 |
 | displayId | string | 否 | 否 | 显示标识。 |
-| customData | Record&lt;string, string&gt; | 否 | 是 | 自定义数据。默认为空 |
+| customData | Record&lt;string, string&gt; | 否 | 是 | 自定义数据。默认为空。 |
 
 ## PeerFormHostServiceInfo
 
@@ -614,7 +614,7 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 | serviceName | string | 否 | 否 | 远端卡片使用方服务的服务名称。 |
 | serviceDisplayName | string | 否 | 否 | 远端卡片使用方服务的服务显示名称。 |
 | displayId | string | 否 | 否 | 远端卡片使用方服务的显示标识。 |
-| customData | Record&lt;string, string&gt; | 否 | 是 | 远端卡片使用方服务的自定义数据。默认为空 |
+| customData | Record&lt;string, string&gt; | 否 | 是 | 远端卡片使用方服务的自定义数据。默认为空。 |
 | deviceId | string | 否 | 否 | 远端卡片使用方服务的设备标识。 |
 | networkId | string | 否 | 否 | 远端卡片使用方服务的网络标识。 |
 | serviceId | string | 否 | 否 | 远端卡片使用方服务的服务标识。 |
