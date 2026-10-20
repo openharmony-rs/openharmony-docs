@@ -5,14 +5,17 @@
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4877a4b9af4fe9a4f4ba971d6650b9252f0e7d60 translatedAt=2026-10-15T11:11:13.340Z pushedAt=2026-10-20T02:48:02.593Z -->
 
 The **performanceMonitor** module provides APIs for monitoring performance metrics related to user scenes. By calling the **begin** and **end** APIs at the start and end of a scene respectively, you can obtain relevant performance metrics such as response latency, completion latency, and frame drops.
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs provided by this module are system APIs.
+> - The APIs of this module can be used only in the stage model.
+>
+> - The APIs of this module are system APIs.
 
 
 ## Modules to Import
@@ -64,7 +67,7 @@ Marks the start of a user scene. Call this API when the scene begins.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type| Mandatory| Description|
 | -- | -- | -- | -- |
@@ -72,12 +75,12 @@ Marks the start of a user scene. Call this API when the scene begins.
 | startInputType | [ActionType](#actiontype)| Yes| Trigger mode of the user scene.|
 | note | string| No| Remarks for the user scene. The string length is unlimited, but it is recommended that you keep it within 255 characters. This field is optional. If provided, the performance metrics report will include the remark information; if not provided, there is no impact.|
 
-**Example**
+**Example** 
 
 Start point of the user scene where the user taps an icon to launch an application, triggered by a release event (**LAST_UP**).
-  ```ts
+```ts
 performanceMonitor.begin("LAUNCHER_APP_LAUNCH_FROM_ICON", performanceMonitor.ActionType.LAST_UP, "APP_START_BEGIN");
-  ```
+```
 
 
 ## performanceMonitor.end
@@ -88,17 +91,17 @@ Marks the end of a user scene. Call this API when the scene ends.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 | Name| Type| Mandatory| Description|
 | -- | -- | -- | -- |
 | scene | string | Yes| User scene ID, which must be strictly consistent with that in **begin**; otherwise, the monitoring will be invalid.|
 
-**Example**
+**Example** 
 
 End point of the user scene where the user taps an icon to launch an application.
-  ```ts
+```ts
 performanceMonitor.end("LAUNCHER_APP_LAUNCH_FROM_ICON");
-  ```
+```
 
 ## performanceMonitor.recordInputEventTime<sup>12+</sup>
 
