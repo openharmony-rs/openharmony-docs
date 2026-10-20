@@ -106,3 +106,21 @@ The animation group is not in the required state for the operation.
 **处理步骤**
 
 通过[OH_ArkUI_NativeModule_GetAnimationGroupState](capi-native-animate-h.md#oh_arkui_nativemodule_getanimationgroupstate)查询动画组当前状态，确保状态正确后再调用对应接口。
+
+## 106216 解析的目标节点不属于注册动画组时传入的context所在的UIContext
+
+**错误信息**
+
+The resolved target node does not belong to the same UIContext as the context parameter.
+
+**错误描述**
+
+解析的目标节点不属于注册动画组时传入的context所在的UIContext。
+
+**可能原因**
+
+通过[OH_ArkUI_NativeModule_AddAnimationGroup](capi-native-animate-h.md#oh_arkui_nativemodule_addanimationgroup)注册动画组时，子动画解析出的目标渲染节点所属的UIContext与传入的context参数所属的UIContext不一致。
+
+**处理步骤**
+
+确保通过[OH_ArkUI_NativeModule_PropertyAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_propertyanimation_settargetnode)、[OH_ArkUI_NativeModule_KeyframeAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_keyframeanimation_settargetnode)或[OH_ArkUI_NativeModule_PathAnimation_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_pathanimation_settargetnode)为子动画设置的目标渲染节点，或通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](capi-native-animate-h.md#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标渲染节点，与注册动画组时传入的context属于同一UIContext。
