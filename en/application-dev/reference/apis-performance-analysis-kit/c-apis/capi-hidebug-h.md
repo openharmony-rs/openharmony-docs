@@ -54,7 +54,7 @@ Defines the APIs for debugging.
 | [uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)](#oh_hidebug_setcrashobj) | - | Adds debugging information to the crash logs. This function is used together with [OH_HiDebug_ResetCrashObj](capi-hidebug-h.md#oh_hidebug_resetcrashobj). If a program crashes between **OH_HiDebug_SetCrashObj** and **<br>OH_HiDebug_ResetCrashObj**, the debugging information set by **OH_HiDebug_SetCrashObj** is added to the crash logs. |
 | [void OH_HiDebug_ResetCrashObj(uint64_t crashObj)](#oh_hidebug_resetcrashobj) | - | Resets the debugging information object to the state before **OH_HiDebug_SetCrashObj** is used. |
 | [typedef void (\*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)](#oh_hidebug_threadlitesamplingcallback) | OH_HiDebug_ThreadLiteSamplingCallback | Triggered for the lightweight Perf sampling stack content. Note: The sampling data is valid only during the execution of this callback. If you need to use the data outside the function, deep copy the sampling stack content. |
-| [HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)](#oh_hidebug_requestthreadlitesampling) | - |  |
+| [HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)](#oh_hidebug_requestthreadlitesampling) | - | Performs Perf sampling on the specified threads and returns the sampling stack content after the call is complete. Note: After this function is called, the current thread is blocked until the sampling process ends. The system strictly limits the number of times that this API is called. If the number of times that this API is called exceeds the upper limit, the error code [HIDEBUG_RESOURCE_UNAVAILABLE](capi-hidebug-type-h.md#hidebug_errorcode) is returned. |
 | [HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDebug_ResProfilerConfig* config, OH_HiDebug_ProfilingCallback callback)](#oh_hidebug_startprofiler) | - | Asynchronously starts the resource profiler for the current process. <br>The callback function is called only when the collection is stopped (including when the system automatically stops the collection). It carries the resource type and file path to be collected. <br>If the collection is abnormal, the file path is **NULL**. |
 | [HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)](#oh_hidebug_stopprofiler) | - | Stops resource profiler for the current process. This API can be called after the [OH_HiDebug_StartProfiler](capi-hidebug-h.md#oh_hidebug_startprofiler) API and the call duration must be within the maximum duration. |
 | [typedef bool (\*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg)](#oh_hidebug_memdumplistener) | OH_HiDebug_MemDumpListener | Callback triggered for listening. You can use FDs to write memory data in your app so that you can export the data using the hidumper command. |
@@ -632,6 +632,8 @@ HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerCon
 
 **Description**
 
+Performs Perf sampling on the specified threads and returns the sampling stack content after the call is complete. Note: After this function is called, the current thread is blocked until the sampling process ends. The system strictly limits the number of times that this API is called. If the number of times that this API is called exceeds the upper limit, the error code [HIDEBUG_RESOURCE_UNAVAILABLE](capi-hidebug-type-h.md#hidebug_errorcode) is returned.
+
 **System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 22
@@ -675,7 +677,7 @@ Asynchronously starts the resource profiler for the current process. <br>The cal
 
 | Type | Description |
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code. <br>[HIDEBUG_RES_PROF_SUCCESS](capi-hidebug-type-h.md#hidebug_errorcode): Resource profiler started successfully. <br>[HIDEBUG_RES_PROF_INVALID_ARG](capi-hidebug-type-h.md#hidebug_errorcode): Invalid resource profiler argument. <br>[HIDEBUG_RES_PROF_INVALID_MAX_DURATION](capi-hidebug-type-h.md#hidebug_errorcode): Invalid maximum duration. <br>[HIDEBUG_RES_PROF_INVALID_FILTER_SIZE](capi-hidebug-type-h.md#hidebug_errorcode): Invalid filter size. <br>[HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode): Invalid maximum stack depth. <br>[HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode): Invalid statistics interval. <br>[HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode): Invalid sampling interval. <br>[HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE](capi-hidebug-type-h.md#hidebug_errorcode): Invalid resource type. <br>[HIDEBUG_RES_PROF_PERMISSION_DENIED](capi-hidebug-type-h.md#hidebug_errorcode): Insufficient resource profiling permission. The target process for resource profiling can only be the process that calls this API. <br>[HIDEBUG_RES_PROF_ALREADY_STARTED](capi-hidebug-type-h.md#hidebug_errorcode): Resource profiler already started. <br>[HIDEBUG_RES_PROF_PROCESS_OVERLIMIT](capi-hidebug-type-h.md#hidebug_errorcode): The number of resource profiling processes exceeds 4. <br>[HIDEBUG_RES_PROF_CONFLICT](capi-hidebug-type-h.md#hidebug_errorcode): Resource profiling conflicts with CLI tools or system profiling tasks. <br>[HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED](capi-hidebug-type-h.md#hidebug_errorcode): The daily quota for resource profiling exceeds 10 times. <br>[HIDEBUG_RES_PROF_CPU_OVERLOADED](capi-hidebug-type-h.md#hidebug_errorcode): The system CPU is overloaded, with the CPU usage exceeding 70%. <br>[HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode): The available memory space is less than 15%. <br>[HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode): The available storage space is less than 15%. <br>[HIDEBUG_RES_PROF_FAILURE](capi-hidebug-type-h.md#hidebug_errorcode): Failed to start resource profiler. |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code. <ul><li>[HIDEBUG_RES_PROF_SUCCESS](capi-hidebug-type-h.md#hidebug_errorcode): Resource profiler started successfully.</li> <li>[HIDEBUG_RES_PROF_INVALID_ARG](capi-hidebug-type-h.md#hidebug_errorcode): Invalid resource profiler argument.</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_DURATION](capi-hidebug-type-h.md#hidebug_errorcode): Invalid maximum duration.</li> <li>[HIDEBUG_RES_PROF_INVALID_FILTER_SIZE](capi-hidebug-type-h.md#hidebug_errorcode): Invalid filter size.</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode): Invalid maximum stack depth.</li> <li>[HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode): Invalid statistics interval.</li> <li>[HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode): Invalid sampling interval.</li> <li>[HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE](capi-hidebug-type-h.md#hidebug_errorcode): Invalid resource type.</li> <li>[HIDEBUG_RES_PROF_PERMISSION_DENIED](capi-hidebug-type-h.md#hidebug_errorcode): Insufficient resource profiling permission. The target process for resource profiling can only be the process that calls this API.</li> <li>[HIDEBUG_RES_PROF_ALREADY_STARTED](capi-hidebug-type-h.md#hidebug_errorcode): Resource profiler already started.</li> <li>[HIDEBUG_RES_PROF_PROCESS_OVERLIMIT](capi-hidebug-type-h.md#hidebug_errorcode): The number of resource profiling processes exceeds 4. This limit applies only to release-signed applications. Debug-signed applications are not subject to this limit for development and debugging purposes. The limit is released when an existing profiling task stops. [since 26.0.1] On API 26.0.0 and below, this limit applied to all applications. [since 24 - 26.0.0]</li> <li>[HIDEBUG_RES_PROF_CONFLICT](capi-hidebug-type-h.md#hidebug_errorcode): Resource profiling conflicts with CLI tools or system profiling tasks.</li> <li>[HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED](capi-hidebug-type-h.md#hidebug_errorcode): The daily quota for resource profiling is exceeded. For release-signed applications, the limit is 2 times per day per application and 4 times per day for device. Debug-signed applications are not subject to this limit for development and debugging purposes. The quota resets at the start of each day. [since 26.0.1] On API 26.0.0 and below, only debug-signed applications were supported, with a limit of 10 times per day. [since 24 - 26.0.0]</li> <li>[HIDEBUG_RES_PROF_CPU_OVERLOADED](capi-hidebug-type-h.md#hidebug_errorcode): Resource profiling requests are not permitted when the system CPU is overloaded, with the CPU usage exceeding 70%. Callers may retry when CPU usage drops below the threshold.</li> <li>[HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode): Resource profiling requests are not permitted when the system is under memory pressure. Memory pressure is defined as available system memory below 2GB, a fixed threshold independent of device capacity. Callers may retry when available memory recovers. [since 26.0.1] On API 26.0.0 and below, memory pressure was defined as available memory below 15%. [since 24 - 26.0.0]</li> <li>[HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode): Resource profiling requests are not permitted when the system is under storage pressure. Storage pressure is defined as available system storage dropping below the greater of 3% of total storage and 15GB. Callers may retry when available storage recovers. [since 26.0.1] On API 26.0.0 and below, storage pressure was defined as available storage below 15%. [since 24 - 26.0.0]</li> <li>[HIDEBUG_RES_PROF_FAILURE](capi-hidebug-type-h.md#hidebug_errorcode): Failed to start resource profiler. Callers may check system conditions and retry.</li></ul> |
 
 ### OH_HiDebug_StopProfiler()
 
@@ -695,7 +697,7 @@ Stops resource profiler for the current process. This API can be called after th
 
 | Type | Description |
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code. <br>[HIDEBUG_RES_PROF_SUCCESS](capi-hidebug-type-h.md#hidebug_errorcode): Resource profiler stopped successfully. <br>[HIDEBUG_RES_PROF_NOT_STARTED](capi-hidebug-type-h.md#hidebug_errorcode): Failed to stop resource profiler because it is not started. <br>[HIDEBUG_RES_PROF_FAILURE](capi-hidebug-type-h.md#hidebug_errorcode): Failed to stop resource profiler. |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code. <ul><li>[HIDEBUG_RES_PROF_SUCCESS](capi-hidebug-type-h.md#hidebug_errorcode): Resource profiler stopped successfully.</li> <li>[HIDEBUG_RES_PROF_NOT_STARTED](capi-hidebug-type-h.md#hidebug_errorcode): Failed to stop resource profiler because it is not started.</li> <li>[HIDEBUG_RES_PROF_FAILURE](capi-hidebug-type-h.md#hidebug_errorcode): Failed to stop resource profiler. Callers may check system conditions and retry.</li></ul> |
 
 ### OH_HiDebug_MemDumpListener()
 
@@ -926,7 +928,7 @@ Sets the maximum nesting depth for asynchronous invocations.
 | Parameter | Description |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] Pointer to the OH_HiDebug_ProfilerOptions structure. It must not be NULL. |
-| uint32_t depth | [in] Maximum asynchronous nesting depth allowed. |
+| uint32_t depth | [in] Maximum allowed asynchronous nesting depth, ranging from 1 to 16. |
 
 **Returns**:
 
@@ -953,7 +955,7 @@ Sets the maximum stack depth for each asynchronous task function.
 | Parameter | Description |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] Pointer to the OH_HiDebug_ProfilerOptions structure. It must not be NULL. |
-| uint32_t depth | [in] Maximum asynchronous task stack depth. |
+| uint32_t depth | [in] Maximum stack depth of asynchronous tasks, ranging from 1 to 256. |
 
 **Returns**:
 
@@ -980,7 +982,7 @@ Sets the sampling interval in bytes.
 | Parameter | Description |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] Pointer to the OH_HiDebug_ProfilerOptions structure. It must not be NULL. |
-| uint32_t bytes | [in] Sample interval in bytes. |
+| uint32_t bytes | [in] Sampling interval, ranging from [384, 4294967295], in bytes. |
 
 **Returns**:
 
@@ -1007,7 +1009,7 @@ Sets the statistics interval in seconds.
 | Parameter | Description |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] Pointer to the OH_HiDebug_ProfilerOptions structure. It must not be NULL. |
-| uint32_t seconds | [in] Statistics interval in seconds. |
+| uint32_t seconds | [in] Statistics interval, ranging from [1, 3600], in seconds. |
 
 **Returns**:
 
@@ -1034,7 +1036,7 @@ Sets the maximum backtrace stack depth.
 | Parameter | Description |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] Pointer to the OH_HiDebug_ProfilerOptions structure. It must not be NULL. |
-| uint32_t depth | [in] Maximum backtrace stack depth. |
+| uint32_t depth | [in] Maximum stack depth, ranging from [1, 30]. |
 
 **Returns**:
 
@@ -1061,7 +1063,7 @@ Sets the filter size for allocations.
 | Parameter | Description |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] Pointer to the OH_HiDebug_ProfilerOptions structure. It must not be NULL. |
-| uint32_t size | [in] Filter size threshold in bytes. |
+| uint32_t size | [in] Filter size threshold, ranging from 1 to 4294967295, in bytes. |
 
 **Returns**:
 
@@ -1088,7 +1090,7 @@ Sets the maximum profiling duration in seconds.
 | Parameter | Description |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] Pointer to the OH_HiDebug_ProfilerOptions structure. It must not be NULL. |
-| uint32_t seconds | [in] Maximum duration in seconds. |
+| uint32_t seconds | [in] Maximum collection duration, ranging from [1, 3600], in seconds. |
 
 **Returns**:
 
@@ -1149,6 +1151,6 @@ Starts the profiler with the specified options and resource type.
 
 | Type | Description |
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code. <ul><li>[HIDEBUG_RES_PROF_SUCCESS](capi-hidebug-type-h.md#hidebug_errorcode) Profiler started successfully.</li> <li>[HIDEBUG_RES_PROF_INVALID_ARG](capi-hidebug-type-h.md#hidebug_errorcode) opts or callback is a null pointer.</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_DURATION](capi-hidebug-type-h.md#hidebug_errorcode) Maximum duration is invalid.</li> <li>[HIDEBUG_RES_PROF_INVALID_FILTER_SIZE](capi-hidebug-type-h.md#hidebug_errorcode) FilterSize is invalid.</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode) Maximum stack depth is invalid.</li> <li>[HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode) StatisticsInterval is invalid.</li> <li>[HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode) Sample interval is invalid.</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode) Maximum asynchronous nesting depth is invalid.</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode) Maximum asynchronous task stack depth is invalid.</li> <li>[HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE](capi-hidebug-type-h.md#hidebug_errorcode) Stack trace mode is invalid.</li> <li>[HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE](capi-hidebug-type-h.md#hidebug_errorcode) Resource type is invalid.</li> <li>[HIDEBUG_RES_PROF_PERMISSION_DENIED](capi-hidebug-type-h.md#hidebug_errorcode) Permission denied.</li> <li>[HIDEBUG_RES_PROF_ALREADY_STARTED](capi-hidebug-type-h.md#hidebug_errorcode) Profiler has already been started.</li> <li>[HIDEBUG_RES_PROF_PROCESS_OVERLIMIT](capi-hidebug-type-h.md#hidebug_errorcode) Process exceeds the limit.</li> <li>[HIDEBUG_RES_PROF_CONFLICT](capi-hidebug-type-h.md#hidebug_errorcode) Conflict.</li> <li>[HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED](capi-hidebug-type-h.md#hidebug_errorcode) Daily quota exceeded.</li> <li>[HIDEBUG_RES_PROF_CPU_OVERLOADED](capi-hidebug-type-h.md#hidebug_errorcode) CPU overloaded.</li> <li>[HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode) Memory pressure is critical.</li> <li>[HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode) Storage pressure is critical.</li> <li>[HIDEBUG_RES_PROF_FAILURE](capi-hidebug-type-h.md#hidebug_errorcode) Failed to start the resource profiler.</li></ul> |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code. <ul><li>[HIDEBUG_RES_PROF_SUCCESS](capi-hidebug-type-h.md#hidebug_errorcode) Resource profiling started successfully.</li> <li>[HIDEBUG_RES_PROF_INVALID_ARG](capi-hidebug-type-h.md#hidebug_errorcode) opts or callback is a null pointer.</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_DURATION](capi-hidebug-type-h.md#hidebug_errorcode) Invalid maximum duration.</li> <li>[HIDEBUG_RES_PROF_INVALID_FILTER_SIZE](capi-hidebug-type-h.md#hidebug_errorcode) Invalid filter size.</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode) Invalid maximum stack depth.</li> <li>[HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode) Invalid statistics interval.</li> <li>[HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode) Invalid sampling interval.</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode) Maximum asynchronous nesting depth is invalid.</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode) Maximum asynchronous task stack depth is invalid.</li> <li>[HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE](capi-hidebug-type-h.md#hidebug_errorcode) Stack trace mode is invalid.</li> <li>[HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE](capi-hidebug-type-h.md#hidebug_errorcode) Invalid resource type.</li> <li>[HIDEBUG_RES_PROF_PERMISSION_DENIED](capi-hidebug-type-h.md#hidebug_errorcode) Insufficient resource profiling permission. The target process for resource profiling can only be the process that calls this API.</li> <li>[HIDEBUG_RES_PROF_ALREADY_STARTED](capi-hidebug-type-h.md#hidebug_errorcode) Resource profiling is repeatedly started.</li> <li>[HIDEBUG_RES_PROF_PROCESS_OVERLIMIT](capi-hidebug-type-h.md#hidebug_errorcode) The number of resource profiling processes exceeds 4. This limit applies only to release-signed applications. Debug-signed applications are not subject to this limit for development and debugging purposes. The limit is released when an existing profiling task stops.</li> <li>[HIDEBUG_RES_PROF_CONFLICT](capi-hidebug-type-h.md#hidebug_errorcode) Resource profiling conflicts with CLI tools or system profiling tasks.</li> <li>[HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED](capi-hidebug-type-h.md#hidebug_errorcode) The daily quota for resource profiling is exceeded. For release-signed applications, the limit is 2 times per day per application and 4 times per day for device. Debug-signed applications are not subject to this limit for development and debugging purposes. The quota resets at the start of each day.</li> <li>[HIDEBUG_RES_PROF_CPU_OVERLOADED](capi-hidebug-type-h.md#hidebug_errorcode) Resource profiling requests are not permitted when the system CPU is overloaded, with the CPU usage exceeding 70%. Callers may retry when CPU usage drops below the threshold.</li> <li>[HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode) Resource profiling requests are not permitted when the system is under memory pressure. Memory pressure is defined as available system memory below 2GB, a fixed threshold independent of device capacity. Callers may retry when available memory recovers.</li> <li>[HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode) Resource profiling requests are not permitted when the system is under storage pressure. Storage pressure is defined as available system storage dropping below the greater of 3% of total storage and 15GB. Callers may retry when available storage recovers.</li> <li>[HIDEBUG_RES_PROF_FAILURE](capi-hidebug-type-h.md#hidebug_errorcode) Failed to start resource profiler. Callers may check system conditions and retry.</li></ul> |
 
 

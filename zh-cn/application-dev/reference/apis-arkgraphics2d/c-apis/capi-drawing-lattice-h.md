@@ -47,7 +47,7 @@ enum OH_Drawing_LatticeRectType
 | -- | -- |
 | DEFAULT | 将图像绘制到矩形网格中。<br>**起始版本：** 23 |
 | TRANSPARENT | 将矩形网格设置为透明的。<br>**起始版本：** 23 |
-| FIXED_COLOR | 将矩形网格对象中fColors数组的颜色绘制到矩形网格中。<br>**起始版本：** 23 |
+| FIXED_COLOR | 将矩形网格对象中colors数组的颜色绘制到矩形网格中。<br>**起始版本：** 23 |
 
 
 ## 函数说明

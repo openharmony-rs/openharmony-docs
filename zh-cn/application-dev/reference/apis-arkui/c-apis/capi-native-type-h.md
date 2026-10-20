@@ -54,7 +54,7 @@ Defines the common types for the native module.
 | [ArkUI_XComponentType](#arkui_xcomponenttype) | ArkUI_XComponentType | Enumerates the types of the <b><XComponent></b> component. |
 | [ArkUI_CopyOptions](#arkui_copyoptions) | ArkUI_CopyOptions | 定义文本复制粘贴模式枚举值。 |
 | [ArkUI_ShadowType](#arkui_shadowtype) | ArkUI_ShadowType | Enumerates the shadow types. |
-| [ArkUI_FocusWrapMode](#arkui_focuswrapmode) | ArkUI_FocusWrapMode | Enumerates the focus wrap mode of components. |
+| [ArkUI_FocusWrapMode](#arkui_focuswrapmode) | ArkUI_FocusWrapMode | 组件走焦换行规则。Grid、List组件默认值为ARKUI_FOCUS_WRAP_MODE_DEFAULT。 |
 | [ArkUI_ItemFillPolicy](#arkui_itemfillpolicy) | ArkUI_ItemFillPolicy | Specifies the number of columns for different responsive breakpoint specifications. |
 | [ArkUI_BorderStyle](#arkui_borderstyle) | ArkUI_BorderStyle | Enumerates the border styles. |
 | [ArkUI_ShadowStyle](#arkui_shadowstyle) | ArkUI_ShadowStyle | Enumerates the shadow styles. |
@@ -89,7 +89,7 @@ Defines the common types for the native module.
 | [ArkUI_AccessibilityActionType](#arkui_accessibilityactiontype) | ArkUI_AccessibilityActionType | Define accessible action types. |
 | [ArkUI_NavDestinationState](#arkui_navdestinationstate) | ArkUI_NavDestinationState | Defines the state of the NavDestination component. |
 | [ArkUI_RouterPageState](#arkui_routerpagestate) | ArkUI_RouterPageState | Define the state of Router Page. |
-| [ArkUI_SafeAreaType](#arkui_safeareatype) | ArkUI_SafeAreaType | defines the enumerated value of the extended security zone. |
+| [ArkUI_SafeAreaType](#arkui_safeareatype) | ArkUI_SafeAreaType | 定义扩展安全区域的枚举值。 |
 | [ArkUI_KeyboardAvoidMode](#arkui_keyboardavoidmode) | ArkUI_KeyboardAvoidMode | defines the enumerated value of the customDialog's keyboard avoid mode. |
 | [ArkUI_HoverModeAreaType](#arkui_hovermodeareatype) | ArkUI_HoverModeAreaType | defines the enumerated value of area in hover mode. |
 | [ArkUI_ExpandMode](#arkui_expandmode) | ArkUI_ExpandMode | 定义子节点展开模式枚举值。 |
@@ -104,23 +104,23 @@ Defines the common types for the native module.
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()](#oh_arkui_layoutconstraint_create) | Creates a size constraint. |
-| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_copy) | Creates a deep copy of a size constraint. |
-| [void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_dispose) | Destroys the pointer to a size constraint. |
-| [int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxwidth) | Obtains the maximum width for a size constraint, in px. |
-| [int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminwidth) | Obtains the minimum width for a size constraint, in px. |
-| [int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxheight) | Obtains the maximum height for a size constraint, in px. |
-| [int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminheight) | Obtains the minimum height for a size constraint, in px. |
-| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferencewidth) | Obtains the width percentage reference for a size constraint, in px. |
-| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferenceheight) | Obtains the height percentage reference for a size constraint, in px. |
-| [void OH_ArkUI_LayoutConstraint_SetMaxWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setmaxwidth) | Sets the maximum width. |
-| [void OH_ArkUI_LayoutConstraint_SetMinWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setminwidth) | Sets the minimum width. |
-| [void OH_ArkUI_LayoutConstraint_SetMaxHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setmaxheight) | Sets the maximum height. |
-| [void OH_ArkUI_LayoutConstraint_SetMinHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setminheight) | Sets the minimum height. |
-| [void OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setpercentreferencewidth) | Sets the width percentage reference. |
-| [void OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setpercentreferenceheight) | Sets the height percentage reference. |
-| [void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)](#oh_arkui_drawcontext_getcanvas) | Obtains the pointer to a canvas for drawing, which can be converted into the <b>OH_Drawing_Canvas</b> pointer in the <b>Drawing</b> module. |
-| [ArkUI_IntSize OH_ArkUI_DrawContext_GetSize(ArkUI_DrawContext* context)](#oh_arkui_drawcontext_getsize) | Obtains the size of a drawing area. |
+| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()](#oh_arkui_layoutconstraint_create) | 创建一个尺寸约束。 |
+| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_copy) | 创建一个尺寸约束的深拷贝。 |
+| [void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_dispose) | 销毁指向尺寸约束的指针。 |
+| [int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxwidth) | 获取尺寸约束的最大宽度，单位为px。 |
+| [int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminwidth) | 获取尺寸约束的最小宽度，单位为px。 |
+| [int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxheight) | 获取尺寸约束的最大高度，单位为px。 |
+| [int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminheight) | 获取尺寸约束的最小高度，单位为px。 |
+| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferencewidth) | 获取尺寸约束的宽度百分比基准，单位为px。 |
+| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferenceheight) | 获取尺寸约束的高度百分比基准，单位为px。 |
+| [void OH_ArkUI_LayoutConstraint_SetMaxWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setmaxwidth) | 设置最大宽度。 |
+| [void OH_ArkUI_LayoutConstraint_SetMinWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setminwidth) | 设置最小宽度。 |
+| [void OH_ArkUI_LayoutConstraint_SetMaxHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setmaxheight) | 设置最大高度。 |
+| [void OH_ArkUI_LayoutConstraint_SetMinHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setminheight) | 设置最小高度。 |
+| [void OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setpercentreferencewidth) | 设置宽度百分比基准。 |
+| [void OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setpercentreferenceheight) | 设置高度百分比基准。 |
+| [void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)](#oh_arkui_drawcontext_getcanvas) | 获取用于绘制的画布指针，该指针可以转换为<b>Drawing</b>模块中的<b>OH_Drawing_Canvas</b>指针。 |
+| [ArkUI_IntSize OH_ArkUI_DrawContext_GetSize(ArkUI_DrawContext* context)](#oh_arkui_drawcontext_getsize) | 获取绘制区域的大小。 |
 | [ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType type)](#oh_arkui_swiperindicator_create) | Creates a navigation indicator. |
 | [void OH_ArkUI_SwiperIndicator_Dispose(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_dispose) | Destroys the pointer to the indicator. |
 | [void OH_ArkUI_SwiperIndicator_SetStartPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setstartposition) | Sets the distance between the navigation point and the start of the swiper. |
@@ -533,7 +533,7 @@ enum ArkUI_FocusWrapMode
 
 **描述：**
 
-Enumerates the focus wrap mode of components.
+组件走焦换行规则。Grid、List组件默认值为ARKUI_FOCUS_WRAP_MODE_DEFAULT。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -541,8 +541,8 @@ Enumerates the focus wrap mode of components.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0 | Default mode, where focus does not wrap when arrow keys are used. |
-| ARKUI_FOCUS_WRAP_WITH_ARROW = 1 | Focus wraps automatically when arrow keys are used. |
+| ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0 | 默认规则，使用方向键走焦不换行。 |
+| ARKUI_FOCUS_WRAP_WITH_ARROW = 1 | 使用方向键走焦自动换行。 |
 
 ### ArkUI_ItemFillPolicy
 
@@ -1318,7 +1318,7 @@ enum ArkUI_SafeAreaType
 
 **描述：**
 
-defines the enumerated value of the extended security zone.
+定义扩展安全区域的枚举值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1326,9 +1326,9 @@ defines the enumerated value of the extended security zone.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | The default security zone includes the status bar and navigation bar. |
-| ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1 | Non-secure areas of the device, such as bangs or hole holes. |
-| ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2 | Soft keyboard area. |
+| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | 默认安全区域，包括状态栏和导航栏。 |
+| ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1 | 设备的非安全区域，如刘海屏或挖孔屏。 |
+| ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2 | 软键盘区域。 |
 
 ### ArkUI_KeyboardAvoidMode
 
@@ -1521,7 +1521,7 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()
 
 **描述：**
 
-Creates a size constraint.
+创建一个尺寸约束。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1535,7 +1535,7 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstra
 
 **描述：**
 
-Creates a deep copy of a size constraint.
+创建一个尺寸约束的深拷贝。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1545,13 +1545,13 @@ Creates a deep copy of a size constraint.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_LayoutConstraint*](capi-arkui-nativemodule-arkui-layoutconstraint.md) | Returns the pointer to the new size constraint. |
+| [ArkUI_LayoutConstraint*](capi-arkui-nativemodule-arkui-layoutconstraint.md) | 返回指向新尺寸约束的指针。 |
 
 ### OH_ArkUI_LayoutConstraint_Dispose()
 
@@ -1561,7 +1561,7 @@ void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)
 
 **描述：**
 
-Destroys the pointer to a size constraint.
+销毁指向尺寸约束的指针。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1571,7 +1571,7 @@ Destroys the pointer to a size constraint.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
 
 ### OH_ArkUI_LayoutConstraint_GetMaxWidth()
 
@@ -1581,7 +1581,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Cons
 
 **描述：**
 
-Obtains the maximum width for a size constraint, in px.
+获取尺寸约束的最大宽度，单位为px。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1591,13 +1591,13 @@ Obtains the maximum width for a size constraint, in px.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the maximum width. |
+| int32_t | 返回最大宽度。 |
 
 ### OH_ArkUI_LayoutConstraint_GetMinWidth()
 
@@ -1607,7 +1607,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Cons
 
 **描述：**
 
-Obtains the minimum width for a size constraint, in px.
+获取尺寸约束的最小宽度，单位为px。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1617,13 +1617,13 @@ Obtains the minimum width for a size constraint, in px.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the minimum width. |
+| int32_t | 返回最小宽度。 |
 
 ### OH_ArkUI_LayoutConstraint_GetMaxHeight()
 
@@ -1633,7 +1633,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Con
 
 **描述：**
 
-Obtains the maximum height for a size constraint, in px.
+获取尺寸约束的最大高度，单位为px。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1643,13 +1643,13 @@ Obtains the maximum height for a size constraint, in px.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the maximum height. |
+| int32_t | 返回最大高度。 |
 
 ### OH_ArkUI_LayoutConstraint_GetMinHeight()
 
@@ -1659,7 +1659,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Con
 
 **描述：**
 
-Obtains the minimum height for a size constraint, in px.
+获取尺寸约束的最小高度，单位为px。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1669,13 +1669,13 @@ Obtains the minimum height for a size constraint, in px.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the minimum height. |
+| int32_t | 返回最小高度。 |
 
 ### OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth()
 
@@ -1685,7 +1685,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutCon
 
 **描述：**
 
-Obtains the width percentage reference for a size constraint, in px.
+获取尺寸约束的宽度百分比基准，单位为px。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1695,13 +1695,13 @@ Obtains the width percentage reference for a size constraint, in px.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the width percentage reference. |
+| int32_t | 返回宽度百分比基准。 |
 
 ### OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight()
 
@@ -1711,7 +1711,7 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutCo
 
 **描述：**
 
-Obtains the height percentage reference for a size constraint, in px.
+获取尺寸约束的高度百分比基准，单位为px。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1721,13 +1721,13 @@ Obtains the height percentage reference for a size constraint, in px.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | Returns the height percentage reference. |
+| int32_t | 返回高度百分比基准。 |
 
 ### OH_ArkUI_LayoutConstraint_SetMaxWidth()
 
@@ -1737,7 +1737,7 @@ void OH_ArkUI_LayoutConstraint_SetMaxWidth(ArkUI_LayoutConstraint* Constraint, i
 
 **描述：**
 
-Sets the maximum width.
+设置最大宽度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1747,8 +1747,8 @@ Sets the maximum width.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
-| int32_t value | Indicates the maximum width, in px. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
+| int32_t value | 表示最大宽度，单位为px。 |
 
 ### OH_ArkUI_LayoutConstraint_SetMinWidth()
 
@@ -1758,7 +1758,7 @@ void OH_ArkUI_LayoutConstraint_SetMinWidth(ArkUI_LayoutConstraint* Constraint, i
 
 **描述：**
 
-Sets the minimum width.
+设置最小宽度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1768,8 +1768,8 @@ Sets the minimum width.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
-| int32_t value | Indicates the minimum width, in px. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
+| int32_t value | 表示最小宽度，单位为px。 |
 
 ### OH_ArkUI_LayoutConstraint_SetMaxHeight()
 
@@ -1779,7 +1779,7 @@ void OH_ArkUI_LayoutConstraint_SetMaxHeight(ArkUI_LayoutConstraint* Constraint, 
 
 **描述：**
 
-Sets the maximum height.
+设置最大高度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1789,8 +1789,8 @@ Sets the maximum height.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
-| int32_t value | Indicates the maximum height, in px. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
+| int32_t value | 表示最大高度，单位为px。 |
 
 ### OH_ArkUI_LayoutConstraint_SetMinHeight()
 
@@ -1800,7 +1800,7 @@ void OH_ArkUI_LayoutConstraint_SetMinHeight(ArkUI_LayoutConstraint* Constraint, 
 
 **描述：**
 
-Sets the minimum height.
+设置最小高度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1810,8 +1810,8 @@ Sets the minimum height.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
-| int32_t value | Indicates the minimum height, in px. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
+| int32_t value | 表示最小高度，单位为px。 |
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth()
 
@@ -1821,7 +1821,7 @@ void OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth(ArkUI_LayoutConstraint* 
 
 **描述：**
 
-Sets the width percentage reference.
+设置宽度百分比基准。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1831,8 +1831,8 @@ Sets the width percentage reference.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
-| int32_t value | Indicates the width percentage reference, in px. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
+| int32_t value | 表示宽度百分比基准，单位为px。 |
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight()
 
@@ -1842,7 +1842,7 @@ void OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight(ArkUI_LayoutConstraint*
 
 **描述：**
 
-Sets the height percentage reference.
+设置高度百分比基准。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1852,8 +1852,8 @@ Sets the height percentage reference.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
-| int32_t value | Indicates the height percentage reference, in px. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | 表示指向尺寸约束的指针。 |
+| int32_t value | 表示高度百分比基准，单位为px。 |
 
 ### OH_ArkUI_DrawContext_GetCanvas()
 
@@ -1863,7 +1863,7 @@ void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)
 
 **描述：**
 
-Obtains the pointer to a canvas for drawing, which can be converted into the <b>OH_Drawing_Canvas</b> pointer in the <b>Drawing</b> module.
+获取用于绘制的画布指针，该指针可以转换为<b>Drawing</b>模块中的<b>OH_Drawing_Canvas</b>指针。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1873,13 +1873,13 @@ Obtains the pointer to a canvas for drawing, which can be converted into the <b>
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Indicates the pointer to the drawing context. |
+| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | 表示指向绘制上下文的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| void* | Returns the pointer to the canvas for drawing. |
+| void* | 返回指向绘制画布的指针。 |
 
 ### OH_ArkUI_DrawContext_GetSize()
 
@@ -1889,7 +1889,7 @@ ArkUI_IntSize OH_ArkUI_DrawContext_GetSize(ArkUI_DrawContext* context)
 
 **描述：**
 
-Obtains the size of a drawing area.
+获取绘制区域的大小。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1899,13 +1899,13 @@ Obtains the size of a drawing area.
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Indicates the pointer to the drawing context. |
+| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | 表示指向绘制上下文的指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md) | Returns the size of the drawing area. |
+| [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md) | 返回绘制区域的大小。 |
 
 ### OH_ArkUI_SwiperIndicator_Create()
 

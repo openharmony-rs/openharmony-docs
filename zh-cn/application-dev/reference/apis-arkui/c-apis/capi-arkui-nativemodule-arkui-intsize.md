@@ -6,7 +6,7 @@ typedef struct ArkUI_IntSize {...} ArkUI_IntSize
 
 ## 概述
 
-定义组件宽高。
+尺寸类型，用于描述组件的宽高。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

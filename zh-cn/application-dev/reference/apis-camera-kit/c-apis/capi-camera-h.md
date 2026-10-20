@@ -80,6 +80,7 @@
 | [Camera_HostDeviceType](#camera_hostdevicetype) | Camera_HostDeviceType | 远程设备类型枚举。 |
 | [Camera_FoldStatus](#camera_foldstatus) | Camera_FoldStatus | 折叠状态枚举。 |
 | [Camera_QualityPrioritization](#camera_qualityprioritization) | Camera_QualityPrioritization | 录像质量优先级的枚举。 |
+| [OH_Camera_AuxiliaryPhotoType](#oh_camera_auxiliaryphototype) | OH_Camera_AuxiliaryPhotoType | 辅助图类型的枚举。在用于拍摄皮肤健康评估的辅助图时，使用该枚举类型来指定检测目标。 |
 | [Camera_ConcurrentType](#camera_concurrenttype) | Camera_ConcurrentType | 相机并发状态的枚举。 |
 | [Camera_SystemPressureLevel](#camera_systempressurelevel) | Camera_SystemPressureLevel | 系统压力等级的枚举。 |
 | [Camera_PhotoQualityPrioritization](#camera_photoqualityprioritization) | Camera_PhotoQualityPrioritization | 拍照画质优先策略枚举。 |
@@ -127,6 +128,8 @@ enum Camera_ErrorCode
 | CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST = 7400113 |  |
 | CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务异常。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
 | CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED = 7400114 |  |
+| CAMERA_ERROR_UNSUPPORTED_MULTI_CAMERA_COMBINATION = 7400115 |  |
+| CAMERA_ERROR_PARAM_OUT_OF_RANGE = 7400116 |  |
 
 ### Camera_Status
 
@@ -715,6 +718,25 @@ enum Camera_QualityPrioritization
 | -- | -- |
 | HIGH_QUALITY = 0 | 高录像质量。 |
 | POWER_BALANCE = 1 | 功耗平衡录像质量。 |
+
+### OH_Camera_AuxiliaryPhotoType
+
+```c
+enum OH_Camera_AuxiliaryPhotoType
+```
+
+**描述：**
+
+辅助图类型的枚举。在用于拍摄皮肤健康评估的辅助图时，使用该枚举类型来指定检测目标。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**起始版本：** 26.0.1
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_AUXILIARY_PHOTO_TYPE_OXYGEN = 0 |  |
+| OH_CAMERA_AUXILIARY_PHOTO_TYPE_PIGMENTATION = 1 |  |
 
 ### Camera_ConcurrentType
 

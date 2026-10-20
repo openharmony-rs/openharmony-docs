@@ -990,7 +990,7 @@ Creates a text line spacing option object. After use, call [OH_ArkUI_NativeModul
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.0.1
 
 **Resource release**: OH_ArkUI_NativeModule_LineSpacingOptions_Destroy {return}
 
@@ -1012,7 +1012,7 @@ Destroys a text line spacing option object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -1032,7 +1032,7 @@ Sets the **onlyBetweenLines** parameter of the text line spacing options. When s
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.0.1
 
 **Parameters**:
 
@@ -1059,7 +1059,7 @@ Obtains the **onlyBetweenLines** parameter of the text line spacing options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.0.1
 
 **Parameters**:
 

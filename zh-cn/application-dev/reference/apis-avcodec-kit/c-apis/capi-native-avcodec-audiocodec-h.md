@@ -473,7 +473,7 @@ OH_AVErrCode OH_AudioCodec_SetDecryptionConfig(OH_AVCodec *codec, MediaKeySessio
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：OH_AVCodec实例为nullptr或无效，mediaKeySystemInfo实例为nullptr或无效。<br>[AV_ERR_INVALID_STATE](capi-native-averrors-h.md#oh_averrcode)：编解码器服务不可用。<br>[AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode)：请求内存失败。 |
+| OH_AVErrCode | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：OH_AVCodec实例为nullptr或无效，mediaKeySession实例为nullptr或无效。<br>[AV_ERR_INVALID_STATE](capi-native-averrors-h.md#oh_averrcode)：编解码器服务不可用。<br>[AV_ERR_NO_MEMORY](capi-native-averrors-h.md#oh_averrcode)：请求内存失败。 |
 
 ### OH_AudioCodec_QueryInputBuffer()
 

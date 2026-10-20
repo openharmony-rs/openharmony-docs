@@ -59,7 +59,7 @@ enum ArkUI_ListItemAlignment
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | The list items are packed toward the start edge of the **List** component along the cross axis. |
+| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | ListItem在List中，交叉轴方向首部对齐。 |
 | ARKUI_LIST_ITEM_ALIGNMENT_CENTER | ListItem在List中，交叉轴方向居中对齐。 |
 | ARKUI_LIST_ITEM_ALIGNMENT_END | ListItem在List中，交叉轴方向尾部对齐。 |
 
@@ -79,10 +79,10 @@ enum ArkUI_StickyStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_STICKY_STYLE_NONE = 0 | header and footer of ListItemGroup are not pinned to the top and bottom, respectively. |
-| ARKUI_STICKY_STYLE_HEADER = 1 | header of ListItemGroup is pinned to the top, and footer is not pinned to the bottom. |
-| ARKUI_STICKY_STYLE_FOOTER = 2 | header of ListItemGroup is not pinned to the top, and footer is pinned to the bottom. |
-| ARKUI_STICKY_STYLE_BOTH = 3 | header of ListItemGroup is pinned to the top, and footer is pinned to the bottom. |
+| ARKUI_STICKY_STYLE_NONE = 0 | ListItemGroup的header不吸顶，footer不吸底。 |
+| ARKUI_STICKY_STYLE_HEADER = 1 | ListItemGroup的header吸顶，footer不吸底。 |
+| ARKUI_STICKY_STYLE_FOOTER = 2 | ListItemGroup的header不吸顶，footer吸底。 |
+| ARKUI_STICKY_STYLE_BOTH = 3 | ListItemGroup的header吸顶，footer吸底。 |
 
 ### ArkUI_ListItemGroupArea
 
@@ -101,7 +101,7 @@ enum ArkUI_ListItemGroupArea
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0 | ListItemGroup区域外。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_NONE | Area without the header, footer, and ListItem in the **ListItemGroup** component. |
+| ARKUI_LIST_ITEM_SWIPE_AREA_NONE | ListItemGroup没有header、footer和ListItem时的区域。 |
 | ARKUI_LIST_ITEM_SWIPE_AREA_ITEM | ListItemGroup的ListItem区域。 |
 | ARKUI_LIST_ITEM_SWIPE_AREA_HEADER | ListItemGroup的header区域。 |
 | ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER | ListItemGroup的footer区域。 |

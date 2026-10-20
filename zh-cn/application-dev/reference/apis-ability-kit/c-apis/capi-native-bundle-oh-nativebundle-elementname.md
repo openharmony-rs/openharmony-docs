@@ -22,8 +22,8 @@ elementName信息。
 
 | 名称 | 描述 |
 | -- | -- |
-| char* bundleName | 应用包名。 |
-| char* moduleName | 模块名称。 |
-| char* abilityName | 组件名。 |
+| char* bundleName | 应用包名。<br>**起始版本：** 13 |
+| char* moduleName | 模块名称。<br>**起始版本：** 13 |
+| char* abilityName | Ability名称。<br>**起始版本：** 13 |
 
 

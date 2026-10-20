@@ -4,6 +4,8 @@
 
 声明设备管理模块错误码信息。
 
+**引用文件：** <distributedhardware/device_manager/oh_device_manager_err_code.h>
+
 **库：** libdevicemanager_ndk.so
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager

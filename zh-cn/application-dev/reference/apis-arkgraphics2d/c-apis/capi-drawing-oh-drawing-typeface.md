@@ -6,7 +6,7 @@ typedef struct OH_Drawing_Typeface OH_Drawing_Typeface
 
 ## 概述
 
-用于描述字形。
+用于描述字体。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

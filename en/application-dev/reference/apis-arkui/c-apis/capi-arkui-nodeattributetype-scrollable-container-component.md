@@ -382,6 +382,18 @@ Obtains the current scroll state. This attribute can be obtained as required thr
 
 **Since**: 26.2.0
 
+### NODE_SCROLL_ENABLE_SCROLL_WITH_KEYBOARD
+
+```c
+NODE_SCROLL_ENABLE_SCROLL_WITH_KEYBOARD = 1002031
+```
+
+**Description**
+
+Sets whether to enable scrolling with keyboard arrow keys. When enabled, the component will scroll in response to arrow key presses when focused but not in active focus state. This attribute can be set, reset, and obtained as required through APIs. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable scrolling with keyboard arrow keys, 0: no, 1: yes. The default value is 1. </li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether to enable scrolling with keyboard arrow keys, 0: no, 1: yes.</li> </ul>
+
+**Since**: 26.2.0
+
 ### NODE_LIST_DIRECTION
 
 ```c
@@ -510,7 +522,7 @@ NODE_LIST_SCROLL_TO_INDEX_IN_GROUP = 1003010
 
 **Description**
 
-Scrolls to the item with the specified index in the specified list item group. When **smooth** is set to **true**, all passed items are loaded and counted in layout calculation. This may result in performance issues if a large number of items are involved. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: index of the target list item group in the current list.</li> <li>.value[1].i32: index of the target list item in the list item group.</li> <li>.value[2]?.i32: whether to enable the smooth animation for scrolling to the item with the specified index. The value <b>1</b> means to enable the animation, and <b>0</b> means the opposite. The default value is <b>0</b>.</li> <li>.value[3]?.i32: how the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment). The default value is <b>ARKUI_SCROLL_ALIGNMENT_START</b>.</li> </ul>
+Scrolls to the item with the specified index in the specified ListItemGroup. When **smooth** is set to **true**, all passed items are loaded and counted in layout calculation. This may result in performance issues if a large number of items are involved. <br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: index of the target list item group in the current list.</li> <li>.value[1].i32: index of the target list item in the list item group.</li> <li>.value[2]?.i32: whether to enable the smooth animation for scrolling to the item with the specified index. The value <b>1</b> means to enable the animation, and <b>0</b> means the opposite. The default value is <b>0</b>.</li> <li>.value[3]?.i32: how the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment). The default value is <b>ARKUI_SCROLL_ALIGNMENT_START</b>.</li> </ul>
 
 **Since**: 15
 

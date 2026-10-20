@@ -2,7 +2,7 @@
 
 ## 概述
 
-Defines the layout-related types for the native module.
+定义布局相关的枚举和接口。
 
 **库：** libace_ndk.z.so
 

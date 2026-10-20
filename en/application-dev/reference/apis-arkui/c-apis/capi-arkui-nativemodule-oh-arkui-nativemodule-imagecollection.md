@@ -6,7 +6,7 @@ typedef struct OH_ArkUI_NativeModule_ImageCollection OH_ArkUI_NativeModule_Image
 
 ## Overview
 
-ArkUI image acquisition result structure declaration
+Declares the ArkUI image acquisition result structure.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

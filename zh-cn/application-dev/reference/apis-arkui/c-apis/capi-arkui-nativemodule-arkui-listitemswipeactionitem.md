@@ -6,7 +6,7 @@ typedef struct ArkUI_ListItemSwipeActionItem ArkUI_ListItemSwipeActionItem
 
 ## 概述
 
-Defines the configuration information of an item in the **ListItemSwipeActionOption**.
+定义列表项侧滑操作项的配置信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

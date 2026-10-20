@@ -2,7 +2,7 @@
 
 ## Overview
 
-Provides shared scroll-related enum definitions for <b>NativeNode</b> APIs.
+Defines the enumerations related to the **Scroll** component, such as the scrolling direction, edge effect, scrollbar state, content clipping, nested scrolling, scrolling state, and scrolling source, which are used to configure and listen for the behavior of the **Scroll** component and related scrollable components.
 
 **Library**: libace_ndk.z.so
 

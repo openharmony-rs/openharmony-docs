@@ -103,7 +103,7 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_CreateInput(OH_AudioAccessoryMana
 
 **起始版本：** 26.0.0
 
-**资源释放：** native_audio_accessory_manager/OH_AudioAccessoryManager_Destroy {outOwnedAccessory}
+**资源释放：** 如果音频配件已连接，应先调用[OH_AudioAccessoryManager_Disconnected](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_disconnected)断开连接， 再调用[OH_AudioAccessoryManager_Destroy](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_destroy)销毁音频配件句柄。 销毁成功后，音频配件句柄失效，不得再次使用。
 
 **参数：**
 

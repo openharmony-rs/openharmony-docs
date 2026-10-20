@@ -22,7 +22,7 @@ struct OH_HiDebug_ProfilingResult {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_HiDebug_ResourceType](capi-hidebug-type-h.md#oh_hidebug_resourcetype) resourceType |  |
-| const char* filePath |  |
+| [OH_HiDebug_ResourceType](capi-hidebug-type-h.md#oh_hidebug_resourcetype) resourceType | Profiled resource type.<br>**起始版本：** 24 |
+| const char* filePath | 资源采集结果文件路径，如果采集失败则结果文件路径指针为空。<br>**起始版本：** 24 |
 
 

@@ -6,7 +6,7 @@ typedef struct ArkUI_IntOffset {...} ArkUI_IntOffset
 
 ## 概述
 
-定义组件位置。
+偏移量，用于描述当前组件相对于父组件的位置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -52,7 +52,7 @@
 | [OH_Drawing_ErrorCode OH_Drawing_FontMeasureText(const OH_Drawing_Font* font, const void* text, size_t byteLength, OH_Drawing_TextEncoding encoding, OH_Drawing_Rect* bounds, float* textWidth)](#oh_drawing_fontmeasuretext) | 用于获取文本的宽度和边界框。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithFallback(const OH_Drawing_Font *font, const void *text, uint32_t byteLength, OH_Drawing_TextEncoding encoding, OH_Drawing_Rect *bounds, float *textWidth)](#oh_drawing_fontmeasuretextwithfallback) | 获取文本的宽度和边界框，支持字体回退。 若当前字型的字体不支持某些字符时，会自动从系统中查找回退字体。如果未找到任何回退字体，则仍使用当前字型的字体。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPen(const OH_Drawing_Font* font, const void* text, size_t byteLength, OH_Drawing_TextEncoding encoding, const OH_Drawing_Brush* brush, const OH_Drawing_Pen* pen, OH_Drawing_Rect* bounds, float* textWidth)](#oh_drawing_fontmeasuretextwithbrushorpen) | 使用画刷或画笔获取文本的宽度和边界框。 |
-| [OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback(const OH_Drawing_Font *font, const void *text, uint32_t byteLength, OH_Drawing_TextEncoding encoding, const OH_Drawing_Brush *brush, const OH_Drawing_Pen *pen, OH_Drawing_Rect *bounds, float *textWidth)](#oh_drawing_fontmeasuretextwithbrushorpenwithfallback) | 使用画刷或画笔获取文本的宽度和边界框，支持字体回退。 若当前字型的字体不支持某些字符时，会自动从系统中查找回退字体。如果未找到任何回退字体，则仍使用当前字型的字体。 |
+| [OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback(const OH_Drawing_Font *font, const void *text, uint32_t byteLength, OH_Drawing_TextEncoding encoding, const OH_Drawing_Brush *brush, const OH_Drawing_Pen *pen, OH_Drawing_Rect *bounds, float *textWidth)](#oh_drawing_fontmeasuretextwithbrushorpenwithfallback) | 使用画刷或画笔获取文本的宽度和边界框，支持字体回退。 若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体， 并使用回退字体测量该字符宽度；若未找到回退字体，则仍使用当前字型的字体进行测量。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontGetWidthsBounds(const OH_Drawing_Font* font, const uint16_t* glyphs, int count, const OH_Drawing_Brush* brush, const OH_Drawing_Pen* pen, float* widths, OH_Drawing_Array* bounds)](#oh_drawing_fontgetwidthsbounds) | 用于获取字形数组中每个字形的宽度和边界框。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontGetPos(const OH_Drawing_Font* font, const uint16_t* glyphs, int count, const OH_Drawing_Point* origin, OH_Drawing_Point2D* points)](#oh_drawing_fontgetpos) | 用于从指定的原点开始，获取每个字形的相对位置。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontGetSpacing(const OH_Drawing_Font* font, float* spacing)](#oh_drawing_fontgetspacing) | 用于获取推荐的字型行间距。 |
@@ -660,7 +660,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback(const 
 
 **描述：**
 
-使用画刷或画笔获取文本的宽度和边界框，支持字体回退。 若当前字型的字体不支持某些字符时，会自动从系统中查找回退字体。如果未找到任何回退字体，则仍使用当前字型的字体。
+使用画刷或画笔获取文本的宽度和边界框，支持字体回退。 若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体， 并使用回退字体测量该字符宽度；若未找到回退字体，则仍使用当前字型的字体进行测量。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -672,7 +672,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback(const 
 | -- | -- |
 | [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md) *font | [in] 指向字型对象OH_Drawing_Font的指针。 |
 | const void *text | [in] 指向文本的指针。 |
-| uint32_t byteLength | [in] 文本长度，单位为字节。 |
+| uint32_t byteLength | [in]  文本长度，单位为字节。如果此字节长度大于text字符串的字节长度，会发生未定义行为。 |
 | [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | [in] 文本编码类型。 |
 | [const OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) *brush | [in] 指向画刷对象OH_Drawing_Brush的指针。 |
 | [const OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) *pen | [in] 指向画笔对象OH_Drawing_Pen的指针。 |

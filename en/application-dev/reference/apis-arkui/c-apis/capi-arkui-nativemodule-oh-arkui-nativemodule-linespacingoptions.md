@@ -10,7 +10,7 @@ Defines a text line spacing option object, which is used to set whether the text
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.0.1
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
