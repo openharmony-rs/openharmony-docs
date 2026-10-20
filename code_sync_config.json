@@ -15731,9 +15731,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/hello.cpp",
 				"functions":[
 					{
-						"end_line":299,
+						"end_line":296,
 						"name":"parse_and_store_webtags",
-						"start_line":250
+						"start_line":247
 					},
 					{
 						"end_line":245,
@@ -15892,7 +15892,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/cpp/hello.cpp",
 				"functions":[
 					{
-						"end_line":474,
+						"end_line":475,
 						"name":"the_node_api_layer_code_for_the_data_channel_between_the_application_side_and_the_frontend_page",
 						"start_line":16
 					}
