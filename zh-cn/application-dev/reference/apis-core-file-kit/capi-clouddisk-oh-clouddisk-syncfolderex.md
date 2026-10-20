@@ -1,7 +1,7 @@
 # OH_CloudDisk_SyncFolderEx
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @oyangwei_814916-->
+<!--Owner: @yangwei_814916-->
 <!--Designer: @hwzhangchuang-->
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @jinqiuheng-->
