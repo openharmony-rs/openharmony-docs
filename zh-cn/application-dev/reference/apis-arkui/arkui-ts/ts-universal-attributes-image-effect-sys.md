@@ -393,7 +393,7 @@ struct Index {
           const nextIndex: number = (index + 1) % this.fromNames.length;
           // 先将流光定位到本组对称方向起点，再动画流动到终点
           this.current = this.fromPositions[index];
-          this.getUIContext()?.animateTo({ curve: curves.springMotion(), duration: 3000 }, () => {
+          this.getUIContext()?.animateTo({ curve: curves.springMotion(1), duration: 3000 }, () => {
             this.current = this.toPositions[index];
             this.label = `${this.fromNames[index]} - ${this.toNames[index]}`;
             this.hopIndex = nextIndex;
