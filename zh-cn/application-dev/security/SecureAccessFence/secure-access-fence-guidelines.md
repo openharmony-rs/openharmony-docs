@@ -53,7 +53,7 @@ SecureAccessFence的工作流程如下：
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/request_tool_ticket.ets) -->
    
    ``` TypeScript
-   import { abilityToolAccessCtrl } from '@ohos.abilityToolAccessCtrl';
+   import { abilityToolAccessCtrl } from '@kit.abilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
