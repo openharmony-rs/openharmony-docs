@@ -127,17 +127,15 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 
 ## 实践案例
 
-### PC设备应用从后台恢复至前台
+### 恢复应用主窗口至前台（PC/2in1）
 
 在PC/2in1设备上，应用主窗口进入后台状态后，可通过调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口将主窗口恢复到前台显示，并恢复到进入后台状态之前的大小和位置。若主窗口已处于前台状态，调用该接口仅抬升主窗口层级。
 
-对于已将应用图标添加到状态栏的应用，可通过监听状态栏图标点击事件，在用户点击状态栏图标时调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口恢复应用主窗口。应用如何接入状态栏请参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/doccenter-capabilities/statusbar-extension-guide)
+对于已将应用图标添加到状态栏的应用，可通过监听状态栏图标点击事件，在用户点击状态栏图标时调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口恢复应用主窗口。应用接入状态栏的详细操作请参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/doccenter-capabilities/statusbar-extension-guide)。
 
 > **说明：**
 >
 > - [restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口仅在PC/2in1设备、Tablet设备的[电脑模式](window-terminology.md#pc-mode电脑模式)下可正常调用，在其他设备和其他模式下调用会返回801错误码。
->
-> - 不同设备窗口进入后台状态与UIAbility生命周期的关系，请参考[不同设备UIAbility生命周期的差异化行为](window-lifecycle.md#不同设备UIAbility生命周期的差异化行为)。
 
 示例代码如下：
 
@@ -207,11 +205,11 @@ struct Index {
 }
 ```
 
-### 如何设置PC设备应用支持在锁屏下启动
+### 设置应用支持锁屏下启动（PC/2in1）
 
-在PC设备上，如果应用需要在锁屏状态下被启动，需要申请权限`ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN`。
+在PC/2in1设备上，如果应用需要在锁屏状态下被启动，需要申请权限`ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN`。
 
-该权限允许应用在PC设备的锁屏状态下被启动至前台，设备解锁后应用窗口保持前台状态。权限声明需要在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明，详细声明方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
+该权限允许应用在PC/2in1设备的锁屏状态下被启动至前台，设备解锁后应用窗口保持前台状态。权限声明需要在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明，详细声明方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
 > **说明：**
 > 
@@ -223,9 +221,9 @@ struct Index {
 > 
 > - 该权限的详细说明请参考[应用权限列表](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)。
 
-示例代码如下所示：
+示例代码如下：
 
-```json5
+``` JSON5
 {
   "module": {
     // ···
