@@ -103,6 +103,10 @@
 
 6. 连接远端设备，建立端口通道。其中chosenDeviceAddr为从[发起星闪扫描](nearlink-device-discovery-guide.md#发起星闪扫描)结果中选择的设备地址，UUID需与步骤3中注册的保持一致。
 
+    > **说明：**
+    >
+    > 连接参数中可通过frameType字段指定无线帧类型，默认值为FRAME_TYPE_1（基础帧）。FRAME_TYPE_4为扩展覆盖帧，可提升连接覆盖范围；使用前需调用[isFrameType4Supported](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)查询当前设备是否支持，不支持时请使用默认值。
+
     <!-- @[datatransfer_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
     
     ``` TypeScript

@@ -22,6 +22,13 @@
 
 对合作设备集合的管理。合作设备集合是由一组合作设备成员组成的、提供特定服务的统一整体。
 
+## F
+
+### Frame Type；帧类型
+
+星闪无线帧的传输类型。基础帧（FRAME_TYPE_1）为默认帧类型；扩展覆盖帧（FRAME_TYPE_4）可提升覆盖范围，需要设备支持。
+
+
 ## S
 
 ### SparkLink Service Access Protocol (SSAP)；星闪服务交互协议
