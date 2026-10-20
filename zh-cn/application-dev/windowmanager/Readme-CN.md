@@ -22,9 +22,7 @@
     - [自由窗口简介](freeform-window-overview.md)
     - [应用适配自由窗口](application-adaptation-freeform-window.md)
 - 窗口基础能力<!--window-basic-capabilities-->
-  - 窗口生命周期与实践案例<!--lifecycle-->
-    - [窗口生命周期](window-lifecycle.md)
-    - [窗口生命周期实践案例](window-lifecycle-practical-case.md)
+  - [窗口生命周期](window-lifecycle.md)
   - 窗口旋转与实践案例<!--rotation-->
     - [窗口旋转](window-rotation.md)
     - [窗口旋转实践案例](window-rotation-practical-case.md)

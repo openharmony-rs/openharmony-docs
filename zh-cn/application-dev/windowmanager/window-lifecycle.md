@@ -95,8 +95,6 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 > - 在支持[电脑模式](window-terminology.md#pc-mode电脑模式)的Phone/Tablet类型设备上，开启电脑模式并处于解锁状态时：
 >   - 针对不支持在phone设备上运行且支持在PC/2in1设备上运行的应用，窗口从前台进入后台状态，不会驱动UIAbility为后台状态。
 >   - 其他应用窗口从前台进入后台状态，会驱动UIAbility为后台状态。
-> 
-> - [电脑模式](window-terminology.md#pc-mode电脑模式)与[自由多窗模式](window-terminology.md#free-windows自由多窗模式)是两种独立的模式。切换电脑模式会关闭大部分已启动应用，具体未关闭的应用白名单请参考[应用白名单](https://consumer.huawei.com/cn/support/content/zh-cn16095616/)。切换自由多窗模式不会关闭已启动应用。
 
 ## 管理辅助窗口的生命周期
 
@@ -126,3 +124,116 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 | 全局悬浮窗 | 不跟随主窗口显示、隐藏。<br>跟随主窗口销毁。 |
 | 画中画 | 不跟随主窗口显示、隐藏。<br>跟随主窗口销毁。 |
 | 闪控球 | 不跟随主窗口显示、隐藏。<br>跟随主窗口销毁。 |
+
+## 实践案例
+
+### PC设备应用从后台恢复至前台
+
+在PC/2in1设备上，应用主窗口进入后台状态后，可通过调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口将主窗口恢复到前台显示，并恢复到进入后台状态之前的大小和位置。若主窗口已处于前台状态，调用该接口仅抬升主窗口层级。
+
+对于已将应用图标添加到状态栏的应用，可通过监听状态栏图标点击事件，在用户点击状态栏图标时调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口恢复应用主窗口。应用如何接入状态栏请参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/doccenter-capabilities/statusbar-extension-guide)
+
+> **说明：**
+>
+> - [restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口仅在PC/2in1设备、Tablet设备的[电脑模式](window-terminology.md#pc-mode电脑模式)下可正常调用，在其他设备和其他模式下调用会返回801错误码。
+>
+> - 不同设备窗口进入后台状态与UIAbility生命周期的关系，请参考[不同设备UIAbility生命周期的差异化行为](window-lifecycle.md#不同设备UIAbility生命周期的差异化行为)。
+
+示例代码如下：
+
+<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowRestoreSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import hilog from '@ohos.hilog';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const DOMAIN: number = 0xFF00;
+const TAG: string = '[Sample_WindowRestore]';
+
+@Entry
+@Component
+struct Index {
+  mainWindow: window.Window | undefined;
+
+  aboutToAppear() {
+    // 在 EntryAbility.ets 中通过 windowStage.getMainWindowSync() 保存主窗
+    this.mainWindow = AppStorage.get('mainWindow_Restore') as window.Window;
+  }
+
+  minimizeAndRestore() {
+    if (!this.mainWindow) {
+      hilog.error(DOMAIN, TAG, '%{public}s', 'Main window is not available.');
+      return;
+    }
+    try {
+      // 调用minimize()接口，使主窗进入后台状态
+      this.mainWindow.minimize();
+      // 设置延时函数，延时5秒钟后对主窗进行恢复
+      setTimeout(() => {
+        // 调用restore()接口，将主窗口恢复到前台显示
+        this.mainWindow?.restore().then(() => {
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in restoring the window.');
+        }).catch((err: BusinessError) => {
+          hilog.error(DOMAIN, TAG, 'Failed to restore the window. Code: %{public}s, message: %{public}s',
+            `${err.code}`, `${err.message}`);
+        });
+      }, 5000);
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      hilog.error(DOMAIN, TAG, 'Failed to minimize and restore the window. Code: %{public}s, message: %{public}s',
+        `${err.code}`, `${err.message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Text($r('app.string.minimize_text'))
+        .id('minimizeText')
+        .fontSize(17)
+      Button($r('app.string.minimize_button'))
+        .id('minimizeButton')
+        .onClick(() => {
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Click: Minimize and restore');
+          this.minimizeAndRestore();
+        })
+        .margin({ top: 20 })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 如何设置PC设备应用支持在锁屏下启动
+
+在PC设备上，如果应用需要在锁屏状态下被启动，需要申请权限`ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN`。
+
+该权限允许应用在PC设备的锁屏状态下被启动至前台，设备解锁后应用窗口保持前台状态。权限声明需要在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明，详细声明方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
+
+> **说明：**
+> 
+> - `ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN`为normal级别权限，授权方式为系统授权，应用安装后即获得授权，无需用户手动确认。
+> 
+> - 该权限仅支持在PC/2in1设备上申请，起始版本为API version 21。在其他设备类型上申请不生效。
+> 
+> - 在开发跨设备应用时，建议通过[canIUse()](../reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持该权限所对应的系统能力，避免在不支持的设备上产生非预期行为。
+> 
+> - 该权限的详细说明请参考[应用权限列表](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)。
+
+示例代码如下所示：
+
+```json5
+{
+  "module": {
+    // ···
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN"
+      }
+    ]
+  }
+}
+```
