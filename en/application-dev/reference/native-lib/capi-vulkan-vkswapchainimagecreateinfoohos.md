@@ -6,6 +6,7 @@
 <!--Designer: @ext4FAT1-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3d4a9824857ce59e497945f30834304869ed7256 translatedAt=2026-10-09T12:50:22.821Z pushedAt=2026-10-10T10:10:12.447Z -->
 
 ```c
 typedef struct VkSwapchainImageCreateInfoOHOS {...} VkSwapchainImageCreateInfoOHOS
@@ -16,6 +17,8 @@ typedef struct VkSwapchainImageCreateInfoOHOS {...} VkSwapchainImageCreateInfoOH
 Describes the parameters required for creating an image.
 
 **Since**: 10
+
+**Deprecated since:** 23
 
 **Related module**: [Vulkan](capi-vulkan.md)
 

@@ -1,12 +1,11 @@
 # rich_editor.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @carnivore233-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=ed1823b8bfef96231dc44d6fdc52b5591476e06b translatedAt=2026-08-11T09:10:07.134Z pushedAt=2026-08-12T06:03:00.888Z -->
+<!-- md-trans-meta sourceCommit=42d0eec2f65c8e6f25dbff61acd6e5de2697603f translatedAt=2026-10-15T10:34:48.898Z pushedAt=2026-10-16T01:44:49.281Z -->
 
 ## Overview
 
@@ -88,7 +87,7 @@ enum OH_ArkUI_TextEditorSpanType
 
 **Description**
 
-Enumerates the span types of a custom text selection menu, which are used to identify the span type of the text selection menu in the text editor. Different span types correspond to different content structures, affecting the display and interaction behavior of the custom menu. For example, the **TEXT** type is used when the user selects only text content, the **MIXED** type is used when the selection contains mixed content such as text and images, and the **BUILDER** type is used when a custom menu item layout is required.
+Enumerates the span types of a custom text selection menu, which are used to identify the span type of the text selection menu in the text editor. Different span types correspond to different content structures, affecting the display and interaction behavior of the custom menu. For example, the **OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT** type is used when the user selects only text content, the **OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED** type is used when the selection contains mixed content such as text and images, and the **OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER** type is used when a custom menu item layout is required.
 
 **Since:** 24
 
@@ -135,6 +134,7 @@ Enumerates text menu types, which are used to distinguish different types of pop
 | -- | -- |
 | OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0 | Text selection menu. |
 | OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1 | Preview menu. |
+
 
 ## Function Description
 
@@ -317,3 +317,5 @@ Destroys the text selection menu option object of the text editor.
 | Name | Description |
 | -- | -- |
 | [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md)* options | Pointer to the [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md) object. |
+
+

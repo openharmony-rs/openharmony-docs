@@ -5,6 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=34139b640e7f5cff7ecd77a979f553b6821e37f2 translatedAt=2026-10-15T10:46:29.888Z pushedAt=2026-10-16T03:15:37.202Z -->
 
 > **NOTE**
 >
@@ -94,7 +95,7 @@ The provided **targetId** is invalid, or the node corresponding to the **targetI
 
 Check whether the node corresponding to the provided **targetId** exists. You can query the node using the [getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12) API.
 
-## 103305 Node Not Mounted
+## 103305 Node Specified by targetId Not Mounted on the Component Tree
 
 **Error Message**
 
@@ -102,17 +103,17 @@ The node of targetId is not in the component tree.
 
 **Description**
 
-This error code is reported when the node corresponding to the provided **targetId** is not mounted in the component tree.
+This error code is reported when the node specified by **targetId** is not mounted on the component tree.
 
 **Possible Causes**
 
-The node with the specified **targetId** is not mounted in the component tree.
+The node specified by **targetId** is not mounted on the component tree.
 
 **Solution**
 
 1. Check whether the node corresponding to the provided **targetId** exists. You can query the node using the [getFrameNodeById()](./arkts-apis-uicontext-uicontext.md#getframenodebyid12) API.
 
-2. Check whether the node corresponding to the provided **targetId** has been mounted to the main node tree. You can do so using the [isAttached()](./js-apis-arkui-frameNode.md#isattached12) API of the content node.
+2. Confirm that the node specified by **targetId** is mounted on the main component tree. You can call the [isAttached()](./js-apis-arkui-frameNode.md#isattached12) API of the content node to check whether it is mounted on the main component tree.
 
 ## 103307 Failed to Open the Overlay Due to a System Pop-up Window
 

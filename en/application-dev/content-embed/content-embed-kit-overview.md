@@ -6,11 +6,11 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=3dce3a31fe19adeb78e2cca708deb888a4bde269 translatedAt=2026-10-13T12:43:41.007Z pushedAt=2026-10-13T12:44:01.560Z -->
 
 Starting from API version 24, Content Embed Kit provides inter-application document embedding and collaborative editing capabilities. It helps users embed documents in other formats into the current application's document and enables cross-application document editing, enriching the application editing experience.
 
 In Content Embed Kit, applications are classified by the responsibilities they assume as follows:
-
 - Client application: An end-user application that embeds documents from other applications. This application implements service logic by calling [OE](content-embed-kit-terminology.md#oe) framework APIs, such as embedding external documents, displaying document snapshots, and starting an OE server application on demand to trigger document editing operations. For details, see [Client Application Development](content-embed-client-guidelines.md).
 - Server application: An end-user application that provides client applications with embedding capabilities for documents in specific formats. This application must register [OE Extension](content-embed-kit-terminology.md#oe-extension) information with the system. At runtime, the system dynamically starts the application based on requests from OE client applications to respond to document embedding and editing operations. For details, see [Server Application Development](content-embed-server-guidelines.md).
 
@@ -31,8 +31,8 @@ In Content Embed Kit, applications are classified by the responsibilities they a
 
 Cross-application collaboration: Breaks down barriers between applications and enables seamless embedding and editing of different types of documents.
 
+<!--RP1--><!--RP1End-->
+
 ## Relationship with Related Kits
 
 [Ability Kit](../application-models/abilitykit-overview.md): Content Embed Kit internally depends on the Extension base capabilities provided by Ability Kit and interacts with Ability Kit for lifecycle scheduling.
-
-<!--RP1--><!--RP1End-->

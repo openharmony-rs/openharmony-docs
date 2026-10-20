@@ -177,7 +177,7 @@ If **doFinal** fails, the tag verification fails because the input value of **ta
 2. If **iv** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
 3. If **aad** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
 4. If **ciphertext** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails. 
+5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
 
 **Solution**
 
@@ -260,7 +260,7 @@ If **doFinal** fails, the tag verification fails because the input value of **ta
 
 Ensure that the **key**, **iv**, and **aad** parameters for encryption and decryption are the same, and the **ciphertext** and **tag** input during decryption are correct.
 
-### Failed‧to‧Call‧doFinal‧During‧Decryption‧Using‧SM4-ECB/CBC
+### Failed to Call doFinal During Decryption Using SM4-ECB or SM4-CBC
 
 **Symptom**
 

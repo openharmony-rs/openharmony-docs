@@ -1,12 +1,14 @@
 # Screen Lock Management Error Codes
 
+<!-- md-trans-meta sourceCommit=5b482268eef56be40a60e689f397773ca9864260 translatedAt=2026-10-09T12:02:17.368Z pushedAt=2026-10-10T05:51:23.603Z -->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 ## 13200002 Screen Lock Management Service Is Abnormal
 
-**Error Message**
+**Error Message** 
 
 The screenlock management service is abnormal.
 
@@ -16,10 +18,8 @@ This error code is reported when the screen lock management service is not worki
 
 **Possible Causes**
 
- 
 1. The service stops running due to unknown errors and is not automatically restored.
 2. The service is running but does not respond due to unknown errors.
-
 **Solution**
 
 Run the **ps -ef** command to check whether the service is running.
@@ -29,9 +29,9 @@ Run the **ps -ef** command to check whether the service is running.
 
 ## 13200003 Invalid Use
 
-**Error Message**
+**Error Message** 
 
-illegal use.
+Invalid use.
 
 **Description**
 

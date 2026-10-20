@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:57:09.265Z pushedAt=2026-10-10T02:40:32.571Z -->
 
-Since API version 23, the algorithm library supports obtaining a public key based on a private key.
+Starting from API version 23, the algorithm library supports obtaining a public key object from a private key object.
 
 The following uses RSA as an example to describe how to obtain a public key based on a private key.
 
@@ -16,7 +17,7 @@ The following uses RSA as an example to describe how to obtain a public key base
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
 
-For details about the algorithm specifications, see [RSA](crypto-asym-key-generation-conversion-spec.md#rsa).
+For details about the algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa).
 
 ## How to Develop
 
@@ -118,3 +119,4 @@ OH_Crypto_ErrCode doTestGetPubkeyFromPrikey()
     return ret;
 }
 ```
+

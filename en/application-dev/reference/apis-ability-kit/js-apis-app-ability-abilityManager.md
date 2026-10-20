@@ -4,14 +4,15 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025 -->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=8655fb8063e6fdd51b952cca96b6d4464851a91d translatedAt=2026-10-09T10:45:33.601Z pushedAt=2026-10-12T02:21:47.401Z -->
 
 The AbilityManager module provides APIs for obtaining ability information and running status information.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.  
 
 ## Modules to Import
 
@@ -138,6 +139,37 @@ export default class EntryAbility extends EmbeddableUIAbility {
 }
 ```
 
+## abilityManager.isEmbeddedUIExtensionSupported
+
+isEmbeddedUIExtensionSupported(): boolean
+
+Checks whether [EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md) can be used on the current device.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| boolean | Whether the current device supports [EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md). The value **true** indicates that the current device supports it, and **false** indicates the opposite. |
+
+**Example**
+
+```ts
+import { abilityManager, UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    let isSupported: boolean = abilityManager.isEmbeddedUIExtensionSupported();
+    console.info(`isEmbeddedUIExtensionSupported is ${isSupported}`);
+  }
+}
+```
+
 ## AbilityRunningInfo<sup>14+</sup>
 
 type AbilityRunningInfo = _AbilityRunningInfo
@@ -160,4 +192,4 @@ Defines the level-2 module AbilityStateData.
 
 | Type| Description|
 | --- | --- |
-| [_AbilityStateData.default](js-apis-inner-application-abilityStateData.md) | AbilityStateData, a level-2 module that provides the ability state information.|
+| [_AbilityStateData](js-apis-inner-application-abilityStateData.md).default | Second-level module of AbilityStateData, which provides Ability state information. |

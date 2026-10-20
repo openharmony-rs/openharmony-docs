@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T02:01:33.473Z pushedAt=2026-10-10T02:46:30.999Z -->
 
-The Crypto framework supports the SM2 ciphertext in ASN.1 format. The SM2 ciphertext consists of C1, C3 (the hash value), and C2 (the encrypted data). For details about the specifications, see [SM2 Ciphertext Format](crypto-asym-encrypt-decrypt-spec.md#sm2-ciphertext-format).
+The currently supported SM2 ciphertext format is the ASN.1 format defined by the Chinese cryptographic standard, where the parameters are combined in C1C3C2 order. For details about the parameters, see [SM2](crypto-encryption-decryption.md#sm2) in the asymmetric key encryption/decryption algorithm specification.
 
 You can convert the SM2 ciphertext into ASN.1 format based on the SM2 parameters specified or obtain SM2 parameters from the SM2 ciphertext in ASN.1 format.
 
@@ -44,7 +45,7 @@ function testGenCipherTextBySpec() {
 
 1. Check that the SM2 ciphertext is in ASN.1 format.
 
-2. Use [getCipherTextSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#genciphertextbyspec12) to obtain SM2 parameters from the ciphertext.
+2. Call [getCipherTextSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getciphertextspec12) to obtain the specific SM2 ciphertext parameters from the standard ciphertext.
 
 3. You can combine SM2 parameters based on service requirements to generate SM2 ciphertext in other formats.
 
@@ -65,3 +66,4 @@ function testGetCipherTextSpec() {
   console.info('getCipherTextSpec result: success.');
 }
 ```
+

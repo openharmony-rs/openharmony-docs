@@ -6,14 +6,15 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:41:32.636Z pushedAt=2026-10-10T02:10:53.722Z -->
 
 You can generate a public key object (**PubKey**) from ECC public key data or obtain the ECC public key data from a public key (**PubKey**) object.
 
-Currently, only the X.509-certified compressed or uncompressed ECC public key data is supported. <br>The public key data mentioned in this topic is a complete X509 public key. For details about the operations on point data, see [Converting Compressed or Uncompressed ECC Point Data](crypto-convert-compressed-or-uncompressed-ECC-point.md).
+Currently, only ECC public key data in compressed or uncompressed format that complies with the X.509 standard is supported. The public key data here must be a complete X.509 public key. If you only have point data, see [ECC Compressed/Uncompressed Point Format Conversion](crypto-convert-compressed-or-uncompressed-ECC-point.md).
 
-<br>For details about the ECC algorithm specifications, see [ECC](crypto-asym-key-generation-conversion-spec.md#ecc).
+For details about the ECC algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).
 
-<br>You can specify the string parameter **format** to set the format of the ECC public key to obtain. To obtain a compressed public key that complies with the X.509 standard, set **format** to **X509|COMPRESSED**. To obtain an uncompressed public key, set **format** to **X509|UNCOMPRESSED**.
+You can specify the string parameter **format** to set the format of the ECC public key data to obtain. To obtain compressed data that complies with the X.509 standard, set **format** to **"X509|COMPRESSED"**. To obtain uncompressed data, set **format** to **"X509|UNCOMPRESSED"**.
 
 ##  Converting Uncompressed Public Key Data to Compressed Public Key Data
 

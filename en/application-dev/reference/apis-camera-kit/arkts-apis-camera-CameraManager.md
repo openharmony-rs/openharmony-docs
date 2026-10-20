@@ -1,12 +1,11 @@
 # Interface (CameraManager)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-11T01:57:39.071Z pushedAt=2026-08-11T09:15:09.424Z -->
+<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-08T12:58:47.887Z pushedAt=2026-10-12T11:13:03.701Z -->
 
 **CameraManager** implements camera management. Before calling any API in **CameraManager**, you must use [getCameraManager](arkts-apis-camera-f.md#cameragetcameramanager) to obtain a **CameraManager** instance.
 
@@ -851,7 +850,7 @@ Checks whether the camera device supports the flashlight.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| boolean    | Whether the device supports the flashlight. **true** if supported, **false** otherwise.<br>If **false** is returned, [isTorchModeSupported](#istorchmodesupported11), [getTorchMode](#gettorchmode11), [setTorchMode](#settorchmode11), [isTorchLevelControlSupported](#istorchlevelcontrolsupported), and [setTorchModeOnWithLevel](#settorchmodeonwithlevel) do not take effect.<br>If the API call fails, undefined is returned.|
+| boolean    | Whether the device supports the flashlight. **true** if supported, and **false** otherwise.<br>If **false** is returned, [isTorchModeSupported](#istorchmodesupported11), [getTorchMode](#gettorchmode11), [setTorchMode](#settorchmode11), [isTorchLevelControlSupported](#istorchlevelcontrolsupported), and [setTorchModeOnWithLevel](#settorchmodeonwithlevel) do not take effect.<br>If the API call fails, **undefined** is returned. |
 
 **Example**
 

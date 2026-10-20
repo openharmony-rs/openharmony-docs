@@ -2,13 +2,14 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=36c9032d2786280542e988f656807dc4c8ad97f6 translatedAt=2026-10-09T11:51:21.299Z pushedAt=2026-10-10T05:47:05.784Z -->
 
 ## Overview
 
-The **Pasteboard** module supports copying and pasting multiple types of data, including plain text, HTML, URI, and pixel map.
+The system pasteboard supports copying and pasting multiple types of data. You can use the APIs of this module to operate on data of multiple types, such as plain text, HTML, URI, and PixelMap.
 
 **Since**: 13
 

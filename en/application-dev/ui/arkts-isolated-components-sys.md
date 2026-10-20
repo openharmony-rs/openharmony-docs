@@ -1,12 +1,11 @@
 # Cross-Thread Embedded Component (IsolatedComponent, for System Applications Only)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=5ed0cc4164abf79790ec16923fb6361d2a756da9 translatedAt=2026-08-01T00:30:04.199Z pushedAt=2026-08-03T02:38:57.516Z -->
+<!-- md-trans-meta sourceCommit=a80a54c30fbba3e34941a1b2b0af1d142589b46f translatedAt=2026-10-12T09:26:47.953Z pushedAt=2026-10-13T03:27:02.618Z -->
 
 **IsolatedComponent** is a cross-thread embedded component that can embed and display isolated UI content provided by an independent .abc file within the current page. This content runs independently in a restricted worker thread without conflicting with other components.
 
@@ -96,9 +95,7 @@ workerPort.onmessage = (e: MessageEvents) => {}
 workerPort.onmessageerror = (e: MessageEvents) => {}
 workerPort.onerror = (e: ErrorEvent) => {}
 ```
-
 <!--deprecated_code_no_check-->
-
 ```ts
 IsolatedComponent({
   want: {
@@ -220,7 +217,7 @@ struct Index {
             .width(300)
             .height(300)
             .onError((err) => {
-              console.info("onError : " + JSON.stringify(err));
+              console.error("onError : " + JSON.stringify(err));
             })
         }
       }

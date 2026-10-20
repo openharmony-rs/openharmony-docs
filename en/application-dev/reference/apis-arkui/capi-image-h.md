@@ -5,12 +5,13 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=283b3e9b73539c5e233a0e04cf1ddde271f24877 translatedAt=2026-09-23T09:20:55.455Z pushedAt=2026-09-24T07:39:21.179Z -->
 
 ## Overview
 
 Defines **Image** node types for **NativeNode** APIs.
 
-**File to include:** <arkui/image.h>
+**File to include:** <arkui/node_attributes/image.h>
 
 **Library:** libace_ndk.z.so
 
@@ -52,10 +53,10 @@ Enumerates the image repeat patterns.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_IMAGE_REPEAT_NONE = 0 | The image is not repeatedly drawn.|
-| ARKUI_IMAGE_REPEAT_X = 1 | The image is repeatedly drawn only along the x-axis.|
-| ARKUI_IMAGE_REPEAT_Y = 2 | The image is repeatedly drawn only along the y-axis.|
-| ARKUI_IMAGE_REPEAT_XY = 3 | The image is repeatedly drawn along both axes.|
+| ARKUI_IMAGE_REPEAT_NONE = 0 | The image is not repeatedly drawn. The image is displayed once as is. |
+| ARKUI_IMAGE_REPEAT_X = 1 | The image is repeatedly drawn only along the x-axis to fill the display area horizontally. |
+| ARKUI_IMAGE_REPEAT_Y = 2 | The image is repeatedly drawn only along the y-axis to fill the display area vertically. |
+| ARKUI_IMAGE_REPEAT_XY = 3 | The image is repeatedly drawn along both axes to fill the entire display area. |
 
 ### ArkUI_ImageSize
 
@@ -90,21 +91,21 @@ Enumerates the image filling effects of the [Image](arkui-ts/ts-basic-components
 | Value| Description|
 | -- | -- |
 | ARKUI_OBJECT_FIT_CONTAIN = 0 | The image is scaled with its aspect ratio retained for the content to be completely displayed within the display boundaries.|
-| ARKUI_OBJECT_FIT_COVER = 1 | The image is scaled with its aspect ratio retained for both sides to be greater than or equal to the display boundaries.|
-| ARKUI_OBJECT_FIT_AUTO = 2 | The image is scaled automatically to fit the display area.|
+| ARKUI_OBJECT_FIT_COVER = 1 | The image is scaled with its aspect ratio retained for the width and height to be greater than or equal to those of the display boundaries (the part that exceeds the boundaries may be clipped). |
+| ARKUI_OBJECT_FIT_AUTO = 2 | The image is displayed in an appropriate fill mode that is automatically selected based on the sizes of the image and container. |
 | ARKUI_OBJECT_FIT_FILL = 3 | The image is scaled to fill the display area, and its aspect ratio is not retained.|
 | ARKUI_OBJECT_FIT_SCALE_DOWN = 4 | The image is displayed with its aspect ratio retained, in a size smaller than or equal to the original size.|
-| ARKUI_OBJECT_FIT_NONE = 5 | The original size is retained.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START = 6 | Not resized, the image is aligned with the start edge of the top of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP = 7 | Not resized, the image is horizontally centered at the top of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END = 8 | Not resized, the image is aligned with the end edge at the top of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START = 9 | Not resized, the image is vertically centered on the start edge of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER = 10 | Not resized, the image is horizontally and vertically centered in the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END = 11 | Not resized, the image is vertically centered on the end edge of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | Not resized, the image is aligned with the start edge at the bottom of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | Not resized, the image is horizontally centered at the bottom of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | Not resized, the image is aligned with the end edge at the bottom of the container.|
-| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | The image maintains its original size. Must be used with **NODE_IMAGE_IMAGE_MATRIX** in [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype).<br>**Since:** 21|
+| ARKUI_OBJECT_FIT_NONE = 5 | The image size remains unchanged. |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START = 6 | Not resized, the image is aligned with the start edge of the top of the **Image** component. |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP = 7 | Not resized, the image is horizontally centered at the top of the **Image** component. |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END = 8 | Not resized, the image is aligned with the end edge at the top of the **Image** component. |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START = 9 | Not resized, the image is vertically centered on the start edge of the **Image** component. |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER = 10 | Not resized, the image is horizontally and vertically centered in the **Image** component. |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END = 11 | Not resized, the image is vertically centered on the end edge of the **Image** component. |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | Not resized, the image is aligned with the start edge at the bottom of the **Image** component. |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | Not resized, the image is horizontally centered at the bottom of the **Image** component. |
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | Not resized, the image is aligned with the end edge at the bottom of the **Image** component. |
+| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | The original image size is retained. This value must be used together with **NODE_IMAGE_IMAGE_MATRIX** in [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype) in the **Image** component to control the image display effect (such as scaling, rotation, and translation) through matrix transformation. If this value is not used together with **NODE_IMAGE_IMAGE_MATRIX**, it will not take effect.<br/>**Since:** 21 |
 
 ### ArkUI_ImageInterpolation
 
@@ -139,7 +140,7 @@ Enumerates the dynamic range modes (for example, SDR/HDR) for images, controllin
 
 | Value| Description|
 | -- | -- |
-| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | High dynamic range (HDR), representing the range between minimum and maximum brightness values in an image. A wider range makes image brightness closer to real-world conditions, preventing overexposure (all white) in bright environments and loss of detail (all black) in dark environments.|
+| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | High dynamic range (HDR), representing the range between minimum and maximum brightness values in an image. A wider range makes image brightness closer to a perception range of human eyes in real-world conditions, preventing overexposure (all white) in bright environments and loss of detail (all black) in dark environments. |
 | ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT = 1 | Constrained high dynamic range, offering richer brightness and color than SDR while maintaining SDR compatibility. Typically used in scenarios requiring SDR backward compatibility.|
 | ARKUI_DYNAMIC_RANGE_MODE_STANDARD = 2 | Standard dynamic range (SDR), featuring a limited brightness range (typically 0-100 nits) with reduced contrast between bright and dark areas. Dark areas may lose detail to black, while bright areas may become overexposed.|
 

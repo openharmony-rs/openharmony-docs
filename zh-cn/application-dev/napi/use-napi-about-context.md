@@ -228,7 +228,7 @@
 |napi_delete_strong_sendable_reference | napi_invalid_arg |
 |napi_get_strong_sendable_reference_value | napi_invalid_arg |
 
-### 示例代码
+## 示例代码
 - 模块注册
     ```c++
     // napi_init.cpp
@@ -354,7 +354,7 @@
 - 接口声明
     ```ts
     // index.d.ts
-    export const callFunctionInContext: (func: (func:()=>number)=>{}) => number;
+    export const callFunctionInContext: (func: (func:()=>number)=>number) => number;
     ```
 
 - 编译配置

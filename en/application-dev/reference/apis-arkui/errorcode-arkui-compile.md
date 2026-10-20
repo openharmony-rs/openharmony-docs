@@ -5,6 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=3bd46a1d3614ecae7d45fa7b3b78285ce9f7a1da translatedAt=2026-10-15T10:40:23.160Z pushedAt=2026-10-16T02:39:02.138Z -->
 
 > **NOTE**
 >
@@ -30,7 +31,7 @@ Define a callback function with the same name in the struct to handle the watche
 **Description**<br>
 This error code is reported when @BuilderParam decorated variables are initialized using methods other than those decorated with @Builder or @LocalBuilder.
 
-**Possible Causes**<br>
+**Possible Causes**<br> 
 The @BuilderParam decorated variable is being initialized using a regular function or variable of another type.
 
 **Solution**<br>
@@ -106,7 +107,7 @@ Ensure that class instances decorated with @Observed are used with @ObjectLink.
 The \'xxx\' property \'yyy\' cannot be a \'zzz\' object.
 
 **Description**<br>
-This error code is reported when a variable decorated with @State or other state decorators is of type CustomDialogController.
+This error code is reported when a variable decorated with @State or other decorators is of the **CustomDialogController** type.
 
 **Possible Causes**<br>
 A state variable decorator is used on a variable of type CustomDialogController.
@@ -1051,7 +1052,7 @@ A class decorated with @ObservedV2 is used as the type of a state variable.
 Avoid using classes decorated with @ObservedV2 as the type for state variables.
 
 ## 10905122 Incorrect Use of the @Concurrent Decorator
-**Error Message**<br> 
+**Error Message**<br>  
 \'@Concurrent\' can not be used on \'xxx\' function declaration.
 
 **Description**<br>
@@ -1318,7 +1319,7 @@ When the two-way binding syntax is used, do not assign a value to \'xxx\' variab
 This error code is reported when a value is assigned to the variable in an @Event decorated method while two-way binding syntax is used.
 
 **Possible Causes**<br>
-Two-way binding syntax is used and a value is passed to the @Event method.
+Two-way binding syntax is used and a value is passed to the @Event method. 
 
 **Solution**<br>
 When using two-way binding syntax, do not pass values to the @Event method. The ArkUI framework will handle the default assignment.

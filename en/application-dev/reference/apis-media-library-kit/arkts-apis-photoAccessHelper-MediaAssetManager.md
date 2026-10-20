@@ -55,7 +55,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied         |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.        |
+| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out.  |
 
 **Example**
 
@@ -88,6 +88,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   const handler = new MediaHandler();
 
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
     console.info('fetchResult success');
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (photoAsset === undefined) {
@@ -104,7 +108,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestImageData(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;ArrayBuffer&gt;): Promise&lt;string&gt;
 
-Requests image data. This API uses a promise to return the result.
+Requests image data based on different policy modes. This method is applicable to scenarios where original data needs to be obtained, such as image upload and filter processing. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -120,7 +124,7 @@ Requests image data. This API uses a promise to return the result.
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                      | Yes  | Context of the ability instance.|
 | asset | [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)                                            | Yes  | Image to request.|
 | requestOptions  | [RequestOptions](arkts-apis-photoAccessHelper-i.md#requestoptions11)                                  | Yes  | Options for requesting the image.|      
-| dataHandler  | [MediaAssetDataHandler](arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)&lt;ArrayBuffer&gt; | Yes  | Media asset handler, which invokes a callback to return the image when the requested image is ready.|
+| dataHandler  | [MediaAssetDataHandler](arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)&lt;ArrayBuffer&gt; | Yes  | Media asset handler, which invokes a callback to return the image when the requested image is ready.         |
 
 **Return value**
 
@@ -136,7 +140,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied         |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail.        |
+| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -168,6 +172,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   const handler = new MediaDataHandler();
 
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
       if (photoAsset === undefined) {
@@ -184,7 +192,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestMovingPhoto(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;MovingPhoto&gt;): Promise&lt;string&gt;
 
-Requests a moving photo object, which can be used to request the asset data of the moving photo. This API uses a promise to return the result.
+Requests a moving photo object, which can be used to view the moving photo. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -214,10 +222,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied         |
+| 201      |  Permission denied.         |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 801   | Capability not supported.       |
-| 14000011       | System inner fail         |
+| 801   | Capability not supported. <br> Applicable versions: 18+     |
+| 14000011       | System inner fail.         |
 
 **Example**
 
@@ -245,6 +253,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   };
   // Ensure that there are moving photos in Gallery.
   let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+  if (!assetResult) {
+    console.error('Failed to get assets');
+    return;
+  }
   let asset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
   let requestOptions: photoAccessHelper.RequestOptions = {
     deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
@@ -254,7 +266,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let requestId: string = await photoAccessHelper.MediaAssetManager.requestMovingPhoto(context, asset, requestOptions, handler);
     console.info("moving photo requested successfully, requestId: " + requestId);
   } catch (err) {
-    console.error(`failed to request moving photo, error code is ${err.code}, message is ${err.message}`);
+    console.error(`Failed to request moving photo. Code: ${err.code}, message: ${err.message}`);
   }
 }
 
@@ -264,7 +276,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestVideoFile(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, fileUri: string, dataHandler: MediaAssetDataHandler&lt;boolean&gt;): Promise&lt;string&gt;
 
-Requests a video and saves it to the specified sandbox directory. This API uses a promise to return the result.
+Requests a video and saves it to the specified sandbox directory. This method is applicable to scenarios where videos are uploaded to the server or played by a player. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -297,8 +309,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied         |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 801  | Capability not supported.       |
-| 14000011       | System inner fail.        |
+| 801  | Capability not supported. <br> Applicable versions: 15+     |
+| 14000011       | System inner fail.<br>Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -326,6 +338,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   const handler = new MediaDataHandler();
   let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.mp4';
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
       await photoAccessHelper.MediaAssetManager.requestVideoFile(context, photoAsset, requestOptions, fileUri, handler);
@@ -349,7 +365,7 @@ Cancels a request for the asset, the callback of which has not been triggered ye
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                      | Yes  | Context of the ability instance.|
-| requestId | string     | Yes  | ID of the request to cancel. It is a valid request ID returned by **requestImage**.|
+| requestId | string     | Yes  | ID of the request to cancel. It is a valid request ID returned by **requestImage**. After the ID is passed, the corresponding request is canceled and the allocated resources are released. The callback corresponding to the request will not be triggered.|
 
 **Return value**
 
@@ -378,7 +394,7 @@ async function example(context: Context) {
     await photoAccessHelper.MediaAssetManager.cancelRequest(context, requestId);
     console.info("request cancelled successfully");
   } catch (err) {
-    console.error(`cancelRequest failed with error: ${err.code}, ${err.message}`);
+    console.error(`Failed to cancel request. Code: ${err.code}, message: ${err.message}`);
   }
 }
 
@@ -399,8 +415,8 @@ Loads a moving photo in the application sandbox. This API uses a promise to retu
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)   | Yes  | AbilityContext or UIExtensionContext instance.|
-| imageFileUri | string     | Yes  | URI of the image file of the moving photo in the application sandbox.<br>Example: **'file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg'**.|
-| videoFileUri | string     | Yes  | URI of the video file of the moving photo in the application sandbox.<br>Example: **'file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4'**.|
+| imageFileUri | string     | Yes  | URI of the image file of the moving photo in the app sandbox, which is used to create the image component of the moving photo object.<br>Example: **'file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg'**.|
+| videoFileUri | string     | Yes  | URI of the video file of the moving photo in the app sandbox, which is used to create the video component of the moving photo object.<br>Example: **'file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4'**.|
 
 **Return value**
 
@@ -426,7 +442,7 @@ async function example(context: Context) {
     let videoFileUri: string = 'file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4'; // Video URI of the moving photo in the application sandbox.
     let movingPhoto: photoAccessHelper.MovingPhoto = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
   } catch (err) {
-    console.error(`loadMovingPhoto failed with error: ${err.code}, ${err.message}`);
+    console.error(`Failed to load moving photo. Code: ${err.code}, message: ${err.message}`);
   }
 }
 
@@ -436,7 +452,7 @@ async function example(context: Context) {
 
 static quickRequestImage(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: QuickImageDataHandler&lt;image.Picture&gt;): Promise&lt;string&gt;
 
-Requests an image quickly. This API uses a promise to return the result.
+Requests an image quickly. This method applies to scenarios that require fast loading, such as loading thumbnails in an image list. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -496,6 +512,10 @@ async function example(context: Context) {
   const handler = new MediaHandler();
   let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
+    if (err) {
+      console.error(`Failed to get assets. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
       await photoAccessHelper.MediaAssetManager.quickRequestImage(context, photoAsset, requestOptions, handler);

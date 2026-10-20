@@ -6,9 +6,9 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-08-19T10:01:07.638Z pushedAt=2026-08-20T01:44:27.574Z -->
+<!-- md-trans-meta sourceCommit=ab463549ba53ac7ad9c9f586570526c5d592d467 translatedAt=2026-10-09T13:11:08.834Z pushedAt=2026-10-10T07:10:31.792Z -->
 
-The pan module implements Bluetooth-based network sharing through Bluetooth Classic's [Personal Area Networking (PAN)](../../connectivity/bluetooth/terminology.md#pan), such as obtaining the network connection status.
+This module implements Bluetooth-based network sharing through the [Personal Area Networking (PAN)](../../connectivity/bluetooth/terminology.md#pan). It allows the local device to function as an [NAP](../../connectivity/bluetooth/terminology.md#nap) or [PANU](../../connectivity/bluetooth/terminology.md#panu) device to query the PAN support status, network sharing status, and connection status. This module is applicable to scenarios where Bluetooth is used for PAN sharing.
 
 > **NOTE**
 >
@@ -48,7 +48,7 @@ Creates a Bluetooth [PAN](../../connectivity/bluetooth/terminology.md#pan) insta
 
 | Type                           | Description        |
 | ----------------------------- | ---------- |
-| PanProfile | PAN instance. The **PanProfile** class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class. |
+| [PanProfile](#panprofile) | PAN instance. The **PanProfile** class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class. |
 
 **Error codes**
 
@@ -72,17 +72,15 @@ try {
 
 ## PanProfile
 
-Represents a Bluetooth PAN communication instance.
-
+Represents a Bluetooth PAN communication instance. It provides capabilities such as querying the PAN support status and network sharing status of the local device. This class is applicable to Bluetooth PAN sharing scenarios.
 - Before using any API of **PanProfile**, you need to create an instance of this class by using [createPanProfile](#pancreatepanprofile).
-
 - This class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.
 
 ### isPanSupported
 
 isPanSupported(): boolean
 
-Obtains the tethering status when the local devices is used as the NAP.
+Checks whether the local device supports PAN when it is used as the NAP.
 
 **Since:** 26.0.0
 
@@ -143,6 +141,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported. Only can be called on phone, tablet, and 2in1 devices. Failed to call the API when the short-range chip is not inserted on 2in1 device.          |
+
 
 **Example**
 

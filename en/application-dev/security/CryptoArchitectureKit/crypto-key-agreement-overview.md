@@ -1,4 +1,4 @@
-# Key Agreement Overview and Algorithm Specifications
+# Key Agreement
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=93fabc8c17767c2f12d40761db89b34b086858e3 translatedAt=2026-10-09T01:52:08.043Z pushedAt=2026-10-10T02:37:21.434Z -->
 
-Key agreement allows two or more parties to jointly establish a shared key in a non-secure environment.
+A key agreement algorithm can be used when two communicating parties need to negotiate a secure shared secret over an insecure channel without pre-sharing any secret.
 
 This topic describes the key agreement algorithms and specifications supported by the system.
 

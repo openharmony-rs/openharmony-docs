@@ -5,8 +5,7 @@
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=3383cf6b2a36933eae9d88e06bbfad5f09f5363a translatedAt=2026-09-16T03:46:00.099Z pushedAt=2026-09-16T08:26:46.566Z -->
-
+<!-- md-trans-meta sourceCommit=8ebac65895475349562d5d673623f46e5ee4d2ca translatedAt=2026-10-13T13:15:21.756Z pushedAt=2026-10-16T04:13:16.654Z -->
 
 ## When to Use
 
@@ -47,7 +46,7 @@
 2. Define a thread-safe function at the native entry.
 
    <!-- @[napi_thread_safety_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
-
+   
    ``` C++
    #include "napi/native_api.h"
    #include "hilog/log.h"
@@ -74,7 +73,7 @@
            auto result = future.get();
            OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", result.c_str());
        } catch (const std::exception &e) {
-           OH_LOG_INFO(LOG_APP, "XXX, Result from JS %{public}s", e.what());
+           OH_LOG_ERROR(LOG_APP, "XXX, Result from JS %{public}s", e.what());
        }
    }
    
@@ -189,7 +188,7 @@
 4. ArkTS code:
 
    <!-- @[napi_thread_safety_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
-
+   
    ``` TypeScript
    export const startThread: (a: () => Promise<string>) => void;
    ```
@@ -198,9 +197,9 @@
    ``` ts
    import nativeModule from 'libentry1.so';
    ```
-
+   
    <!-- @[napi_thread_safety_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // index.ets
    let callback = (): Promise<string> => {
@@ -245,7 +244,7 @@
 2. Define a thread-safe function and create a child thread at the native entry.
 
    <!-- @[napi_call_threadsafe_function_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
-
+   
    ``` C++
    #include "napi/native_api.h"
    #include "hilog/log.h"
@@ -379,7 +378,7 @@
 5. Sample code of the worker thread.
 
    <!-- @[napi_call_threadsafe_function_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/workers/Worker.ets) -->
-
+   
    ``` TypeScript
    // entry/src/main/ets/workers/Worker.ets
    
@@ -400,7 +399,7 @@
 6. Description of the API in the .d.ts file.
 
    <!-- @[napi_call_threadsafe_function_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
-
+   
    ``` TypeScript
    export const startWithCallback: (input: string, callback: (msg: string) => void) => void;
    ```
@@ -412,7 +411,7 @@
    ```
 
    <!-- @[napi_call_threadsafe_function_worker_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    // index.ets
    const wk = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
@@ -443,7 +442,7 @@
 
    @Concurrent
    function nativeCall(input : string): void {
-     console.info('Taskpool thread received:%s', input);
+     console.info('Taskpool thread received:', input);
      nativeModule.startWithCallback('Taskpool', (result: string) => {
        console.info('[Taskpool] Got from native:', result);
      });
@@ -460,7 +459,7 @@
    ```
 
    <!-- @[napi_call_threadsafe_function_taskpool_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // index.ets
    testTaskpool();

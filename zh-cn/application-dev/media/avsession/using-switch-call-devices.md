@@ -83,7 +83,7 @@
 
    或者创建AVCastPickerHelper组件。
 
-   <!-- @[create_castPickerHelper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AVCastPickerHelper.ets) -->   
+   <!-- @[create_castPickerHelper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AVCastPickerHelper.ets) -->    
    
    ``` TypeScript
    import { common } from '@kit.AbilityKit';
@@ -105,7 +105,7 @@
        this.avCastPicker.select(avCastPickerOptions).then(() => {
          console.info('select successfully');
        }).catch((err: BusinessError) => {
-         console.error('AVCastPicker.select failed with err: ${err.code}, ${err.message}');
+         console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
        });
      }
    }

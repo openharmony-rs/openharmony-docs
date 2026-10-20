@@ -1,4 +1,4 @@
-# Signing and Signature Verification Overview and Algorithm Specifications
+# Signing and Signature Verification
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,15 +6,15 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=d93383360d36e72d15ef3e14ccb0a6b358a4f8a5 translatedAt=2026-08-12T07:10:03.970Z pushedAt=2026-08-12T07:29:25.317Z -->
+<!-- md-trans-meta sourceCommit=93fabc8c17767c2f12d40761db89b34b086858e3 translatedAt=2026-10-09T02:00:36.620Z pushedAt=2026-10-10T02:42:57.290Z -->
 
 The digital signature can be used to verify whether the data came from the stated sender and has been changed.
 
 This topic describes the supported algorithms and specifications for signing and signature verification.
 
- > **NOTE**
+ > **NOTE** 
  > 
- > Currently, C/C++ APIs support signature verification since API version 12 and support signing since API version 20.
+ > Currently, when using C/C++, signature verification is supported starting from API version 12, and signing is supported starting from API version 20.
 
 ## RSA
 
@@ -28,7 +28,7 @@ The Crypto framework supports the following padding modes for RSA signing and si
 
   If this mode is used, you need to set two digests (**md** and **mgf1_md**), and the total length of the **md** digest, **saltLen**, and **2** must be less than or equal to the length of the RSA key.
 
-  You can also set the salt length **saltLen** to obtain PSS-related parameters.  
+  You can also set the salt length **saltLen** to obtain PSS-related parameters.
 
   | PSS-related Parameter| Description| 
   | -------- | -------- |
@@ -297,4 +297,6 @@ Create an ML-DSA signing or signature verification instance using a string param
 
 | Asymmetric Key Type | String Parameter | API Version |
 | -------- | -------- | -------- |
-| ML-DSA | ML-DSA | 26.0.0+ |
+| ML-DSA-44 | ML-DSA | 26.0.0+ |
+| ML-DSA-65 | ML-DSA | 26.0.0+ |
+| ML-DSA-87 | ML-DSA | 26.0.0+ |

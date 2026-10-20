@@ -67,14 +67,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
     console.info(`Succeeded in getting number, number is ${result}`); // 成功时执行
   }, (error: BusinessError) => {
     console.error(`Failed to get number. Code: ${error.code}, message: ${error.message}`); // 失败时执行
-  }
-  );
+  });
 
-  // 使用then方法定义成功的回调，catch方法定义失败的回调
+  // 使用then方法定义成功的回调，catch方法定义失败的回调，finally方法定义任务结束后的回调
   promise.then((result: number) => {
     console.info(`Succeeded in getting number, number is ${result}`); // 成功时执行
   }).catch((error: BusinessError) => {
     console.error(`Failed to get number. Code: ${error.code}, message: ${error.message}`); // 失败时执行
+  }).finally(() => {
+    // 无论成功与否，任务结束后执行
+    console.info('Promise execution finished.');
   });
 ```
 

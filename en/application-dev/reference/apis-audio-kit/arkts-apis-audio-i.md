@@ -5,6 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=dc7e82d5020771e00dc8c0989670ded5664fcc4a translatedAt=2026-10-08T12:11:55.880Z pushedAt=2026-10-12T09:44:53.645Z -->
 
 > **NOTE**
 >
@@ -286,15 +287,21 @@ Describes input parameters of audio interruption events.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. No substitute is provided.
+> This API is supported since API version 7 and deprecated since API version 9.
+>
+> When requesting audio focus, you are advised to use [AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8).rendererInfo instead. [StreamUsage](arkts-apis-audio-e.md#streamusage) determines the focus policy of the audio stream.
+>
+> You are advised to use [on('audioInterrupt')](arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9) to listen for the audio focus event [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) instead of the audio interruption event.
+>
+> Using the deprecated API [on('interrupt')](arkts-apis-audio-AudioManager.md#oninterruptdeprecated) will not interrupt the audio stream of the new mechanism, and no focus interruption event will be received.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
 | Name           | Type                       | Read-Only| Optional| Description                                                        |
 | --------------- | --------------------------- | ----|---| ------------------------------------------------------------ |
-| streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage) | No| No| Audio stream usage.                                            |
-| contentType     | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | No| No| Audio content type.                                          |
-| pauseWhenDucked | boolean                     | No| No| Whether audio playback can be paused during an audio interruption. **true** if audio playback can be paused, **false** otherwise.|
+| streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage) | No | No | Audio stream usage.<br> **Note:** This feature is supported since API version 7 and deprecated since API version 9. You are advised to use [AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8).rendererInfo instead.|
+| contentType     | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | No | No | Audio content type.<br> **Note:** This feature is supported since API version 7 and deprecated since API version 9. You are advised to use [AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8).rendererInfo instead. |
+| pauseWhenDucked | boolean                     | No | No | Whether audio playback can be paused during an audio interruption. **true** if audio playback can be paused, and **false** otherwise.<br> **Note:** This feature is supported since API version 7 and deprecated since API version 9. You are advised to use [InterruptEvent](arkts-apis-audio-i.md#interruptevent9).hintType instead. |
 
 ## CaptureFilterOptions<sup>(deprecated)</sup>
 

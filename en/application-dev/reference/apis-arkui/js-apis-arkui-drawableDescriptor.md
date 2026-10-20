@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=676b96b25dfeca8dca1343b9815d99fd36c98341 translatedAt=2026-10-15T10:59:08.809Z pushedAt=2026-10-19T03:28:45.558Z -->
 
 This module provides capabilities for layered icon composition (foreground, background, mask), animated image control, and basic image processing.
 
@@ -291,7 +292,7 @@ A constructor used to create a **PixelMapDrawableDescriptor** object through the
 
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\|[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)  | No| **PixelMap** image data. You can use application resources, system resources, sandbox paths (file://\<bundleName\>/\<sandboxPath\>), and Base64 strings to create **PixelMapDrawableDescriptor** objects.|
+| src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\|[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)  | No | Image resource. A PixelMap image data, application resource, system resource, sandbox path (**file://\<bundleName>/\<sandboxPath>**), and Base64 character string can be passed to create a **PixelMapDrawableDescriptor** object. |
 
 **Example**
 
@@ -299,7 +300,7 @@ The following is the sample code for creating a **PixelMapDrawableDescriptor** o
 
 ```ts
 // xxx.ets
-import { PixelMapDrawableDescriptor } from '@kit.ArkUI';
+import { DrawableDescriptor, PixelMapDrawableDescriptor } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -436,7 +437,7 @@ A constructor used to create a **LayeredDrawableDescriptor** object.
 | --------- | ---------------- | ---- | ------------------------------------------ |
 | foreground | [DrawableDescriptor](#drawabledescriptor)  | No  | Options for the foreground image of the layered drawable.|
 | background   | [DrawableDescriptor](#drawabledescriptor) | No  | Options for the background image of the layered drawable. |
-| mask | [DrawableDescriptor](#drawabledescriptor) | No| Options for the mask of the layered drawable.|
+| mask | [DrawableDescriptor](#drawabledescriptor) | No | Options for the mask of the layered drawable. |
 
 ### getForeground
 getForeground(): DrawableDescriptor
@@ -700,7 +701,6 @@ Sets the blend mode of **LayeredDrawableDescriptor**. If this API is called for 
 
 ```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
 import { drawing } from '@kit.ArkGraphics2D';
 
 @Entry
@@ -764,16 +764,16 @@ Provides the configuration options for animation playback, including the playbac
 <!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name     | Type   | Read-Only| Optional | Description                                   |
 | :--------- | :----- | :----| :----| :-------------------------------------- |
-| duration   | number | No  | Yes | Total playback duration for the image sequence.<br>For **PixelMap** arrays, the default value is 1s per image. For local or application resources, the duration is determined by the playback delay embedded in the image resource.<br>Unit: ms.<br> Value range: [0, +∞).<br>Negative values are treated as the default value.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| duration   | number | No   | Yes  | Total playback duration for the image sequence.<br/>For **PixelMap** arrays, the default value is 1s per image. For local or application resources, the default value is the playback delay time carried in the image resource.<br/>Unit: ms<br/> Value range: [0, +∞)<br>Negative values are treated as the default value.<br/> **Atomic service API:** This API can be used in atomic services since API version 12. |
 | iterations | number | No  | Yes|Number of playback times for the image sequence.<br>A value of **-1** indicates infinite playback, **0** indicates no playback, and a value greater than 0 represents the number of playback times.<br>The default value is **1**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| frameDurations<sup>21+</sup> | Array\<number> | No| Yes|Per-frame playback duration. The setting overrides **duration** if specified.<br>If **duration** and **frameDurations** are set, **duration** is ignored.<br>If the value of **frameDurations** is inconsistent with the image count, animation timing distributes across the total duration.<br>Unit: ms.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
+| frameDurations<sup>21+</sup> | Array\<number> | No | Yes |Per-frame playback duration. If this parameter is not set, the animation is played based on the total duration.<br/>This parameter takes precedence over **duration**. If both **duration** and **frameDurations** are set, **duration** does not take effect.<br/>If the length of **frameDurations** does not match the number of images, the animation is played based on the total duration.<br/>Unit: ms<br/> **Atomic service API:** This API can be used in atomic services since API version 21. |
 | autoPlay<sup>21+</sup> | boolean | No | Yes|Whether to enable autoplay.<br> **true** to enable, **false** otherwise.<br>The default value is **true**.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
 | stopMode<sup>24+</sup> | [AnimationStopMode](#animationstopmode24) | No | Yes|Sets the stop mode for an animation.<br> The default value is **AnimationStopMode.FIRST_FRAME**, indicating that the animation returns to the first frame when it stops.<br> **Atomic service API**: This API can be used in atomic services since API version 24.|
 
 **Example**
 
 ```ts
-import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
+import { AnimationOptions, AnimatedDrawableDescriptor, DrawableDescriptor } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 
 @Entry
@@ -844,7 +844,7 @@ A constructor used to create an **AnimatedDrawableDescriptor** object.
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
 | pixelMaps | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Yes  | **PixelMap** image data.|
-| options   | [AnimationOptions](#animationoptions12) | No  | Animation options.                              |
+| options   | [AnimationOptions](#animationoptions12) | No   | Options for animation playback.                             |
 
 ### constructor<sup>21+</sup>
 
@@ -862,8 +862,8 @@ A constructor used to create an **AnimatedDrawableDescriptor** object.
 
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| src | [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Yes  | Animated image source address or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) array.<br> The address (**ResourceStr**) supports the following formats: application resources (**Resource**), sandbox path (file://\<bundleName>/\<sandboxPath>), and Base64 string.|
-| options   | [AnimationOptions](#animationoptions12) | No  | Animation playback configuration.|
+| src | [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Yes  | Animated image source address or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) array.<br> The address (**ResourceStr**) supports the following formats: application resources (**Resource**), sandbox path (**file://\<bundleName>/\<sandboxPath>**), and Base64 string.|
+| options   | [AnimationOptions](#animationoptions12) | No   | Options for animation playback. |
 
 **Example**
 
@@ -1289,7 +1289,7 @@ Sets HDR composition.
 **Example**
 
 ```ts
-import { PictureDrawableDescriptor } from '@ohos.arkui.drawableDescriptor';
+import { PictureDrawableDescriptor } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 
 

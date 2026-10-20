@@ -608,6 +608,457 @@ mechanicManager.searchTarget(targetInfo,
     console.info(`'result:' ${searchResult}`);
 });
 ```
+
+## mechanicManager.move
+
+move(mechId: number, params: MoveParams): Promise&lt;Result&gt;
+
+以特定参数移动一个机械体设备。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 机械体设备ID。 |
+| params | [MoveParams](#moveparams) | 是 | 移动参数。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt; | Promise对象，返回移动执行结果。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**示例：**
+
+```ts
+let mechId: number = 0;
+let moveParams: mechanicManager.MoveParams = {
+    distance: 0,
+    angle: 0,
+    speedGear: undefined,
+    mode: undefined
+};
+try {
+  mechanicManager.move(mechId, moveParams).then((result: mechanicManager.Result) => {
+    console.info(`'result:' ${result}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.moveBySpeed
+
+moveBySpeed(mechId: number, params: SpeedParams, duration: number): Promise&lt;Result&gt;
+
+以特定速度移动一个机械体设备。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 机械体设备ID。 |
+| params | [SpeedParams](#speedparams) | 是 | 移动参数。|
+| duration | number | 是 | 移动时长，单位ms。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt;| Promise对象，返回移动执行结果。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**示例：**
+
+```ts
+let mechId: number = 0;
+let speedParams: mechanicManager.SpeedParams = {
+    speed: 0,
+    angle: 0,
+    mode: undefined
+};
+let duration: number = 1;
+try {
+  mechanicManager.moveBySpeed(mechId, speedParams, duration).then((result: mechanicManager.Result) => {
+    console.info(`'result:' ${result}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.turnBySpeed
+
+turnBySpeed(mechId: number, angleSpeed: number, duration: number): Promise&lt;Result&gt;
+
+以固定速度原地旋转。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 机械体设备ID。 |
+| angleSpeed | number | 是 | 角速度。|
+| duration | number | 是 | 转动时长，单位ms。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt;| Promise对象，返回旋转执行结果。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**示例：**
+
+```ts
+let mechId: number = 0;
+let angleSpeed: number = 1.2;
+let duration: number = 1;
+try {
+  mechanicManager.turnBySpeed(mechId, angleSpeed, duration).then((result: mechanicManager.Result) => {
+    console.info(`'result:' ${result}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.isSupportAction
+
+isSupportAction(mechId: number, actionType: ActionType): boolean
+
+判断是否支持某个动作。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 机械体设备ID。 |
+| actionType | [ActionType](#actiontype) | 是 | 动作序列类型。|
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| boolean | 是否支持该特定动作。true表示支持，false表示不支持。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+
+**示例：**
+
+```ts
+let mechId: number = 0;
+let actionType = mechanicManager.ActionType.HEAD_UP;
+try {
+  let isSupported = mechanicManager.isSupportAction(mechId, actionType);
+  console.info(`isSupported: ${isSupported}`);
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.doAction
+
+doAction(mechId: number, actionType: ActionType): Promise&lt;Result&gt;
+
+执行一个动作序列。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 机械体设备ID。 |
+| actionType | [ActionType](#actiontype) | 是 | 动作序列类型。|
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt;| Promise对象，返回执行结果。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**示例：**
+
+```ts
+let mechId: number = 0;
+let actionType = mechanicManager.ActionType.HEAD_UP;
+try {
+  mechanicManager.doAction(mechId, actionType).then((result: mechanicManager.Result) => {
+    console.info(`'result:' ${result}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.subscribe
+
+subscribe(events: MechEventType[], callback: Callback&lt;MechEvent&gt;): void
+
+订阅机械体设备事件回调。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| events | [MechEventType](#mecheventtype) | 是 | 订阅的事件列表。 |
+| callback | Callback&lt;[MechEvent](#mechevent)&gt; | 是 | 回调函数，返回订阅的机械体设备事件。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**示例：**
+
+```ts
+let eventsSet: Set<mechanicManager.MechEventType> = new Set();
+let events = Array.from(eventsSet);
+try {
+  mechanicManager.subscribe(events, (event: mechanicManager.MechEvent) => {
+    console.info('subscribe callback');
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.unSubscribe
+
+unSubscribe(events: MechEventType[]): void
+
+取消事件注册。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| events | [MechEventType](#mecheventtype) | 是 | 订阅的事件列表。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**示例：**
+
+```ts
+let eventsSet: Set<mechanicManager.MechEventType> = new Set();
+let events = Array.from(eventsSet);
+try {
+  mechanicManager.unSubscribe(events);
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.connectDevice
+
+connectDevice(addrInfo: AddressInfo, params: ConnectParam): Promise&lt;AttachStateChangeInfo&gt;
+
+基于地址连接设备。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| addrInfo | [AddressInfo](#addressinfo) | 是 | 地址信息。 |
+| params | [ConnectParam](#connectparam) | 是 | 操作参数。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[AttachStateChangeInfo](#attachstatechangeinfo)&gt;| Promise对象，返回设备附加状态。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+
+**示例：**
+
+```ts
+let addrInfo: mechanicManager.AddressInfo = {
+  address: '123',
+  addressType: mechanicManager.AddressType.BLE_ADDR
+}
+let params: mechanicManager.ConnectParam = {
+  deviceName: "deviceName",
+  custdata: '123',
+  identifier: Number('0x551b9225')
+}
+try {
+  mechanicManager.connectDevice(addrInfo, params)
+    .then((info: mechanicManager.AttachStateChangeInfo) => {
+      console.info(`connectDevice -- info: ${JSON.stringify(info)}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.disconnectDevice
+
+disconnectDevice(mechId: number): Promise&lt;Result&gt;
+
+基于机械体设备ID断开设备。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 机械体设备ID。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt;| Promise对象，返回执行结果。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+
+**示例：**
+
+```ts
+let mechId: number = 0;
+try {
+  mechanicManager.disconnectDevice(mechId).then((result: mechanicManager.Result) => {
+    console.info(`'result:' ${result}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
 ## RotationAngles
 
 相对当前位置的旋转角度。
@@ -738,6 +1189,8 @@ mechanicManager.searchTarget(targetInfo,
 | INTERRUPTED | 1 | 执行被打断。 |
 | LIMITED | 2 | 执行受最大旋转角度限制。 |
 | TIMEOUT | 3 | 执行超时。 |
+| TERMINATE_OBSTACLE<sup>26.0.0+<sup> | 4 | 障碍物导致终止。 |
+| TERMINATE_CLIFF<sup>26.0.0+<sup> | 5 | 悬崖导致终止。 |
 | SYSTEM_ERROR | 100 | 系统错误。 |
 
 ## TargetType<sup>21+<sup>
@@ -752,8 +1205,7 @@ mechanicManager.searchTarget(targetInfo,
 | ----------- | ------|---- | --------------- |
 | HUMAN_FACE | int | 0 | 目标人脸信息。 |
 
-
-  ## SearchDirection<sup>21+<sup>
+## SearchDirection<sup>21+<sup>
 
 系统默认的搜索方向。
 
@@ -778,9 +1230,7 @@ mechanicManager.searchTarget(targetInfo,
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
 | targetType | [TargetType](#targettype21) | 否 | 否 | 搜索目标的相关信息。 |
-  
-  
- 
+
 ## SearchParams<sup>21+<sup>
 
 指定搜索的方向。
@@ -793,7 +1243,7 @@ mechanicManager.searchTarget(targetInfo,
 | ----- | ---- | ---- | --- | --- |
 | direction | [SearchDirection](#searchdirection21) | 否 | 否 | 搜索的方向。 |
 
-  ## SearchResult<sup>21+<sup>
+## SearchResult<sup>21+<sup>
 
 显示搜索命令的执行结果。
 
@@ -804,3 +1254,246 @@ mechanicManager.searchTarget(targetInfo,
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
 | targetCount | number | 否 | 否 | 搜索到的目标数量。 |
+
+## MoveParams
+
+设备移动参数。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| distance | number | 否 | 否 | 移动距离（取值限定为整数）。|
+| angle | number | 否 | 否 | 转动角度。|
+| speedGear | [SpeedGear](#speedgear) | 否 | 是 | 速度档位。|
+| mode | [MarchingMode](#marchingmode) | 否 | 是 | 行进方式。|
+
+## SpeedParams
+
+速度控制参数。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| speed | number | 否 | 否 | 转动或移动速度（取值限定为整数）。|
+| angle | number | 否 | 否 | 转动角度。|
+| mode | [MarchingMode](#marchingmode) | 否 | 是 | 行进方式。|
+
+## SpeedGear
+
+速度档位枚举。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| LOW_SPEED  | int | 0 | 低速档定义。 |
+| MIDDLE_SPEED  | int | 1 | 中速档定义，默认值即为中速。 |
+| HIGH_SPEED   | int | -1 | 高速档定义。 |
+
+## MarchingMode
+
+行进模式枚举。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| TURN_THEN_MOVE  | int | 0 | 先转动再移动。 |
+| TURNING_MOVING  | int | 1 | 边移动边转动。 |
+
+## ActionType
+
+动作序列类型枚举。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| LANDSCAPE_PORTRAIT_SWITCH  | int | 0 | 横竖屏旋转。 |
+| PATROL_MODE  | int | 1 | 巡桌模式。 |
+| GREET_MODE  | int | 2 | 迎人模式。 |
+| HEAD_UP  | int | 3 | 仰头。 |
+| HEAD_UP_SLIGHTLY  | int | 4 | 微抬。 |
+| EYE_LEVEL  | int | 5 | 平视。 |
+| HEAD_DOWN_SLIGHTLY  | int | 6 | 微低。 |
+| HEAD_DOWN  | int | 7 | 下俯到底。 |
+| HEAD_WIGGLE  | int | 8 | 晃头。 |
+| NOD  | int | 9 | 点头。 |
+| HEAD_SHAKE  | int | 10 | 摇头。 |
+| HEAD_TURN_TO_BASE  | int | 11 | 头向底座回正。 |
+| BASE_TURN_TO_HEAD  | int | 12 | 底座向头回正。 |
+| FRONT_TO_BACK_FLIP  | int | 13 | 云台前后方向翻转。 |
+| HAPPY  | int | 1000 | 开心动作。 |
+| ANGRY  | int | 1001 | 生气动作。 |
+| SAD  | int | 1002 | 悲伤动作。 |
+| SCARED  | int | 1003 | 惊吓动作。 |
+| DANCE  | int | 2000 | 舞蹈动作。 |
+| ACTING_CUTE  | int | 2001 | 卖萌动作。 |
+| CELEBRATE  | int | 2002 | 庆祝动作。 |
+| WAKEUP  | int | 2003 | 唤醒动作。 |
+| SLEEP  | int | 2004 | 休眠动作。 |
+| LOW_POWER  | int | 2005 | 低电量动作。 |
+| THINKING  | int | 2006 | 思考中动作。 |
+
+## MechEvent
+
+机械体设备事件定义。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| mechId | number | 否 | 否 | 机械体设备ID。 |
+| event | [MechEventType](#mecheventtype) | 否 | 否 | 事件类型。 |
+
+## MechEventType
+
+机械体设备事件定义。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| DEVICE_ADSORBED  | int | 0 | 吸附事件。 |
+| DEVICE_UNADSORBED  | int | 1 | 未吸附事件。 |
+| REACH_CLIFF  | int | 2 | 移动中遇到悬崖。 |
+| REACH_OBSTACLE  | int | 3 | 移动中遇到障碍。 |
+| LOW_POWER  | int | 4 | 设备低电量。 |
+
+## AddressInfo
+
+配件设备信息定义。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| address | string | 否 | 否 | 配件设备地址。 |
+| addressType | [AddressType](#addresstype) | 否 | 否 | 地址类型。 |
+
+## AddressType
+
+机械体设备地址类型。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| BLE_ADDR  | int | 0 | 机械体设备蓝牙地址类型。 |
+
+## ConnectParam
+
+连接参数定义。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| deviceName | string | 否 | 是 | 机械体设备名称。 |
+| identifier | number | 否 | 是 | 当前设备标识（取值限定为整数）。 |
+| custdata | string | 否 | 否 | 发现设备时携带的数据。 |
+
+## AttachStateChangeInfo
+
+连接参数定义。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| state | [AttachState](#attachstate) | 否 | 否 | 附加状态。 |
+| mechInfo | [MechInfo](#mechinfo) | 否 | 否 | 机械体设备信息。 |
+
+## AttachState
+
+机械体设备附加状态。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| ATTACHED  | int | 0 | 设备挂载。 |
+| DETACHED  | int | 1 | 设备卸载。 |
+
+## MechInfo
+
+机械体设备信息。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| mechId | number | 否 | 否 | 机械体设备ID。 |
+| mechInfo | [MechDeviceType](#mechdevicetype) | 否 | 否 | 机械设备类型。 |
+| mechName | string | 否 | 否 | 机械体设备名称。 |
+
+## MechDeviceType
+
+机械体设备类型枚举。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| GIMBAL_DEVICE  | int | 0 | 云台设备类型。 |
+| DESKTOP_GIMBAL_DEVICE  | int | 1 | 桌面云台。 |
+| WHEELED_BASE_DEVICE  | int | 2 | 轮式底座。 |
+| POCKET_GIMBAL_CAMERA_DEVICE  | int | 3 | 口袋云台相机。 |

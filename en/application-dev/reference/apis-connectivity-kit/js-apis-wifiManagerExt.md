@@ -6,7 +6,9 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-The **wifiManagerExt** module provides WLAN extension APIs for non-universal products.
+<!-- md-trans-meta sourceCommit=d06ef92503ddf1ae094571d4eeefc1087fd8cbdb translatedAt=2026-10-09T13:33:53.230Z pushedAt=2026-10-10T07:21:24.152Z -->
+
+This module provides Wi-Fi extension APIs for non-universal products.
 
 > **NOTE**
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -23,7 +25,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 
 enableHotspot(): void
 
-Enables the WLAN hotspot.
+Enables the Wi-Fi hotspot.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10.
@@ -49,7 +51,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
   try {
       wifiManagerExt.enableHotspot();
-  }catch(error){
+  } catch (error) {
       console.error("failed: " + JSON.stringify(error));
   }
 ```
@@ -58,7 +60,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 disableHotspot(): void
 
-Disables the WLAN hotspot.
+Disables the Wi-Fi hotspot.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10.
@@ -141,7 +143,7 @@ Obtains the supported power models. This API uses an asynchronous callback to re
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the power modes obtained. If the operation fails, **err** is not **0**.|
+  | callback | AsyncCallback&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | Yes | Callback invoked to return the result. If the operation is successful, **err** is **0** and **data** indicates the supported power modes. If **err** is not **0**, an error occurs during the operation of obtaining the supported power modes. |
 
 **Error codes**
 
@@ -196,15 +198,15 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-  import { wifiManagerExt } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
 
-  try {
-      let model = wifiManagerExt.getPowerMode();
-      console.info("model info:" + model);
-  }catch(error){
-      console.error("failed: " + JSON.stringify(error));
-  }
-```
+try {
+  let model = wifiManagerExt.getPowerMode();
+    console.info("model info:" + model);
+    }catch(error){
+    console.error("failed: " + JSON.stringify(error));
+    }
+  ```
 
 ## wifiManagerExt.getPowerMode
 
@@ -220,7 +222,7 @@ Obtains the power mode. This API uses an asynchronous callback to return the res
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[PowerMode](#powermode)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the power mode obtained. If the operation fails, **err** is not **0**.|
+  | callback | AsyncCallback&lt;[PowerMode](#powermode)&gt; | Yes | Callback invoked to return the power mode. If the operation is successful, err is 0 and data indicates the power mode. If err is not 0, an error occurs during the operation of obtaining the power mode. |
 
 **Error codes**
 
@@ -256,7 +258,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 setPowerMode(mode: PowerMode) : void
 
- Sets the power mode.
+Sets the power mode.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10.

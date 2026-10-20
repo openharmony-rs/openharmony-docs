@@ -108,7 +108,7 @@ The table below lists the main tasks involved in UI development with ArkUI.
 | Use customization capabilities       | Learn the basic concepts of customization capabilities and how to apply them.      | - [Custom Composition](arkts-user-defined-composition.md)<br>- [Custom Node](arkts-user-defined-node.md)<br>- [Custom Extension](arkts-user-defined-modifier.md)|
 | Implement UI internationalization       | Implement an internationalized application UI, including resource configuration and support for right-to-left (RTL) layouts.      | - [Implementing UI Internationalization](arkts-internationalization.md)|
 | Implement accessibility and aging-friendly support     | Implement accessibility features and aging-friendly adaptations.  | <!--RP1-->- [Supporting Accessibility](arkts-universal-attributes-accessibility.md)<br>-&nbsp;<!--RP1End-->[Supporting Aging-Friendly Design](arkui-support-for-aging-adaptation.md)|
-| Set the theme      | Explore application-level and page-level theme setting capabilities.      | - [Implementing Dark and Light Mode Adaptation](ui-dark-light-color-adaptation.md)<br>- [Configuring In-Application Theme Skinning](theme_skinning.md)|
+| Set the theme      | Explore application-level and page-level theme setting capabilities.      | - [Implementing Dark and Light Mode Adaptation](ui-dark-light-color-adaptation.md)<br>- [Configuring In-Application Theme Skinning](theme-skinning.md)|
 | Utilize UI contextual capabilities| Use **UIContext** APIs to access instance-bound objects and launch atomic services in full-screen mode.| - [Using the UI Context API for UI Operations](arkts-global-interface.md)<br>- [Atomic Service Full Screen Launch Component](arkts-FullScreenComponent.md) |
 
 ## General Rules

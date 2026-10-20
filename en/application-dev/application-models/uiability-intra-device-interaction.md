@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wendel-->
 <!--Designer: @wendel-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=67c5f7ab61543d130958242979dd4c6b04234d91 translatedAt=2026-10-13T07:27:57.764Z pushedAt=2026-10-14T07:58:48.631Z -->
 
 [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) is the minimum unit that can be scheduled by the system. Redirection between functional modules in a device involves starting of specific UIAbility components, which belong to the same or a different application (for example, starting the UIAbility of a third-party payment application).
 
@@ -30,7 +31,7 @@ Assume that your application has two UIAbility components: EntryAbility and Func
 1. In EntryAbility, call [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) and pass the [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) parameter to start the UIAbility instance. In the **want** parameter, **bundleName** indicates the bundle name of the application to start; **abilityName** indicates the name of the UIAbility to start; **moduleName** is required only when the target UIAbility belongs to a different module from EntryAbility; **parameters** is used to carry custom information. For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
 
     <!-- @[FuncAbilityA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
-    
+
     ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -111,7 +112,7 @@ Assume that your application has two UIAbility components: EntryAbility and Func
 3. To stop the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instance after the FuncAbility service is not needed, call [terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself) in FuncAbility.
 
     <!-- @[FuncAbilityAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
-    
+
     ``` TypeScript
     import { common } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -158,7 +159,7 @@ When starting FuncAbility from EntryAbility, you may want the result to be retur
 1. In EntryAbility, call [startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2) to start FuncAbility. Use **data** in the asynchronous callback to receive information returned after FuncAbility stops itself. For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
 
     <!-- @[FuncAbilityA_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
-    
+
     ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -226,7 +227,7 @@ When starting FuncAbility from EntryAbility, you may want the result to be retur
 2. Call [terminateSelfWithResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to stop FuncAbility. Use the input parameter [abilityResult](../reference/apis-ability-kit/js-apis-inner-ability-abilityResult.md) to carry the information that FuncAbility needs to return to EntryAbility.
 
     <!-- @[FuncAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/innerability/FuncAbilityAPage.ets) -->
-    
+
     ``` TypeScript
     import { common } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -281,7 +282,7 @@ When starting FuncAbility from EntryAbility, you may want the result to be retur
 3. After FuncAbility stops itself, EntryAbility uses [startAbilityForResult()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilityforresult-2) to receive the information returned by FuncAbility. The value of **RESULT_CODE** must be the same as that specified in the preceding step.
 
     <!-- @[FuncAbilityA_For_Result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
-    
+
     ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -363,7 +364,7 @@ This section describes how to start a specified page in both modes: [cold start]
 
 ### Specifying a Startup Page
 
-When the initiator [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) starts another UIAbility, it usually needs to redirect to a specified page of the target UIAbility. For example, with FuncAbility, which contains two pages, starting FuncAbility means to redirect to either of the pages: Index (corresponding to the home page) and Second (corresponding to feature A page). You can configure the specified page URL in the want parameter by adding a custom parameter to parameters in [want](../reference/apis-ability-kit/js-apis-app-ability-want.md). For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
+When the caller [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) starts another UIAbility, it usually needs to jump to a specified page. For example, FuncAbility contains two pages (Index corresponds to the home page, and Second corresponds to the function A page). In this case, you need to configure the specified page path information in the incoming [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) parameter. You can add a custom parameter in the parameters of Want to pass the page jump information. For the method to obtain the context in the example, see [Obtaining UIAbility Context Information](uiability-usage.md#obtaining-the-context-of-uiability).
 
 
 <!-- @[FuncAbility_Cold](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/MainPage.ets) -->
@@ -423,8 +424,7 @@ struct MainPage {
 
 ### Cold Starting UIAbility
 
-In cold start mode, obtain the parameters from the initiator [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) through the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) callback of the target UIAbility. Then, in the [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) callback of the target UIAbility, parse the [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) parameter passed by the EntryAbility to obtain the URL of the page to be loaded, and pass the URL to the [windowStage.loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9) method.
-
+When the target [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) is cold started, the parameters passed by the caller are received in the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) lifecycle callback of the target UIAbility. Then, in the [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) lifecycle callback of the target UIAbility, the [want](../reference/apis-ability-kit/js-apis-app-ability-want.md) parameter passed by the caller is parsed to obtain the URL of the page to be loaded, which is then passed to the [windowStage.loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) method.
 
 <!-- @[ColdAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/ColdStartAbility.ets) -->
 
@@ -469,7 +469,7 @@ An example scenario is as follows:
 1. A user opens the SMS application. The UIAbility instance of the SMS application is started, and the home page of the application is displayed.
 2. The user returns to the home screen, and the SMS application switches to the background.
 3. The user opens the Contacts application and finds a contact.
-4. The user touches the SMS button next to the contact. The UIAbility instance of the SMS application is restarted.
+4. The user taps the SMS button of the contact Zhang San, which starts the UIAbility instance of the SMS application again.
 5. Since the UIAbility instance of the SMS application has been started, the onNewWant() callback of the UIAbility is triggered, and the initialization logic such as [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) and [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) is skipped.
 
 **Figure 1** Hot starting the target UIAbility
@@ -481,10 +481,10 @@ The development procedure is as follows:
 1. When the UIAbility instance of the SMS application is cold started, call [getUIContext()](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10) in the [onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) lifecycle callback to obtain the [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md).
 
     <!-- @[HotAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
-    
+
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { Want, UIAbility } from '@kit.AbilityKit';
+    import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
     import { window, UIContext } from '@kit.ArkUI';
     const DOMAIN_NUMBER: number = 0xFF00;
     const TAG: string = '[HotStartAbility]';
@@ -525,7 +525,7 @@ The development procedure is as follows:
     1. Import the required modules, and set the global variable **nameForNavi** in the **onNewWant()** lifecycle callback.
 
         <!-- @[onNewWant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/HotStartAbility.ets) -->
-        
+
         ``` TypeScript
         import { hilog } from '@kit.PerformanceAnalysisKit';
         import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
@@ -546,7 +546,7 @@ The development procedure is as follows:
     2. When the Index page is displayed, trigger the **onPageShow** callback to obtain the value of **nameForNavi**, and execute the page navigation.
 
         <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/Index.ets) -->
-        
+
         ``` TypeScript
         @Entry
         @Component
@@ -585,7 +585,7 @@ The development procedure is as follows:
     3. Implement the **Navigation** subpage.
 
         <!-- @[PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/PageOne.ets) -->
-        
+
         ``` TypeScript
         @Builder
         export function PageOneBuilder() {
@@ -640,7 +640,7 @@ The development procedure is as follows:
     5. Configure **routerMap** in the [module.json5](../quick-start/module-configuration-file.md#routermap) file.
 
         <!-- @[routerMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/module.json5) -->
-        
+
         ``` JSON5
         {
           "module": {

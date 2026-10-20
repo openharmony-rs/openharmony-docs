@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:45:16.346Z pushedAt=2026-09-29T08:27:24.923Z -->
+<!-- md-trans-meta sourceCommit=50266c36d56733840f26c6f9da6f30cdad8ed3fe translatedAt=2026-10-13T13:19:42.923Z pushedAt=2026-10-16T02:48:47.978Z -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -48,6 +48,7 @@ After obtaining the output stream capabilities supported by the camera, create a
 3. Import the NDK APIs on the C++ side, and perform video recording based on the surface ID passed in.
     ```c++
     #include "hilog/log.h"
+    #include "ndk_camera.h"
     #include <cmath>
 
     bool IsAspectRatioEqual(float videoAspectRatio, float previewAspectRatio)

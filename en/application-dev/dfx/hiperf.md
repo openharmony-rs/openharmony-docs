@@ -6,19 +6,23 @@
 <!--Designer: @Maplestroy91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=44da34c75e0877dd26e067a23f1dc0303066fdbb translatedAt=2026-07-31T01:32:14.076Z pushedAt=2026-07-31T07:39:23.302Z -->
+<!-- md-trans-meta sourceCommit=d4b5cb947deab3b2e503d34b9c14965b395b0c1f translatedAt=2026-10-13T12:48:28.173Z pushedAt=2026-10-15T10:31:43.161Z -->
 
 hiperf is a command line tool that integrates multiple performance analysis capabilities, enabling you to identify system bottlenecks, locate software hotspots, optimize code efficiency, and collect and analyze runtime performance data.
 
+
 You can use hiperf through [Deveco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install) or [SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host/releases) to collect the function call stack, obtain the execution time of each function on the call stack, and view the call chain information in a swimlane diagram for performance analysis. For details, see [Basic Time Analysis: Time](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-session-time) and [hiperf Usage](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_hiperf.md). To specify the event, sampling period, collection duration, and number of CPU cores, you can use HiPerf. The **perf.data** file can be opened using SmartPerf and displayed in a flame graph.
 
+
 This topic describes how to use hiperf to perform performance analysis.
+
 
 ## Environment Setup
 
 - The environment for OpenHarmony Device Connector (hdc) has been set up. For details, see [Environment Setup](hdc.md#environment-setup).
 
 - The devices are properly connected and **hdc shell** is executed.
+
 
 ## Command Syntax
 
@@ -27,6 +31,7 @@ Run the **hiperf --help** command to list all hiperf commands, including **dump*
 ```shell
 $ hiperf --help
 ```
+
 
 | Command| Description| 
 | -------- | -------- |
@@ -45,7 +50,9 @@ $ hiperf --help
 | [report](#report)| Converts performance data into visualized data.| 
 | [stat](#stat)| Collects statistics on performance data.| 
 
+
 **Example**
+
 
 ```shell
 $ hiperf --help
@@ -74,11 +81,15 @@ command:
 See 'hiperf help [command]' for more information on a specific command.
 ```
 
+
 ## Common Commands
+
 
 ### Recording Performance Data Sampling
 
+
 1. Sample the process **1234** for 10 seconds. Set the stack unwinding mode to **fp**, sampling frequency to **1000** times per second, event types to **hw-cpu-cycles** and **hw-instructions**, and save the sampling file to **/data/local/tmp/perf.data**.
+
 
     ```shell
     $ hiperf record -p 1234 -s fp -f 1000 -d 10 -e hw-cpu-cycles,hw-instructions -o /data/local/tmp/perf.data
@@ -92,9 +103,12 @@ See 'hiperf help [command]' for more information on a specific command.
     [ Sample lost: 0, Non sample lost: 0 ]
     ```
 
+
     The collected data is saved as a **perf.data** file in binary format, which contains the sampling data, process information, symbol table, and function calls required for performance analysis. You can use the flame graph script to convert the sampling data into a flame graph to identify system performance bottlenecks, locate software hotspots, and optimize code efficiency.
 
+
 2. Sample the application **com.example.insight_test_stage**. Set the sampling duration to **10s**, stack unwinding mode to **dwarf** (debug information table), sampling period to **1000**, event types to **hw-cpu-cycles** and **hw-instructions**, and use the default save path.
+
 
     ```shell
     $ hiperf record --app com.example.insight_test_stage -d 10 -s dwarf --period 1000 -e hw-cpu-cycles,hw-instructions
@@ -108,11 +122,15 @@ See 'hiperf help [command]' for more information on a specific command.
     [ Sample lost: 0, Non sample lost: 0 ]
     ```
 
+
     The collected data is saved to the default path **/data/local/tmp/perf.data**.
+
 
 ### Collecting Performance Statistics
 
+
 1. Count the processes with process IDs 1745 and 1910 for a counting duration of 10 seconds.
+
 
     ```shell
     $ hiperf stat -d 10 -p 1745,1910
@@ -129,7 +147,9 @@ See 'hiperf help [command]' for more information on a specific command.
                     5,622,169  sw-task-clock                  | 0.000562 cpus used               | (100%)
     ```
 
+
 2. Count processes **1745** and **1910** for **10** seconds, with event types set to **hw-cpu-cycles**, **hw-instructions**, and **sw-task-clock**, and a print interval of **3000** ms.
+
 
     ```shell
     $ hiperf stat -d 10 -p 1745,1910 -e hw-cpu-cycles,hw-instructions,sw-task-clock -i 3000
@@ -153,7 +173,9 @@ See 'hiperf help [command]' for more information on a specific command.
     Timeout exit (total 10000 ms)
     ```
 
+
 3. Count the process with process ID 1910 for a counting duration of 3 seconds, with the event types hw-cpu-cycles and hw-instructions, and print detailed information.
+
 
     ```shell
     $ hiperf stat -d 3 -p 1910 -e hw-cpu-cycles,hw-instructions --verbose
@@ -174,6 +196,7 @@ See 'hiperf help [command]' for more information on a specific command.
                       669,850  hw-cpu-cycles                  |                                  | (100%)
                       94,903  hw-instructions                | 7.058259 cycles per instruction  | (100%)
     ```
+
 
 ## list
 
@@ -198,6 +221,7 @@ Usage: hiperf list [event type name]
 
 Query the supported hardware event types.
 
+
 ```shell
 $ hiperf list hw
 event not support hw-ref-cpu-cycles
@@ -214,6 +238,7 @@ Supported events for hardware:
         hw-stalled-cycles-backend
 ```
 
+
 ## record
 
 Collects the performance data of a specified process or application, including the CPU cycle, number of instructions, and function calls, and saves the sampling data to a specified file. (For the default path, run the **hiperf record -h/--help** command to view the description of the **-o** parameter.)
@@ -227,7 +252,6 @@ Collects the performance data of a specified process or application, including t
 **Parameters of the record command**
 
 <!--RP1-->
-
 | Parameter | Description |
 | -------- | -------- |
 | -h/--help | Help command. |
@@ -277,7 +301,6 @@ Collects the performance data of a specified process or application, including t
 | --append-smo-data | When this parameter is enabled, the name of the original .so file in the packaged .so is added.<br>**NOTE**<br>This parameter is supported since API version 23. |
 | --add-counter | Collects the performance counter values of the events specified by this parameter. Multiple events are separated by commas. This parameter must be used together with --no-inherit.<br>**Note:** This parameter is supported since API version 26.0.0. |
 | --raw-data | Enables the collection of raw binary event data, typically used to obtain detailed information about tracepoint events.<br>**Note:** This parameter is supported since API version 26.0.0. |
-
 <!--RP1End-->
 
 **Example**
@@ -292,6 +315,7 @@ Sample the process 267 for 10 seconds and use **dwarf** to unwind the stack.
 $ hiperf record -p 267 -d 10 -s dwarf
 ```
 
+
 ## stat
 
 Monitors the specified application and periodically prints the values of performance counters.
@@ -305,29 +329,27 @@ Monitors the specified application and periodically prints the values of perform
 **Parameters of the stat command**
 
 <!--RP2-->
-
-| Parameter| Description| 
+| Parameter| Description|
 | -------- | -------- |
-| -h/--help | Displays the help information.| 
-| -c | Sets the ID of the CPU to collect its data.| 
-| -d | Sets the collection duration, in seconds. This parameter cannot be used together with **--control**.| 
-| -i | Sets the interval for printing **stat** information, in milliseconds.| 
-| -e | Specifies the events to collect. Multiple events are supported; use commas (,) to separate them.| 
-| -g | Specifies the event groups to collect, which are separated by commas (,). You can run the **list** command to obtain the supported event types.| 
-| --no-inherit | Collects no subprocess data.| 
-| -p | Specifies the process ID to collect. Multiple process IDs are supported; separate them with commas (,). This parameter cannot be used together with **-a**.| 
-| -t | Specifies the thread ID to collect. Multiple thread IDs are supported; separate them with commas (,). This parameter cannot be used together with **-a**.| 
-| --app | Sets the application names to collect. Use commas (,) to separate them. The application must already be running. If it has not started, the command waits up to 20s and then exits automatically. This parameter cannot be used together with **-a**.| 
-| --chkms | Sets the query interval, in milliseconds. The value ranges from 1 to 200. The default value is **10**.| 
-| --per-core | Obtains the print count of each CPU core.| 
-| --per-thread | Obtains the print count of each thread.| 
-| --restart | Collects performance indicator information about application startup. If a process is not started within 30 seconds, the record exits. This parameter must be used together with **--app**.| 
-| --verbose | Outputs detailed information.| 
-| --dumpoptions | Displays details about all options in the list.| 
-| --control [command] | Controls the collection operation. The commands include **prepare**, **start**, and **stop**. This parameter cannot be used together with **-d**.<br>Note: This parameter is supported since API version 20.| 
-| -o | Sets the output file path. You can customize the file name.<br>For the default path, run the **hiperf stat -h/--help** command to view the description of the **-o** parameter.<br>This parameter must be used with **--control prepare**, and cannot be used with **--control**.<br>Note: This parameter is supported since API version 20.| 
+| -h/--help | Displays the help information.|
+| -c | Sets the ID of the CPU to collect its data.|
+| -d | Sets the collection duration, in seconds. This parameter cannot be used together with **--control**.|
+| -i | Sets the interval for printing **stat** information, in milliseconds.|
+| -e | Specifies the events to collect. Multiple events are supported; use commas (,) to separate them.|
+| -g | Specifies the event groups to collect, which are separated by commas (,). You can run the **list** command to obtain the supported event types.|
+| --no-inherit | Collects no subprocess data.|
+| -p | Specifies the process ID to collect. Multiple process IDs are supported; separate them with commas (,). This parameter cannot be used together with **-a**.|
+| -t | Specifies the thread ID to collect. Multiple thread IDs are supported; separate them with commas (,). This parameter cannot be used together with **-a**.|
+| --app | Sets the application names to collect. Use commas (,) to separate them. The application must already be running. If it has not started, the command waits up to 20s and then exits automatically. This parameter cannot be used together with **-a**.|
+| --chkms | Sets the query interval, in milliseconds. The value ranges from 1 to 200. The default value is **10**.|
+| --per-core | Obtains the print count of each CPU core.|
+| --per-thread | Obtains the print count of each thread.|
+| --restart | Collects performance indicator information about application startup. If a process is not started within 30 seconds, the record exits. This parameter must be used together with **--app**.|
+| --verbose | Outputs detailed information.|
+| --dumpoptions | Displays details about all options in the list.|
+| --control [command] | Controls the collection operation. The commands include **prepare**, **start**, and **stop**. This parameter cannot be used together with **-d**.<br>**Note:** This parameter is supported since API version 20.|
+| -o | Sets the output file path and allows users to define a custom file name.<br>The default path is based on the **-o** parameter description displayed when running **hiperf stat -h/--help** on the device.<br>This parameter must be used together with **--control prepare**.<br/>**Note:** This parameter is supported since API version 20. |
 | -a | Collects the device performance data.|
-
 <!--RP2End-->
 
 **Example**
@@ -341,6 +363,7 @@ Run the **stat** command to monitor the performance data of the process **2349**
 ```shell
 $ hiperf stat -p 1745 -d 3 -c 0
 ```
+
 
 ## dump
 
@@ -373,6 +396,7 @@ Run the **dump** command to read the **/data/local/tmp/perf.data** file and expo
 $ hiperf dump -i /data/local/tmp/perf.data -o /data/local/tmp/perf.dump
 ```
 
+
 ## report
 
 This command is mainly used to convert the sampling data (**perf.data**) to a user-specified format (such as JSON or ProtoBuf). It can group samples belonging to the same process, thread, or function into individual sample entries, sort the sample entries by their event counts, and display them in a report.
@@ -404,10 +428,10 @@ Usage: hiperf report [option] \<filename\>
 ```
 
 Extract key data that has a great impact on performance (≥ 1%) from the **perf.data** file and displays the data in a report.
-
 ```shell
 $ hiperf report -i /data/local/tmp/perf.data --limit-percent 1
 ```
+
 
 ## FAQs
 

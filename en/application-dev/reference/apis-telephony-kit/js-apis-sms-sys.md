@@ -50,7 +50,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.                           |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                            |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
@@ -378,13 +378,13 @@ Downloads an MMS message. This API uses a promise to return the result.
 | Name  | Type                       | Mandatory| Description                                    |
 | -------- | --------------------------- | ---- | ---------------------------------------- |
 | context | Context          | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md).|
-| mmsParams | [MmsParams](#mmsparams11) | Yes  | Parameters (including the callback) for sending MMS messages. For details, see [MmsParams](#mmsparams11).|
+| mmsParams | [MmsParams](#mmsparams11) | Yes  | Parameters (including the callback) for downloading MMS messages. For details, see [MmsParams](#mmsparams11).|
 
 **Return value**
 
 | Type           | Description                                                        |
 | --------------- | ------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise used to return the MMS message download result.|
 
 **Error codes**
 
@@ -849,7 +849,7 @@ Splits an SMS message into multiple segments. This API uses a promise to return 
 
 | Type                   | Description                               |
 | ----------------------- | ----------------------------------- |
-| Promise<Array<string\>> | Promise used to return the result.|
+| Promise\<Array<string\>> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1412,6 +1412,62 @@ promise.then(() => {
 });
 ```
 
+## sms.setCBConfigList<sup>23+</sup>
+
+setCBConfigList\(configs: CBConfigListConfigs\): Promise\<void\>
+
+Enables the cell broadcast list.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.RECEIVE_SMS
+
+**System capability**: SystemCapability.Telephony.SmsMms
+
+**Parameters**
+
+| Name | Type                                | Mandatory| Description        |
+| ------- | ------------------------------------ | ---- | ------------ |
+| configs | [CBConfigListConfigs](#cbconfiglistconfigs23) | Yes  | Cell broadcast configuration list.|
+
+**Return value**
+
+| Type               | Description                         |
+| ------------------- | ----------------------------- |
+| Promise&lt;void&gt; | Promise used to return the result.|
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID|                  Error Message                   |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**Example**
+
+```ts
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let cbConfigListConfigs: sms.CBConfigListConfigs = {
+    slotId: 0,
+    messageIds: [100, 200, 300],
+    ranType: sms.RanType.TYPE_GSM
+};
+let promise = sms.setCBConfigList(cbConfigListConfigs);
+promise.then(() => {
+    console.info('setCBConfigList success.');
+}).catch((err: BusinessError) => {
+    console.error('setCBConfigList failed, code: ${err.code}, message: ${err.message}');
+})
+```
+
 ## sms.getSmsSegmentsInfo<sup>8+</sup>
 
 getSmsSegmentsInfo\(slotId: number, message: string, force7bit: boolean, callback: AsyncCallback\<SmsSegmentsInfo\>\): void
@@ -1898,6 +1954,57 @@ sms.encodeMms(mmsInformation).then((data: number[]) => {
 ```
 
 
+## sms.getSmsShortCodeType<sup>23+</sup>
+
+getSmsShortCodeType\(slotId: number, destAddr: string\): Promise\<SmsShortCodeType\>
+
+Obtains the short code type of the destination address to which an SMS message is to be sent. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.SEND_MESSAGES
+
+**System capability**: SystemCapability.Telephony.SmsMms
+
+**Parameters**
+
+| Name  | Type                               | Mandatory| Description      |
+| -------- | ----------------------------------- | ---- | ---------- |
+| slotId   | number                              | Yes  | ID of the slot where the SIM card used for sending SMS messages is located.<br>- **0**: card slot 1<br>- **1**: card slot 2|
+| destAddr | string                              | Yes  | Destination address to which an SMS message is sent.<br>The value range is \[0,+∞\).|
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.    |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300004  | Do not have sim card.                       |
+| 8300999  | Unknown error code.                          |
+
+**Example**
+
+```ts
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+let destAddr: string = '10086';
+
+sms.getSmsShortCodeType(slotId, destAddr)
+    .then((type: sms.SmsShortCodeType) => {
+        console.info('getSmsShortCodeType succeed, type: ${type}');
+    }).catch((err: BusinessError) => {
+        console.error('getSmsShortCodeType failed, code: ${err.code}, message: ${err.message}');
+    });
+```
+
+
 ## MmsParams<sup>11+</sup>
 
 Defines the parameters for sending SMS messages.
@@ -2255,7 +2362,7 @@ RAN type.
 |   Name   | Value  | Description|
 | --------- | ---- | ---- |
 | TYPE_GSM  | 1    | GSM  |
-| TYPE_CDMA | 2    | CMDA |
+| TYPE_CDMA | 2    | CDMA |
 
 ## SmsEncodingScheme<sup>8+</sup>
 
@@ -2271,6 +2378,20 @@ Enumerates SMS encoding schemes.
 | SMS_ENCODING_7BIT    | 1    | 7-digit code. |
 | SMS_ENCODING_8BIT    | 2    | 8-digit code. |
 | SMS_ENCODING_16BIT   | 3    | 16-digit code.|
+
+## CBConfigListConfigs<sup>23+</sup>
+
+Defines the cell broadcast list configuration.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Telephony.SmsMms
+
+|  Name | Type                                  | Read-Only| Optional| Description          |
+| ------ | -------------------------------------- | ---- | ---- | -------------- |
+| slotId | number                                 | No  | No  | Card slot corresponding to the current cell broadcast configuration list.       |
+| messageIds   | number[]                         | No  | No  | Message IDs of the current cell broadcast list.|
+| ranType | [RanType](#rantype7)                  | No  | No  | RAN type of the current cell broadcast list.|
 
 ## SimMessageOptions<sup>7+</sup>
 
@@ -2362,3 +2483,17 @@ Defines the SMS message segment information.
 | encodeCount          | number                                   | Yes  | Encoding count.    |
 | encodeCountRemaining | number                                   | Yes  | Remaining encoding count.|
 | scheme               | [SmsEncodingScheme](#smsencodingscheme8) | Yes  | Encoding scheme.|
+
+## SmsShortCodeType<sup>23+</sup>
+
+Defines the SMS short code type.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Telephony.SmsMms
+
+|         Name        | Value  | Description        |
+| -------------------- | ---- | ------------ |
+| SMS_SHORT_CODE_TYPE_UNKNOWN | -1    | Unknown code.|
+| SMS_SHORT_CODE_TYPE_NOT_PREMIUM    | 0    | Non-paid short code. |
+| SMS_SHORT_CODE_TYPE_POSSIBLE_PREMIUM    | 1    | Potential paid short code. |

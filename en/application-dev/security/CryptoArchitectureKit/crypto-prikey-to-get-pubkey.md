@@ -6,12 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=cfb3907bfa3f7d3a5fbbbb806a3b6c24a0397042 translatedAt=2026-10-09T01:57:45.328Z pushedAt=2026-10-10T02:40:35.701Z -->
 
-Since API version 23, the algorithm library supports obtaining a public key based on a private key.
+Starting from API version 23, the algorithm library supports obtaining a public key object from a private key object.
 
 The following uses RSA as an example to describe how to obtain a public key based on a private key.
 
-For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-decrypt-spec.md#rsa).
+For the corresponding algorithm specifications, see [Asymmetric Key Encryption and Decryption Algorithm Specifications: RSA](crypto-encryption-decryption.md#rsa).
 
 ## How to Develop
 
@@ -19,8 +20,8 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
 
    The default number of primes for creating an RSA asymmetric key is **2**. The **PRIMES_2** parameter is omitted in the string parameter here.
 
-2. Call [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to randomly generate an asymmetric key pair (**KeyPair**).
-   
+2. Call [AsyKeyGenerator.convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12-1) to convert the binary data of the private key into an asymmetric key pair (**KeyPair**).
+
    The **KeyPair** object includes a public key (**PubKey**) and a private key (**PriKey**).
 
 3. Call [PubKey.getEncoded](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencoded) to obtain the binary data of the public key object in **KeyPair**.
@@ -34,7 +35,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
 - Example: Generate an RSA key pair asynchronously (by calling [getPubKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getpubkey23)):
 
   <!-- @[prikey_get_pubkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubkeyAsync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -92,8 +93,8 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     try {
       let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
       let priKey = keyPair.priKey;
-      let pubkey = await priKey.getPubKey();
-      let pkBlob = pubkey.getEncoded();
+      let pubKey = await priKey.getPubKey();
+      let pkBlob = pubKey.getEncoded();
       console.info('pk1 bin data: ' + pkBlob.data);
       let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
       console.info('result: ' + ret);
@@ -107,7 +108,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
 - Example: Generate an RSA key pair synchronously (by calling [getPubKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getpubkeysync23)):
 
   <!-- @[prikey_get_pubkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubKeySync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -165,8 +166,8 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     try {
       let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
       let priKey = keyPair.priKey;
-      let pubkey = priKey.getPubKeySync();
-      let pkBlob = pubkey.getEncoded();
+      let pubKey = priKey.getPubKeySync();
+      let pkBlob = pubKey.getEncoded();
       console.info('pk1 bin data: ' + pkBlob.data);
       let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
       console.info('result: ' + ret);
@@ -175,3 +176,5 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     }
   }
   ```
+
+

@@ -2,10 +2,11 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=67487829468179127107f74c0916ca5ae8660edf translatedAt=2026-10-09T12:35:37.014Z pushedAt=2026-10-10T06:57:54.778Z -->
 
 > **NOTE**
 >

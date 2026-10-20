@@ -23,7 +23,7 @@
       constructor(arg: number);
       plusOne(): number;
 
-      public get value();
+      public get value(): number;
       public set value(newVal: number);
     }
     ```

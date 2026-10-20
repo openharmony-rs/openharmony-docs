@@ -3,9 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
 <!--Designer: @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1901db9be343b0a2f2f315e66f0588f9bda6dfc5 translatedAt=2026-09-14T09:13:41.796Z pushedAt=2026-09-15T13:10:15.549Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-10-13T12:49:37.492Z pushedAt=2026-10-15T11:05:25.743Z -->
 
 Display management is responsible for managing various types of displays on a device, including physical, virtual, and foldable displays. It manages their properties and acts as a publisher, broadcasting display-related events and information to subscribed services that require display information.
 

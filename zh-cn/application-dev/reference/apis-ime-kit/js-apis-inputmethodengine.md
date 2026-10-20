@@ -122,8 +122,8 @@ import { inputMethodEngine } from '@kit.IMEKit';
 | PATTERN_ONE_TIME_CODE<sup>20+</sup> | number | 13 | 验证码编辑框。<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 | OPTION_ASCII | number | 20 | 允许输入ASCII值。 |
 | OPTION_NONE | number | 0 | 不指定编辑框输入属性。 |
-| OPTION_AUTO_CAP_CHARACTERS | number | 2 | 允许输入字符。 |
-| OPTION_AUTO_CAP_SENTENCES | number | 8 | 允许输入句子。 |
+| OPTION_AUTO_CAP_CHARACTERS | number | 2 | 自动将字符首字母大写。 |
+| OPTION_AUTO_CAP_SENTENCES | number | 8 | 自动将句子首字母大写。 |
 | OPTION_AUTO_WORDS | number | 4 | 允许输入单词。 |
 | OPTION_MULTI_LINE | number | 1 | 允许输入多行。 |
 | OPTION_NO_FULLSCREEN | number | 10 | 半屏样式。 |
@@ -457,7 +457,7 @@ on(type: 'inputStop', callback: () => void): void
 
 订阅停止输入法应用事件。使用callback异步回调。
 
-使用场景：输入法应用需要在编辑框失去焦点或用户切换输入法时，执行清理操作（如隐藏面板、释放资源）。
+使用场景：输入法应用需要在用户切换输入法时，执行清理操作（如隐藏面板、释放资源）。
 
 使用后效果：当输入法应用被停止绑定时触发回调。输入法应用应在回调中隐藏面板、取消事件订阅、释放InputClient相关资源。
 

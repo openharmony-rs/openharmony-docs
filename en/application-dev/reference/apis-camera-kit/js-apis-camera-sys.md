@@ -1,12 +1,11 @@
 # @ohos.multimedia.camera (Camera Management) (System API)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=d33f17ff8cd3b27072e6d5b24d30907d2a0c835d translatedAt=2026-08-11T02:04:39.928Z pushedAt=2026-08-12T08:05:48.776Z -->
+<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-10-12T12:05:34.392Z pushedAt=2026-10-13T04:58:00.925Z -->
 
 The module provides a set of camera service APIs for you to easily develop a camera application. The application can access and operate the camera hardware to implement basic operations, such as preview, taking photos, and recording videos. It can also perform more operations, for example, controlling the flash and exposure time, and focusing or adjusting the focus.
 
@@ -186,7 +185,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID       | Error Message       |
 | --------------- | --------------- |
-| 202             |  Permission verification failed. A non-system application calls a system API.   |
+| 202             |  Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 13+    |
 
 **Example**
 
@@ -284,7 +283,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID       | Error Message       |
 | --------------- | --------------- |
-| 202               |  Permission verification failed. A non-system application calls a system API.       |
+| 202               |  Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 13+        |
+
 
 **Example**
 
@@ -328,7 +328,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID       | Error Message       |
 | --------------- | --------------- |
-| 202               |  Permission verification failed. A non-system application calls a system API.     |
+| 202               |  Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 13+      |
 
 **Example**
 
@@ -372,7 +372,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID       | Error Message       |
 | --------------- | --------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+  |
 | 7400101 | Parameter missing or parameter type incorrect. |
 
 **Example**
@@ -419,10 +419,10 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID       | Error Message       |
 | --------------- | --------------- |
-| 202 | Not System Application. |
+| 202 | Not System Application.<br>Applicable versions: 12+ |
 | 7400101 | Parameter missing or parameter type incorrect. |
 | 7400102 | Operation not allowed. |
-| 7400201 | Camera service fatal error. |
+| 7400201 | Camera service fatal error.<br>Applicable versions: 12+ |
 
 **Example**
 
@@ -923,7 +923,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 7400103         | Session not config, only throw in session usage.     |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -938,7 +937,6 @@ function isDepthFusionSupported(DepthFusionQuery: camera.DepthFusionQuery): void
 }
 
 ```
-
 ### getDepthFusionThreshold<sup>14+</sup>
 
 getDepthFusionThreshold(): Array\<number\>
@@ -965,7 +963,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 7400103         | Session not config, only throw in session usage.      |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -979,7 +976,6 @@ function getDepthFusionThreshold(DepthFusionQuery: camera.DepthFusionQuery): voi
   }
 }
 ```
-
 ## DepthFusion<sup>14+</sup>
 
 Depth fusion class. It inherits from [DepthFusionQuery](js-apis-camera-sys.md#depthfusionquery14).
@@ -1010,7 +1006,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 7400103         | Session not config.      |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1032,6 +1027,8 @@ function isDepthFusionEnabled(DepthFusion: camera.DepthFusion): boolean {
 enableDepthFusion(enabled: boolean): void
 
 Enables depth fusion.
+
+Before setting this feature, use [isDepthFusionSupported](#isdepthfusionsupported14) to check whether the device supports depth fusion.
 
 **System API**: This is a system API.
 
@@ -1055,7 +1052,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 7400201 | Camera service fatal error.                    |
 
 **Example**
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1201,6 +1197,8 @@ function getSketchRatio(previewOutput: camera.PreviewOutput): number {
 enableSketch(enabled: boolean): void
 
 Enables or disables PiP preview.
+
+Before setting this feature, use [isSketchSupported](#issketchsupported11) to check whether the device supports PiP preview.
 
 **System API**: This is a system API.
 
@@ -1643,6 +1641,8 @@ function isDeferredImageDeliveryEnabled(photoOutput: camera.PhotoOutput, type: c
 deferImageDelivery(type: DeferredDeliveryImageType): void
 
 Enables deferred delivery of a certain type.
+
+Before setting this feature, call [isDeferredImageDeliverySupported](#isdeferredimagedeliverysupported11) to check whether deferred delivery of a certain type is supported in current mode.
 
 **System API**: This is a system API.
 
@@ -2247,13 +2247,12 @@ Obtains the manual exposure duration in use.
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Return value**
-
 | Name     | Type                                             | Mandatory| Description                   |
 | -------- | ------------------------------------------------- | ---- | --------------------- |
 | value     | number | Yes  | Manual exposure duration, in ms. |
 
 **Error codes**
-
+ 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID       | Error Message       |
@@ -2323,6 +2322,7 @@ Enumerates the tripod statuses.
 | ACTIVE   | 1   | The tripod is active. **System API**: This is a system API.         |
 | ENTERING | 2   | The system is transitioning into a stable tripod mode. **System API**: This is a system API.       |
 | EXITING  | 3   | The system is leaving the stable tripod mode. **System API**: This is a system API.         |
+
 
 ## SceneFeatureType<sup>12+</sup>
 
@@ -2406,7 +2406,6 @@ function isSceneFeatureSupported(photoSessionForSys: camera.PhotoSessionForSys, 
   return isSupported;
 }
 ```
-
 ## SceneDetection<sup>12+</sup>
 
 Provides the scene detection capability. It inherits from [SceneDetectionQuery](#scenedetectionquery12).
@@ -2613,10 +2612,9 @@ Obtains the level of the beauty type in use.
 | type     | [BeautyType](#beautytype) | Yes  | Beauty type.  |
 
 **Return value**
-
-| Name     | Type                                             | Mandatory| Description                   |
-| -------- | ------------------------------------------------- | ---- | --------------------- |
-| value     | number | Yes  | Beauty level. |
+| Type    | Description         |
+| ------- | ------------------ |
+| number  | Beauty level.  |
 
 **Error codes**
 
@@ -3163,7 +3161,6 @@ Obtains the level of the beauty type in use.
 | type     | [BeautyType](#beautytype) | Yes  | Beauty type.  |
 
 **Return value**
-
 | Name     | Type                                             | Mandatory| Description                   |
 | -------- | ------------------------------------------------- | ---- | --------------------- |
 | value     | number | Yes  | Beauty level. |
@@ -4233,7 +4230,6 @@ function registerSessionError(highResolutionPhotoSession: camera.HighResolutionP
   highResolutionPhotoSession.on('error', callback);
 }
 ```
-
 ### off('error')<sup>12+</sup>
 
 off(type: 'error', callback?: ErrorCallback): void
@@ -4365,7 +4361,6 @@ Implements a slow-motion video session, which sets the parameters of the slow-mo
 
 > **NOTE**
 > In slow-motion video mode, only preview streams and video streams can be added.
-
 ### on('error')<sup>12+</sup>
 
 on(type: 'error', callback: ErrorCallback): void
@@ -4665,7 +4660,6 @@ function unregisterSlowMotionStatus(slowMotionVideoSession: camera.SlowMotionVid
   slowMotionVideoSession.off('slowMotionStatus');
 }
 ```
-
 ### isSlowMotionDetectionSupported<sup>12+</sup>
 
 isSlowMotionDetectionSupported(): boolean
@@ -4718,7 +4712,7 @@ setSlowMotionDetectionArea(area: Rect): void
 Sets an area for slow-motion detection.
 
 > **NOTE**
-> Before the setting, call [isSlowMotionDetectionSupported](#isslowmotiondetectionsupported12) to check whether the device supports slow-motion detection.
+> Before the setting, call [isSlowMotionDetectionSupported](#isslowmotiondetectionsupported12) to check whether the device supports slow-motion detection. 
 This API must be called after [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1) is called.
 
 **System API**: This is a system API.
@@ -4889,6 +4883,8 @@ Describes the ISO information.
 | ---- | ------- | ---- |--| -------------- |
 | iso  | number  | Yes  | Yes| ISO.       |
 
+---
+
 ## ApertureInfo<sup>12+</sup>
 
 Describes the aperture information.
@@ -4900,6 +4896,8 @@ Describes the aperture information.
 | Name     | Type   | Read-only| Optional | Description      |
 | --------- | ------- | ---- |-----| ---------- |
 | aperture  | number  | Yes  | Yes  | Aperture.  |
+
+---
 
 ## LuminationInfo<sup>12+</sup>
 
@@ -4915,11 +4913,11 @@ Describes the illumination information.
 
 ## ExposureMeteringMode<sup>12+</sup>
 
-Enumerates the exposure metering modes.
+Enumerates the exposure metering modes. 
 
-**System API**: This is a system API.
+**System API**: This is a system API. 
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability**: SystemCapability.Multimedia.Camera.Core 
 
 | Name                          | Value  | Description        | 
 | ----------------------------- | ---- | ----------- | 
@@ -5125,6 +5123,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | 202     | Not System Application. |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
+
 
 **Example**
 
@@ -7760,7 +7759,6 @@ function getTimeLapseInterval(timeLapsePhotoSession: camera.TimeLapsePhotoSessio
 ```
 
 ### setTimeLapseInterval<sup>12+</sup>
-
 setTimeLapseInterval(interval: number): void
 
 Sets a time-lapse shooting interval.
@@ -8213,13 +8211,12 @@ Obtains the type of light painting shutter mode in use.
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Return value**
-
 | Type                                            | Description                   |
 |------------------------------------------------- | --------------------- |
 | [LightPaintingType](#lightpaintingtype12) | Type of light painting shutter mode. |
 
 **Error codes**
-
+ 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID       | Error Message       |
@@ -8242,18 +8239,19 @@ setLightPaintingType(type: LightPaintingType): void
 
 Sets the type of light painting shutter mode.
 
+Before setting this feature, call [getSupportedLightPaintingTypes](#getsupportedlightpaintingtypes12) to obtain the supported light painting shutter modes.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-**Return value**
-
+**Parameters**
 | Name     | Type                    | Mandatory| Description                |
 | -------- | ----------------------- | ---- | ------------------- |
 | type | [LightPaintingType](#lightpaintingtype12) | Yes  | Type of light painting mode.|
 
 **Error codes**
-
+ 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID       | Error Message       |
@@ -8290,13 +8288,12 @@ Obtains the supported types of light painting shutter mode.
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Return value**
-
 | Type                                            | Description                   |
 |------------------------------------------------- | --------------------- |
 | Array\<[LightPaintingType](#lightpaintingtype12)\> | Supported types of light painting shutter mode. |
 
 **Error codes**
-
+ 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID       | Error Message       |

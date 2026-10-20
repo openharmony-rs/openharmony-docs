@@ -5,7 +5,7 @@
 <!--Designer: @chenxi0605; @JerryH1011-->
 <!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=8bb3e2585de6843c7a6b6958a78ae198c6cbfd8c translatedAt=2026-09-16T02:50:38.399Z pushedAt=2026-09-16T06:59:30.854Z -->
+<!-- md-trans-meta sourceCommit=9ba5cc8a5a6376c01d21ba01049967807da4bf5c translatedAt=2026-10-13T12:52:11.833Z pushedAt=2026-10-15T11:10:09.126Z -->
 
 ## When to Use
 
@@ -33,41 +33,48 @@ When you select a file or folder through Picker for temporary authorization, the
 
     **Example**
 
-    <!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->    
-
+    <!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->  
+    
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
     import { picker } from '@kit.CoreFileKit';
     import { fileShare } from '@kit.CoreFileKit';
-
-    export async function persistPermissionExample() {
+    import { common } from '@kit.AbilityKit';
+    import { preferences } from '@kit.ArkData';
+    
+    export async function persistPermissionExample(context: common.UIAbilityContext): Promise<void> {
       try {
         // ...
+        let store = await preferences.getPreferences(context, { name: 'persist_permission' });
         let documentSelectOptions = new picker.DocumentSelectOptions();
         let documentPicker = new picker.DocumentViewPicker();
         let uris = await documentPicker.select(documentSelectOptions);
-        // You can combine multiple permissions. For example, for read and write permissions, use fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE. 
+        if (uris.length === 0) {
+          console.info('No URI selected');
+          return;
+        }
+        // You can grant multiple permissions in combination. For example, use fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE for read and write permissions.
         // Note: You can perform persistent authorization only on the obtained temporary permission. Otherwise, an error is reported.
         let policyInfo: fileShare.PolicyInfo = {
           uri: uris[0],
           operationMode: fileShare.OperationMode.READ_MODE,
         };
         let policies: fileShare.PolicyInfo[] = [policyInfo];
-        fileShare.persistPermission(policies).then(() => {
-          console.info('persistPermission successfully');
-        }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-          console.error('persistPermission failed with error message: ' + err.message + ', error code: ' + err.code);
-          if (err.code == 13900001 && err.data) {
-            for (let i = 0; i < err.data.length; i++) {
-              console.error('error code : ' + JSON.stringify(err.data[i].code));
-              console.error('error uri : ' + JSON.stringify(err.data[i].uri));
-              console.error('error reason : ' + JSON.stringify(err.data[i].message));
-            }
-          }
-        });
+        await fileShare.persistPermission(policies);
+        // This example saves the URI of the most recent successful persistent authorization for activation and revocation operations.
+        await store.put('uri', uris[0]);
+        await store.flush();
+        console.info('persistPermission successfully');
       } catch (error) {
-        let err: BusinessError = error as BusinessError;
+        let err = error as BusinessError<Array<fileShare.PolicyErrorResult>>;
         console.error(`persistPermission failed with err, Error code: ${err.code}, message: ${err.message}`);
+        if (err.code === 13900001 && err.data) {
+          for (let i = 0; i < err.data.length; i++) {
+            console.error('error code : ' + JSON.stringify(err.data[i].code));
+            console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+            console.error('error reason : ' + JSON.stringify(err.data[i].message));
+          }
+        }
       }
     }
     ```
@@ -89,39 +96,46 @@ When you select a file or folder through Picker for temporary authorization, the
 
     **Example**
 
-    <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->    
-
+    <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->  
+    
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
     import { picker } from '@kit.CoreFileKit';
     import { fileShare } from '@kit.CoreFileKit';
-
+    import { common } from '@kit.AbilityKit';
+    import { preferences } from '@kit.ArkData';
+    
     // ...
-    export async function revokePermissionExample() {
+    export async function revokePermissionExample(context: common.UIAbilityContext): Promise<void> {
       try {
-        let uri = 'file://docs/storage/Users/username/tmp.txt';
-        // You can combine multiple permissions to cancel, for example, read/write permissions can use fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
+        let store = await preferences.getPreferences(context, { name: 'persist_permission' });
+        // Use the URI obtained through Picker and successfully persistently authorized. Do not manually construct the URI.
+        let uri = await store.get('uri', '') as string;
+        if (uri.length === 0) {
+          console.info('Persist a URI before using this operation');
+          return;
+        }
+        // You can combine multiple permissions to cancel them. For example, for read and write permissions, use fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
         // Note: You can only cancel persistent authorization for persistent permissions that have been obtained; otherwise, an error is reported.
         let policyInfo: fileShare.PolicyInfo = {
           uri: uri,
           operationMode: fileShare.OperationMode.READ_MODE,
         };
         let policies: fileShare.PolicyInfo[] = [policyInfo];
-        fileShare.revokePermission(policies).then(() => {
-          console.info('revokePermission successfully');
-        }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-          console.error('revokePermission failed with error message: ' + err.message + ', error code: ' + err.code);
-          if (err.code == 13900001 && err.data) {
-            for (let i = 0; i < err.data.length; i++) {
-              console.error('error code : ' + JSON.stringify(err.data[i].code));
-              console.error('error uri : ' + JSON.stringify(err.data[i].uri));
-              console.error('error reason : ' + JSON.stringify(err.data[i].message));
-            }
-          }
-        });
+        await fileShare.revokePermission(policies);
+        await store.delete('uri');
+        await store.flush();
+        console.info('revokePermission successfully');
       } catch (error) {
-        let err: BusinessError = error as BusinessError;
+        let err = error as BusinessError<Array<fileShare.PolicyErrorResult>>;
         console.error(`revokePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
+        if (err.code === 13900001 && err.data) {
+          for (let i = 0; i < err.data.length; i++) {
+            console.error('error code : ' + JSON.stringify(err.data[i].code));
+            console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+            console.error('error reason : ' + JSON.stringify(err.data[i].message));
+          }
+        }
       }
     }
     ```
@@ -143,42 +157,44 @@ ohos.permission.FILE_ACCESS_PERSIST. For details about how to request the permis
 
 **Example**
 
-<!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->    
+<!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets) -->  
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker } from '@kit.CoreFileKit';
 import { fileShare } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+import { preferences } from '@kit.ArkData';
 
 // ...
-export async function activatePermissionExample() {
+export async function activatePermissionExample(context: common.UIAbilityContext): Promise<void> {
   try {
-    let uri = 'file://docs/storage/Users/username/tmp.txt';
-    // Multiple permissions can be activated in combination. For example, for read and write permissions, use fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
+    let store = await preferences.getPreferences(context, { name: 'persist_permission' });
+    // Use the URI obtained through Picker and successfully persisted for authorization. Do not construct the URI manually.
+    let uri = await store.get('uri', '') as string;
+    if (uri.length === 0) {
+      console.info('Persist a URI before using this operation');
+      return;
+    }
+    // You can combine and activate multiple permissions. For example, for read and write permissions, use fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
     // Note: Activation of persistent authorization can only be performed on permissions that have already been persisted. Otherwise, an error will be reported.
     let policyInfo: fileShare.PolicyInfo = {
       uri: uri,
       operationMode: fileShare.OperationMode.READ_MODE,
     };
     let policies: fileShare.PolicyInfo[] = [policyInfo];
-    fileShare.activatePermission(policies).then(() => {
-      console.info('activatePermission successfully');
-    }).catch((err: BusinessError<Array<fileShare.PolicyErrorResult>>) => {
-      console.error('activatePermission failed with error message: ' + err.message + ', error code: ' + err.code);
-      if (err.code == 13900001 && err.data) {
-        for (let i = 0; i < err.data.length; i++) {
-          console.error('error code : ' + JSON.stringify(err.data[i].code));
-          console.error('error uri : ' + JSON.stringify(err.data[i].uri));
-          console.error('error reason : ' + JSON.stringify(err.data[i].message));
-          if (err.data[i].code == fileShare.PolicyErrorCode.PERMISSION_NOT_PERSISTED) {
-          // You can choose to persist first and then activate.
-          }
-        }
-      }
-    });
+    await fileShare.activatePermission(policies);
+    console.info('activatePermission successfully');
   } catch (error) {
-    let err: BusinessError = error as BusinessError;
+    let err = error as BusinessError<Array<fileShare.PolicyErrorResult>>;
     console.error(`activatePermission failed with err, Error code: ${err.code}, message: ${err.message}`);
+    if (err.code === 13900001 && err.data) {
+      for (let i = 0; i < err.data.length; i++) {
+        console.error('error code : ' + JSON.stringify(err.data[i].code));
+        console.error('error uri : ' + JSON.stringify(err.data[i].uri));
+        console.error('error reason : ' + JSON.stringify(err.data[i].message));
+      }
+    }
   }
 }
 ```

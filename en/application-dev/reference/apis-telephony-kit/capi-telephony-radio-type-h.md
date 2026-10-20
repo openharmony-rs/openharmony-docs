@@ -8,7 +8,7 @@
 
 ## Overview
 
-Declares the structs for the C APIs of the radio module.
+Declares the structs for the C APIs of the radio module. The structs can be used to obtain the network status, network registration status, radio access technology type, NSA network registration status, and error code type. They are applicable to scenarios where the device's network registration status and wireless access technology information need to be obtained for service processing.
 
 **File to include**: <telephony/core_service/telephony_radio_type.h>
 
@@ -35,7 +35,7 @@ Declares the structs for the C APIs of the radio module.
 | [Telephony_RadioResult](#telephony_radioresult) | Telephony_RadioResult | Result codes.|
 | [Telephony_RegState](#telephony_regstate) | Telephony_RegState | Network registration status of the device.|
 | [Telephony_RadioTechnology](#telephony_radiotechnology) | Telephony_RadioTechnology | Radio access technology (RAT) type of the device.|
-| [Telephony_NsaState](#telephony_nsastate) | Telephony_NsaState | NSA network registration status of the device.|
+| [Telephony_NsaState](#telephony_nsastate) | Telephony_NsaState | Non-standalone (NSA) network registration status of the device.|
 
 ### Macros
 
@@ -63,7 +63,7 @@ Result codes.
 | TEL_RADIO_SUCCESS = 0 | Operation succeeded.|
 | TEL_RADIO_PERMISSION_DENIED = 201 | Permission denied.|
 | TEL_RADIO_ERR_INVALID_PARAM = 401 | Invalid parameter.|
-| TEL_RADIO_ERR_MARSHALLING_FAILED = 8300001 | Marshaling failed, which is a low-probability error. Try again later when this error occurs.|
+| TEL_RADIO_ERR_MARSHALLING_FAILED = 8300001 | Marshalling failed, which is a low-probability error. Try again later when this error occurs.|
 | TEL_RADIO_ERR_SERVICE_CONNECTION_FAILED = 8300002 | Connection error. Try again later when this error occurs.|
 | TEL_RADIO_ERR_OPERATION_FAILED = 8300003 | Operation failed. Try again later when this error occurs.|
 
@@ -100,19 +100,19 @@ RAT type of the device.
 
 | Enum Item| Description|
 | -- | -- |
-| TEL_RADIO_TECHNOLOGY_UNKNOWN = 0 | Unknown RAT|
-| TEL_RADIO_TECHNOLOGY_GSM = 1 | Global System for Mobile Communication (GSM)|
-| TEL_RADIO_TECHNOLOGY_1XRTT = 2 | Single-Carrier Radio Transmission Technology (1XRTT)|
-| TEL_RADIO_TECHNOLOGY_WCDMA = 3 | Wideband Code Division Multiple Access (WCDMA)|
-| TEL_RADIO_TECHNOLOGY_HSPA = 4 | High Speed Packet Access (HSPA)|
-| TEL_RADIO_TECHNOLOGY_HSPAP = 5 |  High Speed Packet Access Plus (HSPA+)|
-| TEL_RADIO_TECHNOLOGY_TD_SCDMA = 6 | Time Division-Synchronous Code Division Multiple Access (TD-SCDMA)|
-| TEL_RADIO_TECHNOLOGY_EVDO = 7 | Evolution-Data Optimized (EVDO)|
-| TEL_RADIO_TECHNOLOGY_EHRPD = 8 | Evolved High Rate Package Data (EHRPD)|
-| TEL_RADIO_TECHNOLOGY_LTE = 9 | Long Term Evolution (LTE)|
-| TEL_RADIO_TECHNOLOGY_LTE_CA = 10 | Long Term Evolution_Carrier Aggregation (LTE_CA)|
-| TEL_RADIO_TECHNOLOGY_IWLAN = 11 | Industrial Wireless LAN (IWLAN)|
-| TEL_RADIO_TECHNOLOGY_NR = 12 | New Radio (NR)|
+| TEL_RADIO_TECHNOLOGY_UNKNOWN = 0 | Unknown RAT.|
+| TEL_RADIO_TECHNOLOGY_GSM = 1 | Global System for Mobile Communication (GSM).|
+| TEL_RADIO_TECHNOLOGY_1XRTT = 2 | Single-Carrier Radio Transmission Technology (1XRTT).|
+| TEL_RADIO_TECHNOLOGY_WCDMA = 3 | Wideband Code Division Multiple Access (WCDMA).|
+| TEL_RADIO_TECHNOLOGY_HSPA = 4 | High Speed Packet Access (HSPA).|
+| TEL_RADIO_TECHNOLOGY_HSPAP = 5 | High Speed Packet Access PLUS (HSPA+).|
+| TEL_RADIO_TECHNOLOGY_TD_SCDMA = 6 | Time Division-Synchronous Code Division Multiple Access (TD-SCDMA).|
+| TEL_RADIO_TECHNOLOGY_EVDO = 7 | Evolution-Data Optimized (EVDO).|
+| TEL_RADIO_TECHNOLOGY_EHRPD = 8 | Evolved High Rate Packet Data (EHRPD).|
+| TEL_RADIO_TECHNOLOGY_LTE = 9 | Long Term Evolution (LTE).|
+| TEL_RADIO_TECHNOLOGY_LTE_CA = 10 | Long Term Evolution_Carrier Aggregation (LTE_CA).|
+| TEL_RADIO_TECHNOLOGY_IWLAN = 11 | Interworking Wireless LAN (IWLAN).|
+| TEL_RADIO_TECHNOLOGY_NR = 12 | New Radio (NR).|
 
 ### Telephony_NsaState
 
@@ -122,7 +122,7 @@ enum Telephony_NsaState
 
 **Description**
 
-NSA network registration status of the device.
+Describes the NSA network registration status of the device.
 
 **Since**: 13
 

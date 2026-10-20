@@ -5,6 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b5d07443c629fc3cb39d28cdcd1858d2f47dbab3 translatedAt=2026-10-10T09:44:50.941Z pushedAt=2026-10-16T06:48:56.199Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -61,14 +62,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].i32 | Whether to enable automatic playback for child component switching. The value **1** means to enable automatic playback, and **0** means the opposite. The default value is **0**.|
-| .value[1]?.i32 | Whether to stop automatic playback when the user touches the screen. The value **0** means to stop automatic playback, and **1** means the opposite. The default value is **0**. This parameter is supported since API version 16.|
+| .value[1]?.i32 | Whether to stop automatic playback when the user touches the screen. The value **1** means to stop automatic playback, and **0** means the opposite. The default value is **1**. This parameter is supported since API version 16. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Whether automatic playback is enabled for child component switching. The value **1** means that automatic playback is enabled, and **0** means the opposite. The default value is **0**.|
-| .value[1].i32 | Whether automatic playback is stopped when the user touches the screen. The value **0** means that automatic playback is stopped, and **1** means the opposite. This parameter is supported since API version 16.|
+| .value[1].i32 | Whether automatic playback is stopped when the user touches the screen. The value **1** means that automatic playback is stopped, and **0** means the opposite. This parameter is supported since API version 16. |
 
 ## NODE_SWIPER_SHOW_INDICATOR
 
@@ -332,13 +333,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect).<br>The default value is **ARKUI_EDGE_EFFECT_SPRING**.|
+| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect).<br>The default value is **ARKUI_EDGE_EFFECT_SPRING**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect).|
+| .value[0].i32 | Effect used at the edges of the component when the boundary of the scrollable content is reached. The parameter type is [ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect).|
 
 ## NODE_SWIPER_NODE_ADAPTER
 
