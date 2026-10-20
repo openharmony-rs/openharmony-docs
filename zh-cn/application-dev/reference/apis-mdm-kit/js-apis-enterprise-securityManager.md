@@ -2278,7 +2278,7 @@ try {
 
 openSession(accountId: number): Promise&lt;Uint8Array&gt;
 
-打开用户身份认证凭据变更会话，获取挑战值（challenge，用于后续身份认证的防重放校验）。
+打开用户身份认证凭据变更会话，获取挑战值（challenge，用于后续身份认证的防重放校验）。使用Promise异步回调。
 
 > **说明：**
 >
