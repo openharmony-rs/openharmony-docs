@@ -3493,7 +3493,6 @@ try {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to connect. Code is ${err.code}, message is ${err.message}`);
 }
-// 不再需要监听连接状态时，调用 device.off('BLEConnectionStateChange', connectStateChanged) 注销事件
 ```
 
 
