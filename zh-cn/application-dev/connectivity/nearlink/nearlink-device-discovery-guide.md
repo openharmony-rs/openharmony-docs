@@ -58,7 +58,14 @@
 
     > **说明：**
     >
-    > 广播参数中可通过frameType字段指定无线帧类型，默认值为FRAME_TYPE_1（基础帧）。FRAME_TYPE_4为扩展覆盖帧，可提升广播覆盖范围；使用前需调用[isFrameType4Supported](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)查询当前设备是否支持，不支持时请使用默认值。
+    > 无线帧是星闪设备之间传输数据的基本单元，帧类型决定数据以哪种格式传输。当前支持以下两种帧类型：
+    > - FRAME_TYPE_1（基础帧）：默认值，适用于低功耗、低成本的基础交互场景。
+    > - FRAME_TYPE_4（扩展覆盖帧）：适用于智能家居、智能制造等扩展覆盖场景，依赖设备芯片支持。
+    >
+    > 使用帧类型时需注意：
+    > - 广播与扫描需使用相同的帧类型才能互相发现。例如外围设备使用FRAME_TYPE_4广播时，中心设备的扫描参数也需配置为FRAME_TYPE_4。
+    > - 使用FRAME_TYPE_4前，先调用[isFrameType4Supported](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)查询设备是否支持；在不支持的设备上启动广播将返回801错误码。
+    > - 未配置frameType时，按FRAME_TYPE_1处理。
 
     <!-- @[advertising_build_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
@@ -174,7 +181,7 @@
 
     > **说明：**
     >
-    > 扫描结果中的frameType字段表示收到的广播包的无线帧类型；若结果中未返回该字段，则按FRAME_TYPE_1（基础帧）处理。
+    > 扫描结果中的frameType表示该广播包使用的无线帧类型（帧类型说明见[发起星闪广播](#发起星闪广播)的说明）；若结果中未返回该字段，则按FRAME_TYPE_1处理。
 
     <!-- @[scan_on_device_found](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
@@ -356,7 +363,7 @@
 
     > **说明：**
     >
-    > 扫描参数中可通过frameType字段指定要扫描的无线帧类型，默认值为FRAME_TYPE_1（基础帧）。若需扫描FRAME_TYPE_4（扩展覆盖帧）的广播，请先调用[isFrameType4Supported](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)确认设备支持。
+    > 扫描参数的frameType需与广播侧一致，否则无法发现设备（帧类型说明见[发起星闪广播](#发起星闪广播)的说明）。扫描FRAME_TYPE_4的广播前，先确认设备支持；在不支持的设备上启动扫描将返回801错误码。
 
     <!-- @[scan_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     

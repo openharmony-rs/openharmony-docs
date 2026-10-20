@@ -105,7 +105,7 @@
 
     > **说明：**
     >
-    > 连接参数中可通过frameType字段指定无线帧类型，默认值为FRAME_TYPE_1（基础帧）。FRAME_TYPE_4为扩展覆盖帧，可提升连接覆盖范围；使用前需调用[isFrameType4Supported](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)查询当前设备是否支持，不支持时请使用默认值。
+    > 连接参数的frameType指定本次连接使用的无线帧类型，默认值为FRAME_TYPE_1；对端设备使用扩展覆盖帧时，请同样配置为FRAME_TYPE_4，并确认双方设备均支持（可通过[isFrameType4Supported](../../reference/apis-connectivity-kit/js-apis-nearlink-manager.md#managerisframetype4supported)查询）。使用不支持的帧类型时，连接将返回801错误码。
 
     <!-- @[datatransfer_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
     
