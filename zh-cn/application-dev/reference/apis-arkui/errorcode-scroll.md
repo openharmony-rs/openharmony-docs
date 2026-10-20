@@ -33,11 +33,11 @@ Controller not bound to component.
 
 **错误信息**
 
-Registration rejected: the builder is not marked with @Builder({ isPlaceholder: true }).
+Registration rejected: the builder is not marked with @Builder({ isPlaceholder: true }). The ID is not registered.
 
 **错误描述**
 
-调用[PlaceholderRegister](./arkts-apis-uicontext-placeholderregister.md)的[register](./arkts-apis-uicontext-placeholderregister.md#register)接口注册滚动占位模板时，传入的builder未在编译期标记为`@Builder({ isPlaceholder: true })`，系统会产生此错误码，该id不会注册成功。
+调用[PlaceholderRegister](./arkts-apis-placeholderregister.md)的[register](./arkts-apis-placeholderregister.md#register)接口注册滚动占位模板时，传入的builder未在编译期标记为`@Builder({ isPlaceholder: true })`，系统会产生此错误码，该id不会注册成功。
 
 **可能原因**
 
