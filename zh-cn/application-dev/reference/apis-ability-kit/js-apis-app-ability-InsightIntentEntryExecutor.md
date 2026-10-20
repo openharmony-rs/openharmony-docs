@@ -117,9 +117,9 @@ export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
       code: 123,
       result: 'result'
     };
-    hilog.error(0x0000, LOG_TAG, `Failed to execute PlayMusicDemo. Code: ${result.code}, message: ${result.result}`);
-    // 以Promise.reject的方式返回意图执行结果
-    return Promise.reject(result);
+    hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo return %{public}s', JSON.stringify(result));
+    // 以Promise的方式返回意图执行结果
+    return Promise.resolve(result);
   }
 }
 ```
