@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS运行时提供的模块化调试工具，包括模块加载链路调试、循环依赖检测和模块化trace打点，帮助开发者定位模块加载异常和性能问题。"
+keywords: [ArkTS, 模块化调试, 加载链路, 循环依赖, trace打点, 模块加载异常, 性能分析, 调试工具]
+doctype: guide
+status: active
+---
+
 # 模块化调试工具
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
