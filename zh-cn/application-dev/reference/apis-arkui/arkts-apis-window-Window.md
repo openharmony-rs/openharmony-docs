@@ -9800,6 +9800,98 @@ try {
 }
 ```
 
+## onWindowFocusStateChange
+
+onWindowFocusStateChange(callback: Callback&lt;WindowFocusState&gt;): void
+
+开启窗口焦点状态变化事件的监听。当窗口焦点状态发生变化时，会触发回调，返回窗口的焦点状态变化信息。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名   | 类型                                                                        | 必填 | 说明                                   |
+| -------- | --------------------------------------------------------------------------- | ---- | -------------------------------------- |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 是   | 回调函数。返回窗口的焦点状态变化信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (data: window.WindowFocusState) => {
+  console.info(`Window focus state changed. isFocused: ${data.isFocused}, focusChangeReason: ${data.focusChangeReason}`);
+}
+try {
+  // 通过onWindowFocusStateChange接口开启监听
+  windowClass.onWindowFocusStateChange(callback);
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offWindowFocusStateChange
+
+offWindowFocusStateChange(callback?: Callback&lt;WindowFocusState&gt;): void
+
+关闭窗口焦点状态变化事件的监听。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名   | 类型                                                                        | 必填 | 说明                                                                           |
+| -------- | --------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------ |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 否   | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭该窗口的所有监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (data: window.WindowFocusState) => {
+  // ...
+}
+try {
+  // 通过onWindowFocusStateChange接口开启监听
+  windowClass.onWindowFocusStateChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offWindowFocusStateChange(callback);
+  // 如果通过onWindowFocusStateChange接口开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offWindowFocusStateChange();
+} catch (exception) {
+  console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## on('rotationChange')<sup>19+</sup>
 
 on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInfo, RotationChangeResult | void&gt;): void
@@ -18501,11 +18593,11 @@ const callback = (isInDesktopMode: boolean) => {
   // ...
 }
 try {
-  // 通过on接口开启监听
+  // 通过onWindowPostureModeChange接口开启监听
   windowClass.onWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
   // 关闭指定callback的监听
   windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
-  // 如果通过on开启多个callback进行监听，同时关闭所有监听
+  // 如果通过onWindowPostureModeChange接口开启多个callback进行监听，同时关闭所有监听
   windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE);
 } catch (exception: Error) {
   console.error(`Failed to disable the listener for window posture mode change. Cause code: ${exception.code}, message: ${exception.message}`);
