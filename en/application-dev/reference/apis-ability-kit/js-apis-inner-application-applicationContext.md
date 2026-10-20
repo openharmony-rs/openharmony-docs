@@ -1385,68 +1385,6 @@ struct Index {
 }
 ```
 
-## ApplicationContext.setFont<sup>26.2.0+</sup>
-
-setFont(font: string, enableAnimation: boolean): void
-
-Sets the font for this application. This API can be called only on the main thread.
-
-> **NOTE**
->
-> Before calling this API, ensure that the window has been created and the page corresponding to the UIAbility has been loaded (using the [loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) API in the [onWindowStageCreate()](js-apis-app-ability-uiAbility.md#onwindowstagecreate) lifecycle).
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
-**Parameters**
-
-| Name| Type | Mandatory | Description |
-| ------ | ---- | ---- | ---- |
-| font | string | Yes | Font, which can be registered by calling [UIContext.registerFont](../apis-arkui/arkts-apis-uicontext-font.md#registerfont). |
-| enableAnimation | boolean | Yes | Whether to use animation during this setting. **true** to use animation, **false** otherwise. |
-
-**Error codes**
-
-For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
-
-| ID| Error Message|
-| ------- | -------- |
-| 16000011 | The context does not exist. |
-
-**Example**
-
-```ts
-import { common } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-  context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
-  aboutToAppear() {
-    this.getUIContext().getFont().registerFont({
-      familyName: 'fontName',
-      familySrc: $rawfile('font/medium.ttf')  // 'font/medium.ttf' is used only as an example. Replace it with the actual font resource file.
-    });
-
-    // Set the application to use the registered font without animation.
-    this.context.getApplicationContext().setFont('fontName', false);
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(50)
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
 ## ApplicationContext.setSupportedProcessCache<sup>12+</sup>
 
 setSupportedProcessCache(isSupported : boolean): void
