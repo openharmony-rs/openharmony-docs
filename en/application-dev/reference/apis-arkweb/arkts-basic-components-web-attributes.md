@@ -747,7 +747,6 @@ Sets the color of the text input caret and text selection handles in the Web com
 
 After selecting a color, tap the web input field to inspect the caret, or select text to inspect the handles. After resetting the attribute, the caret returns to the CSS blue color and the handles return to the current theme colors.
 
-<!-- @[web_caret_color_en](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/CaretColor/entry/src/main/ets/pages/CaretColor.ets) -->
 
 ```ts
 import webview from '@ohos.web.webview';
@@ -785,7 +784,6 @@ struct WebComponent {
 
 Place the following HTML file at `entry/src/main/resources/rawfile/caret_color.html`.
 
-<!-- @[web_caret_color_en_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/CaretColor/entry/src/main/resources/rawfile/caret_color.html) -->
 
 ```html
 <!DOCTYPE html>
