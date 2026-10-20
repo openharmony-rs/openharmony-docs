@@ -128,6 +128,6 @@ try {
       console.error(`EvictModuleFilePages failed, error code: ${err.code}, error msg: ${err.message}.`);
     });
 } catch (error) {
-  console.error('EvictFilePages failed, error: ' + JSON.stringify(error));
+  console.error('EvictModuleFilePages failed, error: ' + JSON.stringify(error));
 }
 ```
