@@ -9716,3 +9716,31 @@ Allows a system application to request keeping the vehicle cabin awake.
 **Supported devices**: cars
 
 **Valid since**: 26.0.1
+
+## ohos.permission.SWB_RW_DEEPLINK
+
+Allows an application to call SteerWheelButton (SWB) APIs to read and write DeepLink.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.SWB_MONITOR
+
+Allows an application to subscribe to SteerWheelButton (SWB) key events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
