@@ -979,7 +979,7 @@ getOsTypeByNetworkId(networkId: string): number
 
 **系统接口**：此接口为系统接口。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **参数：**
 
