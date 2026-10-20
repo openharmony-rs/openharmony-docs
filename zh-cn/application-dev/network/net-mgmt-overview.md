@@ -31,3 +31,12 @@ Network Kit（网络服务）主要提供以下功能：
 | ohos.permission.GET_NETWORK_INFO | 获取网络连接信息。                     |
 | ohos.permission.INTERNET         | 允许程序打开网络套接字，进行网络连接。 |
 
+**支持的设备**
+
+本Kit仅适用于Phone、PC/2in1、Tablet、TV和Wearable。
+
+**支持的国家/地区**
+
+请参见版本说明中[各设备支持的国家/地区](https://)。
+
+
