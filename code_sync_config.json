@@ -924,6 +924,11 @@
 						"end_line":237,
 						"name":"c_text_metrics_get_all_case",
 						"start_line":205
+					},
+					{
+						"end_line":194,
+						"name":"c_text_metrics_create_paragraph",
+						"start_line":171
 					}
 				]
 			}
@@ -24069,6 +24074,11 @@
 						"end_line":20,
 						"name":"arkts_custom_font_include",
 						"start_line":17
+					},
+					{
+						"end_line":56,
+						"name":"arkts_custom_font_step4",
+						"start_line":47
 					}
 				]
 			}
@@ -26794,6 +26804,16 @@
 						"end_line":58,
 						"name":"arkts_theme_font_entry_ability",
 						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":45,
+						"name":"arkts_theme_font_text_style",
+						"start_line":31
 					}
 				]
 			}
@@ -48748,6 +48768,46 @@
 						"end_line":20,
 						"name":"import",
 						"start_line":17
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/custom-font-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp",
+				"functions":[
+					{
+						"end_line":185,
+						"name":"custom_font_c_custom_font_text_step3",
+						"start_line":177
+					},
+					{
+						"end_line":220,
+						"name":"custom_font_c_custom_font_text_step5",
+						"start_line":195
+					},
+					{
+						"end_line":242,
+						"name":"custom_font_c_custom_font_text_step6",
+						"start_line":222
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/text-custom-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp",
+				"functions":[
+					{
+						"end_line":1174,
+						"name":"complex_text_c_independent_shaping_text_step4",
+						"start_line":1131
 					}
 				]
 			}
