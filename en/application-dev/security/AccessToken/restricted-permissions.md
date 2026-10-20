@@ -1740,7 +1740,7 @@ With this permission, the application can add sync root folders to the sidebar o
 
 Allows an application to listen for input events.
 
-Applicable scenarios and functionalities: With this permission, an application can implement the recording and playback functions of input events.
+With this permission, an application can implement the recording and playback functions of input events.
 
 <!--RP116--><!--RP116End-->
 
