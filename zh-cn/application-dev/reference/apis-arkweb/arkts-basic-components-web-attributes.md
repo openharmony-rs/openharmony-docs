@@ -4728,3 +4728,29 @@ enableMediaNetworkProxy(enabled: boolean)
     }
   }
   ```
+
+## flingSpeedLimit
+
+flingSpeedLimit(speedLimit: number)
+
+设置Web组件惯性滚动的速度上限。
+
+> **说明：**
+>
+> - 通过本接口设置的值优先于通过前端viewport max-fling-speed-x/y接口设置的值。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| speedLimit | number | 是 | 惯性滚动的速度上限，单位为vp/s。<br>取值范围为(0, +∞)。<br>传入范围外的值、undefined或null时，使用默认值。 |
+
+**示例：**
+
+  <!-- @[FlingSpeedLimitDynamic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/FlingSpeedLimit/entry/src/main/ets/pages/FlingSpeedLimitDynamic.ets)-->
