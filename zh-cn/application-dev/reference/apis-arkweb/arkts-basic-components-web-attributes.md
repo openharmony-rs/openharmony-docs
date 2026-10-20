@@ -1258,7 +1258,6 @@ ArkTS-Sta: caretColor(value: ResourceColor | undefined): this
 
 ArkTS-Dyn示例：
 
-<!-- @[web_caret_color_zh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/CaretColor/entry/src/main/ets/pages/CaretColorZh.ets) -->
 
 ```ts
 import webview from '@ohos.web.webview';
@@ -1296,7 +1295,6 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 
-<!-- @[web_caret_color_zh](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/CaretColor/entry/src/main/ets/pages/CaretColorZh.ets) -->
 
 ```ts
 'use static'
@@ -1338,7 +1336,6 @@ struct WebComponent {
 
 加载的HTML文件位于`entry/src/main/resources/rawfile/caret_color_zh.html`。
 
-<!-- @[web_caret_color_zh_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/CaretColor/entry/src/main/resources/rawfile/caret_color_zh.html) -->
 
 ```html
 <!DOCTYPE html>
