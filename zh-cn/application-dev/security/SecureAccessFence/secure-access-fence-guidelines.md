@@ -1,4 +1,4 @@
-# 使用安全访问围栏服务获取执行认证ticket
+# 基于安全访问围栏服务获取CLI凭据(Ticket)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
@@ -7,7 +7,9 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-应用执行CLI工具操作（如查询电池信息、获取设备状态等）时，系统要求操作经过用户授权，确保安全可控。SecureAccessFence（安全访问围栏服务）提供CLI工具执行认证ticket的获取能力，应用通过`requestToolTicket`接口传入需要执行的CLI命令列表，系统自动检查用户授权状态：若所需权限均已授权，直接返回已认证的ticket；若存在未授权权限，返回待授权权限列表，应用可引导用户完成授权后再次获取ticket。API版本26.2.0开始支持该能力。
+从API版本26.2.0开始，提供SecureAccessFence（安全访问围栏服务）能力。当应用执行CLI工具操作（如查询电池信息、获取设备状态等）时，系统要求操作经用户授权后方可执行，以确保安全可控。
+
+SecureAccessFence提供CLI工具执行认证ticket的获取能力：应用通过`requestToolTicket`接口传入待执行的CLI命令列表，系统自动检查相应权限的授权状态——若所需权限均已授权，直接返回已认证的ticket；若存在未授权权限，则返回待授权权限列表，应用可引导用户完成授权后再次获取ticket。
 
 ## 能力范围
 
@@ -22,12 +24,6 @@
 
 SecureAccessFence的工作流程如下：
 
-```text
-应用调用requestToolTicket → 系统检查用户权限状态
-  ├─ 权限未全部授权 → 返回permissionResults列表（权限名称+状态）→ 应用引导用户授权 → 重新调用接口
-  └─ 权限已全部授权 → 返回已认证的ticket → 应用使用ticket执行CLI工具
-```
-
 1. 应用调用[requestToolTicket](../../reference/apis-ability-kit/js-apis-abilityToolAccessCtrl.md#abilitytoolaccessctrlrequesttoolticket)接口，传入需要执行认证的CLI命令列表。
 2. 如果用户尚未授权CLI工具所需的权限，接口返回`permissionResults`列表，包含需要授权的权限名称及其状态。应用可引导用户完成权限授权。
 3. 如果用户已授权所有所需权限，接口直接返回已认证的`ticket`字符串。
@@ -35,11 +31,7 @@ SecureAccessFence的工作流程如下：
 
 ## 开发流程
 
-获取CLI工具执行认证ticket的开发流程如下图所示：
-
-```text
-导入模块 → 构建CLI命令信息 → 构建ticket选项 → 调用requestToolTicket → 处理返回结果 → 错误处理
-```
+获取CLI工具执行认证ticket的开发流程如下：
 
 1. 导入安全访问围栏服务模块。
 2. 构建CLI命令信息（CliCmdInfo），指定需要执行的CLI命令及其子命令。
@@ -59,11 +51,11 @@ SecureAccessFence的工作流程如下：
    导入后可使用`abilityToolAccessCtrl`模块提供的`requestToolTicket`接口获取CLI工具执行认证ticket。
 
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/request_tool_ticket.ets) -->
-  
-  ``` TypeScript
-  import { abilityToolAccessCtrl } from '@ohos.abilityToolAccessCtrl';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  ```
+   
+   ``` TypeScript
+   import { abilityToolAccessCtrl } from '@ohos.abilityToolAccessCtrl';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
 
 2. 构建CLI命令信息。
 
@@ -122,6 +114,7 @@ SecureAccessFence的工作流程如下：
    ```
 
    > **说明：**
+   >
    > 常见错误码及处理方式如下。
    > - 24010000：入参错误。检查`ticketExpireTimeMs`取值是否在1~60000范围内，`cliCmdInfos`列表是否为空或长度超过300，CLI命令名称是否为空。
    > - 24010006：设备处于锁屏状态。解锁设备后重新调用接口。

@@ -7,5 +7,4 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-- SecureAccessFence开发指导(ArkTS)<!--secure-access-fence-arkts-->
-  - [获取CLI工具执行认证ticket(ArkTS)](secure-access-fence-guidelines.md)
+- [基于安全访问围栏服务获取CLI凭据(Ticket)](secure-access-fence-guidelines.md)

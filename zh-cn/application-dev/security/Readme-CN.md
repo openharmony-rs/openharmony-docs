@@ -20,6 +20,6 @@
 - 应用包签名工具
   - [应用包签名工具概述](hapsigntool-overview.md)
   - [应用包签名工具指导](hapsigntool-guidelines.md)
-  - [HarmonyAppProvision配置文件](app-provision-structure.md)
+  - [HarmonyAppProvision配置文件说明](app-provision-structure.md)
   - [签名工具错误码](hapsigntool-errorcode.md)
 <!--DelEnd-->
