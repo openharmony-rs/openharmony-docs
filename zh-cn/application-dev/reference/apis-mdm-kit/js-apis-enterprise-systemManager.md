@@ -2241,6 +2241,8 @@ createExactTimer(config: ExactTimerConfig): Promise&lt;number&gt;
 > 3. 若创建的定时器名称与已存在的定时器名称相同，则先前的同名定时器将被自动停止并销毁，新创建的定时器将被分配新的定时器ID，与被销毁的定时器ID不同。
 >
 > 4. 单个设备管理应用最多可创建5个同时生效的定时器，超出上限时返回9201053错误码。
+>
+> 5. 应用进程长时间后台运行时可能被系统冻结或终止，导致定时器被销毁，可通过[addFreezeExemptedApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddfreezeexemptedapps22)接口将应用添加至防冻结名单以避免此问题。
 
 **起始版本：** 26.0.1
 
