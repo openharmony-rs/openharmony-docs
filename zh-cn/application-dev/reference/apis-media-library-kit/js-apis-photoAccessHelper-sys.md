@@ -28,6 +28,8 @@ getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
 
 **系统接口**：此接口为系统接口。
 
+**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
@@ -11960,7 +11962,7 @@ async function example(context: Context) {
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_FAILED) {
       let errCode = cloudEnhancementTaskState.statusCode;
       let message = `task is failed, errCode: ${errCode}`;
-      console.info(message);
+      console.error(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_COMPLETED) {
       console.info("task is completed");
     }
