@@ -1,7 +1,7 @@
 ---
 kits: ["ArkGraphics 2D / 方舟2D图形服务"]
 description: "介绍OpenHarmony可变帧率能力的基本概念与运作机制，说明基于LTPO屏幕如何在性能体验与功耗间取得平衡，涵盖动画、UI绘制、自绘制内容及非UI线程等多种帧率配置场景。"
-keywords: [可变帧率, LTPO, DisplaySync, 期望帧率, 控帧系统, 功耗, 渲染管线]
+keywords: [可变帧率, LTPO, DisplaySync, 期望帧率, 控帧系统, 绘制帧率, 刷新率, 帧率]
 doctype: guide
 status: active
 ---

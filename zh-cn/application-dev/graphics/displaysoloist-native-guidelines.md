@@ -1,7 +1,7 @@
 ---
 kits: ["ArkGraphics 2D / 方舟2D图形服务"]
-description: "介绍如何使用DisplaySoloist在Native侧独立线程中实现帧率控制与VSync回调驱动图形绘制，适用于游戏、自绘制UI框架对接等可变帧率场景。"
-keywords: [NativeDisplaySoloist, DisplaySoloist, 帧率控制, VSync, 独占线程, 可变帧率, XComponent, NativeWindow]
+description: "介绍如何使用DisplaySoloist在Native侧独立线程中实现帧率控制与VSync回调驱动图形绘制。"
+keywords: [NativeDisplaySoloist, DisplaySoloist, 帧率控制, 每帧回调, 可变帧率, 期望帧率]
 doctype: guide
 status: active
 ---
