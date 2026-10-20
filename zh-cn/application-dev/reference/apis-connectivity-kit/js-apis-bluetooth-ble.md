@@ -3435,7 +3435,7 @@ refreshServices(): Promise&lt;void&gt;
 
 client端刷新已连接server端设备的服务信息。使用Promise异步回调。
 
-- 调用本接口后会清空client端缓存的server端服务信息，并异步重新执行服务发现。刷新请求下发成功后Promise随即解决（resolved），无需等待服务发现完成，可通过[getServices](#getservices)方法获取刷新后的服务列表。
+- 调用本接口后会清空client端缓存的server端服务信息，并异步重新执行服务发现。刷新请求下发成功后，该Promise即解决（resolved），无需等待服务发现完成，可通过[getServices](#getservices)方法获取刷新后的服务列表。
 - 需先调用[connect](#connect)方法，待GATT profile连接成功后方可使用。
 
 
@@ -3467,7 +3467,6 @@ client端刷新已连接server端设备的服务信息。使用Promise异步回�
 **示例**：
 
 ```js
-import { ble, constant } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let device: ble.GattClientDevice = ble.createGattClientDevice('11:22:33:44:55:66');
