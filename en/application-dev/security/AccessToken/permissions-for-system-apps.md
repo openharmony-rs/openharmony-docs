@@ -6719,3 +6719,17 @@ Allows a system application to manage SoftBus resources.
 **Supported devices**: PCs/2-in-1 devices | cars | phones | tablets | TVs | wearables
 
 **Valid since**: 26.0.1
+
+## ohos.permission.ALLOW_INSTALL_DEBUG_HAP
+
+Allows an application to install other applications of the debug type.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.1
