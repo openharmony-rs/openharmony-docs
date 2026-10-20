@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "面向系统级应用，介绍如何通过AudioSpatializationManager查询和设置空间音频渲染、自适应空间音频渲染、头动跟踪的开关状态与渲染场景类型，并订阅状态变化事件、更新空间化设备状态。"
+keywords: [空间音频管理, AudioSpatializationManager, 空间音频渲染, 自适应空间音频渲染, 头动跟踪, 空间化设备状态, 空间音频渲染场景, 状态变化订阅, MANAGE_SYSTEM_AUDIO_EFFECTS]
+doctype: guide
+status: active
+---
+
 # 空间音频管理(仅对系统应用开放)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
