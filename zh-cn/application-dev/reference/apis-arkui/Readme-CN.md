@@ -43,6 +43,7 @@
       - [Class (MeasureUtils)](arkts-apis-uicontext-measureutils.md)
       - [Class (MediaQuery)](arkts-apis-uicontext-mediaquery.md)
       - [Class (OverlayManager)](arkts-apis-uicontext-overlaymanager.md)
+      - [Class (PlaceholderRegister)](arkts-apis-uicontext-placeholderregister.md)
       - [Class (PromptAction)](arkts-apis-uicontext-promptaction.md)
       - [Class (Router)](arkts-apis-uicontext-router.md)
       - [Class (SmartGestureController)](arkts-apis-uicontext-smartgesturecontroller.md)
