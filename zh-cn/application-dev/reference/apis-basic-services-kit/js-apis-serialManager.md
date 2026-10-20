@@ -54,7 +54,7 @@ import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口设备清单 
 function getPortListExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -110,7 +110,7 @@ import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 function hasSerialRightExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('portList is empty');
@@ -170,12 +170,11 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 function requestSerialRightExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -243,12 +242,11 @@ open(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function openExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -275,6 +273,7 @@ async function openExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 关闭串口
@@ -334,12 +333,11 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function getAttributeExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -366,6 +364,7 @@ async function getAttributeExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 获取串口配置
@@ -433,12 +432,11 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function setAttributeExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -465,6 +463,7 @@ async function setAttributeExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 设置串口配置
@@ -526,7 +525,7 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed; 4. Optional parameters passed as undefined. |
 | 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
@@ -542,12 +541,11 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function readExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -574,6 +572,7 @@ async function readExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 异步读取
@@ -639,7 +638,7 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed; 4. Optional parameters passed as undefined. |
 | 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
@@ -655,12 +654,11 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function readSyncExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -687,6 +685,7 @@ async function readSyncExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 同步读取
@@ -743,7 +742,7 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed; 4. Optional parameters passed as undefined. |
 | 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
@@ -758,14 +757,12 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 
 <!--code_no_check-->
 ```ts
-import { JSON } from '@kit.ArkTS';
-import { buffer } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { JSON, buffer } from '@kit.ArkTS';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function writeExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -792,6 +789,7 @@ async function writeExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 异步写入
@@ -857,7 +855,7 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed; 4. Optional parameters passed as undefined. |
 | 31400001 | Serial port management exception. |
 | 31400003 | PortId does not exist. |
 | 31400005 | The serial port device is not opened. Call the open API first. |
@@ -872,14 +870,12 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 <!--code_no_check-->
 ```ts
-import { JSON } from '@kit.ArkTS';
-import { buffer } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { JSON, buffer } from '@kit.ArkTS';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function writeSyncExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -906,6 +902,7 @@ async function writeSyncExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 同步写入
@@ -973,12 +970,11 @@ close(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function closeExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -1005,6 +1001,7 @@ async function closeExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
 
@@ -1062,12 +1059,11 @@ cancelSerialRight(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function cancelSerialRightExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
