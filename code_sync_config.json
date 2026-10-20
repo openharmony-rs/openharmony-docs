@@ -69032,5 +69032,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/external-log-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":23,
+						"name":"AppEvent_Crash_Click_ArkTS_Header",
+						"start_line":21
+					},
+					{
+						"end_line":110,
+						"name":"RegisterExternalLogManager",
+						"start_line":40
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/external-log-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":36,
+						"name":"EventSub_napi_Header",
+						"start_line":24
+					},
+					{
+						"end_line":1434,
+						"name":"RegisterExternalLogMgr",
+						"start_line":1405
+					}
+				]
+			}
+		]
 	}
 ]
