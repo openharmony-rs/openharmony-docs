@@ -641,6 +641,25 @@
 4. C-API侧解除已被接纳节点的接纳状态，释放其对应的渲染节点。
 
    <!-- @[Remove_Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->       
+   
+   ``` C++
+   
+   napi_value RemoveAdopt(napi_env env, napi_callback_info info)
+   {
+       int32_t result = OH_ArkUI_NativeModule_RemoveAdoptedChild(custom_->GetHandle(), nodeHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           return nullptr;
+       }
+       // 解除节点的接纳状态后，需要额外调用OH_ArkUI_RenderNodeUtils_DisposeNode释放对应的渲染节点，否则会导致内存泄漏。
+       result = OH_ArkUI_RenderNodeUtils_DisposeNode(renderHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           return nullptr;
+       }
+       nodeHandle_ = nullptr;
+       renderHandle_ = nullptr;
+       return nullptr;
+   }
+   ```
 
 ## 使用Dvsync优化渲染节点性能
 
