@@ -116,7 +116,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetUsbDeviceList(OH_UsbManager_UsbDevice *
 | [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md) **devices | [出参] 指向[OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md)数组的二级指针。成功时，函数会分配该数组及所有内部字符串缓冲区。调用者不得单独释放各个字段；请改用[OH_UsbManager_FreeUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_freeusbdevicelist)。不得为空。 |
 | uint32_t *deviceCount | [出参] 指向返回设备数量的指针。成功时，该值被设置为数组中的元素个数。为0表示当前没有设备。不得为空。 |
 
-**释放资源：** 调用[OH_UsbManager_FreeUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_freeusbdevicelist)释放devices。
+**资源释放：** [OH_UsbManager_FreeUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_freeusbdevicelist)
 
 **返回：**
 
