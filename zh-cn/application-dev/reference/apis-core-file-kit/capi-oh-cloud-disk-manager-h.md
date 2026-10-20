@@ -1,8 +1,8 @@
 # oh_cloud_disk_manager.h
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @oh_create_jiawei-->
-<!--Designer: @oh_create_jiawei-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang-->
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @jinqiuheng-->
 
