@@ -19,7 +19,7 @@
 
   解码后的原始YUV数据通过共享内存输出，开发者可直接访问和处理每一帧图像数据。适用于视频编辑、YUV原始数据保存等需要获取并处理原始数据的解码场景。
 
-|    差异    |         surface模式            |             buffer模式            |
+|    差异    |         Surface模式            |             Buffer模式            |
 |---------- |------------------------------- | -------------------------------- |
 |    配置    | 在调用OH_VideoDecoder_Prepare接口前，必须调用OH_VideoDecoder_SetSurface接口设置OHNativeWindow。 | 　-　 |
 |    输出处理    | 不送显：调用OH_VideoDecoder_FreeOutputBuffer接口丢弃解码帧。<br>送显：调用OH_VideoDecoder_RenderOutputBuffer接口显示并释放解码帧，或调用OH_VideoDecoder_RenderOutputBufferAtTime接口在指定时间点显示并释放解码帧。如需实现音画同步或者控制显示速度，建议优先调用OH_VideoDecoder_RenderOutputBufferAtTime接口送显。| 输出数据处理后，必须调用OH_VideoDecoder_FreeOutputBuffer接口释放数据。|
@@ -227,7 +227,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
        std::unique_lock<std::shared_mutex> codecLock(codecUserData->codecMutex);
        // 可通过format获取到变化后的视频宽、高等。
-       CodecUserData *codecUserData = static_cast<CodecUserData *>(userData);
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &codecUserData->width);
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &codecUserData->height);
    }
@@ -235,9 +234,9 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    // 解码输入回调OH_AVCodecOnNeedInputBuffer实现。
    void SampleCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
-      auto *codecUserData = static_cast<CodecUserData *>(userData);
+       auto *codecUserData = static_cast<CodecUserData *>(userData);
 
-      // 输入帧的数据buffer和对应的index送入inputBufferQueue队列。
+       // 输入帧的数据buffer和对应的index送入inputBufferQueue队列。
        codecUserData->inputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
    }
 
@@ -381,7 +380,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    <!-- @[decoder_setparameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
-
 10. （可选）调用OH_AVCencInfo_SetAVBuffer()，设置cencInfo。
 
     若当前播放的节目是DRM加密节目，应用自行实现媒体解封装功能而非使用系统[解封装](audio-video-demuxer.md)功能时，需调用OH_AVCencInfo_SetAVBuffer()将cencInfo设置到AVBuffer，这样AVBuffer携带待解密的数据以及cencInfo，以实现AVBuffer中媒体数据的解密。当应用使用系统[解封装](audio-video-demuxer.md)功能时，则无需调用此接口。
@@ -483,7 +481,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     >
     > 1. 如果要获取buffer的属性，如pixel_format、stride等可通过调用[OH_NativeWindow_NativeWindowHandleOpt](../../reference/apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)接口获取。
     > 2. 显示并释放解码帧时，推荐优先调用[OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime)接口。
-    >
 
 13. （可选）调用OH_VideoDecoder_Flush()刷新解码器。
 
@@ -557,11 +554,9 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    <!-- @[decoder_create_byname](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
-   ```
    方式二：通过媒体类型创建解码器。
 
    <!-- @[decoder_create_bymime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
-
 
 3. 调用OH_VideoDecoder_RegisterCallback()设置回调函数。
 
@@ -582,7 +577,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        (void)userData;
        AVCODEC_SAMPLE_LOGE("On codec error, error code: %{public}d", errorCode);
    }
-   
+
    // 解码数据流变化回调OH_AVCodecOnStreamChanged实现。
    // 解码输入码流分辨率发生变化时触发此回调函数。
    void SampleCallback::OnCodecFormatChange(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
@@ -597,7 +592,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &codecUserData->height);
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_STRIDE, &codecUserData->widthStride);
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_SLICE_HEIGHT, &codecUserData->heightStride);
-       // 可选,获取裁剪矩形信息。
+       // 可选，获取裁剪矩形信息。
        //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_TOP, &cropTop) &&
        //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom) &&
        //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
@@ -606,16 +601,16 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                            codecUserData->width, codecUserData->height,
                            codecUserData->widthStride, codecUserData->heightStride);
    }
-   
+
    // 解码输入回调OH_AVCodecOnNeedInputBuffer实现。
    void SampleCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
-      auto *codecUserData = static_cast<CodecUserData *>(userData);
+       auto *codecUserData = static_cast<CodecUserData *>(userData);
 
-      // 输入帧的数据buffer和对应的index送入inputBufferQueue队列。
+       // 输入帧的数据buffer和对应的index送入inputBufferQueue队列。
        codecUserData->inputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
    }
-   
+
    // 解码输出回调OH_AVCodecOnNewOutputBuffer实现。
    void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
@@ -625,16 +620,16 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        if (codecUserData->isDecFirstFrame) {
            OH_AVFormat *format = OH_VideoDecoder_GetOutputDescription(codec);
            if (format != nullptr) {
-           OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &codecUserData->width);
-           OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &codecUserData->height);
-           OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_STRIDE, &codecUserData->widthStride);
-           OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_SLICE_HEIGHT, &codecUserData->heightStride);
-           // 获取裁剪矩形信息可选。
-           //OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_TOP, &cropTop) &&
-           //OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom) &&
-           //OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
-           //OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
-           OH_AVFormat_Destroy(format);
+               OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &codecUserData->width);
+               OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &codecUserData->height);
+               OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_STRIDE, &codecUserData->widthStride);
+               OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_SLICE_HEIGHT, &codecUserData->heightStride);
+               // 获取裁剪矩形信息可选。
+               //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_TOP, &cropTop) &&
+               //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_BOTTOM, &cropBottom) &&
+               //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
+               //OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
+               OH_AVFormat_Destroy(format);
            }
            codecUserData->isDecFirstFrame = false;
        }
@@ -645,7 +640,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    <!-- @[decoder_set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
-   ```
    > **说明：**
    >
    > 在回调函数中，对数据队列进行操作时，需要注意多线程同步的问题。
@@ -720,7 +714,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    <!-- @[decoder_setparameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
-
 9. （可选）调用OH_AVCencInfo_SetAVBuffer()，设置cencInfo。
 
    与Surface模式相同，此处不再赘述。
@@ -794,7 +787,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     - bufferIndex：回调函数OnNewOutputBuffer传入的参数，与buffer唯一对应的标识。
     - bufferAddr：回调buffer对应的地址，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口获取回调buffer的虚拟地址。
 
-     <!-- @[decoder_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
+    <!-- @[decoder_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
 
     输出buffer释放：
 
@@ -813,7 +806,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     - OH_MD_KEY_VIDEO_STRIDE表示widthStride；
     - OH_MD_KEY_VIDEO_SLICE_HEIGHT表示heightStride。
 
-    width、height、widthStride与heightStride的获取参考[Buffer模式]步骤3-调用OH_VideoDecoder_RegisterCallback()设置回调函数。
+     width、height、widthStride与heightStride的获取参考[Buffer模式](#buffer模式)步骤3-调用OH_VideoDecoder_RegisterCallback()设置回调函数。
 
     ![copy by line](figures/copy-by-line-decoder.png)
 
