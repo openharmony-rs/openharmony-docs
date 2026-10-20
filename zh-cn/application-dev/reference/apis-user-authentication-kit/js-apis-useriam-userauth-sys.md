@@ -126,7 +126,7 @@ interface PayLoad {
   type: string[];
 }
 try {
-  const eventData : EventData = {
+  const eventData: EventData = {
     widgetContextId: 123456,
     event: 'EVENT_AUTH_TYPE_READY',
     version: '1',
@@ -140,7 +140,7 @@ try {
   console.info('sendNotice successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`sendNotice failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to send notice. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -188,11 +188,11 @@ try {
     sendCommand(cmdData) {
       console.info(`The cmdData is ${cmdData}`);
     }
-  })
+  });
   console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to widget mgr. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -236,11 +236,11 @@ try {
     sendCommand(cmdData) {
       console.info(`The cmdData is ${cmdData}`);
     }
-  })
+  });
   console.info('cancel subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to widget mgr. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -295,7 +295,7 @@ try {
   console.info('get userAuthWidgetMgr instance successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to widget mgr. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -333,11 +333,11 @@ try {
     sendCommand(cmdData) {
       console.info(`The cmdData is ${cmdData}`);
     }
-  })
+  });
   console.info('subscribe authentication event successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to widget mgr. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -386,7 +386,7 @@ try {
   console.info('auth start successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to auth. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -451,7 +451,7 @@ try {
   console.info('query reuse auth result successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`query reuse auth result failed. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to query reuse auth result. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -590,7 +590,7 @@ try {
   console.info('Remote auth callback registered successfully');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`failed to register remote auth callback. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to register remote auth callback. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
 
@@ -631,6 +631,6 @@ try {
   console.info('Remote auth callback unregistered successfully');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`failed to unregister remote auth callback. Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to unregister remote auth callback. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
