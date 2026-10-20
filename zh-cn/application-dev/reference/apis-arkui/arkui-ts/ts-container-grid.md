@@ -6356,6 +6356,8 @@ struct GridOnMoveExample {
 
 从API版本26.2.0开始，新增scrollSnapStrategy接口。
 
+ArkTS-Dyn示例：
+
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
@@ -6399,6 +6401,91 @@ struct GridSnapExample {
       .height(400)
       .scrollSnapStrategy(ScrollSnapAlign.CENTER)
     }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+在同一页面目录创建以下两个文件。此示例使用独立的数据源实现，构造参数为子节点数量。
+
+```ts
+// GridDataSource.ets
+'use static';
+
+import { IDataSource, DataChangeListener } from '@ohos.arkui.component';
+
+// 此示例的数据固定不变，不需要发送数据变更通知。
+export class GridDataSource implements IDataSource<string> {
+  private items: string[] = [];
+  private listeners: DataChangeListener[] = [];
+
+  constructor(count: int) {
+    for (let index: int = 0; index < count; index++) {
+      this.items.push(index.toString());
+    }
+  }
+
+  totalCount(): int {
+    return this.items.length;
+  }
+
+  getData(index: int): string {
+    return this.items[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const index: int = this.listeners.indexOf(listener);
+    if (index >= 0) {
+      this.listeners.splice(index, 1);
+    }
+  }
+}
+```
+
+```ts
+// GridSnapExample.ets
+'use static';
+
+import {
+  Entry, Component, Column, ColumnOptions, Text, Grid, GridItem, LazyForEach,
+  Scroller, ScrollSnapAlign, TextAlign, Margin
+} from '@ohos.arkui.component';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridSnapExample {
+  numbers: GridDataSource = new GridDataSource(50);
+  scroller: Scroller = new Scroller();
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
+      Grid(this.scroller) {
+        LazyForEach(this.numbers, (item: string, index: int) => {
+          GridItem() {
+            Text(item)
+              .fontSize(20)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(150)
+              .textAlign(TextAlign.Center)
+          }
+        }, (item: string, index: int): string => item)
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .height(400)
+      .scrollSnapStrategy(ScrollSnapAlign.CENTER)
+    }.width('100%').margin({ top: 5 } as Margin)
   }
 }
 ```
