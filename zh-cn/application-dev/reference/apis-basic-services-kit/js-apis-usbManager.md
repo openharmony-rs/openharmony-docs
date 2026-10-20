@@ -436,7 +436,7 @@ claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force?: boolea
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 总线地址和设备地址，通过调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | iface | [USBInterface](#usbinterface) | 是 | 目标USB接口对象。可以使用[getDevices](#usbmanagergetdevices)获取设备信息，并根据ID识别USB接口。|
-| force | boolean | 否 | 是否强制声明USB接口。默认值为false，表示不强制声明USB接口。|
+| force | boolean | 否 | 是否强制声明USB接口。默认值为**false**，表示不强制声明USB接口。|
 | onConflict | Callback&lt;[InterfaceConflictInfo](#interfaceconflictinfo)&gt; | 否 | 回调函数，返回独占声明成功后其他进程通过非独占的[usbManager.claimInterface](#usbmanagerclaiminterface)接口声明同一USB接口时的冲突信息。如果不指定此参数，则发生此类冲突时不发送通知。|
 
 **错误码：**
