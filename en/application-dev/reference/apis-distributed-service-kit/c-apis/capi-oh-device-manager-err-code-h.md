@@ -4,6 +4,8 @@
 
 Declares the error codes of the distributed device management module.
 
+**Include**: <distributedhardware/device_manager/oh_device_manager_err_code.h>
+
 **Library**: libdevicemanager_ndk.so
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager

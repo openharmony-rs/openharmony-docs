@@ -122,30 +122,30 @@ enum HiDebug_ErrorCode
 | HIDEBUG_NO_PERMISSION = 11400103 | 没有写文件的权限。 |
 | HIDEBUG_TRACE_ABNORMAL = 11400104 | 系统内部错误。 |
 | HIDEBUG_NO_TRACE_RUNNING = 11400105 | 当前没有trace正在运行。 |
-| OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120 |  |
-| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 |  |
-| HIDEBUG_NOT_SUPPORTED = 11400300 |  |
-| HIDEBUG_UNDER_SAMPLING = 11400301 |  |
-| HIDEBUG_RESOURCE_UNAVAILABLE = 11400302 |  |
-| HIDEBUG_RES_PROF_SUCCESS = 11400400 |  |
-| HIDEBUG_RES_PROF_INVALID_ARG = 11400410 |  |
-| HIDEBUG_RES_PROF_INVALID_MAX_DURATION = 11400411 |  |
-| HIDEBUG_RES_PROF_INVALID_FILTER_SIZE = 11400412 |  |
-| HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH = 11400413 |  |
-| HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL = 11400414 |  |
-| HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL = 11400415 |  |
-| HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE = 11400416 |  |
-| HIDEBUG_RES_PROF_PERMISSION_DENIED = 11400420 |  |
-| HIDEBUG_RES_PROF_ALREADY_STARTED = 11400421 |  |
-| HIDEBUG_RES_PROF_NOT_STARTED = 11400422 |  |
-| HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423 |  |
-| HIDEBUG_RES_PROF_CONFLICT = 11400424 |  |
-| HIDEBUG_RES_PROF_AUTO_STOPPED_BY_DURATION = 11400425 |  |
-| HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426 |  |
-| HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427 |  |
-| HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428 |  |
-| HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 |  |
-| HIDEBUG_RES_PROF_FAILURE = 11400430 |  |
+| OH_HIDEBUG_TRACE_STORAGE_LIMIT = 11400120 | trace文件存储达到限制。<br>**起始版本：** 24 |
+| HIDEBUG_INVALID_SYMBOLIC_PC_ADDRESS = 11400200 | 传入符号解析函数的pc地址是无效的。<br>**起始版本：** 20 |
+| HIDEBUG_NOT_SUPPORTED = 11400300 | 当前设备不支持。<br>**起始版本：** 22 |
+| HIDEBUG_UNDER_SAMPLING = 11400301 | 当前进程正在采样。<br>**起始版本：** 22 |
+| HIDEBUG_RESOURCE_UNAVAILABLE = 11400302 | 采样资源不可用。<br>**起始版本：** 22 |
+| HIDEBUG_RES_PROF_SUCCESS = 11400400 | 资源采集启动/停止成功。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_ARG = 11400410 | 资源采集参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_MAX_DURATION = 11400411 | 资源采集最大持续时间参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_FILTER_SIZE = 11400412 | 资源采集过滤大小参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH = 11400413 | 资源采集最大回栈深度参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL = 11400414 | 资源采集统计间隔参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL = 11400415 | 资源采集采样大小参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE = 11400416 | 资源采集资源类型参数无效。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_PERMISSION_DENIED = 11400420 | 资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_ALREADY_STARTED = 11400421 | 资源采集重复启动。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_NOT_STARTED = 11400422 | 资源采集未启动，停止失败。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_PROCESS_OVERLIMIT = 11400423 | 资源采集进程数超过4个上限。 仅对发布签名应用生效，调试签名应用不受此限制， 用于开发和调试目的。已有采集任务停止后限制释放。[since 26.0.1] API版本26.0.0及以下，该限制对所有应用生效。[since 24 - 26.0.0]<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_CONFLICT = 11400424 | 资源采集与命令行工具或系统采集任务冲突。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_AUTO_STOPPED_BY_DURATION = 11400425 | 资源采集到达指定最大持续时间限制自动停止。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED = 11400426 | 资源采集每日配额超出限制。 发布签名应用：每应用每日限制采集2次，整机每日限制采集4次； 调试签名应用：采集不受限制，用于开发和调试目的。配额每日重置。[since 26.0.1] API版本26.0.0及以下，仅调试签名应用支持采集，每日限10次。[since 24 - 26.0.0]<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_CPU_OVERLOADED = 11400427 | 系统CPU处于高负载状态，禁止资源采集。 CPU占用率超过70%。CPU使用率恢复后可重试。<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL = 11400428 | 系统内存可用空间紧张，禁止资源采集。 可用空间不足2GB，该阈值为固定值，不随设备容量变化。 可用内存恢复后可重试。[since 26.0.1] API版本26.0.0及以下，可用空间少于15%。[since 24 - 26.0.0]<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL = 11400429 | 系统存储可用空间紧张，禁止资源采集。 可用空间不足总容量的3%与15GB中的较大值。 可用存储恢复后可重试。[since 26.0.1] API版本26.0.0及以下，可用空间少于15%。[since 24 - 26.0.0]<br>**起始版本：** 24 |
+| HIDEBUG_RES_PROF_FAILURE = 11400430 | 资源采集启动/停止失败。可检查系统条件后重试。<br>**起始版本：** 24 |
 | HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH = 11400431 | 无效的最大异步嵌套深度。<br>**起始版本：** 26.0.1 |
 | HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH = 11400432 | 无效的最大异步任务栈深度。<br>**起始版本：** 26.0.1 |
 | HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE = 11400433 | 无效的调用栈追踪模式。<br>**起始版本：** 26.0.1 |
@@ -227,11 +227,11 @@ enum OH_HiDebug_ResourceType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_RES_TYPE_FD |  |
-| OH_RES_TYPE_THREAD |  |
-| OH_RES_TYPE_NATIVE |  |
-| OH_RES_TYPE_GPU |  |
-| OH_RES_TYPE_GLOBAL_HANDLE |  |
+| OH_RES_TYPE_FD | 文件描述符<br>**起始版本：** 24 |
+| OH_RES_TYPE_THREAD | 线程<br>**起始版本：** 24 |
+| OH_RES_TYPE_NATIVE | Native 内存<br>**起始版本：** 24 |
+| OH_RES_TYPE_GPU | GPU 内存<br>**起始版本：** 24 |
+| OH_RES_TYPE_GLOBAL_HANDLE | 全局句柄<br>**起始版本：** 24 |
 | OH_RES_TYPE_DMA | DMA内存<br>**起始版本：** 26.0.1 |
 | OH_RES_TYPE_ASHMEM | 匿名共享内存<br>**起始版本：** 26.0.1 |
 | OH_RES_TYPE_COMPOSITE_HEAP | 组合堆<br>**起始版本：** 26.0.1 |

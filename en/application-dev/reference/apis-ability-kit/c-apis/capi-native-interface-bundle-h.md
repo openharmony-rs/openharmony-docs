@@ -62,7 +62,7 @@ Obtains the current application information, including the bundle name and finge
 
 | Type | Description |
 | -- | -- |
-| [OH_NativeBundle_ApplicationInfo](capi-native-bundle-oh-nativebundle-applicationinfo.md) | Pointer to the OH_NativeBundle_ApplicationInfo object. If the attribute of the returned object is NULL, the creation fails. The possible cause is that the application address space is full, causing space allocation to fail. |
+| [OH_NativeBundle_ApplicationInfo](capi-native-bundle-oh-nativebundle-applicationinfo.md) | OH_NativeBundle_ApplicationInfo object. If any field in the returned object is NULL, creation fails. The possible cause is that the application address space is full, causing space allocation to fail. |
 
 ### OH_NativeBundle_GetAppId()
 
@@ -82,7 +82,7 @@ Obtains the appId of the current application. The appId is the unique identifier
 
 | Type | Description |
 | -- | -- |
-| char* | Pointer to a new string that indicates the appID. If the returned object is NULL, the creation fails. <br> The possible cause is that the application address space is full, causing space allocation to fail. |
+| char* | Returns a newly created string used to indicate the appId information. If the returned object is NULL, it indicates that creation failed. A possible cause of failure is that the application address space is full, causing space allocation failure. |
 
 ### OH_NativeBundle_GetAppIdentifier()
 
@@ -122,7 +122,7 @@ Obtains the mainElement information of the current application, including the bu
 
 | Type | Description |
 | -- | -- |
-| [OH_NativeBundle_ElementName](capi-native-bundle-oh-nativebundle-elementname.md) | Pointer to the OH_NativeBundle_ElementName object. If the attribute of the returned object is NULL, the creation fails. The possible cause is that the application address space is full, causing space allocation to fail. |
+| [OH_NativeBundle_ElementName](capi-native-bundle-oh-nativebundle-elementname.md) | Returns a newly created OH_NativeBundle_ElementName object. If any field in the returned object is NULL, it indicates that creation failed. A possible cause of failure is that the application address space is full, causing space allocation failure. |
 
 ### OH_NativeBundle_GetCompatibleDeviceType()
 
@@ -142,7 +142,7 @@ Obtains the compatible device type of the current application. It helps you opti
 
 | Type | Description |
 | -- | -- |
-| char* | Pointer to a new string that indicates the compatible device type. If the returned object is NULL, the creation fails. <br> The possible cause is that the application address space is full, causing space allocation to fail. |
+| char* | Pointer to a new string that indicates the compatible device type. If the returned object is NULL, the creation fails. The possible cause is that the application address space is full, causing space allocation to fail. |
 
 ### OH_NativeBundle_IsDebugMode()
 
@@ -162,7 +162,7 @@ Checks whether the current application is in debug mode.
 
 | Parameter | Description |
 | -- | -- |
-| bool* isDebugMode | Pointer to the check result indicating whether the application is in debug mode. **true** if in debug mode, **false** otherwise. |
+| bool* isDebugMode | [in] Pointer to the check result indicating whether the application is in debug mode. **true**<br>if in debug mode, **false** otherwise. |
 
 **Returns**:
 
@@ -188,13 +188,13 @@ Obtains the module metadata array of the current application. After using this f
 
 | Parameter | Description |
 | -- | -- |
-| size_t* size | Pointer to the size of the module metadata array. |
+| size_t* size | [in] Pointer to the size of the module metadata array. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_NativeBundle_ModuleMetadata*](capi-native-bundle-oh-nativebundle-modulemetadata.md) | An array of module metadata. If the returned object is NULL, the retrieval fails. <br> The possible cause is that the application address space is full, causing space allocation to fail. |
+| [OH_NativeBundle_ModuleMetadata*](capi-native-bundle-oh-nativebundle-modulemetadata.md) | Returns the module metadata array. If the returned object is NULL, it indicates that the acquisition failed. The possible cause of failure is that the application address space is full, causing space allocation failure. |
 
 ### OH_NativeBundle_GetAbilityResourceInfo()
 
@@ -216,9 +216,9 @@ Obtain a list of ability that support opening files in a certain format.
 
 | Parameter | Description |
 | -- | -- |
-| char* fileType | Indicates the file type. |
-| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)** abilityResourceInfo | Indicates the ability resource array. |
-| size_t* size | Indicates the ability resource array size. |
+| char* fileType | [in] Indicates the file type. |
+| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)** abilityResourceInfo | [in] Indicates the ability resource array. |
+| size_t* size | [in] Indicates the ability resource array size. |
 
 **Returns**:
 

@@ -27,6 +27,20 @@
 
 | 名称 | 描述 |
 | -- | -- |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_Create(ArkUI_UIInputEvent** event)](#oh_arkui_keyevent_create) | 创建可通过 [OH_ArkUI_KeyEvent_Dispatch](capi-native-key-event-h.md#oh_arkui_keyevent_dispatch) 分发的按键事件。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_Destroy(ArkUI_UIInputEvent** event)](#oh_arkui_keyevent_destroy) | 销毁通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件，并将事件指针置空。<br> 当 **event** 不为空且 **event** 指向的事件指针为空时，函数执行成功。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetType(ArkUI_UIInputEvent* event, ArkUI_KeyEventType type)](#oh_arkui_keyevent_settype) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyCode(ArkUI_UIInputEvent* event, int32_t keyCode)](#oh_arkui_keyevent_setkeycode) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件键码。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyText(ArkUI_UIInputEvent* event, const char* keyText)](#oh_arkui_keyevent_setkeytext) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件键值。<br> 本函数会复制 **keyText**。函数返回后，调用方可以释放或复用原字符串。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeySource(ArkUI_UIInputEvent* event, ArkUI_KeySourceType keySource)](#oh_arkui_keyevent_setkeysource) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件输入设备类型。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetDeviceId(ArkUI_UIInputEvent* event, int32_t deviceId)](#oh_arkui_keyevent_setdeviceid) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件设备ID。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetUnicode(ArkUI_UIInputEvent* event, uint32_t unicode)](#oh_arkui_keyevent_setunicode) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件Unicode码值。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetEventTime(ArkUI_UIInputEvent* event, int64_t timestamp)](#oh_arkui_keyevent_seteventtime) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件发生时间。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetPressedKeys(ArkUI_UIInputEvent* event, const int32_t* pressedKeyCodes, int32_t length)](#oh_arkui_keyevent_setpressedkeys) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件中所有已按下的按键。<br> 本函数会复制 **pressedKeyCodes**。函数返回后，调用方可以释放或复用原数组。 将 **pressedKeyCodes** 传入空指针、**length** 传入 **0** 可以清空已按下的按键。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyIntentionCode(ArkUI_UIInputEvent* event, OH_ArkUI_KeyIntention intentionCode)](#oh_arkui_keyevent_setkeyintentioncode) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件意图码。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool isNumLockOn)](#oh_arkui_keyevent_setnumlockon) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件NumLock状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool isCapsLockOn)](#oh_arkui_keyevent_setcapslockon) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件CapsLock状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, bool isScrollLockOn)](#oh_arkui_keyevent_setscrolllockon) | 设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件ScrollLock状态。 |
 | [ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_gettype) | 获取按键的类型。 |
 | [int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeycode) | 获取按键的键码。 |
 | [const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeytext) | 获取按键的键值。 |
@@ -39,6 +53,12 @@
 | [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_isnumlockon) | 获取按键事件发生时NumLock的状态。 |
 | [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_iscapslockon) | 获取按键事件发生时CapsLock的状态。 |
 | [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_isscrolllockon) | 获取按键事件发生时ScrollLock的状态。 |
+
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| ArkUI_KeyIntension OH_ArkUI_KeyIntention | 按键事件意图类型的正确拼写别名。<br> 原类型名 [ArkUI_KeyIntension](capi-native-key-event-h.md#arkui_keyintension) 将保留以兼容已有接口。<br>**起始版本：** 26.2.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
 
 ## 枚举类型说明
 
@@ -292,6 +312,385 @@ enum ArkUI_KeyIntension
 
 
 ## 函数说明
+
+### OH_ArkUI_KeyEvent_Create()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_Create(ArkUI_UIInputEvent** event)
+```
+
+**描述：**
+
+创建可通过 [OH_ArkUI_KeyEvent_Dispatch](capi-native-key-event-h.md#oh_arkui_keyevent_dispatch) 分发的按键事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**资源释放：** arkui/OH_ArkUI_KeyEvent_Destroy {event}
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)** event | [out] 二级指针，指向创建的 **ArkUI_UIInputEvent** 对象，不能为空。成功时创建的事件写入 **event**，事件归调用方所有，必须调用[OH_ArkUI_KeyEvent_Destroy](capi-native-key-event-h.md#oh_arkui_keyevent_destroy)释放。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空。</li> </ul> |
+
+### OH_ArkUI_KeyEvent_Destroy()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_Destroy(ArkUI_UIInputEvent** event)
+```
+
+**描述：**
+
+销毁通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件，并将事件指针置空。<br> 当 **event** 不为空且 **event** 指向的事件指针为空时，函数执行成功。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)** event | [in] 二级指针，指向待销毁的 **ArkUI_UIInputEvent** 对象，不能为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或者输入事件不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件。</li> </ul> |
+
+### OH_ArkUI_KeyEvent_SetType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetType(ArkUI_UIInputEvent* event, ArkUI_KeyEventType type)
+```
+
+**描述：**
+
+设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [in] 目标 **ArkUI_UIInputEvent** 对象的指针，不能为空，且必须是 通过[OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。 |
+| [ArkUI_KeyEventType](capi-native-key-event-h.md#arkui_keyeventtype) type | [in] 按键事件类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+
+### OH_ArkUI_KeyEvent_SetKeyCode()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyCode(ArkUI_UIInputEvent* event, int32_t keyCode)
+```
+
+**描述：**
+
+设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件键码。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [in] 目标 **ArkUI_UIInputEvent** 对象的指针，不能为空，且必须是 通过[OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。 |
+| int32_t keyCode | [in] 按键键码，取值由 [ArkUI_KeyCode](capi-native-key-event-h.md#arkui_keycode) 定义。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+
+### OH_ArkUI_KeyEvent_SetKeyText()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyText(ArkUI_UIInputEvent* event, const char* keyText)
+```
+
+**描述：**
+
+设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件键值。<br> 本函数会复制 **keyText**。函数返回后，调用方可以释放或复用原字符串。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [in] 目标 **ArkUI_UIInputEvent** 对象的指针，不能为空，且必须是 通过[OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。 |
+| const char* keyText | [in] 以空字符结尾的按键键值，UTF-8编码，不能为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+
+### OH_ArkUI_KeyEvent_SetKeySource()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeySource(ArkUI_UIInputEvent* event, ArkUI_KeySourceType keySource)
+```
+
+**描述：**
+
+设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件输入设备类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [in] 目标 **ArkUI_UIInputEvent** 对象的指针，不能为空，且必须是 通过[OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。 |
+| [ArkUI_KeySourceType](capi-native-key-event-h.md#arkui_keysourcetype) keySource | [in] 输入设备类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+
+### OH_ArkUI_KeyEvent_SetDeviceId()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetDeviceId(ArkUI_UIInputEvent* event, int32_t deviceId)
+```
+
+**描述：**
+
+设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件设备ID。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [in] 目标 **ArkUI_UIInputEvent** 对象的指针，不能为空，且必须是 通过[OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。 |
+| int32_t deviceId | [in] 设备ID，由系统分配的输入设备标识。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+
+### OH_ArkUI_KeyEvent_SetUnicode()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetUnicode(ArkUI_UIInputEvent* event, uint32_t unicode)
+```
+
+**描述：**
+
+设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件Unicode码值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [in] 目标 **ArkUI_UIInputEvent** 对象的指针，不能为空，且必须是 通过[OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。 |
+| uint32_t unicode | [in] Unicode码值，必须为有效的Unicode码位。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+
+### OH_ArkUI_KeyEvent_SetEventTime()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetEventTime(ArkUI_UIInputEvent* event, int64_t timestamp)
+```
+
+**描述：**
+
+设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件发生时间。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [in] 目标 **ArkUI_UIInputEvent** 对象的指针，不能为空，且必须是 通过[OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。 |
+| int64_t timestamp | [in] 事件发生时间，单位为ns，时间基准与[OH_ArkUI_UIInputEvent_GetEventTime](capi-ui-input-event-h.md#oh_arkui_uiinputevent_geteventtime)一致。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+
+### OH_ArkUI_KeyEvent_SetPressedKeys()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetPressedKeys(ArkUI_UIInputEvent* event, const int32_t* pressedKeyCodes, int32_t length)
+```
+
+**描述：**
+
+设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件中所有已按下的按键。<br> 本函数会复制 **pressedKeyCodes**。函数返回后，调用方可以释放或复用原数组。 将 **pressedKeyCodes** 传入空指针、**length** 传入 **0** 可以清空已按下的按键。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [in] 目标 **ArkUI_UIInputEvent** 对象的指针，不能为空，且必须是 通过[OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。 |
+| const int32_t* pressedKeyCodes | [in] 所有已按下按键的键码数组，仅当 **length** 为 **0** 时可以为 <b>nullptr</b>。 每个元素的取值由 [ArkUI_KeyCode](capi-native-key-event-h.md#arkui_keycode) 定义。 |
+| int32_t length | [in] **pressedKeyCodes** 中的元素个数，必须大于等于 **0**。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+
+### OH_ArkUI_KeyEvent_SetKeyIntentionCode()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyIntentionCode(ArkUI_UIInputEvent* event, OH_ArkUI_KeyIntention intentionCode)
+```
+
+**描述：**
+
+设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件意图码。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [in] 目标 **ArkUI_UIInputEvent** 对象的指针，不能为空，且必须是 通过[OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。 |
+| OH_ArkUI_KeyIntention intentionCode | [in] 按键事件关联的意图码。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+
+### OH_ArkUI_KeyEvent_SetNumLockOn()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool isNumLockOn)
+```
+
+**描述：**
+
+设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件NumLock状态。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [in] 目标 **ArkUI_UIInputEvent** 对象的指针，不能为空，且必须是 通过[OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。 |
+| bool isNumLockOn | [in] NumLock是否激活。true表示处于激活状态，false表示处于未激活状态。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+
+### OH_ArkUI_KeyEvent_SetCapsLockOn()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool isCapsLockOn)
+```
+
+**描述：**
+
+设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件CapsLock状态。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [in] 目标 **ArkUI_UIInputEvent** 对象的指针，不能为空，且必须是 通过[OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。 |
+| bool isCapsLockOn | [in] CapsLock是否激活。true表示处于激活状态，false表示处于未激活状态。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
+
+### OH_ArkUI_KeyEvent_SetScrollLockOn()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, bool isScrollLockOn)
+```
+
+**描述：**
+
+设置通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create) 创建的按键事件ScrollLock状态。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [in] 目标 **ArkUI_UIInputEvent** 对象的指针，不能为空，且必须是 通过[OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。 |
+| bool isScrollLockOn | [in] ScrollLock是否激活。true表示处于激活状态，false表示处于未激活状态。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 错误码。<ul> <li>ARKUI_ERROR_CODE_NO_ERROR 成功。</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID **event** 为空，或不是通过 [OH_ArkUI_KeyEvent_Create](capi-native-key-event-h.md#oh_arkui_keyevent_create)创建的按键事件。</li> </ul> |
 
 ### OH_ArkUI_KeyEvent_GetType()
 

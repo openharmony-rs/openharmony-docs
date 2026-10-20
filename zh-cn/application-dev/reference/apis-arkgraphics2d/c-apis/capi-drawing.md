@@ -32,7 +32,7 @@ Drawing模块提供包括2D图形渲染、文字绘制和图片显示等功能�
 | [drawing_text_blob.h](capi-drawing-text-blob-h.md) | 文件中定义了与文字相关的功能函数。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |
 | [drawing_surface.h](capi-drawing-surface-h.md) | 本文件定义了与surface相关的功能函数，包括surface的创建、销毁和使用等。surface对象用于管理画布绘制的内容， 支持通过图形处理器上下文创建离屏surface和与屏幕窗口绑定的surface。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |
 | [drawing_brush.h](capi-drawing-brush-h.md) | 文件中定义了与画刷相关的功能函数。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |
-| [drawing_mask_filter.h](capi-drawing-mask-filter-h.md) | 声明与绘图模块中的对象相关的函数。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |
+| [drawing_mask_filter.h](capi-drawing-mask-filter-h.md) | 声明与绘图模块中的蒙版滤波器对象相关的函数。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |
 | [drawing_text_declaration.h](capi-drawing-text-declaration-h.md) | 提供2D绘制文本相关的数据结构声明。 |
 | [drawing_text_font_descriptor.h](capi-drawing-text-font-descriptor-h.md) | 定义了字体信息的相关接口，比如获取字体信息、查找和匹配指定字体、读取字体描述符属性以及获取字体的Unicode码和字体数量等。 |
 | [drawing_record_cmd.h](capi-drawing-record-cmd-h.md) | 文件中定义了与录制指令对象相关的功能函数。用于录制和回放绘制指令序列，支持创建录制画布、记录绘制操作、 生成可回放的指令对象。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |
@@ -40,7 +40,7 @@ Drawing模块提供包括2D图形渲染、文字绘制和图片显示等功能�
 | [drawing_sampling_options.h](capi-drawing-sampling-options-h.md) | 文件中定义了与采样选项相关的功能函数，用于创建、拷贝和销毁采样选项对象， 以及指定图像采样时的过滤模式和纹理采样时的多级渐远纹理模式。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |
 | [drawing_text_lineTypography.h](capi-drawing-text-linetypography-h.md) | 提供排版行相关的接口，如获取指定位置处开始可以排版的字符个数等函数。 |
 | [drawing_pixel_map.h](capi-drawing-pixel-map-h.md) | 声明与绘图模块中的像素图对象相关的函数。支持从图像框架定义的像素图对象中获取本模块定义的像素图对象， 支持解除两者之间的关系。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |
-| [drawing_typeface.h](capi-drawing-typeface-h.md) | 文件中定义了与字形相关的功能函数，支持创建默认字形、从文件或内存流创建指定字形、 通过字型参数自定义字体的可变维度，以及查询字形的粗体、斜体属性等。 <br>不同的平台有自己的默认字形，也可以从ttf文件解析出三方指定字形，如宋体、黑体字形等。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |
+| [drawing_typeface.h](capi-drawing-typeface-h.md) | 文件中定义了与字体相关的功能函数，支持创建默认字体、从文件或内存流创建指定字体、 通过字型参数自定义字体的可变维度，以及查询字形的粗体、斜体属性等。 <br>不同的平台有自己的默认字形，也可以从ttf文件解析出三方指定字形，如宋体、黑体字形等。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |
 | [drawing_color.h](capi-drawing-color-h.md) | 文件中定义了与颜色相关的功能函数。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |
 | [drawing_shader_effect.h](capi-drawing-shader-effect-h.md) | 声明与绘图模块中的着色器对象相关的函数，用于创建单色、线性渐变、径向渐变、扇形渐变、两点锥形渐变、 图像和像素图等类型的着色器效果，按指定混合模式叠加两个着色器生成新的着色器效果；同时提供销毁着色器对象的函数， 回收该对象占用的内存。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |
 | [drawing_font.h](capi-drawing-font-h.md) | 文件中定义了与字体相关的功能函数。 <br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。 |

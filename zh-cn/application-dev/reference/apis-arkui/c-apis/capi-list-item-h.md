@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides shared list item-related type and function definitions for <b>NativeNode</b> APIs.
+为<b>NativeNode</b>API提供共享的列表项相关类型和函数定义。
 
 **库：** libace_ndk.z.so
 
@@ -18,8 +18,8 @@ Provides shared list item-related type and function definitions for <b>NativeNod
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md) | ArkUI_ListItemSwipeActionItem | Defines the configuration information of an item in the **ListItemSwipeActionOption**. |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) | ArkUI_ListItemSwipeActionOption | Defines the configuration information of the **ListItemSwipeActionOption**. |
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md) | ArkUI_ListItemSwipeActionItem | 定义列表项侧滑操作项的配置信息。 |
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) | ArkUI_ListItemSwipeActionOption | 定义列表项侧滑操作的配置信息。 |
 
 ### 枚举
 
@@ -247,7 +247,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea(ArkUI_ListItemSwipeAc
 | 参数项 | 描述 |
 | -- | -- |
 | rkUI_ListItemSwipeActionItem* item | ListItemSwipeActionItem实例。 |
-| void (*callback)() | Callback event. |
+| void (*callback)() | 回调事件。 |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData()
 
@@ -269,7 +269,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData(ArkUI_Lis
 | -- | -- |
 | rkUI_ListItemSwipeActionItem* item | ListItemSwipeActionItem实例。 |
 | void* userData | 用户自定义数据。 |
-| void (*callback)(void* userData) | Callback event. |
+| void (*callback)(void* userData) | 回调事件。 |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnAction()
 
@@ -290,7 +290,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem*
 | 参数项 | 描述 |
 | -- | -- |
 | rkUI_ListItemSwipeActionItem* item | ListItemSwipeActionItem实例。 |
-| void (*callback)() | Callback event. |
+| void (*callback)() | 回调事件。 |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData()
 
@@ -312,7 +312,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData(ArkUI_ListItemSwip
 | -- | -- |
 | rkUI_ListItemSwipeActionItem* item | ListItemSwipeActionItem实例。 |
 | void* userData | 用户自定义数据。 |
-| void (*callback)(void* userData) | Callback event. |
+| void (*callback)(void* userData) | 回调事件。 |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea()
 
@@ -333,7 +333,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea(ArkUI_ListItemSwipeAct
 | 参数项 | 描述 |
 | -- | -- |
 | rkUI_ListItemSwipeActionItem* item | ListItemSwipeActionItem实例。 |
-| void (*callback)() | Callback event. |
+| void (*callback)() | 回调事件。 |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData()
 
@@ -355,7 +355,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData(ArkUI_List
 | -- | -- |
 | rkUI_ListItemSwipeActionItem* item | ListItemSwipeActionItem实例。 |
 | void* userData | 用户自定义数据。 |
-| void (*callback)(void* userData) | Callback event. |
+| void (*callback)(void* userData) | 回调事件。 |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange()
 
@@ -376,7 +376,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange(ArkUI_ListItemSwipeAction
 | 参数项 | 描述 |
 | -- | -- |
 | rkUI_ListItemSwipeActionItem* item | ListItemSwipeActionItem实例。 |
-| void (*callback)(ArkUI_ListItemSwipeActionState swipeActionState) | Callback event. **swipeActionState** The changed state. |
+| void (*callback)(ArkUI_ListItemSwipeActionState swipeActionState) | 回调事件。 **swipeActionState** The changed state. |
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData()
 
@@ -398,7 +398,7 @@ void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData(ArkUI_ListIte
 | -- | -- |
 | rkUI_ListItemSwipeActionItem* item | ListItemSwipeActionItem实例。 |
 | void* userData | 用户自定义数据。 |
-| void (*callback)(ArkUI_ListItemSwipeActionState swipeActionState | Callback event. **swipeActionState** The changed state. |
+| void (*callback)(ArkUI_ListItemSwipeActionState swipeActionState | 回调事件。 **swipeActionState** The changed state. |
 
 ### OH_ArkUI_ListItemSwipeActionOption_Create()
 
@@ -548,7 +548,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeAct
 | 参数项 | 描述 |
 | -- | -- |
 | rkUI_ListItemSwipeActionOption* option | ListItemSwipeActionOption实例。 |
-| void (*callback)(float offset) | Callback event. **offset** Slide offset. |
+| void (*callback)(float offset) | 回调事件。 **offset** Slide offset. |
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData()
 
@@ -570,7 +570,7 @@ void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData(ArkUI_List
 | -- | -- |
 | rkUI_ListItemSwipeActionOption* option | ListItemSwipeActionOption实例。 |
 | void* userData | 用户自定义数据。 |
-| void (*callback)(float offset | Callback event. **offset** Slide offset. |
+| void (*callback)(float offset | 回调事件。 **offset** Slide offset. |
 
 ### OH_ArkUI_ListItemSwipeAction_Expand()
 

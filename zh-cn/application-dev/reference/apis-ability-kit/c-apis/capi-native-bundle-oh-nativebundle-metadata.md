@@ -22,8 +22,8 @@ struct OH_NativeBundle_Metadata {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| char* name | 元数据名称。 |
-| char* value | 元数据值。 |
-| char* resource | 元数据资源。 |
+| char* name | 元数据名称。<br>**起始版本：** 20 |
+| char* value | 元数据值。<br>**起始版本：** 20 |
+| char* resource | 元数据资源。<br>**起始版本：** 20 |
 
 

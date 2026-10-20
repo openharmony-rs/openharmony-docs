@@ -2,7 +2,7 @@
 
 ## 概述
 
-The file declares the error codes defined by BundleManager.
+声明BundleManager定义的相关错误码。
 
 **库：** libbundle_ndk.z.so
 
@@ -38,8 +38,8 @@ enum BundleManager_ErrorCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| BUNDLE_MANAGER_ERROR_CODE_NO_ERROR = 0 |  |
-| BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED = 201 |  |
-| BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID = 401 |  |
+| BUNDLE_MANAGER_ERROR_CODE_NO_ERROR = 0 | 执行成功。<br>**起始版本：** 21 |
+| BUNDLE_MANAGER_ERROR_CODE_PERMISSION_DENIED = 201 | 权限被拒绝。<br>**起始版本：** 21 |
+| BUNDLE_MANAGER_ERROR_CODE_PARAM_INVALID = 401 | 参数无效。<br>**起始版本：** 21 |
 
 

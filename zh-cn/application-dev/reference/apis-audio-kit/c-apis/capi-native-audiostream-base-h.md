@@ -38,7 +38,7 @@
 | [OH_AudioStream_DirectPlaybackMode](#oh_audiostream_directplaybackmode) | OH_AudioStream_DirectPlaybackMode | 定义音频流直通通路播放模式。 <br>使用直通通路的音频播放流，不会与其他播放流混音，系统也不会对数据进行处理，直接输出到底层硬件。 通常用于高音质音源播放场景。 |
 | [OH_AudioStream_Event](#oh_audiostream_event) | OH_AudioStream_Event | 定义音频事件。(API20废弃) |
 | [OH_AudioStream_State](#oh_audiostream_state) | OH_AudioStream_State | 定义音频流的状态。 |
-| [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype) | OH_AudioInterrupt_ForceType | 定义音频打断强制类型。 <br>当用户监听到音频打断时，将获取此信息。 <br>此类型表示音频打断提示[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)获取。 <br>其中，AUDIOSTREAM_INTERRUPT_HINT_RESUME对应的forceType一定为AUDIOSTREAM_INTERRUPT_SHARE，即恢复操作无法由系统强制执行，需应用自行触发。 |
+| [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype) | OH_AudioInterrupt_ForceType | 定义音频打断是否由系统强制执行。 <br>当用户监听到音频打断时，将获取此信息。 <br>此类型表示音频打断提示[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)获取。 <br>其中，AUDIOSTREAM_INTERRUPT_HINT_RESUME对应的forceType一定为AUDIOSTREAM_INTERRUPT_SHARE，即恢复操作无法由系统强制执行，需应用自行触发。 |
 | [OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint) | OH_AudioInterrupt_Hint | 定义音频中断提示类型。 <br>当用户监听到音频中断时，将获取此信息。 <br>此类型表示根据焦点策略，当前需要对音频流的具体操作（如暂停、调整音量等）。 <br>可以结合[OH_AudioInterrupt_ForceType](capi-native-audiostream-base-h.md#oh_audiointerrupt_forcetype)信息，判断该操作是否已由系统强制执行。 |
 | [OH_AudioStream_SourceType](#oh_audiostream_sourcetype) | OH_AudioStream_SourceType | 定义音频录制流使用场景。 <br>使用场景影响音频录制流的音效、设备与焦点策略。 |
 | [OH_AudioInterrupt_Mode](#oh_audiointerrupt_mode) | OH_AudioInterrupt_Mode | 定义音频中断模式。 |
@@ -281,7 +281,7 @@ enum OH_AudioInterrupt_ForceType
 
 **描述：**
 
-定义音频打断强制类型。 <br>当用户监听到音频打断时，将获取此信息。 <br>此类型表示音频打断提示[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)获取。 <br>其中，AUDIOSTREAM_INTERRUPT_HINT_RESUME对应的forceType一定为AUDIOSTREAM_INTERRUPT_SHARE，即恢复操作无法由系统强制执行，需应用自行触发。
+定义音频打断是否由系统强制执行。 <br>当用户监听到音频打断时，将获取此信息。 <br>此类型表示音频打断提示[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint)获取。 <br>其中，AUDIOSTREAM_INTERRUPT_HINT_RESUME对应的forceType一定为AUDIOSTREAM_INTERRUPT_SHARE，即恢复操作无法由系统强制执行，需应用自行触发。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

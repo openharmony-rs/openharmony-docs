@@ -438,7 +438,7 @@ int32_t OH_WindowManager_Snapshot(int32_t windowId, OH_PixelmapNative* pixelMap)
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 创建窗口时的窗口id。默认值为0。该参数为整数。 窗口id非法或者窗口已经销毁，不能获取指定窗口截图，需要传入有效的窗口id才能成功获取指定窗口截图。 请通过窗口对象调用getWindowProperties()接口（ArkTS接口）获取有效的窗口id。 |
-| [OH_PixelmapNative](../../apis-input-kit/c-apis/capi-input-oh-pixelmapnative.md)* pixelMap | 返回指向指定窗口的截图的指针，作为出参使用。 |
+| [OH_PixelmapNative](capi-windowmanager-oh-pixelmapnative.md)* pixelMap | 返回指向指定窗口的截图的指针，作为出参使用。 |
 
 **返回值：**
 
@@ -590,7 +590,7 @@ typedef void (*OH_WindowManager_WindowSnapshotCallback)(const OH_PixelmapNative*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_PixelmapNative](../../apis-input-kit/c-apis/capi-input-oh-pixelmapnative.md)** snapshotPixelMapList | 窗口截图列表。 |
+| [const OH_PixelmapNative](capi-windowmanager-oh-pixelmapnative.md)** snapshotPixelMapList | 窗口截图列表。 |
 | size_t snapshotListSize | 窗口截图列表的大小。 |
 
 ### OH_WindowManager_GetMainWindowSnapshot()
@@ -642,7 +642,7 @@ void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapsho
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_PixelmapNative](../../apis-input-kit/c-apis/capi-input-oh-pixelmapnative.md)* snapshotPixelMapList | 窗口截图列表。 |
+| [const OH_PixelmapNative](capi-windowmanager-oh-pixelmapnative.md)* snapshotPixelMapList | 窗口截图列表。 |
 
 ### OH_WindowManager_LockCursor()
 

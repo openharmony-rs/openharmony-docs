@@ -52,7 +52,7 @@ Creates an [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchan
 
 | Type | Description |
 | -- | -- |
-| [OH_MediaAssetChangeRequest*](capi-mediaassetmanager-oh-mediaassetchangerequest.md) | MEDIA_LIBRARY_OK if the method call succeeds. <br>MEDIA_LIBRARY_PARAMETER_ERROR Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. <br>MEDIA_LIBRARY_INTERNAL_SYSTEM_ERROR if internal system error. |
+| [OH_MediaAssetChangeRequest*](capi-mediaassetmanager-oh-mediaassetchangerequest.md) | An instance of OH_MediaAssetChangeRequest. If the creation fails, return a NULL pointer. |
 
 ### OH_MediaAssetChangeRequest_AddResourceWithUri()
 

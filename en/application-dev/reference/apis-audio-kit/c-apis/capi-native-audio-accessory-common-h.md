@@ -49,6 +49,6 @@ Enumerates audio accessory connection types.
 
 | Enum item | Description |
 | -- | -- |
-| AUDIO_ACCESSORY_TYPE_BT_SPP = 1 | Bluetooth SPP (Signal Processing Plugin) connection.<br>**Since**: 26.0.0 |
+| AUDIO_ACCESSORY_TYPE_BT_SPP = 1 | Bluetooth SPP (Serial Port Profile) connection.<br>**Since**: 26.0.0 |
 
 

@@ -698,6 +698,7 @@ Enumerates the tags contained in a parameter set. <br>1 to 200: key parameter ta
 | OH_HUKS_TAG_AE_TAG_LEN = OH_HUKS_TAG_TYPE_UINT \| 521 | Length of the specified AEAD in CCM mode.<br>**Since**: 22 |
 | OH_HUKS_TAG_KEY_CLASS = OH_HUKS_TAG_TYPE_UINT \| 522 | Key type, which is used to distinguish the key managed by HUKS on the device from the key stored in an external device.<br>**Since**: 22 |
 | OH_HUKS_TAG_KEY_ACCESS_GROUP = OH_HUKS_TAG_TYPE_BYTES \| 523 | Group ID. Keys can be shared among the same group of developers with the same developer ID.<br>**Since**: 23 |
+| OH_HUKS_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 529 | Asynchronous timeout duration in seconds, customizable by business logic.<br>**Since**: 26.0.1 |
 | OH_HUKS_TAG_IS_KEY_ALIAS = OH_HUKS_TAG_TYPE_BOOL \| 1001 | Whether it is a key alias. |
 | OH_HUKS_TAG_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1002 | Key storage mode. For details, see [OH_Huks_KeyStorageType](capi-native-huks-type-h.md#oh_huks_keystoragetype). |
 | OH_HUKS_TAG_IS_ALLOWED_WRAP = OH_HUKS_TAG_TYPE_BOOL \| 1003 | Whether to allow the key to be wrapped. |

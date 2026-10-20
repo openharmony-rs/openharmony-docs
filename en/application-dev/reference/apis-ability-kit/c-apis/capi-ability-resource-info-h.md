@@ -18,7 +18,7 @@ The file declares the APIs for obtaining the following ability resource informat
 
 | Name | Description |
 | -- | -- |
-| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md) | The struct describes the ability resource information. |
+| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md) | Represents the ability resource information, which is used to store and pass the basic configuration information of an ability, including attributes such as name and type. It is applicable to scenarios where the native layer queries and manages ability resources. |
 
 ### Function
 
@@ -55,8 +55,8 @@ Obtains the bundle name of the ability. After using this function, you must manu
 
 | Parameter | Description |
 | -- | -- |
-| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | Pointer to the ability resource information. |
-| char** bundleName | Double pointer to the bundle name. |
+| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | [in] Pointer to the ability resource information. |
+| char** bundleName | [in] Double pointer to the bundle name. |
 
 **Returns**:
 
@@ -82,8 +82,8 @@ Obtains the module name of the ability. After using this function, you must manu
 
 | Parameter | Description |
 | -- | -- |
-| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | Pointer to the ability resource information. |
-| char** moduleName | Double pointer to the module name. |
+| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | [in] Pointer to the ability resource information. |
+| char** moduleName | [in] Double pointer to the module name. |
 
 **Returns**:
 
@@ -109,8 +109,8 @@ Obtains the ability name. After using this function, you must manually release t
 
 | Parameter | Description |
 | -- | -- |
-| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | Pointer to the ability resource information. |
-| char** abilityName | Double pointer to the ability name. |
+| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | [in] Pointer to the ability resource information. |
+| char** abilityName | [in] Double pointer to the ability name. |
 
 **Returns**:
 
@@ -136,8 +136,8 @@ Obtains the application name of the ability. After using this function, you must
 
 | Parameter | Description |
 | -- | -- |
-| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | Pointer to the ability resource information. |
-| char** label | Double pointer to the application name. |
+| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | [in] Pointer to the ability resource information. |
+| char** label | [in] Double pointer to the application name. |
 
 **Returns**:
 
@@ -163,8 +163,8 @@ Obtains the clone index of the ability.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | Pointer to the ability resource information. |
-| int* appIndex | Pointer to the clone index. |
+| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | [in] Pointer to the ability resource information. |
+| int* appIndex | [in] Pointer to the clone index. |
 
 **Returns**:
 
@@ -190,8 +190,8 @@ Checks whether the application to which the ability belongs is a default applica
 
 | Parameter | Description |
 | -- | -- |
-| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | Pointer to the ability resource information. |
-| bool* isDefault | Pointer to the check result for whether the application is a default application. A default application is the preferred application set by the user for a specific file type or operation. **true** if the application is a default application, **false** otherwise. |
+| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | [in] Pointer to the ability resource information. |
+| bool* isDefault | [in] Pointer to the check result for whether the application is a default application. A default application is the preferred application set by the user for a specific file type or operation. **true** if the application is a default application, **false** otherwise. |
 
 **Returns**:
 
@@ -217,8 +217,8 @@ Releases memory allocated for ability resource information.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | Pointer to the ability resource information. |
-| size_t count | Size of the ability resource information array. |
+| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | [in] Pointer to the ability resource information. |
+| size_t count | [in] Size of the ability resource information array. |
 
 **Returns**:
 
@@ -265,8 +265,8 @@ Obtains the DrawableDescriptor object of the ability icon resource. After using 
 
 | Parameter | Description |
 | -- | -- |
-| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | Pointer to the ability resource information. |
-| drawableIcon | Double pointer to the DrawableDescriptor object. |
+| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)* abilityResourceInfo | [in] Pointer to the ability resource information. |
+| drawableIcon | [in] Double pointer to the DrawableDescriptor object. |
 
 **Returns**:
 

@@ -54,7 +54,7 @@
 | [uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)](#oh_hidebug_setcrashobj) | - | 将维测信息添加到崩溃日志中，与[OH_HiDebug_ResetCrashObj](capi-hidebug-h.md#oh_hidebug_resetcrashobj)配对使用。若程序在OH_HiDebug_SetCrashObj与OH_HiDebug_ResetCrashObj之间发生崩溃， 会将OH_HiDebug_SetCrashObj设置的维测信息添加到记录本次崩溃的日志中。 |
 | [void OH_HiDebug_ResetCrashObj(uint64_t crashObj)](#oh_hidebug_resetcrashobj) | - | 将维测信息对象还原到使用OH_HiDebug_SetCrashObj之前的状态。 |
 | [typedef void (\*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)](#oh_hidebug_threadlitesamplingcallback) | OH_HiDebug_ThreadLiteSamplingCallback | 轻量级Perf采样栈内容的回调函数定义。注意：采样数据仅在该回调函数执行期间有效，若需在函数外使用，务必对采样栈内容进行深拷贝。 |
-| [HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)](#oh_hidebug_requestthreadlitesampling) | - |  |
+| [HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)](#oh_hidebug_requestthreadlitesampling) | - | 对指定的数个线程进行Perf采样，并在调用结束后返回采样栈内容。注意：调用该函数后会阻塞当前线程，直至采样过程完全结束。系统对该接口的调用次数有严格限制，频繁调用超出限额后，将返回 [HIDEBUG_RESOURCE_UNAVAILABLE](capi-hidebug-type-h.md#hidebug_errorcode)错误码。 |
 | [HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDebug_ResProfilerConfig* config, OH_HiDebug_ProfilingCallback callback)](#oh_hidebug_startprofiler) | - | 异步启动当前进程资源采集功能。 <br>回调函数只在终止采集（含系统自动停止采集）时调用，其携带采集资源类型和采集文件路径。 <br>若采集异常，则文件路径为NULL。 |
 | [HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)](#oh_hidebug_stopprofiler) | - | 停止当前进程资源采集功能。该接口可在[OH_HiDebug_StartProfiler](capi-hidebug-h.md#oh_hidebug_startprofiler)接口调用后使用，且调用间隔不能超过最大持续时间。 |
 | [typedef bool (\*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg)](#oh_hidebug_memdumplistener) | OH_HiDebug_MemDumpListener | 触发监听的回调函数。开发者在应用中使用FD来写入内存数据，这样就可以使用hidumper命令导出数据。 |
@@ -632,6 +632,8 @@ HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerCon
 
 **描述：**
 
+对指定的数个线程进行Perf采样，并在调用结束后返回采样栈内容。注意：调用该函数后会阻塞当前线程，直至采样过程完全结束。系统对该接口的调用次数有严格限制，频繁调用超出限额后，将返回 [HIDEBUG_RESOURCE_UNAVAILABLE](capi-hidebug-type-h.md#hidebug_errorcode)错误码。
+
 **系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 22
@@ -667,7 +669,7 @@ HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDe
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_HiDebug_ResourceType](capi-hidebug-type-h.md#oh_hidebug_resourcetype) type | 资源采集类型，决定了采集的具体资源类别（如CPU、内存、IO等）。不同类型对应不同资源采集场景：CPU采集用于分析CPU性能问题，内存采集用于分析内存泄漏和内存使用情况，IO采集用于分析IO性能瓶颈。 根据分析需求选择合适的资源类型。 |
+| [OH_HiDebug_ResourceType](capi-hidebug-type-h.md#oh_hidebug_resourcetype) type | 资源采集类型，详见[OH_HiDebug_ResourceType](capi-hidebug-type-h.md#oh_hidebug_resourcetype)。 |
 | [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md)* config | 资源采集配置参数。配置参数决定了采集的具体行为，如采样频率、持续时间等。 |
 | [OH_HiDebug_ProfilingCallback](capi-hidebug-type-h.md#oh_hidebug_profilingcallback) callback | 资源采集回调结果函数。采集终止时将调用此回调函数，传递采集结果和文件路径。 |
 
@@ -675,7 +677,7 @@ HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDe
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>[HIDEBUG_RES_PROF_SUCCESS](capi-hidebug-type-h.md#hidebug_errorcode)：启动资源采集成功。<br>[HIDEBUG_RES_PROF_INVALID_ARG](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集参数无效。<br>[HIDEBUG_RES_PROF_INVALID_MAX_DURATION](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集最大持续时间参数无效。<br>[HIDEBUG_RES_PROF_INVALID_FILTER_SIZE](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集过滤大小参数无效。<br>[HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集最大回栈深度参数无效。<br>[HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集统计间隔参数无效。<br>[HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集采样大小参数无效。<br>[HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集类型参数无效。<br>[HIDEBUG_RES_PROF_PERMISSION_DENIED](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。<br>[HIDEBUG_RES_PROF_ALREADY_STARTED](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集重复启动。<br>[HIDEBUG_RES_PROF_PROCESS_OVERLIMIT](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集进程数超出 4 个限制。<br>[HIDEBUG_RES_PROF_CONFLICT](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集与命令行工具或系统采集任务冲突。<br>[HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集每日配额超出 10 次限制。<br>[HIDEBUG_RES_PROF_CPU_OVERLOADED](capi-hidebug-type-h.md#hidebug_errorcode)：系统 CPU 处于高负载状态，CPU 占用率超过 70%。<br>[HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode)：内存可用空间紧张，可用空间少于 15%。<br>[HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode)：存储可用空间紧张，可用空间少于 15%。<br>[HIDEBUG_RES_PROF_FAILURE](capi-hidebug-type-h.md#hidebug_errorcode)：启动资源采集失败。 |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<ul><li>[HIDEBUG_RES_PROF_SUCCESS](capi-hidebug-type-h.md#hidebug_errorcode)：启动资源采集成功。</li> <li>[HIDEBUG_RES_PROF_INVALID_ARG](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_DURATION](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集最大持续时间参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_FILTER_SIZE](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集过滤大小参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集最大回栈深度参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集统计间隔参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集采样大小参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集类型参数无效。</li> <li>[HIDEBUG_RES_PROF_PERMISSION_DENIED](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。</li> <li>[HIDEBUG_RES_PROF_ALREADY_STARTED](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集重复启动。</li> <li>[HIDEBUG_RES_PROF_PROCESS_OVERLIMIT](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集进程数超过4个上限。仅对发布签名应用生效，调试签名应用不受此限制，用于开发和调试目的。已有采集任务停止后限制释放。[since 26.0.1] API版本26.0.0及以下，该限制对所有应用生效。[since 24 - 26.0.0]</li> <li>[HIDEBUG_RES_PROF_CONFLICT](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集与命令行工具或系统采集任务冲突。</li> <li>[HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集每日配额超出限制。发布签名应用：每应用每日限制采集2次，整机每日限制采集4次；调试签名应用：采集不受限制，用于开发和调试目的。配额每日重置。[since 26.0.1] API版本26.0.0及以下，仅调试签名应用支持采集，每日限10次。[since 24 - 26.0.0]</li> <li>[HIDEBUG_RES_PROF_CPU_OVERLOADED](capi-hidebug-type-h.md#hidebug_errorcode)：系统CPU处于高负载状态，CPU占用率超过70%，禁止资源采集。CPU使用率恢复后可重试。</li> <li>[HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode)：系统内存可用空间紧张，禁止资源采集。可用空间不足2GB，该阈值为固定值，不随设备容量变化。可用内存恢复后可重试。[since 26.0.1] API版本26.0.0及以下，可用空间少于15%。[since 24 - 26.0.0]</li> <li>[HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode)：系统存储可用空间紧张，禁止资源采集。可用空间不足总容量的3%与15GB中的较大值。可用存储恢复后可重试。[since 26.0.1] API版本26.0.0及以下，可用空间少于15%。[since 24 - 26.0.0]</li> <li>[HIDEBUG_RES_PROF_FAILURE](capi-hidebug-type-h.md#hidebug_errorcode)：启动资源采集失败。可检查系统条件后重试。</li></ul> |
 
 ### OH_HiDebug_StopProfiler()
 
@@ -695,7 +697,7 @@ HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>[HIDEBUG_RES_PROF_SUCCESS](capi-hidebug-type-h.md#hidebug_errorcode)：已成功停止资源采集。<br>[HIDEBUG_RES_PROF_NOT_STARTED](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集未启动，停止失败。<br>[HIDEBUG_RES_PROF_FAILURE](capi-hidebug-type-h.md#hidebug_errorcode)：停止资源采集失败。 |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<ul><li>[HIDEBUG_RES_PROF_SUCCESS](capi-hidebug-type-h.md#hidebug_errorcode)：已成功停止资源采集。</li> <li>[HIDEBUG_RES_PROF_NOT_STARTED](capi-hidebug-type-h.md#hidebug_errorcode)：资源采集未启动，停止失败。</li> <li>[HIDEBUG_RES_PROF_FAILURE](capi-hidebug-type-h.md#hidebug_errorcode)：停止资源采集失败。可检查系统条件后重试。</li></ul> |
 
 ### OH_HiDebug_MemDumpListener()
 
@@ -926,7 +928,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncNestingDepth(OH_HiDebug_ProfilerOptions 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] 指向OH_HiDebug_ProfilerOptions结构体的指针，该参数须为非空指针。 |
-| uint32_t depth | [in] 允许的最大异步嵌套深度。 |
+| uint32_t depth | [in] 允许的最大异步嵌套深度，取值范围为[1, 16]。 |
 
 **返回值：**
 
@@ -953,7 +955,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncTaskStackDepth(OH_HiDebug_ProfilerOption
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] 指向OH_HiDebug_ProfilerOptions结构体的指针，该参数须为非空指针。 |
-| uint32_t depth | [in] 最大异步任务栈深。 |
+| uint32_t depth | [in] 最大异步任务回栈深度，取值范围为[1, 256]。 |
 
 **返回值：**
 
@@ -980,7 +982,7 @@ HiDebug_ErrorCode OH_HiDebug_SetSampleIntervalBytes(OH_HiDebug_ProfilerOptions *
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] 指向OH_HiDebug_ProfilerOptions结构体的指针，该参数须为非空指针。 |
-| uint32_t bytes | [in] 采样间隔。 |
+| uint32_t bytes | [in] 采样间隔，取值范围为[384, 4294967295]，单位为Byte。 |
 
 **返回值：**
 
@@ -1007,7 +1009,7 @@ HiDebug_ErrorCode OH_HiDebug_SetStatisticsIntervalSec(OH_HiDebug_ProfilerOptions
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] 指向OH_HiDebug_ProfilerOptions结构体的指针，该参数须为非空指针。 |
-| uint32_t seconds | [in] 统计时间间隔。 |
+| uint32_t seconds | [in] 统计间隔，取值范围为[1, 3600]，单位为s。 |
 
 **返回值：**
 
@@ -1034,7 +1036,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxStackDepth(OH_HiDebug_ProfilerOptions *opts, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] 指向OH_HiDebug_ProfilerOptions结构体的指针，该参数须为非空指针。 |
-| uint32_t depth | [in] 最大回栈深度。 |
+| uint32_t depth | [in] 最大回栈深度，取值范围为[1, 30]。 |
 
 **返回值：**
 
@@ -1061,7 +1063,7 @@ HiDebug_ErrorCode OH_HiDebug_SetFilterSize(OH_HiDebug_ProfilerOptions *opts, uin
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] 指向OH_HiDebug_ProfilerOptions结构体的指针，该参数须为非空指针。 |
-| uint32_t size | [in] 过滤大小（单位：字节）。 |
+| uint32_t size | [in] 过滤大小阈值，取值范围为[1, 4294967295]，单位为Byte。 |
 
 **返回值：**
 
@@ -1088,7 +1090,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions *opts,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md) *opts | [in] 指向OH_HiDebug_ProfilerOptions结构体的指针，该参数须为非空指针。 |
-| uint32_t seconds | [in] 最大采集持续时间（单位：秒）。 |
+| uint32_t seconds | [in] 最大采集时长，取值范围为[1, 3600]，单位为s。 |
 
 **返回值：**
 
@@ -1149,6 +1151,6 @@ HiDebug_ErrorCode OH_HiDebug_StartProfilerWithOptions(OH_HiDebug_ResourceType ty
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回码。<ul><li>[HIDEBUG_RES_PROF_SUCCESS](capi-hidebug-type-h.md#hidebug_errorcode)启动资源采集成功。</li> <li>[HIDEBUG_RES_PROF_INVALID_ARG](capi-hidebug-type-h.md#hidebug_errorcode) opts或callback是一个空指针。</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_DURATION](capi-hidebug-type-h.md#hidebug_errorcode)资源采集最大持续时间参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_FILTER_SIZE](capi-hidebug-type-h.md#hidebug_errorcode)资源采集过滤大小参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode)资源采集最大回栈深度参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode)资源采集统计间隔参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode)资源采集采样大小参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode)最大异步嵌套深度参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode)最大异步任务回栈栈深参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE](capi-hidebug-type-h.md#hidebug_errorcode) 调用栈追踪模式参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE](capi-hidebug-type-h.md#hidebug_errorcode)资源类型参数无效。</li> <li>[HIDEBUG_RES_PROF_PERMISSION_DENIED](capi-hidebug-type-h.md#hidebug_errorcode)资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。</li> <li>[HIDEBUG_RES_PROF_ALREADY_STARTED](capi-hidebug-type-h.md#hidebug_errorcode)资源采集重复启动。</li> <li>[HIDEBUG_RES_PROF_PROCESS_OVERLIMIT](capi-hidebug-type-h.md#hidebug_errorcode)资源采集进程数超出限制。</li> <li>[HIDEBUG_RES_PROF_CONFLICT](capi-hidebug-type-h.md#hidebug_errorcode)资源采集与命令行工具或系统采集任务冲突。</li> <li>[HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED](capi-hidebug-type-h.md#hidebug_errorcode)资源采集每日配额超出限制。</li> <li>[HIDEBUG_RES_PROF_CPU_OVERLOADED](capi-hidebug-type-h.md#hidebug_errorcode)系统CPU高负载，禁止采集。</li> <li>[HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode)系统内存可用空间紧张，禁止采集。</li> <li>[HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode)存储可用空间紧张，禁止采集。</li> <li>[HIDEBUG_RES_PROF_FAILURE](capi-hidebug-type-h.md#hidebug_errorcode)启动资源采集失败。</li></ul> |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回码。<ul><li>[HIDEBUG_RES_PROF_SUCCESS](capi-hidebug-type-h.md#hidebug_errorcode)启动资源采集成功。</li> <li>[HIDEBUG_RES_PROF_INVALID_ARG](capi-hidebug-type-h.md#hidebug_errorcode) opts或callback是一个空指针。</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_DURATION](capi-hidebug-type-h.md#hidebug_errorcode)资源采集最大持续时间参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_FILTER_SIZE](capi-hidebug-type-h.md#hidebug_errorcode)资源采集过滤大小参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode)资源采集最大回栈深度参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode)资源采集统计间隔参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL](capi-hidebug-type-h.md#hidebug_errorcode)资源采集采样大小参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_NESTING_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode)最大异步嵌套深度参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_MAX_ASYNC_TASK_STACK_DEPTH](capi-hidebug-type-h.md#hidebug_errorcode)最大异步任务回栈栈深参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_STACK_TRACE_MODE](capi-hidebug-type-h.md#hidebug_errorcode) 调用栈追踪模式参数无效。</li> <li>[HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE](capi-hidebug-type-h.md#hidebug_errorcode)资源采集类型参数无效。</li> <li>[HIDEBUG_RES_PROF_PERMISSION_DENIED](capi-hidebug-type-h.md#hidebug_errorcode)资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。</li> <li>[HIDEBUG_RES_PROF_ALREADY_STARTED](capi-hidebug-type-h.md#hidebug_errorcode)资源采集重复启动。</li> <li>[HIDEBUG_RES_PROF_PROCESS_OVERLIMIT](capi-hidebug-type-h.md#hidebug_errorcode)资源采集进程数超过4个上限。仅对发布签名应用生效，调试签名应用不受此限制，用于开发和调试目的。已有采集任务停止后限制释放。</li> <li>[HIDEBUG_RES_PROF_CONFLICT](capi-hidebug-type-h.md#hidebug_errorcode)资源采集与命令行工具或系统采集任务冲突。</li> <li>[HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED](capi-hidebug-type-h.md#hidebug_errorcode)资源采集每日配额超出限制。发布签名应用：每应用每日限制采集2次，整机每日限制采集4次；调试签名应用：采集不受限制，用于开发和调试目的。配额每日重置。</li> <li>[HIDEBUG_RES_PROF_CPU_OVERLOADED](capi-hidebug-type-h.md#hidebug_errorcode)系统CPU处于高负载状态，CPU占用率超过70%，禁止资源采集。CPU使用率恢复后可重试。</li> <li>[HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode)系统内存可用空间紧张，禁止资源采集。可用空间不足2GB，该阈值为固定值，不随设备容量变化。可用内存恢复后可重试。</li> <li>[HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL](capi-hidebug-type-h.md#hidebug_errorcode)系统存储可用空间紧张，禁止资源采集。可用空间不足总容量的3%与15GB中的较大值。可用存储恢复后可重试。</li> <li>[HIDEBUG_RES_PROF_FAILURE](capi-hidebug-type-h.md#hidebug_errorcode)启动资源采集失败。可检查系统条件后重试。</li></ul> |
 
 

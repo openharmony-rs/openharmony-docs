@@ -22,7 +22,7 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [drag_and_drop.h](capi-drag-and-drop-h.md) | 提供NativeDrag相关接口定义。 |
 | [native_interface.h](capi-native-interface-h.md) | Provides a unified entry for the native module APIs. |
 | [native_interface_focus.h](capi-native-interface-focus-h.md) | 定义焦点管理接口，主要用于主动转移焦点、清除焦点、管理焦点转移默认行为、控制焦点激活态，以及设置按键事件的处理模式。适用于页面切换、键盘导航等需要统一管理焦点状态和焦点转移行为的场景， 有助于提升焦点控制的可预测性和交互体验。 |
-| [ui_event_injection.h](capi-ui-event-injection-h.md) | 声明供应用内智能体和UI自动化使用的接口，用于向UI注入宽松的非精确控制操作。 |
+| [ui_event_injection.h](capi-ui-event-injection-h.md) | 声明供应用内智能体和UI自动化使用的接口，用于向指定UI节点注入控制命令。 |
 | [native_type.h](capi-native-type-h.md) | Defines the common types for the native module. |
 | [native_dialog.h](capi-native-dialog-h.md) | 提供ArkUI在Native侧的自定义弹窗接口定义集合。 |
 | [error_code.h](capi-error-code-h.md) | Defines the error code for the native module. |
@@ -38,7 +38,7 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [common_attributes.h](capi-common-attributes-h.md) | Defines the common property and method types for the native module. |
 | [navigation_router.h](capi-navigation-router-h.md) | 定义Navigation或Router组件的枚举和接口。 |
 | [scroll.h](capi-scroll-h.md) | 提供滚动方向、边缘效果、滚动条状态、内容裁剪、嵌套滚动、滚动状态和滚动来源等枚举，用于配置和监听Scroll组件及相关可滚动组件的行为。 |
-| [list_item.h](capi-list-item-h.md) | Provides shared list item-related type and function definitions for <b>NativeNode</b> APIs. |
+| [list_item.h](capi-list-item-h.md) | 为<b>NativeNode</b>API提供共享的列表项相关类型和函数定义。 |
 | [grid.h](capi-grid-h.md) | 定义Grid组件相关的枚举和接口。 |
 | [custom_attributes.h](capi-custom-attributes-h.md) | 为NativeNode API提供自定义节点事件定义。 |
 | [xcomponent.h](capi-xcomponent-h.md) | XComponent组件枚举类型定义，用于描述XComponent的渲染类型，支持EGL/OpenGLES绘制及媒体数据写入场景，可满足开发者定制内容单独或与组件合成展示的渲染需求。 |
@@ -47,7 +47,7 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [progress.h](capi-progress-h.md) | 定义Progress相关的枚举和接口，支持线性、环形、圆形、胶囊等多种进度条类型，并提供线性进度条样式选项的自定义能力（平滑动效、扫光效果、宽度、圆角），适用于需要展示任务进度、加载状态等场景， 帮助开发者快速实现多样化的进度展示和交互反馈。 |
 | [slider.h](capi-slider-h.md) | Provides Slider node type definitions for <b>NativeNode</b> APIs. |
 | [image_animator.h](capi-image-animator-h.md) | 为NativeNode API提供ImageAnimator节点类型定义。 |
-| [layout.h](capi-layout-h.md) | Defines the layout-related types for the native module. |
+| [layout.h](capi-layout-h.md) | 定义布局相关的枚举和接口。 |
 | [text_common.h](capi-text-common-h.md) | 定义文本类组件通用的枚举和接口，涵盖文本对齐、装饰线样式、复制粘贴、溢出处理、断行策略、菜单定制等多种能力，适用于文本输入框、文本显示等场景，帮助开发者灵活控制文本样式与交互行为，降低开发复杂度。 |
 | [text_input.h](capi-text-input-h.md) | 定义TextInput相关的枚举。支持多种输入类型配置（包括文本、数字、密码、邮箱、电话号码等）、清除按钮样式定制、自动填充内容类型设置和输入框风格选择，适用于登录注册、表单填写、搜索输入等需要用户交互输入的场景， 帮助开发者快速实现符合业务需求的单行文本输入功能。 |
 | [checkbox.h](capi-checkbox-h.md) | Provides Checkbox node type definitions for <b>NativeNode</b> APIs. |

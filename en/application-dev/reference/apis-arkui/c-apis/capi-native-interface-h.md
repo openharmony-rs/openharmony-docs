@@ -78,6 +78,8 @@ Defines the runtime check types for ArkUI C APIs.<br> Each check type correspond
 | -- | -- |
 | OH_ARKUI_NATIVEMODULE_CHECK_TYPE_UI_THREAD = 0 | UI thread check type: Some ArkUI C APIs must be called on the UI thread. This type detects whether these APIs are called from a non-UI thread.<br>**Since**: 26.2.0 |
 | OH_ARKUI_NATIVEMODULE_CHECK_TYPE_NODE_DISPOSED = 1 | Node disposed check type: Detects whether the ArkUI_NodeHandle passed to a C API has already been disposed.<br>**Since**: 26.2.0 |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_ATTRIBUTE_MATCH = 2 | Attribute match check type: Detects whether an ArkUI_NodeAttributeType passed to SetAttribute/GetAttribute/ResetAttribute matches the node's actual component type.<br>**Since**: 26.2.0 |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_MULTI_THREAD = 3 | multi thread race condition check type: Detects whether another thread is already operating on the same component tree when a multi thread API is called.<br>**Since**: 26.2.0 |
 
 ### OH_ArkUI_NativeModule_RuntimeCheckMode
 
