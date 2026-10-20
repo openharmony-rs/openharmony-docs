@@ -4733,7 +4733,7 @@ enableMediaNetworkProxy(enabled: boolean)
 
 flingSpeedLimit(speedLimit: number)
 
-设置Web组件惯性滚动的速度上限。
+设置Web组件惯性滚动的速度上限，单位为vp/s。该属性没有显式调用时，PC设备默认为9000，非PC设备默认为17000。
 
 > **说明：**
 >
@@ -4753,4 +4753,19 @@ flingSpeedLimit(speedLimit: number)
 
 **示例：**
 
-  <!-- @[FlingSpeedLimitDynamic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/FlingSpeedLimit/entry/src/main/ets/pages/FlingSpeedLimitDynamic.ets)-->
+  ```ts
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .flingSpeedLimit(5000)
+      }
+    }
+  }
+  ```
