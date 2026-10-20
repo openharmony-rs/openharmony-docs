@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总es2abc编译器在方舟字节码生成阶段的常见编译异常，包括API版本或SDK发布类型不一致、字段值冲突及无具体错误日志等问题，提供原因分析与排查方案。"
+keywords: [es2abc, 字节码生成, 字节码编译异常, compatibleSdkVersionStage, API版本, sdkReleaseType, abc文件]
+doctype: faq
+status: active
+---
+
 # 方舟字节码生成常见问题
 
 <!--Kit: ArkTS-->
