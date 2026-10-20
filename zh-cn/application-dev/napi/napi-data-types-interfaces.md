@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Node-API支持的数据类型和接口，包括napi_status枚举、napi_value值类型、扩展能力接口等，为开发者提供完整的Node-API数据类型和接口参考。"
+keywords: [Node-API, 数据类型, napi_value, napi_status, 接口参考, 扩展能力, napi_env, 回调函数]
+doctype: guide
+status: active
+---
+
 # Node-API支持的数据类型和接口
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
