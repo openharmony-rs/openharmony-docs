@@ -730,7 +730,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
       // 注册回调
       OH_LOG_Print(
           LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler begin");
+          "Native Development Kit setMessageEventHandlerThread begin");
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
@@ -740,7 +740,8 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
       webMessagePort->setMessageEventHandler(g_web_message_port_arr[1], webTagValue, WebMessagePortCallback, NULL);
       OH_LOG_Print(
           LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
+          "Native Development Kit setMessageEventHandlerThread end, web message port size:%{public}d",
+          g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
@@ -863,14 +864,14 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
           "Native Development Kit Refresh webTag:%{public}s", webTagValue);
   
       // 关闭端口，先调用close，再调用destroyWebMessagePorts
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit SetMessageEventHandler begin");
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit closeMessagePort begin");
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
       }
       webMessagePort->close(g_web_message_port_arr[0], webTagValue);
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
+          "Native Development Kit closeMessagePort end, web message port size:%{public}d", g_webMessagePortSize);
       controller->refresh(webTagValue);
       delete[] webTagValue;
       return nullptr;
@@ -893,7 +894,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
           "Native Development Kit Refresh webTag:%{public}s", webTagValue);
   
       // 释放内存，先调用close，再调用destroyWebMessagePorts
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit SetMessageEventHandler begin");
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit destroyMessagePort begin");
       if (g_web_message_port_arr == nullptr) {
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "webMessagePort is nullptr");
           return nullptr;
@@ -901,7 +902,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
       controller->destroyWebMessagePorts(&g_web_message_port_arr, g_webMessagePortSize);
       OH_LOG_Print(
           LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
+          "Native Development Kit destroyMessagePort end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
@@ -923,13 +924,13 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
           "Native Development Kit Refresh webTag:%{public}s", webTagValue);
   
       // 释放内存，先调用close，再调用destroyWebMessagePorts
-      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit SetMessageEventHandler begin");
+      OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit destroyNullMessagePort begin");
   
       controller->destroyWebMessagePorts(&g_web_message_port_arr, g_webMessagePortSize);
   
       OH_LOG_Print(
           LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
-          "Native Development Kit SetMessageEventHandler end, web message port size:%{public}d", g_webMessagePortSize);
+          "Native Development Kit destroyNullMessagePort end, web message port size:%{public}d", g_webMessagePortSize);
       delete[] webTagValue;
       return nullptr;
   }
