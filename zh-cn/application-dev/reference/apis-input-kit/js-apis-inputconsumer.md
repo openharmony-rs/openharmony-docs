@@ -103,7 +103,7 @@ struct Index {
 
 on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions&gt;): void
 
-订阅应用快捷键。获取满足条件的组合按键输入事件，使用callback异步回调。调用此接口前，建议先调用[getAllSystemHotkeys](#inputconsumergetallsystemhotkeys)接口查询系统快捷键列表，确认待订阅的组合键未被系统占用，避免订阅失败。
+订阅应用快捷键。获取满足条件的组合按键输入事件，使用callback异步回调。调用此接口前，建议先调用[getAllSystemHotkeys](#inputconsumergetallsystemhotkeys)接口查询系统快捷键列表，确认待订阅的组合按键未被系统占用，避免订阅失败。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -151,7 +151,7 @@ struct Index {
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
             console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
           };
-          // 先查询系统快捷键列表，确认待订阅的组合键未被系统占用
+          // 先查询系统快捷键列表，确认待订阅的组合按键未被系统占用
           inputConsumer.getAllSystemHotkeys().then((hotkeys: Array<inputConsumer.HotkeyOptions>) => {
             let isOccupied: boolean = hotkeys.some((hotkey: inputConsumer.HotkeyOptions) => {
               return hotkey.finalKey === zKey && hotkey.preKeys.length === hotkeyOptions.preKeys.length &&
