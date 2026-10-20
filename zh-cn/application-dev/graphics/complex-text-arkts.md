@@ -481,7 +481,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -654,7 +654,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -795,7 +795,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -947,7 +947,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -1084,7 +1084,7 @@ class MyRenderNode extends RenderNode {
 
 // 创建一个MyRenderNode对象
 const textNode = new MyRenderNode();
-// 定义newNode的像素格式
+// 定义textNode的像素格式
 textNode.frame = {
   x: 0,
   y: 0,
@@ -1178,12 +1178,12 @@ struct Font08 {
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
   import { text } from '@kit.ArkGraphics2D'
-
+  
   // 创建一个MyRenderNode类，并绘制文本。
   class MyRenderNode extends RenderNode {
     async draw(context: DrawContext) {
       let canvas = context.canvas;
-
+  
       let myTextStyle: text.TextStyle = {
         color: {
           alpha: 255,
@@ -1197,19 +1197,19 @@ struct Font08 {
         // 设置行高下限
         lineHeightMinimum: 65,
       };
-
+  
       let myParagraphStyle: text.ParagraphStyle = {
         textStyle: myTextStyle,
       };
-
+  
       let fontCollection = text.FontCollection.getGlobalInstance();
       let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-
+  
       // 设置待排版文本要应用的样式
       paragraphBuilder.pushStyle(myTextStyle);
       // 添加文本
       paragraphBuilder.addText('Hello World!');
-
+  
       // 生成段落
       let paragraph = paragraphBuilder.build();
       // 布局
@@ -1218,10 +1218,10 @@ struct Font08 {
       paragraph.paint(canvas, 0, 0);
     }
   }
-
+  
   // 创建一个MyRenderNode对象
   const textNode = new MyRenderNode()
-  // 定义newNode的像素格式
+  // 定义textNode的像素格式
   textNode.frame = {
     x: 0,
     y: 0,
@@ -1230,10 +1230,10 @@ struct Font08 {
   }
   textNode.pivot = { x: 0.2, y: 0.8 };
   textNode.scale = { x: 1, y: 1 };
-
+  
   class MyNodeController extends NodeController {
     private rootNode: FrameNode | null = null;
-
+  
     makeNode(uiContext: UIContext): FrameNode {
       this.rootNode = new FrameNode(uiContext)
       if (this.rootNode == null) {
@@ -1251,7 +1251,7 @@ struct Font08 {
       }
       return this.rootNode;
     }
-
+  
     addNode(node: RenderNode): void {
       if (this.rootNode == null) {
         return;
@@ -1261,7 +1261,7 @@ struct Font08 {
         renderNode.appendChild(node);
       }
     }
-
+  
     clearNodes(): void {
       if (this.rootNode == null) {
         return;
@@ -1272,14 +1272,14 @@ struct Font08 {
       }
     }
   }
-
+  
   let myNodeController: MyNodeController = new MyNodeController();
-
+  
   async function performTask() {
     myNodeController.clearNodes();
     myNodeController.addNode(textNode);
   }
-
+  
   @Entry
   @Component
   struct Font08 {
@@ -1316,12 +1316,12 @@ struct Font08 {
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
   import { text } from '@kit.ArkGraphics2D'
-
+  
   // 创建一个MyRenderNode类，并绘制文本。
   class MyRenderNode extends RenderNode {
     async draw(context: DrawContext) {
       let canvas = context.canvas;
-
+  
       let myTextStyle: text.TextStyle = {
         color: {
           alpha: 255,
@@ -1337,19 +1337,19 @@ struct Font08 {
         // 设置行高缩放风格
         lineHeightStyle: text.LineHeightStyle.FONT_HEIGHT,
       };
-
+  
       let myParagraphStyle: text.ParagraphStyle = {
         textStyle: myTextStyle,
       };
-
+  
       let fontCollection = text.FontCollection.getGlobalInstance();
       let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-
+  
       // 设置待排版文本要应用的样式
       paragraphBuilder.pushStyle(myTextStyle);
       // 添加文本
       paragraphBuilder.addText('Hello World!');
-
+  
       // 生成段落
       let paragraph = paragraphBuilder.build();
       // 布局
@@ -1358,10 +1358,10 @@ struct Font08 {
       paragraph.paint(canvas, 0, 0);
     }
   }
-
+  
   // 创建一个MyRenderNode对象
   const textNode = new MyRenderNode();
-  // 定义newNode的像素格式
+  // 定义textNode的像素格式
   textNode.frame = {
     x: 0,
     y: 0,
@@ -1370,10 +1370,10 @@ struct Font08 {
   }
   textNode.pivot = { x: 0.2, y: 0.8 };
   textNode.scale = { x: 1, y: 1 };
-
+  
   class MyNodeController extends NodeController {
     private rootNode: FrameNode | null = null;
-
+  
     makeNode(uiContext: UIContext): FrameNode {
       this.rootNode = new FrameNode(uiContext)
       if (this.rootNode == null) {
@@ -1391,7 +1391,7 @@ struct Font08 {
       }
       return this.rootNode;
     }
-
+  
     addNode(node: RenderNode): void {
       if (this.rootNode == null) {
         return
@@ -1401,7 +1401,7 @@ struct Font08 {
         renderNode.appendChild(node);
       }
     }
-
+  
     clearNodes(): void {
       if (this.rootNode == null) {
         return;
@@ -1412,14 +1412,14 @@ struct Font08 {
       }
     }
   }
-
+  
   let myNodeController: MyNodeController = new MyNodeController();
-
+  
   async function performTask() {
     myNodeController.clearNodes();
     myNodeController.addNode(textNode);
   }
-
+  
   @Entry
   @Component
   struct Font08 {
@@ -1455,12 +1455,12 @@ struct Font08 {
   ``` TypeScript
   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
   import { text } from '@kit.ArkGraphics2D'
-
+  
   // 创建一个MyRenderNode类，并绘制文本。
   class MyRenderNode extends RenderNode {
     async draw(context: DrawContext) {
       let canvas = context.canvas;
-
+  
       let myTextStyle: text.TextStyle = {
         color: {
           alpha: 255,
@@ -1470,7 +1470,7 @@ struct Font08 {
         },
         fontSize: 50,
       };
-
+  
       let myParagraphStyle: text.ParagraphStyle = {
         textStyle: myTextStyle,
         // 设置行间距
@@ -1478,15 +1478,15 @@ struct Font08 {
         // 关闭段落上升部和下降部
         textHeightBehavior: text.TextHeightBehavior.DISABLE_ALL,
       };
-
+  
       let fontCollection = text.FontCollection.getGlobalInstance();
       let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-
+  
       // 设置待排版文本要应用的样式
       paragraphBuilder.pushStyle(myTextStyle);
       // 添加文本
       paragraphBuilder.addText('Hello World!');
-
+  
       // 生成段落
       let paragraph = paragraphBuilder.build();
       // 布局
@@ -1495,10 +1495,10 @@ struct Font08 {
       paragraph.paint(canvas, 0, 0);
     }
   }
-
+  
   // 创建一个MyRenderNode对象
   const textNode = new MyRenderNode();
-  // 定义newNode的像素格式
+  // 定义textNode的像素格式
   textNode.frame = {
     x: 0,
     y: 0,
@@ -1507,10 +1507,10 @@ struct Font08 {
   }
   textNode.pivot = { x: 0.2, y: 0.8 };
   textNode.scale = { x: 1, y: 1 };
-
+  
   class MyNodeController extends NodeController {
     private rootNode: FrameNode | null = null;
-
+  
     makeNode(uiContext: UIContext): FrameNode {
       this.rootNode = new FrameNode(uiContext);
       if (this.rootNode == null) {
@@ -1528,7 +1528,7 @@ struct Font08 {
       }
       return this.rootNode;
     }
-
+  
     addNode(node: RenderNode): void {
       if (this.rootNode == null) {
         return;
@@ -1538,7 +1538,7 @@ struct Font08 {
         renderNode.appendChild(node);
       }
     }
-
+  
     clearNodes(): void {
       if (this.rootNode == null) {
         return;
@@ -1549,14 +1549,14 @@ struct Font08 {
       }
     }
   }
-
+  
   let myNodeController: MyNodeController = new MyNodeController();
-
+  
   async function performTask() {
     myNodeController.clearNodes();
     myNodeController.addNode(textNode);
   }
-
+  
   @Entry
   @Component
   struct Font08 {
