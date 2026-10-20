@@ -605,6 +605,38 @@
 3. C-API侧获取该节点，接纳节点并获取对应的渲染节点。
 
    <!-- @[Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->        
+   
+   ``` C++
+   
+   napi_value Adopt(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+       // 获取ArkTS侧节点句柄。
+       int32_t result = OH_ArkUI_GetNodeHandleFromNapiValue(env, args[0], &nodeHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           return nullptr;
+       }
+       result = OH_ArkUI_NativeModule_AdoptChild(custom_->GetHandle(), nodeHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           return nullptr;
+       }
+       result = OH_ArkUI_RenderNodeUtils_GetRenderNode(nodeHandle_, &renderHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           OH_ArkUI_NativeModule_RemoveAdoptedChild(custom_->GetHandle(), nodeHandle_);
+           return nullptr;
+       }
+       result = OH_ArkUI_RenderNodeUtils_AddChild(render_->GetHandle(), renderHandle_);
+       if (result != ARKUI_ERROR_CODE_NO_ERROR) {
+           OH_ArkUI_RenderNodeUtils_DisposeNode(renderHandle_);
+           renderHandle_ = nullptr;
+           OH_ArkUI_NativeModule_RemoveAdoptedChild(custom_->GetHandle(), nodeHandle_);
+           return nullptr;
+       }
+       return nullptr;
+   }
+   ```
 
 4. C-API侧解除已被接纳节点的接纳状态，释放其对应的渲染节点。
 
