@@ -1,0 +1,52 @@
+{
+  "verify_date": "2026-10-20",
+  "total_files": 1,
+  "warning_count": 1,
+  "pass_count": 0,
+  "na_count": 0,
+  "details": [
+    {
+      "file": "zh-cn/application-dev/graphics/displaysoloist-native-guidelines.md",
+      "result": "Warning",
+      "metadata": {
+        "kit": "ArkGraphics 2D",
+        "shortdes": "在独立线程中实现帧率控制Native侧业务",
+        "keywords": ["NativeDisplaySoloist", "DisplaySoloist", "Native帧率", "Native绘制帧率", "Native期望帧率"],
+        "doctype": "guide",
+        "status": "active"
+      },
+      "issues": [
+        {
+          "field": "kit",
+          "severity": "Warning",
+          "issue": "字段名应为kits而非kit，且取值格式应为字符串数组[\"ArkGraphics 2D / 方舟2D图形服务\"]，需包含Kit中文名称。当前值为纯字符串\"ArkGraphics 2D\"，缺少中文名称\"方舟2D图形服务\"。",
+          "suggestion": "修改为 kits: [\"ArkGraphics 2D / 方舟2D图形服务\"]"
+        },
+        {
+          "field": "shortdes",
+          "severity": "Warning",
+          "issue": "字段名应为description而非shortdes。描述内容仅约18字，低于规范建议的30字下限（Task类型建议不超过50字，但应至少30字）。描述内容是正文第一段\"如果开发者想在独立线程中实现帧率控制的Native侧业务\"的截断拷贝，违反'避免简单拷贝正文第一段话'规则。缺少why和when信息，未提及DisplaySoloist API名称、VSync回调机制、Drawing/NativeWindow渲染方式、游戏/自绘制UI框架对接等核心场景。",
+          "suggestion": "建议修改为类似：\"介绍如何使用DisplaySoloist在Native侧独立线程中实现帧率控制与VSync回调驱动图形绘制，适用于游戏、自绘制UI框架对接等可变帧率场景。\""
+        },
+        {
+          "field": "keywords",
+          "severity": "Warning",
+          "issue": "存在以下问题：1) 'Native帧率'、'Native绘制帧率'、'Native期望帧率'三个关键词在文档中均未直接出现，属于自行拼接的组合词，违反'不应该出现keywords在文档中没有相关内容'规则。2) 这三个关键词高度重复，仅在帧率相关词前加Native前缀，覆盖面窄。3) 仅5个关键词（达到下限），但缺失文档中重要的术语：VSync（文档中多次提到VSync信号和回调）、XComponent（开发步骤核心组件）、NativeWindow（渲染呈现目标）、Drawing（图形绘制方式）、独占线程/共享线程（关键特性）、可变帧率（相关实例标题）。4) 未覆盖开发步骤中的子场景，如创建实例、设置帧率范围、注册回调、TS层注册/取消注册等。",
+          "suggestion": "建议修改为类似：[NativeDisplaySoloist, DisplaySoloist, 帧率控制, VSync, 独占线程, 可变帧率, XComponent, NativeWindow] 或类似覆盖文档核心内容的关键词组合。"
+        },
+        {
+          "field": "doctype",
+          "severity": "Pass",
+          "issue": "",
+          "suggestion": ""
+        },
+        {
+          "field": "status",
+          "severity": "Pass",
+          "issue": "",
+          "suggestion": ""
+        }
+      ]
+    }
+  ]
+}
