@@ -150,7 +150,7 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
 }
 ```
 
-### setWindowBackgroundColor<sup>26.2.0+</sup>
+### setWindowBackgroundColor
 
 setWindowBackgroundColor(color: string): Promise&lt;void&gt;
 
