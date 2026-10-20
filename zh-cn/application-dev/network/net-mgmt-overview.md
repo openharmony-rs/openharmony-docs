@@ -37,6 +37,6 @@ Network Kit（网络服务）主要提供以下功能：
 
 **支持的国家/地区**
 
-请参见版本说明中[各设备支持的国家/地区](https://)。
+请参见版本说明中[各设备支持的国家/地区](https://developer.huawei.com/consumer/cn/doc/harmonyos-releases/sdk-supported-regions)。
 
 
