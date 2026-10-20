@@ -36,8 +36,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 1. 导入选择器模块和文件管理模块。
 
    ```ts
-   import  { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
@@ -120,8 +119,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 1. 导入选择器模块和文件管理模块。
 
    ```ts
-   import  { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
