@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行array相关开发，包括创建、访问、修改和遍历ArkTS数组，以及TypedArray和DataView的操作，适用于二进制数据处理场景。"
+keywords: [Node-API, array, 数组操作, TypedArray, DataView, ArrayBuffer, napi_create_array, 数组遍历]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行array相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

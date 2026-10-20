@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口操作BigInt类型值，支持创建、获取和转换任意精度整数，适用于处理超出Number类型范围的大整数场景。"
+keywords: [Node-API, BigInt, 任意精度整数, napi_create_bigint_int64, int64, uint64, 大整数, 数值转换]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口操作bigint类型值
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
