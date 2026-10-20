@@ -9,7 +9,7 @@
 
 从API版本20开始，ArkUI开发框架针对NDK接口，提供了直接构建渲染节点的能力，包括节点树操作、属性设置及含动画的自定义绘制。开发者通过调用渲染节点相关能力，可以绕过[registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent)的测量布局过程，直接对节点进行绘制并调整其大小和位置。
 
-从API版本26.0.1开始，ArkUI开发框架对基于渲染节点开发的滚动类型组件提供了性能优化方案，开发者可以开启Dvsync开关，提高自定义节点在抛滑场景的流畅度。
+从API版本26.0.1开始，ArkUI开发框架对基于渲染节点开发的滚动类型组件提供了性能优化方案，开发者可以开启Dvsync开关，提高渲染节点在抛滑场景的流畅度。
 
 
 - [渲染节点树操作相关的能力](#节点挂载与基础属性设置) ，例如[OH_ArkUI_RenderNodeUtils_AddRenderNode](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addrendernode)、[OH_ArkUI_RenderNodeUtils_AddChild](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addchild)等接口用于编辑渲染节点树的结构。仅类型为ARKUI_NODE_CUSTOM且无其他子节点的自定义节点能够挂载渲染节点，且最多挂载一个渲染节点。即渲染节点以子树形式挂载在类型为ARKUI_NODE_CUSTOM的叶子自定义节点上。
