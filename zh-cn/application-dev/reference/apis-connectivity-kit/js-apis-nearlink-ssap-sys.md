@@ -423,6 +423,143 @@ try {
 ```
 
 
+### getServicesByUuid
+
+getServicesByUuid(service: Service): Promise&lt;Service[]&gt;
+
+根据服务UUID获取服务端支持的指定服务。使用Promise异步回调。
+
+与[getServices](js-apis-nearlink-ssap.md#getservices)不同，此接口仅获取与指定UUID匹配的服务。传入的service仅使用其serviceUuid字段定位服务端的目标服务。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统接口：**  此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_NEARLINK
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| service | [Service](js-apis-nearlink-ssap.md#service) | 是 | 待获取的服务。仅使用serviceUuid字段定位目标服务。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[Service](js-apis-nearlink-ssap.md#service)[]&gt; | Promise对象，返回与指定UUID匹配的服务列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 36100003 | NearLink disabled. |
+| 36100043 | Invalid UUID. |
+| 36100044 | NearLink standard UUID not allowed. |
+| 36100099 | Operation failed. |
+
+**示例：**
+```typescript
+import { ssap } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let addr: string = '00:11:22:33:AA:FF'; // 扫描获取到的远端设备地址
+let client: ssap.Client;
+try {
+  let service: ssap.Service = {
+    serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
+    properties: []
+  };
+  client = ssap.createClient(addr); // 同一应用针对同一远端设备只需创建一个实例
+  client.getServicesByUuid(service).then((services: ssap.Service[]) => {
+    console.info('getServicesByUuid successfully, count: ' + services.length);
+  }).catch((err: BusinessError) => {
+    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
+  });
+} catch (err) {
+  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+### readPropertiesByUuid
+
+readPropertiesByUuid(property: Property): Promise&lt;Property[]&gt;
+
+根据属性UUID读取服务端属性。使用Promise异步回调。
+
+与[readProperty](js-apis-nearlink-ssap.md#readproperty)不同，此接口读取所有与指定属性UUID匹配的属性。传入的property仅使用其propertyUuid字段指定要读取的属性。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统接口：**  此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESS_NEARLINK
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| property | [Property](js-apis-nearlink-ssap.md#property) | 是 | 待读取的服务端属性。propertyUuid字段指定要读取的属性。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[Property](js-apis-nearlink-ssap.md#property)[]&gt; | Promise对象，返回读取到的服务端属性。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 36100003 | NearLink disabled. |
+| 36100043 | Invalid UUID. |
+| 36100044 | NearLink standard UUID not allowed. |
+| 36100099 | Operation failed. |
+
+**示例：**
+```typescript
+import { ssap } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let addr: string = '00:11:22:33:AA:FF'; // 扫描获取到的远端设备地址
+let client: ssap.Client;
+try {
+  let property: ssap.Property = {
+    serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
+    propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
+    value: new ArrayBuffer(0)
+  };
+  client = ssap.createClient(addr); // 同一应用针对同一远端设备只需创建一个实例
+  client.readPropertiesByUuid(property).then((properties: ssap.Property[]) => {
+    console.info('readPropertiesByUuid successfully, count: ' + properties.length);
+  }).catch((err: BusinessError) => {
+    console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
+  });
+} catch (err) {
+  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
 ## Service
 
 表示星闪服务。

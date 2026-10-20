@@ -12,6 +12,7 @@
 
 **起始版本：** 26.0.0
 
+**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 ## 导入模块
 
@@ -592,6 +593,7 @@ try {
 | address | string | 否 | 否 | 远端设备的星闪地址。地址格式参考：11:22:33:AA:BB:FF。 |
 | uuid | string | 否 | 否 | 星闪服务UUID，长度必须为36个字符，由32个十六进制数字和4个连字符（-）组成，例如： FFFFFFFF-1234-5678-ABCD-000000001234，表示一个128位标识符。 不允许使用星闪标准UUID。 |
 | transferMode | [TransferMode](#transfermode) | 否 | 是 | 表示和远端设备的数据传输模式。默认值是BASIC。 |
+| frameType | [nearlinkConstant.FrameType](js-apis-nearlink-constant.md#frametype) | 否 | 是 | 无线帧类型。默认值为FRAME_TYPE_1。 |
 
 
 ## DataParams

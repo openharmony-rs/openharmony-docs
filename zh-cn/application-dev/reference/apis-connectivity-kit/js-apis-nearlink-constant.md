@@ -12,6 +12,7 @@
 
 **起始版本：** 26.0.0
 
+**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 ## 导入模块
 
@@ -138,3 +139,20 @@ import { nearlinkConstant } from '@kit.ConnectivityKit';
 | DISCONNECTED | 0 | 表示已断连。 |
 | CONNECTED | 1 | 表示已连接。 |
 | ENCRYPTED | 2 | 表示已连接且链路已加密。 |
+
+## FrameType
+
+表示星闪无线帧类型，为枚举值。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| FRAME_TYPE_1 | 1 | 表示基础帧。 |
+| FRAME_TYPE_4 | 4 | 表示扩展覆盖帧。 |

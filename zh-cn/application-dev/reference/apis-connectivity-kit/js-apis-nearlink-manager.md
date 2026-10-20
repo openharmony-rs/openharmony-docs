@@ -12,6 +12,7 @@
 
 **起始版本：** 26.0.0
 
+**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 ## 导入模块
 
@@ -91,6 +92,44 @@ try {
     console.info('NearLink is supported on this device.');
   } else {
     console.info('NearLink is not supported on this device.');
+  }
+} catch (err) {
+  console.error('Error occurred: ' + (err as BusinessError).code + ', ' + (err as BusinessError).message);
+}
+```
+
+
+## manager.isFrameType4Supported
+
+isFrameType4Supported(): boolean
+
+查询当前设备是否支持无线帧类型4（扩展覆盖帧）。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**返回值：** 
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 表示当前设备是否支持无线帧类型4。true：表示支持。false：表示不支持。 |
+
+**示例：** 
+```typescript
+import { manager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isSupported: boolean = manager.isFrameType4Supported();
+  if (isSupported) {
+    console.info('Frame type 4 is supported on this device.');
+  } else {
+    console.info('Frame type 4 is not supported on this device.');
   }
 } catch (err) {
   console.error('Error occurred: ' + (err as BusinessError).code + ', ' + (err as BusinessError).message);
