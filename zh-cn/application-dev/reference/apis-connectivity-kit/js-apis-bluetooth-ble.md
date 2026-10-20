@@ -1968,7 +1968,7 @@ disconnect(deviceId: string): void
 
 调用方充当GATT客户端，主动发起与远端设备断连，或停止正在进行的连接。
 
-可通过订阅[on('BLEConnectionStateChange')](#onbleconnectionstatechange)事件来感知连接状态。
+可通过订阅[on('connectionStateChange')](#onconnectionstatechange)事件来感知连接状态。
 
 **起始版本**：26.0.0
 
