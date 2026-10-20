@@ -114,6 +114,8 @@
 | [int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityElementInfo* elementInfo)](#oh_arkui_accessibilityeventsetelementinfo) | 为[ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)设置关联的无障碍节点信息（elementInfo），用于指定事件对应的无障碍节点。 |
 | [int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)](#oh_arkui_findaccessibilityactionargumentbykey) | 获取[ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md)中指定key的value值。 |
 | [int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)](#oh_arkui_nativemodule_getnativeaccessibilityprovider) |获取指向[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象指针的二级指针变量。<br>其中[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)对象与传入的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)的实例一一对应。<br>第三方平台将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)类型的[RenderNode](js-apis-arkui-renderNode.md)并得到[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)。<br>再调用OH_ArkUI_NativeModule_GetNativeAccessibilityProvider接口获取[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)指针，并通过[OH_ArkUI_AccessibilityProviderRegisterCallback](#oh_arkui_accessibilityproviderregistercallback)或[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](#oh_arkui_accessibilityproviderregistercallbackwithinstance)注册无障碍回调。<br>最终实现ArkUI无障碍服务对第三方平台UI的识别与事件触发。<br>仅当第三方平台将自身UI组件映射为[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)的[RenderNode](js-apis-arkui-renderNode.md)，该接口才会生效，否则会报错误码。<br>本接口通过[RenderNode](js-apis-arkui-renderNode.md)实现第三方平台的接入，仅支持[ARKUI_NODE_CUSTOM](capi-native-node-h.md#arkui_nodetype)接入无障碍服务，可以实现无障碍控件树获取能力。<br>不支持多线程并发，由第三方平台保证调用时的线程安全。|
+| [int32_t OH_ArkUI_Accessibility_BindExportTree(ArkUI_NodeHandle owner, int64_t bindId, ArkUI_NodeHandle exportedRoot)](#oh_arkui_accessibility_bindexporttree) | 将外部的ArkUI子树绑定到第三方框架无障碍树中指定的占位节点上。<br>当第三方框架（如CMP）使用RenderNode渲染页面，且RenderNode树上混入了ArkUI原生组件时，这些ArkUI原生组件构成一棵外部子树，默认对无障碍服务不可见。本接口将该外部ArkUI子树绑定到第三方框架无障碍树中的占位节点，使无障碍焦点遍历能够进入混入的ArkUI子树、遍历其内部组件，再返回第三方框架的无障碍树继续遍历。<br>本接口必须在UI主线程调用。调用同步执行，不会回调调用方，禁止在信号处理函数中调用。若调用本接口时第三方框架的无障碍树尚未注册到无障碍服务，绑定将在注册完成后异步生效。<br>绑定关系由（owner, bindId）对标识。同一owner支持使用不同bindId建立多个绑定，每个被导出的子树最多存在一个有效绑定。使用相同的（owner, bindId）对重复调用本接口，既不替换也不合并已有绑定：原绑定保持不变，并返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)；为已存在有效绑定的exportedRoot建立绑定将被拒绝，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。[OH_ArkUI_Accessibility_UnbindExportTree](#oh_arkui_accessibility_unbindexporttree)执行完成后，被绑定的子树完全脱离无障碍树，所有绑定资源均被释放，再次绑定相同的（owner, bindId）对将执行完整的注册流程。<br>**起始版本：** 26.0.1  |
+| [int32_t OH_ArkUI_Accessibility_UnbindExportTree(ArkUI_NodeHandle owner, int64_t bindId)](#oh_arkui_accessibility_unbindexporttree) | 解绑之前绑定到第三方框架无障碍树的外部ArkUI子树。<br>当混入的ArkUI子树被销毁或替换时，应调用本接口移除由[OH_ArkUI_Accessibility_BindExportTree](#oh_arkui_accessibility_bindexporttree)建立的绑定关系。解绑后，无障碍服务不再遍历之前绑定的ArkUI子树。<br>本接口必须在UI主线程调用。调用同步执行，不会回调调用方，禁止在信号处理函数中调用。本接口仅移除由（owner, bindId）对标识的绑定，同一owner上的其他绑定不受影响。解绑未知或已解绑的（owner, bindId）对是幂等操作，返回成功。当绑定存在时，本接口返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)后，被绑定的子树即完全脱离无障碍树且所有绑定资源均被释放；可通过[OH_ArkUI_Accessibility_BindExportTree](#oh_arkui_accessibility_bindexporttree)再次绑定相同的（owner, bindId）对，届时将执行完整的注册流程。<br>**起始版本：** 26.0.1  |
 
 ## 枚举类型说明
 
@@ -2061,3 +2063,64 @@ int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* n
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回状态码。<br>成功返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>参数错误返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>参数错误：1. 传入的参数node或者provider为空指针。<br>2. node对应的ArkUI_NodeHandle类型不为ARKUI_NODE_CUSTOM。 |
+
+### OH_ArkUI_Accessibility_BindExportTree()
+
+```c
+int32_t OH_ArkUI_Accessibility_BindExportTree(ArkUI_NodeHandle owner, int64_t bindId, ArkUI_NodeHandle exportedRoot)
+```
+
+**描述：**
+
+将外部的ArkUI子树绑定到第三方框架无障碍树中指定的占位节点上。
+
+当第三方框架（如Compose Multiplatform，CMP）使用RenderNode渲染页面，且RenderNode树上混入了ArkUI原生组件时，这些ArkUI原生组件构成一棵外部子树，默认对无障碍服务不可见。本接口将该外部ArkUI子树绑定到第三方框架无障碍树中的占位节点，使无障碍焦点遍历能够进入混入的ArkUI子树、遍历其内部组件，再返回第三方框架的无障碍树继续遍历。
+
+本接口必须在UI主线程调用。调用同步执行，不会回调调用方，禁止在信号处理函数中调用。若调用本接口时第三方框架的无障碍树尚未注册到无障碍服务，绑定将在注册完成后异步生效。
+
+绑定关系由（owner, bindId）对标识。同一owner支持使用不同bindId建立多个绑定，每个被导出的子树最多存在一个有效绑定。使用相同的（owner, bindId）对重复调用本接口，既不替换也不合并已有绑定：原绑定保持不变，并返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)；为已存在有效绑定的exportedRoot建立绑定将被拒绝，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。[OH_ArkUI_Accessibility_UnbindExportTree](#oh_arkui_accessibility_unbindexporttree)执行完成后，被绑定的子树完全脱离无障碍树，所有绑定资源均被释放，再次绑定相同的（owner, bindId）对将执行完整的注册流程。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) owner | [入参] 指向第三方框架ArkUI宿主节点的指针，即RenderNode树上挂载第三方框架的节点（例如XComponent或Custom节点），必须为有效的ArkUI_NodeHandle。该句柄仅为借用而非持有：本接口不接管节点的所有权，也不延长其生命周期。若绑定存在期间该节点被销毁或替换，绑定立即失效（无障碍服务不再遍历进入被绑定的子树），其剩余内部资源在宿主窗口销毁时释放。为保持绑定有效，该节点必须保持有效，直至调用[OH_ArkUI_Accessibility_UnbindExportTree](#oh_arkui_accessibility_unbindexporttree)。 |
+| int64_t bindId | [入参] 第三方框架内部无障碍树中占位节点的无障碍ID，即第三方框架无障碍树中用于挂载混入ArkUI子树的节点。当无障碍服务遍历到该节点时，将进入被绑定的ArkUI子树。该值为第三方框架为该节点分配的无障碍ID，任意此类ID均被接受，无保留值。该ID必须标识第三方框架无障碍树中已存在的节点，但调用本接口时该节点无需已上报给无障碍服务——绑定在第三方框架无障碍树注册后即生效。同一owner的多个有效绑定中该ID必须唯一。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) exportedRoot | [入参] 指向待绑定混入ArkUI子树根节点的指针。该节点及其后代节点将作为子树注册到无障碍树中bindId指定的占位节点下。exportedRoot的父节点必须是调用[OH_ArkUI_NativeModule_AdoptChild](capi-native-node-h.md#oh_arkui_nativemodule_adoptchild)时作为child参数传入的节点，即混入的ArkUI子树通过将其父节点（而非exportedRoot自身）纳管到宿主节点下接入渲染树。该句柄仅为借用而非持有：本接口不接管节点的所有权，也不延长其生命周期。若绑定存在期间该节点被销毁或替换，绑定立即失效；其剩余内部资源在使用相同（owner, bindId）对调用[OH_ArkUI_Accessibility_UnbindExportTree](#oh_arkui_accessibility_unbindexporttree)或宿主窗口销毁时释放。为保持绑定有效，该节点及其子树必须保持有效，直至调用[OH_ArkUI_Accessibility_UnbindExportTree](#oh_arkui_accessibility_unbindexporttree)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回状态码。<br>成功返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>参数错误返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>参数错误：1. 传入的参数owner或者exportedRoot为空指针或无效句柄。<br>2. exportedRoot已存在有效绑定。上述错误均为无副作用的确定性校验结果：不会创建绑定，也不会修改已有绑定。修正参数后（对于错误2，可先调用[OH_ArkUI_Accessibility_UnbindExportTree](#oh_arkui_accessibility_unbindexporttree)，或改用其他子树），即可安全重试。 |
+
+### OH_ArkUI_Accessibility_UnbindExportTree()
+
+```c
+int32_t OH_ArkUI_Accessibility_UnbindExportTree(ArkUI_NodeHandle owner, int64_t bindId)
+```
+
+**描述：**
+
+解绑之前绑定到第三方框架无障碍树的外部ArkUI子树。
+
+当混入的ArkUI子树被销毁或替换时，应调用本接口移除由[OH_ArkUI_Accessibility_BindExportTree](#oh_arkui_accessibility_bindexporttree)建立的绑定关系。解绑后，无障碍服务不再遍历之前绑定的ArkUI子树。
+
+本接口必须在UI主线程调用。调用同步执行，不会回调调用方，禁止在信号处理函数中调用。本接口仅移除由（owner, bindId）对标识的绑定，同一owner上的其他绑定不受影响。解绑未知或已解绑的（owner, bindId）对是幂等操作，返回成功。当绑定存在时，本接口返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)后，被绑定的子树即完全脱离无障碍树且所有绑定资源均被释放；可通过[OH_ArkUI_Accessibility_BindExportTree](#oh_arkui_accessibility_bindexporttree)再次绑定相同的（owner, bindId）对，届时将执行完整的注册流程。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) owner | [入参] 指向第三方框架ArkUI宿主节点的指针，必须与创建绑定时传递给[OH_ArkUI_Accessibility_BindExportTree](#oh_arkui_accessibility_bindexporttree)的节点相同，且为有效的ArkUI_NodeHandle。该句柄仅在本调用中用于标识绑定，调用返回后不再被持有，无需在之后保持有效。若该节点已被销毁，其绑定已自动失效，无需显式解绑，其剩余内部资源在宿主窗口销毁时释放。 |
+| int64_t bindId | [入参] 第三方框架内部无障碍树中占位节点的无障碍ID，必须与创建绑定时传递给[OH_ArkUI_Accessibility_BindExportTree](#oh_arkui_accessibility_bindexporttree)的bindId相同。无保留值；解绑不存在有效绑定的（owner, bindId）对是幂等操作，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回状态码。<br>成功返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>参数错误返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>参数错误：1. 传入的参数owner为空指针或无效句柄。<br>该错误为无副作用的确定性校验结果：不会移除绑定，也不会修改已有绑定。修正参数后，即可安全重试。 |
