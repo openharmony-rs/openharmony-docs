@@ -1221,7 +1221,7 @@ DRM密钥响应的处理过程出现了问题。
  
 **错误信息**
  
-Session service is not running.
+The session service is not running or the session service communication failed.
  
 **错误描述**
  
@@ -1229,10 +1229,8 @@ Session service is not running.
  
 **可能原因**
  
-会话重启过程中服务被杀。
+会话重启过程中服务终止，或者会话服务通信异常。
  
 **处理步骤**
  
-1. 定时重试，超过3s仍失败时，停止对该会话或者控制器进行操作。
- 
-2. 销毁当前会话或者会话控制器，并重新创建，如果重新创建失败，则停止会话相关操作。
+1. 定时重试，超过3s仍失败时，停止对该会话服务操作。

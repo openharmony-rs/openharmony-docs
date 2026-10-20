@@ -133,11 +133,13 @@ avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((de
 });
 ```
 
-## avSession.getSessionDescriptorsForAudioZone<sup>26+</sup>
+## avSession.getSessionDescriptorsForAudioZone
  
 getSessionDescriptorsForAudioZone(userId: int): Promise\<Array\<Readonly\<AVSessionDescriptor>>> 
  
 获取userId用户所属音区的会话描述符信息。使用Promise异步回调。
+
+**起始版本：** 26.0.1
  
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
  
@@ -578,13 +580,15 @@ avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
 });
 ```
 
-## avSession.startAVPlaybackForAudioZone<sup>26+</sup>
+## avSession.startAVPlaybackForAudioZone
  
 startAVPlaybackForAudioZone(userId: int, bundleName: string, assetId: string, info?: CommandInfo): Promise\<void>
  
 启动指定用户所在音区的媒体播放应用程序。使用Promise异步回调。
+
+**起始版本：** 26.0.1
  
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
  
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
  
@@ -622,7 +626,7 @@ startAVPlaybackForAudioZone(userId: int, bundleName: string, assetId: string, in
 ```ts
 import { avSession } from '@kit.AVSessionKit';
  
-avSession.startAVPlaybackForAudioZone("100", "com.example.myapplication", "121278").then(() => {
+avSession.startAVPlaybackForAudioZone(100, "com.example.myapplication", "121278").then(() => {
   console.info('Succeeded in starting AV playbackForAudioZone.');
 });
 ```
