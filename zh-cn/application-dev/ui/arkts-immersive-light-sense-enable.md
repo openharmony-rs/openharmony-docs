@@ -16,7 +16,7 @@
 >   - 指定弹窗类接口（[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)、[ArkUI_NativeDialog](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog.md)、[@ohos.promptAction (弹窗)](../reference/apis-arkui/js-apis-promptAction.md)、[Popup控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[Tips控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md)、[菜单控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[半模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)）的沉浸光感效果可在全页面生效。
 >   - [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md)的沉浸光感效果可在全页面生效。
 >   - 其他组件仅在Navigation/NavDestination标题栏或横向Tabs中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
-> - 沉浸式系统材质反色、材质赋色、交互形变与点光源、阴影开关等个性化配置，具体请参见[沉浸式系统材质视效](arkts-immersive-light-sense-common-capability.md)。
+> - 沉浸式系统材质反色、材质赋色、交互形变与光感交互反馈、阴影开关等个性化配置，具体请参见[沉浸式系统材质视效](arkts-immersive-light-sense-common-capability.md)。
 
 ## 沉浸光感开启方式对比
 
@@ -25,7 +25,7 @@
 | 开启方式 | 支持的组件 | 说明 |
 | --- | --- | --- |
 | 应用级开启 | 组件清单详见[MaterialState](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)。 | 支持通过如下两种方式开启：<br/> 1. 通过[module.json5](../quick-start/module-configuration-file.md)统一配置，为支持沉浸光感的组件，批量开启或全局禁用沉浸光感，具体开启方法请参考表格下方内容。<br/>2. module.json5未配置该字段时即为default模式，开发者的应用从API版本26.0.0之前升级至API版本26.0.0及以上，在未主动设置沉浸光感的情况下，组件默认开启沉浸光感，无需任何配置。 |
-| 组件级开启 | 支持设置沉浸式系统材质的组件 | 支持通过如下三种方式开启：<br/> 1. 通过通用属性[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)设置。<br/>2. 弹窗类组件通过options参数中的systemMaterial字段设置，例如Toast的[ShowToastOptions](../reference/apis-arkui/js-apis-promptAction.md#showtoastoptions)、自定义弹窗的[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)等。<br/>3. 组件专属接口设置，例如Select下拉菜单的[menuSystemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menusystemmaterial)、Navigation标题栏的[systemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationtitleoptions11)等。<br/>各组件详细适配方法请参考[组件适配沉浸光感](arkts-immersive-light-sense-component-adaptation.md)。 |
+| 组件级开启 | 组件清单及各组件设置方式详见[组件适配沉浸光感](arkts-immersive-light-sense-component-adaptation.md) | 支持通过如下三种方式开启：<br/> 1. 通过通用属性[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)设置。<br/>2. 弹窗类组件通过options参数中的systemMaterial字段设置，例如Toast的[ShowToastOptions](../reference/apis-arkui/js-apis-promptAction.md#showtoastoptions)、自定义弹窗的[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)等。<br/>3. 组件专属接口设置，例如Select下拉菜单的[menuSystemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menusystemmaterial)、Navigation标题栏的[systemMaterial](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationtitleoptions11)等。 |
 
 应用级开启通过配置文件统一设置应用的沉浸光感开关。在[module.json5](../quick-start/module-configuration-file.md)中，将[metadata](../quick-start/module-configuration-file.md#metadata标签)参数的name字段配置为"ohos.arkui.UIMaterial.state"，value字段为default或enable时开启，字段为disable时关闭。该配置仅在entry类型的module中生效。
 
