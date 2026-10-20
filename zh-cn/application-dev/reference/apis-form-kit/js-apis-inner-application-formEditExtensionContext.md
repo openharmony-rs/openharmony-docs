@@ -303,7 +303,7 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     try {
       // 设置编辑页背景为透明
-      this.context.setWindowBackgroundColor('#00FFFFFF').then(() => {
+      this.formEditContext.setWindowBackgroundColor('#00FFFFFF').then(() => {
         console.info(TAG, `setWindowBackgroundColor success`);
       });
     } catch (error) {
