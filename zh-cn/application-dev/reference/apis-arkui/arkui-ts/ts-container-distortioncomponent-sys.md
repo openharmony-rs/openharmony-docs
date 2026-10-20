@@ -144,8 +144,6 @@ type Vector4 = Vector4
 @Component
 struct DistortionCornerExample {
   @State isDeformed: boolean = false;
-  @State contentOpacity: number = 1;
-  @State contentScale: number = 1;
   @State distortionParam: DistortionParam = {
     topLeft: { x: 0, y: 0 },
     topRight: { x: 1, y: 0 },
@@ -167,8 +165,6 @@ struct DistortionCornerExample {
           Text('Component')
             .fontSize(16)
             .fontColor(Color.White)
-            .opacity(this.contentOpacity)
-            .scale({ x: this.contentScale, y: this.contentScale })
         }
         .width(150)
         .height(150)
@@ -188,20 +184,16 @@ struct DistortionCornerExample {
                 topRight: { x: 0.9, y: 0.1 },
                 bottomLeft: { x: 0.1, y: 0.9 },
                 bottomRight: { x: 0.8, y: 1.1 },
-                barrelDistortion: { x: 0, y: 0, z: 0, w: 0 }
+                barrelDistortion: { x: -0.5, y: -0.5, z: -0.5, w: -0.5 }
               }
-              this.contentOpacity = 0.5;
-              this.contentScale = 0.5;
             } else {
               this.distortionParam = {
                 topLeft: { x: 0, y: 0 },
                 topRight: { x: 1, y: 0 },
                 bottomLeft: { x: 0, y: 1 },
                 bottomRight: { x: 1, y: 1 },
-                barrelDistortion: { x: 0, y: 0, z: 0, w: 0 }
+                barrelDistortion: { x: 0.5, y: 0.5, z: 0.5, w: 0.5 }
               }
-              this.contentOpacity = 1;
-              this.contentScale = 1;
             }
           })
         })
