@@ -299,13 +299,11 @@ type PageUpdateType = 'pageContentUpdate' | 'pageStateUpdate' | 'pageStatePreUpd
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本：** 9
-
 | 类型                | 说明            |
 | ----------------- | ---------------- |
-| 'pageContentUpdate' | 表示页面内容更新。 |
-| 'pageStateUpdate' | 表示页面状态更新。 |
-| 'pageStatePreUpdate' | 表示页面状态即将刷新。<br>**ArkTS-Dyn起始版本：** 26.2.0<br> |
+| 'pageContentUpdate' | 表示页面内容更新。<br>**ArkTS-Dyn起始版本：** 9 |
+| 'pageStateUpdate' | 表示页面状态更新。<br>**ArkTS-Dyn起始版本：** 9 |
+| 'pageStatePreUpdate' | 表示页面状态即将刷新。<br>**ArkTS-Dyn起始版本：** 26.2.0 |
 
 ## TouchGuideType
 
