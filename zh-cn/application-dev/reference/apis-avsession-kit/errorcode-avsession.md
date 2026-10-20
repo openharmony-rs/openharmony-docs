@@ -1233,4 +1233,4 @@ The session service is not running or the session service communication failed.
  
 **处理步骤**
  
-1. 定时重试，超过3s仍失败时，停止对该会话服务操作。
+定时重试，超过3s仍失败时，停止对该会话服务操作。
