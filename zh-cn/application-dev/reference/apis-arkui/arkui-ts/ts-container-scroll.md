@@ -1610,13 +1610,9 @@ getScrollState(): ScrollState
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称   | 类型  | 只读 | 可选 | 说明              |
 | ----- | ------ | ------ | -- | ----------------- |
-| extraOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 滑动到指定Index的额外偏移量。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。<br/>默认值：0<br/>单位：vp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| extraOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 滑动到指定Index的额外偏移量。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。<br/>默认值：0<br/>单位：vp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | fastScroll | [FastScrollMode](#fastscrollmode) | 否 | 是 | 滚动到指定index时使用的快速滚动模式。设置为SKIP_MEASURE时，跳过中间子组件的测量；设置为SKIP_CREATE_AND_MEASURE时，跳过中间子组件的创建和测量。仅List组件支持，且仅当scrollToIndex的smooth参数为true时生效。<br/>默认值：FastScrollMode.NONE，与不设置此参数时的行为相同。<br/>取值范围：本枚举定义的0、1、2。传入其他值时，按FastScrollMode.NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.2.0 <br/>**ArkTS-Sta起始版本：** 26.2.0 |
 
 ## FastScrollMode
@@ -1630,15 +1626,15 @@ FastScrollMode表示滚动到指定index时使用的快速滚动模式，配合[
 > - 快速滚动不保证遍历并显示滚动路径上的每一个子组件。
 > - fastScroll传入本枚举未定义的值时，按FastScrollMode.NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。
 
-**ArkTS-Dyn起始版本：** 26.2.0
-
-**ArkTS-Sta起始版本：** 26.2.0
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
 
 | 名称 | 值 | 说明 |
 | -- | -- | -- |

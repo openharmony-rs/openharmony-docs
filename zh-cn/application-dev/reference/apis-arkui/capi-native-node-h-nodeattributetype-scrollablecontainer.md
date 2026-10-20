@@ -903,7 +903,7 @@ NODE_LIST_SCROLL_TO_INDEX = 1003005
 | .value[1]?.i32 | 设置滑动到列表项在列表中的索引值时是否有动效，1表示有动效，0表示没有动效。默认值：0。 |
 | .value[2]?.i32 | 指定滑动到的元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-native-type-h.md#arkui_scrollalignment)，默认值：[ARKUI_SCROLL_ALIGNMENT_START](capi-native-type-h.md#arkui_scrollalignment)。 |
 | .value[3]?.f32 | 额外偏移量，默认值：0，单位：vp。正数表示向末尾端额外偏移，负数表示向起始端额外偏移。该参数从API version 15开始支持。 |
-| .value[4]?.i32 | 快速滚动模式，参数类型为[OH_ArkUI_FastScrollMode](capi-scroll-h.md#oh_arkui_fastscrollmode)。仅当.value[1]?.i32为1（开启动效）时生效。<br/>设置为OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE时，跳过中间子组件的测量；设置为OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE时，跳过中间子组件的创建和测量。<br/>默认值：OH_ARKUI_FAST_SCROLL_MODE_NONE，与不设置此参数时的行为相同。<br/>取值范围：0、1、2。超出此范围时，按OH_ARKUI_FAST_SCROLL_MODE_NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。该参数从API版本26.2.0开始支持。 |
+| .value[4]?.i32 | 快速滚动模式，参数类型为[OH_ArkUI_FastScrollMode](capi-native-type-h.md#oh_arkui_fastscrollmode)。仅当.value[1]?.i32为1（开启动效）时生效。<br/>设置为OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE时，跳过中间子组件的测量；设置为OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE时，跳过中间子组件的创建和测量。<br/>默认值：OH_ARKUI_FAST_SCROLL_MODE_NONE，与不设置此参数时的行为相同。<br/>取值范围：0、1、2。超出此范围时，按OH_ARKUI_FAST_SCROLL_MODE_NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。该参数从API版本26.2.0开始支持。 |
 
 > **说明：**
 >
