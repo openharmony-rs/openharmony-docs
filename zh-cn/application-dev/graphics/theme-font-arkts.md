@@ -56,7 +56,7 @@
    > 若未在系统**主题应用**中设置一项主题字体，则将使用系统默认字体进行绘制。
 
    ArkTS-Dyn示例：
-   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 设置文本样式
@@ -67,15 +67,15 @@
    // 创建一个段落样式对象，以设置排版风格
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: myTextStyle,
-     align: 3,
+     align: text.TextAlign.JUSTIFY,
      wordBreak: text.WordBreak.NORMAL
    };
    // 创建一个段落生成器
    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
-
+   
    ArkTS-Sta示例：
-   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ThemeFont/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 设置文本样式
@@ -93,7 +93,6 @@
    let paragraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
    
-
 5. 设置文本样式，添加文本内容，并生成段落文本用于后续文本的绘制显示。
 
    <!-- @[arkts_theme_font_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
