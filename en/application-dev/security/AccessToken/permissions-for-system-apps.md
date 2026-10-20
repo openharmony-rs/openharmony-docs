@@ -6678,6 +6678,20 @@ Allows an application to manage clone preferences.
  	 
 **Valid since**: 26.0.0
 
+## ohos.permission.MULTI_SCREEN_MANAGER
+
+Allows a system application to manage the on/off states of multiple screens.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
 ## ohos.permission.SWITCH_MULTI_MODE_BUNDLE
 
 Allows an application to switch the list of displayable applications on multi-mode devices.
