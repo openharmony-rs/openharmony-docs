@@ -204,17 +204,6 @@ typedef void (*OH_ArkUI_NativeModule_UIInfoCollectionInteractionJsonCallback)(co
 
 回调通过借用的[OH_ArkUI_NativeModule_UIJsonWrapper](capi-arkui-nativemodule-oh-arkui-nativemodule-uijsonwrapper.md)对象接收事件数据，不取得该对象的所有权。对象仅在本次回调执行期间有效，回调不得保留或销毁该对象。事件数据中的所有位置坐标均相对于屏幕（显示器），单位为物理像素（px）。事件数据顶层始终包含schemaVersion字段。顶层结构为{ "schemaVersion": 1, "type": "<event type>", ... }。
 
-各事件类型对应的字段见下方列表。
-
-- 点击手势或点击事件：id、point、count、fingers。
-- 长按手势：id、point、actualDuration（毫秒）、action（"end"）。
-- 拖动手势：id、point、direction、action（"start" \| "end" \| "cancel"）。
-- 捏合手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）；仅在"end"时包含scale字段。
-- 旋转手势：id、point（由[x, y]组成的数组）、fingers、action（"start" \| "end" \| "cancel"）；仅在"end"时包含angle字段，单位为度。
-- 滑动手势：id、downPoint（由[x, y]组成的数组）、upPoint（由[x, y]组成的数组）、direction、speed、actualSpeed。
-- 拖拽事件：action（"start" \| "end"）；"start"时包含id、point、hostName、actualDuration；"end"时包含point、dropResult（"success" \| "fail"）、id（目标节点ID，仅在成功时包含）、hostName。
-- 触摸事件：action（"down" \| "up"）、fingerId、point；"down"时还包含id（命中节点ID）。
-
 **起始版本：** 26.2.0
 
 **参数：**
