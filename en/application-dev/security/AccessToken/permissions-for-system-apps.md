@@ -2591,6 +2591,8 @@ Allows an application to modify HiView data.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | smarthomehosts
+
 **Since**: 10
 
 ## ohos.permission.READ_HIVIEW_SYSTEM
@@ -2602,6 +2604,8 @@ Allows an application to access HiView data.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | smarthomehosts
 
 **Since**: 10
 
@@ -9475,6 +9479,20 @@ Allows an application to get information related to instrument cluster personali
 
 **Valid since**: 26.0.1
 
+## ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR
+
+Allows an application to specify the actual entity using the audio and activate the privacy indicator accordingly.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.2.0
+
 ## ohos.permission.ALLOW_INSTALL_DEBUG_HAP
 
 Allows an application to install other applications of the debug type.
@@ -9489,6 +9507,20 @@ Allows an application to install other applications of the debug type.
 
 **Since**: 26.0.1
 
+## ohos.permission.AUTH_SERVICE_ACCESS
+
+Allows an application to access authentication event management framework to report authentication events and receive event authentication results.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.2.0
+
 ## ohos.permission.SET_DSL_MODE
 
 Allows an application to modify the device security level (DSL) configuration.
@@ -9502,3 +9534,213 @@ Allows an application to modify the device security level (DSL) configuration.
 **Supported devices**: PCs/2-in-1 devices | tablets
 
 **Valid since**: 26.2.0
+
+## ohos.permission.vehicle.INNER_NETWORK
+
+Allows an application to access the vehicle's internal networks.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.2.0
+
+## ohos.permission.vehicle.LOGIN_TSP
+
+Allows an application to call the login and logout APIs of the automotive cloud mobile service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_ACCOUNT_INFO
+
+Allows an application to obtain Telematics Service Provider account information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_SERVICE_TOKEN
+
+Allows an application to obtain the account service token issued by the Telematics Service Provider.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_VEHICLE_APP_TOKEN
+
+Allows an application to obtain the vehicle application token issued by the Telematics Service Provider.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_ACCOUNT_ROLE
+
+Allows an application to obtain the Telematics Service Provider account role.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.PUBLISH_ACMSCORE_EVENT
+
+Allows an application to publish automotive cloud mobile service events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.SUBSCRIBE_ACMSCORE_EVENT
+
+Allows an application to subscribe to automotive cloud mobile service events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.VEHICLE_POWER
+
+Allows a system application to subscribe to and query the vehicle cabin power status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.NONRDA_SCREEN
+
+Allows a system application to control the on/off state of screens other than the instrument cluster screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.CLUSTER_SCREEN
+
+Allows a system application to control the on/off state of the instrument cluster screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.SHUTDOWN
+
+Allows a system application to turn off the vehicle cabin power.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.KEEP_STANDBY
+
+Allows a system application to request keeping the vehicle cabin awake.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.SWB_RW_DEEPLINK
+
+Allows an application to call SteerWheelButton (SWB) APIs to read and write DeepLink.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.SWB_MONITOR
+
+Allows an application to subscribe to SteerWheelButton (SWB) key events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1

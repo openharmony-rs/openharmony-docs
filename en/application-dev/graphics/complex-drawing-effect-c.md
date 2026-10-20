@@ -3,11 +3,12 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=7439d3babf47266895594fc2897be69b794cd762 translatedAt=2026-10-19T01:18:30.108Z pushedAt=2026-10-19T06:24:35.112Z -->
 
-You can use a brush or a pen to implement complex drawing effects in addition to the basic fill color, stroke color, and style settings. The following lists some major challenges:
+You can use a brush or a pen to implement complex drawing effects in addition to the basic fill color, stroke color, and style settings. The following lists some major effects:
 
 
 - Blend mode
@@ -43,7 +44,7 @@ OH_Drawing_CanvasDrawRect(canvas, rect);
 // Set the source pixel color.
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MIN, RGBA_MIN, 0xFF));
 // Set the blend mode to PLUS.
-OH_Drawing_BrushSetBlendMode(brush, OH_Drawing_BlendMode::BLEND_MODE_PLUS);
+OH_Drawing_BrushSetBlendMode(brush, BLEND_MODE_PLUS);
 // Attach the brush effect of the source pixels to the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // Create a point object for the circle center.
@@ -103,9 +104,9 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_PathEffectDestroy(pathEffect);
 ```
 
-| Path Without Dashed Lines| Path With Dashed Lines|
+| No Dashed Line Path | With Dashed Line Path |
 | -------- | -------- |
-| ![Path-Without-Dashed-Lines](figures/Path-Without-Dashed-Lines.png)| ![Path-With-Dashed-Lines](figures/Path-With-Dashed-Lines.png)|
+| ![Path-Without-Dashed-Lines](figures/Path-Without-Dashed-Lines.png) | ![Path-With-Dashed-Lines](figures/Path-With-Dashed-Lines.png) |
 
 
 ## Shader Effect
@@ -146,7 +147,7 @@ uint32_t colors[] = {0xFFFFFF00, 0xFFFF0000, 0xFF0000FF};
 float pos[] = {0.0f, 0.5f, 1.0f};
 // Create a linear gradient shader effect.
 OH_Drawing_ShaderEffect *colorShaderEffect =
-    OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, OH_Drawing_TileMode::CLAMP);
+    OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, CLAMP);
 // Create a brush object.
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the shader effect based on the brush.
@@ -192,7 +193,7 @@ uint32_t gColors[] = {0xFFFF0000, 0xFF00FF00, 0xFF0000FF};
 float_t gPos[] = {0.0f, 0.25f, 0.75f};
 // Create a radial gradient shader.
 OH_Drawing_ShaderEffect *colorShaderEffect =
-    OH_Drawing_ShaderEffectCreateRadialGradient(centerPt, radius, gColors, gPos, 3, OH_Drawing_TileMode::REPEAT);
+    OH_Drawing_ShaderEffectCreateRadialGradient(centerPt, radius, gColors, gPos, 3, REPEAT);
 // Create a brush object.
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the shader effect based on the brush.
@@ -235,7 +236,7 @@ uint32_t colors[3] = {0xFF00FFFF, 0xFFFF00FF, 0xFFFFFF00};
 float pos[3] = {0.0f, 0.5f, 1.0f};
 // Create a sector gradient shader.
 OH_Drawing_ShaderEffect* colorShaderEffect =
-    OH_Drawing_ShaderEffectCreateSweepGradient(centerPt, colors, pos, 3, OH_Drawing_TileMode::CLAMP);
+    OH_Drawing_ShaderEffectCreateSweepGradient(centerPt, colors, pos, 3, CLAMP);
 // Create a brush object.
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the shader effect based on the brush.
@@ -325,7 +326,7 @@ const float matrix[20] = {
     0, 0, 0.5f, 0.5f, 0
 };
     
-// Create a filter color.
+// Create a color filter.
 OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
 // Create a filter object.
 OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
@@ -350,7 +351,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | Original Image| Image with a Color Filter Based on a 5×4 Color Matrix|
 | -------- | -------- |
-| ![Original-Image6](figures/Original-Image6.png)| ![Image-with-a-Color](figures/Image-with-a-Color.png)|
+| ![Original-Image6](figures/Original-Image6.png) | ![Image-with-a-Color](figures/Image-with-a-Color.png) |
 
 
 ### Image Filter Effects
@@ -384,7 +385,7 @@ OH_Drawing_PenSetColor(pen, 0xffff0000);
 OH_Drawing_PenSetWidth(pen, 20);
 // Create an image filter to implement the blur effect.
 OH_Drawing_ImageFilter *imageFilter =
-    OH_Drawing_ImageFilterCreateBlur(20.0f, 20.0f, OH_Drawing_TileMode::CLAMP, nullptr);
+    OH_Drawing_ImageFilterCreateBlur(20.0f, 20.0f, CLAMP, nullptr);
 // Create a filter object.
 OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
 // Set an image filter object for the filter object.
@@ -408,7 +409,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | Original Image| Image with the Filter Effect|
 | -------- | -------- |
-| ![Original-Image5](figures/Original-Image5.png)| ![Image-with-the-Filter](figures/Image-with-the-Filter.png)|
+| ![Original-Image5](figures/Original-Image5.png) | ![Image-with-the-Filter](figures/Image-with-the-Filter.png) |
 
 
 ### Mask Filter Effect
@@ -439,7 +440,7 @@ OH_Drawing_PenSetColor(pen, 0xffff0000);
 // Set the pen width to 20.
 OH_Drawing_PenSetWidth(pen, 20);
 // Create a mask filter.
-OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 20, true);
+OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 20, true);
 // Create a filter object.
 OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
 // Set a mask filter object for the filter object.
@@ -463,12 +464,12 @@ OH_Drawing_FilterDestroy(filter);
 
 | Original Image| Image with the Mask Effect|
 | -------- | -------- |
-| ![Original-Image4](figures/Original-Image4.png)| ![Image-with-the-Mask-Effect](figures/Image-with-the-Mask-Effect.png)|
+| ![Original-Image4](figures/Original-Image4.png) | ![Image-with-the-Mask-Effect](figures/Image-with-the-Mask-Effect.png) |
 
 <!--RP1-->
 ## Samples
 
-The following samples are provided to help you better understand how to use the **Drawing** APIs (C/C++) for development:
+The following sample is provided to help you better understand how to use the **Drawing** APIs (C/C++) for development:
 
 - [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->

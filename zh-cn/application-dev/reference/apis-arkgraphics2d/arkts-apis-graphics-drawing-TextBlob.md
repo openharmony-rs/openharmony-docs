@@ -241,6 +241,14 @@ static makeFromStringWithFallback(text: string, font: Font): Array\<TextBlob>
 | --- | --- |
 | Array\<[TextBlob](arkts-apis-graphics-drawing-TextBlob.md)> | 返回创建的TextBlob对象数组。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
 **示例：**
 
 ```ts

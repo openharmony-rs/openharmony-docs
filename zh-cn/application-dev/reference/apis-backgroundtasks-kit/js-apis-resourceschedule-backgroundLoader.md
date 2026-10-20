@@ -63,7 +63,7 @@ registerTask(taskInfo: TaskInfo): void
 **示例**：
 
 ```ts
-  import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+  import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
   import { backgroundLoader } from '@kit.BackgroundTasksKit';
   
   export default class TestAppMainUIAbility extends UIAbility {
@@ -119,7 +119,7 @@ unregisterTask(taskInfo: TaskInfo): void
 **示例**：
 
 ```ts
-  import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+  import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
   import { backgroundLoader } from '@kit.BackgroundTasksKit';
   
   export default class TestAppMainUIAbility extends UIAbility {
@@ -131,7 +131,7 @@ unregisterTask(taskInfo: TaskInfo): void
                 taskId: 1,
                 abilityName: 'TestAppMainUIAbility'
             }
-            // 02.注册启动后台加载任务，系统将任务记录持久化保存，用于后续调度
+            // 02.取消注册启动后台加载任务，系统将删除注册记录
             backgroundLoader.unregisterTask(taskInfo);
             console.info('unregisterTask success');
         } catch (error) {
@@ -261,7 +261,7 @@ finishTask(taskInfo: TaskInfo): void
     let stopCode:number = pdata.readInt();
     let stopMessage:string = pdata.readString();
 
-    console.info(`background loader Task OnStop, taskId `${taskId});
+    console.info(`background loader Task OnStop, taskId ${taskId}`);
     return new ReplyParcelable();
   }
 
@@ -278,7 +278,7 @@ finishTask(taskInfo: TaskInfo): void
                 abilityName: 'TestAppMainUIAbility'
             }
 
-            // 04.注册启动后台加载任务，系统将任务记录持久化保存，用于后续调度
+            // 04.取消启动后台加载任务，系统将删除注册记录
             backgroundLoader.unregisterTask(taskInfo);
             console.info('unregisterTask success');
         } catch (error) {

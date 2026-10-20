@@ -27,7 +27,7 @@ injectEvent({KeyEvent: KeyEvent}): void
 
 按键（包括单个按键和组合键）注入。
 
-从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。
+从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。若未指定displayId，则操作将在与调用者同用户的屏幕组生效。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -95,7 +95,7 @@ injectKeyEvent(keyEvent: KeyEventData): void
 
 按键（包括单个按键和组合键）事件注入。
 
-从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。
+从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。若未指定displayId，则操作将在与调用者同用户的屏幕组生效。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 

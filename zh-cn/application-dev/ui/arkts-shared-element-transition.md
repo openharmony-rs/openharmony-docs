@@ -1936,11 +1936,17 @@ geometryTransition的使用方式为对需要添加一镜到底动效的两个�
 
 geometryTransition绑定两个对象的实现方式使得geometryTransition区别于其他方法，最适合用于两个不同对象之间完成一镜到底。
 
+> **说明：**
+>
+> 1. 使用geometryTransition接口绑定同一id的组件不能相互嵌套，即一个绑定了该id的组件内部不能再嵌套另一个绑定了相同id的组件，否则会导致转场动画异常。
+>
+> 2. 建议在动画结束回调（[onFinish](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam对象说明)）中将绑定的id置空，防止在非预期场景（如页面快速连续点击、状态变量变化等）下误触发共享元素转场。下次触发转场前再将id设置回所需值。
+
 ### geometryTransition的简单使用
 
 对于同一个页面中的两个元素的一镜到底效果，geometryTransition接口的简单使用示例如下：
 
-<!-- @[geometry_transition_simple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template6/IfElseGeometryTransition.ets) -->
+<!-- @[geometry_transition_simple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template6/IfElseGeometryTransition.ets) --> 
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -1949,6 +1955,8 @@ import { curves } from '@kit.ArkUI';
 @Component
 struct IfElseGeometryTransition {
   @State isShow: boolean = false;
+  // 使用状态变量管理geometryTransition的id，动画结束后置空防止误触发
+  @State geometryId: string = 'picture';
 
   build() {
     Stack({ alignContent: Alignment.Center }) {
@@ -1960,7 +1968,7 @@ struct IfElseGeometryTransition {
           .width(200)
           .height(200)
           .borderRadius(100)
-          .geometryTransition('picture')
+          .geometryTransition(this.geometryId)
           .transition(TransitionEffect.OPACITY)
           // 在打断场景下，即动画过程中点击页面触发下一次转场，如果不加id，则会出现重影
           // 加了id之后，新建的spring图片会复用之前的spring图片节点，不会重新创建节点，也就不会有重影问题
@@ -1983,7 +1991,7 @@ struct IfElseGeometryTransition {
         // 则对容器本身有圆角同步而不会操作容器内部子组件的borderRadius
         .borderRadius(50)
         .clip(true)
-        .geometryTransition('picture')
+        .geometryTransition(this.geometryId)
         // transition保证节点离场不被立即析构，设置通用转场效果
         .transition(TransitionEffect.OPACITY)
         .position({ x: 40, y: 40 })
@@ -1991,8 +1999,14 @@ struct IfElseGeometryTransition {
       }
     }
     .onClick(() => {
+      // 动画开始前确保id已设置
+      this.geometryId = 'picture';
       this.getUIContext()?.animateTo({
-        curve: curves.springMotion()
+        curve: curves.springMotion(),
+        onFinish: () => {
+          // 动画结束后置空id，防止误触发
+          this.geometryId = '';
+        }
       }, () => {
         this.isShow = !this.isShow;
       })
@@ -2027,6 +2041,8 @@ struct Index {
   @State isPersonalPageShow: boolean = false;
   @State selectedIndex: number = 0;
   @State alphaValue: number = 1;
+  // 使用状态变量管理geometryTransition的id，动画结束后置空防止误触发
+  @State geometryId: string = '';
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   // 数组中图片均使用Resource资源，需用户自定义
@@ -2064,9 +2080,15 @@ struct Index {
 
   private onAvatarClicked(index: number): void {
     this.selectedIndex = index;
+    // 动画开始前设置共享元素转场id
+    this.geometryId = index.toString();
     this.getUIContext()?.animateTo({
       duration: 350,
-      curve: Curve.Friction
+      curve: Curve.Friction,
+      onFinish: () => {
+        // 动画结束后置空id，防止误触发
+        this.geometryId = '';
+      }
     }, () => {
       this.isPersonalPageShow = !this.isPersonalPageShow;
       this.alphaValue = 0;
@@ -2074,9 +2096,15 @@ struct Index {
   }
 
   private onPersonalPageBack(index: number): void {
+    // 动画开始前设置共享元素转场id
+    this.geometryId = index.toString();
     this.getUIContext()?.animateTo({
       duration: 350,
-      curve: Curve.Friction
+      curve: Curve.Friction,
+      onFinish: () => {
+        // 动画结束后置空id，防止误触发
+        this.geometryId = '';
+      }
     }, () => {
       this.isPersonalPageShow = !this.isPersonalPageShow;
       this.alphaValue = 1;
@@ -2090,7 +2118,7 @@ struct Index {
         .size({ width: 200, height: 200 })
         .borderRadius(100)
         // 头像配置共享元素效果，与点击的头像的id匹配
-        .geometryTransition(index.toString())
+        .geometryTransition(this.geometryId)
         .clip(true)
         .transition(TransitionEffect.opacity(0.99))
 
@@ -2129,7 +2157,11 @@ struct Index {
       ForEach(this.allPostData, (postData: PostData, index: number) => {
         Column() {
           Post({
-            data: postData, index: index, onAvatarClicked: (index: number) => {
+            data: postData,
+            index: index,
+            geometryId: this.geometryId,
+            selectedIndex: this.selectedIndex,
+            onAvatarClicked: (index: number) => {
               this.onAvatarClicked(index);
             }
           })
@@ -2149,6 +2181,8 @@ struct Index {
 export default struct Post {
   @Prop data: PostData;
   @Prop index: number;
+  @Prop geometryId: string = '';
+  @Prop selectedIndex: number = -1;
   @State expandImageSize: number = 100;
   @State avatarSize: number = 50;
   private onAvatarClicked: (index: number) => void = (index: number) => { };
@@ -2164,7 +2198,10 @@ export default struct Post {
             this.onAvatarClicked(this.index);
           })
           // 对头像绑定共享元素转场的id
-          .geometryTransition(this.index.toString(), { follow: true })
+          .geometryTransition(
+            (this.index === this.selectedIndex && this.geometryId !== '') ? this.geometryId : '',
+            { follow: true }
+          )
           .transition(TransitionEffect.OPACITY.animation({ duration: 350, curve: Curve.Friction }))
 
         Text(this.data.name)

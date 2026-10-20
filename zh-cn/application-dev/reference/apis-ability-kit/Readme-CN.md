@@ -69,7 +69,9 @@
      - [@ohos.app.ability.contextConstant (Context相关常量)(系统接口)](js-apis-app-ability-contextConstant-sys.md)
     - [@ohos.app.ability.dialogSession (dialogSession)(系统接口)](js-apis-app-ability-dialogSession-sys.md)
     - [@ohos.app.ability.insightIntent (意图框架基础定义)(系统接口)](js-apis-app-ability-insightIntent-sys.md)
+    - [@ohos.app.ability.InsightIntentContext (意图执行上下文)(系统接口)](js-apis-app-ability-insightIntentContext-sys.md)
     - [@ohos.app.ability.insightIntentDriver (执行意图调用)(系统接口)](js-apis-app-ability-insightIntentDriver-sys.md)
+    - [@ohos.app.ability.scriptManager (脚本管理)(系统接口)](js-apis-app-ability-scriptManager-sys.md)
     - [@ohos.app.ability.ServiceExtensionAbility (ServiceExtensionAbility)(系统接口)](js-apis-app-ability-serviceExtensionAbility-sys.md)
     - [@ohos.app.ability.StartOptions (StartOptions)(系统接口)](js-apis-app-ability-startOptions-sys.md)
     - [@ohos.app.ability.UIServiceExtensionAbility (UIServiceExtensionAbility)(系统接口)](js-apis-app-ability-uiServiceExtensionAbility-sys.md)
@@ -84,7 +86,7 @@
        - [ContinuableInfo (系统接口)](js-apis-inner-application-continuableInfo-sys.md)
        - [ContinueCallback (系统接口)](js-apis-inner-application-continueCallback-sys.md)
        - [ContinueMissionInfo (系统接口)](js-apis-inner-application-continueMissionInfo-sys.md)
-       - [MissionCallbacks (系统接口)](js-apis-inner-application-missionCallbacks-sys.md)
+       - [MissionCallback (系统接口)](js-apis-inner-application-missionCallbacks-sys.md)
        - [MissionDeviceInfo (系统接口)](js-apis-inner-application-missionDeviceInfo-sys.md)
        - [MissionParameter (系统接口)](js-apis-inner-application-missionParameter-sys.md)
        <!--DelEnd-->

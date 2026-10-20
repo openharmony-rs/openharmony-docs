@@ -126,7 +126,7 @@ I/O错误。
 
 1. 硬件故障：设备物理损坏导致无法完成I/O指令。
 
-2. 通信链路中断：数据传输过程链接断开。
+2. 通信链路中断：数据传输过程连接断开。
 
 3. 驱动程序错误：驱动程序异常或者版本不兼容。
 
@@ -134,7 +134,7 @@ I/O错误。
 
 1. 检查硬件状态是否正常。
 
-2. 检查USB设备等链接是否正常。
+2. 检查USB设备等连接是否正常。
 
 3. 检查并更新驱动程序，确保版本兼容。
 
@@ -264,7 +264,7 @@ Permission denied
 
 **可能原因**
 
-1. 文件操作被DAC或selinux拦截。
+1. 文件操作被DAC或SELinux拦截。
 
 2. 文件沙箱路径地址错误。
 
@@ -586,7 +586,7 @@ Resource deadlock would occur
 
 **错误信息**
 
-Filename too Long
+Filename too long
 
 **错误描述**
 
@@ -822,7 +822,7 @@ Unknown error
 
 **错误信息**
 
-No record is locks available
+No record locks available
 
 **错误描述**
 
@@ -866,7 +866,7 @@ Connection failed
 
 **可能原因**
 
-设备、Wi-Fi或蓝牙状态异常，导致建立链接失败。
+设备、Wi-Fi或蓝牙状态异常，导致建立连接失败。
 
 **处理步骤**
 

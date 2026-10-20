@@ -893,6 +893,34 @@ Allows an MDM application to add widgets to the home screen.
 
 **Since**: 26.0.1
 
+## ohos.permission.vehicle.GET_DRIVING_HABIT
+ 
+Allows an application to obtain the driving habits of the driver under the current login account.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.MANAGE_DRIVING_HABIT
+ 
+Allows an application to manage the driving habits of the driver under the current login account.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+
 ## ohos.permission.ENTERPRISE_ENCRYPT_BLOCK_DEVICE
 
 Allows an MDM application to mount and unmount the encrypted partition and swap partition of encrypted USB drives.
@@ -909,6 +937,25 @@ Allows an MDM application to mount and unmount the encrypted partition and swap 
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.0.1
+ 
+## ohos.permission.kernel.ACCESS_DISK_USERDATA
+ 
+Allows a device management application to read user disk sectors.
+
+With this permission, the application can read user disk sectors, including the data disk and the userdata partition on the system disk.
+ 
+<!--RP1--><!--RP1End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+ 
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.2.0
 
 ## ohos.permission.ENTERPRISE_EXTERNAL_READ
 

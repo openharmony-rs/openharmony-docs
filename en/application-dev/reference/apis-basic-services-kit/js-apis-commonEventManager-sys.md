@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-09-29T09:43:33.392Z pushedAt=2026-10-08T02:39:02.489Z -->
+<!-- md-trans-meta sourceCommit=54656b3da3e41e2ba7f2b57573523f0dbf41c1e3 translatedAt=2026-10-08T09:10:51.716Z pushedAt=2026-10-09T03:03:08.705Z -->
 
 This module provides system APIs to publish common events to specified users, remove [sticky common events](../../basic-services/common-event/common-event-glossary.md#sticky-common-event), enable or disable [static subscription](../../basic-services/common-event/common-event-glossary.md#static-subscription) events.
 
@@ -41,7 +41,7 @@ Publishes a common event to a specified user. This API uses an asynchronous call
 
 | Name    | Type                | Mandatory| Description                              |
 | -------- | -------------------- | ---- | ---------------------------------- |
-| event    | string               | Yes  | Name of the common event to publish. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md).            |
+| event    | string               | Yes   | Common event to publish. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | userId   | number               | Yes  | ID of the user who will receive the common event.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.            |
 
@@ -95,7 +95,7 @@ Publishes a common event to a specified user and specifies the information to be
 
 | Name    | Type                  | Mandatory| Description                  |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | Yes  | Name of the common event to publish. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md). |
+| event    | string                 | Yes   | Common event to publish. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | userId   | number | Yes| ID of the user who will receive the common event.|
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
 | callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
@@ -157,7 +157,7 @@ Removes a [sticky common event](../../basic-services/common-event/common-event-g
 
 | Name  | Type                | Mandatory| Description                            |
 | -------- | -------------------- | ---- | -------------------------------- |
-| event    | string               | Yes  | Sticky common event to remove. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md).      |
+| event    | string               | Yes   | Sticky common event to remove. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the sticky common event is successfully removed, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -203,7 +203,7 @@ Removes a published [sticky common event](../../basic-services/common-event/comm
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| event  | string | Yes  | Sticky common event to remove. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).|
+| event  | string | Yes   | Sticky common event to remove. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 
 **Return value**
 

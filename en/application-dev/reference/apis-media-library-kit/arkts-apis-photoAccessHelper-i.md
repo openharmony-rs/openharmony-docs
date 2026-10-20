@@ -26,11 +26,11 @@ Media change request, which is the parent class of the asset change request and 
 
 ### Attributes
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only):** This API can be used in atomic services since API version 23.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name          | Type   | Read-Only  | Optional | Description  |
 | ------------ | ------ | ---- | ---- | ------- |
@@ -45,23 +45,23 @@ The title must meet the following requirements:
 - It must not contain a file name extension.
 - The total length of the file name must be between 1 and 255 characters.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                  | Type                       | Read-Only| Optional| Description                                        |
 | ---------------------- |----------------------------| ---- | ---- | ------------------------------------------- |
-| title           | string | No  | Yes  | Title of the image or video.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| subtype<sup>12+</sup>           | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12) | No  | Yes  | Subtype of the image or video file.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| title           | string | No  | Yes  | Title of the image or video.<br>**Atomic service API (ArkTS-Dyn only):** This API can be used in atomic services since API version 11.|
+| subtype<sup>12+</sup>           | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12) | No  | Yes  | Subtype of the image or video file.<br>**Atomic service API (ArkTS-Dyn only):** This API can be used in atomic services since API version 12.|
 
 ## FetchOptions
 
 Defines the retrieval options.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                  | Type               | Read-Only| Optional| Description                                             |
 | ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
-| fetchColumns           | Array&lt;string&gt; | No  | No  | Names of the columns specified for query.<br>If this parameter is left blank for photos, photos are fetched by **'uri'**, **'media_type'**, **'subtype'**, and **'display_name'** by default. An error will be thrown if [get](arkts-apis-photoAccessHelper-PhotoAsset.md#get) is used to obtain other attributes of this object. <br>Example: **fetchColumns: ['uri', 'title']**.<br>If this parameter is left blank for albums, albums are fetched by **'uri'** and **'album_name'** by default.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | No  | No  | Predicates that specify the fetch criteria.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| fetchColumns           | Array&lt;string&gt; | No  | No  | Names of the columns specified for query.<br>If this parameter is left blank for photos, photos are fetched by **'uri'**, **'media_type'**, **'subtype'**, and **'display_name'** by default. An error will be thrown if [get](arkts-apis-photoAccessHelper-PhotoAsset.md#get) is used to obtain other attributes of this object. <br>Example: **fetchColumns: ['uri', 'title']**.<br>If this parameter is left blank for albums, albums are fetched by **'uri'** and **'album_name'** by default.<br>**Atomic service API (ArkTS-Dyn only):** This API can be used in atomic services since API version 20.|
+| predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | No  | No  | Predicates that specify the fetch criteria.<br>**Atomic service API (ArkTS-Dyn only):** This API can be used in atomic services since API version 20.|
 
 ## RequestOptions<sup>11+</sup>
 
@@ -72,7 +72,7 @@ Represents request options.
 | Name                  | Type                       | Read-Only| Optional| Description                                        |
 | ---------------------- |----------------------------| ---- | ---- | ------------------------------------------- |
 | deliveryMode           | [DeliveryMode](arkts-apis-photoAccessHelper-e.md#deliverymode11) | No  | No  | Delivery mode of the requested asset. The value can be **FAST_MODE**, **HIGH_QUALITY_MODE**, or **BALANCE_MODE**.|
-| compatibleMode<sup>15+</sup>      | [CompatibleMode](arkts-apis-photoAccessHelper-e.md#compatiblemode15) | No  | Yes  | HDR video transcoding policy, which can be **FAST_ORIGINAL_FORMAT_MODE** (maintaining the original HDR format) or **COMPATIBLE_FORMAT_MODE** (converting HDR content to SDR format). The default value is **FAST_ORIGINAL_FORMAT_MODE**.|
+| compatibleMode<sup>15+</sup>      | [CompatibleMode](arkts-apis-photoAccessHelper-e.md#compatiblemode15) | No  | Yes  | HDR video transcoding policy, which can be **ORIGINAL_FORMAT_MODE** (maintaining the original HDR format) or **COMPATIBLE_FORMAT_MODE** (converting HDR content to SDR format). The default value is **ORIGINAL_FORMAT_MODE**.|
 | mediaAssetProgressHandler<sup>15+</sup> | [MediaAssetProgressHandler](arkts-apis-photoAccessHelper-MediaAssetProgressHandler.md) | No  | Yes  | Callback used to return the HDR-to-SDR conversion progress.|
 
 ## ChangeData
@@ -91,9 +91,9 @@ Defines the return value of the listener callback.
 
 Represents the text information about the recommended images.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only):** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name   | Type                       | Read-Only| Optional| Description                                                        |
 | ---- | ------- | ---- |  ---- | ----- |
@@ -134,9 +134,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 Represents the configuration for saving a media asset (image or video) to the media library, including the file name.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API (ArkTS-Dyn only):** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name   | Type                       | Read-Only| Optional| Description                                                        |
 | ---- | ------- | ---- |  ---- | ----- |
@@ -149,11 +149,11 @@ Represents the configuration for saving a media asset (image or video) to the me
 
 Represents the configuration for saving images or videos to the media library, including the file name, file type, and other related parameters.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only):** This API can be used in atomic services since API version 23.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name              | Type   | Read-Only| Optional| Description                                                        |
 | ------------------ | ------- | ---- | ---- | ----- |
@@ -165,7 +165,7 @@ Represents the configuration for saving images or videos to the media library, i
 
 Describes the information about a media asset.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name|   Type  | Read-Only|  Optional| Description     |
 | ---- | ------- | ---- |  ---- | ----- |
@@ -177,7 +177,7 @@ Describes the information about a media asset.
 
 Describes the detailed change data of a media asset.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name    | Type               | Read-Only| Optional| Description |
 | ---- | ------- | ---- |  ---- | ----- |
@@ -190,7 +190,7 @@ Describes the detailed change data of a media asset.
 
 Describes the notification information about the change of a media asset.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                  | Type               | Read-Only| Optional| Description   |
 | ---- | ------- | ---- |  ---- | ----- |
@@ -202,7 +202,7 @@ Describes the notification information about the change of a media asset.
 
 Describes the album information.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name | Type               | Read-Only| Optional| Description                                             |
 | ---- | ------- | ---- |  ---- | ----- |
@@ -219,7 +219,7 @@ Describes the album information.
 
 Describes the detailed change data of an album.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                  | Type               | Read-Only| Optional| Description               |
 | ---- | ------- | ---- |  ---- | ----- |
@@ -230,7 +230,7 @@ Describes the detailed change data of an album.
 
 Describes the notification information about the change of an album.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                  | Type               | Read-Only| Optional| Description          |
 | ---- | ------- | ---- |  ---- | ----- |
@@ -242,11 +242,11 @@ Describes the notification information about the change of an album.
 
 Represents the pinch mode of the grid in the picker.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API (ArkTS-Dyn only):** This API can be used in atomic services since API version 23.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
     
 | Name                  | Type               | Read-Only| Optional| Description          |
 | ---- | ---- | ---- | ---- | ---- |
@@ -257,26 +257,26 @@ Represents the pinch mode of the grid in the picker.
 
 Defines the asset compatibility capability.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
     
 | Name                  | Type               | Read-Only| Optional| Description          |
 | ---- | ---- | ---- | ---- | ---- |
-| supportedHighResolution | boolean  | No| No| Whether high-resolution assets are supported. **true**: yes; **false**: no.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| supportedMimeType | Array&lt;string&gt;  | No| Yes| Supported MIME types.<br>- **image/heic**: The app supports the HEIF format.<br>- **image/jpeg**: The app supports only the JPEG format.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| supportedHighResolution | boolean  | No| No| Whether high-resolution assets are supported. **true**: yes; **false**: no.<br>**Atomic service API (ArkTS-Dyn only):** This API can be used in atomic services since API version 24.|
+| supportedMimeType | Array&lt;string&gt;  | No| Yes| Supported MIME types.<br>- **image/heic**: The app supports the HEIF format.<br>- **image/jpeg**: The app supports only the JPEG format.<br>**Since:** 26.0.0<br>**Atomic service API (ArkTS-Dyn only):** This API can be used in atomic services since API version 26.0.0.|
 
 ## MediaLibraryAvailability
 
 Defines the availability information of the media library.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name | Type               | Read-Only| Optional| Description                                             |
 | ---- | ------- | ---- |  ---- | ----- |
 | availabilityStatus | [AvailabilityStatus](arkts-apis-photoAccessHelper-e.md#availabilitystatus) | No| No| Availability status of the media library.|
-| unavailabilityReason | string | No| No| Reason why the media library is unavailable, for example, "Database corrupted".|
+| unavailabilityReason | string | No| No| Reason why the media library is unavailable, for example, **Database corrupted**.|

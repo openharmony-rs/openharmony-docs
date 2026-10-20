@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
@@ -310,10 +310,10 @@
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                          |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | 否   | 是   | 窗口的最大宽度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| maxHeight | number | 否   | 是   | 窗口的最大高度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| minWidth  | number | 否   | 是   | 窗口的最小宽度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| minHeight | number | 否   | 是   | 窗口的最小高度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| maxWidth  | number | 否   | 是   | 窗口的最大宽度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| maxHeight | number | 否   | 是   | 窗口的最大高度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| minWidth  | number | 否   | 是   | 窗口的最小宽度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| minHeight | number | 否   | 是   | 窗口的最小高度。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
 | pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。 |
 
 ## TitleButtonRect<sup>11+</sup>
@@ -356,6 +356,38 @@
 | systemDensity  | number   | 否   | 否   | 窗口所在屏幕的系统显示大小缩放系数，跟随用户设置变化，该参数变化范围为0.5-4.0。 |
 | defaultDensity | number   | 否   | 否   | 窗口所在屏幕的系统默认显示大小缩放系数，跟随窗口所在屏幕变化，该参数变化范围为0.5-4.0。 |
 | customDensity | number   | 否   | 否   | 窗口自定义设置的显示大小缩放系数，该参数取值范围为0.5-4.0。未设置该参数时，将跟随系统显示大小缩放系数变化。该参数仅主窗口生效，在子窗、模态窗、全局悬浮窗或系统窗口上等于系统显示大小缩放系数(systemDensity)。 |
+
+## WindowFocusState
+
+窗口焦点状态的变化信息。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| isFocused | boolean | 否 | 否 | 窗口是否获焦，true表示获焦，false表示未获焦。 |
+| focusChangeReason | [FocusChangeReason](arkts-apis-window-e.md#focuschangereason) | 否 | 否 | 焦点状态变化的原因。 |
+| nextFocusedWindowId | number | 否 | 是 | 下一个获焦窗口的ID。仅当本窗口未获焦，且下一个获焦窗口与本窗口位于同一进程时，该字段才有效。默认值为undefined。 |
+| prevFocusedWindowId | number | 否 | 是 | 上一个获焦窗口的ID。仅当本窗口已获焦，且上一个获焦窗口与本窗口位于同一进程时，该字段才有效。默认值为undefined。 |
+
+## WindowPositionParams
+
+调整主窗口Z序时使用的位置参数。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称        | 类型 | 只读 | 可选 | 说明  |
+| ----------- | ---- | ---- | ---- | ---------- |
+| windowId    | number | 否   | 否   | 待调整Z序的主窗口ID。该窗口必须是当前应用进程中的主窗口。<br>该参数应为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
+| insertAfter | number | 否   | 否   | 调整到的位置。取值大于0时，表示另一主窗口的ID，待调整Z序的主窗口将被放置到该主窗口之下；其他取值对应的Z序调整操作请见[WindowPosition](arkts-apis-window-e.md#windowposition)。|
 
 ## WindowInfoOptions
 窗口布局信息过滤选项。

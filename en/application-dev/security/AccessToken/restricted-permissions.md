@@ -1151,7 +1151,7 @@ With this permission, the application can access the public directory without ha
 
 ## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
 
-Allows an application to load shared libraries signed with binary certificates.
+Allows an application to load shared libraries that are signed with binary certificates, debug certificates, or self-signed certificates.
 
 <!--RP61--><!--RP61End-->
 
@@ -1678,6 +1678,20 @@ Allows an application to use the aa tool to debug other applications locally in 
 
 **Since**: 26.0.1
 
+## ohos.permission.kernel.LOAD_CERTSIGN_LIBRARY
+ 
+Allows an application to load shared libraries that are signed with either binary or debug certificates.
+ 
+<!--RP109--><!--RP109End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices
+ 
+**Since**: 26.0.1
+
 ## ohos.permission.kernel.ALLOW_PTRACE_READ
 
 Allows an application to use PTRACE read capabilities to obtain register and memory information of application processes.
@@ -1717,5 +1731,37 @@ Allows an application to enter exam mode. The system service will display a dial
 **Authorization mode**: system_grant
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.1
+
+## ohos.permission.DIRECT_CALL
+
+Allows an application to make calls with one tap.
+
+With this permission, the application can make calls directly without opening the Contacts screen when the device has a single SIM card or a default SIM card has been specified on a multi-SIM device. 
+
+<!--RP114--><!--RP114End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Supported devices**: phones
+
+**Since**: 26.0.1
+
+## ohos.permission.SYNC_ROOT_MANAGER
+
+Allows an application to manage cloud drive sync folders.
+
+With this permission, the application can add sync root folders to the sidebar of the file manager and customize the icons of sync root folders.
+
+<!--RP115--><!--RP115End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.1

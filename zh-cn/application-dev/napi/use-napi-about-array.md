@@ -25,20 +25,20 @@
 使用Node-API接口进行数组相关开发时，可以处理各种涉及ArkTS数组的操作和交互场景。以下是几个具体的使用场景介绍：
 | 接口 | 描述 |
 | -------- | -------- |
-| [napi_create_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array) | 用于在Node-API模块中向ArkTS层创建一个ArkTS数组对象。 |
-| [napi_create_array_with_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_array_with_length) | 用于在Node-API模块中向ArkTS层创建指定长度的ArkTS数组对象。 |
-| [napi_get_array_length](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_array_length) | 用于在Node-API模块中获取ArkTS数组对象的长度。 |
-| [napi_is_array](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_array) | 用于在Node-API模块中判断一个napi_value值是否为数组。 |
-| [napi_set_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_set_element) | 用于在Node-API模块中对ArkTS数组对象的特定索引处设置一个值。 |
-| [napi_get_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_element) | 用于在Node-API模块中从ArkTS数组对象的特定索引处获取一个值。 |
-| [napi_has_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_has_element) | 用于在Node-API模块中判断ArkTS数组对象请求索引处是否包含元素。 |
-| [napi_delete_element](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_delete_element) | 用于在Node-API模块中从ArkTS数组对象中删除请求索引对应的元素。 |
-| [napi_create_typedarray](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_typedarray) | 用于在Node-API模块中创建指定类型的TypedArray，例如Uint8Array、Int32Array等，通常用于将Node-API模块中的数据转换为ArkTS中的TypedArray，以便进行高性能的数据处理操作。 |
-| [napi_is_typedarray](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_typedarray) | 用于在Node-API模块中判断一个给定的napi_value是否为TypedArray对象。 |
-| [napi_get_typedarray_info](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_typedarray_info) | 用于在Node-API模块中获得某个TypedArray的各种属性。 |
-| [napi_create_dataview](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_create_dataview) |  用于在Node-API模块中创建一个DataView对象，可以访问和操作二进制数据。 |
-| [napi_is_dataview](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_is_dataview) | 用于在Node-API模块中判断给定的napi_value是否为ArkTS中的DataView对象。 |
-| [napi_get_dataview_info](https://nodejs.org/docs/latest-v18.x/api/n-api.html#napi_get_dataview_info) | 用于在Node-API模块中获得某个DataView的各种属性。 |
+| napi_create_array | 用于在Node-API模块中向ArkTS层创建一个ArkTS数组对象。 |
+| napi_create_array_with_length | 用于在Node-API模块中向ArkTS层创建指定长度的ArkTS数组对象。 |
+| napi_get_array_length | 用于在Node-API模块中获取ArkTS数组对象的长度。 |
+| napi_is_array | 用于在Node-API模块中判断一个napi_value值是否为数组。 |
+| napi_set_element | 用于在Node-API模块中对ArkTS数组对象的特定索引处设置一个值。 |
+| napi_get_element | 用于在Node-API模块中从ArkTS数组对象的特定索引处获取一个值。 |
+| napi_has_element | 用于在Node-API模块中判断ArkTS数组对象请求索引处是否包含元素。 |
+| napi_delete_element | 用于在Node-API模块中从ArkTS数组对象中删除请求索引对应的元素。 |
+| napi_create_typedarray | 用于在Node-API模块中创建指定类型的TypedArray，例如Uint8Array、Int32Array等，通常用于将Node-API模块中的数据转换为ArkTS中的TypedArray，以便进行高性能的数据处理操作。 |
+| napi_is_typedarray | 用于在Node-API模块中判断一个给定的napi_value是否为TypedArray对象。 |
+| napi_get_typedarray_info | 用于在Node-API模块中获得某个TypedArray的各种属性。 |
+| napi_create_dataview | 用于在Node-API模块中创建一个DataView对象，可以访问和操作二进制数据。 |
+| napi_is_dataview | 用于在Node-API模块中判断给定的napi_value是否为ArkTS中的DataView对象。 |
+| napi_get_dataview_info | 用于在Node-API模块中获得某个DataView的各种属性。 |
 
 ## 使用示例
 
@@ -524,7 +524,7 @@ export const napiDeleteElement: <T>(arr: Array<T>,
 
 ArkTS侧示例代码
 
-index.d.ts需要同时导入前文示例代码中的napiHasElement、napiGetElement接口。
+index.d.ts需要同时导入前文示例代码中的napiHasElement()、napiGetElement()接口。
 
 <!-- @[ark_napi_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
@@ -781,7 +781,7 @@ static napi_value GetTypedarrayInfo(napi_env env, napi_callback_info info)
             result = int8_type;
             break;
         case INFO_LENGTH:
-            // TypedArray中元素的字节长度
+            // TypedArray中元素的数量
             napi_value napiLength;
             napi_create_int32(env, length, &napiLength);
             result = napiLength;
@@ -837,7 +837,7 @@ try {
   // 将arraybuffer转为数组
   let arr = new Array(new Int8Array(arrBuffer));
   hilog.info(0x0000, 'Node-API', 'get_typedarray_info_arraybuffer: %{public}s', arr.toString());
-  hilog.info(0x0000, 'Node-API', 'get_typedarray_info_isIn8Array: %{public}s', testNapi.getTypedarrayInfo(int8Array, InfoType.TYPE).toString());
+  hilog.info(0x0000, 'Node-API', 'get_typedarray_info_isInt8Array: %{public}s', testNapi.getTypedarrayInfo(int8Array, InfoType.TYPE).toString());
   hilog.info(0x0000, 'Node-API', 'get_typedarray_info_length: %{public}d', testNapi.getTypedarrayInfo(int8Array, InfoType.LENGTH));
   hilog.info(0x0000, 'Node-API', 'get_typedarray_info_byte_offset: %{public}d', testNapi.getTypedarrayInfo(int8Array, InfoType.BYTE_OFFSET));
 } catch (error) {

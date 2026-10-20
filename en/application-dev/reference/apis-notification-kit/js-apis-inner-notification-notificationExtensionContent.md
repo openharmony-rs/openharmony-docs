@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:36:08.135Z pushedAt=2026-06-30T10:57:36.994Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:18:10.045Z pushedAt=2026-10-08T09:16:54.150Z -->
 
 The **NotificationExtensionContent** module describes the notification extension content.
 
@@ -21,4 +21,3 @@ The **NotificationExtensionContent** module describes the notification extension
 | -------- | -------- | -------- | -------- | -------- |
 | title | string | No | No | Notification title.<br>It cannot be an empty string. The size cannot exceed 1024 bytes, and any excess will be truncated. |
 | text | string | No | No | Notification body content.<br>It cannot be an empty string. The size cannot exceed 3072 bytes, and any excess will be truncated. |
-<!--no_check-->

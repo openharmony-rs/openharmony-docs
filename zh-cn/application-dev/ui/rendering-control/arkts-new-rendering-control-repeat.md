@@ -395,7 +395,7 @@ struct ChildItem {
 
 ## 高级特性
 
-除循环渲染、懒加载、组件复用等能力外，Repeat还提供了数据精准懒加载、拖拽排序、数据前插保持等高级特性，开发者可按需使用。
+除循环渲染、懒加载、组件复用等能力外，Repeat还提供了数据精准懒加载、拖拽排序、数据前插保持、主动清理缓存池等高级特性，开发者可按需使用。
 
 ### 数据精准懒加载
 
@@ -812,6 +812,84 @@ class ItemInfo {
 运行效果：
 
 ![Repeat-animation](figures/repeat-animation.gif)
+
+### 主动清理复用池
+
+Repeat在懒加载模式下具有复用池，从组件树中移除的子组件会被存入缓存池中备用，详见[节点更新/复用能力说明](#节点更新复用能力说明)。
+
+从API version 26.2.0开始，当开发者需要主动释放懒加载模式下复用池中的组件时，可以通过控制器[RepeatController](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatcontroller)实现。
+
+使用方式：创建RepeatController对象，并在创建Repeat组件时通过[RepeatOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#repeatoptions)的controller字段完成绑定；需要清理缓存时，调用控制器上的[clearCache](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#clearcache)方法。
+
+> **说明：**
+>
+> 1. controller仅在Repeat创建时绑定，不支持动态修改。
+> 2. 一个控制器只能控制一个Repeat组件。若将控制器绑定到另一个Repeat，则之前的绑定自动失效，控制器仅控制最后绑定的组件。
+
+**示例代码**
+
+以下示例中，点击Scroll按钮，列表跳转，可使旧节点进入缓存池。点击Clear按钮，可主动清理Repeat缓存池中的组件。
+
+<!-- @[repeat_clearcache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatClearCache.ets) -->
+
+``` TypeScript
+@ComponentV2
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@ComponentV2
+struct ClearCacheDemo {
+  @Local data: Array<number> = [];
+  // 创建RepeatController对象
+  private controller: RepeatController = new RepeatController();
+  private scroller: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.push(i);
+    }
+  }
+
+  build() {
+    Column() {
+      List({ scroller: this.scroller }) {
+        // 通过RepeatOptions的controller字段绑定控制器
+        Repeat<number>(this.data, { controller: this.controller })
+          .each((repeatItem: RepeatItem<number>) => {
+            ListItem() {
+              ChildComponent()
+            }
+          })
+          .virtualScroll()
+      }
+      .cachedCount(5)
+      .height('80%')
+
+      Button('Scroll')
+        .onClick(() => {
+          // 点击按钮触发列表跳转，旧组件进入缓存池
+          this.scroller.scrollToIndex(30);
+        })
+
+      Button('Clear')
+        .onClick(() => {
+          // 主动清理Repeat缓存池中的空闲节点
+          this.controller.clearCache();
+        })
+    }
+  }
+}
+```
 
 ## 常见使用场景
 

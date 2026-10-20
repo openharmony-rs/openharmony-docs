@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.metadataBinding (记忆链接)(系统接口)
+# @ohos.multimodalAwareness.metadataBinding (元数据绑定)(系统接口)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: Msdp-->
 <!--Owner: @codexu62-->
@@ -6,7 +6,7 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
-本模块提供记忆链接能力调用，用于向图片加入和解析元数据信息，实现信息传递。适用于需要在图片中存储和传递元数据的场景，可用于防伪、版权保护等场景，为开发者提供灵活的信息嵌入和解析机制。
+本模块提供元数据绑定能力调用，用于向图片加入和解析元数据信息，实现信息传递。适用于需要在图片中存储和传递元数据的场景，可用于防伪、版权保护等场景，为开发者提供灵活的信息嵌入和解析机制。
 
 > **说明：**
 >
@@ -44,11 +44,11 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelM
 
 **错误码**：
 
-以下错误码的详细介绍请参见[记忆链接错误码](errorcode-metadataBinding.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[元数据绑定错误码](errorcode-metadataBinding.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-|   202    | Permission check failed. A non-system application uses the system API. |
+|   202    | Permission verification failed. A non-system application calls a system API. |
 | 32100001 | Internal handling failed. |
 | 32100002 | Encode process fail. Possible causes: 1. Image processing error; 2. Channel coding error. |
 
@@ -93,11 +93,11 @@ decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 
 **错误码**：  
 
-以下错误码的详细介绍请参见[记忆链接错误码](errorcode-metadataBinding.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[元数据绑定错误码](errorcode-metadataBinding.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-|   202    | Permission check failed. A non-system application uses the system API. |
+|   202    | Permission verification failed. A non-system application calls a system API. |
 | 32100001 | Internal handling failed. |
 | 32100003 | Decode process fail. Possible causes: 1. Image is not an encoded Image; 2. Image destroyed, decoding failed. |
 
@@ -141,11 +141,11 @@ notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[记忆链接错误码](errorcode-metadataBinding.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[元数据绑定错误码](errorcode-metadataBinding.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-|   202    | Permission check failed. A non-system application uses the system API. |
+|   202    | Permission verification failed. A non-system application calls a system API. |
 | 32100001 | Internal handling failed. |
 
 **示例**：

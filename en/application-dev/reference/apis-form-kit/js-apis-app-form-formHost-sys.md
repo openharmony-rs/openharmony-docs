@@ -2958,7 +2958,7 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}   
+}
 ```
 
 ## formHost.on('changeSceneAnimationState')<sup>20+</sup>

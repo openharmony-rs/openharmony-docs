@@ -446,7 +446,7 @@ struct EmptyCustomKeyboard {
 
 **解决措施**
 
-软键盘的[enterKeyType](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enterkeytype11)可以设置输入法回车键类型。除EnterKeyType.NEW_LINE外，enterKeyType设置其他的枚举值时，按下软键盘输入法回车键都会触发[onSubmit](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#onsubmit14)事件。可以在TextArea的onSubmit回调中，通过调用[keepEditableState](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#keepeditablestate11)接口保持输入框编辑态，使得点击回车键后不收起键盘。
+软键盘的[enterKeyType](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enterkeytype11)可以设置输入法回车键类型。除EnterKeyType.NEW_LINE外，enterKeyType设置其他的枚举值时，按下软键盘输入法回车键都会触发[onSubmit](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#onsubmit14)事件。可以在TextArea的onSubmit()回调中，通过调用[keepEditableState](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#keepeditablestate11)接口保持输入框编辑态，使得点击回车键后不收起键盘。
 
 示例如下，软键盘的回车键显示为发送样式。按下发送之后，键盘不会收起。
 
