@@ -68,7 +68,7 @@
   // ···
   
   let wantInfo: Want = {
-    // 如果只想在特定应用包内进行隐式查询，请取消下面这行的注释。
+    // 若仅需在特定包内进行隐式查询，请取消下行注释。
     // bundleName: 'com.example.myapplication',
     action: 'ohos.want.action.search',
     // entities可以省略。
