@@ -80,7 +80,7 @@ setExposureDuration(exposureDuration: number): void
 
 | 参数名      | 类型                           | 必填  | 说明                           |
 | -------- | -------------------------------| ---- | ----------------------------- |
-| exposureDuration   | number  | 是   | 曝光时长值。单位：微秒。通过[getSupportedExposureDurationRange](arkts-apis-camera-ManualExposureQuery.md#getsupportedexposuredurationrange24)接口获取支持的曝光时长范围。                 |
+| exposureDuration   | number  | 是   | 曝光时长值。单位：微秒（μs）。通过[getSupportedExposureDurationRange](arkts-apis-camera-ManualExposureQuery.md#getsupportedexposuredurationrange24)接口获取支持的曝光时长范围。                 |
 
 **错误码：**
 

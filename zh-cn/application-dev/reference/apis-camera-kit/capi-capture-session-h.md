@@ -868,7 +868,7 @@ Camera_ErrorCode OH_CaptureSession_GetFlashMode(Camera_CaptureSession* session, 
 
 获取当前闪光灯模式。
 
-在获取前需使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)检查会话是否支持闪光灯。
+在获取当前闪光灯模式前，需使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)接口检查设备是否有闪光灯。
 
 **起始版本：** 11
 
@@ -895,7 +895,7 @@ Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, 
 
 设置闪光灯模式。
 
-在设置前需使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)和[OH_CaptureSession_IsFlashModeSupported](#oh_capturesession_isflashmodesupported)检查会话是否支持闪光灯以及设置的闪光灯模式是否支持。
+在设置闪光灯模式前需使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)接口检查设备是否有闪光灯，[OH_CaptureSession_IsFlashModeSupported](#oh_capturesession_isflashmodesupported)接口检查设置的闪光灯模式是否支持。
 
 **起始版本：** 11
 
@@ -1170,7 +1170,7 @@ Camera_ErrorCode OH_CaptureSession_SetExposureMeteringMode(const Camera_CaptureS
 
 设置曝光测光模式。
 
-进行设置之前，需要先检查设备是否支持指定的曝光测光模式，可使用方法[OH_CaptureSession_IsExposureMeteringModeSupported](#oh_capturesession_isexposuremeteringmodesupported)。
+进行设置之前，需要先使用方法[OH_CaptureSession_IsExposureMeteringModeSupported](#oh_capturesession_isexposuremeteringmodesupported)检查设备是否支持指定的曝光测光模式。
 
 **起始版本：** 24
 

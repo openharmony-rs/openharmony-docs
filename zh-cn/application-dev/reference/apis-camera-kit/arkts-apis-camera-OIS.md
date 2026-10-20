@@ -27,7 +27,7 @@ setOISMode(mode: OISMode): void
 
 设置OIS模式。
 
-设置OIS模式前，先通过[isOISModeSupported](arkts-apis-camera-OISQuery.md#isoismodesupported24)查询设置的模式是否支持。
+设置OIS模式前，先通过[isOISModeSupported](arkts-apis-camera-OISQuery.md#isoismodesupported24)查询设置的模式是否支持OIS能力。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -71,7 +71,7 @@ function setOISMode(photoSession: camera.PhotoSession, mode: camera.OISMode): vo
 
 setOISModeCustom(pitch: number, yaw: number): void
 
-设置各轴向的自定义OIS偏置值，仅在[OISMode](arkts-apis-camera-e.md#oismode24)为CUSTOM模式时支持调用。通过[getCurrentOISMode](arkts-apis-camera-OISQuery.md#getcurrentoismode24)获取当前OISMode。
+设置各轴向的自定义OIS偏置值，仅在[OISMode](arkts-apis-camera-e.md#oismode24)为CUSTOM模式时支持调用。通过[getCurrentOISMode](arkts-apis-camera-OISQuery.md#getcurrentoismode24)获取当前OIS模式。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -72,7 +72,7 @@ getFlashMode(): FlashMode
 
 获取当前设备的闪光灯模式。
 
-在获取之前，需要先检查设备是否支持闪光灯，可使用方法[hasFlash](arkts-apis-camera-FlashQuery.md#hasflash11)。
+在获取之前，需要先使用方法[hasFlash](arkts-apis-camera-FlashQuery.md#hasflash11)检查设备是否支持闪光灯。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 

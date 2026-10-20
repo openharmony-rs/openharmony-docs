@@ -50,7 +50,7 @@ getSupportedEffectTypes(): Array\<ControlCenterEffectType\>
 
 查询相机控制器支持的效果类型。
 
-使用前需先通过[isControlCenterSupported](#iscontrolcentersupported20)查询当前会话是否是否支持相机控制器。
+使用此接口前需先通过[isControlCenterSupported](#iscontrolcentersupported20)查询当前会话是否是否支持相机控制器。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
