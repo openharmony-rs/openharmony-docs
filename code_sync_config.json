@@ -55788,7 +55788,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_proxy.cpp",
 				"functions":[
 					{
-						"end_line":79,
+						"end_line":78,
 						"name":"CalculatorProxy",
 						"start_line":16
 					}
