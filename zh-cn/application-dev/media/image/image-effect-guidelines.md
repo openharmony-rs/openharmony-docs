@@ -265,13 +265,10 @@ target_link_libraries(entry PUBLIC
 7. 销毁效果器实例。
 
    <!-- @[image_effect_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
-   ```c++
-   // 释放imageEffect实例资源。
-   errorCode = OH_ImageEffect_Release(imageEffect);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_Release fail!");
-       return;
-   }
+   
+   ``` C++
+   ImageEffect_ErrorCode errorCode = OH_ImageEffect_Release(imageEffect);
+   CHECK_AND_RETURN_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, "OH_ImageEffect_Release fail!");
    ```
 
 ### 自定义滤镜
