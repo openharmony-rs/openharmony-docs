@@ -51,6 +51,4 @@
 - 错误码<!--localization-arkts-errcode-->
   - [I18n错误码](errorcode-i18n.md)
   - [资源管理错误码](errorcode-resource-manager.md)
-  <!--Del-->
   - [字体管理错误码](errorcode-font-manager.md)
-  <!--DelEnd-->
