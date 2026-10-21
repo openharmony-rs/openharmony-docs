@@ -673,6 +673,8 @@ createSession\<T extends Session\>(mode: SceneMode): T
 
 创建指定SceneMode的Session实例，同步返回结果。
 
+可以通过[getSupportedSceneModes](#getsupportedscenemodes11)接口获取要设置的模式。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
@@ -681,7 +683,7 @@ createSession\<T extends Session\>(mode: SceneMode): T
 
 | 参数名   | 类型              | 必填 | 说明       |
 | -------- | -----------------| ---- | --------- |
-| mode     | [SceneMode](arkts-apis-camera-e.md#scenemode11)     | 是   | 相机支持的模式。可以通过[getSupportedSceneModes](#getsupportedscenemodes11)接口获取。<br>如果传入的参数异常（如超出范围、传入null或未定义等），实际接口不会生效。 |
+| mode     | [SceneMode](arkts-apis-camera-e.md#scenemode11)     | 是   | 相机支持的模式。如果传入的参数异常（如超出范围、传入null或未定义等），实际接口不会生效。 |
 
 **返回值：**
 
