@@ -1784,9 +1784,9 @@ With this permission, an application can implement the recording and playback fu
 
 ## ohos.permission.HOOK_INPUT_EVENT
 
-Allows an application to hook input events.
+Allows  an application to intercept input events.
 
-With this permission, an application can implement the interception and processing of input events.
+This permission can be applied when an AI agent needs to intercept user input.
 
 <!--RP117--><!--RP117End-->
 
