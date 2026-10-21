@@ -135,7 +135,7 @@ type Vector4 = Vector4
 
 ### 示例1（动态改变角点形变）
 
-该示例演示如何使用[DistortionComponent](#distortioncomponent)组件，通过改变四个角点的坐标，产生由角点拉伸带来的空间扭曲效果。点击按钮后，使用animateTo播放角点形变动画。
+该示例演示如何使用[DistortionComponent](#distortioncomponent)组件，通过改变四个角点的坐标，产生由角点拉伸带来的空间扭曲效果。点击按钮后，使用animateTo播放形变动画。
 
 从API版本26.0.0开始，新增系统组件DistortionComponent。
 
@@ -143,7 +143,6 @@ type Vector4 = Vector4
 @Entry
 @Component
 struct DistortionCornerExample {
-  @State isDeformed: boolean = false;
   @State distortionParam: DistortionParam = {
     topLeft: { x: 0, y: 0 },
     topRight: { x: 1, y: 0 },
@@ -176,24 +175,12 @@ struct DistortionCornerExample {
       Button('切换角点形变')
         .onClick(() => {
           this.getUIContext()?.animateTo({ duration: 800, curve: Curve.EaseInOut }, () => {
-            this.isDeformed = !this.isDeformed;
-            // 角点形变与前景文字动画同步播放
-            if (this.isDeformed) {
-              this.distortionParam = {
-                topLeft: { x: 0.2, y: 0.2 },
-                topRight: { x: 0.9, y: 0.1 },
-                bottomLeft: { x: 0.1, y: 0.9 },
-                bottomRight: { x: 0.8, y: 1.1 },
-                barrelDistortion: { x: -0.5, y: -0.5, z: -0.5, w: -0.5 }
-              }
-            } else {
-              this.distortionParam = {
-                topLeft: { x: 0, y: 0 },
-                topRight: { x: 1, y: 0 },
-                bottomLeft: { x: 0, y: 1 },
-                bottomRight: { x: 1, y: 1 },
-                barrelDistortion: { x: 0.5, y: 0.5, z: 0.5, w: 0.5 }
-              }
+            this.distortionParam = {
+              topLeft: { x: 0.2, y: 0.2 },
+              topRight: { x: 0.9, y: 0.1 },
+              bottomLeft: { x: 0.1, y: 0.9 },
+              bottomRight: { x: 0.8, y: 1.1 },
+              barrelDistortion: { x: 0, y: 0, z: 0, w: 0 }
             }
           })
         })
