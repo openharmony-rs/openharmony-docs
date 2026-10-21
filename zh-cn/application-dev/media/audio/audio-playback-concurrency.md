@@ -148,6 +148,8 @@
 | 视频           | STREAM_USAGE_MOVIE | 闹铃         | STREAM_USAGE_ALARM    | 闹铃响起后，视频暂停播放。<br>闹钟结束后，视频继续播放。         | 视频应用注册焦点事件监听。接收到`INTERRUPT_HINT_PAUSE`事件时，直接暂停视频播放，并更新UI界面。<br>当闹铃结束后，视频应用接收到`INTERRUPT_HINT_RESUME`事件，重新启动播放。 |
 | 音乐         | STREAM_USAGE_MUSIC | 来电铃声     | STREAM_USAGE_RINGTONE | 开始响铃，音乐暂停播放。<br>不接通或者接通再挂断后，音乐恢复播放。 | 音乐应用注册焦点事件监听。接收到`INTERRUPT_HINT_PAUSE`事件时，直接暂停音乐播放，并更新UI界面。<br>当电话结束后，音频应用接收到`INTERRUPT_HINT_RESUME`事件，重新启动播放。 |
 | 音乐         | STREAM_USAGE_MUSIC | VoIP通话     | STREAM_USAGE_VOICE_COMMUNICATION | 通话接通时，音乐暂停播放。<br>通话挂断后，音乐恢复播放。 | 音乐应用注册焦点事件监听。<br>接收到`INTERRUPT_HINT_PAUSE`事件时，直接暂停音乐播放，并更新UI界面。<br>当通话结束后，音乐应用接收到`INTERRUPT_HINT_RESUME`事件，重新启动播放。 |
+| 音乐         | STREAM_USAGE_MUSIC | 麦克风录音     | SOURCE_TYPE_MIC       | 录音开始时，音乐暂停播放；录音结束后，音乐恢复播放。 | 音乐应用注册焦点事件监听。接收到`INTERRUPT_HINT_PAUSE`事件时，暂停音乐播放，并更新UI界面；录音结束后，接收到`INTERRUPT_HINT_RESUME`事件，重新启动播放。 |
+| 视频           | STREAM_USAGE_MOVIE | 视频         | STREAM_USAGE_MOVIE    | 后播视频正常播放，先播视频停止播放，且不会收到恢复事件。 | 先播视频应用注册焦点事件监听，接收到`INTERRUPT_HINT_STOP`事件时，停止视频播放，并更新UI界面。 |
 
 **处理音频焦点示例：**
 
@@ -233,6 +235,16 @@ async function onAudioInterrupt(): Promise<void> {
   });
 }
 ```
+
+### PC/2in1焦点策略差异
+
+PC/2in1形态下，因PC用户使用习惯与其他设备不同，部分典型场景的音频焦点策略与通用策略存在差异。
+
+| 先播放的音频类型 | 推荐流类型 | 后播放的音频类型 | 推荐流类型 | 策略差异说明 |
+| -------- | ---------- | ------------ | ---------- | ------------ |
+| 音乐 | STREAM_USAGE_MUSIC | 音乐 | STREAM_USAGE_MUSIC | **通用焦点策略**：先播音乐被停止，且不会收到恢复事件。<br>**PC/2in1焦点策略**：先播音乐不会被停止，后播音乐和先播音乐同时播放。 |
+| 音乐 | STREAM_USAGE_MUSIC | 麦克风录音 | SOURCE_TYPE_MIC | **通用焦点策略**：音乐被暂停，录音结束后音乐收到恢复事件。<br>**PC/2in1焦点策略**：音乐不会被自动暂停。 |
+| 视频 | STREAM_USAGE_MOVIE | 视频 | STREAM_USAGE_MOVIE | **通用焦点策略**：先播视频被停止，无法自动恢复。<br>**PC/2in1焦点策略**：先播视频不会被停止，后播视频和先播视频同时播放。 |
 
 ## 同应用内焦点管理
 
