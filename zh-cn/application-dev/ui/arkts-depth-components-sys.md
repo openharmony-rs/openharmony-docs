@@ -16,7 +16,7 @@
 
 | 能力层 | 组件中的体现 | 说明 |
 | -------- | -------- | -------- |
-| 背景资源 | [background](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#接口) | 作为景深场景底图的静态图片或3D模型，仅支持glTF和glb格式；图片资源引用方式请参考[加载图片资源](arkts-graphics-display.md#加载图片资源)。 |
+| 背景资源 | [background](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#接口) | 作为景深场景底图的静态图片或3D模型。静态图片支持常见图片格式（如jpg/png/webp等），通过PixelMap或ResourceStr加载；3D模型仅支持glTF和glb格式，且仅支持通过ResourceStr加载。图片资源引用方式请参考[加载图片资源](arkts-graphics-display.md#加载图片资源)。 |
 | 深度图 | [depthMap](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthmap) | 一张黑白的灰度图像，用每个像素的明暗描述背景中该位置距相机的远近——越白越近、越黑越远；背景为静态图片时需设置且需与背景图分辨率一致，背景为3D模型时由模型自带、无需设置。 |
 | 相机 | [camera](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#camera) | 配置观察景深场景的虚拟相机，决定从哪个位置与角度拍摄三维场景。 |
 | 光照 | [light](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#light) | 定义照射景深场景的光照，为场景补充明暗与色彩，增强立体真实感。 |
@@ -78,11 +78,11 @@ DepthComponent通过背景资源与深度图重建三维场景，并借助透视
 
 相机参数[camera](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#camera)用于配置观察景深场景的虚拟相机，主要包括以下参数：
 
-- **[position](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：相机自身的位置。决定“从哪个位置观察场景”，移动相机会改变看到的远近与角度。
+- **[position](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：相机自身的位置。决定“从哪个位置观察场景”，移动相机会改变看到的远近与角度。注意“position”在相机参数与空间效果中含义不同，详见[映射子组件空间](#映射子组件空间)末尾说明。
 
-- **[quaternion](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：相机的旋转（朝向），用四元数按(x, y, z, w)表示。决定“朝哪个方向看”。四元数是一种描述三维旋转的方式，相比直接用角度更平滑，可避免欧拉角旋转中的万向锁（两个旋转轴重合导致丢失一个旋转自由度）问题。
+- **[quaternion](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：相机的旋转（朝向），用四元数按(x, y, z, w)表示，决定“朝哪个方向看”。四元数(x, y, z, w)描述的是**一次完整旋转**：其中(x, y, z)给出旋转轴的方向，w与旋转角度相关（w=cos(θ/2)、(x, y, z)=轴·sin(θ/2)），四者共同确定相机如何转动。其中(0, 0, 0, 1)为单位四元数，表示无旋转，相机保持默认朝向、看向-Z方向。常用朝向可直接套用示例中的(0, 0, 0, 1)；需要特定视角时，绕Y轴旋转可左右调整朝向、绕X轴旋转可俯仰、绕Z轴旋转可滚转，再按上述轴角公式换算即可。
 
-- **[yFov](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：垂直视场角（弧度）。即相机的视野范围，类似镜头能拍到多宽的画面，值越大视野越广。
+- **[yFov](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：垂直视场角（弧度）。即相机的视野范围，类似镜头能拍到多宽的画面，值越大视野越广。组件只提供垂直视场角yFov，水平视场角由yFov与组件宽高比自动导出（yFov固定时，宽高比越大水平视野越广），无需也无法单独设置水平视场角。
 
 - **[zNear](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcameraparams)**：近裁剪面距离。离相机太近（小于该值）的物体会被裁掉、不显示，必须为正数。
 
@@ -96,15 +96,23 @@ DepthComponent通过背景资源与深度图重建三维场景，并借助透视
 
   - **[cropScale](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#camerabuffercrop)**：裁剪窗口缩放比例，裁剪窗口基础大小为组件布局尺寸。小于1表示裁剪窗口更小、对应放大局部；大于1表示裁剪窗口更大、对应缩小内容。
 
-未设置时，默认以组件布局尺寸为基准图、偏移 (0, 0)、缩放1.0，即渲染整图的默认映射；需要截取局部渲染时可参考[使用移轴裁剪渲染背景局部](#使用移轴裁剪渲染背景局部)示例。
+未设置时，默认以组件布局尺寸为基准图、偏移(0, 0)、缩放1.0，即渲染整图的默认映射；需要截取局部渲染时可参考[使用移轴裁剪渲染背景局部](#使用移轴裁剪渲染背景局部)示例。
 
-其中yFov、zNear、zFar是后续示例里反复出现的核心参数：yFov控制视野广度，zNear与zFar共同圈定一个“可视范围”，只有距相机的距离落在 [zNear, zFar] 之间的物体才会被渲染出来。
+其中yFov、zNear、zFar是后续示例里反复出现的核心参数：yFov控制视野广度，zNear与zFar共同圈定一个“可视范围”，只有距相机的距离落在[zNear, zFar]之间的物体才会被渲染出来。
+
+> **说明：**
+>
+> 以静态图片作为背景时，相机参数（position、quaternion、yFov、zNear、zFar）的更新不会引起背景的变化，仅影响子组件的空间渲染效果——从不同位置、角度与视野观察已建好的场景时，子组件的投影大小、屏幕位置与可见区域随之改变；以3D模型作为背景时，相机参数同时影响背景与子组件。详见[约束与限制](#约束与限制)第4条。
 
 各参数在成像中的关系可参考下图（侧视示意）：
 
 ![相机参数示意图](figures/DepthComponent-camera-params.png)
 
-其中position、quaternion、yFov、zNear、zFar决定相机在空间中“看到”的范围，如上图（侧视）所示；而cameraBufferCrop控制的是在已成像的画面里截取哪个区域，属于正视图（图像平面）上的概念，其裁剪窗口的平移与缩放关系见下图（正视）：
+其中position、quaternion、yFov、zNear、zFar决定相机在空间中“看到”的范围，如上图（侧视）所示；quaternion各分量（x、y、z、w）的含义可参考下图（以绕Y轴旋转为例）：
+
+![四元数参数示意图](figures/DepthComponent-quaternion-params.png)
+
+而cameraBufferCrop控制的是在已成像的画面里截取的区域，属于正视图（图像平面）上的概念，其裁剪窗口的平移与缩放关系见下图（正视）：
 
 ![相机移轴裁剪示意图](figures/DepthComponent-cameraBufferCrop-params.png)
 
@@ -112,7 +120,7 @@ DepthComponent通过背景资源与深度图重建三维场景，并借助透视
 
 ![三维变换管线](figures/DepthComponent-coord-transform.png)
 
-其中**透视除法**（除以w）是产生近大远小效果的关键步骤：裁剪空间中的坐标为四维向量 `(x, y, z, w)`，除以w后得到归一化设备坐标 `(x/w, y/w, z/w)`。w分量越大，表示物体距相机越远、投影尺寸越小；w分量越小，表示越近、投影尺寸越大。在透视投影中，w分量取观察空间Z坐标的相反值。
+其中**透视除法**（除以w）是产生近大远小效果的关键步骤：裁剪空间中的坐标为四维向量`(x, y, z, w)`，除以w后得到归一化设备坐标`(x/w, y/w, z/w)`。w分量越大，表示物体距相机越远、投影尺寸越小；w分量越小，表示越近、投影尺寸越大。在透视投影中，w分量取观察空间Z坐标的相反值。其中物体距相机的远近，由深度图的灰度值（2D背景）或模型自身的深度（3D模型）决定，并在投影后体现为上述w分量。
 
 **相机移动**：相机在世界空间中移动时，所有物体相对它的位置都会改变——沿Z轴（前后）移动会改变物体的投影大小（近大远小），沿X轴（左右）或Y轴（上下）移动则让物体在屏幕上向相反方向移动。
 
@@ -120,11 +128,11 @@ DepthComponent通过背景资源与深度图重建三维场景，并借助透视
 
 子组件通过spatialEffect设置自身在三维空间中的位置，参与景深组件的三维变换，与背景产生遮挡、倾斜等空间交互。子组件空间效果由SpatialEffectParams定义，主要包括以下参数：
 
-- **[position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)**：子组件在三维空间中的位置。支持两种写法——数值写法表示子组件的深度信息（决定其距相机的远近层次；示例中取负值表示子组件位于相机前方，绝对值越大距相机越远）；结构体类型用四个角（左上、右上、左下、右下）来定位组件，可表现倾斜摆放的效果。
+- **[position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)**：子组件在三维空间中的位置。支持两种写法——数值写法表示子组件的深度信息（决定其距相机的远近层次；如[仅设置深度实现文字遮挡效果](#仅设置深度实现文字遮挡效果)中取负值表示子组件位于相机前方，绝对值越大距相机越远）；结构体类型用四个角（左上、右上、左下、右下）来定位组件，可表现倾斜摆放的效果。此处“position”指子组件的摆放位置，与相机参数中的position含义不同，详见本节末尾说明。
 
 - **[occlusionWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)**：遮挡权重。控制子组件被背景遮挡的程度，取值范围[0, 1]，默认值0；0表示不被遮挡，1表示完全被遮挡。
 
-结构体类型用四个角定位组件时，可通过[positionMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialpositionmode)指定角点使用的坐标模式（默认 `SpatialPositionMode.WORLD_XYZ`）：
+结构体类型用四个角定位组件时，可通过[positionMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md#spatialpositionmode)指定角点使用的坐标模式（默认`SpatialPositionMode.WORLD_XYZ`）：
 
 <!--deprecated_code_no_check-->
 ``` TypeScript
@@ -157,7 +165,7 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
 ### 合成深度遮挡
 
-渲染子组件时，将其深度与背景对应位置的深度进行比较，并按遮挡权重 SpatialEffectParams（occlusionWeight，取值范围[0, 1]）决定被背景遮挡的程度，使子组件自然融入背景的空间层次。判定逻辑如下：
+渲染子组件时，将其深度与背景对应位置的深度进行比较，并按遮挡权重SpatialEffectParams（occlusionWeight，取值范围[0, 1]）决定被背景遮挡的程度，使子组件自然融入背景的空间层次。判定逻辑如下：
 
 ![深度遮挡判定逻辑](figures/DepthComponent-occlusion-flow.png)
 
@@ -167,13 +175,13 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
 ### 计算光照
 
-光照参数 light定义照射景深场景的光照，渲染时依据光照方向与场景几何计算各像素明暗、再与背景颜色合成，为场景补充明暗与色彩、增强立体真实感，主要包括以下参数：
+光照参数light定义照射景深场景的光照，渲染时依据光照方向与场景几何计算各像素明暗、再与背景颜色合成，为场景补充明暗与色彩、增强立体真实感。其中2D图片背景本身无几何面，渲染时依据深度图为每个像素推算表面法线（深度梯度方向即表面朝向），再按光照方向计算该像素明暗（即浮雕式着色，依据法线方向产生明暗对比以模拟立体浮雕效果）；3D模型则使用模型自身法线参与计算。主要包括以下参数：
 
-- **[direction](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照方向。决定光从哪个方向照过来，影响物体哪一面被照亮、哪一面背光。
+- **[direction](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照方向，表示光的传播方向（从光源指向被照物）。各场景示例中light均取{ x: 0, y: 0, z: -1 }，表示光朝-Z方向照射；被照亮的面是其法线朝+Z（迎着光源）的面，法线朝-Z（与光线传播方向同向、背向光源）的面背光。相机默认看向-Z，故+Z在相机一侧、-Z朝场景深处，坐标系见下方光照参数示意图中的坐标轴标注。
 
 - **[color](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照颜色。影响场景整体的色调。
 
-- **[intensity](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照强度。取值范围[0, +∞)，建议[0, 1]；设置为0时无光照。
+- **[intensity](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthlightparams)**：光照强度。取值范围[0, +∞)，建议取值范围[0, 1]；设置为0时无光照。超出1时光照过强，可能在受光面形成局部高亮的光斑，导致显示效果与预期不一致，不建议超出该范围。
 
 各参数的作用可参考下图：
 
@@ -191,11 +199,11 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
    原因是：静态图片是一张已经拍摄完成的固定平面画面，没有真实立体结构。例如，当观察者左右移动头部时，墙上的一幅照片依旧是那幅照片，相机怎么调整它都不变。而子组件是在三维空间中独立渲染的立体元素，相机动了相当于"换个角度观察它们"，其投影大小、屏幕位置与遮挡关系都会随之改变，从而呈现立体感。对比之下，3D模型背景本身也是真实立体结构，相机会同时影响背景与子组件；若希望背景也随相机移动产生空间变化，应改用3D模型背景。
 
-5. 相机的zNear和zFar必须为正数，且zNear应小于zFar。
+5. 相机的zNear和zFar必须为正数，且zNear应小于zFar。取0或负数时不满足“必须为正数”的要求，参数无效；当zNear大于或等于zFar时，可视范围为空，画面不渲染。
 
 6. 构造参数选项（[DepthComponentOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md#depthcomponentoptions)）中的render3DScale为3D渲染窗口的缩放比例，同时作用于宽度和高度，取值范围为(0.0, 1.0]，默认值1.0，超出该范围的值无效（继承之前的取值，未设置过时取默认值）。
 
-7. 光照强度intensity取值范围为[0, +∞)，建议取值范围为[0, 1]，设置为0时无光照。
+7. 光照强度intensity取值范围为[0, +∞)，建议取值范围为[0, 1]，设置为0时无光照；超出1时光照过强，可能在受光面形成局部高亮的光斑，导致显示效果与预期不一致，不建议超出该范围。
 
 此外，景深与空间效果本质是模拟立体视觉与相对运动，使用不当时可能引发视觉疲劳甚至眩晕。开发时建议遵循以下原则：
 
@@ -205,9 +213,53 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
 - 兼顾渲染性能：景深渲染依赖GPU（图形处理器）对背景每个像素进行深度重建与投影计算，属于GPU密集型操作。深度图分辨率应与背景图保持一致，避免不必要的过大分辨率增加显存与算力开销；在动态调整相机或空间位置时，注意控制更新频率，避免每帧高频变更带来的性能压力。
 
+### 常见问题
+
+设置后看不到景深组件显示效果，可按以下顺序排查。
+
+- 背景资源是否加载成功：检查是否触发`onComplete`回调（加载成功）或`onError`回调（加载失败）以确认背景资源加载状态；加载失败时背景为空，无法看到显示效果。
+- 深度图是否设置（2D图片背景）：2D背景必须设置深度图，且分辨率需与背景图完全一致，否则立体层次无法重建。
+- zNear/zFar是否合法：两者必须均为正数且zNear < zFar，否则可视范围为空、画面不渲染。
+- 相机朝向是否对准场景：确认position、quaternion使子组件距相机的距离落在[zNear, zFar]范围内且在视野中。
+- 子组件是否设置了空间效果：未设置spatialEffect的子组件仍贴在背景平面上，不产生前后遮挡与倾斜。
+- occlusionWeight是否过大：取1时近处背景会完全遮挡子组件相应部分，初次验证可先设较小值（如0.2）。
+- 子组件position是否落在可视范围内：四角坐标偏离视野或被深度更近的背景完全遮挡时，子组件可能不可见。
+
+### 参数调优建议
+
+开发者可先套用[场景示例](#场景示例)中的参数值，再按下表逐项调整、每次仅修改一个参数以感知变化。下表按相机、子组件、光照分组，涵盖指南涉及的主要可调参数。
+
+**相机参数**
+
+| 参数 | 增大 | 减小 | 建议 |
+| -------- | -------- | -------- | -------- |
+| yFov（垂直视场角） | 视野变广、背景拉伸加剧 | 视野变窄、压缩感增强 | 从1.0附近起步。 |
+| zNear（近裁剪面） | 近处物体更易被裁掉 | 近物更易保留 | 须为正数且 < zFar。 |
+| zFar（远裁剪面） | 远处物体更易保留 | 远处物体被裁掉 | 须为正数且 > zNear。 |
+| 相机position.z（前后） | 远离场景、投影变小 | 靠近场景、投影变大 | 近大远小。 |
+| 相机quaternion（朝向） | 绕Y轴：左右调整朝向；绕X轴：俯仰；绕Z轴：滚转 | 同左，反向 | 常用朝向套用示例值(0, 0, 0, 1)。 |
+| cameraBufferCrop.cropOffset（裁剪偏移） | 取景窗口向+x（右）/ +y（下）平移 | 向-x（左）/ -y（上）平移 | 按需离轴平移取景。 |
+| cameraBufferCrop.cropScale（裁剪缩放） | >1：窗口更大、缩小内容 | <1：窗口更小、放大局部 | 从1.0起步，按需放大局部。 |
+| cameraBufferCrop.bufferWidth/Height（基准分辨率） | 不涉及 | 不涉及 | 必须与背景图实际分辨率一致，否则位置偏移。 |
+
+**子组件参数**
+
+| 参数 | 增大 | 减小 | 建议 |
+| -------- | -------- | -------- | -------- |
+| 子组件position四角的Z值差异 | 倾斜更明显 | 四角Z趋于一致、倾斜减弱 | 四角Z取相同值时不倾斜。 |
+| 子组件position数值写法（深度） | 绝对值越大、距相机越远 | 绝对值越小、距相机越近 | 取负值，落在[zNear, zFar]内。 |
+| occlusionWeight（遮挡权重） | 被背景遮挡更多 | 被背景遮挡更少 | 0~1渐变调节，初次验证可取0.2。 |
+
+**光照参数**
+
+| 参数 | 增大 | 减小 | 建议 |
+| -------- | -------- | -------- | -------- |
+| light direction（光照方向） | 改变受光面/背光面分布 | 不涉及 | 朝向需照亮的区域；示例{0, 0, -1}表示光照方向朝向-Z。 |
+| light intensity（光照强度） | 更亮 | 更暗（0为无光照） | 建议不超过1，超出易形成光斑。 |
+
 ## 场景示例
 
-接入景深组件主要涉及五项配置：背景资源（构造参数 `background`）、深度图depthMap、相机参数camera、光照参数light，以及为子组件设置的空间效果 spatialEffect。
+接入景深组件主要涉及五项配置：背景资源（构造参数`background`）、深度图depthMap、相机参数camera、光照参数light，以及为子组件设置的空间效果spatialEffect。
 
 背景资源支持静态图片（2D）与3D模型两种形式，两者在色域、深度图、相机等方面的配置存在差异：
 
@@ -225,7 +277,7 @@ positionMode决定四角坐标使用的坐标系（详见[SpatialPositionMode](.
 
 **准备资源**
 
-静态图片背景需要准备两张资源：背景图（普通静态图片）与深度图（灰度图）。两者分辨率必须保持一致，深度图的灰度值表示背景各像素的远近（白色近、黑色远，详见[重建场景](#重建场景)中的深度图说明）。将资源放入应用的媒体资源目录后，通过 `$r('app.media.xxx')` 引用。
+静态图片背景需要准备两张资源：背景图（普通静态图片）与深度图（灰度图）。两者分辨率必须保持一致，深度图的灰度值表示背景各像素的远近（白色近、黑色远，详见[重建场景](#重建场景)中的深度图说明）。将资源放入应用的媒体资源目录后，通过`$r('app.media.xxx')`引用。
 
 **配置景深组件**
 
@@ -245,7 +297,7 @@ DepthComponent(背景资源) {
 
 **设置深度图**
 
-构造参数 `background` 传入静态图片资源后，需通过depthMap设置深度图；第二个参数为加载回调，可用于感知加载结果。
+构造参数`background`传入静态图片资源后，需通过depthMap设置深度图；第二个参数为加载回调，可用于感知加载结果。
 
 <!--deprecated_code_no_check-->
 ``` TypeScript
@@ -297,7 +349,7 @@ light为场景提供方向光的方向（direction）、颜色（color）与强�
 
 **为子组件设置空间效果**
 
-在DepthComponent构造闭包内声明的子组件，默认仍在背景平面上；为其设置spatialEffect后，才会进入三维空间，与背景产生前后遮挡关系。`position` 用四个角点（leftTop/rightTop/leftBottom/rightBottom）定义子组件在三维空间中的位置与倾斜形态；`occlusionWeight` 控制被背景遮挡的程度（0表示不遮挡，1表示完全遮挡）。
+在DepthComponent构造闭包内声明的子组件，默认仍在背景平面上；为其设置spatialEffect后，才会进入三维空间，与背景产生前后遮挡关系。`position`用四个角点（leftTop/rightTop/leftBottom/rightBottom）定义子组件在三维空间中的位置与倾斜形态；`occlusionWeight`控制被背景遮挡的程度（0表示不遮挡，1表示完全遮挡）。
 
 <!--deprecated_code_no_check-->
 ``` TypeScript
@@ -319,7 +371,7 @@ Text('Depth Component')
 
 **完整代码**
 
-将以上各步组合（并为组件补充 `onComplete`/`onError` 事件回调以感知背景加载结果，其中onComplete在背景资源加载成功时触发，onError在加载失败时触发），即可得到完整示例：
+将以上各步组合（并为组件补充`onComplete`/`onError`事件回调以感知背景加载结果，其中onComplete在背景资源加载成功时触发，onError在加载失败时触发），即可得到完整示例：
 
 <!-- @[depth_component_2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_2D.ets) -->
 ``` TypeScript
@@ -411,7 +463,7 @@ DepthComponent(3D模型, { colorSpace }) {     // 背景为模型，可指定色
 
 **设置色域**
 
-本例模型为Display P3色域，需先导入 @kit.ArkGraphics2D模块，再通过colorSpace为渲染表面指定对应色域；模型为sRGB时无需设置、可跳过本步。
+本例模型为Display P3色域，需先导入`@kit.ArkGraphics2D`模块，再通过colorSpace为渲染表面指定对应色域；模型为sRGB时无需设置、可跳过本步。
 
 <!--deprecated_code_no_check-->
 ``` TypeScript
@@ -586,7 +638,7 @@ struct DepthComponentDepthExample {
 
 ### 使用NDC坐标实现可控的文字倾斜
 
-前面实现文字倾斜与遮挡效果的示例中，四角position的X、Y、Z均为世界坐标（默认 `WORLD_XYZ` 模式），会随相机视角一起经过透视投影；本例改用 `NDC_XY_WORLD_Z` 模式——X、Y分量使用归一化设备坐标（NDC，取值范围[-1, 1]，直接映射到屏幕、不经过透视除法），Z分量为世界坐标、控制深度（坐标模式的详细说明见[映射子组件空间](#映射子组件空间)）。
+前面[实现文字倾斜与遮挡效果（2D图片背景）](#实现文字倾斜与遮挡效果2d图片背景)示例中，四角position的X、Y、Z均为世界坐标（默认`WORLD_XYZ`模式），会随相机视角一起经过透视投影；本例改用`NDC_XY_WORLD_Z`模式——X、Y分量使用归一化设备坐标（NDC，取值范围[-1, 1]，直接映射到屏幕、不经过透视除法），Z分量为世界坐标、控制深度（坐标模式的详细说明见[映射子组件空间](#映射子组件空间)）。
 
 本例将四角XY直接设置为上窄下宽的梯形（顶边x取±0.2、底边x取±0.5），Z统一为-2.0，文字便在屏幕上呈现“上小下大”的倾斜形态：
 
@@ -668,7 +720,7 @@ struct DepthComponentNdcExample {
 
 ### 使用移轴裁剪渲染背景局部
 
-前面的示例都让相机渲染整张背景图（默认以组件布局尺寸为基准图、偏移 (0, 0)、缩放1.0）。本示例通过相机的可选参数cameraBufferCrop（移轴裁剪，又称离轴渲染），在不移动、不转动相机的前提下，从背景图中截取一个局部并放大渲染——常用于在高分辨率壁纸中只取某一区域作为景深背景。
+前面的示例都让相机渲染整张背景图（默认以组件布局尺寸为基准图、偏移(0, 0)、缩放1.0）。本示例通过相机的可选参数cameraBufferCrop（移轴裁剪，又称离轴渲染），在不移动、不转动相机的前提下，从背景图中截取一个局部并放大渲染——常用于在高分辨率壁纸中只取某一区域作为景深背景。
 
 cameraBufferCrop在camera中的位置及其四个子参数如下：
 
@@ -687,7 +739,7 @@ cameraBufferCrop在camera中的位置及其四个子参数如下：
 
 **设置移轴裁剪参数**
 
-各子参数（bufferWidth/bufferHeight、cropOffset、cropScale）的含义见[投影变换](#投影变换)中的cameraBufferCrop说明。本例以背景图真实分辨率1262×2560为基准，把裁剪窗口左上角平移到 (100, 100)、缩放为组件尺寸的0.65倍，截取左上角局部并放大；窗口内的图像与深度关系会被一起渲染到组件。
+各子参数（bufferWidth/bufferHeight、cropOffset、cropScale）的含义见[投影变换](#投影变换)中的cameraBufferCrop说明。本例以背景图真实分辨率1262×2560为基准，把裁剪窗口左上角平移到(100, 100)、缩放为组件尺寸的0.65倍，截取左上角局部并放大；窗口内的图像与深度关系会被一起渲染到组件。
 
 <!--deprecated_code_no_check-->
 ``` TypeScript
@@ -760,6 +812,6 @@ struct DepthComponentCropExample {
 
 **预期效果**
 
-打开应用页面，DepthComponent以背景图左上角 (100, 100) 为起点截取一个约为组件尺寸0.65倍的局部，放大渲染为景深背景，文字“Spatial Effect”悬浮其上。
+打开应用页面，DepthComponent以背景图左上角(100, 100)为起点截取一个约为组件尺寸0.65倍的局部，放大渲染为景深背景，文字“Spatial Effect”悬浮其上。
 
    ![移轴裁剪截取局部渲染效果](../reference/apis-arkui/arkui-ts/figures/DepthComponent-cameraCrop.png)

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API扩展接口在当前线程中创建、切换和销毁上下文环境，支持模块化加载和上下文隔离，适用于需要独立globalThis对象的场景。"
+keywords: [Node-API, 上下文环境, napi_create_ark_context, napi_switch_ark_context, globalThis, 上下文隔离, 模块加载]
+doctype: guide
+status: active
+---
+
 # 使用扩展的Node-API接口在当前线程中创建、切换和销毁上下文环境
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -229,7 +237,7 @@
 |napi_delete_strong_sendable_reference | napi_invalid_arg |
 |napi_get_strong_sendable_reference_value | napi_invalid_arg |
 
-### 示例代码
+## 示例代码
 - 模块注册
     ```c++
     // napi_init.cpp
@@ -355,7 +363,7 @@
 - 接口声明
     ```ts
     // index.d.ts
-    export const callFunctionInContext: (func: (func:()=>number)=>{}) => number;
+    export const callFunctionInContext: (func: (func:()=>number)=>number) => number;
     ```
 
 - 编译配置

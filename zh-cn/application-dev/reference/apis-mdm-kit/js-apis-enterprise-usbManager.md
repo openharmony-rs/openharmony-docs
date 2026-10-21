@@ -923,6 +923,7 @@ getUsbSerialNumber(busNum: number, devAddress: number): string
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
 | 9201055  | Failed to obtain the USB serial number. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 

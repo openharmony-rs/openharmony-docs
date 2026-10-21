@@ -204,6 +204,7 @@ attributeModifier(modifier: AttributeModifier\<TabContentAttribute> | AttributeM
 | -------- | -------- | --- | ----- | -------- |
 | icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的图片内容。未设置时不显示图片。如果icon采用svg格式图源，需删除svg图源内置的宽高属性。否则，icon大小将使用svg图源内置的宽高属性值。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23|
 | text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的文字内容。未设置时不显示文字。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| badge | [TabBarBadgeStyle](#tabbarbadgestyle) | 否 | 是 | 页签的信息标记样式。未设置时不显示信息标记。<br/>**起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ## SubTabBarStyle<sup>9+</sup>
 
@@ -1114,6 +1115,32 @@ iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 | ------- | ------------------------------------------------------------ |
 | [BottomTabBarStyle](#bottomtabbarstyle9) | 返回BottomTabBarStyle对象本身。 |
 
+### badge
+
+badge(badgeStyle: TabBarBadgeStyle): BottomTabBarStyle
+
+设置底部页签的信息标记样式。未设置时不显示信息标记。
+
+**起始版本：** 26.0.1
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| badgeStyle | [TabBarBadgeStyle](#tabbarbadgestyle) | 是 | 底部页签的信息标记样式。 |
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| [BottomTabBarStyle](#bottomtabbarstyle9) | 返回BottomTabBarStyle对象本身，用于链式调用。 |
+
 ## TabBarSymbol<sup>12+</sup>对象说明
 
 页签内symbol图标样式对象。
@@ -1247,6 +1274,44 @@ set selected(selected: SymbolGlyphModifier | undefined)
 | -------------------- | ------------------------------------------ | ------------------ | ---- | ------------------------------------------------------------ |
 | unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置图标未选中时的颜色。<br/>默认值：#33182431 <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
 | selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置图标选中时的颜色。<br/>默认值：#FF007DFF <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
+
+## TabBarBadgeStyle
+
+页签信息标记样式对象。
+
+**起始版本：** 26.0.1
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | --- | ----- | -------- |
+| value | [TabBarBadgeType](#tabbarbadgetype) | 否 | 是 | 信息标记内容。未设置或设置为undefined时，信息标记显示为直径为6vp的无内容圆点，相比正常显示内容的圆点偏小。类型为number时，当该值小于等于0且小于maxCount时不显示信息标记。 |
+| maxCount | number | 否 | 是 | 信息标记内容显示的最大数量。该属性只在value为number类型时生效，未设置时不限制最大数量，按实际value显示。当信息标记内容超过该数量时，仅显示maxCount+，如maxCount为99时，显示`99+`。<br>默认值：99<br>非整数时会舍去小数部分取整数部分，如5.5取5。 |
+
+## TabBarBadgeType
+
+ArkTS-Dyn: type TabBarBadgeType = number | ResourceStr
+
+ArkTS-Sta: type TabBarBadgeType = int | ResourceStr
+
+信息标记显示内容的联合类型。
+
+**起始版本：** 26.0.1
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: number <br/>ArkTS-Sta: int | 数字类型，用于显示数字内容的信息标记。 |
+| [ResourceStr](ts-types.md#resourcestr) | 文本类型，用于显示文本内容的信息标记。 |
 
 ## 事件
 
@@ -2839,3 +2904,59 @@ struct TabsIndicatorExample {
 ```
 
 ![tabContent12](figures/tabContent12.png)
+
+### 示例12（设置页签的信息标记内容）
+
+该示例通过[TabBarOptions](#tabbaroptions18对象说明)的badge属性和[BottomTabBarStyle](#bottomtabbarstyle9)的[badge](#badge)属性，设置页签的信息标记内容。
+
+从API版本26.0.1开始，[TabBarOptions](#tabbaroptions18对象说明)和[BottomTabBarStyle](#bottomtabbarstyle9)都新增了badge属性。
+
+```ts
+// xxx.ets
+import { SymbolGlyphModifier } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State symbolModifier1: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_wifi'));
+  @State symbolModifier2: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ellipsis_bubble'));
+
+  build() {
+    Column({ space: 5 }) {
+      Column() {
+        Tabs({ barPosition: BarPosition.End }) {
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Pink)
+          }.tabBar(new BottomTabBarStyle({
+            normal: this.symbolModifier1,
+          }, 'Pink').badge({ value: 1 })) // 设置信息标记的内容为普通数字类型
+
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Orange)
+          }.tabBar(new BottomTabBarStyle({
+            normal: this.symbolModifier2,
+          }, 'Orange').badge({ value: 100, maxCount: 99 })) // 设置信息标记的内容和最大显示数量
+        }
+        .vertical(false)
+        .width('100%').height(200)
+
+        Tabs({ barPosition: BarPosition.End }) {
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Pink)
+          // 设置信息标记的文本内容为文本
+          }.tabBar({ icon: $r('app.media.startIcon'), text: '111', badge: { value: 'Info' } })
+
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Orange)
+          // 未设置信息标记内容，显示为无内容圆点
+          }.tabBar({ icon: $r('app.media.startIcon'), text: '111', badge: {} })
+        }
+        .vertical(false)
+        .width('100%').height(200)
+      }.width('100%')
+    }
+  }
+}
+```
+
+![tabContentBadge](figures/tabBarBadge.png)

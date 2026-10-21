@@ -91,6 +91,9 @@ bm dump -n com.example.myapplication | grep appIdentifier
 
 ![alt text](figures/get_appIdentifier.png)
 
+> **说明：**
+>
+> 若因签名文件较旧等原因导致appIdentifier为空，可使用[appId](#什么是appid)作为应用的唯一标识。
 
 ## 什么是appId
 

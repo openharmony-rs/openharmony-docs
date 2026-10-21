@@ -1,7 +1,7 @@
 # ArkUI_NativeGestureAPI_1
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,9 @@ typedef struct {...} ArkUI_NativeGestureAPI_1
 
 ## 概述
 
-手势模块接口集合。
+提供创建敲击、长按、滑动、捏合、旋转、快滑手势及手势组的接口，并支持绑定手势、移除手势、设置手势打断回调和并行内部手势回调，用于配置和管理组件的触控交互识别与事件处理。
+
+使用该模块配置手势时，推荐按以下流程操作：调用[createTapGesture](#createtapgesture)等接口创建手势识别器，调用[setGestureEventTarget](#setgestureeventtarget)注册手势事件回调，再调用[addGestureToNode](#addgesturetonode)将手势识别器绑定至组件节点；不再使用该手势时，调用[dispose](#dispose)释放手势资源，如需先解除节点绑定，可在调用dispose()前调用[removeGestureFromNode](#removegesturefromnode)。对于手势竞争场景，可通过手势优先级、屏蔽模式或[setGestureInterrupterToNode](#setgestureinterruptertonode)配置响应策略；对于组件内部手势与外部自定义手势需要并行识别的场景，可调用[setInnerGestureParallelTo](#setinnergestureparallelto)设置并行内部手势事件回调。
 
 **起始版本：** 12
 
@@ -33,23 +35,23 @@ typedef struct {...} ArkUI_NativeGestureAPI_1
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_GestureRecognizer* (\*createTapGesture)(int32_t countNum, int32_t fingersNum)](#createtapgesture) | 创建敲击手势。1. 支持单击、双击和多次点击事件的识别。<br>        2. 当配置多击时，上一次的最后一根手指抬起和下一次的第一根手指按下的超时时间为300毫秒。<br>        3. 当上次点击的位置与当前点击的位置距离超过60vp等效像素点时，手势识别失败。<br>        4. 当配置多指时，第一根手指按下后300毫秒内未有足够的手指数按下，手势识别失败，<br>           第一根手指抬起后300毫秒内未有足够的手指抬起，手势识别失败。<br>        5. 实际点击手指数超过配置值，手势识别成功。<br> |
-| [ArkUI_GestureRecognizer* (\*createLongPressGesture)(int32_t fingersNum, bool repeatResult, int32_t durationNum)](#createlongpressgesture) | 创建长按手势。1. 用于触发长按手势事件，触发长按手势的最少手指数为1，最短长按时间为500毫秒。<br>        2. 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。<br>           长按手势与拖拽会出现冲突，事件优先级如下：<br>           长按触发时间 < 500ms，长按事件优先拖拽事件响应。<br>           长按触发时间 >= 500ms，拖拽事件优先长按事件响应。<br>        3. 手指按下后若发生超过15px的移动，则判定当前长按手势识别失败。<br> |
-| [ArkUI_GestureRecognizer* (\*createPanGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double distanceNum)](#createpangesture) | 创建滑动手势。1. 当滑动的最小距离超过设定的最小值时触发滑动手势事件。<br>        2. Tabs组件滑动与该滑动手势事件同时存在时，可将distanceNum值设为1，使拖动更灵敏，避免造成事件错乱。<br> |
-| [ArkUI_GestureRecognizer* (\*createPinchGesture)(int32_t fingersNum, double distanceNum)](#createpinchgesture) | 创建捏合手势。1. 触发捏合手势的最少手指为2指，最大为5指，最小识别距离为distanceNum 像素点。<br>        2. 触发手势手指可以多于fingersNum数目，但只有先落下的与fingersNum相同数目的手指参与手势计算。<br> |
-| [ArkUI_GestureRecognizer* (\*createRotationGesture)(int32_t fingersNum, double angleNum)](#createrotationgesture) | 创建旋转手势。1. 触发旋转手势的最少手指为2指，最大为5指，最小改变度数为1度。<br>        2. 触发手势手指可以多于fingersNum数目，但只有先落下的与fingersNum相同数目的手指参与手势计算。<br> |
-| [ArkUI_GestureRecognizer* (\*createSwipeGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double speedNum)](#createswipegesture) | 创建快滑手势。1. 用于触发快滑事件，滑动速度大于speedNum px/s时可识别成功。<br> |
-| [ArkUI_GestureRecognizer* (\*createGroupGesture)(ArkUI_GroupGestureMode gestureMode)](#creategroupgesture) | 创建手势组。 |
+| [ArkUI_GestureRecognizer* (\*createTapGesture)(int32_t countNum, int32_t fingersNum)](#createtapgesture) | 创建敲击手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。 1. 支持单击、双击和多次点击事件的识别。 2. 当配置多击时，上一次的最后一根手指抬起和下一次的第一根手指按下的超时时间为300毫秒。 3. 当上次点击的位置与当前点击的位置距离超过60vp时，手势识别失败。 4. 当配置多指时，第一根手指按下后300毫秒内未有足够的手指数按下，手势识别失败，第一根手指抬起后300毫秒内未有足够的手指抬起，手势识别失败。 5. 实际点击手指数超过配置值，手势识别成功。 |
+| [ArkUI_GestureRecognizer* (\*createLongPressGesture)(int32_t fingersNum, bool repeatResult, int32_t durationNum)](#createlongpressgesture) | 创建长按手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。 1. 用于触发长按手势事件，触发长按手势的最少手指数为1，最短长按时间为500毫秒。 2. 当组件默认支持可拖拽时，如Text、TextInput、TextArea、Hyperlink、Image和RichEditor等组件。 长按手势与拖拽会出现冲突，事件优先级如下： 长按触发时间 < 500ms，长按事件优先拖拽事件响应。 长按触发时间 >= 500ms，拖拽事件优先长按事件响应。 3. 手指按下后若发生超过15px的移动，则判定当前长按手势识别失败。 |
+| [ArkUI_GestureRecognizer* (\*createPanGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double distanceNum)](#createpangesture) | 创建滑动手势。与[createSwipeGesture](#createswipegesture)（快滑手势）不同，滑动手势基于最小拖动距离触发，快滑手势基于最小滑动速度触发。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。 1. 当滑动的最小距离超过设定的最小值时触发滑动手势事件。 2. Tabs组件滑动与该滑动手势事件同时存在时，可将distanceNum值设为1，使拖动更灵敏，避免Tabs组件滑动事件与该滑动手势事件响应冲突。 |
+| [ArkUI_GestureRecognizer* (\*createPinchGesture)(int32_t fingersNum, double distanceNum)](#createpinchgesture) | 创建捏合手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。 1. 触发捏合手势的最少手指为2指，最大为5指，最小识别距离为distanceNum。 2. 触发手势手指可以多于fingersNum数目，但只有先落下的与fingersNum相同数目的手指参与手势计算。 |
+| [ArkUI_GestureRecognizer* (\*createRotationGesture)(int32_t fingersNum, double angleNum)](#createrotationgesture) | 创建旋转手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。 1. 触发旋转手势的最少手指为2指，最大为5指，触发旋转手势的最小改变度数由angleNum指定。 2. 触发手势手指可以多于fingersNum数目，但只有先落下的两指参与手势计算。 |
+| [ArkUI_GestureRecognizer* (\*createSwipeGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double speedNum)](#createswipegesture) | 创建快滑手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。 1. 用于触发快滑事件，滑动速度大于speedNum px/s时可识别成功。 |
+| [ArkUI_GestureRecognizer* (\*createGroupGesture)(ArkUI_GroupGestureMode gestureMode)](#creategroupgesture) | 创建手势组。创建成功后，可调用addChildGesture()向该手势组添加子手势，再通过addGestureToNode()将手势组绑定到节点；不再使用时，可按需调用removeChildGesture()移除子手势，并调用dispose()释放资源，释放后不得继续使用该手势组。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。 |
 | [void (\*dispose)(ArkUI_GestureRecognizer* recognizer)](#dispose) | 销毁手势，释放资源。 |
 | [int32_t (\*addChildGesture)(ArkUI_GestureRecognizer* group, ArkUI_GestureRecognizer* child)](#addchildgesture) | 手势组增加子手势。 |
 | [int32_t (\*removeChildGesture)(ArkUI_GestureRecognizer* group, ArkUI_GestureRecognizer* child)](#removechildgesture) | 删除子手势。 |
 | [int32_t (\*setGestureEventTarget)(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureEventActionTypeMask actionTypeMask, void* extraParams,void (\*targetReceiver)(ArkUI_GestureEvent* event, void* extraParams))](#setgestureeventtarget) | 创建手势关联回调方法。 |
 | [int32_t (\*addGestureToNode)(ArkUI_NodeHandle node, ArkUI_GestureRecognizer* recognizer, ArkUI_GesturePriority mode, ArkUI_GestureMask mask)](#addgesturetonode) | 将手势添加到UI组件。 |
 | [int32_t (\*removeGestureFromNode)(ArkUI_NodeHandle node, ArkUI_GestureRecognizer* recognizer)](#removegesturefromnode) | 在节点中移除手势。 |
-| [int32_t (\*setGestureInterrupterToNode)(ArkUI_NodeHandle node, ArkUI_GestureInterruptResult (\*interrupter)(ArkUI_GestureInterruptInfo* info))](#setgestureinterruptertonode) | 设置节点手势打断回调。 |
-| [ArkUI_GestureRecognizerType (\*getGestureType)(ArkUI_GestureRecognizer* recognizer)](#getgesturetype) | 获取手势类别。 |
-| [int32_t (\*setInnerGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureRecognizer* (\*parallelInnerGesture)(ArkUI_ParallelInnerGestureEvent* event))](#setinnergestureparallelto) | 设置并行内部手势事件回调。 |
-| [ArkUI_GestureRecognizer* (\*createTapGestureWithDistanceThreshold)(int32_t countNum, int32_t fingersNum, double distanceThreshold)](#createtapgesturewithdistancethreshold) | 创建带移动范围限制的敲击手势。1. 支持单击、双击和多次点击事件的识别。<br>        2. 当配置多击时，上一次的最后一根手指抬起和下一次的第一根手指按下的超时时间为300毫秒。<br>        3. 当上次点击的位置与当前点击的位置距离超过60vp等效像素点时，手势识别失败。<br>        4. 当配置多指时，第一根手指按下后300毫秒内未有足够的手指数按下，手势识别失败，<br>           第一根手指抬起后300毫秒内未有足够的手指抬起，手势识别失败。<br>        5. 实际点击手指数超过配置值，手势识别成功。<br>        6. 当手指移动距离超出所设置的距离值时，手势识别失败。<br> |
+| [int32_t (\*setGestureInterrupterToNode)(ArkUI_NodeHandle node, ArkUI_GestureInterruptResult (\*interrupter)(ArkUI_GestureInterruptInfo* info))](#setgestureinterruptertonode) | 设置节点手势打断回调，用于需要根据业务条件决定手势是否继续识别的场景，例如处理父子节点手势冲突或动态控制手势响应时使用。该回调作用于通过addGestureToNode()添加到节点的手势及组件内置手势，在手势识别过程中触发，开发者可通过回调结果决定手势继续识别或被打断。 |
+| [ArkUI_GestureRecognizerType (\*getGestureType)(ArkUI_GestureRecognizer* recognizer)](#getgesturetype) | 获取手势识别器的手势类型，可用于判断当前手势属于敲击、长按、滑动、捏合、旋转、快滑等具体类别。 |
+| [int32_t (\*setInnerGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureRecognizer* (\*parallelInnerGesture)(ArkUI_ParallelInnerGestureEvent* event))](#setinnergestureparallelto) | 设置并行内部手势事件回调，用于需要让组件内部手势与外部自定义手势并行识别的场景。需要先通过createPanGesture()等接口创建自定义手势识别器，再通过addGestureToNode()将手势绑定到节点，然后调用setInnerGestureParallelTo()设置并行内部手势事件回调。回调函数parallelInnerGesture返回的手势识别器应为通过create系列方法创建的自定义手势识别器，用于与组件内部手势并行识别。<br>**说明：** 仅当节点绑定的手势中有滑动手势（createPanGesture）时才会触发该回调，若节点未绑定滑动手势，则该回调不会被触发。 |
+| [ArkUI_GestureRecognizer* (\*createTapGestureWithDistanceThreshold)(int32_t countNum, int32_t fingersNum, double distanceThreshold)](#createtapgesturewithdistancethreshold) | 创建带移动范围限制的敲击手势。创建成功后返回的手势识别器可通过addGestureToNode()添加到节点；不再使用时，调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。 1. 支持单击、双击和多次点击事件的识别。 2. 当配置多击时，上一次的最后一根手指抬起和下一次的第一根手指按下的超时时间为300毫秒。 3. 当上次点击的位置与当前点击的位置距离超过60vp时，手势识别失败。 4. 当配置多指时，第一根手指按下后300毫秒内未有足够的手指数按下，手势识别失败，第一根手指抬起后300毫秒内未有足够的手指抬起，手势识别失败。 5. 实际点击手指数超过配置值，手势识别成功。 6. 当手指移动距离超出所设置的距离值时，手势识别失败。 |
 
 ## 成员函数说明
 
@@ -72,7 +74,7 @@ ArkUI_GestureRecognizer* (*createTapGesture)(int32_t countNum, int32_t fingersNu
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t countNum | 识别的连续点击次数。当设置的值小于1或不设置时，会被转化为默认值 1。 |
+| int32_t countNum | 识别的连续点击次数，取值范围为大于0的整数。当设置的值小于1时，会被转化为默认值1。 |
 |  int32_t fingersNum | 触发点击的手指数，最小为1指， 最大为10指。当设置小于1的值或不设置时，会被转化为默认值 1。 |
 
 **返回：**
@@ -91,7 +93,7 @@ ArkUI_GestureRecognizer* (*createLongPressGesture)(int32_t fingersNum, bool repe
 
 创建长按手势。
 1. 用于触发长按手势事件，触发长按手势的最少手指数为1，长按时间由durationNum指定；当durationNum小于等于0时，按照默认值500毫秒处理。
-2. 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。
+2. 当组件默认支持可拖拽时，如Text、TextInput、TextArea、Hyperlink、Image和RichEditor等组件。
    
    长按手势与拖拽会出现冲突，事件优先级如下：
    
@@ -106,7 +108,7 @@ ArkUI_GestureRecognizer* (*createLongPressGesture)(int32_t fingersNum, bool repe
 | -- | -- |
 | int32_t fingersNum | 触发长按的最少手指数，最小为1指，最大取值为10指。超出取值范围时按照默认值1处理。|
 |  bool repeatResult | 是否连续触发事件回调。<br>true：连续触发；false：不连续触发。 |
-|  int32_t durationNum | 触发长按的最短时间，单位为毫秒（ms）。设置小于等于0时，按照默认值500处理。 |
+|  int32_t durationNum | 触发长按的最短时间，单位为毫秒（ms），有效值大于0。当传入的值小于等于0时，按照默认值500ms处理。当组件默认支持可拖拽时，长按触发时间小于500ms时长按事件优先拖拽事件响应；长按触发时间大于等于500ms时，拖拽事件优先长按事件响应。 |
 
 **返回：**
 
@@ -182,7 +184,7 @@ ArkUI_GestureRecognizer* (*createRotationGesture)(int32_t fingersNum, double ang
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t fingersNum | 触发旋转的最少手指数，最小为2指，最大为5指。超出取值范围时按照默认值2处理。 |
-|  double angleNum | 触发旋转手势的最小改变度数，单位为deg。默认值：1。当改变度数的值小于等于0或大于360时，会被转化为默认值 1。 |
+|  double angleNum | 触发旋转手势的最小改变度数，取值范围(0, 360]，单位为deg。默认值：1deg。当传入的值小于等于0或大于360时，会被转化为默认值1。 |
 
 **返回：**
 
@@ -224,7 +226,7 @@ ArkUI_GestureRecognizer* (*createGroupGesture)(ArkUI_GroupGestureMode gestureMod
 **描述：**
 
 
-创建手势组。
+创建手势组。创建成功后，可调用addChildGesture()向该手势组添加子手势，再通过addGestureToNode()将手势组绑定到节点；不再使用时可按需调用removeChildGesture()移除子手势，并调用dispose()释放资源，释放后不得继续使用该手势识别器。如需先解除节点绑定，可在dispose()前调用removeGestureFromNode()。
 
 **参数：**
 
@@ -388,14 +390,14 @@ int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, ArkUI_GestureInter
 **描述：**
 
 
-设置节点手势打断回调。
+设置节点手势打断回调，用于需要根据业务条件决定手势是否继续识别的场景，例如处理父子节点手势冲突或动态控制手势响应时使用。该打断回调作用于通过addGestureToNode()添加到节点的手势及组件内置手势，在手势识别过程中会触发打断回调，开发者可根据业务条件决定手势是否继续识别。
 
 **参数：**
 
 | 参数项                                                              | 描述 |
 |------------------------------------------------------------------| -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 需要被设置手势打断回调的ArkUI节点指针。 |
-| [ArkUI_GestureInterruptResult](./capi-native-gesture-h.md#arkui_gestureinterruptresult) (\*interrupter)([ArkUI_GestureInterruptInfo](./capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* info)     | 打断回调，info返回手势打断数据。interrupter返回GESTURE_INTERRUPT_RESULT_CONTINUE，手势正常进行；返回GESTURE_INTERRUPT_RESULT_REJECT，手势打断。设置此参数为nullptr时将取消注册回调函数。<br>**说明：** 该事件中断回调注册后，后续在单次手势处理流程中都会存在。即使在单次事件处理流程中使用setGestureInterrupterToNode接口将手势打断回调重置为nullptr，或者使用[dispose](#dispose)接口使即将被触发的手势销毁，该回调在满足触发条件后仍会响应。如果在该回调中使用到的对象，在回调触发前已被释放，需要对该对象进行保护。 |
+| [ArkUI_GestureInterruptResult](capi-native-gesture-h.md#arkui_gestureinterruptresult) (\*interrupter)([ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* info)     | 打断回调，info返回手势打断数据。interrupter返回GESTURE_INTERRUPT_RESULT_CONTINUE，手势正常进行；返回GESTURE_INTERRUPT_RESULT_REJECT，手势打断。设置此参数为nullptr时将取消注册回调函数。<br>**说明：** 该事件中断回调注册后，后续在单次手势处理流程中都会存在。即使在单次事件处理流程中使用setGestureInterrupterToNode接口将手势打断回调重置为nullptr，或者使用[dispose](#dispose)接口使即将被触发的手势销毁，该回调在满足触发条件后仍会响应。如果在该回调中使用到的对象，在回调触发前已被释放，需要确保该对象在回调触发时仍然有效，例如在使用前检查对象是否已被释放，或延长对象生命周期至回调触发之后。 |
 
 **返回：**
 
@@ -424,7 +426,7 @@ ArkUI_GestureRecognizerType (*getGestureType)(ArkUI_GestureRecognizer* recognize
 
 | 类型                                                                                  | 说明 |
 |-------------------------------------------------------------------------------------| -- |
-| [ArkUI_GestureRecognizerType](capi-native-gesture-h.md#arkui_gesturerecognizertype) | 手势类型。 |
+| [ArkUI_GestureRecognizerType](capi-native-gesture-h.md#arkui_gesturerecognizertype) | 返回手势识别器的手势类型。 |
 
 ### setInnerGestureParallelTo()
 
@@ -435,14 +437,18 @@ int32_t (*setInnerGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkU
 **描述：**
 
 
-设置并行内部手势事件回调。
+设置并行内部手势事件回调，用于需要让组件内部手势与外部自定义手势并行识别的场景。需要先通过createPanGesture()等接口创建自定义手势识别器，再通过addGestureToNode()将手势绑定到节点，然后调用setInnerGestureParallelTo()设置并行内部手势事件回调。回调函数parallelInnerGesture返回的手势识别器应为通过create系列方法创建的自定义手势识别器，用于与组件内部手势并行识别。
+
+> **说明：**
+>
+> 仅当节点绑定的手势中有滑动手势（createPanGesture）时才会触发该回调，若节点未绑定滑动手势，则该回调不会被触发。
 
 **参数：**
 
 | 参数项                                                              | 描述 |
 |------------------------------------------------------------------| -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 需要被设置并行内部手势事件回调的ArkUI节点指针。 |
-| void* userData                                                         | 用户自定义数据。 |
+| void* userData | 用户自定义数据，设置后会作为并行内部手势事件回调的上下文数据透传，供开发者在处理回调时使用。当不需要传递额外上下文时可传入nullptr。 |
 | parallelInnerGesture                                             | 并行内部手势事件，event 返回并行内部手势事件数据。parallelInnerGesture 返回 需要并行的手势识别器指针。 |
 
 **返回：**
@@ -471,7 +477,7 @@ ArkUI_GestureRecognizer* (*createTapGestureWithDistanceThreshold)(int32_t countN
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t countNum | 识别的连续点击次数。当设置的值小于1或不设置时，会被转化为默认值 1。 |
+| int32_t countNum | 识别的连续点击次数，取值范围为大于0的整数。当设置的值小于1时，会被转化为默认值1。 |
 |  int32_t fingersNum | 触发点击的手指数，最小为1指， 最大为10指。当设置小于1的值或不设置时，会被转化为默认值 1。 |
 |  double distanceThreshold | 手指允许的移动距离范围。当设置的值小于0或者不设置时，会被转化为默认值无穷大。 |
 

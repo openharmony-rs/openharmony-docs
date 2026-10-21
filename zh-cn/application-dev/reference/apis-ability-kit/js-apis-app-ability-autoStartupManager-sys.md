@@ -51,8 +51,8 @@ on(type: 'systemAutoStartup', callback: AutoStartupCallback): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000050 | Failed to connect to the system service. |
 
@@ -109,8 +109,8 @@ off(type: 'systemAutoStartup', callback?: AutoStartupCallback): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000050 | Failed to connect to the system service. |
 
@@ -165,8 +165,8 @@ setApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback\<void\>
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
@@ -230,8 +230,8 @@ setApplicationAutoStartup(info: AutoStartupInfo): Promise\<void\>
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
@@ -288,8 +288,8 @@ cancelApplicationAutoStartup(info: AutoStartupInfo, callback: AsyncCallback\<voi
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
@@ -353,8 +353,8 @@ cancelApplicationAutoStartup(info: AutoStartupInfo): Promise\<void\>
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
@@ -410,8 +410,8 @@ queryAllAutoStartupApplications(callback: AsyncCallback\<Array\<AutoStartupInfo\
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000050 | Failed to connect to the system service. |
 
@@ -464,8 +464,8 @@ try {
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
-| 202      | Permission denied, non-system app called system api. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 16000050 | Failed to connect to the system service. |
 

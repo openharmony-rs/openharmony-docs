@@ -1,9 +1,9 @@
 # @ohos.arkui.uiExtension (uiExtension)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
-<!--Designer: @stupidb-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @JUGaaab-->
+<!--Designer: @CheryHome-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 用于[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)（或[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability)）中获取宿主应用的窗口信息或对应的[EmbeddedComponent](./arkui-ts/ts-container-embedded-component.md)<!--Del-->（或[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)）<!--DelEnd-->组件的信息。
@@ -693,6 +693,11 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptions): Promise&lt;window.Window&gt;
 
 创建该WindowProxy实例下的子窗口，使用Promise异步回调。
+<!--Del -->
+当组件（EmbeddedComponent或UIExtensionComponent）的宿主为系统窗口时，创建的子窗称为系统子窗，该系统子窗仅支持[getWindowAvoidArea](arkts-apis-window-Window.md#getwindowavoidarea9)、[on('avoidAreaChange)](arkts-apis-window-Window.md#onavoidareachange9)、[off('avoidAreaChange)](arkts-apis-window-Window.md#offavoidareachange9)、[on('windowSizeChange)](arkts-apis-window-Window.md#onwindowsizechange7)、[off('windowSizeChange)](arkts-apis-window-Window.md#offwindowsizechange7)、[on('windowRectChange)](arkts-apis-window-Window.md#onwindowrectchange12)、[off('windowRectChange)](arkts-apis-window-Window.md#offwindowrectchange12)接口。
+- 在OpenHarmony 7.1之前，宿主窗口为系统窗口时，该接口在Phone设备可正常调用，在其他设备中返回1300002错误码。
+- 从OpenHarmony 7.1开始，宿主窗口为系统窗口时，该接口在Phone、Tablet、PC/2in1和TV设备可正常调用，在其他设备中返回1300002错误码。
+<!--DelEnd -->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -727,7 +732,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | ------- | ------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and cannot be created again; 4. It is not allowed to create non-secure window when secure extension exists; 5. Subwindow level exceeds the maximum limit. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **示例：**
@@ -831,6 +836,11 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
 
 创建该WindowProxy实例下的子窗口，可通过设置followCreatorLifecycle，决定子窗口是否跟随组件（EmbeddedComponent或UIExtensionComponent）的生命周期，使用Promise异步回调。
+<!--Del -->
+当组件（EmbeddedComponent或UIExtensionComponent）的宿主为系统窗口时，创建的子窗称为系统子窗，该系统子窗仅支持[getWindowAvoidArea](arkts-apis-window-Window.md#getwindowavoidarea9)、[on('avoidAreaChange)](arkts-apis-window-Window.md#onavoidareachange9)、[off('avoidAreaChange)](arkts-apis-window-Window.md#offavoidareachange9)、[on('windowSizeChange)](arkts-apis-window-Window.md#onwindowsizechange7)、[off('windowSizeChange)](arkts-apis-window-Window.md#offwindowsizechange7)、[on('windowRectChange)](arkts-apis-window-Window.md#onwindowrectchange12)、[off('windowRectChange)](arkts-apis-window-Window.md#offwindowrectchange12)接口。
+- 在OpenHarmony 7.1之前，宿主窗口为系统窗口时，该接口在Phone设备可正常调用，在其他设备中返回1300002错误码。
+- 从OpenHarmony 7.1开始，宿主窗口为系统窗口时，该接口在Phone、Tablet、PC/2in1和TV设备可正常调用，在其他设备中返回1300002错误码。
+<!--DelEnd -->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -863,7 +873,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and cannot be created again; 4. It is not allowed to create non-secure window when secure extension exists; 5. Subwindow level exceeds the maximum limit. |
 | 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **示例：**

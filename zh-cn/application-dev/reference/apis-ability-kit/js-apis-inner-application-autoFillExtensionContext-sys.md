@@ -65,7 +65,7 @@ reloadInModal(customData: CustomData): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not System App. Interface caller is not a system app.        |
+| 202      | Permission verification failed. A non-system application calls a system API.        |
 | 401      | If the input parameter is not valid parameter.               |
 | 16000011 | The context does not exist.                                  |
 | 16000050 | Internal error.                                              |

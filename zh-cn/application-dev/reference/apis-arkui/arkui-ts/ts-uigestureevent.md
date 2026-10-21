@@ -1,12 +1,12 @@
 # 设置组件绑定的手势
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于设置组件绑定的手势。可以通过UIGestureEvent对象调用其接口添加或删除手势。
+用于设置组件绑定的手势。可以通过UIGestureEvent对象动态添加、删除或清除组件上的手势，支持配置手势优先级、事件响应设置以及与子组件手势同时触发的并行手势，适用于运行时管理组件手势交互的场景。
 
 >**说明：**
 >
@@ -87,13 +87,13 @@ removeGestureByTag(tag: string): void
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| tag  |  string | 是   | 手势处理器标志。 |
+| tag  |  string | 是   | 要移除的手势处理器标志，用于匹配并移除当前组件上通过 modifier 绑定且设置了该标志的手势。 |
 
 ### clearGestures
 
 clearGestures(): void
 
-清除该组件上通过modifier绑定的所有手势。
+清除该组件上通过modifier绑定的所有手势，适用于组件交互模式切换或需要禁用全部动态手势的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

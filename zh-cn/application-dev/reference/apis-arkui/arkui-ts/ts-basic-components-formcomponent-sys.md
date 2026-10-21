@@ -14,6 +14,8 @@
 >
 > - 该组件为卡片组件的使用方，对应提供方的使用参考文档[文件组织](../js-service-widget-ui/js-service-widget-file.md)。
 >
+> - 从API版本26.2.0开始：支持同一应用的不同进程使用相同卡片标识（id）挂载卡片，多个使用方共享同一卡片实例。
+>
 > - 该组件使用需要具有系统签名。
 >
 > - 本模块为系统接口。
@@ -32,7 +34,13 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 ## 接口
 
-## FormComponent (value: FormInfo)
+## FormComponent
+
+加载卡片内容和布局。
+
+### (value: FormInfo)
+
+FormComponent(value: FormInfo)
 
 创建卡片组件，用于显示提供的卡片。
 
@@ -46,7 +54,7 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **参数：**
 
-| 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
+| 参数名    | 类型                        | 必填 | 参数描述                                                                |
 | --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
 | value        | [FormInfo](#forminfo12)                 | 是   | 卡片信息。   |
 
@@ -62,9 +70,9 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名    | 参数类型                        | 只读 | 可选 | 说明                                                                |
+| 参数名    | 类型                        | 只读 | 可选 | 说明                                                                |
 | --------- | ------------------------------- | ---- |---- |-------|
-| id        | ArkTS-Dyn: number \| string <br> ArkTS-Sta: long \| string | 否   | 否   | 卡片标识（新建卡片填0）。<br/>**说明：**<br>不同使用方不可使用相同id。<br/>同一使用方使用相同id时，显示后添加的卡片。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| id        | ArkTS-Dyn: number \| string <br> ArkTS-Sta: long \| string | 否   | 否   | 卡片标识（新建卡片填0）。<br/>**说明：**<br>不同使用方不可使用相同id。从API版本26.2.0开始：同一应用的不同进程可以使用相同id，多个使用方共享同一卡片实例。<br/>同一使用方使用相同id时，显示后添加的卡片。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 | name      | string                          |  否   | 否   | 卡片名称。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23                                                              |
 | bundle    | string                          |  否   | 否   | 目标卡片包名。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23                                                           |
 | ability   | string                          |  否   | 否   | 目标卡片Ability名称。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23                                                  |
@@ -84,7 +92,7 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名    | 参数类型                        | 只读 | 可选 | 说明              |
+| 参数名    | 类型                        | 只读 | 可选 | 说明              |
 | --------- | ------------------------------- | ---- | ---- | ----------------- |
 | id        | ArkTS-Dyn: number <br> ArkTS-Sta: long|   否   |  否   | 卡片标识（ArkTS-Dyn: number类型，ArkTS-Sta: long类型）。<br/>**说明：**<br>如果获取到的id为-1，说明id大于等于2^53，需要使用idString获取。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 | idString      | string            |   否   |  否   | 卡片标识。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23                             |
@@ -102,7 +110,7 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **ArkTS-Dyn起始版本：** 18
 
-| 参数名    | 参数类型                        | 只读 | 可选 | 说明    |
+| 参数名    | 类型                        | 只读 | 可选 | 说明    |
 | --------- | ------------------------------- | ---- | ---- |---------|
 | width        | number                 | 否   | 否   | 卡片宽的尺寸，单位：vp。<br/>**说明：**<br>width的取值范围大于0，小于2^53。如果不在范围内的数值卡片不显示。 |
 | height      | number            | 否   | 否   | 卡片高的尺寸，单位：vp。<br/>**说明：**<br>height的取值范围大于0，小于2^53。如果不在范围内的数值卡片不显示。 |
@@ -119,7 +127,7 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **ArkTS-Sta起始版本：** 23
 
-| 参数名    | 参数类型                        | 只读 | 可选 | 说明                     |
+| 参数名    | 类型                        | 只读 | 可选 | 说明                     |
 | --------- | ------------------------------- | ---- | ---- | ------------------------------ |
 | errcode        | ArkTS-Dyn: number <br> ArkTS-Sta: int| 否  | 否   | [错误码](../../apis-form-kit/errorcode-form.md)。                                        |
 | msg      | string            | 否       | 否   | 错误信息。                             |
@@ -134,7 +142,7 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **ArkTS-Sta起始版本：** 23
 
-| 参数名    | 参数类型                        | 只读 | 可选 | 参数描述                                                                |
+| 参数名    | 类型                        | 只读 | 可选 | 参数描述                                                                |
 | --------- | ------------------------------- | ---- | ---- | ----------------------------------------------------------------------- |
 | action      | string            | 否 | 否           | 事件类型。                             |
 | bundleName      | string            | 否 | 否          | 卡片所属包的Bundle名称。                             |
@@ -362,11 +370,15 @@ onAcquired(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbs
 | ------ | ----------------------------------- | ---- | ---------- |
 | callback | Callback<[FormCallbackInfo](#formcallbackinfo12)> | 是   | 回调函数，获得FormCallbackInfo对象。 |
 
-### onError<sup>18+</sup>
+### onError
 
 onError(callback: Callback\<ErrorInformation\>)
 
-卡片加载错误触发的回调。
+卡片加载错误触发的回调。 
+
+> **说明：** 
+> 
+> 从API版本18开始，参数类型从`(info: { errcode: number; msg: string }) => void`变更为`Callback\<ErrorInformation\>`。
 
 **系统接口：** 此接口为系统接口。
 
@@ -382,13 +394,17 @@ onError(callback: Callback\<ErrorInformation\>)
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
 | callback   | Callback<[ErrorInformation](#errorinformation18)> | 是   | errcode:&nbsp;错误码。<br/>msg:&nbsp;错误信息。 |
 
-### onRouter<sup>18+</sup>
+### onRouter
 
 ArkTS-Dyn: onRouter(callback: Callback\<object\>)
 
 ArkTS-Sta: onRouter(callback: Callback\<RouterCallbackInfo> \| undefined)
 
 卡片点击回调。
+
+> **说明：** 
+> 
+> 从API版本18开始，参数类型从`(info: any) => void`变更为`Callback\<object\>`。
 
 **系统接口：** 此接口为系统接口。
 
@@ -466,9 +482,9 @@ onUpdate(callback:&nbsp;Callback<[FormCallbackInfo](#formcallbackinfo12)>)&nbsp;
 
 ## 示例
 
-卡片示例。
+### 示例1（创建卡片并注册事件回调）
 
-该示例创建一张2 * 2尺寸大小的卡片，并注册事件回调。
+该示例创建一张2 * 2尺寸大小的卡片，并注册事件回调，在onAcquired回调中获取卡片标识。
 
 ArkTS-Dyn示例：
 
@@ -477,20 +493,20 @@ ArkTS-Dyn示例：
 @Entry
 @Component
 struct CardExample {
-  @State formId:string = '0';
+  @State formId: string = '0';
   build() {
     Column() {
       Text('this is a card')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
       FormComponent({
-        id:this.formId,
-        name:"Form1",
-        bundle:"com.example.cardexample",
-        ability:"FormAbility",
-        module:"entry",
-        dimension:FormDimension.Dimension_2_2,
-        temporary:false
+        id: this.formId,
+        name: "Form1",
+        bundle: "com.example.cardexample",
+        ability: "FormAbility",
+        module: "entry",
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false
       })
         .allowUpdate(true)
         .size({width:360,height:360})
@@ -536,20 +552,20 @@ import { FormComponent, FormCallbackInfo, FormDimension } from '@ohos.arkui.comp
 @Entry
 @Component
 struct CardExample {
-  @State formId:string = '0';
+  @State formId: string = '0';
   build() {
     Column() {
       Text('this is a card')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
       FormComponent({
-        id:this.formId,
-        name:"Form1",
-        bundle:"com.example.cardexample",
-        ability:"FormAbility",
-        module:"entry",
-        dimension:FormDimension.Dimension_2_2,
-        temporary:false
+        id: this.formId,
+        name: "Form1",
+        bundle: "com.example.cardexample",
+        ability: "FormAbility",
+        module: "entry",
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false
       })
         .allowUpdate(true)
         .size({width:360,height:360})
@@ -577,6 +593,95 @@ struct CardExample {
         })
         .onUpdate((form: FormCallbackInfo)=>{
           console.info(`form update done : ${form.id}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![Form](figures/form.png)
+
+### 示例2（同一应用的不同进程使用相同卡片标识挂载卡片）
+
+从API版本26.2.0开始：同一应用的不同进程可以使用相同卡片标识（id）挂载卡片，多个使用方共享同一卡片实例。该示例中，formId为同一应用其他进程已获取的卡片标识。
+
+ArkTS-Dyn示例：
+
+```ts
+// card.ets
+@Entry
+@Component
+struct CardExample2 {
+  // 已存在的卡片标识（示例值），实际开发中由同一应用的其他进程获取后传递
+  @State formId: string = '1747282432568508160';
+  build() {
+    Column() {
+      FormComponent({
+        id: this.formId,
+        name: "Form1",
+        bundle: "com.example.cardexample",
+        ability: "FormAbility",
+        module: "entry",
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false
+      })
+        .allowUpdate(true)
+        .size({width:360,height:360})
+        .onAcquired((form: FormCallbackInfo)=>{
+          console.info(`form info : ${form?.id}`);
+          if (form.id == -1) {
+            this.formId = form.idString;
+          } else {
+            this.formId = form.id.toString();
+          }
+        })
+        .onError((error)=>{
+          console.error(`fail to add form, error code: ${error?.errcode}, error message: ${error?.msg}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// card.ets
+'use static'
+import { Entry, Component, State, Column } from '@kit.ArkUI'
+import { FormComponent, FormCallbackInfo, FormDimension } from '@ohos.arkui.component'
+@Entry
+@Component
+struct CardExample2 {
+  // 已存在的卡片标识（示例值），实际开发中由同一应用的其他进程获取后传递
+  @State formId: string = '1747282432568508160';
+  build() {
+    Column() {
+      FormComponent({
+        id: this.formId,
+        name: "Form1",
+        bundle: "com.example.cardexample",
+        ability: "FormAbility",
+        module: "entry",
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false
+      })
+        .allowUpdate(true)
+        .size({width:360,height:360})
+        .onAcquired((form: FormCallbackInfo)=>{
+          console.info(`form info : ${form.id}`);
+          if (form.id == -1) {
+            this.formId = form.idString;
+          } else {
+            this.formId = form.id.toString();
+          }
+        })
+        .onError((error)=>{
+          console.error(`fail to add form, error code: ${error?.errcode}, error message: ${error?.msg}`);
         })
     }
     .width('100%')

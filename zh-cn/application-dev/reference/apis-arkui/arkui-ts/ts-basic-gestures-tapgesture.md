@@ -1,7 +1,7 @@
 # TapGesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -23,7 +23,7 @@ TapGesture(value?: TapGestureParameters)
 
 创建点击手势对象。继承自[GestureInterface\<T>](ts-gesture-common.md#gestureinterfacet11)。
 
-触发点击手势事件的设备类型为键盘或手柄时，事件的[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)值为Unknown，事件的[SourceType](ts-gesture-settings.md#sourcetype枚举说明8)值为KEY，JOYSTICK。
+触发点击手势事件的设备类型为键盘或手柄时，事件的[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)值为Unknown；设备类型为键盘时，事件的[SourceType](ts-gesture-settings.md#sourcetype枚举说明8)值为KEY；设备类型为手柄时，事件的[SourceType](ts-gesture-settings.md#sourcetype枚举说明8)值为JOYSTICK。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -37,7 +37,7 @@ TapGesture(value?: TapGestureParameters)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [TapGestureParameters](#tapgestureparameters12对象说明) | 否 | 点击手势的相关参数。|
+| value | [TapGestureParameters](#tapgestureparameters12对象说明) | 否 | 点击手势的相关参数。用于配置连续点击次数、触发点击的手指数、点击手势移动阈值等点击识别条件；当需要自定义点击手势识别条件时传入。不传入时使用TapGestureParameters中各参数的默认配置。 |
 
 ## TapGestureParameters<sup>12+</sup>对象说明
 
@@ -71,7 +71,7 @@ ArkTS-Dyn: onAction(event: (event: GestureEvent) => void)
 
 ArkTS-Sta: onAction(event: Callback\<GestureEvent>)
 
-点击手势识别成功回调。
+点击手势识别成功回调。当组件同时绑定双击和单击手势且双击手势先绑定时，单击手势对应的onAction回调会有300ms的延时。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -153,17 +153,17 @@ struct TapGestureExample {
         TapGesture({ count: 2 })
           .onAction((event: GestureEvent) => {
             if (event) {
-              this.value = JSON.stringify(event.fingerList[0])
+              this.value = JSON.stringify(event.fingerList[0]);
             }
           })
-        )
-      Text(this.value)
+        );
+      Text(this.value);
     }
     .height(300)
     .width(300)
     .padding(20)
     .border({ width: 3 })
-    .margin(30)
+    .margin(30);
   }
 }
 ```
@@ -187,18 +187,18 @@ struct TapGestureExample {
           TapGesture({ count: 1, fingers: 1 })
             .onAction((event: GestureEvent | undefined) => {
               if (event) {
-                console.info(`x = ${JSON.stringify(event.tapLocation?.x)}`)
-                console.info(`y = ${JSON.stringify(event.tapLocation?.y)}`)
-                console.info(`windowX = ${JSON.stringify(event.tapLocation?.windowX)}`)
-                console.info(`windowY = ${JSON.stringify(event.tapLocation?.windowY)}`)
-                console.info(`displayX = ${JSON.stringify(event.tapLocation?.displayX)}`)
-                console.info(`displayY = ${JSON.stringify(event.tapLocation?.displayY)}`)
+                console.info(`x = ${JSON.stringify(event.tapLocation?.x)}`);
+                console.info(`y = ${JSON.stringify(event.tapLocation?.y)}`);
+                console.info(`windowX = ${JSON.stringify(event.tapLocation?.windowX)}`);
+                console.info(`windowY = ${JSON.stringify(event.tapLocation?.windowY)}`);
+                console.info(`displayX = ${JSON.stringify(event.tapLocation?.displayX)}`);
+                console.info(`displayY = ${JSON.stringify(event.tapLocation?.displayY)}`);
                 // 从API version 23开始，新增globalDisplayX和globalDisplayY属性。
-                console.info(`globalDisplayX = ${JSON.stringify(event.tapLocation?.globalDisplayX)}`)
-                console.info(`globalDisplayY = ${JSON.stringify(event.tapLocation?.globalDisplayY)}`)
+                console.info(`globalDisplayX = ${JSON.stringify(event.tapLocation?.globalDisplayX)}`);
+                console.info(`globalDisplayY = ${JSON.stringify(event.tapLocation?.globalDisplayY)}`);
               }
             })
-        )
+        );
     }
     .height(200)
     .width(300)
@@ -212,7 +212,7 @@ struct TapGestureExample {
 
 ### 示例3（获取组件实时位置）
 
-该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取当前组件基于其实时位置的左上角坐标。
+该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取点击位置相对于当前组件实时位置左上角的坐标。
 
 从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
 
@@ -232,6 +232,7 @@ struct GetCurrentLocalPositionExample {
           TapGesture({ count: 1 })
             .onAction((event: GestureEvent) => {
               if (event) {
+                // 移动组件后延迟获取点击位置相对于组件实时位置左上角的坐标。
                 this.textOffsetY = -200;
                 setTimeout(() => {
                   let localPos: Coordinate2D | undefined = event?.tapLocation?.getCurrentLocalPosition?.();
@@ -239,10 +240,10 @@ struct GetCurrentLocalPositionExample {
                 }, 2000);
               }
             })
-        )
+        );
 
-      Text(this.positionText)
-    }.width('100%')
+      Text(this.positionText);
+    }.width('100%');
   }
 }
 ```

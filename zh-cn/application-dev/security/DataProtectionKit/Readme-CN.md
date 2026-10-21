@@ -17,4 +17,8 @@
   - [应用适配打开DLP文件(C/C++)](app-adaptation-for-opening-dlp-files-ndk.md)
   - [企业接入DLP文件适配](enterprise-dlp-file-integration.md)
   - [识别敏感内容](sensitive-file-identification.md)
+- 隐私计算<!--privacy-computation-->
+  - [隐私计算简介](privacy-computation-guidelines.md)
+  - [使用PSI协议进行隐私集合求交](privacy-computation-psi.md)
+  - [使用PIR协议进行隐私信息检索](privacy-computation-pir.md)
 - [Data Protection Kit术语](dlp-glossary.md)

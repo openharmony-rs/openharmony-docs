@@ -191,8 +191,8 @@ import { formInfo } from '@kit.FormKit';
 | NO_SPACE       | 1    | 表示没有空间添加卡片。           |
 | PARAM_ERROR    | 2    | 表示参数检查失败。               |
 | INTERNAL_ERROR | 3    | 表示卡片处理过程中出现内部错误。 |
-| NOT_SUPPORT    | 4    | 表示卡片不支持发布。<br/>**起始版本：** 26.0.1 |
-| HOST_FORM_LIMIT | 5   | 表示添加到使用方的卡片数量超过上限。<br/>**起始版本：** 26.0.1 |
+| NOT_SUPPORT    | 4    | 表示卡片不支持发布。<br/>适用版本：26.0.1 |
+| HOST_FORM_LIMIT | 5   | 表示添加到使用方的卡片数量超过上限。<br/>适用版本：26.0.1 |
 
 ## RenderingMode<sup>18+</sup>
 
@@ -262,7 +262,7 @@ import { formInfo } from '@kit.FormKit';
 | abilityName | string | 否  | 是   | 趣味交互场景 extensionAbility 名称，默认为空。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 | targetBundleName  | string | 否  | 否   | 趣味交互场景[主包包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 | subBundleName  | string | 否  | 否   | 趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
-| keepStateDuration  | ArkTS-Dyn: number <br> ArkTS-Sta: int| 否  | 是   | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为(0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为(0,10000]的整数，超过取值范围则取默认值10000。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
+| keepStateDuration  | ArkTS-Dyn: number <br> ArkTS-Sta: int| 否  | 是   | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为[0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为(0,10000]的整数，超过取值范围则取默认值10000。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## SceneAnimationParams<sup>20+</sup>
 
@@ -608,7 +608,7 @@ type GetWantParamsCallback = (formInfo: Array&lt;formInfo.FormInfo&gt;) => Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------|------|----|------|
-| formInfo | Array&lt;[FormInfo](#forminfo)&gt; | 是 | 卡片信息列表。 |
+| formInfo | Array&lt;[formInfo.FormInfo](#forminfo)&gt; | 是 | 卡片信息列表。 |
 
 **返回值：**
 
@@ -661,9 +661,9 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 
 卡片使用方服务信息。
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -676,15 +676,15 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 | serviceName | string | 否 | 否 | 服务名称。 |
 | serviceDisplayName | string | 否 | 否 | 服务显示名称。 |
 | displayId | string | 否 | 否 | 显示标识。 |
-| customData | Record&lt;string, string&gt; | 否 | 是 | 自定义数据。 |
+| customData | Record&lt;string, string&gt; | 否 | 是 | 自定义数据。默认值为空。 |
 
 ## PeerFormHostServiceInfo
 
 远端卡片使用方服务信息。
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -697,18 +697,18 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 | serviceName | string | 否 | 否 | 远端卡片使用方服务的服务名称。 |
 | serviceDisplayName | string | 否 | 否 | 远端卡片使用方服务的服务显示名称。 |
 | displayId | string | 否 | 否 | 远端卡片使用方服务的显示标识。 |
-| customData | Record&lt;string, string&gt; | 否 | 是 | 远端卡片使用方服务的自定义数据。 |
+| customData | Record&lt;string, string&gt; | 否 | 是 | 远端卡片使用方服务的自定义数据。默认值为空。 |
 | deviceId | string | 否 | 否 | 远端卡片使用方服务的设备标识。 |
 | networkId | string | 否 | 否 | 远端卡片使用方服务的网络标识。 |
-| serviceId | string | 否 | 否 | 远端卡片使用方服务的服务Id。 |
+| serviceId | string | 否 | 否 | 远端卡片使用方服务的服务标识。 |
 
 ## PublishFormCrossDeviceResult
 
 跨设备发布卡片的结果。
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -956,7 +956,7 @@ ArkTS-Sta: getSockfdRxBytes(sockfd: int, callback: AsyncCallback\<long\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| sockfd   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file description)。                     |
+| sockfd   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file descriptor)。                     |
 | callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取socket的下行流量时，error为undefined，stats 为获取到的该socket的实时下行流量(单位:字节)；否则为错误对象。 |
 
 **错误码：**
@@ -1014,7 +1014,7 @@ ArkTS-Sta: getSockfdRxBytes(sockfd: int): Promise\<long\>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| sockfd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file description)。 |
+| sockfd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file descriptor)。 |
 
 **返回值：**
 
@@ -1080,7 +1080,7 @@ ArkTS-Sta: getSockfdTxBytes(sockfd: int, callback: AsyncCallback\<long\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| sockfd   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file description)。                     |
+| sockfd   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file descriptor)。                     |
 | callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取socket的上行流量时，error为undefined，stats 为获取到的该socket的实时上行流量(单位:字节)；否则为错误对象。 |
 
 **错误码：**
@@ -1138,7 +1138,7 @@ ArkTS-Sta: getSockfdTxBytes(sockfd: int): Promise\<long\>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| sockfd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file description)。 |
+| sockfd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file descriptor)。 |
 
 **返回值：**
 

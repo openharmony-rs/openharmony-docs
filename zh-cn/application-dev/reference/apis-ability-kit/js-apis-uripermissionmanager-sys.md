@@ -64,10 +64,10 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 801 | Capability not supported. <br>适用版本：19+ |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. <br>适用版本：19+ |
 | 16000050 | Internal error. |
 | 16000058 | Invalid URI flag. |
 | 16000059 | Invalid URI type. |
@@ -137,8 +137,8 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 | 错误码ID | 错误信息                                              |
 | -------- | ----------------------------------------------------- |
-| 201      | Permission denied.                                    |
-| 202      | Not System App. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 801      | Capability not supported.                             |
 | 16000050 | Connect to system server failed.                      |
 | 16000058 | Invalid URI flag.                                     |
@@ -217,8 +217,8 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. <br>适用版本：19+ |
 | 16000050 | Internal error. |
@@ -294,8 +294,8 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 | 错误码ID | 错误信息                                              |
 | -------- | ----------------------------------------------------- |
-| 201      | Permission denied.                                    |
-| 202      | Not System App. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 801      | Capability not supported.                             |
 | 16000050 | Connect to system server failed.                      |
 | 16000058 | Invalid URI flag.                                     |
@@ -378,8 +378,8 @@ ArkTS-Sta: grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundl
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. <br>适用版本：19+ |
 | 16000050 | Internal error. |
@@ -519,8 +519,8 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. <br>适用版本：10 - 11 |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：10 - 11 |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. <br>适用版本：19+ |
 | 16000050 | Internal error. |
@@ -576,7 +576,7 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not System App. Interface caller is not a system app.        |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
 | 16000050 | Connect to system server failed.                             |
@@ -642,8 +642,8 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;number&gt
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. <br>适用版本：10 - 11 |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：10 - 11 |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. <br>适用版本：19+ |
 | 16000050 | Internal error. |
@@ -705,7 +705,7 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                              |
 | -------- | ----------------------------------------------------- |
-| 202      | Not System App. Interface caller is not a system app. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 801      | Capability not supported.                             |
 | 16000050 | Connect to system server failed.                      |
 | 16000059 | Invalid URI type.                                     |
@@ -774,9 +774,9 @@ ArkTS-Sta: revokeUriPermission(uri: string, targetBundleName: string, appCloneIn
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 801 | Capability not supported. <br>适用版本：19+ |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. <br>适用版本：19+ |
 | 16000050 | Internal error. |
 | 16000059 | Invalid URI type. |
 | 16000081 | Failed to obtain the target application information. |
@@ -911,8 +911,8 @@ ArkTS-Sta: grantUriPermissionByKey(key: string, flag: wantConstant.Flags, target
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202 | Not System App. Interface caller is not a system app. |
-| 801 | Capability not supported. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
 | 16000058 | Invalid URI flag. |
 | 16000060 | A sandbox application cannot grant URI permission. |
@@ -995,9 +995,9 @@ ArkTS-Sta: grantUriPermissionByKeyAsCaller(key: string, flag: wantConstant.Flags
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
-| 801 | Capability not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
 | 16000058 | Invalid URI flag. |
 | 16000060 | A sandbox application cannot grant URI permission. |
