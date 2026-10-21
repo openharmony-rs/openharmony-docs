@@ -43,6 +43,8 @@
 | [int OH_PreferencesOption_SetBundleName(OH_PreferencesOption *option, const char *bundleName)](#oh_preferencesoption_setbundlename) | 设置Preferences配置选项[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例对象的包名称。 |
 | [int OH_PreferencesOption_SetDataGroupId(OH_PreferencesOption *option, const char *dataGroupId)](#oh_preferencesoption_setdatagroupid) | 设置Preferences配置选项[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例对象的应用组ID。<br>设置应用组ID后，会指定在此应用组ID对应的沙箱路径下创建Preferences实例。应用组ID需要向应用市场获取，暂不支持。<br>当传入的应用组ID为空字符串时，默认在本应用沙箱目录下创建Preferences实例。 |
 | [int OH_PreferencesOption_SetStorageType(OH_PreferencesOption *option, Preferences_StorageType type)](#oh_preferencesoption_setstoragetype) | 设置Preferences实例对象的存储模式。                          |
+| [int OH_PreferencesOption_SetCacheSize(OH_PreferencesOption *option, int32_t cacheSize)](#oh_preferencesoption_setcachesize) | 设置Preferences配置选项[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例对象的缓存大小。此参数仅在GSKV存储模式下生效，XML存储模式下不生效。                          |
+| [int32_t OH_PreferencesOption_GetCacheSize(OH_PreferencesOption *option)](#oh_preferencesoption_getcachesize) | 获取Preferences配置选项[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例对象的缓存大小。                          |
 | [int OH_PreferencesOption_Destroy(OH_PreferencesOption *option)](#oh_preferencesoption_destroy) | 销毁Preferences配置选项[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例。 |
 
 ## 枚举类型说明
@@ -190,6 +192,57 @@ int OH_PreferencesOption_SetStorageType(OH_PreferencesOption *option, Preference
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
 | int  | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
+
+### OH_PreferencesOption_SetCacheSize()
+
+```c
+int OH_PreferencesOption_SetCacheSize(OH_PreferencesOption *option, int32_t cacheSize)
+```
+
+**描述**
+
+设置Preferences配置选项[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例对象的缓存大小。此参数仅在GSKV存储模式下生效，XML存储模式下不生效。
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项                                                       | 描述                               |
+| ------------------------------------------------------------ | ---------------------------------- |
+| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) *option | [入参]指向目标[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例的指针。 |
+| int32_t cacheSize                                            | [入参]需要设置的缓存大小，单位为KB。取值范围为[256, 1112784]或0。值为0时表示不生成map文件，且不支持进程间共享。|
+
+**返回：**
+
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| int  | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
+
+### OH_PreferencesOption_GetCacheSize()
+
+```c
+int32_t OH_PreferencesOption_GetCacheSize(OH_PreferencesOption *option)
+```
+
+**描述**
+
+获取Preferences配置选项[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例对象的缓存大小。
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项                                                       | 描述                               |
+| ------------------------------------------------------------ | ---------------------------------- |
+| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) *option | [入参]指向目标[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例的指针。 |
+
+**返回：**
+
+| 类型   | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| int32_t | 返回缓存大小，单位为KB。若未设置或option无效，则返回0。|
 
 ### OH_PreferencesOption_Destroy()
 

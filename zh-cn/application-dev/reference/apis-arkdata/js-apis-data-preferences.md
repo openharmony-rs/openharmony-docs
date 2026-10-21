@@ -1231,6 +1231,7 @@ Preferences实例配置选项。
 | name        | string | 否  | 否 | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                    |
 | dataGroupId | string \| null \| undefined | 否  | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br> **模型约束：** 此属性仅在Stage模型下可用。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 |
 | storageType<sup>18+</sup> | [StorageType](#storagetype18) \| null \| undefined | 否 | 是 | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br>**原子化服务API：** 从API version 18开始，该参数支持在原子化服务中使用。 |
+| cacheSize | number \| null \| undefined | 否 | 是 | Preferences实例的缓存大小，单位为KB。表示GSKV存储模式下的map文件大小。取值范围为[256, 1112784]或0。值为0时表示不生成map文件，且不支持进程间共享。当此参数不填时，默认使用1112784KB。此参数仅在GSKV存储模式下生效，XML存储模式下不生效。<br>**原子化服务API：** 从API版本26.2.0开始，该参数支持在原子化服务中使用。 |
 
 
 ## Preferences
