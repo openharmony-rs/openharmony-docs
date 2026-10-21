@@ -42,7 +42,7 @@ target_link_libraries(sample PUBLIC libnative_media_avmuxer.so)
 target_link_libraries(sample PUBLIC libnative_media_core.so)
 ```
 
-示例代码引用了示例工程中自定义的工具宏与数据结构（如CHECK_AND_RETURN_RET_LOG、AVCODEC_SAMPLE_ERR_*、AVCODEC_SAMPLE_LOG*、SampleInfo等），不属于SDK的接口，完整定义请参见示例工程，移植时需自行实现或替换。
+示例代码引用了示例工程中自定义的工具宏与数据结构（如CHECK_AND_RETURN_RET_LOG、AVCODEC_SAMPLE_ERR_\*、AVCODEC_SAMPLE_LOG\*、SampleInfo等），不属于SDK的接口，完整定义请参见示例工程，移植时需自行实现或替换。
 
 ### mp4格式封装开发步骤
 
