@@ -398,16 +398,16 @@ getBundleStats(packageName: string, option?: BundleStatsOptions): Promise&lt;Bun
 
 **参数：**
 
-  | 参数名      | 类型   | 必填 | 说明     |
-  | ----------- | ------ | ---- | -------- |
-  | packageName | string | 是   | 应用包名。 |
-  | option | [BundleStatsOptions](#bundlestatsoptions) | 否   | 获取应用存储空间信息的选项。|
+| 参数名      | 类型   | 必填 | 说明     |
+| ----------- | ------ | ---- | -------- |
+| packageName | string | 是   | 应用包名。 |
+| option | [BundleStatsOptions](#bundlestatsoptions) | 否   | 获取应用存储空间信息的选项。|
 
 **返回值：**
 
-  | 类型                                       | 说明                       |
-  | ------------------------------------------ | -------------------------- |
-  | Promise&lt;[BundleStats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | Promise对象，返回指定应用的存储数据的空间大小（单位为Byte）。 |
+| 类型                                       | 说明                       |
+| ------------------------------------------ | -------------------------- |
+| Promise&lt;[BundleStats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | Promise对象，返回指定应用的存储数据的空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -945,7 +945,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
 | index   | number | 否 | 是 | 分身应用的索引号，取值范围为大于等于0的整数，默认值为0（表示未分身的主应用）。<br>传入不满足范围的值时返回错误码401。<br>分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)()接口获得。  |
-| statFlag | [GetBundleStatsFlag](#getbundlestatsflag)  |否 | 是 | 获取应用存储空间统计信息，默认值是应用所有的存储数据。  |
+| statFlag | [GetBundleStatsFlag](#getbundlestatsflag)  |否 | 是 | 获取应用存储空间统计信息，默认值是GET_BUNDLE_WITH_ALL_SIZE。  |
 
 ## GetBundleStatsFlag
 
