@@ -4915,7 +4915,7 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 ## WifiP2pServiceRequest
 
-表示P2P服务发现请求（TLV查询）。
+表示P2P服务发现请求，即TLV（Type-Length-Value，类型-长度-值）查询。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -4932,7 +4932,7 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 ## P2pDnsSdInfo
 
-表示从对端设备收到的DNS-SD服务响应信息。
+表示从对端设备收到的DNS-SD（DNS-Based Service Discovery，基于DNS的服务发现）服务响应信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -4944,13 +4944,13 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| instanceName | string | 否 | 否 | 已发现Bonjour服务的实例名。 |
+| instanceName | string | 否 | 否 | 已发现Bonjour（苹果零配置网络协议）服务的实例名。 |
 | registrationType | string | 否 | 否 | 已发现Bonjour服务的注册类型。取值前缀与[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)的serviceType入参相同，并在末尾追加".local"。 |
 | device | [WifiP2pDevice](#wifip2pdevice) | 否 | 否 | 返回该服务响应的对端设备。 |
 
 ## P2pDnsSdTxtInfo
 
-表示从对端设备收到的DNS-SD TXT记录信息。
+表示从对端设备收到的DNS-SD TXT（DNS-Based Service Discovery Text，基于DNS的服务发现文本）记录信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -4968,7 +4968,7 @@ wifiManager.getLocalP2pServices().then((data: wifiManager.WifiP2pServiceInfo[]) 
 
 ## P2pUpnpInfo
 
-表示从对端设备收到的UPnP服务响应信息。
+表示从对端设备收到的UPnP（Universal Plug and Play，通用即插即用）服务响应信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
