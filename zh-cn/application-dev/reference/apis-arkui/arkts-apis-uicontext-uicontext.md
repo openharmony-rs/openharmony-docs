@@ -587,7 +587,7 @@ struct Index {
 
 getPlaceholderRegister(): PlaceholderRegister
 
-获取[PlaceholderRegister](./arkts-apis-placeholderregister.md)对象，可通过该对象注册、注销和查询滚动占位模板，供[List](./arkui-ts/ts-container-list.md)的[scrollPlaceholder](./arkui-ts/ts-container-list.md#scrollplaceholder)属性使用。每个UI实例持有独立的注册表。
+获取[PlaceholderRegister](./arkts-apis-placeholderregister.md#placeholderregister)对象，可通过该对象注册、注销和查询滚动占位模板，供[List](./arkui-ts/ts-container-list.md)的[scrollPlaceholder](./arkui-ts/ts-container-list.md#scrollplaceholder)属性使用。每个UI实例持有独立的注册表。
 
 **起始版本：** 26.2.0
 

@@ -54,7 +54,7 @@ register(id: string, builder: WrappedBuilder<[]>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | ------- | -------------------- | ---- | ------------------------------------------ |
-| id      | string               | 是   | 占位模板的id，[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)的[provider](#placeholderprovider)通过该id引用模板。 |
+| id      | string               | 是   | 占位模板的id，[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)的[PlaceholderProvider](#placeholderprovider)通过该id引用模板。 |
 | builder | [WrappedBuilder](arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)\<[]\> | 是   | 经[wrapBuilder](arkui-ts/ts-universal-wrapBuilder.md#wrapbuilder)包装后的全局无参占位builder，不接受裸builder函数。 |
 
 **错误码：**
@@ -77,7 +77,7 @@ unregister(id: string): void
 
 > **说明：**
 >
-> - 模板注销后，该id不再能被匹配：[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)的[provider](#placeholderprovider)命中该id时使用系统默认占位，已为该模板派发的占位任务不会上屏。
+> - 模板注销后，该id不再能被匹配：[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)的[PlaceholderProvider](#placeholderprovider)命中该id时使用系统默认占位，已为该模板派发的占位任务不会上屏。
 > - 注销未注册的id时，静默处理，不产生异常。
 
 **起始版本：** 26.2.0
