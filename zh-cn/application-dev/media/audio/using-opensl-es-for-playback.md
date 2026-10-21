@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍OpenSL ES在OpenHarmony上的实现与已支持接口，说明其能力扩展受限，建议开发者改用OHAudio开发音频播放功能。"
+keywords: [OpenSL ES, 音频播放, SLES, 嵌入式音频, 播放接口, C/C++, 接口迁移]
+doctype: guide
+status: not recommended
+---
 # 使用OpenSL ES开发音频播放功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

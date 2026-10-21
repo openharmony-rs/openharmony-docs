@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导开发者使用SoundPlayer播放系统音效（如拍照、录像提示音），包括音效加载、播放控制与资源释放等流程。"
+keywords: [SoundPlayer, 系统音效, 提示音, 音效播放, 拍照音, 录像音, 音频播放]
+doctype: guide
+status: active
+---
 # 使用SoundPlayer开发系统音效播放功能
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

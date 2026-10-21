@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导系统应用使用TonePlayer播放DTMF双音多频音调，包括加载音调配置、启动与停止播放、释放资源等流程。"
+keywords: [TonePlayer, DTMF, 双音多频, 系统应用, 音调播放, 拨号音, 回铃音, 音频播放]
+doctype: guide
+status: active
+---
 # 使用TonePlayer开发音频播放功能(仅对系统应用开放)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

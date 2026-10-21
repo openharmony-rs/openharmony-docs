@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导C/C++开发者通过OH_AudioWorkgroup创建音频工作组并将关键线程加入，周期性上报运行信息以提升音频线程运行稳定性。"
+keywords: [音频工作组, OH_AudioWorkgroup, 音频线程, C/C++, 关键线程, 音频性能, 线程管理]
+doctype: guide
+status: active
+---
 # 音频工作组管理
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
