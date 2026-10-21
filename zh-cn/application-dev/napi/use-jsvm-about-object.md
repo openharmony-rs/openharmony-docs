@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍JSVM-API的JavaScript对象操作能力，涵盖创建对象、获取原型、冻结与密封、类型判断及外部指针封装等常见场景。"
+keywords: [OH_JSVM_CreateObject, OH_JSVM_GetPrototype, OH_JSVM_ObjectFreeze, OH_JSVM_ObjectSeal, OH_JSVM_Typeof, OH_JSVM_Instanceof, OH_JSVM_CreateSymbol, OH_JSVM_CreateExternal, 对象类型判断]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行object相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

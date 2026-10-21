@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "归纳JSVM-API使用规范，涵盖HandleScope生命周期管理、多引擎实例隔离、多线程加锁、参数获取、异常处理与上下文绑定等规则，帮助规避崩溃与内存泄漏。"
+keywords: [JSVM-API, 使用规范, 生命周期管理, HandleScope, 多引擎实例, 多线程共享, OH_JSVM_GetCbInfo, 异常处理, 上下文绑定]
+doctype: guide
+status: active
+---
+
 # JSVM-API使用规范
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

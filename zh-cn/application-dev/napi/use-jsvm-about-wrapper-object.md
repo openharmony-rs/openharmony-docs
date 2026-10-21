@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用OH_JSVM_IsNumberObject等JSVM-API接口快速判断JavaScript对象是否属于Number、Boolean、BigInt、String、Symbol五种装箱类型（Wrapper object），适用于Native侧进行对象装箱类型识别的开发场景。"
+keywords: [OH_JSVM_IsNumberObject, OH_JSVM_IsBooleanObject, OH_JSVM_IsBigIntObject, OH_JSVM_IsStringObject, OH_JSVM_IsSymbolObject, 装箱类型, Wrapper object, 类型判断]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行Wrapper object相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
