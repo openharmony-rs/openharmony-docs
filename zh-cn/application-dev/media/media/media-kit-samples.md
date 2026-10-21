@@ -1,4 +1,4 @@
-# Media Kit指南配套示例代码汇总
+# Media Kit指南配套示例代码
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia--> 
 <!--Owner: @chennotfound-->
@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-| 分类 | Sample名称 | 语言 | 场景介绍 |
+| 场景分类 | Sample名称 | 语言 | 场景介绍 |
 | -------- | -------- | -------- | -------- |
 | 音频播放 | [AVPlayerArkTSAudio](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio) | ArkTS | 使用AVPlayer完整播放一首音乐，演示起播后3s暂停，暂停3s后重新播放的场景。 |
 | 视频播放 | [AVPlayerArkTSVideo](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo) | ArkTS | 使用AVPlayer完整播放一个本地视频，演示端到端播放全流程。 |
