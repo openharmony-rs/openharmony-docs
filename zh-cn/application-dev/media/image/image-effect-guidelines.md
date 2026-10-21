@@ -455,9 +455,11 @@ target_link_libraries(entry PUBLIC
 3. 生效滤镜。
 
    <!-- @[image_effect_filter_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
-   ```c++
+   
+   ``` C++
    // 生效滤镜效果。
    errorCode = OH_EffectFilter_Render(filter, inputPixelmap, outputPixelmap);
+   CHECK_AND_RETURN_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, "OH_EffectFilter_Render fail!");
    ```
 
 4. 销毁滤镜实例。
