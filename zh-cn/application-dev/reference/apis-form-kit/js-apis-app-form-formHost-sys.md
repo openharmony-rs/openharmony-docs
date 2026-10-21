@@ -26,7 +26,7 @@ import { formHost } from '@kit.FormKit';
 
 deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理器服务不再保留有关该卡片的信息。使用callback异步回调。
+删除指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理服务不再保留有关该卡片的信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
@@ -105,7 +105,7 @@ try {
 
 deleteForm(formId: string): Promise&lt;void&gt;
 
-删除指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理器服务不再保留有关该卡片的信息。使用Promise异步回调。
+删除指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理服务不再保留有关该卡片的信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
@@ -184,7 +184,7 @@ try {
 
 releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
-释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，但卡片管理器服务仍然保留有关该卡片的缓存信息和存储信息。使用callback异步回调。
+释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，但卡片管理服务仍然保留有关该卡片的缓存信息和存储信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
@@ -259,7 +259,7 @@ try {
 
 releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理器服务保留有关该卡片的存储信息，可以选择是否保留缓存信息。使用callback异步回调。
+释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理服务保留有关该卡片的存储信息，可以选择是否保留缓存信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
@@ -335,7 +335,7 @@ try {
 
 releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
-释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理器服务保留有关该卡片的存储信息，可以选择是否保留缓存信息。使用Promise异步回调。
+释放指定的卡片。调用此方法后，应用程序将无法使用该卡片，卡片管理服务保留有关该卡片的存储信息，可以选择是否保留缓存信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
