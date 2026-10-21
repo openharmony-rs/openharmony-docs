@@ -42,7 +42,7 @@
 | 2 | 创建顺序：必须先创建Primary，再从Primary派生Secondary。 |
 | 3 | 生命周期关系：Primary是Secondary的所有者（Owner），Secondary不得脱离Primary独立存在。<br>- **推荐销毁顺序**：先`Destroy(Secondary)` → 再`Destroy(Primary)`，销毁后立即将对应指针赋值`nullptr`。<br>- **容错机制**：若违反顺序先Destroy Primary，系统会级联释放关联的Secondary，但仍应显式遵循正确顺序。 |
 | 4 | 重建能力：Secondary销毁后，可以从同一个Primary重新创建新的Secondary。 |
-| 5 | 仅支持surface模式。 |
+| 5 | 仅支持Surface模式。 |
 
 **接口可用性约束**
 
@@ -79,7 +79,7 @@
 | Surface共享 | 主/副编码器共享同一个Consumer Surface，仅需从`GetSurface`获取一次并绑定到数据源（Camera/XComponent）。 |
 | Window生命周期 | `OH_VideoEncoder_GetSurface`获取的window实例需由开发者负责释放，在所有编码器Destroy之后调用`OH_NativeWindow_DestroyNativeWindow(window)`销毁。 |
 | 前处理独立性 | 每个编码器可分别配置不同的降采样/裁剪/丢帧策略；但每个编码器内部降采样与裁剪仍然互斥。 |
-| 回调独立性 | 两路的`onNewOutputBuffer`回调在不同线程中触发，需各自释放FreeOutputBuffer。 |
+| 回调独立性 | 两路的onNewOutputBuffer()回调在不同线程中触发，需各自释放FreeOutputBuffer。 |
 
 
 ## 开发步骤
