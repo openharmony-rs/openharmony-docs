@@ -993,3 +993,17 @@ Web组件返回的请求/响应头对象。适用于需要读取或修改HTTP头
 | onCreateAISession | [OnCreateAISession](./arkts-basic-components-web-t.md#oncreateaisession) | 否 | 否 | AI会话创建时触发的回调函数。返回`true`跳过系统默认行为，返回`false`继续执行系统默认逻辑。 |
 | onExecuteAIAction | [OnExecuteAIAction](./arkts-basic-components-web-t.md#onexecuteaiaction) | 否 | 否 | AI会话执行操作时触发的回调函数。 |
 | onDestroyAISession | [OnDestroyAISession](./arkts-basic-components-web-t.md#ondestroyaisession) | 否 | 否 | AI会话销毁时触发的回调函数，用于清理与自定义AI模型关联的资源。 |
+
+## WebContextMenuOptions
+
+定义上下文菜单项的选项。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| enable | boolean | 否 | 是 | 表示上下文菜单项是否启用。 |
