@@ -17,14 +17,6 @@ Basic Service Set Identifier。无线网络中用于标识接入点的唯一MAC�
 ### Captive Portal; 强制门户
 Captive Portal。公共WLAN网络的Web页面认证机制，用于酒店、机场、咖啡厅等场所的身份验证。
 
-## D
-
-### DHCP; 动态主机配置协议
-Dynamic Host Configuration Protocol。自动分配IP等网络配置信息的协议，设备连接[WLAN](#wlan-无线局域网)后通过DHCP获取IP地址。
-
-### DNS; 域名系统
-Domain Name System。将域名解析为IP地址的系统，是互联网的基础服务之一。
-
 ## E
 
 ### EAP; 可扩展身份验证协议
