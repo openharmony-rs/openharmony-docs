@@ -59,16 +59,10 @@ target_link_libraries(entry PUBLIC
 2. 添加EffectFilter滤镜。
 
    <!-- @[image_effect_add_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
-   ```c++
-   // 添加滤镜，获取OH_EffectFilter实例。多次调用该接口可以添加多个滤镜，组成滤镜链。
-   OH_EffectFilter *filter = OH_ImageEffect_AddFilter(imageEffect, OH_EFFECT_BRIGHTNESS_FILTER);
-   if (filter == nullptr) {
-       OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_AddFilter fail!");
-       return;
-   }
-   // 设置滤镜参数, 例如：滤镜强度设置为50。
-   ImageEffect_Any value = { .dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT, .dataValue.floatValue = 50.f };
-   ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, OH_EFFECT_FILTER_INTENSITY_KEY, &value);
+   
+   ``` C++
+   OH_EffectFilter *filter = OH_ImageEffect_AddFilter(imageEffect, filterName);
+   CHECK_AND_RETURN_RET_LOG(filter != nullptr, filter, "OH_ImageEffect_AddFilter fail!");
    ```
 
 3. 设置处理数据。
