@@ -27,7 +27,8 @@
    ```
 
 2. 查询相机是否支持录像模式。
-通过[getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedscenemodes11)接口获取传入镜头支持的模式，查询是否支持录像模式。
+
+   通过[getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedscenemodes11)接口获取传入镜头支持的模式，查询是否支持录像模式。
 
    ```ts
    function isCaptureModeSupported(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): boolean

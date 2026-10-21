@@ -70,7 +70,7 @@
    )
    ```
 
-3. 创建并打开相机设备，参考[ 设备输入(C/C++)](./native-camera-device-input.md)步骤3-5。
+3. 创建并打开相机设备，参考设备输入(C/C++)的[开发步骤](./native-camera-device-input.md#开发步骤)3-5。
 
 4. 获取SurfaceId。
 
