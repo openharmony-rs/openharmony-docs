@@ -946,14 +946,15 @@ ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native 
 通过[registerJavaScriptProxy](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxy)将应用侧函数注册至前端页面，注册后在下次加载或者重新加载后生效。
 
   <!-- @[the_front_end_page_calls_application_side_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/hello.cpp) -->
-
-  ```c++
+  
+  ``` C++
   // 注册对象
-  OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk RegisterJavaScriptProxy begin");
+  OH_LOG_Print(
+      LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit registerJavaScriptProxy begin");
   ArkWeb_ProxyMethod method1 = {"method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethod method2 = {"method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethod methodList[2] = {method1, method2};
-  // 调用ndk接口注册对象
+  // 调用Native Development Kit接口注册对象
   // 如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method2调用此文件下的ProxyMethod1和ProxyMethod2方法了
   ArkWeb_ProxyObject proxyObject = {"ndkProxy", methodList, 2};
   controller->registerJavaScriptProxy(webTag, &proxyObject);
