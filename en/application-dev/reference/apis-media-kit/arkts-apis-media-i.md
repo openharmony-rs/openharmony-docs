@@ -567,7 +567,7 @@ Describes the rectangular region. It is used by [setCaptureArea](arkts-apis-medi
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| left   | number | No  | No  | Offset of the rectangular region from the left edge of the screen.<br>Value constraint: The value must be an integer greater than or equal to 0.<br>The unit is px.|
 | top    | number | No  | No  | Offset of the rectangular region from the top edge of the screen.<br>Value constraint: The value must be an integer greater than or equal to 0.<br>The unit is px.|
+| left   | number | No  | No  | Offset of the rectangular region from the left edge of the screen.<br>Value constraint: The value must be an integer greater than or equal to 0.<br>The unit is px.|
 | width  | number | No  | No  | Width of the rectangular region.<br>Value constraint: The value must be an integer greater than or equal to 0, and the sum of **left** and **width** must not exceed the screen width.<br>The unit is px.|
 | height | number | No  | No  | Height of the rectangular region.<br>Value constraint: The value must be an integer greater than or equal to 0, and the sum of **top** and **height** must not exceed the screen height.<br>The unit is px.|
