@@ -100,7 +100,7 @@ The following table lists the common APIs and structs related to system fonts. F
        for (size_t i = 0; i < genericCount; ++i) {
            OH_Drawing_FontGenericInfo &genericInfo = fontConfigInfo->fontGenericInfoSet[i];
            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "PrintSysFontMetrics",
-                        "Obtain the font family name %{public}s", i, genericInfo.familyName in the No.%{public}zu generic font set);
+                        "Font family name in generic font set %{public}zu: %{public}s", i, genericInfo.familyName);
        }
    }
    ```
