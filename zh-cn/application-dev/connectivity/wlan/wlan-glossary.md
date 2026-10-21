@@ -12,6 +12,11 @@
 ### BSSID; 基本服务集标识符
 Basic Service Set Identifier。无线网络中用于标识接入点的唯一MAC地址，用于区分不同接入点。
 
+## C
+
+### Captive Portal; 强制门户
+Captive Portal。公共WLAN网络的Web页面认证机制，用于酒店、机场、咖啡厅等场所的身份验证。
+
 ## D
 
 ### DHCP; 动态主机配置协议
@@ -25,21 +30,21 @@ Domain Name System。将域名解析为IP地址的系统，是互联网的基础
 ### EAP; 可扩展身份验证协议
 Extensible Authentication Protocol。用于网络认证的框架协议，支持多种认证方式（PEAP、TLS、TTLS等）。
 
-## G
-
-### GroupOwnerBand; 群组频段
-P2P连接中群组所使用的工作频段。包括自动模式（GO_BAND_AUTO）、2.4GHz频段（GO_BAND_2GHZ）和5GHz频段（GO_BAND_5GHZ）三种取值。
-
-## M
-
 ### EMLSR; 增强型多链路单天线
 Enhanced Multi-link Single Radio。[MLO](#mlo-多链路操作)技术中的一种连接类型，相比MLSR提供更好的频段切换协调和更低的时延。
 
-### MLSR; 多链路单天线
-Multi-link Single Radio。[MLO](#mlo-多链路操作)技术中的一种连接类型，设备在多个频段上共享单根天线进行数据传输。
+## G
+
+### GroupOwnerBand; 群组频段
+P2P连接中群组所使用的工作频段，取值包括自动模式（GO_BAND_AUTO）、2.4GHz频段（GO_BAND_2GHZ）和5GHz频段（GO_BAND_5GHZ）三种取值。
+
+## M
+
+### MLSR; 多链路单射频
+Multi-link Single Radio。[MLO](#mlo-多链路操作)技术中的一种连接类型，设备在多个频段上共享单根射频进行数据传输。
 
 ### MLO; 多链路操作
-Multi-Link Operation。Wi-Fi7（802.11be）引入的多频段并发技术，允许设备同时在多个频段上进行数据传输，通过聚合多个链路的带宽提升传输速率和可靠性。
+Multi-Link Operation。Wi-Fi 7（802.11be）引入的多频段并发技术，允许设备同时在多个频段上进行数据传输，通过聚合多个链路的带宽提升传输速率和可靠性。
 
 ## O
 
@@ -51,9 +56,6 @@ Opportunistic Wireless Encryption。针对开放[Wi-Fi](#wi-fi)网络的安全�
 ### P2P; 点对点
 Peer-to-Peer。[WLAN](#wlan-无线局域网)直连技术，允许设备间不通过AP直接建立连接进行数据传输。
 
-### Portal; 强制门户认证
-Captive Portal。公共WLAN网络的Web页面认证机制，用于酒店、机场、咖啡厅等场所的身份验证。
-
 ### PSK; 预共享密钥
 Pre-shared Key。[WLAN](#wlan-无线局域网) WPA/WPA2个人版使用的对称密钥，用户预先在设备和无线路由器上配置相同密码。
 
@@ -64,7 +66,7 @@ Received Signal Strength Indicator。无线通信中量化接收端信号强度�
 
 ## S
 
-### SAE; 同步认证对等
+### SAE; 对等同步认证
 Simultaneous Authentication of Equals。WPA3-Personal使用的密钥交换协议，解决[PSK](#psk-预共享密钥)易被离线字典攻击的缺陷。
 
 ### SSID; 服务集标识符
