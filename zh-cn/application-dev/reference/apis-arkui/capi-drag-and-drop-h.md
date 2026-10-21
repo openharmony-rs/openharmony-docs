@@ -507,8 +507,8 @@ int32_t OH_ArkUI_DragEvent_GetSummary(ArkUI_DragEvent *event, OH_UDMF_Summary *s
  
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) *event | ArkUI_DragEvent事件指针，不能为空。 |
-| [OH_UDMF_Summary](../apis-arkdata/capi-udmf-oh-udmf-summary.md) *summary | 出参，用于接收统一数据摘要的OH_UDMF_Summary对象指针，不能为空，调用本接口前需由调用方创建该对象，使用完毕后由调用方销毁；操作失败时，对象内容不保证有效。 |
+| [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) *event | [入参]ArkUI_DragEvent事件指针，不能为空。 |
+| [OH_UDMF_Summary](../apis-arkdata/capi-udmf-oh-udmf-summary.md) *summary | [出参]用于接收统一数据摘要的OH_UDMF_Summary对象指针，不能为空，调用本接口前需由调用方创建该对象，使用完毕后由调用方销毁；操作失败时，对象内容不保证有效。 |
  
 **返回：**
  
