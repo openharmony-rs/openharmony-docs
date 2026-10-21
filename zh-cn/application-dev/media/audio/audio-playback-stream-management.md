@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
-description: "指导开发者查询和监听音频播放流的状态变化与音频焦点事件，实现播放过程中对打断、恢复等场景的适配。"
-keywords: [播放流管理, 播放状态, 状态监听, 音频焦点, 焦点事件, AudioRenderer, 音频打断]
+description: "指导开发者实时查询、监听音频播放流状态，及时感知状态变化并做出相应适配。"
+keywords: [播放流管理, 播放状态, 状态监听, AudioRenderer]
 doctype: guide
 status: active
 ---
