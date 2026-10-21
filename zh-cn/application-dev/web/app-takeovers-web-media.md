@@ -81,7 +81,7 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 该功能开启后，网页中有媒体需要播放时，ArkWeb内核会触发[onCreateNativeMediaPlayer](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)注册的回调函数。
 
-应用则需要调用onCreateNativeMediaPlayer来注册一个创建本地播放器的回调函数。
+应用则需要调用onCreateNativeMediaPlayer()来注册一个创建本地播放器的回调函数。
 
 该回调函数需要根据媒体信息来判断是否要创建一个本地播放器来接管当前的网页媒体资源。
 
@@ -651,7 +651,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
     }
     onError() {
       // 通知ArkWeb内核，本地播放器出错了
-      console.info('AVPlayerListenerImpl.onError');
+      console.error('AVPlayerListenerImpl.onError');
       this.component.has_error = true;
       setTimeout(()=>{
         this.handler.handleError(1, "Oops!");
@@ -992,7 +992,7 @@ ArkWeb内核需要本地播放器的状态信息来更新到网页（例如：�
   }
   ```
 
-- 应用侧代码，视频播放示例, ./PlayerDemo.ets。
+- 应用侧代码，视频播放示例, ./PlayerDemo.ets。Xcomponent创建方法请参考[自定义渲染(XComponent)](../../ui/napi-xcomponent-guidelines.md)。
 
   ```ts
   import { media } from '@kit.MediaKit';
