@@ -41,7 +41,7 @@
        return modeArray.includes(camera.SceneMode.NORMAL_PHOTO);
      } catch (error) {
        let err = error as BusinessError;
-       console.error("getSupportedSceneModes failed, err code: " + err.code);
+       console.error(`failed to getSupportedSceneModes, err code: ${err.code}`);
        return false;
      }
    }
@@ -57,7 +57,7 @@
        return cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
      } catch (error) {
        let err = error as BusinessError;
-       console.error("getSupportedOutputCapability failed, err code: " + err.code);
+       console.error(`failed to getSupportedOutputCapability, err code: ${err.code}`);
        return undefined;
      }
    }

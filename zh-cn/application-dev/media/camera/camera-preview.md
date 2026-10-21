@@ -63,11 +63,11 @@
    function getSupportedOutputCapability(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): camera.CameraOutputCapability | undefined
    {
      try {
-       // 接口传入要使能的模式，这里以拍照模式为例。
+       // 接口传入要使能的模式，此处以拍照模式为例。
        return cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
      } catch (error) {
        let err = error as BusinessError;
-       console.error("getSupportedOutputCapability failed, err code: " + err.code);
+       console.error(`failed to getSupportedOutputCapability, err code: ${err.code}`);
        return undefined;
      }
    }

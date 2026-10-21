@@ -47,7 +47,7 @@
        return modeArray.includes(camera.SceneMode.NORMAL_PHOTO);
      } catch (error) {
        let err = error as BusinessError;
-       console.error("getSupportedSceneModes failed, err code: " + err.code);
+       console.error(`failed to getSupportedSceneModes, err code: ${err.code}`);
        return false;
      }
    }
