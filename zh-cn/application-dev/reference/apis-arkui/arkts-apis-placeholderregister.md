@@ -8,6 +8,10 @@
 
 本模块提供滚动占位模板的注册、注销和查询能力。快速滚动场景下，当框架预测在剩余帧预算内创建下一个列表项会导致超帧时，可滚动组件（如[List](arkui-ts/ts-container-list.md)）会先为该项显示占位组件，真实列表项在UI线程分帧创建完成后替换占位，以减少丢帧。占位模板经[register](#register)注册后，供[List](arkui-ts/ts-container-list.md)的[scrollPlaceholder](arkui-ts/ts-container-list.md#scrollplaceholder)属性按id引用。
 
+> **说明：**
+>
+> - 本模块接口仅可在Stage模型下使用。
+
 **起始版本：** 26.2.0
 
 ## 导入模块
@@ -16,15 +20,15 @@
 import { PlaceholderRegister } from '@kit.ArkUI';
 ```
 
+## PlaceholderRegister
+
+滚动占位模板的注册表，提供占位模板的注册、注销和查询能力。每个UI实例持有独立的注册表，在一个UI实例中注册的占位模板对其他UI实例不可见。请不要自行构造PlaceholderRegister实例，应通过[getPlaceholderRegister()](./arkts-apis-uicontext-uicontext.md#getplaceholderregister)获取当前UI实例的注册表。
+
 > **说明：**
 >
-> - 本模块接口仅可在Stage模型下使用。
->
-> - 以下API需先使用UIContext中的[getPlaceholderRegister()](./arkts-apis-uicontext-uicontext.md#getplaceholderregister)方法获取到PlaceholderRegister对象，再通过该对象调用对应方法。
->
-> - 每个UI实例持有独立的注册表，在一个UI实例中注册的占位模板对其他UI实例不可见。请不要自行构造PlaceholderRegister实例，应通过[getPlaceholderRegister()](./arkts-apis-uicontext-uicontext.md#getplaceholderregister)获取当前UI实例的注册表。
+> 以下API需先使用UIContext中的[getPlaceholderRegister()](./arkts-apis-uicontext-uicontext.md#getplaceholderregister)方法获取到PlaceholderRegister对象，再通过该对象调用对应方法。
 
-## register
+### register
 
 register(id: string, builder: WrappedBuilder<[]>): void
 
@@ -63,7 +67,7 @@ register(id: string, builder: WrappedBuilder<[]>): void
 
 完整示例请参考[示例1（注册滚动占位模板并设置滚动占位）](#示例1注册滚动占位模板并设置滚动占位)。
 
-## unregister
+### unregister
 
 unregister(id: string): void
 
@@ -92,7 +96,7 @@ unregister(id: string): void
 
 完整示例请参考[示例1（注册滚动占位模板并设置滚动占位）](#示例1注册滚动占位模板并设置滚动占位)。
 
-## isRegistered
+### isRegistered
 
 isRegistered(id: string): boolean
 
@@ -161,7 +165,7 @@ type PlaceholderProvider = (index: number) => PlaceholderOptions | undefined
 
 | 参数名 | 类型   | 必填 | 说明                                       |
 | ------ | ------ | ---- | ------------------------------------------ |
-| index  | number | 是   | 即将创建的列表项的索引。                     |
+| index  | number | 是   | 即将创建的列表项的索引。<br/>取值范围：[0, +∞)。                     |
 
 **返回值：**
 
