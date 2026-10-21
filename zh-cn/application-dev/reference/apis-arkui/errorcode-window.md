@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
@@ -322,6 +322,73 @@ onPageHide() {
   }
 }
 ```
+
+### 当前存在模态UIExtension，不允许创建非安全窗口
+**可能原因**
+
+应用内已拉起模态UIExtension，开发者在创建子窗口、全局悬浮窗或Dialog窗口等非安全窗口时，由于模态UIExtension不允许非安全窗口遮挡，导致窗口创建失败。
+
+**典型日志信息**
+
+```text
+Error Name: Error
+Error Message: [window][createSubWindowWithOptions()]msg: It is not allowed to create non-secure window when secure extension exists. Maybe blocked by:
+Error code: 1300002
+```
+
+关键信息：
+- 错误码：1300002
+- 堆栈：创建子窗口、全局悬浮窗或Dialog窗口等API调用处
+- 文件名和行号：定位具体代码位置
+- 模态UIExtension信息：Error Message后会列出模态UIExtension的包名
+
+**处理步骤**
+
+确保将模态UIExtension关闭后，再创建窗口。
+
+### 创建子窗口的进程和其父窗的进程不相同
+**可能原因**
+
+创建子窗口请求的进程pid和该子窗口父窗的进程pid不相同，导致创建子窗口失败。
+
+**典型日志信息**
+
+```text
+Error Name: Error
+Error Message: [window][createSubWindowWithOptions()]msg: The parent window and the subwindow are not created by the same process
+Error code: 1300002
+```
+
+关键信息：
+- 错误码：1300002
+- 堆栈：createSubWindowWithOptions()或createSubWindow()调用位置
+- 文件名和行号：定位具体代码位置
+
+**处理步骤**
+
+请确保创建子窗口的进程跟创建其父窗的进程是同一进程。
+
+### 超出子窗口最大允许嵌套层数
+**可能原因**
+
+子窗口内创建子窗口时（即进行子窗口嵌套），子窗口嵌套层数受限制，超出最大允许嵌套层数（10层）时，创建子窗口失败。
+
+**典型日志信息**
+
+```text
+Error Name: Error
+Error Message: [window][createSubWindowWithOptions()]msg: Subwindow level exceeds the maximum limit
+Error code: 1300002
+```
+
+关键信息：
+- 错误码：1300002
+- 堆栈：createSubWindowWithOptions()调用位置
+- 文件名和行号：定位具体代码位置
+
+**处理步骤**
+
+优化业务逻辑，避免创建过多层级的嵌套子窗口。
 
 ## 1300003 系统服务工作异常
 **错误信息**<br>

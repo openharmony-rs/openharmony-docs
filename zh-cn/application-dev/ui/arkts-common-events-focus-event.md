@@ -1,7 +1,7 @@
 # 支持焦点处理
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -497,9 +497,9 @@ export struct OnFocusBlur {
 
 上述示例包含以下3步：
 
-- 应用打开，按下Tab键激活走焦，“First Button”显示焦点激活态样式：组件外围有一个蓝色的闭合框，onFocus回调响应，背景色变成绿色。
-- 按下Tab键，触发走焦，“Second Button”获焦，onFocus回调响应，背景色变成绿色；“First Button”失焦，onBlur回调响应，背景色变回灰色。
-- 按下Tab键，触发走焦，“Third Button”获焦，onFocus回调响应，背景色变成绿色；“Second Button”失焦，onBlur回调响应，背景色变回灰色。
+- 应用打开，按下Tab键激活走焦，“First Button”显示焦点激活态样式：组件外围有一个蓝色的闭合框，onFocus()回调响应，背景色变成绿色。
+- 按下Tab键，触发走焦，“Second Button”获焦，onFocus()回调响应，背景色变成绿色；“First Button”失焦，onBlur()回调响应，背景色变回灰色。
+- 按下Tab键，触发走焦，“Third Button”获焦，onFocus()回调响应，背景色变成绿色；“Second Button”失焦，onBlur()回调响应，背景色变回灰色。
 
 父子节点同时存在获焦和失焦事件时，获焦/失焦事件响应顺序为：
 
@@ -959,7 +959,7 @@ export struct FocusScopePriorityPrevious {
 
 **整体获焦与非整体获焦**
 
-- 整体获焦是[层级页面](#基础概念)/容器自身作为焦点链的叶节点获焦，获焦后再把焦点链叶节点转移到子孙组件。例如，[层级页面](#基础概念)切换、Navigation组件中的路由切换、焦点组走焦、容器组件主动调用requestFocusById等。
+- 整体获焦是[层级页面](#基础概念)/容器自身作为焦点链的叶节点获焦，获焦后再把焦点链叶节点转移到子孙组件。例如，[层级页面](#基础概念)切换、Navigation组件中的路由切换、焦点组走焦、容器组件主动调用requestFocusById()等。
 
 - 非整体获焦是某个组件作为焦点链叶节点获焦，导致其祖先节点跟着获焦。例如TextInput组件主动获取焦点、Tab键在非焦点组场景下走焦等。
 

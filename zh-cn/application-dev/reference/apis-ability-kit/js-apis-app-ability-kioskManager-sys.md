@@ -46,8 +46,8 @@ getKioskStatus(): Promise&lt;KioskStatus&gt;
 
 | 错误码ID | 错误信息 |
 |---------|---------|
-| 202 | Not system application. |
-| 801 | Capability not supported. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000050 | Failed to connect to the system service. |
 
 **示例**：

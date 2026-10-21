@@ -395,7 +395,7 @@ struct AsyncData {
     std::string label = "";
 };
 
-// 保存ArkTs侧NodeContent指针与Native侧节点树根节点的对应关系。
+// 保存ArkTS侧NodeContent指针与Native侧节点树根节点的对应关系。
 std::map<ArkUI_NodeContentHandle, std::shared_ptr<ArkUIBaseNode>> g_nodeMap;
 ArkUI_ContextHandle g_contextHandle = nullptr;
 
@@ -408,7 +408,7 @@ void CreateNodeTree(void *asyncUITaskData) {
     // 创建组件树根节点。
     auto rowNode = std::make_shared<ArkUIRowNode>();
     asyncData->child = rowNode;
-    
+
     // 创建button组件。
     auto buttonNode1 = std::make_shared<ArkUIButtonNode>();
     ArkUI_AttributeItem label_item = { .string = asyncData->label.c_str() };
@@ -426,8 +426,8 @@ void CreateNodeTree(void *asyncUITaskData) {
     }
     // 设置button组件的width属性。
     buttonNode1->SetWidth(150);
-   
-   // 创建button组件。
+
+    // 创建button组件。
     auto buttonNode2 = std::make_shared<ArkUIButtonNode>();
     ArkUI_AttributeItem label_item2 = { .string = asyncData->label.c_str() };
     // 设置button组件的label属性。
@@ -527,14 +527,14 @@ napi_value CreateNodeTreeOnMultiThread(napi_env env, napi_callback_info info) {
     napi_value args[2] = { nullptr, nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    // 获取ArkTs侧组件挂载点。
+    // 获取ArkTS侧组件挂载点。
     ArkUI_NodeContentHandle contentHandle;
     int32_t result = OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
     if (result != ARKUI_ERROR_CODE_NO_ERROR) {
         OH_LOG_ERROR(LOG_APP, "OH_ArkUI_GetNodeContentFromNapiValue Failed %{public}d", result);
         return nullptr;
     }
-    
+
     // 获取上下文对象指针。
     if (!g_contextHandle) {
         result = OH_ArkUI_GetContextFromNapiValue(env, args[1], &g_contextHandle);
@@ -545,7 +545,7 @@ napi_value CreateNodeTreeOnMultiThread(napi_env env, napi_callback_info info) {
             return nullptr;
         }
     }
-    
+
     // 创建Native侧组件树根节点。
     auto scrollNode = std::make_shared<ArkUIScrollNode>();
     // 将Native侧组件树根节点挂载到UI主树上。
@@ -556,7 +556,7 @@ napi_value CreateNodeTreeOnMultiThread(napi_env env, napi_callback_info info) {
     }
     // 保存Native侧组件树。
     g_nodeMap[contentHandle] = scrollNode;
-    
+
     auto columnNode = std::make_shared<ArkUIColumnNode>();
     scrollNode->AddChild(columnNode);
     // 在框架提供的线程池中创建组件。
@@ -573,14 +573,14 @@ napi_value DisposeNodeTreeOnMultiThread(napi_env env, napi_callback_info info)
     napi_value args[1] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
-    // 获取ArkTs侧组件挂载点。
+    // 获取ArkTS侧组件挂载点。
     ArkUI_NodeContentHandle contentHandle;
     int32_t result = OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
     if (result != ARKUI_ERROR_CODE_NO_ERROR) {
         OH_LOG_ERROR(LOG_APP, "OH_ArkUI_GetNodeContentFromNapiValue Failed %{public}d", result);
         return nullptr;
     }
-    
+
     auto it = g_nodeMap.find(contentHandle);
     if (it == g_nodeMap.end()) {
         return nullptr;
@@ -611,20 +611,20 @@ static napi_value Init(napi_env env, napi_value exports)
     // 绑定Native侧的创建组件和销毁组件。
     napi_property_descriptor desc[] = {
         {"createNativeRoot", nullptr,
-        NativeModule::CreateNativeRoot, nullptr, nullptr,
-        nullptr, napi_default, nullptr},
-        
+            NativeModule::CreateNativeRoot, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+
         {"destroyNativeRoot", nullptr,
-        NativeModule::DestroyNativeRoot, nullptr, nullptr,
-        nullptr, napi_default, nullptr},
-        
+            NativeModule::DestroyNativeRoot, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+
         {"createNodeTreeOnMultiThread", nullptr,
-        NativeModule::CreateNodeTreeOnMultiThread, nullptr, nullptr,
-        nullptr, napi_default, nullptr},
-        
+            NativeModule::CreateNodeTreeOnMultiThread, nullptr, nullptr,
+            nullptr, napi_default, nullptr},
+
         {"disposeNodeTreeOnMultiThread", nullptr,
-        NativeModule::DisposeNodeTreeOnMultiThread, nullptr, nullptr,
-        nullptr, napi_default, nullptr}
+            NativeModule::DisposeNodeTreeOnMultiThread, nullptr, nullptr,
+            nullptr, napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

@@ -157,7 +157,7 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
 >
 > 下载任务不会删除生成的文件，若需清理文件，需由开发者手动操作。
 
-以下示例代码展示了将网络资源文件下载到应用内部文件目录的两种方法（示例requestDownloadFile中的clearExistFile方法可点击代码块右下角链接查看）：
+以下示例代码展示了将网络资源文件下载到应用内部文件目录的两种方法（示例requestDownloadFile中的clearExistFile()方法可点击代码块右下角链接查看）：
 
 <!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 

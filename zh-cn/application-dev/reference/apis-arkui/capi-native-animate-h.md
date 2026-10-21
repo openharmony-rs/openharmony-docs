@@ -150,7 +150,7 @@
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetDelay(OH_ArkUI_PropertyAnimationHandle animation, int32_t delay)](#oh_arkui_nativemodule_propertyanimation_setdelay) | 设置属性动画的延迟时间。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetDelay(OH_ArkUI_PropertyAnimationHandle animation, int32_t *delay)](#oh_arkui_nativemodule_propertyanimation_getdelay) | 获取属性动画的延迟时间。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetCurve(OH_ArkUI_PropertyAnimationHandle animation, ArkUI_CurveHandle curve)](#oh_arkui_nativemodule_propertyanimation_setcurve) | 设置属性动画的动画曲线。<br>实际生效的动画曲线按以下优先级确定：如果通过本接口设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)在动画组上设置的曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。支持弹簧曲线（springMotion、responsiveSpringMotion和interpolatingSpring）。设置弹簧曲线时，通过[OH_ArkUI_NativeModule_PropertyAnimation_SetDuration](#oh_arkui_nativemodule_propertyanimation_setduration)设置的持续时间不生效，动画持续时间由弹簧曲线决定。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetCurve(OH_ArkUI_PropertyAnimationHandle animation, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_propertyanimation_getcurve) | 获取属性动画的动画曲线。<br>本接口仅返回在本动画上显式设置的曲线；从动画组继承的值或默认值在运行时解析，不存储在本对象上。如果本动画未设置曲线，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。运行时实际生效的动画曲线按以下优先级确定：如果通过[OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](#oh_arkui_nativemodule_propertyanimation_setcurve)设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetCurve(OH_ArkUI_PropertyAnimationHandle animation, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_propertyanimation_getcurve) | 获取属性动画的动画曲线。<br>本接口仅返回在本动画上显式设置的曲线；从动画组继承的值或默认值在运行时解析，不存储在本对象上。如果本动画未设置曲线，则outBorrowedCurve输出为NULL。运行时实际生效的动画曲线按以下优先级确定：如果通过[OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](#oh_arkui_nativemodule_propertyanimation_setcurve)设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetTempo(OH_ArkUI_PropertyAnimationHandle animation, float tempo)](#oh_arkui_nativemodule_propertyanimation_settempo) | 设置属性动画的播放速率。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetTempo(OH_ArkUI_PropertyAnimationHandle animation, float *tempo)](#oh_arkui_nativemodule_propertyanimation_gettempo) | 获取属性动画的播放速率。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetAutoReverse(OH_ArkUI_PropertyAnimationHandle animation, bool autoReverse)](#oh_arkui_nativemodule_propertyanimation_setautoreverse) | 设置属性动画是否自动反转。<br>启用自动反转后，动画在每轮播放中交替正向播放和反向播放。默认值为false。 |
@@ -169,7 +169,7 @@
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetValue(OH_ArkUI_KeyframeAnimationHandle animation, int32_t index, ArkUI_NumberValue *value, int32_t size)](#oh_arkui_nativemodule_keyframeanimation_getvalue) | 获取指定索引处关键帧的值。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves(OH_ArkUI_KeyframeAnimationHandle animation, const ArkUI_CurveHandle *value, int32_t size)](#oh_arkui_nativemodule_keyframeanimation_setcurves) | 设置关键帧的动画曲线。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve(OH_ArkUI_KeyframeAnimationHandle animation, int32_t index, ArkUI_CurveHandle curve)](#oh_arkui_nativemodule_keyframeanimation_setcurve) | 设置指定索引处关键帧的动画曲线。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetCurve(OH_ArkUI_KeyframeAnimationHandle animation, int32_t index, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_keyframeanimation_getcurve) | 获取指定索引处关键帧的动画曲线。<br>本接口仅返回为关键帧显式设置的曲线；从动画组继承的值或默认值在运行时解析，不存储在本对象上。如果关键帧未设置曲线，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。运行时实际生效的动画曲线按以下优先级确定：如果通过[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](#oh_arkui_nativemodule_keyframeanimation_setcurve)或[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](#oh_arkui_nativemodule_keyframeanimation_setcurves)为关键帧设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetCurve(OH_ArkUI_KeyframeAnimationHandle animation, int32_t index, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_keyframeanimation_getcurve) | 获取指定索引处关键帧的动画曲线。<br>本接口仅返回为关键帧显式设置的曲线；从动画组继承的值或默认值在运行时解析，不存储在本对象上。如果关键帧未设置曲线，则outBorrowedCurve输出为NULL。运行时实际生效的动画曲线按以下优先级确定：如果通过[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](#oh_arkui_nativemodule_keyframeanimation_setcurve)或[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](#oh_arkui_nativemodule_keyframeanimation_setcurves)为关键帧设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration(OH_ArkUI_KeyframeAnimationHandle animation, int32_t duration)](#oh_arkui_nativemodule_keyframeanimation_setduration) | 设置关键帧动画的持续时间。<br>实际生效的动画持续时间按以下优先级确定：如果通过本接口设置了持续时间，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](#oh_arkui_nativemodule_animationgroup_setduration)在动画组上设置的持续时间；如果两者都未设置，则使用默认值1000毫秒。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetDuration(OH_ArkUI_KeyframeAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_keyframeanimation_getduration) | 获取关键帧动画的持续时间。<br>本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。如果本动画未设置持续时间，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。运行时实际生效的动画持续时间按以下优先级确定：如果通过[OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration](#oh_arkui_nativemodule_keyframeanimation_setduration)设置了持续时间，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间；如果两者都未设置，则使用默认值1000毫秒。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetDelay(OH_ArkUI_KeyframeAnimationHandle animation, int32_t delay)](#oh_arkui_nativemodule_keyframeanimation_setdelay) | 设置关键帧动画的延迟时间。 |
@@ -182,21 +182,19 @@
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetIterations(OH_ArkUI_KeyframeAnimationHandle animation, int32_t *iterations)](#oh_arkui_nativemodule_keyframeanimation_getiterations) | 获取关键帧动画的播放次数。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetTargetNode(OH_ArkUI_KeyframeAnimationHandle animation, ArkUI_RenderNodeHandle targetNode)](#oh_arkui_nativemodule_keyframeanimation_settargetnode) | 设置关键帧动画的目标渲染节点。<br>目标节点是被该关键帧动画驱动的渲染节点。如果为NULL（默认值），则动画继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。非NULL目标必须属于动画组注册的同一UIContext，该检查在通过[OH_ArkUI_NativeModule_AddAnimationGroup](#oh_arkui_nativemodule_addanimationgroup)注册动画组时执行。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetTargetNode(OH_ArkUI_KeyframeAnimationHandle animation, ArkUI_RenderNodeHandle *outBorrowedTargetNode)](#oh_arkui_nativemodule_keyframeanimation_gettargetnode) | 获取关键帧动画的目标渲染节点。 |
-| [OH_ArkUI_PathAnimationHandle OH_ArkUI_NativeModule_PathAnimation_Create(const char *path)](#oh_arkui_nativemodule_pathanimation_create) | 创建路径动画，使组件沿几何路径移动。<br>路径动画作用于[OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)属性。 |
+| [OH_ArkUI_PathAnimationHandle OH_ArkUI_NativeModule_PathAnimation_Create(const char *path)](#oh_arkui_nativemodule_pathanimation_create) | 创建路径动画，使组件沿几何路径移动。<br>路径动画作用于[OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)属性。<br>路径动画不支持设置曲线，运行时固定使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)，不继承动画组曲线。 |
 | [void OH_ArkUI_NativeModule_PathAnimation_Destroy(OH_ArkUI_PathAnimationHandle animation)](#oh_arkui_nativemodule_pathanimation_destroy) | 销毁路径动画。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetDuration(OH_ArkUI_PathAnimationHandle animation, int32_t duration)](#oh_arkui_nativemodule_pathanimation_setduration) | 设置路径动画的持续时间。<br>实际生效的动画持续时间按以下优先级确定：如果通过本接口设置了持续时间，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](#oh_arkui_nativemodule_animationgroup_setduration)在动画组上设置的持续时间；如果两者都未设置，则使用默认值1000毫秒。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDuration(OH_ArkUI_PathAnimationHandle animation, int32_t *duration)](#oh_arkui_nativemodule_pathanimation_getduration) | 获取路径动画的持续时间。<br>本接口仅返回在本动画上显式设置的持续时间；从动画组继承的值或默认值在运行时解析，不存储在本对象上。如果本动画未设置持续时间，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。运行时实际生效的动画持续时间按以下优先级确定：如果通过[OH_ArkUI_NativeModule_PathAnimation_SetDuration](#oh_arkui_nativemodule_pathanimation_setduration)设置了持续时间，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetDuration](#oh_arkui_nativemodule_animationgroup_setduration)设置的动画组持续时间；如果两者都未设置，则使用默认值1000毫秒。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetDelay(OH_ArkUI_PathAnimationHandle animation, int32_t delay)](#oh_arkui_nativemodule_pathanimation_setdelay) | 设置路径动画的延迟时间。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDelay(OH_ArkUI_PathAnimationHandle animation, int32_t *delay)](#oh_arkui_nativemodule_pathanimation_getdelay) | 获取路径动画的延迟时间。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetCurve(OH_ArkUI_PathAnimationHandle animation, ArkUI_CurveHandle curve)](#oh_arkui_nativemodule_pathanimation_setcurve) | 设置路径动画的动画曲线。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetCurve(OH_ArkUI_PathAnimationHandle animation, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_pathanimation_getcurve) | 获取路径动画的动画曲线。<br>本接口仅返回在本动画上显式设置的曲线；从动画组继承的值或默认值在运行时解析，不存储在本对象上。如果本动画未设置曲线，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。运行时实际生效的动画曲线按以下优先级确定：如果通过[OH_ArkUI_NativeModule_PathAnimation_SetCurve](#oh_arkui_nativemodule_pathanimation_setcurve)设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetTempo(OH_ArkUI_PathAnimationHandle animation, float tempo)](#oh_arkui_nativemodule_pathanimation_settempo) | 设置路径动画的播放速率。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetTempo(OH_ArkUI_PathAnimationHandle animation, float *tempo)](#oh_arkui_nativemodule_pathanimation_gettempo) | 获取路径动画的播放速率。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetAutoReverse(OH_ArkUI_PathAnimationHandle animation, bool autoReverse)](#oh_arkui_nativemodule_pathanimation_setautoreverse) | 设置路径动画是否自动反转。<br>启用自动反转后，动画在每轮播放中交替正向播放和反向播放。默认值为false。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetAutoReverse(OH_ArkUI_PathAnimationHandle animation, bool *autoReverse)](#oh_arkui_nativemodule_pathanimation_getautoreverse) | 获取路径动画是否启用自动反转。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetIterations(OH_ArkUI_PathAnimationHandle animation, int32_t iterations)](#oh_arkui_nativemodule_pathanimation_setiterations) | 设置路径动画的播放次数。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetIterations(OH_ArkUI_PathAnimationHandle animation, int32_t *iterations)](#oh_arkui_nativemodule_pathanimation_getiterations) | 获取路径动画的播放次数。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetAutoRotation(OH_ArkUI_PathAnimationHandle animation, bool autoRotation)](#oh_arkui_nativemodule_pathanimation_setautorotation) | 设置路径动画过程中组件是否沿路径切线方向自动旋转。<br>启用自动旋转后，组件将旋转使其朝向方向与当前位置的路径切线对齐。默认值为false。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetAutoRotation(OH_ArkUI_PathAnimationHandle animation, bool autoRotation)](#oh_arkui_nativemodule_pathanimation_setautorotation) | 设置路径动画过程中组件是否沿路径切线方向自动旋转。<br>启用自动旋转后，组件将旋转使其朝向与当前位置的路径切线对齐。默认值为false。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetAutoRotation(OH_ArkUI_PathAnimationHandle animation, bool *autoRotation)](#oh_arkui_nativemodule_pathanimation_getautorotation) | 获取路径动画是否启用自动旋转。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetTargetNode(OH_ArkUI_PathAnimationHandle animation, ArkUI_RenderNodeHandle targetNode)](#oh_arkui_nativemodule_pathanimation_settargetnode) | 设置路径动画的目标渲染节点。<br>目标节点是被该路径动画驱动的渲染节点。如果为NULL（默认值），则动画继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。非NULL目标必须属于动画组注册的同一UIContext，该检查在通过[OH_ArkUI_NativeModule_AddAnimationGroup](#oh_arkui_nativemodule_addanimationgroup)注册动画组时执行。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetTargetNode(OH_ArkUI_PathAnimationHandle animation, ArkUI_RenderNodeHandle *outBorrowedTargetNode)](#oh_arkui_nativemodule_pathanimation_gettargetnode) | 获取路径动画的目标渲染节点。 |
@@ -206,8 +204,8 @@
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetDuration(OH_ArkUI_AnimationGroupHandle group, int32_t *duration)](#oh_arkui_nativemodule_animationgroup_getduration) | 获取动画组的持续时间。<br>本接口仅返回在本动画组上显式设置的持续时间，不受子动画的持续时间影响。如果本动画组未设置持续时间，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。运行时，未设置的动画组持续时间默认为1000毫秒。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetDelay(OH_ArkUI_AnimationGroupHandle group, int32_t delay)](#oh_arkui_nativemodule_animationgroup_setdelay) | 设置动画组的延迟时间。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetDelay(OH_ArkUI_AnimationGroupHandle group, int32_t *delay)](#oh_arkui_nativemodule_animationgroup_getdelay) | 获取动画组的延迟时间。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetCurve(OH_ArkUI_AnimationGroupHandle group, ArkUI_CurveHandle curve)](#oh_arkui_nativemodule_animationgroup_setcurve) | 设置动画组的动画曲线。<br>动画组的曲线作为未通过[OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](#oh_arkui_nativemodule_propertyanimation_setcurve)、[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](#oh_arkui_nativemodule_keyframeanimation_setcurve)或[OH_ArkUI_NativeModule_PathAnimation_SetCurve](#oh_arkui_nativemodule_pathanimation_setcurve)设置自身曲线的子动画的默认曲线。不支持springMotion、responsiveSpringMotion和interpolatingSpring曲线，因为这些曲线没有有效的持续时间设置。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetCurve(OH_ArkUI_AnimationGroupHandle group, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_animationgroup_getcurve) | 获取动画组的动画曲线。<br>本接口仅返回在本动画组上显式设置的曲线，不受子动画的曲线影响。如果本动画组未设置曲线，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。运行时，未设置的动画组曲线默认为[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetCurve(OH_ArkUI_AnimationGroupHandle group, ArkUI_CurveHandle curve)](#oh_arkui_nativemodule_animationgroup_setcurve) | 设置动画组的动画曲线。<br>动画组的曲线作为未通过[OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](#oh_arkui_nativemodule_propertyanimation_setcurve)、[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](#oh_arkui_nativemodule_keyframeanimation_setcurve)设置自身曲线的子动画的默认曲线。不支持springMotion、responsiveSpringMotion和interpolatingSpring曲线，因为这些曲线没有有效的持续时间设置。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetCurve(OH_ArkUI_AnimationGroupHandle group, ArkUI_CurveHandle *outBorrowedCurve)](#oh_arkui_nativemodule_animationgroup_getcurve) | 获取动画组的动画曲线。<br>本接口仅返回在本动画组上显式设置的曲线，不受子动画的曲线影响。如果本动画组未设置曲线，则outBorrowedCurve输出为NULL。运行时，未设置的动画组曲线默认为[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetTempo(OH_ArkUI_AnimationGroupHandle group, float tempo)](#oh_arkui_nativemodule_animationgroup_settempo) | 设置动画组的播放速率。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetTempo(OH_ArkUI_AnimationGroupHandle group, float *tempo)](#oh_arkui_nativemodule_animationgroup_gettempo) | 获取动画组的播放速率。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetAutoReverse(OH_ArkUI_AnimationGroupHandle group, bool autoReverse)](#oh_arkui_nativemodule_animationgroup_setautoreverse) | 设置动画组是否自动反转。<br>启用自动反转后，动画组在每轮播放中交替正向播放和反向播放。默认值为false。 |
@@ -222,7 +220,7 @@
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation(OH_ArkUI_AnimationGroupHandle group, OH_ArkUI_PropertyAnimationHandle animation)](#oh_arkui_nativemodule_animationgroup_addpropertyanimation) | 将属性动画添加到动画组中。<br>动画的目标节点由[OH_ArkUI_NativeModule_PropertyAnimation_SetTargetNode](#oh_arkui_nativemodule_propertyanimation_settargetnode)确定；如果未设置，则动画继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。在注册动画组时，每个子动画必须解析为非NULL目标。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation(OH_ArkUI_AnimationGroupHandle group, OH_ArkUI_KeyframeAnimationHandle animation)](#oh_arkui_nativemodule_animationgroup_addkeyframeanimation) | 将关键帧动画添加到动画组中。<br>动画的目标节点由[OH_ArkUI_NativeModule_KeyframeAnimation_SetTargetNode](#oh_arkui_nativemodule_keyframeanimation_settargetnode)确定；如果未设置，则动画继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。在注册动画组时，每个子动画必须解析为非NULL目标。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation(OH_ArkUI_AnimationGroupHandle group, OH_ArkUI_PathAnimationHandle animation)](#oh_arkui_nativemodule_animationgroup_addpathanimation) | 将路径动画添加到动画组中。<br>动画的目标节点由[OH_ArkUI_NativeModule_PathAnimation_SetTargetNode](#oh_arkui_nativemodule_pathanimation_settargetnode)确定；如果未设置，则动画继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。在注册动画组时，每个子动画必须解析为非NULL目标。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AddAnimationGroup(ArkUI_ContextHandle context, OH_ArkUI_AnimationGroupHandle group, const char *key)](#oh_arkui_nativemodule_addanimationgroup) | 在UIContext上以指定key注册动画组并开始播放。<br>UIContext通过key拥有动画组：注册后，UIContext持有动画组的后端（运行时）对象，调用者可以在注册后销毁前端动画组句柄（及子动画句柄），因为后端通过(UIContext, key)独立运行。key按UIContext（实例）划分作用域：不同UIContext中的相同key不会冲突。在一个UIContext内，如果已用相同key注册了动画组，系统会先移除前一个动画组（释放其后端对象）再注册新动画组。动画组随后通过相同的(UIContext, key)对进行标识和管理。<br>通过[OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation](#oh_arkui_nativemodule_animationgroup_addpropertyanimation)、[OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation](#oh_arkui_nativemodule_animationgroup_addkeyframeanimation)或[OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation](#oh_arkui_nativemodule_animationgroup_addpathanimation)添加的每个子动画，驱动其自身设置的目标节点；如果该目标未设置（或为NULL），则继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。注册时，每个子动画必须解析为非NULL目标节点（自身的或动画组默认的），且每个解析后的目标节点必须属于与context相同的UIContext；否则返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>播放控制和生命周期接口（[OH_ArkUI_NativeModule_RemoveAnimationGroup](#oh_arkui_nativemodule_removeanimationgroup)、[OH_ArkUI_NativeModule_GetAnimationGroupState](#oh_arkui_nativemodule_getanimationgroupstate)、[OH_ArkUI_NativeModule_HasAnimationGroup](#oh_arkui_nativemodule_hasanimationgroup)、[OH_ArkUI_NativeModule_PauseAnimationGroup](#oh_arkui_nativemodule_pauseanimationgroup)、[OH_ArkUI_NativeModule_ResumeAnimationGroup](#oh_arkui_nativemodule_resumeanimationgroup)、[OH_ArkUI_NativeModule_FinishAnimationGroup](#oh_arkui_nativemodule_finishanimationgroup)）均以(UIContext, key)对为键。<br>finish回调（见[OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback](#oh_arkui_nativemodule_animationgroup_registeronfinishcallback)）仅触发一次，由停止动画的事件触发——自然结束、[OH_ArkUI_NativeModule_FinishAnimationGroup](#oh_arkui_nativemodule_finishanimationgroup)或目标节点销毁。如果[OH_ArkUI_NativeModule_AddAnimationGroup](#oh_arkui_nativemodule_addanimationgroup)返回错误，动画创建失败，finish回调不会被触发。回调返回后，系统自动从UIContext移除动画组并释放动画组及其子动画的后端（运行时）对象；前端句柄（动画组及其子动画）仍需由调用者通过[OH_ArkUI_NativeModule_AnimationGroup_Destroy](#oh_arkui_nativemodule_animationgroup_destroy)、[OH_ArkUI_NativeModule_PropertyAnimation_Destroy](#oh_arkui_nativemodule_propertyanimation_destroy)、[OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](#oh_arkui_nativemodule_keyframeanimation_destroy)或[OH_ArkUI_NativeModule_PathAnimation_Destroy](#oh_arkui_nativemodule_pathanimation_destroy)销毁。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_AddAnimationGroup(ArkUI_ContextHandle context, OH_ArkUI_AnimationGroupHandle group, const char *key)](#oh_arkui_nativemodule_addanimationgroup) | 在UIContext上以指定key注册动画组并开始播放。<br>UIContext通过key拥有动画组：注册后，UIContext持有动画组的后端（运行时）对象，调用者可以在注册后销毁前端动画组句柄（及子动画句柄），因为后端通过(UIContext, key)独立运行。key按UIContext（实例）划分作用域：不同UIContext中的相同key不会冲突。在一个UIContext内，如果已用相同key注册了动画组，系统会先移除前一个动画组（释放其后端对象）再注册新动画组。动画组随后通过相同的(UIContext, key)对进行标识和管理。<br>通过[OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation](#oh_arkui_nativemodule_animationgroup_addpropertyanimation)、[OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation](#oh_arkui_nativemodule_animationgroup_addkeyframeanimation)或[OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation](#oh_arkui_nativemodule_animationgroup_addpathanimation)添加的每个子动画，驱动其自身设置的目标节点；如果该目标未设置（或为NULL），则继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。注册时，每个子动画必须解析为非NULL目标节点（自身的或动画组默认的）。如果子动画无可解析的目标节点，则返回[ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。每个解析后的目标节点必须属于与context相同的UIContext，否则返回错误码[ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>播放控制和生命周期接口（[OH_ArkUI_NativeModule_RemoveAnimationGroup](#oh_arkui_nativemodule_removeanimationgroup)、[OH_ArkUI_NativeModule_GetAnimationGroupState](#oh_arkui_nativemodule_getanimationgroupstate)、[OH_ArkUI_NativeModule_HasAnimationGroup](#oh_arkui_nativemodule_hasanimationgroup)、[OH_ArkUI_NativeModule_PauseAnimationGroup](#oh_arkui_nativemodule_pauseanimationgroup)、[OH_ArkUI_NativeModule_ResumeAnimationGroup](#oh_arkui_nativemodule_resumeanimationgroup)、[OH_ArkUI_NativeModule_FinishAnimationGroup](#oh_arkui_nativemodule_finishanimationgroup)）均以(UIContext, key)对为键。<br>finish回调（见[OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback](#oh_arkui_nativemodule_animationgroup_registeronfinishcallback)）仅触发一次，由停止动画的事件触发——自然结束、[OH_ArkUI_NativeModule_FinishAnimationGroup](#oh_arkui_nativemodule_finishanimationgroup)或目标节点销毁。如果[OH_ArkUI_NativeModule_AddAnimationGroup](#oh_arkui_nativemodule_addanimationgroup)返回错误，动画创建失败，finish回调不会被触发。回调返回后，系统自动从UIContext移除动画组并释放动画组及其子动画的后端（运行时）对象；前端句柄（动画组及其子动画）仍需由调用者通过[OH_ArkUI_NativeModule_AnimationGroup_Destroy](#oh_arkui_nativemodule_animationgroup_destroy)、[OH_ArkUI_NativeModule_PropertyAnimation_Destroy](#oh_arkui_nativemodule_propertyanimation_destroy)、[OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](#oh_arkui_nativemodule_keyframeanimation_destroy)或[OH_ArkUI_NativeModule_PathAnimation_Destroy](#oh_arkui_nativemodule_pathanimation_destroy)销毁。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_RemoveAnimationGroup(ArkUI_ContextHandle context, const char *key)](#oh_arkui_nativemodule_removeanimationgroup) | 从UIContext中移除指定key标识的动画组。<br>停止动画组（如果仍在运行）并释放动画组及其子动画的后端（运行时）对象。被动画的目标节点将恢复到动画开始时的状态。前端句柄（动画组及其子动画）不会被本调用释放，需要由调用者通过[OH_ArkUI_NativeModule_AnimationGroup_Destroy](#oh_arkui_nativemodule_animationgroup_destroy)、[OH_ArkUI_NativeModule_PropertyAnimation_Destroy](#oh_arkui_nativemodule_propertyanimation_destroy)、[OH_ArkUI_NativeModule_KeyframeAnimation_Destroy](#oh_arkui_nativemodule_keyframeanimation_destroy)或[OH_ArkUI_NativeModule_PathAnimation_Destroy](#oh_arkui_nativemodule_pathanimation_destroy)销毁。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_GetAnimationGroupState(ArkUI_ContextHandle context, const char *key, OH_ArkUI_AnimationGroupState *state)](#oh_arkui_nativemodule_getanimationgroupstate) | 获取UIContext上指定key标识的动画组的播放状态。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_HasAnimationGroup(ArkUI_ContextHandle context, const char *key, bool *exists)](#oh_arkui_nativemodule_hasanimationgroup) | 检查UIContext上是否存在指定key的动画组。 |
@@ -2872,7 +2870,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_SetCurve(OH_ArkUI_Proper
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_PropertyAnimationHandle](capi-arkui-nativemodule-arkui-propertyanimation8h.md) animation | [入参] 表示属性动画句柄。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [入参] 表示动画曲线。本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，曲线保持有效。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [入参] 表示动画曲线。NULL表示继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线。本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，曲线保持有效。 |
 
 **返回：**
 
@@ -2891,7 +2889,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetCurve(OH_ArkUI_Proper
 
 获取属性动画的动画曲线。
 
-本接口仅返回在本动画上显式设置的曲线；从动画组继承的值或默认值在运行时解析，不存储在本对象上。如果本动画未设置曲线，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。运行时实际生效的动画曲线按以下优先级确定：如果通过[OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](#oh_arkui_nativemodule_propertyanimation_setcurve)设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。
+本接口仅返回在本动画上显式设置的曲线；从动画组继承的值或默认值在运行时解析，不存储在本对象上。如果本动画未设置曲线，则outBorrowedCurve输出为NULL。运行时实际生效的动画曲线按以下优先级确定：如果通过[OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](#oh_arkui_nativemodule_propertyanimation_setcurve)设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。
 
 **起始版本：** 26.0.1
 
@@ -2901,13 +2899,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PropertyAnimation_GetCurve(OH_ArkUI_Proper
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_PropertyAnimationHandle](capi-arkui-nativemodule-arkui-propertyanimation8h.md) animation | [入参] 表示属性动画句柄。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [出参] 表示用于接收动画曲线的指针；调用者不得销毁该句柄。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [出参] 表示用于接收动画曲线的指针。调用者不得销毁该句柄。NULL表示本动画未设置曲线，运行时将继承动画组的曲线。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 未设置曲线。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 
 ### OH_ArkUI_NativeModule_PropertyAnimation_SetTempo()
@@ -3406,7 +3404,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve(OH_ArkUI_Keyfra
 | -- | -- |
 | [OH_ArkUI_KeyframeAnimationHandle](capi-arkui-nativemodule-arkui-keyframeanimation8h.md) animation | [入参] 表示关键帧动画句柄。 |
 | int32_t index | [入参] 表示关键帧索引。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [入参] 表示动画曲线。本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，曲线保持有效。不支持springMotion、responsiveSpringMotion和interpolatingSpring曲线，因为这些曲线没有有效的持续时间设置。实际生效的动画曲线按以下优先级确定：如果通过本接口或[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](#oh_arkui_nativemodule_keyframeanimation_setcurves)为关键帧设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)在动画组上设置的曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [入参] 表示动画曲线。NULL表示继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线。本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，曲线保持有效。不支持springMotion、responsiveSpringMotion和interpolatingSpring曲线，因为这些曲线没有有效的持续时间设置。实际生效的动画曲线按以下优先级确定：如果通过本接口或[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](#oh_arkui_nativemodule_keyframeanimation_setcurves)为关键帧设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)在动画组上设置的曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。 |
 
 **返回：**
 
@@ -3425,7 +3423,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetCurve(OH_ArkUI_Keyfra
 
 获取指定索引处关键帧的动画曲线。
 
-本接口仅返回为关键帧显式设置的曲线；从动画组继承的值或默认值在运行时解析，不存储在本对象上。如果关键帧未设置曲线，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。运行时实际生效的动画曲线按以下优先级确定：如果通过[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](#oh_arkui_nativemodule_keyframeanimation_setcurve)或[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](#oh_arkui_nativemodule_keyframeanimation_setcurves)为关键帧设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。
+本接口仅返回为关键帧显式设置的曲线；从动画组继承的值或默认值在运行时解析，不存储在本对象上。如果关键帧未设置曲线，则outBorrowedCurve输出为NULL。运行时实际生效的动画曲线按以下优先级确定：如果通过[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](#oh_arkui_nativemodule_keyframeanimation_setcurve)或[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurves](#oh_arkui_nativemodule_keyframeanimation_setcurves)为关键帧设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。
 
 **起始版本：** 26.0.1
 
@@ -3436,13 +3434,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_KeyframeAnimation_GetCurve(OH_ArkUI_Keyfra
 | -- | -- |
 | [OH_ArkUI_KeyframeAnimationHandle](capi-arkui-nativemodule-arkui-keyframeanimation8h.md) animation | [入参] 表示关键帧动画句柄。 |
 | int32_t index | [入参] 表示关键帧索引。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [出参] 表示用于接收动画曲线的指针；调用者不得销毁该句柄。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [出参] 表示用于接收动画曲线的指针。调用者不得销毁该句柄。NULL表示该关键帧未设置曲线，运行时将继承动画组的曲线。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 未设置曲线。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 
 ### OH_ArkUI_NativeModule_KeyframeAnimation_SetDuration()
@@ -3789,6 +3787,8 @@ OH_ArkUI_PathAnimationHandle OH_ArkUI_NativeModule_PathAnimation_Create(const ch
 
 路径动画作用于[OH_ARKUI_ANIMATION_PROPERTY_TRANSLATION](capi-native-type-visual-h.md#oh_arkui_animationpropertytype)属性。
 
+路径动画不支持设置曲线，运行时固定使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)，不继承动画组曲线。
+
 **起始版本：** 26.0.1
 
 
@@ -3935,62 +3935,6 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetDelay(OH_ArkUI_PathAnimat
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
-
-
-### OH_ArkUI_NativeModule_PathAnimation_SetCurve()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetCurve(OH_ArkUI_PathAnimationHandle animation, ArkUI_CurveHandle curve)
-```
-
-**描述：**
-
-设置路径动画的动画曲线。
-
-**起始版本：** 26.0.1
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [OH_ArkUI_PathAnimationHandle](capi-arkui-nativemodule-arkui-pathanimation8h.md) animation | [入参] 表示路径动画句柄。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [入参] 表示控制沿路径运动速率的动画曲线。<br>本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，曲线保持有效。不支持springMotion、responsiveSpringMotion和interpolatingSpring曲线，因为这些曲线没有有效的持续时间设置。实际生效的动画曲线按以下优先级确定：如果通过本接口设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)在动画组上设置的曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
-
-
-### OH_ArkUI_NativeModule_PathAnimation_GetCurve()
-
-```c
-ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_GetCurve(OH_ArkUI_PathAnimationHandle animation, ArkUI_CurveHandle *outBorrowedCurve)
-```
-
-**描述：**
-
-获取路径动画的动画曲线。
-
-本接口仅返回在本动画上显式设置的曲线；从动画组继承的值或默认值在运行时解析，不存储在本对象上。如果本动画未设置曲线，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。运行时实际生效的动画曲线按以下优先级确定：如果通过[OH_ArkUI_NativeModule_PathAnimation_SetCurve](#oh_arkui_nativemodule_pathanimation_setcurve)设置了曲线，则使用该值；否则，使用通过[OH_ArkUI_NativeModule_AnimationGroup_SetCurve](#oh_arkui_nativemodule_animationgroup_setcurve)设置的动画组曲线；如果两者都未设置，则使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。
-
-**起始版本：** 26.0.1
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [OH_ArkUI_PathAnimationHandle](capi-arkui-nativemodule-arkui-pathanimation8h.md) animation | [入参] 表示路径动画句柄。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [出参] 表示用于接收动画曲线的指针；调用者不得销毁该句柄。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 未设置曲线。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 
 ### OH_ArkUI_NativeModule_PathAnimation_SetTempo()
@@ -4167,7 +4111,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_PathAnimation_SetAutoRotation(OH_ArkUI_Pat
 
 设置路径动画过程中组件是否沿路径切线方向自动旋转。
 
-启用自动旋转后，组件将旋转使其朝向方向与当前位置的路径切线对齐。默认值为false。
+启用自动旋转后，组件将旋转使其朝向与当前位置的路径切线对齐。默认值为false。
 
 **起始版本：** 26.0.1
 
@@ -4435,7 +4379,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetCurve(OH_ArkUI_Animation
 
 设置动画组的动画曲线。
 
-动画组的曲线作为未通过[OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](#oh_arkui_nativemodule_propertyanimation_setcurve)、[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](#oh_arkui_nativemodule_keyframeanimation_setcurve)或[OH_ArkUI_NativeModule_PathAnimation_SetCurve](#oh_arkui_nativemodule_pathanimation_setcurve)设置自身曲线的子动画的默认曲线。不支持springMotion、responsiveSpringMotion和interpolatingSpring曲线，因为这些曲线没有有效的持续时间设置。
+动画组的曲线作为未通过[OH_ArkUI_NativeModule_PropertyAnimation_SetCurve](#oh_arkui_nativemodule_propertyanimation_setcurve)、[OH_ArkUI_NativeModule_KeyframeAnimation_SetCurve](#oh_arkui_nativemodule_keyframeanimation_setcurve)设置自身曲线的子动画的默认曲线。不支持springMotion、responsiveSpringMotion和interpolatingSpring曲线，因为这些曲线没有有效的持续时间设置。
 
 **起始版本：** 26.0.1
 
@@ -4445,7 +4389,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_SetCurve(OH_ArkUI_Animation
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_AnimationGroupHandle](capi-arkui-nativemodule-arkui-animationgroup8h.md) group | [入参] 表示动画组句柄。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [入参] 表示动画曲线。本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，曲线保持有效。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) curve | [入参] 表示动画曲线。NULL表示动画组在运行时使用默认值[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。本接口不接管曲线句柄的所有权；调用者必须确保在使用该动画句柄期间，曲线保持有效。 |
 
 **返回：**
 
@@ -4464,7 +4408,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetCurve(OH_ArkUI_Animation
 
 获取动画组的动画曲线。
 
-本接口仅返回在本动画组上显式设置的曲线，不受子动画的曲线影响。如果本动画组未设置曲线，则返回[ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。运行时，未设置的动画组曲线默认为[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。
+本接口仅返回在本动画组上显式设置的曲线，不受子动画的曲线影响。如果本动画组未设置曲线，则outBorrowedCurve输出为NULL。运行时，未设置的动画组曲线默认为[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。
 
 **起始版本：** 26.0.1
 
@@ -4474,13 +4418,13 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AnimationGroup_GetCurve(OH_ArkUI_Animation
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_AnimationGroupHandle](capi-arkui-nativemodule-arkui-animationgroup8h.md) group | [入参] 表示动画组句柄。 |
-| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [出参] 表示用于接收动画曲线的指针；调用者不得销毁该句柄。 |
+| [ArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) *outBorrowedCurve | [出参] 表示用于接收动画曲线的指针。调用者不得销毁该句柄。NULL表示本动画组未设置曲线，运行时默认使用[ARKUI_CURVE_LINEAR](capi-native-type-visual-h.md#arkui_animationcurve)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 未设置曲线。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 
 ### OH_ArkUI_NativeModule_AnimationGroup_SetTempo()
@@ -4886,7 +4830,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_AddAnimationGroup(ArkUI_ContextHandle cont
 
 UIContext通过key拥有动画组：注册后，UIContext持有动画组的后端（运行时）对象，调用者可以在注册后销毁前端动画组句柄（及子动画句柄），因为后端通过(UIContext, key)独立运行。key按UIContext（实例）划分作用域：不同UIContext中的相同key不会冲突。在一个UIContext内，如果已用相同key注册了动画组，系统会先移除前一个动画组（释放其后端对象）再注册新动画组。动画组随后通过相同的(UIContext, key)对进行标识和管理。
 
-通过[OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation](#oh_arkui_nativemodule_animationgroup_addpropertyanimation)、[OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation](#oh_arkui_nativemodule_animationgroup_addkeyframeanimation)或[OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation](#oh_arkui_nativemodule_animationgroup_addpathanimation)添加的每个子动画，驱动其自身设置的目标节点；如果该目标未设置（或为NULL），则继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。注册时，每个子动画必须解析为非NULL目标节点（自身的或动画组默认的），且每个解析后的目标节点必须属于与context相同的UIContext；否则返回错误码[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。
+通过[OH_ArkUI_NativeModule_AnimationGroup_AddPropertyAnimation](#oh_arkui_nativemodule_animationgroup_addpropertyanimation)、[OH_ArkUI_NativeModule_AnimationGroup_AddKeyframeAnimation](#oh_arkui_nativemodule_animationgroup_addkeyframeanimation)或[OH_ArkUI_NativeModule_AnimationGroup_AddPathAnimation](#oh_arkui_nativemodule_animationgroup_addpathanimation)添加的每个子动画，驱动其自身设置的目标节点；如果该目标未设置（或为NULL），则继承通过[OH_ArkUI_NativeModule_AnimationGroup_SetTargetNode](#oh_arkui_nativemodule_animationgroup_settargetnode)设置的动画组默认目标。注册时，每个子动画必须解析为非NULL目标节点（自身的或动画组默认的）。如果子动画无可解析的目标节点，则返回[ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。每个解析后的目标节点必须属于与context相同的UIContext，否则返回错误码[ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。
 
 播放控制和生命周期接口（[OH_ArkUI_NativeModule_RemoveAnimationGroup](#oh_arkui_nativemodule_removeanimationgroup)、[OH_ArkUI_NativeModule_GetAnimationGroupState](#oh_arkui_nativemodule_getanimationgroupstate)、[OH_ArkUI_NativeModule_HasAnimationGroup](#oh_arkui_nativemodule_hasanimationgroup)、[OH_ArkUI_NativeModule_PauseAnimationGroup](#oh_arkui_nativemodule_pauseanimationgroup)、[OH_ArkUI_NativeModule_ResumeAnimationGroup](#oh_arkui_nativemodule_resumeanimationgroup)、[OH_ArkUI_NativeModule_FinishAnimationGroup](#oh_arkui_nativemodule_finishanimationgroup)）均以(UIContext, key)对为键。
 
@@ -4907,7 +4851,7 @@ finish回调（见[OH_ArkUI_NativeModule_AnimationGroup_RegisterOnFinishCallback
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常，或解析后的目标节点不属于与context相同的UIContext。<br>         [ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 子动画无可解析的目标节点或子动画参数非法。<br>         [ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 检测到同线程重入调用。 |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 解析后的目标节点不属于与context相同的UIContext。<br>         [ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 子动画无可解析的目标节点或子动画参数非法。<br>         [ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 检测到同线程重入调用。 |
 
 
 ### OH_ArkUI_NativeModule_RemoveAnimationGroup()

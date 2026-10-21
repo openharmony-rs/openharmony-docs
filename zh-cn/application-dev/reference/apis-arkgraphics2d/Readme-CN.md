@@ -2,9 +2,9 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin; @oh_wangxk; @gmiao522-->
-<!--Designer: @wanyanglan; @liumingxiang-->
-<!--Tester: @nobuggers; @yhl0101-->
+<!--Owner: @hangmengxin; @oh_wangxk-->
+<!--Designer: @wanyanglan; @KejiePeng-->
+<!--Tester: @nobuggers; @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 - ArkTS API<!--arkgraphics-arkts-->
@@ -44,6 +44,9 @@
     - [Class (TypefaceArguments)](arkts-apis-graphics-drawing-TypefaceArguments.md)
     - [Interfaces (其他)](arkts-apis-graphics-drawing-i.md)
     - [Enums](arkts-apis-graphics-drawing-e.md)
+  <!--Del-->
+  - [@ohos.graphics.drawing (绘制模块)(系统接口)](js-apis-graphics-drawing-sys.md)
+  <!--DelEnd-->
   - [@ohos.graphics.hdrCapability (HDR能力)](js-apis-hdrCapability.md)
   - [@ohos.graphics.text (文本模块)](js-apis-graphics-text.md)
   - [@ohos.graphics.uiEffect (效果级联)](js-apis-uiEffect.md)

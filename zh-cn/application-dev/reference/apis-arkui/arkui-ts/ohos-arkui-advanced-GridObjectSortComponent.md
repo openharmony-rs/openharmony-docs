@@ -15,8 +15,6 @@
 >  - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该组件仅可在Stage模型下使用。
->
-> - 如果GridObjectSortComponent设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到GridObjectSortComponent本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议GridObjectSortComponent设置通用属性和通用事件。
 
 
 ## 导入模块
@@ -102,9 +100,13 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 | symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | GridObjectSortComponentType类型为IMAGE_TEXT时，用于配置Symbol图标资源；类型为TEXT时不生效。配置优先级高于url。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | order    | number                                 | 否 | 否 | 顺序序号，数值越小排序越靠前。<br />取值范围：大于等于0。<br />默认值：0 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                   |
 
+## 属性
+
+不支持[通用属性](ts-component-general-attributes.md)。
+
 ## 事件
 
-不建议设置[通用事件](ts-component-general-events.md)，设置后可能不生效或不符合预期。
+不支持[通用事件](ts-component-general-events.md)。
 
 ## 示例
 网格对象的编辑排序组件基础用法，涉及对组件配置信息初始化，数据初始化，保存、取消方法的使用。

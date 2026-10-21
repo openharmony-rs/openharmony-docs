@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行object相关开发，包括创建对象、获取原型、冻结和密封对象等操作，支持在Node-API模块中管理ArkTS对象。"
+keywords: [Node-API, object, 对象操作, napi_get_prototype, napi_freeze, napi_seal, 原型, 对象管理, 冻结对象]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行object相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -525,7 +533,7 @@ static napi_value SetTypeTagToObject(napi_env env, napi_callback_info info)
     // 给参数（对象）设置类型标签
     napi_status status = napi_type_tag_object(env, args[0], &TagsData[index]);
     if (status != napi_ok) {
-        napi_throw_error(env, "Reconnect error", "napi_type_tag_object failed");
+        napi_throw_error(env, "napi_type_tag_object error", "napi_type_tag_object failed");
         return nullptr;
     }
     // 将bool结果转换为napi_value并返回
@@ -563,6 +571,8 @@ export const setTypeTagToObject: (obj: Object, index: number) => boolean | undef
 
 export const checkObjectTypeTag: (obj: Object, index: number) => boolean; // napi_check_object_type_tag
 ```
+
+ArkTS侧示例代码
 
 <!-- @[ark_napi_type_tag_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIObject/entry/src/main/ets/pages/Index.ets) --> 
 

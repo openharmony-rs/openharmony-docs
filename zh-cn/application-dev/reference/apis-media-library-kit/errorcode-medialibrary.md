@@ -97,7 +97,7 @@ Invalid parameter.
 
 1. 参数不是数组类型（The parameter is not an array）。
 2. indexSet参数为undefined（IndexSet is null or undefined）。
-3. 索引超出对象范围，必须在 [0, count) 范围内（The index is out of range, must be within [0, count)）。
+3. 索引超出对象范围，必须在[0, count)范围内（The index is out of range, must be within [0, count)）。
 4. 不支持的结果集类型，必须为有效的FetchResType枚举值（The FetchResType is not supported, must be a valid FetchResType enum value）。
 5. 场景参数验证失败（Scenario parameter verification failed）。
 6. 需要一个或两个参数（One or two parameters are required）。

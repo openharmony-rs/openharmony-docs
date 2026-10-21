@@ -136,3 +136,39 @@ No available certificate for authorization.
 **处理步骤**
 
 安装有效证书凭据。
+
+## 29700009 证书管理对话框操作超时
+
+**错误信息**
+
+The operation in the Ukey authentication dialog box timed out.
+
+**错误描述**
+
+证书管理对话框操作超时。
+
+**可能原因**
+
+用户在Ukey认证对话框中的操作超过约定时间。
+
+**处理步骤**
+
+重新发起认证操作。
+
+## 29700010 不支持并发调用
+
+**错误信息**
+
+The Ukey authentication dialog box cannot be opened concurrently. Please try again later.
+
+**错误描述**
+
+该API不支持并发调用。
+
+**可能原因**
+
+已存在正在显示的Ukey认证对话框。
+
+**处理步骤**
+
+等待当前Ukey认证对话框关闭后，再重新发起调用。

@@ -51,7 +51,11 @@
    void Unsubscribe(CommonEvent_Subscriber *subscriber)
    {
        // 通过传入订阅者来退订事件
-       int32_t ret = OH_CommonEvent_UnSubscribe(subscriber);
+       CommonEvent_ErrCode ret = OH_CommonEvent_UnSubscribe(subscriber);
+       if (ret != COMMONEVENT_ERR_OK) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "OH_CommonEvent_UnSubscribe failed, ret <%{public}d>.", ret);
+           return;
+       }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_UnSubscribe ret <%{public}d>.", ret);
    }
    ```

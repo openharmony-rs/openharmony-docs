@@ -742,7 +742,7 @@ Obtains the names of NICs in the specified network sharing state. This API uses 
 
 | Type                    | Description                                     |
 | ------------------------ | ----------------------------------------- |
-| Promise\<Array\<string>> | Promise object that returns the list of network interface card names in the specified state. |
+| Promise\<Array\<string>> | Promise used to return the list of network interface card names in the specified state. |
 
 **Error codes**
 

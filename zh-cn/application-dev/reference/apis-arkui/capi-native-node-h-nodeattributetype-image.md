@@ -837,3 +837,27 @@ NODE_IMAGE_ANIMATOR_ITERATION = 19006
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 播放次数。 |
+
+## NODE_IMAGE_ANIMATOR_INTERPOLATION
+
+```c
+NODE_IMAGE_ANIMATOR_INTERPOLATION = 19007
+```
+
+设置帧动画中帧图片缩放时的插值效果。支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.1
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 帧图片缩放时的插值效果，参数类型为[ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation)，默认值为ARKUI_IMAGE_INTERPOLATION_LOW。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 帧图片缩放时的插值效果，参数类型为[ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation)。 |

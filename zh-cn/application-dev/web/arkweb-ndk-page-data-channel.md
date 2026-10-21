@@ -63,7 +63,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 在调用API前建议通过[ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#宏定义)校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。[createWebMessagePorts](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports)、[postWebMessage](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage)、[close](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close)需运行在UI线程。
 
 * 前端页面代码
-
+  
   ```html
   <!-- entry/src/main/resources/rawfile/index.html -->
   <!-- index.html -->
@@ -194,7 +194,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
 * ArkTS侧代码
 
-  <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/ets/pages/Index.ets) -->  
   
   ``` TypeScript
   import testNapi from 'libentry.so';
@@ -215,7 +215,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
     }
   
     aboutToDisappear() {
-      console.error('aboutToDisappear');
+      console.info('aboutToDisappear');
     }
   
     build() {

@@ -500,6 +500,8 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
     })!;
     ```
 
+16. 不支持对持久化数据类的类名和属性名进行混淆，否则会导致已有数据无法读取或反序列化失败。应用需关闭混淆，或通过混淆配置保留相关类名和属性名，具体请参考[源码混淆保留选项](../../arkts-utils/source-obfuscation-keep-options.md#保留选项汇总)和[字节码混淆保留选项](../../arkts-utils/bytecode-obfuscation.md#已有保留选项汇总)。
+
 ## globalConnect支持的类型
 
 ### globalConnect顶层持久化数据类型及非顶层数据类型
@@ -1058,9 +1060,9 @@ struct Page1 {
 
 **connect的存储路径需要注意以下两点：**
 
-1、connect使用module级别的存储路径，以最先启动的module的路径作为存储路径，从内存回写磁盘时会回写到第一个连接该module的路径。应用如果之后先从另一个module启动，则会以新module的路径作为存储路径。
+1. connect使用module级别的存储路径，以最先启动的module的路径作为存储路径，从内存回写磁盘时会回写到第一个连接该module的路径。应用如果之后先从另一个module启动，则会以新module的路径作为存储路径。
 
-2、当不同module使用相同的key时，哪个module先启动，数据就为哪个module中保存的键值对，回写到对应的module中。
+2. 当不同module使用相同的key时，哪个module先启动，数据就为哪个module中保存的键值对，回写到对应的module中。
 
 **globalConnect的存储路径需要注意：**
 

@@ -36,6 +36,8 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称                               | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | sandboxCreatorBundleName          | string                                                       | 是   | 是   | 沙箱分身的创建方包名。 |
+| deviceModeDistributionPolicy          | [bundleManager.DeviceModeDistributionPolicy](js-apis-bundleManager-sys.md#devicemodedistributionpolicy)                                                       | 是   | 是   | 设备模式分发策略，用于指定应用程序如何分发到设备上。<br>**起始版本：** 26.0.1 |
+| appSandboxPolicy          | [bundleManager.AppSandboxPolicy](js-apis-bundleManager-sys.md#appsandboxpolicy)                                                       | 是   | 是   | 双模式（2in1/平板）场景下的应用沙箱策略。<br>**起始版本：** 26.0.1 |
 
 ## DynamicIconInfo
 
@@ -100,3 +102,23 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
 |validity| [Validity](js-apis-bundleManager-AppProvisionInfo-sys.md#validity) | 是   | 是   | 签名证书文件的有效期。<br/>**模型约束：** 此接口仅可在Stage模型下使用。            |
+
+
+## BundleExtensionPolicyInfo
+
+应用包扩展策略信息。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称      | 类型           | 只读 | 可选 | 说明                        |
+| --------- | -------------- | ---- | ---- | --------------------------- |
+| bundleName | string         | 是   | 否   | 应用的包名。 |
+| appIndex | number         | 是   | 否   | 应用分身索引。<br>该值应为整数。 |
+| deviceModeDistributionPolicy | [bundleManager.DeviceModeDistributionPolicy](js-apis-bundleManager-sys.md#devicemodedistributionpolicy) | 是 | 否 | 应用的设备模式分发策略。 |
+| appSandboxPolicy | [bundleManager.AppSandboxPolicy](js-apis-bundleManager-sys.md#appsandboxpolicy) | 是 | 否 | 应用的沙箱策略。 |

@@ -677,13 +677,13 @@ NODE_ARC_ALPHABET_INDEXER_COLOR = 23001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。默认值为0xFFFFFFFF，表示白色。 |
+| .value[0].u32 | 文本颜色，0xARGB格式。默认值为0x99182431，表示略带透明的深暗蓝色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。 |
+| .value[0].u32 | 文本颜色，0xARGB格式。 |
 
 ## NODE_ARC_ALPHABET_INDEXER_SELECTED_COLOR
 
@@ -700,13 +700,13 @@ NODE_ARC_ALPHABET_INDEXER_SELECTED_COLOR = 23002
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。默认值为0xFFFFFFFF，表示白色。 |
+| .value[0].u32 | 文本颜色，0xARGB格式。默认值为0xFF007DFF，表示蓝色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。 |
+| .value[0].u32 | 文本颜色，0xARGB格式。 |
 
 ## NODE_ARC_ALPHABET_INDEXER_POPUP_COLOR
 
@@ -723,13 +723,13 @@ NODE_ARC_ALPHABET_INDEXER_POPUP_COLOR = 23003
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。默认值为0xFFFFFFFF，表示白色。 |
+| .value[0].u32 | 文本颜色，0xARGB格式。默认值为0xFF007DFF，表示蓝色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。 |
+| .value[0].u32 | 文本颜色，0xARGB格式。 |
 
 ## NODE_ARC_ALPHABET_INDEXER_SELECTED_BACKGROUND_COLOR
 
@@ -746,13 +746,13 @@ NODE_ARC_ALPHABET_INDEXER_SELECTED_BACKGROUND_COLOR = 23004
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 背景颜色，0xargb格式。默认值为0xFF1F71FF，表示蓝色。 |
+| .value[0].u32 | 背景颜色，0xARGB格式。默认值为0xFF1F71FF，表示深蓝色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 背景颜色，0xargb格式。 |
+| .value[0].u32 | 背景颜色，0xARGB格式。 |
 
 ## NODE_ARC_ALPHABET_INDEXER_POPUP_BACKGROUND_COLOR
 
@@ -769,13 +769,13 @@ NODE_ARC_ALPHABET_INDEXER_POPUP_BACKGROUND_COLOR = 23005
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 背景颜色，0xargb格式。默认值为0xD8404040，表示深灰色。 |
+| .value[0].u32 | 背景颜色，0xARGB格式。默认值为0xD8404040，表示微透明的深灰色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 背景颜色，0xargb格式。 |
+| .value[0].u32 | 背景颜色，0xARGB格式。 |
 
 ## NODE_ARC_ALPHABET_INDEXER_USE_POPUP
 
@@ -816,7 +816,7 @@ NODE_ARC_ALPHABET_SELECTED_FONT = 23007
 | 参数项 | 描述 |
 | -- | -- |
 | .string | 字体族，多个字体使用','进行分割，为可选参数。默认值为“HarmonyOS Sans”。 |
-| .value[0].f32 | 字体大小，单位为fp，为可选参数，默认值为13。 |
+| .value[0].f32 | 字体大小，单位为fp，为可选参数，默认值为13.0。 |
 | .value[1].i32 | 字体粗细，为可选参数，参数类型[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)，默认值为ARKUI_FONT_WEIGHT_W500。 |
 | .value[2].i32 | 字体样式，为可选参数，参数类型[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)，默认值为ARKUI_FONT_STYLE_NORMAL。 |
 
@@ -845,7 +845,7 @@ NODE_ARC_ALPHABET_INDEXER_POPUP_FONT = 23008
 | 参数项 | 描述 |
 | -- | -- |
 | .string | 字体族，多个字体使用','进行分割，为可选参数。默认值为“HarmonyOS Sans”。 |
-| .value[0].f32 | 字体大小，单位为fp，为可选参数，默认值为19。 |
+| .value[0].f32 | 字体大小，单位为fp，为可选参数，默认值为19.0。 |
 | .value[1].i32 | 字体粗细，为可选参数，参数类型[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)，默认值为ARKUI_FONT_WEIGHT_W500。 |
 | .value[2].i32 | 字体样式，为可选参数，参数类型[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)，默认值为ARKUI_FONT_STYLE_NORMAL。 |
 
@@ -874,7 +874,7 @@ NODE_ARC_ALPHABET_FONT = 23009
 | 参数项 | 描述 |
 | -- | -- |
 | .string | 字体族，多个字体使用','进行分割，为可选参数。默认值为“HarmonyOS Sans”。 |
-| .value[0].f32 | 字体大小，单位为fp，为可选参数，默认值为13。 |
+| .value[0].f32 | 字体大小，单位为fp，为可选参数，默认值为13.0。 |
 | .value[1].i32 | 字体粗细，为可选参数，参数类型[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)，默认值为ARKUI_FONT_WEIGHT_W500。 |
 | .value[2].i32 | 字体样式，为可选参数，参数类型[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)，默认值为ARKUI_FONT_STYLE_NORMAL。 |
 
@@ -902,7 +902,7 @@ NODE_ARC_ALPHABET_INDEXER_ITEM_SIZE = 23010
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 字母区域为圆形，设置该圆形的直径，单位为vp，默认值为24。 |
+| .value[0].f32 | 字母区域为圆形，设置该圆形的直径，单位为vp，默认值为24.0。 |
 
 **返回：**
 
@@ -994,7 +994,7 @@ NODE_ARC_SWIPER_INDEX = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_SWIPER = 1022000
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 子组件的索引值，默认值为0。 |
+| .value[0].i32 | 子组件的索引值，默认值为0。当index值小于0或大于等于子组件数量时，按照默认值0处理。 |
 
 **返回：**
 
@@ -1019,9 +1019,9 @@ NODE_ARC_SWIPER_INDICATOR = 1022001
 | -- | -- |
 | .value[0].i32 | 是否显示导航点指示器，1表示显示导航点指示器，0表示不显示，默认值为1。 |
 | .value[1].i32 | ArcSwiper导航点指示器的方向，参数类型[OH_ArkUI_ArcDirection](capi-native-type-h.md#oh_arkui_arcdirection)，默认值为OH_ARKUI_ARCDIRECTION_SIX_CLOCK_DIRECTION，为可选参数。 |
-| .value[2].i32 | 未选中点的颜色，0xargb格式，默认值为0xA9FFFFFF，表示白色，为可选参数。 |
-| .value[3].i32 | 选中点的颜色，0xargb格式，默认值为0xFF5EA1FF，表示蓝色，为可选参数。 |
-| .value[4].i32 | 长按后ArcSwiper导航点指示器的背景颜色，0xargb格式，默认值为0xFF5EA1FF，表示蓝色，为可选参数。 |
+| .value[2].i32 | 未选中点的颜色，0xARGB格式，默认值为0xA9FFFFFF，表示白色，为可选参数。 |
+| .value[3].i32 | 选中点的颜色，0xARGB格式，默认值为0xFF5EA1FF，表示蓝色，为可选参数。 |
+| .value[4].i32 | 长按后ArcSwiper导航点指示器的背景颜色，0xARGB格式，默认值为0xFF5EA1FF，表示蓝色，为可选参数。 |
 | .object | 遮罩的渐变颜色，为可选参数。颜色停止点数组，每个颜色停止点由一种颜色及其停止位置组成。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。无效颜色会被自动跳过。colors：颜色停止点的颜色。stops：颜色停止点的停止位置。size：颜色数量。 |
 
 **返回：**
@@ -1050,7 +1050,7 @@ NODE_ARC_SWIPER_DURATION = 1022002
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 子组件切换的动画时长，单位为毫秒，取值范围[0, +∞)。未设置时，默认值为400。 |
+| .value[0].i32 | 子组件切换的动画时长，单位为毫秒，取值范围[0, +∞)。默认值为400。设置范围外的值时，按照默认值400处理。 |
 
 **返回：**
 
@@ -1165,7 +1165,7 @@ NODE_ARC_SWIPER_DISABLE_TRANSITION_ANIMATION = 1022007
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 是否禁用转场动画，1表示禁用转场动画，0表示不禁用，默认值为0。 |
+| .value[0].i32 | 是否禁用转场动画，1表示禁用转场动画，0表示不禁用，默认值为0。传入范围外的值时，按默认值0处理。 |
 
 **返回：**
 

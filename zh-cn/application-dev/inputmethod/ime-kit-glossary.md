@@ -38,11 +38,11 @@ Extension能力的上下文环境，提供启动、停止、绑定、解绑Abili
 
 ### FLAG_FIXED; 固定态
 
-输入法面板位置固定在屏幕底部的状态类型。
+输入法面板位置固定在屏幕底部的状态类型。对应@ohos.inputMethod.Panel模块中的FLAG_FIXED。@ohos.inputMethodEngine模块中对应名称为FLG_FIXED。
 
 ### FLAG_FLOATING; 悬浮态
 
-输入法面板可浮动移动的状态类型。
+输入法面板可浮动移动的状态类型。对应@ohos.inputMethod.Panel模块中的FLAG_FLOATING。@ohos.inputMethodEngine模块中对应名称为FLG_FLOATING。
 
 ### FLAG_CANDIDATE; 候选词态
 
@@ -106,7 +106,10 @@ Extension能力的上下文环境，提供启动、停止、绑定、解绑Abili
 
 ### PanelFlag; 面板状态类型
 
-输入法面板的状态类型枚举，包括固定态（FLAG_FIXED）、悬浮态（FLAG_FLOATING）、候选词态（FLAG_CANDIDATE）。
+输入法面板的状态类型枚举，包括固定态、悬浮态、候选词态。不同模块下枚举成员命名不同：
+
+- @ohos.inputMethod.Panel：FLAG_FIXED、FLAG_FLOATING、FLAG_CANDIDATE
+- @ohos.inputMethodEngine：FLG_FIXED、FLG_FLOATING、FLAG_CANDIDATE
 
 ### PanelInfo; 面板配置信息
 

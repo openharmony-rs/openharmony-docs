@@ -293,7 +293,7 @@ setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceMa
 **示例：**
 
 ```ts
-import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
+import { common2D, drawing, colorSpaceManager } from '@kit.ArkGraphics2D';
 
 const pen = new drawing.Pen();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
@@ -343,7 +343,7 @@ getColor4f(): common2D.Color4f
 **示例：**
 
 ```ts
-import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
+import { common2D, drawing, colorSpaceManager } from '@kit.ArkGraphics2D';
 
 const pen = new drawing.Pen();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);

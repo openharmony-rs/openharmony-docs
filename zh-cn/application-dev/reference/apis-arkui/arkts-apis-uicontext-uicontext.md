@@ -2886,6 +2886,50 @@ struct Index {
 }
 ```
 
+## isWindowInfoInitialized
+
+isWindowInfoInitialized(): boolean
+
+查询当前实例所在窗口信息是否已初始化。通常用于启动阶段，在通过UI上下文获取窗口布局断点前进行判断。窗口信息未初始化时，断点接口返回是不可信的。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 窗口信息是否已初始化。当宽高有效时返回true，否则返回false。 |
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Button('Check window information')
+        .onClick(() => {
+          const initialized = this.uiContext.isWindowInfoInitialized();
+          console.info(`Window information initialized: ${initialized}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## postFrameCallback<sup>12+</sup>
 
 postFrameCallback(frameCallback: FrameCallback): void
@@ -2949,7 +2993,7 @@ postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
 | frameCallback | [FrameCallback](arkts-apis-uicontext-framecallback.md) | 是   | 下一帧需要执行的回调。 |
-| delayTime | number | 是   | 延迟的时间，以毫秒为单位。传入null、undefined或小于0的值，会按0处理。 |
+| delayTime | number | 是   | 延迟的时间，以ms为单位。传入null、undefined或小于0的值，会按0处理。 |
 
 **示例：**
 
@@ -4687,3 +4731,59 @@ struct Index {
   }
 }
 ```
+
+## applyDefaultImmersiveStrategy
+
+applyDefaultImmersiveStrategy(...types: ImmersiveStrategy[]): void
+
+在EntryAbility或应用首页中应用安全区域沉浸式策略。适用于全屏或沉浸式应用等场景。在应用首次布局前可以统一配置安全区域沉浸式策略。策略应用后，页面处理安全区域的方式会根据指定的策略进行调整。
+
+> **说明：**
+>
+> 不支持动态更新。该接口仅在应用首次布局流程开始前调用才生效。如果在页面进入首次布局流程后调用，则应用的策略不变，此接口不生效。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                      | 必填 | 说明                                   |
+| ------- | --------------------------------------------------------- | ---- | -------------------------------------- |
+| types | [ImmersiveStrategy\[\]](arkui-ts/ts-appendix-enums.md#immersivestrategy) | 否   | 应用的沉浸式策略。空数组将清除所有已应用的沉浸式策略。<br/>设置异常值undefined、null、NaN、Infinity时按空数组处理。 |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+
+    windowStage.loadContent('pages/Index', (err, data) => {
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      uiContext.applyDefaultImmersiveStrategy(ImmersiveStrategy.AVOID_CUTOUT,
+        ImmersiveStrategy.AVOID_FLOAT_NAV);
+    });
+  }
+}
+
+// Index.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+    }.width(LayoutPolicy.matchParent)
+    .height(LayoutPolicy.matchParent)
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+
+![ImmersiveStrategy](./figures/ImmersiveStrategy.jpeg)

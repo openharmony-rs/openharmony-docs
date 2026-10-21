@@ -154,6 +154,12 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 | USER_EXTEND_CREDENTIAL  | 1  | 扩展身份认证凭据。                |
 | DEVICE_SECURITY_LEVEL   | 2  | 设备安全等级。              |
 | PRINTER_IP_ADDRESS_POLICY | 3 | 打印机IP地址策略。          |
+| OPTICAL_DISC_DRIVE_BURN | 4 | 光驱刻录。          |
+| EXACT_TIMER | 5 | 精确定时器。          |
+| EXEMPTION_RESOURCE | 6 | 资源豁免。          |
+| X_KEY | 7 | X键。          |
+| SYSTEM_ROLLBACK | 8 | 系统回退。          |
+| SUPER_PRIVACY | 9 | 超级隐私模式。          |
 
 ## common.isFeatureSupported
 
@@ -182,11 +188,25 @@ isFeatureSupported(feature: ManagedFeature): boolean
 **示例：**
 
 ```ts
-import { common } from '@kit.MDMKit';
+import { common, systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
 
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let domain: string = "https://www.hotaExample.com";
+// 调用接口前，先使用本接口查询设备是否支持本机HOTA域名特性
 let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.LOCAL_HOTA_DOMAIN);
 if (isSupported) {
-  console.info('The local HOTA domain feature is supported.');
+  try {
+    systemManager.setLocalHotaDomain(wantTemp, domain);
+    console.info('Succeeded in setting local HOTA domain.');
+  } catch (err) {
+    console.error(`Failed to set local HOTA domain. Code is ${err.code}, message is ${err.message}`);
+  }
 } else {
   console.info('The local HOTA domain feature is not supported.');
 }

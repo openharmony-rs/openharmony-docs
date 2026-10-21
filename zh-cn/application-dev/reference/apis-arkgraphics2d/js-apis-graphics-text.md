@@ -1,9 +1,9 @@
 # @ohos.graphics.text (文本模块)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 本模块提供一系列用于文本布局和字体管理的编程接口。文本布局相关的接口旨在提供高质量的排版，包括字符到字形的转换、字距调整、换行、对齐、文本测量等。字体管理接口提供字体注册、字体描述符、字体集管理等功能。
 
@@ -855,6 +855,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | rightTopRadius     | number                                               | 否  |  否   | 矩形框的右上半径，单位为物理像素px。       |
 | rightBottomRadius  | number                                               | 否  |  否   | 矩形框的右下半径，单位为物理像素px。       |
 | leftBottomRadius   | number                                               | 否  |  否   | 矩形框的左下半径，单位为物理像素px。       |
+| borderColor        | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  是   | 矩形边框的颜色，默认值为白色。<br>**起始版本：** 26.2.0<br>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。               |
+| borderWidth        | number                                               | 否  |  是   | 矩形边框的宽度，单位为物理像素px，默认值为0。<br>**起始版本：** 26.2.0<br>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## FontFeature
 

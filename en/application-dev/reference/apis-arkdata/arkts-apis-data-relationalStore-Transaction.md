@@ -199,7 +199,7 @@ A single string type field supports writing a maximum of 8 MB. The excess part w
 
 | Type                 | Description                                             |
 | --------------------- | ------------------------------------------------- |
-| Promise&lt;number&gt; | Promise object that returns the row ID of the inserted data. |
+| Promise&lt;number&gt; | Promise used to return the row ID of the inserted data. |
 
 **Error codes**
 

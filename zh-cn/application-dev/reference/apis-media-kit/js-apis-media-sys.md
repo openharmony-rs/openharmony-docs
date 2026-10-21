@@ -525,16 +525,6 @@ avRecorder.setWatermark(watermark, watermarkConfig).then(() => {
 });
 ```
 
-## AVRecorderProfile<sup>9+</sup>
-
-音视频录制的配置文件。
-
-**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
-
-| 名称             | 类型                                         | 只读 | 可选 | 说明                                                         |
-| ---------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| enableStableQualityMode<sup>18+</sup>            | boolean                        | 否   | 是   | 视频录制是否选择稳定质量模式，选择视频录制时选填，enableStableQualityMode默认为false。设置为true时，启用视频编码策略以实现质量稳定的编码。<br>**系统接口：** 该接口为系统接口。|
-
 ## VideoRecorder<sup>9+</sup>
 
 > **说明：**
@@ -1497,6 +1487,7 @@ screenCaptureMonitor.off('systemScreenRecorder');
 | ------------------------ | --------------- | ------------------------------------------------------------ |
 | SCREENCAPTURE_STARTED       | 0   | 表示系统录屏应用开始录屏。                       |
 | SCREENCAPTURE_STOPPED        | 1    | 表示系统录屏应用停止录屏。 |
+| SCREENCAPTURE_DIED<sup>23+</sup>           | 2    | 表示录屏框架服务死亡。 |
 
 ## enableDeviceLevelCapture<sup>20+</sup>
 

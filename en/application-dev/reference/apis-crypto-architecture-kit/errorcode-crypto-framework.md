@@ -42,11 +42,15 @@ The **Native** object fails to be obtained or the parameter conversion fails.
 
 **Possible Causes**
 
-An unexpected error occurs.
+1. The instance object used to call the API is not created by an API of the current module. As a result, the **Native** object fails to be obtained.
+2. A null pointer occurs inside the system.
+3. An unexpected error occurs.
 
 **Solution**
 
-Check whether the system is running properly.
+1. Check whether the instance object used to call the API is correctly created by an API of the current module.
+2. Check whether the system is normal. If not, try again later or restart the device.
+3. If the fault persists, collect log information and contact Huawei technical support.
 
 ## 17620003 Parameter Check Failed
 
@@ -203,7 +207,7 @@ If **doFinal** fails, the padding fails to be verified. **doFinal** decrypts the
 
 Ensure that the **key** and **iv** parameters for encryption and decryption are the same, the input value of **ciphertext** during decryption is correct, and the length of the ciphertext is an integer multiple of the block size (16 bytes).
 
-### Failed to Call doFinal During Decryption Using DES/3DES
+### Failed to Call doFinal During Decryption Using DES or 3DES
 
 **Symptom**
 

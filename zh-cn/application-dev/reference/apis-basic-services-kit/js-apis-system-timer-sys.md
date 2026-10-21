@@ -76,7 +76,7 @@ createTimer(options: TimerOptions, callback: AsyncCallback&lt;number&gt;): void
 | 错误码ID | 错误信息                                                                                                                                         |
 |-------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                                                 |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -132,7 +132,7 @@ createTimer(options: TimerOptions): Promise&lt;number&gt;
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -182,7 +182,7 @@ startTimer(timer: number, triggerTime: number, callback: AsyncCallback&lt;void&g
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -247,7 +247,7 @@ startTimer(timer: number, triggerTime: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -300,7 +300,7 @@ stopTimer(timer: number, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -361,7 +361,7 @@ stopTimer(timer: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -419,7 +419,7 @@ destroyTimer(timer: number, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -481,7 +481,7 @@ destroyTimer(timer: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 

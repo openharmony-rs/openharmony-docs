@@ -367,7 +367,7 @@ static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
             outputFile.close();
             OH_LOG_INFO(LOG_APP, "数据写入成功.");
         } else {
-            OH_LOG_INFO(LOG_APP, "无法打开文件.");
+            OH_LOG_ERROR(LOG_APP, "无法打开文件.");
         }
         char* tempFileUri;
         OH_FileUri_GetUriFromPath(tempPath.c_str(), tempPath.size(), &tempFileUri);
@@ -427,14 +427,14 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     // 获取OE文档
     ret = OH_ContentEmbed_Extension_GetContentEmbedDocument(object, &ceDocument);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Extension_GetContentEmbedDocument ret: %{public}d", ret);
         return;
     }
     // 获取Root Storage
     ContentEmbed_Storage *rootStorage = nullptr;
     ret = OH_ContentEmbed_Document_GetRootStorage(ceDocument, &rootStorage);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Document_GetRootStorage ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetRootStorage ret: %{public}d", ret);
         return;
     }
 
@@ -450,7 +450,7 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     char nativeFilePath[MAX_PATH_LENGTH];
     ret = OH_ContentEmbed_Document_GetNativeFilePath(ceDocument, nativeFilePath);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Document_GetNativeFilePath ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_GetNativeFilePath ret: %{public}d", ret);
         return;
     }
 
@@ -469,13 +469,13 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     // 往OE文档写数据
     ret = OH_ContentEmbed_Stream_Write(destStream, buffer.data(), oriFileSize, &num);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Stream_Write ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Stream_Write ret: %{public}d", ret);
         return;
     }
     // 刷新OE文档
     ret = OH_ContentEmbed_Document_Flush(ceDocument);
     if (ret != CE_ERR_OK) {
-        OH_LOG_INFO(LOG_APP, "OH_ContentEmbed_Document_Flush ret: %{public}d", ret);
+        OH_LOG_ERROR(LOG_APP, "OH_ContentEmbed_Document_Flush ret: %{public}d", ret);
         return;
     }
 }
