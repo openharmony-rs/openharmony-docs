@@ -1252,6 +1252,12 @@ ArkTS-Sta: caretColor(value: ResourceColor | undefined): this
 | ------ | ---- | ---- | ---- |
 | value | ArkTS-Dyn: [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor)<br>ArkTS-Sta: [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) \| undefined | 是 | 网页文本输入光标及选择手柄的颜色。非零颜色覆盖网页CSS光标色；字符串`'#00000000'`重置颜色覆盖。<br>ArkTS-Dyn：传入undefined或null时重置。<br>ArkTS-Sta：传入undefined时重置。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| ------ | ------ |
+| ArkTS-Dyn: WebAttribute<br>ArkTS-Sta: this | 返回当前Web组件。 |
+
 **示例：**
 
 点击按钮设置颜色后，点击网页输入框观察光标，或长按选择文字观察手柄。点击重置按钮后，输入光标恢复网页CSS指定的蓝色，选择手柄恢复当前主题颜色。动态示例使用透明颜色字符串重置，静态示例使用undefined重置。
