@@ -52,7 +52,7 @@
   webTag: string = 'ArkWeb1';
   controller: webview.WebviewController = new webview.WebviewController(this.webTag);
   // ...
-  // 在aboutToAppear方法中，通过Node-API接口将webTag传入C++侧，C++侧使用webTag作为ArkWeb组件的唯一标识
+  // aboutToAppear中将webTag通过Node-API接口传入C++侧，作为C++侧ArkWeb组件的唯一标识
   aboutToAppear() {
     console.info('aboutToAppear');
     //初始化web Native Development Kit
