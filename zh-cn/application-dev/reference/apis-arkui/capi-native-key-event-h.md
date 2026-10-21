@@ -37,7 +37,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| ArkUI_KeyIntension OH_ArkUI_KeyIntention | 按键事件意图类型的正确拼写别名。<br> 原类型名 [ArkUI_KeyIntension](#arkui_keyintension) 将保留以兼容已有接口。<br>**起始版本：** 26.2.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
+| ArkUI_KeyIntension OH_ArkUI_KeyIntention | 按键事件意图类型的别名。<br> 原类型名[ArkUI_KeyIntension](#arkui_keyintension)将保留以兼容已有接口。<br>**起始版本：** 26.2.0 |
 
 ### 函数
 

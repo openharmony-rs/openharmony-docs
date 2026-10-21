@@ -284,7 +284,7 @@ dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrat
 
 **示例：**
 
-本示例演示了向子节点派发触摸事件的功能。从API version 26.2.0开始支持该接口。请参考[节点操作示例](#节点操作示例)。
+请参考[节点操作示例](#节点操作示例)。
 
 ### dispatchKeyEvent
 
@@ -314,7 +314,7 @@ dispatchKeyEvent(event: KeyEvent): boolean
 
 **示例：**
 
-本示例演示了向子节点派发按键事件的功能。从API version 26.2.0开始支持该接口。请参考[节点操作示例](#节点操作示例)。
+请参考[节点操作示例](#节点操作示例)。
 
 ### appendChild<sup>12+</sup> 
 
@@ -9416,6 +9416,11 @@ struct FrameNodeTypeTest {
 ![FrameNodeTextTest](figures/FrameNodeTextTest.png)
 
 ## 节点操作示例
+
+该示例通过[dispatchInputEvent](#dispatchinputevent)接口向子节点派发触摸事件，通过[dispatchKeyEvent](#dispatchkeyevent)接口向子节点派发按键事件。
+
+从API版本26.2.0开始，新增[dispatchInputEvent](#dispatchinputevent)、[dispatchKeyEvent](#dispatchkeyevent)接口。
+
 ```ts
 import { NodeController, FrameNode, UIContext, typeNode } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
