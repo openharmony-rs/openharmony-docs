@@ -124,7 +124,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
            }
        }
    };
-    ```
+   ```
 
 3. 解码输入输出队列。
 
