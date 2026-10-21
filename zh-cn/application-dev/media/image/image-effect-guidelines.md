@@ -280,6 +280,10 @@ target_link_libraries(entry PUBLIC
    <!-- @[image_effect_buffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // 图像信息结构体。
+   <!-- @[image_effect_buffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
+   
+   ``` C++
+   // 图像信息结构体。
    struct EffectBufferInfo {
        void *addr = nullptr;
        int32_t width = 0;
@@ -288,9 +292,6 @@ target_link_libraries(entry PUBLIC
        ImageEffect_Format format = ImageEffect_Format::EFFECT_PIXEL_FORMAT_UNKNOWN;
    };
    ```
-
-   <!-- @[image_effect_custom_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
-   ```c++
    // 自定义滤镜具体实现。
    ImageEffect_FilterDelegate filterDelegate = {
        .setValue = [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) {
