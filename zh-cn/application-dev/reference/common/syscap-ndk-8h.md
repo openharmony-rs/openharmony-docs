@@ -14,9 +14,9 @@
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-**库：** libdeviceinfo_ndk.z.so
-
 **起始版本：** 8
+
+**库：** libdeviceinfo_ndk.z.so
 
 **相关模块：** [syscapndk](capi-syscap-ndk.md)
 

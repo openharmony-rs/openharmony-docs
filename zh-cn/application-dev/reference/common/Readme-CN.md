@@ -15,7 +15,6 @@
 - C API<!--common-basic-c-->
   - 模块<!--common-basic-module-->
     - [syscapndk](capi-syscap-ndk.md)
-    - [memory](capi-memory.md)
     - [JSVM](capi-jsvm.md)
   - 头文件<!--common-basic-headerfile-->
     - [syscap_ndk.h](syscap-ndk-8h.md)
