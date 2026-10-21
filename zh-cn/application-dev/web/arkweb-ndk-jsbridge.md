@@ -910,32 +910,29 @@ ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native 
 通过[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)注册组件生命周期回调，在调用接口前建议通过[ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#宏定义)校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。
 
   <!-- @[the_native_side_registers_the_callback_of_the_component_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/hello.cpp)-->
-
-  ```c++
+  
+  ``` C++
   if (!ARKWEB_MEMBER_MISSING(component, onControllerAttached)) {
-      component->onControllerAttached(webTagValue, ValidCallback,
-                                      static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
+      component->onControllerAttached(
+          webTagValue, ValidCallback, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
   } else {
       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "component onControllerAttached func not exist");
   }
-
+  
   if (!ARKWEB_MEMBER_MISSING(component, onPageBegin)) {
-      component->onPageBegin(webTagValue, LoadStartCallback,
-                                      static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
+      component->onPageBegin(webTagValue, LoadStartCallback, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
   } else {
       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "component onPageBegin func not exist");
   }
-
+  
   if (!ARKWEB_MEMBER_MISSING(component, onPageEnd)) {
-      component->onPageEnd(webTagValue, LoadEndCallback,
-                                      static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
+      component->onPageEnd(webTagValue, LoadEndCallback, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
   } else {
       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "component onPageEnd func not exist");
   }
-
+  
   if (!ARKWEB_MEMBER_MISSING(component, onDestroy)) {
-      component->onDestroy(webTagValue, DestroyCallback,
-                                      static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
+      component->onDestroy(webTagValue, DestroyCallback, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr()));
   } else {
       OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "component onDestroy func not exist");
   }
