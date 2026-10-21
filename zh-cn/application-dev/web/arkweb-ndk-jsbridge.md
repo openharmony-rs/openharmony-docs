@@ -105,7 +105,7 @@
 通过[ArkWeb_ComponentAPI](../reference/apis-arkweb/capi-web-arkweb-componentapi.md)注册组件生命周期回调，调用接口前，建议通过[ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#宏定义)校验该函数结构体中是否存在对应函数指针，以避免SDK与设备ROM不匹配导致crash问题。
 
   <!-- @[the_native_side_registers_the_callback_of_the_component_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/hello.cpp)-->  
-
+  
   ``` C++
   if (!ARKWEB_MEMBER_MISSING(component, onControllerAttached)) {
       component->onControllerAttached(
