@@ -117,7 +117,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
       }
   })
   window.onerror = function(message, url, line, column, error) {
-    console.info("JavaScript Error: " + message + " on line " + line + " in " + url);
+    console.error("JavaScript Error: " + message + " on line " + line + " in " + url);
     document.getElementById("h1").innerHTML = "执行函数失败"
   };
 
