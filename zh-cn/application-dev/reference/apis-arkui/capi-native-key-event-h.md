@@ -61,9 +61,9 @@
 | [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetEventTime(ArkUI_UIInputEvent* event, int64_t timestamp)](#oh_arkui_keyevent_seteventtime) | 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件发生时间。 |
 | [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetPressedKeys(ArkUI_UIInputEvent* event, const int32_t* pressedKeyCodes, int32_t length)](#oh_arkui_keyevent_setpressedkeys) | 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中所有已按下的按键。 |
 | [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyIntentionCode(ArkUI_UIInputEvent* event, OH_ArkUI_KeyIntention intentionCode)](#oh_arkui_keyevent_setkeyintentioncode) | 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件意图码。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool isNumLockOn)](#oh_arkui_keyevent_setnumlockon) | 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中数字键盘锁定键(NumLock)的状态。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool isCapsLockOn)](#oh_arkui_keyevent_setcapslockon) | 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中大写字母锁定键(CapsLock)的状态。 |
-| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, bool isScrollLockOn)](#oh_arkui_keyevent_setscrolllockon) | 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中滚动锁定键(ScrollLock)的状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool isNumLockOn)](#oh_arkui_keyevent_setnumlockon) | 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中数字键盘锁定键（NumLock）的状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool isCapsLockOn)](#oh_arkui_keyevent_setcapslockon) | 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中大写字母锁定键（CapsLock）的状态。 |
+| [ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, bool isScrollLockOn)](#oh_arkui_keyevent_setscrolllockon) | 设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中滚动锁定键（ScrollLock）的状态。 |
 
 ## 枚举类型说明
 
@@ -930,7 +930,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool i
 
 **描述：**
 
-设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中数字键盘锁定键(NumLock)的状态。
+设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中数字键盘锁定键（NumLock）的状态。
 
 **起始版本：** 26.2.0
 
@@ -940,7 +940,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetNumLockOn(ArkUI_UIInputEvent* event, bool i
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [入参] 目标[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)对象的指针，不能为空，且必须是通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件。 |
-| bool isNumLockOn | [入参] 数字键盘锁定键(NumLock)是否开启。true表示已开启，false表示未开启。 |
+| bool isNumLockOn | [入参] 数字键盘锁定键（NumLock）是否开启。true表示已开启，false表示未开启。 |
 
 **返回：**
 
@@ -956,7 +956,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool 
 
 **描述：**
 
-设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中大写字母锁定键(CapsLock)的状态。
+设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中大写字母锁定键（CapsLock）的状态。
 
 **起始版本：** 26.2.0
 
@@ -966,7 +966,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetCapsLockOn(ArkUI_UIInputEvent* event, bool 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [入参] 目标[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)对象的指针，不能为空，且必须是通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件。 |
-| bool isCapsLockOn | [入参] 大写字母锁定键(CapsLock)是否开启。true表示已开启，false表示未开启。 |
+| bool isCapsLockOn | [入参] 大写字母锁定键（CapsLock）是否开启。true表示已开启，false表示未开启。 |
 
 **返回：**
 
@@ -982,7 +982,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, boo
 
 **描述：**
 
-设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中滚动锁定键(ScrollLock)的状态。
+设置通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件中滚动锁定键（ScrollLock）的状态。
 
 **起始版本：** 26.2.0
 
@@ -992,7 +992,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetScrollLockOn(ArkUI_UIInputEvent* event, boo
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [入参] 目标[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)对象的指针，不能为空，且必须是通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件。 |
-| bool isScrollLockOn | [入参] 滚动锁定键(ScrollLock)是否开启。true表示已开启，false表示未开启。 |
+| bool isScrollLockOn | [入参] 滚动锁定键（ScrollLock）是否开启。true表示已开启，false表示未开启。 |
 
 **返回：**
 
