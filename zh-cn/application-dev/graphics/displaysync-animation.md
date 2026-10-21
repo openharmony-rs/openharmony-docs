@@ -1,7 +1,7 @@
 ---
 kits: ["ArkGraphics 2D / 方舟2D图形服务"]
 description: "介绍通过ExpectedFrameRateRange为属性动画和显式动画配置期望绘制帧率，实现动画的差异化帧率控制。"
-keywords: [属性动画, 显式动画, ExpectedFrameRateRange, 绘制帧率, 期望帧率, animateTo]
+keywords: [属性动画, 显式动画, 绘制帧率, 期望帧率, ExpectedFrameRateRange，animateTo]
 doctype: guide
 status: active
 ---
