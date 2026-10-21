@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总ArkGuard字节码混淆的常见问题，包括与源码混淆的差异、功能异常排查思路以及编译报错、运行异常的处理方法，帮助开发者快速定位解决混淆问题。"
+keywords: [混淆, 字节码混淆, 常见问题, 混淆差异, 功能异常排查, 编译报错, 运行异常]
+doctype: faq
+status: active
+---
+
 # ArkGuard字节码混淆常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
