@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 本模块接口仅可在Stage模型下使用。
+> 本模块接口仅可在Stage模型下使用。
 
 **起始版本：** 26.2.0
 
@@ -27,6 +27,8 @@ import { PlaceholderRegister } from '@kit.ArkUI';
 > **说明：**
 >
 > 以下API需先使用UIContext中的[getPlaceholderRegister()](./arkts-apis-uicontext-uicontext.md#getplaceholderregister)方法获取到PlaceholderRegister对象，再通过该对象调用对应方法。
+
+**起始版本：** 26.2.0
 
 ### register
 

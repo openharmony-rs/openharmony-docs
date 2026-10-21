@@ -601,7 +601,7 @@ getPlaceholderRegister(): PlaceholderRegister
 
 | 类型 | 说明 |
 | ---- | ---- |
-| [PlaceholderRegister](./arkts-apis-placeholderregister.md) | 当前UI实例的滚动占位注册表。 |
+| [PlaceholderRegister](./arkts-apis-placeholderregister.md#placeholderregister) | 当前UI实例的滚动占位注册表。 |
 
 **示例：**
 

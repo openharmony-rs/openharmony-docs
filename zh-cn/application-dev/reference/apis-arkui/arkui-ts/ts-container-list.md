@@ -2967,7 +2967,7 @@ struct ListExample {
 
 ### 示例19（设置滚动占位）
 
-该示例通过[scrollPlaceholder](#scrollplaceholder)接口为List设置滚动占位：占位模板经wrapBuilder包装后，通过UIContext的[getPlaceholderRegister()](../arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册（完整说明参考[PlaceholderRegister](../arkts-apis-placeholderregister.md)）；快速滚动时，帧预算不足的列表项先显示已注册的占位模板，真实列表项分帧创建完成后替换占位，减少丢帧。
+该示例通过[scrollPlaceholder](#scrollplaceholder)接口为List设置滚动占位：占位模板经wrapBuilder包装后，通过UIContext的[getPlaceholderRegister()](../arkts-apis-uicontext-uicontext.md#getplaceholderregister)注册（完整说明参考[PlaceholderRegister](../arkts-apis-placeholderregister.md#placeholderregister)）；快速滚动时，帧预算不足的列表项先显示已注册的占位模板，真实列表项分帧创建完成后替换占位，减少丢帧。
 
 从API版本26.2.0开始，List组件新增scrollPlaceholder接口。
 
