@@ -401,10 +401,11 @@ target_link_libraries(entry PUBLIC
 2. 生成自定义滤镜信息。
 
    <!-- @[image_effect_create_custom_filter_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
-   ```c++
+   
+   ``` C++
    // 创建 OH_EffectFilterInfo 实例。
    OH_EffectFilterInfo *customFilterInfo = OH_EffectFilterInfo_Create();
-   CHECK_AND_RETURN_RET_LOG(customFilterInfo != nullptr, result, "OH_EffectFilterInfo_Create fail!");
+   CHECK_AND_RETURN_RET_LOG(customFilterInfo != nullptr, result, "OH_EffectFilter_GetValue fail!");
    // 设置自定义滤镜滤镜名。
    OH_EffectFilterInfo_SetFilterName(customFilterInfo, "CustomBrightness");
    // 设置自定义滤镜所支持的内存类型。
