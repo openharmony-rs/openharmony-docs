@@ -33,9 +33,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 | 名称 | 值 | 说明 |
 | ---- | -- | ---- |
-| NORMAL | 0 | 普通同步。 |
-| FORCE | 1 | 强制同步。 |
-| FORCE_THM | 2 | 强制缩略图同步。 |
+| FORCE_THM | 0 | 强制缩略图同步。 |
 
 ## GallerySync
 
