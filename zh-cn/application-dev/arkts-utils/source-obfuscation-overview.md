@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "概述ArkGuard源码混淆工具将变量名、函数名、类名等替换为简短标识符的基础能力与使用价值，并索引混淆原理、配置选项、保留选项等子主题。"
+keywords: [ArkGuard, 混淆, 源码混淆, 混淆概述, 逆向工程, 标识符, 程序包体积]
+doctype: guide
+status: active
+---
+
 # ArkGuard源码混淆工具概述
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
