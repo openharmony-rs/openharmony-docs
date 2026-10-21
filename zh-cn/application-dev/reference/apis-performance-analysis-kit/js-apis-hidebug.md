@@ -335,9 +335,9 @@ dumpJsHeapData(filename: string): void
 
 虚拟机堆数据转储。
 
-> **说明**：
-> 
-> 从API version 9支持，从API version 26.2.0开始废弃，建议使用[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)替代。
+起始版本：9
+废弃版本：26.2.0
+替代接口：[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)
 
 > **注意**：
 >
@@ -378,9 +378,9 @@ dumpJsHeapData(filename: string, needClean: boolean): void
 
 虚拟机堆数据转储，支持清除nodeId缓存。
 
-> **说明**：
-> 
-> 从API version 24支持，从API version 26.2.0开始废弃，建议使用[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata24)替代。
+起始版本：24
+废弃版本：26.2.0
+替代接口：[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata24)
 
 > **注意**：
 >
