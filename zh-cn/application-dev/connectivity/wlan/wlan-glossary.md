@@ -30,7 +30,7 @@ Domain Name System。将域名解析为IP地址的系统，是互联网的基础
 ### EAP; 可扩展身份验证协议
 Extensible Authentication Protocol。用于网络认证的框架协议，支持多种认证方式（PEAP、TLS、TTLS等）。
 
-### EMLSR; 增强型多链路单天线
+### EMLSR; 增强型多链路单射频
 Enhanced Multi-link Single Radio。[MLO](#mlo-多链路操作)技术中的一种连接类型，相比MLSR提供更好的频段切换协调和更低的时延。
 
 ## G
