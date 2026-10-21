@@ -657,7 +657,7 @@ CloudDisk_ErrorCode OH_CloudDisk_GetPlaceholderState(const CloudDisk_SyncFolderP
 | -- | -- |
 | const CloudDisk_SyncFolderPath syncFolderPath | 已注册的同步根路径。 |
 | [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | 同步根路径下待查询文件的相对路径信息。 |
-| [OH_CloudDisk_PlaceholderState](#oh_clouddisk_placeholderstate) *state | 输出参数。占位符状态。出错时该值设置为OH_CLOUD_DISK_PLACEHOLDER_STATE_NONE。 |
+| [OH_CloudDisk_PlaceholderState](#oh_clouddisk_placeholderstate) *state | 输出参数。占位符状态。报错时该值将被置为OH_CLOUD_DISK_PLACEHOLDER_STATE_NONE。 |
 
 **返回：**
 
@@ -838,14 +838,14 @@ CloudDisk_ErrorCode OH_CloudDisk_GetPlaceholderCustomInfo(const CloudDisk_SyncFo
 | -- | -- |
 | const CloudDisk_SyncFolderPath syncFolderPath | 已注册的同步根路径。 |
 | [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | 同步根路径下待查询的占位符文件相对路径信息。 |
-| uint8_t *dataBuf | 输出参数。调用方分配的输出缓冲区。 |
-| size_t *inOutDataLength | 输出参数。输入时为缓冲区容量，输出时为实际数据长度。 |
+| uint8_t *dataBuf | 输出参数。调用方分配的输出缓冲区。如果缓冲区容量不足，函数执行返回错误码INVALID_ARG。 |
+| size_t *inOutDataLength | 输出参数。调用时传入预分配的缓冲区大小；函数执行完后，会被修改为实际写入的数据长度。如果缓冲区容量不足，函数执行返回错误码INVALID_ARG，inOutDataLength被置为成功写入所需的数据长度。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，则返回CLOUD_DISK_OK；否则返回云盘管理模块的错误码CloudDisk_ErrorCode。 |
+| [CloudDisk_ErrorCode](capi-cloud-disk-error-code-h.md#clouddisk_errorcode) | 如果接口调用成功，则返回CLOUD_DISK_OK；如果占位符没有自定义信息，则返回OH_CLOUD_DISK_PLACEHOLDER_CUSTOM_INFO_NOT_FOUND；其他情况下报错返回云盘管理模块的错误码CloudDisk_ErrorCode。 |
 
 ### OH_CloudDisk_RegisterCallbackTable()
 
