@@ -3965,6 +3965,7 @@ audioRecordingManager.offSystemRecordControllerEnabledChange();
 | uid          | number                                   |  否  | 是 | 表示应用ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
 | rendererInfo | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8) |  否  | 是 | 表示渲染器信息。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
 | rendererId   | number                                   |  否  | 是 | 音频流唯一id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
+| blockFirstOverrode   | boolean |  否  | 是 | 表示是否保持首次选择的设备不被清除。true表示选择的设备不会被清除，false表示选择的设备会被清除。<br>默认值：false。<br>**起始版本：** 26.0.1 <br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
 
 **示例：**
 
@@ -3977,7 +3978,8 @@ let outputAudioRendererFilter: audio.AudioRendererFilter = {
     usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
     rendererFlags : 0
   },
-  rendererId : 0
+  rendererId : 0,
+  blockFirstOverrode : true
 };
 ```
 
