@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍长时任务并发场景的定义与特点：定期采集传感器数据、监听Socket端口等需要长时间不间断运行且与外部交互简单的任务，推荐放入TaskPool队列执行以简化生命周期管理、避免线程过多。"
+keywords: [长时任务, 传感器数据采集, Socket端口监听, TaskPool, 后台线程, 生命周期管理]
+doctype: guide
+status: active
+---
+
 # 长时任务并发场景简介
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

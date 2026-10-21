@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "汇总语言编译运行时的常见问题解答：包括rawfile字符串转object后调用崩溃、napi_call_function的pending exception、HSP多包场景cppcrash、Array数组长度上限、模块循环依赖未初始化及编译异常无日志等问题定位。"
+keywords: [编译运行时FAQ, pending exception, napi_call_function, HSP多包, cppcrash, Array长度上限, 循环依赖, 编译异常, 日志, 定位]
+doctype: faq
+status: active
+---
+
 # 语言编译运行时常见问题
 
 <!--Kit: ArkTS-->

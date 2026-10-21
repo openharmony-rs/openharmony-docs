@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ArkTS对JSON能力的扩展：parse、stringify、has、remove接口的增强功能与使用方法，并给出解析嵌套引号、解析大整数、序列化BigInt对象与浮点数等典型场景的示例。"
+keywords: [JSON扩展库, JSON解析, JSON序列化, 大整数解析, BigInt序列化, 浮点数序列化, 嵌套引号解析, has和remove接口]
+doctype: guide
+status: active
+---
+
 # JSON扩展库
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
