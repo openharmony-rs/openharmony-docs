@@ -51,8 +51,8 @@ target_link_libraries(entry PUBLIC
 1. 创建ImageEffect实例。
 
    <!-- @[image_effect_instance_creation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
-   ```c++
-   // 创建imageEffect实例，“ImageEdit”是imageEffect实例别名。
+   
+   ``` C++
    OH_ImageEffect *imageEffect = OH_ImageEffect_Create("imageEdit");
    ```
 
