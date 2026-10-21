@@ -442,14 +442,14 @@ target_link_libraries(entry PUBLIC
 2. 设置滤镜参数。
 
    <!-- @[image_effect_set_filter_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
-   ```c++
-   // 设置滤镜参数, 滤镜强度设置为50。
-   ImageEffect_Any value = {.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT, .dataValue.floatValue = 50.f};
+   
+   ``` C++
+   // 设置滤镜参数, 滤镜强度设置为传入参数。
+   ImageEffect_Any value;
+   value.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT;
+   value.dataValue.floatValue = static_cast<float>(filterValue);
    ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, OH_EFFECT_FILTER_INTENSITY_KEY, &value);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_SetValue fail!");
-       return;
-   }
+   CHECK_AND_RETURN_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, "OH_EffectFilter_SetValue fail!");
    ```
 
 3. 生效滤镜。
