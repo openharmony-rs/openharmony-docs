@@ -416,7 +416,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
       std::string tag = value2String(env, args[1]);
       // ...
       if (nodeAPI != nullptr && nodeAPI->createNode != nullptr && nodeAPI->addChild != nullptr) {
-          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "CreateNativeNode tag=%{public}s",
+          OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "PluginManager", "CreateNativeNode tag=%{public}s",
                        tag.c_str());
           auto nodeContentEvent = [](ArkUI_NodeContentEvent *event) {
             ArkUI_NodeContentHandle handle = OH_ArkUI_NodeContentEvent_GetNodeContentHandle(event);
@@ -1110,19 +1110,19 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
     
     void OnSurfaceDestroyedNative(OH_ArkUI_SurfaceHolder *holder)
     {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, 0xff00, "onBind", "on destroyed");
+        OH_LOG_Print(LOG_APP, LOG_INFO, 0xff00, "onBind", "on destroyed");
         EGLRender* render = reinterpret_cast<EGLRender*>(OH_ArkUI_SurfaceHolder_GetUserData(holder));
         render->DestroySurface();  // 销毁eglSurface相关资源
     }
     
     void OnSurfaceShowNative(OH_ArkUI_SurfaceHolder *holder)
     {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "on surface show");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "onBind", "on surface show");
     }
     
     void OnSurfaceHideNative(OH_ArkUI_SurfaceHolder *holder)
     {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "on surface hide");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "onBind", "on surface hide");
     }
     
     void OnFrameCallbackNative(ArkUI_NodeHandle node, uint64_t timestamp, uint64_t targetTimestamp)
@@ -1134,20 +1134,20 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
         count++;
         // 在头文件plugin_manager.h中定义，FRAME_COUNT的值为50
         if (count % FRAME_COUNT == 0) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "OnFrameCallback count = %{public}ld", count);
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "onBind", "OnFrameCallback count = %{public}ld", count);
         }
     }
     
     void onEvent(ArkUI_NodeEvent *event)
     {
         auto eventType = OH_ArkUI_NodeEvent_GetEventType(event); // 获取组件事件类型
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "on event");
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "onBind", "on event");
         if (eventType == NODE_TOUCH_EVENT) {
             ArkUI_NodeHandle handle = OH_ArkUI_NodeEvent_GetNodeHandle(event); // 获取触发该事件的组件对象
             auto holder = PluginManager::surfaceHolderMap_[handle];
             EGLRender* render = reinterpret_cast<EGLRender*>(OH_ArkUI_SurfaceHolder_GetUserData(holder));
             render->DrawStar(false); // 绘制五角星
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "on touch");
+            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "onBind", "on touch");
         }
     }
     ```
@@ -1356,7 +1356,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
             return PROGRAM_ERROR;
         }
     
-        // The gl function has no return value.
+        // 该gl函数没有返回值。
         glShaderSource(shader, 1, &shaderSrc, nullptr);
         glCompileShader(shader);
     
@@ -1625,7 +1625,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
     <!-- @[cmake_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/CMakeLists.txt) -->
 
     ```CMake
-    # the minimum version of CMake.
+    # CMake最低版本要求。
     cmake_minimum_required(VERSION 3.4.1)
     project(XComponent)
     
