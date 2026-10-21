@@ -504,7 +504,7 @@ int32_t OH_ArkUI_DragEvent_GetSummary(ArkUI_DragEvent *event, OH_UDMF_Summary *s
 
 从ArkUI_DragEvent中获取统一数据摘要。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -544,7 +544,7 @@ int32_t OH_ArkUI_DragEvent_GetDragResult(ArkUI_DragEvent* event, ArkUI_DragResul
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### OH_ArkUI_DragEvent_GetDropOperation()
 
