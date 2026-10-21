@@ -420,13 +420,11 @@ target_link_libraries(entry PUBLIC
 3. 将 ImageEffect_FilterDelegate 注册到效果器。
 
    <!-- @[image_effect_custom_filter_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
-   ```c++
-   // 注册自定义滤镜。
-   ImageEffect_ErrorCode errorCode = OH_EffectFilter_Register(customFilterInfo, &filterDelegate);
-   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-       OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_Register fail!");
-       return;
-   }
+   
+   ``` C++
+   ImageEffect_ErrorCode errorCode = OH_EffectFilter_Register(customFilterInfo, &delegateBrightness);
+   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
+                            "OH_EffectFilter_Register fail! errorCode = %{public}d", errorCode);
    ```
 
 ### EffectFilter快速实现单个滤镜的处理效果
