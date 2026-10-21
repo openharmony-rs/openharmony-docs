@@ -338,7 +338,7 @@ EAP信息。
 
 | 名称              | 类型                          | 只读 | 可选 | 说明                             |
 | ----------------- | ----------------------------- | ---- |----| -------------------------------- |
-| eapMethod         | [EapMethod](#eapmethod)      | 否   | 否 | AP认证方式。                     |
+| eapMethod         | [EapMethod](#eapmethod)      | 否   | 否 | EAP认证方式。                     |
 | phase2Method      | [Phase2Method](#phase2method)| 否   | 否 | 第二阶段认证方式。               |
 | identity          | string                        | 否   | 否 | 身份信息。                       |
 | anonymousIdentity | string                        | 否   | 否 | 匿名身份。                       |

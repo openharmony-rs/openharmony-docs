@@ -51,8 +51,7 @@
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { Environment } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { Environment, fileIo } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
    
    // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
@@ -93,8 +92,7 @@
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { Environment } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { Environment, fileIo } from '@kit.CoreFileKit';
    
    ```
    <!--@[write_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->      
@@ -155,7 +153,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 #include <hilog/log.h>
 ```
 
-1. 调用OH_Environment_GetUserDownloadDir接口获取用户Download目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
+1. 调用OH_Environment_GetUserDownloadDir接口获取用户Download目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放，因此需要free对应的内存。示例代码如下所示：
 
    ```c++
    #include <cstdlib>

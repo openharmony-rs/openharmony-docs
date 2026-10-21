@@ -1060,9 +1060,9 @@ struct Page1 {
 
 **connect的存储路径需要注意以下两点：**
 
-1、connect使用module级别的存储路径，以最先启动的module的路径作为存储路径，从内存回写磁盘时会回写到第一个连接该module的路径。应用如果之后先从另一个module启动，则会以新module的路径作为存储路径。
+1. connect使用module级别的存储路径，以最先启动的module的路径作为存储路径，从内存回写磁盘时会回写到第一个连接该module的路径。应用如果之后先从另一个module启动，则会以新module的路径作为存储路径。
 
-2、当不同module使用相同的key时，哪个module先启动，数据就为哪个module中保存的键值对，回写到对应的module中。
+2. 当不同module使用相同的key时，哪个module先启动，数据就为哪个module中保存的键值对，回写到对应的module中。
 
 **globalConnect的存储路径需要注意：**
 
@@ -1537,13 +1537,13 @@ struct Index {
 
 > **说明：** 
 >
->1、oldValue为notifyOnError的入参回调的参数，用于在反序列化失败时，获取旧的序列化数据。
+>1. oldValue为notifyOnError的入参回调的参数，用于在反序列化失败时，获取旧的序列化数据。
 >
->2、下表中会触发notifyOnError的类型，指的是将原始类型改变后，会触发notifyOnError回调的类型。
+>2. 下表中会触发notifyOnError的类型，指的是将原始类型改变后，会触发notifyOnError回调的类型。
 >
->3、下表中的类型，均是指class中属性的类型。
+>3. 下表中的类型，均是指class中属性的类型。
 >
->4、在反序列化时，如果属性类型为Object，则会递归遍历并反序列化其内部属性。
+>4. 在反序列化时，如果属性类型为Object，则会递归遍历并反序列化其内部属性。
 
 **使用PersistenceV2.connect在数据结构变更后触发notifyOnError情况表**
 

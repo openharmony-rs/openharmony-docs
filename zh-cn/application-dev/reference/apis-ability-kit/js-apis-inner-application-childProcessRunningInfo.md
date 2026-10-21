@@ -17,12 +17,8 @@ ChildProcessInformation定义子进程信息，包括子进程的PID、父进程
 
 **ArkTS-Sta起始版本：** 26.0.1
 
-## 属性
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| pid | int | 否 | 否 | 子进程的PID。 |
-| parentPid | int | 否 | 否 | 子进程的父进程PID。 |
+| pid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 子进程的PID。 |
+| parentPid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 子进程的父进程PID。 |
 | processName | string | 否 | 否 | 子进程的进程名。 |

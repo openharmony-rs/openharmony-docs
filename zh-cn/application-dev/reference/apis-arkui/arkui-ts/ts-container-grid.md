@@ -891,6 +891,32 @@ ArkTS-Sta: enableEditMode(enabled: boolean | Bindable\<boolean\> | undefined)
 | ------ | ------ | ---- | ---------------------------------------- |
 | enabled  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;Bindable\<boolean\>&nbsp;\|&nbsp;undefined | 是   | 是否启用编辑模式。设置为true时启用编辑模式，可以滑动多选，设置为false或undefined时关闭编辑模式，不可滑动多选。<br/>Bindable\<boolean\>时，支持双向绑定。 |
 
+### scrollSnapStrategy
+
+scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
+
+设置Grid的限位滚动策略，使Grid在滚动结束时按指定方式对齐item，或停在自定义的吸附位置。使用方法参考[示例23](#示例23设置滚动吸附对齐)。
+
+包含跨行或跨列（不规则）GridItem的布局不支持本接口。
+
+> **说明：**
+>
+> 最终吸附位置始终在合法滚动范围内。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                 |
+| ------ | ------ | ---- | ------------------------------------ |
+| strategy  | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 限位滚动策略。<br/>传入[ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)枚举时，使用内置对齐方式：START、CENTER、END分别将item对齐到视口沿滚动轴的起始、中央和末尾位置。<br/>传入实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象时，由开发者计算滚动距离和最终吸附位置：[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)确定惯性阶段的滚动距离，[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)确定最终吸附位置。<br/>不设置或传入ScrollSnapAlign.NONE、undefined时，不启用限位滚动，Grid不做吸附对齐，按惯性自然滑行至停止。 |
+
 ## GridItemAlignment<sup>12+</sup>枚举说明
 
 GridItem的对齐方式枚举。
@@ -6319,3 +6345,145 @@ struct GridOnMoveExample {
 ```
 
 ![grid-onmove-drag](figures/grid-onmove-drag.gif)
+
+### 示例23（设置滚动吸附对齐）
+
+本示例通过[scrollSnapStrategy](#scrollsnapstrategy)接口设置ScrollSnapAlign.CENTER，使item在滚动结束时自动对齐到视口中央。
+
+从API版本26.2.0开始，新增scrollSnapStrategy接口。
+
+ArkTS-Dyn示例：
+
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+// 设置ScrollSnapAlign.CENTER，使item在滚动结束时自动对齐到视口中央
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridSnapExample {
+  numbers: GridDataSource = new GridDataSource([]);
+  scroller: Scroller = new Scroller();
+
+  aboutToAppear() {
+    let list: string[] = [];
+    for (let i = 0; i < 50; i++) {
+      list.push(i.toString());
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
+      Grid(this.scroller) {
+        LazyForEach(this.numbers, (item: string) => {
+          GridItem() {
+            Text(item)
+              .fontSize(20)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(150)
+              .textAlign(TextAlign.Center)
+          }
+        }, (index: number) => index.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .height(400)
+      .scrollSnapStrategy(ScrollSnapAlign.CENTER)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+在同一页面目录创建以下两个文件。此示例使用独立的数据源实现，构造参数为子节点数量。
+
+```ts
+// GridDataSource.ets
+'use static';
+
+import { IDataSource, DataChangeListener } from '@ohos.arkui.component';
+
+// 此示例的数据固定不变，不需要发送数据变更通知。
+export class GridDataSource implements IDataSource<string> {
+  private items: string[] = [];
+  private listeners: DataChangeListener[] = [];
+
+  constructor(count: int) {
+    for (let index: int = 0; index < count; index++) {
+      this.items.push(index.toString());
+    }
+  }
+
+  totalCount(): int {
+    return this.items.length;
+  }
+
+  getData(index: int): string {
+    return this.items[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const index: int = this.listeners.indexOf(listener);
+    if (index >= 0) {
+      this.listeners.splice(index, 1);
+    }
+  }
+}
+```
+
+```ts
+// GridSnapExample.ets
+'use static';
+
+import {
+  Entry, Component, Column, ColumnOptions, Text, Grid, GridItem, LazyForEach,
+  Scroller, ScrollSnapAlign, TextAlign, Margin
+} from '@ohos.arkui.component';
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridSnapExample {
+  numbers: GridDataSource = new GridDataSource(50);
+  scroller: Scroller = new Scroller();
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
+      Grid(this.scroller) {
+        LazyForEach(this.numbers, (item: string, index: int) => {
+          GridItem() {
+            Text(item)
+              .fontSize(20)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(150)
+              .textAlign(TextAlign.Center)
+          }
+        }, (item: string, index: int): string => item)
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .height(400)
+      .scrollSnapStrategy(ScrollSnapAlign.CENTER)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![scrollSnapStrategy-grid](figures/scrollSnapStrategy-grid.gif)
