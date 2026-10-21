@@ -1781,3 +1781,19 @@ With this permission, an application can implement the recording and playback fu
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.2.0
+
+## ohos.permission.HOOK_INPUT_EVENT
+
+Allows an application to hook input events.
+
+With this permission, an application can implement the interception and processing of input events.
+
+<!--RP117--><!--RP117End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.2.0
