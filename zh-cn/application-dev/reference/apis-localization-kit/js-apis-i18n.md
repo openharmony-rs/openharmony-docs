@@ -1733,6 +1733,114 @@ getIndex(text: string): string
   let index: string = indexUtil.getIndex('hi'); // index = 'H'
   ```
 
+### isBilingualIndexSupported<sup>26+</sup>
+
+static isBilingualIndexSupported(locale: Intl.Locale): boolean
+
+检查指定的区域是否支持双语索引。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| locale | [Intl.Locale](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | 是  | 区域对象。 |
+
+**返回值：**
+
+| 类型     | 说明          |
+| ------ | ----------- |
+| boolean | 是否支持双语索引。true表示支持双语索引，false表示不支持双语索引。 |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('ja-JP');
+let isSupported = i18n.IndexUtil.isBilingualIndexSupported(locale); // isSupported = true
+```
+
+### getBilingualIndexList<sup>26+</sup>
+
+getBilingualIndexList(mode?: BilingualIndexMode): Array<string>
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| mode | [BilingualIndexMode](#bilingualindexmode26) | 否  | 双语索引的模式。默认值：FULL。 |
+
+**返回值：**
+
+| 类型     | 说明          |
+| ------ | ----------- |
+| Array<string> | 双语索引列表。其中第一个元素是“#”，后面是本地索引列表和英语索引列表。如果区域不支持双语索引，则首元素“#”后面只有本地索引列表。 |
+
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('ja-JP');
+let indexUtil: i18n.IndexUtil = i18n.getInstance(locale.toString());
+let indexList = indexUtil.getBilingualIndexList();
+```
+
+### getBilingualIndex<sup>26+</sup>
+
+getBilingualIndex(text: string): string
+
+获取文本的双语索引。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                     |
+| ------ | ------ | ---- | ------------------------ |
+| text | string | 是  | 输入的文本。 |
+
+**返回值：**
+
+| 类型     | 说明          |
+| ------ | ----------- |
+| string | 文本对应的双语索引。文本为空或找不到正确的索引，则返回“#”。 |
+
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('ja-JP');
+let indexUtil: i18n.IndexUtil = i18n.getInstance(locale.toString());
+let jaIndex = i18n.IndexUtil.getBilingualIndex("リンゴ");
+let enIndex = i18n.IndexUtil.getBilingualIndex("apple");
+```
+
+## BilingualIndexMode<sup>26+</sup>
+
+双语索引模式的枚举。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| FULL | 0 | 全量列表：本地索引和英文索引。 |
+| COMPRESSED_EN | 1 | 压缩英文索引的列表：本地索引和被压缩成“Z”的英文索引。 |
+| COMPRESSED_LOCAL | 2 | 压缩本地索引的列表：被压缩成首个索引值的本地索引和英文索引。 |
 
 ## i18n.getLineInstance<sup>8+</sup>
 
