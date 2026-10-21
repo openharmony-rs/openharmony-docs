@@ -432,9 +432,11 @@ target_link_libraries(entry PUBLIC
 1. 创建滤镜。
 
    <!-- @[image_effect_create_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
-   ```c++
+   
+   ``` C++
    // 创建滤镜。比如：创建对比度效果器。
-   OH_EffectFilter *filter = OH_EffectFilter_Create(OH_EFFECT_CONTRAST_FILTER);
+   OH_EffectFilter *filter = OH_EffectFilter_Create(filterName);
+   CHECK_AND_RETURN_LOG(filter != nullptr, "OH_EffectFilter_Create fail!");
    ```
 
 2. 设置滤镜参数。
