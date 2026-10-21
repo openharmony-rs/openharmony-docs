@@ -1757,8 +1757,6 @@ static isBilingualIndexSupported(locale: Intl.Locale): boolean
 
 **示例：**
 ```ts
-import { i18n } from '@kit.LocalizationKit';
-
 let locale = new Intl.Locale('ja-JP');
 let isSupported = i18n.IndexUtil.isBilingualIndexSupported(locale); // isSupported = true
 ```
@@ -1786,11 +1784,9 @@ getBilingualIndexList(mode?: BilingualIndexMode): Array<string>
 | Array<string> | 双语索引列表。其中第一个元素是“#”，后面是本地索引列表和英语索引列表。如果区域不支持双语索引，则首元素“#”后面只有本地索引列表。 |
 
 ```ts
-import { i18n } from '@kit.LocalizationKit';
-
 let locale = new Intl.Locale('ja-JP');
 let indexUtil: i18n.IndexUtil = i18n.getInstance(locale.toString());
-let indexList = indexUtil.getBilingualIndexList();
+let indexList = indexUtil.getBilingualIndexList(); // indexList = ['#', 'あ', 'か', 'さ', 'た', 'な', 'は', 'ま', 'や', 'ら', 'わ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 ```
 
 ### getBilingualIndex<sup>26+</sup>
@@ -1818,12 +1814,10 @@ getBilingualIndex(text: string): string
 | string | 文本对应的双语索引。文本为空或找不到正确的索引，则返回“#”。 |
 
 ```ts
-import { i18n } from '@kit.LocalizationKit';
-
 let locale = new Intl.Locale('ja-JP');
 let indexUtil: i18n.IndexUtil = i18n.getInstance(locale.toString());
-let jaIndex = i18n.IndexUtil.getBilingualIndex("リンゴ");
-let enIndex = i18n.IndexUtil.getBilingualIndex("apple");
+let jaIndex = i18n.IndexUtil.getBilingualIndex("リンゴ"); // jaIndex = 'ら'
+let enIndex = i18n.IndexUtil.getBilingualIndex("apple"); // enIndex = 'A'
 ```
 
 ## BilingualIndexMode<sup>26+</sup>
