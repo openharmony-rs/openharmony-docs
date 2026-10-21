@@ -257,7 +257,7 @@ The following lists the multi-style drawing supported by the current version and
 
 You can add text decoration to enhance the visual effect and readability of the text.
 
-To use decoration, you need to initialize the decoration style object and add it to the text style so that the decoration take effect when the text is drawn.
+To use decoration, you need to initialize the decoration style object and add it to the text style so that the decoration takes effect when the text is drawn.
 
 For details, see [Example 1](#example-1-decoration-and-font-feature).
 
