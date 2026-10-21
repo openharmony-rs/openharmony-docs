@@ -1755,7 +1755,7 @@ NODE_IMAGE_SPAN_SUPPORT_SVG2 = 3005
 NODE_IMAGE_SPAN_RESIZABLE = 3006
 ```
 
-imageSpan组件图片拉伸时，支持通过设置边缘宽度或者使用栅格对象调整其大小，支持属性设置、属性重置和属性获取接口。接口调用时需要保证设置和获取的参数类型是相同的。<br>
+ImageSpan组件图像拉伸时，支持通过设置边缘宽度或者使用栅格对象调整其大小，支持属性设置、属性重置和属性获取接口。接口调用时需要保证设置和获取的参数类型是相同的。<br>
 作为属性设置方法参数、属性获取方法返回值的[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 26.0.1
@@ -1774,8 +1774,8 @@ imageSpan组件图片拉伸时，支持通过设置边缘宽度或者使用栅�
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 左边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
-| .value[1].f32 | 上边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
-| .value[2].f32 | 右边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
-| .value[3].f32 | 下边缘宽度，单位为vp。取值范围：[0, +∞)。传入负数时使用默认值0。 |
+| .value[0].f32 | 左边缘宽度，单位为vp。 |
+| .value[1].f32 | 上边缘宽度，单位为vp。 |
+| .value[2].f32 | 右边缘宽度，单位为vp。 |
+| .value[3].f32 | 下边缘宽度，单位为vp。 |
 | .object | 栅格对象，参数类型为[OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)。 |
