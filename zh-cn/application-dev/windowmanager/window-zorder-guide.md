@@ -70,19 +70,19 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
 ### TopMost置顶窗口层级规则
 
-- 在[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，应用主窗口可通过调用[setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)接口传入true将自身置于其他应用窗口之上，以实现“不被遮挡”的常驻显示效果，需合理使用，避免影响用户体验。使用该接口需要申请权限ohos.permission.WINDOW_TOPMOST。
+- 在[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，应用主窗口可通过调用[setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)接口传入true将自身置于其他应用窗口之上，以实现“不被遮挡”的常驻显示效果，需合理使用，避免影响用户体验。使用该接口需要申请权限[ohos.permission.WINDOW_TOPMOST](../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost)。
 
-- 从API版本26.0.1开始，还可以通过[setWindowPosition()](../reference/apis-arkui/arkts-apis-window-f.md#windowsetwindowposition)接口调整主窗口的置顶状态。使用该接口设置主窗口置顶或将处于置顶状态的主窗口取消置顶时，需要申请权限ohos.permission.WINDOW_TOPMOST。
+- 从API版本26.0.1开始，还可以通过[setWindowPosition()](../reference/apis-arkui/arkts-apis-window-f.md#windowsetwindowposition)接口调整主窗口的置顶状态。使用该接口设置主窗口置顶或将处于置顶状态的主窗口取消置顶时，需要申请权限[ohos.permission.WINDOW_TOPMOST](../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost)。
 
 ## 窗口层级控制机制汇总表
 
 
 | 特性/操作 | 控制方式 | 生效范围 | 适用场景 |
 | -------- | -------- | -------- | -------- |
-| ZOrder | 系统管理 | 可跨应用生效 | 内部渲染顺序管理 |
-| zLevel | setSubWindowZLevel()/创建窗口时设置 | 仅同应用内生效 | 子窗口层级管理 |
-| 窗口置顶 | setWindowTopmost() | 可跨应用生效 | 视频、导航等常驻窗口 |
-| 点击抬升 | setRaiseByClickEnabled() | 同应用内同类型子窗口之间 | 防误触、固定布局 |
+| ZOrder | 系统管理 | 可跨应用生效| 内部渲染顺序管理 |
+| zLevel | [setSubWindowZLevel()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowzlevel18)/创建窗口时设置 | 仅同应用内生效 | 子窗口层级管理 |
+| 窗口置顶 | [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) | 可跨应用生效 | 视频、导航等常驻窗口 |
+| 点击抬升 | [setRaiseByClickEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setraisebyclickenabled14) | 同应用内同类型子窗口之间 | 防误触、固定布局 |
 
 ## 层级相关开发场景
 
