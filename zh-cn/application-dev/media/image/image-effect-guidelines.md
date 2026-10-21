@@ -362,8 +362,9 @@ target_link_libraries(entry PUBLIC
    **场景二：自定义算法不能直接修改info中的像素数据（比如：裁剪滤镜）。**
 
    <!-- @[image_effect_render_crop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
-   ```c++
-   bool Render(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData)
+   
+   ``` C++
+   bool RenderCrop(OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData)
    {
        // 获取图像信息具体参数。
        EffectBufferInfo inputBufferInfo;
@@ -372,13 +373,13 @@ target_link_libraries(entry PUBLIC
        OH_EffectBufferInfo_GetHeight(info, &inputBufferInfo.height);
        OH_EffectBufferInfo_GetRowSize(info, &inputBufferInfo.rowSize);
        OH_EffectBufferInfo_GetEffectFormat(info, &inputBufferInfo.format);
-
+   
        // 创建输出像素信息。
-       EffectBufferInfo outputBufferInfo = CreateOutputBufferInfo(inputBufferInfo);
-
+       EffectBufferInfo outputBufferInfo;
+   
        // 调用自定义滤镜算法。
-       ApplyCustomAlgo(inputBufferInfo, outputBufferInfo);
-
+       ApplyCustomCropAlgo(filter, inputBufferInfo, outputBufferInfo);
+   
        // 生成outputOhInfo。
        OH_EffectBufferInfo *outputOhInfo = OH_EffectBufferInfo_Create();
        OH_EffectBufferInfo_SetAddr(outputOhInfo, outputBufferInfo.addr);
@@ -386,14 +387,13 @@ target_link_libraries(entry PUBLIC
        OH_EffectBufferInfo_SetHeight(outputOhInfo, outputBufferInfo.height);
        OH_EffectBufferInfo_SetRowSize(outputOhInfo, outputBufferInfo.rowSize);
        OH_EffectBufferInfo_SetEffectFormat(outputOhInfo, outputBufferInfo.format);
-
+   
        // 编辑完成后调用pushData传递outputOhInfo。
        pushData(filter, outputOhInfo);
-
+   
        // 释放资源。
        OH_EffectBufferInfo_Release(outputOhInfo);
-       ReleaseOutputBuffer(outputBufferInfo.addr);
-
+   
        return true;
    }
    ```
