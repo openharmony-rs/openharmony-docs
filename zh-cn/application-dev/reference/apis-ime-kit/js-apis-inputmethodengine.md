@@ -5226,6 +5226,8 @@ getLeftRichText(length: number): Promise&lt;InputMethodRichText&gt;
 > **说明：**
 >
 > 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
+>
+> 可获取的富文本总大小最大为128KB，超过该限制将导致请求失败。
 
 **起始版本：** 26.2.0
 
@@ -5287,6 +5289,8 @@ getLeftRichTextSync(length: number): InputMethodRichText
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getLeftRichText](#getleftrichtext)。
 >
 > 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
+>
+> 可获取的富文本总大小最大为128KB，超过该限制将导致请求失败。
 
 **起始版本：** 26.2.0
 
@@ -5352,6 +5356,8 @@ getRightRichText(length: number): Promise&lt;InputMethodRichText&gt;
 > **说明：**
 >
 > 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
+>
+> 可获取的富文本总大小最大为128KB，超过该限制将导致请求失败。
 
 **起始版本：** 26.2.0
 
@@ -5413,6 +5419,8 @@ getRightRichTextSync(length: number): InputMethodRichText
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getRightRichText](#getrightrichtext)。
 >
 > 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
+>
+> 可获取的富文本总大小最大为128KB，超过该限制将导致请求失败。
 
 **起始版本：** 26.2.0
 
