@@ -27,7 +27,7 @@
 | ---------------------------- | ------------------------------------------ |
 |OH_JSVM_CreateArray | 创建一个新的 JavaScript 数组对象 |
 |OH_JSVM_CreateArrayWithLength | 创建一个指定长度的 JavaScript 数组对象 |
-|OH_JSVM_CreateTypedarray | 在现有的ArrayBuffer上创建JavaScript TypedArray对象，TypedArray对象提供类似类数组的视图，每个元素具有相同的二进制标量数据类型。注意(length * size_of_element) + byte_offset 不得超过传入数组的大小（以字节为单位），否则会引发RangeError异常。|
+|OH_JSVM_CreateTypedarray | 在现有的ArrayBuffer上创建JavaScript TypedArray对象，TypedArray对象提供类似数组的视图，每个元素具有相同的二进制标量数据类型。注意(length * size_of_element) + byte_offset 不得超过传入数组的大小（以字节为单位），否则会引发RangeError异常。|
 |OH_JSVM_CreateDataview | 在现有的 ArrayBuffer 上创建一个 JavaScript DataView 对象，DataView 对象在底层数据缓冲区上提供类似数组的视图，该 ArrayBuffer 允许有不同大小和类型的元素。要求 byte_length + byte_offset 小于或等于传入数组的字节大小，否则会引发 RangeError 异常。|
 |OH_JSVM_GetArrayLength | 返回 Array 对象的长度 |
 |OH_JSVM_GetTypedarrayInfo | 获取 TypedArray（类型化数组）对象的信息 |
@@ -310,11 +310,6 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Status status = OH_JSVM_CreateDataview(env, byteLength, arrayBuffer, byteOffset, &result);
     // 获取DataView的指针和长度信息
     uint8_t *data = nullptr;
-    size_t length = 0;
-    // 为DataView赋值
-    for (size_t i = 0; i < length; i++) {
-        data[i] = static_cast<uint8_t>(i + 1);
-    }
     int32_t infoType = 0;
     OH_JSVM_GetValueInt32(env, args[1], &infoType);
     size_t returnLength = 0;
