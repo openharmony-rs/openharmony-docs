@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍音频快照能力，通过获取播放、录音、耳返、会话、编创等模块的运行状态快照，帮助开发者定位无声、音量异常、焦点丢失等问题。"
+keywords: [音频快照, 问题定位, 音频调试, 运行状态, 播放无声, 焦点丢失, C/C++, ArkTS]
+doctype: faq
+status: active
+---
 # 使用音频快照获取问题定位信息
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

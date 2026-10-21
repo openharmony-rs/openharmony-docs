@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导开发者使用AudioRenderer、AudioCapturer与3A算法实现VoIP等音频通话功能，并处理通话中的音频焦点与设备切换场景。"
+keywords: [音频通话, VoIP, AudioRenderer, AudioCapturer, 3A算法, AEC, ANS, AGC, 通话开发]
+doctype: guide
+status: active
+---
 # 开发音频通话功能
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
