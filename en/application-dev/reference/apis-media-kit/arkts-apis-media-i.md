@@ -554,3 +554,20 @@ Describes the information about time-based metadata.
 | start | number | No  | No  | Offset of time-based metadata from the start time of the entire media.<br>The value must be an integer.<br>Unit: ms.|
 | duration | number | No  | No  | Duration of time-based metadata.<br>The value must be an integer.<br>Unit: ms.|
 | contents | Record<string, object> | No  | No  | Key-value pair collection corresponding to time-based metadata.|
+
+## RectangleRegion
+
+Describes the rectangular region. It is used by [setCaptureArea](arkts-apis-media-AVScreenCaptureRecorder.md#setcapturearea) to specify the actual area to capture in screen capture mode. The region position starts from the upper left corner of the screen, and the region size is determined by the width and height.
+
+**Since**: 26.2.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Name  | Type  | Read-Only| Optional| Description                                                        |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| left   | number | No  | No  | Offset of the rectangular region from the left edge of the screen.<br>Value constraint: The value must be an integer greater than or equal to 0.<br>The unit is px.|
+| top    | number | No  | No  | Offset of the rectangular region from the top edge of the screen.<br>Value constraint: The value must be an integer greater than or equal to 0.<br>The unit is px.|
+| width  | number | No  | No  | Width of the rectangular region.<br>Value constraint: The value must be an integer greater than or equal to 0, and the sum of **left** and **width** must not exceed the screen width.<br>The unit is px.|
+| height | number | No  | No  | Height of the rectangular region.<br>Value constraint: The value must be an integer greater than or equal to 0, and the sum of **top** and **height** must not exceed the screen height.<br>The unit is px.|

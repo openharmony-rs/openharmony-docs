@@ -689,6 +689,74 @@ async function testSetContentAutoRotation() {
 }
 ```
 
+## setCaptureArea
+
+setCaptureArea(area: RectangleRegion): Promise\<void>
+
+Specifies the actual area to record in screen capture mode. This API uses a promise to return the result.
+
+You can set the area before starting screen capture or update the area during screen capture. After the area is updated, subsequent captured frames cover only the new area.
+
+> **NOTE**
+>
+> - The area is calculated from the upper left corner of the screen being captured, in px. The screen is specified by **displayId** in [AVScreenCaptureRecordConfig](arkts-apis-media-i.md#avscreencapturerecordconfig12) and defaults to the main screen.
+>
+> - The area must be within the screen bounds and must not span multiple screens. If the area fails to be set, the previously set area is still used for capture.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Parameters**
+
+| Name | Type                                                     | Mandatory | Description                                                  |
+| ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| area | [RectangleRegion](arkts-apis-media-i.md#rectangleregion) | Yes | Rectangular area for recording. For details about the value range and constraints of each field, see [RectangleRegion](arkts-apis-media-i.md#rectangleregion). |
+
+**Return value**
+
+| Type           | Description                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID | Error Message                               |
+| -------- | -------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise.    |
+| 5400105  | Service died. Return by promise. |
+| 5400108  | The parameter check failed, parameter value out of range. |
+
+**Example**
+
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function testSetCaptureArea() {
+  // Create the screen capture instance.
+  let avScreenCaptureRecorder = await media.createAVScreenCaptureRecorder();
+
+  // Other processes
+
+  // Set the capture area. The upper left corner of the area is (0, 0), the width is 640 px, and the height is 480 px.
+  let area: media.RectangleRegion = { left: 0, top: 0, width: 640, height: 480 };
+
+  // Call the setCaptureArea method.
+  if (avScreenCaptureRecorder) {
+    avScreenCaptureRecorder.setCaptureArea(area).then(() => {
+      console.info('Succeeded in setting capture area.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set capture area. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
 ## release<sup>12+</sup>
 
 release(): Promise\<void>
