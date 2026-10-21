@@ -5620,7 +5620,7 @@ let website: contact.Website = {
 
 |    名称   |   类型   | 只读 | 可选 | 说明           |
 | --------- | -------- | ---- | ---- | -------------- |
-| dateType      | SignificantDateType   | 是   | 否   | 重要日期类型。   |
+| dateType      | [SignificantDateType](#SignificantDateType)   | 是   | 否   | 重要日期类型。   |
 | dateValue | string   | 是   | 否   | 重要日期取值。 |
 | dateName       | string   | 是   | 否   | 重要日期类型名称。     |
 
