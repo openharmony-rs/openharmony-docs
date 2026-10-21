@@ -32,7 +32,12 @@
 | [ArkUI_KeyEventType](#arkui_keyeventtype) | ArkUI_KeyEventType | 按键的类型。 |
 | [ArkUI_KeySourceType](#arkui_keysourcetype) | ArkUI_KeySourceType | 触发当前按键的输入设备类型。 |
 | [ArkUI_KeyIntension](#arkui_keyintension) | ArkUI_KeyIntension | 按键对应的意图。 |
-| [OH_ArkUI_KeyIntention](#oh_arkui_keyintention) | OH_ArkUI_KeyIntention | 按键事件意图类型的正确拼写别名。 |
+
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| ArkUI_KeyIntension OH_ArkUI_KeyIntention | 按键事件意图类型的正确拼写别名。<br> 原类型名 [ArkUI_KeyIntension](#arkui_keyintension) 将保留以兼容已有接口。<br>**起始版本：** 26.2.0<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
 
 ### 函数
 
@@ -310,21 +315,6 @@ enum ArkUI_KeyIntension
 | ARKUI_KEY_INTENTION_VOLUME_DOWN = 108 | 音量降低。 |
 | ARKUI_KEY_INTENTION_CALL = 200 | 接听电话。 |
 | ARKUI_KEY_INTENTION_CAMERA = 300 | 拍照。 |
-
-
-### OH_ArkUI_KeyIntention
-
-```c
-typedef ArkUI_KeyIntension OH_ArkUI_KeyIntention
-```
-
-**描述：**
-
-按键事件意图类型的正确拼写别名。
-
-原类型名[ArkUI_KeyIntension](#arkui_keyintension)将保留以兼容已有接口。
-
-**起始版本：** 26.2.0
 
 
 ## 函数说明
@@ -914,7 +904,7 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_SetKeyIntentionCode(ArkUI_UIInputEvent* event,
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | [入参] 目标[ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)对象的指针，不能为空，且必须是通过[OH_ArkUI_KeyEvent_Create](#oh_arkui_keyevent_create)创建的按键事件。 |
-| [OH_ArkUI_KeyIntention](#oh_arkui_keyintention) intentionCode | [入参] 按键事件关联的意图码。 |
+| [OH_ArkUI_KeyIntention](#变量) intentionCode | [入参] 按键事件关联的意图码。 |
 
 **返回：**
 
