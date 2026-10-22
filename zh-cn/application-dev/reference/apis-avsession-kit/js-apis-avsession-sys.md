@@ -172,15 +172,15 @@ getSessionDescriptorsForAudioZone(userId: int): Promise\<Array\<Readonly\<AVSess
 **示例：** 
  
 ```ts
-avSession.getSessionDescriptorsForAudioZone(100, (descriptors: avSession.AVSessionDescriptor[]) => { 
-    console.info(`Succeeded in getting session descriptors for userid, length: ${descriptors.length}`); 
-    if (descriptors.length > 0 ) { 
-      console.info(`Succeeded in getting session descriptors for userid, isActive: ${descriptors[0].isActive}`); 
-      console.info(`Succeeded in getting session descriptors for userid, type: ${descriptors[0].type}`); 
-      console.info(`Succeeded in getting session descriptors for userid, sessionTag: ${descriptors[0].sessionTag}`); 
-      console.info(`Succeeded in getting session descriptors for userid, sessionId: ${descriptors[0].sessionId}`); 
-      console.info(`Succeeded in getting session descriptors for userid, bundleName: ${descriptors[0].elementName.bundleName}`); 
-    } 
+avSession.getSessionDescriptorsForAudioZone(100).then((descriptors: avSession.AVSessionDescriptor[]) => {
+    console.info(`Succeeded in getting session descriptors for userid, length: ${descriptors.length}`);
+    if (descriptors.length > 0 ) {
+      console.info(`Succeeded in getting session descriptors for userid, isActive: ${descriptors[0].isActive}`);
+      console.info(`Succeeded in getting session descriptors for userid, type: ${descriptors[0].type}`);
+      console.info(`Succeeded in getting session descriptors for userid, sessionTag: ${descriptors[0].sessionTag}`);
+      console.info(`Succeeded in getting session descriptors for userid, sessionId: ${descriptors[0].sessionId}`);
+      console.info(`Succeeded in getting session descriptors for userid, bundleName: ${descriptors[0].elementName.bundleName}`);
+    }
 });
 ```
 
