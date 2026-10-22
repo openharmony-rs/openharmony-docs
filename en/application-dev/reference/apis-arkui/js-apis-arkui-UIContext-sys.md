@@ -458,7 +458,7 @@ Obtains the [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) col
 
 **Example**
 
-For details, see the example of [offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange).
+For details, see the example of **offBackgroundLuminanceChange**.
 
 ### recycleInvisibleImageMemory<sup>23+</sup>
 

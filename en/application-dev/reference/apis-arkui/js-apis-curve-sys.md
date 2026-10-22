@@ -228,7 +228,8 @@ struct Index {
 }
 ```
 
-![trailOptimizedSpringMotion](figures/trailOptimizedSpringMotion.gif)
+<!--Del-->![trailOptimizedSpringMotion] (figures/trailOptimizedSpringMotion.gif)
+<!--DelEnd-->
 
 ### Example 2: Trailing Optimization Effect of trailOptimizedResponsiveSpringMotion
 
@@ -330,7 +331,8 @@ struct Index {
 }
 ```
 
-![trailOptimizedResponsiveSpringMotion](figures/trailOptimizedResponsiveSpringMotion.gif)
+<!--Del-->![trailOptimizedResponsiveSpringMotion] (figures/trailOptimizedResponsiveSpringMotion.gif)
+<!--DelEnd-->
 
 ### Example 3: Trailing Optimization Effect of trailOptimizedInterpolatingSpring
 
@@ -432,5 +434,6 @@ struct Index {
 }
 ```
 
-![trailOptimizedInterpolatingSpring](figures/trailOptimizedInterpolatingSpring.gif)
+<!--Del-->![trailOptimizedInterpolatingSpring] (figures/trailOptimizedInterpolatingSpring.gif)
+<!--DelEnd-->
 
