@@ -6,6 +6,8 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+# while be delete
+
 在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
 当前示例提供完整的拍照流程介绍，方便开发者了解完整的接口调用顺序。

@@ -6,6 +6,8 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+# while be delete
+
 在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
 当前示例提供完整的录像流程及其接口调用顺序的介绍。对于单个流程（如[设备输入](native-camera-device-input.md)、[会话管理](native-camera-session-management.md)、[录像](native-camera-recording.md)）的介绍请参考具体章节。
