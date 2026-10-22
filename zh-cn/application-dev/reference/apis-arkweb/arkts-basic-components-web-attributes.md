@@ -1266,7 +1266,7 @@ ArkTS-Dyn示例：
 
 
 ```ts
-import webview from '@ohos.web.webview';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
@@ -1305,9 +1305,8 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import { $rawfile, Button, Column, Component, Entry, ResourceColor, Row, Web } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
-import webview from '@ohos.web.webview';
+import { $rawfile, Button, Column, Component, Entry, ResourceColor, Row, State, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
