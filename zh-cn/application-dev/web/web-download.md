@@ -153,8 +153,10 @@ struct WebComponent {
 ```
 
 使用[DocumentViewPicker()](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)获取当前示例的默认下载目录，将该目录设置为下载目录。
+
+<!-- @[select_download_dir](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/SelectDownloadDir.ets) -->
+
 ```ts
-// xxx.ets
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker, fileUri } from  '@kit.CoreFileKit';
