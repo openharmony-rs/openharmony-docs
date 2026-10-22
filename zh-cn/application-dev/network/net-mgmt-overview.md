@@ -17,9 +17,6 @@ Network Kit（网络服务）主要提供以下功能：
 - [以太网连接](net-ethernet-sys.md)：以太网连接主要提供有线网络能力，提供设置有线网络的IP地址、子网掩码、网关、DNS等信息。
 <!--DelEnd-->
 
-<!--RP1-->
-<!--RP1End-->
-
 ## 约束与限制
 
 使用网络管理模块的相关功能时，需要请求相应的权限。
@@ -31,12 +28,7 @@ Network Kit（网络服务）主要提供以下功能：
 | ohos.permission.GET_NETWORK_INFO | 获取网络连接信息。                     |
 | ohos.permission.INTERNET         | 允许程序打开网络套接字，进行网络连接。 |
 
-**支持的设备**
-
-本Kit仅适用于Phone、PC/2in1、Tablet、TV和Wearable。
-
-**支持的国家/地区**
-
-请参见版本说明中[各设备支持的国家/地区](https://developer.huawei.com/consumer/cn/doc/harmonyos-releases/sdk-supported-regions)。
+<!--RP1-->
+<!--RP1End-->
 
 
