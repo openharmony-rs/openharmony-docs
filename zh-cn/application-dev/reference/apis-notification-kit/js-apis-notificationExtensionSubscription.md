@@ -13,6 +13,8 @@
 > 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
 >
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 通过本模块订阅的通知扩展事件不通过本模块的接口回调投递，而是通过[NotificationSubscriberExtensionAbility](js-apis-notificationSubscriberExtensionAbility.md)的回调（如onReceiveMessage）投递，相关回调在该ExtensionAbility实例的主线程上执行。
 ## 导入模块
 
 ArkTS-Dyn示例：

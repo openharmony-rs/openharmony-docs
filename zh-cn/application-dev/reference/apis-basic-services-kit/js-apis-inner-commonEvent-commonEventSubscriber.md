@@ -42,6 +42,15 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 subscriber = commonEventManager.createSubscriberSync(subscribeInfo);
 ```
 
+> **约束与失效行为说明：**
+>
+> - 本类的数据处理与流程控制方法（getCode、getData、getAbortCommonEvent、setCode、setData、setCodeAndData、abortCommonEvent、clearAbortCommonEvent、finishCommonEvent及其对应的Sync方法）仅在当前订阅收到[有序公共事件](../../basic-services/common-event/common-event-glossary.md#ordered-common-event有序公共事件)的接收回调（onReceiveEvent）执行期间调用才有效。
+> - 在无序公共事件的接收回调内、退订（unsubscribe）之后或其他上下文调用时，接口不会抛出错误，但调用不生效：
+>   - 获取类方法（getCode、getData、getAbortCommonEvent及其对应的Sync方法）返回默认值（依次为0、空字符串、false），与真实数据不可区分；
+>   - 设置与流程控制类方法（setCode、setData、setCodeAndData、abortCommonEvent、clearAbortCommonEvent、finishCommonEvent及其对应的Sync方法）静默返回成功，但设置不生效。
+> - 上述失效调用仅记录系统日志，应用侧无法通过返回值或错误码感知。
+> - 有序公共事件对每个订阅者的处理时长存在10秒超时限制，超时后系统将自动结束当前订阅者的处理并向下一优先级订阅者投递该事件，此后调用的setCode、setData、setCodeAndData、finishCommonEvent等接口不再生效。
+
 ### getCode
 
 ArkTS-Dyn: getCode(callback: AsyncCallback\<number>): void
@@ -51,6 +60,10 @@ ArkTS-Sta: getCode(callback: AsyncCallback\<int>): void
 ArkTS-Dyn: 获取有序公共事件传递的数据（number类型）。使用callback异步回调。
 
 ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。使用callback异步回调。
+
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，而是通过callback或Promise返回默认值0。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -112,6 +125,10 @@ ArkTS-Dyn: 获取有序公共事件传递的数据（number类型）。使用Pro
 
 ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。使用Promise异步回调。
 
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，返回默认值0。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -161,6 +178,10 @@ ArkTS-Dyn: 同步获取有序公共事件传递的数据（number类型）。
 
 ArkTS-Sta: 同步获取有序公共事件传递的数据（int类型）。
 
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，返回默认值0。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -203,6 +224,11 @@ ArkTS-Sta: setCode(code: int, callback: AsyncCallback\<void>): void
 ArkTS-Dyn: 设置有序公共事件传递的数据（number类型）。使用callback异步回调。
 
 ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用callback异步回调。
+
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -264,6 +290,11 @@ ArkTS-Sta: setCode(code: int): Promise\<void>
 ArkTS-Dyn: 设置有序公共事件传递的数据（number类型）。使用Promise异步回调。
 
 ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用Promise异步回调。
+
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -328,6 +359,11 @@ ArkTS-Dyn: 同步设置有序公共事件传递的数据（number类型）。
 
 ArkTS-Sta: 同步设置有序公共事件传递的数据（int类型）。
 
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -368,6 +404,10 @@ try {
 getData(callback: AsyncCallback\<string>): void
 
 获取有序公共事件传递的数据。使用callback异步回调。
+
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，而是通过callback或Promise返回默认值空字符串""。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -427,6 +467,10 @@ getData(): Promise\<string>
 
 获取有序公共事件传递的数据。使用Promise异步回调。
 
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，返回默认值空字符串""。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -472,6 +516,10 @@ getDataSync(): string
 
 同步获取有序公共事件传递的数据。
 
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，返回默认值空字符串""。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -500,6 +548,11 @@ console.info(`Succeeded in getting data, data is ${data}`);
 setData(data: string, callback: AsyncCallback\<void>): void
 
 设置有序公共事件传递的数据。使用callback异步回调。
+
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -557,6 +610,11 @@ subscriber.setData('publish_data_changed', (err: BusinessError | null) => {
 setData(data: string): Promise\<void>
 
 设置有序公共事件传递的数据。使用Promise异步回调。
+
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -617,6 +675,11 @@ setDataSync(data: string): void
 
 同步设置有序公共事件传递的数据。
 
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -659,6 +722,11 @@ ArkTS-Dyn: setCodeAndData(code: number, data: string, callback:AsyncCallback\<vo
 ArkTS-Sta: setCodeAndData(code: int, data: string, callback:AsyncCallback\<void>): void
 
 设置有序公共事件传递的数据。使用callback异步回调。
+
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -720,6 +788,11 @@ ArkTS-Sta: setCodeAndData(code: int, data: string): Promise\<void>
 
 设置有序公共事件传递的数据。使用Promise异步回调。
 
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -780,6 +853,11 @@ ArkTS-Sta: setCodeAndDataSync(code: int, data: string): void
 
 同步设置有序公共事件传递的数据。
 
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。若调用时已超时，系统已自动向下一优先级订阅者投递该事件，设置的数据不会被采纳。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -822,6 +900,10 @@ try {
 isOrderedCommonEvent(callback: AsyncCallback\<boolean>): void
 
 查询当前公共事件是否为有序公共事件。使用callback异步回调。
+
+> **说明：**
+>
+> 仅当在公共事件接收回调（onReceiveEvent）中调用时，本接口才能如实反映当前公共事件；退订后调用时不抛出错误，而是通过callback或Promise返回false。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -877,6 +959,10 @@ isOrderedCommonEvent(): Promise\<boolean>
 
 查询当前公共事件是否为有序公共事件。使用Promise异步回调。
 
+> **说明：**
+>
+> 仅当在公共事件接收回调（onReceiveEvent）中调用时，本接口才能如实反映当前公共事件；退订后调用时不抛出错误，返回false。
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
@@ -920,6 +1006,10 @@ isOrderedCommonEventSync(): boolean
 
 同步查询当前公共事件是否为有序公共事件。
 
+> **说明：**
+>
+> 仅当在公共事件接收回调（onReceiveEvent）中调用时，本接口才能如实反映当前公共事件；退订后调用时不抛出错误，返回false。
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
@@ -946,6 +1036,10 @@ console.info(`isOrderedCommonEventSync ${JSON.stringify(isOrdered)}`);
 isStickyCommonEvent(callback: AsyncCallback\<boolean>): void
 
 查询当前公共事件是否为一个粘性事件。使用callback异步回调。
+
+> **说明：**
+>
+> 仅当在公共事件接收回调（onReceiveEvent）中调用时，本接口才能如实反映当前公共事件；在接收回调外或退订后调用时不抛出错误，但通过callback或Promise返回的结果不可靠。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1001,6 +1095,10 @@ isStickyCommonEvent(): Promise\<boolean>
 
 查询当前公共事件是否为一个粘性公共事件。使用Promise异步回调。
 
+> **说明：**
+>
+> 仅当在公共事件接收回调（onReceiveEvent）中调用时，本接口才能如实反映当前公共事件；在接收回调外或退订后调用时不抛出错误，但返回值不可靠。
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
@@ -1044,6 +1142,10 @@ isStickyCommonEventSync(): boolean
 
 同步检查当前公共事件是否为一个粘性事件。
 
+> **说明：**
+>
+> 仅当在公共事件接收回调（onReceiveEvent）中调用时，本接口才能如实反映当前公共事件；在接收回调外或退订后调用时不抛出错误，但返回值不可靠。
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
@@ -1070,6 +1172,10 @@ console.info(`isStickyCommonEventSync ${JSON.stringify(isSticky)}`);
 abortCommonEvent(callback: AsyncCallback\<void>): void
 
 添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用callback异步回调。
+
+> **说明：**
+>
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1137,6 +1243,10 @@ abortCommonEvent(): Promise\<void>
 
 添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用Promise异步回调。
 
+> **说明：**
+>
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
@@ -1191,6 +1301,10 @@ abortCommonEventSync(): void
 
 同步添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
 
+> **说明：**
+>
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
@@ -1229,6 +1343,10 @@ subscriber.finishCommonEvent().then(() => {
 clearAbortCommonEvent(callback: AsyncCallback\<void>): void
 
 清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用callback异步回调。
+
+> **说明：**
+>
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1298,6 +1416,10 @@ clearAbortCommonEvent(): Promise\<void>
 
 清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用Promise异步回调。
 
+> **说明：**
+>
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
@@ -1352,6 +1474,10 @@ clearAbortCommonEventSync(): void
 
 同步清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent9)配合使用时，可以使该公共事件继续向下一个订阅者传递。
 
+> **说明：**
+>
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但设置不生效。
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：10
@@ -1390,6 +1516,10 @@ subscriber.finishCommonEvent().then(() => {
 getAbortCommonEvent(callback: AsyncCallback\<boolean>): void
 
 获取当前有序公共事件是否处于中止状态。使用callback异步回调。
+
+> **说明：**
+>
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，而是通过callback或Promise返回默认值false。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1445,6 +1575,10 @@ getAbortCommonEvent(): Promise\<boolean>
 
 获取当前有序公共事件是否处于中止状态。使用Promise异步回调。
 
+> **说明：**
+>
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，返回默认值false。
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：7
@@ -1487,6 +1621,10 @@ subscriber.getAbortCommonEvent().then((abortEvent: boolean) => {
 getAbortCommonEventSync(): boolean
 
 同步获取当前有序公共事件是否处于中止状态。
+
+> **说明：**
+>
+> 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，返回默认值false。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1657,6 +1795,11 @@ finishCommonEvent(callback: AsyncCallback\<void>): void
 
 用于订阅者结束对当前有序公共事件的处理。使用callback异步回调。
 
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但调用不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。超时后系统将自动结束当前订阅者的处理并向下一优先级订阅者投递该事件，且不会通知当前订阅者；此后调用本接口不会报错，但不会生效。
+
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **ArkTS-Dyn起始版本**：9
@@ -1710,6 +1853,11 @@ subscriber.finishCommonEvent((err: BusinessError | null) => {
 finishCommonEvent(): Promise\<void>
 
 用于订阅者结束对当前有序公共事件的处理。使用Promise异步回调。
+
+> **说明：**
+>
+> - 本接口仅在有序公共事件的接收回调内调用有效。在无序公共事件回调内或退订后调用时不抛出错误，但调用不生效。
+> - 有序公共事件对每个订阅者的处理时长上限为10秒。超时后系统将自动结束当前订阅者的处理并向下一优先级订阅者投递该事件，且不会通知当前订阅者；此后调用本接口仍会返回成功，但实际不会生效。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
