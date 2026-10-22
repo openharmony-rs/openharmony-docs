@@ -78,7 +78,7 @@ NODE_OVERLAY
 
 **描述：**
 
-定义遮罩属性，支持属性设置，属性重置和属性获取。开发者可以通过如下.string或.object设置浮层内容，.string有更高的优先级。 <br>作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 **参数：**<br><ul> <li>.string</b>：遮罩文本。</li> <li>.value[0]?.i32</b>：可选值，浮层相对于组件的位置，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。</li> <li>.value[1]?.f32</b>：可选值，浮层基于自身左上角的偏移量X，单位为vp，默认值为0vp。</li> <li>.value[2]?.f32</b>：可选值，浮层基于自身左上角的偏移量Y，单位为vp，默认值为0vp。</li> <li>.value[3]?.i32</b>：可选值，浮层的布局方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_LTR。 在大部分场景下，这个参数都应该被设置成Auto，这个模式允许系统自动处理布局方向，如果在某些场景下需要保持特定的方向，设置这个属性为LTR（Left-to-Right）或者RTL（Right-to-Left）。 从API version 21开始支持。</li> <li>.object</b>：用于overlay的节点树，参数类型为[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)，默认值为nullptr。从API version 21开始支持。</li> </ul> **返回：**<br><ul> <li>.string</b>：遮罩文本。</li> <li>.value[0].i32</b>：浮层相对于组件的位置，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。</li> <li>.value[1].f32</b>：浮层基于自身左上角的偏移量X，单位为vp。</li> <li>.value[2].f32</b>：浮层基于自身左上角的偏移量Y，单位为vp。</li> <li>.value[3].i32</b>：浮层的布局方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_LTR。从API version 21开始支持。</li> <li>.object</b>：用于overlay的节点树，参数类型为[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)。从API version 21开始支持。</li> </ul>
+定义遮罩属性，支持属性设置，属性重置和属性获取。开发者可以通过如下.string或.object设置浮层内容，.string有更高的优先级。 <br>作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 **参数：**<br><ul> <li>.string</b>：遮罩文本。</li> <li>.value[0]?.i32</b>：可选值，浮层相对于组件的位置，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。</li> <li>.value[1]?.f32</b>：可选值，浮层基于自身左上角的偏移量X，单位为vp，默认值为0vp。</li> <li>.value[2]?.f32</b>：可选值，浮层基于自身左上角的偏移量Y，单位为vp，默认值为0vp。</li> <li>.value[3]?.i32</b>：可选值，浮层的布局方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_LTR。 在大部分场景下，这个参数都应该被设置成Auto，这个模式允许系统自动处理布局方向，如果在某些场景下需要保持特定的方向，设置这个属性为LTR（Left-to-Right）或者RTL（Right-to-Left）。 从API version 21开始支持。</li> <li>.object</b>：用于overlay的节点树，参数类型为[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)，默认值为nullptr。从API version 21开始支持。</li> </ul> **返回：**<br><ul> <li>.string</b>：遮罩文本。</li> <li>.value[0].i32</b>：浮层相对于组件的位置，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。</li> <li>.value[1].f32</b>：浮层基于自身左上角的偏移量X，单位为vp。</li> <li>.value[2].f32</b>：浮层基于自身左上角的偏移量Y，单位为vp。</li> <li>.value[3].i32</b>：浮层的布局方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_LTR。从API version 21开始支持。</li> <li>.object</b>：用于overlay的节点树，参数类型为[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)。从API version 21开始支持。</li> </ul>
 
 **起始版本：** 12
 
@@ -162,7 +162,7 @@ NODE_NEXT_FOCUS = 101
 
 **描述：**
 
-设置下一个走焦节点。 <br>作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 **参数：**<br><ul> <li>.value[0].i32</b>：走焦类型，定义在[ArkUI_FocusMove](capi-common-attributes-h.md#arkui_focusmove)。</li> <li>.object</b>：下一个焦点。参数类型为[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)。</li> </ul>
+设置下一个走焦节点。 <br>作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 **参数：**<br><ul> <li>.value[0].i32</b>：走焦类型，定义在[ArkUI_FocusMove](capi-common-attributes-h.md#arkui_focusmove)。</li> <li>.object</b>：下一个焦点。参数类型为[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)。</li> </ul>
 
 **起始版本：** 18
 

@@ -267,7 +267,7 @@ Called when the requested image is ready.
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | Request ID, which is specified by [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md). |
 | [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality) mediaQuality | Quality of the requested source, which is specified by [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality). |
 | [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | Media content type of the requested source, which is specified by [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype). |
-| [OH_ImageSourceNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-imagesourcenative.md)* imageSourceNative | Pointer to the [OH_ImageSourceNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-imagesourcenative.md) instance obtained when the requested image is ready. |
+| [OH_ImageSourceNative](../../apis-image-kit/c-apis/capi-image-nativemodule-oh-imagesourcenative.md)* imageSourceNative | Pointer to the [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) instance obtained when the requested image is ready. |
 
 ### OH_MediaLibrary_OnMovingPhotoDataPrepared()
 

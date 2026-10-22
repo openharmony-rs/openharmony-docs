@@ -38,6 +38,7 @@
     - [OH_HiDebug_ProfilerOptions](capi-hidebug-oh-hidebug-profileroptions.md)
     - [HiAppEvent_AppEventInfo](capi-hiappevent-hiappevent-appeventinfo.md)
     - [HiAppEvent_AppEventGroup](capi-hiappevent-hiappevent-appeventgroup.md)
+    - [OH_HiAppEvent_ExternalLog](capi-hiappevent-oh-hiappevent-externallog.md)
     - [ParamList](capi-hiappevent-paramlist.md)
     - [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md)
     - [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)

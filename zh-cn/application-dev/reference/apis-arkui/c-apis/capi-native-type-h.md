@@ -34,8 +34,6 @@ Defines the common types for the native module.
 | [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) | ArkUI_HostWindowInfo | 定义窗口属性的HostWindowInfo类信息。 |
 | [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | 定义ArkUI_ActiveChildrenInfo结构体，用于保存内部活跃状态为true的 FrameNode子节点信息，支持查询子节点数量和按下标获取子节点。 该结构体实例由OH_ArkUI_NodeUtils_GetActiveChildrenInfo生成，使用完毕后 必须调用OH_ArkUI_ActiveChildrenInfo_Destroy销毁。 |
 | [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | 定义跨语言配置 项，用于配置目标节点的跨语言访问能力，例如是否允许跨语言修改属性；从API version 26.0.0开始，还可配置节点树跨语言操作状态。 |
-| [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md) | AbilityBase_Want | Declares the Ability base want. |
-| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | Define the EmbeddedComponentOption for the EmbeddedComponent. |
 | [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md) | ArkUI_Matrix4 | Defines the matrix4 object. |
 | [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | 定义选中状态下文本拖拽预览样式，适用于需要在文本拖拽过程中展示选中状态预览效果的场景，可提升用户的拖拽交互体验。 |
 | [ArkUI_SystemFontStyleEvent](capi-arkui-nativemodule-arkui-systemfontstyleevent.md) | ArkUI_SystemFontStyleEvent | 系统字体样式变更事件定义，用于在系统字体大小或字体粗细发生变化时，向已注册的系统字体样式变更回调传递事件信息。 |
@@ -225,10 +223,6 @@ Defines the common types for the native module.
 | [void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_destroy) | 销毁跨语言配置项实例。 |
 | [void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageOption* option, bool enabled)](#oh_arkui_crosslanguageoption_setattributesettingstatus) | 设置配置项中是否允许跨语言修改属性。 |
 | [bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_getattributesettingstatus) | 获取配置项中是否允许跨语言修改属性。 |
-| [ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()](#oh_arkui_embeddedcomponentoption_create) | Create an object for the EmbeddedComponent option. |
-| [void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)](#oh_arkui_embeddedcomponentoption_dispose) | Destroy the object by EmbeddedComponent option. |
-| [void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* option, void (\*callback)(int32_t code, const char* name, const char* message))](#oh_arkui_embeddedcomponentoption_setonerror) | Set the onError of EmbeddedComponent. |
-| [void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOption* option, void (\*callback)(int32_t code, AbilityBase_Want* want))](#oh_arkui_embeddedcomponentoption_setonterminated) | Set the onTerminated of EmbeddedComponent. |
 | [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetContent(ArkUI_TextMenuItem* item, const char* content)](#oh_arkui_textmenuitem_setcontent) | Set text menu item title. |
 | [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetContent(const ArkUI_TextMenuItem* item, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_textmenuitem_getcontent) | Get text menu item title. |
 | [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetIcon(ArkUI_TextMenuItem* item, const char* icon)](#oh_arkui_textmenuitem_seticon) | Set text menu item icon. |
@@ -4323,91 +4317,6 @@ bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageO
 | 类型 | 说明 |
 | -- | -- |
 | bool | 是否允许跨语言修改属性。true表示允许跨语言修改属性，false表示不允许跨语言修改属性。 |
-
-### OH_ArkUI_EmbeddedComponentOption_Create()
-
-```c
-ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()
-```
-
-**描述：**
-
-Create an object for the EmbeddedComponent option.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 20
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_EmbeddedComponentOption*](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | A pointer to the object of the EmbeddedComponent option. |
-
-### OH_ArkUI_EmbeddedComponentOption_Dispose()
-
-```c
-void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)
-```
-
-**描述：**
-
-Destroy the object by EmbeddedComponent option.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 20
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)* option | Pointer to the object by the EmbeddeComponent to be destroyed. |
-
-### OH_ArkUI_EmbeddedComponentOption_SetOnError()
-
-```c
-void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, const char* name, const char* message))
-```
-
-**描述：**
-
-Set the onError of EmbeddedComponent.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 20
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| rkUI_EmbeddedComponentOption* option | Pointer to the object option by the EmbeddedComponent. |
-| void (*callback)(int32_t code | Common error information about the API invoking failure. |
-| const char* name | Common error name information about the API invoking failure. |
-| const char* message) | Common error message information about the API invoking failure. |
-
-### OH_ArkUI_EmbeddedComponentOption_SetOnTerminated()
-
-```c
-void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, AbilityBase_Want* want))
-```
-
-**描述：**
-
-Set the onTerminated of EmbeddedComponent.
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**起始版本：** 20
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| rkUI_EmbeddedComponentOption* option | Pointer to the object option by the EmbeddedComponent. |
-| void (*callback)(int32_t code | Result code returned when the EmbeddedUIExtensionAbility exits. |
-| [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | Data returned when the EmbeddedUIExtensionAbility exits. |
 
 ### OH_ArkUI_TextMenuItem_SetContent()
 

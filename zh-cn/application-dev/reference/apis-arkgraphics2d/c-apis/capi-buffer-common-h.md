@@ -129,9 +129,9 @@ enum OH_NativeBuffer_MetadataKey
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HDR_METADATA_TYPE | value: OH_NativeBuffer_MetadataType |
-| OH_HDR_STATIC_METADATA | value: OH_NativeBuffer_StaticMetadata |
-| OH_HDR_DYNAMIC_METADATA | byte stream of SEI in video stream |
+| OH_HDR_METADATA_TYPE | value：OH_NativeBuffer_MetadataType类型。 |
+| OH_HDR_STATIC_METADATA | value：OH_NativeBuffer_StaticMetadata类型。 |
+| OH_HDR_DYNAMIC_METADATA | 视频流中SEI的字节流。 |
 | OH_REGION_OF_INTEREST_METADATA |  |
 
 ### OH_NativeBuffer_Format

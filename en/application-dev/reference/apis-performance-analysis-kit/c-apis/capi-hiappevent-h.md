@@ -32,8 +32,8 @@ The **HiAppEvent** module provides event subscription and event logging function
 | -- | -- | -- |
 | [HiAppEvent_ErrorCode](#hiappevent_errorcode) | HiAppEvent_ErrorCode | Enumerates the error codes used in the HiAppEvent module. |
 | [EventType](#eventtype) | EventType | Enumerates the event types. You are advised to select different event types based on application scenarios. |
-| [OH_HiAppEvent_FrameworkType](#oh_hiappevent_frameworktype) | OH_HiAppEvent_FrameworkType | Enumerates the application framework types. You are advised to select an application framework type based on the actual application scenario. |
 | [OH_HiAppEvent_SysEvent](#oh_hiappevent_sysevent) | OH_HiAppEvent_SysEvent | System event types.<br> You are advised to select system event types based on their respective usage scenarios. |
+| [OH_HiAppEvent_FrameworkType](#oh_hiappevent_frameworktype) | OH_HiAppEvent_FrameworkType | Enumerates the application framework types. You are advised to select an application framework type based on the actual application scenario. |
 
 ### Function
 
@@ -87,10 +87,10 @@ The **HiAppEvent** module provides event subscription and event logging function
 | [HiAppEvent_Config* OH_HiAppEvent_CreateConfig(void)](#oh_hiappevent_createconfig) | - | Creates a pointer to the configuration object that sets the conditions for triggering system events. Note: If the created pointer to the configuration object that sets the conditions for triggering system events is no longer used, destroy it by calling [OH_HiAppEvent_DestroyConfig](capi-hiappevent-h.md#oh_hiappevent_destroyconfig). |
 | [void OH_HiAppEvent_DestroyConfig(HiAppEvent_Config* config)](#oh_hiappevent_destroyconfig) | - | Destroys a configuration object. Note: If a configuration object is no longer used, destroy it to release memory to prevent memory leaks. After the object is destroyed, set its pointer to null. |
 | [int OH_HiAppEvent_SetConfigItem(HiAppEvent_Config* config, const char* itemName, const char* itemValue)](#oh_hiappevent_setconfigitem) | - | Sets the items in the configuration object. |
-| [int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)](#oh_hiappevent_seteventconfig) | - | Sets event configuration parameters. Configuration items vary depending on events. Currently, only the following events are supported: **MAIN_THREAD_JANK**. (For details about the parameter configuration, see Main Thread Jank Event Overview.) **MAIN_THREAD_JANK_V2**. (For details about the parameter configuration, see Main Thread Jank Event Overview.) **EVENT_APP_CRASH**. (For details about the parameter configuration, see Crash Event Overview.) This event is supported since API version 24. |
-| [int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)](#oh_hiappevent_reportframeworkmemanomaly) | - | Reports information about abnormal memory usage of the application framework. <br>This API can be called once every minute at most. If the frequency limit is exceeded, the error code **HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED** will be returned. <br>When the application detects that the memory usage of the application framework is abnormal and the operation is successful after this API is called: <br>1. If you have subscribed to the application event whose domain is **HIVIEWDFX** and name is **FW_MEM_ANOMALY**, the application will receive a callback containing the information about the abnormal memory usage of the application framework. <br>2. If you have not subscribed to this application event, the application will not receive the callback containing the information about the abnormal memory usage of the application framework. |
+| [int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)](#oh_hiappevent_seteventconfig) | - | Sets event configuration parameters. Configuration items vary depending on events. Currently, only the following events are supported: **MAIN_THREAD_JANK**. **MAIN_THREAD_JANK_V2**. **EVENT_APP_CRASH**, is supported since API version 24. |
 | [typedef void (\*OH_HiAppEvent_ExternalLogCapacityReachedCallback)(OH_HiAppEvent_ExternalLog* externalLogArr, uint32_t arrLen)](#oh_hiappevent_externallogcapacityreachedcallback) | OH_HiAppEvent_ExternalLogCapacityReachedCallback | The parameter of OH_HiAppEvent_RegExternalLogCapacityReachedCallback function which acts as the callback function when external log directory capacity is reached. |
 | [int OH_HiAppEvent_RegExternalLogCapacityReachedCallback(OH_HiAppEvent_ExternalLogCapacityReachedCallback callback)](#oh_hiappevent_regexternallogcapacityreachedcallback) | - | The interface to set the callback when external log directory capacity is reached. |
+| [int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)](#oh_hiappevent_reportframeworkmemanomaly) | - | Reports information about abnormal memory usage of the application framework. <br>This API can be called once every minute at most. If the frequency limit is exceeded, the error code **HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED** will be returned. <br>When the application detects that the memory usage of the application framework is abnormal and the operation is successful after this API is called: <br>1. If you have subscribed to the application event whose domain is **HIVIEWDFX** and name is **FW_MEM_ANOMALY**, the application will receive a callback containing the information about the abnormal memory usage of the application framework. <br>2. If you have not subscribed to this application event, the application will not receive the callback containing the information about the abnormal memory usage of the application framework. |
 
 ### Variable
 
@@ -150,26 +150,6 @@ Enumerates the event types. You are advised to select different event types base
 | SECURITY = 3 | Security event type |
 | BEHAVIOR = 4 | Behavior event type |
 
-### OH_HiAppEvent_FrameworkType
-
-```c
-enum OH_HiAppEvent_FrameworkType
-```
-
-**Description**
-
-Enumerates the application framework types. You are advised to select an application framework type based on the actual application scenario.
-
-**System capability**: SystemCapability.HiviewDFX.HiAppEvent
-
-**Since**: 26.0.0
-
-| Enum item | Description |
-| -- | -- |
-| OH_FLUTTER_DART = 0 |  |
-| OH_REACT_NATIVE_HERMES = 1 |  |
-| OH_KMP_KOTLIN = 2 |  |
-
 ### OH_HiAppEvent_SysEvent
 
 ```c
@@ -192,6 +172,26 @@ System event types.<br> You are advised to select system event types based on th
 | OH_ADDRESS_SANITIZER = 4 |  |
 | OH_APP_HICOLLIE = 5 |  |
 | OH_CPU_USAGE_HIGH = 6 |  |
+
+### OH_HiAppEvent_FrameworkType
+
+```c
+enum OH_HiAppEvent_FrameworkType
+```
+
+**Description**
+
+Enumerates the application framework types. You are advised to select an application framework type based on the actual application scenario.
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+**Since**: 26.0.0
+
+| Enum item | Description |
+| -- | -- |
+| OH_FLUTTER_DART = 0 | Flutter_dart type.<br>**Since**: 26.0.0 |
+| OH_REACT_NATIVE_HERMES = 1 | React_native_hermes type.<br>**Since**: 26.0.0 |
+| OH_KMP_KOTLIN = 2 | Kmp_kotlin type.<br>**Since**: 26.0.0 |
 
 
 ## Function description
@@ -1464,7 +1464,7 @@ int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)
 
 **Description**
 
-Sets event configuration parameters. Configuration items vary depending on events. Currently, only the following events are supported: **MAIN_THREAD_JANK**. (For details about the parameter configuration, see Main Thread Jank Event Overview.) **MAIN_THREAD_JANK_V2**. (For details about the parameter configuration, see Main Thread Jank Event Overview.) **EVENT_APP_CRASH**. (For details about the parameter configuration, see Crash Event Overview.) This event is supported since API version 24.
+Sets event configuration parameters. Configuration items vary depending on events. Currently, only the following events are supported: **MAIN_THREAD_JANK**. **MAIN_THREAD_JANK_V2**. **EVENT_APP_CRASH**, is supported since API version 24.
 
 **System capability**: SystemCapability.HiviewDFX.HiAppEvent
 
@@ -1482,34 +1482,6 @@ Sets event configuration parameters. Configuration items vary depending on event
 | Type | Description |
 | -- | -- |
 | int | <ul> <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) Operation successful.</li> <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) Invalid parameter.</li> </ul> For details, see [HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode). |
-
-### OH_HiAppEvent_ReportFrameworkMemAnomaly()
-
-```c
-int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)
-```
-
-**Description**
-
-Reports information about abnormal memory usage of the application framework. <br>This API can be called once every minute at most. If the frequency limit is exceeded, the error code **HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED** will be returned. <br>When the application detects that the memory usage of the application framework is abnormal and the operation is successful after this API is called: <br>1. If you have subscribed to the application event whose domain is **HIVIEWDFX** and name is **FW_MEM_ANOMALY**, the application will receive a callback containing the information about the abnormal memory usage of the application framework. <br>2. If you have not subscribed to this application event, the application will not receive the callback containing the information about the abnormal memory usage of the application framework.
-
-**System capability**: SystemCapability.HiviewDFX.HiAppEvent
-
-**Since**: 26.0.0
-
-**Parameters**:
-
-| Parameter | Description |
-| -- | -- |
-| enum OH_HiAppEvent_FrameworkType frameworkType | Application framework type. |
-| const char* frameworkVersion | Pointer to the application framework version. |
-| const char* description | Description of the abnormal memory usage of the application framework. |
-
-**Returns**:
-
-| Type | Description |
-| -- | -- |
-| int | <ul> <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) Operation succeeded.</li> <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) Invalid parameter value.</li> <li>[HIAPPEVENT_OPERATE_FAILED](capi-hiappevent-h.md#hiappevent_errorcode) System/application event write failed, or timestamp retrieval failed.</li> <li>[HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED](capi-hiappevent-h.md#hiappevent_errorcode) The reporting frequency exceeds the limit.</li> </ul> For details, see [HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode). |
 
 ### OH_HiAppEvent_ExternalLogCapacityReachedCallback()
 
@@ -1557,5 +1529,33 @@ The interface to set the callback when external log directory capacity is reache
 | Type | Description |
 | -- | -- |
 | int | set callback result. [HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) The operation is successful. [HIAPPEVENT_OPERATE_FAILED](capi-hiappevent-h.md#hiappevent_errorcode) The operation failed. |
+
+### OH_HiAppEvent_ReportFrameworkMemAnomaly()
+
+```c
+int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)
+```
+
+**Description**
+
+Reports information about abnormal memory usage of the application framework. <br>This API can be called once every minute at most. If the frequency limit is exceeded, the error code **HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED** will be returned. <br>When the application detects that the memory usage of the application framework is abnormal and the operation is successful after this API is called: <br>1. If you have subscribed to the application event whose domain is **HIVIEWDFX** and name is **FW_MEM_ANOMALY**, the application will receive a callback containing the information about the abnormal memory usage of the application framework. <br>2. If you have not subscribed to this application event, the application will not receive the callback containing the information about the abnormal memory usage of the application framework.
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+**Since**: 26.0.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| enum OH_HiAppEvent_FrameworkType frameworkType | Application framework type. |
+| const char* frameworkVersion | Pointer to the application framework version. |
+| const char* description | Description of the abnormal memory usage of the application framework. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int | <ul> <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) Operation succeeded.</li> <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) Invalid parameter value.</li> <li>[HIAPPEVENT_OPERATE_FAILED](capi-hiappevent-h.md#hiappevent_errorcode) System/application event write failed, or timestamp retrieval failed.</li> <li>[HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED](capi-hiappevent-h.md#hiappevent_errorcode) The reporting frequency exceeds the limit.</li> </ul> For details, see [HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode). |
 
 

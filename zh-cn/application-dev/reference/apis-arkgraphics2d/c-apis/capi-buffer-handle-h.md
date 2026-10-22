@@ -18,5 +18,5 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [BufferHandle](capi-nativewindow-bufferhandle.md) | BufferHandle | Buffer handle used to transfer and obtain information about the buffer. |
+| [BufferHandle](capi-nativewindow-bufferhandle.md) | BufferHandle | 用于传输和获取缓冲区信息的BufferHandle。 |
 

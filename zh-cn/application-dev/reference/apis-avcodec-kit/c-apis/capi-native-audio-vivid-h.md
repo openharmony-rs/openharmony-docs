@@ -66,9 +66,9 @@ Audio Vivid编码器信号格式枚举。
 | -- | -- |
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_MONO = 0 | Audio Vivid信号格式为单声道，编码器接收单声道数据，内部标记声道布局为[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_MONO。<br>**起始版本：** 26.0.0 |
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_STEREO = 1 | Audio Vivid信号格式为立体声，编码器接收双声道数据，内部标记声道布局为[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO。<br>**起始版本：** 26.0.0 |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_MC = 2 | Audio Vivid信号格式为多声道，编码器支持声道布局[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout). CH_LAYOUT_5POINT1POINT2、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout). CH_LAYOUT_7POINT1、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout). CH_LAYOUT_7POINT1POINT4。<br>**起始版本：** 26.0.0 |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_HOA = 3 | audio vivid编码HOA类型标识。 该编码模式编码要配置声道类型，支持的声道类型如下： [CH_LAYOUT_AMB_ORDER1_ACN_N3D](capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER1_ACN_SN3D](capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER2_ACN_N3D](capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER2_ACN_SN3D](capi-native-audio-channel-layout-h.md#oh_audiochannellayout)； 配置阶段生效 OH_AudioCodec_Configure， 如果配置不支持的声道类型，则返回[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)<br>**起始版本：** 26.0.1 |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX = 4 | Audio Vivid信号格式为混合模式，包含声床（Bed）和对象（object）。声床的声道布局支持[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT4。<br>**起始版本：** 26.0.0 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_MC = 2 | Audio Vivid信号格式为多声道，编码器支持声道布局[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout). CH_LAYOUT_5POINT1POINT2、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout). CH_LAYOUT_7POINT1、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2。<br>**起始版本：** 26.0.0 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_HOA = 3 | Audio Vivid编码HOA类型标识。 该编码模式编码要配置声道类型，支持的声道类型如下： [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_N3D、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_SN3D、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_N3D、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_SN3D。 配置阶段生效 OH_AudioCodec_Configure。 如果配置不支持的声道类型，则返回[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)。<br>**起始版本：** 26.0.1 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX = 4 | Audio Vivid信号格式为混合模式，包含声床（Bed）和对象（object）。声床的声道布局支持[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4、[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1、 [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明
@@ -285,7 +285,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *b
 
 > **说明：**
 >
-> 约束条件： 基础元数据内音频的声床声道数 + 对象数必须小于等于16个。
+> 约束条件： 基础元数据内音频的声床声道数 + 对象数必须小于等于11个。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -303,7 +303,7 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *b
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder、format为空指针或无效。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针或无效，参数buffer为空指针或参数len无效。 |
 
 ### OH_AudioVividMetaBuilder_AddObject()
 
@@ -317,7 +317,7 @@ Audio Vivid元数据构造器内添加一个音频对象。<br> 添加音频对�
 
 > **说明：**
 >
-> 约束条件： 音频的声床声道数 + 对象数必须小于等于16个。
+> 约束条件： 音频的声床声道数 + 对象数必须小于等于11个。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -361,6 +361,6 @@ OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *bui
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针或无效,参数objectIndex无效。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode)：执行成功。<br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)：参数builder为空指针或无效，参数objectIndex无效。 |
 
 

@@ -1379,7 +1379,7 @@ Camera_ErrorCode OH_PhotoOutput_IsAutoAuxiliaryPhotoDeliverySupported(const Came
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul> <li>**CAMERA_OK**: 操作成功。</li> <li>**CAMERA_INVALID_ARGUMENT**: 缺少参数或参数类型不正确。</li> <li>**CAMERA_ERROR_PARAM_OUT_OF_RANGE**: 参数超出范围。</li> <li>**CAMERA_SERVICE_FATAL_ERROR**: 相机服务异常。</li> </ul> |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul> <br><li>CAMERA_OK: 操作成功。</li> <br><li>CAMERA_INVALID_ARGUMENT: 缺少参数或参数类型不正确。</li> <br><li>CAMERA_ERROR_PARAM_OUT_OF_RANGE: 参数超出范围。</li> <br><li>CAMERA_SERVICE_FATAL_ERROR: 相机服务异常。</li> <br></ul> |
 
 ### OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled()
 
@@ -1408,6 +1408,6 @@ Camera_ErrorCode OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled(Camera_Pho
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul> <li>**CAMERA_OK**: 操作成功。</li> <li>**CAMERA_INVALID_ARGUMENT**: 缺少参数或参数类型不正确。</li> <li>**CAMERA_ERROR_PARAM_OUT_OF_RANGE**: 参数超出范围。</li> <li>**CAMERA_SERVICE_FATAL_ERROR**: 相机服务异常。</li> </ul> |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul> <br><li>CAMERA_OK: 操作成功。</li> <br><li>CAMERA_INVALID_ARGUMENT: 缺少参数或参数类型不正确。</li> <br><li>CAMERA_ERROR_PARAM_OUT_OF_RANGE: 参数超出范围。</li> <br><li>CAMERA_SERVICE_FATAL_ERROR: 相机服务异常。</li> <br></ul> |
 
 

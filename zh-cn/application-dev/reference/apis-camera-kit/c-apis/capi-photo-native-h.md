@@ -26,8 +26,8 @@
 | -- | -- |
 | [Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNative** mainImage)](#oh_photonative_getmainimage) | 获取全质量图。 |
 | [Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_PictureNative** picture)](#oh_photonative_getuncompressedimage) | 获取非压缩图片。 |
-| [Camera_ErrorCode OH_PhotoNative_GetAuxiliaryImage(const OH_PhotoNative* photo, OH_Camera_AuxiliaryPhotoType type, OH_ImageNative** outImage)](#oh_photonative_getauxiliaryimage) | 获取指定类型的辅助图。 <br> <br>使用场景：使用本接口前需先通过[OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled()] (capi-photo-output-h.md#oh_photooutput_setautoauxiliaryphotosdeliveryenabled)开启指定类型辅助图的自动回传功能，拍照获得的OH_PhotoNative 对象中才会包含辅助图，并通过本接口按类型获取辅助图，用于后续分析处理。支持的辅助图类型及各自用途请参考 [OH_Camera_AuxiliaryPhotoType](capi-camera-h.md#oh_camera_auxiliaryphototype)。 |
-| [Camera_ErrorCode OH_PhotoNative_GetUncompressedAuxiliaryImage(const OH_PhotoNative* photo, OH_Camera_AuxiliaryPhotoType type, OH_PictureNative** outImage)](#oh_photonative_getuncompressedauxiliaryimage) | 获取指定类型的未压缩辅助图。 <br> <br>使用场景：使用本接口前需先通过[OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled()] (capi-photo-output-h.md#oh_photooutput_setautoauxiliaryphotosdeliveryenabled)开启指定类型辅助图的自动回传功能，拍照获得的OH_PhotoNative 对象中才会包含辅助图，并通过本接口按类型获取辅助图，用于后续分析处理。支持的辅助图类型及各自用途请参考 [OH_Camera_AuxiliaryPhotoType](capi-camera-h.md#oh_camera_auxiliaryphototype)。 |
+| [Camera_ErrorCode OH_PhotoNative_GetAuxiliaryImage(const OH_PhotoNative* photo, OH_Camera_AuxiliaryPhotoType type, OH_ImageNative** outImage)](#oh_photonative_getauxiliaryimage) | 获取指定类型的辅助图。 <br> <br>使用场景：使用本接口前需先通过OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled() 开启指定类型辅助图的自动回传功能，拍照获得的OH_PhotoNative 对象中才会包含辅助图，并通过本接口按类型获取辅助图，用于后续分析处理。支持的辅助图类型及各自用途请参考 [OH_Camera_AuxiliaryPhotoType](capi-camera-h.md#oh_camera_auxiliaryphototype)。 |
+| [Camera_ErrorCode OH_PhotoNative_GetUncompressedAuxiliaryImage(const OH_PhotoNative* photo, OH_Camera_AuxiliaryPhotoType type, OH_PictureNative** outImage)](#oh_photonative_getuncompressedauxiliaryimage) | 获取指定类型的未压缩辅助图。 <br> <br>使用场景：使用本接口前需先通过OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled() 开启指定类型辅助图的自动回传功能，拍照获得的OH_PhotoNative 对象中才会包含辅助图，并通过本接口按类型获取辅助图，用于后续分析处理。支持的辅助图类型及各自用途请参考 [OH_Camera_AuxiliaryPhotoType](capi-camera-h.md#oh_camera_auxiliaryphototype)。 |
 | [Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)](#oh_photonative_release) | 释放全质量图实例。 |
 | [Camera_ErrorCode OH_PhotoNative_ReleasePicture(OH_PictureNative* picture)](#oh_photonative_releasepicture) | 释放OH_PictureNative实例。 |
 | [Camera_ErrorCode OH_PhotoNative_ReleaseImage(OH_ImageNative* image)](#oh_photonative_releaseimage) | 释放OH_ImageNative实例。 |
@@ -96,7 +96,7 @@ Camera_ErrorCode OH_PhotoNative_GetAuxiliaryImage(const OH_PhotoNative* photo, O
 
 **描述：**
 
-获取指定类型的辅助图。 <br> <br>使用场景：使用本接口前需先通过[OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled()] (capi-photo-output-h.md#oh_photooutput_setautoauxiliaryphotosdeliveryenabled)开启指定类型辅助图的自动回传功能，拍照获得的OH_PhotoNative 对象中才会包含辅助图，并通过本接口按类型获取辅助图，用于后续分析处理。支持的辅助图类型及各自用途请参考 [OH_Camera_AuxiliaryPhotoType](capi-camera-h.md#oh_camera_auxiliaryphototype)。
+获取指定类型的辅助图。 <br> <br>使用场景：使用本接口前需先通过OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled() 开启指定类型辅助图的自动回传功能，拍照获得的OH_PhotoNative 对象中才会包含辅助图，并通过本接口按类型获取辅助图，用于后续分析处理。支持的辅助图类型及各自用途请参考 [OH_Camera_AuxiliaryPhotoType](capi-camera-h.md#oh_camera_auxiliaryphototype)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -116,7 +116,7 @@ Camera_ErrorCode OH_PhotoNative_GetAuxiliaryImage(const OH_PhotoNative* photo, O
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul> <li>**CAMERA_OK**: 操作成功。</li> <li>**CAMERA_INVALID_ARGUMENT**: 缺少参数或参数类型不正确。</li> <li>**CAMERA_ERROR_PARAM_OUT_OF_RANGE**: 参数超出范围。</li> </ul> |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul> <br><li>CAMERA_OK: 操作成功。</li> <br><li>CAMERA_INVALID_ARGUMENT: 缺少参数或参数类型不正确。</li> <br><li>CAMERA_ERROR_PARAM_OUT_OF_RANGE: 参数超出范围。</li> <br></ul> |
 
 ### OH_PhotoNative_GetUncompressedAuxiliaryImage()
 
@@ -126,7 +126,7 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedAuxiliaryImage(const OH_PhotoNati
 
 **描述：**
 
-获取指定类型的未压缩辅助图。 <br> <br>使用场景：使用本接口前需先通过[OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled()] (capi-photo-output-h.md#oh_photooutput_setautoauxiliaryphotosdeliveryenabled)开启指定类型辅助图的自动回传功能，拍照获得的OH_PhotoNative 对象中才会包含辅助图，并通过本接口按类型获取辅助图，用于后续分析处理。支持的辅助图类型及各自用途请参考 [OH_Camera_AuxiliaryPhotoType](capi-camera-h.md#oh_camera_auxiliaryphototype)。
+获取指定类型的未压缩辅助图。 <br> <br>使用场景：使用本接口前需先通过OH_PhotoOutput_SetAutoAuxiliaryPhotosDeliveryEnabled() 开启指定类型辅助图的自动回传功能，拍照获得的OH_PhotoNative 对象中才会包含辅助图，并通过本接口按类型获取辅助图，用于后续分析处理。支持的辅助图类型及各自用途请参考 [OH_Camera_AuxiliaryPhotoType](capi-camera-h.md#oh_camera_auxiliaryphototype)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -146,7 +146,7 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedAuxiliaryImage(const OH_PhotoNati
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul> <li>**CAMERA_OK**: 操作成功。</li> <li>**CAMERA_INVALID_ARGUMENT**: 缺少参数或参数类型不正确。</li> <li>**CAMERA_ERROR_PARAM_OUT_OF_RANGE**: 参数超出范围。</li> </ul> |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul> <br><li>CAMERA_OK: 操作成功。</li> <br><li>CAMERA_INVALID_ARGUMENT: 缺少参数或参数类型不正确。</li> <br><li>CAMERA_ERROR_PARAM_OUT_OF_RANGE: 参数超出范围。</li> <br></ul> |
 
 ### OH_PhotoNative_Release()
 
@@ -198,7 +198,7 @@ Camera_ErrorCode OH_PhotoNative_ReleasePicture(OH_PictureNative* picture)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul> <li>**CAMERA_OK**: 操作成功。</li> <li>**CAMERA_INVALID_ARGUMENT**: 缺少参数或参数类型不正确。</li> </ul> |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul> <br><li>CAMERA_OK: 操作成功。</li> <br><li>CAMERA_INVALID_ARGUMENT: 缺少参数或参数类型不正确。</li> <br></ul> |
 
 ### OH_PhotoNative_ReleaseImage()
 
@@ -224,6 +224,6 @@ Camera_ErrorCode OH_PhotoNative_ReleaseImage(OH_ImageNative* image)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul> <li>**CAMERA_OK**: 操作成功。</li> <li>**CAMERA_INVALID_ARGUMENT**: 缺少参数或参数类型不正确。</li> </ul> |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | <ul> <br><li>CAMERA_OK: 操作成功。</li> <br><li>CAMERA_INVALID_ARGUMENT: 缺少参数或参数类型不正确。</li> <br></ul> |
 
 

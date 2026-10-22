@@ -354,7 +354,7 @@ NODE_TEXT_INPUT_CUSTOM_KEYBOARD
 
 **描述：**
 
-设置自定义键盘。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)。</li> <li>.value[0]?.i32：设置自定义键盘是否支持避让功能，默认值0。 1表示支持避让，0表示不支持避让。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)。</li> <li>.value[0].i32：设置自定义键盘是否支持避让功能。0表示不支持避让，1表示支持避让。</li> </ul>
+设置自定义键盘。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)。</li> <li>.value[0]?.i32：设置自定义键盘是否支持避让功能，默认值0。 1表示支持避让，0表示不支持避让。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)。</li> <li>.value[0].i32：设置自定义键盘是否支持避让功能。0表示不支持避让，1表示支持避让。</li> </ul>
 
 **起始版本：** 12
 
@@ -1062,7 +1062,7 @@ NODE_TEXT_AREA_CUSTOM_KEYBOARD = 8036
 
 **描述：**
 
-设置文本输入框的自定义键盘。支持属性设置、属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)。</li> <li>.value[0]?.i32：设置自定义键盘是否支持避让功能， 1表示支持避让，0表示不支持避让。 默认值为0。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)。</li> <li>.value[0].i32：设置自定义键盘是否支持避让功能。0表示不支持避让，1表示支持避让。</li> </ul>
+设置文本输入框的自定义键盘。支持属性设置、属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)。</li> <li>.value[0]?.i32：设置自定义键盘是否支持避让功能， 1表示支持避让，0表示不支持避让。 默认值为0。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object：自定义键盘，参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)。</li> <li>.value[0].i32：设置自定义键盘是否支持避让功能。0表示不支持避让，1表示支持避让。</li> </ul>
 
 **起始版本：** 22
 

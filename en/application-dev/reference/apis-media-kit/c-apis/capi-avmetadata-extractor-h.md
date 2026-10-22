@@ -69,7 +69,7 @@ Obtains the track description of a specified index from the media source. This f
 
 | Type | Description |
 | -- | -- |
-| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | Returns a pointer to an OH_AVFormat instance containing track description for success, nullptr for failure. Possible failure causes: extractor is nullptr, no source set, or format is unsupported. Note: User need release OH_AVFormat by [OH_AVFormat_Destroy](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_destroy) after use. |
+| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | Returns a pointer to an OH_AVFormat instance containing track description for success, nullptr for failure. Possible failure causes: extractor is nullptr, no source set, or format is unsupported. Note: User need release OH_AVFormat by [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) after use. |
 
 ### OH_AVMetadataExtractor_GetCustomInfo()
 
@@ -93,7 +93,7 @@ Obtains custom metadata from the media source. This function must be used after 
 
 | Type | Description |
 | -- | -- |
-| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | Returns a pointer to an OH_AVFormat instance containing custom metadata for success, nullptr for failure. Possible failure causes: extractor is nullptr, no source set, or custom info not found. Note: User need release OH_AVFormat by [OH_AVFormat_Destroy](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_destroy) after use. |
+| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | Returns a pointer to an OH_AVFormat instance containing custom metadata for success, nullptr for failure. Possible failure causes: extractor is nullptr, no source set, or custom info not found. Note: User need release OH_AVFormat by [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy) after use. |
 
 ### OH_AVMetadataExtractor_SetMediaSource()
 

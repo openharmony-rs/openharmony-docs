@@ -4,6 +4,8 @@
 
 Defines enumerations and APIs related to **List**.
 
+**Include**: <arkui/node_attributes/list.h>
+
 **Library**: libace_ndk.z.so
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full

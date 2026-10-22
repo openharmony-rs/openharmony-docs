@@ -49,6 +49,8 @@ Declares the APIs for querying device information. This module provides the capa
 | [const char *OH_GetDistributionOSVersion(void)](#oh_getdistributionosversion) | Obtains the ISV distribution OS version. |
 | [int OH_GetDistributionOSApiVersion(void)](#oh_getdistributionosapiversion) | Obtains the ISV distribution OS API version. |
 | [const char *OH_GetDistributionOSReleaseType(void)](#oh_getdistributionosreleasetype) | Obtains the ISV distribution OS release type. |
+| [int32_t OH_GetDiskSN(char *diskSn)](#oh_getdisksn) | Obtains the Disk Serial Number. |
+| [const char *OH_GetOdid(void)](#oh_getodid) | Obtains the Open device identifier. |
 
 ## Function description
 
@@ -631,5 +633,53 @@ Obtains the ISV distribution OS release type.
 | Type | Description |
 | -- | -- |
 | const char * | ISV distribution OS release type. <br>If no ISV is specified, the value of [OH_GetOsReleaseType](capi-deviceinfo-h.md#oh_getosreleasetype) is returned. |
+
+### OH_GetDiskSN()
+
+```c
+int32_t OH_GetDiskSN(char *diskSn)
+```
+
+**Description**
+
+Obtains the Disk Serial Number.
+
+**System capability**: SystemCapability.Startup.SystemInfo
+
+**Required permission**: ohos.permission.ACCESS_DISK_PHY_INFO
+
+**Since**: 26.2.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| char *diskSn | [out] Disk Serial Number. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | <ul> <li>0 if the operation is successful.</li> <li>201 if the caller does not have ohos.permission.ACCESS_DISK_PHY_INFO.</li> </ul> |
+
+### OH_GetOdid()
+
+```c
+const char *OH_GetOdid(void)
+```
+
+**Description**
+
+Obtains the Open device identifier.
+
+**System capability**: SystemCapability.Startup.SystemInfo
+
+**Since**: 26.2.0
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| const char * | Returns the Open device identifier. |
 
 
