@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
-description: "指导ArkTS开发者使用AudioHaptic实现音频与振动的低时延同步播放，适用于输入法按键反馈、来电铃声随振等场景。"
-keywords: [音振协同, AudioHaptic, 振动播放, 音频播放, 低时延同步, 按键反馈, 铃声振动]
+description: "指导ArkTS开发者使用AudioHaptic实现音频与振动的同步播放，适用于输入法按键反馈、来电铃声随振等场景。"
+keywords: [音振协同, AudioHaptic, 振动播放, 音频播放, 按键反馈, 铃声振动]
 doctype: guide
 status: active
 ---

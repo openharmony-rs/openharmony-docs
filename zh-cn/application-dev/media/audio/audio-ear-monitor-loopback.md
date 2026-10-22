@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "指导开发者使用AudioLoopback实现低时延耳返，由系统内部搭建低时延数据链路，支持音量、混响、均衡器设置与状态监听。"
-keywords: [耳返, 低时延耳返, AudioLoopback, 音频返听, 混响, 均衡器, 返听音量, 状态监听, K歌]
+keywords: [耳返, 低时延耳返, AudioLoopback, 音频返听, 混响, 均衡器, 返听音量, K歌]
 doctype: guide
 status: active
 ---

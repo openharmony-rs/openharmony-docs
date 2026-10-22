@@ -1,10 +1,3 @@
----
-kits: ["Audio Kit / 音频服务"]
-description: "介绍音频通话开发涉及的VoIP通话、蜂窝通话、音频场景模式、铃声模式等能力，帮助开发者理解通话音频开发的整体框架与适用场景。"
-keywords: [音频通话, VoIP, 蜂窝通话, 音频场景, 铃声模式, 通话开发, 设备切换, 3A算法]
-doctype: guide
-status: active
----
 # 音频通话开发概述
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

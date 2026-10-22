@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "介绍OHAudio普通模式与低时延模式的区别，指导开发者通过SetLatencyMode设置音频流时延模式并查询当前模式。"
-keywords: [音频时延, 低时延模式, OHAudio, SetLatencyMode, 时延查询, C/C++, 音频播放, 音频录制]
+keywords: [音频时延, 低时延模式, OHAudio, SetLatencyMode, 时延查询]
 doctype: guide
 status: active
 ---
