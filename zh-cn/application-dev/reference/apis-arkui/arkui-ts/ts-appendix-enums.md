@@ -1831,5 +1831,6 @@ type Nullable\<T> = T \| undefined
 | ------ | ---- | ---------- |
 | AVOID_CUTOUT | 0 | 避让挖孔区域。<br/>该策略的优先级比module.json5中的avoid_cutout配置项低，如果在module.json5的metadata中配置了avoid_cutout，该配置项的效果会优先生效，具体配置方式请参考[安全区域](ts-universal-attributes-expand-safe-area.md)文档说明。 |
 | AVOID_FLOAT_NAV | 1 | 避让三键导航栏区域。 |
+| AVOID_WINDOW_CONTROLS | 6 | 在[自由窗口](../../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，通过[setWindowDecorVisible](../arkts-apis-window-Window.md#setwindowdecorvisible11)接口隐藏窗口标题栏时，设置此策略避让窗口三键，即窗口右上角的窗口最大化/还原、窗口最小化和关闭窗口三个按钮。 |
 | BIND_SHEET_EXPAND_SAFE_AREA | 7 | 扩展[bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)的标题区作为内容区的安全区。通过[UIContext.applyDefaultImmersiveStrategy](../arkts-apis-uicontext-uicontext.md#applydefaultimmersivestrategy)应用此策略后，bindSheet的[SheetOptions](ts-universal-attributes-sheet-transition.md#sheetoptions).titleBarHoverMode默认值为[SheetTitleBarHoverMode.SAFE_AREA_PADDING](ts-universal-attributes-sheet-transition.md#sheettitlebarhovermode)。 |
 | NAVIGATION_EXPAND_SAFE_AREA | 8 | 将Navigation/NavDestination组件的标题栏和工具栏扩展为内容区的安全区域，若在Navigation/NavDestination组件上显式设置了标题栏或工具栏样式，则显式设置优先于该配置。 |
