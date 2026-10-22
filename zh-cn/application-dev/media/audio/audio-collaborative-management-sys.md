@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "面向系统级应用，介绍如何通过AudioCollaborativeManager查询系统和指定设备是否支持移动全景声，以及设置、查询指定设备的移动全景声开关状态。"
-keywords: [移动全景声, AudioCollaborativeManager, 移动全景声能力查询, 全景声开关, 系统应用, AudioDeviceDescriptor, MANAGE_SYSTEM_AUDIO_EFFECTS]
+keywords: [移动全景声, AudioCollaborativeManager, 移动全景声能力查询, 全景声开关, MANAGE_SYSTEM_AUDIO_EFFECTS]
 doctype: guide
 status: active
 ---
