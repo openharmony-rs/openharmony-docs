@@ -56,7 +56,7 @@
 
 2. RunningLockType.BACKGROUND_USER_IDLE接口的使用约束和设备差异：
 
-   （1）PC设备创建该类型的运行锁无系统应用权限管控，系统应用和非系统应用均可创建以及使用；非PC设备创建和使用该类型的运行锁要求是系统应用，非PC设备且非系统应用使用该类型锁**功能不生效**，开发时应考虑此约束。
+   （1）PC设备创建该类型的运行锁无系统应用权限管控，系统应用和非系统应用均可创建以及使用；非PC设备创建和使用该类型的运行锁要求是系统应用，非PC设备且非系统应用使用该类型锁**功能不生效**，开发时应考虑此约束。播放音频场景系统侧会持有运行锁阻止系统休眠，应用无需额外使用该接口。
 
    （2）BACKGROUND_USER_IDLE用户闲时任务锁可以阻止系统自动睡眠，但不能阻止系统强制睡眠。因此使用该接口的应用必须监听进入强制睡眠的公共事件[common_event_enter_force_sleep](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，在接收到该公共事件后1s内主动释放掉该锁；是否监听退出强制睡眠的公共事件[common_event_exit_force_sleep](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_exit_force_sleep12)并重新持有锁，由应用根据具体场景自行决策。
    > **注意**：
@@ -72,6 +72,8 @@
 
 2. 导入模块。
 
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    // 导入runningLock、commonEventManager、BusinessError模块
    import { runningLock } from '@kit.BasicServicesKit';
@@ -79,13 +81,14 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-3. 开发公共事件工具类以及运行锁工具类。
+3. 开发公共事件工具类（CommonEventHelper.ets）以及运行锁工具类（RunningLockUtil.ets）。
 
+   <!-- @[common_event_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/CommonEventHelper.ets) -->
+   
    ``` TypeScript
-   // CommonEventHelper.ets
    import { commonEventManager } from '@kit.BasicServicesKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-
+   
    type SubscriberInfo = commonEventManager.CommonEventSubscribeInfo;
    type Subscriber = commonEventManager.CommonEventSubscriber;
    type EventData = commonEventManager.CommonEventData;
@@ -114,7 +117,7 @@
          return undefined;
        }
      }
-     
+   
      // 根据传入的监听者取消订阅公共事件
      public static async unsubscribeSystemCommonEvent(subscriber: Subscriber | undefined): Promise<boolean> {
        try {
@@ -134,21 +137,22 @@
      }
    }
    ```
+
+   <!-- @[running_lock_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/RunningLockUtil.ets) -->
    
    ``` TypeScript
-   // RunningLockUtil.ets
    import { runningLock } from '@kit.BasicServicesKit';
-
+   
    // 运行锁工具类，用来创建运行锁、持锁以及释放锁
    export class RunningLockUtil {
      // 保存运行锁对象
      public static recordLock: runningLock.RunningLock | undefined;
-
+   
      public static holdRunningLock(): void {
        // 通过isSupported接口查询当前设备是否支持该类型锁
        if (!runningLock.isSupported(runningLock.RunningLockType.BACKGROUND_USER_IDLE)) {
-           console.error('type BACKGROUND_USER_IDLE is not support in the device.');
-           return;
+         console.error('type BACKGROUND_USER_IDLE is not support in the device.');
+         return;
        }
        if (RunningLockUtil.recordLock) {
          try {
@@ -163,7 +167,7 @@
          RunningLockUtil.createRunningLockAndHold();
        }
      }
-
+   
      private static async createRunningLockAndHold(): Promise<void> {
        try {
          const lock = await runningLock.create(
@@ -198,17 +202,19 @@
    }
    ```
 
-4. 实现业务需要完成的后台系统闲时任务。
+4. 实现业务需要完成的后台系统闲时任务（UserIdleTask.ets）。
+
+   <!-- @[Implement_Background_Idle_Tasks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/UserIdleTask.ets) -->
+   
    ``` TypeScript
-   // UserIdleTask.ets
    import { CommonEventHelper } from './CommonEventHelper';
    import { RunningLockUtil } from './RunningLockUtil';
    import { commonEventManager } from '@kit.BasicServicesKit';
    
    // 闲时任务类，可参考下方步骤开发
-   class UserIdleTask {
+   export class UserIdleTask {
      private static subscriber: commonEventManager.CommonEventSubscriber | undefined = undefined;
-     
+   
      // 1、初始化监听公共事件以及其他业务流程，示例只完成监听
      public async init(): Promise<void> {
        if (UserIdleTask.subscriber === undefined) {
@@ -224,7 +230,7 @@
          );
        }
      }
-     
+   
      // 2、持锁后执行任务，任务执行完成后释放锁
      public runUserIdleTask(): void {
        RunningLockUtil.holdRunningLock();
@@ -232,7 +238,7 @@
        console.info('background user idle task run');
        RunningLockUtil.unholdRunningLock();
      }
-     
+   
      // 3、实现收到进入强制睡眠或退出强制睡眠事件的回调函数
      private onReceiveEvent(data: commonEventManager.CommonEventData): void {
        if (data?.event === commonEventManager.Support.COMMON_EVENT_ENTER_FORCE_SLEEP) {
