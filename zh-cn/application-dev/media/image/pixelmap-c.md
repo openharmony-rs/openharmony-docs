@@ -11,7 +11,7 @@ status: active
 <!--Subsystem: Multimedia-->
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @w_Machine_cc-->
 
 创建位图，获取位图的宽、高、pixelFormat、alphaType、rowStride信息、对位图进行操作以及释放位图实例。

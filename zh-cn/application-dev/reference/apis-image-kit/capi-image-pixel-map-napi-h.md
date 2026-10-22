@@ -3,7 +3,7 @@
 <!--Subsystem: Multimedia-->
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @w_Machine_cc-->
 
 ## 概述
