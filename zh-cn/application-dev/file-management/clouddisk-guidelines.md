@@ -14,7 +14,7 @@
 
 - [同步根管理开发指导](#同步根管理开发指导)：注册/取消注册、激活/取消激活同步根，是其余三项能力的前置条件。
 - [文件变更感知与同步状态管理开发指导](#文件变更感知与同步状态管理开发指导)：监听同步根下文件变更、查询历史操作记录、管理文件同步状态，依赖已注册的同步根。
-- [占位符文件操作开发指导](#占位符文件操作开发指导)：在同步根下创建、更新、识别占位符文件，是水合/脱水的操作对象，依赖已注册的同步根。
+- [占位符文件操作开发指导](#占位符文件操作开发指导)：在同步根下创建、更新、识别占位符文件，查询水合状态与读写自定义信息，是水合/脱水的操作对象，依赖已注册的同步根。
 - [按需水合与脱水开发指导](#按需水合与脱水开发指导)：注册回调表后触发水合/脱水，依赖已创建的占位符文件与已注册的同步根。
 
 ## 约束与限制
@@ -616,30 +616,34 @@ static napi_value GetFileSyncStates(napi_env env, napi_callback_info info)
 
 ## 占位符文件操作开发指导
 
-云侧文件以占位符形式映射到本地，本地仅保留元数据、不落盘实体数据。支持在同步根下创建占位符文件、识别占位符与普通文件、更新占位符元数据，以及将占位符文件转换为0字节普通文件。本章节各项能力依赖[同步根管理开发指导](#同步根管理开发指导)中已注册的同步根，创建的占位符文件是[按需水合与脱水开发指导](#按需水合与脱水开发指导)的操作对象。
+云侧文件以占位符形式映射到本地，本地仅保留元数据、不落盘实体数据。支持在同步根下创建占位符文件、识别占位符与普通文件、查询占位符水合状态、更新占位符元数据、读写占位符自定义信息，以及占位符文件与普通文件之间的相互转换。本章节各项能力依赖[同步根管理开发指导](#同步根管理开发指导)中已注册的同步根，创建的占位符文件是[按需水合与脱水开发指导](#按需水合与脱水开发指导)的操作对象。
 
 ### 接口说明
 
 | 接口名称 | 描述 |
 | -------- | -------- |
-| CloudDisk_ErrorCode OH_CloudDisk_CreatePlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, const OH_CloudDisk_PlaceholderInfo placeholderInfo, const OH_CloudDisk_PlaceholderCustomInfo *customInfo) | 在同步根内创建占位符文件，写入逻辑大小、atimeMs、mtimeMs等元数据。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
-| CloudDisk_ErrorCode OH_CloudDisk_UpdatePlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, const OH_CloudDisk_PlaceholderInfo placeholderInfo, const OH_CloudDisk_PlaceholderCustomInfo *customInfo) | 更新占位符文件的元数据信息（logicalSize、atimeMs、mtimeMs等）。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
+| CloudDisk_ErrorCode OH_CloudDisk_CreatePlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, const OH_CloudDisk_PlaceholderInfo placeholderInfo, const OH_CloudDisk_PlaceholderCustomInfo *customInfo) | 在同步根内创建占位符文件，写入逻辑大小、atimeMs、mtimeMs等元数据，可通过customInfo可选写入自定义信息。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
+| CloudDisk_ErrorCode OH_CloudDisk_UpdatePlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, const OH_CloudDisk_PlaceholderInfo placeholderInfo, const OH_CloudDisk_PlaceholderCustomInfo *customInfo) | 更新占位符文件的元数据信息（logicalSize、atimeMs、mtimeMs等），customInfo为NULL时保留原有自定义信息。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
 | CloudDisk_ErrorCode OH_CloudDisk_IsPlaceholderFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, bool *isPlaceholder) | 判断同步根内文件是否为占位符文件。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
+| CloudDisk_ErrorCode OH_CloudDisk_GetPlaceholderState(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, OH_CloudDisk_PlaceholderState *state) | 查询占位符文件的水合状态（未水合、部分水合、完全水合）。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
+| CloudDisk_ErrorCode OH_CloudDisk_GetPlaceholderCustomInfo(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo, uint8_t *dataBuf, size_t *inOutDataLength) | 读取占位符文件的自定义信息（上限4 KiB）。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
 | CloudDisk_ErrorCode OH_CloudDisk_ConvertPlaceholderToFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo) | 将占位符文件转换为0字节普通文件。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
+| CloudDisk_ErrorCode OH_CloudDisk_MarkFileAsPlaceholder(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo) | 将普通文件标记为完全水合的占位符文件，不改变文件数据与元数据。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
+| CloudDisk_ErrorCode OH_CloudDisk_UnmarkPlaceholderFile(const CloudDisk_SyncFolderPath syncFolderPath, const CloudDisk_PathInfo relativePathInfo) | 将完全水合的占位符文件恢复为普通文件，不改变文件数据与元数据。<br>**说明**：从API版本26.0.1开始，支持该接口。 |
 
 ### 示例代码
 
 **创建占位符文件**
 
-调用OH_CloudDisk_CreatePlaceholder()接口，网盘应用创建一个本地的占位符文件来映射云侧的真实数据，以达到在端侧浏览云侧文件的目的。需已注册同步根，创建的占位符文件是后续水合/脱水的操作对象。
+调用OH_CloudDisk_CreatePlaceholder()接口，网盘应用创建一个本地的占位符文件来映射云侧的真实数据，以达到在端侧浏览云侧文件的目的。需已注册同步根，创建的占位符文件是后续水合/脱水的操作对象。创建时可通过customInfo参数可选写入自定义信息（如云端文件标识），不写入时传NULL，写入后可通过OH_CloudDisk_GetPlaceholderCustomInfo()读回。
 
 <!-- @[create_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value CreatePlaceholderFile(napi_env env, napi_callback_info info)
 {
-    size_t argc = 5;
-    napi_value args[5] = {nullptr};
+    size_t argc = 6;
+    napi_value args[6] = {nullptr};
     GetArgs(env, info, argc, args);
 
     // 解析入参：同步根路径 + 相对路径（占位符文件在同步根内的相对位置）
@@ -659,6 +663,14 @@ static napi_value CreatePlaceholderFile(napi_env env, napi_callback_info info)
     uint64_t mtimeMs = static_cast<uint64_t>(GetNumberParam(env, args[3]));  // 修改时间（毫秒时间戳，映射云端文件修改时间）
     uint64_t logicalSize = static_cast<uint64_t>(GetNumberParam(env, args[4])); // 云端文件逻辑大小（字节）
 
+    // 解析可选入参：自定义信息（不传或空串时置NULL，表示不写入自定义信息）
+    char* customInfo = nullptr;
+    OH_CloudDisk_PlaceholderCustomInfo customInfoValue = {};
+    OH_CloudDisk_PlaceholderCustomInfo* customInfoPtr = NULL;
+    if (MakeCustomInfoArg(env, args[ARG_INDEX_CUSTOM_INFO], &customInfoValue, &customInfo)) {
+        customInfoPtr = &customInfoValue;  // data指向customInfo内存，生命周期覆盖本次调用
+    }
+
     // 构造同步根路径与相对路径
     CloudDisk_SyncFolderPath syncFolderPath = MakePathInfo(syncPath);
     CloudDisk_PathInfo relativePathInfo = MakePathInfo(relativePath);
@@ -669,9 +681,8 @@ static napi_value CreatePlaceholderFile(napi_env env, napi_callback_info info)
     placeholderInfo.mtimeMs = mtimeMs;       // 修改时间（毫秒）
     placeholderInfo.logicalSize = logicalSize; // 逻辑大小（字节）
 
-    // ...
-    // 创建占位符文件（customInfo传NULL，表示不写入占位符自定义信息）
-    auto ret = OH_CloudDisk_CreatePlaceholder(syncFolderPath, relativePathInfo, placeholderInfo, NULL);
+    // 创建占位符文件（customInfo为NULL表示不写入自定义信息，非NULL时写入自定义信息）
+    auto ret = OH_CloudDisk_CreatePlaceholder(syncFolderPath, relativePathInfo, placeholderInfo, customInfoPtr);
     if (ret != CLOUD_DISK_OK) {
         LOGE("OH_CloudDisk_CreatePlaceholder failed, errorCode: %{public}d.", ret);
     } else {
@@ -680,6 +691,7 @@ static napi_value CreatePlaceholderFile(napi_env env, napi_callback_info info)
 
     delete[] syncPath;
     delete[] relativePath;
+    delete[] customInfo;
 
     napi_value result;
     napi_create_int32(env, ret, &result);
@@ -689,15 +701,15 @@ static napi_value CreatePlaceholderFile(napi_env env, napi_callback_info info)
 
 **更新占位符文件的元数据信息**
 
-云侧的数据有更新，需要同步更新到端侧的占位符元数据，以映射最新的元数据信息，应用可调用OH_CloudDisk_UpdatePlaceholder()接口，更新占位符文件的元数据信息（逻辑大小、访问时间、修改时间等），仅支持更新占位符文件不支持更新普通文件。
+云侧的数据有更新，需要同步更新到端侧的占位符元数据，以映射最新的元数据信息，应用可调用OH_CloudDisk_UpdatePlaceholder()接口，更新占位符文件的元数据信息（逻辑大小、访问时间、修改时间等），仅支持更新占位符文件不支持更新普通文件。customInfo参数传NULL时保留原有自定义信息，传入非NULL时更新。
 
 <!-- @[update_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value UpdatePlaceholder(napi_env env, napi_callback_info info)
 {
-    size_t argc = 5;
-    napi_value args[5] = {nullptr};
+    size_t argc = 6;
+    napi_value args[6] = {nullptr};
     GetArgs(env, info, argc, args);
 
     char* syncPath = GetStringParam(env, args[0]);
@@ -716,6 +728,14 @@ static napi_value UpdatePlaceholder(napi_env env, napi_callback_info info)
     uint64_t mtimeMs = static_cast<uint64_t>(GetNumberParam(env, args[3]));
     uint64_t logicalSize = static_cast<uint64_t>(GetNumberParam(env, args[4]));
 
+    // 解析可选入参：自定义信息（不传或空串时置NULL，SDK语义为保留原有自定义信息）
+    char* customInfo = nullptr;
+    OH_CloudDisk_PlaceholderCustomInfo customInfoValue = {};
+    OH_CloudDisk_PlaceholderCustomInfo* customInfoPtr = NULL;
+    if (MakeCustomInfoArg(env, args[ARG_INDEX_CUSTOM_INFO], &customInfoValue, &customInfo)) {
+        customInfoPtr = &customInfoValue;  // data指向customInfo内存，生命周期覆盖本次调用
+    }
+
     CloudDisk_SyncFolderPath syncFolderPath = MakePathInfo(syncPath);
     CloudDisk_PathInfo relativePathInfo = MakePathInfo(relativePath);
 
@@ -725,9 +745,8 @@ static napi_value UpdatePlaceholder(napi_env env, napi_callback_info info)
     placeholderInfo.mtimeMs = mtimeMs;       // 修改时间（毫秒）
     placeholderInfo.logicalSize = logicalSize; // 逻辑大小（字节）
 
-    // ...
-    // 更新占位符元数据
-    auto ret = OH_CloudDisk_UpdatePlaceholder(syncFolderPath, relativePathInfo, placeholderInfo, NULL);
+    // 更新占位符元数据（customInfo为NULL时保留原有自定义信息，非NULL时更新）
+    auto ret = OH_CloudDisk_UpdatePlaceholder(syncFolderPath, relativePathInfo, placeholderInfo, customInfoPtr);
     if (ret != CLOUD_DISK_OK) {
         LOGE("OH_CloudDisk_UpdatePlaceholder failed, errorCode: %{public}d.", ret);
     } else {
@@ -736,6 +755,7 @@ static napi_value UpdatePlaceholder(napi_env env, napi_callback_info info)
 
     delete[] syncPath;
     delete[] relativePath;
+    delete[] customInfo;
 
     napi_value result;
     napi_create_int32(env, ret, &result);
@@ -803,6 +823,122 @@ static napi_value IsPlaceholderFile(napi_env env, napi_callback_info info)
 }
 ```
 
+**查询占位符水合状态**
+
+应用需要了解占位符文件的水合进度（如展示下载状态、判断文件是否可脱水）时，可调用OH_CloudDisk_GetPlaceholderState()接口，查询结果通过出参state带出，取值包括：OH_CLOUD_DISK_PLACEHOLDER_STATE_NONE（非占位符文件）、OH_CLOUD_DISK_PLACEHOLDER_STATE_UNHYDRATED（未水合）、OH_CLOUD_DISK_PLACEHOLDER_STATE_PARTIALLY_HYDRATED（部分水合）、OH_CLOUD_DISK_PLACEHOLDER_STATE_FULLY_HYDRATED（完全水合）；存储状态非法时返回错误码OH_CLOUD_DISK_INVALID_PLACEHOLDER_STATE。
+
+<!-- @[get_placeholder_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+static napi_value GetPlaceholderState(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    GetArgs(env, info, argc, args);
+
+    char* syncPath = GetStringParam(env, args[0]);
+    char* relativePath = GetStringParam(env, args[1]);
+    if (!syncPath || !relativePath) {
+        // 参数非法：返回code=CLOUD_DISK_INVALID_ARG, state=NONE的对象
+        LOGE("GetPlaceholderState invalid params.");
+        delete[] syncPath;
+        delete[] relativePath;
+        napi_value result;
+        napi_create_object(env, &result);
+        napi_value codeVal;
+        napi_create_int32(env, CLOUD_DISK_INVALID_ARG, &codeVal);
+        napi_set_named_property(env, result, "code", codeVal);
+        napi_value stateVal;
+        napi_create_int32(env, OH_CLOUD_DISK_PLACEHOLDER_STATE_NONE, &stateVal);
+        napi_set_named_property(env, result, "state", stateVal);
+        return result;
+    }
+
+    CloudDisk_SyncFolderPath syncFolderPath = MakePathInfo(syncPath);
+    CloudDisk_PathInfo relativePathInfo = MakePathInfo(relativePath);
+
+    // 调用SDK查询占位符水合状态（结果写入state，出错时SDK置NONE）
+    OH_CloudDisk_PlaceholderState state = OH_CLOUD_DISK_PLACEHOLDER_STATE_NONE;
+    auto ret = OH_CloudDisk_GetPlaceholderState(syncFolderPath, relativePathInfo, &state);
+    if (ret != CLOUD_DISK_OK) {
+        LOGE("OH_CloudDisk_GetPlaceholderState failed, errorCode: %{public}d.", ret);
+    } else {
+        LOGI("OH_CloudDisk_GetPlaceholderState success, state: %{public}d.", static_cast<int32_t>(state));
+    }
+
+    delete[] syncPath;
+    delete[] relativePath;
+
+    // 构造JS返回对象 { code, state }
+    napi_value result;
+    napi_create_object(env, &result);
+    napi_value codeVal;
+    napi_create_int32(env, ret, &codeVal);
+    napi_set_named_property(env, result, "code", codeVal);
+    napi_value stateVal;
+    napi_create_int32(env, static_cast<int32_t>(state), &stateVal);
+    napi_set_named_property(env, result, "state", stateVal);
+    return result;
+}
+```
+
+
+**读取占位符自定义信息**
+
+应用需要读取创建/更新占位符时写入的自定义信息（如云端文件标识等业务数据，上限4 KiB）时，可调用OH_CloudDisk_GetPlaceholderCustomInfo()接口，数据通过调用方分配的缓冲区dataBuf带回，inOutDataLength入参为缓冲区容量、出参为实际读取的数据长度。
+
+<!-- @[get_placeholder_custom_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+static napi_value GetPlaceholderCustomInfo(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    GetArgs(env, info, argc, args);
+
+    char* syncPath = GetStringParam(env, args[0]);
+    char* relativePath = GetStringParam(env, args[1]);
+    if (!syncPath || !relativePath) {
+        LOGE("GetPlaceholderCustomInfo invalid params.");
+        delete[] syncPath;
+        delete[] relativePath;
+        napi_value result;
+        napi_create_int32(env, CLOUD_DISK_INVALID_ARG, &result);
+        return result;
+    }
+
+    CloudDisk_SyncFolderPath syncFolderPath = MakePathInfo(syncPath);
+    CloudDisk_PathInfo relativePathInfo = MakePathInfo(relativePath);
+
+    // 分配自定义信息读取缓冲区（上限4096字节 = 4 KiB）
+    size_t dataLength = 4096;
+    uint8_t *dataBuf = (uint8_t *)malloc(dataLength);
+    if (!dataBuf) {
+        delete[] syncPath;
+        delete[] relativePath;
+        napi_value result;
+        napi_create_int32(env, CLOUD_DISK_INVALID_ARG, &result);
+        return result;
+    }
+
+    // 读取自定义信息（dataLength为in/out参数，返回时携带实际读取长度）
+    CloudDisk_ErrorCode ret =
+        OH_CloudDisk_GetPlaceholderCustomInfo(syncFolderPath, relativePathInfo, dataBuf, &dataLength);
+    if (ret != CLOUD_DISK_OK) {
+        LOGE("OH_CloudDisk_GetPlaceholderCustomInfo failed, errorCode: %{public}d.", ret);
+    } else {
+        LOGI("OH_CloudDisk_GetPlaceholderCustomInfo success, dataLength: %{public}zu.", dataLength);
+    }
+
+    napi_value resultObj = BuildCustomInfoResult(env, ret, dataLength, dataBuf);
+    free(dataBuf);
+    delete[] syncPath;
+    delete[] relativePath;
+    return resultObj;
+}
+```
+
+
 **将占位符文件转换为0字节普通文件**
 
 当网盘应用需要清除占位符语义、使文件回归普通文件操作策略时（如文件被移出同步根、或不再走网盘同步流程），可调用OH_CloudDisk_ConvertPlaceholderToFile()接口将占位符文件转换为0字节普通文件。
@@ -847,6 +983,96 @@ static napi_value ConvertPlaceholderToFile(napi_env env, napi_callback_info info
     return result;
 }
 ```
+
+**将普通文件标记为占位符文件**
+
+当网盘应用需要将同步根下已有完整数据的普通文件纳入占位符管理（例如配合脱水流程转为按需管理）时，可调用OH_CloudDisk_MarkFileAsPlaceholder()接口将其标记为完全水合的占位符文件，标记过程不改变文件的数据与元数据；若目标已是占位符文件，返回OH_CLOUD_DISK_IS_A_PLACEHOLDER。
+
+<!-- @[mark_file_as_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+static napi_value MarkFileAsPlaceholder(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    GetArgs(env, info, argc, args);
+
+    char* syncPath = GetStringParam(env, args[0]);
+    char* relativePath = GetStringParam(env, args[1]);
+    if (!syncPath || !relativePath) {
+        LOGE("MarkFileAsPlaceholder invalid params.");
+        delete[] syncPath;
+        delete[] relativePath;
+        napi_value result;
+        napi_create_int32(env, CLOUD_DISK_INVALID_ARG, &result);
+        return result;
+    }
+
+    CloudDisk_SyncFolderPath syncFolderPath = MakePathInfo(syncPath);
+    CloudDisk_PathInfo relativePathInfo = MakePathInfo(relativePath);
+
+    // 普通文件标记为占位符
+    auto ret = OH_CloudDisk_MarkFileAsPlaceholder(syncFolderPath, relativePathInfo);
+    if (ret != CLOUD_DISK_OK) {
+        LOGE("OH_CloudDisk_MarkFileAsPlaceholder failed, errorCode: %{public}d.", ret);
+    } else {
+        LOGI("OH_CloudDisk_MarkFileAsPlaceholder success.");
+    }
+
+    delete[] syncPath;
+    delete[] relativePath;
+
+    napi_value result;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+```
+
+
+**取消占位符标记**
+
+当应用需要使完全水合的占位符文件脱离占位符语义、回归普通文件操作策略（数据与元数据保持不变）时，可调用OH_CloudDisk_UnmarkPlaceholderFile()接口取消占位符标记。目标不是占位符文件时返回OH_CLOUD_DISK_NOT_A_PLACEHOLDER；文件未完全水合时返回OH_CLOUD_DISK_PLACEHOLDER_NOT_FULLY_HYDRATED。
+
+<!-- @[unmark_placeholder_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+static napi_value UnmarkPlaceholderFile(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    GetArgs(env, info, argc, args);
+
+    char* syncPath = GetStringParam(env, args[0]);
+    char* relativePath = GetStringParam(env, args[1]);
+    if (!syncPath || !relativePath) {
+        LOGE("UnmarkPlaceholderFile invalid params.");
+        delete[] syncPath;
+        delete[] relativePath;
+        napi_value result;
+        napi_create_int32(env, CLOUD_DISK_INVALID_ARG, &result);
+        return result;
+    }
+
+    CloudDisk_SyncFolderPath syncFolderPath = MakePathInfo(syncPath);
+    CloudDisk_PathInfo relativePathInfo = MakePathInfo(relativePath);
+
+    // 取消占位符标记
+    auto ret = OH_CloudDisk_UnmarkPlaceholderFile(syncFolderPath, relativePathInfo);
+    if (ret != CLOUD_DISK_OK) {
+        LOGE("OH_CloudDisk_UnmarkPlaceholderFile failed, errorCode: %{public}d.", ret);
+    } else {
+        LOGI("OH_CloudDisk_UnmarkPlaceholderFile success.");
+    }
+
+    delete[] syncPath;
+    delete[] relativePath;
+
+    napi_value result;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+```
+
 
 ## 按需水合与脱水开发指导
 
