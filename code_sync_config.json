@@ -67210,7 +67210,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/BestPractice.ets",
 				"functions":[
 					{
-						"end_line":90,
+						"end_line":81,
 						"name":"immersive_tabs",
 						"start_line":17
 					}
@@ -67230,7 +67230,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/GamePage.ets",
 				"functions":[
 					{
-						"end_line":142,
+						"end_line":141,
 						"name":"game_page",
 						"start_line":23
 					}
