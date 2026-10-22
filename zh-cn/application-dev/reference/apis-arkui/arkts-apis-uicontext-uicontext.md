@@ -4848,7 +4848,7 @@ struct Index {
 ## isTransPageEnabled
 
 isTransPageEnabled(): boolean
-<!--RP3--><!--RP3End-->
+<!--RP4--><!--RP4End-->
 查询强制分栏的transPages配置当前是否启用。
 
 > **说明：**
