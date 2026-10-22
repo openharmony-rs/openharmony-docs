@@ -74,41 +74,21 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 
 ### 不同设备UIAbility生命周期的差异化行为
 
-在Stage模型下，应用主窗口的显示状态变化会驱动UIAbility的生命周期。在不同类型设备上，这些生命周期回调的触发时机和行为存在差异化，开发者需要额外关注。
+在Stage模型下，应用主窗口从前台进入后台状态也会驱动UIAbility的生命周期。在该模型下，需要额外关注这个机制在不同类型产品的差异化行为。
 
-其中，窗口从前台进入后台状态时，是否驱动UIAbility进入后台状态，在不同类型设备上存在如下差异：
-
-- **Phone/TV/Wearable/Car类型设备上：** 窗口从前台进入后台状态，会驱动UIAbility到后台状态。
+- **Phone/TV/Wearable/Car类型设备上：** 窗口从前台进入后台状态，会驱动UIAbility为后台状态。
 
 - **Tablet类型设备上：**
 
   - 针对不支持在PC/2in1设备上运行的应用，或可同时支持在Phone和PC/2in1上运行的应用，窗口从前台进入后台状态，会驱动UIAbility为后台状态。
 
-  - 针对不支持在Phone设备上运行且支持在PC/2in1设备上运行的应用，窗口从前台进入后台状态，不会驱动UIAbility为后台状态。
+  - 针对不支持在Phone设备上运行且支持在PC/2in1设备上运行的应用，窗口从前台进入后台状态，当设备处于解锁状态时，不会驱动UIAbility为后台状态；当设备处于锁屏状态时，若应用已接入状态栏则不会驱动UIAbility为后台状态，否则会驱动UIAbility为后台状态。
 
 - **PC/2in1类型设备上：**
 
   - 针对支持在Phone设备运行的应用，窗口从前台进入后台状态，会驱动UIAbility为后台状态。
 
   - 针对不支持在Phone设备运行的应用，窗口从前台进入后台状态，不会驱动UIAbility为后台状态。
-
-> **说明：**
-> 
-> - 在支持[电脑模式](window-terminology.md#pc-mode电脑模式)的Phone/Tablet类型设备上，开启电脑模式并处于解锁状态时：
->   - 针对不支持在Phone设备上运行且支持在PC/2in1设备上运行的应用，窗口从前台进入后台状态，不会驱动UIAbility为后台状态。
->   - 其他应用窗口从前台进入后台状态，会驱动UIAbility为后台状态。
-> 
-> - 针对仅在PC/2in1设备上运行的应用，当用户进行应用间切换时，UIAbility会保持前台状态，系统不会触发[onBackground()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackground)回调。仅当用户主动退出或应用主动退出UIAbility时，系统才会触发onBackground()和[onDestroy()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)回调。详细说明请参考[PC/2in1设备的应用模型特征](../application-models/application-lifecycle.md#pc2in1设备的应用模型特征)。
-
-此外，窗口关闭时，是否驱动UIAbility执行预关闭操作，在不同类型设备上存在如下差异：
-
-- **Phone/TV/Wearable/Car类型设备上：** 窗口关闭时，不会驱动UIAbility执行预关闭操作。
-
-- **Tablet/PC/2in1类型设备上：** 窗口关闭时，会驱动UIAbility执行预关闭操作。此外，用户通过Dock栏退出应用时，不保证驱动UIAbility到销毁状态。
-
-> **说明：**
-> 
-> - 预关闭操作通过[onPrepareToTerminate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onpreparetoterminate10)或[onPrepareToTerminateAsync()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onpreparetoterminateasync15)回调实现，开发者可在该回调中执行确认退出、保存数据等操作。其中，[onPrepareToTerminateAsync()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onpreparetoterminateasync15)在Tablet设备上的支持从API version 19开始，PC/2in1设备从API version 15开始。
 
 ## 管理辅助窗口的生命周期
 
