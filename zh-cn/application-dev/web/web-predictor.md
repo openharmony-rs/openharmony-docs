@@ -45,9 +45,10 @@ struct WebComponent {
 
 <!-- @[initialize_kernel_in_onCreate_and_pre_connect_to_homepage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry1/src/main/ets/entryability/EntryAbility.ets) -->
 
-```ts
+``` TypeScript
 // EntryAbility.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ...
 import { webview } from '@kit.ArkWeb';
 
 export default class EntryAbility extends UIAbility {
@@ -60,6 +61,7 @@ export default class EntryAbility extends UIAbility {
     console.info('EntryAbility onCreate done');
   }
 
+  // ...
 }
 ```
 
