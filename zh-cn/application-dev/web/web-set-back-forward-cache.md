@@ -16,7 +16,7 @@ BFCache功能启用后，Web组件会在用户离开当前页面时在内存中�
 
 <!-- @[web_module_open_bf_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry2/src/main/ets/entryability/EntryAbility.ets) -->
 
-```ts
+``` TypeScript
 // EntryAbility.ets
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -33,6 +33,7 @@ export default class EntryAbility extends UIAbility {
     AppStorage.setOrCreate('abilityWant', want);
   }
 
+// ...
 }
 ```
 
