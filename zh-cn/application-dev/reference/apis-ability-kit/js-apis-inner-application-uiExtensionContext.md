@@ -1844,6 +1844,7 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 **ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名               | 类型                             | 必填 | 说明                 |
