@@ -266,51 +266,43 @@ target_link_libraries(entry PUBLIC
    <!-- @[image_effect_custom_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageEffect/entry/src/main/cpp/backend/image_edit.cpp) -->
    ```c++
    // 自定义滤镜具体实现。
-   ImageEffect_FilterDelegate filterDelegate = {
-       .setValue = [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) {
-           // 参数校验，校验成功时返回true，否则返回false。
-           // ...
-           return true;
-       },
-       .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData) {
-           return Render(filter, info, pushData);
-       },
-       .save = [](OH_EffectFilter *filter, char **info) {
-           // 获取自定义所设置的滤镜参数，其中"Brightness"为自定义滤镜的Key，由开发者自己任意指定。
-           ImageEffect_Any value;
-           ImageEffect_ErrorCode errorCode = OH_EffectFilter_GetValue(filter, "Brightness", &value);
-           if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
-           OH_LOG_ERROR(LOG_APP, "OH_EffectFilter_GetValue fail!");
-           return false;
-           }
-            
-           // 生成键值对信息。
-           json values;
-           values["Brightness"] = value.dataValue.floatValue;         
-           json root;
-           root["name"] = "CustomBrightness";
-           root["values"] = values;
-
-           // 将json对象转成字符串infoStr。
-           // ...
-
-           // 对*info赋值序列化字符串地址。
-           *info = infoStr;
-           return true;
-       },
-       .restore = [](const char *info) {
-           // 创建OH_EffectFilter实例，其中"CustomBrightness"为自定义滤镜的滤镜名。
+   delegateBrightness = {
+       .setValue =
+           [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) {
+               // 参数校验，校验成功时返回true，否则返回false。
+               if (value->dataValue.floatValue >= DATA_VALUE_MIN && value->dataValue.floatValue <= DATA_VALUE_MAX) {
+                   return true;
+               } else {
+                   return false;
+               }
+           },
+       .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info,
+                    OH_EffectFilterDelegate_PushData pushData) { return RenderBrightness(filter, info, pushData); },
+       .save = SaveFilterBrightness,
+       .restore = [](const char *info) -> OH_EffectFilter * {
+           // 创建 OH_EffectFilter 实例，其中"CustomBrightness"为自定义滤镜的滤镜名。
            OH_EffectFilter *filter = OH_EffectFilter_Create("CustomBrightness");
+           CHECK_AND_RETURN_RET_LOG(filter != nullptr, nullptr, "OH_EffectFilter_Create fail!");
            // 解析json字符串info获取key和value。
-           // ...
-
-           // 设置滤镜参数, value为info中按json解析出来的参数。
-           ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, "Brightness", &value);
-
-           // ...
+           std::map<std::string, std::string> parsedJson = Json::Parse(info);
+           if (parsedJson.find("values") != parsedJson.end()) {
+               std::string valuesStr = parsedJson["values"];
+               std::map<std::string, std::string> valuesJson = Json::Parse(valuesStr);
+               if (valuesJson.find("brightness") != valuesJson.end()) {
+                   float brightness =
+                       std::stof(valuesJson["brightness"].substr(1, valuesJson["brightness"].size() - 2));
+                   ImageEffect_Any value;
+                   value.dataType = ImageEffect_DataType::EFFECT_DATA_TYPE_FLOAT;
+                   value.dataValue.floatValue = brightness;
+                   // 设置滤镜参数, value为info中按json解析出来的参数。
+                   LOG_E("brightness value: %{public}f ", value.dataValue.floatValue);
+                   ImageEffect_ErrorCode errorCode = OH_EffectFilter_SetValue(filter, "brightness", &value);
+                   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, nullptr,
+                                            "OH_EffectFilter_SetValue fail!");
+               }
+           }
            return filter;
-       }
-   };
+       }};
    ```
 
    其中Render接口的实现分两种场景。
@@ -463,21 +455,25 @@ target_link_libraries(entry PUBLIC
   CHECK_AND_RETURN_RET_LOG(errorCode == ImageEffect_ErrorCode::EFFECT_SUCCESS, result,
                            "OH_EffectFilter_LookupFilterInfo fail! errorCode = %{public}d", errorCode);
 
-  // 从滤镜能力信息中获取滤镜名。
   char *name = nullptr;
   OH_EffectFilterInfo_GetFilterName(filterInfo, &name);
 
-  // 获取支持的内存类型。
-  uint32_t supportedBufferTypesCnt = 0;
+  uint32_t supportedBufferTypesCount = 0;
   ImageEffect_BufferType *bufferTypeArray = nullptr;
-  OH_EffectFilterInfo_GetSupportedBufferTypes(filterInfo, &supportedBufferTypesCnt, &bufferTypeArray);
+  OH_EffectFilterInfo_GetSupportedBufferTypes(filterInfo, &supportedBufferTypesCount, &bufferTypeArray);
 
-  // 获取支持的像素类型信息。
-  uint32_t supportedFormatsCnt = 0;
+  uint32_t supportedFormatsCount = 0;
   ImageEffect_Format *formatArray = nullptr;
-  OH_EffectFilterInfo_GetSupportedFormats(filterInfo, &supportedFormatsCnt, &formatArray);
+  OH_EffectFilterInfo_GetSupportedFormats(filterInfo, &supportedFormatsCount, &formatArray);
 
-  // 销毁OH_EffectFilterInfo实例。
+  LOG_I("LookupFilterInfo: name=%{public}s, bufferTypesCount=%{public}d, formatsCount=%{public}d", name,
+        supportedBufferTypesCount, supportedFormatsCount);
+
+  std::string infoStr = CommonUtils::EffectInfoToString(filterInfo);
+  LOG_I("LookupFilterInfo:%{public}s", infoStr.c_str());
+  status = napi_create_string_utf8(env, infoStr.c_str(), strlen(infoStr.c_str()), &result);
+  CHECK_AND_RETURN_RET_LOG(status == napi_ok, result, "napi_create_string_utf8 fail!");
+
   OH_EffectFilterInfo_Release(filterInfo);
   ```
 
@@ -488,8 +484,14 @@ target_link_libraries(entry PUBLIC
   ImageEffect_FilterNames *filterNames = OH_EffectFilter_LookupFilters(key);
   CHECK_AND_RETURN_RET_LOG(filterNames != nullptr, result, "OH_EffectFilter_LookupFilters fail!");
 
-  // ...
-
+  std::string res = "size: " + std::to_string(filterNames->size) + std::string(", name: ");
+  for (int i = 0; i < filterNames->size; i++) {
+      res += filterNames->nameList[i];
+      if (i < filterNames->size - 1) {
+          res += " | ";
+      }
+  }
+  status = napi_create_string_utf8(env, res.c_str(), res.size(), &result);
   // 释放FilterNames虚拟内存资源。
   OH_EffectFilter_ReleaseFilterNames();
   ```
