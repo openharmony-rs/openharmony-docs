@@ -407,7 +407,7 @@ getBundleStats(packageName: string, option?: BundleStatsOptions): Promise&lt;Bun
 
 | 类型                                       | 说明                       |
 | ------------------------------------------ | -------------------------- |
-| Promise&lt;[BundleStats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | Promise对象，返回指定应用的存储数据的空间大小（单位为Byte）。 |
+| Promise&lt;[BundleStats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | Promise对象，返回应用存储数据的空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -432,10 +432,12 @@ let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
   let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
   hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
-
   let packageName:string = bundleName;
-  let index:number = resourceInfo.appIndex;
-  storageStatistics.getBundleStats(packageName, index).then((bundleStats: storageStatistics.BundleStats) => {
+  let option: storageStatistics.BundleStatsOptions = {
+    index: resourceInfo.appIndex,
+    statFlag: storageStatistics.GetBundleStatsFlag.GET_BUNDLE_WITH_ALL_SIZE
+  };
+  storageStatistics.getBundleStats(packageName, option).then((bundleStats: storageStatistics.BundleStats) => {
     hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(bundleStats));
   }).catch((err: BusinessError) => {
     console.error(`getBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
