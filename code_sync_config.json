@@ -49012,5 +49012,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/device/sensor/vibrator-guidelines-capi.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp",
+				"functions":[
+					{
+						"end_line":105,
+						"name":"vibrator_capi_vibrate_in_custom_example",
+						"start_line":56
+					}
+				]
+			}
+		]
 	}
 ]
