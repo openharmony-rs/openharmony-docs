@@ -590,6 +590,8 @@ ChipGroupV2SuffixBuilder定义了ChipGroupV2组件的自定义构建器类型，
 
 从API版本26.0.0开始，ChipGroupV2新增suffix属性。
 
+从API版本26.2.0开始，[ChipGroupV2](#chipgroupv2-1)新增onItemsChange属性。
+
 ArkTS-Dyn示例：
 
 ```ts
@@ -742,6 +744,8 @@ struct Index {
 该示例通过设置[suffix](#属性)属性，实现了[ChipGroupV2](#chipgroupv2-1)最右侧的自定义组件效果。
 
 从API版本26.0.0开始，ChipGroupV2新增suffix属性。
+
+从API版本26.2.0开始，[ChipGroupV2](#chipgroupv2-1)新增onItemsChange属性。
 
 ArkTS-Dyn示例：
 
@@ -942,6 +946,8 @@ struct Index {
 该示例通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)实现了[ChipGroupV2IconGroupSuffix](#chipgroupv2icongroupsuffix)和[ChipGroupV2](#chipgroupv2-1)设置Symbol类型图标。
 
 从API版本26.0.0开始，新增ChipGroupV2IconGroupSuffix和ChipGroupV2。
+
+从API版本26.2.0开始，[ChipGroupV2](#chipgroupv2-1)新增onItemsChange属性。
 
 ArkTS-Dyn示例：
 
