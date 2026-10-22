@@ -37,6 +37,10 @@
 
 > **说明：**
 >
+> 有序公共事件对每个订阅者的处理时长有限制（超时时间为10秒）。订阅者收到有序公共事件后，若未在超时时间内调用[finishCommonEvent](js-apis-inner-commonEvent-commonEventSubscriber.md#finishcommonevent9)，系统将视为该订阅者处理完成，自动向下一优先级订阅者投递该事件，且不会向当前订阅者发送超时通知；此后该订阅者调用的`setCode`、`setData`、`setCodeAndData`、`finishCommonEvent`等接口不再生效。
+
+> **说明：**
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
