@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "汇总Audio Kit开发中涉及的音频专业术语及其释义，包括音频焦点、音频会话、音振协同、耳返、3A算法、设备路由等，帮助开发者快速理解音频开发概念。"
-keywords: [Audio Kit, 术语表, 音频焦点, 音频会话, 音振协同, 耳返, 3A算法, 音频设备, 音频流]
+keywords: [术语表, 音频焦点, 音频会话, 音振协同, 耳返, 3A算法, 音频设备, 音频流]
 doctype: glossary
 status: active
 ---

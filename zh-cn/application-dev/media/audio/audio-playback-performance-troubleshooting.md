@@ -1,7 +1,7 @@
 ---
 kits: ["Audio Kit / 音频服务"]
 description: "针对音频播放卡顿、杂音、破音问题，介绍参数不匹配、音源异常、整机高负载等常见原因及定位流程。"
-keywords: [播放卡顿, 杂音, 破音, 问题定位, 故障排查, 音频播放, 性能问题]
+keywords: [播放卡顿, 杂音, 破音, 问题定位]
 doctype: faq
 status: active
 ---
