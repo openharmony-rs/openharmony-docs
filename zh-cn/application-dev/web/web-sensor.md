@@ -138,7 +138,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
            function getAccelerometer() {
                let acc = new Accelerometer({frequency: 60});
                acc.addEventListener('activate', () => console.info('Ready to measure.'));
-               acc.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               acc.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                acc.addEventListener('reading', () => {
                    console.info(`Accelerometer ${acc.timestamp}, ${acc.x}, ${acc.y}, ${acc.z}.`);
                });
@@ -149,7 +149,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
            function getGyroscope() {
                let gyr = new Gyroscope({frequency: 60});
                gyr.addEventListener('activate', () => console.info('Ready to measure.'));
-               gyr.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               gyr.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                gyr.addEventListener('reading', () => {
                    console.info(`Gyroscope ${gyr.timestamp}, ${gyr.x}, ${gyr.y}, ${gyr.z}.`);
                });
@@ -160,7 +160,7 @@ Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](.
            function getAbsoluteOrientationSensor() {
                let aos = new AbsoluteOrientationSensor({frequency: 60});
                aos.addEventListener('activate', () => console.info('Ready to measure.'));
-               aos.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               aos.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                aos.addEventListener('reading', () => {
                    console.info(`AbsoluteOrientationSensor data: ${aos.timestamp}, ${aos.quaternion}`);
                });
