@@ -25,7 +25,7 @@
 
 从API version 20开始，如需在通话中保持录屏，可使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置“蜂窝通话时保持录屏”策略。
 
-## 录屏超过规格限制，无法启动录屏报错AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT
+## 录屏超过规格限制时，无法启动录屏报错AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT
 
 录屏启动时会对视频编码参数进行规格校验，超出以下限制将导致启动失败。
 
