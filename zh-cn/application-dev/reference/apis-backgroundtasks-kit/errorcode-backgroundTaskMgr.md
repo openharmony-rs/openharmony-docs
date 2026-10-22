@@ -151,7 +151,7 @@ Notification verification failed for a continuous task.
 
 1. 缓存在资源子系统的长时任务通知信息资源加载失败。
 2. 通知子系统服务异常。
-3. 更新长时任务通知时，长时任务Id、通知进度信息不正确。
+3. 更新长时任务通知时，长时任务ID、通知进度信息不正确。
 4. 更新长时任务通知时，长时任务未包含数据传输类型。
 5. 在[updateBackgroundRunning](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatebackgroundrunning21)接口中使用[ProgressInfo](./js-apis-resourceschedule-backgroundTaskManager.md#progressinfo)属性。
 
