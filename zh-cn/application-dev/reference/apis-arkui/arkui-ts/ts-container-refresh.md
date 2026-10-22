@@ -63,6 +63,7 @@ Refresh(value: RefreshOptions)
 >  - 当未设置builder或refreshingContent时，是通过更新子组件的[translate](ts-universal-attributes-transformation.md#translate)属性实现的下拉位移效果。下拉位移过程中不会触发子组件的[onAreaChange](ts-universal-component-area-change-event.md#onareachange)事件。子组件设置[translate](ts-universal-attributes-transformation.md#translate)属性时不会生效。
 >  - 当设置了builder或refreshingContent时，是通过更新子组件相对于Refresh组件的位置实现的下拉位移效果。下拉位移过程中可以触发子组件的[onAreaChange](ts-universal-component-area-change-event.md#onareachange)事件。子组件设置[position](ts-universal-attributes-location.md#position)属性时会固定子组件相对于Refresh组件的位置，导致子组件不会跟手进行下拉位移。
 >  - 通过builder参数设置的自定义组件在未指定宽度和高度时，其尺寸将自适应子组件，在指定宽度而未指定高度时，其高度将自适应下拉距离。通过refreshingContent参数设置的自定义组件若未指定高度，其高度同样会自适应下拉距离。当自定义组件高度自适应下拉距离时，随着下拉距离的增加，该组件的高度亦随之增加；当自定义组件的高度设定为固定值或自适应至最大高度时，随着下拉距离的增加，自定义组件与Refresh组件上边界之间的间距亦会随之增加。
+>  - 通过builder或refreshingContent设置自定义刷新区域内容时，List等可滚动子组件抛滑到顶部后，可能因惯性越界带动Refresh下拉，露出自定义刷新区域内容。此时刷新状态可能仍为上一次的Done；刷新状态未变化时，不会触发[onStateChange](#onstatechange)回调。若无需继续显示刷新完成提示，可将自定义刷新区域组件的[visibility](ts-universal-attributes-visibility.md#visibility)设置为[Visibility.Hidden](ts-appendix-enums.md#visibility)，并在新一轮下拉或刷新时恢复为Visibility.Visible。Visibility.Hidden会隐藏组件并保留其布局占位。具体可参照[示例11](#示例11控制自定义刷新区域内容的显隐-builder)和[示例12](#示例12控制自定义刷新区域内容的显隐-refreshingcontent)。
 
 ## 属性
 
@@ -1055,3 +1056,290 @@ struct RefreshExample {
 ```
 
 ![refresh_pullUpToCancelRefresh](figures/refresh_pullUpToCancelRefresh.gif)
+
+### 示例11（控制自定义刷新区域内容的显隐-builder）
+
+通过[builder](#refreshoptions对象说明)参数自定义刷新区域内容，在[onStateChange](#onstatechange)中更新刷新状态，并在[onRefreshing](#onrefreshing)中向List追加数据。刷新完成2秒后，将自定义刷新区域内容的visibility设置为Visibility.Hidden；新一轮下拉开始时取消上次的隐藏定时器，并恢复显示。
+
+本示例使用API version 12及以上版本支持的接口。示例中的2秒为业务设置的延迟时间，可按需调整；隐藏生效前，抛滑越界仍可能显示完成提示。
+
+```ts
+// xxx.ets
+@Component
+struct RefreshHeader {
+  @Prop status: RefreshStatus = RefreshStatus.Inactive;
+  @Prop headerVisibility: Visibility = Visibility.Hidden;
+
+  build() {
+    Stack() {
+      Row() {
+        if (this.status !== RefreshStatus.Inactive && this.status !== RefreshStatus.Done) {
+          LoadingProgress().height(32)
+          Text('刷新中').fontSize(16).margin({ left: 20 })
+        } else if (this.status === RefreshStatus.Done) {
+          Text('已经刷新完成').fontSize(16)
+        }
+      }
+      .alignItems(VerticalAlign.Center)
+    }
+    .align(Alignment.Center)
+    .clip(true)
+    .constraintSize({ minHeight: 32 })
+    .width('100%')
+    .visibility(this.headerVisibility)
+  }
+}
+
+@Entry
+@Component
+struct RefreshBuilderDemo {
+  @State private refreshing: boolean = false;
+  @State private items: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  @State private refreshState: RefreshStatus = RefreshStatus.Inactive;
+  @State private headerVisibility: Visibility = Visibility.Hidden;
+  private refreshTimer: number = -1;
+  private hideHeaderTimer: number = -1;
+
+  @Builder
+  refreshHeader() {
+    RefreshHeader({ status: this.refreshState, headerVisibility: this.headerVisibility })
+  }
+
+  aboutToDisappear(): void {
+    this.clearHideHeaderTimer();
+    if (this.refreshTimer !== -1) {
+      clearTimeout(this.refreshTimer);
+      this.refreshTimer = -1;
+    }
+  }
+
+  private clearHideHeaderTimer(): void {
+    if (this.hideHeaderTimer !== -1) {
+      clearTimeout(this.hideHeaderTimer);
+      this.hideHeaderTimer = -1;
+    }
+  }
+
+  private handleStateChange(state: RefreshStatus): void {
+    // 新一轮下拉开始时，取消上一次完成态的隐藏定时器。
+    this.clearHideHeaderTimer();
+    this.refreshState = state;
+    this.headerVisibility = state === RefreshStatus.Inactive ? Visibility.Hidden : Visibility.Visible;
+    if (state === RefreshStatus.Done) {
+      // 刷新完成2秒后隐藏自定义刷新区域内容。
+      this.hideHeaderTimer = setTimeout(() => {
+        this.hideHeaderTimer = -1;
+        if (this.refreshState === RefreshStatus.Done) {
+          this.headerVisibility = Visibility.Hidden;
+        }
+      }, 2000);
+    }
+  }
+
+  build() {
+    Column() {
+      Refresh({ refreshing: $$this.refreshing, builder: this.refreshHeader() }) {
+        List() {
+          ForEach(this.items, (item: number) => {
+            ListItem() {
+              Text('' + item)
+                .width('70%')
+                .height(80)
+                .fontSize(16)
+                .margin(10)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }
+          }, (item: number) => item.toString())
+        }
+        .width('100%')
+        .height('100%')
+        .alignListItem(ListItemAlign.Center)
+        .scrollBar(BarState.Off)
+      }
+      .backgroundColor(0x89CFF0)
+      .pullToRefresh(true)
+      .refreshOffset(64)
+      .onStateChange((state: RefreshStatus) => {
+        this.handleStateChange(state);
+        console.info(`[builder] state=${state}`);
+      })
+      .onRefreshing(() => {
+        this.refreshTimer = setTimeout(() => {
+          this.refreshTimer = -1;
+          const start: number = this.items.length + 1;
+          const added: number[] = [];
+          for (let i: number = 0; i < 5; i++) {
+            added.push(start + i);
+          }
+          this.items = this.items.concat(added);
+          this.refreshing = false;
+        }, 1500);
+      })
+    }
+  }
+}
+```
+
+下图展示下拉刷新、刷新完成后隐藏提示，以及List抛滑到顶部并越界时不再显示完成提示的过程。
+
+![refresh_custom_builder_visibility](figures/refresh-custom-builder-visibility.gif)
+
+### 示例12（控制自定义刷新区域内容的显隐-refreshingContent）
+
+通过[refreshingContent](#refreshoptions对象说明)参数设置[ComponentContent](../js-apis-arkui-ComponentContent.md)，自定义刷新区域内容，在[onStateChange](#onstatechange)中更新刷新状态，并在[onRefreshing](#onrefreshing)中向List追加数据。刷新完成2秒后，将自定义刷新区域内容的visibility设置为Visibility.Hidden；新一轮下拉开始时取消上次的隐藏定时器，并恢复显示。状态或可见度变化时，调用ComponentContent的[update](../js-apis-arkui-ComponentContent.md#update)方法更新自定义刷新区域内容。
+
+本示例使用API version 12及以上版本支持的接口。示例中的2秒为业务设置的延迟时间，可按需调整；隐藏生效前，抛滑越界仍可能显示完成提示。
+
+```ts
+// xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+
+@Component
+struct RefreshHeader {
+  @Prop status: RefreshStatus = RefreshStatus.Inactive;
+  @Prop headerVisibility: Visibility = Visibility.Hidden;
+
+  build() {
+    Stack() {
+      Row() {
+        if (this.status !== RefreshStatus.Inactive && this.status !== RefreshStatus.Done) {
+          LoadingProgress().height(32)
+          Text('刷新中').fontSize(16).margin({ left: 20 })
+        } else if (this.status === RefreshStatus.Done) {
+          Text('已经刷新完成').fontSize(16)
+        }
+      }
+      .alignItems(VerticalAlign.Center)
+    }
+    .align(Alignment.Center)
+    .clip(true)
+    .constraintSize({ minHeight: 32 })
+    .width('100%')
+    .visibility(this.headerVisibility)
+  }
+}
+
+class RefreshHeaderParams {
+  status: RefreshStatus;
+  headerVisibility: Visibility;
+
+  constructor(status: RefreshStatus, headerVisibility: Visibility) {
+    this.status = status;
+    this.headerVisibility = headerVisibility;
+  }
+}
+
+@Builder
+function buildRefreshHeader(params: RefreshHeaderParams) {
+  RefreshHeader({ status: params.status, headerVisibility: params.headerVisibility })
+}
+
+@Entry
+@Component
+struct RefreshContentDemo {
+  @State private refreshing: boolean = false;
+  @State private items: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  private refreshState: RefreshStatus = RefreshStatus.Inactive;
+  private headerVisibility: Visibility = Visibility.Hidden;
+  private customContent?: ComponentContent<RefreshHeaderParams> = undefined;
+  private refreshTimer: number = -1;
+  private hideHeaderTimer: number = -1;
+
+  aboutToAppear(): void {
+    this.customContent = new ComponentContent<RefreshHeaderParams>(
+      this.getUIContext(), wrapBuilder(buildRefreshHeader),
+      new RefreshHeaderParams(this.refreshState, this.headerVisibility)
+    );
+  }
+
+  aboutToDisappear(): void {
+    this.clearHideHeaderTimer();
+    if (this.refreshTimer !== -1) {
+      clearTimeout(this.refreshTimer);
+      this.refreshTimer = -1;
+    }
+    this.customContent?.dispose();
+    this.customContent = undefined;
+  }
+
+  private clearHideHeaderTimer(): void {
+    if (this.hideHeaderTimer !== -1) {
+      clearTimeout(this.hideHeaderTimer);
+      this.hideHeaderTimer = -1;
+    }
+  }
+
+  private handleStateChange(state: RefreshStatus): void {
+    // 新一轮下拉开始时，取消上一次完成态的隐藏定时器。
+    this.clearHideHeaderTimer();
+    this.refreshState = state;
+    this.headerVisibility = state === RefreshStatus.Inactive ? Visibility.Hidden : Visibility.Visible;
+    this.updateHeaderContent();
+    if (state === RefreshStatus.Done) {
+      // 刷新完成2秒后隐藏自定义刷新区域内容。
+      this.hideHeaderTimer = setTimeout(() => {
+        this.hideHeaderTimer = -1;
+        if (this.refreshState === RefreshStatus.Done) {
+          this.headerVisibility = Visibility.Hidden;
+          // 将可见度的变化同步到ComponentContent。
+          this.updateHeaderContent();
+        }
+      }, 2000);
+    }
+  }
+
+  private updateHeaderContent(): void {
+    this.customContent?.update(new RefreshHeaderParams(this.refreshState, this.headerVisibility));
+  }
+
+  build() {
+    Column() {
+      Refresh({ refreshing: $$this.refreshing, refreshingContent: this.customContent }) {
+        List() {
+          ForEach(this.items, (item: number) => {
+            ListItem() {
+              Text('' + item)
+                .width('70%')
+                .height(80)
+                .fontSize(16)
+                .margin(10)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }
+          }, (item: number) => item.toString())
+        }
+        .width('100%')
+        .height('100%')
+        .alignListItem(ListItemAlign.Center)
+        .scrollBar(BarState.Off)
+      }
+      .backgroundColor(0x89CFF0)
+      .pullToRefresh(true)
+      .refreshOffset(64)
+      .onStateChange((state: RefreshStatus) => {
+        this.handleStateChange(state);
+        console.info(`[ComponentContent] state=${state}`);
+      })
+      .onRefreshing(() => {
+        this.refreshTimer = setTimeout(() => {
+          this.refreshTimer = -1;
+          const start: number = this.items.length + 1;
+          const added: number[] = [];
+          for (let i: number = 0; i < 5; i++) {
+            added.push(start + i);
+          }
+          this.items = this.items.concat(added);
+          this.refreshing = false;
+        }, 1500);
+      })
+    }
+  }
+}
+```
+
+下图展示下拉刷新、刷新完成后隐藏提示，以及List抛滑到顶部并越界时不再显示完成提示的过程。
+
+![refresh_custom_content_visibility](figures/refresh-custom-content-visibility.gif)
