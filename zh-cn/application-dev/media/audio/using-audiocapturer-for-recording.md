@@ -26,6 +26,8 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 
 以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS)。
 
+完整示例展示了使用AudioCapturer完成录音，并在录音完成后播放所录制音频的实现。
+
 1. 配置音频采集参数并创建AudioCapturer实例，音频采集参数的详细信息可以查看[AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8)。
 
    > **说明：**
@@ -33,7 +35,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    > 当设置Mic音频源（即[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)为SOURCE_TYPE_MIC、SOURCE_TYPE_VOICE_RECOGNITION、SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_VOICE_MESSAGE、SOURCE_TYPE_LIVE（从API version 20开始支持））时，需要申请麦克风权限ohos.permission.MICROPHONE，申请方式参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
    ArkTS-Dyn示例：
-   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -70,7 +72,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    ```
 
    ArkTS-Sta示例：
-   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
+   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    let audioStreamInfo: audio.AudioStreamInfo = {
@@ -106,14 +108,20 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      }
    }
    
-   let audioCapturerOptions: AudioCapturerOptionsCompat = new AudioCapturerOptionsCompat(audioStreamInfo, audioCapturerInfo);
+   let audioCapturerOptions: audio.AudioCapturerOptions = {
+     streamInfo: audioStreamInfo,
+     capturerInfo: audioCapturerInfo
+   };
    
    let audioRendererInfo: audio.AudioRendererInfo = {
      usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
      rendererFlags: 0
    };
    
-   let audioRendererOptions: AudioRendererOptionsCompat = new AudioRendererOptionsCompat(audioStreamInfo, audioRendererInfo);
+   let audioRendererOptions: audio.AudioRendererOptions = {
+     streamInfo: audioStreamInfo,
+     rendererInfo: audioRendererInfo
+   };
    
    let file: fs.File | undefined = undefined;
    let readDataCallback: Callback<ArrayBuffer> = (_buffer: ArrayBuffer): void => {};
@@ -129,7 +137,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      return firstResult === 0;
    }
    
-   // 采集回调将麦克风数据写入缓存PCM文件，供渲染侧读取。
+   // 采集回调将麦克风数据写入缓存 PCM 文件，供渲染侧读取。
    async function initArguments(context: common.UIAbilityContext): Promise<void> {
      let bufferSize: long = 0;
      let path = context.cacheDir;
@@ -188,7 +196,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      try {
        let renderer = await audio.createAudioRenderer(audioRendererOptions);
        if (renderer === null) {
-         console.info(`${TAG}: creating AudioRenderer failed, renderer is null`);
+         console.error(`${TAG}: creating AudioRenderer failed, renderer is null`);
          return;
        }
        console.info(`${TAG}: creating AudioRenderer success`);
@@ -196,7 +204,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
        renderer.onWriteData(writeDataCallback);
      } catch (err) {
        let error = err as BusinessError;
-       console.info(`${TAG}: creating AudioRenderer failed, error: ${error.message}`);
+       console.error(`${TAG}: creating AudioRenderer failed, error: ${error.message}`);
      }
    }
    
@@ -219,13 +227,87 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      }
    }
    
+   // 应用级快照：同时写入缓存文件并输出到 Hilog。
+   async function printAppSnapshot(context: common.UIAbilityContext,
+     updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+     try {
+       let path = context.cacheDir + '/app_snapshot.txt';
+       let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+       audio.getAudioManager().getDebuggingManager().printAppInfo(snapshotFile.fd);
+       fs.closeSync(snapshotFile);
+       audio.getAudioManager().getDebuggingManager().printAppInfo(-1);
+       if (updateCallback) {
+         updateCallback(`App snapshot printed to system log and ${path}.`, false);
+       }
+     } catch (err) {
+       let error = err as BusinessError;
+       if (updateCallback) {
+         updateCallback(`Print app snapshot failed: ${error.message}`, true);
+       }
+     }
+   }
+   
+   // 录音快照：同时写入缓存文件并输出到 Hilog。
+   async function printCapturerSnapshot(context: common.UIAbilityContext,
+     updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+     let capturer = audioCapturer;
+     if (capturer === undefined) {
+       if (updateCallback) {
+         updateCallback('AudioCapturer is not created.', true);
+       }
+       return;
+     }
+     try {
+       let path = context.cacheDir + '/capturer_snapshot.txt';
+       let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+       audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, snapshotFile.fd);
+       fs.closeSync(snapshotFile);
+       audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, -1);
+       if (updateCallback) {
+         updateCallback(`Capturer snapshot printed to system log and ${path}.`, false);
+       }
+     } catch (err) {
+       let error = err as BusinessError;
+       if (updateCallback) {
+         updateCallback(`Print capturer snapshot failed: ${error.message}`, true);
+       }
+     }
+   }
+   
+   // 播放快照：同时写入缓存文件并输出到 Hilog。
+   async function printRendererSnapshot(context: common.UIAbilityContext,
+     updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+     let renderer = audioRenderer;
+     if (renderer === undefined) {
+       if (updateCallback) {
+         updateCallback('AudioRenderer is not created.', true);
+       }
+       return;
+     }
+     try {
+       let path = context.cacheDir + '/renderer_snapshot.txt';
+       let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+       audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, snapshotFile.fd);
+       fs.closeSync(snapshotFile);
+       audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, -1);
+       if (updateCallback) {
+         updateCallback(`Renderer snapshot printed to system log and ${path}.`, false);
+       }
+     } catch (err) {
+       let error = err as BusinessError;
+       if (updateCallback) {
+         updateCallback(`Print renderer snapshot failed: ${error.message}`, true);
+       }
+     }
+   }
+   
    // 停止音频渲染，文件句柄在 release 阶段统一关闭。
    async function stopRender(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
      let renderer = audioRenderer;
      if (renderer !== undefined) {
        let state = renderer.state;
        if (state !== audio.AudioState.STATE_RUNNING && state !== audio.AudioState.STATE_PAUSED) {
-         console.info('Renderer is not running or paused.');
+         console.error('Renderer is not running or paused.');
          return;
        }
        try {
@@ -242,7 +324,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      let renderer = audioRenderer;
      if (renderer !== undefined) {
        if (renderer.state === audio.AudioState.STATE_RELEASED) {
-         console.info('Renderer already released');
+         console.error('Renderer already released');
          return;
        }
        try {
@@ -305,7 +387,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    >   2. 业务允许静音期间不再采集数据：由应用主动停止录音流，后续需要录音时再重新启动，以停止采集替代静音处理。
 
    ArkTS-Dyn示例：
-   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -320,24 +402,30 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    
    // ...
      let writtenBytes: number = 0;
+     pendingRecordingWrite = Promise.resolve();
      let path = context.cacheDir;
      let filePath = path + '/S16LE_2_48000.pcm';
-     file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+     recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
      onReadData = (buffer: ArrayBuffer) => {
-       // ...
+       let recordingBuffer = buffer.slice(0);
+       let writeOffset = writtenBytes;
+       writtenBytes += recordingBuffer.byteLength;
        let options: Options = {
-         offset: writtenBytes,
-         length: buffer.byteLength
+         offset: writeOffset,
+         length: recordingBuffer.byteLength
        }
-       fs.writeSync(file.fd, buffer, options);
-       writtenBytes += buffer.byteLength;
+       pendingRecordingWrite = pendingRecordingWrite.then(async () => {
+         await fs.write(recordingFile.fd, recordingBuffer, options);
+       }).catch((error: BusinessError) => {
+         console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
+       });
      };
      // ...
          audioCapturer.on('readData', onReadData);
    ```
 
    ArkTS-Sta示例：
-   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    capturer.onReadData(readDataCallback);
@@ -347,7 +435,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 3. 调用[start](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#start8)方法进入running状态，开始录制音频。
 
    ArkTS-Dyn示例：
-   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -364,7 +452,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    ```
 
    ArkTS-Sta示例：
-   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
+   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    async function start(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
@@ -403,7 +491,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 4. 调用[stop](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#stop8)方法停止录制。
 
    ArkTS-Dyn示例：
-   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -420,7 +508,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    ```
 
    ArkTS-Sta示例：
-   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
+   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    async function stop(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
@@ -428,7 +516,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      if (capturer !== undefined) {
        let state = capturer.state;
        if (state !== audio.AudioState.STATE_RUNNING && state !== audio.AudioState.STATE_PAUSED) {
-         console.info('Capturer is not running or paused');
+         console.error('Capturer is not running or paused');
          const infoMsg = 'Capturer is not running or paused';
          if (updateCallback) {
            updateCallback(infoMsg, false);
@@ -457,7 +545,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 5. 调用[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8)方法销毁实例，释放资源。
 
    ArkTS-Dyn示例：
-   <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
+   <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -472,12 +560,13 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
          // ...
          console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
        } finally {
-         fs.closeSync(file.fd);
+         await pendingRecordingWrite;
+         fs.closeSync(recordingFile.fd);
        }
    ```
 
    ArkTS-Sta示例：
-   <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
+   <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    async function release(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
@@ -485,7 +574,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      if (capturer !== undefined) {
        let state = capturer.state;
        if (state === audio.AudioState.STATE_RELEASED || state === audio.AudioState.STATE_NEW) {
-         console.info('Capturer already released');
+         console.error('Capturer already released');
          const infoMsg = 'Capturer already released';
          if (updateCallback) {
            updateCallback(infoMsg, false);
@@ -521,7 +610,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 下面展示了使用AudioCapturer录制音频的完整示例代码。
 
 ArkTS-Dyn示例：
-<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
+<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -563,29 +652,32 @@ let audioRendererOptions: audio.AudioRendererOptions = {
 };
 
 let file: fs.File;
+let recordingFile: fs.File;
 let onReadData: Callback<ArrayBuffer>;
 let writeDataCallback: audio.AudioRendererWriteDataCallback;
+let pendingRecordingWrite: Promise<void> = Promise.resolve();
 
 // ...
 
 async function initRecordingResources(context: common.UIAbilityContext): Promise<void> {
   let writtenBytes: number = 0;
+  pendingRecordingWrite = Promise.resolve();
   let path = context.cacheDir;
   let filePath = path + '/S16LE_2_48000.pcm';
-  file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   onReadData = (buffer: ArrayBuffer) => {
-    if (capturerMuteHintEnabledByApp) {
-      let view = new DataView(buffer);
-      for (let i = 0; i < buffer.byteLength; i++) {
-        view.setUint8(i, 0);
-      }
-    }
+    let recordingBuffer = buffer.slice(0);
+    let writeOffset = writtenBytes;
+    writtenBytes += recordingBuffer.byteLength;
     let options: Options = {
-      offset: writtenBytes,
-      length: buffer.byteLength
+      offset: writeOffset,
+      length: recordingBuffer.byteLength
     }
-    fs.writeSync(file.fd, buffer, options);
-    writtenBytes += buffer.byteLength;
+    pendingRecordingWrite = pendingRecordingWrite.then(async () => {
+      await fs.write(recordingFile.fd, recordingBuffer, options);
+    }).catch((error: BusinessError) => {
+      console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
+    });
   };
 }
 
@@ -608,7 +700,7 @@ async function initRender(context: common.UIAbilityContext) {
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x80为静音数据，使用其他采样格式时0为静音数据。本示例采样格式为SAMPLE_FORMAT_S16LE，因此静音数据填充0。
           view.setUint8(i, 0);
         }
       }
@@ -629,7 +721,7 @@ async function initRender(context: common.UIAbilityContext) {
         audioRenderer.on('writeData', writeDataCallback);
       }
     } else {
-      console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
+      console.error(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
     }
   });
 }
@@ -659,7 +751,7 @@ async function stopRender(updateCallback?: (msg: string, isError: boolean) => vo
     // 只有渲染器状态为running或paused的时候才可以停止。
     if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioRenderer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info('Renderer is not running or paused.');
+      console.error('Renderer is not running or paused.');
       return;
     }
     // 停止渲染。
@@ -678,7 +770,7 @@ async function releaseRender(updateCallback?: (msg: string, isError: boolean) =>
   if (audioRenderer !== undefined) {
     // 渲染器状态不是released状态，才能release。
     if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
-      console.info('Renderer already released');
+      console.error('Renderer already released');
       return;
     }
     // 释放资源。
@@ -782,7 +874,7 @@ async function stop(updateCallback?: (msg: string, isError: boolean) => void): P
     // 只有采集器状态为STATE_RUNNING或STATE_PAUSED的时候才可以停止。
     if (audioCapturer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioCapturer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info(`${TAG}: Capturer is not running or paused`);
+      console.error(`${TAG}: Capturer is not running or paused`);
       // ...
       return;
     }
@@ -806,7 +898,7 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
     // 采集器状态不是STATE_RELEASED或STATE_NEW状态,才能release。
     if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED ||
       audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
-      console.info(`${TAG}: Capturer already released`);
+      console.error(`${TAG}: Capturer already released`);
       // ...
       return;
     }
@@ -822,7 +914,8 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
       // ...
       console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
     } finally {
-      fs.closeSync(file.fd);
+      await pendingRecordingWrite;
+      fs.closeSync(recordingFile.fd);
     }
   }
 }
@@ -833,13 +926,16 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
 ```
 
 ArkTS-Sta示例：
-<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
+<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->    
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit'; // 导入audio模块。
-import { fileIo as fs, ReadOptions, WriteOptions } from '@kit.CoreFileKit';
-import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
-import { BusinessError, Callback } from '@kit.BasicServicesKit';
+import audio from '@ohos.multimedia.audio';
+import fs from '@ohos.file.fs';
+import { ReadOptions, WriteOptions } from '@ohos.file.fs';
+import common from '@ohos.app.ability.common';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import { PermissionRequestResult } from '@ohos.abilityAccessCtrl';
+import { BusinessError, Callback } from '@ohos.base';
 import {
   Entry, Component, State, Scroll, Column, Row, Text, Color, FlexAlign, HorizontalAlign, TextOverflow, ClickEvent
 } from '@kit.ArkUI';
@@ -880,14 +976,20 @@ class AudioRendererOptionsCompat implements audio.AudioRendererOptions {
   }
 }
 
-let audioCapturerOptions: AudioCapturerOptionsCompat = new AudioCapturerOptionsCompat(audioStreamInfo, audioCapturerInfo);
+let audioCapturerOptions: audio.AudioCapturerOptions = {
+  streamInfo: audioStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
 
 let audioRendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
   rendererFlags: 0
 };
 
-let audioRendererOptions: AudioRendererOptionsCompat = new AudioRendererOptionsCompat(audioStreamInfo, audioRendererInfo);
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
 
 let file: fs.File | undefined = undefined;
 let readDataCallback: Callback<ArrayBuffer> = (_buffer: ArrayBuffer): void => {};
@@ -954,7 +1056,7 @@ async function initRender(context: common.UIAbilityContext) {
   try {
     let renderer = await audio.createAudioRenderer(audioRendererOptions);
     if (renderer === null) {
-      console.info(`${TAG}: creating AudioRenderer failed, renderer is null`);
+      console.error(`${TAG}: creating AudioRenderer failed, renderer is null`);
       return;
     }
     console.info(`${TAG}: creating AudioRenderer success`);
@@ -962,11 +1064,85 @@ async function initRender(context: common.UIAbilityContext) {
     renderer.onWriteData(writeDataCallback);
   } catch (err) {
     let error = err as BusinessError;
-    console.info(`${TAG}: creating AudioRenderer failed, error: ${error.message}`);
+    console.error(`${TAG}: creating AudioRenderer failed, error: ${error.message}`);
   }
 }
 
 // ...
+
+// 应用级快照：同时写入缓存文件并输出到 Hilog。
+async function printAppSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  try {
+    let path = context.cacheDir + '/app_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printAppInfo(snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printAppInfo(-1);
+    if (updateCallback) {
+      updateCallback(`App snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print app snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// 录音快照：同时写入缓存文件并输出到 Hilog。
+async function printCapturerSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer === undefined) {
+    if (updateCallback) {
+      updateCallback('AudioCapturer is not created.', true);
+    }
+    return;
+  }
+  try {
+    let path = context.cacheDir + '/capturer_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, -1);
+    if (updateCallback) {
+      updateCallback(`Capturer snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print capturer snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// 播放快照：同时写入缓存文件并输出到 Hilog。
+async function printRendererSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let renderer = audioRenderer;
+  if (renderer === undefined) {
+    if (updateCallback) {
+      updateCallback('AudioRenderer is not created.', true);
+    }
+    return;
+  }
+  try {
+    let path = context.cacheDir + '/renderer_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, -1);
+    if (updateCallback) {
+      updateCallback(`Renderer snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print renderer snapshot failed: ${error.message}`, true);
+    }
+  }
+}
 
 // ...
 
@@ -1041,7 +1217,7 @@ async function stop(updateCallback?: (msg: string, isError: boolean) => void): P
   if (capturer !== undefined) {
     let state = capturer.state;
     if (state !== audio.AudioState.STATE_RUNNING && state !== audio.AudioState.STATE_PAUSED) {
-      console.info('Capturer is not running or paused');
+      console.error('Capturer is not running or paused');
       const infoMsg = 'Capturer is not running or paused';
       if (updateCallback) {
         updateCallback(infoMsg, false);
@@ -1072,7 +1248,7 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
   if (capturer !== undefined) {
     let state = capturer.state;
     if (state === audio.AudioState.STATE_RELEASED || state === audio.AudioState.STATE_NEW) {
-      console.info('Capturer already released');
+      console.error('Capturer already released');
       const infoMsg = 'Capturer already released';
       if (updateCallback) {
         updateCallback(infoMsg, false);

@@ -106,7 +106,7 @@ onSuccess(response: FillResponse): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401  | Mandatory parameters are left unspecified. |
 | 16000050 | Internal error. |
 
@@ -297,7 +297,7 @@ onFailure(): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -472,7 +472,7 @@ onCancel(fillContent?: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. The input parameter is not valid parameter;2. Mandatory parameters are left unspecified. <br>适用版本：12+|
 | 16000050 | Internal error. |
 
@@ -648,7 +648,7 @@ setAutoFillPopupConfig(autoFillPopupConfig: AutoFillPopupConfig): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401  | Mandatory parameters are left unspecified. |
 | 16000050 | Internal error. |
 
@@ -899,7 +899,7 @@ onSuccess(): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -1069,7 +1069,7 @@ onFailure(): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. |
 
 **示例：**

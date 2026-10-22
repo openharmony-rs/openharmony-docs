@@ -754,6 +754,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | capturerInfo                        | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。 <br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23        |
 | ecStreamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 否 | 是 | 回声消除音频流信息。<br>若未设置此属性，采集器将仅录制麦克风输入的音频流。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23    |
 | preferredInputDevice | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 否 | 是 | 当前音频录音器的偏好输入设备。对于该设备有以下要求：<br/>- 此设备必须为输入设备，并且**capturerInfo**中的源类型必须为[SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8)、[SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8)或[SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT](#sourcetype8)，否则此参数将被忽略。<br/>- 如果用户未指定设备，系统会按当前音频路由策略自动选择可用输入设备。<br/>- 当用户指定偏好设备时：<br/>1. 如果偏好设备在线，当前音频录音器使用该设备录音；如果录音过程中该设备离线，系统会按当前音频路由策略自动选择其他可用输入设备。<br/>2. 如果偏好设备离线，系统会按当前音频路由策略自动选择其他可用输入设备；如果录音过程中该设备上线，系统会自动切换到偏好设备。<br/>- 用户可通过[getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11)查询当前实际使用的设备。<br/>**起始版本：** 26.0.0 |
+| actualUsingAppTokenId | number | 否 | 是 | 实际使用该录音流的应用Token ID，用于在点亮麦克风隐私指示器时，显示正确的应用信息。<br>如果未指定该字段，默认使用调用方应用的Token ID。<br>设置该字段时，调用方必须申请`ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR`权限，否则[createMicInAudioCapturer](#audiocreatemicinaudiocapturer23)创建失败。<br>**起始版本：** 26.2.0 |
 
 ## AudioSessionBehaviorFlags<sup>24+</sup>
  
@@ -864,6 +865,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | ----------------------------------- |----------------------------------------------------------------------| ---- |---|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | preferredInputDevice<sup>22+</sup> | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor) | 否 | 是 | 当前音频采集器的偏好输入设备。<br/>此设备必须为输入设备，并且capturerInfo的source type必须为[SOURCE_TYPE_VOICE_RECOGNITION](arkts-apis-audio-e.md#sourcetype8)或[SOURCE_TYPE_VOICE_TRANSCRIPTION](#sourcetype8)。否则，此参数将会被忽略。<br/>1. 当调用者未指定偏好设备时，系统会自动选择一个设备。<br/>2. 当调用者指定了偏好设备创建语音识别或者语音转写流时：<br/>（1）设备在线，当前audiocapturer会使用偏好设备；如果运行过程中，偏好设备下线，系统会自动选择一个录音设备。<br/>（2）设备不在线，当前audiocapturer会自动选择一个录音设备；如果运行过程中，偏好设备上线，系统会自动切换到偏好设备上。<br/>3. 调用者可以通过[getCurrentAudioCapturerChangeInfo](arkts-apis-audio-AudioCapturer.md#getcurrentaudiocapturerchangeinfo11)查询当前实际使用的录音设备。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23<br>**系统能力：** SystemCapability.Multimedia.Audio.Capturer |
 | playbackCaptureUid | number | 否 | 是 | 应用UID，用于音视频通话播放采集。<br>此参数仅在[AudioCapturerOptions](./arkts-apis-audio-i.md#audiocaptureroptions8).playbackCaptureMode设置为[AudioPlaybackCaptureMode](#audioplaybackcapturemode).MODE_ONLY_VOIP时生效。在其他模式下，此参数将被忽略。<br>该值必须为整数类型。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture |
+| actualUsingAppTokenId | number | 否 | 是 | 实际使用该录音流的应用Token ID，用于在点亮麦克风隐私指示器时，显示正确的应用信息。<br>如果未指定该字段，默认使用调用方应用的Token ID。<br>设置该字段时，调用方必须申请`ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR`权限，否则[createAudioCapturer](./arkts-apis-audio-f.md#audiocreateaudiocapturer8)创建失败。<br>**起始版本：** 26.2.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统能力：** SystemCapability.Multimedia.Audio.Capturer |
 
 ## AudioManager
 
@@ -5105,15 +5107,12 @@ audioRecordingManager.offSystemRecordControllerEnabledChange();
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称          | 类型                                     | 只读 | 可选 | 说明          |
 | -------------| ---------------------------------------- | ---- |---| -------------- |
-| uid          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 表示应用ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
-| rendererInfo | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8) |  否  | 是 | 表示渲染器信息。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
-| rendererId   | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 音频流唯一id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
+| uid          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 表示应用ID。**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
+| rendererInfo | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8) |  否  | 是 | 表示渲染器信息。**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
+| rendererId   | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 音频流唯一id。**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
+| blockFirstOverrode   | boolean |  否  | 是 | 表示是否保持首次选择的设备不被清除。true表示选择的设备不会被清除，false表示选择的设备会被清除。<br>默认值：false。<br>**ArkTS-Dyn起始版本：** 26.0.1<br>**ArkTS-Sta起始版本：** 26.0.1 <br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
 
 **示例：**
 
@@ -5126,7 +5125,8 @@ let outputAudioRendererFilter: audio.AudioRendererFilter = {
     usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
     rendererFlags : 0
   },
-  rendererId : 0
+  rendererId : 0,
+  blockFirstOverrode : true
 };
 ```
 

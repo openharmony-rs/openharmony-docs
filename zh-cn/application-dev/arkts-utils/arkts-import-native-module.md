@@ -1,8 +1,16 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用ES6 import语法静态加载Native模块（so）的方法，支持具名导入、默认导入、命名空间导入和间接导入，适用于在ArkTS中引入C/C++模块能力。"
+keywords: [ArkTS, Native模块, import, 静态加载, so库, 具名导入, 默认导入, 命名空间导入, 间接导入]
+doctype: guide
+status: active
+---
+
 # 静态方式加载Native模块
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @yao_dashuai-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @shilei123-->
+<!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 

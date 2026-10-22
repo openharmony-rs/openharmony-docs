@@ -209,6 +209,30 @@ ArkTS-Sta: fillMode(value: FillMode | undefined)
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [FillMode](ts-appendix-enums.md#fillmode) <br/>ArkTS-Sta: [FillMode](ts-appendix-enums.md#fillmode) \| undefined| 是   | 当前播放方向下，动画开始前和结束后的状态。<br/> 设置undefined时，按默认值处理。<br/>默认值：FillMode.Forwards |
 
+### interpolation
+
+ArkTS-Dyn: interpolation(value: ImageInterpolation)
+
+ArkTS-Sta: interpolation(value: ImageInterpolation | undefined)
+
+设置帧图片的插值效果。用于优化图片缩放时的锯齿问题。SVG类型图源不支持该属性。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名 | 类型                                                          | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | ArkTS-Dyn: [ImageInterpolation](ts-basic-components-image.md#imageinterpolation) <br/>ArkTS-Sta: [ImageInterpolation](ts-basic-components-image.md#imageinterpolation) \| undefined | 是   | 帧图片的插值效果。<br/>设置undefined时，按默认值处理。<br/>默认值：ImageInterpolation.Low |
+
 ### iterations
 
 ArkTS-Dyn: iterations(value: number)
@@ -427,7 +451,7 @@ ArkTS-Sta: onFinish(event: (() => void) | undefined)
 
 ### 示例1（播放Resource动画）
 
-通过ImageAnimator组件播放Resource动画。
+通过ImageAnimator组件播放Resource动画。从API版本26.0.1开始支持[interpolation](#interpolation)接口。
 
 ```ts
 // xxx.ets
@@ -464,6 +488,7 @@ struct ImageAnimatorExample {
         .reverse(this.reverse)
         .fillMode(FillMode.None)
         .iterations(this.iterations)
+        .interpolation(ImageInterpolation.Low)
         .width(340)
         .height(240)
         .margin({ top: 100 })

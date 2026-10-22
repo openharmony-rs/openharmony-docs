@@ -128,6 +128,7 @@
 | [ArkUI_ScrollNestedMode](#arkui_scrollnestedmode)                   | ArkUI_ScrollNestedMode          | 定义嵌套滚动选项。                         |
 | [ArkUI_ScrollEdge](#arkui_scrolledge)                               | ArkUI_ScrollEdge                | 定义滚动到的边缘位置。                       |
 | [ArkUI_ScrollAlignment](#arkui_scrollalignment)                     | ArkUI_ScrollAlignment           | 滚动到具体item时的对齐方式。                  |
+| [OH_ArkUI_FastScrollMode](#oh_arkui_fastscrollmode) | OH_ArkUI_FastScrollMode | 定义滚动到指定索引时使用的快速滚动模式，用于设置[NODE_LIST_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_scroll_to_index)的.value[4]?.i32参数。仅当.value[1]?.i32为1（开启动效）时生效。 |
 | [ArkUI_ScrollState](#arkui_scrollstate)                             | ArkUI_ScrollState               | 定义当前滚动状态。                         |
 | [ArkUI_SliderBlockStyle](#arkui_sliderblockstyle)                   | ArkUI_SliderBlockStyle          | 定义滑块形状。                           |
 | [ArkUI_SliderDirection](#arkui_sliderdirection)                     | ArkUI_SliderDirection           | 定义滑动条滑动方向。                        |
@@ -1309,6 +1310,31 @@ enum ArkUI_ScrollAlignment
 | ARKUI_SCROLL_ALIGNMENT_END = 2 | 尾部对齐。指定item尾部与容器尾部对齐。 |
 | ARKUI_SCROLL_ALIGNMENT_AUTO = 3 | 自动对齐。若指定item完全处于显示区，不做调整。否则依照滑动距离最短的原则，将指定item首部对齐或尾部对齐于容器,使指定item完全处于显示区。 |
 
+### OH_ArkUI_FastScrollMode
+
+```c
+enum OH_ArkUI_FastScrollMode
+```
+
+**描述：**
+
+定义滚动到指定索引时使用的快速滚动模式，用于设置[NODE_LIST_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_scroll_to_index)的.value[4]?.i32参数。仅当.value[1]?.i32为1（开启动效）时生效。
+
+> **说明：**
+>
+> - 当滚动距离较大且触发跳跃时，通常先从起始位置连续滚动约2屏，再跳到距离最终停靠位置约2屏的位置，继续滚动至最终位置。一屏指List可视区域在滚动方向上的长度。
+> - 跳过创建或测量只针对上述被跳过的滚动路径；前后两段连续滚动中需要显示的子组件仍会按需创建和测量。实际创建和测量的范围还受对齐方式、额外偏移量和子组件大小等因素影响，并非固定为4屏。
+> - 快速滚动不保证遍历并显示滚动路径上的每一个子组件。
+> - 向NODE_LIST_SCROLL_TO_INDEX传入本枚举未定义的值时，按OH_ARKUI_FAST_SCROLL_MODE_NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。
+
+**起始版本：** 26.2.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_FAST_SCROLL_MODE_NONE = 0 | 不启用快速滚动优化，与不设置快速滚动模式参数时的行为相同。开启动效时，会在动效开始前创建并测量滚动路径上的所有子组件。 |
+| OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE = 1 | 跳过中间子组件的测量，仍可创建中间子组件以确认类型和目标所在行。适用于多列List中同时存在ListItem和ListItemGroup的场景：ListItem占一行中的一列，ListItemGroup占满一整行，需要根据子组件类型确定目标所在行。 |
+| OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE = 2 | 跳过中间子组件的创建和测量，进一步减少开销。<br/>**说明：**<br/>不适用于多列List中同时存在ListItem和ListItemGroup的场景。在该场景下使用此模式会导致List布局和滚动异常，应改用OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE。 |
+
 ### ArkUI_ScrollState
 
 ```c
@@ -2350,6 +2376,7 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND = 106213 | 在[ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md)上未找到指定的动画组。错误码的详细介绍请参见[106213 在UIContext上未找到指定的动画组](errorcode-animation.md#106213-在uicontext上未找到指定的动画组)。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL = 106214 | 检测到同一线程上对动画组接口的重入调用。错误码的详细介绍请参见[106214 检测到同一线程上对动画组接口的重入调用](errorcode-animation.md#106214-检测到同一线程上对动画组接口的重入调用)。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE = 106215 | 动画组未处于操作所需的状态。错误码的详细介绍请参见[106215 动画组未处于操作所需的状态](errorcode-animation.md#106215-动画组未处于操作所需的状态)。<br>**起始版本：** 26.0.1 |
+| ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT = 106216 | 解析的目标节点不属于注册动画组时传入的context所在的UIContext。错误码的详细介绍请参见[106216 解析的目标节点不属于注册动画组时传入的context所在的UIContext](errorcode-animation.md#106216-解析的目标节点不属于注册动画组时传入的context所在的uicontext)。<br>**起始版本：** 26.0.1 |
 | ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  当前节点不是自定义节点。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  当前节点已存在子节点。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  当前渲染节点存在父节点。错误码的详细介绍请参见[渲染节点错误码](../apis-arkui/errorcode-node-render.md)。<br>**起始版本：** 20 |
@@ -6872,6 +6899,10 @@ int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListIte
 
 展开指定ListItem的划出菜单。
 
+> **说明：**
+>
+> - 如果List组件NODE_LIST_CACHED_COUNT属性设置显示预加载ListItem，List显示区域外已预加载完成的ListItem支持展开，否则List显示区域外节点不支持展开。
+
 **起始版本：** 21
 
 **参数：**
@@ -6886,10 +6917,6 @@ int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListIte
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_PARAM_ERROR](capi-native-type-h.md#arkui_errorcode) 传入的节点对象类型错误。<br>         [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-native-type-h.md#arkui_errorcode) 传入的节点未挂载到组件树上。 |
-
-> **说明：**
->
-> - 如果List组件NODE_LIST_CACHED_COUNT属性设置显示预加载ListItem，List显示区域外已预加载完成的ListItem支持展开，否则List显示区域外节点不支持展开。
 
 ### OH_ArkUI_ListItemSwipeAction_Collapse()
 
@@ -8169,7 +8196,7 @@ void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项。 |
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项对象指针。使用该参数前需先通过[OH_ArkUI_CreateSnapshotOptions](#oh_arkui_createsnapshotoptions)创建有效的截图选项对象，用于设置截图的缩放属性。 |
 
 ### OH_ArkUI_SnapshotOptions_SetScale()
 
@@ -8189,7 +8216,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项。 |
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项对象指针。使用该参数前需先通过[OH_ArkUI_CreateSnapshotOptions](#oh_arkui_createsnapshotoptions)创建有效的截图选项对象，用于设置截图的缩放属性。 |
 | float scale | 缩放值。 |
 
 **返回：**
@@ -8213,8 +8240,8 @@ int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOpt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项指针。 |
-| int32_t colorSpace | 指定截图使用的色彩空间。<br>如果知道需要截图的组件使用的色彩空间，可以通过colorSpace参数指定，并将isAuto设置为false，以达到预期的截图效果。<br>支持的取值为：3（RGB色域为Display P3类型）、4（RGB色域为SRGB类型）、27（RGB色域为DISPLAY BT2020类型）。<br>默认值：4<br>仅当isAuto设置为false，该参数设置生效。 |
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项对象指针。使用该参数前需先通过[OH_ArkUI_CreateSnapshotOptions](#oh_arkui_createsnapshotoptions)创建有效的截图选项对象，用于设置截图的色彩空间。 |
+| int32_t colorSpace | 指定截图使用的色彩空间。<br>如果知道需要截图的组件使用的色彩空间，可以通过colorSpace参数指定，并将isAuto设置为false，以达到预期的截图效果。<br>支持的取值为：3（RGB色域为Display P3类型，适用于需要保留Display P3广色域内容的场景）、4（RGB色域为sRGB类型，适用于普通显示设备和兼容性优先的场景）、27（RGB色域为DISPLAY BT2020类型，适用于目标设备支持BT2020色域的场景）。<br>默认值：4<br>仅当isAuto设置为false时，该参数设置生效。 |
 | bool isAuto | 是否由系统自动决定所使用的色彩空间。<br>true表示系统自动决定所使用的色彩空间。在不确定组件使用的色彩空间时，建议将isAuto设置为true，让系统根据实际情况自动决定使用的色彩空间。<br>false表示使用通过colorSpace字段设置的色彩空间类型进行截图。<br>默认值：false |
 
 **返回：**
@@ -8239,7 +8266,7 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项指针。 |
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项对象指针。使用该参数前需先通过[OH_ArkUI_CreateSnapshotOptions](#oh_arkui_createsnapshotoptions)创建有效的截图选项对象，用于设置截图的动态范围模式。 |
 | int32_t dynamicRangeMode | 指定截图使用的动态范围模式。<br>如果知道截图对象使用的动态范围模式，可通过dynamicRangeMode参数指定动态范围模式，并将isAuto设置为false，以达到预期的截图效果。<br>支持的取值为：[ArkUI_DynamicRangeMode](#arkui_dynamicrangemode)枚举值。<br>默认值：ARKUI_DYNAMIC_RANGE_MODE_STANDARD<br>仅当isAuto设置为false，该参数设置生效。 |
 | bool isAuto | 是否由系统自动决定所使用的动态范围模式。<br>true表示系统自动决定所使用的动态范围模式。在不确定组件使用的动态范围模式时，建议将isAuto设置为true，让系统根据实际情况自动决定使用的动态范围模式。<br>false表示使用通过dynamicRangeMode字段设置的动态范围模式进行截图。<br>默认值：false |
 
@@ -8397,7 +8424,7 @@ ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 
 | 类型                                 | 说明 |
 |------------------------------------| -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* | 可见区域变化监听的参数。 |
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* | 可见区域变化监听的参数。创建成功后，需先通过相关接口完成可见比例阈值、更新间隔等参数配置，再将该参数对象用于注册可见区域变化监听；系统根据配置的参数计算组件可见比例并触发相应监听事件。使用完毕后调用[OH_ArkUI_VisibleAreaEventOptions_Dispose](#oh_arkui_visibleareaeventoptions_dispose)释放参数对象；调用Dispose后不得继续使用该参数对象。 |
 
 ### OH_ArkUI_VisibleAreaEventOptions_Dispose()
 
@@ -8438,8 +8465,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | 可见区域变化监听的参数实例。 |
-| float* value | 阈值数组。其中每个元素代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。 |
-| int32_t size | 阈值数组大小。 |
+| float* value | 阈值数组。其中每个元素代表组件可见面积与组件自身面积的比值。默认情况下只计算父组件内的面积；当measureFromViewport设置为true且父组件的NODE_CLIP为false时，组件超出父组件区域的部分也会计入可见面积。每个阈值的取值范围为[0.0, 1.0]：接近0.0适合监听组件刚进入可见区域的场景，约为0.5适合监听组件大部分可见的场景，接近1.0适合监听组件完全或几乎完全可见的场景。建议根据业务对组件可见程度的要求选择阈值；如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。 |
+| int32_t size | 阈值数组中的元素数量，用于指定value参数所传入的阈值个数。取值应为非负整数，且应与value参数实际传入的阈值元素数量一致。 |
 
 **返回：**
 

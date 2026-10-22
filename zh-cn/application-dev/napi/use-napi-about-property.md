@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口设置和获取ArkTS对象属性，包括属性的创建、读取、删除、枚举和存在性检查，支持完整的对象属性管理能力。"
+keywords: [Node-API, 属性, napi_set_property, napi_get_property, napi_delete_property, 可枚举属性, 自有属性, 属性管理]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口设置ArkTS对象的属性
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -159,7 +167,7 @@ try {
     JSON.stringify(result));
   // ...
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_property error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_set_property error: %{public}s', error.message);
   // ...
 }
 ```
@@ -216,7 +224,7 @@ try {
     testNapi.getProperty(obj, 'message'));
   // ...
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_property error: %{public}s', error.message);
   // ...
 }
 ```
@@ -281,7 +289,7 @@ try {
     JSON.stringify(resultTrue));
   // ...
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_property error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_has_property error: %{public}s', error.message);
   // ...
 }
 ```
@@ -916,7 +924,7 @@ try {
     JSON.stringify(propertyNames));
   // ...
 } catch (error) {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_all_property_names error: %{public}s',
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_all_property_names error: %{public}s',
     error.message);
   // ...
 }

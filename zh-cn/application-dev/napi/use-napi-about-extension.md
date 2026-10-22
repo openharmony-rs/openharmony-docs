@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Node-API扩展能力接口，提供在Node-API模块中与ArkTS进行更灵活交互和定制的接口，支持创建自定义ArkTS对象等高级场景开发。"
+keywords: [Node-API, 扩展能力, 自定义对象, napi_create_object, ArkTS交互, 接口扩展, 高级开发]
+doctype: guide
+status: active
+---
+
 # 使用Node-API进行扩展能力功能开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -171,6 +179,7 @@ static napi_value CreateObjectWithProperties(napi_env env, napi_callback_info in
     if (valueType == napi_object) {
         return object;
     }
+    return nullptr;
 }
 ```
 
@@ -1437,7 +1446,7 @@ static napi_value TestNapiWrapEnhance(napi_env env, napi_callback_info info)
     napi_new_instance(env, testClass, 0, nullptr, &obj);
     const char* testStr = "test";
     napi_ref wrappedRef = nullptr;
-    napi_wrap_enhance(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, false, nullptr, sizeof(testStr) + 1, &wrappedRef);
+    napi_wrap_enhance(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, false, nullptr, strlen(testStr) + 1, &wrappedRef);
     return nullptr;
 }
 ```
@@ -1548,3 +1557,17 @@ testNapi.testNapiWrapEnhance();
 **napi_throw_business_error**
 
 [使用扩展的Node-API接口抛出ArkTS异常](use-napi-about-error.md)
+
+## napi支持获取global handle数量
+
+### 接口描述
+
+| 接口                        | 描述                                                                                                                 |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| napi_get_global_handle_count | 获取当前虚拟机环境中global handle数量，可用于根据global handle的实际数量来进一步处理业务，比如打印当前堆快照，分析当前的内存占用情况。注意：由于需要遍历，此接口可能耗时较长，在us级别。 |
+
+### 使用示例
+
+**napi_get_global_handle_count**
+
+[使用扩展的Node-API接口获取global handle数量](use-napi-life-cycle.md)

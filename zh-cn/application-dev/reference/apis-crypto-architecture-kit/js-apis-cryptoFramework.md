@@ -1318,7 +1318,7 @@ ArkTS-Sta: getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | int
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. <br>适用版本：12+         |
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
@@ -1440,7 +1440,7 @@ getEncodedDer(format: string): DataBlob
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -1492,7 +1492,7 @@ getEncodedPem(format: string): string
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -1701,7 +1701,7 @@ ArkTS-Sta: getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | int
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
@@ -1820,7 +1820,7 @@ getEncodedDer(format: string): DataBlob
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -1874,7 +1874,7 @@ getEncodedPem(format: string): string
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -1943,7 +1943,7 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
@@ -2356,7 +2356,7 @@ createSymKeyGenerator(algName: string): SymKeyGenerator
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 
 **示例：**
@@ -2608,7 +2608,7 @@ convertKey(key: DataBlob, callback: AsyncCallback\<SymKey>): void
 
 | 错误码ID | 错误信息                                               |
 | -------- | --------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                       |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+                                |
 
@@ -2696,7 +2696,7 @@ convertKey(key: DataBlob): Promise\<SymKey>
 
 | 错误码ID | 错误信息                                          |
 | -------- | --------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+                                |
 
@@ -2793,7 +2793,7 @@ convertKeySync(key: DataBlob): SymKey
 
 | 错误码ID | 错误信息                                               |
 | -------- | --------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                       |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+                                     |
 
@@ -2852,7 +2852,7 @@ createAsyKeyGenerator(algName: string): AsyKeyGenerator
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 17620001 | Memory operation failed. |
 
@@ -2916,7 +2916,7 @@ generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>Incorrect parameter types;|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>Incorrect parameter types;|
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 
@@ -2963,7 +2963,7 @@ generateKeyPair(): Promise\<KeyPair>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 
@@ -3028,7 +3028,7 @@ generateKeyPairSync(): KeyPair
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.          |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 
@@ -3080,7 +3080,7 @@ convertKey(pubKey: DataBlob, priKey: DataBlob, callback: AsyncCallback\<KeyPair\
 
 | 错误码ID | 错误信息                                                 |
 | -------- | --------------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error.          |
@@ -3115,7 +3115,7 @@ convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCall
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -3180,7 +3180,7 @@ convertKey(pubKey: DataBlob, priKey: DataBlob): Promise\<KeyPair\>
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                     |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
 | 17630001 | Crypto operation error.          |
@@ -3220,7 +3220,7 @@ convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -3313,7 +3313,7 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -3384,7 +3384,7 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -3511,7 +3511,7 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 
@@ -3626,7 +3626,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
@@ -3711,7 +3711,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error.          |
 
@@ -3788,7 +3788,7 @@ createAsyKeyGeneratorBySpec(asyKeySpec: AsyKeySpec): AsyKeyGeneratorBySpec
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 17620001 | Memory operation failed. |
 
@@ -3880,7 +3880,7 @@ generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>Incorrect parameter types;         |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>Incorrect parameter types;         |
 | 17620001 | Memory operation failed.           |
 | 17630001 | Crypto operation error. |
 
@@ -3957,7 +3957,7 @@ generateKeyPair(): Promise\<KeyPair>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
 
@@ -4079,7 +4079,7 @@ generateKeyPairSync(): KeyPair
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
 
@@ -4161,7 +4161,7 @@ generatePriKey(callback: AsyncCallback\<PriKey>): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>Mandatory parameters are left unspecified;         |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>Mandatory parameters are left unspecified;         |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
 
@@ -4238,7 +4238,7 @@ generatePriKey(): Promise\<PriKey>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
 
@@ -4359,7 +4359,7 @@ generatePriKeySync(): PriKey
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
 
@@ -4439,7 +4439,7 @@ generatePubKey(callback: AsyncCallback\<PubKey>): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes:<br> Incorrect parameter types;        |
+| 401 | [Sync/Async] Invalid parameters. Possible causes:<br> Incorrect parameter types;        |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
 
@@ -4516,7 +4516,7 @@ generatePubKey(): Promise\<PubKey>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
 
@@ -4638,7 +4638,7 @@ generatePubKeySync(): PubKey
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
 
@@ -4726,7 +4726,7 @@ static genECCCommonParamsSpec(curveName: string): ECCCommonParamsSpec
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801      | This operation is not supported. |
 | 17620001 | Memory operation failed.                    |
 
@@ -4783,7 +4783,7 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -4835,7 +4835,7 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -4929,7 +4929,7 @@ ArkTS-Sta: static genDHCommonParamsSpec(pLen: int, skLen?: int): DHCommonParamsS
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801      | This operation is not supported. |
 | 17620001 | Memory operation failed.                    |
 | 17630001 | Crypto operation error.          |
@@ -4989,7 +4989,7 @@ static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                    |
 | 17630001 | Crypto operation error.          |
 
@@ -5048,7 +5048,7 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                    |
 | 17630001 | Crypto operation error.          |
 
@@ -5113,7 +5113,7 @@ createCipher(transformation: string): Cipher
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 17620001 | Memory operation failed.          |
 
@@ -5197,7 +5197,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec, callback: AsyncCallback\<
 
 | 错误码ID | 错误信息                                                 |
 | -------- | --------------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                            |
 | 17620002 | Failed to obtain the native object or convert parameters.                                          |
 | 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
@@ -5236,7 +5236,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCal
 
 | 错误码ID | 错误信息                                                 |
 | -------- | --------------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                            |
 | 17620002 | Failed to obtain the native object or convert parameters.                                          |
 | 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
@@ -5280,7 +5280,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec): Promise\<void>
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                     |
 | 17620002 | Failed to obtain the native object or convert parameters.                                    |
 | 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
@@ -5324,7 +5324,7 @@ init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                     |
 | 17620002 | Failed to obtain the native object or convert parameters.                                    |
 | 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
@@ -5360,7 +5360,7 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
@@ -5419,7 +5419,7 @@ ArkTS-Sta: update(data: DataBlob, callback: AsyncCallback\<DataBlob | null>): vo
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                               |
 | 17620002 | Failed to obtain the native object or convert parameters.                            |
 | 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
@@ -5473,7 +5473,7 @@ ArkTS-Sta: update(data: DataBlob): Promise\<DataBlob | null>
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                |
 | 17620002 | Failed to obtain the native object or convert parameters.                               |
 | 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
@@ -5517,7 +5517,7 @@ ArkTS-Sta: updateSync(data: DataBlob): DataBlob | null
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
@@ -5552,7 +5552,7 @@ doFinal(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
 | 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
@@ -5603,7 +5603,7 @@ ArkTS-Sta: doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob | nu
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
 | 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
@@ -5718,6 +5718,121 @@ function cipherByCallback() {
   });
 }
 ```
+JS示例：
+
+在Lite Wearable侧对称密钥只支持AES128算法；加解密只支持AES128|GCM或AES128|CBC算法。
+
+下述样例以对称算法为AES128，分组模式为GCM为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="Aes128Test">Aes128加解密异步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+let plainText = "This is a test";
+ 
+function genGcmAeadParamsSpec(ivData, aadData, tagLen) {
+    return {
+        nonce: ivData,
+        authenticatedData: aadData || new Uint8Array(0),
+        algName: 'AeadParamsSpec',
+        tagLen: tagLen === undefined ? 16 : tagLen
+    };
+}
+ 
+function aes128Test() {
+  try {
+      let aesKeyData = new Uint8Array([0x53, 0xD9, 0xE7, 0x4C, 0x1C, 0x71, 0x17, 0xDB, 0xFA, 0x47, 0xD1, 0xD2, 0xCD, 0x61, 0x20, 0x9F]);
+      let symKey = cryptoFramework.createSymKeyGenerator('AES128').convertKeySync({data: aesKeyData});
+      let iv = cryptoFramework.createRandom().generateRandomSync(12);
+      let aeadParams = genGcmAeadParamsSpec(iv, new Uint8Array(0), 16);
+      
+      let cipher = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, aeadParams, function (err) {
+          if (err) {
+              console.error('Encrypt init failed. Code: ' + err.code + " : " + err.message);
+              return;
+          }
+          let inData = StringToUint8Array(plainText);
+          cipher.doFinal({ data: inData }, function (err, encryptOutput) {
+              if (err) {
+                  console.error('Encrypt doFinal failed. Code: ' + err.code + " : " + err.message);
+                  return;
+              }
+              console.info('Encrypt successfully. cipherText: ' + encryptOutput.data);
+              let dec = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+              dec.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, aeadParams, function (err) {
+                  if (err) {
+                      console.error('Decrypt init failed. Code: ' + err.code + " : " + err.message);
+                      return;
+                  }
+                  dec.doFinal({ data: encryptOutput.data }, function (err, decryptOutput) {
+                      if (err) {
+                          console.error('Decrypt doFinal failed. Code: ' + err.code + " : " + err.message);
+                      } else {
+                          console.info('Decrypt successfully: ' + decryptOutput.data);
+                      }
+                  })
+              })
+          })
+      })
+    } catch (error) {
+        console.error(`aes128Test failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    Aes128Test() {
+        aes128Test();
+    }
+};
+```
 
 ### doFinal
 
@@ -5753,7 +5868,7 @@ doFinal(data: DataBlob): Promise\<DataBlob>
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                |
 | 17620002 | Failed to obtain the native object or convert parameters.                               |
 | 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
@@ -5813,7 +5928,7 @@ ArkTS-Sta: doFinal(data: DataBlob | null): Promise\<DataBlob | null>
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.                                |
 | 17620002 | Failed to obtain the native object or convert parameters.                               |
 | 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
@@ -5961,7 +6076,7 @@ ArkTS-Sta: doFinalSync(data: DataBlob | null): DataBlob | null
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
 | 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long.|
@@ -6062,6 +6177,99 @@ async function cipherBySync() {
   }
 }
 ```
+JS示例：
+
+在Lite Wearable侧对称密钥只支持AES128算法；加解密只支持AES128|GCM或AES128|CBC算法。
+
+下述样例以对称算法为AES128，分组模式为GCM为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="Aes128TestSync">Aes128加解密同步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+function genGcmAeadParamsSpec(ivData, aadData, tagLen) {
+    return {
+        nonce: ivData,
+        authenticatedData: aadData || new Uint8Array(0),
+        algName: 'AeadParamsSpec',
+        tagLen: tagLen === undefined ? 16 : tagLen
+    };
+}
+ 
+function aes128TestSync() {
+  try {
+      let aesKeyData = new Uint8Array([0x53, 0xD9, 0xE7, 0x4C, 0x1C, 0x71, 0x17, 0xDB, 0xFA, 0x47, 0xD1, 0xD2, 0xCD, 0x61, 0x20, 0x9F]);
+      let symKey = cryptoFramework.createSymKeyGenerator('AES128').convertKeySync({data: aesKeyData});
+      let iv = cryptoFramework.createRandom().generateRandomSync(12);
+      let aeadParams = genGcmAeadParamsSpec(iv, new Uint8Array(0), 16);
+      let cipher = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      let inData = StringToUint8Array("This is a test");
+      cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, aeadParams);
+      let encryptOutput = cipher.doFinalSync({ data: inData });
+      console.info('Encrypt successfully. cipherText: ' + encryptOutput.data);
+
+      let dec = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      dec.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, aeadParams);
+      let decryptOutput = dec.doFinalSync({ data: encryptOutput.data });
+      console.info('Decrypt successfully: ' + decryptOutput.data);
+  } catch (error) {
+      console.error(`aes128TestSync failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    Aes128TestSync() {
+        aes128TestSync();
+    }
+};
+```
 
 ### setCipherSpec<sup>10+</sup>
 
@@ -6092,7 +6300,7 @@ setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType.|
@@ -6144,7 +6352,7 @@ getCipherSpec(itemType: CipherSpecItem): string | Uint8Array
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType.|
@@ -6195,7 +6403,7 @@ createSign(algName: string): Sign
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 
@@ -6282,7 +6490,7 @@ Sign实例不支持重复初始化。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
@@ -6324,7 +6532,7 @@ Sign实例不支持重复初始化。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
@@ -6358,7 +6566,7 @@ Sign实例不支持重复调用initSync。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
@@ -6403,7 +6611,7 @@ update(data: DataBlob, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
 | 17620004 | Invalid function call. <br>适用版本：26.0.0+|
@@ -6453,7 +6661,7 @@ update(data: DataBlob): Promise\<void>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620004 | Invalid function call. <br>适用版本：26.0.0+|
@@ -6495,7 +6703,7 @@ updateSync(data: DataBlob): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620004 | Invalid function call. <br>适用版本：26.0.0+|
@@ -6530,7 +6738,7 @@ sign(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 
 | 错误码ID | 错误信息                                                 |
 | -------- | --------------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
@@ -6565,7 +6773,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
@@ -6605,7 +6813,7 @@ sign(data: DataBlob): Promise\<DataBlob>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c.         |
 | 17630001 | crypto operation error. |
@@ -6644,7 +6852,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
@@ -6682,7 +6890,7 @@ signSync(data: DataBlob | null): DataBlob
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
@@ -6985,7 +7193,7 @@ setSignSpec(itemType: SignSpecItem, itemValue: number): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
@@ -7039,7 +7247,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed.          |
 | 17630001 | crypto operation error. |
@@ -7182,7 +7390,7 @@ ArkTS-Sta: getSignSpec(itemType: SignSpecItem): string | int
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
@@ -7235,7 +7443,7 @@ createVerify(algName: string): Verify
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 
@@ -7314,7 +7522,7 @@ init(pubKey: PubKey, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
@@ -7354,7 +7562,7 @@ init(pubKey: PubKey): Promise\<void>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
@@ -7386,7 +7594,7 @@ initSync(pubKey: PubKey): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
@@ -7431,7 +7639,7 @@ update(data: DataBlob, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620004 | Invalid function call. <br>适用版本：26.0.0+|
@@ -7481,7 +7689,7 @@ update(data: DataBlob): Promise\<void>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620004 | Invalid function call. <br>适用版本：26.0.0+|
@@ -7523,7 +7731,7 @@ updateSync(data: DataBlob): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620004 | Invalid function call. <br>适用版本：26.0.0+|
@@ -7559,7 +7767,7 @@ verify(data: DataBlob, signatureData: DataBlob, callback: AsyncCallback\<boolean
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c.         |
 | 17630001 | crypto operation error. |
@@ -7594,7 +7802,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
@@ -7635,7 +7843,7 @@ verify(data: DataBlob, signatureData: DataBlob): Promise\<boolean>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c.         |
 | 17630001 | crypto operation error. |
@@ -7675,7 +7883,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
@@ -7714,7 +7922,7 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
@@ -8058,7 +8266,7 @@ recover(signatureData: DataBlob): Promise\<DataBlob | null>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620004 | Invalid function call. <br>适用版本：26.0.0+|
@@ -8178,7 +8386,7 @@ recoverSync(signatureData: DataBlob): DataBlob | null
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17620004 | Invalid function call. <br>适用版本：26.0.0+|
@@ -8219,7 +8427,7 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
@@ -8274,7 +8482,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed.          |
 | 17630001 | crypto operation error. |
@@ -8423,7 +8631,7 @@ ArkTS-Sta: getVerifySpec(itemType: SignSpecItem): string | int
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
@@ -8476,7 +8684,7 @@ createKeyAgreement(algName: string): KeyAgreement
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 
@@ -8542,7 +8750,7 @@ generateSecret(priKey: PriKey, pubKey: PubKey, callback: AsyncCallback\<DataBlob
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
@@ -8582,7 +8790,7 @@ generateSecret(priKey: PriKey, pubKey: PubKey): Promise\<DataBlob>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.          |
 | 17630001 | Crypto operation error. |
@@ -8619,7 +8827,7 @@ generateSecretSync(priKey: PriKey, pubKey: PubKey): DataBlob
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters.         |
 | 17630001 | Crypto operation error. |
@@ -8760,7 +8968,7 @@ createMd(algName: string): Md
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.       |
 
 **示例：**
@@ -8840,7 +9048,7 @@ update(input: DataBlob, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001| Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -8886,7 +9094,7 @@ update(input: DataBlob): Promise\<void>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001| Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -8922,7 +9130,7 @@ updateSync(input: DataBlob): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 | 17620001| Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -9164,7 +9372,7 @@ digestSync(): DataBlob
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | Memory operation failed. |
 | 17620002 | Failed to obtain the native object or convert parameters. |
 | 17630001 | Crypto operation error. |
@@ -9257,6 +9465,124 @@ export default {
 };
 ```
 
+### squeeze
+
+ArkTS-Dyn: squeeze(len: number): Promise\<DataBlob>
+
+ArkTS-Sta: squeeze(len: int): Promise\<DataBlob>
+
+对于SHAKE128和SHAKE256算法，生成指定长度的消息摘要。使用Promise异步回调。
+
+> **说明：**
+>
+> 当前Md实例中，此接口与[squeezeSync](#squeezesync)仅支持单次调用。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| len | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定摘要输出长度（字节）。SHAKE128范围[32, 65536]，SHAKE256范围[64, 65536]。 |
+
+**返回值：**
+
+| 类型               | 说明        |
+| ------------------ | ----------- |
+| Promise\<[DataBlob](#datablob)> | Promise对象，返回指定长度的摘要计算结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. Possible causes: Invalid len value. |
+| 17620004 | Invalid function call. Fixed-length digest algorithm, such as SHA256, does not support this API. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+async function squeezeByPromise() {
+  let md = cryptoFramework.createMd('SHAKE128');
+  await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+  let mdOutput = await md.squeeze(64);
+  console.info('[Promise]: squeeze result length: ' + mdOutput.data.length);
+}
+```
+
+### squeezeSync
+
+ArkTS-Dyn: squeezeSync(len: number): DataBlob
+
+ArkTS-Sta: squeezeSync(len: int): DataBlob
+
+对于SHAKE128和SHAKE256算法，通过同步方式生成指定长度的消息摘要。
+
+> **说明：**
+>
+> 当前Md实例中，此接口与[squeeze](#squeeze)仅支持单次调用。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| len | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定摘要输出长度（字节）。SHAKE128范围[32, 65536]，SHAKE256范围[64, 65536]。 |
+
+**返回值：**
+
+| 类型               | 说明        |
+| ------------------ | ----------- |
+| [DataBlob](#datablob) | 表示生成的指定长度的Md计算结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. Possible causes: Invalid len value. |
+| 17620004 | Invalid function call. Fixed-length digest algorithm, such as SHA256, does not support this API. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function squeezeSync() {
+  let md = cryptoFramework.createMd('SHAKE128');
+  md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+  let mdOutput = md.squeezeSync(64);
+  console.info('[Sync]: squeeze result length: ' + mdOutput.data.length);
+}
+```
+
 ### getMdLength
 
 ArkTS-Dyn: getMdLength() : number
@@ -9340,7 +9666,7 @@ createMac(algName: string): Mac
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.       |
 
 **示例：**
@@ -9392,7 +9718,7 @@ createMac(macSpec: MacSpec): Mac
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.       |
 | 17620002 | Failed to obtain the native object or convert parameters.      |
 | 17630001 | Crypto operation error.       |
@@ -9473,7 +9799,7 @@ init(key: SymKey, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001| Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -9511,7 +9837,7 @@ init(key: SymKey): Promise\<void>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001| Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -9541,7 +9867,7 @@ initSync(key: SymKey): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.     |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.     |
 | 17620001| Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -9578,7 +9904,7 @@ update(input: DataBlob, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001| Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -9620,7 +9946,7 @@ update(input: DataBlob): Promise\<void>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001| Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -9655,7 +9981,7 @@ updateSync(input: DataBlob): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 | 17620001| Memory operation failed. |
 | 17630001 | Crypto operation error. |
 
@@ -9743,6 +10069,110 @@ function hmacByCallback() {
   });
 }
 ```
+JS示例：
+
+在Lite Wearable侧HMAC消息认证码支持的摘要算法只有SHA256。
+
+下述样例以摘要算法为SHA256，对称算法为HMAC为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="HmacTest">Hmac异步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+let plainText = "hmacTestMessage";
+ 
+function hmacTest() {
+  try {
+      let hmacSpec = { algName: 'HMAC', mdName: 'SHA256' };
+      let keyData = StringToUint8Array("12345678abcdefgh");
+      let mac = cryptoFramework.createMac(hmacSpec);
+      console.info('createMac ' + typeof mac);
+  
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+      symKeyGenerator.convertKey({ data: keyData }, function (err, symKey) {
+          if (err) {
+              console.error('convertKey failed. Code: ' + err.code + " : " + err.message);
+              return;
+          }
+          mac.init(symKey, function (err) {
+              if (err) {
+                  console.error('Mac init failed. Code: ' + err.code + " : " + err.message);
+                  return;
+              }
+              mac.update({ data: StringToUint8Array(plainText) }, function (err) {
+                  if (err) {
+                      console.error('Mac update failed. Code: ' + err.code + " : " + err.message);
+                      return;
+                  }
+                  mac.doFinal(function (err, output) {
+                      if (err) {
+                          console.error('Mac doFinal failed. Code: ' + err.code + " : " + err.message);
+                      } else {
+                          console.info('Mac doFinal successfully: ' + output.data);
+                          console.info('Mac len: ' + mac.getMacLength());
+                      }
+                  })
+              })
+          })
+      })
+    } catch (error) {
+        console.error(`hmacTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    HmacTest() {
+        hmacTest();
+    }
+};
+```
 
 ### doFinal
 
@@ -9822,7 +10252,7 @@ doFinalSync(): DataBlob
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.          |
 | 17620001 | Memory operation failed.           |
 | 17620002 | Failed to obtain the native object or convert parameters. |
 | 17630001 | Crypto operation error. |
@@ -9830,6 +10260,8 @@ doFinalSync(): DataBlob
 **示例：**
 
 此外，更多HMAC的完整示例可参考开发指导[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
+
+ArkTS示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -9846,6 +10278,87 @@ function hmacBySync() {
   console.info('[Sync]: HMAC result: ' + macOutput.data);
   console.info('[Sync]: MAC len: ' + mac.getMacLength());
 }
+```
+
+JS示例：
+
+在Lite Wearable侧HMAC消息认证码支持的摘要算法只有SHA256。
+
+下述样例以摘要算法为SHA256，对称算法为HMAC为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="HmacTestSync">Hmac同步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+function hmacTestSync() {
+  try {
+      let hmacSpec = { algName: 'HMAC', mdName: 'SHA256' };
+      let keyData = StringToUint8Array("12345678abcdefgh");
+      let message = "hmacTestMessage";
+      let mac = cryptoFramework.createMac(hmacSpec);
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+      let symKey = symKeyGenerator.convertKeySync({ data: keyData });
+      mac.initSync(symKey);
+      mac.updateSync({ data: StringToUint8Array(message) });
+      let macOutput = mac.doFinalSync();
+      console.info('Mac doFinal successfully: ' + macOutput.data);
+  } catch (error) {
+      console.error(`GenerateRandom random number failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    HmacTestSync() {
+        hmacTestSync();
+    }
+};
 ```
 
 ### getMacLength
@@ -10051,7 +10564,7 @@ ArkTS-Sta: generateRandom(len: int, callback: AsyncCallback\<DataBlob>): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17630001 | Crypto operation error. |
 
@@ -10131,7 +10644,7 @@ ArkTS-Sta: generateRandom(len: int): Promise\<DataBlob>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17630001 | Crypto operation error. |
 
@@ -10278,7 +10791,7 @@ ArkTS-Sta: generateRandomSync(len: int): DataBlob
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.           |
 | 17630001 | Crypto operation error. |
 
@@ -10569,7 +11082,7 @@ createKdf(algName: string): Kdf
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported.          |
 | 17620001 | Memory operation failed.          |
 
@@ -10634,7 +11147,7 @@ generateSecret(params: KdfSpec, callback: AsyncCallback\<DataBlob>): void
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620003 | Parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
@@ -10772,7 +11285,7 @@ generateSecret(params: KdfSpec): Promise\<DataBlob>
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | Memory operation failed.          |
 | 17620003 | Parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. <br>适用版本：22+|
 | 17630001 | Crypto operation error. |
@@ -10905,7 +11418,7 @@ generateSecretSync(params: KdfSpec): DataBlob
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.  |
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.  |
 | 17620001 | Memory operation failed.          |
 | 17620002 | Failed to obtain the native object or convert parameters. |
 | 17620003 | Parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. <br>适用版本：22+|

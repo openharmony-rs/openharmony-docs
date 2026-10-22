@@ -30,6 +30,7 @@ import { webview } from '@kit.ArkWeb';
 struct ShortWebPage {
   controller: webview.WebviewController = new webview.WebviewController();
   CONSTANT_HEIGHT = 100;
+  @State marginTop: number = this.CONSTANT_HEIGHT;
   @State isVisible: boolean = true; // 自定义标志位isVisible，来控制是否需要显示组件
 
   build() {
@@ -67,8 +68,6 @@ ArkTS-Sta示例：
 <!-- @[web_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-'use static'
-
 import { $rawfile, State, Web, FullScreenEnterEvent, FullScreenExitHandler, Visibility, Text, Column, Component, Entry } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
@@ -85,9 +84,9 @@ struct ShortWebPage {
       Text('TextTextTextText')
         .width('100%')
         .height(this.marginTop)
-        .backgroundColor('#e1dede') // 当isVisible标志位为true的时候，组件状态为可见，否则组件状态为不可见，不参与布局、不进行占位
+        .backgroundColor('#e1dede')
         .visibility(this.isVisible ? Visibility.Visible :
-          Visibility.None)
+          Visibility.None) // 当isVisible标志位为true的时候，组件状态为可见，否则组件状态为不可见，不参与布局、不进行占位
       Web({
         src: $rawfile('FullScreen.html'), // 示例网址
         controller: this.controller
@@ -246,7 +245,7 @@ onBackPress(): boolean | void {
     this.changeOrientation(false);
     return true;
   } else {
-    router.back();
+    this.getUIContext().getRouter().back();
     return true;
   }
 }
@@ -265,7 +264,7 @@ onBackPress(): boolean {
     this.changeOrientation(false);
     return true;
   } else {
-    router.back();
+    this.getUIContext().getRouter().back();
     return true;
   }
 }
@@ -278,7 +277,7 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { window, router } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -305,7 +304,7 @@ struct WebVideo {
       this.changeOrientation(false);
       return true;
     } else {
-      router.back();
+      this.getUIContext().getRouter().back();
       return true;
     }
   }
@@ -338,9 +337,7 @@ ArkTS-Sta示例：
 <!-- @[switch between portrait and landscape](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-'use static'
-
-import { window, router } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
 
@@ -372,7 +369,7 @@ struct WebVideo {
       this.changeOrientation(false);
       return true;
     } else {
-      router.back();
+      this.getUIContext().getRouter().back();
       return true;
     }
   }

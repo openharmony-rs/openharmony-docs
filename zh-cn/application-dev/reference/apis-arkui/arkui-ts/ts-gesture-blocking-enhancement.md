@@ -1,7 +1,7 @@
 # 手势拦截增强
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -81,12 +81,15 @@ ArkTS-Sta: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCa
 
 给组件绑定自定义手势识别器判定回调。
 
-新增exposeInnerGesture参数作为是否将ArkUI系统组合组件的内置组件的手势暴露给开发者的标识。当该标识置为true时，将ArkUI系统组合组件的内置组件的手势暴露给开发者。<br>
-对于不需要将ArkUI系统组合组件的内置组件的手势暴露给开发者的场景，建议采用原有[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)接口。若要求将ArkUI系统组合组件的内置组件的手势暴露给开发者，建议使用该接口并将exposeInnerGesture设置为true。
+
+新增exposeInnerGesture参数，用于标识是否将ArkUI系统组合组件中内置组件的手势暴露给开发者。当该参数设置为true时，将ArkUI系统组合组件中内置组件的手势暴露给开发者。<br>
+对于不需要暴露ArkUI系统组合组件中内置组件手势的场景，建议采用原有[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)接口。若需要暴露该手势，建议使用该接口并将exposeInnerGesture设置为true。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 13
 
@@ -117,6 +120,8 @@ ArkTS-Sta: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCa
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 24
@@ -132,6 +137,7 @@ ArkTS-Sta: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCa
 | 类型 | 说明 |
 | -------- | -------- |
 | ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
+
 
 ## GestureRecognizerJudgeBeginCallback
 
@@ -251,7 +257,7 @@ type GestureCollectInterceptCallback = (recognizers: Array\<GestureRecognizer\>,
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**参数：** 
+**参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
@@ -344,7 +350,7 @@ struct FatherControlChild {
     Stack({ alignContent: Alignment.TopStart }) {
       Scroll(this.scroller) { // 外部滚动容器
         Column() {
-          Text("Scroll Area")
+          Text('Scroll Area')
             .width('90%')
             .height(150)
             .backgroundColor(0xFFFFFF)
@@ -354,7 +360,7 @@ struct FatherControlChild {
             .margin({ top: 10 })
           Scroll(this.scroller2) { // 内部滚动容器
             Column() {
-              Text("Scroll Area2")
+              Text('Scroll Area2')
                 .width('90%')
                 .height(150)
                 .backgroundColor(0xFFFFFF)
@@ -372,16 +378,16 @@ struct FatherControlChild {
                     .fontSize(16)
                     .textAlign(TextAlign.Center)
                     .margin({ top: 10 })
-                }, (item: string) => item)
+                }, (item: number) => item.toString())
               }.width('100%')
             }
           }
-          .id("inner")
+          .id('inner')
           .width('100%')
           .height(800)
         }.width('100%')
       }
-      .id("outer")
+      .id('outer')
       .height(600)
       .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
       .scrollBar(BarState.On) // 滚动条常驻显示
@@ -392,7 +398,7 @@ struct FatherControlChild {
         for (let i = 0; i < others.length; i++) {
           let target = others[i].getEventTargetInfo();
           if (target) {
-            if (target.getId() == "inner" && others[i].isBuiltIn() &&
+            if (target.getId() == 'inner' && others[i].isBuiltIn() &&
               others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
               this.currentRecognizer = current; // 保存当前组件的识别器
               this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
@@ -407,12 +413,12 @@ struct FatherControlChild {
         if (current) {
           let target = current.getEventTargetInfo();
           if (target) {
-            if (target.getId() == "outer" && current.isBuiltIn() &&
+            if (target.getId() == 'outer' && current.isBuiltIn() &&
               current.getType() == GestureControl.GestureType.PAN_GESTURE) {
               if (others) {
                 for (let i = 0; i < others.length; i++) {
                   let target = others[i].getEventTargetInfo() as ScrollableTargetInfo;
-                  if (target instanceof ScrollableTargetInfo && target.getId() == "inner") { // 找到响应链上对应并行的识别器
+                  if (target instanceof ScrollableTargetInfo && target.getId() == 'inner') { // 找到响应链上对应并行的识别器
                     let panEvent = event as PanGestureEvent;
                     if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
                       if (panEvent && panEvent.offsetY < 0) {
@@ -494,7 +500,7 @@ struct FatherControlChild {
 
 本示例通过将参数exposeInnerGesture设置为true，实现了一级Tabs容器在嵌套二级Tabs的场景下，能够屏蔽二级Tabs内置Swiper的滑动手势，从而触发一级Tabs内置Swiper滑动手势的功能。
 
-开发者自行定义变量来记录内层Tabs的索引值，通过该索引值判断当滑动达到内层Tabs的边界处时，触发回调返回屏蔽使外层Tabs产生滑动手势。
+开发者自行定义变量记录内层Tabs的索引值，并通过该索引值判断滑动是否达到内层Tabs的边界。达到边界时，触发回调返回拒绝结果，屏蔽内层Tabs的滑动手势，使外层Tabs产生滑动手势。
 
 ```ts
 // xxx.ets
@@ -541,24 +547,24 @@ struct Index {
               Column().width('100%').height('100%').backgroundColor(Color.Pink)
             }.tabBar(new SubTabBarStyle('pink'))
           }
-          .onAnimationStart((index: number, targetIndex: number) => {
-            console.info(`ets onGestureRecognizerJudgeBegin child: ${targetIndex}`)
-            this.innerSelectedIndex = targetIndex
+          .onAnimationStart((_index: number, targetIndex: number) => {
+            console.info(`ets onGestureRecognizerJudgeBegin child: ${targetIndex}`);
+            this.innerSelectedIndex = targetIndex;
           })
           .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
-            others: Array<GestureRecognizer>): GestureJudgeResult => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
-            console.info('ets onGestureRecognizerJudgeBegin child')
+            others: Array<GestureRecognizer>): GestureJudgeResult => { // 在识别器即将要成功时，根据内层Tabs索引和滑动方向返回手势判定结果
+            console.info('ets onGestureRecognizerJudgeBegin child');
             if (current) {
               let target = current.getEventTargetInfo();
               if (target && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
-                console.info('ets onGestureRecognizerJudgeBegin child PAN_GESTURE')
+                console.info('ets onGestureRecognizerJudgeBegin child PAN_GESTURE');
                 let panEvent = event as PanGestureEvent;
                 if (panEvent && panEvent.velocityX < 0 && this.innerSelectedIndex === 1) { // 内层Tabs滑动到尽头
-                  console.info('ets onGestureRecognizerJudgeBegin child reject end')
+                  console.info('ets onGestureRecognizerJudgeBegin child reject end');
                   return GestureJudgeResult.REJECT;
                 }
                 if (panEvent && panEvent.velocityX > 0 && this.innerSelectedIndex === 0) { // 内层Tabs滑动到开头
-                  console.info('ets onGestureRecognizerJudgeBegin child reject begin')
+                  console.info('ets onGestureRecognizerJudgeBegin child reject begin');
                   return GestureJudgeResult.REJECT;
                 }
               }
@@ -571,9 +577,9 @@ struct Index {
           Column().width('100%').height('100%').backgroundColor(Color.Brown)
         }.tabBar(this.tabBuilder(2, 'brown'))
       }
-      .onAnimationStart((index: number, targetIndex: number, event: TabsAnimationEvent) => {
+      .onAnimationStart((_index: number, targetIndex: number, _event: TabsAnimationEvent) => {
         // 切换动画开始时触发该回调。目标页签显示下划线。
-        this.selectedIndex = targetIndex
+        this.selectedIndex = targetIndex;
       })
     }
   }
@@ -582,10 +588,10 @@ struct Index {
 
  ![example](figures/gesture_recognizer.gif)
 
- 
+
 ### 示例3（拦截手势获取属性）
 
-该示例通过配置onGestureRecognizerJudgeBegin判定手势，获取相应属性参数。
+该示例通过配置onGestureRecognizerJudgeBegin判定手势，获取手势的距离、手指数、是否限制手指数、重复触发状态、持续时间、点击次数、旋转角度、滑动方向和速度阈值等属性参数。
 
 ```ts
 // xxx.ets
@@ -677,20 +683,20 @@ struct Index {
 @Component
 struct FatherControlChild {
   scroller: Scroller = new Scroller();
-  scroller2: Scroller = new Scroller()
+  scroller2: Scroller = new Scroller();
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   private childRecognizer: GestureRecognizer = new GestureRecognizer();
   private currentRecognizer: GestureRecognizer = new GestureRecognizer();
   private lastOffset: number = 0;
-  @State outerState: string = "IDLE";
-  @State innerState: string = "IDLE";
+  @State outerState: string = 'IDLE';
+  @State innerState: string = 'IDLE';
   @State willCancel: boolean = false;
 
   build() {
     Stack({ alignContent: Alignment.TopStart }) {
       Scroll(this.scroller) { // 外部滚动容器
         Column() {
-          Text("Scroll Area")
+          Text('Scroll Area')
             .width('90%')
             .height(150)
             .backgroundColor(0xFFFFFF)
@@ -701,7 +707,7 @@ struct FatherControlChild {
 
           Scroll(this.scroller2) { // 内部滚动容器
             Column() {
-              Text("Scroll Area2")
+              Text('Scroll Area2')
                 .width('90%')
                 .height(150)
                 .backgroundColor(0xFFFFFF)
@@ -724,28 +730,28 @@ struct FatherControlChild {
               }.width('100%')
             }
           }
-          .id("inner")
+          .id('inner')
           .width('100%')
           .height(800)
           .onTouch((event) => {
             if (event.type === TouchType.Down) {
-              this.innerState = "TOUCHING";
+              this.innerState = 'TOUCHING';
               this.willCancel = false;
             } else if (event.type === TouchType.Up || event.type === TouchType.Cancel) {
               if (this.willCancel) {
-                this.innerState = "CANCELLED";
+                this.innerState = 'CANCELLED';
                 setTimeout(() => {
-                  this.innerState = "IDLE";
+                  this.innerState = 'IDLE';
                   this.willCancel = false;
                 }, 1000);
               } else {
-                this.innerState = "IDLE";
+                this.innerState = 'IDLE';
               }
             }
           })
         }.width('100%')
       }
-      .id("outer")
+      .id('outer')
       .height('100%')
       .scrollable(ScrollDirection.Vertical)
       .scrollBar(BarState.On)
@@ -756,7 +762,7 @@ struct FatherControlChild {
         for (let i = 0; i < others.length; i++) {
           let target = others[i].getEventTargetInfo();
           if (target) {
-            if (target.getId() == "inner" && others[i].isBuiltIn() &&
+            if (target.getId() == 'inner' && others[i].isBuiltIn() &&
               others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
               this.currentRecognizer = current; // 保存当前组件的识别器
               this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
@@ -768,18 +774,18 @@ struct FatherControlChild {
       })
       .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
         others: Array<GestureRecognizer>,
-        touchRecognizers?: Array<TouchRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
+        touchRecognizers?: Array<TouchRecognizer>) => { // 在识别器即将要成功时，查找子组件触摸识别器并取消其Touch事件
         if (current && touchRecognizers) {
           let target = current.getEventTargetInfo();
           if (target) {
-            if (target.getId() == "outer" && current.isBuiltIn() &&
+            if (target.getId() == 'outer' && current.isBuiltIn() &&
               current.getType() == GestureControl.GestureType.PAN_GESTURE) {
-              return GestureJudgeResult.CONTINUE
+              return GestureJudgeResult.CONTINUE;
             }
             for (let index = 0; index < touchRecognizers.length; index++) {
-              const element = touchRecognizers![index];
-              let touchTarget = element.getEventTargetInfo()
-              if (touchTarget && touchTarget.getId() == "inner") {
+              const element = touchRecognizers[index];
+              let touchTarget = element.getEventTargetInfo();
+              if (touchTarget && touchTarget.getId() == 'inner') {
                 this.willCancel = true;
                 element.cancelTouch();
               }
@@ -790,9 +796,9 @@ struct FatherControlChild {
       })
       .onTouch((event) => {
         if (event.type === TouchType.Down) {
-          this.outerState = "TOUCHING";
+          this.outerState = 'TOUCHING';
         } else if (event.type === TouchType.Up || event.type === TouchType.Cancel) {
-          this.outerState = "IDLE";
+          this.outerState = 'IDLE';
         }
       })
       .parallelGesture( // 绑定一个Pan手势作为动态控制器
@@ -807,23 +813,23 @@ struct FatherControlChild {
             if (target instanceof ScrollableTargetInfo && currentTarget instanceof ScrollableTargetInfo) {
               if (target.isEnd()) { // 在移动过程中实时根据当前组件状态，控制识别器的开闭状态
                 if ((event.offsetY - this.lastOffset) < 0) {
-                  this.childRecognizer.setEnabled(false)
+                  this.childRecognizer.setEnabled(false);
                   if (currentTarget.isEnd()) {
-                    this.currentRecognizer.setEnabled(false)
+                    this.currentRecognizer.setEnabled(false);
                   } else {
-                    this.currentRecognizer.setEnabled(true)
+                    this.currentRecognizer.setEnabled(true);
                   }
                 } else {
-                  this.childRecognizer.setEnabled(true)
-                  this.currentRecognizer.setEnabled(false)
+                  this.childRecognizer.setEnabled(true);
+                  this.currentRecognizer.setEnabled(false);
                 }
               } else if (target.isBegin()) {
                 if ((event.offsetY - this.lastOffset) > 0) {
-                  this.childRecognizer.setEnabled(false)
+                  this.childRecognizer.setEnabled(false);
                   if (currentTarget.isBegin()) {
-                    this.currentRecognizer.setEnabled(false)
+                    this.currentRecognizer.setEnabled(false);
                   } else {
-                    this.currentRecognizer.setEnabled(true)
+                    this.currentRecognizer.setEnabled(true);
                   }
                 } else {
                   this.childRecognizer.setEnabled(true)
@@ -834,21 +840,21 @@ struct FatherControlChild {
                 this.currentRecognizer.setEnabled(false)
               }
             }
-            this.lastOffset = event.offsetY
+            this.lastOffset = event.offsetY;
           })
       )
 
       Column() { // 外层状态显示
         Text(`outer: ${this.outerState}`)
           .fontSize(24)
-          .fontColor(this.outerState === "TOUCHING" ? Color.Green : Color.Gray)
+          .fontColor(this.outerState === 'TOUCHING' ? Color.Green : Color.Gray)
           .margin({ bottom: 10 })
         // 内层状态显示
-        Text(`inner: ${this.innerState === "TOUCHING" ? "TOUCHING" : this.innerState}`)
+        Text(`inner: ${this.innerState === 'TOUCHING' ? 'TOUCHING' : this.innerState}`)
           .fontSize(24)
           .fontColor(
-            this.innerState === "TOUCHING" ? Color.Blue :
-              this.innerState === "CANCELLED" ? Color.Red : Color.Gray
+            this.innerState === 'TOUCHING' ? Color.Blue :
+              this.innerState === 'CANCELLED' ? Color.Red : Color.Gray
           )
       }
       .width('90%')
@@ -926,7 +932,7 @@ struct TouchTestDoneExample {
         console.info(`event is ${JSON.stringify(event)}`);
         for (let i = 0; i < recognizers.length; i++) {
           let recognizer = recognizers[i];
-          console.info(`type is ${JSON.stringify(recognizer.getType())}`)
+          console.info(`type is ${JSON.stringify(recognizer.getType())}`);
           // 根据tag的值屏蔽不同的手势识别器
           if (recognizer.getTag() == this.tagList[this.tagId]) {
             recognizer.preventBegin();
@@ -980,7 +986,7 @@ struct Index {
             .width('30%')
             .height(40)
             .id('button1')
-            .onTouch((e?: TouchEvent) => {
+            .onTouch((touchEvent?: TouchEvent) => {
               this.backgroundColorButton1 = '#E5E5E5';
             })
             .backgroundColor(this.backgroundColorButton1)
@@ -989,11 +995,11 @@ struct Index {
             .width('30%')
             .height(40)
             .id('button2')
-            .onTouch((e?: TouchEvent) => {
+            .onTouch((touchEvent?: TouchEvent) => {
               this.backgroundColorButton2 = '#E5E5E5';
             })
-            .onClick((e?: ClickEvent) => {
-              console.info("button2 is clicked")
+            .onClick((clickEvent?: ClickEvent) => {
+              console.info('button2 is clicked');
             })
             .backgroundColor(this.backgroundColorButton2)
         }
@@ -1012,7 +1018,7 @@ struct Index {
           } else {
             for (let i = 0; i < touchRecognizers.length; i++) {
               let id = touchRecognizers[i].getEventTargetInfo().getId();
-              //当命中存在点击事件区域button2时，事件无需透传给Column
+              // 当命中存在点击事件区域button2时，事件无需透传给Column
               if (id == 'button2') {
                 return GestureCollectIntervention.DISCARD_LOWER;
               }
@@ -1155,7 +1161,7 @@ struct FatherControlChild {
     Stack({ alignContent: Alignment.TopStart }) {
       Scroll(this.scroller) { // 外部滚动容器
         Column() {
-          Text("Scroll Area")
+          Text('Scroll Area')
             .width('90%')
             .height(150)
             .backgroundColor(0xFFFFFF)
@@ -1165,7 +1171,7 @@ struct FatherControlChild {
             .margin({ top: 10 })
           Scroll(this.scroller2) { // 内部滚动容器
             Column() {
-              Text("Scroll Area2")
+              Text('Scroll Area2')
                 .width('90%')
                 .height(150)
                 .backgroundColor(0xFFFFFF)
@@ -1187,12 +1193,12 @@ struct FatherControlChild {
               }.width('100%')
             }
           }
-          .id("inner")
+          .id('inner')
           .width('100%')
           .height(800)
         }.width('100%')
       }
-      .id("outer")
+      .id('outer')
       .height(600)
       .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
       .scrollBar(BarState.On) // 滚动条常驻显示
@@ -1202,7 +1208,7 @@ struct FatherControlChild {
       .enableScrollInteraction(false)
       .gesture(
         PanGesture()
-          .onActionStart((event: GestureEvent) => {
+          .onActionStart(() => {
             this.lastOffset = this.scroller.currentOffset().yOffset; // 手势开始时，记录当前滚动位置
           })
           .onActionUpdate((event: GestureEvent) => {
@@ -1215,7 +1221,7 @@ struct FatherControlChild {
         for (let i = 0; i < others.length; i++) {
           let target = others[i].getEventTargetInfo();
           if (target) {
-            if (target.getId() == "inner" && others[i].isBuiltIn() &&
+            if (target.getId() == 'inner' && others[i].isBuiltIn() &&
               others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
               this.currentRecognizer = current; // 保存当前组件的识别器
               this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
@@ -1230,12 +1236,12 @@ struct FatherControlChild {
         if (current) {
           let target = current.getEventTargetInfo();
           if (target) {
-            if (target.getId() == "outer" &&
+            if (target.getId() == 'outer' &&
               current.getType() == GestureControl.GestureType.PAN_GESTURE) {
               if (others) {
                 for (let i = 0; i < others.length; i++) {
                   let target = others[i].getEventTargetInfo() as ScrollableTargetInfo;
-                  if (target instanceof ScrollableTargetInfo && target.getId() == "inner") { // 找到响应链上对应并行的识别器
+                  if (target instanceof ScrollableTargetInfo && target.getId() == 'inner') { // 找到响应链上对应并行的识别器
                     let panEvent = event as PanGestureEvent;
                     if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
                       if (panEvent && panEvent.offsetY < 0) {

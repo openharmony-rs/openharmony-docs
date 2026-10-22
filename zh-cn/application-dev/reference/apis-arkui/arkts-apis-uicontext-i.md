@@ -1,10 +1,13 @@
 # Interfaces (其他)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin; @liyi0903; @huangxiaolinabc-->
+<!--Owner: @zhou-chaobo; @liyi0903; @huangxiaolinabc-->
 <!--Designer: @piggyguy; @liyi0903; @fangzhiyuan1-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+
+本文汇总ArkUI UIContext相关的其他接口，用于描述组件目标节点、页面信息、OverlayManager初始化参数、手势触发信息及Swiper内容区信息等。
 
 > **说明：**
 >
@@ -81,7 +84,7 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 
 ## GestureObserverConfigs<sup>20+</sup>
 
-该参数用于指定需要监听的手势回调阶段（传入空数组将无效），仅当手势触发指定阶段时才会发送通知。
+该参数用于指定需要监听的手势回调阶段（传入空数组时不监听任何手势回调阶段），仅当手势触发指定阶段时才会发送通知。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -93,7 +96,7 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 
 | 名称   | 类型   | 只读  |  可选       |说明       |
 | ------ | ---- | ---------- |---------- |---------- |
-|  actionPhases | Array\<[GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20)\>    |否  |  否       |手势事件对象。 |
+| actionPhases | Array\<[GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20)\> | 否 | 否 | 需要监听的手势回调阶段。传入空数组时不监听任何手势回调阶段，仅当手势触发指定阶段时才会发送通知。 |
 
 ## SwiperContentInfo<sup>22+</sup>
 

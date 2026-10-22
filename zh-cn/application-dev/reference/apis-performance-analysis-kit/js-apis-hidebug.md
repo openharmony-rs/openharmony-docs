@@ -404,11 +404,17 @@ try {
 }
 ```
 
-## hidebug.dumpJsHeapData<sup>9+</sup>
+## hidebug.dumpJsHeapData<sup>(deprecated)</sup>
 
 dumpJsHeapData(filename: string): void
 
 虚拟机堆数据转储。
+
+**起始版本：** 9
+
+**废弃版本：** 26.2.0
+
+**替代接口：** [hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)
 
 > **注意**：
 >
@@ -447,11 +453,17 @@ try {
 }
 ```
 
-## hidebug.dumpJsHeapData<sup>24+</sup>
+## hidebug.dumpJsHeapData<sup>(deprecated)</sup>
 
 dumpJsHeapData(filename: string, needClean: boolean): void
 
 虚拟机堆数据转储，支持清除nodeId缓存。
+
+**起始版本：** 24
+
+**废弃版本：** 26.2.0
+
+**替代接口：** [hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata24)
 
 > **注意**：
 >
@@ -555,7 +567,7 @@ dumpHeapData(filename: string): void
 
 > **说明**：
 > 
-> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9)替代。
+> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)替代。
 
 虚拟机堆数据转储，生成`filename.heapsnapshot`文件。
 

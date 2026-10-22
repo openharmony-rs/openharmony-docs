@@ -267,6 +267,32 @@ attributeModifier(modifier: AttributeModifier\<CalendarPickerAttribute> | Attrib
 | ----- | ---------- | ---- | ----------------------- |
 | modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CalendarPickerAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是    | 设置属性修改器。CommonMethod表示[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)。<br/>CalendarPickerAttribute表示当前组件的[属性](#属性)和[事件](#事件)。 |
 
+### firstDayOfWeek
+
+ArkTS-Dyn: firstDayOfWeek(value: CalendarFirstDayOfWeek)
+
+ArkTS-Sta: firstDayOfWeek(value: CalendarFirstDayOfWeek | undefined)
+
+设置日历选择器每周的起始日。未通过该接口设置时，默认为CalendarFirstDayOfWeek.LOCAL（跟随系统区域变化）。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| value | ArkTS-Dyn: [CalendarFirstDayOfWeek](#calendarfirstdayofweek) <br> ArkTS-Sta: [CalendarFirstDayOfWeek](#calendarfirstdayofweek) \| undefined | 是 | 设置日历选择器每周的起始日。<br>取值为undefined时，按默认值处理。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)，还支持以下事件：
@@ -401,6 +427,33 @@ onChange(callback: Callback\<Date> | undefined)
 | START  | 0 | 设置选择器与入口组件的对齐方式为左对齐。   |
 | CENTER | 1 | 设置选择器与入口组件的对齐方式为居中对齐。 |
 | END    | 2 | 设置选择器与入口组件的对齐方式为右对齐。   |
+
+## CalendarFirstDayOfWeek
+
+日历选择器每周起始日的枚举类型。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+| 名称   | 值 | 说明                     |
+| ------ | - | ------------------------ |
+| LOCAL  | 0 | 跟随系统区域变化。       |
+| MON    | 1 | 周一。                   |
+| TUE    | 2 | 周二。                   |
+| WED    | 3 | 周三。                   |
+| THU    | 4 | 周四。                   |
+| FRI    | 5 | 周五。                   |
+| SAT    | 6 | 周六。                   |
+| SUN    | 7 | 周日。                   |
 
 ##  DateRange<sup>19+</sup>对象说明
 
@@ -568,3 +621,82 @@ struct CalendarPickerExample {
 ```
 
 ![CalendarPicker](figures/CalendarPickerDemo4.png)
+
+### 示例5（设置每周起始日）
+
+该示例通过firstDayOfWeek设置日历选择器每周的起始日为周一。
+
+从API版本26.2.0开始，新增了[firstDayOfWeek](#firstdayofweek)接口。
+
+ArkTS-Dyn示例：
+
+```ts
+// CalendarPickerExampleDyn.ets
+@Entry
+@Component
+struct CalendarPickerExample {
+  private selectedDate: Date = new Date('2025-01-15');
+
+  build() {
+    Column() {
+      Column() {
+        Text('日历日期选择器').fontSize(30)
+        CalendarPicker({ hintRadius: 10, selected: this.selectedDate })
+          .edgeAlign(CalendarAlign.CENTER)
+          .firstDayOfWeek(CalendarFirstDayOfWeek.MON)
+          .textStyle({ color: '#ff182431', font: { size: 20, weight: FontWeight.Normal } })
+          .margin(10)
+          .onChange((value) => {
+            console.info(`CalendarPicker onChange: ${value.toString()}`);
+          })
+      }.alignItems(HorizontalAlign.Center).width("100%")
+    }
+    .width('100%')
+    .margin({ top: 100 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// CalendarPickerExampleSta.ets
+
+import {
+  CalendarAlign,
+  CalendarFirstDayOfWeek,
+  CalendarPicker,
+  Column,
+  Component,
+  Entry,
+  FontWeight,
+  HorizontalAlign,
+  Text
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CalendarPickerExample {
+  private selectedDate: Date = new Date('2025-01-15');
+
+  build() {
+    Column() {
+      Column() {
+        Text('日历日期选择器').fontSize(30)
+        CalendarPicker({ hintRadius: 10, selected: this.selectedDate })
+          .edgeAlign(CalendarAlign.CENTER)
+          .firstDayOfWeek(CalendarFirstDayOfWeek.MON)
+          .textStyle({ color: '#ff182431', font: { size: 20, weight: FontWeight.Normal } })
+          .margin(10)
+          .onChange((value) => {
+            console.info(`CalendarPicker onChange: ${value.toString()}`);
+          })
+      }.alignItems(HorizontalAlign.Center).width("100%")
+    }
+    .width('100%')
+    .margin({ top: 100 })
+  }
+}
+```
+
+![CalendarPicker](figures/calendar-picker-first-day-of-week.png)

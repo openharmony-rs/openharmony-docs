@@ -1,12 +1,12 @@
 # Class (CursorController)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供光标样式设置的能力。
+提供鼠标光标样式设置的能力，支持恢复默认鼠标光标样式、设置系统鼠标光标样式以及设置自定义鼠标光标样式，适用于需要根据界面交互状态动态调整鼠标光标显示效果的场景，有助于提升界面交互提示的清晰度。
 
 > **说明：**
 >
@@ -26,6 +26,12 @@ restoreDefault(): void
 
 恢复默认的光标样式。
 
+> **说明：**
+>
+> 该接口调用后不会立即生效，而是在下一帧改变鼠标光标样式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -40,22 +46,22 @@ restoreDefault(): void
 
 ```ts
 import { pointer } from '@kit.InputKit';
-import { UIContext, CursorController } from '@kit.ArkUI';
+import { CursorController } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct CursorControlExample {
-  cursorCustom: CursorController = this.getUIContext().getCursorController();
+  cursorController: CursorController = this.getUIContext().getCursorController();
 
   build() {
     Column() {
-      Row().height(200).width(200).backgroundColor(Color.Green).position({x: 150 ,y:70})
-        .onHover((flag) => {
-          if (flag) {
-            this.cursorCustom.setCursor(pointer.PointerStyle.EAST);
+      Row().height(200).width(200).backgroundColor(Color.Green).position({x: 150, y:70})
+        .onHover((isHover) => {
+          if (isHover) {
+            this.cursorController.setCursor(pointer.PointerStyle.EAST);
           } else {
-            console.info("restoreDefault");
-            this.cursorCustom.restoreDefault();
+            console.info('restoreDefault');
+            this.cursorController.restoreDefault();
           }
         })
     }.width('100%')
@@ -68,7 +74,7 @@ struct CursorControlExample {
 
 setCursor(value: PointerStyle): void
 
-设置当前的鼠标光标样式。
+更改当前的鼠标光标样式。
 
 > **说明：**
 >
@@ -78,6 +84,8 @@ setCursor(value: PointerStyle): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -86,27 +94,26 @@ setCursor(value: PointerStyle): void
 
 | 参数名     | 类型                                       | 必填   | 说明      |
 | ------- | ---------------------------------------- | ---- | ------- |
-| value | [PointerStyle](arkts-apis-uicontext-t.md#pointerstyle) | 是    | 光标样式。 |
+| value | [PointerStyle](arkts-apis-uicontext-t.md#pointerstyle) | 是    | 鼠标光标样式，指定要设置的系统预定义光标类型（如箭头、手型指针、十字准星等），各样式含义详见PointerStyle枚举说明。 |
 
 **示例：**
 
-当光标进入蓝框时，通过CursorController的setCursor方法修改光标样式为PointerStyle.WEST。
+当光标进入蓝色框时，通过CursorController的setCursor方法修改光标样式为PointerStyle.WEST。
 
 ```ts
 import { pointer } from '@kit.InputKit';
-import { UIContext, CursorController } from '@kit.ArkUI';
+import { CursorController } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct CursorControlExample {
-  @State text: string = '';
   cursorCustom: CursorController = this.getUIContext().getCursorController();
 
   build() {
     Column() {
-      Row().height(200).width(200).backgroundColor(Color.Blue).position({x: 100 ,y:70})
-        .onHover((flag) => {
-          if (flag) {
+      Row().height(200).width(200).backgroundColor(Color.Blue).position({x: 100, y:70})
+        .onHover((isHover) => {
+          if (isHover) {
             this.cursorCustom.setCursor(pointer.PointerStyle.WEST);
           } else {
             this.cursorCustom.restoreDefault();
@@ -169,7 +176,7 @@ struct CustomCursorExample {
 
   async loadPixelMapFromRawFile(): Promise<void> {
     try {
-      // 1.获取资源管理器，添加空值检查
+      // 1. 获取资源管理器，添加空值检查
       const uiContext = this.getUIContext();
       if (!uiContext) {
         console.error('UIContext is undefined');
@@ -180,13 +187,13 @@ struct CustomCursorExample {
         console.error('HostContext is undefined');
         return;
       }
-      const resourceMgr = context.resourceManager;
-      if (!resourceMgr) {
+      const resourceManager = context.resourceManager;
+      if (!resourceManager) {
         console.error('ResourceManager is undefined');
         return;
       }
       // 2.读取rawfile中的图片文件
-      const fileData: Uint8Array = await resourceMgr.getRawFileContent('cursor.png');
+      const fileData: Uint8Array = await resourceManager.getRawFileContent('cursor.png');
       const buffer = fileData.buffer.slice(0);
       // 3.创建ImageSource
       const imageSource = image.createImageSource(buffer);
@@ -277,32 +284,35 @@ struct CustomCursorExample {
         console.error('HostContext is undefined');
         return;
       }
-      const resourceMgr = context.resourceManager;
-      if (!resourceMgr) {
+      const resourceManager = context.resourceManager;
+      if (!resourceManager) {
         console.error('ResourceManager is undefined');
         return;
       }
-      // 2.读取rawfile中的图片文件
-      const fileData: Uint8Array = await resourceMgr.getRawFileContent('cursor.png');
+      // 2. 读取rawfile中的图片文件
+      const fileData: Uint8Array = await resourceManager.getRawFileContent('cursor.png');
       const buffer = fileData.buffer.slice(0);
-      // 3.创建ImageSource
+      // 3. 创建ImageSource
       const imageSource = image.createImageSource(buffer);
-      // 4.创建PixelMap（可以指定期望的尺寸）
+      // 4. 创建PixelMap（可以指定期望的尺寸）
       const pixelMap = await imageSource?.createPixelMap({
         desiredSize: { width: 32, height: 32 }
       });
+      if (this.pixelMap !== undefined) {
+        this.pixelMap.release();
+      }
       this.pixelMap = pixelMap;
       console.info('Custom cursor loaded successfully');
     } catch (error) {
       let err = error as BusinessError;
-      console.error(`Failed to load cursor: ${err.code}, ${err.message}`);
+      console.error(`Failed to load cursor. Code: ${err.code}, message: ${err.message}`);
     }
   }
 
   build() {
     Column() {
       Button('load image')
-        .width("40%")
+        .width('40%')
         .height('7%')
         .fontSize('30vp')
         .margin(70)

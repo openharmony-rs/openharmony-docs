@@ -574,7 +574,7 @@ onDataChange(uri: string, callback: Callback&lt;void&gt;): void
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -624,7 +624,7 @@ on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallb
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
@@ -677,7 +677,7 @@ onDataChange(type:SubscriptionType, uri: string, callback: Callback&lt;ChangeInf
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -765,7 +765,7 @@ offDataChange(uri: string, callback?: Callback&lt;void&gt;): void
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -811,7 +811,7 @@ off(event: 'dataChange', type:SubscriptionType, uri: string, callback?: AsyncCal
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
@@ -859,7 +859,7 @@ offDataChange(type:SubscriptionType, uri: string, callback?: Callback&lt;ChangeI
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -1083,7 +1083,7 @@ onRdbDataChange(uris: Array&lt;string&gt;, templateId: TemplateId, callback: Cal
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -1192,7 +1192,7 @@ offRdbDataChange(uris: Array&lt;string&gt;, templateId: TemplateId, callback?: C
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -1303,7 +1303,7 @@ onPublishedDataChange(uris: Array&lt;string&gt;, subscriberId: string, callback:
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -1417,7 +1417,7 @@ offPublishedDataChange(uris: Array&lt;string&gt;, subscriberId: string, callback
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -2434,7 +2434,7 @@ ArkTS-Sta: batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt
 
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------ |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700000 | Inner error. Possible causes: 1.The internal status is abnormal; 2.The interface is incorrectly used; 3.Permission configuration error; 4.A system error. |
 | 15700013 | The DataShareHelper instance is already closed.|
@@ -3017,7 +3017,7 @@ notifyChange(data: ChangeInfo): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700013 | The DataShareHelper instance is already closed.|
 

@@ -38,8 +38,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Dyn示例：
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
@@ -53,7 +52,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 需根据实际业务需求配置[文档选择选项](../reference/apis-core-file-kit/js-apis-file-picker.md#documentselectoptions)。以下代码仅例举各选项的配置参考。
+2. 需根据实际业务需求配置[文档选择选项](../reference/apis-core-file-kit/js-apis-file-picker.md#documentselectoptions)。以下代码仅列举各选项的配置参考。
 
    ArkTS-Dyn示例：
 
@@ -173,8 +172,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ArkTS-Dyn示例：
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```

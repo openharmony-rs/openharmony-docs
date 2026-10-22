@@ -1,4 +1,10 @@
 # UI显示异常调试
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @caoruihong-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本章节主要介绍UI显示异常问题的调试方法，并结合案例讲解具体的解决步骤。
 
@@ -101,9 +107,6 @@ struct Page {
       this.msg = `${this.componentId}: ` + this.getRectInfo(this.componentId) + `, pivot: {x: ${this.pivotX}, y: ${this.pivotY}}`;
       this.flag = true;
     }
-  }
-
-  onDidBuild(): void {
   }
 
   build() {

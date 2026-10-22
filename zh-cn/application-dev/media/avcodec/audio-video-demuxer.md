@@ -95,7 +95,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
    // 为自定义数据源创建 source 资源实例（可选）。使用该方式前，需要先实现AVSourceReadAt接口函数实现。
    // 当使用OH_AVSource_CreateWithDataSource时需要补充g_filePath。
-   // g_filePath = filePath ;
+   // g_filePath = filePath;
    // OH_AVDataSource dataSource = {fileSize, AVSourceReadAt};
    // OH_AVSource *source = OH_AVSource_CreateWithDataSource(&dataSource);
    ```
@@ -176,7 +176,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
 
    Demuxer_MediaKeySystemInfoCallback callback = &OnDrmInfoChangedWithObj;
-   Drm_ErrCode ret = OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(demuxer, callback);
+   OH_AVErrCode ret = OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(demuxer, callback);
    ```
    在监听到DRM信息后，也可主动调用获取DRM信息(uuid及对应pssh)接口。
 

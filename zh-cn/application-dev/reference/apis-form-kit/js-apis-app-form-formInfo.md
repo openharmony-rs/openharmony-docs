@@ -264,7 +264,7 @@ import { formInfo } from '@kit.FormKit';
 | 名称 | 类型 | 只读 | 可选  | 说明                              |
 |-----|-----|------|-----|---------------------------------|
 | area     | [Rect](#rect20) | 否 | 否   | 描述互动卡片动效区域范围，以卡片左上角为原点。|
-| duration | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否   | 互动卡片动效持续时长，单位ms。取值为大于0的整数，<!--Del-->针对三方应用，<!--DelEnd-->取值要求不大于3500<!--Del-->，系统应用无此限制<!--DelEnd-->。|
+| duration | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否   | 互动卡片动效持续时长，单位ms。取值为大于等于0的整数，<!--Del-->针对三方应用，<!--DelEnd-->取值要求不大于3500<!--Del-->，系统应用无此限制<!--DelEnd-->。|
 | useDefaultAnimation | boolean | 否 | 是   | 互动卡片状态切换时是否启动系统提供的默认动效，默认为true。<br/>-&nbsp;true：表示系统提供默认切换动效。<br/>-&nbsp;false：表示系统不提供切换动效，画面直接切换，适合切换时非激活态和激活态UI完全一致的场景。|
 
 ## Rect<sup>20+</sup>
@@ -281,10 +281,10 @@ import { formInfo } from '@kit.FormKit';
 
 | 名称 | 类型 | 只读 | 可选  | 说明 |
 |-----|-----|------|-----|-------|
-| left   | ArkTS-Dyn: number  <br> ArkTS-Sta: double| 否 | 否   | 描述矩形的左上角顶点的 x 坐标，单位：vp，用于定位卡片区域的位置。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-overview.md#请求参数约束)。|
-| top    | ArkTS-Dyn: number  <br> ArkTS-Sta: double| 否 | 否   | 描述矩形的左上角顶点的 y 坐标，单位：vp，用于定位卡片区域的位置。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-overview.md#请求参数约束)。|
-| width  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否   | 描述矩形的宽度，单位：vp，用于定义卡片区域的尺寸。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-overview.md#请求参数约束)。|
-| height | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否   | 描述矩形的高度，单位：vp，用于定义卡片区域的尺寸。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-overview.md#请求参数约束)。|
+| left   | ArkTS-Dyn: number  <br> ArkTS-Sta: double| 否 | 否   | 描述矩形的左上角顶点的 x 坐标，单位：vp，用于定位卡片区域的位置。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-development.md#请求参数约束)。|
+| top    | ArkTS-Dyn: number  <br> ArkTS-Sta: double| 否 | 否   | 描述矩形的左上角顶点的 y 坐标，单位：vp，用于定位卡片区域的位置。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-development.md#请求参数约束)。|
+| width  | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否   | 描述矩形的宽度，单位：vp，用于定义卡片区域的尺寸。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-development.md#请求参数约束)。|
+| height | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否   | 描述矩形的高度，单位：vp，用于定义卡片区域的尺寸。范围参考[请求参数约束](../../form/arkts-ui-liveform-sceneanimation-development.md#请求参数约束)。|
 
 ## FormLocation<sup>20+</sup>
 

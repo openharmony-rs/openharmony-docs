@@ -1,7 +1,7 @@
 # 自定义手势判定
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -72,40 +72,40 @@ struct Index {
     .height(200)
     .borderWidth(2)
     .onDragStart(() => {
-      this.message = 'drag'
-      console.info("Drag start.")
+      this.message = 'drag';
+      console.info('Drag start.');
     })
     .gesture(
       TapGesture()
-        .tag("tap1")// 设置点击手势标志
+        .tag('tap1') // 设置点击手势标志
         .onAction(() => {
-          this.message = 'tap1'
+          this.message = 'tap1';
         })
     )
     .gesture(
       LongPressGesture()
-        .tag("longPress1")// 设置长按手势标志
+        .tag('longPress1') // 设置长按手势标志
         .onAction(() => {
-          this.message = 'longPress'
+          this.message = 'longPress';
         })
     )
     .gesture(
       SwipeGesture()
-        .tag("swipe1")// 设置快滑手势标志
+        .tag('swipe1') // 设置快滑手势标志
         .onAction(() => {
-          this.message = 'swipe1'
+          this.message = 'swipe1';
         })
     )
     .gesture(
       PanGesture()
-        .tag("pan1")// 设置滑动手势标志
+        .tag('pan1') // 设置滑动手势标志
         .onActionStart(() => {
-          this.message = 'pan1'
+          this.message = 'pan1';
         })
     )
     .gesture(
       PinchGesture()
-        .tag("pinch1")// 设置捏合手势标志
+        .tag('pinch1') // 设置捏合手势标志
         .onActionStart(() => {
           this.message = 'pinch1'
         })
@@ -114,22 +114,22 @@ struct Index {
       // 若该手势类型为长按手势，转换为长按手势事件
       if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
         let longPressEvent = event as LongPressGestureEvent;
-        console.info(`repeat ${longPressEvent.repeat}`)
+        console.info(`repeat ${longPressEvent.repeat}`);
       }
       // 若该手势类型为快滑手势，转换为快滑手势事件
       if (gestureInfo.type == GestureControl.GestureType.SWIPE_GESTURE) {
         let swipeEvent = event as SwipeGestureEvent;
-        console.info(`angle ${swipeEvent.angle}`)
+        console.info(`angle ${swipeEvent.angle}`);
       }
       // 若该手势类型为滑动手势，转换为滑动手势事件
       if (gestureInfo.type == GestureControl.GestureType.PAN_GESTURE) {
         let panEvent = event as PanGestureEvent;
-        console.info(`velocity ${panEvent.velocity}`)
+        console.info(`velocity ${panEvent.velocity}`);
       }
       // 若该手势类型为捏合手势，转换为捏合手势事件
       if (gestureInfo.type == GestureControl.GestureType.PINCH_GESTURE) {
         let pinchEvent = event as PinchGestureEvent;
-        console.info(`axisPinch ${pinchEvent.axisPinch}`)
+        console.info(`axisPinch ${pinchEvent.axisPinch}`);
       }
       // 自定义判定标准
       if (gestureInfo.type == GestureControl.GestureType.DRAG) {
@@ -163,7 +163,7 @@ struct Index {
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
-        Text("Drag 上下两层 上层绑定长按，下层绑定拖拽。先长按后平移上半区红色区域只会响应长按，先长按后平移下半区蓝色区域只会响应拖拽")
+        Text('Drag 上下两层 上层绑定长按，下层绑定拖拽。先长按后平移上半区红色区域只会响应长按，先长按后平移下半区蓝色区域只会响应拖拽')
           .width('100%')
           .fontSize(20)
           .fontColor('#ffdd00')
@@ -179,7 +179,7 @@ struct Index {
           Image($r('sys.media.ohos_app_icon'))
             .draggable(true)
             .onDragStart(() => {
-              this.promptAction.showToast({ message: "Drag 下半区蓝色区域，Image响应" })
+              this.promptAction.showToast({ message: 'Drag 下半区蓝色区域，Image响应' });
             })
             .width('200').height('200')
           // Stack的上半区是绑定了长按手势的浮动区域
@@ -191,11 +191,11 @@ struct Index {
           .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
             // 确定gestureInfo的tag标志是否有值
             if (gestureInfo.tag) {
-              console.info(`gestureInfo tag ${gestureInfo.tag.toString()}`)
+              console.info(`gestureInfo tag ${gestureInfo.tag.toString()}`);
             }
             console.info(`gestureInfo Type ${gestureInfo.type.toString()}`);
             console.info(`isSystemGesture ${gestureInfo.isSystemGesture}`);
-            console.info(`zqs pressure ${event.pressure}\nfingerList.length ${event.fingerList.length}\ntimeStamp ${event.timestamp}\nsourceType ${event.source.toString()}\n` +
+            console.info(`pressure ${event.pressure}\nfingerList.length ${event.fingerList.length}\ntimeStamp ${event.timestamp}\nsourceType ${event.source.toString()}\n` +
               `tiltX ${event.tiltX}\ntiltY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourceTool ${event.sourceTool.toString()}`);
             // 如果是长按类型手势，判断点击的位置是否在上半区
             if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
@@ -210,9 +210,9 @@ struct Index {
           .gesture(GestureGroup(GestureMode.Parallel,
             LongPressGesture()
               .onAction((event: GestureEvent) => {
-                this.promptAction.showToast({ message: "LongPressGesture 长按上半区 红色区域，红色区域响应" })
+                this.promptAction.showToast({ message: 'LongPressGesture 长按上半区 红色区域，红色区域响应' });
               })
-              .tag("tap111")
+              .tag('tap111')
           ))
 
         }.width('100%')
@@ -244,7 +244,7 @@ struct GestureDetectorExample {
           .fontSize(20)
           .fontWeight(FontWeight.Bold)
 
-        Text(`触点数量: ${this.fingerCount}`)
+        Text(`触点数量：${this.fingerCount}`)
           .fontSize(16)
           .margin({ top: 8 })
 
@@ -266,35 +266,36 @@ struct GestureDetectorExample {
           GestureGroup(GestureMode.Exclusive,
             TapGesture()
               .onAction(() => {
-                this.message = '单击事件'
+                this.message = '单击事件';
               }),
             LongPressGesture()
               .onAction(() => {
-                this.message = '长按事件'
+                this.message = '长按事件';
               }),
             PanGesture()
               .onActionStart(() => {
-                this.message = '拖动开始'
+                this.message = '拖动开始';
               })
               .onActionUpdate(() => {
-                this.message = '拖动中...'
+                this.message = '拖动中...';
               })
               .onActionEnd(() => {
-                this.message = '拖动结束'
-                this.fingerCount = 0
-                this.fingerDetails = ''
+                this.message = '拖动结束';
+                this.fingerCount = 0;
+                this.fingerDetails = '';
               })
           )
         )
-        .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
+        .onGestureJudgeBegin((_gestureInfo: GestureInfo, event: BaseGestureEvent) => {
           // 获取 fingerInfos 信息
           if (event?.fingerInfos) {
-            this.fingerCount = event.fingerInfos.length
+            this.fingerCount = event.fingerInfos.length;
             this.fingerDetails = event.fingerInfos.map(finger =>
             `ID：${finger.id}: (${finger.localX.toFixed(1)}, ${finger.localY.toFixed(1)})`
-            ).join('\n')
-            console.info(`触点信息：${JSON.stringify(event.fingerInfos)}`)
+            ).join('\n');
+            console.info(`触点信息：${JSON.stringify(event.fingerInfos)}`);
           }
+          // 当触点数量超过2个时，拒绝当前手势。
           if (this.fingerCount > 2) {
             return GestureJudgeResult.REJECT
           }

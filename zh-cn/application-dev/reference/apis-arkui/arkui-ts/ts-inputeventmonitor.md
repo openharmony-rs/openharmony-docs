@@ -1,12 +1,12 @@
 # 全局基础输入事件监听
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-监听基础输入事件，在[UIContext](../arkts-apis-uicontext-uicontext.md)进行事件分发前统一拦截和过滤输入事件，使用示例请参考[addLocalInputEventMonitor](../arkts-apis-uicontext-uicontext.md#addlocalinputeventmonitor)。
+监听基础输入事件，在[UIContext](../arkts-apis-uicontext-uicontext.md)进行事件分发前统一拦截和过滤输入事件，适用于全局快捷键处理、输入安全过滤、特定页面统一屏蔽鼠标、触摸或按键输入等需要在事件到达组件前进行统一管控的场景，使用示例请参考[addLocalInputEventMonitor](../arkts-apis-uicontext-uicontext.md#addlocalinputeventmonitor)。
 
 **起始版本：** 26.0.0
 
@@ -20,7 +20,7 @@
 >
 > - 对象为空对象，不包含任何可访问的成员。
 > - 开发者无法主动构造此对象，只能通过[addLocalInputEventMonitor](../arkts-apis-uicontext-uicontext.md#addlocalinputeventmonitor)接口注册获取。
-> - 用于后续解除注册时验证身份。
+> - 用于后续调用[removeLocalInputEventMonitor](../arkts-apis-uicontext-uicontext.md#removelocalinputeventmonitor)解除注册时验证身份。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -44,7 +44,7 @@ type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptRe
 > - 系统会在事件触发时自动创建实例并通过此参数传递给回调函数。
 > - 当前回调参数event仅会封装以下原始输入事件类型：[MouseEvent](ts-universal-mouse-key.md#mouseevent对象说明)、[TouchEvent](ts-universal-events-touch.md#touchevent对象说明)、[KeyEvent](ts-universal-events-key.md#keyevent对象说明)。开发者可通过[asMouseEvent](#asmouseevent)、[asTouchEvent](#astouchevent)、[asKeyEvent](#askeyevent)获取对应事件对象。
 > - 请勿在回调中执行耗时操作（如复杂计算或网络请求），否则可能导致应用卡顿。
-> - 监听器在UI线程中同步执行会直接阻塞事件处理流程。建议只进行简单的判断和计算。
+> - 监听器在UI线程中同步执行会直接阻塞事件处理流程。建议仅执行不会阻塞UI线程的本地条件判断和简单计算。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -84,7 +84,7 @@ type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptRe
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | ---- |
-| action | [InputEventInterceptAction](ts-appendix-enums.md#inputeventinterceptaction) | 否 | 否 | 输入事件拦截动作。<br/>CONTINUE：允许事件继续传递到UI框架。<br/>BLOCK：阻止事件传递到UI框架。 |
+| action | [InputEventInterceptAction](ts-appendix-enums.md#inputeventinterceptaction) | 否 | 否 | 输入事件拦截动作。<br>CONTINUE：允许事件继续传递到UI框架。<br>BLOCK：阻止事件传递到UI框架。 |
 
 ## RawInputEventWrapper
 
@@ -192,7 +192,7 @@ isKeyEvent(): boolean
 
 ### asMouseEvent
 
-asMouseEvent(): MouseEvent | null
+asMouseEvent(): MouseEvent \| null
 
 获取鼠标事件。
 
@@ -210,11 +210,11 @@ asMouseEvent(): MouseEvent | null
 
 | 类型 | 说明 |
 | -------- | ---- |
-| [MouseEvent](ts-universal-mouse-key.md#mouseevent对象说明) \| null | 获取鼠标事件，如果是鼠标事件则返回事件对象，否则返回null。 |
+| [MouseEvent](ts-universal-mouse-key.md#mouseevent对象说明) \| null | 获取鼠标事件，如果是鼠标事件则返回事件对象，否则返回null。由于监听器在事件派发给具体组件之前执行，返回的MouseEvent中触发对象target、相对于组件的坐标x和y等字段无法提供有效值。 |
 
 ### asTouchEvent
 
-asTouchEvent(): TouchEvent | null
+asTouchEvent(): TouchEvent \| null
 
 获取触摸事件。
 
@@ -232,11 +232,11 @@ asTouchEvent(): TouchEvent | null
 
 | 类型 | 说明 |
 | -------- | ---- |
-| [TouchEvent](ts-universal-events-touch.md#touchevent对象说明) \| null | 获取触摸事件，如果是触摸事件则返回事件对象，否则返回null。 |
+| [TouchEvent](ts-universal-events-touch.md#touchevent对象说明) \| null | 获取触摸事件，如果是触摸事件则返回事件对象，否则返回null。由于监听器在事件派发给具体组件之前执行，返回的TouchEvent中getCurrentLocalPosition、stopPropagation、preventDefault和getHistoricalPoints等方法无法提供有效值。 |
 
 ### asKeyEvent
 
-asKeyEvent(): KeyEvent | null
+asKeyEvent(): KeyEvent \| null
 
 获取按键事件。
 
@@ -254,4 +254,4 @@ asKeyEvent(): KeyEvent | null
 
 | 类型 | 说明 |
 | -------- | ---- |
-| [KeyEvent](ts-universal-events-key.md#keyevent对象说明) \| null | 获取按键事件，如果是按键事件则返回事件对象，否则返回null。 |
+| [KeyEvent](ts-universal-events-key.md#keyevent对象说明) \| null | 获取按键事件，如果是按键事件则返回事件对象，否则返回null。由于监听器在事件派发给具体组件之前执行，返回的KeyEvent中metaKey属性和getModifierKeyState方法无法提供有效值。 |

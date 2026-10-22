@@ -1,7 +1,7 @@
 # 挂载卸载事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -190,7 +190,7 @@ struct AppearExample {
 }
 ```
 
-![onDisAppear](figures/onDisAppear.gif)
+![attach_and_detach](figures/onDisAppear.gif)
 
 ### 示例2（onAppear和onDisAppear事件）
 

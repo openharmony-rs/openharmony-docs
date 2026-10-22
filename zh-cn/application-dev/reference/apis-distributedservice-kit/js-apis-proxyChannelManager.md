@@ -86,7 +86,7 @@ ArkTS-Sta: openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;int&
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 801      | Capability not supported because bluetooth proxy function has been trimmed.<br>适用版本：26.0.0+ |
 | 32390001      | BR is disabled.|
 | 32390002 | Device not paired.  |
@@ -204,7 +204,7 @@ ArkTS-Sta: closeProxyChannel(channelId:&nbsp;int):&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 801      | Capability not supported because bluetooth proxy function has been trimmed.<br>适用版本：26.0.0+ |
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
@@ -270,7 +270,7 @@ ArkTS-Sta: sendData(channelId:&nbsp;int, data:&nbsp;ArrayBuffer):&nbsp;Promise&l
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| &nbsp;Promise&lt;void&gt; | 无返回值的Promise对象。数据发送成功时resolve，发送失败时reject并返回错误信息。 |
+| &nbsp;Promise&lt;void&gt; | 无返回值的Promise对象。 |
 
 **错误码：**
 
@@ -278,7 +278,7 @@ ArkTS-Sta: sendData(channelId:&nbsp;int, data:&nbsp;ArrayBuffer):&nbsp;Promise&l
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 801      | Capability not supported because bluetooth proxy function has been trimmed.<br>适用版本：26.0.0+ |
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
@@ -353,7 +353,7 @@ on(type:&nbsp;'receiveData', channelId:&nbsp;number, callback:&nbsp;Callback&lt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -421,7 +421,7 @@ off(type:&nbsp;'receiveData', channelId:&nbsp;number, callback?:&nbsp;Callback&l
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -486,7 +486,7 @@ onReceiveData(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;DataInfo&gt;):&nb
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -554,7 +554,7 @@ offReceiveData(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;DataInfo&gt;):&n
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -621,7 +621,7 @@ on(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback:&nbsp;Callb
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -689,7 +689,7 @@ off(type:&nbsp;'channelStateChange', channelId:&nbsp;number, callback?:&nbsp;Cal
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -755,7 +755,7 @@ onChannelStateChange(channelId:&nbsp;int, callback:&nbsp;Callback&lt;ChannelStat
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|
@@ -824,7 +824,7 @@ offChannelStateChange(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;ChannelSt
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390004 | ChannelId is invalid or unavailable.|
 | 32390006 | Parameter error.|
 | 32390100 | Internal error.|

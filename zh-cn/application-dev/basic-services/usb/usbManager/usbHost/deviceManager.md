@@ -73,9 +73,9 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
    
    ``` TypeScript
    // 导入usbManager模块
-   import { usbManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { usbManager, BusinessError } from '@kit.BasicServicesKit';
    import { JSON } from '@kit.ArkTS';
+   
    ```
 
    ArkTS-Sta示例：   
@@ -88,7 +88,8 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
    import { State } from '@ohos.arkui.stateManagement'
    import hilog from '@ohos.hilog'
    import usbManager from '@ohos.usbManager';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError } from '@ohos.base';
+   
    ```
 
 2. 获取设备列表。
@@ -102,8 +103,9 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
    try {
      deviceList = usbManager.getDevices();
    } catch (error) {
-       console.error(`USB getDevices failed: ${error}`);
-       this.logInfo_ += '\n[ERROR] USB getDevices failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB getDevices failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB getDevices failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    
    console.info(`deviceList: ${deviceList}`);
@@ -176,8 +178,9 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
    try {
      deviceList = usbManager.getDevices();
    } catch (error) {
-     console.error(`USB getDevices failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB getDevices failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB getDevices failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB getDevices failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    
    console.info(`deviceList: ${deviceList}`);
@@ -244,8 +247,8 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
 3. 获取设备操作权限。
 
    ArkTS-Dyn示例：
-   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
      console.error('deviceList is empty');
@@ -259,13 +262,13 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
      console.info('usb device request right result: ' + hasRight);
      this.logInfo_ += '\n[INFO] usb device request right result: ' + JSON.stringify(hasRight);
    }).catch((error: BusinessError) => {
-     console.error(`usb device request right failed : ${error}`);
-     this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+     console.error(`usb device request right failed : code=${error.code}, message=${error.message}`);
+     this.logInfo_ += '\n[ERROR] usb device request right failed: code=' + error.code + ', message=' + error.message;
    });
    ```
 
    ArkTS-Sta示例：
-   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -279,9 +282,10 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
    usbManager.requestRight(deviceName).then((hasRight: boolean) => {
      console.info('usb device request right result: ' + hasRight);
      this.logInfo_ += '\n[INFO] usb device request right result: ' + JSON.stringify(hasRight);
-   }).catch((error: Error) => {
-     console.error(`usb device request right failed : ${error}`);
-     this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+   }).catch((error) => {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`usb device request right failed : code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] usb device request right failed: code=' + errorObj.code + ', message=' + errorObj.message;
    });
    ```
 
@@ -292,7 +296,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
-     console.error('deviceList_ is empty');
+     console.error('deviceList is empty');
      this.logInfo_ += '\n[ERROR] deviceList is empty';
      return;
    }
@@ -304,13 +308,13 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
        return;
      }
      // 打开设备，获取数据传输通道。
-      let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
-      if (!pipe) {
-        console.error('connectDevice failed, pipe is undefined');
-        this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
-        return;
-      }
-      if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
+     let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
+     if (!pipe) {
+       console.error('connectDevice failed, pipe is undefined');
+       this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
+       return;
+     }
+     if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
        console.error('invalid interface');
        this.logInfo_ += '\n[ERROR] invalid interface';
        return;
@@ -345,8 +349,9 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
      console.info('open device success');
      this.logInfo_ += '\n[INFO] open device success';
    } catch (error) {
-     console.error(`USB hasRight failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB hasRight failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
@@ -355,7 +360,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
-     console.error('deviceList_ is empty');
+     console.error('deviceList is empty');
      this.logInfo_ += '\n[ERROR] deviceList is empty';
      return;
    }
@@ -389,16 +394,17 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
      console.info('open device success');
      this.logInfo_ += '\n[INFO] open device success';
    } catch (error) {
-     console.error(`USB hasRight failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB hasRight failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
 5. 释放接口，关闭设备。
 
    ArkTS-Dyn示例：
-   <!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   
    ``` TypeScript
    if (this.pipe_ === undefined || this.interface_ === undefined) {
      console.error('pipe_ or interface_ is null');
@@ -411,10 +417,11 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
      usbManager.releaseInterface(pipe, interface1);
      usbManager.closePipe(pipe);
    } catch (error) {
-     console.error(`failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
-
+   
    this.pipe_ = undefined;
    this.interface_ = undefined;
    console.info('close device success');
@@ -422,7 +429,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
    ```
 
    ArkTS-Sta示例：   
-   <!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.pipe_ === undefined || this.interface_ === undefined) {
@@ -436,8 +443,9 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
      usbManager.releaseInterface(pipe, interface1);
      usbManager.closePipe(pipe);
    } catch (error) {
-     console.error(`failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    
    this.pipe_ = undefined;

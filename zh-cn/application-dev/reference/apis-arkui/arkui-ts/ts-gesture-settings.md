@@ -1,7 +1,7 @@
 # 绑定手势事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -168,8 +168,8 @@ struct GestureSettingsExample {
         Text('TapGesture:' + this.priorityTestValue).fontSize(28)
           .gesture(
             TapGesture()
-              .onAction((event: GestureEvent) => {
-                this.priorityTestValue += '\nText'
+              .onAction(() => {
+                this.priorityTestValue += '\nText';
               }))
       }
       .height(200)
@@ -181,7 +181,7 @@ struct GestureSettingsExample {
       .priorityGesture(
         TapGesture()
           .onAction((event: GestureEvent) => {
-            this.priorityTestValue += '\nColumn'
+            this.priorityTestValue += '\nColumn';
           }), GestureMask.IgnoreInternal)
 
       Column() {
@@ -189,7 +189,7 @@ struct GestureSettingsExample {
           .gesture(
             TapGesture()
               .onAction((event: GestureEvent) => {
-                this.parallelTestValue += '\nText'
+                this.parallelTestValue += '\nText';
               }))
       }
       .height(200)
@@ -201,7 +201,7 @@ struct GestureSettingsExample {
       .parallelGesture(
         TapGesture()
           .onAction((event: GestureEvent) => {
-            this.parallelTestValue += '\nColumn'
+            this.parallelTestValue += '\nColumn';
           }), GestureMask.Normal)
     }
   }
@@ -212,7 +212,7 @@ struct GestureSettingsExample {
 
 ### 示例2（实时监测参与滑动手势的有效触点数量）
 
-该示例通过配置fingerInfos实时监测参与滑动手势的有效触点数量。
+该示例通过读取fingerInfos实时监测参与滑动手势的有效触点数量。
 
 ```ts
 // xxx.ets
@@ -232,7 +232,7 @@ struct PanGestureWithFingerCount {
   build() {
     Column() {
       // 显示当前有效触点数量
-      Text(`触点数量: ${this.fingerCount}`)
+      Text(`触点数量：${this.fingerCount}`)
         .fontSize(20)
         .margin(10)
 
@@ -248,31 +248,31 @@ struct PanGestureWithFingerCount {
       .gesture(
         PanGesture(this.panOption)
           .onActionStart((event: GestureEvent) => {
-            console.info('Pan start')
-            this.fingerCount = event.fingerInfos?.length || 0 // 记录触点数量
+            console.info('Pan start');
+            this.fingerCount = event.fingerInfos?.length || 0; // 记录触点数量
           })
           .onActionUpdate((event: GestureEvent) => {
             if (event) {
-              console.info(`fingerInfos ${JSON.stringify(event.fingerInfos)}`)
-              this.offsetX = this.positionX + event.offsetX
-              this.offsetY = this.positionY + event.offsetY
-              this.fingerCount = event.fingerInfos?.length || 0 // 更新触点数量，记录下参与当前手势的有效触点的数量
+              console.info(`fingerInfos ${JSON.stringify(event.fingerInfos)}`);
+              this.offsetX = this.positionX + event.offsetX;
+              this.offsetY = this.positionY + event.offsetY;
+              this.fingerCount = event.fingerInfos?.length || 0; // 更新触点数量，记录下参与当前手势的有效触点的数量
             }
           })
-          .onActionEnd((event: GestureEvent) => {
-            this.positionX = this.offsetX
-            this.positionY = this.offsetY
-            this.fingerCount = 0 // 触点离开触摸区域后归零
-            console.info('Pan end')
+          .onActionEnd(() => {
+            this.positionX = this.offsetX;
+            this.positionY = this.offsetY;
+            this.fingerCount = 0; // 触点离开触摸区域后归零
+            console.info('Pan end');
           })
           .onActionCancel(() => {
-            this.fingerCount = 0 // 手势取消后归零
+            this.fingerCount = 0; // 手势取消后归零
           })
       )
 
       Button('切换为双指滑动')
         .onClick(() => {
-          this.panOption.setFingers(2)
+          this.panOption.setFingers(2);
         })
     }
   }

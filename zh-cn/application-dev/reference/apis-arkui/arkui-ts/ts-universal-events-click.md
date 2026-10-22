@@ -1,7 +1,7 @@
 # 点击事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -32,7 +32,7 @@ ArkTS-Sta: onClick(event: Callback\<ClickEvent> | undefined, distanceThreshold: 
 
 新增distanceThreshold参数，设置点击手势移动阈值。手指移动超出阈值时，点击手势识别失败。
 
-对于无手指移动距离限制的点击场景，建议使用原有接口。若需限制点击时手指移动范围，建议使用该接口。
+对于无手指移动距离限制的点击场景，建议使用[onClick](#onclick)接口。若需限制点击时手指移动范围，建议使用该接口。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 

@@ -1,7 +1,7 @@
 # 触摸测试控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -92,7 +92,7 @@ struct HitTestBehaviorExample {
 
 ### 示例2（触摸测试类型为BLOCK_HIERARCHY时的触摸测试效果）
 
-从API version 20开始，该示例演示了设置触摸测试类型为BLOCK_HIERARCHY时的触摸测试效果。
+从API version 20开始，该示例演示了设置触摸测试模式为BLOCK_HIERARCHY时的触摸测试效果。
 
 ```ts
 // xxx.ets
@@ -169,7 +169,7 @@ struct BlockHierarchy {
 
 ### 示例3（触摸测试类型为BLOCK_DESCENDANTS时的触摸测试效果）
 
-从API version 20开始，该示例演示了设置触摸测试类型为BLOCK_DESCENDANTS时的触摸测试效果。
+从API version 20开始，该示例演示了设置触摸测试模式为BLOCK_DESCENDANTS时的触摸测试效果。
 
 ```ts
 // xxx.ets

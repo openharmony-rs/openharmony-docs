@@ -37,7 +37,7 @@
 2. 在EntryFormAbility.ets中，实现[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)生命周期接口，其中在onAddForm的入参[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)中可以通过[FormParam](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formparam)取出卡片的相关信息。
 
    ArkTS-Dyn示例：
-    <!-- @[entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
+    <!-- @[entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
     
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ts
@@ -71,7 +71,7 @@
         };
         let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
         formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
-          hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
+          hilog.error(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
         });
       }
     
@@ -82,15 +82,16 @@
     
       onFormEvent(formId: string, message: string): void {
         // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
-        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
-        // ···
+        hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] onFormEvent, formId = ${formId}, message: ${message}`);
+    
+        // ...
       }
     
       onRemoveForm(formId: string): void {
         // 删除卡片实例数据
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
         // 删除之前持久化的卡片实例数据
-        // 此接口请根据实际情况实现，具体请参考：FormExtAbility Stage模型卡片实例
+        // 此接口请根据实际情况实现，具体请参考：FormExtensionAbility Stage模型卡片实例
       }
     
       onConfigurationUpdate(config: Configuration) {
@@ -99,10 +100,12 @@
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
       }
     
+    
       onAcquireFormState(want: Want): formInfo.FormState {
         // 卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态。
         return formInfo.FormState.READY;
       }
+    
     }
     ```
 

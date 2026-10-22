@@ -37,7 +37,7 @@ ArrayList支持增、删、改、查操作，常用API如下：
 | 增加元素 | add(element: T) | 在数组尾部增加一个元素。 |
 | 增加元素 | ArkTS-Dyn: insert(element: T, index: number) <br/> ArkTS-Sta: insert(element: T, index: int) | 在指定位置插入一个元素。 |
 | 访问元素 | ArkTS-Dyn: arr[index: number] <br/> ArkTS-Sta: [index: int] | 获取指定index对应的value值。 |
-| 访问元素 | ArkTS-Dyn: forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; void, thisArg?: Object) <br/> ArkTS-Sta: forEach(callbackFn: ArrayListForEachCb&lt;T&gt;) | 访问整个ArrayList容器的元素，其中`callbackFn`是`forEach`方法中用于处理每个元素的回调函数，它接收当前元素、索引和原列表作为参数。 |
+| 访问元素 | ArkTS-Dyn: forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; void, thisArg?: Object) <br/> ArkTS-Sta: forEach(callbackFn: ArrayListForEachCb&lt;T&gt;) | 访问整个ArrayList容器的元素，其中`callbackFn`是`forEach()`方法中用于处理每个元素的回调函数，它接收当前元素、索引和原列表作为参数。 |
 | 访问元素 | ArkTS-Dyn: \[Symbol.iterator]():IterableIterator&lt;T&gt; <br/> ArkTS-Sta: $_iterator(): IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | arr[index] = xxx | 修改指定index位置对应的value值。 |
 | 删除元素 | remove(element: T) | 删除第一个匹配到的元素。 |
@@ -185,7 +185,7 @@ Vector支持增、删、改、查操作，常用API如下：
 | 操作 | 方法 | 描述 |
 | --------- | ------- | ------- |
 | 增加元素 | add(element: T) | 在数组尾部增加一个元素。 |
-| 增加元素 | insert(element: T, index: number) | 在指定位置插入一个元素。 |
+| 增加元素 | insert(index: number, element: T) | 在指定位置插入一个元素。 |
 | 访问元素 | get(index: number) | 获取指定index位置对应的元素。 |
 | 访问元素 | vec[index: number] | 获取指定index位置对应的元素，通过指令获取保证访问速度。 |
 | 访问元素 | getFirst() | 获取第一个元素。 |

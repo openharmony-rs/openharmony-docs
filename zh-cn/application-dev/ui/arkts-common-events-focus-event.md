@@ -1,7 +1,7 @@
 # 支持焦点处理
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -785,9 +785,9 @@ export struct OnFocusBlur {
 
 上述示例包含以下3步：
 
-- 应用打开，按下Tab键激活走焦，“First Button”显示焦点激活态样式：组件外围有一个蓝色的闭合框，onFocus回调响应，背景色变成绿色。
-- 按下Tab键，触发走焦，“Second Button”获焦，onFocus回调响应，背景色变成绿色；“First Button”失焦，onBlur回调响应，背景色变回灰色。
-- 按下Tab键，触发走焦，“Third Button”获焦，onFocus回调响应，背景色变成绿色；“Second Button”失焦，onBlur回调响应，背景色变回灰色。
+- 应用打开，按下Tab键激活走焦，“First Button”显示焦点激活态样式：组件外围有一个蓝色的闭合框，onFocus()回调响应，背景色变成绿色。
+- 按下Tab键，触发走焦，“Second Button”获焦，onFocus()回调响应，背景色变成绿色；“First Button”失焦，onBlur()回调响应，背景色变回灰色。
+- 按下Tab键，触发走焦，“Third Button”获焦，onFocus()回调响应，背景色变成绿色；“Second Button”失焦，onBlur()回调响应，背景色变回灰色。
 
 父子节点同时存在获焦和失焦事件时，获焦/失焦事件响应顺序为：
 

@@ -1,7 +1,7 @@
 # 焦点控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -217,7 +217,7 @@ ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined): this
 
 requestFocus(value: string): boolean
 
-方法语句中可使用的全局接口，调用此接口可以主动让焦点在下一帧渲染时转移至参数指定的组件上。
+全局接口，使焦点在下一帧渲染时转移至参数指定的组件上。
 
 如果需要指定组件立刻获焦，推荐使用FocusController中的焦点同步转移接口[requestFocus](../arkts-apis-uicontext-focuscontroller.md#requestfocus12)。
 
@@ -368,7 +368,7 @@ ArkTS-Dyn: focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): 
 
 ArkTS-Sta: focusScopeId(id: string | undefined, isGroup?: boolean, arrowStepOut?: boolean): this
 
-设置当前容器组件的id标识，以及是否为焦点组。新增参数arrowStepOut，用于设置能否使用方向键走焦出当前焦点组。
+设置当前容器组件的id标识，以及是否为焦点组。通过新增参数arrowStepOut设置能否使用方向键走焦出当前焦点组。
 
 **原子化服务API（仅ArkTS-Dyn）：**  从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -400,7 +400,7 @@ ArkTS-Dyn: tabStop(isTabStop: boolean): T
 
 ArkTS-Sta: tabStop(isTabStop: boolean | undefined): this
 
-设置当前容器组件的tabStop，可决定焦点在走焦时是否会停留在当前容器。
+设置当前容器组件的tabStop，可决定焦点在走焦时是否会停留在当前容器。未设置时，tabStop默认为false，走焦时焦点不会因tabStop停留在当前容器。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -463,7 +463,7 @@ ArkTS-Sta: nextFocus(nextStep: FocusMovement | undefined): this
 
 ## FocusMovement<sup>18+</sup>对象说明
 
-设置对应的按键对应的走焦目的组件，缺省则遵循默认走焦规则。
+设置按键对应的走焦目的组件，缺省则遵循默认走焦规则。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 

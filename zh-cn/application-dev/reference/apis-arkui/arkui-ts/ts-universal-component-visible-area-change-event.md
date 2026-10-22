@@ -1,7 +1,7 @@
 # 组件可见区域变化事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -500,4 +500,4 @@ struct OnVisibleAreaChangeSample {
   }
 }
 ```
-![visible-area-change.gif](figures/visible-area-change3.jpg)
+![visible-area-change3.jpg](figures/visible-area-change3.jpg)

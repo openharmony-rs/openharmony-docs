@@ -1,7 +1,7 @@
 # 拖拽事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -49,7 +49,7 @@ ArkTS-Sta: onDragStart(event: ((event: DragEvent, extraParams?: string) => Custo
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**事件优先级：** 长按事件触发时间 < 500ms，长按事件优先拖拽事件响应，长按事件触发时间 >= 500ms，拖拽事件优先长按事件响应。
+**事件优先级：** 长按事件触发时间 < 500ms时，长按事件优先拖拽事件响应，长按事件触发时间 >= 500ms时，拖拽事件优先长按事件响应。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1520,7 +1520,6 @@ struct ImageExample {
               const arrayBuffer: ArrayBuffer = data.buffer.slice(data.byteOffset, data.byteLength + data.byteOffset);
               let filePath = context.filesDir + '/test.png';
               let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-              fileIo.writeSync(file.fd, arrayBuffer);
               // 获取图片的uri
               let uri = fileUri.getUriFromPath(filePath);
               let image: unifiedDataChannel.Image = new unifiedDataChannel.Image();
@@ -1590,7 +1589,7 @@ struct ImageExample {
               this.udKey = (event as DragEvent).startDataLoading(options);
               console.info(`udKey: ${this.udKey}`);
             } catch (e) {
-              console.error(`startDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
+              console.error(`Failed to start data loading. Code: ${e.code}, message: ${e.message}`);
             }
           }, { disableDataPrefetch: true })
         }
@@ -1604,7 +1603,7 @@ struct ImageExample {
           try {
             this.getUIContext().getDragController().cancelDataLoading(this.udKey);
           } catch (e) {
-            console.error(`cancelDataLoading errorCode: ${e.code}, errorMessage: ${e.message}`);
+            console.error(`Failed to cancel data loading. Code: ${e.code}, message: ${e.message}`);
           }
         })
         .margin({ top: 10 })
@@ -2089,7 +2088,7 @@ struct VideoExample {
                   fileIo.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
                   fileIo.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
                 } catch (error) {
-                  console.error(`openSync errorCode: ${error.code}, errorMessage: ${error.message}`);
+                  console.error(`Failed to open file. Code: ${error.code}, message: ${error.message}`);
                 } finally {
                   fileIo.closeSync(file.fd);
                 }

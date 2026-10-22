@@ -1,9 +1,9 @@
 # @ohos.arkui.uiExtension (uiExtension)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
-<!--Designer: @stupidb-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @JUGaaab-->
+<!--Designer: @CheryHome-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 用于EmbeddedUIExtensionAbility（或UIExtensionAbility）中获取宿主应用的窗口信息或对应的EmbeddedComponent（或UIExtensionComponent）组件的信息。

@@ -1,7 +1,7 @@
 # ArkUI动画/交互事件开发常见问题(ArkTS)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin; @huangxiaolinabc; @hehongyang3-->
+<!--Owner: @zhou-chaobo; @huangxiaolinabc; @hehongyang3-->
 <!--Designer: @piggyguy; @hehongyang3; @fangzhiyuan1-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->

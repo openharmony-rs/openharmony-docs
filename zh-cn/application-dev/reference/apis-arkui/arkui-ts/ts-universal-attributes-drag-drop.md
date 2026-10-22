@@ -1,7 +1,7 @@
 # 拖拽控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -67,6 +67,10 @@ ArkTS-Sta: draggable(value: boolean | undefined): this
 
 设置该组件是否允许拖拽。默认情况下，组件不允许拖拽。
 
+> **说明：**
+>
+> 在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用该接口时，不支持为preview参数传入[CustomBuilder](ts-types.md#custombuilder8)类型的值，也不支持设置[DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo)中的builder字段。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -121,11 +125,11 @@ ArkTS-Dyn: dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: 
 
 ArkTS-Sta: dragPreview(preview: CustomBuilder | DragItemInfo | string | undefined, config?: PreviewConfiguration): this
 
-自定义组件拖拽过程中的预览图，仅用于设置浮起效果或者禁用浮起效果。
+设置组件浮起和拖拽过程中的预览图，支持通过config参数配置预览图是否仅用于浮起效果、是否延迟创建等。
 
 > **说明：**
 >
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> 在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用该接口时，不支持为preview参数传入[CustomBuilder](ts-types.md#custombuilder8)类型的值，也不支持设置[DragItemInfo](ts-universal-events-drag-drop.md#dragiteminfo)中的builder字段。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -154,7 +158,7 @@ ArkTS-Dyn: dragPreviewOptions(value: DragPreviewOptions, options?: DragInteracti
 
 ArkTS-Sta: dragPreviewOptions(value: DragPreviewOptions | undefined, options?: DragInteractionOptions): this
 
-设置拖拽过程中预览图处理模式，数量角标的显示以及预览图浮起的交互模式。不支持onItemDragStart拖拽方式。
+设置拖拽过程中预览图处理模式，数量角标的显示以及预览图浮起的交互模式。不支持通过Grid的[onItemDragStart](ts-container-grid.md#onitemdragstart8)拖拽GridItem，也不支持通过List的[onItemDragStart](ts-container-list.md#onitemdragstart8)拖拽ListItem。
 
 >**说明：**
 >
@@ -682,19 +686,19 @@ struct ImageDrag {
   filesDir = this.context?.filesDir;
 
   public async createPixelMap(pixelMap: unifiedDataChannel.SystemDefinedPixelMap): Promise<image.PixelMap | null> {
-    let mWidth: number = (pixelMap.details?.width ?? -1) as number;
-    let mHeight: number = (pixelMap.details?.height ?? -1) as number;
-    let mPixelFormat: image.PixelMapFormat =
+    let pixelMapWidth: number = (pixelMap.details?.width ?? -1) as number;
+    let pixelMapHeight: number = (pixelMap.details?.height ?? -1) as number;
+    let pixelMapPixelFormat: image.PixelMapFormat =
       (pixelMap.details?.['pixel-format'] ?? image.PixelMapFormat.UNKNOWN) as image.PixelMapFormat;
-    let mItemPixelMapData: Uint8Array = pixelMap.rawData;
+    let itemPixelMapData: Uint8Array = pixelMap.rawData;
     const opts: image.InitializationOptions = {
-      editable: false, pixelFormat: mPixelFormat, size: {
-        height: mHeight,
-        width: mWidth
+      editable: false, pixelFormat: pixelMapPixelFormat, size: {
+        height: pixelMapHeight,
+        width: pixelMapWidth
       }
     };
-    const buffer: ArrayBuffer = mItemPixelMapData.buffer.slice(mItemPixelMapData.byteOffset,
-      mItemPixelMapData.byteLength + mItemPixelMapData.byteOffset);
+    const buffer: ArrayBuffer = itemPixelMapData.buffer.slice(itemPixelMapData.byteOffset,
+      itemPixelMapData.byteLength + itemPixelMapData.byteOffset);
     try {
       let pixelMap: image.PixelMap = await image.createPixelMap(buffer, opts);
       return pixelMap;
@@ -861,15 +865,17 @@ struct ImageDrag {
 
               // 落盘到本地
               const imagePackerApi = image.createImagePacker();
-              let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
+              let packOpts: image.PackingOption = { format: 'image/jpeg', quality: 98 };
               const path: string = this.context?.cacheDir + "/pixel_map.jpg";
               let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
               if (this.targetImage3 !== null && typeof this.targetImage3 !== 'string') {
                 imagePackerApi.packToFile(this.targetImage3, file.fd, packOpts).then(() => {
                   // 直接打包进文件
                   imagePackerApi.release();
+                  fileIo.closeSync(file);
                 }).catch((error: BusinessError) => {
                   imagePackerApi.release();
+                  fileIo.closeSync(file);
                   console.error('Failed to pack the image. And the error is: ' + error);
                 });
               }
@@ -1049,7 +1055,7 @@ struct LiftingExampleDemo {
 ![isLiftingDisabled.gif](figures/isLiftingDisabled.gif)
 
 ### 示例10（以拖拽预览图初始尺寸计算跟手点位置）
-从API version 19开始，示例10通过配置[DragPreviewMode](#dragpreviewmode11枚举说明)为ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW实现根据拖拽预览图的初始尺寸来计算拖拽过程中跟手点位置。当设置[DragPreviewMode](#dragpreviewmode11枚举说明)为ENABLE_MULTI_TILE_EFFECT时，该属性不生效。
+从API version 19开始，示例10通过配置[DragPreviewMode](#dragpreviewmode11枚举说明)为ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW实现基于最终拖拽预览图的原始尺寸来计算拖拽过程中跟手点位置。当设置[DragPreviewMode](#dragpreviewmode11枚举说明)为ENABLE_MULTI_TILE_EFFECT时，该属性不生效。
 ```ts
 @Entry
 @Component
