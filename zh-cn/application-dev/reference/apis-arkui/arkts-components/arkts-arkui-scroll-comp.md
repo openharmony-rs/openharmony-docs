@@ -8,7 +8,7 @@
 > 
 > - 该组件滚动的前提是主轴方向大小小于内容大小。
 > 
-> - Scroll组件通用属性[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)的默认值为true。
+> - Scroll组件通用属性[clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1)的默认值为true。
 > 
 > - Scroll组件的高度超出屏幕显示范围时，可以通过设置通用属性[layoutWeight](arkts-arkui-common-comp-commonmethod-c.md#layoutweight)让Scroll高度适应主轴的剩余空间。
 > 
@@ -61,7 +61,7 @@ Scroll(scroller?: Scroller)
 | [ScrollPageOptions](arkts-arkui-scroll-comp-scrollpageoptions-i.md) | 翻页模式的参数选项。 |
 | [ScrollSnapOptions](arkts-arkui-scroll-comp-scrollsnapoptions-i.md) | 限位滚动模式对象。 |
 | [ScrollToIndexOptions](arkts-arkui-scroll-comp-scrolltoindexoptions-i.md) | 滑动到指定Index的参数选项。 |
-| [UIScrollEvent](arkts-arkui-scroll-comp-uiscrollevent-i.md) | frameNode中[getEvent('Scroll')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent)方法的返回值，可用于给Scroll节点设置滚动事件。 |
+| [UIScrollEvent](arkts-arkui-scroll-comp-uiscrollevent-i.md) | frameNode中[getEvent('Scroll')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-1)方法的返回值，可用于给Scroll节点设置滚动事件。 |
 
 ### 类型
 
@@ -77,6 +77,7 @@ Scroll(scroller?: Scroller)
 
 | 名称 | 说明 |
 | --- | --- |
+| [FastScrollMode](arkts-arkui-scroll-comp-fastscrollmode-e.md) | 枚举滚动到指定索引的快速滚动模式。 |
 | [ScrollAlign](arkts-arkui-scroll-comp-scrollalign-e.md) | 对齐方式枚举。 |
 | [ScrollDirection](arkts-arkui-scroll-comp-scrolldirection-e.md) | 滚动方向枚举。 |
 

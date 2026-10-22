@@ -1678,3 +1678,48 @@ struct Index {
   }
 }
 ```
+
+### Example 30 Setting Anti-aliasing for Pixel Map Image Edges
+
+This example demonstrates how to enable the anti-aliasing feature for pixel map image edges by setting the [antialiased](arkts-arkui-image-comp-attribute.md#antialiased) API.
+
+The [antialiased](arkts-arkui-image-comp-attribute.md#antialiased) API is added since API version 23.
+
+```TypeScript
+@Entry
+@Component
+struct ImageExample {
+  // Replace $r('app.media.icon') with the image resource file you use.
+  @State imageResource: Resource = $r('app.media.icon');
+
+  build() {
+    Row() {
+      Blank()
+        .width(50)
+
+      Column() {
+        Blank()
+          .height(20)
+        Text ('Image without anti-aliasing and with a rotation angle')
+        Blank()
+          .height(20)
+        Image(this.imageResource)
+          .width(50)
+          .height(50)
+          .rotate({angle: 1})
+
+        Blank()
+          .height(20)
+        Text ('Image with anti-aliasing and a rotation angle')
+        Blank()
+          .height(20)
+        Image(this.imageResource)
+          .width(50)
+          .height(50)
+          .rotate({angle: 1})
+          .antialiased(true)
+      }
+    }
+  }
+}
+```

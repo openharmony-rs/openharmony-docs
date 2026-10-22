@@ -9,10 +9,10 @@ The **Shape** component is the parent component of the drawing components. The a
 > This component supports dynamic constructor parameter updates using the
 > [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#properties) API of the
 > [AttributeUpdater](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md) class since API version 20.
-> 
-> **Child Components**
-> 
-> The following child components are supported: Rect, Path, Circle, Ellipse, Polyline, [Polygon](../../apis-location-kit/arkts-apis/arkts-location-geolocationmanager-gnssfence-i-sys.md#polygon), Image, Text, [Column](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md#column), Row, and **Shape**.
+
+## Child Components
+
+The following child components are supported: Rect, Path, Circle, Ellipse, Polyline, [Polygon](../../apis-location-kit/arkts-apis/arkts-location-geolocationmanager-gnssfence-i-sys.md#polygon), Image, Text, [Column](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md#column), Row, and **Shape**.
 
 ## Shape
 

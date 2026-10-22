@@ -6,6 +6,8 @@ The **Radio** component allows users to select from a set of mutually exclusive 
 > 
 > Since API version 12, the default indicator type for the **Radio** component changes from
 > **RadioIndicatorType.DOT** to **RadioIndicatorType.TICK**.
+> 
+> By default, this component has a [margin](arkts-arkui-common-comp-commonmethod-c.md#margin) of { top: '14px', right: '14px', bottom: '14px', left: '14px' }.
 
 ## Child Components
 

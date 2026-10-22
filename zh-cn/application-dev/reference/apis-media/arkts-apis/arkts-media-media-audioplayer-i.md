@@ -37,14 +37,14 @@ getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)
+> [AVPlayer.getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)(callback: AsyncCallback&lt;Array&lt;MediaDescription&gt;&gt;)
+**替代接口：** [getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription-1)(callback: AsyncCallback&lt;Array&lt;MediaDescription&gt;&gt;)
 
 <!--Device-AudioPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void--><!--Device-AudioPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void-End-->
 
@@ -251,13 +251,13 @@ pause(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.pause](arkts-media-media-avplayer-i.md#pause)替代。
+> [AVPlayer.pause](arkts-media-media-avplayer-i.md#pause-1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [pause](arkts-media-media-avplayer-i.md#pause)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [pause](arkts-media-media-avplayer-i.md#pause-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioPlayer-pause(): void--><!--Device-AudioPlayer-pause(): void-End-->
 
@@ -274,13 +274,13 @@ play(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.play](arkts-media-media-avplayer-i.md#play)替代。
+> [AVPlayer.play](arkts-media-media-avplayer-i.md#play-1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [play](arkts-media-media-avplayer-i.md#play)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [play](arkts-media-media-avplayer-i.md#play-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioPlayer-play(): void--><!--Device-AudioPlayer-play(): void-End-->
 
@@ -297,13 +297,13 @@ release(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.release](arkts-media-media-avplayer-i.md#release)替代。
+> [AVPlayer.release](arkts-media-media-avplayer-i.md#release-1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [release](arkts-media-media-avplayer-i.md#release)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [release](arkts-media-media-avplayer-i.md#release-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioPlayer-release(): void--><!--Device-AudioPlayer-release(): void-End-->
 
@@ -320,13 +320,13 @@ reset(): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.reset](arkts-media-media-avplayer-i.md#reset)替代。
+> [AVPlayer.reset](arkts-media-media-avplayer-i.md#reset-1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [reset](arkts-media-media-avplayer-i.md#reset)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [reset](arkts-media-media-avplayer-i.md#reset-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioPlayer-reset(): void--><!--Device-AudioPlayer-reset(): void-End-->
 
@@ -401,13 +401,13 @@ stop(): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.stop](arkts-media-media-avplayer-i.md#stop)替代。
+> [AVPlayer.stop](arkts-media-media-avplayer-i.md#stop-1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [stop](arkts-media-media-avplayer-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [stop](arkts-media-media-avplayer-i.md#stop-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioPlayer-stop(): void--><!--Device-AudioPlayer-stop(): void-End-->
 

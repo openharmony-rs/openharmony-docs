@@ -1,4 +1,4 @@
-# NotificationSlot
+# NotificationSlot (System API)
 
 ```TypeScript
 export interface NotificationSlot

@@ -6,7 +6,7 @@ declare enum TabBarDisplayMode
 
 Enumerates the actual display modes of the tab bar under different Tabs container sizes. This enum is used in [barDisplayModeBreakpoint](arkts-arkui-tabs-comp-attribute.md#bardisplaymodebreakpoint) to specify the display mode for different breakpoint sizes. It is only meaningful when **TabBarStyle** is set to **SIDEBAR_ADAPTABLE** or **SIDEBAR**.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 <!--Device-unnamed-declare enum TabBarDisplayMode--><!--Device-unnamed-declare enum TabBarDisplayMode-End-->
 
@@ -20,11 +20,11 @@ BOTTOM_TABBAR = 0
 
 The tab bar is displayed at the bottom.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabBarDisplayMode-BOTTOM_TABBAR = 0--><!--Device-TabBarDisplayMode-BOTTOM_TABBAR = 0-End-->
 
@@ -38,12 +38,30 @@ SIDEBAR = 1
 
 The tab bar is displayed as a sidebar.
 
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-TabBarDisplayMode-SIDEBAR = 1--><!--Device-TabBarDisplayMode-SIDEBAR = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## TOP_TABBAR
+
+```TypeScript
+TOP_TABBAR = 2
+```
+
+The tab bar is displayed as a top floating bar.
+
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
-<!--Device-TabBarDisplayMode-SIDEBAR = 1--><!--Device-TabBarDisplayMode-SIDEBAR = 1-End-->
+<!--Device-TabBarDisplayMode-TOP_TABBAR = 2--><!--Device-TabBarDisplayMode-TOP_TABBAR = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

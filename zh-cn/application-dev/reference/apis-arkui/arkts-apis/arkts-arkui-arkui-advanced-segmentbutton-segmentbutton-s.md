@@ -6,18 +6,6 @@ declare struct SegmentButton
 
 创建页签类分段按钮或胶囊类分段按钮。
 
-## 子组件
-
-无
-
-## 属性
-
-不支持[通用属性](ts-component-general-attributes.md)。
-
-## 事件
-
-不支持[通用事件](ts-component-general-events.md)。
-
 **起始版本：** 11
 
 **装饰器类型：** @Component
@@ -25,6 +13,18 @@ declare struct SegmentButton
 <!--Device-unnamed-declare struct SegmentButton--><!--Device-unnamed-declare struct SegmentButton-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 子组件
+
+无
+
+## 属性
+
+不支持[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。
+
+## 事件
+
+不支持[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)。
 
 ## 导入模块
 

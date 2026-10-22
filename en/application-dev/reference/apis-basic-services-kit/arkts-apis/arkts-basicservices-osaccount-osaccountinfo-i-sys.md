@@ -1,4 +1,4 @@
-# OsAccountInfo
+# OsAccountInfo (System API)
 
 ```TypeScript
 interface OsAccountInfo

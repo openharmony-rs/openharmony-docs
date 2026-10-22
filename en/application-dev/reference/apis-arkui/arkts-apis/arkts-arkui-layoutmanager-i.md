@@ -72,7 +72,7 @@ getCharacterPositionAtCoordinate(
 
 Obtains the position information of the character closest to the specified coordinate based on the specified encoding type.
 
-Compared with [getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate), this API supports specifying the encoding type (UTF-8 or UTF-16) used for the character position through the encoding parameter.
+Compared with [getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate-1), this API supports specifying the encoding type (UTF-8 or UTF-16) used for the character position through the encoding parameter.
 
 > **NOTE:** 
 > 
@@ -155,7 +155,7 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): 
 
 Obtains the character range and the actual glyph range based on the specified encoding type and text glyph range.
 
-Compared with [getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange), this API supports specifying the encoding type (UTF-8 or UTF-16) used for the character range through the **encoding** parameter.
+Compared with [getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange-1), this API supports specifying the encoding type (UTF-8 or UTF-16) used for the character range through the **encoding** parameter.
 
 > **NOTE:** 
 > 
@@ -286,7 +286,7 @@ getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): A
 
 Obtains the glyph range and the actual character range based on the specified encoding type and text character range.
 
-Compared with [getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange), this interface supports specifying the encoding type (UTF-8 or UTF-16) used for the character range through the encoding parameter.
+Compared with [getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange-1), this interface supports specifying the encoding type (UTF-8 or UTF-16) used for the character range through the encoding parameter.
 
 > **NOTE:** 
 > 

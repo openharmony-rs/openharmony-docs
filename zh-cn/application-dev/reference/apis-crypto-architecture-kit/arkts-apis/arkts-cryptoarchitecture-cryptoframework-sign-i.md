@@ -806,7 +806,7 @@ update(data: DataBlob): Promise<void>
 > **说明：** 
 > 
 > 根据数据量，可以不调用update（即[init](#init)
-> 完成后直接调用[sign](#sign)）
+> 完成后直接调用[sign](#sign-2)）
 > 或多次调用update。
 > 
 > 算法库不对单次或累计的update数据量设置大小限制。建议在处理大数据量的签名操作时，采用多次update方式传入数据，以避免一次性申请过大内

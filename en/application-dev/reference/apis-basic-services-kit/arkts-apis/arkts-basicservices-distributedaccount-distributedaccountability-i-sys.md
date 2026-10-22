@@ -1,4 +1,4 @@
-# DistributedAccountAbility
+# DistributedAccountAbility (System API)
 
 ```TypeScript
 interface DistributedAccountAbility

@@ -1,4 +1,4 @@
-# AVErrorCode
+# AVErrorCode（系统接口）
 
 ```TypeScript
 enum AVErrorCode

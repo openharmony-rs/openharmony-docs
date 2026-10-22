@@ -15,3 +15,5 @@ type OnInputmethodAttachedCallback = () => void
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **示例**
+
+完整示例代码参考[onInputmethodAttached](./arkts-basic-components-web-events.md#oninputmethodattached)。

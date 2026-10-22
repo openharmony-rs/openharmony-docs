@@ -1,4 +1,4 @@
-# PlayParameters
+# PlayParameters（系统接口）
 
 ```TypeScript
 export interface PlayParameters

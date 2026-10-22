@@ -6,7 +6,7 @@ declare interface TabsSidebarSearchableOptions
 
 Defines the options for the searchable sidebar tab bar.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 <!--Device-unnamed-declare interface TabsSidebarSearchableOptions--><!--Device-unnamed-declare interface TabsSidebarSearchableOptions-End-->
 
@@ -20,11 +20,11 @@ searchCallback?: (text: string) => void
 
 Callback triggered when the search text changes.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsSidebarSearchableOptions-searchCallback?: (text: string) => void--><!--Device-TabsSidebarSearchableOptions-searchCallback?: (text: string) => void-End-->
 
@@ -44,11 +44,11 @@ searchFilter?: TabsSidebarSearchFilterCallback
 
 Filter function to determine whether a tab should be displayed based on the search text.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsSidebarSearchableOptions-searchFilter?: TabsSidebarSearchFilterCallback--><!--Device-TabsSidebarSearchableOptions-searchFilter?: TabsSidebarSearchFilterCallback-End-->
 
@@ -64,11 +64,11 @@ Placeholder text displayed when the search input is empty.
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsSidebarSearchableOptions-placeholder?: ResourceStr--><!--Device-TabsSidebarSearchableOptions-placeholder?: ResourceStr-End-->
 
@@ -84,11 +84,11 @@ Sets the text input in the search text box.
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsSidebarSearchableOptions-searchText?: ResourceStr--><!--Device-TabsSidebarSearchableOptions-searchText?: ResourceStr-End-->
 

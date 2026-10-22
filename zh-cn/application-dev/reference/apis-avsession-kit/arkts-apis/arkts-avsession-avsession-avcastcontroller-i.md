@@ -2251,7 +2251,7 @@ start(item: AVQueueItem, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 在音视频投播场景下，当应用程序顺序调用
-> [prepare](#prepare)和start接口，且
+> [prepare](#prepare-1)和start接口，且
 > assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **起始版本：** 10
@@ -2317,7 +2317,7 @@ start(item: AVQueueItem): Promise<void>
 > **说明：** 
 > 
 > 在音视频投播场景下，当应用程序顺序调用
-> [prepare](#prepare)和start接口，且
+> [prepare](#prepare-1)和start接口，且
 > assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **起始版本：** 10

@@ -1,4 +1,4 @@
-# Window
+# Window (System API)
 
 ```TypeScript
 interface Window
@@ -6,7 +6,7 @@ interface Window
 
 Represents a window instance, which is the basic unit managed by the window manager.
 
-In the following API examples, you must use [getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow), [createWindow()](arkts-arkui-window-createwindow-f.md#createwindow), or [findWindow()](arkts-arkui-window-findwindow-f.md) to obtain a Window instance (named windowClass in this example) and then call a method in this instance.
+In the following API examples, you must use [getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1), [createWindow()](arkts-arkui-window-createwindow-f.md#createwindow-1), or [findWindow()](arkts-arkui-window-findwindow-f.md) to obtain a Window instance (named windowClass in this example) and then call a method in this instance.
 
 **Since:** 6
 
@@ -36,7 +36,7 @@ Attaches a first-level child window to the main window to maintain a fixed relat
 > 
 > -After the child window calls this API, calling APIs such as
 > [moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto),
-> [maximize()](arkts-arkui-window-window-i.md#maximize), and
+> [maximize()](arkts-arkui-window-window-i.md#maximize-1), and
 > [setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)
 > to change the window position, or dragging and moving or dragging and resizing the child window through mouse
 > or touch operations will not take effect.
@@ -482,7 +482,7 @@ Detach a first-level child window from the main window to cancel a fixed relativ
 > 
 > - After detached by calling this API, the child window retains its position during attaching.You can drag the child window to change its size and position.
 > 
-> - After the detaching, calling APIs such as [moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto) or [maximize()](arkts-arkui-window-window-i.md#maximize), and [setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)to change the window position, or dragging and moving or dragging and resizing the child window through mouse or touch operations will take effect.
+> - After the detaching, calling APIs such as [moveWindowTo()](arkts-arkui-window-window-i.md#movewindowto) or [maximize()](arkts-arkui-window-window-i.md#maximize-1), and [setFollowParentWindowLayoutEnabled()](arkts-arkui-window-window-i.md#setfollowparentwindowlayoutenabled)to change the window position, or dragging and moving or dragging and resizing the child window through mouse or touch operations will take effect.
 
 **Since:** 24
 
@@ -1200,7 +1200,7 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback<void>): void
 
 Raises a child window above a target child window. This API uses an asynchronous callback to return the result.
 
-Before calling this API, ensure that the child window to raise and the target child window have been created and [showWindow()](arkts-arkui-window-window-i.md#showwindow) has been successfully executed for each.
+Before calling this API, ensure that the child window to raise and the target child window have been created and [showWindow()](arkts-arkui-window-window-i.md#showwindow-1) has been successfully executed for each.
 
 **Since:** 10
 
@@ -1282,7 +1282,7 @@ raiseAboveTarget(windowId: number): Promise<void>
 
 Raises a child window above a target child window. This API uses a promise to return the result.
 
-Before calling this API, ensure that the child window to raise and the target child window have been created and [showWindow()](arkts-arkui-window-window-i.md#showwindow) has been successfully executed for each.
+Before calling this API, ensure that the child window to raise and the target child window have been created and [showWindow()](arkts-arkui-window-window-i.md#showwindow-1) has been successfully executed for each.
 
 **Since:** 10
 
@@ -1540,7 +1540,7 @@ raiseToAppTop(callback: AsyncCallback<void>): void
 
 Raises the application child window to the top layer of the application. This API uses an asynchronous callback to return the result.
 
-Before calling this API, ensure that the child window has been created and [showWindow()](arkts-arkui-window-window-i.md#showwindow) has been successfully executed.
+Before calling this API, ensure that the child window has been created and [showWindow()](arkts-arkui-window-window-i.md#showwindow-1) has been successfully executed.
 
 **Since:** 10
 
@@ -1949,7 +1949,7 @@ try {
 setDefaultDensityEnabled(enabled: boolean): void
 ```
 
-Sets whether the window uses the default density of the current screen. In the stage model, you need to call this API after [loadContent()](arkts-arkui-window-window-i.md#loadcontent) or [setUIContent()](arkts-arkui-window-window-i.md#setuicontent).
+Sets whether the window uses the default density of the current screen. In the stage model, you need to call this API after [loadContent()](arkts-arkui-window-window-i.md#loadcontent-1) or [setUIContent()](arkts-arkui-window-window-i.md#setuicontent-1).
 
 If this API is not called, the default density is not used.
 
@@ -2136,7 +2136,7 @@ Sets whether to enable a child window to raise itself by click. This API uses an
 
 Generally, when a user clicks a child window, the child window is displayed on the top. If the **enable** parameter is set to **false**, the child window is not displayed on the top when being clicked.
 
-Before calling this API, ensure that the child window has been created and [showWindow()](arkts-arkui-window-window-i.md#showwindow) has been successfully executed.
+Before calling this API, ensure that the child window has been created and [showWindow()](arkts-arkui-window-window-i.md#showwindow-1) has been successfully executed.
 
 **Since:** 10
 
@@ -2215,15 +2215,15 @@ Allows a [system window](../../../windowmanager/window-terminology.md#system-win
 
 > **NOTE:** 
 > 
-> - If the main window sets the display orientation via [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)while rotation is locked, the window restores the last orientation request when brought to the foreground after unlocking.
+> - If the main window sets the display orientation via [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-2)while rotation is locked, the window restores the last orientation request when brought to the foreground after unlocking.
 > 
-> - If the system window sets the display orientation via [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation)while rotation is locked, the window restores the last orientation request when brought to the foreground with the highest level after unlocking. The rotation lock set by a lower-level window using **setRotationLocked**does not hinder the system window at a higher level to set the display orientation by calling [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation).
+> - If the system window sets the display orientation via [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-2)while rotation is locked, the window restores the last orientation request when brought to the foreground with the highest level after unlocking. The rotation lock set by a lower-level window using **setRotationLocked**does not hinder the system window at a higher level to set the display orientation by calling [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-2).
 > 
 > - If the sensor orientation changes while rotation is locked, the last sensor orientation is restored after unlocking.
 > 
-> - If the application calls [setOrientation()](arkts-arkui-screen-screen-i-sys.md#setorientation)to set the screen orientation while rotation is locked, that screen?orientation setting is ignored.
+> - If the application calls [setOrientation()](arkts-arkui-screen-screen-i-sys.md#setorientation-1)to set the screen orientation while rotation is locked, that screen?orientation setting is ignored.
 > 
-> - When rotation is unlocked, the application's display orientation is determined based on the main window's display orientation set via [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation), the sensor orientation, and more. For details, see [Window Rotation Overview](../../../windowmanager/window-rotation.md#overview).
+> - When rotation is unlocked, the application's display orientation is determined based on the main window's display orientation set via [setPreferredOrientation()](arkts-arkui-window-window-i.md#setpreferredorientation-2), the sensor orientation, and more. For details, see [Window Rotation Overview](../../../windowmanager/window-rotation.md#overview).
 > 
 > - The API does not affect the launch orientation set by the **orientation** under [**abilities** in the module.json5 file](../../../quick-start/module-configuration-file.md#abilities) of the application.
 

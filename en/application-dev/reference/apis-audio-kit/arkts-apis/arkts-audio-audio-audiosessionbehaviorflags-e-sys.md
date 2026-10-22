@@ -1,4 +1,4 @@
-# AudioSessionBehaviorFlags
+# AudioSessionBehaviorFlags (System API)
 
 ```TypeScript
 enum AudioSessionBehaviorFlags

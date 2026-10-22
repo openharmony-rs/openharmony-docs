@@ -203,11 +203,11 @@ barDisplayModeBreakpoint(style: Optional<TabsBreakpointType<TabBarDisplayMode>>)
 
 Sets the display mode of the tab bar for different Tabs container sizes.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-barDisplayModeBreakpoint(style: Optional<TabsBreakpointType<TabBarDisplayMode>>): TabsAttribute--><!--Device-TabsAttribute-barDisplayModeBreakpoint(style: Optional<TabsBreakpointType<TabBarDisplayMode>>): TabsAttribute-End-->
 
@@ -449,11 +449,11 @@ barStyle(style: Optional<TabBarStyle>)
 
 Sets the display style of the tab bar.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-barStyle(style: Optional<TabBarStyle>): TabsAttribute--><!--Device-TabsAttribute-barStyle(style: Optional<TabBarStyle>): TabsAttribute-End-->
 
@@ -641,11 +641,11 @@ maxSidebarWidth(value: Optional<Length>)
 
 Sets the maximum width of the sidebar tab bar. This attribute takes effect only when the tab bar is displayed as a sidebar.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-maxSidebarWidth(value: Optional<Length>): TabsAttribute--><!--Device-TabsAttribute-maxSidebarWidth(value: Optional<Length>): TabsAttribute-End-->
 
@@ -665,11 +665,11 @@ minContentWidth(value: Optional<Length>)
 
 Sets the minimum width of the content area of the **Tabs** component. This attribute takes effect only when the tab bar is displayed as a sidebar.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-minContentWidth(value: Optional<Length>): TabsAttribute--><!--Device-TabsAttribute-minContentWidth(value: Optional<Length>): TabsAttribute-End-->
 
@@ -689,11 +689,11 @@ minSidebarWidth(value: Optional<Length>)
 
 Sets the minimum width of the sidebar tab bar. This attribute takes effect only when the tab bar is displayed as a sidebar.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-minSidebarWidth(value: Optional<Length>): TabsAttribute--><!--Device-TabsAttribute-minSidebarWidth(value: Optional<Length>): TabsAttribute-End-->
 
@@ -785,11 +785,11 @@ onBarDisplayModeChange(callback: Optional<Callback<TabBarDisplayMode>>)
 
 Triggered after the TabBar display mode changes.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-onBarDisplayModeChange(callback: Optional<Callback<TabBarDisplayMode>>): TabsAttribute--><!--Device-TabsAttribute-onBarDisplayModeChange(callback: Optional<Callback<TabBarDisplayMode>>): TabsAttribute-End-->
 
@@ -1084,11 +1084,11 @@ sidebarBackgroundBlurStyle(value: Optional<BlurStyle>)
 
 Sets the background blur style of the sidebar tab bar. This attribute takes effect only when the tab bar is displayed as a sidebar.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-sidebarBackgroundBlurStyle(value: Optional<BlurStyle>): TabsAttribute--><!--Device-TabsAttribute-sidebarBackgroundBlurStyle(value: Optional<BlurStyle>): TabsAttribute-End-->
 
@@ -1108,11 +1108,11 @@ sidebarBackgroundColor(value: Optional<ResourceColor>)
 
 Sets the background color of the sidebar tab bar. This attribute takes effect only when the tab bar is displayed as a sidebar.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-sidebarBackgroundColor(value: Optional<ResourceColor>): TabsAttribute--><!--Device-TabsAttribute-sidebarBackgroundColor(value: Optional<ResourceColor>): TabsAttribute-End-->
 
@@ -1156,11 +1156,11 @@ sidebarDisplayStyle(style: Optional<TabsSidebarDisplayStyle>)
 
 Sets the display style of the sidebar for the **Tab** component.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-sidebarDisplayStyle(style: Optional<TabsSidebarDisplayStyle>): TabsAttribute--><!--Device-TabsAttribute-sidebarDisplayStyle(style: Optional<TabsSidebarDisplayStyle>): TabsAttribute-End-->
 
@@ -1180,11 +1180,11 @@ sidebarDivider(value: Optional<DividerStyle>)
 
 Sets the divider between the sidebar tab bar and the content area. This attribute takes effect only when the tab bar is displayed as a sidebar.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-sidebarDivider(value: Optional<DividerStyle>): TabsAttribute--><!--Device-TabsAttribute-sidebarDivider(value: Optional<DividerStyle>): TabsAttribute-End-->
 
@@ -1228,11 +1228,11 @@ sidebarHeader(header: Optional<ComponentContent>)
 
 Sets the header content of the sidebar tab bar.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-sidebarHeader(header: Optional<ComponentContent>): TabsAttribute--><!--Device-TabsAttribute-sidebarHeader(header: Optional<ComponentContent>): TabsAttribute-End-->
 
@@ -1252,11 +1252,11 @@ sidebarPosition(position: Optional<BarPosition>)
 
 Sets the position of the sidebar tab bar. The sidebar tab bar position is not affected by the **vertical** attribute. It is always on the start or end side of the Tabs container, regardless of the **vertical** setting.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-sidebarPosition(position: Optional<BarPosition>): TabsAttribute--><!--Device-TabsAttribute-sidebarPosition(position: Optional<BarPosition>): TabsAttribute-End-->
 
@@ -1276,11 +1276,11 @@ sidebarSearchable(searchOptions?: TabsSidebarSearchableOptions)
 
 Sets the search options for the sidebar tab bar.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-sidebarSearchable(searchOptions?: TabsSidebarSearchableOptions): TabsAttribute--><!--Device-TabsAttribute-sidebarSearchable(searchOptions?: TabsSidebarSearchableOptions): TabsAttribute-End-->
 
@@ -1300,11 +1300,11 @@ sidebarSelectedBoardColor(value: Optional<ResourceColor>)
 
 Sets the selected color of the tab board in sidebar mode.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-sidebarSelectedBoardColor(value: Optional<ResourceColor>): TabsAttribute--><!--Device-TabsAttribute-sidebarSelectedBoardColor(value: Optional<ResourceColor>): TabsAttribute-End-->
 
@@ -1324,11 +1324,11 @@ sidebarSelectedIconColor(value: Optional<ResourceColor>)
 
 Sets the selected color of the tab icon in sidebar mode.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-sidebarSelectedIconColor(value: Optional<ResourceColor>): TabsAttribute--><!--Device-TabsAttribute-sidebarSelectedIconColor(value: Optional<ResourceColor>): TabsAttribute-End-->
 
@@ -1348,11 +1348,11 @@ sidebarSelectedTextColor(value: Optional<ResourceColor>)
 
 Sets the selected color of the tab text in sidebar mode.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-sidebarSelectedTextColor(value: Optional<ResourceColor>): TabsAttribute--><!--Device-TabsAttribute-sidebarSelectedTextColor(value: Optional<ResourceColor>): TabsAttribute-End-->
 
@@ -1372,11 +1372,11 @@ sidebarUnselectedIconColor(value: Optional<ResourceColor>)
 
 Sets the unselected color of the tab icon in sidebar mode.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-sidebarUnselectedIconColor(value: Optional<ResourceColor>): TabsAttribute--><!--Device-TabsAttribute-sidebarUnselectedIconColor(value: Optional<ResourceColor>): TabsAttribute-End-->
 
@@ -1396,11 +1396,11 @@ sidebarUnselectedTextColor(value: Optional<ResourceColor>)
 
 Sets the unselected color of the tab text in sidebar mode.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-sidebarUnselectedTextColor(value: Optional<ResourceColor>): TabsAttribute--><!--Device-TabsAttribute-sidebarUnselectedTextColor(value: Optional<ResourceColor>): TabsAttribute-End-->
 
@@ -1420,11 +1420,11 @@ sidebarWidth(value: Optional<Length>)
 
 Sets the width of the sidebar tab bar. This attribute takes effect only when the tab bar is displayed as a sidebar.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsAttribute-sidebarWidth(value: Optional<Length>): TabsAttribute--><!--Device-TabsAttribute-sidebarWidth(value: Optional<Length>): TabsAttribute-End-->
 
@@ -1435,6 +1435,30 @@ Sets the width of the sidebar tab bar. This attribute takes effect only when the
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[Length](../arkts-apis/arkts-arkui-length-t.md)&gt; | Yes | Width of the sidebar tab bar. <br>Default value: **240vp**. |
+
+## topBarFloatingStyle
+
+```TypeScript
+topBarFloatingStyle(style: Optional<TopFloatingTabBarStyle>)
+```
+
+Enable top floating style for bar. This is effective only when **barStyle** is set to **TabBarStyle.TOP** or **TabBarStyle.TOP_ADAPTABLE**.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-TabsAttribute-topBarFloatingStyle(style: Optional<TopFloatingTabBarStyle>): TabsAttribute--><!--Device-TabsAttribute-topBarFloatingStyle(style: Optional<TopFloatingTabBarStyle>): TabsAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[TopFloatingTabBarStyle](arkts-arkui-tabs-comp-topfloatingtabbarstyle-i.md)&gt; | Yes | top floating style for bar |
 
 ## vertical
 

@@ -1,4 +1,4 @@
-# AVScreenCaptureStrategy
+# AVScreenCaptureStrategy (System API)
 
 ```TypeScript
 interface AVScreenCaptureStrategy

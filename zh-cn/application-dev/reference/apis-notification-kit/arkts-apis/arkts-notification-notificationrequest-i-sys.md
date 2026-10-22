@@ -1,4 +1,4 @@
-# NotificationRequest
+# NotificationRequest（系统接口）
 
 ```TypeScript
 export interface NotificationRequest

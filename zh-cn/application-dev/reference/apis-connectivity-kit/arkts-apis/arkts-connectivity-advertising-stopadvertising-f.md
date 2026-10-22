@@ -26,7 +26,7 @@ function stopAdvertising(advertisingId: number): Promise<void>
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
-**参见：** [startAdvertising](arkts-connectivity-advertising-startadvertising-f.md) 开始星闪广播。
+**参见：** [startAdvertising](arkts-connectivity-advertising-startadvertising-f.md#startadvertising-1) 开始星闪广播。
 
 **参数：**
 

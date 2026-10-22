@@ -1,4 +1,4 @@
-# StreamUsage
+# StreamUsage (System API)
 
 ```TypeScript
 enum StreamUsage

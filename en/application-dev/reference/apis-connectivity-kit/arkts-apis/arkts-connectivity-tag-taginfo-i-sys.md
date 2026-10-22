@@ -1,4 +1,4 @@
-# TagInfo
+# TagInfo (System API)
 
 ```TypeScript
 export interface TagInfo

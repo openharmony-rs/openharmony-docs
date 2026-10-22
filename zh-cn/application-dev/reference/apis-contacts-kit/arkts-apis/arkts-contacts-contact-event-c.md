@@ -8,6 +8,10 @@ class Event
 
 **起始版本：** 7
 
+**废弃版本：** 26.2.0
+
+**替代接口：** [SignificantDate](arkts-contacts-contact-significantdate-c.md)
+
 <!--Device-contact-class Event--><!--Device-contact-class Event-End-->
 
 **系统能力：** SystemCapability.Applications.ContactsData
@@ -30,6 +34,10 @@ static readonly CUSTOM_LABEL: 0
 
 **起始版本：** 7
 
+**废弃版本：** 26.2.0
+
+**替代接口：** [DATE_TYPE_OTHER](arkts-contacts-contact-significantdatetype-e.md#date_type_other)
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Event-static readonly CUSTOM_LABEL: 0--><!--Device-Event-static readonly CUSTOM_LABEL: 0-End-->
@@ -47,6 +55,10 @@ static readonly EVENT_ANNIVERSARY: 1
 **类型：** 1
 
 **起始版本：** 7
+
+**废弃版本：** 26.2.0
+
+**替代接口：** [DATE_TYPE_ANNIVERSARY](arkts-contacts-contact-significantdatetype-e.md#date_type_anniversary)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -66,6 +78,10 @@ static readonly EVENT_BIRTHDAY: 3
 
 **起始版本：** 7
 
+**废弃版本：** 26.2.0
+
+**替代接口：** [DATE_TYPE_BIRTHDAY](arkts-contacts-contact-significantdatetype-e.md#date_type_birthday)
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Event-static readonly EVENT_BIRTHDAY: 3--><!--Device-Event-static readonly EVENT_BIRTHDAY: 3-End-->
@@ -83,6 +99,10 @@ static readonly EVENT_OTHER: 2
 **类型：** 2
 
 **起始版本：** 7
+
+**废弃版本：** 26.2.0
+
+**替代接口：** [DATE_TYPE_OTHER](arkts-contacts-contact-significantdatetype-e.md#date_type_other)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -102,6 +122,10 @@ eventDate: string
 
 **起始版本：** 7
 
+**废弃版本：** 26.2.0
+
+**替代接口：** [dateValue](arkts-contacts-contact-significantdate-c.md#datevalue)
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Event-eventDate: string--><!--Device-Event-eventDate: string-End-->
@@ -119,6 +143,10 @@ static readonly INVALID_LABEL_ID: -1
 **类型：** -1
 
 **起始版本：** 7
+
+**废弃版本：** 26.2.0
+
+**替代接口：** [DATE_TYPE_OTHER](arkts-contacts-contact-significantdatetype-e.md#date_type_other)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -138,6 +166,10 @@ labelId?: number
 
 **起始版本：** 7
 
+**废弃版本：** 26.2.0
+
+**替代接口：** [dateType](arkts-contacts-contact-significantdate-c.md#datetype)
+
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Event-labelId?: number--><!--Device-Event-labelId?: number-End-->
@@ -155,6 +187,10 @@ labelName?: string
 **类型：** string
 
 **起始版本：** 7
+
+**废弃版本：** 26.2.0
+
+**替代接口：** [dateName](arkts-contacts-contact-significantdate-c.md#datename)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

@@ -20,42 +20,42 @@ import { volumeManager } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getExternalDiskInfos](arkts-corefile-volumemanager-getexternaldiskinfos-f.md#getexternaldiskinfos) | 获取所有外置存储物理磁盘信息，使用Promise异步回调。 |
-| [getExternalVolumeInfos](arkts-corefile-volumemanager-getexternalvolumeinfos-f.md#getexternalvolumeinfos) | 获取所有外置存储卷设备信息，使用Promise异步回调。 |
+| [getExternalDiskInfos](arkts-corefile-volumemanager-getexternaldiskinfos-f.md#getexternaldiskinfos-1) | 获取所有外置存储物理磁盘信息，使用Promise异步回调。 |
+| [getExternalVolumeInfos](arkts-corefile-volumemanager-getexternalvolumeinfos-f.md#getexternalvolumeinfos-1) | 获取所有外置存储卷设备信息，使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [burn](arkts-corefile-volumemanager-burn-f-sys.md#burn) | 向卷设备刻录数据，使用Promise异步回调。 |
-| [createIsoImage](arkts-corefile-volumemanager-createisoimage-f-sys.md#createisoimage) | 从卷设备创建ISO镜像文件，使用Promise异步回调。 |
-| [createPartition](arkts-corefile-volumemanager-createpartition-f-sys.md#createpartition) | 在磁盘上创建分区，使用Promise异步回调。 |
-| [deletePartition](arkts-corefile-volumemanager-deletepartition-f-sys.md#deletepartition) | 删除磁盘上的分区，使用Promise异步回调。 |
-| [eject](arkts-corefile-volumemanager-eject-f-sys.md#eject) | 弹出卷设备，使用Promise异步回调。 |
-| [erase](arkts-corefile-volumemanager-erase-f-sys.md#erase) | 擦除卷设备，使用Promise异步回调。 |
-| [format](arkts-corefile-volumemanager-format-f-sys.md#format) | 对指定卷设备进行格式化，使用callback异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。 |
-| [format](arkts-corefile-volumemanager-format-f-sys.md#format) | 对指定卷设备进行格式化，使用Promise异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。 |
-| [formatPartition](arkts-corefile-volumemanager-formatpartition-f-sys.md#formatpartition) | 格式化磁盘上的分区，使用Promise异步回调。 |
-| [getAllDisks](arkts-corefile-volumemanager-getalldisks-f-sys.md#getalldisks) | 查询所有磁盘信息，使用Promise异步回调。 |
-| [getAllVolumes](arkts-corefile-volumemanager-getallvolumes-f-sys.md#getallvolumes) | 获取当前外置存储中所有卷设备信息，使用callback异步回调。 |
-| [getAllVolumes](arkts-corefile-volumemanager-getallvolumes-f-sys.md#getallvolumes) | 获取当前外置存储中所有卷设备信息，使用Promise异步回调。 |
-| [getDiskById](arkts-corefile-volumemanager-getdiskbyid-f-sys.md#getdiskbyid) | 根据磁盘ID查询磁盘信息，使用Promise异步回调。 |
-| [getOpProcess](arkts-corefile-volumemanager-getopprocess-f-sys.md#getopprocess) | 获取卷设备的操作进度，使用Promise异步回调。 |
-| [getPartitionTable](arkts-corefile-volumemanager-getpartitiontable-f-sys.md#getpartitiontable) | 根据磁盘ID获取分区表信息，使用Promise异步回调。 |
-| [getVolumeById](arkts-corefile-volumemanager-getvolumebyid-f-sys.md#getvolumebyid) | 通过指定卷设备id获得卷设备信息，使用callback异步回调。 |
-| [getVolumeById](arkts-corefile-volumemanager-getvolumebyid-f-sys.md#getvolumebyid) | 通过卷设备id获得指定卷设备信息，使用Promise异步回调。 |
-| [getVolumeByUuid](arkts-corefile-volumemanager-getvolumebyuuid-f-sys.md#getvolumebyuuid) | 通过卷设备uuid获得指定卷设备信息，使用callback异步回调。 |
-| [getVolumeByUuid](arkts-corefile-volumemanager-getvolumebyuuid-f-sys.md#getvolumebyuuid) | 通过卷设备uuid获得指定卷设备信息，使用Promise异步回调。 |
-| [isVolumeInUse](arkts-corefile-volumemanager-isvolumeinuse-f-sys.md#isvolumeinuse) | 查询指定卷设备是否正在使用，使用Promise异步回调。 |
-| [mount](arkts-corefile-volumemanager-mount-f-sys.md#mount) | 挂载指定卷设备，使用callback异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。 |
-| [mount](arkts-corefile-volumemanager-mount-f-sys.md#mount) | 挂载指定卷设备，使用Promise异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。 |
-| [partition](arkts-corefile-volumemanager-partition-f-sys.md#partition) | 对磁盘进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。 |
-| [partition](arkts-corefile-volumemanager-partition-f-sys.md#partition) | 对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。 |
-| [setVolumeDescription](arkts-corefile-volumemanager-setvolumedescription-f-sys.md#setvolumedescription) | 修改指定卷设备描述，使用callback异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。 |
-| [setVolumeDescription](arkts-corefile-volumemanager-setvolumedescription-f-sys.md#setvolumedescription) | 修改指定卷设备描述，使用Promise异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。 |
-| [unmount](arkts-corefile-volumemanager-unmount-f-sys.md#unmount) | 卸载指定卷设备，使用callback异步回调。 |
-| [unmount](arkts-corefile-volumemanager-unmount-f-sys.md#unmount) | 卸载指定卷设备，使用Promise异步回调。 |
+| [burn](arkts-corefile-volumemanager-burn-f-sys.md#burn-1) | 向卷设备刻录数据，使用Promise异步回调。 |
+| [createIsoImage](arkts-corefile-volumemanager-createisoimage-f-sys.md#createisoimage-1) | 从卷设备创建ISO镜像文件，使用Promise异步回调。 |
+| [createPartition](arkts-corefile-volumemanager-createpartition-f-sys.md#createpartition-1) | 在磁盘上创建分区，使用Promise异步回调。 |
+| [deletePartition](arkts-corefile-volumemanager-deletepartition-f-sys.md#deletepartition-1) | 删除磁盘上的分区，使用Promise异步回调。 |
+| [eject](arkts-corefile-volumemanager-eject-f-sys.md#eject-1) | 弹出卷设备，使用Promise异步回调。 |
+| [erase](arkts-corefile-volumemanager-erase-f-sys.md#erase-1) | 擦除卷设备，使用Promise异步回调。 |
+| [format](arkts-corefile-volumemanager-format-f-sys.md#format-1) | 对指定卷设备进行格式化，使用callback异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。 |
+| [format](arkts-corefile-volumemanager-format-f-sys.md#format-2) | 对指定卷设备进行格式化，使用Promise异步回调。当前仅支持vfat和exfat两种文件系统类型的格式化，只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。 |
+| [formatPartition](arkts-corefile-volumemanager-formatpartition-f-sys.md#formatpartition-1) | 格式化磁盘上的分区，使用Promise异步回调。 |
+| [getAllDisks](arkts-corefile-volumemanager-getalldisks-f-sys.md#getalldisks-1) | 查询所有磁盘信息，使用Promise异步回调。 |
+| [getAllVolumes](arkts-corefile-volumemanager-getallvolumes-f-sys.md#getallvolumes-1) | 获取当前外置存储中所有卷设备信息，使用callback异步回调。 |
+| [getAllVolumes](arkts-corefile-volumemanager-getallvolumes-f-sys.md#getallvolumes-2) | 获取当前外置存储中所有卷设备信息，使用Promise异步回调。 |
+| [getDiskById](arkts-corefile-volumemanager-getdiskbyid-f-sys.md#getdiskbyid-1) | 根据磁盘ID查询磁盘信息，使用Promise异步回调。 |
+| [getOpProcess](arkts-corefile-volumemanager-getopprocess-f-sys.md#getopprocess-1) | 获取卷设备的操作进度，使用Promise异步回调。 |
+| [getPartitionTable](arkts-corefile-volumemanager-getpartitiontable-f-sys.md#getpartitiontable-1) | 根据磁盘ID获取分区表信息，使用Promise异步回调。 |
+| [getVolumeById](arkts-corefile-volumemanager-getvolumebyid-f-sys.md#getvolumebyid-1) | 通过指定卷设备id获得卷设备信息，使用callback异步回调。 |
+| [getVolumeById](arkts-corefile-volumemanager-getvolumebyid-f-sys.md#getvolumebyid-2) | 通过卷设备id获得指定卷设备信息，使用Promise异步回调。 |
+| [getVolumeByUuid](arkts-corefile-volumemanager-getvolumebyuuid-f-sys.md#getvolumebyuuid-1) | 通过卷设备uuid获得指定卷设备信息，使用callback异步回调。 |
+| [getVolumeByUuid](arkts-corefile-volumemanager-getvolumebyuuid-f-sys.md#getvolumebyuuid-2) | 通过卷设备uuid获得指定卷设备信息，使用Promise异步回调。 |
+| [isVolumeInUse](arkts-corefile-volumemanager-isvolumeinuse-f-sys.md#isvolumeinuse-1) | 查询指定卷设备是否正在使用，使用Promise异步回调。 |
+| [mount](arkts-corefile-volumemanager-mount-f-sys.md#mount-1) | 挂载指定卷设备，使用callback异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。 |
+| [mount](arkts-corefile-volumemanager-mount-f-sys.md#mount-2) | 挂载指定卷设备，使用Promise异步回调。当前仅支持vfat、exfat以及ntfs三种文件系统的卷设备挂载。 |
+| [partition](arkts-corefile-volumemanager-partition-f-sys.md#partition-1) | 对磁盘进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。 |
+| [partition](arkts-corefile-volumemanager-partition-f-sys.md#partition-2) | 对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。 |
+| [setVolumeDescription](arkts-corefile-volumemanager-setvolumedescription-f-sys.md#setvolumedescription-1) | 修改指定卷设备描述，使用callback异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。 |
+| [setVolumeDescription](arkts-corefile-volumemanager-setvolumedescription-f-sys.md#setvolumedescription-2) | 修改指定卷设备描述，使用Promise异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。 |
+| [unmount](arkts-corefile-volumemanager-unmount-f-sys.md#unmount-1) | 卸载指定卷设备，使用callback异步回调。 |
+| [unmount](arkts-corefile-volumemanager-unmount-f-sys.md#unmount-2) | 卸载指定卷设备，使用Promise异步回调。 |
 <!--DelEnd-->
 
 ### 接口

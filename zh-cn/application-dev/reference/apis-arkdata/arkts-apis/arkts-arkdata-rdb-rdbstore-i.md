@@ -6,7 +6,7 @@ interface RdbStore
 
 提供管理关系数据库（RDB）方法的接口。
 
-在使用以下相关接口前，请使用[executeSql](#executesql)接口初始化数据库表结构和相关数据。
+在使用以下相关接口前，请使用[executeSql](#executesql-1)接口初始化数据库表结构和相关数据。
 
 **起始版本：** 7
 

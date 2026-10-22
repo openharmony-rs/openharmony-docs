@@ -44,7 +44,7 @@ NearLink address of a remote device. The address format is **11:22:33:AA:BB:FF**
 data: ArrayBuffer
 ```
 
-Data packet. When this parameter is used in [dataTransfer.writeData](arkts-connectivity-datatransfer-writedata-f.md), it indicates the data to be sent. When the parameter is used in [dataTransfer.onReadData](arkts-connectivity-datatransfer-onreaddata-f.md), it indicates the received data.
+Data packet. When this parameter is used in [dataTransfer.writeData](arkts-connectivity-datatransfer-writedata-f.md), it indicates the data to be sent. When the parameter is used in [dataTransfer.onReadData](arkts-connectivity-datatransfer-onreaddata-f.md#onreaddata-1), it indicates the received data.
 
 **Type:** ArrayBuffer
 

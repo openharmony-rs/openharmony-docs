@@ -1,4 +1,4 @@
-# EventCallbackInfo
+# EventCallbackInfo（系统接口）
 
 ```TypeScript
 interface EventCallbackInfo

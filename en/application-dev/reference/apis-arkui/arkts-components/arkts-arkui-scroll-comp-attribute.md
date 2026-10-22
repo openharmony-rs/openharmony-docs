@@ -590,7 +590,7 @@ Sets the scrollbar color.
 scrollBarColor(color: Color | number | string | Resource)
 ```
 
-Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor), this API supports the Resource type for the **color** parameter.
+Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor-1), this API supports the Resource type for the **color** parameter.
 
 **Since:** 22
 

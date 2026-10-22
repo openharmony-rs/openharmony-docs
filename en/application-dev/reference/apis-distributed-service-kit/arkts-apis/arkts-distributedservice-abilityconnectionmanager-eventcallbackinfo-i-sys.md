@@ -1,4 +1,4 @@
-# EventCallbackInfo
+# EventCallbackInfo (System API)
 
 ```TypeScript
 interface EventCallbackInfo

@@ -6,7 +6,7 @@ enum CommunicationDeviceType
 
 Enumerates the available device types for communication.
 
-**Since:** 12
+**Since:** 9
 
 <!--Device-audio-enum CommunicationDeviceType--><!--Device-audio-enum CommunicationDeviceType-End-->
 
@@ -20,7 +20,7 @@ SPEAKER = 2
 
 Speaker.
 
-**Since:** 12
+**Since:** 9
 
 <!--Device-CommunicationDeviceType-SPEAKER = 2--><!--Device-CommunicationDeviceType-SPEAKER = 2-End-->
 

@@ -37,7 +37,7 @@ declare class TextInputAttribute extends CommonMethod<TextInputAttribute>
 }
 
 > 当输入框设置padding为0时，可设置
-> [borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius)为0避免光标被截断。
+> [borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius-1)为0避免光标被截断。
 > 当光标在文本框边缘显示异常时，请检查是否是padding、borderRadius属性影响造成。
 > 
 > 从API version 10开始，单行输入框可设置.width('auto')使组件宽度自适应文本宽度，自适应时组件宽度受constraintSize属性以及父容器传递的最大最小宽度限制，其余使用方式参考
@@ -2230,7 +2230,7 @@ textAlign(value: TextAlign)
 
 支持TextAlign.Start、TextAlign.Center和TextAlign.End。TextAlign.JUSTIFY的对齐方式按照TextAlign.Start处理。
 
-可通过[align](arkts-arkui-common-comp-commonmethod-c.md#align)属性控制文本段落在垂直方向上的位置。此组件不支持通过align属性控制文本段落在水平方向上的位置。
+可通过[align](arkts-arkui-common-comp-commonmethod-c.md#align-1)属性控制文本段落在垂直方向上的位置。此组件不支持通过align属性控制文本段落在水平方向上的位置。
 
 - Alignment.TopStart、Alignment.Top、Alignment.TopEnd：内容顶部对齐。  
 - Alignment.Start、Alignment.Center、Alignment.End：内容垂直居中。  

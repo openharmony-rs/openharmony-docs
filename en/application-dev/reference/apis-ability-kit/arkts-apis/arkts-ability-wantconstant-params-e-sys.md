@@ -1,4 +1,4 @@
-# Params
+# Params (System API)
 
 ```TypeScript
 export enum Params

@@ -105,3 +105,19 @@ isLockFocusTrackingSupported(): boolean
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage. |
 
 **示例**
+
+```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isLockFocusTrackSupported(photoSession: camera.PhotoSession): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoSession.isLockFocusTrackingSupported();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The isLockFocusTrackingSupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```

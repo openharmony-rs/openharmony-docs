@@ -4,7 +4,7 @@
 export interface ImageStream extends Image
 ```
 
-ImageStream resource.
+Image stream type, which inherits from [Image](arkts-arkgraphics3d-sceneresources-image-i.md).
 
 **Inheritance/Implementation:** ImageStream extends [Image](arkts-arkgraphics3d-sceneresources-image-i.md)
 
@@ -20,7 +20,7 @@ ImageStream resource.
 readonly surfaceId: string
 ```
 
-The surfaceId of the ImageStream.
+Strem ID, consisting of numeric characters. The value must be an integer greater than 0.
 
 **Type:** string
 

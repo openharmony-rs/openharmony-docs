@@ -1,4 +1,4 @@
-# CloudFileCache
+# CloudFileCache (System API)
 
 ```TypeScript
 class CloudFileCache

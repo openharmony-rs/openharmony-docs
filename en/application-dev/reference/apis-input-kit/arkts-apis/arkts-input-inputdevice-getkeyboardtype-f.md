@@ -12,7 +12,7 @@ import { inputDevice } from '@kit.InputKit';
 function getKeyboardType(deviceId: number, callback: AsyncCallback<KeyboardType>): void
 ```
 
-Obtains the keyboard type of the input device, such as full keyboard and numeric keypad. The keyboard type of the input device is subject to the result returned by this API. This API uses an asynchronous callback to return the result.
+Obtains the keyboard type of the input device, such as full keyboard and numeric keypad. The keyboard type of the input device is subject to the result returned by this API. This API uses an asynchronous callback to return the result. Before calling this API, call [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md) first to obtain the ID of the input device.
 
 **Since:** 9
 
@@ -72,7 +72,7 @@ struct Index {
 function getKeyboardType(deviceId: number): Promise<KeyboardType>
 ```
 
-Obtains the keyboard type of an input device. This API uses a promise to return the result.
+Obtains the keyboard type of an input device. This API uses a promise to return the result. Before calling this API, call [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md) first to obtain the ID of the input device.
 
 **Since:** 9
 

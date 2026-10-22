@@ -405,7 +405,7 @@ Sets the color of the portion of the track between the minimum value and the thu
 selectedColor(selectedColor: ResourceColor | LinearGradient)
 ```
 
-Sets the color of the portion of the track between the minimum value and the thumb, representing the selected portion. Compared to [selectedColor](#selectedcolor), this API supports the **LinearGradient** type.
+Sets the color of the portion of the track between the minimum value and the thumb, representing the selected portion. Compared to [selectedColor](#selectedcolor-1), this API supports the **LinearGradient** type.
 
 **Since:** 18
 

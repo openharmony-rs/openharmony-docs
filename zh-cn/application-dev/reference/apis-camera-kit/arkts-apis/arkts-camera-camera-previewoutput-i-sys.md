@@ -1,4 +1,4 @@
-# PreviewOutput
+# PreviewOutput（系统接口）
 
 ```TypeScript
 interface PreviewOutput extends CameraOutput

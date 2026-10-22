@@ -28,7 +28,7 @@ function offScanModeChange(callback?: Callback<ScanMode>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ScanMode](arkts-connectivity-connection-scanmode-e.md)&gt; | 否 | 指定取消订阅的回调函数通知。若传参，则需与[connection.onScanModeChange](arkts-connectivity-connection-onscanmodechange-f.md)中的回调函数一致；若无传参，则取消订阅所有蓝牙扫描模式变更的回调函数通知。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ScanMode](arkts-connectivity-connection-scanmode-e.md)&gt; | 否 | 指定取消订阅的回调函数通知。若传参，则需与[connection.onScanModeChange](arkts-connectivity-connection-onscanmodechange-f.md#onscanmodechange-1)中的回调函数一致；若无传参，则取消订阅所有蓝牙扫描模式变更的回调函数通知。 |
 
 **错误码：**
 

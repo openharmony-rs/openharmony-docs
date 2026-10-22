@@ -1,4 +1,4 @@
-# SignatureInfo
+# SignatureInfo（系统接口）
 
 ```TypeScript
 export interface SignatureInfo

@@ -52,7 +52,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 checked(isChecked: Optional<boolean>)
 ```
 
-Sets whether the radio button is selected. Compared with [checked](#checked), this API supports the **undefined** type for the **isChecked** parameter.
+Sets whether the radio button is selected. Compared with [checked](#checked-1), this API supports the **undefined** type for the **isChecked** parameter.
 
 This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md) and [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 
@@ -104,7 +104,7 @@ Creates a content modifier.
 contentModifier(modifier: Optional<ContentModifier<RadioConfiguration>>)
 ```
 
-Creates a content modifier. Compared with [contentModifier](#contentmodifier)<sup>12+</sup >, this API supports the **undefined** type for the **modifier** parameter.
+Creates a content modifier. Compared with [contentModifier](#contentmodifier-1)<sup>12+</sup >, this API supports the **undefined** type for the **modifier** parameter.
 
 **Since:** 18
 
@@ -154,7 +154,7 @@ Triggered when the selected state of the radio button changes.
 onChange(callback: Optional<OnRadioChangeCallback>)
 ```
 
-Triggered when the selected state of the radio button changes. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
+Triggered when the selected state of the radio button changes. Compared with [onChange](#onchange-1), this API supports the **undefined** type for the **callback** parameter.
 
 **Since:** 18
 

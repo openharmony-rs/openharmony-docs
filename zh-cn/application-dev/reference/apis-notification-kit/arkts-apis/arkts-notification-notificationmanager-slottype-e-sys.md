@@ -1,4 +1,4 @@
-# SlotType
+# SlotType（系统接口）
 
 ```TypeScript
 export enum SlotType

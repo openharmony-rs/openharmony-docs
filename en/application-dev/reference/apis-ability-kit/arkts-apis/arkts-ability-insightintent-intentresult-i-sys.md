@@ -1,4 +1,4 @@
-# IntentResult
+# IntentResult (System API)
 
 ```TypeScript
 interface IntentResult<T>

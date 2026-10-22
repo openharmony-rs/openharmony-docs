@@ -90,3 +90,13 @@ isPaused?: boolean
 **系统能力：** SystemCapability.Notification.Notification
 
 **示例**
+
+```TypeScript
+// 该通知从3秒开始倒计时，并且时间展示在title中。
+time: {
+    initialTime: 3000,
+    isCountDown: true,
+    isPaused: false,
+    isInTitle: true,
+}
+```

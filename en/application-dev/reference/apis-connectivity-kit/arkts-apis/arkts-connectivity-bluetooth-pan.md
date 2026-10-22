@@ -22,7 +22,7 @@ import { pan } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [createPanProfile](arkts-connectivity-pan-createpanprofile-f.md#createpanprofile) | create the instance of pan profile. |
+| [createPanProfile](arkts-connectivity-pan-createpanprofile-f.md#createpanprofile-1) | create the instance of pan profile. |
 
 ### Interfaces
 

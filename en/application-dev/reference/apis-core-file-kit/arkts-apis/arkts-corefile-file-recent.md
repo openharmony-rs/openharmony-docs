@@ -34,9 +34,9 @@ import { recent } from '@kit.CoreFileKit';
 
 | Name | Description |
 | --- | --- |
-| [add](arkts-corefile-recent-add-f-sys.md#add) | Adds the file of the specified URI to the recent file list. |
-| [listFile](arkts-corefile-recent-listfile-f-sys.md#listfile) | Lists the files that are accessed recently. |
-| [remove](arkts-corefile-recent-remove-f-sys.md#remove) | Removes the file of the specified URI from the recent file list. |
+| [add](arkts-corefile-recent-add-f-sys.md#add-1) | Adds the file of the specified URI to the recent file list. |
+| [listFile](arkts-corefile-recent-listfile-f-sys.md#listfile-1) | Lists the files that are accessed recently. |
+| [remove](arkts-corefile-recent-remove-f-sys.md#remove-1) | Removes the file of the specified URI from the recent file list. |
 <!--DelEnd-->
 
 <!--Del-->

@@ -14,10 +14,6 @@ export declare function Chip(options: ChipOptions): void
 
 创建Chip组件。
 
-## 子组件
-
-无
-
 **起始版本：** 11
 
 **装饰器类型：** @Builder

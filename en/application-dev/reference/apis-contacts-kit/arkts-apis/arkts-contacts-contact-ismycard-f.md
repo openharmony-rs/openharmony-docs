@@ -18,7 +18,7 @@ Checks whether a contact is included in my card. This API uses an asynchronous c
 
 **Deprecated since:** 10
 
-**Substitutes:** [isMyCard](#ismycard)(context: Context, id: number, callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [isMyCard](#ismycard-2)(context: Context, id: number, callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -116,7 +116,7 @@ Checks whether a contact is included in my card. This API uses a promise to retu
 
 **Deprecated since:** 10
 
-**Substitutes:** [isMyCard](#ismycard)(context: Context, id: number)
+**Substitutes:** [isMyCard](#ismycard-4)(context: Context, id: number)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 

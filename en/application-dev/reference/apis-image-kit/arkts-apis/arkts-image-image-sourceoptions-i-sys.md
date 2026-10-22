@@ -1,4 +1,4 @@
-# SourceOptions
+# SourceOptions (System API)
 
 ```TypeScript
 interface SourceOptions

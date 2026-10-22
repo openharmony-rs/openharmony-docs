@@ -1,4 +1,4 @@
-# GattClientDevice
+# GattClientDevice (System API)
 
 ```TypeScript
 interface GattClientDevice

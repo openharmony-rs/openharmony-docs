@@ -20,7 +20,7 @@ Enumerates the key parameter types.
 COMMON_PARAMS_SPEC = 0
 ```
 
-Common parameters of the public and private keys. You can use [generateKeyPair](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md#generatekeypair) to randomly generate a key pair based on the parameters of this type.
+Common parameters of the public and private keys. You can use [generateKeyPair](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md#generatekeypair-1) to randomly generate a key pair based on the parameters of this type.
 
 **Since:** 10
 
@@ -38,7 +38,7 @@ Common parameters of the public and private keys. You can use [generateKeyPair](
 KEY_PAIR_SPEC = 3
 ```
 
-Full parameters of the public and private keys. You can use [generateKeyPair](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md#generatekeypair) to generate a key pair based on the parameters of this type.
+Full parameters of the public and private keys. You can use [generateKeyPair](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md#generatekeypair-1) to generate a key pair based on the parameters of this type.
 
 **Since:** 10
 
@@ -56,7 +56,7 @@ Full parameters of the public and private keys. You can use [generateKeyPair](ar
 PRIVATE_KEY_SPEC = 1
 ```
 
-Parameter of the private key. You can use [generatePriKey](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md#generateprikey) to generate a private key based on the parameters of this type.
+Parameter of the private key. You can use [generatePriKey](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md#generateprikey-1) to generate a private key based on the parameters of this type.
 
 **Since:** 10
 
@@ -74,7 +74,7 @@ Parameter of the private key. You can use [generatePriKey](arkts-cryptoarchitect
 PUBLIC_KEY_SPEC = 2
 ```
 
-Parameter of the public key. You can use [generatePubKey](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md#generatepubkey) to generate a public key based on the parameters of this type.
+Parameter of the public key. You can use [generatePubKey](arkts-cryptoarchitecture-cryptoframework-asykeygeneratorbyspec-i.md#generatepubkey-1) to generate a public key based on the parameters of this type.
 
 **Since:** 10
 

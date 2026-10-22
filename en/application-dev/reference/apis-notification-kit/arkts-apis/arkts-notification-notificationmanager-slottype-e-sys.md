@@ -1,4 +1,4 @@
-# SlotType
+# SlotType (System API)
 
 ```TypeScript
 export enum SlotType

@@ -1,4 +1,4 @@
-# ContextType
+# ContextType (System API)
 
 ```TypeScript
 export enum ContextType

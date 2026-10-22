@@ -24,7 +24,7 @@ Unsubscribes from the connection state change event of the port channel. This AP
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [onConnectionStateChanged](arkts-connectivity-datatransfer-onconnectionstatechanged-f.md) Subscribes to the connection state change event of the port channel.
+**See also:** [onConnectionStateChanged](arkts-connectivity-datatransfer-onconnectionstatechanged-f.md#onconnectionstatechanged-1) Subscribes to the connection state change event of the port channel.
 
 **Parameters:**
 

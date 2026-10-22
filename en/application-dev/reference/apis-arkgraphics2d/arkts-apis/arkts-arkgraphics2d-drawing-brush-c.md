@@ -437,7 +437,7 @@ brush.setColor(color);
 setColor(alpha: number, red: number, green: number, blue: number): void
 ```
 
-Sets a color for this brush. This API provides better performance than [setColor](#setcolor) and is recommended.
+Sets a color for this brush. This API provides better performance than [setColor](#setcolor-1) and is recommended.
 
 **Since:** 12
 
@@ -510,7 +510,7 @@ brush.setColor(0xffff0000);
 setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void
 ```
 
-Sets the color and standard color gamut for this brush. The difference between this method and [setColor](#setcolor) is that the color gamut can be set separately.
+Sets the color and standard color gamut for this brush. The difference between this method and [setColor](#setcolor-1) is that the color gamut can be set separately.
 
 **Since:** 20
 

@@ -1,4 +1,4 @@
-# WantAgentInfo
+# WantAgentInfo (System API)
 
 ```TypeScript
 export interface WantAgentInfo

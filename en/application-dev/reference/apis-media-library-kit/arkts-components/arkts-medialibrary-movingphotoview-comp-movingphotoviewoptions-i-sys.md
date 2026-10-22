@@ -1,4 +1,4 @@
-# MovingPhotoViewOptions
+# MovingPhotoViewOptions (System API)
 
 ```TypeScript
 declare interface MovingPhotoViewOptions

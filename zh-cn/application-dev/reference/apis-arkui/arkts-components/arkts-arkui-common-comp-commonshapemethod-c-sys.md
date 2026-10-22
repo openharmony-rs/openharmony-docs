@@ -1,4 +1,4 @@
-# CommonShapeMethod
+# CommonShapeMethod（系统接口）
 
 ```TypeScript
 declare class CommonShapeMethod<T> extends CommonMethod<T>

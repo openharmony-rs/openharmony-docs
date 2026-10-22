@@ -12,7 +12,7 @@ import { print } from '@kit.BasicServicesKit';
 function print(files: Array<string>, callback: AsyncCallback<PrintTask>): void
 ```
 
-Prints files. This API uses an asynchronous callback to return the result. To start the system print preview page, call the [print](#print) API and pass in context.
+Prints files. This API uses an asynchronous callback to return the result. To start the system print preview page, call the [print](#print-4) API and pass in context.
 
 **Since:** 10
 
@@ -68,7 +68,7 @@ print.print([fileUri.getUriFromPath(filePath)], (error: BusinessError, printTask
 function print(files: Array<string>): Promise<PrintTask>
 ```
 
-Prints files. This API uses a promise to return the result. To start the system print preview page, call the [print](#print) API and pass in context.
+Prints files. This API uses a promise to return the result. To start the system print preview page, call the [print](#print-4) API and pass in context.
 
 **Since:** 10
 

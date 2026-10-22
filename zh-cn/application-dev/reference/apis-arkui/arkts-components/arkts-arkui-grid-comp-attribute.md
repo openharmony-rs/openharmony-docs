@@ -76,7 +76,7 @@ cachedCount(count: number, show: boolean)
 
 设置主轴方向前后两侧分别预加载的网格行/列数，并配置是否显示预加载节点，只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了[virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll)开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效。
 
-设置缓存后，会在Grid显示区域沿主轴方向的前后两侧分别预加载cachedCount个网格行/列。垂直滚动时，上下两侧分别预加载cachedCount行；水平滚动时，左右两侧分别预加载cachedCount列。配合裁剪[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)或内容裁剪[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
+设置缓存后，会在Grid显示区域沿主轴方向的前后两侧分别预加载cachedCount个网格行/列。垂直滚动时，上下两侧分别预加载cachedCount行；水平滚动时，左右两侧分别预加载cachedCount列。配合裁剪[clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1)或内容裁剪[clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent)属性可以显示出预加载节点。
 
 **起始版本：** 14
 
@@ -200,7 +200,7 @@ columnsTemplate(value: string | ItemFillPolicy)
 
 设置当前网格组件布局列的数量，不设置时默认1列。
 
-当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate)。
+当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate-1)。
 
 当value设置为ItemFillPolicy类型时，将根据Grid组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
 
@@ -997,7 +997,7 @@ scrollBarColor(value: Color | number | string)
 scrollBarColor(color: Color | number | string | Resource)
 ```
 
-设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor)相比， 参数名改为color，并开始支持Resource类型。
+设置滚动条的颜色。与[scrollBarColor](#scrollbarcolor-1)相比， 参数名改为color，并开始支持Resource类型。
 
 **起始版本：** 22
 

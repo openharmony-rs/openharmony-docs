@@ -1,4 +1,4 @@
-# XComponentOptions
+# XComponentOptions (System API)
 
 ```TypeScript
 declare interface XComponentOptions

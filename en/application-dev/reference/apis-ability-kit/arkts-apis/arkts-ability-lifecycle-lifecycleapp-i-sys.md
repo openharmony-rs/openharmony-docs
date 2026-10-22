@@ -1,4 +1,4 @@
-# LifecycleApp
+# LifecycleApp (System API)
 
 ```TypeScript
 export declare interface LifecycleApp

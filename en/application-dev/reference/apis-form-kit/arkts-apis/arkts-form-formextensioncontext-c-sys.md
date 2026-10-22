@@ -1,4 +1,4 @@
-# FormExtensionContext
+# FormExtensionContext (System API)
 
 ```TypeScript
 declare class FormExtensionContext extends ExtensionContext

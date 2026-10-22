@@ -1,4 +1,4 @@
-# ColorMetrics
+# ColorMetrics (System API)
 
 ```TypeScript
 declare class ColorMetrics

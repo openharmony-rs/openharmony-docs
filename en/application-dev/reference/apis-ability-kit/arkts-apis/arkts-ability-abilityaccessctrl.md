@@ -66,7 +66,7 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, Permissions } from
 
 | Name | Description |
 | --- | --- |
-| [abilityAccessCtrl](arkts-ability-abilityaccessctrl-n.md) |  |
+| [abilityAccessCtrl](arkts-ability-abilityaccessctrl-n.md) | Provides permission verification and management capabilities for apps, supporting permission status checks before accessing protected resources, runtime authorization requests, settings page authorization guidance, and permission status change monitoring. |
 
 ### Types
 

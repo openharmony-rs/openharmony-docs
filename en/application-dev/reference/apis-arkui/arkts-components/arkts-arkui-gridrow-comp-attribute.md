@@ -4,9 +4,9 @@
 declare class GridRowAttribute extends CommonMethod<GridRowAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
+The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-In addition to the [universal events](arkts-arkui-common-comp-commonmethod-c.md), the following events are supported.
+The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 **Inheritance/Implementation:** GridRowAttribute extends CommonMethod&lt;GridRowAttribute&gt;
 

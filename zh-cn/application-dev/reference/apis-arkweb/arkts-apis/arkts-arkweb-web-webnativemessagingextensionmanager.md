@@ -26,8 +26,8 @@ import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
 
 | 名称 | 说明 |
 | --- | --- |
-| [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md#connectnative) | 将当前Ability连接到指定的Web原生消息扩展Ability。 |
-| [disconnectNative](arkts-arkweb-webnativemessagingextensionmanager-disconnectnative-f.md#disconnectnative) | 断开指定Web原生消息扩展连接。 |
+| [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md#connectnative-1) | 将当前Ability连接到指定的Web原生消息扩展Ability。 |
+| [disconnectNative](arkts-arkweb-webnativemessagingextensionmanager-disconnectnative-f.md#disconnectnative-1) | 断开指定Web原生消息扩展连接。 |
 
 ### 接口
 

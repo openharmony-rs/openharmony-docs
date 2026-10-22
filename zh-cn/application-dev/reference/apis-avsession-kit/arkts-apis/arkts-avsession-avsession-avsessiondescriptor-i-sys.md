@@ -1,4 +1,4 @@
-# AVSessionDescriptor
+# AVSessionDescriptor（系统接口）
 
 ```TypeScript
 interface AVSessionDescriptor

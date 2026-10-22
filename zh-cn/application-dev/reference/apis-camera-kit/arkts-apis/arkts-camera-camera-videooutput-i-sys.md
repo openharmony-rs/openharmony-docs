@@ -1,4 +1,4 @@
-# VideoOutput
+# VideoOutput（系统接口）
 
 ```TypeScript
 interface VideoOutput extends CameraOutput

@@ -1,4 +1,4 @@
-# PropertyKey
+# PropertyKey (System API)
 
 ```TypeScript
 enum PropertyKey
@@ -9,7 +9,7 @@ Enumerates the types of Exchangeable Image File Format (Exif) data of an image.
 - The key in the format example is **image.PropertyKey.*XXX*** (where *XXX* is the name of an enumeration name, for  
 example, **image.PropertyKey.NEW_SUBFILE_TYPE**).  
 - The format example is used only to show how to modify values and read results. For details about how to use them,  
-see [modifyImageProperty](arkts-image-image-imagesource-i.md#modifyimageproperty) (to modify a single Exif field), [modifyImageProperties](arkts-image-image-imagesource-i.md#modifyimageproperties) (to modify multiple Exif fields), [getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty) (to read a single Exif field), and [getImageProperties](arkts-image-image-imagesource-i.md#getimageproperties) (to read multiple Exif fields).
+see [modifyImageProperty](arkts-image-image-imagesource-i.md#modifyimageproperty-1) (to modify a single Exif field), [modifyImageProperties](arkts-image-image-imagesource-i.md#modifyimageproperties) (to modify multiple Exif fields), [getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty-1) (to read a single Exif field), and [getImageProperties](arkts-image-image-imagesource-i.md#getimageproperties) (to read multiple Exif fields).
 
 **Since:** 7
 

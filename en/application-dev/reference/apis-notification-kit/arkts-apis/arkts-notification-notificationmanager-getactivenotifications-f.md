@@ -22,7 +22,7 @@ This API is used to query the detailed information list of all stored notificati
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber) sets the notification badge number.
+**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber-1) sets the notification badge number.
 
 **Parameters:**
 
@@ -71,7 +71,7 @@ This API is used to query the detailed information list of all stored notificati
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber) sets the notification badge number.
+**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber-2) sets the notification badge number.
 
 **Return value:**
 

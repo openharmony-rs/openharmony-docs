@@ -22,10 +22,10 @@ import { backgroundLoader } from '@kit.BackgroundTasksKit';
 
 | Name | Description |
 | --- | --- |
-| [finishTask](arkts-backgroundtasks-backgroundloader-finishtask-f.md#finishtask) | Finish background load task. |
-| [getTaskInfo](arkts-backgroundtasks-backgroundloader-gettaskinfo-f.md#gettaskinfo) | Obtains the information of a background load task. This API returns the result via a promise. |
-| [registerTask](arkts-backgroundtasks-backgroundloader-registertask-f.md#registertask) | Register background load task. |
-| [unregisterTask](arkts-backgroundtasks-backgroundloader-unregistertask-f.md#unregistertask) | Unregister background load task. |
+| [finishTask](arkts-backgroundtasks-backgroundloader-finishtask-f.md#finishtask-1) | Finish background load task. |
+| [getTaskInfo](arkts-backgroundtasks-backgroundloader-gettaskinfo-f.md#gettaskinfo-1) | Obtains the information of a background load task. This API returns the result via a promise. |
+| [registerTask](arkts-backgroundtasks-backgroundloader-registertask-f.md#registertask-1) | Register background load task. |
+| [unregisterTask](arkts-backgroundtasks-backgroundloader-unregistertask-f.md#unregistertask-1) | Unregister background load task. |
 
 ### Interfaces
 

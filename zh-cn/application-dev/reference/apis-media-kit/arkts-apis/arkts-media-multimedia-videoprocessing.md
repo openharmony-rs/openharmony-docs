@@ -22,7 +22,7 @@ import { videoProcessing } from '@kit.MediaKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createVideoProcessor](arkts-media-videoprocessing-createvideoprocessor-f.md#createvideoprocessor) | 创建视频处理实例。 |
+| [createVideoProcessor](arkts-media-videoprocessing-createvideoprocessor-f.md#createvideoprocessor-1) | 创建视频处理实例。 |
 
 ### 接口
 

@@ -1,4 +1,4 @@
-# SceneMode
+# SceneMode（系统接口）
 
 ```TypeScript
 enum SceneMode

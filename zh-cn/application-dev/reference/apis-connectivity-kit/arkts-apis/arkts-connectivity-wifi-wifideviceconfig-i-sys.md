@@ -1,4 +1,4 @@
-# WifiDeviceConfig
+# WifiDeviceConfig（系统接口）
 
 ```TypeScript
 interface WifiDeviceConfig

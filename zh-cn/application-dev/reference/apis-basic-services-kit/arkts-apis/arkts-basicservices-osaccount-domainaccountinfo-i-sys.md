@@ -1,4 +1,4 @@
-# DomainAccountInfo
+# DomainAccountInfo（系统接口）
 
 ```TypeScript
 interface DomainAccountInfo

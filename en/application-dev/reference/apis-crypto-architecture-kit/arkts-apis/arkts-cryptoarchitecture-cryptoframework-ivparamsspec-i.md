@@ -4,14 +4,14 @@
 interface IvParamsSpec extends ParamsSpec
 ```
 
-Encapsulates the parameters for encryption or decryption using a block cipher mode that requires an IV. It is a child class of [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) and used as a parameter in [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init) for symmetric encryption or decryption.
+Encapsulates the parameters for encryption or decryption using a block cipher mode that requires an IV. It is a child class of [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md) and used as a parameter in [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-4) for symmetric encryption or decryption.
 
 <br>This is applicable to block cipher modes that require an IV, such as CBC, CTR, OFB, and CFB.
 
 > **NOTE:** 
 > 
 > Before passing a value to
-> [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init), specify
+> [init()](arkts-cryptoarchitecture-cryptoframework-cipher-i.md#init-4), specify
 > **algName** for its parent class [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md).
 
 **Inheritance/Implementation:** IvParamsSpec extends [ParamsSpec](arkts-cryptoarchitecture-cryptoframework-paramsspec-i.md)

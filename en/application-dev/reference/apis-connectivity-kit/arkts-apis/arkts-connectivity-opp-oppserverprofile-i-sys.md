@@ -1,4 +1,4 @@
-# OppServerProfile
+# OppServerProfile (System API)
 
 ```TypeScript
 interface OppServerProfile

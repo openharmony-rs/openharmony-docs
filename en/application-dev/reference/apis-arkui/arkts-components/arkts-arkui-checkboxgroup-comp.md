@@ -50,7 +50,7 @@ When this API is used with components that come with the caching mechanism, such
 
 | Name | Description |
 | --- | --- |
-| [OnCheckboxGroupChangeCallback](arkts-arkui-checkboxgroup-comp-oncheckboxgroupchangecallback-t.md) | Defines a CheckboxGroup callback when onChange. Anonymous Object Rectification. |
+| [OnCheckboxGroupChangeCallback](arkts-arkui-checkboxgroup-comp-oncheckboxgroupchangecallback-t.md) | Defines the callback invoked when the selection status of the checkbox group changes. |
 
 ### Enums
 

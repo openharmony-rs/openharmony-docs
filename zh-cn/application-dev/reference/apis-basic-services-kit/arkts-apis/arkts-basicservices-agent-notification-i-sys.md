@@ -1,4 +1,4 @@
-# Notification
+# Notification（系统接口）
 
 ```TypeScript
 interface Notification

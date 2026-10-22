@@ -22,25 +22,25 @@ import { manager } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [getLocalName](arkts-connectivity-manager-getlocalname-f.md#getlocalname) | Queries the NearLink name on the local device. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
-| [getPairedDevices](arkts-connectivity-manager-getpaireddevices-f.md#getpaireddevices) | Obtains the devices paired with the current device. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
-| [getState](arkts-connectivity-manager-getstate-f.md#getstate) | Queries the NearLink status. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
-| [isFrameType4Supported](arkts-connectivity-manager-isframetype4supported-f.md#isframetype4supported) | Checks whether the current device supports radio frame type 4. |
-| [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md#isnearlinksupported) | Checks whether the current device supports NearLink. |
-| [offStateChange](arkts-connectivity-manager-offstatechange-f.md#offstatechange) | Unsubscribes from the NearLink status change event. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
-| [onStateChange](arkts-connectivity-manager-onstatechange-f.md#onstatechange) | Subscribes to the NearLink status change event. This API uses an asynchronous callback to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [getLocalName](arkts-connectivity-manager-getlocalname-f.md#getlocalname-1) | Queries the NearLink name on the local device. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [getPairedDevices](arkts-connectivity-manager-getpaireddevices-f.md#getpaireddevices-1) | Obtains the devices paired with the current device. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [getState](arkts-connectivity-manager-getstate-f.md#getstate-1) | Queries the NearLink status. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [isFrameType4Supported](arkts-connectivity-manager-isframetype4supported-f.md#isframetype4supported-1) | Checks whether the current device supports radio frame type 4. |
+| [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md#isnearlinksupported-1) | Checks whether the current device supports NearLink. |
+| [offStateChange](arkts-connectivity-manager-offstatechange-f.md#offstatechange-1) | Unsubscribes from the NearLink status change event. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [onStateChange](arkts-connectivity-manager-onstatechange-f.md#onstatechange-1) | Subscribes to the NearLink status change event. This API uses an asynchronous callback to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [disable](arkts-connectivity-manager-disable-f-sys.md#disable) | Disables NearLink. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
-| [enable](arkts-connectivity-manager-enable-f-sys.md#enable) | Enables NearLink. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
-| [enableWithOptions](arkts-connectivity-manager-enablewithoptions-f-sys.md#enablewithoptions) | Enables NearLink with the specified options. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
-| [factoryReset](arkts-connectivity-manager-factoryreset-f-sys.md#factoryreset) | Restores a device to its factory settings. This API uses a promise to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
-| [getLocalAddress](arkts-connectivity-manager-getlocaladdress-f-sys.md#getlocaladdress) | Queries the MAC address of the local device. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
-| [setConnectionMode](arkts-connectivity-manager-setconnectionmode-f-sys.md#setconnectionmode) | Sets the connection mode. This API uses a promise to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [disable](arkts-connectivity-manager-disable-f-sys.md#disable-1) | Disables NearLink. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [enable](arkts-connectivity-manager-enable-f-sys.md#enable-1) | Enables NearLink. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [enableWithOptions](arkts-connectivity-manager-enablewithoptions-f-sys.md#enablewithoptions-1) | Enables NearLink with the specified options. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [factoryReset](arkts-connectivity-manager-factoryreset-f-sys.md#factoryreset-1) | Restores a device to its factory settings. This API uses a promise to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [getLocalAddress](arkts-connectivity-manager-getlocaladdress-f-sys.md#getlocaladdress-1) | Queries the MAC address of the local device. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [setConnectionMode](arkts-connectivity-manager-setconnectionmode-f-sys.md#setconnectionmode-1) | Sets the connection mode. This API uses a promise to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
 <!--DelEnd-->
 
 <!--Del-->

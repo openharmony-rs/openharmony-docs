@@ -24,29 +24,29 @@ import { request } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [attachGroup](arkts-basicservices-agent-attachgroup-f.md#attachgroup) | 向指定分组id中绑定多个下载任务id。使用Promise异步回调。 |
-| [create](arkts-basicservices-agent-create-f.md#create) | 创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用callback异步回调。 |
-| [create](arkts-basicservices-agent-create-f.md#create) | 创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用Promise异步回调。 |
-| [createGroup](arkts-basicservices-agent-creategroup-f.md#creategroup) | 根据[GroupConfig](arkts-basicservices-agent-groupconfig-i.md)分组条件创建分组，并返回分组id。使用Promise异步回调。 |
-| [deleteGroup](arkts-basicservices-agent-deletegroup-f.md#deletegroup) | 移除指定分组，后续不能再往该分组中添加任务id。使用Promise异步回调。 |
-| [getTask](arkts-basicservices-agent-gettask-f.md#gettask) | 根据任务id查询任务。使用Promise异步回调。 |
-| [remove](arkts-basicservices-agent-remove-f.md#remove) | 移除属于调用方的指定任务，如果正在处理中，该任务将被迫停止。使用callback异步回调。在调用后任务对象和其回调函数会被释放。 |
-| [remove](arkts-basicservices-agent-remove-f.md#remove) | 移除属于调用方的指定任务，如果正在处理中，该任务将被迫停止。使用Promise异步回调。在调用后任务对象和其回调函数会被释放。 |
-| [search](arkts-basicservices-agent-search-f.md#search) | 根据默认[Filter](arkts-basicservices-agent-filter-i.md)过滤条件查找任务id，即查询调用时刻至24小时前的所有任务的任务id。使用callback异步回调。 |
-| [search](arkts-basicservices-agent-search-f.md#search) | 根据[Filter](arkts-basicservices-agent-filter-i.md)过滤条件查找任务id。使用callback异步回调。 |
-| [search](arkts-basicservices-agent-search-f.md#search) | 根据[Filter](arkts-basicservices-agent-filter-i.md)过滤条件查找任务id。使用Promise异步回调。 |
-| [show](arkts-basicservices-agent-show-f.md#show) | 根据任务id查询任务的详细信息。使用callback异步回调。 |
-| [show](arkts-basicservices-agent-show-f.md#show) | 根据任务id查询任务的详细信息。使用Promise异步回调。 |
-| [touch](arkts-basicservices-agent-touch-f.md#touch) | 根据任务id和token查询任务的详细信息。使用callback异步回调。 |
-| [touch](arkts-basicservices-agent-touch-f.md#touch) | 根据任务id和token查询任务的详细信息。使用Promise异步回调。 |
+| [attachGroup](arkts-basicservices-agent-attachgroup-f.md#attachgroup-1) | 向指定分组id中绑定多个下载任务id。使用Promise异步回调。 |
+| [create](arkts-basicservices-agent-create-f.md#create-1) | 创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用callback异步回调。 |
+| [create](arkts-basicservices-agent-create-f.md#create-2) | 创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用Promise异步回调。 |
+| [createGroup](arkts-basicservices-agent-creategroup-f.md#creategroup-1) | 根据[GroupConfig](arkts-basicservices-agent-groupconfig-i.md)分组条件创建分组，并返回分组id。使用Promise异步回调。 |
+| [deleteGroup](arkts-basicservices-agent-deletegroup-f.md#deletegroup-1) | 移除指定分组，后续不能再往该分组中添加任务id。使用Promise异步回调。 |
+| [getTask](arkts-basicservices-agent-gettask-f.md#gettask-1) | 根据任务id查询任务。使用Promise异步回调。 |
+| [remove](arkts-basicservices-agent-remove-f.md#remove-1) | 移除属于调用方的指定任务，如果正在处理中，该任务将被迫停止。使用callback异步回调。在调用后任务对象和其回调函数会被释放。 |
+| [remove](arkts-basicservices-agent-remove-f.md#remove-2) | 移除属于调用方的指定任务，如果正在处理中，该任务将被迫停止。使用Promise异步回调。在调用后任务对象和其回调函数会被释放。 |
+| [search](arkts-basicservices-agent-search-f.md#search-1) | 根据默认[Filter](arkts-basicservices-agent-filter-i.md)过滤条件查找任务id，即查询调用时刻至24小时前的所有任务的任务id。使用callback异步回调。 |
+| [search](arkts-basicservices-agent-search-f.md#search-2) | 根据[Filter](arkts-basicservices-agent-filter-i.md)过滤条件查找任务id。使用callback异步回调。 |
+| [search](arkts-basicservices-agent-search-f.md#search-3) | 根据[Filter](arkts-basicservices-agent-filter-i.md)过滤条件查找任务id。使用Promise异步回调。 |
+| [show](arkts-basicservices-agent-show-f.md#show-1) | 根据任务id查询任务的详细信息。使用callback异步回调。 |
+| [show](arkts-basicservices-agent-show-f.md#show-2) | 根据任务id查询任务的详细信息。使用Promise异步回调。 |
+| [touch](arkts-basicservices-agent-touch-f.md#touch-1) | 根据任务id和token查询任务的详细信息。使用callback异步回调。 |
+| [touch](arkts-basicservices-agent-touch-f.md#touch-2) | 根据任务id和token查询任务的详细信息。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [query](arkts-basicservices-agent-query-f-sys.md#query) | Queries specified task details. Creates a group based on GroupConfig |
-| [query](arkts-basicservices-agent-query-f-sys.md#query) | Queries specified task details. |
+| [query](arkts-basicservices-agent-query-f-sys.md#query-1) | Queries specified task details. Creates a group based on GroupConfig |
+| [query](arkts-basicservices-agent-query-f-sys.md#query-2) | Queries specified task details. |
 <!--DelEnd-->
 
 ### 接口
@@ -62,7 +62,7 @@ import { request } from '@kit.BasicServicesKit';
 | [MinSpeed](arkts-basicservices-agent-minspeed-i.md) | 任务的最低限速配置。若任务速度持续低于设定值并达到指定时长，则任务失败，失败原因为[LOW_SPEED](arkts-basicservices-agent-faults-e.md)。 |
 | [Notification](arkts-basicservices-agent-notification-i.md) | 通知栏自定义信息。 |
 | [Progress](arkts-basicservices-agent-progress-i.md) | 任务进度的数据结构。 |
-| [Task](arkts-basicservices-agent-task-i.md) | 上传或下载任务。使用该方法前需要先获取Task对象，promise形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create)获取，callback形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create)获取。 |
+| [Task](arkts-basicservices-agent-task-i.md) | 上传或下载任务。使用该方法前需要先获取Task对象，promise形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create-2)获取，callback形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create-1)获取。 |
 | [TaskInfo](arkts-basicservices-agent-taskinfo-i.md) | 查询结果的任务信息数据结构，提供普通查询和系统查询，两种字段的可见范围不同。 |
 | [Timeout](arkts-basicservices-agent-timeout-i.md) | 任务的超时配置。任务处于等待状态的时间不参与计算，上传下载任务会存在以下任务等待的原因: [WaitingReason<sup>20+</sup>](arkts-basicservices-agent-waitingreason-e.md)。 |
 

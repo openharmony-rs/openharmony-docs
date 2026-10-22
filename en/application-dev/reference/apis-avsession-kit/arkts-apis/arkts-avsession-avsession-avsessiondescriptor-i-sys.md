@@ -1,4 +1,4 @@
-# AVSessionDescriptor
+# AVSessionDescriptor (System API)
 
 ```TypeScript
 interface AVSessionDescriptor

@@ -60,7 +60,7 @@ displayId?: number
 drawableRect: Rect
 ```
 
-窗口内的可绘制区域尺寸，其中左边界上边界是相对于窗口左上顶点计算。在Stage模型下，需要在调用[loadContent()](arkts-arkui-window-window-i.md#loadcontent)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent)加载页面内容后获取该属性。
+窗口内的可绘制区域尺寸，其中左边界上边界是相对于窗口左上顶点计算。在Stage模型下，需要在调用[loadContent()](arkts-arkui-window-window-i.md#loadcontent-1)或[setUIContent()](arkts-arkui-window-window-i.md#setuicontent-1)加载页面内容后获取该属性。
 
 **类型：** [Rect](arkts-arkui-window-rect-i.md)
 
@@ -188,7 +188,7 @@ isLayoutFullScreen: boolean
 isPrivacyMode: boolean
 ```
 
-窗口是否为隐私模式。true表示窗口为隐私模式；false表示窗口为非隐私模式。可通过[setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode)设置窗口的隐私模式。
+窗口是否为隐私模式。true表示窗口为隐私模式；false表示窗口为非隐私模式。可通过[setWindowPrivacyMode()](arkts-arkui-window-window-i.md#setwindowprivacymode-2)设置窗口的隐私模式。
 
 **类型：** boolean
 

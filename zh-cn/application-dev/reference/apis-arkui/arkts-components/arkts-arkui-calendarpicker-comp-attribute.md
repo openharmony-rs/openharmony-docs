@@ -47,7 +47,7 @@ edgeAlign(alignType: CalendarAlign, offset?: Offset)
 edgeAlign(alignType: Optional<CalendarAlign>, offset?: Offset)
 ```
 
-设置选择器与入口组件的对齐方式。与[edgeAlign](#edgealign)相比，alignType参数新增了对undefined类型的支持。
+设置选择器与入口组件的对齐方式。与[edgeAlign](#edgealign-1)相比，alignType参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -144,7 +144,7 @@ onChange(callback: Callback<Date>)
 onChange(callback: Optional<Callback<Date>>)
 ```
 
-选择日期时触发该事件。不能通过双向绑定的状态变量触发。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
+选择日期时触发该事件。不能通过双向绑定的状态变量触发。与[onChange](#onchange-1)相比，callback参数新增了对undefined类型的支持。
 
 > **说明：** 
 > 
@@ -196,7 +196,7 @@ textStyle(value: PickerTextStyle)
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置入口区的文本颜色、字号、字体粗细。与[textStyle](#textstyle)相比，style参数新增了对undefined类型的支持。
+设置入口区的文本颜色、字号、字体粗细。与[textStyle](#textstyle-1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 

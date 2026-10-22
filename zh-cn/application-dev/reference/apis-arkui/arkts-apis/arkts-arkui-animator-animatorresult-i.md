@@ -274,7 +274,7 @@ struct AnimatorTest {
 reset(options: AnimatorOptions | SimpleAnimatorOptions): void
 ```
 
-重置当前animator动画参数。与[reset](#reset)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。建议在动画未开始播放或播放结束后（[onFinish](#onfinish)或[onCancel](#oncancel)回调触发后）调用此方法，重新设置动画参数后调用[play](#play)启动新动画。
+重置当前animator动画参数。与[reset](#reset-1)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。建议在动画未开始播放或播放结束后（[onFinish](#onfinish)或[onCancel](#oncancel)回调触发后）调用此方法，重新设置动画参数后调用[play](#play)启动新动画。
 
 **起始版本：** 18
 

@@ -1,4 +1,4 @@
-# GridLayoutOptions
+# GridLayoutOptions（系统接口）
 
 ```TypeScript
 declare interface GridLayoutOptions

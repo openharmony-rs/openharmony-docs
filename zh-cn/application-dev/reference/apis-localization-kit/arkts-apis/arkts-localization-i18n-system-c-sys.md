@@ -1,4 +1,4 @@
-# System
+# System（系统接口）
 
 ```TypeScript
 export class System

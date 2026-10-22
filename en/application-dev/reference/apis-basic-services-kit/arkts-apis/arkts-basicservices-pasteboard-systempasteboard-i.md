@@ -374,7 +374,7 @@ getDataSync(): PasteData
 
 Obtains a **PasteData** object from the pasteboard. This API returns the result synchronously. This API is used to obtain pasteboard data synchronously in key service processes or process pasteboard data immediately.
 
-Do not call this API in the UI thread to prevent blocking the UI. Use the asynchronous API [getData](#getdata) to process a large amount of data or remote data.
+Do not call this API in the UI thread to prevent blocking the UI. Use the asynchronous API [getData](#getdata-1) to process a large amount of data or remote data.
 
 While most applications must [request permissions to access the pasteboard](../../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
@@ -1369,7 +1369,7 @@ Clears the system pasteboard. This API uses an asynchronous callback to return t
 
 **Deprecated since:** 9
 
-**Substitutes:** [clearData](#cleardata)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [clearData](#cleardata-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-SystemPasteboard-clear(callback: AsyncCallback<void>): void--><!--Device-SystemPasteboard-clear(callback: AsyncCallback<void>): void-End-->
 
@@ -1449,7 +1449,7 @@ Obtains a **PasteData** object from the pasteboard. This API uses an asynchronou
 
 **Deprecated since:** 9
 
-**Substitutes:** [getData](#getdata)(callback: AsyncCallback&lt;PasteData&gt;)
+**Substitutes:** [getData](#getdata-1)(callback: AsyncCallback&lt;PasteData&gt;)
 
 <!--Device-SystemPasteboard-getPasteData(callback: AsyncCallback<PasteData>): void--><!--Device-SystemPasteboard-getPasteData(callback: AsyncCallback<PasteData>): void-End-->
 
@@ -1537,7 +1537,7 @@ Checks whether the system pasteboard contains data. This API uses an asynchronou
 
 **Deprecated since:** 9
 
-**Substitutes:** [hasData](#hasdata)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [hasData](#hasdata-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-SystemPasteboard-hasPasteData(callback: AsyncCallback<boolean>): void--><!--Device-SystemPasteboard-hasPasteData(callback: AsyncCallback<boolean>): void-End-->
 
@@ -1619,7 +1619,7 @@ Writes a **PasteData** object to the system pasteboard. This API uses an asynchr
 
 **Deprecated since:** 9
 
-**Substitutes:** [setData](#setdata)(data: PasteData, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setData](#setdata-1)(data: PasteData, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-SystemPasteboard-setPasteData(data: PasteData, callback: AsyncCallback<void>): void--><!--Device-SystemPasteboard-setPasteData(data: PasteData, callback: AsyncCallback<void>): void-End-->
 
@@ -1664,7 +1664,7 @@ Writes a **PasteData** object to the system pasteboard. This API uses a promise 
 
 **Deprecated since:** 9
 
-**Substitutes:** [setData](#setdata)(data: PasteData)
+**Substitutes:** [setData](#setdata-2)(data: PasteData)
 
 <!--Device-SystemPasteboard-setPasteData(data: PasteData): Promise<void>--><!--Device-SystemPasteboard-setPasteData(data: PasteData): Promise<void>-End-->
 

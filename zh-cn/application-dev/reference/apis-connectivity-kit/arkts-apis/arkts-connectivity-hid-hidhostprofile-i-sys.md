@@ -1,4 +1,4 @@
-# HidHostProfile
+# HidHostProfile（系统接口）
 
 ```TypeScript
 interface HidHostProfile extends BaseProfile

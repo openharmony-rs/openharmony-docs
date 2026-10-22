@@ -24,10 +24,10 @@ import { inputConsumer } from '@kit.InputKit';
 
 | Name | Description |
 | --- | --- |
-| [getAllSystemHotkeys](arkts-input-inputconsumer-getallsystemhotkeys-f.md#getallsystemhotkeys) | Obtains all system hotkeys. This API uses a promise to return the result. |
+| [getAllSystemHotkeys](arkts-input-inputconsumer-getallsystemhotkeys-f.md#getallsystemhotkeys-1) | Obtains all system hotkeys. This API uses a promise to return the result. |
 | [off('hotkeyChange')](arkts-input-inputconsumer-off-f.md#offhotkeychange) | Unsubscribes from application hotkey change events. This API uses an asynchronous callback to return the result. |
 | [off('keyPressed')](arkts-input-inputconsumer-off-f.md#offkeypressed) | Unsubscribes from key press events. This API uses an asynchronous callback to return the result. If the API call is successful, the system's default response to the key event will be resumed; that is, system-level actions, such as volume adjustment, will be triggered normally. |
-| [on('hotkeyChange')](arkts-input-inputconsumer-on-f.md#onhotkeychange) | Subscribes to application hotkey change events. This API obtains combination key input events that meet the specified conditions, and uses an asynchronous callback to return the result. |
+| [on('hotkeyChange')](arkts-input-inputconsumer-on-f.md#onhotkeychange) | Subscribes to application hotkey change events. This API obtains combination key input events that meet the specified conditions, and uses an asynchronous callback to return the result. Before calling this API, you are advised to call [getAllSystemHotkeys](arkts-input-inputconsumer-getallsystemhotkeys-f.md) first to obtain the system hotkey list and check that the combination keys to be subscribed to are not occupied by the system, preventing subscription failures. |
 | [on('keyPressed')](arkts-input-inputconsumer-on-f.md#onkeypressed) | Subscribes to key press events. If the current application is in the foreground focus window, a callback is triggered when the specified key is pressed. This API uses an asynchronous callback to return the result. |
 
 <!--Del-->
@@ -35,12 +35,12 @@ import { inputConsumer } from '@kit.InputKit';
 
 | Name | Description |
 | --- | --- |
-| [getShieldStatus](arkts-input-inputconsumer-getshieldstatus-f-sys.md#getshieldstatus) | Obtains the system hotkey shield status. |
+| [getShieldStatus](arkts-input-inputconsumer-getshieldstatus-f-sys.md#getshieldstatus-1) | Obtains the system hotkey shield status. |
 | [off('key')](arkts-input-inputconsumer-off-f-sys.md#offkey) | Unsubscribes from system hotkeys. This API uses an asynchronous callback to return the result. |
-| [offKey](arkts-input-inputconsumer-offkey-f-sys.md#offkey) | Unsubscribes from system hotkeys. This API uses an asynchronous callback to return the result. |
+| [offKey](arkts-input-inputconsumer-offkey-f-sys.md#offkey-2) | Unsubscribes from system hotkeys. This API uses an asynchronous callback to return the result. |
 | [on('key')](arkts-input-inputconsumer-on-f-sys.md#onkey) | Subscribes to system hotkeys. This API uses an asynchronous callback to return the result. |
-| [onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey) | Subscribes to key combinations (key command mode). You can specify different trigger modes through triggerType. When a key combination input event that meets the conditions occurs, this API uses an asynchronous callback to return the result. |
-| [setShieldStatus](arkts-input-inputconsumer-setshieldstatus-f-sys.md#setshieldstatus) | Sets the system hotkey shield status. |
+| [onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey-2) | Subscribes to key combinations (key command mode). You can specify different trigger modes through triggerType. When a key combination input event that meets the conditions occurs, this API uses an asynchronous callback to return the result. |
+| [setShieldStatus](arkts-input-inputconsumer-setshieldstatus-f-sys.md#setshieldstatus-1) | Sets the system hotkey shield status. |
 <!--DelEnd-->
 
 ### Interfaces

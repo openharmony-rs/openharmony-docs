@@ -1,4 +1,4 @@
-# FileEntity
+# FileEntity（系统接口）
 
 ```TypeScript
 interface FileEntity extends IntentEntity

@@ -18,7 +18,7 @@ Queries my card. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryMyCard](#querymycard)(context: Context, callback: AsyncCallback&lt;Contact&gt;)
+**Substitutes:** [queryMyCard](#querymycard-2)(context: Context, callback: AsyncCallback&lt;Contact&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -114,7 +114,7 @@ Queries my card. (The contact attribute list can be imported.) This API uses an 
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryMyCard](#querymycard)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
+**Substitutes:** [queryMyCard](#querymycard-4)(context: Context, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 
@@ -216,7 +216,7 @@ Queries my card. (The contact attribute list can be imported.) This API uses a p
 
 **Deprecated since:** 10
 
-**Substitutes:** [queryMyCard](#querymycard)(context: Context, attrs?: ContactAttributes)
+**Substitutes:** [queryMyCard](#querymycard-6)(context: Context, attrs?: ContactAttributes)
 
 **Required permissions:** ohos.permission.READ_CONTACTS
 

@@ -4,7 +4,7 @@
 declare interface PickerDialogButtonStyle
 ```
 
-Provide an interface for the button style of picker
+提供选择器按钮样式的接口。
 
 **起始版本：** 12
 
@@ -18,7 +18,7 @@ Provide an interface for the button style of picker
 backgroundColor?: ResourceColor
 ```
 
-Describes the button background color.
+描述按钮背景颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -38,7 +38,7 @@ Describes the button background color.
 borderRadius?: Length | BorderRadiuses
 ```
 
-Describes the button border radius.
+圆角半径，用于设置按钮的圆角大小。
 
 **类型：** [Length](../arkts-apis/arkts-arkui-length-t.md) &#124; [BorderRadiuses](../arkts-apis/arkts-arkui-borderradiuses-t.md)
 
@@ -58,7 +58,7 @@ Describes the button border radius.
 fontColor?: ResourceColor
 ```
 
-Describes the button text color.
+描述按钮文本颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -78,7 +78,7 @@ Describes the button text color.
 fontFamily?: Resource | string
 ```
 
-Describes the button font family.
+描述按钮字体族。
 
 **类型：** [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; string
 
@@ -98,7 +98,7 @@ Describes the button font family.
 fontSize?: Length
 ```
 
-Describes the button text size.
+描述按钮文本大小。
 
 **类型：** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -118,7 +118,7 @@ Describes the button text size.
 fontStyle?: FontStyle
 ```
 
-Describes the button font style.
+描述按钮字体样式。
 
 **类型：** [FontStyle](../arkts-apis/arkts-arkui-fontstyle-e.md)
 
@@ -138,7 +138,7 @@ Describes the button font style.
 fontWeight?: FontWeight | number | string
 ```
 
-Describes the button font weight.
+描述按钮字体粗细。
 
 **类型：** [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; number &#124; string
 
@@ -158,7 +158,7 @@ Describes the button font weight.
 primary?: boolean
 ```
 
-Define whether the button default to responding to the Enter key
+控制弹出弹窗后，Enter键是否默认由该按钮响应。
 
 **类型：** boolean
 
@@ -178,7 +178,7 @@ Define whether the button default to responding to the Enter key
 role?: ButtonRole
 ```
 
-Describes the button role.
+描述按钮角色。
 
 **类型：** [ButtonRole](arkts-arkui-button-comp-buttonrole-e.md)
 
@@ -198,7 +198,7 @@ Describes the button role.
 style?: ButtonStyleMode
 ```
 
-Describes the button style.
+描述按钮样式。
 
 **类型：** [ButtonStyleMode](arkts-arkui-button-comp-buttonstylemode-e.md)
 
@@ -218,7 +218,7 @@ Describes the button style.
 type?: ButtonType
 ```
 
-Describes the button style.
+描述按钮样式。
 
 **类型：** [ButtonType](arkts-arkui-button-comp-buttontype-e.md)
 

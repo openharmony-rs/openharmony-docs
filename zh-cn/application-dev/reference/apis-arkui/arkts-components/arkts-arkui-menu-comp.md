@@ -4,7 +4,7 @@
 
 > **说明：** 
 
-> - Menu组件需和[bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu)或[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)方法配合使用，不支持作为普通组件单独使用。
+> - Menu组件需和[bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu-1)或[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)方法配合使用，不支持作为普通组件单独使用。
 
 ## 子组件
 
@@ -38,7 +38,7 @@ Menu()
 > 
 > - Menu支持设置的最小宽度为64vp。
 > 
-> - Menu不支持的通用属性：外描边设置下的属性、[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow)。
+> - Menu不支持的通用属性：外描边设置下的属性、[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow-1)。
 
 **起始版本：** 9
 

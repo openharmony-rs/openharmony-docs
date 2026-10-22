@@ -12,7 +12,7 @@ import { proxyChannelManager } from '@kit.DistributedServiceKit';
 function closeProxyChannel(channelId: number): void
 ```
 
-Closes an opened proxy channel. This is applicable to scenarios where the phone-side app no longer needs to communicate with the wearable device-side app, such as actively releasing channel resources after completing a data synchronization task. This method must be used in pair with [openProxyChannel](arkts-distributedservice-proxychannelmanager-openproxychannel-f.md). Call this method to close the channel and release resources after use. After the channel is closed, the registered **receiveData** and **channelStateChange** callbacks are automatically unsubscribed, and data being transmitted is interrupted. Failure to close the proxy channel in a timely manner may cause channel resource leakage.
+Closes a proxy channel that has been opened. This method is applicable to scenarios where the mobile app no longer needs to communicate with the wearable app, for example, when the channel resources need to be released after a data synchronization task is complete. This method must be used together with [openProxyChannel](arkts-distributedservice-proxychannelmanager-openproxychannel-f.md). After using the proxy channel, call this method to close the channel and release resources. After the channel is closed, the registered **receiveData** and **channelStateChange** callbacks will be automatically unregistered, and the data that is being transmitted will be interrupted. If the proxy channel is not closed in a timely manner, a channel resource leak may occur.
 
 **Since:** 20
 
@@ -28,7 +28,7 @@ Closes an opened proxy channel. This is applicable to scenarios where the phone-
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| channelId | number | Yes | Channel ID obtained when opening the proxy channel. The value range is 1 to 2147483647. Using an invalid or closed channelId returns error code 32390004. If the value is out of range, error code 32390006 is returned. The channelId takes effect only when the proxy channel is available, and becomes unavailable after the channel is closed or disconnected. |
+| channelId | number | Yes | Proxy channel ID obtained when the proxy channel is opened. The value ranges from 1 to 2147483647. If an invalid or closed channel ID is used, error code 32390004 will be returned. If the value is out of range, error code 32390006 will be returned. This parameter takes effect only when the proxy channel is available. After the channel is closed or disconnected, the channel ID becomes unavailable. |
 
 **Error codes:**
 

@@ -20,8 +20,8 @@ import { pbap } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [createPbapClientProfile](arkts-connectivity-pbap-createpbapclientprofile-f.md#createpbapclientprofile) | create the instance of PBAP client profile. |
-| [createPbapServerProfile](arkts-connectivity-pbap-createpbapserverprofile-f.md#createpbapserverprofile) | create the instance of PBAP server profile. |
+| [createPbapClientProfile](arkts-connectivity-pbap-createpbapclientprofile-f.md#createpbapclientprofile-1) | create the instance of PBAP client profile. |
+| [createPbapServerProfile](arkts-connectivity-pbap-createpbapserverprofile-f.md#createpbapserverprofile-1) | create the instance of PBAP server profile. |
 
 <!--Del-->
 ### Interfaces(System API)

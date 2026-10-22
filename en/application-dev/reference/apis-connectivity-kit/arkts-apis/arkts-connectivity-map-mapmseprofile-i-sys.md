@@ -1,4 +1,4 @@
-# MapMseProfile
+# MapMseProfile (System API)
 
 ```TypeScript
 interface MapMseProfile extends BaseProfile

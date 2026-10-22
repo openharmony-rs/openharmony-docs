@@ -1,10 +1,10 @@
-# TriggerInfo
+# TriggerInfo（系统接口）
 
 ```TypeScript
 export interface TriggerInfo
 ```
 
-作为[trigger](arkts-ability-wantagent-trigger-f.md)的入参定义触发WantAgent所需要的信息。
+作为[trigger](arkts-ability-wantagent-trigger-f.md#trigger-1)的入参定义触发WantAgent所需要的信息。
 
 **起始版本：** 7
 

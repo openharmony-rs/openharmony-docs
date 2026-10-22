@@ -1,4 +1,4 @@
-# Scenario
+# Scenario（系统接口）
 
 ```TypeScript
 export enum Scenario

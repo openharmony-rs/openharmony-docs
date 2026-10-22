@@ -34,7 +34,7 @@ The Bluetooth pairing relationship is deleted, and the channel is unavailable.
 CHANNEL_EXCEPTION_SOFTWARE_FAILED = 2
 ```
 
-The channel is unavailable due to a software exception, for example, an internal protocol stack error or resource allocation failure. Check the logs to locate the specific cause.
+The channel is unavailable due to a software exception, such as an internal protocol stack error or resource allocation failure. You are advised to check the logs to locate the cause.
 
 **Since:** 20
 

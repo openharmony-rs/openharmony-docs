@@ -22,18 +22,18 @@ import { particleAbility } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [acquireDataAbilityHelper](arkts-ability-particleability-acquiredataabilityhelper-f.md#acquiredataabilityhelper) | Obtains a dataAbilityHelper object. |
-| [connectAbility](arkts-ability-particleability-connectability-f.md#connectability) | Connects this ability to a ServiceAbility. |
-| [disconnectAbility](arkts-ability-particleability-disconnectability-f.md#disconnectability) | Disconnects this ability from a specific ServiceAbility. This API uses an asynchronous callback to return the result. |
-| [disconnectAbility](arkts-ability-particleability-disconnectability-f.md#disconnectability) | Disconnects this ability from a specific ServiceAbility. This API uses a promise to return the result. |
-| [startAbility](arkts-ability-particleability-startability-f.md#startability) | Starts a ParticleAbility. This API uses an asynchronous callback to return the result. |
-| [startAbility](arkts-ability-particleability-startability-f.md#startability) | Starts a ParticleAbility. This API uses a promise to return the result. |
-| [terminateSelf](arkts-ability-particleability-terminateself-f.md#terminateself) | Terminates this ParticleAbility. This API uses an asynchronous callback to return the result. |
-| [terminateSelf](arkts-ability-particleability-terminateself-f.md#terminateself) | Terminates this ParticleAbility. This API uses a promise to return the result. |
-| [cancelBackgroundRunning](arkts-ability-particleability-cancelbackgroundrunning-f.md#cancelbackgroundrunning) | Requests to cancel a continuous task from the system. This API uses an asynchronous callback to return the result. |
-| [cancelBackgroundRunning](arkts-ability-particleability-cancelbackgroundrunning-f.md#cancelbackgroundrunning) | Requests to cancel a continuous task from the system. This API uses a promise to return the result. |
-| [startBackgroundRunning](arkts-ability-particleability-startbackgroundrunning-f.md#startbackgroundrunning) | Requests a continuous task from the system. This API uses an asynchronous callback to return the result. |
-| [startBackgroundRunning](arkts-ability-particleability-startbackgroundrunning-f.md#startbackgroundrunning) | Requests a continuous task from the system. This API uses a promise to return the result. |
+| [acquireDataAbilityHelper](arkts-ability-particleability-acquiredataabilityhelper-f.md#acquiredataabilityhelper-1) | Obtains a dataAbilityHelper object. |
+| [connectAbility](arkts-ability-particleability-connectability-f.md#connectability-1) | Connects this ability to a ServiceAbility. |
+| [disconnectAbility](arkts-ability-particleability-disconnectability-f.md#disconnectability-1) | Disconnects this ability from a specific ServiceAbility. This API uses an asynchronous callback to return the result. |
+| [disconnectAbility](arkts-ability-particleability-disconnectability-f.md#disconnectability-2) | Disconnects this ability from a specific ServiceAbility. This API uses a promise to return the result. |
+| [startAbility](arkts-ability-particleability-startability-f.md#startability-1) | Starts a ParticleAbility. This API uses an asynchronous callback to return the result. |
+| [startAbility](arkts-ability-particleability-startability-f.md#startability-2) | Starts a ParticleAbility. This API uses a promise to return the result. |
+| [terminateSelf](arkts-ability-particleability-terminateself-f.md#terminateself-1) | Terminates this ParticleAbility. This API uses an asynchronous callback to return the result. |
+| [terminateSelf](arkts-ability-particleability-terminateself-f.md#terminateself-2) | Terminates this ParticleAbility. This API uses a promise to return the result. |
+| [cancelBackgroundRunning](arkts-ability-particleability-cancelbackgroundrunning-f.md#cancelbackgroundrunning-1) | Requests to cancel a continuous task from the system. This API uses an asynchronous callback to return the result. |
+| [cancelBackgroundRunning](arkts-ability-particleability-cancelbackgroundrunning-f.md#cancelbackgroundrunning-2) | Requests to cancel a continuous task from the system. This API uses a promise to return the result. |
+| [startBackgroundRunning](arkts-ability-particleability-startbackgroundrunning-f.md#startbackgroundrunning-1) | Requests a continuous task from the system. This API uses an asynchronous callback to return the result. |
+| [startBackgroundRunning](arkts-ability-particleability-startbackgroundrunning-f.md#startbackgroundrunning-2) | Requests a continuous task from the system. This API uses a promise to return the result. |
 
 ### Enums
 

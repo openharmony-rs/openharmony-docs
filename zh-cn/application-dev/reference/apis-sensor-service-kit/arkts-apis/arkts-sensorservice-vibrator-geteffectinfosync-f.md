@@ -31,7 +31,7 @@ function getEffectInfoSync(effectId: string, param?: VibratorInfoParam): EffectI
 
 | 类型 | 说明 |
 | --- | --- |
-| [EffectInfo](arkts-sensorservice-vibrator-effectinfo-i.md) | 预置振动效果信息。isEffectSupported为true表示支持该效果，可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration)；为false表示不支持，使用该effectId触发振动可能效果不佳。 |
+| [EffectInfo](arkts-sensorservice-vibrator-effectinfo-i.md) | 预置振动效果信息。isEffectSupported为true表示支持该效果，可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1)；为false表示不支持，使用该effectId触发振动可能效果不佳。 |
 
 **错误码：**
 

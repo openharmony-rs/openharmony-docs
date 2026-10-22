@@ -24,7 +24,7 @@ import { vibrator } from '@kit.SensorServiceKit';
 deviceId: number
 ```
 
-设备ID。可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration)和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)等接口指定目标设备。
+设备ID。可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1)和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-5)等接口指定目标设备。
 
 **类型：** number
 
@@ -82,13 +82,31 @@ isLocalVibrator: boolean
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
+## isSupportIntensity
+
+```TypeScript
+isSupportIntensity?: boolean
+```
+
+是否支持振动强度调节。true表示支持振动强度调节，false表示不支持振动强度调节。默认值：false。
+
+**类型：** boolean
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-VibratorInfo-isSupportIntensity?: boolean--><!--Device-VibratorInfo-isSupportIntensity?: boolean-End-->
+
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
 ## vibratorId
 
 ```TypeScript
 vibratorId: number
 ```
 
-马达ID。可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration)和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)等接口指定目标马达。
+马达ID。可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1)和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-5)等接口指定目标马达。
 
 **类型：** number
 

@@ -183,7 +183,7 @@ try {
 closeResultSet(resultSet: KVStoreResultSet, callback: AsyncCallback<void>): void
 ```
 
-Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](#getresultset). This API uses an asynchronous callback to return the result. After the result set is closed, the result set object cannot be used anymore, and related database resources are released.
+Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](#getresultset-2). This API uses an asynchronous callback to return the result. After the result set is closed, the result set object cannot be used anymore, and related database resources are released.
 
 **Since:** 9
 
@@ -242,7 +242,7 @@ try {
 closeResultSet(resultSet: KVStoreResultSet): Promise<void>
 ```
 
-Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](#getresultset). This API uses a promise to return the result. After the result set is closed, the result set object cannot be used anymore, and related database resources are released.
+Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](#getresultset-2). This API uses a promise to return the result. After the result set is closed, the result set object cannot be used anymore, and related database resources are released.
 
 **Since:** 9
 

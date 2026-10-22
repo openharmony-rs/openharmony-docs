@@ -1,4 +1,4 @@
-# DistributedOptions
+# DistributedOptions (System API)
 
 ```TypeScript
 export interface DistributedOptions

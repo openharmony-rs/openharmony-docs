@@ -1,4 +1,4 @@
-# AVRecorderConfig
+# AVRecorderConfig (System API)
 
 ```TypeScript
 interface AVRecorderConfig

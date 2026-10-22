@@ -1,4 +1,4 @@
-# PhotoSubtype
+# PhotoSubtype（系统接口）
 
 ```TypeScript
 export enum PhotoSubtype

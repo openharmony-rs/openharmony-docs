@@ -22,9 +22,9 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [getLastError](arkts-ability-hypersnapmanager-getlasterror-f.md#getlasterror) | Gets the last Hyper Snap error information of the current application for a specified scenario. Error information for each scenario is stored independently and cleared after a successful request. All error information will be cleared when the device restarts. |
-| [requestRebuildHyperSnap](arkts-ability-hypersnapmanager-requestrebuildhypersnap-f.md#requestrebuildhypersnap) | Requests the recreation of the Hyper Snap process snapshot for the application. |
-| [setHyperSnapEnabled](arkts-ability-hypersnapmanager-sethypersnapenabled-f.md#sethypersnapenabled) | Enables or disables the Hyper Snap performance optimization for the application. |
+| [getLastError](arkts-ability-hypersnapmanager-getlasterror-f.md#getlasterror-1) | Gets the last Hyper Snap error information of the current application for a specified scenario. Error information for each scenario is stored independently and cleared after a successful request. All error information will be cleared when the device restarts. |
+| [requestRebuildHyperSnap](arkts-ability-hypersnapmanager-requestrebuildhypersnap-f.md#requestrebuildhypersnap-1) | Requests the recreation of the Hyper Snap process snapshot for the application. |
+| [setHyperSnapEnabled](arkts-ability-hypersnapmanager-sethypersnapenabled-f.md#sethypersnapenabled-1) | Enables or disables the Hyper Snap performance optimization for the application. |
 
 ### Interfaces
 

@@ -1,4 +1,4 @@
-# ErrorType
+# ErrorType (System API)
 
 ```TypeScript
 enum ErrorType

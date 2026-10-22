@@ -20,13 +20,13 @@ import { hichecker } from '@kit.PerformanceAnalysisKit';
 
 | Name | Description |
 | --- | --- |
-| [addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule) | Adds one or more check rules. HiChecker detects unexpected operations or gives feedback based on the added rules. You can use **grep HiChecker** to check for the application running information in the hilog. |
-| [containsCheckRule](arkts-performanceanalysis-hichecker-containscheckrule-f.md#containscheckrule) | Checks whether the specified rule exists in the collection of added rules. If the rule is of the thread level, this operation is performed only on the current thread. |
-| [getRule](arkts-performanceanalysis-hichecker-getrule-f.md#getrule) | Obtains a collection of thread, process, and alarm rules that have been added. |
-| [removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removecheckrule) | Removes one or more rules. The removed rules will become ineffective. |
-| [addRule](arkts-performanceanalysis-hichecker-addrule-f.md#addrule) | Adds one or more rules. HiChecker detects unexpected operations or gives feedback based on the added rules. |
-| [contains](arkts-performanceanalysis-hichecker-contains-f.md#contains) | Checks whether the specified rule exists in the collection of added rules. If the rule is of the thread level, this operation is performed only on the current thread. |
-| [removeRule](arkts-performanceanalysis-hichecker-removerule-f.md#removerule) | Removes one or more rules. The removed rules will become ineffective. |
+| [addCheckRule](arkts-performanceanalysis-hichecker-addcheckrule-f.md#addcheckrule-1) | Adds one or more check rules. HiChecker detects unexpected operations or gives feedback based on the added rules. You can use **grep HiChecker** to check for the application running information in the hilog. |
+| [containsCheckRule](arkts-performanceanalysis-hichecker-containscheckrule-f.md#containscheckrule-1) | Checks whether the specified rule exists in the collection of added rules. If the rule is of the thread level, this operation is performed only on the current thread. |
+| [getRule](arkts-performanceanalysis-hichecker-getrule-f.md#getrule-1) | Obtains a collection of thread, process, and alarm rules that have been added. |
+| [removeCheckRule](arkts-performanceanalysis-hichecker-removecheckrule-f.md#removecheckrule-1) | Removes one or more rules. The removed rules will become ineffective. |
+| [addRule](arkts-performanceanalysis-hichecker-addrule-f.md#addrule-1) | Adds one or more rules. HiChecker detects unexpected operations or gives feedback based on the added rules. |
+| [contains](arkts-performanceanalysis-hichecker-contains-f.md#contains-1) | Checks whether the specified rule exists in the collection of added rules. If the rule is of the thread level, this operation is performed only on the current thread. |
+| [removeRule](arkts-performanceanalysis-hichecker-removerule-f.md#removerule-1) | Removes one or more rules. The removed rules will become ineffective. |
 
 ### Constants
 

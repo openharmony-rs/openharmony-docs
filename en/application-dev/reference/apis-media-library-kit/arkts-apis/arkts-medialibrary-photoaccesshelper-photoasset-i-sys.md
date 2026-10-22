@@ -1,4 +1,4 @@
-# PhotoAsset
+# PhotoAsset (System API)
 
 ```TypeScript
 interface PhotoAsset
@@ -100,7 +100,7 @@ commitEditedAsset(editData: string, uri: string, callback: AsyncCallback<void>):
 
 Commits the edited image or video asset. This API uses an asynchronous callback to return the result.
 
-The edited file is transferred to the media library based on the URI, which is **FileUri** of the edited file in the application sandbox directory. For details, see [File URI](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fileuri.md).
+The edited file is transferred to the media library based on the URI, which is **FileUri** of the edited file in the application sandbox directory. For details, see [File URI](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md).
 
 > **NOTE:** 
 > 
@@ -180,7 +180,7 @@ commitEditedAsset(editData: string, uri: string): Promise<void>
 
 Commits the edited image or video asset. This API uses a promise to return the result.
 
-The edited file is transferred to the media library based on the URI, which is **FileUri** of the edited file in the application sandbox directory. For details, see [File URI](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fileuri.md).
+The edited file is transferred to the media library based on the URI, which is **FileUri** of the edited file in the application sandbox directory. For details, see [File URI](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md).
 
 > **NOTE:** 
 > 

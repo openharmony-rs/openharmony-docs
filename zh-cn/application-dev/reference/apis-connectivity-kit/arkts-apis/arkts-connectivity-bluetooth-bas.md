@@ -25,10 +25,10 @@ import { bas } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getRemoteDeviceBatteryInfo](arkts-connectivity-bas-getremotedevicebatteryinfo-f-sys.md#getremotedevicebatteryinfo) | 查询远端设备的电量信息。 |
-| [isBasSupported](arkts-connectivity-bas-isbassupported-f-sys.md#isbassupported) | 判断本机设备是否可以获取远端设备的电量。 |
-| [offBatteryChange](arkts-connectivity-bas-offbatterychange-f-sys.md#offbatterychange) | 取消订阅远端设备电量状态变化事件。 |
-| [onBatteryChange](arkts-connectivity-bas-onbatterychange-f-sys.md#onbatterychange) | 订阅远端设备电量状态变化事件。 |
+| [getRemoteDeviceBatteryInfo](arkts-connectivity-bas-getremotedevicebatteryinfo-f-sys.md#getremotedevicebatteryinfo-1) | 查询远端设备的电量信息。 |
+| [isBasSupported](arkts-connectivity-bas-isbassupported-f-sys.md#isbassupported-1) | 判断本机设备是否可以获取远端设备的电量。 |
+| [offBatteryChange](arkts-connectivity-bas-offbatterychange-f-sys.md#offbatterychange-1) | 取消订阅远端设备电量状态变化事件。 |
+| [onBatteryChange](arkts-connectivity-bas-onbatterychange-f-sys.md#onbatterychange-1) | 订阅远端设备电量状态变化事件。 |
 <!--DelEnd-->
 
 <!--Del-->

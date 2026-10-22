@@ -121,7 +121,7 @@ Instantiates the **ColorMetrics** class using ColorSpace and RGBA colorS. Only t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| colorSpace | ColorSpace | Yes | Color space. To use ColorSpace.DISPLAY_P3, call [setWindowColorSpace](arkts-arkui-window-window-i.md#setwindowcolorspace) on the corresponding window to set the current window to wide color gamut mode. |
+| colorSpace | ColorSpace | Yes | Color space. To use ColorSpace.DISPLAY_P3, call [setWindowColorSpace](arkts-arkui-window-window-i.md#setwindowcolorspace-1) on the corresponding window to set the current window to wide color gamut mode. |
 | red | number | Yes | Red component of the color. The value is a floating point number ranging from 0 to 1. A value out of range is treated as a boundary value. |
 | green | number | Yes | Green component of the color. The value is a floating point number ranging from 0 to 1. A value out of range is treated as a boundary value. |
 | blue | number | Yes | Blue component of the color. The value is a floating point number ranging from 0 to 1. A value out of range is treated as a boundary value. |

@@ -20,20 +20,20 @@ import { inputEventClient } from '@kit.InputKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createKeyboardController](arkts-input-inputeventclient-createkeyboardcontroller-f.md#createkeyboardcontroller) | 创建键盘控制器，用于模拟按键操作。使用Promise异步回调。 |
-| [createMouseController](arkts-input-inputeventclient-createmousecontroller-f.md#createmousecontroller) | 创建鼠标控制器，用于模拟鼠标操作。使用Promise异步回调。 |
-| [createTouchController](arkts-input-inputeventclient-createtouchcontroller-f.md#createtouchcontroller) | 创建触控控制器，用于模拟触控操作。使用Promise异步回调。 |
+| [createKeyboardController](arkts-input-inputeventclient-createkeyboardcontroller-f.md#createkeyboardcontroller-1) | 创建键盘控制器，用于模拟按键操作。使用Promise异步回调。 |
+| [createMouseController](arkts-input-inputeventclient-createmousecontroller-f.md#createmousecontroller-1) | 创建鼠标控制器，用于模拟鼠标操作。使用Promise异步回调。 |
+| [createTouchController](arkts-input-inputeventclient-createtouchcontroller-f.md#createtouchcontroller-1) | 创建触控控制器，用于模拟触控操作。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [injectEvent](arkts-input-inputeventclient-injectevent-f-sys.md#injectevent) | 按键（包括单个按键和组合键）注入。从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。若未指定displayId，则操作将在与调用者同用户的屏幕组生效。 |
-| [injectKeyEvent](arkts-input-inputeventclient-injectkeyevent-f-sys.md#injectkeyevent) | 按键（包括单个按键和组合键）事件注入。从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。若未指定displayId，则操作将在与调用者同用户的屏幕组生效。 |
-| [injectMouseEvent](arkts-input-inputeventclient-injectmouseevent-f-sys.md#injectmouseevent) | 鼠标/触控板事件注入。 |
-| [injectTouchEvent](arkts-input-inputeventclient-injecttouchevent-f-sys.md#injecttouchevent) | 触屏输入事件注入。 |
-| [permitInjection](arkts-input-inputeventclient-permitinjection-f-sys.md#permitinjection) | 允许事件注入权限。 |
+| [injectEvent](arkts-input-inputeventclient-injectevent-f-sys.md#injectevent-1) | 按键（包括单个按键和组合键）注入。从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。若未指定displayId，则操作将在与调用者同用户的屏幕组生效。 |
+| [injectKeyEvent](arkts-input-inputeventclient-injectkeyevent-f-sys.md#injectkeyevent-1) | 按键（包括单个按键和组合键）事件注入。从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。若未指定displayId，则操作将在与调用者同用户的屏幕组生效。 |
+| [injectMouseEvent](arkts-input-inputeventclient-injectmouseevent-f-sys.md#injectmouseevent-1) | 鼠标/触控板事件注入。 |
+| [injectTouchEvent](arkts-input-inputeventclient-injecttouchevent-f-sys.md#injecttouchevent-1) | 触屏输入事件注入。 |
+| [permitInjection](arkts-input-inputeventclient-permitinjection-f-sys.md#permitinjection-1) | 允许事件注入权限。 |
 <!--DelEnd-->
 
 ### 接口

@@ -1,4 +1,4 @@
-# CaptureSession
+# CaptureSession（系统接口）
 
 ```TypeScript
 interface CaptureSession

@@ -273,11 +273,11 @@ Obtains the UDPSocket file descriptor. This API uses a promise to return the res
 
 > **NOTE:** 
 > 
-> - This API can be called only after [bind](#bind) is successfully called.
+> - This API can be called only after [bind](#bind-1) is successfully called.
 > 
 > - This API returns **-1** in abnormal cases such as bind exceptions or socket closed (for example, after close is called).
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close-1) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 23
 
@@ -684,7 +684,7 @@ send(options: UDPSendOptions, callback: AsyncCallback<void>): void
 
 Sends data over a UDP socket connection. This API uses an asynchronous callback to return the result.
 
-Before sending data, call [UDPSocket.bind()](#bind) to bind the IP address and port. Call the API in the worker thread or taskpool thread as this operation is time-consuming.
+Before sending data, call [UDPSocket.bind()](#bind-1) to bind the IP address and port. Call the API in the worker thread or taskpool thread as this operation is time-consuming.
 
 **Since:** 7
 
@@ -805,7 +805,7 @@ send(options: UDPSendOptions): Promise<void>
 
 Sends data over a UDP socket connection. This API uses a promise to return the result.
 
-Before sending data, call [UDPSocket.bind()](#bind) to bind the IP address and port. Call the API in the worker thread or taskpool thread as this operation is time-consuming.
+Before sending data, call [UDPSocket.bind()](#bind-1) to bind the IP address and port. Call the API in the worker thread or taskpool thread as this operation is time-consuming.
 
 **Since:** 7
 

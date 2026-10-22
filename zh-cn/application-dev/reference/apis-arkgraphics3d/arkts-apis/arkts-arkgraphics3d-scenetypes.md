@@ -1,4 +1,4 @@
-# SceneTypes(3D场景通用类型声明)
+# SceneTypes
 
 ## 汇总
 
@@ -6,12 +6,12 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [CubeGeometry](arkts-arkgraphics3d-scenetypes-cubegeometry-c.md) | 立方体几何类型，继承自GeometryDefinition。 |
-| [CustomGeometry](arkts-arkgraphics3d-scenetypes-customgeometry-c.md) | 自定义几何类型，继承自GeometryDefinition。 |
-| [CylinderGeometry](arkts-arkgraphics3d-scenetypes-cylindergeometry-c.md) | 圆柱体几何类型，继承自GeometryDefinition。 |
+| [CubeGeometry](arkts-arkgraphics3d-scenetypes-cubegeometry-c.md) | 立方体几何类型，继承自[GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md)。 |
+| [CustomGeometry](arkts-arkgraphics3d-scenetypes-customgeometry-c.md) | 自定义几何类型，继承自[GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md)。 |
+| [CylinderGeometry](arkts-arkgraphics3d-scenetypes-cylindergeometry-c.md) | 圆柱体几何类型，继承自[GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md)。 |
 | [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md) | 几何类型定义抽象类，用于解释特定几何类型的属性。 |
-| [PlaneGeometry](arkts-arkgraphics3d-scenetypes-planegeometry-c.md) | 平面几何类型，继承自GeometryDefinition。 |
-| [SphereGeometry](arkts-arkgraphics3d-scenetypes-spheregeometry-c.md) | 球体几何类型，继承自GeometryDefinition。 |
+| [PlaneGeometry](arkts-arkgraphics3d-scenetypes-planegeometry-c.md) | 平面几何类型，继承自[GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md)。 |
+| [SphereGeometry](arkts-arkgraphics3d-scenetypes-spheregeometry-c.md) | 球体几何类型，继承自[GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md)。 |
 
 ### 接口
 

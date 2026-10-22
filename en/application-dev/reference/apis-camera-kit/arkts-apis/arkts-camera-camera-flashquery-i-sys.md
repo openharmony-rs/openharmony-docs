@@ -1,4 +1,4 @@
-# FlashQuery
+# FlashQuery (System API)
 
 ```TypeScript
 interface FlashQuery

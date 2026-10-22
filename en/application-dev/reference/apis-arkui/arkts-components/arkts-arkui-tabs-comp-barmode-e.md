@@ -34,7 +34,7 @@ All **TabBars** evenly share the **barWidth** (or the **barHeight** for a vertic
 Scrollable = 0
 ```
 
-Each tab bar uses its actual layout width. When the total length exceeds the [barWidth](arkts-arkui-tabs-comp-attribute.md#barwidth) of a horizontal **Tabs** or the [barHeight](arkts-arkui-tabs-comp-attribute.md#barheight) of a vertical **Tabs**, the tab bar can be scrolled.
+Each tab bar uses its actual layout width. When the total length exceeds the [barWidth](arkts-arkui-tabs-comp-attribute.md#barwidth) of a horizontal **Tabs** or the [barHeight](arkts-arkui-tabs-comp-attribute.md#barheight-1) of a vertical **Tabs**, the tab bar can be scrolled.
 
 **Since:** 7
 

@@ -1,4 +1,4 @@
-# AlbumType
+# AlbumType (System API)
 
 ```TypeScript
 enum AlbumType

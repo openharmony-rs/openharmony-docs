@@ -1,4 +1,4 @@
-# FocusQuery
+# FocusQuery (System API)
 
 ```TypeScript
 interface FocusQuery

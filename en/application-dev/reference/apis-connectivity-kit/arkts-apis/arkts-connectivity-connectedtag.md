@@ -20,20 +20,20 @@ import { connectedTag } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [initialize](arkts-connectivity-connectedtag-initialize-f.md#initialize) | Initializes the active tag chip. |
+| [initialize](arkts-connectivity-connectedtag-initialize-f.md#initialize-1) | Initializes the active tag chip. |
 | [off('notify')](arkts-connectivity-connectedtag-off-f.md#offnotify) | Unregisters the NFC field strength state events. |
 | [on('notify')](arkts-connectivity-connectedtag-on-f.md#onnotify) | Registers the NFC field strength state events. |
-| [read](arkts-connectivity-connectedtag-read-f.md#read) | Reads the content of this active tag. This API uses a promise to return the result. |
-| [read](arkts-connectivity-connectedtag-read-f.md#read) | Reads the content of this active tag. This API uses an asynchronous callback to return the result. |
-| [uninitialize](arkts-connectivity-connectedtag-uninitialize-f.md#uninitialize) | Uninitializes the active tag resources. |
-| [write](arkts-connectivity-connectedtag-write-f.md#write) | Writes data to this active tag. This API uses a promise to return the result. |
-| [write](arkts-connectivity-connectedtag-write-f.md#write) | Writes data to this active tag. This API uses an asynchronous callback to return the result. |
-| [init](arkts-connectivity-connectedtag-init-f.md#init) | Initializes the active tag chip. |
-| [readNdefTag](arkts-connectivity-connectedtag-readndeftag-f.md#readndeftag) | Reads the content of this active tag. This API uses a promise to return the result. |
-| [readNdefTag](arkts-connectivity-connectedtag-readndeftag-f.md#readndeftag) | Reads the content of this active tag. This API uses an asynchronous callback to return the result. |
-| [uninit](arkts-connectivity-connectedtag-uninit-f.md#uninit) | Uninitializes the active tag resources. |
-| [writeNdefTag](arkts-connectivity-connectedtag-writendeftag-f.md#writendeftag) | Writes data to this active tag. This API uses a promise to return the result. |
-| [writeNdefTag](arkts-connectivity-connectedtag-writendeftag-f.md#writendeftag) | Writes data to this active tag. This API uses an asynchronous callback to return the result. |
+| [read](arkts-connectivity-connectedtag-read-f.md#read-1) | Reads the content of this active tag. This API uses a promise to return the result. |
+| [read](arkts-connectivity-connectedtag-read-f.md#read-2) | Reads the content of this active tag. This API uses an asynchronous callback to return the result. |
+| [uninitialize](arkts-connectivity-connectedtag-uninitialize-f.md#uninitialize-1) | Uninitializes the active tag resources. |
+| [write](arkts-connectivity-connectedtag-write-f.md#write-1) | Writes data to this active tag. This API uses a promise to return the result. |
+| [write](arkts-connectivity-connectedtag-write-f.md#write-2) | Writes data to this active tag. This API uses an asynchronous callback to return the result. |
+| [init](arkts-connectivity-connectedtag-init-f.md#init-1) | Initializes the active tag chip. |
+| [readNdefTag](arkts-connectivity-connectedtag-readndeftag-f.md#readndeftag-1) | Reads the content of this active tag. This API uses a promise to return the result. |
+| [readNdefTag](arkts-connectivity-connectedtag-readndeftag-f.md#readndeftag-2) | Reads the content of this active tag. This API uses an asynchronous callback to return the result. |
+| [uninit](arkts-connectivity-connectedtag-uninit-f.md#uninit-1) | Uninitializes the active tag resources. |
+| [writeNdefTag](arkts-connectivity-connectedtag-writendeftag-f.md#writendeftag-1) | Writes data to this active tag. This API uses a promise to return the result. |
+| [writeNdefTag](arkts-connectivity-connectedtag-writendeftag-f.md#writendeftag-2) | Writes data to this active tag. This API uses an asynchronous callback to return the result. |
 
 ### Enums
 

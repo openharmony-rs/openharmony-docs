@@ -1,4 +1,4 @@
-# RichEditorGesture
+# RichEditorGesture (System API)
 
 ```TypeScript
 declare interface RichEditorGesture

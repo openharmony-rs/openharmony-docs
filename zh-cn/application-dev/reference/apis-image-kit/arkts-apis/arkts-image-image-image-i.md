@@ -6,11 +6,11 @@ interface Image
 
 Image类，供ImageReceiver和ImageCreator使用，用于传输图片对象，其实际内容由生产者决定。如相机预览流提供的Image对象存储了YUV数据、相机拍照提供的Image对象存储了JPEG文件。
 
-调用[readNextImage](arkts-image-image-imagereceiver-i.md#readnextimage)和[readLatestImage](arkts-image-image-imagereceiver-i.md#readlatestimage)接口时会返回Image实例。
+调用[readNextImage](arkts-image-image-imagereceiver-i.md#readnextimage-1)和[readLatestImage](arkts-image-image-imagereceiver-i.md#readlatestimage-1)接口时会返回Image实例。
 
 Image的属性仅支持在创建时初始化，后续无法再修改，且其属性不对图片内容产生实际影响，请以图片生产者写入的属性为准，即以向[ImageReceiver](arkts-image-image-imagereceiver-i.md)发送图片数据的发送方实际写入的内容为准。
 
-由于图片占用内存较大，所以当Image实例使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+由于图片占用内存较大，所以当Image实例使用完成后，应主动调用[release](#release-1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 > **说明：** 
 > 
@@ -336,7 +336,7 @@ readonly size: Size
 
 如果Image对象所存储的是相机拍照流数据（JPEG图像数据），由于已是编码后的文件，size中的宽等于JPEG文件大小，高等于1。
 
-Image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId通过[createPreviewOutput](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createpreviewoutput)接口还是[createPhotoOutput](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createphotooutput)接口传给相机。
+Image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId通过[createPreviewOutput](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createpreviewoutput-1)接口还是[createPhotoOutput](../../apis-camera-kit/arkts-apis/arkts-camera-camera-cameramanager-i.md#createphotooutput-1)接口传给相机。
 
 相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../../media/camera/camera-dual-channel-preview.md)与[拍照实践(ArkTS)](../../../media/camera/camera-shooting-case.md)。
 
@@ -354,7 +354,7 @@ Image对象所存储的数据是预览流还是拍照流，取决于应用将rec
 readonly timestamp: number
 ```
 
-图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty)接口读取EXIF时间戳信息。
+图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-image-image-imagesource-i.md#getimageproperty-1)接口读取EXIF时间戳信息。
 
 **类型：** number
 

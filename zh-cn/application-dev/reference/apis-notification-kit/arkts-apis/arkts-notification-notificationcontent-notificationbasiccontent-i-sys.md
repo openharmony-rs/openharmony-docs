@@ -1,4 +1,4 @@
-# NotificationBasicContent
+# NotificationBasicContent（系统接口）
 
 ```TypeScript
 export interface NotificationBasicContent

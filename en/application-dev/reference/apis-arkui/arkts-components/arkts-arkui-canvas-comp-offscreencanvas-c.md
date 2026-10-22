@@ -14,10 +14,6 @@ When the [Canvas](arkts-arkui-canvas-comp.md#canvas) component or **CanvasRender
 > drawing in **ServiceExtensionAbility**, use the
 > [drawing module](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-graphics-drawing.md) instead.
 
-## Child Components
-
-Not supported.
-
 **Since:** 8
 
 <!--Device-unnamed-declare class OffscreenCanvas--><!--Device-unnamed-declare class OffscreenCanvas-End-->

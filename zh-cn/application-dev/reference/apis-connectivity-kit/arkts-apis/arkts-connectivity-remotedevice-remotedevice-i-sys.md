@@ -1,4 +1,4 @@
-# RemoteDevice
+# RemoteDevice（系统接口）
 
 ```TypeScript
 interface RemoteDevice

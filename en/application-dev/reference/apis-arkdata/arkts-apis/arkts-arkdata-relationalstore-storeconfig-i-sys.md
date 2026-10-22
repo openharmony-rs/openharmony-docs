@@ -1,4 +1,4 @@
-# StoreConfig
+# StoreConfig (System API)
 
 ```TypeScript
 interface StoreConfig

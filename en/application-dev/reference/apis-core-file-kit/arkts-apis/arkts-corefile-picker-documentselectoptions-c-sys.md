@@ -1,4 +1,4 @@
-# DocumentSelectOptions
+# DocumentSelectOptions (System API)
 
 ```TypeScript
 class DocumentSelectOptions

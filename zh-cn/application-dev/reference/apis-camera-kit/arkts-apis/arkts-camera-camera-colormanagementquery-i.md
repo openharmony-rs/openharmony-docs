@@ -47,3 +47,13 @@ getSupportedColorSpaces(): Array<colorSpaceManager.ColorSpace>
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config, only throw in session usage.<br>**适用版本：** 12 - 17 |
 
 **示例**
+
+```TypeScript
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+function getSupportedColorSpaces(session: camera.PhotoSession): Array<colorSpaceManager.ColorSpace> {
+  let colorSpaces: Array<colorSpaceManager.ColorSpace> = [];
+  colorSpaces = session.getSupportedColorSpaces();
+  return colorSpaces;
+}
+```

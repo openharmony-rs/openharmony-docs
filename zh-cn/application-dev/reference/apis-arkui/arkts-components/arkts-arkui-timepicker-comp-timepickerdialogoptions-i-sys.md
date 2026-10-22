@@ -1,4 +1,4 @@
-# TimePickerDialogOptions
+# TimePickerDialogOptions（系统接口）
 
 ```TypeScript
 declare interface TimePickerDialogOptions extends TimePickerOptions

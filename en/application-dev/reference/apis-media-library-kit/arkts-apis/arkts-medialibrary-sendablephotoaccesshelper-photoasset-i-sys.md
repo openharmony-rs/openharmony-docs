@@ -1,4 +1,4 @@
-# PhotoAsset
+# PhotoAsset (System API)
 
 ```TypeScript
 interface PhotoAsset extends lang.ISendable

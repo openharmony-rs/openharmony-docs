@@ -1,4 +1,4 @@
-# CameraFormat
+# CameraFormat（系统接口）
 
 ```TypeScript
 enum CameraFormat

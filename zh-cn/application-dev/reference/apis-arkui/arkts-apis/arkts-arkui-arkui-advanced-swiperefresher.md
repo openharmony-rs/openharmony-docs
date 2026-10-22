@@ -1,5 +1,9 @@
 # @ohos.arkui.advanced.SwipeRefresher
 
+## 子组件
+
+无
+
 ## 导入模块
 
 ```TypeScript

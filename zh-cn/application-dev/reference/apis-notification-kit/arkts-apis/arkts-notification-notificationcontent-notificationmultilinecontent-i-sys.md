@@ -1,4 +1,4 @@
-# NotificationMultiLineContent
+# NotificationMultiLineContent（系统接口）
 
 ```TypeScript
 export interface NotificationMultiLineContent extends NotificationBasicContent

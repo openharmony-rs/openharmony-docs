@@ -340,7 +340,7 @@ off(eventId: string): void
 
 Unsubscribes from all events with the specified event ID of the Emitter instance.
 
-After this API is used to unsubscribe from an event, the event that has been published through the [emit](#emit) API but has not been executed will be unsubscribed.
+After this API is used to unsubscribe from an event, the event that has been published through the [emit](#emit-1) API but has not been executed will be unsubscribed.
 
 **Since:** 22
 
@@ -377,7 +377,7 @@ off(eventId: string, callback: Callback<EventData>): void
 
 Unsubscribes from an event of the Emitter instance. This API takes effect only when the [on](#on) or [once](#once) API is used to subscribe to the event with specified event ID and a callback is used to process the event.
 
-After this API is used to unsubscribe from an event, the event that has been published through the [emit](#emit) API but has not been executed will be unsubscribed.
+After this API is used to unsubscribe from an event, the event that has been published through the [emit](#emit-1) API but has not been executed will be unsubscribed.
 
 **Since:** 22
 
@@ -427,7 +427,7 @@ off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 
 Unsubscribes from an event of the Emitter instance. This API takes effect only when the [on](#on) or [once](#once) API is used to subscribe to the event with specified event ID and a callback is used to process the event.
 
-After this API is used to unsubscribe from an event, the event that has been published through the [emit](#emit) API but has not been executed will be unsubscribed.
+After this API is used to unsubscribe from an event, the event that has been published through the [emit](#emit-2) API but has not been executed will be unsubscribed.
 
 **Since:** 22
 

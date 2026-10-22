@@ -4,7 +4,7 @@
 interface AudioCapturer
 ```
 
-提供音频采集的相关接口。在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer)获取AudioCapturer实例。
+提供音频采集的相关接口。在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer-1)获取AudioCapturer实例。
 
 **起始版本：** 8
 
@@ -1547,7 +1547,7 @@ setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: num
 > **说明：** 
 > 
 > 当音频采集器在运行状态时调用此接口后，必须重新调用接口
-> [start](#start)使其生效。
+> [start](#start-1)使其生效。
 
 **起始版本：** 24
 

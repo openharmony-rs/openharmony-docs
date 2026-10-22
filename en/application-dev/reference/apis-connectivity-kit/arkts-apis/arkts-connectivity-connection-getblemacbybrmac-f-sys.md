@@ -16,7 +16,7 @@ Obtains the real BLE address of a paired remote device based on its real BR addr
 
 This API is used to identify the BR entry and the BLE entry of the same dual-mode device in the paired device list. The input brMac is the real BR address of a paired remote device, and the return value is the real BLE address of the same remote device.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH
 

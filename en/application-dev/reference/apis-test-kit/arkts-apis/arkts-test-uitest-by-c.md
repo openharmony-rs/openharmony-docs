@@ -170,7 +170,7 @@ Specifies the ID attribute of the target component.
 
 **Deprecated since:** 9
 
-**Substitutes:** [id](arkts-test-uitest-on-c.md#id)(id: string)
+**Substitutes:** [id](arkts-test-uitest-on-c.md#id-1)(id: string)
 
 <!--Device-By-id(id: number): By--><!--Device-By-id(id: number): By-End-->
 
@@ -295,7 +295,7 @@ Specifies the key attribute of the target component.
 
 **Deprecated since:** 9
 
-**Substitutes:** [id](arkts-test-uitest-on-c.md#id)(id: string)
+**Substitutes:** [id](arkts-test-uitest-on-c.md#id-1)(id: string)
 
 <!--Device-By-key(key: string): By--><!--Device-By-key(key: string): By-End-->
 
@@ -460,7 +460,7 @@ Specifies the type attribute of the target component.
 
 **Deprecated since:** 9
 
-**Substitutes:** [type](arkts-test-uitest-on-c.md#type)(tp: string)
+**Substitutes:** [type](arkts-test-uitest-on-c.md#type-1)(tp: string)
 
 <!--Device-By-type(tp: string): By--><!--Device-By-type(tp: string): By-End-->
 

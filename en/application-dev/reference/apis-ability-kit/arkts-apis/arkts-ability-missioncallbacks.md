@@ -2,7 +2,7 @@
 
 The module defines the callbacks invoked after synchronization starts. These callbacks are used as input
  parameters in
- [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener)
+ [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener-2)
 
 
 

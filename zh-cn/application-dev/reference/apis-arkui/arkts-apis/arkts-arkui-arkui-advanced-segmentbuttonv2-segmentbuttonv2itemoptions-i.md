@@ -30,7 +30,7 @@ import { SegmentButtonV2ItemOptions, OnSelectedIndexChange, OnSelectedIndexesCha
 accessibilityDescription?: ResourceStr
 ```
 
-分段按钮选项无障碍说明[accessibilityDescription](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription)。
+分段按钮选项无障碍说明[accessibilityDescription](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription-1)。
 
 默认值：""
 
@@ -78,7 +78,7 @@ accessibilityLevel?: string
 accessibilityText?: ResourceStr
 ```
 
-分段按钮选项的无障碍文本[accessibilityText](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)。
+分段按钮选项的无障碍文本[accessibilityText](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext-1)。
 
 默认值：""
 

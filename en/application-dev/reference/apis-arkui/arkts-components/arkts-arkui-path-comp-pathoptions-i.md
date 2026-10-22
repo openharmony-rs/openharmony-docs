@@ -24,7 +24,7 @@ Describes the options of the path.
 commands?: ResourceStr
 ```
 
-Command string for path drawing, complying with the [SVG Path Syntax](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg-path-syntax), in px.
+Command string for path drawing, complying with the SVG Path Syntax, in px.
 
 Default value: empty string
 

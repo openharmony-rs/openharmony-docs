@@ -1,4 +1,4 @@
-# TextContentControllerBase
+# TextContentControllerBase (System API)
 
 ```TypeScript
 declare abstract class TextContentControllerBase

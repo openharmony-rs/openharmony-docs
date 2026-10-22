@@ -1,4 +1,4 @@
-# TextPickerDialogOptionsExt
+# TextPickerDialogOptionsExt (System API)
 
 ```TypeScript
 declare interface TextPickerDialogOptionsExt extends TextPickerOptions

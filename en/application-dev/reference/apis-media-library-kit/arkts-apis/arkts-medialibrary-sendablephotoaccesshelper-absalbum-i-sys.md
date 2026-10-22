@@ -1,4 +1,4 @@
-# AbsAlbum
+# AbsAlbum (System API)
 
 ```TypeScript
 interface AbsAlbum  extends lang.ISendable

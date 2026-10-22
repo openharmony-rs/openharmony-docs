@@ -1,4 +1,4 @@
-# CallTransferResult
+# CallTransferResult (System API)
 
 ```TypeScript
 export interface CallTransferResult

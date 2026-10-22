@@ -1,4 +1,4 @@
-# PhotoSession
+# PhotoSession（系统接口）
 
 ```TypeScript
 interface PhotoSession extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, ColorManagement,

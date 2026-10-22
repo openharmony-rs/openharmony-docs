@@ -1,4 +1,4 @@
-# EventType
+# EventType (System API)
 
 ```TypeScript
 export enum EventType

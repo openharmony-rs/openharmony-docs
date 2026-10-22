@@ -4,9 +4,9 @@
 declare class GridRowAttribute extends CommonMethod<GridRowAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下属性：
+支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)。
 
-除支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)外，还支持以下事件：
+支持[通用事件](arkts-arkui-common-comp-commonmethod-c.md)。
 
 **继承/实现关系：** GridRowAttribute extends CommonMethod&lt;GridRowAttribute&gt;
 

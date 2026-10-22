@@ -1,4 +1,4 @@
-# BatteryInfo
+# BatteryInfo（系统接口）
 
 ```TypeScript
 interface BatteryInfo

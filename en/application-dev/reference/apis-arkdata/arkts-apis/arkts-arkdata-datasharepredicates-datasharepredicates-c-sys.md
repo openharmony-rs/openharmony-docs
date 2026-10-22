@@ -1,4 +1,4 @@
-# DataSharePredicates
+# DataSharePredicates (System API)
 
 ```TypeScript
 class DataSharePredicates

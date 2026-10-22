@@ -16,7 +16,7 @@ function uninstallDLPSandbox(bundleName: string, userId: number, appIndex: numbe
 
 需要清理对应的沙箱环境时使用此接口。
 
-必须在调用[installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox)安装沙箱后才能调用此方法卸载。
+必须在调用[installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox-1)安装沙箱后才能调用此方法卸载。
 
 **起始版本：** 10
 
@@ -82,7 +82,7 @@ function uninstallDLPSandbox(bundleName: string, userId: number, appIndex: numbe
 
 需要清理沙箱环境时使用此接口。
 
-必须在调用[installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox)安装沙箱后才能调用此方法卸载。
+必须在调用[installDLPSandbox](arkts-dataprotection-dlppermission-installdlpsandbox-f-sys.md#installdlpsandbox-1)安装沙箱后才能调用此方法卸载。
 
 **起始版本：** 10
 

@@ -12,7 +12,7 @@ import { Popup, PopupButtonOptions, PopupIconOptions, PopupOptions, PopupTextOpt
 
 | 名称 | 说明 |
 | --- | --- |
-| [Popup](arkts-arkui-arkui-advanced-popup-popup-f.md#popup) |  |
+| [Popup](arkts-arkui-arkui-advanced-popup-popup-f.md#popup-1) |  |
 
 ### 接口
 

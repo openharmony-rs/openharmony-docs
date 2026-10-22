@@ -1,4 +1,4 @@
-# ArkTSScriptInfo
+# ArkTSScriptInfo (System API)
 
 ```TypeScript
 interface ArkTSScriptInfo

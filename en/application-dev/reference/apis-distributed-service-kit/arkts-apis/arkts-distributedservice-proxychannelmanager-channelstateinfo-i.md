@@ -24,7 +24,7 @@ import { proxyChannelManager } from '@kit.DistributedServiceKit';
 channelId: number
 ```
 
-Channel ID of the proxy channel. The value range is 1 to 2147483647.
+Proxy channel ID. The value ranges from 1 to 2147483647.
 
 **Type:** number
 
@@ -42,7 +42,7 @@ Channel ID of the proxy channel. The value range is 1 to 2147483647.
 state: ChannelState
 ```
 
-Connection state of the channel. For the value range, see [ChannelState](arkts-distributedservice-proxychannelmanager-channelstate-e.md). You are advised to adjust service policies based on different state values, for example, suspending data transmission when the channel is disconnected and retrying services after the channel is restored.
+Channel connection states. For details, see [ChannelState](arkts-distributedservice-proxychannelmanager-channelstate-e.md). You are advised to adjust service policies based on different status values. For example, suspend data transmission when the channel is disconnected and retry services after the channel is reconnected.
 
 **Type:** [ChannelState](arkts-distributedservice-proxychannelmanager-channelstate-e.md)
 

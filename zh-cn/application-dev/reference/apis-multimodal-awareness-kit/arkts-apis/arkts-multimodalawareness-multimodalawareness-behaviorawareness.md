@@ -25,9 +25,9 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [offPerception](arkts-multimodalawareness-behaviorawareness-offperception-f-sys.md#offperception) | 取消订阅。业务侧向 MSDP 注销订阅关系。 |
-| [onPerception](arkts-multimodalawareness-behaviorawareness-onperception-f-sys.md#onperception) | 发起订阅。业务侧向 MSDP 注册订阅关系，同时注册感知事件回调。 |
-| [submitFeedback](arkts-multimodalawareness-behaviorawareness-submitfeedback-f-sys.md#submitfeedback) | 提交用户反馈。业务侧将用户对感知事件的反馈传递给 MSDP。 |
+| [offPerception](arkts-multimodalawareness-behaviorawareness-offperception-f-sys.md#offperception-1) | 取消订阅。业务侧向 MSDP 注销订阅关系。 |
+| [onPerception](arkts-multimodalawareness-behaviorawareness-onperception-f-sys.md#onperception-1) | 发起订阅。业务侧向 MSDP 注册订阅关系，同时注册感知事件回调。 |
+| [submitFeedback](arkts-multimodalawareness-behaviorawareness-submitfeedback-f-sys.md#submitfeedback-1) | 提交用户反馈。业务侧将用户对感知事件的反馈传递给 MSDP。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -57,6 +57,7 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 | [BluetoothDeviceType](arkts-multimodalawareness-behaviorawareness-bluetoothdevicetype-e-sys.md) | 蓝牙设备类型枚举。 |
 | [EventType](arkts-multimodalawareness-behaviorawareness-eventtype-e-sys.md) | Event 类型枚举。 |
 | [FeedbackType](arkts-multimodalawareness-behaviorawareness-feedbacktype-e-sys.md) | 反馈类型枚举。 |
+| [LocationStatusType](arkts-multimodalawareness-behaviorawareness-locationstatustype-e-sys.md) | 位置状态类型枚举。用于区分进入或离开地理围栏。 |
 | [LocationType](arkts-multimodalawareness-behaviorawareness-locationtype-e-sys.md) | 位置类型枚举。 |
 | [Operation](arkts-multimodalawareness-behaviorawareness-operation-e-sys.md) | 操作目标枚举。 |
 | [PatternType](arkts-multimodalawareness-behaviorawareness-patterntype-e-sys.md) | 感知模式类型。 |

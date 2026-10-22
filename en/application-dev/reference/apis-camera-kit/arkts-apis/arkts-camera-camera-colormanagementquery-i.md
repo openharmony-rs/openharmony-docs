@@ -47,3 +47,13 @@ Obtains the supported color spaces.
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage.<br>**Applicable version:** 12 - 17 |
 
 **Examples**
+
+```TypeScript
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+function getSupportedColorSpaces(session: camera.PhotoSession): Array<colorSpaceManager.ColorSpace> {
+  let colorSpaces: Array<colorSpaceManager.ColorSpace> = [];
+  colorSpaces = session.getSupportedColorSpaces();
+  return colorSpaces;
+}
+```

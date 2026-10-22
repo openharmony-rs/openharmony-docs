@@ -1,4 +1,4 @@
-# ErrorType
+# ErrorType（系统接口）
 
 ```TypeScript
 enum ErrorType

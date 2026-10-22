@@ -24,7 +24,7 @@ function onStateChange(callback: Callback<NearlinkState>): void
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
-**参见：** [offStateChange](arkts-connectivity-manager-offstatechange-f.md) 取消订阅星闪开关状态变化事件。
+**参见：** [offStateChange](arkts-connectivity-manager-offstatechange-f.md#offstatechange-1) 取消订阅星闪开关状态变化事件。
 
 **参数：**
 

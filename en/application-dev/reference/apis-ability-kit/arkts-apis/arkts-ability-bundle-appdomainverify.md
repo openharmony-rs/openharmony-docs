@@ -25,6 +25,6 @@ import { appDomainVerify } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [queryAssociatedBundleNames](arkts-ability-appdomainverify-queryassociatedbundlenames-f-sys.md#queryassociatedbundlenames) | query bundleNames associated with domain. |
-| [queryAssociatedDomains](arkts-ability-appdomainverify-queryassociateddomains-f-sys.md#queryassociateddomains) | query domains verify associated with bundleName. |
+| [queryAssociatedBundleNames](arkts-ability-appdomainverify-queryassociatedbundlenames-f-sys.md#queryassociatedbundlenames-1) | query bundleNames associated with domain. |
+| [queryAssociatedDomains](arkts-ability-appdomainverify-queryassociateddomains-f-sys.md#queryassociateddomains-1) | query domains verify associated with bundleName. |
 <!--DelEnd-->

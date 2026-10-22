@@ -46,7 +46,7 @@ The custom data of the peer form host service.
 deviceId: string
 ```
 
-The device Id of the peer form host service.
+The device Id of the peer form host service. By default, no value is passed.
 
 **Type:** string
 

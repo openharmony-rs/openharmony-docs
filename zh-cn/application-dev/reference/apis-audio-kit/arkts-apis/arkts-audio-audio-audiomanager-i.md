@@ -685,7 +685,7 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptor
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getDevices](arkts-audio-audio-audioroutingmanager-i.md#getdevices)
+> [getDevices](arkts-audio-audio-audioroutingmanager-i.md#getdevices-1)
 > 替代。
 
 **起始版本：** 7
@@ -730,7 +730,7 @@ getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getDevices](arkts-audio-audio-audioroutingmanager-i.md#getdevices)
+> [getDevices](arkts-audio-audio-audioroutingmanager-i.md#getdevices-1)
 > 替代。
 
 **起始版本：** 7
@@ -968,7 +968,7 @@ getRingerMode(callback: AsyncCallback<AudioRingMode>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getRingerMode](arkts-audio-audio-audiovolumegroupmanager-i.md#getringermode)
+> [getRingerMode](arkts-audio-audio-audiovolumegroupmanager-i.md#getringermode-1)
 > 替代。
 
 **起始版本：** 7
@@ -1012,7 +1012,7 @@ getRingerMode(): Promise<AudioRingMode>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getRingerMode](arkts-audio-audio-audiovolumegroupmanager-i.md#getringermode)
+> [getRingerMode](arkts-audio-audio-audiovolumegroupmanager-i.md#getringermode-1)
 > 替代。
 
 **起始版本：** 7
@@ -1073,7 +1073,7 @@ getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](#getminvolume)和[getMaxVolume](#getmaxvolume)获取。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当获取指定流的音量成功，err为undefined，data为获取到的指定流的音量等级；否则为错误对象。指定流的音量等级范围可通过[getMinVolume](#getminvolume-1)和[getMaxVolume](#getmaxvolume-1)获取。 |
 
 **示例**
 
@@ -1124,7 +1124,7 @@ getVolume(volumeType: AudioVolumeType): Promise<number>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;number&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过[getMinVolume](#getminvolume)和[getMaxVolume](#getmaxvolume)获取。 |
+| Promise&lt;number&gt; | Promise对象，返回指定流的音量等级。指定流的音量等级范围可通过[getMinVolume](#getminvolume-1)和[getMaxVolume](#getmaxvolume-1)获取。 |
 
 **示例**
 
@@ -1149,7 +1149,7 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用
-> [isActive](arkts-audio-audio-audiostreammanager-i.md#isactive)
+> [isActive](arkts-audio-audio-audiostreammanager-i.md#isactive-1)
 > 替代；API version 20及以后，建议使用[isStreamActive](arkts-audio-audio-audiostreammanager-i.md#isstreamactive)
 > 替代。
 
@@ -1195,7 +1195,7 @@ isActive(volumeType: AudioVolumeType): Promise<boolean>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用
-> [isActive](arkts-audio-audio-audiostreammanager-i.md#isactive)
+> [isActive](arkts-audio-audio-audiostreammanager-i.md#isactive-1)
 > 替代；API version 20及以后，建议使用[isStreamActive](arkts-audio-audio-audiostreammanager-i.md#isstreamactive)
 > 替代。
 
@@ -1244,7 +1244,7 @@ isDeviceActive(deviceType: ActiveDeviceType, callback: AsyncCallback<boolean>): 
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#iscommunicationdeviceactive)
+> [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#iscommunicationdeviceactive-1)
 > 替代。
 
 **起始版本：** 7
@@ -1289,7 +1289,7 @@ isDeviceActive(deviceType: ActiveDeviceType): Promise<boolean>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#iscommunicationdeviceactive)
+> [isCommunicationDeviceActive](arkts-audio-audio-audioroutingmanager-i.md#iscommunicationdeviceactive-1)
 > 替代。
 
 **起始版本：** 7
@@ -1337,7 +1337,7 @@ isMicrophoneMute(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [isMicrophoneMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismicrophonemute)
+> [isMicrophoneMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismicrophonemute-1)
 > 替代。
 
 **起始版本：** 7
@@ -1383,7 +1383,7 @@ isMicrophoneMute(): Promise<boolean>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [isMicrophoneMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismicrophonemute)
+> [isMicrophoneMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismicrophonemute-1)
 > 替代。
 
 **起始版本：** 7
@@ -1427,7 +1427,7 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用
-> [isMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismute)
+> [isMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismute-1)
 > 替代；API version 20及以后，建议使用
 > [isSystemMutedForStream](arkts-audio-audio-audiovolumemanager-i.md#issystemmutedforstream)替代。
 
@@ -1473,7 +1473,7 @@ isMute(volumeType: AudioVolumeType): Promise<boolean>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。在API version 9-19建议使用
-> [isMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismute)
+> [isMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismute-1)
 > 替代；API version 20及以后，建议使用
 > [isSystemMutedForStream](arkts-audio-audio-audiovolumemanager-i.md#issystemmutedforstream)替代。
 
@@ -1704,7 +1704,7 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean, callback: AsyncCa
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setCommunicationDevice](arkts-audio-audio-audioroutingmanager-i.md#setcommunicationdevice)
+> [setCommunicationDevice](arkts-audio-audio-audioroutingmanager-i.md#setcommunicationdevice-1)
 > 替代。
 
 **起始版本：** 7
@@ -1750,7 +1750,7 @@ setDeviceActive(deviceType: ActiveDeviceType, active: boolean): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [setCommunicationDevice](arkts-audio-audio-audioroutingmanager-i.md#setcommunicationdevice)
+> [setCommunicationDevice](arkts-audio-audio-audioroutingmanager-i.md#setcommunicationdevice-1)
 > 替代。
 
 **起始版本：** 7
@@ -1995,7 +1995,7 @@ setVolume(volumeType: AudioVolumeType, volume: number, callback: AsyncCallback<v
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume](#getminvolume)和[getMaxVolume](#getmaxvolume)获取。 |
+| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume](#getminvolume-1)和[getMaxVolume](#getmaxvolume-1)获取。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置指定流的音量成功，err为undefined，否则为错误对象。 |
 
 **示例**
@@ -2041,7 +2041,7 @@ setVolume(volumeType: AudioVolumeType, volume: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型。 |
-| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume](#getminvolume)和[getMaxVolume](#getmaxvolume)获取。 |
+| volume | number | 是 | 音量等级，可设置范围通过[getMinVolume](#getminvolume-1)和[getMaxVolume](#getmaxvolume-1)获取。 |
 
 **返回值：**
 

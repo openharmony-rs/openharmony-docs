@@ -1,4 +1,4 @@
-# Photo
+# Photo (System API)
 
 ```TypeScript
 interface Photo

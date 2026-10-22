@@ -22,7 +22,7 @@ Obtains the subscription information about the notification extension of this ap
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:** [subscribe](arkts-notification-notificationextensionsubscription-subscribe-f.md) subscribes from the notification extension.
+**See also:** [subscribe](arkts-notification-notificationextensionsubscription-subscribe-f.md#subscribe-1) subscribes from the notification extension.
 
 **Return value:**
 

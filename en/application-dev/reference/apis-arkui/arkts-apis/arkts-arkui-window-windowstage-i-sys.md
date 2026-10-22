@@ -1,4 +1,4 @@
-# WindowStage
+# WindowStage (System API)
 
 ```TypeScript
 interface WindowStage

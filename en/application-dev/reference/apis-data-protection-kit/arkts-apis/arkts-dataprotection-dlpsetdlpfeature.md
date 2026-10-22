@@ -35,7 +35,7 @@ import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
 
 | Name | Description |
 | --- | --- |
-| [setDlpFeature](arkts-dataprotection-dlpsetdlpfeature-setdlpfeature-f-sys.md#setdlpfeature) | Sets the DLP status. This API uses a promise to return the result. The system enables or disables the DLP protection function based on the DLP status specified using this API. |
+| [setDlpFeature](arkts-dataprotection-dlpsetdlpfeature-setdlpfeature-f-sys.md#setdlpfeature-1) | Sets the DLP status. This API uses a promise to return the result. The system enables or disables the DLP protection function based on the DLP status specified using this API. |
 <!--DelEnd-->
 
 <!--Del-->

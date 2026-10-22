@@ -27,18 +27,18 @@ import { uiEffect } from '@kit.ArkGraphics2D';
 
 | Name | Description |
 | --- | --- |
-| [createEffect](arkts-arkgraphics2d-uieffect-createeffect-f.md#createeffect) | Creates a VisualEffect instance for adding multiple VisualEffect effects to a component. |
-| [createFilter](arkts-arkgraphics2d-uieffect-createfilter-f.md#createfilter) | Creates a Filter instance for adding multiple filter effects to a component. |
+| [createEffect](arkts-arkgraphics2d-uieffect-createeffect-f.md#createeffect-1) | Creates a VisualEffect instance for adding multiple VisualEffect effects to a component. |
+| [createFilter](arkts-arkgraphics2d-uieffect-createfilter-f.md#createfilter-1) | Creates a Filter instance for adding multiple filter effects to a component. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [createBrightnessBlender](arkts-arkgraphics2d-uieffect-createbrightnessblender-f-sys.md#createbrightnessblender) | Creates a BrightnessBlender instance for adding a brightness effect to a component. |
-| [createColorfulBrightnessBlender](arkts-arkgraphics2d-uieffect-createcolorfulbrightnessblender-f-sys.md#createcolorfulbrightnessblender) | Creates a ColorfulBrightnessBlender instance to add a hue-preserving brightening and darkening effect to a component. This effect preserves hue by reconstructing it channel by channel when brightening or darkening the foreground, and can enhance saturation to avoid the desaturation issue of common brightening/darkening. |
-| [createHdrBrightnessBlender](arkts-arkgraphics2d-uieffect-createhdrbrightnessblender-f-sys.md#createhdrbrightnessblender) | Creates an HdrBrightnessBlender instance for adding an HDR-enabled brightness effect to a component. |
-| [createHdrDarkenBlender](arkts-arkgraphics2d-uieffect-createhdrdarkenblender-f-sys.md#createhdrdarkenblender) | Creates an HdrDarkenBlender instance for HDR layer darken blending effect. |
+| [createBrightnessBlender](arkts-arkgraphics2d-uieffect-createbrightnessblender-f-sys.md#createbrightnessblender-1) | Creates a BrightnessBlender instance for adding a brightness effect to a component. |
+| [createColorfulBrightnessBlender](arkts-arkgraphics2d-uieffect-createcolorfulbrightnessblender-f-sys.md#createcolorfulbrightnessblender-1) | Creates a ColorfulBrightnessBlender instance to add a hue-preserving brightening and darkening effect to a component. This effect preserves hue by reconstructing it channel by channel when brightening or darkening the foreground, and can enhance saturation to avoid the desaturation issue of common brightening/darkening. |
+| [createHdrBrightnessBlender](arkts-arkgraphics2d-uieffect-createhdrbrightnessblender-f-sys.md#createhdrbrightnessblender-1) | Creates an HdrBrightnessBlender instance for adding an HDR-enabled brightness effect to a component. |
+| [createHdrDarkenBlender](arkts-arkgraphics2d-uieffect-createhdrdarkenblender-f-sys.md#createhdrdarkenblender-1) | Creates an HdrDarkenBlender instance for HDR layer darken blending effect. |
 <!--DelEnd-->
 
 <!--Del-->

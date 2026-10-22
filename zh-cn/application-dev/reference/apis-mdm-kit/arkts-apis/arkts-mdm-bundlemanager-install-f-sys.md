@@ -18,7 +18,7 @@ function install(admin: Want, hapFilePaths: Array<string>, callback: AsyncCallba
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [install](arkts-mdm-bundlemanager-install-f.md#install)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
+**替代接口：** [install](arkts-mdm-bundlemanager-install-f.md#install-3)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -88,7 +88,7 @@ function install(admin: Want, hapFilePaths: Array<string>, installParam: Install
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [install](arkts-mdm-bundlemanager-install-f.md#install)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
+**替代接口：** [install](arkts-mdm-bundlemanager-install-f.md#install-3)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 

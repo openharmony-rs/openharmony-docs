@@ -4,7 +4,7 @@
 interface AVMetadataExtractor
 ```
 
-元数据获取类，用于从媒体资源中获取元数据、缩略图。在调用AVMetadataExtractor的方法前，需要先通过[media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor)构建一个AVMetadataExtractor实例。
+元数据获取类，用于从媒体资源中获取元数据、缩略图。在调用AVMetadataExtractor的方法前，需要先通过[media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor-3)构建一个AVMetadataExtractor实例。
 
 获取音频或视频元数据、视频缩略图的demo可参考：[使用AVMetadataExtractor提取音视频元数据信息(ArkTS)](../../../media/media/avmetadataextractor.md)。
 
@@ -700,7 +700,7 @@ async function test() {
 setUrlSource(url: string, headers?: Record<string, string>): void
 ```
 
-网络点播资源地址描述，通过该接口设置数据源。只支持获取网络[fetchMetadata](#fetchmetadata)（元数据）和[fetchFrameByTime](#fetchframebytime)（缩略图），在获取之前，必须设置媒体资源URL。
+网络点播资源地址描述，通过该接口设置数据源。只支持获取网络[fetchMetadata](#fetchmetadata-1)（元数据）和[fetchFrameByTime](#fetchframebytime)（缩略图），在获取之前，必须设置媒体资源URL。
 
 **起始版本：** 20
 

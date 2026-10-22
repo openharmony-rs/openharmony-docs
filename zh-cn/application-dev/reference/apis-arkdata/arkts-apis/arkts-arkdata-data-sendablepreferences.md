@@ -30,11 +30,11 @@ import { sendablePreferences } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [deletePreferences](arkts-arkdata-sendablepreferences-deletepreferences-f.md#deletepreferences) | 从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。使用Promise异步回调。 |
-| [getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences) | 获取Preferences实例，使用Promise异步回调。 |
-| [getPreferencesSync](arkts-arkdata-sendablepreferences-getpreferencessync-f.md#getpreferencessync) | 获取Preferences实例，此为同步接口。 |
-| [removePreferencesFromCache](arkts-arkdata-sendablepreferences-removepreferencesfromcache-f.md#removepreferencesfromcache) | 从缓存中移除指定的Preferences实例，使用Promise异步回调。 |
-| [removePreferencesFromCacheSync](arkts-arkdata-sendablepreferences-removepreferencesfromcachesync-f.md#removepreferencesfromcachesync) | 从缓存中移除指定的Preferences实例，此为同步接口。 |
+| [deletePreferences](arkts-arkdata-sendablepreferences-deletepreferences-f.md#deletepreferences-1) | 从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。使用Promise异步回调。 |
+| [getPreferences](arkts-arkdata-sendablepreferences-getpreferences-f.md#getpreferences-1) | 获取Preferences实例，使用Promise异步回调。 |
+| [getPreferencesSync](arkts-arkdata-sendablepreferences-getpreferencessync-f.md#getpreferencessync-1) | 获取Preferences实例，此为同步接口。 |
+| [removePreferencesFromCache](arkts-arkdata-sendablepreferences-removepreferencesfromcache-f.md#removepreferencesfromcache-1) | 从缓存中移除指定的Preferences实例，使用Promise异步回调。 |
+| [removePreferencesFromCacheSync](arkts-arkdata-sendablepreferences-removepreferencesfromcachesync-f.md#removepreferencesfromcachesync-1) | 从缓存中移除指定的Preferences实例，此为同步接口。 |
 
 ### 接口
 

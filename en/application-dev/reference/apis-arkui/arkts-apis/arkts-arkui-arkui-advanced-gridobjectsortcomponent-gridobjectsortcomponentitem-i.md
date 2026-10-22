@@ -46,7 +46,7 @@ The default value is an empty string.
 order: number
 ```
 
-Sequence number.
+Sequence number. The smaller the value, the higher the item is sorted.
 
 The value must be greater than or equal to 0.
 
@@ -70,7 +70,7 @@ Default value: **0**.
 selected: boolean
 ```
 
-Whether the grid object has been added. The value **true** means that the grid object has been added, and **false** means the opposite.
+Whether the grid object is selected. The value **true** means that the grid object is selected, and **false** means the opposite.
 
 **Type:** boolean
 
@@ -90,7 +90,7 @@ Whether the grid object has been added. The value **true** means that the grid o
 symbolStyle?: SymbolGlyphModifier
 ```
 
-Symbol resource of the image. Required when **GridObjectSortComponentType** is set to **IMAGE_TEXT**. The priority of this property is higher than that of **url**.
+Symbol resource of the image, configured when **GridObjectSortComponentType** is set to **IMAGE_TEXT**. It does not take effect when the type is **TEXT**. The priority of this property is higher than that of **url**.
 
 **Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
@@ -130,7 +130,7 @@ Text information.
 url?: ResourceStr
 ```
 
-URL of the image. Required when **GridObjectSortComponentType** is set to **IMAGE_TEXT**.
+URL of the image, configured when **GridObjectSortComponentType** is set to **IMAGE_TEXT**. It does not take effect when the type is **TEXT**. If **symbolStyle** is also configured, **symbolStyle** prevails.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

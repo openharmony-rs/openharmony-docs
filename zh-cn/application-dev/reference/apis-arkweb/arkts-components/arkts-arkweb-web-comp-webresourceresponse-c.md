@@ -249,6 +249,34 @@ setResponseBody(data:string | number | Resource | ArrayBuffer): void
 
 **示例**
 
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController();
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller})
+        .onInterceptRequest((event) => {
+          this.responseWeb.setResponseBody("<!DOCTYPE html><html><body><h1>Hello, World</h1></body></html>");
+          this.responseWeb.setResponseEncoding('utf-8');
+          this.responseWeb.setResponseMimeType('text/html');
+          this.responseWeb.setResponseCode(200);
+          this.responseWeb.setReasonMessage('OK');
+          return this.responseWeb;
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## setResponseCode
 
 ```TypeScript

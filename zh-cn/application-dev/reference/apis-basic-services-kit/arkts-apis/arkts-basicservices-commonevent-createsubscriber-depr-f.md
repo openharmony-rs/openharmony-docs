@@ -20,7 +20,7 @@ function createSubscriber(
 
 **废弃版本：** 9
 
-**替代接口：** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber)( subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallback&lt;CommonEventSubscriber&gt; )
+**替代接口：** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-1)( subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallback&lt;CommonEventSubscriber&gt; )
 
 <!--Device-commonEvent-function createSubscriber(    subscribeInfo: CommonEventSubscribeInfo,    callback: AsyncCallback<CommonEventSubscriber>  ): void--><!--Device-commonEvent-function createSubscriber(    subscribeInfo: CommonEventSubscribeInfo,    callback: AsyncCallback<CommonEventSubscriber>  ): void-End-->
 
@@ -73,7 +73,7 @@ function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<Comm
 
 **废弃版本：** 9
 
-**替代接口：** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber)(subscribeInfo: CommonEventSubscribeInfo)
+**替代接口：** [createSubscriber](arkts-basicservices-commoneventmanager-createsubscriber-f.md#createsubscriber-2)(subscribeInfo: CommonEventSubscribeInfo)
 
 <!--Device-commonEvent-function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>--><!--Device-commonEvent-function createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise<CommonEventSubscriber>-End-->
 

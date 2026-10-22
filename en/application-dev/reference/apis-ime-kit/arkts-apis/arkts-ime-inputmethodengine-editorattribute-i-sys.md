@@ -1,4 +1,4 @@
-# EditorAttribute
+# EditorAttribute (System API)
 
 ```TypeScript
 interface EditorAttribute

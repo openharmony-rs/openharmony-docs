@@ -20,7 +20,7 @@ import { dataAbility } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [createRdbPredicates](arkts-arkdata-dataability-createrdbpredicates-f.md#createrdbpredicates) | Creates an **RdbPredicates** object with a table name and **DataAbilityPredicates** object. |
+| [createRdbPredicates](arkts-arkdata-dataability-createrdbpredicates-f.md#createrdbpredicates-1) | Creates an **RdbPredicates** object with a table name and **DataAbilityPredicates** object. |
 
 ### Classes
 

@@ -12,7 +12,7 @@ import { inputDevice } from '@kit.InputKit';
 function supportKeys(deviceId: number, keys: Array<KeyCode>, callback: AsyncCallback<Array<boolean>>): void
 ```
 
-Queries whether a specified input device supports specified keys. This API uses an asynchronous callback to return the result.
+Queries whether a specified input device supports specified keys. This API uses an asynchronous callback to return the result. Before calling this API, call [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md) first to obtain the ID of the input device.
 
 **Since:** 9
 
@@ -73,7 +73,7 @@ struct Index {
 function supportKeys(deviceId: number, keys: Array<KeyCode>): Promise<Array<boolean>>
 ```
 
-Checks whether the input device supports the specified keys. This API uses a promise to return the result.
+Checks whether the input device supports the specified keys. This API uses a promise to return the result. Before calling this API, call [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md) first to obtain the ID of the input device.
 
 **Since:** 9
 

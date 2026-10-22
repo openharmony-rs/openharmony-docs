@@ -4,7 +4,7 @@
 export interface ShaderMaterial extends Material
 ```
 
-Shader material, which inherits from Material.
+Shader material, which inherits from [Material](arkts-arkgraphics3d-sceneresources-material-i.md).
 
 **Inheritance/Implementation:** ShaderMaterial extends [Material](arkts-arkgraphics3d-sceneresources-material-i.md)
 

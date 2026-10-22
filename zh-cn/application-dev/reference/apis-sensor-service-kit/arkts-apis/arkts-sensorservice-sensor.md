@@ -5,12 +5,12 @@
 > **说明：** 
 
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。订阅前可使用
-> [getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor)
+> [getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor-1)
 > 接口获取该传感器的信息，获取该传感器信息成功时可正常订阅传感器，异常情况详见
-> [getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor)错误码说明。
+> [getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor-1)错误码说明。
 > 订阅传感器数据时确保on订阅和off取消订阅成对出现。sensor模块提供传感器数据订阅与查询能力，核心使用流程如下：
 
-1. 使用[sensor.getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor)
+1. 使用[sensor.getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor-1)
 或[sensor.getSensorListSync](arkts-sensorservice-sensor-getsensorlistsync-f.md)查询传感器信息，确认设备支持目标传感器。
 2. 使用sensor.on接口订阅传感器数据，持续接收数据回调。
 3. 使用sensor.once接口获取一次传感器数据，适用于无需持续监听的场景。
@@ -42,30 +42,30 @@ import { sensor } from '@kit.SensorServiceKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAngleVariation](arkts-sensorservice-sensor-getanglevariation-f.md#getanglevariation) | 计算两个旋转矩阵之间的角度变化。使用callback异步回调。 |
-| [getAngleVariation](arkts-sensorservice-sensor-getanglevariation-f.md#getanglevariation) | 得到两个旋转矩阵之间的角度变化。使用Promise异步回调。 |
-| [getDeviceAltitude](arkts-sensorservice-sensor-getdevicealtitude-f.md#getdevicealtitude) | 根据气压值获取海拔高度。使用callback异步回调。 |
-| [getDeviceAltitude](arkts-sensorservice-sensor-getdevicealtitude-f.md#getdevicealtitude) | 根据气压值获取海拔高度。使用Promise异步回调。 |
-| [getGeomagneticInfo](arkts-sensorservice-sensor-getgeomagneticinfo-f.md#getgeomagneticinfo) | 获取某时刻地球上特定位置的地磁场信息。使用callback异步回调。 |
-| [getGeomagneticInfo](arkts-sensorservice-sensor-getgeomagneticinfo-f.md#getgeomagneticinfo) | 获取某时刻地球上特定位置的地磁场信息。使用Promise异步回调。 |
-| [getInclination](arkts-sensorservice-sensor-getinclination-f.md#getinclination) | 根据倾斜矩阵计算地磁倾角。使用callback异步回调。 |
-| [getInclination](arkts-sensorservice-sensor-getinclination-f.md#getinclination) | 根据倾斜矩阵计算地磁倾角。使用Promise异步回调。 |
-| [getOrientation](arkts-sensorservice-sensor-getorientation-f.md#getorientation) | 根据旋转矩阵计算设备方向。使用callback异步回调。 |
-| [getOrientation](arkts-sensorservice-sensor-getorientation-f.md#getorientation) | 根据旋转矩阵计算设备的方向。使用Promise异步回调。 |
-| [getQuaternion](arkts-sensorservice-sensor-getquaternion-f.md#getquaternion) | 根据旋转向量计算归一化四元数。使用callback异步回调。 |
-| [getQuaternion](arkts-sensorservice-sensor-getquaternion-f.md#getquaternion) | 根据旋转向量计算归一化四元数。使用Promise异步回调。 |
-| [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md#getrotationmatrix) | 根据旋转矢量获取旋转矩阵。使用callback异步回调。 |
-| [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md#getrotationmatrix) | 根据旋转矢量获取旋转矩阵。使用Promise异步回调。 |
-| [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md#getrotationmatrix) | 根据重力矢量和地磁矢量计算旋转矩阵。使用callback异步回调。 |
-| [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md#getrotationmatrix) | 根据重力矢量和地磁矢量计算旋转矩阵。使用Promise异步回调。 |
-| [getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist) | 获取设备上的所有传感器信息。使用callback异步回调。如果需要同步获取传感器列表，请使用getSensorListSync。 |
-| [getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist) | 获取设备上的所有传感器信息。使用Promise异步回调。 |
-| [getSensorListByDeviceSync](arkts-sensorservice-sensor-getsensorlistbydevicesync-f.md#getsensorlistbydevicesync) | 同步获取设备的所有传感器信息。getSensorListByDeviceSync返回设备上所有传感器信息，getSingleSensorByDeviceSync返回指定单个传感器信息。 |
-| [getSensorListSync](arkts-sensorservice-sensor-getsensorlistsync-f.md#getsensorlistsync) | 获取设备上的所有传感器信息，使用同步方式返回结果。 |
-| [getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor) | 获取指定传感器类型的属性信息。使用callback异步回调。 |
-| [getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor) | 获取指定类型的传感器信息。使用Promise异步回调。 |
-| [getSingleSensorByDeviceSync](arkts-sensorservice-sensor-getsinglesensorbydevicesync-f.md#getsinglesensorbydevicesync) | 同步获取指定设备和类型的传感器信息。如果存在外设且未指定设备ID，获取到的传感器将是所有符合指定传感器类型的本地和外设传感器。如果不存在外设，则仅获取本地的传感器。 |
-| [getSingleSensorSync](arkts-sensorservice-sensor-getsinglesensorsync-f.md#getsinglesensorsync) | 获取指定类型的传感器信息，使用同步方式返回结果。 |
+| [getAngleVariation](arkts-sensorservice-sensor-getanglevariation-f.md#getanglevariation-1) | 计算两个旋转矩阵之间的角度变化。使用callback异步回调。 |
+| [getAngleVariation](arkts-sensorservice-sensor-getanglevariation-f.md#getanglevariation-2) | 得到两个旋转矩阵之间的角度变化。使用Promise异步回调。 |
+| [getDeviceAltitude](arkts-sensorservice-sensor-getdevicealtitude-f.md#getdevicealtitude-1) | 根据气压值获取海拔高度。使用callback异步回调。 |
+| [getDeviceAltitude](arkts-sensorservice-sensor-getdevicealtitude-f.md#getdevicealtitude-2) | 根据气压值获取海拔高度。使用Promise异步回调。 |
+| [getGeomagneticInfo](arkts-sensorservice-sensor-getgeomagneticinfo-f.md#getgeomagneticinfo-1) | 获取某时刻地球上特定位置的地磁场信息。使用callback异步回调。 |
+| [getGeomagneticInfo](arkts-sensorservice-sensor-getgeomagneticinfo-f.md#getgeomagneticinfo-2) | 获取某时刻地球上特定位置的地磁场信息。使用Promise异步回调。 |
+| [getInclination](arkts-sensorservice-sensor-getinclination-f.md#getinclination-1) | 根据倾斜矩阵计算地磁倾角。使用callback异步回调。 |
+| [getInclination](arkts-sensorservice-sensor-getinclination-f.md#getinclination-2) | 根据倾斜矩阵计算地磁倾角。使用Promise异步回调。 |
+| [getOrientation](arkts-sensorservice-sensor-getorientation-f.md#getorientation-1) | 根据旋转矩阵计算设备方向。使用callback异步回调。 |
+| [getOrientation](arkts-sensorservice-sensor-getorientation-f.md#getorientation-2) | 根据旋转矩阵计算设备的方向。使用Promise异步回调。 |
+| [getQuaternion](arkts-sensorservice-sensor-getquaternion-f.md#getquaternion-1) | 根据旋转向量计算归一化四元数。使用callback异步回调。 |
+| [getQuaternion](arkts-sensorservice-sensor-getquaternion-f.md#getquaternion-2) | 根据旋转向量计算归一化四元数。使用Promise异步回调。 |
+| [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md#getrotationmatrix-1) | 根据旋转矢量获取旋转矩阵。使用callback异步回调。 |
+| [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md#getrotationmatrix-2) | 根据旋转矢量获取旋转矩阵。使用Promise异步回调。 |
+| [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md#getrotationmatrix-3) | 根据重力矢量和地磁矢量计算旋转矩阵。使用callback异步回调。 |
+| [getRotationMatrix](arkts-sensorservice-sensor-getrotationmatrix-f.md#getrotationmatrix-4) | 根据重力矢量和地磁矢量计算旋转矩阵。使用Promise异步回调。 |
+| [getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist-1) | 获取设备上的所有传感器信息。使用callback异步回调。如果需要同步获取传感器列表，请使用getSensorListSync。 |
+| [getSensorList](arkts-sensorservice-sensor-getsensorlist-f.md#getsensorlist-2) | 获取设备上的所有传感器信息。使用Promise异步回调。 |
+| [getSensorListByDeviceSync](arkts-sensorservice-sensor-getsensorlistbydevicesync-f.md#getsensorlistbydevicesync-1) | 同步获取设备的所有传感器信息。getSensorListByDeviceSync返回设备上所有传感器信息，getSingleSensorByDeviceSync返回指定单个传感器信息。 |
+| [getSensorListSync](arkts-sensorservice-sensor-getsensorlistsync-f.md#getsensorlistsync-1) | 获取设备上的所有传感器信息，使用同步方式返回结果。 |
+| [getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor-1) | 获取指定传感器类型的属性信息。使用callback异步回调。 |
+| [getSingleSensor](arkts-sensorservice-sensor-getsinglesensor-f.md#getsinglesensor-2) | 获取指定类型的传感器信息。使用Promise异步回调。 |
+| [getSingleSensorByDeviceSync](arkts-sensorservice-sensor-getsinglesensorbydevicesync-f.md#getsinglesensorbydevicesync-1) | 同步获取指定设备和类型的传感器信息。如果存在外设且未指定设备ID，获取到的传感器将是所有符合指定传感器类型的本地和外设传感器。如果不存在外设，则仅获取本地的传感器。 |
+| [getSingleSensorSync](arkts-sensorservice-sensor-getsinglesensorsync-f.md#getsinglesensorsync-1) | 获取指定类型的传感器信息，使用同步方式返回结果。 |
 | [off('SensorId.ACCELEROMETER')](arkts-sensorservice-sensor-off-f.md#offsensoridaccelerometer) | 取消订阅加速度传感器数据。当不再需要接收加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。 |
 | [off('SensorId.ACCELEROMETER')](arkts-sensorservice-sensor-off-f.md#offsensoridaccelerometer) | 取消订阅加速度传感器数据。当不再需要接收加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。 |
 | [off('SensorId.ACCELEROMETER_UNCALIBRATED')](arkts-sensorservice-sensor-off-f.md#offsensoridaccelerometer_uncalibrated) | 取消订阅未校准加速度传感器数据。当不再需要接收未校准加速度传感器数据时调用此接口取消订阅。off取消订阅必须与on订阅成对出现。 |
@@ -154,24 +154,24 @@ import { sensor } from '@kit.SensorServiceKit';
 | [once('SensorId.ROTATION_VECTOR')](arkts-sensorservice-sensor-once-f.md#oncesensoridrotation_vector) | 获取一次旋转矢量传感器数据。适用于仅需一次性获取当前设备姿态的场景。调用后，callback仅触发一次，自动取消订阅。 |
 | [once('SensorId.SIGNIFICANT_MOTION')](arkts-sensorservice-sensor-once-f.md#oncesensoridsignificant_motion) | 获取一次有效运动传感器数据。适用于仅需一次性检测有效运动的场景。调用后，callback仅触发一次，自动取消订阅。 |
 | [once('SensorId.WEAR_DETECTION')](arkts-sensorservice-sensor-once-f.md#oncesensoridwear_detection) | 获取一次佩戴检测传感器数据。适用于仅需一次性检测佩戴状态的场景。调用后，callback仅触发一次，自动取消订阅。 |
-| [transformRotationMatrix](arkts-sensorservice-sensor-transformrotationmatrix-f.md#transformrotationmatrix) | 根据指定坐标系映射旋转矩阵。使用callback异步回调。 |
-| [transformRotationMatrix](arkts-sensorservice-sensor-transformrotationmatrix-f.md#transformrotationmatrix) | 根据指定坐标系映射旋转矩阵。使用Promise异步回调。 |
-| [createQuaternion](arkts-sensorservice-sensor-createquaternion-f.md#createquaternion) | 将旋转矢量转换为四元数。使用callback异步回调。 |
-| [createQuaternion](arkts-sensorservice-sensor-createquaternion-f.md#createquaternion) | 将旋转矢量转换为四元数。使用Promise异步回调。 |
-| [createRotationMatrix](arkts-sensorservice-sensor-createrotationmatrix-f.md#createrotationmatrix) | 将旋转矢量转换为旋转矩阵。使用callback异步回调。 |
-| [createRotationMatrix](arkts-sensorservice-sensor-createrotationmatrix-f.md#createrotationmatrix) | 将旋转矢量转换为旋转矩阵。使用Promise异步回调。 |
-| [createRotationMatrix](arkts-sensorservice-sensor-createrotationmatrix-f.md#createrotationmatrix) | 根据重力矢量和地磁矢量计算旋转矩阵。使用callback异步回调。 |
-| [createRotationMatrix](arkts-sensorservice-sensor-createrotationmatrix-f.md#createrotationmatrix) | 根据重力矢量和地磁矢量计算旋转矩阵。使用Promise异步回调。 |
-| [getAltitude](arkts-sensorservice-sensor-getaltitude-f.md#getaltitude) | 根据气压值获取设备所在的海拔高度。使用callback异步回调。 |
-| [getAltitude](arkts-sensorservice-sensor-getaltitude-f.md#getaltitude) | 根据气压值获取设备所在的海拔高度。使用Promise异步回调。 |
-| [getAngleModify](arkts-sensorservice-sensor-getanglemodify-f.md#getanglemodify) | 获取两个旋转矩阵之间的角度变化。使用callback异步回调。 |
-| [getAngleModify](arkts-sensorservice-sensor-getanglemodify-f.md#getanglemodify) | 获取两个旋转矩阵之间的角度变化。使用Promise异步回调。 |
-| [getDirection](arkts-sensorservice-sensor-getdirection-f.md#getdirection) | 根据旋转矩阵计算设备的方向。使用callback异步回调。 |
-| [getDirection](arkts-sensorservice-sensor-getdirection-f.md#getdirection) | 根据旋转矩阵计算设备的方向。使用Promise异步回调。 |
-| [getGeomagneticDip](arkts-sensorservice-sensor-getgeomagneticdip-f.md#getgeomagneticdip) | 根据倾斜矩阵计算地磁倾斜角。使用callback异步回调。 |
-| [getGeomagneticDip](arkts-sensorservice-sensor-getgeomagneticdip-f.md#getgeomagneticdip) | 根据倾斜矩阵计算地磁倾斜角。使用Promise异步回调。 |
-| [getGeomagneticField](arkts-sensorservice-sensor-getgeomagneticfield-f.md#getgeomagneticfield) | 获取地球上特定位置的地磁场。使用callback异步回调。 |
-| [getGeomagneticField](arkts-sensorservice-sensor-getgeomagneticfield-f.md#getgeomagneticfield) | 获取地球上特定位置的地磁场。使用Promise异步回调。 |
+| [transformRotationMatrix](arkts-sensorservice-sensor-transformrotationmatrix-f.md#transformrotationmatrix-1) | 根据指定坐标系映射旋转矩阵。使用callback异步回调。 |
+| [transformRotationMatrix](arkts-sensorservice-sensor-transformrotationmatrix-f.md#transformrotationmatrix-2) | 根据指定坐标系映射旋转矩阵。使用Promise异步回调。 |
+| [createQuaternion](arkts-sensorservice-sensor-createquaternion-f.md#createquaternion-1) | 将旋转矢量转换为四元数。使用callback异步回调。 |
+| [createQuaternion](arkts-sensorservice-sensor-createquaternion-f.md#createquaternion-2) | 将旋转矢量转换为四元数。使用Promise异步回调。 |
+| [createRotationMatrix](arkts-sensorservice-sensor-createrotationmatrix-f.md#createrotationmatrix-1) | 将旋转矢量转换为旋转矩阵。使用callback异步回调。 |
+| [createRotationMatrix](arkts-sensorservice-sensor-createrotationmatrix-f.md#createrotationmatrix-2) | 将旋转矢量转换为旋转矩阵。使用Promise异步回调。 |
+| [createRotationMatrix](arkts-sensorservice-sensor-createrotationmatrix-f.md#createrotationmatrix-3) | 根据重力矢量和地磁矢量计算旋转矩阵。使用callback异步回调。 |
+| [createRotationMatrix](arkts-sensorservice-sensor-createrotationmatrix-f.md#createrotationmatrix-4) | 根据重力矢量和地磁矢量计算旋转矩阵。使用Promise异步回调。 |
+| [getAltitude](arkts-sensorservice-sensor-getaltitude-f.md#getaltitude-1) | 根据气压值获取设备所在的海拔高度。使用callback异步回调。 |
+| [getAltitude](arkts-sensorservice-sensor-getaltitude-f.md#getaltitude-2) | 根据气压值获取设备所在的海拔高度。使用Promise异步回调。 |
+| [getAngleModify](arkts-sensorservice-sensor-getanglemodify-f.md#getanglemodify-1) | 获取两个旋转矩阵之间的角度变化。使用callback异步回调。 |
+| [getAngleModify](arkts-sensorservice-sensor-getanglemodify-f.md#getanglemodify-2) | 获取两个旋转矩阵之间的角度变化。使用Promise异步回调。 |
+| [getDirection](arkts-sensorservice-sensor-getdirection-f.md#getdirection-1) | 根据旋转矩阵计算设备的方向。使用callback异步回调。 |
+| [getDirection](arkts-sensorservice-sensor-getdirection-f.md#getdirection-2) | 根据旋转矩阵计算设备的方向。使用Promise异步回调。 |
+| [getGeomagneticDip](arkts-sensorservice-sensor-getgeomagneticdip-f.md#getgeomagneticdip-1) | 根据倾斜矩阵计算地磁倾斜角。使用callback异步回调。 |
+| [getGeomagneticDip](arkts-sensorservice-sensor-getgeomagneticdip-f.md#getgeomagneticdip-2) | 根据倾斜矩阵计算地磁倾斜角。使用Promise异步回调。 |
+| [getGeomagneticField](arkts-sensorservice-sensor-getgeomagneticfield-f.md#getgeomagneticfield-1) | 获取地球上特定位置的地磁场。使用callback异步回调。 |
+| [getGeomagneticField](arkts-sensorservice-sensor-getgeomagneticfield-f.md#getgeomagneticfield-2) | 获取地球上特定位置的地磁场。使用Promise异步回调。 |
 | [off('SensorType.SENSOR_TYPE_ID_ACCELEROMETER')](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_accelerometer) | 取消订阅加速度传感器数据。off取消订阅必须与on订阅成对出现。 |
 | [off('SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED')](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_accelerometer_uncalibrated) | 取消订阅未校准加速度传感器数据。off取消订阅必须与on订阅成对出现。 |
 | [off('SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT')](arkts-sensorservice-sensor-off-f.md#offsensortypesensor_type_id_ambient_light) | 取消订阅环境光传感器数据。off取消订阅必须与on订阅成对出现。 |
@@ -235,8 +235,8 @@ import { sensor } from '@kit.SensorServiceKit';
 | [once('SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR')](arkts-sensorservice-sensor-once-f.md#oncesensortypesensor_type_id_rotation_vector) | 监听旋转矢量传感器数据变化一次。适用于仅需一次性获取当前旋转矢量数据的场景。 |
 | [once('SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION')](arkts-sensorservice-sensor-once-f.md#oncesensortypesensor_type_id_significant_motion) | 监听有效运动传感器的数据变化一次。适用于仅需一次性获取当前有效运动数据的场景。 |
 | [once('SensorType.SENSOR_TYPE_ID_WEAR_DETECTION')](arkts-sensorservice-sensor-once-f.md#oncesensortypesensor_type_id_wear_detection) | 监听所佩戴的检测传感器的数据变化一次。适用于仅需一次性获取当前佩戴检测数据的场景。 |
-| [transformCoordinateSystem](arkts-sensorservice-sensor-transformcoordinatesystem-f.md#transformcoordinatesystem) | 旋转提供的旋转矩阵，使其可以以不同的方式表示坐标系。使用callback异步回调。 |
-| [transformCoordinateSystem](arkts-sensorservice-sensor-transformcoordinatesystem-f.md#transformcoordinatesystem) | 旋转提供的旋转矩阵，使其可以以不同的方式表示坐标系。使用Promise异步回调。 |
+| [transformCoordinateSystem](arkts-sensorservice-sensor-transformcoordinatesystem-f.md#transformcoordinatesystem-1) | 旋转提供的旋转矩阵，使其可以以不同的方式表示坐标系。使用callback异步回调。 |
+| [transformCoordinateSystem](arkts-sensorservice-sensor-transformcoordinatesystem-f.md#transformcoordinatesystem-2) | 旋转提供的旋转矩阵，使其可以以不同的方式表示坐标系。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）

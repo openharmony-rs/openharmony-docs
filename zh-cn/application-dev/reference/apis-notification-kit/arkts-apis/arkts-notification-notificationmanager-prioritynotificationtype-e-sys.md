@@ -1,4 +1,4 @@
-# PriorityNotificationType
+# PriorityNotificationType（系统接口）
 
 ```TypeScript
 export enum PriorityNotificationType

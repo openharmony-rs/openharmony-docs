@@ -323,7 +323,7 @@ getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getEditorAttribute](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute)(callback: AsyncCallback&lt;EditorAttribute&gt;)
+**替代接口：** [getEditorAttribute](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute-1)(callback: AsyncCallback&lt;EditorAttribute&gt;)
 
 <!--Device-TextInputClient-getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void--><!--Device-TextInputClient-getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void-End-->
 
@@ -367,7 +367,7 @@ getEditorAttribute(): Promise<EditorAttribute>
 
 **废弃版本：** 9
 
-**替代接口：** [getEditorAttribute](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute)(callback: AsyncCallback&lt;EditorAttribute&gt;)
+**替代接口：** [getEditorAttribute](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute-1)(callback: AsyncCallback&lt;EditorAttribute&gt;)
 
 <!--Device-TextInputClient-getEditorAttribute(): Promise<EditorAttribute>--><!--Device-TextInputClient-getEditorAttribute(): Promise<EditorAttribute>-End-->
 
@@ -496,7 +496,7 @@ insertText(text: string, callback: AsyncCallback<boolean>): void
 
 **废弃版本：** 9
 
-**替代接口：** [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext)(text: string, callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext-1)(text: string, callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-TextInputClient-insertText(text: string, callback: AsyncCallback<boolean>): void--><!--Device-TextInputClient-insertText(text: string, callback: AsyncCallback<boolean>): void-End-->
 
@@ -542,7 +542,7 @@ insertText(text: string): Promise<boolean>
 
 **废弃版本：** 9
 
-**替代接口：** [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext)(text: string): Promise&lt;boolean&gt;
+**替代接口：** [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext-2)(text: string): Promise&lt;boolean&gt;
 
 <!--Device-TextInputClient-insertText(text: string): Promise<boolean>--><!--Device-TextInputClient-insertText(text: string): Promise<boolean>-End-->
 

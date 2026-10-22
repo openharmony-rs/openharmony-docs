@@ -4,7 +4,7 @@
 interface UploadTask
 ```
 
-Implements file uploads. Before using any APIs of this class, you must obtain an **UploadTask** object, from a promise through [request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile) or from a callback through [request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile).
+Implements file uploads. Before using any APIs of this class, you must obtain an **UploadTask** object, from a promise through [request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-2) or from a callback through [request.uploadFile](arkts-basicservices-request-uploadfile-f.md#uploadfile-1).
 
 **Since:** 6
 
@@ -397,7 +397,7 @@ Deletes the upload task. This API uses an asynchronous callback to return the re
 
 **Deprecated since:** 9
 
-**Substitutes:** [delete](#delete)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [delete](#delete-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 

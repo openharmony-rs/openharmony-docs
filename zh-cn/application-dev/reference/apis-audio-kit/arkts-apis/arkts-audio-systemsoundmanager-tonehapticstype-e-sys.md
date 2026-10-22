@@ -14,6 +14,24 @@ enum ToneHapticsType
 
 **系统接口：** 此接口为系统接口。
 
+## ALARM
+
+```TypeScript
+ALARM = 41
+```
+
+闹钟场景的振动。用于配置闹钟铃声的振动反馈。该类型可与getToneHapticsSettings和setToneHapticsSettings配合使用，用于读取或修改闹钟场景的振动设置。值41表示触觉反馈配置的闹钟场景标识。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ToneHapticsType-ALARM = 41--><!--Device-ToneHapticsType-ALARM = 41-End-->
+
+**系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## CALL_ESIM_CARD_0
 
 ```TypeScript

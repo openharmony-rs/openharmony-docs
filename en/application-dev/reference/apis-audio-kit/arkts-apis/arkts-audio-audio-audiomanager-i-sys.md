@@ -1,4 +1,4 @@
-# AudioManager
+# AudioManager (System API)
 
 ```TypeScript
 interface AudioManager

@@ -54,7 +54,7 @@ import { inputMonitor } from '@kit.InputKit';
 | [on('touchscreenSwipe')](arkts-input-inputmonitor-on-f-sys.md#ontouchscreenswipe) | Enables listening for touchscreen swipe events. This API uses an asynchronous callback to return the result. |
 | [on('touchscreenPinch')](arkts-input-inputmonitor-on-f-sys.md#ontouchscreenpinch) | Enables listening for touchscreen pinch events. This API uses an asynchronous callback to return the result. |
 | [on('keyPressed')](arkts-input-inputmonitor-on-f-sys.md#onkeypressed) | Listens for the press and release events of the specified key, which can be the **META_LEFT**, **META_RIGHT**, power, or volume key. This API uses an asynchronous callback to return the result. |
-| [queryTouchEvents](arkts-input-inputmonitor-querytouchevents-f-sys.md#querytouchevents) | Queries recent touchscreen input events. A maximum of 100 events can be queried. Since API version 26.0.0, a maximum of 60 events can be queried. This API uses a promise to return the result. |
+| [queryTouchEvents](arkts-input-inputmonitor-querytouchevents-f-sys.md#querytouchevents-1) | Queries recent touchscreen input events. A maximum of 100 events can be queried. Since API version 26.0.0, a maximum of 60 events can be queried. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 <!--Del-->

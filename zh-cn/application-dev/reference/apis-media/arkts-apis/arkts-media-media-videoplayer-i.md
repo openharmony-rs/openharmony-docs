@@ -4,7 +4,7 @@
 interface VideoPlayer
 ```
 
-视频播放管理类，用于管理和播放视频媒体。在调用VideoPlayer的方法前，需要先通过[createVideoPlayer()](arkts-media-media-createvideoplayer-f.md#createvideoplayer)构建一个VideoPlayer实例。
+视频播放管理类，用于管理和播放视频媒体。在调用VideoPlayer的方法前，需要先通过[createVideoPlayer()](arkts-media-media-createvideoplayer-f.md#createvideoplayer-1)构建一个VideoPlayer实例。
 
 > **说明：** 
 > 
@@ -36,14 +36,14 @@ getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)
+> [AVPlayer.getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription-1)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription)(callback: AsyncCallback&lt;Array&lt;MediaDescription&gt;&gt;)
+**替代接口：** [getTrackDescription](arkts-media-media-avplayer-i.md#gettrackdescription-1)(callback: AsyncCallback&lt;Array&lt;MediaDescription&gt;&gt;)
 
 <!--Device-VideoPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void--><!--Device-VideoPlayer-getTrackDescription(callback: AsyncCallback<Array<MediaDescription>>): void-End-->
 
@@ -281,13 +281,13 @@ pause(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.pause](arkts-media-media-avplayer-i.md#pause)替代。
+> [AVPlayer.pause](arkts-media-media-avplayer-i.md#pause-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [pause](arkts-media-media-avplayer-i.md#pause)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [pause](arkts-media-media-avplayer-i.md#pause-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-VideoPlayer-pause(callback: AsyncCallback<void>): void--><!--Device-VideoPlayer-pause(callback: AsyncCallback<void>): void-End-->
 
@@ -339,13 +339,13 @@ play(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.play](arkts-media-media-avplayer-i.md#play)替代。
+> [AVPlayer.play](arkts-media-media-avplayer-i.md#play-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [play](arkts-media-media-avplayer-i.md#play)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [play](arkts-media-media-avplayer-i.md#play-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-VideoPlayer-play(callback: AsyncCallback<void>): void--><!--Device-VideoPlayer-play(callback: AsyncCallback<void>): void-End-->
 
@@ -397,13 +397,13 @@ prepare(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.prepare](arkts-media-media-avplayer-i.md#prepare)替代。
+> [AVPlayer.prepare](arkts-media-media-avplayer-i.md#prepare-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [prepare](arkts-media-media-avplayer-i.md#prepare)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [prepare](arkts-media-media-avplayer-i.md#prepare-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-VideoPlayer-prepare(callback: AsyncCallback<void>): void--><!--Device-VideoPlayer-prepare(callback: AsyncCallback<void>): void-End-->
 
@@ -455,13 +455,13 @@ release(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.release](arkts-media-media-avplayer-i.md#release)替代。
+> [AVPlayer.release](arkts-media-media-avplayer-i.md#release-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [release](arkts-media-media-avplayer-i.md#release)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [release](arkts-media-media-avplayer-i.md#release-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-VideoPlayer-release(callback: AsyncCallback<void>): void--><!--Device-VideoPlayer-release(callback: AsyncCallback<void>): void-End-->
 
@@ -513,13 +513,13 @@ reset(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.reset](arkts-media-media-avplayer-i.md#reset)替代。
+> [AVPlayer.reset](arkts-media-media-avplayer-i.md#reset-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [reset](arkts-media-media-avplayer-i.md#reset)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [reset](arkts-media-media-avplayer-i.md#reset-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-VideoPlayer-reset(callback: AsyncCallback<void>): void--><!--Device-VideoPlayer-reset(callback: AsyncCallback<void>): void-End-->
 
@@ -862,13 +862,13 @@ stop(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [AVPlayer.stop](arkts-media-media-avplayer-i.md#stop)替代。
+> [AVPlayer.stop](arkts-media-media-avplayer-i.md#stop-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [stop](arkts-media-media-avplayer-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [stop](arkts-media-media-avplayer-i.md#stop-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-VideoPlayer-stop(callback: AsyncCallback<void>): void--><!--Device-VideoPlayer-stop(callback: AsyncCallback<void>): void-End-->
 

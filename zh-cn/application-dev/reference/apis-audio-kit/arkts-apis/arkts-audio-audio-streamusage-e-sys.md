@@ -1,4 +1,4 @@
-# StreamUsage
+# StreamUsage（系统接口）
 
 ```TypeScript
 enum StreamUsage

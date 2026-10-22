@@ -246,7 +246,7 @@ getMainWindow(): Promise<Window>
 
 获取该WindowStage实例下的主窗口，使用Promise异步回调。
 
-调用该接口前，建议先通过[loadContent](arkts-arkui-window-window-i.md#loadcontent)方法或者[setUIContent](arkts-arkui-window-window-i.md#setuicontent)方法完成页面加载。
+调用该接口前，建议先通过[loadContent](arkts-arkui-window-window-i.md#loadcontent-1)方法或者[setUIContent](arkts-arkui-window-window-i.md#setuicontent-1)方法完成页面加载。
 
 **起始版本：** 9
 
@@ -311,7 +311,7 @@ getMainWindow(callback: AsyncCallback<Window>): void
 
 获取该WindowStage实例下的主窗口，使用callback异步回调。
 
-调用该接口前，建议先通过[loadContent](arkts-arkui-window-window-i.md#loadcontent)方法或者[setUIContent](arkts-arkui-window-window-i.md#setuicontent)方法完成页面加载。
+调用该接口前，建议先通过[loadContent](arkts-arkui-window-window-i.md#loadcontent-1)方法或者[setUIContent](arkts-arkui-window-window-i.md#setuicontent-1)方法完成页面加载。
 
 **起始版本：** 9
 
@@ -1242,7 +1242,7 @@ off(eventType: 'windowStageClose', callback?: Callback<void>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例**
 
@@ -1429,7 +1429,7 @@ on(eventType: 'windowStageClose', callback: Callback<void>): void
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 
 **示例**
 
@@ -1555,7 +1555,7 @@ removeImageForRecent(): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required or a non-system application calls the API.<br>**适用版本：** 26.0.0+ |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
-| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. |
+| [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed.         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 
 **示例**
@@ -1835,11 +1835,9 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 设置主窗的窗口支持模式，使用Promise异步回调。
 
-**起始版本：** 15
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-WindowStage-setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise<void>--><!--Device-WindowStage-setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise<void>-End-->
 
@@ -1864,6 +1862,8 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [1300002](../errorcode-window.md#1300002-窗口状态异常) | This window state is abnormal. Possible cause:         1. The window is not created or destroyed.         2. Internal task error. |
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
+| [1300004](../errorcode-window.md#1300004-无权限操作) | Unauthorized operation. Possible cause:         1. Only main windows and subwindows are supported.         2. Not supported when subwindows are set to follow the main window. |
+| [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause:         1. When called on a main window, the parameter should not only contain SPLIT.         2. When called on a sub window, the parameter should not contain SPLIT. |
 
 **示例**
 
@@ -1950,7 +1950,7 @@ export default class EntryAbility extends UIAbility {
         bundleManager.SupportWindowMode.FULL_SCREEN,
         bundleManager.SupportWindowMode.SPLIT,
         bundleManager.SupportWindowMode.FLOATING
-      ]);
+      ], true);
       promise.then(() => {
         console.info('Succeeded in setting window support modes');
       }).catch((err: BusinessError) => {

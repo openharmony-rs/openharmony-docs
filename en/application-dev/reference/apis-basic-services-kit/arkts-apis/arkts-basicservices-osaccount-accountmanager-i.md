@@ -2233,14 +2233,14 @@ Obtains the ID of a distributed virtual device. This API uses an asynchronous ca
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid)
+> [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid)(callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid-1)(callback: AsyncCallback&lt;string&gt;)
 
 **Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC or ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -2706,14 +2706,14 @@ Obtains the OS account ID based on the domain account information. This API uses
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain)
+> [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain-2)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain)(domainInfo: DomainAccountInfo)
+**Substitutes:** [getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain-2)(domainInfo: DomainAccountInfo)
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -2945,14 +2945,14 @@ Obtains the type of the account to which the current process belongs. This API u
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [getOsAccountType](#getosaccounttype)
+> [getOsAccountType](#getosaccounttype-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [getOsAccountType](#getosaccounttype)(callback: AsyncCallback&lt;OsAccountType&gt;)
+**Substitutes:** [getOsAccountType](#getosaccounttype-1)(callback: AsyncCallback&lt;OsAccountType&gt;)
 
 <!--Device-AccountManager-getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void--><!--Device-AccountManager-getOsAccountTypeFromProcess(callback: AsyncCallback<OsAccountType>): void-End-->
 
@@ -3135,14 +3135,14 @@ Checks whether multiple OS accounts are supported. This API uses an asynchronous
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)
+> [checkMultiOsAccountEnabled](#checkmultiosaccountenabled-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkMultiOsAccountEnabled](#checkmultiosaccountenabled)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [checkMultiOsAccountEnabled](#checkmultiosaccountenabled-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AccountManager-isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isMultiOsAccountEnable(callback: AsyncCallback<boolean>): void-End-->
 
@@ -3428,14 +3428,14 @@ Checks whether an OS account has been verified. This API uses an asynchronous ca
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkOsAccountVerified](#checkosaccountverified)
+> [checkOsAccountVerified](#checkosaccountverified-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkOsAccountVerified](#checkosaccountverified)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [checkOsAccountVerified](#checkosaccountverified-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
@@ -3570,14 +3570,14 @@ Checks whether the current OS account is a test account. This API uses an asynch
 > **NOTE:** 
 > 
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use
-> [checkOsAccountTestable](#checkosaccounttestable)
+> [checkOsAccountTestable](#checkosaccounttestable-1)
 > instead.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [checkOsAccountTestable](#checkosaccounttestable)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [checkOsAccountTestable](#checkosaccounttestable-1)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-AccountManager-isTestOsAccount(callback: AsyncCallback<boolean>): void--><!--Device-AccountManager-isTestOsAccount(callback: AsyncCallback<boolean>): void-End-->
 

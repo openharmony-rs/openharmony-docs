@@ -38,7 +38,7 @@ Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to
 > **NOTE:** 
 > 
 > This API is supported since API version 9 and deprecated since API version 11. Use
-> [X509CRL.getEncoded()](arkts-devicecertificate-cert-x509crl-i.md#getencoded) instead.
+> [X509CRL.getEncoded()](arkts-devicecertificate-cert-x509crl-i.md#getencoded-1) instead.
 
 **Since:** 9
 
@@ -765,7 +765,7 @@ Obtains all the revoked certificate entries from the X.509 CRL. This API uses an
 > **NOTE:** 
 > 
 > This API is supported since API version 9 and deprecated since API version 11. Use
-> [X509CRL.getRevokedCerts()](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcerts)
+> [X509CRL.getRevokedCerts()](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcerts-1)
 > instead.
 
 **Since:** 9
@@ -2053,7 +2053,7 @@ Verifies the signature of the X.509 CRL. The RSA algorithm is supported. This AP
 > **NOTE:** 
 > 
 > This API is supported since API version 9 and deprecated since API version 11. Use
-> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify)
+> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify-1)
 > instead.
 
 **Since:** 9
@@ -2339,7 +2339,7 @@ Verifies the signature of the X.509 CRL. The RSA algorithm is supported. This AP
 > **NOTE:** 
 > 
 > This API is supported since API version 9 and deprecated since API version 11. Use
-> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify) instead.
+> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify-2) instead.
 
 **Since:** 9
 

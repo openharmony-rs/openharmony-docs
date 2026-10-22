@@ -9,7 +9,7 @@ declare class ProgressAttribute<Type extends keyof ProgressStyleMap = keyof Prog
 
 > **说明：** 
 > 
-> 该组件重写了通用属性[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)，直接添加在Progress组件上，设置进度条的底色。如需设
+> 该组件重写了通用属性[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1)，直接添加在Progress组件上，设置进度条的底色。如需设
 > 置整个Progress组件的背景色，需要在外层容器上添加backgroundColor，并用该容器包裹Progress组件。
 
 **继承/实现关系：** ProgressAttribute extends CommonMethod&lt;ProgressAttribute&lt;Type&gt;&gt;

@@ -1,4 +1,4 @@
-# AlbumChangeInfo
+# AlbumChangeInfo（系统接口）
 
 ```TypeScript
 interface AlbumChangeInfo

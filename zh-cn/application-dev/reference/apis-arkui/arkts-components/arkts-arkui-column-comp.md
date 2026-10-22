@@ -161,3 +161,31 @@ struct ColumnExample {
   }
 }
 ```
+
+### 示例2（设置反转属性）
+
+本示例展示设置Column组件的reverse属性后的效果。
+
+```TypeScript
+@Entry
+@Component
+struct ColumnReverseSample {
+  build() {
+    Column() {
+      Text("1")
+        .width(50)
+        .height(100)
+        .backgroundColor(0xAFEEEE)
+
+      Text("2")
+        .width(50)
+        .height(100)
+        .backgroundColor(0x00FFFF)
+    }
+    .height(300)
+    .width(100)
+    .border({ width: 1 })
+    .reverse(true)
+  }
+}
+```

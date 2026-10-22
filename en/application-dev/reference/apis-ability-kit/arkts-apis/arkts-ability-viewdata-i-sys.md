@@ -1,4 +1,4 @@
-# ViewData
+# ViewData (System API)
 
 ```TypeScript
 export default interface ViewData

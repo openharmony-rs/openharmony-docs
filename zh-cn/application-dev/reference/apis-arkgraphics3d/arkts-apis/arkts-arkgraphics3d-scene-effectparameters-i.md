@@ -4,7 +4,7 @@
 export interface EffectParameters
 ```
 
-特效参数配置，用于指定创建特效时所需的特效ID，作为createEffect接口的入参来创建特效对象。
+特效参数配置，用于指定创建特效时所需的特效ID，作为[createEffect](arkts-arkgraphics3d-scene-sceneresourcefactory-i.md#createeffect)接口的入参来创建特效对象。
 
 **起始版本：** 21
 

@@ -146,7 +146,7 @@ Sets the number of child components to be preloaded and configuration options.
 
 > **NOTE:** 
 > 
-> - When **independent** in options is set to **true**, the number of preloaded child components is calculated based on the value of **count**, which is decoupled from the **swipeByGroup** calculation of [displayCount](#displaycount).For example, if the value of **count** in **cachedCount** is **1**, the previous and next child components of the current child node are preloaded.
+> - When **independent** in options is set to **true**, the number of preloaded child components is calculated based on the value of **count**, which is decoupled from the **swipeByGroup** calculation of [displayCount](#displaycount-2).For example, if the value of **count** in **cachedCount** is **1**, the previous and next child components of the current child node are preloaded.
 > 
 > - If **swipeByGroup** of **displayCount** is set to **true** and **independent** of **options** is set to
 > **false** (default value), the number of child components to be preloaded is calculated by group. For example, if
@@ -356,7 +356,7 @@ Sets the number of elements to display per page.
 
 **ItemFillPolicy** type: Child elements' main-axis width adapts to the **Swiper** component's main-axis width. The number of displayed elements is determined based on the breakpoint type corresponding to the **Swiper** component's width. For example, if the breakpoint type is set to **ItemFillPolicy.BREAKPOINT_DEFAULT**, one column is displayed when the component width falls within the sm or smaller breakpoint range, two columns are displayed for the md breakpoint range, and three columns are displayed for the lg or a larger breakpoint range.
 
-For details about the parameter, see [displayCount](#displaycount).
+For details about the parameter, see [displayCount](#displaycount-1).
 
 **Since:** 22
 
@@ -383,7 +383,7 @@ For details about the parameter, see [displayCount](#displaycount).
 displayMode(value: SwiperDisplayMode)
 ```
 
-Sets the mode in which elements are displayed along the main axis. This API takes effect only when [displayCount](#displaycount) is not set.
+Sets the mode in which elements are displayed along the main axis. This API takes effect only when [displayCount](#displaycount-1) is not set.
 
 **Since:** 7
 
@@ -433,7 +433,7 @@ The default curve for the animation is [interpolatingSpring](../arkts-apis/arkts
 effectMode(value: EdgeEffect)
 ```
 
-Edge sliding effect. This parameter takes effect only when [loop](#loop) is set to **false** or all child nodes are displayed on one screen in the **Swiper** viewport. When the [SwiperController.changeIndex()](arkts-arkui-swiper-comp-swipercontroller-c.md#changeindex), [SwiperController.showNext()](arkts-arkui-swiper-comp-swipercontroller-c.md#shownext), or [SwiperController.showPrevious()](arkts-arkui-swiper-comp-swipercontroller-c.md#showprevious) API is called to go to the first or last page, the rebound effect does not take effect.
+Edge sliding effect. This parameter takes effect only when [loop](#loop) is set to **false** or all child nodes are displayed on one screen in the **Swiper** viewport. When the [SwiperController.changeIndex()](arkts-arkui-swiper-comp-swipercontroller-c.md#changeindex-1), [SwiperController.showNext()](arkts-arkui-swiper-comp-swipercontroller-c.md#shownext), or [SwiperController.showPrevious()](arkts-arkui-swiper-comp-swipercontroller-c.md#showprevious) API is called to go to the first or last page, the rebound effect does not take effect.
 
 **Since:** 8
 
@@ -620,7 +620,7 @@ Sets whether to enable looping. In the **LazyForEach** lazy loop loading mode, i
 > In a loop scenario, when the **prevMargin**\/**nextMargin** attributes are set, linear traversal of child
 > components by the screen reader triggers an infinite loop of "focus-scroll-expose new child node". In this
 > scenario, you are advised to set **loop** to **false** or use
-> [accessibilityGroup](arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup)
+> [accessibilityGroup](arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup-2)
 > to disable accessibility services for child components.
 
 **Since:** 7
@@ -647,7 +647,7 @@ maintainVisibleContentPosition(enabled: boolean)
 
 Sets whether to maintain the visible content position when data is inserted or deleted above or ahead of the viewport. This applies to **Swiper** components using a single [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) as the child node, where the data source is modified using **LazyForEach** API such as [onDataAdd](arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondataadd) or [onDataDelete](arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondatadelete). In other scenarios, the position of the visible content changes when data is inserted or deleted above or before the display area.
 
-When **swipeByGroup** in [displayCount](#displaycount) is set to **true**, the visible content position remains unchanged only if the amount of data inserted or deleted above or before the display area is a multiple of the group size. Otherwise, the visible content position may change during group recalculation.
+When **swipeByGroup** in [displayCount](#displaycount-1) is set to **true**, the visible content position remains unchanged only if the amount of data inserted or deleted above or before the display area is a multiple of the group size. Otherwise, the visible content position may change during group recalculation.
 
 **Since:** 20
 
@@ -1093,14 +1093,14 @@ Sets the style of the navigation indicator.
 > **NOTE:** 
 > 
 > Supported from API version 8 and deprecated since API version 10. You are advised to use
-> [indicator(value: DotIndicator | DigitIndicator | boolean)](#indicator)
+> [indicator(value: DotIndicator | DigitIndicator | boolean)](#indicator-1)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 10
 
-**Substitutes:** [indicator](#indicator)(value: DotIndicator | DigitIndicator | boolean)
+**Substitutes:** [indicator](#indicator-1)(value: DotIndicator | DigitIndicator | boolean)
 
 <!--Device-SwiperAttribute-indicatorStyle(value?: IndicatorStyle): SwiperAttribute--><!--Device-SwiperAttribute-indicatorStyle(value?: IndicatorStyle): SwiperAttribute-End-->
 

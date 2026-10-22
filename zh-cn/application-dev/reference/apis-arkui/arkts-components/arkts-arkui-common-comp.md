@@ -105,7 +105,7 @@ Common()
 | [ContextMenuOptions](arkts-arkui-common-comp-contextmenuoptions-i.md) | 菜单项的信息。 |
 | [CrownEvent](arkts-arkui-common-comp-crownevent-i.md) | 组件接收表冠事件的数据结构。内容包括时间戳、旋转角速度、旋转角度、表冠动作和阻止事件冒泡。 |
 | [CustomPopupOptions](arkts-arkui-common-comp-custompopupoptions-i.md) | 弹出自定义气泡的信息。 |
-| [DateRange](arkts-arkui-common-comp-daterange-i.md) | Defines a range of dates. |
+| [DateRange](arkts-arkui-common-comp-daterange-i.md) | 日期区间，用于描述起止日期区间。 |
 | [DismissContentCoverAction](arkts-arkui-common-comp-dismisscontentcoveraction-i.md) |  |
 | [DismissPopupAction](arkts-arkui-common-comp-dismisspopupaction-i.md) | 气泡关闭的信息。 |
 | [DismissSheetAction](arkts-arkui-common-comp-dismisssheetaction-i.md) | 半模态关闭前的回调。 |
@@ -136,7 +136,7 @@ Common()
 | [InputCounterOptions](arkts-arkui-common-comp-inputcounteroptions-i.md) | 计数器的配置项。 |
 | [InputEventInterceptResult](arkts-arkui-common-comp-inputeventinterceptresult-i.md) | 输入事件拦截结果接口，用于监听器回调[InputEventListener](arkts-arkui-common-comp-inputeventlistener-t.md)返回是否拦截的决策。 |
 | [InputEventMonitor](arkts-arkui-common-comp-inputeventmonitor-i.md) | 输入事件监听器标识对象。 |
-| [InvertOptions](arkts-arkui-common-comp-invertoptions-i.md) | 前景智能取反色。基于灰度阈值区间决定反色取值，参见[invert](arkts-arkui-common-comp-commonmethod-c.md#invert)中的详细机制说明。 |
+| [InvertOptions](arkts-arkui-common-comp-invertoptions-i.md) | 前景智能取反色。基于灰度阈值区间决定反色取值，参见[invert](arkts-arkui-common-comp-commonmethod-c.md#invert-1)中的详细机制说明。 |
 | [ItemDragEventHandler](arkts-arkui-common-comp-itemdrageventhandler-i.md) | 定义拖拽事件 |
 | [ItemDragInfo](arkts-arkui-common-comp-itemdraginfo-i.md) | 拖拽点信息对象。 |
 | [KeyEvent](arkts-arkui-common-comp-keyevent-i.md) | 按键事件信息。 |
@@ -165,7 +165,7 @@ Common()
 | [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | nestedScroll属性参数对象。 |
 | [OverlayOffset](arkts-arkui-common-comp-overlayoffset-i.md) | 设置浮层基于自身左上角的偏移量。浮层默认处于组件左上角。 |
 | [OverlayOptions](arkts-arkui-common-comp-overlayoptions-i.md) | 浮层的定位。 |
-| [PickerDialogButtonStyle](arkts-arkui-common-comp-pickerdialogbuttonstyle-i.md) | Provide an interface for the button style of picker |
+| [PickerDialogButtonStyle](arkts-arkui-common-comp-pickerdialogbuttonstyle-i.md) | 提供选择器按钮样式的接口。 |
 | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Provide an interface for the text style of picker |
 | [PixelRoundPolicy](arkts-arkui-common-comp-pixelroundpolicy-i.md) | 指定组件级像素取整的方向。 |
 | [PixelStretchEffectOptions](arkts-arkui-common-comp-pixelstretcheffectoptions-i.md) | 像素扩展属性集合，用于描述像素扩展的信息。 |
@@ -366,6 +366,7 @@ Common()
 | [SheetKeyboardAvoidMode](arkts-arkui-common-comp-sheetkeyboardavoidmode-e.md) | 半模态激活输入法时对软键盘的避让方式。 |
 | [SheetMode](arkts-arkui-common-comp-sheetmode-e.md) | 半模态的显示层级模式。 |
 | [SheetSize](arkts-arkui-common-comp-sheetsize-e.md) | 指定半模态的高度。 |
+| [SheetTitleBarHoverMode](arkts-arkui-common-comp-sheettitlebarhovermode-e.md) | 标题栏悬浮模式枚举。 |
 | [SheetType](arkts-arkui-common-comp-sheettype-e.md) | 半模态弹窗的样式。 |
 | [SourceTool](arkts-arkui-common-comp-sourcetool-e.md) | 定义输入源对应的工具类型。 |
 | [SourceType](arkts-arkui-common-comp-sourcetype-e.md) | 定义输入源对应的设备类型。 |
@@ -434,6 +435,38 @@ struct MotionBlurTest {
       }
     }.width('100%')
     .margin({ top: 50 })
+  }
+}
+```
+
+### 示例1（设置键盘接续）
+
+该示例通过[onNeedSoftkeyboard](arkts-arkui-common-comp-commonmethod-c.md#onneedsoftkeyboard)接口，设置按钮需要键盘。在从输入框拉起键盘后，点击按钮使焦点切换到按钮，此时键盘将不会收起，再次点击输入框可继续输入。
+
+从API version 24开始，新增[onNeedSoftkeyboard](arkts-arkui-common-comp-commonmethod-c.md#onneedsoftkeyboard)接口。
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('切换焦点到Button')
+        .onClick(() => {
+          this.getUIContext().getFocusController().requestFocus('Button');
+        })
+        .key('Button')
+        .fontSize(20)
+        .width('80%')
+        .margin('10')
+        .onNeedSoftkeyboard((): boolean => {
+          return true;
+        })
+      TextInput()
+        .key('TextInput1')
+    }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
@@ -2665,6 +2698,88 @@ struct AttributeHoveredDemo {
       .width('100%')
     }
     .height('100%')
+  }
+}
+```
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Example {
+  build() {
+    Column() {
+      Flex({ wrap: FlexWrap.Wrap }) {
+        Column() {
+          Text('width(220)')
+            .width(220)
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+            .fontSize('12vp')
+        }.margin(5)
+
+        Column() {
+          Text("width('220px')")
+            .width('220px')
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+        }.margin(5)
+
+        Column() {
+          Text("width('220vp')")
+            .width('220vp')
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+            .fontSize('12vp')
+        }.margin(5)
+
+        Column() {
+          Text("width('220lpx') designWidth:720")
+            .width('220lpx')
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+            .fontSize('12vp')
+        }.margin(5)
+
+        Column() {
+          Text("width(getUIContext().vp2px(220) + 'px')")
+            .width(this.getUIContext().vp2px(220) + 'px')
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+            .fontSize('12vp')
+        }.margin(5)
+
+        Column() {
+          Text("fontSize('12fp')")
+            .width(220)
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+            .fontSize('12fp')
+        }.margin(5)
+
+        Column() {
+          Text('width(px2vp(220))')
+            .width(this.getUIContext().px2vp(220))
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+            .fontSize('12fp')
+        }.margin(5)
+      }.width('100%')
+    }
   }
 }
 ```
@@ -7448,6 +7563,48 @@ struct MouseResponseRegionExample {
     .height('100%')
     // 整体居中显示
     .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+该示例通过obscured对Text、Image组件实现了隐私遮罩效果。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ObscuredExample {
+  build() {
+    Row() {
+      Column() {
+        Text('Text not set obscured attribute').fontSize(10).fontColor(Color.Black)
+        Text('This is an example for text obscured attribute.')
+          .fontSize(30)
+          .width('600px')
+          .fontColor(Color.Black)
+          .border({ width: 1 })
+        Text('Image not set obscured attribute').fontSize(10).fontColor(Color.Black)
+        // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+        Image($r('app.media.icon'))
+          .width('200px')
+          .height('200px')
+        Text('Text set obscured attribute').fontSize(10).fontColor(Color.Black)
+        Text('This is an example for text obscured attribute.')
+          .fontSize(30)
+          .width('600px')
+          .fontColor(Color.Black)
+          .border({ width: 1 })
+          .obscured([ObscuredReasons.PLACEHOLDER])
+        Text('Image set obscured attribute').fontSize(10).fontColor(Color.Black)
+        // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+        Image($r('app.media.icon'))
+          .width('200px')
+          .height('200px')
+          .obscured([ObscuredReasons.PLACEHOLDER])
+      }
+      .width('100%')
+    }
+    .height('100%')
   }
 }
 ```
@@ -13478,6 +13635,50 @@ struct Index {
 }
 ```
 
+### 示例4（设置组件边缘流光效果）
+
+该示例主要演示如何通过[edgeLight](#edgelight)给组件添加边缘流光效果。
+
+从API版本26.0.0开始，新增edgeLight方法。
+
+```TypeScript
+// xxx.ets
+import { curves } from '@kit.ArkUI';
+@Entry
+@Component
+struct Index {
+  @State animate: boolean = false;
+  @State edgeLightPosition: EdgeLightPosition = EdgeLightPosition.TOP_LEFT;
+  build() {
+    Column() {
+      Column()
+        .height(300)
+        .width(300)
+        .backgroundColor(Color.Gray)
+        .borderRadius(20)
+        .edgeLight({
+          position: this.edgeLightPosition,
+          length: 90,
+          intensity: 1,
+          color: Color.White,
+          thickness: 2
+        })
+        .onClick(() => {
+          this.getUIContext()?.animateTo({ curve: curves.springMotion(), duration: 3000}, () => {
+            this.animate = !this.animate;
+            this.edgeLightPosition = this.animate ? EdgeLightPosition.BOTTOM_RIGHT : EdgeLightPosition.TOP_LEFT;
+          })
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .backgroundColor('#aaaaaa')
+  }
+}
+```
+
 ### 示例1（悬浮气泡的显示和消失）
 
 此示例为bindTips通过绑定Button产生悬浮气泡。
@@ -16766,6 +16967,91 @@ struct ForegroundColorInherit {
 }
 ```
 
+设置不同设备类型下的栅格配置。gridSpan和gridOffset用于设置默认占用列数和偏移列数，仅在useSizeType未配置对应尺寸时生效。示例中useSizeType配置了sm尺寸的值（span: 2, offset: 1），若要在其他未配置的尺寸下实现相同的栅格效果，可通过gridSpan和gridOffset设置默认值。
+
+> 说明：
+> 
+> 本示例展示的是已废弃接口的用法。建议使用新组件[GridCol](ts-container-gridcol.md)、[GridRow](ts-container-gridrow.md)来实现栅格布局。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct GridContainerExample1 {
+  build() {
+    Column() {
+      Text('useSizeType').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      GridContainer() {
+        Row() {
+          Row() {
+            Text('Left').fontSize(25)
+          }
+          .useSizeType({
+            xs: { span: 1, offset: 0 }, sm: { span: 1, offset: 0 },
+            md: { span: 1, offset: 0 }, lg: { span: 2, offset: 0 }
+          })
+          .height("100%")
+          .backgroundColor(0x66bbb2cb)
+
+          Row() {
+            Text('Center').fontSize(25)
+          }
+          .useSizeType({
+            xs: { span: 1, offset: 0 }, sm: { span: 2, offset: 1 },
+            md: { span: 5, offset: 1 }, lg: { span: 7, offset: 2 }
+          })
+          .height("100%")
+          .backgroundColor(0x66b6c5d1)
+
+          Row() {
+            Text('Right').fontSize(25)
+          }
+          .useSizeType({
+            xs: { span: 1, offset: 0 }, sm: { span: 1, offset: 3 },
+            md: { span: 2, offset: 6 }, lg: { span: 3, offset: 9 }
+          })
+          .height("100%")
+          .backgroundColor(0x66bbb2cb)
+        }
+        .height(200)
+
+      }
+      .backgroundColor(0xf1f3f5)
+      .margin({ top: 10 })
+
+      // 单独设置组件的span和offset,在sm尺寸大小的设备上使用useSizeType中sm的数据实现一样的效果
+      Text('gridSpan,gridOffset').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      GridContainer() {
+        Row() {
+          Row() {
+            Text('Left').fontSize(25)
+          }
+          .gridSpan(1)
+          .height("100%")
+          .backgroundColor(0x66bbb2cb)
+
+          Row() {
+            Text('Center').fontSize(25)
+          }
+          .gridSpan(2)
+          .gridOffset(1)
+          .height("100%")
+          .backgroundColor(0x66b6c5d1)
+
+          Row() {
+            Text('Right').fontSize(25)
+          }
+          .gridSpan(1)
+          .gridOffset(3)
+          .height("100%")
+          .backgroundColor(0x66bbb2cb)
+        }.height(200)
+      }
+    }
+  }
+}
+```
+
 ### 示例1（为组件添加图形变换效果）
 
 该示例通过[rotate](#rotate)、[translate](#translate)、[scale](#scale)、[transform](#transform)为组件添加旋转、平移、缩放、变换矩阵效果。
@@ -17551,6 +17837,75 @@ struct GestureSettingsExample {
 }
 ```
 
+### 示例2（实时监测参与滑动手势的有效触点数量）
+
+该示例通过读取fingerInfos实时监测参与滑动手势的有效触点数量。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PanGestureWithFingerCount {
+  @State offsetX: number = 0
+  @State offsetY: number = 0
+  @State positionX: number = 0
+  @State positionY: number = 0
+  @State fingerCount: number = 0 // 用于记录参与手势的触点数量
+  private panOption: PanGestureOptions = new PanGestureOptions({
+    direction: PanDirection.All,
+    fingers: 1
+  })
+
+  build() {
+    Column() {
+      // 显示当前有效触点数量
+      Text(`触点数量：${this.fingerCount}`)
+        .fontSize(20)
+        .margin(10)
+
+      Column() {
+        Text('PanGesture offset:\nX: ' + this.offsetX + '\n' + 'Y: ' + this.offsetY)
+      }
+      .height(200)
+      .width(300)
+      .padding(20)
+      .border({ width: 3 })
+      .margin(50)
+      .translate({ x: this.offsetX, y: this.offsetY, z: 0 })
+      .gesture(
+        PanGesture(this.panOption)
+          .onActionStart((event: GestureEvent) => {
+            console.info('Pan start');
+            this.fingerCount = event.fingerInfos?.length || 0; // 记录触点数量
+          })
+          .onActionUpdate((event: GestureEvent) => {
+            if (event) {
+              console.info(`fingerInfos ${JSON.stringify(event.fingerInfos)}`);
+              this.offsetX = this.positionX + event.offsetX;
+              this.offsetY = this.positionY + event.offsetY;
+              this.fingerCount = event.fingerInfos?.length || 0; // 更新触点数量，记录下参与当前手势的有效触点的数量
+            }
+          })
+          .onActionEnd(() => {
+            this.positionX = this.offsetX;
+            this.positionY = this.offsetY;
+            this.fingerCount = 0; // 触点离开触摸区域后归零
+            console.info('Pan end');
+          })
+          .onActionCancel(() => {
+            this.fingerCount = 0; // 手势取消后归零
+          })
+      )
+
+      Button('切换为双指滑动')
+        .onClick(() => {
+          this.panOption.setFingers(2);
+        })
+    }
+  }
+}
+```
+
 ### 示例1 (使用onAccessibilityHover事件)
 
 该示例主要演示使用onAccessibilityHover事件，对无障碍模式下的按钮进行设置。
@@ -17905,6 +18260,77 @@ struct MotionPathExample {
           });
         })
     }.width('100%').height('100%').alignItems(this.toggle ? HorizontalAlign.Start : HorizontalAlign.Center)
+  }
+}
+```
+
+### 示例1（获取指定范围的文本内容）
+
+该示例主要演示如何通过[TextAreaController](ts-basic-components-textarea.md#textareacontroller8)控制器调用[getText](#gettext19)接口，获取输入框中指定范围内的文本内容。
+
+从API version 19开始，新增getText接口。
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct GetTextExample {
+  @State text: string = 'Hello World';
+  @State resultText: string = '';
+  controller: TextAreaController = new TextAreaController();
+
+  build() {
+    Column() {
+      TextArea({
+        text: this.text,
+        placeholder: '请输入文本内容',
+        controller: this.controller
+      })
+        .width(336)
+        .height(56)
+        .margin(20)
+        .fontSize(16)
+        .onChange((value: string) => {
+          this.text = value;
+        })
+
+      Text(`获取结果：${this.resultText}`)
+        .width('90%')
+        .fontSize(16)
+        .margin(10)
+
+      Button('获取全部文本')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          // 不指定range，默认获取全部文本内容
+          this.resultText = this.controller.getText();
+        })
+
+      Button('获取前5个字符')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          // 指定range为{ start: 0, end: 5 }，获取索引0到5之间的文本内容
+          this.resultText = this.controller.getText({ start: 0, end: 5 });
+        })
+
+      Button('获取第6到11个字符')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          // 指定range为{ start: 6, end: 11 }，获取索引6到11之间的文本内容
+          this.resultText = this.controller.getText({ start: 6, end: 11 });
+        })
+
+      Button('起始位置大于终止位置')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          // 起始位置大于终止位置时，返回终止位置和起始位置之间的文本内容
+          this.resultText = this.controller.getText({ start: 8, end: 3 });
+        })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
   }
 }
 ```

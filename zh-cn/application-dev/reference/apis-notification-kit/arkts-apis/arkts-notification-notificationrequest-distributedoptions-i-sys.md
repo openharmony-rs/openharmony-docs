@@ -1,4 +1,4 @@
-# DistributedOptions
+# DistributedOptions（系统接口）
 
 ```TypeScript
 export interface DistributedOptions

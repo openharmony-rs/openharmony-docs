@@ -1,4 +1,4 @@
-# PinRequiredParam
+# PinRequiredParam (System API)
 
 ```TypeScript
 interface PinRequiredParam

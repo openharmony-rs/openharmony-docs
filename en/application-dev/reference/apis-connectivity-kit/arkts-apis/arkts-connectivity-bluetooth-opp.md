@@ -23,7 +23,7 @@ import { opp } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [createOppServerProfile](arkts-connectivity-opp-createoppserverprofile-f-sys.md#createoppserverprofile) | create the instance of OPP server profile. |
+| [createOppServerProfile](arkts-connectivity-opp-createoppserverprofile-f-sys.md#createoppserverprofile-1) | create the instance of OPP server profile. |
 <!--DelEnd-->
 
 <!--Del-->

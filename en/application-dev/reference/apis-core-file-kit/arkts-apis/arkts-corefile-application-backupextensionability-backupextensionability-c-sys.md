@@ -1,4 +1,4 @@
-# BackupExtensionAbility
+# BackupExtensionAbility (System API)
 
 ```TypeScript
 declare class BackupExtensionAbility

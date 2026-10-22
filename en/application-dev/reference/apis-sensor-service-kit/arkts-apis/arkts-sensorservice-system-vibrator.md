@@ -10,7 +10,7 @@ The **@system.vibrator** module provides the capability of controlling the vibra
  does not support advanced functions such as querying vibration effects, querying the vibrator list, and customizing
  vibration files. For lite wearable devices, this module is continuously maintained. For other device types, this
  module is no longer maintained since API version 8. You are advised to use the
- [vibrator.startVibration()](arkts-sensorservice-vibrator-startvibration-f.md#startvibration)
+ [vibrator.startVibration()](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1)
  API of the [@ohos.vibrator](arkts-sensorservice-vibrator.md) module. This API supports more vibration effects (
  including [VibrateTime](arkts-sensorservice-vibrator-vibratetime-i.md),
  [VibratePreset](arkts-sensorservice-vibrator-vibratepreset-i.md), and

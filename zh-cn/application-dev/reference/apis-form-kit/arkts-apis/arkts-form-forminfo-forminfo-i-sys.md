@@ -1,4 +1,4 @@
-# FormInfo
+# FormInfo（系统接口）
 
 ```TypeScript
 interface FormInfo

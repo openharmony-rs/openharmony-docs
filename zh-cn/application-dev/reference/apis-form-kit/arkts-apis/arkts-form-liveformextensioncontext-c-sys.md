@@ -1,4 +1,4 @@
-# LiveFormExtensionContext
+# LiveFormExtensionContext（系统接口）
 
 ```TypeScript
 declare class LiveFormExtensionContext extends ExtensionContext

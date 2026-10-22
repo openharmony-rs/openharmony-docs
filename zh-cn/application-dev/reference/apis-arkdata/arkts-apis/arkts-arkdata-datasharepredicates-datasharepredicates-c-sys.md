@@ -1,4 +1,4 @@
-# DataSharePredicates
+# DataSharePredicates（系统接口）
 
 ```TypeScript
 class DataSharePredicates

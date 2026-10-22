@@ -1,4 +1,4 @@
-# Service
+# Service (System API)
 
 ```TypeScript
 interface Service

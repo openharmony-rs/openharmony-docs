@@ -1,4 +1,4 @@
-# Params
+# Params（系统接口）
 
 ```TypeScript
 export enum Params

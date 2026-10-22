@@ -1,4 +1,4 @@
-# PhotoSubtype
+# PhotoSubtype (System API)
 
 ```TypeScript
 export enum PhotoSubtype

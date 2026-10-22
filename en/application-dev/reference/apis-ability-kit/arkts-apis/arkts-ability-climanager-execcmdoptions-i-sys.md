@@ -1,4 +1,4 @@
-# ExecCmdOptions
+# ExecCmdOptions (System API)
 
 ```TypeScript
 interface ExecCmdOptions

@@ -108,7 +108,7 @@ Enables the grayscale effect for the original drag item, which does not apply to
 ENABLE_MULTI_TILE_EFFECT = 6
 ```
 
-Enables multi-tile display for mouse-dragged multi-selected objects, with each drag preview maintaining its original relative position. Requires multi-select mode with **isMultiSelectionEnabled** set to **true**. Takes precedence over [dragPreview](arkts-arkui-common-comp-commonmethod-c.md#dragpreview). Does not support secondary dragging, rounded corners, or scaling effects.
+Enables multi-tile display for mouse-dragged multi-selected objects, with each drag preview maintaining its original relative position. Requires multi-select mode with **isMultiSelectionEnabled** set to **true**. Takes precedence over [dragPreview](arkts-arkui-common-comp-commonmethod-c.md#dragpreview-1). Does not support secondary dragging, rounded corners, or scaling effects.
 
 **Since:** 18
 

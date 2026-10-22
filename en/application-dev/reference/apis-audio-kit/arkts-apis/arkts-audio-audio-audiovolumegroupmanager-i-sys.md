@@ -1,4 +1,4 @@
-# AudioVolumeGroupManager
+# AudioVolumeGroupManager (System API)
 
 ```TypeScript
 interface AudioVolumeGroupManager

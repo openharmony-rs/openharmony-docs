@@ -1,4 +1,4 @@
-# HandsFreeAudioGatewayProfile
+# HandsFreeAudioGatewayProfile (System API)
 
 ```TypeScript
 interface HandsFreeAudioGatewayProfile extends BaseProfile

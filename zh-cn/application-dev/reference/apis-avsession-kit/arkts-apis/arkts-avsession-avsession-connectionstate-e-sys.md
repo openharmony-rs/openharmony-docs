@@ -1,4 +1,4 @@
-# ConnectionState
+# ConnectionState（系统接口）
 
 ```TypeScript
 enum ConnectionState

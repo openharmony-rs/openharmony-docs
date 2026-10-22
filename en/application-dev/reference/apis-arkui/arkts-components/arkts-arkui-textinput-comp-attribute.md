@@ -37,7 +37,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 }
 
 > When padding is set to 0 for the input box, you can set
-> [borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius) to 0 to
+> [borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius-1) to 0 to
 > prevent the cursor from being truncated. If the cursor is displayed abnormally at the edge of the text box, check
 > whether this is caused by the padding and borderRadius attributes.
 > 
@@ -2235,7 +2235,7 @@ Sets the horizontal alignment of text in the input box. When not set through thi
 
 TextAlign.Start, TextAlign.Center, and TextAlign.End are supported. TextAlign.JUSTIFY is processed as TextAlign.Start.
 
-The [align](arkts-arkui-common-comp-commonmethod-c.md#align) attribute can be used to control the vertical position of the text paragraph. This component does not support controlling the horizontal position of the text paragraph through the align attribute.
+The [align](arkts-arkui-common-comp-commonmethod-c.md#align-1) attribute can be used to control the vertical position of the text paragraph. This component does not support controlling the horizontal position of the text paragraph through the align attribute.
 
 - Alignment.TopStart, Alignment.Top, Alignment.TopEnd: The content is aligned to the top.  
 - Alignment.Start, Alignment.Center, Alignment.End: The content is vertically centered.  

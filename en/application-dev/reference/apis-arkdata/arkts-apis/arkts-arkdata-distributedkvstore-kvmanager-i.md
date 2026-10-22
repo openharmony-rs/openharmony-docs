@@ -325,7 +325,7 @@ try {
 getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 ```
 
-Obtains the IDs of all distributed KV stores that are created by getKVStore and have not been deleted by [deleteKVStore](#deletekvstore). This API uses an asynchronous callback to return the result.
+Obtains the IDs of all distributed KV stores that are created by getKVStore and have not been deleted by [deleteKVStore](#deletekvstore-1). This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -375,7 +375,7 @@ try {
 getAllKVStoreId(appId: string): Promise<string[]>
 ```
 
-Obtains the IDs of all distributed KV stores that are created by getKVStore and have not been deleted by [deleteKVStore](#deletekvstore). This API uses a promise to return the result.
+Obtains the IDs of all distributed KV stores that are created by getKVStore and have not been deleted by [deleteKVStore](#deletekvstore-1). This API uses a promise to return the result.
 
 **Since:** 9
 

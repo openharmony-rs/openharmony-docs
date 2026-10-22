@@ -1,4 +1,4 @@
-# ViewData
+# ViewData（系统接口）
 
 ```TypeScript
 export default interface ViewData

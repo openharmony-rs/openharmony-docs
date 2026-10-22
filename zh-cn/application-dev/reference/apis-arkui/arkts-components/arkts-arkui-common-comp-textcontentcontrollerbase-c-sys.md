@@ -1,4 +1,4 @@
-# TextContentControllerBase
+# TextContentControllerBase（系统接口）
 
 ```TypeScript
 declare abstract class TextContentControllerBase

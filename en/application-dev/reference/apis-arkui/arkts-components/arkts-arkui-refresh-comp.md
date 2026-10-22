@@ -1,6 +1,6 @@
 # Refresh
 
-**Refresh** is a container component that provides the pull-to-refresh interaction. It is suitable for scenarios where users need to trigger data updates, such as list data refresh and page content update.
+**Refresh** is a container component that provides the pull-to-refresh interaction. It is suitable for scenarios where users need to trigger data updates, such as list data refresh and page content update. It supports custom refresh area display content and text, setting the pull-down offset and drag coefficient, controlling the maximum pull-down distance, and more. It can flexibly adapt to the pull-to-refresh requirements of different apps, delivering a consistent and smooth refresh experience.
 
 > **NOTE:** 
 > 

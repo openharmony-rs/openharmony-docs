@@ -2219,6 +2219,10 @@ Unregister listener for supported loop modes.
 
 **Examples**
 
+```TypeScript
+avcontroller.offSupportedLoopModesChange();
+```
+
 ## offSupportedPlaySpeedsChange
 
 ```TypeScript

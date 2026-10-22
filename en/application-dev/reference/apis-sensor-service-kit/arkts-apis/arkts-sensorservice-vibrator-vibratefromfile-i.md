@@ -4,7 +4,7 @@
 interface VibrateFromFile
 ```
 
-Represents a custom vibration pattern. It is supported only by certain devices. An error code will be returned if a device does not support this vibration mode. When [vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration) or [vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration) is called, the value of [VibrateEffect<sup>9+</sup>](arkts-sensorservice-vibrator-vibrateeffect-t.md) can be **VibrateFromFile**, indicating that a custom vibration pattern is triggered.
+Represents a custom vibration pattern. It is supported only by certain devices. An error code will be returned if a device does not support this vibration mode. When [vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1) or [vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-2) is called, the value of [VibrateEffect<sup>9+</sup>](arkts-sensorservice-vibrator-vibrateeffect-t.md) can be **VibrateFromFile**, indicating that a custom vibration pattern is triggered.
 
 **Since:** 10
 

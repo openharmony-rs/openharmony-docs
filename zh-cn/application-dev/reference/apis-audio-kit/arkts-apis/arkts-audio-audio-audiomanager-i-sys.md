@@ -1,4 +1,4 @@
-# AudioManager
+# AudioManager（系统接口）
 
 ```TypeScript
 interface AudioManager

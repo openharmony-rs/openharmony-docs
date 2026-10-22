@@ -6,6 +6,17 @@ declare enum WaterFlowLayoutMode
 
 Enumerates the layout modes of the **WaterFlow** component.
 
+| Comparison Item| ALWAYS_TOP_DOWN (Default)| SLIDING_WINDOW |  
+|---------|------------------------|----------------|  
+| Applicable scenario | Fixed number of columns | Dynamic number of columns, large data volume, and screen rotation |  
+| Layout policy| Complete layout from the top| Sliding window layout|  
+| Performance| Depends on all flow items above.| Only considers the layout in the viewport|  
+| Jump efficiency| Calculates all layouts above| Quick jump without complete calculation|  
+| Column-count switching| Recalculates all layouts.| Re-lays out only the content in the viewport|  
+| Screen rotation| Supported, but poor performance| Supported with good performance|  
+| Scrollbar display| Always supported| Supported in API version 18 and later|  
+| Layout consistency| Always consistent| May be inconsistent after jump|
+
 **Since:** 12
 
 <!--Device-unnamed-declare enum WaterFlowLayoutMode--><!--Device-unnamed-declare enum WaterFlowLayoutMode-End-->

@@ -4,7 +4,7 @@
 export interface Light extends Node
 ```
 
-Light node, which inherits from Node.
+Light node, which inherits from [Node](arkts-arkgraphics3d-scenenodes-node-i.md).
 
 **Inheritance/Implementation:** Light extends [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
 

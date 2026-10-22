@@ -1,4 +1,4 @@
-# AudioDeviceEnhanceManager
+# AudioDeviceEnhanceManager (System API)
 
 ```TypeScript
 interface AudioDeviceEnhanceManager

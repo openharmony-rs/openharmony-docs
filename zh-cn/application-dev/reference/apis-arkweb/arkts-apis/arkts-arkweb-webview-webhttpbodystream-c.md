@@ -258,6 +258,8 @@ isInMemory(): boolean
 
 **示例**
 
+完整示例代码参考[initialize](#initialize)。
+
 ## read
 
 ```TypeScript

@@ -1,4 +1,4 @@
-# PreviewOutput
+# PreviewOutput (System API)
 
 ```TypeScript
 interface PreviewOutput extends CameraOutput

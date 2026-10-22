@@ -1,4 +1,4 @@
-# CaptureSession
+# CaptureSession (System API)
 
 ```TypeScript
 interface CaptureSession

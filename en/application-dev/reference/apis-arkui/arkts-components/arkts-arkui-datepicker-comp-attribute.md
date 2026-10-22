@@ -94,7 +94,7 @@ Sets the text style for edge items (the second item above or below the selected 
 disappearTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the text style for edge items (the second item above or below the selected item). Compared to [disappearTextStyle<sup>10+</sup>](#disappeartextstyle), this API supports the **undefined** type for the **style** parameter.
+Sets the text style for edge items (the second item above or below the selected item). Compared to [disappearTextStyle<sup>10+</sup>](#disappeartextstyle-1), this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -171,7 +171,7 @@ Sets whether to display dates in lunar calendar format.
 lunar(isLunar: Optional<boolean>)
 ```
 
-Sets whether to display dates in lunar calendar format. Compared with [lunar](#lunar), the **isLunar** parameter supports the **undefined** type.
+Sets whether to display dates in lunar calendar format. Compared with [lunar](#lunar-1), the **isLunar** parameter supports the **undefined** type.
 
 > **NOTE:** 
 > 
@@ -224,7 +224,7 @@ Triggered when the options are completely settled at the selected position after
 onDateChange(callback: Optional<Callback<Date>>)
 ```
 
-Triggered when the date picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. Compared to [onDateChange<sup>10+</sup>](#ondatechange), this API supports the **undefined** type for the **callback** parameter.
+Triggered when the date picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. Compared to [onDateChange<sup>10+</sup>](#ondatechange-1), this API supports the **undefined** type for the **callback** parameter.
 
 > **NOTE:** 
 > 
@@ -276,7 +276,7 @@ Sets the text style for the selected item.
 selectedTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the text style for the selected item. Compared to [selectedTextStyle<sup>10+</sup>](#selectedtextstyle), this API supports the **undefined** type for the **style** parameter.
+Sets the text style for the selected item. Compared to [selectedTextStyle<sup>10+</sup>](#selectedtextstyle-1), this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -324,7 +324,7 @@ Sets the text style for candidate items (the first item immediately above or bel
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the text style for candidate items (the first item immediately above or below the selected item). Compared to [textStyle<sup>10+</sup>](#textstyle), this API supports the **undefined** type for the **style** parameter.
+Sets the text style for candidate items (the first item immediately above or below the selected item). Compared to [textStyle<sup>10+</sup>](#textstyle-1), this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -350,13 +350,13 @@ onChange(callback: (value: DatePickerResult) => void)
 
 Triggered when the date picker snaps to the selected item. This event cannot be triggered by two-way bound state variables.
 
-This API is supported since API version 8 and deprecated since API version 10. You are advised to use [onDateChange](#ondatechange) instead.
+This API is supported since API version 8 and deprecated since API version 10. You are advised to use [onDateChange](#ondatechange-1) instead.
 
 **Since:** 8
 
 **Deprecated since:** 10
 
-**Substitutes:** [onDateChange](#ondatechange)(callback: Callback&lt;Date&gt;)
+**Substitutes:** [onDateChange](#ondatechange-1)(callback: Callback&lt;Date&gt;)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 

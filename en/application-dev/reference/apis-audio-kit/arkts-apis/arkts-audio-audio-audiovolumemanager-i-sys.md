@@ -1,4 +1,4 @@
-# AudioVolumeManager
+# AudioVolumeManager (System API)
 
 ```TypeScript
 interface AudioVolumeManager

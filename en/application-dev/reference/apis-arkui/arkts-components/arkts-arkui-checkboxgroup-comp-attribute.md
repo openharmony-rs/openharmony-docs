@@ -46,7 +46,7 @@ Sets the check box shape of the check box group.
 checkboxShape(shape: Optional<CheckBoxShape>)
 ```
 
-Sets the check box shape of the check box group. Available options include circle and rounded square. Compared with [checkboxShape](#checkboxshape)<sup>12+</sup>, this API supports the **undefined** type for the **shape** parameter.
+Sets the check box shape of the check box group. Available options include circle and rounded square. Compared with [checkboxShape](#checkboxshape-1)<sup>12+</sup>, this API supports the **undefined** type for the **shape** parameter.
 
 **Since:** 18
 
@@ -124,7 +124,7 @@ Sets the check mark style of the check box.
 mark(style: Optional<MarkStyle>)
 ```
 
-Sets the check mark style of the check box. Compared with [mark](#mark)<sup>10+</sup>, this API supports the **undefined** type for the **style** parameter.
+Sets the check mark style of the check box. Compared with [mark](#mark-1)<sup>10+</sup>, this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 
@@ -174,7 +174,7 @@ Triggered when the selected status of the check box group or any check box where
 onChange(callback: Optional<OnCheckboxGroupChangeCallback>)
 ```
 
-Triggered when the selected status of the check box group or any check box wherein changes. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
+Triggered when the selected status of the check box group or any check box wherein changes. Compared with [onChange](#onchange-1), this API supports the **undefined** type for the **callback** parameter.
 
 **Since:** 18
 
@@ -232,7 +232,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 selectAll(isAllSelected: Optional<boolean>)
 ```
 
-Sets whether to select all. If the **select** attribute is set for a [Checkbox](arkts-arkui-checkbox-comp.md) component in the same group, the setting of the **Checkbox** has a higher priority. Compared with [selectAll](#selectall), this API supports the **undefined** type for the **isAllSelected** parameter.
+Sets whether to select all. If the **select** attribute is set for a [Checkbox](arkts-arkui-checkbox-comp.md) component in the same group, the setting of the **Checkbox** has a higher priority. Compared with [selectAll](#selectall-1), this API supports the **undefined** type for the **isAllSelected** parameter.
 
 When used with components that have caching functionality (such as [List](arkts-arkui-list-comp.md)), the selected state of uncreated check boxes must be controlled by the developer.
 
@@ -288,7 +288,7 @@ Sets the color of the selected check box.
 selectedColor(resColor: Optional<ResourceColor>)
 ```
 
-Sets the color of the selected check box. Compared with [selectedColor](#selectedcolor), this API supports the **undefined** type for the **resColor** parameter.
+Sets the color of the selected check box. Compared with [selectedColor](#selectedcolor-1), this API supports the **undefined** type for the **resColor** parameter.
 
 **Since:** 18
 
@@ -338,7 +338,7 @@ Sets the border color of the check box when it is not selected.
 unselectedColor(resColor: Optional<ResourceColor>)
 ```
 
-Sets the border color of the check box when it is not selected. Compared with [unselectedColor](#unselectedcolor)<sup>10+</sup>, this API supports the **undefined** type for the **resColor** parameter.
+Sets the border color of the check box when it is not selected. Compared with [unselectedColor](#unselectedcolor-1)<sup>10+</sup>, this API supports the **undefined** type for the **resColor** parameter.
 
 **Since:** 18
 

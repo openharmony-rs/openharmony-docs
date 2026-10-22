@@ -1,4 +1,4 @@
-# PhotoKeys
+# PhotoKeys (System API)
 
 ```TypeScript
 enum PhotoKeys

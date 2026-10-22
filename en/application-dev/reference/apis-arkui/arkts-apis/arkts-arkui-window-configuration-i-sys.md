@@ -1,4 +1,4 @@
-# Configuration
+# Configuration (System API)
 
 ```TypeScript
 interface Configuration

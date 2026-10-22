@@ -1,4 +1,4 @@
-# GeoAddress
+# GeoAddress (System API)
 
 ```TypeScript
 export interface GeoAddress

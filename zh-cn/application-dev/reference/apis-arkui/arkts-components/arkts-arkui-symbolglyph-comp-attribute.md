@@ -28,7 +28,7 @@ effectStrategy(value: SymbolEffectStrategy)
 > 
 > - 动效属性，仅支持使用effectStrategy属性或单个symbolEffect属性，不支持多种动效属性混合使用。
 > 
-> - 本接口仅支持NONE、SCALE、HIERARCHICAL三种预置动效类型，设置后动效自动播放。如需使用更丰富的动效类型（如出现、消失、弹跳、替换、脉冲动效等）或控制动效的播放状态和触发时机，请使用[symbolEffect](#symboleffect)接口。两者不可同时使用，详见[symbolEffect](#symboleffect)接口说明。
+> - 本接口仅支持NONE、SCALE、HIERARCHICAL三种预置动效类型，设置后动效自动播放。如需使用更丰富的动效类型（如出现、消失、弹跳、替换、脉冲动效等）或控制动效的播放状态和触发时机，请使用[symbolEffect](#symboleffect-1)接口。两者不可同时使用，详见[symbolEffect](#symboleffect-1)接口说明。
 
 **起始版本：** 11
 
@@ -84,7 +84,7 @@ fontColor(value: Array<ResourceColor>)
 fontColor(value: Array<ResourceColor | ColorMetrics> | undefined)
 ```
 
-设置SymbolGlyph组件的字体颜色，相比[fontColor](#fontcolor)接口，本接口支持传入[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)类型参数。
+设置SymbolGlyph组件的字体颜色，相比[fontColor](#fontcolor-1)接口，本接口支持传入[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)类型参数。
 
 > **说明：** 
 > 
@@ -285,7 +285,7 @@ shaderStyle(shader: Array<ShaderStyle | undefined> | ShaderStyle)
 
 设置SymbolGlyph组件的渐变色效果。
 
-可以显示为径向渐变[RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md)或线性渐变[LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md)或纯色[ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md)，shaderStyle的优先级高于[fontColor](#fontcolor)和AI识别，纯色建议使用[fontColor](#fontcolor)。
+可以显示为径向渐变[RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md)或线性渐变[LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md)或纯色[ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md)，shaderStyle的优先级高于[fontColor](#fontcolor-1)和AI识别，纯色建议使用[fontColor](#fontcolor-1)。
 
 **起始版本：** 20
 

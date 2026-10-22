@@ -1,4 +1,4 @@
-# Focus
+# Focus (System API)
 
 ```TypeScript
 interface Focus extends FocusQuery

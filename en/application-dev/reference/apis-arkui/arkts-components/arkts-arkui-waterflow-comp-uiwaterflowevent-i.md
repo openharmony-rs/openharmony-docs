@@ -4,7 +4,7 @@
 declare interface UIWaterFlowEvent extends UIScrollableCommonEvent
 ```
 
-Represents the return value of the [getEvent('WaterFlow')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent) method in **frameNode**, which can be used to set scroll events for a **WaterFlow** node.
+Represents the return value of the [getEvent('WaterFlow')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-3) method in **frameNode**, which can be used to set scroll events for a **WaterFlow** node.
 
 **UIWaterFlowEvent** inherits from [UIScrollableCommonEvent](arkts-arkui-common-comp-uiscrollablecommonevent-i.md).
 

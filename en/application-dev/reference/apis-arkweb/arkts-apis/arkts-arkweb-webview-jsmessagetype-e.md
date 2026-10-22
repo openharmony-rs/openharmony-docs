@@ -4,7 +4,7 @@
 enum JsMessageType
 ```
 
-Enumerates the data types of the results returned after the [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext) API is executed.
+Enumerates the data types of the results returned after the [runJavaScriptExt](arkts-arkweb-webview-webviewcontroller-c.md#runjavascriptext-2) API is executed.
 
 **Since:** 10
 

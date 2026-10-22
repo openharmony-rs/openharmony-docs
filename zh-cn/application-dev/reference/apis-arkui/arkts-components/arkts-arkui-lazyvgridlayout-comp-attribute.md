@@ -66,7 +66,7 @@ columnsTemplate(template: string | ItemFillPolicy)
 
 设置当前网格布局列的数量、固定列宽或最小列宽值，不设置时默认1列。
 
-当template设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate)。
+当template设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate-1)。
 
 当template设置为ItemFillPolicy类型时，将根据LazyVGridLayout内容区宽度对应的[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
 

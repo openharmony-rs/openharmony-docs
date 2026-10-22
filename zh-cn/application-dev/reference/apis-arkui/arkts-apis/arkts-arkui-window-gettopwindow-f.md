@@ -17,13 +17,13 @@ function getTopWindow(callback: AsyncCallback<Window>): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow)替代。
+> [getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
+**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -65,13 +65,13 @@ function getTopWindow(): Promise<Window>
 
 > **说明：** 
 > 
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow-2)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow)(ctx: BaseContext)
+**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow-2)(ctx: BaseContext)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -111,13 +111,13 @@ function getTopWindow(ctx: BaseContext): Promise<Window>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow)(ctx: BaseContext)
+**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow-2)(ctx: BaseContext)
 
 <!--Device-window-function getTopWindow(ctx: BaseContext): Promise<Window>--><!--Device-window-function getTopWindow(ctx: BaseContext): Promise<Window>-End-->
 
@@ -169,13 +169,13 @@ function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，参数ctx传入null或undefined时，可能会导致callback无法得到执行，建议使用
-> [getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow)替代。
+> [getLastWindow()](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
+**替代接口：** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
 
 <!--Device-window-function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void--><!--Device-window-function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void-End-->
 

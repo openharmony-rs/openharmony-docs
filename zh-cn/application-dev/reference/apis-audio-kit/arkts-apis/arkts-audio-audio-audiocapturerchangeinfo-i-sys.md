@@ -1,4 +1,4 @@
-# AudioCapturerChangeInfo
+# AudioCapturerChangeInfo（系统接口）
 
 ```TypeScript
 interface AudioCapturerChangeInfo

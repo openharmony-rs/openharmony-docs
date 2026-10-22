@@ -4,7 +4,7 @@
 export interface Animation extends SceneResource
 ```
 
-Animation resource, which inherits from SceneResource.
+Animation resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md).
 
 **Inheritance/Implementation:** Animation extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 

@@ -564,7 +564,7 @@ Converts data into an asymmetric key pair. This API returns the result synchrono
 > **NOTE:** 
 > The precautions for using **convertPemKeySync** are the same as those for **convertPemKey**. For details, see
 > the description of
-> [convertPemKey](#convertpemkey)
+> [convertPemKey](#convertpemkey-1)
 > .
 
 <br><br>**NOTE:** <br>It is recommended to prioritize the use of asynchronous API, [convertPemKey](#convertpemkey). Synchronous API may take a long time and block the main thread due to system busyness, high load, and other reasons. Therefore, it is advised to invoke synchronous API within a child thread to avoid blocking the main thread.
@@ -653,7 +653,7 @@ Converts data into an asymmetric key pair. Encrypted private keys are supported.
 
 > **NOTE:** 
 > The precautions for using **convertPemKeySync** are the same as those for
-> [convertPemKey](#convertpemkey)
+> [convertPemKey](#convertpemkey-2)
 > .
 
 <br><br>**NOTE:** <br>It is recommended to prioritize the use of asynchronous API, [convertPemKey](#convertpemkey). Synchronous API may take a long time and block the main thread due to system busyness, high load, and other reasons. Therefore, it is advised to invoke synchronous API within a child thread to avoid blocking the main thread.

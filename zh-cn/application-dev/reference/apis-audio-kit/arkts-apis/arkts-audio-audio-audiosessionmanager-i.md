@@ -1053,7 +1053,7 @@ setCapturerMuteHint(mute: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permitted at current state, there is no audio capturer running. |
+| [6800103](../errorcode-audio.md#6800103-状态不支持) | Operation not permit at current state, there is no audio capturer running. |
 
 **示例**
 

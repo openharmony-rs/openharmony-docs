@@ -1,4 +1,4 @@
-# AudioSpatializationManager
+# AudioSpatializationManager（系统接口）
 
 ```TypeScript
 interface AudioSpatializationManager
@@ -55,11 +55,11 @@ downloadPersonalizedHRTF(hrtfDescriptor: AudioHRTFAnonymousDescriptor): Promise<
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability is not supported in this device. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, hrtfDescriptor is invalid. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported on the device. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, fd or length wrong. |
 | [6800105](../errorcode-audio.md#6800105-处理超时) | Time out when saving HRTF on disk. |
-| [6800301](../errorcode-audio.md#6800301-系统处理异常) | System internal error, fail to save HRTF on disk, like service died. |
+| [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error, fail to save HRTF on disk. |
 
 ## getCurrentSpatialAudioSourceType
 
@@ -305,7 +305,7 @@ isHeadTrackingEnabled(): boolean
 > **说明：** 
 > 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [isHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isheadtrackingenabled)
+> [isHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isheadtrackingenabled-2)
 > 替代。
 
 **起始版本：** 11
@@ -499,7 +499,7 @@ isPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor):
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## isPersonalizedSpatializationSupported
@@ -611,7 +611,7 @@ isSpatializationEnabled(): boolean
 
 > **说明：** 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isspatializationenabled)
+> [isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isspatializationenabled-2)
 > 替代。
 
 **起始版本：** 11
@@ -1597,7 +1597,7 @@ setHeadTrackingEnabled(enable: boolean, callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setheadtrackingenabled)
+> [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setheadtrackingenabled-3)
 > 替代。
 
 **起始版本：** 11
@@ -1660,7 +1660,7 @@ setHeadTrackingEnabled(enable: boolean): Promise<void>
 
 > **说明：** 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setheadtrackingenabled)
+> [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setheadtrackingenabled-3)
 > 替代。
 
 **起始版本：** 11
@@ -1718,8 +1718,7 @@ audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
 ## setPersonalizedSpatializationEnabled
 
 ```TypeScript
-setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,
-      enable: boolean): Promise<void>
+setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor, enable: boolean): Promise<void>
 ```
 
 设置指定设备是否启用个性化空间化。
@@ -1730,7 +1729,7 @@ setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AudioSpatializationManager-setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,      enable: boolean): Promise<void>--><!--Device-AudioSpatializationManager-setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,      enable: boolean): Promise<void>-End-->
+<!--Device-AudioSpatializationManager-setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor, enable: boolean): Promise<void>--><!--Device-AudioSpatializationManager-setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor, enable: boolean): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -1753,9 +1752,9 @@ setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability is not supported in this device. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Return by promise. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported on the device. |
 
 ## setSpatializationEnabled
 
@@ -1840,7 +1839,7 @@ setSpatializationEnabled(enable: boolean, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setspatializationenabled)
+> [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setspatializationenabled-3)
 > 替代。
 
 **起始版本：** 11
@@ -1903,7 +1902,7 @@ setSpatializationEnabled(enable: boolean): Promise<void>
 
 > **说明：** 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setspatializationenabled)
+> [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setspatializationenabled-3)
 > 替代。
 
 **起始版本：** 11

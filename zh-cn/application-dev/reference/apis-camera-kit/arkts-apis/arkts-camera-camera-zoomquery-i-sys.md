@@ -1,4 +1,4 @@
-# ZoomQuery
+# ZoomQuery（系统接口）
 
 ```TypeScript
 interface ZoomQuery

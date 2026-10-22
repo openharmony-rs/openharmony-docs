@@ -1,4 +1,4 @@
-# DragController
+# DragController（系统接口）
 
 ```TypeScript
 export class DragController

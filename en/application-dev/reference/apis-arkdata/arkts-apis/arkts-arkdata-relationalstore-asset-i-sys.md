@@ -1,4 +1,4 @@
-# Asset
+# Asset (System API)
 
 ```TypeScript
 interface Asset

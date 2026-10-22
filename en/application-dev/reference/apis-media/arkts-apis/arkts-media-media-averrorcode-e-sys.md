@@ -1,4 +1,4 @@
-# AVErrorCode
+# AVErrorCode (System API)
 
 ```TypeScript
 enum AVErrorCode

@@ -1,4 +1,4 @@
-# SingleKVStore
+# SingleKVStore (System API)
 
 ```TypeScript
 interface SingleKVStore

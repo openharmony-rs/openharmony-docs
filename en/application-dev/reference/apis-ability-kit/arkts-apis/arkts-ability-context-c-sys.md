@@ -1,4 +1,4 @@
-# Context
+# Context (System API)
 
 ```TypeScript
 declare class Context extends BaseContext
@@ -84,7 +84,7 @@ export default class EntryAbility extends UIAbility {
 createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
 ```
 
-Creates a [resource manager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager) for an OEM-preset [system-level HSP](../../../quick-start/application-package-glossary.md#system-level-hsp).
+Creates a [resource manager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-1) for an OEM-preset [system-level HSP](../../../quick-start/application-package-glossary.md#system-level-hsp).
 
 **Since:** 12
 
@@ -143,7 +143,7 @@ Creates the context based on the bundle name.
 > **NOTE:** 
 > 
 > If there are multiple modules in the stage model, resource ID conflicts may occur. You are advised to use
-> [application.createModuleContext](arkts-ability-application-createmodulecontext-f-sys.md#createmodulecontext)
+> [application.createModuleContext](arkts-ability-application-createmodulecontext-f-sys.md#createmodulecontext-2)
 > instead.
 > 
 > This API has been supported since API version 9 and deprecated since API version 12. You are advised to use
@@ -219,7 +219,7 @@ Creates the context based on the bundle name and module name.
 > **NOTE:** 
 > 
 > This API has been supported since API version 9 and deprecated since API version 12. You are advised to use
-> [application.createModuleContext](arkts-ability-application-createmodulecontext-f-sys.md#createmodulecontext)
+> [application.createModuleContext](arkts-ability-application-createmodulecontext-f-sys.md#createmodulecontext-2)
 > instead.
 
 **Since:** 9

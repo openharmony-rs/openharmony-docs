@@ -363,7 +363,7 @@ For example, "/data/out/tmp" is changed to "tmp/out/data/" after localization.
 
 **Deprecated since:** 20
 
-**Substitutes:** [getUnicodeWrappedFilePath](#getunicodewrappedfilepath)(path: string, delimiter?: string, locale?: Intl.Locale)
+**Substitutes:** [getUnicodeWrappedFilePath](#getunicodewrappedfilepath-1)(path: string, delimiter?: string, locale?: Intl.Locale)
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 

@@ -1,4 +1,4 @@
-# PhotoAssetChangeData
+# PhotoAssetChangeData (System API)
 
 ```TypeScript
 interface PhotoAssetChangeData

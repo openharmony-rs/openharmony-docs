@@ -1,4 +1,4 @@
-# InsightIntentContext
+# InsightIntentContext (System API)
 
 ```TypeScript
 declare class InsightIntentContext

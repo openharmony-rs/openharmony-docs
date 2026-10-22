@@ -1,4 +1,4 @@
-# OsAccountType
+# OsAccountType (System API)
 
 ```TypeScript
 enum OsAccountType

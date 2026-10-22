@@ -27,7 +27,7 @@ import { userFileManager } from '@kit.CoreFileKit';
 
 | Name | Description |
 | --- | --- |
-| [getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md#getuserfilemgr) | Obtains a **UserFileManager** instance. This instance can be used to access and modify user media data (such as audio and video assets, images, and documents). |
+| [getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md#getuserfilemgr-1) | Obtains a **UserFileManager** instance. This instance can be used to access and modify user media data (such as audio and video assets, images, and documents). |
 <!--DelEnd-->
 
 <!--Del-->

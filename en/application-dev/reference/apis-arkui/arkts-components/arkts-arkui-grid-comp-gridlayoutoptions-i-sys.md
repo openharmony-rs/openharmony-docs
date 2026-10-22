@@ -1,4 +1,4 @@
-# GridLayoutOptions
+# GridLayoutOptions (System API)
 
 ```TypeScript
 declare interface GridLayoutOptions

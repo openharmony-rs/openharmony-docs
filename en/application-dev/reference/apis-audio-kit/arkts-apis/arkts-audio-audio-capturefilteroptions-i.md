@@ -32,11 +32,15 @@ Filter by stream usages. But not allow to capture voice streams.
 
 **Type:** Array&lt;[StreamUsage](arkts-audio-audio-streamusage-e.md)&gt;
 
-**Since:** 11
+**Since:** 10
 
 **Deprecated since:** 12
 
 **Substitutes:** OH_AVScreenCapture in native interface.
+
+**Required permissions:** 
+- API version 11 and later: N/A
+- API version 10: ohos.permission.CAPTURE_VOICE_DOWNLINK_AUDIO
 
 <!--Device-CaptureFilterOptions-usages: Array<StreamUsage>--><!--Device-CaptureFilterOptions-usages: Array<StreamUsage>-End-->
 

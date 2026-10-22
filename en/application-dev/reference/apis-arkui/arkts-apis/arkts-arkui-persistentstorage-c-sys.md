@@ -1,4 +1,4 @@
-# PersistentStorage
+# PersistentStorage (System API)
 
 ```TypeScript
 declare class PersistentStorage

@@ -49,7 +49,7 @@ bindSelectionMenu(spanType: TextSpanType, content: CustomBuilder, responseType: 
 
 Sets the custom selection menu. If this API is not used, the default menu type is **TextSpanType.TEXT** and the response type is **TextResponseType.LONG_PRESS**.
 
-The long-press response duration of **bindSelectionMenu** is 600 ms while that of [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) is 800 ms. When both are bound and their triggering methods are set to long press, **bindSelectionMenu** takes precedence.
+The long-press response duration of **bindSelectionMenu** is 600 ms while that of [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1) is 800 ms. When both are bound and their triggering methods are set to long press, **bindSelectionMenu** takes precedence.
 
 When the custom menu is too long, it is recommended that nest a [Scroll](arkts-arkui-scroll-comp.md) component inside to prevent the keyboard from being obscured.
 
@@ -641,7 +641,7 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 > The **Text** component cannot contain both text and the child component **Span** or **ImageSpan**. If both of
 > them exist, only the content in **Span** or **ImageSpan** is displayed.
 > 
-> The typesetting engine rounds down the value of [width](arkts-arkui-common-comp-commonmethod-c.md#width) to ensure that
+> The typesetting engine rounds down the value of [width](arkts-arkui-common-comp-commonmethod-c.md#width-1) to ensure that
 > the value is an integer. If the typesetting engine rounds up the value instead, the right side of the text may be
 > clipped.
 > 
@@ -1023,10 +1023,10 @@ The line height equals the input parameter **value** multiplied by **fontHeight*
 > **NOTE:** 
 > 
 > When **lineHeightMultiple** is set to a valid value and [lineHeight](#lineheight) or
-> [lineSpacing](#linespacing) is set at the same time, only
+> [lineSpacing](#linespacing-1) is set at the same time, only
 > **lineHeightMultiple** takes effect. If the value of **lineHeightMultiple** is less than 0, it does not take
 > effect. In this case, use [lineHeight](#lineheight) and
-> [lineSpacing](#linespacing) to set the line height and line spacing.
+> [lineSpacing](#linespacing-1) to set the line height and line spacing.
 
 **Since:** 22
 
@@ -1473,7 +1473,7 @@ When **Text.optimizeTrailingSpace** is set to **true**:
 * For text containing only spaces, decoration lines, shadows, and background colors follow the space text display.  
 * Leading spaces are not optimized. When text with trailing spaces wraps, trailing spaces on each line are optimized based on component width.
 
-When optimizing pure space text by setting [optimizeTrailingSpace](#optimizetrailingspace) to **true**, you cannot simultaneously set [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [decoration](#decoration), and [textAlign](#textalign) attributes.
+When optimizing pure space text by setting [optimizeTrailingSpace](#optimizetrailingspace) to **true**, you cannot simultaneously set [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1), [decoration](#decoration), and [textAlign](#textalign) attributes.
 
 **Since:** 20
 
@@ -1629,7 +1629,7 @@ If [textOverflow](#textoverflow) is set to **TextOverflow.MARQUEE**, the setting
 
 If the value of **selectionStart** is greater than or equal to that of **selectionEnd**, no text will be selected. The value range is [0, textSize], where **textSize** indicates the maximum number of characters in the text content. If the value is less than 0, the value **0** will be used. If the value is greater than **textSize**, **textSize** will be used.
 
-If the selection range falls within a truncated or invisible area, selection is ignored. When [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) is set to **false**, the text outside the parent component can be selected.
+If the selection range falls within a truncated or invisible area, selection is ignored. When [clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1) is set to **false**, the text outside the parent component can be selected.
 
 You can obtain the selection range change result through the [onTextSelectionChange](#ontextselectionchange) API.
 
@@ -1786,7 +1786,7 @@ When [textOverflow](#textoverflow) is set to **TextOverflow.MARQUEE** and the te
 
 The text takes up the full width of the **Text** component.
 
-The vertical position of the text paragraph can be controlled by the [align](arkts-arkui-common-comp-commonmethod-c.md#align) attribute, but the horizontal position cannot be controlled by **align** in this component. The specific effects are as follows:
+The vertical position of the text paragraph can be controlled by the [align](arkts-arkui-common-comp-commonmethod-c.md#align-1) attribute, but the horizontal position cannot be controlled by **align** in this component. The specific effects are as follows:
 
 - **Alignment.TopStart**, **Alignment.Top**, **Alignment.TopEnd**: Content aligns to the top.  
 - **Alignment.Start**, **Alignment.Center**, **Alignment.End**: Content is centered vertically.  
@@ -1938,7 +1938,7 @@ When **TextOverflowOptions** is set to **TextOverflow.MARQUEE**:
 
 - Text scrolls horizontally within a single line.  
 - The [maxLines](#maxlines), [copyOption](#copyoption), and [selection](#selection) attributes do not take effect, and special text entities cannot be recognized (that is, the attributes do not take effect when **enable** in [enableDataDetector](#enabledatadetector) is set to **true**).  
-- The [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) attribute of the **Text** component defaults to **true**.  
+- The [clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1) attribute of the **Text** component defaults to **true**.  
 - [CustomSpan](../arkts-apis/arkts-arkui-customspan-c.md) is not supported in marquee mode.  
 - Behavior of [textAlign](#textalign): If the text does not scroll, **textAlign** applies; if  
 the text scrolls, **textAlign** is ignored.  

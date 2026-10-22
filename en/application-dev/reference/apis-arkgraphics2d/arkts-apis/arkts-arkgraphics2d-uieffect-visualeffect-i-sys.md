@@ -1,4 +1,4 @@
-# VisualEffect
+# VisualEffect (System API)
 
 ```TypeScript
 interface VisualEffect

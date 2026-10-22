@@ -28,10 +28,10 @@ import { bluetooth } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md#creategattclientdevice) | create a JavaScript Gatt client device instance. |
-| [createGattServer](arkts-connectivity-ble-creategattserver-f.md#creategattserver) | create a JavaScript Gatt server instance. |
-| [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md#getconnectedbledevices) | Obtains the list of devices in the connected status. |
+| [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md#creategattclientdevice-1) | create a JavaScript Gatt client device instance. |
+| [createGattServer](arkts-connectivity-ble-creategattserver-f.md#creategattserver-1) | create a JavaScript Gatt server instance. |
+| [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md#getconnectedbledevices-1) | Obtains the list of devices in the connected status. |
 | [off('BLEDeviceFind')](arkts-connectivity-ble-off-f.md#offbledevicefind) | Unsubscribe BLE scan result. |
 | [on('BLEDeviceFind')](arkts-connectivity-ble-on-f.md#onbledevicefind) | Subscribe BLE scan result. |
-| [startBLEScan](arkts-connectivity-ble-startblescan-f.md#startblescan) | Starts scanning for specified BLE devices with filters. |
-| [stopBLEScan](arkts-connectivity-ble-stopblescan-f.md#stopblescan) | Stops BLE scanning. |
+| [startBLEScan](arkts-connectivity-ble-startblescan-f.md#startblescan-1) | Starts scanning for specified BLE devices with filters. |
+| [stopBLEScan](arkts-connectivity-ble-stopblescan-f.md#stopblescan-1) | Stops BLE scanning. |

@@ -1,4 +1,4 @@
-# Element
+# Element (System API)
 
 ```TypeScript
 export interface Element

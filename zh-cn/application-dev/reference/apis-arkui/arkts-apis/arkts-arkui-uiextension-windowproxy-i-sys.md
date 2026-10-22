@@ -1,4 +1,4 @@
-# WindowProxy
+# WindowProxy（系统接口）
 
 ```TypeScript
 interface WindowProxy

@@ -1153,6 +1153,8 @@
     - [StartAnimationParams](arkts-arkui-window-startanimationparams-i.md)
     <!--Del-->
     - [StartAnimationSystemParams（系统接口）](arkts-arkui-window-startanimationsystemparams-i-sys.md)<!--DelEnd-->
+    <!--Del-->
+    - [StartMovingOptions（系统接口）](arkts-arkui-window-startmovingoptions-i-sys.md)<!--DelEnd-->
     - [StatusBarProperty](arkts-arkui-window-statusbarproperty-i.md)
     <!--Del-->
     - [SubWindowAttachOptions（系统接口）](arkts-arkui-window-subwindowattachoptions-i-sys.md)<!--DelEnd-->
@@ -1381,6 +1383,7 @@
   - [ImageRepeat](arkts-arkui-imagerepeat-e.md)
   - [ImageSize](arkts-arkui-imagesize-e.md)
   - [ImageSpanAlignment](arkts-arkui-imagespanalignment-e.md)
+  - [ImmersiveStrategy](arkts-arkui-immersivestrategy-e.md)
   - [InputEventInterceptAction](arkts-arkui-inputeventinterceptaction-e.md)
   - [InputEventSubTypeMask](arkts-arkui-inputeventsubtypemask-e.md)
   - [InteractionHand](arkts-arkui-interactionhand-e.md)

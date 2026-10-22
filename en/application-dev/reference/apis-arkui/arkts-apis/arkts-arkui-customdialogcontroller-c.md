@@ -55,8 +55,8 @@ Constructor for a custom dialog box.
 > **NOTE:** 
 > 
 > Custom dialog box parameters do not support dynamic updates. However, by setting **customStyle** to **true** and
-> configuring [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor),
-> [backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle),
+> configuring [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1),
+> [backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle-1),
 > and [size](../arkts-components/arkts-arkui-common-comp.md)-related attributes on the custom component, you can implement dynamic updates via
 > state variables bound to these attributes.
 > 

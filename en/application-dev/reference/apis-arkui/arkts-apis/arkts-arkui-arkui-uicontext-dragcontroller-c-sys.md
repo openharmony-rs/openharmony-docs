@@ -1,4 +1,4 @@
-# DragController
+# DragController (System API)
 
 ```TypeScript
 export class DragController

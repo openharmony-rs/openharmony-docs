@@ -18,7 +18,7 @@ function selectContact(callback: AsyncCallback<Array<Contact>>): void
 
 **废弃版本：** 10
 
-**替代接口：** [selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts)(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
+**替代接口：** [selectContacts](arkts-contacts-contact-selectcontacts-f.md#selectcontacts-1)(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;)
 
 <!--Device-contact-function selectContact(callback: AsyncCallback<Array<Contact>>): void--><!--Device-contact-function selectContact(callback: AsyncCallback<Array<Contact>>): void-End-->
 

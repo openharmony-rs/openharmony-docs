@@ -1,4 +1,4 @@
-# MediaAssetsChangeRequest
+# MediaAssetsChangeRequest（系统接口）
 
 ```TypeScript
 class MediaAssetsChangeRequest implements MediaChangeRequest

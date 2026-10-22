@@ -1,4 +1,4 @@
-# VideoSession
+# VideoSession（系统接口）
 
 ```TypeScript
 interface VideoSession extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, Stabilization,

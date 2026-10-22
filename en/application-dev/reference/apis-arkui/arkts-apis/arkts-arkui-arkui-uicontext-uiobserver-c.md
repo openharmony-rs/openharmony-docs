@@ -2893,7 +2893,7 @@ Registers a callback to be invoked when the rendering state of a specific node c
 
 Be mindful of node quantity limitations. For performance reasons, registering too many nodes within a single UI instance will throw an exception.
 
-Typically, a **RENDER_OUT** notification is received when a component moves off-screen. However, in certain scenarios, a **RENDER_OUT** notification might not be triggered even if a component has moved off-screen. For example, components with caching capabilities like Swiper will not trigger **RENDER_OUT** notifications even when the **isShown** parameter in the [cachedCount](../arkts-components/arkts-arkui-swiper-comp-attribute.md#cachedcount) attribute is set to **true**.
+Typically, a **RENDER_OUT** notification is received when a component moves off-screen. However, in certain scenarios, a **RENDER_OUT** notification might not be triggered even if a component has moved off-screen. For example, components with caching capabilities like Swiper will not trigger **RENDER_OUT** notifications even when the **isShown** parameter in the [cachedCount](../arkts-components/arkts-arkui-swiper-comp-attribute.md#cachedcount-2) attribute is set to **true**.
 
 **Since:** 20
 

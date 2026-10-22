@@ -1,4 +1,4 @@
-# ToastShowMode
+# ToastShowMode (System API)
 
 ```TypeScript
 export enum ToastShowMode

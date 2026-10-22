@@ -20,7 +20,7 @@ import { systemLoad } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getLevel](arkts-basicservices-systemload-getlevel-f.md#getlevel) | 获取系统负载融合档位，使用promise异步回调。 |
+| [getLevel](arkts-basicservices-systemload-getlevel-f.md#getlevel-1) | 获取系统负载融合档位，使用promise异步回调。 |
 | [off('systemLoadChange')](arkts-basicservices-systemload-off-f.md#offsystemloadchange) | 取消注册系统负载回调，使用callback异步回调。 |
 | [on('systemLoadChange')](arkts-basicservices-systemload-on-f.md#onsystemloadchange) | 注册系统负载回调，感知系统负载融合档位变化，使用callback异步回调。 |
 

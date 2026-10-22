@@ -1,4 +1,4 @@
-# FenceExtensionContext
+# FenceExtensionContext（系统接口）
 
 ```TypeScript
 export default class FenceExtensionContext extends ExtensionContext
@@ -71,5 +71,40 @@ startAbility(want: Want): Promise<void>
 
 <!--Del-->
 **示例**
+
+```TypeScript
+import { FenceExtensionAbility, geoLocationManager } from '@kit.LocationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+export class MyFenceExtensionAbility extends FenceExtensionAbility {
+  onFenceStatusChange(transition: geoLocationManager.GeofenceTransition, additions: Record<string, string>): void {
+    // 接受围栏状态变化事件，处理业务逻辑
+    console.info(`on geofence transition,id:${transition.geofenceId},event:${transition.transitionEvent},additions:${JSON.stringify(additions)}`);
+    let want: Want = {
+      bundleName: "com.example.myapp",
+      abilityName: "MyServiceExtensionAbility"
+    };
+    try {
+      this.context.startAbility(want)
+        .then(() => {
+          // 执行正常业务
+          console.info('startAbility succeed');
+        })
+        .catch((error: BusinessError) => {
+          // 处理业务逻辑错误
+          console.error('startAbility failed, error.code: ' + JSON.stringify(error.code) +
+            ' error.message: ' + JSON.stringify(error.message));
+        });
+    } catch (paramError) {
+      // 处理入参错误异常
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error('startAbility failed, error.code: ' + JSON.stringify(code) +
+        ' error.message: ' + JSON.stringify(message));
+    }
+  }
+}
+```
 
 <!--DelEnd-->

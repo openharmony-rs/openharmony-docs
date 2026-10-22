@@ -1,4 +1,4 @@
-# SubscribedAbstractProperty
+# SubscribedAbstractProperty (System API)
 
 ```TypeScript
 declare abstract class SubscribedAbstractProperty<T>

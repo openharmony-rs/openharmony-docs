@@ -686,3 +686,49 @@ struct Index {
   }
 }
 ```
+
+### 示例11（设置Select和下拉菜单沉浸光感效果）
+
+该示例通过调用[menuSystemMaterial](arkts-arkui-select-comp-attribute.md#menusystemmaterial)接口设置下拉菜单的系统材质，实现沉浸光感效果；通过[SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial)接口设置Select组件的系统材质，实现沉浸光感效果。
+
+该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
+
+从API版本26.0.0开始，新增menuSystemMaterial接口。
+
+```TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Select([{ value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' }])
+        .value('Click Show Options')
+        /**
+         * 配置选择框自身沉浸式磨砂材质
+         * ULTRA_THIN：超薄通透磨砂，透明度高，底层画面透出更明显
+         */
+        .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+          }))
+        /**
+         * 配置下拉弹出面板的沉浸式磨砂材质
+         * THICK：厚重磨砂，透明度更低，遮挡感更强
+         */
+        .menuSystemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.THICK
+          }))
+    }
+    // $r('app.media.img')需要替换为开发者所需的图像资源文件。
+    .backgroundImage($r('app.media.img'))
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```

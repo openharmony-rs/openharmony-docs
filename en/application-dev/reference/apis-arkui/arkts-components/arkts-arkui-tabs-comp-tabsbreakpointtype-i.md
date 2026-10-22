@@ -6,7 +6,7 @@ declare interface TabsBreakpointType<T>
 
 Defines the value type for different Tabs container sizes.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 <!--Device-unnamed-declare interface TabsBreakpointType<T>--><!--Device-unnamed-declare interface TabsBreakpointType<T>-End-->
 
@@ -22,11 +22,11 @@ Value for large Tabs container size.
 
 **Type:** T
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsBreakpointType-lg?: T--><!--Device-TabsBreakpointType-lg?: T-End-->
 
@@ -42,11 +42,11 @@ Value for medium Tabs container size.
 
 **Type:** T
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsBreakpointType-md?: T--><!--Device-TabsBreakpointType-md?: T-End-->
 
@@ -62,11 +62,11 @@ Value for small Tabs container size.
 
 **Type:** T
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-TabsBreakpointType-sm?: T--><!--Device-TabsBreakpointType-sm?: T-End-->
 

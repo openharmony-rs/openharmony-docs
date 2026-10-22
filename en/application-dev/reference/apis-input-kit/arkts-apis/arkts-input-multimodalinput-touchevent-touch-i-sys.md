@@ -1,4 +1,4 @@
-# Touch
+# Touch (System API)
 
 ```TypeScript
 export declare interface Touch

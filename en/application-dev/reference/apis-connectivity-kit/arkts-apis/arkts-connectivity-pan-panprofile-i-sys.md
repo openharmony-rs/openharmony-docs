@@ -1,4 +1,4 @@
-# PanProfile
+# PanProfile (System API)
 
 ```TypeScript
 interface PanProfile extends BaseProfile

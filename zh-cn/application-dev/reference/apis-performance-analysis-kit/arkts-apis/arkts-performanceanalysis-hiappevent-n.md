@@ -36,28 +36,33 @@ import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addProcessor](arkts-performanceanalysis-hiappevent-addprocessor-f.md#addprocessor) | 添加数据处理者配置信息，用于配置处理者接收的事件名等信息。事件发生后处理者可以接收事件。 |
-| [addProcessorFromConfig](arkts-performanceanalysis-hiappevent-addprocessorfromconfig-f.md#addprocessorfromconfig) | 添加数据处理者配置信息，通过配置文件配置处理者接收的事件名等信息，事件发生后处理者可以接收事件，使用Promise异步回调。 |
-| [addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md#addwatcher) | 添加事件观察者。可通过事件观察者的回调函数监听事件。 |
-| [clearData](arkts-performanceanalysis-hiappevent-cleardata-f.md#cleardata) | 应用事件打点数据清理方法，将当前应用存储在本地的打点数据进行清除。 |
-| [configEventPolicy](arkts-performanceanalysis-hiappevent-configeventpolicy-f.md#configeventpolicy) | 系统事件相关的配置策略设置方法，使用Promise方式作为异步回调。 |
-| [configure](arkts-performanceanalysis-hiappevent-configure-f.md#configure) | 应用事件打点配置方法，支持配置打点开关和目录存储配额大小。 |
-| [getUserId](arkts-performanceanalysis-hiappevent-getuserid-f.md#getuserid) | 获取通过setUserId接口设置的value值。 |
-| [getUserProperty](arkts-performanceanalysis-hiappevent-getuserproperty-f.md#getuserproperty) | 获取通过setUserProperty接口设置的value值。 |
-| [removeProcessor](arkts-performanceanalysis-hiappevent-removeprocessor-f.md#removeprocessor) | 移除上报事件的数据处理者。 |
-| [removeWatcher](arkts-performanceanalysis-hiappevent-removewatcher-f.md#removewatcher) | 移除事件观察者。 |
-| [setEventConfig](arkts-performanceanalysis-hiappevent-seteventconfig-f.md#seteventconfig) | 事件相关的配置参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件名称，设置事件相关的配置参数。 |
-| [setEventParam](arkts-performanceanalysis-hiappevent-seteventparam-f.md#seteventparam) | 事件自定义参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件领域和事件名称关联系统事件和应用事件。 |
-| [setUserId](arkts-performanceanalysis-hiappevent-setuserid-f.md#setuserid) | 设置用户ID值。用于在配置[Processor](arkts-performanceanalysis-hiappevent-processor-i.md)数据处理者时进行关联。 |
-| [setUserProperty](arkts-performanceanalysis-hiappevent-setuserproperty-f.md#setuserproperty) | 设置用户属性值。用于在配置[Processor](arkts-performanceanalysis-hiappevent-processor-i.md)数据处理者时进行关联。 |
-| [write](arkts-performanceanalysis-hiappevent-write-f.md#write) | 应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)）进行处理。 |
-| [write](arkts-performanceanalysis-hiappevent-write-f.md#write) | 应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)）进行订阅。 |
+| [addProcessor](arkts-performanceanalysis-hiappevent-addprocessor-f.md#addprocessor-1) | 添加数据处理者配置信息，用于配置处理者接收的事件名等信息。事件发生后处理者可以接收事件。 |
+| [addProcessorFromConfig](arkts-performanceanalysis-hiappevent-addprocessorfromconfig-f.md#addprocessorfromconfig-1) | 添加数据处理者配置信息，通过配置文件配置处理者接收的事件名等信息，事件发生后处理者可以接收事件，使用Promise异步回调。 |
+| [addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md#addwatcher-1) | 添加事件观察者。可通过事件观察者的回调函数监听事件。 |
+| [clearData](arkts-performanceanalysis-hiappevent-cleardata-f.md#cleardata-1) | 应用事件打点数据清理方法，将当前应用存储在本地的打点数据进行清除。 |
+| [configEventPolicy](arkts-performanceanalysis-hiappevent-configeventpolicy-f.md#configeventpolicy-1) | 系统事件相关的配置策略设置方法，使用Promise方式作为异步回调。 |
+| [configure](arkts-performanceanalysis-hiappevent-configure-f.md#configure-1) | 应用事件打点配置方法，支持配置打点开关和目录存储配额大小。 |
+| [getUserId](arkts-performanceanalysis-hiappevent-getuserid-f.md#getuserid-1) | 获取通过setUserId接口设置的value值。 |
+| [getUserProperty](arkts-performanceanalysis-hiappevent-getuserproperty-f.md#getuserproperty-1) | 获取通过setUserProperty接口设置的value值。 |
+| [isExternalLogManagerRegistered](arkts-performanceanalysis-hiappevent-isexternallogmanagerregistered-f.md#isexternallogmanagerregistered-1) | 查询外部日志管理者是否已注册 |
+| [registerExternalLogManager](arkts-performanceanalysis-hiappevent-registerexternallogmanager-f.md#registerexternallogmanager-1) | 注册外部日志管理者 |
+| [removeProcessor](arkts-performanceanalysis-hiappevent-removeprocessor-f.md#removeprocessor-1) | 移除上报事件的数据处理者。 |
+| [removeWatcher](arkts-performanceanalysis-hiappevent-removewatcher-f.md#removewatcher-1) | 移除事件观察者。 |
+| [setEventConfig](arkts-performanceanalysis-hiappevent-seteventconfig-f.md#seteventconfig-1) | 事件相关的配置参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件名称，设置事件相关的配置参数。 |
+| [setEventParam](arkts-performanceanalysis-hiappevent-seteventparam-f.md#seteventparam-1) | 事件自定义参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件领域和事件名称关联系统事件和应用事件。 |
+| [setUserId](arkts-performanceanalysis-hiappevent-setuserid-f.md#setuserid-1) | 设置用户ID值。用于在配置[Processor](arkts-performanceanalysis-hiappevent-processor-i.md)数据处理者时进行关联。 |
+| [setUserProperty](arkts-performanceanalysis-hiappevent-setuserproperty-f.md#setuserproperty-1) | 设置用户属性值。用于在配置[Processor](arkts-performanceanalysis-hiappevent-processor-i.md)数据处理者时进行关联。 |
+| [write](arkts-performanceanalysis-hiappevent-write-f.md#write-1) | 应用事件打点方法，将AppEventInfo类型的事件进行存储，使用Promise方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)）进行处理。 |
+| [write](arkts-performanceanalysis-hiappevent-write-f.md#write-2) | 应用事件打点方法，将AppEventInfo类型的事件进行存储，使用callback方式作为异步回调。通过此接口写入的事件对象是开发者自定义的对象，为了避免与系统事件产生冲突混淆，不建议写入系统事件（[Event](arkts-performanceanalysis-hiappevent-event-n.md)中定义的系统事件名称常量）。此接口写入的事件可通过订阅事件观察者（[addWatcher](arkts-performanceanalysis-hiappevent-addwatcher-f.md)）进行订阅。 |
 
 ### 类
 
 | 名称 | 说明 |
 | --- | --- |
 | [AppEventPackageHolder](arkts-performanceanalysis-hiappevent-appeventpackageholder-c.md) | 订阅数据持有者类，用于对事件信息进行处理。 |
+| [ExternalLogContainer](arkts-performanceanalysis-hiappevent-externallogcontainer-c.md) | 一个外部日志容器，包含所有外部日志文件。 |
+| [ExternalLogManager](arkts-performanceanalysis-hiappevent-externallogmanager-c.md) | 定义外部日志管理者，用于外部日志管理 |
+| [ExternalLogWrapper](arkts-performanceanalysis-hiappevent-externallogwrapper-c.md) | 外部日志的包装器，提供各种信息。 |
 
 ### 接口
 

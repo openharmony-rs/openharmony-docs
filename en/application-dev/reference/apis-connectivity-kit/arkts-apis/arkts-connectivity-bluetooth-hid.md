@@ -20,8 +20,8 @@ import { hid } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [createHidDeviceProfile](arkts-connectivity-hid-createhiddeviceprofile-f.md#createhiddeviceprofile) | Creates the instance of HID device profile. |
-| [createHidHostProfile](arkts-connectivity-hid-createhidhostprofile-f.md#createhidhostprofile) | create the instance of hid profile. |
+| [createHidDeviceProfile](arkts-connectivity-hid-createhiddeviceprofile-f.md#createhiddeviceprofile-1) | Creates the instance of HID device profile. |
+| [createHidHostProfile](arkts-connectivity-hid-createhidhostprofile-f.md#createhidhostprofile-1) | create the instance of hid profile. |
 
 ### Interfaces
 

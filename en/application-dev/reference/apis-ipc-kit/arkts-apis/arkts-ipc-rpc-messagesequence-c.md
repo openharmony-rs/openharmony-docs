@@ -2913,7 +2913,7 @@ writeBooleanArray(booleanArray: boolean[]): void
 
 Writes a Boolean array to this **MessageSequence** object.
 
-- This method and the [readBooleanArray](#readbooleanarray) method  
+- This method and the [readBooleanArray](#readbooleanarray-1) method  
 must be used in pairs.  
 - The length of the array to be read must match the length of the array that was written.
 
@@ -3967,7 +3967,7 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): void
 
 Writes an **IRemoteObject** array to this **MessageSequence** object. This method is applicable to scenarios where multiple remote objects need to be passed, such as registering multiple service proxies in batches, passing multiple callback APIs, and managing multiple service endpoints.
 
-- This method and the [readRemoteObjectArray](#readremoteobjectarray) method must be used in pairs.  
+- This method and the [readRemoteObjectArray](#readremoteobjectarray-1) method must be used in pairs.  
 - The length of the array to be read must match the length of the array that was written.
 
 **Since:** 9
@@ -4178,7 +4178,7 @@ writeStringArray(stringArray: string[]): void
 
 Writes a string array to this **MessageSequence** object.
 
-- This method and the [readStringArray](#readstringarray) method must  
+- This method and the [readStringArray](#readstringarray-1) method must  
 be used in pairs.  
 - The length of the array to be read must match the length of the array that was written.
 

@@ -52,7 +52,7 @@ checked(value: boolean)
 checked(isChecked: Optional<boolean>)
 ```
 
-设置单选框的选中状态。与[checked](#checked)相比，isChecked参数新增了对undefined类型的支持。
+设置单选框的选中状态。与[checked](#checked-1)相比，isChecked参数新增了对undefined类型的支持。
 
 该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
@@ -104,7 +104,7 @@ contentModifier(modifier: ContentModifier<RadioConfiguration>)
 contentModifier(modifier: Optional<ContentModifier<RadioConfiguration>>)
 ```
 
-定制Radio内容区的方法。与[contentModifier](#contentmodifier)<sup>12+</sup >相比，modifier参数新增了对undefined类型的支持。
+定制Radio内容区的方法。与[contentModifier](#contentmodifier-1)<sup>12+</sup >相比，modifier参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -154,7 +154,7 @@ onChange(callback: (isChecked: boolean) => void)
 onChange(callback: Optional<OnRadioChangeCallback>)
 ```
 
-单选框选中状态改变时触发的回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
+单选框选中状态改变时触发的回调。与[onChange](#onchange-1)相比，callback参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 

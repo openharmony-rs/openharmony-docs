@@ -1,4 +1,4 @@
-# ColoringStrategy
+# ColoringStrategy (System API)
 
 ```TypeScript
 declare enum ColoringStrategy

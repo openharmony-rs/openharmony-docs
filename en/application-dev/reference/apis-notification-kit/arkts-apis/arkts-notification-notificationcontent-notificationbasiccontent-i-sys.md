@@ -1,4 +1,4 @@
-# NotificationBasicContent
+# NotificationBasicContent (System API)
 
 ```TypeScript
 export interface NotificationBasicContent

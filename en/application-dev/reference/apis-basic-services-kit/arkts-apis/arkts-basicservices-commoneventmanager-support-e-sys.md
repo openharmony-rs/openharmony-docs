@@ -1,4 +1,4 @@
-# Support
+# Support (System API)
 
 ```TypeScript
 export enum Support

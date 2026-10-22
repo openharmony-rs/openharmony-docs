@@ -1,4 +1,4 @@
-# CMErrorCode
+# CMErrorCode (System API)
 
 ```TypeScript
 export enum CMErrorCode

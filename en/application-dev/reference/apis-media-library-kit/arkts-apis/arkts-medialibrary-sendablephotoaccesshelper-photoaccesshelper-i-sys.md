@@ -1,4 +1,4 @@
-# PhotoAccessHelper
+# PhotoAccessHelper (System API)
 
 ```TypeScript
 interface PhotoAccessHelper extends lang.ISendable

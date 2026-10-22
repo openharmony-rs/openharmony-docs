@@ -10,7 +10,7 @@ class AVCastPickerHelper
 > 
 > - 本Class首批接口从API version 14开始支持。
 > 
-> - AVCastPickerHelper样式显示为半模态，实际会绑定[全模态页面（bindContentCover）](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontentcover)。
+> - AVCastPickerHelper样式显示为半模态，实际会绑定[全模态页面（bindContentCover）](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontentcover-1)。
 
 **起始版本：** 14
 

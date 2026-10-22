@@ -1,4 +1,4 @@
-# AccessibilityElement
+# AccessibilityElement（系统接口）
 
 ```TypeScript
 export declare interface AccessibilityElement
@@ -380,7 +380,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise<AccessibilityEle
 
 根据焦点方向查找元素。使用Promise异步回调。
 
-与[findElementsByCondition](#findelementsbycondition)相比，本方法主要用于查找Web组件；findElementsByCondition主要用于查找UI组件。
+与[findElementsByCondition](#findelementsbycondition-1)相比，本方法主要用于查找Web组件；findElementsByCondition主要用于查找UI组件。
 
 **起始版本：** 20
 
@@ -728,7 +728,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise<Foc
 
 查询满足条件的可聚焦节点。使用Promise异步回调。
 
-与[findElementByFocusDirection](#findelementbyfocusdirection)相比，本方法主要用于查找UI组件；findElementByFocusDirection主要用于查找Web组件。
+与[findElementByFocusDirection](#findelementbyfocusdirection-1)相比，本方法主要用于查找UI组件；findElementByFocusDirection主要用于查找Web组件。
 
 **起始版本：** 23
 

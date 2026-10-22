@@ -1,4 +1,4 @@
-# PhotoAssetChangeInfo
+# PhotoAssetChangeInfo（系统接口）
 
 ```TypeScript
 interface PhotoAssetChangeInfo

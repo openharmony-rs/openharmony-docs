@@ -18,7 +18,7 @@ Sets whether to enable distributed notification for a specified application. Thi
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDistributedEnabledByBundle](arkts-notification-notificationmanager-setdistributedenabledbybundle-f-sys.md)(bundle: BundleOption, deviceType: string, enable: boolean)
+**Substitutes:** [setDistributedEnabledByBundle](arkts-notification-notificationmanager-setdistributedenabledbybundle-f-sys.md#setdistributedenabledbybundle-1)(bundle: BundleOption, deviceType: string, enable: boolean)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -85,7 +85,7 @@ Sets whether to enable distributed notification for a specified application. Thi
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDistributedEnabledByBundle](arkts-notification-notificationmanager-setdistributedenabledbybundle-f-sys.md)(bundle: BundleOption, deviceType: string, enable: boolean)
+**Substitutes:** [setDistributedEnabledByBundle](arkts-notification-notificationmanager-setdistributedenabledbybundle-f-sys.md#setdistributedenabledbybundle-1)(bundle: BundleOption, deviceType: string, enable: boolean)
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 

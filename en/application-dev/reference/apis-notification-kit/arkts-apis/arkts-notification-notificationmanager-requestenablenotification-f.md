@@ -81,11 +81,11 @@ Requests notification to be enabled for this application. You can call this API 
 
 **See also:**
 
-[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled) checks whether notification is enabled for a specified user.
+[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-3) checks whether notification is enabled for a specified user.
 
-[openNotificationSettingsWithResult](arkts-notification-notificationmanager-opennotificationsettingswithresult-f.md) Opens the notification settings page of the application, which is presented in a semi-modal window and can be used to set notification switches, notification reminder methods, etc.
+[openNotificationSettingsWithResult](arkts-notification-notificationmanager-opennotificationsettingswithresult-f.md#opennotificationsettingswithresult-1) Opens the notification settings page of the application, which is presented in a semi-modal window and can be used to set notification switches, notification reminder methods, etc.
 
-[openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md) opens the notification settings page of the application, which is displayed in semi-modal mode and can be used to set the notification enabling and notification mode.
+[openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md#opennotificationsettings-1) opens the notification settings page of the application, which is displayed in semi-modal mode and can be used to set the notification enabling and notification mode.
 
 **Parameters:**
 
@@ -207,11 +207,11 @@ Requests notification to be enabled for this application. You can call this API 
 
 **See also:**
 
-[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled) checks whether notification is enabled for a specified user.
+[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-3) checks whether notification is enabled for a specified user.
 
-[openNotificationSettingsWithResult](arkts-notification-notificationmanager-opennotificationsettingswithresult-f.md) Opens the notification settings page of the application, which is presented in a semi-modal window and can be used to set notification switches, notification reminder methods, etc.
+[openNotificationSettingsWithResult](arkts-notification-notificationmanager-opennotificationsettingswithresult-f.md#opennotificationsettingswithresult-1) Opens the notification settings page of the application, which is presented in a semi-modal window and can be used to set notification switches, notification reminder methods, etc.
 
-[openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md) opens the notification settings page of the application, which is displayed in semi-modal mode and can be used to set the notification enabling and notification mode.
+[openNotificationSettings](arkts-notification-notificationmanager-opennotificationsettings-f.md#opennotificationsettings-1) opens the notification settings page of the application, which is displayed in semi-modal mode and can be used to set the notification enabling and notification mode.
 
 **Parameters:**
 

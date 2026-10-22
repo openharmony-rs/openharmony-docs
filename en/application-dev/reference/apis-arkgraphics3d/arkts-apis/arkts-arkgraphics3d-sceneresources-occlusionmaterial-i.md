@@ -4,7 +4,7 @@
 export interface OcclusionMaterial extends Material
 ```
 
-Occlusion material: occludes other objects in the scene but does not occlude the environment. It is inherited from Material.
+Occlusion material: occludes other objects in the scene but does not occlude the environment. It is inherited from [Material](arkts-arkgraphics3d-sceneresources-material-i.md).
 
 **Inheritance/Implementation:** OcclusionMaterial extends [Material](arkts-arkgraphics3d-sceneresources-material-i.md)
 

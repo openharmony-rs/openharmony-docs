@@ -22,13 +22,13 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
 | Name | Description |
 | --- | --- |
-| [getCurrentConfig](arkts-performanceanalysis-hiretrieval-getcurrentconfig-f.md#getcurrentconfig) | Query the current HiRetrieval config. |
-| [getLastParticipationTimestamp](arkts-performanceanalysis-hiretrieval-getlastparticipationtimestamp-f.md#getlastparticipationtimestamp) | Query the UNIX timestamp of the last participating time. |
-| [init](arkts-performanceanalysis-hiretrieval-init-f.md#init) | Init the HiRetrieval functionality. |
-| [isParticipant](arkts-performanceanalysis-hiretrieval-isparticipant-f.md#isparticipant) | Query if the app is participating the HiRetrieval project. |
-| [participate](arkts-performanceanalysis-hiretrieval-participate-f.md#participate) | Participate the HiRetrieval project with given HiRetrievalConfig. |
-| [quit](arkts-performanceanalysis-hiretrieval-quit-f.md#quit) | Quit the HiRetrieval project. This operation clears the current HiRetrieval config. Invoking init function again is required after invoking quit function. |
-| [run](arkts-performanceanalysis-hiretrieval-run-f.md#run) | Trigger the HiRetrieval functionality, make it start working. |
+| [getCurrentConfig](arkts-performanceanalysis-hiretrieval-getcurrentconfig-f.md#getcurrentconfig-1) | Query the current HiRetrieval config. |
+| [getLastParticipationTimestamp](arkts-performanceanalysis-hiretrieval-getlastparticipationtimestamp-f.md#getlastparticipationtimestamp-1) | Query the UNIX timestamp of the last participating time. |
+| [init](arkts-performanceanalysis-hiretrieval-init-f.md#init-1) | Init the HiRetrieval functionality. |
+| [isParticipant](arkts-performanceanalysis-hiretrieval-isparticipant-f.md#isparticipant-1) | Query if the app is participating the HiRetrieval project. |
+| [participate](arkts-performanceanalysis-hiretrieval-participate-f.md#participate-1) | Participate the HiRetrieval project with given HiRetrievalConfig. |
+| [quit](arkts-performanceanalysis-hiretrieval-quit-f.md#quit-1) | Quit the HiRetrieval project. This operation clears the current HiRetrieval config. Invoking init function again is required after invoking quit function. |
+| [run](arkts-performanceanalysis-hiretrieval-run-f.md#run-1) | Trigger the HiRetrieval functionality, make it start working. |
 
 ### Interfaces
 

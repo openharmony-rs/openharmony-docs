@@ -1,4 +1,4 @@
-# RunningFormInfo
+# RunningFormInfo (System API)
 
 ```TypeScript
 interface RunningFormInfo

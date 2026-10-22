@@ -1,4 +1,4 @@
-# ContextType
+# ContextType（系统接口）
 
 ```TypeScript
 export enum ContextType

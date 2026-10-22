@@ -24,7 +24,7 @@ Subscribes to the NearLink status change event. This API uses an asynchronous ca
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [offStateChange](arkts-connectivity-manager-offstatechange-f.md) Unsubscribes from the NearLink status change event.
+**See also:** [offStateChange](arkts-connectivity-manager-offstatechange-f.md#offstatechange-1) Unsubscribes from the NearLink status change event.
 
 **Parameters:**
 

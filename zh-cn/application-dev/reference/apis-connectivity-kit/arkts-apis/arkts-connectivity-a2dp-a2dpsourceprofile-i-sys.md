@@ -1,4 +1,4 @@
-# A2dpSourceProfile
+# A2dpSourceProfile（系统接口）
 
 ```TypeScript
 interface A2dpSourceProfile extends BaseProfile
@@ -65,7 +65,7 @@ connect(deviceId: string): void
 disableAbsoluteVolume(deviceId: string): Promise<void>
 ```
 
-关闭设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported))，再关闭设备绝对音量能力。使用Promise异步回调。
+关闭设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported-2))，再关闭设备绝对音量能力。使用Promise异步回调。
 
 **起始版本：** 11
 
@@ -107,7 +107,7 @@ disableAbsoluteVolume(deviceId: string): Promise<void>
 disableAbsoluteVolume(deviceId: string, callback: AsyncCallback<void>): void
 ```
 
-关闭设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported))，再关闭设备绝对音量能力。使用Callback异步回调。
+关闭设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported-2))，再关闭设备绝对音量能力。使用Callback异步回调。
 
 **起始版本：** 11
 
@@ -224,7 +224,7 @@ disconnect(deviceId: string): void
 enableAbsoluteVolume(deviceId: string): Promise<void>
 ```
 
-开启设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported))，再开启设备绝对音量能力。使用Promise异步回调。
+开启设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported-2))，再开启设备绝对音量能力。使用Promise异步回调。
 
 **起始版本：** 11
 
@@ -266,7 +266,7 @@ enableAbsoluteVolume(deviceId: string): Promise<void>
 enableAbsoluteVolume(deviceId: string, callback: AsyncCallback<void>): void
 ```
 
-开启设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported))，再开启设备绝对音量能力。使用Callback异步回调。
+开启设备绝对音量能力。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported-2))，再开启设备绝对音量能力。使用Callback异步回调。
 
 **起始版本：** 11
 
@@ -471,7 +471,7 @@ getCurrentFullCodecInfo(deviceId: string): CodecInfoList[]
 isAbsoluteVolumeEnabled(deviceId: string): Promise<boolean>
 ```
 
-获取设备绝对音量能力是否开启。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported))，再获取设备绝对音量能力是否开启。使用Promise异步回调。
+获取设备绝对音量能力是否开启。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported-2))，再获取设备绝对音量能力是否开启。使用Promise异步回调。
 
 **起始版本：** 11
 
@@ -513,7 +513,7 @@ isAbsoluteVolumeEnabled(deviceId: string): Promise<boolean>
 isAbsoluteVolumeEnabled(deviceId: string, callback: AsyncCallback<boolean>): void
 ```
 
-获取设备绝对音量能力是否开启。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported))，再获取设备绝对音量能力是否开启。使用Callback异步回调。
+获取设备绝对音量能力是否开启。需要在设备支持绝对音量的情况下(参考[isAbsoluteVolumeSupported](#isabsolutevolumesupported-2))，再获取设备绝对音量能力是否开启。使用Callback异步回调。
 
 **起始版本：** 11
 

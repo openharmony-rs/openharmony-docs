@@ -18,7 +18,7 @@ Adds a contact. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 10
 
-**Substitutes:** [addContact](#addcontact)(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;)
+**Substitutes:** [addContact](#addcontact-2)(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;)
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 
@@ -134,7 +134,7 @@ Adds a contact. This API uses a promise to return the result.
 
 **Deprecated since:** 10
 
-**Substitutes:** [addContact](#addcontact)(context: Context, contact: Contact)
+**Substitutes:** [addContact](#addcontact-4)(context: Context, contact: Contact)
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 

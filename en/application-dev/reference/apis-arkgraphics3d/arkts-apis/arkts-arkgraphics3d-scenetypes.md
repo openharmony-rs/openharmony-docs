@@ -1,4 +1,4 @@
-# SceneTypes(3D scene common type declarations)
+# SceneTypes
 
 ## Summary
 
@@ -6,12 +6,12 @@
 
 | Name | Description |
 | --- | --- |
-| [CubeGeometry](arkts-arkgraphics3d-scenetypes-cubegeometry-c.md) | A cube geometry type that inherits from GeometryDefinition. |
-| [CustomGeometry](arkts-arkgraphics3d-scenetypes-customgeometry-c.md) | A custom geometry type that inherits from GeometryDefinition. |
-| [CylinderGeometry](arkts-arkgraphics3d-scenetypes-cylindergeometry-c.md) | A cylinder geometry type that inherits from GeometryDefinition. |
+| [CubeGeometry](arkts-arkgraphics3d-scenetypes-cubegeometry-c.md) | A cube geometry type that inherits from [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md). |
+| [CustomGeometry](arkts-arkgraphics3d-scenetypes-customgeometry-c.md) | A custom geometry type that inherits from [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md). |
+| [CylinderGeometry](arkts-arkgraphics3d-scenetypes-cylindergeometry-c.md) | A cylinder geometry type that inherits from [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md). |
 | [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md) | An abstract class used to define the properties of specific geometry types. |
-| [PlaneGeometry](arkts-arkgraphics3d-scenetypes-planegeometry-c.md) | A plane geometry type that inherits from GeometryDefinition. |
-| [SphereGeometry](arkts-arkgraphics3d-scenetypes-spheregeometry-c.md) | A sphere geometry type that inherits from GeometryDefinition. |
+| [PlaneGeometry](arkts-arkgraphics3d-scenetypes-planegeometry-c.md) | A plane geometry type that inherits from [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md). |
+| [SphereGeometry](arkts-arkgraphics3d-scenetypes-spheregeometry-c.md) | A sphere geometry type that inherits from [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md). |
 
 ### Interfaces
 

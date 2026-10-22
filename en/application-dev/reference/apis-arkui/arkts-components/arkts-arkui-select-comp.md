@@ -688,3 +688,49 @@ struct Index {
   }
 }
 ```
+
+### Example 11: Setting the Immersive Light Effect for the Select Component and Drop-Down Menu
+
+This example shows how to call [menuSystemMaterial](arkts-arkui-select-comp-attribute.md#menusystemmaterial) to set the system material of the drop-down menu to achieve the immersive light effect, and call [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) to set the system material of the Select component to achieve the immersive light effect.
+
+The figures in this example show the strong immersive light effects on a high-computing device. The immersive light effect of the component automatically adapts to the device's computing power and the immersive light effect set by the user in the system. No additional adaptation is required.
+
+Since API version 26.0.0, the menuSystemMaterial API is added.
+
+```TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Select([{ value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' }])
+        .value('Click Show Options')
+        /**
+         * Configure immersive frosted material for the selection box.
+         * ULTRA_THIN: ultra-thin translucent frosted effect with high transparency, making underlying content more visible.
+         */
+        .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+          }))
+        /**
+         * Configure immersive frosted material for the drop-down panel.
+         * THICK: thick frosted effect with lower transparency and stronger occlusion.
+         */
+        .menuSystemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.THICK
+          }))
+    }
+    // Replace $r('app.media.img') with the image resource file you use.
+    .backgroundImage($r('app.media.img'))
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```

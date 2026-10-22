@@ -1,4 +1,4 @@
-# AuthType
+# AuthType（系统接口）
 
 ```TypeScript
 enum AuthType

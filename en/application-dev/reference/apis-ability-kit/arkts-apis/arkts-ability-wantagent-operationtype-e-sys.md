@@ -1,4 +1,4 @@
-# OperationType
+# OperationType (System API)
 
 ```TypeScript
 export enum OperationType

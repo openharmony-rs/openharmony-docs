@@ -1,4 +1,4 @@
-# SubscribedAbstractProperty
+# SubscribedAbstractProperty（系统接口）
 
 ```TypeScript
 declare abstract class SubscribedAbstractProperty<T>

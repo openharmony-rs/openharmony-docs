@@ -17,7 +17,7 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 **废弃版本：** 9
 
-**替代接口：** [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning)(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-1)(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -123,7 +123,7 @@ function startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAg
 
 **废弃版本：** 9
 
-**替代接口：** [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning)(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent)
+**替代接口：** [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-f.md#startbackgroundrunning-2)(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent)
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 

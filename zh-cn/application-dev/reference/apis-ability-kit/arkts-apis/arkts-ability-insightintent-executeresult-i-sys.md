@@ -1,4 +1,4 @@
-# ExecuteResult
+# ExecuteResult（系统接口）
 
 ```TypeScript
 interface ExecuteResult

@@ -18,7 +18,7 @@ Updates a contact. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 10
 
-**Substitutes:** [updateContact](#updatecontact)(context: Context, contact: Contact, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [updateContact](#updatecontact-2)(context: Context, contact: Contact, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 
@@ -140,7 +140,7 @@ Updates a contact. (The contact attribute list can be imported.) This API uses a
 
 **Deprecated since:** 10
 
-**Substitutes:** [updateContact](#updatecontact)(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [updateContact](#updatecontact-4)(context: Context, contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 
@@ -266,7 +266,7 @@ Updates a contact. (The contact attribute list can be imported.) This API uses a
 
 **Deprecated since:** 10
 
-**Substitutes:** [updateContact](#updatecontact)(context: Context, contact: Contact, attrs?: ContactAttributes)
+**Substitutes:** [updateContact](#updatecontact-6)(context: Context, contact: Contact, attrs?: ContactAttributes)
 
 **Required permissions:** ohos.permission.WRITE_CONTACTS
 

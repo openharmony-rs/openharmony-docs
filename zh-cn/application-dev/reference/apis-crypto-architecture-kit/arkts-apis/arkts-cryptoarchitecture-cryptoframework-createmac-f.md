@@ -16,7 +16,7 @@ function createMac(algName: string): Mac
 
 > **说明：** 
 > 
-> 此接口仅支持HMAC。推荐使用[createMac()](#createmac)接口。
+> 此接口仅支持HMAC。推荐使用[createMac()](#createmac-2)接口。
 
 <br>支持的规格详见[HMAC消息认证码算法规格](../../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。
 

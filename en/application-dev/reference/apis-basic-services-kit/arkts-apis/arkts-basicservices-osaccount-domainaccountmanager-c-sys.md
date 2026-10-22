@@ -1,4 +1,4 @@
-# DomainAccountManager
+# DomainAccountManager (System API)
 
 ```TypeScript
 class DomainAccountManager

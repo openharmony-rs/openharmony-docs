@@ -1,4 +1,4 @@
-# DistributedConfig
+# DistributedConfig (System API)
 
 ```TypeScript
 interface DistributedConfig

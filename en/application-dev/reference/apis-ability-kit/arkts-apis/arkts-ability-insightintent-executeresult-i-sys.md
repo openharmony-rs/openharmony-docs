@@ -1,4 +1,4 @@
-# ExecuteResult
+# ExecuteResult (System API)
 
 ```TypeScript
 interface ExecuteResult

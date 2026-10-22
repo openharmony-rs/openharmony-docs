@@ -1,4 +1,4 @@
-# AVCastController
+# AVCastController (System API)
 
 ```TypeScript
 interface AVCastController

@@ -1,4 +1,4 @@
-# AudioRendererOptions
+# AudioRendererOptions（系统接口）
 
 ```TypeScript
 interface AudioRendererOptions

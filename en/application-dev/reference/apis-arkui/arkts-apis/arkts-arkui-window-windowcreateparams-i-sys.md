@@ -1,4 +1,4 @@
-# WindowCreateParams
+# WindowCreateParams (System API)
 
 ```TypeScript
 interface WindowCreateParams

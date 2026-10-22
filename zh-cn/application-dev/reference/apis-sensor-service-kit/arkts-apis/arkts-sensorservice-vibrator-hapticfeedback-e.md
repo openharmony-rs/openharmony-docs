@@ -4,12 +4,12 @@
 enum HapticFeedback
 ```
 
-简单而通用的振动效果。根据各设备的马达器件不同，同一振动效果的频率会有差异，但效果的频率趋向是统一的。这几种振动效果是EffectId参数的具体值，使用方法参考[vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration)或[vibrator.stopVibration<sup>9+</sup>](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration)接口下发[VibratePreset](arkts-sensorservice-vibrator-vibratepreset-i.md)形式振动的示例代码。
+简单而通用的振动效果。根据各设备的马达器件不同，同一振动效果的频率会有差异，但效果的频率趋向是统一的。这几种振动效果是EffectId参数的具体值，使用方法参考[vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration-1)或[vibrator.stopVibration<sup>9+</sup>](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-1)接口下发[VibratePreset](arkts-sensorservice-vibrator-vibratepreset-i.md)形式振动的示例代码。
 
 > **说明：** 
 > 
 > 由于设备存在多样性，建议使用预置效果前先使用
-> [vibrator.isSupportEffect<sup>10+</sup>](arkts-sensorservice-vibrator-issupporteffect-f.md#issupporteffect)
+> [vibrator.isSupportEffect<sup>10+</sup>](arkts-sensorservice-vibrator-issupporteffect-f.md#issupporteffect-1)
 > 或[vibrator.isSupportEffectSync](arkts-sensorservice-vibrator-issupporteffectsync-f.md)接口查询当前设备是否支持该预置效果。
 
 **起始版本：** 12
@@ -29,6 +29,86 @@ EFFECT_HARD = 'haptic.effect.hard'
 **起始版本：** 12
 
 <!--Device-HapticFeedback-EFFECT_HARD = 'haptic.effect.hard'--><!--Device-HapticFeedback-EFFECT_HARD = 'haptic.effect.hard'-End-->
+
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
+## EFFECT_IME_STRENGTH1
+
+```TypeScript
+EFFECT_IME_STRENGTH1 = 'haptic.grade.normal.strength1'
+```
+
+输入法键盘的振动效果。强度为1（最小强度）。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-HapticFeedback-EFFECT_IME_STRENGTH1 = 'haptic.grade.normal.strength1'--><!--Device-HapticFeedback-EFFECT_IME_STRENGTH1 = 'haptic.grade.normal.strength1'-End-->
+
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
+## EFFECT_IME_STRENGTH2
+
+```TypeScript
+EFFECT_IME_STRENGTH2 = 'haptic.grade.normal.strength2'
+```
+
+输入法键盘的振动效果。强度为2。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-HapticFeedback-EFFECT_IME_STRENGTH2 = 'haptic.grade.normal.strength2'--><!--Device-HapticFeedback-EFFECT_IME_STRENGTH2 = 'haptic.grade.normal.strength2'-End-->
+
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
+## EFFECT_IME_STRENGTH3
+
+```TypeScript
+EFFECT_IME_STRENGTH3 = 'haptic.grade.normal.strength3'
+```
+
+输入法键盘的振动效果。强度为3（中等强度）。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-HapticFeedback-EFFECT_IME_STRENGTH3 = 'haptic.grade.normal.strength3'--><!--Device-HapticFeedback-EFFECT_IME_STRENGTH3 = 'haptic.grade.normal.strength3'-End-->
+
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
+## EFFECT_IME_STRENGTH4
+
+```TypeScript
+EFFECT_IME_STRENGTH4 = 'haptic.grade.normal.strength4'
+```
+
+输入法键盘的振动效果。强度为4。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-HapticFeedback-EFFECT_IME_STRENGTH4 = 'haptic.grade.normal.strength4'--><!--Device-HapticFeedback-EFFECT_IME_STRENGTH4 = 'haptic.grade.normal.strength4'-End-->
+
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
+## EFFECT_IME_STRENGTH5
+
+```TypeScript
+EFFECT_IME_STRENGTH5 = 'haptic.grade.normal.strength5'
+```
+
+输入法键盘的振动效果。强度为5（最大强度）。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-HapticFeedback-EFFECT_IME_STRENGTH5 = 'haptic.grade.normal.strength5'--><!--Device-HapticFeedback-EFFECT_IME_STRENGTH5 = 'haptic.grade.normal.strength5'-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 

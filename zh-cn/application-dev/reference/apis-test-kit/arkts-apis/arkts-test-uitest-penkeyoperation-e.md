@@ -4,7 +4,7 @@
 declare enum PenKeyOperation
 ```
 
-笔按键操作类型枚举。
+手写笔按键操作类型枚举。
 
 **起始版本：** 26.0.0
 

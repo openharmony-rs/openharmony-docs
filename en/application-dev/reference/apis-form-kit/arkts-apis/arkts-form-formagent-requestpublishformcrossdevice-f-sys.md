@@ -33,7 +33,7 @@ Requests to publish a form to the form host service of the remote device.
 | --- | --- | --- | --- |
 | peerServiceInfo | [formInfo.PeerFormHostServiceInfo](arkts-form-forminfo-peerformhostserviceinfo-i-sys.md) | Yes | The peer form host service information. |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | Publish request, which must contain the following fields: <br>**bundleName**: bundle name of the target form. <br>**abilityName**: ability of the target form. <br>parameters: <br>- **ohos.extra.param.key.form_dimension**: dimension of the target form. <br>- **ohos.extra.param.key.form_name**: name of the target form. <br>- **ohos.extra.param.key.module_name**: module name of the target form. |
-| formBindingData | [formBindingData.FormBindingData](arkts-form-formbindingdata-formbindingdata-i.md) | No | Data to be used for the update. |
+| formBindingData | [formBindingData.FormBindingData](arkts-form-formbindingdata-formbindingdata-i.md) | No | Data to be used for the update. By default, no value is passed. |
 
 **Return value:**
 

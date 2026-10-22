@@ -14,7 +14,7 @@ function getLastWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void
 
 获取当前应用内层级最高的子窗口，使用callback异步回调。
 
-若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)进行显示，则返回应用主窗口。
+若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)进行显示，则返回应用主窗口。
 
 **起始版本：** 9
 
@@ -93,7 +93,7 @@ function getLastWindow(ctx: BaseContext): Promise<Window>
 
 获取当前应用内层级最高的子窗口，使用Promise异步回调。
 
-若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow)进行显示，则返回应用主窗口。
+若无应用子窗口或子窗口未调用[showWindow()](arkts-arkui-window-window-i.md#showwindow-1)进行显示，则返回应用主窗口。
 
 **起始版本：** 9
 

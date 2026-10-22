@@ -22,10 +22,10 @@ import { backgroundLoader } from '@kit.BackgroundTasksKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [finishTask](arkts-backgroundtasks-backgroundloader-finishtask-f.md#finishtask) | 结束后台加载任务。 |
-| [getTaskInfo](arkts-backgroundtasks-backgroundloader-gettaskinfo-f.md#gettaskinfo) | 获取后台预取任务信息。 |
-| [registerTask](arkts-backgroundtasks-backgroundloader-registertask-f.md#registertask) | 注册后台加载任务。使用 callee.on(ON_START)来接受系统测触发的任务 |
-| [unregisterTask](arkts-backgroundtasks-backgroundloader-unregistertask-f.md#unregistertask) | 取消注册后台加载任务。 |
+| [finishTask](arkts-backgroundtasks-backgroundloader-finishtask-f.md#finishtask-1) | 结束后台加载任务。 |
+| [getTaskInfo](arkts-backgroundtasks-backgroundloader-gettaskinfo-f.md#gettaskinfo-1) | 获取后台预取任务信息。 |
+| [registerTask](arkts-backgroundtasks-backgroundloader-registertask-f.md#registertask-1) | 注册后台加载任务。使用 callee.on(ON_START)来接受系统测触发的任务 |
+| [unregisterTask](arkts-backgroundtasks-backgroundloader-unregistertask-f.md#unregistertask-1) | 取消注册后台加载任务。 |
 
 ### 接口
 

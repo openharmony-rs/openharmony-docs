@@ -64,7 +64,7 @@ maxPullDownDistance(distance: number | Resource | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| distance | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; undefined | 是 | 最大下拉距离。<br>默认值：undefined<br>单位：vp<br>取值范围：[0, +∞)，值小于0时按0处理。当该值小于刷新的下拉偏移量[refreshOffset](#refreshoffset)时，Refresh下拉离手不会触发刷新。<br>undefined和null按没有设置此属性处理，即没有最大下拉距离限制。 |
+| distance | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; undefined | 是 | 最大下拉距离。<br>默认值：undefined<br>单位：vp<br>取值范围：[0, +∞)，值小于0时按0处理。当该值小于刷新的下拉偏移量[refreshOffset](#refreshoffset-1)时，Refresh下拉离手不会触发刷新。<br>undefined和null按没有设置此属性处理，即没有最大下拉距离限制。 |
 
 ## onOffsetChange
 
@@ -172,7 +172,7 @@ pullDownRatio(ratio: Optional<number>)
 pullToRefresh(value: boolean)
 ```
 
-设置当下拉距离超过[refreshOffset](#refreshoffset)时是否能触发刷新。
+设置当下拉距离超过[refreshOffset](#refreshoffset-1)时是否能触发刷新。
 
 **起始版本：** 12
 
@@ -188,7 +188,7 @@ pullToRefresh(value: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | 当下拉距离超过[refreshOffset](#refreshoffset)时是否能触发刷新。true表示能触发刷新，false表示不能触发刷新。<br>默认值：true |
+| value | boolean | 是 | 当下拉距离超过[refreshOffset](#refreshoffset-1)时是否能触发刷新。true表示能触发刷新，false表示不能触发刷新。<br>默认值：true |
 
 ## pullUpToCancelRefresh
 

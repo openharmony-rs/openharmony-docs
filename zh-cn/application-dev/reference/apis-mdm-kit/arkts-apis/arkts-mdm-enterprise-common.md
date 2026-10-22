@@ -26,7 +26,7 @@ import { common } from '@kit.MDMKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [isFeatureSupported](arkts-mdm-common-isfeaturesupported-f.md#isfeaturesupported) | 查询是否支持某个管控特性 |
+| [isFeatureSupported](arkts-mdm-common-isfeaturesupported-f.md#isfeaturesupported-1) | 查询是否支持某个管控特性 |
 
 ### 接口
 

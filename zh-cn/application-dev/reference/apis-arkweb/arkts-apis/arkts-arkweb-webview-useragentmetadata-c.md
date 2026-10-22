@@ -276,6 +276,8 @@ getWow64(): boolean
 
 **示例**
 
+完整示例代码参考[setUserAgentClientHintsEnabled](./arkts-apis-webview-WebviewController.md#setuseragentclienthintsenabled)。
+
 ## setArchitecture
 
 ```TypeScript

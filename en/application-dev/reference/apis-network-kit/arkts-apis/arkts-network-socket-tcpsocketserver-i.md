@@ -24,12 +24,12 @@ import { socket } from '@kit.NetworkKit';
 close(): Promise<void>
 ```
 
-Stops listening for events of the **TCPSocketServer** object and releases the port bound by [listen](#listen). If [listen](#listen) has been called for multiple times, all listening ports of the **TCPSocketServer** object are released when this API is called. This API uses a promise to return the result.
+Stops listening for events of the **TCPSocketServer** object and releases the port bound by [listen](#listen-1). If [listen](#listen-1) has been called for multiple times, all listening ports of the **TCPSocketServer** object are released when this API is called. This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
 > This API does not close existing connections. To close connections, call the
-> [close](arkts-network-socket-tcpsocketconnection-i.md#close) API of
+> [close](arkts-network-socket-tcpsocketconnection-i.md#close-1) API of
 > [TCPSocketConnection](arkts-network-socket-tcpsocketconnection-i.md).
 
 **Since:** 20
@@ -143,7 +143,7 @@ Obtains the file descriptor bound to the TCPSocketServer listening port. This AP
 
 > **NOTE:** 
 > 
-> - This method can be called only after the [listen](#listen) method is successfully called. When listen is called for multiple times, the file descriptor bound to the latest listening port is obtained.
+> - This method can be called only after the [listen](#listen-1) method is successfully called. When listen is called for multiple times, the file descriptor bound to the latest listening port is obtained.
 > 
 > - This API returns **-1** in abnormal cases such as listening exceptions or socket closed (for example, after close is called).
 > 

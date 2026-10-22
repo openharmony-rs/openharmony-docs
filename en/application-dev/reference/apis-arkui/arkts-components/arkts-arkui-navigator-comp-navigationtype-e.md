@@ -26,7 +26,7 @@ Returns to the specified page. If the specified page does not exist in the stack
 
 **NOTE:** 
 
-This API is supported since API version 7 and deprecated since API version 13. You are advised to use [pop](arkts-arkui-navigation-comp-navpathstack-c.md#pop) instead.
+This API is supported since API version 7 and deprecated since API version 13. You are advised to use [pop](arkts-arkui-navigation-comp-navpathstack-c.md#pop-1) instead.
 
 **Since:** 7
 
@@ -50,7 +50,7 @@ Navigates to the specified page in the application.
 
 **NOTE:** 
 
-This API is supported since API version 7 and deprecated since API version 13. You are advised to use [pushPath](arkts-arkui-navigation-comp-navpathstack-c.md#pushpath) instead.
+This API is supported since API version 7 and deprecated since API version 13. You are advised to use [pushPath](arkts-arkui-navigation-comp-navpathstack-c.md#pushpath-1) instead.
 
 **Since:** 7
 
@@ -74,7 +74,7 @@ Replaces the current page with another one in the application and destroys the c
 
 **NOTE:** 
 
-This API is supported since API version 7 and deprecated since API version 13. You are advised to use [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath) instead.
+This API is supported since API version 7 and deprecated since API version 13. You are advised to use [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath-1) instead.
 
 **Since:** 7
 

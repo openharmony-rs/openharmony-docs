@@ -225,7 +225,7 @@ generateSymKey(callback: AsyncCallback<SymKey>): void
 > 
 > 对于HMAC算法的对称密钥，如果在创建对称密钥生成器时指定了具体哈希算法（如"HMAC|SHA256"），则会随机生成与哈希长度一致的二进制密钥
 > 数据（如256位的密钥数据）。如果未指定具体哈希算法，如仅指定"HMAC"，则不支持随机生成对称密钥数据，可通过
-> [convertKey](#convertkey)
+> [convertKey](#convertkey-1)
 > 方式生成对称密钥数据。
 
 **起始版本：** 9

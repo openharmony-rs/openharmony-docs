@@ -24,7 +24,7 @@ function offAcbStateChange(callback?: Callback<AcbStateParam>): void
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
-**参见：** [onAcbStateChange](arkts-connectivity-remotedevice-onacbstatechange-f.md) 订阅逻辑链路连接状态变化事件。
+**参见：** [onAcbStateChange](arkts-connectivity-remotedevice-onacbstatechange-f.md#onacbstatechange-1) 订阅逻辑链路连接状态变化事件。
 
 **参数：**
 

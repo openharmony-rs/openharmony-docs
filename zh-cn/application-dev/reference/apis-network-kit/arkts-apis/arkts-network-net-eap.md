@@ -20,11 +20,11 @@ import { eap } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [logOffEthEap](arkts-network-eap-logoffetheap-f.md#logoffetheap) | 该接口用于指定一个以太网卡从EAP已认证状态退出。 |
-| [regCustomEapHandler](arkts-network-eap-regcustomeaphandler-f.md#regcustomeaphandler) | 用于指定需要定制化处理的EAP报文类型和对应的处理callback。使用callback异步回调。 |
-| [replyCustomEapData](arkts-network-eap-replycustomeapdata-f.md#replycustomeapdata) | 该接口用于通知系统已完成该步定制化处理。 |
-| [startEthEap](arkts-network-eap-startetheap-f.md#startetheap) | 该接口用于指定一个以太网卡发起EAP认证。 |
-| [unregCustomEapHandler](arkts-network-eap-unregcustomeaphandler-f.md#unregcustomeaphandler) | 用于指定需要取消定制化处理的EAP报文类型和对应的处理callback。使用callback异步回调。 |
+| [logOffEthEap](arkts-network-eap-logoffetheap-f.md#logoffetheap-1) | 该接口用于指定一个以太网卡从EAP已认证状态退出。 |
+| [regCustomEapHandler](arkts-network-eap-regcustomeaphandler-f.md#regcustomeaphandler-1) | 用于指定需要定制化处理的EAP报文类型和对应的处理callback。使用callback异步回调。 |
+| [replyCustomEapData](arkts-network-eap-replycustomeapdata-f.md#replycustomeapdata-1) | 该接口用于通知系统已完成该步定制化处理。 |
+| [startEthEap](arkts-network-eap-startetheap-f.md#startetheap-1) | 该接口用于指定一个以太网卡发起EAP认证。 |
+| [unregCustomEapHandler](arkts-network-eap-unregcustomeaphandler-f.md#unregcustomeaphandler-1) | 用于指定需要取消定制化处理的EAP报文类型和对应的处理callback。使用callback异步回调。 |
 
 ### 接口
 

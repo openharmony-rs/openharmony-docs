@@ -1,4 +1,4 @@
-# CellInformation
+# CellInformation (System API)
 
 ```TypeScript
 export interface CellInformation

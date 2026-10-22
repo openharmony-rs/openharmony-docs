@@ -19,13 +19,13 @@ huks.init、huks.update、huks.finish为三段式接口，需要一起使用。
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.initSession<sup>9+</sup>](arkts-universalkeystore-huks-initsession-f.md#initsession)替代。
+> [huks.initSession<sup>9+</sup>](arkts-universalkeystore-huks-initsession-f.md#initsession-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession)(keyAlias: string, options: HuksOptions)
+**替代接口：** [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession-2)(keyAlias: string, options: HuksOptions)
 
 <!--Device-huks-function init(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksHandle>): void--><!--Device-huks-function init(keyAlias: string, options: HuksOptions, callback: AsyncCallback<HuksHandle>): void-End-->
 
@@ -53,13 +53,13 @@ huks.init、huks.update、huks.finish为三段式接口，需要一起使用。
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.initSession<sup>9+</sup>](arkts-universalkeystore-huks-initsession-f.md#initsession)替代。
+> [huks.initSession<sup>9+</sup>](arkts-universalkeystore-huks-initsession-f.md#initsession-2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession)(keyAlias: string, options: HuksOptions)
+**替代接口：** [initSession](arkts-universalkeystore-huks-initsession-f.md#initsession-2)(keyAlias: string, options: HuksOptions)
 
 <!--Device-huks-function init(keyAlias: string, options: HuksOptions): Promise<HuksHandle>--><!--Device-huks-function init(keyAlias: string, options: HuksOptions): Promise<HuksHandle>-End-->
 

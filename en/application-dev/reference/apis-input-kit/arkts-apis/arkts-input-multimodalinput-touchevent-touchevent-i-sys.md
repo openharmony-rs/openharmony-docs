@@ -1,4 +1,4 @@
-# TouchEvent
+# TouchEvent (System API)
 
 ```TypeScript
 export declare interface TouchEvent extends InputEvent

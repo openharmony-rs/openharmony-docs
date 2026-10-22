@@ -29,7 +29,7 @@ TLSSocketServer停止监听并释放通过[listen](arkts-network-socket-tcpsocke
 > **说明：** 
 > 
 > 该方法不会关闭已有连接。如需关闭，请调用[TLSSocketConnection](arkts-network-socket-tlssocketconnection-i.md)的
-> [close](arkts-network-socket-tcpsocketconnection-i.md#close)方法。
+> [close](arkts-network-socket-tcpsocketconnection-i.md#close-1)方法。
 
 **起始版本：** 20
 

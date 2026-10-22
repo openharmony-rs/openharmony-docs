@@ -42,6 +42,26 @@ Clones a node in the current scene. Cross-scene node cloning is not supported.
 
 **Examples**
 
+```TypeScript
+import { Scene, Node } from '@kit.ArkGraphics3D';
+
+function CloneNode() {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"))
+    .then(async (result: Scene) => {
+      let node = result.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube") as Node;
+      let parent = result.root as Node;
+      let name = "cloneNode_";
+      let clone = result.cloneNode(node, parent, name);
+      if (clone) {
+        console.info("Succeeded in cloning node");
+      } else {
+        console.error("Failed to clone node");
+      }
+    });
+}
+```
+
 ## createComponent
 
 ```TypeScript

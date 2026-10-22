@@ -4,7 +4,7 @@
 export interface Light extends Node
 ```
 
-光源，继承自Node。
+光源，继承自[Node](arkts-arkgraphics3d-scenenodes-node-i.md)。
 
 **继承/实现关系：** Light extends [Node](arkts-arkgraphics3d-scenenodes-node-i.md)
 

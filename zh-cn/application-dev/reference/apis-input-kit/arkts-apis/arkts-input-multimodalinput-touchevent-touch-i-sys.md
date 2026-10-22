@@ -1,4 +1,4 @@
-# Touch
+# Touch（系统接口）
 
 ```TypeScript
 export declare interface Touch

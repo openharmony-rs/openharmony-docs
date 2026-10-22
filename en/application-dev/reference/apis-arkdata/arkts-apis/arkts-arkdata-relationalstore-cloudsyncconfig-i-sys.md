@@ -1,4 +1,4 @@
-# CloudSyncConfig
+# CloudSyncConfig (System API)
 
 ```TypeScript
 interface CloudSyncConfig

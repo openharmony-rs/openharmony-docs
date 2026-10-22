@@ -17,7 +17,7 @@ function publish(event: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish)(event: string, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish-1)(event: string, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-commonEvent-function publish(event: string, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publish(event: string, callback: AsyncCallback<void>): void-End-->
 
@@ -61,7 +61,7 @@ function publish(event: string, options: CommonEventPublishData, callback: Async
 
 **废弃版本：** 9
 
-**替代接口：** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish)(event: string, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [publish](arkts-basicservices-commoneventmanager-publish-f.md#publish-2)(event: string, options: CommonEventPublishData, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-commonEvent-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void--><!--Device-commonEvent-function publish(event: string, options: CommonEventPublishData, callback: AsyncCallback<void>): void-End-->
 

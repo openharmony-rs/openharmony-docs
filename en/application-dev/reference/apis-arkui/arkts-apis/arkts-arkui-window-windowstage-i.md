@@ -1773,8 +1773,8 @@ Sets the image displayed in the multitasking view and on dock hover. This API us
 > **NOTE:** 
 > 
 > Before calling this API, you are advised to complete page loading via
-> [loadContent](arkts-arkui-window-window-i.md#loadcontent) or
-> [setUIContent](arkts-arkui-window-window-i.md#setuicontent). If this API is called before the application
+> [loadContent](arkts-arkui-window-window-i.md#loadcontent-1) or
+> [setUIContent](arkts-arkui-window-window-i.md#setuicontent-2). If this API is called before the application
 > completes page loading, the intended functionality does not take effect. As a result, only the application's
 > launch page is displayed in the multitasking view.
 
@@ -1962,7 +1962,7 @@ export default class EntryAbility extends UIAbility {
         bundleManager.SupportWindowMode.FULL_SCREEN,
         bundleManager.SupportWindowMode.SPLIT,
         bundleManager.SupportWindowMode.FLOATING
-      ]);
+      ], true);
       promise.then(() => {
         console.info('Succeeded in setting window support modes');
       }).catch((err: BusinessError) => {

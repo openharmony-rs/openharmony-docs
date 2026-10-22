@@ -1,4 +1,4 @@
-# CustomDialogControllerOptions
+# CustomDialogControllerOptions (System API)
 
 ```TypeScript
 declare interface CustomDialogControllerOptions

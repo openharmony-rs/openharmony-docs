@@ -48,3 +48,40 @@ Information returned by **map**:
 | map | Map&lt;string, string&gt; | No | Additional information about the image asset, such as the image quality. Currently, only **quality** is supported.<br>**Since:** 12 |
 
 **Examples**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+
+class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<image.ImageSource> {
+  onDataPrepared = (data: image.ImageSource, map: Map<string, string>) => {
+    if (data === undefined) {
+      console.error('Error occurred when preparing data');
+      return;
+    }
+    // Customize the processing logic for ImageSource.
+    console.info('on image data prepared, photo quality is ' + map['quality']);
+  }
+}
+
+class MediaDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
+  onDataPrepared = (data: ArrayBuffer, map: Map<string, string>) => {
+    if (data === undefined) {
+      console.error('Error occurred when preparing data');
+      return;
+    }
+    // Customize the processing logic for ArrayBuffer.
+    console.info('on image data prepared, photo quality is ' + map['quality']);
+  }
+}
+
+class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
+  onDataPrepared = (data: photoAccessHelper.MovingPhoto, map: Map<string, string>) => {
+    if (data === undefined) {
+      console.error('Error occurred when preparing data');
+      return;
+    }
+    // Customize the processing logic for MovingPhoto.
+    console.info('on image data prepared, photo quality is ' + map['quality']);
+  }
+}
+```

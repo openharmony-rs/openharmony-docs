@@ -1,4 +1,4 @@
-# ActionSheetOptions
+# ActionSheetOptions (System API)
 
 ```TypeScript
 interface ActionSheetOptions

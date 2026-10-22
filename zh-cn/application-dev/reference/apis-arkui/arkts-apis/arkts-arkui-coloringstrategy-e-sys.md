@@ -1,4 +1,4 @@
-# ColoringStrategy
+# ColoringStrategy（系统接口）
 
 ```TypeScript
 declare enum ColoringStrategy

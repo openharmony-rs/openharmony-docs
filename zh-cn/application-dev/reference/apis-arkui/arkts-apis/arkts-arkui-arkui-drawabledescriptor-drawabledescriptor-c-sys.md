@@ -1,4 +1,4 @@
-# DrawableDescriptor
+# DrawableDescriptor（系统接口）
 
 ```TypeScript
 export class DrawableDescriptor

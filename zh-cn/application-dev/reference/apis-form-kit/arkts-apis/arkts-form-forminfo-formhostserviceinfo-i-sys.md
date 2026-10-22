@@ -26,7 +26,7 @@ import { formInfo } from '@kit.FormKit';
 customData?: Record<string, string>
 ```
 
-自定义数据。
+自定义数据。默认值为空。
 
 **类型：** Record&lt;string, string&gt;
 

@@ -1,4 +1,4 @@
-# SubWindowOptions
+# SubWindowOptions (System API)
 
 ```TypeScript
 interface SubWindowOptions

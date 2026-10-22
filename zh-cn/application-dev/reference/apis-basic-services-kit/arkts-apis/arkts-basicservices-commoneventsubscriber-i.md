@@ -18,7 +18,7 @@ export interface CommonEventSubscriber
 abortCommonEvent(callback: AsyncCallback<void>): void
 ```
 
-添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用callback异步回调。
+添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent-1)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -63,7 +63,7 @@ subscriber.finishCommonEvent((err: BusinessError) => {
 abortCommonEvent(): Promise<void>
 ```
 
-添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用Promise异步回调。
+添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent-1)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。使用Promise异步回调。
 
 **起始版本：** 7
 
@@ -98,7 +98,7 @@ subscriber.finishCommonEvent().then(() => {
 abortCommonEventSync(): void
 ```
 
-同步添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
+同步添加有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent-1)配合使用时，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
 
 **起始版本：** 10
 
@@ -123,7 +123,7 @@ subscriber.finishCommonEvent().then(() => {
 clearAbortCommonEvent(callback: AsyncCallback<void>): void
 ```
 
-清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用callback异步回调。
+清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent-1)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用callback异步回调。
 
 **起始版本：** 7
 
@@ -168,7 +168,7 @@ subscriber.finishCommonEvent((err: BusinessError) => {
 clearAbortCommonEvent(): Promise<void>
 ```
 
-清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用Promise异步回调。
+清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent-1)配合使用时，可以使该公共事件继续向下一个订阅者传递。使用Promise异步回调。
 
 **起始版本：** 7
 
@@ -203,7 +203,7 @@ subscriber.finishCommonEvent().then(() => {
 clearAbortCommonEventSync(): void
 ```
 
-同步清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent)配合使用时，可以使该公共事件继续向下一个订阅者传递。
+同步清理有序公共事件的中止状态。当该接口与[finishCommonEvent](#finishcommonevent-1)配合使用时，可以使该公共事件继续向下一个订阅者传递。
 
 **起始版本：** 10
 

@@ -22,3 +22,9 @@ The callback of key request.
 | requestData | Uint8Array | Yes | media key request data sent to media key server |
 
 **Examples**
+
+```TypeScript
+let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
+  console.info(`Succeeded in keyRequestCallback. assetId: ${assetId}, requestData: ${requestData}`);
+};
+```

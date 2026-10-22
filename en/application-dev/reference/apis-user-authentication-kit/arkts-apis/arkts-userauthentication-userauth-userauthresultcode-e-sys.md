@@ -1,4 +1,4 @@
-# UserAuthResultCode
+# UserAuthResultCode (System API)
 
 ```TypeScript
 enum UserAuthResultCode

@@ -18,7 +18,7 @@ function getTimezone(callback: AsyncCallback<string>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getTimezone](arkts-basicservices-systemdatetime-gettimezone-f.md#gettimezone)(callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getTimezone](arkts-basicservices-systemdatetime-gettimezone-f.md#gettimezone-1)(callback: AsyncCallback&lt;string&gt;)
 
 <!--Device-systemTime-function getTimezone(callback: AsyncCallback<string>): void--><!--Device-systemTime-function getTimezone(callback: AsyncCallback<string>): void-End-->
 

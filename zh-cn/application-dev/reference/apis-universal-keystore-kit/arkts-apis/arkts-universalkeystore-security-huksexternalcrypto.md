@@ -20,23 +20,23 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [clearUkeyPinAuthState](arkts-universalkeystore-huksexternalcrypto-clearukeypinauthstate-f.md#clearukeypinauthstate) | 清除指定资源ID的PIN码认证状态。使用Promise异步回调。 |
-| [closeResource](arkts-universalkeystore-huksexternalcrypto-closeresource-f.md#closeresource) | 关闭指定资源ID的资源。使用Promise异步回调。 |
-| [getErrorInfo](arkts-universalkeystore-huksexternalcrypto-geterrorinfo-f.md#geterrorinfo) | 查询上次接口调用产生的详细错误信息。 |
-| [getProperty](arkts-universalkeystore-huksexternalcrypto-getproperty-f.md#getproperty) | 调用此接口获取属性值并返回结果。使用Promise异步回调。 |
-| [getResourceId](arkts-universalkeystore-huksexternalcrypto-getresourceid-f.md#getresourceid) | 获取密钥扩展能力的资源ID。使用Promise异步回调。 |
-| [getUkeyPinAuthState](arkts-universalkeystore-huksexternalcrypto-getukeypinauthstate-f.md#getukeypinauthstate) | 获取PIN码认证状态。使用Promise异步回调。 |
-| [openResource](arkts-universalkeystore-huksexternalcrypto-openresource-f.md#openresource) | 打开指定资源ID的资源。使用Promise异步回调。 |
-| [registerProvider](arkts-universalkeystore-huksexternalcrypto-registerprovider-f.md#registerprovider) | 注册指定的外部provider。使用Promise异步回调。 |
-| [setProperty](arkts-universalkeystore-huksexternalcrypto-setproperty-f.md#setproperty) | The set-type operations of the external crypto extension support calling custom interfaces. However, the custom interface must be registered with the provider. |
-| [unregisterProvider](arkts-universalkeystore-huksexternalcrypto-unregisterprovider-f.md#unregisterprovider) | 注销指定的外部provider。使用Promise异步回调。 |
+| [clearUkeyPinAuthState](arkts-universalkeystore-huksexternalcrypto-clearukeypinauthstate-f.md#clearukeypinauthstate-1) | 清除指定资源ID的PIN码认证状态。使用Promise异步回调。 |
+| [closeResource](arkts-universalkeystore-huksexternalcrypto-closeresource-f.md#closeresource-1) | 关闭指定资源ID的资源。使用Promise异步回调。 |
+| [getErrorInfo](arkts-universalkeystore-huksexternalcrypto-geterrorinfo-f.md#geterrorinfo-1) | 查询上次接口调用产生的详细错误信息。 |
+| [getProperty](arkts-universalkeystore-huksexternalcrypto-getproperty-f.md#getproperty-1) | 调用此接口获取属性值并返回结果。使用Promise异步回调。 |
+| [getResourceId](arkts-universalkeystore-huksexternalcrypto-getresourceid-f.md#getresourceid-1) | 获取密钥扩展能力的资源ID。使用Promise异步回调。 |
+| [getUkeyPinAuthState](arkts-universalkeystore-huksexternalcrypto-getukeypinauthstate-f.md#getukeypinauthstate-1) | 获取PIN码认证状态。使用Promise异步回调。 |
+| [openResource](arkts-universalkeystore-huksexternalcrypto-openresource-f.md#openresource-1) | 打开指定资源ID的资源。使用Promise异步回调。 |
+| [registerProvider](arkts-universalkeystore-huksexternalcrypto-registerprovider-f.md#registerprovider-1) | 注册指定的外部provider。使用Promise异步回调。 |
+| [setProperty](arkts-universalkeystore-huksexternalcrypto-setproperty-f.md#setproperty-1) | The set-type operations of the external crypto extension support calling custom interfaces. However, the custom interface must be registered with the provider. |
+| [unregisterProvider](arkts-universalkeystore-huksexternalcrypto-unregisterprovider-f.md#unregisterprovider-1) | 注销指定的外部provider。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [authUkeyPin](arkts-universalkeystore-huksexternalcrypto-authukeypin-f-sys.md#authukeypin) | PIN码认证。使用Promise异步回调。 |
+| [authUkeyPin](arkts-universalkeystore-huksexternalcrypto-authukeypin-f-sys.md#authukeypin-1) | PIN码认证。使用Promise异步回调。 |
 <!--DelEnd-->
 
 ### 接口

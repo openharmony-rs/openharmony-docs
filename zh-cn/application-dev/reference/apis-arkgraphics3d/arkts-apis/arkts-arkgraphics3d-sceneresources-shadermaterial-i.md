@@ -4,7 +4,7 @@
 export interface ShaderMaterial extends Material
 ```
 
-着色器材质，继承自Material。
+着色器材质，继承自[Material](arkts-arkgraphics3d-sceneresources-material-i.md)。
 
 **继承/实现关系：** ShaderMaterial extends [Material](arkts-arkgraphics3d-sceneresources-material-i.md)
 

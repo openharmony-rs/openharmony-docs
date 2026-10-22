@@ -1,4 +1,4 @@
-# AuthType
+# AuthType (System API)
 
 ```TypeScript
 enum AuthType

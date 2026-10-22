@@ -52,3 +52,40 @@ map支持返回的信息：
 | map | Map&lt;string, string&gt; | 否 | 用于获取图片资源的额外信息，如图片质量。当前仅支持'quality'。<br>**适用版本：** 12 |
 
 **示例**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+
+class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<image.ImageSource> {
+  onDataPrepared = (data: image.ImageSource, map: Map<string, string>) => {
+    if (data === undefined) {
+      console.error('Error occurred when preparing data');
+      return;
+    }
+    // 自定义对ImageSource的处理逻辑。
+    console.info('on image data prepared, photo quality is ' + map.get('quality'));
+  }
+}
+
+class MediaDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
+  onDataPrepared = (data: ArrayBuffer, map: Map<string, string>) => {
+    if (data === undefined) {
+      console.error('Error occurred when preparing data');
+      return;
+    }
+    // 自定义对ArrayBuffer的处理逻辑。
+    console.info('on image data prepared, photo quality is ' + map.get('quality'));
+  }
+}
+
+class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
+  onDataPrepared = (data: photoAccessHelper.MovingPhoto, map: Map<string, string>) => {
+    if (data === undefined) {
+      console.error('Error occurred when preparing data');
+      return;
+    }
+    // 自定义对MovingPhoto的处理逻辑。
+    console.info('on image data prepared, photo quality is ' + map.get('quality'));
+  }
+}
+```

@@ -87,7 +87,7 @@ Before enabling this feature, you can call [isBandwidthCompressionSupported](#is
 > **NOTE:** 
 > 
 > This function must be called prior to
-> [Session.commitConfig](arkts-camera-camera-session-i.md#commitconfig). Otherwise, the
+> [Session.commitConfig](arkts-camera-camera-session-i.md#commitconfig-1). Otherwise, the
 > preview output stream format will be affected.
 
 **Since:** 23
@@ -736,7 +736,7 @@ Starts to output preview streams. This API uses an asynchronous callback to retu
 
 **Deprecated since:** 11
 
-**Substitutes:** [start](arkts-camera-camera-session-i.md#start)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [start](arkts-camera-camera-session-i.md#start-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-PreviewOutput-start(callback: AsyncCallback<void>): void--><!--Device-PreviewOutput-start(callback: AsyncCallback<void>): void-End-->
 
@@ -826,7 +826,7 @@ Stops outputting preview streams. This API uses an asynchronous callback to retu
 
 **Deprecated since:** 11
 
-**Substitutes:** [stop](arkts-camera-camera-session-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [stop](arkts-camera-camera-session-i.md#stop-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-PreviewOutput-stop(callback: AsyncCallback<void>): void--><!--Device-PreviewOutput-stop(callback: AsyncCallback<void>): void-End-->
 

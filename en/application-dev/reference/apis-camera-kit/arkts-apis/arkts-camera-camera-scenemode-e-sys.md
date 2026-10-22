@@ -1,4 +1,4 @@
-# SceneMode
+# SceneMode (System API)
 
 ```TypeScript
 enum SceneMode

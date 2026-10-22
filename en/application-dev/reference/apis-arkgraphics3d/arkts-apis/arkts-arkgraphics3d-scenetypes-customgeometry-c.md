@@ -4,7 +4,7 @@
 export declare class CustomGeometry extends GeometryDefinition
 ```
 
-A custom geometry type that inherits from GeometryDefinition.
+A custom geometry type that inherits from [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md).
 
 **Inheritance/Implementation:** CustomGeometry extends [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md)
 

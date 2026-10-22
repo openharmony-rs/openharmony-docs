@@ -569,3 +569,47 @@ struct Index {
   }
 }
 ```
+
+### 示例5
+
+设置安全控件是否支持文字实际高度自适应及屏幕朗读模式下相关表现。
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column({ space: 10 }) {
+        // 设置保存控件的fallbackLineSpacing为true。
+        SaveButton()
+          .fallbackLineSpacing(true)
+          .id('btn1')
+
+        // 设置该保存控件为页面设置屏幕朗读初始焦点。
+        SaveButton()
+          .accessibilityDefaultFocus(true)
+          .id('btn2')
+
+        // 指定屏幕朗读扫动走焦过程中该保存控件的下一个焦点为btn1。
+        SaveButton()
+          .accessibilityDefaultFocus(true)
+          .id('btn3')
+          .accessibilityNextFocusId('btn1')
+
+        // 指定该保存控件的无障碍组件类型为null。
+        SaveButton()
+          .accessibilityRole(SecurityComponentRoleType.ROLE_NONE)
+          .id('btn4')
+
+        // 指定该保存控件的无障碍组件描述为测试文本。
+        SaveButton()
+          .accessibilityDescription("test text for description")
+          .id('btn5')
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```

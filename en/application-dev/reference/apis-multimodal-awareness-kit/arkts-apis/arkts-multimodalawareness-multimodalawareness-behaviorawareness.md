@@ -25,9 +25,9 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 
 | Name | Description |
 | --- | --- |
-| [offPerception](arkts-multimodalawareness-behaviorawareness-offperception-f-sys.md#offperception) | The service cancels the subscription relationship on the MSDP. |
-| [onPerception](arkts-multimodalawareness-behaviorawareness-onperception-f-sys.md#onperception) | Initiate subscription. The service side registers the subscription relationship with the MSDP and registers the awareness event callback. |
-| [submitFeedback](arkts-multimodalawareness-behaviorawareness-submitfeedback-f-sys.md#submitfeedback) | Submit user feedback. The service side sends the user feedback to the MSDP. |
+| [offPerception](arkts-multimodalawareness-behaviorawareness-offperception-f-sys.md#offperception-1) | The service cancels the subscription relationship on the MSDP. |
+| [onPerception](arkts-multimodalawareness-behaviorawareness-onperception-f-sys.md#onperception-1) | Initiate subscription. The service side registers the subscription relationship with the MSDP and registers the awareness event callback. |
+| [submitFeedback](arkts-multimodalawareness-behaviorawareness-submitfeedback-f-sys.md#submitfeedback-1) | Submit user feedback. The service side sends the user feedback to the MSDP. |
 <!--DelEnd-->
 
 <!--Del-->
@@ -58,6 +58,7 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 | [BluetoothDeviceType](arkts-multimodalawareness-behaviorawareness-bluetoothdevicetype-e-sys.md) | Bluetooth device type enum. |
 | [EventType](arkts-multimodalawareness-behaviorawareness-eventtype-e-sys.md) | Event type enum. |
 | [FeedbackType](arkts-multimodalawareness-behaviorawareness-feedbacktype-e-sys.md) | User feedback event status type enum after an event is pushed. |
+| [LocationStatusType](arkts-multimodalawareness-behaviorawareness-locationstatustype-e-sys.md) | Location status type enum. Used to distinguish entering or exiting a geofence. |
 | [LocationType](arkts-multimodalawareness-behaviorawareness-locationtype-e-sys.md) | Location type enum. |
 | [Operation](arkts-multimodalawareness-behaviorawareness-operation-e-sys.md) | Operation target enum. |
 | [PatternType](arkts-multimodalawareness-behaviorawareness-patterntype-e-sys.md) | Perception pattern type. |

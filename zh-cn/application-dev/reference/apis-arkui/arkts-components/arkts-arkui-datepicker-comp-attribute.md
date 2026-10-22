@@ -94,7 +94,7 @@ disappearTextStyle(value: PickerTextStyle)
 disappearTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置边缘项（以选中项为基准向上或向下的第二项）的文本样式。与[disappearTextStyle<sup>10+</sup>](#disappeartextstyle)相比，style参数新增了对undefined类型的支持。
+设置边缘项（以选中项为基准向上或向下的第二项）的文本样式。与[disappearTextStyle<sup>10+</sup>](#disappeartextstyle-1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -170,7 +170,7 @@ lunar(value: boolean)
 lunar(isLunar: Optional<boolean>)
 ```
 
-设置日期是否显示为农历。与[lunar](#lunar)相比，isLunar参数新增了对undefined类型的支持。
+设置日期是否显示为农历。与[lunar](#lunar-1)相比，isLunar参数新增了对undefined类型的支持。
 
 > **说明：** 
 > 
@@ -222,7 +222,7 @@ onDateChange(callback: Callback<Date>)
 onDateChange(callback: Optional<Callback<Date>>)
 ```
 
-滑动DatePicker文本内容后，选项完全归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。与[onDateChange<sup>10+</sup>](#ondatechange)相比，callback参数新增了对undefined类型的支持。
+滑动DatePicker文本内容后，选项完全归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。与[onDateChange<sup>10+</sup>](#ondatechange-1)相比，callback参数新增了对undefined类型的支持。
 
 > **说明：** 
 > 
@@ -274,7 +274,7 @@ selectedTextStyle(value: PickerTextStyle)
 selectedTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置选中项的文本样式。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle)相比，style参数新增了对undefined类型的支持。
+设置选中项的文本样式。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle-1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -322,7 +322,7 @@ textStyle(value: PickerTextStyle)
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置待选项（以选中项为基准向上或向下的第一项）的文本样式。与[textStyle<sup>10+</sup>](#textstyle)相比，style参数新增了对undefined类型的支持。
+设置待选项（以选中项为基准向上或向下的第一项）的文本样式。与[textStyle<sup>10+</sup>](#textstyle-1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -348,13 +348,13 @@ onChange(callback: (value: DatePickerResult) => void)
 
 滑动DatePicker文本内容后，选项完全归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。
 
-从API version 8开始支持，从API version 10开始废弃，建议使用[onDateChange](#ondatechange)替代。
+从API version 8开始支持，从API version 10开始废弃，建议使用[onDateChange](#ondatechange-1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 10
 
-**替代接口：** [onDateChange](#ondatechange)(callback: Callback&lt;Date&gt;)
+**替代接口：** [onDateChange](#ondatechange-1)(callback: Callback&lt;Date&gt;)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 

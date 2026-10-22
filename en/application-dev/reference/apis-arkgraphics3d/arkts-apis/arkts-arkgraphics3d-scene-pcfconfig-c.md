@@ -4,7 +4,7 @@
 export declare class PCFConfig extends SoftShadowConfig
 ```
 
-Configuration class for soft shadows using the Percentage-Closer Filtering (PCF) algorithm.
+Defines the PCF (Percentage-Closer Filtering) soft shadow configuration class, which inherits from [SoftShadowConfig](arkts-arkgraphics3d-scene-softshadowconfig-c.md).
 
 **Inheritance/Implementation:** PCFConfig extends [SoftShadowConfig](arkts-arkgraphics3d-scene-softshadowconfig-c.md)
 

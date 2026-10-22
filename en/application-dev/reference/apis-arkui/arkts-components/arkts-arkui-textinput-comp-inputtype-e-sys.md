@@ -1,4 +1,4 @@
-# InputType
+# InputType (System API)
 
 ```TypeScript
 declare enum InputType

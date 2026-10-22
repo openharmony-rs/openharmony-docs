@@ -1,4 +1,4 @@
-# NotificationFlags
+# NotificationFlags（系统接口）
 
 ```TypeScript
 export interface NotificationFlags

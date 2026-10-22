@@ -1,4 +1,4 @@
-# ResultSet
+# ResultSet (System API)
 
 ```TypeScript
 interface ResultSet

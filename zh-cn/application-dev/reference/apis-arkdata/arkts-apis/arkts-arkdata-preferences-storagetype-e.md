@@ -30,7 +30,7 @@ GSKV
 
 表示[GSKV存储模式](../../../database/data-persistence-by-preferences.md#gskv存储)。
 
-**特点：** 数据以GSKV数据库模式进行存储。对数据的操作实时落盘，无需调用[flush](arkts-arkdata-preferences-preferences-i.md#flush)接口对数据进行落盘。
+**特点：** 数据以GSKV数据库模式进行存储。对数据的操作实时落盘，无需调用[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)接口对数据进行落盘。
 
 **起始版本：** 18
 
@@ -48,7 +48,7 @@ XML = 0
 
 表示[XML存储模式](../../../database/data-persistence-by-preferences.md#xml存储)，这是Preferences的默认存储模式。
 
-**特点：** 数据以XML格式进行存储。对数据的操作发生在内存中，需要调用[flush](arkts-arkdata-preferences-preferences-i.md#flush)接口进行落盘。
+**特点：** 数据以XML格式进行存储。对数据的操作发生在内存中，需要调用[flush](arkts-arkdata-preferences-preferences-i.md#flush-1)接口进行落盘。
 
 **起始版本：** 18
 

@@ -12,7 +12,7 @@ import { proxyChannelManager } from '@kit.DistributedServiceKit';
 function off(type: 'receiveData', channelId: number, callback?: Callback<DataInfo>): void
 ```
 
-Unsubscribes from data receive events and no longer receives data through the callback. This is applicable to scenarios where the phone-side app no longer needs to receive data from the wearable device-side app, such as when the user switches to another functional module. You must call [openProxyChannel](arkts-distributedservice-proxychannelmanager-openproxychannel-f.md) to successfully open a proxy channel before unsubscribing. This method must be used in pair with [on('receiveData')](arkts-distributedservice-proxychannelmanager-on-f.md#onreceivedata) to cancel the data receive callback previously registered through **on('receiveData')**.
+Unsubscribes from data receiving events. Data will no longer be received through a callback. This method is applicable when the phone app no longer needs to receive data from the wearable app, for example, when the user switches to another function module. You can unsubscribe from data receiving events only after the proxy channel is successfully opened by calling [openProxyChannel](arkts-distributedservice-proxychannelmanager-openproxychannel-f.md). This method must be used together with [on('receiveData')](arkts-distributedservice-proxychannelmanager-on-f.md#onreceivedata) to unregister the data receiving callback registered using **on('receiveData')**.
 
 **Since:** 20
 
@@ -29,8 +29,8 @@ Unsubscribes from data receive events and no longer receives data through the ca
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'receiveData' | Yes | Event type. The value **receiveData** indicates the data receiving event. |
-| channelId | number | Yes | Channel ID obtained when opening the proxy channel, with a value range of 1 to 214748         3647. Using an invalid or closed channelId returns error code 32390004, and exceeding the value range returns error code 32390006. The channelId takes effect only when the proxy channel is available, and becomes unavailable after the channel is closed or disconnected. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DataInfo](arkts-distributedservice-proxychannelmanager-datainfo-i.md)&gt; | No | Callback for the data receive event. Default behavior: when this parameter is not passed, all data receive event subscriptions are unsubscribed. The callback passed must be the last one registered via the on method to unsubscribe that callback; passing any other callback will not take effect. |
+| channelId | number | Yes | Proxy channel ID obtained when the proxy channel is opened. The value ranges from 1 to 2147483647. If an invalid or closed channel ID is used, error code 32390004 will be returned. If the value is out of range, error code 32390006 will be returned. This parameter takes effect only when the proxy channel is available. After the channel is closed or disconnected, the channel ID becomes unavailable. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DataInfo](arkts-distributedservice-proxychannelmanager-datainfo-i.md)&gt; | No | Registered callback. If this parameter is not passed, all data receiving events are unsubscribed from. This parameter is not passed by default. The callback last registered using **on** needs to be passed to unsubscribe from the data receiving events. If any other callback function is passed, the unsubscription will fail. |
 
 **Error codes:**
 
@@ -76,7 +76,7 @@ struct Index {
 function off(type: 'channelStateChange', channelId: number, callback?: Callback<ChannelStateInfo>): void
 ```
 
-Unsubscribes from channel state events. This is applicable to scenarios where the phone-side app no longer needs to listen for proxy channel connection state changes, such as when the user exits the relevant service page or completes the data transmission process. You must call [openProxyChannel](arkts-distributedservice-proxychannelmanager-openproxychannel-f.md) to successfully open a proxy channel before unsubscribing. This method must be used in pair with [on('channelStateChange')](arkts-distributedservice-proxychannelmanager-on-f.md#onchannelstatechange) to cancel the channel state callback previously registered through **on('channelStateChange')**.
+Unsubscribes from channel state change events. This method is applicable when the phone app no longer needs to listen for the proxy channel connection state change events, for example, when the user exits the related service page or the data transmission process is completed. You can unsubscribe from data receiving events only after the proxy channel is successfully opened by calling [openProxyChannel](arkts-distributedservice-proxychannelmanager-openproxychannel-f.md). This method must be used together with [on('channelStateChange')](arkts-distributedservice-proxychannelmanager-on-f.md#onchannelstatechange) to unregister the channel state change callback registered using **on('channelStateChange')**.
 
 **Since:** 20
 
@@ -92,9 +92,9 @@ Unsubscribes from channel state events. This is applicable to scenarios where th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'channelStateChange' | Yes | Sets the subscription type. The value is fixed to **'channelStateChange'**. |
-| channelId | number | Yes | Channel ID obtained when opening a proxy channel. Value range: 1 to 2147483647. Using an invalid or closed channelId returns error code 32390004, and exceeding the value range returns error code 32         390006. The channelId takes effect only when the proxy channel is available and becomes unavailable after the channel is closed or disconnected. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChannelStateInfo](arkts-distributedservice-proxychannelmanager-channelstateinfo-i.md)&gt; | No | Registered callback. Default behavior: if this parameter is not passed, all channel state event subscriptions are unsubscribed. The callback passed must be the one last registered through the **on** method to unsubscribe from that callback; passing any other callback will not take effect. |
+| type | 'channelStateChange' | Yes | Event type. The value is fixed to **'channelStateChange'**. |
+| channelId | number | Yes | Proxy channel ID obtained when the proxy channel is opened. The value ranges from 1 to 2147483647. If an invalid or closed channel ID is used, error code 32390004 will be returned. If the value is out of range, error code 32390006 will be returned. This parameter takes effect only when the proxy channel is available. After the channel is closed or disconnected, the channel ID becomes unavailable. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChannelStateInfo](arkts-distributedservice-proxychannelmanager-channelstateinfo-i.md)&gt; | No | Registered callback. If this parameter is not passed, all channel state events are unsubscribed from. This parameter is not passed by default. The callback last registered using **on** needs to be passed to unsubscribe from the channel state events. If any other callback function is passed, the unsubscription will fail. |
 
 **Error codes:**
 

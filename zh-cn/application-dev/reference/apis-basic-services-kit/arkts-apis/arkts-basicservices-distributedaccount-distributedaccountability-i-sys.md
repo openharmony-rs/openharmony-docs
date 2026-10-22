@@ -1,4 +1,4 @@
-# DistributedAccountAbility
+# DistributedAccountAbility（系统接口）
 
 ```TypeScript
 interface DistributedAccountAbility

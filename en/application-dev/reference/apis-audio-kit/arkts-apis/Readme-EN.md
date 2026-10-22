@@ -244,6 +244,7 @@
   - [PolicyType(system api)](arkts-audio-audio-policytype-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [RenderTarget(system api)](arkts-audio-audio-rendertarget-e-sys.md)<!--DelEnd-->
+  - [SoundCardType](arkts-audio-audio-soundcardtype-e.md)
   - [SourceType](arkts-audio-audio-sourcetype-e.md)
   <!--Del-->
   - [SourceType(system api)](arkts-audio-audio-sourcetype-e-sys.md)<!--DelEnd-->

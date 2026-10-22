@@ -54,6 +54,30 @@ Avoid the three-button navigation bar area on the phone.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## BIND_SHEET_EXPAND_SAFE_AREA
+
+```TypeScript
+BIND_SHEET_EXPAND_SAFE_AREA = 7
+```
+
+Expand the title area of bindSheet as safe area for the content region.
+
+> **NOTE:** 
+> 
+> When this strategy is applied via [applyDefaultImmersiveStrategy](arkts-arkui-arkui-uicontext-uicontext-c.md#applydefaultimmersivestrategy),
+> bindSheet's [titleBarHoverMode](../arkts-components/arkts-arkui-common-comp-sheetoptions-i.md#titlebarhovermode) defaults to
+> [SAFE_AREA_PADDING](../arkts-components/arkts-arkui-common-comp-sheettitlebarhovermode-e.md#safe_area_padding).
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-ImmersiveStrategy-BIND_SHEET_EXPAND_SAFE_AREA = 7--><!--Device-ImmersiveStrategy-BIND_SHEET_EXPAND_SAFE_AREA = 7-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## NAVIGATION_EXPAND_SAFE_AREA
 
 ```TypeScript

@@ -28,10 +28,10 @@ import { observer } from '@kit.TelephonyKit';
 | [off('callStateChangeEx')](arkts-telephony-observer-off-f.md#offcallstatechangeex) | 取消订阅通话状态变化拓展事件，使用callback方式作为异步方法。 |
 | [off('simStateChange')](arkts-telephony-observer-off-f.md#offsimstatechange) | 移除订阅sim状态更改事件，使用callback方式作为异步方法。 |
 | [off('iccAccountInfoChange')](arkts-telephony-observer-off-f.md#officcaccountinfochange) | 移除订阅卡帐户变化事件，使用callback方式作为异步方法。 |
-| [offCCallStateChange](arkts-telephony-observer-offccallstatechange-f.md#offccallstatechange) | 取消监听运营商通话状态的回调 |
-| [offCommunicationStateChange](arkts-telephony-observer-offcommunicationstatechange-f.md#offcommunicationstatechange) | 取消订阅5A网络状态变化事件，使用callback异步回调。 |
-| [offGetSimActiveState](arkts-telephony-observer-offgetsimactivestate-f.md#offgetsimactivestate) | 取消SIM卡激活状态变化的监听，使用callback方式作为异步方法。 |
-| [offVoIPStateChange](arkts-telephony-observer-offvoipstatechange-f.md#offvoipstatechange) | VoIP通话状态更新时取消回调。 |
+| [offCCallStateChange](arkts-telephony-observer-offccallstatechange-f.md#offccallstatechange-1) | 取消监听运营商通话状态的回调 |
+| [offCommunicationStateChange](arkts-telephony-observer-offcommunicationstatechange-f.md#offcommunicationstatechange-1) | 取消订阅5A网络状态变化事件，使用callback异步回调。 |
+| [offGetSimActiveState](arkts-telephony-observer-offgetsimactivestate-f.md#offgetsimactivestate-1) | 取消SIM卡激活状态变化的监听，使用callback方式作为异步方法。 |
+| [offVoIPStateChange](arkts-telephony-observer-offvoipstatechange-f.md#offvoipstatechange-1) | VoIP通话状态更新时取消回调。 |
 | [on('networkStateChange')](arkts-telephony-observer-on-f.md#onnetworkstatechange) | 订阅网络状态变化事件，使用callback方式作为异步方法。 |
 | [on('networkStateChange')](arkts-telephony-observer-on-f.md#onnetworkstatechange) | 订阅指定卡槽位的网络状态变化事件，使用callback方式作为异步方法。 |
 | [on('signalInfoChange')](arkts-telephony-observer-on-f.md#onsignalinfochange) | 订阅信号状态变化事件，使用callback方式作为异步方法。 |
@@ -46,10 +46,10 @@ import { observer } from '@kit.TelephonyKit';
 | [on('simStateChange')](arkts-telephony-observer-on-f.md#onsimstatechange) | 订阅sim状态更改事件，使用callback方式作为异步方法。 |
 | [on('simStateChange')](arkts-telephony-observer-on-f.md#onsimstatechange) | 订阅指定卡槽位的sim状态更改事件，使用callback方式作为异步方法。 |
 | [on('iccAccountInfoChange')](arkts-telephony-observer-on-f.md#oniccaccountinfochange) | 订阅卡帐户变化事件，使用callback方式作为异步方法。 |
-| [onCCallStateChange](arkts-telephony-observer-onccallstatechange-f.md#onccallstatechange) | 运营商通话状态变更时回调 |
-| [onCommunicationStateChange](arkts-telephony-observer-oncommunicationstatechange-f.md#oncommunicationstatechange) | 订阅5A网络状态变化事件，使用callback异步回调。 |
-| [onGetSimActiveState](arkts-telephony-observer-ongetsimactivestate-f.md#ongetsimactivestate) | SIM卡激活状态变化的监听，使用callback方式作为异步方法。 |
-| [onVoIPStateChange](arkts-telephony-observer-onvoipstatechange-f.md#onvoipstatechange) | VoIP通话状态更新时的回调。此回调在以下情况下被调用第三方VoIP应用程序的呼叫状态发生变化，并添加了观察者来监控更新。 |
+| [onCCallStateChange](arkts-telephony-observer-onccallstatechange-f.md#onccallstatechange-1) | 运营商通话状态变更时回调 |
+| [onCommunicationStateChange](arkts-telephony-observer-oncommunicationstatechange-f.md#oncommunicationstatechange-1) | 订阅5A网络状态变化事件，使用callback异步回调。 |
+| [onGetSimActiveState](arkts-telephony-observer-ongetsimactivestate-f.md#ongetsimactivestate-1) | SIM卡激活状态变化的监听，使用callback方式作为异步方法。 |
+| [onVoIPStateChange](arkts-telephony-observer-onvoipstatechange-f.md#onvoipstatechange-1) | VoIP通话状态更新时的回调。此回调在以下情况下被调用第三方VoIP应用程序的呼叫状态发生变化，并添加了观察者来监控更新。 |
 
 <!--Del-->
 ### 函数（系统接口）

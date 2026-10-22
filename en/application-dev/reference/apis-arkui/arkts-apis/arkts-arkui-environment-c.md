@@ -230,3 +230,12 @@ Returns the property key array of environment variables.
 | Array&lt;string&gt; | Array of property keys of environment variables. |
 
 **Examples**
+
+```TypeScript
+Environment.EnvProps([{ key: 'accessibilityEnabled', defaultValue: 'default' }, {
+  key: 'languageCode',
+  defaultValue: 'en'
+}, { key: 'prop', defaultValue: 'hhhh' }]);
+
+let keys: Array<string> = Environment.Keys(); // keys contains accessibilityEnabled, languageCode, and prop.
+```

@@ -24,7 +24,7 @@ import { inputMethod } from '@kit.IMEKit';
 abilityName?: string
 ```
 
-Ability name set for the text box. <br> <br>- When the text box sets an ability name, the length does not exceed 127 characters (if it exceeds, it is automatically truncated to 127 characters). <br>- When the text box does not set an ability name, it defaults to an empty string. <br>- This field is provided to the input method application when [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) is called.
+Ability name set for the text box. <br> <br>- When the text box sets an ability name, the length does not exceed 127 characters (if it exceeds, it is automatically truncated to 127 characters). <br>- When the text box does not set an ability name, it defaults to an empty string. <br>- This field is provided to the input method application when [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach-1) is called.
 
 **Type:** string
 
@@ -40,7 +40,7 @@ Ability name set for the text box. <br> <br>- When the text box sets an ability 
 consumeKeyEvents?: boolean
 ```
 
-Whether the text box has full capability to handle keys such as letters, characters, and function keys. The default value is **false**. <br> <br>- The value **true** indicates that this capability is available. <br>- The value **false** indicates that this capability is not available. <br>- This field is provided to the input method application when [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) / [updateAttribute](arkts-ime-inputmethod-inputmethodcontroller-i.md#updateattribute) is called. <br> <br>**Model restriction:** This parameter can be used only in the stage model.
+Whether the text box has full capability to handle keys such as letters, characters, and function keys. The default value is **false**. <br> <br>- The value **true** indicates that this capability is available. <br>- The value **false** indicates that this capability is not available. <br>- This field is provided to the input method application when [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach-1) / [updateAttribute](arkts-ime-inputmethod-inputmethodcontroller-i.md#updateattribute-1) is called. <br> <br>**Model restriction:** This parameter can be used only in the stage model.
 
 **Type:** boolean
 
@@ -76,7 +76,7 @@ Enter key function type.
 placeholder?: string
 ```
 
-Placeholder information set for the text box. <br> <br>- When the text box sets placeholder information, the length does not exceed 255 characters (if it exceeds, it is automatically truncated to 255 characters), used to prompt or guide the user to enter temporary text or symbols. (For example, prompting the input result feedback of an input item being "mandatory" or "optional".) <br>- When the text box does not set placeholder information, it defaults to an empty string. <br>- This field is provided to the input method application when [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach) is called.
+Placeholder information set for the text box. <br> <br>- When the text box sets placeholder information, the length does not exceed 255 characters (if it exceeds, it is automatically truncated to 255 characters), used to prompt or guide the user to enter temporary text or symbols. (For example, prompting the input result feedback of an input item being "mandatory" or "optional".) <br>- When the text box does not set placeholder information, it defaults to an empty string. <br>- This field is provided to the input method application when [attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach-1) is called.
 
 **Type:** string
 

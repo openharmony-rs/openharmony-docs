@@ -14,7 +14,7 @@ function off(eventId: number): void
 
 取消事件ID为eventId的所有订阅。
 
-使用该接口取消某个事件订阅后，已通过[emit](arkts-basicservices-emitter-emit-f.md#emit)接口发布但尚未被执行的事件将被取消。
+使用该接口取消某个事件订阅后，已通过[emit](arkts-basicservices-emitter-emit-f.md#emit-1)接口发布但尚未被执行的事件将被取消。
 
 **起始版本：** 7
 
@@ -82,9 +82,9 @@ emitter1.off('eventId');
 function off(eventId: number, callback: Callback<EventData>): void
 ```
 
-取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on)或[once](arkts-basicservices-emitter-once-f.md#once)接口订阅callback时，该接口才生效。
+取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on1)或[once](arkts-basicservices-emitter-once-f.md#once1)接口订阅callback时，该接口才生效。
 
-使用该接口取消某个事件订阅后，已通过[emit](arkts-basicservices-emitter-emit-f.md#emit)接口发布但尚未被执行的事件将被取消。
+使用该接口取消某个事件订阅后，已通过[emit](arkts-basicservices-emitter-emit-f.md#emit-1)接口发布但尚未被执行的事件将被取消。
 
 **起始版本：** 10
 
@@ -121,7 +121,7 @@ emitter.off(1, callback);
 function off(eventId: string, callback: Callback<EventData>): void
 ```
 
-取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on)或[once](arkts-basicservices-emitter-once-f.md#once)接口订阅callback时，该接口才生效。
+取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on2)或[once](arkts-basicservices-emitter-once-f.md#once2)接口订阅callback时，该接口才生效。
 
 使用该接口取消某个事件订阅后，已通过[emit](arkts-basicservices-emitter-emit-f.md)接口发布但尚未被执行的事件将被取消。
 
@@ -172,7 +172,7 @@ emitter1.off('eventId', callback);
 function off<T>(eventId: string, callback: Callback<GenericEventData<T>>): void
 ```
 
-取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on)或[once](arkts-basicservices-emitter-once-f.md#once)接口订阅callback时，该接口才生效。
+取消事件ID为eventId且回调处理函数为callback的订阅。仅当已使用[on](arkts-basicservices-emitter-on-f.md#on3)或[once](arkts-basicservices-emitter-once-f.md#once3)接口订阅callback时，该接口才生效。
 
 使用该接口取消某个事件订阅后，已通过[emit](arkts-basicservices-emitter-emit-f.md)接口发布但尚未被执行的事件将被取消。
 

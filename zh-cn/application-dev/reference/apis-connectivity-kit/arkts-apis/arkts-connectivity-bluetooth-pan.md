@@ -22,7 +22,7 @@ import { pan } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createPanProfile](arkts-connectivity-pan-createpanprofile-f.md#createpanprofile) | 创建蓝牙PAN实例。通过该实例可使用本端作为NAP设备和PANU设备的接口，如：获取和其他设备间的蓝牙个人局域网服务连接状态。 |
+| [createPanProfile](arkts-connectivity-pan-createpanprofile-f.md#createpanprofile-1) | 创建蓝牙PAN实例。通过该实例可使用本端作为NAP设备和PANU设备的接口，如：获取和其他设备间的蓝牙个人局域网服务连接状态。 |
 
 ### 接口
 

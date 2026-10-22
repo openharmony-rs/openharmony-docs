@@ -320,7 +320,7 @@ hideTitleBar(value: boolean)
 hideTitleBar(hide: boolean, animated: boolean)
 ```
 
-设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar)相比，新增标题栏显隐时是否使用动画。
+设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar-1)相比，新增标题栏显隐时是否使用动画。
 
 **起始版本：** 13
 
@@ -433,7 +433,7 @@ menus(value: Array<NavigationMenuItem> | CustomBuilder)
 menus(items: Array<NavigationMenuItem> | CustomBuilder, options?: NavigationMenuOptions)
 ```
 
-设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus)相比，新增菜单选项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
+设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus-1)相比，新增菜单选项。使用Array&lt;[NavigationMenuItem](arkts-arkui-navigation-comp-navigationmenuitem-i.md)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
 > **说明：** 
 
@@ -600,7 +600,7 @@ onNewParam(callback: Optional<Callback<ESObject>>)
 
 > **说明：** 
 
-> - [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath)、[replaceDestination](arkts-arkui-navigation-comp-navpathstack-c.md#replacedestination)不会触发该回调。
+> - [replacePath](arkts-arkui-navigation-comp-navpathstack-c.md#replacepath-1)、[replaceDestination](arkts-arkui-navigation-comp-navpathstack-c.md#replacedestination)不会触发该回调。
 > 
 > - 从API version 22开始，该接口支持在[attributeModifier](arkts-arkui-common-comp-commonmethod-c.md#attributemodifier)中调用。
 

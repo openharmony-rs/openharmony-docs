@@ -339,7 +339,7 @@ Constructor
 | [ContentClipMode](arkts-arkui-common-comp-contentclipmode-e.md) | Enumerates the content clipping modes for the scrollable container. |
 | [DismissReason](arkts-arkui-common-comp-dismissreason-e.md) | Enumerates the reasons for popup dismissal. |
 | [DragBehavior](arkts-arkui-common-comp-dragbehavior-e.md) | Describes the drag behavior. When [DragResult](arkts-arkui-common-comp-dragresult-e.md) is set to **DROP_ENABLED**, you can define **DragBehavior** as either **COPY** or **MOVE**. When **DragBehavior** is set to **COPY**, a plus sign will be displayed in the badge of the dragged object. When **DragBehavior** is set to **MOVE**, the plus sign will not be displayed. **DragBehavior** is used to indicate the intended way of handling data (either copy or move) without governing the actual data processing. This behavior is reported back to the drag source through **onDragEnd**, enabling the drag initiator to distinguish whether the operation results in a copy or a move of the data. |
-| [DraggingSizeChangeEffect](arkts-arkui-common-comp-draggingsizechangeeffect-e.md) | Enumerates the transition effects for switching between the floating image (set through [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)) and the drag preview when both are configured on a component. |
+| [DraggingSizeChangeEffect](arkts-arkui-common-comp-draggingsizechangeeffect-e.md) | Enumerates the transition effects for switching between the floating image (set through [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-2)) and the drag preview when both are configured on a component. |
 | [DragPreviewMode](arkts-arkui-common-comp-dragpreviewmode-e.md) | Sets the display mode of the drag preview. |
 | [DragResult](arkts-arkui-common-comp-dragresult-e.md) | Enumerates the results of drag operations and the drop-enabled states of components. |
 | [EffectEdge](arkts-arkui-common-comp-effectedge-e.md) | Enumerates the edges where the edge effect is applied. |
@@ -1810,6 +1810,48 @@ struct ReusableChildComponent {
 }
 ```
 
+This example demonstrates how to obscure the content of Text and Image components using the obscured API.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ObscuredExample {
+  build() {
+    Row() {
+      Column() {
+        Text('Text not set obscured attribute').fontSize(10).fontColor(Color.Black)
+        Text('This is an example for text obscured attribute.')
+          .fontSize(30)
+          .width('600px')
+          .fontColor(Color.Black)
+          .border({ width: 1 })
+        Text('Image not set obscured attribute').fontSize(10).fontColor(Color.Black)
+        // Replace $r('app.media.icon') with the image resource file you use.
+        Image($r('app.media.icon'))
+          .width('200px')
+          .height('200px')
+        Text('Text set obscured attribute').fontSize(10).fontColor(Color.Black)
+        Text('This is an example for text obscured attribute.')
+          .fontSize(30)
+          .width('600px')
+          .fontColor(Color.Black)
+          .border({ width: 1 })
+          .obscured([ObscuredReasons.PLACEHOLDER])
+        Text('Image set obscured attribute').fontSize(10).fontColor(Color.Black)
+        // Replace $r('app.media.icon') with the image resource file you use.
+        Image($r('app.media.icon'))
+          .width('200px')
+          .height('200px')
+          .obscured([ObscuredReasons.PLACEHOLDER])
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 This example sets the component size change event on the Text component. When the Text size changes, the onSizeChange event is triggered to obtain the oldValue and newValue parameters.
 
 ```TypeScript
@@ -2080,6 +2122,50 @@ struct Index {
     .backgroundColor('rgb(254, 238, 239)')
     .width('100%')
     .height('100%')
+  }
+}
+```
+
+### Example 4: Setting Component Edge Light Effect
+
+This example demonstrates how to add an edge glow effect to a component through [edgeLight](#edgelight).
+
+Since API version 26.0.0, the edgeLight method is added.
+
+```TypeScript
+// xxx.ets
+import { curves } from '@kit.ArkUI';
+@Entry
+@Component
+struct Index {
+  @State animate: boolean = false;
+  @State edgeLightPosition: EdgeLightPosition = EdgeLightPosition.TOP_LEFT;
+  build() {
+    Column() {
+      Column()
+        .height(300)
+        .width(300)
+        .backgroundColor(Color.Gray)
+        .borderRadius(20)
+        .edgeLight({
+          position: this.edgeLightPosition,
+          length: 90,
+          intensity: 1,
+          color: Color.White,
+          thickness: 2
+        })
+        .onClick(() => {
+          this.getUIContext()?.animateTo({ curve: curves.springMotion(), duration: 3000}, () => {
+            this.animate = !this.animate;
+            this.edgeLightPosition = this.animate ? EdgeLightPosition.BOTTOM_RIGHT : EdgeLightPosition.TOP_LEFT;
+          })
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .backgroundColor('#aaaaaa')
   }
 }
 ```
@@ -4667,6 +4753,88 @@ struct MotionBlurTest {
       }
     }.width('100%')
     .margin({ top: 50 })
+  }
+}
+```
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Example {
+  build() {
+    Column() {
+      Flex({ wrap: FlexWrap.Wrap }) {
+        Column() {
+          Text('width(220)')
+            .width(220)
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+            .fontSize('12vp')
+        }.margin(5)
+
+        Column() {
+          Text("width('220px')")
+            .width('220px')
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+        }.margin(5)
+
+        Column() {
+          Text("width('220vp')")
+            .width('220vp')
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+            .fontSize('12vp')
+        }.margin(5)
+
+        Column() {
+          Text("width('220lpx') designWidth:720")
+            .width('220lpx')
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+            .fontSize('12vp')
+        }.margin(5)
+
+        Column() {
+          Text("width(getUIContext().vp2px(220) + 'px')")
+            .width(this.getUIContext().vp2px(220) + 'px')
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+            .fontSize('12vp')
+        }.margin(5)
+
+        Column() {
+          Text("fontSize('12fp')")
+            .width(220)
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+            .fontSize('12fp')
+        }.margin(5)
+
+        Column() {
+          Text('width(px2vp(220))')
+            .width(this.getUIContext().px2vp(220))
+            .height(40)
+            .backgroundColor(0xF9CF93)
+            .textAlign(TextAlign.Center)
+            .fontColor(Color.White)
+            .fontSize('12fp')
+        }.margin(5)
+      }.width('100%')
+    }
   }
 }
 ```
@@ -16315,6 +16483,38 @@ struct FatherControlChild {
 }
 ```
 
+### Example 1: Enabling the Keyboard Continuation
+
+In this example, the [onNeedSoftkeyboard](arkts-arkui-common-comp-commonmethod-c.md#onneedsoftkeyboard) API is used to enable the keyboard continuation for a button. After the keyboard is started by the text box, switch the focus to the button upon a tap. In this case, the keyboard will not collapse. Tap the text box again to continue entering text.
+
+The [onNeedSoftkeyboard](arkts-arkui-common-comp-commonmethod-c.md#onneedsoftkeyboard) API is available since API version 24.
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Switch Focus to the Button')
+        .onClick(() => {
+          this.getUIContext().getFocusController().requestFocus('Button');
+        })
+        .key('Button')
+        .fontSize(20)
+        .width('80%')
+        .margin('10')
+        .onNeedSoftkeyboard((): boolean => {
+          return true;
+        })
+      TextInput()
+        .key('TextInput1')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ### Example 1: Allowing Drag and Drop
 
 This example demonstrates how to use [allowDrop](arkts-arkui-common-comp-commonmethod-c.md#allowdrop) to configure component drop targets and [draggable](#draggable) to enable component dragging.
@@ -17828,6 +18028,91 @@ struct Index {
 }
 ```
 
+Set the grid configuration for different device types. gridSpan and gridOffset are used to set the default occupied column count and offset column count, and they take effect only when the corresponding size is not configured in useSizeType. In the example, useSizeType configures the value for the sm size (span: 2, offset: 1). To achieve the same grid effect for other unconfigured sizes, set the default values through gridSpan and gridOffset.
+
+> NOTE
+> 
+> This example demonstrates the usage of deprecated APIs. It is recommended to use the new components [GridCol](ts-container-gridcol.md) and [GridRow](ts-container-gridrow.md) to implement the grid layout.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct GridContainerExample1 {
+  build() {
+    Column() {
+      Text('useSizeType').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      GridContainer() {
+        Row() {
+          Row() {
+            Text('Left').fontSize(25)
+          }
+          .useSizeType({
+            xs: { span: 1, offset: 0 }, sm: { span: 1, offset: 0 },
+            md: { span: 1, offset: 0 }, lg: { span: 2, offset: 0 }
+          })
+          .height("100%")
+          .backgroundColor(0x66bbb2cb)
+
+          Row() {
+            Text('Center').fontSize(25)
+          }
+          .useSizeType({
+            xs: { span: 1, offset: 0 }, sm: { span: 2, offset: 1 },
+            md: { span: 5, offset: 1 }, lg: { span: 7, offset: 2 }
+          })
+          .height("100%")
+          .backgroundColor(0x66b6c5d1)
+
+          Row() {
+            Text('Right').fontSize(25)
+          }
+          .useSizeType({
+            xs: { span: 1, offset: 0 }, sm: { span: 1, offset: 3 },
+            md: { span: 2, offset: 6 }, lg: { span: 3, offset: 9 }
+          })
+          .height("100%")
+          .backgroundColor(0x66bbb2cb)
+        }
+        .height(200)
+
+      }
+      .backgroundColor(0xf1f3f5)
+      .margin({ top: 10 })
+
+      // Set the span and offset of the component separately. The resultant effect is equivalent to that achieved by using sm in useSizeType on the device of the sm type.
+      Text('gridSpan,gridOffset').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      GridContainer() {
+        Row() {
+          Row() {
+            Text('Left').fontSize(25)
+          }
+          .gridSpan(1)
+          .height("100%")
+          .backgroundColor(0x66bbb2cb)
+
+          Row() {
+            Text('Center').fontSize(25)
+          }
+          .gridSpan(2)
+          .gridOffset(1)
+          .height("100%")
+          .backgroundColor(0x66b6c5d1)
+
+          Row() {
+            Text('Right').fontSize(25)
+          }
+          .gridSpan(1)
+          .gridOffset(3)
+          .height("100%")
+          .backgroundColor(0x66bbb2cb)
+        }.height(200)
+      }
+    }
+  }
+}
+```
+
 ### Example 1: Using onHover
 
 This example demonstrates how to set the [onHover](#onhover) event on a button. When the mouse or stylus hovers over the button, the event is triggered to dynamically change the text content and background color of the button.
@@ -18052,6 +18337,75 @@ struct GestureSettingsExample {
           .onAction((event: GestureEvent) => {
             this.parallelTestValue += '\nColumn';
           }), GestureMask.Normal)
+    }
+  }
+}
+```
+
+### Example 2: Monitoring the Number of Valid Touch Points in a Swipe Gesture in Real Time
+
+This example reads fingerInfos to monitor the number of valid touch points involved in a swipe gesture in real time.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PanGestureWithFingerCount {
+  @State offsetX: number = 0
+  @State offsetY: number = 0
+  @State positionX: number = 0
+  @State positionY: number = 0
+  @State fingerCount: number = 0 // Record the number of touch points involved in the gesture.
+  private panOption: PanGestureOptions = new PanGestureOptions({
+    direction: PanDirection.All,
+    fingers: 1
+  })
+
+  build() {
+    Column() {
+      // Display the current number of valid touch points.
+      Text(`Touch points: ${this.fingerCount}`)
+        .fontSize(20)
+        .margin(10)
+
+      Column() {
+        Text('PanGesture offset:\nX: ' + this.offsetX + '\n' + 'Y: ' + this.offsetY)
+      }
+      .height(200)
+      .width(300)
+      .padding(20)
+      .border({ width: 3 })
+      .margin(50)
+      .translate({ x: this.offsetX, y: this.offsetY, z: 0 })
+      .gesture(
+        PanGesture(this.panOption)
+          .onActionStart((event: GestureEvent) => {
+            console.info('Pan start');
+            this.fingerCount = event.fingerInfos?.length || 0; // Record the number of touch points.
+          })
+          .onActionUpdate((event: GestureEvent) => {
+            if (event) {
+              console.info(`fingerInfos ${JSON.stringify(event.fingerInfos)}`);
+              this.offsetX = this.positionX + event.offsetX;
+              this.offsetY = this.positionY + event.offsetY;
+              this.fingerCount = event.fingerInfos?.length || 0; // Update the number of touch points and record the number of valid touch points involved in the current gesture.
+            }
+          })
+          .onActionEnd(() => {
+            this.positionX = this.offsetX;
+            this.positionY = this.offsetY;
+            this.fingerCount = 0; // Reset to zero after the touch point leaves the touch area.
+            console.info('Pan end');
+          })
+          .onActionCancel(() => {
+            this.fingerCount = 0; // Reset to zero after the gesture is canceled.
+          })
+      )
+
+      Button('Switch to two-finger swipe')
+        .onClick(() => {
+          this.panOption.setFingers(2);
+        })
     }
   }
 }
@@ -18537,6 +18891,35 @@ struct GetCurrentLocalPositionExample {
 
       Text(this.positionText)
     }.width('100%')
+  }
+}
+```
+
+### Example 1: Disabling Default Click Sound Effect
+
+This example disables the default click sound effect by setting the enableClickSoundEffect attribute. You can call audio-related APIs in the onClick callback to customize the sound effect. For details, see [Using SoundPool to Play Short Sounds](../../../media/media/using-soundpool-for-playback.md).
+
+The [enableClickSoundEffect](arkts-arkui-common-comp-commonmethod-c.md#enableclicksoundeffect) attribute is added since API version 24.
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Click')
+        .fontSize('20dp')
+        .height('60')
+        .width('200')
+        .enableClickSoundEffect(false)
+        .onClick(() => {
+          // Customize the sound here. For details, see the guide on playing short audio with SoundPool.
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
   }
 }
 ```

@@ -64,6 +64,7 @@
 | [ImageRepeat](arkts-arkui-imagerepeat-e.md) | 用于设置图片重复样式。 |
 | [ImageSize](arkts-arkui-imagesize-e.md) | 用于设置图片宽高效果。 |
 | [ImageSpanAlignment](arkts-arkui-imagespanalignment-e.md) | 图片基于行高的对齐方式。 |
+| [ImmersiveStrategy](arkts-arkui-immersivestrategy-e.md) | 安全区域的沉浸式策略枚举。 |
 | [InputEventInterceptAction](arkts-arkui-inputeventinterceptaction-e.md) | 输入事件拦截动作枚举，用于控制输入事件是否继续传递到UI框架，适用于需要按业务规则允许或阻止输入事件继续传递的场景。 |
 | [InputEventSubTypeMask](arkts-arkui-inputeventsubtypemask-e.md) | 输入事件子类型掩码枚举，用于标识不同类型的输入事件子类型。 |
 | [InteractionHand](arkts-arkui-interactionhand-e.md) | 定义事件是由左手点击触发还是右手点击触发。 |

@@ -1,4 +1,4 @@
-# AlbumKeys
+# AlbumKeys (System API)
 
 ```TypeScript
 enum AlbumKeys

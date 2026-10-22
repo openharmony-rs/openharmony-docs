@@ -1,4 +1,4 @@
-# GeometryTransitionOptions
+# GeometryTransitionOptions (System API)
 
 ```TypeScript
 declare interface GeometryTransitionOptions

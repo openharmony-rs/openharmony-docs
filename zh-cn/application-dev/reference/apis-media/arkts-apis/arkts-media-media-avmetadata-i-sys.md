@@ -1,4 +1,4 @@
-# AVMetadata
+# AVMetadata（系统接口）
 
 ```TypeScript
 interface AVMetadata

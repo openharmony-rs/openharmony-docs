@@ -754,7 +754,7 @@ align(alignment: Alignment | LocalizedAlignment): T
 alignRules(value: AlignRuleOption): T
 ```
 
-指定设置在相对布局组件中子组件的对齐规则，仅当父组件为RelativeContainer时生效，支持[attributeModifier](#attributemodifier)动态设置属性方法。
+指定设置在相对布局组件中子组件的对齐规则，仅当父组件为[RelativeContainer](arkts-arkui-relativecontainer-comp.md)时生效，支持[attributeModifier](#attributemodifier)动态设置属性方法。
 
 **起始版本：** 9
 
@@ -832,7 +832,7 @@ alignSelf(value: ItemAlign): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md) | 是 | 子组件在父容器交叉轴的对齐格式，会覆盖(Flex, Column, Row, or GridRow)布局容器中的alignItems设置。<br>GridCol可以绑定alignSelf属性来改变它自身在交叉轴方向上的布局。<br>默认值：ItemAlign.Auto |
+| value | [ItemAlign](../arkts-apis/arkts-arkui-itemalign-e.md) | 是 | 子组件在父容器交叉轴的对齐格式，会覆盖([Flex](arkts-arkui-flex-comp.md), [Column](arkts-arkui-column-comp.md), [Row](arkts-arkui-row-comp.md), or GridRow)布局容器中的alignItems设置。<br>GridCol可以绑定alignSelf属性来改变它自身在交叉轴方向上的布局。<br>默认值：ItemAlign.Auto |
 
 **返回值：**
 
@@ -910,11 +910,11 @@ animation(value: AnimateParam): T
 
 > **说明：** 
 > 
-> - 在单一页面上同时存在数十个及以上应用动效的组件时，可以使用[renderGroup](#rendergroup)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考[动画使用指导-使用renderGroup](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fair-use-animation#section1223162922415)。
+> - 在单一页面上同时存在数十个及以上应用动效的组件时，可以使用[renderGroup](#rendergroup-1)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考[动画使用指导-使用renderGroup](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fair-use-animation#section1223162922415)。
 > 
 > - 该接口不支持在[attributeModifier](#attributemodifier)中调用，在attributeModifier中调用animation不会产生动画效果。如需在attributeModifier中实现 属性变化动画，请使用[显式动画](arkts-arkui-common-comp-animateto-f.md)替代。
 > 
-> - 仅对部分通用属性生效（包括width、height、backgroundColor、opacity、scale、rotate、translate等）。对于改变布局类属性（如宽高）的动画，组件内容（如文字或Canvas中的内容）通常会直接跳转到最终状态。如果希望内容跟随宽高变化平滑过渡，可以配合使用[renderFit](#renderfit)属性进行配置，建议将renderFit设置为RenderFit.CENTER或RenderFit.TOP_LEFT等值，使内容在动画过程中随组件尺寸同步变化。
+> - 仅对部分通用属性生效（包括width、height、backgroundColor、opacity、scale、rotate、translate等）。对于改变布局类属性（如宽高）的动画，组件内容（如文字或Canvas中的内容）通常会直接跳转到最终状态。如果希望内容跟随宽高变化平滑过渡，可以配合使用[renderFit](#renderfit-1)属性进行配置，建议将renderFit设置为RenderFit.CENTER或RenderFit.TOP_LEFT等值，使内容在动画过程中随组件尺寸同步变化。
 
 **起始版本：** 7
 
@@ -1044,7 +1044,7 @@ backdropBlur(value: number, options?: BlurOptions): T
 backdropBlur(radius: Optional<number>, options?: BlurOptions): T
 ```
 
-为组件添加背景模糊效果，对组件背后的视觉内容进行采样和模糊处理，支持自定义设置模糊半径和灰阶参数。与[backdropBlur](#backdropblur)相比，radius参数新增了对undefined类型的支持。
+为组件添加背景模糊效果，对组件背后的视觉内容进行采样和模糊处理，支持自定义设置模糊半径和灰阶参数。与[backdropBlur](#backdropblur-1)相比，radius参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -1077,7 +1077,7 @@ backdropBlur(radius: Optional<number>, options?: BlurOptions): T
 backdropBlur(radius: Optional<number>, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions): T
 ```
 
-为组件添加背景模糊效果，支持自定义设置模糊半径和灰阶参数。与[backdropBlur<sup>18+</sup>](#backdropblur)相比，新增了sysOptions参数，即支持系统自适应调节参数。
+为组件添加背景模糊效果，支持自定义设置模糊半径和灰阶参数。与[backdropBlur<sup>18+</sup>](#backdropblur-2)相比，新增了sysOptions参数，即支持系统自适应调节参数。
 
 **起始版本：** 19
 
@@ -1111,7 +1111,7 @@ backdropBlur(radius: Optional<number>, options?: BlurOptions, sysOptions?: Syste
 background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions): T
 ```
 
-设置组件背景。从API version 20开始，content参数新增了对[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)类型的支持，并新增了背景向父组件的安全区扩展的能力。当仅需设置背景色且不需要安全区扩展时，推荐使用[backgroundColor](#backgroundcolor)；当需要背景色同时扩展到安全区时，可使用background(content: ResourceColor)配合ignoresLayoutSafeAreaEdges属性。
+设置组件背景。从API version 20开始，content参数新增了对[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)类型的支持，并新增了背景向父组件的安全区扩展的能力。当仅需设置背景色且不需要安全区扩展时，推荐使用[backgroundColor](#backgroundcolor-1)；当需要背景色同时扩展到安全区时，可使用background(content: ResourceColor)配合ignoresLayoutSafeAreaEdges属性。
 
 > **说明：** 
 > 
@@ -1152,8 +1152,8 @@ backgroundBlurStyle(value: BlurStyle, options?: BackgroundBlurStyleOptions): T
 
 > **说明：** 
 > 
-> backgroundBlurStyle、[backdropBlur](#backdropblur)和
-> [backgroundEffect](#backgroundeffect)均为背景模糊接口，提供不同级别的模糊自定义能力：
+> backgroundBlurStyle、[backdropBlur](#backdropblur-1)和
+> [backgroundEffect](#backgroundeffect-1)均为背景模糊接口，提供不同级别的模糊自定义能力：
 > backgroundBlurStyle通过枚举值快速设置预定义模糊样式；backdropBlur支持自定义模糊半径和灰阶参数；backgroundEffect支持自定义模糊半径、亮度、饱和度和颜色等更多参数。同一组件上同时设置
 > 多个背景模糊接口时，仅最后一个设置的接口生效，之前的模糊效果会被覆盖。
 
@@ -1186,7 +1186,7 @@ backgroundBlurStyle(value: BlurStyle, options?: BackgroundBlurStyleOptions): T
 backgroundBlurStyle(style: Optional<BlurStyle>, options?: BackgroundBlurStyleOptions): T
 ```
 
-为当前组件提供一种背景材质模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。与[backgroundBlurStyle<sup>9+</sup>](#backgroundblurstyle)相比，style参数新增了对undefined类型的支持。
+为当前组件提供一种背景材质模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。与[backgroundBlurStyle<sup>9+</sup>](#backgroundblurstyle-1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -1219,7 +1219,7 @@ backgroundBlurStyle(style: Optional<BlurStyle>, options?: BackgroundBlurStyleOpt
 backgroundBlurStyle(style: Optional<BlurStyle>, options?: BackgroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): T
 ```
 
-为当前组件提供一种背景材质模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。与[backgroundBlurStyle<sup>18+</sup>](#backgroundblurstyle)相比，新增了sysOptions参数，即支持系统自适应调节参数。
+为当前组件提供一种背景材质模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。与[backgroundBlurStyle<sup>18+</sup>](#backgroundblurstyle-2)相比，新增了sysOptions参数，即支持系统自适应调节参数。
 
 **起始版本：** 19
 
@@ -1283,7 +1283,7 @@ backgroundBrightness(params: BackgroundBrightnessOptions): T
 backgroundBrightness(options: Optional<BackgroundBrightnessOptions>): T
 ```
 
-设置组件背景提亮效果，通过调整亮度变化速率和提亮程度改变组件背景的亮度表现。与[backgroundBrightness<sup>12+</sup>](#backgroundbrightness)相比，options参数新增了对undefined类型的支持。
+设置组件背景提亮效果，通过调整亮度变化速率和提亮程度改变组件背景的亮度表现。与[backgroundBrightness<sup>12+</sup>](#backgroundbrightness-1)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -1348,7 +1348,7 @@ backgroundColor(value: ResourceColor): T
 backgroundColor(color: Optional<ResourceColor>): T
 ```
 
-设置组件背景色。与[backgroundColor](#backgroundcolor)相比，color参数新增了对undefined类型的支持。
+设置组件背景色。与[backgroundColor](#backgroundcolor-1)相比，color参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -1380,12 +1380,12 @@ backgroundColor(color: Optional<ResourceColor>): T
 backgroundColor(color: Optional<ResourceColor | ColorMetrics>): T
 ```
 
-设置组件背景色。与[backgroundColor](#backgroundcolor)相比，color参数新增了对[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)类型的支持。
+设置组件背景色。与[backgroundColor](#backgroundcolor-2)相比，color参数新增了对[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)类型的支持。
 
 > **说明：** 
 > 
 > 当通过
-> [backgroundBlurStyle](#backgroundblurstyle)
+> [backgroundBlurStyle](#backgroundblurstyle-1)
 > 中的inactiveColor指定背景色时，不建议再通过backgroundColor设置背景色。
 
 **起始版本：** 20
@@ -1453,7 +1453,7 @@ backgroundEffect(options: BackgroundEffectOptions): T
 backgroundEffect(options: Optional<BackgroundEffectOptions>): T
 ```
 
-设置组件背景属性，包括背景模糊半径、亮度、饱和度和颜色等参数。与[backgroundEffect<sup>11+</sup>](#backgroundeffect)相比，options参数新增了对undefined类型的支持。
+设置组件背景属性，包括背景模糊半径、亮度、饱和度和颜色等参数。与[backgroundEffect<sup>11+</sup>](#backgroundeffect-1)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -1483,7 +1483,7 @@ backgroundEffect(options: Optional<BackgroundEffectOptions>): T
 backgroundEffect(options: Optional<BackgroundEffectOptions>, sysOptions?: SystemAdaptiveOptions): T
 ```
 
-设置组件背景属性，包括背景模糊半径、亮度、饱和度和颜色等参数。与[backgroundEffect<sup>18+</sup>](#backgroundeffect)相比，新增了sysOptions参数，即支持系统自适应调节参数。
+设置组件背景属性，包括背景模糊半径、亮度、饱和度和颜色等参数。与[backgroundEffect<sup>18+</sup>](#backgroundeffect-2)相比，新增了sysOptions参数，即支持系统自适应调节参数。
 
 > **说明：** 
 > 
@@ -1585,7 +1585,7 @@ backgroundImage(src: ResourceStr | PixelMap, repeat?: ImageRepeat): T
 backgroundImage(src: ResourceStr | PixelMap, options?: BackgroundImageOptions): T
 ```
 
-设置组件的背景图片。与[backgroundImage](#backgroundimage)相比，增加了设置图片同步或异步加载方式的能力。
+设置组件的背景图片。与[backgroundImage](#backgroundimage-1)相比，增加了设置图片同步或异步加载方式的能力。
 
 > **说明：** 
 > 
@@ -1654,7 +1654,7 @@ backgroundImageResizable(value: ResizableOptions): T
 
 设置背景图片在拉伸时的可分区拉伸图像选项，即定义图片中可拉伸区域与固定不变的区域，实现类似9-patch的切片拉伸效果。
 
-设置合法的ResizableOptions时，[backgroundImage](#backgroundimage)属性中的repeat参数设置不生效。
+设置合法的ResizableOptions时，[backgroundImage](#backgroundimage-1)属性中的repeat参数设置不生效。
 
 当设置top+bottom大于原图的高或者left+right大于原图的宽时，ResizableOptions属性设置不生效。
 
@@ -2154,7 +2154,7 @@ blendMode(value: BlendMode, type?: BlendApplyType): T
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [BlendMode](arkts-arkui-common-comp-blendmode-e.md) | 是 | 混合模式。<br>默认值：BlendMode.NONE <br>**说明：** <br>混合模式设置为BlendMode.NONE时，blend效果实际为默认的BlendMode.SRC_OVER，且BlendApplyType不生效。 |
-| type | [BlendApplyType](arkts-arkui-common-comp-blendapplytype-e.md) | 否 | blendMode实现方式是否离屏。<br>默认值：BlendApplyType.FAST <br>**说明：** <br>1. 设置BlendApplyType.FAST时，不离屏。<br>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。使用该实现方式时，将导致[linearGradientBlur<sup>12+</sup>](#lineargradientblur)、[backgroundEffect](#backgroundeffect)、[brightness](#brightness)、[blur](#blur)等需要截屏的接口无法截取到正确的画面。<br>3. 混合模式设置为BlendMode.NONE时，BlendApplyType不生效。 |
+| type | [BlendApplyType](arkts-arkui-common-comp-blendapplytype-e.md) | 否 | blendMode实现方式是否离屏。<br>默认值：BlendApplyType.FAST <br>**说明：** <br>1. 设置BlendApplyType.FAST时，不离屏。<br>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。使用该实现方式时，将导致[linearGradientBlur<sup>12+</sup>](#lineargradientblur-1)、[backgroundEffect](#backgroundeffect-1)、[brightness](#brightness-1)、[blur](#blur-1)等需要截屏的接口无法截取到正确的画面。<br>3. 混合模式设置为BlendMode.NONE时，BlendApplyType不生效。 |
 
 **返回值：**
 
@@ -2168,7 +2168,7 @@ blendMode(value: BlendMode, type?: BlendApplyType): T
 blendMode(mode: Optional<BlendMode>, type?: BlendApplyType): T
 ```
 
-将当前控件的内容（包含子节点内容）与下方画布（可能为离屏画布）已有内容进行混合。与[blendMode<sup>11+</sup>](#blendmode)相比，mode参数新增了对undefined类型的支持。
+将当前控件的内容（包含子节点内容）与下方画布（可能为离屏画布）已有内容进行混合。与[blendMode<sup>11+</sup>](#blendmode-1)相比，mode参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -2187,7 +2187,7 @@ blendMode(mode: Optional<BlendMode>, type?: BlendApplyType): T
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BlendMode](arkts-arkui-common-comp-blendmode-e.md)&gt; | 是 | 混合模式。<br>默认值：BlendMode.NONE <br>当mode的值为undefined时，恢复为内容不进行混合的效果。<br>**说明：** <br>混合模式设置为BlendMode.NONE时，blend效果实际为默认的BlendMode.SRC_OVER，且BlendApplyType不生效。 |
-| type | [BlendApplyType](arkts-arkui-common-comp-blendapplytype-e.md) | 否 | blendMode实现方式是否离屏。<br>默认值：BlendApplyType.FAST <br>**说明：** <br>1. 设置BlendApplyType.FAST时，不离屏。<br>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。使用该实现方式时，将导致[linearGradientBlur<sup>12+</sup>](#lineargradientblur)、[backgroundEffect](#backgroundeffect)、[brightness](#brightness)、[blur](#blur)等需要截屏的接口无法截取到正确的画面。<br>3. 混合模式设置为BlendMode.NONE时，BlendApplyType不生效。 |
+| type | [BlendApplyType](arkts-arkui-common-comp-blendapplytype-e.md) | 否 | blendMode实现方式是否离屏。<br>默认值：BlendApplyType.FAST <br>**说明：** <br>1. 设置BlendApplyType.FAST时，不离屏。<br>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。使用该实现方式时，将导致[linearGradientBlur<sup>12+</sup>](#lineargradientblur-1)、[backgroundEffect](#backgroundeffect-1)、[brightness](#brightness-1)、[blur](#blur-1)等需要截屏的接口无法截取到正确的画面。<br>3. 混合模式设置为BlendMode.NONE时，BlendApplyType不生效。 |
 
 **返回值：**
 
@@ -2232,7 +2232,7 @@ blur(value: number, options?: BlurOptions): T
 blur(blurRadius: Optional<number>, options?: BlurOptions): T
 ```
 
-为组件添加内容模糊效果。与[blur](#blur)相比，blurRadius参数新增了对undefined类型的支持。
+为组件添加内容模糊效果。与[blur](#blur-1)相比，blurRadius参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -2265,7 +2265,7 @@ blur(blurRadius: Optional<number>, options?: BlurOptions): T
 blur(blurRadius: Optional<number>, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions): T
 ```
 
-为组件添加内容模糊效果。与[blur<sup>18+</sup>](#blur)相比，新增了sysOptions参数，即支持系统自适应调节参数。
+为组件添加内容模糊效果。与[blur<sup>18+</sup>](#blur-2)相比，新增了sysOptions参数，即支持系统自适应调节参数。
 
 **起始版本：** 19
 
@@ -2367,7 +2367,7 @@ borderColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
 borderImage(value: BorderImageOption): T
 ```
 
-Sets the border image of the component.
+设置组件的边框图片。
 
 **起始版本：** 11
 
@@ -2383,7 +2383,7 @@ Sets the border image of the component.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [BorderImageOption](arkts-arkui-common-comp-borderimageoption-i.md) | 是 |  |
+| value | [BorderImageOption](arkts-arkui-common-comp-borderimageoption-i.md) | 是 | 边框图片或边框渐变。 |
 
 **返回值：**
 
@@ -2558,7 +2558,7 @@ brightness(value: number): T
 brightness(brightness: Optional<number>): T
 ```
 
-为组件添加高光效果。未设置时，默认无变化。与[brightness](#brightness)相比，brightness参数新增了对undefined类型的支持。
+为组件添加高光效果。未设置时，默认无变化。与[brightness](#brightness-1)相比，brightness参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -2621,7 +2621,7 @@ chainMode(direction: Axis, style: ChainStyle): T
 chainWeight(chainWeight: ChainWeightOptions): T
 ```
 
-对形成链的组件进行重新布局。仅当父组件为RelativeContainer时生效。
+对形成链的组件进行重新布局。仅当父组件为[RelativeContainer](arkts-arkui-relativecontainer-comp.md)时生效。
 
 > **说明：** 
 > 
@@ -2685,7 +2685,7 @@ clickEffect(value: ClickEffect | null): T
 clickEffect(effect: Optional<ClickEffect | null>): T
 ```
 
-设置当前组件的点击回弹效果。与[clickEffect](#clickeffect)相比，新增了对undefined类型的支持。点击回弹效果的等级级别决定回弹时的缩放幅度。
+设置当前组件的点击回弹效果。与[clickEffect](#clickeffect-1)相比，新增了对undefined类型的支持。点击回弹效果的等级级别决定回弹时的缩放幅度。
 
 **起始版本：** 18
 
@@ -2747,7 +2747,7 @@ clip(value: boolean): T
 clip(clip: Optional<boolean>): T
 ```
 
-是否对子组件超出当前组件范围外的区域进行裁剪。不设置该接口时，默认不对子组件超出当前组件范围外的区域进行裁剪。与[clip<sup>12+</sup>](#clip)相比，新增了对undefined类型的支持。
+是否对子组件超出当前组件范围外的区域进行裁剪。不设置该接口时，默认不对子组件超出当前组件范围外的区域进行裁剪。与[clip<sup>12+</sup>](#clip-1)相比，新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -2787,7 +2787,7 @@ clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectA
 
 **废弃版本：** 12
 
-**替代接口：** [clipShape](#clipshape)(value: CircleShape | EllipseShape | PathShape | RectShape)
+**替代接口：** [clipShape](#clipshape-1)(value: CircleShape | EllipseShape | PathShape | RectShape)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -2815,7 +2815,7 @@ clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectA
 clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 ```
 
-按指定的形状（形状中可包含位置信息）对当前组件进行裁剪，将组件超出形状范围外的区域裁剪掉使其不可见。与[maskShape](#maskshape)不同，clipShape是将组件超出形状范围外的区域裁剪掉（不可见），而maskShape是在组件上叠加指定形状的遮罩覆盖层。
+按指定的形状（形状中可包含位置信息）对当前组件进行裁剪，将组件超出形状范围外的区域裁剪掉使其不可见。与[maskShape](#maskshape-1)不同，clipShape是将组件超出形状范围外的区域裁剪掉（不可见），而maskShape是在组件上叠加指定形状的遮罩覆盖层。
 
 > **说明：** 
 > 
@@ -2855,7 +2855,7 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 clipShape(shape: Optional<CircleShape | EllipseShape | PathShape | RectShape>): T
 ```
 
-按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。与[clipShape<sup>12+</sup>](#clipshape)相比，新增了对undefined类型的支持。
+按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。与[clipShape<sup>12+</sup>](#clipshape-1)相比，新增了对undefined类型的支持。
 
 > **说明：** 
 > 
@@ -2925,7 +2925,7 @@ colorBlend(value: Color | string | Resource): T
 colorBlend(color: Optional<Color | string | Resource>): T
 ```
 
-为组件添加颜色叠加效果。与[colorBlend](#colorblend)相比，color参数新增了对undefined类型的支持。
+为组件添加颜色叠加效果。与[colorBlend](#colorblend-1)相比，color参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -3011,7 +3011,7 @@ constraintSize(value: ConstraintSizeOptions): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 设置约束尺寸。constraintSize的优先级高于[width](#width)和[height](#height)。取值结果参考constraintSize取值对width/height影响。<br>默认值：<br>{<br>minWidth: 0, <br>maxWidth: Infinity, <br>minHeight: 0, <br>maxHeight: Infinity <br>} <br>异常值：数值开头的字符串仅解析出数字部分，非数值开头的字符串解析为0；其它异常值时，constraintSize属性恢复到不配置时的默认行为。<br>单位：vp |
+| value | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 设置约束尺寸。constraintSize的优先级高于[width](#width-1)和[height](#height-1)。取值结果参考constraintSize取值对width/height影响。<br>默认值：<br>{<br>minWidth: 0, <br>maxWidth: Infinity, <br>minHeight: 0, <br>maxHeight: Infinity <br>} <br>异常值：数值开头的字符串仅解析出数字部分，非数值开头的字符串解析为0；其它异常值时，constraintSize属性恢复到不配置时的默认行为。<br>单位：vp |
 
 **返回值：**
 
@@ -3057,7 +3057,7 @@ contrast(value: number): T
 contrast(contrast: Optional<number>): T
 ```
 
-为组件添加对比度效果。未设置时，默认无变化。与[contrast](#contrast)相比，contrast参数新增了对undefined类型的支持。
+为组件添加对比度效果。未设置时，默认无变化。与[contrast](#contrast-1)相比，contrast参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -3206,7 +3206,7 @@ displayPriority(value: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 设置当前组件在布局容器中显示的优先级，取值范围0, +∞)。<br>默认值：1<br>**说明：** <br>仅在[Row/Column/Flex(单行)容器组件中生效。<br>当容器空间有限，需要控制组件显示顺序或隐藏低优先级组件时使用（如在Flex容器中根据空间大小动态显示内容）。建议根据组件重要性设置优先级，关键组件设置较大的值（如2-10），次要组件设置较小的值（如1）。<br> 小数点后的数字不影响优先级。不大于1的所有值优先级相同。大于1时，displayPriority的整数部分越大，优先级越高；同一整数区间内的值优先级相同。例如：0.5和1.0优先级相同（均不大于1）；1.5和1.9优先级相同（整数部分均为1）；2.0和2.9优先级相同（整数部分均为2），且高于1.x的优先级。<br>若父容器空间不足，隐藏低优先级子组件。若某一优先级级别的子组件被隐藏，则所有更低优先级的子组件也都会被隐藏。 |
+| value | number | 是 | 设置当前组件在布局容器中显示的优先级，取值范围[0, +∞)。<br>默认值：1<br>**说明：** <br>仅在[Row](arkts-arkui-row-comp.md)/Column/Flex(单行)容器组件中生效。<br>当容器空间有限，需要控制组件显示顺序或隐藏低优先级组件时使用（如在Flex容器中根据空间大小动态显示内容）。建议根据组件重要性设置优先级，关键组件设置较大的值（如2-10），次要组件设置较小的值（如1）。<br> 小数点后的数字不影响优先级。不大于1的所有值优先级相同。大于1时，displayPriority的整数部分越大，优先级越高；同一整数区间内的值优先级相同。例如：0.5和1.0优先级相同（均不大于1）；1.5和1.9优先级相同（整数部分均为1）；2.0和2.9优先级相同（整数部分均为2），且高于1.x的优先级。<br>若父容器空间不足，隐藏低优先级子组件。若某一优先级级别的子组件被隐藏，则所有更低优先级的子组件也都会被隐藏。 |
 
 **返回值：**
 
@@ -3298,7 +3298,7 @@ dragPreview(value: CustomBuilder | DragItemInfo | string): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md) &#124; string | 是 | 设置组件浮起和拖拽过程中的预览图，仅在[onDragStart](#ondragstart)拖拽方式中有效。<br>当组件支持拖拽并同时设置[bindContextMenu](#bindcontextmenu)的预览图时，则长按浮起的预览图以[bindContextMenu](#bindcontextmenu)设置的预览图为准。开发者在[onDragStart](#ondragstart)中返回的背板图优先级低于[dragPreview](#dragpreview)设置的预览图，当设置了[dragPreview](#dragpreview)预览图时，拖拽过程中的背板图使用[dragPreview](#dragpreview)预览图。由于[CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)需要离线渲染之后才能使用，因此存在一定的性能开销和时延，推荐优先使用 [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md)中的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)方式。<br> 当传入类型为string的id时，则将id对应组件的截图作为预览图。如果id对应的组件无法查找到，或者id对应的组件Visibility属性设置成None/Hidden，则对组件自身进行截图作为拖拽预览图。目前截图不含有亮度、阴影、模糊和旋转等视觉效果。<br>**适用版本：** 12 |
+| value | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md) &#124; string | 是 | 设置组件浮起和拖拽过程中的预览图，仅在[onDragStart](#ondragstart)拖拽方式中有效。<br>当组件支持拖拽并同时设置[bindContextMenu](#bindcontextmenu-1)的预览图时，则长按浮起的预览图以[bindContextMenu](#bindcontextmenu-1)设置的预览图为准。开发者在[onDragStart](#ondragstart)中返回的背板图优先级低于[dragPreview](#dragpreview)设置的预览图，当设置了[dragPreview](#dragpreview)预览图时，拖拽过程中的背板图使用[dragPreview](#dragpreview)预览图。由于[CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)需要离线渲染之后才能使用，因此存在一定的性能开销和时延，推荐优先使用 [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md)中的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)方式。<br> 当传入类型为string的id时，则将id对应组件的截图作为预览图。如果id对应的组件无法查找到，或者id对应的组件Visibility属性设置成None/Hidden，则对组件自身进行截图作为拖拽预览图。目前截图不含有亮度、阴影、模糊和旋转等视觉效果。<br>**适用版本：** 12 |
 
 **返回值：**
 
@@ -3332,7 +3332,7 @@ dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: PreviewConf
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| preview | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md) &#124; string | 是 | 设置组件浮起和拖拽过程中的预览图，仅在[onDragStart](#ondragstart)拖拽方式中有效。<br>当组件支持拖拽并同时设置[bindContextMenu](#bindcontextmenu)的预览图时，则长按浮起的预览图以[bindContextMenu](#bindcontextmenu)设置的预览图为准。开发者在[onDragStart](#ondragstart)中返回的背板图优先级低于[dragPreview](#dragpreview)设置的预览图，当设置了[dragPreview](#dragpreview)预览图时，拖拽过程中的背板图使用[dragPreview](#dragpreview)预览图。由于[CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)需要离线渲染之后才能使用，因此存在一定的性能开销和时延，推荐优先使用 [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md)中的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)方式。<br> 当传入类型为string的id时，则将id对应组件的截图作为预览图。如果id对应的组件无法查找到，或者id对应的组件Visibility属性设置成None/Hidden，则对组件自身进行截图作为拖拽预览图。目前截图不含有亮度、阴影、模糊和旋转等视觉效果。 |
+| preview | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md) &#124; string | 是 | 设置组件浮起和拖拽过程中的预览图，仅在[onDragStart](#ondragstart)拖拽方式中有效。<br>当组件支持拖拽并同时设置[bindContextMenu](#bindcontextmenu-1)的预览图时，则长按浮起的预览图以[bindContextMenu](#bindcontextmenu-1)设置的预览图为准。开发者在[onDragStart](#ondragstart)中返回的背板图优先级低于[dragPreview](#dragpreview)设置的预览图，当设置了[dragPreview](#dragpreview)预览图时，拖拽过程中的背板图使用[dragPreview](#dragpreview)预览图。由于[CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)需要离线渲染之后才能使用，因此存在一定的性能开销和时延，推荐优先使用 [DragItemInfo](arkts-arkui-common-comp-dragiteminfo-i.md)中的[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)方式。<br> 当传入类型为string的id时，则将id对应组件的截图作为预览图。如果id对应的组件无法查找到，或者id对应的组件Visibility属性设置成None/Hidden，则对组件自身进行截图作为拖拽预览图。目前截图不含有亮度、阴影、模糊和旋转等视觉效果。 |
 | config | [PreviewConfiguration](arkts-arkui-common-comp-previewconfiguration-i.md) | 否 | 对自定义拖拽过程中的预览图进行配置。<br>只对[dragPreview](#dragpreview)中的预览生效。 |
 
 **返回值：**
@@ -3614,7 +3614,7 @@ flexShrink(value: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | 设置父容器压缩尺寸分配给此属性所在组件的比例。<br>取值限定为整数，父容器为 Column 、Row时， 取值范围0,+∞). <br>父容器为[Flex时，默认值：1 <br>[constraintSize](#constraintsize)限制组件的尺寸范围. Column和Row即使设置了constraintSize，在未设置主轴尺寸width/height/size时仍遵守默认布局行为，在主轴上自适应子组件尺寸，此时flexShrink不生效.<br>设置异常值时，该属性为默认值。 |
+| value | number | 是 | 设置父容器压缩尺寸分配给此属性所在组件的比例。<br>取值限定为整数，父容器为 [Column](arkts-arkui-column-comp.md) 、[Row](arkts-arkui-row-comp.md)时， 取值范围[0,+∞). <br>父容器为[Flex](arkts-arkui-flex-comp.md)时，默认值：1 <br>[constraintSize](#constraintsize)限制组件的尺寸范围. Column和Row即使设置了constraintSize，在未设置主轴尺寸width/height/size时仍遵守默认布局行为，在主轴上自适应子组件尺寸，此时flexShrink不生效.<br>设置异常值时，该属性为默认值。 |
 
 **返回值：**
 
@@ -3777,7 +3777,7 @@ focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T
 focusScopePriority(scopeId: string, priority?: FocusPriority): T
 ```
 
-设置当前组件在指定容器内获焦的优先级。需要配合[focusScopeId](#focusscopeid)一起使用。
+设置当前组件在指定容器内获焦的优先级。需要配合[focusScopeId](#focusscopeid-1)一起使用。
 
 **起始版本：** 12
 
@@ -3843,7 +3843,7 @@ foregroundBlurStyle(value: BlurStyle, options?: ForegroundBlurStyleOptions): T
 foregroundBlurStyle(style: Optional<BlurStyle>, options?: ForegroundBlurStyleOptions): T
 ```
 
-为当前组件提供内容模糊能力。与[foregroundBlurStyle](#foregroundblurstyle)相比，style参数新增了对undefined类型的支持。
+为当前组件提供内容模糊能力。与[foregroundBlurStyle](#foregroundblurstyle-1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -3874,7 +3874,7 @@ foregroundBlurStyle(style: Optional<BlurStyle>, options?: ForegroundBlurStyleOpt
 foregroundBlurStyle(style: Optional<BlurStyle>, options?: ForegroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): T
 ```
 
-为当前组件提供内容模糊能力。与[foregroundBlurStyle<sup>18+</sup>](#foregroundblurstyle)相比，新增了sysOptions参数，即支持系统自适应调节参数，系统可根据设备性能或显示策略等条件自动调节前景模糊的渲染效果。
+为当前组件提供内容模糊能力。与[foregroundBlurStyle<sup>18+</sup>](#foregroundblurstyle-2)相比，新增了sysOptions参数，即支持系统自适应调节参数，系统可根据设备性能或显示策略等条件自动调节前景模糊的渲染效果。
 
 > **说明：** 
 > 
@@ -3928,7 +3928,7 @@ foregroundColor(value: ResourceColor | ColoringStrategy): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md) | 是 | 设置组件的前景色或者根据智能取色策略设置前景色。使用[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md).INVERT时前景色为背景色的反色，需配合设置[backgroundColor](#backgroundcolor)。不支持[属性动画](arkts-arkui-common-comp.md)。 |
+| value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md) | 是 | 设置组件的前景色或者根据智能取色策略设置前景色。使用[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md).INVERT时前景色为背景色的反色，需配合设置[backgroundColor](#backgroundcolor-1)。不支持[属性动画](arkts-arkui-common-comp.md)。 |
 
 **返回值：**
 
@@ -3942,7 +3942,7 @@ foregroundColor(value: ResourceColor | ColoringStrategy): T
 foregroundColor(color: Optional<ResourceColor | ColoringStrategy>): T
 ```
 
-设置组件的前景色。当组件未设置前景色时，默认沿组件树向上继承祖先组件的前景色。与[foregroundColor](#foregroundcolor)相比，color参数新增了对undefined类型的支持。
+设置组件的前景色。当组件未设置前景色时，默认沿组件树向上继承祖先组件的前景色。与[foregroundColor](#foregroundcolor-1)相比，color参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -3958,7 +3958,7 @@ foregroundColor(color: Optional<ResourceColor | ColoringStrategy>): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md)&gt; | 是 | 设置组件的前景色或者根据智能取色策略设置前景色。使用[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md).INVERT时前景色为背景色的反色，需配合设置[backgroundColor](#backgroundcolor)。不支持[属性动画](arkts-arkui-common-comp.md)。<br>当color的值为undefined时，若组件之前已设置前景色则维持之前的前景色取值，若组件之前未设置前景色则使用组件默认前景色取值。不同组件的默认前景色取值可能存在差异，建议开发者使用确定颜色或[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md)。 |
+| color | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; [ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md)&gt; | 是 | 设置组件的前景色或者根据智能取色策略设置前景色。使用[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md).INVERT时前景色为背景色的反色，需配合设置[backgroundColor](#backgroundcolor-1)。不支持[属性动画](arkts-arkui-common-comp.md)。<br>当color的值为undefined时，若组件之前已设置前景色则维持之前的前景色取值，若组件之前未设置前景色则使用组件默认前景色取值。不同组件的默认前景色取值可能存在差异，建议开发者使用确定颜色或[ColoringStrategy](../arkts-apis/arkts-arkui-coloringstrategy-e.md)。 |
 
 **返回值：**
 
@@ -4070,7 +4070,7 @@ freeze(value: boolean): T
 freeze(freeze: Optional<boolean>): T
 ```
 
-设置当前控件和子控件是否整体离屏渲染绘制后重复绘制缓存，不再进行内部属性更新。当freeze设置为true时，组件属性更新将被冻结；若需恢复属性更新，需先将freeze设置为false。与[freeze](#freeze)相比，freeze参数新增了对undefined类型的支持。
+设置当前控件和子控件是否整体离屏渲染绘制后重复绘制缓存，不再进行内部属性更新。当freeze设置为true时，组件属性更新将被冻结；若需恢复属性更新，需先将freeze设置为false。与[freeze](#freeze-1)相比，freeze参数新增了对undefined类型的支持。
 
 > **说明：** 
 > 
@@ -4258,7 +4258,7 @@ grayscale(value: number): T
 grayscale(grayscale: Optional<number>): T
 ```
 
-为组件添加灰度效果。上层渲染灰度会覆盖下层子组件渲染。未设置时，默认无变化。与[grayscale](#grayscale)相比，grayscale参数新增了对undefined类型的支持。
+为组件添加灰度效果。上层渲染灰度会覆盖下层子组件渲染。未设置时，默认无变化。与[grayscale](#grayscale-1)相比，grayscale参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -4322,7 +4322,7 @@ height(value: Length): T
 
 > **说明：** 
 > 
-> - 在Row、Column、RelativeContainer组件中，height设置auto表示自适应子组件。
+> - 在[Row](arkts-arkui-row-comp.md)、[Column](arkts-arkui-column-comp.md)、[RelativeContainer](arkts-arkui-relativecontainer-comp.md)组件中，height设置auto表示自适应子组件。
 > 
 > - 从API version 10开始，该接口支持calc计算特性。
 
@@ -4478,7 +4478,7 @@ hueRotate(value: number | string): T
 hueRotate(rotation: Optional<number | string>): T
 ```
 
-色相旋转效果。未设置时，默认无变化。与[hueRotate](#huerotate)相比，rotation参数新增了对undefined类型的支持。
+色相旋转效果。未设置时，默认无变化。与[hueRotate](#huerotate-1)相比，rotation参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -4643,7 +4643,7 @@ invert(value: number | InvertOptions): T
 invert(options: Optional<number | InvertOptions>): T
 ```
 
-反转输入的图像。与[invert](#invert)相比，options参数新增了对undefined类型的支持。
+反转输入的图像。与[invert](#invert-1)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -4833,7 +4833,7 @@ lightUpEffect(value: number): T
 lightUpEffect(degree: Optional<number>): T
 ```
 
-设置组件图像亮起程度。与[lightUpEffect<sup>12+</sup>](#lightupeffect)相比，degree参数新增了对undefined类型的支持。
+设置组件图像亮起程度。与[lightUpEffect<sup>12+</sup>](#lightupeffect-1)相比，degree参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -4893,7 +4893,7 @@ linearGradient(value: LinearGradientOptions): T
 linearGradient(options: Optional<LinearGradientOptions>): T
 ```
 
-设置组件的线性渐变效果，沿指定方向或角度进行颜色渐变。与[linearGradient](#lineargradient)相比，options参数新增了对undefined类型的支持。
+设置组件的线性渐变效果，沿指定方向或角度进行颜色渐变。与[linearGradient](#lineargradient-1)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -4956,7 +4956,7 @@ linearGradientBlur(value: number, options: LinearGradientBlurOptions): T
 linearGradientBlur(blurRadius: Optional<number>, options: Optional<LinearGradientBlurOptions>): T
 ```
 
-为组件添加内容线性渐变模糊效果。与[linearGradientBlur<sup>12+</sup>](#lineargradientblur)相比，新增了对undefined类型的支持。
+为组件添加内容线性渐变模糊效果。与[linearGradientBlur<sup>12+</sup>](#lineargradientblur-1)相比，新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -5079,7 +5079,7 @@ mask(value: ProgressMask): T
 mask(mask: Optional<ProgressMask>): T
 ```
 
-为组件添加可调节进度的遮罩，遮罩覆盖在组件内容上方，通过进度值控制遮罩的显示范围。与[mask<sup>12+</sup>](#mask)相比，新增了对undefined类型的支持。
+为组件添加可调节进度的遮罩，遮罩覆盖在组件内容上方，通过进度值控制遮罩的显示范围。与[mask<sup>12+</sup>](#mask-1)相比，新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -5183,7 +5183,7 @@ maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 maskShape(shape: Optional<CircleShape | EllipseShape | PathShape | RectShape>): T
 ```
 
-为组件添加指定形状的遮罩，在组件上叠加指定形状的覆盖层。与[maskShape<sup>12+</sup>](#maskshape)相比，新增了对undefined类型的支持。
+为组件添加指定形状的遮罩，在组件上叠加指定形状的覆盖层。与[maskShape<sup>12+</sup>](#maskshape-1)相比，新增了对undefined类型的支持。
 
 > **说明：** 
 > 
@@ -5297,7 +5297,7 @@ motionBlur(value: MotionBlurOptions): T
 > 
 > - 使用该属性时，不要频繁更改同一个组件的模糊半径，否则会产生非预期效果。比如示例中的动画，频繁点击会出现模糊效果偶尔失效的情况。
 > 
-> - 运动模糊锚点坐标需要与动画缩放[scale](#scale)属性的锚点（centerX/centerY）保持一致，否则会产生非预期效果。
+> - 运动模糊锚点坐标需要与动画缩放[scale](#scale-1)属性的锚点（centerX/centerY）保持一致，否则会产生非预期效果。
 > 
 > - 模糊半径建议取值不超过1.0，否则会产生非预期效果。
 
@@ -5329,7 +5329,7 @@ motionBlur(value: MotionBlurOptions): T
 motionBlur(motionBlur: Optional<MotionBlurOptions>): T
 ```
 
-在当前组件由缩放大小或位移变化引起的运动过程中，增加运动模糊效果。与[motionBlur](#motionblur)相比，motionBlur参数新增了对undefined类型的支持。
+在当前组件由缩放大小或位移变化引起的运动过程中，增加运动模糊效果。与[motionBlur](#motionblur-1)相比，motionBlur参数新增了对undefined类型的支持。
 
 > **说明：** 
 > 
@@ -5341,7 +5341,7 @@ motionBlur(motionBlur: Optional<MotionBlurOptions>): T
 > 
 > - 使用该属性时，不要频繁更改同一个组件的模糊半径，否则会产生非预期效果。比如示例中的动画，频繁点击会出现模糊效果偶尔失效的情况。
 > 
-> - 运动模糊锚点坐标需要与[scale](#scale)属性的锚点（centerX/centerY）保持一致，否则会产生非预期效果。
+> - 运动模糊锚点坐标需要与[scale](#scale-1)属性的锚点（centerX/centerY）保持一致，否则会产生非预期效果。
 > 
 > - 模糊半径建议取值不超过1.0，否则会产生非预期效果。
 
@@ -5680,7 +5680,7 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 
 组件区域变化时触发该回调。仅会响应由布局变化所导致的组件大小、位置发生变化时的回调。
 
-由绘制变化所导致的渲染属性变化不会响应回调，如[translate](#translate)、[offset](#offset)、[markAnchor](#markanchor)、[scale](#scale)、[transform](#transform)。若组件自身位置由绘制变化决定也不会响应回调，如[bindSheet](#bindsheet)。
+由绘制变化所导致的渲染属性变化不会响应回调，如[translate](#translate-1)、[offset](#offset)、[markAnchor](#markanchor)、[scale](#scale-1)、[transform](#transform-1)。若组件自身位置由绘制变化决定也不会响应回调，如[bindSheet](#bindsheet)。
 
 > **说明：** 
 > 
@@ -6088,7 +6088,7 @@ onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
 onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T
 ```
 
-拖拽进入组件范围内时，触发回调，当监听了[onDrop](#ondrop)事件时，此事件才有效。
+拖拽进入组件范围内时，触发回调，当监听了[onDrop](#ondrop-1)事件时，此事件才有效。
 
 **起始版本：** 8
 
@@ -6116,7 +6116,7 @@ onDragEnter(event: (event: DragEvent, extraParams?: string) => void): T
 onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T
 ```
 
-拖拽离开组件范围内时，触发回调，当监听了[onDrop](#ondrop)事件时，此事件才有效。
+拖拽离开组件范围内时，触发回调，当监听了[onDrop](#ondrop-1)事件时，此事件才有效。
 
 **起始版本：** 8
 
@@ -6144,7 +6144,7 @@ onDragLeave(event: (event: DragEvent, extraParams?: string) => void): T
 onDragMove(event: (event: DragEvent, extraParams?: string) => void): T
 ```
 
-拖拽在组件范围内移动时，触发回调，当监听了[onDrop](#ondrop)事件时，此事件才有效。
+拖拽在组件范围内移动时，触发回调，当监听了[onDrop](#ondrop-1)事件时，此事件才有效。
 
 **起始版本：** 8
 
@@ -6459,7 +6459,7 @@ onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback, exp
 
 新增exposeInnerGesture参数作为是否将ArkUI系统组合组件的内置组件的手势暴露给开发者的标识。当该标识置为true时，将ArkUI系统组合组件的内置组件的手势暴露给开发者。
 
-对于不需要将ArkUI系统组合组件的内置组件的手势暴露给开发者的场景，建议采用原有[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)接口。若要求将ArkUI系统组合组件的内置组件的手势暴露给开发者，建议使用该接口并将exposeInnerGesture设置为true。
+对于不需要将ArkUI系统组合组件的内置组件的手势暴露给开发者的场景，建议采用原有[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin-1)接口。若要求将ArkUI系统组合组件的内置组件的手势暴露给开发者，建议使用该接口并将exposeInnerGesture设置为true。
 
 **起始版本：** 13
 
@@ -6476,7 +6476,7 @@ onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback, exp
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [GestureRecognizerJudgeBeginCallback](arkts-arkui-common-comp-gesturerecognizerjudgebegincallback-t.md) | 是 | 自定义手势识别器判定回调，当绑定到该组件的手势即将成功时，会触发用户定义的回调来获取结果。 |
-| exposeInnerGesture | boolean | 是 | 暴露内部手势标识。<br>默认值：false<br>**说明：** <br>如果是组合组件，此参数设置true，回调中的current参数则会包含组合组件内部的手势识别器。<br>当前仅支持[Tabs](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-customelement-i.md#tabs)，其他组件请不要设置此参数。<br>设置为false时，功能与原接口[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)相同。 |
+| exposeInnerGesture | boolean | 是 | 暴露内部手势标识。<br>默认值：false<br>**说明：** <br>如果是组合组件，此参数设置true，回调中的current参数则会包含组合组件内部的手势识别器。<br>当前仅支持[Tabs](../../apis-avsession-kit/arkts-apis/arkts-avsession-avmusictemplate-customelement-i.md#tabs)，其他组件请不要设置此参数。<br>设置为false时，功能与原接口[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin-1)相同。 |
 
 **返回值：**
 
@@ -6708,7 +6708,7 @@ Web组件使用该方法时，如果返回值为`true`，Web组件会判断组�
 
 XComponent组件使用该方法时，如果返回值为`true`且XComponent组件使用 [OH_ArkUI_XComponent_SetNeedSoftKeyboard()](../../../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_setneedsoftkeyboard)设置了需要键盘，才会保留键盘，如果返回值为`false`，无论组件如何设置，键盘都不会保留。
 
-当返回值为`true`时，应用的自绘制输入框需要在获焦时主动调用 [attach](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-inputmethodcontroller-i.md#attach)方法，建立输入法框架和输入法应用的通信，否则点击键盘会失去响应。说明：失焦时输入法框架和输入法应用的通信会断开，获焦时需要重新建立通信。
+当返回值为`true`时，应用的自绘制输入框需要在获焦时主动调用 [attach](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-inputmethodcontroller-i.md#attach-3)方法，建立输入法框架和输入法应用的通信，否则点击键盘会失去响应。说明：失焦时输入法框架和输入法应用的通信会断开，获焦时需要重新建立通信。
 
 该接口只适用于对输入法应用接续的场景，对自定义键盘不生效。自定义键盘接续详见[setCustomKeyboardContinueFeature](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#setcustomkeyboardcontinuefeature)。
 
@@ -6726,7 +6726,7 @@ XComponent组件使用该方法时，如果返回值为`true`且XComponent组件
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| onNeedSoftkeyboardCallback | [OnNeedSoftkeyboardCallback](arkts-arkui-common-comp-onneedsoftkeyboardcallback-t.md) &#124; undefined | 是 | 事件触发时执行的回调，系统会根据回调的返回值决定是否需要键盘。设置为undefined时，不会触发回调，输入框类组件行为等同返回true。其他组件行为等同返回false。前提条件：组件需可获焦，否则本接口不生效。当返回值为true时，自绘制输入框需在获焦时主动调用[attach](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-inputmethodcontroller-i.md#attach)方法建立输入法通信，否则点击键盘会失去响应。 |
+| onNeedSoftkeyboardCallback | [OnNeedSoftkeyboardCallback](arkts-arkui-common-comp-onneedsoftkeyboardcallback-t.md) &#124; undefined | 是 | 事件触发时执行的回调，系统会根据回调的返回值决定是否需要键盘。设置为undefined时，不会触发回调，输入框类组件行为等同返回true。其他组件行为等同返回false。前提条件：组件需可获焦，否则本接口不生效。当返回值为true时，自绘制输入框需在获焦时主动调用[attach](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethod-inputmethodcontroller-i.md#attach-3)方法建立输入法通信，否则点击键盘会失去响应。 |
 
 **返回值：**
 
@@ -6947,11 +6947,11 @@ onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback): T
 > 
 > - 仅提供自身节点相对于所有祖先节点（直到window边界）的相对裁切面积与自身面积的比值及其变化趋势。
 > 
-> - 不支持兄弟组件对自身节点的遮挡计算，不支持所有祖先的兄弟节点对自身节点的遮挡计算，不支持窗口遮挡计算，不支持组件旋转计算，如Stack、[Z序控制](#zindex)、[rotate](#rotate)等。
+> - 不支持兄弟组件对自身节点的遮挡计算，不支持所有祖先的兄弟节点对自身节点的遮挡计算，不支持窗口遮挡计算，不支持组件旋转计算，如Stack、[Z序控制](#zindex)、[rotate](#rotate-1)等。
 > 
 > - 不支持非挂树节点的可见面积变化计算。例如，预加载的节点、通过[overlay](#overlay)能力挂载的自定义节点。
 > 
-> - 不支持[scale](#scale)属性，如果想要支持[scale](#scale)，则需使用[onVisibleAreaChange<sup>22+</sup>](#onvisibleareachange)，将measureFromViewport设置为true。
+> - 不支持[scale](#scale-1)属性，如果想要支持[scale](#scale-1)，则需使用[onVisibleAreaChange<sup>22+</sup>](#onvisibleareachange-2)，将measureFromViewport设置为true。
 
 **起始版本：** 9
 
@@ -6998,7 +6998,7 @@ onVisibleAreaChange(ratios: Array<number>, event: VisibleAreaChangeCallback, mea
 | --- | --- | --- | --- |
 | ratios | Array&lt;number&gt; | 是 | 阈值数组。其中，每个阈值代表组件可见面积与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br>**说明：** <br>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
 | event | [VisibleAreaChangeCallback](arkts-arkui-common-comp-visibleareachangecallback-t.md) | 是 | 组件可见区域变化事件的回调。 |
-| measureFromViewport | boolean | 是 | 设置可见区域计算模式。<br>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](#clip) 属性设置。如果父组件的[clip](#clip)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](#clip)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](#clip)的影响，直接将组件超出父组件的部分视为不可见区域。<br>measureFromViewport设置为true时，祖先节点设置[scale](#scale)属性，组件可见比例会被正确计算。 |
+| measureFromViewport | boolean | 是 | 设置可见区域计算模式。<br>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](#clip-1) 属性设置。如果父组件的[clip](#clip-1)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](#clip-1)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](#clip-1)的影响，直接将组件超出父组件的部分视为不可见区域。<br>measureFromViewport设置为true时，祖先节点设置[scale](#scale-1)属性，组件可见比例会被正确计算。 |
 
 **返回值：**
 
@@ -7042,7 +7042,7 @@ opacity(value: number | Resource): T
 opacity(opacity: Optional<number | Resource>): T
 ```
 
-设置组件的不透明度。与[opacity](#opacity)相比，opacity参数新增了对undefined类型的支持。
+设置组件的不透明度。与[opacity](#opacity-1)相比，opacity参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7106,7 +7106,7 @@ outline(value: OutlineOptions): T
 outline(options: Optional<OutlineOptions>): T
 ```
 
-统一设置组件的外描边样式，外描边绘制在组件的外侧，不影响布局，不会占用组件本身大小。需设置outlineWidth大于0，外描边才可见。与[outline](#outline)相比，options参数新增了对undefined类型的支持。
+统一设置组件的外描边样式，外描边绘制在组件的外侧，不影响布局，不会占用组件本身大小。需设置outlineWidth大于0，外描边才可见。与[outline](#outline-1)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7170,7 +7170,7 @@ outlineColor(value: ResourceColor | EdgeColors | LocalizedEdgeColors): T
 outlineColor(color: Optional<ResourceColor | EdgeColors | LocalizedEdgeColors>): T
 ```
 
-设置元素的外描边颜色，需设置outlineWidth大于0，外描边颜色才可见。未设置时，默认显示为黑色。与[outlineColor](#outlinecolor)相比，color参数新增了对undefined类型的支持。
+设置元素的外描边颜色，需设置outlineWidth大于0，外描边颜色才可见。未设置时，默认显示为黑色。与[outlineColor](#outlinecolor-1)相比，color参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7234,7 +7234,7 @@ outlineRadius(value: Dimension | OutlineRadiuses): T
 outlineRadius(radius: Optional<Dimension | OutlineRadiuses>): T
 ```
 
-设置元素的外描边圆角半径。需设置outlineWidth大于0，外描边圆角半径才可见。未设置时，默认外描边圆角半径为0。与[outlineRadius](#outlineradius)相比，radius参数新增了对undefined类型的支持。
+设置元素的外描边圆角半径。需设置outlineWidth大于0，外描边圆角半径才可见。未设置时，默认外描边圆角半径为0。与[outlineRadius](#outlineradius-1)相比，radius参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7298,7 +7298,7 @@ outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T
 outlineStyle(style: Optional<OutlineStyle | EdgeOutlineStyles>): T
 ```
 
-设置元素的外描边样式。需设置outlineWidth大于0，外描边样式才可见。未设置时，默认显示为一条实线。与[outlineStyle](#outlinestyle)相比，style参数新增了对undefined类型的支持。
+设置元素的外描边样式。需设置outlineWidth大于0，外描边样式才可见。未设置时，默认显示为一条实线。与[outlineStyle](#outlinestyle-1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7362,7 +7362,7 @@ outlineWidth(value: Dimension | EdgeOutlineWidths): T
 outlineWidth(width: Optional<Dimension | EdgeOutlineWidths>): T
 ```
 
-设置元素的外描边宽度。未设置时，默认值为0，即无外描边宽度。与[outlineWidth](#outlinewidth)相比，width参数新增了对undefined类型的支持。
+设置元素的外描边宽度。未设置时，默认值为0，即无外描边宽度。与[outlineWidth](#outlinewidth-1)相比，width参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7569,7 +7569,7 @@ pixelStretchEffect(options: PixelStretchEffectOptions): T
 pixelStretchEffect(options: Optional<PixelStretchEffectOptions>): T
 ```
 
-设置组件的图像边缘像素扩展距离。与[pixelStretchEffect<sup>12+</sup>](#pixelstretcheffect)相比，options参数新增了对undefined类型的支持。
+设置组件的图像边缘像素扩展距离。与[pixelStretchEffect<sup>12+</sup>](#pixelstretcheffect-1)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7604,11 +7604,11 @@ position(value: Position | Edges | LocalizedEdges): T
 > **说明：** 
 > 
 > - position对位置的影响作用在组件的尺寸测量完成之后。
-> - 当父组件为Row、Column或Flex时，设置position的子组件不占位。在上述场景中，如果父组件包含的所有子组件均设置了position，此时父组件尺寸无法通过其他子组件确定，将基于尺寸(0, 0)进行布局测算。
+> - 当父组件为[Row](arkts-arkui-row-comp.md)、[Column](arkts-arkui-column-comp.md)或Flex时，设置position的子组件不占位。在上述场景中，如果父组件包含的所有子组件均设置了position，此时父组件尺寸无法通过其他子组件确定，将基于尺寸(0, 0)进行布局测算。
 > - Position类型基于父组件内容区左上角确定位置；Edges类型基于父组件内容区四边确定位置，top/left/right/bottom分别为组件各边距离父组件内容区相应边的边距，通过边距来确定组件相对于父组件内容区的位置；Lo calizedEdges类型基于父组件内容区四边确定位置，支持镜像模式。
 > - 本属性适用于置顶显示、悬浮按钮等组件在父组件中位置固定的场景。
 > - 本属性不支持在宽高为零的布局组件上设置。
-> - 当父组件为RelativeContainer，且子组件设置了alignRules属性时，子组件的position属性不生效。
+> - 当父组件为[RelativeContainer](arkts-arkui-relativecontainer-comp.md)，且子组件设置了alignRules属性时，子组件的position属性不生效。
 > - 若本属性所在组件的父组件未设置固定宽高，那么本组件会参考第一个设置固定宽高的祖先组件进行绝对定位。
 
 **起始版本：** 7
@@ -7705,7 +7705,7 @@ radialGradient(value: RadialGradientOptions): T
 radialGradient(options: Optional<RadialGradientOptions>): T
 ```
 
-设置组件的径向渐变效果，从中心点向外辐射进行颜色渐变。与[radialGradient](#radialgradient)相比，options参数新增了对undefined类型的支持。
+设置组件的径向渐变效果，从中心点向外辐射进行颜色渐变。与[radialGradient](#radialgradient-1)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -7769,7 +7769,7 @@ renderFit(fitMode: RenderFit): T
 renderFit(fitMode: Optional<RenderFit>): T
 ```
 
-设置宽高动画过程中的组件内容填充方式。未设置时，默认取值为RenderFit.TOP_LEFT，保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。对于TEXTURE和SURFACE类型的XComponent组件，当不设置renderFit属性时，取默认值为RenderFit.RESIZE_FILL。与[renderFit](#renderfit)相比，fitMode参数新增了对undefined类型的支持。当fitMode的值为undefined时，恢复为RenderFit.TOP_LEFT的效果。对于TEXTURE和SURFACE类型的XComponent组件，恢复为RenderFit.RESIZE_FILL的效果。
+设置宽高动画过程中的组件内容填充方式。未设置时，默认取值为RenderFit.TOP_LEFT，保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。对于TEXTURE和SURFACE类型的XComponent组件，当不设置renderFit属性时，取默认值为RenderFit.RESIZE_FILL。与[renderFit](#renderfit-1)相比，fitMode参数新增了对undefined类型的支持。当fitMode的值为undefined时，恢复为RenderFit.TOP_LEFT的效果。对于TEXTURE和SURFACE类型的XComponent组件，恢复为RenderFit.RESIZE_FILL的效果。
 
 **起始版本：** 18
 
@@ -7801,7 +7801,7 @@ renderFit(fitMode: Optional<RenderFit>): T
 renderGroup(value: boolean): T
 ```
 
-设置是否组成节点组。节点组表示当前组件和子组件组成的子树先在离屏画布中渲染，再与父组件融合绘制。设置为节点组后，系统会缓存绘制结果，提升性能。与[freeze](#freeze)方法相比，renderGroup允许组件属性继续更新（但频繁更新会导致缓存失效），适合需要动态更新且希望缓存优化的场景；freeze完全停止内部属性更新，适合静态内容的稳定缓存优化。但如果节点组内的组件频繁更新，缓存失效，可能导致性能下降。此外，设置为节点组后，当前组件的不透明度不为1时，绘制效果可能有差异。
+设置是否组成节点组。节点组表示当前组件和子组件组成的子树先在离屏画布中渲染，再与父组件融合绘制。设置为节点组后，系统会缓存绘制结果，提升性能。与[freeze](#freeze-1)方法相比，renderGroup允许组件属性继续更新（但频繁更新会导致缓存失效），适合需要动态更新且希望缓存优化的场景；freeze完全停止内部属性更新，适合静态内容的稳定缓存优化。但如果节点组内的组件频繁更新，缓存失效，可能导致性能下降。此外，设置为节点组后，当前组件的不透明度不为1时，绘制效果可能有差异。
 
 不设置该属性时，默认不组成节点组。
 
@@ -7839,9 +7839,9 @@ renderGroup(isGroup: Optional<boolean>): T
 
 > **说明：** 
 > 
-> 与[freeze](#freeze)不同，renderGroup在缓存绘制结果后仍允许内部属性更新（更新时缓存失效），适用于组件需要动态更新的场景；
+> 与[freeze](#freeze-1)不同，renderGroup在缓存绘制结果后仍允许内部属性更新（更新时缓存失效），适用于组件需要动态更新的场景；
 > freeze则完全停止内部属性更新，适用于组件内容稳定不需要更新的场景。
-> 与[renderGroup<sup>10+</sup>](#rendergroup)相比，isGroup参数新增了对undefined类型的支持。
+> 与[renderGroup<sup>10+</sup>](#rendergroup-1)相比，isGroup参数新增了对undefined类型的支持。
 
 不设置该属性时，默认不组成节点组。
 
@@ -8066,7 +8066,7 @@ rotate(value: RotateOptions): T
 rotate(options: Optional<RotateOptions>): T
 ```
 
-设置组件旋转。与[rotate](#rotate)相比，options参数新增了对undefined类型的支持。
+设置组件旋转。与[rotate](#rotate-1)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8098,7 +8098,7 @@ rotate(options: Optional<RotateOptions>): T
 rotate(options: Optional<RotateOptions | RotateAngleOptions>): T
 ```
 
-设置组件旋转效果。与[rotate](#rotate)相比，options参数新增了对RotateAngleOptions类型的支持。
+设置组件旋转效果。与[rotate](#rotate-2)相比，options参数新增了对RotateAngleOptions类型的支持。
 
 **起始版本：** 20
 
@@ -8196,7 +8196,7 @@ saturate(value: number): T
 saturate(saturate: Optional<number>): T
 ```
 
-为组件添加饱和度效果。未设置时，默认无变化。与[saturate](#saturate)相比，saturate参数新增了对undefined类型的支持。
+为组件添加饱和度效果。未设置时，默认无变化。与[saturate](#saturate-1)相比，saturate参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8258,7 +8258,7 @@ scale(value: ScaleOptions): T
 scale(options: Optional<ScaleOptions>): T
 ```
 
-设置组件缩放。与[scale](#scale)相比，options参数新增了对undefined类型的支持。
+设置组件缩放。与[scale](#scale-1)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8320,7 +8320,7 @@ sepia(value: number): T
 sepia(sepia: Optional<number>): T
 ```
 
-将图像转换为深褐色。与[sepia](#sepia)相比，sepia参数新增了对undefined类型的支持。
+将图像转换为深褐色。与[sepia](#sepia-1)相比，sepia参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8382,7 +8382,7 @@ shadow(value: ShadowOptions | ShadowStyle): T
 shadow(options: Optional<ShadowOptions | ShadowStyle>): T
 ```
 
-为组件添加阴影效果。与[shadow](#shadow)相比，options参数新增了对undefined类型的支持。
+为组件添加阴影效果。与[shadow](#shadow-1)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8605,7 +8605,7 @@ sphericalEffect(value: number): T
 sphericalEffect(effect: Optional<number>): T
 ```
 
-设置组件的图像球面化程度。球面化效果将组件内容映射到球面曲面上，使图像呈现出类似球体的立体视觉效果，值越大球面弧度越高、立体感越强。与[sphericalEffect<sup>12+</sup>](#sphericaleffect)相比，effect参数新增了对undefined类型的支持。
+设置组件的图像球面化程度。球面化效果将组件内容映射到球面曲面上，使图像呈现出类似球体的立体视觉效果，值越大球面弧度越高、立体感越强。与[sphericalEffect<sup>12+</sup>](#sphericaleffect-1)相比，effect参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8699,7 +8699,7 @@ sweepGradient(value: SweepGradientOptions): T
 sweepGradient(options: Optional<SweepGradientOptions>): T
 ```
 
-设置组件的角度渐变效果，围绕中心点按角度旋转进行颜色渐变。与[sweepGradient](#sweepgradient)相比，options参数新增了对undefined类型的支持。
+设置组件的角度渐变效果，围绕中心点按角度旋转进行颜色渐变。与[sweepGradient](#sweepgradient-1)相比，options参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -8755,7 +8755,7 @@ systemBarEffect(): T
 systemMaterial(material: SystemUiMaterial | undefined): T
 ```
 
-设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口可以影响背景色[backgroundColor](#backgroundcolor)、边框颜色[borderColor](#bordercolor)、边框宽度[borderWidth](#borderwidth)、阴影[shadow](#shadow)、材质层滤镜[materialFilter](#materialfilter)效果，影响的属性与设备材质等级相关，参考[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)。[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)只有支持沉浸式材质的设备上设置才有效果，在不支持沉浸式材质的设备上可设置但无效果，可通过[isImmersiveMaterialSupported](../arkts-apis/arkts-arkui-uimaterial-isimmersivematerialsupported-f.md)判断设备是否支持沉浸式材质。使用示例请参考[示例1（设置沉浸式系统材质）](../../../reference/apis-arkui/arkts-apis-uimaterial.md#示例1设置沉浸式系统材质)。
+设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口可以影响背景色[backgroundColor](#backgroundcolor-1)、边框颜色[borderColor](#bordercolor)、边框宽度[borderWidth](#borderwidth)、阴影[shadow](#shadow-1)、材质层滤镜[materialFilter](#materialfilter)效果，影响的属性与设备材质等级相关，参考[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)。[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)只有支持沉浸式材质的设备上设置才有效果，在不支持沉浸式材质的设备上可设置但无效果，可通过[isImmersiveMaterialSupported](../arkts-apis/arkts-arkui-uimaterial-isimmersivematerialsupported-f.md)判断设备是否支持沉浸式材质。使用示例请参考[示例1（设置沉浸式系统材质）](../../../reference/apis-arkui/arkts-apis-uimaterial.md#示例1设置沉浸式系统材质)。
 
 > **说明：** 
 > 
@@ -8763,11 +8763,11 @@ systemMaterial(material: SystemUiMaterial | undefined): T
 > 
 > - 在同时设置了材质影响的通用属性发生冲突时，除阴影外，总体原则为后设置的生效，对于阴影属性取决于[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)的applyShadow参数。
 > 
-> - 先设置[backgroundColor](#backgroundcolor)属性后设置[systemMaterial](#systemmaterial)属性：backgroundColor属性被覆盖。在支持沉浸式材质的高算力和中算力设备上，背景色属性被清空为透明色；在支持沉浸式材质的低算力设备上，材质自带的背景色效果覆盖了先设置的backgroundColor属性。开发者可通过[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)的接口判断当前设备的算力档位。
+> - 先设置[backgroundColor](#backgroundcolor-1)属性后设置[systemMaterial](#systemmaterial)属性：backgroundColor属性被覆盖。在支持沉浸式材质的高算力和中算力设备上，背景色属性被清空为透明色；在支持沉浸式材质的低算力设备上，材质自带的背景色效果覆盖了先设置的backgroundColor属性。开发者可通过[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)的接口判断当前设备的算力档位。
 > 
-> - 先设置[systemMaterial](#systemmaterial)属性后设置[backgroundColor](#backgroundcolor)属性：systemMaterial属性影响的背景色效果被覆盖，背景色属性生效为后设置的backgroundColor属性的颜色。
+> - 先设置[systemMaterial](#systemmaterial)属性后设置[backgroundColor](#backgroundcolor-1)属性：systemMaterial属性影响的背景色效果被覆盖，背景色属性生效为后设置的backgroundColor属性的颜色。
 > 
-> - 对于所有设备算力档位均需要材质颜色的场景，可以通过[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)的materialColor参数承载，不再设置[backgroundColor](#backgroundcolor)属性。
+> - 对于所有设备算力档位均需要材质颜色的场景，可以通过[ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)的materialColor参数承载，不再设置[backgroundColor](#backgroundcolor-1)属性。
 
 **起始版本：** 26.0.0
 
@@ -8917,7 +8917,7 @@ transform(value: object): T
 transform(transform: Optional<object>): T
 ```
 
-设置二维变换矩阵。包含三维变换时应使用[transform3D](#transform3d)接口。与[transform](#transform)相比，transform<sup>18+</sup>参数新增了对undefined类型的支持。
+设置二维变换矩阵。包含三维变换时应使用[transform3D](#transform3d)接口。与[transform](#transform-1)相比，transform<sup>18+</sup>参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -9007,7 +9007,7 @@ transition(value: TransitionOptions | TransitionEffect): T
 transition(effect: TransitionEffect, onFinish: Optional<TransitionFinishCallback>): T
 ```
 
-组件插入显示和删除隐藏的过渡效果。同[transition](#transition)相比，增加了转场动画结束的回调。
+组件插入显示和删除隐藏的过渡效果。同[transition](#transition-1)相比，增加了转场动画结束的回调。
 
 > **说明：** 
 > 
@@ -9074,7 +9074,7 @@ translate(value: TranslateOptions): T
 translate(translate: Optional<TranslateOptions>): T
 ```
 
-设置组件平移。与[translate](#translate)相比，translate参数新增了对undefined类型的支持。
+设置组件平移。与[translate](#translate-1)相比，translate参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -9137,7 +9137,7 @@ useEffect(useEffect: boolean, effectType: EffectType): T
 useEffect(useEffect: Optional<boolean>, effectType?: EffectType): T
 ```
 
-用于设置组件是否应用<!--Del-->父级[EffectComponent](arkts-arkui-effectcomponent-comp-sys.md)或<!--DelEnd-->窗口定义的效果模板。与[useEffect<sup>14+</sup>](#useeffect)相比，useEffect参数新增了对undefined类型的支持。effectType为DEFAULT时，必须在EffectComponent的子组件上使用且EffectComponent需配置特效属性才能生效；effectType为WINDOW_EFFECT时，需配合窗口效果模板使用。不在对应容器内使用时，useEffect将不产生任何效果。
+用于设置组件是否应用<!--Del-->父级[EffectComponent](arkts-arkui-effectcomponent-comp-sys.md)或<!--DelEnd-->窗口定义的效果模板。与[useEffect<sup>14+</sup>](#useeffect-1)相比，useEffect参数新增了对undefined类型的支持。effectType为DEFAULT时，必须在EffectComponent的子组件上使用且EffectComponent需配置特效属性才能生效；effectType为WINDOW_EFFECT时，需配合窗口效果模板使用。不在对应容器内使用时，useEffect将不产生任何效果。
 
 **起始版本：** 18
 
@@ -9198,7 +9198,7 @@ useEffect(value: boolean): T
 useShadowBatching(value: boolean): T
 ```
 
-控件内部子节点的阴影是否进行同层绘制，控制同层元素阴影重叠效果。需配合[shadow](#shadow)方法使用，当子节点已通过shadow()设置阴影时，useShadowBatching可控制这些阴影是否进行同层绘制。
+控件内部子节点的阴影是否进行同层绘制，控制同层元素阴影重叠效果。需配合[shadow](#shadow-1)方法使用，当子节点已通过shadow()设置阴影时，useShadowBatching可控制这些阴影是否进行同层绘制。
 
 **起始版本：** 11
 
@@ -9230,7 +9230,7 @@ useShadowBatching(value: boolean): T
 useShadowBatching(use: Optional<boolean>): T
 ```
 
-控件内部子节点的阴影是否进行同层绘制，同层绘制时子节点阴影不会产生重叠覆盖效果。需配合[shadow](#shadow)方法使用，当子节点设置了shadow效果时，useShadowBatching可控制子节点阴影进行同层绘制，实现同层阴影不重叠效果。调用顺序：先在子节点上设置shadow属性，再在父容器上设置useShadowBatching(true)。与[useShadowBatching<sup>11+</sup>](#useshadowbatching)相比，use参数新增了对undefined类型的支持。
+控件内部子节点的阴影是否进行同层绘制，同层绘制时子节点阴影不会产生重叠覆盖效果。需配合[shadow](#shadow-1)方法使用，当子节点设置了shadow效果时，useShadowBatching可控制子节点阴影进行同层绘制，实现同层阴影不重叠效果。调用顺序：先在子节点上设置shadow属性，再在父容器上设置useShadowBatching(true)。与[useShadowBatching<sup>11+</sup>](#useshadowbatching-1)相比，use参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -9334,7 +9334,7 @@ width(value: Length): T
 > 
 > - 在[AlphabetIndexer](./ts-container-alphabet-indexer.md)组件中，width设置auto表示自适应宽度最大索引项的宽度。
 > 
-> - 在Row、Column、RelativeContainer组件中，width设置auto表示自适应子组件。
+> - 在[Row](arkts-arkui-row-comp.md)、[Column](arkts-arkui-column-comp.md)、[RelativeContainer](arkts-arkui-relativecontainer-comp.md)组件中，width设置auto表示自适应子组件。
 > 
 > - 从API version 10开始，该接口支持calc计算特性。
 

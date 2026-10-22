@@ -1,4 +1,4 @@
-# SheetOptions
+# SheetOptions（系统接口）
 
 ```TypeScript
 declare interface SheetOptions extends BindOptions

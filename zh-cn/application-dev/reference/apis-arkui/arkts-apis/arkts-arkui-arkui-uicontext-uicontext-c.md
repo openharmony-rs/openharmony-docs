@@ -779,7 +779,7 @@ export default class EntryAbility extends UIAbility {
 createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 ```
 
-创建animator动画结果对象（AnimatorResult）。与[createAnimator](#createanimator)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。
+创建animator动画结果对象（AnimatorResult）。与[createAnimator](#createanimator-1)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。
 
 **起始版本：** 18
 
@@ -1108,7 +1108,7 @@ fp2px(value: number): number
 > **说明：** 
 > 
 > getUIContext需在windowStage.
-> [loadContent](arkts-arkui-window-window-i.md#loadcontent)之后调用，确保UIContext初始化完成后
+> [loadContent](arkts-arkui-window-window-i.md#loadcontent-1)之后调用，确保UIContext初始化完成后
 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
@@ -3129,7 +3129,7 @@ struct Index {
 isAvailable(): boolean
 ```
 
-判断UIContext对象对应的UI实例是否有效。使用getUIContext方法获取UIContext对象。后端UI实例存在时，该UI实例有效。通过new UIContext()创建的UIContext对象无对应的UI实例；多次[loadContent](arkts-arkui-window-window-i.md#loadcontent)后，旧的UI实例会失效。多窗口应用场景，当窗口关闭后，该窗口的UI实例失效。总而言之，当UIContext对象没有对应的后端UI实例时，该对象是无效的。
+判断UIContext对象对应的UI实例是否有效。使用getUIContext方法获取UIContext对象。后端UI实例存在时，该UI实例有效。通过new UIContext()创建的UIContext对象无对应的UI实例；多次[loadContent](arkts-arkui-window-window-i.md#loadcontent-1)后，旧的UI实例会失效。多窗口应用场景，当窗口关闭后，该窗口的UI实例失效。总而言之，当UIContext对象没有对应的后端UI实例时，该对象是无效的。
 
 **起始版本：** 20
 
@@ -3395,7 +3395,7 @@ lpx2px(value: number): number
 > **说明：** 
 > 
 > getUIContext需在windowStage.
-> [loadContent](arkts-arkui-window-window-i.md#loadcontent)之后调用，确保UIContext初始化完成后
+> [loadContent](arkts-arkui-window-window-i.md#loadcontent-1)之后调用，确保UIContext初始化完成后
 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
@@ -3714,7 +3714,7 @@ px2fp(value: number): number
 > **说明：** 
 > 
 > getUIContext需在windowStage.
-> [loadContent](arkts-arkui-window-window-i.md#loadcontent)之后调用，确保UIContext初始化完成后
+> [loadContent](arkts-arkui-window-window-i.md#loadcontent-1)之后调用，确保UIContext初始化完成后
 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
@@ -3776,7 +3776,7 @@ px2lpx(value: number): number
 > **说明：** 
 > 
 > getUIContext需在windowStage.
-> [loadContent](arkts-arkui-window-window-i.md#loadcontent)之后调用，确保UIContext初始化完成后
+> [loadContent](arkts-arkui-window-window-i.md#loadcontent-1)之后调用，确保UIContext初始化完成后
 > 调用此接口，否则无法返回准确结果。
 
 **起始版本：** 12
@@ -3839,7 +3839,7 @@ px2vp(value: number): number
 
 > **说明：** 
 > 
-> 1. getUIContext需在windowStage.[loadContent](arkts-arkui-window-window-i.md#loadcontent)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. getUIContext需在windowStage.[loadContent](arkts-arkui-window-window-i.md#loadcontent-1)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
 > 
 > 2. UI实例未创建时，[像素单位](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md)中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
@@ -4586,6 +4586,31 @@ setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void
 
 **示例**
 
+```TypeScript
+import { TextSelectionClearPolicy } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(20)
+        .margin(10)
+        .copyOption(CopyOptions.LocalDevice)
+      Button('Set Clear Policy')
+        .onClick(() => {
+          this.getUIContext()?.setTextSelectionClearPolicy(TextSelectionClearPolicy.CLEAR_SELECTED_TEXT_ON_EXTERNAL_TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## showActionSheet
 
 ```TypeScript
@@ -5184,7 +5209,7 @@ vp2px(value: number): number
 
 > **说明：** 
 > 
-> 1. getUIContext需在windowStage.[loadContent](arkts-arkui-window-window-i.md#loadcontent)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. getUIContext需在windowStage.[loadContent](arkts-arkui-window-window-i.md#loadcontent-1)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
 > 
 > 2. UI实例未创建时，[像素单位](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md)中的vp2px接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 

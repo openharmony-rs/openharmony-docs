@@ -4,7 +4,7 @@
 declare class GridColAttribute extends CommonMethod<GridColAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported.
+The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
 The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 

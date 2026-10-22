@@ -1,4 +1,4 @@
-# PinRequiredParam
+# PinRequiredParam（系统接口）
 
 ```TypeScript
 interface PinRequiredParam

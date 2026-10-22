@@ -34,9 +34,9 @@ import { trash } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [completelyDelete](arkts-corefile-trash-completelydelete-f-sys.md#completelydelete) | 将uri对应文件/目录从最近删除（回收站）列表中彻底删除。 |
-| [listFile](arkts-corefile-trash-listfile-f-sys.md#listfile) | 查询最近删除（回收站）列表中文件/目录信息。 |
-| [recover](arkts-corefile-trash-recover-f-sys.md#recover) | 将uri对应文件/目录恢复到原路径。 |
+| [completelyDelete](arkts-corefile-trash-completelydelete-f-sys.md#completelydelete-1) | 将uri对应文件/目录从最近删除（回收站）列表中彻底删除。 |
+| [listFile](arkts-corefile-trash-listfile-f-sys.md#listfile-1) | 查询最近删除（回收站）列表中文件/目录信息。 |
+| [recover](arkts-corefile-trash-recover-f-sys.md#recover-1) | 将uri对应文件/目录恢复到原路径。 |
 <!--DelEnd-->
 
 <!--Del-->

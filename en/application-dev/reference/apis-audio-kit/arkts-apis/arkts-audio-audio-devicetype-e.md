@@ -112,9 +112,9 @@ HDMI device (such as HDMI, ARC, and eARC).
 HEARING_AID = 30
 ```
 
-Hearing aid audio device. Note: This original device type can be obtained after it is declared via [declareDeviceTypesCompatibility](arkts-audio-audio-audioroutingmanager-i.md#declaredevicetypescompatibility).
+Hearing aid audio device. Note: This original device type can be obtained after it is declared via [declareDeviceTypesCompatibility](arkts-audio-audio-audioroutingmanager-i.md#declaredevicetypescompatibility). [since 26.0.0]
 
-**Since:** 26.0.0
+**Since:** 20
 
 <!--Device-DeviceType-HEARING_AID = 30--><!--Device-DeviceType-HEARING_AID = 30-End-->
 
@@ -172,9 +172,9 @@ Built-in microphone.
 NEARLINK = 31
 ```
 
-Nearlink device. Note: This original device type can be obtained after it is declared via [declareDeviceTypesCompatibility](arkts-audio-audio-audioroutingmanager-i.md#declaredevicetypescompatibility).
+Nearlink device. Note: This original device type can be obtained after it is declared via [declareDeviceTypesCompatibility](arkts-audio-audio-audioroutingmanager-i.md#declaredevicetypescompatibility). [since 26.0.0]
 
-**Since:** 26.0.0
+**Since:** 20
 
 <!--Device-DeviceType-NEARLINK = 31--><!--Device-DeviceType-NEARLINK = 31-End-->
 

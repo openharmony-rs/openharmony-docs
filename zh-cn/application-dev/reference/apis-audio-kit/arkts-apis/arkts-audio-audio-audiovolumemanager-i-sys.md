@@ -1,4 +1,4 @@
-# AudioVolumeManager
+# AudioVolumeManager（系统接口）
 
 ```TypeScript
 interface AudioVolumeManager
@@ -17,6 +17,39 @@ interface AudioVolumeManager
 ```TypeScript
 import { audio } from '@kit.AudioKit';
 ```
+
+## confirmVolumeLimitExceeded
+
+```TypeScript
+confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void
+```
+
+确认超出音量保护阈值的音量调节结果。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioVolumeManager-confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void--><!--Device-AudioVolumeManager-confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | 是 | 音频音量类型，不同的音量类型有不同的阈值，volumeType用于标识当前音量类型的阈值。 |
+| result | boolean | 是 | 确认音量调节超出音量保护阈值，false表示未超出。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+| [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. |
 
 ## forceVolumeKeyControlType
 
@@ -939,6 +972,37 @@ offSystemVolumeChangeByFilter(callback?: Callback<VolumeEvent>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system app. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+## offVolumeLimitExceeded
+
+```TypeScript
+offVolumeLimitExceeded(callback?: Callback<VolumeLimitExceededEvent>): void
+```
+
+取消监听当前音量是否超过音量保护阈值。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioVolumeManager-offVolumeLimitExceeded(callback?: Callback<VolumeLimitExceededEvent>): void--><!--Device-AudioVolumeManager-offVolumeLimitExceeded(callback?: Callback<VolumeLimitExceededEvent>): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeLimitExceededEvent](arkts-audio-audio-volumelimitexceededevent-i-sys.md)&gt; | 否 | 用于获取音量限制事件的回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
 ## offVolumePercentageChange
 
 ```TypeScript
@@ -1151,6 +1215,37 @@ onSystemVolumeChangeByFilter(filter: SystemVolumeFilter, callback: Callback<Volu
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not a system app. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
+
+## onVolumeLimitExceeded
+
+```TypeScript
+onVolumeLimitExceeded(callback: Callback<VolumeLimitExceededEvent>): void
+```
+
+监听当前音量超过音量保护阈值的事件。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioVolumeManager-onVolumeLimitExceeded(callback: Callback<VolumeLimitExceededEvent>): void--><!--Device-AudioVolumeManager-onVolumeLimitExceeded(callback: Callback<VolumeLimitExceededEvent>): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeLimitExceededEvent](arkts-audio-audio-volumelimitexceededevent-i-sys.md)&gt; | 是 | 用于获取音量限制事件的回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
 ## onVolumePercentageChange
@@ -1393,7 +1488,7 @@ setSystemVolumePercentage(volumeType: AudioVolumeType, percentage: number): Prom
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, including volumeType or percentage param being out of range. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, including volumeType or percentage param begin out of range. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Crash or blocking occurs in system process. |
 
 <!--Del-->

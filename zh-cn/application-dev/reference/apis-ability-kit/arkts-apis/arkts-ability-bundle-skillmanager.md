@@ -22,11 +22,11 @@ import { skillManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAllSkillInfos](arkts-ability-skillmanager-getallskillinfos-f.md#getallskillinfos) | 获取设备上安装应用的所有技能信息。使用Promise异步回调。 |
-| [getSkillInfo](arkts-ability-skillmanager-getskillinfo-f.md#getskillinfo) | 获取指定应用中指定模块下指定名称的技能信息。使用Promise异步回调。 |
-| [getSkillInfoForSelf](arkts-ability-skillmanager-getskillinfoforself-f.md#getskillinfoforself) | 获取本应用中指定模块下指定名称的技能信息。使用Promise异步回调。 |
-| [getSkillInfos](arkts-ability-skillmanager-getskillinfos-f.md#getskillinfos) | 获取指定应用的所有技能信息。使用Promise异步回调。 |
-| [getSkillInfosForSelf](arkts-ability-skillmanager-getskillinfosforself-f.md#getskillinfosforself) | 获取本应用的所有技能信息。使用Promise异步回调。 |
+| [getAllSkillInfos](arkts-ability-skillmanager-getallskillinfos-f.md#getallskillinfos-1) | 获取设备上安装应用的所有技能信息。使用Promise异步回调。 |
+| [getSkillInfo](arkts-ability-skillmanager-getskillinfo-f.md#getskillinfo-1) | 获取指定应用中指定模块下指定名称的技能信息。使用Promise异步回调。 |
+| [getSkillInfoForSelf](arkts-ability-skillmanager-getskillinfoforself-f.md#getskillinfoforself-1) | 获取本应用中指定模块下指定名称的技能信息。使用Promise异步回调。 |
+| [getSkillInfos](arkts-ability-skillmanager-getskillinfos-f.md#getskillinfos-1) | 获取指定应用的所有技能信息。使用Promise异步回调。 |
+| [getSkillInfosForSelf](arkts-ability-skillmanager-getskillinfosforself-f.md#getskillinfosforself-1) | 获取本应用的所有技能信息。使用Promise异步回调。 |
 
 ### 类型
 

@@ -1,4 +1,4 @@
-# StyledString
+# StyledString (System API)
 
 ```TypeScript
 declare class StyledString

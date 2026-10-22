@@ -21,10 +21,10 @@ The **assessment** module provides APIs for assessment scenario management.
 
 | Name | Description |
 | --- | --- |
-| [begin](arkts-automatic-assessment-begin-f.md#begin) | Begins an assessment session. A confirmation dialog box will be displayed for the user to confirm before the assessment session starts. |
-| [end](arkts-automatic-assessment-end-f.md#end) | Ends an assessment session. |
-| [getConfiguration](arkts-automatic-assessment-getconfiguration-f.md#getconfiguration) | Queries the current assessment configuration. |
-| [isActive](arkts-automatic-assessment-isactive-f.md#isactive) | Queries whether an assessment session is active. |
+| [begin](arkts-automatic-assessment-begin-f.md#begin-1) | Begins an assessment session. A confirmation dialog box will be displayed for the user to confirm before the assessment session starts. |
+| [end](arkts-automatic-assessment-end-f.md#end-1) | Ends an assessment session. |
+| [getConfiguration](arkts-automatic-assessment-getconfiguration-f.md#getconfiguration-1) | Queries the current assessment configuration. |
+| [isActive](arkts-automatic-assessment-isactive-f.md#isactive-1) | Queries whether an assessment session is active. |
 
 ### Interfaces
 

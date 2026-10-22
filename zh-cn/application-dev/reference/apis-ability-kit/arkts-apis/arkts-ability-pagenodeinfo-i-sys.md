@@ -1,4 +1,4 @@
-# PageNodeInfo
+# PageNodeInfo（系统接口）
 
 ```TypeScript
 export default interface PageNodeInfo

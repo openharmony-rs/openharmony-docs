@@ -18,7 +18,7 @@ Aborts a key operation. This API uses an asynchronous callback to return the res
 
 **Deprecated since:** 9
 
-**Substitutes:** [abortSession](arkts-universalkeystore-huks-abortsession-f.md#abortsession)(handle: number, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [abortSession](arkts-universalkeystore-huks-abortsession-f.md#abortsession-1)(handle: number, options: HuksOptions, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-huks-function abort(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void--><!--Device-huks-function abort(handle: number, options: HuksOptions, callback: AsyncCallback<HuksResult>): void-End-->
 
@@ -136,7 +136,7 @@ Aborts a key operation. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [abortSession](arkts-universalkeystore-huks-abortsession-f.md#abortsession)(handle: number, options: HuksOptions)
+**Substitutes:** [abortSession](arkts-universalkeystore-huks-abortsession-f.md#abortsession-2)(handle: number, options: HuksOptions)
 
 <!--Device-huks-function abort(handle: number, options: HuksOptions): Promise<HuksResult>--><!--Device-huks-function abort(handle: number, options: HuksOptions): Promise<HuksResult>-End-->
 

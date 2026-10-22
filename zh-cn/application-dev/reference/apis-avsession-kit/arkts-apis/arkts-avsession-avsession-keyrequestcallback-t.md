@@ -22,3 +22,9 @@ type KeyRequestCallback = (assetId: string, requestData: Uint8Array) => void
 | requestData | Uint8Array | 是 | 媒体许可证请求数据。 |
 
 **示例**
+
+```TypeScript
+let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
+  console.info(`Succeeded in keyRequestCallback. assetId: ${assetId}, requestData: ${requestData}`);
+};
+```

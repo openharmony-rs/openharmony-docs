@@ -4,7 +4,7 @@
 interface AVPlayer
 ```
 
-AVPlayer is a playback management class. It provides APIs to manage and play media assets. Before calling any API in AVPlayer, you must use [createAVPlayer()](arkts-media-media-createavplayer-f.md#createavplayer) to create an AVPlayer instance.
+AVPlayer is a playback management class. It provides APIs to manage and play media assets. Before calling any API in AVPlayer, you must use [createAVPlayer()](arkts-media-media-createavplayer-f.md#createavplayer-1) to create an AVPlayer instance.
 
 When using the AVPlayer instance, you are advised to register the following callbacks to proactively obtain status changes: [on('stateChange')](#onstatechange): listens for AVPlayer state changes. [on('error')](#onerror): listens for error events.
 
@@ -94,7 +94,7 @@ Adds an external subtitle to a video based on the FD. Currently, the external su
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fd | number | Yes | Resource handle, which is obtained by calling [resourceManager.getRawFd](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd). |
+| fd | number | Yes | Resource handle, which is obtained by calling [resourceManager.getRawFd](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-resourcemanager-i.md#getrawfd-1). |
 | offset | number | No | Resource offset, which needs to be entered based on the preset asset information. An invalid value causes a failure to parse subtitle assets. The default value is **0**.unit:Byte. |
 | length | number | No | Resource length, which needs to be entered based on the preset asset information. The default value is the remaining bytes from the offset in the file. An invalid value causes a failure to parse subtitle assets. The default value is **0**. |
 
@@ -1589,7 +1589,7 @@ async function test(){
 off(type: 'availableBitrates', callback?: Callback<Array<number>>): void
 ```
 
-Unsubscribes from available bitrates of HLS/DASH streams. This event is reported after [prepare](#prepare) is called.
+Unsubscribes from available bitrates of HLS/DASH streams. This event is reported after [prepare](#prepare-1) is called.
 
 **Since:** 9
 
@@ -2554,7 +2554,7 @@ async function test(){
 on(type: 'error', callback: ErrorCallback): void
 ```
 
-Subscribes to [AVPlayer](arkts-media-multimedia-media.md) errors. This event is used only for error prompt and does not require the user to stop playback control. If the [AVPlayerState](arkts-media-media-avplayerstate-t.md) is also switched to error, call [reset()](#reset) or [release()](#release) to exit the playback. If the playback remains in the error state after the [reset()](#reset) method is called, you are advised to directly invoke the [release()](#release) method to exit the playback operation.
+Subscribes to [AVPlayer](arkts-media-multimedia-media.md) errors. This event is used only for error prompt and does not require the user to stop playback control. If the [AVPlayerState](arkts-media-media-avplayerstate-t.md) is also switched to error, call [reset()](#reset-1) or [release()](#release-1) to exit the playback. If the playback remains in the error state after the [reset()](#reset-1) method is called, you are advised to directly invoke the [release()](#release-1) method to exit the playback operation.
 
 **Since:** 9
 
@@ -4103,7 +4103,7 @@ setSuperResolution(enabled: boolean) : Promise<void>
 
 Enables or disables super resolution. This API can be called when the AVPlayer is in the initialized, prepared, playing, paused, completed, or stopped state. This API uses a promise to return the result.
 
-Before calling [prepare()](#prepare), enable super resolution by using [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md).
+Before calling [prepare()](#prepare-1), enable super resolution by using [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md).
 
 **Since:** 18
 
@@ -4223,7 +4223,7 @@ Sets the resolution of the output video after super resolution. This API can be 
 
 The input parameter values must be in the range of 320 × 320 to 1920 × 1080 (in px).
 
-Before calling [prepare()](#prepare), enable super resolution by using [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md).
+Before calling [prepare()](#prepare-1), enable super resolution by using [PlaybackStrategy](arkts-media-media-playbackstrategy-i.md).
 
 **Since:** 18
 
@@ -4422,7 +4422,7 @@ Audio interruption mode. The default value is **SHARE_MODE**. It is a dynamic pr
 
 and can be set only when the AVPlayer is in the prepared, playing, paused, or completed state.
 
-To take effect, this property must be set before [play()](#play) is called for the first time.
+To take effect, this property must be set before [play()](#play-1) is called for the first time.
 
 **Type:** [audio.InterruptMode](../../apis-audio-kit/arkts-apis/arkts-audio-audio-interruptmode-e.md)
 
@@ -4444,7 +4444,7 @@ Audio renderer information. If the media source contains videos, the default val
 
 This parameter can be set only when the AVPlayer is in the initialized state.
 
-To take effect, this property must be set before [prepare()](#prepare) is called for the first time.
+To take effect, this property must be set before [prepare()](#prepare-1) is called for the first time.
 
 **Type:** [audio.AudioRendererInfo](../../apis-audio-kit/arkts-apis/arkts-audio-audio-audiorendererinfo-i.md)
 

@@ -1992,7 +1992,7 @@ struct Index {
 getPositionToParentWithTransform(): Position
 ```
 
-获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform-1)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate-1)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -2168,7 +2168,7 @@ struct Index {
 getPositionToScreenWithTransform(): Position
 ```
 
-获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform-1)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate-1)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 
@@ -2343,7 +2343,7 @@ struct Index {
 getPositionToWindowWithTransform(): Position
 ```
 
-获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform-1)、[translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate-1)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **起始版本：** 12
 

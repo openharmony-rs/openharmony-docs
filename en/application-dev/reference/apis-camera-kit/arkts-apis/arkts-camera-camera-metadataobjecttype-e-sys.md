@@ -1,4 +1,4 @@
-# MetadataObjectType
+# MetadataObjectType (System API)
 
 ```TypeScript
 enum MetadataObjectType

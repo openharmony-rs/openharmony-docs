@@ -4,7 +4,7 @@ The **TabContent** component is used to define the content view of each tab in t
 
 > **NOTE:** 
 > 
-> - By default, the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) attribute of this component is set to **true**.If you want to extend the content area to the outside of the component, disable the **clip** attribute first.
+> - By default, the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip-1) attribute of this component is set to **true**.If you want to extend the content area to the outside of the component, disable the **clip** attribute first.
 
 ## Child Components
 

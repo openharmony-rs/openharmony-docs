@@ -45,6 +45,12 @@ Closes this **resultSet** to release memory. If the **resultSet** is not closed,
 
 **Examples**
 
+```TypeScript
+if (resultSet != undefined) {
+  (resultSet as relationalStore.ResultSet).close();
+}
+```
+
 ## getAsset
 
 ```TypeScript

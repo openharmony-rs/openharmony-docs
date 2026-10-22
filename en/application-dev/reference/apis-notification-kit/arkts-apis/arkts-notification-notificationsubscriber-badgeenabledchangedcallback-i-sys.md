@@ -1,4 +1,4 @@
-# BadgeEnabledChangedCallback
+# BadgeEnabledChangedCallback (System API)
 
 ```TypeScript
 export interface BadgeEnabledChangedCallback

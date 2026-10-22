@@ -12,7 +12,7 @@ import { inputDevice } from '@kit.InputKit';
 function getKeyboardType(deviceId: number, callback: AsyncCallback<KeyboardType>): void
 ```
 
-获取输入设备的键盘类型，如全键盘、小键盘等。输入设备的键盘类型以接口返回结果为准。使用callback异步回调。
+获取输入设备的键盘类型，如全键盘、小键盘等。输入设备的键盘类型以接口返回结果为准。使用callback异步回调。调用此接口前，需要先调用[getDeviceList](arkts-input-inputdevice-getdevicelist-f.md)接口获取输入设备的ID。
 
 **起始版本：** 9
 
@@ -72,7 +72,7 @@ struct Index {
 function getKeyboardType(deviceId: number): Promise<KeyboardType>
 ```
 
-获取输入设备的键盘类型，使用Promise异步回调。
+获取输入设备的键盘类型，使用Promise异步回调。调用此接口前，需要先调用[getDeviceList](arkts-input-inputdevice-getdevicelist-f.md)接口获取输入设备的ID。
 
 **起始版本：** 9
 

@@ -1,4 +1,4 @@
-# FileSync
+# FileSync（系统接口）
 
 ```TypeScript
 class FileSync

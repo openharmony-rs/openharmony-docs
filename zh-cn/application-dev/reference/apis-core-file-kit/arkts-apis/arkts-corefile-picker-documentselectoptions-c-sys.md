@@ -1,4 +1,4 @@
-# DocumentSelectOptions
+# DocumentSelectOptions（系统接口）
 
 ```TypeScript
 class DocumentSelectOptions

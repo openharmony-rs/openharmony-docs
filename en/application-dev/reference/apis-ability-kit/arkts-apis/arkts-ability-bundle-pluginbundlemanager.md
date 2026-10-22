@@ -22,9 +22,9 @@ import { pluginBundleManager } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [getAllLocalPluginInfoForSelf](arkts-ability-pluginbundlemanager-getalllocalplugininfoforself-f.md#getalllocalplugininfoforself) | Queries the information about all self-distributed plugins in the current app. This API uses a promise to return the result. |
-| [installLocalPlugin](arkts-ability-pluginbundlemanager-installlocalplugin-f.md#installlocalplugin) | Installs a self-distributed plugin (that is, a plugin distributed and managed by the app through its own channels) for the current app. This API uses a promise to return the result. |
-| [uninstallLocalPlugin](arkts-ability-pluginbundlemanager-uninstalllocalplugin-f.md#uninstalllocalplugin) | Uninstalls the specified plugin installed by the current app through self-distribution. This API uses a promise to return the result. |
+| [getAllLocalPluginInfoForSelf](arkts-ability-pluginbundlemanager-getalllocalplugininfoforself-f.md#getalllocalplugininfoforself-1) | Queries the information about all self-distributed plugins in the current app. This API uses a promise to return the result. |
+| [installLocalPlugin](arkts-ability-pluginbundlemanager-installlocalplugin-f.md#installlocalplugin-1) | Installs a self-distributed plugin (that is, a plugin distributed and managed by the app through its own channels) for the current app. This API uses a promise to return the result. |
+| [uninstallLocalPlugin](arkts-ability-pluginbundlemanager-uninstalllocalplugin-f.md#uninstalllocalplugin-1) | Uninstalls the specified plugin installed by the current app through self-distribution. This API uses a promise to return the result. |
 
 ### Types
 

@@ -20,8 +20,8 @@ import { sendableResourceManager } from '@kit.LocalizationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [resourceToSendableResource](arkts-localization-sendableresourcemanager-resourcetosendableresource-f.md#resourcetosendableresource) | 将Resource对象转换为可用于跨线程传输的SendableResource对象。 |
-| [sendableResourceToResource](arkts-localization-sendableresourcemanager-sendableresourcetoresource-f.md#sendableresourcetoresource) | 将跨线程传输的SendableResource对象转换为Resource对象。 |
+| [resourceToSendableResource](arkts-localization-sendableresourcemanager-resourcetosendableresource-f.md#resourcetosendableresource-1) | 将Resource对象转换为可用于跨线程传输的SendableResource对象。 |
+| [sendableResourceToResource](arkts-localization-sendableresourcemanager-sendableresourcetoresource-f.md#sendableresourcetoresource-1) | 将跨线程传输的SendableResource对象转换为Resource对象。 |
 
 ### 类型
 

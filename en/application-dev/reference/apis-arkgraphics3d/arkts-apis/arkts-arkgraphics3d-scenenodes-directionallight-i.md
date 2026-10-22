@@ -4,7 +4,7 @@
 export interface DirectionalLight extends Light
 ```
 
-Directional light, which inherits from Light.
+Directional light, which inherits from [Light](arkts-arkgraphics3d-scenenodes-light-i.md).
 
 **Inheritance/Implementation:** DirectionalLight extends [Light](arkts-arkgraphics3d-scenenodes-light-i.md)
 

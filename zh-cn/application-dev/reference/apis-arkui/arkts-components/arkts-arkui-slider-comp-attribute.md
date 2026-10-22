@@ -407,7 +407,7 @@ selectedColor(value: ResourceColor)
 selectedColor(selectedColor: ResourceColor | LinearGradient)
 ```
 
-设置滑轨的已滑动部分颜色。与[selectedColor](#selectedcolor)相比，新增了LinearGradient类型的支持。
+设置滑轨的已滑动部分颜色。与[selectedColor](#selectedcolor-1)相比，新增了LinearGradient类型的支持。
 
 **起始版本：** 18
 

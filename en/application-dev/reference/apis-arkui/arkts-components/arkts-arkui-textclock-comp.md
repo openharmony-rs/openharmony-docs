@@ -2,7 +2,7 @@
 
 The TextClock component displays the current system time on the device in text form. It supports time display in different time zones and custom time formats, with a precision of up to seconds. It is suitable for scenarios where the system time needs to be displayed in real time on the application UI and multiple time zones need to be supported. It helps developers quickly implement time text display without manually calculating and updating the time.
 
-When the component is invisible, the time change stops. The visible status of a component is processed based on [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange). If the visible threshold **ratios** is greater than 0, the component is visible.
+When the component is invisible, the time change stops. The visible status of a component is processed based on [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange-1). If the visible threshold **ratios** is greater than 0, the component is visible.
 
 > **NOTE:** 
 > 

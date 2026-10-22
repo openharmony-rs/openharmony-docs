@@ -1,4 +1,4 @@
-# VideoSession
+# VideoSession (System API)
 
 ```TypeScript
 interface VideoSession extends Session, Flash, AutoExposure, WhiteBalance, Focus, Zoom, Stabilization,

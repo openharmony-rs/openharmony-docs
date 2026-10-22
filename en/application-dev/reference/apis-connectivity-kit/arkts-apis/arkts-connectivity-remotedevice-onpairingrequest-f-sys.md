@@ -28,7 +28,7 @@ This event is accessible only to system applications that granted the ohos.permi
 
 **System API:** This is a system API.
 
-**See also:** [offPairingRequest](arkts-connectivity-remotedevice-offpairingrequest-f-sys.md) Unsubscribes from the pairing request event.
+**See also:** [offPairingRequest](arkts-connectivity-remotedevice-offpairingrequest-f-sys.md#offpairingrequest-1) Unsubscribes from the pairing request event.
 
 **Parameters:**
 

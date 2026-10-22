@@ -11,7 +11,7 @@ The **Navigation** component is the root view container for navigation. It typic
 > 
 > - When [NavBar](arkts-arkui-navigation-comp-navbar-t.md) is nested within a **Navigation** component, the lifecycle of the inner
 > **NavDestination** component does not synchronize with the outer **NavDestination** component or the lifecycle of
-> [bindContentCover](arkts-arkui-common-comp-commonmethod-c.md#bindcontentcover).
+> [bindContentCover](arkts-arkui-common-comp-commonmethod-c.md#bindcontentcover-1).
 > 
 > - If no [title](arkts-arkui-navigation-comp-attribute.md#title) is specified for **Navigation** and the [hideBackButton](arkts-arkui-navigation-comp-attribute.md#hidebackbutton) attribute is set to **true**, the title bar is not displayed.
 > 

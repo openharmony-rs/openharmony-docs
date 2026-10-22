@@ -273,11 +273,11 @@ getSocketFd(): Promise<number>
 
 > **说明：** 
 > 
-> - [bind](#bind)方法调用成功后，才可调用此方法。
+> - [bind](#bind-1)方法调用成功后，才可调用此方法。
 > 
 > - bind异常、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > 
-> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close-1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **起始版本：** 23
 
@@ -684,7 +684,7 @@ send(options: UDPSendOptions, callback: AsyncCallback<void>): void
 
 通过UDPSocket连接发送数据。使用callback异步回调。
 
-发送数据前，需要先调用[UDPSocket.bind()](#bind)绑定IP地址和端口。该接口为耗时操作，请在Worker线程或taskpool线程调用该接口。
+发送数据前，需要先调用[UDPSocket.bind()](#bind-1)绑定IP地址和端口。该接口为耗时操作，请在Worker线程或taskpool线程调用该接口。
 
 **起始版本：** 7
 
@@ -805,7 +805,7 @@ send(options: UDPSendOptions): Promise<void>
 
 通过UDPSocket连接发送数据。使用Promise异步回调。
 
-发送数据前，需要先调用[UDPSocket.bind()](#bind)绑定IP地址和端口。该接口为耗时操作，请在Worker线程或taskpool线程调用该接口。
+发送数据前，需要先调用[UDPSocket.bind()](#bind-1)绑定IP地址和端口。该接口为耗时操作，请在Worker线程或taskpool线程调用该接口。
 
 **起始版本：** 7
 

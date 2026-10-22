@@ -1,7 +1,7 @@
 # SharedBundleInfo(SharedBundleInfo)
 
 The module provides information about the shared bundle. The information can be obtained by calling
- [bundleManager.getSharedBundleInfo](arkts-ability-bundlemanager-getsharedbundleinfo-f-sys.md#getsharedbundleinfo)
+ [bundleManager.getSharedBundleInfo](arkts-ability-bundlemanager-getsharedbundleinfo-f-sys.md#getsharedbundleinfo-1)
  .
 
 > **NOTE**

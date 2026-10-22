@@ -1,4 +1,4 @@
-# FormInfoFilter
+# FormInfoFilter (System API)
 
 ```TypeScript
 interface FormInfoFilter

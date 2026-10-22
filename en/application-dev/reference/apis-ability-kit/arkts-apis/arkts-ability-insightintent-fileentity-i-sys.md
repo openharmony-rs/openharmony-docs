@@ -1,4 +1,4 @@
-# FileEntity
+# FileEntity (System API)
 
 ```TypeScript
 interface FileEntity extends IntentEntity

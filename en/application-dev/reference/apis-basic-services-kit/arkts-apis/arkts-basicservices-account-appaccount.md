@@ -20,7 +20,7 @@ import { appAccount } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [createAppAccountManager](arkts-basicservices-appaccount-createappaccountmanager-f.md#createappaccountmanager) | Creates an **AppAccountManager** object. |
+| [createAppAccountManager](arkts-basicservices-appaccount-createappaccountmanager-f.md#createappaccountmanager-1) | Creates an **AppAccountManager** object. |
 
 ### Classes
 

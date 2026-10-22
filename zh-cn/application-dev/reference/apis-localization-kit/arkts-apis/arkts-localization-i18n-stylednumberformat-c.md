@@ -89,7 +89,7 @@ constructor(numberFormat: intl.NumberFormat | SimpleNumberFormat, options?: Styl
 
 **废弃版本：** 20
 
-**替代接口：** [constructor](#constructor)(numberFormat: Intl.NumberFormat | SimpleNumberFormat, options?: StyledNumberFormatOptions)
+**替代接口：** [constructor](#constructor-1)(numberFormat: Intl.NumberFormat | SimpleNumberFormat, options?: StyledNumberFormatOptions)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 

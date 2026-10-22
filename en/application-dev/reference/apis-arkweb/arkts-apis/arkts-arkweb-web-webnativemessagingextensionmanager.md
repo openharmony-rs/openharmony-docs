@@ -22,8 +22,8 @@ import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
 
 | Name | Description |
 | --- | --- |
-| [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md#connectnative) | Connects the current ability to the specified web native message extension ability. |
-| [disconnectNative](arkts-arkweb-webnativemessagingextensionmanager-disconnectnative-f.md#disconnectnative) | Disconnects the connection of a specified web native message extension. |
+| [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md#connectnative-1) | Connects the current ability to the specified web native message extension ability. |
+| [disconnectNative](arkts-arkweb-webnativemessagingextensionmanager-disconnectnative-f.md#disconnectnative-1) | Disconnects the connection of a specified web native message extension. |
 
 ### Interfaces
 

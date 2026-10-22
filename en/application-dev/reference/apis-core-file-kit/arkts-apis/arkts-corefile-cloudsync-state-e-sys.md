@@ -1,4 +1,4 @@
-# State
+# State (System API)
 
 ```TypeScript
 enum State

@@ -1,4 +1,4 @@
-# AdminType
+# AdminType (System API)
 
 ```TypeScript
 export enum AdminType

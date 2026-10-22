@@ -24,11 +24,11 @@ function publish(request: NotificationRequest, callback: AsyncCallback<void>): v
 
 **参见：**
 
-[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled) 获取指定应用的通知使能状态。
+[isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md#isnotificationenabled-3) 获取指定应用的通知使能状态。
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel) 根据通知ID和标签label取消已发布的通知。
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-2) 根据通知ID和标签label取消已发布的通知。
 
-[cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelall) 取消当前应用所有已发布的通知。
+[cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelall-1) 取消当前应用所有已发布的通知。
 
 **参数：**
 
@@ -106,7 +106,7 @@ function publish(request: NotificationRequest): Promise<void>
 
 [isNotificationEnabled](arkts-notification-notificationmanager-isnotificationenabled-f.md) 查询当前应用通知授权状态。
 
-[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel) 根据通知ID和标签label取消已发布的通知。
+[cancel](arkts-notification-notificationmanager-cancel-f.md#cancel-3) 根据通知ID和标签label取消已发布的通知。
 
 [cancelAll](arkts-notification-notificationmanager-cancelall-f.md) 取消当前应用所有已发布的通知。
 

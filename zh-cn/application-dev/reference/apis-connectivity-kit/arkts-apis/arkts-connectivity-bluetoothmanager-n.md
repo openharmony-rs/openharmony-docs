@@ -34,17 +34,17 @@ import { bluetoothManager } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [disableBluetooth](arkts-connectivity-bluetoothmanager-disablebluetooth-f.md#disablebluetooth) | 关闭蓝牙。 |
-| [enableBluetooth](arkts-connectivity-bluetoothmanager-enablebluetooth-f.md#enablebluetooth) | 开启蓝牙。 |
-| [getBluetoothScanMode](arkts-connectivity-bluetoothmanager-getbluetoothscanmode-f.md#getbluetoothscanmode) | 获取蓝牙扫描模式。 |
-| [getBtConnectionState](arkts-connectivity-bluetoothmanager-getbtconnectionstate-f.md#getbtconnectionstate) | 获取蓝牙本端的Profile连接状态，例如：任意一个支持的Profile连接状态为已连接，则此接口返回状态为已连接。 |
-| [getLocalName](arkts-connectivity-bluetoothmanager-getlocalname-f.md#getlocalname) | 获取蓝牙本地设备名称。 |
-| [getPairedDevices](arkts-connectivity-bluetoothmanager-getpaireddevices-f.md#getpaireddevices) | 获取蓝牙配对列表。 |
-| [getProfileConnectionState](arkts-connectivity-bluetoothmanager-getprofileconnectionstate-f.md#getprofileconnectionstate) | 依据ProfileId获取指定profile的连接状态。 |
-| [getProfileInstance](arkts-connectivity-bluetoothmanager-getprofileinstance-f.md#getprofileinstance) | 通过ProfileId，获取profile的对象实例，API9新增了HidHostProfile，PanProfile。 |
-| [getRemoteDeviceClass](arkts-connectivity-bluetoothmanager-getremotedeviceclass-f.md#getremotedeviceclass) | 获取对端蓝牙设备的类别。 |
-| [getRemoteDeviceName](arkts-connectivity-bluetoothmanager-getremotedevicename-f.md#getremotedevicename) | 获取对端蓝牙设备的名称。 |
-| [getState](arkts-connectivity-bluetoothmanager-getstate-f.md#getstate) | 获取蓝牙开关状态。 |
+| [disableBluetooth](arkts-connectivity-bluetoothmanager-disablebluetooth-f.md#disablebluetooth-1) | 关闭蓝牙。 |
+| [enableBluetooth](arkts-connectivity-bluetoothmanager-enablebluetooth-f.md#enablebluetooth-1) | 开启蓝牙。 |
+| [getBluetoothScanMode](arkts-connectivity-bluetoothmanager-getbluetoothscanmode-f.md#getbluetoothscanmode-1) | 获取蓝牙扫描模式。 |
+| [getBtConnectionState](arkts-connectivity-bluetoothmanager-getbtconnectionstate-f.md#getbtconnectionstate-1) | 获取蓝牙本端的Profile连接状态，例如：任意一个支持的Profile连接状态为已连接，则此接口返回状态为已连接。 |
+| [getLocalName](arkts-connectivity-bluetoothmanager-getlocalname-f.md#getlocalname-1) | 获取蓝牙本地设备名称。 |
+| [getPairedDevices](arkts-connectivity-bluetoothmanager-getpaireddevices-f.md#getpaireddevices-1) | 获取蓝牙配对列表。 |
+| [getProfileConnectionState](arkts-connectivity-bluetoothmanager-getprofileconnectionstate-f.md#getprofileconnectionstate-1) | 依据ProfileId获取指定profile的连接状态。 |
+| [getProfileInstance](arkts-connectivity-bluetoothmanager-getprofileinstance-f.md#getprofileinstance-1) | 通过ProfileId，获取profile的对象实例，API9新增了HidHostProfile，PanProfile。 |
+| [getRemoteDeviceClass](arkts-connectivity-bluetoothmanager-getremotedeviceclass-f.md#getremotedeviceclass-1) | 获取对端蓝牙设备的类别。 |
+| [getRemoteDeviceName](arkts-connectivity-bluetoothmanager-getremotedevicename-f.md#getremotedevicename-1) | 获取对端蓝牙设备的名称。 |
+| [getState](arkts-connectivity-bluetoothmanager-getstate-f.md#getstate-1) | 获取蓝牙开关状态。 |
 | [off('bluetoothDeviceFind')](arkts-connectivity-bluetoothmanager-off-f.md#offbluetoothdevicefind) | 取消订阅蓝牙设备发现上报事件。 |
 | [off('bondStateChange')](arkts-connectivity-bluetoothmanager-off-f.md#offbondstatechange) | 取消订阅蓝牙配对状态改变事件。 |
 | [off('pinRequired')](arkts-connectivity-bluetoothmanager-off-f.md#offpinrequired) | 取消订阅远端蓝牙设备的配对请求事件。 |
@@ -55,25 +55,25 @@ import { bluetoothManager } from '@kit.ConnectivityKit';
 | [on('pinRequired')](arkts-connectivity-bluetoothmanager-on-f.md#onpinrequired) | 订阅远端蓝牙设备的配对请求事件。 |
 | [on('stateChange')](arkts-connectivity-bluetoothmanager-on-f.md#onstatechange) | 订阅蓝牙设备开关状态事件。 |
 | [on('sppRead')](arkts-connectivity-bluetoothmanager-on-f.md#onsppread) | 订阅spp读请求事件，入参clientSocket由sppAccept或sppConnect接口获取。 |
-| [pairDevice](arkts-connectivity-bluetoothmanager-pairdevice-f.md#pairdevice) | 发起蓝牙配对。 |
-| [setBluetoothScanMode](arkts-connectivity-bluetoothmanager-setbluetoothscanmode-f.md#setbluetoothscanmode) | 设置蓝牙扫描模式，可以被远端设备发现。 |
-| [setDevicePairingConfirmation](arkts-connectivity-bluetoothmanager-setdevicepairingconfirmation-f.md#setdevicepairingconfirmation) | 设置设备配对请求确认。 |
-| [setLocalName](arkts-connectivity-bluetoothmanager-setlocalname-f.md#setlocalname) | 设置蓝牙本地设备名称。 |
-| [sppAccept](arkts-connectivity-bluetoothmanager-sppaccept-f.md#sppaccept) | 服务端监听socket等待客户端连接。 |
-| [sppCloseClientSocket](arkts-connectivity-bluetoothmanager-sppcloseclientsocket-f.md#sppcloseclientsocket) | 关闭客户端socket，入参socket由sppAccept或sppConnect接口获取。 |
-| [sppCloseServerSocket](arkts-connectivity-bluetoothmanager-sppcloseserversocket-f.md#sppcloseserversocket) | 关闭服务端监听Socket，入参socket由sppListen接口返回。 |
-| [sppConnect](arkts-connectivity-bluetoothmanager-sppconnect-f.md#sppconnect) | 客户端向远端设备发起spp连接。 |
-| [sppListen](arkts-connectivity-bluetoothmanager-spplisten-f.md#spplisten) | 创建一个服务端监听Socket。 |
-| [sppWrite](arkts-connectivity-bluetoothmanager-sppwrite-f.md#sppwrite) | 通过socket向远端发送数据，入参clientSocket由sppAccept或sppConnect接口获取。 |
-| [startBluetoothDiscovery](arkts-connectivity-bluetoothmanager-startbluetoothdiscovery-f.md#startbluetoothdiscovery) | 开启蓝牙扫描，可以发现远端设备。 |
-| [stopBluetoothDiscovery](arkts-connectivity-bluetoothmanager-stopbluetoothdiscovery-f.md#stopbluetoothdiscovery) | 关闭蓝牙扫描。 |
+| [pairDevice](arkts-connectivity-bluetoothmanager-pairdevice-f.md#pairdevice-1) | 发起蓝牙配对。 |
+| [setBluetoothScanMode](arkts-connectivity-bluetoothmanager-setbluetoothscanmode-f.md#setbluetoothscanmode-1) | 设置蓝牙扫描模式，可以被远端设备发现。 |
+| [setDevicePairingConfirmation](arkts-connectivity-bluetoothmanager-setdevicepairingconfirmation-f.md#setdevicepairingconfirmation-1) | 设置设备配对请求确认。 |
+| [setLocalName](arkts-connectivity-bluetoothmanager-setlocalname-f.md#setlocalname-1) | 设置蓝牙本地设备名称。 |
+| [sppAccept](arkts-connectivity-bluetoothmanager-sppaccept-f.md#sppaccept-1) | 服务端监听socket等待客户端连接。 |
+| [sppCloseClientSocket](arkts-connectivity-bluetoothmanager-sppcloseclientsocket-f.md#sppcloseclientsocket-1) | 关闭客户端socket，入参socket由sppAccept或sppConnect接口获取。 |
+| [sppCloseServerSocket](arkts-connectivity-bluetoothmanager-sppcloseserversocket-f.md#sppcloseserversocket-1) | 关闭服务端监听Socket，入参socket由sppListen接口返回。 |
+| [sppConnect](arkts-connectivity-bluetoothmanager-sppconnect-f.md#sppconnect-1) | 客户端向远端设备发起spp连接。 |
+| [sppListen](arkts-connectivity-bluetoothmanager-spplisten-f.md#spplisten-1) | 创建一个服务端监听Socket。 |
+| [sppWrite](arkts-connectivity-bluetoothmanager-sppwrite-f.md#sppwrite-1) | 通过socket向远端发送数据，入参clientSocket由sppAccept或sppConnect接口获取。 |
+| [startBluetoothDiscovery](arkts-connectivity-bluetoothmanager-startbluetoothdiscovery-f.md#startbluetoothdiscovery-1) | 开启蓝牙扫描，可以发现远端设备。 |
+| [stopBluetoothDiscovery](arkts-connectivity-bluetoothmanager-stopbluetoothdiscovery-f.md#stopbluetoothdiscovery-1) | 关闭蓝牙扫描。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [cancelPairedDevice](arkts-connectivity-bluetoothmanager-cancelpaireddevice-f-sys.md#cancelpaireddevice) | 删除配对的远程设备。 |
+| [cancelPairedDevice](arkts-connectivity-bluetoothmanager-cancelpaireddevice-f-sys.md#cancelpaireddevice-1) | 删除配对的远程设备。 |
 <!--DelEnd-->
 
 ### 接口

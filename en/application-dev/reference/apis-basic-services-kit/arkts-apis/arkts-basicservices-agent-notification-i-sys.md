@@ -1,4 +1,4 @@
-# Notification
+# Notification (System API)
 
 ```TypeScript
 interface Notification

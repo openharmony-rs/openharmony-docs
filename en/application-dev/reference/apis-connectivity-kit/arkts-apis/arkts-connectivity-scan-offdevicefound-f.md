@@ -24,7 +24,7 @@ Unsubscribes from NearLink scanning results. This API uses an asynchronous callb
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [onDeviceFound](arkts-connectivity-scan-ondevicefound-f.md) Subscribes to the NearLink scanning result event.
+**See also:** [onDeviceFound](arkts-connectivity-scan-ondevicefound-f.md#ondevicefound-1) Subscribes to the NearLink scanning result event.
 
 **Parameters:**
 

@@ -242,6 +242,28 @@ Default value: **undefined**, meaning no event is triggered.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## onItemsChange
+
+```TypeScript
+onItemsChange?: Callback<ChipGroupV2Items>
+```
+
+ChipGroupV2Items Change Callback Method.
+
+**Type:** Callback&lt;[ChipGroupV2Items](arkts-arkui-arkui-advanced-chipgroupv2-chipgroupv2items-c.md)&gt;
+
+**Since:** 26.2.0
+
+**Decorator:** @Event
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-ChipGroupV2-onItemsChange?: Callback<ChipGroupV2Items>--><!--Device-ChipGroupV2-onItemsChange?: Callback<ChipGroupV2Items>-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## selectedIndexes
 
 ```TypeScript

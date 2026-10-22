@@ -4,7 +4,7 @@
 export interface Shader extends SceneResource
 ```
 
-Shader resource, which inherits from SceneResource.
+Shader resource, which inherits from [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md).
 
 **Inheritance/Implementation:** Shader extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 

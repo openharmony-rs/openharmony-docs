@@ -1,4 +1,4 @@
-# MechDeviceType
+# MechDeviceType (System API)
 
 ```TypeScript
 export enum MechDeviceType

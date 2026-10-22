@@ -1,4 +1,4 @@
-# HapModuleInfo
+# HapModuleInfo (System API)
 
 ```TypeScript
 export interface HapModuleInfo

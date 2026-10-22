@@ -104,6 +104,33 @@ static deleteAllGeolocation(incognito?: boolean): void
 
 **示例**
 
+```TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('deleteAllGeolocation')
+        .onClick(() => {
+          try {
+            // 清除所有源的地理位置权限状态
+            webview.GeolocationPermissions.deleteAllGeolocation();
+          } catch (error) {
+            console.error(`Failed to delete all geolocation. Code: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## deleteGeolocation
 
 ```TypeScript

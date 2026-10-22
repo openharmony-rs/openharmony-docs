@@ -1,4 +1,4 @@
-# AlbumKeys
+# AlbumKeys（系统接口）
 
 ```TypeScript
 enum AlbumKeys

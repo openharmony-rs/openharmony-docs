@@ -24,10 +24,10 @@ import { inputConsumer } from '@kit.InputKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAllSystemHotkeys](arkts-input-inputconsumer-getallsystemhotkeys-f.md#getallsystemhotkeys) | 获取所有系统快捷键，使用Promise异步回调。 |
+| [getAllSystemHotkeys](arkts-input-inputconsumer-getallsystemhotkeys-f.md#getallsystemhotkeys-1) | 获取所有系统快捷键，使用Promise异步回调。 |
 | [off('hotkeyChange')](arkts-input-inputconsumer-off-f.md#offhotkeychange) | 取消订阅应用快捷键。使用callback异步回调。 |
 | [off('keyPressed')](arkts-input-inputconsumer-off-f.md#offkeypressed) | 取消对'keyPressed'事件的订阅，使用callback异步回调。调用该方法后，被屏蔽的系统按键默认行为将恢复，即系统对音量调节等默认响应将恢复。 |
-| [on('hotkeyChange')](arkts-input-inputconsumer-on-f.md#onhotkeychange) | 订阅应用快捷键。获取满足条件的组合按键输入事件，使用callback异步回调。 |
+| [on('hotkeyChange')](arkts-input-inputconsumer-on-f.md#onhotkeychange) | 订阅应用快捷键。获取满足条件的组合按键输入事件，使用callback异步回调。调用此接口前，建议先调用[getAllSystemHotkeys](arkts-input-inputconsumer-getallsystemhotkeys-f.md)接口查询系统快捷键列表，确认待订阅的组合按键未被系统占用，避免订阅失败。 |
 | [on('keyPressed')](arkts-input-inputconsumer-on-f.md#onkeypressed) | 订阅按键按下事件。若当前应用窗口为前台焦点窗口，用户按下指定按键，会触发回调。使用callback异步回调。 |
 
 <!--Del-->
@@ -35,12 +35,12 @@ import { inputConsumer } from '@kit.InputKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getShieldStatus](arkts-input-inputconsumer-getshieldstatus-f-sys.md#getshieldstatus) | 获取系统快捷键屏蔽类型。 |
+| [getShieldStatus](arkts-input-inputconsumer-getshieldstatus-f-sys.md#getshieldstatus-1) | 获取系统快捷键屏蔽类型。 |
 | [off('key')](arkts-input-inputconsumer-off-f-sys.md#offkey) | 取消订阅系统快捷键。使用callback异步回调。 |
-| [offKey](arkts-input-inputconsumer-offkey-f-sys.md#offkey) | 取消订阅系统快捷键。使用callback异步回调。 |
+| [offKey](arkts-input-inputconsumer-offkey-f-sys.md#offkey-2) | 取消订阅系统快捷键。使用callback异步回调。 |
 | [on('key')](arkts-input-inputconsumer-on-f-sys.md#onkey) | 订阅系统快捷键，使用callback异步回调。 |
-| [onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey) | 订阅组合按键（按键命令模式），支持通过triggerType指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用callback异步回调。 |
-| [setShieldStatus](arkts-input-inputconsumer-setshieldstatus-f-sys.md#setshieldstatus) | 设置系统快捷键屏蔽类型。 |
+| [onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey-2) | 订阅组合按键（按键命令模式），支持通过triggerType指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用callback异步回调。 |
+| [setShieldStatus](arkts-input-inputconsumer-setshieldstatus-f-sys.md#setshieldstatus-1) | 设置系统快捷键屏蔽类型。 |
 <!--DelEnd-->
 
 ### 接口

@@ -1,4 +1,4 @@
-# VolumeEvent
+# VolumeEvent（系统接口）
 
 ```TypeScript
 interface VolumeEvent

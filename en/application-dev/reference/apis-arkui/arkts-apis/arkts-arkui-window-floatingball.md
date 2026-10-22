@@ -24,8 +24,8 @@ import { floatingBall } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [create](arkts-arkui-floatingball-create-f.md#create) | Creates a floating ball controller. This API uses a promise to return the result. |
-| [isFloatingBallEnabled](arkts-arkui-floatingball-isfloatingballenabled-f.md#isfloatingballenabled) | Checks whether the device supports floating balls. |
+| [create](arkts-arkui-floatingball-create-f.md#create-1) | Creates a floating ball controller. This API uses a promise to return the result. |
+| [isFloatingBallEnabled](arkts-arkui-floatingball-isfloatingballenabled-f.md#isfloatingballenabled-1) | Checks whether the device supports floating balls. |
 
 ### Interfaces
 

@@ -1,5 +1,9 @@
 # @ohos.arkui.advanced.SwipeRefresher
 
+## Child Components
+
+None
+
 ## Modules to Import
 
 ```TypeScript

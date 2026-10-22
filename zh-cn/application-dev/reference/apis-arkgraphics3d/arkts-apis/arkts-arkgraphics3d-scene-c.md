@@ -42,6 +42,26 @@ cloneNode(node: Node, parent: Node, name: string): Node | null
 
 **示例**
 
+```TypeScript
+import { Scene, Node } from '@kit.ArkGraphics3D';
+
+function CloneNode() {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"))
+    .then(async (result: Scene) => {
+      let node = result.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube") as Node;
+      let parent = result.root as Node;
+      let name = "cloneNode_";
+      let clone = result.cloneNode(node, parent, name);
+      if (clone) {
+        console.info("Succeeded in cloning node");
+      } else {
+        console.error("Failed to clone node");
+      }
+    });
+}
+```
+
 ## createComponent
 
 ```TypeScript

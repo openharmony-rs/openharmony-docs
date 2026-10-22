@@ -26,7 +26,7 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**See also:** [offReadData](arkts-connectivity-datatransfer-offreaddata-f.md) Unsubscribes from the data receiving event of the port channel.
+**See also:** [offReadData](arkts-connectivity-datatransfer-offreaddata-f.md#offreaddata-1) Unsubscribes from the data receiving event of the port channel.
 
 **Parameters:**
 

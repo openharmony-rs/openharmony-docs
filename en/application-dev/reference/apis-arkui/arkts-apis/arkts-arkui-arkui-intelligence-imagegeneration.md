@@ -25,15 +25,15 @@ import { imageGeneration } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [closeGeneratorDialog](arkts-arkui-imagegeneration-closegeneratordialog-f-sys.md#closegeneratordialog) | Close the AI image generation task popup. |
-| [closeGeneratorNodeGraph](arkts-arkui-imagegeneration-closegeneratornodegraph-f-sys.md#closegeneratornodegraph) | Close the AI node graph Sheet. |
-| [hideGeneratorDialog](arkts-arkui-imagegeneration-hidegeneratordialog-f-sys.md#hidegeneratordialog) | Hide the AI image generation task popup. |
-| [hideGeneratorNodeGraph](arkts-arkui-imagegeneration-hidegeneratornodegraph-f-sys.md#hidegeneratornodegraph) | Hide the AI node graph Sheet. |
-| [openGeneratorNodeGraph](arkts-arkui-imagegeneration-opengeneratornodegraph-f-sys.md#opengeneratornodegraph) | Open the AI node graph Sheet. |
-| [restoreGeneratorDialog](arkts-arkui-imagegeneration-restoregeneratordialog-f-sys.md#restoregeneratordialog) | Restore the AI image generation task popup. |
-| [restoreGeneratorNodeGraph](arkts-arkui-imagegeneration-restoregeneratornodegraph-f-sys.md#restoregeneratornodegraph) | Restore the AI node graph Sheet. |
-| [showGeneratorDialog](arkts-arkui-imagegeneration-showgeneratordialog-f-sys.md#showgeneratordialog) | Open the AI image generation task popup and perform AI image generation operations. |
-| [startSmartCanvasService](arkts-arkui-imagegeneration-startsmartcanvasservice-f-sys.md#startsmartcanvasservice) | Start the smart canvas service. |
+| [closeGeneratorDialog](arkts-arkui-imagegeneration-closegeneratordialog-f-sys.md#closegeneratordialog-1) | Close the AI image generation task popup. |
+| [closeGeneratorNodeGraph](arkts-arkui-imagegeneration-closegeneratornodegraph-f-sys.md#closegeneratornodegraph-1) | Close the AI node graph Sheet. |
+| [hideGeneratorDialog](arkts-arkui-imagegeneration-hidegeneratordialog-f-sys.md#hidegeneratordialog-1) | Hide the AI image generation task popup. |
+| [hideGeneratorNodeGraph](arkts-arkui-imagegeneration-hidegeneratornodegraph-f-sys.md#hidegeneratornodegraph-1) | Hide the AI node graph Sheet. |
+| [openGeneratorNodeGraph](arkts-arkui-imagegeneration-opengeneratornodegraph-f-sys.md#opengeneratornodegraph-1) | Open the AI node graph Sheet. |
+| [restoreGeneratorDialog](arkts-arkui-imagegeneration-restoregeneratordialog-f-sys.md#restoregeneratordialog-1) | Restore the AI image generation task popup. |
+| [restoreGeneratorNodeGraph](arkts-arkui-imagegeneration-restoregeneratornodegraph-f-sys.md#restoregeneratornodegraph-1) | Restore the AI node graph Sheet. |
+| [showGeneratorDialog](arkts-arkui-imagegeneration-showgeneratordialog-f-sys.md#showgeneratordialog-1) | Open the AI image generation task popup and perform AI image generation operations. |
+| [startSmartCanvasService](arkts-arkui-imagegeneration-startsmartcanvasservice-f-sys.md#startsmartcanvasservice-1) | Start the smart canvas service. |
 <!--DelEnd-->
 
 <!--Del-->

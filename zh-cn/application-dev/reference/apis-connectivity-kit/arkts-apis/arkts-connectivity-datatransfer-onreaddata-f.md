@@ -26,7 +26,7 @@ function onReadData(callback: Callback<DataParams>): void
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
-**参见：** [offReadData](arkts-connectivity-datatransfer-offreaddata-f.md) 取消订阅端口通道数据接收事件。
+**参见：** [offReadData](arkts-connectivity-datatransfer-offreaddata-f.md#offreaddata-1) 取消订阅端口通道数据接收事件。
 
 **参数：**
 

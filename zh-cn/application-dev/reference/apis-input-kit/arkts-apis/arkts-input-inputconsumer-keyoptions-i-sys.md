@@ -116,7 +116,7 @@ preKeys: Array<number>
 triggerType?: KeyCommandTriggerType
 ```
 
-触发模式。取值为PRESSED（1）、REPEAT_PRESSED（2）或ALL_RELEASED（3）。启用命令触发模式。一旦设置此值，isFinalKeyDown和isRepeat将被忽略。对于[inputConsumer.on('key')](arkts-input-inputconsumer-on-f-sys.md#onkey)接口该参数是可选参数，对于[inputConsumer.onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey)接口该参数是必填参数。
+触发模式。取值为PRESSED（1）、REPEAT_PRESSED（2）或ALL_RELEASED（3）。启用命令触发模式。一旦设置此值，isFinalKeyDown和isRepeat将被忽略。对于[inputConsumer.on('key')](arkts-input-inputconsumer-on-f-sys.md#onkey)接口该参数是可选参数，对于[inputConsumer.onKey](arkts-input-inputconsumer-onkey-f-sys.md#onkey-2)接口该参数是必填参数。
 
 **类型：** [KeyCommandTriggerType](arkts-input-inputconsumer-keycommandtriggertype-e-sys.md)
 

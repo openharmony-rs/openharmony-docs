@@ -1,4 +1,4 @@
-# PbapClientProfile
+# PbapClientProfile (System API)
 
 ```TypeScript
 interface PbapClientProfile extends BaseProfile

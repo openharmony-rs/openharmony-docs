@@ -1,4 +1,4 @@
-# PanProfile
+# PanProfile（系统接口）
 
 ```TypeScript
 interface PanProfile extends BaseProfile

@@ -1,4 +1,4 @@
-# PlaybackStrategy
+# PlaybackStrategy（系统接口）
 
 ```TypeScript
 interface PlaybackStrategy

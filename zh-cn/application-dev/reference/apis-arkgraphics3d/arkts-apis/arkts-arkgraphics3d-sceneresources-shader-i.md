@@ -4,7 +4,7 @@
 export interface Shader extends SceneResource
 ```
 
-着色器，继承自SceneResource。
+着色器，继承自[SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)。
 
 **继承/实现关系：** Shader extends [SceneResource](arkts-arkgraphics3d-sceneresources-sceneresource-i.md)
 

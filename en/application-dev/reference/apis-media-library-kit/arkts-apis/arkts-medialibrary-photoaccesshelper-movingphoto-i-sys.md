@@ -1,4 +1,4 @@
-# MovingPhoto
+# MovingPhoto (System API)
 
 ```TypeScript
 interface MovingPhoto

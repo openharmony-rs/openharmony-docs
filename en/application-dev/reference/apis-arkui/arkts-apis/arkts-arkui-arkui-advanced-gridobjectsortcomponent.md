@@ -1,5 +1,19 @@
 # @ohos.arkui.advanced.GridObjectSortComponent
 
+**GridObjectSortComponent** is a grid object organizer that you can use to edit, drag to sort, add, and delete grid
+ objects.
+
+> **NOTE**
+ >
+ > - This component can be used only in the stage model.
+ >
+ > - If the **GridObjectSortComponent** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md)
+ > and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically
+ > generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node
+ > rather than the **GridObjectSortComponent** component itself. As a result, the configured universal attributes and
+ > universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes
+ > and events with the **GridObjectSortComponent** component.
+
 ## Child Components
 
 Not supported
@@ -20,7 +34,7 @@ import { GridObjectSortComponentType, GridObjectSortComponentItem, GridObjectSor
 
 | Name | Description |
 | --- | --- |
-| [GridObjectSortComponent](arkts-arkui-arkui-advanced-gridobjectsortcomponent-gridobjectsortcomponent-s.md) | **GridObjectSortComponent** is a grid object organizer that you can use to edit, drag to sort, add, and delete grid objects. |
+| [GridObjectSortComponent](arkts-arkui-arkui-advanced-gridobjectsortcomponent-gridobjectsortcomponent-s.md) | Creates a GridObjectSortComponent component. |
 
 ### Interfaces
 

@@ -1614,7 +1614,7 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 
 **废弃版本：** 20
 
-**替代接口：** [getDoublePluralStringValueSync](#getdoublepluralstringvaluesync)(resId: number, num: number, ...args: Array&lt;string | number&gt;)
+**替代接口：** [getDoublePluralStringValueSync](#getdoublepluralstringvaluesync-1)(resId: number, num: number, ...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2118,7 +2118,7 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 
 **废弃版本：** 20
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4247,7 +4247,7 @@ getNumber(resource: Resource): number
 
 **废弃版本：** 20
 
-**替代接口：** [getNumber](#getnumber)(resId: number)
+**替代接口：** [getNumber](#getnumber-1)(resId: number)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4527,7 +4527,7 @@ getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void
 > **说明：** 
 > 
 > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync)或
-> [closeRawFd](#closerawfd)关闭
+> [closeRawFd](#closerawfd-1)关闭
 > fd，避免资源泄露。
 
 **起始版本：** 9
@@ -4594,7 +4594,7 @@ getRawFd(path: string): Promise<RawFileDescriptor>
 > **说明：** 
 > 
 > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync)或
-> [closeRawFd](#closerawfd)关闭
+> [closeRawFd](#closerawfd-1)关闭
 > fd，避免资源泄露。
 
 **起始版本：** 9
@@ -4664,7 +4664,7 @@ getRawFdSync(path: string): RawFileDescriptor
 > **说明：** 
 > 
 > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync)或
-> [closeRawFd](#closerawfd)关闭
+> [closeRawFd](#closerawfd-1)关闭
 > fd，避免资源泄露。
 
 **起始版本：** 10
@@ -6325,7 +6325,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 
 **废弃版本：** 20
 
-**替代接口：** [getStringSync](#getstringsync)(resId: number, ...args: Array&lt;string | number&gt;)
+**替代接口：** [getStringSync](#getstringsync-2)(resId: number, ...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7045,7 +7045,7 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [closeRawFd](#closerawfd)(path: string, callback: _AsyncCallback&lt;void&gt;)
+**替代接口：** [closeRawFd](#closerawfd-1)(path: string, callback: _AsyncCallback&lt;void&gt;)
 
 <!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void--><!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void-End-->
 
@@ -7086,7 +7086,7 @@ closeRawFileDescriptor(path: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [closeRawFd](#closerawfd)(path: string)
+**替代接口：** [closeRawFd](#closerawfd-2)(path: string)
 
 <!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>--><!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>-End-->
 
@@ -7299,7 +7299,7 @@ getPluralString(resId: number, num: number, callback: AsyncCallback<string>): vo
 
 **废弃版本：** 9
 
-**替代接口：** [getPluralStringValue](#getpluralstringvalue)(resId: number, num: number, callback: _AsyncCallback&lt;string&gt;)
+**替代接口：** [getPluralStringValue](#getpluralstringvalue-3)(resId: number, num: number, callback: _AsyncCallback&lt;string&gt;)
 
 <!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void--><!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void-End-->
 
@@ -7346,7 +7346,7 @@ getPluralString(resId: number, num: number): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [getPluralStringValue](#getpluralstringvalue)(resId: number, num: number)
+**替代接口：** [getPluralStringValue](#getpluralstringvalue-4)(resId: number, num: number)
 
 <!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>--><!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>-End-->
 
@@ -7647,7 +7647,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<s
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7736,7 +7736,7 @@ getPluralStringValue(resource: Resource, num: number): Promise<string>
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7829,7 +7829,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -7910,7 +7910,7 @@ getPluralStringValue(resId: number, num: number): Promise<string>
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -7995,7 +7995,7 @@ getPluralStringValueSync(resId: number, num: number): string
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -8081,7 +8081,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync-1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8170,7 +8170,7 @@ getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getRawFileContent](#getrawfilecontent)(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;)
+**替代接口：** [getRawFileContent](#getrawfilecontent-1)(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;)
 
 <!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void-End-->
 
@@ -8213,7 +8213,7 @@ getRawFile(path: string): Promise<Uint8Array>
 
 **废弃版本：** 9
 
-**替代接口：** [getRawFileContent](#getrawfilecontent)(path: string)
+**替代接口：** [getRawFileContent](#getrawfilecontent-2)(path: string)
 
 <!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>--><!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>-End-->
 
@@ -8259,7 +8259,7 @@ getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): 
 
 **废弃版本：** 9
 
-**替代接口：** [getRawFd](#getrawfd)(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;)
+**替代接口：** [getRawFd](#getrawfd-1)(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;)
 
 <!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void--><!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void-End-->
 
@@ -8304,7 +8304,7 @@ getRawFileDescriptor(path: string): Promise<RawFileDescriptor>
 
 **废弃版本：** 9
 
-**替代接口：** [getRawFd](#getrawfd)(path: string)
+**替代接口：** [getRawFd](#getrawfd-2)(path: string)
 
 <!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>--><!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>-End-->
 

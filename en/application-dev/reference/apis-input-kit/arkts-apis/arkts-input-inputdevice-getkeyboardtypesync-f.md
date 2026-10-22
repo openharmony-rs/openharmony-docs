@@ -12,7 +12,7 @@ import { inputDevice } from '@kit.InputKit';
 function getKeyboardTypeSync(deviceId: number): KeyboardType
 ```
 
-Obtains the keyboard type of the input device.
+Obtains the keyboard type of the input device. Before calling this API, call [getDeviceList](arkts-input-inputdevice-getdevicelist-f.md) first to obtain the ID of the input device.
 
 **Since:** 10
 

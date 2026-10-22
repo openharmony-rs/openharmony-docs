@@ -1,4 +1,4 @@
-# AlbumChangeInfo
+# AlbumChangeInfo (System API)
 
 ```TypeScript
 interface AlbumChangeInfo

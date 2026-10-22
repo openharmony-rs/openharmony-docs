@@ -248,14 +248,14 @@ queryOsAccountDistributedInfo(callback: AsyncCallback<DistributedInfo>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [getOsAccountDistributedInfo](#getosaccountdistributedinfo)
+> [getOsAccountDistributedInfo](#getosaccountdistributedinfo-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getOsAccountDistributedInfo](#getosaccountdistributedinfo)(callback: AsyncCallback&lt;DistributedInfo&gt;)
+**替代接口：** [getOsAccountDistributedInfo](#getosaccountdistributedinfo-1)(callback: AsyncCallback&lt;DistributedInfo&gt;)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -343,14 +343,14 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo, callback: AsyncCall
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setOsAccountDistributedInfo](#setosaccountdistributedinfo)
+> [setOsAccountDistributedInfo](#setosaccountdistributedinfo-1)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setOsAccountDistributedInfo](#setosaccountdistributedinfo)(accountInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [setOsAccountDistributedInfo](#setosaccountdistributedinfo-1)(accountInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -395,14 +395,14 @@ updateOsAccountDistributedInfo(accountInfo: DistributedInfo): Promise<void>
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用
-> [setOsAccountDistributedInfo](#setosaccountdistributedinfo)
+> [setOsAccountDistributedInfo](#setosaccountdistributedinfo-2)
 > 替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [setOsAccountDistributedInfo](#setosaccountdistributedinfo)(accountInfo: DistributedInfo)
+**替代接口：** [setOsAccountDistributedInfo](#setosaccountdistributedinfo-2)(accountInfo: DistributedInfo)
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
 

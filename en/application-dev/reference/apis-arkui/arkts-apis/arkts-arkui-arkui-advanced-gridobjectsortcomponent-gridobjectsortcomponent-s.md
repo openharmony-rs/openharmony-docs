@@ -4,13 +4,7 @@
 export declare struct GridObjectSortComponent
 ```
 
-**GridObjectSortComponent** is a grid object organizer that you can use to edit, drag to sort, add, and delete grid objects.
-
-> **NOTE:** 
-> 
-> - This component can be used only in the stage model.
-> 
-> - If the **GridObjectSortComponent** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md)and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **GridObjectSortComponent** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **GridObjectSortComponent** component.
+Creates a GridObjectSortComponent component.
 
 **Since:** 11
 
@@ -68,7 +62,7 @@ Callback invoked when changes are canceled.
 onSave: (select: Array<GridObjectSortComponentItem>, unselect: Array<GridObjectSortComponentItem>) => void
 ```
 
-Callback invoked when changes are saved. The data after the changes is returned.
+Callback invoked when changes are saved. **select** indicates the selected data after editing, and **unselect** indicates the unselected data after editing.
 
 **Since:** 11
 
@@ -93,7 +87,7 @@ Callback invoked when changes are saved. The data after the changes is returned.
 dataList: Array<GridObjectSortComponentItem>
 ```
 
-Data to pass. The maximum data length is 50 characters. If it is exceeded, only the first 50 characters are used.
+Data to pass. The maximum number of data entries is 50. If the number of data entries exceeds 50, only the first 50 entries are used.
 
 **Type:** Array&lt;[GridObjectSortComponentItem](arkts-arkui-arkui-advanced-gridobjectsortcomponent-gridobjectsortcomponentitem-i.md)&gt;
 

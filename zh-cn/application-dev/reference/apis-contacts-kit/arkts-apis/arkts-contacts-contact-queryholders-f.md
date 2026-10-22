@@ -18,7 +18,7 @@ function queryHolders(callback: AsyncCallback<Array<Holder>>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryHolders](#queryholders)(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;)
+**替代接口：** [queryHolders](#queryholders-2)(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -113,7 +113,7 @@ function queryHolders(): Promise<Array<Holder>>
 
 **废弃版本：** 10
 
-**替代接口：** [queryHolders](#queryholders)(context: Context)
+**替代接口：** [queryHolders](#queryholders-4)(context: Context)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 

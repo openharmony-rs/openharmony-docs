@@ -4,7 +4,7 @@
 export declare class SphereGeometry extends GeometryDefinition
 ```
 
-A sphere geometry type that inherits from GeometryDefinition.
+A sphere geometry type that inherits from [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md).
 
 **Inheritance/Implementation:** SphereGeometry extends [GeometryDefinition](arkts-arkgraphics3d-scenetypes-geometrydefinition-c.md)
 

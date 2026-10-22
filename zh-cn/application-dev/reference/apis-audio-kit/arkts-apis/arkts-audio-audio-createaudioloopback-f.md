@@ -19,8 +19,8 @@ function createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback>
 **起始版本：** 20
 
 **需要权限：** 
-- API版本27+：N/A
-- API版本20-26：ohos.permission.MICROPHONE
+- API版本25+：N/A
+- API版本20-24：ohos.permission.MICROPHONE
 
 <!--Device-audio-function createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback>--><!--Device-audio-function createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback>-End-->
 
@@ -42,9 +42,23 @@ function createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 20 - 26.0.0 |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Unsupported API.<br>**适用版本：** 20 - 26.0.0 |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied.<br>**适用版本：** 20 - 24 |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Unsupported API.<br>**适用版本：** 20 - 24 |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Loopback mode is unsupported. |
 
 **示例**
+
+```TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let audioLoopback: audio.AudioLoopback;
+
+audio.createAudioLoopback(audio.AudioLoopbackMode.HARDWARE).then((data) => {
+  audioLoopback = data;
+  console.info('AudioLoopback Created : SUCCESS');
+}).catch((err: BusinessError) => {
+  console.error(`AudioLoopback Created : ERROR : ${err}`);
+});
+```

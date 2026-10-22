@@ -1,4 +1,4 @@
-# DeviceKVStore
+# DeviceKVStore（系统接口）
 
 ```TypeScript
 interface DeviceKVStore extends SingleKVStore

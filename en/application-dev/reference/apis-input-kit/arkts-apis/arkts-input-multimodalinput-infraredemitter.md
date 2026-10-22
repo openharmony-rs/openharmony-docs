@@ -20,9 +20,9 @@ import { infraredEmitter } from '@kit.InputKit';
 
 | Name | Description |
 | --- | --- |
-| [getInfraredFrequencies](arkts-input-infraredemitter-getinfraredfrequencies-f.md#getinfraredfrequencies) | Queries the frequency range of the infrared signals supported by the device. It is recommended that you first use [hasIrEmitter](arkts-input-infraredemitter-hasiremitter-f.md) to check whether the device supports an infrared emitter. |
-| [hasIrEmitter](arkts-input-infraredemitter-hasiremitter-f.md#hasiremitter) | Checks whether the device has an infrared emitter. This API uses a promise to return the result. |
-| [transmitInfrared](arkts-input-infraredemitter-transmitinfrared-f.md#transmitinfrared) | Generates IR signals at the specified frequency and level. |
+| [getInfraredFrequencies](arkts-input-infraredemitter-getinfraredfrequencies-f.md#getinfraredfrequencies-1) | Queries the frequency range of the infrared signals supported by the device. It is recommended that you first use [hasIrEmitter](arkts-input-infraredemitter-hasiremitter-f.md) to check whether the device supports an infrared emitter. |
+| [hasIrEmitter](arkts-input-infraredemitter-hasiremitter-f.md#hasiremitter-1) | Checks whether the device has an infrared emitter. This API uses a promise to return the result. |
+| [transmitInfrared](arkts-input-infraredemitter-transmitinfrared-f.md#transmitinfrared-1) | Generates IR signals at the specified frequency and level. |
 
 ### Interfaces
 

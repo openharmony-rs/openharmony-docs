@@ -146,6 +146,46 @@ Height of the mask. The upper edge of the mask display is 16 vp higher than the 
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## maxWidth
+
+```TypeScript
+maxWidth?: Length
+```
+
+The maximum width of the bar. It cannot be set in precentage.
+
+**Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-FloatingTabBarStyle-maxWidth?: Length--><!--Device-FloatingTabBarStyle-maxWidth?: Length-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## offset
+
+```TypeScript
+offset?: Position | Edges | LocalizedEdges
+```
+
+The offset of the bar.
+
+**Type:** Position &#124; Edges &#124; [LocalizedEdges](../arkts-apis/arkts-arkui-localizededges-i.md)
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-FloatingTabBarStyle-offset?: Position | Edges | LocalizedEdges--><!--Device-FloatingTabBarStyle-offset?: Position | Edges | LocalizedEdges-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## systemMaterial
 
 ```TypeScript

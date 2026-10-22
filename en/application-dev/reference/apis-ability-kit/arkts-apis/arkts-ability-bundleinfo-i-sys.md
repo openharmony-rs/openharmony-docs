@@ -1,4 +1,4 @@
-# BundleInfo
+# BundleInfo (System API)
 
 ```TypeScript
 export interface BundleInfo

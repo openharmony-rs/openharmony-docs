@@ -12,7 +12,7 @@ import { connection } from '@kit.ConnectivityKit';
 function setBluetoothScanMode(mode: ScanMode, duration: number): void
 ```
 
-设置蓝牙扫描模式，决定本机设备是否可被连接，或者可被发现。搭配[onScanModeChange](arkts-connectivity-connection-onscanmodechange-f.md)接口使用，可实时监听蓝牙扫描模式变更事件。
+设置蓝牙扫描模式，决定本机设备是否可被连接，或者可被发现。搭配[onScanModeChange](arkts-connectivity-connection-onscanmodechange-f.md#onscanmodechange-1)接口使用，可实时监听蓝牙扫描模式变更事件。
 
 **起始版本：** 10
 

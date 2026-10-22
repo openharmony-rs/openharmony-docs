@@ -26,7 +26,7 @@ function connect(params: ConnectionParams): Promise<void>
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
-**参见：** [disconnect](arkts-connectivity-datatransfer-disconnect-f.md) 断连远端设备。
+**参见：** [disconnect](arkts-connectivity-datatransfer-disconnect-f.md#disconnect-1) 断连远端设备。
 
 **参数：**
 

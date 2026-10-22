@@ -20,4 +20,4 @@ export type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: number) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| preloadId | number | 是 | The preload UIExtensionAbility ID. |
+| preloadId | number | 是 | 预加载的UIExtensionAbility实例ID。 |

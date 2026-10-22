@@ -1,4 +1,4 @@
-# Zoom
+# Zoom（系统接口）
 
 ```TypeScript
 interface Zoom extends ZoomQuery

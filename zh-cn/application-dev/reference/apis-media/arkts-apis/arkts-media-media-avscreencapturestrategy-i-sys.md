@@ -1,4 +1,4 @@
-# AVScreenCaptureStrategy
+# AVScreenCaptureStrategy（系统接口）
 
 ```TypeScript
 interface AVScreenCaptureStrategy

@@ -26,7 +26,7 @@ function onDeviceFound(callback: Callback<ScanResults[]>): void
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
-**参见：** [offDeviceFound](arkts-connectivity-scan-offdevicefound-f.md) 取消订阅星闪扫描结果。
+**参见：** [offDeviceFound](arkts-connectivity-scan-offdevicefound-f.md#offdevicefound-1) 取消订阅星闪扫描结果。
 
 **参数：**
 

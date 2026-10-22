@@ -20,9 +20,9 @@ import { videoProcessingEngine } from '@kit.ImageKit';
 
 | Name | Description |
 | --- | --- |
-| [create](arkts-image-videoprocessingengine-create-f.md#create) | Create an image processing instance. |
-| [deinitializeEnvironment](arkts-image-videoprocessingengine-deinitializeenvironment-f.md#deinitializeenvironment) | Deinitialize global environment for image processing. |
-| [initializeEnvironment](arkts-image-videoprocessingengine-initializeenvironment-f.md#initializeenvironment) | Initialize global environment for image processing. |
+| [create](arkts-image-videoprocessingengine-create-f.md#create-1) | Create an image processing instance. |
+| [deinitializeEnvironment](arkts-image-videoprocessingengine-deinitializeenvironment-f.md#deinitializeenvironment-1) | Deinitialize global environment for image processing. |
+| [initializeEnvironment](arkts-image-videoprocessingengine-initializeenvironment-f.md#initializeenvironment-1) | Initialize global environment for image processing. |
 
 ### Interfaces
 

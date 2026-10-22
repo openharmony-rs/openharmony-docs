@@ -76,7 +76,7 @@ strokeWidth(value: number | string)
 > 
 > - 分割线的宽度不支持百分比设置。
 > 
-> - 使用水平分割线时，strokeWidth控制高度，优先级低于通用属性[height](arkts-arkui-common-comp-commonmethod-c.md#height)； 使用垂直分割线时，strokeWidth控制宽度，优先级低于通用属性[width](arkts-arkui-common-comp-commonmethod-c.md#width)。
+> - 使用水平分割线时，strokeWidth控制高度，优先级低于通用属性[height](arkts-arkui-common-comp-commonmethod-c.md#height-1)； 使用垂直分割线时，strokeWidth控制宽度，优先级低于通用属性[width](arkts-arkui-common-comp-commonmethod-c.md#width-1)。
 > 
 > - 超过通用属性设置大小时，按照通用属性进行裁切。
 > 

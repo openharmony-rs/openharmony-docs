@@ -18,7 +18,7 @@ function download(config: DownloadConfig, callback: AsyncCallback<DownloadTask>)
 
 **废弃版本：** 9
 
-**替代接口：** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile)(context: BaseContext, config: DownloadConfig, callback: AsyncCallback&lt;DownloadTask&gt;)
+**替代接口：** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)(context: BaseContext, config: DownloadConfig, callback: AsyncCallback&lt;DownloadTask&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -69,7 +69,7 @@ function download(config: DownloadConfig): Promise<DownloadTask>
 
 **废弃版本：** 9
 
-**替代接口：** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile)(context: BaseContext, config: DownloadConfig)
+**替代接口：** [downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-2)(context: BaseContext, config: DownloadConfig)
 
 **需要权限：** ohos.permission.INTERNET
 

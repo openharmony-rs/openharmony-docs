@@ -1,4 +1,4 @@
-# CameraDevice
+# CameraDevice（系统接口）
 
 ```TypeScript
 interface CameraDevice

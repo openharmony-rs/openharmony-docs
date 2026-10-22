@@ -1,4 +1,4 @@
-# AccountManager
+# AccountManager (System API)
 
 ```TypeScript
 interface AccountManager

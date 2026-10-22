@@ -46,7 +46,7 @@ dateTimeOptions(value: DateTimeOptions)
 dateTimeOptions(timeFormat: Optional<DateTimeOptions>)
 ```
 
-设置时分秒是否显示前导0。与[dateTimeOptions<sup>12+</sup>](#datetimeoptions)相比，timeFormat参数新增了对undefined类型的支持。
+设置时分秒是否显示前导0。与[dateTimeOptions<sup>12+</sup>](#datetimeoptions-1)相比，timeFormat参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -118,7 +118,7 @@ disappearTextStyle(value: PickerTextStyle)
 disappearTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。与[disappearTextStyle<sup>10+</sup>](#disappeartextstyle)相比，style参数新增了对undefined类型的支持。
+设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。与[disappearTextStyle<sup>10+</sup>](#disappeartextstyle-1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -142,7 +142,7 @@ disappearTextStyle(style: Optional<PickerTextStyle>)
 enableCascade(enabled: boolean)
 ```
 
-设置上午和下午的标识是否根据小时数自动切换，仅在[useMilitaryTime](#usemilitarytime)设置为false时生效。自动切换适用于闹钟、日程等注重操作效率和流畅体验的日常消费场景，手动切换适用于医疗、法律等对时间精确性要求严苛、不容歧义的场景。
+设置上午和下午的标识是否根据小时数自动切换，仅在[useMilitaryTime](#usemilitarytime-1)设置为false时生效。自动切换适用于闹钟、日程等注重操作效率和流畅体验的日常消费场景，手动切换适用于医疗、法律等对时间精确性要求严苛、不容歧义的场景。
 
 **起始版本：** 18
 
@@ -196,7 +196,7 @@ enableHapticFeedback(enable: boolean)
 enableHapticFeedback(enable: Optional<boolean>)
 ```
 
-设置是否开启触控反馈。与[enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback)相比，enable参数新增了对undefined类型的支持。
+设置是否开启触控反馈。与[enableHapticFeedback<sup>12+</sup>](#enablehapticfeedback-1)相比，enable参数新增了对undefined类型的支持。
 
 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
 
@@ -246,7 +246,7 @@ loop(value: boolean)
 loop(isLoop: Optional<boolean>)
 ```
 
-设置是否启用循环模式。与[loop<sup>11+</sup>](#loop)相比，isLoop参数新增了对undefined类型的支持。
+设置是否启用循环模式。与[loop<sup>11+</sup>](#loop-1)相比，isLoop参数新增了对undefined类型的支持。
 
 > **说明：** 
 > 
@@ -300,7 +300,7 @@ onChange(callback: (value: TimePickerResult) => void)
 onChange(callback: Optional<OnTimePickerChangeCallback>)
 ```
 
-滑动TimePicker后，时间选项归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
+滑动TimePicker后，时间选项归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。与[onChange](#onchange-1)相比，callback参数新增了对undefined类型的支持。
 
 回调会在滑动动画结束后触发，如果需要快速获取索引值变化，建议使用[onEnterSelectedArea](#onenterselectedarea)接口。需要注意的是，当[enableCascade](#enablecascade)设置为true时，由于上午/下午列与小时列存在联动关系，该回调的行为可能不符合预期，不建议在此场景下使用。
 
@@ -328,7 +328,7 @@ onEnterSelectedArea(callback: Callback<TimePickerResult>)
 
 滑动TimePicker过程中，选项进入分割线区域内，触发该回调。适用于需要在滑动过程中实时更新UI、实时验证时间范围等需要快速响应的场景。与onChange相比，该回调触发时机更早，适合需要即时反馈的场景。
 
-与[onChange](#onchange)事件的差别在于，该事件的触发时机早于[onChange](#onchange)事件，当滑动列的滑动距离超过选中项高度的一半时，选项已经进入分割线区域内，会触发该事件。当[enableCascade](#enablecascade)设置为true时，由于上午/下午列与小时列存在联动关系（即上午/下午标识会根据小时数自动调整），不建议使用该回调。该回调标识的是滑动过程中选项进入分割线区域内的节点，而联动变化的选项并不涉及滑动，因此，回调的返回值中，仅当前滑动列的值会正常变化，其余未滑动列的值保持不变。
+与[onChange](#onchange-1)事件的差别在于，该事件的触发时机早于[onChange](#onchange-1)事件，当滑动列的滑动距离超过选中项高度的一半时，选项已经进入分割线区域内，会触发该事件。当[enableCascade](#enablecascade)设置为true时，由于上午/下午列与小时列存在联动关系（即上午/下午标识会根据小时数自动调整），不建议使用该回调。该回调标识的是滑动过程中选项进入分割线区域内的节点，而联动变化的选项并不涉及滑动，因此，回调的返回值中，仅当前滑动列的值会正常变化，其余未滑动列的值保持不变。
 
 > **说明：** 
 > 
@@ -380,7 +380,7 @@ selectedTextStyle(value: PickerTextStyle)
 selectedTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置选中项的文本颜色、字号及字体粗细。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle)相比，style参数新增了对undefined类型的支持。
+设置选中项的文本颜色、字号及字体粗细。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle-1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -428,7 +428,7 @@ textStyle(value: PickerTextStyle)
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细。与[textStyle<sup>10+</sup>](#textstyle)相比，style参数新增了对undefined类型的支持。
+设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细。与[textStyle<sup>10+</sup>](#textstyle-1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -476,7 +476,7 @@ useMilitaryTime(value: boolean)
 useMilitaryTime(isMilitaryTime: Optional<boolean>)
 ```
 
-设置展示时间是否为24小时制，未通过该接口设置时，默认跟随系统设置展示。与[useMilitaryTime](#usemilitarytime)相比，isMilitaryTime参数新增了对undefined类型的支持。
+设置展示时间是否为24小时制，未通过该接口设置时，默认跟随系统设置展示。与[useMilitaryTime](#usemilitarytime-1)相比，isMilitaryTime参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 

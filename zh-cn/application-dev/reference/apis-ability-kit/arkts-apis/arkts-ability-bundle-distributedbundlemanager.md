@@ -23,16 +23,16 @@ import { distributedBundleManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo) | 获取由elementName指定的远程设备上的应用的AbilityInfo信息。使用callback异步回调。 |
-| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo) | 获取由elementName指定的远程设备上的应用的AbilityInfo信息。使用Promise异步回调。 |
-| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo) | 获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。 |
-| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo) | 获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。 |
-| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo) | 获取由elementName和locale指定的远程设备上的应用的AbilityInfo信息。使用callback异步回调。 |
-| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo) | 获取由elementName和locale指定的远程设备上的应用的AbilityInfo信息。使用Promise异步回调。 |
-| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo) | 获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。 |
-| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo) | 获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。 |
-| [getRemoteBundleVersionCode](arkts-ability-distributedbundlemanager-getremotebundleversioncode-f-sys.md#getremotebundleversioncode) | 获取指定远程设备上指定包名的应用版本号。使用Promise异步回调。 |
-| [getRemoteMetadata](arkts-ability-distributedbundlemanager-getremotemetadata-f-sys.md#getremotemetadata) | 获取指定远程设备上指定包名的应用元数据信息。使用Promise异步回调。 |
+| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-1) | 获取由elementName指定的远程设备上的应用的AbilityInfo信息。使用callback异步回调。 |
+| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-2) | 获取由elementName指定的远程设备上的应用的AbilityInfo信息。使用Promise异步回调。 |
+| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-3) | 获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。 |
+| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-4) | 获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。 |
+| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-5) | 获取由elementName和locale指定的远程设备上的应用的AbilityInfo信息。使用callback异步回调。 |
+| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-6) | 获取由elementName和locale指定的远程设备上的应用的AbilityInfo信息。使用Promise异步回调。 |
+| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-7) | 获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。 |
+| [getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md#getremoteabilityinfo-8) | 获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。 |
+| [getRemoteBundleVersionCode](arkts-ability-distributedbundlemanager-getremotebundleversioncode-f-sys.md#getremotebundleversioncode-1) | 获取指定远程设备上指定包名的应用版本号。使用Promise异步回调。 |
+| [getRemoteMetadata](arkts-ability-distributedbundlemanager-getremotemetadata-f-sys.md#getremotemetadata-1) | 获取指定远程设备上指定包名的应用元数据信息。使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->

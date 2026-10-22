@@ -1,4 +1,4 @@
-# TriggerInfo
+# TriggerInfo (System API)
 
 ```TypeScript
 export interface TriggerInfo

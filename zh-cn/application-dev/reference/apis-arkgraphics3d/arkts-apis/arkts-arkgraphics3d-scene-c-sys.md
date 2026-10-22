@@ -1,4 +1,4 @@
-# Scene
+# Scene（系统接口）
 
 ```TypeScript
 export declare class Scene

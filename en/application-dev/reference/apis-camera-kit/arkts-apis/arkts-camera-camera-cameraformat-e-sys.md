@@ -1,4 +1,4 @@
-# CameraFormat
+# CameraFormat (System API)
 
 ```TypeScript
 enum CameraFormat

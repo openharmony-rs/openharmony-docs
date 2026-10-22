@@ -1993,7 +1993,7 @@ struct Index {
 getPositionToParentWithTransform(): Position
 ```
 
-Obtains the position offset of this FrameNode relative to its parent component with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate). This API returns the transformed coordinates of the upper left corner after component layout.
+Obtains the position offset of this FrameNode relative to its parent component with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform-1) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate-1). This API returns the transformed coordinates of the upper left corner after component layout.
 
 **Since:** 12
 
@@ -2169,7 +2169,7 @@ struct Index {
 getPositionToScreenWithTransform(): Position
 ```
 
-Obtains the position offset of this FrameNode relative to the screen with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate). This API returns the transformed coordinates of the upper left corner after component layout.
+Obtains the position offset of this FrameNode relative to the screen with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform-1) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate-1). This API returns the transformed coordinates of the upper left corner after component layout.
 
 **Since:** 12
 
@@ -2344,7 +2344,7 @@ struct Index {
 getPositionToWindowWithTransform(): Position
 ```
 
-Obtains the position offset of this FrameNode relative to the window with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate). This API returns the transformed coordinates of the upper left corner after component layout.
+Obtains the position offset of this FrameNode relative to the window with drawing attributes applied, in vp. Drawing attributes include [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform-1) and [translate](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#translate-1). This API returns the transformed coordinates of the upper left corner after component layout.
 
 **Since:** 12
 

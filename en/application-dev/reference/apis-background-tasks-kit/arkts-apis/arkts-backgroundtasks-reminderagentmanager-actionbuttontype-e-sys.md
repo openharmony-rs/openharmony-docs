@@ -1,4 +1,4 @@
-# ActionButtonType
+# ActionButtonType (System API)
 
 ```TypeScript
 export enum ActionButtonType

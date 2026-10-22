@@ -83,7 +83,7 @@ Pauses audio recording. This API can be called only after the **'start'** event 
 
 **Deprecated since:** 9
 
-**Substitutes:** [pause](arkts-media-media-avrecorder-i.md#pause)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [pause](arkts-media-media-avrecorder-i.md#pause-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioRecorder-pause(): void--><!--Device-AudioRecorder-pause(): void-End-->
 
@@ -101,7 +101,7 @@ Prepares for recording.
 
 **Deprecated since:** 9
 
-**Substitutes:** [prepare](arkts-media-media-avrecorder-i.md#prepare)(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [prepare](arkts-media-media-avrecorder-i.md#prepare-1)(config: AVRecorderConfig, callback: AsyncCallback&lt;void&gt;)
 
 **Required permissions:** ohos.permission.MICROPHONE
 
@@ -133,7 +133,7 @@ Releases the audio recording resources.
 
 **Deprecated since:** 9
 
-**Substitutes:** [release](arkts-media-media-avrecorder-i.md#release)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [release](arkts-media-media-avrecorder-i.md#release-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioRecorder-release(): void--><!--Device-AudioRecorder-release(): void-End-->
 
@@ -153,7 +153,7 @@ Before resetting audio recording, you must call **stop()** to stop recording. Af
 
 **Deprecated since:** 9
 
-**Substitutes:** [reset](arkts-media-media-avrecorder-i.md#reset)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [reset](arkts-media-media-avrecorder-i.md#reset-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioRecorder-reset(): void--><!--Device-AudioRecorder-reset(): void-End-->
 
@@ -171,7 +171,7 @@ Resumes audio recording. This API can be called only after the **'pause'** event
 
 **Deprecated since:** 9
 
-**Substitutes:** [resume](arkts-media-media-avrecorder-i.md#resume)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [resume](arkts-media-media-avrecorder-i.md#resume-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioRecorder-resume(): void--><!--Device-AudioRecorder-resume(): void-End-->
 
@@ -189,7 +189,7 @@ Starts audio recording. This API can be called only after the **'prepare'** even
 
 **Deprecated since:** 9
 
-**Substitutes:** [start](arkts-media-media-avrecorder-i.md#start)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [start](arkts-media-media-avrecorder-i.md#start-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioRecorder-start(): void--><!--Device-AudioRecorder-start(): void-End-->
 
@@ -207,7 +207,7 @@ Stops audio recording.
 
 **Deprecated since:** 9
 
-**Substitutes:** [stop](arkts-media-media-avrecorder-i.md#stop)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [stop](arkts-media-media-avrecorder-i.md#stop-1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-AudioRecorder-stop(): void--><!--Device-AudioRecorder-stop(): void-End-->
 

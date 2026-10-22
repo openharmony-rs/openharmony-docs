@@ -46,7 +46,7 @@ canLoop(value: boolean)
 canLoop(isLoop: Optional<boolean>)
 ```
 
-设置是否可循环滚动。与[canLoop<sup>10+</sup>](#canloop)相比，isLoop参数新增了对undefined类型的支持。
+设置是否可循环滚动。与[canLoop<sup>10+</sup>](#canloop-1)相比，isLoop参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -94,7 +94,7 @@ defaultPickerItemHeight(value: number | string)
 defaultPickerItemHeight(height: Optional<number | string>)
 ```
 
-设置选择项的高度。与[defaultPickerItemHeight](#defaultpickeritemheight)相比，height参数新增了对undefined类型的支持。
+设置选择项的高度。与[defaultPickerItemHeight](#defaultpickeritemheight-1)相比，height参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -214,7 +214,7 @@ disappearTextStyle(value: PickerTextStyle)
 disappearTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。与[disappearTextStyle<sup>10+</sup>](#disappeartextstyle)相比，style参数新增了对undefined类型的支持。
+设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。与[disappearTextStyle<sup>10+</sup>](#disappeartextstyle-1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -238,7 +238,7 @@ disappearTextStyle(style: Optional<PickerTextStyle>)
 disappearTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 ```
 
-设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[disappearTextStyle<sup>18+</sup>](#disappeartextstyle)相比，style参数新增了对[TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)类型的支持。
+设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[disappearTextStyle<sup>18+</sup>](#disappeartextstyle-2)相比，style参数新增了对[TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)类型的支持。
 
 **起始版本：** 20
 
@@ -288,7 +288,7 @@ divider(value: DividerOptions | null)
 divider(textDivider: Optional<DividerOptions | null>)
 ```
 
-设置分割线样式，不设置该属性则按“默认值”展示分割线。与[divider<sup>12+</sup>](#divider)相比，textDivider参数新增了对undefined类型的支持。
+设置分割线样式，不设置该属性则按“默认值”展示分割线。与[divider<sup>12+</sup>](#divider-1)相比，textDivider参数新增了对undefined类型的支持。
 
 [DividerOptions](arkts-arkui-textpicker-comp-divideroptions-i.md)中startMargin + endMargin 超过组件宽度后，startMargin和endMargin会被置0。
 
@@ -362,7 +362,7 @@ gradientHeight(value: Dimension)
 gradientHeight(height: Optional<Dimension>)
 ```
 
-设置渐隐效果的高度。若未设置该属性，则显示默认渐隐效果。与[gradientHeight<sup>12+</sup>](#gradientheight)相比，height参数新增了对undefined类型的支持。
+设置渐隐效果的高度。若未设置该属性，则显示默认渐隐效果。与[gradientHeight<sup>12+</sup>](#gradientheight-1)相比，height参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -412,7 +412,7 @@ onChange(callback: (value: string[], index: number[]) => void)
 onChange(callback: Optional<OnTextPickerChangeCallback>)
 ```
 
-滑动TextPicker文本内容后，选项归位至选中项位置时，触发该回调。当用户滑动选择器导致选中项变化时触发，不能通过修改双向绑定的状态变量（如selected）来触发。当显示文本或图片加文本列表时，value值为选中项中的文本值，当显示图片列表时，value值为空。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
+滑动TextPicker文本内容后，选项归位至选中项位置时，触发该回调。当用户滑动选择器导致选中项变化时触发，不能通过修改双向绑定的状态变量（如selected）来触发。当显示文本或图片加文本列表时，value值为选中项中的文本值，当显示图片列表时，value值为空。与[onChange](#onchange-1)相比，callback参数新增了对undefined类型的支持。
 
 回调会在滑动动画结束后触发，如果需要快速获取索引值变化，建议使用[onEnterSelectedArea]{@linkTextPickerAttribute#onEnterSelectedArea}接口。
 
@@ -442,9 +442,9 @@ onEnterSelectedArea(callback: TextPickerEnterSelectedAreaCallback)
 
 > **说明：** 
 > 
-> - 与[onChange](#onchange)事件的差别在于，该事件的触发时机早于[onChange](#onchange)事件。onEnterSelectedArea在滑动过程中选项进入选中区域时触发，适合实时获取索引值变化，适用于需要快速响应用户滑动的场景；onChange在滑动结束且选中项归位后触发，适合获取最终确认的选中值，适用于需要获取用户最终选择的场景。
+> - 与[onChange](#onchange-1)事件的差别在于，该事件的触发时机早于[onChange](#onchange-1)事件。onEnterSelectedArea在滑动过程中选项进入选中区域时触发，适合实时获取索引值变化，适用于需要快速响应用户滑动的场景；onChange在滑动结束且选中项归位后触发，适合获取最终确认的选中值，适用于需要获取用户最终选择的场景。
 > 
-> - 与[onScrollStop](#onscrollstop)事件的差别在于，onEnterSelectedArea关注的是选项进入选中区域的逻辑状态，onScrollStop关注的是滚动行为完全停止。需要更早响应索引变化时使用onEnterSelectedArea，需要确认滚动完全停止时使用[onScrollStop](#onscrollstop)。
+> - 与[onScrollStop](#onscrollstop-1)事件的差别在于，onEnterSelectedArea关注的是选项进入选中区域的逻辑状态，onScrollStop关注的是滚动行为完全停止。需要更早响应索引变化时使用onEnterSelectedArea，需要确认滚动完全停止时使用[onScrollStop](#onscrollstop-1)。
 > 
 > - 在多列联动场景中，不建议使用该回调。该回调标识的是滑动过程中选项进入分割线区域内的节点；跟随变化的选项并不涉及滑动，因此回调返回值中仅当前滑动列的值会正常变化，其余未滑动列的值保持不变。
 > 
@@ -504,7 +504,7 @@ onScrollStop(callback: TextPickerScrollStopCallback)
 onScrollStop(callback: Optional<TextPickerScrollStopCallback>)
 ```
 
-文本选择器的选项列滑动停止时触发该事件。与[onScrollStop<sup>14+</sup>](#onscrollstop)相比，callback参数新增了对undefined类型的支持。
+文本选择器的选项列滑动停止时触发该事件。与[onScrollStop<sup>14+</sup>](#onscrollstop-1)相比，callback参数新增了对undefined类型的支持。
 
 手指拖动选项列触发的滑动，手指离开屏幕且滑动停止时会触发该事件。
 
@@ -584,7 +584,7 @@ selectedIndex(value: number[])
 selectedIndex(index: Optional<number[]>)
 ```
 
-设置选中项在数据选择列表中的索引值，优先级高于[TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md)中的"value"属性。单列数据选择器使用number类型，多列数据选择器使用number[]类型。与[selectedIndex<sup>10+</sup>] [selectedIndex](#selectedindex)相比，index参数新增了对undefined类型的支持。
+设置选中项在数据选择列表中的索引值，优先级高于[TextPickerOptions](arkts-arkui-textpicker-comp-textpickeroptions-i.md)中的"value"属性。单列数据选择器使用number类型，多列数据选择器使用number[]类型。与[selectedIndex<sup>10+</sup>] [selectedIndex](#selectedindex-1)相比，index参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -632,7 +632,7 @@ selectedTextStyle(value: PickerTextStyle)
 selectedTextStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置选中项的文本颜色、字号、字体粗细。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle)相比，style参数新增了对undefined类型的支持。
+设置选中项的文本颜色、字号、字体粗细。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle-1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -656,7 +656,7 @@ selectedTextStyle(style: Optional<PickerTextStyle>)
 selectedTextStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 ```
 
-设置选中项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[selectedTextStyle<sup>18+</sup>](#selectedtextstyle)相比，style参数新增了对[TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)类型的支持。
+设置选中项的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[selectedTextStyle<sup>18+</sup>](#selectedtextstyle-2)相比，style参数新增了对[TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)类型的支持。
 
 **起始版本：** 20
 
@@ -704,7 +704,7 @@ textStyle(value: PickerTextStyle)
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细。与[textStyle<sup>10+</sup>](#textstyle)相比，style参数新增了对undefined类型的支持。
+设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细。与[textStyle<sup>10+</sup>](#textstyle-1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -728,7 +728,7 @@ textStyle(style: Optional<PickerTextStyle>)
 textStyle(style: Optional<PickerTextStyle | TextPickerTextStyle>)
 ```
 
-设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[textStyle<sup>18+</sup>](#textstyle)相比，style参数新增了对[TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)类型的支持。
+设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细、最大字号、最小字号、超长文本截断方式。与[textStyle<sup>18+</sup>](#textstyle-2)相比，style参数新增了对[TextPickerTextStyle](arkts-arkui-textpicker-comp-textpickertextstyle-i.md)类型的支持。
 
 **起始版本：** 20
 

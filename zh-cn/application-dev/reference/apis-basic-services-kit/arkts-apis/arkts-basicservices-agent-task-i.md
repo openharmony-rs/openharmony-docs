@@ -4,7 +4,7 @@
 interface Task
 ```
 
-上传或下载任务。使用该方法前需要先获取Task对象，promise形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create)获取，callback形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create)获取。
+上传或下载任务。使用该方法前需要先获取Task对象，promise形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create-2)获取，callback形式通过[request.agent.create](arkts-basicservices-agent-create-f.md#create-1)获取。
 
 > **说明：** 
 > 
@@ -386,7 +386,7 @@ on(event: 'completed', callback: (progress: Progress) => void): void
 on(event: 'failed', callback: (progress: Progress) => void): void
 ```
 
-订阅任务失败事件，使用callback异步回调。可通过调用[request.agent.show](arkts-basicservices-agent-show-f.md#show)查看错误原因。
+订阅任务失败事件，使用callback异步回调。可通过调用[request.agent.show](arkts-basicservices-agent-show-f.md#show-2)查看错误原因。
 
 > **说明：** 
 > 
@@ -608,7 +608,7 @@ on(event: 'wait', callback: Callback<WaitingReason>): void
 pause(callback: AsyncCallback<void>): void
 ```
 
-暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](#resume)恢复。使用callback异步回调。
+暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](#resume-1)恢复。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -636,7 +636,7 @@ pause(callback: AsyncCallback<void>): void
 pause(): Promise<void>
 ```
 
-暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](#resume)恢复。使用Promise异步回调。
+暂停任务，可以暂停正在等待/正在运行/正在重试的任务，已暂停的任务可被[resume](#resume-1)恢复。使用Promise异步回调。
 
 **起始版本：** 10
 
@@ -841,7 +841,7 @@ start(): Promise<void>
 stop(callback: AsyncCallback<void>): void
 ```
 
-停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start)恢复。使用callback异步回调。
+停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start-1)恢复。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -870,7 +870,7 @@ stop(callback: AsyncCallback<void>): void
 stop(): Promise<void>
 ```
 
-停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start)恢复。使用Promise异步回调。
+停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start-1)恢复。使用Promise异步回调。
 
 **起始版本：** 10
 

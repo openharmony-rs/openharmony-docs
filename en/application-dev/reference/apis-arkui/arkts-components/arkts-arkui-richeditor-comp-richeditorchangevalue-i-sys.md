@@ -1,4 +1,4 @@
-# RichEditorChangeValue
+# RichEditorChangeValue (System API)
 
 ```TypeScript
 declare interface RichEditorChangeValue

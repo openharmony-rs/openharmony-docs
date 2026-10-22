@@ -1,4 +1,4 @@
-# DeviceType
+# DeviceType (System API)
 
 ```TypeScript
 enum DeviceType

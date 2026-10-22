@@ -1,4 +1,4 @@
-# SceneBoidsSim(3D scene boids simulation type declarations)
+# SceneBoidsSim
 
 ## Summary
 

@@ -1,4 +1,4 @@
-# Scene
+# Scene (System API)
 
 ```TypeScript
 export declare class Scene
@@ -57,3 +57,43 @@ function loadModelWithParams(): Promise<Scene> {
 ```
 
 <!--DelEnd-->
+
+## snapshot
+
+```TypeScript
+snapshot(cameras: Camera[], params: RenderTargetParameters[]): Promise<RenderTarget[]>
+```
+
+take a snapshot for the current scene;
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Scene-snapshot(cameras: Camera[], params: RenderTargetParameters[]): Promise<RenderTarget[]>--><!--Device-Scene-snapshot(cameras: Camera[], params: RenderTargetParameters[]): Promise<RenderTarget[]>-End-->
+
+**System capability:** SystemCapability.ArkUi.Graphics3D
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| cameras | [Camera](arkts-arkgraphics3d-scenenodes-camera-i.md)[] | Yes | the camera list used to render the snapshot. |
+| params | [RenderTargetParameters](arkts-arkgraphics3d-scene-rendertargetparameters-i-sys.md)[] | Yes | the parameters for render target list. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;[RenderTarget](arkts-arkgraphics3d-sceneresources-rendertarget-i-sys.md)[]&gt; | Promise used to return a list of render target |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| 25603001 |  |
+| 25603002 |  |
+| 25601002 |  |
+| 25601004 |  |

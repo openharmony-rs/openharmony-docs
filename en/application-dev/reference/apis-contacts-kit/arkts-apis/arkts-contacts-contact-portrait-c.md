@@ -17,7 +17,7 @@ Defines a contact's portrait.
 > object generated based on the contact portrait resource.
 > 
 > Since API version 22, the profile picture resource can be read through URI. The resource can be opened only in
-> [fs.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md) mode and cannot be directly displayed in the **Image** component using a URI. You need to read
+> [fs.open](../../apis-core-file-kit/arkts-apis/arkts-corefile-file-fs-open-f.md#open-1) mode and cannot be directly displayed in the **Image** component using a URI. You need to read
 > the resource and display it in [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) format.
 
 **Since:** 7

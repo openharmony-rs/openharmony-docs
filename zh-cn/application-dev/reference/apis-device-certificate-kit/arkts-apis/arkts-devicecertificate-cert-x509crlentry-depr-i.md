@@ -170,7 +170,7 @@ getEncoded(callback: AsyncCallback<EncodingBlob>): void
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 11开始废弃，建议使用
-> [X509CRLEntry.getEncoded()](arkts-devicecertificate-cert-x509crlentry-i.md#getencoded)替代。
+> [X509CRLEntry.getEncoded()](arkts-devicecertificate-cert-x509crlentry-i.md#getencoded-1)替代。
 
 **起始版本：** 9
 
