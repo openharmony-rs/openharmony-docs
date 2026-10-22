@@ -2087,6 +2087,88 @@ ArkTS-Sta示例：
   }
   ```
 
+## onZoomChange
+
+ArkTS-Dyn: onZoomChange(callback: OnZoomChangeCallback)
+
+ArkTS-Sta: onZoomChange(callback: OnZoomChangeCallback | undefined)
+
+当网页的页面缩放倍率发生变化时触发该回调。
+
+> **说明：**
+>
+> - 通过[setZoomFactor](./arkts-apis-webview-WebviewController.md#setzoomfactor)设置，或[zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22)为`true`时通过Ctrl组合键或鼠标滚轮/触摸板缩放，均会触发该回调。
+> - 在同一浏览数据上下文中，其他同Host Web组件改变页面缩放倍率后，如果当前Web组件的实际倍率随之变化，也会触发该回调。
+> - 页面缩放会缩放文字、图片并重新布局页面；CSS `zoom`不会触发该回调，捏合缩放导致的页面显示比例变化由[onScaleChange](#onscalechange9)通知。
+> - 当前Web组件导航至其他Host时，若实际倍率发生变化则触发回调；实际倍率不变时不会重复触发。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | ArkTS-Dyn: [OnZoomChangeCallback](./arkts-basic-components-web-t.md#onzoomchangecallback)<br>ArkTS-Sta: [OnZoomChangeCallback](./arkts-basic-components-web-t.md#onzoomchangecallback) \| undefined | 是 | 页面缩放倍率变化时触发的回调。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('set zoom factor to 1.5')
+        .onClick(() => {
+          this.controller.setZoomFactor(1.5);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onZoomChange((event) => {
+          console.info(`zoom factor: ${event.oldZoomFactor} -> ${event.newZoomFactor}`);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Web, Column, Component, Entry, Button, OnZoomChangeEvent } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('set zoom factor to 1.5')
+        .onClick(() => {
+          this.controller.setZoomFactor(1.5);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onZoomChange((event: OnZoomChangeEvent): void => {
+          console.info(`zoom factor: ${event.oldZoomFactor} -> ${event.newZoomFactor}`);
+        })
+    }
+  }
+}
+```
+
 ## onInterceptRequest<sup>9+</sup>
 
 ArkTS-Dyn: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse>)

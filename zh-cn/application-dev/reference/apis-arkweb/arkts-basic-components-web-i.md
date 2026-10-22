@@ -372,6 +372,28 @@ Web同层渲染的配置。用于配置Web同层渲染选项，包括支持固�
 | oldScale | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 变化前的显示比例百分比。 |
 | newScale | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 变化后的显示比例百分比。 |
 
+## OnZoomChangeEvent
+
+页面缩放倍率变化的详细信息。
+
+> **说明：**
+>
+> - `oldZoomFactor`和`newZoomFactor`均为无单位浮点数，可包含小数部分且不进行取整，取值范围为闭区间[0.25, 5]。`1`表示不缩放，小于`1`表示缩小，大于`1`表示放大。
+> - 回调参数由浏览器提供，无需开发者自行构造；修改回调参数中的字段不会改变页面实际生效的缩放倍率。可通过[WebviewController.getZoomFactor](./arkts-apis-webview-WebviewController.md#getzoomfactor)获取当前页面缩放倍率。该事件不会返回负值、NaN或Infinity。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| oldZoomFactor | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 变化前的页面缩放倍率。 |
+| newZoomFactor | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 否 | 变化后的页面缩放倍率。 |
+
 ## OnHttpAuthRequestEvent<sup>12+</sup>
 
 定义收到HTTP认证请求时触发的回调信息，包括主机和域信息。适用于需要处理HTTP身份验证的场景，提升认证流程的灵活性和安全性。
