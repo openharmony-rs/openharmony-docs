@@ -1,3 +1,10 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍如何使用Worker线程异步执行AVTranscoder视频转码任务，适用于节省存储空间和提高设备兼容性的后台转码场景。"
+keywords: [AVTranscoder, 异步线程, Worker, 视频转码, ArkTS, 视频压缩, 设备兼容性, 线程通信, SendableObject]
+doctype: guide
+status: active
+---
 # 创建异步线程执行AVTranscoder视频转码(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->

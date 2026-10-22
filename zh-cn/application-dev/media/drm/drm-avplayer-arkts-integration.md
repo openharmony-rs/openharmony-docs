@@ -1,3 +1,10 @@
+---
+kits: ["Drm Kit / 数字版权保护服务", "Media Kit / 媒体服务"]
+description: "介绍如何结合DRM Kit与Media Kit的ArkTS接口，通过AVPlayer实现DRM加密节目的播放，适用于应用层播放版权保护音视频内容的场景。"
+keywords: [DRM, AVPlayer, ArkTS, DRM节目播放, 媒体密钥, mediaKeySystemInfoUpdate, MediaKeySession, 节目解密]
+doctype: guide
+status: active
+---
 # 基于AVPlayer播放DRM节目(ArkTS)
 
 <!--Kit: Drm Kit-->

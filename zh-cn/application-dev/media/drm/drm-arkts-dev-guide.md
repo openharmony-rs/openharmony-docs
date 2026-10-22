@@ -1,3 +1,10 @@
+---
+kits: ["Drm Kit / 数字版权保护服务"]
+description: "介绍如何通过ArkTS接口调用DRM Kit实现证书管理、许可证管理、节目授权与解密，适用于应用层需要播放DRM加密内容的场景。"
+keywords: [DRM, ArkTS, 证书管理, 许可证管理, MediaKeySystem, MediaKeySession, 节目授权, 节目解密, 媒体密钥请求]
+doctype: guide
+status: active
+---
 # 数字版权保护(ArkTS)
 
 <!--Kit: Drm Kit-->
