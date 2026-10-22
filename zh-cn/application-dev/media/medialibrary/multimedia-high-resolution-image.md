@@ -285,8 +285,8 @@ target_link_libraries(entry PUBLIC libimage_source.so)
 
 ```cpp
 #include <cstdint>
-#include <multimedia/image_framework/image_common.h>
-#include <multimedia/image_framework/image_source_native.h>
+#include <multimedia/image_framework/image/image_common.h>
+#include <multimedia/image_framework/image/image_source_native.h>
 
 static constexpr uint64_t HIGH_PIXEL_THRESHOLD = 100000000ULL;
 
