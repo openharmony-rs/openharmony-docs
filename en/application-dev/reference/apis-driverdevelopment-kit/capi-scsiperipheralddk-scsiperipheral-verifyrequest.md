@@ -5,7 +5,6 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:48:57.967Z pushedAt=2026-06-22T11:21:11.411Z -->
 
 ```c
 typedef struct ScsiPeripheral_VerifyRequest {...} ScsiPeripheral_VerifyRequest
@@ -13,7 +12,7 @@ typedef struct ScsiPeripheral_VerifyRequest {...} ScsiPeripheral_VerifyRequest
 
 ## Overview
 
-Defines the request structure of the **verify** command.
+Defines the SCSI command (**VERIFY**) request struct, which is usually used to verify the data integrity of logical blocks.
 
 **Since**: 18
 
@@ -28,8 +27,8 @@ Defines the request structure of the **verify** command.
 | Name| Description|
 | -- | -- |
 | uint32_t lbAddress | Start address of logical blocks.|
-| uint16_t verificationLength | Number of consecutive logical blocks.|
-| uint8_t control | **Control** field used to specify control information.|
-| uint8_t byte1 | First byte of the CDB.|
+| uint16_t verificationLength | Number of consecutive logical blocks to be verified.|
+| uint8_t control | **Control** field used to specify the control information of the SCSI command.|
+| uint8_t byte1 | First byte of the command descriptor block (CDB).|
 | uint8_t byte6 | Sixth byte of the CDB.|
-| uint32_t timeout | Timeout duration, in ms.|
+| uint32_t timeout | Timeout interval, in milliseconds.|
