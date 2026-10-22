@@ -73,7 +73,7 @@ int32_t OH_Hid_CreateDevice(Hid_Device *hidDevice, Hid_EventProperties *hidEvent
 
 | 类型 | 说明 |
 | -- | -- |
-| i int32_t | deviceID（一个非负整数）成功创建设备的ID。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 连接HID DDK服务失败。可能原因：DDK服务未初始化。请调用OH_Hid_Init完成初始化。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能的原因：1. 入参hidDevice为空指针；<br>         2. 入参hidEventProperties为空指针；3. properties的长度超过7；4. hidEventTypes的长度超过5；<br>         5. hidKeys的长度超过100；6. hidAbs的长度超过26；7.hidRelBits的长度超过13；<br>         8. hidMiscellaneous的长度超过6。<br>         [HID_DDK_FAILURE](capi-hid-ddk-types-h.md#hid_ddkerrcode) 设备数量达到最大值200。可能的原因：1.虚拟设备数量超过上限 2.设备ID生成失败 。 |
+| int32_t | deviceID（一个非负整数）成功创建设备的ID。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 连接HID DDK服务失败。可能原因：DDK服务未初始化。请调用OH_Hid_Init完成初始化。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能的原因：1. 入参hidDevice为空指针；<br>         2. 入参hidEventProperties为空指针；3. properties的长度超过7；4. hidEventTypes的长度超过5；<br>         5. hidKeys的长度超过100；6. hidAbs的长度超过26；7.hidRelBits的长度超过13；<br>         8. hidMiscellaneous的长度超过6。<br>         [HID_DDK_FAILURE](capi-hid-ddk-types-h.md#hid_ddkerrcode) 设备数量达到最大值200。可能的原因：1.虚拟设备数量超过上限 2.设备ID生成失败 。 |
 
 ### OH_Hid_EmitEvent()
 
