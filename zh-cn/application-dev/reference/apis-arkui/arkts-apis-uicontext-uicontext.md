@@ -4791,7 +4791,7 @@ struct Index {
 ## setTransPageEnabled
 
 setTransPageEnabled(enabled: boolean): void
-
+<!--RP3--><!--RP3End-->
 启用或禁用强制分栏的transPages配置。禁用后，transPages中配置的过渡页面将参与右推左的转场行为，不再固定在右侧。未通过该接口设置时，默认值为true。
 
 > **说明：**
@@ -4848,7 +4848,7 @@ struct Index {
 ## isTransPageEnabled
 
 isTransPageEnabled(): boolean
-
+<!--RP3--><!--RP3End-->
 查询强制分栏的transPages配置当前是否启用。
 
 > **说明：**
