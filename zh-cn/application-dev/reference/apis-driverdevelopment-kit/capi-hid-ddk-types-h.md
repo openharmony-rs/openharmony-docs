@@ -4,7 +4,7 @@
 <!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## 概述
 
@@ -354,7 +354,8 @@ HID DDK错误码定义。
 | HID_DDK_INVALID_PARAMETER = 401 | 非法参数，从API 16起，取值由-2变更为401。请检查参数取值是否符合要求。 |
 | HID_DDK_FAILURE = 27300001 | DDK接口执行失败，从API 16起，取值由-1变更为27300001。可能原因：设备状态异常或通信异常。请检查设备状态和参数设置。注：当前[OH_Hid_CreateDevice](capi-hid-ddk-api-h.md#oh_hid_createdevice)在虚拟设备数量超过上限或设备ID生成失败时，取值为-1。 |
 | HID_DDK_NULL_PTR = 27300002 | 空指针异常，从API 16起，取值由-4变更为27300002。请检查传入参数的有效性。注：当前[OH_Hid_EmitEvent](capi-hid-ddk-api-h.md#oh_hid_emitevent)与[OH_Hid_DestroyDevice](capi-hid-ddk-api-h.md#oh_hid_destroydevice)在设备不存在时，取值为-4；[OH_Hid_EmitEvent](capi-hid-ddk-api-h.md#oh_hid_emitevent)在设备对象为空时，取值也为-4。 |
-| HID_DDK_INVALID_OPERATION = 27300003 | 非法操作，从API 16起，取值由-3变更为27300003。可能原因：调用API的时机或顺序不正确。请检查调用时机、以及是否初始化DDK。注：当前[OH_Hid_EmitEvent](capi-hid-ddk-api-h.md#oh_hid_emitevent)与[OH_Hid_DestroyDevice](capi-hid-ddk-api-h.md#oh_hid_destroydevice)在调用者Token校验不匹配时，取值为-3；[OH_Hid_EmitEvent](capi-hid-ddk-api-h.md#oh_hid_emitevent)与[OH_Hid_DestroyDevice](capi-hid-ddk-api-h.md#oh_hid_destroydevice)在DDK连接失败或服务未启用时，取值为27300003。|
+| HID_DDK_INVALID_OPERATION = 27300003 | 非法操作，从API 16起，取值由-3变更为27300003。可能原因：调用API的时机或顺序不正确。请检查调用时机、以及是否初始化DDK。注：当前[OH_Hid_EmitEvent](capi-hid-ddk-api-h.md#oh_hid_emitevent)与[OH_Hid_DestroyDevice](capi-hid-ddk-api-h.md#oh_hid_destroydevice)在调用者Token校验不匹配时，取值为-3；[OH_Hid_EmitEvent](capi-hid-ddk-api-h.md#oh_hid_emitevent)与[OH_Hid_DestroyDevice](capi-hid-ddk-api-h.md#oh_hid_destroydevice)在DDK连接失败或服务未启用时，取值为27300003。 |
+| HID_DDK_TIMEOUT = 27300004 | 超时，从API 16起，取值由-5变更为27300004。请检查设备状态和超时时间设置。 |
 | HID_DDK_INIT_ERROR = 27300005 | 初始化DDK失败或DDK未初始化。请检查系统服务状态，确保在调用API前先初始化DDK。<br> **起始版本：** 18 |
 | HID_DDK_SERVICE_ERROR = 27300006 | 服务通信过程中错误。可能原因：服务内部错误。请检查当前操作和设备状态。<br> **起始版本：** 18 |
 | HID_DDK_MEMORY_ERROR = 27300007 | 内存相关的错误，包括：内存数据拷贝失败、内存申请失败等。请检查内存使用情况和相关参数。<br> **起始版本：** 18 |
