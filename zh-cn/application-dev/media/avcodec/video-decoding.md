@@ -27,7 +27,7 @@
 
 AVCodec支持的视频解码格式请参考[视频解码](avcodec-support-formats.md#视频解码)。
 
-具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVCodec/AVCodec)。
 
 ## 状态机调用关系
 
@@ -101,7 +101,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 2. 解码器回调buffer的信息。
 
-   <!-- @[codec_buffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/codec_buffer.h)-->
+   <!-- @[codec_buffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/codec_buffer.h)-->
 
    ```c++
    // buffer信息。
@@ -128,7 +128,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 3. 解码输入输出队列。
 
-   <!-- @[codec_buffer_queue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/codec_buffer.h)-->
+   <!-- @[codec_buffer_queue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/codec_buffer.h)-->
 
    ```c++
    // 回调buffer输入输出队列。
@@ -259,7 +259,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    方式一：通过名称创建解码器。
 
-   <!-- @[decoder_create_byname](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_create_byname](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    // 通过codec name创建解码器，应用有特殊需求，比如选择支持某种分辨率规格的解码器，可先查询capability，再根据codec name创建解码器。
@@ -275,7 +275,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    方式二：通过媒体类型创建解码器。
 
-   <!-- @[decoder_create_bymime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_create_bymime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    // 通过 MIME TYPE 创建解码器，只能创建系统推荐的特定编解码器。
@@ -342,7 +342,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    }
    ```
 
-   <!-- @[decoder_set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    // 配置异步回调，调用OH_VideoDecoder_RegisterCallback()接口。
@@ -429,7 +429,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    目前支持的所有格式都必须配置以下选项：视频帧宽度、视频帧高度。
 
-   <!-- @[decoder_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
@@ -485,7 +485,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    设置surface，开发者可以在解码过程中执行该步骤，实现动态切换surface。
 
-   <!-- @[decoder_set_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_set_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    // 设置解码器的送显窗口。调用时必须已经完成 Configure，window 的生命周期由调用方保证。
@@ -514,7 +514,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    该接口将在解码器运行前进行一些数据的准备工作。
 
-   <!-- @[decoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    // 申请解码器运行所需资源。Prepare 成功后才能调用 Start。
@@ -530,7 +530,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 8. 调用OH_VideoDecoder_Start()启动解码器。
 
-   <!-- @[decoder_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    int32_t VideoDecoder::Start()
@@ -547,7 +547,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    详细可配置选项的说明请参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)中的视频专有键值对。
 
-   <!-- @[decoder_setparameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_setparameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    int32_t VideoDecoder::SetParameter(OH_AVFormat *format)
@@ -641,7 +641,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     - bufferIndex：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识。
     - attr：帧数据的配置信息，包含输入尺寸（size）、偏移量（offset）、时间戳（pts）、缓冲区标记（flags），获取方式可以参考[音视频解封装](./audio-video-demuxer.md)“步骤-9：开始解封装，循环获取sample”。flags的类别，请参考[OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)。
 
-    <!-- @[decoder_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
+    <!-- @[decoder_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
 
     ```c++
     std::shared_ptr<CodecBufferInfo> bufferInfo = videoDecContext_->inputBufferQueue.Dequeue();
@@ -653,7 +653,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
        * int32_t capacity = OH_AVBuffer_GetCapacity(buffer);
        * if (size > capacity) {
-       * // 异常处理。
+       *     // 异常处理。
        * }
        * memcpy(addr, frameData, size);
        * OH_AVCodecBufferAttr info;
@@ -663,8 +663,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        * info.flags = flags;
        * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &info);
        * if (setBufferRet != AV_ERR_OK) {
-       * // 异常处理。
-       * return false;
+       *     // 异常处理。
+       *     return false;
        * }
        *
        */
@@ -673,7 +673,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     ret = videoDecoder_->PushInputBuffer(*bufferInfo);
     ```
 
-    <!-- @[decoder_push_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+    <!-- @[decoder_push_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
     ```c++
     // 送入解码输入队列进行解码，将填充好码流数据的buffer推送给解码器。
@@ -696,7 +696,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     - timeStamp：由开发者结合业务指定显示时间。
     - render：true表示送显，false表示只释放不送显。
 
-    <!-- @[decoder_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
+    <!-- @[decoder_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
 
     ```c++
     // 获取输出buffer。
@@ -705,7 +705,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     // 开发者可根据业务需要，对输出数据进行送显/保存/释放处理。
     ```
 
-    <!-- @[decoder_render_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+    <!-- @[decoder_render_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
     ```c++
     int32_t VideoDecoder::FreeOutputBuffer(const CodecBufferInfo &info, bool render)
@@ -725,7 +725,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     }
     ```
 
-    <!-- @[decoder_render_output_attime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+    <!-- @[decoder_render_output_attime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
     ```c++
     int32_t VideoDecoder::FreeOutputBuffer(const CodecBufferInfo &info, bool render, int64_t timeStamp)
@@ -759,7 +759,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     - xpsData、xpsSize：PPS/SPS信息，获取方式可以参考[音视频解封装](./audio-video-demuxer.md)。
 
-    <!-- @[decoder_flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+    <!-- @[decoder_flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
     ```c++
     int32_t VideoDecoder::Flush()
@@ -773,7 +773,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     输入、输出buffer清理：
 
-    <!-- @[buffer_clean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/codec_user_data.h)-->
+    <!-- @[buffer_clean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/codec_user_data.h)-->
 
     ```c++
     void ClearQueue()
@@ -789,7 +789,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     调用OH_VideoDecoder_Reset接口后，解码器回到初始化的状态。重新开始解码时，需要调用OH_VideoDecoder_Configure接口、OH_VideoDecoder_SetSurface接口和OH_VideoDecoder_Prepare接口重新配置，再调用OH_VideoDecoder_Start接口启动解码器。
 
-    <!-- @[decoder_reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+    <!-- @[decoder_reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
     ```c++
     int32_t VideoDecoder::Reset()
@@ -805,7 +805,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     输入、输出buffer清理：
 
-    <!-- @[buffer_clean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/codec_user_data.h)-->
+    <!-- @[buffer_clean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/codec_user_data.h)-->
 
     ```c++
     void ClearQueue()
@@ -821,7 +821,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     调用OH_VideoDecoder_Stop()后，解码器保留了解码实例，释放输入输出buffer。开发者可以直接调用OH_VideoDecoder_Start接口继续解码，首帧需要携带参数集如PPS/SPS数据，且从IDR帧开始送入。
 
-    <!-- @[decoder_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+    <!-- @[decoder_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
     ```c++
     int32_t VideoDecoder::Stop()
@@ -836,7 +836,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     输入、输出buffer清理：
 
-    <!-- @[buffer_clean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/codec_user_data.h)-->
+    <!-- @[buffer_clean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/common/codec_user_data.h)-->
 
     ```c++
     void ClearQueue()
@@ -850,7 +850,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 16. 调用OH_VideoDecoder_Destroy()销毁解码器实例，释放资源。
 
-    <!-- @[player_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/core/PlayerRelease.cpp)-->
+    <!-- @[player_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/core/PlayerRelease.cpp)-->
 
     ```c++
     void Player::ReleaseVideoDecoder()
@@ -875,7 +875,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     }
     ```
 
-    <!-- @[decoder_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+    <!-- @[decoder_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
     ```c++
     // 调用OH_VideoDecoder_Destroy，注销解码器，释放资源。
@@ -913,7 +913,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    方式一：通过名称创建解码器。
 
-   <!-- @[decoder_create_byname](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_create_byname](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    // 通过codec name创建解码器，应用有特殊需求，比如选择支持某种分辨率规格的解码器，可先查询capability，再根据codec name创建解码器。
@@ -929,7 +929,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    方式二：通过媒体类型创建解码器。
 
-   <!-- @[decoder_create_bymime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_create_bymime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    // 通过 MIME TYPE 创建解码器，只能创建系统推荐的特定编解码器。
@@ -1021,7 +1021,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    }
    ```
 
-   <!-- @[decoder_set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    // 配置异步回调，调用OH_VideoDecoder_RegisterCallback()接口。
@@ -1096,7 +1096,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    与Surface模式相同，此处不再赘述。
 
-   <!-- @[decoder_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
@@ -1124,7 +1124,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    该接口将在解码器运行前进行一些数据的准备工作。
 
-   <!-- @[decoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    // 申请解码器运行所需资源。Prepare 成功后才能调用 Start。
@@ -1140,7 +1140,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 7. 调用OH_VideoDecoder_Start()启动解码器。
 
-   <!-- @[decoder_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    int32_t VideoDecoder::Start()
@@ -1157,7 +1157,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    详细可配置选项的说明请参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)中的视频专有键值对。
 
-   <!-- @[decoder_setparameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+   <!-- @[decoder_setparameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
    ```c++
    int32_t VideoDecoder::SetParameter(OH_AVFormat *format)
@@ -1235,7 +1235,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     与Surface模式相同，此处不再赘述。
 
-    <!-- @[decoder_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
+    <!-- @[decoder_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
 
     ```c++
     std::shared_ptr<CodecBufferInfo> bufferInfo = videoDecContext_->inputBufferQueue.Dequeue();
@@ -1247,7 +1247,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        * CHECK_AND_RETURN_RET_LOG(addr != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Input buffer addr is null");
        * int32_t capacity = OH_AVBuffer_GetCapacity(buffer);
        * if (size > capacity) {
-       * // 异常处理。
+       *     // 异常处理。
        * }
        * memcpy(addr, frameData, size);
        * OH_AVCodecBufferAttr info;
@@ -1257,8 +1257,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
        * info.flags = flags;
        * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &info);
        * if (setBufferRet != AV_ERR_OK) {
-       * // 异常处理。
-       * return false;
+       *     // 异常处理。
+       *     return false;
        * }
        *
        */
@@ -1267,7 +1267,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     ret = videoDecoder_->PushInputBuffer(*bufferInfo);
     ```
 
-    <!-- @[decoder_push_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+    <!-- @[decoder_push_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
     ```c++
     // 送入解码输入队列进行解码，将填充好码流数据的buffer推送给解码器。
@@ -1288,7 +1288,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     - bufferIndex：回调函数OnNewOutputBuffer传入的参数，与buffer唯一对应的标识。
     - bufferAddr：回调buffer对应的地址，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口获取回调buffer的虚拟地址。
 
-    <!-- @[decoder_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
+    <!-- @[decoder_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
 
     ```c++
     // 获取输出buffer。
@@ -1299,7 +1299,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     输出buffer释放：
 
-    <!-- @[decoder_free_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
+    <!-- @[decoder_free_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
 
     ```c++
     int32_t VideoDecoder::FreeOutputBuffer(const CodecBufferInfo &info)
@@ -1315,7 +1315,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     输出buffer数据保存：
 
-    <!-- @[decoder_outputFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoPresentation.cpp)-->
+    <!-- @[decoder_outputFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoPresentation.cpp)-->
 
     ```c++
     const OH_AVPixelFormat pixelFormat = GetOutputPixelFormat(info, videoDecContext_.get());
@@ -1348,7 +1348,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     ![copy by line](figures/copy-by-line-decoder.png)
 
-    <!-- @[decoder_save_file_YUV420](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoPresentation.cpp)-->
+    <!-- @[decoder_save_file_YUV420](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoPresentation.cpp)-->
 
     ```c++
     void Player::WriteOutputFileWithStrideYUV420SP(uint8_t *bufferAddr)
