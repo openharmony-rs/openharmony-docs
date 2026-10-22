@@ -62,7 +62,7 @@
        photoOutput = cameraManager.createPhotoOutput(photoProfile);
      } catch (error) {
        let err = error as BusinessError;
-       console.error("Failed to createPhotoOutput. error: ${err}");
+       console.error(`Failed to createPhotoOutput. error: ${err}`);
      }
      return photoOutput;
    }
