@@ -1,6 +1,6 @@
 ---
 kits: ["Media Kit / 媒体服务"]
-description: "介绍如何使用AVImageGenerator的C/C++ Native接口获取视频指定时间的帧图像，适用于需要底层视频帧提取和缩略图生成的场景。"
+description: "介绍如何使用AVImageGenerator的C/C++接口获取视频指定时间的帧图像，适用于需要底层视频帧提取和缩略图生成的场景。"
 keywords: [AVImageGenerator, C/C++, Native API, 视频帧提取, OH_AVImageGenerator, SetFDSource, PixelMap, NDK, 缩略图]
 doctype: guide
 status: active
