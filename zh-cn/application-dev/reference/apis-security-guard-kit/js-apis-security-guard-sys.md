@@ -606,9 +606,12 @@ async function updatePolicy(): Promise<void> {
 }
 ```
 
-## AuthStrategy<sup>26.2.0+</sup>
 
-阻断策略枚举，表示事件的处理结果。
+## AuthStrategy
+
+表示阻断策略的枚举。
+
+**起始版本：** 26.2.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -620,9 +623,11 @@ async function updatePolicy(): Promise<void> {
 | DENY | 1 | 拒绝，阻断事件。 |
 | TIMEOUT | 2 | 超时，客户端响应超时且默认策略为放行时记录此结果。 |
 
-## AuthEventInfo<sup>26.2.0+</sup>
+## AuthEventInfo
 
-阻断事件信息，由阻断服务提供者通过 `requestAuthResult` 上报。
+阻断事件信息，由阻断服务提供者通过 [requestAuthResult](#requestauthresult) 上报。
+
+**起始版本：** 26.2.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -633,11 +638,13 @@ async function updatePolicy(): Promise<void> {
 | eventId | number | 否 | 否 | 事件类型ID。 |
 | version | string | 否 | 否 | 事件版本号。不同版本对应不同数据格式。 |
 | content | string | 否 | 否 | 事件内容，JSON字符串格式。 |
-| clientStatus | Array&lt;[AuthClientStatus](#authclientstatus2620)&gt; | 否 | 是 | 客户端会话状态列表，用于标记降级客户端。 |
+| clientStatus | Array&lt;[AuthClientStatus](#authclientstatus)&gt; | 否 | 是 | 客户端会话状态列表，用于标记降级客户端。降级的客户端仅上报通知，不参与从严聚合。 |
 
-## AuthClientStatus<sup>26.2.0+</sup>
+## AuthClientStatus
 
 客户端会话状态，标记单个客户端是否降级。
+
+**起始版本：** 26.2.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -646,11 +653,13 @@ async function updatePolicy(): Promise<void> {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | clientId | string | 否 | 否 | 客户端会话唯一标识。 |
-| isDegraded | boolean | 否 | 否 | 事件是否降级。降级的事件仅上报通知，不需要接收阻断结果，不参与从严聚合。 |
+| isDegraded | boolean | 否 | 否 | 事件是否降级。true表示降级，降级的事件仅上报通知，不需要接收阻断结果，不参与从严聚合。 |
 
-## AuthClientInfo<sup>26.2.0+</sup>
+## AuthClientInfo
 
-客户端会话信息，由框架通过 `onClientStatusChanged` 回调下发给阻断服务提供者。
+客户端会话信息，由框架通过 [onClientStatusChanged](#onclientstatuschanged) 回调下发给阻断服务提供者。
+
+**起始版本：** 26.2.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -660,13 +669,15 @@ async function updatePolicy(): Promise<void> {
 | ---- | ---- | ---- | ---- | ---- |
 | clientId | string | 否 | 否 | 客户端会话唯一标识。 |
 | bundleName | string | 否 | 否 | 应用Bundle名称。 |
-| subscribedEvents | Array&lt;number&gt; | 否 | 否 | 客户端订阅的事件类型ID列表。 |
-| defaultTimeoutStrategy | [AuthStrategy](#authstrategy2620) | 否 | 否 | 客户端响应超时时的默认阻断策略。 |
+| subscribedEvents | Array&lt;number&gt; | 否 | 否 | 客户端订阅的事件类型ID列表。阻断服务提供者可据此过滤关心的事件。 |
+| defaultTimeoutStrategy | [AuthStrategy](#authstrategy) | 否 | 否 | 客户端响应超时时的默认阻断策略。 |
 | defaultTimeoutMs | number | 否 | 否 | 客户端响应超时时间，单位毫秒。 |
 
-## ClientAuthResult<sup>26.2.0+</sup>
+## ClientAuthResult
 
 单个客户端的阻断结果。
+
+**起始版本：** 26.2.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -675,13 +686,15 @@ async function updatePolicy(): Promise<void> {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | clientId | string | 否 | 否 | 客户端会话唯一标识。 |
-| authStrategy | [AuthStrategy](#authstrategy2620) | 否 | 否 | 该客户端的阻断策略。 |
+| authStrategy | [AuthStrategy](#authstrategy) | 否 | 否 | 该客户端的阻断策略。 |
 
-## AuthResult<sup>26.2.0+</sup>
+## AuthResult
 
-所有客户端阻断结果，由框架按**从严策略**聚合后返回给阻断服务提供者。
+所有客户端阻断结果，由框架按从严策略聚合后返回给阻断服务提供者。
 
 从严策略：任一客户端返回 DENY 即阻断，全部客户端返回 ALLOW 才放行。
+
+**起始版本：** 26.2.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -689,12 +702,14 @@ async function updatePolicy(): Promise<void> {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| mergedAuthStrategy | [AuthStrategy](#authstrategy2620) | 否 | 否 | 所有客户端聚合后的阻断策略。 |
-| clientAuthResult | Array&lt;[ClientAuthResult](#clientauthresult2620)&gt; | 否 | 否 | 各客户端的阻断结果列表。 |
+| mergedAuthStrategy | [AuthStrategy](#authstrategy) | 否 | 否 | 所有客户端聚合后的阻断策略。 |
+| clientAuthResult | Array&lt;[ClientAuthResult](#clientauthresult)&gt; | 否 | 否 | 各客户端的阻断结果列表。 |
 
-## AuthProviderCallback<sup>26.2.0+</sup>
+## AuthProviderCallback
 
-阻断服务提供者回调接口，在调用 `createAuthProvider` 时传入。
+阻断服务提供者回调接口，在调用 [createAuthProvider](#securityguardcreateauthprovider) 时传入。
+
+**起始版本：** 26.2.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -704,7 +719,9 @@ async function updatePolicy(): Promise<void> {
 
 onClientStatusChanged: (clientInfos: Array&lt;AuthClientInfo&gt;) => void
 
-客户端会话状态变更时触发。`createAuthProvider` 成功后会立即触发一次，下发当前全量客户端列表；后续客户端创建、销毁或订阅变更时再次触发。
+客户端会话状态变更时触发。[createAuthProvider](#securityguardcreateauthprovider) 成功后会立即触发一次，下发当前全量客户端列表；后续客户端创建、销毁或订阅变更时再次触发。
+
+**起始版本：** 26.2.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -714,11 +731,13 @@ onClientStatusChanged: (clientInfos: Array&lt;AuthClientInfo&gt;) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| clientInfos | Array&lt;[AuthClientInfo](#authclientinfo2620)&gt; | 是 | 全量客户端会话信息列表。 |
+| clientInfos | Array&lt;[AuthClientInfo](#authclientinfo)&gt; | 是 | 全量客户端会话信息列表。 |
 
-## AuthProvider<sup>26.2.0+</sup>
+## AuthProvider
 
-阻断服务提供者类，由 `createAuthProvider` 工厂函数创建。
+阻断服务提供者类，由 [createAuthProvider](#securityguardcreateauthprovider) 工厂函数创建。通过该类实例可请求事件的阻断结果。
+
+**起始版本：** 26.2.0
 
 **系统能力：** SystemCapability.Security.SecurityGuard
 
@@ -728,11 +747,13 @@ onClientStatusChanged: (clientInfos: Array&lt;AuthClientInfo&gt;) => void
 
 requestAuthResult(event: AuthEventInfo): Promise&lt;AuthResult&gt;
 
-请求事件的阻断结果。异步接口：框架校验并发上限后立即返回受理结果，阻断结果聚合完成后通过 Promise resolve 通知调用方。
+请求事件的阻断结果。使用Promise异步回调。框架校验并发上限后立即返回受理结果，阻断结果聚合完成后通过Promise resolve通知调用方。
 
 - 单个 Provider 并发请求上限为 128，超限返回 27000004。
 - 框架侧超时时间为 400 毫秒，超时后按各客户端默认策略聚合并 resolve Promise。
 - 从严聚合：任一客户端阻断即阻断，全部客户端放行才放行。
+
+**起始版本：** 26.2.0
 
 **需要权限：** ohos.permission.AUTH_SERVICE_ACCESS
 
@@ -744,13 +765,13 @@ requestAuthResult(event: AuthEventInfo): Promise&lt;AuthResult&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| event | [AuthEventInfo](#autheventinfo2620) | 是 | 阻断事件信息。eventId、version、content必填。 |
+| event | [AuthEventInfo](#autheventinfo) | 是 | 阻断事件信息。eventId、version、content必填。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Promise&lt;[AuthResult](#authresult2620)&gt; | Promise对象，成功时返回阻断结果，失败时抛出BusinessError。 |
+| Promise&lt;[AuthResult](#authresult)&gt; | Promise对象，成功时返回阻断结果，失败时抛出BusinessError。 |
 
 **错误码：**
 
@@ -790,13 +811,15 @@ async function requestAuthResult(): Promise<void> {
 }
 ```
 
-## securityGuard.createAuthProvider<sup>26.2.0+</sup>
+## securityGuard.createAuthProvider
 
 createAuthProvider(callback: AuthProviderCallback, serviceId: string): AuthProvider
 
 创建阻断服务提供者会话。同一进程最多 1 个 Provider 实例，全局最多 16 个。
 
 创建成功后，框架会立即通过 `callback.onClientStatusChanged` 下发当前全量客户端会话信息。
+
+**起始版本：** 26.2.0
 
 **需要权限：** ohos.permission.AUTH_SERVICE_ACCESS
 
@@ -808,14 +831,14 @@ createAuthProvider(callback: AuthProviderCallback, serviceId: string): AuthProvi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| callback | [AuthProviderCallback](#authprovidercallback2620) | 是 | 阻断服务提供者回调，接收客户端状态变更通知。 |
+| callback | [AuthProviderCallback](#authprovidercallback) | 是 | 阻断服务提供者回调，接收客户端状态变更通知。 |
 | serviceId | string | 是 | 服务标识。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
-| [AuthProvider](#authprovider2620) | 阻断服务提供者实例。 |
+| [AuthProvider](#authprovider) | 阻断服务提供者实例。 |
 
 **错误码：**
 
@@ -857,11 +880,13 @@ try {
 }
 ```
 
-## securityGuard.destroyAuthProvider<sup>26.2.0+</sup>
+## securityGuard.destroyAuthProvider
 
 destroyAuthProvider(provider: AuthProvider): void
 
 销毁阻断服务提供者会话。销毁后实例不可再用，框架将回收相关资源并通知其他客户端。
+
+**起始版本：** 26.2.0
 
 **需要权限：** ohos.permission.AUTH_SERVICE_ACCESS
 
@@ -873,7 +898,7 @@ destroyAuthProvider(provider: AuthProvider): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| provider | [AuthProvider](#authprovider2620) | 是 | 要销毁的阻断服务提供者实例。销毁后不可再用。 |
+| provider | [AuthProvider](#authprovider) | 是 | 要销毁的阻断服务提供者实例。销毁后不可再用。 |
 
 **错误码：**
 
