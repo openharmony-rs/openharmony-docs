@@ -129,7 +129,7 @@ int32_t OH_Hid_DestroyDevice(int32_t deviceId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 调用接口成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 连接HID DDK服务失败或者调用方不是设备的创建者。可能的原因：请确保调用了OH_Hid_Init完成初始化，且调用方是设备的创建者。<br>         [HID_DDK_NULL_PTR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 设备不存在。请确保使用OH_Hid_CreateDevice返回的有效设备ID，且设备未被销毁。 |
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 调用接口成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。请确保应用已声明ohos.permission.ACCESS_DDK_HID权限。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 连接HID DDK服务失败或者调用方不是设备的创建者。请确保调用了OH_Hid_Init完成初始化，且调用方是设备的创建者。<br>         [HID_DDK_NULL_PTR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 设备不存在。请确保使用OH_Hid_CreateDevice返回的有效设备ID，且设备未被销毁。 |
 
 ### OH_Hid_Init()
 
