@@ -3,7 +3,7 @@
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供ArkGraphics 3D中常用的基本资源类型，包括着色器、材质、网格、动画、环境或图片等用于构建3D场景的各类资源。
