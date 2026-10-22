@@ -39,8 +39,6 @@
 | int OH_PreferencesOption_SetBundleName (OH_PreferencesOption \*option, const char \*bundleName) | 设置Preferences配置选项OH_PreferencesOption实例对象的包名称。 |
 | int OH_PreferencesOption_SetDataGroupId (OH_PreferencesOption \*option, const char \*dataGroupId) | 设置Preferences配置选项OH_PreferencesOption实例对象的应用组ID。 |
 | int OH_PreferencesOption_SetStorageType (OH_PreferencesOption \*option, Preferences_StorageType type) | 设置Preferences配置选项 OH_PreferencesOption实例对象的存储模式。 |
-| int OH_PreferencesOption_SetCacheSize (OH_PreferencesOption \*option, int32_t cacheSize) | 设置Preferences配置选项OH_PreferencesOption的缓存大小。仅在GSKV存储模式下生效。 |
-| int32_t OH_PreferencesOption_GetCacheSize (OH_PreferencesOption \*option) | 获取Preferences配置选项OH_PreferencesOption的缓存大小。 |
 | int OH_PreferencesOption_Destroy (OH_PreferencesOption \*option) | 销毁Preferences配置选项OH_PreferencesOption实例。 |
 | const char \* OH_PreferencesPair_GetKey (const OH_PreferencesPair \*pairs, uint32_t index) | 获取KV数据中索引对应数据的键。 |
 | const OH_PreferencesValue \* OH_PreferencesPair_GetPreferencesValue (const OH_PreferencesPair \*pairs, uint32_t index) | 获取KV数据数组中索引对应的值。 |

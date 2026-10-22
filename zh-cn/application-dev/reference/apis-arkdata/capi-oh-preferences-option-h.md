@@ -210,8 +210,8 @@ int OH_PreferencesOption_SetCacheSize(OH_PreferencesOption *option, int32_t cach
 
 | 参数项                                                       | 描述                               |
 | ------------------------------------------------------------ | ---------------------------------- |
-| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) *option | [入参]指向目标[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例的指针。 |
-| int32_t cacheSize                                            | [入参]需要设置的缓存大小，单位为KB。取值范围为[256, 1112784]或0。值为0时表示不生成map文件，且不支持进程间共享。|
+| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) *option | [入参] 指向目标[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例的指针。 |
+| int32_t cacheSize                                            | [入参] 需要设置的缓存大小，单位为KB。取值范围为[256, 1112784]或0。值为0时表示不生成map文件，且不支持进程间共享。 |
 
 **返回：**
 
@@ -236,13 +236,13 @@ int32_t OH_PreferencesOption_GetCacheSize(OH_PreferencesOption *option)
 
 | 参数项                                                       | 描述                               |
 | ------------------------------------------------------------ | ---------------------------------- |
-| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) *option | [入参]指向目标[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例的指针。 |
+| [OH_PreferencesOption](capi-preferences-oh-preferencesoption.md) *option | [入参] 指向目标[OH_PreferencesOption](capi-preferences-oh-preferencesoption.md)实例的指针。 |
 
 **返回：**
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| int32_t | 返回缓存大小，单位为KB。若未设置或option无效，则返回0。|
+| int32_t | 返回缓存大小，单位为KB。若未调用[OH_PreferencesOption_SetCacheSize](#oh_preferencesoption_setcachesize)设置或入参option无效，则返回0。|
 
 ### OH_PreferencesOption_Destroy()
 
