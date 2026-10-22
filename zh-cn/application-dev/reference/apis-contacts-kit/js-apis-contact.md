@@ -5624,9 +5624,9 @@ let website: contact.Website = {
 
 |    名称   |   类型   | 只读 | 可选 | 说明           |
 | --------- | -------- | ---- | ---- | -------------- |
-| dateType      | [SignificantDateType](#significantdatetype)   | 是   | 否   | 重要日期类型。   |
-| dateValue | string   | 是   | 否   | 重要日期取值。 |
-| dateName       | string   | 是   | 是   | 重要日期类型名称。     |
+| dateType      | [SignificantDateType](#significantdatetype)   | 否   | 否   | 重要日期类型。   |
+| dateValue | string   | 否   | 否   | 重要日期取值。 |
+| dateName       | string   | 否   | 是   | 重要日期类型名称。     |
 
 **示例：**
 
