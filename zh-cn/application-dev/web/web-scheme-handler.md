@@ -123,40 +123,39 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
 
   <!-- @[register_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/pages/CustomizeSchemes.ets) -->
   
-  ``` ts
-    // xxx.ets
-    import { webview } from '@kit.ArkWeb';
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    @Entry
-    @Component
-    struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    responseWeb: WebResourceResponse = new WebResourceResponse();
-    scheme1: webview.WebCustomScheme = { schemeName: "name1", isSupportCORS: true, isSupportFetch: true };
-    scheme2: webview.WebCustomScheme = { schemeName: "name2", isSupportCORS: true, isSupportFetch: true };
-    scheme3: webview.WebCustomScheme = { schemeName: "name3", isSupportCORS: true, isSupportFetch: true };
-
-    aboutToAppear(): void {
-        try {
-        webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3]);
-        } catch (error) {
-        console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-        }
-    }
-
-    build() {
-        Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-            .onInterceptRequest((event) => {
-            if (event) {
-                console.info('url:' + event.request.getRequestUrl());
-            }
-            return this.responseWeb;
-            })
-        }
+  ``` TypeScript
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  responseWeb: WebResourceResponse = new WebResourceResponse();
+  scheme1: webview.WebCustomScheme = { schemeName: 'name1', isSupportCORS: true, isSupportFetch: true };
+  scheme2: webview.WebCustomScheme = { schemeName: 'name2', isSupportCORS: true, isSupportFetch: true };
+  scheme3: webview.WebCustomScheme = { schemeName: 'name3', isSupportCORS: true, isSupportFetch: true };
+  
+  aboutToAppear(): void {
+      try {
+      webview.WebviewController.customizeSchemes([this.scheme1, this.scheme2, this.scheme3]);
+      } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
       }
-    }
+  }
+  
+  build() {
+      Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+          .onInterceptRequest((event) => {
+          if (event) {
+              console.info('url:' + event.request.getRequestUrl());
+          }
+          return this.responseWeb;
+          })
+      }
+      }
+  }
   ```
 
 ### 获取被拦截请求的信息
