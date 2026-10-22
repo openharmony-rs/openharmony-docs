@@ -1816,8 +1816,8 @@ getBilingualIndex(text: string): string
 ```ts
 let locale = new Intl.Locale('ja-JP');
 let indexUtil: i18n.IndexUtil = i18n.getInstance(locale.toString());
-let jaIndex = i18n.IndexUtil.getBilingualIndex("リンゴ"); // jaIndex = 'ら'
-let enIndex = i18n.IndexUtil.getBilingualIndex("apple"); // enIndex = 'A'
+let jaIndex = indexUtil.getBilingualIndex('リンゴ'); // jaIndex = 'ら'
+let enIndex = indexUtil.getBilingualIndex('apple'); // enIndex = 'A'
 ```
 
 ## BilingualIndexMode<sup>26+</sup>
