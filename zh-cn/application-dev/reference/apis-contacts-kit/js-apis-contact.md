@@ -5068,7 +5068,7 @@ let holder: contact.Holder = {
 
 **替代接口**：[SignificantDate](#significantdate)
 
-**原子化服务API**：从API version 7 开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.ContactsData
 
