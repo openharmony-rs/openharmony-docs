@@ -544,6 +544,8 @@ ChipGroupV2SymbolItemConfig定义了尾部Symbol图标的配置类型。
 
 该示例通过不设置suffix参数，实现了[ChipGroupV2](#chipgroupv2-1)没有最右侧自定义组件时的效果。
 
+从API版本26.2.0开始，[ChipGroupV2](#chipgroupv2-1)新增onItemsChange属性。
+
 ```ts
 import { ChipV2Size, ChipGroupV2, ChipGroupV2Items, ChipGroupV2ItemStyle, ChipGroupV2Space, ChipGroupV2Padding, ColorMetrics } from '@kit.ArkUI';
 
@@ -621,6 +623,8 @@ struct Index {
 该示例通过设置suffix参数，实现了[ChipGroupV2](#chipgroupv2-1)最右侧的自定义组件效果。
 
 从API版本26.0.0开始，ChipGroupV2新增suffix属性。
+
+从API版本26.2.0开始，[ChipGroupV2](#chipgroupv2-1)新增onItemsChange属性。
 
 ```ts
 import { ChipV2Size, ChipGroupV2, ChipGroupV2Items, ChipGroupV2IconGroupSuffix, ChipGroupV2ItemStyle, ChipGroupV2Space, ChipGroupV2Padding, ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -722,6 +726,8 @@ struct Index {
 该示例通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)实现了[ChipGroupV2IconGroupSuffix](#chipgroupv2icongroupsuffix)和[ChipGroupV2](#chipgroupv2-1)设置Symbol类型图标。
 
 从API版本26.0.0开始，新增ChipGroupV2IconGroupSuffix和ChipGroupV2。
+
+从API版本26.2.0开始，[ChipGroupV2](#chipgroupv2-1)新增onItemsChange属性。
 
 ```ts
 import { ChipV2Size, ChipGroupV2, ChipGroupV2Items, ChipGroupV2IconGroupSuffix, SymbolGlyphModifier, ChipGroupV2ItemStyle, ChipGroupV2Space, ChipGroupV2Padding, ColorMetrics } from '@kit.ArkUI';

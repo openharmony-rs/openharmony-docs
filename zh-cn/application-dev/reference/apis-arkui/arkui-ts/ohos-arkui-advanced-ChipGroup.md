@@ -269,8 +269,10 @@ LabelOptions定义文本属性。
 
 该示例实现了在没有最右侧builder时的效果。
 
+从API版本26.2.0开始，[ChipGroup](#chipgroup-1)新增onItemsChange属性。
+
 ```typescript
-import { ChipSize, ChipGroup } from '@kit.ArkUI';
+import { ChipSize, ChipGroup, ChipGroupItemOptions } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -345,8 +347,10 @@ struct Index {
 
 通过配置suffix实现最右侧的自定义组件效果。
 
+从API版本26.2.0开始，[ChipGroup](#chipgroup-1)新增onItemsChange属性。
+
 ```typescript
-import { ChipSize, ChipGroup, IconGroupSuffix } from '@kit.ArkUI';
+import { ChipSize, ChipGroup, ChipGroupItemOptions, IconGroupSuffix } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -442,8 +446,11 @@ struct Index {
 
 ### 示例3（设置Symbol类型图标）
 该示例实现了IconGroupSuffix和ChipGroup传入SymbolGlyph资源。
+
+从API版本26.2.0开始，[ChipGroup](#chipgroup-1)新增onItemsChange属性。
+
 ```typescript
-import { ChipSize, ChipGroup, IconGroupSuffix, SymbolGlyphModifier } from '@kit.ArkUI';
+import { ChipSize, ChipGroup, ChipGroupItemOptions, IconGroupSuffix, SymbolGlyphModifier } from '@kit.ArkUI';
 
 @Entry
 @Component
