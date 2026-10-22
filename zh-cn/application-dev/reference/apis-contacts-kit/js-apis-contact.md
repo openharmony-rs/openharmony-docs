@@ -5586,7 +5586,7 @@ let website: contact.Website = {
 | totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
 | lastSyncTime        | number |  否  |  否    | 表示联系人同步的最新时间戳，单位为毫秒(ms)。|
 
-# SignificantDateType
+## SignificantDateType
 
 联系人重要日期类型枚举。
 
