@@ -46,7 +46,7 @@ ROI视频编码适用于因网络带宽限制导致码率不能满足视频画�
 
 **支持的码控模式：** VBR(Variable Bit Rate)、CBR(Constant Bit Rate)、SQR(Stable Quality Rate Control)。
 
-**依赖ROI检测识别能力：** 编码器不具备ROI的检测识别能力，所以ROI编码技术生效依赖于开发者输入的ROI信息。开发者可根据业务场景自行设计并实现ROI识别能力，或通过系统相机模块原生提供的人脸区域信息（元数据）获取ROI区域，降低开发成本。元数据的配置与获取参考[元数据（ArkTS）](../camera/camera-metadata.md)和[元数据(C/C++)](../camera/native-camera-metadata.md)；从视频帧NativeBuffer元数据提取ROI信息的开发步骤，参考[方式一：通过NativeBuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)。
+**依赖ROI检测识别能力：** 编码器不具备ROI的检测识别能力，所以ROI编码技术生效依赖于开发者输入的ROI信息。开发者可根据业务场景自行设计并实现ROI识别能力，或通过系统相机模块原生提供的人脸区域信息（元数据）获取ROI区域，降低开发成本。从视频帧NativeBuffer元数据提取ROI信息的开发步骤，参考[方式一：通过NativeBuffer元数据配置（推荐）](#方式一通过nativebuffer元数据配置推荐)。
 
 ## 参数要求说明
 
@@ -88,7 +88,7 @@ ROI是一个矩形区域，`Top,Left`和`Bottom,Right`分别定义了ROI的区�
 - [方式二：通过编码输入回调配置](#方式二通过编码输入回调配置)：使用视频编码参数`OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS`在编码输入回调中配置，包含编码输入参数回调（Surface模式）和编码输入buffer回调（Buffer模式）。
 
 **通用生效机制：**
-1. ROI参数支持随帧下发并实时生效，编码器侧无需进行能力查询或配置全局开关。使用相机随帧元数据作为ROI来源时，需先查询并开启相机侧的编码用随帧元数据输出能力。
+1. ROI参数支持随帧下发并实时生效，编码器侧无需进行能力查询或配置全局开关。使用相机随帧元数据作为ROI来源时，需先查询并开启相机的ROI信息随帧输出能力。
 2. 如果系统编码器不支持ROI编码能力，编码器会忽略ROI参数，进行普通编码。
 3. DeltaQp有效取值范围为[-51, 51]，编码器会在ROI区域的QP上叠加DeltaQp，然后限制到[minQp, maxQp]范围内得到最终QP。
 4. 当某一帧未配置ROI参数时，若上一帧生效了ROI编码，则复用上一帧ROI信息进行当前帧ROI编码；若上一帧是普通编码，则进行普通编码。
@@ -111,7 +111,7 @@ ROI是一个矩形区域，`Top,Left`和`Bottom,Right`分别定义了ROI的区�
 
 Surface模式和Buffer模式共用相同的ROI信息获取与组装流程，区别在于如何将ROI配置到编码器。
 
-相机开启编码用随帧元数据输出后，如果检测到ROI区域（如人脸），会将ROI信息写入视频帧的NativeBuffer元数据。开发者可直接从每帧中提取，无需额外的回调接口和时间戳匹配，具体参考[OH_NativeBuffer_MetadataKey](../../reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_metadatakey)。
+相机开启ROI信息随帧输出后，如果检测到ROI区域（如人脸），会将ROI信息写入视频帧的NativeBuffer元数据。开发者可直接从每帧中提取，无需额外的回调接口和时间戳匹配，具体参考[OH_NativeBuffer_MetadataKey](../../reference/apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_metadatakey)。
 
 Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开发者在帧处理线程中从每帧的NativeBuffer元数据提取ROI信息并组装成配置字符串，随后将ROI字符串写入编码器输入帧的NativeBuffer元数据，实现ROI随帧下发到编码器（如图2所示）。
 
@@ -153,13 +153,13 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    >
    > 上述'recorder','player'字样仅为示例，此处应由开发者根据具体的CMake工程目标名称进行替换。
 
-2. 开启相机编码用随帧元数据输出。
+2. 开启相机ROI信息随帧输出。
 
-   从API版本26.0.1开始，相机编码用随帧元数据输出默认关闭。使用相机帧中的ROI信息前，需查询设备是否支持该能力，并显式开启。以下以ArkTS相机接口为例，示例在会话提交配置后、启动前开启该能力；相机元数据流的创建和会话配置参考[元数据（ArkTS）](../camera/camera-metadata.md)。
+   从API版本26.0.1开始，相机默认不随视频帧输出ROI信息。使用相机帧中的ROI信息前，需查询设备是否支持该能力，并显式开启。以下以ArkTS相机接口为例，示例在会话提交配置后、启动前开启该能力；相机元数据流的创建和会话配置参考[元数据（ArkTS）](../camera/camera-metadata.md)和[元数据(C/C++)](../camera/native-camera-metadata.md)。
 
    <!-- @[roi_enable_in_frame_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/ets/controller/CameraController.ets) -->
 
-   ```ts
+   ``` TypeScript
    if (metadataOutput.isInFrameMetadataForEncoderSupported()) {
      metadataOutput.setInFrameMetadataForEncoderEnabled(true);
    } else {
