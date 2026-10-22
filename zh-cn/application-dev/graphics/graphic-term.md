@@ -3,6 +3,7 @@ description: "提供ArkGraphics 2D中核心术语的定义与解释，涵盖混�
 keywords: [混合模式，画笔，画刷，字型，字形，图像滤波，着色器，精灵图集，字块]
 doctype: glossary
 status: active
+
 # ArkGraphics 2D术语
 
 <!--Kit: ArkGraphics 2D-->
