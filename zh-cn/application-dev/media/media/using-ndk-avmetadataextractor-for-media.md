@@ -1,6 +1,6 @@
 ---
 kits: ["Media Kit / 媒体服务"]
-description: "介绍如何使用AVMetadataExtractor的C/C++ Native接口从媒体资源中提取元数据信息，适用于需要底层媒体信息查询的开发场景。"
+description: "介绍如何使用AVMetadataExtractor的C/C++接口从媒体资源中提取元数据信息，适用于需要底层媒体信息查询的开发场景。"
 keywords: [AVMetadataExtractor, C/C++, Native API, 元数据提取, OH_AVMetadataExtractor, SetFDSource, FetchMetadata, NDK, 媒体信息查询]
 doctype: guide
 status: active
