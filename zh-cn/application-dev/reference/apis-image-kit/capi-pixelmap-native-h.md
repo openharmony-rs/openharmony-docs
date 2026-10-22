@@ -76,7 +76,7 @@
 | [Image_ErrorCode OH_PixelmapImageInfo_GetDynamicRange(OH_Pixelmap_ImageInfo *info, bool *isHdr)](#oh_pixelmapimageinfo_getdynamicrange) | 获取Pixelmap是否为高动态范围的信息。 |
 | [Image_ErrorCode OH_PixelmapImageInfo_Release(OH_Pixelmap_ImageInfo *info)](#oh_pixelmapimageinfo_release) | 释放OH_Pixelmap_ImageInfo指针。 |
 | [Image_ErrorCode OH_PixelmapNative_CreatePixelmap(uint8_t *data, size_t dataLength, OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmap) | 通过像素数据和图像属性创建Pixelmap。<br>此接口不支持创建以下像素格式的Pixelmap：PIXEL_FORMAT_RGBA_1010102、PIXEL_FORMAT_YCBCR_P010和PIXEL_FORMAT_YCRCB_P010。 |
-| [Image_ErrorCode OH_PixelmapNative_CreatePixelmapUsingAllocator(uint8_t *data, size_t dataLength, OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapusingallocator) | 通过像素数据和图像属性创建Pixelmap，可以通过allocator指定内存类型。<br>默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。<br>在处理此接口返回的像素图时，需要考虑行跨距的影响。行跨距即图像每行占用的真实内存大小，可能因内存对齐而大于图像宽度乘以单位像素字节数，请参考[OH_PixelmapInitializationOptions_GetRowStride](capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_getrowstride)获取详细说明。 |
+| [Image_ErrorCode OH_PixelmapNative_CreatePixelmapUsingAllocator(uint8_t *data, size_t dataLength, OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapusingallocator) | 通过像素数据和图像属性创建Pixelmap，可以通过allocator指定内存类型。<br>此接口不支持创建以下像素格式的Pixelmap：PIXEL_FORMAT_YCBCR_P010和PIXEL_FORMAT_YCRCB_P010。<br>在处理此接口返回的像素图时，需要考虑行跨距的影响。行跨距即图像每行占用的真实内存大小，可能因内存对齐而大于图像宽度乘以单位像素字节数，请参考[OH_PixelmapInitializationOptions_GetRowStride](capi-pixelmap-native-h.md#oh_pixelmapinitializationoptions_getrowstride)获取详细说明。 |
 | [Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeToNapi(napi_env env, OH_PixelmapNative *pixelmapNative, napi_value *pixelmapNapi)](#oh_pixelmapnative_convertpixelmapnativetonapi) | 将OH_PixelmapNative对象转换为PixelmapNapi对象。 |
 | [Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeFromNapi(napi_env env, napi_value pixelmapNapi, OH_PixelmapNative **pixelmapNative)](#oh_pixelmapnative_convertpixelmapnativefromnapi) | 将PixelmapNapi对象转换为OH_PixelmapNative对象。 |
 | [Image_ErrorCode OH_PixelmapNative_ReadPixels(OH_PixelmapNative *pixelmap, uint8_t *destination, size_t *bufferSize)](#oh_pixelmapnative_readpixels) | 读取图像像素数据，并按照Pixelmap的像素格式存入缓冲区中。 |
@@ -110,7 +110,7 @@
 | [Image_ErrorCode OH_PixelmapNative_ConvertAlphaType(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative *dstPixelmap, const bool toPremul)](#oh_pixelmapnative_convertalphatype) | 将Pixelmap像素数据的透明度类型在预乘模式（[PIXELMAP_ALPHA_TYPE_PREMULTIPLIED](capi-pixelmap-native-h.md#pixelmap_alpha_type)）和非预乘模式（[PIXELMAP_ALPHA_TYPE_UNPREMULTIPLIED](capi-pixelmap-native-h.md#pixelmap_alpha_type)）之间转换。该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。<br>     像素格式的列表请参考[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。 |
 | [Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixelmap, OH_PixelmapNative* dstpixelmap, const bool isPremul)](#oh_pixelmapnative_convertalphaformat) | 将Pixelmap像素数据的透明度类型在预乘模式和非预乘模式之间转换。该转换仅支持除RGBA_F16和ASTC_4x4之外其他包含Alpha通道的像素格式。<br>     从API版本26.0.0开始，建议使用[OH_PixelmapNative_ConvertAlphaType](capi-pixelmap-native-h.md#oh_pixelmapnative_convertalphatype)代替，以获得更完善的异常报错信息。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmap) | 利用OH_Pixelmap_InitializationOptions创建空的Pixelmap对象，内存数据为0。 |
-| [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmapusingallocator) | 根据入参options创建空的Pixelmap，Pixelmap使用的内存类型可以通过allocator指定。默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理此接口返回的像素图时，需要考虑行跨距的影响。行跨距即图像每行占用的真实内存大小，可能因内存对齐而大于图像宽度乘以单位像素字节数，请参考[OH_PixelmapInitializationOptions_GetRowStride](#oh_pixelmapinitializationoptions_getrowstride)获取详细说明。 |
+| [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmapusingallocator) | 根据入参options创建空的Pixelmap，Pixelmap使用的内存类型可以通过allocator指定。<br>在处理此接口返回的像素图时，需要考虑行跨距的影响。行跨距即图像每行占用的真实内存大小，可能因内存对齐而大于图像宽度乘以单位像素字节数，请参考[OH_PixelmapInitializationOptions_GetRowStride](#oh_pixelmapinitializationoptions_getrowstride)获取详细说明。 |
 | [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurface(const char *surfaceId, size_t length, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromsurface) | 通过Surface的ID创建一个Pixelmap。如果Surface携带旋转或翻转的变换信息且需要校正方向，请使用[OH_PixelmapNative_CreatePixelmapFromSurfaceWithTransformation](#oh_pixelmapnative_createpixelmapfromsurfacewithtransformation)。 |
 | [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurfaceWithTransformation(const char *surfaceId, size_t length, bool transformEnabled, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromsurfacewithtransformation) | 通过Surface的ID创建一个预览流画面的Pixelmap对象。该Surface可能携带旋转或翻转的变换信息。 |
 | [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer *nativeBuffer, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromnativebuffer) | 通过NativeBuffer创建一个Pixelmap。如果NativeBuffer的用途未配置CPU访问权限（详情请参考[OH_NativeBuffer_Usage](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_usage)），则不支持创建。<br> 支持创建的像素格式为RGBA_8888、NV21、NV12、YCBCR_P010、YCRCB_P010。 |
@@ -893,7 +893,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapUsingAllocator(uint8_t *data, si
 
 **描述**
 
-通过像素数据和图像属性创建Pixelmap，可以通过allocator指定内存类型。<br>默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。<br>在处理此接口返回的像素图时，需要考虑行跨距的影响。行跨距即图像每行占用的真实内存大小，可能因内存对齐而大于图像宽度乘以单位像素字节数，请参考[OH_PixelmapInitializationOptions_GetRowStride](#oh_pixelmapinitializationoptions_getrowstride)获取详细说明。
+通过像素数据和图像属性创建Pixelmap，可以通过allocator指定内存类型。<br>此接口不支持创建以下像素格式的Pixelmap：PIXEL_FORMAT_YCBCR_P010和PIXEL_FORMAT_YCRCB_P010。<br>在处理此接口返回的像素图时，需要考虑行跨距的影响。行跨距即图像每行占用的真实内存大小，可能因内存对齐而大于图像宽度乘以单位像素字节数，请参考[OH_PixelmapInitializationOptions_GetRowStride](#oh_pixelmapinitializationoptions_getrowstride)获取详细说明。
 
 **起始版本：** 20
 
@@ -904,7 +904,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapUsingAllocator(uint8_t *data, si
 | uint8_t *data | 像素数据的数组。<br>传入的像素数据默认按BGRA_8888格式解析，如果需要设置为其他格式，请参考[OH_PixelmapInitializationOptions_SetSrcPixelFormat](#oh_pixelmapinitializationoptions_setsrcpixelformat)。<br>如果像素数据中含有用于内存对齐的行末填充字节，则必须使用[OH_PixelmapInitializationOptions_SetRowStride](#oh_pixelmapinitializationoptions_setrowstride)设置行跨距。 |
 | size_t dataLength | 像素数组的长度。单位：字节（Byte）。 |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | 创建图像的初始化属性。 |
-| [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_allocator_mode) allocator | 决定Pixelmap内存分配的类型。 |
+| [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_allocator_mode) allocator | 决定Pixelmap内存分配的类型。<br>1. IMAGE_ALLOCATOR_MODE_AUTO：不支持该内存类型的格式有PIXEL_FORMAT_UNKNOWN、PIXEL_FORMAT_YCBCR_P010和PIXEL_FORMAT_YCRCB_P010。<br>PIXEL_FORMAT_RGBA_1010102默认申请DMA内存。<br>PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_F16和PIXEL_FORMAT_ALPHA_F16（从API版本26.0.0开始支持）尺寸大于等于512*512像素时默认申请DMA内存，否则申请共享内存。<br>其余格式默认申请共享内存。<br>2. IMAGE_ALLOCATOR_MODE_DMA：PIXEL_FORMAT_RGBA_1010102、PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_F16和PIXEL_FORMAT_ALPHA_F16支持DMA内存类型，其余格式不支持。<br>3. IMAGE_ALLOCATOR_MODE_SHARED_MEMORY：PIXEL_FORMAT_UNKNOWN、PIXEL_FORMAT_RGBA_1010102、PIXEL_FORMAT_YCBCR_P010和PIXEL_FORMAT_YCRCB_P010不支持共享内存，其余格式支持。 |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | 被创建的OH_PixelmapNative对象指针。 |
 
 **返回：**
@@ -1768,7 +1768,7 @@ Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_
 
 **描述**
 
-根据入参options创建空的Pixelmap，Pixelmap使用的内存类型可以通过allocator指定。默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理此接口返回的像素图时，需要考虑行跨距的影响。行跨距即图像每行占用的真实内存大小，可能因内存对齐而大于图像宽度乘以单位像素字节数，请参考[OH_PixelmapInitializationOptions_GetRowStride](#oh_pixelmapinitializationoptions_getrowstride)获取详细说明。
+根据入参options创建空的Pixelmap，Pixelmap使用的内存类型可以通过allocator指定。<br>在处理此接口返回的像素图时，需要考虑行跨距的影响。行跨距即图像每行占用的真实内存大小，可能因内存对齐而大于图像宽度乘以单位像素字节数，请参考[OH_PixelmapInitializationOptions_GetRowStride](#oh_pixelmapinitializationoptions_getrowstride)获取详细说明。
 
 **起始版本：** 20
 
@@ -1777,7 +1777,7 @@ Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | 创建图像的初始化属性。 |
-| [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_allocator_mode) allocator | 决定pixelmap内存分配的类型。 |
+| [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_allocator_mode) allocator | 决定pixelmap内存分配的类型。<br>1. IMAGE_ALLOCATOR_MODE_AUTO：不支持该内存类型的格式有PIXEL_FORMAT_UNKNOWN。<br>PIXEL_FORMAT_RGBA_1010102、PIXEL_FORMAT_YCBCR_P010和PIXEL_FORMAT_YCRCB_P010默认申请DMA内存。<br>PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_F16和PIXEL_FORMAT_ALPHA_F16（从API版本26.0.0开始支持）尺寸大于等于512*512像素时默认申请DMA内存，否则申请共享内存。<br>其余格式默认申请共享内存。<br>2. IMAGE_ALLOCATOR_MODE_DMA：PIXEL_FORMAT_RGBA_1010102、PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_F16、PIXEL_FORMAT_ALPHA_F16、PIXEL_FORMAT_YCBCR_P010和PIXEL_FORMAT_YCRCB_P010支持DMA内存类型，其余格式不支持。<br>3. IMAGE_ALLOCATOR_MODE_SHARED_MEMORY：PIXEL_FORMAT_UNKNOWN、PIXEL_FORMAT_RGBA_1010102、PIXEL_FORMAT_YCBCR_P010和PIXEL_FORMAT_YCRCB_P010不支持共享内存，其余格式支持。 |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | 被创建的OH_PixelmapNative对象指针。 |
 
 **返回：**

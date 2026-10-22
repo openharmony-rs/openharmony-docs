@@ -5,6 +5,8 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=108aa11c2ceb50c68f8417aa3c60f1dcb55dabdd translatedAt=2026-09-23T01:31:34.813Z pushedAt=2026-09-24T06:00:14.123Z -->
+
 ```c
 typedef struct Http_Response {...} Http_Response
 ```
@@ -36,7 +38,7 @@ Defines the structure of HTTP responses.
 
 | Name| Description|
 | -- | -- |
-| [void (\*destroyResponse)(struct Http_Response **response)](#destroyresponse) | Callback function for destroying an HTTP response.|
+| [void (\*destroyResponse)(struct Http_Response **response)](#destroyresponse) | Triggered to destroy the HTTP response. |
 
 ## Member Function Description
 
@@ -48,7 +50,7 @@ void (*destroyResponse)(struct Http_Response **response)
 
 **Description**
 
-Callback function for destroying an HTTP response.
+Triggered to destroy the HTTP response.
 
 **Since**: 20
 
@@ -57,3 +59,5 @@ Callback function for destroying an HTTP response.
 | Name| Description|
 | -- | -- |
 | struct [Http_Response](capi-netstack-http-response.md) **response | Pointer to the HTTP response to be destroyed. For details, see [Http_Response](capi-netstack-http-response.md).|
+
+

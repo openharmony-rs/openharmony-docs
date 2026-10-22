@@ -32,4 +32,5 @@
   - [应用证书凭据开发指导](certManager-private-credential-guidelines.md)
   - [用户证书凭据开发指导](certManager-user-credential-guidelines.md)
   - [系统证书凭据开发指导](certManager-system-credential-guidelines.md)
+  - [证书管理命令行工具使用指导](certmgr-cmdline-tool.md)
 - [Device Certificate Kit术语](device-certificate-glossary.md)

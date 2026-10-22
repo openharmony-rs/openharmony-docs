@@ -1,9 +1,9 @@
 # drawing_font_collection.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 ## 概述
 
@@ -49,7 +49,7 @@ OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)
 
 **起始版本：** 8
 
-**废弃版本：** 26.1.0
+**废弃版本：** 26.0.1
 
 **替代接口：** [OH_Drawing_CreateSharedFontCollection()](#oh_drawing_createsharedfontcollection)
 

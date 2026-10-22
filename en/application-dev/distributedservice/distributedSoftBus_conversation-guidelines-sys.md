@@ -30,7 +30,7 @@ By registering a conversation listener, an app can receive messages from other d
 
 - Supports the system's native fast device wakeup capability. This requires Bluetooth and Wi-Fi to be turned on at close range and the devices to be connected to the same Wi-Fi LAN.
 
-- This capability is supported since API version 26.1.0.
+- This capability is supported since API version 26.0.1.
 
 ## Environment Preparation
 
@@ -42,7 +42,7 @@ Ensure that the devices participating in communication are logged in with the sa
 
 1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download) 4.1 or later on the development PC.
 
-2. Update the public-SDK to API version 26.1.0 or later. For details, see [OpenHarmony SDK Upgrade Assistant](../tools/openharmony_sdk_upgrade_assistant.md).
+2. Update the public-SDK to API version 26.0.1 or later. For details, see [OpenHarmony SDK Upgrade Assistant](../tools/openharmony_sdk_upgrade_assistant.md).
 
 3. Connect the two debugging devices (device A and device B) to the development PC using USB cables.
 

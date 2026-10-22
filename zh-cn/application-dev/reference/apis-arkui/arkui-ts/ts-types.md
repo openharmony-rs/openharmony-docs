@@ -1,7 +1,7 @@
 # 基础类型定义
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -76,6 +76,8 @@ type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUnit
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型                    | 说明                                     |
@@ -92,6 +94,8 @@ type LengthMetrics = import('../api/arkui/Graphics').LengthMetrics
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型                    | 说明                                     |
@@ -107,6 +111,8 @@ declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -611,11 +617,20 @@ ColorFilter的构造函数，创建具有4\*5矩阵的颜色过滤器。
 
 ## CustomBuilder<sup>8+</sup>
 
+type CustomBuilder = (() => any) \| void
+
 组件属性方法参数可使用CustomBuilder类型来自定义UI描述。
 
-| 名称            | 类型定义                   | 描述                                       |
-| ------------- | ---------------------- | ---------------------------------------- |
-| CustomBuilder | (()&nbsp;=&gt;&nbsp;any) \| void | 生成用户自定义组件，在使用时结合[@Builder](../../../ui/state-management/arkts-builder.md)使用。 |
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 说明 |
+| ---  | --- |
+| (() => any) |  生成用户自定义组件，在使用时结合[@Builder](../../../ui/state-management/arkts-builder.md)使用。  |
+| void |  不传入[@Builder](../../../ui/state-management/arkts-builder.md)函数。   |
 
 ## CustomBuilderT\<T><sup>23+</sup>
 
@@ -693,6 +708,8 @@ type CustomBuilderT\<T> = (t: T) => void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称     | 类型                         | 只读 | 可选   | 说明      |
 | ------ | ---------------------------- | -- | -- | ------- |
@@ -1002,7 +1019,7 @@ type ResponsiveFillType = PresetFillType
 
 ## ItemFillPolicy<sup>22+</sup>
 
-定义一个适用于WaterFlow、Grid、List、Swiper和LazyVWaterFlowLayout组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
+定义一个适用于WaterFlow、Grid、List、Swiper、LazyVWaterFlowLayout和LazyVGridLayout组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持，LazyVGridLayout组件从API版本26.2.0开始支持。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

@@ -33,116 +33,121 @@ Web组件根据[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webv
 
 - 前端页面代码。
 
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>位置信息</title>
-  </head>
-  <body>
-      <p id="locationInfo">位置信息</p>
-      <button onclick="getLocation()">获取位置</button>
+<!-- @[getLocation_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/resources/rawfile/getLocation.html) -->
 
-      <script>
-          var locationInfo=document.getElementById("locationInfo");
-          function getLocation(){
-              if (navigator.geolocation) {
-                  // 访问设备地理位置
-                  navigator.geolocation.getCurrentPosition(showPosition);
-              }
-          }
-          function showPosition(position){
-              locationInfo.innerHTML="Latitude: " + position.coords.latitude + "<br />Longitude: " + position.coords.longitude;
-          }
-      </script>
-  </body>
-  </html>
-  ```
+``` HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>位置信息</title>
+</head>
+<body>
+    <p id="locationInfo">位置信息</p>
+    <button onclick="getLocation()">获取位置</button>
 
-
+    <script>
+        let locationInfo = document.getElementById('locationInfo');
+        function getLocation() {
+            if (navigator.geolocation) {
+                // 访问设备地理位置
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+        }
+        function showPosition(position) {
+            locationInfo.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />Longitude: ' + position.coords.longitude;
+        }
+    </script>
+</body>
+</html>
+```
+ 
 - 应用代码。
 
-  ```ts
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { abilityAccessCtrl, common } from '@kit.AbilityKit';
+<!-- @[a_pop_up_window_is_used_to_notify_the_app_side_location_permission_request_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/ManageLocPerms.ets) -->
 
-  let atManager = abilityAccessCtrl.createAtManager();
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityAccessCtrl, common } from '@kit.AbilityKit';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    uiContext: UIContext = this.getUIContext();
+let atManager = abilityAccessCtrl.createAtManager();
 
-    // 组件的生命周期函数，创建组件实例后触发
-    aboutToAppear(): void {
-      let context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
-      if (!context) {
-        console.error("context is undefined");
-        return;
-      }
-      // 向用户请求位置权限，对整个应用生效
-      atManager.requestPermissionsFromUser(context, ["ohos.permission.APPROXIMATELY_LOCATION"]).then((data) => {
-        console.info('data:' + JSON.stringify(data));
-        console.info('data permissions:' + data.permissions);
-        console.info('data authResults:' + data.authResults);
-      }).catch((error: BusinessError) => {
-        console.error(`Failed to request permissions from user. Code is ${error.code}, message is ${error.message}`);
-      })  
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  uiContext: UIContext = this.getUIContext();
+
+  // 组件的生命周期函数，创建组件实例后触发
+  aboutToAppear(): void {
+    let context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
+    if (!context) {
+      console.error('context is undefined');
+      return;
     }
+    // 向用户请求位置权限，对整个应用生效
+    atManager.requestPermissionsFromUser(context, ['ohos.permission.APPROXIMATELY_LOCATION']).then((data) => {
+      console.info('data:' + JSON.stringify(data));
+      console.info('data permissions:' + data.permissions);
+      console.info('data authResults:' + data.authResults);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to request permissions from user. Code is ${error.code}, message is ${error.message}`);
+    })  
+  }
 
-    build() {
-      Column() {
-        // Web组件的geolocationAccess属性默认为true，可以显式配置为false以禁止Web组件获取地理位置信息
-        Web({ src: $rawfile('getLocation.html'), controller: this.controller })
-          .geolocationAccess(true)
-          .onGeolocationShow((event) => {
-            // 位置权限申请通知仅对当前Web组件生效，应用内的其他Web组件不受影响
-            this.uiContext.showAlertDialog({
-              title: '位置权限请求',
-              message: '是否允许获取位置信息',
-              primaryButton: {
-                value: 'cancel',
-                action: () => {
-                  if (event) {
-                    // 不允许此站点位置权限请求
-                    // 注意invoke的第3个参数表示是否记住当前选择，如果传true，则下次不再弹框
-                    event.geolocation.invoke(event.origin, false, false);
-                  }
-                }
-              },
-              secondaryButton: {
-                value: 'ok',
-                action: () => {
-                  if (event) {
-                    // 允许此站点位置权限请求
-                    // 注意invoke的第3个参数表示是否记住当前选择，如果传true，则下次不再弹框
-                    event.geolocation.invoke(event.origin, true, false);
-                  }
-                }
-              },
-              cancel: () => {
+  build() {
+    Column() {
+      // Web组件的geolocationAccess属性默认为true，可以显式配置为false以禁止Web组件获取地理位置信息
+      Web({ src: $rawfile('getLocation.html'), controller: this.controller })
+        .geolocationAccess(true)
+        .onGeolocationShow((event) => {
+          // 位置权限申请通知仅对当前Web组件生效，应用内的其他Web组件不受影响
+          this.uiContext.showAlertDialog({
+            title: '位置权限请求',
+            message: '是否允许获取位置信息',
+            primaryButton: {
+              value: 'cancel',
+              action: () => {
                 if (event) {
                   // 不允许此站点位置权限请求
                   // 注意invoke的第3个参数表示是否记住当前选择，如果传true，则下次不再弹框
                   event.geolocation.invoke(event.origin, false, false);
                 }
               }
-            })
+            },
+            secondaryButton: {
+              value: 'ok',
+              action: () => {
+                if (event) {
+                  // 允许此站点位置权限请求
+                  // 注意invoke的第3个参数表示是否记住当前选择，如果传true，则下次不再弹框
+                  event.geolocation.invoke(event.origin, true, false);
+                }
+              }
+            },
+            cancel: () => {
+              if (event) {
+                // 不允许此站点位置权限请求
+                // 注意invoke的第3个参数表示是否记住当前选择，如果传true，则下次不再弹框
+                event.geolocation.invoke(event.origin, false, false);
+              }
+            }
           })
-      }
+        })
     }
   }
-  ```
+}
+```
+
 
 ## 管理位置权限
 通过Web组件的[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md)类管理网页的位置权限，提供了新增（[allowGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#allowgeolocation)）、查看（[getAccessibleGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#getaccessiblegeolocation)）和删除（[deleteGeolocation](../reference/apis-arkweb/arkts-apis-webview-GeolocationPermissions.md#deletegeolocation)）网页位置权限的方法。例如查看网页是否已申请位置权限、将网页已申请的位置权限删除。
 
+<!-- @[create_a_web_component_use_GeolocationPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/GeolocationPermissions.ets) -->
 
-```ts
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -150,7 +155,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  origin: string = "www.example.com";
+  origin: string = 'www.example.com';
 
   build() {
     Column() {

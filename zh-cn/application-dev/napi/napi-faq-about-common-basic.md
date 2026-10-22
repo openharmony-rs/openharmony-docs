@@ -1,7 +1,7 @@
 # 常见基本功能问题汇总
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -291,7 +291,7 @@ ArkTS侧import xxx from libxxx.so后，使用xxx报错显示undefined/not callab
 
 ## Node-API接口返回值不是napi_ok时如何排查定位
 
-Node-API接口正常执行后，会返回一个napi_ok的状态枚举值，若Node-API接口返回值不为napi_ok，可先参考[Node-API接口返回状态码介绍](napi_status_introduction.md)。
+Node-API接口正常执行后，会返回一个napi_ok的状态枚举值，若Node-API接口返回值不为napi_ok，可先参考[Node-API接口返回状态码介绍](napi-status-introduction.md)。
 
 以下是几个常见场景：
 
@@ -370,7 +370,7 @@ void FinalizeB(napi_env env, void* data, void* hint) {
 
 问题排查：  
 
-原因一：`napi_call_threadsafe_function`函数调用返回值不为`napi_ok`。请确认调用`napi_call_threadsafe_function`相关函数的返回值是否都是`napi_ok`，若不是，请根据[Node-API接口返回状态码介绍](napi_status_introduction.md)排查返回值非`napi_ok`的原因。  
+原因一：`napi_call_threadsafe_function`函数调用返回值不为`napi_ok`。请确认调用`napi_call_threadsafe_function`相关函数的返回值是否都是`napi_ok`，若不是，请根据[Node-API接口返回状态码介绍](napi-status-introduction.md)排查返回值非`napi_ok`的原因。  
 
 原因二：env所在的ArkTS线程被阻塞。`napi_call_threadsafe_function`函数的回调将执行在env所在的ArkTS线程上，若ArkTS线程被阻塞，则线程安全函数回调不会被执行。
 

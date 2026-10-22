@@ -802,6 +802,58 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
+## ApplicationContext.getUIAbilityChildProcessInfos
+
+getUIAbilityChildProcessInfos(): Promise\<Array\<ChildProcessInformation>>
+
+获取当前应用的UIAbility子进程信息。使用Promise异步回调。
+
+返回通过[startSelfUIAbilityInChildProcess](js-apis-inner-application-uiAbilityContext.md#startselfuiabilityinchildprocess)接口启动的进程，以及通过[startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2)接口启动且[StartOptions](js-apis-app-ability-startOptions.md)参数中[processMode](js-apis-app-ability-contextConstant.md#processmode12)设置为NEW_PROCESS_ATTACH_TO_PARENT模式启动的子进程。无子进程时返回空数组。
+
+**起始版本**：26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<Array\<[ChildProcessInformation](js-apis-inner-application-childProcessRunningInfo.md)>> | Promise对象，返回当前应用UIAbility子进程信息。无子进程时返回空数组。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000011 | The context does not exist. |
+| 16000050 | Internal error. Possible causes: Fail to connect system service. |
+
+**示例：**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    // 获取应用上下文
+    let applicationContext = this.context.getApplicationContext();
+    // 获取UIAbility子进程信息
+    applicationContext.getUIAbilityChildProcessInfos().then((data) => {
+      console.info(`getUIAbilityChildProcessInfos success, count: ${data.length}`);
+      for (let info of data) {
+        console.info(`pid: ${info.pid}, parentPid: ${info.parentPid}, processName: ${info.processName}`);
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`getUIAbilityChildProcessInfos failed, code: ${err.code}, msg: ${err.message}`);
+    });
+  }
+}
+```
+
 ## ApplicationContext.killAllProcesses
 
 killAllProcesses(): Promise\<void\>
@@ -1278,6 +1330,8 @@ setFont(font: string): void
 > **说明：**
 >
 > 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在[onWindowStageCreate()](js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期中通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法加载页面之后调用。
+>
+> setFont('null')可以恢复系统默认字体类型。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1617,7 +1671,7 @@ export default class EntryAbility extends UIAbility {
         console.error(`enableDelayedProcessExit error, code: ${error.code}, error msg: ${error.message}`);
       });
     } catch(error) {
-      console.error('enableDelayedProcessExit failed. Code=%{public}d, Message=%{public}s', error.code, error.message);
+      console.error(`enableDelayedProcessExit failed. Code: ${error.code}, message: ${error.message}`);
     }
   }
 }
@@ -1669,7 +1723,7 @@ export default class EntryAbility extends UIAbility {
         console.error(`disableDelayedProcessExit error, code: ${error.code}, error msg: ${error.message}`);
       });
     } catch(error) {
-      console.error('disableDelayedProcessExit failed. Code=%{public}d, Message=%{public}s', error.code, error.message);
+      console.error(`disableDelayedProcessExit failed. Code: ${error.code}, message: ${error.message}`);
     }
   }
 }

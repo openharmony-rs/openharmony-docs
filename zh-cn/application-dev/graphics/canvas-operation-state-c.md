@@ -72,7 +72,7 @@ OH_Drawing_BrushSetColor(brush, 0xff0000ff);
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value400_, value400_, value1200_, value1200_);
 // 裁剪矩形区域
-OH_Drawing_CanvasClipRect(canvas, rect, OH_Drawing_CanvasClipOp::INTERSECT, true);
+OH_Drawing_CanvasClipRect(canvas, rect, INTERSECT, true);
 OH_Drawing_Point *point = OH_Drawing_PointCreate(value600_, value600_);
 // 绘制圆形
 OH_Drawing_CanvasDrawCircle(canvas, point, value600_);
@@ -80,6 +80,8 @@ OH_Drawing_CanvasDrawCircle(canvas, point, value600_);
 OH_Drawing_CanvasDetachBrush(canvas);
 // 销毁画刷对象并收回其占的内存
 OH_Drawing_BrushDestroy(brush);
+OH_Drawing_PointDestroy(point);
+OH_Drawing_RectDestroy(rect);
 ```
 
 | 原始图 | 裁剪后的图 |
@@ -138,6 +140,7 @@ OH_Drawing_CanvasDrawRect(canvas, rect);
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
+OH_Drawing_BrushDestroy(brush);
 ```
 
 | 原始图 | 平移后的效果图 |
@@ -171,6 +174,7 @@ OH_Drawing_CanvasDrawRect(canvas, rect);
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
+OH_Drawing_BrushDestroy(brush);
 ```
 
 | 原始图 | 旋转后的效果图 |
@@ -203,6 +207,8 @@ OH_Drawing_CanvasDrawRect(canvas, rect);
 // 去除画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
+OH_Drawing_MatrixDestroy(matrix);
+OH_Drawing_BrushDestroy(brush);
 ```
 
 | 原始图 | 放大后的效果图 |

@@ -3,10 +3,10 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @xiaojianfeng_jeffery-->
-<!--Designer: @dizuo1-->
+<!--Designer: @njuptkid-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=cb84f8fe2e38bbeba25c5506a75a0804a063c158 translatedAt=2026-07-16T06:36:44.189Z pushedAt=2026-07-16T07:42:26.679Z -->
+<!-- md-trans-meta sourceCommit=9a673d444fec536578066af1baf013d52353a6c3 translatedAt=2026-08-24T09:09:00.006Z pushedAt=2026-08-31T11:46:53.590Z -->
 
 ## Overview
 
@@ -67,9 +67,9 @@ Defines an enum for the color space names.
 | -- | -- |
 | NONE = 0 | Unknown color space.|
 | ADOBE_RGB = 1 | Color space based on Adobe RGB.|
-| DCI_P3 = 2 | Color space based on SMPTE RP 431-2-2007 and IEC 61966-2.1:1999.|
-| DISPLAY_P3 = 3 | Color space based on SMPTE RP 431-2-2007 and IEC 61966-2.1:1999.|
-| SRGB = 4 | Standard Red Green Blue (SRGB) color space based on IEC 61966-2.1:1999.|
+| DCI_P3 = 2 | Color space based on SMPTE RP 431-2-2007 and IEC 61966-2.1:1999. |
+| DISPLAY_P3 = 3 | Color space based on SMPTE RP 431-2-2007 and IEC 61966-2.1:1999. |
+| SRGB = 4 | Standard Red Green Blue (SRGB) color space based on IEC 61966-2.1:1999. |
 | BT709 = 6 | Color space based on ITU-R BT.709.|
 | BT601_EBU = 7 | Color space based on ITU-R BT.601.|
 | BT601_SMPTE_C = 8 | Color space based on ITU-R BT.601.|

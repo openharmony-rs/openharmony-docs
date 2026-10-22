@@ -3,16 +3,16 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-30T02:40:19.361Z pushedAt=2026-08-01T06:42:55.899Z -->
+<!-- md-trans-meta sourceCommit=502e92239007f618b3ae29831890f9b7e0bdd85e translatedAt=2026-08-21T02:23:05.503Z pushedAt=2026-08-21T07:31:41.203Z -->
 
 A container component that lays out child components in a flexible manner. The **Flex** component provides flexible layout capabilities, supporting the arrangement and alignment of child components along the main axis (the primary direction in which child components are arranged) and the cross axis (the direction perpendicular to the main axis). It is suitable for scenarios requiring dynamic layout adjustment and responsive interface design. For details, see [Flex](ts-container-flex.md).
 
 > **NOTE**
 >
-> - This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > - The APIs of this module can be used only in the stage model.
 >
@@ -20,7 +20,7 @@ A container component that lays out child components in a flexible manner. The *
 
 ## Attributes
 
-### pointLight
+### pointLight<sup>11+</sup>
 
 pointLight(value: PointLightStyle)
 

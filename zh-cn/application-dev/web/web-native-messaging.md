@@ -1,8 +1,8 @@
 # 使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @libing23232323-->
-<!--Designer: @libing23232323-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -292,7 +292,7 @@ function sendMessageToNative() {
    }
    ```
 
-6.在shared_config.json添加[extension配置](#datashare存放应用extension配置信息)。
+6. 在shared_config.json添加[extension配置](#datashare存放应用extension配置信息)。
 
    ```json5
    {

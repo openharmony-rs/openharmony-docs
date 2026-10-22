@@ -184,7 +184,7 @@ isCameraMuteSupported(): boolean
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202             |  Permission verification failed. A non-system application calls a system API.   |
+| 202             |  Permission verification failed. A non-system application calls a system API.<br>适用版本：13+   |
 
 **示例：**
 
@@ -282,7 +282,7 @@ on(type: 'cameraMute', callback: AsyncCallback\<boolean\>): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202               |  Permission verification failed. A non-system application calls a system API.       |
+| 202               |  Permission verification failed. A non-system application calls a system API.<br>适用版本：13+       |
 
 
 **示例：**
@@ -327,7 +327,7 @@ off(type: 'cameraMute', callback?: AsyncCallback\<boolean\>): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202               |  Permission verification failed. A non-system application calls a system API.     |
+| 202               |  Permission verification failed. A non-system application calls a system API.<br>适用版本：13+     |
 
 **示例：**
 
@@ -371,7 +371,7 @@ isPrelaunchSupported(camera: CameraDevice): boolean
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：12+ |
 | 7400101 | Parameter missing or parameter type incorrect. |
 
 **示例：**
@@ -418,10 +418,10 @@ setPrelaunchConfig(prelaunchConfig: PrelaunchConfig): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202 | Not System Application. |
+| 202 | Not System Application.<br>适用版本：12+ |
 | 7400101 | Parameter missing or parameter type incorrect. |
 | 7400102 | Operation not allowed. |
-| 7400201 | Camera service fatal error. |
+| 7400201 | Camera service fatal error.<br>适用版本：12+ |
 
 **示例：**
 
@@ -2611,9 +2611,9 @@ getBeauty(type: BeautyType): number
 | type     | [BeautyType](#beautytype) | 是   | 美颜类型。   |
 
 **返回值：**
-| 参数名      | 类型                                              | 必填 | 说明                    |
-| -------- | ------------------------------------------------- | ---- | --------------------- |
-| value     | number | 是   | 美颜强度。  |
+| 类型    | 说明         |
+| ------- | ----------- |
+| number  | 美颜强度。  |
 
 **错误码：**
 
@@ -8244,7 +8244,7 @@ setLightPaintingType(type: LightPaintingType): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**返回值：**
+**参数：**
 | 参数名      | 类型                     | 必填 | 说明                 |
 | -------- | ----------------------- | ---- | ------------------- |
 | type | [LightPaintingType](#lightpaintingtype12) | 是   | 设置流光快门模式的类型。 |

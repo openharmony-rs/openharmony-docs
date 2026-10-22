@@ -22,7 +22,7 @@
 ## 子组件
 
 
-仅支持[FlowItem](ts-container-flowitem.md)子组件和自定义组件。自定义组件在WaterFlow下使用时，建议使用FlowItem作为自定义组件的顶层组件，不建议给自定义组件设置属性和事件方法。
+仅支持[FlowItem](ts-container-flowitem.md)子组件和[自定义组件](../../../ui/state-management/arkts-create-custom-components.md)。自定义组件在WaterFlow下使用时，建议使用FlowItem作为自定义组件的顶层组件，不建议给自定义组件设置属性和事件方法。
 
 支持通过渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
 
@@ -295,6 +295,10 @@ columnsTemplate(value: string)
 
 可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp，使用方法参见[示例2](#示例2自动计算列数)。
 
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如columnsTemplate('100vp 100vp')）。需要按固定vp尺寸自动计算列数时，应使用repeat(auto-fill, track-size)。
+
+设置为'0fr'时，该列的列宽为0，该列FlowItem不显示。设置为其他非法值时，按固定1列处理。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -339,6 +343,10 @@ rowsTemplate(value: string)
 例如，'1fr 1fr 2fr'是将父组件分3行，将父组件允许的高分为4等份，第1行占1份，第2行占1份，第3行占2份。
 
 可使用rowsTemplate('repeat(auto-fill,track-size)')根据给定的行高track-size自动计算行数，其中repeat、auto-fill为关键字，track-size为可设置的高度，支持的单位包括px、vp、%或有效数字，默认单位为vp。
+
+非repeat形式的模板串中每项仅支持'数字+fr'、'数字+px'、'数字+%'三种格式，不支持vp（如rowsTemplate('100vp 100vp')）。需要按固定vp尺寸自动计算行数时，应使用repeat(auto-fill, track-size)。
+
+设置为'0fr'时，该行的行高为0，该行FlowItem不显示。设置为其他非法值时，按固定1行处理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -571,6 +579,34 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
 | supported  | boolean \| undefined | 是   | 当前WaterFlow组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子组件的空分支节点。<br>true表示显示空分支后的FlowItem；false表示不显示空分支后的FlowItem。<br>值为undefined时，按false处理。 |
+
+### scrollSnapStrategy
+
+scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
+
+设置WaterFlow的限位滚动策略。滚动结束时，按指定方式对齐目标FlowItem，或停在自定义的吸附位置。用法见[示例12（设置滚动吸附对齐）](#示例12设置滚动吸附对齐)。
+
+支持[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)和[SLIDING_WINDOW](#waterflowlayoutmode12枚举说明)两种布局模式，也支持通过[WaterFlowSections](#waterflowsections12)配置的分组混合布局。
+
+> **说明：**
+>
+> - 吸附位置不会超出组件从内容起始端到末尾端的可滚动区间。未设置[contentStartOffset](ts-container-scrollable-common.md#contentstartoffset22)和[contentEndOffset](ts-container-scrollable-common.md#contentendoffset22)时，该区间为[0, max(0, 内容总长度-视口长度)]，长度均沿滚动轴计算。例如，内容总长度为1000vp、视口长度为400vp时，区间为[0, 600]vp。设置首尾内容偏移后，以包含对应预留区域的实际滚动边界为准。内容总长度按当前布局结果计算。
+>
+> - 超出可滚动范围时，目标位置限制在可滚动范围的边界，因此首尾FlowItem可能无法完全按指定方式对齐。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                 |
+| ------ | ------ | ---- | ------------------------------------ |
+| strategy  | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 限位滚动策略。<br/>传入[ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)枚举时，使用内置对齐方式。START、CENTER和END分别将目标FlowItem对齐到视口沿滚动轴的起始、中央和末尾。<br/>传入实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象时，由开发者计算滚动距离和最终吸附位置：[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)确定惯性阶段的滚动距离，[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)确定最终吸附位置。<br/>不设置或传入ScrollSnapAlign.NONE、undefined时，不启用限位滚动，WaterFlow不做吸附对齐，按惯性自然滑行至停止。 |
 
 ## 事件
 
@@ -2240,3 +2276,54 @@ struct Index {
   }
 }
 ```
+
+### 示例12（设置滚动吸附对齐）
+
+本示例使用[scrollSnapStrategy](#scrollsnapstrategy)设置尾部吸附（ScrollSnapAlign.END）。滚动结束时，目标FlowItem的底边与视口底边对齐。示例采用SLIDING_WINDOW布局模式，包含100个高度不同的FlowItem。
+
+从API版本26.2.0开始，新增scrollSnapStrategy接口。
+
+WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
+
+```ts
+// Index.ets
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowSnapExample {
+  private dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+
+  build() {
+    Column({ space: 10 }) {
+      Text('WaterFlow End Snapping')
+        .fontSize(20)
+      WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW }) {
+        LazyForEach(this.dataSource, (item: number) => {
+          FlowItem() {
+            Text(item.toString())
+              .fontSize(20)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .width('100%')
+          .height(80 + (item % 4) * 20)
+          .backgroundColor(0xF9CF93)
+          .borderRadius(8)
+        }, (item: number) => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .width('100%')
+      .height(400)
+      .scrollSnapStrategy(ScrollSnapAlign.END)
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![scrollSnapStrategy-waterflow](figures/scrollSnapStrategy-waterflow.gif)

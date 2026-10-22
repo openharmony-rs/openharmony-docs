@@ -12,7 +12,7 @@ typedef struct ArkUI_EmbeddedComponentOption ArkUI_EmbeddedComponentOption
 
 ## 概述
 
-为EmbeddedComponent定义配置参数ArkUI_EmbeddedComponentOption，用于在创建或配置EmbeddedComponent时设置该组件的配置选项，适用于需要在页面中嵌入并管理其他组件的嵌入式UI开发场景。
+为EmbeddedComponent定义配置参数ArkUI_EmbeddedComponentOption，用于在创建或配置EmbeddedComponent时设置该组件的配置选项，适用于需要在页面中嵌入本应用内（或满足跨应用嵌入权限条件的）EmbeddedUIExtensionAbility提供的UI并管理其生命周期的嵌入式UI开发场景。
 
 **起始版本：** 20
 

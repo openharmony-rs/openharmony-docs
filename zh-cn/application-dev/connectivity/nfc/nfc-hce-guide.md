@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
@@ -314,7 +314,7 @@ export default class HceUIAbility extends UIAbility {
 
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-    // 退出应用程序，取消订阅接受HCE刷卡数据
+    // 退出应用程序，取消订阅接收HCE刷卡数据
     hceService.off('hceCmd', hceCommandCb);
   }
 }
@@ -368,3 +368,13 @@ export default class HceUIAbility extends UIAbility {
       }
     ]
 ```
+
+## 常见问题
+
+### HCE卡模拟对模拟卡的类型有什么约束
+
+无约束，HCE可模拟任意类型的卡。
+
+### 默认付款应用为什么会切换
+
+使用HCE刷卡时，需进入系统设置将默认付款应用设置为该HCE应用。部分应用（如华为钱包）切换到前台时会检测当前默认付款应用是否为本应用，若检测不一致，将弹窗提示用户是否将默认付款应用切换至本应用，用户点击确认后，应用会调用系统接口完成默认付款应用的切换。

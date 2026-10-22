@@ -49,14 +49,11 @@ import { request } from '@kit.BasicServicesKit';
 
 通知栏自定义信息。
 
-**需要权限**：ohos.permission.REQUEST_DISABLE_NOTIFICATION
-
 **系统能力**：SystemCapability.Request.FileTransferAgent
-
 
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| disable<sup>20+</sup> | boolean | 否 | 是 | 是否关闭通知栏显示。true表示关闭通知栏显示，false表示不关闭通知栏显示。<br>默认为false。<br>**系统接口**：此接口为系统接口。 |
+| disable<sup>20+</sup> | boolean | 否 | 是 | 是否关闭通知栏显示。true表示关闭通知栏显示，false表示不关闭通知栏显示。<br>默认为false。<br>设置为true（即关闭通知栏显示）时，需申请ohos.permission.REQUEST_DISABLE_NOTIFICATION权限；未申请该权限时此设置不生效。<br>**系统接口**：此接口为系统接口。 |
 
 ## request.agent.query<sup>10+</sup>
 

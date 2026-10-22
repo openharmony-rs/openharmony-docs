@@ -2,11 +2,10 @@
 
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xuchangda; @yixiaoff-->
-<!--Designer: @guxinggang; @liweilu1-->
-<!--Tester: @wangbeibei; @xchaosioda-->
+<!--Owner: @xuchangda-->
+<!--Designer: @guxinggang-->
+<!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:30.029Z pushedAt=2026-06-23T09:25:46.745Z -->
 
 > **NOTE**
 >
@@ -14,163 +13,168 @@
 
 ## RecommendationOptions<sup>11+</sup>
 
-Defines the image recommendation options. The image recommendation feature depends on the image data analysis capability, which varies with devices.
+Defines the image recommendation options. This method is used to display images on the photo picker page based on the recommendation policy. The image recommendation feature depends on the image data analysis capability, which varies with devices.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type               | Read-Only| Optional| Description                         |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| recommendationType | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | No  | Yes| Type of the recommended image.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| textContextInfo<sup>12+</sup> | [TextContextInfo](arkts-apis-photoAccessHelper-i.md#textcontextinfo12)   | No  | Yes| Text based on which images are recommended. If both **recommendationType** and **textContextInfo** are set, **textContextInfo** takes precedence over **recommendationType**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| recommendationType | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | No  | Yes| Type of the recommended image. Set this parameter if you want to recommend images based on the enumerated value. If this parameter is not set, images will not be recommended based on the enumerated value.<br>**Note:**<br> If [textContextInfo](arkts-apis-photoAccessHelper-i.md#textcontextinfo12) is also configured, this parameter does not take effect.<br>**Atomic service API:** This API can be used in atomic services since API version 11.|
+| textContextInfo<sup>12+</sup> | [TextContextInfo](arkts-apis-photoAccessHelper-i.md#textcontextinfo12)   | No  | Yes| Text based on which images are recommended. Set this parameter if you want to recommend images based on text information. If both **textContextInfo** and [RecommendationOptions](#recommendationoptions11).recommendationType are configured, only textContextInfo takes effect. If **textContextInfo** is not configured, images will not be recommended based on text information.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
 
 ## BaseSelectOptions
 
-Defines the basic options for selecting media files from Gallery.
+Defines the basic options for selecting media files from Gallery, which is used to configure parameters of the photo picker. This method is applicable to scenarios where images or videos need to be selected, such as social sharing, media management, and profile picture.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type               | Read-Only| Optional| Description                         |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| MIMEType    | [PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)   | No| Yes  | Available media file types. **IMAGE_VIDEO_TYPE** is used by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| maxSelectNumber      | number | No  | Yes| Maximum number of media files that can be selected. The maximum value is **500**, and the default value is **50**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| isPhotoTakingSupported<sup>11+</sup> | boolean  | No  | Yes| Whether photo taking is supported. **true** if supported, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| isSearchSupported<sup>11+</sup> | boolean  | No  | Yes| Whether the image is searchable. **true** if searchable, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| recommendationOptions<sup>11+</sup>       | [RecommendationOptions](#recommendationoptions11)   | No  | Yes| Image recommendation parameters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| preselectedUris<sup>11+</sup> | Array&lt;string&gt;  | No  | Yes| URI of the preselected image.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| isPreviewForSingleSelectionSupported<sup>12+</sup> | boolean  | No  | Yes| Whether to enable full image preview if a single image is selected. **true** to enable, **false** otherwise. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| singleSelectionMode<sup>18+</sup> | [SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18) | No  | Yes| Single selection mode. The default value is **SingleSelectionMode.BROWSER_MODE**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| mimeTypeFilter<sup>19+</sup> | [MimeTypeFilter](#mimetypefilter19)  | No  | Yes| Configuration for file type filtering. Multiple types can be specified.<br>When this parameter is set, the **MIMEType** configuration automatically becomes invalid.<br>When this parameter is set, only media files of the configured filter type are displayed. You are advised to notify users that only images or videos of the specified type can be selected.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| fileSizeFilter<sup>19+</sup> | [FileSizeFilter](#filesizefilter19)  | No  | Yes| Configuration for file size filtering.<br>When this parameter is set, only media files within the specified size range are displayed. You are advised to notify users that only images or videos of the specified size can be selected.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| videoDurationFilter<sup>19+</sup> | [VideoDurationFilter](#videodurationfilter19)  | No  | Yes| Configuration for video duration filtering.<br>When this parameter is set, only media files within the specified duration range are displayed. You are advised to notify users that only videos of the specified length can be selected.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| combinedMediaTypeFilter<sup>20+</sup> | Array\<string\> | No| Yes| A string array of filter criteria, supporting combinations of various types.<br>The string format is as follows: **photoType \| photoSubType1,photoSubType2, ... \| mimeType1,mimeType2, ...**<br>- The first part specifies a single **photoType**, which is fixed at **image** or **video**.<br>- The second part lists 1 to *N* photoSubTypes, separated by commas, with an OR relationship. Currently, the maximum value of *N* is **1**. Options include **movingPhoto** or "*" (ignore).<br>- The third part lists 1 to *N* mimeTypes, separated by commas, with an OR relationship. Currently, the maximum value of *N* is **10**. The format is similar to [MimeTypeFilter](#mimetypefilter19).<br>Filters are combined using intersection logic.<br>The NOT logic is supported. To exclude types, use parentheses. Each string can have only one set.<br>If the filter string does not match the specifications, the result is empty.<br>Only the first three array elements are used; **MIMETypes** and **mimeTypeFilter** are ignored.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| photoViewMimeTypeFileSizeFilters<sup>20+</sup> | Array\<[PhotoViewMimeTypeFileSizeFilter](#photoviewmimetypefilesizefilter20)\>  | No  | Yes| An array used to filter media files by type and size.<br>Only the first three array elements are used; **MIMETypes** and **fileSizeFilter** are ignored.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| isMovingPhotoBadgeShown<sup>22+</sup> | boolean  | No  | Yes| Whether the moving photo badge is displayed in the photo browser page. **true** to display the badge, **false** to hide it. The default is **false**.<br>If this parameter is set to **true**, [Photoselectresult](#photoselectresult) returns the **movingPhotoBadgeStates** array. The default status of a moving photo is [MOVING_PHOTO_ENABLED](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22).<br>Note: Use both **isMovingPhotoBadgeShown** and **MovingPhotoBadgeStateType** to determine whether a photo is a moving photo.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| assetFilter<sup>22+</sup>       | Array\<[OperationItem](#operationitem22)\> | No  | Yes| Media asset filter, with a maximum length of 50 items. If the limit is exceeded, only the first 50 items are used.<br>**NOTE**<br> 1. When this filter is applied, other filters become invalid.<br>2. When setting multiple conditions, enclose the filter conditions in parentheses to prevent conflicts with internal filter items.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| autoPlayScenes<sup>23+</sup>      | Array\<[AutoPlayScene](#autoplayscene23)\> | No  | Yes| Playback mode of the moving photo. The maximum array length is 2. If this limit is exceeded, the first two elements are used, and the extra ones are automatically ignored.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| globalMovingPhotoState<sup>23+</sup>       | [MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | No  | Yes| Global effect of the moving photo. Currently, only **MOVING_PHOTO_ENABLED** and **MOVING_PHOTO_DISABLED** are supported. The default value is **MOVING_PHOTO_ENABLED**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| gridPinchMode<sup>23+</sup>       | [GridPinchMode](arkts-apis-photoAccessHelper-i.md#gridpinchmode23) | No  | Yes| Pinch mode of the grid in the picker.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| showDateOnScrollbar<sup>24+</sup>       | boolean | No   | Yes | Whether to show date grouping information when dragging the scrollbar. The value **true** indicates to show, and **false** indicates not to show. The default value is **false**. <br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 24. |
-| assetCompatibleCapability<sup>24+</sup>       | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)  | No  | Yes| Asset compatibility capability configuration.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| preferredCompatibleMode       | [PreferredCompatibleMode](arkts-apis-photoAccessHelper-e.md#preferredcompatiblemode)  | No   | Yes | Asset compatibility mode configuration. <br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Since:** 26.0.0  |
+| MIMEType    | [PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)   | No| Yes  | Available media file types. **IMAGE_VIDEO_TYPE** is used by default.<br>**Note:**<br>The configuration of this parameter is ignored when [BaseSelectOptions](#baseselectoptions).mimeTypeFilter, [BaseSelectOptions](#baseselectoptions).combinedMediaTypeFilter, [BaseSelectOptions](#baseselectoptions).photoViewMimeTypeFileSizeFilters, or [BaseSelectOptions](#baseselectoptions).assetFilter is configured.<br>**Atomic service API:** This API can be used in atomic services since API version 11.|
+| maxSelectNumber      | number | No  | Yes| Maximum number of media files that can be selected. The value range is [1, 500]. If this parameter is not set, the default value **50** is used. This parameter specifies the length of the [BaseSelectOptions](#baseselectoptions).preselectedUris array and the values of [PhotoSelectOptions](#photoselectoptions).maxPhotoSelectNumber and [PhotoSelectOptions](#photoselectoptions).maxVideoSelectNumber.<br>**Atomic service API:** This API can be used in atomic services since API version 11.  |
+| isPhotoTakingSupported<sup>11+</sup> | boolean  | No  | Yes| Whether photo taking is supported. **true** if supported, and **false** otherwise. The default value is **true**.<br>**Atomic service API:** This API can be used in atomic services since API version 11.|
+| isSearchSupported<sup>11+</sup> | boolean  | No  | Yes| Whether the image is searchable. **true** if searchable, and **false** otherwise. The default value is **true**.<br>**Atomic service API:** This API can be used in atomic services since API version 11.<br>**Device behavior differences:** Since API version 26.0.1, the **select** method is supported on cars, but the **isSearchSupported** attribute is not. Therefore, this attribute does not take effect on cars.    |
+| recommendationOptions<sup>11+</sup>       | [RecommendationOptions](#recommendationoptions11)   | No  | Yes| Image recommendation parameters. Set this parameter if you want to recommend images based on the image data analysis result. If this parameter is not set, no recommended image will be displayed.<br>**Atomic service API:** This API can be used in atomic services since API version 11.<br>**Device behavior differences:** Since API version 26.0.1, the **select** method is supported on cars, but the **recommendationOptions** attribute is not. Therefore, this attribute does not take effect on cars.  |
+| preselectedUris<sup>11+</sup> | Array&lt;string&gt;  | No  | Yes| URIs of the preselected images. The array length is specified by [BaseSelectOptions](#baseselectoptions).maxSelectNumber, [BaseSelectOptions](#photoselectoptions).maxPhotoSelectNumber, and [BaseSelectOptions](#photoselectoptions).maxVideoSelectNumber. The value range is [0, 500], and the default value is **50**. If the value is out of the range, the excess part does not take effect. If this parameter is not set, no image is preselected by default.<br>**Atomic service API:** This API can be used in atomic services since API version 11.|
+| isPreviewForSingleSelectionSupported<sup>12+</sup> | boolean  | No  | Yes| Whether to enable full image preview if a single image is selected. **true** to enable, and **false** otherwise. The default value is **true**.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| singleSelectionMode<sup>18+</sup> | [SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18) | No  | Yes| Single selection mode. The default value is **SingleSelectionMode.BROWSER_MODE**.<br>**Atomic service API:** This API can be used in atomic services since API version 18.|
+| mimeTypeFilter<sup>19+</sup> | [MimeTypeFilter](#mimetypefilter19)  | No  | Yes| Configuration for file type filtering. Multiple types can be specified.<br>When this parameter is set, only media files of the configured filter type are displayed. You are advised to notify that only images or videos of the specified type can be selected on the UI.<br>**Note:**<br> 1. When [BaseSelectOptions](#baseselectoptions).combinedMediaTypeFilter or [BaseSelectOptions](#baseselectoptions).assetFilter is set, the configuration of this parameter is ignored.<br>2. When this parameter is set, the configuration of [BaseSelectOptions](#baseselectoptions).MIMEType is ignored.<br>**Atomic service API:** This API can be used in atomic services since API version 19.|
+| fileSizeFilter<sup>19+</sup> | [FileSizeFilter](#filesizefilter19)  | No  | Yes| Configuration for file size filtering.<br>When this parameter is set, only media files within the specified size range are displayed. You are advised to notify that only images or videos of the specified size can be selected on the UI.<br>**Note:**<br> When [BaseSelectOptions](#baseselectoptions).photoViewMimeTypeFileSizeFilters or [BaseSelectOptions](#baseselectoptions).assetFilter is set, the configuration of this parameter is ignored.<br>**Atomic service API:** This API can be used in atomic services since API version 19.|
+| videoDurationFilter<sup>19+</sup> | [VideoDurationFilter](#videodurationfilter19)  | No  | Yes| Configuration for video duration filtering.<br>When this parameter is set, only media files within the specified duration range are displayed. You are advised to notify users that only videos of the specified length can be selected.<br>**Note:**<br> When [BaseSelectOptions](#baseselectoptions).assetFilter is set, the configuration of this parameter is ignored.<br>**Atomic service API:** This API can be used in atomic services since API version 19.|
+| combinedMediaTypeFilter<sup>20+</sup> | Array\<string\> | No| Yes| A string array of filter criteria, supporting combinations of various types.<br>The string format is as follows: **photoType \| photoSubType1,photoSubType2, ... \| mimeType1,mimeType2, ...**<br>- The first part specifies a single **photoType**, which is fixed at **image** or **video**.<br>- The second part lists 1 to *N* photoSubTypes, separated by commas, with an OR relationship. Currently, the maximum value of *N* is **1**. Options include **movingPhoto** or "*" (ignore).<br>- The third part lists 1 to *N* mimeTypes, separated by commas, with an OR relationship. Currently, the maximum value of *N* is **10**. The format is similar to [BaseSelectOptions](#baseselectoptions).mimeTypeFilter.<br>Filters are combined using intersection logic.<br>The NOT logic is supported. To exclude types, use parentheses. Each string can have only one set.<br>If the filter string does not match the specifications, the result is empty.<br>Only the first three array elements are used; [BaseSelectOptions](#baseselectoptions).MIMEType and [BaseSelectOptions](#baseselectoptions).mimeTypeFilter are ignored.<br>**Note:**<br> When [BaseSelectOptions](#baseselectoptions).assetFilter is set, the configuration of this parameter is ignored.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| photoViewMimeTypeFileSizeFilters<sup>20+</sup> | Array\<[PhotoViewMimeTypeFileSizeFilter](#photoviewmimetypefilesizefilter20)\>  | No  | Yes| Array used to filter media files by type and size.<br>When this parameter is set, only the first three elements in the array are used for processing, and the rest are ignored. In this case, [BaseSelectOptions](#baseselectoptions).MIMETypes and [BaseSelectOptions](#baseselectoptions).fileSizeFilter are ignored. You are advised to notify users that only images or videos of specified types and sizes can be selected. When [BaseSelectOptions](#baseselectoptions).assetFilter is set, the configuration of this parameter is ignored.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| isMovingPhotoBadgeShown<sup>22+</sup> | boolean  | No  | Yes| Whether the moving photo badge is displayed in the photo browser page. **true** to display the badge, **false** to hide it. The default is **false**.<br>If this parameter is set to **true**, [PhotoSelectResult](#photoselectresult) returns the **movingPhotoBadgeStates** array. The default status of a moving photo is [MOVING_PHOTO_ENABLED](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22).<br>**Note:** When **isMovingPhotoBadgeShown** is set to **true**, you can determine whether a photo is a moving photo based on the value of **MovingPhotoBadgeStateType** in the returned **movingPhotoBadgeStates** array.<br>**Atomic service API:** This API can be used in atomic services since API version 22.|
+| assetFilter<sup>22+</sup>       | Array\<[OperationItem](#operationitem22)\> | No  | Yes| Media asset filter, with a maximum length of 50 items. If the limit is exceeded, only the first 50 items are used.<br>**Note:**<br> 1. When this filter is applied, other filters become invalid.<br>2. When setting multiple conditions, enclose the filter conditions in parentheses to prevent conflicts with internal filter items.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 22.|
+| autoPlayScenes<sup>23+</sup>      | Array\<[AutoPlayScene](#autoplayscene23)\> | No  | Yes| Playback mode of the moving photo. The maximum array length is 2. If this limit is exceeded, the first two elements are used, and the extra ones are automatically ignored. If this parameter is not set, the default playback mode is used.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 23.|
+| globalMovingPhotoState<sup>23+</sup>       | [MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | No  | Yes| Global effect of the moving photo. Currently, only [MOVING_PHOTO_ENABLED](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) and [MOVING_PHOTO_DISABLED](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) are supported. The default value is [MOVING_PHOTO_ENABLED](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22).<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 23.|
+| gridPinchMode<sup>23+</sup>       | [GridPinchMode](arkts-apis-photoAccessHelper-i.md#gridpinchmode23) | No  | Yes| Pinch mode of the grid in the photo picker. If you need to customize the pinch behavior of the grid, set this parameter. If this parameter is not set, the pinch behavior of the grid is not supported.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 23.|
+| showDateOnScrollbar<sup>24+</sup>       | boolean | No  | Yes| Whether to display the date group information when the scroll bar is dragged. **true**: yes; **false**: no. The default value is **false**.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 24.|
+| assetCompatibleCapability<sup>24+</sup>       | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)  | No  | Yes| Asset compatibility capability configuration.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 24.|
+| preferredCompatibleMode       | [PreferredCompatibleMode](arkts-apis-photoAccessHelper-e.md#preferredcompatiblemode)  | No  | Yes| Asset compatibility configuration.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Since:** 26.0.0 |
 
 ## PhotoSelectOptions
 
-PhotoSelectOptions extends BaseSelectOptions
-
 Defines additional options for selecting media files from Gallery. It inherits from [BaseSelectOptions](#baseselectoptions).
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type               | Read-Only| Optional| Description                         |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| isEditSupported<sup>11+</sup>       | boolean | No  | Yes| Whether the image can be edited. **true** if editable, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
-| isOriginalSupported<sup>12+</sup>       | boolean | No  | Yes| Whether to display the button for selecting the original image. **true** to display, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
-| subWindowName<sup>12+</sup>       | string | No  | Yes| Name of the child window.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
-| completeButtonText<sup>14+</sup>       | [CompleteButtonText](arkts-apis-photoAccessHelper-e.md#completebuttontext14) | No  | Yes| Text displayed on the complete button.<br>The complete button is located in the lower-right corner of the page. It is used by users to signify that they have finished selecting images.<br>**Atomic service API**: This API can be used in atomic services since API version 14.    |
-| contextRecoveryInfo<sup>21+</sup>       | [ContextRecoveryInfo](#contextrecoveryinfo21) | No  | Yes| Information for restoring the PhotoPicker's state from the last exit.<br>When the selection process is complete, the PhotoPicker returns **contextRecoveryInfo** to the application. The application can then use the information to restore the PhotoPicker's state and the last viewed grid interface the next time it starts the PhotoPicker.<br>**Atomic service API**: This API can be used in atomic services since API version 21.    |
-| isDestroyedWithNavigation<sup>23+</sup>       | boolean | No  | Yes| Whether destruction with [Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation-1) is supported. **true** if supported, **false** otherwise. The default value is **false**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.    |
-| maxPhotoSelectNumber<sup>23+</sup> | number  | No | Yes|Maximum number of photos that can be selected.  <br>A maximum of 500 photos can be selected. The default value is **500**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.                                    |
-| maxVideoSelectNumber<sup>23+</sup> | number  | No | Yes| Maximum number of videos that can be selected.  <br>A maximum of 500 videos can be selected. The default value is **500**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| isReturnToPhotoBrowserEnabled<sup>23+</sup>       | boolean | No  | Yes| Whether to automatically switch to the full image preview mode after a photo is taken in single-selection mode. **true** means to switch, and **false** means the opposite. The default value is **false**.<br>Note: This parameter takes effect only when [SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18) is set to **BROWSER_MODE** or **BROWSER_AND_SELECT_MODE** and [BaseSelectOptions.isPreviewForSingleSelectionSupported](arkts-apis-photoAccessHelper-class.md#baseselectoptions) is set to **true**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.    |
-| isSelectionNumberVisible       | boolean | No   | Yes | Whether to support selection numbers. The value **true** means to support, and **false** means the opposite. The default value is **false**.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Since:** 26.0.0     |
-| isSelectionOrderAdjustable      | boolean | No   | Yes | Whether to support adjusting the selection order. The value **true** means to support, and **false** means the opposite. The default value is **false**.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Since:** 26.0.0     |
+| isEditSupported<sup>11+</sup>       | boolean | No  | Yes| Whether the image can be edited. **true** if editable, and **false** otherwise. The default value is **true**.<br>**Atomic service API:** This API can be used in atomic services since API version 11.<br>**Device behavior differences:** Since API version 26.0.1, the **select** method is supported on cars, but the **isEditSupported** attribute is not. Therefore, this attribute does not take effect on cars.    |
+| isOriginalSupported<sup>12+</sup>       | boolean | No  | Yes| Whether to display the button for selecting the original image. **true** to display, **false** otherwise. The default value is **false**.<br>**Atomic service API:** This API can be used in atomic services since API version 12.    |
+| subWindowName<sup>12+</sup>       | string | No  | Yes| Name of the child window.<br>**Atomic service API:** This API can be used in atomic services since API version 12.    |
+| completeButtonText<sup>14+</sup>       | [CompleteButtonText](arkts-apis-photoAccessHelper-e.md#completebuttontext14) | No  | Yes| Text displayed on the complete button. If this parameter is not set, the default text is displayed on the button.<br>The complete button is located in the lower-right corner of the page. It is used by users to signify that they have finished selecting images.<br>**Atomic service API:** This API can be used in atomic services since API version 14.    |
+| contextRecoveryInfo<sup>21+</sup>       | [ContextRecoveryInfo](#contextrecoveryinfo21) | No  | Yes| Information for restoring the photo picker's state from the last exit. If this parameter is not set, the state from the last exit is not restored.<br>When the selection process is complete, the photo picker returns **contextRecoveryInfo** to the application. The application can then use the information to restore the photo picker's state and the last viewed grid interface the next time it starts the photo picker.<br>**Atomic service API:** This API can be used in atomic services since API version 21.    |
+| isDestroyedWithNavigation<sup>23+</sup>       | boolean | No  | Yes| Whether destruction with [Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation-1) is supported. **true** if supported, **false** otherwise. The default value is **false**.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 23.    |
+| maxPhotoSelectNumber<sup>23+</sup> | number  | No | Yes|Maximum number of photos that can be selected. The value range is [1, 500]. The default value is **500**.  <br>The value is subject to the maximum number of available items specified by [BaseSelectOptions](#baseselectoptions).maxSelectNumber.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 23.                                    |
+| maxVideoSelectNumber<sup>23+</sup> | number  | No | Yes| Maximum number of videos that can be selected. The value range is [1, 500]. The default value is **500**.  <br>The value is subject to the maximum number of available items specified by [BaseSelectOptions](#baseselectoptions).maxSelectNumber.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 23.|
+| isReturnToPhotoBrowserEnabled<sup>23+</sup>       | boolean | No  | Yes| Whether to automatically switch to the full image preview mode after a photo is taken in single-selection mode. **true** means to switch, and **false** means the opposite. The default value is **false**.<br>**Note:**<br> This parameter takes effect only when it is set to **true** and all of the following conditions are met:<br>1. [BaseSelectOptions](#baseselectoptions).SingleSelectionMode is set to **BROWSER_MODE** (large image preview mode) or **BROWSER_AND_SELECT_MODE** (compatibility mode).<br>2. [BaseSelectOptions](#baseselectoptions).isPreviewForSingleSelectionSupported is set to **true**.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 23.    |
+| isSelectionNumberVisible        | boolean | No  | Yes| Whether to support the selection of sequence numbers. The value **true** indicates that the sequence numbers can be selected, and the value **false** indicates the opposite. The default value is **false**.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Since:** 26.0.0    |
+| isSelectionOrderAdjustable       | boolean | No  | Yes| Whether the selection sequence can be adjusted. The value **true** indicates that the selection sequence can be adjusted, and the value **false** indicates the opposite. The default value is **false**.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Since:** 26.0.0    |
+| pickerColorMode        | [PickerColorMode](arkts-apis-photoAccessHelper-e.md#pickercolormode)  | No  | Yes| Color mode of the photo picker, indicating the light or dark display mode of all content on the page started by the photo picker.<br>The default value is** AUTO**, indicating that the color mode follows the system setting.<br>**Since:** 26.0.1<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.1. |
 
 ## PhotoSelectResult
 
 Defines information about the images or videos selected.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type               | Read-Only| Optional| Description                         |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| photoUris       | Array&lt;string&gt; | No   | No | URI array of the media files returned after selection in the gallery.<br>This URI array can only be used by calling the [photoAccessHelper.getAssets](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets) API through temporary authorization. For details about how to use it, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).<br>**NOTE**<br>If the asset is of the burst photo type, all assets in the burst group are returned. For details about how to determine whether an asset is a burst photo, see [Identifying Burst Photo Assets by URI](../../media/medialibrary/medialibrary-faqs/medialibrary-asset-judgment-faq.md#identifying-burst-photo-assets-by-uri).<br>**Atomic service API:** This API can be used in atomic services since API version 11.     |
-| isOriginalPhoto       | boolean | No  | No| Whether the selected media file is the original image. **true** if yes, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
-| contextRecoveryInfo<sup>21+</sup>         | [ContextRecoveryInfo](#contextrecoveryinfo21)    | No  | No| Information about the context of exiting the PhotoPicker. This information is returned when the selection process is complete and is used by the application within **PhotoSelectOptions** during the subsequent launch of the PhotoPicker to restore the state from the previous exit.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-| movingPhotoBadgeStates<sup>22+</sup>         | Array\<[MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)\>    | No  | No| Array of moving photo badge states for the media files selected from Gallery.<br>If **isMovingPhotoBadgeShown** is set to **true**, this array contains the moving photo badge states. Otherwise, it is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| photoUris       | Array&lt;string&gt; | No  | No| URIs of the media files selected.<br>This URI array can be used only by calling the [photoAccessHelper.getAssets](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets) API through temporary authorization. For details, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).<br>**Note:**<br>If the resource is a burst shot, all resources in the burst shot group are returned. For details about how to determine whether an image is a burst shot, see [Identifying Burst Photo Assets by URI](../../media/medialibrary/medialibrary-faqs/medialibrary-asset-judgment-faq.md#identifying-burst-photo-assets-by-uri).<br>**Atomic service API:** This API can be used in atomic services since API version 11.    |
+| isOriginalPhoto       | boolean | No  | No| Whether the selected media file is the original image. **true** if yes, **false** otherwise. The default value is **false**.<br>**Atomic service API:** This API can be used in atomic services since API version 11.    |
+| contextRecoveryInfo<sup>21+</sup>         | [ContextRecoveryInfo](#contextrecoveryinfo21)    | No  | No| Information about the context of exiting the photo picker. This information is returned when the selection process is complete and is used by the application within **PhotoSelectOptions** during the subsequent launch of the photo picker to restore the state from the previous exit.<br>**Atomic service API:** This API can be used in atomic services since API version 21.|
+| movingPhotoBadgeStates<sup>22+</sup>         | Array\<[MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)\>    | No  | No| Array of moving photo badge states for the media files selected from Gallery.<br>If **isMovingPhotoBadgeShown** is set to **true**, this array contains the moving photo badge states. Otherwise, it is empty.<br>**Atomic service API:** This API can be used in atomic services since API version 22.|
 
 ## AutoPlayScene<sup>23+</sup>
 
-Defines the playback mode of the moving photo in different scenarios.
+Defines the playback mode of the moving photo in different scenarios. This method is used to configure the automatic playback behavior of moving photos and applies to scenarios such as album browsing and moving photo display.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**Atomic service API:** This API can be used in atomic services since API version 23.
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type               | Read-Only| Optional| Description                         |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| sceneType      | [SceneType](arkts-apis-photoAccessHelper-e.md#scenetype23) | No  | No| Scene of the moving photo playback.<br>**Atomic service API**: This API can be used in atomic services since API version 23.    |
-| playMode    | [PlayMode](arkts-apis-photoAccessHelper-e.md#playmode23) | No  | No| Whether to support automatic playback of the moving photo.<br>**Atomic service API**: This API can be used in atomic services since API version 23.    |
+| sceneType      | [SceneType](arkts-apis-photoAccessHelper-e.md#scenetype23) | No  | No| Scene of the moving photo playback.    |
+| playMode    | [PlayMode](arkts-apis-photoAccessHelper-e.md#playmode23) | No  | No| Whether to support automatic playback of the moving photo.    |
 
 ## MimeTypeFilter<sup>19+</sup>
 
-Describes the configuration for file type filtering.
+Describes the configuration for file type filtering. This method is used to specify the types of media files that can be selected by users. It is applicable to scenarios such as upload restrictions and type filtering.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type               | Read-Only| Optional| Description                          |
 | ----------------------- | ------------------- | ---- | ---- | ------------------------------ |
-| mimeTypeArray        | Array&lt;string&gt;    | No  | No| Types of media files that PhotoPicker allows users to filter by. The maximum array length is 10, thus supporting up to 10 specified types.<br>The filter type is defined by the MIME type, for example, image/jpeg and video/mp4.|
+| mimeTypeArray        | Array&lt;string&gt;    | No  | No| Types of media files that photo picker allows users to filter by. The maximum array length is 10, thus supporting up to 10 specified types.<br>The filter type is defined by the MIME type, for example, image/jpeg and video/mp4.|
 
 ## FileSizeFilter<sup>19+</sup>
 
-Describes the configuration for file size filtering.
+Describes the configuration for file size filtering. This method is used to specify the types of media files that can be selected by users. It is applicable to scenarios such as upload restrictions and type filtering.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type               | Read-Only| Optional| Description                          |
 | ----------------------- | ------------------- | ---- | ---- |------------------------------ |
-| filterOperator        | [FilterOperator](arkts-apis-photoAccessHelper-e.md#filteroperator19)    | No | No| Filter operator.<br>For example, files can be filtered based on being greater than or less than a certain file size.|
-| fileSize        | number    | No| No| File size used for filtering.<br>The unit is bytes.|
-| extraFileSize   | number    | No| Yes| Maximum file size in **FilterOperator.BETWEEN** mode. The default value is **-1**.<br>The unit is bytes.|
+| filterOperator        | [FilterOperator](arkts-apis-photoAccessHelper-e.md#filteroperator19)    | No | No| Filter operator. It specifies the condition relationship for filtering files by size, such as greater than, less than, or between.<br>For example, files can be filtered based on being greater than or less than a certain file size. When this parameter is set to **BETWEEN**, you also need to set the **extraFileSize** parameter to specify the upper limit of the file size.|
+| fileSize        | number    | No| No| File size used for filtering. The value range is (0, +∞). If the value is less than 0, the result is empty.<br>The unit is bytes.|
+| extraFileSize   | number    | No| Yes| Maximum file size in **FilterOperator.BETWEEN** mode. The value range is [0, +∞). If the value is less than that of **fileSize**, the result is empty. The default value is **-1**.<br>The unit is bytes.|
 
 ## VideoDurationFilter<sup>19+</sup>
 
-Describes the configuration for video duration filtering.
+Describes the configuration for video duration filtering. This method is used to specify the types of media files that can be selected by users. It is applicable to scenarios such as video editing and content review.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type               | Read-Only| Optional| Description                          |
 | ----------------------- | ------------------- | ---- | ---- |------------------------------ |
-| filterOperator        | [FilterOperator](arkts-apis-photoAccessHelper-e.md#filteroperator19)    | No| No |Filter operator.<br>For example, videos can be filtered based on being greater than or less than a certain duration.|
-| videoDuration        | number    | No| No| Video duration used for filtering.<br>The unit is milliseconds (ms).|
-| extraVideoDuration   | number    | No| Yes| Maximum video duration in **FilterOperator.BETWEEN** mode. The default value is **-1**.<br>The unit is milliseconds (ms).|
+| filterOperator        | [FilterOperator](arkts-apis-photoAccessHelper-e.md#filteroperator19)    | No| No |Filter operator.<br>For example, videos can be filtered based on being greater than or less than a certain duration. When this parameter is set to **BETWEEN**, you also need to set the **extraVideoDuration** parameter to specify the upper limit of the video duration.|
+| videoDuration        | number    | No| No| Video duration used for filtering. The value range is (0, +∞). If the value is less than or equal to 0, the result is empty.<br>The unit is milliseconds (ms).|
+| extraVideoDuration   | number    | No| Yes| Maximum video duration in **FilterOperator.BETWEEN** mode. The value range is [0, +∞). If the value is less than that of **videoDuration**, the result is empty. The default value is **-1**.<br>The unit is milliseconds (ms).|
 
 ## RecentPhotoOptions<sup>20+</sup>
 
 Represents the configuration options of the recent images or videos.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type                                                                                    | Read-Only| Optional | Description  |
 |-------------------------|-----------------------------------------------------------------------------------------|-------|-------|--------|
-| period                  | number                                                                                  | No   | Yes| Time range for displaying the recent images or videos, measured in seconds. After setting, the system shows images or videos taken within the specified time from the current moment. The longest duration you can set is 1 day (86400s).<br>If the value is less than or equal to 0, greater than 86400, or not set, the system uses the longest duration (1 day) by default. If there are no images or videos within the set time range, the component does not show anything.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | No   | Yes| Types of the file displayed. The default value is **PhotoViewMIMETypes.IMAGE_VIDEO_TYPE**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                        |
-| photoSource             | [PhotoSource](arkts-apis-photoAccessHelper-e.md#photosource20)                                                             | No   | Yes| Source of the recent image or video, for example, image or video taken by the camera or screenshot. By default, the source is not restricted.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                              |
+| period                  | number                                                                                  | No   | Yes| Time range for displaying the recent images or videos, measured in seconds. After setting, the system shows images or videos taken within the specified time from the current moment. The longest duration you can set is 1 day (86400s).<br>If the value is less than or equal to 0, greater than 86400, or not set, the system uses the longest duration (1 day) by default. If there are no images or videos within the set time range, the component does not show anything.|
+| MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | No   | Yes| Types of the file displayed. The default value is **PhotoViewMIMETypes.IMAGE_VIDEO_TYPE**.                       |
+| photoSource             | [PhotoSource](arkts-apis-photoAccessHelper-e.md#photosource20)                                                             | No   | Yes| Source of the recent image or video, for example, image or video taken by the camera or screenshot. By default, the source is not restricted.            |
 
 ## RecentPhotoInfo<sup>20+</sup>
 
 Describes the information about the recent image or video.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name        | Type    | Read-Only| Optional | Description                                                       |
 |------------|--------|-------|-------|-----------------------------------------------------------|
-| dateTaken  | number | No   | Yes| Time when the recent image or video was shot (in milliseconds since January 1, 1970). The unit is ms.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                    |
-| identifier | string | No   | Yes| Hash value of the name of the recent image or video, which is used to help the application determine whether the image or video to be displayed is the same as the one displayed before.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| dateTaken  | number | No   | Yes| Time when the recent image or video was shot (in milliseconds since January 1, 1970). The unit is ms.                    |
+| identifier | string | No   | Yes| Hash value of the name of the recent image or video, which is used to help the application determine whether the image or video to be displayed is the same as the one displayed before.|
 
 ## PhotoViewMimeTypeFileSizeFilter<sup>20+</sup>
 
-Describes the settings for filtering media files by type and size.
+Describes the settings for filtering media files by type and size. This method is applicable to scenarios where precise control over the types and sizes of media files is required. Compared with using **mimeTypeFilter** or **fileSizeFilter** separately, this class allows you to set independent size limits for specific types.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type               | Read-Only| Optional| Description                         |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
@@ -179,47 +183,49 @@ Describes the settings for filtering media files by type and size.
 
 ## ContextRecoveryInfo<sup>21+</sup>
 
-Describes the information about the context of exiting the PhotoPicker. It can be used during the subsequent launch of the PhotoPicker to restore the state from the previous exit.
+Describes the information about the context of exiting the photo picker. It can be used during the subsequent launch of the photo picker to restore the state from the previous exit.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type               | Read-Only| Optional| Description                         |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| albumUri    | string | No  | No| URI of the album in the media library when the user selects an image and exits.<br> <br>- If the user selects from all images, **albumUri** is a fixed **"allPhotos"** string.<br>- If the user exits after selecting from search results, text recommendations, or avatar recommendations, the next restoration is not supported, and the returned **albumUri** is an empty string.<br>The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-| time    | number   | No  | No| Time of the top-left image in the grid interface when the user last selected an image.<br>- For albums sorted by capture time, the capture time is returned.<br>- For albums sorted by save time, the save time is returned. The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-| displayName    | string   | No  | No| File name of the top-left image in the grid interface when the user last selected an image. The default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-| recommendationType    | number   | No  | No| Enumerated value of the recommended content set by the user during the last selection. For details, see [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11).<br>If no recommendation was set during the last selection, the default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-| selectedRecommendationType    | number   | No  | No| Enumerated value of the recommended content selected by the user during the last selection. For details, see [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11).<br>If no recommendation was selected during the last selection or **All** was selected, the default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-| version    | number   | No  | No| Version number of the state data, used to verify the compatibility of the state information data with the state recovery capability.<br>The version number must be greater than or equal to 1.0.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-| gridLevel<sup>23+</sup>    | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23)   | No  | Yes| Level of the grid when the user exits last time.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| sortRule<sup>24+</sup>    | string   | No  | Yes| Sorting rule of the grid interface when the user last selected an image. The default value is an empty string.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
-| fileSize<sup>24+</sup>    | number   | No  | Yes| File size of the top-left image in the grid interface when the user last selected an image. The default value is **0**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| albumUri    | string | No  | No| URI of the album in the media library when the user selects an image and exits.<br>**albumUri** indicates the URI of the album in the media library.<br>- If the user selects from all images, **albumUri** is a fixed **"allPhotos"** string.<br>- If the user exits after selecting from search results, text recommendations, or avatar recommendations, the next restoration is not supported, and the returned **albumUri** is an empty string.<br>The default value is an empty string.<br>**Atomic service API:** This API can be used in atomic services since API version 21.|
+| time    | number   | No  | No| Time of the top-left image in the grid interface when the user last selected an image.<br>- For albums sorted by capture time, the capture time is returned.<br>- For albums sorted by save time, the save time is returned. The default value is **0**.<br>The unit is milliseconds (ms).<br>**Atomic service API:** This API can be used in atomic services since API version 21.|
+| displayName    | string   | No  | No| File name of the top-left image in the grid interface when the user last selected an image. The default value is an empty string.<br>**Atomic service API:** This API can be used in atomic services since API version 21.|
+| recommendationType    | number   | No  | No| Enumerated value of the recommended content set by the user during the last selection. For details, see [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11).<br>If no recommendation was set during the last selection, the default value is **0**.<br>**Atomic service API:** This API can be used in atomic services since API version 21.|
+| selectedRecommendationType    | number   | No  | No| Enumerated value of the recommended content selected by the user during the last selection. For details, see [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11).<br>If no recommendation was selected during the last selection or **All** was selected, the default value is **0**.<br>**Atomic service API:** This API can be used in atomic services since API version 21.|
+| version    | number   | No  | No| Version number of the state data, used to verify the compatibility of the state information data with the state recovery capability.<br>The version number must be greater than or equal to 1.0.<br>**Atomic service API:** This API can be used in atomic services since API version 21.|
+| gridLevel<sup>23+</sup>    | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23)   | No  | Yes| Level of the grid when the user exits last time. If you need to restore the grid level to that when the user exits last time, set this parameter. If this parameter is not set, the default level is used.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 23.|
+| sortRule<sup>24+</sup>    | string   | No  | Yes| Sorting rule of the grid interface when the user last selected an image. The default value is an empty string.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 24.|
+| fileSize<sup>24+</sup>    | number   | No  | Yes| File size of the top-left image in the grid interface when the user last selected an image. The default value is **0**.<br>The unit is bytes.<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 24.|
 
 ## OperationItem<sup>22+</sup>
 
 Describes the settings for filtering media files.
 
-**Model restriction**: This API can be used only in the stage model.
+This class implements flexible media file filtering by combining **operationType**, **field**, and **value**. It supports combining multiple condition predicates (such as equal to, greater than, and contains) and field combinations for complex query. This method is applicable to scenarios where precise filtering is required based on media file attributes (such as type, size, and duration).
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Model restriction:** This API can be used only in the stage model.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type               | Read-Only| Optional| Description                         |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| operationType    | [OperationType](arkts-apis-photoAccessHelper-e.md#operationtype22)   | No| No  | Predicates.|
-| field    | [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)   | No| Yes  | Column name in the data table.<br>Currently, only the following key fields are supported: **URI**, **PHOTO_TYPE**, **DISPLAY_NAME**, **SIZE**, **DURATION**, **WIDTH**, **HEIGHT**, **ORIENTATION**, **FAVORITE**, **TITLE**, **POSITION**, **PHOTO_SUBTYPE**, **DYNAMIC_RANGE_TYPE**, **COVER_POSITION**, **BURST_KEY**, **LCD_SIZE**, **THM_SIZE**, **DETAIL_TIME**, **MEDIA_SUFFIX**, **OWNER_ALBUM_ID**, **ASPECT_RATIO** and **DATE_TAKEN_MS**<sup>24+</sup>.<br>When [select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select) is used to set this parameter, an invalid field results in error code 401. When [@ohos.file.PhotoPickerComponent (PhotoPickerComponent)](ohos-file-PhotoPickerComponent.md) is used to set this parameter, an invalid field does not trigger the **onPickerControllerReady** callback.<br>This field is not involved in non-conditional predicates such as **and**, **or**, **beginWrap**, and **endWrap**.|
-| value    | Array<[OperationValueType](arkts-apis-photoAccessHelper-t.md#operationvaluetype22)>   | No| Yes  |  Values needed for matching different predicates.<br>This field is not involved in non-conditional predicates such as **and**, **or**, **beginWrap**, and **endWrap**.<br>The maximum length is 10; if exceeded, only the first 10 values are considered.|
-
+| operationType    | [OperationType](arkts-apis-photoAccessHelper-e.md#operationtype22)   | No| No  | Predicates, including conditional predicates (for which **field** and **value** need to be configured, such as equal to, greater than, and contains) and non-conditional predicates (for which **field** and **value** do not need to be configured, such as **and**, **or**, **beginWrap**, and **endWrap**).|
+| field    | [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)   | No| Yes  | Column name in the data table. If this parameter is not set, it is left empty by default.<br>Currently, only the following key fields are supported: **URI**, **PHOTO_TYPE**, **DISPLAY_NAME**, **SIZE**, **DURATION**, **WIDTH**, **HEIGHT**, **ORIENTATION**, **FAVORITE**, **TITLE**, **POSITION**, **PHOTO_SUBTYPE**, **DYNAMIC_RANGE_TYPE**, **COVER_POSITION**, **BURST_KEY**, **LCD_SIZE**, **THM_SIZE**, **DETAIL_TIME**, **MEDIA_SUFFIX**, **OWNER_ALBUM_ID**, **ASPECT_RATIO** and **DATE_TAKEN_MS**<sup>24+</sup>.<br>When [select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select) is used to set this parameter, an invalid field results in error code [401](../errorcode-universal.md#401-parameter-check-failed). When [@ohos.file.PhotoPickerComponent (PhotoPickerComponent)](ohos-file-PhotoPickerComponent.md) is used to set this parameter, an invalid field does not trigger the **onPickerControllerReady** callback.<br>When a conditional predicate is used, this parameter needs to be set to specify the matching value. This parameter does not need to be set for non-conditional predicates, such as **and**, **or**, **beginWrap**, and **endWrap**.|
+| value    | Array<[OperationValueType](arkts-apis-photoAccessHelper-t.md#operationvaluetype22)>   | No| Yes  |  Values needed for matching different predicates.<br>When a conditional predicate is used, this parameter needs to be set to specify the matching value. This parameter does not need to be set for non-conditional predicates, such as **and**, **or**, **beginWrap**, and **endWrap**.<br>The maximum length is 10; if exceeded, only the first 10 values are considered.|
+ 
 ## RequestReadPermissionResult<sup>23+</sup>
 
 Describes the authorized URIs and invalid URIs.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name                   | Type               | Read-Only| Optional| Description                         |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |

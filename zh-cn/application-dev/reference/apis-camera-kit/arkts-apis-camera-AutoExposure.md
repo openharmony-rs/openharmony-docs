@@ -395,7 +395,7 @@ function callback(exposureState: camera.ExposureState): void {
   console.info(`exposureState: ${exposureState}`);
 }
 
-function registerPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
+function registerExposureStateChange(captureSession: camera.PhotoSession): void {
   captureSession.onExposureStateChange(callback);
 }
 ```
@@ -429,11 +429,11 @@ function callback(exposureState: camera.ExposureState): void {
   console.info(`exposureState: ${exposureState}`);
 }
 
-function unregisterPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
+function unregisterExposureStateChange(captureSession: camera.PhotoSession): void {
   captureSession.offExposureStateChange(callback);
 }
 
-function unregisterPhotoOutputCaptureStartWithoutParam(captureSession: camera.PhotoSession): void {
+function unregisterExposureStateChangeWithoutParam(captureSession: camera.PhotoSession): void {
   captureSession.offExposureStateChange();
 }
 ```

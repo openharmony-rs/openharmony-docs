@@ -22,27 +22,27 @@ IsolatedComponent用于支持在本页面内嵌入显示独立Abc（方舟字节
 
 **规格约束**
 
-1、本组件不支持预览。
+1. 本组件不支持预览。
 
-2、Abc需要[verifyAbc](../../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11)校验通过之后才可以使用于当前组件，且需在module.json5中配置ohos.permission.RUN_DYN_CODE权限。
+2. Abc需要[verifyAbc](../../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerverifyabc11)校验通过之后才可以使用于当前组件，且需在module.json5中配置ohos.permission.RUN_DYN_CODE权限。
 
-3、不支持构造参数更新，仅首次传入有效。
+3. 不支持构造参数更新，仅首次传入有效。
 
-4、不支持IsolatedComponent组件嵌套场景。
+4. 不支持IsolatedComponent组件嵌套场景。
 
 **体验约束**
 
-1、创建IsolatedComponent组件时，受限worker线程加载Abc布局渲染存在耗时（具体耗时取决于Abc的复杂度），在此等待期间显示IsolatedComponent组件的背景色。
+1. 创建IsolatedComponent组件时，受限worker线程加载Abc布局渲染存在耗时（具体耗时取决于Abc的复杂度），在此等待期间显示IsolatedComponent组件的背景色。
 
-2、主线程与受限worker线程之间布局渲染是异步处理，布局变化、旋转等导致的页面变化存在不同步现象。
+2. 主线程与受限worker线程之间布局渲染是异步处理，布局变化、旋转等导致的页面变化存在不同步现象。
 
-3、主线程与受限worker线程之间事件传递是异步处理，不支持线程之间的事件冒泡，线程之间的UI交互存在事件冲突现象。
+3. 主线程与受限worker线程之间事件传递是异步处理，不支持线程之间的事件冒泡，线程之间的UI交互存在事件冲突现象。
 
 **安全约束**
 
-1、独立Abc通过IsolatedComponent组件嵌入到宿主进程中显示，即表示其Abc内容完全向宿主开放，宿主有权操作独立Abc的内容，因此本组件禁用于安全敏感场景。
+1. 独立Abc通过IsolatedComponent组件嵌入到宿主进程中显示，即表示其Abc内容完全向宿主开放，宿主有权操作独立Abc的内容，因此本组件禁用于安全敏感场景。
 
-2、独立Abc运行在受限worker中可保证相对安全，独立Abc内容不影响主线程。
+2. 独立Abc运行在受限worker中可保证相对安全，独立Abc内容不影响主线程。
 
 ## 子组件
 
@@ -52,7 +52,7 @@ IsolatedComponent用于支持在本页面内嵌入显示独立Abc（方舟字节
 
 IsolatedComponent(options: IsolatedOptions)
 
-创建IsolatedComponent组件，用于显示受限worker运行的Abc。
+创建IsolatedComponent组件，用于显示在受限worker线程中运行的Abc提供的UI。
 
 > **说明：**
 >
@@ -113,7 +113,7 @@ IsolatedComponent加载的Abc（以Ability扩展形式运行）在运行过程�
 本示例展示IsolatedComponent组件的基础使用方式，示例应用的bundleName为"com.example.isolateddemo"，并使用本应用的Abc文件和extension页面作为嵌入展示的内容。构建应用项目后，具体测试步骤如下：
 1. 在DevEco Studio上编译构建生成HAP包，并安装到设备上；
 2. 将本应用构建生成的modules.abc和modules.hap文件通过DevEco Studio或[hdc工具](../../../dfx/hdc.md)上传至应用沙箱路径`/data/app/el2/100/base/com.example.isolateddemo/haps/entry/files`下；
-3. 打开应用页面，点击"verifyAbc"按钮进行校验，校验成功后输出"VerifyAbc successfully"日志；
+3. 打开应用页面，点击"verifyAbc"按钮进行校验，校验成功后输出"VerifyAbc successfully."日志；
 4. 点击"showIsolatedComponent"按钮后，页面显示IsolatedComponent组件，内容为"Hello World"。
 
 - 受限worker脚本ets/workers/OhCardWorker.ets的内容如下：
@@ -216,7 +216,7 @@ IsolatedComponent加载的Abc（以Ability扩展形式运行）在运行过程�
   }
   ```
 
-- 在受限worker线程中运行的入口页面文件ets/pages/extension.ets，需要在`resources/base/profile/main_pages.json`文件中配置该页面路径，其中内容如下：
+- 在受限worker线程中运行的入口页面文件ets/pages/extension.ets（需在`resources/base/profile/main_pages.json`文件中配置该页面路径），该页面文件的内容如下：
   ```ts
   @Entry
   @Component

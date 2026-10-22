@@ -1,7 +1,15 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Node-API支持的数据类型和接口，包括napi_status枚举、napi_value值类型、扩展能力接口等，为开发者提供完整的Node-API数据类型和接口参考。"
+keywords: [Node-API, 数据类型, napi_value, napi_status, 接口参考, 扩展能力, napi_env, 回调函数]
+doctype: guide
+status: active
+---
+
 # Node-API支持的数据类型和接口
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -379,7 +387,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_is_array | 判断给定ArkTS value是否为array。 |
 | napi_set_element | 在给定Object的指定索引处，设置属性值。 |
 | napi_get_element | 获取给定Object指定索引处的元素。 |
-| napi_has_element | 若给定Object的指定索引处拥有属性。 |
+| napi_has_element | 判断给定Object的指定索引处是否存在元素。 |
 | napi_delete_element | 尝试删除给定Object的指定索引处的元素。 |
 | napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypedArray。 |
 | napi_is_typedarray | 判断给定ArkTS value是否为TypedArray。|
@@ -463,8 +471,8 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_throw_range_error | 抛出一个带文本信息的ArkTS RangeError。 |
 | napi_is_error | 判断napi_value是否表示为一个error对象。 |
 | napi_create_error | 创建并获取一个带文本信息的ArkTS Error。 |
-| napi_create_type_error | 创建并获取一个带文本信息的ArkTS Error对象 |
-| napi_create_range_error | 创建并获取一个带文本信息的ArkTS Error对象。 |
+| napi_create_type_error | 创建并获取一个带文本信息的ArkTS TypeError对象。 |
+| napi_create_range_error | 创建并获取一个带文本信息的ArkTS RangeError对象。 |
 | napi_get_and_clear_last_exception | 获取并清除最近一次出现的异常。 |
 | napi_is_exception_pending | 判断是否出现了异常。 |
 | napi_fatal_error | 引发致命错误以立即终止进程。 |
@@ -480,7 +488,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_get_property | 获取给定Object的给定属性。 |
 | napi_has_property | 判断给定对象中是否存在给定属性。 |
 | napi_delete_property | 尝试从给定Object中删除给定key属性。 |
-| napi_has_own_property | 判断给定Object中是否有名为key的own property。 |
+| napi_has_own_property | 与napi_has_property行为一致，判断给定Object中是否存在给定属性。 |
 | napi_set_named_property | 对给定Object设置一个给定名称的属性。 |
 | napi_get_named_property | 获取给定Object中指定名称的属性。 |
 | napi_has_named_property | 判断给定Object中是否有给定名称的属性。 |
@@ -585,6 +593,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_delete_callsite_info | 删除调用点信息句柄，释放关联的缓存资源。 |
 | napi_get_property_with_callsite_info | 使用调用点信息快速获取对象属性值。 |
 | napi_set_property_with_callsite_info | 使用调用点信息快速设置对象属性值。 |
+| napi_get_global_handle_count | 遍历并获取global handle数量。 |
  
 **napi_queue_async_work_with_qos**
 
@@ -944,6 +953,12 @@ napi_status napi_set_property_with_callsite_info(napi_env env,
                                                  napi_value value,
                                                  napi_callsite_info info,
                                                  bool* hit);
+```
+
+**napi_get_global_handle_count**
+
+```c
+napi_status napi_get_global_handle_count(napi_env env, size_t* count);
 ```
 
 ### 其他实用工具

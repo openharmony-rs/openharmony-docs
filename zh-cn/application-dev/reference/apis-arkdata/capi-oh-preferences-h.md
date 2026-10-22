@@ -1,8 +1,8 @@
 # oh_preferences.h
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @ding_dong_dong-->
-<!--Designer: @ding_dong_dong-->
+<!--Owner: @cuile44-->
+<!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -103,7 +103,7 @@ OH_Preferences *OH_Preferences_Open(OH_PreferencesOption *option, int *errCode)
 
 | 类型                                     | 说明                                                         |
 | ---------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) | 当操作成功时，返回指向打开的Preferences对象[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针，失败返回空指针。 |
+| [OH_Preferences](capi-preferences-oh-preferences.md) * | 当操作成功时，返回指向打开的Preferences对象[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针，失败返回空指针。 |
 
 ### OH_Preferences_Close()
 

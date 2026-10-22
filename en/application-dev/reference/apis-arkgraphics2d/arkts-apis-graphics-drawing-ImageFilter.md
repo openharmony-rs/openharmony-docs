@@ -2,12 +2,13 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9d24e15ef82b33c8322a412e3fad5e8314ad7c4e translatedAt=2026-08-24T07:59:09.286Z pushedAt=2026-08-25T06:48:41.500Z -->
 
-Implements an image filter.
+An image filter used to apply various filtering effects to images. It supports creating multiple types of image filters, such as blur, color blending, cascade combination, offset, and shader-based filters.
 
 > **NOTE**
 >
@@ -37,8 +38,8 @@ Creates an image filter with a given blur effect.
 
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| sigmaX | number | Yes  | Standard deviation of the Gaussian blur along the X axis. The value must be a floating point number greater than 0.|
-| sigmaY | number | Yes  | Standard deviation of the Gaussian blur along the Y axis. The value must be a floating point number greater than 0.|
+| sigmaX | number | Yes | Standard deviation of the Gaussian blur along the x-axis. The value must be greater than 0. This parameter is a floating-point number, in physical pixels (px). |
+| sigmaY | number | Yes | Standard deviation of the Gaussian blur along the y-axis. The value must be greater than 0. This parameter is a floating-point number, in physical pixels (px). |
 | tileMode | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12)| Yes  | Tile mode to apply to the edges.|
 | imageFilter | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | No  | Filter to which the image filter will be applied. The default value is null, indicating that the image filter is directly applied to the original image.|
 
@@ -46,7 +47,7 @@ Creates an image filter with a given blur effect.
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Image filter created.|
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Returns the created blur image filter. |
 
 **Error codes**
 
@@ -54,7 +55,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -63,11 +64,12 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let imgFilter = drawing.ImageFilter.createBlurImageFilter(5, 10, drawing.TileMode.CLAMP);
 ```
+
 ## createFromImage<sup>20+</sup>
 
 static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null, dstRect?: common2D.Rect | null): ImageFilter
 
-Creates an image filter from a given image. You are advised not to use the function for the canvas of the capture type because it affects the performance.
+Creates an image filter based on a given image. This API is not recommended for recording-type canvases (that is, Canvas objects used to record drawing commands instead of rendering directly), as it affects performance.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -75,20 +77,20 @@ Creates an image filter from a given image. You are advised not to use the funct
 
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes  | Image object.|
-| srcRect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | No  | (Optional) Pixel area of the image to be applied to the filter. This parameter is left empty by default, which means that the entire **PixelMap** area is applied.|
-| dstRect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | No  | (Optional) Area to be rendered. This parameter is left empty by default, which means that the value is the same as that of **srcRect**.|
+| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes   | Image object. |
+| srcRect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | No   | Optional parameter, which defaults to null. Pixel region of the image to be used by this filter. If null, the entire region of the pixelmap is used. |
+| dstRect      | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null           | No   | Optional parameter, which defaults to null. Region to be rendered. If null, it is the same as srcRect. |
 
 **Returns**
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Image filter created.|
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Returns an image filter created based on an image. |
 
 **Example**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
@@ -102,16 +104,16 @@ class DrawingRenderNode extends RenderNode {
     const colorData = new Uint8Array(color);
     for (let i = 0; i < colorData.length; i += 4) {
       colorData[i] = 255;
-      colorData[i+1] = 156;
-      colorData[i+2] = 0;
-      colorData[i+3] = 255;
+      colorData[i + 1] = 156;
+      colorData[i + 2] = 0;
+      colorData[i + 3] = 255;
     }
 
     let opts: image.InitializationOptions = {
       editable: true,
       pixelFormat: 3,
       size: { height, width }
-    }
+    };
 
     let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
     let srcRect: common2D.Rect = {
@@ -132,6 +134,7 @@ class DrawingRenderNode extends RenderNode {
   }
 }
 ```
+
 ## createBlendImageFilter<sup>20+</sup>
 
 static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foreground: ImageFilter): ImageFilter
@@ -152,7 +155,7 @@ Creates a filter by blending two existing filters in a certain way.
 
 | Type                 | Description           |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Image filter created.|
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Returns an image filter obtained by overlaying images in the specified blend mode. |
 
 **Error codes**
 
@@ -175,11 +178,12 @@ let y = 30.0;
 let offsetFilter2 = drawing.ImageFilter.createOffsetImageFilter(x, y, null);
 let blendImageFilter = drawing.ImageFilter.createBlendImageFilter(drawing.BlendMode.SRC_IN, offsetFilter1, offsetFilter2);
 ```
+
 ## createComposeImageFilter<sup>20+</sup>
 
 static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter
 
-Cascades two image filters to create a new image filter. The first filter's output becomes the second filter's input. The second filter then processes this input to produce the final result.
+Cascades two image filters to generate a new image filter. During cascading, the output of the first-stage filter is used as the input of the second-stage filter, and the final filtering result is output after processing by the second-stage filter.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -194,7 +198,7 @@ Cascades two image filters to create a new image filter. The first filter's outp
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Image filter created.|
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Returns the cascaded image filter. |
 
 **Example**
 
@@ -214,11 +218,12 @@ let redRemovalFilter = drawing.ColorFilter.createMatrixColorFilter(colorMatrix);
 let colorFilter = drawing.ImageFilter.createFromColorFilter(redRemovalFilter, null);
 let composedImageFilter = drawing.ImageFilter.createComposeImageFilter(colorFilter, blurFilter);
 ```
+
 ## createFromColorFilter<sup>12+</sup>
 
 static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter | null): ImageFilter
 
-Creates an image filter object with a given color filter effect.
+Creates an image filter that applies the specified color filter to the input image filter.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -233,7 +238,7 @@ Creates an image filter object with a given color filter effect.
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Image filter created.|
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Returns an image filter with the color filter overlaid. |
 
 **Error codes**
 
@@ -252,6 +257,7 @@ let imgFilter = drawing.ImageFilter.createBlurImageFilter(5, 10, drawing.TileMod
 let colorFilter = drawing.ColorFilter.createSRGBGammaToLinear();
 let imgFilter1 = drawing.ImageFilter.createFromColorFilter(colorFilter, imgFilter);
 ```
+
 ## createOffsetImageFilter<sup>20+</sup>
 
 static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | null): ImageFilter
@@ -264,15 +270,15 @@ Creates an offset filter to translate the input filter based on the specified ve
 
 | Name         | Type   | Mandatory| Description                                                       |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| dx | number | Yes  | Horizontal translation distance. The value is a floating point number.|
-| dy | number | Yes  | Vertical translation distance. The value is a floating point number.|
-| input | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | No  | Filter to be translated. This parameter is left empty by default, which means that the drawing result without the filtering effect is translated.|
+| dx | number | Yes | Horizontal translation distance. This parameter is a floating-point number, in physical pixels (px). |
+| dy | number | Yes | Vertical translation distance. This parameter is a floating-point number, in physical pixels (px). |
+| input | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | No | Filter to be translated. The default value is null, in which case the drawing result without any filter effect is translated. |
 
 **Returns**
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Image filter created.|
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Returns the offset image filter. |
 
 **Example**
 
@@ -302,7 +308,7 @@ Creates an **ImageFilter** object based on a shader.
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Image filter created.|
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | Returns an image filter created based on a shader. |
 
 **Example**
 

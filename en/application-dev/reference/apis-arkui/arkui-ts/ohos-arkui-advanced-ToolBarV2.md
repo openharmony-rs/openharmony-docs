@@ -17,7 +17,7 @@ This component is implemented based on [state management (V2)](../../../ui/state
 >
 > - This component can be used only in the stage model.
 >
-> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **ToolBarV2**, the compilation toolchain will generate an additional node __Common__ and attach the universal attributes or universal events to __Common__, rather than directly applying them to **ToolBarV2** itself. This may cause the universal attributes or universal events set by the developer to not take effect or behave unexpectedly. Therefore, setting universal attributes and universal events for **ToolBarV2** is not recommended.
+> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **ToolBarV2**, the compilation toolchain will generate an additional node \_\_Common\_\_ and attach the universal attributes or universal events to \_\_Common\_\_, rather than directly applying them to **ToolBarV2** itself. This may cause the universal attributes or universal events set by the developer to not take effect or behave unexpectedly. Therefore, setting universal attributes and universal events for **ToolBarV2** is not recommended.
 >
 > - When the system switches between light and dark modes, the toolbar background color does not automatically follow the switch.
 

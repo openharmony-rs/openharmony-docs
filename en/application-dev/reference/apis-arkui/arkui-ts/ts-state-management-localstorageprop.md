@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=627767fa3527b3e4ea03a35d3df7c7dd0cac695b translatedAt=2026-09-02T11:21:04.037Z pushedAt=2026-09-03T01:27:00.117Z -->
 
-**@LocalStorageProp** is used in state management V1 to establish unidirectional data synchronization with the property corresponding to the specified key in LocalStorage. After the establishment, changes to the property value in LocalStorage will be synchronized to the variable decorated with **@LocalStorageProp**, but changes to the variable decorated with **@LocalStorageProp** will not be synchronized back to LocalStorage. This is applicable to scenarios where LocalStorage needs to be shared among multiple components and only unidirectional data flow is required, avoiding unnecessary data writeback.
+**\@LocalStorageProp** is used in [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1) to establish unidirectional data synchronization with the property corresponding to the specified key in [LocalStorage](./ts-state-management.md#localstorage9). After the establishment, changes to the property value in LocalStorage will be synchronized to the variable decorated with **\@LocalStorageProp**, but changes to the variable decorated with **\@LocalStorageProp** will not be synchronized back to LocalStorage. This is applicable to scenarios where LocalStorage needs to be shared among multiple components and only unidirectional data flow is required, avoiding unnecessary data writeback.
 
 For details, see [LocalStorage: Storing Page-Level UI State](../../../ui/state-management/arkts-localstorage.md).
 
@@ -78,3 +79,4 @@ struct Child {
   }
 }
 ```
+

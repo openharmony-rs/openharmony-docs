@@ -27,7 +27,7 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
 
 ### 创建外部字符串
 
-cpp部分代码
+cpp部分代码：
 
 ```cpp
 #include <cstring>
@@ -69,7 +69,7 @@ static JSVM_CallbackStruct param[] = {
 
 static JSVM_CallbackStruct *method = param;
 
-// wrapperObject方法别名，供JS调用
+// testExternalString方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
     {"testExternalString", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };

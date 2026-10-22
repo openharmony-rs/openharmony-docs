@@ -1,4 +1,4 @@
-# @ohos.enterprise.accountManager（账号管理）
+# @ohos.enterprise.accountManager (账号管理)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -28,13 +28,15 @@ disallowOsAccountAddition(admin: Want, disallow: boolean, accountId?: number): v
 
 禁止用户添加账号。调用成功后，系统将禁止指定用户或所有用户添加新账号。适用于企业设备管理场景，如防止员工随意创建本地账号、加强设备安全管理等。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -198,14 +200,14 @@ addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountType): Pro
 > **说明：**
 > 
 > 创建账号的流程比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -259,6 +261,10 @@ setDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountIn
 
 设置域账号策略。
 
+> **说明：**
+>
+> 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -266,8 +272,6 @@ setDomainAccountPolicy(admin: Want, domainAccountInfo: osAccount.DomainAccountIn
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -306,7 +310,8 @@ async function setDomainAccountPolicy() {
     // 需根据实际情况进行替换
     authenticationValidityPeriod: 300,
     passwordValidityPeriod: 420,
-    passwordExpirationNotification: 60
+    passwordExpirationNotification: 60,
+    supportUKeyAuthentication: true
   };
   // 设置全局域账号策略
   let accountInfo: osAccount.DomainAccountInfo = {
@@ -448,6 +453,7 @@ async function getDomainAccountPolicy() {
 | authenticationValidityPeriod   | number | 否   | 是   |表示域账号认证Token的有效期（单位：s），用于控制用户在Token有效期内无需重复认证即可访问系统资源。取值范围是[-1, 2147483647]。有效期起始时间为最后一次域账号的认证时间点，如登录、锁屏后解锁等。<br/>默认值为-1，表示Token永久有效。取值为0，表示Token立即失效。Token过期/失效后，用户进入系统时必须进行域账号认证，验证域账号和密码。 |
 | passwordValidityPeriod         | number | 否   | 是   |表示域账号密码有效期（单位：s），用于用户定期修改密码以提升账号安全性。取值范围是[-1, 2147483647]，有效期起始时间为设备侧最后一次修改密码的时间点。<br/>默认值为-1，表示域账号密码永久有效。 |
 | passwordExpirationNotification | number | 否   | 是   |表示域账号密码过期前提示时间（单位：s），取值范围是[0, 2147483647]。<br/>默认值为0，表示域账号密码过期不提示。<br/>**说明：**passwordExpirationNotification需与passwordValidityPeriod配合使用，当系统时间大于或等于（设备侧最后一次修改域账号密码时间 + passwordValidityPeriod - passwordExpirationNotification）时，会发页面通知提示密码即将过期。 |
+| supportUKeyAuthentication | boolean | 否   | 是   |域账号是否支持USB Key认证。<br/>设置为true，表示域账号支持USB Key认证，若域服务器支持USB Key认证，系统会自动添加USB Key凭据作为系统凭据，此时锁屏界面的系统凭据列表中会出现USB Key选项，可以使用USB Key登录解锁设备；设置为false，表示域账号不支持USB Key认证，系统不会自动添加USB Key凭据作为系统凭据，此时锁屏界面的系统凭据列表中不会出现USB Key选项，无法使用USB Key登录解锁设备。<br/>默认值为false。<br>**起始版本：** 26.0.1 |
 
 ## accountManager.createNormalOsAccount
 
@@ -500,8 +506,7 @@ createNormalOsAccount(admin: Want, name: string): Promise&lt;osAccount.OsAccount
 
 ```ts
 import { accountManager } from '@kit.MDMKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError, osAccount } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -564,8 +569,7 @@ removeOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
 
 ```ts
 import { accountManager } from '@kit.MDMKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError, osAccount } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -633,8 +637,7 @@ activateOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
 
 ```ts
 import { accountManager } from '@kit.MDMKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError, osAccount } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {

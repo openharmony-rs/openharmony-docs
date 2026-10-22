@@ -27,7 +27,7 @@ import { overlay } from '@kit.AbilityKit';
 
 setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise\<void>
 
-设置当前应用中overlay特征模块的禁用启用状态。使用Promise异步回调。
+设置当前应用中overlay特征模块的禁用启用状态。使用Promise异步回调。接口调用失败时可能返回null，需校验返回值后使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -131,7 +131,7 @@ try {
 
 getOverlayModuleInfo(moduleName: string): Promise\<OverlayModuleInfo>
 
-获取当前应用中overlay特征模块的OverlayModuleInfo信息。使用Promise异步回调。
+获取当前应用中overlay特征模块的OverlayModuleInfo信息。使用Promise异步回调。接口调用失败时可能返回null，需校验返回值后使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -231,7 +231,7 @@ try {
 
 getTargetOverlayModuleInfos(targetModuleName: string): Promise\<Array\<OverlayModuleInfo>>
 
-获取指定的目标module所关联的OverlayModuleInfo。overlay特征的module一般是为设备上存在的非overlay特征的module提供覆盖的资源文件，其中非overlay特征的module被称作目标module。使用Promise异步回调。
+获取指定的目标module所关联的OverlayModuleInfo。overlay特征的module一般是为设备上存在的非overlay特征的module提供覆盖的资源文件，其中非overlay特征的module被称作目标module。使用Promise异步回调。接口调用失败时可能返回null，需校验返回值后使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Overlay
 

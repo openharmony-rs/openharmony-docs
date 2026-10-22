@@ -3,10 +3,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yzkp-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=83eb20b2da17b66d3089c14abb21986b856a3985 translatedAt=2026-09-03T10:47:47.817Z pushedAt=2026-09-05T10:47:30.481Z -->
 
-The module provides capabilities related to startup tasks in [AppStartup](../../application-models/app-startup.md).
+This module provides capabilities related to the [application startup framework](../../application-models/app-startup.md) tasks. Developers can inherit from StartupTask to create a startup task, execute initialization logic through init, and sense the completion of dependent tasks through onDependencyCompleted.
 
 > **NOTE**
 >
@@ -30,7 +31,11 @@ Provides capabilities related to startup tasks. It is decorated by [@Sendable](.
 
 onDependencyCompleted?(dependency: string, result: Object): void
 
-Called when the dependent startup task is complete.
+Called when the dependent startup task is complete. Developers can process the execution result of the dependent task in this method.
+
+> **NOTE**
+>
+> Triggered once each time a dependent task is complete. This method is called before the [init](#init) method and can be used to process the execution result of a single dependent task. The init method is called once after all dependent tasks are complete.
 
 **System capability**: SystemCapability.Ability.AppStartup
 
@@ -84,7 +89,7 @@ Called when all the dependent startup tasks are complete. You can initialize the
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<Object \| void\> | Promise used to return the execution result.|
+| Promise\<Object \| void\> | Promise used to return the execution result object of the startup task or void. |
 
 **Example**
 
@@ -101,7 +106,7 @@ export default class StartupTask_001 extends StartupTask {
     hilog.info(0x0000, 'testTag', 'StartupTask_001 init.');
     // ...
     
-    return "StartupTask_001";
+    return 'StartupTask_001';
   }
 
   onDependencyCompleted(dependency: string, result: Object): void {

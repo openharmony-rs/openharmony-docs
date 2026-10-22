@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=e4860fc95c8d8b95b77255afd3be962b586518ba translatedAt=2026-08-14T10:25:19.170Z pushedAt=2026-08-17T08:57:35.019Z -->
+<!-- md-trans-meta sourceCommit=8b53200191b48fe20d895cd121b4b62caf228566 translatedAt=2026-09-23T01:41:22.570Z pushedAt=2026-09-24T06:00:14.158Z -->
 
 ```c
 typedef struct OH_TrafficFilter_PortMatch {...} OH_TrafficFilter_PortMatch
@@ -28,6 +28,8 @@ Defines the port match condition.
 
 | Name | Description |
 | -- | -- |
-| [OH_TrafficFilter_PortMatchType](capi-net-trafficfilter-type-h.md#oh_trafficfilter_portmatchtype) type | Match type.<br>**Since:** 26.0.0 |
-| bool invert | Whether to invert the match result.<br>**Since:** 26.0.0 |
-| union | Match rule.<br>**Since:** 26.0.0 |
+| [OH_TrafficFilter_PortMatchType](capi-net-trafficfilter-type-h.md#oh_trafficfilter_portmatchtype) type | Match type. |
+| bool invert | Whether to invert the match result. The value true means to invert the match result, and false means the opposite. |
+| union value | Match rule. (uint16_t single, [OH_TrafficFilter_PortRange](capi-trafficfilter-oh-trafficfilter-portrange.md) range, [OH_TrafficFilter_PortMulti](capi-trafficfilter-oh-trafficfilter-portmulti.md) multi) |
+
+

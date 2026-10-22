@@ -1,7 +1,7 @@
 # 拖拽事件错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -72,7 +72,7 @@ Operation failed.
 
 **错误描述**
 
-如果开发者未在拖拽释放后的数据加载过程中调用[cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15)接口，会抛出此错误码。该错误码为string类型。
+如果开发者在非拖拽释放后的数据加载过程中调用[cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15)接口，会抛出此错误码。该错误码为string类型。
 
 **可能原因**
 
@@ -80,4 +80,4 @@ Operation failed.
 
 **处理步骤**
 
-在数据加载过程中调用[cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15)接口。
+在拖拽释放后的数据加载过程中调用[cancelDataLoading](./arkts-apis-uicontext-dragcontroller.md#canceldataloading15)接口。

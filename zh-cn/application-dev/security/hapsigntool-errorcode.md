@@ -168,7 +168,7 @@ Check param failed.
 
 **可能原因**
 
-签名过程未输入必须的参数（如inFile、keyAlias等）。
+签名过程未输入必需的参数（如inFile、keyAlias等）。
 
 **处理步骤**
 

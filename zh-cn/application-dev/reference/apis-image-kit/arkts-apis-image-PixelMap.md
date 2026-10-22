@@ -256,7 +256,7 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -632,7 +632,7 @@ readPixelsSync(area: PositionArea): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1057,7 +1057,7 @@ writePixelsSync(area: PositionArea): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1331,7 +1331,7 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1444,7 +1444,7 @@ getImageInfoSync(): ImageInfo
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1771,7 +1771,7 @@ opacitySync(rate: number): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -2007,7 +2007,7 @@ createAlphaPixelmapSync(): PixelMap
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -2271,7 +2271,7 @@ scaleSync(x: number, y: number): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -2329,7 +2329,7 @@ scale(x: number, y: number, level: AntiAliasingLevel): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -2377,7 +2377,7 @@ scaleSync(x: number, y: number, level: AntiAliasingLevel): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -2430,7 +2430,7 @@ createScaledPixelMap(x: number, y: number, level?: AntiAliasingLevel): Promise\<
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -2481,7 +2481,7 @@ createScaledPixelMapSync(x: number, y: number, level?: AntiAliasingLevel): Pixel
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -2649,7 +2649,7 @@ clone(): Promise\<PixelMap>
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 501 | Resource unavailable. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
 | 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
@@ -2693,7 +2693,7 @@ cloneSync(): PixelMap
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 501 | Resource unavailable. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | 62980102 | Image malloc abnormal. This status code is thrown when an error occurs during the process of copying data. |
 | 62980103 | Image YUV And ASTC types are not supported. |
 | 62980104 | Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap. |
@@ -2955,7 +2955,7 @@ translateSync(x: number, y: number): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -3216,7 +3216,7 @@ rotateSync(angle: number): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -3464,7 +3464,7 @@ flipSync(horizontal: boolean, vertical: boolean): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -3722,7 +3722,7 @@ cropSync(region: Region): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -3829,6 +3829,11 @@ applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager, callback:
 
 根据输入的目标色彩空间对图像的像素颜色进行色彩空间转换。使用callback异步回调。
 
+> **说明：**
+>
+> - 本接口仅执行色彩空间之间的数学转换，不包含HDR到SDR的色调映射。当源图像为HDR色彩空间（传输函数为HLG或PQ，例如BT2020_HLG、BT2020_PQ、P3_HLG、P3_PQ等）且目标为SDR色彩空间（传输函数为sRGB gamma，例如SRGB、DISPLAY_P3、DCI_P3、ADOBE_RGB_1998等）时，直接调用本接口会导致图像整体偏亮、泛白、高光细节丢失。
+> - 从API版本12开始，如果要将HDR色彩空间转换为SDR色彩空间，请先调用[toSdr](#tosdr12)完成HDR到SDR的转换和色调映射，再按需调用本接口在SDR色彩空间之间转换。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **参数：**
@@ -3873,6 +3878,11 @@ function applyColorSpace(pixelMap: image.PixelMap) {
 applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\<void>
 
 根据输入的目标色彩空间对图像的像素颜色进行色彩空间转换。使用Promise异步回调。
+
+> **说明：**
+>
+> - 本接口仅执行色彩空间之间的数学转换，不包含HDR到SDR的色调映射。当源图像为HDR色彩空间（传输函数为HLG或PQ，例如BT2020_HLG、BT2020_PQ、P3_HLG、P3_PQ等）且目标为SDR色彩空间（传输函数为sRGB gamma，例如SRGB、DISPLAY_P3、DCI_P3、ADOBE_RGB_1998等）时，直接调用本接口会导致图像整体偏亮、泛白、高光细节丢失。
+> - 从API版本12开始，如果要将HDR色彩空间转换为SDR色彩空间，请先调用[toSdr](#tosdr12)完成HDR到SDR的转换和色调映射，再按需调用本接口在SDR色彩空间之间转换。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -3996,7 +4006,7 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 401| Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.          |
-| 501 | Resource unavailable.          |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | 62980173 | The DMA memory does not exist.          |
 | 62980302 | Memory copy failed. Possibly caused by invalid metadata value.          |
 
@@ -4060,7 +4070,7 @@ setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 401|  Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 501 | Resource unavailable.          |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | 62980173 | The DMA memory does not exist.          |
 | 62980302 | Memory copy failed. Possibly caused by invalid metadata value.         |
 
@@ -4108,7 +4118,7 @@ setTransferDetached(detached: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -4490,7 +4500,7 @@ setMemoryNameSync(name: string): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 401 | Parameter error. Possible causes: 1.The length of the input parameter is too long. 2.Parameter verification failed. |
-| 501 | Resource unavailable. |
+| 501 | The resource is unavailable as it is occupied by another thread. |
 | 62980286 | Memory format not supported. |
 
 **示例：**

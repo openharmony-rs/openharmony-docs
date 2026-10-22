@@ -27,7 +27,7 @@ typedef struct OH_TrafficFilter_IPMulti {...} OH_TrafficFilter_IPMulti
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t ipCount | 数组中的IP地址数量。<br>**起始版本：** 26.0.0 |
-| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) ips[OH_TRAFFICFILTER_MAX_MULTI_IP_COUNT] | IP地址数组。<br>**起始版本：** 26.0.0 |
+| uint32_t ipCount | 数组中的IP地址数量。 |
+| [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md) ips[OH_TRAFFICFILTER_MAX_MULTI_IP_COUNT] | IP地址数组。 |
 
 

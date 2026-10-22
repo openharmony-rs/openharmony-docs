@@ -2,7 +2,7 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
+<!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -79,9 +79,9 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute, callback: Asy
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 801      | Capability not supported.                                    |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                                    |
 | 14600101 | Device operation failed.                                     |
 
 **示例**：
@@ -240,9 +240,9 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Promise&lt;v
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 801      | Capability not supported.                                    |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                                    |
 | 14600101 | Device operation failed.                                     |
 
 **示例**：
@@ -384,8 +384,8 @@ stopMode需与启动振动时的VibrateEffect类型对应：VIBRATOR_STOP_MODE_T
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -503,8 +503,8 @@ stopVibration(stopMode: VibratorStopMode): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -610,7 +610,7 @@ stopVibration(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**：
 
@@ -660,7 +660,7 @@ stopVibration(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**：
 
@@ -712,7 +712,7 @@ stopVibration(param?: VibratorInfoParam): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 14600101 | Device operation failed. |
 
 **示例**：
@@ -769,7 +769,7 @@ stopVibrationSync(): void
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
-| 201      | Permission denied.       |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.       |
 | 14600101 | Device operation failed. |
 
 **示例**：
@@ -812,8 +812,8 @@ isSupportEffect(effectId: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -886,8 +886,8 @@ isSupportEffect(effectId: string): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -955,7 +955,7 @@ isSupportEffectSync(effectId: string): boolean
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14600101 | Device operation failed.                                     |
 
 **示例**：
@@ -969,6 +969,8 @@ isSupportEffectSync(effectId: string): boolean
      // 查询是否支持预设'haptic.notice.success'
      let ret = vibrator.isSupportEffectSync('haptic.notice.success');
      console.info(`The query result is ${ret}`);
+     let imeRet = vibrator.isSupportEffectSync(vibrator.HapticFeedback.EFFECT_IME_STRENGTH1);
+     console.info(`IME strength1 supported: ${imeRet}`);
    } catch (error) {
      let e: BusinessError = error as BusinessError;
      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
@@ -1030,7 +1032,7 @@ getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
 
 查询一个或所有设备的马达信息列表。适用于在触发振动前查询设备马达能力和多马达设备的马达ID，以便选择合适的马达触发振动。
 
-不传param时查询所有设备马达信息；传入VibratorInfoParam可查询指定设备或马达。返回VibratorInfo数组，包含deviceId、vibratorId、deviceName、isHdHapticSupported、isLocalVibrator等属性，可用于startVibration (#vibratorstartvibration9)和stopVibration (#vibratorstopvibration19)中指定马达和设备。
+不传param时查询所有设备马达信息；传入VibratorInfoParam可查询指定设备或马达。返回VibratorInfo数组，包含deviceId、vibratorId、deviceName、isHdHapticSupported、isSupportIntensity、isLocalVibrator等属性，可用于startVibration (#vibratorstartvibration9)和stopVibration (#vibratorstopvibration19)中指定马达和设备。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1044,7 +1046,7 @@ getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
 
 | 类型                            | 说明                                                      |
 |-------------------------------| --------------------------------------------------------- |
-| Array&lt;[VibratorInfo](#vibratorinfo19)&gt; | 马达设备的信息数组。每个元素包含deviceId、vibratorId、deviceName、isHdHapticSupported、isLocalVibrator等属性，可用于选择合适的马达触发振动或判断设备振动能力。 |
+| Array&lt;[VibratorInfo](#vibratorinfo19)&gt; | 马达设备的信息数组。每个元素包含deviceId、vibratorId、deviceName、isHdHapticSupported、isSupportIntensity、isLocalVibrator等属性，可用于选择合适的马达触发振动或判断设备振动能力。 |
 
 
 **示例**：
@@ -1056,6 +1058,9 @@ getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
    try {
      const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync({ deviceId: 1, vibratorId: 3 });
      console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
+     if (vibratorInfoList.length > 0 && vibratorInfoList[0].isSupportIntensity) {
+       console.info('intensity adjustment is supported');
+     }
    } catch (error) {
      let e: BusinessError = error as BusinessError;
      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
@@ -1071,7 +1076,7 @@ on(type: 'vibratorStateChange', callback: Callback&lt;VibratorStatusEvent&gt;): 
 
 当开发者需要实时感知马达设备的上下线状态变化时使用此接口。适用于分布式多设备场景中动态获取马达设备信息，以便在马达上线时及时触发振动或在下线时停止振动。注册成功后，当马达设备上线或下线时，系统将回调VibratorStatusEvent对象，包含设备ID、马达数量、上下线状态等信息。回调中获取的deviceId可用于[startVibration](#vibratorstartvibration9)和[stopVibration](#vibratorstopvibration19)等接口指定目标设备。
 
-注册回调后，需在合适的时机调用[vibrator.off](#vibratoroff19)注销回调，避免内存泄露。同一type重复注册同一callback不会覆盖，需先off再on。
+注册回调后，需在合适的时机调用[vibrator.off](#vibratoroff19)注销回调，避免内存泄漏。同一type重复注册同一callback不会覆盖，需先off再on。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1215,6 +1220,7 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 | vibratorId          | number  | 否  | 否  | 马达ID。可用于[startVibration](#vibratorstartvibration9)和[stopVibration](#vibratorstopvibration19)等接口指定目标马达。     |
 | deviceName          | string  | 否  | 否  | 设备名称。     |
 | isHdHapticSupported | boolean | 否  | 否  | 是否支持高清振动。true表示支持高清振动，可使用VibrateFromFile和VibrateFromPattern类型触发振动；false表示不支持，使用自定义振动类型可能效果不佳。 |
+| isSupportIntensity | boolean | 否  | 是  | 是否支持振动强度调节。true表示支持振动强度调节，false表示不支持振动强度调节。默认值：false。<br>**起始版本：** 26.2.0 |
 | isLocalVibrator     | boolean | 否  | 否  | 是否为本地设备。true表示本地设备，可直接触发振动；false表示远程设备，需在分布式场景下使用。 |
 
 
@@ -1297,7 +1303,7 @@ addContinuousEvent(time: number, duration: number, options?: ContinuousParam): V
 
 | 错误码ID | 错误信息         |
 | -------- | ---------------- |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1362,7 +1368,7 @@ addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilde
 
 | 错误码ID | 错误信息         |
 | -------- | ---------------- |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1473,6 +1479,11 @@ build(): VibratorPattern;
 | EFFECT_NOTICE_SUCCESS<sup>18+</sup> | 'haptic.notice.success' | 表达成功通知的振动效果。适用于操作成功提醒场景。     |
 | EFFECT_NOTICE_FAILURE<sup>18+</sup> | 'haptic.notice.fail'    | 表达失败通知的振动效果。适用于操作失败提醒场景。     |
 | EFFECT_NOTICE_WARNING<sup>18+</sup> | 'haptic.notice.warning' | 表达警告通知的振动效果。适用于风险警告提醒场景。     |
+| EFFECT_IME_STRENGTH1 | 'haptic.grade.normal.strength1' | 输入法键盘的振动效果。强度为1（最小强度）。<br>**起始版本：** 26.2.0 |
+| EFFECT_IME_STRENGTH2 | 'haptic.grade.normal.strength2' | 输入法键盘的振动效果。强度为2。<br>**起始版本：** 26.2.0 |
+| EFFECT_IME_STRENGTH3 | 'haptic.grade.normal.strength3' | 输入法键盘的振动效果。强度为3（中等强度）。<br>**起始版本：** 26.2.0 |
+| EFFECT_IME_STRENGTH4 | 'haptic.grade.normal.strength4' | 输入法键盘的振动效果。强度为4。<br>**起始版本：** 26.2.0 |
+| EFFECT_IME_STRENGTH5 | 'haptic.grade.normal.strength5' | 输入法键盘的振动效果。强度为5（最大强度）。<br>**起始版本：** 26.2.0 |
 
 ## VibratorStopMode
 
@@ -1544,7 +1555,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 自定义振动配置文件的描述符，必须确认资源文件可用，其参数可通过[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen)从沙箱路径获取或者通过[getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9)从HAP资源获取。使用场景：振动序列被存储在一个文件中，需要根据偏移量和长度进行振动，振动序列存储格式，请参考[振动效果说明](../../device/sensor/vibrator-guidelines.md#振动效果说明)。
 
 使用时需注意以下问题：
-- 振动结束后建议及时关闭文件描述符，避免资源泄露。使用getRawFd获取的文件描述符需通过closeRawFd关闭，使用fileIo.open获取的需通过fileIo.close关闭。
+- 振动结束后建议及时关闭文件描述符，避免资源泄漏。使用getRawFd获取的文件描述符需通过closeRawFd关闭，使用fileIo.open获取的需通过fileIo.close关闭。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 

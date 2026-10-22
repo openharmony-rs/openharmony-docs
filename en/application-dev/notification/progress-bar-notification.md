@@ -1,23 +1,31 @@
 # Publishing a Progress Notification
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1160b503457fd64270d561fc02b4ca184d668154 translatedAt=2026-09-29T11:13:41.817Z pushedAt=2026-09-30T09:44:07.420Z -->
 
 The progress notification is a commonly used notification type, mainly used to display the progress of an ongoing operation, such as file downloading. When publishing a progress notification through the notification subsystem, you can use the readily available template by specifying the related attributes, such as the template name and template data.
 
-In the [NotificationTemplate](../reference/apis-notification-kit/js-apis-inner-notification-notificationTemplate.md), which only supports the progress type, **data** indicates custom template data.
+Currently, the system template supports only the progress bar template. The `data` parameter in the notification template [NotificationTemplate](../reference/apis-notification-kit/js-apis-inner-notification-notificationTemplate.md) is user-defined data used to display template-related data.
+
+> **NOTE**
+>
+> Starting from API version 26.0.1, for progress notifications in data transfer scenarios such as upload and download, you are advised to use the API [`backgroundTaskManager.updateDataTransferProgress`](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatedatatransferprogress) provided by continuous tasks to update the notification progress, without calling `notificationManager.publish`. Before using this API, apply for a continuous task of the data transfer type. For details about the development guide, see [Continuous Task (ArkTS)](../task-management/continuous-task.md).
+>
+> Compared with calling `notificationManager.publish`, this API offers the following advantages:
+> - Flexibly set the reminder mode for notifications in transfer scenarios: when the progress reaches 100%, you can use the isMute field of [ProgressInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#progressinfo) to choose between silent mode or ringtone plus vibration.
+> - Bound to the continuous task lifecycle: the notification is created when the continuous task is requested and removed when the task is canceled, eliminating the need to maintain the notification ID and cancellation logic separately.
 
 ## Available APIs
 
-[isSupportTemplate()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerissupporttemplate) is used to check whether a specific template is supported. Currently, only the progress bar template is supported.
+[`isSupportTemplate()`](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerissupporttemplate) checks whether a specific notification template is supported. Currently, only the progress bar template is supported.
 
 | Name| Description|
 | -------- | -------- |
-| isSupportTemplate(templateName: string): Promise\<boolean\> | Checks whether a specific template is supported.|
+| isSupportTemplate(templateName: string): Promise\<boolean\> | Checks whether the corresponding notification template is supported. |
 
 
 ## How to Develop

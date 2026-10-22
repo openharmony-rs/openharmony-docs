@@ -1,16 +1,15 @@
 # @ohos.arkui.UIContext (UIContext) (System API)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8277d7ec9ce419d430e3a38530a6357fa719f95c translatedAt=2026-07-29T09:32:24.511Z pushedAt=2026-08-03T10:40:12.049Z -->
+<!-- md-trans-meta sourceCommit=72b6bf3dfcf1f6e95afed9d4636166e890b11e73 translatedAt=2026-08-29T09:38:11.998Z pushedAt=2026-09-01T02:28:21.300Z -->
 
-In the stage model, a window stage or window can use the [loadContent](arkts-apis-window-Window.md#loadcontent9) API to load pages, create a UI instance, and render page content to the associated window. Naturally, UI instances and windows are associated on a one-by-one basis. Some global UI APIs are executed in the context of certain UI instances. When calling these APIs, you must identify the UI context, and consequently UI instance, by tracing the call chain. If these APIs are called on a non-UI page or in some asynchronous callback not bound to the current UI context, the current UI context may fail to be identified, resulting in API execution errors.
+In the stage model, a window stage or window can use the [loadContent](arkts-apis-window-Window.md#loadcontent9) API to load pages, create a UI instance, and render page content to the associated window. Therefore, UI instances and windows are associated on a one-to-one basis. Some global UI APIs are executed in the context of certain UI instances. When calling these APIs, you must identify the UI context, and consequently UI instance, by tracing the call chain. If these APIs are called on a non-UI page or in some asynchronous callback not bound to the current UI context, the current UI context may fail to be identified, resulting in API execution errors.
 
-**UIContext** is used to obtain the context associated with a specific UI instance, allowing you to call context-related UI APIs on the corresponding UI instance. This module provides system capabilities such as component dimming and freezing, keyboard style configuration, resource cache clearing, background luminance sampling, image memory recycling for invisible **Image** components, and component snapshot.
+**UIContext** is used to obtain the context associated with a specific UI instance, allowing you to call context-related UI APIs on the corresponding UI instance. This module provides system capabilities such as component dimming and freezing, keyboard style configuration, resource cache clearing, background luminance sampling, image memory reclamation for invisible **Image** components, and component snapshot.
 
 > **NOTE**
 >
@@ -31,6 +30,7 @@ In the following API examples, you must first use [getUIContext()](arkts-apis-wi
 setDynamicDimming(id: string, value: number): void
 
 Sets the dynamic dimming degree of the component.
+
 
 > **NOTE**
 >
@@ -68,7 +68,6 @@ struct Index {
   }
 }
 ```
-
 ![api-switch-overview](../apis-arkui/figures/dynamicDimming.gif)
 
 ### freezeUINode<sup>18+</sup>
@@ -76,8 +75,6 @@ struct Index {
 freezeUINode(id: string, isFrozen: boolean): void
 
 Sets whether to freeze a specific component by **id** to prevent it from being marked as dirty and triggering layout updates.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -199,8 +196,6 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 
 Sets whether to freeze a specific component by **uniqueId** to prevent it from being marked as dirty and triggering layout updates.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
 **Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
@@ -277,7 +272,7 @@ struct Index {
           const node = this.getUIContext().getFrameNodeById('tab2');
           if (node !== null) {
             const uniqueId = node.getUniqueId();
-            // Set the freeze state of the node to true through uniqueId when the TabContent with id being to tab2 is hidden.
+            // Set the freeze state of the node to true through uniqueId when the TabContent with id being set to tab2 is hidden.
             this.getUIContext().freezeUINode(uniqueId, true);
           }
         })
@@ -463,7 +458,7 @@ Obtains the [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) col
 
 **Example**
 
-For details, see the example of [offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23).
+For details, see the example of [offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange).
 
 ### recycleInvisibleImageMemory<sup>23+</sup>
 
@@ -516,7 +511,6 @@ In the following API examples, you must first use [getComponentSnapshot()](arkts
 Transformation properties such as scaling, translation, and rotation only apply to the child components of the target component. Applying these transformation properties directly to the target component itself has no effect; the snapshot will still display the component as it appears before any transformations are applied.
 
 ### getWithRange<sup>20+</sup>
-
 getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>;
 
 Captures a snapshot of the area between two specified components. This API uses a promise to return the result.
@@ -524,8 +518,6 @@ Captures a snapshot of the area between two specified components. This API uses 
 > **NOTE**
 >
 > The components corresponding to **start** and **end** must belong to the same component tree, and the **start** component must be an ancestor of the **end** component.
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -554,7 +546,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------ | ------- |
 | 202    | The caller is not a system application. |
 | 100001 | Invalid ID detected. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br>Applicable versions: 23+ |
 
 **Example**
 
@@ -631,3 +623,5 @@ struct SnapshotExample {
 ```
 
 ![en-us_image_getWithRange](figures/image-getWithRange.gif)
+
+<!--no_check-->

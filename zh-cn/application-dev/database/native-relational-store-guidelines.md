@@ -28,75 +28,9 @@ RelationalStore提供了一套完整的对本地数据库进行管理的机制�
 
 - 当应用被卸载完成后，设备上的相关数据库文件及临时文件会被自动清除。
 
-## 接口说明
+## 开发步骤
 
 详细的接口说明请参考[RDB](../reference/apis-arkdata/capi-rdb.md)。
-
-| 接口名称 | 描述 |
-| -------- | -------- |
-| OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig() | 创建一个OH_Rdb_ConfigV2实例，并返回指向该实例的指针。使用完毕后需要调用OH_Rdb_DestroyConfig释放内存。 |
-| int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库文件路径。 |
-| int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库名称。 |
-| int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置应用包名。 |
-| int OH_Rdb_SetModuleName(OH_Rdb_ConfigV2 *config, const char *moduleName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置应用模块名。 |
-| int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库安全级别OH_Rdb_SecurityLevel。 |
-| int OH_Rdb_SetEncrypted(OH_Rdb_ConfigV2 *config, bool isEncrypted) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库是否加密。 |
-| int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库安全区域等级Rdb_SecurityArea。 |
-| OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode) | 使用数据库配置OH_Rdb_ConfigV2，获得一个对应的OH_Rdb_Store实例，用来操作关系型数据库。 |
-| OH_Rdb_Execute(OH_Rdb_Store *store, const char *sql) | 执行包含指定参数但不返回值的SQL语句。 |
-| OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBucket) | 向目标表中插入一行数据。 |
-| int OH_Rdb_InsertWithConflictResolution(OH_Rdb_Store *store, const char *table, OH_VBucket *row, Rdb_ConflictResolution resolution, int64_t *rowId) | 向目标表中插入一行数据，支持配置冲突解决策略。 |
-| int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes) | 根据指定条件更新数据库中的数据，支持配置冲突解决策略。 |
-| OH_Rdb_Update(OH_Rdb_Store *store, OH_VBucket *valuesBucket, OH_Predicates *predicates) | 根据OH_Predicates的指定实例对象更新数据库中的数据。 |
-| OH_Rdb_Delete(OH_Rdb_Store *store, OH_Predicates *predicates) | 根据OH_Predicates的指定实例对象从数据库中删除数据。 |
-| int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern) | 设置OH_Predicates以匹配数据类型为字符串且值不类似于指定值的字段。 |
-| int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern) | 设置OH_Predicates以匹配指定字段（数据类型为字符串）且值包含通配符的字段。 |
-| int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern) | 设置OH_Predicates以不匹配指定字段（数据类型为字符串）且值包含通配符的字段。 |
-| OH_Rdb_Query(OH_Rdb_Store *store, OH_Predicates *predicates, const char *const *columnNames, int length) | 根据指定条件查询数据库中的数据。 |
-| OH_Rdb_DeleteStore(const OH_Rdb_Config *config) | 删除数据库。 |
-| OH_VBucket_PutAsset(OH_VBucket *bucket, const char *field, Rdb_Asset *value) | 把Rdb_Asset类型的数据放到指定的OH_VBucket对象中。 |
-| OH_VBucket_PutAssets(OH_VBucket *bucket, const char *field, Rdb_Asset *value, uint32_t count) | 把Rdb_Asset数组类型的数据放到指定的OH_VBucket对象中。 |
-| OH_Rdb_FindModifyTime(OH_Rdb_Store *store, const char *tableName, const char *columnName, OH_VObject *values) | 获取数据库指定表中指定列的数据的最后修改时间。 |
-| OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void) | 创建一个OH_RDB_TransOptions实例，配置事务对象。使用完毕后需要调用OH_RdbTrans_DestroyOptions释放内存。 |
-| OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *columns[], int len) | 根据指定的条件查询数据库中的数据。 |
-| OH_Data_Values *OH_Values_Create(void) | 创建OH_Data_Values实例。使用完毕后需要调用OH_Values_Destroy释放内存。 |
-| int OH_Data_Asset_SetName(Data_Asset *asset, const char *name) | 为资产类型数据设置名称。 |
-| int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri) | 为资产类型数据设置绝对路径。 |
-| int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path) | 为资产类型数据设置应用沙箱里的相对路径。 |
-| int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime) | 为资产类型数据设置创建时间。 |
-| int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime) | 为资产类型数据设置最后修改时间。 |
-| int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size) | 为资产类型数据设置占用空间大小。 |
-| int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status) | 为资产类型数据设置状态码。 |
-| int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length) | 获取资产类型数据的名称。 |
-| int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length) | 获取资产类型数据的绝对路径。 |
-| int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length) | 获取资产类型数据在应用沙箱内的相对路径。 |
-| int OH_Data_Asset_GetCreateTime(Data_Asset *asset, int64_t *createTime) | 获取资产类型数据的创建时间。 |
-| int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime) | 获取资产类型数据的最后修改时间。 |
-| int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size) | 获取资产类型数据的占用空间大小。 |
-| int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status) | 获取资产类型数据的状态码。 |
-| Data_Asset *OH_Data_Asset_CreateOne() | 创建一个资产类型实例。使用完毕后需要调用OH_Data_Asset_DestroyOne释放内存。 |
-| int OH_Data_Asset_DestroyOne(Data_Asset *asset) | 销毁一个资产类型实例并回收内存。 |
-| Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count) | 创建指定数量的资产类型实例。使用完毕后需要调用OH_Data_Asset_DestroyMultiple释放内存。 |
-| int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count) | 销毁指定数量的资产类型实例并回收内存。 |
-| int OH_Rdb_CreateTransaction(OH_Rdb_Store *store, const OH_RDB_TransOptions *options, OH_Rdb_Transaction **trans) | 创建一个相关的OH_Rdb_Transaction实例，开启事务。 |
-| int OH_RdbTransOption_SetType(OH_RDB_TransOptions *options, OH_RDB_TransType type) | 设置事务对象类型。 |
-| int OH_RdbTrans_Insert(OH_Rdb_Transaction *trans, const char *table, const OH_VBucket *row, int64_t *rowId) | 向目标表中插入一行数据。 |
-| int OH_RdbTrans_InsertWithConflictResolution(OH_Rdb_Transaction *trans, const char *table, const OH_VBucket *row, Rdb_ConflictResolution resolution, int64_t *rowId) | 将一行数据插入到目标表中，支持冲突解决。 |
-| int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH_VBucket *row, const OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes) | 根据指定条件更新数据库中的数据，并支持冲突解决。 |
-| int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, int64_t *changes) | 根据OH_Predicates的指定实例对象从数据库中删除数据。 |
-| int OH_Value_Destroy(OH_Data_Value *value) | 销毁OH_Data_Value对象。 |
-| int OH_Values_Destroy(OH_Data_Values *values) | 销毁OH_Data_Values对象。 |
-| int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args, OH_Data_Value **result) | 执行包含指定参数的SQL语句。 |
-| int OH_RdbTrans_Commit(OH_Rdb_Transaction *trans) | 提交事务。 |
-| int OH_RdbTrans_Rollback(OH_Rdb_Transaction *trans) | 回滚事务。 |
-| int OH_RdbTrans_Destroy(OH_Rdb_Transaction *trans) | 销毁OH_Rdb_Transaction实例。 |
-| int OH_Rdb_Attach(OH_Rdb_Store *store, const OH_Rdb_ConfigV2 *config, const char *attachName, int64_t waitTime, size_t *attachedNumber) | 将数据库文件附加到当前连接的数据库。 |
-| int OH_Rdb_Detach(OH_Rdb_Store *store, const char *attachName, int64_t waitTime, size_t *attachedNumber) | 从当前数据库中分离指定的数据库。 |
-| int OH_Rdb_SetCustomDir(OH_Rdb_ConfigV2 *config, const char *customDir) | 设置数据库的自定义目录。 |
-| int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale) | 支持不同语言的排序规则。 |
-| int OH_Rdb_SetPlugins(OH_Rdb_ConfigV2 *config, const char **plugins, int32_t length) | 设置具有特定功能（如全文检索）的动态库。 |
-
-## 开发步骤
 
 **添加动态链接库**
 
@@ -160,7 +94,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     ```
 
-    如果需要设置自定义数据库路径，可在上述代码// ...处调用OH_Rdb_SetCustomDir接口设置。如果需要设置为只读模式打开数据库，可在上述代码// ...处调用OH_Rdb_SetReadOnly接口设置。示例代码如下所示：
+    如果需要设置自定义数据库路径，可在上述代码// ...处调用[OH_Rdb_SetCustomDir()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setcustomdir)接口设置。如果需要设置为只读模式打开数据库，可在上述代码// ...处调用[OH_Rdb_SetReadOnly()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setreadonly)接口设置。示例代码如下所示：
     <!--@[rdb_OH_Rdb_SetCustomDir_and_SetReadOnly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
     ``` C++
@@ -171,7 +105,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_Rdb_SetReadOnly(config, true);
     ```
 
-2. 获取到OH_Rdb_Store后，调用OH_Rdb_Execute接口创建表，并调用OH_Rdb_Insert接口插入数据。示例代码如下所示：
+2. 获取到OH_Rdb_Store后，调用[OH_Rdb_Execute()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_execute)接口创建表，并调用[OH_Rdb_Insert()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_insert)接口插入数据。示例代码如下所示：
 
     <!--@[rdb_OH_Rdb_Execute_create_table](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -215,7 +149,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
 3. 根据谓词指定的实例对象，对数据进行修改或删除。
 
-   调用OH_Rdb_Update方法修改数据，调用OH_Rdb_Delete方法删除数据。示例代码如下所示：
+   调用[OH_Rdb_Update()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_update)接口修改数据，调用[OH_Rdb_Delete()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_delete)接口删除数据。示例代码如下所示：
 
     <!--@[rdb_OH_Rdb_Update_and_UpdateWithConflictResolution](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -288,7 +222,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
 4. 根据谓词指定的查询条件查找数据。
 
-   调用OH_Rdb_Query方法查找数据，返回一个OH_Cursor结果集。示例代码如下所示：
+   调用[OH_Rdb_Query()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_query)接口查找数据，返回一个OH_Cursor结果集。示例代码如下所示：
 
     <!--@[rdb_OH_Rdb_Query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -441,14 +375,14 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     notGlobQueryCursor->destroy(notGlobQueryCursor);
     notGlobPredicates->destroy(notGlobPredicates);
     ```
-   如需指定排序时使用的语言规则，例如zh_CN表示中文，tr_TR表示土耳其语等。可调用OH_Rdb_SetLocale配置相应规则。
+   如需指定排序时使用的语言规则，例如zh_CN表示中文，tr_TR表示土耳其语等。可调用[OH_Rdb_SetLocale()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setlocale)接口配置相应规则。
     <!--@[rdb_OH_Rdb_SetLocale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
     ``` C++
     OH_Rdb_SetLocale(store_, "zh_CN");
     ```
 
-    如需配置fts（Full-Text Search，即全文搜索引擎）动态库，可使用OH_Rdb_SetPlugins接口进行配置。
+    如需配置fts（Full-Text Search，即全文搜索引擎）动态库，可使用[OH_Rdb_SetPlugins()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_setplugins)接口进行配置。
     
     使用约束详见[StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)中pluginLibs配置项。
 
@@ -464,9 +398,9 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     ```
 5. 使用事务对象进行插入、删除或更新数据操作。
 
-   调用OH_RdbTransOption_SetType方法，配置要创建的事务类型，支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
+   调用[OH_RdbTransOption_SetType()](../reference/apis-arkdata/capi-oh-rdb-transaction-h.md#oh_rdbtransoption_settype)接口，配置要创建的事务类型，支持配置的事务类型有DEFERRED、IMMEDIATE和EXCLUSIVE，默认为DEFERRED。
 
-   调用OH_Rdb_CreateTransaction方法创建事务对象，使用该事务对象执行相应事务操作。
+   调用[OH_Rdb_CreateTransaction()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_createtransaction)接口创建事务对象，使用该事务对象执行相应事务操作。
 
     <!--@[rdb_OH_Rdb_CreateTransaction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->    
     
@@ -642,7 +576,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
 6. 附加数据库。
    
-    调用OH_Rdb_Attach将一个数据库文件附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据。
+    调用[OH_Rdb_Attach()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_attach)接口将一个数据库文件附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据。
     
     此API不支持附加加密数据库。
 
@@ -650,7 +584,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     
     attach不能并发调用，可能出现未响应情况，报错14800015，需要重试。
     
-    当不再使用附加数据时，可调用OH_Rdb_Detach分离附加数据库。
+    当不再使用附加数据时，可调用[OH_Rdb_Detach()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_detach)接口分离附加数据库。
 
     <!--@[rdb_OH_Rdb_Attach_and_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
 
@@ -852,7 +786,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     ```
 
-9. 查询数据的最后修改时间。调用OH_Rdb_FindModifyTime查询指定表中指定列的数据的最后修改时间，该接口返回一个有两列数据的OH_Cursor对象，第一列为传入的主键/RowId，第二列为最后修改时间。示例代码如下所示：
+9. 查询数据的最后修改时间。调用[OH_Rdb_FindModifyTime()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_findmodifytime)接口查询指定表中指定列的数据的最后修改时间，该接口返回一个有两列数据的OH_Cursor对象，第一列为传入的主键/RowId，第二列为最后修改时间。示例代码如下所示：
     <!--@[rdb_OH_Rdb_FindModifyTime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
     ``` C++
@@ -876,7 +810,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     ```
 
-10. 删除数据库。调用OH_Rdb_DeleteStoreV2方法，删除数据库及数据库相关文件。示例代码如下：
+10. 删除数据库。调用[OH_Rdb_DeleteStoreV2()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_deletestorev2)接口删除数据库及数据库相关文件。示例代码如下：
     
     <!--@[rdb_OH_Rdb_CloseStore_and_DeleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 

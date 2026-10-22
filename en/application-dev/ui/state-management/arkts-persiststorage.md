@@ -1,14 +1,15 @@
 # PersistentStorage: Persisting UI State
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zzq212050299-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:23:44.817Z pushedAt=2026-07-24T01:48:48.510Z -->
+<!-- md-trans-meta sourceCommit=c4eacd7749f17b808b6e998528fa58a7554f7518 translatedAt=2026-09-21T11:31:18.480Z pushedAt=2026-09-23T09:17:05.823Z -->
+
 
 PersistentStorage is an optional singleton object within an application. Its purpose is to persist selected AppStorage properties so that their values upon application re-start are the same as those upon application closing.
+
 
 PersistentStorage provides capability for persisting the state variables. However, the persistence and UI reading capabilities depend on AppStorage. Before reading this topic, you are advised to read [AppStorage](./arkts-appstorage.md) and [PersistentStorage API reference](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistentstorage).
 
@@ -27,17 +28,11 @@ PersistentStorage is coupled with AppStorage in terms of functions, and errors m
 PersistentStorage accepts the following types and values:
 
 - Primitive types such as number, string, boolean, and enum.
-
 - Objects that can be serialized by **JSON.stringify()** and deserialized by **JSON.parse()**. (Note that object methods cannot be persisted.)
-
 - Map type, available since API version 12. The following changes can be observed: (1) complete Map object reassignment; (2) changes caused by calling **set**, **clear**, or **delete**. All changes are automatically persisted. For details, see [Persisting Variables of the Map Type](#persisting-variables-of-the-map-type).
-
 - Set type, available since API version 12. The following changes can be observed: (1) complete Set object reassignment; (2) changes caused by calling **add**, **clear**, or **delete**. All changes are automatically persisted. For details, see [Persisting Variables of the Set Type](#persisting-variables-of-the-set-type).
-
 - Date type, available since API version 12. The following changes can be observed: (1) complete Date object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. For details, see [Persisting Variables of the Date Type](#persisting-variables-of-the-date-type).
-
 - **undefined** and **null**, available since API version 12.
-
 - Union types, available since API version 12. For details, see [Persisting Union Type Variables](#persisting-union-type-variables).
 
 PersistentStorage does not accept the following types and values:
@@ -66,7 +61,9 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 }
 ```
 
+
 ## When to Use
+
 
 ### Accessing a PersistentStorage-Initialized Property from AppStorage
 
@@ -84,12 +81,12 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
    Alternatively, apply local definition within the component:
 
+
    ```ts
    @StorageLink('aProp') aProp: number = 48;
    ```
 
    The complete code is as follows:
-
    <!-- @[Persistent_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageOneMessageStorage.ets) --> 
 
    ``` TypeScript
@@ -126,47 +123,38 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
    ![persistent-sync-0](figures/persistent-sync-0.png)
 
 - First running after fresh application installation:
-
   1. **persistProp** is called to initialize PersistentStorage. A search for the **aProp** property in PersistentStorage returns no result, because the application has just been installed.
-
   2. A search for the **aProp** property in AppStorage still returns no result.
-
   3. Create the **aProp** property of the number type in AppStorage and initialize it with the value **47**.
-
   4. PersistentStorage writes the **aProp** property and its value **47** to the local device. The value of **aProp** in AppStorage and its subsequent changes are persisted.
-
   5. In the **TestPageOne** component, create the state variable **\@StorageLink('aProp') aProp**, which creates a two-way synchronization with the **aProp** property in AppStorage. During the creation, the search in AppStorage for the **aProp** property is successful, and therefore, the state variable is initialized with the value **47** found in AppStorage.
 
-  **Figure 1** PersistProp initialization process 
+  **Figure 1** persistProp initialization process  
 
   ![en-us_image_0000001553348833](figures/PersistProp-initialization.png)
 
 - After a click event is triggered:
-
   1. The state variable **\@StorageLink('aProp') aProp** is updated, triggering the **Text** component to be re-rendered.
-
   2. The two-way synchronization between the \@StorageLink decorated variable and AppStorage results in the change of the **\@StorageLink('aProp') aProp** being synchronized back to AppStorage.
-
   3. The change of the **aProp** property in AppStorage triggers any other one-way or two-way bound variables to be updated. (In this example, there are no such other variables.)
-
   4. Because the property corresponding to **aProp** has been persisted, the change of the **aProp** property in AppStorage triggers PersistentStorage to write the property and its new value to the device.
 
 - Subsequent application running:
-
   1. **PersistentStorage.persistProp('aProp', 47)** is called. A search for the **aProp** property in PersistentStorage succeeds.
-
   2. The property is added to AppStorage with the value found in PersistentStorage.
-
   3. In the **TestPageOne** component, the value of the @StorageLink decorated **aProp** property is the value written by PersistentStorage to AppStorage, that is, the value stored when the application was closed last time.
+
 
 ### Accessing a Property in AppStorage Before PersistentStorage
 
 This example is an incorrect use. It is incorrect to use the API to access the properties in AppStorage before calling **PersistentStorage.persistProp** or **persistProps**, because such a call sequence will result in loss of the property values used in the previous application run:
 
+
 ```ts
 let aProp = AppStorage.setOrCreate('aProp', 47);
 PersistentStorage.persistProp('aProp', 48);
 ```
+
 
 **AppStorage.setOrCreate('aProp', 47)**: The **aProp** property of the number type is created in AppStorage, and its value is set to the specified default value **47**. **aProp** is a persisted property. Therefore, it is written back to PersistentStorage, and the value stored in PersistentStorage from the previous run is lost.
 
@@ -181,7 +169,6 @@ You can first determine whether to overwrite the value previously saved in Persi
 ``` TypeScript
 const MAX_NUM: number = 50;
 ```
-
 <!-- @[Persistent_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) --> 
 
 ``` TypeScript
@@ -454,8 +441,3 @@ struct PersistedSet {
 ```
 
 ![persistent-sync-4](figures/persistent-sync-4.gif)
-
-
-
-
-

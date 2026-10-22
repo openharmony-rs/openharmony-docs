@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=26f1a11070a0259938fa2e9b40098b1fb904b6e8 translatedAt=2026-07-25T01:58:52.181Z pushedAt=2026-07-25T03:33:23.975Z -->
+<!-- md-trans-meta sourceCommit=fc361649f5966265cb0ed6967b54917e7d96079a translatedAt=2026-08-24T08:41:48.260Z pushedAt=2026-08-25T07:15:59.640Z -->
 
 ```
 typedef struct {...} OH_Drawing_StrutStyle

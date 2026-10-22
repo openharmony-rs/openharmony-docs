@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1e2bfcc9b4f85d9126c23f626a7a73b4bb891227 translatedAt=2026-09-03T10:53:12.261Z pushedAt=2026-09-05T10:47:30.491Z -->
 
 The AbilityManager module provides APIs for obtaining, adding, and modifying ability running information and state information.
 
@@ -40,31 +41,39 @@ Enumerates the ability states.
 
 updateConfiguration(config: Configuration, callback: AsyncCallback\<void>): void
 
-Updates the configuration. This API uses an asynchronous callback to return the result.
+Updates the configuration by passing in the configuration items to be modified. This API uses an asynchronous callback to return the result.
 
 **Permission required**: ohos.permission.UPDATE_CONFIGURATION
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**System API**: This is a system API.
 
 **Parameters**
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | config    | [Configuration](js-apis-application-configuration.md)   | Yes   | New configuration.|
-| callback  | AsyncCallback\<void>                   | Yes   | Callback used to return the result. If the configuration is updated, **err** is undefined; otherwise, **err** is an error object.     |
+| callback  | AsyncCallback\<void>                   | Yes    | Callback invoked when the configuration is updated. If the update succeeds, err is undefined; otherwise, err is an error object.      |
 
 **Example**
 
 ```ts
 import abilityManager from '@ohos.application.abilityManager';
 import { Configuration } from '@ohos.application.Configuration';
+import { BusinessError } from '@ohos.base';
 
 let config: Configuration = {
   language: 'chinese' 
 };
 
-abilityManager.updateConfiguration(config, () => {
-    console.info('------------ updateConfiguration -----------');
+// Update the configuration item.
+abilityManager.updateConfiguration(config, (err: BusinessError) => {
+  if (err) {
+    console.error(`updateConfiguration fail, error code: ${err.code}, error msg: ${err.message}.`);
+    return;
+  }
+  console.info('------------ updateConfiguration success-----------');
 });
 ```
 
@@ -72,7 +81,7 @@ abilityManager.updateConfiguration(config, () => {
 
 updateConfiguration(config: Configuration): Promise\<void>
 
-Updates the configuration. This API uses a promise to return the result.
+Updates the configuration by passing in the configuration items to be modified. This API uses a promise to return the result.
 
 **Permission required**: ohos.permission.UPDATE_CONFIGURATION
 
@@ -90,7 +99,7 @@ Updates the configuration. This API uses a promise to return the result.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | No value is returned on success, which only indicates that the operation is complete; an error object is returned on failure. |
 
 **Example**
 
@@ -103,6 +112,7 @@ let config: Configuration = {
   language: 'chinese' 
 };
 
+// Update the configuration information.
 abilityManager.updateConfiguration(config).then(() => {
   console.info('updateConfiguration success');
 }).catch((err: BusinessError) => {
@@ -134,6 +144,7 @@ Obtains the ability running information. This API uses an asynchronous callback 
 import abilityManager from '@ohos.application.abilityManager';
 import { BusinessError } from '@ohos.base';
 
+// Obtain the Ability runtime information.
 abilityManager.getAbilityRunningInfos((error: BusinessError, data) => {
   if (error) {
     console.error(`GetAbilityRunningInfos failed, error code: ${error.code}, error msg: ${error.message}.`);
@@ -159,7 +170,7 @@ Obtains the ability running information. This API uses a promise to return the r
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise used to return the ability running information.|
+| Promise\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | Promise object. Returns an array of Ability runtime-related information on success; returns an error object on failure. |
 
 **Example**
 
@@ -167,6 +178,7 @@ Obtains the ability running information. This API uses a promise to return the r
 import abilityManager from '@ohos.application.abilityManager';
 import { BusinessError } from '@ohos.base';
 
+// Obtain the Ability runtime information.
 abilityManager.getAbilityRunningInfos().then((data) => {
   console.info(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {

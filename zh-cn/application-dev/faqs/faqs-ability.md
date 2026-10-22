@@ -463,3 +463,137 @@ struct AbilityContextTest {
 ## 系统是否支持在桌面上创建应用的快捷入口，直接打开指定页面？(API 10)
 
 当前不支持
+
+
+## 如何在应用内调用ohos-aa拉起其他应用
+
+**问题现象**
+
+在PC/2in1设备上，开发者需要在应用内通过代码调用ohos-aa拉起其他应用，而非在终端执行命令。
+
+**解决措施**
+
+应用需要申请弱沙箱权限，在应用内通过Native（C/C++）代码，使用fork+execvp方式调用ohos-aa。
+
+**实现步骤**
+
+1. 在module.json5中，将deviceTypes配置为2in1，并在requestPermissions中声明ohos.permission.CUSTOM_SANDBOX权限。
+2. 在C++代码中，通过fork()创建子进程，子进程内使用execvp()执行ohos-aa命令，命令路径为/system/bin/cli_tool/executable/ohos-aa。
+
+**代码示例**
+
+module.json5配置：
+
+```json5
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "deviceTypes": [
+      "2in1"
+    ],
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "exported": true,
+        // ...
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.CUSTOM_SANDBOX"
+      }
+    ]
+  }
+}
+```
+
+Native层调用（C++）：
+
+```cpp
+#include "napi/native_api.h"
+#include <unistd.h>
+#include <sys/wait.h>
+#include <string>
+#include <vector>
+
+static napi_value ForkAndExecute(napi_env env, napi_callback_info info)
+{
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    // 获取bundleName和abilityName参数
+    const size_t BUF_SIZE = 1024;
+    char buf[BUF_SIZE];
+    size_t len = 0;
+    napi_get_value_string_utf8(env, args[0], buf, BUF_SIZE, &len);
+    std::string bundleName = std::string(buf);
+
+    char buf2[BUF_SIZE];
+    napi_get_value_string_utf8(env, args[1], buf2, BUF_SIZE, &len);
+    std::string abilityName = std::string(buf2);
+
+    // 构造ohos-aa命令参数
+    std::string aaCmd = "/system/bin/cli_tool/executable/ohos-aa";
+    std::string subCmd = "start";
+    std::string optBundleName = "--bundlename";
+    std::string optAbilityName = "--abilityname";
+    std::vector<char*> execArgs;
+    execArgs.push_back(const_cast<char *>(aaCmd.c_str()));
+    execArgs.push_back(const_cast<char *>(subCmd.c_str()));
+    execArgs.push_back(const_cast<char *>(optBundleName.c_str()));
+    execArgs.push_back(const_cast<char *>(bundleName.c_str()));
+    execArgs.push_back(const_cast<char *>(optAbilityName.c_str()));
+    execArgs.push_back(const_cast<char *>(abilityName.c_str()));
+    execArgs.push_back(nullptr);
+
+    // fork子进程执行ohos-aa
+    pid_t pid = fork();
+    if (pid < 0) {
+        napi_value result;
+        napi_create_int32(env, -1, &result);
+        return result;
+    }
+    if (pid == 0) {
+        // 子进程：执行ohos-aa命令
+        execvp(aaCmd.c_str(), execArgs.data());
+        _exit(127); // execvp失败时退出
+    }
+    // 父进程：等待子进程结束
+    int status = 0;
+    waitpid(pid, &status, 0);
+    napi_value result;
+    napi_create_int32(env, WIFEXITED(status) ? WEXITSTATUS(status) : -1, &result);
+    return result;
+}
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        { "forkAndExecute", nullptr, ForkAndExecute, nullptr, nullptr, nullptr, napi_default, nullptr },
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END
+```
+
+ArkTS层声明Native接口类型：
+
+```ts
+// Index.d.ts
+export const forkAndExecute: (bundleName: string, abilityName: string) => number;
+```
+
+**调试验证**
+
+安装并启动CliSandbox应用后，点击“启动 AgentExtension (ohos-aa)”，即可通过ohos-aa拉起目标应用。若返回值为0表示启动成功，非0表示启动失败。
+
+![Image 1](figures/ohos-aa-pc.gif)
+
+**参考文档**
+
+[ohos-aa工具说明](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/tools/ohos-aa/README.md)

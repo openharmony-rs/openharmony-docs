@@ -13,7 +13,7 @@ typedef struct OH_CryptoEccSignatureSpec OH_CryptoEccSignatureSpec
 
 ## 概述
 
-定义ECC签名规范结构体。
+ECC签名规格结构体，表示ECC签名规格。
 
 **起始版本：** 20
 

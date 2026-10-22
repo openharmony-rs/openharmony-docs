@@ -66,7 +66,7 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -130,6 +130,10 @@ export default class MyAppServiceExtensionAbility extends AppServiceExtensionAbi
 connectServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
 将当前AppServiceExtensionAbility连接到一个ServiceExtensionAbility（ServiceExtensionAbility仅支持由系统应用开发，三方应用可连接），通过ConnectOptions的onConnect回调返回的remote对象与ServiceExtensionAbility通信，以使用ServiceExtensionAbility对外提供的能力。可使用返回的connectionID调用disconnectServiceExtensionAbility()断开连接。
+
+> **说明：**
+>
+> 该接口不支持连接分身应用的ServiceExtensionAbility。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

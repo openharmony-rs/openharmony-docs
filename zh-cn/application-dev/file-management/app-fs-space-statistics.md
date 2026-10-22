@@ -21,8 +21,8 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
 | \@ohos.file.storageStatistics | getFreeSizeSync | 同步获取内置存储的可用空间大小（单位为Byte）。<br>**说明**：从API version 15开始，支持该接口。 |
 | \@ohos.file.storageStatistics | getTotalSize | 异步获取内置存储的总空间大小（单位为Byte）。<br>**说明**：从API version 15开始，支持该接口。 |
 | \@ohos.file.storageStatistics | getTotalSizeSync | 同步获取内置存储的总空间大小（单位为Byte）。<br>**说明**：从API version 15开始，支持该接口。 |
-| \@ohos.file.statvfs | getFreeSize | 获取指定文件系统的剩余空间大小（单位为Byte）。<br>**说明**：从API version 20开始，支持该接口。|
-| \@ohos.file.statvfs | getTotalSize | 获取指定文件系统的总空间大小（单位为Byte）。<br>**说明**：从API version 20开始，支持该接口。|
+| \@ohos.file.statvfs | getFreeSize | 获取指定文件系统的剩余空间大小（单位为Byte）。<br>**说明**：从API version 9开始，支持该接口。|
+| \@ohos.file.statvfs | getTotalSize | 获取指定文件系统的总空间大小（单位为Byte）。<br>**说明**：从API version 9开始，支持该接口。|
 
 **表2** 应用空间统计
 
@@ -49,19 +49,19 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { common } from '@kit.AbilityKit';
   
   ```
-  <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
-
-   ``` TypeScript
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-   let path = context.filesDir;
-   statfs.getFreeSize(path, (err: BusinessError, number: number) => {
-     if (err) {
-       console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
-     } else {
-       console.info(`Invoke getFreeSize succeeded, size is ${number}`);
-     }
-   });
-   ```
+  <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
+  
+  ``` TypeScript
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let path = context.filesDir;
+  statfs.getFreeSize(path, (err: BusinessError, freeSize: number) => {
+    if (err) {
+      console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info(`Invoke getFreeSize succeeded, size is ${freeSize}`);
+    }
+  });
+  ```
 
 
 - 获取当前应用的存储空间大小。
@@ -89,11 +89,11 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
+  <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
   
   ``` TypeScript
-  storageStatistics.getTotalSize().then((number: number) => {
-    console.info(`getTotalSize successfully, number is ${number}`);
+  storageStatistics.getTotalSize().then((totalSize: number) => {
+    console.info(`getTotalSize successfully, number is ${totalSize}`);
   }).catch((err: BusinessError) => {
     console.error(`getTotalSize failed with error, code is ${err.code}, message is ${err.message}`);
   });
@@ -125,11 +125,11 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
+  <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->       
   
   ``` TypeScript
-  storageStatistics.getFreeSize().then((number: number) => {
-    console.info(`getFreeSize successfully, number is ${number}`);
+  storageStatistics.getFreeSize().then((freeSize: number) => {
+    console.info(`getFreeSize successfully, number is ${freeSize}`);
   }).catch((err: BusinessError) => {
     console.error(`getFreeSize failed with error, code is ${err.code}, message is ${err.message}`);
   });

@@ -339,7 +339,7 @@ struct Index {
 ```ts
 Test JSVM RunVMSnapshot read file blobSize = : 300064
 ```
-多次点击屏幕,LOG中输出:
+多次点击屏幕，LOG中输出：
 ```ts
 Test JSVM RunVMSnapshot read file blobSize = : 300176
 Test JSVM RunVMSnapshot read file blobSize = : 300064

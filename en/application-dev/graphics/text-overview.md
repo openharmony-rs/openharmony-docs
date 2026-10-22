@@ -1,10 +1,12 @@
 # Introduction to Text Development
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=5284e30f06236fe06b1ce39618ec19c1d67b8d4a translatedAt=2026-10-19T01:35:13.596Z pushedAt=2026-10-19T10:26:17.995Z -->
+
 During application development and layout, you need to typeset, measure, draw, and display text elements and content. The font engine framework provides a series of APIs for text layout and font management.
 
 ## Capabilities

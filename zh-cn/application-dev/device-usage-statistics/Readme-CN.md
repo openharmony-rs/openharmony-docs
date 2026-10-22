@@ -1,4 +1,4 @@
-# 设备使用信息统计（仅对系统应用开放）<!--device-usage-statistics-->
+# 设备使用信息统计(ArkTS) (仅对系统应用开放)<!--device-usage-statistics-->
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @xufu7-->
@@ -7,6 +7,6 @@
 <!--Adviser: @HelloCrease-->
 
 <!--Del-->
-- [设备使用信息统计概述（仅对系统应用开放）](device-usage-statistics-overview-sys.md)
-- [设备使用信息统计开发指导（仅对系统应用开放）](device-usage-statistics-use-guide-sys.md)
+- [设备使用信息统计概述(ArkTS) (仅对系统应用开放)](device-usage-statistics-overview-sys.md)
+- [设备使用信息统计开发指导(ArkTS) (仅对系统应用开放)](device-usage-statistics-use-guide-sys.md)
 <!--DelEnd-->

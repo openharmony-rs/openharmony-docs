@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -13,6 +13,8 @@
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口均为系统接口。
+>
+> 在Worker线程中订阅时，需在线程退出前调用unsubscribe取消订阅：若线程环境已销毁而未取消订阅，系统会自动取消订阅，在取消订阅生效前服务端投递的事件将被丢弃，不会触发订阅者回调；调用unsubscribe后，尚未派发的在途事件也会被丢弃，不会触发订阅者回调。
 
 ## 导入模块
 
@@ -171,7 +173,7 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 | 参数名       | 类型                      | 必填 | 说明         |
 | ---------- | ------------------------- | ---- | ------------ |
 | subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | [通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)对象。 |
-| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | 否   | 通知订阅信息，默认为空（当为空时，表示订阅当前用户下所有应用的通知，否则表示订阅通知并指定订阅信息）。   |
+| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | 否   | 通知订阅信息，默认为空。当该参数为空时，表示订阅当前用户下所有应用的通知。   |
 
 **返回值：**
 
@@ -241,7 +243,7 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -290,7 +292,7 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 | 参数名       | 类型                      | 必填 | 说明         |
 | ---------- | ------------------------- | ---- | ------------ |
 | subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | [通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)者。 |
-| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | 是   | 通知订阅信息。   |
+| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | 是   | 通知订阅信息，默认为空。当该参数为空时，表示订阅当前用户下所有应用的通知。   |
 
 **返回值：**
 
@@ -300,7 +302,7 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -335,7 +337,7 @@ notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() =
 
 subscribeSelf(subscriber: NotificationSubscriber): Promise\<void\>
 
-订阅本应用的通知并指定订阅信息。使用Promise异步回调。
+订阅本应用的通知。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -372,7 +374,7 @@ subscribeSelf(subscriber: NotificationSubscriber): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
-  console.info(`Consume callback:  ${JSON.stringify(data)}`);
+  console.info(`Consume callback: ${JSON.stringify(data)}`);
 }
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
@@ -393,6 +395,8 @@ unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>)
 取消订阅。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：对于API版本9-19，需要申请ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
 
@@ -444,6 +448,8 @@ unsubscribe(subscriber: NotificationSubscriber): Promise\<void\>
 取消订阅。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：对于API版本9-19，需要申请ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
 
@@ -513,7 +519,7 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -580,7 +586,7 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -784,7 +790,7 @@ remove(hashCodes: Array\<String\>, reason: RemoveReason): Promise\<void\>
 
 | 参数名       | 类型                            | 必填 | 说明          |
 |-----------|-------------------------------| ---- |-------------|
-| hashCodes | Array\<String\>               | 是   | 通知唯一ID数组集合。 |
+| hashCodes | Array\<String\>               | 是   | 通知唯一ID数组集合。可以通过[onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume)回调的入参[SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata)获取其内部[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)对象中的hashCode。 |
 | reason    | [RemoveReason](#removereason) | 是   | 通知删除原因。     |
 
 **返回值：**
@@ -841,7 +847,7 @@ removeAll(bundle: BundleOption, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -933,7 +939,7 @@ removeAll(bundle?: BundleOption): Promise\<void\>
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否   | 指定应用的包信息。默认为空，表示删除所有通知。 |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否   | 指定应用的包信息。默认为空。当该参数为空时，表示删除所有应用的通知。 |
 
 **返回值：**
 
@@ -943,7 +949,7 @@ removeAll(bundle?: BundleOption): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1085,8 +1091,8 @@ distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise\<v
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| hashcode | string | 是   | 通知唯一ID。 |
-| operationInfo | [OperationInfo](#operationinfo18) | 否   | 跨设备协同操作信息，默认为空。 |
+| hashcode | string | 是   | 通知唯一ID。可以通过[onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume)回调的入参[SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata)获取其内部[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)对象中的hashCode。 |
+| operationInfo | [OperationInfo](#operationinfo18) | 否   | 跨设备协同操作信息，不传递该参数时，使用系统默认协同操作配置。 |
 
 **返回值：**
 
@@ -1111,14 +1117,14 @@ distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise\<v
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let hashcode: string = 'hashcode';
+let hashCode: string = 'hashCode';
 let operationInfo: notificationSubscribe.OperationInfo = {
   actionName: 'actionName',
   userInput: 'userInput',
   operationType: 1,
   buttonIndex: 1,
 };
-notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
+notificationSubscribe.distributeOperation(hashCode, operationInfo).then(() => {
   console.info('distributeOperation success');
 }).catch((err: BusinessError) => {
   console.error(`distributeOperation fail, code is ${err.code}, message is ${err.message}`);
@@ -1163,5 +1169,5 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 | ----- | ------ | --- | ---- | -------- |
 | actionName    | string | 否 | 是 | 描述通知中显示的操作按钮（与通知[NotificationActionButton](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1)中title字段保持一致）。   |
 | userInput | string | 否 | 是 | 用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知[NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput-1)中inputKey字段保持一致）。 |
-| operationType<sup>20+</sup> | number | 否 | 是 | 用户点击操作类型。<br> - 0：用户点击非[实况通知](../../notification/notification-glossary.md#live-view-notification实况通知)本体。<br> - 1：用户点击非实况通知按钮。<br> - 32：用户点击实况通知本体。<br> - 33：用户点击实况通知辅助区 |
+| operationType<sup>20+</sup> | number | 否 | 是 | 用户点击操作类型。<br> - 0：用户点击非[实况通知](../../notification/notification-glossary.md#live-view-notification实况通知)本体。<br> - 1：用户点击非实况通知按钮。<br> - 32：用户点击实况通知本体。<br> - 33：用户点击实况通知辅助区。 |
 | buttonIndex<sup>20+</sup> | number | 否 | 是 | 用户点击的非实况通知按钮序号或实况通知辅助区序号。 |

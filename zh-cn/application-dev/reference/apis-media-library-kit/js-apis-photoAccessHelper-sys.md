@@ -28,6 +28,8 @@ getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
 
 **系统接口**：此接口为系统接口。
 
+**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
@@ -49,8 +51,8 @@ getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument.         |
 
 **示例：**
@@ -112,8 +114,8 @@ createAsset(displayName: string, callback: AsyncCallback&lt;PhotoAsset&gt;): voi
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000001      | Invalid display name.         |
@@ -177,8 +179,8 @@ createAsset(displayName: string): Promise&lt;PhotoAsset&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000001      | Invalid display name.         |
@@ -237,8 +239,8 @@ createAsset(displayName: string, options: PhotoCreateOptions, callback: AsyncCal
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000001      | Invalid display name.         |
@@ -306,8 +308,8 @@ createAsset(displayName: string, options: PhotoCreateOptions): Promise&lt;PhotoA
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000001      | Invalid display name.         |
@@ -370,8 +372,8 @@ createAlbum(name: string, callback: AsyncCallback&lt;Album&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900015       |  The file name already exists.         |
 | 13900020     | Invalid argument.         |
@@ -436,8 +438,8 @@ createAlbum(name: string): Promise&lt;Album&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900015       |  The file name already exists.         |
 | 13900020     | Invalid argument.         |
@@ -492,8 +494,8 @@ deleteAlbums(albums: Array&lt;Album&gt;, callback: AsyncCallback&lt;void&gt;): v
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -563,8 +565,8 @@ deleteAlbums(albums: Array&lt;Album&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -623,9 +625,9 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, options: FetchOptions, callback: 
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      |  Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202      |  Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -646,7 +648,7 @@ async function getHiddenAlbumsView(phAccessHelper: photoAccessHelper.PhotoAccess
   };
   phAccessHelper.getHiddenAlbums(photoAccessHelper.HiddenPhotosDisplayMode.ALBUMS_MODE, fetchOptions,
     async (err, fetchResult) => {
-      if (err !== undefined) {
+      if (err) {
         console.error(`getHiddenAlbumsViewCallback failed with error: ${err.code}, ${err.message}`);
         return;
       }
@@ -691,9 +693,9 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, callback: AsyncCallback&lt;FetchR
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      |  Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202      |  Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -789,9 +791,9 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, options?: FetchOptions): Promise&
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      |  Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202      |  Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -881,8 +883,8 @@ deleteAssets(uriList: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;):
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000002 |  The uri format is incorrect or does not exist.         |
@@ -910,7 +912,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     phAccessHelper.deleteAssets([asset.uri], (err) => {
-      if (err === undefined) {
+      if (!err) {
         console.info('deleteAssets successfully');
       } else {
         console.error(`deleteAssets failed with error: ${err.code}, ${err.message}`);
@@ -958,8 +960,8 @@ deleteAssets(uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000002 |  The uri format is incorrect or does not exist.         |
@@ -1023,8 +1025,8 @@ getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions, callbac
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202     |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -1059,7 +1061,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let photoAsset: photoAccessHelper.PhotoAsset = await photoFetchResult.getObjectByPosition(expectIndex);
 
     phAccessHelper.getPhotoIndex(photoAsset.uri, album.albumUri, fetchOptions, (err, index) => {
-      if (err === undefined) {
+      if (!err) {
         console.info(`getPhotoIndex successfully and index is : ${index}`);
       } else {
         console.error(`getPhotoIndex failed; error: ${err.code}, ${err.message}`);
@@ -1105,8 +1107,8 @@ getPhotoIndex(photoUri: string, albumUri: string, options: FetchOptions): Promis
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202     |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -1176,9 +1178,9 @@ saveFormInfo(info:FormInfo, callback: AsyncCallback&lt;void&gt;):void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 
@@ -1207,7 +1209,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 
   phAccessHelper.saveFormInfo(info, async (err: BusinessError) => {
-    if (err == undefined) {
+    if (!err) {
       console.info('saveFormInfo success');
     } else {
       console.error(`saveFormInfo fail with error: ${err.code}, ${err.message}`);
@@ -1246,9 +1248,9 @@ saveFormInfo(info:FormInfo):Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -1308,9 +1310,9 @@ removeFormInfo(info:FormInfo, callback: AsyncCallback&lt;void&gt;):void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -1329,7 +1331,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   }
 
   phAccessHelper.removeFormInfo(info, async (err: BusinessError) => {
-    if (err == undefined) {
+    if (!err) {
       console.info('removeFormInfo success');
     } else {
       console.error(`removeFormInfo fail with error: ${err.code}, ${err.message}`);
@@ -1368,9 +1370,9 @@ removeFormInfo(info:FormInfo):Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -1421,7 +1423,7 @@ createAssetsForApp(bundleName: string, appName: string, tokenId: number, photoCr
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回给接口调用方的媒体库文件uri列表。Uri已对tokenId对应的应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码。<br>返回-3006表不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回给接口调用方的媒体库文件URI列表。URI已对tokenId对应的应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
 
 **错误码：**
 
@@ -1429,8 +1431,8 @@ createAssetsForApp(bundleName: string, appName: string, tokenId: number, photoCr
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument. Possible causes: 1. The photoCreationConfigs is empty; 2. Incorrect photoCreationConfigs format. |
 | 14000011       | Internal system error.         |
 
@@ -1439,13 +1441,20 @@ createAssetsForApp(bundleName: string, appName: string, tokenId: number, photoCr
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('createAssetsForAppDemo.');
 
   try {
     let bundleName: string = 'testBundleName';
     let appName: string = 'testAppName';
-    let tokenId: number = 537197950;
     let photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig> = [
       {
         title: 'test',
@@ -1487,7 +1496,7 @@ grantPhotoUriPermission(tokenId: number, uri: string, photoPermissionType: Photo
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise对象，0:授权成功。 1:已有权限。-1:授权失败。|
+| Promise&lt;number&gt; | Promise对象，返回授权结果。0表示授权成功。1表示已有权限。-1表示授权失败。 |
 
 **错误码：**
 
@@ -1495,8 +1504,8 @@ grantPhotoUriPermission(tokenId: number, uri: string, photoPermissionType: Photo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument. Possible causes: 1. Incorrect uri format; 2. The value of photoPermissionType or hideSensitiveType is out of range. |
 | 14000011       | Internal system error.         |
 
@@ -1505,11 +1514,18 @@ grantPhotoUriPermission(tokenId: number, uri: string, photoPermissionType: Photo
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('grantPhotoUriPermissionDemo');
 
   try {
-    let tokenId = 502334412;
     let result = await phAccessHelper.grantPhotoUriPermission(tokenId,
         'file://media/Photo/1/IMG_datetime_0001/displayName.jpg',
         photoAccessHelper.PhotoPermissionType.TEMPORARY_READ_IMAGEVIDEO,
@@ -1517,7 +1533,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
     console.info('grantPhotoUriPermission success, result=' + result);
   } catch (err) {
-    console.error('grantPhotoUriPermission failed, error=' + err);
+    console.error(`grantPhotoUriPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1547,7 +1563,7 @@ grantPhotoUrisPermission(tokenId: number, uriList: Array&lt;string&gt;, photoPer
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise对象，0: 授权成功。 -1:授权失败。|
+| Promise&lt;number&gt; | Promise对象，返回授权结果。0表示授权成功。-1表示授权失败。  |
 
 **错误码：**
 
@@ -1555,8 +1571,8 @@ grantPhotoUrisPermission(tokenId: number, uriList: Array&lt;string&gt;, photoPer
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument. Possible causes: 1. Incorrect uri format; 2. The value of photoPermissionType or hideSensitiveType is out of range. |
 | 14000011       | Internal system error.         |
 
@@ -1565,7 +1581,15 @@ grantPhotoUrisPermission(tokenId: number, uriList: Array&lt;string&gt;, photoPer
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('grantPhotoUrisPermissionDemo');
 
   try {
@@ -1573,14 +1597,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let uris: Array<string> = [
       'file://media/Photo/11/IMG_datetime_0001/displayName1.jpg',
       'file://media/Photo/22/IMG_datetime_0002/displayName2.jpg'];
-    let tokenId = 502334412;
     let result = await phAccessHelper.grantPhotoUrisPermission(tokenId, uris,
         photoAccessHelper.PhotoPermissionType.TEMPORARY_READ_IMAGEVIDEO,
         photoAccessHelper.HideSensitiveType.HIDE_LOCATION_AND_SHOOTING_PARAM);
 
     console.info('grantPhotoUrisPermission success, result=' + result);
   } catch (err) {
-    console.error('grantPhotoUrisPermission failed, error=' + err);
+    console.error(`grantPhotoUrisPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1609,7 +1632,7 @@ cancelPhotoUriPermission(tokenId: number, uri: string, photoPermissionType: Phot
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;number&gt; | Promise对象，0:取消成功。-1:取消失败。|
+| Promise&lt;number&gt; | Promise对象，返回取消结果。0表示取消成功。-1表示取消失败。 |
 
 **错误码：**
 
@@ -1617,8 +1640,8 @@ cancelPhotoUriPermission(tokenId: number, uri: string, photoPermissionType: Phot
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument. Possible causes: 1. Incorrect uri format; 2. The value of photoPermissionType or hideSensitiveType is out of range. |
 | 14000011       | Internal system error.         |
 
@@ -1627,18 +1650,25 @@ cancelPhotoUriPermission(tokenId: number, uri: string, photoPermissionType: Phot
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('cancelPhotoUriPermissionDemo');
 
   try {
-    let tokenId = 502334412;
     let result = await phAccessHelper.cancelPhotoUriPermission(tokenId,
         'file://media/Photo/11/IMG_datetime_0001/displayName.jpg',
         photoAccessHelper.PhotoPermissionType.TEMPORARY_READ_IMAGEVIDEO);
 
     console.info('cancelPhotoUriPermission success, result=' + result);
   } catch (err) {
-    console.error('cancelPhotoUriPermission failed, error=' + err);
+    console.error(`cancelPhotoUriPermission failed. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -1659,14 +1689,14 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------  | --------------------------------------- | ---- | --------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 生成缩略图选项。  |
+| predicate  | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 生成缩略图选项。  |
 | callback   | AsyncCallback&lt;void&gt;               | 是   | 回调函数。当成功时标识通知任务结束，err为undefined，否则为错误对象。|
 
 **返回值：**
 
 | 类型                  | 说明                  |
 | --------------------- | -------------------- |
-| Promise&lt;number&gt; | 返回缩略图生成任务id。 |
+| number                | 返回缩略图生成任务ID。 |
 
 **错误码：**
 
@@ -1674,9 +1704,9 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **示例：**
@@ -1684,7 +1714,7 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 function testCallBack() {
 
@@ -1734,8 +1764,8 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: The predicates invalid. |
 | 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -1744,7 +1774,7 @@ startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, c
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 function testCallBack() {
   console.info(`startThumbnailCreationTask: 第一个回调`);
@@ -1793,9 +1823,9 @@ stopThumbnailCreationTask(taskId: number): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **示例：**
@@ -1806,6 +1836,7 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     console.info('stopThumbnailCreationTask test start');
+    // taskId为startThumbnailCreationTask接口的返回值，此处为示例值。
     let taskId: number = 75983;
     phAccessHelper.stopThumbnailCreationTask(taskId);
   } catch (err) {
@@ -1840,8 +1871,8 @@ getIndexConstructProgress(): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011       | Internal system error.         |
 
 **示例：**
@@ -1851,7 +1882,7 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
-  class indexProgress {
+  class IndexProgress {
     finishedImageCount: number = 0;
     totalImageCount: number = 0;
     finishedVideoCount: number = 0;
@@ -1863,7 +1894,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let result: string = await phAccessHelper.getIndexConstructProgress();
     console.info('getIndexProgress:' + result);
 
-    let jsonObj: indexProgress = JSON.parse(result);
+    let jsonObj: IndexProgress = JSON.parse(result);
     // ...使用获取到的索引构建进度数据。
   } catch (err) {
     console.error(`getIndexConstructProgress failed, error: ${err.code}, ${err.message}`);
@@ -1901,9 +1932,9 @@ getDataAnalysisProgress(analysisType?: AnalysisType): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **示例：**
@@ -1954,9 +1985,9 @@ getSharedPhotoAssets(options: FetchOptions): Array\<SharedPhotoAsset\>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **示例：**
@@ -2014,9 +2045,9 @@ startAssetAnalysis(type: AnalysisType, assetUris?: Array&lt;string&gt;): Promise
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -2071,10 +2102,10 @@ startAssetAnalysisAsync(config: AnalysisConfig, callback: Callback&lt;AnalysisRe
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported or invalid types of config.<br>2. The types or uris array size of config exceed max value. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.  Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 
@@ -2128,10 +2159,10 @@ stopAssetAnalysis(config: AnalysisConfig): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported or invalid AnalysisType of config.<br>2. The types or uris array size of config exceed max value. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.  Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 
@@ -2160,7 +2191,7 @@ invokeAnalysisTool(config: ToolInvokeConfig, callback: Callback&lt;AnalysisToolR
 
 触发分析工具的执行。使用callback异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2189,10 +2220,10 @@ invokeAnalysisTool(config: ToolInvokeConfig, callback: Callback&lt;AnalysisToolR
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported tool type.<br>2. The length of **param** in **ToolInvokeConfig** exceeds 16KB. |
-| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout;<br>2. System exception. |
+| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout.<br>2. System exception. |
 
 **示例：**
 
@@ -2225,7 +2256,7 @@ cancelAnalysisTool(config: ToolCancelConfig): Promise&lt;void&gt;
 
 取消分析工具的执行。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2253,10 +2284,10 @@ cancelAnalysisTool(config: ToolCancelConfig): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Invalid task id.<br>2. The length of **param** in **ToolCancelConfig** exceeds 16KB. |
-| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout;<br>2. System exception. |
+| 23800301 | Internal system error. Possible causes:<br>1. IPC timeout.<br>2. System exception. |
 
 **示例：**
 
@@ -2283,7 +2314,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, tokenId: number, authorizationMode: AuthorizationMode, photoCreationConfigs:Array\<PhotoCreationConfig>): Promise\<Array\<string>>
 
-提供给应用保存短时授权。使用Promise异步回调。
+提供给应用保存短时授权，授权有效期为300秒。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2300,13 +2331,13 @@ createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, t
 | appId| string | 是 | 需要保存图片/视频文件的应用app id。 |
 | tokenId| number| 是 | 需要短时授权应用的唯一标识。 |
 | authorizationMode| [AuthorizationMode](#authorizationmode12)| 是 | 授权模式。授予应用短期内再次保存无需重复弹框确认。 |
-| PhotoCreationConfig| Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)> | 是 | 保存图片/视频到媒体库的配置。|
+| photoCreationConfigs | Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)\> | 是 | 保存图片/视频到媒体库的配置。|
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise\<Array\<string>> | Promise对象，返回给接口调用方的媒体库文件uri列表。Uri已对appId对应的应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码。<br>返回-3006表不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。|
+| Promise\<Array\<string>> | Promise对象，返回给接口调用方的媒体库文件URI列表。URI已对appId对应的应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
 
 **错误码：**
 
@@ -2314,9 +2345,9 @@ createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, t
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **示例：**
@@ -2324,7 +2355,15 @@ createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, t
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper,
+  tokenId: number) {
   console.info('createAssetsForAppWithModeDemo.');
 
   try {
@@ -2339,7 +2378,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let bundleName: string = 'testBundleName';
     let appName: string = 'testAppName';
     let appId: string = 'testAppId';
-    let tokenId: number = 537197950;
     let authorizationMode: photoAccessHelper.AuthorizationMode = photoAccessHelper.AuthorizationMode.SHORT_TIME_AUTHORIZATION;
     let result: Array<string> = await phAccessHelper.createAssetsForAppWithMode(bundleName, appName, appId, tokenId, authorizationMode, photoCreationConfigs);
     console.info(`result: ${JSON.stringify(result)}`);
@@ -2380,9 +2418,9 @@ saveGalleryFormInfo(info:GalleryFormInfo):Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -2455,9 +2493,9 @@ updateGalleryFormInfo(info:GalleryFormInfo):Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -2524,9 +2562,9 @@ removeGalleryFormInfo(info:GalleryFormInfo):Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.         |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -2537,7 +2575,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('removeGalleryFormInfoDemo');
   let info: photoAccessHelper.GalleryFormInfo = {
-    // formId是一个由纯数字组成的字符串，移除卡片时assertUris不填。
+    // formId是一个由纯数字组成的字符串，移除卡片时assetUris不填。
     formId: "20230116123"
   }
 
@@ -2580,10 +2618,10 @@ getAlbumsByIds(albumIds: Array&lt;number&gt;): Promise&lt;Map&lt;number, Album&g
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
-| 14000011       | Internal system error.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011       | System inner fail.         |
 
 **示例：**
 
@@ -2625,7 +2663,7 @@ createAssetsForAppWithAlbum(source: PhotoCreationSource, albumUri: string, isAut
 | source  | [PhotoCreationSource](#photocreationsource18)         | 是   | 代替应用创建资产传入的应用信息。                                     |
 | albumUri  | string             | 是   | 相册uri。                                     |
 | isAuthorized  |  boolean              | 是   | 是否授权其他应用。true表示授权，false表示不授权。                                     |
-| PhotoCreationConfigs| Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)> | 是 | 保存图片/视频到媒体库的配置。|
+| photoCreationConfigs | Array\<[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)\> | 是 | 保存图片/视频到媒体库的配置。|
 
 **返回值：**
 
@@ -2639,9 +2677,9 @@ createAssetsForAppWithAlbum(source: PhotoCreationSource, albumUri: string, isAut
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **示例：**
@@ -2649,7 +2687,15 @@ createAssetsForAppWithAlbum(source: PhotoCreationSource, albumUri: string, isAut
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+import { common } from '@kit.AbilityKit';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+public context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+public phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+@State selfTokenId: number = this.context.abilityInfo.applicationInfo.accessTokenId;
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, 
+  tokenId: number) {
   console.info('createAssetsForAppWithAlbumDemo.');
 
   try {
@@ -2657,7 +2703,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       bundleName: 'testBundleName',
       appName: 'testAppName',
       appId: 'testAppId',
-      tokenId: 537197950,
+      tokenId: tokenId,
     }
     let albumUri: string = 'file://media/PhotoAlbum/10';
     let isAuthorized: boolean = true;
@@ -2702,8 +2748,8 @@ on(type: 'hiddenPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): 
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenPhotoChange'; 2. The same callback is registered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -2712,7 +2758,6 @@ on(type: 'hiddenPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;): 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -2762,8 +2807,8 @@ off(type: 'hiddenPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenPhotoChange'; 2. The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -2772,7 +2817,6 @@ off(type: 'hiddenPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;)
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -2825,8 +2869,8 @@ on(type: 'trashedPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;):
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151  | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is registered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -2835,14 +2879,13 @@ on(type: 'trashedPhotoChange', callback: Callback&lt;PhotoAssetChangeInfos&gt;):
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2885,8 +2928,8 @@ off(type: 'trashedPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -2895,14 +2938,13 @@ off(type: 'trashedPhotoChange', callback?: Callback&lt;PhotoAssetChangeInfos&gt;
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2927,7 +2969,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 onAnalysisPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
-监听与智慧分析相册相关的媒体资产的变更情况，该变更携带智慧分析相册变更信息，当且仅当资产变更涉及智慧分析相册信息变更时，才会发送该资产变更通知，通过callback返回资产变化结果，可以注册多个callback。使用callback异步回调。
+监听与智慧分析相册相关的媒体资产变更，当资产变更涉及智慧分析相册信息变更时，通过callback返回资产变化结果，可以注册多个callback。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2947,9 +2989,9 @@ onAnalysisPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151  | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is registered repeatedly. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151  | The scenario parameter verification fails.<br>Possible causes: The same callback is registered repeatedly.  |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
@@ -2957,14 +2999,13 @@ onAnalysisPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -3006,9 +3047,9 @@ offAnalysisPhotoChange(callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is unregistered repeatedly. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
@@ -3016,14 +3057,13 @@ offAnalysisPhotoChange(callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -3032,9 +3072,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
   try {
     // 注册onCallback1监听。
-    phAccessHelper.offAnalysisPhotoChange(onCallback1);
+    phAccessHelper.onAnalysisPhotoChange(onCallback1);
     // 注册onCallback2监听。
-    phAccessHelper.offAnalysisPhotoChange(onCallback2);
+    phAccessHelper.onAnalysisPhotoChange(onCallback2);
 
     // 关闭onCallback1监听，onCallback2继续监听。
     phAccessHelper.offAnalysisPhotoChange(onCallback1);
@@ -3069,8 +3109,8 @@ on(type: 'hiddenAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is registered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -3079,7 +3119,6 @@ on(type: 'hiddenAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3129,8 +3168,8 @@ off(type: 'hiddenAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): voi
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -3139,7 +3178,6 @@ off(type: 'hiddenAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): voi
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3192,8 +3230,8 @@ on(type: 'trashedAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedAlbumChange'; 2. The same callback is registered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -3202,7 +3240,6 @@ on(type: 'trashedAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3252,8 +3289,8 @@ off(type: 'trashedAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedAlbumChange'; 2. The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -3262,7 +3299,6 @@ off(type: 'trashedAlbumChange', callback?: Callback&lt;AlbumChangeInfos&gt;): vo
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3314,9 +3350,9 @@ onAnalysisAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is registered repeatedly. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is registered repeatedly.                                                  |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
@@ -3324,7 +3360,6 @@ onAnalysisAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3373,9 +3408,9 @@ offAnalysisAlbumChange(callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is unregistered repeatedly. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The same callback is unregistered repeatedly. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
@@ -3383,7 +3418,6 @@ offAnalysisAlbumChange(callback?: Callback&lt;AlbumChangeInfos&gt;): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
     console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
@@ -3441,9 +3475,9 @@ isCompatibleDuplicateSupported(bundleName: string): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The IPC request timed out. 2.system running error.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The IPC request timed out. 2. system running error.|
 
 **示例：**
 
@@ -3493,8 +3527,8 @@ getPhotoAlbums(options?: FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 
@@ -3558,9 +3592,9 @@ getPhotoAlbumOrder(orderStyle: number, options?: FetchOptions): Promise&lt;Fetch
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The input parameter is not within the valid range. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -3616,7 +3650,7 @@ setPhotoAlbumOrder(orderStyle: number, albumOrders: Array&lt;AlbumOrder&gt;): Pr
 
 | 类型                  | 说明                        |
 | --------------------- | --------------------------- |
-| Promise&amp;lt;void&amp;gt;| Promise对象，无返回结果。 |
+| Promise&lt;void&gt;        | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3624,8 +3658,8 @@ setPhotoAlbumOrder(orderStyle: number, albumOrders: Array&lt;AlbumOrder&gt;): Pr
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -3694,8 +3728,8 @@ query(sql: string): Promise&lt;ResultSet&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: The SQL statement is abnormal. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out.|
 
@@ -3726,7 +3760,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
  
 getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
 
-通过克隆后的资产URI列表获取当前uri。使用Promise异步回调。
+通过克隆前的旧URI列表获取克隆后的当前URI列表。使用Promise异步回调。
 
 为控制数据库表空间占用规模，当前每次克隆时都会自动将上次存储的克隆数据进行清除，所以该接口只保存最近一次克隆时用户新/旧设备uri的对应关系。
 
@@ -3740,7 +3774,7 @@ getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, stri
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。 |
+| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。数组大小范围为[1, 100]。 |
 
 **返回值：**
 
@@ -3754,8 +3788,8 @@ getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, stri
 
 | **错误码ID** | **错误信息** |
 | ----------------- | --------------------------------------------------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -3785,7 +3819,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
  
 getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
 
-通过克隆后的相册URI列表获取当前uri。使用Promise异步回调。
+通过克隆前的旧URI列表获取克隆后的当前URI。使用Promise异步回调。
 
 为控制数据库表空间占用规模，当前每次克隆时都会自动将上次存储的克隆数据进行清除，所以该接口只保存最近一次克隆时用户新/旧设备uri的对应关系。
 
@@ -3799,7 +3833,7 @@ getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, stri
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。 |
+| oldUris | Array&lt;string&gt; | 是 | 克隆前的旧URI数组。数组大小范围为[1, 100]。 |
 
 **返回值：**
 
@@ -3813,8 +3847,8 @@ getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, stri
 
 | **错误码ID** | **错误信息** |
 | ----------------- | --------------------------------------------------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: The size of input parameter exceeds 100 or is 0. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -3869,7 +3903,7 @@ batchGetPhotoAssetParams(assets: PhotoAsset[], members: string[]): PhotoAssetPar
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202     | Called by non-system application.         |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151       | The scenario parameter verification fails. Possible causes: The attribute to be queried does not exist in assets.        |
 | 23800104       | The provided member must be a property name of PhotoKey.        |
 
@@ -3960,8 +3994,8 @@ addResourceForPicker(type: ResourceType, fileUri: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The file corresponding to the URI is not in the app sandbox. 2. ResourceType must be image or video. |
 | 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -4018,8 +4052,8 @@ isMediaDataReady(mediaDataKey: string): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails, unsupported media data type. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -4074,7 +4108,7 @@ getPhotoAssets(assetsData: ValuesBucket[]): Promise&lt;PhotoAsset[]&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. Invalid value type in ValuesBucket; 2. Missing required column in ValuesBucket; 3. Array size exceeds 500.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -4112,7 +4146,7 @@ convertAssetToCompatibleAsset(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array
 转换传入的PhotoAsset属性到媒体库兼容文件格式属性。
 
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -4138,7 +4172,7 @@ convertAssetToCompatibleAsset(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      | Called by non-system application.        |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. Invalid Array&lt;PhotoAsset&gt;.|
 
 **示例：**
@@ -4205,7 +4239,7 @@ getAssetCompatibleUris(bundleName: string, assets: Array&lt;PhotoAsset&gt;, comp
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      | Called by non-system application.        |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The bundleName is invalid; 2. The compatibleFlag is invalid. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -4267,7 +4301,7 @@ setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapa
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The bundleName or capability is invalid.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -4322,9 +4356,9 @@ convertToAsset(path: string): Promise&lt;PhotoAsset&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Converted an image after filtering into an asset object;<br>2. File to be converted is not exist;<br>3. Only images in the public directory of filemanager can be converted. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Converted an image after filtering into an asset object.<br>2. File to be converted is not exist.<br>3. Only images in the public directory of filemanager can be converted. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -4379,9 +4413,9 @@ cloneToAlbum(assets: PhotoAsset[], target: Album,option?: BatchOperationOptions)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden;<br>2. Asset to be cloned is cloud pictures, which can not be cloned;<br>3. The target directory does not exist;<br>4. Insufficient system space;<br>5. Automatic renaming is not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden.<br>2. Asset to be cloned is cloud pictures, which can not be cloned.<br>3. The target directory does not exist.<br>4. Insufficient system space.<br>5. Automatic renaming is not supported. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -4449,9 +4483,9 @@ cloneToDir(assets: string[], target: string, option?: BatchOperationOptions): Pr
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden;<br>2. Asset to be cloned is cloud pictures, which can not be cloned;<br>3. The target album does not exist;<br>4. Insufficient system space;<br>5. Automatic renaming is not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden.<br>2. Asset to be cloned is cloud pictures, which can not be cloned.<br>3. The target album does not exist.<br>4. Insufficient system space.<br>5. Automatic renaming is not supported. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -4516,9 +4550,9 @@ cloneAssetsByPath(assets: string[], target: Album, option?: BatchOperationOption
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden;<br>2. Asset to be cloned is cloud pictures, which can not be cloned;<br>3. The target album does not exist;<br>4. Insufficient system space;<br>5. Automatic renaming is not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Asset to be cloned has been deleted or hidden.<br>2. Asset to be cloned is cloud pictures, which can not be cloned.<br>3. The target album does not exist.<br>4. Insufficient system space.<br>5. Automatic renaming is not supported. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -4575,9 +4609,9 @@ modifyAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[], disableMo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Only the system album can be set without lpath. Otherwise, the setting is not supported;<br>2. The orderKey and orderSubKey are not in the specified range;<br>3. The order type must be either descending or ascending. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Only the system album can be set without lpath. Otherwise, the setting is not supported.<br>2. The orderKey and orderSubKey are not in the specified range.<br>3. The order type must be either descending or ascending. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -4643,9 +4677,9 @@ modifyHiddenAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[], dis
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Only the system album can be set without lpath. Otherwise, the setting is not supported;<br>2. The orderKey and orderSubKey are not in the specified range;<br>3. The order type must be either descending or ascending. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Only the system album can be set without lpath. Otherwise, the setting is not supported.<br>2. The orderKey and orderSubKey are not in the specified range.<br>3. The order type must be either descending or ascending. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -4704,7 +4738,7 @@ getAssetCompatibleCapability(bundleName: string): Promise\<AssetCompatibleCapabi
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The bundleName is invalid, such as null, undefined and empty.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -4756,7 +4790,7 @@ setPreferredCompatibleMode(bundleName: string, compatibleMode: PreferredCompatib
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The bundleName is invalid, such as null, undefined and empty.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -4815,7 +4849,7 @@ getPreferredCompatibleMode(bundleName: string): Promise\<PreferredCompatibleMode
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The bundleName is invalid, such as null, undefined and empty.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -4880,9 +4914,9 @@ moveAssetsToDir(assets: string[], target: string, option?: BatchOperationOptions
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Moving to the target directory is not supported;<br>2. Asset to be moved does not exist;<br>3. Automatic renaming is not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Moving to the target directory is not supported.<br>2. Asset to be moved does not exist.<br>3. Automatic renaming is not supported. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -4947,9 +4981,9 @@ moveAssetsByPath(assets: string[], target: Album, option?: BatchOperationOptions
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Moving to the target Album is not supported;<br>2. Asset to be moved does not exist;<br>3. Automatic renaming is not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Moving to the target Album is not supported.<br>2. Asset to be moved does not exist.<br>3. Automatic renaming is not supported. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -4990,7 +5024,7 @@ createAssetsWithAlbum(creationSettings: CreationSetting[], isRealTimeThumb: bool
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| creationSettings | [CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)[] | 是 | 创建资产的设置列表。 |
+| creationSettings | [CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)[] | 是 | 创建资产的设置列表。数组的大小不能超过500个。 |
 | isRealTimeThumb | boolean | 是 | 表示创建资产时是否实时生成缩略图。true表示在创建资产时实时生成缩略图，false表示在创建资产时不实时生成缩略图。 |
 | albumUri | string | 否 | 创建资产时指定目标相册的URI。如果未指定，默认值为空字符串。 |
 
@@ -5006,10 +5040,10 @@ createAssetsWithAlbum(creationSettings: CreationSetting[], isRealTimeThumb: bool
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 |Scenario-specific parameters are incorrect. Possible causes are as follows:<br>1. The input parameter creationSettings is null or undefined.<br>2. The array length of creationSettings is bigger than 500. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted. <br>2. The file system is abnormal. <br>3. The IPC request timed out. |
 
 **示例：**
 
@@ -5071,8 +5105,8 @@ canPerformDeepOptimizeSpace(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -5094,9 +5128,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getDeepOptimizeSpace(): Promise&lt;number&gt;
 
-获取可以深度优化存储空间的大小，单位为字节（byte）。使用Promise异步回调。
+获取可以深度优化存储空间的大小，单位为字节（Byte）。使用Promise异步回调。
 
-> - 此接口耗时较长，建议先调用[canPerformDeepOptimizeSpace](#canperformdeepoptimizespace)确认当前系统状态是否允许执行。
+> - 此接口执行耗时可能较长（耗时长短取决于待处理的数据量），建议先调用[canPerformDeepOptimizeSpace](#canperformdeepoptimizespace)确认当前系统状态是否允许执行。
 > - 仅在返回true时调用此接口。
 
 **起始版本：** 26.0.0
@@ -5121,8 +5155,8 @@ getDeepOptimizeSpace(): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -5179,9 +5213,9 @@ startDeepOptimizeSpace(callback?: Callback&lt;DeepOptimizeSpaceProgress&gt;): Pr
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800201 | Unsupported operation type. Possible causes:<br>1. Repeatedly started;<br>2. System is busy, please try again later. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800201 | Unsupported operation type. Possible causes:<br>1. Repeatedly started.<br>2. System is busy, please try again later. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -5229,8 +5263,8 @@ stopDeepOptimizeSpace(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -5281,8 +5315,8 @@ getAlbumIdByBundleName(bundleName: string): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.   |
-| 202     | Called by non-system application.   |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151     | The bundleName is invalid, such as null, undefined and empty. |
 | 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -5343,8 +5377,8 @@ open(mode: string, callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202     |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.        |
@@ -5407,8 +5441,8 @@ open(mode: string): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202     |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.        |
@@ -5467,9 +5501,9 @@ setFavorite(favoriteState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -5535,9 +5569,9 @@ setFavorite(favoriteState: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -5603,9 +5637,9 @@ setHidden(hiddenState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -5673,9 +5707,9 @@ setHidden(hiddenState: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -5739,8 +5773,8 @@ getExif(): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -5805,8 +5839,8 @@ getExif(callback: AsyncCallback&lt;string&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -5882,9 +5916,9 @@ setUserComment(userComment: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -5944,9 +5978,9 @@ setUserComment(userComment: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201     | Permission denied.         |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
@@ -6012,9 +6046,9 @@ setPending(pendingState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **示例：**
@@ -6074,7 +6108,7 @@ setPending(pendingState: boolean): Promise&lt;void&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-|Promise&lt;boolean&gt; | Promise对象，返回void。 |
+|Promise&lt;void&gt;    | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6082,9 +6116,9 @@ setPending(pendingState: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **示例：**
@@ -6099,7 +6133,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let photoAsset = await phAccessHelper.createAsset(testFileName);
     await photoAsset.setPending(true);
     // add asset resource.
-    photoAsset.setPending(false);
+    await photoAsset.setPending(false);
   } catch (err) {
     console.error(`setPendingPromiseDemo failed with error: ${err.code}, ${err.message}`);
   }
@@ -6130,9 +6164,9 @@ isEdited(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **示例：**
@@ -6194,9 +6228,9 @@ isEdited(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **示例：**
@@ -6254,9 +6288,9 @@ requestEditData(callback: AsyncCallback&lt;string&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **示例：**
@@ -6316,9 +6350,9 @@ requestEditData(): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
 
 **示例：**
@@ -6372,9 +6406,9 @@ getEditData(): Promise&lt;MediaAssetEditData&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
 
 **示例：**
@@ -6427,9 +6461,9 @@ createTemporaryCompatibleDuplicate(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 23800151    | Scene parameters validate failed, possible causes:<br>1. The original file does not exist locally in PhotoAsset;<br>2. The original file format is not within the supported range<br>3. The original file is a temporary file or is being edited.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151    | Scene parameters validate failed, possible causes:<br>1. The original file does not exist locally in PhotoAsset.<br>2. The original file format is not within the supported range<br>3. The original file is a temporary file or is being edited.|
 | 23800301   |Internal system error.It is recommended to retry and check the logs.Possible causes:<br> 1. Database corrupted.2. The file system is abnormal.3. The IPC request timed out.   |
 
 **示例：**
@@ -6479,9 +6513,9 @@ requestSource(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
 
 **示例：**
@@ -6538,9 +6572,9 @@ requestSource(): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
 
 **示例：**
@@ -6570,7 +6604,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### commitEditedAsset<sup>11+</sup>
 
-commitEditedAsset(editData: string, uri: string, callback: AsyncCallback&lt;void&gt;)
+commitEditedAsset(editData: string, uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 提交编辑数据以及编辑后的图片或视频。使用callback异步回调。
 
@@ -6600,9 +6634,9 @@ commitEditedAsset(editData: string, uri: string, callback: AsyncCallback&lt;void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
 
 **示例：**
@@ -6678,9 +6712,9 @@ commitEditedAsset(editData: string, uri: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
 
 **示例：**
@@ -6712,7 +6746,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### revertToOriginal<sup>11+</sup>
 
-revertToOriginal(callback: AsyncCallback&lt;void&gt;)
+revertToOriginal(callback: AsyncCallback&lt;void&gt;): void
 
 回退到编辑前的状态。使用callback异步回调。
 
@@ -6738,9 +6772,9 @@ revertToOriginal(callback: AsyncCallback&lt;void&gt;)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **示例：**
@@ -6793,7 +6827,7 @@ revertToOriginal(): Promise&lt;void&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-|Promise&lt;string&gt; | Promise对象，返回void。 |
+|Promise&lt;void&gt;   | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6801,9 +6835,9 @@ revertToOriginal(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.        |
-| 202   | Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **示例：**
@@ -6824,10 +6858,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     if (photoAsset === undefined) {
-      console.error('getHiddenAlbumsViewCallback albums is undefined');
+      console.error('revertToOriginal photoAsset is undefined');
       return;
     }
-    photoAsset.revertToOriginal();
+    await photoAsset.revertToOriginal();
     console.info('revertToOriginal is successful');
   } catch (err) {
     console.error(`revertToOriginalPromiseDemo failed with error: ${err.code}, ${err.message}`);
@@ -6867,9 +6901,9 @@ requestPhoto(callback: AsyncCallback&lt;image.PixelMap&gt;): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.        |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **示例：**
@@ -6934,9 +6968,9 @@ requestPhoto(options: RequestPhotoOptions, callback: AsyncCallback&lt;image.Pixe
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.        |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **示例：**
@@ -7000,9 +7034,9 @@ cancelPhotoRequest(requestId: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission verification failed, usually the result returned by VerifyAccessToken.        |
-| 202   | Permission verification failed, application which is not a system application uses system API.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **示例：**
@@ -7053,7 +7087,7 @@ getAnalysisData(analysisType: AnalysisType): Promise\<string>
 
 **需要权限**：ohos.permission.READ\_IMAGEVIDEO
 
-从API version 22开始，当analysisType为[ANALYSIS\_DETAIL\_ADDRESS](#analysistype11)时，需要增加权限ohos.permission.MEDIA\_LOCATION，无权限则会抛出通用错误码[201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。
+从API version 22开始，当analysisType为[ANALYSIS\_DETAIL\_ADDRESS](#analysistype11)时，需要增加权限ohos.permission.MEDIA\_LOCATION，无权限则会抛出通用错误码[201 API权限校验失败](../errorcode-universal.md#201-api权限校验失败)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -7069,9 +7103,9 @@ getAnalysisData(analysisType: AnalysisType): Promise\<string>
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | System inner fail.                |
 
 **示例：**
@@ -7131,9 +7165,9 @@ getThumbnailData(type: ThumbnailType): Promise&lt;ArrayBuffer&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied.  | 
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -7153,7 +7187,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let asset = await fetchResult.getFirstObject();
   console.info('asset displayName = ', asset.displayName);
   asset.getThumbnailData(photoAccessHelper.ThumbnailType.LCD).then((buffer: ArrayBuffer) => {
-    console.info('getThumbnailData successful, buffer byteLength = ${buffer.byteLength}');
+    console.info(`getThumbnailData successful, buffer byteLength = ${buffer.byteLength}`);
   }).catch((err: BusinessError) => {
     console.error(`getThumbnailData fail with error: ${err.code}, ${err.message}`);
   });
@@ -7191,9 +7225,9 @@ getKeyFrameThumbnail(beginFrameTimeMs: number, type: ThumbnailType): Promise<ima
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.       |
-| 202   | Called by non-system application.       |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | Internal system error. |
 
 **示例：**
@@ -7201,7 +7235,6 @@ getKeyFrameThumbnail(beginFrameTimeMs: number, type: ThumbnailType): Promise<ima
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { common }  from '@kit.AbilityKit';
 import { dataSharePredicates } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
 
@@ -7257,8 +7290,8 @@ convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied.  | 
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scene parameters validate failed. Possible causes: 1. The original file does not exist locally in PhotoAsset. 2. The original file format is not within the supported range. 3. The original file is a temporary file or is being edited. 4. The title is the same with an image in the same album. 5. PhotoAsset is a photo in the trash or a hidden photo. 6. The title does not meet the parameter specifications. |
 | 23800301    | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -7279,7 +7312,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let photoAsset = await fetchResult.getFirstObject();
   try {
     let newPhotoAsset = await photoAsset.convertImageFormat('test', photoAccessHelper.SupportedImageFormat.AVFILE_FORMAT_JPG);
-    console.error(`convertImageFormat success.`);
+    console.info(`convertImageFormat success.`);
   } catch (err) {
     console.error(`convertImageFormat failed. error: ${err.code}, ${err.message}`);
   }
@@ -7293,7 +7326,7 @@ getReadOnlyFdWithCached(): Promise&lt;number&gt;
 
 以只读方式打开当前文件。若打开的是云图库中的视频文件，则视频将被缓存至图库沙箱。其他类型的资源文件不会被缓存。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -7313,10 +7346,10 @@ getReadOnlyFdWithCached(): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201    | Permission denied. |
-| 202     | Called by non-system application.         |
-| 23800151     | Scene parameters validate failed, possible causes: The image and video files corresponding to the photoasset do not exist.        |
-| 23800302       | Failed to open the file. Possible causes: 1. Unable to access cloud images due to network connectivity issues; 2. File system malfunction. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151     | Scene parameters validate failed, possible causes: The image and video files corresponding to the photoasset do not exist. Check if the photoasset is valid and the files exist in the gallery.        |
+| 23800302       | Failed to open the file. Possible causes: 1. Unable to access cloud images due to network connectivity issues; 2. File system malfunction. Please check your network connection and try again. |
 
 **示例：**
 
@@ -7365,40 +7398,40 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | --- | ---- | ---- | --- |
-| fileId | number | 否 | 否 | 图片资产标识id。<br>**系统接口**：此接口为系统接口。|
-| uri | string | 否 | 否 | 图片资产uri。<br>**系统接口**：此接口为系统接口。|
-| data | string | 否 | 否 | 图片资产的路径数据。<br>**系统接口**：此接口为系统接口。|
-| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否 | 图片资产的媒体类型。<br>**系统接口**：此接口为系统接口。|
-| displayName | string | 否 | 否 | 图片资产的显示名称。<br>**系统接口**：此接口为系统接口。|
-| size | number  | 否 | 否 | 图片资产文件大小，单位：字节。<br>**系统接口**：此接口为系统接口。|
-| dataAdded | number | 否 | 否 | 添加了图片资产数据，单位：秒。<br>**系统接口**：此接口为系统接口。|
-| dataModified | number | 否 | 否 | 更改了图片资产数据，单位：秒。<br>**系统接口**：此接口为系统接口。|
-| duration | number | 否 | 否 | 视频类型的图片资产时长，单位：毫秒。<br>**系统接口**：此接口为系统接口。|
-| width | number | 否 | 否 | 图片资产的像素宽度，单位：像素。<br>**系统接口**：此接口为系统接口。|
-| height | number | 否 | 否 | 图片资产的像素高度，单位：像素。<br>**系统接口**：此接口为系统接口。|
-| dataTaken | number | 否 | 否 | 图片资产拍照后存入本地时间，单位：秒。<br>**系统接口**：此接口为系统接口。|
-| orientation | number | 否 | 否 | 图片资产的旋转角度，单位：度（°）。<br>**系统接口**：此接口为系统接口。|
-| isFavorite | boolean | 否 | 否 | 是否收藏了此图片。true表示已收藏，false表示未收藏。<br>**系统接口**：此接口为系统接口。|
-| title | string | 否 | 否 | 图片资产的标题。<br>**系统接口**：此接口为系统接口。|
-| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。<br>**系统接口**：此接口为系统接口。|
-| dataTrashed | number | 否 | 否 | 图片资产是否在回收站中。<br>**系统接口**：此接口为系统接口。|
-| hidden | boolean | 否 | 否 | 图片资产是否隐藏。true表示已隐藏，false表示未隐藏。<br>**系统接口**：此接口为系统接口。|
-| userComment | string | 否 | 否 | 图片资产的用户评论信息。<br>**系统接口**：此接口为系统接口。|
-| cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。<br>**系统接口**：此接口为系统接口。|
-| dateYear | string | 否 | 否 | 图片资产创建年份时间。<br>**系统接口**：此接口为系统接口。|
-| dateMonth | string | 否 | 否 | 图片资产创建月份时间。<br>**系统接口**：此接口为系统接口。|
-| dateDay | string | 否 | 否 | 图片资产创建日时间。<br>**系统接口**：此接口为系统接口。|
-| pending | boolean | 否 | 否 | 图片资产等待状态，true表示等待，false表示解除等待。<br>**系统接口**：此接口为系统接口。|
-| dateAddedMs | number | 否 | 否 | 图片资产数据添加后经过时间，单位：毫秒。<br>**系统接口**：此接口为系统接口。|
-| dateTrashedMs | number | 否 | 否 | 图片资产数据进回收站后经过时间，单位：毫秒。<br>**系统接口**：此接口为系统接口。|
-| subtype | [PhotoSubtype](#photosubtype) | 否 | 否 | 图片资产子类型。<br>**系统接口**：此接口为系统接口。|
-| movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | 否 | 否 | 动态照片效果模式。<br>**系统接口**：此接口为系统接口。|
-| dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | 否 | 否 | 媒体文件的动态范围类型。<br>**系统接口**：此接口为系统接口。|
-| thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。true表示已准备好，false表示未准备好。<br>**系统接口**：此接口为系统接口。|
-| lcdSize | string | 否 | 否 | 图片资产的lcd缩略图宽高信息。<br>**系统接口**：此接口为系统接口。|
-| thmSize | string | 否 | 否 | 图片资产的thumb缩略图宽高信息。<br>**系统接口**：此接口为系统接口。|
-| thumbnailModifiedMs<sup>14+</sup> | number | 否 | 是 | 图片资产的缩略图状态改变后经过时间，单位：毫秒。<br>**系统接口**：此接口为系统接口。|
-| thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。<br>**系统接口**：此接口为系统接口。|
+| fileId | number | 否 | 否 | 图片资产标识ID。|
+| uri | string | 否 | 否 | 图片资产URI。|
+| data | string | 否 | 否 | 图片资产的路径数据。|
+| mediaType | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 否 | 否 | 图片资产的媒体类型。|
+| displayName | string | 否 | 否 | 图片资产的显示名称。|
+| size | number  | 否 | 否 | 图片资产文件大小，单位：字节（Byte）。|
+| dateAdded | number | 否 | 否 | 添加图片资产数据的时间戳，单位：秒（s）。|
+| dateModified | number | 否 | 否 | 更改图片资产数据的时间戳，单位：秒（s）。|
+| duration | number | 否 | 否 | 视频类型的图片资产时长，单位：毫秒（ms）。|
+| width | number | 否 | 否 | 图片资产的像素宽度，单位：像素（px）。|
+| height | number | 否 | 否 | 图片资产的像素高度，单位：像素（px）。|
+| dateTaken | number | 否 | 否 | 图片资产的拍摄时间，单位：秒（s）。    |
+| orientation | number | 否 | 否 | 图片资产的旋转角度，单位：度（°）。|
+| isFavorite | boolean | 否 | 否 | 是否收藏了此图片。true表示已收藏，false表示未收藏。|
+| title | string | 否 | 否 | 图片资产的标题。|
+| position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16) | 否 | 否 | 图片资产存在位置。|
+| dateTrashed | number | 否 | 否 | 图片资产进回收站的时间，单位：秒（s）。 |
+| hidden | boolean | 否 | 否 | 图片资产是否隐藏。true表示已隐藏，false表示未隐藏。|
+| userComment | string | 否 | 否 | 图片资产的用户评论信息。|
+| cameraShotKey | string | 否 | 否 | 图片资产相机拍摄信息。|
+| dateYear | string | 否 | 否 | 图片资产创建年份时间。|
+| dateMonth | string | 否 | 否 | 图片资产创建月份时间。|
+| dateDay | string | 否 | 否 | 图片资产创建日时间。|
+| pending | boolean | 否 | 否 | 图片资产等待状态，true表示等待，false表示解除等待。|
+| dateAddedMs | number | 否 | 否 | 图片资产数据添加后经过时间，单位：毫秒（ms）。|
+| dateTrashedMs | number | 否 | 否 | 图片资产数据进回收站后经过时间，单位：毫秒（ms）。|
+| subtype | [PhotoSubtype](#photosubtype) | 否 | 否 | 图片资产子类型。|
+| movingPhotoEffectMode | [MovingPhotoEffectMode](#movingphotoeffectmode12) | 否 | 否 | 动态照片效果模式。|
+| dynamicRangeType | [DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12) | 否 | 否 | 媒体文件的动态范围类型。|
+| thumbnailReady | boolean | 否 | 否 | 图片资产的缩略图是否准备好。true表示已准备好，false表示未准备好。|
+| lcdSize | string | 否 | 否 | 图片资产的lcd缩略图宽高信息。|
+| thmSize | string | 否 | 否 | 图片资产的thumb缩略图宽高信息。|
+| thumbnailModifiedMs<sup>14+</sup> | number | 否 | 是 | 图片资产的缩略图状态改变时间，单位：毫秒（ms）。|
+| thumbnailVisible<sup>14+</sup> | [ThumbnailVisibility](#thumbnailvisibility14) | 否 | 否 | 图片资产的缩略图是否可见。|
 
 ## Album
 
@@ -7447,8 +7480,8 @@ recoverAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&g
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -7521,8 +7554,8 @@ recoverAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -7591,8 +7624,8 @@ deleteAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -7667,8 +7700,8 @@ deleteAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -7735,8 +7768,8 @@ setCoverUri(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -7809,8 +7842,8 @@ setCoverUri(uri: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -7869,8 +7902,8 @@ getFaceId(): Promise\<string>
 
 | 错误码ID | 错误信息                                                     |
 | :------- | :----------------------------------------------------------- |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error                                        |
 
 **示例：**
@@ -7944,8 +7977,8 @@ getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise\<FetchRes
 
 | 错误码ID | 错误信息                                                     |
 | :------- | :----------------------------------------------------------- |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The input parameter is not within the valid range. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -8040,9 +8073,9 @@ getAttribute(attrs: AlbumAttribute[]): Promise<Record<AlbumAttribute, AlbumAttri
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported attribute;<br>2. The attrs size exceeds 20;<br>3. Empty or duplicate attribute; |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported attribute.<br>2. The attrs size exceeds 20.<br>3. Empty or duplicate attribute. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes:<br>1. Database corrupted.<br>2. The file system is abnormal.<br>3. The IPC request timed out. |
 
 **示例：**
@@ -8073,7 +8106,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     // 定义要获取的属性列表。
-    let attrs: [photoAccessHelper.AlbumAttribute] = [
+    let attrs: photoAccessHelper.AlbumAttribute[] = [
       photoAccessHelper.AlbumAttribute.EXTRA_INFO_ATTR
     ];
     // 获取相册属性信息。
@@ -8123,8 +8156,8 @@ constructor(compatibleFormat: string, formatVersion: string)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.          |
 
 **示例：**
@@ -8160,7 +8193,7 @@ static createAssetRequest(context: Context, displayName: string, options?: Photo
 | ------- | ------- | ---- | -------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的Context。 |
 | displayName  | string        | 是   | 待创建的图片或者视频文件名。              |
-| options  | [PhotoCreateOptions](#photocreateoptions)        | 否   | 图片或视频的创建选项。              |
+| options  | [PhotoCreateOptions](#photocreateoptions)        | 否   | 图片或视频的创建选项。不指定时使用默认创建选项。 |
 
 **返回值：**
 
@@ -8176,8 +8209,8 @@ static createAssetRequest(context: Context, displayName: string, options?: Photo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000001      | Invalid display name.         |
 | 14000011       | System inner fail.         |
 
@@ -8224,8 +8257,8 @@ setHidden(hiddenState: boolean): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -8277,8 +8310,8 @@ setUserComment(userComment: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -8331,8 +8364,8 @@ setEditData(editData: MediaAssetEditData): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -8374,7 +8407,7 @@ setCameraEditData(editData: MediaAssetEditData): void
 
 保存资产的相机编辑数据。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -8392,7 +8425,7 @@ setCameraEditData(editData: MediaAssetEditData): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: The input parameter is not within the valid range. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -8457,8 +8490,8 @@ addResource(type: ResourceType, proxy: PhotoProxy): void
 
 | 错误码ID    | 错误信息                              |
 |----------|-----------------------------------|
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | System inner fail.                | 
 | 14000016 | Operation Not Support.            |
 
@@ -8501,8 +8534,8 @@ setLocation(longitude: number, latitude: number): void
 
 | 参数名  | 类型          | 必填 | 说明    |
 | ------- |-------------| ---- |-------|
-| longitude | number      | 是   | 经度。 |
-| latitude | number | 是   | 纬度。   |
+| longitude | number      | 是   | 经度，取值范围[-180, 180]。单位：度（°）。 |
+| latitude | number | 是   | 纬度，取值范围[-90, 90]。单位：度（°）。 |
 
 **错误码：**
 
@@ -8510,8 +8543,8 @@ setLocation(longitude: number, latitude: number): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 |  System inner fail.         |
 
 **示例：**
@@ -8563,8 +8596,8 @@ setCameraShotKey(cameraShotKey: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -8608,8 +8641,8 @@ setEffectMode(mode: MovingPhotoEffectMode): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 | 14000016       | Operation Not Support.         |
 
@@ -8658,8 +8691,8 @@ setSupportedWatermarkType(watermarkType: WatermarkType): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | Internal system error.         |
 
 **示例：**
@@ -8722,16 +8755,15 @@ static deleteLocalAssetsPermanently(context: Context, assets: Array\<PhotoAsset>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.       |
-| 202   | Called by non-system application.       |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | Internal system error. |
 
 **示例：**
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   console.info('deleteAssetsPermanentlyDemo');
@@ -8752,7 +8784,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ### setHasAppLink<sup>21+</sup>
 
-setHasAppLink(hasAppLink: int): void
+setHasAppLink(hasAppLink: number): void
 
 设置文件记忆链接的状态信息。
 
@@ -8765,7 +8797,7 @@ setHasAppLink(hasAppLink: int): void
 
 | 参数名  | 类型             | 必填   | 说明    |
 | ---- | -------------- | ---- | ----- |
-| hasAppLink | int | 是    | 设置文件记忆链接的状态信息。 |
+| hasAppLink | number | 是    | 设置文件记忆链接的状态信息。0表示未解码，1表示无链接，2表示存在链接。 |
 
 **错误码：**
 
@@ -8773,7 +8805,7 @@ setHasAppLink(hasAppLink: int): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   | Called by non-system application.       |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error.It is recommended to retry and check the logs. |
 | 23800151 | The scenario parameter verification fails.Possible causes: The input parameter is not within the valid range. |
 
@@ -8782,13 +8814,13 @@ setHasAppLink(hasAppLink: int): void
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
-enum linkType {
+enum LinkType {
   NOT_DECODED = 0,
   LINK_NOT_EXIST = 1,
   LINK_EXIST = 2
 }
 
-async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType, context: Context) {
+async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: LinkType, context: Context) {
     try {
       let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
         photoAccessHelper.getPhotoAccessHelper(context);
@@ -8827,7 +8859,7 @@ setAppLinkState(appLinkState: AppLinkState): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   | Invoked by non-system applications.       |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error.It is recommended to retry and check the logs. |
 | 23800151 | The scenario parameter verification fails.Possible causes: The input parameter is not within the valid range. |
 
@@ -8866,7 +8898,7 @@ setAppLinkInfo(appLink: string): void
 
 | 参数名  | 类型             | 必填   | 说明    |
 | ---- | -------------- | ---- | ----- |
-| appLink | string | 是    | 设置文件记忆链接的信息。 |
+| appLink | string | 是    | 设置文件记忆链接的信息。长度限制范围为[1, 512]，单位：字节（Byte）。 |
 
 **错误码：**
 
@@ -8874,7 +8906,7 @@ setAppLinkInfo(appLink: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   | Called by non-system application.       |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error.It is recommended to retry and check the logs. |
 | 23800151 | The scenario parameter verification fails.Possible causes: The input parameter's length is not within the valid range. |
 
@@ -8928,7 +8960,7 @@ setCompositeDisplayMode(compositeDisplayMode: CompositeDisplayMode): Promise\<vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   | Called by non-system application.       |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scene parameters validate failed. Possible causes: 1. The CompositeDisplayMode is not within the supported range; 2.The original file does not exist locally in PhotoAsset; 3. The PhotoAsset is not composite Asset; 4. The original file format is not within the supported range; 5. The original file has been edited. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -8936,6 +8968,7 @@ setCompositeDisplayMode(compositeDisplayMode: CompositeDisplayMode): Promise\<vo
 
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('setCompositeDisplayModeDemo');
@@ -8983,7 +9016,7 @@ setHiddenAttribute(hiddenState: boolean): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The asset is not exist. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -9040,7 +9073,7 @@ setTitleByFile(name: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The asset is not exist. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -9074,7 +9107,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 static deleteLocalAssetsPermanentlyWithUri(context: Context, assetUris: Array&lt;String&gt;): Promise&lt;void&gt;
 
-通过资产Uri批量彻底删除照片或者视频。使用promise异步回调。
+通过资产URI批量彻底删除照片或者视频。使用Promise异步回调。
 
 > **注意：**
 >
@@ -9105,8 +9138,8 @@ static deleteLocalAssetsPermanentlyWithUri(context: Context, assetUris: Array&lt
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.       |
-| 202   | Called by non-system application.       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument. | 
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.  |     
 
@@ -9144,7 +9177,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteLocalAssetsWithUri(context: Context, assetUris: string[]): Promise&lt;void&gt;
 
-批量删除本地状态的媒体资产（照片或视频）到回收站。使用promise异步回调。
+批量删除本地状态的媒体资产（照片或视频）到回收站。使用Promise异步回调。
 
 >**说明：**
 >
@@ -9177,8 +9210,8 @@ static deleteLocalAssetsWithUri(context: Context, assetUris: string[]): Promise&
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.       |
-| 202   | Called by non-system application.       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. | 
 
@@ -9199,7 +9232,7 @@ async function example(context: Context, assetUri: string) {
 
 static deleteCloudAssetsWithUri(context: Context, assetUris: string[]): Promise&lt;void&gt;
 
-批量删除云端状态的媒体资产（照片或视频）到回收站。使用promise异步回调。
+批量删除云端状态的媒体资产（照片或视频）到回收站。使用Promise异步回调。
 
 >**说明：**
 >
@@ -9232,8 +9265,8 @@ static deleteCloudAssetsWithUri(context: Context, assetUris: string[]): Promise&
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.       |
-| 202   | Called by non-system application.       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. | 
 
@@ -9254,7 +9287,7 @@ async function example(context: Context, assetUri: string) {
 
 static deleteAssetsPermanentlyWithUri(context: Context, assetUris: string[]): Promise\<void\>
 
-通过资产URI批量彻底删除照片或视频，不经过回收站。使用promise异步回调。
+通过资产URI批量彻底删除照片或视频，不经过回收站。使用Promise异步回调。
 
 > **说明：**
 >
@@ -9288,8 +9321,8 @@ static deleteAssetsPermanentlyWithUri(context: Context, assetUris: string[]): Pr
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201   | Permission denied.       |
-| 202   | Called by nonsystem application.       |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes:1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. | 
 
@@ -9313,7 +9346,7 @@ setMovingPhotoVersion(version: number): void
 
 保存动态照片的版本号。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
 **系统接口**：此接口为系统接口。
 
@@ -9323,7 +9356,7 @@ setMovingPhotoVersion(version: number): void
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| version | number | 是    | 设置动态照片的版本号信息。 |
+| version | number | 是    | 设置动态照片的版本号信息。目前仅支持取值为9。 |
 
 **错误码：**
 
@@ -9331,7 +9364,7 @@ setMovingPhotoVersion(version: number): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Parameter error, Only supports 9. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -9400,8 +9433,8 @@ setHidden(hiddenState: boolean): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -9453,8 +9486,8 @@ setUserComment(userComment: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -9506,8 +9539,8 @@ setIsRecentShow(isRencentShow: boolean): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -9578,8 +9611,8 @@ static createAlbumRequest(context: Context, name: string): MediaAlbumChangeReque
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011   | System inner fail.        |
 
 **示例：**
@@ -9631,9 +9664,9 @@ static deleteAlbums(context: Context, albums: Array&lt;Album&gt;): Promise&lt;vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied.         |
-| 202   |  Called by non-system application.  |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 |  System inner fail.         |
 
 **示例：**
@@ -9692,8 +9725,8 @@ static deleteAlbumsWithUri(context: Context, albumUris: Array&lt;string&gt;): Pr
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied.         |
-| 202      |  Called by non-system application.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 |  Invalid argument. | 
 | 14000011 |  Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2.The file System is abnormal; 3. The IPC request timed out;  |
 
@@ -9743,8 +9776,8 @@ static setUploadStatus(context: Context, albums: Album[], allowUpload: boolean):
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied.         |
-| 202      |  Called by non-system application.  |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Album array size is bigger than 500. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1.Database corrupted; 2.The file system is abnormal; 3.The IPC request timed out. |
 
@@ -9785,8 +9818,8 @@ setCoverUri(coverUri: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -9806,7 +9839,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
-    if (albums === undefined) {
+    if (album === undefined) {
       console.error('getHiddenAlbumsViewCallback albums is undefined');
       return;
     }
@@ -9842,7 +9875,7 @@ resetCoverUri(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301       | Internal system error.It is recommended to retry and check the logs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
@@ -9900,7 +9933,7 @@ setHiddenAttribute(hiddenState: boolean, isInherited: boolean):void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The album is not exist. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -9957,7 +9990,7 @@ setAlbumNameByFile(name: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The album is not exist. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
@@ -10000,7 +10033,7 @@ operateAttribute(operation: AlbumOperation): void
 **系统接口**：此接口为系统接口。
 
 **需要权限**：
-- API版本26.1.0+：ohos.permission.ACCESS_MEDIALIB_THUMB_DB 或 ohos.permission.WRITE_IMAGEVIDEO
+- API版本26.0.1+：ohos.permission.ACCESS_MEDIALIB_THUMB_DB 或 ohos.permission.WRITE_IMAGEVIDEO
 - API版本26.0.0：ohos.permission.ACCESS_MEDIALIB_THUMB_DB
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -10017,8 +10050,8 @@ operateAttribute(operation: AlbumOperation): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:<br>1. The attr of operation is invalid.<br>2. The type of operation is invalid.<br>3. The values of operation is incorrect. |
 | 23800201 | Unsupported operation type. It is recommended to check the logs.<br>Possible causes:<br>1. Unsupported AlbumAttribute for the album.<br>2. Unsupported AlbumOperationType for the AlbumAttribute.<br>3. Other operation limit. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
@@ -10078,7 +10111,7 @@ moveAssets(assets: Array&lt;PhotoAsset&gt;, targetAlbum: Album): void
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
 | assets | Array&lt;[PhotoAsset](#photoasset)&gt; | 是   | 待从相册中移出的资产数组。 |
-| targetAlbum | Album | 是   | 待移入资产的目标相册。 |
+| targetAlbum | [Album](#album) | 是   | 待移入资产的目标相册。 |
 
 **错误码：**
 
@@ -10086,8 +10119,8 @@ moveAssets(assets: Array&lt;PhotoAsset&gt;, targetAlbum: Album): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 | 14000016 |  Operation Not Support.     |
 
@@ -10148,7 +10181,7 @@ moveAssetsWithUri(assetUris: Array&lt;String&gt;, targetAlbum: Album): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      | Called by non-system application.         |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument.| 
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 | 14000016 | Operation Not Support.     |
@@ -10214,8 +10247,8 @@ recoverAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 | 14000016 |  Operation Not Support.     |
 
@@ -10271,7 +10304,7 @@ recoverAssetsWithUri(assetUris: Array&lt;String&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      | Called by non-system application.         |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument.| 
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 | 14000016 | Operation Not Support.     |
@@ -10332,8 +10365,8 @@ deleteAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 | 14000016 |  Operation Not Support.     |
 
@@ -10401,7 +10434,7 @@ deleteAssetsWithUri(assetUris: Array&lt;String&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      | Called by non-system application.         |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument.| 
 | 14000011 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.         |
 | 14000016 | Operation Not Support.     |
@@ -10450,7 +10483,7 @@ setDisplayLevel(displayLevel: number): void
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| displayLevel | number | 是    | 设置人像相册的显示级别， 0：取消该人像相册收藏；1：设置人像相册为首届面；2：设置人像相册为更多界面；3：设置人像相册为收藏界面。 |
+| displayLevel | number | 是    | 设置人像相册的显示级别。<br>0表示取消该人像相册收藏、1表示设置人像相册为首界面、2表示设置人像相册为更多界面、3表示设置人像相册为收藏界面。 |
 
 **错误码：**
 
@@ -10458,8 +10491,8 @@ setDisplayLevel(displayLevel: number): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -10505,8 +10538,8 @@ setIsMe(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -10550,7 +10583,7 @@ dismissAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| assets | Array&lt;PhotoAsset&gt; | 是    | 需要移除的文件列表。 |
+| assets | Array&lt;[PhotoAsset](#photoasset)&gt; | 是    | 需要移除的文件列表。 |
 
 **错误码：**
 
@@ -10558,8 +10591,8 @@ dismissAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 | 14000016       | Operation Not support.         |
 
@@ -10621,8 +10654,8 @@ mergeAlbum(target: Album): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202        |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 | 14000016       | Operation Not support.         |
 
@@ -10652,7 +10685,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
     let changeRequest: photoAccessHelper.MediaAlbumChangeRequest = new photoAccessHelper.MediaAlbumChangeRequest(album);
     changeRequest.mergeAlbum(target);
-    changeRequest.setAlbumName("testName");
+    changeRequest.setAlbumName('testName');
     await phAccessHelper.applyChanges(changeRequest);
   } catch (err) {
     console.error(`mergeAlbum failed with error: ${err.code}, ${err.message}`);
@@ -10662,7 +10695,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### placeBefore<sup>11+</sup>
 
-placeBefore(album: Album): void;
+placeBefore(album: Album): void
 
 将当前相册排序到目标相册之前。
 
@@ -10682,8 +10715,8 @@ placeBefore(album: Album): void;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011       | System inner fail.         |
 
 **示例：**
@@ -10727,8 +10760,8 @@ dismiss(): void
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | System inner fail.            |
 
 **示例：**
@@ -10736,7 +10769,6 @@ dismiss(): void
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('dismissDemo');
@@ -10766,7 +10798,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 constructor(album: Album)
 
-构造函数。
+构造函数，创建时刻相册对象。
 
 **系统接口**：此接口为系统接口。
 
@@ -10784,8 +10816,8 @@ constructor(album: Album)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **示例：**
@@ -10839,9 +10871,9 @@ getHighlightAlbumInfo(type: HighlightAlbumInfoType): Promise&lt;string&gt;
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **示例：**
@@ -10903,9 +10935,9 @@ getHighlightResource(resourceUri: string): Promise&lt;ArrayBuffer&gt;
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.           |
 
 **示例：**
@@ -10966,9 +10998,9 @@ setHighlightUserActionData(type: HighlightUserActionType, actionData: number): P
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **示例：**
@@ -10988,7 +11020,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     if (album != undefined) {
       let highlightAlbum: photoAccessHelper.HighlightAlbum = new photoAccessHelper.HighlightAlbum(album);
-      highlightAlbum.setHighlightUserActionData(photoAccessHelper.HighlightUserActionType.INSERTED_PIC_COUNT, 1);
+      await highlightAlbum.setHighlightUserActionData(photoAccessHelper.HighlightUserActionType.INSERTED_PIC_COUNT, 1);
     }
     albumFetchResult.close();
   } catch (err) {
@@ -11027,9 +11059,9 @@ setSubTitle(title: string): void
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
@@ -11054,7 +11086,7 @@ async function example(context: Context) {
     let highlightAlbum: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     albumFetchResult.close();
     let changeHighlightAlbumRequest: photoAccessHelper.HighlightAlbum = new photoAccessHelper.HighlightAlbum(highlightAlbum);
-    changeHighlightAlbumRequest.setSubTitle("testName");
+    changeHighlightAlbumRequest.setSubTitle('testName');
     console.info('setSubTitle success');
   } catch (err) {
     console.error(`setSubTitle with error: ${err}`);
@@ -11093,9 +11125,9 @@ static deleteHighlightAlbums(context: Context, albums: Array&lt;Album&gt;): Prom
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
@@ -11137,7 +11169,7 @@ async function example(context: Context) {
 
 constructor(album: Album)
 
-构造函数。
+构造函数，创建智慧相册变更请求对象。
 
 **系统接口**：此接口为系统接口。
 
@@ -11151,12 +11183,12 @@ constructor(album: Album)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -11208,9 +11240,9 @@ setOrderPosition(assets: Array&lt;PhotoAsset&gt;, position: Array&lt;number&gt;)
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
@@ -11318,8 +11350,8 @@ setRelationship(relationship: string): Promise&lt;void&gt;
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range.  | 
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
@@ -11328,7 +11360,7 @@ setRelationship(relationship: string): Promise&lt;void&gt;
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 
-async function SetRelationshipExample(context: Context, relationship: string) {
+async function setRelationshipExample(context: Context, relationship: string) {
   try {
     console.info('setRelationship');
     let helper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -11393,7 +11425,7 @@ static createAnalysisAlbumRequest(context: Context, name: string, subtype: Album
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202   |  Called by non-system application.         |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range. | 
 | 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
 
@@ -11439,7 +11471,7 @@ setDefaultCoverUri(coverUri: string): void
 
 | 错误码ID   | 错误信息 |
 | ---------- | ------------------------------------------------------------ |
-| 202        | Called by non-system application.                            |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151   | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range. |
 | 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
 
@@ -11501,7 +11533,7 @@ async function example(context: Context) {
 
 constructor(album: Album)
 
-构造函数。
+构造函数，创建时刻相册变更请求对象。
 
 **系统接口**：此接口为系统接口。
 
@@ -11519,7 +11551,7 @@ constructor(album: Album)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.   |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 
 **示例：**
@@ -11572,8 +11604,8 @@ setHighlightAttribute(attribute: HighlightAlbumChangeAttribute, value: string): 
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
@@ -11600,7 +11632,7 @@ async function example(context: Context) {
     albumFetchResult.close();
     let highlightAlbumChangeAttribute: photoAccessHelper.HighlightAlbumChangeAttribute =
       photoAccessHelper.HighlightAlbumChangeAttribute.IS_VIEWED;
-    let value: string = "1";
+    let value: string = '1';
     let changeRequest: photoAccessHelper.MediaHighlightAlbumChangeRequest =
       new photoAccessHelper.MediaHighlightAlbumChangeRequest(highlightAlbum);
     changeRequest.setHighlightAttribute(highlightAlbumChangeAttribute, value);
@@ -11622,7 +11654,7 @@ async function example(context: Context) {
 
 constructor(album: Album)
 
-构造函数。
+构造函数，创建智慧相册对象。
 
 **系统接口**：此接口为系统接口。
 
@@ -11636,12 +11668,12 @@ constructor(album: Album)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -11697,9 +11729,9 @@ getOrderPosition(assets: Array&lt;PhotoAsset&gt;): Promise&lt;Array&lt;number&gt
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
@@ -11764,8 +11796,8 @@ getRelationship(): Promise&lt;string&gt;
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
@@ -11773,7 +11805,7 @@ getRelationship(): Promise&lt;string&gt;
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 
-async function GetRelationshipExample(context: Context) {
+async function getRelationshipExample(context: Context) {
   try {
     console.info('getRelationship');
     let helper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -11833,8 +11865,8 @@ static getCloudEnhancementInstance(context: Context): CloudEnhancement
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **示例：**
@@ -11880,7 +11912,7 @@ submitCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;, hasCloudWaterm
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | photoAssets | Array<[PhotoAsset](#photoasset)> | 是   | 需要增强照片的[PhotoAsset](#photoasset)集合。 |
-| hasCloudWatermark | boolean | 是   | 增强后图片是否添加云增强水印。 |
+| hasCloudWatermark | boolean | 是   | 增强后图片是否添加云增强水印。true表示添加云增强水印，false表示不添加云增强水印。 |
 
 **返回值：**
 
@@ -11894,9 +11926,9 @@ submitCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;, hasCloudWaterm
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **示例：**
@@ -11959,9 +11991,9 @@ submitCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;, hasCloudWaterm
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **示例：**
@@ -12023,9 +12055,9 @@ prioritizeCloudEnhancementTask(photoAsset: PhotoAsset): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **示例：**
@@ -12088,9 +12120,9 @@ cancelCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;): Promise&lt;vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **示例：**
@@ -12146,14 +12178,13 @@ cancelAllCloudEnhancementTasks(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error.            |
 
 **示例：**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('cancelAllCloudEnhancementTasksDemo');
@@ -12197,9 +12228,9 @@ queryCloudEnhancementTaskState(photoAsset: PhotoAsset): Promise&lt;CloudEnhancem
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **示例：**
@@ -12248,7 +12279,7 @@ async function example(context: Context) {
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_FAILED) {
       let errCode = cloudEnhancementTaskState.statusCode;
       let message = `task is failed, errCode: ${errCode}`;
-      console.info(message);
+      console.error(message);
     } else if (taskStage == photoAccessHelper.CloudEnhancementTaskStage.TASK_STAGE_COMPLETED) {
       console.info("task is completed");
     }
@@ -12282,14 +12313,13 @@ syncCloudEnhancementTaskStatus(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error.            |
 
 **示例：**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('syncCloudEnhancementTaskStatusDemo');
@@ -12333,9 +12363,9 @@ getCloudEnhancementPair(asset: PhotoAsset): Promise&lt;PhotoAsset&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 
 **示例：**
@@ -12399,8 +12429,8 @@ setVideoEnhancementAttr(videoEnhancementType: VideoEnhancementType, photoId: str
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.            |
 | 14000016 | Operation Not Support.            |
 
@@ -12457,8 +12487,8 @@ static getCloudMediaAssetManagerInstance(context: Context): CloudMediaAssetManag
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202      |  Called by non-system application.   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.          |
 
 **示例：**
@@ -12506,9 +12536,9 @@ startDownloadCloudMedia(downloadType: CloudMediaDownloadType): Promise&lt;void&g
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.           |
 
 **示例：**
@@ -12550,8 +12580,8 @@ pauseDownloadCloudMedia(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
@@ -12593,8 +12623,8 @@ cancelDownloadCloudMedia(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
@@ -12642,9 +12672,9 @@ retainCloudMediaAsset(retainType: CloudMediaRetainType): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
@@ -12686,8 +12716,8 @@ getCloudMediaAssetStatus(): Promise&lt;CloudMediaAssetStatus&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
@@ -12726,7 +12756,7 @@ startDownloadSpecificCloudMedia(assetUris: string[]): Promise\<Map\<string, Clou
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[] | 是   | 需要下载的原图和视频的uri列表。 |
+| assetUris | string[] | 是   | 需要下载的原图和视频的URI列表。数组不能为空，数组中元素个数不超过500个。 |
 
 **返回值：**
 
@@ -12740,8 +12770,8 @@ startDownloadSpecificCloudMedia(assetUris: string[]): Promise\<Map\<string, Clou
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: 1. The assetUris array is empty; 2. The assetUris array size is bigger than 500.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
@@ -12779,7 +12809,7 @@ pauseDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | 是   | 需要暂停下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
+| assetUris | string[]  \| null | 是   | 需要暂停下载的原图和视频的URI列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。数组中元素个数不超过500个。 |
 
 **返回值：**
 
@@ -12793,8 +12823,8 @@ pauseDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes: The assetUris array size is bigger than 500.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
@@ -12831,7 +12861,7 @@ resumeDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | 是   | 需要恢复下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
+| assetUris | string[]  \| null | 是   | 需要恢复下载的原图和视频的URI列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。数组中元素个数不超过500个。 |
 
 **返回值：**
 
@@ -12845,8 +12875,8 @@ resumeDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
@@ -12883,7 +12913,7 @@ cancelDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  \| null | 是   | 需要取消下载的原图和视频的uri列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。 |
+| assetUris | string[]  \| null | 是   | 需要取消下载的原图和视频的URI列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务。数组中元素个数不超过500个。 |
 
 **返回值：**
 
@@ -12897,8 +12927,8 @@ cancelDownloadSpecificCloudMedia(assetUris: string[] | null): Promise\<void\>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
@@ -12949,14 +12979,14 @@ queryDownloadSpecificCloudMediaDetails(predicates: dataSharePredicates.DataShare
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('QueryDownloadSpecificCloudMediaDetailsDemo');
@@ -12964,7 +12994,7 @@ async function example(context: Context) {
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.orderByAsc("file_id");
+    predicates.orderByAsc('file_id');
     let taskListStatus : photoAccessHelper.CloudAssetDownloadStatus =
        await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaDetails(predicates);
   } catch (err) {
@@ -13003,14 +13033,14 @@ queryDownloadSpecificCloudMediaTaskCount(predicates: dataSharePredicates.DataSha
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData'
+import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(context: Context) {
   console.info('QueryDownloadSpecificCloudMediaTaskCountDemo');
@@ -13018,7 +13048,7 @@ async function example(context: Context) {
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.orderByAsc("file_id");
+    predicates.orderByAsc('file_id');
     let count : number =
        await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaTaskCount(predicates);
   } catch (err) {
@@ -13052,15 +13082,15 @@ onDownloadProgressChange(callback: Callback\<CloudAssetDownloadProgressInfo\>): 
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
 
 ```ts
 let onCallback = (changeData: photoAccessHelper.CloudAssetDownloadProgressInfo) => {
-  console.info('batchdownload downloadProgressChange onCallback success, changData: ' + JSON.stringify(changeData));
+  console.info('batchdownload downloadProgressChange onCallback success, changeData: ' + JSON.stringify(changeData));
 }
 async function example(context: Context) {
   console.info('OnDownloadProgressChangeDemo');
@@ -13101,8 +13131,8 @@ offDownloadProgressChange(callback?: Callback\<CloudAssetDownloadProgressInfo\>)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **示例：**
@@ -13148,8 +13178,8 @@ isVideoReady(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201      | Permission denied |
-| 202      | Called by non-system application |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -13201,8 +13231,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 媒体库支持图库自定义用户统计行为接口。
 
-**系统接口**：此接口为系统接口。
-
 ### getCustomRecordManagerInstance<sup>20+</sup>
 
 static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordManager
@@ -13231,14 +13259,12 @@ static getCustomRecordManagerInstance(context: Context): PhotoAssetCustomRecordM
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800107 | Context is invalid. |
 
 **示例：**
 
 ```ts
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function example(context: Context) {
   console.info('getCustomRecordManagerInstance');
@@ -13278,7 +13304,7 @@ createCustomRecords(customRecords: Array&lt;PhotoAssetCustomRecord&gt;): Promise
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The value range of mandatory parameters in photoAssetCustomRecord does not meet the requirements. 2. The transferred record already exists. 3. The number of transferred records exceeds 200. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -13329,7 +13355,7 @@ getCustomRecords(optionCheck: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsse
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -13352,7 +13378,7 @@ async function example(context: Context) {
     let record = await fetchResult.getFirstObject();
     console.info('record file id is ' + record.fileId);
   }).catch((err: BusinessError) => {
-    console.error('getCustomRecords fail with error: ${err.code}, ${err.message}');
+    console.error(`getCustomRecords fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -13385,7 +13411,7 @@ setCustomRecords(customRecords: Array&lt;PhotoAssetCustomRecord&gt;): Promise&lt
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The value range of mandatory parameters in photoAssetCustomRecord does not meet the requirements. 2. The number of transferred records exceeds 200. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -13397,14 +13423,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(context: Context) {
   console.info('setCustomRecords');
   let crManager = photoAccessHelper.PhotoAssetCustomRecordManager.getCustomRecordManagerInstance(context);
-  let UpdateArray: Array<photoAccessHelper.PhotoAssetCustomRecord> = [
+  let updateArray: Array<photoAccessHelper.PhotoAssetCustomRecord> = [
     {fileId:1,shareCount:2,lcdJumpCount:3},
     {fileId:2,shareCount:2,lcdJumpCount:3}
   ];
-  crManager.setCustomRecords(UpdateArray).then((failIds) => {
+  crManager.setCustomRecords(updateArray).then((failIds) => {
     console.info('setCustomRecords successful');
   }).catch((err: BusinessError) => {
-    console.error('setCustomRecords file with err: ${err.code}, ${err.message}');
+    console.error(`setCustomRecords file with err: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -13437,7 +13463,7 @@ removeCustomRecords(optionCheck: FetchOptions): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -13492,7 +13518,7 @@ addShareCount(ids: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The ids list is empty; 2. The number of ids lists exceeds 500. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -13506,7 +13532,7 @@ async function example(context: Context) {
   crManager.addShareCount(ids).then((failIds) => {
     console.info('addShareCount successful');
   }).catch((err: BusinessError) => {
-    console.error('addShareCount fail with error: ${err.code}, ${err.message}');
+    console.error(`addShareCount fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -13539,7 +13565,7 @@ addLcdJumpCount(ids: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The ids list is empty; 2. The number of ids lists exceeds 500. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -13553,7 +13579,7 @@ async function example(context: Context) {
   crManager.addLcdJumpCount(ids).then((failIds) => {
     console.info('addLcdJumpCount successful');
   }).catch((err: BusinessError) => {
-    console.error('addLcdJumpCount fail with error: ${err.code}, ${err.message}');
+    console.error(`addLcdJumpCount fail with error: ${err.code}, ${err.message}`);
   });
 }
 ```
@@ -13588,8 +13614,10 @@ async function example(context: Context) {
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | SCREENSHOT |  1 |  截屏录屏文件类型。<br>**系统接口**：此接口为系统接口。 |
+| CINEMATIC_VIDEO |  5 |  电影风格视频文件类型。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
 | SLOW_MOTION_VIDEO<sup>22+</sup> |  6 |  慢动作视频文件类型。<br>**系统接口**：此接口为系统接口。 |
 | SPATIAL_3DGS<sup>22+</sup> |  7 |  3DGS（3D高斯点渲染）视频文件类型。<br>**系统接口**：此接口为系统接口。 |
+| CINEMATIC_VIDEO_V2 |  8 |  新版电影风格视频文件类型，与CINEMATIC_VIDEO相比新增了希区柯克等更多的特效。<br>**起始版本：** 26.0.1<br>**系统接口**：此接口为系统接口。 |
 
 ## NotifyChangeType<sup>20+</sup>
 
@@ -13693,6 +13721,7 @@ async function example(context: Context) {
 | HIDDEN_TIME | 'hidden_time'  | 文件隐藏时间（隐藏文件时间距1970年1月1日的毫秒数值）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | FILE_HIDDEN | 'file_hidden' | 文件的隐藏状态。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | ATTACHMENT_SIZE | 'attachment_size' | 附件文件的大小。单位为字节（Byte）。<br>默认值为0，表示尚未识别的附件文件大小或附件文件大小为0。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| MUSIC_MASTER_MODE | 'music_master_mode' | 音乐大师模式。<br>**起始版本：** 26.0.1<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 
 ## AlbumKeys
@@ -13718,14 +13747,17 @@ async function example(context: Context) {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称 | 值 | 说明 |
 | --- | --- | --- |
-| NICK_NAME_ATTR | 'nickname' | 相册昵称。<br>**系统接口**：此接口为系统接口。 |
-| EXTRA_INFO_ATTR | 'extra_info' | 相册扩展信息操作属性。<br>**系统接口**：此接口为系统接口。 |
-| IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。<br>**系统接口**：此接口为系统接口。 |
-| FRIEND_ID_ATTR | 'friend_id' | 相册亲友圈信息操作属性。<br>**起始版本：** 26.1.0<br>**系统接口**：此接口为系统接口。 |
+| NICK_NAME_ATTR | 'nickname' | 相册昵称。 |
+| EXTRA_INFO_ATTR | 'extra_info' | 相册扩展信息操作属性。 |
+| IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。 |
+| FRIEND_ID_ATTR | 'friend_id' | 相册亲友圈信息操作属性。<br>**起始版本：** 26.0.1 |
+| CONTACT_INFO_ATTR | 'contact_info' | 相册联系人信息操作属性。<br>**起始版本：** 26.0.1 |
 
 ## AlbumOperationType
 
@@ -13735,13 +13767,15 @@ async function example(context: Context) {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称 | 值 | 说明 |
 | --- | --- | --- |
-| ADD | 'add' | 对相册属性的新增操作。<br>**系统接口**：此接口为系统接口。 |
-| REMOVE | 'remove' | 对相册属性的移除操作。<br>**系统接口**：此接口为系统接口。 |
-| UPDATE | 'update' | 对相册属性的更新操作。<br>**系统接口**：此接口为系统接口。 |
+| ADD | 'add' | 对相册属性的新增操作。 |
+| REMOVE | 'remove' | 对相册属性的移除操作。 |
+| UPDATE | 'update' | 对相册属性的更新操作。 |
 
 ## AlbumOperation
 
@@ -13751,13 +13785,15 @@ async function example(context: Context) {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| attr | [AlbumAttribute](#albumattribute) | 否 | 否 | 设置相册的属性类型。<br>**系统接口**：此接口为系统接口。|
-| type | [AlbumOperationType](#albumoperationtype) | 否 | 否 | 设置相册属性的操作类型。<br>**系统接口**：此接口为系统接口。 |
-| values | string[] | 否 | 否 | 设置相册属性的字符串参数。数组最大长度为20；数组中的每个字符串长度不超过500个字符。<br>**系统接口**：此接口为系统接口。|
+| attr | [AlbumAttribute](#albumattribute) | 否 | 否 | 设置相册的属性类型。|
+| type | [AlbumOperationType](#albumoperationtype) | 否 | 否 | 设置相册属性的操作类型。 |
+| values | string[] | 否 | 否 | 设置相册属性的字符串参数。数组最大长度为20。<br>在API版本26.0.0，数组中的每个字符串长度不超过500个字符。<br>从API版本26.0.1开始，数组中的每个字符串长度不超过8192个字符。|
 
 ## AlbumAttributeInfo
 
@@ -13767,11 +13803,13 @@ async function example(context: Context) {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| attrValue | string | 否 | 是 | 相册属性值。<br>**系统接口**：此接口为系统接口。|
+| attrValue | string | 否 | 是 | 相册属性值。|
 
 ## HiddenPhotosDisplayMode<sup>11+</sup>
 
@@ -13797,8 +13835,8 @@ async function example(context: Context) {
 | 名称                   | 类型                | 只读 | 可选 | 说明                                              |
 | ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
 | subtype           | [PhotoSubtype](#photosubtype) | 否 | 是 | 图片或者视频的子类型。  |
-| cameraShotKey           | string | 否 | 是 | 锁屏相机拍照或录像的标记字段（仅开放给系统相机，其key值由系统相机定义）。   |
-| userId<sup>19+</sup>           | number | 否 | 是 | 用户id。  |
+| cameraShotKey           | string | 否 | 是 | 锁屏相机拍照或录像的标记字段（仅开放给系统相机，其key值由系统相机定义）。默认值为空字符串。   |
+| userId<sup>19+</sup>           | number | 否 | 是 | 用户ID。默认值为当前用户的ID。  |
 
 ## RequestPhotoOptions<sup>11+</sup>
 
@@ -13810,8 +13848,8 @@ async function example(context: Context) {
 
 | 名称                   | 类型                | 只读 | 可选 | 说明                                              |
 | ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
-| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否 | 是 | 获取缩略图的尺寸。  |
-| requestPhotoType    | [RequestPhotoType](#requestphototype11) | 否 | 是 | 获取的操作类型。  |
+| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否 | 是 | 获取缩略图的尺寸。默认尺寸为256×256。单位：像素（px）。 |
+| requestPhotoType    | [RequestPhotoType](#requestphototype11) | 否 | 是 | 获取的操作类型。默认按[RequestPhotoType](#requestphototype11).REQUEST_ALL_THUMBNAILS处理。   |
 
 ## PhotoCreationSource<sup>18+</sup>
 
@@ -13942,9 +13980,9 @@ cancel(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 | Permission denied. |
-| 202 | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. No task can be canceled. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>No task can be canceled. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -13980,7 +14018,7 @@ try {
 | countProgressListener | [ProgressListener](#progresslistener) | 否 | 是 | 复制操作的数量进度监听器。|
 | taskSignal | [TaskSignal](#tasksignal) | 否 | 是 | 复制操作的中断信号。|
 | resultListener | [ResultListener](#resultlistener) | 否 | 是 | 复制操作的结果监听器。|
-| mode | number | 否 | 是 | 复制操作的自动重命名模式。 |
+| mode | number | 否 | 是 | 复制操作的自动重命名模式。<br>有效值为0和1，0表示支持自动重命名，1表示不支持自动重命名。 |
 
 ## PhotoProxy<sup>11+</sup>
 
@@ -14108,7 +14146,7 @@ try {
 
 表示智慧分析工具类型的枚举。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -14148,7 +14186,7 @@ try {
 | ---- | ------- | ---- |  ---- | ----- |
 | types | [AnalysisType](#analysistype11)[]  | 否 | 否 | 智慧分析类型数组，数组大小上限为[AnalysisType](#analysistype11)枚举定义成员数量。 |
 | uris | string[]  | 否 | 否 | 资产URI数组。<br>长度范围：[0, 100]。 |
-| extraInfos | string  | 否 | 是 | JSON字符串格式的扩展信息。<br>长度范围：(0, 500]。|
+| extraInfos | string  | 否 | 是 | JSON字符串格式的扩展信息。<br>长度范围：(0, 500]。<br>默认值为空字符串，表示不携带扩展信息。|
 
 ## AnalysisResult<sup>24+</sup>
 
@@ -14168,7 +14206,7 @@ try {
 
 调用分析工具的配置。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -14179,13 +14217,13 @@ try {
 | 名称  | 类型                | 只读 | 可选 | 说明                                              |
 | ---- | ------- | ---- |  ---- | ----- |
 | type | [AnalysisToolType](#analysistooltype)  | 否 | 否 | 要调用的分析工具类型。 |
-| param | string  | 否 | 是 | 调用分析工具的参数，以JSON字符串格式表示，总长度不超过16KB。|
+| param | string  | 否 | 是 | 调用分析工具的参数，以JSON字符串格式表示，总长度不超过16KB。默认值为空字符串，表示不携带附加参数。|
 
 ## AnalysisToolResult
 
 分析工具执行结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -14202,7 +14240,7 @@ try {
 
 取消分析工具的配置。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -14213,7 +14251,7 @@ try {
 | 名称  | 类型                | 只读 | 可选 | 说明                                              |
 | ---- | ------- | ---- |  ---- | ----- |
 | taskId | string  | 否 | 否 | 要取消的任务ID，必须是[invokeAnalysisTool](#invokeanalysistool)返回的有效ID。 |
-| param | string  | 否 | 是 | 用于取消分析工具的参数，以JSON字符串格式提供。总长度不得超过16KB。|
+| param | string  | 否 | 是 | 用于取消分析工具的参数，以JSON字符串格式提供。总长度不得超过16KB。默认值为空字符串，表示不携带附加参数。|
 
 ## HighlightAlbumInfoType<sup>12+</sup>
 
@@ -14456,6 +14494,7 @@ try {
 | ----- |  ---- |  ---- |
 | RETAIN_FORCE |  0 |  删除原文件在云空间的本地元数据和缩略图。 |
 | HDC_RETAIN_FORCE<sup>22+</sup> |  1 |  删除原文件在家庭存储设备的本地元数据和缩略图。 |
+| SHARE_RETAIN_FORCE |  2 |  删除共享相册的本地元数据、缩略图和原图。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CloudMediaAssetTaskStatus<sup>14+</sup>
 
@@ -14520,6 +14559,7 @@ try {
 | ARCHITECTURE<sup>23+</sup> |  15 | ARCHITECTURE表示建筑照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 | LANDSCAPE<sup>23+</sup> |  16 | LANDSCAPE表示风景照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 | GAUSSIAN_SPLAT_3D<sup>24+</sup> |  17 | GAUSSIAN_SPLAT_3D表示通过3D高斯技术生成的照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| FEATURED_SINGLE_PET |  18 | FEATURED_SINGLE_PET表示精选宠物照片会被推荐。<br>**起始版本：** 26.2.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 ## RecommendationOptions<sup>11+</sup>
 
@@ -14759,7 +14799,7 @@ goToRow(position: number): boolean
 
 | 错误码ID | 错误信息  |
 | --------- | ---------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scene parameters validate failed, possible causes: position invalid. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -14800,7 +14840,7 @@ goToFirstRow(): boolean
 
 | 错误码ID | 错误信息  |
 | --------- | ---------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -14840,7 +14880,7 @@ goToNextRow(): boolean
 
 | 错误码ID | 错误信息  |
 | --------- | ---------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -14886,7 +14926,7 @@ getValue(columnIndex: number): ValueType
 
 | 错误码ID | 错误信息  |
 | --------- | ---------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800151 | Scene parameters validate failed, possible causes: columnIndex invalid. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -14928,7 +14968,7 @@ getRow(): ValuesBucket
 
 | 错误码ID | 错误信息  |
 | --------- | ---------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -14963,7 +15003,7 @@ close(): void
 
 | 错误码ID | 错误信息  |
 | --------- | ---------- |
-| 202 | Called by non-system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**

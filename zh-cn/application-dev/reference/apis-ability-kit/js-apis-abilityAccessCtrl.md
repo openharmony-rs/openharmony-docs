@@ -4,7 +4,7 @@
 <!--Subsystem: Security-->
 <!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
-<!--Tester: @leiyuqian-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
 程序访问控制提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](../../security/AccessToken/app-permission-mgmt-overview.md)。
@@ -482,7 +482,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | (Deprecated in 12) Invalid parameter. The context is invalid when it does not belong to the application itself. |
-| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. [since 11] |
+| 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. <br>适用版本：11+ |
 
 **示例：**
 
@@ -551,10 +551,10 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 | -------- | -------- |
 | 12100001 | Invalid parameter. Possible causes:<br>1. The context is invalid because it does not belong to the application itself;<br>2. The permission list contains the permission that is not declared in the module.json file;<br>3. The permission list is invalid because the permissions in it do not belong to the same permission group;<br>4. The permission list contains one or more system_grant permissions. |
 | 12100009 | Common inner error. An error occurs when creating the pop-up window or obtaining the user operation result. |
-| 12100010 | The request already exists. [since 12 - 20]. |
+| 12100010 | The request already exists. <br>适用版本：12-20 |
 | 12100011 | All permissions in the permission list have been granted. |
 | 12100012 | The permission list contains the permission that has not been revoked by the user. |
-| 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. [since 21]. |
+| 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. <br>适用版本：21+ |
 
 **示例：**
 
@@ -688,6 +688,59 @@ try {
 } catch (err) {
   let error = err as BusinessError;
   console.error(`getSelfPermissionStatus fail, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### isPermissionSupported
+
+isPermissionSupported(permissionName: Permissions): boolean
+
+查询当前设备是否支持该权限，同步返回结果。调用成功后，返回该权限在当前设备上的支持状态。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要查询支持状态的权限名称。权限名不能为空，且长度不能超过256个字符，传入无效值时返回错误码12100001。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| :------------ | :---------------------------------- |
+| boolean | 返回true表示当前设备支持该权限；返回false表示当前设备不支持该权限。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12100001 | Invalid parameter. The permissionName is empty or exceeds 256 characters. |
+| 12100007 | Service exception. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建权限管理实例
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+try {
+  // 查询目标权限的支持状态
+  let result: boolean = atManager.isPermissionSupported('ohos.permission.CAMERA');
+  console.info(`isPermissionSupported success, result: ${result}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`isPermissionSupported fail, code: ${error.code}, message: ${error.message}`);
 }
 ```
 

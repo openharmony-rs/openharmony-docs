@@ -55,9 +55,9 @@ You can display a custom dialog box by creating a dialog controller or by creati
 
 - Creating a dialog content object
 
-  You can create a custom dialog content object [ArkUI_CustomDialogOptions](../reference/apis-arkui/capi-arkui-nativemodule-arkui-customdialogoptions.md) by calling the OH_ArkUI_CustomDialog_CreateOptions](../reference/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_createoptions) API,
-
-  which returns a pointer of the **ArkUI_CustomDialogOptions** type.
+  You can create a custom dialog content object [ArkUI_CustomDialogOptions](../reference/apis-arkui/capi-arkui-nativemodule-arkui-customdialogoptions.md) by calling the [OH_ArkUI_CustomDialog_CreateOptions](../reference/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_createoptions) API. 
+  
+  This API returns a pointer of the **ArkUI_CustomDialogOptions** type.
   <!-- @[dialog_createOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
   
   ``` C++

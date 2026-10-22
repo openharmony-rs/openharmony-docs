@@ -1,10 +1,12 @@
 # Interface (VideoOutput)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5b3ab60fe000eb4bad70440a3e7f30019a2671f9 translatedAt=2026-08-20T09:35:16.309Z pushedAt=2026-08-21T02:04:51.607Z -->
 
 VideoOutput implements output information used in a video session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
@@ -510,7 +512,7 @@ enableMirror(enabled: boolean): void
 
 Enables or disables mirror recording.
 
-- Before calling this API, check whether mirror recording is supported by using [isMirrorSupported](#ismirrorsupported15).
+- Before calling this API, check whether mirror recording is supported using [isMirrorSupported](#ismirrorsupported15).
 
 - After enabling or disabling mirror recording, call [getVideoRotation](#getvideorotation12) to obtain the rotation angle and [updateRotation](../apis-media-kit/arkts-apis-media-AVRecorder.md#updaterotation12) to update the rotation angle.
 
@@ -532,7 +534,6 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 | -------- |------------------------------------------------|
 | 7400101  | Parameter missing or parameter type incorrect. |
 | 7400103  | Session not config.                    |
-
 
 **Example**
 
@@ -558,6 +559,7 @@ getVideoRotation(deviceDegree?: number): ImageRotation
 Obtains the video rotation angle.
 
 - Device' natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
+
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural orientation. For example, the rear camera sensor of a bar-type phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural orientation.
 
 **Model restriction**: This API can be used only in the stage model.

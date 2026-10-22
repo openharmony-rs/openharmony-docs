@@ -261,9 +261,9 @@ normalize(): URI
 >
 > 如果此URI是不透明的，或者其路径已经是规范形式，则返回该URI。否则将构造一个新的URI，该URI与当前URI相同，唯一的区别是其路径通过规范化当前URI的路径来计算，具体规则如下：
 >
->  1.移除所有的 .（点）段。
+>  1. 移除所有的 .（点）段。
 >
->  2.如果 ..（双点）段前面有一个非 .. 段，则将这两个段一起移除。重复此步骤，直到不再适用为止。
+>  2. 如果 ..（双点）段前面有一个非 .. 段，则将这两个段一起移除。重复此步骤，直到不再适用为止。
 >
 >如果路径规范化后以 ..（双点）段开头，这表明之前没有足够的非 .. 段可以移除，因此路径将以 .. 段开始。
 
@@ -658,7 +658,7 @@ console.info(uriInstance.getSegment().toString()); // path,to,image.jpg
 
 ### createFromParts<sup>12+</sup>
 
-createFromParts(scheme: string, ssp: string, fragment: string): URI
+static createFromParts(scheme: string, ssp: string, fragment: string): URI
 
 根据提供的方案（scheme）、方案特定部分（ssp）以及片段（fragment）创建一个新的URI对象。
 

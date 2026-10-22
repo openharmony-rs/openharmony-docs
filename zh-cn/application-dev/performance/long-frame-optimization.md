@@ -11,7 +11,7 @@
 
 当应用在运行时出现明显的延迟或不流畅的情况，会影响用户体验，开发者需要定位、分析、解决应用超长帧问题。本文先简单介绍应用流畅度评测指标，然后基于Trace数据，介绍超长帧问题分析思路，并结合案例实践，实操定位分析并优化卡顿问题。
 
-本文主要是以Trace数据作为切入点进行分析，相应的工具可以使用SmartPerf Host或DevEco Stdio内置的Frame等。若开发者需要补充SmartPerf Host工具和Trace相关知识，可以分别参考《[性能优化工具SmartPerf-Host](https://docs.openharmony.cn/pages/v4.1/zh-cn/application-dev/performance/performance-optimization-using-smartperf-host.md)》和《[常用trace使用指导](https://docs.openharmony.cn/pages/v4.1/zh-cn/application-dev/performance/common-trace-using-instructions.md)》等应用开发文档。
+本文主要是以Trace数据作为切入点进行分析，相应的工具可以使用SmartPerf Host或DevEco Studio内置的Frame等。若开发者需要补充SmartPerf Host工具和Trace相关知识，可以分别参考《[性能优化工具SmartPerf-Host](https://docs.openharmony.cn/pages/v4.1/zh-cn/application-dev/performance/performance-optimization-using-smartperf-host.md)》和《[常用trace使用指导](https://docs.openharmony.cn/pages/v4.1/zh-cn/application-dev/performance/common-trace-using-instructions.md)》等应用开发文档。
 
 
 
@@ -102,7 +102,7 @@
 
 ![frame](./figures/frame.png)
 
-同时，通过途中信息可以看到，橙红色异常帧都集中在App侧。所以应该重点定位分析App侧问题。
+同时，通过图中信息可以看到，橙红色异常帧都集中在App侧。所以应该重点定位分析App侧问题。
 
 ### 逐帧分析问题
 
@@ -141,7 +141,7 @@
 
 **原因分析**
 
-围绕10列表项，在搜集到相关信息后，可以发现不论首次创建时的149972帧，还是复用是的150670帧都存在异常。接下来，拆分开两个阶段，再细看其中的异常。
+围绕10列表项，在搜集到相关信息后，可以发现不论首次创建时的149972帧，还是复用时的150670帧都存在异常。接下来，拆分开两个阶段，再细看其中的异常。
 
 首先看，在首次加载10号列表项的阶段。用了两帧的Vsync空闲时间，它才预加载完成。通过标签`H:CustomNode:BuildItem` , 可以获知在其创建阶段涉及到了自定义组件的创建。放大149971和149972两帧，可以看到多个自定义组件名`OneMoment`和`InteractiveButton`，可以推测这其中存在嵌套自定义组件。而其中149972帧主要用于多个`InteractiveButton`自定义组件的创建，可以推测这也是导致其为超长帧的原因。
 
@@ -175,7 +175,7 @@
 
 除了系统函数外，可以定位到最为耗时的TS侧函数用于initialRender，且位于InteractiveButton.ets。将鼠标悬停，可以看到具体的文件位置信息：URL:entry/src/main/ets/view/InteractiveButton.ets。如果当前工程与信息是关联的，点击后，会跳转到相应的代码位置。
 
-而通分析源码，可以看到该自定义组件InteractiveButton确实符合采用轻量级@Builder优化的条件，所以可以考虑优化为下方interactiveButton自定义构建函数。
+而通过分析源码，可以看到该自定义组件InteractiveButton确实符合采用轻量级@Builder优化的条件，所以可以考虑优化为下方interactiveButton自定义构建函数。
 
 ```ts
 // 优化前的简化代码
@@ -220,7 +220,7 @@ function interactiveButton($$: Temp) {
 
 **优化效果**
 
-使用更轻量的UI元素复用机制@Builder优化自定义组件`InteractiveButton`后，重新抓取Trace，再次通过标签`H:Builder:BuildLazyItem [10]`检索10号列表项。可以看到10号列表项在其首次创建时，合并为一阵进行预加载，且不再异常。
+使用更轻量的UI元素复用机制@Builder优化自定义组件`InteractiveButton`后，重新抓取Trace，再次通过标签`H:Builder:BuildLazyItem [10]`检索10号列表项。可以看到10号列表项在其首次创建时，合并为一帧进行预加载，且不再异常。
 
 ![after](./figures/after.png)
 
@@ -228,7 +228,7 @@ function interactiveButton($$: Temp) {
 
 ![before](./figures/before.png)
 
-再看复用时的152160帧，也不再异常。对比优化前，大约有也有4ms的时间优化。
+再看复用时的152160帧，也不再异常。对比优化前，大约也有4ms的时间优化。
 
 ![after2](./figures/after2.png)
 

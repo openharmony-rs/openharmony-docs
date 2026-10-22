@@ -1,13 +1,14 @@
 # Counter
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=fd10fbb9e5b5e2e1e561a46b9ca4925a29d1a0a3 translatedAt=2026-06-30T12:26:14.273Z pushedAt=2026-07-02T09:00:12.452Z -->
+<!-- md-trans-meta sourceCommit=15d062acadbaecdb97e3e492b286bd277a5fbc2e translatedAt=2026-08-21T02:22:36.263Z pushedAt=2026-08-21T07:19:47.696Z -->
 
-The **Counter** component provides an operation to increase or decrease the number.
+The **Counter** component provides increment and decrement operations. It is suitable for scenarios that require frequent value changes, such as product quantity selection and parameter adjustment, helping users adjust values quickly and intuitively.
 
 >  **NOTE**
 >
@@ -19,7 +20,6 @@ The **Counter** component provides an operation to increase or decrease the numb
 ## Child Components
 
 Supported
-
 
 ## APIs
 
@@ -51,7 +51,7 @@ Sets whether to enable the increment button.
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether to enable the increment button.<br>Default value: **true**. The value **true** means to enable the increment button, and the value **false** means the opposite.|
+| value  | boolean | Yes   | Whether to disable or enable the increment button.<br>Default value: **true**, which means the increment button is enabled; **false** means the button is disabled. |
 
 ### enableDec<sup>10+</sup>
 
@@ -69,7 +69,7 @@ Sets whether to enable the decrement button.
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether to enable the decrement button.<br>Default value: **true**. The value **true** means to enable the decrement button, and the value **false** means the opposite.|
+| value  | boolean | Yes  | Whether to enable or disable the decrement button.<br>Default value: **true**, which means the decrement button is enabled; **false** means the decrement button is disabled. |
 
 ## Events
 
@@ -91,7 +91,7 @@ Invoked when the value increases.
 
 | Name| Type                                          | Mandatory| Description                                |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | Yes  | Callback invoked when the value increases.       |
+| event  | [VoidCallback](ts-types.md#voidcallback12)    | Yes   | Callback invoked when the counter value increases. |
 
 ### onDec
 
@@ -109,41 +109,40 @@ Invoked when the value decreases.
 
 | Name| Type                                          | Mandatory| Description                                |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12)    | Yes  | Callback invoked when the value decreases.       |
-
+| event  | [VoidCallback](ts-types.md#voidcallback12)    | Yes   | Callback invoked when the value of the Counter decreases. |
 
 ## Example
 
-This example shows the basic usage of the **Counter** component. Users can touch the **+** or **-** button to adjust the value.
+This example shows the basic usage of the **Counter** component. Tap the **+** and **-** buttons to change the counter value.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct CounterExample {
-  @State value1: number = 0;
-  @State value2: number = 0;
+  @State counterValue1: number = 0;
+  @State counterValue2: number = 0;
 
   build() {
     Column({ space: 50 }) {
       Counter() {
-        Text(this.value1.toString())
+        Text(this.counterValue1.toString())
       }
       .onInc(() => {
-        this.value1++;
+        this.counterValue1++;
       })
       .onDec(() => {
-        this.value1--;
+        this.counterValue1--;
       })
 
       Counter() {
-        Text(this.value2.toString())
+        Text(this.counterValue2.toString())
       }
       .onInc(() => {
-        this.value2++;
+        this.counterValue2++;
       })
       .onDec(() => {
-        this.value2--;
+        this.counterValue2--;
       })
       .enableInc(true)
       .enableDec(false)

@@ -654,6 +654,8 @@ struct Index {
 
 ![observedv2-sync-8](./figures/observedv2-sync-8.gif)
 
+在继承场景中，不建议在子类中重复声明与父类同名的\@Trace属性，否则可能导致非预期的依赖收集。详情请参考[延迟加载场景下父子类同名\@Trace属性导致非预期的依赖收集](#延迟加载场景下父子类同名trace属性导致非预期的依赖收集)。
+
 ### \@Trace装饰基础类型的数组
 
 \@Trace装饰数组时，使用支持的API能够观测到变化。支持的API见[观察变化](#观察变化)。
@@ -1409,3 +1411,90 @@ struct Detail {
 ```
 
 ![observedv2_router_deserialize.gif](./figures/observedv2_router_deserialize.gif)
+
+
+### 延迟加载场景下父子类同名\@Trace属性导致非预期的依赖收集
+
+框架执行[\@Computed](./arkts-new-computed.md)计算、组件渲染或[PersistenceV2](./arkts-new-persistencev2.md)持久化时，会收集执行过程中访问到的状态变量依赖。如果父类和子类声明了同名的\@Trace属性，子类又通过[延迟加载（lazy import）](../../arkts-utils/arkts-lazy-import.md)延迟加载，并恰好在上述依赖收集过程中首次加载，则该子类同名属性会触发到父类的同名属性的读取，从而收集到该同名属性的依赖。
+
+因此，在首次修改该同名属性时，会触发非预期的\@Computed重新计算、组件刷新或PersistenceV2持久化写入；再次修改时不会继续触发这一非预期行为。建议仅在父类中声明该\@Trace属性，由子类直接继承，不要在子类中重复声明。以下以\@Computed场景为例进行说明。
+
+【反例】
+
+``` TypeScript
+// LazyImportTraceBase.ets
+@ObservedV2
+export class Parent {
+  @Trace value: number = 0;
+}
+```
+
+``` TypeScript
+// LazyImportTraceChild.ets
+import { Parent } from './LazyImportTraceBase';
+
+@ObservedV2
+export class Child extends Parent {
+  @Trace value: number = 0;
+  @Trace value2: number = 0;
+}
+```
+
+``` TypeScript
+// 延迟加载Child类
+import lazy { Child } from './LazyImportTraceChild';
+
+@Entry
+@ComponentV2
+struct LazyImportTrace {
+  @Local count: number = 1;
+  child?: Child;
+
+  @Computed
+  get doubleCount(): number {
+    if (!this.child) {
+      // Child通过lazy import延迟加载，并在@Computed初始化过程中首次加载
+      // 父类和子类声明了同名的@Trace value，此时会收集到当前@Computed doubleCount的依赖
+      this.child = new Child();
+    }
+    console.info('execute @Computed doubleCount');
+    // 预期仅在count改变时，才会触发@Computed doubleCount重新计算
+    return this.count * 2;
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      Text(`doubleCount ${this.doubleCount}`)
+        .fontSize(20)
+      Button(`Change child value ${this.child?.value}`)
+        .onClick(() => {
+          if (this.child) {
+            this.child.value++;
+          }
+        })
+      Button(`Change count ${this.count}`)
+        .onClick(() => {
+          this.count++;
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+【正例】
+
+将`value`统一定义在父类中，子类直接继承该属性，不再重复声明同名的\@Trace属性。仅需按以下方式修改`LazyImportTraceChild.ets`，其他代码保持不变。
+
+``` TypeScript
+import { Parent } from './LazyImportTraceBase';
+
+@ObservedV2
+export class Child extends Parent {
+  // 不在子类重复定义value，直接继承父类中被@Trace装饰的value属性
+  @Trace value2: number = 0;
+}
+```
+
+![lazy-import-track.gif](./figures/lazy-import-track.gif)

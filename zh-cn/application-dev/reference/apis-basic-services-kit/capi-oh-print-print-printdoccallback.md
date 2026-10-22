@@ -1,7 +1,7 @@
 # Print_PrintDocCallback
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
@@ -12,7 +12,7 @@ typedef struct {...} Print_PrintDocCallback
 
 ## 概述
 
-表示打印文档回调结构体。用于 C/C++ 原生应用向打印框架提供文件生成和任务状态接收能力。
+表示打印文档回调结构体。用于C/C++原生应用向打印框架提供文件生成和任务状态接收能力。
 
 **起始版本：** 13
 

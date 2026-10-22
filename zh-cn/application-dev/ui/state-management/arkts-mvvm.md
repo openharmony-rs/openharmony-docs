@@ -119,7 +119,7 @@ struct StateIndex {
             .width(28)
             .height(28)
         }
-        // 请将$r('app.string.all_learn_advanced_math')替换为实际资源文件，在本示例中该资源文件的value值为"学习高数"
+        // 请将$r('app.string.learn_advanced_math')替换为实际资源文件，在本示例中该资源文件的value值为"学习高数"
         Text($r('app.string.learn_advanced_math'))
           .fontSize(24)
           .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
@@ -587,7 +587,7 @@ struct BuilderIndex {
 
 **Model层**
 
-* Model层存放本应用核心数据结构，这层本身和UI开发关系不大，让用户按照自己的业务逻辑进行封装。
+* Model层存放本应用核心数据结构，这层本身和UI开发关系不大，让开发者按照自己的业务逻辑进行封装。
 
 **ViewModel层**
 

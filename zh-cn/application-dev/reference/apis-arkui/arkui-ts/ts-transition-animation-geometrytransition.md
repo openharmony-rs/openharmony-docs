@@ -28,7 +28,7 @@ geometryTransition(id: string): T
 
 | 参数名  | 类型                 | 必填 | 说明                                                     |
 | ------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| id      | string                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定，且分别作为in（新视图）和out（旧视图）两种不同类型角色，不能多个组件绑定同一个id。 |
+| id      | string                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定，且分别作为in（新视图）和out（旧视图）两种不同类型角色，不能多个组件绑定同一个id。绑定同一id的组件不能相互嵌套，即一个绑定了该id的组件内部不能再嵌套另一个绑定了相同id的组件，否则会导致转场动画异常。建议在动画结束回调（[onFinish](ts-explicit-animation.md#animateparam对象说明)）中将绑定的id置空，防止在非预期场景（如页面快速连续点击、状态变量变化等）下误触发共享元素转场，下次触发转场前再将id设置回所需值。 |
 
 **返回值：**
 
@@ -52,7 +52,7 @@ geometryTransition(id: string, options?: GeometryTransitionOptions): T
 
 | 参数名  | 类型                 | 必填 | 说明                                                     |
 | ------- | ------------------------ | ---- | ------------------------------------------------------------ |
-| id      | string                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定，且分别作为in（新视图）和out（旧视图）两种不同类型角色，不能多个组件绑定同一个id。 |
+| id      | string                   | 是   | 用于设置绑定关系，id置空字符串清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定，且分别作为in（新视图）和out（旧视图）两种不同类型角色，不能多个组件绑定同一个id。绑定同一id的组件不能相互嵌套，即一个绑定了该id的组件内部不能再嵌套另一个绑定了相同id的组件，否则会导致转场动画异常。建议在动画结束回调（[onFinish](ts-explicit-animation.md#animateparam对象说明)）中将绑定的id置空，防止在非预期场景（如页面快速连续点击、状态变量变化等）下误触发共享元素转场，下次触发转场前再将id设置回所需值。 |
 | options | [GeometryTransitionOptions](#geometrytransitionoptions11) | 否   | 组件内隐式共享元素转场动画参数，需配合[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)使用才有动画效果。<br>默认值为 { follow: false }。                                    |
 
 **返回值：**
@@ -75,12 +75,17 @@ geometryTransition(id: string, options?: GeometryTransitionOptions): T
 
 ## 示例
 
+### 示例1（if else范式下的共享元素实现）
+
+该示例主要演示if else范式下的共享元素效果集成。
+
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct Index {
   @State isShow: boolean = false;
+  @State geometryId: string = 'picture';
 
   build() {
     Stack({ alignContent: Alignment.Center }) {
@@ -92,8 +97,12 @@ struct Index {
           .width(300)
           .height(400)
           .offset({ y: 100 })
-          .geometryTransition('picture', { follow: false })
+          .geometryTransition(this.geometryId)
           .transition(TransitionEffect.OPACITY)
+          // 在打断场景下，即动画过程中点击页面触发下一次转场，如果不加id，则会出现重影
+          // 加了id之后，新建的图片会复用之前的图片节点，不会重新创建节点，也就不会有重影问题
+          // 加id的规则为加在if和else下的第一个节点上，有多个并列节点则也需要进行添加
+          .id('item1')
       } else {
         // geometryTransition此处绑定的是容器，那么容器内的子组件需设为相对布局跟随父容器变化，
         // 套多层容器为了说明相对布局约束传递
@@ -110,13 +119,17 @@ struct Index {
         // 则对容器本身有圆角同步而不会操作容器内部子组件的borderRadius
         .borderRadius(20)
         .clip(true)
-        .geometryTransition('picture')
+        .geometryTransition(this.geometryId)
         // transition保证组件离场不被立即析构，可设置其他转场效果
         .transition(TransitionEffect.OPACITY)
+        .id('item2')
       }
     }
     .onClick(() => {
-      this.getUIContext().animateTo({ duration: 1000 }, () => {
+      this.geometryId = 'picture';
+      this.getUIContext().animateTo({ duration: 1000, onFinish: () => {
+        this.geometryId = '';
+      } }, () => {
         this.isShow = !this.isShow;
       });
     })
@@ -125,3 +138,89 @@ struct Index {
 ```
 
 ![geometrytransition](figures/geometrytransition.gif)
+
+### 示例2（if范式下使用follow实现跟随效果）
+
+该示例主要演示if范式下使用follow参数实现不下树的组件的跟随效果。
+
+```ts
+// xxx.ets
+const FOLLOW_TRUE_ID: string = 'follow_true_id';
+const FOLLOW_FALSE_ID: string = 'follow_false_id';
+
+@Entry
+@Component
+struct Index {
+  @State isFollow: boolean = false;
+  @State isShow: boolean = false;
+  @State geometryId: string = '';
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Column()
+        .backgroundColor('#ff663399')
+        .size({ width: 100, height: 100 })
+        .position({ x: 200, y: 500 })
+        .borderRadius(25)
+        .clip(true)
+        .geometryTransition(this.geometryId)
+        .transition(TransitionEffect.OPACITY)
+    }
+    .size({ width: '100%', height: '100%' })
+    .backgroundColor("#33000000")
+    .transition(TransitionEffect.OPACITY)
+  }
+
+  build() {
+    Stack() {
+      if (this.isFollow) {
+        Column()
+          .backgroundColor('#ff103460')
+          .size({ width: 100, height: 100 })
+          .position({ x: 30, y: 30 })
+          .borderRadius(50)
+          // follow为true时，一镜到底转场期间该组件会下树做跟随效果
+          .geometryTransition(FOLLOW_TRUE_ID, { follow: true })
+          .transition(TransitionEffect.OPACITY)
+      } else {
+        Column()
+          .backgroundColor('#ff103460')
+          .size({ width: 100, height: 100 })
+          .position({ x: 30, y: 30 })
+          .borderRadius(50)
+          // follow为false时，一镜到底转场期间该组件会留在原地不做跟随
+          .geometryTransition(FOLLOW_FALSE_ID, { follow: false })
+          .transition(TransitionEffect.OPACITY)
+      }
+
+      Button('follow: ' + (this.isFollow ? 'true' : 'false'))
+        .onClick(() => {
+          this.isFollow = !this.isFollow;
+          this.geometryId = this.isFollow ? FOLLOW_TRUE_ID : FOLLOW_FALSE_ID;
+        })
+        .size({ width: 200, height: 50 })
+        .backgroundColor('#ff6b879b')
+    }
+    .size({ width: '100%', height: '100%' })
+    .bindContentCover(this.isShow, this.myBuilder(), {
+      // 模态页面实现一镜到底动效时，需要设置modalTransition为ModalTransition.NONE
+      modalTransition: ModalTransition.NONE,
+      onWillDismiss: () => {
+        // 侧滑关闭模态页面时，通过animateTo创造动画环境实现一镜到底动效
+        this.getUIContext().animateTo({ duration: 350 }, () => {
+          this.isShow = !this.isShow;
+        });
+      }
+    })
+    .onClick(() => {
+      // 点击弹出模态页
+      this.getUIContext().animateTo({ duration: 350 }, () => {
+        this.isShow = !this.isShow;
+      });
+    })
+  }
+}
+```
+
+![geometrytransition_follow](figures/geometrytransition_follow.gif)

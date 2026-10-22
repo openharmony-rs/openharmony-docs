@@ -27,7 +27,7 @@ setFocusMode(afMode: FocusMode): void
 
 设置对焦模式。
 
-进行设置之前，需要先检查设备是否支持指定的焦距模式，可使用方法[isFocusModeSupported](arkts-apis-camera-FocusQuery.md#isfocusmodesupported11)。
+进行设置之前，需要先检查设备是否支持指定的对焦模式，可使用方法[isFocusModeSupported](arkts-apis-camera-FocusQuery.md#isfocusmodesupported11)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -37,7 +37,7 @@ setFocusMode(afMode: FocusMode): void
 
 | 参数名      | 类型                     | 必填 | 说明                 |
 | -------- | ----------------------- | ---- | ------------------- |
-| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | 是   | 指定的焦距模式。传参为null或者undefined，作为0处理，手动对焦模式。       |
+| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | 是   | 指定的对焦模式。传参为null或者undefined，作为0处理，手动对焦模式。       |
 
 **错误码：**
 
@@ -77,7 +77,7 @@ getFocusMode(): FocusMode
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| [FocusMode](arkts-apis-camera-e.md#focusmode)   | 获取当前设备的焦距模式。接口调用失败会抛出相应错误码并返回undefined，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| [FocusMode](arkts-apis-camera-e.md#focusmode)   | 获取当前设备的对焦模式。接口调用失败会抛出相应错误码并返回undefined，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 
@@ -109,9 +109,9 @@ function getFocusMode(photoSession: camera.PhotoSession): camera.FocusMode | und
 
 setFocusPoint(point: Point): void
 
-设置焦点，焦点应在0-1坐标系内，该坐标系左上角为{0，0}，右下角为{1，1}。
+设置焦点，焦点应在0-1坐标系内，该坐标系左上角为{0, 0}，右下角为{1, 1}。
 
-此坐标系是以设备充电口在右侧时的横向设备方向为基准的，例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为{w，h}，且触碰点为{x，y}，则转换后的坐标点为{y/h，1-x/w}。
+此坐标系是以设备充电口在右侧时的横向设备方向为基准的，例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为{w, h}，且触碰点为{x, y}，则转换后的坐标点为{y/h, 1-x/w}。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -121,7 +121,7 @@ setFocusPoint(point: Point): void
 
 | 参数名      | 类型                     | 必填 | 说明                 |
 | -------- | ----------------------- | ---- | ------------------- |
-| point    | [Point](arkts-apis-camera-i.md#point)         | 是   | 焦点。x、y设置范围应在[0，1]之内，超过范围，如果小于0设置0，大于1设置1。   |
+| point    | [Point](arkts-apis-camera-i.md#point)         | 是   | 焦点。x、y设置范围应在[0, 1]之内，超过范围，如果小于0设置0，大于1设置1。   |
 
 **错误码：**
 

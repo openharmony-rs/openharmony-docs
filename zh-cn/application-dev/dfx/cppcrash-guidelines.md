@@ -440,9 +440,9 @@ ARM 64位系统支持抓取CPP和JS之间跨语言的调用栈，因此如果在
 
 空指针解引用通常有以下两个常见的场景：
 
-1.形如SIGSEGV(SEGV_MAPERR)\@0x00000000或cppcrash日志的Register中打印的r0，r1等传参寄存器的值为0，应首先考虑调用时是否传入了空指针。
+1. 形如SIGSEGV(SEGV_MAPERR)\@0x00000000或cppcrash日志的Register中打印的r0，r1等传参寄存器的值为0，应首先考虑调用时是否传入了空指针。
 
-2.形如SIGSEGV(SEGV_MAPERR)\@0x0000000c（小于一个内存页大小）或cppcrash日志Register中打印的r1等传参寄存器的值为一个很小的值时应考虑调用入参的结构体成员是否包含空指针。
+2. 形如SIGSEGV(SEGV_MAPERR)\@0x0000000c（小于一个内存页大小）或cppcrash日志Register中打印的r1等传参寄存器的值为一个很小的值时应考虑调用入参的结构体成员是否包含空指针。
 
 该场景会在日志中打印出提示信息，表明故障很有可能是因为空指针解引用导致。以下是一份DevEco Studio归档在FaultLog的进程崩溃日志的核心内容。
 
@@ -683,6 +683,35 @@ Tid:29192, Name:OS_FFRT_2_0                 <- 故障线程号，线程名
 ...
 ```
 <!--RP5End-->
+
+### Promise异步嵌套调用故障场景日志规格
+
+从API版本26.0.1开始，在ARM 64位系统下，当Promise异步嵌套调用过程中发生Cpp Crash时，异步栈跟踪维测功能还会打印提交该异步任务的线程栈，帮助定位由异步任务提交者造成的崩溃问题。Promise异步栈功能默认关闭，开启方法参见[Promise异步栈](jscrash-guidelines.md#promise异步栈)。
+
+在多层异步嵌套调用场景下，当前规格仅保留**发生故障的调用层**的提交者调用栈，而非完整的嵌套调用链。崩溃线程的调用栈与其提交线程的调用栈通过`SubmitterStacktrace`字符串分隔。
+
+以9级`async/await`嵌套调用为例，整个过程如下图所示：调用方发起调用后，每层异步函数执行至`await`处挂起，待其Promise决议后由运行时（事件循环）恢复执行，随后调用下一层异步函数，如此逐层嵌套，直至最深层multiAsync9。每层`await`都会产生一个新的Promise节点，运行时会逐层保存该层的提交者调用栈。multiAsync9恢复执行后调用`TriggerCppCrash()`触发Cpp Crash，日志中保留的正是该层的提交者调用栈。
+
+![Promise异步嵌套调用过程](figures/promise_async_nested_call.png)
+
+以下是一份DevEco Studio归档在FaultLog的进程崩溃日志的核心内容。
+
+```text
+...
+========SubmitterStacktrace========       <- 任务异常时打印任务提交者调用栈
+#00 pc 00000000005f40d0 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::AsyncStackTraceManager::SavePromiseNode(panda::ecmascript::JSHandle<panda::ecmascript::JSPromise> const&)+60)(dbd213472df8eda22fa2fc27e7353c09)
+#01 pc 0000000000289628 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::JSAsyncFunction::AsyncFunctionAwait(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::JSTaggedValue> const&, panda::ecmascript::JSHandle<panda::ecmascript::JSTaggedValue> const&)+1752)(dbd213472df8eda22fa2fc27e7353c09)
+#02 pc 0000000000288cb0 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::RuntimeStubs::AsyncFunctionAwaitUncaught(unsigned long, unsigned int, unsigned long)+116)(dbd213472df8eda22fa2fc27e7353c09)
+#03 pc 0000000000e85c58 /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+40)
+#04 pc 0000000000d55e8c /system/lib64/module/arkcompiler/stub.an(BCStub_HandleAsyncfunctionawaituncaughtV8StwCopy+64)
+#05 at multiAsync9 entry (entry/src/main/ets/pages/Index.ets:140:3)  <- 发生故障的调用帧
+#06 at multiAsync8 entry (entry/src/main/ets/pages/Index.ets:134:3)
+#07 pc 00000000004b0860 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::InterpreterAssembly::GeneratorReEnterInterpreter(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::GeneratorContext>)+164)(dbd213472df8eda22fa2fc27e7353c09)
+#08 pc 000000000027ff7c /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::EcmaInterpreter::GeneratorReEnterInterpreter(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::GeneratorContext>)+248)(dbd213472df8eda22fa2fc27e7353c09)
+#09 pc 000000000027fd3c /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::GeneratorHelper::Next(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::GeneratorContext> const&, panda::ecmascript::JSTaggedValue)+172)(dbd213472df8eda22fa2fc27e7353c09)
+#10 pc 000000000027fbdc /system/lib64/platformsdk/libark_jsruntime.so(dbd213472df8eda22fa2fc27e7353c09)
+...
+```
 
 ### 应用通过HiAppEvent设置崩溃日志配置参数场景日志规格
 
@@ -1016,7 +1045,7 @@ at onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 
 **编译选项开启方法**
 
-以Cmake为例，在CMakeList.txt中添加`set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")`。
+以CMake为例，在CMakeLists.txt中添加`set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")`。
 
 ### 应用发生SIGPIPE异常退出
 
@@ -1100,6 +1129,62 @@ SIGPIPE异常退出时关键日志如下所示：
   03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     #01 pc 0000000000001cf8 /data/storage/el1/bundle/libs/arm64/libentry.so(testSIGPIPE()+228)(d6af99a8111f4c2761800cb1432bea140f5176e4)
   03-06 13:55:25.876   20440-20440   C02D11/process...fxFaultLogger  pid-20440             I     #02 pc 0000000000001e34 /data/storage/el1/bundle/libs/arm64/libentry.so(d6af99a8111f4c2761800cb1432bea140f5176e4)
   ...
+  ```
+
+### 应用主动退出缺失崩溃日志
+
+为解决应用调用`exit()`、`_exit()`等函数主动退出时因缺失调用栈而难以定位的问题，从API版本26.2.0开始，系统支持“退出捕获”功能。该功能默认关闭且仅限于[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)的开发调试，开启后会将符合条件的主动退出转换为`SIGABRT`信号，从而生成包含调用栈的CppCrash日志。
+
+开发者可通过hdc工具设置系统参数`hilog.exit.catch.abort`，该参数控制退出捕获功能的开启和关闭。由于该参数在应用进程启动时读取，修改后必须重启目标应用进程才能生效。
+
+`hilog.exit.catch.abort`参数的取值说明如下。
+
+| 参数值 | 处理方式 |
+| --- | --- |
+| `true` | 开启功能。 |
+| `false` | 关闭功能。 |
+| 未设置、空字符串或其他值 | 保持原有功能状态。 |
+
+`true`、`false`必须使用小写完整字符串，`0`、`1`、`TRUE`等不属于支持的取值。
+
+- **开启功能**
+
+  在电脑终端执行以下命令，确认参数读回值为`true`后，结束旧应用进程并重新启动应用。
+
+  ```shell
+  hdc shell param set hilog.exit.catch.abort true
+  hdc shell param get hilog.exit.catch.abort
+  ```
+
+- **获取并分析日志**
+
+  在应用中重新触发调用`exit()`的业务操作。对于`_exit()`、`exit_group`或第三方库内部调用`exit()`的场景，同样触发对应的业务路径。
+
+  日志获取方式参见[日志获取](#日志获取)。根据本次退出的时间、进程ID和进程名，在日志目录中定位对应的CppCrash日志文件。
+
+  经本功能转换生成的日志，其`Reason`预期为`SIGABRT(SI_USER)`。在`Fault thread info`中沿调用栈查找退出函数及其调用方；第三方库退出场景还需关注栈中的动态库名称。
+
+  以下是`_exit()`退出日志的节选，具体地址和符号以实际日志为准。
+
+  ```text
+  Reason:Signal:SIGABRT(SI_USER)@0x01317c0100005c7a from:23674:20020225
+  Fault thread info:
+  Tid:23674, Name:e.exitcatchdemo
+  #00 pc 000000000016c9b8 /system/lib/ld-musl-aarch64.so.1(_Exit+60)(951a5903172d64d042a1ddca18a46e4b)
+  #01 pc 00000000001ee76c /system/lib/ld-musl-aarch64.so.1(_exit+12)(951a5903172d64d042a1ddca18a46e4b)
+  #02 pc 0000000000002628 /data/storage/el1/bundle/libs/arm64/libentry.so(DfxExitDemoImmediateExit24+24)(1e3581c0417480e1)
+  #03 pc 000000000000295c /data/storage/el1/bundle/libs/arm64/libentry.so(1e3581c0417480e1)
+  ```
+
+  其中`#00`、`#01`为系统退出函数，`#02`、`#03`为应用动态库中的栈帧。
+
+- **关闭功能**
+
+  执行以下命令，确认参数读回值为`false`后，重新启动应用使配置生效。
+
+  ```shell
+  hdc shell param set hilog.exit.catch.abort false
+  hdc shell param get hilog.exit.catch.abort
   ```
 
 <!--RP10-->

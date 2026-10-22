@@ -660,7 +660,7 @@ enableLocationMock(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |801 | Capability not supported. Failed to call ${geoLocationManager.enableLocationMock} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                            |
@@ -697,7 +697,7 @@ disableLocationMock(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |801 | Capability not supported. Failed to call ${geoLocationManager.disableLocationMock} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                            |
@@ -742,7 +742,7 @@ setMockedLocations(config: LocationMockConfig): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.setMockedLocations} due to limited device capabilities.          |
@@ -844,7 +844,7 @@ enableReverseGeocodingMock(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |801 | Capability not supported. Failed to call ${geoLocationManager.enableReverseGeocodingMock} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                            |
@@ -880,7 +880,7 @@ disableReverseGeocodingMock(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |801 | Capability not supported. Failed to call ${geoLocationManager.disableReverseGeocodingMock} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                            |
@@ -924,7 +924,7 @@ setReverseGeocodingMockInfo(mockInfos: Array&lt;ReverseGeocodingMockInfo&gt;): v
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.setReverseGeocodingMockInfo} due to limited device capabilities.          |

@@ -197,7 +197,7 @@ strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
 
 | 参数名           | 类型             | 必填 | 说明                                            |
 | ---------------- | ------- | ---- | ----------------------------------------------- |
-| strokeJoinStyle         | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) \| undefined | 是 | 文本描边拐角样式。<br>值为undefined时，按照StrokeJoinStyle.MITER_JOIN处理，请参考[StrokeJoinStyle](ts-text-common.md#strokejoinstyle)，文本拐角处表现为锐角。 |
+| strokeJoinStyle         | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) \| undefined | 是 | 文本描边拐角样式。<br>值为undefined时，按照StrokeJoinStyle.MITER_JOIN处理，请参考[StrokeJoinStyle](ts-text-common.md#strokejoinstyle)，文本拐角处表现为尖角。 |
 
 ### shaderStyle
 
@@ -592,7 +592,7 @@ Font Feature当前支持的属性参见[fontFeature](ts-basic-components-text.md
 
 selectedBackgroundColor(value: ResourceColor)
 
-设置文本选中底板颜色。未通过该接口设置时，默认颜色为'#007DFF'（蓝色）。
+设置文本选中高亮颜色。未通过该接口设置时，默认颜色为'#007DFF'（蓝色）。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -604,7 +604,7 @@ selectedBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中底板颜色。如果未设置不透明度，默认为20%不透明度。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。 |
 
 ### inputFilter<sup>12+</sup>
 
@@ -729,7 +729,7 @@ minFontScale(scale: Optional\<number | Resource>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最小的字体缩放倍数，支持undefined类型。<br>取值范围：[0, 1]<br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。设置undefined时维持原值，异常值默认不生效。<br>使用前需在工程中配置[configuration.json](../../../quick-start//app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start//app-configuration-file.md)文件，具体详见[示例19（设置最小字体范围与最大字体范围）](#示例19设置最小字体范围与最大字体范围)。 |
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最小的字体缩放倍数，支持undefined类型。<br>取值范围：[0, 1]<br>**说明：** <br>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。设置undefined时维持原值，异常值默认不生效。<br>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见[示例19（设置最小字体范围与最大字体范围）](#示例19设置最小字体范围与最大字体范围)。 |
 
 ### maxFontScale<sup>18+</sup>
 
@@ -747,7 +747,7 @@ maxFontScale(scale: Optional\<number | Resource>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最大的字体缩放倍数，支持undefined类型。<br>取值范围：[1, +∞)<br>**说明：** <br>设置的值小于1时，按值为1处理。设置undefined时维持原值，异常值默认不生效。<br>设置maxFontScale属性后，search组件内容最多放大到2倍。<br>使用前需在工程中配置[configuration.json](../../../quick-start//app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start//app-configuration-file.md)文件，具体详见[示例19（设置最小字体范围与最大字体范围）](#示例19设置最小字体范围与最大字体范围)。 |
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最大的字体缩放倍数，支持undefined类型。<br>取值范围：[1, +∞)<br>**说明：** <br>设置的值小于1时，按值为1处理。设置undefined时维持原值，异常值默认不生效。<br>设置maxFontScale属性后，search组件内容最多放大到2倍。<br>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见[示例19（设置最小字体范围与最大字体范围）](#示例19设置最小字体范围与最大字体范围)。 |
 
 ### editMenuOptions<sup>12+</sup>
 
@@ -877,7 +877,7 @@ strokeWidth(width: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。<br>**说明：** <br>当同时设置strokeWidth和[shaderStyle](#shaderstyle)时，shaderStyle不生效。<br>[strokeJoinStyle](#strokejoinstyle)仅在使用strokeWidth设置文本描边时生效。  |
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。<br>**说明：** <br>当同时设置strokeWidth和[shaderStyle](#shaderstyle)时，shaderStyle不生效。<br>[strokeJoinStyle](#strokejoinstyle)仅在使用strokeWidth设置文本描边时生效。  |
 
 ### strokeColor<sup>20+</sup>
 
@@ -999,6 +999,16 @@ includeFontPadding(include: Optional\<boolean>)
 
 设置是否在首行和尾行增加间距以避免文字截断。不通过该接口设置，默认不增加间距。
 
+从API版本26.2.0开始，该接口与[fallbackLineSpacing](#fallbacklinespacing23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+```json
+"metadata": [
+  {
+    "name": "configTextStyleOptimizeFlagInArkUI",
+    "value": "true"
+  }
+]
+```
+
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1016,6 +1026,16 @@ includeFontPadding(include: Optional\<boolean>)
 fallbackLineSpacing(enabled: Optional\<boolean>)
 
 针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。不通过该接口设置，默认行高不基于文字实际高度自适应。
+
+从API版本26.2.0开始，该接口与[includeFontPadding](#includefontpadding23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+```json
+"metadata": [
+  {
+    "name": "configTextStyleOptimizeFlagInArkUI",
+    "value": "true"
+  }
+]
+```
 
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -1277,7 +1297,7 @@ onWillCut(callback: Callback\<string, boolean>)
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | Callback\<string, boolean> | 是   | 剪切操作前的回调。回调参数类型为string时，表示将要被剪切的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被剪切，true：允许文本被剪切；false：不允许文本被剪切。 |
+| callback  | Callback\<string, boolean> | 是   | 剪切操作前的回调。回调参数类型为string时，表示将要被剪切的文本内容。回调返回值为boolean时，表示当前选中文本是否允许被剪切，true：允许文本被剪切；false：不允许文本被剪切。 |
 
 ### onPaste
 
@@ -1945,7 +1965,7 @@ struct SearchExample {
       .width('100%')
       .padding({ bottom: 50 })
 
-      Search({ controller: this.controller, value: this.inputValue })// 绑定自定义键盘
+      Search({ controller: this.controller, value: this.inputValue }) // 绑定自定义键盘
         .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
         .margin(10)
         .border({ width: 1 })

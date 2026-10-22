@@ -6,7 +6,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @l30014443-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a46ac9ef46cf07a504c5b14bcdd2a1e59756a849 translatedAt=2026-08-10T03:32:59.790Z pushedAt=2026-08-10T07:02:02.915Z -->
+<!-- md-trans-meta sourceCommit=f3c11decfd21fde5edd9d4f0af458b50090e67d7 translatedAt=2026-08-21T04:10:29.310Z pushedAt=2026-08-21T09:05:05.313Z -->
 
 ## Overview
 
@@ -293,7 +293,7 @@ enum ArkUI_HorizontalAlignment
 
 **Description**
 
-Enumerates the alignment mode in the horizontal direction.
+Enumerates the alignment modes in the horizontal direction.
 
 **Since:** 12
 
@@ -850,7 +850,7 @@ Obtains the referenced components of a barrier.
 | Name| Description|
 | -- | -- |
 | [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to a barrier configuration.|
-| index | Index of the barrier.|
+| int32_t index | Index of the barrier. |
 | int32_t referencedIndex | Index of the referenced component ID.|
 
 **Returns**
@@ -938,7 +938,7 @@ Sets the left alignment mode of a relative layout.
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
 | const char* id | Pointer to the ID of the left-aligned anchor component.|
-| value | Alignment mode relative to the anchor component.|
+| [ArkUI_HorizontalAlignment](#arkui_horizontalalignment) alignment | Alignment mode relative to the anchor component. |
 
 ### OH_ArkUI_AlignmentRuleOption_SetEnd()
 
@@ -958,7 +958,7 @@ Sets the right alignment mode of a relative layout.
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
 | const char* id | Pointer to the ID of the right-aligned anchor component.|
-| value | Alignment mode relative to the anchor component.|
+| [ArkUI_HorizontalAlignment](#arkui_horizontalalignment) alignment | Alignment mode relative to the anchor component. |
 
 ### OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal()
 
@@ -978,7 +978,7 @@ Sets the horizontal center alignment mode of a relative layout.
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
 | const char* id | Pointer to the ID of the horizontally-centered anchor component.|
-| value | Alignment mode relative to the anchor component.|
+| [ArkUI_HorizontalAlignment](#arkui_horizontalalignment) alignment | Alignment mode relative to the anchor component. |
 
 ### OH_ArkUI_AlignmentRuleOption_SetTop()
 
@@ -998,7 +998,7 @@ Sets the top alignment mode of a relative layout.
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
 | const char* id | Pointer to the ID of the top-aligned anchor component.|
-| value | Alignment mode relative to the anchor component.|
+| [ArkUI_VerticalAlignment](#arkui_verticalalignment) alignment | Alignment mode relative to the anchor component. |
 
 ### OH_ArkUI_AlignmentRuleOption_SetBottom()
 
@@ -1018,7 +1018,7 @@ Sets the bottom alignment mode of a relative layout.
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
 | const char* id | Pointer to the ID of the bottom-aligned anchor component.|
-| value | Alignment mode relative to the anchor component.|
+| [ArkUI_VerticalAlignment](#arkui_verticalalignment) alignment | Alignment mode relative to the anchor component. |
 
 ### OH_ArkUI_AlignmentRuleOption_SetCenterVertical()
 
@@ -1038,7 +1038,7 @@ Sets the vertical center alignment mode of a relative layout.
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
 | const char* id | Pointer to the ID of the vertically-centered anchor component.|
-| value | Alignment mode relative to the anchor component.|
+| [ArkUI_VerticalAlignment](#arkui_verticalalignment) alignment | Alignment mode relative to the anchor component. |
 
 ### OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal()
 
@@ -1076,7 +1076,7 @@ Sets the bias value of the component in the vertical direction under the anchor 
 | Name| Description|
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
-| horizontal | Bias value in the vertical direction.|
+| float vertical | Bias value in the vertical direction. |
 
 ### OH_ArkUI_AlignmentRuleOption_GetStartId()
 

@@ -32,7 +32,7 @@ ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自�
 
 | 类型 | 说明   |
 | ------ | ------ |
-| [lang.ISendable](js-apis-arkts-lang.md#langisendable)   | 所有Sendable类型的父类型。 |
+| [lang.ISendable](js-apis-arkts-lang.md#isendable)   | 所有Sendable类型的父类型。 |
 
 ## Transformer
 

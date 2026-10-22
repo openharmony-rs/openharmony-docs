@@ -13,7 +13,7 @@ typedef struct OH_AVCencInfo OH_AVCencInfo
 
 ## 概述
 
-AVCencInfo结构。
+该结构体用于描述音视频通用加密方案（CENC）信息。
 
 **起始版本：** 12
 

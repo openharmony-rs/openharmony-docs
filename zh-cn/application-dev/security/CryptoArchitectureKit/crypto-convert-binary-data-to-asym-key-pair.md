@@ -121,7 +121,7 @@
     let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray };
     let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray };
     let generator = cryptoFramework.createAsyKeyGenerator('ECC256');
-    generator.convertKey(pubKeyBlob, priKeyBlob, (error, data) => {
+    generator.convertKey(pubKeyBlob, priKeyBlob, (error, keyPair) => {
       if (error) {
         console.error(`convertKey failed: errCode: ${error.code}, message: ${error.message}`);
         return;
@@ -139,7 +139,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
-  function convertECCAsyKeySync() {
+  function convertEccAsyKeySync() {
     let pubKeyArray =
       new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
         83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26,
@@ -184,22 +184,25 @@ async function main() {
   // 创建一个AsyKeyGenerator实例
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
   // 使用密钥生成器随机生成非对称密钥对
-  let keyGenPromise = eccGenerator.generateKeyPair();
-  keyGenPromise.then(keyPair => {
+  try {
+    let keyPair = await eccGenerator.generateKeyPair();
     let pubKey = keyPair.pubKey;
     let priKey = keyPair.priKey;
     // 获取非对称密钥对ECC的二进制数据
     let pubBlob = pubKey.getEncoded();
     let skBlob = priKey.getEncodedDer('PKCS8');
     let generator = cryptoFramework.createAsyKeyGenerator('ECC256');
-    generator.convertKey(pubBlob, skBlob, (error, data) => {
+    generator.convertKey(pubBlob, skBlob, (error, _keyPair) => {
       if (error) {
         console.error(`convertKey failed: errCode: ${error.code}, message: ${error.message}`);
         return;
       }
       console.info('convertKey result: success.');
     });
-  });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateKeyPair failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -236,7 +239,7 @@ async function main() {
     let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray };
     let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray };
     let generator = cryptoFramework.createAsyKeyGenerator('SM2_256');
-    generator.convertKey(pubKeyBlob, priKeyBlob, (error, data) => {
+    generator.convertKey(pubKeyBlob, priKeyBlob, (error, keyPair) => {
       if (error) {
         console.error(`convertKey failed: errCode: ${error.code}, message: ${error.message}`);
         return;

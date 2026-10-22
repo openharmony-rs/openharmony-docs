@@ -257,7 +257,7 @@ off(event: 'dataChange', uris: string[], config: DataProxyConfig, callback?: Asy
 | event     | string                        | 是   | 订阅的事件/回调类型，支持的事件为'dataChange'。 |
 | uris     | string\[]             | 是   | 表示要取消订阅的共享配置对应的URI数组。<br>**说明：** <br>1. API版本26.0.0之前，数组最大长度为32；从API版本26.0.0开始，数组最大长度为64。<br>2. URI固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
 | config      | [DataProxyConfig](#dataproxyconfig20)               | 是   | 表示数据代理操作的配置。 |
-| callback | AsyncCallback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | 否   | 需要取消的回调函数。不填写则取消所有已注册的回调函数。|
+| callback | AsyncCallback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | 否   | 回调函数。当取消订阅成功时，err为undefined，data为获取到的DataProxyChangeInfo数组，包含变更类型、URI和变更的共享配置内容；否则为错误对象。不填写则取消所有已注册的回调函数。 |
 
 **返回值：**
 

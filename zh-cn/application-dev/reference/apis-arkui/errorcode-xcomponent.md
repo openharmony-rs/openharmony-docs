@@ -14,7 +14,7 @@
 
 **错误信息**
 
-当前XComponent处于无效状态，方法调用失败。
+XComponent is in invalid state.
 
 **错误描述**
 

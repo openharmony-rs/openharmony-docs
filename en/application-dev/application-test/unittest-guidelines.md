@@ -59,7 +59,7 @@ A test script must contain the following basic elements:
 
 The following test example shows how to check whether the tested page is displayed as expected.
 
-<!-- @[basic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) -->
+<!-- @[basic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/BasicExample.test.ets) --> 
 
 ``` TypeScript
 import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
@@ -298,7 +298,7 @@ JSUnit provides the basic process APIs required for executing test scripts. You 
 
 **Example 1**: Execute **beforeAll**, **beforeEach**, **afterEach**, and **afterAll**.
 
-<!-- @[order1_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder1.test.ets) -->
+<!-- @[order1_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder1.test.ets) --> 
 
 ``` TypeScript
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, Level } from '@ohos/hypium';
@@ -347,7 +347,7 @@ export default function exampleTest() {
 ```
 **Example 2**: Execute **beforeItSpecified** and **afterItSpecified**, which are supported since @ohos/hypium 1.0.15.
 
-<!-- @[order2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder2.test.ets) -->
+<!-- @[order2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder2.test.ets) --> 
 
 ``` TypeScript
 import { afterItSpecified, beforeItSpecified, describe, expect, it, Level } from '@ohos/hypium';
@@ -381,7 +381,7 @@ export default function exampleTest() {
 ```
 **Example 3**: Execute **xit**, which is supported since @ohos/hypium 1.0.17.
 
-<!-- @[order3_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder3.test.ets) -->
+<!-- @[order3_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder3.test.ets) --> 
 
 ``` TypeScript
 import { describe, it, Level, xit } from '@ohos/hypium';
@@ -402,7 +402,7 @@ export default function describeExampleTest() {
 
 **Example 4**: Use **beforeEachIt** and **afterEachIt**. They are supported since version 1.0.25.
 
-<!-- @[order4_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder4.test.ets) -->
+<!-- @[order4_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/basicExampleTest/ExecuteOrder4.test.ets) --> 
 
 ``` TypeScript
 import { describe, beforeEach, afterEach, beforeEachIt, afterEachIt, it, expect } from '@ohos/hypium';
@@ -472,7 +472,7 @@ JSUnit provides various assertion APIs for different test scenarios. For details
 
 **Sample Code**
 
-<!-- @[assert_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/assertExampleTest/AssertExample.test.ets) -->
+<!-- @[assert_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/assertExampleTest/AssertExample.test.ets) --> 
 
 ``` TypeScript
 import { describe, expect, it, Level } from '@ohos/hypium';
@@ -712,7 +712,7 @@ After the **when** function is executed, you need to use the following functions
 
 **Example 1**: Use **afterReturn** and **afterReturnNothing** to set the expected return value.
 
-<!-- @[afterReturn_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterReturn.test.ets) -->
+<!-- @[afterReturn_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterReturn.test.ets) --> 
 
 ``` TypeScript
 import { describe, expect, it, MockKit, when } from '@ohos/hypium';
@@ -748,7 +748,7 @@ export default function afterReturnTest() {
 
 **Example 2**: Use **ArgumentMatchers** to set the parameter type to **any** (except **undefined** and **null**).
 
-<!-- @[argumentMatchersForAny_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForAny.test.ets) -->
+<!-- @[argumentMatchersForAny_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForAny.test.ets) --> 
 
 ``` TypeScript
 import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
@@ -784,7 +784,7 @@ export default function argumentMatchersAnyTest() {
 
 **Example 3**: Use **ArgumentMatchers** to set the parameter type to **String**.
 
-<!-- @[argumentMatchersForString_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForString.test.ets) -->
+<!-- @[argumentMatchersForString_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForString.test.ets) --> 
 
 ``` TypeScript
 import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
@@ -819,7 +819,7 @@ export default function argumentMatchersTest() {
 
 **Example 4**: Use **ArgumentMatchers** to set the parameter type to **matchRegexs (Regex)**.
 
-<!-- @[argumentMatchersForRegex_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForRegex.test.ets) -->
+<!-- @[argumentMatchersForRegex_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ArgumentMatchersForRegex.test.ets) --> 
 
 ``` TypeScript
 import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
@@ -853,7 +853,7 @@ export default function matchRegexsTest() {
 
 **Example 5**: Use the **verify** function to verify whether the execution behavior of the mocked function is as expected.
 
-<!-- @[verify_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/Vertify.test.ets) -->
+<!-- @[verify_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/Vertify.test.ets) --> 
 
 ``` TypeScript
 import { describe, it, MockKit } from '@ohos/hypium';
@@ -899,7 +899,7 @@ export default function verifyTest() {
 
 **Example 6**: Use the **ignoreMock** function to restore the implementation of a specified mocked function.
 
-<!-- @[ignoreMock_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/IgnoreMock.test.ets) -->
+<!-- @[ignoreMock_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/IgnoreMock.test.ets) --> 
 
 ``` TypeScript
 import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
@@ -945,7 +945,7 @@ export default function ignoreMockTest() {
 
 **Example 7**: Use the **clear** function to restore the original implementation of all mocked functions in the class.
 
-<!-- @[clearMock_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ClearMock.test.ets) -->
+<!-- @[clearMock_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ClearMock.test.ets) --> 
 
 ``` TypeScript
 import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
@@ -992,7 +992,7 @@ export default function clearTest() {
 
 **Example 8**: Use the afterThrow function to throw a specified exception.
 
-<!-- @[afterThrow_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterThrow.test.ets) -->
+<!-- @[afterThrow_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/AfterThrow.test.ets) --> 
 
 ``` TypeScript
 import { describe, expect, it, MockKit, when } from '@ohos/hypium';
@@ -1030,7 +1030,7 @@ export default function afterThrowTest() {
 
 **Example 9**: Mock a promise object.
 
-<!-- @[returnPromise_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/ReturnPromise.test.ets) -->
+<!-- @[returnPromise_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/ReturnPromise.test.ets) --> 
 
 ``` TypeScript
 import { describe, expect, it, MockKit, when } from '@ohos/hypium';
@@ -1072,7 +1072,7 @@ export default function mockPromiseTest() {
 
 **Example 10**: Use the **times** and **atLeast** functions to verify the number of times that the mocked function is called.
 
-<!-- @[verifyTimes_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/VertifyTimes.test.ets) -->
+<!-- @[verifyTimes_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/VertifyTimes.test.ets) --> 
 
 ``` TypeScript
 import { describe, it, MockKit, when } from '@ohos/hypium';
@@ -1116,7 +1116,7 @@ export default function verifyTimesTest() {
 
 **Example 11**: Mock static functions. (This feature is supported since @ohos/hypium 1.0.16.)
 
-<!-- @[mockStatic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockStatic.test.ets) -->
+<!-- @[mockStatic_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockStatic.test.ets) --> 
 
 ``` TypeScript
 import { ArgumentMatchers, describe, expect, it, MockKit, when } from '@ohos/hypium';
@@ -1154,7 +1154,7 @@ export default function staticTest() {
 
 **Example 12**: Mock private functions. (This feature is supported since @ohos/hypium 1.0.25.)
 
-<!-- @[mockPrivateFunc_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockPrivateFunc.test.ets) -->
+<!-- @[mockPrivateFunc_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockPrivateFunc.test.ets) --> 
 
 ``` TypeScript
 import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
@@ -1195,7 +1195,7 @@ export default function staticTest() {
 
 **Example 13**: Mock member variables. (This feature is supported since @ohos/hypium 1.0.25.)
 
-<!-- @[mockProperty_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockProperty.test.ets) -->
+<!-- @[mockProperty_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/MockProperty.test.ets) --> 
 
 ``` TypeScript
 import { describe, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
@@ -1293,7 +1293,7 @@ Configuration parameters
 
 In the stage model, import **data.json** to the **TestAbility.ets** file in the **TestAbility** directory of the test project (import **data.json** to the **app.js** or **app.ets** file in the **TestAbility** directory of the test project in the FA model), and set the parameter data before the **Hypium.hypiumTest()** function. The following is an example:
 
-<!-- @[dataDriverAbility_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/testability/TestAbility.ets) -->
+<!-- @[dataDriverAbility_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/testability/TestAbility.ets) --> 
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1320,8 +1320,8 @@ export default class TestAbility extends UIAbility {
   }
 ```
 
- <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) -->
- 
+ <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) --> 
+
  ``` TypeScript
  import { describe, it } from '@ohos/hypium';
  

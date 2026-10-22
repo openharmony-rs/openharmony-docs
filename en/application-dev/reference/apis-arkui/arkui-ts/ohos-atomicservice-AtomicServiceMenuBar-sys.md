@@ -6,8 +6,9 @@
 <!--Designer: @autojuan-->
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=6ee5a5a175fe044c581693dd9f99b93f44abf3b8 translatedAt=2026-08-28T01:33:13.987Z pushedAt=2026-08-28T06:20:49.143Z -->
 
-Creates an **AtomicServiceMenuBar** object based on the context of the current atomic service. The object is used to control the display of the menu function capsule in the upper right corner.
+Creates an **AtomicServiceMenuBar** object based on the UI context of the current atomic service. The object is used to control the display of the menu function capsule in the upper right corner.
 
 > **NOTE**
 >
@@ -21,7 +22,7 @@ import { AtomicServiceMenuBar } from '@kit.ArkUI';
 
 ## Child Components
 
-None
+Not supported
 
 ## Attributes
 
@@ -29,7 +30,7 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 ## AtomicServiceMenuBar
 
-Describes the object created using the UI context of the current atomic service. You can use the defined APIs to control the status of the menu function capsule of the current atomic service. For details, see [Example](#example).
+An object created based on the UI context of the current atomic service. It controls the display of the menu function capsule of the current atomic service through the defined APIs. For details about the example, see [Example](#example).
 
 ### constructor
 
@@ -49,13 +50,13 @@ A constructor used to create an **AtomicServiceMenuBar** object.
 
 | Parameter  | Type                           | Mandatory  |  Description        |
 | ---- | ----------------------------- | ---- | -------------------- |
-| uiContext | [UIContext](../arkts-apis-uicontext-uicontext.md) | Yes   | Context information of the current atomic service.|
+| uiContext | [UIContext](../arkts-apis-uicontext-uicontext.md) | Yes    | UI context information of the current atomic service. |
 
 ### setVisible
 
 setVisible(visible: boolean): void
 
-Sets whether to display or hide the menu function capsule of the current atomic service.
+Sets the display state of the menu function capsule of the current atomic service.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -71,7 +72,6 @@ Sets whether to display or hide the menu function capsule of the current atomic 
 | ---- | ----------------------------- | ---- | -------------------- |
 | visible | boolean | Yes| Expected status of the menu function capsule. true: The menu function capsule is displayed. false: The menu function capsule is hidden.|
 
-
 ## Example
 
 ```ts
@@ -83,7 +83,7 @@ struct Index {
   private menuBar: AtomicServiceMenuBar = new AtomicServiceMenuBar(this.getUIContext());
 
   @Builder
-  private EmbedCompLauncherShow(title: string, text: string, event?: () => void) {
+  private menuCapsuleShow(title: string, text: string, event?: () => void) {
     Column() {
       if (typeof event === 'function') {
         Button(title)
@@ -105,10 +105,10 @@ struct Index {
 
   build() {
     Column() {
-      this.EmbedCompLauncherShow('Display menu function capsule', 'Clicking this button will display the menu function capsule.', () => {
+      this.menuCapsuleShow('Display menu function capsule', 'Clicking this button will display the menu function capsule.', () => {
         this.menuBar.setVisible(true);
       });
-      this.EmbedCompLauncherShow('Hide menu function capsule', 'Clicking this button will hide the menu function capsule.', () => {
+      this.menuCapsuleShow('Hide menu function capsule', 'Clicking this button will hide the menu function capsule.', () => {
         this.menuBar.setVisible(false);
       });
     }
@@ -118,6 +118,7 @@ struct Index {
   }
 }
 ```
+
 After the **Hide menu function capsule** button is clicked, the menu function capsule is hidden.
 
 ![AtomicServiceMenuBarDemo01](figures/AtomicServiceMenuBarDemo01.png)

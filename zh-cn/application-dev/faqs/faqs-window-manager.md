@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @wulong158-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 如何获取状态栏和导航栏高度(API 9)

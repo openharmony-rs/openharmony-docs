@@ -1,10 +1,12 @@
 # @ohos.multimedia.camera (Camera Management) (System API)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c2cfa105fe17727f8a1a4915b5f4dc15a45577c9 translatedAt=2026-08-20T09:47:44.067Z pushedAt=2026-08-21T08:23:47.036Z -->
 
 The module provides a set of camera service APIs for you to easily develop a camera application. The application can access and operate the camera hardware to implement basic operations, such as preview, taking photos, and recording videos. It can also perform more operations, for example, controlling the flash and exposure time, and focusing or adjusting the focus.
 
@@ -25,22 +27,22 @@ Enumerates the camera scene modes.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                    | Value       | Description        |
+| Name                     | Value        | Description         |
 | ----------------------- | --------- | ------------ |
-| PORTRAIT_PHOTO       | 3      | Portrait photo mode. **System API**: This is a system API.           |
-| NIGHT_PHOTO        | 4      | Night photo mode. **System API**: This is a system API.            |
-| PROFESSIONAL_PHOTO<sup>12+</sup>        | 5      | Professional photo mode. **System API**: This is a system API.            |
-| PROFESSIONAL_VIDEO<sup>12+</sup>        | 6      | Professional video mode. **System API**: This is a system API.            |
-| SLOW_MOTION_VIDEO<sup>12+</sup>        | 7   | Slow-motion video mode. **System API**: This is a system API. |
-| MACRO_PHOTO<sup>12+</sup>        | 8   | Macro photo mode. **System API**: This is a system API. |
-| MACRO_VIDEO<sup>12+</sup>        | 9   | Macro video mode. **System API**: This is a system API. |
-| LIGHT_PAINTING_PHOTO<sup>12+</sup>        | 10   | Light painting mode. **System API**: This is a system API. |
-| HIGH_RESOLUTION_PHOTO<sup>12+</sup>        | 11     | High-resolution photo mode. **System API**: This is a system API.         |
-| QUICK_SHOT_PHOTO<sup>12+</sup>        | 13   | Quick snap mode. **System API**: This is a system API. |
-| APERTURE_VIDEO<sup>12+</sup>        | 14   | Large aperture video mode. **System API**: This is a system API. |
-| PANORAMA_PHOTO<sup>12+</sup>        | 15     | Panoramic photo mode. **System API**: This is a system API.         |
-| TIME_LAPSE_PHOTO<sup>12+</sup>        | 16     | Time-lapse photo mode. **System API**: This is a system API.         |
-| FLUORESCENCE_PHOTO<sup>13+</sup>        | 17   | Fluorescence photo mode. **System API**: This is a system API. |
+| PORTRAIT_PHOTO       | 3      | Portrait photo mode. **System API:** This is a system API.            |
+| NIGHT_PHOTO        | 4      | Night scene photo mode. **System API:** This is a system API.             |
+| PROFESSIONAL_PHOTO<sup>12+</sup>        | 5      | Pro photo mode. **System API:** This is a system API.             |
+| PROFESSIONAL_VIDEO<sup>12+</sup>        | 6      | Pro video mode. **System API:** This is a system API.             |
+| SLOW_MOTION_VIDEO<sup>12+</sup>        | 7   | Slow motion mode. **System API:** This is a system API.  |
+| MACRO_PHOTO<sup>12+</sup>        | 8   | Macro photo mode. **System API:** This is a system API.  |
+| MACRO_VIDEO<sup>12+</sup>        | 9   | Macro video mode. **System API:** This is a system API.  |
+| LIGHT_PAINTING_PHOTO<sup>12+</sup>        | 10   | Light painting photo mode. **System API:** This is a system API.  |
+| HIGH_RESOLUTION_PHOTO<sup>12+</sup>        | 11     | High resolution photo mode. **System API:** This is a system API.          |
+| QUICK_SHOT_PHOTO<sup>12+</sup>        | 13   | Quick shot photo mode. **System API:** This is a system API.  |
+| APERTURE_VIDEO<sup>12+</sup>        | 14   | Aperture video mode. **System API:** This is a system API.  |
+| PANORAMA_PHOTO<sup>12+</sup>        | 15     | Panorama photo mode. **System API:** This is a system API.          |
+| TIME_LAPSE_PHOTO<sup>12+</sup>        | 16     | Time-lapse photography mode. **System API:** This is a system API.          |
+| FLUORESCENCE_PHOTO<sup>13+</sup>        | 17   | Fluorescence photo mode. **System API:** This is a system API.  |
 
 ## SlowMotionStatus<sup>12+</sup>
 
@@ -48,13 +50,13 @@ Enumerates the slow-motion states.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name            | Value  | Description           |
+| Name             | Value   | Description            |
 |----------------|-----|---------------|
-| DISABLED       | 0   | Disabled.     |
-| READY          | 1   | Ready.     |
-| VIDEO_START    | 2   | Video start.   |
-| VIDEO_DONE     | 3   | Video complete.   |
-| FINISHED       | 4   | Finished.     |
+| DISABLED       | 0   | Slow motion disabled state.      |
+| READY          | 1   | Slow motion ready state.      |
+| VIDEO_START    | 2   | Slow motion video start state.    |
+| VIDEO_DONE     | 3   | Slow motion video done state.    |
+| FINISHED       | 4   | Slow motion finished state.      |
 
 ## LcdFlashStatus<sup>12+</sup>
 
@@ -64,10 +66,10 @@ Describes the LCD flash information.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name     | Type                         | Read-only| Optional | Description        |
+| Name      | Type                          | Read-Only | Optional  | Description         |
 | -------- | ----------------------------- |---- |-----| ------------- |
-| isLcdFlashNeeded   | boolean | Yes | No  | Whether the LCD flash is required. **true** if required, **false** otherwise.     |
-| lcdCompensation     | number                 | Yes | No  | LCD flash compensation.      |
+| isLcdFlashNeeded   | boolean | Yes  | No   | Whether an LCD flash is needed. The value **true** means needed, and **false** means not needed.      |
+| lcdCompensation     | number                 | Yes  | No   | LCD flash compensation value.       |
 
 ## Photo<sup>11+</sup>
 
@@ -77,9 +79,9 @@ Defines a higher-resolution image object.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name  | Type                           | Read-only | Optional      | Description|
+| Name   | Type                            | Read-Only  | Optional       | Description |
 | ------ | ----------------------------- |-----| ---------- | ---------- |
-| raw<sup>12+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md)| No | Yes  | Raw image.|
+| raw<sup>12+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md)| No  | Yes   | RAW image. |
 
 ## PolicyType<sup>12+</sup>
 
@@ -89,9 +91,9 @@ Enumerates the policy types.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                          | Value  | Description     |
+| Name                           | Value   | Description      |
 | ----------------------------- |-----|---------|
-| PRIVACY<sup>12+</sup>          | 1   | Privacy.|
+| PRIVACY<sup>12+</sup>          | 1   | Privacy type. |
 
 ## LightPaintingType<sup>12+</sup>
 
@@ -101,12 +103,12 @@ Enumerates the types of light painting shutter modes.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                          | Value  | Description     |
+| Name                           | Value   | Description      |
 | ----------------------------- |-----|---------|
-| TRAFFIC_TRAILS         | 0   | Traffic trails.|
-| STAR_TRAILS          | 1   | Star trails.|
-| SILKY_WATER          | 2   | Silky water.|
-| LIGHT_GRAFFITI          | 3   | Light graffiti.|
+| TRAFFIC_TRAILS         | 0   | Traffic trails. |
+| STAR_TRAILS          | 1   | Star trails. |
+| SILKY_WATER          | 2   | Silky water. |
+| LIGHT_GRAFFITI          | 3   | Light graffiti. |
 
 ## CameraManager
 
@@ -124,21 +126,21 @@ Creates a DepthDataOutput instance. This API returns the result synchronously.
 
 **Parameters**
 
-| Name    | Type                                            | Mandatory| Description                             |
+| Name     | Type                                             | Mandatory | Description                              |
 | -------- | ----------------------------------------------- | ---- | ------------------------------- |
-| profile  | [DepthProfile](#depthprofile13)           | Yes  | Supported preview profile, which is obtained through [getSupportedOutputCapability](arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11).|
+| profile  | [DepthProfile](#depthprofile13)           | Yes   | Supported preview configuration information, obtained via [getSupportedOutputCapability](arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11). |
 
 **Return value**
 
-| Type       | Description                         |
+| Type        | Description                          |
 | ---------- | ----------------------------- |
-| [DepthDataOutput](#depthdataoutput13)    | DepthDataOutput instance. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [DepthDataOutput](#depthdataoutput13)    | DepthDataOutput instance. Returns the corresponding error code on failure. The error code type is [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID              | Error Message   |
 | --------------- | --------------- |
 | 202                    |  Not System Application.               |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
@@ -154,7 +156,7 @@ function createDepthDataOutput(cameraOutputCapability: camera.CameraOutputCapabi
   try {
     depthDataOutput = cameraManager.createDepthDataOutput(profile);
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code on failure and handle it.
     let err = error as BusinessError;
     console.error(`The createDepthDataOutput call failed. error code: ${err.code}`);
   }
@@ -174,15 +176,15 @@ Checks whether the camera device can be muted.
 
 **Return value**
 
-| Type       | Description                         |
+| Type        | Description                          |
 | ---------- | ----------------------------- |
-| boolean    | Check result for whether the camera device can be muted. **true** if it can be muted, **false** otherwise.|
+| boolean    | Returns true if the camera can be disabled, and false otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202             |  Permission verification failed. A non-system application calls a system API.   |
 
@@ -210,9 +212,9 @@ Mutes or unmutes the camera device.
 
 **Parameters**
 
-| Name     | Type                             | Mandatory | Description       |
+| Name      | Type                              | Mandatory  | Description        |
 | -------- | --------------------------------- | ---- | ---------- |
-| mute     | boolean                           |  Yes |  Whether to mute the camera device. **true** to mute, **false** otherwise. |
+| mute     | boolean                           |  Yes  |  Whether to disable the camera. The value **true** means to disable the camera, and **false** means to enable it.  |
 
 **Example**
 
@@ -235,16 +237,16 @@ Mutes the camera device permanently.
 
 **Parameters**
 
-| Name     | Type                         | Mandatory | Description                                        |
+| Name      | Type                          | Mandatory  | Description                                         |
 | -------- |-----------------------------| ---- |--------------------------------------------|
-| mute     | boolean                     |  Yes | Whether to mute the camera device. **true** to mute, **false** otherwise.                  |
-| type     | [PolicyType](#policytype12) |  Yes | Policy type. For details about the available options, see [PolicyType](#policytype12).|
+| mute     | boolean                     |  Yes  | Whether to disable the camera. The value **true** means to disable the camera, and **false** means to cancel the disabling.                   |
+| type     | [PolicyType](#policytype12) |  Yes  | Policy type. Use a type supported by [PolicyType](#policytype12). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 201               |  Permission denied.                        |
 | 202               |  Not System Application.                  |
@@ -271,19 +273,18 @@ Subscribes to camera mute status events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name    | Type            | Mandatory| Description      |
+| Name     | Type             | Mandatory | Description       |
 | -------- | --------------- | ---- | --------- |
-| type     | string          | Yes  | Event type. The value is fixed at **'cameraMute'**, indicating the camera mute status. The event can be listened for when a CameraManager instance is obtained. This event is triggered and the status is returned when the camera device is muted or unmuted.|
-| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the camera mute status. **true** if muted, **false** otherwise.              |
+| type     | string          | Yes   | Event to listen for. The value is fixed at **'cameraMute'**, which indicates the system camera switch. This event can be listened for after the **cameraManager** object is obtained successfully. This event is triggered and the status is returned when the system settings enable or disable the camera. |
+| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. The value **true** indicates that the camera is enabled, and **false** indicates that the camera is disabled.               |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202               |  Permission verification failed. A non-system application calls a system API.       |
-
 
 **Example**
 
@@ -316,16 +317,16 @@ Unsubscribes from camera mute status events.
 
 **Parameters**
 
-| Name    | Type            | Mandatory| Description                                                     |
+| Name     | Type             | Mandatory | Description                                                      |
 | -------- | --------------- | ---- |---------------------------------------------------------|
-| type     | string          | Yes  | Event type. The value is fixed at **'cameraMute'**, indicating the camera mute status. The event can be listened for when a CameraManager instance is obtained.|
-| callback | AsyncCallback\<boolean> | No  | Callback used to return the camera mute status. **true** if muted, **false** otherwise. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('cameraMute')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)                 |
+| type     | string          | Yes   | Event listening, fixed to 'cameraMute', the system camera switch. It can be listened to after the cameraManager object is obtained successfully. |
+| callback | AsyncCallback\<boolean> | No   | Callback function, an optional parameter. The value **true** indicates the enabled state, and **false** indicates the disabled state. If present, it is a match for the on('cameraMute') callback (the callback object cannot be an anonymous function).                  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202               |  Permission verification failed. A non-system application calls a system API.     |
 
@@ -355,21 +356,21 @@ Checks whether a camera device supports prelaunch.
 
 **Parameters**
 
-| Name    | Type                                              | Mandatory| Description      |
+| Name     | Type                                               | Mandatory | Description       |
 | -------- |--------------------------------------------------| ---- | --------- |
-| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice) | Yes| Camera device.|
+| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice) | Yes | Camera information.|
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | -------- | --------------- |
-| boolean | Check result for the support of prelaunch. **true** if supported, **false** otherwise.|
+| boolean | Whether the specified cameraDevice supports preheat startup. The value **true** indicates that it is supported, and **false** indicates that it is not supported.|
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 7400101 | Parameter missing or parameter type incorrect. |
@@ -408,15 +409,15 @@ Before the setting, call [isPrelaunchSupported](#isprelaunchsupported) to check 
 
 **Parameters**
 
-| Name    | Type            | Mandatory| Description      |
+| Name     | Type             | Mandatory | Description       |
 | -------- | --------------- | ---- | --------- |
-| prelaunchConfig | [PrelaunchConfig](#prelaunchconfig) | Yes| Prelaunch configuration.|
+| prelaunchConfig | [PrelaunchConfig](#prelaunchconfig) | Yes | Prelaunch configuration parameters.|
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 | 7400101 | Parameter missing or parameter type incorrect. |
@@ -460,7 +461,7 @@ Prelaunches the camera device. This API is called when a user clicks the system 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 
@@ -494,15 +495,15 @@ Pre-switches a camera device to speed up its startup.
 
 **Parameters**
 
-| Name    | Type            | Mandatory| Description      |
+| Name     | Type             | Mandatory | Description       |
 | -------- | --------------- | ---- | --------- |
-| cameraId | string | Yes| Camera ID.|
+| cameraId | string | Yes | Camera ID. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                          |
+| ID   | Error Message                                           |
 | ------- |------------------------------------------------|
 | 202     | Not System Application.                        |
 | 7400101 | Parameter missing or parameter type incorrect. |
@@ -533,9 +534,9 @@ Describes the camera output capability.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                          | Type                                               | Read-only| Optional| Description               |
+| Name                           | Type                                                | Read-Only | Optional | Description                |
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
-| depthProfiles<sup>13+</sup>       | Array\<[DepthProfile](#depthprofile13)\>              |  Yes | No| Supported depth stream profiles.       |
+| depthProfiles<sup>13+</sup>       | Array\<[DepthProfile](#depthprofile13)\>              |  Yes  | No | Collection of supported depth stream configuration information.        |
 
 ## CameraFormat
 
@@ -545,10 +546,10 @@ Enumerates the camera output formats.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                    | Value       | Description        |
+| Name                     | Value        | Description         |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_DEPTH_16<sup>13+</sup> |   3000   | Depth map in DEPTH_16 format.     |
-| CAMERA_FORMAT_DEPTH_32<sup>13+</sup> |   3001   | Depth map in DEPTH_32 format.     |
+| CAMERA_FORMAT_DEPTH_16<sup>13+</sup> |   3000   | Depth map in DEPTH_16 format.      |
+| CAMERA_FORMAT_DEPTH_32<sup>13+</sup> |   3001   | Depth map in DEPTH_32 format.      |
 
 ## CameraInput
 
@@ -564,10 +565,10 @@ Describes the accuracy of depth data.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                              | Value |                       Description           |
-| --------------------------------- | ----| -------------------------------------- |
-| DEPTH_DATA_ACCURACY_RELATIVE      | 0   | Relative accuracy, which is the depth map calculated based on the disparity.     |
-| DEPTH_DATA_ACCURACY_ABSOLUTE      | 1   | Absolute accuracy, which is the depth map calculated from distance measurement.     |
+| Name                              | Value | Description                              |
+| --------------------------------- | ----- | ---------------------------------------- |
+| DEPTH_DATA_ACCURACY_RELATIVE      | 0     | Relative accuracy. A depth map calculated based on disparity. |
+| DEPTH_DATA_ACCURACY_ABSOLUTE      | 1     | Absolute accuracy. A depth map calculated based on ranging. |
 
 ## DepthProfile<sup>13+</sup>
 
@@ -577,9 +578,9 @@ Describes the profile of depth data. It inherits from [Profile](arkts-apis-camer
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                      | Type                                     | Read-only| Optional| Description       |
+| Name | Type | Read-Only | Optional | Description |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
-| dataAccuracy            | [DepthDataAccuracy](#depthdataaccuracy13)         | Yes |  No | Accuracy of the depth data, which can be either relative accuracy or absolute accuracy.|
+| dataAccuracy | [DepthDataAccuracy](#depthdataaccuracy13) | Yes | No | Accuracy of the depth data, which is classified into relative accuracy and absolute accuracy. |
 
 ## DepthDataQualityLevel<sup>13+</sup>
 
@@ -589,28 +590,28 @@ Enumerates the quality levels of depth data.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                        |  Value | Description                                     |
+| Name                         | Value | Description                                      |
 | ---------------------------- | --- | ----------------------------------------- |
-| DEPTH_DATA_QUALITY_BAD       |  0  | The depth map is of poor quality and cannot be used for blurring.          |
-| DEPTH_DATA_QUALITY_FAIR      |  1  | The depth map is of average quality and cannot be used for high-quality blurring.   |
-| DEPTH_DATA_QUALITY_GOOD      |  2  | The depth map is of high quality and can be used for high-quality blurring.   |
+| DEPTH_DATA_QUALITY_BAD       |  0  | The depth map quality is poor and cannot be used for bokeh and the like.           |
+| DEPTH_DATA_QUALITY_FAIR      |  1  | The depth map quality is fair and cannot produce high-quality bokeh and the like.    |
+| DEPTH_DATA_QUALITY_GOOD      |  2  | The depth map quality is good and can produce high-quality bokeh and the like.    |
 
 ## DepthData<sup>13+</sup>
 
 Describes a depth data object.
 
-### Properties
+### Attribute
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name     | Type                         | Read-only| Optional| Description           |
+| Name      | Type                          | Read-Only | Optional | Description            |
 | -------- | ----------------------------- |----- |---| -------------- |
-| format | [CameraFormat](#cameraformat)   | Yes|  No | Camera output format.|
-| depthMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)    | Yes|  No | Depth map.|
-| qualityLevel | [DepthDataQualityLevel](#depthdataqualitylevel13)   | Yes|  No | Quality level of the depth map.|
-| dataAccuracy | [DepthDataAccuracy](#depthdataaccuracy13) | Yes|  No | Accuracy of the depth map.|
+| format | [CameraFormat](#cameraformat)   | Yes |  No  | Format of the depth map. |
+| depthMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)    | Yes |  No  | Depth map. |
+| qualityLevel | [DepthDataQualityLevel](#depthdataqualitylevel13)   | Yes |  No  | Quality of the depth map. |
+| dataAccuracy | [DepthDataAccuracy](#depthdataaccuracy13) | Yes |  No  | Accuracy of the depth map. |
 
 ### release<sup>13+</sup>
 
@@ -624,15 +625,15 @@ Releases depth data output resources. This API uses a promise to return the resu
 
 **Return value**
 
-| Type           | Description                    |
+| Type            | Description                     |
 | -------------- | ----------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 
@@ -660,15 +661,15 @@ Starts depth data output. This API uses a promise to return the result.
 
 **Return value**
 
-| Type           | Description                    |
+| Type            | Description                     |
 | -------------- | ----------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 | 7400103                |  Session not config.                                   |
@@ -700,15 +701,15 @@ Stops depth data output. This API uses a promise to return the result.
 
 **Return value**
 
-| Type           | Description                    |
+| Type            | Description                     |
 | -------------- | ----------------------- |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 | 7400103                |  Session not config.                                   |
@@ -744,16 +745,16 @@ Subscribes to depth data availability events. This API uses an asynchronous call
 
 **Parameters**
 
-| Name    | Type     | Mandatory| Description                                 |
+| Name     | Type      | Mandatory | Description                                  |
 | -------- | ---------- | --- | ------------------------------------ |
-| type     | string     | Yes  | Event type. The value is fixed at **'depthDataAvailable'**. The event can be listened for when a depthDataOutput instance is created.|
-| callback | AsyncCallback\<[DepthData](#depthdata13)\> | Yes  | Callback used to listen for depth data.|
+| type     | string     | Yes   | Event to listen for. The value is fixed at **'depthDataAvailable'**, which can be listened for after the **depthDataOutput** is created. |
+| callback | AsyncCallback\<[DepthData](#depthdata13)\> | Yes   | Callback invoked to return the depth information. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 
@@ -786,16 +787,16 @@ Unsubscribes from depth data availability events.
 
 **Parameters**
 
-| Name     | Type                   | Mandatory| Description                                      |
+| Name      | Type                    | Mandatory | Description                                       |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| type     | string                 | Yes  | Event type. The value is fixed at **'depthDataAvailable'**. The event can be listened for when a depthDataOutput instance is created.|
-| callback | AsyncCallback\<[DepthData](#depthdata13)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+| type     | string                 | Yes   | Event to listen for. The value is fixed at 'depthDataAvailable'. This event can be listened for after the depthDataOutput is created successfully. |
+| callback | AsyncCallback\<[DepthData](#depthdata13)\> | No   | Callback for the depthDataAvailable event. If this parameter is specified, the corresponding callback is unsubscribed (the callback object cannot be an anonymous function); otherwise, all callbacks are unsubscribed. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 
@@ -832,16 +833,16 @@ Subscribes to DepthDataOutput error events. This API uses an asynchronous callba
 
 **Parameters**
 
-| Name    | Type        | Mandatory| Description                      |
+| Name     | Type         | Mandatory | Description                       |
 | -------- | --------------| ---- | ------------------------ |
-| type     | string        | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a depthDataOutput instance is created.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
+| type     | string        | Yes   | Event listening. The value is fixed at **'error'**. This event can be listened to after the **depthDataOutput** is created. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes   | Callback function used to obtain error information. Returns an error code of the [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) type.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID              | Error Message   |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 
@@ -871,16 +872,16 @@ Unsubscribes from DepthDataOutput error events.
 
 **Parameters**
 
-| Name    | Type        | Mandatory| Description                      |
+| Name     | Type         | Mandatory | Description                       |
 | -------- | --------------| ---- | ------------------------ |
-| type     | string        | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a depthDataOutput instance is created.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+| type     | string        | Yes   | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the depthDataOutput is created. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No   | Callback for the error event. If this parameter is specified, the corresponding callback is unregistered (the callback object cannot be an anonymous function); otherwise, all callbacks are unregistered. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 
@@ -908,20 +909,21 @@ Checks whether depth fusion is supported.
 
 **Return value**
 
-| Type           | Description                    |
+| Type            | Description                     |
 | -------------- | ----------------------- |
-| boolean | Check result for the support of depth fusion. **true** if supported, **false** otherwise.|
+| boolean | Whether depth fusion is supported. The value **true** indicates that depth fusion is supported, and **false** indicates the opposite. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202             | Not System Application. |
 | 7400103         | Session not config, only throw in session usage.     |
 
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -936,6 +938,7 @@ function isDepthFusionSupported(DepthFusionQuery: camera.DepthFusionQuery): void
 }
 
 ```
+
 ### getDepthFusionThreshold<sup>14+</sup>
 
 getDepthFusionThreshold(): Array\<number\>
@@ -948,20 +951,21 @@ Obtains the depth fusion threshold.
 
 **Return value**
 
-| Type           | Description                    |
+| Type            | Description                     |
 | -------------- | ----------------------- |
-| Array\<number\> | Depth fusion threshold.      |
+| Array\<number\> | Threshold range of depth fusion.       |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202             | Not System Application. |
 | 7400103         | Session not config, only throw in session usage.      |
 
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -975,6 +979,7 @@ function getDepthFusionThreshold(DepthFusionQuery: camera.DepthFusionQuery): voi
   }
 }
 ```
+
 ## DepthFusion<sup>14+</sup>
 
 Depth fusion class. It inherits from [DepthFusionQuery](js-apis-camera-sys.md#depthfusionquery14).
@@ -991,20 +996,21 @@ Checks whether depth fusion is enabled.
 
 **Return value**
 
-| Type           | Description                    |
+| Type            | Description                     |
 | -------------- | ----------------------- |
-| boolean | Check result for whether depth fusion is enabled. **true** if enabled, **false** otherwise.|
+| boolean | Whether depth fusion is enabled. The value **true** indicates that depth fusion is enabled, and **false** indicates that depth fusion is disabled. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202             | Not System Application. |
 | 7400103         | Session not config.      |
 
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1027,21 +1033,23 @@ enableDepthFusion(enabled: boolean): void
 
 Enables depth fusion.
 
+Before setting this feature, use [isDepthFusionSupported](#isdepthfusionsupported14) to check whether the device supports depth fusion.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 
-| Name    | Type     | Mandatory| Description                                 |
+| Name     | Type      | Mandatory | Description                                  |
 | -------- | ---------- | --- | ------------------------------------ |
-| enabled  | boolean    | Yes  | Whether to enable depth fusion. **true** to enable, **false** otherwise.|
+| enabled  | boolean    | Yes   | Whether to enable depth fusion. The value **true** means to enable it, and **false** means to disable it. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message                                          |
+| ID   | Error Message                                    |
 |---------|------------------------------------------------|
 | 202     | Not System Application.                        |
 | 7400101 | Parameter missing or parameter type incorrect. |
@@ -1049,6 +1057,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 7400201 | Camera service fatal error.                    |
 
 **Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1074,12 +1083,12 @@ Currently, the configuration is used for sensor-level prelaunch. It will be used
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-|            Name                | Type                                              |     Read-only   |     Optional    | Description      |
+|            Name                 | Type                                               |     Read-Only    |     Optional     | Description       |
 | ------------------------------- |--------------------------------------------------| ----------- | ------------ | ---------- |
-| cameraDevice                    | [CameraDevice](arkts-apis-camera-i.md#cameradevice) |      No    |       No     | Camera device.        |
-| restoreParamType<sup>11+</sup>  | [RestoreParamType](#restoreparamtype11)          |      No    |       Yes     | Type of the parameter used for prelaunch.   |
-| activeTime<sup>11+</sup>        | number                                           |      No    |       Yes     | Activation time, in minutes.|
-| settingParam<sup>11+</sup>      | [SettingParam](#settingparam11)                  |      No    |       Yes     | Setting parameter.     |
+| cameraDevice                    | [CameraDevice](arkts-apis-camera-i.md#cameradevice) |      No     |       No      | Camera information.         |
+| restoreParamType<sup>11+</sup>  | [RestoreParamType](#restoreparamtype11)          |      No     |       Yes      | Presaved parameter type.    |
+| activeTime<sup>11+</sup>        | number                                           |      No     |       Yes      | Activation time, in minutes. |
+| settingParam<sup>11+</sup>      | [SettingParam](#settingparam11)                  |      No     |       Yes      | Setting parameter content.      |
 
 ## RestoreParamType<sup>11+</sup>
 
@@ -1089,11 +1098,11 @@ Enumerates the types of the parameters used for prelaunch.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name            | Value   | Description    |
+| Name             | Value    | Description     |
 | ----------------| ----  | ---------|
-| NO_NEED_RESTORE_PARAM           | 0      | The parameter used for prelaunch is not required.    |
-| PRESISTENT_DEFAULT_PARAM    | 1      | Persistent parameter type. This parameter is used to restore stream information with the specified time point.    |
-| TRANSIENT_ACTIVE_PARAM   | 2      | Temporary parameter type. This parameter is used to restore stream information only within a period of time after the camera application is closed. Its priority is higher than that of the persistent parameter.    |
+| NO_NEED_RESTORE_PARAM           | 0      | Parameter type that does not need to be pre-saved.     |
+| PRESISTENT_DEFAULT_PARAM    | 1      | Persistent parameter type. After a certain point in time, this parameter is used to restore stream information.     |
+| TRANSIENT_ACTIVE_PARAM   | 2      | Transient parameter type. This parameter is used to restore stream information only within a period of time after the camera is turned off, and it takes precedence over the persistent parameter.     |
 
 ## SettingParam<sup>11+</sup>
 
@@ -1103,11 +1112,11 @@ Defines the effect parameters used to preheat an image.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name            | Type  |   Read-only   | Optional | Description                                                                                               |
-| --------------- | ------ | --------- |-----|---------------------------------------------------------------------------------------------------|
-| skinSmoothLevel | number |  No      | No  | Skin smoothing level, which is obtained through [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11). For example, the value **1** indicates level-1 smoothing.       |
-| faceSlender     | number |  No      | No  | Face slimming level, which is obtained through [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11). For example, the value **1** indicates level-1 slimming.       |
-| skinTone        | number |  No      | No  | Skin tone perfection level, which is obtained through [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11). For example, the value **0xBF986C** indicates a specific color.|
+| Name | Type | Read-Only | Optional | Description |
+| --------------- | ------ | --------- | ----- | --------------------------------------------------------------------------------------------------- |
+| skinSmoothLevel | number | No | No | Beauty type smoothness information. Obtains the supported smoothness range from [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11). For example, 1 indicates level 1 smoothness. |
+| faceSlender | number | No | No | Beauty type face slimming information. Obtains the supported face slimming range from [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11). For example, 1 indicates level 1 face slimming. |
+| skinTone | number | No | No | Beauty type skin tone information. Obtains the supported skin tone range from [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11). For example, 0xBF986C indicates a color. |
 
 ## PreviewOutput
 
@@ -1125,15 +1134,15 @@ Checks whether Picture-in-Picture (PiP) preview is supported.
 
 **Return value**
 
-| Type           | Description                    |
+| Type            | Description                     |
 | -------------- | ----------------------- |
-| boolean | Check result for the support of the PiP preview. **true** if supported, **false** otherwise.|
+| boolean | Whether picture-in-picture is supported. The value **true** means supported, and **false** means not supported. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message                   |
+| ID         | Error Message                    |
 | --------------- |-------------------------|
 | 202             | Not System Application. |
 
@@ -1147,7 +1156,7 @@ function isSketchSupported(previewOutput: camera.PreviewOutput): boolean {
     let isSupported: boolean = previewOutput.isSketchSupported();
     return isSupported;
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The isSketchSupported call failed. error code: ${err.code}`);
   }
@@ -1167,15 +1176,15 @@ Obtains the zoom ratio when PiP preview is enabled.
 
 **Return value**
 
-| Type           | Description                    |
+| Type            | Description                     |
 | -------------- | ----------------------- |
-| number | Zoom ratio. If PiP preview is not supported, the value **-1** is returned.|
+| number | Zoom ratio for starting picture-in-picture in the current state. If picture-in-picture is not supported, this API returns -1. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103         |  Session not config.                      |
 | 202             |  Not System Application.                  |
@@ -1195,21 +1204,23 @@ enableSketch(enabled: boolean): void
 
 Enables or disables PiP preview.
 
+Before setting this feature, use [isSketchSupported](#issketchsupported11) to check whether the device supports PiP preview.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 
-| Name    | Type     | Mandatory| Description                      |
-|---------|---------| ---- | ------------------------ |
-| enabled | boolean | Yes| Whether to enable or disable PiP view. **true** to enable, **false** otherwise.|
+| Name    | Type    | Mandatory | Description                       |
+|---------|---------|-----------|-----------------------------------|
+| enabled | boolean | Yes       | Whether to enable the picture-in-picture stream for preview. The value **true** means to enable it, and **false** means not to enable it.|
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID    | Error Message                       |
+| ID     | Error Message                        |
 |-----------|-----------------------------|
 | 202       | Not System Application.     |
 | 7400102   | Operation not allowed.      |
@@ -1229,7 +1240,7 @@ function enableSketch(previewOutput: camera.PreviewOutput, session: camera.Sessi
     previewOutput.enableSketch(true);
     session.commitConfig();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code on failure and handle it.
     let err = error as BusinessError;
     console.error(`The enableSketch call failed. error code: ${err.code}`);
   }
@@ -1248,20 +1259,20 @@ Attaches a surface for PiP preview.
 
 **Parameters**
 
-| Name    | Type        | Mandatory| Description                      |
-| -------- | --------------| ---- | ------------------------ |
-| surfaceId | string | Yes| Surface ID, which is obtained from [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md).|
+| Name      | Type   | Mandatory | Description                                                        |
+| --------- | ------ | --------- | ------------------------------------------------------------------ |
+| surfaceId | string | Yes       | Surface ID obtained from the [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) component. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                          |
-|---------|------------------------------------------------|
-| 202     | Not System Application.                        |
-| 7400101 | Parameter missing or parameter type incorrect. |
-| 7400103 | Session not config.                            |
-| 7400201 | Camera service fatal error.                    |
+| ID      | Error Message                                    |
+| ------- | ------------------------------------------------ |
+| 202     | Not System Application.                          |
+| 7400101 | Parameter missing or parameter type incorrect.   |
+| 7400103 | Session not config.                              |
+| 7400201 | Camera service fatal error.                      |
 
 **Example**
 
@@ -1277,7 +1288,7 @@ function attachSketchSurface(previewOutput: camera.PreviewOutput, session: camer
     session.commitConfig();
     previewOutput.attachSketchSurface(sketchSurfaceId);
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The attachSketchSurface call failed. error code: ${err.code}`);
   }
@@ -1296,16 +1307,16 @@ Subscribes to PiP status change events. This API uses an asynchronous callback t
 
 **Parameters**
 
-| Name     | Type                   | Mandatory| Description                                      |
+| Name      | Type                    | Mandatory | Description                                       |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| type     | string                 | Yes  | Event type. The value is fixed at **'sketchStatusChanged'**. The event can be listened for when a PiP preview stream is created. This event is triggered when PiP preview is enabled or disabled or the zoom ratio changes while PiP preview is enabled.|
-| callback | AsyncCallback\<[SketchStatusData](#sketchstatusdata11)\> | Yes  | Callback used to return the PiP status data.           |
+| type     | string                 | Yes   | Event to listen for, which is fixed to **'sketchStatusChanged'**. It can be listened for after the picture-in-picture stream is created successfully. This API is called back when the underlying picture-in-picture status starts or stops and when the picture-in-picture zoom value changes. |
+| callback | AsyncCallback\<[SketchStatusData](#sketchstatusdata11)\> | Yes   | Callback used to obtain the **SketchStatusData**.            |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                         |
+| ID   | Error Message                          |
 |---------|-------------------------------|
 | 202     | Not System Application.       |
 
@@ -1339,16 +1350,16 @@ Unsubscribes from PiP status change events.
 
 **Parameters**
 
-| Name     | Type                   | Mandatory| Description                                      |
+| Name      | Type                    | Mandatory | Description                                       |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| type     | string                 | Yes  | Event type. The value is fixed at **'sketchStatusChanged'**. The event can be listened for when a PiP preview stream is created.|
-| callback | AsyncCallback\<[SketchStatusData](#sketchstatusdata11)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('sketchStatusChanged')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)          |
+| type     | string                 | Yes   | Event to listen for. The value is fixed at **'sketchStatusChanged'**, which can be listened for after the picture-in-picture stream is created successfully. |
+| callback | AsyncCallback\<[SketchStatusData](#sketchstatusdata11)\> | No   | Callback for the sketchStatusChanged event. If specified, it must match the callback in on('sketchStatusChanged') (the callback object cannot be an anonymous function).           |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                         |
+| ID   | Error Message                          |
 |---------|-------------------------------|
 | 202     | Not System Application.       |
 
@@ -1368,11 +1379,11 @@ Enumerates the deferred delivery image types. In deferred delivery, photo and vi
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name   | Value  | Description        |
+| Name    | Value   | Description         |
 | ------- | ---- | ------------ |
-| NONE    | 0    | Deferred delivery is not supported.|
-| PHOTO   | 1    | Deferred delivery for photo capture.|
-| VIDEO   | 2    | Deferred delivery for video capture.|
+| NONE    | 0    | No deferred delivery capability.|
+| PHOTO   | 1    | Deferred delivery photo.|
+| VIDEO   | 2    | Deferred delivery video.|
 
 ## DeferredPhotoProxy<sup>11+</sup>
 
@@ -1390,15 +1401,15 @@ Obtains the PixelMap of a thumbnail. This API uses a promise to return the resul
 
 **Return value**
 
-| Type           | Description                    |
+| Type            | Description                     |
 | -------------- | ----------------------- |
-| Promise\<image.PixelMap\> | PixelMap of the thumbnail.|
+| Promise\<image.PixelMap\> | PixelMap of the thumbnail. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202             |  Not System Application.       |
 
@@ -1426,15 +1437,15 @@ Releases depth data output resources. This API uses a promise to return the resu
 
 **Return value**
 
-| Type           | Description              |
+| Type            | Description               |
 | -------------- |------------------|
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202             |  Not System Application.       |
 
@@ -1462,21 +1473,21 @@ Starts the burst mode, in which users can capture a series of photos in quick su
 
 **Parameters**
 
-| Name | Type                                       | Mandatory| Description    |
+| Name  | Type                                        | Mandatory | Description     |
 | ------- | ------------------------------------------- | ---- | -------- |
-| setting | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | Yes  | Shooting parameters. The input of **undefined** is processed as if no parameters were passed.|
+| setting | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | Yes   | Photo capture settings. If **undefined** is passed in, the default settings without parameters are used. |
 
 **Return value**
 
-| Type           | Description                     |
+| Type            | Description                      |
 | -------------- | ------------------------   |
-| Promise\<void\> | Promise that returns no value.|
+| Promise\<void\> | Promise used to return the result, which carries no value. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202             |  Not System Application.       |
 | 7400101         |  Parameter missing or parameter type incorrect.          |
@@ -1524,7 +1535,7 @@ This API is used to end the burst mode, which is started by calling [burstCaptur
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202             |  Not System Application.       |
 | 7400104         |  Session not running.          |
@@ -1557,21 +1568,21 @@ Checks whether deferred delivery of a certain type is supported.
 
 **Parameters**
 
-| Name     | Type              | Mandatory| Description                |
+| Name      | Type               | Mandatory | Description                 |
 | -------- | -------------------- | ---- | ------------------- |
-|   type   |  [DeferredDeliveryImageType](#deferreddeliveryimagetype11)  |   Yes  |   Deferred delivery image type.   |
+|   type   |  [DeferredDeliveryImageType](#deferreddeliveryimagetype11)  |   Yes   |   Type of the deferred delivery capability.    |
 
 **Return value**
 
-| Type           | Description                   |
+| Type            | Description                    |
 | -------------- | ----------------------- |
-| boolean | Check result for the support of deferred delivery. **true** if supported, **false** otherwise.|
+| boolean | true if the current mode supports this type of deferred delivery capability; false otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message                                               |
+| ID         | Error Message                                                |
 | --------------- |-----------------------------------------------------|
 | 7400101                | Parameter missing or parameter type incorrect.      |
 | 7400104                | Session not running.                                |
@@ -1600,21 +1611,21 @@ Checks whether deferred delivery of a certain type is enabled.
 
 **Parameters**
 
-| Name     | Type              | Mandatory| Description                |
+| Name      | Type               | Mandatory | Description                 |
 | -------- | -------------------- | ---- | ------------------- |
-|   type   |  [DeferredDeliveryImageType](#deferreddeliveryimagetype11)  |   Yes  |   Deferred delivery image type.   |
+|   type   |  [DeferredDeliveryImageType](#deferreddeliveryimagetype11)  |   Yes   |   Type of the segmented capability.    |
 
 **Return value**
 
-| Type           | Description                   |
+| Type            | Description                    |
 | -------------- | ----------------------- |
-| boolean | Check result for whether deferred delivery is enabled. **true** if enabled, **false** otherwise.|
+| boolean | true if the segmented capability of this type is enabled in the current mode; false otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400104                |  Session not running.                                  |
@@ -1637,21 +1648,23 @@ deferImageDelivery(type: DeferredDeliveryImageType): void
 
 Enables deferred delivery of a certain type.
 
+Before setting this feature, call [isDeferredImageDeliverySupported](#isdeferredimagedeliverysupported11) to check whether deferred delivery of a certain type is supported in current mode.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Parameters**
 
-| Name     | Type              | Mandatory| Description                |
+| Name      | Type               | Mandatory | Description                 |
 | -------- | -------------------- | ---- | ------------------- |
-|   type   |  [DeferredDeliveryImageType](#deferreddeliveryimagetype11)  |   Yes  |   Deferred delivery image type.   |
+|   type   |  [DeferredDeliveryImageType](#deferreddeliveryimagetype11)  |   Yes   |   Deferred delivery capability type.    |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400104                |  Session not running.                                  |
@@ -1678,15 +1691,15 @@ Checks whether automatic high quality is supported for photos.
 
 **Return value**
 
-| Type           | Description                    |
+| Type            | Description                     |
 | -------------- | ----------------------- |
-| boolean | Check result for whether automatic high quality is supported. **true** if supported, **false** otherwise.|
+| boolean | Whether to support automatic high quality. The value **true** indicates supported, and **false** indicates not supported.|
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 | 7400104                |  Session not running.                                  |
@@ -1714,15 +1727,15 @@ Enables automatic high quality for photos. Before using this API, call [isAutoHi
 
 **Parameters**
 
-| Name     | Type              | Mandatory| Description                |
+| Name      | Type               | Mandatory | Description                 |
 | -------- | -------------------- | ---- | ------------------- |
-|   enabled   |  boolean  |   Yes  |   Whether to enable or disable automatic high quality for photos. **true** to enable, **false** otherwise.   |
+|   enabled   |  boolean  |   Yes   |   Whether to enable auto high-quality photo. The value true means to enable it, and false means to disable it.    |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -1751,16 +1764,16 @@ Subscribes to events indicating available thumbnail proxies. This API uses an as
 
 **Parameters**
 
-| Name    | Type     | Mandatory| Description                                 |
+| Name     | Type      | Mandatory | Description                                  |
 | -------- | ---------- | --- | ------------------------------------ |
-| type     | string     | Yes  | Event type. The value is fixed at **'deferredPhotoProxyAvailable'**. The event can be listened for when a photoOutput instance is created.|
-| callback | AsyncCallback\<[DeferredPhotoProxy](#deferredphotoproxy11)\> | Yes  | Callback used to return the thumbnail proxy.|
+| type     | string     | Yes   | Event to listen for. The value is fixed at **'deferredPhotoProxyAvailable'**. This event can be listened for after the photoOutput is created. |
+| callback | AsyncCallback\<[DeferredPhotoProxy](#deferredphotoproxy11)\> | Yes   | Callback used to obtain the related information. It is used to listen for thumbnail reporting.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202             |  Not System Application.       |
 
@@ -1797,16 +1810,16 @@ Unsubscribes from events indicating available thumbnail proxies.
 
 **Parameters**
 
-| Name     | Type                   | Mandatory| Description                                      |
+| Name      | Type                    | Mandatory | Description                                       |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| type     | string                 | Yes  | Event type. The value is fixed at **'deferredPhotoProxyAvailable'**. The event can be listened for when a photoOutput instance is created.|
-| callback | AsyncCallback\<[DeferredPhotoProxy](#deferredphotoproxy11)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('deferredPhotoProxyAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)           |
+| type     | string                 | Yes   | Event to listen for. The value is fixed at **'deferredPhotoProxyAvailable'**, which can be listened for after the photoOutput is created. |
+| callback | AsyncCallback\<[DeferredPhotoProxy](#deferredphotoproxy11)\> | No   | Callback for the 'deferredPhotoProxyAvailable' event. If present, it must match the callback in on('deferredPhotoProxyAvailable'). The callback cannot be an anonymous function.            |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202             |  Not System Application.       |
 
@@ -1845,15 +1858,15 @@ This API takes effect after [addOutput](arkts-apis-camera-Session.md#addoutput11
 
 **Return value**
 
-| Type| Description|
+| Type | Description |
 | --------- | ------ |
-| boolean | Check result for the support of the quick thumbnail feature. **true** if supported, **false** otherwise.|
+| boolean | Whether quick thumbnail is supported. The value **true** indicates that it is supported, and **false** indicates the opposite. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                    |  Not System Application.        |
 | 7400104                |  session is not running.        |
@@ -1867,11 +1880,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function isQuickThumbnailSupported(context: common.BaseContext, mode: camera.SceneMode, photoProfile: camera.Profile): Promise<boolean> {
   let cameraManager: camera.CameraManager = camera.getCameraManager(context);
   let cameras: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
-  // Create a CaptureSession instance.
+  // Create the CaptureSession instance.
   let session: camera.Session = cameraManager.createSession(mode);
-  // Start configuration for the session.
+  // Begin configuring the session.
   session.beginConfig();
-  // Add a CameraInput instance to the session.
+  // Add the CameraInput to the session.
   if (cameras.length <= 0) {
     console.info('Get supported cameras is null or [].');
     return false;
@@ -1879,7 +1892,7 @@ async function isQuickThumbnailSupported(context: common.BaseContext, mode: came
   let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameras[0]);
   await cameraInput.open();
   session.addInput(cameraInput);
-  // Add a PhotoOutput instance to the session.
+  // Add the photoOutput to the session.
   let photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
   try {
     session.addOutput(photoOutput);
@@ -1907,15 +1920,15 @@ This API takes effect after [addOutput](arkts-apis-camera-Session.md#addoutput11
 
 **Parameters**
 
-| Name    | Type        | Mandatory| Description                                |
+| Name    | Type         | Mandatory | Description                                 |
 | -------- | ------------- | ---- | ----------------------------------- |
-| enabled    | boolean       | Yes  | Whether to enable the quick thumbnail feature. **true** to enable, **false** otherwise.|
+| enabled    | boolean       | Yes   | Whether to enable the quick thumbnail. The value **true** means to enable the quick thumbnail, and **false** means to disable it. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                    |  Not System Application.        |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -1934,13 +1947,13 @@ async function enableQuickThumbnail(context: common.BaseContext, mode: camera.Sc
   let cameras: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
   // Create a CaptureSession instance.
   let session: camera.Session = cameraManager.createSession(mode);
-  // Start configuration for the session.
+  // Start configuring the session.
   session.beginConfig();
-  // Add a CameraInput instance to the session.
+  // Add the CameraInput to the session.
   let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameras[0]);
   await cameraInput.open();
   session.addInput(cameraInput);
-  // Add a PhotoOutput instance to the session.
+  // Add the PhotoOutput to the session.
   let photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
   session.addOutput(photoOutput);
   let isSupported: boolean = photoOutput.isQuickThumbnailSupported();
@@ -1971,10 +1984,10 @@ The listening takes effect after **enableQuickThumbnail(true)** is called.
 
 **Parameters**
 
-| Name    | Type        | Mandatory| Description                                |
+| Name     | Type         | Mandatory | Description                                 |
 | -------- | ------------- | ---- | ----------------------------------- |
-| type    | string     | Yes  | Event type. The value is fixed at **'quickThumbnail'**.|
-| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Yes| Callback that returns a PixelMap instance.|
+| type    | string     | Yes   | Event to listen for. The value is fixed at **'quickThumbnail'**. |
+| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Yes | Callback invoked to return the PixelMap. |
 
 **Example**
 
@@ -1989,8 +2002,8 @@ function callback(err: BusinessError, pixelMap: image.PixelMap): void {
       console.error('photoOutput on thumbnail failed');
       return;
   }
-  // Display or save the PixelMap instance.
-  // Execute the operation.
+  // Display or save the pixelMap.
+  // Perform the operation.
 }
 
 async function registerQuickThumbnail(context: common.BaseContext, mode: camera.SceneMode, photoProfile: camera.Profile): Promise<void> {
@@ -1998,13 +2011,13 @@ async function registerQuickThumbnail(context: common.BaseContext, mode: camera.
   let cameras: Array<camera.CameraDevice> = cameraManager.getSupportedCameras();
   // Create a CaptureSession instance.
   let session: camera.Session = cameraManager.createSession(mode);
-  // Start configuration for the session.
+  // Start configuring the session.
   session.beginConfig();
-  // Add a CameraInput instance to the session.
+  // Add the CameraInput to the session.
   let cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameras[0]);
   await cameraInput.open();
   session.addInput(cameraInput);
-  // Add a PhotoOutput instance to the session.
+  // Add the PhotoOutput to the session.
   let photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
   session.addOutput(photoOutput);
   let isSupported: boolean = photoOutput.isQuickThumbnailSupported();
@@ -2035,10 +2048,10 @@ Unsubscribes from quick thumbnail output events.
 
 **Parameters**
 
-| Name    | Type        | Mandatory| Description                                |
+| Name     | Type         | Mandatory | Description                                 |
 | -------- | ------------- | ---- | ----------------------------------- |
-| type    | string     | Yes  | Event type. The value is fixed at **'quickThumbnail'**.|
-| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | No| Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('quickThumbnail')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)|
+| type    | string     | Yes   | Event listening, which is fixed to 'quickThumbnail'. |
+| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | No | Callback function, which is optional. If present, it is a match for the callback of on('quickThumbnail') (the callback object cannot be an anonymous function). |
 
 **Example**
 
@@ -2058,10 +2071,10 @@ Implements the basic metadata object used for camera detection. It serves as the
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name        | Type                                       | Read-only| Optional|Description               |
+| Name         | Type                                        | Read-Only | Optional | Description                |
 | -----------  | ------------------------------------------- | ---- | ---- | ----------------- |
-| objectId<sup>13+</sup>     | number                                      |  Yes |  No | Metadata object ID.|
-| confidence<sup>13+</sup>   | number                                      |  Yes |  No | Confidence of the detection, with a value range of [0, 1].|
+| objectId<sup>13+</sup>     | number                                      |  Yes  |  No  | ID of the metadataObject.|
+| confidence<sup>13+</sup>   | number                                      |  Yes  |  No  | Detection confidence, ranging from 0 to 1.|
 
 ## PortraitEffect
 
@@ -2071,14 +2084,14 @@ Enumerates the portrait effects.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name            | Value   | Description    |
+| Name             | Value | Description     |
 | ----------------| ----  | ---------|
-| OFF             | 0      | Disabled.   |
-| CIRCLES         | 1      | Circles.   |
-| HEART<sup>11+</sup>           | 2      | Heart-shaped.   |
-| ROTATED<sup>11+</sup>         | 3      | Rotated.   |
-| STUDIO<sup>11+</sup>          | 4      | Studio light. |
-| THEATER<sup>11+</sup>         | 5      | Theater light. |
+| OFF             | 0      | Off.    |
+| CIRCLES         | 1      | Circle.    |
+| HEART<sup>11+</sup>           | 2      | Heart.    |
+| ROTATED<sup>11+</sup>         | 3      | Rotated bokeh.    |
+| STUDIO<sup>11+</sup>          | 4      | Studio light.  |
+| THEATER<sup>11+</sup>         | 5      | Theater light.  |
 
 ## BeautyQuery<sup>12+</sup>
 
@@ -2096,15 +2109,15 @@ Obtains the supported beauty types.
 
 **Return value**
 
-| Type               | Description                                                 |
+| Type                | Description                                                  |
 | ----------          | -----------------------------                         |
-|  Array\<[BeautyType](#beautytype)\>| Array of beauty types supported.                            |
+|  Array\<[BeautyType](#beautytype)\>| List of beauty effects currently supported.                             |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                |  Not System Application.                                   |
 | 7400103                |  Session not config, only throw in session usage.             |
@@ -2122,14 +2135,14 @@ function getSupportedBeautyTypes(portraitPhotoSession: camera.PortraitPhotoSessi
 
 getSupportedBeautyRange(type: BeautyType): Array\<number\>
 
-Obtains the levels that can be set a beauty type. The beauty levels vary according to the device type. The following table is only an example.
+Obtains the levels that can be set for a beauty type. The beauty levels vary according to the device type. The following table is only an example.
 
-| Input Parameter          | Example Return Value   | Return Value Description    |
+| Input Parameter           | Example Return Value    | Return Value Description     |
 | ----------------| ----  | ---------|
 | AUTO           | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     |Beauty levels supported when **type** is set to **AUTO**. The value **0** means that beauty mode is disabled, and other positive values mean the corresponding automatic beauty levels.   |
-| SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels.   |
-| FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels.  |
-| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
+| SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels.    |
+| FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels.   |
+| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB.<br> For example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
 
 **System API**: This is a system API.
 
@@ -2137,21 +2150,21 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 
 **Parameters**
 
-| Name     | Type                   | Mandatory| Description      |
+| Name      | Type                    | Mandatory | Description       |
 | -------- | --------------------------| ---- | ----------|
-| type     | [BeautyType](#beautytype) | Yes  | Beauty type.  |
+| type     | [BeautyType](#beautytype) | Yes   | Beauty type.   |
 
 **Return value**
 
-| Type       | Description                         |
+| Type        | Description                          |
 | ---------- | ----------------------------- |
-|  Array\<number\>     | Array of levels supported.|
+|  Array\<number\>     | Beauty intensity supported by the current beauty type. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                |  Not System Application.                                   |
 | 7400103                |  Session not config, only throw in session usage.       |
@@ -2177,12 +2190,12 @@ Enumerates the beauty types.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name            | Value   | Description    |
+| Name             | Value    | Description     |
 | ----------------| ----  | ---------|
-| AUTO           | 0      | Automatic.    |
-| SKIN_SMOOTH    | 1      | Skin smoothing.    |
-| FACE_SLENDER   | 2      | Face slimming.    |
-| SKIN_TONE      | 3      | Skin tone perfection.    |
+| AUTO           | 0      | Automatic.     |
+| SKIN_SMOOTH    | 1      | Smooth.     |
+| FACE_SLENDER   | 2      | Face slimming.     |
+| SKIN_TONE      | 3      | Skin tone.     |
 
 ## ManualExposureQuery<sup>12+</sup>
 
@@ -2200,15 +2213,15 @@ Obtains the supported manual exposure durations.
 
 **Return value**
 
-| Type               | Description                                                 |
+| Type                | Description                                                  |
 | ----------          | -----------------------------                         |
-|  Array\<number\>| Array of manual exposure durations supported, in ms.                            |
+|  Array\<number\>| Returns the currently supported manual exposure durations, in ms.                             |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                |  Not System Application.  |
 | 7400101            |  Parameter missing or parameter type incorrect.  |
@@ -2240,15 +2253,16 @@ Obtains the manual exposure duration in use.
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Return value**
-| Name     | Type                                             | Mandatory| Description                   |
+
+| Name      | Type                                              | Mandatory | Description                    |
 | -------- | ------------------------------------------------- | ---- | --------------------- |
-| value     | number | Yes  | Manual exposure duration, in ms. |
+| value     | number | Yes   | Manual exposure duration, in ms.  |
 
 **Error codes**
- 
+
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                               |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -2279,15 +2293,15 @@ Sets the manual exposure duration. Before using this API, call [getSupportedExpo
 
 **Parameters**
 
-| Name     | Type                   | Mandatory| Description                                                                     |
+| Name      | Type                    | Mandatory | Description                                                                      |
 | -------- | --------------------------| ---- |-------------------------------------------------------------------------|
-| exposure    | number                    | Yes  | Manual exposure duration, which must be one of the supported durations obtained by running [getSupportedExposureRange](#getsupportedexposurerange11).|
+| exposure    | number                    | Yes   | Manual exposure duration, obtained via [getSupportedExposureRange](#getsupportedexposurerange11). |
 
  **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                    |  Not System Application.  |
 | 7400102                |  Operation not allowed.   |
@@ -2309,13 +2323,12 @@ Enumerates the tripod statuses.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name      | Value  | Description                                 |
-|----------|-----|-------------------------------------|
-| INVALID  | 0   | Error status, or no tripod detected. **System API**: This is a system API.|
-| ACTIVE   | 1   | The tripod is active. **System API**: This is a system API.         |
-| ENTERING | 2   | The system is transitioning into a stable tripod mode. **System API**: This is a system API.       |
-| EXITING  | 3   | The system is leaving the stable tripod mode. **System API**: This is a system API.         |
-
+| Name      | Value | Description                                  |
+|-----------|-------|----------------------------------------------|
+| INVALID   | 0     | Error state, or the default state where no tripod is detected. **System API:** This is a system API. |
+| ACTIVE    | 1     | The tripod is active. **System API:** This is a system API.          |
+| ENTERING  | 2     | Entering the tripod stable state. **System API:** This is a system API.        |
+| EXITING   | 3     | Exiting the tripod stable state. **System API:** This is a system API.          |
 
 ## SceneFeatureType<sup>12+</sup>
 
@@ -2323,11 +2336,11 @@ Enumerates the scene features.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                           | Value  | Description                       |
+| Name                            | Value | Description                        |
 |-------------------------------|-----|---------------------------|
-| MOON_CAPTURE_BOOST            | 0   | Moon scene. **System API**: This is a system API. |
-| TRIPOD_DETECTION<sup>13+</sup> | 1   | Scene where a tripod is used for photo capture. **System API**: This is a system API. |
-| LOW_LIGHT_BOOST<sup>13+</sup> | 2   | Scene for long exposure photography. **System API**: This is a system API.|
+| MOON_CAPTURE_BOOST            | 0   | Moon scene. **System API:** This is a system API.  |
+| TRIPOD_DETECTION<sup>13+</sup> | 1   | Scene captured using a tripod. **System API:** This is a system API.  |
+| LOW_LIGHT_BOOST<sup>13+</sup> | 2   | Long exposure scene. **System API:** This is a system API. |
 
 ## SceneFeatureDetectionResult<sup>12+</sup>
 
@@ -2337,10 +2350,10 @@ Describes the scene feature detection result.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name    | Type       |   Read-only  |   Optional  | Description      |
+| Name     | Type        |   Read-Only   |   Optional   | Description       |
 | -------- | ---------- | -------- | -------- | ---------- |
-| featureType |   [SceneFeatureType](#scenefeaturetype12)   |   Yes    |    No   | Scene feature type. |
-| detected |   boolean   |   Yes    |    No   | Whether the specified scene feature is detected. **true** if detected, **false** otherwise.|
+| featureType |   [SceneFeatureType](#scenefeaturetype12)   |   Yes     |    No    | Feature type. |
+| detected |   boolean   |   Yes     |    No    | Whether the specified feature scene is detected. The value true means the specified feature scene is detected, and false means the opposite. |
 
 ## TripodDetectionResult<sup>13+</sup>
 
@@ -2352,9 +2365,9 @@ Describes the tripod detection result.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name    | Type                             |   Read-only  |   Optional  | Description     |
+| Name     | Type                              |   Read-Only   |   Optional   | Description      |
 | -------- |---------------------------------| -------- | -------- |---------|
-| tripodStatus | [TripodStatus](#tripodstatus13) |   Yes    |    No   | Tripod status.|
+| tripodStatus | [TripodStatus](#tripodstatus13) |   Yes     |    No    | Tripod status information. |
 
 ## SceneDetectionQuery<sup>12+</sup>
 
@@ -2372,21 +2385,21 @@ Checks whether a scene feature is supported.
 
 **Parameters**
 
-| Name  | Type                                       | Mandatory | Description         |
+| Name   | Type                                        | Mandatory  | Description          |
 |-------|-------------------------------------------|-----|-------------|
-| type  | [SceneFeatureType](#scenefeaturetype12)   | Yes  | Scene feature. |
+| type  | [SceneFeatureType](#scenefeaturetype12)   | Yes   | Specifies the scene feature.  |
 
 **Return value**
 
-| Type       | Description          |
+| Type        | Description           |
 |-----------|--------------|
-| boolean   | Check result for the support of the scene feature. **true** if supported, **false** otherwise. |
+| boolean   | Whether the specified feature is supported. The value **true** indicates that the feature is supported, and **false** indicates the opposite.  |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                          |
+| ID   | Error Message                                           |
 |---------|------------------------------------------------|
 | 202     | Not System Application, only throw in session usage.                     |
 | 7400101 | Parameter missing or parameter type incorrect. |
@@ -2399,6 +2412,7 @@ function isSceneFeatureSupported(photoSessionForSys: camera.PhotoSessionForSys, 
   return isSupported;
 }
 ```
+
 ## SceneDetection<sup>12+</sup>
 
 Provides the scene detection capability. It inherits from [SceneDetectionQuery](#scenedetectionquery12).
@@ -2415,18 +2429,18 @@ Enables or disables a scene feature. This API must be called after [SceneFeature
 
 **Parameters**
 
-| Name    | Type                                       | Mandatory | Description                         |
-|---------|-------------------------------------------|-----|-----------------------------|
-| type    | [SceneFeatureType](#scenefeaturetype12)   | Yes  | Scene feature.              |
-| enabled | boolean                                   | Yes  | Whether to enable the scene feature. **true** to enable, **false** otherwise.|
+| Name    | Type                                      | Mandatory | Description                          |
+|---------|-------------------------------------------|-----------|--------------------------------------|
+| type    | [SceneFeatureType](#scenefeaturetype12)   | Yes       | Feature to enable or disable.        |
+| enabled | boolean                                   | Yes       | Whether to enable the specified feature. The value **true** means to enable the feature, and **false** means to disable it. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                          |
-|---------|------------------------------------------------|
-| 202     | Not System Application.                        |
+| ID  | Error Message                                    |
+|-----|--------------------------------------------------|
+| 202 | Not System Application.                          |
 | 7400101 | Parameter missing or parameter type incorrect. |
 
 **Example**
@@ -2484,7 +2498,7 @@ Instructs the bottom layer to prepare for zooming, for example, powering on the 
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID              | Error Message   |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                      |
 | 7400103                |  Session not config.                          |
@@ -2498,7 +2512,7 @@ function prepareZoom(sessionExtendsZoom: camera.Zoom): void {
   try {
     sessionExtendsZoom.prepareZoom();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code on failure and handle it.
     let err = error as BusinessError;
     console.error(`The prepareZoom call failed. error code: ${err.code}`);
   }
@@ -2519,7 +2533,7 @@ Instructs the bottom layer to unprepare for zooming.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                      |
 | 7400103                |  Session not config.                          |
@@ -2533,7 +2547,7 @@ function unprepareZoom(sessionExtendsZoom: camera.Zoom): void {
   try {
     sessionExtendsZoom.unprepareZoom();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code on failure and handle it.
     let err = error as BusinessError;
     console.error(`The unprepareZoom call failed. error code: ${err.code}`);
   }
@@ -2558,16 +2572,16 @@ Sets a beauty type and its level. Beauty mode is turned off only when all the [b
 
 **Parameters**
 
-| Name     | Type                   | Mandatory| Description                                                               |
+| Name      | Type                    | Mandatory | Description                                                                |
 | -------- | --------------------------| ---- |-------------------------------------------------------------------|
-| type     | [BeautyType](#beautytype) | Yes  | Beauty type.                                                            |
-| value    | number                    | Yes  | Beauty level, which is obtained through [getSupportedBeautyRange](#getsupportedbeautyrange11).|
+| type     | [BeautyType](#beautytype) | Yes   | Beauty type.                                                             |
+| value    | number                    | Yes   | Beauty intensity, obtained via the [getSupportedBeautyRange](#getsupportedbeautyrange11) API. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                |  Not System Application.                                   |
 | 7400103                |  Session not config.                                   |
@@ -2600,20 +2614,21 @@ Obtains the level of the beauty type in use.
 
 **Parameters**
 
-| Name     | Type                                             | Mandatory| Description                   |
+| Name      | Type                                              | Mandatory | Description                    |
 | -------- | ------------------------------------------------- | ---- | --------------------- |
-| type     | [BeautyType](#beautytype) | Yes  | Beauty type.  |
+| type     | [BeautyType](#beautytype) | Yes   | Beauty type.   |
 
 **Return value**
-| Name     | Type                                             | Mandatory| Description                   |
+
+| Name      | Type                                              | Mandatory | Description                    |
 | -------- | ------------------------------------------------- | ---- | --------------------- |
-| value     | number | Yes  | Beauty level. |
+| value     | number | Yes   | Beauty intensity.  |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                |  Not System Application.                                   |
 | 7400103                |  Session not config.                                   |
@@ -2653,15 +2668,15 @@ Obtains the supported color effects.
 
 **Return value**
 
-| Type                                            | Description                          |
+| Type                                             | Description                           |
 | ----------------------------------------------- | ---------------------------- |
-| Array<[ColorEffectType](#coloreffecttype11)>       | Array of color effects supported.          |
+| Array<[ColorEffectType](#coloreffecttype11)>       | List of supported color effect types.           |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202             |  Not System Application.                 |
 | 7400103         |  Session not config, only throw in session usage.  |
@@ -2693,15 +2708,15 @@ Sets a color effect. Before the setting, call [getSupportedColorEffects](#getsup
 
 **Parameters**
 
-| Name        | Type                                                           | Mandatory| Description                     |
+| Name         | Type                                                            | Mandatory | Description                      |
 | ------------ |--------------------------------------------------------------- | -- | -------------------------- |
-| type | [ColorEffectType](#coloreffecttype11)                              | Yes| Color effect, which can be obtained through [getSupportedColorEffects](#getsupportedcoloreffects11).  |
+| type | [ColorEffectType](#coloreffecttype11)                              | Yes | Color effect type, obtained via the [getSupportedColorEffects](#getsupportedcoloreffects11) API.   |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 202             |  Not System Application.                         |
@@ -2726,15 +2741,15 @@ Obtains the color effect in use.
 
 **Return value**
 
-| Type                                            | Description                          |
+| Type                                             | Description                           |
 | ----------------------------------------------- | ---------------------------- |
-| [ColorEffectType](#coloreffecttype11)             | Color effect.               |
+| [ColorEffectType](#coloreffecttype11)             | Current color effect type set.                |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 202             |  Not System Application.                         |
@@ -2756,12 +2771,12 @@ Enumerates the color effect types.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                 | Value  | Description      |
+| Name                  | Value   | Description       |
 | --------------------- | ---- | --------- |
-| NORMAL                | 0    | Regular color effect. |
-| BRIGHT                | 1    | Bright color effect. |
-| SOFT                  | 2    | Soft color effect. |
-| BLACK_WHITE<sup>12+</sup>    | 3    | Black and white color effect. |
+| NORMAL                | 0    | Normal color effect.  |
+| BRIGHT                | 1    | Bright color effect.  |
+| SOFT                  | 2    | Soft color effect.  |
+| BLACK_WHITE<sup>12+</sup>    | 3    | Black-and-white color effect.  |
 
 ## PortraitQuery<sup>12+</sup>
 
@@ -2779,15 +2794,15 @@ Obtains the supported portrait effects.
 
 **Return value**
 
-| Type                                            | Description                          |
+| Type                                             | Description                           |
 | ----------------------------------------------- | ---------------------------- |
-| Array<[PortraitEffect](#portraiteffect)> | Array of portrait effects supported.              |
+| Array<[PortraitEffect](#portraiteffect)> | List of supported portrait blur effects.               |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                 |  Not System Application.        |
 | 7400103             |  Session not config, only throw in session usage.   |
@@ -2819,15 +2834,15 @@ Sets a portrait effect. Before the setting, use [getSupportedPortraitEffects](#g
 
 **Parameters**
 
-| Name        | Type                       | Mandatory| Description                     |
+| Name         | Type                        | Mandatory | Description                      |
 | ------------ |----------------------------- | -- | -------------------------- |
-| effect | [PortraitEffect](#portraiteffect)  | Yes| Portrait effect, which can be obtained through [getSupportedPortraitEffects](#getsupportedportraiteffects).  |
+| effect | [PortraitEffect](#portraiteffect)  | Yes | Portrait blur effect, obtained via the [getSupportedPortraitEffects](#getsupportedportraiteffects) API.   |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103         |  Session not config.                                   |
 | 202             |  Not System Application.                         |
@@ -2862,15 +2877,15 @@ Obtains the portrait effect in use.
 
 **Return value**
 
-| Type                                            | Description                          |
+| Type                                             | Description                           |
 | ----------------------------------------------- | ---------------------------- |
-| [PortraitEffect](#portraiteffect)               | Portrait effect.               |
+| [PortraitEffect](#portraiteffect)               | Currently set portrait blur effect.                |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103         |  Session not config.                |
 | 202             |  Not System Application.            |
@@ -2900,15 +2915,15 @@ Obtains the supported virtual apertures.
 
 **Return value**
 
-| Type                                            | Description                          |
+| Type                                             | Description                           |
 | ----------------------------------------------- | ---------------------------- |
-| Array\<number\> | Array of virtual apertures supported.              |
+| Array\<number\> | List of supported virtual apertures.               |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202         |  Not System Application.                           |
 | 7400103     |  Session not config, only throw in session usage.  |
@@ -2938,15 +2953,15 @@ Obtains the virtual aperture in use.
 
 **Return value**
 
-| Type                                            | Description                          |
+| Type                                             | Description                           |
 | ----------------------------------------------- | ---------------------------- |
-| number               | Virtual aperture.               |
+| number               | Current virtual aperture value set.                |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103         |  Session not config.                             |
 | 202             |  Not System Application.                         |
@@ -2972,15 +2987,15 @@ Sets a virtual aperture. Before the setting, call [getSupportedVirtualApertures]
 
 **Parameters**
 
-| Name        | Type                   | Mandatory| Description                     |
+| Name         | Type                    | Mandatory | Description                      |
 | ------------ |------------------------- | -- | -------------------------- |
-| aperture       | number                 | Yes| Virtual aperture, which can be obtained by calling [getSupportedVirtualApertures](#getsupportedvirtualapertures11).  |
+| aperture       | number                 | Yes | Virtual aperture value, obtained via [getSupportedVirtualApertures](#getsupportedvirtualapertures11).   |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103         |  Session not config.                          |
 | 202             |  Not System Application.                      |
@@ -3015,15 +3030,15 @@ Obtains the supported beauty types.
 
 **Return value**
 
-| Type               | Description                                                 |
+| Type                | Description                                                  |
 | ----------          | -----------------------------                         |
-|  Array\<[BeautyType](#beautytype)\>| Array of beauty types supported.                            |
+|  Array\<[BeautyType](#beautytype)\>| List of beauty effects currently supported.                             |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -3040,14 +3055,14 @@ function getSupportedBeautyTypes(captureSession: camera.CaptureSession): Array<c
 
 getSupportedBeautyRange(type: BeautyType): Array\<number\>
 
-Obtains the levels that can be set a beauty type. The beauty levels vary according to the device type. The following table is only an example.
+Obtains the levels that can be set for a beauty type. The beauty levels vary according to the device type. The following table is only an example.
 
-| Input Parameter          | Example Return Value   | Return Value Description    |
+| Input Parameter           | Example Return Value    | Return Value Description     |
 | ----------------| ----  | ---------|
 | AUTO           | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     |Beauty levels supported when **type** is set to **AUTO**. The value **0** means that beauty mode is disabled, and other positive values mean the corresponding automatic beauty levels.   |
-| SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels.   |
-| FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels.  |
-| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
+| SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels.    |
+| FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels.   |
+| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB.<br> For example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
 
 > **NOTE**
 >This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11) instead.
@@ -3058,21 +3073,21 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 
 **Parameters**
 
-| Name     | Type                   | Mandatory| Description      |
+| Name      | Type                    | Mandatory | Description       |
 | -------- | --------------------------| ---- | ----------|
-| type     | [BeautyType](#beautytype) | Yes  | Beauty type.  |
+| type     | [BeautyType](#beautytype) | Yes   | Beauty type.   |
 
 **Return value**
 
-| Type       | Description                         |
+| Type        | Description                          |
 | ---------- | ----------------------------- |
-|  Array\<number\>     | Array of levels supported.|
+|  Array\<number\>     | Beauty intensity supported by the current beauty type. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 202                    |    Not System Application.             |
@@ -3105,16 +3120,16 @@ Sets a beauty type and its level. Beauty mode is turned off only when all the [b
 
 **Parameters**
 
-| Name     | Type                   | Mandatory| Description                  |
+| Name      | Type                    | Mandatory | Description                   |
 | -------- | --------------------------| ---- | --------------------- |
-| type     | [BeautyType](#beautytype) | Yes  | Beauty type.             |
-| value    | number                    | Yes  | Beauty level, which is obtained through [getSupportedBeautyRange](#getsupportedbeautyrangedeprecated).|
+| type     | [BeautyType](#beautytype) | Yes   | Beauty type.              |
+| value    | number                    | Yes   | Beauty intensity, obtained via [getSupportedBeautyRange](#getsupportedbeautyrangedeprecated).|
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -3149,20 +3164,21 @@ Obtains the level of the beauty type in use.
 
 **Parameters**
 
-| Name     | Type                                             | Mandatory| Description                   |
+| Name      | Type                                              | Mandatory | Description                    |
 | -------- | ------------------------------------------------- | ---- | --------------------- |
-| type     | [BeautyType](#beautytype) | Yes  | Beauty type.  |
+| type     | [BeautyType](#beautytype) | Yes   | Beauty type.   |
 
 **Return value**
-| Name     | Type                                             | Mandatory| Description                   |
+
+| Name      | Type                                              | Mandatory | Description                    |
 | -------- | ------------------------------------------------- | ---- | --------------------- |
-| value     | number | Yes  | Beauty level. |
+| value     | number | Yes   | Beauty intensity.  |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -3213,17 +3229,17 @@ Subscribe to scene feature detection status change events. This API uses an asyn
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string      | Yes  | Event type. The value is fixed at **'featureDetection'**. The event can be listened for when a photo session is created.|
-| featureType     | [SceneFeatureType](#scenefeaturetype12)      | Yes  | Scene feature type.|
-| callback | AsyncCallback\<[SceneFeatureDetectionResult](#scenefeaturedetectionresult12)\>     | Yes  | Callback used to return the status of the scene feature detection. |
+| type     | string      | Yes   | Event to listen for. The value is fixed at **'featureDetection'**. This event can be listened for after the photoSession is created. |
+| featureType     | [SceneFeatureType](#scenefeaturetype12)      | Yes   | Feature to listen for. |
+| callback | AsyncCallback\<[SceneFeatureDetectionResult](#scenefeaturedetectionresult12)\>     | Yes   | Callback used to return the current status of the feature being listened for.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| ID | Error Message                      |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3258,17 +3274,17 @@ Unsubscribe from camera feature detection status change events.
 
 **Parameters**
 
-| Name   | Type                    | Mandatory| Description                      |
+| Name    | Type                     | Mandatory | Description                       |
 | -------- | ------------------------ | ---- | ------------------------ |
-| type     | string                   | Yes  | Event type. The value is fixed at **'featureDetection'**. The event can be listened for when a session is created.|
-| featureType     | [SceneFeatureType](#scenefeaturetype12)      | Yes  | Scene feature type.|
-| callback | AsyncCallback\<[SceneFeatureDetectionResult](#scenefeaturedetectionresult12)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('featureDetection')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)|
+| type     | string                   | Yes   | Event to listen for. The value is fixed at **'featureDetection'**. The listener can be canceled after the session is created. |
+| featureType     | [SceneFeatureType](#scenefeaturetype12)      | Yes   | Specified feature. |
+| callback | AsyncCallback\<[SceneFeatureDetectionResult](#scenefeaturedetectionresult12)\> | No   | Callback function. This parameter is optional. If present, it must match the callback of **on('featureDetection')** (the callback object cannot be an anonymous function). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| ID | Error Message                      |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3292,16 +3308,16 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                                      |
+| Name     | Type                                      | Mandatory | Description                                       |
 | -------- | ----------------------------------------- | ---- |------------------------------------------|
-| type     | string      | Yes  | Event type. The value is fixed at **'lcdFlashStatus'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\>     | Yes  | Callback used to return the LCD flash status change.                 |
+| type     | string      | Yes   | Event to listen for. The value is fixed at **'lcdFlashStatus'**, which can be listened for after the session is created. |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\>     | Yes   | Callback used to return the current LCD flash status.                  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| ID | Error Message                      |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3336,16 +3352,16 @@ Unsubscribes from LCD flash status change events.
 
 **Parameters**
 
-| Name   | Type                    | Mandatory| Description                                                              |
+| Name    | Type                     | Mandatory | Description                                                               |
 | -------- | ------------------------ | ---- |------------------------------------------------------------------|
-| type     | string                   | Yes  | Event type. The value is fixed at **'lcdFlashStatus'**. The event can be listened for when a session is created.                      |
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('lcdFlashStatus')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)|
+| type     | string                   | Yes   | Event listening, which is fixed to 'lcdFlashStatus'. The listening can be canceled after the session is created successfully.                       |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | No   | Callback function, which is optional. If present, it is a match for the callback of on('lcdFlashStatus') (the callback object cannot be an anonymous function). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| ID | Error Message                      |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3363,9 +3379,9 @@ Enumerates the focus tracking modes.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name| Value  | Description  |
+| Name | Value | Description |
 | ---- | ---- | ------ |
-| AUTO | 0    | Automatic.|
+| AUTO | 0    | Automatic. |
 
 ## FocusTrackingInfo<sup>15+</sup>
 
@@ -3373,10 +3389,10 @@ Describes the focus tracking information, which is obtained by calling VideoSess
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name          | Type                                     | Read-only| Optional| Description      |
-| -------------- | ----------------------------------------- | ---- | ---- | ---------- |
-| trackingMode   | [FocusTrackingMode](#focustrackingmode15) | No  | No  | Tracing mode.|
-| trackingRegion | [Rect](arkts-apis-camera-i.md#rect)            | No  | No  | Tracking region.|
+| Name           | Type                                      | Read-Only | Optional | Description       |
+| -------------- | ----------------------------------------- | --------- | -------- | ----------------- |
+| trackingMode   | [FocusTrackingMode](#focustrackingmode15) | No        | No       | Tracking mode.    |
+| trackingRegion | [Rect](arkts-apis-camera-i.md#rect)       | No        | No       | Tracking region.  |
 
 ## LightStatus<sup>18+</sup>
 
@@ -3386,10 +3402,10 @@ Enumerates the camera light statuses, which are obtained by calling VideoSession
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name          | Value  | Description   |
+| Name         | Value | Description    |
 |--------------| ---- |-------|
-| NORMAL       | 0    | Normal lighting conditions.|
-| INSUFFICIENT | 1    | Insufficient lighting (too dark).|
+| NORMAL       | 0    | Normal light. |
+| INSUFFICIENT | 1    | Insufficient light. |
 
 ## VideoSessionForSys<sup>11+</sup>
 
@@ -3419,16 +3435,16 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                                      |
+| Name     | Type                                      | Mandatory | Description                                       |
 | -------- | ----------------------------------------- | ---- |------------------------------------------|
-| type     | string      | Yes  | Event type. The value is fixed at **'lcdFlashStatus'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\>     | Yes  | Callback used to return the LCD flash status change.                 |
+| type     | string      | Yes   | Event to listen for. The value is fixed at **'lcdFlashStatus'**, which can be listened for after the session is created. |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\>     | Yes   | Callback used to return the current LCD flash status.                  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| ID | Error Message                      |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3463,16 +3479,16 @@ Unsubscribes from LCD flash status change events.
 
 **Parameters**
 
-| Name   | Type                    | Mandatory| Description                                                              |
+| Name     | Type                     | Mandatory | Description                                                               |
 | -------- | ------------------------ | ---- |------------------------------------------------------------------|
-| type     | string                   | Yes  | Event type. The value is fixed at **'lcdFlashStatus'**. The event can be listened for when a session is created.                      |
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('lcdFlashStatus')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)|
+| type     | string                   | Yes   | Event to listen for. The value is fixed at **'lcdFlashStatus'**. The listener can be canceled after the session is created successfully.                       |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | No   | Callback function. Optional. If present, it is a match for the callback of on('lcdFlashStatus') (the callback object cannot be an anonymous function). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| ID | Error Message                      |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3496,18 +3512,18 @@ Subscribes to focus tracking information events. This API uses an asynchronous c
 
 **Parameters**
 
-| Name  | Type                                                      | Mandatory| Description                                                        |
-| -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                     | Yes  | Event type. The value is fixed at **'focusTrackingInfoAvailable'**. The event can be listened for when a VideoSessionForSys object is created.|
-| callback | Callback\<[FocusTrackingInfo](#focustrackinginfo15)\>      | Yes  | Callback used to return the focus tracking information.                        |
+| Name     | Type                                                       | Mandatory | Description                                                         |
+| -------- | ---------------------------------------------------------- | --------- | ------------------------------------------------------------ |
+| type     | string                                                     | Yes       | Event listening, fixed at 'focusTrackingInfoAvailable'. It can be listened for after VideoSessionForSys is created successfully. |
+| callback | Callback\<[FocusTrackingInfo](#focustrackinginfo15)\>      | Yes       | Callback invoked to return the current focus tracking information. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
-| -------- | ----------------------- |
-| 202      | Not System Application. |
+| ID  | Error Message           |
+| --- | ----------------------- |
+| 202 | Not System Application. |
 
 **Example**
 
@@ -3537,18 +3553,18 @@ Unsubscribes from focus tracking information events.
 
 **Parameters**
 
-| Name  | Type                                                      | Mandatory| Description                                                        |
-| -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                     | Yes  | Event type. The value is fixed at **'focusTrackingInfoAvailable'**. The event can be listened for when a VideoSessionForSys object is created.|
-| callback | Callback\<[FocusTrackingInfo](#focustrackinginfo15)\>      | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusTrackingInfoAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)|
+| Name     | Type                                                       | Mandatory | Description                                                         |
+| -------- | ---------------------------------------------------------- | --------- | ------------------------------------------------------------ |
+| type     | string                                                     | Yes       | Event to listen for. The value is fixed at 'focusTrackingInfoAvailable'. This event can be listened for after videoSessionForSys is created successfully. |
+| callback | Callback\<[FocusTrackingInfo](#focustrackinginfo15)\>      | No        | Callback function. This parameter is optional. If present, it matches the callback of on('focusTrackingInfoAvailable') (the callback object cannot be an anonymous function). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
-| -------- | ----------------------- |
-| 202      | Not System Application. |
+| ID  | Error Message           |
+| --- | ----------------------- |
+| 202 | Not System Application. |
 
 **Example**
 
@@ -3570,18 +3586,18 @@ Subscribes to camera light status changes. This API uses an asynchronous callbac
 
 **Parameters**
 
-| Name  | Type                                            | Mandatory| Description                                                                             |
-| -------- |------------------------------------------------| ---- |---------------------------------------------------------------------------------|
-| type     | string                                         | Yes  | Event type. The value is fixed at **'lightStatusChange'**.<br>The event can be listened for when a VideoSessionForSys object is created.|
-| callback | AsyncCallback\<[LightStatus](#lightstatus18)\> | Yes  | Callback used to return the light status information.                                                             |
+| Name     | Type                                            | Mandatory | Description                                                                              |
+| -------- |------------------------------------------------| --------- | ---------------------------------------------------------------------------------------- |
+| type     | string                                         | Yes       | Event listening, which is fixed to **'lightStatusChange'**.<br>'lightStatusChange': can be listened to when VideoSessionForSys is created successfully. |
+| callback | AsyncCallback\<[LightStatus](#lightstatus18)\> | Yes       | Callback used to return the current light status information.                            |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
-| -------- | ----------------------- |
-| 202      | Not System Application. |
+| ID  | Error Message           |
+| --- | ----------------------- |
+| 202 | Not System Application. |
 
 **Example**
 
@@ -3619,16 +3635,16 @@ Unsubscribes from camera light status changes.
 
 **Parameters**
 
-| Name  | Type                                            | Mandatory| Description                                                                              |
+| Name     | Type                                            | Mandatory | Description                                                                               |
 | -------- |------------------------------------------------|----|----------------------------------------------------------------------------------|
-| type     | string                                         | Yes | Event type. The value is fixed at **'lightStatusChange'**.<br>The event can be listened for when a VideoSessionForSys object is created.|
-| callback | AsyncCallback\<[LightStatus](#lightstatus18)\> | No | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('lightStatusChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)               |
+| type     | string                                         | Yes  | Event listening, which is fixed to 'lightStatusChange'.<br>'lightStatusChange': can be listened to when VideoSessionForSys is created successfully. |
+| callback | AsyncCallback\<[LightStatus](#lightstatus18)\> | No  | Callback function, which is optional. If present, it is a match for the callback of on('lightStatusChange') (the callback object cannot be an anonymous function).                |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
+| ID  | Error Message           |
 | -------- | ----------------------- |
 | 202      | Not System Application. |
 
@@ -3674,10 +3690,10 @@ Subscribes to PortraitSession error events. This API uses an asynchronous callba
 
 **Parameters**
 
-| Name    | Type       | Mandatory| Description                          |
+| Name     | Type        | Mandatory | Description                           |
 | -------- | --------------------------------- | ---- | ------------------------------ |
-| type     | string                               | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), and [addInput](arkts-apis-camera-Session.md#addinput11).|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).       |
+| type     | string                               | Yes   | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created. This event is triggered when an error occurs during a session API call, for example, when [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), or [addInput](arkts-apis-camera-Session.md#addinput11) fails. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes   | Callback invoked to return the error information. The error code type is [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).        |
 
 **Example**
 
@@ -3705,10 +3721,10 @@ Unsubscribes from PortraitSession error events.
 
 **Parameters**
 
-| Name    | Type       | Mandatory| Description                          |
+| Name     | Type        | Mandatory | Description                           |
 | -------- | -------------------------- | ---- | ------------------------------ |
-| type     | string                     | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('error')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)   |
+| type     | string                     | Yes   | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No   | Callback for the error event. If present, it is a match for the callback in on('error'). The callback object cannot be an anonymous function.    |
 
 **Example**
 
@@ -3730,10 +3746,10 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name    | Type                   | Mandatory| Description                      |
+| Name     | Type                    | Mandatory | Description                       |
 | -------- | ---------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes  | Callback used to return the focus state change. |
+| type     | string                                    | Yes   | Event listening. The value is fixed at **'focusStateChange'**. This event can be listened for after the session is created successfully. This event is triggered only in auto focus mode when the camera focus state changes. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes   | Callback used to return the current focus state.  |
 
 **Example**
 
@@ -3765,10 +3781,10 @@ Unsubscribes from focus state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string                                    | Yes   | Event listening. The value is fixed at **'focusStateChange'**, which can be listened for after the session is created. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No   | Callback function, optional. If present, it is a match for the callback of on('focusStateChange') (the callback object cannot be an anonymous function).  |
 
 **Example**
 
@@ -3790,10 +3806,10 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Parameters**
 
-| Name    | Type                  | Mandatory| Description                      |
+| Name     | Type                   | Mandatory | Description                       |
 | -------- | ----------------------- | ---- | ------------------------ |
-| type     | string                  | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes  | Callback used to return the smooth zoom state change. |
+| type     | string                  | Yes   | Event to listen for. The value is fixed at **'smoothZoomInfoAvailable'**. This event can be listened for after the session is created. |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes   | Callback used to obtain the current smooth zoom status.  |
 
 **Example**
 
@@ -3825,10 +3841,10 @@ Unsubscribes from smooth zoom state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string              | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('smoothZoomInfoAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string              | Yes   | Event listening, fixed to 'smoothZoomInfoAvailable', which can be listened to after the session is created successfully.|
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No   | Callback function, optional. If present, it is a match for the callback of on('smoothZoomInfoAvailable') (the callback object cannot be an anonymous function).  |
 
 **Example**
 
@@ -3850,16 +3866,16 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                                      |
+| Name     | Type                                      | Mandatory | Description                                       |
 | -------- | ----------------------------------------- | ---- |------------------------------------------|
-| type     | string      | Yes  | Event type. The value is fixed at **'lcdFlashStatus'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\>     | Yes  | Callback used to return the LCD flash status change.                 |
+| type     | string      | Yes   | Event to listen for. The value is fixed at **'lcdFlashStatus'**. This event can be listened for after the session is created. |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\>     | Yes   | Callback used to return the current LCD flash status.                  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| ID | Error Message                      |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3894,16 +3910,16 @@ Unsubscribes from LCD flash status change events.
 
 **Parameters**
 
-| Name   | Type                    | Mandatory| Description                                                              |
+| Name    | Type                     | Mandatory | Description                                                               |
 | -------- | ------------------------ | ---- |------------------------------------------------------------------|
-| type     | string                   | Yes  | Event type. The value is fixed at **'lcdFlashStatus'**. The event can be listened for when a session is created.                      |
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('lcdFlashStatus')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)|
+| type     | string                   | Yes   | Event to listen for. The value is fixed at **'lcdFlashStatus'**. The listener can be removed after the session is created.                       |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | No   | Callback for the **lcdFlashStatus** event. This parameter is optional. If present, it is a match for the callback in **on('lcdFlashStatus')** (the callback object cannot be an anonymous function). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| ID | Error Message                      |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -3935,10 +3951,10 @@ Subscribes to NightSession error events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name    | Type                                                         | Mandatory| Description                          |
+| Name     | Type                                                          | Mandatory | Description                           |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------ |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), and [addInput](arkts-apis-camera-Session.md#addinput11).|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).|
+| type     | string                                                      | Yes   | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created. This event is triggered when an error occurs during the call of related session APIs, for example, when an error occurs during the call of [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), or [addInput](arkts-apis-camera-Session.md#addinput11), the error information is returned. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes   | Callback used to return the error information. Returns an error code of the [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) type. |
 
 **Example**
 
@@ -3966,10 +3982,10 @@ Unsubscribes from NightSession error events.
 
 **Parameters**
 
-| Name    | Type                       | Mandatory| Description                          |
+| Name     | Type                        | Mandatory | Description                           |
 | -------- | ------------------------ | ---- | ------------------------------ |
-| type     | string    | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('error')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)      |
+| type     | string    | Yes   | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No   | Callback for the **'error'** event. This parameter is optional. If present, it is a match for the callback in **on('error')**. The callback object cannot be an anonymous function.       |
 
 **Example**
 
@@ -3991,10 +4007,10 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name    | Type                   | Mandatory| Description                      |
+| Name     | Type                    | Mandatory | Description                       |
 | -------- | ---------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes  | Callback used to return the focus state change. |
+| type     | string                                    | Yes   | Event listening, fixed to 'focusStateChange'. This event can be listened for after the session is created successfully. It is triggered only in auto focus mode when the camera focus state changes. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes   | Callback invoked to return the current focus state.  |
 
 **Example**
 
@@ -4026,10 +4042,10 @@ Unsubscribes from focus state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string                                    | Yes   | Event listening, fixed to 'focusStateChange'. This event can be listened for after the session is created. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No   | Callback function, optional. If present, it is a match for the callback of on('focusStateChange') (the callback object cannot be an anonymous function).  |
 
 **Example**
 
@@ -4051,10 +4067,10 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Parameters**
 
-| Name    | Type                  | Mandatory| Description                      |
+| Name     | Type                   | Mandatory | Description                       |
 | -------- | ----------------------- | ---- | ------------------------ |
-| type     | string                  | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes  | Callback used to return the smooth zoom state change. |
+| type     | string                  | Yes   | Event listening, which is fixed to 'smoothZoomInfoAvailable'. It can be listened for after the session is created successfully. |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes   | Callback function used to obtain the current smooth zoom status.  |
 
 **Example**
 
@@ -4086,10 +4102,10 @@ Unsubscribes from smooth zoom state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string              | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('smoothZoomInfoAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string              | Yes   | Event listening, fixed to 'smoothZoomInfoAvailable'. It can be listened for after the session is created successfully.|
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No   | Callback function, optional. If present, it is a match for the callback in on('smoothZoomInfoAvailable') (the callback object cannot be an anonymous function).  |
 
 **Example**
 
@@ -4111,16 +4127,16 @@ Subscribes to LCD flash status change events. This API uses an asynchronous call
 
 **Parameters**
 
-| Name    | Type                  | Mandatory| Description                      |
+| Name     | Type                   | Mandatory | Description                       |
 | -------- | ----------------------- | ---- | ------------------------ |
-| type     | string                  | Yes  | Event type. The value is fixed at **'lcdFlashStatus'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | Yes  | Callback used to return the LCD flash status change. |
+| type     | string                  | Yes   | Event to listen for. The value is fixed at **'lcdFlashStatus'**. This event can be listened for after the session is created. |
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | Yes   | Callback used to return the current LCD flash status.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| ID | Error Message                      |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -4154,16 +4170,16 @@ Unsubscribes from LCD flash status change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string              | Yes  | Event type. The value is fixed at **'lcdFlashStatus'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('lcdFlashStatus')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string              | Yes   | Event listening. The value is fixed at **'lcdFlashStatus'**, which can be listened to after the session is created.|
+| callback | AsyncCallback\<[LcdFlashStatus](#lcdflashstatus12)\> | No   | Callback function, optional. If present, it is a match for the callback of on('lcdFlashStatus') (the callback object cannot be an anonymous function).  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                     |
+| ID | Error Message                      |
 |-------|---------------------------|
 | 202   | Not System Application.   |
 
@@ -4197,16 +4213,16 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 
 **Parameters**
 
-| Name    | Type       | Mandatory| Description                          |
+| Name     | Type        | Mandatory | Description                           |
 | -------- | --------------------------------- | ---- | ------------------------------ |
-| type     | string                               | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), and [addInput](arkts-apis-camera-Session.md#addinput11).|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).       |
+| type     | string                               | Yes   | Event listening. The value is fixed at **'error'**. This event can be listened for after the session is created. This event is triggered when an error occurs during the call of a session API, for example, when [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), or [addInput](arkts-apis-camera-Session.md#addinput11) returns an error. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes   | Callback used to obtain error information. Returns an error code of the [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) type.        |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                |   Not System Application.               |
 
@@ -4223,6 +4239,7 @@ function registerSessionError(highResolutionPhotoSession: camera.HighResolutionP
   highResolutionPhotoSession.on('error', callback);
 }
 ```
+
 ### off('error')<sup>12+</sup>
 
 off(type: 'error', callback?: ErrorCallback): void
@@ -4235,16 +4252,16 @@ Unsubscribes from HighResolutionPhotoSession error events.
 
 **Parameters**
 
-| Name    | Type                       | Mandatory| Description                          |
+| Name     | Type                        | Mandatory | Description                           |
 | -------- | ------------------------ | ---- | ------------------------------ |
-| type     | string    | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('error')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)      |
+| type     | string    | Yes   | Event listening. The value is fixed at **'error'**. This event can be listened for after the session is created. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No   | Callback function, optional. If present, it is a match for the callback in on('error') (the callback object cannot be an anonymous function).       |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                |   Not System Application.               |
 
@@ -4268,16 +4285,16 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name    | Type                   | Mandatory| Description                      |
+| Name     | Type                    | Mandatory | Description                       |
 | -------- | ---------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes  | Callback used to return the focus state change. |
+| type     | string                                    | Yes   | Event listening. The value is fixed at **'focusStateChange'**. This event can be listened for after the session is created successfully. It is triggered only in auto focus mode when the camera focus state changes. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes   | Callback used to return the current focus state.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                |   Not System Application.               |
 
@@ -4313,16 +4330,16 @@ Unsubscribes from focus state change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                |   Not System Application.               |
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string                                    | Yes   | Event to listen for. The value is fixed at **'focusStateChange'**, which can be listened for after the session is created. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No   | Callback for the focusStateChange event. If present, it must match the callback registered in **on('focusStateChange')** (the callback object cannot be an anonymous function).  |
 
 **Example**
 
@@ -4340,11 +4357,11 @@ Defines the PiP status data.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name         | Type     | Read-only| Optional| Description       |
+| Name          | Type      | Read-Only | Optional | Description        |
 | ------------- | -------- | ---- | ---- | ---------- |
-| status        | number   | No  | No  | Status of PiP. The options are 0 (stopped), 1 (started), 2 (stopping), and 3 (starting).|
-| sketchRatio   | number   | No  | No  | Zoom ratio of PiP.|
-| centerPointOffset<sup>20+</sup> | Point | No | No  | Offset of PiP. |
+| status        | number   | No   | No   | Current status of the picture-in-picture. 0: stopped, 1: started, 2: stopping, 3: starting.|
+| sketchRatio   | number   | No   | No   | Zoom ratio of the picture-in-picture screen.|
+| centerPointOffset<sup>20+</sup> | Point | No  | No   | Offset point of the picture-in-picture.  |
 
 ## SlowMotionVideoSession<sup>12+</sup>
 
@@ -4354,6 +4371,7 @@ Implements a slow-motion video session, which sets the parameters of the slow-mo
 
 > **NOTE**
 > In slow-motion video mode, only preview streams and video streams can be added.
+
 ### on('error')<sup>12+</sup>
 
 on(type: 'error', callback: ErrorCallback): void
@@ -4366,16 +4384,16 @@ Subscribes to SlowMotionVideoSession error events. This API uses an asynchronous
 
 **Parameters**
 
-| Name    | Type       | Mandatory| Description                          |
+| Name     | Type        | Mandatory | Description                           |
 | -------- | --------------------------------- | ---- | ------------------------------ |
-| type     | string                               | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), and [addInput](arkts-apis-camera-Session.md#addinput11).|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).       |
+| type     | string                               | Yes   | Event to listen for. The value is fixed at 'error'. This event can be listened for after the session is created. This event is triggered when an error occurs during the call of session-related APIs, for example, when [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), or [addInput](arkts-apis-camera-Session.md#addinput11) returns an error. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes   | Callback used to return the error information. The error code type is [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).        |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -4405,16 +4423,16 @@ Unsubscribes from SlowMotionVideoSession error events.
 
 **Parameters**
 
-| Name    | Type       | Mandatory| Description                          |
+| Name     | Type        | Mandatory | Description                           |
 | -------- | -------------------------- | ---- | ------------------------------ |
-| type     | string                     | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('error')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)   |
+| type     | string                     | Yes   | Event to listen for, which is fixed at 'error'. This event can be listened for after the session is created. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No   | Callback for the 'error' event. If present, it is a match for the callback in on('error') (the callback object cannot be an anonymous function).    |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -4438,16 +4456,16 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name    | Type                   | Mandatory| Description                      |
+| Name     | Type                    | Mandatory | Description                       |
 | -------- | ---------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes  | Callback used to return the focus state change. |
+| type     | string                                    | Yes   | Event to listen for. The value is fixed at **'focusStateChange'**. This event can be listened for after the session is created successfully. It is triggered only in auto focus mode when the camera focus state changes. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes   | Callback used to obtain the current focus state.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -4481,16 +4499,16 @@ Unsubscribes from focus state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string                                    | Yes   | Event listening, which is fixed to 'focusStateChange'. It can be listened for after the session is created successfully. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No   | Callback function, which is optional. If present, it is a match for the callback of on('focusStateChange') (the callback object cannot be an anonymous function).  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -4514,16 +4532,16 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Parameters**
 
-| Name    | Type                  | Mandatory| Description                      |
+| Name     | Type                   | Mandatory | Description                       |
 | -------- | ----------------------- | ---- | ------------------------ |
-| type     | string                  | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes  | Callback used to return the smooth zoom state change. |
+| type     | string                  | Yes   | Event to listen for. The value is fixed at **'smoothZoomInfoAvailable'**. This event can be listened for after the session is created. |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes   | Callback used to return the current smooth zoom status.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -4557,16 +4575,16 @@ Unsubscribes from smooth zoom state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string              | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('smoothZoomInfoAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string              | Yes   | Event to listen for. The value is fixed at **'smoothZoomInfoAvailable'**, which can be listened for after the session is created.|
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No   | Callback function, optional. If present, it is a match for the callback of on('smoothZoomInfoAvailable') (the callback object cannot be an anonymous function).  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -4590,16 +4608,16 @@ Subscribes to slow-motion status change events. This API uses an asynchronous ca
 
 **Parameters**
 
-| Name    | Type                                                                       | Mandatory| Description                                        |
+| Name     | Type                                                                        | Mandatory | Description                                         |
 | -------- |---------------------------------------------------------------------------| ---- |--------------------------------------------|
-| type     | string                                                                    | Yes  | Event type. The value is fixed at **'slowMotionStatus'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SlowMotionStatus](#slowmotionstatus12)\> | Yes  | Callback used to return the slow-motion status change.    |
+| type     | string                                                                    | Yes   | Event to listen for. The value is fixed at **'slowMotionStatus'**. This event can be listened for after the session is created. |
+| callback | AsyncCallback\<[SlowMotionStatus](#slowmotionstatus12)\> | Yes   | Callback used to return the current slow motion status. This callback is also invoked when the slow motion status changes.   |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -4633,16 +4651,16 @@ Unsubscribes from slow-motion status change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string              | Yes  | Event type. The value is fixed at **'slowMotionStatus'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SlowMotionStatus](#slowmotionstatus12)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('slowMotionStatus')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned. |
+| type     | string              | Yes   | Event to listen for. The value is fixed at **'slowMotionStatus'**. This event can be listened for after the session is created.|
+| callback | AsyncCallback\<[SlowMotionStatus](#slowmotionstatus12)\> | No   | Callback for the slowMotionStatus event. This parameter is optional. If present, it is a match for the callback in on('slowMotionStatus') (the callback object cannot be an anonymous function). If the API call fails, it returns the corresponding error code. For details about the error code type, see [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application.                               |
 
@@ -4653,6 +4671,7 @@ function unregisterSlowMotionStatus(slowMotionVideoSession: camera.SlowMotionVid
   slowMotionVideoSession.off('slowMotionStatus');
 }
 ```
+
 ### isSlowMotionDetectionSupported<sup>12+</sup>
 
 isSlowMotionDetectionSupported(): boolean
@@ -4668,15 +4687,15 @@ Checks whether the device supports slow-motion detection.
 
 **Return value**
 
-| Type       | Description                                                                                    |
+| Type        | Description                                                                                     |
 | ---------- |----------------------------------------------------------------------------------------|
-| boolean    | Check result for the support of slow-motion detection. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| boolean    | Returns true if slow motion detection is supported, and false otherwise. Returns the corresponding error code on failure. For details about the error code, see [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application.                               |
 
@@ -4690,7 +4709,7 @@ function isSlowMotionDetectionSupported(slowMotionVideoSession: camera.SlowMotio
   try {
     isSupported = slowMotionVideoSession.isSlowMotionDetectionSupported();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The isFocusModeSupported call failed. error code: ${err.code}`);
   }
@@ -4714,15 +4733,15 @@ This API must be called after [commitConfig](arkts-apis-camera-Session.md#commit
 
 **Parameters**
 
-| Name    | Type                                           | Mandatory| Description                         |
+| Name     | Type                                            | Mandatory | Description                          |
 | -------- | ---------------------------------------------- | ---- | --------------------------- |
-| area  | [Rect](arkts-apis-camera-i.md#rect)      | Yes  | Area.                  |
+| area  | [Rect](arkts-apis-camera-i.md#rect)      | Yes   | Rectangle definition.                   |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application.                            |
 
@@ -4735,7 +4754,7 @@ function setSlowMotionDetectionArea(slowMotionVideoSession: camera.SlowMotionVid
   try {
     slowMotionVideoSession.setSlowMotionDetectionArea({topLeftX: 0.1, topLeftY: 0.1, width: 0.8, height: 0.8});
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Returns the error code error.code on failure and handles it.
     let err = error as BusinessError;
     console.error(`The setSlowMotionDetectionArea call failed. error code: ${err.code}`);
   }
@@ -4760,10 +4779,10 @@ Subscribes to PanoramaPhotoSession error events. This API uses an asynchronous c
 
 **Parameters**
 
-| Name    | Type                                                         | Mandatory| Description                          |
+| Name     | Type                                                          | Mandatory | Description                           |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------ |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), and [addInput](arkts-apis-camera-Session.md#addinput11).|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).|
+| type     | string                                                      | Yes   | Event listening. The value is fixed at **'error'**. This event can be listened for after the session is created. This event is triggered when an error occurs during the call of a session API, for example, when [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), or [addInput](arkts-apis-camera-Session.md#addinput11) returns an error. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes   | Callback function used to obtain the error information. Returns an error code of the [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) type. |
 
 **Example**
 
@@ -4791,10 +4810,10 @@ Unsubscribes from PanoramaPhotoSession error events.
 
 **Parameters**
 
-| Name    | Type                       | Mandatory| Description                          |
+| Name     | Type                        | Mandatory | Description                           |
 | -------- | ------------------------ | ---- | ------------------------------ |
-| type     | string    | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('error')** with the specified callback is canceled. (The callback object cannot be an anonymous function.)      |
+| type     | string    | Yes   | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No   | Callback for the error event. If present, it is a match for the callback in **on('error')** (the callback object cannot be an anonymous function).       |
 
 **Example**
 
@@ -4816,10 +4835,10 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name    | Type                   | Mandatory| Description                      |
+| Name     | Type                    | Mandatory | Description                       |
 | -------- | ---------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes  | Callback used to return the focus state change. |
+| type     | string                                    | Yes   | Event listening. The value is fixed at **'focusStateChange'**. This event can be listened for after the session is created successfully. It is triggered only in auto focus mode when the camera focus state changes. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes   | Callback used to return the current focus state.  |
 
 **Example**
 
@@ -4851,10 +4870,10 @@ Unsubscribes from focus state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string                                    | Yes   | Event listening, fixed to 'focusStateChange'. It can be listened to after the session is created successfully. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No   | Callback function, optional. If present, it is a match for the callback of on('focusStateChange') (the callback object cannot be an anonymous function).  |
 
 **Example**
 
@@ -4872,11 +4891,9 @@ Describes the ISO information.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name| Type   | Read-only| Optional| Description          |
+| Name | Type    | Read-Only | Optional | Description           |
 | ---- | ------- | ---- |--| -------------- |
-| iso  | number  | Yes  | Yes| ISO.       |
-
----
+| iso  | number  | Yes   | Yes | ISO value.        |
 
 ## ApertureInfo<sup>12+</sup>
 
@@ -4886,11 +4903,9 @@ Describes the aperture information.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name     | Type   | Read-only| Optional | Description      |
-| --------- | ------- | ---- |-----| ---------- |
-| aperture  | number  | Yes  | Yes  | Aperture.  |
-
----
+| Name     | Type   | Read-Only | Optional | Description    |
+| -------- | ------ | --------- | -------- | -------------- |
+| aperture | number | Yes       | Yes      | Aperture value. |
 
 ## LuminationInfo<sup>12+</sup>
 
@@ -4900,21 +4915,21 @@ Describes the illumination information.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name       | Type   | Read-only| Optional | Description      |
+| Name        | Type    | Read-Only | Optional  | Description       |
 | ----------- | ------- | ---- |-----| ---------- |
-| lumination  | number  | Yes  | Yes  | Illumination. The value range is [0, 1].|
+| lumination  | number  | Yes   | Yes   | Range [0, 1], the normalized illumination value.|
 
 ## ExposureMeteringMode<sup>12+</sup>
 
-Enumerates the exposure metering modes.
+Enumerates the exposure metering modes. 
 
-**System API**: This is a system API.
+**System API**: This is a system API. 
 
-**System capability**: SystemCapability.Multimedia.Camera.Core
+**System capability**: SystemCapability.Multimedia.Camera.Core 
 
-| Name                          | Value  | Description        | 
+| Name                           | Value   | Description         | 
 | ----------------------------- | ---- | ----------- | 
-| CENTER_HIGHLIGHT_WEIGHTED   | 3    | Center-weighted and highlight metering mode. This mode focuses on the highlight area near the center of the screen.      |
+| CENTER_HIGHLIGHT_WEIGHTED   | 3    | Center highlight weighted metering mode. Focuses on the highlight area near the center of the screen.       |
 
 ## FocusRangeType<sup>15+</sup>
 
@@ -4922,10 +4937,10 @@ Enumerates the focus range types.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name| Value  | Description      |
+| Name | Value | Description |
 | ---- | ---- | ---------- |
-| AUTO | 0    | Auto focus.    |
-| NEAR | 1    | Focus on near objects.|
+| AUTO | 0 | Automatic focus. |
+| NEAR | 1 | Near-object focus. |
 
 ## FocusDrivenType<sup>15+</sup>
 
@@ -4933,10 +4948,10 @@ Enumerates the focus drive types.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name| Value  | Description      |
+| Name | Value | Description |
 | ---- | ---- | ---------- |
-| AUTO | 0    | Automatic.    |
-| FACE | 1    | Face-driven.|
+| AUTO | 0 | Automatic. |
+| FACE | 1 | Face-driven. |
 
 ## FocusQuery<sup>12+</sup>
 
@@ -4954,15 +4969,15 @@ Checks whether the focus assist is supported.
 
 **Return value**
 
-| Type       | Description                         |
+| Type        | Description                          |
 | ---------- | ----------------------------- |
-| boolean    | Check result for the support of the focus assist. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| boolean    | Returns true if the focus assist light is supported, and false otherwise. If the API call fails, the corresponding error code is returned. For details about the error codes, see [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                |  Session not config, only throw in session usage.      |
 | 202     | Not System Application. |
@@ -4977,7 +4992,7 @@ function isFocusAssistSupported(professionalPhotoSession: camera.ProfessionalPho
   try {
     status = professionalPhotoSession.isFocusAssistSupported();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The isFocusAssistSupported call failed. error code: ${err.code}`);
   }
@@ -4997,25 +5012,25 @@ Checks whether a focus range type is supported.
 
 **Parameters**
 
-| Name| Type                               | Mandatory| Description                    |
-| ------ | ----------------------------------- | ---- | ------------------------ |
-| type   | [FocusRangeType](#focusrangetype15) | Yes  | Focus range type.|
+| Name | Type                                | Mandatory | Description                     |
+| ---- | ----------------------------------- | --------- | ------------------------------- |
+| type | [FocusRangeType](#focusrangetype15) | Yes       | Specified focus range type. |
 
 **Return value**
 
-| Type   | Description                                                        |
+| Type    | Description                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | Check result for the support of the focus range type. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| boolean | Returns true if the specified focus range type is supported, and false otherwise. Returns the corresponding error code on failure. For details about the error code, see [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 202      | Not System Application.                                      |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 7400103  |  Session not config, only throw in session usage.     |
+| ID  | Error Message                                                     |
+| --- | ------------------------------------------------------------ |
+| 202 | Not System Application.                                      |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 7400103 | Session not config, only throw in session usage.     |
 
 **Example**
 
@@ -5027,7 +5042,7 @@ function isFocusRangeTypeSupported(session: camera.VideoSessionForSys, type: cam
   try {
     status = session.isFocusRangeTypeSupported(type);
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The isFocusRangeTypeSupported call failed. error code: ${err.code}`);
   }
@@ -5047,25 +5062,25 @@ Checks whether a focus drive type is supported.
 
 **Parameters**
 
-| Name| Type                                 | Mandatory| Description                    |
-| ------ | ------------------------------------- | ---- | ------------------------ |
-| type   | [FocusDrivenType](#focusdriventype15) | Yes  | Focus drive type.|
+| Name | Type                                  | Mandatory | Description                     |
+| ---- | ------------------------------------- | --------- | ------------------------------- |
+| type | [FocusDrivenType](#focusdriventype15) | Yes       | Specified focus driven type. |
 
 **Return value**
 
-| Type   | Description                                                        |
+| Type    | Description                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | Check result for the support of the focus drive type. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| boolean | Returns true if the specified focus driven type is supported, and false otherwise. Returns the corresponding error code on failure. For details about the error codes, see [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 202      | Not System Application.                                      |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 7400103  | Session not config, only throw in session usage.       |
+| ID  | Error Message                                                     |
+| --- | ------------------------------------------------------------ |
+| 202 | Not System Application.                                      |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 7400103 | Session not config, only throw in session usage.       |
 
 **Example**
 
@@ -5077,7 +5092,7 @@ function isFocusDrivenTypeSupported(session: camera.VideoSessionForSys, type: ca
   try {
     status = session.isFocusDrivenTypeSupported(type);
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The isFocusDrivenTypeSupported call failed. error code: ${err.code}`);
   }
@@ -5103,20 +5118,19 @@ Sets the focus assist. Before the setting, call [isFocusAssistSupported](#isfocu
 
 **Parameters**
 
-| Name     | Type                    | Mandatory| Description                |
+| Name      | Type                     | Mandatory | Description                 |
 | -------- | ----------------------- | ---- | ------------------- |
-| enabled | boolean | Yes  | Whether to enable or disable focus assist. **true** to enable, **false** otherwise.|
+| enabled | boolean | Yes   | Whether to enable the focus assist light. The value **true** means to enable it, and **false** means to disable it. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
-
 
 **Example**
 
@@ -5127,7 +5141,7 @@ function setFocusAssist(professionalPhotoSession: camera.ProfessionalPhotoSessio
   try {
     professionalPhotoSession.setFocusAssist(false);
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The setFocusAssist call failed. error code: ${err.code}`);
   }
@@ -5146,15 +5160,15 @@ Checks whether the focus assist is enabled.
 
 **Return value**
 
-| Type       | Description                         |
+| Type        | Description                          |
 | ---------- | ----------------------------- |
-| boolean    | Check result for whether the focus assist is enabled. **true** if enabled, **false** otherwise.|
+| boolean    | Returns true if the camera has turned on the focus assist light, and returns false if the camera has turned off the focus assist light. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 | 202     | Not System Application. |
@@ -5167,7 +5181,7 @@ function getFocusAssist(professionalPhotoSession: camera.ProfessionalPhotoSessio
   try {
     isFocusAssistOpened = professionalPhotoSession.getFocusAssist();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The getFocusAssist call failed. error code: ${err.code}`);
   }
@@ -5187,21 +5201,21 @@ Sets a focus range type. Before the setting, call [isFocusRangeTypeSupported](#i
 
 **Parameters**
 
-| Name| Type                               | Mandatory| Description          |
-| ------ | ----------------------------------- | ---- | -------------- |
-| type   | [FocusRangeType](#focusrangetype15) | Yes  | Focus range type.|
+| Name | Type                                | Mandatory | Description       |
+| ---- | ----------------------------------- | --------- | ----------------- |
+| type | [FocusRangeType](#focusrangetype15) | Yes       | Focus range type. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 202      | Not System Application.                                      |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
-| 7400102  | Operation not allowed.                                       |
-| 7400103  | Session not config.                                          |
-| 7400201  | Camera service fatal error.                                  |
+| ID  | Error Message                                                |
+| --- | ------------------------------------------------------------ |
+| 202 | Not System Application.                                      |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
+| 7400102 | Operation not allowed.                                       |
+| 7400103 | Session not config.                                          |
+| 7400201 | Camera service fatal error.                                  |
 
 **Example**
 
@@ -5212,7 +5226,7 @@ function setFocusRange(session: camera.VideoSessionForSys, type: camera.FocusRan
   try {
     session.setFocusRange(type);
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code on failure and handle it.
     let err = error as BusinessError;
     console.error(`The setFocusRange call failed. error code: ${err.code}`);
   }
@@ -5231,18 +5245,18 @@ Obtains the focus range type in use.
 
 **Return value**
 
-| Type                               | Description                    |
-| ----------------------------------- | ------------------------ |
-| [FocusRangeType](#focusrangetype15) | Focus range type.|
+| Type                                | Description                     |
+| ----------------------------------- | ------------------------------- |
+| [FocusRangeType](#focusrangetype15) | Current focus range type. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
-| -------- | ----------------------- |
-| 202      | Not System Application. |
-| 7400103  | Session not config.     |
+| ID  | Error Message           |
+| --- | ----------------------- |
+| 202 | Not System Application. |
+| 7400103 | Session not config. |
 
 **Example**
 
@@ -5254,7 +5268,7 @@ function getFocusRange(session: camera.VideoSessionForSys): camera.FocusRangeTyp
   try {
     focusRangeType = session.getFocusRange();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The getFocusRange call failed. error code: ${err.code}`);
   }
@@ -5274,21 +5288,21 @@ Sets a focus drive type. Before the setting, call [isFocusDrivenTypeSupported](#
 
 **Parameters**
 
-| Name| Type                                 | Mandatory| Description          |
-| ------ | ------------------------------------- | ---- | -------------- |
-| type   | [FocusDrivenType](#focusdriventype15) | Yes  | Focus drive type.|
+| Name | Type                                  | Mandatory | Description           |
+| ---- | ------------------------------------- | --------- | --------------------- |
+| type | [FocusDrivenType](#focusdriventype15) | Yes       | Focus driven type. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 202      | Not System Application.                                      |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
-| 7400102  | Operation not allowed.                                       |
-| 7400103  | Session not config.                                          |
-| 7400201  | Camera service fatal error.                                  |
+| ID  | Error Message                                                |
+| --- | ------------------------------------------------------------ |
+| 202 | Not System Application.                                      |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
+| 7400102 | Operation not allowed.                                       |
+| 7400103 | Session not config.                                          |
+| 7400201 | Camera service fatal error.                                  |
 
 **Example**
 
@@ -5299,7 +5313,7 @@ function setFocusDriven(session: camera.VideoSessionForSys, type: camera.FocusDr
   try {
     session.setFocusDriven(type);
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code on failure and handle it.
     let err = error as BusinessError;
     console.error(`The setFocusDriven call failed. error code: ${err.code}`);
   }
@@ -5318,18 +5332,18 @@ Obtains the focus drive type in use.
 
 **Return value**
 
-| Type                                 | Description                    |
-| ------------------------------------- | ------------------------ |
-| [FocusDrivenType](#focusdriventype15) | Focus drive type.|
+| Type                                  | Description                     |
+| ------------------------------------- | ------------------------------- |
+| [FocusDrivenType](#focusdriventype15) | Current focus driven type.      |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
-| -------- | ----------------------- |
-| 202      | Not System Application. |
-| 7400103  | Session not config.     |
+| ID      | Error Message           |
+| ------- | ----------------------- |
+| 202     | Not System Application. |
+| 7400103 | Session not config.     |
 
 **Example**
 
@@ -5341,7 +5355,7 @@ function getFocusDriven(session: camera.VideoSessionForSys): camera.FocusDrivenT
   try {
     focusDrivenType = session.getFocusDriven();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Obtain the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The getFocusDriven call failed. error code: ${err.code}`);
   }
@@ -5365,15 +5379,15 @@ Checks whether manual ISO setting is supported.
 
 **Return value**
 
-| Type       | Description                         |
+| Type        | Description                          |
 | ---------- | ----------------------------- |
-| boolean    | Check result for the support of manual ISO setting. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| boolean    | Returns true if manual ISO adjustment is supported, and false otherwise. Returns the corresponding error code on failure. For details about the error code, see [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                |  Session not config, only throw in session usage.      |
 | 202     | Not System Application. |
@@ -5388,7 +5402,7 @@ function isManualIsoSupported(professionalPhotoSession: camera.ProfessionalPhoto
   try {
     status = professionalPhotoSession.isManualIsoSupported();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The isManualIsoSupported call failed. error code: ${err.code}`);
   }
@@ -5408,15 +5422,15 @@ Obtains the supported ISO range.
 
 **Return value**
 
-| Type       | Description                         |
+| Type        | Description                          |
 | ---------- | ----------------------------- |
-| Array\<number\>   | ISO range. The value range is [50, 100, ..., 6400]. The actual value depends on the bottom-layer capability. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| Array\<number\>   | Used to obtain the ISO range, which is [50, 100, ..., 6400]. The actual range is subject to the underlying capability. Returns the corresponding error code on failure. For details about the error code, see [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103                |  Session not config, only throw in session usage.    |
@@ -5431,7 +5445,7 @@ function getIsoRange(professionalPhotoSession: camera.ProfessionalPhotoSession):
   try {
     isoRange = professionalPhotoSession.getIsoRange();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The getIsoRange call failed. error code: ${err.code}`);
   }
@@ -5457,16 +5471,16 @@ Subscribes to ProfessionalPhotoSession error events. This API uses an asynchrono
 
 **Parameters**
 
-| Name    | Type                                                         | Mandatory| Description                          |
+| Name     | Type                                                          | Mandatory | Description                           |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------ |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), and [addInput](arkts-apis-camera-Session.md#addinput11).|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).|
+| type     | string                                                      | Yes   | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created. This event is triggered when an error occurs during the invocation of a session API, for example, when an error occurs during the invocation of [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), or [addInput](arkts-apis-camera-Session.md#addinput11), the error information is returned. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes   | Callback used to return the error information. Returns an error code of the [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) type. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -5496,16 +5510,16 @@ Unsubscribes from ProfessionalPhotoSession error events.
 
 **Parameters**
 
-| Name    | Type                       | Mandatory| Description                          |
+| Name     | Type                        | Mandatory | Description                           |
 | -------- | ------------------------ | ---- | ------------------------------ |
-| type     | string    | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No  | Callback, which is optional. If a callback function is passed in, it is an anonymous function.      |
+| type     | string    | Yes   | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No   | Callback function, optional. If present, it is an anonymous function.       |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -5529,16 +5543,16 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name    | Type                   | Mandatory| Description                      |
+| Name     | Type                    | Mandatory | Description                       |
 | -------- | ---------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes  | Callback used to return the focus state change. |
+| type     | string                                    | Yes   | Event listening. The value is fixed at **'focusStateChange'**. This event can be listened for after the session is created successfully. It is triggered only in auto focus mode when the camera focus state changes. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes   | Callback used to return the current focus state.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -5572,16 +5586,16 @@ Unsubscribes from focus state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string                                    | Yes   | Event listening. The value is fixed at 'focusStateChange'. The event can be listened for after the session is created. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No   | Callback for the focusStateChange event. This parameter is optional. If present, it is a match for the callback in on('focusStateChange') (the callback object cannot be an anonymous function).  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -5605,16 +5619,16 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Parameters**
 
-| Name    | Type                  | Mandatory| Description                      |
+| Name     | Type                   | Mandatory | Description                       |
 | -------- | ----------------------- | ---- | ------------------------ |
-| type     | string                  | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes  | Callback used to return the smooth zoom state change. |
+| type     | string                  | Yes   | Event to listen for. The value is fixed at **'smoothZoomInfoAvailable'**, which can be listened for after the session is created.|
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes   | Callback used to return the current smooth zoom status.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -5648,16 +5662,16 @@ Unsubscribes from smooth zoom state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string              | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('smoothZoomInfoAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string              | Yes   | Event listening. The value is fixed at **'smoothZoomInfoAvailable'**, which can be listened for after the session is created.|
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No   | Callback used to match the callback of on('smoothZoomInfoAvailable'). If present, it is a match. The callback object cannot be an anonymous function.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -5681,16 +5695,16 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'isoInfoChange'**.        |
-| callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| Yes  | Callback used to return the ISO information.        |
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'isoInfoChange'**.         |
+| callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| Yes   | Callback used to return the ISO information.         |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -5724,16 +5738,16 @@ Unsubscribes from automatic ISO change events.
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'isoInfoChange'**.        |
-| callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('isoInfoChange')**.|
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'isoInfoChange'**.         |
+| callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| No   | Callback for the 'isoInfoChange' event, used to match the callback of on('isoInfoChange'). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                   |
+| ID | Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -5757,16 +5771,16 @@ Subscribes to exposure information change events to obtain the exposure informat
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| Yes  | Callback used to return the exposure information.        |
+| type     | string                                                  | Yes   | Event listening, which is fixed to **'exposureInfoChange'**.         |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| Yes   | Callback used to return the exposure information.         |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -5800,16 +5814,16 @@ Unsubscribes from exposure information change events.
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'exposureInfoChange'**.         |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| No   | Callback for the 'exposureInfoChange' event, used to match the callback of on('exposureInfoChange'). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -5833,16 +5847,16 @@ Subscribes to aperture change events to obtain the real-time aperture informatio
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'apertureInfoChange'**.        |
-| callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| Yes  | Callback used to return the aperture information.        |
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'apertureInfoChange'**.         |
+| callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| Yes   | Callback invoked to return the physical aperture information.         |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -5876,16 +5890,16 @@ Unsubscribes from aperture change events.
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'apertureInfoChange'**.        |
-| callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('apertureInfoChange')**.|
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'apertureInfoChange'**.         |
+| callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| No   | Callback for the 'apertureInfoChange' event. It is optional and used to match the callback of on('apertureInfoChange'). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -5909,16 +5923,16 @@ Subscribes to illumination change events to obtain real-time illumination inform
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'luminationInfoChange'**.        |
-| callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| Yes  | Callback used to return the illumination information.        |
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'luminationInfoChange'**.         |
+| callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| Yes   | Callback used to return the lumination information.         |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -5952,16 +5966,16 @@ Unsubscribes from illumination change events.
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'luminationInfoChange'**.        |
-| callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('luminationInfoChange')**.|
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'luminationInfoChange'**.         |
+| callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| No   | Callback for the 'luminationInfoChange' event, used to match the callback of on('luminationInfoChange'). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -5991,16 +6005,16 @@ Subscribes to ProfessionalVideo error events. This API uses an asynchronous call
 
 **Parameters**
 
-| Name    | Type                                                         | Mandatory| Description                          |
+| Name     | Type                                                          | Mandatory | Description                           |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------ |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), and [addInput](arkts-apis-camera-Session.md#addinput11).|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).|
+| type     | string                                                      | Yes   | Event listening. The value is fixed at **'error'**. This event can be listened for after the session is created. This event is triggered when an error occurs during the invocation of session-related APIs, for example, when an error occurs during the invocation of [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), or [addInput](arkts-apis-camera-Session.md#addinput11), the error information is returned. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes   | Callback used to return the error information. Returns the error code, whose type is [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6030,16 +6044,16 @@ Unsubscribes from ProfessionalVideo error events.
 
 **Parameters**
 
-| Name    | Type                       | Mandatory| Description                          |
+| Name     | Type                        | Mandatory | Description                           |
 | -------- | ------------------------ | ---- | ------------------------------ |
-| type     | string    | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No  | Callback, which is optional. If a callback function is passed in, it is an anonymous function.      |
+| type     | string    | Yes   | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No   | Callback for the error event. This parameter is optional. If present, it is an anonymous function.       |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6063,16 +6077,16 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name    | Type                   | Mandatory| Description                      |
+| Name     | Type                    | Mandatory | Description                       |
 | -------- | ---------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes  | Callback used to return the focus state change. |
+| type     | string                                    | Yes   | Event listening. The value is fixed at **'focusStateChange'**. This event can be listened for after the session is created successfully. It is triggered only in auto focus mode when the camera focus state changes. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes   | Callback used to return the current focus state.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6106,16 +6120,16 @@ Unsubscribes from focus state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string                                    | Yes   | Event listening. The value is fixed at **'focusStateChange'**. The event can be listened for after the session is created. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No   | Callback function. It is optional. If present, it is a match for the callback of on('focusStateChange') (the callback object cannot be an anonymous function).  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6139,16 +6153,16 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Parameters**
 
-| Name    | Type                  | Mandatory| Description                      |
+| Name     | Type                   | Mandatory | Description                       |
 | -------- | ----------------------- | ---- | ------------------------ |
-| type     | string                  | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes  | Callback used to return the smooth zoom state change. |
+| type     | string                  | Yes   | Event to listen for. The value is fixed at **'smoothZoomInfoAvailable'**, which can be listened for after the session is created. |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes   | Callback used to return the current smooth zoom status.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6182,16 +6196,16 @@ Unsubscribes from smooth zoom state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string              | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('smoothZoomInfoAvailable')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string              | Yes   | Event to listen for. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for after the session is created.|
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No   | Callback for the **smoothZoomInfoAvailable** event. If present, it is a match for the callback in **on('smoothZoomInfoAvailable')** (the callback object cannot be an anonymous function).  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -6215,16 +6229,16 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'isoInfoChange'**.        |
-| callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| Yes  | Callback used to return the ISO information.        |
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'isoInfoChange'**.         |
+| callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| Yes   | Callback used to return the ISO information.         |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6258,16 +6272,16 @@ Unsubscribes from automatic ISO change events.
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'isoInfoChange'**.        |
-| callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('isoInfoChange')**.|
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at 'isoInfoChange'.         |
+| callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| No   | Callback for the 'isoInfoChange' event, used to match the callback of on('isoInfoChange'). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6291,16 +6305,16 @@ Subscribes to exposure information change events to obtain the exposure informat
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| Yes  | Callback used to return the exposure information.        |
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'exposureInfoChange'**.         |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| Yes   | Callback invoked to return the exposure information.         |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6334,16 +6348,16 @@ Unsubscribes from exposure information change events.
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'exposureInfoChange'**.         |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| No   | Callback for the 'exposureInfoChange' event, used to match the callback of on('exposureInfoChange'). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6367,16 +6381,16 @@ Subscribes to aperture change events to obtain the aperture information. This AP
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'apertureInfoChange'**.        |
-| callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| Yes  | Callback used to return the aperture information.        |
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'apertureInfoChange'**.         |
+| callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| Yes   | Callback used to return the physical aperture information.         |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6410,16 +6424,16 @@ Unsubscribes from aperture change events.
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'apertureInfoChange'**.        |
-| callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('apertureInfoChange')**.|
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'apertureInfoChange'**.         |
+| callback | AsyncCallback\<[ApertureInfo](#apertureinfo12)\>| No   | Callback function, optional, used to match the callback of on('apertureInfoChange'). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6443,16 +6457,16 @@ Subscribes to illumination change events to obtain illumination information. Thi
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'luminationInfoChange'**.        |
-| callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| Yes  | Callback used to return the illumination information.        |
+| type     | string                                                  | Yes   | Event listening. The value is fixed at **'luminationInfoChange'**.         |
+| callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| Yes   | Callback used to obtain the lumination parameters.         |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6486,16 +6500,16 @@ Unsubscribes from illumination change events.
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'luminationInfoChange'**.        |
-| callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('luminationInfoChange')**.|
+| type     | string                                                  | Yes   | Event to listen for, fixed to 'luminationInfoChange'.         |
+| callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| No   | Callback for the 'luminationInfoChange' event. Optional, used to match the callback of on('luminationInfoChange'). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -6525,16 +6539,16 @@ Subscribes to MacroPhotoSession error events. This API uses an asynchronous call
 
 **Parameters**
 
-| Name     | Type                                                                       | Mandatory | Description                                                                                                                                                                     |
+| Name      | Type                                                                        | Mandatory  | Description                                                                                                                                                                      |
 |----------|---------------------------------------------------------------------------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| type     | string                                                                    | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), and [addInput](arkts-apis-camera-Session.md#addinput11).|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).                                                                                                          |
+| type     | string                                                                    | Yes   | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created. It is triggered when an error occurs during the call of session-related APIs, for example, when [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), or [addInput](arkts-apis-camera-Session.md#addinput11) returns an error. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes   | Callback used to return the error information. It returns an error code of the [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) type.                                                                                                           |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -6564,16 +6578,16 @@ Unsubscribes from MacroPhotoSession error events.
 
 **Parameters**
 
-| Name     | Type                                                                       | Mandatory| Description                                                         |
+| Name      | Type                                                                        | Mandatory | Description                                                          |
 |----------|---------------------------------------------------------------------------|----|-------------------------------------------------------------|
-| type     | string                                                                    | Yes | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created.                       |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+| type     | string                                                                    | Yes  | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created.                        |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback for the error event. If this parameter is specified, the corresponding callback is unregistered (the callback object cannot be an anonymous function); otherwise, all callbacks are unregistered. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -6597,16 +6611,16 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name      | Type                                         | Mandatory| Description                                                                     |
+| Name       | Type                                          | Mandatory | Description                                                                      |
 |-----------|---------------------------------------------|----|-------------------------------------------------------------------------|
-| type      | string                                      | Yes | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode.|
-| callback  | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\>  | Yes | Callback used to return the focus state change.                                                       |
+| type      | string                                      | Yes  | Event to listen for. The value is fixed at **'focusStateChange'**. This event can be listened for after the session is created successfully. It is triggered only in auto focus mode when the camera focus state changes. |
+| callback  | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\>  | Yes  | Callback used to obtain the current focus state.                                                        |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -6640,16 +6654,16 @@ Unsubscribes from focus state change events.
 
 **Parameters**
 
-| Name      | Type                                         | Mandatory| Description                                                          |
+| Name       | Type                                          | Mandatory | Description                                                           |
 |-----------|---------------------------------------------|----|--------------------------------------------------------------|
-| type      | string                                      | Yes | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created.                  |
-| callback  | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\>  | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
+| type      | string                                      | Yes  | Event to listen for. The value is fixed at **'focusStateChange'**, which can be listened for after the session is created.                   |
+| callback  | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\>  | No  | Callback for the focus state change event. If this parameter is specified, the corresponding callback is unregistered (the callback object cannot be an anonymous function); otherwise, all callbacks are unregistered.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -6673,16 +6687,16 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Parameters**
 
-| Name    | Type                  | Mandatory| Description                      |
+| Name     | Type                   | Mandatory | Description                       |
 | -------- | ----------------------- | ---- | ------------------------ |
-| type     | string                  | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes  | Callback used to return the smooth zoom state change. |
+| type     | string                  | Yes   | Event to listen for. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for after the session is created. |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes   | Callback used to return the current smooth zoom status.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -6716,16 +6730,16 @@ Unsubscribes from smooth zoom state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string              | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+| type     | string              | Yes   | Event to listen for. The value is fixed at **'smoothZoomInfoAvailable'**, which can be listened for after the session is created.|
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No   | Callback for the smooth zoom information available event. If this parameter is specified, the corresponding callback is unregistered (the callback object cannot be an anonymous function); otherwise, all callbacks are unregistered. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -6755,16 +6769,16 @@ Subscribes to MacroVideoSession error events. This API uses an asynchronous call
 
 **Parameters**
 
-| Name     | Type                                                                       | Mandatory | Description                                                                                                                                                                     |
+| Name      | Type                                                                        | Mandatory  | Description                                                                                                                                                                      |
 |----------|---------------------------------------------------------------------------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| type     | string                                                                    | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), and [addInput](arkts-apis-camera-Session.md#addinput11).|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).                                                                                                          |
+| type     | string                                                                    | Yes   | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created. It is triggered when an error occurs in calling a session API, for example, when an error occurs in calling [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), or [addInput](arkts-apis-camera-Session.md#addinput11), the error information is returned. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes   | Callback used to return the error information. The error code is returned, and the error code type is [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).                                                                                                           |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -6794,16 +6808,16 @@ Unsubscribes from MacroVideoSession error events.
 
 **Parameters**
 
-| Name     | Type                                                                       | Mandatory| Description                                                         |
+| Name      | Type                                                                        | Mandatory | Description                                                          |
 |----------|---------------------------------------------------------------------------|----|-------------------------------------------------------------|
-| type     | string                                                                    | Yes | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created.                       |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+| type     | string                                                                    | Yes  | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created.                        |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback for the error event. If this parameter is specified, the corresponding callback is unregistered (the callback object cannot be an anonymous function); otherwise, all callbacks are unregistered. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -6827,16 +6841,16 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name      | Type                                         | Mandatory| Description                                                                     |
+| Name       | Type                                          | Mandatory | Description                                                                      |
 |-----------|---------------------------------------------|----|-------------------------------------------------------------------------|
-| type      | string                                      | Yes | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode.|
-| callback  | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\>  | Yes | Callback used to return the focus state change.                                                       |
+| type      | string                                      | Yes  | Event to listen for. The value is fixed at **'focusStateChange'**. This event can be listened for after the session is created successfully. It is triggered only in auto focus mode when the camera focus state changes. |
+| callback  | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\>  | Yes  | Callback invoked to return the current focus state.                                                        |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -6870,16 +6884,16 @@ Unsubscribes from focus state change events.
 
 **Parameters**
 
-| Name      | Type                                         | Mandatory| Description                                                          |
+| Name       | Type                                          | Mandatory | Description                                                           |
 |-----------|---------------------------------------------|----|--------------------------------------------------------------|
-| type      | string                                      | Yes | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created.                  |
-| callback  | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\>  | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
+| type      | string                                      | Yes  | Event to listen for. The value is fixed at **'focusStateChange'**. This event can be listened for after the session is created.                   |
+| callback  | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\>  | No  | Callback for the focus state change event. If this parameter is specified, the corresponding callback is unregistered (the callback object cannot be an anonymous function); otherwise, all callbacks are unregistered.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -6903,16 +6917,16 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Parameters**
 
-| Name    | Type                  | Mandatory| Description                      |
+| Name     | Type                   | Mandatory | Description                       |
 | -------- | ----------------------- | ---- | ------------------------ |
-| type     | string                  | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes  | Callback used to return the smooth zoom state change. |
+| type     | string                  | Yes   | Event to listen for. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for after the session is created successfully. |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes   | Callback used to return the current smooth zoom status.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -6946,16 +6960,16 @@ Unsubscribes from smooth zoom state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string              | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+| type     | string              | Yes   | Event to listen for. The value is fixed at **'smoothZoomInfoAvailable'**, which can be listened for after the session is created.|
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No   | Callback for the smoothZoomInfoAvailable event. If this parameter is specified, the corresponding callback is unregistered (the callback object cannot be an anonymous function); otherwise, all callbacks are unregistered. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -6983,15 +6997,15 @@ Checks whether the LCD flash is supported.
 
 **Return value**
 
-| Type           | Description                    |
+| Type            | Description                     |
 | -------------- | ----------------------- |
-| boolean | Check result for the support of the LCD flash. **true** if supported, **false** otherwise.|
+| boolean | Whether the LCD flash is supported. The value **true** indicates supported, and **false** indicates not supported.|
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202 | Not System Application. |
 | 7400103                |  Session not config, only throw in session usage. |
@@ -7022,15 +7036,15 @@ Before the setting, call [isLcdFlashSupported](#islcdflashsupported12) to check 
 
 **Parameters**
 
-| Name      | Type                    | Mandatory| Description                                              |
+| Name       | Type                     | Mandatory | Description                                               |
 | --------- | ----------------------- | ---- |--------------------------------------------------|
-| enabled | boolean | Yes  | Whether to enable or disable the LCD flash. **true** to enable, **false** otherwise. If null or undefined is passed, it is treated as 0 and the LCD flash is disabled.|
+| enabled | boolean | Yes   | Whether to enable or disable the LCD flash. The value **true** means to enable it, and **false** means to disable it. If **null** or **undefined** is passed, it is treated as 0, which disables the LCD flash. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                    | Not System Application. |
 | 7400103                |  Session not config.                                   |
@@ -7044,7 +7058,7 @@ function enableLcdFlash(session: camera.PhotoSessionForSys | camera.VideoSession
   try {
     session.enableLcdFlash(true);
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The setFlashMode call failed. error code: ${err.code}`);
   }
@@ -7059,10 +7073,10 @@ Enumerates the time-lapse recording states.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                          | Value  | Description        |
+| Name                           | Value   | Description         |
 | ----------------------------- | ---- | ----------- |
-| IDLE          | 0    | Recording not started.|
-| RECORDING     | 1    | Recording.|
+| IDLE          | 0    | Not recording. |
+| RECORDING     | 1    | Recording. |
 
 ## TimeLapsePreviewType<sup>12+</sup>
 
@@ -7072,10 +7086,10 @@ Enumerates the time-lapse preview types, which affect the shooting algorithm.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                          | Value  | Description        |
+| Name                           | Value   | Description         |
 | ----------------------------- | ---- | ----------- |
-| DARK         | 1    | Dark environment, a scenario with poor illumination, for example, at night or in a dark area.|
-| LIGHT        | 2    | Bright environment, a scenario with good illumination, for example, in the daytime or under light.|
+| DARK         | 1    | Dark environment, which refers to a scene with poor lighting, such as at night or in a dark place. |
+| LIGHT        | 2    | Bright environment, which refers to a scene with good lighting, such as in the daytime or under a light. |
 
 ## TryAEInfo<sup>12+</sup>
 
@@ -7085,12 +7099,12 @@ Describes the Try AE parameters. Try AE indicates that the hardware reports the 
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name| Type   | Read-only| Optional| Description          |
+| Name | Type    | Read-Only | Optional | Description           |
 | ---- | ------- | ---- |--| -------------- |
-| isTryAEDone        | boolean  | Yes  | No| Whether Try AE is complete. **true** if complete, **false** otherwise.      |
-| isTryAEHintNeeded  | boolean  | Yes  | Yes| Whether Try AE is required. **true** if required, **false** otherwise.       |
-| previewType        | [TimeLapsePreviewType](#timelapsepreviewtype12) | Yes  | Yes| Preview type.       |
-| captureInterval    | number   | Yes  | Yes| Shooting interval, in ms.       |
+| isTryAEDone        | boolean  | Yes   | No | Whether TryAE is complete. The value **true** indicates that it is complete, and **false** indicates that it is not complete.       |
+| isTryAEHintNeeded  | boolean  | Yes   | Yes | Whether TryAE is needed. The value **true** indicates that it is needed, and **false** indicates that it is not needed.        |
+| previewType        | [TimeLapsePreviewType](#timelapsepreviewtype12) | Yes   | Yes | Preview type.        |
+| captureInterval    | number   | Yes   | Yes | Capture interval, in milliseconds (ms).        |
 
 ## TimeLapsePhotoSession<sup>12+</sup>
 
@@ -7110,16 +7124,16 @@ Subscribes to TimeLapsePhotoSession error events. This API uses an asynchronous 
 
 **Parameters**
 
-| Name    | Type                                                         | Mandatory| Description                          |
+| Name     | Type                                                          | Mandatory | Description                           |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------ |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), and [addInput](arkts-apis-camera-Session.md#addinput11).|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).|
+| type     | string                                                      | Yes   | Event listening. The value is fixed at **'error'**. This event can be listened for after the session is created. This event is triggered when an error occurs during the call of session-related APIs, for example, when an error occurs during the call of [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), or [addInput](arkts-apis-camera-Session.md#addinput11), the error information is returned. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| Yes   | Callback used to return the error information. Returns the error code, whose type is [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -7149,16 +7163,16 @@ Unsubscribes from TimeLapsePhotoSession error events.
 
 **Parameters**
 
-| Name    | Type                       | Mandatory| Description                          |
+| Name     | Type                        | Mandatory | Description                           |
 | -------- | ------------------------ | ---- | ------------------------------ |
-| type     | string    | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No  | Callback, which is optional. If a callback function is passed in, it is an anonymous function.      |
+| type     | string    | Yes   | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)| No   | Callback for the error event. This parameter is optional. If present, it is an anonymous function.       |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -7182,16 +7196,16 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name    | Type                   | Mandatory| Description                      |
+| Name     | Type                    | Mandatory | Description                       |
 | -------- | ---------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes  | Callback used to return the focus state change. |
+| type     | string                                    | Yes   | Event listening. The value is fixed at **'focusStateChange'**. This event can be listened for after the session is created successfully. It is triggered only in auto focus mode when the camera focus state changes. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes   | Callback used to return the current focus state.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -7225,16 +7239,16 @@ Unsubscribes from focus state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No  | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('focusStateChange')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
+| type     | string                                    | Yes   | Event to listen for, fixed as 'focusStateChange'. It can be listened for after the session is created. |
+| callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | No   | Callback function, optional. If present, it is a match for the callback in on('focusStateChange') (the callback object cannot be an anonymous function).  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message       |
+| ID   | Error Message        |
 |---------| --------------- |
 | 202     |  Not System Application. |
 
@@ -7258,16 +7272,16 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'isoInfoChange'**.        |
-| callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| Yes  | Callback used to return the ISO information.        |
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'isoInfoChange'**.         |
+| callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| Yes   | Callback used to obtain the ISO information.         |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7301,16 +7315,16 @@ Unsubscribes from automatic ISO change events.
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'isoInfoChange'**.        |
-| callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('isoInfoChange')**.|
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'isoInfoChange'**.         |
+| callback | AsyncCallback\<[IsoInfo](#isoinfo12)\>| No   | Callback for the **isoInfoChange** event. It is optional and is used to match the callback of **on('isoInfoChange')**. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                   |
+| ID | Error Message                    |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7334,16 +7348,16 @@ Subscribes to exposure information change events to obtain the exposure informat
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| Yes  | Callback used to return the exposure information.        |
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'exposureInfoChange'**.         |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| Yes   | Callback used to return the exposure information.         |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7377,16 +7391,16 @@ Unsubscribes from exposure information change events.
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at 'exposureInfoChange'.         |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| No   | Callback for the exposureInfoChange event. This parameter is optional and is used to match the callback of on('exposureInfoChange'). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7410,16 +7424,16 @@ Subscribes to illumination change events to obtain real-time illumination inform
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'luminationInfoChange'**.        |
-| callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| Yes  | Callback used to return the illumination information.        |
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'luminationInfoChange'**.         |
+| callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| Yes   | Callback invoked to return the lumination information.         |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7453,16 +7467,16 @@ Unsubscribes from illumination change events.
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'luminationInfoChange'**.        |
-| callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('luminationInfoChange')**.|
+| type     | string                                                  | Yes   | Event listening, fixed to 'luminationInfoChange'.         |
+| callback | AsyncCallback\<[LuminationInfo](#luminationinfo12)\>| No   | Callback for the 'luminationInfoChange' event, used to match the callback of on('luminationInfoChange'). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7486,16 +7500,16 @@ Subscribes to Try AE change events to obtain real-time Try AE parameters. This A
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'tryAEInfoChange'**.        |
-| callback | AsyncCallback\<[TryAEInfo](#tryaeinfo12)\>| Yes  | Callback used to return the Try AE parameters.        |
+| type     | string                                                  | Yes   | Event to listen for. The value is fixed at **'tryAEInfoChange'**.         |
+| callback | AsyncCallback\<[TryAEInfo](#tryaeinfo12)\>| Yes   | Callback used to return the TryAE parameters.         |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7529,16 +7543,16 @@ Unsubscribes from Try AE change events.
 
 **Parameters**
 
-| Name    | Type                                                     | Mandatory| Description                              |
+| Name     | Type                                                      | Mandatory | Description                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
-| type     | string                                                  | Yes  | Event type. The value is fixed at **'tryAEInfoChange'**.        |
-| callback | AsyncCallback\<[TryAEInfo](#tryaeinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('tryAEInfoChange')**.|
+| type     | string                                                  | Yes   | Event listening. The value is fixed at **'tryAEInfoChange'**.         |
+| callback | AsyncCallback\<[TryAEInfo](#tryaeinfo12)\>| No   | Callback used to match the callback of **on('tryAEInfoChange')**. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| ID | Error Message                     |
 | ------- | ---------------------- |
 | 202     | Not System Application. |
 
@@ -7562,15 +7576,15 @@ Checks whether Try AE is required.
 
 **Return value**
 
-| Type       | Description                         |
+| Type        | Description                          |
 | ---------- | ----------------------------- |
-| boolean   | Check result for whether Try AE is required. **true** if required, **false** otherwise. The error code type is defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).|
+| boolean   | Whether TryAE needs to be executed. The value **true** means yes, and **false** means no. For the error code type, see [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103 |  Session not config, only throw in session usage.  |
@@ -7585,7 +7599,7 @@ function isTryAENeeded(timeLapsePhotoSession: camera.TimeLapsePhotoSession): boo
   try {
     needed = timeLapsePhotoSession.isTryAENeeded();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The isTryAENeeded call failed. error code: ${err.code}`);
   }
@@ -7607,7 +7621,7 @@ Starts to execute Try AE.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103 | Session not config.     |
@@ -7622,7 +7636,7 @@ function startTryAE(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
   try {
     timeLapsePhotoSession.startTryAE();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code on failure and handle it.
     let err = error as BusinessError;
     console.error(`The startTryAE call failed. error code: ${err.code}`);
   }
@@ -7643,7 +7657,7 @@ Stops the execution of Try AE.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103 | Session not config.     |
@@ -7658,7 +7672,7 @@ function stopTryAE(timeLapsePhotoSession: camera.TimeLapsePhotoSession): void {
   try {
     timeLapsePhotoSession.stopTryAE();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code on failure and handle it.
     let err = error as BusinessError;
     console.error(`The stopTryAE call failed. error code: ${err.code}`);
   }
@@ -7677,15 +7691,15 @@ Obtains the supported time-lapse shooting interval range.
 
 **Return value**
 
-| Type       | Description                         |
+| Type        | Description                          |
 | ---------- | ----------------------------- |
-| Array\<number\>   | Interval range, in ms. The value depends on the underlying capability. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| Array\<number\>   | Used to obtain the shooting interval range, in milliseconds (ms). The actual value is subject to the underlying capability. Returns the corresponding error code on failure. For details about the error code, see [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103                |  Session not config, only throw in session usage.    |
@@ -7700,7 +7714,7 @@ function getSupportedTimeLapseIntervalRange(timeLapsePhotoSession: camera.TimeLa
   try {
     intervalRange = timeLapsePhotoSession.getSupportedTimeLapseIntervalRange();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The getSupportedTimeLapseIntervalRange call failed. error code: ${err.code}`);
   }
@@ -7720,15 +7734,15 @@ Obtains the current time-lapse shooting interval.
 
 **Return value**
 
-| Type       | Description                         |
+| Type        | Description                          |
 | ---------- | ----------------------------- |
-| number    | Shooting interval, in ms.|
+| number    | Current shooting interval, in milliseconds (ms). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103                |  Session not config.                                   |
@@ -7743,7 +7757,7 @@ function getTimeLapseInterval(timeLapsePhotoSession: camera.TimeLapsePhotoSessio
   try {
     interval = timeLapsePhotoSession.getTimeLapseInterval();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The getTimeLapseInterval call failed. error code: ${err.code}`);
   }
@@ -7752,6 +7766,7 @@ function getTimeLapseInterval(timeLapsePhotoSession: camera.TimeLapsePhotoSessio
 ```
 
 ### setTimeLapseInterval<sup>12+</sup>
+
 setTimeLapseInterval(interval: number): void
 
 Sets a time-lapse shooting interval.
@@ -7762,15 +7777,15 @@ Sets a time-lapse shooting interval.
 
 **Parameters**
 
-| Name     | Type                    | Mandatory| Description                |
+| Name      | Type                     | Mandatory | Description                 |
 | -------- | ----------------------- | ---- | ------------------- |
-| interval | number | Yes  | Shooting interval, in ms.|
+| interval | number | Yes   | Shooting interval value, in milliseconds (ms). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -7786,7 +7801,7 @@ function setTimeLapseInterval(timeLapsePhotoSession: camera.TimeLapsePhotoSessio
     let interval: number = 10000;
     timeLapsePhotoSession.setTimeLapseInterval(interval);
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The setTimeLapseInterval call failed. error code: ${err.code}`);
   }
@@ -7805,15 +7820,15 @@ Obtains the time-lapse shooting state.
 
 **Return value**
 
-| Type       | Description                         |
+| Type        | Description                          |
 | ---------- | ----------------------------- |
-| [TimeLapseRecordState](#timelapserecordstate12)    | Shooting state. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [TimeLapseRecordState](#timelapserecordstate12)    | Obtains the current recording state. Returns the corresponding error code on failure. For details about the error code, see [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103                |  Session not config.                                   |
@@ -7828,7 +7843,7 @@ function getTimeLapseRecordState(timeLapsePhotoSession: camera.TimeLapsePhotoSes
   try {
     state = timeLapsePhotoSession.getTimeLapseRecordState();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The getTimeLapseRecordState call failed. error code: ${err.code}`);
   }
@@ -7848,15 +7863,15 @@ Sets the time-lapse shooting state.
 
 **Parameters**
 
-| Name     | Type                           | Mandatory| Description                   |
+| Name      | Type                            | Mandatory | Description                    |
 | -------- | -------------------------------| ---- | ----------------------- |
-| state   | [TimeLapseRecordState](#timelapserecordstate12)  | Yes  | Shooting state.               |
+| state   | [TimeLapseRecordState](#timelapserecordstate12)  | Yes   | Recording state.                |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -7871,7 +7886,7 @@ function setTimeLapseRecordState(timeLapsePhotoSession: camera.TimeLapsePhotoSes
   try {
     timeLapsePhotoSession.setTimeLapseRecordState(camera.TimeLapseRecordState.RECORDING);
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code on failure and handle it.
     let err = error as BusinessError;
     console.error(`The setTimeLapseRecordState call failed. error code: ${err.code}`);
   }
@@ -7890,15 +7905,15 @@ Obtains the time-lapse preview type.
 
 **Return value**
 
-| Type       | Description                         |
+| Type        | Description                          |
 | ---------- | ----------------------------- |
-| [TimeLapsePreviewType](#timelapsepreviewtype12)    | Preview type. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [TimeLapsePreviewType](#timelapsepreviewtype12)    | Obtains the current preview type. Returns the corresponding error code on failure. For details about the error code, see [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103                |  Session not config.                                   |
@@ -7913,7 +7928,7 @@ function getTimeLapsePreviewType(timeLapsePhotoSession: camera.TimeLapsePhotoSes
   try {
     type = timeLapsePhotoSession.getTimeLapsePreviewType();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The getTimeLapsePreviewType call failed. error code: ${err.code}`);
   }
@@ -7933,15 +7948,15 @@ Sets the time-lapse preview type.
 
 **Parameters**
 
-| Name     | Type                           | Mandatory| Description                   |
+| Name      | Type                            | Mandatory | Description                    |
 | -------- | -------------------------------| ---- | ----------------------- |
-| state   | [TimeLapsePreviewType](#timelapsepreviewtype12)  | Yes  | Preview type.               |
+| state   | [TimeLapsePreviewType](#timelapsepreviewtype12)  | Yes   | Preview type.                |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -7956,7 +7971,7 @@ function setTimeLapsePreviewType(timeLapsePhotoSession: camera.TimeLapsePhotoSes
   try {
     timeLapsePhotoSession.setTimeLapsePreviewType(camera.TimeLapsePreviewType.LIGHT);
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The setTimeLapsePreviewType call failed. error code: ${err.code}`);
   }
@@ -7981,16 +7996,16 @@ Subscribes to LightPaintingPhotoSession error events. This API uses an asynchron
 
 **Parameters**
 
-| Name     | Type                                                                       | Mandatory | Description                                                                                                                                                                     |
+| Name      | Type                                                                        | Mandatory  | Description                                                                                                                                                                      |
 |----------|---------------------------------------------------------------------------|-----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| type     | string                                                                    | Yes  | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created. This event is triggered and the error message is returned when an error occurs during the calling of a session-related API such as [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), and [addInput](arkts-apis-camera-Session.md#addinput11).|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes  | Callback used to return an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).                                                                                                          |
+| type     | string                                                                    | Yes   | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created. This event is triggered when an error occurs during the invocation of session-related APIs, for example, when [beginConfig](arkts-apis-camera-Session.md#beginconfig11), [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1), or [addInput](arkts-apis-camera-Session.md#addinput11) returns an error. |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes   | Callback used to return the error information. The error code is returned, and the error code type is [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode).                                                                                                           |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -8020,16 +8035,16 @@ Unsubscribes from LightPaintingPhotoSession error events.
 
 **Parameters**
 
-| Name     | Type                                                                       | Mandatory| Description                                                         |
+| Name      | Type                                                                        | Mandatory | Description                                                          |
 |----------|---------------------------------------------------------------------------|----|-------------------------------------------------------------|
-| type     | string                                                                    | Yes | Event type. The value is fixed at **'error'**. The event can be listened for when a session is created.                       |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+| type     | string                                                                    | Yes  | Event to listen for. The value is fixed at **'error'**. This event can be listened for after the session is created.                        |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback for the error event. If this parameter is specified, the corresponding callback is unregistered (the callback object cannot be an anonymous function); otherwise, all callbacks are unregistered. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -8053,16 +8068,16 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 **Parameters**
 
-| Name      | Type                                         | Mandatory| Description                                                                     |
+| Name       | Type                                          | Mandatory | Description                                                                      |
 |-----------|---------------------------------------------|----|-------------------------------------------------------------------------|
-| type      | string                                      | Yes | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode.|
-| callback  | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\>  | Yes | Callback used to return the focus state change.                                                       |
+| type      | string                                      | Yes  | Event listening. The value is fixed at **'focusStateChange'**. This event can be listened for after the session is created successfully. It is triggered only in auto focus mode when the camera focus state changes. |
+| callback  | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\>  | Yes  | Callback used to obtain the current focus state.                                                        |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -8096,16 +8111,16 @@ Unsubscribes from focus state change events.
 
 **Parameters**
 
-| Name      | Type                                         | Mandatory| Description                                                          |
+| Name       | Type                                          | Mandatory | Description                                                           |
 |-----------|---------------------------------------------|----|--------------------------------------------------------------|
-| type      | string                                      | Yes | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created.                  |
-| callback  | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\>  | No | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled. |
+| type      | string                                      | Yes  | Event to listen for. The value is fixed at **'focusStateChange'**, which can be listened for after the session is created.                   |
+| callback  | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\>  | No  | Callback function. If this parameter is specified, the corresponding callback is unregistered (the callback object cannot be an anonymous function); otherwise, all callbacks are unregistered.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -8129,16 +8144,16 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 
 **Parameters**
 
-| Name    | Type                  | Mandatory| Description                      |
+| Name     | Type                   | Mandatory | Description                       |
 | -------- | ----------------------- | ---- | ------------------------ |
-| type     | string                  | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes  | Callback used to return the smooth zoom state change. |
+| type     | string                  | Yes   | Event to listen for. The value is fixed at **'smoothZoomInfoAvailable'**. This event can be listened for after the session is created. |
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | Yes   | Callback used to return the current smooth zoom status.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -8172,16 +8187,16 @@ Unsubscribes from smooth zoom state change events.
 
 **Parameters**
 
-| Name    | Type                                     | Mandatory| Description                      |
+| Name     | Type                                      | Mandatory | Description                       |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string              | Yes  | Event type. The value is fixed at **'smoothZoomInfoAvailable'**. The event can be listened for when a session is created.|
-| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+| type     | string              | Yes   | Event to listen for. The value is fixed at **'smoothZoomInfoAvailable'**, which can be listened for after the session is created.|
+| callback | AsyncCallback\<[SmoothZoomInfo](arkts-apis-camera-i.md#smoothzoominfo11)\> | No   | Callback for the smoothZoomInfoAvailable event. If this parameter is specified, the corresponding callback is unregistered (the callback object cannot be an anonymous function); otherwise, all callbacks are unregistered. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                      |
+| ID | Error Message                       |
 |-------|----------------------------|
 | 202   | Not System Application.    |
 
@@ -8204,15 +8219,16 @@ Obtains the type of light painting shutter mode in use.
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Return value**
-| Type                                            | Description                   |
+
+| Type                                             | Description                    |
 |------------------------------------------------- | --------------------- |
-| [LightPaintingType](#lightpaintingtype12) | Type of light painting shutter mode. |
+| [LightPaintingType](#lightpaintingtype12) | Light painting shutter mode type.  |
 
 **Error codes**
- 
+
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                               |
 | 7400103                |  Session not config.                                   |
@@ -8232,20 +8248,23 @@ setLightPaintingType(type: LightPaintingType): void
 
 Sets the type of light painting shutter mode.
 
+Before setting this feature, call [getSupportedLightPaintingTypes](#getsupportedlightpaintingtypes12) to obtain the supported light painting shutter modes.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Return value**
-| Name     | Type                    | Mandatory| Description                |
+
+| Name      | Type                     | Mandatory | Description                 |
 | -------- | ----------------------- | ---- | ------------------- |
-| type | [LightPaintingType](#lightpaintingtype12) | Yes  | Type of light painting mode.|
+| type | [LightPaintingType](#lightpaintingtype12) | Yes   | Type of the light painting shutter mode to set. |
 
 **Error codes**
- 
+
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                               |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
@@ -8261,7 +8280,7 @@ function setLightPaintingType(lightPaintingPhotoSession: camera.LightPaintingPho
     let type: camera.LightPaintingType = camera.LightPaintingType.TRAFFIC_TRAILS;
     lightPaintingPhotoSession.setLightPaintingType(type);
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it.
     let err = error as BusinessError;
     console.error(`The setLightPaintingType call failed. error code: ${err.code}`);
   }
@@ -8279,15 +8298,16 @@ Obtains the supported types of light painting shutter mode.
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Return value**
-| Type                                            | Description                   |
+
+| Type                                             | Description                    |
 |------------------------------------------------- | --------------------- |
-| Array\<[LightPaintingType](#lightpaintingtype12)\> | Supported types of light painting shutter mode. |
+| Array\<[LightPaintingType](#lightpaintingtype12)\> | Supported light painting shutter mode types.  |
 
 **Error codes**
- 
+
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID        | Error Message       |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 202                    |  Not System Application.                               |
 | 7400103                |  Session not config.                                   |
@@ -8307,10 +8327,10 @@ Enumerates the color reservation types.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name    | Value  | Description            |
-| -------- | ---- | ---------------- |
-| NONE     | 0    | No color reservation.|
-| PORTRAIT | 1    | Portrait color reservation.      |
+| Name     | Value | Description             |
+| -------- | ----- | ----------------------- |
+| NONE     | 0     | No color reservation effect. |
+| PORTRAIT | 1     | Portrait color retention. |
 
 ## ColorReservationQuery<sup>15+</sup>
 
@@ -8328,18 +8348,18 @@ Obtains the supported color reservation types.
 
 **Return value**
 
-| Type                                                  | Description                    |
-| ------------------------------------------------------ | ------------------------ |
-| Array<[ColorReservationType](#colorreservationtype15)> | Array of color reservation types supported.|
+| Type                                                   | Description                     |
+| ------------------------------------------------------ | ------------------------------- |
+| Array<[ColorReservationType](#colorreservationtype15)> | List of supported color reservation types. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
-| -------- | ----------------------- |
-| 202      | Not System Application. |
-| 7400103  | Session not config, only throw in session usage.  |
+| ID  | Error Message           |
+| --- | ----------------------- |
+| 202 | Not System Application. |
+| 7400103 | Session not config, only throw in session usage. |
 
 **Example**
 
@@ -8351,7 +8371,7 @@ function getSupportedColorReservationTypes(session: camera.VideoSessionForSys): 
   try {
     colorReservationTypes = session.getSupportedColorReservationTypes();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code on failure and handle it.
     let err = error as BusinessError;
     console.error(`The getSupportedColorReservationTypes call failed. error code: ${err.code}`);
   }
@@ -8377,15 +8397,15 @@ Sets a color reservation type. Before the setting, call [getSupportedColorReserv
 
 **Parameters**
 
-| Name| Type                                           | Mandatory| Description                                                        |
+| Name | Type                                            | Mandatory | Description                                                         |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type   | [ColorReservationType](#colorreservationtype15) | Yes  | Color reservation type, which is obtained by calling [getSupportedColorReservationTypes](#getsupportedcolorreservationtypes15).|
+| type   | [ColorReservationType](#colorreservationtype15) | Yes   | Color reservation type, obtained via [getSupportedColorReservationTypes](#getsupportedcolorreservationtypes15). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
 | 202      | Not System Application.                                      |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
@@ -8402,7 +8422,7 @@ function setColorReservation(session: camera.VideoSessionForSys, type: camera.Co
   try {
     session.setColorReservation(type);
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code and handle it on failure.
     let err = error as BusinessError;
     console.error(`The setColorReservation call failed. error code: ${err.code}`);
   }
@@ -8421,18 +8441,18 @@ Obtains the color reservation type in use.
 
 **Return value**
 
-| Type                                           | Description                    |
-| ----------------------------------------------- | ------------------------ |
-| [ColorReservationType](#colorreservationtype15) | Color reservation type.|
+| Type                                            | Description                     |
+| ----------------------------------------------- | ------------------------------- |
+| [ColorReservationType](#colorreservationtype15) | Currently set color reservation type. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message               |
-| -------- | ----------------------- |
-| 202      | Not System Application. |
-| 7400103  | Session not config, only throw in session usage.   |
+| ID  | Error Message                |
+| --- | ---------------------------- |
+| 202 | Not System Application.      |
+| 7400103 | Session not config, only throw in session usage. |
 
 **Example**
 
@@ -8444,7 +8464,7 @@ function getColorReservation(session: camera.VideoSessionForSys): camera.ColorRe
   try {
     colorReservation = session.getColorReservation();
   } catch (error) {
-    // If the operation fails, error.code is returned and processed.
+    // Return the error code error.code on failure and handle it.
     let err = error as BusinessError;
     console.error(`The setColorReservation call failed. error code: ${err.code}`);
   }

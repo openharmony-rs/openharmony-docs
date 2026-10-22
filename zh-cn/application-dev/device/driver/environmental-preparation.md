@@ -8,13 +8,13 @@
 
 ## 开发工具及配置
 
-DevEco Studio作为驱动开发工具，是进行驱动开发的必备条件之一，我们可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考工具概述中的创建一个新的工程进行基本的操作验证，保证DevEco Studio可正常运行。
+DevEco Studio作为驱动开发工具，是进行驱动开发的必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考工具概述中的创建一个新的工程进行基本的操作验证，保证DevEco Studio可正常运行。
 
 请使用[华为账号-登录](https://developer.huawei.com/consumer/cn/download/)下载安装该工具，并参考[工具概述](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)中的[创建一个新的工程](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)进行基本的操作验证，保证DevEco Studio可正常运行。
 
 ## SDK版本配置
 
-扩展外设管理模块提供的ArkTS接口，所需SDK版本为API10及以上版本才可使用<!--Del-->，更新SDK的具体操作可参见[更新指南](../../tools/openharmony_sdk_upgrade_assistant.md)<!--DelEnd-->。
+扩展外设管理模块提供的ArkTS接口，所需SDK版本为API10及以上版本才可使用<!--Del-->，更新SDK的具体操作可参见[更新指南](../../tools/openharmony-sdk-upgrade-assistant.md)<!--DelEnd-->。
 
 基于DDK能力开发专业专用扩展外设驱动或扩展外设增强驱动时，对SDK版本的要求如下：
 

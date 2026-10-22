@@ -5,8 +5,9 @@
 <!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=6cdd905d6b7ce4c352f929e5cee241a6049b1f5a translatedAt=2026-09-01T03:16:23.611Z pushedAt=2026-09-01T09:09:27.553Z -->
 
-The Display module provides APIs for managing displays, such as obtaining information about the default display, obtaining information about all displays, and listening for the addition and removal of displays.
+The **Display** module provides APIs for managing displays, such as obtaining information about the default display, obtaining information about all displays, and listening for the addition and removal of displays.
 
 > **NOTE**
 >
@@ -24,7 +25,7 @@ import { display } from '@kit.ArkUI';
 
 hasPrivateWindow(displayId: number): boolean
 
-Checks whether there is a visible privacy window on a display. The privacy window can be set by calling [setWindowPrivacyMode()](arkts-apis-window-Window.md#setwindowprivacymode9). The content in the privacy window cannot be captured or recorded.
+Queries whether there is a visible privacy window on the specified display object. The window privacy mode can be set through the [setWindowPrivacyMode()](arkts-apis-window-Window.md#setwindowprivacymode9) API. The content of a privacy window cannot be captured or recorded.
 
 **System API**: This is a system API.
 
@@ -62,19 +63,16 @@ try {
   // Obtain the default Display object.
   displayClass = display.getDefaultDisplaySync();
 
-  let ret: boolean | undefined = undefined;
+  let hasPrivateWindow: boolean = false;
   try {
     // Check whether there is a privacy window on the default display.
-    ret = display.hasPrivateWindow(displayClass.id);
+    hasPrivateWindow = display.hasPrivateWindow(displayClass.id);
   } catch (exception) {
     console.error(`Failed to check has privateWindow or not. Code: ${exception.code}, message: ${exception.message}`);
   }
-  if (ret == undefined) {
-    console.error('Failed to check has privateWindow or not.');
-  }
-  if (ret) {
+  if (hasPrivateWindow) {
     console.info('There has privateWindow.');
-  } else if (!ret) {
+  } else if (!hasPrivateWindow) {
     console.info('There has no privateWindow.');
   }
 } catch (exception) {
@@ -97,7 +95,7 @@ Subscribes to privacy mode changes of this display. When there is a privacy wind
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | Yes  | Event type. The value is fixed at **'privateModeChange'**, indicating that the privacy mode of the display is changed.|
-| callback | Callback&lt;boolean&gt; | Yes  | Callback used to return whether the privacy mode of the display is changed. **true** if changed, **false** otherwise.|
+| callback | Callback&lt;boolean&gt; | Yes | Callback invoked when the screen privacy mode changes. The value **true** indicates that the screen changes from the non-privacy mode to privacy mode, and **false** indicates that the screen changes from the privacy mode to non-privacy mode. |
 
 **Error codes**
 
@@ -128,7 +126,7 @@ try {
 
 off(type: 'privateModeChange', callback?: Callback&lt;boolean&gt;): void
 
-Unsubscribes from privacy mode changes of this display. When there is a privacy window in the foreground of the display, the display is in privacy mode, and the content in the privacy window cannot be captured or recorded.
+Unsubscribes from privacy mode changes of this display.
 
 **System API**: This is a system API.
 
@@ -139,7 +137,7 @@ Unsubscribes from privacy mode changes of this display. When there is a privacy 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
 | type     | string                                   | Yes  | Event type. The value is fixed at **'privateModeChange'**, indicating that the privacy mode of the display is changed.|
-| callback | Callback&lt;boolean&gt; | No  | Callback used to return whether the privacy mode of the display is changed. **true** if changed, **false** otherwise. If this parameter is not specified, all subscriptions to the specified event are canceled.|
+| callback | Callback&lt;boolean&gt; | No | Callback to unregister for the privacy mode change event. This parameter indicates whether the screen privacy mode changes. The value **true** indicates that the screen changes from the non-privacy mode to privacy mode, and **false** indicates that the screen changes from the privacy mode to non-privacy mode. If this parameter is not specified, all callbacks registered for the screen privacy mode change event are unregistered. |
 
 **Error codes**
 
@@ -246,11 +244,13 @@ try {
 ## display.setFoldStatusLocked<sup>11+</sup>
 setFoldStatusLocked(locked: boolean): void
 
-Sets whether to lock the current fold status of the foldable device.
+Sets whether the current fold status of a foldable device is locked.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences:** This API can be called properly on a foldable device, but it does not take effect or report an error on other devices.
 
 **Parameters**
 
@@ -295,13 +295,13 @@ Adds windows to the list of windows that are not allowed to be displayed during 
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| windowIds     | Array\<number>    | Yes  | Window ID list. This parameter does not take effect when the child window ID is passed. The window ID is an integer greater than 0. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
+| windowIds     | Array\<number>    | Yes   | Window ID list. It does not take effect when a child window ID is passed in. The window ID is an integer greater than 0. It is recommended to use the [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) API to obtain the window ID.|
 
 **Return value**
 
 | Type| Description|
 | ------------------- | ------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -311,12 +311,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801     | Capability not supported. Function addVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
 
 ```ts
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display, window } from '@kit.ArkUI';
 
@@ -351,13 +352,13 @@ Removes windows from the list of windows that are not allowed to be displayed du
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| windowIds     | Array\<number>    | Yes  | Window ID list. This parameter does not take effect when the child window ID is passed. The window ID is an integer greater than 0. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
+| windowIds     | Array\<number>    | Yes   | Window ID list. It does not take effect when a child window ID is passed in. The window ID is an integer greater than 0. It is recommended to use the [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) API to obtain the window ID.|
 
 **Return value**
 
 | Type| Description|
 | ------------------- | ------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -367,12 +368,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801     | Capability not supported. Function removeVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400003 | This display manager service works abnormally. |
 
 **Example**
 
 ```ts
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display, window } from '@kit.ArkUI';
 
@@ -387,16 +389,15 @@ export default class EntryAbility extends UIAbility {
     let promise = display.addVirtualScreenBlocklist(windowIds);
     promise.then(() => {
       console.info('Succeeded in adding virtual screen blocklist.');
+      // Remove the window from the screen casting blocklist.
+      promise = display.removeVirtualScreenBlocklist(windowIds);
+      promise.then(() => {
+        console.info('Succeeded in removing virtual screen blocklist.');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to remove virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
+      });
     }).catch((err: BusinessError) => {
       console.error(`Failed to add virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
-    });
-
-    // Remove windows from the list of windows that are not allowed to be displayed during casting.
-    promise = display.removeVirtualScreenBlocklist(windowIds);
-    promise.then(() => {
-      console.info('Succeeded in removing virtual screen blocklist.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to remove virtual screen blocklist. Code: ${err.code}, message: ${err.message}`);
     });
   }
 }
@@ -410,9 +411,9 @@ Adds a surface for a virtual screen. This API uses a promise to return the resul
 
 **Since:** 26.0.0
 
-**System capability**: SystemCapability.Window.SessionManager
+**System API:** This is a system API.
 
-**System API**: This is a system API.
+**System capability**: SystemCapability.Window.SessionManager
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -421,14 +422,14 @@ Adds a surface for a virtual screen. This API uses a promise to return the resul
 | Name   | Type  | Mandatory| Description         |
 | --------- | ------ | ---- | ------------- |
 | screenId  | number | Yes  | Virtual screen ID, which must be the same as the ID of the created virtual screen, that is, the value returned when the corresponding virtual screen is successfully created using the [createVirtualScreen()](js-apis-display.md#displaycreatevirtualscreen16) API. The value of this parameter must be an integer.|
-| surfaceId | string | Yes  | ID of the surface bound to the virtual screen. You need to specify the ID of an existing surface. The maximum length of this parameter is 4,096 bytes. If the length exceeds 4,096 bytes, only the first 4,096 bytes are used.|
-| surfaceRegion | [Rect](js-apis-display.md#rect9) | No  | Rectangle area on the surface that displays the virtual screen. If the virtual screen has not been bound to a surface using [setVirtualScreenSurface()](js-apis-display.md#displaysetvirtualscreensurface16) or [addVirtualScreenSurface()](#displayaddvirtualscreensurface), the value of **surfaceRegion** is invalid and the virtual screen is displayed in full screen by default. In mirror mode, the value of **surfaceRegion** is invalid and the virtual screen is displayed in full screen by default. In independent mode, the value of **surfaceRegion** is valid. The left vertex of the virtual screen is used as the origin. When the area specified by **surfaceRegion** does not overlap with the virtual screen, error code 1400004 is returned.|
+| surfaceId | string | Mandatory | Surface ID bound to the virtual screen, which is specified by the user and corresponds to an actually existing surface. It can be obtained through [getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9). The maximum length of this parameter is 4,096 bytes. If the length exceeds the maximum, the first 4,096 bytes are used. |
+| surfaceRegion | [Rect](js-apis-display.md#rect9) | No  | Rectangle area on the surface that displays the virtual screen. If the virtual screen has not been bound to a surface using [setVirtualScreenSurface()](js-apis-display.md#displaysetvirtualscreensurface16) or [addVirtualScreenSurface()](#displayaddvirtualscreensurface), the value of **surfaceRegion** is invalid and the virtual screen is displayed in full screen by default. In mirror mode, if the value of **surfaceRegion** is invalid, the virtual screen is displayed in full screen by default. In independent mode, the value of **surfaceRegion** is valid. The left vertex of the virtual screen is used as the origin. When the area specified by **surfaceRegion** does not overlap with the virtual screen, error code 1400004 is returned.|
 
 **Return value**
 
 | Type               | Description                   |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -437,7 +438,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message |
 | ------- | ----------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-| 801      | Capability not supported. Function addVirtualScreenSurface can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. |
 | 1400001  | Invalid display or screen. |
 | 1400003  | This display manager service works abnormally. |
 | 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
@@ -454,14 +455,15 @@ struct Index {
   xComponentController: XComponentController = new XComponentController();
 
   addVirtualScreenSurface = () => {
+    // Obtain the virtual screen ID from the return value of createVirtualScreen().
     let screenId: number = 1;
     let surfaceId = this.xComponentController.getXComponentSurfaceId();
     display.addVirtualScreenSurface(screenId, surfaceId).then(() => {
       console.info('Succeeded in adding surface for the virtual screen.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to add surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to add surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
     });
-  }
+  };
   build() {
     RelativeContainer() {
       XComponent({
@@ -488,9 +490,9 @@ Removes the surface bound to a virtual screen. This API uses a promise to return
 
 **Since:** 26.0.0
 
-**System capability**: SystemCapability.Window.SessionManager
+**System API:** This is a system API.
 
-**System API**: This is a system API.
+**System capability**: SystemCapability.Window.SessionManager
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -499,13 +501,13 @@ Removes the surface bound to a virtual screen. This API uses a promise to return
 | Name   | Type  | Mandatory| Description         |
 | --------- | ------ | ---- | ------------- |
 | screenId  | number | Yes  | Virtual screen ID, which must be the same as the ID of the created virtual screen, that is, the value returned when the corresponding virtual screen is successfully created using the [createVirtualScreen()](js-apis-display.md#displaycreatevirtualscreen16) API. The value of this parameter must be an integer.|
-| surfaceId | string | Yes  | ID of the surface bound to the virtual screen. You need to specify the ID of an existing surface. The maximum length of this parameter is 4,096 bytes. If the length exceeds 4,096 bytes, only the first 4,096 bytes are used.|
+| surfaceId | string | Yes | Surface ID bound to the virtual screen, specified by the user and corresponding to an actually existing surface. It can be obtained through [getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9). The maximum length of this parameter is 4,096 bytes. If the length exceeds the maximum, only the first 4,096 bytes are used. |
 
 **Return value**
 
 | Type               | Description                   |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -514,7 +516,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-| 801      | Capability not supported. Function removeVirtualScreenSurface can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. |
 | 1400001  | Invalid display or screen. |
 | 1400003  | This display manager service works abnormally. |
 | 1400004  | Parameter error. Possible cause: 1. Invalid parameter range. |
@@ -531,14 +533,15 @@ struct Index {
   xComponentController: XComponentController = new XComponentController();
 
   removeVirtualScreenSurface = () => {
+    // Obtain the virtual screen ID from the return value of createVirtualScreen().
     let screenId: number = 1;
     let surfaceId = this.xComponentController.getXComponentSurfaceId();
     display.removeVirtualScreenSurface(screenId, surfaceId).then(() => {
       console.info('Succeeded in removing surface for the virtual screen.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to remove surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to remove surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
     });
-  }
+  };
   build() {
     RelativeContainer() {
       XComponent({
@@ -584,7 +587,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -629,7 +632,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801     | Capability not supported. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 

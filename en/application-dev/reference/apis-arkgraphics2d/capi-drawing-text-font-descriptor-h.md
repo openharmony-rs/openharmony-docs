@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b5af0d1a695b5408292807e7259acc8456b4a1e4 translatedAt=2026-07-25T02:02:48.111Z pushedAt=2026-07-25T09:22:21.606Z -->
+<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-24T09:00:51.859Z pushedAt=2026-08-31T09:26:27.719Z -->
 
 ## Overview
 
@@ -28,7 +28,7 @@ Defines APIs related to font information, such as obtaining font information, fi
 
 | Name | typedef Keyword | Description |
 | --- | --- | --- |
-| [OH_Drawing_FontVariationInstanceCoordinate](capi-drawing-oh-drawing-fontvariationinstancecoordinate.md) | OH_Drawing_FontVariationInstanceCoordinate | Variable font property key-value pair. |
+| [OH_Drawing_FontVariationInstanceCoordinate](capi-drawing-oh-drawing-fontvariationinstancecoordinate.md) | OH_Drawing_FontVariationInstanceCoordinate | Key-value pair of a variable font attribute. |
 
 ### Enumerated value
 
@@ -572,7 +572,7 @@ Obtains the Unicode code array from a font byte stream buffer.
 | -- | -- |
 | uint8_t* fontBuffer | Font file data.|
 | size_t length | Length of the font file data.|
-| uint32_t index | Index of the font in the ttc/otc file. The value ranges from 0 to Font Count - 1. For non-ttc/otc files, set this parameter to 0. |
+| uint32_t index | Index of the font in the ttc/otc file. The value ranges from 0 to Font Count minus 1. Set this parameter to 0 for non-ttc/otc files. |
 | int32_t** unicodeArray | Output parameter, which is used to receive the Unicode array. Use **free()** to release the Unicode array when the array is no longer needed.|
 | int32_t* arrayLength | Output parameter, which is used to receive the length of the Unicode array.|
 
@@ -797,6 +797,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeStr(OH_Drawing_Font
 Obtains the font variable axis attributes of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.
 
 > **NOTE**
+>
 > If the OH_Drawing_String is no longer needed, the caller must manually release the strData member inside the OH_Drawing_String structure.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
@@ -875,6 +876,7 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationInstanceAttributeStr(OH_Drawing_
 Obtains the font variable instance attributes of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.
 
 > **NOTE**
+>
 > If the OH_Drawing_String is no longer needed, the caller must manually release the strData member inside the OH_Drawing_String structure.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing

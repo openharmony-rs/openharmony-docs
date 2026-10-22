@@ -53,8 +53,8 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | options         | [SegmentButtonOptions](#segmentbuttonoptions) | 是   | @ObjectLink | 分段按钮的配置选项，用于设置按钮的类型（页签类或胶囊类）、外观样式（颜色、字体、尺寸等）、按钮内容和选中状态等属性。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | selectedIndexes | number[]                                      | 是   | @Link       | 分段按钮的选中项编号，第一项的编号为0，之后顺序增加。<br>**说明：**<br>`selectedIndexes`使用[@Link装饰器：父子双向同步](../../../ui/state-management/arkts-link.md)，仅支持有效的按钮编号（第一个按钮编号为0，之后按顺序累加，最大编号为按钮数量减1），传入无效编号时该编号不生效。如没有选中项可传入空数组`[]`。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onItemClicked<sup>13+</sup> | Callback\<number\> | 否 | - | 当分段按钮选项被点击时，触发的回调函数接收被点击的选项下标作为参数。若不传入此参数，则点击时不触发回调。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| maxFontScale<sup>14+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | @Prop | 分段按钮选项文字的最大字体放大倍数，用于限制字体缩放上限。当需要控制字体放大倍数以适应特定UI布局或避免文字过大时传入此参数。<br>取值范围：[1, 2]<br>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br>默认值：1<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| enableStateAnimation<sup>24+</sup>       | boolean   | 否 | @Prop | 设置当通过变量修改selectedIndexes值时，是否开启分段按钮的属性动画。<br>true表示开启分段按钮的属性动画；false表示不开启分段按钮的属性动画。<br>默认值：false<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| maxFontScale<sup>14+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是 | @Prop | 分段按钮选项文字的最大字体放大倍数，用于限制字体缩放上限。当需要控制字体放大倍数以适应特定UI布局或避免文字过大时传入此参数。<br>取值范围：[1, 2]<br>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br>默认值：1<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| enableStateAnimation<sup>24+</sup>       | boolean   | 是 | @Prop | 设置当通过变量修改selectedIndexes值时，是否开启分段按钮的属性动画。<br>true表示开启分段按钮的属性动画；false表示不开启分段按钮的属性动画。<br>默认值：false<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SegmentButtonOptions
 
@@ -96,7 +96,7 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br>默认值：BorderRadiusMode.DEFAULT<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br>**说明：**<br>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br>对于胶囊类多选分段按钮（type为"capsule"且multiply为true），此属性不生效，需要用itemBorderRadius配置圆角。<br>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。<br>默认值：`$r('sys.float.segmentbutton_container_shape')`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br>**说明：**<br>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br>对于胶囊类多选分段按钮（type为"capsule"且multiply为true），只能控制两端的选项圆角。<br>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。<br>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | 是 | 分段按钮组件的背景板的系统材质。不同系统材质具有不同的属性，产生不同的效果。传入材质后，SegmentButton的动效发生改变。<br>对于胶囊类多选分段按钮（即type为"capsule"且multiply为true），该属性不生效。<br>默认值：无材质效果。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | 是 | 分段按钮组件的背景板的系统材质。需要将组件放置在Navigation或NavDestination的标题栏，或横向Tabs的底部TabBar中，沉浸光感效果才会生效。不同系统材质具有不同的属性，产生不同的效果。传入材质后，SegmentButton的动效发生改变。<br>对于胶囊类多选分段按钮（即type为"capsule"且multiply为true），该属性不生效。<br>默认值：无材质效果。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 > **说明：**
 >
@@ -216,7 +216,7 @@ type DimensionNoPercentage = PX \| VP \| FP \| LPX \| Resource
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br>默认值：BorderRadiusMode.DEFAULT<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br>**说明：**<br>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br>对于胶囊类多选分段按钮（type为"capsule"且multiply为true），此属性不生效，需要用itemBorderRadius配置圆角。<br>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。<br>默认值：`$r('sys.float.segmentbutton_container_shape')`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br>**说明：**<br>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br>对于胶囊类多选分段按钮（type为"capsule"且multiply为true），只能控制两端的选项圆角。<br>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。超出最大值时自动修正为最大值，使用百分比时按默认值处理。<br>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)   | 否 | 是 | 分段按钮组件的背景板的系统材质。不同系统材质具有不同的属性，产生不同的效果。传入材质后，SegmentButton的动效发生改变。<br>对于胶囊类多选分段按钮（即type为"capsule"且multiply为true），该属性不生效。<br>默认值：无材质效果。<br>从API版本26.0.0开始，除胶囊类多选分段按钮（即type为\"capsule\"且multiply为true）外，backgroundSystemMaterial设置自动反色的系统材质时，fontColor和selectedFontColor使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)   | 否 | 是 | 分段按钮组件的背景板的系统材质。需要将组件放置在Navigation或NavDestination的标题栏，或横向Tabs的底部TabBar中，沉浸光感效果才会生效。不同系统材质具有不同的属性，产生不同的效果。传入材质后，SegmentButton的动效发生改变。<br>对于胶囊类多选分段按钮（即type为"capsule"且multiply为true），该属性不生效。<br>默认值：无材质效果。<br>从API版本26.0.0开始，除胶囊类多选分段按钮（即type为\"capsule\"且multiply为true）外，backgroundSystemMaterial设置自动反色的系统材质时，fontColor和selectedFontColor使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## BorderRadiusMode<sup>20+</sup>
 
@@ -1207,6 +1207,8 @@ struct Index {
 }
 ```
 
+![](figures/segmentbutton-sample5.png)
+
 ### 示例6（设置自定义圆角）
 
 该示例演示了如何为分段按钮组件设置自定义的边框圆角半径。
@@ -1363,7 +1365,8 @@ struct Index {
   });
   @State tabSelectedIndexes: number[] = [0];
 
-  build() {
+  @Builder
+  NavigationTitle() {
     Column({ space: 20 }) {
       SegmentButton({
         options: this.tabOptions,
@@ -1382,10 +1385,21 @@ struct Index {
       ]
     })
   }
+
+  build() {
+    Column() {
+      Navigation() {
+        // 页面内容
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
+  }
 }
 ```
 
-![segmentbutton-sample7](figures/segment_button_material.gif)
+该示例配图为高算力设备强档效果。
+
+![segmentbutton-sample7](figures/segment-button-material.gif)
 
 ### 示例9（监听SegmentButtonOptions内属性的变化）
 

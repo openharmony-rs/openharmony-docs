@@ -206,7 +206,7 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[Render
 
 使用update更新BuilderNode中的节点。
 
-使用[updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)触发BuilderNode中节点的全量更新。
+使用[updateConfiguration()](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)触发BuilderNode中节点的全量更新。
 
 更新BuilderNode中的节点。
 
@@ -965,11 +965,11 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
 
 ## 通过系统环境变化更新节点
 
-使用[updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)来监听系统环境变化事件，以触发节点的全量更新。系统环境变化详情参见[@ohos.app.ability.Configuration (环境变量)](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)。
+使用[updateConfiguration()](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)来监听系统环境变化事件，以触发节点的全量更新。系统环境变化详情参见[@ohos.app.ability.Configuration (环境变量)](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)。
 
 > **说明：**
 >
-> updateConfiguration接口用于通知对象进行更新，更新所使用的系统环境取决于应用当前系统环境的变化。
+> updateConfiguration()接口用于通知对象进行更新，更新所使用的系统环境取决于应用当前系统环境的变化。
 
   <!-- @[Main_EnvironmentCallbackPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/EnvironmentCallbackPage.ets) -->
   
@@ -1722,7 +1722,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
 
 **页面路由**
 
-当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并且继承父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true）时，页面1调用router.pushUrl接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。图示如下：
+当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并且继承父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true）时，页面1调用router.pushUrl()接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。图示如下：
 
 ![alt text](state-management/figures/freezeInPage.png)
 
@@ -1969,11 +1969,11 @@ struct buildNodeChild {
 
 在上面的示例中：
 
-1.点击`change message`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild的message属性会被更新，buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
+1. 点击`change message`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild的message属性会被更新，buildNodeChild组件中@Monitor注册的方法onMessageUpdated被触发。
 
-2.点击`tab1`切换到另一个TabContent，该TabContent的状态由inactive变为active，对应的@Monitor注册的方法onMessageUpdated被触发。
+2. 点击`tab1`切换到另一个TabContent，该TabContent的状态由inactive变为active，对应的@Monitor注册的方法onMessageUpdated被触发。
 
-3.点击`tab0`切换回第一个TabContent，再切换到其他TabContent后点击`change message`更改message的值，此时tab0冻结，tab0的@Monitor注册的方法onMessageUpdated不会被触发。
+3. 点击`tab0`切换回第一个TabContent，再切换到其他TabContent后点击`change message`更改message的值，此时tab0冻结，tab0的@Monitor注册的方法onMessageUpdated不会被触发。
 
 **Navigation**
 
@@ -2177,11 +2177,11 @@ struct TextBuilder {
 
 在上面的示例中：
 
-1.进入Pageone页面，点击`update builderNode`按钮更改message的值，当前正在显示的BuilderNode下面的子组件TextBuilder组件中@Monitor注册的方法info被触发。
+1. 进入Pageone页面，点击`update builderNode`按钮更改message的值，当前正在显示的BuilderNode下面的子组件TextBuilder组件中@Monitor注册的方法info被触发。
 
-2.点击`Next Page`切换到PageTwo页面，点击`update builderNode`按钮，因为页面属于冻结状态，@Monitor注册的方法info不会被触发。
+2. 点击`Next Page`切换到PageTwo页面，点击`update builderNode`按钮，因为页面属于冻结状态，@Monitor注册的方法info不会被触发。
 
-3.点击`Back Page`回到PageOne页面，因为在PageTwo页面时，message的值发生了变化，@Monitor注册的方法info被触发。
+3. 点击`Back Page`回到PageOne页面，因为在PageTwo页面时，message的值发生了变化，@Monitor注册的方法info被触发。
 
 **Repeat**
 
@@ -2330,7 +2330,7 @@ struct BuildNodeChild {
 
 点击`Reduce length to 5`后，被移除的两个组件会进入Repeat缓存池，然后点击`Change bgColor`更改bgColor的值触发节点刷新。
 
-开启组件冻结（freezeWhenInactive: true）和BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20): true），只有剩余节点中@Monitor装饰的方法onMessageChange被触发，如示例中屏上的5个节点会刷新并打印BuilderNode子组件monitor的5条日志，缓存池中的节点则不会。
+开启组件冻结（freezeWhenInactive: true）和BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20): true），只有剩余节点中@Monitor装饰的方法onBgColorChange被触发，如示例中屏上的5个节点会刷新并打印BuilderNode子组件monitor的5条日志，缓存池中的节点则不会。
 
 **Repeat和TabContent混用**
 
@@ -2469,11 +2469,11 @@ struct FreezeBuildNode {
 
 在上面的示例中：
 
-1.点击`change`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
+1. 点击`change`更改message的值，当前正在显示的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
 
-2.点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
+2. 点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的BuilderNode下面的子组件buildNodeChild组件中@Monitor注册的方法onMessageChange被触发。
 
-3.再次点击`change`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageChange被触发。其他inactive的TabContent组件不会触发@Monitor。
+3. 再次点击`change`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageChange被触发。其他inactive的TabContent组件不会触发@Monitor。
 
 ## 设置BuilderNode支持内部@Consume接收外部的@Provide数据（状态管理V1）
 

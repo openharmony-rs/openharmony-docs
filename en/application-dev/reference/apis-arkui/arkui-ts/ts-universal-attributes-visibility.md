@@ -1,12 +1,13 @@
 # Visibility Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=2e834d45b0cae77e1c2e832089e158db38adc5b0 translatedAt=2026-09-02T12:15:47.542Z -->
 
-The visibility attribute controls whether a component is visible.
+Controls whether a component is visible. It is applicable to scenarios where the component display effect and page layout need to be dynamically adjusted based on the service state.
 
 >  **NOTE**
 >
@@ -34,7 +35,7 @@ Sets the visibility of the component. If **visibility** is not set, the componen
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current component, used to support chained attribute calls. |
 
 
 ## Example
@@ -50,18 +51,18 @@ struct VisibilityExample {
     Column() {
       Column() {
         // The component is hidden and does not take up space in the layout.
-        Text('None').fontSize(9).width('90%').fontColor(0xCCCCCC)
-        Row().visibility(Visibility.None).width('90%').height(80).backgroundColor(0xAFEEEE)
+        Text('None').fontSize(9).width('90%').fontColor(0xCCCCCC);
+        Row().visibility(Visibility.None).width('90%').height(80).backgroundColor(0xAFEEEE);
 
         // The component is hidden but takes up space in the layout.
-        Text('Hidden').fontSize(9).width('90%').fontColor(0xCCCCCC)
-        Row().visibility(Visibility.Hidden).width('90%').height(80).backgroundColor(0xAFEEEE)
+        Text('Hidden').fontSize(9).width('90%').fontColor(0xCCCCCC);
+        Row().visibility(Visibility.Hidden).width('90%').height(80).backgroundColor(0xAFEEEE);
 
         // The component is visible, which is the default display mode.
-        Text('Visible').fontSize(9).width('90%').fontColor(0xCCCCCC)
-        Row().visibility(Visibility.Visible).width('90%').height(80).backgroundColor(0xAFEEEE)
-      }.width('90%').border({ width: 1 })
-    }.width('100%').margin({ top: 5 })
+        Text('Visible').fontSize(9).width('90%').fontColor(0xCCCCCC);
+        Row().visibility(Visibility.Visible).width('90%').height(80).backgroundColor(0xAFEEEE);
+      }.width('90%').border({ width: 1 });
+    }.width('100%').margin({ top: 5 });
   }
 }
 ```

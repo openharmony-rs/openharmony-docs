@@ -45,13 +45,12 @@
 
 ### 编写推理代码
 
-1. 工程默认设备定义的能力集可能不包含MindSporeLite。需在DevEco Studio工程的entry/src/main目录下，手动创建syscap.json文件，内容如下：
+1. 工程默认设备定义的能力集可能不包含MindSporeLite。需在DevEco Studio工程的entry/src/main目录下，手动创建syscap.json文件。其中，`general`的取值需与`module.json5`中的`deviceTypes`保持一致。配置示例如下：
 
    ```json
    {
      "devices": {
        "general": [
-         // 需跟module.json5中deviceTypes保持一致。
          "default"
        ]
      },

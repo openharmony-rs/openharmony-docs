@@ -1,7 +1,7 @@
 # 兼容JS的类Web开发范式（ArkUI.Lite）<!--arkui-js-lite-comp-->
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -11,7 +11,7 @@
   - [js标签配置](js-lite-framework-js-tag.md)
   - [app.js](js-lite-framework-js-file.md)
   - [生命周期](js-lite-framework-lifecycle.md)
-  - [多语言](js-lite-framework-localization.md)
+  - [多语言支持](js-lite-framework-localization.md)
   - 语法<!--js-lite-syntax-->
     - [HML语法参考](js-lite-framework-syntax-hml.md)
     - [CSS语法参考](js-lite-framework-syntax-css.md)

@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-07-30T02:38:56.715Z pushedAt=2026-08-01T06:42:55.892Z -->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-08-21T02:21:34.202Z pushedAt=2026-08-21T07:14:11.394Z -->
 
 The **ColumnSplit** component lays out child components vertically and inserts a horizontal divider between every two child components. It is suitable for scenarios that require a vertical multi-area layout with dynamic area resizing, such as dashboard UIs and adjustable top-bottom split layouts. Through draggable dividers, users can flexibly adjust the height of each area, enhancing UI interactivity and user experience.
 
@@ -103,7 +103,7 @@ Sets the distance between the child component and the upper and lower dividers.
 
 The [universal events](ts-component-general-events.md) are supported.
 
-## Example
+## Examples
 
 ### Example 1: Setting the Resizable ColumnSplit Component
 

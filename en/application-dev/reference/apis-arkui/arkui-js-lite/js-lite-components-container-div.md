@@ -2,11 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lanshouren-->
-<!--Designer: @lanshouren-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=214e29279f37b00be7bd8f1096b2e4dc3af96177 translatedAt=2026-07-31T01:12:49.449Z pushedAt=2026-07-31T12:04:26.580Z -->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-08-20T09:33:21.159Z pushedAt=2026-08-21T02:05:31.409Z -->
 
 The **\<div>** component is a basic container that is used as the root node of the page structure or is used to group the content.
 

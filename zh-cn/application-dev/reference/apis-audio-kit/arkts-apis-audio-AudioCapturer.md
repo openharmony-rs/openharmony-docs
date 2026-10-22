@@ -504,7 +504,7 @@ audioCapturer.release().then(() => {
   console.info('AudioFrameworkRecLog: Capturer release : SUCCESS');
   console.info(`AudioFrameworkRecLog: AudioCapturer : STATE : ${audioCapturer.state}`);
 }).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRecLog: Capturer stop: ERROR: ${err}`);
+  console.error(`AudioFrameworkRecLog: Capturer release: ERROR: ${err}`);
 });
 ```
 

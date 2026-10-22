@@ -35,8 +35,8 @@
    
    ``` TypeScript
    // ParentWorker.ets
-   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker, collections, ArkTSUtils } from '@kit.ArkTS'
-   import { CopyEntry } from '../Sendable/CopyEntry'
+   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker, collections, ArkTSUtils } from '@kit.ArkTS';
+   import { CopyEntry } from '../Sendable/CopyEntry';
    
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
    
@@ -67,7 +67,7 @@
          copyWorker2.postMessageWithSharedSendable(entry);
        }
      }
-   }
+   };
    
    copyWorker1.onmessage = async (e: MessageEvents) => {
      console.info('copyWorker1 onmessage:' + e.data);
@@ -83,7 +83,7 @@
          // 如果所有任务全部完成，则关闭父Worker
          workerPort.close();
        }
-     })
+     });
    }
    
    copyWorker2.onmessage = async (e: MessageEvents) => {
@@ -100,7 +100,7 @@
          // 如果所有任务全部完成，则关闭父Worker
          workerPort.close();
        }
-     })
+     });
    }
    
    workerPort.onmessageerror = (e: MessageEvents) => {
@@ -116,8 +116,8 @@
    
    ``` TypeScript
    // ChildWorker.ets
-   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS'
-   import { CopyEntry } from '../Sendable/CopyEntry'
+   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+   import { CopyEntry } from '../Sendable/CopyEntry';
    
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
    
@@ -126,15 +126,15 @@
      // 中间copy操作省略
      console.info(data.filePath);
      workerPort.postMessageWithSharedSendable('done');
-   }
+   };
    
    workerPort.onmessageerror = (e: MessageEvents) => {
      console.error('onmessageerror:' + e.data);
-   }
+   };
    
    workerPort.onerror = (e: ErrorEvent) => {
      console.error('onerror:' + e.message);
-   }
+   };
    ```
 
 3. 在UI主线程页面，创建父Worker并准备克隆任务所需的数据，准备完成后将数据发送给父Worker。
@@ -144,7 +144,7 @@
    ``` TypeScript
    // Index.ets
    import { worker, collections } from '@kit.ArkTS';
-   import { CopyEntry } from '../Sendable/CopyEntry'
+   import { CopyEntry } from '../Sendable/CopyEntry';
    
    function promiseCase() {
      let p: Promise<void> = new Promise<void>((resolve: Function, reject: Function) => {
@@ -160,7 +160,7 @@
      let isTerminate = false;
      ss.onexit = () => {
        isTerminate = true;
-     }
+     };
      let array = new collections.Array<CopyEntry>();
      // 准备数据
      for (let i = 0; i < 4; i++) {
@@ -182,6 +182,7 @@
    @Component
    struct Index {
      @State message: string = 'Hello World';
+   
      build() {
        Row() {
          Column() {

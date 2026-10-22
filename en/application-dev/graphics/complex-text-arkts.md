@@ -1,10 +1,12 @@
 # Drawing and Displaying Complex Text (ArkTS)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=5284e30f06236fe06b1ce39618ec19c1d67b8d4a translatedAt=2026-10-19T01:20:37.457Z pushedAt=2026-10-19T07:11:05.719Z -->
+
 Simple text can be drawn and displayed with appropriate fonts, sizes, and colors selected. Additionally, complex text drawing is supported by setting other styles, languages, paragraphs, etc.
 
 Complex text drawing involves the following scenarios:
@@ -167,7 +169,7 @@ Multi-line text is more complex than single-line text. Generally, text typograph
 
    <!-- -->
 
-4. Initialize the paragraph object and add placeholders and text.
+4. Initialize the paragraph object and add text.
 
    <!-- @[arkts_multi_line_text_drawing_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
    
@@ -203,16 +205,16 @@ Multi-line text is more complex than single-line text. Generally, text typograph
 
 ### Effect
 
-| Paragraph Style Settings (Word Break, Text Alignment, and Line Limit)| Effect| 
+| Paragraph Style Settings (Word Breaking, Text Alignment, and Line Limit)| Effect|
 | -------- | -------- |
-| text.WordBreak.BREAK_WORD, text.TextAlign.LEFT, 3 lines at most.| ![BREAK-WORD-LEFT](figures/BREAK-WORD-LEFT.png)| 
-| text.WordBreak.BREAK_WORD, text.TextAlign.RIGHT, 3 lines at most.| ![BREAK-WORD-RIGHT](figures/BREAK-WORD-RIGHT.png)| 
-| text.WordBreak.BREAK_WORD, text.TextAlign.JUSTIFY, 10 lines at most.| ![complexArkTsDemoJustify](figures/complexArkTsDemoJustify.png)| 
-| text.WordBreak.BREAK_ALL, text.TextAlign.LEFT, 3 lines at most.| ![BREAK-ALL-LEFT](figures/BREAK-ALL-LEFT.png)| 
-| text.WordBreak.BREAK_ALL, text.TextAlign.LEFT, 10 lines at most.| ![BREAK-ALL-LEFT-10](figures/BREAK-ALL-LEFT-10.png)| 
-| text.WordBreak.BREAK_HYPHEN, text.TextAlign.LEFT, 10 lines at most.<br>No language preference. No hyphen (-) for word breaks.| ![ts-hyphen-locale-undefined.jpg](figures/ts-hyphen-locale-undefined.jpg) | 
-| text.WordBreak.BREAK_HYPHEN, text.TextAlign.LEFT, 10 lines at most.<br>Preferred language: en-gb (UK). Hyphens (-) for word breaks.| ![ts-hyphen-local-en-gb.jpg](figures/ts-hyphen-local-en-gb.jpg) | 
-| text.WordBreak.BREAK_HYPHEN, text.TextAlign.LEFT, 10 lines at most.<br>Preferred language: en-us (US). Hyphens (-) for word breaks.| ![ts-hyphen-local-en-us.jpg](figures/ts-hyphen-local-en-us.jpg) | 
+| Text alignment is text.TextAlign.LEFT, the maximum number of lines is 3, and the word break strategy is text.WordBreak.BREAK_WORD. | ![BREAK-WORD-LEFT](figures/BREAK-WORD-LEFT.png) |
+| Text alignment is text.TextAlign.RIGHT, the maximum number of lines is 3, and the word break strategy is text.WordBreak.BREAK_WORD. | ![BREAK-WORD-RIGHT](figures/BREAK-WORD-RIGHT.png) |
+| Text alignment is text.TextAlign.JUSTIFY, the maximum number of lines is 10, and the word break strategy is text.WordBreak.BREAK_WORD. | ![complexArkTsDemoJustify](figures/complexArkTsDemoJustify.png) |
+| Text alignment is text.TextAlign.LEFT, the maximum number of lines is 3, and the word break strategy is text.WordBreak.BREAK_ALL. | ![BREAK-ALL-LEFT](figures/BREAK-ALL-LEFT.png) |
+| Text alignment is text.TextAlign.LEFT, the maximum number of lines is 10, and the word break strategy is text.WordBreak.BREAK_ALL. | ![BREAK-ALL-LEFT-10](figures/BREAK-ALL-LEFT-10.png) |
+| Text alignment is text.TextAlign.LEFT, the maximum number of lines is 10, and the word break strategy is text.WordBreak.BREAK_HYPHEN, <br/>with no language preference set. The paragraph has no hyphen "-" word break effect. | ![ts-hyphen-locale-undefined.jpg](figures/ts-hyphen-locale-undefined.jpg) |
+| Text alignment is text.TextAlign.LEFT, the maximum number of lines is 10, and the word break strategy is text.WordBreak.BREAK_HYPHEN, <br/>with the language preference set to en-gb (British English). The paragraph produces a hyphen "-" word break effect, presenting the word break effect of the British English locale according to the language preference. | ![ts-hyphen-local-en-gb.jpg](figures/ts-hyphen-local-en-gb.jpg) |
+| Text alignment is text.TextAlign.LEFT, the maximum number of lines is 10, and the word break strategy is text.WordBreak.BREAK_HYPHEN, <br/>with the language preference set to en-us (American English). The paragraph produces a hyphen "-" word break effect, presenting the word break effect of the American English locale according to the language preference. | ![ts-hyphen-local-en-us.jpg](figures/ts-hyphen-local-en-us.jpg) |
 
 
 ## Multi-style Text Drawing and Display
@@ -243,19 +245,25 @@ The following lists the multi-style drawing supported by the current version and
 
 - **Line spacing adjustment**: adjusts the line spacing to change the line height, optimizing the reading experience.
 
+- **Ellipsis style settings:** When the text content exceeds the drawing area, you can use ellipsis to truncate the text. The head, middle, tail, and multiline ellipsis modes are supported.
+
+- **Line break mode settings:** Different break strategies are supported during text layout. You can select an appropriate line break mode based on the scenario.
+
+- **Line-start punctuation compression:** During typesetting, you can enable the line-start punctuation compression feature to squeeze line-start punctuation marks, preventing them from occupying space at the beginning of a line and improving layout compactness.
+
 ### Decoration
 
 [Decoration](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#decoration) is a decorative line added above, below, or in the middle of the text. Currently, the overline, underline, and strikethrough are supported.
 
 You can add text decoration to enhance the visual effect and readability of the text.
 
-To use decoration, you need to initialize the decoration style object and add it to the text style so that the decoration take effect when the text is drawn.
+To use decoration, you need to initialize the decoration style object and add it to the text style so that the decoration takes effect when the text is drawn.
 
 For details, see [Example 1](#example-1-decoration-and-font-feature).
 
 ### Font Feature
 
-[FontFeature](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#fontfeature) focuses on processing font features (such as bold, italic, and font variants) during text rendering. It allows fonts to display different effects in different typography scenarios, enhancing the expressiveness of text to better meet design and reading requirements.
+**Font feature** ([FontFeature](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#fontfeature)) drawing focuses on processing font characteristics (such as bold, italic, and font variants) during text rendering. It allows fonts to exhibit different effects in various typesetting scenarios, enhancing text expressiveness to better meet design and reading requirements.
 
 Common **FontFeature** includes liga, frac, and case, which can be enabled only when the corresponding TTF file is supported.
 
@@ -290,7 +298,8 @@ For details, see [Example 2](#example-2-font-variation-text-shadow-and-placehold
 ### Automatic Spacing
 
 When automatic spacing is enabled, it applies between CJK (Chinese, Japanese, and Korean) and Western characters (Latin, Cyrillic, and Greek), between CJK and digits, between CJK and copyright symbols, between copyright symbols and digits, and between copyright symbols and Western characters. For example, in an English-Chinese mixed layout scenario, automatic spacing adds extra spacing in places where English and Chinese are switched, improving the reading experience.
-Sample code:
+
+The key example is as follows:
 ```ts
 let myParagraphStyle: text.ParagraphStyle = {
   autoSpace: true
@@ -380,14 +389,38 @@ let myParagraphStyle: text.ParagraphStyle = {
 
 For details, see [Example 8](#example-8-line-spacing-adjustment).
 
+### Ellipsis Style Settings
+
+Starting from API version 22, you can set the ellipsis style to truncate text when the content exceeds the drawing area. Starting from API version 24, the multiline ellipsis mode is supported.
+
+Set the ellipsis mode through the `textStyle` attribute in [ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle). For available ellipsis modes, see [EllipsisMode](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#ellipsismode).
+
+Note that ellipsis-related properties take effect only when set in `textStyle` of `ParagraphStyle`. Ellipsis properties set through `pushStyle` do not take effect.
+
+For the specific effect, see [Example 9](#example-9-ellipsis-style) below.
+
+### Line Break Mode Settings
+
+Starting from API version 22, you can set a break strategy during text layout. The break strategy determines how text is wrapped at the end of a line.
+
+Control the break strategy by setting the `breakStrategy` attribute in [ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle). For available break strategies, see [BreakStrategy](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#breakstrategy).
+
+For the specific effect, see [Example 10](#example-10-text-wrapping-mode) below.
+
+### Line-Start Punctuation Compression
+
+Starting from API version 23, line-start punctuation compression is supported during text layout. By enabling this feature, you can squeeze line-start punctuation marks to improve layout compactness.
+
+Set the `compressHeadPunctuation` attribute in [ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle) to specify whether to enable line-start punctuation compression.
+
+For the specific effect, see [Example 11](#example-11-line-start-punctuation-compression) below.
+
 ### Example 1 (Decoration and Font Feature)
-The following uses the decoration and font feature in the text style as an example to describe how to draw and display multi-style text.
 
 <!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) -->
 
 ``` TypeScript
-import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-import { UIContext } from '@kit.ArkUI'
+import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
 import { text } from '@kit.ArkGraphics2D'
 
 // Create a MyRenderNode class and draw the text.
@@ -409,7 +442,7 @@ class MyRenderNode extends RenderNode {
         },
         // Decoration style, which can be wave, dashed line, or straight line.
         decorationStyle:text.TextDecorationStyle.SOLID,
-        // Decoration height.
+        // Decoration line thickness scaling ratio.
         decorationThicknessScale: 1
       };
 
@@ -534,10 +567,10 @@ struct Font08 {
 
 The following figures show the effect.
 
-| Style Settings (Decoration Style and Font Feature)| Effect| 
+| Style (Decoration Style, Font Features) | Effect | 
 | -------- | -------- |
-| Disabled| ![complexArkTsDemo1-1](figures/complexArkTsDemo1-1.png)| 
-| Enabled| ![complexArkTsDemo1-2](figures/complexArkTsDemo1-2.png)| 
+| Decoration and font features disabled | ![complexArkTsDemo1-1](figures/complexArkTsDemo1-1.png) | 
+| Decoration and font features enabled | ![complexArkTsDemo1-2](figures/complexArkTsDemo1-2.png) | 
 
 ### Example 2 (Font Variation, Text Shadow, and Placeholder)
 The following uses the font variation, text shadow, and placeholder features as an example to describe how to draw and display multi-style text.
@@ -545,11 +578,8 @@ The following uses the font variation, text shadow, and placeholder features as 
 <!-- @[arkts_complex_style_example2_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets) -->
 
 ``` TypeScript
-import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
-import { text } from '@kit.ArkGraphics2D'
-import { common2D } from '@kit.ArkGraphics2D'
+import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
+import { drawing, text, common2D } from '@kit.ArkGraphics2D'
 
 // Create a MyRenderNode class and draw the text.
 class MyRenderNode extends RenderNode {
@@ -709,10 +739,10 @@ struct Font08 {
 
 The following figures show the effect.
 
-| Style (Font Variation, Text Shadow, and Placeholder)| Effect| 
+| Style (Font Variation, Text Shadow, and Placeholder)| Effect|
 | -------- | -------- |
-| Disabled| ![complexArkTsDemo2-1](figures/complexArkTsDemo2-1.png)| 
-| Enabled| ![complexArkTsDemo2-2](figures/complexArkTsDemo2-2.png)| 
+| Variable font and text shadow disabled, placeholder not used | ![complexArkTsDemo2-1](figures/complexArkTsDemo2-1.png) |
+| Variable font and text shadow enabled, placeholder used | ![complexArkTsDemo2-2](figures/complexArkTsDemo2-2.png) |
 
 ### Example 3 (Vertical Alignment)
 The following uses vertical alignment - center alignment as an example to describe the vertical typography feature.
@@ -849,12 +879,12 @@ struct Font08 {
 
 
 The following figures show the effect.
-| Style (Vertical Alignment)| Effect (The black box only shows the text drawing area and is not drawn in actual.)| 
+| Style (Vertical Alignment)| Effect (The black box only shows the text drawing area and is not actually drawn.)|
 | -------- | -------- |
-| Baseline alignment (default)| ![verticalAlignment-baseline](figures/verticalAlignment-baseline.jpg)| 
-| Top alignment| ![verticalAlignment-top](figures/verticalAlignment-top.jpg)| 
-| Center alignment| ![verticalAlignment-center](figures/verticalAlignment-center.jpg)| 
-| Bottom alignment| ![verticalAlignment-bottom](figures/verticalAlignment-bottom.jpg)| 
+| Baseline alignment (default) | ![verticalAlignment-baseline](figures/verticalAlignment-baseline.jpg) |
+| Top alignment | ![verticalAlignment-top](figures/verticalAlignment-top.jpg) |
+| Center alignment | ![verticalAlignment-center](figures/verticalAlignment-center.jpg) |
+| Bottom alignment | ![verticalAlignment-bottom](figures/verticalAlignment-bottom.jpg) |
 
 ### Example 4 (Superscript and Subscript)
 The following uses the subscript style as an example to describe the superscript and subscript typography feature.
@@ -1001,10 +1031,10 @@ struct Font08 {
 
 
 The following figures show the effect.
-| Style (Superscript and Subscript)| Effect| 
+| Style (Superscript and Subscript)| Effect|
 | -------- | -------- |
-| Superscript text| ![subscript](figures/subscript.jpg)| 
-| Subscript text| ![superscript](figures/superscript.jpg)| 
+| Superscript text | ![superscript](figures/superscript.jpg) |
+| Subscript text | ![subscript](figures/subscript.jpg) |
 
 ### Example 5 (High Contrast)
 The following uses high contrast as an example to describe how to draw and display high-contrast text.
@@ -1137,10 +1167,10 @@ struct Font08 {
 
 The following figures show the effect.
 
-| High Contrast| Effect| 
+| High Contrast| Effect|
 | -------- | -------- |
-| Disabled| ![complexArkTsDemo5-1](figures/complexArkTsDemo5-1.png)| 
-| Enabled| ![complexArkTsDemo5-2](figures/complexArkTsDemo5-2.png)| 
+| High contrast disabled | ![complexArkTsDemo5-1](figures/complexArkTsDemo5-1.png) |
+| High contrast enabled | ![complexArkTsDemo5-2](figures/complexArkTsDemo5-2.png) |
 
 ### Example 6 (Line Height Adjustment: Method 1)
 In this example, the maximum and minimum line heights are set to the same value to show the drawing effect when the line height is fixed.
@@ -1555,5 +1585,86 @@ The following figures show the effect.
 | -------- | -------- |
 | DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
 | ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+
+### Example 9 (Ellipsis Style)
+The following example demonstrates the text truncation effect with the trailing ellipsis mode enabled.
+
+<!-- @[arkts_ellipsis_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample9.ets) -->
+
+``` TypeScript
+// Set the text style, including the ellipsis string and ellipsis mode.
+let myTextStyle: text.TextStyle = {
+  color: {
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 0
+  },
+  fontSize: 40,
+  // Set the ellipsis string.
+  ellipsis: '...',
+  // Set the ellipsis mode to trailing ellipsis.
+  ellipsisMode: text.EllipsisMode.END
+};
+// Set the paragraph style, including the maximum number of lines.
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  // Set the maximum number of displayed lines to 2.
+  maxLines: 2
+};
+```
+
+The following figures show the effect.
+
+| Ellipsis Mode | Effect |
+| -------- | -------- |
+| Ellipsis disabled | ![en-us_image_complexArkTsDemo9_1](figures/en-us_image_complexArkTsDemo9_1.png) |
+| Head ellipsis enabled | ![en-us_image_complexArkTsDemo9_2](figures/en-us_image_complexArkTsDemo9_2.png) |
+| Middle ellipsis enabled | ![en-us_image_complexArkTsDemo9_3](figures/en-us_image_complexArkTsDemo9_3.png) |
+| Tail ellipsis enabled | ![en-us_image_complexArkTsDemo9_4](figures/en-us_image_complexArkTsDemo9_4.png) |
+| Multiline head ellipsis enabled | ![en-us_image_complexArkTsDemo9_5](figures/en-us_image_complexArkTsDemo9_5.png) |
+| Multiline middle ellipsis enabled | ![en-us_image_complexArkTsDemo9_6](figures/en-us_image_complexArkTsDemo9_6.png) |
+
+### Example 10 (Text Wrapping Mode)
+The following example demonstrates the impact of the `BALANCED` break strategy on text layout.
+
+<!-- @[arkts_break_strategy_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample10.ets) -->
+
+``` TypeScript
+// Set the line break strategy to BALANCED.
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  // Set the line break strategy to BALANCED so that the width of each line is as balanced as possible.
+  breakStrategy: text.BreakStrategy.BALANCED
+};
+```
+
+The following figures show the effect.
+
+| Line Breaking Strategy | Effect |
+| -------- | -------- |
+| GREEDY | ![en-us_image_complexArkTsDemo10_1](figures/en-us_image_complexArkTsDemo10_1.png) |
+| BALANCED | ![en-us_image_complexArkTsDemo10_2](figures/en-us_image_complexArkTsDemo10_2.png) |
+| HIGH_QUALITY | ![en-us_image_complexArkTsDemo10_3](figures/en-us_image_complexArkTsDemo10_3.png) |
+
+### Example 11 (Line-Start Punctuation Compression)
+The following example demonstrates the typesetting comparison effect with line-start punctuation compression enabled.
+
+<!-- @[arkts_punctuation_compress_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample11.ets) -->
+
+``` TypeScript
+// Enable line start punctuation compression.
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  compressHeadPunctuation: true
+};
+```
+
+The following figures show the effect.
+
+| Punctuation Compression | Effect |
+| -------- | -------- |
+| Punctuation compression disabled | ![en-us_image_complexArkTsDemo11_1](figures/en-us_image_complexArkTsDemo11_1.png) |
+| Punctuation compression enabled | ![en-us_image_complexArkTsDemo11_2](figures/en-us_image_complexArkTsDemo11_2.png) |
 
 <!--no_check-->

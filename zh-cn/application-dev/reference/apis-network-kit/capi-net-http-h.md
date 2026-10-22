@@ -33,7 +33,7 @@
 | [void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)](#oh_http_destroyheaderentries) | 销毁OH_Http_GetHeaderEntries中获取的所有键值对。 |
 | [Http_Request *OH_Http_CreateRequest(const char *url)](#oh_http_createrequest) | 创建HTTP请求。 |
 | [int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_EventsHandler handler)](#oh_http_request) | 发起HTTP请求。 |
-| [void OH_Http_Destroy(struct Http_Request **request)](#oh_http_destroy) | 销毁HTTP请求。 |
+| [void OH_Http_Destroy(struct Http_Request **request)](#oh_http_destroy) | 中断HTTP请求。 |
 
 ## 函数说明
 

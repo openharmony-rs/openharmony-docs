@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.metadataBinding (记忆链接)
+# @ohos.multimodalAwareness.metadataBinding (元数据绑定)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: Msdp-->
 <!--Owner: @codexu62-->
@@ -6,7 +6,7 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
-本模块提供记忆链接能力调用，包括编码内容传递、订阅事件和取消订阅事件。记忆链接允许系统应用获取第三方应用的编码内容，支持实时事件监听和回调机制，适用于系统应用请求（如截图）并获取应用链接数据的场景，通过跨应用数据传递提升用户体验。
+本模块提供元数据绑定能力调用，包括编码内容传递、订阅事件和取消订阅事件。元数据绑定允许系统应用获取第三方应用的编码内容，支持实时事件监听和回调机制，适用于系统应用请求（如截图）并获取应用链接数据的场景，通过跨应用数据传递提升用户体验。
 
 > **说明：**
 >
@@ -35,7 +35,7 @@ submitMetadata(metadata: string): void
 
 **错误码**：  
 
-以下错误码的详细介绍请参见[记忆链接错误码](errorcode-metadataBinding.md)。
+以下错误码的详细介绍请参见[元数据绑定错误码](errorcode-metadataBinding.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -75,7 +75,7 @@ on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback&lt;nu
 
 **错误码**：
 
-以下错误码的详细介绍请参见[记忆链接错误码](errorcode-metadataBinding.md)。
+以下错误码的详细介绍请参见[元数据绑定错误码](errorcode-metadataBinding.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -120,7 +120,7 @@ off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;
 
 **错误码**：  
 
-以下错误码的详细介绍请参见[记忆链接错误码](errorcode-metadataBinding.md)。
+以下错误码的详细介绍请参见[元数据绑定错误码](errorcode-metadataBinding.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |

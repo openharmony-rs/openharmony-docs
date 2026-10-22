@@ -111,7 +111,7 @@ C接口统一通过[Image错误码](../../../reference/apis-image-kit/errorcode-
        OH_Pixelmap_ImageInfo *imageInfo;
        Image_ErrorCode errCode = OH_PixelmapImageInfo_Create(&imageInfo);
        if (errCode != IMAGE_SUCCESS) {
-           OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_Create failed, errCode: %{public}d.", errCode);
+           OH_LOG_ERROR(LOG_APP, "OH_PixelmapImageInfo_Create failed, errCode: %{public}d.", errCode);
            return;
        }
        errCode = OH_PixelmapNative_GetImageInfo(pixelmap, imageInfo);

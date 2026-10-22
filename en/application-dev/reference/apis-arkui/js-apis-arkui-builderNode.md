@@ -1,12 +1,11 @@
 # BuilderNode
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sunbees-->
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=af1c409994db2fe8f6b1e73fc3517a651a9626fe translatedAt=2026-07-29T09:18:37.755Z pushedAt=2026-07-31T11:05:24.702Z -->
+<!-- md-trans-meta sourceCommit=e81239e2f38865e1e733a04fa60a7878bf413bbf translatedAt=2026-08-29T09:29:53.765Z pushedAt=2026-08-31T08:52:06.108Z -->
 
 The **BuilderNode** module provides APIs for a BuilderNode – a custom node that can be used to mount built-in components. A BuilderNode can be used only as a leaf node. It supports generating a component tree through **@Builder**, implementing component reuse and recycling, cross-node event posting, and state synchronization. It is suitable for scenarios where custom component nodes are dynamically created and managed within applications. For details, see [BuilderNode Development](../../ui/arkts-user-defined-arktsNode-builderNode.md). For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-ui-component-dynamic-creation#dynamically-adding-updating-and-deleting-components).
 
@@ -205,7 +204,6 @@ Custom components are allowed. Compared with the [build(builder: WrappedBuilder\
 | options | [BuildOptions](#buildoptions12) | Yes | Build options, used to configure the build behavior of **@Builder**. For details about the attributes, see [BuildOptions](#buildoptions12). |
 
 **Example**
-
 ```ts
 import { BuilderNode, NodeContent } from '@kit.ArkUI';
 
@@ -523,7 +521,6 @@ Updates this BuilderNode using the provided parameter, which must be of the same
 | arg    | Object | Yes  | Parameter used to update the BuilderNode. It is of the same type as the parameter passed to the [build](#build) API.|
 
 **Example**
-
 ```ts
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
@@ -566,7 +563,6 @@ function buildText(params: Params) {
 
 // Implement a custom textNode controller by extending NodeController.
 class TextNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
   private textNode: BuilderNode<[Params]> | null = null;
   private message: string = '';
 
@@ -642,7 +638,6 @@ Posts a raw touch event to the FrameNode created by this BuilderNode. This is su
 > - The **postTouchEvent** API can be called only once for the same timestamp.<!--Del-->
 >
 > - This API cannot be called by [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).
-
 <!--DelEnd-->
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -1067,9 +1062,7 @@ struct Index {
   }
 }
 ```
-
 Since API version 26.0.0, custom components in the BuilderNode support V2 component reuse.
-
 ```ts
 import { FrameNode, NodeController, BuilderNode, UIContext } from '@kit.ArkUI';
 
@@ -1266,7 +1259,6 @@ Transfers a system environment change event and triggers full update of a node. 
 > The **updateConfiguration** API is used to instruct an object to update, with the system environment used for the update being determined by the changes in the application's current system environment.
 
 **Example**
-
 ```ts
 import { NodeController, BuilderNode, FrameNode, UIContext, FrameCallback } from '@kit.ArkUI';
 import { AbilityConstant, Configuration, ConfigurationConstant, EnvironmentCallback } from '@kit.AbilityKit';
@@ -1920,6 +1912,7 @@ Custom components are allowed.
 > 
 > - The ReactiveBuilderNode object maintains references to its underlying entity nodes. When the ReactiveBuilderNode frontend object is no longer required for managing backend nodes, call the [dispose](#dispose22) API to release node references and unbind frontend and backend nodes.
 
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -2127,7 +2120,6 @@ Posts a raw touch event to the FrameNode created by a ReactiveBuilderNode. This 
 > The **postTouchEvent** API can be called only once for the same timestamp.<!--Del-->
 >
 > The **postTouchEvent** parameter does not support [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).
-
 <!--DelEnd-->
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
@@ -2583,7 +2575,6 @@ struct Index {
 ![recycle](figures/ReactiveBuilderNode_recycle.gif)
 
 Since API version 26.0.0, custom components in the ReactiveBuilderNode support V2 component reuse.
-
 ```ts
 import { FrameNode, NodeController, ReactiveBuilderNode, UIContext } from '@kit.ArkUI';
 
@@ -3392,7 +3383,6 @@ struct TextBuilder {
   }
 }
 ```
-
 ![inheritFreezeOptions](figures/reactive_builderNode_inheritFreezeOptions.gif)
 
 ### isDisposed<sup>22+</sup>
@@ -3892,9 +3882,7 @@ struct MyComponent {
 ![onAxisEvent](figures/onAxisEvent.gif)
 
 ### Example 4: Passing a BuilderNode Shared localStorage Instance
-
 This example demonstrates how to pass an external [localStorage](./arkui-ts/ts-state-management.md#localstorage9) instance to a BuilderNode through the **build** method. In this case, all custom components mounted on the BuilderNode share this localStorage.
-
 ```ts
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
@@ -6021,3 +6009,5 @@ struct MyComponent {
   }
 }
 ```
+
+

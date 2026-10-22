@@ -1,4 +1,4 @@
-# AbilityFirstFrameStateObserver (系统接口)
+# AbilityFirstFrameStateObserver (首帧绘制状态监听器)(系统接口)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->

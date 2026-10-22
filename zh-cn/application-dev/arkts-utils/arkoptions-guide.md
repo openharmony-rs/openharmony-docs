@@ -1,8 +1,17 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍在build-profile.json5中通过arkOptions字段配置ArkTS编译选项，涵盖types全局类型声明引入、maxFlowDepth控制流分析深度和transformLib转换库，帮助开发者按需定制编译行为。"
+keywords: [arkOptions, build-profile.json5, types, 全局类型声明, maxFlowDepth, 控制流分析, transformLib, 编译配置]
+doctype: guide
+status: active
+---
+
 # 在build-profile.json5中配置arkOptions
+
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @jokerxd-liu-->
-<!--Designer: @huyunhui1; @liyancheng-->
+<!--Designer: @huyunhui1; @liyancheng; @zmw1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 

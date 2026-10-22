@@ -5,8 +5,9 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=ca610c3b31eac2a84ffac21a107ce522b473feb1 translatedAt=2026-08-29T09:37:19.502Z pushedAt=2026-08-31T12:24:04.921Z -->
 
-Provides APIs for accessing application and system resources. For details about resource types and usage, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).
+Provides APIs for accessing application and system resources. Resources can be accessed through **$r** and **$rawfile**, which are applicable to scenarios such as multi-language adaptation, dark/light mode switch, resolution adaptation for different devices, and loading local raw resource files. For details about resource types and usage, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).
 
 > **NOTE**
 >
@@ -17,7 +18,7 @@ Provides APIs for accessing application and system resources. For details about 
 
 $r(value: string, ...params: any[]): Resource
 
-Accesses application or system resources. During compilation, the toolchain converts $r into a [Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9) object. For details about how to access application or system resources using \$r, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).
+Obtains information about application resources, system resources, or HSP resources, which is applicable to scenarios such as multi-language adaptation, dark/light mode switch, and resolution adaptation for different devices. **\$r** is converted by the toolchain into a [Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9) object during compilation. To access application resources or system resources through **\$r**, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -29,8 +30,8 @@ Accesses application or system resources. During compilation, the toolchain conv
 
 | Name| Type  | Mandatory| Description                                                                                                                                                                                                                                                                                                                                                                                             |
 | ------ | ------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| value  | string | Yes  | Resource identifier in the format *belonging.type.name*.<br>**belonging**: resource source. Values: **sys**, **app**, or **[hsp_name]**.<br>**type**: resource type. Values: **boolean**, **color**, **float**, **intarray**, **integer**, **pattern**, **plural**, **strarray**, **string**, or **media**.<br>**name**: resource name. Application resource names are defined in the project's **resources** directory. For details about system resource names, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).|
-| ...params | any[]  | No  | Additional parameters passed by you.                                                                                                                                                                                                                                                                                                                                                                           |
+| value  | string | Yes   | Resource identifier, accessed in the format of `belonging.type.name`.<br>**belonging**: resource source. The value can be **sys**, **app**, or **[hsp_name]**.<br>**type**: resource type. The value can be **boolean**, **color**, **float**, **intarray**, **integer**, **pattern**, **plural**, **strarray**, **string**, or **media**.<br>**name**: resource name. Application resource names are defined in the **resources** directory of the project. For how to obtain system resource names, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).<br/>If the format is incorrect or the resource does not exist, the returned **Resource** object does not contain valid resource information. |
+| ...params | any[]  | No   | Remaining parameters you passed, used to format the resource content. The parameters replace the placeholders in the resource string in sequence.  |
 
 **Return value**
 
@@ -56,13 +57,13 @@ struct Page {
 }
 ```
 
-For sample code about how to access resources in an HSP, see [Accessing Resources Across HAPs/HSPs](../../quick-start/resource-categories-and-access.md#cross-haphsp-resources).
+For sample code about how to access resources in an HSP, see [Cross-HAP/HSP Resources](../../quick-start/resource-categories-and-access.md#cross-haphsp-resources).
 
 ## $rawfile
 
 $rawfile(value: string): Resource
 
-Accesses resources in the **rawfile** directory of the project. During compilation, the toolchain converts $rawfile into a [Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9) object. For details about how to access the resources in the **rawfile** directory through **\$rawfile**, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).
+Obtains information about resources in the **rawfile** directory of the project, which is applicable to loading raw resource files such as local audio, video, and configuration files. **$r** accesses resources through resource identifiers and supports multi-language adaptation, dark/light mode switch, and resolution adaptation for different devices. **$rawfile** accesses resources through file paths and does not support the preceding adaptation capabilities, which is applicable to scenarios where raw resource files are directly accessed. **$rawfile** is converted by the toolchain into a [Resource](../apis-localization-kit/js-apis-resource-manager.md#resource9) object during compilation. For more information, see [Resource Categories and Access](../../quick-start/resource-categories-and-access.md).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 

@@ -1,12 +1,11 @@
 # NodeController
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=af1c409994db2fe8f6b1e73fc3517a651a9626fe translatedAt=2026-07-29T09:21:30.505Z pushedAt=2026-08-03T11:01:15.465Z -->
+<!-- md-trans-meta sourceCommit=a5a9b13e76430cfff45e4873767cacc1b9c0082b translatedAt=2026-08-29T09:36:36.056Z pushedAt=2026-08-31T11:55:31.023Z -->
 
 The **NodeController** module provides APIs for managing custom nodes, such as creating, showing, and updating custom nodes, and APIs for mounting custom nodes to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md). It is suitable for scenarios where custom nodes need to be dynamically created, updated, and reused on a page.
 
@@ -64,7 +63,7 @@ Alternatively, the callback can be triggered through the **rebuild()** API of **
 
 aboutToAppear?(): void
 
-Called after the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component bound to this **NodeController** instance is attached and about to appear.
+Called when the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) bound to this **NodeController** instance is attached to the main node tree. This callback is asynchronous, and its actual execution time is later than the attachment.
 
 > **NOTE**
 >
@@ -78,7 +77,7 @@ Called after the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) 
 
 aboutToDisappear?(): void
 
-Called when the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component bound to this **NodeController** instance is destroyed.
+Called when the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) bound to this **NodeController** instance is detached from the main node tree. This callback is synchronous.
 
 > **NOTE**
 >
@@ -92,7 +91,7 @@ Called when the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) c
 
 onAttach?(): void
 
-Called when [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) bound to the **NodeController** is attached to the main node tree. Unlike [aboutToAppear](#abouttoappear), which is triggered after **NodeContainer** is mounted and displayed, **onAttach** is triggered when **NodeContainer** is attached to the main node tree. The triggering timing of the two may differ.
+Called when the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) bound to this **NodeController** instance is attached to the main node tree. It is triggered at the same time as [aboutToAppear](#abouttoappear) (both when the **NodeContainer** is attached to the main node tree). The difference is that **onAttach** is a synchronous callback while **aboutToAppear** is an asynchronous callback, so **onAttach** is executed before **aboutToAppear**.
 
 > **NOTE**
 >
@@ -106,7 +105,7 @@ Called when [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) bound
 
 onDetach?(): void
 
-Called when [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) bound to the **NodeController** is detached from the main node tree. Unlike [aboutToDisappear](#abouttodisappear), which is triggered when **NodeContainer** is destroyed, **onDetach** is triggered when the **NodeContainer** is detached from the main node tree. The triggering timing of the two may differ.
+Called when the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) bound to this **NodeController** instance is detached from the main node tree. It is triggered at the same time as [aboutToDisappear](#abouttodisappear) (both when the **NodeContainer** is detached from the main node tree). Both are synchronous callbacks. During the detachment process, the framework triggers **onDetach** first and then **aboutToDisappear**, so **onDetach** is executed before **aboutToDisappear**.
 
 > **NOTE**
 >
@@ -130,7 +129,7 @@ Called when **NodeController** is about to be bound to [NodeContainer](arkui-ts/
 
 | Name   | Type                                     | Mandatory| Description                                                                                                         |
 | ----------- | ------ |----- |---------------------------------------------------------------------------------------------------------------------------------- |
-| containerId | number | Yes   | Identifier of  [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) that is about to be bound with **NodeController** when this API is called back.|
+| containerId | number | Yes   | Identifier of [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) that is about to be bound with **NodeController** when this API is called back.|
 
 ### onWillUnbind<sup>18+</sup>
 
@@ -230,11 +229,11 @@ Notifies the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) comp
 
 ## Example
 
-### Example 1: Adding Lifecycle Callbacks for Node Layout, Touch, Mounting, and Destruction Events
+### Example 1: Adding Lifecycle Callbacks for Node Layout, Touch, Attachment, and Detachment Events
 
 This example demonstrates how to implement lifecycle callbacks of the **NodeContainer** component using **aboutToResize** and **onTouchEvent** for node layout and touch event receiving.
 
-It implements lifecycle callbacks for **NodeContainer** node mounting and destruction through **aboutToAppear** and **aboutToDisappear**.
+It implements lifecycle callbacks for the **NodeContainer** node attachment to the main node tree and detachment from the main node tree through **aboutToAppear** and **aboutToDisappear**.
 
 It also shows how to mount a BuilderNode using **NodeController**.
 
@@ -301,14 +300,13 @@ struct Index {
   }
 }
 ```
-
 ![nodecontroller](figures/node_controller.jpg)
 
 ### Example 2: Implementing Lifecycle Callbacks for Node Binding/Unbinding and Tree Attachment/Detachment
 
 This example demonstrates how to implement lifecycle of callbacks of the **NodeContainer** component using **onAttach** and **onDetach** when it is attached to or detached from the main node tree.
 
-It implements lifecycle callbacks using *onWillBind**, **onWillUnbind**, **onBind**, and **onUnbind** when it is bound or unbound.
+It implements lifecycle callbacks using **onWillBind**, **onWillUnbind**, **onBind**, and **onUnbind** when it is bound or unbound.
 
 ```ts
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';

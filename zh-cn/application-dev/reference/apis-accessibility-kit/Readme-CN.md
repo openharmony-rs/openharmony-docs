@@ -5,7 +5,7 @@
 <!--Owner: @fanzexuan-->
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
-<!--Adviser: @wwwyyyhhhh-->
+<!--Adviser: @w_Machine_cc-->
 
 - ArkTS API<!--accessibility-arkts-->
   - [@ohos.accessibility (辅助功能)](js-apis-accessibility.md)

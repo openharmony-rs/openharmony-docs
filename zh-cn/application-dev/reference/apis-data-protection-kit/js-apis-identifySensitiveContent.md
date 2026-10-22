@@ -41,13 +41,13 @@ scanFile(filePath: string, identifyPolicies:Array&lt;Policy&gt;): Promise&lt;Arr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[数据泄露防护DLP服务错误码](errorcode-dlp.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | permission denied. |
-| 801 | Capability not supported. |
-| 19110001 | Parameter error.Possible causes: 1. Incorrect policy format. 2. Invalid parameter range. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: The device type does not support the capability. |
+| 19110001 | Parameter error. Possible causes: 1. Incorrect policy format. 2. Invalid parameter range. |
 | 19110002 | Sensitive file content identification timed out. |
 | 19110003 | The file is not supported. Possible causes: 1. The file path does not exist. 2. The file type is not supported. 3. The file permission is not supported. |
 | 19110004 | A system error has occurred. |
@@ -56,12 +56,13 @@ scanFile(filePath: string, identifyPolicies:Array&lt;Policy&gt;): Promise&lt;Arr
 
 ```ts
 import { identifySensitiveContent } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义待扫描的文件物理路径
-let filePath = "/data/service/el2/100/hmdfs/account/files/Docs/Documents/test.txt";
+const filePath = '/data/service/el2/100/hmdfs/account/files/Docs/Documents/test.txt';
 
 // 配置敏感内容识别策略
-let policies: Array<identifySensitiveContent.Policy> = [
+const policies: Array<identifySensitiveContent.Policy> = [
   {"sensitiveLabel":"name", "keywords":["姓名"], "regex":""},
   {"sensitiveLabel":"phone", "keywords":[], "regex":"电话"},
   {"sensitiveLabel":"address", "keywords":["地址"], "regex":"xx省xx市"}
@@ -77,10 +78,10 @@ try {
     }
   }).catch((err: BusinessError) => {
     // 处理识别失败
-    console.error(`Failed to scanFile. Code:${err.code}, message:${err.message}`);
-  })
+    console.error(`Failed to scanFile. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (err) {
-  console.error('error message', err.message);
+  console.error(`Failed to scanFile. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

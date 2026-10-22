@@ -5,7 +5,6 @@
 <!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=603965e6f67783378238262d049a93a8d321dd6f translatedAt=2026-07-23T07:32:39.360Z pushedAt=2026-07-23T09:14:30.222Z -->
 
 > **NOTE**
 > 
@@ -23,22 +22,14 @@ Invalid parameters are specified.
 
 **Possible Causes**
 
-1. The account is empty or the account length exceeds 1024 characters.
-
+1. The account is empty or contains more than 1024 characters.
 2. The account type is incorrect.
-
 3. The **aesKey** or **iv** is invalid.
-
 4. The system time is later than the authorization expiration time.
-
 5. The file descriptor (FD) is less than 0.
-
 6. The value of **tokenId** is **0**.
-
 7. The bundle name is empty.
-
 8. The value of **appIndex** is less than **0**.
-
 9. The value of **userId** is less than **0**.
 
 **Solution**
@@ -58,7 +49,6 @@ The encryption and decryption service is busy.
 **Possible Causes**
 
 1. The number of active encryption and decryption tasks is greater than 100.
-
 2. Duplicate encryption/decryption tasks are performed.
 
 **Solution**
@@ -96,7 +86,6 @@ An internal error occurs in the DLP credential service, and the credential servi
 **Possible Causes**
 
 1. The DLP credential service does not exist.
-
 2. The DLP credential service is abnormal.
 
 **Solution**
@@ -116,7 +105,6 @@ An error occurs during communication with the credential authentication server. 
 **Possible Causes**
 
 1. The credential authentication server cannot be connected.
-
 2. The credential authentication server does not exist.
 
 **Solution**
@@ -190,17 +178,13 @@ The operation on the DLP file fails.
 **Possible Causes**
 
 1. The user is not an authorized user.
-
 2. The sandbox application fails to be installed.
-
 3. The link file is not associated.
-
 4. More than 1000 DLP files are opened at the same time.
 
 **Solution**
 
 1. Check the access permission.
-
 2. Wait for a while or restart the device and try again. Ensure that the number of DLP files opened at the same time does not exceed 1000.
 
 <!--Del-->
@@ -217,7 +201,6 @@ The DLP file is set to the read-only mode and cannot be written or modified.
 **Possible Causes**
 
 1. You cannot modify the permission on a DLP file, which is read-only.
-
 2. You cannot write a DLP file, which is read-only.
 
 **Solution**
@@ -238,13 +221,9 @@ DLP-related system services cannot run properly. As a result, related functions 
 **Possible Causes**
 
 1. The DLP permission service fails to start.
-
 2. The remote procedure call (RPC) object of the DLP permission service cannot be obtained.
-
 3. The service, on which the DLP permission service depends, fails to start.
-
 4. Failed to write data for inter-process communication (IPC).
-
 5. The service is not initialized.
 
 **Solution**
@@ -377,7 +356,7 @@ The application is not in the authorized application list.
 
 **Solution**
 
-Request to be added to the authorized application list.<!--RP1--><!--RP1End-->
+New authorized applications cannot be added.
 
 <!--Del-->
 ## 19100019 DLP File Has Expired
@@ -450,7 +429,6 @@ The parameter is invalid.
 **Possible Causes**
 
 1. The policy format is incorrect.
-
 2. The parameter range is incorrect.
 
 **Solution**
@@ -490,9 +468,7 @@ The input file is not supported in the current operation. The possible cause is 
 **Possible Causes**
 
 1. The file path does not exist.
-
 2. The file type is not supported.
-
 3. The file permission is not supported.
 
 **Solution**
@@ -515,11 +491,8 @@ The internal functional module of the system is abnormal. As a result, operation
 **Possible Causes**
 
 1. The service cannot be started.
-
 2. The service on which the service depends cannot be started properly.
-
 3. IPC data fails to be read or written.
-
 4. The service is not initialized.
 
 **Solution**
@@ -561,3 +534,23 @@ The user with the specified ID is a personal space user and cannot set controlle
 **Solution**
 
 Ensure that the passed user ID does not belong to a personal space user.
+
+## 19100025 Invalid File
+
+**Error Message**
+
+The file is invalid.
+
+**Description**
+
+The input file is invalid. The possible cause is that the file path does not exist or the process does not have the permission to read the file.
+
+**Possible Causes**
+
+1. The file path does not exist or is misspelled.
+2. The process does not have the permission to read the target file. Possible causes: The process is denied access, or the file is occupied by another process.
+
+**Solution**
+
+Perform the following: 
+2. Ensure that the process has the permission to read the file and the file is not occupied by another process.

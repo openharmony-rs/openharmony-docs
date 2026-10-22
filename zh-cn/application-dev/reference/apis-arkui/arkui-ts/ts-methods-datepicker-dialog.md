@@ -636,9 +636,11 @@ struct DatePickerDialogExample {
 ![DatePickerDialog](figures/DatePickerDialog_BackgroundEffect.png)
 
 
-### 示例12（设置系统材质）
+### 示例12（设置沉浸光感）
 
-该示例通过配置[systemMaterial](#datepickerdialogoptions对象说明)，实现系统材质效果。
+该示例通过配置[systemMaterial](#datepickerdialogoptions对象说明)，实现沉浸光感效果。
+
+该示例配图为高算力设备强档效果，组件沉浸光感效果会根据设备算力与用户在系统中设置的沉浸光感效果自适应调整，开发者无需额外适配。
 
 从API版本26.0.0开始，在DatePickerDialogOptions中新增了systemMaterial属性。
 
@@ -662,10 +664,13 @@ struct DatePickerDialogExample {
             });
           })
       }.width('100%')
+      .height('100%')
+      .backgroundImage($r('app.media.bgImg'))  // $r('app.media.bgImg')需要替换为开发者所需的资源文件
+      .backgroundImageSize(ImageSize.FILL)
     }
   }
 }
 ```
 
-![date-picker-dialog-systemMaterial](figures/date-picker-dialog-systemMaterial.png)
+![date-picker-dialog-systemMaterial](figures/date-picker-dialog-systemMaterial.gif)
 

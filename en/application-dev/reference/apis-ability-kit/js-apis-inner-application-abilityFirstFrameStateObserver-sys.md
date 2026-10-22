@@ -3,8 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e2c3267fc728379ed661f6395560cc18d085c54a translatedAt=2026-09-03T11:34:11.113Z pushedAt=2026-09-05T10:47:30.647Z -->
 
 The module defines the observer used to listen for the first frame rendering completion event of a given ability. It is used as an input parameter of [on](js-apis-app-ability-appManager-sys.md#appmanageronabilityfirstframestate12) to listen for the completion event.
 
@@ -43,6 +44,7 @@ Called when the first frame of the ability is rendered.
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Create an Ability first frame drawing state listener object.
 let observer: appManager.AbilityFirstFrameStateObserver = {
   onAbilityFirstFrameDrawn(data: appManager.AbilityFirstFrameStateData) {
     console.info(`onAbilityFirstFrameDrawn success, abilityFirstFrameStateData: ${data}.`);
@@ -50,6 +52,7 @@ let observer: appManager.AbilityFirstFrameStateObserver = {
 };
 
 try {
+  // Register the listener for the Ability first frame drawing completion event.
   appManager.on('abilityFirstFrameState', observer);
 } catch (e) {
   let code = (e as BusinessError).code;

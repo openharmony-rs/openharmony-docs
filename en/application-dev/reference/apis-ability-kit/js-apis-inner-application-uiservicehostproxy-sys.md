@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a25f23f63f302873dc43f20e41915285e52f064b translatedAt=2026-09-03T12:11:55.756Z pushedAt=2026-09-05T10:47:30.886Z -->
 
 UIServiceHostProxy functions as a proxy to send data from the [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensionAbility-sys.md) server to the client.
 
@@ -78,3 +79,4 @@ export default class MyUiServiceExtensionAbility extends UIServiceExtensionAbili
   }
 }
 ```
+

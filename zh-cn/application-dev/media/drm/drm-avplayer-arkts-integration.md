@@ -31,14 +31,14 @@
    async function initPlayer() {
    playerHandle = await media.createAVPlayer();
    playerHandle.on('mediaKeySystemInfoUpdate', async (mediaKeySystemInfo: drm.MediaKeySystemInfo[]) => {
-   console.info('player has received drmInfo signal: ' + JSON.stringify(mediaKeySystemInfo))
+     console.info('player has received drmInfo signal: ' + JSON.stringify(mediaKeySystemInfo))
    // 处理DRM信息。
    // 设置解密session。
    })
    }
    ```
 
-4. 调用[createMediaKeySystem](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem)和[createMediaKeySession](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#createmediakeysession)根据DRM信息中的uuid创建MediaKeySystem和MediaKeySession实例。
+4. 调用[createMediaKeySystem](../../reference/apis-drm-kit/arkts-apis-drm-f.md#drmcreatemediakeysystem)和[createMediaKeySession](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySystem.md#createmediakeysession-1)根据DRM信息中的uuid创建MediaKeySystem和MediaKeySession实例。
 
    ```ts
    let mediaKeySystem: drm.MediaKeySystem
@@ -54,7 +54,10 @@
          solutionName = item.name
          }
        }
-       let isSupported: boolean = drm.isMediaKeySystemSupported(solutionName, "video/mp4");
+       // 实际开发中应从播放内容的轨道信息（如AVPlayer.getTrackDescription()）或已知媒体源获取mimeType。
+       // drm.MediaKeySystemInfo不包含mimeType字段，无法直接从drmInfoArr[i]获取。
+       let mimeType: string = "video/mp4";
+       let isSupported: boolean = drm.isMediaKeySystemSupported(solutionName, mimeType);
        if (isSupported) {
          mediaKeySystem = drm.createMediaKeySystem(solutionName);
          mediaKeySession = mediaKeySystem.createMediaKeySession();
@@ -71,7 +74,7 @@
      name: "optionalDataName",
      value: "optionalDataValue"
    }]
-   mediaKeySession.generateMediaKeyRequest("video/mp4", initData, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionsData).then(async (licenseRequest) => {
+   mediaKeySession.generateMediaKeyRequest(mimeType, initData, drm.MediaKeyType.MEDIA_KEY_TYPE_ONLINE, optionsData).then(async (licenseRequest) => {
      console.info("generateMediaKeyRequest success", licenseRequest.mediaKeyRequestType, licenseRequest.data, licenseRequest.defaultURL);
      // 将媒体密钥请求返回的licenseRequest.data通过网络请求发送给DRM服务获取媒体密钥响应，并处理。
      let licenseResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
@@ -88,6 +91,7 @@
 6. 调用[requireSecureDecoderModule](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#requiresecuredecodermodule)和[setDecryptionConfig](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setdecryptionconfig11)，在处理媒体密钥响应成功后设置解密session。
 
    ```ts
+   // 实际开发中应从轨道信息获取codec mime type（如video/avc），再传入requireSecureDecoderModule。
    let svp: boolean = mediaKeySession.requireSecureDecoderModule('video/avc');
    playerHandle.setDecryptionConfig(mediaKeySession, svp)
    ```

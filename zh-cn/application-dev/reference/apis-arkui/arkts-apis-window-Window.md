@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 当前窗口实例，窗口管理器管理的基本单元。
@@ -304,6 +304,7 @@ destroyWindow(callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.destroyWindow((err) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -344,6 +345,7 @@ destroyWindow(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.destroyWindow();
 promise.then(() => {
   console.info('Succeeded in destroying the window.');
@@ -398,6 +400,7 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -462,6 +465,7 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.moveWindowTo(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -527,7 +531,7 @@ moveWindowToAsync(x: number, y: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.moveWindowToAsync(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -600,7 +604,7 @@ try {
   let moveConfiguration: window.MoveConfiguration = {
     displayId: 0
   };
-  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.moveWindowToAsync(300, 300, moveConfiguration);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -662,7 +666,7 @@ moveWindowToGlobal(x: number, y: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.moveWindowToGlobal(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -729,7 +733,7 @@ try {
   let moveConfiguration: window.MoveConfiguration = {
     displayId: 0
   };
-  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.moveWindowToGlobal(300, 300, moveConfiguration);
   promise.then(() => {
     console.info('Succeeded in moving the window.');
@@ -792,6 +796,7 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.moveWindowToGlobalDisplay(300, 300);
   promise.then(() => {
     console.info('Succeeded in moving the window in global display.');
@@ -841,7 +846,7 @@ clientToGlobalDisplay(winX: number, winY: number): Position
 
 ```ts
 try {
-  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
+  // windowClass为已创建/获取的Window实例
   let position = windowClass.clientToGlobalDisplay(100, 100);
   console.info(`Succeeded in converting the position in the current window to the position in global display. Position: ` + JSON.stringify(position));
 } catch (exception) {
@@ -887,7 +892,7 @@ globalDisplayToClient(globalDisplayX: number, globalDisplayY: number): Position
 
 ```ts
 try {
-  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
+  // windowClass为已创建/获取的Window实例
   let position = windowClass.globalDisplayToClient(100, 100);
   console.info(`Succeeded in converting in the position in global display to the position in the current window. Position: ` + JSON.stringify(position));
 } catch (exception) {
@@ -925,8 +930,8 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | ------------------------ |
-| width    | number                    | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大宽度限制，超出限制时自动修正为边界值。|
-| height   | number                    | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大高度限制，超出限制时自动修正为边界值。 |
+| width    | number                    | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。实际设置的大小受窗口配置的最小/最大宽度限制，超出限制时自动修正为边界值。|
+| height   | number                    | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。实际设置的大小受窗口配置的最小/最大高度限制，超出限制时自动修正为边界值。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。|
 
 **错误码：**
@@ -945,7 +950,7 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
+  // windowClass为已创建/获取的Window实例
   windowClass.resize(500, 1000, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -989,8 +994,8 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | -- | ------------------------ |
-| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大宽度限制，超出限制时自动修正为边界值。 |
-| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大高度限制，超出限制时自动修正为边界值。 |
+| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。实际设置的大小受窗口配置的最小/最大宽度限制，超出限制时自动修正为边界值。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。实际设置的大小受窗口配置的最小/最大高度限制，超出限制时自动修正为边界值。 |
 
 **返回值：**
 
@@ -1014,6 +1019,7 @@ resize(width: number, height: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.resize(500, 1000);
   promise.then(() => {
     console.info('Succeeded in changing the window size.');
@@ -1055,8 +1061,8 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | -- | ------------------------ |
-| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大宽度限制，超出限制时自动修正为边界值。 |
-| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码401）。实际设置的大小受窗口配置的最小/最大高度限制，超出限制时自动修正为边界值。 |
+| width  | number | 是 | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。实际设置的大小受窗口配置的最小/最大宽度限制，超出限制时自动修正为边界值。 |
+| height | number | 是 | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。实际设置的大小受窗口配置的最小/最大高度限制，超出限制时自动修正为边界值。 |
 
 **返回值：**
 
@@ -1082,7 +1088,7 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.resizeAsync(500, 1000);
   promise.then(() => {
     console.info('Succeeded in changing the window size.');
@@ -1124,6 +1130,7 @@ getWindowProperties(): WindowProperties
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let properties = windowClass.getWindowProperties();
 } catch (exception) {
   console.error(`Failed to obtain the window properties. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1159,6 +1166,7 @@ getWindowDensityInfo(): WindowDensityInfo
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let densityInfo = windowClass.getWindowDensityInfo();
 } catch (exception) {
   console.error(`Failed to obtain the window densityInfo. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1343,7 +1351,7 @@ getGlobalRect(): Rect
 
 ```ts
 try {
-  // windowClass通过getLastWindow()、createWindow()或findWindow()获取
+  // windowClass为已创建/获取的Window实例
   let rect = windowClass.getGlobalRect();
   console.info(`Succeeded in getting window rect: ` + JSON.stringify(rect));
 } catch (exception) {
@@ -1398,6 +1406,7 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 ```ts
 let type = window.AvoidAreaType.TYPE_SYSTEM;
 try {
+  // windowClass为已创建/获取的Window实例
   let avoidArea = windowClass.getWindowAvoidArea(type);
 } catch (exception) {
   console.error(`Failed to obtain the area. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1447,6 +1456,7 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 ```ts
 let type = window.AvoidAreaType.TYPE_SYSTEM;
 try {
+  // windowClass为已创建/获取的Window实例
   let avoidArea = windowClass.getWindowAvoidAreaIgnoringVisibility(type);
 } catch (exception) {
   console.error(`Failed to obtain the area. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1704,7 +1714,9 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 在OpenHarmony 5.0.2之前，该接口在所有设备中可正常调用。
 
-从OpenHarmony 5.0.2开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.2开始至OpenHarmony 5.1.1之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+从OpenHarmony 5.1.1开始，该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)调用不生效也不报错；在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -1778,7 +1790,9 @@ setImmersiveModeEnabledState(enabled: boolean): void
 
 在OpenHarmony 5.0.2之前，该接口在所有设备中可正常调用。
 
-从OpenHarmony 5.0.2开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.2开始至OpenHarmony 5.1.1之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+从OpenHarmony 5.1.1开始，该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)调用不生效也不报错；在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -1802,6 +1816,7 @@ setImmersiveModeEnabledState(enabled: boolean): void
 ```ts
 try {
   let enabled = false;
+  // windowClass为已创建/获取的Window实例
   windowClass.setImmersiveModeEnabledState(enabled);
 } catch (exception) {
   console.error(`Failed to set the window immersive mode enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1840,6 +1855,7 @@ getImmersiveModeEnabledState(): boolean
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let isEnabled = windowClass.getImmersiveModeEnabledState();
 } catch (exception) {
   console.error(`Failed to get the window immersive mode enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1889,6 +1905,7 @@ setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise\<void>
 ```ts
 try {
   let enabled = false;
+  // windowClass为已创建/获取的Window实例
   windowClass.setFloatNavigationAvoidAreaEnabled(enabled);
 } catch (exception) {
   console.error(`Failed to set the window float navigation avoid area enabled status. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1927,6 +1944,7 @@ isFloatNavigationAvoidAreaEnabled(): boolean
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let isEnabled = windowClass.isFloatNavigationAvoidAreaEnabled();
 } catch (exception) {
   console.error(`Failed to check if the window is enabled float navigation avoid area. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -1959,6 +1977,7 @@ isImmersiveLayout(): boolean
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let isEnabled = windowClass.isImmersiveLayout();
 } catch (exception) {
   console.error(`Failed to check if the window layout is in immersive mode. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -2000,6 +2019,7 @@ setWindowDelayRaiseOnDrag(isEnabled: boolean): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowDelayRaiseOnDrag(true);
 } catch (exception) {
   console.error(`Failed to set window delay raise. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -2301,7 +2321,7 @@ export default class EntryAbility extends UIAbility {
       let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -2540,6 +2560,7 @@ getWindowStateSnapshot(): Promise&lt;string&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.getWindowStateSnapshot().then((data) => {
     let jsonObj: Record<string, Object> = JSON.parse(data);
     console.info(`Succeeded, data=${data}, isPcMode=${jsonObj["isPcMode"]}`);
@@ -2564,7 +2585,7 @@ setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;voi
 **设备行为差异：**
 
 - 设备支持sensor旋转且未处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态：立即生效。
-- 设备支持sensor旋转且处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态：调用不生效不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效。
+- 设备支持sensor旋转且处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态：调用不生效不报错，切换到非自由窗口状态后生效。
 - 其他情况：不生效不报错。
 
 **参数：**
@@ -2922,6 +2943,7 @@ setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setUIContent('pages/page2/page3', (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -2973,6 +2995,7 @@ setUIContent(path: string): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setUIContent('pages/page2/page3');
   promise.then(() => {
     console.info('Succeeded in loading the content.');
@@ -3025,6 +3048,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
+// windowClass为已创建/获取的Window实例
 windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -3081,6 +3105,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.loadContent('pages/page2', storage);
 promise.then(() => {
   console.info('Succeeded in loading the content.');
@@ -3222,6 +3247,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import * as Index from '../pages/Index'; // 导入命名路由页面
 
 try {
+  // windowClass为已创建/获取的Window实例
   (windowClass as window.Window).loadContentByName(Index.entryName, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -3304,6 +3330,7 @@ import * as Index from '../pages/Index'; // 导入命名路由页面
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = (windowClass as window.Window).loadContentByName(Index.entryName, storage);
   promise.then(() => {
     console.info('Succeeded in loading the content.');
@@ -3365,6 +3392,7 @@ isWindowShowing(): boolean
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let data = windowClass.isWindowShowing();
   console.info('Succeeded in checking whether the window is showing. Data: ' + JSON.stringify(data));
 } catch (exception) {
@@ -3405,6 +3433,7 @@ on(type:  'windowSizeChange', callback: Callback&lt;Size&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('windowSizeChange', (data) => {
     console.info('Succeeded in enabling the listener for window size changes. Data: ' + JSON.stringify(data));
   });
@@ -3445,6 +3474,7 @@ const callback = (size: window.Size) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('windowSizeChange', callback);
   // 关闭指定callback的监听
@@ -3494,6 +3524,7 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('avoidAreaChange', (data) => {
     console.info('Succeeded in enabling the listener for system avoid area changes. type:' +
     JSON.stringify(data.type) + ', area: ' + JSON.stringify(data.area));
@@ -3539,6 +3570,7 @@ const callback = (data: Param) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('avoidAreaChange', callback);
 
   windowClass.off('avoidAreaChange', callback);
@@ -3580,6 +3612,7 @@ on(type: 'keyboardHeightChange', callback: Callback&lt;number&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardHeightChange', (data) => {
     console.info('Succeeded in enabling the listener for keyboard height changes. Data: ' + JSON.stringify(data));
   });
@@ -3622,6 +3655,7 @@ const callback = (height: number) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardHeightChange', callback);
 
   windowClass.off('keyboardHeightChange', callback);
@@ -3671,6 +3705,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   console.info(`Keyboard will show animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardWillShow', callback);
   console.info(`Register keyboard will show animation success`);
 } catch (exception) {
@@ -3715,6 +3750,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   console.info(`Keyboard will show animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardWillShow', callback);
   windowClass.off('keyboardWillShow', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -3764,6 +3800,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   console.info(`Keyboard will hide animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardWillHide', callback);
   console.info(`Register keyboard will hide animation success`);
 } catch (exception) {
@@ -3808,6 +3845,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   console.info(`Keyboard will hide animation. keyboardInfo: ` + JSON.stringify(keyboardInfo));
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardWillHide', callback);
   windowClass.off('keyboardWillHide', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -3854,6 +3892,7 @@ on(type: 'keyboardDidShow', callback: Callback&lt;KeyboardInfo&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardDidShow', (keyboardInfo) => {
     console.info('keyboard show animation completion. keyboardInfo: ' + JSON.stringify(keyboardInfo));
   });
@@ -3899,6 +3938,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardDidShow', callback);
   windowClass.off('keyboardDidShow', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -3944,6 +3984,7 @@ on(type: 'keyboardDidHide', callback: Callback&lt;KeyboardInfo&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardDidHide', (keyboardInfo) => {
     console.info('keyboard hide animation completion. keyboardInfo: ' + JSON.stringify(keyboardInfo));
   });
@@ -3989,6 +4030,7 @@ const callback = (keyboardInfo: window.KeyboardInfo) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('keyboardDidHide', callback);
   windowClass.off('keyboardDidHide', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -4027,6 +4069,7 @@ on(type: 'touchOutside', callback: Callback&lt;void&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('touchOutside', () => {
     console.info('touch outside');
   });
@@ -4067,6 +4110,7 @@ const callback = () => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('touchOutside', callback);
   windowClass.off('touchOutside', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -4105,6 +4149,7 @@ on(type: 'screenshot', callback: Callback&lt;void&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('screenshot', () => {
     console.info('screenshot happened');
   });
@@ -4145,6 +4190,7 @@ let callback = () => {
   console.info('screenshot happened');
 };
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('screenshot', callback);
   windowClass.off('screenshot', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -4185,6 +4231,7 @@ const callback = (eventType: window.ScreenshotEventType) => {
   console.info(`screenshotAppEvent happened. Event: ${eventType}`);
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('screenshotAppEvent', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -4212,7 +4259,7 @@ off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;):
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4222,6 +4269,7 @@ const callback = (eventType: window.ScreenshotEventType) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('screenshotAppEvent', callback);
   // 关闭指定callback的监听
@@ -4262,6 +4310,7 @@ on(type: 'dialogTargetTouch', callback: Callback&lt;void&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('dialogTargetTouch', () => {
     console.info('touch dialog target');
   });
@@ -4302,6 +4351,7 @@ const callback = () => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('dialogTargetTouch', callback);
   windowClass.off('dialogTargetTouch', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -4340,6 +4390,7 @@ on(type: 'windowEvent', callback: Callback&lt;WindowEventType&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('windowEvent', (data) => {
     console.info('Window event happened. Event:' + JSON.stringify(data));
   });
@@ -4380,6 +4431,7 @@ const callback = (windowEventType: window.WindowEventType) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('windowEvent', callback);
   // 关闭指定callback的监听
@@ -4422,6 +4474,7 @@ on(type: 'displayIdChange', callback: Callback&lt;number&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('displayIdChange', (data) => {
     console.info('Window displayId changed, displayId=' + JSON.stringify(data));
   });
@@ -4454,7 +4507,7 @@ off(type: 'displayIdChange', callback?: Callback&lt;number&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
@@ -4463,6 +4516,7 @@ const callback = (displayId: number) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('displayIdChange', callback);
   // 关闭指定callback的监听
@@ -4510,6 +4564,7 @@ on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('windowVisibilityChange', (boolean) => {
     console.info('Window visibility changed, isVisible=' + boolean);
   });
@@ -4543,7 +4598,7 @@ off(type: 'windowVisibilityChange', callback?: Callback&lt;boolean&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4553,6 +4608,7 @@ const callback = (bool: boolean) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('windowVisibilityChange', callback);
   // 关闭指定callback的监听
@@ -4600,6 +4656,7 @@ try {
   let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
     console.info(`Window occlusion state changed: ${data}`);
   };
+  // windowClass为已创建/获取的Window实例
   windowClass.on('occlusionStateChanged', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -4628,7 +4685,7 @@ off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): v
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4638,6 +4695,7 @@ try {
   let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
     console.info(`Window occlusion state changed: ${data}`);
   };
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('occlusionStateChanged', callback);
   // 关闭指定callback的监听
@@ -4682,6 +4740,7 @@ try {
   let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
     console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
   };
+  // windowClass为已创建/获取的Window实例
   windowClass.on('frameMetricsMeasured', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -4710,7 +4769,7 @@ off(type: 'frameMetricsMeasured', callback?: Callback&lt;FrameMetrics&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
@@ -4719,6 +4778,7 @@ try {
   let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
     console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
   };
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('frameMetricsMeasured', callback);
   // 关闭指定callback的监听
@@ -4770,6 +4830,7 @@ const callback = (density: number) => {
   let px = vp * density;
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('systemDensityChange', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -4802,7 +4863,7 @@ off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
@@ -4811,6 +4872,7 @@ const callback = (density: number) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('systemDensityChange', callback);
   // 关闭指定callback的监听
@@ -4855,6 +4917,7 @@ on(type: 'noInteractionDetected', timeout: number, callback: Callback&lt;void&gt
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('noInteractionDetected', 60, () => {
     console.info('no interaction in 60s');
   });
@@ -4888,7 +4951,7 @@ off(type: 'noInteractionDetected', callback?: Callback&lt;void&gt;): void
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -4898,6 +4961,7 @@ const callback = () => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('noInteractionDetected', 60, callback);
   windowClass.off('noInteractionDetected', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -4943,6 +5007,7 @@ on(type:  'windowStatusChange', callback: Callback&lt;WindowStatusType&gt;): voi
 
 ```ts
 try {
+    // windowClass为已创建/获取的Window实例
     windowClass.on('windowStatusChange', (WindowStatusType) => {
         console.info('Succeeded in enabling the listener for window status changes. Data: ' + JSON.stringify(WindowStatusType));
     });
@@ -4984,6 +5049,7 @@ const callback = (windowStatusType: window.WindowStatusType) => {
     // ...
 }
 try {
+    // windowClass为已创建/获取的Window实例
     windowClass.on('windowStatusChange', callback);
     windowClass.off('windowStatusChange', callback);
     // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -5021,6 +5087,7 @@ on(type: 'windowStatusDidChange', callback: Callback&lt;WindowStatusType&gt;): v
 
 ```ts
 try {
+    // windowClass为已创建/获取的Window实例
     windowClass.on('windowStatusDidChange', (WindowStatusType) => {
         console.info(`Succeeded in enabling the listener for window status changes. Data: ${JSON.stringify(WindowStatusType)}`);
     });
@@ -5051,7 +5118,7 @@ off(type: 'windowStatusDidChange', callback?: Callback&lt;WindowStatusType&gt;):
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
@@ -5060,6 +5127,7 @@ const callback = (windowStatusType: window.WindowStatusType) => {
     // ...
 }
 try {
+    // windowClass为已创建/获取的Window实例
     windowClass.on('windowStatusDidChange', callback);
     windowClass.off('windowStatusDidChange', callback);
     // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -5107,6 +5175,7 @@ setWindowGrayScale(grayScale: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass?.setUIContent('pages/Index', (error: BusinessError) => {
   if (error.code) {
     console.error(`Failed to set the content. Cause code: ${error.code}`);
@@ -5159,6 +5228,7 @@ on(type: 'windowTitleButtonRectChange', callback: Callback&lt;TitleButtonRect&gt
 **示例：**
 
 ```ts
+// windowClass为已创建/获取的Window实例
 windowClass.setUIContent('pages/WindowPage').then(() => {
   try {
     windowClass?.on('windowTitleButtonRectChange', (titleButtonRect) => {
@@ -5195,11 +5265,12 @@ off(type: 'windowTitleButtonRectChange', callback?: Callback&lt;TitleButtonRect&
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created. |
 
 **示例：**
 
 ```ts
+// windowClass为已创建/获取的Window实例
 windowClass.setUIContent('pages/WindowPage').then(() => {
     const callback = (titleButtonRect: window.TitleButtonRect) => {
         // ...
@@ -5249,6 +5320,7 @@ on(type:  'windowRectChange', callback: Callback&lt;RectChangeOptions&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('windowRectChange', (data: window.RectChangeOptions) => {
       console.info(`Succeeded in enabling the listener for window rect changes. Data: ${JSON.stringify(data)}`);
   });
@@ -5282,7 +5354,7 @@ off(type: 'windowRectChange', callback?: Callback&lt;RectChangeOptions&gt;): voi
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5293,6 +5365,7 @@ const callback = (rectChangeOptions: window.RectChangeOptions) => {
 }
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('windowRectChange', callback);
   windowClass.off('windowRectChange', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -5335,6 +5408,7 @@ const callback = (rectChangeOptions: window.RectChangeOptions) => {
 }
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('rectChangeInGlobalDisplay', callback);
 } catch (exception) {
   console.error(`Failed to enable the listener for window rect changes in global display. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -5363,7 +5437,7 @@ off(type: 'rectChangeInGlobalDisplay', callback?: Callback&lt;RectChangeOptions&
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5374,6 +5448,7 @@ const callback = (rectChangeOptions: window.RectChangeOptions) => {
 }
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('rectChangeInGlobalDisplay', callback);
   windowClass.off('rectChangeInGlobalDisplay', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -5428,6 +5503,7 @@ const callback = () => {
   return true;
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('subWindowClose', callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -5459,7 +5535,7 @@ off(type: 'subWindowClose', callback?: Callback&lt;void&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported. |
 
 **示例：**
@@ -5470,6 +5546,7 @@ const callback = () => {
   return true;
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('subWindowClose', callback);
   windowClass.off('subWindowClose', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -5575,7 +5652,7 @@ off(type: 'windowWillClose', callback?: Callback&lt;void, Promise&lt;boolean&gt;
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Not called from mainWindow or subWindow. |
 
 **示例：**
@@ -5635,13 +5712,14 @@ on(type: 'windowHighlightChange', callback: Callback&lt;boolean&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('windowHighlightChange', (data: boolean) => {
     console.info(`Window highlight Change: ${data}`);
   });
@@ -5675,7 +5753,7 @@ off(type: 'windowHighlightChange', callback?: Callback&lt;boolean&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5685,12 +5763,101 @@ const callback = (data: boolean) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('windowHighlightChange', callback);
   // 关闭指定callback的监听
   windowClass.off('windowHighlightChange', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听：
   windowClass.off('windowHighlightChange');
+} catch (exception) {
+  console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## onWindowFocusStateChange
+
+onWindowFocusStateChange(callback: Callback&lt;WindowFocusState&gt;): void
+
+开启窗口焦点状态变化事件的监听。当窗口焦点状态发生变化时，会触发回调，返回窗口的焦点状态变化信息。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 是 | 回调函数。返回窗口的焦点状态变化信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (data: window.WindowFocusState) => {
+  console.info(`Window focus state changed. isFocused: ${data.isFocused}, focusChangeReason: ${data.focusChangeReason}`);
+}
+try {
+  // 通过onWindowFocusStateChange接口开启监听
+  windowClass.onWindowFocusStateChange(callback);
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offWindowFocusStateChange
+
+offWindowFocusStateChange(callback?: Callback&lt;WindowFocusState&gt;): void
+
+关闭窗口焦点状态变化事件的监听。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 否 | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭该窗口的所有监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (data: window.WindowFocusState) => {
+  // ...
+}
+try {
+  // 通过onWindowFocusStateChange接口开启监听
+  windowClass.onWindowFocusStateChange(callback);
+  // 关闭指定callback的监听
+  windowClass.offWindowFocusStateChange(callback);
+  // 如果通过onWindowFocusStateChange接口开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offWindowFocusStateChange();
 } catch (exception) {
   console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
@@ -5841,7 +6008,7 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5852,6 +6019,7 @@ const callback = (info: window.RotationChangeInfo): window.RotationChangeResult 
   return;
 }
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.off('rotationChange', callback);
   // 如果通过on开启多个callback进行监听，同时关闭所有监听。
   windowClass.off('rotationChange');
@@ -5891,6 +6059,7 @@ on(eventType: 'uiExtensionSecureLimitChange', callback: Callback&lt;boolean&gt;)
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('uiExtensionSecureLimitChange', (data: boolean) => {
     console.info(`Window secure limit Change: ${data}`);
   });
@@ -5923,7 +6092,7 @@ off(eventType: 'uiExtensionSecureLimitChange', callback?: Callback&lt;boolean&gt
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Function off('uiExtensionSecureLimitChange') cannot work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -5933,6 +6102,7 @@ const callback = (data: boolean) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('uiExtensionSecureLimitChange', callback);
   // 关闭指定callback的监听
@@ -5973,6 +6143,7 @@ isWindowSupportWideGamut(callback: AsyncCallback&lt;boolean&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.isWindowSupportWideGamut((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -6012,6 +6183,7 @@ isWindowSupportWideGamut(): Promise&lt;boolean&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.isWindowSupportWideGamut();
 promise.then((data) => {
   console.info(`Succeeded in checking whether the window support WideGamut. Data: ${data}`);
@@ -6052,6 +6224,7 @@ setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;):
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6102,6 +6275,7 @@ setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowColorSpace(window.ColorSpace.WIDE_GAMUT);
   promise.then(() => {
     console.info('Succeeded in setting window colorspace.');
@@ -6143,6 +6317,7 @@ getWindowColorSpace(): ColorSpace
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let colorSpace = windowClass.getWindowColorSpace();
   console.info(`Succeeded in getting the window color space. ColorSpace: ${colorSpace}`);
 } catch (exception) {
@@ -6186,6 +6361,7 @@ import { ColorMetrics } from '@kit.ArkUI';
 
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
+// windowClass为已创建/获取的Window实例
 windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   let errCode: number = err.code;
   if (errCode) {
@@ -6289,18 +6465,18 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 
 设置主窗口亮度只会影响当前设备内置屏的屏幕亮度，无法修改外接屏、[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)（如投屏所在的屏幕）的屏幕亮度（内置屏和外接屏具体请见[实体屏](../../displaymanager/display-terminology.md#实体屏)）。
 
-当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
-
-当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
+不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
 
 **设备行为差异：**
 - 针对TV设备：当前接口不生效也不报错。
 - 针对非2in1设备（不包含TV设备）：
+  - 当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
+  - 当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。
   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
 - 针对2in1设备：
   - 在OpenHarmony 5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
-  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度，但不支持通过本接口设置为-1来恢复系统屏幕亮度，传入-1时不生效也不报错，并且已设置的系统屏幕亮度在当前窗口退后台后也依然生效，不会恢复成设置前的屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6375,18 +6551,18 @@ setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
 设置主窗口亮度只会影响当前设备内置屏的屏幕亮度，无法修改外接屏、[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)（如投屏所在的屏幕）的屏幕亮度（内置屏和外接屏具体请见[实体屏](../../displaymanager/display-terminology.md#实体屏)）。
 
-当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
-
-当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
+不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
 
 **设备行为差异：**
 - 针对TV设备：当前接口不生效也不报错。
 - 针对非2in1设备（不包含TV设备）：
+  - 当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
+  - 当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。
   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
 - 针对2in1设备：
   - 在OpenHarmony 5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
-  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+  - 从OpenHarmony 5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度，但不支持通过本接口设置为-1来恢复系统屏幕亮度，传入-1时不生效也不报错，并且已设置的系统屏幕亮度在当前窗口退后台后也依然生效，不会恢复成设置前的屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6492,6 +6668,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isFocusable: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowFocusable(isFocusable, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6546,6 +6723,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isFocusable: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowFocusable(isFocusable);
   promise.then(() => {
     console.info('Succeeded in setting the window to be focusable.');
@@ -6593,6 +6771,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isKeepScreenOn: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowKeepScreenOn(isKeepScreenOn, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6647,6 +6826,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isKeepScreenOn: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowKeepScreenOn(isKeepScreenOn);
   promise.then(() => {
     console.info('Succeeded in setting the screen to be always on.');
@@ -6699,6 +6879,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isPrivacyMode: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowPrivacyMode(isPrivacyMode, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6758,6 +6939,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isPrivacyMode: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowPrivacyMode(isPrivacyMode);
   promise.then(() => {
     console.info('Succeeded in setting the window to privacy mode.');
@@ -6805,6 +6987,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable = true;
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowTouchable(isTouchable, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
@@ -6859,6 +7042,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowTouchable(isTouchable);
   promise.then(() => {
     console.info('Succeeded in setting the window to be touchable.');
@@ -6900,6 +7084,7 @@ snapshot(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.snapshot((err: BusinessError, pixelMap: image.PixelMap) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -6941,6 +7126,7 @@ snapshot(): Promise&lt;image.PixelMap&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.snapshot();
 promise.then((pixelMap: image.PixelMap) => {
   console.info('Succeeded in snapshotting window. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -6983,6 +7169,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let pixelMap = windowClass.snapshotSync();
   console.info(`Succeeded in snapshotting window`);
   pixelMap.release(); // PixelMap使用完后及时释放内存
@@ -7022,6 +7209,7 @@ snapshotIgnorePrivacy(): Promise&lt;image.PixelMap&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.snapshotIgnorePrivacy();
 promise.then((pixelMap: image.PixelMap) => {
   console.info('Succeeded in snapshotting window. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -7374,6 +7562,10 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 
 该接口仅支持主窗口、子窗口或全局悬浮窗，其他窗口调用返回1300002错误码，使用callback异步回调。
 
+> **说明：**
+>
+> - 当窗口已创建且未处于前台状态时，调用该接口不生效不报错。建议在调用该接口前确保窗口已创建并处于前台状态。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -7399,6 +7591,7 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.minimize((err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -7420,6 +7613,10 @@ minimize(): Promise&lt;void&gt;
 - 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，可以使用[showWindow()](#showwindow9)进行还原。
 
 该接口仅支持主窗口、子窗口或全局悬浮窗，其他窗口调用返回1300002错误码，使用Promise异步回调。
+
+> **说明：**
+>
+> - 当窗口已创建且未处于前台状态时，调用该接口不生效不报错。建议在调用该接口前确保窗口已创建并处于前台状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7446,6 +7643,7 @@ minimize(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.minimize();
 promise.then(() => {
   console.info('Succeeded in minimizing the window.');
@@ -7700,6 +7898,7 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 ```ts
 try {
   let enabled = false;
+  // windowClass为已创建/获取的Window实例
   windowClass.setResizeByDragEnabled(enabled, (err) => {
     if (err.code) {
       console.error(`Failed to set the function of disabling the resize by drag window. Cause code: ${err.code}, message: ${err.message}`);
@@ -7755,6 +7954,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let enabled = false;
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setResizeByDragEnabled(enabled);
   promise.then(() => {
     console.info(`Succeeded in setting the function of disabling the resize by drag window.`);
@@ -8129,6 +8329,7 @@ getWindowLimits(): WindowLimits
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let windowLimits = windowClass.getWindowLimits();
 } catch (exception) {
   console.error(`Failed to obtain the window limits of window. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -8164,6 +8365,7 @@ getWindowLimitsVP(): WindowLimits
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let windowLimits: window.WindowLimits = windowClass.getWindowLimitsVP();
 } catch (exception) {
   console.error(`Failed to obtain the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -8225,6 +8427,7 @@ try {
     minWidth: 500,
     minHeight: 400
   };
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowLimits(windowLimits);
     promise.then((data) => {
     console.info('Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
@@ -8300,6 +8503,7 @@ try {
     minWidth: 100,
     minHeight: 100
   };
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowLimits(windowLimits, true);
   promise.then((data) => {
     console.info(`Succeeded in changing the window limits. Cause: ${JSON.stringify(data)}`);
@@ -8356,6 +8560,7 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
+  // windowClass为已创建/获取的Window实例
   let maskWidth = windowClass.getWindowProperties().windowRect.width;
   let maskHeight = windowClass.getWindowProperties().windowRect.height;
   let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
@@ -8423,6 +8628,7 @@ setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: number, maskHeight: nu
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
+  // windowClass为已创建/获取的Window实例
   let maskWidth = windowClass.getWindowProperties().windowRect.width;
   let maskHeight = windowClass.getWindowProperties().windowRect.height;
   let windowMask = new Uint8Array(maskWidth * maskHeight);
@@ -8473,6 +8679,7 @@ clearWindowMask(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
+  // windowClass为已创建/获取的Window实例
   let maskWidth = windowClass.getWindowProperties().windowRect.width;
   let maskHeight = windowClass.getWindowProperties().windowRect.height;
   let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
@@ -8550,6 +8757,7 @@ const touchableRects: Array<window.Rect> = [
   { left: 0, top: 50, width: 150, height: 200 }
 ];
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setTouchableAreas(touchableRects).then(() => {
     console.info('Succeeded in setting the touchable areas.');
   }).catch((err: BusinessError) => {
@@ -8591,6 +8799,7 @@ keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.keepKeyboardOnFocus(true);
 } catch (exception) {
   console.error(`Failed to keep keyboard onFocus. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -8634,6 +8843,7 @@ setWindowDecorVisible(isVisible: boolean): void
 import { BusinessError } from '@kit.BasicServicesKit';
 let storage: LocalStorage = new LocalStorage();
 storage.setOrCreate('storageSimpleProp', 121);
+// windowClass为已创建/获取的Window实例
 windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
   let errCode: number = err.code;
   if (errCode) {
@@ -8682,6 +8892,7 @@ getWindowDecorVisible(): boolean
 
 ```ts
 let isVisible: boolean | undefined = undefined;
+// windowClass为已创建/获取的Window实例
 windowClass.setUIContent('pages/WindowPage').then(() => {
   try {
     isVisible = windowClass?.getWindowDecorVisible();
@@ -8743,6 +8954,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let title = "title";
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowTitle(title).then(() => {
     console.info('Succeeded in setting the window title.');
   }).catch((err: BusinessError) => {
@@ -8888,7 +9100,7 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void
 
 当子窗口模态类型为[WINDOW_MODALITY](arkts-apis-window-e.md#modalitytype14)时，其父级窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态类型被禁用。
 
-当子窗口模态类型为[APPLICATION_MODALITY](arkts-apis-window-e.md#modalitytype14)时，其父级窗口与该应用其他实例的窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态类型被禁用。
+当子窗口模态类型为[APPLICATION_MODALITY](arkts-apis-window-e.md#modalitytype14)时，其父级窗口与所在应用进程下的其他主窗口及其他主窗口的子窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态类型被禁用。
 
 此接口仅支持设置子窗口模态类型，当需要禁用子窗口模态属性时，建议使用[setSubWindowModal<sup>12+</sup>](#setsubwindowmodal12)。
 
@@ -8994,6 +9206,7 @@ setWindowDecorHeight(height: number): void
 **示例：**
 
 ```ts
+// windowClass为已创建/获取的Window实例
 windowClass.setUIContent('pages/WindowPage').then(() => {
   let height: number = 50;
   try {
@@ -9107,6 +9320,7 @@ getDecorButtonStyle(): DecorButtonStyle
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let decorButtonStyle = windowClass.getDecorButtonStyle();
   console.info(`Succeeded in getting the style of button. Data: ${JSON.stringify(decorButtonStyle)}`);
 } catch (exception) {
@@ -9146,6 +9360,7 @@ getWindowDecorHeight(): number
 **示例：**
 
 ```ts
+// windowClass为已创建/获取的Window实例
 windowClass.setUIContent('pages/WindowPage').then(() => {
   try {
     let height = windowClass?.getWindowDecorHeight();
@@ -9245,6 +9460,7 @@ getWindowStatus(): WindowStatusType
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let windowStatusType = windowClass.getWindowStatus();
 } catch (exception) {
   console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -9351,6 +9567,7 @@ isFocused(): boolean
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let focus = windowClass.isFocused();
   console.info(`Succeeded in checking whether the window is focused. Data: ${focus}`);
 } catch (exception) {
@@ -9397,7 +9614,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and cannot be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and cannot be created again; 4. It is not allowed to create non-secure window when secure extension exists; 5. The parent window and the subwindow are not created by the same process; 6. Subwindow level exceeds the maximum limit. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows, subwindows, and floating windows are supported; 2. When SubWindowOptions.zLevelAboveParentLoosened is true, only main windows are supported. |
 
@@ -9412,6 +9629,7 @@ try {
     decorEnabled: true,
     isModal: true
   };
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.createSubWindowWithOptions('mySubWindow', options);
   promise.then((data) => {
     console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
@@ -10085,6 +10303,7 @@ enableDrag(enable: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.enableDrag(true).then(() => {
     console.info('succeeded in setting window draggable');
   }).catch((err: BusinessError) => {
@@ -10517,6 +10736,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let enabled = false;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setSeparationTouchEnabled(enabled);
   promise.then(() => {
     console.info('Succeeded in setting the window to be separationTouchEnabled.');
@@ -10561,6 +10781,7 @@ isSeparationTouchEnabled():boolean
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let isSeparationTouchEnabled = windowClass.isSeparationTouchEnabled();
   console.info(`Succeeded in getting the window separationTouchEnabled status: ${isSeparationTouchEnabled}`);
 } catch (exception) {
@@ -10611,6 +10832,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let enabled = false;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setReceiveDragEventEnabled(enabled);
   promise.then(() => {
     console.info('Succeeded in setting the window to be WindowReceiveDragEventEnabled.');
@@ -10655,6 +10877,7 @@ isReceiveDragEventEnabled():boolean
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let isReceiveDragEventEnabled = windowClass.isReceiveDragEventEnabled();
   console.info(`Succeeded in getting the window receiveDragEvent status: ${isReceiveDragEventEnabled}`);
 } catch (exception) {
@@ -10699,6 +10922,7 @@ setWindowShadowRadius(radius: number): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.setWindowShadowRadius(4.0);
 } catch (exception) {
   console.error(`Failed to set shadow. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -10755,6 +10979,7 @@ setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setWindowCornerRadius(1.0);
   promise.then(() => {
     console.info('Succeeded in setting window corner radius.');
@@ -10803,6 +11028,7 @@ getWindowCornerRadius(): number
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let cornerRadius = windowClass.getWindowCornerRadius();
 } catch (exception) {
   console.error(`Failed to get corner radius. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -10852,6 +11078,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let exclusivelyHighlighted: boolean = true;
 try {
+  // windowClass为已创建/获取的Window实例
   let promise = windowClass.setExclusivelyHighlighted(exclusivelyHighlighted);
   promise.then(() => {
     console.info('Succeeded in setting the window to be exclusively highlight.');
@@ -10896,6 +11123,7 @@ isWindowHighlighted(): boolean
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // windowClass为已创建/获取的Window实例
   let isHighlighted = windowClass.isWindowHighlighted();
   console.info(`Succeeded in getting the window highlight status: ${isHighlighted}`);
 } catch (exception) {
@@ -10972,13 +11200,13 @@ setFollowParentWindowLayoutEnabled(enabled: boolean): Promise&lt;void&gt;
 
 设置子窗或模态窗口（即WindowType为TYPE_DIALOG的窗口）的布局信息（position和size）是否跟随主窗，使用Promise异步回调。
 
-1、只支持主窗的一级子窗或模态窗口使用该接口。其中非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口时，将返回1300004错误码。
+1. 只支持主窗的一级子窗或模态窗口使用该接口。其中非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口时，将返回1300004错误码。
 
-2、当子窗或模态窗口调用该接口后，立即使其布局信息与主窗完全一致并保持，除非传入false再次调用该接口，否则效果将持续。
+2. 当子窗或模态窗口调用该接口后，立即使其布局信息与主窗完全一致并保持，除非传入false再次调用该接口，否则效果将持续。
 
-3、当子窗或模态窗口调用该接口后，再调用moveTo、resize等修改布局信息的接口将不生效。
+3. 当子窗或模态窗口调用该接口后，再调用moveTo、resize等修改布局信息的接口将不生效。
 
-4、当子窗或模态窗口不再使用该功能后，不保证子窗或模态窗口的布局信息（position和size）为确定的值，需要应用重新进行设置。
+4. 当子窗或模态窗口不再使用该功能后，不保证子窗或模态窗口的布局信息（position和size）为确定的值，需要应用重新进行设置。
 
 该接口调用生效后，[setRelativePositionToParentWindowEnabled()](#setrelativepositiontoparentwindowenabled20)接口调用不生效。
 
@@ -11170,7 +11398,7 @@ setWindowTransitionAnimation(transitionType: WindowTransitionType, animation: Tr
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.                              |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally.                                                                     |
-| 1300004 | Unauthorized operation.                                                                                           |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                                                                                          |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter length.                         |
 
 **示例：**
@@ -11253,7 +11481,7 @@ getWindowTransitionAnimation(transitionType: WindowTransitionType): TransitionAn
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities.                                |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.   |
 | 1300003 | This window manager service works abnormally.                                                                       |
-| 1300004 | Unauthorized operation.                                                                                             |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.                                                                                             |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range.                                                        |
 
 **示例：**
@@ -11448,6 +11676,7 @@ isInFreeWindowMode(): boolean
 **示例：**
 
 ```ts
+// windowClass为已创建/获取的Window实例
 let isInFreeWindowMode: boolean = windowClass.isInFreeWindowMode();
 console.info(`isInFreeWindowMode: ${isInFreeWindowMode}`);
 ```
@@ -11482,6 +11711,7 @@ on(type: 'freeWindowModeChange', callback: Callback&lt;boolean&gt;): void
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.on('freeWindowModeChange', (data) => {
     console.info('Succeeded in enabling the listener for free window mode changes. Data: ' + JSON.stringify(data));
   });
@@ -11513,7 +11743,7 @@ off(type: 'freeWindowModeChange', callback?: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created. |
 | 1300003  | This window manager service works abnormally.        |
 
 **示例：**
@@ -11523,6 +11753,7 @@ const callback = (isInFreeWindowMode: boolean) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.on('freeWindowModeChange', callback);
   // 关闭指定callback的监听
@@ -11572,6 +11803,7 @@ isInWindowPostureMode(mode: WindowPostureMode): boolean
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   let isInDesktopMode: boolean = windowClass.isInWindowPostureMode(window.WindowPostureMode.DESKTOP_MODE);
   console.info(`isInDesktopMode: ${isInDesktopMode}`);
 } catch (exception) {
@@ -11612,6 +11844,7 @@ onWindowPostureModeChange(mode: WindowPostureMode, callback: Callback&lt;boolean
 
 ```ts
 try {
+  // windowClass为已创建/获取的Window实例
   windowClass.onWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, (isInDesktopMode: boolean) => {
     console.info(`Succeeded in enabling the listener for window posture mode changes. isInDesktopMode: ${isInDesktopMode}`);
   });
@@ -11656,11 +11889,12 @@ const callback = (isInDesktopMode: boolean) => {
   // ...
 }
 try {
+  // windowClass为已创建/获取的Window实例
   // 通过on接口开启监听
   windowClass.onWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
   // 关闭指定callback的监听
   windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE, callback);
-  // 如果通过on开启多个callback进行监听，同时关闭所有监听
+  // 如果通过onWindowPostureModeChange接口开启多个callback进行监听，同时关闭所有监听
   windowClass.offWindowPostureModeChange(window.WindowPostureMode.DESKTOP_MODE);
 } catch (exception) {
   console.error(`Failed to disable the listener for window posture mode change. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -11681,12 +11915,12 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 >
 >  ![orientationAndRotation](figures/orientationAndRotation.PNG)
 >
-  | 屏幕角度 | 屏幕方向 | 窗口方向 |
-  | -------  | ------- | ------- |
-  | 0        | PORTRAIT  | PORTRAIT   |
-  | 90       | LANDSCAPE | LANDSCAPE_INVERTED |
-  | 180      | PORTRAIT_INVERTED | PORTRAIT_INVERTED |
-  | 270      | LANDSCAPE_INVERTED | LANDSCAPE |
+  | value | WINDOW_ORIENTATION<br>（窗口方向） | DISPLAY_ORIENTATION<br>（屏幕方向） | DISPLAY_ROTATION<br>（屏幕角度） |
+  | ----- | ---------------------------------- | ----------------------------------- | --------------------------------- |
+  | 0     | 竖屏（PORTRAIT）                   | 竖屏（PORTRAIT）                    | 顺时针旋转0°                      |
+  | 1     | 反向横屏（LANDSCAPE_INVERTED）     | 横屏（LANDSCAPE）                   | 顺时针旋转90°                     |
+  | 2     | 反向竖屏（PORTRAIT_INVERTED）      | 反向竖屏（PORTRAIT_INVERTED）       | 顺时针旋转180°                    |
+  | 3     | 横屏（LANDSCAPE）                  | 反向横屏（LANDSCAPE_INVERTED）      | 顺时针旋转270°                    |
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -11698,13 +11932,13 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 | -------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | from     | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 待转换的值的类型。 |
 | to       | [RotationInfoType](arkts-apis-window-e.md#rotationinfotype23)  | 是   | 目标值的类型。 |
-| value    | number               | 是   | 待转换的值。该参数为整数，浮点数输入将向下取整，取值范围为[0, 3]，范围外为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。|
+| value    | number               | 是   | 待转换的值。该参数为整数，浮点数输入将向下取整，取值范围为[0, 3]，范围外为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。值的含义取决于参数from的类型，具体对应关系详见上文表格。|
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| number | 返回目标类型的转换值。 |
+| number | 返回目标类型的转换值，该参数为整数，取值范围为[0, 3]。值的含义取决于参数to的类型，具体对应关系详见上文表格。 |
 
 **错误码：**
 
@@ -11723,6 +11957,7 @@ try {
   let originalValue: number = 0;
   let fromType: window.RotationInfoType = window.RotationInfoType.WINDOW_ORIENTATION;
   let toType: window.RotationInfoType = window.RotationInfoType.DISPLAY_ORIENTATION;
+  // windowClass为已创建/获取的Window实例
   let convertedValue: number = windowClass.convertOrientationAndRotation(fromType, toType, originalValue);
   console.info(`Convert ${originalValue} of type: ${fromType} to ${convertedValue} of type: ${toType}`);
 } catch (exception) {
@@ -11787,7 +12022,7 @@ export default class EntryAbility extends UIAbility {
       let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -11902,7 +12137,9 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 在OpenHarmony 5.0.2之前，该接口在所有设备中可正常调用。
 
-从OpenHarmony 5.0.2开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.2开始至OpenHarmony 5.1.1之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+从OpenHarmony 5.1.1开始，该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)调用不生效也不报错；在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -11982,6 +12219,7 @@ show(callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.show((err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12015,6 +12253,7 @@ show(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.show();
 promise.then(() => {
   console.info('Succeeded in showing the window.');
@@ -12046,6 +12285,7 @@ destroy(callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.destroy((err: BusinessError) => {
   const errCode: number = err.code;
   if (err.code) {
@@ -12079,6 +12319,7 @@ destroy(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.destroy();
 promise.then(() => {
   console.info('Succeeded in destroying the window.');
@@ -12114,6 +12355,7 @@ moveTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.moveTo(300, 300, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12156,6 +12398,7 @@ moveTo(x: number, y: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.moveTo(300, 300);
 promise.then(() => {
   console.info('Succeeded in moving the window.');
@@ -12194,8 +12437,8 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名   | 类型                      | 必填 | 说明                       |
 | -------- | ------------------------- | ---- | -------------------------- |
-| width    | number                    | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
-| height   | number                    | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
+| width    | number                    | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
+| height   | number                    | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。                 |
 
 **示例：**
@@ -12203,6 +12446,7 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.resetSize(500, 1000, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12243,8 +12487,8 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| width  | number | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
-| height | number | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-参数检查失败)）。 |
+| width  | number | 是   | 当前窗口的目标宽度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
+| height | number | 是   | 当前窗口的目标高度，单位为px，该参数仅支持整数输入，浮点数输入将向下取整，负值为非法参数（抛出错误码[401](../errorcode-universal.md#401-函数参数数量或参数类型不匹配)）。 |
 
 **返回值：**
 
@@ -12257,6 +12501,7 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.resetSize(500, 1000);
 promise.then(() => {
   console.info('Succeeded in changing the window size.');
@@ -12288,6 +12533,7 @@ getProperties(callback: AsyncCallback&lt;WindowProperties&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.getProperties((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12321,6 +12567,7 @@ getProperties(): Promise&lt;WindowProperties&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.getProperties();
 promise.then((data) => {
   console.info('Succeeded in obtaining the window properties. Data: ' + JSON.stringify(data));
@@ -12358,6 +12605,7 @@ getAvoidArea(type: AvoidAreaType, callback: AsyncCallback&lt;AvoidArea&gt;): voi
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let type = window.AvoidAreaType.TYPE_SYSTEM;
+// windowClass为已创建/获取的Window实例
 windowClass.getAvoidArea(type, (err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12402,6 +12650,7 @@ getAvoidArea(type: AvoidAreaType): Promise&lt;AvoidArea&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let type = window.AvoidAreaType.TYPE_SYSTEM;
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.getAvoidArea(type);
 promise.then((data) => {
   console.info('Succeeded in obtaining the area. Data:' + JSON.stringify(data));
@@ -12805,7 +13054,7 @@ export default class EntryAbility extends UIAbility {
       let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -12871,7 +13120,7 @@ export default class EntryAbility extends UIAbility {
       let systemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        // 以下两个属性从API Version8开始支持
+        // 以下两个属性从API version 8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -12914,6 +13163,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.loadContent('pages/page2/page3', (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -12957,6 +13207,7 @@ loadContent(path: string): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.loadContent('pages/page2/page3');
 promise.then(() => {
   console.info('Succeeded in loading the content.');
@@ -12988,6 +13239,7 @@ isShowing(callback: AsyncCallback&lt;boolean&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.isShowing((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13021,6 +13273,7 @@ isShowing(): Promise&lt;boolean&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.isShowing();
 promise.then((data) => {
   console.info('Succeeded in checking whether the window is showing. Data: ' + JSON.stringify(data));
@@ -13052,6 +13305,7 @@ on(type: 'systemAvoidAreaChange', callback: Callback&lt;AvoidArea&gt;): void
 **示例：**
 
 ```ts
+// windowClass为已创建/获取的Window实例
 windowClass.on('systemAvoidAreaChange', (data) => {
   console.info('Succeeded in enabling the listener for system avoid area changes. Data: ' + JSON.stringify(data));
 });
@@ -13082,6 +13336,7 @@ off(type: 'systemAvoidAreaChange', callback?: Callback&lt;AvoidArea&gt;): void
 const callback = (avoidArea: window.AvoidArea) => {
   // ...
 }
+// windowClass为已创建/获取的Window实例
 windowClass.on('systemAvoidAreaChange', callback);
 windowClass.off('systemAvoidAreaChange', callback);
 // 如果通过on开启多个callback进行监听，同时关闭所有监听：
@@ -13111,6 +13366,7 @@ isSupportWideGamut(callback: AsyncCallback&lt;boolean&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.isSupportWideGamut((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13144,6 +13400,7 @@ isSupportWideGamut(): Promise&lt;boolean&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.isSupportWideGamut();
 promise.then((data) => {
   console.info('Succeeded in checking whether the window support WideGamut. Data: ' + JSON.stringify(data));
@@ -13177,6 +13434,7 @@ setColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.setColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13217,6 +13475,7 @@ setColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setColorSpace(window.ColorSpace.WIDE_GAMUT);
 promise.then(() => {
   console.info('Succeeded in setting window colorspace.');
@@ -13248,6 +13507,7 @@ getColorSpace(callback: AsyncCallback&lt;ColorSpace&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.getColorSpace((err: BusinessError, data) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13281,6 +13541,7 @@ getColorSpace(): Promise&lt;ColorSpace&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.getColorSpace();
 promise.then((data) => {
   console.info('Succeeded in getting window color space. Cause:' + JSON.stringify(data));
@@ -13315,6 +13576,7 @@ setBackgroundColor(color: string, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let color: string = '#00ff33';
+// windowClass为已创建/获取的Window实例
 windowClass.setBackgroundColor(color, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13356,6 +13618,7 @@ setBackgroundColor(color: string): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let color: string = '#00ff33';
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setBackgroundColor(color);
 promise.then(() => {
   console.info('Succeeded in setting the background color.');
@@ -13392,6 +13655,7 @@ setBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let brightness: number = 1;
+// windowClass为已创建/获取的Window实例
 windowClass.setBrightness(brightness, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13435,6 +13699,7 @@ setBrightness(brightness: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let brightness: number = 1;
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setBrightness(brightness);
 promise.then(() => {
   console.info('Succeeded in setting the brightness.');
@@ -13467,6 +13732,7 @@ setDimBehind(dimBehindValue: number, callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.setDimBehind(0.5, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13506,6 +13772,7 @@ setDimBehind(dimBehindValue: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setDimBehind(0.5);
 promise.then(() => {
   console.info('Succeeded in setting the dimness.');
@@ -13540,6 +13807,7 @@ setFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isFocusable: boolean = true;
+// windowClass为已创建/获取的Window实例
 windowClass.setFocusable(isFocusable, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13581,6 +13849,7 @@ setFocusable(isFocusable: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isFocusable: boolean = true;
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setFocusable(isFocusable);
 promise.then(() => {
   console.info('Succeeded in setting the window to be focusable.');
@@ -13615,6 +13884,7 @@ setKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&gt;): v
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isKeepScreenOn: boolean = true;
+// windowClass为已创建/获取的Window实例
 windowClass.setKeepScreenOn(isKeepScreenOn, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13655,6 +13925,7 @@ setKeepScreenOn(isKeepScreenOn: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isKeepScreenOn: boolean = true;
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setKeepScreenOn(isKeepScreenOn);
 promise.then(() => {
   console.info('Succeeded in setting the screen to be always on.');
@@ -13689,6 +13960,7 @@ setOutsideTouchable(touchable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 windowClass.setOutsideTouchable(true, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13730,6 +14002,7 @@ setOutsideTouchable(touchable: boolean): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setOutsideTouchable(true);
 promise.then(() => {
   console.info('Succeeded in setting the area to be touchable.');
@@ -13763,6 +14036,7 @@ setPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;): voi
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isPrivacyMode: boolean = true;
+// windowClass为已创建/获取的Window实例
 windowClass.setPrivacyMode(isPrivacyMode, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13803,6 +14077,7 @@ setPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isPrivacyMode: boolean = true;
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setPrivacyMode(isPrivacyMode);
 promise.then(() => {
   console.info('Succeeded in setting the window to privacy mode.');
@@ -13837,6 +14112,7 @@ setTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable = true;
+// windowClass为已创建/获取的Window实例
 windowClass.setTouchable(isTouchable, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
@@ -13878,6 +14154,7 @@ setTouchable(isTouchable: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isTouchable = true;
+// windowClass为已创建/获取的Window实例
 let promise = windowClass.setTouchable(isTouchable);
 promise.then(() => {
   console.info('Succeeded in setting the window to be touchable.');

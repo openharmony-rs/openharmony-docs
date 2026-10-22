@@ -1,28 +1,29 @@
 # Using OpenSL ES for Audio Playback (C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=ae0f76f239c21806b95d0f359f48114cf63a6fb3 translatedAt=2026-09-18T04:07:29.317Z pushedAt=2026-09-18T11:10:11.566Z -->
 
-OpenSL ES, short for Open Sound Library for Embedded Systems, is an embedded, cross-platform audio processing library that is free of charge. It provides high-performance and low-latency APIs for you to develop applications running on embedded mobile multimedia devices. OpenHarmony has implemented certain native APIs based on [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specifications developed by the [Khronos Group](https://www.khronos.org/). You can use these APIs through <OpenSLES.h\> and <OpenSLES_OpenHarmony.h\>.
+OpenSL ES, short for Open Sound Library for Embedded Systems, is an embedded, cross-platform, free audio processing library. It provides standardized, high-performance, low-latency APIs for app developers on embedded mobile multimedia devices. The Native API of OpenHarmony is implemented based on the [OpenSL ES](https://www.khronos.org/opensles/) 1.0.1 API specification developed by the [Khronos Group](https://www.khronos.org/). Developers can use the relevant APIs on OpenHarmony through &lt;SLES/OpenSLES.h&gt; and &lt;SLES/OpenSLES_OpenHarmony.h&gt;.
 
 ## Using OHAudio to Replace OpenSL ES
 
 OpenHarmony provides the OpenSL ES APIs for audio development at the native layer since SDK8. As the version evolves, these APIs fail to meet the capability expansion requirements of the audio system and therefore are no longer recommended.
 
-In SDK 10, OpenHarmony provides the OHAudio APIs, which open up all audio functions of the system. The OHAudio APIs cover all the capabilities provided by OpenSL ES in OpenHarmony. They also support new features such as audio focus events and low latency.
+Starting from SDK10, OpenHarmony introduces the OHAudio APIs, through which all audio capabilities of the system are exposed. The OHAudio APIs already cover all the capabilities provided by OpenSL ES on OpenHarmony, and extend support for new features such as audio focus events and low latency.
 
 For details about the OHAudio development guide, please refer to [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md).
 
-For application developers who integrated with OpenHarmony at an early stage, we provide a reference comparison for [Switching from OpenSL ES to OHAudio (C/C++)](replace-opensles-by-ohaudio.md), to help you switch to using the new APIs in the latest version more quickly.
+For app developers who adopted OpenHarmony earlier, a reference for switching from OpenSL ES to OHAudio is provided in [Switching from OpenSL ES to OHAudio (C/C++)](replace-opensles-by-ohaudio.md), to help developers migrate to the new APIs more quickly in newer versions.
 
 ## OpenSL ES on OpenHarmony
 
 Currently, OpenHarmony implements parts of [OpenSL ES APIs](https://gitcode.com/openharmony/third_party_opensles/blob/master/api/1.0.1/OpenSLES.h) to implement basic audio playback functionalities.
 
-If an API that has not been implemented on OpenHarmony is called, **SL_RESULT_FEATURE_UNSUPPORTED** is returned.
+Calling an unimplemented API returns **SL_RESULT_FEATURE_UNSUPPORTED**. Currently, no related extensions are available.
 
 The following lists the OpenSL ES APIs that have been implemented on OpenHarmony. For details, see the [OpenSL ES](https://www.khronos.org/opensles/) specifications.
 
@@ -56,7 +57,7 @@ The following lists the OpenSL ES APIs that have been implemented on OpenHarmony
   - SLresult (\*GetMaxVolumeLevel) (SLVolumeItf  self, SLmillibel \*pMaxLevel)
 
 - **BufferQueue APIs implemented on OpenHarmony**
-   
+
    The APIs listed below can be used only after <OpenSLES_OpenHarmony.h\> is introduced.
 
   | API| Description| 
@@ -78,7 +79,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
 Refer to the sample code below to play an audio file.
 
 1. Add the header files.
-     
+
    ```cpp
    #include "SLES/OpenSLES.h"
    #include "SLES/OpenSLES_OpenHarmony.h"
@@ -86,7 +87,7 @@ Refer to the sample code below to play an audio file.
    ```
 
 2. Use the **slCreateEngine** API to obtain an engine instance.
-     
+
    ```cpp
    SLObjectItf engineObject = nullptr;
    slCreateEngine(&engineObject, 0, nullptr, 0, nullptr, nullptr);
@@ -94,15 +95,18 @@ Refer to the sample code below to play an audio file.
    ```
 
 3. Obtain the engineEngine instance of the **SL_IID_ENGINE** API.
-     
+
    ```cpp
    SLEngineItf engineEngine = nullptr;
    (*engineObject)->GetInterface(engineObject, SL_IID_ENGINE, &engineEngine);
    ```
 
 4. Configure the player and create an AudioPlayer instance.
-     
+
    ```cpp
+   SLObjectItf outputMixObject = nullptr;
+   (*engineEngine)->CreateOutputMix(engineEngine, &outputMixObject, 0, nullptr, nullptr);
+   (*outputMixObject)->Realize(outputMixObject, SL_BOOLEAN_FALSE);
    SLDataLocator_BufferQueue slBufferQueue = {
        SL_DATALOCATOR_BUFFERQUEUE,
        1
@@ -119,8 +123,16 @@ Refer to the sample code below to play an audio file.
        SL_BYTEORDER_LITTLEENDIAN
    };
    SLDataSource slSource = {
-      &slBufferQueue,
-      &pcmFormat
+       &slBufferQueue,
+       &pcmFormat
+   };
+   SLDataLocator_OutputMix slOutputMix = {
+       SL_DATALOCATOR_OUTPUTMIX,
+       outputMixObject
+   };
+   SLDataSink slSink = {
+       &slOutputMix,
+       nullptr
    };
    SLObjectItf pcmPlayerObject = nullptr;
    (*engineEngine)->CreateAudioPlayer(engineEngine,
@@ -134,14 +146,14 @@ Refer to the sample code below to play an audio file.
    ```
 
 5. Obtain the bufferQueueItf instance of the **SL_IID_OH_BUFFERQUEUE** API.
-     
+
    ```cpp
    SLOHBufferQueueItf bufferQueueItf;
    (*pcmPlayerObject)->GetInterface(pcmPlayerObject, SL_IID_OH_BUFFERQUEUE, &bufferQueueItf);
    ```
 
 6. Open an audio file and register the **BufferQueueCallback** function.
-     
+
    ```cpp
    static void BufferQueueCallback (SLOHBufferQueueItf bufferQueueItf, void *pContext, SLuint32 size)
    {
@@ -151,12 +163,12 @@ Refer to the sample code below to play an audio file.
        // Write the audio data to be played to the buffer.
        (*bufferQueueItf)->Enqueue(bufferQueueItf, buffer, size);
    }
-   void *pContext; // This callback can be used to obtain the custom context information passed in.
+   void *pContext = nullptr; // You can pass custom context information, which is received in the callback.
    (*bufferQueueItf)->RegisterCallback(bufferQueueItf, BufferQueueCallback, pContext);
    ```
 
-7. Obtain the playItf instance of the **SL_PLAYSTATE_PLAYING** API and start playing.
-     
+7. Obtain the playItf instance of **SL_IID_PLAY** and start playback.
+
    ```cpp
    SLPlayItf playItf = nullptr;
    (*pcmPlayerObject)->GetInterface(pcmPlayerObject, SL_IID_PLAY, &playItf);
@@ -164,7 +176,7 @@ Refer to the sample code below to play an audio file.
    ```
 
 8. Stop playing.
-     
+
    ```cpp
    (*playItf)->SetPlayState(playItf, SL_PLAYSTATE_STOPPED);
    (*pcmPlayerObject)->Destroy(pcmPlayerObject);

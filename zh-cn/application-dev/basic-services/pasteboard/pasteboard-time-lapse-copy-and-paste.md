@@ -165,15 +165,15 @@
                OH_UdmfRecord_GetPlainText(record, udsText);
                // 从Uds对象中获取内容
                const char* content = OH_UdsPlainText_GetContent(udsText);
-           } else if (strcmp(recordType, UDMF_META_HTML) == 0) {
-               // 创建HTML类型的Uds对象
-               udsHtml = OH_UdsHtml_Create();
-               if (udsHtml != nullptr) {
-                   // 从record中获取HTML类型的Uds对象
-                   OH_UdmfRecord_GetHtml(record, udsHtml);
-                   // 从Uds对象中获取内容
-                   const char* content = OH_UdsHtml_GetContent(udsHtml);
-               }
+           }
+       } else if (strcmp(recordType, UDMF_META_HTML) == 0) {
+           // 创建HTML类型的Uds对象
+           udsHtml = OH_UdsHtml_Create();
+           if (udsHtml != nullptr) {
+               // 从record中获取HTML类型的Uds对象
+               OH_UdmfRecord_GetHtml(record, udsHtml);
+               // 从Uds对象中获取内容
+               const char* content = OH_UdsHtml_GetContent(udsHtml);
            }
        }
    }

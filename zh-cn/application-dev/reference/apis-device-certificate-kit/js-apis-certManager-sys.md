@@ -57,7 +57,7 @@ getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**：
@@ -224,7 +224,7 @@ getSystemTrustedCertificate(certUri: string): Promise\<CMResult>
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401 | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
@@ -345,7 +345,7 @@ setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Pr
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong, the certType's value is invalid or not supported. |
+| 401 | [Sync] Parameter error. Possible causes: 1. The URI is null or the URI format is wrong; 2. The certType's value is invalid or not supported. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
@@ -454,7 +454,7 @@ installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise\<C
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the keystore parameter is empty or exceeds the maximum length. |
+| 401                    | [Sync] Parameter error. Possible causes: The keystore parameter is empty or exceeds the maximum length. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500003               | Indicates that the certificate is in an invalid format. |
 | 17500004               | Indicates that the number of certificates reaches the maximum allowed. |
@@ -520,7 +520,7 @@ uninstallPublicCertificate(keyUri: string) : Promise\<void>
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -637,7 +637,7 @@ grantPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<CMResult
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -698,7 +698,7 @@ getAuthorizedAppList(keyUri: string) : Promise\<CMResult>
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -763,7 +763,7 @@ removeGrantedPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -888,7 +888,7 @@ installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string): Promise\
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: The keystore parameter is empty or exceeds the maximum length. |
+| 401                    | [Sync] Parameter error. Possible causes: The keystore parameter is empty or exceeds the maximum length. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500003               | Indicates that the certificate is in an invalid format. |
 | 17500004               | Indicates that the number of certificates reaches the maximum allowed. |
@@ -955,7 +955,7 @@ getSystemAppCertificate(keyUri: string) : Promise\<CMResult>
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -1019,7 +1019,7 @@ uninstallSystemAppCertificate(keyUri: string) : Promise\<void>
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 

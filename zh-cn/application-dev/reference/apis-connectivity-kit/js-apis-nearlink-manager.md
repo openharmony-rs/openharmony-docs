@@ -26,6 +26,8 @@ getState(): NearlinkState
 
 查询星闪开关状态。
 
+调用此接口前，您可以调用[isNearLinkSupported](#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -44,7 +46,7 @@ getState(): NearlinkState
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -102,6 +104,8 @@ getLocalName(): string
 
 查询本机星闪名称。
 
+调用此接口前，您可以调用[isNearLinkSupported](#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -122,8 +126,8 @@ getLocalName(): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -147,6 +151,8 @@ getPairedDevices(): string[]
 
 获取与当前设备配对的设备列表。
 
+调用此接口前，您可以调用[isNearLinkSupported](#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -167,8 +173,8 @@ getPairedDevices(): string[]
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -196,6 +202,8 @@ onStateChange(callback: Callback&lt;NearlinkState&gt;): void
 
 订阅星闪开关状态变化事件。使用callback异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -214,7 +222,7 @@ onStateChange(callback: Callback&lt;NearlinkState&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -247,6 +255,8 @@ offStateChange(callback?: Callback&lt;NearlinkState&gt;): void
 
 取消订阅星闪开关状态变化事件。使用callback异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -265,7 +275,7 @@ offStateChange(callback?: Callback&lt;NearlinkState&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 

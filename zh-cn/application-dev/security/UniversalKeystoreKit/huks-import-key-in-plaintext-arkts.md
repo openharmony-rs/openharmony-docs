@@ -61,15 +61,11 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
   console.info('promise: enter importKeyItem');
   let ret: boolean = false;
   try {
-    await huks.importKeyItem(keyAlias, huksOptions)
-      .then(() => {
-        console.info(`promise: importKeyItem success`);
-        ret = true;
-      }).catch((error: BusinessError) => {
-        console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
-      })
+    await huks.importKeyItem(keyAlias, huksOptions);
+    console.info(`promise: importKeyItem success`);
+    ret = true;
   } catch (error) {
-    console.error(`promise: importKeyItem input arg invalid`);
+    console.error(`promise: importKeyItem failed errCode : ${(error as BusinessError).code}, errMsg : ${(error as BusinessError).message}`);
   }
   return ret;
 }
@@ -167,15 +163,11 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
   console.info('promise: enter importKeyItem');
   let ret: boolean = false;
   try {
-    await huks.importKeyItem(keyAlias, huksOptions)
-      .then(() => {
-        console.info(`promise: importKeyItem success`);
-        ret = true;
-      }).catch((error: BusinessError) => {
-        console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
-      })
+    await huks.importKeyItem(keyAlias, huksOptions);
+    console.info(`promise: importKeyItem success`);
+    ret = true;
   } catch (error) {
-    console.error(`promise: importKeyItem input arg invalid`);
+    console.error(`promise: importKeyItem failed errCode : ${(error as BusinessError).code}, errMsg : ${(error as BusinessError).message}`);
   }
   return ret;
 }
@@ -235,15 +227,11 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
   console.info('promise: enter importKeyItem');
   let ret: boolean = false;
   try {
-    await huks.importKeyItem(keyAlias, huksOptions)
-      .then(() => {
-        console.info(`promise: importKeyItem success`);
-        ret = true;
-      }).catch((error: BusinessError) => {
-        console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
-      })
+    await huks.importKeyItem(keyAlias, huksOptions);
+    console.info(`promise: importKeyItem success`);
+    ret = true;
   } catch (error) {
-    console.error(`promise: importKeyItem input arg invalid`);
+    console.error(`promise: importKeyItem failed errCode : ${(error as BusinessError).code}, errMsg : ${(error as BusinessError).message}`);
   }
   return ret;
 }
@@ -287,7 +275,7 @@ async function isKeyItemExist(keyAlias: string, options: huks.HuksOptions): Prom
         console.info(`promise: isKeyItemExist success, data = ${data}`);
         ret = true;
       }).catch((error: BusinessError) => {
-        console.error(`promise: isKeyItemExist success, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: isKeyItemExist failed, errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: isKeyItemExist input arg invalid`);

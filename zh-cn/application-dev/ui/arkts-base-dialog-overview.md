@@ -27,6 +27,7 @@
 | [弹出框控制器](arkts-dialog-controller.md) | 从API version 18开始，可设置controller参数以绑定[DialogController](../reference/apis-arkui/js-apis-promptAction.md#dialogcontroller18)控制器，通过控制器可以对弹出框进行操作。 |
 | [弹出框焦点策略](arkts-dialog-focusable.md) | 从API version 19开始，可以通过设置[focusable](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)参数来管理弹出框是否获取焦点。 |
 | [弹出框蒙层控制](arkts-dialog-mask.md) | 开发者可以通过设置maskColor、maskRect等参数来对弹出框蒙层进行定制。 |
+| [弹出框迁移指南](arkui-dialog-migration-guide.md) | 从API版本26.0.1开始，开发者可以将老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)等）替换为[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)新接口，实现统一的弹出框编程模型和返回错误码能力。 |
 
 ## 规格约束
 

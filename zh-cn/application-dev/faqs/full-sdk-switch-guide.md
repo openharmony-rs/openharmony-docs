@@ -1,12 +1,21 @@
 # 如何替换full-SDK
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
+
 **public-SDK**是提供给应用开发的工具包，跟随DevEco Studio下载，不包含系统应用所需要的高权限API
 
 **full-SDK**是提供给OEM厂商开发应用的工具包，不能随DevEco Studio下载，包含了系统应用所需要的高权限API
 
 三方开发者通过DevEco Studio自动下载的**API8版本**SDK均为**public版本**。public-SDK**不支持**开发者使用**所有的系统API**，包括animator组件、xcomponent组件、@ohos.app.ability.abilityManager.d.ts、@ohos.app.form.formInfo.d.ts、@ohos.bluetooth.d.ts等，如工程必须依赖于系统API，请按照以下步骤替换**full-SDK**。
 
-> **说明**：本文中的截图仅为参考，具体的显示界面请以实际使用的DevEco Studio和SDK的版本为准。
+> **说明**：
+>
+> 本文中的截图仅为参考，具体的显示界面请以实际使用的DevEco Studio和SDK的版本为准。
 
 ## 下载full-SDK
 
@@ -104,11 +113,11 @@ full-SDK需要手动下载。请参考[版本说明书](../../release-notes/Open
 
 我们可以操作以下步骤来处理此问题：
 
-1.打开Terminal终端应用
+1. 打开Terminal终端应用
 
-2.在终端中输入命令:sudo spctl -- master - disable
+2. 在终端中输入命令:sudo spctl -- master - disable
 
-3.进入系统偏好设置中的[安全与隐私]面板中，打开"任何来源"选项
+3. 进入系统偏好设置中的[安全与隐私]面板中，打开"任何来源"选项
 
 ![alarmHand](figures/alarmHand.png)
 

@@ -6,13 +6,11 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-The module provides basic APIs for manipulating Picture in Picture (PiP). For example, you can use the APIs to check whether the PiP feature is supported and create a PiP controller to start or stop a PiP window. In this way, users can continue watching videos in a small window while performing other operations, improving multitasking efficiency. It is applicable to video playback, video calls, and video conferences.
+This module provides basic APIs for manipulating Picture in Picture (PiP). For example, you can use the APIs to check whether the current device supports the PiP feature and create a PiP controller to start or stop a PiP window. In this way, users can continue watching videos in a small window while performing other operations, improving multitasking efficiency. It is applicable to video playback, video calls, and video conferences.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->
-> - Before <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones and tablets. Since <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported only on phones, PCs/2-in-1 devices, and tablets.<!--Del--> Since OpenHarmony 7.0.0, the PiP feature is supported only on phones, PCs/2-in-1 devices, tablets, and cars.<!--DelEnd-->
 >
 > - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
@@ -193,7 +191,7 @@ Creates a PiP controller. This API uses **typeNode** to add a custom UI node for
 
 | Name         | Type                                      | Mandatory       | Description                                                                                                                                                                                                                                    |
 |--------------|------------------------------------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| config       | [PiPConfiguration](#pipconfiguration)    | Yes        | Options for creating the PiP controller. This parameter cannot be empty, and **context** that is used to construct this parameter cannot be empty. When constructing this parameter, **templateType** (if specified) must be a value defined in [PiPTemplateType](#piptemplatetype), and **controlGroups** (if specified) must match the value of **templateType**. For details, see [PiPControlGroup](#pipcontrolgroup12).|
+| config       | [PiPConfiguration](#pipconfiguration)    | Yes        | Options for creating the PiP controller. This parameter cannot be empty, and **context** and **componentController** that are used to construct this parameter cannot be empty. When constructing this parameter, **templateType** (if specified) must be a value defined in [PiPTemplateType](#piptemplatetype), and **controlGroups** (if specified) must match the value of **templateType**. For details, see [PiPControlGroup](#pipcontrolgroup12).|
 | contentNode       | [typeNode.XComponent](js-apis-arkui-frameNode.md#xcomponent12)    | Yes        | Content to be rendered in the PiP window. The parameter value cannot be empty. |
 
 **Return value**
@@ -319,10 +317,10 @@ Enumerates the PiP template types.
 
 | Name           | Value  | Description                                  |
 |---------------|-----|--------------------------------------|
-| VIDEO_PLAY    | 0   | Video playback template. A PiP window will be started during video playback, and the video playback template will be loaded. The template contains the play/pause component by default.  |
-| VIDEO_CALL    | 1   | Video call template. A PiP window will be started during a video call, and the video call template will be loaded.|
-| VIDEO_MEETING | 2   | Video meeting template. A PiP window will be started during a video meeting, and the video meeting template will be loaded.|
-| VIDEO_LIVE    | 3   | Live template. A PiP window will be started during a live, and the live template is loaded.    |
+| VIDEO_PLAY    | 0   | PiP template type for video playback. The system loads the video playback template based on this type. By default, the template contains the play/pause control.  |
+| VIDEO_CALL    | 1   | PiP template type for video calls. The system loads the video call template based on this type.|
+| VIDEO_MEETING | 2   | PiP template type for video meetings. The system loads the video meeting template based on this type.|
+| VIDEO_LIVE    | 3   | PiP template type for livestreaming. The system loads the livestreaming template based on this type.    |
 
 ## PiPState
 
@@ -553,7 +551,7 @@ Describes the action event callback of the PiP controller.
 | Name                      | Type          | Mandatory   | Description                               |
 |--------------------------|--------------|--------------|-----------------------------------|
 | event       |  [PiPActionEventType](#pipactioneventtype)       | Yes| Type of the action event of the PiP controller.<br>The application performs processing based on the action event. For example, if the **'playbackStateChanged'** event is triggered, the application starts or stops the video.|
-| status | number | No| Status of a component that can be switched. For example, for a microphone on/off component group, a camera on/off component group, and a mute/unmute component group, the value **1** means that the component is enabled and **0** means that the component is disabled. For other components, the default value **-1** is used.|
+| status | number | No| Current status of a component whose state can be switched. For example, for a microphone component group or camera lens component group that contains the on and off states, the value is **1** when the component is turned on and **0** when the component is turned off. For a mute component group that contains the muted and unmuted states, the value is **1** when the component is unmuted and **0** when the component is muted. For a play/pause component group that contains the played and paused states, the value is **1** when the component is played and **0** when the component is paused. For other components that do not support the switchable state, such as the components for going to the previous/next video, fast-forwarding/rewinding a video, and ending a call, the default value **-1** is returned.|
 
 ## ControlEventParam<sup>12+</sup>
 
@@ -565,7 +563,7 @@ Describes the parameters in the callback of the action event of the PiP controll
 
 | Name                      | Type          | Read-Only | Optional  | Description                                                                                                                               |
 |--------------------------|--------------|--------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| controlType       |  [PiPControlType](#pipcontroltype12)      | No | No| Type of the action event of the PiP controller. The application performs processing based on the component type. For example, if the video play/pause component is touched, the application starts or stops the video.                                                                     |
+| controlType       |  [PiPControlType](#pipcontroltype12)      | No | No| Callback for the PiP component type. The application performs processing based on the component type. For example, if the video play/pause component is touched, the application starts or stops the video.                                                                     |
 | status | [PiPControlStatus](#pipcontrolstatus12) | No | Yes| Status of a component that can be switched. For example, for a microphone on/off component group, a camera on/off component group, and a mute/unmute component group, the value **PiPControlStatus.OPEN** means that the component is enabled and **PiPControlStatus.CLOSE** means that the component is disabled. For the hang-up component, the default value is **-1**.|
 
 ## PiPController
@@ -659,6 +657,8 @@ setAutoStartEnabled(enable: boolean): void
 
 Sets whether to automatically start the PiP window when the application's main window which can start the PiP window transitions to the background. By default, the PiP window is not automatically started.
 
+When automatic PiP window startup is enabled, if the application's main window is in the [multi-window floating window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro#floating-windows) state and is moved to the sidebar on the side, the PiP window will not be automatically started even though the main window has moved to the background.
+
 If the XComponent approach is used to implement PiP and the **Navigation** component is used for route management, the system caches the top stack information with the specified navigation ID upon the first call of **setAutoStartEnabled(true)**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -687,9 +687,8 @@ Updates the media content size when the media content changes.
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Window.SessionManager
-<!--Del-->
-**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. On cars, only fixed sizes are supported. If the aspect ratio is greater than or equal to 1, a small window in landscape mode is used. If the aspect ratio is less than 1, a large window in portrait mode is used.
-<!--DelEnd-->
+
+**Device behavior differences**: This API can be called properly on phones, tablets, PCs/2-in-1 devices, and TVs. On cars, <!--Del-->this API can be called only by the PiP window of a specific template type (for details, see [PiPTemplateType](js-apis-pipWindow-sys.md#piptemplatetype)) to update the size. The size can only be updated to the fixed value. When the aspect ratio is greater than or equal to 1, the size is updated to the small window type in landscape mode. When the aspect ratio is less than 1, the size is updated to the large window type in portrait mode. For the PiP windows of other template types, <!--DelEnd-->calling this API does not report an error or take effect.
 
 **Parameters**
 
@@ -914,7 +913,7 @@ try {
 ### isPiPActive<sup>23+</sup>
 isPiPActive(): Promise&lt;boolean&gt;
 
-Check whether the PiP window is active. This API uses a promise to return the result.
+Obtains the active status of the PiP window. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -924,7 +923,7 @@ Check whether the PiP window is active. This API uses a promise to return the re
 
 | Type                  | Description                 |
 |----------------------|---------------------|
-| Promise&lt;boolean&gt;  | Promise used to return the PiP window active status. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar). If this API is called when the PiP lifecycle is not [STARTED](#pipstate), **false** is always returned.|
+| Promise&lt;boolean&gt;  | Promise used to return the active status of the PiP window. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar). If this API is called when the PiP lifecycle is not [STARTED](#pipstate), **false** is always returned.|
 
 **Error codes**
 
@@ -939,7 +938,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 ``` ts
 let pipActiveStatus: boolean | undefined = undefined;
 try {
-  // Check whether the PiP window is active.
+  // Obtain the active status of the PiP window.
   let promise : Promise<boolean> | undefined = this.pipController?.isPiPActive();
   promise?.then((data) => {
     // Save the obtained active status of the PiP window.
@@ -1277,7 +1276,7 @@ Subscribes to PiP window active status change events. To avoid potential memory 
 | Name| Type| Mandatory| Description|
 |----------|---------------------------------------------|-------|---------------------------------------------------|
 | type | string | Yes| Event type. The value is fixed at **'activeStatusChange'**, indicating that the PiP window active status changes.|
-| callback | Callback\<boolean\> | Yes| PiP window active status. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar).|
+| callback | Callback\<boolean\> | Yes| Callback used to return the active status of the PiP window. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar).|
 
 **Example**
 
@@ -1304,7 +1303,7 @@ Unsubscribes from PiP window active status change events.
 | Name| Type| Mandatory| Description|
 |----------|------------|----|---------------------------------------------------------------------|
 | type | string | Yes| Event type. The value is fixed at **'activeStatusChange'**, indicating that the PiP window active status changes.|
-| callback | Callback\<boolean\> | No| PiP window active status. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar). If no value is passed in, all subscriptions to the specified event are canceled.|
+| callback | Callback\<boolean\> | No| Callback used to return the active status of the PiP window. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar). If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Example**
 

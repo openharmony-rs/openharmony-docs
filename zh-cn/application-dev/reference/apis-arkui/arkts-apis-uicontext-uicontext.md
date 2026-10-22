@@ -583,6 +583,30 @@ struct Index {
 }
 ```
 
+## getPlaceholderRegister
+
+getPlaceholderRegister(): PlaceholderRegister
+
+获取[PlaceholderRegister](./arkts-apis-placeholderregister.md#placeholderregister)对象，可通过该对象注册、注销和查询滚动占位模板，供[List](./arkui-ts/ts-container-list.md)的[scrollPlaceholder](./arkui-ts/ts-container-list.md#scrollplaceholder)属性使用。每个UI实例持有独立的注册表。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [PlaceholderRegister](./arkts-apis-placeholderregister.md#placeholderregister) | 当前UI实例的滚动占位注册表。 |
+
+**示例：**
+
+参考[示例1（注册滚动占位模板并设置滚动占位）](./arkts-apis-placeholderregister.md#示例1注册滚动占位模板并设置滚动占位)。
+
 ## getId<sup>22+</sup>
 
 getId(): number
@@ -682,9 +706,9 @@ getDialogPresenter(): DialogPresenter
 
 获取DialogPresenter对象，可通过该对象管理弹出框的展示、更新与关闭。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1027,7 +1051,7 @@ getHostContext(): Context | undefined
 
 | 类型 | 说明                             |
 | ------ | ------------------------------- |
-| [Context](arkts-apis-uicontext-t.md#context)&nbsp;\|&nbsp;undefined | 返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1)。在ExtensionAbility窗口中的页面调用该接口，返回类型为[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。ability上下文不存在时返回undefined。 |
+| [Context](arkts-apis-uicontext-t.md#context)&nbsp;\|&nbsp;undefined | 返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为[UIAbilityContext (UIAbility上下文)](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext)。在ExtensionAbility窗口中的页面调用该接口，返回类型为[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。ability上下文不存在时返回undefined。 |
 
 **示例：**
 
@@ -2886,6 +2910,50 @@ struct Index {
 }
 ```
 
+## isWindowInfoInitialized
+
+isWindowInfoInitialized(): boolean
+
+查询当前实例所在窗口信息是否已初始化。通常用于启动阶段，在通过UI上下文获取窗口布局断点前进行判断。窗口信息未初始化时，断点接口返回是不可信的。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 窗口信息是否已初始化。当宽高有效时返回true，否则返回false。 |
+
+**示例：**
+
+```ts
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Button('Check window information')
+        .onClick(() => {
+          const initialized = this.uiContext.isWindowInfoInitialized();
+          console.info(`Window information initialized: ${initialized}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## postFrameCallback<sup>12+</sup>
 
 postFrameCallback(frameCallback: FrameCallback): void
@@ -2949,7 +3017,7 @@ postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
 | frameCallback | [FrameCallback](arkts-apis-uicontext-framecallback.md) | 是   | 下一帧需要执行的回调。 |
-| delayTime | number | 是   | 延迟的时间，以毫秒为单位。传入null、undefined或小于0的值，会按0处理。 |
+| delayTime | number | 是   | 延迟的时间，以ms为单位。传入null、undefined或小于0的值，会按0处理。 |
 
 **示例：**
 
@@ -3232,7 +3300,7 @@ updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheet
 **示例：**
 
 ```ts
-import { FrameNode, ComponentContent } from "@kit.ArkUI";
+import { FrameNode, ComponentContent } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class Params {
@@ -3770,7 +3838,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 
 | 参数名  | 类型                                     | 必填 | 说明        |
 | ------- | ---------------------------------------- | ---- | ----------- |
-| context | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| common.[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md) | 是    | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)或[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)所对应的上下文环境。 |
+| context | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| common.[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md) | 是 | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)或[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)所对应的上下文环境。 |
 
 **返回值：**
 
@@ -4158,7 +4226,7 @@ setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
 ```ts
 // xxx.ets
-import { CustomKeyboardContinueFeature } from '@ohos.arkui.UIContext';
+import { CustomKeyboardContinueFeature } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -4243,7 +4311,7 @@ struct Index {
           placeholder: 'TextInput1 bind CustomKeyboardBuilder',
           controller: this.controller,
           text: this.inputValue
-        })// 绑定自定义键盘
+        }) // 绑定自定义键盘
           .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
           .margin(10)
           .border({ width: 1 })
@@ -4251,7 +4319,7 @@ struct Index {
           placeholder: 'TextInput2 bind CustomKeyboardBuilder2',
           controller: this.controller2,
           text: this.inputValue2
-        })// 绑定自定义键盘
+        }) // 绑定自定义键盘
           .customKeyboard(this.CustomKeyboardBuilder2(), { supportAvoidance: this.supportAvoidance })
           .margin(10)
           .border({ width: 1 })
@@ -4687,3 +4755,59 @@ struct Index {
   }
 }
 ```
+
+## applyDefaultImmersiveStrategy
+
+applyDefaultImmersiveStrategy(...types: ImmersiveStrategy[]): void
+
+在EntryAbility或应用首页中应用安全区域沉浸式策略。适用于全屏或沉浸式应用等场景。在应用首次布局前可以统一配置安全区域沉浸式策略。策略应用后，页面处理安全区域的方式会根据指定的策略进行调整。
+
+> **说明：**
+>
+> 不支持动态更新。该接口仅在应用首次布局流程开始前调用才生效。如果在页面进入首次布局流程后调用，则应用的策略不变，此接口不生效。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                      | 必填 | 说明                                   |
+| ------- | --------------------------------------------------------- | ---- | -------------------------------------- |
+| types | [ImmersiveStrategy\[\]](arkui-ts/ts-appendix-enums.md#immersivestrategy) | 否   | 应用的沉浸式策略。空数组将清除所有已应用的沉浸式策略。<br/>设置异常值undefined、null、NaN、Infinity时按空数组处理。 |
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { UIContext } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+
+    windowStage.loadContent('pages/Index', (err, data) => {
+      let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
+      uiContext.applyDefaultImmersiveStrategy(ImmersiveStrategy.AVOID_CUTOUT,
+        ImmersiveStrategy.AVOID_FLOAT_NAV);
+    });
+  }
+}
+
+// Index.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+    }.width(LayoutPolicy.matchParent)
+    .height(LayoutPolicy.matchParent)
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+
+![ImmersiveStrategy](./figures/ImmersiveStrategy.jpeg)

@@ -36,6 +36,12 @@ Installs a font file from a specified path into the system font library. This AP
 
 After successful installation, applications can use the font by its font name.
 
+> **NOTE**
+>
+> - The same font path cannot be installed repeatedly.
+>
+> - The maximum number of font files that can be installed is 200. From version 26.0.1, the maximum number of font files that can be installed on PC/2in1 and Tablet is 800.
+
 **Required permissions**: ohos.permission.UPDATE_FONT
 
 **System capability**: SystemCapability.Global.FontManager

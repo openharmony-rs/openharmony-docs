@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -15,7 +15,7 @@
 
 **API 组合使用关系说明：**
 
-本模块的事件通信遵循三条组合调用链：订阅流、发布流与有序事件流。其中订阅流与发布流通过事件名称关联，发布者与订阅者无需感知对方存在。
+本模块的事件通信遵循三条组合调用链：订阅流、发布流与有序事件流。其中订阅流与发布流通过事件名称关联，发布方与订阅者无需感知对方存在。
 
 **订阅流：创建订阅者 → 注册订阅 → 接收事件 → 取消订阅**
 
@@ -34,6 +34,10 @@
 1. 通过`CommonEventPublishData`将`isOrdered`设为`true`，调用`publish`发布有序事件，事件按订阅者优先级依次投递。
 2. 高优先级订阅者先收到事件，可在回调中通过`setCodeAndData`等方法修改code与data数据，供后续订阅者接收。
 3. 处理完成后调用`finishCommonEvent`，触发事件向下一优先级订阅者投递；若需中止后续投递，可调用`abortCommonEvent`标记事件为中止状态。
+
+> **说明：**
+>
+> 有序公共事件对每个订阅者的处理时长有限制（超时时间为10秒）。订阅者收到有序公共事件后，若未在超时时间内调用[finishCommonEvent](js-apis-inner-commonEvent-commonEventSubscriber.md#finishcommonevent9)，系统将视为该订阅者处理完成，自动向下一优先级订阅者投递该事件，且不会向当前订阅者发送超时通知；此后该订阅者调用的`setCode`、`setData`、`setCodeAndData`、`finishCommonEvent`等接口不再生效。
 
 > **说明：**
 >
@@ -63,7 +67,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 
 | 参数名     | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| event    | string               | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。 |
+| event    | string               | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。字符串长度不超过254字节，超出部分会被截断。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当公共事件发布成功时，err为undefined；发布失败时，err为错误对象。 |
 
 **错误码：**
@@ -111,7 +115,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 
 | 参数名     | 类型                   | 必填 | 说明                   |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。  |
+| event    | string                 | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。字符串长度不超过254字节，超出部分会被截断。 |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | 是   | 表示发布公共事件的属性。 |
 | callback | AsyncCallback\<void>   | 是   | 回调函数。当公共事件发布成功时，err为undefined；发布失败时，err为错误对象。  |
 
@@ -453,7 +457,7 @@ setTimeout(() => {
         console.error(`Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
         return;
       }
-      // subscriber不再使用时需要将其置为null，避免内存泄露
+      // subscriber不再使用时需要将其置为null，避免内存泄漏
       subscriber = null;
       console.info(`Succeeded in unsubscribing.`);
     });
@@ -479,7 +483,7 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 | 参数名       | 类型                                                | 必填 | 说明                             |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
 | subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | 是   | 表示订阅者对象。                 |
-| callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | 是   | 表示接收公共事件数据的回调函数。 |
+| callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | 是   | 回调函数，返回公共事件数据。 |
 
 **返回值：**
 | 类型                                                      | 说明             |

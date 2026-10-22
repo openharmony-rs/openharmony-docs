@@ -132,9 +132,6 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
 更新指定的卡片，使用callback异步回调。适用于卡片数据变化时主动更新卡片内容的场景，例如天气数据变化、股票价格更新、任务进度更新等。
-> **说明：**
->
-> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -145,7 +142,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData, cal
 | 参数名 | 类型                                                                    | 必填 | 说明             |
 | ------ | ---------------------------------------------------------------------- | ---- | ---------------- |
 | formId | string                                                                 | 是   | 请求更新的卡片标识。 |
-| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 是   | 用于更新的数据。具体限制请参考上方说明。    |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 是   | 用于更新的数据。    |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。更新结果的回调，成功时error为undefined。 |
 
 **错误码：**
@@ -192,9 +189,6 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
 更新指定的卡片，使用Promise异步回调。适用于卡片数据变化时主动更新卡片内容的场景，例如天气数据变化、股票价格更新、任务进度更新等。
-> **说明：**
->
-> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -205,7 +199,7 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
 | 参数名 | 类型                                                                    | 必填 | 说明             |
 | ------ | ---------------------------------------------------------------------- | ---- | ---------------- |
 | formId | string                                                                 | 是   | 请求更新的卡片标识。 |
-| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 是   | 用于更新的数据。具体限制请参考上方说明。    |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 是   | 用于更新的数据。    |
 
 **返回值：**
 
@@ -705,7 +699,7 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-api功能在部分设备不支持)错误码。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -779,7 +773,7 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-api功能在部分设备不支持)错误码。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -996,7 +990,7 @@ reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, 
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------  |
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，用于校验应用身份。     |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，用于校验应用身份。 |
 | moduleName | string | 是   | 指定卡片的moduleName，需与[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的module名称一致。需与abilityName、formName配合使用，三者必须同时匹配才能定位到对应卡片。   |
 | abilityName | string | 是 | 指定卡片的abilityName，需与[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的ability名称一致。  |
 | formName | string | 是 | 指定卡片在[form_config.json](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)中配置的卡片名称。 |
@@ -1055,7 +1049,7 @@ reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------  |
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，用于校验应用身份。     |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的上下文，用于校验应用身份。 |
 
 **返回值：**
 

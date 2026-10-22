@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -164,7 +164,7 @@
 | ------------------ | ---- | -------- |
 | LOOP_MODE_SEQUENCE | 0    | 顺序播放。 |
 | LOOP_MODE_SINGLE   | 1    | 单曲循环。 |
-| LOOP_MODE_LIST     | 2    | 表单循环。 |
+| LOOP_MODE_LIST     | 2    | 列表循环。 |
 | LOOP_MODE_SHUFFLE  | 3    | 随机播放。 |
 | LOOP_MODE_CUSTOM<sup>11+</sup>   | 4    | 自定义播放。  |
 

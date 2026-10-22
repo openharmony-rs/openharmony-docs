@@ -22,7 +22,7 @@
     
 2. 在EntryFormAbility.ets中，实现[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)生命周期接口，其中在onAddForm的入参[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)中可以通过[FormParam](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formparam)取出卡片的相关信息。
 
-    <!-- @[entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
+    <!-- @[entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
     
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ts
@@ -56,7 +56,7 @@
         };
         let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
         formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
-          hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
+          hilog.error(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
         });
       }
     
@@ -67,7 +67,7 @@
     
       onFormEvent(formId: string, message: string): void {
         // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
-        hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+        hilog.info(DOMAIN_NUMBER, TAG, `[EntryFormAbility] onFormEvent, formId = ${formId}, message: ${message}`);
         class FormDataClass {
           title: string = 'Title Update.'; // 和卡片布局中对应
           detail: string = 'Description update success.'; // 和卡片布局中对应
@@ -77,7 +77,7 @@
         let formData = new FormDataClass();
         let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
         formProvider.updateForm(formId, formInfo).then(() => {
-          hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+          hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm success.');
         }).catch((error: BusinessError) => {
           hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
         });

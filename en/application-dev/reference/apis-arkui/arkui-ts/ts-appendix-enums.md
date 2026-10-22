@@ -6,7 +6,7 @@
 <!--Designer: @piggyguy; @s10021109; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=bc71de9c78619ed6967fc298759f73173061848f translatedAt=2026-07-30T02:29:49.654Z pushedAt=2026-08-01T06:42:55.867Z -->
+<!-- md-trans-meta sourceCommit=8dd2d5cdf88acdc31ee17ec2006247a008c91d7c translatedAt=2026-08-28T01:37:05.097Z pushedAt=2026-08-28T08:31:50.781Z -->
 
 This document summarizes the public enums in ArkUI development, for developers to look up the meanings and applicable scenarios of enum values.
 
@@ -398,7 +398,7 @@ Enumerates the interpolation curves. For details about the animation, see <!--RP
 | FastOutSlowIn       | 5 | The animation uses the standard cubic-bezier curve (0.4, 0.0, 0.2, 1.0).  |
 | LinearOutSlowIn     | 6 | The animation uses the deceleration cubic-bezier curve (0.0, 0.0, 0.2, 1.0).  |
 | FastOutLinearIn     | 7 | The animation uses the acceleration cubic-bezier curve (0.4, 0.0, 1.0, 1.0).  |
-| ExtremeDeceleration | 8 | The animation uses the extreme deceleration cubic-bezier curve (0.0, 0.0, 0.0, 1.0).  |
+| ExtremeDeceleration | 8 | The animation uses the extreme deceleration cubic-bezier curve (0.0, 0.0, 0.0, 1.0).   |
 | Sharp               | 9 | The animation uses the sharp cubic-bezier curve (0.33, 0.0, 0.67, 1.0).|
 | Rhythm              | 10 | The animation uses the rhythm cubic-bezier curve (0.7, 0.0, 0.2, 1.0).  |
 | Smooth              | 11 | The animation uses the smooth cubic-bezier curve (0.4, 0.0, 0.4, 1.0).  |
@@ -1815,4 +1815,3 @@ Enumerates the input event interception actions, used to control whether input e
 | -------- | -------- | ---- |
 | CONTINUE | 0 | The event is permitted to propagate to the UI framework.|
 | BLOCK | 1 | The event is blocked from propagating to the UI framework.|
-<!--no_check-->

@@ -1,10 +1,12 @@
 # Interface (AutoExposure)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5b3ab60fe000eb4bad70440a3e7f30019a2671f9 translatedAt=2026-08-20T09:33:45.299Z pushedAt=2026-08-21T02:05:15.614Z -->
 
 **AutoExposure** inherits from [AutoExposureQuery](arkts-apis-camera-AutoExposureQuery.md).
 
@@ -156,7 +158,7 @@ setMeteringPoint(point: Point): void
 
 Sets the metering point, which is the center point of the metering rectangle. The metering point must be in the coordinate system (0-1), where the top-left corner is {0, 0} and the bottom-right corner is {1, 1}.
 
-The coordinate system is based on the horizontal device direction with the device's charging port on the right. If the layout of the preview screen of an application is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the touch point is {x, y}, then the coordinate point after conversion is {y/h, 1-x/w}.
+The coordinate system is based on the horizontal device direction with the device's charging port on the right. If the layout of the preview screen of an app is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the touch point is {x, y}, then the coordinate point after conversion is {y/h, 1-x/w}.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -166,7 +168,7 @@ The coordinate system is based on the horizontal device direction with the devic
 
 | Name          | Type                           | Mandatory| Description                |
 | ------------- | -------------------------------| ---- | ------------------- |
-| point | [Point](arkts-apis-camera-i.md#point)                | Yes  | Metering point. The value range of x and y must be within [0, 1]. If a value less than 0 is passed, the value **0** is used. If a value greater than **1** is passed, the value **1** is used.            |
+| point | [Point](arkts-apis-camera-i.md#point) | Yes | Metering point. The value range of x and y must be within [0, 1]. If a value less than 0 is passed, the value **0** is used. If a value greater than **1** is passed, the value **1** is used. |
 
 **Error codes**
 

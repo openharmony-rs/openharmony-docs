@@ -1,7 +1,7 @@
 # native_interface_arkweb.h
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -641,6 +641,7 @@ void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)
 >
 > - 该接口为全局静态方法，须在使用ArkWeb组件和初始化ArkWeb内核前调用，否则该设置无效。
 > - 该接口仅适用于调用后会初始化CookieManager的接口，比如[ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md)模块中的接口。调用本接口后，再调用适用的接口，会在初始化CookieManager时跳过初始化ArkWeb内核，后续需自行初始化ArkWeb内核。
+> - 从API版本26.0.1开始，调用本接口设置为true后，[ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md)模块中的接口支持在异步线程使用。
 
 **起始版本：** 22
 

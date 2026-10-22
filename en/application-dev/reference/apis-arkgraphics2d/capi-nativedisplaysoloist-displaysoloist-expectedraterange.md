@@ -1,18 +1,20 @@
 # DisplaySoloist_ExpectedRateRange
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @wh_qwe-->
 <!--Designer: @wh_qwe-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=ccdbec13380fdf227c4a20f5bde9cc05c16badee translatedAt=2026-08-24T09:15:51.719Z pushedAt=2026-08-31T11:52:35.166Z -->
 
-```
+```c
 typedef struct {...} DisplaySoloist_ExpectedRateRange
 ```
 
 ## Overview
 
-This struct describes the expected frame rate range.
+Defines the expected frame rate range struct, which is used to set the expected frame rate range of DisplaySoloist (variable frame rate drawing on an independent thread). The set expected frame rate range serves as a reference for system scheduling, and the system tries to adjust the drawing frame rate within this range.
 
 **Since**: 12
 
@@ -26,35 +28,6 @@ This struct describes the expected frame rate range.
 
 | Name| Description|
 | -- | -- |
-| int32_t min | Minimum value of the expected frame rate range. The value range is [0,120].|
-| int32_t max | Maximum value of the expected frame rate range. The value range is [0,120].|
-| int32_t expected | Expected frame rate. The value range is [0,120].|
-
-
-### Member Functions
-
-| Name| typedef Keyword| Description|
-| -- | -- | -- |
-| [typedef void (\*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data)](#oh_displaysoloist_framecallback) | OH_DisplaySoloist_FrameCallback() | Defines the pointer to an OH_DisplaySoloist callback function.<br>**Since**: 12|
-
-## Member Function Description
-
-### OH_DisplaySoloist_FrameCallback()
-
-```
-typedef void (*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data)
-```
-
-**Description**
-
-Defines the pointer to an OH_DisplaySoloist callback function.
-
-**Since**: 12
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| long long timestamp | Current frame VSync timestamp.|
-|  long long targetTimestamp | Expected VSync timestamp of the next frame.|
-|  void* data | Pointer to user-defined data.|
+| int32_t min | Expected minimum frame rate. Unit: fps. Value range: [0, maximum refresh rate supported by the device]. |
+| int32_t max | Expected maximum frame rate. Unit: fps. Value range: [min, maximum refresh rate supported by the device]. |
+| int32_t expected | Expected target frame rate. Unit: fps. Value range: [min, max]. |

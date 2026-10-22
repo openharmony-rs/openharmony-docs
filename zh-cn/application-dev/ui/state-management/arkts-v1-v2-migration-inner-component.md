@@ -928,7 +928,7 @@ V1的\@Provide和\@Consume与V2的\@Provider和\@Consumer定位和作用类似�
 
 **alias和属性名匹配规则**
 
-在V1中，\@Provide和\@Consume的匹配既可以通过alias，也可以通过属性名。在V2中，alias成为唯一的key，如果在\@Consumer中制定了alias，只能通过alias而非属性名进行匹配。
+在V1中，\@Provide和\@Consume的匹配既可以通过alias，也可以通过属性名。在V2中，alias成为唯一的key，如果在\@Consumer中指定了alias，只能通过alias而非属性名进行匹配。
 
 V1实现：
 
@@ -1468,7 +1468,7 @@ V1中并没有提供计算属性的概念，所以对于UI中的冗余计算，�
 
 V1：
 
-在下面的示例中，每次改变lastName都会触发Text组件的刷新，每次Text组件的刷新，都需要重复计算this.lastName + ' ' + this.firstName。
+在下面的示例中，每次改变lastName都会触发Text组件的刷新，每次Text组件的刷新，都需要重复计算this.firstName + ' ' + this.lastName。
 
 <!-- @[ComputedV1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV1.ets) -->
 

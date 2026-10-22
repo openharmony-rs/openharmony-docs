@@ -1,4 +1,12 @@
-#  HarmonyAppProvision配置文件说明
+# HarmonyAppProvision配置文件说明
+
+<!--Kit: Common-->
+<!--Subsystem: Security-->
+<!--Owner: @scuteehuangjun-->
+<!--Designer: @scuteehuangjun; @liuchibin-->
+<!--Tester: @wwrongs-->
+<!--Adviser: @zengyawen-->
+
 在应用的开发过程中，应用的权限、签名信息等需要在HarmonyAppProvision配置文件（该文件在部分文档中也称为profile文件）中声明。
 
 ## 配置文件的内部结构
@@ -114,7 +122,7 @@ debug-info对象包含应用调试场景下的信息，主要是设备管控的�
 开发者可以参考以下步骤，修改HarmonyAppProvision配置文件。
 
 1. 打开OpenHarmony SDK所在目录（可通过DevEco Studio菜单栏中单击File > Settings > OpenHarmony SDK界面查看）。
-2. 在SDK目录下，进入Toolchains > {Version} > lib文件夹，打开“UnsignedReleasedProfileTemplate.json”文件。
+2. 在SDK目录下，进入Toolchains > {Version} > lib文件夹，打开“UnsgnedReleasedProfileTemplate.json”文件。
 3. 根据实际需求，修改对应的字段。
 
 完成配置文件修改后，开发者可以参考[Hap包签名工具使用指导](hapsigntool-overview.md)进行应用签名。

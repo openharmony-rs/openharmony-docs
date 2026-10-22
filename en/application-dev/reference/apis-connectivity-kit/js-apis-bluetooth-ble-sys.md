@@ -3,11 +3,12 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=2de232271299108c6e4cd1acc9f3421498b21ac7 translatedAt=2026-09-15T02:26:27.032Z pushedAt=2026-09-15T11:26:03.960Z -->
 
-This module provides [Bluetooth Low Energy (BLE)](../../connectivity/terminology.md#ble) capabilities. The first batch of APIs include the characteristic value write method based on the [Generic Attribute Profile (GATT)](../../connectivity/terminology.md#gatt).
+This module provides [Bluetooth Low Energy (BLE)](../../connectivity/bluetooth/terminology.md#ble) capabilities. The first batch of APIs include the characteristic value write method based on the [Generic Attribute Profile (GATT)](../../connectivity/bluetooth/terminology.md#gatt). This module is applicable to scenarios where GATT data needs to be written to a BLE device. It enables your app to obtain the response from the server after the characteristic value is written, improving the reliability and traceability of data transfer.
 
 > **NOTE**
 >
@@ -24,7 +25,7 @@ import { ble } from '@kit.ConnectivityKit';
 
 ## GattClientDevice
 
-Represents a GATT client class. It provides APIs for connecting to and transmitting data with the server.
+Represents a GATT client class, which provides APIs for connecting to and transferring data with the server.
 
 - Before using the methods of this class, use the [createGattClientDevice](js-apis-bluetooth-ble.md#blecreategattclientdevice) method to construct an instance of this class.
 - You can create multiple instances of this class to manage multiple GATT connections.
@@ -36,7 +37,7 @@ writeCharacteristicValueWithContext(characteristic: BLECharacteristic, writeType
 Writes a value to the specified characteristic. This API uses a promise to return the result.<br>
 - Unlike the [writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue) API, this API supports the function of returning responses from the server. After the characteristic value is written, the caller can obtain the timestamp and other information of the response message received by the local end from the server.
 - This API supports only the write mode where writeType is set to [WRITE](js-apis-bluetooth-ble.md#gattwritetype) to obtain the response information from the server.
-- You need to call [getServices](js-apis-bluetooth-ble.md#getservices) to obtain all capabilities supported by the server, and the specified input parameter characteristic value UUID must be included. Otherwise, the write operation fails.<br>
+- You need to call [getServices](js-apis-bluetooth-ble.md#getservices) to obtain all capabilities supported by the server, and the specified input parameter characteristic value UUID must be included in these capabilities. Otherwise, the write operation fails.<br>
 - You can call the following APIs only after receiving an asynchronous callback: [readCharacteristicValue](js-apis-bluetooth-ble.md#readcharacteristicvalue), [readDescriptorValue](js-apis-bluetooth-ble.md#readdescriptorvalue), [writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue), [writeDescriptorValue](js-apis-bluetooth-ble.md#writedescriptorvalue), [setCharacteristicChangeNotification](js-apis-bluetooth-ble.md#setcharacteristicchangenotification), and [setCharacteristicChangeIndication](js-apis-bluetooth-ble.md#setcharacteristicchangeindication).<br>
 - The length of the characteristic data that can be written by an application at a time is limited to (MTU-3) bytes. The caller can specify the MTU size by calling [setBLEMtuSize](js-apis-bluetooth-ble.md#setblemtusize) as required to change the length of the characteristic data that can be written at a time.
 
@@ -50,14 +51,14 @@ Writes a value to the specified characteristic. This API uses a promise to retur
 
 | Name           | Type                                     | Mandatory  | Description                 |
 | -------------- | --------------------------------------- | ---- | ------------------- |
-| characteristic | [BLECharacteristic](js-apis-bluetooth-ble.md#blecharacteristic) | Yes   | Characteristic to write.|
-| writeType | [GattWriteType](js-apis-bluetooth-ble.md#gattwritetype) | Yes   | Write mode.|
+| characteristic | [BLECharacteristic](js-apis-bluetooth-ble.md#blecharacteristic) | Yes    | Characteristic to write. The length of data that can be written at a time is (MTU – 3) bytes, which can be adjusted by calling **setBLEMTUSize**. |
+| writeType | [GattWriteType](js-apis-bluetooth-ble.md#gattwritetype) | Yes    | Write type. Currently, only the **WRITE** type is supported. |
 
 **Return value**
 
 | Type                                      | Description                        |
 | ---------------------------------------- | -------------------------- |
-| Promise&lt;GattRspContext&gt; | Promise used to return the [GattRspContext](#gattrspcontext) object.|
+| Promise&lt;[GattRspContext](#gattrspcontext)&gt; | Promise used to return the **GattRspContext** object. |
 
 **Error codes**
 
@@ -125,4 +126,4 @@ Defines the scan filters for BLE advertising packet data. Only advertising packe
 
 | Name                                    | Type   | Read-Only| Optional | Description                                                        |
 | ------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
-| irk<sup>23+</sup> | Uint8Array | No| Yes| Identity Resolving Key (IRK), which is used to filter the BLE advertising packet that carries the [resolvable private address](./js-apis-bluetooth-common.md#bluetoothrawaddresstype23).<br>The resolvable private address of a Bluetooth device changes over time. If the IRK and public address or static random address of the device are known, BLE advertising packets sent by the same Bluetooth device at different time can be filtered.<br>When this parameter is used, the address and address type must be specified by the address parameters in [ScanFilter](js-apis-bluetooth-ble.md#scanfilter). The address must be a valid public address or static random address, [addressType](js-apis-bluetooth-common.md#bluetoothaddresstype) must be set to **REAL**, and [rawAddressType](js-apis-bluetooth-common.md#bluetoothrawaddresstype23) must be set based on the actual address.<br>**System API**: This is a system API.|
+| irk<sup>23+</sup> | Uint8Array | No | Yes | Identity Resolving Key (IRK), which is used to filter the BLE advertising packet that carries the resolvable private address ([BluetoothRawAddressType](./js-apis-bluetooth-common.md#bluetoothrawaddresstype23)).<br>The resolvable private address of a Bluetooth device changes over time. If the IRK and public address or static random address of the device are known, BLE advertising packets sent by the same Bluetooth device at different times can be filtered.<br>When this parameter is used, the address and address type must be specified by the address parameters in [ScanFilter](js-apis-bluetooth-ble.md#scanfilter). The address must be a valid public address or static random address, [addressType](js-apis-bluetooth-common.md#bluetoothaddresstype) must be set to **REAL**, and [rawAddressType](js-apis-bluetooth-common.md#bluetoothrawaddresstype23) must be set based on the actual address. Otherwise, BLE broadcast packets carrying resolvable private addresses cannot be correctly filtered.<br>**System API**: This is a system API.|

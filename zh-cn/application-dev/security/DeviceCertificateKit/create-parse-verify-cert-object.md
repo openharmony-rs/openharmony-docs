@@ -77,8 +77,8 @@ function certSample(): void {
 
     // 获取证书主体名称。
     let subjectNameBin = x509Cert.getSubjectName(cert.EncodingType.ENCODING_UTF8);
-    let encoder = util.TextDecoder.create();
-    let subjectName = encoder.decodeToString(subjectNameBin.data);
+    let decoder = util.TextDecoder.create();
+    let subjectName = decoder.decodeToString(subjectNameBin.data);
     console.info(`X509 subjectName: ${subjectName}`);
 
     // 获取证书对象的字符串类型数据。
@@ -89,7 +89,7 @@ function certSample(): void {
     try {
       let pubKey = x509Cert.getPublicKey();
       // 验证证书签名。
-      x509Cert.verify(pubKey, (err, data) => {
+      x509Cert.verify(pubKey, (err, _result) => {
         if (err == null) {
           // 签名验证成功。
           console.info('verify result: success.');

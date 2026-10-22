@@ -519,7 +519,7 @@ class InfoOne {
 @Observed
 class MessageInfo1 { // 一层嵌套
   @Track public info: InfoOne; // 防止messageId改变导致info的连带刷新
-  @Track public messageId: number; // 防止messageId改变导致info的连带刷新
+  @Track public messageId: number; // 防止info改变导致messageId的连带刷新
 
   constructor(info?: InfoOne, messageId?: number) {
     this.info = info || new InfoOne();

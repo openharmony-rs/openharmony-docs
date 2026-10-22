@@ -69,20 +69,25 @@
        auto rawFile = OH_ResourceManager_OpenRawFile(nativeResourceManager, modelName.c_str());
        if (rawFile == nullptr) {
            LOGE("MS_LITE_ERR: Open model file failed");
-           OH_ResourceManager_CloseRawFile(rawFile);
            return nullptr;
        }
        long fileSize = OH_ResourceManager_GetRawFileSize(rawFile);
        if (fileSize <= 0) {
            LOGE("MS_LITE_ERR: FileSize not correct");
+           OH_ResourceManager_CloseRawFile(rawFile);
+           return nullptr;
        }
        void *modelBuffer = malloc(fileSize);
        if (modelBuffer == nullptr) {
            LOGE("MS_LITE_ERR: malloc failed");
+           OH_ResourceManager_CloseRawFile(rawFile);
+           return nullptr;
        }
        int ret = OH_ResourceManager_ReadRawFile(rawFile, modelBuffer, fileSize);
        if (ret == 0) {
            LOGE("MS_LITE_ERR: OH_ResourceManager_ReadRawFile failed");
+           free(modelBuffer);
+           modelBuffer = nullptr;
            OH_ResourceManager_CloseRawFile(rawFile);
            return nullptr;
        }
@@ -471,9 +476,9 @@ struct Index {
                         let index = 0;
                         for (let i = 0; i < imageArr.length; i++) {
                           if ((i + 1) % 4 === 0) {
-                            float32View[index] = (imageArr[i - 3] / 255.0 - means[0]) / stds[0]; // B
+                            float32View[index] = (imageArr[i - 3] / 255.0 - means[0]) / stds[0]; // R
                             float32View[index+1] = (imageArr[i - 2] / 255.0 - means[1]) / stds[1]; // G
-                            float32View[index+2] = (imageArr[i - 1] / 255.0 - means[2]) / stds[2]; // R
+                            float32View[index+2] = (imageArr[i - 1] / 255.0 - means[2]) / stds[2]; // B
                             index += 3;
                           }
                         }

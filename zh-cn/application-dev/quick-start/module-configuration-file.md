@@ -153,7 +153,7 @@ module.json5配置文件包含以下标签。
 | compressNativeLibs | 在打包hap时，该标签标识libs库是否以压缩存储的方式打包到HAP。<br/>-&nbsp;true：libs库以压缩方式存储。<br/>-&nbsp;false：libs库以不压缩方式存储。 | 布尔值 | 该标签可缺省，在打包hap时缺省值为false。 |
 | extractNativeLibs | 标识应用安装时，libs库是否解压到应用安装目录。当compressNativeLibs和extractNativeLibs都配置为false时，应用以不解压libs库的方式进行安装；其他场景，应用以解压libs库的方式进行安装。<br/>**说明：**<br/>从API version 20开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为true。 |
 | libIsolation | 在libs目录下是否生成模块名称目录存储so，用于区分同一应用中不同HAP的.so文件，以防止.so文件冲突。<br/>-&nbsp;true：当前HAP的.so文件会储存在libs目录中以Module名命名的路径下。<br/>-&nbsp;false：当前HAP的.so文件会直接储存在libs目录中。 | 布尔值 | 该标签可缺省，缺省值为false。 |
-| [fileContextMenu](#filecontextmenu标签) | 标识当前HAP的右键菜单配置项，是一个profile文件资源。取值为长度不超过255字节的字符串。<br/>**说明：**<br/>仅在PC/2in1设备上生效。<br/>仅允许在entry类型模块中配置。 | 字符串 | 该标签可缺省，缺省值为空。 |
+| [fileContextMenu](right-click-menu.md#声明右键菜单) | 标识当前HAP的右键菜单配置项，是一个profile文件资源。取值为长度不超过255字节的字符串。<br/>**说明：**<br/>仅在PC/2in1设备上生效。<br/>仅允许在entry类型模块中配置。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | querySchemes | 标识允许当前应用进行跳转查询的URL schemes，只允许entry类型模块配置，每个字符串取值不超过128字节。<br/>**说明：**<br/>从API version 21开始，最多允许配置200个URL scheme。API version 20及之前的版本，最多允许配置50个URL scheme。  | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | [routerMap](#routermap标签) | 标识当前模块配置的路由表路径。取值为长度不超过255字节的字符串。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | [appEnvironments](#appenvironments标签) | 标识当前模块配置的应用环境变量，只允许entry和feature模块配置。 | 对象数组 | 该标签可缺省，缺省值为空。 |
@@ -307,7 +307,7 @@ abilities标签描述UIAbility组件的配置信息，标签值为数组类型�
 | startWindowBackground | 标识当前UIAbility组件启动页面背景颜色资源文件的索引，取值为长度不超过255字节的字符串。<br/>取值示例：$color:red。| 字符串 | 该标签不可缺省。 |
 | removeMissionAfterTerminate | 标识当前UIAbility组件销毁后，是否从任务列表中移除任务。<br/>-&nbsp;true表示销毁后移除任务。<br/>-&nbsp;false表示销毁后不移除任务。<br/>**说明：**<br/>2in1设备和平板设备的自由多窗模式下配置不生效，默认移除任务。 | 布尔值 | 该标签可缺省，缺省值为false。 |
 | allowSelfRedirect | 标识应用是否允许通过<!--RP16-->[App Linking](../application-models/app-linking-startup.md)<!--RP16End-->跳转自己。<br/>-&nbsp;true表示允许通过App Linking跳转自己。<br/>-&nbsp;false表示不允许通过App Linking跳转自己。<br/>**说明：**<br/>从API version 23开始，支持该标签。 | 布尔值 | 该标签可缺省，缺省值为true。 |
-| orientation | 标识当前UIAbility组件启动时的方向，支持配置枚举，或启动方向资源索引。<br/>**启动方向枚举支持的取值如下：**<br/>-&nbsp;unspecified：未指定方向，由系统自动判断显示方向。<br/>-&nbsp;landscape：横屏。<br/>-&nbsp;portrait：竖屏。<br/>-&nbsp;follow_recent：跟随背景窗口的旋转模式。<br/>-&nbsp;landscape_inverted：反向横屏。<br/>-&nbsp;portrait_inverted：反向竖屏。<br/>-&nbsp;auto_rotation：随传感器旋转。<br/>-&nbsp;auto_rotation_landscape：传感器横屏旋转，包括横屏和反向横屏。<br/>-&nbsp;auto_rotation_portrait：传感器竖屏旋转，包括竖屏和反向竖屏。<br/>-&nbsp;auto_rotation_restricted：传感器开关打开，方向可随传感器旋转。<br/>-&nbsp;auto_rotation_landscape_restricted：传感器开关打开，方向可随传感器旋转为横屏，包括横屏和反向横屏。<br/>-&nbsp;auto_rotation_portrait_restricted：传感器开关打开，方向可随传感器旋转为竖屏，包括竖屏和反向竖屏。<br/>-&nbsp;locked：传感器开关关闭，方向锁定。<br/>-&nbsp;auto_rotation_unspecified：受开关控制和由系统判定的自动旋转模式。<br/>-&nbsp;follow_desktop：跟随桌面的旋转模式。<br/>&nbsp;**配置启动方向的资源索引时**，取值为长度不超过255字节的字符串，配置示例：$string:orientation。<br/>**说明：**<br/>&nbsp;-&nbsp;从API version 14开始，支持配置启动方向资源索引。 | 字符串 | 该标签可缺省，缺省值为unspecified。 |
+| orientation | 标识当前UIAbility组件启动时的方向，支持配置枚举，或启动方向资源索引。<br/>**启动方向枚举支持的取值如下：**<br/>-&nbsp;unspecified：未指定方向，由系统自动判断显示方向。<br/>-&nbsp;landscape：横屏。<br/>-&nbsp;portrait：竖屏。<br/>-&nbsp;follow_recent：随背景窗口旋转。<br/>-&nbsp;landscape_inverted：反向横屏。<br/>-&nbsp;portrait_inverted：反向竖屏。<br/>-&nbsp;auto_rotation：随传感器旋转。<br/>-&nbsp;auto_rotation_landscape：随传感器横屏旋转，包括横屏和反向横屏。<br/>-&nbsp;auto_rotation_portrait：随传感器竖屏旋转，包括竖屏和反向竖屏。<br/>-&nbsp;auto_rotation_restricted：系统旋转锁定开关关闭，方向可随传感器旋转。<br/>-&nbsp;auto_rotation_landscape_restricted：系统旋转锁定开关关闭，方向可随传感器旋转为横屏，包括横屏和反向横屏。<br/>-&nbsp;auto_rotation_portrait_restricted：系统旋转锁定开关关闭，方向可随传感器旋转为竖屏，包括竖屏和反向竖屏。<br/>-&nbsp;locked：系统旋转锁定开关打开，方向锁定。<br/>-&nbsp;auto_rotation_unspecified：受系统旋转锁定开关控制和由系统判定的自动旋转模式。<br/>-&nbsp;follow_desktop：随桌面旋转。<br/>&nbsp;**配置启动方向的资源索引时**，取值为长度不超过255字节的字符串，配置示例：$string:orientation。<br/>**说明：**<br/>&nbsp;-&nbsp;从API version 14开始，支持配置启动方向资源索引。 | 字符串 | 该标签可缺省，缺省值为unspecified。 |
 | supportWindowMode | 标识当前UIAbility组件所支持的窗口模式。支持的取值如下：<br/>-&nbsp;fullscreen：全屏模式。<br/>-&nbsp;split：分屏模式。<br/>-&nbsp;floating：悬浮窗模式。<br/>在[自由窗口](../windowmanager/window-terminology.md#freeform-window自由窗口)状态下同时配置fullscreen和split时，如果应用的[targetAPIVersion](./app-configuration-file.md#配置文件标签)小于15，窗口将以悬浮窗模式启动；如果应用的[targetAPIVersion](./app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。<br/>此外，还可以通过metadata配置窗口模式，具体的配置规则和优先级请参考[metadata](#metadata标签)。 | 字符串数组 | 该标签可缺省，缺省值为<br/>["fullscreen",&nbsp;"split",&nbsp;"floating"]。 |
 | <!--DelRow-->priority | 标识当前UIAbility组件的优先级。[隐式查询](../application-models/explicit-implicit-want-mappings.md)时，优先级越高，UIAbility在返回列表越靠前。取值范围0~10，数值越大，优先级越高。<br/>**说明：**<br/>三方应用的配置不生效，需申请应用特权AllowAbilityPriorityQueried，详见[应用特权配置指南](../../device-dev/subsystems/subsys-app-privilege-config-guide.md)。 | 整型数值 | 该标签可缺省，缺省值为0。 |
 | maxWindowRatio | 标识当前UIAbility组件支持的最大的宽高比。该标签最小取值为0。 | 数值 | 该标签可缺省，缺省值为平台支持的最大的宽高比。 |
@@ -567,8 +567,8 @@ extensionAbilities示例：
 |backup|数据备份的ExtensionAbility。|
 |enterpriseAdmin|[企业设备管理](../mdm/mdm-kit-admin.md)的ExtensionAbility。企业设备管理应用必须拥有此类型的ExtensionAbility。|
 |window|该ExtensionAbility会在启动过程中创建一个window，为开发者提供界面开发。开发者开发出来的界面将通过UIExtensionComponent控件组合到其他应用的窗口中，三方应用配置不生效，当前配置仅在系统应用中有效。|
-|thumbnail|获取文件缩略图的ExtensionAbility，开发者可以对自定义文件类型的文件提供缩略图。|
-|preview|该ExtensionAbility会将文件解析后在一个窗口中显示，开发者可以通过将此窗口组合到其他应用窗口中。|
+|thumbnail|获取文件缩略图的ExtensionAbility，开发者可以对自定义文件类型的文件提供缩略图。预留字段，暂不支持使用。|
+|preview|该ExtensionAbility会将文件解析后在一个窗口中显示，开发者可以通过将此窗口组合到其他应用窗口中。预留字段，暂不支持使用。|
 |print|打印框架的ExtensionAbility。|
 |push|推送的ExtensionAbility。|
 |driver|驱动框架的ExtensionAbility。应用配置了driver类型的ExtensionAbility后会被视为驱动应用，驱动应用在安装、卸载和恢复时不会区分用户，且创建新用户时也会安装设备上已有的驱动应用。例如，创建子用户时会默认安装主用户已有的驱动应用，在子用户上卸载驱动应用时，主用户上对应的驱动应用也会同时被卸载。|
@@ -646,7 +646,7 @@ shortcuts标识应用的快捷方式信息。标签值为数组，包含四个�
 | label | 标识快捷方式的标签信息，即快捷方式对外显示的文字描述信息。取值为长度不超过255字节的字符串，可以是描述性内容，也可以是标识label的资源索引。 | 字符串 | 该标签可缺省，缺省值为空。 |
 | icon | 标识快捷方式的图标，取值为资源文件的索引。<br/>**说明：**<br/>图标分为单层图标和分层图标，单层图标包含一个图片，分层图标包含前景图和背景图，推荐使用如下配置的分层图标：<br/>1.前景图：图标显示大小为450\*450px，资源大小为1024\*1024px的透明图层。<br/>2.背景图：大小为1024\*1024px。<br/> | 字符串 | 该标签可缺省，缺省值为空。 |
 | visible | 标识快捷方式是否显示，取值为true时显示快捷方式，取值为false时不显示快捷方式。<br/>**说明：**<br/>1.从API version 20开始，支持该标签。<br/> | 布尔值 | 该标签可缺省，缺省为true。 |
-| [wants](#wants标签) | 标识快捷方式内定义的目标wants信息集合，在调用launcherBundleManager的startShortcut接口时，会拉起wants标签里的第一个目标组件，推荐只配置一个wants元素。 | 对象 | 该标签可缺省，缺省为空。 |
+| [wants](#wants标签) | 标识快捷方式内定义的目标wants信息集合<!--Del-->，在调用launcherBundleManager的startShortcut()接口时，会拉起wants标签里的第一个目标组件，推荐只配置一个wants元素<!--DelEnd-->。 | 对象 | 该标签可缺省，缺省为空。 |
 
 
 1. 在/resources/base/profile/目录下配置shortcuts_config.json配置文件。
@@ -1213,93 +1213,6 @@ hnpPackages示例：
   },
 }
 ```
-
-## fileContextMenu标签
-
-该标签标识当前HAP的右键菜单配置项，是一个profile文件资源，用于指定描述应用注册右键菜单配置文件。仅在PC/2in1设备上生效。仅允许在entry类型模块中配置。
-
-fileContextMenu标签示例
-
-<!-- @[module_fileContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    // ...
-    "fileContextMenu": "$profile:menu", // 资源配置，指向profile下面定义的配置文件menu.json
-    // ...
-  }
-}
-```
-
-在开发视图的resources/base/profile下面定义配置文件menu.json，其中文件名“menu.json”可自定义，需要和fileContextMenu标签指定的信息对应。配置文件中描述了当前应用注册的右键菜单的项目和响应行为。
-
-配置文件根节点名称为fileContextMenu，为对象数组，标识当前module注册右键菜单的数量。（单模块和单应用注册数量不能超过5个，配置超过数量当前只解析随机5个）
-
-**表25** fileContextMenu标签配置说明
-
-| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
-| -------- | -------- | -------- | -------- |
-| abilityName | 表示当前右键菜单对应的需要拉起的ability名称。 | 字符串 | 不可缺省。 |
-| menuItem | 右键菜单显示的信息。命名建议：<br/>原则一：[动作]+[应用名]，中文示例：用{App}打开、用{App} ({Plugin}插件) 打开；英文示例：Open with {App}、Open with {App} ({Plugin})。<br/>原则二：[动作]+[目的]，示例：压缩为{文件名}、压缩至{路径}、用{App}转换为{格式}。 | 资源id | 不可缺省。 |
-| menuHandler | 一个ability可以创建多个右键菜单， 该标签与右键菜单显示项一一对应，用于区分用户拉起的不同右键菜单项。开发者可自定义该标签取值，确保该标签在整个ability中唯一。在用户点击右键菜单拉起应用时，会作为参数传递给应用。 | 字符串 | 不可缺省。 |
-| menuContext | 定义展示该菜单项需要的上下文，可以支持多种情况，类型为数组。 | 对象数组 | 不可缺省。 |
-
-**表26** menuContext标签配置说明
-
-| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
-| -------- | -------- | -------- | -------- |
-| menuKind | 表示单击如下类型时会触发右键菜单。取值范围如下：<br/>-&nbsp;0：空白处<br/>-&nbsp;1：文件<br/>-&nbsp;2：文件夹<br/>-&nbsp;3：文件和文件夹 | 数值 | 不可缺省。 |
-| menuRule | 表示采用什么方式选择文件或文件夹时，会触发右键菜单。取值范围如下：<br/>-&nbsp;single：单选<br/>-&nbsp;multi：多选<br/>-&nbsp;both：单选或多选 | 字符串 | 仅当menuKind为1或2时，才会读取该标签，此时不可缺省。 |
-| fileSupportType | 表示当选中的文件列表里包含指定的文件类型时，显示右键菜单。<br/>当该标签取值为["*"]时，将会读取fileNotSupportType标签。<br/>当该标签取值为[]时，将不做任何处理。 | 字符串数组 | 仅当menuKind为1时，才会读取该标签，此时不可缺省。 |
-| fileNotSupportType | 表示当选中的文件列表里包含这些文件类型时，不显示该右键菜单。<br/>仅当menuKind为1、且fileSupportType为["*"]时，才会读取该标签。 | 字符串数组 | 可缺省，缺省值为空。 |
-
-resources/base/profile路径下的menu.json资源文件示例如下：
-```json
-{
-  "fileContextMenu": [
-    {
-      "abilityName": "EntryAbility",
-      "menuItem": "$string:module_desc",
-      "menuHandler": "openCompress",
-      "menuContext": [
-        {
-          "menuKind": 0
-        },
-        {
-          "menuKind": 1,
-          "menuRule": "both",
-          "fileSupportType": [
-            ".rar",
-            ".zip"
-          ],
-          "fileNotSupportType": [
-            ""
-          ]
-        },
-        {
-          "menuKind": 2,
-          "menuRule": "single"
-        },
-        {
-          "menuKind": 3
-        }
-      ]
-    }
-  ]
-}
-```
-
-**响应行为**
-
-应用进行右键扩展菜单注册后，在文件管理器通过右键操作拉起菜单，该菜单中会有“更多”选项。单击“更多”选项后，会出现注册后的menuItem列表，单击任意一个选项后，文件管理器默认通过startAbility的方式拉起三方应用，除了指定三方应用的包名和ability名之外，want中的parameter中，也会传入如下标签：
-
-**表27** want中parameter标签说明
-
-| 参数名 | 值 | 类型 |
-| -------- | -------- | -------- |
-| menuHandler | 对应注册配置文件中menuHandler的值。 | 字符串 |
-| uriList | 用户在具体文件上触发右键的uri值，如果空白处响应，此值为空，单个文件响应，数组长度1，多个文件响应则传入对应所有文件的uri值。 | 字符串数组 |
 
 ## startWindow标签
 

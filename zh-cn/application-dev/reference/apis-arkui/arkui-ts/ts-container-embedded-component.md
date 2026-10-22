@@ -114,7 +114,7 @@ onTerminated(callback: import('../api/@ohos.base').Callback&lt;TerminationInfo&g
 
 onError(callback: import('../api/@ohos.base').ErrorCallback)
 
-被拉起的EmbeddedUIExtensionAbility在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理，业务错误码详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
+被拉起的EmbeddedUIExtensionAbility在运行过程中发生异常，或出现拉起EmbeddedUIExtensionAbility失败、通知提供方切后台/销毁EmbeddedUIExtensionAbility失败、在EmbeddedUIExtensionAbility中嵌套使用EmbeddedComponent等异常情形时，触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理，业务错误码详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
 
 > **说明：**
 >
@@ -180,7 +180,7 @@ onDrawReady(callback: Callback\<void>)
 | placeholder                        | [ComponentContent](../js-apis-arkui-ComponentContent.md)     | 否   | 是   | 设置占位符，在EmbeddedComponent与EmbeddedUIExtensionAbility建立连接前显示。<br>默认值：null，表示不显示占位符。 |
 | areaChangePlaceholder              | Record\<string, [ComponentContent](../js-apis-arkui-ComponentContent.md)> | 否   | 是   | 设置尺寸变化占位符，在EmbeddedComponent尺寸发生变化并且EmbeddedUIExtensionAbility的内容渲染未完成时显示。key为尺寸变化场景类型（如“FOLD_TO_EXPAND”表示折叠展开场景），value为对应场景的占位符组件。当前支持的键值包括：FOLD_TO_EXPAND。传入不支持的键值时，该占位符不生效。默认值：null，表示不设置尺寸变化占位符。 |
 | dpiFollowStrategy                  | [EmbeddedDpiFollowStrategy](#embeddeddpifollowstrategy)    | 否   | 是   | 设置DPI，使其能够跟随宿主或EmbeddedUIExtensionAbility。<br> 默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI，表示跟随EmbeddedUIExtensionAbility。 |
-| windowModeFollowStrategy | [EmbeddedWindowModeFollowStrategy](#embeddedwindowmodefollowstrategy) | 否   | 是   | 设置窗口模式，使其能够跟随宿主或EmbeddedUIExtensionAbility。<br> 默认值：FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE，表示窗口模式跟随EmbeddedUIExtensionAbility。<br>**起始版本：** 26.0.0 |
+| windowModeFollowStrategy | [EmbeddedWindowModeFollowStrategy](#embeddedwindowmodefollowstrategy) | 否   | 是   | 设置窗口模式，使其能够跟随宿主或EmbeddedUIExtensionAbility。<br> 默认值：FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE，表示窗口模式跟随EmbeddedUIExtensionAbility。 |
 
 ## EmbeddedDpiFollowStrategy
 
@@ -226,7 +226,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
 
 | 名称 | 类型                      | 只读 | 可选 | 说明                                                 |
 | ---- | -------------------------| ---- | ---- | ---------------------------------------------------- |
-| code | number                                                     | 否 | 否 | 被拉起的EmbeddedUIExtensionAbility退出时返回的结果码，由`terminateSelfWithResult`或者`terminateSelf`被调用时传入的数据决定。若通过`terminateSelf`退出，code取默认值0。 |
+| code | number                                                     | 否 | 否 | 被拉起的EmbeddedUIExtensionAbility退出时返回的结果码。若通过`terminateSelfWithResult`退出，code由调用时传入的resultCode决定；若通过`terminateSelf`退出，code取默认值0。 |
 | want | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 否 | 是 | 被拉起的EmbeddedUIExtensionAbility退出时返回的数据。若通过`terminateSelf`退出，则该值为undefined。   |
 
 ## 示例（加载EmbeddedComponent）
@@ -267,8 +267,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
       abilityName: 'ExampleEmbeddedAbility',
     };
     @State dpiFollowStrategy: EmbeddedDpiFollowStrategy = EmbeddedDpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI;
-    @State windowStrategy: EmbeddedWindowModeFollowStrategy =
-    EmbeddedWindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
+    @State windowStrategy: EmbeddedWindowModeFollowStrategy = EmbeddedWindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
     private initPlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder), new Params());
     private areaChangePlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(AreaChangePlaceholderBuilder), new Params());
 
@@ -398,12 +397,12 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
       │   ├── extensionAbility
       │   │   └── ExampleEmbeddedAbility.ets
       │   └── pages
-      |       ├── extension.ets
-      │       └── Index.ets  
+      │       ├── extension.ets
+      │       └── Index.ets
       ├── resources
-      |   └── base
-      |       └── profile
-      |           └── main_pages.json
+      │   └── base
+      │       └── profile
+      │           └── main_pages.json
       └── module.json5
   ```
 

@@ -2,10 +2,12 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @gzweioh-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @zhangyao75477-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-The web component supports the picture-in-picture (PiP) feature. An application can use the Picture-in-Picture API of the W3C standard to create a floating window on a web page to play videos. In this way, users can continue to watch videos in the PiP window when browsing other web pages or interacting with other applications. 
+<!-- md-trans-meta sourceCommit=8004d75b05732e296edfec497742a956b9d2f6b5 translatedAt=2026-09-21T02:25:47.810Z pushedAt=2026-09-21T13:53:34.237Z -->
+
+The web component supports the picture-in-picture (PiP) feature. An application can use the Picture-in-Picture API of the W3C standard to create a floating window on a web page to play videos. In this way, users can continue to watch videos in the PiP window when browsing other web pages or interacting with other applications.  
 
 To use online video resources, you need to set the network permission in the configuration file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
@@ -20,7 +22,7 @@ To use online video resources, you need to set the network permission in the con
 ```
 
 ## Constraints
-1. H.264/H.265/HLS videos can be played in the PiP window. 
+1. H.264/H.265/HLS videos can be played in the PiP window.  
 2. The size of the PiP window is adjusted based on the system capability. For details, see the system features and capabilities in the design guide.
 
 ## Entering Picture-in-Picture
@@ -33,7 +35,7 @@ In the following example, a video element that includes only a media source and 
 <button id="togglePipButton">Enable PiP</button>
 ```
 
-Use the **requestPictureInPicture()** method provided by the **HTMLVideoElement** API to enable the PiP feature. If the system supports the PiP feature, the video is displayed in PiP mode.
+The **requestPictureInPicture()** method provided by the **HTMLVideoElement** API requests to enter the picture-in-picture mode. If the system supports the picture-in-picture capability, the video is displayed in picture-in-picture mode.
 
 ```js
 togglePipButton.addEventListener("click", async () => {
@@ -52,20 +54,24 @@ togglePipButton.addEventListener("click", async () => {
 To exit the PiP mode, use the **exitPictureInPicture()** method of the **Document** API to display the video on the original tab page.
 
 ```js
-// ...
+// Example: Obtain the video element first.
+const video = document.getElementById('video');
+
 try {
-  if (videoElement !== document.pictureInPictureElement) {
-    await videoElement.requestPictureInPicture();
+  if (video !== document.pictureInPictureElement) {
+    await video.requestPictureInPicture();
   } else {
     await document.exitPictureInPicture();
   }
-}
+} catch (err) {
+    console.error("Picture-in-Picture mode failed:", err);
+  }
 // ...
 ```
 
 ## Listening for Picture-in-Picture Events
 
-When a user enables the picture-in-picture mode, a floating window is displayed for playing the video. The system specifies that only one picture-in-picture video can be played at a time.
+When you enter the picture-in-picture mode to play a video, a floating window is displayed for video playback. The system allows only one picture-in-picture video to be played at a time.
 
 When **HTMLVideoElement** successfully enters the PiP mode, the **enterpictureinpicture** event is triggered. When **HTMLVideoElement** successfully exits the PiP mode, the **leavepictureinpicture** event is triggered.
 
@@ -86,13 +92,13 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 
 * PiP window control:<br>
   Allows users to double-click a PiP window to zoom in or zoom out the window.<br>
-  Allows users to drag the PiP window to any position on the screen.<br> 
-  Allows users to click the PiP window to display or hide UI components at the PiP control layer.<br> 
+  Allows users to drag the PiP window to any position on the screen.<br>  
+  Allows users to click the PiP window to display or hide UI components at the PiP control layer.<br>  
 
-* UI components at the PiP control layer:<br> 
-  The PiP window control layer includes the close (close the PiP window) and restore (restore from the PiP window to the original application UI) components.<br> 
-  The playback control includes the pause, play, and forward/rewind components. (By default, the forward/rewind UI component is displayed. If the original video does not support forward/rewind, there is no response for click events.)<br>
-  
+* UI components at the PiP control layer:<br>  
+  The picture-in-picture window control layer contains **Close** (closes the picture-in-picture window) and **Restore** (restores the original app UI from the picture-in-picture window).<br/>  
+  Playback controls include **Pause**, **Play**, and **Forward/Backward** (the Forward/Backward UI controls are displayed by default; if the original video does not support forward/backward, a single tap has no effect).<br/>
+
   ![web-picture-in-picture](figures/web-picture-in-picture-ui.png)
 
 
@@ -121,7 +127,7 @@ The following is an example of entering and exiting the PiP mode:
   }
   ```
 
-* Code of the HTML page:
+* Frontend page HTML code.
 
   ```html
   <!-- PictureInPicture.html -->
@@ -167,7 +173,7 @@ The following is an example of entering and exiting the PiP mode:
       togglePipButton.hidden =
         !document.pictureInPictureEnabled || video.disablePictureInPicture;
 
-      // Listen for the click events to enter or exit the PiP mode.
+      // Listen for the button click event to switch the Picture-in-Picture mode.
       togglePipButton.addEventListener("click", async () => {
         try {
           if (document.pictureInPictureElement) {

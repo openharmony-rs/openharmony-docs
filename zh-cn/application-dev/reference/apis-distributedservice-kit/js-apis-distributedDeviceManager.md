@@ -1232,7 +1232,7 @@ off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): vo
 
 ### on('serviceDie')
 
-on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
+on(type: 'serviceDie', callback: Callback&lt;{}&gt;): void
 
 注册设备管理服务死亡回调，以便在服务死亡时通知应用。使用callback异步回调。
 
@@ -1247,7 +1247,7 @@ on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
   | 参数名       | 类型                    | 必填   | 说明                                       |
   | -------- | ----------------------- | ---- | ---------------------------------------- |
   | type     | string                  | 是    | 注册设备管理服务死亡回调，以便在DeviceManager服务异常终止时通知应用，固定为serviceDie。 |
-  | callback | Callback&lt;{}&gt; | 否    | 注册serviceDie的回调方法，当设备管理服务异常终止时触发该回调通知应用。如果不传入callback参数，则不会注册回调。                       |
+  | callback | Callback&lt;{}&gt; | 是    | 注册serviceDie的回调方法，当设备管理服务异常终止时触发该回调通知应用。                       |
 
 **错误码：**
 

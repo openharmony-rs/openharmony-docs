@@ -61,6 +61,7 @@ Standard Libraries<br>
 Kernel Enhance Kit<br>
 Game Controller Kit<br>
 Content Embed Kit<br>
+Automatic Scene Configuration Kit<br>
 
 ## Subsystem
 Location<br>

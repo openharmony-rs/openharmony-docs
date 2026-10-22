@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=39c91f6014aebaf032e76cba1dba0db7318cd7f0 translatedAt=2026-09-03T10:16:19.462Z pushedAt=2026-09-05T10:47:30.381Z -->
 
 EmbeddableUIAbility is an embeddable UIAbility component provided for atomic services. It inherits from [UIAbility](js-apis-app-ability-uiAbility.md).
 

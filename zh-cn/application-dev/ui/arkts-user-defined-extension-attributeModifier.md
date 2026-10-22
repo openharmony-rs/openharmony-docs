@@ -1,8 +1,8 @@
 # 属性修改器 (AttributeModifier)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangyang2022-->
-<!--Designer: @wangyang2022-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 

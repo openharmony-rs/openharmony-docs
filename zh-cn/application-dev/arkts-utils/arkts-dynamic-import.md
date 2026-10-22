@@ -1,8 +1,16 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍动态import机制及其技术适用场景，说明通过动态import实现条件延迟加载、部分反射功能以及加载HSP/HAR/ohpm包/Native库的方法，并阐述HAR模块间变量动态import实现依赖解耦。"
+keywords: [动态import, 动态加载, 条件延迟加载, 反射, HAR模块, 模块解耦, HSP模块]
+doctype: guide
+status: active
+---
+
 # 动态加载
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @jokerxd-liu; @zmw1-->
+<!--Owner: @jokerxd-liu-->
 <!--Designer: @huyunhui1; @zmw1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -107,9 +115,9 @@ import('harlibrary').then((ns: ESObject) => {
 
 >**说明：**
 > 
-> 1.当前所有import中使用的模块名都是依赖方oh-package.json5文件中dependencies项的别名。</br>
-> 2.本地模块在依赖方的dependencies中配置的别名建议与moduleName以及packageName三者一致。moduleName指的是被依赖的HSP/HAR的module.json5中配置的名字，packageName指的是被依赖的HSP/HAR的oh-package.json5中配置的名字。</br>
-> 3.import一个模块名，实际的行为是import该模块的入口文件，一般为Index.ets/ts。
+> 1. 当前所有import中使用的模块名都是依赖方oh-package.json5文件中dependencies项的别名。</br>
+> 2. 本地模块在依赖方的dependencies中配置的别名建议与moduleName以及packageName三者一致。moduleName指的是被依赖的HSP/HAR的module.json5中配置的名字，packageName指的是被依赖的HSP/HAR的oh-package.json5中配置的名字。</br>
+> 3. import一个模块名，实际的行为是import该模块的入口文件，一般为Index.ets/ts。
 
 ## 动态import实现中的关键点
 

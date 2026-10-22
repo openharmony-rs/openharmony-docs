@@ -1,22 +1,48 @@
 # Developing Audio Call
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @zyy0412-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d91dd4ac7567cae533b6472147db0080c0825f64 translatedAt=2026-09-18T01:35:52.795Z pushedAt=2026-09-18T06:27:01.509Z -->
 
-During an audio call, audio output (playing the peer voice) and audio input (recording the local voice) are carried out simultaneously. You can use the AudioRenderer to implement audio output and the AudioCapturer to implement audio input.
+During an audio call, the app needs to simultaneously perform audio output (playing the peer voice) and audio input (recording the local voice). You can use AudioRenderer for audio output and AudioCapturer for audio input, and leverage the 3A algorithms (acoustic echo cancellation, noise suppression, and automatic gain control) provided since API version 8 to improve call quality.
+
+## 3A Algorithm
+
+For call scenarios, the system automatically enables the 3A algorithm based on the audio stream type to enhance voice clarity and call experience.
+
+The 3A algorithm typically includes the following audio processing capabilities:
+
+- Acoustic Echo Cancellation (AEC): Suppresses the echo caused by the speaker sound being re-captured by the microphone.
+- Automatic Noise Suppression (ANS): Reduces the impact of environmental noise on the call voice.
+- Automatic Gain Control (AGC): Dynamically adjusts the capture volume to keep the voice within an appropriate loudness range.
+
+### How It Takes Effect
+
+- When playing the peer voice, `usage` in `AudioRendererInfo` must be set to [STREAM_USAGE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) or [STREAM_USAGE_VIDEO_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) to identify the VoIP voice call playback stream. When this type of playback stream starts, it triggers the 3A algorithm.
+- When recording the local voice, `source` in `AudioCapturerInfo` must be set to [SOURCE_TYPE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) to identify the voice call capture stream.
+- For the detailed development process of playback and recording, see [Audio Call Development](audio-call-development.md#audio-call-development) below.
+
+### Notes
+
+- The 3A processing is automatically determined by the system based on device capabilities and the current audio path. The processing effect is not guaranteed to be identical across all devices and routes.
+- In call scenarios, do not superimpose custom noise reduction, echo cancellation, or gain processing from the app, as this may conflict with the system 3A strategy and cause sound distortion, volume fluctuation, or voice anomalies.
+- If the input or output device is switched during a call, the system may reselect the audio path. The app should monitor device changes and reconfirm the call experience.
+- When developing call services, configure both the playback stream and the recording stream according to the call scenario. If a playback type other than `STREAM_USAGE_VOICE_COMMUNICATION` or `STREAM_USAGE_VIDEO_COMMUNICATION` is used, or a recording type other than `SOURCE_TYPE_VOICE_COMMUNICATION` is used, the system cannot identify the call scenario, and processing strategies such as echo cancellation, noise suppression, and automatic gain control may not take effect or may produce unexpected results.
+
+## Audio Call Development
 
 Before starting or stopping using the audio call service, the application needs to check the [audio scene](audio-call-overview.md#audio-scene) and [ringer mode](audio-call-overview.md#ringer-mode) to adopt proper audio management and prompt strategies.
 
 The sample code below demonstrates the basic process of using the AudioRenderer and AudioCapturer to implement the audio call service, without the process of call data transmission. In actual development, the peer call data transmitted over the network needs to be decoded and played, and the sample code uses the process of reading an audio file instead; the local call data needs to be encoded and packed and then sent to the peer over the network, and the sample code uses the process of writing an audio file instead.
 
-The examples in each of the following steps are code snippets. You can click the link at the bottom right of the sample code to obtain the [complete sample codes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS).
+The examples in each of the following steps are code snippets. You can click the link at the bottom right of the sample code to obtain the [complete sample code](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/VoipCallSampleJS).
 
-## Using AudioRenderer to Play the Peer Voice
+### Using AudioRenderer to Play the Peer Voice
 
-This process is similar to the process of [using AudioRenderer to develop audio playback (ArkTs)](using-audiorenderer-for-playback.md). The key differences lie in the **audioRendererInfo** parameter and audio data source. In the **audioRendererInfo** parameter used for audio streams, **usage** must be set to **STREAM_USAGE_VOICE_COMMUNICATION**.
+This process is similar to the process of [using AudioRenderer to develop audio playback (ArkTS)](using-audiorenderer-for-playback.md). The key differences lie in the **audioRendererInfo** parameter and audio data source. In the **audioRendererInfo** parameter used for audio streams, **usage** must be set to **STREAM_USAGE_VOICE_COMMUNICATION**.
 
 <!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
 
@@ -26,7 +52,7 @@ import { BusinessError } from '@kit.BasicServicesKit'; // Import BusinessError.
 import { fileIo as fs } from '@kit.CoreFileKit'; // Import the file operation module.
 import { common } from '@kit.AbilityKit'; // Import UIAbilityContext.
 
-// The process is similar to the process of using AudioRenderer to develop audio playback. The key differences lie in the audioRendererInfo parameter and audio data source.
+// Similar to developing audio playback with AudioRenderer, the key differences lie in the audioRendererInfo parameter and the audio data source.
 const TAG = 'VoIPDemoForAudioRenderer';
 
 class Options {
@@ -44,8 +70,8 @@ let audioStreamInfo: audio.AudioStreamInfo = {
 };
 let audioRendererInfo: audio.AudioRendererInfo = {
   // Set the parameters related to the call scenario.
-  usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // Audio stream usage type: VoIP call.
-  rendererFlags: 0 // AudioRenderer flag. The default value is 0.
+  usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // Audio stream usage: VoIP call.
+  rendererFlags: 0 // Audio renderer flag: 0 is sufficient by default.
 };
 let audioRendererOptions: audio.AudioRendererOptions = {
   streamInfo: audioStreamInfo,
@@ -56,7 +82,7 @@ let writeDataCallback: audio.AudioRendererWriteDataCallback;
 // ...
 async function initArguments(context: common.UIAbilityContext) {
   let path = context.cacheDir;
-  // This is just an example. Replace the file with the PCM file to be played by the application.
+  // This is only an example. In actual use, replace the file with the PCM file to be played by the application.
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   writeDataCallback = (buffer: ArrayBuffer) => {
@@ -68,30 +94,36 @@ async function initArguments(context: common.UIAbilityContext) {
     try {
       let bufferLength = fs.readSync(file.fd, buffer, options);
       bufferSize += buffer.byteLength;
-      // If the data passed in the current callback is less than one frame, the blank areas must be filled with silent data to avoid playback noise.
+      // If the data passed in the current callback is less than one frame, fill the blank area with silence data; otherwise, playback noise occurs.
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-          // For blank areas, silent data should be used. When using the SAMPLE_FORMAT_U8 audio sampling format, 0x7F represents silent data. For other sampling formats, 0 is used as silent data.
+          // Fill the blank area with silence data. When the audio sampling format is SAMPLE_FORMAT_U8, 0x7F is silence data; for other sampling formats, 0 is silence data.
           view.setUint8(i, 0);
         }
       }
-      // This function does not return a callback result in API version 11, but does so in API version 12 and later versions.
+      // API version 11 does not support returning the callback result. Returning the callback result is supported from API version 12.
       // If you do not want to play a certain buffer, return audio.AudioDataCallbackResult.INVALID.
-      return audio.AudioDataCallbackResult.VALID;
+      if (typeof audio.AudioDataCallbackResult != 'undefined') {
+        return audio.AudioDataCallbackResult.VALID;
+      } else {
+        return;
+      }
     } catch (error) {
       console.error('Error reading file:', error);
 
-      if (globalLogUpdate) {
-        globalLogUpdate(`Error reading file: ${error}`, true);
+      // ...
+      // API version 11 does not support returning the callback result. Returning the callback result is supported from API version 12.
+      if (typeof audio.AudioDataCallbackResult != 'undefined') {
+        return audio.AudioDataCallbackResult.VALID;
+      } else {
+        return;
       }
-      // This function does not return a callback result in API version 11, but does so in API version 12 and later versions.
-      return audio.AudioDataCallbackResult.INVALID;
     }
   };
 }
 
-// Create an instance and set the events to listen for.
+// Initialize, create an instance, and set the listening events.
 async function init() {
   audio.createAudioRenderer(audioRendererOptions, (err, renderer) => { // Create an AudioRenderer instance.
     if (!err) {
@@ -168,7 +200,6 @@ async function stop() {
         console.error('Renderer stop failed.');
         // ...
       } else {
-        fs.close(file);
         console.info('Renderer stop success.');
         // ...
       }
@@ -176,10 +207,10 @@ async function stop() {
   }
 }
 
-// Release the instance.
+// Destroy the instance and release resources.
 async function release() {
   if (audioRenderer !== undefined) {
-    // The AudioRenderer can be released only when it is not in the released state.
+    // The renderer can be released only when it is not in the released state.
     if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
       console.info('Renderer already released');
       // ...
@@ -195,13 +226,14 @@ async function release() {
         // ...
       }
     });
+    fs.close(file.fd);
   }
 }
 ```
 
-## Using AudioCapturer to Record the Local Voice
+### Using AudioCapturer to Record the Local Voice
 
-This process is similar to the process of [using AudioCapturer to develop audio recording (ArkTs)](using-audiocapturer-for-recording.md). The key differences lie in the **audioCapturerInfo** parameter and audio data stream direction. In the **audioCapturerInfo** parameter used for audio streams, **source** must be set to **SOURCE_TYPE_VOICE_COMMUNICATION**.
+This process is similar to the process of [using AudioCapturer to develop audio recording (ArkTs)](using-audiocapturer-for-recording.md). The key differences lie in the **audioCapturerInfo** parameter and audio data flow direction. In the **audioCapturerInfo** parameter used for audio streams, **source** must be set to **SOURCE_TYPE_VOICE_COMMUNICATION**.
 
 You must request the ohos.permission.MICROPHONE permission for all recording tasks. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
@@ -211,8 +243,9 @@ You must request the ohos.permission.MICROPHONE permission for all recording tas
 import { audio } from '@kit.AudioKit'; // Import the audio module.
 import { BusinessError } from '@kit.BasicServicesKit'; // Import BusinessError.
 import { fileIo as fs } from '@kit.CoreFileKit'; // Import the file operation module.
-import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit'; // Import UIAbilityContext.
-// The process is similar to the process of using AudioCapturer to develop audio recording. The key differences lie in the audioCapturerInfo parameter and audio data stream direction.
+import { common, abilityAccessCtrl } from '@kit.AbilityKit'; // Import UIAbilityContext.
+// ...
+// The process is similar to developing audio recording with AudioCapturer. The key differences lie in the audioCapturerInfo parameter and the audio data flow direction.
 const TAG = 'VoIPDemoForAudioCapturer';
 
 class Options {
@@ -230,8 +263,8 @@ let audioStreamInfo: audio.AudioStreamInfo = {
 };
 let audioCapturerInfo: audio.AudioCapturerInfo = {
   // Set the parameters related to the call scenario.
-  source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION, // Audio source type: voice communication.
-  capturerFlags: 0 // AudioCapturer flag. The default value is 0.
+  source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION, // Source type: voice call.
+  capturerFlags: 0 // Capturer flag: the default value 0 is sufficient.
 };
 let audioCapturerOptions: audio.AudioCapturerOptions = {
   streamInfo: audioStreamInfo,
@@ -258,7 +291,7 @@ async function initArguments(context: common.UIAbilityContext) {
   }
 }
 
-// Create an instance and set the events to listen for.
+// Initialize, create an instance, and set the listener.
 async function init() {
   audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => { // Create an AudioCapturer instance.
     if (err) {
@@ -324,10 +357,10 @@ async function stop() {
   }
 }
 
-// Release the instance.
+// Destroy the instance and release resources.
 async function release() {
   if (audioCapturer !== undefined) {
-    // The AudioCapturer can be released only when it is not in the STATE_RELEASED or STATE_NEW state.
+    // Release only when the capturer state is neither STATE_RELEASED nor STATE_NEW.
     if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED ||
       audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
       console.info('Capturer already released');

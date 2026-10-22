@@ -406,7 +406,7 @@ struct GridLayoutExample {
 
 ## 自定义布局算法
 
-自定义布局算法通过继承[CustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm)类，重写[onMeasure](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure)和[onLayout](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout)方法实现。开发者可以根据具体业务需求，自定义子组件的大小测量和位置排列，实现内置布局算法无法满足的个性化布局效果，如瀑布流、标签云等不规则布局。
+自定义布局算法通过继承[CustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm)类，重写[onMeasure()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure)和[onLayout()](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout)方法实现。开发者可以根据具体业务需求，自定义子组件的大小测量和位置排列，实现内置布局算法无法满足的个性化布局效果，如瀑布流、标签云等不规则布局。
 
 ### 自定义布局算法实现指导
 

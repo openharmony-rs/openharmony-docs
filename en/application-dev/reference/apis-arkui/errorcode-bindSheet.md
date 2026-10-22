@@ -5,6 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-08-29T09:18:47.109Z pushedAt=2026-08-31T02:27:15.680Z -->
 
 > **NOTE**
 >
@@ -18,7 +19,7 @@ The bindSheetContent is incorrect.
 
 **Description**
 
-This error code is reported when the provided **bindSheetContent** is incorrect.
+This error code is reported when the input parameter **bindSheetContent** is incorrect. Ensure that **bindSheetContent** provides valid content node definition (for the value rules, see the **bindSheetContent** parameter description in the corresponding API document).
 
 **Possible Causes**
 
@@ -26,7 +27,9 @@ This error code is reported when the provided **bindSheetContent** is incorrect.
 
 **Solution**
 
-Check whether the input **bindSheetContent** is correct. Ensure that the input content node is a valid Builder or CustomBuilder instance and the content node has been correctly registered and constructed.
+1. Check whether the input parameter **bindSheetContent** is correct.
+2. Ensure that the input content node is a valid **Builder** or **CustomBuilder** instance.
+3. Ensure that the content node has been correctly registered and constructed.
 
 ## 120002 Modal for bindSheetContent Already Exists
 
@@ -36,7 +39,7 @@ The bindSheetContent already exists.
 
 **Description**
 
-This error code is reported when an attempt is made to open a modal that is already displayed.
+This error code is reported in the following scenario: When calling sheet-related APIs such as **bindSheet**, the half-modal page corresponding to the content node already exists.
 
 **Possible Causes**
 
@@ -58,11 +61,11 @@ This error code is reported when an API is called to close or update the modal t
 
 **Possible Causes**
 
-The modal corresponding to the provided **bindSheetContent** is not currently displayed. 
+The half-modal page corresponding to the content node is not currently displayed. If an API is called to close or update the half-modal page at this time, this error code is reported. You must open the half-modal page before calling the close or update API.
 
 **Solution**
 
-Verify the **bindSheetContent** configuration.
+Ensure that the half-modal page corresponding to the content node is already open before calling the close or update API, and check whether the input **bindSheetContent** exists and has been correctly registered.
 
 ## 120004 Specified targetId Does Not Exist
 
@@ -72,18 +75,18 @@ The targetId does not exist.
 
 **Description**
 
-This error code is reported when no node could be found based on **targetId**.
+This error code is reported when the corresponding node cannot be found through **targetId**, because **targetId** is not a valid non-negative node identifier and its corresponding node is not in a valid lifecycle.
 
 **Possible Causes**
 
-The **targetId** is invalid, or the corresponding node has been destroyed.
+**targetId** is invalid (The value must be a non-negative integer), or its corresponding node has been destroyed.
 
 **Solution**
 
-1. Make sure the value of **targetId** is not a negative number.
-2. Verify that the node corresponding to the **targetId** is valid.
+1. Check whether the value of **targetId** is a non-negative number. If it is negative, use a valid **targetId** component identifier.
+2. Check whether the node specified by **targetId** is valid. If the node has been destroyed, recreate it or replace it with another valid node. It is recommended that you use the component lifecycle callbacks (such as **onAppear**/**onDisappear**) to confirm that the node has not been destroyed before using **targetId** to call sheet-related APIs.
 
-## 120005 Node Specified by targetId Is Not in the Component Tree
+## 120005 Node Specified by targetId Is Not Mounted on the Component Tree
 
 **Error Message**
 
@@ -91,7 +94,7 @@ The node of targetId is not in the component tree.
 
 **Description**
 
-This error code is reported when the node corresponding to the specified **targetId** is not in the component tree during an attempt to use the modal in EMBEDDED mode.
+This error code is reported when the node specified by **targetId** is not mounted on the component tree if the half-modal page mode is set to **EMBEDDED** mode.
 
 **Possible Causes**
 
@@ -99,7 +102,7 @@ When the **EMBEDDED** mode is specified for the modal, the node corresponding to
 
 **Solution**
 
-Call the method after the node corresponding to **targetId** is mounted to the component tree. Alternatively, set **SheetMode** to **OVERLAY**.
+Wait until the node specified by **targetId** is mounted on the tree before calling the API, or set **SheetMode** to **OVERLAY**. The **EMBEDDED** mode requires that the node specified by **targetId** be mounted on the node tree and be a child node of a page node or NavDestination node; the **OVERLAY** mode has no such restriction.
 
 ## 120006 Node Specified by targetId Is Not a Child of a Page Node or NavDestination Node
 
@@ -109,11 +112,11 @@ The node of targetId is not a child of the page node or NavDestination node.
 
 **Description**
 
-This error code is reported when the node corresponding to the specified **targetId** is not a child of a page node or **NavDestination** node during an attempt to use the modal in EMBEDDED mode.
+This error code is reported in the following scenario: When the half-modal page mode is set to the **EMBEDDED** mode, the node specified by **targetId** is not a child node of a page node or NavDestination node.
 
 **Possible Causes**
 
-The **targetId** does not correspond to a node that is a child of a page or **NavDestination** node when the modal is in EMBEDDED mode.
+When the half-modal page mode is set to the **EMBEDDED** mode (that is, the half-modal page is embedded in the parent component layout for display, and the page node or NavDestination node needs to be found upward from the parent node), the page node or NavDestination node cannot be found upward from the node specified by **targetId**.
 
 **Solution**
 

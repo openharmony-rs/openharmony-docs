@@ -1,7 +1,15 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍OpenHarmony Node-API机制，基于Node.js规范扩展开发，提供ArkTS/JS与C/C++模块间的跨语言交互能力，适用于性能敏感和底层系统调用场景。"
+keywords: [Node-API, 跨语言交互, C/C++交互, 模块注册, ArkTS, napi_env, Native模块]
+doctype: guide
+status: active
+---
+
 # Node-API简介
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -53,3 +61,5 @@ ArkTS和C++之间的交互流程，主要分为以下两步：
 1. **初始化阶段**：当ArkTS侧在import一个Native模块时，ArkTS引擎会调用ModuleManager加载模块对应的so及其依赖。首次加载时会触发模块的注册，将模块定义的方法属性挂载到exports对象上并返回该对象。
 
 2. **调用阶段**：当ArkTS侧通过上述import返回的对象调用方法时，ArkTS引擎会找到并调用对应的C/C++方法。
+
+<!--RP1--><!--RP1End-->

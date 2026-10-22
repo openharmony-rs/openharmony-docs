@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=2202f16b1790be0635450ef16fea2f3e536d59bf translatedAt=2026-09-03T09:04:54.422Z pushedAt=2026-09-05T10:47:30.150Z -->
 
 > **NOTE**
 >
@@ -32,7 +33,7 @@ The ability to query does not exist.
     ```bash
     hdc shell bm dump -a
     ```
-3. For a multi-HAP application, check whether the HAP to which the ability belongs is installed. You can run the following command to query the bundle information. If the installed application does not contain the corresponding HAP and ability, the HAP to which the ability belongs is not installed.
+3. For a multi-HAP application, check whether the HAP to which the ability belongs has been installed. You can run the following command to query the package information of the application. If the query result does not contain the HAP to which the ability belongs, the HAP is not installed.
     ```bash
     hdc shell bm dump -n bundleName
     ```
@@ -50,13 +51,15 @@ This error code is reported when the ability type of the called party does not m
 **Possible Causes**
 
 1. The ability type of the called party (server) does not match the expected type of the calling party (client).
-2. When the ability type of the target server is AppServiceExtensionAbility, the ACL permission (ohos.permission.SUPPORT_APP_SERVICE_EXTENSION) is not configured in the **module.json5** configuration file.
+2. When the target server is of the AppServiceExtensionAbility type, the ACL permission (ohos.permission.SUPPORT_APP_SERVICE_EXTENSION) is not configured in the **module.json5** configuration file. <!--Del-->
+3. When [connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability) is called, the **abilityName** or **moduleName** specified in the input parameter does not match the **abilityName** or **moduleName** configured in the **appInfo** of the AgentCard corresponding to **agentId**. <!--DelEnd-->
 
 **Solution**
 
 1. Check whether the values of **bundleName**, **moduleName**, and **abilityName** in **Want** are correct.
 2. Check whether the ability type of the called party (server) matches the called API. For ServiceExtensionAbility, use <!--Del-->[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability) to start the ability or <!--DelEnd-->[connectServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability) to connect to the ability. In addition, ensure that **type** of **extensionAbilities** in the [module.json5 configuration file](../../quick-start/module-configuration-file.md) is set to **service** (matching the API).
-3. If the ability type of the called party (server) is appService, configure the ACL permission (ohos.permission.SUPPORT_APP_SERVICE_EXTENSION) in the **module.json5** configuration file on the server.
+3. If the called party (server) is of the appService type, configure the ACL permission (ohos.permission.SUPPORT_APP_SERVICE_EXTENSION) in the **module.json5** configuration file on the server. <!--Del-->
+4. When calling [connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability), ensure that the **abilityName** or **moduleName** specified in the input parameter is consistent with the **abilityName** or **moduleName** configured in the **appInfo** of the AgentCard corresponding to **agentId**. <!--DelEnd-->
 
 ## 16000003 ID Does Not Exist
 
@@ -92,7 +95,7 @@ Visibility verification fails.
 
 **Solution**
 
-1. Check whether [exported](../../quick-start/module-configuration-file.md#abilities) under the **Ability** field in the **module.json5** file of the ability is set to **true**. If this parameter is set to **true**, the ability can be started by other applications. If this parameter is set to **false**, the ability cannot be started by other applications.
+1. In the [stage model](../../application-models/ability-terminology.md#stage-model), if error 16000004 is thrown when an application is started, it indicates that an invisible component cannot be started. Check whether [exported](../../quick-start/module-configuration-file.md#abilities) in the **Ability** field of the **module.json5** file of the application to be started is set to **true**. If this field is set to **true**, the ability can be called by other applications; if it is set to **false**, the ability cannot be called by other applications.
 2. To start the ability for which **exported** is set to **false**, the caller must request the ohos.permission.START_INVISIBLE_ABILITY permission, which is available only for system applications.
 
 ## 16000005 Process Permission Verification Failure
@@ -293,7 +296,7 @@ The application uses an API version later than 11 and attempts to explicitly red
 
 Use implicit startup or [openLink](js-apis-inner-application-uiAbilityContext.md#openlink12) for redirection.
 
-## 16000019 No Matching Ability Is Found During Implicit Startup
+## 16000019 No Matching Ability Found for Implicit Start
 
 **Error Message**
 
@@ -313,7 +316,6 @@ This error code is reported when a matching ability is not found during implicit
 1. Correct the parameter settings for implicit startup. For details about the matching rules, see [Matching Rules of Explicit Want and Implicit Want](../../application-models/explicit-implicit-want-mappings.md).
 2. Install the specified HAP.
 
-<!--Del-->
 ## 16000020 Context Is Not an Ability-level Context
 
 **Error Message**
@@ -331,7 +333,26 @@ The passed Context object is not UIAbilityContext or ExtensionContext, and does 
 **Solution**
 
 Use a UIAbilityContext object or an ExtensionContext object as the input parameter, or use the object that inherits from UIAbilityContext or ExtensionContext as the input parameter.
-<!--DelEnd-->
+
+## 16000021 Module Name Does Not Exist
+
+**Error Message**
+
+The module name does not exist.
+
+**Description**
+
+The module name does not exist.
+
+**Possible Causes**
+
+1. The passed moduleName parameter is empty.
+2. The module corresponding to moduleName does not exist in the HAP/HSP package.
+
+**Procedure**
+
+1. Ensure the passed moduleName parameter is not empty.
+2. Ensure the passed moduleName is a module name that exists in the HAP/HSP package.
 
 ## 16000050 Internal Error
 
@@ -359,7 +380,7 @@ This error code is reported when an internal exception occurs that the developer
 3. Ensure that AppGallery is installed on the device, or check whether AppGallery is installed before launching an application.
 4. For internal system errors that cannot be handled by developers, try to call the API again or restart the device.
 
-## 16000053 Ability Is Not on Top of UI
+## 16000053 Ability Not in the Foreground
 
 **Error Message**
 
@@ -367,17 +388,17 @@ The ability is not on the top of the UI.
 
 **Description**
 
-This error code is reported when the ability is not displayed on the top of the UI.
+When the current ability is not displayed at the top of the UI, the method will return this error code.
 
 **Possible Causes**
 
-During the installation-free startup process, it is necessary to ensure that the ability is in the foreground, but the ability is not displayed at the top of the UI.
+When the user performs a free-install start, the ability must be in the foreground, but the ability is not displayed at the top of the UI.
 
 **Solution**
 
-1. Ensure that the ability is started and running in the foreground.
-2. Ensure that the ability UI is fully displayed and not obscured or minimized by other application windows.
-3. If the split-screen or multi-window mode is enabled on the device, ensure that the ability is the focused window.
+1. Ensure that the current ability has been started and is running in the foreground.
+2. Check whether the ability UI is fully displayed and is not obscured or minimized by another ability window.
+3. If the split-screen or multi-window mode is enabled on the device, ensure that the current ability is the focused window.
 
 ## 16000055 Installation-Free Timeout
 
@@ -543,7 +564,7 @@ The ability is not in the foreground when the API is called.
 
 Before calling the API, ensure that the ability is running in the foreground and the UI is visible.
 
-## 16000066 Ability Cannot Be Switched to the Foreground or Background in Wukong Mode
+## 16000066 Ability Cannot Be Moved to the Foreground/Background in Wukong Mode
 
 **Error Message**
 
@@ -747,7 +768,7 @@ The link feature is not configured for the application or the configuration is n
 
 **Error Message**
 
-The app instance key is invalid.
+The app instance key does not exist.
 
 **Description**
 
@@ -844,7 +865,7 @@ Failed to obtain the target application information.
 
 **Description**
 
-In the call of an [API related to URI authorization](js-apis-uripermissionmanager-sys.md), the information about the target application cannot be obtained based on the bundle name and clone index.
+When calling [@ohos.application.uriPermissionManager (URI Permission Management)(System API)](js-apis-uripermissionmanager-sys.md), the system fails to obtain the information about the target application based on the application bundle name and clone index.
 
 **Possible Causes**
 
@@ -858,6 +879,24 @@ In the call of an [API related to URI authorization](js-apis-uripermissionmanage
 2. Check whether the index is within the allowed range.
 3. Check whether the target application has created a clone of the specified index.
 <!--DelEnd-->
+
+## 16000082 UIAbility Is Being Started
+
+**Error Message**
+
+The UIAbility is being started.
+
+**Description**
+
+The UIAbility is being started, and the onCreate or onWindowStageCreate lifecycle callback has not been completed.
+
+**Possible Causes**
+
+The UIAbility is still in the startup phase, and the onCreate or onWindowStageCreate callback has not been executed completely.
+
+**Procedure**
+
+Wait until the UIAbility completes the onCreate or onWindowStageCreate lifecycle callback before performing related operations.
 
 ## 16000083 Specified Ability Cannot Be Started by This Type of ExtensionAbility
 
@@ -1153,7 +1192,7 @@ Check whether the ability is in the foreground.
 
 **Error Message**
 
-A maximum of four UIAbility instances can be started simultaneously.The current parameter exceeds the maximum number or is less than 1.
+A maximum of four UIAbility instances can be started simultaneously. The current parameter exceeds the maximum number or is less than 1.
 
 **Description**
 
@@ -1184,6 +1223,7 @@ The target component is not a UIAbility.
 **Solution**
 
 Check the component type passed in the Want and ensure that the component is a UIAbility.
+<!--DelEnd-->
 
 ## 16000122 Target Component Is Intercepted by the System Control Module
 
@@ -1239,7 +1279,8 @@ The **deviceId** field in the Want is not empty and is not the local device ID.
 
 Set the **deviceId** field in the Want to an empty string or the local device ID.
 
-## 16000125 Starting a Plugin Is Not Supported
+<!--Del-->
+## 16000125 Starting a Plugin UIAbility Is Not Supported
 
 **Error Message**
 
@@ -1280,7 +1321,7 @@ Check whether the Want carries a DLP file.
 
 **Error Message**
 
-The UIAbility not belong to caller.
+The UIAbility does not belong to the caller.
 
 **Description**
 
@@ -1298,7 +1339,7 @@ Verify that the target UIAbility belongs to the caller.
 
 **Error Message**
 
-The UIAbility is already exist, can not start again.
+The UIAbility is already exists, can not start again.
 
 **Description**
 
@@ -1316,7 +1357,7 @@ Check whether the UIAbility has already been launched.
 
 **Error Message**
 
-The main window of this ability of this context does not exits.
+The main window of this ability of this context does not exist.
 
 **Description**
 
@@ -1348,6 +1389,62 @@ Under [abilities](../../quick-start/module-configuration-file.md#abilities) in t
 
 - If you want to launch the current UIAbility via App Linking, set **allowSelfRedirect** under [abilities](../../quick-start/module-configuration-file.md#abilities) in the [module.json5 file](../../quick-start/module-configuration-file.md) to **true**.
 - If launching the current UIAbility via App Linking is not allowed, you need to catch this error code via **catch** and handle it accordingly.
+
+<!--Del-->
+## 16000137 Cross-Device Intent Execution Connection Failed
+
+**Error Message**
+
+Cross-device execution failed due to a connection error.
+
+**Description**
+
+The device connection failed when executing an intent across devices.
+
+**Possible Causes**
+
+The deviceId in the input parameter [ExecuteParam](../apis-ability-kit/js-apis-app-ability-insightIntentDriver-sys.md#executeparam) is not empty but invalid.
+
+**Procedure**
+
+Check whether the deviceId is valid.
+
+## 16000138 Device Disconnected During Cross-Device Intent Execution
+
+**Error Message**
+
+Device disconnected during cross-device intent execution.
+
+**Description**
+
+The device is disconnected during cross-device intent execution.
+
+**Possible Causes**
+
+The device is too far away, the device is abnormal, or the device actively signs out of the account, causing the device connection to be disconnected.
+
+**Procedure**
+
+Check whether the device status is normal and reconnect.
+<!--DelEnd-->
+
+## 16000150 Failed to Send Request
+
+**Error Message**
+
+Failed to send request to system service.
+
+**Description**
+
+When the request to the system service fails to be sent, the method will return this error code.
+
+**Possible Causes**
+
+The request fails to be sent when setting the quick start enable status or reinitializing quick start.
+
+**Procedure**
+
+Try calling the API again or restarting the device.
 
 ## 16000151 Invalid wantAgent Object
 
@@ -1580,7 +1677,7 @@ Ensure that the application to start is the invoker application.
 
 **Error Message**
 
-The bundle does not exist or no patch has been applied.
+Invalid bundle name.
 
 **Description**
 
@@ -1658,15 +1755,15 @@ The observer does not exist.
 
 **Description**
 
-This error code is reported when the specified observer does not exist.
+When the observer does not exist, the method will return this error code.
 
 **Possible Causes**
 
-The observer does not exist or has been unregistered.
+The current observer does not exist or has been unregistered.
 
 **Solution**
 
-Check whether the observer exists.
+Check whether the observer has been unregistered repeatedly.
 
 <!--Del-->
 ## 16300005 Bundle Information Does Not Exist
@@ -1691,7 +1788,7 @@ Pass in correct values for **bundleName**, **userId**, and **appIndex**.
 
 **Error Message**
 
-The target bundle has no MainAbility.
+The target bundle has no main UIAbility.
 
 **Description**
 
@@ -1761,7 +1858,7 @@ Common kernel errors such as memory application and multithreading processing er
 1. Ensure sufficient system memory. Ensure that the system version used by the device is normal.
 2. Restart the device.
 
-## 29600002 Internal Error During Image Editing
+## 29600002 Image Input Error
 
 **Error Message**
 
@@ -1913,7 +2010,7 @@ Check whether the value of **bundleName** is correct.
 
 **Error Message**
 
-Invalid main element type.
+The main element is not an appService ExtensionAbility.
 
 **Description**
 
@@ -2472,7 +2569,7 @@ The class decorated with @InsightIntentEntity does not implement **InsightIntent
 
 **Solution**
 
-Ensure that the class implements **InsightIntent.IntentEntity** or inherits from another intent entity.
+Ensure that the class implements InsightIntent.IntentEntity or inherits from another intent entity.
 
 ## 10110022 Incorrect Location for @InsightIntentForm
 
@@ -2576,11 +2673,13 @@ The specified agentId does not exist.
 
 **Possible Causes**
 
-The AgentCard corresponding to the specified agentId does not exist in the target application.
+1. The AgentCard corresponding to the specified agentId does not exist in the target application.<!--Del-->
+2. When [connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability) is called, the bundleName passed in does not match the bundleName configured in appInfo of the AgentCard associated with the agentId passed in.<!--DelEnd-->
 
 **Solution**
 
-Check the static configuration information of the target application and transfer the correct agentId.
+1. Check the static configuration information of the target application and pass in the correct agentId again.<!--Del-->
+2. When [connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability) is called, ensure that the bundleName passed in is consistent with the bundleName configured in appInfo of the AgentCard associated with the agentId passed in.<!--DelEnd-->
 
 ## 35600002 Failed to Send IPC Messages
 
@@ -2619,3 +2718,316 @@ The number of concurrent AgentExtension connections of the caller has reached 5.
 **Solution**
 
 Disconnect some connections and re-initiates connections.
+
+<!--Del-->
+## 35600030 CLI Tool Does Not Exist
+
+**Error Message**
+
+No tool with the specified name exists.
+
+**Description**
+
+The specified tool does not exist.
+
+**Possible Causes**
+
+The tool does not exist in the system.
+
+**Procedure**
+
+Check whether the passed cliName is correct. Pass a correct cliName again.
+
+## 35600031 Maximum Number of Concurrent Tools Reached
+
+**Error Message**
+
+Maximum number of concurrent tools has been reached.
+
+**Description**
+
+The maximum number of concurrent tools has been reached.
+
+**Possible Causes**
+
+The number of tools currently running in the system has reached the upper limit allowed by the system, and no new connection requests are allowed.
+
+**Procedure**
+
+Wait until some tools finish running and then initiate the connection again.
+
+## 35600032 The Specified Session Does Not Exist
+
+**Error Message**
+
+The session does not exist.
+
+**Description**
+
+The specified session does not exist.
+
+**Possible Causes**
+
+An incorrect sessionId is passed.
+
+**Procedure**
+
+Check whether the sessionId is correct and pass a correct sessionId.
+
+## 35600033 Failed to Write Message to Tool Process
+
+**Error Message**
+
+Failed to write message to tool.
+
+**Description**
+
+Failed to write a message to the tool process.
+
+**Possible Causes**
+
+The write system call failed.
+
+**Procedure**
+
+The buffer is full or the peer is abnormal. Try waiting for a period of time and then write again.
+
+## 35600050 Occasional Error
+
+**Error Message**
+
+System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module.
+
+**Description**
+
+Occasional errors that occur during system running and cannot be resolved by applications.
+
+**Possible Causes**
+
+1. Failed to connect to the system service.
+2. Failed to communicate between system services.
+
+**Procedure**
+
+1. Exit the application and try again.
+2. Restart the device and try again.
+
+## 35600060 Function Does Not Exist
+
+**Error Message**
+
+The function does not exist.
+
+**Description**
+
+The function does not exist.
+
+**Possible Causes**
+
+The Function to be executed is not registered in the system.
+
+**Procedure**
+
+1. Check whether the Function information to be executed is misspelled.
+2. Check whether the Function to be executed has been registered.
+
+## 35600061 Function Execution Failed
+
+**Error Message**
+
+The function execution failed.
+
+**Description**
+
+The function execution failed.
+
+**Possible Causes**
+
+System fault, abc loading, or execution exception.
+
+**Procedure**
+
+Check whether the function execution conditions are met, and try again later.
+
+## 35600062 Function Execution Timeout
+
+**Error Message**
+
+The function execution timed out.
+
+**Description**
+
+The function execution timed out.
+
+**Possible Causes**
+
+The execution takes too long due to complex implementation logic, slow external service response, excessive data volume, or system resource constraints.
+
+**Procedure**
+
+Check the function execution process and environment, and try again later.
+<!--DelEnd-->
+
+## 16000161 Delayed Process Exit Is Not Pending in the Current Process, and This API Cannot Be Called
+
+**Error Message**
+
+Delayed process exit is not pending in the current process, and this API cannot be called.
+
+**Description**
+
+In the current process, this API cannot be called because the delayed process exit is not pending.
+
+**Possible Causes**
+
+The caller did not enable the delayed exit feature of the current process before calling this API.
+
+**Procedure**
+
+The caller should first call the API to enable delayed exit of the current process, and then call this API.
+
+## 16000162 The current process still has another UIAbility, and this API cannot be called
+
+**Error Message**
+
+The current process still has another UIAbility, and this API cannot be called.
+
+**Description**
+
+The current process still has another UIAbility, and this API cannot be called.
+
+**Possible Causes**
+
+The caller's current process still has another UIAbility.
+
+**Procedure**
+
+Ensure that the current process has only one UIAbility and that it is in the exiting state.
+
+## 16000163 File Type Error
+
+**Error Message**
+
+The file type is incorrect.
+
+**Description**
+
+The file type is incorrect.
+
+**Possible Causes**
+
+1. When the appMemoryOptimizer.evictFilePages API is called, the file names in the passed fileNames array do not end with `.so`, `.hap`, or `.hsp`.
+2. When the appMemoryOptimizer.evictModuleFilePages API is called, the file names in the `evictFilePages` array in the `memory_optimizer.json` configuration file do not end with `.so`, `.hap`, or `.hsp`.
+
+**Procedure**
+
+1. If the appMemoryOptimizer.evictFilePages API is called, check the passed fileNames array to ensure that all file names end with `.so`, `.hap`, or `.hsp`.
+2. If the appMemoryOptimizer.evictModuleFilePages API is called, check the `memory_optimizer.json` configuration file of the corresponding module to ensure that all file names in the `evictFilePages` array end with `.so`, `.hap`, or `.hsp`.
+
+## 16000164 Failed to Parse the Configuration File
+
+**Error Message**
+
+Failed to parse the configuration file.
+
+**Description**
+
+Failed to parse the configuration file.
+
+**Possible Causes**
+
+When the appMemoryOptimizer.evictModuleFilePages API is called, the `memory_optimizer.json` configuration file does not exist, its path is incorrect, or its content format is invalid.
+
+**Procedure**
+
+Check whether the `src/main/resources/rawfile/memory_optimizer.json` configuration file exists in the corresponding module directory, and confirm whether its content format is correct.
+
+## 35600004 The Specified AgentCard Version Is Older Than the Current Version
+
+**Error Message**
+
+The specified AgentCard version is older than the current version.
+
+**Description**
+
+The specified AgentCard version is older than the current version.
+
+**Possible Causes**
+
+When the updateAgentCard API is called, the new version number is older than the old version number.
+
+**Procedure**
+
+Update the version field in the AgentCard.
+
+## 35600005 The Specified AgentCard Version Is Invalid
+
+**Error Message**
+
+The specified AgentCard version is invalid.
+
+**Description**
+
+The specified AgentCard version is invalid.
+
+**Possible Causes**
+
+The version field in the AgentCard does not follow the SemVer versioning rules.
+
+**Procedure**
+
+Update the version field in the AgentCard and follow the SemVer versioning rules.
+
+## 35600006 The Specified AgentCard Has Already Been Registered
+
+**Error Message**
+
+The specified AgentCard has already been registered. Use updateAgentCard instead.
+
+**Description**
+
+The specified AgentCard has already been registered. Use the updateAgentCard API.
+
+**Possible Causes**
+
+The specified AgentCard has already been registered.
+
+**Procedure**
+
+Use the updateAgentCard API.
+
+## 35600007 The Specified LOW_CODE Agent Has Been Triggered and Has Not Completed Its Workflow
+
+**Error Message**
+
+The specified LOW_CODE agent has already been triggered and is not yet completed.
+
+**Description**
+
+The specified LOW_CODE agent has already been triggered and has not completed its workflow.
+
+**Possible Causes**
+
+The specified LOW_CODE agent has already been triggered and has not completed its workflow.
+
+**Procedure**
+
+Call the notifyLowCodeAgentComplete API to end the specified LOW_CODE agent.
+
+## 35600008 The Number of AgentCards in the Same Application Reaches the Limit
+
+**Error Message**
+
+The number of AgentCards in the bundle reaches the limit.
+
+**Description**
+
+The number of AgentCards in the same application reaches the limit.
+
+**Possible Causes**
+
+A maximum of 1000 AgentCards can exist in the same application. This limit has been reached when the agentManager.registerAgentCard API is called.
+
+**Procedure**
+
+Call agentManager.deleteAgentCard to delete the AgentCards that are no longer needed.

@@ -2,12 +2,12 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @hao-liangfei; @zhanganxiang-->
+<!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AudioAccessoryCapabilities {...} OH_AudioAccessoryCapabilities
+typedef struct {...} OH_AudioAccessoryCapabilities
 ```
 
 ## 概述

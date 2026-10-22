@@ -63,6 +63,8 @@ HUKS为开发者提供了密钥全生命周期的管理能力，其核心功能�
 
 <!--RP1--><!--RP1End-->
 
+<!--RP2--><!--RP2End-->
+
 ## 与相关Kit的关系
 
 [基于用户身份认证的密钥访问控制](huks-identity-authentication-overview.md)，依赖于[User Authentication Kit（用户身份认证）](../UserAuthenticationKit/user-authentication-overview.md)。

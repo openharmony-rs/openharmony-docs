@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
+该模块主要提供Wi-Fi基础功能、P2P（peer-to-peer）功能和Wi-Fi消息通知的相应服务，让应用可以通过Wi-Fi和其他设备互联互通。
 
 > **说明：**
 >
@@ -24,7 +24,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 
 enableSemiWifi(): void
 
-使能WLAN半关闭（STA关闭，P2P、HML等功能可用），异步接口，需要通过注册"wifiStateChange"事件的回调来监听是否使能成功。
+使能Wi-Fi半关闭（STA关闭，P2P、HML等功能可用），异步接口，需要通过注册"wifiStateChange"事件的回调来监听是否使能成功。
 
 **系统接口：** 此接口为系统接口。
 
@@ -62,8 +62,8 @@ setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 设置是否始终允许扫描。
 
-- 该接口控制设备是否可以在WLAN开关关闭时支持热点扫描功能。
-- 启用后即使WLAN开关关闭，系统仍可以扫描附近的WLAN热点。
+- 该接口控制设备是否可以在Wi-Fi开关关闭时支持热点扫描功能。
+- 启用后即使Wi-Fi开关关闭，系统仍可以扫描附近的Wi-Fi热点。
 - 主要用于支持网络发现和位置定位等场景。
 
 **系统接口：** 此接口为系统接口。
@@ -117,7 +117,7 @@ getScanAlwaysAllowed(): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean| 是否始终允许扫描。 true 表示允许触发扫描，false表示在禁用wifi时不允许触发扫描。|
+| boolean| 是否始终允许扫描。true表示允许触发扫描，false表示在禁用Wi-Fi时不允许触发扫描。|
 
 **错误码：**
 
@@ -145,7 +145,7 @@ getScanAlwaysAllowed(): boolean
 
 ## WifiDeviceConfig
 
-WLAN配置信息。
+Wi-Fi配置信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -159,9 +159,11 @@ WLAN配置信息。
 | ipType | [IpType](#iptype) | 否 | 是 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 |
 | staticIp | [IpConfig](#ipconfig) | 否 | 是 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
 | proxyConfig<sup>10+</sup> | [WifiProxyConfig](#wifiproxyconfig10) | 否 | 是 | 代理配置。  <br /> **系统接口：** 此接口为系统接口。|
-| configStatus<sup>12+</sup> | number | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  1 - 允许参与选网，2 - 禁止参与 <br /> 3 - 永久禁止参与，4 - 未知 <br /> **系统接口：** 此接口为系统接口。|
+| configStatus<sup>12+</sup> | number | 否 | 是 | 返回当前网络是否允许参与选网。 <br />  0 - 允许参与选网，1 - 禁止参与选网 <br /> 2 - 永久禁止参与选网，3 - 未知 <br /> **系统接口：** 此接口为系统接口。|
 | isAutoConnectAllowed<sup>17+</sup> | boolean | 否 | 是 | 是否允许自动连接。false:不允许，true:允许自动连接。<br /> **系统接口：** 此接口为系统接口。|
 | isSecureWifi<sup>20+</sup> | boolean | 否 | 是 | 安全Wi-Fi检测。false:不是安全Wi-Fi，true:是安全Wi-Fi。<br /> **系统接口：** 此接口为系统接口。|
+| family<sup>20+</sup> | number | 否 | 是 | 静态IP家族：0表示IPv4，1表示IPv6。 <br /> **系统接口：** 此接口为系统接口。 |
+| staticIpv6<sup>20+</sup> | Ipv6Config | 否 | 是 | 静态IPv6配置。<br /> **系统接口：** 此接口为系统接口。 |
 
 ## IpType
 
@@ -280,7 +282,7 @@ getDeviceConfig(networkId: number): WifiDeviceConfig
 
 connectToDevice(config: WifiDeviceConfig): void
 
-连接到指定网络（如果当前已经连接到热点，请先使用disconnect（）接口断开连接）。
+连接到指定网络（如果当前已经连接到热点，请先断开连接）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -293,7 +295,7 @@ connectToDevice(config: WifiDeviceConfig): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
+| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 
 **错误码：**
 
@@ -327,7 +329,7 @@ connectToDevice(config: WifiDeviceConfig): void
 
 ## WifiLinkedInfo
 
-提供WLAN连接的相关信息。
+提供Wi-Fi连接的相关信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -338,7 +340,7 @@ connectToDevice(config: WifiDeviceConfig): void
 | snr | number | 否 | 否 | 信噪比，单位：dB。 <br /> **系统接口：** 此接口为系统接口。 |
 | suppState | [SuppState](#suppstate) | 否 | 否 | 请求状态。 <br /> **系统接口：** 此接口为系统接口。 |
 | isHiLinkProNetwork<sup>20+</sup> | boolean | 否 | 是 | 是否是HiLinkPro网络。true表示是HiLinkPro网络，false表示不是HiLinkPro网络。<br /> **系统接口：** 此接口为系统接口。 |
-| wifiTxRxValid | boolean | 否 | 是 | **起始版本：** 26.0.0。用于指示Wi-Fi的发送（Tx, Transmitting）和接收（Rx, Receiving）功能是否都在正常工作。<br /> **系统接口：** 此接口为系统接口。 |
+| wifiTxRxValid | boolean | 否 | 是 | **起始版本：** 26.0.0。用于指示Wi-Fi的发送（Tx, Transmitting）和接收（Rx, Receiving）功能是否都在正常工作，true表示正常，false表示异常。<br /> **系统接口：** 此接口为系统接口。 |
 
 ## SuppState
 
@@ -391,7 +393,7 @@ getSupportedFeatures(): number
 | 0x0004 | GAS/ANQP特性。 |
 | 0x0008 | WiFi-Direct特性。 |
 | 0x0010 | Soft&nbsp;AP特性。 |
-| 0x0040 | Wi-Fi&nbsp;AWare组网特性。 |
+| 0x0040 | Wi-Fi&nbsp;Aware组网特性。 |
 | 0x8000 | AP&nbsp;STA共存特性。 |
 | 0x8000000 | WPA3-Personal&nbsp;SAE特性。 |
 | 0x10000000 | WPA3-Enterprise&nbsp;Suite-B。|
@@ -569,7 +571,7 @@ updateNetwork(config: WifiDeviceConfig): number
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN配置信息。 |
+  | config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi配置信息。 |
 
 **返回值：**
 
@@ -611,7 +613,7 @@ try {
 
 disableNetwork(netId: number): void
 
-去使能网络配置。
+关闭网络配置。
 
 **系统接口：** 此接口为系统接口。
 
@@ -811,7 +813,7 @@ try {
 
 ## DisconnectedReason <sup>10+</sup>
 
-表示WLAN断开原因的枚举，用于诊断网络连接问题和优化连接策略。
+表示Wi-Fi断开原因的枚举，用于诊断网络连接问题和优化连接策略。
 
 **系统接口：** 此接口为系统接口。
 
@@ -827,7 +829,7 @@ try {
 
 startPortalCertification(): void
 
-启动Portal认证流程，用于处理需要Web页面认证的公共WLAN网络（如酒店、机场、咖啡厅等场所的网络）。
+启动Portal认证流程，用于处理需要Web页面认证的公共Wi-Fi网络（如酒店、机场、咖啡厅等场所的网络）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -911,8 +913,8 @@ enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDevice
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | isHiLinkEnable | boolean | 是 | 是否使能hiLink。true:使能，&nbsp;false:去使能。 |
-| bssid | string | 是 | 热点的mac地址，例如：00:11:22:33:44:55。 |
-| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | WLAN的配置信息。config.bssid必须和第二个参数bssid保持一致。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
+| bssid | string | 是 | 热点的MAC地址，例如：00:11:22:33:44:55。 |
+| config | [WifiDeviceConfig](#wifideviceconfig) | 是 | Wi-Fi的配置信息。config.bssid必须和第二个参数bssid保持一致。如果bssidType未指定值，则bssidType默认为随机设备地址类型。 |
 
 **错误码：**
 
@@ -951,9 +953,9 @@ try {
 
 factoryReset(): void
 
-**系统接口：** 此接口为系统接口。
+重置Wi-Fi相关配置并关闭Wi-Fi。
 
-重置wifi相关配置并关闭WiFi。
+**系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和ohos.permission.SET_WIFI_CONFIG(仅系统应用可申请)
 
@@ -985,7 +987,7 @@ try {
 
 enableHotspot(): void
 
-使能热点，异步接口，是否打开成功需要注册并监听hotspotStateChange的回调。
+开启热点，异步接口，是否打开成功需要注册并监听hotspotStateChange的回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1019,7 +1021,7 @@ try {
 
 disableHotspot(): void
 
-去使能热点 ，异步接口，是否关闭成功需要注册并监听hotspotStateChange的回调。
+关闭热点 ，异步接口，是否关闭成功需要注册并监听hotspotStateChange的回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1053,7 +1055,7 @@ try {
 
 isHotspotDualBandSupported(): boolean
 
-检查当前设备的WLAN热点功能是否支持双频段（同时支持2.4GHz和5GHz频段）。
+检查当前设备的Wi-Fi热点功能是否支持双频段（同时支持2.4GHz和5GHz频段）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1094,7 +1096,7 @@ try {
 
 isOpenSoftApAllowed(): boolean
 
-检查在某些情况下是否能够操作WLAN热点。当飞行模式开启时，如果系统不支持SoftAP和STA共存，也不支持信号桥接，则无法操作热点开关。
+检查在某些情况下是否能够操作Wi-Fi热点。当飞行模式开启时，如果系统不支持SoftAP和STA共存，也不支持信号桥接，则无法操作热点开关。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1135,7 +1137,7 @@ try {
 
 setHotspotConfig(config: HotspotConfig): void
 
-设置WLAN热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
+设置Wi-Fi热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1203,7 +1205,7 @@ try {
 
 getHotspotConfig(): HotspotConfig
 
-获取WLAN热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
+获取Wi-Fi热点的配置信息，包括SSID、加密方式、密码、带宽、信道、最大连接STA数量等。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1287,7 +1289,7 @@ try {
 
 ## StationInfo
 
-接入的设备信息。包含连接到WLAN网络的设备详细信息。
+接入的设备信息。包含连接到Wi-Fi网络的设备详细信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1399,7 +1401,7 @@ try {
 
 getHotspotBlockList(): Array&lt;StationInfo&gt;
 
-获取当前WLAN热点的黑名单设备列表。该接口返回被热点拉黑的设备信息列表，仅在设备作为热点(AP)模式下有效。
+获取当前Wi-Fi热点的黑名单设备列表。该接口返回被热点拉黑的设备信息列表，仅在设备作为热点(AP)模式下有效。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1442,7 +1444,7 @@ try {
 
 deletePersistentGroup(netId: number): void
 
-删除指定网络ID的永久WLAN组配置。该接口用于清除已保存的WLAN网络配置信息，使其不再自动连接。
+删除指定网络ID的永久Wi-Fi组配置。该接口用于清除已保存的Wi-Fi网络配置信息，使其不再自动连接。
 
 - 根据网络ID删除之前与P2P设备建立的永久组信息，后续与该P2P设备进行P2P连接时需要重新进行P2P协商。
 
@@ -1619,7 +1621,7 @@ try {
 
 on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
-注册WLAN流变更事件，在业务退出时，要调用off(type: 'streamChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi流变更事件，在业务退出时，要调用off(type: 'streamChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1685,10 +1687,10 @@ let recvStreamChangeFunc = (result:number) => {
     console.info("Receive stream change event: " + result);
 }
 
-// Register event
+// 注册事件
 wifiManager.on("streamChange", recvStreamChangeFunc);
 
-// Unregister event
+// 注销事件
 wifiManager.off("streamChange", recvStreamChangeFunc);
 
 ```
@@ -1697,7 +1699,7 @@ wifiManager.off("streamChange", recvStreamChangeFunc);
 
 on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
-注册WLAN设备配置更改事件，在业务退出时，要调用off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi设备配置更改事件，在业务退出时，要调用off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1728,7 +1730,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
 off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
-取消注册WLAN设备配置更改事件。使用callback异步回调。
+取消注册Wi-Fi设备配置更改事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1763,10 +1765,10 @@ let recvDeviceConfigChangeFunc = (result:number) => {
     console.info("Receive device config change event: " + result);
 }
 
-// Register event
+// 注册事件
 wifiManager.on("deviceConfigChange", recvDeviceConfigChangeFunc);
 
-// Unregister event
+// 注销事件
 wifiManager.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 ```
@@ -1775,7 +1777,7 @@ wifiManager.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
-注册WLAN热点STA加入事件，在业务退出时，要调用off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi热点STA加入事件，在业务退出时，要调用off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1806,7 +1808,7 @@ on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册WLAN热点的STA加入事件。使用callback异步回调。
+取消注册Wi-Fi热点的STA加入事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1841,10 +1843,10 @@ let recvHotspotStaJoinFunc = (result:wifiManager.StationInfo) => {
     console.info("Receive hotspot sta join event: " + result);
 }
 
-// Register event
+// 注册事件
 wifiManager.on("hotspotStaJoin", recvHotspotStaJoinFunc);
 
-// Unregister event
+// 注销事件
 wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 ```
@@ -1853,7 +1855,7 @@ wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
-注册WLAN热点STA离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
+注册Wi-Fi热点STA离开事件，在业务退出时，要调用off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1884,7 +1886,7 @@ on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
 off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
-取消注册WLAN热点STA离开事件。使用callback异步回调。
+取消注册Wi-Fi热点STA离开事件。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1919,17 +1921,17 @@ let recvHotspotStaLeaveFunc = (result:wifiManager.StationInfo) => {
     console.info("Receive hotspot sta leave event: " + result);
 }
 
-// Register event
+// 注册事件
 wifiManager.on("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
-// Unregister event
+// 注销事件
 wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 
 ```
 
 ## WifiScanInfo
 
-提供WLAN扫描的相关信息。
+提供Wi-Fi扫描的相关信息。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -1977,35 +1979,18 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
-## WifiCapability
-
-wifi支持的能力。
-
-**起始版本：** 26.0.0
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-
-| 名称 | 值 | 说明 |
-| -------- | -------- | -------- |
-| WIFI_AUTO_ENABLE | 0 | wifi自动打开能力。 |
-
 
 ## wifiManager.setWifiCapability
 
 setWifiCapability(capability: WifiCapability, enable: boolean): void
 
-设置wifi能力。
+设置Wi-Fi能力。
 
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用
+**需要权限：** ohos.permission.SET_WIFI_CONFIG
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -2015,8 +2000,8 @@ setWifiCapability(capability: WifiCapability, enable: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| capability | [WifiCapability](#wificapability) | 是 | wifi能力枚举。 |
-| enable | boolean | 是 | 是否使能wifi能力，true表示使能，false表示不使能。 |
+| capability | [WifiCapability](js-apis-wifiManager.md#wificapability) | 是 | Wi-Fi能力枚举。 |
+| enable | boolean | 是 | 是否开启Wi-Fi能力，true表示开启，false表示关闭。 |
 
 **错误码：**
 
@@ -2042,13 +2027,13 @@ wifiManager.setWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE, true)
 
 getWifiCapability(capability: WifiCapability): boolean
 
-获取wifi支持的能力。
+获取Wi-Fi支持的能力。
 
 **起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用
+**需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -2058,7 +2043,7 @@ getWifiCapability(capability: WifiCapability): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| capability | [WifiCapability](#wificapability)| 是 | wifi能力枚举。 |
+| capability | [WifiCapability](js-apis-wifiManager.md#wificapability)| 是 | wifi能力枚举。 |
 
 **返回值：**
 

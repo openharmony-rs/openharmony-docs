@@ -2642,7 +2642,7 @@ Camera_ErrorCode OH_CaptureSession_SetColorTint(Camera_CaptureSession* session, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
 | int32_t colorTint | 色调调节值。 |
 
 **返回：**
@@ -3093,7 +3093,7 @@ Camera_ErrorCode OH_CaptureSession_GetRAWCaptureZoomRatioRange(const Camera_Capt
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许,会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>         CAMERA_OPERATION_NOT_ALLOWED：操作不允许，会话或相机状态异常。<br>         CAMERA_SESSION_NOT_CONFIG：捕获会话未配置。 |
 
 ### OH_CaptureSession_IsOISModeSupported()
 
@@ -3269,7 +3269,7 @@ typedef void (*OH_CaptureSession_OnExposureStateChange)(void* context, OH_Camera
 
 | 参数项 | 描述 |
 | -- | -- |
-| (void\* context | 指向自定义上下文的指针。 |
+| void* context | 指向自定义上下文的指针。 |
 | [OH_Camera_ExposureState](capi-camera-h.md#oh_camera_exposurestate) exposureState | 当前曝光状态。 |
 
 ### OH_CaptureSession_RegisterExposureStateChangeCallback()
@@ -3441,7 +3441,7 @@ Camera_ErrorCode OH_CaptureSession_UnlockFocusTracking(Camera_CaptureSession* se
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 指向Camera_CaptureSession实例的指针。 |
+| [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 指向Camera_CaptureSession实例的指针。 |
 
 **返回：**
 

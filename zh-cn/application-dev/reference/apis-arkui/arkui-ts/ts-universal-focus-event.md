@@ -1,7 +1,7 @@
 # 焦点事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -85,6 +85,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .onFocus(() => {
           this.oneButtonColor = '#FFFFFF';
         })
@@ -96,6 +97,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .onFocus(() => {
           this.twoButtonColor = '#FFFFFF';
         })
@@ -107,6 +109,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .onFocus(() => {
           this.threeButtonColor = '#FFFFFF';
         })

@@ -82,7 +82,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    bool outputDone = false;
    // 编码输入。
    bool inputDone = false;
-   std::unique_ptr<std::ifstream> inFile_;
    ```
 
 ### Surface模式
@@ -211,7 +210,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                    return false;
                }
                if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                   outputDone = 1;
+                   outputDone = true;
                }
 
                // 将编码完成帧数据buffer写入到对应输出文件中。
@@ -517,8 +516,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                     // 异常处理。
                     return false;
                 }
-                if (inFile_->eof()) {
-                    inputDone = 1;
+                if (inputFile->eof()) {
+                    inputDone = true;
                 }
                 break;
             }
@@ -574,7 +573,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                     outputFile->write(reinterpret_cast<char *>(addr), info.size);
                 }
                 if (info.flags & AVCODEC_BUFFER_FLAGS_EOS) {
-                    outputDone = 1;
+                    outputDone = true;
                 }
                 // 释放已完成处理的信息，index为对应buffer队列的下标。
                 OH_AVErrCode freeOutputRet = OH_VideoEncoder_FreeOutputBuffer(videoEnc, index);

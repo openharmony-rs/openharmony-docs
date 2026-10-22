@@ -1,4 +1,4 @@
-# ArkUI_RenderNodeHandle
+# ArkUI_RenderNode*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

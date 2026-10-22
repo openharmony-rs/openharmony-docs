@@ -6,7 +6,6 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=be48531bb599ab262690e4bcab7fffa1f7126656 translatedAt=2026-07-27T00:47:20.394Z pushedAt=2026-07-27T08:45:08.374Z -->
 
 The **faceAuth** module is an important part of the OpenHarmony user identity and access management (UserIAM) and is used to manage face enrollment. This module provides core APIs for face authentication management, allowing developers to enroll and manage face information within the application.
 

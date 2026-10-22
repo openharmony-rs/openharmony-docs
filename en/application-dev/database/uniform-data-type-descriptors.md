@@ -6,7 +6,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=c0d91caa7d12d601aaaaed4180389822d2d2a888 translatedAt=2026-07-28T06:46:42.751Z pushedAt=2026-07-28T08:35:32.587Z -->
+<!-- md-trans-meta sourceCommit=bed4448494720f3be3d1109ceb94048202c4d1d7 translatedAt=2026-08-20T06:24:00.985Z pushedAt=2026-08-20T12:38:34.957Z -->
 
 ## When to Use
 
@@ -250,11 +250,11 @@ The following walks you through on how to obtain **belongingToTypes** of a media
         // 5. Compare the queried standard data type "general.mp3" with the known standard data type "general.audio" that represents audio data, and determine whether a belonging relationship exists.
         if (typeObj1 != null) {
           let ret = typeObj1.belongsTo('general.audio');
-          hilog.info(0xFF00, '[Sample_Udmf]', `belongsTo, ret: + ${ret}`);
+          hilog.info(0xFF00, '[Sample_Udmf]', `belongsTo, ret: ${ret}`);
           let mediaTypeObj = uniformTypeDescriptor.getTypeDescriptor('general.media');
           // Determine whether a belonging relationship exists.
           ret = mediaTypeObj.isHigherLevelType('general.audio');
-          hilog.info(0xFF00, '[Sample_Udmf]', `isHigherLevelType, ret: + ${ret}`);
+          hilog.info(0xFF00, '[Sample_Udmf]', `isHigherLevelType, ret: ${ret}`);
         }
       } catch (err) {
         hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${err.message}, err code: ${err.code}`);
@@ -314,7 +314,7 @@ The following walks you through on how to obtain the file name extensions based 
 
 2. Use **getUniformDataTypesByMIMEType()** to obtain the UTD type ID based on the MIME type **text/plain**.
 
-3. Use **getTypeDescriptor()** to obtain the MIME types based on the UTD type ID.
+3. Use **getTypeDescriptor()** to obtain the file extensions based on the UTD type.
 
     <!-- @[get_filename_extension_by_mimeType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
 

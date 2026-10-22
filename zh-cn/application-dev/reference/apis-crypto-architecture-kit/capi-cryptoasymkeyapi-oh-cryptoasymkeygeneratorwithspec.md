@@ -13,7 +13,7 @@ typedef struct OH_CryptoAsymKeyGeneratorWithSpec OH_CryptoAsymKeyGeneratorWithSp
 
 ## 概述
 
-定义带规格的非对称密钥生成器。
+基于规格的非对称密钥生成器结构体，表示基于规格的非对称密钥生成器。
 
 **起始版本：** 20
 

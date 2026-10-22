@@ -392,7 +392,7 @@ ISendable是所有Sendable类型（除null和undefined）的父类型。自身�
 
 | 类型                | 说明                     |
 | ------------------ | ------------------------ |
-| [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable)  | 所有Sendable类型的父类型。               |
+| [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#isendable)  | 所有Sendable类型的父类型。               |
 
 ## PixelMap
 
@@ -471,7 +471,7 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -586,7 +586,7 @@ readPixelsSync(area: image.PositionArea): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -713,7 +713,7 @@ writePixelsSync(area: image.PositionArea): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -806,7 +806,7 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -882,7 +882,7 @@ getImageInfoSync(): image.ImageInfo
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1041,7 +1041,7 @@ opacitySync(rate: number): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1125,7 +1125,7 @@ createAlphaPixelmapSync(): PixelMap
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1218,7 +1218,7 @@ scaleSync(x: number, y: number): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1309,7 +1309,7 @@ translateSync(x: number, y: number): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1401,7 +1401,7 @@ rotateSync(angle: number): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1483,7 +1483,7 @@ flipSync(horizontal: boolean, vertical: boolean): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1564,7 +1564,7 @@ cropSync(region: image.Region): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | Resource Unavailable. |
+|  501    | The resource is unavailable as it is occupied by another thread. |
 
 **示例：**
 
@@ -1671,6 +1671,10 @@ function setColorSpace(pixelMap: sendableImage.PixelMap) {
 applyColorSpace(targetColorSpace: colorSpaceManager.ColorSpaceManager): Promise\<void>
 
 根据输入的目标色彩空间对图像的像素颜色进行色彩空间转换。使用Promise异步回调。
+
+> **说明：**
+>
+> 本接口仅执行色彩空间之间的数学转换，不包含HDR到SDR的色调映射。当源图像为HDR色彩空间（传输函数为HLG或PQ，例如BT2020_HLG、BT2020_PQ、P3_HLG、P3_PQ等）且目标为SDR色彩空间（传输函数为sRGB gamma，例如SRGB、DISPLAY_P3、DCI_P3、ADOBE_RGB_1998等）时，直接调用本接口会导致图像整体偏亮、泛白、高光细节丢失。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

@@ -6,7 +6,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8b7a7d18aa38aad39c3fae4dcbb93ef9e9d5f258 translatedAt=2026-07-17T12:20:31.454Z pushedAt=2026-07-29T06:31:39.882Z -->
+<!-- md-trans-meta sourceCommit=8b4c98fc05574e8ac66ee3675c179b839e11ec9d translatedAt=2026-08-19T08:25:44.449Z pushedAt=2026-08-20T03:25:00.439Z -->
 
 ```c
 typedef struct {...} ArkUI_NativeDialogAPI_3
@@ -108,7 +108,7 @@ Registers a callback function that is triggered before the custom dialog box app
 |-------------------------------------| -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
 | void* userData                      | Custom data.|
-| callback                            | Callback function that is triggered before the custom dialog box appears.|
+| void (*callback)(void* userData)                            | Callback invoked before the custom dialog box appears. |
 
 **Returns**
 
@@ -138,7 +138,7 @@ Registers a callback function that is triggered after the custom dialog box appe
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
 | void* userData | Custom data.|
-| callback | Callback function that is triggered after the custom dialog box appears.|
+| void (*callback)(void* userData) | Callback invoked after the custom dialog box appears. |
 
 **Returns**
 
@@ -168,7 +168,7 @@ Registers a callback function that is triggered before the custom dialog box dis
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
 | void* userData | Custom data.|
-| callback | Callback function that is triggered before the custom dialog box disappears.|
+| void (*callback)(void* userData) | Callback invoked before the custom dialog box disappears. |
 
 **Returns**
 
@@ -198,7 +198,7 @@ Registers a callback function that is triggered after the custom dialog box disa
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
 | void* userData | Custom data.|
-| callback | Callback function that is triggered after the custom dialog box disappears.|
+| void (*callback)(void* userData) | Callback invoked after the custom dialog box disappears. |
 
 **Returns**
 

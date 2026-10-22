@@ -811,7 +811,7 @@ wantAgent.getWantAgent({
 | UNKNOWN_TYPE      | 0 | 不识别的类型。            |
 | START_ABILITY     | 1 | 开启一个有页面的Ability。 |
 | START_ABILITIES   | 2 | 开启多个有页面的Ability。 |
-| START_SERVICE     | 3 | 开启一个无页面的ability。 |
+| START_SERVICE     | 3 | 开启一个无页面的Ability。 |
 | SEND_COMMON_EVENT | 4 | 发送一个公共事件。        |
 
 ## CompleteData 
@@ -824,7 +824,7 @@ wantAgent.getWantAgent({
 | -------------- | ----------------------------- | ---- | ---- | ------------------ |
 | info           | WantAgent                       | 否   | 否   | 触发的WantAgent。       |
 | want           | Want                            | 否   | 否   | 存在的被触发的Want。     |
-| finalCode      | number                          | 否   | 否   | 触发wantAgent的请求代码。|
+| finalCode      | number                          | 否   | 否   | 触发WantAgent的请求代码。|
 | finalData      | string                          | 否   | 否   | 公共事件收集的最终数据。  |
 | extraInfo      | { [key: string]: any }          | 否   | 是   | 额外数据。               |
 

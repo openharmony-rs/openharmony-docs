@@ -43,8 +43,12 @@
    @Concurrent
    function cancel(send: SendableTest) {
      // 在子线程中通过任务ID取消任务
-     taskpool.cancel(send.getTaskId());
-     console.info('cancel task finished');
+     try {
+       taskpool.cancel(send.getTaskId());
+       console.info('cancel task finished');
+     } catch (e) {
+       console.error(`cancel failed, taskId: ${send.getTaskId()}, error: ${e.message}`);
+     }
    }
    
    @Concurrent

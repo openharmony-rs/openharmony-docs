@@ -12,7 +12,7 @@
 >
 >  * 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  * OffscreenCanvasRenderingContext2D无法在ServiceExtensionAbility中使用，ServiceExtensionAbility中建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
+>  * OffscreenCanvasRenderingContext2D使用时依赖UI上下文，无法在没有加载UI上下文时使用（如ServiceExtensionAbility，MDM企业设备管理服务等可能无UI页面的场景下使用需注意此约束），此类无UI上下文的场景建议使用[绘制模块](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md)进行离屏绘制。
 >
 >  * [beginPath](./ts-components-canvas-common-method.md#beginpath)、[moveTo](./ts-components-canvas-common-method.md#moveto)、[lineTo](./ts-components-canvas-common-method.md#lineto)、[closePath](./ts-components-canvas-common-method.md#closepath)、[bezierCurveTo](./ts-components-canvas-common-method.md#beziercurveto)、[quadraticCurveTo](./ts-components-canvas-common-method.md#quadraticcurveto)、[arc](./ts-components-canvas-common-method.md#arc)、[arcTo](./ts-components-canvas-common-method.md#arcto)、[ellipse](./ts-components-canvas-common-method.md#ellipse)、[rect](./ts-components-canvas-common-method.md#rect)和[roundRect](./ts-components-canvas-common-method.md#roundrect20)接口只能对OffscreenCanvasRenderingContext2D中的路径生效，无法对[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)和[Path2D](./ts-components-canvas-path2d.md)对象中设置的路径生效。
 >

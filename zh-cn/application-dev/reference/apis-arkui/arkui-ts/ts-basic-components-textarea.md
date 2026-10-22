@@ -748,7 +748,7 @@ fontFeature(value: string)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| value  | string | 是   | 文字特性效果，用于设置文字的特殊显示效果，如数字等宽等。格式为：normal \| <feature-tag-value>。 |
+| value  | string | 是   | 文字特性效果，用于设置文字的特殊显示效果，如数字等宽等。格式为：normal \| \<feature-tag-value\>。 |
 
 Font Feature当前支持的属性参见[fontFeature](ts-basic-components-text.md#fontfeature12)属性列表。
 
@@ -781,7 +781,7 @@ wordBreak(value: WordBreak)
 
 selectedBackgroundColor(value: ResourceColor)
 
-设置文本选中底板颜色。如果未设置不透明度，默认为20%不透明度。
+设置文本选中高亮颜色。如果未设置不透明度或设置为完全不透明，默认使用20%不透明度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -793,7 +793,7 @@ selectedBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中底板颜色，用于自定义文本选中时的背景颜色。如果未设置不透明度，默认为20%不透明度。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 文本选中高亮颜色。 |
 
 ### caretStyle<sup>12+</sup>
 
@@ -1118,7 +1118,7 @@ strokeWidth(width: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。|
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。当LengthMetrics对象的unit属性为LengthUnit.PERCENT时，当前设置不生效，按默认值处理。<br>若设置值小于0，显示实心字；若大于0，显示空心字。|
 
 ### strokeColor<sup>20+</sup>
 
@@ -1328,7 +1328,7 @@ strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
 
 | 参数名           | 类型             | 必填 | 说明                                            |
 | ---------------- | ------- | ---- | ----------------------------------------------- |
-| strokeJoinStyle         | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) \| undefined | 是 | 文本描边拐角样式。<br>值为undefined时，按照StrokeJoinStyle.MITER_JOIN处理，请参考[StrokeJoinStyle](ts-text-common.md#strokejoinstyle)，文本拐角处表现为锐角。 |
+| strokeJoinStyle         | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) \| undefined | 是 | 文本描边拐角样式。<br>值为undefined时，按照StrokeJoinStyle.MITER_JOIN处理，请参考[StrokeJoinStyle](ts-text-common.md#strokejoinstyle)，文本拐角处表现为尖角。 |
 
 ### shaderStyle
 
@@ -1382,6 +1382,16 @@ includeFontPadding(include: Optional\<boolean>)
 
 设置是否在首行和尾行增加间距以避免文字截断。未通过该接口设置时，默认不增加间距。
 
+从API版本26.2.0开始，该接口与[fallbackLineSpacing](#fallbacklinespacing23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+```json
+"metadata": [
+  {
+    "name": "configTextStyleOptimizeFlagInArkUI",
+    "value": "true"
+  }
+]
+```
+
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1399,6 +1409,16 @@ includeFontPadding(include: Optional\<boolean>)
 fallbackLineSpacing(enabled: Optional\<boolean>)
 
 针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。未通过该接口设置时，默认行高不基于文字实际高度自适应。
+
+从API版本26.2.0开始，该接口与[includeFontPadding](#includefontpadding23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+```json
+"metadata": [
+  {
+    "name": "configTextStyleOptimizeFlagInArkUI",
+    "value": "true"
+  }
+]
+```
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -2153,28 +2173,28 @@ struct TextAreaExample {
 struct TextAreaExample {
   build() {
     Column() {
-      Text('属性WordBreakType为NORMAL的样式：').fontSize(16).fontColor(0xFF0000)
+      Text('wordBreak属性为NORMAL的样式：').fontSize(16).fontColor(0xFF0000)
       TextArea({
         text: 'This is set wordBreak to WordBreak text Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu.'
       })
         .fontSize(16)
         .border({ width: 1 })
         .wordBreak(WordBreak.NORMAL)
-      Text('英文文本，属性WordBreakType为BREAK_ALL的样式：').fontSize(16).fontColor(0xFF0000)
+      Text('英文文本，wordBreak属性为BREAK_ALL的样式：').fontSize(16).fontColor(0xFF0000)
       TextArea({
         text: 'This is set wordBreak to WordBreak text Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu.'
       })
         .fontSize(16)
         .border({ width: 1 })
         .wordBreak(WordBreak.BREAK_ALL)
-      Text('中文文本，属性WordBreakType为BREAK_ALL的样式：').fontSize(16).fontColor(0xFF0000)
+      Text('中文文本，wordBreak属性为BREAK_ALL的样式：').fontSize(16).fontColor(0xFF0000)
       TextArea({
         text: '多行文本输入框组件，当输入的文本内容超过组件宽度时会自动换行显示。\n高度未设置时，组件无默认高度，自适应内容高度。宽度未设置时，默认撑满最大宽度。'
       })
         .fontSize(16)
         .border({ width: 1 })
         .wordBreak(WordBreak.BREAK_ALL)
-      Text('属性WordBreakType为BREAK_WORD的样式：').fontSize(16).fontColor(0xFF0000)
+      Text('wordBreak属性为BREAK_WORD的样式：').fontSize(16).fontColor(0xFF0000)
       TextArea({
         text: 'This is set wordBreak to WordBreak text Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu.'
       })
@@ -2325,7 +2345,7 @@ struct TextAreaExample {
       .width('100%')
       .padding({ bottom: 50 })
 
-      TextArea({ controller: this.controller, text: this.inputValue })// 绑定自定义键盘
+      TextArea({ controller: this.controller, text: this.inputValue }) // 绑定自定义键盘
         .height(100)
         .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
         .margin(10)
@@ -2773,7 +2793,7 @@ struct TextAreaExample {
         .maxFontScale(2)
         .enablePreviewText(true)
         .enableHapticFeedback(true)
-        .stopBackPress(false)// 返回键交给其他组件处理
+        .stopBackPress(false) // 返回键交给其他组件处理
         .width(336)
         .height(56)
         .margin(20)
@@ -2865,11 +2885,10 @@ struct TextAreaExample {
   // 设置字体大小
   async setFontScale(scale: number): Promise<void> {
     let configInit: Configuration = {
-      language: 'zh-Ch',
-      fontSizeScale: scale,
+      fontSizeScale: scale
     };
     // 更新配置-字体大小，调用系统接口更新字体配置
-    // 需在工程的module.json5文件的requestPermissions字段配置权限：ohos.permission.UPDATE_CONFIGURATION。该权限为系统权限，仅系统应用可申请，普通应用无法获取。可参考[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)了解系统应用配置方法。
+    // 需在工程的module.json5文件的requestPermissions字段配置权限：ohos.permission.UPDATE_CONFIGURATION
     abilityManager.updateConfiguration(configInit, (err: BusinessError) => {
       if (err) {
         console.error(`Failed to updateConfiguration. Code: ${err.code}, message: ${err.message}`);
@@ -2888,10 +2907,10 @@ struct TextAreaExample {
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
           text: '通过minFontScale、maxFontScale调整文本显示的最大和最小字体缩放倍数。'
         })
-          .minFontScale(this.minFontScale)// 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
+          .minFontScale(this.minFontScale) // 设置最小字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
           .maxFontScale(this.maxFontScale) // 设置最大字体缩放倍数，参数为undefined则跟随系统默认倍数缩放
       }.width('100%')
-
+      // 以下按钮只用做字体大小倍数调整，不在示例图中呈现
       Column() {
         Row() {
           Button('1倍').onClick(() => {

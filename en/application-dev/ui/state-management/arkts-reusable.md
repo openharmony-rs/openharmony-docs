@@ -5,15 +5,14 @@
 <!--Designer: @keerecles-->
 <!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:12:52.375Z pushedAt=2026-07-23T02:26:59.992Z -->
+<!-- md-trans-meta sourceCommit=99a58a4fe03d5271afbc3092a3922284bf262f08 translatedAt=2026-09-21T11:37:22.349Z pushedAt=2026-09-23T09:19:54.053Z -->
 
 Custom components decorated by [\@Reusable](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-reusable.md#reusable) support component reuse. When a custom component is removed from the component tree, it is stored in a cache pool. When a component node of the same type is subsequently created, the component object in the cache pool is preferentially reused, thereby avoiding repeated creation and destruction and improving performance.
 
 > **NOTE**
 >
-> The \@Reusable decorator is supported since API version 10 and can be used in ArkTS.
->
-> For details about the principles, optimization methods, and use scenarios of component reuse, see [Component Reuse](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse).
+> @Reusable is supported since API version 10 and can be used in ArkTS.
+<!--RP1--><!--RP1End-->
 
 ## Overview
 
@@ -982,7 +981,7 @@ In the following example, the @Reusable decorator is used to decorate the custom
 
 The **aboutToReuse** API is triggered when the component is obtained from the reuse cache and added to the component tree during grid scrolling. This allows you to update the component's state variables to display correct content.
 
-Note: There is no need to update state variables that automatically synchronize values (such as variables decorated with [\@Link](arkts-link.md), [\@StorageLink](arkts-appstorage.md#storagelink), [\@ObjectLink](arkts-observed-and-objectlink.md), or [\@Consume](arkts-provide-and-consume.md)) in **aboutToReuse**, as this may trigger unnecessary component re-renders.
+Note: There is no need to update state variables that automatically synchronize values (such as variables decorated with [\@Link](arkts-link.md), [\@StorageLink](arkts-appstorage.md#storagelink), [\@ObjectLink](arkts-observed-and-objectlink.md), or [\@Consume](arkts-provide-and-consume.md)) in **aboutToReuse**, otherwise unnecessary component re-renders may be triggered.
 
 <!-- @[reusable_for_grid_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForGridUsageScenario.ets) -->
 
@@ -1657,7 +1656,7 @@ struct ReusableComponent {
 
 **Composite**
 
-There are multiple differences between reusable components, but they usually share common child components. In the example, after three reusable components are converted into **Builder** functions in a combined manner, the internal shared child components will be uniformly placed under the parent component **MyComponent**. The reuse cache is shared at the parent component level for child component reuse, reducing resource consumption during component creation.
+There are multiple differences between reusable components, but they usually share common child components. In the example, after three reusable components are converted into **Builder** functions in a combined manner, the internal shared child components will be uniformly placed under the parent component **MyComponent**. The cache pool is shared at the parent component level for child component reuse, reducing resource consumption during component creation.
 
 <!-- @[reusable_for_composite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForComposite.ets) -->
 
@@ -1862,5 +1861,3 @@ struct ChildComponentD {
   }
 }
 ```
-
-<!--no_check-->

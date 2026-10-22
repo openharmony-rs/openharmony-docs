@@ -1,12 +1,11 @@
 # @ohos.app.form.LiveFormExtensionAbility (LiveFormExtensionAbility)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=01c11bd0ed8d410f6879cbb6403794eb83930561 translatedAt=2026-07-31T08:24:30.883Z pushedAt=2026-08-01T00:25:19.826Z -->
+<!-- md-trans-meta sourceCommit=5d7620d4e4922c61847803b4d9f05a3c89ee7cd9 translatedAt=2026-09-15T01:51:02.458Z pushedAt=2026-09-15T07:41:24.370Z -->
 
 The **LiveFormExtensionAbility** module, which inherits from [ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md), provides interactive widget functions, including receiving notifications for creating and destroying interactive widgets.
 
@@ -15,17 +14,17 @@ The **LiveFormExtensionAbility** module, which inherits from [ExtensionAbility](
 > The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > The APIs of this module can be used only in the stage model.
->
-> This module has a list of APIs that are not allowed to be called. Calling these APIs will cause functional exceptions. For details, see [Appendix](#appendix).
+
+## Constraints
+
+To ensure system security and stability and prevent LiveFormExtensionAbility from abusing system resources, the system manages and controls its capabilities and does not support the reference to some modules. For details, see [Appendix](js-apis-app-form-LiveFormExtensionAbility.md#appendix).
 
 ## Modules to Import
 
 ```ts
 import { LiveFormExtensionAbility } from '@kit.FormKit';
 ```
-
 ## LiveFormExtensionAbility
-
 Interactive widget extension class, which implements the provider functions of interactive widgets, including APIs for the interactive widget provider to receive notifications of interactive widget creation and destruction. You can implement widget initialization, data binding, resource cleanup, and other logic in the callbacks. [onLiveFormCreate](#onliveformcreate) is triggered when the user switches the interactive widget to the active state, and is used for initialization and data binding. [onLiveFormDestroy](#onliveformdestroy) is triggered when the user switches the interactive widget to the inactive state, and is used for resource cleanup. The two callbacks together form a complete lifecycle management mechanism. Ensure that resources allocated in **onLiveFormCreate** are properly released in **onLiveFormDestroy**.
 
 ### Properties
@@ -47,11 +46,8 @@ onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession)
 Callback invoked when a **LiveFormExtensionAbility** instance is created. When the user switches to the active state of the interactive widget, the system automatically calls this callback. You can perform widget initialization, data binding, and other operations in this callback.
 
 **Pairing requirements**
-
 - This function and **onLiveFormDestroy()** must be used in pairs to form a complete interactive widget lifecycle.
-
 - When the interactive widget switches to the inactive state, the system automatically calls **onLiveFormDestroy()** for resource cleanup.
-
 - Ensure that resources requested in **onLiveFormCreate** are properly released in **onLiveFormDestroy** to avoid memory leaks.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -113,9 +109,7 @@ export default class LiveFormExtAbility extends LiveFormExtensionAbility {
   }
 }
 ```
-
 ## LiveFormInfo
-
 Defines the interactive widget information.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -132,11 +126,11 @@ Defines the interactive widget information.
 
 ## Appendix
 
-The following table lists the APIs that cannot be called by this module.
+LiveFormExtensionAbility does not support the reference to the following modules.
 
 | Kit Name | Module Name |
 | ------- | ------- |
-| AbilityKit | [@ohos.ability.featureAbility (FeatureAbility)](../apis-ability-kit/js-apis-ability-featureAbility.md)<br>[@ohos.ability.particleAbility (ParticleAbility)](../apis-ability-kit/js-apis-ability-particleAbility.md)<br>[@ohos.bundle.launcherBundleManager (launcherBundleManager)](../apis-ability-kit/js-apis-launcherBundleManager.md)<br>[@ohos.continuation.continuationManager (Continuation Management)](../apis-ability-kit/js-apis-continuation-continuationManager.md)<br><!--Del-->[@ohos.app.ability.quickFixManager (quickFixManager) (System API)](../apis-ability-kit/js-apis-app-ability-quickFixManager-sys.md)<br>[@ohos.bundle.bundleMonitor (bundleMonitor) (System API)](../apis-ability-kit/js-apis-bundleMonitor-sys.md)<br>[@ohos.bundle.distributedBundleManager (distributedBundleManager) (System API)](../apis-ability-kit/js-apis-distributedBundleManager-sys.md)<br>[@ohos.bundle.freeInstall (freeInstall) (System API)](../apis-ability-kit/js-apis-freeInstall-sys.md)<br>[@ohos.bundle.innerBundleManager (innerBundleManager) (System API)](../apis-ability-kit/js-apis-Bundle-InnerBundleManager-sys.md)<br>[@ohos.bundle.installer (installer) (System API)](../apis-ability-kit/js-apis-installer-sys.md)<br>[@ohos.distributedBundle (Distributed Bundle Management) (System API)](../apis-ability-kit/js-apis-Bundle-distributedBundle-sys.md)<br>[@ohos.distributedMissionManager (Distributed Mission Management) (System API)](../apis-ability-kit/js-apis-distributedMissionManager-sys.md)<br>[@ohos.privacyManager (Privacy Management) (System API)](../apis-ability-kit/js-apis-privacyManager-sys.md)<!--DelEnd--> |
+| AbilityKit | [Context (Context Base Class of the Stage Model)](../apis-ability-kit/js-apis-inner-application-context.md)<br>[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)<br>[@ohos.ability.featureAbility (FeatureAbility module)](../apis-ability-kit/js-apis-ability-featureAbility.md)<br>[@ohos.ability.particleAbility (ParticleAbility module)](../apis-ability-kit/js-apis-ability-particleAbility.md)<br>[@ohos.bundle.launcherBundleManager (launcherBundleManager module)](../apis-ability-kit/js-apis-launcherBundleManager.md)<br>[@ohos.continuation.continuationManager (migration/collaboration management)](../apis-ability-kit/js-apis-continuation-continuationManager.md)<br><!--Del-->[ServiceExtensionContext (system API)](../apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md)<br>[@ohos.app.ability.quickFixManager (quickFixManager)(system API)](../apis-ability-kit/js-apis-app-ability-quickFixManager-sys.md)<br>[@ohos.bundle.bundleMonitor (bundleMonitor module)(system API)](../apis-ability-kit/js-apis-bundleMonitor-sys.md)<br>[@ohos.bundle.distributedBundleManager (distributedBundleManager module)(system API)](../apis-ability-kit/js-apis-distributedBundleManager-sys.md)<br>[@ohos.bundle.freeInstall (freeInstall module)(system API)](../apis-ability-kit/js-apis-freeInstall-sys.md)<br>[@ohos.bundle.innerBundleManager (innerBundleManager module)(system API)](../apis-ability-kit/js-apis-Bundle-InnerBundleManager-sys.md)<br>[@ohos.bundle.installer (installer module)(system API)](../apis-ability-kit/js-apis-installer-sys.md)<br>[@ohos.distributedBundle (distributed bundle management)(system API)](../apis-ability-kit/js-apis-Bundle-distributedBundle-sys.md)<br>[@ohos.distributedMissionManager (distributed mission management)(system API)](../apis-ability-kit/js-apis-distributedMissionManager-sys.md)<br>[@ohos.privacyManager (privacy management)(system API)](../apis-ability-kit/js-apis-privacyManager-sys.md)<!--DelEnd--> |
 | BasicServicesKit | [@ohos.account.appAccount (App Account Management)](../apis-basic-services-kit/js-apis-appAccount.md)<br>[@ohos.account.distributedAccount (Distributed Account Management)](../apis-basic-services-kit/js-apis-distributed-account.md)<br>[@ohos.account.osAccount (System Account Management)](../apis-basic-services-kit/js-apis-osAccount.md)<br>[@ohos.pasteboard (Pasteboard)](../apis-basic-services-kit/js-apis-pasteboard.md)<br>[@ohos.request (Upload and Download)](../apis-basic-services-kit/js-apis-request.md)<br>[@ohos.wallpaper (Wallpaper)](../apis-basic-services-kit/js-apis-wallpaper.md)<!--Del--><br>[@ohos.update (Update) (System API)](../apis-basic-services-kit/js-apis-update-sys.md)<!--DelEnd--> |
 | BackgroundTasksKit | [@ohos.backgroundTaskManager (Background Task Management)](../apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md)<br>[@ohos.resourceschedule.backgroundTaskManager (Background Task Management)](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)<br>[@ohos.reminderAgent (Background Agent Reminder)](../apis-backgroundtasks-kit/js-apis-reminderAgent.md)<br>[@ohos.reminderAgentManager (Background Agent Reminder)](../apis-backgroundtasks-kit/js-apis-reminderAgentManager.md)<!--Del--><br>[@ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)](../apis-backgroundtasks-kit/js-apis-resourceschedule-deviceUsageStatistics-sys.md)<!--DelEnd--> |
 | CalendarKit | [@ohos.calendarManager (Calendar Management)](../apis-calendar-kit/js-apis-calendarManager.md) |
@@ -157,5 +151,4 @@ The following table lists the APIs that cannot be called by this module.
 | ArkUI | [@ohos.window (Window)](../apis-arkui/arkts-apis-window.md) |
 |<!--DelRow--> AccessibilityKit | [@ohos.accessibility.config (System Accessibility Configuration) (System API)](../apis-accessibility-kit/js-apis-accessibility-config-sys.md) |
 |<!--DelRow--> FormKit | [@ohos.app.form.formHost (formHost) (System API)](../apis-form-kit/js-apis-app-form-formHost-sys.md)<br>[@ohos.application.formHost (formHost) (System API)](../apis-form-kit/js-apis-application-formHost-sys.md) |
-
 <!--RP1--><!--RP1End-->

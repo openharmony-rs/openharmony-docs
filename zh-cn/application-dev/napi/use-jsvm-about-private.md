@@ -1,4 +1,4 @@
-# 使用JSVM-API接口进行private相关开发
+# 使用JSVM-API接口进行 private 属性相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
@@ -31,7 +31,7 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
 
 ### 使用接口创建 private key 并添加对应 private property，随后删除
 
-cpp部分代码
+cpp部分代码：
 
 ```cpp
 static JSVM_Value privateTest(JSVM_Env env, JSVM_CallbackInfo info) {
@@ -86,7 +86,7 @@ static JSVM_CallbackStruct param[] = {
 
 static JSVM_CallbackStruct *method = param;
 
-// wrapperObject方法别名，供JS调用
+// privateTest方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
     {"privateTest", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };

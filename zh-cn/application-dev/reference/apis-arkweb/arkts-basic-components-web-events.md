@@ -1,7 +1,7 @@
 # 事件
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -14,7 +14,7 @@ Web组件事件模块是ArkWeb框架中Web组件的事件回调接口集合，�
 
 > **说明：**
 >
-> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准。
 
@@ -527,6 +527,7 @@ onErrorReceive(callback: Callback\<OnErrorReceiveEvent\>)
             if (event) {
               console.info('getErrorInfo:' + event.error.getErrorInfo());
               console.info('getErrorCode:' + event.error.getErrorCode());
+              console.info('getCustomErrorCode:' + event.error.getCustomErrorCode());
               console.info('url:' + event.request.getRequestUrl());
               console.info('isMainFrame:' + event.request.isMainFrame());
               console.info('isRedirect:' + event.request.isRedirect());
@@ -1226,11 +1227,68 @@ onScaleChange(callback: Callback\<OnScaleChangeEvent\>)
   }
   ```
 
+## onZoomChange
+
+onZoomChange(callback: OnZoomChangeCallback)
+
+当网页的页面缩放倍率发生变化时触发该回调。
+
+> **说明：**
+>
+> - 通过[setZoomFactor](./arkts-apis-webview-WebviewController.md#setzoomfactor)设置，或[zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22)为`true`时通过Ctrl组合键或鼠标滚轮/触摸板缩放，均会触发该回调。
+> - 在同一浏览数据上下文中，其他同Host Web组件改变页面缩放倍率后，如果当前Web组件的实际倍率随之变化，也会触发该回调。
+> - 页面缩放会缩放文字、图片并重新布局页面；CSS `zoom`不会触发该回调，捏合缩放导致的页面显示比例变化由[onScaleChange](#onscalechange9)通知。
+> - 当前Web组件导航至其他Host时，若实际倍率发生变化则触发回调；实际倍率不变时不会重复触发。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | [OnZoomChangeCallback](./arkts-basic-components-web-t.md#onzoomchangecallback) | 是 | 页面缩放倍率变化时触发的回调。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('set zoom factor to 1.5')
+        .onClick(() => {
+          this.controller.setZoomFactor(1.5);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onZoomChange((event) => {
+          console.info(`zoom factor: ${event.oldZoomFactor} -> ${event.newZoomFactor}`);
+        })
+    }
+  }
+}
+```
+
 ## onInterceptRequest<sup>9+</sup>
 
 onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse>)
 
-当Web组件加载URL之前触发该回调，用于拦截URL并返回响应数据。`onInterceptRequest`可拦截所有跳转请求并返回响应数据，但无法访问POST请求体（Body）内容，且不支持分片缓冲（buffer）类型数据获取。此类场景需改用[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)实现，依据具体业务需求进行判断。
+当Web组件加载URL之前触发该回调，用于拦截URL并返回响应数据。
+
+> **说明：**
+>
+> - 使用`onInterceptRequest`返回自定义响应时，必须通过[setResponseMimeType](./arkts-basic-components-web-WebResourceResponse.md#setresponsemimetype9)设置MIME类型。如果不希望设置MIME类型，可使用[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)代替。
+>
+> - `onInterceptRequest`可拦截所有跳转请求并返回响应数据，但无法访问POST请求体（Body）内容，且不支持分片缓冲（buffer）类型数据获取。此类场景需改用[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)实现，依据具体业务需求进行判断。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1250,7 +1308,7 @@ onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceRespon
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-    responseWeb: webview.WebResourceResponse = new webview.WebResourceResponse();
+    responseWeb: WebResourceResponse = new WebResourceResponse();
     heads: Header[] = new Array();
     webData: string = "<!DOCTYPE html>\n" +
       "<html>\n" +
@@ -2332,6 +2390,115 @@ onContextMenuHide(callback: OnContextMenuHideCallback)
   }
   ```
 
+## onContextMenuUpdate
+
+onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
+
+注册回调，在内核异步更新上下文菜单项状态时调用。内核完成异步处理后触发该回调，通知应用更新菜单项的显示状态。
+
+[shouldOfferLinkToText](./arkts-basic-components-web-WebContextMenuParam.md#shouldofferlinktotext)方法返回的是同步初始值，而此回调提供的是异步最终值，两者互为补充。
+
+在单次上下文菜单会话期间，此回调可能被多次调用，每个被内核异步更新状态的菜单项各触发一次。回调绑定于Web组件生命周期，组件销毁时自动释放。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnContextMenuUpdateCallback](./arkts-basic-components-web-t.md#oncontextmenuupdatecallback) | 是 | 上下文菜单项状态更新时触发的回调函数，接收菜单项ID和选项信息。     |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+ 
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private result: WebContextMenuResult | undefined = undefined;
+    private param: WebContextMenuParam | undefined = undefined;
+    @State offsetX: number = 0;
+    @State offsetY: number = 0;
+    @State showMenu: boolean = false;
+ 
+    @Builder
+    // 构建自定义菜单及触发功能接口
+    MenuBuilder() {
+    // 以垂直列表形式显示的菜单。
+        Menu() {
+          // 展示菜单Menu中具体的item菜单项。
+          MenuItem({
+            content: 'copyLink',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.copyLinkToTextMenu();
+            console.info("isOverTextFragment=" + this.param?.isOverTextFragment());
+            console.info("getTextFragmentGeneratedLink=" + this.param?.getTextFragmentGeneratedLink());
+            this.showMenu = false;
+          })
+ 
+          MenuItem({
+            content: 'removeLink',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+              this.result?.removeFragments();
+              console.info("shouldOfferLinkToText=" + this.param?.shouldOfferLinkToText());
+              this.showMenu = false;
+            })
+      }
+      .width(150)
+      .height(450)
+    }
+ 
+    build() {
+      Column() {
+        Web({ src: 'https://www.baidu.com', controller: this.controller })
+        // 触发自定义弹窗
+          .onContextMenuShow((event) => {
+            if (event) {
+              this.result = event.result
+              this.param = event.param;
+            }
+            this.showMenu = true;
+            this.offsetX = 0;
+            this.offsetY = Math.max(px2vp(event?.param.y() ?? 0) - 0, 0);
+            return true;
+          })
+          .onContextMenuUpdate((menuItemId, options) => {
+            if (menuItemId === WebContextMenuItemId.MENU_COPY_LINK) {
+              console.info("onContextMenuUpdate enable = " + options?.enable);
+            }
+          })
+          .bindPopup(this.showMenu,
+            {
+              builder: this.MenuBuilder(),
+              enableArrow: false,
+              placement: Placement.LeftTop,
+              mask: false,
+              onStateChange: (e) => {
+                if (!e.isVisible) {
+                  this.showMenu = false;
+                  this.result!.closeContextMenu();
+                }
+              }
+            })
+          .height("70%")
+      }
+    }
+  }
+  ```
+
 ## onScroll<sup>9+</sup>
 
 onScroll(callback: Callback\<OnScrollEvent\>)
@@ -3366,7 +3533,7 @@ onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\>)
 >
 > - onLoadIntercept是在页面导航前同步触发的回调，回调返回前当前导航处于挂起状态。
 >
-> - 禁止在回调中直接调用会触发新导航的接口（如[refresh()](./arkts-apis-webview-WebviewController.md#refresh)、[loadurl()](./arkts-apis-webview-WebviewController.md#loadurl)、[setCustomUserAgent()](./arkts-apis-webview-WebviewController.md#setcustomuseragent10)等），否则会导致回调重入或导航状态混乱。
+> - 禁止在回调中直接调用会触发新导航的接口（如[refresh()](./arkts-apis-webview-WebviewController.md#refresh)、[loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl)、[setCustomUserAgent()](./arkts-apis-webview-WebviewController.md#setcustomuseragent10)等），否则会导致回调重入或导航状态混乱。
 >
 > - 如需在拦截后重新加载页面，应在回调返回后通过[setTimeout()](../common/js-apis-timer.md#settimeout)等异步方法延迟调用。
 >

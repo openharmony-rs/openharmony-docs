@@ -6,7 +6,7 @@
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f1bbf293e58e8daa3733902ea6b2a7d76e6bbdaa translatedAt=2026-08-04T12:09:08.267Z pushedAt=2026-08-06T08:05:21.496Z -->
+<!-- md-trans-meta sourceCommit=d78b3fb65ab1cedf6a668b0bed3dbffdd0bd3b5a translatedAt=2026-08-21T02:23:39.306Z pushedAt=2026-08-21T08:33:29.940Z -->
 
 The **GridItem** component provides a single item in a grid.
 
@@ -329,7 +329,7 @@ struct GridItemExample {
       .width('60%')
       .backgroundColor(0xFAEEE0)
       .height(150)
-      .padding('4vp')
+      .padding(4)
 
       Grid() {
         ForEach(this.numbers, (rowItem: string) => {
@@ -353,7 +353,7 @@ struct GridItemExample {
       .width('60%')
       .backgroundColor(0xFAEEE0)
       .height(150)
-      .padding('4vp')
+      .padding(4)
     }.width('100%').margin({ top: 5 })
   }
 }

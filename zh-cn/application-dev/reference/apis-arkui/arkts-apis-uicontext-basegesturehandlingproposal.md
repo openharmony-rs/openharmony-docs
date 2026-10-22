@@ -1,7 +1,7 @@
 # Class (BaseGestureHandlingProposal)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -31,7 +31,7 @@
 
 ```ts
 import {
-  BaseGestureHandlingProposal, GestureHandlingResolution,
+  BaseGestureHandlingProposal, GestureHandlingResolution, GestureShortcut,
 } from '@kit.ArkUI';
 
 @Entry

@@ -22,7 +22,7 @@ OHAudio的开发指南请参考：[推荐使用OHAudio开发音频播放功能(C
 
 OpenSL ES中提供了以下的接口，OpenHarmony当前仅实现了部分[接口](https://gitcode.com/openharmony/third_party_opensles/blob/master/api/1.0.1/OpenSLES.h)，可以实现音频播放的基础功能。
 
-调用未实现接口后会返回**SL_RESULT_FEATURE_UNSUPPORTED**, 当前没有相关扩展可以使用。
+调用未实现接口后会返回**SL_RESULT_FEATURE_UNSUPPORTED**，当前没有相关扩展可以使用。
 
 以下列表列举了OpenHarmony上已实现的OpenSL ES的接口，具体说明请参考[OpenSL ES](https://www.khronos.org/opensles/)规范：
 
@@ -85,7 +85,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    #include "SLES/OpenSLES_Platform.h"
    ```
 
-2. 使用slCreateEngine接口和获取engine实例。
+2. 使用slCreateEngine接口创建并实例化引擎对象。
      
    ```cpp
    SLObjectItf engineObject = nullptr;
@@ -93,7 +93,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*engineObject)->Realize(engineObject, SL_BOOLEAN_FALSE);
    ```
 
-3. 获取接口SL_IID_ENGINE的engineEngine实例。
+3. 获取SL_IID_ENGINE对应的引擎接口句柄。
      
    ```cpp
    SLEngineItf engineEngine = nullptr;
@@ -166,7 +166,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*bufferQueueItf)->RegisterCallback(bufferQueueItf, BufferQueueCallback, pContext);
    ```
 
-7. 获取接口SL_IID_PLAY的playItf实例，开始播放。
+7. 获取SL_IID_PLAY对应的播放接口句柄，开始播放。
      
    ```cpp
    SLPlayItf playItf = nullptr;

@@ -33,7 +33,7 @@
        }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE)
      }
    
-     async logout(user?: string) {
+     async logout() {
        return this.lock.lockAsync(() => {
          this.isLogin = false;
          this.loginUser = '';
@@ -136,7 +136,7 @@
                  }
                }
              })
-             .backgroundColor(0xcccccc)
+             .backgroundColor('#cccccc')
            Text('logout')
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
@@ -154,7 +154,7 @@
                  }
                }
              })
-             .backgroundColor(0xcccccc)
+             .backgroundColor('#cccccc')
            Text(this.wifiState)
              .fontSize(50)
              .fontWeight(FontWeight.Bold)

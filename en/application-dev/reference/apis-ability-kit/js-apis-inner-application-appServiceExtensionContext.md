@@ -1,14 +1,13 @@
 # AppServiceExtensionContext (ExtensionAbility Context for Application Background Services)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=7fe4eacae9c952d492316e40f501d71d3714186d translatedAt=2026-09-03T11:44:15.834Z pushedAt=2026-09-05T10:47:30.683Z -->
 
-The AppServiceExtensionContext module provides the context environment for the [AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md). It inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md).
-
-AppServiceExtensionContext provides APIs to connect to and disconnect from a ServiceExtensionAbility (an ExtensionAbility for system application background services), as well as to terminate an AppServiceExtensionAbility. Note that a ServiceExtensionAbility can only be developed by system applications and supports connections from third-party applications.
+The AppServiceExtensionContext module is the context environment of [AppServiceExtensionAbility](js-apis-app-ability-appServiceExtensionAbility.md) and inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md). It provides the capabilities to connect to and disconnect from a ServiceExtensionAbility (an ExtensionAbility for system application background services), as well as the capability for an AppServiceExtensionAbility to terminate itself. It can be used by third-party applications to communicate with system background services.
 
 
 > **NOTE**
@@ -25,7 +24,7 @@ import { common } from '@kit.AbilityKit';
 
 ## Instructions
 
-Before using the AppServiceExtensionContext module, you must define a child class that inherits from AppServiceExtensionAbility.
+Before using the AppServiceExtensionContext module, obtain an AppServiceExtensionContext instance through an AppServiceExtensionAbility subclass instance.
 
 **Example**
 
@@ -45,7 +44,7 @@ export default class AppServiceExtension extends AppServiceExtensionAbility {
 
 startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
-Starts the UIAbility. This API can be called only by the main thread. It uses a promise to return the result.
+Starts a UIAbility. After this API is called, the system starts the target UIAbility based on the Want information. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -54,13 +53,13 @@ Starts the UIAbility. This API can be called only by the main thread. It uses a 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target ability, such as the ability name and bundle name.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No | Parameters carried for starting the ability. Pass this parameter when you need to specify startup parameters such as the window mode, display device, and process mode. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object that returns no value. |
 
 **Error codes**
 
@@ -131,7 +130,11 @@ export default class MyAppServiceExtensionAbility extends AppServiceExtensionAbi
 
 connectServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
-Connects this AppServiceExtensionAbility to a ServiceExtensionAbility. It enables communication with the ServiceExtensionAbility via a proxy, allowing access to the capabilities exposed by the ServiceExtensionAbility. This API can be called only by the main thread.
+Connects this AppServiceExtensionAbility to a ServiceExtensionAbility (a ServiceExtensionAbility can be developed only by system applications, but third-party applications can connect to it). It enables communication with the ServiceExtensionAbility through the remote object returned by the onConnect callback of ConnectOptions, allowing access to the capabilities exposed by the ServiceExtensionAbility. You can use the returned connectionID to call disconnectServiceExtensionAbility() to disconnect.
+
+> **NOTE**
+>
+> This API does not support connecting to the ServiceExtensionAbility of a cloned application.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -139,14 +142,14 @@ Connects this AppServiceExtensionAbility to a ServiceExtensionAbility. It enable
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target ability, such as the ability name and bundle name.|
-| callback | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | Yes| Callback used to return the information indicating that the connection is successful, failed, or interrupted.|
+| want | [Want](js-apis-app-ability-want.md) | Yes | Want type parameter, which carries the information about the Ability to connect, such as the Ability name and bundle name. |
+| callback | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | Yes | ConnectOptions type callback used to listen for service connection state changes, including connection success, connection failure, and disconnection. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| number | Connection ID. The client can call [disconnectServiceExtensionAbility](#disconnectserviceextensionability) with this ID for disconnection.|
+| number | Connection identifier, used to disconnect the connection later via [disconnectServiceExtensionAbility](#disconnectserviceextensionability). |
 
 **Error codes**
 
@@ -177,8 +180,8 @@ const TAG: string = '[AppServiceExtensionAbility]';
 export default class AppServiceExtension extends AppServiceExtensionAbility {
   connection: number = 0;
 
-  onCreate(localWant: Want) {
-    let want: Want = {
+  onCreate(want: Want) {
+    let wantInfo: Want = {
       bundleName: 'com.example.myapp',
       abilityName: 'MyAbility'
     };
@@ -197,7 +200,7 @@ export default class AppServiceExtension extends AppServiceExtensionAbility {
 
 
     try {
-      this.connection = this.context.connectServiceExtensionAbility(want, callback);
+      this.connection = this.context.connectServiceExtensionAbility(wantInfo, callback);
     } catch (paramError) {
       commRemote = null;
       // Process input parameter errors.
@@ -224,7 +227,7 @@ export default class AppServiceExtension extends AppServiceExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
-Disconnects this AppServiceExtensionAbility from a ServiceExtensionAbility. This API can be called only by the main thread. It uses a promise to return the result.
+Disconnects this AppServiceExtensionAbility from a connected ServiceExtensionAbility. The connection parameter is the connection ID returned by connectServiceExtensionAbility(). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -232,13 +235,13 @@ Disconnects this AppServiceExtensionAbility from a ServiceExtensionAbility. This
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| connection | number | Yes| Connection ID returned by [connectServiceExtensionAbility](#connectserviceextensionability).|
+| connection | number | Yes | Connection ID returned by [connectServiceExtensionAbility](#connectserviceextensionability). |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object that returns no value. |
 
 **Error codes**
 
@@ -257,7 +260,7 @@ For details, see [connectServiceExtensionAbility](#connectserviceextensionabilit
 
 terminateSelf(): Promise&lt;void&gt;
 
-Terminates this AppServiceExtensionAbility. This API can be called only by the main thread. It uses a promise to return the result.
+Destroys this AppServiceExtensionAbility. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -265,7 +268,7 @@ Terminates this AppServiceExtensionAbility. This API can be called only by the m
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise object that returns no value. |
 
 **Error codes**
 

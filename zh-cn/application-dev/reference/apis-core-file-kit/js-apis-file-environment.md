@@ -1,9 +1,9 @@
 # @ohos.file.environment (目录环境能力)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 该模块提供用户环境目录能力，用于获取用户的下载目录、桌面目录、文档目录的沙箱路径。上述三个方法分别适用于获取不同类型用户目录的场景，开发者可根据需要选择对应的目录类型。

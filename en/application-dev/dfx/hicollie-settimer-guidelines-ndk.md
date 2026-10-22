@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=85aa562299b7054dce3d0e6b2f6a7c9f2482e25f translatedAt=2026-07-30T02:59:34.174Z pushedAt=2026-07-30T08:17:07.947Z -->
+<!-- md-trans-meta sourceCommit=6f162fd972111d385b01e8fc2c8b227f5d94c223 translatedAt=2026-08-21T03:19:49.235Z pushedAt=2026-08-21T09:36:54.418Z -->
 
 ## Overview
 
@@ -81,7 +81,7 @@ The following demonstrates how to add a button in the app and click the button t
 
    Construct a scenario where the task execution times out, and use the **OH_HiCollie_SetTimer** and **OH_HiCollie_CancelTimer** functions to monitor the task.
 
-   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
+   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->  
 
    ``` C++
    // Define the callback function.
@@ -98,7 +98,7 @@ The following demonstrates how to add a button in the app and click the button t
        HiCollie_ErrorCode errorCode = OH_HiCollie_SetTimer(param, &id);  // Register a HiCollieTimer function to execute a one-off timeout detection task.
        if (errorCode == HICOLLIE_SUCCESS) {  // The HiCollieTimer task is successfully registered.
            OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // Print the task ID.
-           sleep (2); // Simulate a time-consuming function to block the thread for 2s.
+           sleep(2);  // Simulate a time-consuming function by blocking the thread for 2 seconds.
            OH_HiCollie_CancelTimer (id); // Cancel the registered timer based on the ID.
        }
        return nullptr;

@@ -34,7 +34,7 @@ UIExtension提供了一种跨进程的应用组件共享机制。 使用方应�
 ![uiextension-process-model](figures/uiextension-process-model.png)
 
 - 使用方应用向提供方应用发送消息：使用方可以通过[UIExtensionProxy.send](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#send)和提供方应用进行消息的通信，提供方应用中可以使用[UIExtensionContentSession.setReceiveDataCallback](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback)获取使用方应用发送的数据信息。
-- 提供方应用向使用方应用发送消息：提供方可以使用 [UIExtensionContentSession.sendData](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#senddata)向使用方应用发送数据，使用方使用 [UIExtensionProxy.onReceive](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#onreceive)接收消息。
+- 提供方应用向使用方应用发送消息：提供方可以使用[UIExtensionContentSession.sendData](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#senddata)向使用方应用发送数据，使用方使用[UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)的[onReceive](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#onreceive)事件接收消息。
 
 ## 能力范围
 
@@ -47,7 +47,7 @@ UIExtension提供了一种跨进程的应用组件共享机制。 使用方应�
 
 UIExtension为了实现跨应用的能力共享，存在较开放的灵活性，通过跨进程的方式拉起提供方应用提供的能力供当前使用方（宿主方）使用。在运行机制上，是两个进程之间的业务交互行为，和一般组件和宿主方存在根本上的差异。
 
-以下给出针对UIExtension，在UIExtensionAbility内提供方应用能够使用的属性、事件、组件、Node-API接口等方面的范围，便于使用方应用与提供方应用在使用UIExtension组件时进行参照。
+以下给出针对UIExtension，在UIExtensionAbility内提供方应用能够使用的属性、事件、组件、ArkTS API接口等方面的范围，便于使用方应用与提供方应用在使用UIExtension组件时进行参照。
 
 由于组件相关的能力更新较快，当前列举的不支持以及部分支持的能力，仅代表当前的能力范围。新增能力是否支持可通过各项能力支持原则说明进行判断，不支持的能力需要通过提出issue给相关不支持组件以及UIExtension，由组件和UIExtension分析可行性后支持。
 
@@ -100,9 +100,9 @@ UIExtension为了实现跨应用的能力共享，存在较开放的灵活性，
 | [自定义弹窗](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md) | 部分支持 | 通过[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)类显示自定义弹窗。使用弹窗组件时，可优先考虑自定义弹窗，便于自定义弹窗的样式与内容。若在UIExtension中设置showInSubWindow为true，弹窗将基于UIExtension的宿主窗口对齐。 | 需要依赖主窗的信息实现弹窗对齐，弹窗组件基于UIExtension提供的信息获取宿主应用的窗口信息实现了对齐应用窗口的能力。仅限于窗口对齐。 |
 | [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) | 部分支持 | 该组件从API version 11开始默认支持安全区避让特性(默认值为：[expandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为。 | 1、如果UIExtension未设置模态或沉浸式，Navigation无法扩展到安全区。<br>2、无法路由到宿主方的页面中。 |
 
-**Node-API接口**
+**ArkTS API接口**
 
-Native API接口提供能力，在UIExtension场景下也需要考虑是否是跨出当前组件的能力，以及和使用方（宿主方）组件、应用进程上下文交互的场景。主要包括如下场景：
+ArkTS API接口提供能力，在UIExtension场景下也需要考虑是否是跨出当前组件的能力，以及和使用方（宿主方）组件、应用进程上下文交互的场景。主要包括如下场景：
 
 - 接口功能所需的信息依赖使用方的上下文、窗口等信息，如UIContext。
 - 接口功能控制非组件本身，需要控制影响其他组件或者使用方应用侧的场景，如用户界面外观。
@@ -115,7 +115,7 @@ Native API接口提供能力，在UIExtension场景下也需要考虑是否是�
 | [组件内隐式共享元素转场](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md) | 不支持   | 在视图切换过程中提供丝滑的上下文传承过渡。通用transition机制提供了opacity、scale等转场效果，geometryTransition通过安排绑定的in/out组件(in指新视图、out指旧视图)的frame、position使得原本独立的transition动画在空间位置上发生联系，将视觉焦点由旧视图位置引导到新视图位置。 | —                                                            |
 | [componentUtils](../reference/apis-arkui/js-apis-arkui-componentUtils.md) | 不支持   | 提供获取组件绘制区域坐标和大小的能力。                       | 获取信息来自于窗口，默认情况下直接获取到的位置信息是UIExtensionAbility的WindowProxy的信息，非宿主应用的主窗口信息。 |
 | [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) | 不支持   | @ohos.window在API version 10 新增[getUIContext](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)接口，获取UI上下文实例UIContext对象，使用UIContext对象提供的替代方法，可以直接作用在对应的UI实例上。 | 基于window获取，但UIExtension内部默认方式下，提供方无真正的窗口承载，无法使用该接口获取到正确的UIContext。 |
-| [DragController](../reference/apis-arkui/js-apis-arkui-dragController.md) | 不支持   | 本模块提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽的动作，并在其中携带拖拽信息。<br>本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](./arkts-global-interface.md)的地方使用，参见UIContext说明。 | 拖拽时通过UIContext上下文传递组件间的事件传递，使用方应用和提供方应用不共享UIContext内容，默认能力下无法支持拖拽事件的传递。 |
+| [DragController](../reference/apis-arkui/js-apis-arkui-dragController.md) | 不支持   | 本模块提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽的动作，并在其中携带拖拽信息。<br>本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](./arkts-global-interface.md)的地方使用，参见UIContext说明。 | 拖拽时通过UIContext上下文传递组件间的事件，使用方应用和提供方应用不共享UIContext内容，默认能力下无法支持拖拽事件的传递。 |
 | [布局回调](../reference/apis-arkui/js-apis-arkui-inspector.md) | 部分支持 | 提供注册组件布局和绘制完成回调通知的能力。                   | 如果指定UIExtension组件，预期是获得所有UIExtension中的组件信息，尚未支持该能力；提供方内部可以正常使用。 |
 | [性能监测](../reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md) | 不支持   | 用户操作场景提供性能相关指标监测能力，目前仅包含响应时延、完成时延、丢帧。 | —                                                            |
 | [注册自定义字体](../reference/apis-arkui/js-apis-font.md)    | 不支持   | 本模块提供注册自定义字体。                                   | 注册字体存在影响范围的问题，提供方侧无法影响使用方应用的字体。 |
@@ -204,7 +204,7 @@ UIExtensionComponent组件（使用方）可以访问调用集成了UIExtensionA
 应用开发者（使用方）可以通过如下方式消减闪白问题：
 
 - 根据使用方应用的页面以及提供方页面的背景色，更改UIExtensionComponent的背景色（[背景设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)），做到在加载过程中配合场景过渡显示，从而实现无跳变感知。
-- 通过本组件提供的[placeholder](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionoptions11)机制，设置自定义UI，等待提供方完全显示出来之前，显示自定义的背景UI。
+- 通过本组件提供的[placeholder](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionoptions11)机制，在UIExtensionComponent与提供方建立连接、提供方页面完全显示之前，显示自定义的背景UI。
 
 如果消减后效果不能完全满足应用交互诉求，由于跨进程的能力约束，建议应用优先考虑其他方案。
 

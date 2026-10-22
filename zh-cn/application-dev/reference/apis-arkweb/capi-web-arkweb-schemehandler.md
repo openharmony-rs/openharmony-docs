@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -17,6 +17,8 @@ ArkWeb_SchemeHandler是用于注册自定义Scheme（协议）拦截器的结构
 **起始版本：** 12
 
 **相关模块：** [Web](capi-web.md)
+
+**系统能力：** SystemCapability.Web.Webview.Core
 
 **所在头文件：** [arkweb_scheme_handler.h](capi-arkweb-scheme-handler-h.md)
 

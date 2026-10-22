@@ -37,7 +37,7 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 | detach | 退出调试模式命令。通过bundleName使指定应用退出调试模式。|
 | appdebug | 等待调试命令。用于设置、取消设置应用等待调试状态，以及获取处于等待调试状态的应用包名和持久化信息。等待调试状态只对debug类型应用生效。appdebug的设置命令只对单个应用生效，当重复设置时，应用包名与持久化状态会替换成最新设置内容。|
 | process | 应用调试/调优命令。对应用进行调试或调优，IDE用该命令集成调试和调优工具。|
-| send-memory-level | onMemoryLevel回调命令。指定进程的pid和内存使用级别来触发该进程的onMemoryLevel生命周期回调。|
+| send-memory-level | onMemoryLevel()回调命令。指定进程的pid和内存使用级别来触发该进程的onMemoryLevel()生命周期回调。|
 | pre-start | 应用预启动命令。用于在后台预先启动应用到生命周期特定阶段，以提升用户点击应用的启动速度。|
 
 ## 帮助命令（help）
@@ -248,7 +248,7 @@ aa dump -a
   | -------- | -------- | -------- |
   | -h/--help | - | 帮助信息。 |
   | -a/--all | - | 打印所有mission内的应用组件信息。 |
-  | -l/--mission-list | type（缺省打印全部） | 服务侧为了方便管理任务链，内部维护了4种类型的任务链。<br/>可取值：<br/>-&nbsp;NORMAL：正常启动的任务链(比如A拉起B拉起C, 则对应的任务链是A->B->C)<br/>-&nbsp;DEFAULT_STANDARD：已经被破坏的任务链中的任务, 启动模式为`multiton`的任务被放到该任务链中, 这里面的任务之间没有关联关系<br/>-&nbsp;DEFAULT_SINGLE：已经被破坏的任务链中的任务, 启动模式为`singleton`的任务被放到该任务链中, 这里面的任务之间没有关联关系<br/>-&nbsp;LAUNCHER：launcher的任务链 |
+  | -l/--mission-list | type（缺省打印全部） | 服务侧为了方便管理任务链，内部维护了4种类型的任务链。<br/>可取值：<br/>-&nbsp;NORMAL：正常启动的任务链（比如A拉起B拉起C, 则对应的任务链是A->B->C）<br/>-&nbsp;DEFAULT_STANDARD：已经被破坏的任务链中的任务，启动模式为`multiton`的任务被放到该任务链中，这里面的任务之间没有关联关系<br/>-&nbsp;DEFAULT_SINGLE：已经被破坏的任务链中的任务，启动模式为`singleton`的任务被放到该任务链中，这里面的任务之间没有关联关系<br/>-&nbsp;LAUNCHER：launcher的任务链 |
   | -e/--extension | elementName | 打印扩展组件信息。 |
   | -u/--userId | UserId | 打印指定UserId的栈信息，需要和其他参数组合使用，例如aa&nbsp;dump&nbsp;-a&nbsp;-u&nbsp;100、aa&nbsp;dump&nbsp;-d&nbsp;-u&nbsp;100。 |
   | -d/--data | - | 打印DataAbility相关信息。 |
@@ -535,12 +535,12 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
   aa process -b com.example.myapplication -a EntryAbility -p perf-cmd [-S]
   ```
 
-## onMemoryLevel回调命令（send-memory-level）
+## onMemoryLevel()回调命令（send-memory-level）
 
-从API version 13开始，开发者可以通过该命令来调试应用的[onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)生命周期。通过在参数中指定进程的pid和内存使用级别来触发该进程的onMemoryLevel生命周期回调。该命令只提供基本的应用调试能力，不能完全模拟真实的内存加压测试场景。
+从API version 13开始，开发者可以通过该命令来调试应用的[onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)生命周期。通过在参数中指定进程的pid和内存使用级别来触发该进程的onMemoryLevel()生命周期回调。该命令只提供基本的应用调试能力，不能完全模拟真实的内存加压测试场景。
 
 ```bash
-# 触发onMemoryLevel回调
+# 触发onMemoryLevel()回调
 aa send-memory-level -p <processId> -l <memoryLevel>
 ```
 
@@ -564,7 +564,7 @@ aa send-memory-level -p <processId> -l <memoryLevel>
 **示例**：
 
 ```bash
-# 触发进程号为6066应用的onMemoryLevel回调，此时回调的level为0
+# 触发进程号为6066应用的onMemoryLevel()回调，此时回调的level为0
 aa send-memory-level -p 6066 -l 0
 ```
 

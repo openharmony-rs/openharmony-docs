@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wendel-->
 <!--Designer: @wendel-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a914ec5c20531defc3768aa8242b62bbe2d1d08f translatedAt=2026-09-03T12:03:10.411Z pushedAt=2026-09-05T10:47:30.862Z -->
 
-The RunningAppClone module defines the information of an application clone in the running state.
+Defines the structural information of an app clone in the running state, which is contained in [RunningMultiAppInfo](js-apis-inner-application-runningMultiAppInfo-sys.md). Through this struct, you can obtain information such as the index, UID, and process ID of the app clone. It applies to scenarios where app clones need to be distinguished and managed, facilitating application isolation and resource management for system-level applications.
 
 > **NOTE**
 > 
@@ -27,9 +28,9 @@ The RunningAppClone struct is obtained from [getRunningMultiAppInfo](js-apis-app
 
 | Name                     | Type  | Read-Only | Optional | Description      |
 | ------------------------- | ------ | ---- |  ---- | --------- |
-| appCloneIndex | number | No | No | Index of an application clone.|
-| uid | number | No | No | UID of the application.|
-| pids | Array\<number> | No | No | Process ID set of the application.|
+| appCloneIndex | number | No  | No  | Index of the app clone, used to identify different clone instances. The index starts from 0 and increments in the order in which clones are created. 0 indicates the primary app instance, and 1 or greater indicates a clone instance. |
+| uid | number | No  | No  | UID of the application. |
+| pids | Array\<number> | No  | No  | Set of process IDs of the application, including the process IDs of all running processes of the application. An application may run multiple processes, so an array is returned. |
 
 **Example**
 
@@ -45,7 +46,7 @@ try {
     }).catch((err: BusinessError) => {
       hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
     })
-} catch (err) {
+} catch (err: BusinessError) {
   hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
 }
 ```

@@ -65,7 +65,7 @@ setMainPixelmap(pixelmap: PixelMap): void
 
 设置Picture的主图。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

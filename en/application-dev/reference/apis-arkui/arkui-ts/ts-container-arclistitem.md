@@ -2,28 +2,28 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @rongShao-Z; @wind_-->
-<!--Designer: @yylong-->
+<!--Owner: @rongShao-Z; @wind_-->
+<!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=608175d8fd85ddfce5e6f9d9b165b9d12862adb2 translatedAt=2026-08-21T02:21:09.283Z pushedAt=2026-08-21T06:52:50.866Z -->
 
-The **ArcListItem** component is used to display individual child components in an [ArcList](ts-container-arclist.md) component and must be used in conjunction with **ArcList**.
+A child component used to display items in an arc list. It must be used in conjunction with [ArcList](ts-container-arclist.md).
 
 > **NOTE**
 >
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
-> - This component can be used only as a child of [ArcList](ts-container-arclist.md).
-> - When this component is used with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), its child components are created when it is created. When this component is used with [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) or [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), or when the parent component is [ArcList](ts-container-arclist.md), its child components are created when it is laid out.
-> - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1 devices, tablets, and TVs, but the component can still run properly.
+> - The parent component of this component can only be [ArcList](ts-container-arclist.md).
+> - When **ArcListItem** is used with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), its child components are created when **ArcListItem** is created. When it is used with [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) or [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), or directly as a child component of the [ArcList](ts-container-arclist.md) component, its child components are created when **ArcListItem** is laid out.
+> - This component can be used on Phone, PC/2in1, Tablet, TV, and Wearable devices. In API version 22 and earlier, using it on Phone, PC/2in1, Tablet, and TV generates a compilation warning, but it can run normally.
 
 ## Modules to Import
 
 > **NOTE**
 >
-> - **ArcListItemAttribute** is a key API used to configure the attributes of the **ArcListItem** component. In API version 21 and earlier, you must manually import **ArcListItemAttribute** after importing the **ArcListItem** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **ArcListItemAttribute** when it detects the **ArcListItem** component, so manual import is no longer necessary.
+> - **ArcListItemAttribute** is essential for configuring the **ArcListItem** component. In API version 21 and earlier, you must manually import **ArcListItemAttribute** after importing the **ArcListItem** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **ArcListItemAttribute** when it detects the **ArcListItem** component, so manual import is no longer necessary.
 >
-> - If you manually import **ArcListItemAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
-
+> - If you manually import **ArcListItemAttribute**, DevEco Studio shows the import statement as disabled (grayed out). In API version 21 and earlier, removing this import statement causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
 
 API version 21 and earlier:
 
@@ -59,7 +59,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 autoScale(enable: Optional\<boolean>)
 
-Sets whether to enable auto-scaling for the **ArcListItem** component.
+Sets whether to automatically scale the **ArcListItem**. When enabled, the **ArcListItem** automatically adjusts its display size based on its position in the arc list.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -69,13 +69,13 @@ Sets whether to enable auto-scaling for the **ArcListItem** component.
 
 | Name| Type              | Mandatory| Description                                       |
 | ------ | ------------------ | ---- | ------------------------------------------- |
-| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable auto-scaling.<br>**true**: Enable auto-scaling.<br>**false**: Disable auto-scaling.<br>Default value: **true**.|
+| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes | Whether ArcListItem supports automatic scaling display. The value true means supported, and false means not supported.<br>Default value: true, automatic scaling display is supported. |
 
 ### swipeAction
 
 swipeAction(options: Optional\<SwipeActionOptions>)
 
-Sets the swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.
+Sets the swipe action of the **ArcListItem**.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -85,7 +85,7 @@ Sets the swipe action item displayed when the **ArcListItem** component is swipe
 
 | Name | Type                                                        | Mandatory| Description                   |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------- |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9)&gt;| Yes  | Swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9)&gt; | Yes | Configuration options for the swipe-out operation of **ArcListItem**. For details, see **SwipeActionOptions**. If this parameter is not set, no swipe-out operation is configured. |
 
 ## Example
 

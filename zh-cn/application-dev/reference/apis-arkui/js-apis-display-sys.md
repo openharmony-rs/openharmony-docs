@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 屏幕属性提供管理显示设备的一些基础能力，包括获取默认显示设备的信息，获取所有显示设备的信息以及监听显示设备的插拔行为。
@@ -167,7 +167,7 @@ setFoldDisplayMode(mode: FoldDisplayMode): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在折叠手机上可正常调用，在其他设备上不生效或返回1400003错误码。
+**设备行为差异：** 该接口在支持多种显示模式（[getAllDisplayPhysicalResolution](js-apis-display.md#displaygetalldisplayphysicalresolution12)接口返回值中包含设备支持的所有显示模式）的设备中可正常调用，在其他设备上不生效或返回1400003错误码。
 
 **参数：**
 
@@ -208,7 +208,7 @@ setFoldDisplayMode(mode: FoldDisplayMode, reason: string): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在折叠手机上可正常调用，在其他设备上不生效或返回1400003错误码。
+**设备行为差异：** 该接口在支持多种显示模式（[getAllDisplayPhysicalResolution](js-apis-display.md#displaygetalldisplayphysicalresolution12)接口返回值中包含设备支持的所有显示模式）的设备中可正常调用，在其他设备上不生效或返回1400003错误码。
 
 **参数：**
 

@@ -1,12 +1,11 @@
 # FrameNode
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sunbees-->
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=00dce3decf0762303db24df00c77b5a9d42cfc02 translatedAt=2026-07-29T09:23:06.029Z pushedAt=2026-08-03T11:17:15.972Z -->
+<!-- md-trans-meta sourceCommit=e81239e2f38865e1e733a04fa60a7878bf413bbf translatedAt=2026-08-29T09:31:11.056Z pushedAt=2026-09-01T03:55:48.759Z -->
 
 **FrameNode** represents an entity node in the component tree, supporting capabilities such as node tree operations, custom drawing and layout, position query, and animation. It can be used by a [NodeController](./js-apis-arkui-nodeController.md) to mount a [BuilderNode](./js-apis-arkui-builderNode.md) (that holds the FrameNode) to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) or mount a [RenderNode](./js-apis-arkui-renderNode.md) to another FrameNode. It is suitable for scenarios where component node trees need to be dynamically created and managed through code, enabling flexible UI composition and custom rendering requirements that cannot be directly met by declarative components.
 
@@ -105,7 +104,6 @@ Describes the binding state of interaction events on components. When querying r
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 26%; 10%; 8%; 8%; 48%-->
-
 | Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
 | baseEventRegistered  | boolean |  No  | No  | Whether the event is bound declaratively.<br>**true** means that the event is bound declaratively, and **false** means the opposite.|
@@ -150,6 +148,20 @@ Defines the callback triggered when the UI state changes. It receives the curren
 | currentUIStates    | number         | Yes   | Current UI states when the callback is triggered.<br>You can use a bitwise AND operation to determine which [UI states](#uistate20) are currently included.<br>Bitwise AND operation: **if ((currentUIStates & UIState.PRESSED) == UIState.PRESSED)**.<br>If you only need to determine whether there is a single state, you can directly use **if (currentUIStates == UIState.PRESSED)**. Note: This method is valid only when a single state is active. To determine whether a specific state is included among multiple states, use a bitwise AND operation.                                            |
 
 ## FrameNode
+
+**FrameNode** represents an entity node in the component tree, supporting capabilities such as node tree operations, custom drawing and layout, position query, and animation. It can be used by a [NodeController](./js-apis-arkui-nodeController.md) to mount a [BuilderNode](./js-apis-arkui-builderNode.md) (that holds the FrameNode) to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) or mount a [RenderNode](./js-apis-arkui-renderNode.md) to another FrameNode. It is suitable for scenarios where component node trees need to be dynamically created and managed through code, enabling flexible UI composition and custom rendering requirements that cannot be directly met by declarative components.<!--RP2--><!--RP2End-->
+
+> **NOTE**
+>
+> - **FrameNode** is not available in DevEco Studio Previewer.
+>
+> - FrameNodes cannot be dragged.
+>
+> - FrameNode objects do not support JSON serialization.
+>
+> - When the API of the [FrameNode](#framenode-1) object is invoked in the scenario of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask) API of [UIContext](./arkts-apis-uicontext-uicontext.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
+>
+> - In the FrameNode APIs, only the mandatory parameters of the [Optional](./arkui-ts/ts-universal-attributes-custom-property.md#optionalt) type can be set to null or undefined.
 
 ### constructor
 
@@ -222,7 +234,6 @@ struct Index {
   }
 }
 ```
-
 ### isModifiable<sup>12+</sup>
 
 isModifiable(): boolean
@@ -551,6 +562,7 @@ Obtains the parent node of this FrameNode.
 
 See [Example of Node Operations](#example-of-node-operations) and [Example of Obtaining the Root Node](#example-of-obtaining-the-root-node).
 
+
 ### getChildrenCount<sup>12+</sup>
 
 getChildrenCount(): number
@@ -588,13 +600,11 @@ Obtains the number of child nodes of this FrameNode based on the specified count
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-
 | Name| Type| Mandatory| Description|
 | -------- | -------- | ---- | -------- |
 | countMode | [ChildrenCountMode](#childrencountmode) | No| Mode of counting child nodes. The default value is **ChildrenCountMode.ALL_EXPAND**.|
 
 **Return value**
-
 | Type    | Description                           |
 | -------- | ------------------------------- |
 | number | Number of child nodes of the current FrameNode returned based on the counting mode. |
@@ -946,6 +956,7 @@ struct Index {
 
 See [Example of Node Operations](#example-of-node-operations).
 
+
 ### getPositionToParent<sup>12+</sup>
 
 getPositionToParent(): Position
@@ -1116,6 +1127,7 @@ struct Index {
 
 See [Example of Node Operations](#example-of-node-operations).
 
+
 ### getGlobalPositionOnDisplay<sup>20+</sup>
 
 getGlobalPositionOnDisplay(): Position
@@ -1137,6 +1149,7 @@ Obtains the position offset of this FrameNode relative to the global display, in
 **Example**
 
 See [Example of Node Operations](#example-of-node-operations).
+
 
 ### getPositionToParentWithTransform<sup>12+</sup>
 
@@ -1389,6 +1402,7 @@ struct Index {
 
 See [Example of Node Operations](#example-of-node-operations).
 
+
 ### getMeasuredSize<sup>12+</sup>
 
 getMeasuredSize(): Size
@@ -1410,6 +1424,7 @@ Obtains the measured size of this FrameNode, in px.
 **Example**
 
 See [Example of Node Operations](#example-of-node-operations).
+
 
 ### getLayoutPosition<sup>12+</sup>
 
@@ -1724,7 +1739,6 @@ Obtains the structure information of the node, which is consistent with what is 
 | Object | Structure information of the node.|
 
 The following example shows partial values from the query result of a [Button](arkui-ts/ts-basic-components-button.md) node:
-
 ```json5
 {
     "$type": "Button",
@@ -2599,7 +2613,6 @@ Creates a property animation for the FrameNode.
 **Parameters**
 
 <!--Table: 12%; 20%; 8%; 60%-->
-
 | Name | Type| Mandatory| Description                                                    |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
 | property  | [AnimationPropertyType](./arkui-ts/ts-appendix-enums.md#animationpropertytype20) | Yes  | Animation property type.|
@@ -2610,7 +2623,6 @@ Creates a property animation for the FrameNode.
 **Return value**
 
 <!--Table: 10%; 90%-->
-
 | Type              | Description              |
 | ------------------ | ------------------ |
 | boolean | Whether the animation is created successfully.<br>Returns **true** if the animation is created successfully. If an end callback is specified in the animation parameters, it will be invoked upon animation completion.<br>Returns **false** if the animation creation fails. The end callback will not be invoked even if specified.<br>Possible failure reasons:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br>&nbsp;2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>&nbsp;3. There is an invalid property enumeration or length mismatch between the property type and **startValue** or **endValue** arrays.<br>&nbsp;4. No start value is available (**startValue** is **undefined** for the first animation of a property) or the start and end values are identical.|
@@ -5823,7 +5835,6 @@ Represents a FrameNode of the **Blank** type. This type of node does not allow c
 | TypedFrameNode&lt;BlankInterface, BlankAttribute&gt; | FrameNode of the **Blank** type.<br> **BlankInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Blank** component.<br> **BlankAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Blank** component.<br> **BlankInterface** indicates the [API](./arkui-ts/ts-basic-components-blank.md#apis) of the **Blank** component, and **BlankAttribute** indicates the [attribute](./arkui-ts/ts-basic-components-blank.md#attributes) of the **Blank** component.|
 
 ### createNode('Blank')<sup>12+</sup>
-
 createNode(context: UIContext, nodeType: 'Blank'): Blank
 
 Creates a FrameNode of the **Blank** type.
@@ -6003,6 +6014,7 @@ Obtains the attributes of an **Image** node. If the node is not created using Ar
 
 **Example**
 
+
 ```ts
 import { FrameNode, NodeController, typeNode } from '@kit.ArkUI';
 
@@ -6064,7 +6076,6 @@ Represents a FrameNode of the **List** type. This type of node only allows child
 | TypedFrameNode&lt;ListInterface, ListAttribute&gt; | FrameNode of the **List** type.<br> **ListInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **List** component.<br> **ListAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **List** component.<br> **ListInterface** indicates the [API](./arkui-ts/ts-container-list.md#apis) of the **List** component, and **ListAttribute** indicates the [attribute](./arkui-ts/ts-container-list.md#attributes) of the **List** component.|
 
 ### createNode('List')<sup>12+</sup>
-
 createNode(context: UIContext, nodeType: 'List'): List
 
 Creates a FrameNode of the **List** type.
@@ -6259,7 +6270,6 @@ Represents a FrameNode of the **ListItem** type.
 | TypedFrameNode&lt;ListItemInterface, ListItemAttribute&gt; | FrameNode of the **ListItem** type.<br> **ListItemInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **ListItem** component.<br> **ListItemAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **ListItem** component.<br> **ListItemInterface** indicates the [API](./arkui-ts/ts-container-listitem.md#apis) of the **ListItem** component, and **ListItemAttribute** indicates the [attribute](./arkui-ts/ts-container-listitem.md#attributes) of the **ListItem** component.|
 
 ### createNode('ListItem')<sup>12+</sup>
-
 createNode(context: UIContext, nodeType: 'ListItem'): ListItem
 
 Creates a FrameNode of the **ListItem** type.
@@ -6317,7 +6327,6 @@ Obtains the attributes of a **ListItem** node. If the node is not created using 
 See the example for [createNode('List')](#createnodelist12).
 
 ### TextInput<sup>12+</sup>
-
 type TextInput = TypedFrameNode&lt;TextInputInterface, TextInputAttribute&gt;
 
 Represents a FrameNode of the **TextInput** type.
@@ -6455,7 +6464,6 @@ struct FrameNodeTypeTest {
 ```
 
 ### bindController('TextInput')<sup>20+</sup>
-
 bindController(node: FrameNode, controller: TextInputController, nodeType: 'TextInput'): void
 
 Binds the input box controller [TextInputController](arkui-ts/ts-basic-components-textinput.md#textinputcontroller8) to the [TextInput](#textinput12) node. If the node is not created via ArkTS, whether cross-language access is supported must be set. If cross-language access is not supported, an exception is thrown. Since API version 26.0.0, this API supports nodes created in a declarative manner. Versions earlier than API version 26.0.0 do not support this.
@@ -6675,7 +6683,6 @@ struct FrameNodeTypeTest {
 ```
 
 ### ListItemGroup<sup>12+</sup>
-
 type ListItemGroup = TypedFrameNode&lt;ListItemGroupInterface, ListItemGroupAttribute&gt;
 
 Represents a FrameNode of the **ListItemGroup** type. Only [ListItem](./arkui-ts/ts-container-listitem.md) child components can be added.
@@ -7276,7 +7283,6 @@ typeNode.getAttribute(node, 'XComponent');
 ```
 
 ### QRCode<sup>14+</sup>
-
 type QRCode = TypedFrameNode&lt;QRCodeInterface, QRCodeAttribute&gt;
 
 Represents a FrameNode of the **QRCode** type.
@@ -7338,7 +7344,7 @@ Represents a FrameNode of the **Badge** type.
 
 | Type                           | Description                  |
 | ----------------------------- | -------------------- |
-| TypedFrameNode&lt;BadgeInterface, BadgeAttribute&gt; | FrameNode of the **Badge** type.<br> **BadgeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Badge** component.<br> **BadgeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Badge** component.<br> **BadgeInterface** indicates the [API](./arkui-ts/ts-container-badge.md#apis) of the **Badge** component, and **BadgeAttribute** indicates the [attribute](./arkui-ts/ts-container-badge.md#attributes) of the **Badge** component.|
+| TypedFrameNode&lt;BadgeInterface, BadgeAttribute&gt; | FrameNode of the **Badge** type.<br> **BadgeInterface** is used as the input parameter of the [initialize](#properties) API of [TypedFrameNode](#typedframenode12). The input parameter is of the constructor type for the **Badge** component.<br> **BadgeAttribute** is used as the return value of the [attribute](#properties) API of **TypedFrameNode**. It returns the attribute setting object of the **Badge** component.<br> **BadgeInterface** indicates the [API](./arkui-ts/ts-container-badge.md#interfaces) of the **Badge** component, and **BadgeAttribute** indicates the [attribute](./arkui-ts/ts-container-badge.md#attributes) of the **Badge** component.|
 
 ### createNode('Badge')<sup>14+</sup>
 
@@ -7795,7 +7801,7 @@ class MyNodeController extends NodeController {
     node.appendChild(col);
     // Create a Marquee node.
     let marquee = typeNode.createNode(uiContext, 'Marquee');
-    marquee.initialize({ start: true, src: 'Marquee, if need display, src shall be long' });
+    marquee.initialize({ start: true, src: 'Marquee, if need display, src shall be long' })
       .width(100);
     col.appendChild(marquee);
     return node;
@@ -9350,7 +9356,6 @@ struct FrameNodeTypeTest {
 ![FrameNodeTextTest](figures/FrameNodeTextTest.png)
 
 ## Example of Node Operations
-
 ```ts
 import { NodeController, FrameNode, UIContext, typeNode } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -10140,7 +10145,6 @@ struct Index {
 ```
 
 ## Basic Event Example
-
 ```ts
 import { NodeController, FrameNode } from '@kit.ArkUI';
 
@@ -10594,9 +10598,7 @@ export class TrackManager {
   }
 }
 ```
-
 ## Gesture Event Example
-
 ```ts
 import { NodeController, FrameNode } from '@kit.ArkUI';
 
@@ -10664,7 +10666,6 @@ struct Index {
   }
 }
 ```
-
 ## Example of Customizing a Node
 
 ```ts
@@ -10791,7 +10792,6 @@ struct Index {
   }
 }
 ```
-
 ## NodeAdapter Usage Example
 
 ```ts

@@ -60,7 +60,7 @@ XComponent组件的类型需要在组件创建时通过[ArkUI_NodeType](capi-nat
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | XComponent组件的类型，参数类型为[ArkUI_XComponentType](capi-xcomponent-h.md#arkui_xcomponenttype)，具体枚举值及其与数字的对应关系请参见该枚举定义。 |
+| .value[0].i32 | XComponent组件的类型，取值类型为[ArkUI_XComponentType](capi-xcomponent-h.md#arkui_xcomponenttype)，具体枚举值及其与数字的对应关系请参见该枚举定义。 |
 
 ## NODE_XCOMPONENT_SURFACE_SIZE
 
@@ -107,8 +107,8 @@ XComponent组件所持有的Surface显示区域，支持属性设置和属性获
 | -- | -- |
 | .value[0].i32 | Surface显示区域相对于XComponent组件左上角的x轴坐标，单位为px。 |
 | .value[1].i32 | Surface显示区域相对于XComponent组件左上角的y轴坐标，单位为px。 |
-| .value[2].i32 | Surface显示区域的宽度，单位为px，取值应为非负整数。 |
-| .value[3].i32 | Surface显示区域的高度，单位为px。 |
+| .value[2].i32 | Surface显示区域的宽度，单位为px，取值应为正整数。 |
+| .value[3].i32 | Surface显示区域的高度，单位为px，取值应为正整数。 |
 
 ## NODE_XCOMPONENT_ENABLE_ANALYZER
 
@@ -132,3 +132,26 @@ XComponent组件是否支持图像分析的属性，支持属性设置和属性�
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 是否支持图像分析，`1`表示支持图像分析，`0`表示不支持图像分析。 |
+
+## NODE_XCOMPONENT_BUFFER_QUEUE_SIZE
+
+```c
+NODE_XCOMPONENT_BUFFER_QUEUE_SIZE = 12005
+```
+
+XComponent组件的buffer队列大小，支持属性设置、属性重置和属性获取接口。buffer队列大小决定了渲染链路中可同时流转的buffer数量：值越小，画面显示时延和内存占用越低，适用于相机预览、投屏等对显示时延敏感的场景；值越大，渲染缓冲越充裕，适用于视频播放等对流畅性要求较高的场景。仅对type为SURFACE或TEXTURE的XComponent组件生效。该属性支持运行时动态修改，组件创建后可根据使用场景动态切换buffer队列大小，例如从视频播放切换到相机预览时调小队列以降低显示时延；在buffer轮转过程中修改buffer队列大小，可能引起丢帧。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | buffer队列大小。<br>取值范围：[2, 5]。<br>默认值：5。<br>大于5的值按5处理，小于2的值按2处理，传入非整数值时按默认值5处理。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | buffer队列大小。 |

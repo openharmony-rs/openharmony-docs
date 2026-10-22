@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-union Rdb_KeyData { ... }
+union Rdb_KeyData { ... } *data
 ```
 
 ## 概述

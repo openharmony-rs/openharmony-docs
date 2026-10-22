@@ -1,10 +1,12 @@
 # Obtaining and Using System Fonts (ArkTS)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3ec88648a6751705fb1f5ed82220f211858b32b2 translatedAt=2026-10-19T01:32:38.097Z pushedAt=2026-10-19T10:20:02.117Z -->
+
 ## Overview
 
 System fonts are built-in fonts of the operating system. They show text when no other font is chosen, maintaining clear and uniform text presentation.
@@ -105,26 +107,26 @@ If no font is specified, the default system font "HarmonyOS Sans" is used to dis
    // Create a paragraph style object to set the typography style.
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: textStyle1,
-     align: 3,
+     align: text.TextAlign.JUSTIFY,
      wordBreak: text.WordBreak.NORMAL
    };
    // Obtain the global font set instance.
-   let fontCollection = text.FontCollection.getGlobalInstance(); // Obtain the ArkUI global FC.
+   let fontCollection = text.FontCollection.getGlobalInstance();
    // Create a paragraph generator.
-   let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
 
 5. Add **textStyle1** and **textStyle2** to the paragraph style and add the text.
    <!-- @[arkts_use_and_change_system_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   let str:string = 'Module description\n';
+   let str: string = 'module description\n';
    // Add the first text style and the corresponding text content.
-   ParagraphGraphBuilder.pushStyle(textStyle1);
-   ParagraphGraphBuilder.addText(str);
+   paragraphBuilder.pushStyle(textStyle1);
+   paragraphBuilder.addText(str);
    // Add the second text style and the corresponding text content.
-   ParagraphGraphBuilder.pushStyle(textStyle2);
-   ParagraphGraphBuilder.addText(str);
+   paragraphBuilder.pushStyle(textStyle2);
+   paragraphBuilder.addText(str);
    ```
 
 6. Generate a paragraph for future drawing.
@@ -132,7 +134,7 @@ If no font is specified, the default system font "HarmonyOS Sans" is used to dis
    <!-- @[arkts_use_and_change_system_font_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   let paragraph = ParagraphGraphBuilder.build();
+   let paragraph = paragraphBuilder.build();
    ```
 
 The following figure shows the effect.

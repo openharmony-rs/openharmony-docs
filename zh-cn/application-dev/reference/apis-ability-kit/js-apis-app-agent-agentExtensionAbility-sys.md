@@ -14,6 +14,8 @@ AgentExtensionAbility继承自[ExtensionAbility](js-apis-app-ability-extensionAb
 > **说明：**
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)。
+>
+> 本模块接口不支持在分身应用中实现和使用。
 
 ## 导入模块
 

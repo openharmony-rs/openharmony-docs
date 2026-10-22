@@ -20,7 +20,9 @@
 import { lang, Retention, RetentionPolicy } from '@kit.ArkTS';
 ```
 
-## lang.ISendable
+## lang
+
+### ISendable
 是所有[Sendable](../../arkts-utils/arkts-sendable.md#基础概念)对象类型（除`null`和`undefined`）的父类型。实现该接口后，自定义类的实例将支持跨线程传递。自身不定义任何方法和属性。
 
 ArkTS中，ISendable类型的对象是Object类型的实例，遵循Object类型的基本特征，同时支持跨线程传递。

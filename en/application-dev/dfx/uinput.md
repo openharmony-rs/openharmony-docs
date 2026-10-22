@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=b4507c25ba027d80c9f6d81e8448523a6159f1bf translatedAt=2026-07-30T11:55:24.271Z pushedAt=2026-07-30T11:58:17.929Z -->
+<!-- md-trans-meta sourceCommit=d35b69ac8b44b6ee8ec546fe5edc332388a65bba translatedAt=2026-08-21T03:21:39.056Z pushedAt=2026-08-21T10:31:55.983Z -->
 
 uinput can simulate operations on devices such as the mouse, keyboard, and touchpad for pressure tests like stability tests.
 
@@ -26,15 +26,16 @@ uinput <option> <command> <arg> ...
 
 **Available Commands**
 
-| Abbreviation | Full Command  | Description       | 
+| Abbreviation | Full Command  | Description       |
 | -------- | --------   | --------       |
-| -M       | --mouse    | Injects a mouse event. | 
+| -D       | --display  | [Specifies the target display for injected events](#specifying-the-target-display). |
+| -M       | --mouse    | Injects a mouse event. |
 | -K       | --keyboard | Injects a keyboard event. |
-| -S       | --stylus   | Injects a stylus event.| 
+| -S       | --stylus   | Injects a stylus event.|
 | -T       | --touch    | Injects a touch event. |
 | -P       | --touchpad | Injects a touchpad event.|
-| -?       | --help     | Displays the help information.     | 
-| enable_key_status | enable_key_status | [Controls the injected modifier key status](#controlling-the-injected-modifier-key-status).| 
+| -?       | --help     | Displays the help information.     |
+| enable_key_status | enable_key_status | [Controls the injected modifier key status](#controlling-the-injected-modifier-key-status).|
 
 > **NOTE**
 >
@@ -71,6 +72,33 @@ commands for keyboard:
 ...
 
 ```
+
+## Specifying the Target Display
+
+Specifies the target display for injected events. This is an optional parameter and, when used, must be placed before the device type option (such as -M or -K). After it is specified, the injected mouse, keyboard, touch, and touchpad events take effect on the screen corresponding to the target display. If it is not specified, the event injection behavior remains the same as the default behavior.
+
+**Command**
+
+```bash
+uinput -D <displayId> <option> <command> <arg> ...
+uinput --display <displayId> <option> <command> <arg> ...
+
+# <displayId>ID of the target display. Only non-negative integers are supported.
+```
+
+**Example**
+
+```bash
+# Simulate mouse movement on display 0 to position (100, 100) in the relative coordinate system with the top-left corner of the specified screen as the origin.
+uinput -D 0 -M -m 100 100
+
+# Simulate a finger tap at position (100, 100) on display 1.
+uinput --display 1 -T -c 100 100
+```
+
+> **NOTE**
+>
+> If the passed `displayId` is invalid (not an integer or a negative number), the command reports an error: `invalid displayId`.
 
 ## Mouse Events
 

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="80" viewBox="0 0 200 80">
+  <text x="100" y="40" font-size="24" text-anchor="middle" fill="#333">Hello SVG</text>
+  <text x="100" y="65" font-size="14" text-anchor="middle" fill="#666">
+    <tspan dx="-10" fill="#ED7D31">ACE</tspan>
+    <tspan dx="5">Lite</tspan>
+  </text>
+</svg>

@@ -208,7 +208,7 @@ checkOsAccountActivated(localId: number, callback: AsyncCallback&lt;boolean&gt;)
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -270,7 +270,7 @@ checkOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -376,7 +376,7 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: A
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or constraint.    |
@@ -440,7 +440,7 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or constraint.    |
@@ -709,7 +709,7 @@ checkOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;):
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -769,7 +769,7 @@ checkOsAccountVerified(localId: number): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -817,7 +817,7 @@ getOsAccountCount(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
@@ -863,7 +863,7 @@ getOsAccountCount(): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1142,7 +1142,7 @@ getOsAccountLocalIds(): Promise&lt;number[]&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1186,7 +1186,7 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallb
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainInfo. |
@@ -1241,7 +1241,7 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&lt;number&g
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainInfo. |
@@ -1293,7 +1293,7 @@ getOsAccountConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;str
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -1355,7 +1355,7 @@ getOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -1495,8 +1495,7 @@ getCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1545,7 +1544,7 @@ getCurrentOsAccount(): Promise&lt;OsAccountInfo&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1671,7 +1670,7 @@ queryDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
@@ -1717,7 +1716,7 @@ queryDistributedVirtualDeviceId(): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -3218,7 +3217,7 @@ getOsAccountNameByLocalId(localId: number): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
@@ -3309,7 +3308,7 @@ getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | OS account not found. |
@@ -3344,7 +3343,7 @@ static updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: Doma
 
 修改指定域账号信息。使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.MANAGE_DOMAIN_ACCOUNTS
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（仅系统应用可申请）或ohos.permission.MANAGE_DOMAIN_ACCOUNTS
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -3367,8 +3366,8 @@ static updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: Doma
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | The new account info is invalid. |
 | 12300003 | The old account not found. |
@@ -3427,8 +3426,8 @@ static updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: Doma
 
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| domain      | string | 否 | 否  | 域名。     |
-| accountName | string | 否 | 否  | 域账号名。 |
+| domain      | string | 否 | 否  | 域名。最大长度为128个字节。|
+| accountName | string | 否 | 否  | 域账号名。最大长度为256个字节。|
 | serverConfigId<sup>18+</sup> | string | 否 | 是  | 域账号配置ID，默认为空字符串。 |
 | additionalInfo | Record<string, Object> | 否 | 是 | 域账号附加信息，默认为空。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
@@ -3477,8 +3476,8 @@ static addServerConfig(parameters: Record&lt;string, Object&gt;): Promise&lt;Dom
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid server config parameters. |
 | 12300211 | Server unreachable. |
@@ -3530,8 +3529,8 @@ static removeServerConfig(configId: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300212 | Server config not found. |
 | 12300214 | Server config has been associated with an account. |
@@ -3584,8 +3583,8 @@ static updateServerConfig(configId: string, parameters: Record&lt;string, Object
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid server config parameters. |
 | 12300211 | Server unreachable. |
@@ -3643,8 +3642,8 @@ static getServerConfig(configId: string): Promise&lt;DomainServerConfig&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300212 | Server config not found. |
 
@@ -3692,8 +3691,8 @@ static getAllServerConfigs(): Promise&lt;Array&lt;DomainServerConfig&gt;&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -3746,8 +3745,8 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise&lt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Domain account not found. |
 

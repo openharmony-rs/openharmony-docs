@@ -329,11 +329,17 @@ try {
 }
 ```
 
-## hidebug.dumpJsHeapData<sup>9+</sup>
+## hidebug.dumpJsHeapData<sup>(deprecated)</sup>
 
 dumpJsHeapData(filename: string): void
 
 虚拟机堆数据转储。
+
+**起始版本：** 9
+
+**废弃版本：** 26.2.0
+
+**替代接口：** [hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)
 
 > **注意**：
 >
@@ -368,11 +374,17 @@ try {
 }
 ```
 
-## hidebug.dumpJsHeapData<sup>24+</sup>
+## hidebug.dumpJsHeapData<sup>(deprecated)</sup>
 
 dumpJsHeapData(filename: string, needClean: boolean): void
 
 虚拟机堆数据转储，支持清除nodeId缓存。
+
+**起始版本：** 24
+
+**废弃版本：** 26.2.0
+
+**替代接口：** [hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata24)
 
 > **注意**：
 >
@@ -464,7 +476,7 @@ dumpHeapData(filename: string): void
 
 > **说明**：
 > 
-> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9)替代。
+> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)替代。
 
 虚拟机堆数据转储，生成`filename.heapsnapshot`文件。
 
@@ -1057,6 +1069,7 @@ VM内存信息。
 | -------------------| ------- |----|----| ----------------------------------- |
 | threadId           | number  | 否  | 否  | 线程号。      |
 | cpuUsage           | number  | 否  | 否  | 线程CPU使用率。 |
+| threadName           | string  | 否  | 是  | 线程名。<br>**起始版本**：26.0.1 |
 
 ## tags<sup>12+</sup>
 
@@ -1749,4 +1762,30 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let rssInfo: hidebug.RssInfo = hidebug.getRssInfo();
 console.info(`rss: ${rssInfo.rss}, swapRss: ${rssInfo.swapRss}`);
+```
+## hidebug.getAppRunningUniqueId
+
+getAppRunningUniqueId(): string
+
+获取应用程序的运行唯一标识符。
+
+**起始版本**：26.0.1
+
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**返回值**：
+
+| 类型  | 说明                      |
+| ------ | -------------------------- |
+| string | 返回运行唯一标识ID字符串。失败时返回空字符串。 |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+let apprunningId = hidebug.getAppRunningUniqueId();
+console.info(`apprunningId: ${apprunningId}`);
 ```
