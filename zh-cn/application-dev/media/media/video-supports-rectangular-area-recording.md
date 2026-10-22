@@ -1,7 +1,7 @@
 ---
 kits: ["Media Kit / 媒体服务"]
 description: "从API version 20开始介绍屏幕录制支持的矩形区域录制能力，允许开发者通过屏幕捕获ID和指定区域参数自主选择录屏范围，适用于在线教育和游戏直播等选择性录制场景。"
-keywords: [矩形区域录制, 屏幕录制, C API]
+keywords: [矩形区域录制, OH_Rect, 屏幕录制 ]
 doctype: guide
 status: active
 ---
