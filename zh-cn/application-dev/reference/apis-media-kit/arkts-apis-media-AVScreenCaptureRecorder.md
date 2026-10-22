@@ -699,7 +699,7 @@ setCaptureArea(area: RectangleRegion): Promise\<void>
 > **说明：**
 >
 > - 录制区域以当前录制屏幕的左上角为原点计算，单位为像素（px）。录制的屏幕可由[AVScreenCaptureRecordConfig](arkts-apis-media-i.md#avscreencapturerecordconfig12)中的displayId指定，默认为主屏。
-> - 设置的区域必须在屏幕范围内，且不能跨屏。区域设置失败时，仍按上一次设置的区域进行录制。
+> - 设置的区域中，left和top不能为负数，width和height必须大于0，且区域必须在屏幕范围内、不能跨屏。区域设置失败时，仍按上一次设置的区域进行录制。
 
 **起始版本：** 26.2.0
 
