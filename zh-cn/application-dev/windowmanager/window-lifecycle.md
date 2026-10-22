@@ -125,11 +125,13 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 
 在PC/2in1设备上，应用主窗口进入后台状态后，可通过调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口将主窗口恢复到前台显示，并恢复到进入后台状态之前的大小和位置。若主窗口已处于前台状态，调用该接口仅抬升主窗口层级。
 
-对于已将应用图标添加到状态栏的应用，可通过监听状态栏图标点击事件，在用户点击状态栏图标时调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口恢复应用主窗口。应用接入状态栏的详细操作请参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/doccenter-capabilities/statusbar-extension-guide)。
+对于已将应用图标添加到状态栏的应用，可通过[监听状态栏图标点击事件](https://developer.huawei.com/consumer/cn/doc/doccenter-references/api/statusbar-extension-manager#statusbarmanageronstatusbariconclick)，在用户点击状态栏图标时调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口恢复应用主窗口。应用接入状态栏的详细操作请参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/doccenter-capabilities/statusbar-extension-guide)。
 
 > **说明：**
->
-> - [restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口仅在PC/2in1设备、Tablet设备的[电脑模式](window-terminology.md#pc-mode电脑模式)下可正常调用，在其他设备和其他模式下调用会返回801错误码。
+> 
+> - [restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口仅在PC/2in1设备、Phone/Tablet设备的[电脑模式](window-terminology.md#pc-mode电脑模式)下可正常调用，在其他设备和其他模式下调用会返回801错误码。
+> 
+> - 在开发跨设备应用时，建议通过[canIUse()](../reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持该权限所对应的系统能力，避免在不支持的设备上产生非预期行为。
 
 示例代码如下：
 
@@ -149,7 +151,7 @@ struct Index {
   mainWindow: window.Window | undefined;
 
   aboutToAppear() {
-    // 在 EntryAbility.ets 中通过 windowStage.getMainWindowSync() 保存主窗
+    // 在EntryAbility.ets中通过windowStage.getMainWindowSync()保存主窗
     this.mainWindow = AppStorage.get('mainWindow_Restore') as window.Window;
   }
 
@@ -199,21 +201,15 @@ struct Index {
 }
 ```
 
-### 设置应用支持锁屏下启动（PC/2in1）
+### 锁屏状态下启动应用（PC/2in1）
 
-在PC/2in1设备上，如果应用需要在锁屏状态下被启动，需要申请权限`ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN`。
+在PC/2in1设备上，如果应用需要在锁屏状态下被启动，需要申请权限[ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)。
 
-该权限允许应用在PC/2in1设备的锁屏状态下被启动至前台，设备解锁后应用窗口保持前台状态。权限声明需要在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明，详细声明方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
+该权限允许应用在PC/2in1设备的锁屏状态下被启动至前台，设备解锁后应用窗口保持前台状态。需在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明该权限，具体请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
 > **说明：**
 > 
-> - `ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN`为normal级别权限，授权方式为系统授权，应用安装后即获得授权，无需用户手动确认。
-> 
-> - 该权限仅支持在PC/2in1设备上申请，起始版本为API version 21。在其他设备类型上申请不生效。
-> 
-> - 在开发跨设备应用时，建议通过[canIUse()](../reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持该权限所对应的系统能力，避免在不支持的设备上产生非预期行为。
-> 
-> - 该权限的详细说明请参考[应用权限列表](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)。
+> 在开发跨设备应用时，建议通过[canIUse()](../reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持该权限所对应的系统能力，避免在不支持的设备上产生非预期行为。
 
 示例代码如下：
 
