@@ -6,6 +6,7 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5f480f231e1dcdff747a41e57f60f399a370f067 translatedAt=2026-10-22T04:18:29.912Z pushedAt=2026-10-22T13:41:05.946Z nl=1 -->
 
 Starting from API version 15, the video variable refresh rate feature is supported.
 
@@ -26,7 +27,7 @@ The video variable refresh rate feature is ideal for video sources with high fra
 
 ## How to Develop
 
-This section describes only the steps that are different from the basic decoding process. You can learn the basic decoding process in [Video Decoding](video-decoding.md).
+For the basic decoding process, see [Asynchronous Video Decoding](video-decoding.md). This section describes only the differences from the basic video decoding process.
 
 1. Enable the video variable frame rate feature during decoder configuration.
    
