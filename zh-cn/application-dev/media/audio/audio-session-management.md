@@ -593,12 +593,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 | 枚举值 | API版本 | 使用场景 |
 | -------- | -------- | -------- |
-| [MUTE_WHEN_INTERRUPTED](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24) | 24 | 该枚举用于直播类音频被打断场景。当用户观看直播时，若其他应用启动音频流（如键盘录音转文字）打断直播，默认会导致直播的音频和画面暂停，影响观看体验。设置该会话行为后，直播在被打断时将保持静音播放而非暂停，避免画面中断，打断结束后会自动解除静音。 |
-| [PAUSE_WHEN_INTERRUPTED](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24) | 26.0.0 | 该枚举用于媒体类音频被短时打断不恢复场景。当用户在播放媒体时，若被其他应用的短时媒体音频（如有声广告）打断，默认不会通知应用恢复播放。设置该会话行为后，应用被打断，系统会通知应用恢复播放。在媒体打断媒体的场景下，该行为受打断时长限制：打断时长在限制时间内，系统会通知应用恢复播放，超出限制时间不再通知恢复。 |
+| [AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED | 24 | 该枚举用于直播类音频被打断场景。 |
+| [AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).PAUSE_WHEN_INTERRUPTED | 26.0.0 | 该枚举用于媒体类音频被其他短时媒体音频（如有声广告）打断后需要恢复播放的场景。 |
+
+当用户观看直播时，若其他应用启动音频流（如键盘录音转文字）打断直播，默认会导致直播的音频和画面暂停，影响观看体验。设置[AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED会话行为后，直播在被打断时将保持静音播放而非暂停，避免画面中断，打断结束后会自动解除静音。
+
+当媒体类音频被其他短时媒体音频打断后，系统默认不会通知应用恢复播放。设置[AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).PAUSE_WHEN_INTERRUPTED会话行为，应用被打断后系统会通知应用恢复播放。在媒体打断媒体的场景下，该行为受打断时长限制：打断时长在限制时间内，系统会通知应用恢复播放，超出限制时间不再通知恢复播放。
 
 > **注意：**
 >
 > - PAUSE_WHEN_INTERRUPTED不能与MUTE_WHEN_INTERRUPTED共存，若同时设置，仅PAUSE_WHEN_INTERRUPTED生效。
+> - 调用[setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口配置该行为时，必须同步调用[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)接口，否则配置将无法生效。
+> - 当音频会话在激活状态时调用[setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口后，必须重新调用接口[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)使其生效。
 
 如果本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详情请参考[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)。对于录音流，详情请参考[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)。
 
