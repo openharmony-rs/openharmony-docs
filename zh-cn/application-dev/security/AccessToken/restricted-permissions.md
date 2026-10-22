@@ -1762,7 +1762,6 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **起始版本**：26.0.1
 
-
 ## ohos.permission.INPUT_RECORDING
 
 允许应用监听输入事件。
