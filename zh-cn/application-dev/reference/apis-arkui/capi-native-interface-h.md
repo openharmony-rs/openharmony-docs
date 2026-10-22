@@ -85,6 +85,8 @@ ArkUI C API的运行时检查类型枚举。<br>每种检查类型对应一种Ar
 | -- | -- |
 | OH_ARKUI_NATIVEMODULE_CHECK_TYPE_UI_THREAD = 0 | UI线程检查类型：部分ArkUI C API要求必须在UI线程调用，此类型用于检测这些API是否被非UI线程调用。 |
 | OH_ARKUI_NATIVEMODULE_CHECK_TYPE_NODE_DISPOSED = 1 | 节点销毁检查类型：检测传递给C API的[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)是否已经被销毁。 |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_ATTRIBUTE_MATCH = 2 | 属性匹配检查类型：检测传递给[setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)/[getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)/[resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)的[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)是否与节点实际组件类型匹配。 |
+| OH_ARKUI_NATIVEMODULE_CHECK_TYPE_MULTI_THREAD = 3 | 多线程竞争检查类型：检测调用多线程API时，是否已有其他线程正在操作同一棵组件树。 |
 
 ### OH_ArkUI_NativeModule_RuntimeCheckMode
 
