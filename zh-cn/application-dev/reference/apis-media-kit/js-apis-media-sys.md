@@ -1487,7 +1487,7 @@ screenCaptureMonitor.off('systemScreenRecorder');
 | ------------------------ | --------------- | ------------------------------------------------------------ |
 | SCREENCAPTURE_STARTED       | 0   | 表示系统录屏应用开始录屏。                       |
 | SCREENCAPTURE_STOPPED        | 1    | 表示系统录屏应用停止录屏。 |
-| SCREENCAPTURE_DIED<sup>23+</sup>           | 2    | 表示录屏框架服务死亡。 |
+| SCREENCAPTURE_DIED<sup>23+</sup>           | 2    | 表示录屏框架服务进程终止。 |
 
 ## enableDeviceLevelCapture<sup>20+</sup>
 

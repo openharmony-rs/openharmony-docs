@@ -37,6 +37,8 @@ import { cliManager } from '@kit.AbilityKit';
 | background | boolean | 否 | 表示任务是否后台执行。<br/>true：后台执行，false：前台执行。<br/>默认值：false。 |
 | yieldMs    | number | 否 | 任务前台执行时长。取值范围：0 ~ 1000 * timeout。默认值：0。单位：ms。 |
 | timeout    | number | 否 | 任务执行超时时长。取值范围：0 ~ 1800。默认值：1800。单位：s。 |
+| toolCallId | string | 否 | 表示工具调用的唯一标识符，由Agent分配。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
+| dmSessionId | string | 否 | 表示对话管理器（DM）的会话ID，用于唯一标识Agent会话。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
 
 ## cliManager.queryToolSummaries
 
@@ -66,8 +68,8 @@ queryToolSummaries(): Promise\<Array\<ToolSummary>>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.QUERY_CLI_TOOL". |
-| 202      | Not system application. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **示例：**
@@ -121,8 +123,8 @@ queryTools(): Promise\<Array\<ToolInfo\>\>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.QUERY_CLI_TOOL". |
-| 202      | Not system application. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **示例：**
@@ -182,8 +184,8 @@ getToolInfoByName(toolName: string): Promise\<ToolInfo\>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied, interface caller does not have permission "ohos.permission.QUERY_CLI_TOOL". |
-| 202      | Not system application. Interface caller is not a system app. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 35600030 | No tool with the specified name exists.                      |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
@@ -245,8 +247,8 @@ execTool(toolName: string, subCommand: string, args: Record\<string, Object\>, c
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied, interface caller does not have permission "ohos.permission.EXEC_CLI_TOOL". |
-| 202 | Not system application. Interface caller is not a system app. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 35600030 | No tool with the specified name exists. |
 | 35600031 | Maximum number of processes has been reached. |
 | 35600050  | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
@@ -349,6 +351,8 @@ Shell命令执行参数，用于拦截Hook。包含命令字符串和执行选�
 | 名称        | 类型 | 必填 | 说明 |
 | ----------- | ---- | --- | ------------------ |
 | execResult  | [ExecResult](js-apis-app-cli-cliManager.md#execresult) | 是 | 工具或命令的执行结果，包含退出码（exitCode）、标准输出（outputText）、标准错误输出（errorText）、终止信号（signalNumber）、是否超时（timeOut）和执行时长（executionTime），详见[ExecResult](js-apis-app-cli-cliManager.md#execresult)。在[onAfterCallTool()](#onaftercalltool)和[onAfterCallCmd()](#onaftercallcmd)回调中可读取该字段查看原始执行结果，修改后会将替换后的结果返回给调用方。 |
+| toolCallId  | string | 否 | 表示工具调用的唯一标识，从[ExecOptions](#execoptions)或[ExecCmdOptions](js-apis-app-cli-cliManager.md#execcmdoptions)回传。仅当调用方传入该标识时存在。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
+| dmSessionId | string | 否 | 表示对话管理器（DM）的会话ID，从[ExecOptions](#execoptions)或[ExecCmdOptions](js-apis-app-cli-cliManager.md#execcmdoptions)回传。仅当调用方传入该标识时存在。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
 
 ## CliHook
 

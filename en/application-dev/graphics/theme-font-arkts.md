@@ -1,10 +1,12 @@
 # Using Theme Fonts (ArkTS)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3ec88648a6751705fb1f5ed82220f211858b32b2 translatedAt=2026-10-19T01:36:29.686Z pushedAt=2026-10-19T10:58:17.454Z -->
+
 ## Overview
 
 Theme fonts are specialized custom fonts available for use in theme applications. You can enable them using specific APIs.
@@ -48,14 +50,14 @@ The following table lists the APIs for registering and using theme fonts. For de
    let fontCollection = text.FontCollection.getGlobalInstance();
    ```
 
-4. Create a paragraph style and use the font manager instance to construct a **ParagraphBuilder** instance for generating paragraphs.
+4. Create a paragraph style and use the font collection instance to construct a **ParagraphBuilder** instance for generating paragraphs.
    > **NOTE**
    >
-   > When setting the input parameters of the paragraph style for generating a paragraph object, do not specify the **fontFamilies** attribute. Otherwise, the specified font instead of the theme font is used.
+   > When generating a paragraph object and setting paragraph style parameters, do not specify the fontFamilies attribute. Otherwise, the system prioritizes the specified font over the theme font.
    > 
-   > If no theme font is set in the theme applications, the default system font is used.
+   > If no theme font is configured in the system **theme app**, the system default font is used for rendering.
 
-   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // Set the text style.
@@ -66,11 +68,11 @@ The following table lists the APIs for registering and using theme fonts. For de
    // Create a paragraph style object to set the typography style.
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: myTextStyle,
-     align: 3,
-     wordBreak:text.WordBreak.NORMAL
+     align: text.TextAlign.JUSTIFY,
+     wordBreak: text.WordBreak.NORMAL
    };
    // Create a paragraph generator.
-   let paragraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
 
 5. Set the text style, add text content, and generate paragraph text for subsequent text drawing and display.
@@ -79,11 +81,11 @@ The following table lists the APIs for registering and using theme fonts. For de
    
    ``` TypeScript
    // Set the text style in the paragraph generator.
-   paragraphGraphBuilder.pushStyle(myTextStyle);
+   paragraphBuilder.pushStyle(myTextStyle);
    // Set the text content in the paragraph generator.
-   paragraphGraphBuilder.addText("Hello World. \nThis is the theme font.");
+   paragraphBuilder.addText("Hello World. \nThis is the theme font.");
    // Generate a paragraph using the paragraph generator.
-   let paragraph = paragraphGraphBuilder.build();
+   let paragraph = paragraphBuilder.build();
    ```
 
 6. Create a render node and save it to an array. (This sample code is simplified and uses an array as the container. During development, you should choose a proper container based on your use case to ensure that the addition and deletion of nodes correspond to each other.)

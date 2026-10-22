@@ -123,6 +123,42 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 | parameters        | string       | 否   | 否 | 调用接口时传入的参数值（不包含admin参数），JSON格式字符串。例如调用[setPasswordPolicy](./js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy)接口，该字段返回值为{"policy":{"complexityRegex":"^(?=.\*[a-zA-Z])(?=.\*\\\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"至少8个字符，且包含数字和字母。"}}。            |
 | time        | number       | 否   | 否 | 调用接口的时间戳，单位：ms。           |
 
+## DiskType
+
+外置存储设备磁盘类型的枚举。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称      | 值   | 说明                   |
+| --------- | ---- | ---------------------- |
+| SD_CARD   | 1    | SD卡类型。             |
+| USB_FLASH | 2    | U盘类型。              |
+| CD_DVD_BD | 3    | 光盘类型。             |
+
+## ExternalStorageDeviceInfo
+
+外置存储设备信息。该接口目前在[usbManager.getExternalStorageDeviceInfos](./js-apis-enterprise-usbManager.md#usbmanagergetexternalstoragedeviceinfos)接口中作为返回值使用，在[EnterpriseAdminExtensionAbility.onUnmountExternalStorageDevice](./js-apis-EnterpriseAdminExtensionAbility.md#onunmountexternalstoragedevice)接口中作为回调入参使用。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称        | 类型                  | 只读 | 可选 | 说明                                                         |
+| ----------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
+| type        | [DiskType](#disktype) | 否   | 否   | 磁盘类型。                                                   |
+| devicePath  | string                | 否   | 否   | 挂载路径。                                                   |
+| volumeId    | string                | 否   | 否   | 卷ID。                                                       |
+| mountStatus | boolean               | 否   | 否   | 挂载状态。返回true表示已挂载；返回false表示未挂载。         |
+| vendorId    | number                | 否   | 否   | 厂商ID。                                                     |
+| productId   | number                | 否   | 否   | 产品ID。                                                     |
+| serial      | string                | 否   | 否   | 序列号。                                                     |
+
 ## QueryPolicy
 
 获取策略。
@@ -154,6 +190,12 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 | USER_EXTEND_CREDENTIAL  | 1  | 扩展身份认证凭据。                |
 | DEVICE_SECURITY_LEVEL   | 2  | 设备安全等级。              |
 | PRINTER_IP_ADDRESS_POLICY | 3 | 打印机IP地址策略。          |
+| OPTICAL_DISC_DRIVE_BURN | 4 | 光驱刻录。          |
+| EXACT_TIMER | 5 | 精确定时器。          |
+| EXEMPTION_RESOURCE | 6 | 资源豁免。          |
+| X_KEY | 7 | X键。          |
+| SYSTEM_ROLLBACK | 8 | 系统回退。          |
+| SUPER_PRIVACY | 9 | 超级隐私模式。          |
 
 ## common.isFeatureSupported
 

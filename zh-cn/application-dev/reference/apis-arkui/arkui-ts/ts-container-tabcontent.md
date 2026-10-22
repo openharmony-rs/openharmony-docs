@@ -131,11 +131,11 @@ tabBarVisibility(visibility: TabVisibility, displayMode?: TabBarDisplayMode)
 > - 当visibility为TabVisibility.HIDDEN且不设置displayMode时，该页签在两种显示模式中均不显示。
 > - 隐藏的页签内容仍可通过TabsController.changeIndex()或修改index状态变量切换显示。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,6 +164,7 @@ tabBarVisibility(visibility: TabVisibility, displayMode?: TabBarDisplayMode)
 | -------- | -------- | --- | ----- | -------- |
 | icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的图片内容。未设置时不显示图片。如果icon采用svg格式图源，需删除其内置的宽高属性。否则，icon大小将使用svg图源内置的宽高属性值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的文字内容。未设置时不显示文字。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| badge | [TabBarBadgeStyle](#tabbarbadgestyle) | 否 | 是 | 页签的信息标记样式。未设置时不显示信息标记。<br/>**起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ## SubTabBarStyle<sup>9+</sup>
 
@@ -761,6 +762,32 @@ iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 | ------- | ------------------------------------------------------------ |
 | [BottomTabBarStyle](#bottomtabbarstyle9) | 返回BottomTabBarStyle对象本身，用于链式调用。 |
 
+### badge
+
+badge(badgeStyle: TabBarBadgeStyle): BottomTabBarStyle
+
+设置底部页签的信息标记样式。未设置时不显示信息标记。
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| badgeStyle | [TabBarBadgeStyle](#tabbarbadgestyle) | 是 | 底部页签的信息标记样式。 |
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| [BottomTabBarStyle](#bottomtabbarstyle9) | 返回BottomTabBarStyle对象本身，用于链式调用。 |
+
 ## TabBarSymbol<sup>12+</sup>对象说明
 
 页签内symbol图标样式对象。
@@ -811,11 +838,11 @@ iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 
 Tab页签可见性枚举。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -823,6 +850,42 @@ Tab页签可见性枚举。
 | ----- | ----- | ------- |
 | VISIBLE | 0 | 页签可见。 |
 | HIDDEN | 1 | 页签不可见。 |
+
+## TabBarBadgeStyle
+
+页签信息标记样式对象。
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | --- | ----- | -------- |
+| value | [TabBarBadgeType](#tabbarbadgetype) | 否 | 是 | 信息标记内容。未设置或设置为undefined时，信息标记显示为直径为6vp的无内容圆点，相比正常显示内容的圆点偏小。类型为number时，当该值小于等于0且小于maxCount时不显示信息标记。 |
+| maxCount | number | 否 | 是 | 信息标记内容显示的最大数量。该属性只在value为number类型时生效，未设置时不限制最大数量，按实际value显示。当信息标记内容超过该数量时，仅显示maxCount+，如maxCount为99时，显示`99+`。<br>默认值：99<br>非整数时会舍去小数部分取整数部分，如5.5取5。 |
+
+## TabBarBadgeType
+
+type TabBarBadgeType = number | ResourceStr
+
+信息标记显示内容的联合类型。
+
+**起始版本：** 26.0.1
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 说明 |
+| -------- | -------- |
+| number | 数字类型，用于显示数字内容的信息标记。 |
+| [ResourceStr](ts-types.md#resourcestr) | 文本类型，用于显示文本内容的信息标记。 |
 
 ## 事件
 
@@ -2268,44 +2331,104 @@ struct TabsIndicatorExample {
 
 该示例通过[tabBarVisibility](#tabbarvisibility)属性，设置页签在不同样式的页签栏中的可见性。
 
-从API版本26.2.0开始，TabContent新增了[tabBarVisibility](#tabbarvisibility)属性。
+从API版本26.0.1开始，TabContent新增了[tabBarVisibility](#tabbarvisibility)属性。
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct TabBarVisibilityExample {
+  @State myIndex: number = 0;
   @State isBottomType: boolean = true;
+  private controller: TabsController = new TabsController();
 
   build() {
     Column() {
       Row() {
-        Text('barStyle: ').fontSize(25)
-        Button('BOTTOM').onClick(() => {
-          this.isBottomType = true;
+        Text('barStyle: ')
+        Radio({group: `barStyle`, value: `BOTTOM`}).checked(this.isBottomType).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.isBottomType = true;
+          }
+        })
+        Text('BOTTOM  ')
+        Radio({group: `barStyle`, value: `SIDEBAR`}).checked(!this.isBottomType).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.isBottomType = false;
+          }
+        })
+        Text('SIDEBAR')
+      }.width(450)
+      .height(55)
+      .justifyContent(FlexAlign.Center)
+      Divider().vertical(false).strokeWidth(1).color('#ffd9d9d9')
+      Row() {
+        // 即使某些页签通过tabBarVisibility属性隐藏了，也可以通过修改index状态变量切换到对应的页面
+        Text('Set myIndex: ')
+        Radio({group: `myIndex`, value: `0`}).checked(this.myIndex === 0).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.myIndex = 0;
+          }
+        })
+        Text('0  ')
+        Radio({group: `myIndex`, value: `1`}).checked(this.myIndex === 1).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.myIndex = 1;
+          }
+        })
+        Text('1  ')
+        Radio({group: `myIndex`, value: `2`}).checked(this.myIndex === 2).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.myIndex = 2;
+          }
+        })
+        Text('2')
+      }.width(450)
+      .height(55)
+      .justifyContent(FlexAlign.Center)
+      Divider().vertical(false).strokeWidth(1).color('#ffd9d9d9')
+      Row() {
+        // 即使某些页签通过tabBarVisibility属性隐藏了，也可以通过TabsController.changeIndex接口切换到对应的页面
+        Text('TabsController.changeIndex').margin({right: 10})
+        Button('0').onClick(() => {
+          this.controller.changeIndex(0)
         }).margin({right: 10}).fontSize(15).backgroundColor('#ff2787d9')
-        Button('SIDEBAR').onClick(() => {
-          this.isBottomType = false;
+        Button('1').onClick(() => {
+          this.controller.changeIndex(1)
+        }).margin({right: 10}).fontSize(15).backgroundColor('#ff2787d9')
+        Button('2').onClick(() => {
+          this.controller.changeIndex(2)
         }).fontSize(15).backgroundColor('#ff2787d9')
       }.width(450)
-      .height('20%')
+      .height(55)
       .justifyContent(FlexAlign.Center)
-      Tabs() {
+      Tabs({index: this.myIndex, controller: this.controller}) {
         TabContent() {
           Stack({alignContent: Alignment.Center}) {
-            Text('TabContent1').fontSize(25)
+            Text('TabContent0').fontSize(18)
           }.width('100%').height('100%')
         }
+        // 请开发者将$r('app.media.arrow')替换为实际的资源
         // 页签默认在TabBarDisplayMode.BOTTOM_TABBAR和TabBarDisplayMode.SIDEBAR显示模式中都可见
-        .tabBar({icon: $r('app.media.startIcon'), text: 'tab1'})
+        .tabBar({icon: $r('app.media.arrow'), text: 'tab0'})
         TabContent() {
           Stack({alignContent: Alignment.Center}) {
-            Text('TabContent2').fontSize(25)
+            Text('TabContent1').fontSize(18)
           }.width('100%').height('100%')
         }
-        .tabBar({icon: $r('app.media.startIcon'), text: 'tab2'})
+        // 请开发者将$r('app.media.arrow')替换为实际的资源
+        .tabBar({icon: $r('app.media.arrow'), text: 'tab1'})
         // 设置该页签在TabBarDisplayMode.BOTTOM_TABBAR显示模式时不可见
         .tabBarVisibility(TabVisibility.HIDDEN, TabBarDisplayMode.BOTTOM_TABBAR)
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent2').fontSize(18)
+          }.width('100%').height('100%')
+        }
+        // 请开发者将$r('app.media.arrow')替换为实际的资源
+        .tabBar({icon: $r('app.media.arrow'), text: 'tab2'})
+        // 设置该页签在TabBarDisplayMode.SIDEBAR显示模式时不可见
+        .tabBarVisibility(TabVisibility.HIDDEN, TabBarDisplayMode.SIDEBAR)
       }
       .width(450)
       .height('80%')
@@ -2323,3 +2446,59 @@ struct TabBarVisibilityExample {
 ```
 
 ![tabContentTabBarVisibility](figures/tabContentTabBarVisibility.gif)
+
+### 示例13（设置页签的信息标记内容）
+
+该示例通过[TabBarOptions](#tabbaroptions18对象说明)的badge属性和[BottomTabBarStyle](#bottomtabbarstyle9)的[badge](#badge)属性，设置页签的信息标记内容。
+
+从API版本26.0.1开始，[TabBarOptions](#tabbaroptions18对象说明)和[BottomTabBarStyle](#bottomtabbarstyle9)都新增了badge属性。
+
+```ts
+// xxx.ets
+import { SymbolGlyphModifier } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State symbolModifier1: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_wifi'));
+  @State symbolModifier2: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ellipsis_bubble'));
+
+  build() {
+    Column({ space: 5 }) {
+      Column() {
+        Tabs({ barPosition: BarPosition.End }) {
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Pink)
+          }.tabBar(new BottomTabBarStyle({
+            normal: this.symbolModifier1,
+          }, 'Pink').badge({ value: 1 })) // 设置信息标记的内容为普通数字类型
+
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Orange)
+          }.tabBar(new BottomTabBarStyle({
+            normal: this.symbolModifier2,
+          }, 'Orange').badge({ value: 100, maxCount: 99 })) // 设置信息标记的内容和最大显示数量
+        }
+        .vertical(false)
+        .width('100%').height(200)
+
+        Tabs({ barPosition: BarPosition.End }) {
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Pink)
+          // 设置信息标记的文本内容为文本
+          }.tabBar({ icon: $r('app.media.startIcon'), text: '111', badge: { value: 'Info' } })
+
+          TabContent() {
+            Column().width('100%').height('100%').backgroundColor(Color.Orange)
+          // 未设置信息标记内容，显示为无内容圆点
+          }.tabBar({ icon: $r('app.media.startIcon'), text: '111', badge: {} })
+        }
+        .vertical(false)
+        .width('100%').height(200)
+      }.width('100%')
+    }
+  }
+}
+```
+
+![tabContentBadge](figures/tabBarBadge.png)

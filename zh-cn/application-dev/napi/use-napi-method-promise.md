@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API调用返回值为Promise的ArkTS方法，通过将Promise与C++回调绑定处理异步结果，并转换数据类型供C++使用，适用于在ArkTS运行时环境中调用异步接口。"
+keywords: [Node-API, Promise, ArkTS方法, 异步调用, C++回调, 数据类型转换, 运行时环境, napi_get_named_property]
+doctype: guide
+status: active
+---
+
 # 使用Node-API调用返回值为promise的ArkTS方法
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

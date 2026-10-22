@@ -39,7 +39,6 @@
  
 <!-- @[material_scope_adapt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialScopeAdaptExample.ets) -->
 
-
 ``` TypeScript
 import { CircleShape, TitleBarType, uiMaterial } from '@kit.ArkUI';
 
@@ -47,6 +46,7 @@ import { CircleShape, TitleBarType, uiMaterial } from '@kit.ArkUI';
 @Component
 struct MaterialScopeAdaptExample {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  @State titleHeight: number = 140;
 
   @Builder
   NavigationTitle() {
@@ -77,6 +77,7 @@ struct MaterialScopeAdaptExample {
     .alignItems(VerticalAlign.Center)
     .width('100%')
     .padding(16)
+    .height(this.titleHeight)
   }
 
   build() {
@@ -86,6 +87,10 @@ struct MaterialScopeAdaptExample {
           Row() {
             // 请将$r('app.string.content_area')替换为实际资源文件，在本示例中该资源文件的value值为"内容区"
             Text($r('app.string.content_area'))
+              .fontColor('#182431')
+              .fontSize(30)
+              .lineHeight(41)
+              .fontWeight(700)
 
             Blank()
 
@@ -106,7 +111,6 @@ struct MaterialScopeAdaptExample {
             }))
           }
           .width('100%')
-          .padding(16)
           .borderRadius(16)
         }
         .width('100%')
@@ -124,7 +128,7 @@ struct MaterialScopeAdaptExample {
         .justifyContent(FlexAlign.Center)
         .alignItems(HorizontalAlign.Center)
       }
-      .title(this.NavigationTitle, { barStyle: BarStyle.STACK })
+      .title({ builder: this.NavigationTitle, height: this.titleHeight }, { barStyle: BarStyle.STACK })
     }.width('100%').height('100%').backgroundColor('#F1F3F5')
   }
 }

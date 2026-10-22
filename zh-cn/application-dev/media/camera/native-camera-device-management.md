@@ -1,4 +1,4 @@
-# 相机管理 (C/C++)
+# 相机管理(C/C++)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
