@@ -200,7 +200,7 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
     OH_ArkWebResourceRequest_GetHttpBodyStream(resourceRequest(), &stream_);
     // 设置读取上传数据的读回调。
     OH_ArkWebHttpBodyStream_SetReadCallback(stream_, ReadCallback);
-    // 初始化ArkWeb_HttpBodyStream，其它OH_ArkWebHttpBodyStream*函数需要在初始化进行调用。
+    // 初始化ArkWeb_HttpBodyStream，其它OH_ArkWebHttpBodyStream*函数需要在初始化之后进行调用。
     OH_ArkWebHttpBodyStream_Init(stream_, InitCallback);
   ```
 

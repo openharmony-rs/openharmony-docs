@@ -664,7 +664,7 @@ struct WebComponent {
       param('call callback');
     }
   
-    toString(param: String): void {
+    toString(param: string): void {
       console.info('Web Component toString' + param);
     }
   }
