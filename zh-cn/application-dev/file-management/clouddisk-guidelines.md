@@ -638,8 +638,8 @@ static napi_value GetFileSyncStates(napi_env env, napi_callback_info info)
 ``` C++
 static napi_value CreatePlaceholderFile(napi_env env, napi_callback_info info)
 {
-    size_t argc = 5;
-    napi_value args[5] = {nullptr};
+    size_t argc = 6;
+    napi_value args[6] = {nullptr};
     GetArgs(env, info, argc, args);
 
     // 解析入参：同步根路径 + 相对路径（占位符文件在同步根内的相对位置）
@@ -659,6 +659,14 @@ static napi_value CreatePlaceholderFile(napi_env env, napi_callback_info info)
     uint64_t mtimeMs = static_cast<uint64_t>(GetNumberParam(env, args[3]));  // 修改时间（毫秒时间戳，映射云端文件修改时间）
     uint64_t logicalSize = static_cast<uint64_t>(GetNumberParam(env, args[4])); // 云端文件逻辑大小（字节）
 
+    // 解析可选入参：自定义信息（不传或空串时置NULL，表示不写入自定义信息）
+    char* customInfo = nullptr;
+    OH_CloudDisk_PlaceholderCustomInfo customInfoValue = {};
+    OH_CloudDisk_PlaceholderCustomInfo* customInfoPtr = NULL;
+    if (MakeCustomInfoArg(env, args[ARG_INDEX_CUSTOM_INFO], &customInfoValue, &customInfo)) {
+        customInfoPtr = &customInfoValue;  // data指向customInfo内存，生命周期覆盖本次调用
+    }
+
     // 构造同步根路径与相对路径
     CloudDisk_SyncFolderPath syncFolderPath = MakePathInfo(syncPath);
     CloudDisk_PathInfo relativePathInfo = MakePathInfo(relativePath);
@@ -670,8 +678,8 @@ static napi_value CreatePlaceholderFile(napi_env env, napi_callback_info info)
     placeholderInfo.logicalSize = logicalSize; // 逻辑大小（字节）
 
     // ...
-    // 创建占位符文件（customInfo传NULL，表示不写入占位符自定义信息）
-    auto ret = OH_CloudDisk_CreatePlaceholder(syncFolderPath, relativePathInfo, placeholderInfo, NULL);
+    // 创建占位符文件（customInfo为NULL表示不写入自定义信息，非NULL时写入自定义信息）
+    auto ret = OH_CloudDisk_CreatePlaceholder(syncFolderPath, relativePathInfo, placeholderInfo, customInfoPtr);
     if (ret != CLOUD_DISK_OK) {
         LOGE("OH_CloudDisk_CreatePlaceholder failed, errorCode: %{public}d.", ret);
     } else {
@@ -680,6 +688,7 @@ static napi_value CreatePlaceholderFile(napi_env env, napi_callback_info info)
 
     delete[] syncPath;
     delete[] relativePath;
+    delete[] customInfo;
 
     napi_value result;
     napi_create_int32(env, ret, &result);
@@ -696,8 +705,8 @@ static napi_value CreatePlaceholderFile(napi_env env, napi_callback_info info)
 ``` C++
 static napi_value UpdatePlaceholder(napi_env env, napi_callback_info info)
 {
-    size_t argc = 5;
-    napi_value args[5] = {nullptr};
+    size_t argc = 6;
+    napi_value args[6] = {nullptr};
     GetArgs(env, info, argc, args);
 
     char* syncPath = GetStringParam(env, args[0]);
@@ -716,6 +725,14 @@ static napi_value UpdatePlaceholder(napi_env env, napi_callback_info info)
     uint64_t mtimeMs = static_cast<uint64_t>(GetNumberParam(env, args[3]));
     uint64_t logicalSize = static_cast<uint64_t>(GetNumberParam(env, args[4]));
 
+    // 解析可选入参：自定义信息（不传或空串时置NULL，SDK语义为保留原有自定义信息）
+    char* customInfo = nullptr;
+    OH_CloudDisk_PlaceholderCustomInfo customInfoValue = {};
+    OH_CloudDisk_PlaceholderCustomInfo* customInfoPtr = NULL;
+    if (MakeCustomInfoArg(env, args[ARG_INDEX_CUSTOM_INFO], &customInfoValue, &customInfo)) {
+        customInfoPtr = &customInfoValue;  // data指向customInfo内存，生命周期覆盖本次调用
+    }
+
     CloudDisk_SyncFolderPath syncFolderPath = MakePathInfo(syncPath);
     CloudDisk_PathInfo relativePathInfo = MakePathInfo(relativePath);
 
@@ -726,8 +743,8 @@ static napi_value UpdatePlaceholder(napi_env env, napi_callback_info info)
     placeholderInfo.logicalSize = logicalSize; // 逻辑大小（字节）
 
     // ...
-    // 更新占位符元数据
-    auto ret = OH_CloudDisk_UpdatePlaceholder(syncFolderPath, relativePathInfo, placeholderInfo, NULL);
+    // 更新占位符元数据（customInfo为NULL时保留原有自定义信息，非NULL时更新）
+    auto ret = OH_CloudDisk_UpdatePlaceholder(syncFolderPath, relativePathInfo, placeholderInfo, customInfoPtr);
     if (ret != CLOUD_DISK_OK) {
         LOGE("OH_CloudDisk_UpdatePlaceholder failed, errorCode: %{public}d.", ret);
     } else {
@@ -736,6 +753,7 @@ static napi_value UpdatePlaceholder(napi_env env, napi_callback_info info)
 
     delete[] syncPath;
     delete[] relativePath;
+    delete[] customInfo;
 
     napi_value result;
     napi_create_int32(env, ret, &result);
