@@ -462,7 +462,7 @@ NODE_LIST_SCROLL_TO_INDEX
 
 **描述：**
 
-滑动到指定index。开启平滑滚动动效时，会对经过的所有item进行加载和布局计算，当大量加载item时会导致性能问题。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 要滑动到的目标元素在当前容器中的索引值。传入-1时，指滑动到当前容器的最后一个元素。</li> <li>.value[1]?.i32 设置滑动到列表项在列表中的索引值时是否有动效，1表示有动效，0表示没有动效。默认值：0。</li> <li>.value[2]?.i32 指定滑动到的元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment)，默认值：[ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment)。 </li> <li>.value[3]?.f32 额外偏移量，默认值：0，单位：vp。正数表示向末尾端额外偏移，负数表示向起始端额外偏移。该参数从API version 15开始支持。</li> </ul>
+滑动到指定index。开启平滑滚动动效时，会对经过的所有item进行加载和布局计算，当大量加载item时会导致性能问题。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 要滑动到的目标元素在当前容器中的索引值。传入-1时，指滑动到当前容器的最后一个元素。</li> <li>.value[1]?.i32 设置滑动到列表项在列表中的索引值时是否有动效，1表示有动效，0表示没有动效。默认值：0。</li> <li>.value[2]?.i32 指定滑动到的元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment)，默认值：[ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment)。 </li> <li>.value[3]?.f32 额外偏移量，默认值：0，单位：vp。正数表示向末尾端额外偏移，负数表示向起始端额外偏移。该参数从API version 15开始支持。</li> <li>.value[4]?.i32 快速滚动模式，用于滚动到指定索引。参数类型为[OH_ArkUI_FastScrollMode](capi-scroll-h.md#oh_arkui_fastscrollmode)，默认为<b>OH_ARKUI_FAST_SCROLL_MODE_NONE</b>。 仅当.value[1]?.i32为1时有效，从API版本26.2.0开始支持。</li> </ul>
 
 **起始版本：** 12
 
@@ -690,7 +690,7 @@ NODE_LIST_ITEM_GROUP_SET_HEADER = MAX_NODE_SCOPE_NUM * ARKUI_NODE_LIST_ITEM_GROU
 
 **描述：**
 
-设置 ListItemGroup 头部组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)对象作为ListItemGroup头部组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)对象作为ListItemGroup头部组件。</li> </ul>
+设置 ListItemGroup 头部组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为ListItemGroup头部组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为ListItemGroup头部组件。</li> </ul>
 
 **起始版本：** 12
 
@@ -702,7 +702,7 @@ NODE_LIST_ITEM_GROUP_SET_FOOTER
 
 **描述：**
 
-设置 ListItemGroup 尾部组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)对象作为ListItemGroup尾部组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)对象作为ListItemGroup尾部组件。</li> </ul>
+设置 ListItemGroup 尾部组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为ListItemGroup尾部组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为ListItemGroup尾部组件。</li> </ul>
 
 **起始版本：** 12
 
@@ -762,7 +762,7 @@ NODE_REFRESH_CONTENT
 
 **描述：**
 
-设置下拉区域的自定义内容，支持属性设置和重置。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 参数类型[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)。</li> </ul>
+设置下拉区域的自定义内容，支持属性设置和重置。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)。</li> </ul>
 
 **起始版本：** 12
 
@@ -930,7 +930,7 @@ NODE_WATER_FLOW_FOOTER
 
 **描述：**
 
-设置瀑布流组件末尾的自定义显示组件。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 参数类型[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)。</li> </ul>
+设置瀑布流组件末尾的自定义显示组件。 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 参数类型[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)。</li> </ul>
 
 **起始版本：** 12
 
@@ -1338,7 +1338,7 @@ NODE_ARC_LIST_SET_HEADER = 1019006
 
 **描述：**
 
-设置ArcList头部组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)对象作为ArcList头部组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)对象作为ArcList头部组件。</li> </ul>
+设置ArcList头部组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为ArcList头部组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为ArcList头部组件。</li> </ul>
 
 **起始版本：** 26.0.0
 
@@ -1458,7 +1458,7 @@ NODE_ARC_SCROLL_BAR_BIND_SCROLLABLE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_SCROLL
 
 **描述：**
 
-设置ArcScrollBar绑定的可滚动组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)对象作为滚动条绑定的可滚动组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-accessibility-arkui-nodehandle.md)对象作为滚动条绑定的可滚动组件。</li> </ul>
+设置ArcScrollBar绑定的可滚动组件，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为滚动条绑定的可滚动组件。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.object 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)对象作为滚动条绑定的可滚动组件。</li> </ul>
 
 **起始版本：** 26.0.0
 

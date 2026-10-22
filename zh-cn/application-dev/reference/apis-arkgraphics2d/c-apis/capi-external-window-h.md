@@ -33,9 +33,9 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [NativeWindowOperation](#nativewindowoperation) | NativeWindowOperation | OH_NativeWindow_NativeWindowHandleOpt函数中的操作码。 |
-| [OHScalingMode](#ohscalingmode) | OHScalingMode | Indicates Scaling Mode.(API10废弃) |
-| [OHScalingModeV2](#ohscalingmodev2) | OHScalingModeV2 | Indicates Scaling Mode. |
-| [OHHDRMetadataKey](#ohhdrmetadatakey) | OHHDRMetadataKey | Enumerates the HDR metadata keys.(API10废弃) |
+| [OHScalingMode](#ohscalingmode) | OHScalingMode | 表示缩放模式。(API10废弃) |
+| [OHScalingModeV2](#ohscalingmodev2) | OHScalingModeV2 | 表示缩放模式。 |
+| [OHHDRMetadataKey](#ohhdrmetadatakey) | OHHDRMetadataKey | 枚举HDR元数据键。(API10废弃) |
 | [OHSurfaceSource](#ohsurfacesource) | OHSurfaceSource | 本地窗口内容来源类型枚举。 |
 
 ### 函数
@@ -102,7 +102,7 @@ OH_NativeWindow_NativeWindowHandleOpt函数中的操作码。
 | GET_BUFFER_GEOMETRY | 获取本地窗口缓冲区几何图形，函数中的可变参数是 [输出] int32_t *height, [输出] int32_t *width |
 | GET_FORMAT | 获取本地窗口缓冲区格式，函数中的可变参数是 [输出] int32_t *format，取值具体可见OH_NativeBuffer_Format枚举值。 |
 | SET_FORMAT | 设置本地窗口缓冲区格式，函数中的可变参数是 [输入] int32_t format，取值具体可见OH_NativeBuffer_Format枚举值。 |
-| GET_USAGE | get native window buffer usage, variable parameter in function is [out] uint64_t *usage, the enumeration value refers to [OH_NativeBuffer_Usage](capi-native-buffer-h.md#oh_nativebuffer_usage). |
+| GET_USAGE | 获取本地窗口缓冲区使用方式，函数中的可变参数是 [输出] uint64_t *usage，取值具体可见OH_NativeBuffer_Usage枚举值。 |
 | SET_USAGE | 设置本地窗口缓冲区读写方式，函数中的可变参数是 [输入] uint64_t usage，取值具体可见OH_NativeBuffer_Usage枚举值。 |
 | SET_STRIDE |  |
 | GET_STRIDE |  |
@@ -133,7 +133,7 @@ enum OHScalingMode
 
 **描述：**
 
-Indicates Scaling Mode.
+表示缩放模式。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
@@ -145,10 +145,10 @@ Indicates Scaling Mode.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_SCALING_MODE_FREEZE = 0 | the window content is not updated until a buffer of the window size is received |
-| OH_SCALING_MODE_SCALE_TO_WINDOW | the buffer is scaled in two dimensions to match the window size |
-| OH_SCALING_MODE_SCALE_CROP | the buffer is uniformly scaled so that the smaller size of the buffer matches the window size |
-| OH_SCALING_MODE_NO_SCALE_CROP | the window is clipped to the size of the buffer's clipping rectangle pixels outside the clipping rectangle are considered fully transparent. |
+| OH_SCALING_MODE_FREEZE = 0 | 在收到窗口大小的缓冲区之前，窗口内容不会更新 |
+| OH_SCALING_MODE_SCALE_TO_WINDOW | 缓冲区按两个维度进行缩放以匹配窗口大小 |
+| OH_SCALING_MODE_SCALE_CROP | 缓冲区等比缩放，使缓冲区较小的边与窗口大小匹配 |
+| OH_SCALING_MODE_NO_SCALE_CROP | 窗口被裁剪为缓冲区裁剪矩形的大小， 裁剪矩形之外的像素被视为完全透明。 |
 
 ### OHScalingModeV2
 
@@ -158,7 +158,7 @@ enum OHScalingModeV2
 
 **描述：**
 
-Indicates Scaling Mode.
+表示缩放模式。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
@@ -166,11 +166,11 @@ Indicates Scaling Mode.
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_SCALING_MODE_FREEZE_V2 = 0 | the window content is not updated until a buffer of the window size is received |
-| OH_SCALING_MODE_SCALE_TO_WINDOW_V2 | the buffer is scaled in two dimensions to match the window size |
-| OH_SCALING_MODE_SCALE_CROP_V2 | the buffer is uniformly scaled so that the smaller size of the buffer matches the window size |
-| OH_SCALING_MODE_NO_SCALE_CROP_V2 | the window is clipped to the size of the buffer's clipping rectangle pixels outside the clipping rectangle are considered fully transparent. |
-| OH_SCALING_MODE_SCALE_FIT_V2 | Adapt to the buffer and scale proportionally to the buffer size. Prioritize displaying all buffer content. If the size is not the same as the window size, fill the unfilled area of the window with a background color. |
+| OH_SCALING_MODE_FREEZE_V2 = 0 | 在收到窗口大小的缓冲区之前，窗口内容不会更新 |
+| OH_SCALING_MODE_SCALE_TO_WINDOW_V2 | 缓冲区按两个维度进行缩放以匹配窗口大小 |
+| OH_SCALING_MODE_SCALE_CROP_V2 | 缓冲区等比缩放，使缓冲区较小的边与窗口大小匹配 |
+| OH_SCALING_MODE_NO_SCALE_CROP_V2 | 窗口被裁剪为缓冲区裁剪矩形的大小， 裁剪矩形之外的像素被视为完全透明。 |
+| OH_SCALING_MODE_SCALE_FIT_V2 | 适配缓冲区，并按照缓冲区大小等比缩放。优先显示所有缓冲区内容。 如果缓冲区大小与窗口大小不一致，则使用背景色填充窗口中未填充的区域。 |
 
 ### OHHDRMetadataKey
 
@@ -180,7 +180,7 @@ enum OHHDRMetadataKey
 
 **描述：**
 
-Enumerates the HDR metadata keys.
+枚举HDR元数据键。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 

@@ -498,7 +498,7 @@ Obtains the unified data summary from a drag event.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Since**: 26.2.0
+**Since**: 26.0.1
 
 **Parameters**:
 

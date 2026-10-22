@@ -66,9 +66,9 @@ Enumerates the signal formats of the Audio Vivid encoder.
 | -- | -- |
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_MONO = 0 | Mono. The encoder accepts mono data and internally sets the channel layout to [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_MONO.<br>**Since**: 26.0.0 |
 | OH_AUDIO_VIVID_SIGNAL_FORMAT_STEREO = 1 | Stereo. The encoder accepts stereo data and internally sets the channel layout to [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO.<br>**Since**: 26.0.0 |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_MC = 2 | Multi-channel audio. The encoder supports the following channel layouts: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2 and [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT4.<br>**Since**: 26.0.0 |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_HOA = 3 | Audio Vivid encoding HOA type ID. In this encoding mode, the audio channel type needs to be configured. The supported audio channel types are as follows: [CH_LAYOUT_AMB_ORDER1_ACN_N3D](capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER1_ACN_SN3D](capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER2_ACN_N3D](capi-native-audio-channel-layout-h.md#oh_audiochannellayout), [CH_LAYOUT_AMB_ORDER2_ACN_SN3D](capi-native-audio-channel-layout-h.md#oh_audiochannellayout); OH_AudioCodec_Configure takes effect in the configuration phase. If an unsupported audio channel type is configured, [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode) is returned.<br>**Since**: 26.0.1 |
-| OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX = 4 | Hybrid mode, including a bed and an object. The bed supports the following channel layouts: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2 and [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT4.<br>**Since**: 26.0.0 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_MC = 2 | Multi-channel audio. The encoder supports the following channel layouts: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2.<br>**Since**: 26.0.0 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_HOA = 3 | Audio Vivid encoding HOA type ID. In this encoding mode, the audio channel type needs to be configured. The supported audio channel types are as follows: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_N3D, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER1_ACN_SN3D, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_N3D, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_AMB_ORDER2_ACN_SN3D. OH_AudioCodec_Configure takes effect in the configuration phase. If an unsupported audio channel type is configured, [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode) is returned.<br>**Since**: 26.0.1 |
+| OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX = 4 | Hybrid mode, including a bed and an object. The bed supports the following channel layouts: [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_STEREO, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT2, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_5POINT1POINT4, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1, [OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout).CH_LAYOUT_7POINT1POINT2.<br>**Since**: 26.0.0 |
 
 
 ## Function description
@@ -285,7 +285,7 @@ Updates the base metadata of the builder.<br> The buffer contains complete Audio
 
 > **Note**:
 >
-> Constraint:* *      The total number of soundbed channels plus base objects plus added objects must not exceed 16.
+> Constraint:* *      The total number of soundbed channels plus base objects plus added objects must not exceed 11.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -303,7 +303,7 @@ Updates the base metadata of the builder.<br> The buffer contains complete Audio
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), builder is nullptr or invalid, buffer is nullptr or len is invalid. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): builder is nullptr or invalid, buffer is nullptr or len is invalid. |
 
 ### OH_AudioVividMetaBuilder_AddObject()
 
@@ -317,7 +317,7 @@ Adds a new audio object to the builder.<br> After adding an object, you can upda
 
 > **Note**:
 >
-> Constraint:* *      The total number of soundbed channels plus base objects plus added objects must not exceed 16.
+> Constraint:* *      The total number of soundbed channels plus base objects plus added objects must not exceed 11.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -334,7 +334,7 @@ Adds a new audio object to the builder.<br> After adding an object, you can upda
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), builder is nullptr or invalid, objectIndex is nullptr. <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode), add object fail with unknown error. For details, check logs. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): builder is nullptr or invalid, objectIndex is nullptr. <br>[AV_ERR_UNKNOWN](capi-native-averrors-h.md#oh_averrcode): add object fail with unknown error. For details, check logs. |
 
 ### OH_AudioVividMetaBuilder_RemoveObject()
 
@@ -361,6 +361,6 @@ Removes an audio object from the builder.<br> Only objects added by [OH_AudioViv
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode), builder is nullptr or invalid, objectIndex is invalid. |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The operation is successful. <br>[AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): builder is nullptr or invalid, objectIndex is invalid. |
 
 

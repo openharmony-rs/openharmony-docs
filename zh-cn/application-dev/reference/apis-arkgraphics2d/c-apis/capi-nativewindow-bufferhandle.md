@@ -6,7 +6,7 @@ typedef struct BufferHandle {...} BufferHandle
 
 ## 概述
 
-Buffer handle used to transfer and obtain information about the buffer.
+用于传输和获取缓冲区信息的BufferHandle。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 

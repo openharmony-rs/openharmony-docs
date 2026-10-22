@@ -31,6 +31,7 @@ Defines the enumerations related to the **Scroll** component, such as the scroll
 | [ArkUI_ScrollAlignment](#arkui_scrollalignment) | ArkUI_ScrollAlignment | Enumerates how the list item to scroll to is aligned with the container. |
 | [ArkUI_ScrollState](#arkui_scrollstate) | ArkUI_ScrollState | Enumerates the scrolling states. |
 | [ArkUI_ScrollSource](#arkui_scrollsource) | ArkUI_ScrollSource | Enumerates scroll sources. |
+| [OH_ArkUI_FastScrollMode](#oh_arkui_fastscrollmode) | OH_ArkUI_FastScrollMode | Enumerates the fast scroll modes for scrolling to a specified index. |
 
 ## Enum type description
 
@@ -301,5 +302,25 @@ Enumerates scroll sources.
 | ARKUI_SCROLL_SOURCE_SCROLL_BAR_FLING | Inertial scrolling after scrollbar dragging. |
 | ARKUI_SCROLL_SOURCE_SCROLLER | Scrolling by the scroll controller (without animation). |
 | ARKUI_SCROLL_SOURCE_ANIMATION | Scrolling by the scroll controller (with animation). |
+
+### OH_ArkUI_FastScrollMode
+
+```c
+enum OH_ArkUI_FastScrollMode
+```
+
+**Description**
+
+Enumerates the fast scroll modes for scrolling to a specified index.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.2.0
+
+| Enum item | Description |
+| -- | -- |
+| OH_ARKUI_FAST_SCROLL_MODE_NONE = 0 |  |
+| OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE = 1 |  |
+| OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE = 2 |  |
 
 

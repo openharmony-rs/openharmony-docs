@@ -109,6 +109,8 @@ Declares the APIs used to access the native Accessibility.
 | [int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)](#oh_arkui_findaccessibilityactionargumentbykey) | Obtains the value of a key from an <b>ArkUI_AccessibilityActionArguments</b> object. |
 | [int32_t OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(ArkUI_NodeHandle* node, ArkUI_AccessibilityProvider** provider)](#oh_arkui_nativemodule_getnativeaccessibilityprovider) | Obtains the pointer to the <b> ArkUI_AccessibilityProvider</b> instance of this <b>ArkUI_NodeHandle</b> instance. |
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetComponentIdentifier(ArkUI_AccessibilityElementInfo* elementInfo, const char* identifier)](#oh_arkui_accessibilityelementinfosetcomponentidentifier) | Sets the component identifier for an <b>ArkUI_AccessibilityElementInfo</b> object. |
+| [int32_t OH_ArkUI_Accessibility_BindExportTree(ArkUI_NodeHandle owner, int64_t bindId, ArkUI_NodeHandle exportedRoot)](#oh_arkui_accessibility_bindexporttree) | Binds an external ArkUI sub-tree to the third-party framework's accessibility tree at the specified placeholder node.<br> When a third-party framework (for example, CMP) renders pages using RenderNode and has mixed ArkUI native components on the RenderNode tree, those ArkUI native components form an external sub-tree that is not accessible to the accessibility service. This function binds the external ArkUI sub-tree to a placeholder node in the third-party framework's accessibility tree, so that accessibility focus traversal can enter the mixed ArkUI sub-tree, traverse through its internal components, and then return to the third-party framework's accessibility tree to continue traversal.<br> This API must be called on the UI main thread. The call is executed synchronously, does not invoke any callbacks back into the caller, and must not be called from a signal handler. If the third-party framework's accessibility tree has not yet been registered with the accessibility service when this API is called, the binding takes effect asynchronously once that registration completes.<br> Bindings are identified by the (owner, bindId) pair. Multiple bindings with different bindId values on the same owner are supported, and each exported sub-tree can have at most one active binding. Calling this API again with the same (owner, bindId) pair neither replaces nor merges the binding: the existing binding is kept unchanged and ARKUI_ERROR_CODE_NO_ERROR is returned; binding an exportedRoot that already has an active binding is rejected with ARKUI_ERROR_CODE_PARAM_INVALID. After [OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree) completes, the bound sub-tree is fully detached from the accessibility tree, all binding resources are released, and binding the same (owner, bindId) pair again performs the complete registration flow. |
+| [int32_t OH_ArkUI_Accessibility_UnbindExportTree(ArkUI_NodeHandle owner, int64_t bindId)](#oh_arkui_accessibility_unbindexporttree) | Unbinds a previously bound external ArkUI sub-tree from the third-party framework's accessibility tree.<br> When the mixed ArkUI sub-tree is destroyed or replaced, this function should be called to remove the binding relationship established by [OH_ArkUI_Accessibility_BindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_bindexporttree). After unbinding, the accessibility service will no longer traverse into the previously bound ArkUI sub-tree.<br> This API must be called on the UI main thread. The call is executed synchronously, does not invoke any callbacks back into the caller, and must not be called from a signal handler. Only the binding identified by the (owner, bindId) pair is removed; other bindings on the same owner are not affected. Unbinding an unknown or already unbound (owner, bindId) pair is idempotent and returns success. When a binding exists, after this API returns ARKUI_ERROR_CODE_NO_ERROR the bound sub-tree is fully detached from the accessibility tree and all binding resources are released; the same (owner, bindId) pair can be bound again by calling [OH_ArkUI_Accessibility_BindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_bindexporttree), which then performs the complete registration flow. |
 
 ## Enum type description
 
@@ -1774,5 +1776,65 @@ Sets the component identifier for an <b>ArkUI_AccessibilityElementInfo</b> objec
 | Type | Description |
 | -- | -- |
 | int32_t | Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if the operation is successful. Returns [ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER](capi-native-interface-accessibility-h.md#arkui_acessbilityerrorcode) if a parameter is incorrect. |
+
+### OH_ArkUI_Accessibility_BindExportTree()
+
+```c
+int32_t OH_ArkUI_Accessibility_BindExportTree(ArkUI_NodeHandle owner, int64_t bindId, ArkUI_NodeHandle exportedRoot)
+```
+
+**Description**
+
+Binds an external ArkUI sub-tree to the third-party framework's accessibility tree at the specified placeholder node.<br> When a third-party framework (for example, CMP) renders pages using RenderNode and has mixed ArkUI native components on the RenderNode tree, those ArkUI native components form an external sub-tree that is not accessible to the accessibility service. This function binds the external ArkUI sub-tree to a placeholder node in the third-party framework's accessibility tree, so that accessibility focus traversal can enter the mixed ArkUI sub-tree, traverse through its internal components, and then return to the third-party framework's accessibility tree to continue traversal.<br> This API must be called on the UI main thread. The call is executed synchronously, does not invoke any callbacks back into the caller, and must not be called from a signal handler. If the third-party framework's accessibility tree has not yet been registered with the accessibility service when this API is called, the binding takes effect asynchronously once that registration completes.<br> Bindings are identified by the (owner, bindId) pair. Multiple bindings with different bindId values on the same owner are supported, and each exported sub-tree can have at most one active binding. Calling this API again with the same (owner, bindId) pair neither replaces nor merges the binding: the existing binding is kept unchanged and ARKUI_ERROR_CODE_NO_ERROR is returned; binding an exportedRoot that already has an active binding is rejected with ARKUI_ERROR_CODE_PARAM_INVALID. After [OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree) completes, the bound sub-tree is fully detached from the accessibility tree, all binding resources are released, and binding the same (owner, bindId) pair again performs the complete registration flow.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.0.1
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) owner | [in] Pointer to the ArkUI host node of the third-party framework. This is the node in the RenderNode tree where the third-party framework is mounted (for example, an XComponent or Custom node). The node must be a valid ArkUI_NodeHandle. The handle is borrowed, not retained: this API does not take ownership of the node or extend its lifetime. If the node is destroyed or replaced while the binding exists, the binding becomes inactive immediately (the accessibility service no longer traverses into the bound sub-tree); its remaining internal resources are released when the host window is destroyed. To keep the binding effective, the node must remain valid until [OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree) is called. |
+| int64_t bindId | [in] Accessibility ID of the placeholder node in the third-party framework's internal accessibility tree. This is the node in the third-party framework's accessibility tree where the mixed ArkUI sub-tree is to be mounted. When the accessibility service traverses to this node, it will enter the bound ArkUI sub-tree. The value is the accessibility ID assigned by the third-party framework to that node; any such ID is accepted and no values are reserved. The ID must identify an existing node of the third-party framework's accessibility tree, but the node does not need to have been reported to the accessibility service when this API is called — the binding takes effect once the third-party tree is registered. The ID must be unique among the active bindings of the same owner. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) exportedRoot | [in] Pointer to the root node of the mixed ArkUI sub-tree to be bound. This node and its descendants will be registered as a sub-tree in the accessibility tree under the placeholder node specified by bindId. The handle is borrowed, not retained: this API does not take ownership of the node or extend its lifetime. If the node is destroyed or replaced while the binding exists, the binding becomes inactive immediately; its remaining internal resources are released when [OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree) is called with the same (owner, bindId) pair or the host window is destroyed. To keep the binding effective, the node and its sub-tree must remain valid until [OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree) is called. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | <ul> <li>Status code.</li> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> <li><br>Parameter error: 1. The input parameter **owner** or **exportedRoot** is a null pointer or an invalid handle.</li> <li><br>2. The **exportedRoot** already has an active binding.</li> <li><br>Both errors are deterministic validation results with no side effects: no binding is created and existing bindings are not modified. After correcting the arguments (for error 2, call [OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree) first or use another sub-tree), the call can be retried safely.</li> </ul> |
+
+**Reference**:
+
+[OH_ArkUI_Accessibility_UnbindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_unbindexporttree)
+
+
+### OH_ArkUI_Accessibility_UnbindExportTree()
+
+```c
+int32_t OH_ArkUI_Accessibility_UnbindExportTree(ArkUI_NodeHandle owner, int64_t bindId)
+```
+
+**Description**
+
+Unbinds a previously bound external ArkUI sub-tree from the third-party framework's accessibility tree.<br> When the mixed ArkUI sub-tree is destroyed or replaced, this function should be called to remove the binding relationship established by [OH_ArkUI_Accessibility_BindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_bindexporttree). After unbinding, the accessibility service will no longer traverse into the previously bound ArkUI sub-tree.<br> This API must be called on the UI main thread. The call is executed synchronously, does not invoke any callbacks back into the caller, and must not be called from a signal handler. Only the binding identified by the (owner, bindId) pair is removed; other bindings on the same owner are not affected. Unbinding an unknown or already unbound (owner, bindId) pair is idempotent and returns success. When a binding exists, after this API returns ARKUI_ERROR_CODE_NO_ERROR the bound sub-tree is fully detached from the accessibility tree and all binding resources are released; the same (owner, bindId) pair can be bound again by calling [OH_ArkUI_Accessibility_BindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_bindexporttree), which then performs the complete registration flow.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.0.1
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) owner | [in] Pointer to the ArkUI host node of the third-party framework. This must be the same node that was passed to [OH_ArkUI_Accessibility_BindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_bindexporttree) when the binding was created. The node must be a valid ArkUI_NodeHandle. The handle is used only to identify the binding within this call and is not retained after the call returns; it does not need to remain valid afterwards. If the node has already been destroyed, its bindings have become inactive automatically and no explicit unbinding is required; their remaining internal resources are released when the host window is destroyed. |
+| int64_t bindId | [in] Accessibility ID of the placeholder node in the third-party framework's internal accessibility tree. This must be the same bindId that was passed to [OH_ArkUI_Accessibility_BindExportTree](capi-native-interface-accessibility-h.md#oh_arkui_accessibility_bindexporttree) when the binding was created. No values are reserved; unbinding an (owner, bindId) pair that has no active binding is idempotent and returns ARKUI_ERROR_CODE_NO_ERROR. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | <ul> <li>Status code.</li> <li>ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.</li> <li>ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs.</li> <li><br>Parameter error: 1. The input parameter **owner** is a null pointer or an invalid handle.</li> <li><br>This error is a deterministic validation result with no side effects: no binding is removed and existing bindings are not modified. After correcting the arguments, the call can be retried safely.</li> </ul> |
 
 

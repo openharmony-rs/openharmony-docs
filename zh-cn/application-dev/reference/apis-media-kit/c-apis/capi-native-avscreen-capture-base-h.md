@@ -22,7 +22,7 @@
 | -- | -- | -- |
 | [OH_AudioCaptureInfo](capi-avscreencapture-oh-audiocaptureinfo.md) | - | 音频采样信息。<br> 用于配置屏幕录制中的音频采集参数，包括采样率、声道数和音频源类型。 开发者可通过设置audioSampleRate和audioChannels参数来控制录制音频的质量和声道布局， 适用于屏幕录制时需要采集系统音频或麦克风音频的场景。<br> 当audioSampleRate和audioChannels同时为0时，忽略该类型音频相关参数，不录制该类型音频数据。 |
 | [OH_AudioEncInfo](capi-avscreencapture-oh-audioencinfo.md) | - | 音频编码信息。<br> 用于配置屏幕录制场景下的音频编码参数，包括音频编码比特率和音频编码格式。 通过设置这些参数，开发者可以控制音频的质量和文件大小，适用于需要在屏幕录制场景中指定音频编码质量和编码方式的场景。 支持的编码格式详见[OH_AudioCodecFormat](capi-native-avscreen-capture-base-h.md#oh_audiocodecformat)枚举定义。 |
-| [OH_AudioInfo](capi-avscreencapture-oh-audioinfo.md) | - | 音频信息。<br> OH_AudioInfo作为OH_ScreenCaptureConfig的音频配置成员，包含麦克风采集信息、内录采集信息和音频编码信息三个部分，开发者需根据 采集场景选择配置麦克风采集信息或内录采集信息，并在需要编码输出时配置音频编码信息。适用于需要在屏幕录制中采集音频数据的场景。<br> 同时采集音频麦克风和音频内录数据时，两路音频的audioSampleRate和audioChannels采集参数需要相同，因为两路音频数据将合并为 同一音频流输出，采集参数不一致会导致音频同步异常或采集失败。 |
+| [OH_AudioInfo](capi-avscreencapture-oh-audioinfo.md) | - | 音频信息。<br> OH_AudioInfo作为OH_AVScreenCaptureConfig的音频配置成员，包含麦克风采集信息、内录采集信息和音频编码信息三个部分，开发者需根据 采集场景选择配置麦克风采集信息或内录采集信息，并在需要编码输出时配置音频编码信息。适用于需要在屏幕录制中采集音频数据的场景。<br> 同时采集音频麦克风和音频内录数据时，两路音频的audioSampleRate和audioChannels采集参数需要相同，因为两路音频数据将合并为 同一音频流输出，采集参数不一致会导致音频同步异常或采集失败。 |
 | [OH_VideoCaptureInfo](capi-avscreencapture-oh-videocaptureinfo.md) | - | 视频采集配置信息。用于配置屏幕录制时的视频参数。该结构体需要配合captureMode使用：在OH_CAPTURE_SPECIFIED_SCREEN模式 下需设置displayId指定物理屏；在OH_CAPTURE_SPECIFIED_WINDOW模式下需设置missionIDs指定窗口。适用于屏幕录制应用、视频会议录制、 直播推流、游戏录制等场景。当videoFrameWidth和videoFrameHeight同时为0时，系统将忽略视频采集相关配置参数，不录制屏幕视频数据。 通过该结构体可以灵活控制录屏的视频采集行为。 |
 | [OH_VideoEncInfo](capi-avscreencapture-oh-videoencinfo.md) | - | 视频编码参数。<br> 用于配置屏幕录制的视频编码参数，支持设置编码格式、比特率和帧率。videoCodec指定编码格式（如H.264、H.265等）， videoBitrate影响视频清晰度和文件大小，videoFrameRate影响视频流畅度。通常在调用屏幕录制接口前设置这些参数。 |
 | [OH_VideoInfo](capi-avscreencapture-oh-videoinfo.md) | - | 视频信息。<br> 用于配置屏幕录制时的视频采集参数和编码参数。该结构体包含视频采集参数（如分辨率、采集格式等）和视频编码参数， 适用于需要自定义屏幕录制视频输出参数的场景。开发者根据实际需求配置相关参数后，在调用屏幕录制相关接口时使用。 |
@@ -44,7 +44,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_CaptureMode](#oh_capturemode) | OH_CaptureMode | 枚举，表示屏幕录制的不同模式。<br> 根据录制需求选择合适的模式：录制主屏幕适用于全屏录制场景；录制指定屏幕适用于多屏环境下选择特定屏幕的场景； 录制指定窗口适用于仅录制单个应用窗口的场景。 |
+| [OH_CaptureMode](#oh_capturemode) | OH_CaptureMode | 枚举，表示屏幕录制的不同模式。 |
 | [OH_AudioCaptureSourceType](#oh_audiocapturesourcetype) | OH_AudioCaptureSourceType | 枚举，表示屏幕录制时的音频源类型。<br> 适用于不同的音频录制需求：OH_MIC适用于需要录制外部声音（如解说、旁白）的场景；OH_ALL_PLAYBACK适用于需要录制系统播放的所有 内部音频流（如系统音效、应用音频）的场景；OH_APP_PLAYBACK适用于需要仅录制指定应用播放音频的场景。 |
 | [OH_AudioCodecFormat](#oh_audiocodecformat) | OH_AudioCodecFormat | 枚举，表示音频编码格式。<br> OH_AUDIO_DEFAULT为默认编码，适用于大多数音视频录制场景；OH_AAC_LC为AAC_LC编码， 适用于需要较好音质和较小文件大小的通用音视频应用场景。 |
 | [OH_VideoCodecFormat](#oh_videocodecformat) | OH_VideoCodecFormat | 枚举，表示视频编码格式。 |
@@ -100,7 +100,7 @@ enum OH_CaptureMode
 
 **描述：**
 
-枚举，表示屏幕录制的不同模式。<br> 根据录制需求选择合适的模式：录制主屏幕适用于全屏录制场景；录制指定屏幕适用于多屏环境下选择特定屏幕的场景； 录制指定窗口适用于仅录制单个应用窗口的场景。
+枚举，表示屏幕录制的不同模式。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -108,10 +108,10 @@ enum OH_CaptureMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAPTURE_HOME_SCREEN = 0 | 录制主屏幕。 |
-| OH_CAPTURE_SPECIFIED_SCREEN = 1 | 录制指定屏幕。使用此模式需在OH_AVScreenCaptureConfig中指定displayId。 |
-| OH_CAPTURE_SPECIFIED_WINDOW = 2 | 录制指定窗口。使用此模式需在OH_AVScreenCaptureConfig中指定windowId。 |
-| OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN = 3 | 创建一个虚拟扩展屏幕并对其内容进行录制。<br>**起始版本：** 26.0.1 |
+| OH_CAPTURE_HOME_SCREEN = 0 | 录制主屏幕。适用于全屏录制场景。 |
+| OH_CAPTURE_SPECIFIED_SCREEN = 1 | 录制指定屏幕。适用于多屏环境下选择特定屏幕的场景。使用此模式需在OH_AVScreenCaptureConfig中指定displayId。 |
+| OH_CAPTURE_SPECIFIED_WINDOW = 2 | 录制指定窗口。适用于仅录制单个应用窗口的场景。使用此模式需在OH_AVScreenCaptureConfig中指定windowId。 |
+| OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN = 3 | 录制虚拟扩展屏幕。创建一个虚拟扩展屏幕并对其内容进行录制。<br>**起始版本：** 26.0.1 |
 | OH_CAPTURE_INVAILD = -1 | 无效模式。 |
 
 ### OH_AudioCaptureSourceType
