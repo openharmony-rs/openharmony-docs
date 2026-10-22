@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用JSVM-API创建和操作JavaScript数组、TypedArray及DataView，实现数组元素读写、长度获取与类型判断等Native和JS交互能力。"
+keywords: [OH_JSVM_CreateArray, OH_JSVM_SetElement, OH_JSVM_GetElement, OH_JSVM_GetArrayLength, OH_JSVM_CreateTypedarray, OH_JSVM_CreateDataview, OH_JSVM_IsArray, TypedArray, DataView]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行array相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

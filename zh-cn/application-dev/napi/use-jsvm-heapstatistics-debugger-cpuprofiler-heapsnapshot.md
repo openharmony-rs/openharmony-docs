@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "示例讲解JSVM调试调优接口调用，包括OH_JSVM_GetVM获取虚拟机实例、OH_JSVM_GetHeapStatistics输出各项堆统计字段，以及CPU Profiler、堆快照等接口的用途说明。"
+keywords: [OH_JSVM_GetVM, OH_JSVM_GetHeapStatistics, 堆统计, CPU Profiler, 堆快照, JSVM_HeapStatistics, 调试调优, 虚拟机实例]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行JavaScript代码调试调优
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
