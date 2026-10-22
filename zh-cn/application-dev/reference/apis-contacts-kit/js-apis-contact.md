@@ -4909,6 +4909,7 @@ promise.then((data) => {
 | nickName          | [NickName](#nickname)                   | 否   | 是   | 联系人的昵称。                         |
 | note              | [Note](#note)                           | 否   | 是   | 联系人的备注。                         |
 | organization      | [Organization](#organization)           | 否   | 是   | 联系人的组织信息。                     |
+| significantDates      | [SignificantDate](#significantdate)[]           | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。<br> **起始版本：** 26.2.0                    |
 
 **示例：**
 
@@ -5057,11 +5058,17 @@ let holder: contact.Holder = {
 };
 ```
 
-## Event
+## Event<sup>(deprecated)</sup>
 
 联系人事件类。
 
-**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+**起始版本**：7
+
+**废弃版本**：26.2.0
+
+**替代接口**：[SignificantDate](#significantdate)
+
+**原子化服务API**：从API version 7 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.ContactsData
 
@@ -5529,6 +5536,7 @@ let website: contact.Website = {
 };
 ```
 
+
 ## ContactSyncMode
 
 枚举，同步模式的类型。
@@ -5583,3 +5591,61 @@ let website: contact.Website = {
 | completedBatches        | Array&lt;number&gt; |  否  |  否    | 表示已成功同步的联系人批次标识符数组。取值范围为1到totalBatches。      |
 | totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
 | lastSyncTime        | number |  否  |  否    | 表示联系人同步的最新时间戳，单位为毫秒(ms)。|
+
+## SignificantDateType
+
+联系人重要日期类型枚举。
+
+**起始版本**：26.2.0
+
+**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+| 名称                  | 值 | 说明                               |
+| --------------------- | ---- | ---------------------------------- |
+| DATE_TYPE_OTHER    | 0 | 其他日期类型。 |
+| DATE_TYPE_BIRTHDAY            | 1 | 生日日期类型。                 |
+| DATE_TYPE_LUNAR_BIRTHDAY            | 2 | 农历生日日期类型。                 |
+| DATE_TYPE_ANNIVERSARY            | 3 | 周年纪念日期类型。                 |
+
+
+## SignificantDate
+
+联系人重要日期类。
+
+**起始版本**：26.2.0
+
+**原子化服务API**：从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+|    名称   |   类型   | 只读 | 可选 | 说明           |
+| --------- | -------- | ---- | ---- | -------------- |
+| dateType      | [SignificantDateType](#significantdatetype)   | 否   | 否   | 重要日期类型。   |
+| dateValue | string   | 否   | 否   | 重要日期取值。 |
+| dateName       | string   | 否   | 是   | 重要日期类型名称。     |
+
+**示例：**
+
+  使用JSON格式创建数据。
+
+```js
+let significantDate: contact.SignificantDate = {
+    dateValue: '2000-01-01',
+    dateType: contact.SignificantDateType.DATE_TYPE_BIRTHDAY
+};
+```
+
+  或使用new一个SignificantDate对象的方式创建数据。
+
+```js
+let significantDate = new contact.SignificantDate();
+significantDate.dateValue = '2000-01-01';
+significantDate.dateType = contact.SignificantDateType.DATE_TYPE_BIRTHDAY;
+```
+
