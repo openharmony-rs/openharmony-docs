@@ -64,7 +64,7 @@ Refresh(value: RefreshOptions)
 >  - 当设置了builder或refreshingContent时，是通过更新子组件相对于Refresh组件的位置实现的下拉位移效果。下拉位移过程中可以触发子组件的[onAreaChange](ts-universal-component-area-change-event.md#onareachange)事件。子组件设置[position](ts-universal-attributes-location.md#position)属性时会固定子组件相对于Refresh组件的位置，导致子组件不会跟手进行下拉位移。
 >  - 通过builder参数设置的自定义组件在未指定宽度和高度时，其尺寸将自适应子组件，在指定宽度而未指定高度时，其高度将自适应下拉距离。通过refreshingContent参数设置的自定义组件若未指定高度，其高度同样会自适应下拉距离。当自定义组件高度自适应下拉距离时，随着下拉距离的增加，该组件的高度亦随之增加；当自定义组件的高度设定为固定值或自适应至最大高度时，随着下拉距离的增加，自定义组件与Refresh组件上边界之间的间距亦会随之增加。
 >  - 通过builder或refreshingContent设置自定义刷新内容后，用户快速滑动List等子组件并松手，列表可能继续滑动并超过顶部边界，带动Refresh下拉。如果刷新已经结束，之前的完成提示可能因此再次显示。此时，Refresh可能仍处于Done状态。状态未发生变化时，不会触发[onStateChange](#onstatechange)回调。
->  - 不需要继续显示完成提示时，可将自定义刷新区域组件的[visibility](ts-universal-attributes-visibility.md#visibility)设置为[Visibility.Hidden](ts-appendix-enums.md#visibility)，隐藏内容并保留原有布局空间。再次下拉刷新时，将其恢复为Visibility.Visible。具体可参照[示例11](#示例11控制自定义刷新区域内容的显隐-builder)和[示例12](#示例12控制自定义刷新区域内容的显隐-refreshingcontent)。
+>  - 不需要继续显示完成提示时，可将自定义刷新区域组件的[visibility](ts-universal-attributes-visibility.md#visibility)设置为[Visibility.Hidden](ts-appendix-enums.md#visibility)，隐藏内容并保留原有布局空间。再次下拉刷新时，将其恢复为Visibility.Visible。具体可参照[示例11](#示例11通过builder控制自定义刷新区域内容的显隐)和[示例12](#示例12通过refreshingcontent控制自定义刷新区域内容的显隐)。
 
 ## 属性
 
@@ -1058,15 +1058,15 @@ struct RefreshExample {
 
 ![refresh_pullUpToCancelRefresh](figures/refresh_pullUpToCancelRefresh.gif)
 
-### 示例11（控制自定义刷新区域内容的显隐-builder）
+### 示例11（通过builder控制自定义刷新区域内容的显隐）
 
 本示例通过[builder](#refreshoptions对象说明)自定义刷新区域，在[onStateChange](#onstatechange)回调中更新提示文字，在[onRefreshing](#onrefreshing)回调中模拟获取数据并追加到List。
 
 刷新结束时显示“已经刷新完成”，并启动一个2秒的定时器。定时器触发后，将自定义刷新内容的visibility设置为Visibility.Hidden，隐藏完成提示。用户再次下拉刷新时，会取消上次的隐藏定时器并恢复显示。
 
-本示例适用于API version 12及以上版本。示例中的2秒可以根据实际需求调整。
+示例中的2秒可以根据实际需求调整。在这2秒内，完成提示还没有隐藏。如果列表在用户松手后继续滑动并超过顶部边界，仍可能带动Refresh下拉，使完成提示再次出现。
 
-在这2秒内，完成提示还没有隐藏。如果列表在用户松手后继续滑动并超过顶部边界，仍可能带动Refresh下拉，使完成提示再次出现。
+从API version 12开始，新增[refreshOffset](#refreshoffset12)接口，用于设置触发刷新的下拉距离。
 
 ```ts
 // xxx.ets
@@ -1191,15 +1191,15 @@ struct RefreshBuilderDemo {
 
 ![refresh_custom_builder_visibility](figures/refresh-custom-builder-visibility.gif)
 
-### 示例12（控制自定义刷新区域内容的显隐-refreshingContent）
+### 示例12（通过refreshingContent控制自定义刷新区域内容的显隐）
 
 本示例通过[refreshingContent](#refreshoptions对象说明)参数设置[ComponentContent](../js-apis-arkui-ComponentContent.md)，构建自定义刷新区域。在[onStateChange](#onstatechange)回调中更新提示文字，在[onRefreshing](#onrefreshing)回调中模拟获取数据并追加到List。
 
 刷新结束时显示“已经刷新完成”，并启动一个2秒的定时器。定时器触发后，将自定义刷新内容的visibility设置为Visibility.Hidden，隐藏完成提示。用户再次下拉刷新时，会取消上次的隐藏定时器并恢复显示。状态或可见度变化后，都需要调用ComponentContent的[update](../js-apis-arkui-ComponentContent.md#update)方法更新显示内容。
 
-本示例适用于API version 12及以上版本。示例中的2秒可以根据实际需求调整。
+示例中的2秒可以根据实际需求调整。在这2秒内，完成提示还没有隐藏。如果列表在用户松手后继续滑动并超过顶部边界，仍可能带动Refresh下拉，使完成提示再次出现。
 
-在这2秒内，完成提示还没有隐藏。如果列表在用户松手后继续滑动并超过顶部边界，仍可能带动Refresh下拉，使完成提示再次出现。
+从API version 12开始，新增[refreshingContent](#refreshoptions对象说明)参数，支持通过ComponentContent自定义刷新区域内容。
 
 ```ts
 // xxx.ets
