@@ -891,7 +891,7 @@ Camera_ErrorCode OH_CaptureSession_SetFlashMode(Camera_CaptureSession* session, 
 
 **描述**
 
-设置闪光灯模式。在设置闪光灯模式前需使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)接口检查设备是否有闪光灯，[OH_CaptureSession_IsFlashModeSupported](#oh_capturesession_isflashmodesupported)接口检查设置的闪光灯模式是否支持。
+设置闪光灯模式。在设置闪光灯模式前需先使用[OH_CaptureSession_HasFlash](#oh_capturesession_hasflash)接口检查设备是否有闪光灯，再使用[OH_CaptureSession_IsFlashModeSupported](#oh_capturesession_isflashmodesupported)接口检查设置的闪光灯模式是否支持。
 
 **起始版本：** 11
 

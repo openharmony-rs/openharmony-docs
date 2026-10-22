@@ -368,7 +368,7 @@ Camera_ErrorCode OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMod
 
 **描述**
 
-查询指定相机在指定模式下支持的输出能力。推荐使用[OH_CameraManager_GetCameraDevice](capi-camera-manager-h.md#oh_cameramanager_getcameradevice)获取Camera_Device，[OH_CameraManager_GetSupportedSceneModes](capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)获取当前相机设备支持的SceneMode。
+查询指定相机在指定模式下支持的输出能力。推荐使用[OH_CameraManager_GetCameraDevice](capi-camera-manager-h.md#oh_cameramanager_getcameradevice)获取Camera_Device、[OH_CameraManager_GetSupportedSceneModes](capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)获取当前相机设备支持的SceneMode。
 
 **起始版本：** 12
 
@@ -395,7 +395,7 @@ Camera_ErrorCode OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithScen
 
 **描述**
 
-查询指定相机在指定模式下支持的完整输出能力，包括未压缩图（YUV）、HEIF和HDR等能力。使用YUV，HEIF或HDR等能力前，需要先显式调用此方法确保获取完整输出能力。推荐使用[OH_CameraManager_GetCameraDevice](capi-camera-manager-h.md#oh_cameramanager_getcameradevice)获取Camera_Device，[OH_CameraManager_GetSupportedSceneModes](capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)获取当前相机设备支持的SceneMode。
+查询指定相机在指定模式下支持的完整输出能力，包括未压缩图（YUV）、HEIF和HDR等能力。使用YUV，HEIF或HDR等能力前，需要先显式调用此方法确保获取完整输出能力。推荐使用[OH_CameraManager_GetCameraDevice](capi-camera-manager-h.md#oh_cameramanager_getcameradevice)获取Camera_Device、[OH_CameraManager_GetSupportedSceneModes](capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)获取当前相机设备支持的SceneMode。
 
 **起始版本：** 23
 
