@@ -3690,11 +3690,11 @@ requestExemptionResource(resourceType: StandbyResourceType, bundleName: string, 
 
 为指定应用申请待机资源豁免。申请成功后，指定应用可以在设备进入待机模式时继续使用被豁免的资源（如网络访问）。豁免不做持久化，设备重启后豁免失效。适用于企业场景中管理应用需要持续资源访问以维持服务连续性的需求。
 
-豁免为限时生效。当指定的duration到期后，系统自动释放豁免。duration未到期时再次申请豁免，以多个豁免时间中豁免结束时间最晚的时间生效。如需提前释放豁免，可调用[applicationManager.releaseExemptionResource](#applicationmanagerreleaseexemptionresource)。
+豁免为限时生效。当指定的duration到期后，系统自动释放豁免。duration未到期时再次申请豁免，生效时间以多个豁免中结束时间最晚者为准。如需提前释放豁免，可调用[applicationManager.releaseExemptionResource](#applicationmanagerreleaseexemptionresource)。
 
 > **说明：**
 >
-> 本接口需在设备待机状态下调用，而待机状态下系统进入低功耗休眠，普通定时器（如`setTimeout`、`setInterval`等）会被冻结，无法触发调用。因此，从首次申请到后续续期，均需通过[systemManager.createExactTimer](./js-apis-enterprise-systemManager.md#systemmanagercreateexacttimer)精确定时器来调用本接口。精确定时器可在设备待机休眠下唤醒执行，在其回调中调用本接口，实现待机资源豁免的首次申请和持续续期。
+> 本接口需在设备待机状态下调用，而待机状态下系统进入低功耗休眠，普通定时器（如`setTimeout`、`setInterval`等）会被冻结，无法触发调用。因此，从首次申请到后续续期，均需通过[systemManager.createExactTimer](./js-apis-enterprise-systemManager.md#systemmanagercreateexacttimer)方法创建精确定时器来调用本接口。精确定时器可在设备待机休眠下唤醒执行，在其回调中调用本接口，实现待机资源豁免的首次申请和持续续期。
 
 **起始版本：** 26.0.1
 
@@ -3732,8 +3732,7 @@ requestExemptionResource(resourceType: StandbyResourceType, bundleName: string, 
 
 ```ts
 import { applicationManager, systemManager } from '@kit.MDMKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { systemDateTime } from '@kit.BasicServicesKit';
+import { BusinessError, systemDateTime } from '@kit.BasicServicesKit';
 
 // 需根据实际情况进行替换
 let bundleName: string = 'com.example.test';
@@ -3772,7 +3771,7 @@ systemManager.createExactTimer(config).then((id: number) => {
 
 releaseExemptionResource(resourceType: StandbyResourceType, bundleName: string): void
 
-释放指定应用的待机资源豁免。释放成功后，指定应用将恢复正常的待机资源限制。本接口用于提前释放豁免。若豁免已自动到期（duration已过），调用本接口不会返回错误但无实际效果。
+释放指定应用的待机资源豁免。释放成功后，指定应用将恢复正常的待机资源限制。本接口用于提前释放豁免。若豁免已自动到期（duration已过），调用本接口不会返回错误，但无实际效果。
 
 resourceType和bundleName必须与之前申请豁免时一致。
 
@@ -3841,7 +3840,7 @@ systemManager.stopExactTimer(timerId).then(() => {
 
 ## StandbyResourceType
 
-设备待机资源豁免类型枚举。当设备在未充电且灭屏状态下持续超过21分钟时，系统会限制后台应用的网络访问等资源，同时普通定时器（如`setTimeout`、`setInterval`等）会被冻结，无法触发。通过申请待机资源豁免，指定应用可以在设备待机期间继续使用这些资源。
+设备待机资源豁免类型枚举。当设备在未充电且灭屏状态下持续超过一定时长后，系统会限制网络访问等资源，同时普通定时器（如`setTimeout`、`setInterval`等）会被冻结，无法触发调用。通过申请待机资源豁免，指定应用可以在设备待机期间继续使用这些资源。
 
 **起始版本：** 26.0.1
 
@@ -3851,4 +3850,4 @@ systemManager.stopExactTimer(timerId).then(() => {
 
 | 名称     | 值 | 说明           |
 | -------- | -- | -------------- |
-| NETWORK  | 1  | 网络访问资源。申请后，指定应用在设备待机期间可以继续访问网络。适用于企业通信工具、推送通知服务、实时数据同步等需要持续网络连接的企业应用场景。 |
+| NETWORK  | 1  | 网络访问资源。申请后，指定应用在设备待机期间可以继续访问网络。适用于企业通信工具、推送通知服务、实时数据同步等需要持续网络连接的应用场景。 |
