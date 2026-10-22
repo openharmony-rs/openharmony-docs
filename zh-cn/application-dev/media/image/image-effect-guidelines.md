@@ -384,7 +384,7 @@ target_link_libraries(entry PUBLIC
    ``` C++
    // 创建 OH_EffectFilterInfo 实例。
    OH_EffectFilterInfo *customFilterInfo = OH_EffectFilterInfo_Create();
-   CHECK_AND_RETURN_RET_LOG(customFilterInfo != nullptr, result, "OH_EffectFilter_GetValue fail!");
+   CHECK_AND_RETURN_RET_LOG(customFilterInfo != nullptr, result, "OH_EffectFilterInfo_Create fail!");
    // 设置自定义滤镜滤镜名。
    OH_EffectFilterInfo_SetFilterName(customFilterInfo, "CustomBrightness");
    // 设置自定义滤镜所支持的内存类型。
