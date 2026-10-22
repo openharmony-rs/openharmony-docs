@@ -478,6 +478,33 @@ function printNodeTreeInRelativePath(node: Node | null): void {
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+## PointLight
+
+点光源类型，继承自[Light](#light)。
+
+点光源从空间中的单个点均匀地在所有方向上发射光。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| range<sup>26+</sup> | number | 否 | 是 | 点光源影响的最大距离。超过这个范围，光强为0。 |
+
+## RectLight
+
+矩形区域光类型，继承自[Light](#light)。
+
+矩形光源从矩形区域发射光，模拟柔和区域照明效果。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| width<sup>26+</sup> | number | 否 | 是 | 矩形发光面的宽度。 |
+| height<sup>26+</sup> | number | 否 | 是 | 矩形发光面的高度。 |
+| twoSided<sup>26+</sup> | boolean | 否 | 是 | 矩形光源是否从矩形的两侧发光。 |
+
+
 ## Camera
 
 相机类型，Camera继承自[Node](#node)。
