@@ -88,6 +88,7 @@ ROI是一个矩形区域，`Top,Left`和`Bottom,Right`分别定义了ROI的区�
 - [方式二：通过编码输入回调配置](#方式二通过编码输入回调配置)：使用视频编码参数`OH_MD_KEY_VIDEO_ENCODER_ROI_PARAMS`在编码输入回调中配置，包含编码输入参数回调（Surface模式）和编码输入buffer回调（Buffer模式）。
 
 **通用生效机制：**
+
 1. ROI参数支持随帧下发并实时生效，编码器侧无需进行能力查询或配置全局开关。使用相机随帧元数据作为ROI来源时，需先查询并开启相机的ROI信息随帧输出能力。
 2. 如果系统编码器不支持ROI编码能力，编码器会忽略ROI参数，进行普通编码。
 3. DeltaQp有效取值范围为[-51, 51]，编码器会在ROI区域的QP上叠加DeltaQp，然后限制到[minQp, maxQp]范围内得到最终QP。
@@ -158,7 +159,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
 
    从API版本26.0.1开始，相机默认不随视频帧输出ROI信息。使用相机帧中的ROI信息前，需查询设备是否支持该能力，并显式开启。开发者可根据相机接口类型，选择以下ArkTS或C/C++示例，在会话提交配置后、启动前开启该能力。相机元数据流的创建和会话配置参考[元数据（ArkTS）](../camera/camera-metadata.md)和[元数据(C/C++)](../camera/native-camera-metadata.md)。
 
-   **ArkTS：**
+   **ArkTS示例：**
 
    <!-- @[roi_enable_in_frame_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/ROISample/entry/src/main/ets/controller/CameraController.ets) -->
 
@@ -170,7 +171,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    }
    ```
 
-   **C/C++：**
+   **C/C++示例：**
 
    以下示例中的`metadataOutput_`为已创建并加入相机会话的元数据输出对象。
 
@@ -192,9 +193,7 @@ Surface模式下，相机将视频帧输出到OH_NativeImage的Surface上，开�
    }
    ```
 
-   > **说明：**
-   >
-   > 该步骤适用于本文中所有从相机帧NativeBuffer元数据获取ROI的方式。设备不支持该能力或开启失败时，无法通过此方式获取相机ROI信息。应用自行构造ROI参数时，无需配置此相机开关。
+   该步骤适用于本文中所有从相机帧NativeBuffer元数据获取ROI的方式。设备不支持该能力或开启失败时，无法通过此方式获取相机ROI信息。应用自行构造ROI参数时，无需配置此相机开关。
 
 3. 从视频帧NativeBuffer元数据提取ROI信息。
 
