@@ -720,7 +720,7 @@ caretColor(value: ResourceColor): WebAttribute
 >
 > - 未设置此属性或重置后，输入光标使用网页CSS `caret-color`的结果；CSS为`auto`或未设置时，使用内核默认光标颜色（当前为`#0A59F7`）。选择手柄使用当前主题颜色。
 > - 非零API颜色的优先级高于网页CSS `caret-color`，包括CSS显式颜色和`transparent`。
-> - 解析后的精确颜色值`0x00000000`用于重置API颜色覆盖，恢复CSS及主题的默认行为。可使用字符串`'#00000000'`重置；传入`undefined`或`null`时也会重置该属性。数值`0`会按颜色解析规则补全透明度，不能用于此重置操作。
+> - 解析后的精确颜色值`0x00000000`用于重置API颜色覆盖，恢复CSS及主题的默认行为。可使用字符串`#00000000`重置；传入`undefined`或`null`时也会重置该属性。数值`0`会按颜色解析规则补全透明度，不能用于此重置操作。
 > - 本属性影响输入光标、选择手柄的外圈及连接线，不改变手柄内圈或文字选区背景。
 > - 应用需自行配置适合深色和浅色模式的颜色，例如提供对应主题的颜色资源，或监听模式变化后重新设置颜色。本属性不自动选择适配颜色或保证对比度。
 
@@ -734,7 +734,7 @@ caretColor(value: ResourceColor): WebAttribute
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| value | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | 是 | 网页文本输入光标及选择手柄的颜色。非零颜色覆盖网页CSS光标色；字符串`'#00000000'`、`undefined`或`null`重置颜色覆盖。 |
+| value | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | 是 | 网页文本输入光标及选择手柄的颜色。非零颜色覆盖网页CSS光标色；字符串`#00000000`、`undefined`或`null`重置颜色覆盖。 |
 
 **返回值：**
 
