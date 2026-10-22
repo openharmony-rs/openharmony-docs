@@ -384,7 +384,7 @@ getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, 
 
 getBundleStats(packageName: string, option?: BundleStatsOptions): Promise&lt;BundleStats&gt;
 
-获取指定的应用存储数据的空间大小（单位为Byte）。使用Promise异步回调。
+异步获取应用存储数据的空间大小（单位为Byte）。使用Promise异步回调。
 
 **起始版本：** 26.0.1
 
@@ -424,7 +424,6 @@ getBundleStats(packageName: string, option?: BundleStatsOptions): Promise&lt;Bun
 
 ```ts
 import { bundleResourceManager } from '@kit.AbilityKit';
-import { storageStatistics } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -944,7 +943,7 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
 | 名称      | 类型   | 只读  | 可选  | 说明           |
 | --------- | ------ | ---- | ----- | -------------- |
-| index   | number | 否 | 是 | 分身应用的索引号，取值范围为大于等于0的整数，默认值为0（表示未分身的主应用）。<br>传入不满足范围的值时返回错误码401。<br>分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)()接口获得。  |
+| index   | number | 否 | 是 | 分身应用的索引号，默认值为0（表示未分身的主应用）。<br>分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性。  |
 | statFlag | [GetBundleStatsFlag](#getbundlestatsflag)  |否 | 是 | 获取应用存储空间统计信息，默认值是GET_BUNDLE_WITH_ALL_SIZE。  |
 
 ## GetBundleStatsFlag
@@ -961,10 +960,10 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
 | 名称         | 值    | 说明                 |
 | ----------- | ------- | -------------------- |
-| GET_BUNDLE_WITH_ALL_SIZE      | 0x00000000  | 应用所有的存储数据。 |
-| GET_BUNDLE_WITHOUT_INSTALL_SIZE    | 0x00000001  | 应用安装文件大小。     |
-| GET_BUNDLE_WITHOUT_DATA_SIZE    | 0x00000002  | 应用文件存储大小。    |
-| GET_BUNDLE_WITHOUT_CACHE_SIZE  | 0x00000004  | 应用缓存文件大小 。    |
+| GET_BUNDLE_WITH_ALL_SIZE      | 0x00000000  | 获取应用的全部数据大小。 |
+| GET_BUNDLE_WITHOUT_INSTALL_SIZE    | 0x00000001  | 不包含应用安装文件大小。     |
+| GET_BUNDLE_WITHOUT_DATA_SIZE    | 0x00000002  | 不包含应用文件存储大小。    |
+| GET_BUNDLE_WITHOUT_CACHE_SIZE  | 0x00000004  | 不包含应用缓存文件大小。    |
 
 ## storageStatistics.listUserdataDirInfo<sup>23+</sup>
 
