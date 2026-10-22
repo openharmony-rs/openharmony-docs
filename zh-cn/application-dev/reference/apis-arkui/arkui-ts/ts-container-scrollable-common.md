@@ -1438,7 +1438,7 @@ type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
 ## ScrollSnapOffsetProvider
 
-用于自定义限位滚动的距离和吸附位置。目前仅[Grid](ts-container-grid.md)组件的[scrollSnapStrategy](ts-container-grid.md#scrollsnapstrategy)属性支持此接口。开发者实现该接口后，将对象传入scrollSnapStrategy即可使用。
+用于自定义限位滚动的距离和吸附位置。此接口适用于[Grid](ts-container-grid.md)和[WaterFlow](ts-container-waterflow.md)组件的scrollSnapStrategy属性。开发者实现接口后，将对象传入scrollSnapStrategy即可使用。
 
 自定义限位滚动分为两个阶段：先按指定的距离惯性滚动，再通过限位动画滚动到目标吸附位置。两个回调分别在两个阶段的起始时机调用：
 
@@ -1504,7 +1504,7 @@ calculateSnapOffset(velocity: number): number
 
 | 类型    | 说明       |
 | ------- | ---------- |
-| number  | 最终吸附位置相对内容起点的滚动偏移量，不能为NaN或Infinity，0也是有效值。超出组件可滚动范围时，目标位置会限制在范围内。返回NaN或Infinity，或回调抛出异常时，Grid在当前滚动位置停止。<br/>单位：vp<br/>取值范围：[0, 合法滚动范围最大偏移量] |
+| number  | 最终吸附位置相对内容起点的滚动偏移量，必须为有限数值。沿逻辑主轴朝内容末端方向偏移为正，反方向为负，0表示内容起点。实际滚动方向由目标位置与当前滚动位置决定：目标偏移量大于当前偏移量时朝内容末端滚动，小于时朝内容起点滚动，相等时不滚动。超出可滚动范围时，目标位置限制在可滚动范围的边界。回调返回NaN、Infinity或抛出异常时，组件在当前滚动位置停止。<br/>单位：vp<br/>取值范围：组件可滚动范围对应的滚动偏移量。 |
 
 ## 示例
 
