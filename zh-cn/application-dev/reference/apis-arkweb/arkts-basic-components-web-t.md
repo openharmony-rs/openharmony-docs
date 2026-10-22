@@ -583,6 +583,26 @@ AI会话操作结果回调函数类型。用于报告会话创建或执行的结
 | state   | [AISessionResultType](./arkts-basic-components-web-e.md#aisessionresulttype) | 是  | AI会话创建或执行的状态结果。 |
 | content | string                                                                         | 是  | AI会话的响应内容，文本或JSON格式，包含AI模型生成的回复内容。|
 
+## OnZoomChangeCallback
+
+type OnZoomChangeCallback = (zoomChangeInfo: OnZoomChangeEvent) => void
+
+页面缩放倍率变化时所调用的回调函数类型。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| zoomChangeInfo | [OnZoomChangeEvent](./arkts-basic-components-web-i.md#onzoomchangeevent) | 是 | 页面缩放倍率变化的详细信息。 |
+
 ## OnInputmethodAttachedCallback
 
 type OnInputmethodAttachedCallback = () => void;
