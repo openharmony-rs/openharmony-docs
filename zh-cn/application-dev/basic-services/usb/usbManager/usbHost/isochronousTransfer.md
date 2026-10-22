@@ -1,4 +1,4 @@
-# USB实时传输
+# USB实时传输（ArkTS）
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->

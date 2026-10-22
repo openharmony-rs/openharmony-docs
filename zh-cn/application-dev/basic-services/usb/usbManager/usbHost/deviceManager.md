@@ -1,4 +1,4 @@
-# USB设备管理
+# USB设备管理（ArkTS）
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
