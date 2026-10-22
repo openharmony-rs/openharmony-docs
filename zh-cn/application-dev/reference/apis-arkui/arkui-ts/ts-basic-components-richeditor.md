@@ -1230,7 +1230,7 @@ RichEditorSymbolSpanStyle和RichEditorSymbolSpanStyleResult中fontWeight的转�
 | verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | 否 | 否    | 图片垂直对齐方式。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | objectFit     | [ImageFit](ts-appendix-enums.md#imagefit) | 否 | 否    | 图片缩放类型。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | layoutStyle<sup>12+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11)     | 否 | 是   | 图片布局样式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11)     | 否 | 是   | 图片拉伸选项。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11)     | 否 | 是   | 图像拉伸时可调整大小的图像选项。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ## RichEditorLayoutStyle<sup>11+</sup> 
 
@@ -2209,7 +2209,7 @@ SymbolSpan样式选项。
 | verticalAlign             | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10)| 否| 是    | 图片垂直对齐方式。<br>默认值：ImageSpanAlignment.BOTTOM <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | objectFit                 | [ImageFit](ts-appendix-enums.md#imagefit) | 否| 是    | 图片缩放类型。<br> 默认值：ImageFit.Cover。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
 | layoutStyle<sup>11+</sup> | [RichEditorLayoutStyle](#richeditorlayoutstyle11) | 否| 是    | 图片布局样式。默认值：{"borderRadius":"","margin":""}<br>   <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                          |
-| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | 否| 是    | 图片拉伸选项。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| resizable | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) | 否 | 是    | 图像拉伸时可调整大小的图像选项。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ## RichEditorSymbolSpanOptions<sup>11+</sup>
 
